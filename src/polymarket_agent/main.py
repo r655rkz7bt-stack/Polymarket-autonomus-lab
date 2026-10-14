@@ -172,12 +172,9 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
     deps.db.save_markets(report.cycle_id, now, result.markets if full else result.watchlist)
     report.counts.update(markets=len(result.markets), watchlist=len(result.watchlist))
 
-    # 5. Carnets : favori de chaque marché surveillé + positions détenues (prix de marque).
-    wanted = []
-    for market in result.watchlist:
-        if len(market.outcome_prices) == 2:
-            idx = 0 if market.outcome_prices[0] >= market.outcome_prices[1] else 1
-            wanted.append(market.token_ids[idx])
+    # 5. Carnets : les deux issues de chaque marché surveillé (favori et outsider)
+    #    + les positions détenues (prix de marque).
+    wanted = [t for market in result.watchlist if len(market.token_ids) == 2 for t in market.token_ids]
     wanted += [t for t in ledger.state.positions if t not in wanted]
     try:
         books = deps.clob.get_books(wanted) if wanted else {}

@@ -86,3 +86,61 @@ def test_regression_default_config_can_trade_a_tight_favorite(ledger, limits):
     market = parse_market(raw_market())
     book = make_book("tokA", bids=(("0.89", "500"),), asks=(("0.90", "300"),))
     assert len(s.propose([market], {"tokA": book}, ledger.state, limits, "B1").proposals) == 1
+
+
+# --------------------------------------------------------------------------- calibration
+
+
+def calibrated(tmp_path, delta, n_events=500, key="sports|13-72h|0.85-0.90", **params):
+    from polymarket_agent import calibration
+    from polymarket_agent.calibration import Cell
+    from polymarket_agent.strategy_engine import CalibratedStrategy
+    table = {key: Cell(key, 2000, n_events, 0.875, 0.875 + delta, delta, delta - 0.01, delta + 0.01, delta)}
+    calibration.save(table, tmp_path / "table.json", {"version": "test"})
+    base = {"min_events": D("150"), "min_net_edge": D("0.02"), "max_extra_ticks": D("2"),
+            "max_proposals_per_cycle": D("3")}
+    base.update(params)
+    return CalibratedStrategy("1.0.0", "2026-10-14", base, tmp_path / "table.json")
+
+
+def sports_market(**kw):
+    raw = raw_market(feeType="sports_fees_v3",
+                     schedule={"exponent": 1, "rate": 0.05, "takerOnly": True}, **kw)
+    return parse_market(raw)
+
+
+def books_for(yes_bid="0.87", yes_ask="0.88"):
+    no_bid, no_ask = str(D(1) - D(yes_ask)), str(D(1) - D(yes_bid))
+    return {"tokA": make_book("tokA", bids=((yes_bid, "500"),), asks=((yes_ask, "500"),)),
+            "tokB": make_book("tokB", bids=((no_bid, "500"),), asks=((no_ask, "500"),))}
+
+
+def test_calibrated_buys_underpriced_favorite(tmp_path, ledger, limits):
+    s = calibrated(tmp_path, delta=0.06)  # le favori à 0,875 gagne en réalité 93,5 %
+    out = s.propose([sports_market()], books_for(), ledger.state, limits, "B1")
+    assert len(out.proposals) == 1
+    p = out.proposals[0]
+    assert p.token_id == "tokA" and p.outcome == "Yes"
+    assert p.prob_low == D("0.925")
+    market = sports_market()
+    assert evaluate(p, ledger.state, market_context(market, books_for()["tokA"], "tokA"),
+                    limits, NOW).accepted
+
+
+def test_calibrated_buys_underdog_when_favorite_is_overpriced(tmp_path, ledger, limits):
+    s = calibrated(tmp_path, delta=-0.07)  # le favori à 0,875 ne gagne que 80,5 %
+    out = s.propose([sports_market()], books_for(), ledger.state, limits, "B1")
+    assert out.proposals[0].token_id == "tokB" and out.proposals[0].outcome == "No"
+
+
+def test_calibrated_abstains_without_measured_edge(tmp_path, ledger, limits):
+    assert not calibrated(tmp_path, delta=0.0).propose(
+        [sports_market()], books_for(), ledger.state, limits, "B1").proposals
+    small = calibrated(tmp_path, delta=0.06, n_events=40)  # trop peu d'événements
+    out = small.propose([sports_market()], books_for(), ledger.state, limits, "B1")
+    assert out.abstentions == {"case de calibration absente ou trop petite": 1}
+    # Horizon hors table (marché « crypto » : aucune case) → abstention.
+    crypto = parse_market(raw_market(feeType="crypto_fees_v2",
+                                     schedule={"exponent": 1, "rate": 0.07, "takerOnly": True}))
+    assert not calibrated(tmp_path, delta=0.06).propose([crypto], books_for(), ledger.state,
+                                                        limits, "B1").proposals

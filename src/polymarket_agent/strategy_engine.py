@@ -2,7 +2,7 @@
 
 Chaque stratégie a un identifiant, une version, une date de création, des
 paramètres bornés (config/strategies.yaml) et un historique (base SQLite).
-Étape 3 : une seule stratégie, la référence naïve « naive_favorite ».
+Étape 4 : la référence naïve « naive_favorite » (v1) et la stratégie « calibration ».
 """
 
 from __future__ import annotations
@@ -148,10 +148,126 @@ class NaiveFavorite:
         return out
 
 
-STRATEGY_CLASSES: dict[str, Any] = {NaiveFavorite.strategy_id: NaiveFavorite}
+def market_category(market: MarketInfo) -> str:
+    """Même règle que l'historique : la catégorie vient du barème de frais du marché."""
+    if market.fees.enabled and market.fees.fee_type:
+        return market.fees.fee_type.split("_")[0]
+    return "other"
 
 
-def load_strategies(path: Path) -> list[NaiveFavorite]:
+def best_limit_price(book: OrderBook, market: MarketInfo, prob_low: Decimal, min_edge: Decimal,
+                     max_extra_ticks: int) -> tuple[Decimal, Decimal] | None:
+    """Prix limite le plus haut (en ticks au-dessus du meilleur ask) qui garde l'avantage
+    net >= min_edge. Retourne (prix limite, coût par part frais compris) ou None."""
+    if book.best_ask is None:
+        return None
+    best = None
+    for k in range(max_extra_ticks + 1):
+        price = book.best_ask + book.tick_size * k
+        if price >= ONE:
+            break
+        cost_ps = price + taker_fee(ONE, price, market.fees)
+        if prob_low - cost_ps >= min_edge:
+            best = (price, cost_ps)
+    return best
+
+
+class CalibratedStrategy:
+    """Probability mispricing par calibration historique (cahier des charges, stratégie 4).
+
+    Probabilité estimée = prix du marché + écart δ mesuré sur l'historique pour la même
+    case (catégorie × horizon × prix du favori), avec son intervalle de confiance. On
+    n'achète que si la BORNE BASSE dépasse le prix exécutable + frais + marge. Une case
+    sans assez d'événements → abstention (pas de probabilité inventée).
+    """
+
+    strategy_id = "calibration"
+    required = ("min_events", "min_net_edge", "max_extra_ticks", "max_proposals_per_cycle")
+
+    def __init__(self, version: str, created_at: str, params: dict[str, Decimal], table_path: Path):
+        from polymarket_agent import calibration
+
+        missing = [p for p in self.required if p not in params]
+        if missing:
+            raise StrategyConfigError(f"{self.strategy_id} : paramètres manquants {missing}")
+        self.version, self.created_at, self.params = version, created_at, params
+        self.table, self.table_meta = calibration.load(table_path)
+        self._cell_key = calibration.cell_key
+
+    def propose(self, watchlist: list[MarketInfo], books: dict[str, OrderBook],
+                state: LedgerState, limits: RiskLimits, bucket: str,
+                marks: dict[str, Decimal] | None = None) -> StrategyOutput:
+        out = StrategyOutput()
+        p = self.params
+        min_edge = max(p["min_net_edge"], limits.min_net_edge_floor)
+        candidates: list[tuple[Decimal, Proposal]] = []
+        for market in watchlist:
+            if len(market.token_ids) != 2 or market.end_date is None:
+                out.abstain("marché non binaire")
+                continue
+            yes_book, no_book = books.get(market.token_ids[0]), books.get(market.token_ids[1])
+            if yes_book is None or no_book is None or yes_book.mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            if any(t in state.positions for t in market.token_ids):
+                out.abstain("position déjà ouverte")
+                continue
+            p_yes = float(yes_book.mid)
+            fav = 0 if p_yes >= 0.5 else 1
+            f = p_yes if fav == 0 else 1 - p_yes
+            hours = (market.end_date - yes_book.fetched_at).total_seconds() / 3600
+            key = self._cell_key(market_category(market), hours, f)
+            cell = self.table.get(key) if key else None
+            if cell is None or cell.n_events < int(p["min_events"]):
+                out.abstain("case de calibration absente ou trop petite")
+                continue
+            q_fav = (f + cell.delta_low, f + cell.delta_shrunk, f + cell.delta_high)
+            options = [(fav, q_fav), (1 - fav, (1 - q_fav[2], 1 - q_fav[1], 1 - q_fav[0]))]
+            chosen = None
+            try:
+                for side, (low, est, high) in options:
+                    book = books[market.token_ids[side]]
+                    limit = best_limit_price(book, market, Decimal(str(round(low, 6))), min_edge,
+                                             int(p["max_extra_ticks"]))
+                    if limit is not None:
+                        chosen = (side, low, est, high, book, limit)
+                        break
+            except UnknownFees:
+                out.abstain("frais inconnus")
+                continue
+            if chosen is None:
+                out.abstain("avantage net insuffisant")
+                continue
+            side, low, est, high, book, (max_price, cost_ps) = chosen
+            token_id = market.token_ids[side]
+            low_d = Decimal(str(round(low, 6)))
+            shares = size_buy(state, limits, token_id=token_id, event_id=market.event_id,
+                              prob_low=low_d, cost_per_share=cost_ps, marks=marks)
+            if shares < max(market.min_order_size, book.min_order_size):
+                out.abstain("taille autorisée trop faible")
+                continue
+            edge = low_d - cost_ps
+            candidates.append((edge, Proposal(
+                op_id=make_op_id(bucket, self.strategy_id, self.version, token_id, "BUY"),
+                side="BUY", market_id=market.market_id, event_id=market.event_id,
+                token_id=token_id, outcome=market.outcomes[side],
+                est_probability=Decimal(str(round(est, 6))), prob_low=low_d,
+                prob_high=Decimal(str(round(min(high, 0.995), 6))), max_price=max_price,
+                shares=shares, net_edge=edge, sources=("polymarket_clob", f"calibration:{key}"),
+                uncertainty=f"IC 90 % de δ, {cell.n_events} événements d'entraînement",
+                invalidation="règles de résolution ambiguës ; case de calibration révisée",
+                horizon_hours=Decimal(str(round(hours, 2))),
+                strategy_id=self.strategy_id, strategy_version=self.version)))
+        candidates.sort(key=lambda item: item[0], reverse=True)
+        out.proposals = [prop for _, prop in candidates[: int(p["max_proposals_per_cycle"])]]
+        return out
+
+
+STRATEGY_CLASSES: dict[str, Any] = {NaiveFavorite.strategy_id: NaiveFavorite,
+                                    CalibratedStrategy.strategy_id: CalibratedStrategy}
+
+
+def load_strategies(path: Path) -> list:
     try:
         raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     except (OSError, yaml.YAMLError) as exc:
@@ -163,6 +279,8 @@ def load_strategies(path: Path) -> list[NaiveFavorite]:
         cls = STRATEGY_CLASSES.get(strategy_id)
         if cls is None:
             raise StrategyConfigError(f"stratégie inconnue : {strategy_id}")
-        strategies.append(cls(str(spec["version"]), str(spec["created_at"]),
-                              load_params(spec.get("params"))))
+        args = [str(spec["version"]), str(spec["created_at"]), load_params(spec.get("params"))]
+        if "table" in spec:
+            args.append(Path(path).parent / str(spec["table"]))
+        strategies.append(cls(*args))
     return strategies
