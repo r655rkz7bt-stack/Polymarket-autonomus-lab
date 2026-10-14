@@ -23,6 +23,7 @@ data/*
 !data/history/
 data/history/*
 !data/history/*.jsonl.gz
+!data/history/README.md
 
 # Rapports générés (publiés à l’étape 7)
 reports/
