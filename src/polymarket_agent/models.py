@@ -32,6 +32,7 @@ class MarketInfo:
     spread: Decimal | None
     last_trade_price: Decimal | None
     volume_24h: Decimal
+    volume_total: Decimal  # volume cumulé depuis l'ouverture
     liquidity: Decimal
     end_date: datetime | None
     active: bool

@@ -28,6 +28,7 @@ scanner:
   min_liquidity: 1000
   min_volume_24h: 1000
   max_spread: 0.05
+  max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
   watchlist_size: 30
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
 

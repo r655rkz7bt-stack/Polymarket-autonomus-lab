@@ -212,6 +212,11 @@ class CalibratedStrategy:
             if any(t in state.positions for t in market.token_ids):
                 out.abstain("position déjà ouverte")
                 continue
+            # Même univers que l'historique (volume final >= seuil) : ici le volume déjà
+            # échangé, plus restrictif car il ne peut que grandir.
+            if market.volume_total < p.get("min_volume", Decimal("0")):
+                out.abstain("volume cumulé sous le seuil de l'historique")
+                continue
             p_yes = float(yes_book.mid)
             fav = 0 if p_yes >= 0.5 else 1
             f = p_yes if fav == 0 else 1 - p_yes

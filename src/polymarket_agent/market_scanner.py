@@ -38,6 +38,9 @@ def classify(market: MarketInfo, now: datetime, cfg: dict) -> str:
         return "volume insuffisant"
     if market.spread is None or market.spread > Decimal(str(cfg["max_spread"])):
         return "écart achat/vente trop large"
+    extreme = Decimal(str(cfg.get("max_favorite_price", 0.99)))
+    if market.best_ask >= extreme or market.best_bid <= 1 - extreme:
+        return "issue quasi certaine (match joué ou info déjà connue)"
     return ""
 
 

@@ -144,3 +144,9 @@ def test_calibrated_abstains_without_measured_edge(tmp_path, ledger, limits):
                                      schedule={"exponent": 1, "rate": 0.07, "takerOnly": True}))
     assert not calibrated(tmp_path, delta=0.06).propose([crypto], books_for(), ledger.state,
                                                         limits, "B1").proposals
+
+
+def test_calibrated_respects_dataset_volume_universe(tmp_path, ledger, limits):
+    s = calibrated(tmp_path, delta=0.06, min_volume=D("200000"))
+    out = s.propose([sports_market()], books_for(), ledger.state, limits, "B1")
+    assert out.abstentions == {"volume cumulé sous le seuil de l'historique": 1}

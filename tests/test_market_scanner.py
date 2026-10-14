@@ -54,6 +54,8 @@ def test_classification_filters():
     assert classify(parse_market(raw_market(spread=0.2)), NOW, CFG) == "écart achat/vente trop large"
     assert classify(parse_market(raw_market(liquidityNum=10)), NOW, CFG) == "liquidité insuffisante"
     assert classify(parse_market(raw_market(acceptingOrders=False)), NOW, CFG) == "carnet indisponible"
+    decided = parse_market(raw_market(yes_price="0.9995", best_bid=0.999, best_ask=1, spread=0.001))
+    assert classify(decided, NOW, CFG).startswith("issue quasi certaine")
 
 
 class FakeGamma:

@@ -108,6 +108,7 @@ def parse_market(raw: dict) -> MarketInfo:
         spread=_dec(raw.get("spread")),
         last_trade_price=_dec(raw.get("lastTradePrice")),
         volume_24h=_dec(raw.get("volume24hr")) or Decimal("0"),
+        volume_total=_dec(raw.get("volumeNum")) or _dec(raw.get("volume")) or Decimal("0"),
         liquidity=_dec(raw.get("liquidityNum")) or _dec(raw.get("liquidity")) or Decimal("0"),
         end_date=end_date,
         active=raw.get("active") is True,

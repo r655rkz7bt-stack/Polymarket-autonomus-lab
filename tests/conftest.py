@@ -68,7 +68,7 @@ def raw_market(market_id: str = "1", yes_token: str = "tokA", no_token: str = "t
         "clobTokenIds": json.dumps([yes_token, no_token]),
         "endDate": end.strftime("%Y-%m-%dT%H:%M:%SZ"), "active": True, "closed": False,
         "acceptingOrders": True, "enableOrderBook": True, "bestBid": best_bid,
-        "bestAsk": best_ask, "spread": 0.01, "lastTradePrice": 0.9, "volume24hr": 50000,
+        "bestAsk": best_ask, "spread": 0.01, "lastTradePrice": 0.9, "volume24hr": 50000, "volumeNum": 120000,
         "liquidityNum": 20000, "orderMinSize": 5, "orderPriceMinTickSize": 0.01,
         "negRisk": False, "feesEnabled": fees_enabled, "feeType": "politics_fees",
         "feeSchedule": schedule if schedule is not None else
