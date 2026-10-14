@@ -1,0 +1,22 @@
+# Paramètres des stratégies. Le chercheur peut les ajuster, uniquement à l'intérieur
+# des bornes [min, max]. Les garde-fous de risk_limits.yaml s'appliquent toujours en plus.
+
+naive_favorite:
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-14"
+  hypothesis: >
+    Stratégie de RÉFÉRENCE définie à l'avance (pas une stratégie supposée rentable).
+    Hypothèse « biais favori / outsider » : le favori d'un marché binaire proche de son
+    échéance serait légèrement sous-évalué. Le biais est un a priori NON calibré ;
+    il sera mesuré, et la stratégie abandonnée si les résultats ne le confirment pas.
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.02, max: 0.20}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 10}

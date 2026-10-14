@@ -1,0 +1,13 @@
+# Fichiers protégés : une pull request qui en modifie un est bloquée par guard.yml
+# (activé à l'étape 8). Après le verrouillage, seul Etienne peut les modifier.
+# Une ligne = un chemin exact, ou un dossier terminé par « / ».
+CLAUDE.md
+PROTECTED_PATHS.txt
+.github/
+src/polymarket_agent/safety_controller.py
+src/polymarket_agent/ledger.py
+config/risk_limits.yaml
+config/promotion.yaml
+tests/test_capital.py
+tests/test_ledger.py
+tests/test_safety_controller.py

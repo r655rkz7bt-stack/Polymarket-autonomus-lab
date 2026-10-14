@@ -1,0 +1,14 @@
+# FICHIER PROTÉGÉ — modifiable uniquement par Etienne après le verrouillage.
+# Appliqué par safety_controller.py (code déterministe). Les stratégies ne peuvent pas
+# l'assouplir. Le contrôleur refuse de démarrer si une valeur sort de ses bornes dures.
+
+initial_capital: 1000          # unités virtuelles (jamais de l'argent réel)
+kelly_fraction: 0.25
+max_position_pct: 0.05         # du capital total estimé
+max_event_pct: 0.15            # tous marchés liés à un même événement
+min_cash_pct: 0.30             # toujours en liquide
+max_open_positions: 25
+daily_loss_pause_pct: 0.10     # pause des nouvelles entrées jusqu'à minuit UTC
+min_net_edge_floor: 0.02       # plancher : le chercheur ne peut pas descendre en dessous
+no_averaging_down: true        # jamais de doublement après une perte
+max_book_age_seconds: 120      # un carnet plus vieux est considéré comme périmé

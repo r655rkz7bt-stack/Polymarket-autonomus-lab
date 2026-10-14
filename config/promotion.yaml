@@ -1,0 +1,8 @@
+# FICHIER PROTÉGÉ — critères de promotion d'un challenger (ARCHITECTURE.md §9).
+# Utilisé à partir de l'étape 6.
+min_closed_positions: 30
+min_days: 7
+min_bootstrap_prob_better_log_growth: 0.90
+max_drawdown_ratio_vs_incumbent: 1.5
+brier_must_be_equal_or_better: true
+penalize_multiple_testing: true
