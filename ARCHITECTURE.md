@@ -186,3 +186,10 @@ Détails : `experiments/PROTOCOLE_v2.md`.
 - Débit utilisé pour l'historique : environ 48 requêtes/s (limite documentée : 1 000 / 10 s).
 - La copie de l'état du journal avant chaque écriture (`deepcopy`) rendait les backtests
   quadratiques : remplacée par `LedgerState.clone()`, testée équivalente.
+
+**Décision au 14/10/2026** (`experiments/BILAN_2026-10-14.md`) : aucune stratégie n'est
+prouvée rentable. Capital principal : « ne rien faire ». `reversion v1` tourne en
+**portefeuille fantôme** : journal séparé `ledger/fantome/`, même marché, mêmes carnets réels,
+mêmes garde-fous, sans jamais toucher le capital principal. Promotion selon
+`config/promotion.yaml` ; le critère de drawdown relatif est inapplicable face à « ne rien
+faire » (drawdown nul) : à trancher par Etienne avant l'étape 6.
