@@ -20,3 +20,9 @@ logs/*
 !logs/.gitkeep
 data/*
 !data/.gitkeep
+!data/history/
+data/history/*
+!data/history/*.jsonl.gz
+
+# Rapports générés (publiés à l’étape 7)
+reports/
