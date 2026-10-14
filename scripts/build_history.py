@@ -17,6 +17,7 @@ import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from _common import ROOT, load_settings, setup_logging
 
@@ -28,11 +29,14 @@ log = logging.getLogger("build_history")
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--start", required=True, help="premier jour d'échéance (AAAA-MM-JJ)")
-    parser.add_argument("--end", required=True, help="dernier jour d'échéance (inclus)")
+    parser.add_argument("--start", help="premier jour d'échéance (AAAA-MM-JJ)")
+    parser.add_argument("--end", help="dernier jour d'échéance (inclus)")
     parser.add_argument("--min-volume", type=float, default=5000)
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--export-only", action="store_true")
+    parser.add_argument("--days", help="liste de jours (AAAA-MM-JJ,...) au lieu de l'intervalle")
+    parser.add_argument("--cache", default=str(ROOT / "state" / "history_cache.sqlite"))
+    parser.add_argument("--out", default=str(ROOT / "data" / "history"))
     args = parser.parse_args()
     settings = load_settings()
     setup_logging(settings)
@@ -44,12 +48,16 @@ def main() -> int:
         return HttpClient(timeout=http_cfg["timeout_seconds"], max_retries=4, backoff=2.0,
                           min_interval=0.2, user_agent=http_cfg["user_agent"])
 
-    store = HistoryStore(ROOT / "state" / "history_cache.sqlite")
+    store = HistoryStore(Path(args.cache))
     if not args.export_only:
         http = client()
-        day = datetime.fromisoformat(args.start).replace(tzinfo=timezone.utc)
-        last = datetime.fromisoformat(args.end).replace(tzinfo=timezone.utc)
-        while day <= last:
+        if args.days:
+            days = [datetime.fromisoformat(d).replace(tzinfo=timezone.utc) for d in args.days.split(",")]
+        else:
+            first = datetime.fromisoformat(args.start).replace(tzinfo=timezone.utc)
+            last = datetime.fromisoformat(args.end).replace(tzinfo=timezone.utc)
+            days = [first + timedelta(days=i) for i in range((last - first).days + 1)]
+        for day in days:
             key = day.strftime("%Y-%m-%d")
             if not store.day_done(key):
                 try:
@@ -58,7 +66,6 @@ def main() -> int:
                     log.info("catalogue %s : %d marchés résolus retenus", key, len(metas))
                 except (SourceUnavailable, ValueError) as exc:
                     log.warning("catalogue %s : échec (%s), sera repris au prochain lancement", key, exc)
-            day += timedelta(days=1)
 
         todo = store.missing_histories()
         log.info("historiques à récupérer : %d", len(todo))
@@ -88,7 +95,7 @@ def main() -> int:
                         rate = done / (time.time() - started)
                         log.info("historiques : %d/%d (%.0f/s), %d échecs", done, len(todo), rate, failed)
         store.commit()
-    counts = export_monthly(store, ROOT / "data" / "history")
+    counts = export_monthly(store, Path(args.out))
     log.info("export : %s (total %d marchés avec historique)", counts, sum(counts.values()))
     store.close()
     return 0
