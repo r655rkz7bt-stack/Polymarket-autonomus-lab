@@ -18,6 +18,7 @@ exécutable. Le backtest ajoute donc toujours un coût d'écart et de slippage.
 from __future__ import annotations
 
 import gzip
+import hashlib
 import json
 import logging
 import sqlite3
@@ -119,6 +120,23 @@ def parse_resolved(market: dict, event: dict, min_volume: float) -> dict | None:
         "volume": round(volume, 2), "category": category, "fee_rate": fee_rate, "tags": tags[:8],
         "neg_risk": market.get("negRisk") is True,
     }
+
+
+def in_random_sample(market_id: str, fraction: float) -> bool:
+    """Tirage uniforme et reproductible (hash de l'identifiant) : sans lien avec l'issue."""
+    if fraction >= 1:
+        return True
+    digest = hashlib.sha256(f"echantillon-v2|{market_id}".encode("utf-8")).hexdigest()
+    return int(digest[:8], 16) / 0xFFFFFFFF < fraction
+
+
+def can_produce_sample(meta: dict, horizons=(72, 48, 36, 24, 18, 12, 8, 6, 4, 3, 2, 1)) -> bool:
+    """Même condition que backtest.build_samples : ouvert depuis 1 h et pas encore clos."""
+    for h in horizons:
+        ts = meta["end"] - h * 3600
+        if ts < meta["closed"] and not (meta.get("start") and ts < meta["start"] + 3600):
+            return True
+    return False
 
 
 def decision_limit(meta: dict) -> int:
@@ -253,11 +271,13 @@ def fetch_points(http: HttpClient, clob_url: str, meta: dict,
     return points
 
 
-def export_monthly(store: HistoryStore, out_dir: Path) -> dict[str, int]:
+def export_monthly(store: HistoryStore, out_dir: Path, fraction: float = 1.0) -> dict[str, int]:
     """Export compact (un fichier .jsonl.gz par mois de résolution), versionné dans Git."""
     out_dir.mkdir(parents=True, exist_ok=True)
     by_month: dict[str, list[str]] = {}
     for market in store.iter_complete():
+        if not in_random_sample(market.meta["id"], fraction) or not can_produce_sample(market.meta):
+            continue
         month = datetime.fromtimestamp(market.meta["end"], tz=timezone.utc).strftime("%Y-%m")
         record = dict(market.meta, points=market.points)
         by_month.setdefault(month, []).append(json.dumps(record, ensure_ascii=False,

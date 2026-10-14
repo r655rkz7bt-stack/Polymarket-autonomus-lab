@@ -21,7 +21,8 @@ from pathlib import Path
 
 from _common import ROOT, load_settings, setup_logging
 
-from polymarket_agent.history import HistoryStore, collect_day, export_monthly, fetch_points
+from polymarket_agent.history import (HistoryStore, can_produce_sample, collect_day, export_monthly,
+                                      fetch_points, in_random_sample)
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 
 log = logging.getLogger("build_history")
@@ -34,6 +35,8 @@ def main() -> int:
     parser.add_argument("--min-volume", type=float, default=5000)
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--export-only", action="store_true")
+    parser.add_argument("--fraction", type=float, default=1.0,
+                        help="tirage aléatoire uniforme d'une fraction des marchés (hash de l'id)")
     parser.add_argument("--days", help="liste de jours (AAAA-MM-JJ,...) au lieu de l'intervalle")
     parser.add_argument("--cache", default=str(ROOT / "state" / "history_cache.sqlite"))
     parser.add_argument("--out", default=str(ROOT / "data" / "history"))
@@ -67,7 +70,8 @@ def main() -> int:
                 except (SourceUnavailable, ValueError) as exc:
                     log.warning("catalogue %s : échec (%s), sera repris au prochain lancement", key, exc)
 
-        todo = store.missing_histories()
+        todo = [m for m in store.missing_histories()
+                if in_random_sample(m["id"], args.fraction) and can_produce_sample(m)]
         log.info("historiques à récupérer : %d", len(todo))
         local = threading.local()
         lock = threading.Lock()
@@ -95,7 +99,7 @@ def main() -> int:
                         rate = done / (time.time() - started)
                         log.info("historiques : %d/%d (%.0f/s), %d échecs", done, len(todo), rate, failed)
         store.commit()
-    counts = export_monthly(store, Path(args.out))
+    counts = export_monthly(store, Path(args.out), args.fraction)
     log.info("export : %s (total %d marchés avec historique)", counts, sum(counts.values()))
     store.close()
     return 0

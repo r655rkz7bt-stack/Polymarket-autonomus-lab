@@ -161,3 +161,12 @@ def test_regression_final_volume_is_not_used_as_a_filter():
     from polymarket_agent import calibration as cal
     source = inspect.getsource(cal) + (ROOT / "scripts" / "research_calibration.py").read_text(encoding="utf-8")
     assert ".volume" not in source
+
+
+def test_random_sample_is_reproducible_and_uniform():
+    from polymarket_agent.history import can_produce_sample, in_random_sample
+    ids = [str(i) for i in range(20000)]
+    picked = [i for i in ids if in_random_sample(i, 0.4)]
+    assert 0.38 < len(picked) / len(ids) < 0.42
+    assert picked == [i for i in ids if in_random_sample(i, 0.4)]
+    assert can_produce_sample(meta(1)) and not can_produce_sample(meta(2, closed=END - 80 * H))

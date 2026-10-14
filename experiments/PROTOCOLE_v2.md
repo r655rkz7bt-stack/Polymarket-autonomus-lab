@@ -43,3 +43,11 @@ chronologique par événement 60/20/20, mêmes 5 critères d'adoption, demi-éca
 testé ×1,5 et ×2. La table est réajustée sur l'entraînement v2 uniquement.
 
 Si aucune stratégie ne passe : le bot s'abstient, et c'est le bon résultat.
+
+## Amendement (14/10/2026, avant tout résultat v2)
+
+Le catalogue des 40 jours compte 366 505 marchés, dont 259 105 peuvent produire au moins
+un échantillon (les autres sont exclus sans perte : ils ne sont jamais ouverts 1 h avant un
+horizon possible). Pour tenir en taille et en temps, on garde un **tirage aléatoire uniforme
+de 40 %** des marchés, déterminé par le hash de leur identifiant (`in_random_sample`), donc
+sans aucun lien avec leur issue. Les 8 jours du témoin passent par le même tirage.
