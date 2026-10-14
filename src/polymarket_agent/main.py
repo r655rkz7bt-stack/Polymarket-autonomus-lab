@@ -1,8 +1,13 @@
 """Un cycle complet de simulation (ARCHITECTURE.md §2).
 
-Étape 3 (prototype) : journal → faillite ? → scanner → carnets → stratégie →
-contrôleur → relecture du carnet → simulation → journal → battement de cœur.
-Les sources externes, les règlements et le tableau de bord arrivent aux étapes 4 à 7.
+journal → faillite ? → règlements → scanner → carnets → historique de prix →
+stratégies → contrôleur → relecture du carnet → simulation → journal → battement de cœur.
+
+Deux sortes de portefeuilles :
+  - le portefeuille PRINCIPAL (capital de 1 000, règle « à 0 € tu meurs ») ;
+  - des portefeuilles FANTÔMES, un par stratégie en mode « fantome » : même marché,
+    mêmes carnets, mêmes garde-fous, mais un journal séparé (`ledger/fantome/`) qui ne
+    touche jamais le capital principal. C'est la « promotion fantôme » d'ARCHITECTURE §9.
 """
 
 from __future__ import annotations
@@ -21,6 +26,7 @@ from polymarket_agent.ledger import Ledger, LedgerCorrupt, LedgerError, NotIniti
 from polymarket_agent.market_scanner import scan
 from polymarket_agent.models import MarketInfo, OrderBook
 from polymarket_agent.persistence import Database
+from polymarket_agent.price_features import changes_in_window, price_at
 from polymarket_agent.safety_controller import (MarketContext, RiskLimits, assert_simulation_mode,
                                                 evaluate)
 from polymarket_agent.settlement import settle_positions
@@ -47,6 +53,7 @@ class CycleDeps:
     gamma: GammaClient
     clob: ClobClient
     now: Callable[[], datetime] = lambda: datetime.now(timezone.utc)
+    shadow_dir: Path | None = None  # dossier des journaux fantômes
 
 
 @dataclass
@@ -56,7 +63,17 @@ class CycleReport:
     exit_code: int = EXIT_OK
     counts: dict[str, int] = field(default_factory=dict)
     summary: dict[str, str] = field(default_factory=dict)
+    shadows: dict[str, dict] = field(default_factory=dict)
     messages: list[str] = field(default_factory=list)
+
+
+@dataclass
+class Portfolio:
+    name: str
+    ledger: Ledger
+    strategies: list
+    marks: dict[str, Decimal] = field(default_factory=dict)
+    counts: dict[str, int] = field(default_factory=dict)
 
 
 def cycle_bucket(now: datetime, minutes: int) -> str:
@@ -85,6 +102,27 @@ def market_context(market: MarketInfo, book: OrderBook | None, token_id: str) ->
     )
 
 
+def _open_shadows(deps: CycleDeps, report: CycleReport, now: datetime) -> list[Portfolio]:
+    """Un journal par stratégie fantôme, créé à la première utilisation. Un journal fantôme
+    illisible est ignoré (journalisé) : il ne bloque jamais le portefeuille principal."""
+    shadows = []
+    for strategy in deps.strategies:
+        if getattr(strategy, "mode", "principal") != "fantome" or deps.shadow_dir is None:
+            continue
+        name = f"{strategy.strategy_id}_v{strategy.version}"
+        path = deps.shadow_dir / f"{name}.jsonl"
+        lock = deps.shadow_dir / f"{name}.BANKRUPT.lock"
+        try:
+            ledger = (Ledger.open(path, deps.key, lock) if path.exists()
+                      else Ledger.create(path, deps.key, lock, deps.limits.initial_capital, now))
+        except LedgerError as exc:
+            report.messages.append(f"fantôme {name} ignoré : {exc}")
+            log.error("journal fantôme %s inutilisable : %s", name, exc)
+            continue
+        shadows.append(Portfolio(f"fantome:{name}", ledger, [strategy]))
+    return shadows
+
+
 def run_cycle(deps: CycleDeps) -> CycleReport:
     started = deps.now()
     bucket = cycle_bucket(started, int(deps.settings["cycle"]["bucket_minutes"]))
@@ -92,7 +130,7 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
     deps.db.start_cycle(report.cycle_id, started)
     assert_simulation_mode(deps.settings.get("mode"))
 
-    # 1. Journal : vérification complète (signatures, chaîne, comptabilité).
+    # 1. Journal principal : vérification complète (signatures, chaîne, comptabilité).
     try:
         ledger = Ledger.open(deps.ledger_path, deps.key, deps.lock_path)
     except NotInitialized as exc:
@@ -106,9 +144,11 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
             return _halt(deps, report, "CORROMPU",
                          f"le journal ne contient plus l'écriture n°{seq} déjà vue : troncature ou remplacement")
 
-    marks: dict[str, Decimal] = {}
+    main = Portfolio("principal", ledger,
+                     [s for s in deps.strategies if getattr(s, "mode", "principal") == "principal"])
+    portfolios = [main] + _open_shadows(deps, report, started)
     try:
-        _trade(deps, ledger, report, bucket, marks)
+        _trade(deps, portfolios, report, bucket)
     except LedgerError as exc:  # garde-fou : jamais d'état à moitié écrit
         report.status, report.exit_code = "ERREUR_JOURNAL", EXIT_ERROR
         report.messages.append(str(exc))
@@ -119,13 +159,20 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
         log.exception("erreur inattendue pendant le cycle")
 
     finished = deps.now()
-    held_marks = {t: m for t, m in marks.items() if t in ledger.state.positions}
-    ledger.heartbeat(report.cycle_id, report.status, finished,
-                     total_estimated=ledger.state.total_estimated(held_marks))
+    for portfolio in portfolios:
+        held = {t: m for t, m in portfolio.marks.items() if t in portfolio.ledger.state.positions}
+        portfolio.ledger.heartbeat(report.cycle_id, report.status, finished,
+                                   total_estimated=portfolio.ledger.state.total_estimated(held))
+        if portfolio is not main:
+            report.shadows[portfolio.name] = dict(portfolio.ledger.state.summary(held),
+                                                  **portfolio.counts)
     deps.db.set_anchor(ledger.state.last_seq, ledger.state.last_hash, finished)
-    report.summary = ledger.state.summary(held_marks)
+    report.summary = ledger.state.summary(
+        {t: m for t, m in main.marks.items() if t in ledger.state.positions})
+    report.counts.update(main.counts)
     deps.db.finish_cycle(report.cycle_id, finished, report.status, counts=report.counts,
-                         summary=report.summary, error="; ".join(report.messages) or None)
+                         summary=dict(report.summary, fantomes=report.shadows),
+                         error="; ".join(report.messages) or None)
     deps.db.prune(float(deps.settings["database"]["max_megabytes"]))
     return report
 
@@ -138,23 +185,40 @@ def _halt(deps: CycleDeps, report: CycleReport, status: str, message: str) -> Cy
     return report
 
 
-def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
-           marks: dict[str, Decimal]) -> None:
-    """Corps du cycle. Remplit `marks` (prix de marque = meilleur bid) au passage."""
+def _attach_price_features(deps: CycleDeps, watchlist: list[MarketInfo], now: datetime) -> None:
+    """Prix de l'issue n°0 il y a 6 h et activité sur 24 h, calculés comme dans le backtest.
+    Une erreur sur un marché le laisse sans caractéristiques (les stratégies s'abstiennent)."""
+    ts = int(now.timestamp())
+    for market in watchlist:
+        if not market.token_ids:
+            continue
+        try:
+            points = deps.clob.get_price_history(market.token_ids[0], ts - 31 * 3600, ts)
+        except (SourceUnavailable, ValueError) as exc:
+            log.warning("historique de prix indisponible pour %s : %s", market.market_id, exc)
+            continue
+        market.yes_price_6h_ago = price_at(points, ts - 6 * 3600)
+        market.changes_24h = changes_in_window(points, ts)
+
+
+def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bucket: str) -> None:
+    """Corps du cycle. Le portefeuille principal en faillite arrête TOUT le trading."""
+    main = portfolios[0]
     # 2. Règle n°1 : à 0 € tu meurs.
-    if ledger.state.bankrupt:
+    if main.ledger.state.bankrupt:
         report.status = "FAILLITE"
-        report.messages.append(ledger.state.bankrupt_reason)
-        log.critical("FAILLITE : %s — aucun trading", ledger.state.bankrupt_reason)
+        report.messages.append(main.ledger.state.bankrupt_reason)
+        log.critical("FAILLITE : %s — aucun trading", main.ledger.state.bankrupt_reason)
         return
 
     # 3. Règlements : les marchés résolus libèrent le capital avant toute nouvelle entrée.
-    if ledger.state.positions:
-        settled = settle_positions(ledger, deps.gamma, deps.now())
-        report.counts["settled"] = len(settled)
-        if ledger.state.bankrupt:
-            report.status = "FAILLITE"
-            return
+    for portfolio in portfolios:
+        if portfolio.ledger.state.positions and not portfolio.ledger.state.bankrupt:
+            settled = settle_positions(portfolio.ledger, deps.gamma, deps.now())
+            portfolio.counts["settled"] = len(settled)
+    if main.ledger.state.bankrupt:
+        report.status = "FAILLITE"
+        return
 
     # 4. Scanner.
     now = deps.now()
@@ -172,10 +236,11 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
     deps.db.save_markets(report.cycle_id, now, result.markets if full else result.watchlist)
     report.counts.update(markets=len(result.markets), watchlist=len(result.watchlist))
 
-    # 5. Carnets : les deux issues de chaque marché surveillé (favori et outsider)
-    #    + les positions détenues (prix de marque).
+    # 5. Carnets : les deux issues de chaque marché surveillé + positions détenues
+    #    (tous portefeuilles) pour les prix de marque.
     wanted = [t for market in result.watchlist if len(market.token_ids) == 2 for t in market.token_ids]
-    wanted += [t for t in ledger.state.positions if t not in wanted]
+    for portfolio in portfolios:
+        wanted += [t for t in portfolio.ledger.state.positions if t not in wanted]
     try:
         books = deps.clob.get_books(wanted) if wanted else {}
     except (SourceUnavailable, ValueError) as exc:
@@ -184,18 +249,34 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
         log.warning("carnets indisponibles, cycle sans trading : %s", exc)
         return
     deps.db.save_books(report.cycle_id, books.values())
-    marks.update({t: b.best_bid for t, b in books.items()
-                  if t in ledger.state.positions and b.best_bid is not None})
+    for portfolio in portfolios:
+        portfolio.marks.update({t: b.best_bid for t, b in books.items()
+                                if t in portfolio.ledger.state.positions and b.best_bid is not None})
 
-    # 6-9. Stratégies → propositions → contrôleur (les sources externes viendront à l'étape 5).
-    by_market = {m.market_id: m for m in result.watchlist}
+    # 6. Historique de prix récent (seulement si une stratégie active en a besoin).
+    if any(getattr(s, "strategy_id", "") == "reversion" for p in portfolios for s in p.strategies):
+        _attach_price_features(deps, result.watchlist, now)
+
+    # 7-11. Stratégies → propositions → contrôleur → exécution simulée, portefeuille par portefeuille.
+    for portfolio in portfolios:
+        if portfolio.ledger.state.bankrupt:
+            continue  # un fantôme en faillite ne trade plus (le principal est vérifié plus haut)
+        _execute(deps, portfolio, result.watchlist, books, report, bucket)
+        if main.ledger.state.bankrupt:
+            break
+    report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
+
+
+def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
+             books: dict[str, OrderBook], report: CycleReport, bucket: str) -> None:
+    ledger, marks = portfolio.ledger, portfolio.marks
+    by_market = {m.market_id: m for m in watchlist}
     proposals = []
-    for strategy in deps.strategies:
-        output = strategy.propose(result.watchlist, books, ledger.state, deps.limits, bucket, marks)
-        log.info("%s v%s : %d propositions, abstentions %s", strategy.strategy_id,
-                 strategy.version, len(output.proposals), output.abstentions)
+    for strategy in portfolio.strategies:
+        output = strategy.propose(watchlist, books, ledger.state, deps.limits, bucket, marks)
+        log.info("[%s] %s v%s : %d propositions, abstentions %s", portfolio.name,
+                 strategy.strategy_id, strategy.version, len(output.proposals), output.abstentions)
         proposals += output.proposals
-    report.counts["proposals"] = len(proposals)
     accepted = fills = 0
 
     for proposal in proposals:
@@ -208,7 +289,7 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
             log.info("rejet %s : %s", proposal.op_id, verdict.reasons)
             continue
 
-        # 10. Relecture du carnet juste avant l'exécution, puis nouveau contrôle.
+        # Relecture du carnet juste avant l'exécution, puis nouveau contrôle.
         try:
             fresh = deps.clob.get_book(proposal.token_id)
         except (SourceUnavailable, ValueError) as exc:
@@ -225,7 +306,7 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
         accepted += 1
         fill = simulate_buy(fresh, proposal.shares, proposal.max_price, market.fees)
         if fill.executed:
-            # 11. Écriture signée. Le journal revérifie solde, doublon et faillite.
+            # Écriture signée. Le journal revérifie solde, doublon et faillite.
             try:
                 ledger.record_buy(
                     op_id=proposal.op_id, token_id=proposal.token_id, market_id=proposal.market_id,
@@ -235,13 +316,14 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
                     fee=fill.fee, strategy_id=proposal.strategy_id,
                     strategy_version=proposal.strategy_version, now=deps.now(),
                     group=correlation_group(market),
-                    extra={"cycle_id": report.cycle_id, "fill_status": fill.status,
-                           "levels": fill.levels, "est_probability": str(proposal.est_probability),
+                    extra={"cycle_id": report.cycle_id, "portfolio": portfolio.name,
+                           "fill_status": fill.status, "levels": fill.levels,
+                           "est_probability": str(proposal.est_probability),
                            "prob_low": str(proposal.prob_low), "prob_high": str(proposal.prob_high),
                            "net_edge": str(proposal.net_edge),
                            "horizon_hours": str(proposal.horizon_hours)})
                 fills += 1
-                log.info("exécution simulée %s : %s parts à %s (+%s de frais), %s",
+                log.info("[%s] exécution simulée %s : %s parts à %s (+%s de frais), %s", portfolio.name,
                          proposal.op_id, fill.filled_shares, fill.avg_price, fill.fee, fill.status)
             except LedgerError as exc:
                 fill.status, fill.reason = "REFUSE_JOURNAL", str(exc)
@@ -249,6 +331,4 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
         deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict, fill)
         if ledger.state.bankrupt:
             break
-
-    report.counts.update(accepted=accepted, fills=fills)
-    report.status = "FAILLITE" if ledger.state.bankrupt else "OK"
+    portfolio.counts.update(proposals=len(proposals), accepted=accepted, fills=fills)

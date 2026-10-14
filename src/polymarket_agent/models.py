@@ -44,6 +44,9 @@ class MarketInfo:
     tick_size: Decimal
     neg_risk: bool
     issues: list[str] = field(default_factory=list)
+    # Caractéristiques passées de l'issue n°0 (remplies par le cycle, None si inconnues).
+    yes_price_6h_ago: float | None = None
+    changes_24h: int | None = None
     eligible: bool = False
     exclusion: str = ""
 

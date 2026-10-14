@@ -26,8 +26,7 @@ def strategy(**overrides):
 
 def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert [s.strategy_id for s in loaded] == ["naive_favorite"]
-    assert loaded[0].version == "1.0.0"
+    assert [(s.strategy_id, s.mode) for s in loaded] == [("reversion", "fantome")]
 
 
 def test_param_outside_bounds_is_refused():
@@ -82,7 +81,7 @@ def test_op_id_is_deterministic():
 def test_regression_default_config_can_trade_a_tight_favorite(ledger, limits):
     """Défaut du 14/10/2026 : avec biais 0,04 et incertitude 0,02, la borne basse
     (milieu + 0,02) ne pouvait jamais dépasser prix + frais + 0,02 : aucune position possible."""
-    s = load_strategies(ROOT / "config" / "strategies.yaml")[0]
+    s = strategy()  # paramètres de config/strategies.yaml au 14/10/2026 (biais 0,05, incertitude 0,015)
     market = parse_market(raw_market())
     book = make_book("tokA", bids=(("0.89", "500"),), asks=(("0.90", "300"),))
     assert len(s.propose([market], {"tokA": book}, ledger.state, limits, "B1").proposals) == 1
@@ -150,3 +149,53 @@ def test_calibrated_respects_dataset_volume_universe(tmp_path, ledger, limits):
     s = calibrated(tmp_path, delta=0.06, min_volume=D("200000"))
     out = s.propose([sports_market()], books_for(), ledger.state, limits, "B1")
     assert out.abstentions == {"volume cumulé sous le seuil de l'historique": 1}
+
+
+# --------------------------------------------------------------------------- reversion
+
+
+def reversion(tmp_path, delta_drop=0.15):
+    from polymarket_agent import calibration
+    from polymarket_agent.calibration import Cell
+    from polymarket_agent.strategy_engine import ReversionStrategy
+    table = {"baisse": Cell("baisse", 5000, 1800, 0.6, 0.6 + delta_drop, delta_drop,
+                            delta_drop - 0.03, delta_drop + 0.01, delta_drop - 0.01),
+             "hausse": Cell("hausse", 20000, 4000, 0.84, 0.83, -0.013, -0.018, -0.008, -0.013)}
+    calibration.save(table, tmp_path / "rev.json", {"version": "test"})
+    params = {"min_move": D("0.10"), "min_changes_24h": D("4"), "min_events": D("150"),
+              "min_net_edge": D("0.02"), "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3")}
+    return ReversionStrategy("1.0.0", "2026-10-14", params, tmp_path / "rev.json")
+
+
+def moved_market(before, changes=10):
+    m = sports_market()
+    m.yes_price_6h_ago, m.changes_24h = before, changes
+    return m
+
+
+def test_reversion_buys_favorite_after_sharp_drop(tmp_path, ledger, limits):
+    out = reversion(tmp_path).propose([moved_market(0.75)], books_for("0.59", "0.60"),
+                                      ledger.state, limits, "B1")
+    assert len(out.proposals) == 1
+    p = out.proposals[0]
+    assert p.token_id == "tokA" and p.prob_low == D("0.7150")
+    assert "reversion:baisse" in p.sources
+
+
+def test_reversion_abstains_without_move_history_or_activity(tmp_path, ledger, limits):
+    s = reversion(tmp_path)
+    books = books_for("0.59", "0.60")
+    assert s.propose([moved_market(0.62)], books, ledger.state, limits, "B1").abstentions == {
+        "pas de mouvement brusque": 1}
+    assert s.propose([moved_market(None)], books, ledger.state, limits, "B1").abstentions == {
+        "historique de prix indisponible": 1}
+    assert s.propose([moved_market(0.75, changes=2)], books, ledger.state, limits, "B1").abstentions == {
+        "marché trop peu actif sur 24 h": 1}
+
+
+def test_reversion_uses_real_book_not_history(tmp_path, ledger, limits):
+    """Le piège du backtest : un prix historique bas sans vendeur réel à ce prix.
+    En réel, l'ask du carnet est haut (0,74) : aucun avantage, aucune proposition."""
+    out = reversion(tmp_path).propose([moved_market(0.75)], books_for("0.46", "0.74"),
+                                      ledger.state, limits, "B1")
+    assert not out.proposals

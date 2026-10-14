@@ -15,7 +15,16 @@ from polymarket_agent.ledger import Ledger
 from polymarket_agent.main import EXIT_HALT, CycleDeps, run_cycle
 from polymarket_agent.persistence import Database
 from polymarket_agent.safety_controller import RealModeForbidden
-from polymarket_agent.strategy_engine import load_strategies
+from polymarket_agent.strategy_engine import NaiveFavorite, load_strategies
+
+
+def pipeline_strategy(mode="principal"):
+    """Stratégie de test du pipeline (la référence naïve, qui trade facilement)."""
+    s = NaiveFavorite("1.0.0", "2026-10-14", {
+        "min_ask": D("0.80"), "max_ask": D("0.95"), "bias": D("0.05"), "uncertainty": D("0.015"),
+        "min_net_edge": D("0.02"), "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3")})
+    s.mode = mode
+    return s
 
 D = Decimal
 
@@ -51,6 +60,9 @@ class FakeClob:
     def get_book(self, token_id):
         return (self.fresh or self.books)[token_id]
 
+    def get_price_history(self, token_id, start_ts, end_ts, fidelity=60):
+        return []
+
 
 @pytest.fixture
 def env(tmp_path, ledger, paths, limits):
@@ -58,11 +70,12 @@ def env(tmp_path, ledger, paths, limits):
     db.set_anchor(ledger.state.last_seq, ledger.state.last_hash, NOW)
     clock = {"now": NOW}
 
-    def make(gamma, clob, settings=None):
+    def make(gamma, clob, settings=None, strategies=None):
         return CycleDeps(settings=settings or load_settings(), limits=limits,
-                         strategies=load_strategies(ROOT / "config" / "strategies.yaml"),
+                         strategies=strategies if strategies is not None else [pipeline_strategy()],
                          ledger_path=paths[0], lock_path=paths[1], key=KEY, db=db,
-                         gamma=gamma, clob=clob, now=lambda: clock["now"])
+                         gamma=gamma, clob=clob, now=lambda: clock["now"],
+                         shadow_dir=tmp_path / "fantome")
     yield make, db, clock
     db.close()
 
@@ -194,3 +207,33 @@ def test_cycle_settles_resolved_position_before_trading(env, paths):
     assert not state.positions
     assert state.cash == D("1000") - pos.cost_basis + pos.shares
     assert state.realized_pnl == pos.shares - pos.cost_basis
+
+
+def test_shadow_portfolio_never_touches_main_capital(env, paths, tmp_path):
+    make, _, _ = env
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}),
+                            strategies=[pipeline_strategy("fantome")]))
+    assert report.status == "OK", report.messages
+    main = Ledger.open(paths[0], KEY, paths[1]).state
+    assert main.cash == D("1000") and not main.positions
+    shadow_path = tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl"
+    shadow = Ledger.open(shadow_path, KEY, tmp_path / "fantome" / "x.lock").state
+    assert "tokA" in shadow.positions
+    assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1
+
+
+def test_corrupt_shadow_is_ignored_main_continues(env, paths, tmp_path):
+    make, _, _ = env
+    (tmp_path / "fantome").mkdir()
+    (tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl").write_text("n'importe quoi\n")
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}),
+                            strategies=[pipeline_strategy("fantome")]))
+    assert report.status == "OK"
+    assert any("fantôme" in m for m in report.messages)
+
+
+def test_repository_config_main_portfolio_does_nothing():
+    """État validé au 14/10/2026 : aucune stratégie sur le capital principal."""
+    loaded = load_strategies(ROOT / "config" / "strategies.yaml")
+    assert [s.strategy_id for s in loaded if s.mode == "principal"] == []
+    assert [s.strategy_id for s in loaded if s.mode == "fantome"] == ["reversion"]

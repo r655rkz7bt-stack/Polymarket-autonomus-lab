@@ -5,6 +5,7 @@ mode: simulation
 
 paths:
   ledger: ledger/ledger.jsonl
+  shadow_dir: ledger/fantome   # journaux des stratégies en mode « fantome »
   bankruptcy_lock: ledger/BANKRUPT.lock
   database: state/market.sqlite
   logs: logs

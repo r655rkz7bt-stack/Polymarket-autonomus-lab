@@ -63,6 +63,7 @@ def one_cycle(settings: dict, key: bytes) -> int:
                 strategies=load_strategies(ROOT / "config" / "strategies.yaml"),
                 ledger_path=resolve(ROOT, paths["ledger"]),
                 lock_path=resolve(ROOT, paths["bankruptcy_lock"]),
+                shadow_dir=resolve(ROOT, paths["shadow_dir"]),
                 key=key, db=db,
                 gamma=GammaClient(http, src["polymarket_gamma"]["base_url"]),
                 clob=ClobClient(http, src["polymarket_clob"]["base_url"],
@@ -73,7 +74,8 @@ def one_cycle(settings: dict, key: bytes) -> int:
             db.close()
         print(json.dumps({"cycle": report.cycle_id, "statut": report.status,
                           "compteurs": report.counts, "capital": report.summary,
-                          "messages": report.messages}, ensure_ascii=False, indent=2))
+                          "fantomes": report.shadows, "messages": report.messages},
+                         ensure_ascii=False, indent=2))
         return report.exit_code
     finally:
         lock.unlink(missing_ok=True)

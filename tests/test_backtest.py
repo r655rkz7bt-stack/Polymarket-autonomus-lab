@@ -170,3 +170,15 @@ def test_random_sample_is_reproducible_and_uniform():
     assert 0.38 < len(picked) / len(ids) < 0.42
     assert picked == [i for i in ids if in_random_sample(i, 0.4)]
     assert can_produce_sample(meta(1)) and not can_produce_sample(meta(2, closed=END - 80 * H))
+
+
+def test_live_price_features_match_backtest():
+    """Le cycle réel et le backtest doivent calculer les mêmes caractéristiques."""
+    from polymarket_agent.price_features import changes_in_window, price_at
+    m = market(1, {30: 0.5, 20: 0.55, 10: 0.6, 7: 0.62, 5: 0.6, 2: 0.7})
+    absolute = [(m.limit + off, p) for off, p in m.points]
+    for h in (1, 3, 6, 9):
+        ts = END - h * H
+        assert price_at(absolute, ts) == m.yes_price_at(ts)
+        assert price_at(absolute, ts - 6 * H) == m.yes_price_at(ts - 6 * H)
+        assert changes_in_window(absolute, ts) == m.price_changes(ts)
