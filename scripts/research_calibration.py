@@ -197,6 +197,11 @@ def main() -> int:
     print("\n".join(lines))
     print(f"\nRapport : {out}")
     if not args.final_test:
+        calibration.save(rev_table, ROOT / "config" / "reversion_v1.json", {
+            "version": "1", "fitted_on": "entraînement v2 (historique non biaisé, 40 jours)",
+            "period": [day(bounds[0]), day(bounds[1])], "min_move": 0.10, "window_hours": 6,
+            "min_changes_24h": MIN_CHANGES, "shrink_k": 200, "min_events": MIN_EVENTS,
+            "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds")})
         calibration.save(table, ROOT / "config" / "calibration_v2.json", {
             "version": "2", "fitted_on": "entraînement v2 (60 % des événements les plus anciens, 40 jours tirés au hasard, sans filtre de volume)",
             "min_changes_24h": MIN_CHANGES,
