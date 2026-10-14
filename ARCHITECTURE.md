@@ -44,7 +44,7 @@ Un seul cycle à la fois : `concurrency: group: cycle, cancel-in-progress: false
 
 - **Journal comptable** (`ledger/ledger.jsonl`, branche `data`) : append-only, texte. Chaque ligne contient le hash de la précédente et une signature HMAC-SHA256 avec `LEDGER_KEY`. Solde, positions, gains réalisés et latents sont recalculés depuis le journal à chaque cycle. Un battement de cœur signé et horodaté est ajouté à chaque cycle : une troncature du journal est détectée par l'absence de battement récent. Toute anomalie déclenche l'arrêt « CORROMPU », jamais une réinitialisation.
 - **Données de marché** (`state/market.sqlite`) : snapshots, estimations, décisions, observations. Base tournante plafonnée à 40 Mo. Proposition : branche orpheline `snapshots` écrasée à chaque sauvegarde, pour ne pas gonfler l'historique git. À valider pendant le prototype en mesurant la taille du dépôt ; alternative : artefacts GitHub Actions.
-- **Historique pour les backtests** : endpoint CLOB d'historique de prix plutôt que tout stocker soi-même.
+- **Historique pour les backtests** : `data/history/` (versionné, compressé), construit par `scripts/build_history.py` à partir de Gamma `/events/keyset` et du CLOB `prices-history`. Échantillon **non biaisé** : jours tirés au hasard, tous les marchés résolus, tirage uniforme de 40 % (voir §14).
 - Toute observation stocke `published_at` et `collected_at`. Les backtests filtrent sur `collected_at <= instant de décision` (aucune fuite temporelle).
 
 ## 4. Modules (`src/polymarket_agent/`)
@@ -158,7 +158,31 @@ Mesurés par appels réels depuis l'environnement Claude Code :
 
 - **Gamma** `GET /markets` : 100 résultats maximum par page (`limit` + `offset`), filtres `end_date_min` / `end_date_max` fonctionnels. `outcomes`, `outcomePrices`, `clobTokenIds` sont des chaînes JSON. Environ 9 % des marchés n'ont pas de `bestBid` : ils sont exclus.
 - **CLOB** `GET /book`, `POST /books` : les bids arrivent en ordre croissant et les asks en ordre décroissant ; on retrie, meilleur prix en premier.
-- **Frais** : chaque marché Gamma porte `feesEnabled` et `feeSchedule = {rate, exponent, takerOnly, rebateRate}` (observé : sports 0,03–0,05, politique 0,04, crypto 0,07, exposant 1). Formule retenue, la plus prudente des deux lectures publiées : `frais = parts × taux × (p × (1 − p))^exposant`. `GET /fee-rate` renvoie seulement `base_fee` (1000) : inutile pour le calcul. **docs.polymarket.com était bloqué par le réseau de l'environnement : formule à revérifier dès que le domaine est autorisé.**
+- **Frais** : chaque marché Gamma porte `feesEnabled` et `feeSchedule = {rate, exponent, takerOnly, rebateRate}` (observé : sports 0,03–0,05, politique 0,04, crypto 0,07, exposant 1). Formule confirmée sur docs.polymarket.com/trading/fees : `frais = parts × taux × p × (1 − p)`, arrondis à 5 décimales. `GET /fee-rate` renvoie seulement `base_fee` (1000) : inutile pour le calcul.
 - **Taille** : journal ≈ 0,3 Ko par battement de cœur (≈ 90 Ko/jour). Base SQLite ≈ 10 Mo/jour une fois le scan complet archivé toutes les 30 min seulement ; le plafond de 40 Mo garde donc environ 4 jours de snapshots (rotation automatique). L'historique long viendra de `prices-history` du CLOB.
 - **Ancrage anti-troncature** : la base garde le dernier numéro et le hash du journal ; si le journal ne contient plus cette écriture, arrêt « CORROMPU ».
 - **Création du capital** : seul `scripts/initialize.py` écrit le GENESIS, et il refuse s'il existe déjà un journal, un verrou ou un ancrage. Le cycle ne crée jamais de capital.
+
+## 14. Étape 4 et premier travail de recherche (14 octobre 2026)
+
+**Ajouté :** règlement des marchés résolus (1/0 et 50-50, seulement si `closed` et statut UMA
+« resolved »), groupes de corrélation (actif crypto commun, sinon événement) plafonnés comme
+un événement (15 %), capital total estimé dans chaque battement (courbe, drawdown), rapports
+(`scripts/generate_report.py`), lecture des carnets des deux issues, exclusion des marchés à
+l'issue quasi certaine (≥ 0,99), backtest passant par le vrai journal et le vrai contrôleur.
+
+**Leçon majeure — biais de sélection.** Un premier historique filtré sur le *volume final*
+(≥ 50 000) faisait apparaître des favoris surévalués de 5 points et une stratégie à +112 %
+en validation. Un échantillon témoin sans filtre a montré que c'était un artefact : une
+surprise génère du volume, donc ce filtre sur-représente les surprises. Règle permanente :
+**aucune sélection de données sur une information connue après l'issue** (volume final,
+clôture réelle…). Test de non-régression : `test_regression_final_volume_is_not_used_as_a_filter`.
+Détails : `experiments/PROTOCOLE_v2.md`.
+
+**Autres constats :**
+- Du 05 au 25/03/2026, l'API Gamma renvoie un volume nul pour la plupart des marchés.
+- Une journée compte de 1 000 à 8 000 marchés binaires résolus (beaucoup de paris sportifs
+  annexes et de marchés crypto courts).
+- Débit utilisé pour l'historique : environ 48 requêtes/s (limite documentée : 1 000 / 10 s).
+- La copie de l'état du journal avant chaque écriture (`deepcopy`) rendait les backtests
+  quadratiques : remplacée par `LedgerState.clone()`, testée équivalente.
