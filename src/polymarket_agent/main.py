@@ -14,6 +14,7 @@ from decimal import Decimal, ROUND_UP
 from pathlib import Path
 from typing import Callable
 
+from polymarket_agent.correlation import correlation_group
 from polymarket_agent.execution_simulator import simulate_buy
 from polymarket_agent.http_client import SourceUnavailable
 from polymarket_agent.ledger import Ledger, LedgerCorrupt, LedgerError, NotInitialized
@@ -22,6 +23,7 @@ from polymarket_agent.models import MarketInfo, OrderBook
 from polymarket_agent.persistence import Database
 from polymarket_agent.safety_controller import (MarketContext, RiskLimits, assert_simulation_mode,
                                                 evaluate)
+from polymarket_agent.settlement import settle_positions
 from polymarket_agent.sources.polymarket_clob import ClobClient
 from polymarket_agent.sources.polymarket_gamma import GammaClient
 
@@ -79,6 +81,7 @@ def market_context(market: MarketInfo, book: OrderBook | None, token_id: str) ->
         fee_exponent=market.fees.exponent,
         min_order_size=max(market.min_order_size, book.min_order_size if book else Decimal("0")),
         issues=tuple(market.issues),
+        correlation_group=correlation_group(market),
     )
 
 
@@ -116,10 +119,11 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
         log.exception("erreur inattendue pendant le cycle")
 
     finished = deps.now()
-    ledger.heartbeat(report.cycle_id, report.status, finished)
+    held_marks = {t: m for t, m in marks.items() if t in ledger.state.positions}
+    ledger.heartbeat(report.cycle_id, report.status, finished,
+                     total_estimated=ledger.state.total_estimated(held_marks))
     deps.db.set_anchor(ledger.state.last_seq, ledger.state.last_hash, finished)
-    report.summary = ledger.state.summary(
-        {t: m for t, m in marks.items() if t in ledger.state.positions})
+    report.summary = ledger.state.summary(held_marks)
     deps.db.finish_cycle(report.cycle_id, finished, report.status, counts=report.counts,
                          summary=report.summary, error="; ".join(report.messages) or None)
     deps.db.prune(float(deps.settings["database"]["max_megabytes"]))
@@ -144,7 +148,15 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
         log.critical("FAILLITE : %s — aucun trading", ledger.state.bankrupt_reason)
         return
 
-    # 3. Scanner.
+    # 3. Règlements : les marchés résolus libèrent le capital avant toute nouvelle entrée.
+    if ledger.state.positions:
+        settled = settle_positions(ledger, deps.gamma, deps.now())
+        report.counts["settled"] = len(settled)
+        if ledger.state.bankrupt:
+            report.status = "FAILLITE"
+            return
+
+    # 4. Scanner.
     now = deps.now()
     try:
         result = scan(deps.gamma, now, deps.settings["scanner"])
@@ -160,7 +172,7 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
     deps.db.save_markets(report.cycle_id, now, result.markets if full else result.watchlist)
     report.counts.update(markets=len(result.markets), watchlist=len(result.watchlist))
 
-    # 4. Carnets : favori de chaque marché surveillé + positions détenues (prix de marque).
+    # 5. Carnets : favori de chaque marché surveillé + positions détenues (prix de marque).
     wanted = []
     for market in result.watchlist:
         if len(market.outcome_prices) == 2:
@@ -178,7 +190,7 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
     marks.update({t: b.best_bid for t, b in books.items()
                   if t in ledger.state.positions and b.best_bid is not None})
 
-    # 5-9. Stratégies → propositions → contrôleur.
+    # 6-9. Stratégies → propositions → contrôleur (les sources externes viendront à l'étape 5).
     by_market = {m.market_id: m for m in result.watchlist}
     proposals = []
     for strategy in deps.strategies:
@@ -225,8 +237,12 @@ def _trade(deps: CycleDeps, ledger: Ledger, report: CycleReport, bucket: str,
                     price=fill.avg_price.quantize(PRICE_QUANTUM, rounding=ROUND_UP),
                     fee=fill.fee, strategy_id=proposal.strategy_id,
                     strategy_version=proposal.strategy_version, now=deps.now(),
+                    group=correlation_group(market),
                     extra={"cycle_id": report.cycle_id, "fill_status": fill.status,
-                           "levels": fill.levels, "est_probability": str(proposal.est_probability)})
+                           "levels": fill.levels, "est_probability": str(proposal.est_probability),
+                           "prob_low": str(proposal.prob_low), "prob_high": str(proposal.prob_high),
+                           "net_edge": str(proposal.net_edge),
+                           "horizon_hours": str(proposal.horizon_hours)})
                 fills += 1
                 log.info("exécution simulée %s : %s parts à %s (+%s de frais), %s",
                          proposal.op_id, fill.filled_shares, fill.avg_price, fill.fee, fill.status)

@@ -30,6 +30,14 @@ class FakeGamma:
             raise SourceUnavailable("Gamma en panne (test)")
         return self.markets
 
+    def get_market(self, market_id):
+        if self.fail:
+            raise SourceUnavailable("Gamma en panne (test)")
+        for raw in self.markets:
+            if raw["id"] == market_id:
+                return raw
+        raise SourceUnavailable("marché inconnu (test)")
+
 
 class FakeClob:
     def __init__(self, books, fresh=None, fail=False):
@@ -169,3 +177,20 @@ def test_real_mode_is_refused(env):
     settings["mode"] = "real"
     with pytest.raises(RealModeForbidden):
         run_cycle(make(FakeGamma(), FakeClob({}), settings))
+
+
+def test_cycle_settles_resolved_position_before_trading(env, paths):
+    make, _, clock = env
+    gamma = FakeGamma([raw_market()])
+    run_cycle(make(gamma, FakeClob({"tokA": good_book()})))
+    pos = Ledger.open(paths[0], KEY, paths[1]).state.positions["tokA"]
+    # Le marché se résout en faveur de « Yes » (jeton tokA).
+    gamma.markets = [raw_market(closed=True, active=False, umaResolutionStatus="resolved",
+                                outcomePrices=json.dumps(["1", "0"]))]
+    clock["now"] = NOW + timedelta(days=1)
+    report = run_cycle(make(gamma, FakeClob({})))
+    assert report.counts["settled"] == 1, report.messages
+    state = Ledger.open(paths[0], KEY, paths[1]).state
+    assert not state.positions
+    assert state.cash == D("1000") - pos.cost_basis + pos.shares
+    assert state.realized_pnl == pos.shares - pos.cost_basis
