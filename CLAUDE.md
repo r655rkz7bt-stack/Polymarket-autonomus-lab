@@ -64,6 +64,8 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 
 À compléter au fil du projet.
 
-- Installer : `pip install -r requirements.txt`
-- Tests : `pytest -q`
-- Un cycle unique : `python scripts/run_simulation.py --once`
+- Installer : `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`
+- Tests : `.venv/bin/python -m pytest -q`
+- Initialiser le journal (une seule fois) : `.venv/bin/python scripts/initialize.py --dev-key`
+- Un cycle unique : `.venv/bin/python scripts/run_simulation.py --once --dev-key`
+- `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.

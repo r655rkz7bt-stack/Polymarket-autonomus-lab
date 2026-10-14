@@ -151,3 +151,14 @@ Les sessions Claude Code sur le web ont besoin d'accès réseau aux domaines Pol
 - Routines en « research preview » : limites susceptibles de changer ; quota Pro partagé avec l'usage normal d'Etienne.
 - Frais et endpoints Polymarket évoluent : toujours vérifier la doc.
 - Un backtest positif ne prouve pas qu'une stratégie est rentable.
+
+## 13. Constats du prototype (étape 3, 14 octobre 2026)
+
+Mesurés par appels réels depuis l'environnement Claude Code :
+
+- **Gamma** `GET /markets` : 100 résultats maximum par page (`limit` + `offset`), filtres `end_date_min` / `end_date_max` fonctionnels. `outcomes`, `outcomePrices`, `clobTokenIds` sont des chaînes JSON. Environ 9 % des marchés n'ont pas de `bestBid` : ils sont exclus.
+- **CLOB** `GET /book`, `POST /books` : les bids arrivent en ordre croissant et les asks en ordre décroissant ; on retrie, meilleur prix en premier.
+- **Frais** : chaque marché Gamma porte `feesEnabled` et `feeSchedule = {rate, exponent, takerOnly, rebateRate}` (observé : sports 0,03–0,05, politique 0,04, crypto 0,07, exposant 1). Formule retenue, la plus prudente des deux lectures publiées : `frais = parts × taux × (p × (1 − p))^exposant`. `GET /fee-rate` renvoie seulement `base_fee` (1000) : inutile pour le calcul. **docs.polymarket.com était bloqué par le réseau de l'environnement : formule à revérifier dès que le domaine est autorisé.**
+- **Taille** : journal ≈ 0,3 Ko par battement de cœur (≈ 90 Ko/jour). Base SQLite ≈ 10 Mo/jour une fois le scan complet archivé toutes les 30 min seulement ; le plafond de 40 Mo garde donc environ 4 jours de snapshots (rotation automatique). L'historique long viendra de `prices-history` du CLOB.
+- **Ancrage anti-troncature** : la base garde le dernier numéro et le hash du journal ; si le journal ne contient plus cette écriture, arrêt « CORROMPU ».
+- **Création du capital** : seul `scripts/initialize.py` écrit le GENESIS, et il refuse s'il existe déjà un journal, un verrou ou un ancrage. Le cycle ne crée jamais de capital.
