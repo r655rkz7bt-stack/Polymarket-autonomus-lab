@@ -28,6 +28,7 @@ Tous les montants sont des Decimal (calcul exact), sérialisés en texte.
 from __future__ import annotations
 
 import copy
+import dataclasses
 import hashlib
 import hmac
 import json
@@ -177,6 +178,19 @@ class LedgerState:
     last_hash: str = GENESIS_PREV
     last_ts: datetime | None = None
     last_heartbeat_at: datetime | None = None
+
+    def clone(self) -> "LedgerState":
+        """Copie indépendante, équivalente à copy.deepcopy mais bien plus rapide.
+
+        Les Decimal, str et datetime sont immuables : seuls les conteneurs et les
+        positions sont recopiés. Tout nouveau champ mutable doit être ajouté ici
+        (test_ledger.py vérifie l'équivalence avec deepcopy).
+        """
+        new = copy.copy(self)
+        new.positions = {k: dataclasses.replace(v) for k, v in self.positions.items()}
+        new.op_ids = set(self.op_ids)
+        new.realized_by_day = dict(self.realized_by_day)
+        return new
 
     # Capital immobilisé : coût d'acquisition des positions ouvertes.
     def immobilized(self) -> Decimal:
@@ -509,7 +523,7 @@ class Ledger:
             ts = self.state.last_ts  # jamais d'horodatage qui recule
         ts_text = format_ts(ts)
         # Vérification sur une copie : si l'écriture est refusée, rien n'est modifié.
-        trial = copy.deepcopy(self.state)
+        trial = self.state.clone()
         apply_entry(trial, entry_type, data, ts)
         seq = self.state.last_seq + 1
         digest = entry_hash(seq, ts_text, entry_type, data, self.state.last_hash)

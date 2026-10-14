@@ -154,3 +154,24 @@ def test_group_and_heartbeat_total_survive_restart(ledger, paths):
     assert last["data"]["total_estimated"] == "1001.5"
     buy(ledger, "g2", token="tokB", event="e9")
     assert Ledger.open(paths[0], KEY, paths[1]).state.positions["tokB"].group == "e9"
+
+
+def test_state_clone_is_equivalent_to_deepcopy_and_independent(ledger):
+    import copy
+    import dataclasses
+    buy(ledger, "op1", token="tokA", shares="10", price="0.5")
+    ledger.record_settlement(op_id="s", token_id="tokA", payout_per_share="1", resolution="x", now=NOW)
+    buy(ledger, "op2", token="tokB", shares="10", price="0.5")
+    state = ledger.state
+    clone, deep = state.clone(), copy.deepcopy(state)
+    assert clone == deep
+    # Tous les champs mutables sont bien recopiés (garde-fou si on en ajoute un).
+    for f in dataclasses.fields(state):
+        value = getattr(state, f.name)
+        if isinstance(value, (dict, set, list)):
+            assert getattr(clone, f.name) is not value, f.name
+    clone.positions["tokB"].shares += 5
+    clone.op_ids.add("x")
+    clone.realized_by_day["2000-01-01"] = Decimal("1")
+    assert state.positions["tokB"].shares == Decimal("10")
+    assert "x" not in state.op_ids and "2000-01-01" not in state.realized_by_day
