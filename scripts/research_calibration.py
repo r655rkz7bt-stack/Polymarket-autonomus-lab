@@ -31,10 +31,13 @@ from polymarket_agent.safety_controller import RiskLimits
 HALF_SPREAD = 0.01
 MIN_EVENTS = 150
 FLOOR = 0.02
+MIN_CHANGES = 4  # protocole v2 : prix changé >= 4 fois sur les 24 h précédentes (connu à T)
 
 
 def naive_v1(sample):
     """Référence naïve v1 (biais a priori non calibré : milieu + 0,05 ± 0,015)."""
+    if sample.changes_24h < MIN_CHANGES:
+        return None
     fav = 0 if sample.price_yes >= 0.5 else 1
     f = sample.price_yes if fav == 0 else 1 - sample.price_yes
     if not 0.80 <= f + HALF_SPREAD <= 0.95:
@@ -45,6 +48,8 @@ def naive_v1(sample):
 
 def make_calibrated(table, half_spread=HALF_SPREAD, min_events=MIN_EVENTS, floor=FLOOR):
     def rule(sample):
+        if sample.changes_24h < MIN_CHANGES:
+            return None
         fav = 0 if sample.price_yes >= 0.5 else 1
         f = sample.price_yes if fav == 0 else 1 - sample.price_yes
         key = calibration.cell_key(sample.category, sample.horizon_h, f)
@@ -74,6 +79,8 @@ def fit_reversion(samples, outcomes, shrink_k=200):
     for market_id, rows in samples.items():
         winner = outcomes[market_id].winner
         for s in rows:
+            if s.changes_24h < MIN_CHANGES:
+                continue
             move = reversion_move(s)
             if move is None:
                 continue
@@ -105,6 +112,8 @@ def reversion_move(sample):
 
 def make_reversion(table, half_spread=HALF_SPREAD, min_events=MIN_EVENTS, floor=FLOOR):
     def rule(sample):
+        if sample.changes_24h < MIN_CHANGES:
+            return None
         move = reversion_move(sample)
         if move is None:
             return None
@@ -147,7 +156,7 @@ def main() -> int:
               f"- Validation : {len(val)} marchés (→ {day(bounds[2])})",
               f"- Test : {len(test)} marchés (→ {day(bounds[3])})", ""]
 
-    table = calibration.fit(train, outcomes)
+    table = calibration.fit(train, outcomes, min_changes=MIN_CHANGES)
     lines += ["## Table de calibration (entraînement)", "",
               "δ = taux de victoire du favori − prix du favori. Intervalle à 90 % par bootstrap sur les événements, rétréci vers 0.", "",
               "| case | échantillons | événements | prix moyen | victoires | δ brut | δ bas | δ haut |", "|---|---|---|---|---|---|---|---|"]
@@ -188,8 +197,9 @@ def main() -> int:
     print("\n".join(lines))
     print(f"\nRapport : {out}")
     if not args.final_test:
-        calibration.save(table, ROOT / "config" / "calibration_v1.json", {
-            "version": "1", "fitted_on": "entraînement (60 % des événements les plus anciens)",
+        calibration.save(table, ROOT / "config" / "calibration_v2.json", {
+            "version": "2", "fitted_on": "entraînement v2 (60 % des événements les plus anciens, 40 jours tirés au hasard, sans filtre de volume)",
+            "min_changes_24h": MIN_CHANGES,
             "period": [day(bounds[0]), day(bounds[1])], "markets": len(train),
             "half_spread_assumption": HALF_SPREAD, "min_events": MIN_EVENTS, "shrink_k": 200,
             "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds")})

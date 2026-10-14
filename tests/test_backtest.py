@@ -143,3 +143,21 @@ def test_simulation_respects_the_safety_controller(limits):
     assert not result.bankrupt
     assert all(t["cost"] <= 0.05 * 1000 + 1 for t in result.trades)
     assert result.final_cash > 0
+
+
+def test_activity_uses_only_past_points():
+    m = market(1, {30: 0.5, 20: 0.55, 10: 0.6, 5: 0.6, 2: 0.7})
+    assert m.price_changes(END - 9 * H) == 2      # 0,5 → 0,55 → 0,6 dans les 24 h
+    assert m.price_changes(END - 3 * H) == 2      # le 0,7 (2 h) n'est pas encore connu
+    assert m.price_changes(END - 1 * H) == 3
+    samples, _ = build_samples([m], horizons=(1,))
+    assert samples["1"][0].changes_24h == 3
+
+
+def test_regression_final_volume_is_not_used_as_a_filter():
+    """Défaut du 14/10/2026 : filtrer sur le volume FINAL (connu après l'issue) créait un faux
+    avantage. Aucune règle de recherche ne doit dépendre de Sample.volume."""
+    import inspect
+    from polymarket_agent import calibration as cal
+    source = inspect.getsource(cal) + (ROOT / "scripts" / "research_calibration.py").read_text(encoding="utf-8")
+    assert ".volume" not in source

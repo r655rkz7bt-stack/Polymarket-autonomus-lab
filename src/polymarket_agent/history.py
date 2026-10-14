@@ -135,6 +135,18 @@ class HistoricalMarket:
     def limit(self) -> int:
         return decision_limit(self.meta)
 
+    def price_changes(self, ts: int, window: int = 24 * 3600) -> int:
+        """Nombre de changements de prix dans la fenêtre ]ts − window, ts] (activité connue à ts)."""
+        changes, previous = 0, None
+        for offset, price in self.points:
+            t = self.limit + offset
+            if t > ts:
+                break
+            if t > ts - window and previous is not None and price != previous:
+                changes += 1
+            previous = price
+        return changes
+
     def yes_price_at(self, ts: int, max_age: int = 2 * 3600) -> float | None:
         """Dernier prix connu à l'instant ts (jamais après). None si trop vieux ou absent."""
         best = None

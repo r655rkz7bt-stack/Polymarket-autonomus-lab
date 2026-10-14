@@ -66,14 +66,19 @@ class Cell:
 
 
 def fit(samples: dict[str, list[Sample]], outcomes: dict[str, Outcome], shrink_k: float = 200,
-        n_boot: int = 500, seed: int = 11) -> dict[str, Cell]:
-    """Ajuste la table sur un ensemble d'échantillons (en pratique : la période d'entraînement)."""
+        n_boot: int = 500, seed: int = 11, min_changes: int = 0) -> dict[str, Cell]:
+    """Ajuste la table sur un ensemble d'échantillons (en pratique : la période d'entraînement).
+
+    `min_changes` : n'utilise que les échantillons assez actifs (même univers que la règle).
+    """
     by_cell: dict[str, dict[str, list[float]]] = {}
     prices: dict[str, list[float]] = {}
     wins: dict[str, list[int]] = {}
     for market_id, rows in samples.items():
         winner = outcomes[market_id].winner
         for s in rows:
+            if s.changes_24h < min_changes:
+                continue
             fav_side = 0 if s.price_yes >= 0.5 else 1
             fav_price = s.price_yes if fav_side == 0 else 1 - s.price_yes
             key = cell_key(s.category, s.horizon_h, fav_price)

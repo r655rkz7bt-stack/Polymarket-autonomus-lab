@@ -45,7 +45,8 @@ class Sample:
     price_yes: float
     price_yes_6h_ago: float | None
     fee_rate: float
-    volume: float  # volume final : sert UNIQUEMENT au filtre d'univers (voir limites)
+    volume: float  # volume FINAL, connu après l'issue : interdit comme filtre (biais de sélection)
+    changes_24h: int = 0  # changements de prix sur les 24 h précédentes (connu à ts)
 
 
 @dataclass(frozen=True)
@@ -72,7 +73,8 @@ def build_samples(markets: list[HistoricalMarket], horizons=HORIZONS_H,
                 continue
             rows.append(Sample(meta["id"], meta["event_id"], meta["category"], ts, h, price,
                                market.yes_price_at(ts - 6 * 3600, max_age_s),
-                               float(meta["fee_rate"]), float(meta["volume"])))
+                               float(meta["fee_rate"]), float(meta["volume"]),
+                               market.price_changes(ts)))
         if rows:
             samples[meta["id"]] = rows
             outcomes[meta["id"]] = Outcome(int(meta["winner"]), max(meta["closed"], market.limit))
