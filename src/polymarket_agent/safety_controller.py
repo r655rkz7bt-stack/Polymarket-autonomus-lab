@@ -181,6 +181,7 @@ class MarketContext:
     fee_exponent: Decimal | None
     min_order_size: Decimal
     issues: tuple[str, ...] = ()
+    correlation_group: str | None = None  # ex. « crypto:btc » ; None = l'événement seul
 
 
 @dataclass
@@ -320,6 +321,13 @@ def evaluate(
                       if p.event_id == proposal.event_id), ZERO)
     if event_cost + cost_bound > limits.max_event_pct * total:
         reasons.append(f"exposition à l'événement > {limits.max_event_pct:.0%} du capital total")
+    # Positions corrélées (même actif sous-jacent, etc.) : même plafond que l'événement.
+    group = market.correlation_group or proposal.event_id
+    group_cost = sum((p.cost_basis for p in state.positions.values()
+                      if (p.group or p.event_id) == group or p.event_id == proposal.event_id), ZERO)
+    checks["group_exposure"] = str(group_cost + cost_bound)
+    if group != proposal.event_id and group_cost + cost_bound > limits.max_event_pct * total:
+        reasons.append(f"exposition au groupe corrélé « {group} » > {limits.max_event_pct:.0%} du capital total")
     if state.cash - cost_bound < limits.min_cash_pct * total:
         reasons.append(f"liquidités restantes < {limits.min_cash_pct:.0%} du capital total")
     if existing is None and len(state.positions) >= limits.max_open_positions:

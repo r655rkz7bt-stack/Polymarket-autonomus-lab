@@ -2,12 +2,10 @@
 
 Source : le barème de chaque marché est fourni par Gamma (champs `feesEnabled` et
 `feeSchedule = {rate, exponent, takerOnly, rebateRate}`), observé le 14/10/2026.
-Formule retenue : frais (USDC) = parts × taux × (p × (1 − p)) ^ exposant.
-
-LIMITE : docs.polymarket.com était inaccessible depuis l'environnement de
-construction. Deux lectures de la formule circulent ; celle-ci est la plus chère
-des deux (donc la plus prudente). À revérifier sur docs.polymarket.com/trading/fees.
-Les remises « maker » ne sont jamais comptées.
+Formule officielle (docs.polymarket.com/trading/fees, vérifiée le 14/10/2026) :
+frais (USDC) = parts × taux × p × (1 − p), arrondis à 5 décimales, minimum 0,00001.
+L'exposant du barème vaut 1 sur tous les marchés observés ; il reste pris en compte.
+Les remises « maker » et « taker » ne sont jamais comptées (prudence).
 """
 
 from __future__ import annotations
@@ -18,7 +16,7 @@ from polymarket_agent.models import FeeSchedule
 
 ZERO = Decimal("0")
 ONE = Decimal("1")
-FEE_QUANTUM = Decimal("0.0001")  # arrondi vers le haut au 1/10 000 d'USDC
+FEE_QUANTUM = Decimal("0.00001")  # doc : frais arrondis à 5 décimales (ici vers le haut)
 
 
 class UnknownFees(Exception):

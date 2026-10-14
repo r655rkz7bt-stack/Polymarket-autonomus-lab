@@ -208,3 +208,17 @@ def test_controller_fee_formula():
     assert fee_per_share(D("0.5"), D("0.04"), D("1")) == D("0.01")
     assert fee_per_share(D("0.9"), D("0.05"), D("1")) == D("0.0045")
     assert fee_per_share(D("0.5"), D("0.25"), D("2")) == D("0.015625")
+
+
+def test_correlated_group_exposure_limit(ledger, limits):
+    """Deux marchés Bitcoin d'événements différents comptent dans le même plafond de 15 %."""
+    for i in range(3):
+        ledger.record_buy(op_id=f"g{i}", token_id=f"btc{i}", market_id=f"m{i}", event_id=f"e{i}",
+                          outcome="Yes", shares="98", price="0.5", fee="0", strategy_id="t",
+                          strategy_version="0", now=NOW, group="crypto:btc")
+    btc = ctx(correlation_group="crypto:btc")
+    verdict = evaluate(prop(event_id="e-new"), ledger.state, btc, limits, NOW)
+    assert not verdict.accepted
+    assert any("groupe corrélé" in r for r in verdict.reasons)
+    assert evaluate(prop(event_id="e-new"), ledger.state, ctx(correlation_group="crypto:eth"),
+                    limits, NOW).accepted

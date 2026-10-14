@@ -141,3 +141,16 @@ def test_sell_more_than_held_is_refused(ledger):
 def test_key_is_never_in_repr_or_file(ledger, paths):
     assert KEY.decode() not in repr(ledger)
     assert KEY.decode() not in paths[0].read_text(encoding="utf-8")
+
+
+def test_group_and_heartbeat_total_survive_restart(ledger, paths):
+    ledger.record_buy(op_id="g1", token_id="tokA", market_id="m", event_id="e", outcome="Yes",
+                      shares="10", price="0.5", fee="0", strategy_id="t", strategy_version="0",
+                      now=NOW, group="crypto:btc")
+    ledger.heartbeat("c1", "OK", NOW, total_estimated=Decimal("1001.5"))
+    reopened = Ledger.open(paths[0], KEY, paths[1])
+    assert reopened.state.positions["tokA"].group == "crypto:btc"
+    last = json.loads(paths[0].read_text(encoding="utf-8").splitlines()[-1])
+    assert last["data"]["total_estimated"] == "1001.5"
+    buy(ledger, "g2", token="tokB", event="e9")
+    assert Ledger.open(paths[0], KEY, paths[1]).state.positions["tokB"].group == "e9"

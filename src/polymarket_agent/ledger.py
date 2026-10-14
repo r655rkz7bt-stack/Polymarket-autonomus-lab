@@ -153,6 +153,7 @@ class Position:
     opened_at: str
     strategy_id: str
     strategy_version: str
+    group: str = ""  # groupe de corrélation (ex. « crypto:btc »), par défaut l'événement
 
     @property
     def avg_cost(self) -> Decimal:
@@ -320,6 +321,7 @@ def apply_entry(state: LedgerState, entry_type: str, data: dict, ts: datetime) -
                 opened_at=format_ts(ts),
                 strategy_id=str(data["strategy_id"]),
                 strategy_version=str(data["strategy_version"]),
+                group=str(data.get("group") or data["event_id"]),
             )
         else:
             pos.shares += shares
@@ -541,12 +543,14 @@ class Ledger:
     def record_buy(self, *, op_id: str, token_id: str, market_id: str, event_id: str,
                    outcome: str, shares: Any, price: Any, fee: Any, strategy_id: str,
                    strategy_version: str, now: datetime | None = None,
-                   extra: dict | None = None) -> dict:
+                   extra: dict | None = None, group: str | None = None) -> dict:
         self._guard_money()
         data = {"op_id": op_id, "token_id": token_id, "market_id": market_id,
                 "event_id": event_id, "outcome": outcome, "shares": str(to_decimal(shares)),
                 "price": str(to_decimal(price)), "fee": str(to_decimal(fee)),
                 "strategy_id": strategy_id, "strategy_version": strategy_version}
+        if group:
+            data["group"] = group
         if extra:
             data["extra"] = extra
         record = self._append("BUY", data, now)
@@ -573,9 +577,13 @@ class Ledger:
         self._after_money_entry(now)
         return record
 
-    def heartbeat(self, cycle_id: str, status: str, now: datetime | None = None) -> dict:
-        return self._append("HEARTBEAT", {"cycle_id": cycle_id, "status": status,
-                                          "cash": str(self.state.cash)}, now)
+    def heartbeat(self, cycle_id: str, status: str, now: datetime | None = None,
+                  total_estimated: Any = None) -> dict:
+        """Battement de cœur signé. Le capital total estimé est informatif (courbe, drawdown)."""
+        data = {"cycle_id": cycle_id, "status": status, "cash": str(self.state.cash)}
+        if total_estimated is not None:
+            data["total_estimated"] = str(to_decimal(total_estimated))
+        return self._append("HEARTBEAT", data, now)
 
     def declare_bankruptcy(self, reason: str, now: datetime | None = None) -> None:
         if not self.state.bankrupt:
