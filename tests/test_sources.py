@@ -206,3 +206,32 @@ def test_regression_crypto_quote_reused_between_collections(tmp_path):
     assert status["crypto_prices"] == "pas encore (fréquence)"
     assert later.crypto_quote is not None and later.crypto_quote.price == 81000.0
     db.close()
+
+
+def test_gdelt_refusal_costs_a_single_request():
+    """GDELT refuse souvent les IP partagées (429) : une seule requête, sans nouvel essai,
+    pour ne pas allonger le cycle (réglage du 15/10/2026)."""
+    import yaml
+    from conftest import ROOT
+    from polymarket_agent.data_collector import with_retries
+    from polymarket_agent.http_client import HttpClient
+
+    calls = []
+
+    class Refusing:
+        headers = {}
+
+        def request(self, method, url, **kwargs):
+            calls.append(url)
+
+            class R:
+                status_code, headers, text = 429, {}, "trop de requêtes"
+            return R()
+
+    http = HttpClient(max_retries=3, backoff=0, min_interval=0, session=Refusing(), sleep=lambda s: None)
+    cfg = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["sources"]["gdelt"]
+    assert cfg["every_minutes"] >= 60 and cfg["queries_per_run"] == 1
+    with pytest.raises(SourceUnavailable):
+        GdeltSource(with_retries(http, cfg["max_retries"]), sleep=lambda s: None).fetch(["Real Madrid"], NOW)
+    assert len(calls) == 1
+    assert http.max_retries == 3  # les autres sources gardent leurs nouveaux essais

@@ -49,7 +49,9 @@ sources:
   # Une source indisponible ne bloque jamais le cycle (mode dégradé, analyse partielle).
   polymarket_comments: {enabled: true, every_minutes: 15, per_event: 20}
   crypto_prices: {enabled: true, every_minutes: 5}          # Coinbase, repli Kraken
-  gdelt: {enabled: true, every_minutes: 15, queries_per_run: 3, timespan: 3h}
+  # GDELT refuse souvent les IP partagées de GitHub (HTTP 429) : une requête par heure, sans
+  # nouvel essai, pour ne pas allonger les cycles (décision d'Etienne, 15/10/2026).
+  gdelt: {enabled: true, every_minutes: 60, queries_per_run: 1, max_retries: 0, timespan: 3h}
   bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
   rss:
     enabled: true
