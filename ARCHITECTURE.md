@@ -243,8 +243,8 @@ signalée comme suspecte.
 
 **Vérifié par appels réels le 15/10/2026** (après ouverture des domaines par Etienne) :
 - Coinbase : bougies horaires conformes, 5 actifs OK (BTC, ETH, SOL, XRP, DOGE) ; Kraken conforme.
-- RSS : 9 flux sur 10 OK (≈ 225 articles). Corrigé : BOM UTF-8 du flux de la Fed (test de
-  non-régression) ; France Info a déménagé sur `www.franceinfo.fr` (domaine à autoriser).
+- RSS : 10 flux sur 10 OK (≈ 255 articles). Corrigé : BOM UTF-8 du flux de la Fed (test de
+  non-régression) ; France Info a déménagé sur `www.franceinfo.fr` (domaine autorisé, vérifié : 30 articles).
 - GDELT : refuse systématiquement (429, « une requête toutes les 5 s ») depuis l'adresse IP
   partagée du proxy. Source conservée « au mieux » : en cas de refus, elle attend 15 min.
 - Bluesky : la recherche sans compte est refusée (403). Compte optionnel nécessaire
