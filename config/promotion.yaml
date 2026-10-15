@@ -1,5 +1,5 @@
-# FICHIER PROTÉGÉ — règles de l'arène (décision d'Etienne, 15/10/2026).
-# Le chercheur ne peut pas les assouplir pour promouvoir ses propres stratégies.
+# Règles de l'arène. Libres depuis le 15/10/2026 (décision d'Etienne) : le chercheur peut les
+# changer ; chaque changement passe par une pull request, visible dans l'historique.
 # Lues par scripts/run_simulation.py et scripts/research_brief.py (arena.py, brief.py).
 
 min_closed_trades: 20            # pour devenir champion (et pour être jugé / éliminé)

@@ -2,8 +2,9 @@
 
 **État au 15/10/2026 : étapes 1 à 6 faites et vérifiées.**
 
-But : qu'aucune IA (ni personne d'autre que toi) ne puisse modifier les règles de sécurité,
-le journal comptable ou les workflows. La protection repose sur GitHub, pas sur la confiance.
+But : qu'aucune IA (ni personne d'autre que toi) ne puisse modifier le **noyau** : règle n°1,
+règles du jeu, mots de passe et gardien (`PROTECTED_PATHS.txt`). Tout le reste est libre depuis
+le 15/10/2026. La protection repose sur GitHub, pas sur la confiance.
 
 Fais **une étape à la fois** et vérifie avant de passer à la suivante. Ne colle jamais un
 secret dans une conversation avec Claude.

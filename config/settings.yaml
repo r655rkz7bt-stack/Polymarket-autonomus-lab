@@ -67,7 +67,7 @@ sources:
       - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
 
-# Règles de l'arène : config/promotion.yaml (fichier protégé, lu par les scripts).
+# Règles de l'arène : config/promotion.yaml (libre depuis le 15/10/2026, lu par les scripts).
 
 dashboard:
   output_dir: site             # page statique publiée sur GitHub Pages (étape 9)

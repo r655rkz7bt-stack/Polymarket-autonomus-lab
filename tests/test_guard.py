@@ -27,10 +27,14 @@ WORKFLOWS = ROOT / ".github" / "workflows"
 
 @pytest.mark.parametrize("path", [
     "src/polymarket_agent/ledger.py", "src/polymarket_agent/safety_controller.py",
-    "config/risk_limits.yaml", "config/promotion.yaml", "CLAUDE.md", "PROTECTED_PATHS.txt",
+    "src/polymarket_agent/__init__.py", "src/polymarket_agent/execution_simulator.py",
+    "src/polymarket_agent/fees.py", "tests/test_execution_simulator.py",
+    "config/risk_limits.yaml", "CLAUDE.md", "PROTECTED_PATHS.txt",
     "tests/test_capital.py", "tests/test_ledger.py", "tests/test_safety_controller.py",
-    ".github/workflows/guard.yml", ".github/workflows/nouveau.yml", "scripts/guard_check.py",
-    "scripts/reset_capital.py", "tests/test_guard.py",
+    ".github/workflows/guard.yml", ".github/workflows/nouveau.yml", ".github/workflows/cycle.yml",
+    ".github/workflows/reset-capital.yml", ".github/dependabot.yml", "scripts/guard_check.py",
+    "scripts/reset_capital.py", "requirements-noyau.txt", "tests/test_guard.py",
+    ".github/workflows/labo-x/../guard.yml", ".github/workflows/labo-x.yaml",
     # variantes d'écriture qui ne doivent pas contourner le contrôle
     "./CLAUDE.md", "claude.md", "src/polymarket_agent/../polymarket_agent/ledger.py",
     "config\\risk_limits.yaml", ".GITHUB/workflows/x.yml",
@@ -42,7 +46,9 @@ def test_protected_change_is_blocked(path):
 @pytest.mark.parametrize("path", [
     "src/polymarket_agent/strategy_engine.py", "config/strategies.yaml", "config/settings.yaml",
     "README.md", "proposals/idee.md", ".github_notes.md", "src/polymarket_agent/ledger.py.bak/x",
-    "tests/test_strategies.py",
+    "tests/test_strategies.py", "config/promotion.yaml", "src/polymarket_agent/main.py",
+    "scripts/run_simulation.py", "requirements.txt", ".github/workflows/labo-exploration.yml",
+    ".GITHUB/workflows/LABO-Exploration.yml",
 ])
 def test_free_change_passes(path):
     assert violations(PATTERNS, [path]) == []
@@ -60,10 +66,75 @@ def test_empty_rules_are_refused():
 
 def test_minimum_protected_list_from_claude_md():
     required = {"src/polymarket_agent/safety_controller.py", "src/polymarket_agent/ledger.py",
-                "config/risk_limits.yaml", "config/promotion.yaml", "tests/test_capital.py",
+                "src/polymarket_agent/__init__.py", "src/polymarket_agent/execution_simulator.py",
+                "src/polymarket_agent/fees.py", "config/risk_limits.yaml", "tests/test_capital.py",
                 "tests/test_ledger.py", "tests/test_safety_controller.py", ".github/", "CLAUDE.md",
-                "PROTECTED_PATHS.txt", "scripts/guard_check.py", "tests/test_guard.py"}
+                "PROTECTED_PATHS.txt", "scripts/guard_check.py", "tests/test_guard.py",
+                "scripts/reset_capital.py", "requirements-noyau.txt"}
     assert required <= set(PATTERNS)
+    assert [p for p in PATTERNS if p.startswith("!")] == ["!.github/workflows/labo-*.yml"]
+
+
+def test_reset_only_loads_protected_code():
+    """Là où RESET_CODE est présent, aucun fichier libre (modifiable par l'IA) ne s'exécute."""
+    import ast
+    protected = {"polymarket_agent", "polymarket_agent.ledger", "polymarket_agent.safety_controller"}
+    allowed_third_party = {"yaml"}
+    stdlib = set(sys.stdlib_module_names)
+    for rel in ("scripts/reset_capital.py", "src/polymarket_agent/ledger.py",
+                "src/polymarket_agent/safety_controller.py", "src/polymarket_agent/__init__.py"):
+        tree = ast.parse((ROOT / rel).read_text(encoding="utf-8"))
+        for node in ast.walk(tree):
+            names = ([a.name for a in node.names] if isinstance(node, ast.Import)
+                     else [node.module] if isinstance(node, ast.ImportFrom) and node.module else [])
+            for name in names:
+                top = name.split(".")[0]
+                assert name in protected or top in stdlib or top in allowed_third_party, f"{rel} : {name}"
+    noyau = (ROOT / "requirements-noyau.txt").read_text(encoding="utf-8")
+    assert [l for l in noyau.splitlines() if l and not l.startswith("#")] == ["PyYAML==6.0.3"]
+
+
+GOOD_FREE_WORKFLOW = """name: labo-exploration
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+permissions:
+  contents: read
+jobs:
+  explore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exploration
+        run: echo bonjour
+"""
+
+
+def test_free_workflow_without_secret_or_write_is_accepted():
+    from guard_check import workflow_violations
+    assert workflow_violations(GOOD_FREE_WORKFLOW) == []
+
+
+@pytest.mark.parametrize("change", [
+    ("        run: echo bonjour", "        run: echo ${{ secrets.LEDGER_KEY }}"),
+    ("    runs-on: ubuntu-latest", "    runs-on: ubuntu-latest\n    environment: production"),
+    ("  contents: read", "  contents: write"),
+    ("permissions:\n  contents: read\n", ""),
+    ("  workflow_dispatch:", "  pull_request:"),
+    ("  workflow_dispatch:", "  push:"),
+    ("  workflow_dispatch:", "  workflow_run:"),
+    ("  explore:", "  guard:"),
+    ("  explore:", "  tests:"),
+    ("      - name: Exploration", "      - name: tests"),
+    ("name: labo-exploration", "name: ${{ 'gu' }}ard"),
+    ("  contents: read", "  id-token: read"),
+])
+def test_free_workflow_that_could_reach_secrets_or_imitate_a_check_is_refused(change):
+    from guard_check import workflow_violations
+    old, new = (c.replace("\\n", "\n") for c in change)
+    text = GOOD_FREE_WORKFLOW.replace(old, new)
+    assert text != GOOD_FREE_WORKFLOW
+    assert workflow_violations(text)
 
 
 def test_guard_script_exit_codes(tmp_path):
@@ -88,9 +159,11 @@ def test_guard_workflow_never_runs_pull_request_code():
     on = wf.get("on", wf.get(True))  # PyYAML lit la clé « on » comme le booléen True
     assert "pull_request_target" in on
     assert "pull_request" not in on
-    # Le code exécuté est celui de main : jamais de checkout de la tête de la PR.
-    assert not re.search(r"pull_request\.head\.(sha|ref)|github\.head_ref", text)
+    # Le code exécuté est celui de main : jamais de checkout de la tête de la PR. Le sha de la
+    # tête ne sert qu'à LIRE le texte des workflows libres via l'API.
+    assert not re.search(r"pull_request\.head\.ref|github\.head_ref", text)
     assert "ref:" not in text
+    assert text.count("pull_request.head.sha") == 1 and "contents/$f?ref=$HEAD_SHA" in text
     job = wf["jobs"]["guard"]
     assert job["permissions"] == {"contents": "read", "pull-requests": "read"}
 
@@ -111,6 +184,9 @@ def test_reset_workflow_keeps_the_code_out_of_logs():
     assert not re.search(r"\$\{\{[^}]*inputs\.code", text)
     assert "::add-mask::" in text and "GITHUB_EVENT_PATH" in text
     assert "secrets.RESET_CODE" in text
+    # Seul du code protégé s'exécute avec RESET_CODE.
+    assert "python -I scripts/reset_capital.py" in text
+    assert "requirements-noyau.txt" in text and "-r requirements.txt" not in text
 
 
 def test_actions_are_pinned_to_a_commit():
@@ -130,8 +206,9 @@ def sandbox(tmp_path):
     env = dict(os.environ, LEDGER_KEY="s" * 64, RESET_CODE="code-secret-etienne-42")
     env.pop("RESET_INPUT", None)
 
-    def run(script, *args, **extra):
-        return subprocess.run([sys.executable, str(tmp_path / "scripts" / script), *args],
+    def run(script, *args, isolated=False, **extra):
+        flags = ["-I"] if isolated else []
+        return subprocess.run([sys.executable, *flags, str(tmp_path / "scripts" / script), *args],
                               env=dict(env, **extra), capture_output=True, text=True, cwd=tmp_path)
     assert run("initialize.py").returncode == 0
     return tmp_path, run
@@ -150,7 +227,7 @@ def test_reset_script_refuses_a_wrong_or_missing_code(sandbox):
     root, run = sandbox
     _bankrupt(root)
     for extra in ({}, {"RESET_INPUT": "mauvais-code"}):
-        result = run("reset_capital.py", "--reason", "test", **extra)
+        result = run("reset_capital.py", "--reason", "test", isolated=True, **extra)
         assert result.returncode == 3 and "REFUS" in result.stdout
         assert "code-secret-etienne-42" not in result.stdout + result.stderr
     assert (root / "ledger" / "BANKRUPT.lock").exists()
@@ -159,7 +236,7 @@ def test_reset_script_refuses_a_wrong_or_missing_code(sandbox):
 def test_reset_script_restarts_with_the_right_code(sandbox):
     root, run = sandbox
     _bankrupt(root)
-    result = run("reset_capital.py", "--reason", "Etienne : nouvelle époque",
+    result = run("reset_capital.py", "--reason", "Etienne : nouvelle époque", isolated=True,
                  RESET_INPUT="code-secret-etienne-42")
     assert result.returncode == 0, result.stdout + result.stderr
     assert "code-secret-etienne-42" not in result.stdout + result.stderr

@@ -36,7 +36,7 @@ def get_key(dev_key: bool) -> bytes:
 
 
 def load_settings_with_arena() -> dict:
-    """Réglages + règles de l'arène (config/promotion.yaml, protégé) sous la clé « arena »."""
+    """Réglages + règles de l'arène (config/promotion.yaml) sous la clé « arena »."""
     import yaml
     settings = load_settings()
     settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))

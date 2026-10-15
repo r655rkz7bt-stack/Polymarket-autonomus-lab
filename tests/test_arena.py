@@ -106,14 +106,15 @@ def test_brief_lists_innovation_obligations(ledger, tmp_path):
     assert calm["obligations"] == []
 
 
-def test_arena_rules_live_in_the_protected_promotion_file():
+def test_arena_rules_live_in_a_single_file():
+    """Règles de l'arène : un seul fichier (libre depuis le 15/10/2026), jamais de copie ailleurs."""
     import yaml
     from conftest import ROOT
     rules = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
-    assert rules["min_closed_trades"] == 20 and rules["elimination_every_days"] == 7
-    assert "config/promotion.yaml" in (ROOT / "PROTECTED_PATHS.txt").read_text(encoding="utf-8")
+    assert {"min_closed_trades", "elimination_every_days", "min_days_before_elimination",
+            "min_strategies_in_test", "radical_idea_after_days_without_record", "promotion_margin"} <= set(rules)
     settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
-    assert "arena" not in settings  # pas de copie modifiable par le chercheur
+    assert "arena" not in settings
 
 
 def test_regression_missing_arena_rule_fails_loudly(ledger):
