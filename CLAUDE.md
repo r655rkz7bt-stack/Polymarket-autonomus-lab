@@ -65,6 +65,17 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 - Avant le verrouillage : tu peux pousser sur `main` après des tests verts. Après le verrouillage : uniquement via des branches `claude/` et des pull requests.
 - Si un domaine réseau est bloqué (erreur 403 `host_not_allowed`), dis à Etienne exactement quel domaine ajouter dans l'environnement Claude Code.
 
+## Méthode de recherche (chaque session de recherche)
+
+1. Lance `.venv/bin/python scripts/research_brief.py` et lis `reports/brief.md` en premier :
+   classement de l'arène, champion, palier suivant (cliquet ×1,5), obligations.
+2. Remplis **toutes** les obligations de la feuille de mission (idées à ajouter, stratégies
+   éliminées à remplacer, idée radicale si aucun palier depuis 7 jours).
+3. Mission : battre le record, atteindre le palier suivant le plus vite possible, sans jamais
+   atteindre 0. Prends des risques et essaie des idées neuves ; l'arène tranche en conditions réelles.
+4. Une nouvelle stratégie = une classe dans `strategy_engine.py`, une entrée dans
+   `strategies.yaml`, des tests. Elle entre dans l'arène dans son propre portefeuille fantôme.
+
 ## Commandes
 
 À compléter au fil du projet.
@@ -73,4 +84,6 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 - Tests : `.venv/bin/python -m pytest -q`
 - Initialiser le journal (une seule fois) : `.venv/bin/python scripts/initialize.py --dev-key`
 - Un cycle unique : `.venv/bin/python scripts/run_simulation.py --once --dev-key`
+- Feuille de mission : `.venv/bin/python scripts/research_brief.py --dev-key`
+- Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
 - `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.

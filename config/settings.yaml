@@ -56,3 +56,12 @@ llm:
   enabled: false               # aucun modèle d'IA dans le cycle par défaut
   provider: gemini
   max_calls_per_day: 0
+
+# Arène (décision d'Etienne, 15/10/2026) : compétition entre stratégies.
+arena:
+  min_closed_trades: 20            # pour devenir champion
+  promotion_margin: 0.0            # écart de croissance log pour détrôner le champion
+  elimination_every_days: 7        # la pire stratégie est éliminée une fois par semaine
+  min_days_before_elimination: 7
+  min_strategies_in_test: 3        # innovation obligatoire (signalée par research_brief.py)
+  radical_idea_after_days_without_record: 7

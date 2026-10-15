@@ -3,15 +3,17 @@
 journal → faillite ? → règlements → scanner → carnets → historique de prix →
 stratégies → contrôleur → relecture du carnet → simulation → journal → battement de cœur.
 
-Deux sortes de portefeuilles :
-  - le portefeuille PRINCIPAL (capital de 1 000, règle « à 0 € tu meurs ») ;
-  - des portefeuilles FANTÔMES, un par stratégie en mode « fantome » : même marché,
-    mêmes carnets, mêmes garde-fous, mais un journal séparé (`ledger/fantome/`) qui ne
-    touche jamais le capital principal. C'est la « promotion fantôme » d'ARCHITECTURE §9.
+Arène (décision d'Etienne, 15/10/2026) :
+  - chaque stratégie active trade dans son propre portefeuille FANTÔME (`ledger/fantome/`,
+    1 000 virtuels, vrais carnets) : c'est sa note en conditions réelles ;
+  - le portefeuille PRINCIPAL (règle « à 0 € tu meurs ») suit les décisions du CHAMPION,
+    choisi automatiquement par `arena.py` (aucun champion = ne rien faire) ;
+  - chaque palier franchi (cliquet ×1,5) est inscrit dans le journal signé.
 """
 
 from __future__ import annotations
 
+import dataclasses
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -19,6 +21,7 @@ from decimal import Decimal, ROUND_UP
 from pathlib import Path
 from typing import Callable
 
+from polymarket_agent.arena import run_arena
 from polymarket_agent.correlation import correlation_group
 from polymarket_agent.execution_simulator import simulate_buy
 from polymarket_agent.http_client import SourceUnavailable
@@ -64,6 +67,8 @@ class CycleReport:
     counts: dict[str, int] = field(default_factory=dict)
     summary: dict[str, str] = field(default_factory=dict)
     shadows: dict[str, dict] = field(default_factory=dict)
+    arena: dict = field(default_factory=dict)
+    milestones: list[str] = field(default_factory=list)
     messages: list[str] = field(default_factory=list)
 
 
@@ -107,9 +112,9 @@ def _open_shadows(deps: CycleDeps, report: CycleReport, now: datetime) -> list[P
     illisible est ignoré (journalisé) : il ne bloque jamais le portefeuille principal."""
     shadows = []
     for strategy in deps.strategies:
-        if getattr(strategy, "mode", "principal") != "fantome" or deps.shadow_dir is None:
+        if deps.shadow_dir is None:
             continue
-        name = f"{strategy.strategy_id}_v{strategy.version}"
+        name = competitor_name(strategy)
         path = deps.shadow_dir / f"{name}.jsonl"
         lock = deps.shadow_dir / f"{name}.BANKRUPT.lock"
         try:
@@ -121,6 +126,10 @@ def _open_shadows(deps: CycleDeps, report: CycleReport, now: datetime) -> list[P
             continue
         shadows.append(Portfolio(f"fantome:{name}", ledger, [strategy]))
     return shadows
+
+
+def competitor_name(strategy) -> str:
+    return f"{strategy.strategy_id}_v{strategy.version}"
 
 
 def run_cycle(deps: CycleDeps) -> CycleReport:
@@ -144,8 +153,7 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
             return _halt(deps, report, "CORROMPU",
                          f"le journal ne contient plus l'écriture n°{seq} déjà vue : troncature ou remplacement")
 
-    main = Portfolio("principal", ledger,
-                     [s for s in deps.strategies if getattr(s, "mode", "principal") == "principal"])
+    main = Portfolio("principal", ledger, [])  # stratégie fixée par l'arène (champion)
     portfolios = [main] + _open_shadows(deps, report, started)
     try:
         _trade(deps, portfolios, report, bucket)
@@ -160,6 +168,10 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
 
     finished = deps.now()
     for portfolio in portfolios:
+        if not portfolio.ledger.state.bankrupt:
+            for m in portfolio.ledger.record_milestones(finished):
+                report.milestones.append(f"{portfolio.name} : palier {m['target']} en {m['seconds'] / 3600:.1f} h")
+                log.info("PALIER %s atteint par %s", m["target"], portfolio.name)
         held = {t: m for t, m in portfolio.marks.items() if t in portfolio.ledger.state.positions}
         portfolio.ledger.heartbeat(report.cycle_id, report.status, finished,
                                    total_estimated=portfolio.ledger.state.total_estimated(held))
@@ -220,6 +232,18 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         report.status = "FAILLITE"
         return
 
+    # 3 bis. Arène : classement, promotion du champion, élimination hebdomadaire.
+    competitors = {p.name.removeprefix("fantome:"): p for p in portfolios[1:]}
+    report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
+                             deps.settings.get("arena", {}), deps.now())
+    for name, portfolio in competitors.items():
+        if name in main.ledger.state.eliminated:
+            portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
+    champion = main.ledger.state.champion
+    main.strategies = [s for n, p in competitors.items() if n == champion for s in p.strategies]
+    for event in report.arena.get("events", []):
+        log.info("ARÈNE : %s", event)
+
     # 4. Scanner.
     now = deps.now()
     try:
@@ -274,6 +298,9 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
     proposals = []
     for strategy in portfolio.strategies:
         output = strategy.propose(watchlist, books, ledger.state, deps.limits, bucket, marks)
+        if portfolio.name == "principal":
+            # Identifiants distincts de ceux du fantôme du champion (même stratégie, autre journal).
+            output.proposals = [dataclasses.replace(p, op_id="P" + p.op_id[:23]) for p in output.proposals]
         log.info("[%s] %s v%s : %d propositions, abstentions %s", portfolio.name,
                  strategy.strategy_id, strategy.version, len(output.proposals), output.abstentions)
         proposals += output.proposals

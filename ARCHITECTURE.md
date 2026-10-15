@@ -200,3 +200,20 @@ prouvée rentable. Capital principal : « ne rien faire ». `reversion v1` tourn
 mêmes garde-fous, sans jamais toucher le capital principal. Promotion selon
 `config/promotion.yaml` ; le critère de drawdown relatif est inapplicable face à « ne rien
 faire » (drawdown nul) : à trancher par Etienne avant l'étape 6.
+
+## 15. Arène, cliquet et innovation obligatoire (décision d'Etienne, 15/10/2026)
+
+- **Cliquet** : objectif = 1,5 × capital initial, puis 1,5 × le palier précédent. Chaque palier
+  franchi par le capital **réalisé** (solde + coût des positions, aucun gain latent) est inscrit
+  dans le journal signé (`MILESTONE`), avec le temps mis. Impossible d'inscrire un palier non atteint.
+- **Arène** (`arena.py`) : chaque stratégie active trade dans son portefeuille fantôme (1 000,
+  vrais carnets). Classement par croissance logarithmique du capital réalisé.
+- **Champion** : le meilleur avec ≥ 20 opérations clôturées, qui bat « ne rien faire » et le
+  champion en titre. Le capital principal suit ses décisions (`PROMOTION` signée). Un nouveau
+  champion n'est jugé qu'après 20 opérations ; déchu s'il passe sous « ne rien faire ».
+- **Élimination** : une fois par semaine, la pire stratégie éligible (≥ 20 opérations, ≥ 7 jours,
+  jamais le champion) est éliminée (`ELIMINATION` signée) et ne trade plus.
+- **Innovation obligatoire** (`brief.py`, `scripts/research_brief.py`) : ≥ 3 idées en test,
+  remplacer les éliminées, idée radicale après 7 jours sans palier. Lu par le chercheur en début
+  de session (CLAUDE.md).
+- Toutes les ressources gratuites sont disponibles dès le départ ; X reste désactivé (payant).

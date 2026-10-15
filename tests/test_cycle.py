@@ -18,6 +18,11 @@ from polymarket_agent.safety_controller import RealModeForbidden
 from polymarket_agent.strategy_engine import NaiveFavorite, load_strategies
 
 
+def crown(paths, name="naive_favorite_v1.0.0"):
+    """Désigne la stratégie de test comme champion : le capital principal suit ses décisions."""
+    Ledger.open(paths[0], KEY, paths[1]).record_promotion(name, "test", now=NOW)
+
+
 def pipeline_strategy(mode="principal"):
     """Stratégie de test du pipeline (la référence naïve, qui trade facilement)."""
     s = NaiveFavorite("1.0.0", "2026-10-14", {
@@ -86,6 +91,7 @@ def good_book(token="tokA", ts=NOW):
 
 def test_full_cycle_executes_and_books_a_simulated_trade(env, paths):
     make, db, _ = env
+    crown(paths)
     report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()})))
     assert report.status == "OK", report.messages
     assert report.counts["fills"] == 1
@@ -97,7 +103,7 @@ def test_full_cycle_executes_and_books_a_simulated_trade(env, paths):
     assert reopened.state.fees_paid > 0
     assert reopened.state.cash + pos.cost_basis == D("1000")
     types = [json.loads(l)["type"] for l in paths[0].read_text().splitlines()]
-    assert types == ["GENESIS", "BUY", "HEARTBEAT"]
+    assert types == ["GENESIS", "PROMOTION", "BUY", "HEARTBEAT"]
     row = db.conn.execute("SELECT accepted, fill_status FROM decisions").fetchone()
     assert row["accepted"] == 1 and row["fill_status"] == "PARTIAL"
     assert db.get_anchor()[0] == reopened.state.last_seq
@@ -105,6 +111,7 @@ def test_full_cycle_executes_and_books_a_simulated_trade(env, paths):
 
 def test_rerun_in_same_bucket_does_not_double_book(env, paths):
     make, _, clock = env
+    crown(paths)
     deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}))
     run_cycle(deps)
     cash = Ledger.open(paths[0], KEY, paths[1]).state.cash
@@ -115,6 +122,7 @@ def test_rerun_in_same_bucket_does_not_double_book(env, paths):
 
 def test_unavailable_source_does_not_block_the_program(env, paths):
     make, _, clock = env
+    crown(paths)
     report = run_cycle(make(FakeGamma(fail=True), FakeClob({})))
     assert report.status == "DEGRADE" and report.exit_code == 0
     report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({}, fail=True)))
@@ -127,6 +135,7 @@ def test_unavailable_source_does_not_block_the_program(env, paths):
 
 def test_book_changed_before_execution_is_rechecked(env, paths):
     make, db, _ = env
+    crown(paths)
     moved = make_book("tokA", bids=(("0.93", "500"),), asks=(("0.97", "500"),))
     report = run_cycle(make(FakeGamma([raw_market()]),
                             FakeClob({"tokA": good_book()}, fresh={"tokA": moved})))
@@ -136,6 +145,7 @@ def test_book_changed_before_execution_is_rechecked(env, paths):
 
 def test_stale_book_on_reread_means_no_trade(env, paths):
     make, _, _ = env
+    crown(paths)
     stale = good_book(ts=NOW - timedelta(minutes=10))
     report = run_cycle(make(FakeGamma([raw_market()]),
                             FakeClob({"tokA": good_book()}, fresh={"tokA": stale})))
@@ -194,6 +204,7 @@ def test_real_mode_is_refused(env):
 
 def test_cycle_settles_resolved_position_before_trading(env, paths):
     make, _, clock = env
+    crown(paths)
     gamma = FakeGamma([raw_market()])
     run_cycle(make(gamma, FakeClob({"tokA": good_book()})))
     pos = Ledger.open(paths[0], KEY, paths[1]).state.positions["tokA"]
@@ -232,8 +243,45 @@ def test_corrupt_shadow_is_ignored_main_continues(env, paths, tmp_path):
     assert any("fantôme" in m for m in report.messages)
 
 
-def test_repository_config_main_portfolio_does_nothing():
-    """État validé au 14/10/2026 : aucune stratégie sur le capital principal."""
+def test_without_champion_main_capital_does_nothing(env, paths, tmp_path):
+    """Aucun champion (moins de 20 opérations clôturées) : le principal ne trade pas,
+    mais chaque stratégie trade dans son fantôme."""
+    make, _, _ = env
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()})))
+    assert report.status == "OK"
+    assert not Ledger.open(paths[0], KEY, paths[1]).state.positions
+    assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1
+    assert report.arena["champion"] == ""
+
+
+def test_main_follows_the_champion_with_distinct_op_ids(env, paths, tmp_path):
+    make, _, _ = env
+    crown(paths)
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()})))
+    main = Ledger.open(paths[0], KEY, paths[1]).state
+    shadow = Ledger.open(tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl", KEY,
+                         tmp_path / "fantome" / "x.lock").state
+    assert "tokA" in main.positions and "tokA" in shadow.positions
+    assert not (main.op_ids & shadow.op_ids)
+
+
+def test_milestone_is_recorded_in_the_cycle(env, paths):
+    make, _, clock = env
+    crown(paths)
+    gamma = FakeGamma([raw_market()])
+    run_cycle(make(gamma, FakeClob({"tokA": good_book()})))
+    # Le marché se résout à 1 : une énorme position gagnante ferait franchir 1 500…
+    ledger = Ledger.open(paths[0], KEY, paths[1])
+    ledger.record_buy(op_id="big", token_id="tokZ", market_id="mZ", event_id="eZ", outcome="Yes",
+                      shares="1500", price="0.5", fee="0", strategy_id="t", strategy_version="0", now=NOW)
+    ledger.record_settlement(op_id="sZ", token_id="tokZ", payout_per_share="1", resolution="Yes", now=NOW)
+    clock["now"] = NOW + timedelta(hours=1)
+    report = run_cycle(make(gamma, FakeClob({"tokA": good_book(ts=clock["now"])})))
+    assert any("palier 1500" in m for m in report.milestones), report.milestones
+    state = Ledger.open(paths[0], KEY, paths[1]).state
+    assert state.next_target == D("2250")
+
+
+def test_repository_config_competitors():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert [s.strategy_id for s in loaded if s.mode == "principal"] == []
-    assert [s.strategy_id for s in loaded if s.mode == "fantome"] == ["reversion"]
+    assert len(loaded) >= 3  # innovation obligatoire : au moins 3 idées en test

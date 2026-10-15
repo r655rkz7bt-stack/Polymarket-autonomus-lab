@@ -1,20 +1,15 @@
-# Paramètres des stratégies. Le chercheur peut les ajuster, uniquement à l'intérieur
-# des bornes [min, max]. Les garde-fous de risk_limits.yaml s'appliquent toujours en plus.
-
-# Liberté totale (décision d'Etienne, 15/10/2026) : les bornes ci-dessous ne sont que des
-# plages de recherche, modifiables par le chercheur. Aucune limite de risque imposée.
+# Paramètres des stratégies. Liberté totale (décision d'Etienne, 15/10/2026) : les bornes
+# [min, max] ne sont que des plages de recherche, modifiables par le chercheur.
 #
-# État au 14/10/2026 (voir experiments/ et ARCHITECTURE.md §14) :
-#   - portefeuille principal : AUCUNE stratégie active (« ne rien faire » reste la meilleure
-#     option validée) ;
-#   - reversion v1 : mode « fantome » (journal séparé ledger/fantome/, capital fictif à part)
-#     pour vérifier sur de vrais carnets un résultat de backtest jugé trop beau pour être vrai.
-#   - mode : « principal » = capital principal ; « fantome » = journal séparé.
+# ARÈNE : chaque stratégie activée trade dans son propre portefeuille fantôme (1 000 virtuels,
+# vrais carnets). Le capital principal suit automatiquement le champion choisi par
+# src/polymarket_agent/arena.py (meilleure croissance après >= 20 opérations clôturées).
+# Au moins 3 idées doivent être en test en permanence ; la pire est éliminée chaque semaine.
 
 naive_favorite:
-  # Désactivée : perd sur tous les historiques (v2 validation −9 %, test −21 %).
-  enabled: false
-  mode: principal
+  # Référence naïve. Perd sur l'historique (v2 validation −9 %, test −21 %) : sert de repère
+  # dans l'arène (si elle finit devant, les autres ne valent rien).
+  enabled: true
   version: "1.0.0"
   created_at: "2026-10-14"
   hypothesis: >
@@ -36,7 +31,6 @@ naive_favorite:
 
 reversion:
   enabled: true
-  mode: fantome
   version: "1.0.0"
   created_at: "2026-10-14"
   table: reversion_v1.json
@@ -55,9 +49,9 @@ reversion:
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
 calibration:
-  # Rejetée : v1 (biais de sélection), v2 (échec du critère 1 en validation).
-  enabled: false
-  mode: fantome
+  # v1 rejetée (biais de sélection) ; v2 échoue au critère 1 en validation, mais l'arène la
+  # juge en conditions réelles.
+  enabled: true
   version: "2.0.0"
   created_at: "2026-10-14"
   table: calibration_v2.json

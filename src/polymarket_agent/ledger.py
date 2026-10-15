@@ -42,7 +42,11 @@ from typing import Any
 GENESIS_PREV = "0" * 64
 MIN_KEY_BYTES = 32
 MONEY_TYPES = ("BUY", "SELL", "SETTLE")
-ENTRY_TYPES = ("GENESIS", "BUY", "SELL", "SETTLE", "HEARTBEAT", "BANKRUPT", "RESET")
+ENTRY_TYPES = ("GENESIS", "BUY", "SELL", "SETTLE", "HEARTBEAT", "BANKRUPT", "RESET",
+               "MILESTONE", "PROMOTION", "ELIMINATION")
+# Cliquet (décision d'Etienne, 15/10/2026) : l'objectif suivant vaut toujours 1,5 × le
+# palier précédent (premier objectif : 1,5 × le capital initial). Il ne redescend jamais.
+RATCHET = Decimal("1.5")
 ZERO = Decimal("0")
 ONE = Decimal("1")
 
@@ -174,6 +178,14 @@ class LedgerState:
     bankrupt: bool = False
     bankrupt_reason: str = ""
     epoch: int = 0  # nombre de réinitialisations
+    epoch_started_at: datetime | None = None
+    # Paliers atteints (capital RÉALISÉ = solde + coût des positions, hors gains latents).
+    milestones: list[dict] = field(default_factory=list)
+    next_target: Decimal = ZERO
+    # Compétition : stratégie qui pilote le capital principal ("" = ne rien faire).
+    champion: str = ""
+    eliminated: set[str] = field(default_factory=set)
+    last_elimination_at: datetime | None = None
     last_seq: int = -1
     last_hash: str = GENESIS_PREV
     last_ts: datetime | None = None
@@ -190,7 +202,13 @@ class LedgerState:
         new.positions = {k: dataclasses.replace(v) for k, v in self.positions.items()}
         new.op_ids = set(self.op_ids)
         new.realized_by_day = dict(self.realized_by_day)
+        new.milestones = [dict(m) for m in self.milestones]
+        new.eliminated = set(self.eliminated)
         return new
+
+    def realized_capital(self) -> Decimal:
+        """Capital réalisé : solde + coût des positions ouvertes (aucun gain latent)."""
+        return self.cash + self.immobilized()
 
     # Capital immobilisé : coût d'acquisition des positions ouvertes.
     def immobilized(self) -> Decimal:
@@ -262,6 +280,8 @@ def apply_entry(state: LedgerState, entry_type: str, data: dict, ts: datetime) -
         state.initialized = True
         state.initial_capital = capital
         state.cash = capital
+        state.epoch_started_at = ts
+        state.next_target = capital * RATCHET
         return
 
     if not state.initialized:
@@ -293,6 +313,41 @@ def apply_entry(state: LedgerState, entry_type: str, data: dict, ts: datetime) -
         state.bankrupt = False
         state.bankrupt_reason = ""
         state.epoch += 1
+        state.epoch_started_at = ts
+        state.milestones = []
+        state.next_target = capital * RATCHET
+        return
+
+    if entry_type == "MILESTONE":
+        _require(data, ("target",), entry_type)
+        target = to_decimal(data["target"], "target")
+        if state.bankrupt:
+            raise LedgerLocked("faillite : aucun palier possible")
+        if target != state.next_target:
+            raise InvalidEntry(f"palier {target} différent de l'objectif courant {state.next_target}")
+        if state.realized_capital() < target:
+            raise InvalidEntry(f"palier {target} non atteint (capital réalisé {state.realized_capital()})")
+        started = state.milestones[-1]["reached_at"] if state.milestones else format_ts(state.epoch_started_at)
+        state.milestones.append({"target": str(target), "reached_at": format_ts(ts),
+                                 "seconds": int((ts - parse_ts(started)).total_seconds())})
+        state.next_target = target * RATCHET
+        return
+
+    if entry_type == "PROMOTION":
+        _require(data, ("champion", "reason"), entry_type)
+        champion = str(data["champion"])
+        if champion and champion in state.eliminated:
+            raise InvalidEntry(f"stratégie éliminée : {champion}")
+        state.champion = champion
+        return
+
+    if entry_type == "ELIMINATION":
+        _require(data, ("strategy", "reason"), entry_type)
+        strategy = str(data["strategy"])
+        if not strategy or strategy == state.champion:
+            raise InvalidEntry("on n'élimine pas le champion en titre")
+        state.eliminated.add(strategy)
+        state.last_elimination_at = ts
         return
 
     # ----- écritures monétaires
@@ -590,6 +645,26 @@ class Ledger:
         record = self._append("SETTLE", data, now)
         self._after_money_entry(now)
         return record
+
+    def record_milestones(self, now: datetime | None = None) -> list[dict]:
+        """Inscrit chaque palier franchi par le capital réalisé (plusieurs d'un coup si besoin)."""
+        reached = []
+        while (not self.state.bankrupt and self.state.next_target > 0
+               and self.state.realized_capital() >= self.state.next_target):
+            self._append("MILESTONE", {"target": str(self.state.next_target),
+                                       "capital": str(self.state.realized_capital())}, now)
+            reached.append(dict(self.state.milestones[-1]))
+        return reached
+
+    def record_promotion(self, champion: str, reason: str, metrics: dict | None = None,
+                         now: datetime | None = None) -> dict:
+        return self._append("PROMOTION", {"champion": champion, "reason": reason,
+                                          "metrics": metrics or {}}, now)
+
+    def record_elimination(self, strategy: str, reason: str, metrics: dict | None = None,
+                           now: datetime | None = None) -> dict:
+        return self._append("ELIMINATION", {"strategy": strategy, "reason": reason,
+                                            "metrics": metrics or {}}, now)
 
     def heartbeat(self, cycle_id: str, status: str, now: datetime | None = None,
                   total_estimated: Any = None) -> dict:
