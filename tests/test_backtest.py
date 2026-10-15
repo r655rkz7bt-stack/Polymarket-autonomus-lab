@@ -135,14 +135,15 @@ def test_do_nothing_keeps_capital_and_simulation_is_reproducible(limits):
     assert a == b
 
 
-def test_simulation_respects_the_safety_controller(limits):
-    """Une règle déraisonnable (avantage inventé) est bridée par les mêmes garde-fous qu'en réel."""
+def test_simulation_respects_rule_one_and_the_rules_of_the_game(limits):
+    """Une règle déraisonnable (avantage inventé, Kelly ×5) peut perdre beaucoup,
+    mais le journal empêche toujours de dépenser plus que le solde : jamais de solde < 0."""
     samples, outcomes = build_samples(synthetic(500, -0.3, seed=3), horizons=(6,))
     greedy = lambda s: Decision(0, 0.99, 0.995, 0.999)
-    result = simulate("avide", greedy, samples, outcomes, limits)
-    assert not result.bankrupt
-    assert all(t["cost"] <= 0.05 * 1000 + 1 for t in result.trades)
-    assert result.final_cash > 0
+    from decimal import Decimal
+    result = simulate("avide", greedy, samples, outcomes, limits, kelly_fraction=Decimal("5"))
+    assert result.final_cash >= 0
+    assert result.final_cash < result.initial
 
 
 def test_activity_uses_only_past_points():

@@ -1,6 +1,9 @@
 # Paramètres des stratégies. Le chercheur peut les ajuster, uniquement à l'intérieur
 # des bornes [min, max]. Les garde-fous de risk_limits.yaml s'appliquent toujours en plus.
 
+# Liberté totale (décision d'Etienne, 15/10/2026) : les bornes ci-dessous ne sont que des
+# plages de recherche, modifiables par le chercheur. Aucune limite de risque imposée.
+#
 # État au 14/10/2026 (voir experiments/ et ARCHITECTURE.md §14) :
 #   - portefeuille principal : AUCUNE stratégie active (« ne rien faire » reste la meilleure
 #     option validée) ;
@@ -26,9 +29,10 @@ naive_favorite:
     # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
     bias:           {value: 0.05, min: 0.00, max: 0.06}
     uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
-    min_net_edge:   {value: 0.02, min: 0.02, max: 0.20}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
     max_extra_ticks: {value: 2, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 10}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
 reversion:
   enabled: true
@@ -45,9 +49,10 @@ reversion:
     min_move:        {value: 0.10, min: 0.05, max: 0.30}
     min_changes_24h: {value: 4, min: 4, max: 24}
     min_events:      {value: 150, min: 150, max: 5000}
-    min_net_edge:    {value: 0.02, min: 0.02, max: 0.20}
+    min_net_edge:    {value: 0.02, min: 0.00, max: 0.50}
     max_extra_ticks: {value: 2, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 10}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
 calibration:
   # Rejetée : v1 (biais de sélection), v2 (échec du critère 1 en validation).
@@ -58,6 +63,7 @@ calibration:
   table: calibration_v2.json
   params:
     min_events:      {value: 150, min: 150, max: 5000}
-    min_net_edge:    {value: 0.02, min: 0.02, max: 0.20}
+    min_net_edge:    {value: 0.02, min: 0.00, max: 0.50}
     max_extra_ticks: {value: 2, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 10}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)

@@ -1,7 +1,11 @@
-"""Portfolio Manager : taille prudente des positions (Kelly fractionné + limites de risque).
+"""Portfolio Manager : taille des positions.
 
-Le contrôleur de sécurité revérifie tout ; ce module sert seulement à proposer
-une taille qui a des chances d'être acceptée.
+Liberté totale (décision du 15/10/2026) : aucune limite de taille ou de concentration.
+Par défaut, la taille suit le critère de Kelly COMPLET (fraction 1) : c'est la mise qui
+maximise la croissance du capital sur la durée. Miser plus fait croître MOINS vite (et à
+partir de 2× Kelly, on perd en moyenne même avec un bon pari). Chaque stratégie peut
+changer sa fraction (`kelly_fraction` dans config/strategies.yaml).
+Seule contrainte : on ne dépense pas plus que le solde disponible (règle du jeu).
 """
 
 from __future__ import annotations
@@ -9,30 +13,24 @@ from __future__ import annotations
 from decimal import Decimal, ROUND_DOWN
 
 from polymarket_agent.ledger import LedgerState
-from polymarket_agent.safety_controller import RiskLimits, kelly_fraction_binary
+from polymarket_agent.safety_controller import kelly_fraction_binary
 
 ZERO = Decimal("0")
-SAFETY_MARGIN = Decimal("0.98")  # marge contre les effets d'arrondi
+SAFETY_MARGIN = Decimal("0.999")  # marge contre les effets d'arrondi (frais, ticks)
+DEFAULT_KELLY_FRACTION = Decimal("1")
 
 
-def size_buy(state: LedgerState, limits: RiskLimits, *, token_id: str, event_id: str,
-             prob_low: Decimal, cost_per_share: Decimal,
+def size_buy(state: LedgerState, *, prob_low: Decimal, cost_per_share: Decimal,
+             kelly_fraction: Decimal = DEFAULT_KELLY_FRACTION,
              marks: dict[str, Decimal] | None = None) -> Decimal:
-    """Nombre de parts à proposer (0 si rien de raisonnable)."""
-    if state.bankrupt or state.cash <= 0 or cost_per_share <= 0:
+    """Nombre de parts à proposer (0 si l'avantage estimé est nul ou négatif)."""
+    if state.bankrupt or state.cash <= 0 or cost_per_share <= 0 or kelly_fraction <= 0:
         return ZERO
     total = state.total_estimated(marks)
     if total <= 0:
         return ZERO
-    existing = state.positions.get(token_id)
-    existing_cost = existing.cost_basis if existing else ZERO
-    event_cost = sum((p.cost_basis for p in state.positions.values() if p.event_id == event_id), ZERO)
-    budget = min(
-        limits.kelly_fraction * kelly_fraction_binary(prob_low, cost_per_share) * total,
-        limits.max_position_pct * total - existing_cost,
-        limits.max_event_pct * total - event_cost,
-        state.cash - limits.min_cash_pct * total,
-    ) * SAFETY_MARGIN
+    budget = min(kelly_fraction * kelly_fraction_binary(prob_low, cost_per_share) * total,
+                 state.cash) * SAFETY_MARGIN
     if budget <= 0:
         return ZERO
     return (budget / cost_per_share).quantize(Decimal("0.01"), rounding=ROUND_DOWN)

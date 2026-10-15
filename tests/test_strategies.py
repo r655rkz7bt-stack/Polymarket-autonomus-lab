@@ -42,7 +42,7 @@ def test_proposes_buy_on_favorite_and_controller_accepts(ledger, limits):
     p = out.proposals[0]
     assert p.side == "BUY" and p.token_id == "tokA" and p.outcome == "Yes"
     assert p.prob_low < p.est_probability < p.prob_high
-    assert p.net_edge >= limits.min_net_edge_floor
+    assert p.net_edge >= D("0.02")  # le min_net_edge de la stratégie
     verdict = evaluate(p, ledger.state, market_context(market, book, "tokA"), limits, NOW)
     assert verdict.accepted, verdict.reasons
 
@@ -65,12 +65,14 @@ def test_abstains_without_data_or_edge(ledger, limits):
     assert not s.propose([market], {"tokA": cheap}, ledger.state, limits, "B1").proposals
 
 
-def test_never_proposes_below_the_floor_even_if_configured_lower(ledger, limits):
+def test_strategy_is_free_to_lower_its_own_edge_threshold(ledger, limits):
+    """Liberté totale : plus de plancher imposé, la stratégie choisit son seuil."""
     market = parse_market(raw_market())
     book = make_book("tokA", bids=(("0.89", "500"),), asks=(("0.90", "300"),))
-    out = strategy(min_net_edge=D("0"), bias=D("0.025")).propose(
-        [market], {"tokA": book}, ledger.state, limits, "B1")
-    assert all(p.net_edge >= limits.min_net_edge_floor for p in out.proposals)
+    strict = strategy(min_net_edge=D("0.02"), bias=D("0.03"))
+    free = strategy(min_net_edge=D("0"), bias=D("0.03"))
+    assert not strict.propose([market], {"tokA": book}, ledger.state, limits, "B1").proposals
+    assert free.propose([market], {"tokA": book}, ledger.state, limits, "B1").proposals
 
 
 def test_op_id_is_deterministic():

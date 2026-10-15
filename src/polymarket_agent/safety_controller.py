@@ -1,11 +1,16 @@
 """Contrôleur de sécurité — FICHIER PROTÉGÉ.
 
-Séparation cerveau / garde-fous : les stratégies PROPOSENT, ce module DÉCIDE.
-Code déterministe, sans IA, sans réseau. Il ne fait confiance à aucun chiffre
-fourni par la stratégie qu'il peut recalculer lui-même (avantage net, frais, coût).
+Décision d'Etienne (15/10/2026) : liberté de trading totale. Le contrôleur ne contient
+plus AUCUN frein de risque (taille, concentration, liquidités, pauses, avantage minimal…) :
+les stratégies décident seules. Il ne garde que :
 
-Il applique config/risk_limits.yaml, borné par des limites dures codées ici :
-même un fichier de configuration modifié ne peut pas les dépasser.
+  1. la règle n°1, inviolable : à 0 € tu meurs ;
+  2. les règles du jeu, qui garantissent que les gains simulés sont réels en simulation :
+     prix et carnet réels et frais, données fraîches et fiables, pas de dépense au-delà
+     du solde disponible, pas de vente de parts non détenues, pas de doublon ;
+  3. le mode simulation uniquement (aucun ordre réel n'existe dans ce projet).
+
+Code déterministe, sans IA, sans réseau. Il recalcule lui-même le coût maximal (frais compris).
 """
 
 from __future__ import annotations
@@ -44,31 +49,18 @@ def assert_simulation_mode(mode: Any) -> None:
 
 # --------------------------------------------------------------------------- limites
 
-# (minimum autorisé, maximum autorisé) pour chaque paramètre de risk_limits.yaml.
+# Bornes de cohérence des règles du jeu (pas des freins de risque).
 HARD_BOUNDS: dict[str, tuple[Decimal, Decimal]] = {
     "initial_capital": (Decimal("1"), Decimal("1000000")),
-    "kelly_fraction": (Decimal("0"), Decimal("0.5")),
-    "max_position_pct": (Decimal("0"), Decimal("0.10")),
-    "max_event_pct": (Decimal("0"), Decimal("0.25")),
-    "min_cash_pct": (Decimal("0.20"), Decimal("1")),
-    "max_open_positions": (Decimal("0"), Decimal("100")),
-    "daily_loss_pause_pct": (Decimal("0.01"), Decimal("0.20")),
-    "min_net_edge_floor": (Decimal("0.01"), Decimal("1")),
     "max_book_age_seconds": (Decimal("1"), Decimal("600")),
 }
 
 
 @dataclass(frozen=True)
 class RiskLimits:
+    """Règles du jeu (config/risk_limits.yaml). Aucune limite de risque de trading."""
+
     initial_capital: Decimal
-    kelly_fraction: Decimal
-    max_position_pct: Decimal
-    max_event_pct: Decimal
-    min_cash_pct: Decimal
-    max_open_positions: int
-    daily_loss_pause_pct: Decimal
-    min_net_edge_floor: Decimal
-    no_averaging_down: bool
     max_book_age_seconds: int
 
     @classmethod
@@ -81,23 +73,18 @@ class RiskLimits:
             raise SafetyConfigError(f"risk_limits : clés inconnues {sorted(unknown)}")
         if missing:
             raise SafetyConfigError(f"risk_limits : clés manquantes {sorted(missing)}")
-        if raw["no_averaging_down"] is not True:
-            raise SafetyConfigError("risk_limits : no_averaging_down doit valoir true")
-        values: dict[str, Any] = {"no_averaging_down": True}
+        values: dict[str, Any] = {}
         for name, (low, high) in HARD_BOUNDS.items():
             try:
                 value = to_decimal(raw[name], name)
             except Exception as exc:
                 raise SafetyConfigError(f"risk_limits : {name} invalide") from exc
             if not (low <= value <= high):
-                raise SafetyConfigError(f"risk_limits : {name}={value} hors des bornes dures [{low}, {high}]")
+                raise SafetyConfigError(f"risk_limits : {name}={value} hors des bornes [{low}, {high}]")
             values[name] = value
-        if values["max_event_pct"] < values["max_position_pct"]:
-            raise SafetyConfigError("risk_limits : max_event_pct < max_position_pct")
-        for name in ("max_open_positions", "max_book_age_seconds"):
-            if values[name] != int(values[name]):
-                raise SafetyConfigError(f"risk_limits : {name} doit être un entier")
-            values[name] = int(values[name])
+        if values["max_book_age_seconds"] != int(values["max_book_age_seconds"]):
+            raise SafetyConfigError("risk_limits : max_book_age_seconds doit être un entier")
+        values["max_book_age_seconds"] = int(values["max_book_age_seconds"])
         return cls(**values)
 
     @classmethod
@@ -297,55 +284,11 @@ def evaluate(
     price = proposal.max_price
     fee_ps = fee_per_share(price, market.fee_rate, market.fee_exponent) if market.fees_enabled else ZERO
     cost_ps = price + fee_ps
-    cost_bound = proposal.shares * cost_ps  # coût maximal possible de l'ordre
-    edge = proposal.prob_low - cost_ps  # avantage net dans le pire cas de l'intervalle
-    total = state.total_estimated(marks)
+    cost_bound = proposal.shares * cost_ps  # coût maximal possible de l'ordre, frais compris
     checks.update({"fee_per_share": str(fee_ps), "cost_bound": str(cost_bound),
-                   "recomputed_net_edge": str(edge), "total_estimated": str(total)})
-
-    if edge < limits.min_net_edge_floor:
-        reasons.append(f"avantage net {edge:.4f} < plancher {limits.min_net_edge_floor}")
-    if proposal.net_edge < limits.min_net_edge_floor:
-        reasons.append("avantage net déclaré par la stratégie sous le plancher")
+                   "recomputed_net_edge": str(proposal.prob_low - cost_ps),
+                   "total_estimated": str(state.total_estimated(marks))})
+    # Règle du jeu : on ne dépense pas d'argent qu'on n'a pas (le journal le revérifie).
     if cost_bound > state.cash:
         reasons.append("coût supérieur au solde disponible")
-    if total <= 0:
-        reasons.append("capital total estimé <= 0")
-        return Verdict(False, reasons, checks)
-
-    existing = state.positions.get(proposal.token_id)
-    existing_cost = existing.cost_basis if existing else ZERO
-    if existing_cost + cost_bound > limits.max_position_pct * total:
-        reasons.append(f"position > {limits.max_position_pct:.0%} du capital total")
-    event_cost = sum((p.cost_basis for p in state.positions.values()
-                      if p.event_id == proposal.event_id), ZERO)
-    if event_cost + cost_bound > limits.max_event_pct * total:
-        reasons.append(f"exposition à l'événement > {limits.max_event_pct:.0%} du capital total")
-    # Positions corrélées (même actif sous-jacent, etc.) : même plafond que l'événement.
-    group = market.correlation_group or proposal.event_id
-    group_cost = sum((p.cost_basis for p in state.positions.values()
-                      if (p.group or p.event_id) == group or p.event_id == proposal.event_id), ZERO)
-    checks["group_exposure"] = str(group_cost + cost_bound)
-    if group != proposal.event_id and group_cost + cost_bound > limits.max_event_pct * total:
-        reasons.append(f"exposition au groupe corrélé « {group} » > {limits.max_event_pct:.0%} du capital total")
-    if state.cash - cost_bound < limits.min_cash_pct * total:
-        reasons.append(f"liquidités restantes < {limits.min_cash_pct:.0%} du capital total")
-    if existing is None and len(state.positions) >= limits.max_open_positions:
-        reasons.append(f"nombre maximal de positions ouvertes atteint ({limits.max_open_positions})")
-
-    kelly = kelly_fraction_binary(proposal.prob_low, cost_ps)
-    kelly_cap = limits.kelly_fraction * kelly * total
-    checks["kelly_cap"] = str(kelly_cap)
-    if cost_bound > kelly_cap:
-        reasons.append("taille supérieure à la fraction de Kelly autorisée")
-
-    if limits.no_averaging_down and existing is not None:
-        mark = marks.get(proposal.token_id, market.best_bid)
-        if mark is None or mark < existing.avg_cost:
-            reasons.append("renforcement d'une position perdante interdit")
-
-    loss_today = -state.realized_today(now)
-    if loss_today > 0 and loss_today >= limits.daily_loss_pause_pct * (total + loss_today):
-        reasons.append("pause : perte réalisée du jour >= limite quotidienne")
-
     return Verdict(not reasons, reasons, checks)

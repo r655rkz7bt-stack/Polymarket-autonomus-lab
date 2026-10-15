@@ -14,7 +14,7 @@ Ces décisions sont validées : ne pas reposer les questions, construire à part
 | IA dans le cycle | Aucune par défaut. Gemini gratuit en option, plafonné par jour | Économie de tokens |
 | Données | API publiques Polymarket (Gamma, CLOB, Data) + sources gratuites | X désactivé : payant depuis février 2026 |
 | Capital | 1 000 € virtuels | Choix d'Etienne |
-| Mises | Kelly ×0,25 ; ≤ 5 % par position ; ≤ 15 % par événement ; ≥ 30 % en liquide | Survie avant tout |
+| Mises | Liberté totale (décision du 15/10/2026). Taille par défaut : Kelly complet (×1), modifiable par chaque stratégie | Croissance maximale ; seule règle de risque : à 0 € tu meurs |
 | Horizon | 30 minutes à 3 jours | Plus court n'a pas de sens avec un cycle de 5 min |
 | Catégories | Toutes | Choix d'Etienne |
 | Consultation | Page statique GitHub Pages + e-mails d'échec automatiques de GitHub | Zéro token |
@@ -81,21 +81,28 @@ Une source indisponible ne bloque jamais le cycle : l'analyse est marquée parti
 - Règlement à 1 ou 0 à la résolution ; marchés annulés ou invalides selon leurs règles.
 - Tests de sensibilité : slippage ×1,5 et ×2.
 
-## 7. Risque (`config/risk_limits.yaml`, protégé)
+## 7. Règles du jeu (`config/risk_limits.yaml`, protégé)
+
+**Décision d'Etienne (15/10/2026) : liberté de trading totale.** Il n'y a plus aucune limite de
+risque (taille, concentration, liquidités minimales, nombre de positions, pause après perte,
+interdiction de renforcer une position perdante, avantage minimal, passage obligatoire en
+fantôme). Les stratégies décident seules et le chercheur peut en créer et en lancer librement.
+
+Restent, appliqués par du code déterministe :
+1. **Règle n°1 : à 0 € tu meurs** (`ledger.py`, `safety_controller.py`).
+2. **Règles du jeu**, qui rendent les gains simulés honnêtes : prix et carnets réels, frais
+   officiels, carnet de moins de 120 s, données fiables, pas de dépense au-delà du solde
+   disponible, pas de vente de parts non détenues, pas de doublon, journal signé.
+3. **Interdits absolus de CLAUDE.md** (pas d'argent réel, pas de service payant, pas de secret exposé).
 
 ```yaml
-initial_capital: 1000          # unités virtuelles
-kelly_fraction: 0.25
-max_position_pct: 0.05         # du capital total estimé
-max_event_pct: 0.15            # tous marchés liés à un même événement
-min_cash_pct: 0.30             # toujours en liquide
-max_open_positions: 25
-daily_loss_pause_pct: 0.10     # pause des nouvelles entrées jusqu'à minuit UTC
-min_net_edge_floor: 0.02       # plancher : le chercheur ne peut pas descendre en dessous
-no_averaging_down: true        # jamais de doublement après une perte
+initial_capital: 1000
+max_book_age_seconds: 120
 ```
 
-Le chercheur peut ajuster les paramètres des stratégies (`strategies.yaml`) uniquement à l'intérieur de ces bornes.
+Taille par défaut : critère de Kelly **complet** (`kelly_fraction: 1` dans `strategies.yaml`),
+qui maximise la croissance à long terme. Au-delà, la croissance diminue ; à partir de 2× Kelly
+elle devient négative en moyenne. Chaque stratégie peut changer sa fraction.
 
 ## 8. Garde-fous et verrouillage
 

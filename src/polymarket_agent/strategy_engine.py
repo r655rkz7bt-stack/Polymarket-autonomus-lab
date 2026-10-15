@@ -86,7 +86,7 @@ class NaiveFavorite:
                 marks: dict[str, Decimal] | None = None) -> StrategyOutput:
         out = StrategyOutput()
         p = self.params
-        min_edge = max(p["min_net_edge"], limits.min_net_edge_floor)
+        min_edge = p["min_net_edge"]  # liberté totale : plus de plancher imposé
         candidates: list[tuple[Decimal, Proposal]] = []
         for market in watchlist:
             if not market.outcome_prices or len(market.token_ids) != 2:
@@ -125,8 +125,8 @@ class NaiveFavorite:
                 out.abstain("avantage net insuffisant")
                 continue
             max_price, cost_ps = best
-            shares = size_buy(state, limits, token_id=token_id, event_id=market.event_id,
-                              prob_low=low, cost_per_share=cost_ps, marks=marks)
+            shares = size_buy(state, prob_low=low, cost_per_share=cost_ps,
+                              kelly_fraction=p.get("kelly_fraction", Decimal("1")), marks=marks)
             if shares < max(market.min_order_size, book.min_order_size):
                 out.abstain("taille autorisée trop faible")
                 continue
@@ -199,7 +199,7 @@ class CalibratedStrategy:
                 marks: dict[str, Decimal] | None = None) -> StrategyOutput:
         out = StrategyOutput()
         p = self.params
-        min_edge = max(p["min_net_edge"], limits.min_net_edge_floor)
+        min_edge = p["min_net_edge"]  # liberté totale : plus de plancher imposé
         candidates: list[tuple[Decimal, Proposal]] = []
         for market in watchlist:
             if len(market.token_ids) != 2 or market.end_date is None:
@@ -257,8 +257,8 @@ class CalibratedStrategy:
         side, low, est, high, book, (max_price, cost_ps) = chosen
         token_id = market.token_ids[side]
         low_d = Decimal(str(round(low, 6)))
-        shares = size_buy(state, limits, token_id=token_id, event_id=market.event_id,
-                          prob_low=low_d, cost_per_share=cost_ps, marks=marks)
+        shares = size_buy(state, prob_low=low_d, cost_per_share=cost_ps,
+                          kelly_fraction=self.params.get("kelly_fraction", Decimal("1")), marks=marks)
         if shares < max(market.min_order_size, book.min_order_size):
             out.abstain("taille autorisée trop faible")
             return None
@@ -295,7 +295,7 @@ class ReversionStrategy(CalibratedStrategy):
                 marks: dict[str, Decimal] | None = None) -> StrategyOutput:
         out = StrategyOutput()
         p = self.params
-        min_edge = max(p["min_net_edge"], limits.min_net_edge_floor)
+        min_edge = p["min_net_edge"]  # liberté totale : plus de plancher imposé
         candidates: list[tuple[Decimal, Proposal]] = []
         for market in watchlist:
             if len(market.token_ids) != 2 or market.end_date is None:

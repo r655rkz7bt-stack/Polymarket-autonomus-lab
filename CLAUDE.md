@@ -8,7 +8,12 @@ Cahier des charges complet : `docs/CAHIER_DES_CHARGES.md`.
 
 Agent autonome de recherche et de **trading simulé** sur Polymarket.
 Capital initial : 1 000 € virtuels. Ce sont des unités comptables de simulation, jamais de l'argent réel.
-Objectif : maximiser la croissance du capital virtuel à long terme, sans jamais atteindre 0.
+Objectif : faire croître le capital virtuel le plus haut et le plus vite possible, sans jamais atteindre 0.
+
+**Liberté totale (décision d'Etienne, 15/10/2026)** : aucune limite de risque de trading. Prends des
+risques, essaie de nouvelles idées et de nouvelles stratégies. Les seules contraintes sont la
+règle n°1, les règles du jeu (simulation honnête : vrais prix, vrais carnets, frais, journal signé)
+et les interdits absolus ci-dessous.
 
 ## Règle n°1, inviolable : à 0 € tu meurs
 

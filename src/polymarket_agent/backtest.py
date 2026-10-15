@@ -181,7 +181,8 @@ class BacktestResult:
 
 
 def simulate(name: str, rule: Rule, samples: dict[str, list[Sample]], outcomes: dict[str, Outcome],
-             limits: RiskLimits, half_spread: float = 0.01, initial: float | None = None) -> BacktestResult:
+             limits: RiskLimits, half_spread: float = 0.01, initial: float | None = None,
+             kelly_fraction: Decimal = Decimal("1")) -> BacktestResult:
     """Simulation de portefeuille via le vrai journal et le vrai contrôleur.
 
     Au plus une entrée par marché : le premier horizon (le plus lointain) où la règle se déclenche.
@@ -231,9 +232,8 @@ def simulate(name: str, rule: Rule, samples: dict[str, list[Sample]], outcomes: 
             ask = min(round(side_price + half_spread, 4), 0.999)
             fee_ps = fee_per_share(ask, sample.fee_rate)
             token = f"{market_id}:{decision.side}"
-            shares = size_buy(ledger.state, limits, token_id=token, event_id=sample.event_id,
-                              prob_low=Decimal(str(decision.prob_low)),
-                              cost_per_share=Decimal(str(ask + fee_ps)))
+            shares = size_buy(ledger.state, prob_low=Decimal(str(decision.prob_low)),
+                              cost_per_share=Decimal(str(ask + fee_ps)), kelly_fraction=kelly_fraction)
             if shares < 5:
                 continue
             proposal = Proposal(
