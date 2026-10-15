@@ -34,6 +34,7 @@ WORKFLOWS = ROOT / ".github" / "workflows"
     ".github/workflows/guard.yml", ".github/workflows/nouveau.yml", ".github/workflows/cycle.yml",
     ".github/workflows/reset-capital.yml", ".github/dependabot.yml", "scripts/guard_check.py",
     "scripts/reset_capital.py", "requirements-noyau.txt", "tests/test_guard.py",
+    "scripts/audit_fills.py", "tests/test_audit_fills.py",
     ".github/workflows/labo-x/../guard.yml", ".github/workflows/labo-x.yaml",
     # variantes d'écriture qui ne doivent pas contourner le contrôle
     "./CLAUDE.md", "claude.md", "src/polymarket_agent/../polymarket_agent/ledger.py",

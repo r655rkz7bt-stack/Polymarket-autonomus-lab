@@ -101,9 +101,9 @@ def test_full_cycle_executes_and_books_a_simulated_trade(env, paths):
     assert report.counts["fills"] == 1
     reopened = Ledger.open(paths[0], KEY, paths[1])
     pos = reopened.state.positions["tokA"]
-    # À 0,91 l'avantage passe sous le plancher : prix limite 0,90, seules 40 parts
-    # y sont disponibles → exécution partielle, jamais au-delà du prix limite.
-    assert pos.shares == D("40")
+    # À 0,91 l'avantage passe sous le plancher : prix limite 0,90, 40 parts affichées dont 25 %
+    # accessibles (concurrence, délai) → 10 parts, exécution partielle, jamais au-delà du prix limite.
+    assert pos.shares == D("10")
     assert reopened.state.fees_paid > 0
     assert reopened.state.cash + pos.cost_basis == D("1000")
     types = [json.loads(l)["type"] for l in paths[0].read_text().splitlines()]
@@ -457,7 +457,9 @@ def test_resting_order_is_placed_then_filled_only_when_traded_through(env, paths
     run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": through}), strategies=[_patient()]))
     state = Ledger.open(paths[0], KEY, paths[1]).state
     pos = state.positions["tokA"]
-    assert pos.shares == D("30") and pos.cost_basis == D("30") * D("0.88")  # sans frais : barème taker seulement
+    # 30 parts passées au travers, moitié accessible : 15 au prix posé 0,88 (sans frais : barème
+    # taker seulement).
+    assert pos.shares == D("15") and pos.cost_basis == D("15") * D("0.88")
     assert state.fees_paid == 0
     buys = [json.loads(l) for l in paths[0].read_text().splitlines() if json.loads(l)["type"] == "BUY"]
     assert buys[0]["data"]["extra"]["order_type"] == "limite"
@@ -491,3 +493,33 @@ def test_resting_buys_cannot_reserve_more_than_the_cash(env, paths, tmp_path):
         assert 0 < reserved <= D("1000")
     reasons = [r[0] for r in db.conn.execute("SELECT reasons FROM decisions WHERE accepted = 0")]
     assert any("réservé" in r for r in reasons)  # Kelly complet : le 2e ordre ne tient plus dans le solde
+
+
+
+
+def test_each_shadow_is_an_independent_scenario_for_liquidity(env, paths, tmp_path):
+    """Chaque fantôme répond à « et si cette stratégie tradait seule » : il ne perd pas la liquidité
+    prise par le principal (sinon l'arène pénaliserait la stratégie servie en dernier)."""
+    make, _, _ = env
+    crown(paths)
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()})))
+    main = Ledger.open(paths[0], KEY, paths[1]).state
+    shadow = Ledger.open(tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl", KEY, tmp_path / "fantome" / "x.lock").state
+    assert main.positions["tokA"].shares == shadow.positions["tokA"].shares == D("10")  # 25 % des 40 parts
+
+
+def test_orders_of_the_same_portfolio_share_the_book_in_a_cycle(env, paths, tmp_path):
+    """Deux stratégies d'un même portefeuille sur le même jeton, au même cycle : la seconde ne
+    retrouve pas la liquidité déjà prise par la première."""
+    from polymarket_agent.main import CycleReport, Portfolio, _execute
+    from polymarket_agent.models import MarketInfo  # noqa: F401
+    from polymarket_agent.sources.polymarket_gamma import parse_market
+    make, _, _ = env
+    first, second = pipeline_strategy(), pipeline_strategy()
+    second.strategy_id = "naive_bis"
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), strategies=[first, second])
+    ledger = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW)
+    portfolio = Portfolio("fantome:test", ledger, [first, second])
+    market = parse_market(raw_market())
+    _execute(deps, portfolio, [market], {"tokA": good_book()}, CycleReport("c1"), "b1", [market])
+    assert ledger.state.positions["tokA"].shares == D("10")  # 10 au total (25 % de 40), pas 20

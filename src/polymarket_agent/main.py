@@ -84,6 +84,9 @@ class Portfolio:
     strategies: list
     marks: dict[str, Decimal] = field(default_factory=dict)
     counts: dict[str, int] = field(default_factory=dict)
+    # Liquidité déjà prise par CE portefeuille pendant le cycle : {(jeton, sens): parts}. Chaque
+    # fantôme est un scénario « et si cette stratégie tradait seule » : pas de partage entre eux.
+    taken: dict = field(default_factory=dict)
 
 
 def cycle_bucket(now: datetime, minutes: int) -> str:
@@ -452,8 +455,11 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
             continue
         accepted += 1
         if proposal.side == "SELL":
-            fill = simulate_sell(fresh, proposal.shares, proposal.max_price, market.fees)
+            key = (proposal.token_id, "SELL")
+            fill = simulate_sell(fresh, proposal.shares, proposal.max_price, market.fees,
+                                 portfolio.taken.get(key, Decimal("0")))
             if fill.executed:
+                portfolio.taken[key] = portfolio.taken.get(key, Decimal("0")) + fill.filled_shares
                 try:
                     ledger.record_sell(op_id=proposal.op_id, token_id=proposal.token_id,
                                        shares=fill.filled_shares,
@@ -469,8 +475,11 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
                     fill.status, fill.reason = "REFUSE_JOURNAL", str(exc)
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict, fill)
             continue
-        fill = simulate_buy(fresh, proposal.shares, proposal.max_price, market.fees)
+        key = (proposal.token_id, "BUY")
+        fill = simulate_buy(fresh, proposal.shares, proposal.max_price, market.fees,
+                            portfolio.taken.get(key, Decimal("0")))
         if fill.executed:
+            portfolio.taken[key] = portfolio.taken.get(key, Decimal("0")) + fill.filled_shares
             # Écriture signée. Le journal revérifie solde, doublon et faillite.
             try:
                 ledger.record_buy(
@@ -557,7 +566,7 @@ def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, Ma
     """Exécute les ordres posés dont le prix a été traversé (execution_simulator, règle prudente).
     Chaque exécution repasse par le contrôleur et le journal, comme un ordre taker."""
     ledger = portfolio.ledger
-    consumed: dict[tuple[str, str], Decimal] = {}
+    consumed = portfolio.taken  # partagé avec les ordres taker du même portefeuille pendant le cycle
     for order in deps.db.open_orders(portfolio.name):
         proposal = Proposal.from_dict(json.loads(order["proposal"]))
         remaining, n = Decimal(order["remaining"]), int(order["fills"])

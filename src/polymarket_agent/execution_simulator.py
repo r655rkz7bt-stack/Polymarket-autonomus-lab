@@ -6,8 +6,12 @@ Hypothèses (documentées, testées) :
 - s'il ne trouve rien, l'ordre n'est PAS exécuté et rien n'est comptabilisé ;
 - les parts sont arrondies vers le bas au centième ;
 - frais calculés niveau par niveau (fees.py), arrondis vers le haut ;
-- on suppose qu'on est le seul à consommer la liquidité affichée (optimiste :
-  sera testé avec slippage ×1,5 et ×2 à l'étape 4).
+- concurrence et délai (réalisme, décision d'Etienne du 15/10/2026) : d'autres acheteurs
+  arrivent avant nous et notre ordre part quelques instants après la lecture du carnet. On ne
+  compte donc que 25 % de la quantité affichée au meilleur prix (le niveau qui disparaît le plus
+  vite) et 50 % aux niveaux suivants ;
+- liquidité partagée : les parts déjà prises au même carnet pendant le cycle par les autres
+  portefeuilles (`consumed`) ne sont plus disponibles.
 
 Ordres à cours limité posés dans le carnet (« maker », décision d'Etienne du 15/10/2026),
 règle prudente du « passage au travers » :
@@ -33,6 +37,8 @@ from polymarket_agent.models import FeeSchedule, OrderBook
 
 ZERO = Decimal("0")
 SHARE_QUANTUM = Decimal("0.01")
+TOP_SHARE = Decimal("0.25")    # part de la quantité affichée au meilleur prix réellement accessible
+DEPTH_SHARE = Decimal("0.5")   # part accessible aux niveaux suivants (et aux ordres posés)
 
 
 @dataclass
@@ -55,14 +61,19 @@ class Fill:
         return self.filled_shares > 0
 
 
-def _walk(levels, shares: Decimal, accept) -> tuple[Decimal, Decimal, list[tuple[Decimal, Decimal]]]:
+def _walk(levels, shares: Decimal, accept, consumed: Decimal = ZERO) -> tuple[Decimal, Decimal, list[tuple[Decimal, Decimal]]]:
     remaining = shares
     notional = ZERO
     used: list[tuple[Decimal, Decimal]] = []
-    for level in levels:
+    skip = max(consumed, ZERO)  # parts déjà prises par d'autres portefeuilles, en tête du carnet
+    for i, level in enumerate(levels):
         if remaining <= 0 or not accept(level.price):
             break
-        take = min(remaining, level.size).quantize(SHARE_QUANTUM, rounding=ROUND_DOWN)
+        available = level.size * (TOP_SHARE if i == 0 else DEPTH_SHARE)
+        gone = min(skip, available)
+        skip -= gone
+        available -= gone
+        take = min(remaining, available).quantize(SHARE_QUANTUM, rounding=ROUND_DOWN)
         if take <= 0:
             continue
         used.append((level.price, take))
@@ -80,19 +91,21 @@ def _finish(side, shares, filled, notional, used, fees: FeeSchedule) -> Fill:
                 [(str(p), str(q)) for p, q in used])
 
 
-def simulate_buy(book: OrderBook, shares: Decimal, max_price: Decimal, fees: FeeSchedule) -> Fill:
+def simulate_buy(book: OrderBook, shares: Decimal, max_price: Decimal, fees: FeeSchedule,
+                 consumed: Decimal = ZERO) -> Fill:
     shares = shares.quantize(SHARE_QUANTUM, rounding=ROUND_DOWN)
     if shares <= 0:
         return Fill("UNFILLED", "BUY", shares, reason="taille nulle")
-    filled, notional, used = _walk(book.asks, shares, lambda p: p <= max_price)
+    filled, notional, used = _walk(book.asks, shares, lambda p: p <= max_price, consumed)
     return _finish("BUY", shares, filled, notional, used, fees)
 
 
-def simulate_sell(book: OrderBook, shares: Decimal, min_price: Decimal, fees: FeeSchedule) -> Fill:
+def simulate_sell(book: OrderBook, shares: Decimal, min_price: Decimal, fees: FeeSchedule,
+                  consumed: Decimal = ZERO) -> Fill:
     shares = shares.quantize(SHARE_QUANTUM, rounding=ROUND_DOWN)
     if shares <= 0:
         return Fill("UNFILLED", "SELL", shares, reason="taille nulle")
-    filled, notional, used = _walk(book.bids, shares, lambda p: p >= min_price)
+    filled, notional, used = _walk(book.bids, shares, lambda p: p >= min_price, consumed)
     return _finish("SELL", shares, filled, notional, used, fees)
 
 
@@ -115,7 +128,7 @@ def _resting(side: str, levels, shares: Decimal, limit: Decimal, tick: Decimal, 
         return Fill("UNFILLED", side, shares, reason="taille nulle")
     if tick is None or tick <= 0:
         return Fill("UNFILLED", side, shares, reason="pas de cotation (tick) inconnu")
-    depth = sum((level.size for level in levels if through(level.price, limit, tick)), ZERO)
+    depth = sum((level.size for level in levels if through(level.price, limit, tick)), ZERO) * DEPTH_SHARE
     available = max(depth - max(consumed, ZERO), ZERO)
     filled = min(shares, available).quantize(SHARE_QUANTUM, rounding=ROUND_DOWN)
     if filled <= 0:

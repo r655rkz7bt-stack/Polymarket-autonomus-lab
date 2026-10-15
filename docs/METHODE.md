@@ -45,6 +45,13 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    principal, élimination). Change-les quand les données le justifient ; explique pourquoi dans
    `experiments/journal_recherche.md`. Seules limites : le noyau protégé (journal signé,
    contrôleur, simulateur, frais, mots de passe).
+   Simulation (noyau) : 25 % de la quantité au meilleur prix, 50 % aux niveaux suivants, liquidité
+   partagée entre tes ordres d'un même cycle. Chaque exécution est auditée contre l'historique
+   public des prix (job `audit`) : un prix impossible déclenche une alerte à Etienne.
+   Clés disponibles dans l'environnement du cycle (si Etienne les a ajoutées) : GUARDIAN_API_KEY,
+   FOOTBALL_DATA_KEY, ODDS_API_KEY, BALLDONTLIE_API_KEY, PANDASCORE_API_KEY, FRED_API_KEY,
+   DATA_GOV_API_KEY, YOUTUBE_API_KEY, TMDB_API_KEY, COINGECKO_API_KEY, ETHERSCAN_API_KEY
+   (une source sans sa clé doit dire « désactivée (pas de clé …) », jamais planter).
 5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
    Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
 6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.

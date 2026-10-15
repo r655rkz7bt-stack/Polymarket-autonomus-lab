@@ -431,3 +431,15 @@ Décision d'Etienne : liberté maximale, y compris des ordres posés dans le car
   avis « oui » / « non » au résultat réel (justesse brute et pondérée par la confiance). Statut
   `justesse_gemini` dans le cycle et le tableau de bord. Le chercheur s'en sert pour décider du
   poids à donner à Gemini dans les stratégies.
+
+## 23. Audit indépendant, sauvegarde, réalisme, clés (15 octobre 2026)
+
+Proposition : `proposals/2026-10-15_audit_sauvegarde_realisme_cles.md`.
+- Job `audit` du workflow `cycle` (machine neuve, `scripts/audit_fills.py` protégé, `python -I -S`) :
+  chaque achat / vente comparé à l'historique public des prix ; anomalies dans `audit/etat.json`
+  (branche data), sur le tableau de bord et par e-mail.
+- Sauvegarde quotidienne de l'essentiel de la base dans `backup/` (branche data), restaurée si le
+  cache disparaît.
+- Simulateur : 25 % du meilleur niveau, 50 % des suivants ; liquidité partagée entre les ordres d'un
+  même portefeuille pendant un cycle (pas entre fantômes, scénarios indépendants).
+- `cycle.yml` transmet 11 clés optionnelles de sources gratuites.

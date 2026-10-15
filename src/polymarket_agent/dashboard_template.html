@@ -367,7 +367,10 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       : "Aucune stratégie n'a encore clôturé d'opération.",
     cyclesOk + " cycle(s) réussi(s) sur " + cyclesAll + " en 24 h · " + srcOk + "/" + srcNames.length + " sources en marche.",
     "Palier suivant " + fmt(target, 0) + " (capital réalisé " + fmt(realized, 2) + ").",
-    "Frais payés " + fmt(C.frais_payes, 2) + " · perte maximale depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %."
+    "Frais payés " + fmt(C.frais_payes, 2) + " · perte maximale depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %.",
+    D.audit ? "Audit indépendant : " + fmt(D.audit.verifiees, 0) + " exécutions vérifiées contre l'historique de Polymarket, " +
+      (D.audit.anomalies ? "▲ " + D.audit.anomalies + " anomalie(s) à examiner." : "aucune anomalie.")
+      : "Audit indépendant des exécutions : pas encore lancé."
   ].forEach(function (t) { document.getElementById("facts").appendChild(el("li", null, t)); });
 
   // Grille de points : une part du capital par point (comme les sièges d'une assemblée).
@@ -414,6 +417,10 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var name = (n + " ").padEnd(22, "."), msg = s.length > 70 ? s.slice(0, 69) + "…" : s;
       line([["  " + mark + " ", "w"], [name + " "], [msg, /^ok/.test(s) ? "p" : ""], [obs ? "   " + obs + " obs/24h" : ""]]); });
     if (srcs.justesse_gemini) { line([["$ ", "p"], ["etat --justesse-gemini", "w"]]); line([["  " + srcs.justesse_gemini]]); }
+    if (D.audit) { line([["$ ", "p"], ["audit --executions", "w"]]);
+      line([["  vérifiées " + fmt(D.audit.verifiees, 0) + " · non vérifiables " + fmt(D.audit.non_verifiables, 0) +
+        " · anomalies " + D.audit.anomalies + " · dernier passage " + short(D.audit.derniere)]]);
+      (D.audit.dernieres_anomalies || []).forEach(function (a) { line([["  ○ " + (a.portefeuille || "") + " : " + (a.detail || ""), "w"]]); }); }
     line([["$ ", "p"], ["etat --capital", "w"]]);
     line([["  solde " + fmt(cash, 2) + " · investi " + fmt(invested, 2) + " · frais " + fmt(C.frais_payes, 2) +
       " · faillite " + (C.faillite ? "OUI" : "non") + " · palier " + fmt(target, 0)]]);

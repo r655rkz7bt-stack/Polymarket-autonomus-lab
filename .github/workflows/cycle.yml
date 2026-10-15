@@ -4,7 +4,11 @@
 # Où vivent les données :
 #   - journal signé : branche « data » (dossier ledger/), un commit par cycle, historique conservé
 #     (le ruleset de « data » interdit force push et suppression : toute réécriture se verrait) ;
-#   - base SQLite (analyse seulement, jamais le capital) : cache GitHub Actions ;
+#   - base SQLite (analyse seulement, jamais le capital) : cache GitHub Actions, avec une
+#     sauvegarde quotidienne de l'essentiel (ordres posés, ancrage, avis Gemini, caches) dans la
+#     branche data (backup/), restaurée automatiquement si le cache a disparu ;
+#   - audit indépendant des exécutions : job « audit », sur une machine neuve où aucun code libre
+#     ne tourne (scripts/audit_fills.py, protégé), résultat dans la branche data (audit/) ;
 #   - tableau de bord et rapports : branche « gh-pages » (GitHub Pages), toutes les 30 minutes.
 # Aucune pull request ne peut déclencher ce workflow : les secrets ne servent qu'au code de main.
 name: cycle
@@ -58,6 +62,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p ../ledger ../state ../site
           cp -a ledger/. ../ledger/
+          # Cache perdu : on repart de la sauvegarde quotidienne de l'essentiel (jamais du capital).
+          if [ ! -f ../state/market.sqlite ] && [ -f backup/essentiel.sqlite.gz ]; then
+            gunzip -c backup/essentiel.sqlite.gz > ../state/market.sqlite
+            echo "Base restaurée depuis la sauvegarde du $(cat backup/jour.txt 2>/dev/null || echo '?')."
+          fi
           # Date de la dernière publication du tableau de bord (régénéré toutes les 30 min).
           if git fetch --depth 1 origin gh-pages 2>/dev/null; then
             git show FETCH_HEAD:data.json > ../site/data.json 2>/dev/null || rm -f ../site/data.json
@@ -70,6 +79,18 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          # Clés optionnelles des sources gratuites (vides tant qu'Etienne ne les a pas ajoutées).
+          GUARDIAN_API_KEY: ${{ secrets.GUARDIAN_API_KEY }}
+          FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          BALLDONTLIE_API_KEY: ${{ secrets.BALLDONTLIE_API_KEY }}
+          PANDASCORE_API_KEY: ${{ secrets.PANDASCORE_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
         run: |
           set +e
           python scripts/run_simulation.py --once
@@ -86,6 +107,42 @@ jobs:
           git add -A ledger
           if git diff --cached --quiet; then echo "Journal inchangé."; exit 0; fi
           git commit -q -m "cycle $(date -u +%Y-%m-%dT%H:%MZ) (code ${{ steps.run.outputs.code }})"
+          git push -q origin HEAD:data
+      - name: Sauvegarde de l'essentiel de la base (branche data, une fois par jour)
+        if: steps.run.outputs.code != '2'
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          today=$(date -u +%Y-%m-%d)
+          if [ -f backup/jour.txt ] && [ "$(cat backup/jour.txt)" = "$today" ]; then echo "Sauvegarde du jour déjà faite."; exit 0; fi
+          if [ ! -f ../state/market.sqlite ]; then echo "Pas de base à sauvegarder."; exit 0; fi
+          mkdir -p backup
+          # Bibliothèque standard seulement (-I -S : aucun module du dépôt ni de site-packages).
+          python -I -S - <<'PY'
+          import gzip, os, shutil, sqlite3
+          tmp = "backup/essentiel.sqlite"
+          if os.path.exists(tmp):
+              os.remove(tmp)
+          src = sqlite3.connect("file:../state/market.sqlite?mode=ro", uri=True)
+          src.execute("VACUUM INTO ?", (tmp,))
+          src.close()
+          db = sqlite3.connect(tmp)
+          for table in ("market_snapshots", "book_snapshots", "observations", "decisions", "cycles"):
+              try:
+                  db.execute(f"DELETE FROM {table}")
+              except sqlite3.Error:
+                  pass
+          db.commit()
+          db.execute("VACUUM")
+          db.close()
+          with open(tmp, "rb") as f, gzip.open("backup/essentiel.sqlite.gz", "wb", compresslevel=9) as g:
+              shutil.copyfileobj(f, g)
+          os.remove(tmp)
+          PY
+          echo "$today" > backup/jour.txt
+          git add -A backup
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -q -m "sauvegarde de la base du $today"
           git push -q origin HEAD:data
       - name: Rapports et feuille de mission (si le tableau de bord a été régénéré)
         id: reports
@@ -116,4 +173,51 @@ jobs:
           git push -q --force origin "$commit:refs/heads/gh-pages"
       - name: Échec signalé par e-mail (GitHub) si le cycle a échoué
         if: steps.run.outputs.code != '0'
+        run: exit 1
+
+  # Audit indépendant : une machine neuve, où aucun code libre n'a tourné ; seul du code protégé
+  # (scripts/audit_fills.py → ledger.py) s'exécute, avec python -I -S. Il compare chaque prix du
+  # journal à l'historique public de Polymarket. Nouvelle anomalie → échec → e-mail de GitHub.
+  audit:
+    needs: cycle
+    if: ${{ always() && github.ref == 'refs/heads/main' && needs.cycle.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Journal signé (branche data)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: _data
+      - name: Audit des exécutions
+        id: audit
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+        run: |
+          set +e
+          python -I -S scripts/audit_fills.py --data _data
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+      - name: Enregistrement de l'audit (branche data)
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A audit
+          if git diff --cached --quiet; then echo "Audit inchangé."; exit 0; fi
+          git commit -q -m "audit $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q origin HEAD:data
+      - name: Anomalie signalée par e-mail (GitHub)
+        if: steps.audit.outputs.code != '0'
         run: exit 1
