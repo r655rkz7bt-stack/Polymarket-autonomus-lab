@@ -84,4 +84,6 @@ llm:
   provider: gemini
   model: gemini-2.5-flash      # point de départ ; s'il est retiré (404), le meilleur « flash » stable est choisi seul
   max_calls_per_day: 200       # sous le quota gratuit ; jamais de dépassement
+  timeout_seconds: 40          # Gemini peut mettre plus de 15 s ; trop lent = modèle suivant
+  max_retries: 0
   markets_per_cycle: 2

@@ -329,3 +329,33 @@ def test_gemini_gives_up_cleanly_when_every_model_refuses(monkeypatch, tmp_path)
     assert db.get_value("gemini_model") is None
     assert "x-goog-api-key" not in http.session.headers
     db.close()
+
+
+def test_regression_slow_gemini_model_is_skipped(monkeypatch, tmp_path):
+    """Défaut du 15/10/2026 : gemini-3.7-flash dépassait le délai d'attente (ReadTimeout)."""
+    from polymarket_agent.data_collector import with_retries
+    from polymarket_agent.http_client import HttpClient
+    db = Database(tmp_path / "db.sqlite")
+    db.set_value("gemini_model", "gemini-3.0-flash")
+    monkeypatch.setenv("GEMINI_API_KEY", "fausse-cle-de-test")
+    api = "https://generativelanguage.googleapis.com/v1beta/models"
+    answer = [{"id": 1, "kind": "rumeur", "stance": "neutre", "confidence": 0.2}]
+    http = FakeHttp({f"{api}/gemini-3.0-flash-lite:": {"candidates": [{"content": {"parts": [{"text": json.dumps(answer)}]}}]},
+                     api: LISTING}, down=(f"{api}/gemini-3.0-flash:",))
+    original = http.get_json
+
+    def get_json(url, params=None):
+        try:
+            return original(url, params)
+        except SourceUnavailable as exc:
+            raise SourceUnavailable(f"{exc} : échec après 1 essais (ReadTimeout)") from None
+    http.get_json = get_json
+    http.post_json = lambda url, body: get_json(url, body)
+    out = GeminiClassifier(http, "gemini-2.5-flash", 10, db).classify("Q ?", [obs("a"), obs("b")], NOW)
+    assert list(out.values()) == [{"kind": "rumeur", "stance": "neutre", "confidence": 0.2}]
+    assert db.get_value("gemini_model") == "gemini-3.0-flash-lite"
+    # Le client de Gemini a son propre délai, sans toucher celui des autres sources.
+    base = HttpClient(timeout=15, max_retries=3)
+    slow = with_retries(base, 0, 40)
+    assert (slow.timeout, slow.max_retries, base.timeout, base.max_retries) == (40.0, 0, 15, 3)
+    db.close()

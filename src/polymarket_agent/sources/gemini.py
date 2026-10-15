@@ -66,9 +66,10 @@ def pick_model(listing: dict) -> str | None:
     return ranked[0] if ranked else None
 
 
-# Refus qui justifient d'essayer un autre modèle : retiré (404), saturé (503), quota du modèle (429).
-SWITCH_ON = ("HTTP 404", "HTTP 503", "HTTP 429")
-MAX_ALTERNATIVES = 3
+# Refus ou lenteur qui justifient d'essayer un autre modèle : retiré (404), saturé (503), quota du
+# modèle (429), trop lent (Timeout, constaté le 15/10/2026 avec gemini-3.7-flash).
+SWITCH_ON = ("HTTP 404", "HTTP 503", "HTTP 429", "Timeout")
+MAX_ALTERNATIVES = 2  # au pire 3 modèles × délai d'attente : le cycle reste sous 5 minutes
 
 
 class GeminiClassifier:

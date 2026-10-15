@@ -39,12 +39,16 @@ class Collection:
         return [name for name, state in self.status.items() if state.startswith("indisponible")]
 
 
-def with_retries(http, max_retries):
-    """Copie du client HTTP avec son propre nombre de nouveaux essais (None = inchangé)."""
-    if max_retries is None or not hasattr(http, "max_retries"):
+def with_retries(http, max_retries, timeout=None):
+    """Copie du client HTTP avec son propre nombre de nouveaux essais et, au besoin, son propre
+    délai d'attente (None = inchangé)."""
+    if (max_retries is None and timeout is None) or not hasattr(http, "max_retries"):
         return http
     clone = copy.copy(http)
-    clone.max_retries = int(max_retries)
+    if max_retries is not None:
+        clone.max_retries = int(max_retries)
+    if timeout is not None:
+        clone.timeout = float(timeout)
     return clone
 
 
