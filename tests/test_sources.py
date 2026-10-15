@@ -482,5 +482,29 @@ def test_gemini_never_pays_twice_for_the_same_text(tmp_path, monkeypatch):
     db.set_source_run("gdelt", NOW - timedelta(hours=2))  # nouvelle collecte avec un 3e texte
     texts.append(obs("Real Madrid Roma injury news", domain="espn.com", ext="c"))
     second = run(markets, NOW + timedelta(minutes=20))
-    assert sent[1] == ["c"] and "3 au total" in second["gemini"]
+    assert sent[1] == ["c"] and "3 avis sur 1 marchés" in second["gemini"]
+    db.close()
+
+
+def test_regression_stances_are_kept_per_market(tmp_path, monkeypatch):
+    """Un même article lié à deux marchés : l'avis classé pour l'un ne doit jamais servir à l'autre
+    (avant : un seul dictionnaire par article, le dernier marché classé écrasait les autres)."""
+    from polymarket_agent import intel_pipeline
+    db = Database(tmp_path / "db.sqlite")
+
+    def fake_classify(self, question, observations, now):
+        stance = "oui" if question.startswith("Will Real Madrid") else "non"
+        return {o.external_id: {"kind": "fait rapporté", "stance": stance, "confidence": 0.8} for o in observations}
+    monkeypatch.setattr(intel_pipeline.GeminiClassifier, "classify", fake_classify)
+    monkeypatch.setattr(intel_pipeline.GeminiClassifier, "available", property(lambda self: True))
+    markets = [parse_market(raw_market("1", "y1", "n1", question="Will Real Madrid beat Roma?")),
+               parse_market(raw_market("2", "y2", "n2", question="Will Roma beat Real Madrid?", event_id="ev2"))]
+    texts = [obs("Real Madrid beat Roma in Rome", ext="a"), obs("Roma Real Madrid preview", domain="lemonde.fr", ext="b")]
+    cfg = dict(settings(), llm={"enabled": True, "markets_per_cycle": 15, "max_calls_per_day": 100})
+    run = intel_pipeline.make_collector(cfg, None, db, {"gdelt": lambda: Fixed(texts), "rss": lambda: Fixed([]),
+                                                        "polymarket_comments": lambda: Boom(),
+                                                        "crypto_prices": lambda: Boom()})
+    status = run(markets, NOW)
+    assert "4 avis sur 2 marchés" in status["gemini"]
+    assert markets[0].intel.stance == 1.0 and markets[1].intel.stance == -1.0
     db.close()
