@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from _common import ROOT, get_key, load_settings, resolve, setup_logging
 
 from polymarket_agent.http_client import HttpClient
+from polymarket_agent.intel_pipeline import make_collector
 from polymarket_agent.main import CycleDeps, run_cycle
 from polymarket_agent.persistence import Database
 from polymarket_agent.safety_controller import RiskLimits, assert_simulation_mode
@@ -68,13 +69,16 @@ def one_cycle(settings: dict, key: bytes) -> int:
                 gamma=GammaClient(http, src["polymarket_gamma"]["base_url"]),
                 clob=ClobClient(http, src["polymarket_clob"]["base_url"],
                                 batch_size=src["polymarket_clob"]["books_batch_size"]),
+                collector=make_collector(settings, http, db),
             )
             report = run_cycle(deps)
         finally:
             db.close()
         print(json.dumps({"cycle": report.cycle_id, "statut": report.status,
                           "compteurs": report.counts, "capital": report.summary,
-                          "fantomes": report.shadows, "messages": report.messages},
+                          "fantomes": report.shadows, "sources": report.sources,
+                          "arene": report.arena.get("events", []), "paliers": report.milestones,
+                          "messages": report.messages},
                          ensure_ascii=False, indent=2))
         return report.exit_code
     finally:

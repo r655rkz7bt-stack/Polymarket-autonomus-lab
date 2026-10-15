@@ -57,6 +57,8 @@ class CycleDeps:
     clob: ClobClient
     now: Callable[[], datetime] = lambda: datetime.now(timezone.utc)
     shadow_dir: Path | None = None  # dossier des journaux fantômes
+    # Étape 5 : collecte des sources (None = pas de collecte, ex. dans les tests du pipeline).
+    collector: Callable | None = None
 
 
 @dataclass
@@ -68,6 +70,7 @@ class CycleReport:
     summary: dict[str, str] = field(default_factory=dict)
     shadows: dict[str, dict] = field(default_factory=dict)
     arena: dict = field(default_factory=dict)
+    sources: dict[str, str] = field(default_factory=dict)
     milestones: list[str] = field(default_factory=list)
     messages: list[str] = field(default_factory=list)
 
@@ -280,6 +283,14 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # 6. Historique de prix récent (seulement si une stratégie active en a besoin).
     if any(getattr(s, "strategy_id", "") == "reversion" for p in portfolios for s in p.strategies):
         _attach_price_features(deps, result.watchlist, now)
+
+    # 6 bis. Sources d'information (étape 5). Une source en panne ne bloque rien (mode dégradé).
+    if deps.collector is not None:
+        try:
+            report.sources = deps.collector(result.watchlist, now)
+        except Exception as exc:  # noqa: BLE001 - la collecte ne doit jamais faire tomber le cycle
+            report.sources = {"collecte": f"indisponible : {type(exc).__name__}: {exc}"[:200]}
+            log.exception("collecte des sources en échec, cycle poursuivi sans elles")
 
     # 7-11. Stratégies → propositions → contrôleur → exécution simulée, portefeuille par portefeuille.
     for portfolio in portfolios:

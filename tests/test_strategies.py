@@ -26,7 +26,8 @@ def strategy(**overrides):
 
 def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert sorted(s.strategy_id for s in loaded) == ["calibration", "naive_favorite", "reversion"]
+    assert sorted(s.strategy_id for s in loaded) == ["calibration", "crypto_threshold", "naive_favorite",
+                                                     "reversion"]
     assert all(s.params["kelly_fraction"] == 1 for s in loaded)  # Kelly complet par défaut
 
 

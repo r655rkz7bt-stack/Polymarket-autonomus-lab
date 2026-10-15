@@ -335,7 +335,102 @@ class ReversionStrategy(CalibratedStrategy):
         return out
 
 
+class CryptoThresholdStrategy:
+    """Marchés crypto à seuil : probabilité INDÉPENDANTE tirée du prix au comptant et de la
+    volatilité réalisée (crypto_model.py), comparée au prix exécutable réel.
+
+    Achète « Oui » si la borne basse de P(Oui) dépasse ask + frais + min_net_edge, ou « Non »
+    si la borne basse de P(Non) le fait. Données de prix de plus de `max_quote_age_minutes`
+    → abstention.
+    """
+
+    strategy_id = "crypto_threshold"
+    required = ("min_net_edge", "max_extra_ticks", "max_proposals_per_cycle", "max_quote_age_minutes",
+                "min_hours")
+
+    def __init__(self, version: str, created_at: str, params: dict[str, Decimal]):
+        missing = [p for p in self.required if p not in params]
+        if missing:
+            raise StrategyConfigError(f"{self.strategy_id} : paramètres manquants {missing}")
+        self.version, self.created_at, self.params = version, created_at, params
+
+    def propose(self, watchlist: list[MarketInfo], books: dict[str, OrderBook],
+                state: LedgerState, limits: RiskLimits, bucket: str,
+                marks: dict[str, Decimal] | None = None) -> StrategyOutput:
+        from polymarket_agent.crypto_model import parse_question, probability_band
+
+        out = StrategyOutput()
+        p = self.params
+        candidates: list[tuple[Decimal, Proposal]] = []
+        for market in watchlist:
+            question = parse_question(market.question)
+            if question is None or len(market.token_ids) != 2 or market.end_date is None:
+                out.abstain("pas un marché crypto à seuil")
+                continue
+            quote = market.crypto_quote
+            if quote is None:
+                out.abstain("prix crypto indisponible")
+                continue
+            yes_book, no_book = books.get(market.token_ids[0]), books.get(market.token_ids[1])
+            if yes_book is None or no_book is None:
+                out.abstain("carnet indisponible")
+                continue
+            if (yes_book.fetched_at - quote.as_of).total_seconds() > float(p["max_quote_age_minutes"]) * 60:
+                out.abstain("prix crypto périmé")
+                continue
+            if any(t in state.positions for t in market.token_ids):
+                out.abstain("position déjà ouverte")
+                continue
+            hours = (market.end_date - yes_book.fetched_at).total_seconds() / 3600
+            if hours < float(p["min_hours"]):
+                out.abstain("échéance trop proche")
+                continue
+            band = probability_band(question, quote.price, quote.hourly_vol, hours)
+            if band is None:
+                out.abstain("issue déjà connue ou données absurdes")
+                continue
+            low, est, high = band
+            chosen = None
+            try:
+                for side, (s_low, s_est, s_high) in ((0, (low, est, high)), (1, (1 - high, 1 - est, 1 - low))):
+                    book = books[market.token_ids[side]]
+                    limit = best_limit_price(book, market, Decimal(str(round(s_low, 6))), p["min_net_edge"],
+                                             int(p["max_extra_ticks"]))
+                    if limit is not None:
+                        chosen = (side, s_low, s_est, s_high, book, limit)
+                        break
+            except UnknownFees:
+                out.abstain("frais inconnus")
+                continue
+            if chosen is None:
+                out.abstain("avantage net insuffisant")
+                continue
+            side, s_low, s_est, s_high, book, (max_price, cost_ps) = chosen
+            low_d = Decimal(str(round(s_low, 6)))
+            shares = size_buy(state, prob_low=low_d, cost_per_share=cost_ps,
+                              kelly_fraction=p.get("kelly_fraction", Decimal("1")), marks=marks)
+            if shares < max(market.min_order_size, book.min_order_size):
+                out.abstain("taille autorisée trop faible")
+                continue
+            token_id = market.token_ids[side]
+            candidates.append((low_d - cost_ps, Proposal(
+                op_id=make_op_id(bucket, self.strategy_id, self.version, token_id, "BUY"),
+                side="BUY", market_id=market.market_id, event_id=market.event_id, token_id=token_id,
+                outcome=market.outcomes[side], est_probability=Decimal(str(round(s_est, 6))),
+                prob_low=low_d, prob_high=Decimal(str(round(min(s_high, 0.999), 6))),
+                max_price=max_price, shares=shares, net_edge=low_d - cost_ps,
+                sources=("polymarket_clob", f"crypto_prices:{quote.source}"),
+                uncertainty=f"volatilité ×0,8 à ×1,25 ; prix {quote.price:.2f}, σ horaire {quote.hourly_vol:.4%}",
+                invalidation="saut de prix, source de résolution différente, question mal comprise",
+                horizon_hours=Decimal(str(round(hours, 2))),
+                strategy_id=self.strategy_id, strategy_version=self.version)))
+        candidates.sort(key=lambda item: item[0], reverse=True)
+        out.proposals = [prop for _, prop in candidates[: int(p["max_proposals_per_cycle"])]]
+        return out
+
+
 STRATEGY_CLASSES: dict[str, Any] = {NaiveFavorite.strategy_id: NaiveFavorite,
+                                    CryptoThresholdStrategy.strategy_id: CryptoThresholdStrategy,
                                     CalibratedStrategy.strategy_id: CalibratedStrategy,
                                     ReversionStrategy.strategy_id: ReversionStrategy}
 

@@ -82,6 +82,31 @@ CREATE TABLE IF NOT EXISTS decisions (
     proposal TEXT,
     PRIMARY KEY (op_id, cycle_id)
 );
+CREATE TABLE IF NOT EXISTS observations (
+    source TEXT NOT NULL,
+    external_id TEXT NOT NULL,
+    published_at TEXT,
+    collected_at TEXT NOT NULL,
+    url TEXT,
+    title TEXT,
+    text TEXT,
+    author TEXT,
+    domain TEXT,
+    kind TEXT,
+    sentiment REAL,
+    reliability REAL,
+    uncertainty TEXT,
+    engagement INTEGER,
+    dup_key TEXT,
+    duplicate_of TEXT,
+    delay_seconds REAL,
+    market_ids TEXT,
+    data TEXT,
+    PRIMARY KEY (source, external_id)
+);
+CREATE INDEX IF NOT EXISTS idx_observations_time ON observations(collected_at);
+CREATE TABLE IF NOT EXISTS source_runs (source TEXT PRIMARY KEY, last_run TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS llm_calls (day TEXT PRIMARY KEY, calls INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS ledger_anchor (
     id INTEGER PRIMARY KEY CHECK (id = 1),
     seq INTEGER NOT NULL,
@@ -170,6 +195,43 @@ class Database:
              _s(fill.fee) if fill else None, json.dumps(payload, ensure_ascii=False)))
         self.conn.commit()
 
+    # ------------------------------------------------------------------ observations
+
+    def save_observations(self, observations) -> None:
+        rows = [(o.source, o.external_id, _iso(o.published_at), _iso(o.collected_at), o.url, o.title,
+                 o.text, o.author, o.domain, o.kind, o.sentiment, o.reliability, o.uncertainty,
+                 o.engagement, o.dup_key, o.duplicate_of, o.delay_seconds,
+                 json.dumps(o.market_ids), json.dumps(o.data, ensure_ascii=False, default=str))
+                for o in observations]
+        self.conn.executemany("INSERT OR IGNORE INTO observations VALUES "
+                              "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
+        self.conn.commit()
+
+    def recent_dup_keys(self, since: datetime) -> set[str]:
+        return {r[0] for r in self.conn.execute(
+            "SELECT dup_key FROM observations WHERE collected_at >= ?", (_iso(since),))}
+
+    def recent_observations(self, since: datetime) -> list[dict]:
+        cur = self.conn.execute("SELECT * FROM observations WHERE collected_at >= ?", (_iso(since),))
+        return [dict(r) for r in cur]
+
+    def source_last_run(self, source: str) -> datetime | None:
+        row = self.conn.execute("SELECT last_run FROM source_runs WHERE source=?", (source,)).fetchone()
+        return datetime.fromisoformat(row[0]) if row else None
+
+    def set_source_run(self, source: str, when: datetime) -> None:
+        self.conn.execute("INSERT OR REPLACE INTO source_runs VALUES (?, ?)", (source, _iso(when)))
+        self.conn.commit()
+
+    def llm_calls(self, day: str) -> int:
+        row = self.conn.execute("SELECT calls FROM llm_calls WHERE day=?", (day,)).fetchone()
+        return int(row[0]) if row else 0
+
+    def count_llm_call(self, day: str) -> None:
+        self.conn.execute("INSERT INTO llm_calls VALUES (?, 1) ON CONFLICT(day) DO UPDATE SET calls = calls + 1",
+                          (day,))
+        self.conn.commit()
+
     # ------------------------------------------------------------------ ancrage
 
     def get_anchor(self) -> tuple[int, str] | None:
@@ -187,7 +249,7 @@ class Database:
         """Base tournante : supprime les plus vieux snapshots si la taille dépasse le plafond."""
         if self.path.stat().st_size <= max_megabytes * 1024 * 1024:
             return False
-        for table in ("book_snapshots", "market_snapshots"):
+        for table in ("book_snapshots", "market_snapshots", "observations"):
             self.conn.execute(
                 f"DELETE FROM {table} WHERE rowid IN (SELECT rowid FROM {table} "
                 f"ORDER BY collected_at LIMIT (SELECT COUNT(*) / 4 FROM {table}))")

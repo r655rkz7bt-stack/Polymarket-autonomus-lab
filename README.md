@@ -8,7 +8,7 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 - Cahier des charges : [`docs/CAHIER_DES_CHARGES.md`](docs/CAHIER_DES_CHARGES.md)
 - Règles permanentes pour Claude : [`CLAUDE.md`](CLAUDE.md)
 
-## État d'avancement (étape 4 terminée — 14/10/2026)
+## État d'avancement (étape 5 terminée — 15/10/2026)
 
 | Fonction | État |
 |---|---|
@@ -23,10 +23,15 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Historique non biaisé : 111 528 marchés résolus sur 40 jours tirés au hasard | ✅ `data/history/` |
 | Backtest via le vrai journal et le vrai contrôleur, anti-fuite temporelle | ✅ testé |
 | Portefeuilles « fantômes » (journal séparé par stratégie à l'essai) | ✅ testé |
-| **Stratégie rentable prouvée** | ❌ aucune — voir `experiments/BILAN_2026-10-14.md` |
-| Capital principal | « ne rien faire » (meilleure option validée) |
-| reversion v1 | 🧪 en fantôme sur de vrais carnets |
-| Actualités, prix crypto, commentaires | ⏳ étape 5 |
+| Liberté de trading totale (seule règle : à 0 € tu meurs) | ✅ décision du 15/10/2026 |
+| Arène : 4 stratégies en compétition, champion automatique, élimination hebdo | ✅ testé |
+| Cliquet des paliers (×1,5) inscrit dans le journal signé | ✅ testé |
+| Feuille de mission du chercheur (`scripts/research_brief.py`) | ✅ testé |
+| Sources : commentaires Polymarket | ✅ vérifié en réel |
+| Sources : prix crypto, GDELT, RSS, Bluesky | ✅ testées (réponses simulées) — ⚠️ domaines bloqués ici |
+| Gemini (gratuit, optionnel) | ✅ testé — inactif tant qu'il n'y a pas de clé |
+| Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
+| **Stratégie rentable prouvée** | ❌ pas encore — l'arène tranche en réel |
 | Laboratoire complet, promotion automatique, 7 stratégies | ⏳ étape 6 |
 | Tableau de bord GitHub Pages | ⏳ étape 7 |
 | Verrouillage GitHub (rulesets, `guard`) | ⏳ étape 8 |

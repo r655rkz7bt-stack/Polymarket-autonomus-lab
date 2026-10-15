@@ -47,6 +47,8 @@ class MarketInfo:
     # Caractéristiques passées de l'issue n°0 (remplies par le cycle, None si inconnues).
     yes_price_6h_ago: float | None = None
     changes_24h: int | None = None
+    intel: object | None = None  # social_intelligence.MarketIntel (étape 5)
+    crypto_quote: object | None = None  # sources.crypto_prices.CryptoQuote de l'actif concerné
     eligible: bool = False
     exclusion: str = ""
 

@@ -285,3 +285,17 @@ def test_milestone_is_recorded_in_the_cycle(env, paths):
 def test_repository_config_competitors():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
     assert len(loaded) >= 3  # innovation obligatoire : au moins 3 idées en test
+
+
+def test_collector_crash_never_stops_the_cycle(env, paths):
+    """Mode dégradé : même une panne totale de la collecte laisse le cycle trader."""
+    make, _, _ = env
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}))
+
+    def broken(markets, now):
+        raise RuntimeError("toutes les sources en panne")
+    deps.collector = broken
+    report = run_cycle(deps)
+    assert report.status == "OK"
+    assert report.sources["collecte"].startswith("indisponible")
+    assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1

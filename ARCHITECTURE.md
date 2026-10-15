@@ -217,3 +217,32 @@ faire » (drawdown nul) : à trancher par Etienne avant l'étape 6.
   remplacer les éliminées, idée radicale après 7 jours sans palier. Lu par le chercheur en début
   de session (CLAUDE.md).
 - Toutes les ressources gratuites sont disponibles dès le départ ; X reste désactivé (payant).
+
+## 16. Étape 5 — sources d'information (15 octobre 2026)
+
+| module | rôle |
+|---|---|
+| `sources/polymarket_comments.py` | commentaires des événements (format vérifié par appel réel) |
+| `sources/crypto_prices.py` | prix et volatilité horaire (Coinbase, repli Kraken) |
+| `sources/gdelt.py` | actualités mondiales (GDELT DOC 2.0) |
+| `sources/rss.py` | 10 flux RSS/Atom (médias FR/EN, Fed, BCE, Maison-Blanche), analyse en bibliothèque standard |
+| `sources/bluesky.py` | publications Bluesky (compte optionnel) |
+| `sources/gemini.py` | classement optionnel (gratuit, plafond quotidien, texte encadré comme donnée) |
+| `sources/x_api.py` | X : désactivé (payant) |
+| `observations.py` | observation complète : dates, délai, fiabilité, incertitude, type, sentiment, doublons |
+| `data_collector.py` | fréquence par source, mode dégradé, enregistrement, dédoublonnage |
+| `social_intelligence.py` | rattachement aux marchés, volumes 1 h / 24 h, pic, sources indépendantes, signal |
+| `intel_pipeline.py` | assemblage pour le cycle (étape 6 bis) |
+| `crypto_model.py` + stratégie `crypto_threshold` | probabilité indépendante pour les marchés crypto à seuil |
+
+Règles appliquées par construction : la viralité n'entre dans aucun signal ; un message isolé
+n'est jamais un signal (≥ 2 domaines indépendants, copies exclues) ; l'absence d'information
+n'est pas un signal ; une source en panne attend sa fréquence normale et ne bloque rien ;
+analyse toujours marquée partielle (X absent). Une date de publication dans le futur est
+signalée comme suspecte.
+
+**Limite au 15/10/2026 :** depuis l'environnement Claude Code, seules les API Polymarket sont
+joignables. Coinbase, Kraken, GDELT, Bluesky et les flux RSS renvoient 403 : formats codés
+d'après leur documentation publique et testés sur des réponses simulées, à vérifier par un vrai
+appel dès que les domaines sont autorisés. En production (GitHub Actions), pas de blocage attendu.
+Gemini s'active avec la clé `GEMINI_API_KEY` (environnement `production`, étape 8).

@@ -44,24 +44,35 @@ sources:
     enabled: true
     base_url: https://clob.polymarket.com
     books_batch_size: 20
-  # Sources ajoutées à l'étape 5 (désactivées pour l'instant).
-  polymarket_comments: {enabled: false}
-  crypto_prices: {enabled: false}
-  gdelt: {enabled: false}
-  rss: {enabled: false}
-  bluesky: {enabled: false}
-  x_api: {enabled: false}      # payant : reste désactivé
+  # Étape 5 — toutes les sources gratuites actives dès le départ (décision du 15/10/2026).
+  # Une source indisponible ne bloque jamais le cycle (mode dégradé, analyse partielle).
+  polymarket_comments: {enabled: true, every_minutes: 15, per_event: 20}
+  crypto_prices: {enabled: true, every_minutes: 5}          # Coinbase, repli Kraken
+  gdelt: {enabled: true, every_minutes: 15, queries_per_run: 3, timespan: 3h}
+  bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
+  rss:
+    enabled: true
+    every_minutes: 15
+    feeds:
+      - {name: BBC World, url: "https://feeds.bbci.co.uk/news/world/rss.xml", language: en}
+      - {name: BBC Sport, url: "https://feeds.bbci.co.uk/sport/rss.xml", language: en}
+      - {name: NYT World, url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml", language: en}
+      - {name: ESPN, url: "https://www.espn.com/espn/rss/news", language: en}
+      - {name: CoinDesk, url: "https://www.coindesk.com/arc/outboundfeeds/rss/", language: en}
+      - {name: Le Monde, url: "https://www.lemonde.fr/rss/une.xml", language: fr}
+      - {name: France Info, url: "https://www.francetvinfo.fr/titres.rss", language: fr}
+      - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml", official: true, language: en}
+      - {name: BCE, url: "https://www.ecb.europa.eu/rss/press.html", official: true, language: en}
+      - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
+  x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
+
+collector:
+  markets_per_cycle: 5         # marchés surveillés pour lesquels on cherche des actualités
 
 llm:
-  enabled: false               # aucun modèle d'IA dans le cycle par défaut
+  # Gemini (offre gratuite Google AI Studio) : actif dès qu'Etienne ajoute GEMINI_API_KEY.
+  enabled: true
   provider: gemini
-  max_calls_per_day: 0
-
-# Arène (décision d'Etienne, 15/10/2026) : compétition entre stratégies.
-arena:
-  min_closed_trades: 20            # pour devenir champion
-  promotion_margin: 0.0            # écart de croissance log pour détrôner le champion
-  elimination_every_days: 7        # la pire stratégie est éliminée une fois par semaine
-  min_days_before_elimination: 7
-  min_strategies_in_test: 3        # innovation obligatoire (signalée par research_brief.py)
-  radical_idea_after_days_without_record: 7
+  model: gemini-2.5-flash      # à revérifier sur ai.google.dev au moment d'activer la clé
+  max_calls_per_day: 200       # sous le quota gratuit ; jamais de dépassement
+  markets_per_cycle: 2

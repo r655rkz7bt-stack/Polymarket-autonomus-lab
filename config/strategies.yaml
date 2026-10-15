@@ -61,3 +61,17 @@ calibration:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+crypto_threshold:
+  # Étape 5 : probabilité indépendante pour les marchés crypto à seuil (prix au comptant +
+  # volatilité réalisée, modèle log-normal ; crypto_model.py). Jugée par l'arène en réel.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    min_net_edge:    {value: 0.03, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    max_quote_age_minutes: {value: 20, min: 1, max: 120}
+    min_hours:       {value: 0.5, min: 0.1, max: 72}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet
