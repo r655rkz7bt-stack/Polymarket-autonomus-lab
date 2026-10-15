@@ -2,9 +2,10 @@
 
 - Chaque stratégie active trade dans son propre journal fantôme (1 000 virtuels, vrais
   carnets). Le classement se fait sur la croissance logarithmique du capital RÉALISÉ.
-- Le meilleur en direct devient automatiquement le « champion » dès qu'il a au moins N
-  opérations clôturées et qu'il bat à la fois « ne rien faire » (croissance > 0) et le
-  champion en titre.
+- Le meilleur en direct devient automatiquement le « champion » dès qu'il passe le seuil
+  d'ENTRÉE (config/promotion.yaml : opérations clôturées, ancienneté, croissance minimale) et
+  bat le champion en titre d'une marge ; il le reste tant que sa croissance dépasse le seuil
+  de MAINTIEN, plus bas (hystérésis : pas de va-et-vient sur du bruit).
 - Le capital principal se répartit entre les meilleures stratégies éligibles (au plus
   `max_strategies_in_main`), chacune avec une part proportionnelle à sa croissance : la
   somme des parts vaut 1, l'exposition totale reste celle d'une seule stratégie
@@ -52,17 +53,32 @@ def ranking(standings: list[Standing]) -> list[Standing]:
     return sorted(standings, key=lambda s: (s.eliminated, -s.log_growth, -s.closed_trades))
 
 
+def _old_enough(s: Standing, now: datetime | None, min_age_hours: float) -> bool:
+    return min_age_hours <= 0 or (now is not None and s.days(now) * 24 >= min_age_hours)
+
+
+def _enters(s: Standing, min_trades: int, now: datetime | None, min_age_hours: float,
+            min_growth: float) -> bool:
+    """Seuil d'ENTRÉE (devenir champion ou recevoir une part) : assez d'opérations, assez
+    d'ancienneté, et une croissance qui bat « ne rien faire » d'au moins `min_growth`."""
+    return (not s.eliminated and s.closed_trades >= min_trades and s.log_growth > 0
+            and s.log_growth >= min_growth and _old_enough(s, now, min_age_hours))
+
+
 def choose_champion(standings: list[Standing], current: str, min_trades: int,
-                    margin: float = 0.0) -> tuple[str, str]:
-    """(nouveau champion, raison). "" = ne rien faire."""
+                    margin: float = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
+                    min_growth: float = 0.0, keep_growth: float = 0.0) -> tuple[str, str]:
+    """(nouveau champion, raison). "" = ne rien faire.
+
+    Hystérésis : on entre à `min_growth`, on reste tant que la croissance dépasse `keep_growth`
+    (plus bas) ; sinon un champion promu sur du bruit tombe au cycle suivant (15/10/2026)."""
     by_name = {s.name: s for s in standings}
-    eligible = [s for s in standings
-                if not s.eliminated and s.closed_trades >= min_trades and s.log_growth > 0]
+    eligible = [s for s in standings if _enters(s, min_trades, now, min_age_hours, min_growth)]
     best = max(eligible, key=lambda s: s.log_growth, default=None)
     incumbent = by_name.get(current)
     # Un champion n'est jugé qu'à partir de `min_trades` opérations clôturées.
     incumbent_ok = (incumbent is not None and not incumbent.eliminated
-                    and (incumbent.closed_trades < min_trades or incumbent.log_growth > 0))
+                    and (incumbent.closed_trades < min_trades or incumbent.log_growth > keep_growth))
     if current and not incumbent_ok:
         if best is None:
             return "", "le champion ne bat plus « ne rien faire » (ou a disparu)"
@@ -78,11 +94,16 @@ def choose_champion(standings: list[Standing], current: str, min_trades: int,
                        f"{best.closed_trades} opérations clôturées")
 
 
-def allocation(standings: list[Standing], min_trades: int, max_strategies: int) -> dict[str, float]:
-    """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne bat
-    « ne rien faire » sur assez d'opérations)."""
+def allocation(standings: list[Standing], min_trades: int, max_strategies: int, *,
+               now: datetime | None = None, min_age_hours: float = 0.0, min_growth: float = 0.0,
+               champion: str = "", keep_growth: float = 0.0) -> dict[str, float]:
+    """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
+    le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`."""
+    def kept(s: Standing) -> bool:
+        return (s.name == champion and not s.eliminated and s.closed_trades >= min_trades
+                and s.log_growth > max(keep_growth, 0.0))
     eligible = sorted((s for s in standings
-                       if not s.eliminated and s.closed_trades >= min_trades and s.log_growth > 0),
+                       if _enters(s, min_trades, now, min_age_hours, min_growth) or kept(s)),
                       key=lambda s: s.log_growth, reverse=True)[:max(0, max_strategies)]
     total = sum(s.log_growth for s in eligible)
     return {s.name: s.log_growth / total for s in eligible} if total > 0 else {}
@@ -110,10 +131,13 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     standings = [standing(name, ledger, main.state.eliminated) for name, ledger in competitors.items()]
     # Règles obligatoires (config/promotion.yaml) : pas de valeur par défaut silencieuse.
     min_trades = int(cfg["min_closed_trades"])
+    gates = {"now": now, "min_age_hours": float(cfg["min_age_hours"]),
+             "min_growth": float(cfg["min_log_growth"])}
+    keep = float(cfg["keep_log_growth"])
     events = []
     previous = main.state.champion
     champion, reason = choose_champion(standings, previous, min_trades,
-                                       float(cfg["promotion_margin"]))
+                                       float(cfg["promotion_margin"]), keep_growth=keep, **gates)
     if champion != previous:
         main.record_promotion(champion, reason, {"from": previous}, now)
         events.append(f"promotion : {champion or 'ne rien faire'} ({reason})")
@@ -125,7 +149,8 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)
         events.append(f"élimination : {loser.name}")
     final = ranking([standing(n, l, main.state.eliminated) for n, l in competitors.items()])
-    shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]))
+    shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
+                        champion=main.state.champion, keep_growth=keep, **gates)
     return {"champion": main.state.champion, "events": events, "allocation": shares,
             "classement": [s.__dict__ | {"started_at": s.started_at.isoformat() if s.started_at else None}
                            for s in final]}

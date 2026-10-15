@@ -3,7 +3,7 @@
 #
 # ARÈNE : chaque stratégie activée trade dans son propre portefeuille fantôme (1 000 virtuels,
 # vrais carnets). Le capital principal suit automatiquement le champion choisi par
-# src/polymarket_agent/arena.py (meilleure croissance après >= 20 opérations clôturées).
+# src/polymarket_agent/arena.py (seuils d'entrée et de maintien : config/promotion.yaml).
 # Au moins 3 idées doivent être en test en permanence ; la pire est éliminée chaque semaine.
 
 naive_favorite:

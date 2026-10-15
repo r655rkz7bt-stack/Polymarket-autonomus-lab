@@ -2,9 +2,17 @@
 # changer ; chaque changement passe par une pull request, visible dans l'historique.
 # Lues par scripts/run_simulation.py et scripts/research_brief.py (arena.py, brief.py).
 
-min_closed_trades: 10            # pour devenir champion, recevoir une part du capital, être jugé (20 → 10 le 15/10/2026)
+# Seuil d'ENTRÉE (devenir champion ou recevoir une part du capital principal) : les trois à la fois.
+# Durcis le 15/10/2026 : market_structure avait été promue sur +0,02 % après 27 opérations en
+# 3 h (du bruit), puis destituée 10 minutes plus tard. Le chercheur peut tout changer ici.
+min_closed_trades: 20            # opérations clôturées dans son fantôme (aussi : seuil pour être jugé/éliminé)
+min_age_hours: 24                # ancienneté minimale du fantôme (une journée de marchés réels)
+min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 (≈ +2 %)
+# Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
+# que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
+keep_log_growth: 0.0
+promotion_margin: 0.01           # un challenger doit dépasser le champion de 0,01 (≈ +1 %)
 max_strategies_in_main: 5        # le capital principal se répartit entre les 5 meilleures au plus
-promotion_margin: 0.0            # écart de croissance log nécessaire pour détrôner le champion
 elimination_every_days: 7        # la pire stratégie éligible est éliminée une fois par semaine
 min_days_before_elimination: 7
 min_strategies_in_test: 3        # innovation obligatoire

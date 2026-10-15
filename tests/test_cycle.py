@@ -249,7 +249,7 @@ def test_corrupt_shadow_is_ignored_main_continues(env, paths, tmp_path):
 
 
 def test_without_champion_main_capital_does_nothing(env, paths, tmp_path):
-    """Aucune stratégie éligible (moins de 10 opérations clôturées) : le principal ne trade pas,
+    """Aucune stratégie éligible (trop peu d'opérations clôturées) : le principal ne trade pas,
     mais chaque stratégie trade dans son fantôme."""
     make, _, _ = env
     report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()})))

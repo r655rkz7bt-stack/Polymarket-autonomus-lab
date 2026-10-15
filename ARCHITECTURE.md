@@ -208,9 +208,13 @@ faire » (drawdown nul) : à trancher par Etienne avant l'étape 6.
   dans le journal signé (`MILESTONE`), avec le temps mis. Impossible d'inscrire un palier non atteint.
 - **Arène** (`arena.py`) : chaque stratégie active trade dans son portefeuille fantôme (1 000,
   vrais carnets). Classement par croissance logarithmique du capital réalisé.
-- **Champion** : le meilleur avec ≥ 20 opérations clôturées, qui bat « ne rien faire » et le
-  champion en titre. Le capital principal suit ses décisions (`PROMOTION` signée). Un nouveau
-  champion n'est jugé qu'après 20 opérations ; déchu s'il passe sous « ne rien faire ».
+- **Champion** (seuils dans `config/promotion.yaml`, libres) : seuil d'ENTRÉE = ≥ 20 opérations
+  clôturées, ≥ 24 h d'ancienneté et ≥ +2 % de croissance ; il doit battre le champion en titre de
+  +1 %. Seuil de MAINTIEN plus bas (au-dessus de « ne rien faire ») : pas de va-et-vient sur du
+  bruit (durci le 15/10/2026 après une promotion à +0,02 % destituée 10 minutes plus tard). Le
+  capital principal se répartit entre les stratégies qui passent l'entrée (et le champion tant
+  qu'il tient le maintien). `PROMOTION` signée. Une stratégie retirée garde la main sur les
+  ventes de ses positions du principal, sans racheter.
 - **Élimination** : une fois par semaine, la pire stratégie éligible (≥ 20 opérations, ≥ 7 jours,
   jamais le champion) est éliminée (`ELIMINATION` signée) et ne trade plus.
 - **Innovation obligatoire** (`brief.py`, `scripts/research_brief.py`) : ≥ 3 idées en test,
