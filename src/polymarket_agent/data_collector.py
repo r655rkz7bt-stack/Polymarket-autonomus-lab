@@ -9,6 +9,7 @@
 
 from __future__ import annotations
 
+import copy
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
@@ -36,6 +37,15 @@ class Collection:
     @property
     def sources_down(self) -> list[str]:
         return [name for name, state in self.status.items() if state.startswith("indisponible")]
+
+
+def with_retries(http, max_retries):
+    """Copie du client HTTP avec son propre nombre de nouveaux essais (None = inchangé)."""
+    if max_retries is None or not hasattr(http, "max_retries"):
+        return http
+    clone = copy.copy(http)
+    clone.max_retries = int(max_retries)
+    return clone
 
 
 def _due(db, name: str, every_minutes: float, now: datetime) -> bool:
@@ -105,7 +115,8 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
                                                          o.published_at, o.domain)
         return obs
     run("crypto_prices", crypto)
-    run("gdelt", lambda cfg: factories.get("gdelt", lambda: GdeltSource(http, cfg.get("timespan", "3h")))()
+    run("gdelt", lambda cfg: factories.get("gdelt", lambda: GdeltSource(
+        with_retries(http, cfg.get("max_retries")), cfg.get("timespan", "3h")))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
     run("rss", lambda cfg: factories.get("rss", lambda: RssSource(cfg.get("feeds", [])))().fetch(now))
     run("bluesky", lambda cfg: factories.get("bluesky", lambda: BlueskySource(http))()
