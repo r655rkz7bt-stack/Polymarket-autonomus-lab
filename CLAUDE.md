@@ -73,8 +73,11 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
    éliminées à remplacer, idée radicale si aucun palier depuis 7 jours).
 3. Mission : battre le record, atteindre le palier suivant le plus vite possible, sans jamais
    atteindre 0. Prends des risques et essaie des idées neuves ; l'arène tranche en conditions réelles.
-4. Une nouvelle stratégie = une classe dans `strategy_engine.py`, une entrée dans
-   `strategies.yaml`, des tests. Elle entre dans l'arène dans son propre portefeuille fantôme.
+4. Une nouvelle stratégie = une classe dans `strategy_engine.py` ou `strategies_v2.py`, une entrée
+   dans `strategies.yaml`, des tests. Elle entre dans l'arène dans son propre portefeuille fantôme.
+5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
+   Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
+6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.
 
 ## Commandes
 
@@ -86,4 +89,5 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 - Un cycle unique : `.venv/bin/python scripts/run_simulation.py --once --dev-key`
 - Feuille de mission : `.venv/bin/python scripts/research_brief.py --dev-key`
 - Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
+- Laboratoire : `.venv/bin/python scripts/lab.py` (ajouter `--apply` pour écrire les recommandations)
 - `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.

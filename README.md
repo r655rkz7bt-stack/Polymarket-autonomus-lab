@@ -8,7 +8,7 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 - Cahier des charges : [`docs/CAHIER_DES_CHARGES.md`](docs/CAHIER_DES_CHARGES.md)
 - Règles permanentes pour Claude : [`CLAUDE.md`](CLAUDE.md)
 
-## État d'avancement (étape 5 terminée — 15/10/2026)
+## État d'avancement (étape 6 terminée — 15/10/2026)
 
 | Fonction | État |
 |---|---|
@@ -24,7 +24,10 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Backtest via le vrai journal et le vrai contrôleur, anti-fuite temporelle | ✅ testé |
 | Portefeuilles « fantômes » (journal séparé par stratégie à l'essai) | ✅ testé |
 | Liberté de trading totale (seule règle : à 0 € tu meurs) | ✅ décision du 15/10/2026 |
-| Arène : 4 stratégies en compétition, champion automatique, élimination hebdo | ✅ testé |
+| Arène : 9 stratégies (les 7 familles du cahier des charges + 2), champion automatique, élimination hebdo | ✅ testé |
+| Ventes (sorties objectif / stop / durée) | ✅ testé, vérifié en réel |
+| Moteur d'apprentissage (verdicts par stratégie) | ✅ testé |
+| Laboratoire : walk-forward, paramètres bornés, pénalité des essais multiples | ✅ testé |
 | Cliquet des paliers (×1,5) inscrit dans le journal signé | ✅ testé |
 | Feuille de mission du chercheur (`scripts/research_brief.py`) | ✅ testé |
 | Sources : commentaires Polymarket | ✅ vérifié en réel |
@@ -32,7 +35,6 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Gemini (gratuit, optionnel) | ✅ testé — inactif tant qu'il n'y a pas de clé |
 | Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
 | **Stratégie rentable prouvée** | ❌ pas encore — l'arène tranche en réel |
-| Laboratoire complet, promotion automatique, 7 stratégies | ⏳ étape 6 |
 | Tableau de bord GitHub Pages | ⏳ étape 7 |
 | Verrouillage GitHub (rulesets, `guard`) | ⏳ étape 8 |
 | Exécution automatique toutes les 5 min | ⏳ étape 9 |
@@ -57,6 +59,8 @@ Chaque commande, à quoi elle sert, et comment vérifier :
    Vérification : le tableau « Capital » s'affiche, puis un rapport par portefeuille fantôme.
 7. (Recherche, long) `.venv/bin/python scripts/research_calibration.py` — refait l'étude sur
    `data/history/` (environ 1 minute). Ne jamais ajouter `--final-test` sans protocole écrit avant.
+8. (Laboratoire, ≈ 4 minutes) `.venv/bin/python scripts/lab.py` — teste des variantes de paramètres
+   en walk-forward. Vérification : un rapport `experiments/lab_*.md` est écrit.
 
 Codes de sortie de `run_simulation.py` : `0` OK / dégradé / faillite, `1` erreur, `2` journal corrompu ou absent.
 

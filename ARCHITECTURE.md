@@ -252,3 +252,38 @@ signalée comme suspecte.
 - `crypto_threshold` : les 48 questions crypto du moment sont toutes correctement comprises ;
   le modèle colle aux prix du marché, mais sous-estime les queues : intervalle élargi (σ × 0,75 à × 1,5).
 - Gemini s'active avec la clé `GEMINI_API_KEY` (environnement `production`, étape 8).
+
+## 17. Étape 6 — laboratoire de stratégies (15 octobre 2026)
+
+**Les 7 familles du cahier des charges sont dans l'arène** (9 stratégies, chacune dans son fantôme) :
+
+| # cahier | stratégie | idée | état |
+|---|---|---|---|
+| 1 | `reversion` | surréaction après un mouvement ≥ 0,10 en 6 h | active |
+| 2 | `news_momentum` | actualité confirmée + mouvement amorcé → continuation | active (attend des actualités confirmées) |
+| 3 | `information_advantage` | annonce officielle fraîche non intégrée | inerte sans Gemini (direction inconnue) |
+| 4 | `calibration`, `crypto_threshold` | probabilité indépendante vs prix | actives |
+| 5 | `market_structure` | déséquilibre du carnet, sorties objectif/stop/durée | active |
+| 6 | `social_sentiment` | emballement social non confirmé → pari contraire | inerte sans Gemini |
+| 7 | `cross_market` | incohérences d'échelles de seuils → arbitrage sans risque | active |
+| — | `naive_favorite` | référence naïve définie à l'avance | active (repère) |
+
+**Nouveaux mécanismes :** ventes (sorties) passant par relecture du carnet, contrôleur et journal
+signé ; marchés supplémentaires demandés par les stratégies ; moteur d'apprentissage
+(`learning_engine.py`) avec verdicts par stratégie ; walk-forward (`backtest.walk_forward`, test
+anti-fuite : l'ajustement ne voit que le passé à chaque pli) ; laboratoire (`scripts/lab.py`) qui
+adapte les paramètres dans leurs bornes avec un score pénalisé pour les essais multiples
+(`deflated_score`) ; règles de l'arène dans `config/promotion.yaml` (protégé).
+
+**Constats du laboratoire (walk-forward 4 plis, 111 528 marchés) :**
+- `naive_favorite` perd sur toutes les variantes ;
+- `calibration` : certaines variantes gagnent, aucune ne bat la configuration actuelle une fois la
+  pénalité des essais multiples appliquée ;
+- `reversion` : gains invraisemblables (≈ ×16 par pli), artefact déjà diagnostiqué (prix
+  historiques non exécutables) : l'arène sur vrais carnets tranche ;
+- avec Kelly complet sans plafond, une stratégie à l'avantage surestimé s'effondre vite
+  (calibration : −46 % en validation, drawdown 72 %). Leçon pour le chercheur : réduire
+  `kelly_fraction` quand l'avantage est incertain.
+
+**Défauts corrigés (avec tests de non-régression) :** section arène perdue lors d'une édition
+de settings.yaml (règles désormais obligatoires) ; prix crypto absent entre deux collectes.
