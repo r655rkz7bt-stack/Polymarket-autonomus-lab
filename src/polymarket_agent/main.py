@@ -14,6 +14,7 @@ Arène (décision d'Etienne, 15/10/2026) :
 from __future__ import annotations
 
 import dataclasses
+import json
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -131,6 +132,35 @@ def _open_shadows(deps: CycleDeps, report: CycleReport, now: datetime) -> list[P
     return shadows
 
 
+class Weighted:
+    """Une stratégie de l'arène vue par le capital principal : ses achats sont réduits à sa part
+    du capital (somme des parts = 1). Ses ventes ne sont pas réduites : elles portent sur les
+    parts que le principal détient réellement."""
+
+    def __init__(self, strategy, weight: Decimal):
+        self.inner, self.weight = strategy, weight
+        self.strategy_id, self.version = strategy.strategy_id, strategy.version
+        self.needs_price_history = getattr(strategy, "needs_price_history", False)
+        if hasattr(strategy, "exits"):
+            self.exits = strategy.exits
+
+    def propose(self, *args, **kwargs):
+        output = self.inner.propose(*args, **kwargs)
+        scaled = []
+        for p in output.proposals:
+            if p.side != "BUY":
+                scaled.append(p)
+                continue
+            shares = (p.shares * self.weight).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            if shares > 0:
+                scaled.append(dataclasses.replace(p, shares=shares))
+        output.proposals = scaled
+        return output
+
+    def __getattr__(self, name):
+        return getattr(self.inner, name)
+
+
 def competitor_name(strategy) -> str:
     return f"{strategy.strategy_id}_v{strategy.version}"
 
@@ -204,21 +234,45 @@ def _halt(deps: CycleDeps, report: CycleReport, status: str, message: str) -> Cy
     return report
 
 
+PRICE_FEATURES_MAX_AGE = 20 * 60   # secondes : au-delà, l'historique d'un marché est relu
+PRICE_FEATURES_PER_CYCLE = 40      # relectures au plus par cycle (150 marchés suivis)
+
+
 def _attach_price_features(deps: CycleDeps, watchlist: list[MarketInfo], now: datetime) -> None:
-    """Prix de l'issue n°0 il y a 6 h et activité sur 24 h, calculés comme dans le backtest.
-    Une erreur sur un marché le laisse sans caractéristiques (les stratégies s'abstiennent)."""
+    """Prix de l'issue n°0 il y a 6 h et 1 h, et activité sur 24 h, calculés comme dans le
+    backtest. Avec 150 marchés suivis, l'historique de chaque marché est gardé en base et relu
+    au plus toutes les 20 minutes (les plus anciens d'abord). Une erreur laisse le marché sans
+    caractéristiques : les stratégies qui en ont besoin s'abstiennent."""
     ts = int(now.timestamp())
+    cached = {}
     for market in watchlist:
-        if not market.token_ids:
+        if market.token_ids:
+            raw = deps.db.get_value(f"prix:{market.token_ids[0]}")
+            cached[market.market_id] = json.loads(raw) if raw else None
+    stale = sorted((m for m in watchlist if m.token_ids),
+                   key=lambda m: (cached[m.market_id] or {}).get("ts", 0))
+    budget = PRICE_FEATURES_PER_CYCLE
+    for market in stale:
+        entry = cached[market.market_id]
+        if (entry is None or ts - entry.get("ts", 0) > PRICE_FEATURES_MAX_AGE) and budget > 0:
+            budget -= 1
+            try:
+                points = deps.clob.get_price_history(market.token_ids[0], ts - 31 * 3600, ts)
+            except (SourceUnavailable, ValueError) as exc:
+                log.warning("historique de prix indisponible pour %s : %s", market.market_id, exc)
+                continue
+            entry = {"ts": ts, "p6": _f(price_at(points, ts - 6 * 3600)),
+                     "p1": _f(price_at(points, ts - 3600)), "changes": changes_in_window(points, ts)}
+            deps.db.set_value(f"prix:{market.token_ids[0]}", json.dumps(entry))
+        if entry is None:
             continue
-        try:
-            points = deps.clob.get_price_history(market.token_ids[0], ts - 31 * 3600, ts)
-        except (SourceUnavailable, ValueError) as exc:
-            log.warning("historique de prix indisponible pour %s : %s", market.market_id, exc)
-            continue
-        market.yes_price_6h_ago = price_at(points, ts - 6 * 3600)
-        market.yes_price_1h_ago = price_at(points, ts - 3600)
-        market.changes_24h = changes_in_window(points, ts)
+        market.yes_price_6h_ago = entry["p6"]
+        market.yes_price_1h_ago = entry["p1"]
+        market.changes_24h = entry["changes"]
+
+
+def _f(value):
+    return None if value is None else float(value)
 
 
 def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bucket: str) -> None:
@@ -247,8 +301,13 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
+    # Le capital principal suit les meilleures stratégies, chacune pour sa part (arena.allocation).
+    shares = report.arena.get("allocation", {})
     champion = main.ledger.state.champion
-    main.strategies = [s for n, p in competitors.items() if n == champion for s in p.strategies]
+    if not shares and champion and champion not in main.ledger.state.eliminated:
+        shares = {champion: 1.0}  # champion en titre sans part calculée : il garde tout le capital
+    main.strategies = [Weighted(s, Decimal(str(round(w, 6)))) for n, p in competitors.items()
+                       if n in shares for w in [shares[n]] for s in p.strategies]
     for event in report.arena.get("events", []):
         log.info("ARÈNE : %s", event)
 

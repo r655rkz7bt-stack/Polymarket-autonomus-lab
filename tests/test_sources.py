@@ -458,3 +458,29 @@ def test_repository_feed_list_is_large_and_well_formed():
     urls = [f["url"] for f in feeds]
     assert len(feeds) >= 50 and len(set(urls)) == len(urls)
     assert all(u.startswith("https://") for u in urls)
+
+
+def test_gemini_never_pays_twice_for_the_same_text(tmp_path, monkeypatch):
+    """15 marchés par cycle : seuls les textes jamais classés pour un marché partent chez Gemini."""
+    from polymarket_agent import intel_pipeline
+    db = Database(tmp_path / "db.sqlite")
+    sent = []
+
+    def fake_classify(self, question, observations, now):
+        sent.append([o.external_id for o in observations])
+        return {o.external_id: {"kind": "fait rapporté", "stance": "oui", "confidence": 0.5} for o in observations}
+    monkeypatch.setattr(intel_pipeline.GeminiClassifier, "classify", fake_classify)
+    monkeypatch.setattr(intel_pipeline.GeminiClassifier, "available", property(lambda self: True))
+    markets = [parse_market(raw_market(question="Will Real Madrid beat Roma?"))]
+    texts = [obs("Real Madrid beat Roma in Rome", ext="a"), obs("Roma Real Madrid preview", domain="lemonde.fr", ext="b")]
+    cfg = dict(settings(), llm={"enabled": True, "markets_per_cycle": 15, "max_calls_per_day": 100})
+    run = intel_pipeline.make_collector(cfg, None, db, {"gdelt": lambda: Fixed(texts), "rss": lambda: Fixed([]),
+                                                        "polymarket_comments": lambda: Boom(),
+                                                        "crypto_prices": lambda: Boom()})
+    first = run(markets, NOW)
+    assert sent == [["a", "b"]] and first["gemini"].startswith("ok (2 nouveaux")
+    db.set_source_run("gdelt", NOW - timedelta(hours=2))  # nouvelle collecte avec un 3e texte
+    texts.append(obs("Real Madrid Roma injury news", domain="espn.com", ext="c"))
+    second = run(markets, NOW + timedelta(minutes=20))
+    assert sent[1] == ["c"] and "3 au total" in second["gemini"]
+    db.close()

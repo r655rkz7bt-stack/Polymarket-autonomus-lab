@@ -108,6 +108,13 @@ CREATE INDEX IF NOT EXISTS idx_observations_time ON observations(collected_at);
 CREATE TABLE IF NOT EXISTS source_runs (source TEXT PRIMARY KEY, last_run TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS llm_calls (day TEXT PRIMARY KEY, calls INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS stances (
+    market_id TEXT NOT NULL,
+    external_id TEXT NOT NULL,
+    stance TEXT NOT NULL,
+    collected_at TEXT NOT NULL,
+    PRIMARY KEY (market_id, external_id)
+);
 CREATE TABLE IF NOT EXISTS ledger_anchor (
     id INTEGER PRIMARY KEY CHECK (id = 1),
     seq INTEGER NOT NULL,
@@ -249,6 +256,20 @@ class Database:
                           (key, value, datetime.now(timezone.utc).isoformat()))
         self.conn.commit()
 
+    def get_stances(self, market_id: str, external_ids: list[str]) -> dict[str, dict]:
+        """Classements Gemini déjà faits pour ce marché : on ne repaie jamais deux fois un texte."""
+        if not external_ids:
+            return {}
+        marks = ",".join("?" * len(external_ids))
+        rows = self.conn.execute(f"SELECT external_id, stance FROM stances WHERE market_id=? "
+                                 f"AND external_id IN ({marks})", (market_id, *external_ids)).fetchall()
+        return {r[0]: json.loads(r[1]) for r in rows}
+
+    def save_stances(self, market_id: str, stances: dict[str, dict], now: datetime) -> None:
+        self.conn.executemany("INSERT OR REPLACE INTO stances VALUES (?, ?, ?, ?)",
+                              [(market_id, ext, json.dumps(v), _iso(now)) for ext, v in stances.items()])
+        self.conn.commit()
+
     def llm_calls(self, day: str) -> int:
         row = self.conn.execute("SELECT calls FROM llm_calls WHERE day=?", (day,)).fetchone()
         return int(row[0]) if row else 0
@@ -275,7 +296,7 @@ class Database:
         """Base tournante : supprime les plus vieux snapshots si la taille dépasse le plafond."""
         if self.path.stat().st_size <= max_megabytes * 1024 * 1024:
             return False
-        for table in ("book_snapshots", "market_snapshots", "observations"):
+        for table in ("book_snapshots", "market_snapshots", "observations", "stances"):
             self.conn.execute(
                 f"DELETE FROM {table} WHERE rowid IN (SELECT rowid FROM {table} "
                 f"ORDER BY collected_at LIMIT (SELECT COUNT(*) / 4 FROM {table}))")

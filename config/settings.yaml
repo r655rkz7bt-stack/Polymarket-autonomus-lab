@@ -23,14 +23,14 @@ http:
 
 scanner:
   page_size: 100               # maximum accepté par Gamma (vérifié le 14/10/2026)
-  max_pages: 3
-  min_horizon_minutes: 30      # horizon validé : 30 min à 3 jours
-  max_horizon_hours: 72
+  max_pages: 15                # jusqu'à 1 500 marchés lus par cycle (décision d'Etienne, 15/10/2026)
+  min_horizon_minutes: 30      # horizon : 30 min à 30 jours (élargi le 15/10/2026 : marchés longs inclus)
+  max_horizon_hours: 720
   min_liquidity: 1000
   min_volume_24h: 1000
   max_spread: 0.05
   max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
-  watchlist_size: 30
+  watchlist_size: 150          # marchés suivis en détail (carnets, actualités) à chaque cycle
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
   max_extra_markets: 40        # marchés supplémentaires que les stratégies peuvent demander
 
@@ -54,7 +54,7 @@ sources:
   gdelt: {enabled: true, every_minutes: 60, queries_per_run: 1, max_retries: 0, timespan: 3h}
   bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
   # Google Actualités : une recherche par marché surveillé (remplace GDELT quand il refuse).
-  google_news: {enabled: true, every_minutes: 15, queries_per_run: 5, per_query: 15}
+  google_news: {enabled: true, every_minutes: 15, queries_per_run: 10, per_query: 15}
   rss:
     enabled: true
     every_minutes: 15
@@ -140,14 +140,14 @@ dashboard:
   every_minutes: 10            # GitHub Pages limite à ~10 publications/heure ; la page se recharge seule
 
 collector:
-  markets_per_cycle: 5         # marchés surveillés pour lesquels on cherche des actualités
+  markets_per_cycle: 10        # marchés surveillés pour lesquels on cherche des actualités
 
 llm:
   # Gemini (offre gratuite Google AI Studio) : actif dès qu'Etienne ajoute GEMINI_API_KEY.
   enabled: true
   provider: gemini
   model: gemini-2.5-flash      # point de départ ; s'il est retiré (404), le meilleur « flash » stable est choisi seul
-  max_calls_per_day: 200       # sous le quota gratuit ; jamais de dépassement
+  max_calls_per_day: 500       # sous le quota gratuit ; jamais de dépassement
   timeout_seconds: 40          # Gemini peut mettre plus de 15 s ; trop lent = modèle suivant
   max_retries: 0
-  markets_per_cycle: 2
+  markets_per_cycle: 15        # avec cache : seuls les textes nouveaux sont envoyés (15/10/2026)

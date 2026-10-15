@@ -28,6 +28,10 @@ ordre réel, aucun secret affiché).
    neuves ; l'arène tranche en conditions réelles.
    S'il n'y a aucune obligation, avance au moins un chantier de `experiments/CHANTIERS.md`
    (le premier non terminé, sauf raison écrite) et mets à jour son état dans ce fichier.
+   **À chaque passage, ajoute aussi au moins une nouvelle stratégie ou variante dans l'arène**
+   (décision d'Etienne, 15/10/2026). Un test en portefeuille fantôme ne coûte rien : un
+   échantillon trop petit n'est jamais une raison de ne rien lancer. La prudence statistique
+   sert à juger (verdicts, promotion), pas à s'abstenir d'essayer.
 4. Travaille sur une branche `claude/` partant de `origin/main`, petits commits, tests verts
    (`.venv/bin/python -m pytest -q`), puis ouvre une pull request vers `main` : elle est
    fusionnée automatiquement si `guard` et `tests` passent. Si `tests` échoue, corrige et repousse.

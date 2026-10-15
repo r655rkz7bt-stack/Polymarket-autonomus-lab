@@ -249,7 +249,7 @@ def test_corrupt_shadow_is_ignored_main_continues(env, paths, tmp_path):
 
 
 def test_without_champion_main_capital_does_nothing(env, paths, tmp_path):
-    """Aucun champion (moins de 20 opérations clôturées) : le principal ne trade pas,
+    """Aucune stratégie éligible (moins de 10 opérations clôturées) : le principal ne trade pas,
     mais chaque stratégie trade dans son fantôme."""
     make, _, _ = env
     report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()})))
@@ -362,3 +362,29 @@ def test_crash_mid_cycle_then_clean_resume(env, paths):
     report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book(ts=clock["now"])})))
     assert report.status == "OK"
     assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1
+
+
+def test_price_history_is_cached_and_budgeted(tmp_path):
+    """150 marchés suivis : l'historique de prix est gardé 20 min et relu au plus 40 fois par cycle."""
+    from types import SimpleNamespace
+    from polymarket_agent import main as cycle
+    from polymarket_agent.market_scanner import parse_market
+
+    calls = []
+
+    class Clob:
+        def get_price_history(self, token_id, start_ts, end_ts, fidelity=60):
+            calls.append(token_id)
+            return [(end_ts - 7 * 3600, 0.4), (end_ts - 2 * 3600, 0.5), (end_ts - 60, 0.55)]
+    db = Database(tmp_path / "db.sqlite")
+    markets = [parse_market(raw_market(market_id=str(i), yes_token=f"y{i}", no_token=f"n{i}")) for i in range(60)]
+    deps = SimpleNamespace(db=db, clob=Clob())
+    cycle._attach_price_features(deps, markets, NOW)
+    assert len(calls) == cycle.PRICE_FEATURES_PER_CYCLE
+    assert markets[0].yes_price_6h_ago == 0.4 and markets[0].yes_price_1h_ago == 0.5
+    calls.clear()
+    fresh = [parse_market(raw_market(market_id=str(i), yes_token=f"y{i}", no_token=f"n{i}")) for i in range(60)]
+    cycle._attach_price_features(deps, fresh, NOW + timedelta(minutes=5))
+    assert len(calls) == 20  # seuls les 20 marchés jamais lus ; les autres viennent du cache
+    assert all(m.yes_price_6h_ago == 0.4 for m in fresh)
+    db.close()

@@ -2,7 +2,8 @@
 # changer ; chaque changement passe par une pull request, visible dans l'historique.
 # Lues par scripts/run_simulation.py et scripts/research_brief.py (arena.py, brief.py).
 
-min_closed_trades: 20            # pour devenir champion (et pour être jugé / éliminé)
+min_closed_trades: 10            # pour devenir champion, recevoir une part du capital, être jugé (20 → 10 le 15/10/2026)
+max_strategies_in_main: 5        # le capital principal se répartit entre les 5 meilleures au plus
 promotion_margin: 0.0            # écart de croissance log nécessaire pour détrôner le champion
 elimination_every_days: 7        # la pire stratégie éligible est éliminée une fois par semaine
 min_days_before_elimination: 7
