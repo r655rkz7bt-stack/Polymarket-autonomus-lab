@@ -34,6 +34,9 @@ Lire cette source directement, c'est regarder la réponse au même endroit que l
    de la source au seuil du marché, avec le temps restant avant la clôture.
 Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'inventaire et passer.
 
+**État (15/10/2026)** : en cours. Étape 1 : inventaire initial fait à la main (`experiments/sources_resolution.md`) ;
+archivage automatique, lecteurs (étape 2) et stratégie (étape 3) à faire.
+
 ## Sources sans clé (le chercheur peut tout faire seul) — par ordre de priorité
 
 | # | Chantier | Domaine(s) | Usage attendu | État |
