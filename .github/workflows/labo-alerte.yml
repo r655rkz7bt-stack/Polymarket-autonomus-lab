@@ -1,0 +1,51 @@
+# Alerte « le cœur ne bat plus » (workflow libre, lecture seule, aucun mot de passe).
+# Toutes les heures, regarde la branche data (un enregistrement par cycle) et échoue si :
+#   - aucun cycle depuis plus de 2 h (GitHub Actions ou le cycle lui-même est en panne) ;
+#   - moins de 4 cycles dans la dernière heure (cron-job.org semble arrêté : seul le cycle de
+#     secours horaire tourne) ;
+#   - le verrou de faillite existe (règle n°1 : le trading est arrêté).
+# Un échec de ce workflow envoie un e-mail de GitHub (réglage : Settings → Notifications → Actions).
+name: labo-alerte-coeur
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  coeur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: data
+          fetch-depth: 40
+          persist-credentials: false
+      - name: Le cœur bat-il ?
+        run: |
+          set -euo pipefail
+          now=$(date +%s)
+          mapfile -t T < <(git -C data log --format=%ct -n 40)
+          last=${T[0]}
+          age=$(( (now - last) / 60 ))
+          recent=0
+          for t in "${T[@]}"; do if (( now - t <= 3600 )); then recent=$((recent + 1)); fi; done
+          echo "Dernier cycle il y a ${age} min ; ${recent} cycle(s) dans la dernière heure."
+          fail=0
+          if [ -f data/ledger/BANKRUPT.lock ]; then
+            echo "::error::FAILLITE : le verrou de faillite existe, le trading est arrêté (règle n°1)."
+            fail=1
+          fi
+          if (( age > 120 )); then
+            echo "::error::Le cœur ne bat plus depuis ${age} min : vérifier cron-job.org puis l'onglet Actions."
+            fail=1
+          elif (( recent < 4 )); then
+            echo "::error::Seulement ${recent} cycle(s) en 1 h : cron-job.org semble arrêté (seul le cycle de secours horaire tourne)."
+            fail=1
+          fi
+          exit $fail

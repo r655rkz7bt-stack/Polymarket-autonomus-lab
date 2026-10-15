@@ -7,11 +7,13 @@ import logging
 from datetime import datetime
 
 from polymarket_agent.correlation import correlation_group
-from polymarket_agent.data_collector import collect, load_recent, with_retries
+from polymarket_agent import stance_eval
+from polymarket_agent.data_collector import _due, collect, load_recent, with_retries
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.models import MarketInfo
 from polymarket_agent.social_intelligence import summarize
 from polymarket_agent.sources.gemini import GeminiClassifier
+from polymarket_agent.sources.polymarket_gamma import GammaClient
 
 log = logging.getLogger(__name__)
 
@@ -70,6 +72,19 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
                 status["gemini"] = f"indisponible : {exc}"[:200]
         else:
             status["gemini"] = "désactivée (pas de clé GEMINI_API_KEY)"
+        # Justesse de Gemini : ses avis comparés au résultat des marchés résolus (une fois par heure).
+        if db is not None:
+            ev = llm_cfg.get("evaluation", {})
+            if _due(db, "justesse_gemini", float(ev.get("every_minutes", 60)), now):
+                try:
+                    get_market = (factories or {}).get("gamma_get_market") or GammaClient(
+                        http, settings.get("sources", {}).get("polymarket_gamma", {}).get(
+                            "base_url", "https://gamma-api.polymarket.com")).get_market
+                    stance_eval.update_outcomes(db, get_market, now, int(ev.get("markets_per_run", 10)))
+                except Exception as exc:  # noqa: BLE001 - une mesure de recherche ne bloque jamais le cycle
+                    log.warning("justesse Gemini non mise à jour : %s", exc)
+                db.set_source_run("justesse_gemini", now)
+            status["justesse_gemini"] = stance_eval.status_text(stance_eval.score(db))
         down = [n for n, s in status.items() if s.startswith("indisponible")]
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment

@@ -568,3 +568,26 @@ def test_failed_rss_feed_reason_is_logged(caplog):
     with caplog.at_level(logging.WARNING):
         RssSource(feeds, session=Session()).fetch(NOW)
     assert "flux RSS en échec ESPN (https://www.espn.com/espn/rss/news) : SourceUnavailable: HTTP 403" in caplog.text
+
+
+def test_gemini_accuracy_is_measured_on_resolved_markets(tmp_path):
+    """Les avis de Gemini sont jugés quand le marché est réglé : « oui » est juste si l'issue Oui
+    l'emporte, « non » si elle perd ; neutres et marchés non réglés ne comptent pas."""
+    from polymarket_agent import stance_eval
+    db = Database(tmp_path / "db.sqlite")
+    db.save_stances("m1", {"a": {"kind": "fait rapporté", "stance": "oui", "confidence": 0.9},
+                           "b": {"kind": "opinion", "stance": "non", "confidence": 0.3},
+                           "c": {"kind": "rumeur", "stance": "neutre", "confidence": 0.5}}, NOW)
+    db.save_stances("m2", {"d": {"kind": "fait rapporté", "stance": "non", "confidence": 0.8}}, NOW)
+    db.save_stances("m3", {"e": {"kind": "fait rapporté", "stance": "oui", "confidence": 0.8}}, NOW)
+    markets = {"m1": raw_market("m1", "y1", "n1", closed=True, outcomePrices=json.dumps(["1", "0"])),
+               "m2": raw_market("m2", "y2", "n2", closed=True, outcomePrices=json.dumps(["1", "0"])),
+               "m3": raw_market("m3", "y3", "n3")}  # pas encore résolu
+    assert stance_eval.update_outcomes(db, markets.__getitem__, NOW) == 2
+    s = stance_eval.score(db)
+    assert (s["avis"], s["justes"], s["marches"]) == (3, 1, 2)  # a juste ; b et d faux ; c neutre ignoré
+    assert s["justesse_ponderee"] == round(0.9 / (0.9 + 0.3 + 0.8), 3)
+    assert "3 avis jugés sur 2 marchés résolus : 33 % justes" in stance_eval.status_text(s)
+    # Un marché non résolu n'est réinterrogé qu'après le délai.
+    assert stance_eval.update_outcomes(db, markets.__getitem__, NOW + timedelta(hours=1)) == 0
+    db.close()

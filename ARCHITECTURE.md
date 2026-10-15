@@ -421,3 +421,13 @@ Décision d'Etienne : liberté maximale, y compris des ordres posés dans le car
   part dans le circuit taker. Expiré / marché fermé / position vendue / stratégie éliminée → fin.
 - Stratégies : `limit_orders` dans `StrategyOutput` ; `limit_ticks` dans `strategies.yaml` ;
   variantes `class:`. Première variante : `calibration_patiente`.
+
+## 22. Surveillance et justesse de Gemini (15 octobre 2026)
+
+- Alerte : `labo-alerte.yml` (libre, lecture seule) lit la branche `data` toutes les heures et
+  échoue si le cœur s'arrête, si cron-job.org semble arrêté ou en faillite (e-mail de GitHub).
+- Justesse de Gemini : `stance_eval.py` interroge chaque heure jusqu'à 10 marchés classés par
+  Gemini, enregistre leur résultat quand ils sont réglés (table `stance_outcomes`) et compare les
+  avis « oui » / « non » au résultat réel (justesse brute et pondérée par la confiance). Statut
+  `justesse_gemini` dans le cycle et le tableau de bord. Le chercheur s'en sert pour décider du
+  poids à donner à Gemini dans les stratégies.
