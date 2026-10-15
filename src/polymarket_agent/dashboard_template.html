@@ -146,6 +146,14 @@ svg text { font-family: var(--mono); }
   .row.th .c-track { display: none; }
 }
 
+/* --- aujourd'hui : quatre colonnes de phrases (capital, arène, opérations, machine) */
+.today { display: grid; gap: 18px 28px; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); }
+.today h3, .h3 { font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.today ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.today li { color: var(--ink-2); font-size: 0.9rem; line-height: 1.45; padding-left: 14px; position: relative; overflow-wrap: anywhere; }
+.today li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-2); }
+.today li:first-child { color: var(--ink); }
+
 /* --- tableaux sobres */
 .scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
@@ -190,7 +198,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <span class="live" id="generated"><i></i><span>—</span></span>
   </div>
   <nav class="tabs" aria-label="Sections">
-    <a href="#resume">Résumé</a><a href="#organisme">Organisme</a><a href="#capital">Capital</a>
+    <a href="#resume">Résumé</a><a href="#aujourdhui">Aujourd'hui</a><a href="#organisme">Organisme</a><a href="#capital">Capital</a>
     <a href="#arene">Arène</a><a href="#positions">Positions</a><a href="#journal">Journal</a><a href="#systeme">Système</a>
   </nav>
 </header>
@@ -212,6 +220,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     </div>
     <div class="meter-row"><span id="meter-left"></span><span id="meter-right"></span></div>
     <div class="dots" id="meter"></div>
+  </section>
+
+  <section id="aujourdhui" class="card" aria-label="Ce qui s'est passé aujourd'hui">
+    <div class="head"><h2>Aujourd'hui</h2><span class="kicker">les dernières 24 h, en clair</span></div>
+    <div class="today" id="today"></div>
   </section>
 
   <section id="organisme" class="card organism" aria-label="Organisme : le cycle qui bat">
@@ -238,6 +251,10 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <div class="head"><h2>Arène des stratégies</h2><span class="kicker">portefeuilles fantômes de 1 000</span></div>
     <p class="note" id="arena-note"></p>
     <div class="rows" id="arena" style="margin-top:12px"></div>
+    <div class="head" style="margin:26px 0 6px"><h3 class="h3">Classement dans le temps</h3>
+      <span class="kicker" id="hist-kicker">une photo par heure · 1 = en tête</span></div>
+    <div class="chart" id="arena-hist"></div>
+    <details><summary>Voir les classements</summary><div class="scroll"><table id="arena-hist-table"></table></div></details>
   </section>
 
   <section id="positions" class="card">
@@ -674,6 +691,18 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     start();
   })();
 
+  // Aujourd'hui : phrases écrites par du code (today.py), groupées par sujet.
+  (function todayBox() {
+    var box = document.getElementById("today"), items = D.aujourdhui || [];
+    if (!items.length) { box.appendChild(el("p", "empty", "Pas encore de résumé.")); return; }
+    [["capital", "Capital"], ["arene", "Arène"], ["operations", "Opérations"], ["machine", "Machine"]].forEach(function (g) {
+      var list = items.filter(function (t) { return t.sujet === g[0]; });
+      if (!list.length) return;
+      var col = el("div"); col.appendChild(el("h3", null, g[1])); var ul = el("ul");
+      list.forEach(function (t) { ul.appendChild(el("li", null, t.texte)); });
+      col.appendChild(ul); box.appendChild(col); });
+  })();
+
   // Pouls : un point par cycle, hauteur = durée ; creux = cycle en erreur.
   (function pulseStrip() {
     var box = document.getElementById("pulse");
@@ -809,6 +838,73 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var sp = el("div", "c-spark"); sp.appendChild(spark(s.courbe)); row.appendChild(sp);
       box.appendChild(row);
     });
+  })();
+
+  // Classement dans le temps : une ligne par stratégie (rang 1 en haut). En tête aujourd'hui en
+  // blanc, les autres en gris ; survol = la ligne la plus proche, son nom, son rang, son capital.
+  (function arenaHistory() {
+    var Hs = D.historique_arene || {}, dates = Hs.dates || [], names = Object.keys(Hs.strategies || {});
+    var box = document.getElementById("arena-hist");
+    if (dates.length < 2 || !names.length) {
+      box.appendChild(el("p", "empty", "Pas encore assez de photos du classement (une par heure).")); return; }
+    var lead = arena.length ? arena[0].nom : names[0];
+    var maxRank = 1; names.forEach(function (n) { Hs.strategies[n].forEach(function (r) { if (r && r > maxRank) maxRank = r; }); });
+    var W = Math.max(300, Math.round(box.clientWidth)), narrow = W < 600, Hh = Math.max(160, Math.min(320, 26 * maxRank + 40));
+    var L = 30, R = narrow ? 12 : 150, T = 12, B = 26;
+    var sx = function (i) { return L + i / (dates.length - 1) * (W - L - R); };
+    var sy = function (r) { return T + (maxRank === 1 ? 0.5 : (r - 1) / (maxRank - 1)) * (Hh - T - B); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", tabindex: "0",
+      "aria-label": "Classement de l'arène sur " + dates.length + " photos ; en tête : " + lead }, box);
+    for (var r = 1; r <= maxRank; r++) {
+      svgEl("line", { x1: L, x2: W - R, y1: sy(r), y2: sy(r), stroke: "var(--line)", "stroke-dasharray": r === 1 ? "" : "2 4" }, svg);
+      svgEl("text", { x: L - 8, y: sy(r) + 3, "text-anchor": "end", "font-size": 10, fill: "var(--muted)" }, svg, String(r)); }
+    [0, dates.length - 1].forEach(function (i) {
+      svgEl("text", { x: sx(i), y: Hh - 6, "text-anchor": i ? "end" : "start", "font-size": 10, fill: "var(--muted)" }, svg, short(dates[i])); });
+    function path(n) { var d = "", pen = false;
+      Hs.strategies[n].forEach(function (rk, i) { if (!rk) { pen = false; return; }
+        d += (pen ? "L" : "M") + sx(i).toFixed(1) + " " + sy(rk).toFixed(1); pen = true; }); return d; }
+    var order = names.filter(function (n) { return n !== lead; }).concat(names.indexOf(lead) >= 0 ? [lead] : []);
+    var paths = {};
+    order.forEach(function (n) { var hi = n === lead;
+      paths[n] = svgEl("path", { d: path(n), fill: "none", stroke: hi ? "var(--ink)" : "var(--dot-lo)",
+        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg); });
+    // Fin de chaque ligne : un point ; noms en clair pour les trois premiers (écran large).
+    names.forEach(function (n) { var rs = Hs.strategies[n], i = rs.length - 1; while (i >= 0 && !rs[i]) i--;
+      if (i < 0) return; var hi = n === lead;
+      svgEl("circle", { cx: sx(i), cy: sy(rs[i]), r: hi ? 4.5 : 3, fill: hi ? "var(--ink)" : "var(--dot-mid)",
+        stroke: "var(--card)", "stroke-width": 2 }, svg);
+      if (!narrow && i === rs.length - 1 && rs[i] <= 3)
+        svgEl("text", { x: sx(i) + 10, y: sy(rs[i]) + 3, "font-size": 10.5, fill: hi ? "var(--ink)" : "var(--ink-2)" },
+          svg, n.replace(/_v[\d.]+$/, "").slice(0, 20)); });
+    var tip = tooltip(box), cur = { i: dates.length - 1, n: lead };
+    function show() { var i = cur.i, n = cur.n, rk = Hs.strategies[n][i], k = svg.getBoundingClientRect().width / W;
+      Object.keys(paths).forEach(function (m) { paths[m].setAttribute("stroke", m === n ? "var(--ink)" : "var(--dot-lo)");
+        paths[m].setAttribute("stroke-width", m === n ? 2.5 : 2); });
+      paths[n].parentNode.appendChild(paths[n]);
+      tip.show(sx(i) * k, sy(rk || 1) * k, n.replace(/_v[\d.]+$/, "") + (rk ? " · n°" + rk : ""),
+        short(dates[i]) + " · capital " + fmt((Hs.capital[n] || [])[i], 2)); }
+    function reset() { tip.hide(); Object.keys(paths).forEach(function (m) {
+      paths[m].setAttribute("stroke", m === lead ? "var(--ink)" : "var(--dot-lo)"); paths[m].setAttribute("stroke-width", 2); });
+      if (paths[lead]) paths[lead].parentNode.appendChild(paths[lead]); }
+    svg.addEventListener("pointermove", function (ev) { var b = svg.getBoundingClientRect(), X = (ev.clientX - b.left) / b.width * W,
+      Y = (ev.clientY - b.top) / b.width * W, i = Math.max(0, Math.min(dates.length - 1, Math.round((X - L) / (W - L - R) * (dates.length - 1))));
+      var best = null, dist = 1e9; names.forEach(function (n) { var rk = Hs.strategies[n][i];
+        if (rk && Math.abs(sy(rk) - Y) < dist) { dist = Math.abs(sy(rk) - Y); best = n; } });
+      if (best) { cur = { i: i, n: best }; show(); } });
+    svg.addEventListener("pointerleave", reset);
+    svg.addEventListener("focus", show); svg.addEventListener("blur", reset);
+    svg.addEventListener("keydown", function (e) { var ranked = names.filter(function (n) { return Hs.strategies[n][cur.i]; })
+        .sort(function (a, b) { return Hs.strategies[a][cur.i] - Hs.strategies[b][cur.i]; }), j = ranked.indexOf(cur.n);
+      if (e.key === "ArrowLeft") cur.i = Math.max(0, cur.i - 1); else if (e.key === "ArrowRight") cur.i = Math.min(dates.length - 1, cur.i + 1);
+      else if (e.key === "ArrowUp" && j > 0) cur.n = ranked[j - 1]; else if (e.key === "ArrowDown" && j < ranked.length - 1) cur.n = ranked[j + 1];
+      else return; e.preventDefault(); if (!Hs.strategies[cur.n][cur.i]) cur.n = ranked[0] || cur.n; show(); });
+    // Vue tableau : la dernière photo de chaque jour.
+    var rows = [], seen = {};
+    for (var i = dates.length - 1; i >= 0; i--) { var day = dates[i].slice(0, 10); if (seen[day] && i !== dates.length - 1) continue; seen[day] = 1;
+      var ranked = names.filter(function (n) { return Hs.strategies[n][i]; })
+        .sort(function (a, b) { return Hs.strategies[a][i] - Hs.strategies[b][i]; });
+      rows.push([short(dates[i]), ranked.slice(0, 5).map(function (n, k) { return (k + 1) + ". " + n.replace(/_v[\d.]+$/, ""); }).join(" · ")]); }
+    table("arena-hist-table", [{ t: "photo", d: 1 }, { t: "classement (5 premiers)", q: 1 }], rows, "—");
   })();
   function spark(curve) {
     var w = 104, h = 30, svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, "aria-hidden": "true" });

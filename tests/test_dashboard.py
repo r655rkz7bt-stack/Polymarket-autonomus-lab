@@ -150,3 +150,46 @@ def test_independent_audit_is_shown(tmp_path):
     db.close()
     assert data["audit"]["verifiees"] == 80 and data["audit"]["anomalies"] == 1
     assert data["audit"]["dernieres_anomalies"][0]["detail"] == "achat à 0.1"
+
+
+def test_today_tells_the_last_24_hours_in_plain_french(tmp_path):
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))
+    texts = {t["sujet"]: [] for t in data["aujourdhui"]}
+    for t in data["aujourdhui"]:
+        texts[t["sujet"]].append(t["texte"])
+    assert set(texts) == {"capital", "arene", "operations", "machine"}
+    assert any("Aucune stratégie n'a encore prouvé" in t for t in texts["arene"])
+    assert any(t.startswith("2 achats et 1 vente ou règlement") for t in texts["operations"])
+    assert any("1 opération clôturée : 1 gagnante(s), 0 perdante(s), résultat net +20,00 €" in t
+               for t in texts["operations"])
+    assert any("Meilleure stratégie qui a tradé : test_v0, 1 020,00 € réalisés (+20,00 €)" in t for t in texts["arene"])
+    assert "1 sur 1 stratégie(s) ayant tradé gagnent de l'argent." in texts["arene"]
+    assert any(t.startswith("2 cycles en 24 h") and "aucun en erreur" in t for t in texts["machine"])
+    assert any("en panne au dernier essai : gdelt" in t for t in texts["machine"])
+    # Le texte venu de l'extérieur (question du marché) reste une donnée : la page l'insère en texte.
+    assert "textContent" in (ROOT / "src/polymarket_agent/dashboard_template.html").read_text(encoding="utf-8")
+    db.close()
+
+
+def test_arena_ranking_history_one_photo_per_hour(tmp_path):
+    from polymarket_agent import arena_history
+    main, shadows, db = _setup(tmp_path)
+    dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))  # trop tôt
+    rows = [{"nom": "a", "capital": 1010, "operations": 3, "eliminee": False},
+            {"nom": "test_v0", "capital": 1000, "operations": 1, "eliminee": False}]
+    assert arena_history.record(db, rows, NOW + timedelta(hours=1))
+    assert not arena_history.record(db, rows, NOW + timedelta(hours=1, minutes=20))
+    h = arena_history.series(db, NOW + timedelta(hours=2))
+    assert len(h["dates"]) == 2 and h["strategies"]["test_v0"] == [1, 2] and h["strategies"]["a"] == [None, 1]
+    assert arena_history.rank_at(db, NOW + timedelta(minutes=30)) == {"test_v0": 1}
+    # « Aujourd'hui » compare à la photo d'il y a 24 h (a 1re, test_v0 2e) : test_v0 repasse devant.
+    from polymarket_agent import today
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(hours=25))
+    data["arene"] = [dict(r, sante=None) for r in reversed(rows)]
+    entries = {n: [] for n in ("principal",)}
+    texts = [t["texte"] for t in today.build(data, entries, {}, db, NOW + timedelta(hours=25))]
+    assert "Plus forte remontée : test_v0, +1 place depuis hier." in texts
+    assert "Plus forte chute : a, −1 place depuis hier." in texts
+    db.close()
