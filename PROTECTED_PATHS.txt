@@ -21,6 +21,10 @@ src/polymarket_agent/execution_simulator.py
 src/polymarket_agent/fees.py
 tests/test_execution_simulator.py
 
+# Audit indépendant des exécutions (machine séparée, code protégé seulement)
+scripts/audit_fills.py
+tests/test_audit_fills.py
+
 # Mots de passe : workflows qui reçoivent LEDGER_KEY ou RESET_CODE, et la réinitialisation
 .github/workflows/cycle.yml
 .github/workflows/initialize.yml

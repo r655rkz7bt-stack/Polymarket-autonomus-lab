@@ -137,3 +137,16 @@ def test_pulse_and_system_vitals_feed_the_beating_heart(tmp_path):
     for part in ("aorte", "veine cave", "nœud sinusal", "ventricule gauche", "ventricule droit", "apex"):
         assert part in template
     assert "placeLabels" in template and "jamais\n      // d'expansion" not in template
+
+
+def test_independent_audit_is_shown(tmp_path):
+    """Le résultat de l'audit indépendant (branche data, audit/etat.json) apparaît sur la page."""
+    main, shadows, db = _setup(tmp_path)
+    (tmp_path / "_data" / "audit").mkdir(parents=True)
+    (tmp_path / "_data" / "audit" / "etat.json").write_text(json.dumps(
+        {"verifiees": 80, "non_verifiables": 2, "anomalies": [{"portefeuille": "principal", "detail": "achat à 0.1"}],
+         "derniere_execution": "2026-10-15T19:30:00+00:00"}), encoding="utf-8")
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    db.close()
+    assert data["audit"]["verifiees"] == 80 and data["audit"]["anomalies"] == 1
+    assert data["audit"]["dernieres_anomalies"][0]["detail"] == "achat à 0.1"

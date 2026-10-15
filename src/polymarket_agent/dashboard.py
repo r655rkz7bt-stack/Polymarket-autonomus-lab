@@ -169,8 +169,20 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
             tests = json.loads(tests_file.read_text(encoding="utf-8"))
         except ValueError:
             tests = None
+    # Audit indépendant des exécutions (écrit par le job protégé « audit » dans la branche data).
+    audit = None
+    audit_file = root / "_data" / "audit" / "etat.json"
+    if audit_file.exists():
+        try:
+            raw_audit = json.loads(audit_file.read_text(encoding="utf-8"))
+            audit = {"verifiees": raw_audit.get("verifiees", 0), "non_verifiables": raw_audit.get("non_verifiables", 0),
+                     "anomalies": len(raw_audit.get("anomalies", [])), "derniere": raw_audit.get("derniere_execution"),
+                     "dernieres_anomalies": raw_audit.get("anomalies", [])[-5:]}
+        except ValueError:
+            audit = None
     llm = settings.get("llm", {})
     return {
+        "audit": audit,
         "genere_le": now.isoformat(timespec="seconds"),
         "capital": capital,
         "courbe": _downsample(curve),
