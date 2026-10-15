@@ -118,3 +118,18 @@ def test_page_refreshes_itself_from_its_own_data_file():
     assert "fresh.genere_le !== D.genere_le" in template and "document.hidden" in template
     settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
     assert 6 <= settings["dashboard"]["every_minutes"] <= 30  # GitHub Pages : ~10 publications par heure au plus
+
+
+def test_pulse_and_system_vitals_feed_the_beating_heart(tmp_path):
+    """Organisme vivant : le pouls (derniers cycles, durée, erreurs) et les constantes du système
+    nourrissent le cœur et le journal vital de la page ; la règle n°1 l'arrête (aucun battement)."""
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))
+    db.close()
+    pulse = data["sante"]["pouls"]
+    assert [c["date"] for c in pulse] == sorted(c["date"] for c in pulse) and len(pulse) == 2
+    assert pulse[0]["duree"] == 30.0 and pulse[0]["statut"] == "OK" and pulse[0]["erreur"] is False
+    assert data["systeme"]["strategies_actives"] == 1 and data["systeme"]["ordres_poses"] == 0
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert 'id="heart"' in template and "C.faillite ? 0" in template  # faillite : le cœur s'arrête
+    assert "prefers-reduced-motion" in template

@@ -1,358 +1,706 @@
 <title>Laboratoire Polymarket</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
-/* Mise en page : carnet de laboratoire — une colonne de sections, résumé d'abord, détail ensuite.
-   Couleur : un seul bleu pour les données, couleurs d'état réservées (gain, perte, alerte). */
+/* Mise en page : un organisme vivant, en nuances de gris, inspiré de Polymarket.
+   Haut : la situation en une phrase et un chiffre. Puis le cœur (le cycle qui bat), entouré
+   des constantes vitales en police « code ». Puis le détail : capital, arène, positions, journal.
+   Gris uniquement : le sens (gain / perte, marche / panne) est porté par des signes
+   (▲ ▼ ● ○), jamais par une couleur seule. */
 :root {
-  --plane: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #6f6d67;
-  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
-  --series: #2a78d6; --series-wash: rgba(42,120,214,0.12);
-  --good: #006300; --bad: #b42d2d; --warn: #8a5a00; --warn-wash: rgba(250,178,25,0.18);
-  --good-wash: rgba(12,163,12,0.12); --bad-wash: rgba(208,59,59,0.12);
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --plane: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a988f;
-    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
-    --series: #3987e5; --series-wash: rgba(57,135,229,0.18);
-    --good: #0ca30c; --bad: #e66767; --warn: #fab219; --warn-wash: rgba(250,178,25,0.14);
-    --good-wash: rgba(12,163,12,0.16); --bad-wash: rgba(230,103,103,0.16); color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --plane: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a988f;
-  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
-  --series: #3987e5; --series-wash: rgba(57,135,229,0.18);
-  --good: #0ca30c; --bad: #e66767; --warn: #fab219; --warn-wash: rgba(250,178,25,0.14);
-  --good-wash: rgba(12,163,12,0.16); --bad-wash: rgba(230,103,103,0.16); color-scheme: dark;
+  --bg: #0b0b0c; --card: #141416; --raised: #1c1c1f; --line: #26262a; --line-2: #313136;
+  --ink: #f4f4f5; --ink-2: #c4c4c8; --muted: #8e8e94; --faint: #6c6c72;
+  --dot-hi: #f4f4f5; --dot-mid: #8e8e94; --dot-lo: #3a3a3f; --dot-ghost: #232327;
+  --wash: rgba(255,255,255,0.06);
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { background: var(--plane); color: var(--ink); font: 15px/1.5 var(--sans); margin: 0; }
-.wrap { max-width: 1120px; margin: 0 auto; padding-block: 24px 48px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  display: grid; gap: 28px; }
-header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
-h1 { font-size: 1.6rem; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
-h2 { font-size: 1.05rem; margin: 0 0 10px; text-wrap: balance; }
-.sub { color: var(--ink-2); font-size: 0.9rem; }
-.eyebrow { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-section { min-width: 0; }
-.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 16px; min-width: 0; }
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 12px; }
-.tile .v { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.01em; }
-.tile .k { color: var(--ink-2); font-size: 0.85rem; }
-.bar { height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; margin-top: 8px; }
-.bar > i { display: block; height: 100%; background: var(--series); border-radius: 3px; }
-.pill { display: inline-flex; align-items: baseline; gap: 6px; font-size: 0.8rem; font-weight: 600;
-  padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
-.pill::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); margin: 0;
+  -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.mono { font-family: var(--mono); }
+
+/* --- barre du haut (comme Polymarket : marque à gauche, état à droite, onglets dessous) */
+.top { position: sticky; top: 0; z-index: 5; background: rgba(11,11,12,0.86);
+  backdrop-filter: saturate(140%) blur(12px); -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid var(--line); }
+.bar { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand svg { flex: none; }
+.live { min-width: 0; overflow: hidden; display: inline-flex; align-items: center; gap: 8px; font: 500 0.78rem var(--mono); color: var(--ink-2);
+  background: var(--raised); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+.live span { overflow: hidden; text-overflow: ellipsis; }
+.live i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); flex: none; }
+.live.alive i { animation: blink 1s ease-in-out infinite; }
+.live.dead i { background: transparent; border: 1.5px solid var(--muted); }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.tabs { max-width: 1180px; margin: 0 auto; display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none;
+  padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.92rem; padding: 8px 0 11px;
+  white-space: nowrap; border-bottom: 2px solid transparent; }
+.tabs a:hover, .tabs a:focus-visible { color: var(--ink); border-bottom-color: var(--ink); outline: none; }
+
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 20px; padding-block: 22px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { min-width: 0; scroll-margin-top: 110px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; min-width: 0; }
+h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
+.kicker { font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.note { color: var(--ink-2); font-size: 0.86rem; max-width: 72ch; margin: 0; }
+.empty { color: var(--muted); font-style: italic; margin: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px; }
+
+/* --- résumé (le chiffre d'abord, comme « 91 % chance … ») */
+.hero { padding: 26px 22px 22px; }
+.hero-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px; }
+.big { font-size: clamp(2.6rem, 9vw, 4.4rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-top: 10px; }
+.big small { font-size: 0.32em; font-weight: 500; letter-spacing: 0; color: var(--muted); margin-left: 8px; }
+.hero-sub { font: 500 0.95rem var(--mono); color: var(--ink-2); margin-top: 10px; }
+.headline { font-size: clamp(1.1rem, 3.4vw, 1.45rem); font-weight: 600; letter-spacing: -0.015em; max-width: 34ch;
+  text-wrap: balance; margin: 0; }
+.facts { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.facts li { display: flex; gap: 10px; align-items: baseline; color: var(--ink-2); font-size: 0.9rem; }
+.facts li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-2);
   transform: translateY(-1px); }
-.ok { color: var(--good); background: var(--good-wash); }
-.ko { color: var(--bad); background: var(--bad-wash); }
-.wait { color: var(--warn); background: var(--warn-wash); }
-.neutral { color: var(--ink-2); background: var(--grid); }
+.split { margin-top: 22px; }
+.split-labels { display: flex; justify-content: space-between; gap: 12px; font: 500 0.8rem var(--mono);
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 10px; }
+.split-labels b { color: var(--ink); font-weight: 600; margin-right: 6px; }
+.dots svg { display: block; width: 100%; height: auto; }
+.meter-row { display: flex; justify-content: space-between; gap: 12px; margin: 18px 0 8px; font: 500 0.8rem var(--mono);
+  color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.meter-row b { color: var(--ink); font-weight: 600; }
+
+/* --- organisme : le cœur et ses constantes */
+.organism { display: grid; gap: 18px 24px; grid-template-columns: 1fr minmax(0, 420px) 1fr; align-items: center;
+  overflow: hidden; position: relative; }
+.organism .head { grid-column: 1 / -1; margin-bottom: 0; }
+.hud { display: grid; gap: 14px; font-family: var(--mono); min-width: 0; }
+.hud-r { text-align: right; }
+.hud .k { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.hud .v { font-size: 0.98rem; color: var(--ink); font-weight: 500; overflow-wrap: anywhere; }
+.hud .v small { color: var(--muted); font-size: 0.78rem; font-weight: 400; }
+.hud-item { position: relative; padding-left: 14px; }
+.hud-r .hud-item { padding-left: 0; padding-right: 14px; }
+.hud-item::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 1px; background: var(--faint); }
+.hud-r .hud-item::before { left: auto; right: 0; }
+.heart-box { position: relative; display: grid; place-items: center; }
+.heart-box canvas { display: block; width: 100%; max-width: 420px; aspect-ratio: 1; }
+.bpm { position: absolute; bottom: 4px; left: 0; right: 0; text-align: center; font: 500 0.78rem var(--mono);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+.bpm b { font-size: 1.4rem; color: var(--ink); letter-spacing: -0.02em; margin-right: 6px; }
+.console { grid-column: 1 / -1; font: 0.78rem/1.75 var(--mono); color: var(--muted); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; overflow-x: auto; white-space: pre; }
+.console .p { color: var(--ink-2); }
+.console .w { color: var(--ink); }
+.pulse { grid-column: 1 / -1; }
+@media (max-width: 860px) {
+  .organism { grid-template-columns: 1fr 1fr; }
+  .heart-box { grid-column: 1 / -1; order: -1; }
+  .organism .head { order: -2; }
+  .hud-r { text-align: right; }
+}
+
+/* --- graphiques */
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--mono); }
+.chart svg:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 4px; border-radius: 6px; }
+.tip { position: absolute; pointer-events: none; background: var(--raised); border: 1px solid var(--line-2);
+  border-radius: 10px; padding: 7px 11px; font-size: 0.8rem; color: var(--ink-2); box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  white-space: nowrap; z-index: 2; }
+.tip b { display: block; color: var(--ink); font: 600 0.95rem var(--mono); }
+.end-ring { transform-box: fill-box; transform-origin: center; animation: ring 2.4s ease-out infinite; }
+@keyframes ring { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(3.2); opacity: 0; } }
+
+/* --- arène : liste façon Polymarket (niveau, volume, 7 j, courbe) */
+.rows { display: grid; }
+.row { display: grid; grid-template-columns: 26px minmax(0, 1.6fr) minmax(120px, 1.4fr) 92px 64px 104px; gap: 12px;
+  align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row.th { padding-top: 0; font: 500 0.7rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.row .rank { font: 500 0.82rem var(--mono); color: var(--muted); }
+.row .name { font-weight: 600; font-size: 0.92rem; overflow-wrap: break-word; min-width: 0; }
+.row .name .sub { display: block; font-weight: 400; color: var(--muted); font-size: 0.78rem; margin-top: 3px; }
+.row.th .num { font: inherit; }
+.row .num { font: 500 0.88rem var(--mono); text-align: right; white-space: nowrap; }
+.row .num small { display: block; color: var(--muted); font-size: 0.74rem; }
+.row svg { display: block; width: 100%; height: auto; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 500 0.72rem var(--mono); letter-spacing: 0.04em;
+  padding: 2px 9px; border-radius: 999px; background: var(--raised); color: var(--ink-2); border: 1px solid var(--line-2);
+  white-space: nowrap; vertical-align: 1px; margin-left: 6px; }
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.chip.hi { color: var(--ink); background: #2a2a2e; }
+.chip.off::before { background: transparent; border: 1.2px solid currentColor; }
+@media (max-width: 720px) {
+  .row { grid-template-columns: 22px minmax(0, 1fr) 96px; grid-template-areas: "rank name cap" "rank track track"; row-gap: 6px; }
+  .row .rank { grid-area: rank; align-self: start; padding-top: 2px; } .row .name { grid-area: name; }
+  .row .c-cap { grid-area: cap; align-self: start; } .row .c-track { grid-area: track; }
+  .row .c-ops, .row .c-spark { display: none; }
+  .row.th .c-track { display: none; }
+}
+
+/* --- tableaux sobres */
 .scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
-th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
-th { color: var(--muted); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; }
-td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-td.q { min-width: 190px; }
-td.d { white-space: nowrap; }
-td.s { min-width: 150px; }
-.detail { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 3px; overflow-wrap: anywhere; }
-.pos { color: var(--good); } .neg { color: var(--bad); }
-.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px; }
-.empty { color: var(--muted); font-style: italic; }
-.chart { position: relative; }
-.chart svg { display: block; width: 100%; height: auto; }
-.tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--ring);
-  border-radius: 8px; padding: 6px 10px; font-size: 0.82rem; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
-.tip b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
-details summary { cursor: pointer; color: var(--ink-2); font-size: 0.85rem; margin-top: 8px; }
-details summary:focus-visible, .chart svg:focus-visible { outline: 2px solid var(--series); outline-offset: 2px; }
-.note { color: var(--ink-2); font-size: 0.85rem; max-width: 70ch; }
-code { font-family: var(--mono); font-size: 0.85em; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { color: var(--muted); font: 500 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; }
+td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.q { min-width: 200px; color: var(--ink); }
+td.d { white-space: nowrap; font-family: var(--mono); color: var(--ink-2); }
+td.s { min-width: 160px; }
+td { color: var(--ink-2); }
+.detail { display: block; color: var(--muted); font-size: 0.76rem; margin-top: 3px; overflow-wrap: anywhere; }
+.up, .down, .flat { font-family: var(--mono); white-space: nowrap; }
+.up { color: var(--ink); } .down { color: var(--ink-2); } .flat { color: var(--muted); }
+.state { display: inline-flex; align-items: center; gap: 8px; font: 500 0.8rem var(--mono); color: var(--ink); white-space: nowrap; }
+.state::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+.state.down::before { background: transparent; border: 1.5px solid var(--ink-2); }
+.state.wait::before { background: linear-gradient(90deg, var(--ink-2) 50%, transparent 50%); border: 1.5px solid var(--ink-2); }
+.state.idle { color: var(--muted); } .state.idle::before { background: var(--dot-lo); }
+.state.down { color: var(--ink-2); } .state.wait { color: var(--ink-2); }
+details summary { cursor: pointer; color: var(--muted); font: 500 0.78rem var(--mono); margin-top: 12px; letter-spacing: 0.04em; }
+details summary:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 2px; }
+ul.files { list-style: none; padding: 0; margin: 6px 0 16px; display: grid; gap: 6px; font-size: 0.86rem; color: var(--ink-2); }
+ul.files li span { font-family: var(--mono); color: var(--muted); margin-right: 10px; }
+footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center; padding-top: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .live.alive i, .end-ring { animation: none; }
+}
 </style>
 
-<div class="wrap">
-  <header>
-    <div>
-      <div class="eyebrow">Simulation · unités virtuelles · aucun argent réel</div>
-      <h1>Laboratoire Polymarket</h1>
+<header class="top">
+  <div class="bar">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+        <g fill="#f4f4f5"><circle cx="5" cy="5" r="2.2"/><circle cx="13" cy="5" r="2.2" opacity=".45"/><circle cx="21" cy="5" r="2.2"/>
+        <circle cx="5" cy="13" r="2.2" opacity=".45"/><circle cx="13" cy="13" r="2.2"/><circle cx="21" cy="13" r="2.2" opacity=".45"/>
+        <circle cx="5" cy="21" r="2.2" opacity=".2"/><circle cx="13" cy="21" r="2.2" opacity=".45"/><circle cx="21" cy="21" r="2.2" opacity=".2"/></g>
+      </svg>
+      <span>Laboratoire</span>
     </div>
-    <div class="sub" id="generated"></div>
-  </header>
+    <span class="live" id="generated"><i></i><span>—</span></span>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#resume">Résumé</a><a href="#organisme">Organisme</a><a href="#capital">Capital</a>
+    <a href="#arene">Arène</a><a href="#positions">Positions</a><a href="#journal">Journal</a><a href="#systeme">Système</a>
+  </nav>
+</header>
 
-  <section aria-label="Capital">
-    <div class="tiles" id="tiles"></div>
+<main class="wrap">
+  <section id="resume" class="card hero" aria-label="Résumé de la situation">
+    <div class="kicker" id="hero-kicker">Situation</div>
+    <div class="hero-top">
+      <div>
+        <div class="big" id="hero-value">—</div>
+        <div class="hero-sub" id="hero-sub"></div>
+      </div>
+      <p class="headline" id="headline"></p>
+    </div>
+    <ul class="facts" id="facts"></ul>
+    <div class="split">
+      <div class="split-labels"><span id="split-left"></span><span id="split-right"></span></div>
+      <div class="dots" id="split"></div>
+    </div>
+    <div class="meter-row"><span id="meter-left"></span><span id="meter-right"></span></div>
+    <div class="dots" id="meter"></div>
   </section>
 
-  <section class="card">
-    <h2>Capital principal</h2>
-    <div class="note" id="chart-note"></div>
-    <div class="chart" id="chart"></div>
+  <section id="organisme" class="card organism" aria-label="Organisme : le cycle qui bat">
+    <div class="head"><h2>Organisme</h2><span class="kicker">un battement = un cycle de 5 min</span></div>
+    <div class="hud hud-l" id="hud-l"></div>
+    <div class="heart-box"><canvas id="heart" role="img" aria-label="Cœur du système"></canvas><div class="bpm" id="bpm"></div></div>
+    <div class="hud hud-r" id="hud-r"></div>
+    <div class="pulse">
+      <div class="head" style="margin-bottom:8px"><span class="kicker">Pouls · 96 derniers cycles (durée en secondes)</span>
+        <span class="kicker" id="pulse-legend">● réussi · ○ en erreur</span></div>
+      <div class="chart" id="pulse"></div>
+    </div>
+    <div class="console" id="console" aria-label="Constantes du système"></div>
+  </section>
+
+  <section id="capital" class="card">
+    <div class="head"><h2>Capital principal</h2><span class="kicker" id="chart-kicker"></span></div>
+    <p class="note" id="chart-note"></p>
+    <div class="chart" id="chart" style="margin-top:14px"></div>
     <details><summary>Voir les valeurs</summary><div class="scroll" id="chart-table"></div></details>
   </section>
 
-  <section class="card">
-    <h2>Arène des stratégies</h2>
-    <div class="note">Chaque stratégie trade dans son propre portefeuille fantôme de 1 000. Après 10 opérations
-      clôturées, les stratégies qui battent « ne rien faire » se partagent le capital principal (les 5 meilleures,
-      au prorata de leur croissance). La pire est éliminée chaque semaine.</div>
-    <div class="scroll"><table id="arena"></table></div>
+  <section id="arene" class="card">
+    <div class="head"><h2>Arène des stratégies</h2><span class="kicker">portefeuilles fantômes de 1 000</span></div>
+    <p class="note" id="arena-note"></p>
+    <div class="rows" id="arena" style="margin-top:12px"></div>
   </section>
 
-  <section class="card">
-    <h2>Positions ouvertes et prévisions</h2>
-    <div class="scroll"><table id="positions"></table></div>
+  <section id="positions" class="card">
+    <div class="head"><h2>Positions ouvertes</h2><span class="kicker">prévision : fourchette ━ et prix actuel ●</span></div>
+    <div class="scroll"><table id="positions-t"></table></div>
   </section>
 
-  <div class="grid2">
-    <section class="card"><h2>Dernières opérations clôturées</h2><div class="scroll"><table id="closed"></table></div></section>
-    <section class="card"><h2>Marchés surveillés</h2><div class="scroll"><table id="watched"></table></div></section>
+  <div class="grid2" id="journal">
+    <section class="card"><div class="head"><h2>Opérations clôturées</h2></div><div class="scroll"><table id="closed"></table></div></section>
+    <section class="card"><div class="head"><h2>Marchés surveillés</h2><span class="kicker">achat / vente</span></div>
+      <div class="scroll"><table id="watched"></table></div></section>
   </div>
 
   <section class="card">
-    <h2>Décisions récentes</h2>
+    <div class="head"><h2>Décisions récentes</h2><span class="kicker">le contrôleur tranche, les stratégies proposent</span></div>
     <div class="scroll"><table id="decisions"></table></div>
   </section>
 
-  <div class="grid2">
-    <section class="card"><h2>État du bot</h2><div id="health"></div></section>
-    <section class="card"><h2>Sources d'information</h2><div class="scroll"><table id="sources"></table></div></section>
+  <div class="grid2" id="systeme">
+    <section class="card"><div class="head"><h2>Sources d'information</h2><span class="kicker">observations 24 h</span></div>
+      <div class="scroll"><table id="sources"></table></div></section>
+    <section class="card"><div class="head"><h2>Système</h2></div><div id="health"></div><div id="costs"></div><div id="experiments"></div></section>
   </div>
 
-  <div class="grid2">
-    <section class="card"><h2>Expériences et propositions</h2><div id="experiments"></div></section>
-    <section class="card"><h2>Tests et coûts</h2><div id="costs"></div></section>
-  </div>
-</div>
+  <footer>Simulation · unités virtuelles · aucun argent réel · règle n°1 : à 0 tu meurs</footer>
+</main>
 
 <script type="application/json" id="data">__DATA__</script>
 <script>
 (function () {
   "use strict";
   var D = JSON.parse(document.getElementById("data").textContent);
-  var fmt = function (x, d) { return x === null || x === undefined || x === "" ? "—" :
+  var NS = "http://www.w3.org/2000/svg";
+  var C = D.capital, SYS = D.systeme || {}, H = D.sante || {};
+  var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------------------------------------------------------------- outils
+  var fmt = function (x, d) { return x === null || x === undefined || x === "" || isNaN(Number(x)) ? "—" :
     Number(x).toLocaleString("fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d }); };
   var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls;
     if (text !== undefined && text !== null) e.textContent = String(text); return e; };
-  // « 2026-10-15T10:52 » -> « 15/10 10:52 » (dates UTC, comme dans les journaux).
+  var svgEl = function (tag, attrs, parent, text) { var n = document.createElementNS(NS, tag);
+    Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+    if (text !== undefined) n.textContent = text; if (parent) parent.appendChild(n); return n; };
   var short = function (iso) { var m = /^\d{4}-(\d\d)-(\d\d)[T ](\d\d:\d\d)/.exec(iso || "");
     return m ? m[2] + "/" + m[1] + " " + m[3] : (iso || "—"); };
-  var signed = function (x) { var e = el("span", x > 0 ? "pos" : x < 0 ? "neg" : "", (x > 0 ? "+" : "") + fmt(x, 2)); return e; };
+  // Variation signée : le signe et la flèche portent le sens (aucune couleur seule).
+  function delta(x, d, suffix) { var v = Number(x), cls = v > 0 ? "up" : v < 0 ? "down" : "flat";
+    return el("span", cls, (v > 0 ? "▲ +" : v < 0 ? "▼ −" : "· ") + fmt(Math.abs(v), d) + (suffix || "")); }
+  function state(text, kind) { return el("span", "state " + (kind || ""), text); }
+  function sinceMin(iso) { return iso ? Math.max(0, (Date.now() - new Date(iso).getTime()) / 60000) : null; }
+  function ago(min) { if (min === null) return "jamais";
+    if (min < 1) return "à l'instant"; if (min < 60) return "il y a " + Math.round(min) + " min";
+    return "il y a " + Math.floor(min / 60) + " h " + Math.round(min % 60) + " min"; }
 
   function table(id, head, rows, empty) {
     var t = document.getElementById(id); t.textContent = "";
-    if (!rows.length) { var p = el("p", "empty", empty); t.replaceWith(p); return; }
+    if (!rows.length) { t.replaceWith(el("p", "empty", empty)); return; }
     var tr = el("tr"); head.forEach(function (h) { tr.appendChild(el("th", h.n ? "n" : "", h.t)); });
     var th = el("thead"); th.appendChild(tr); t.appendChild(th);
     var tb = el("tbody");
     rows.forEach(function (r) { var row = el("tr");
-      r.forEach(function (c, i) { var td = el("td", head[i].n ? "n" : head[i].q ? "q" : head[i].d ? "d" :
-        head[i].s ? "s" : "");
+      r.forEach(function (c, i) { var td = el("td", head[i].n ? "n" : head[i].q ? "q" : head[i].d ? "d" : head[i].s ? "s" : "");
         if (c instanceof Node) td.appendChild(c); else td.textContent = c === null || c === undefined ? "—" : String(c);
         row.appendChild(td); });
       tb.appendChild(row); });
     t.appendChild(tb);
   }
-  var EXEC = { FILLED: "exécutée", PARTIAL: "partielle", UNFILLED: "non exécutée" };
-  function pill(text, cls) { return el("span", "pill " + cls, text); }
-  // Étiquette courte + détail en petit texte (les messages d'erreur peuvent être longs).
-  function status(text, cls) { var m = /^(.*?)( : | \()(.*)$/.exec(text), box = el("span");
-    box.appendChild(pill(m ? m[1] : text, cls));
+  function withDetail(text) { var m = /^(.*?)( : | \()(.*)$/.exec(text || ""), box = el("span");
+    box.appendChild(el("span", null, m ? m[1] : text));
     if (m) box.appendChild(el("span", "detail", m[2] === " (" ? m[3].replace(/\)$/, "") : m[3]));
     return box; }
+  function tooltip(box) { var tip = el("div", "tip"); tip.hidden = true; box.appendChild(tip);
+    return { show: function (x, y, title, sub) { tip.textContent = ""; tip.appendChild(el("b", null, title));
+        if (sub) tip.appendChild(el("span", null, sub)); tip.hidden = false;
+        var w = box.clientWidth, tw = tip.offsetWidth;
+        tip.style.left = Math.max(0, Math.min(x + 12, w - tw)) + "px"; tip.style.top = Math.max(0, y - 54) + "px"; },
+      hide: function () { tip.hidden = true; } }; }
 
-  // --- en-tête et tuiles
-  var C = D.capital;
-  document.getElementById("generated").textContent = "Mis à jour le " + new Date(D.genere_le).toLocaleString("fr-FR");
-  // Actualisation automatique : la page indique l'âge des données et se recharge dès que le cycle
-  // en publie de nouvelles (vérification chaque minute, en pause quand l'onglet est caché).
+  // ---------------------------------------------------------------- en-tête vivant
+  var beatMin = sinceMin(H.dernier_battement);
+  var alive = !C.faillite && beatMin !== null && beatMin < 20;
   (function live() {
-    var box = document.getElementById("generated"), generated = new Date(D.genere_le);
+    var box = document.getElementById("generated"), label = box.querySelector("span"), generated = new Date(D.genere_le);
+    box.className = "live " + (C.faillite ? "dead" : alive ? "alive" : "dead");
     function age() {
-      var min = Math.max(0, Math.round((Date.now() - generated.getTime()) / 60000));
-      box.textContent = "Mis à jour le " + generated.toLocaleString("fr-FR") + " (" +
-        (min < 1 ? "à l'instant" : "il y a " + (min < 60 ? min + " min" : Math.floor(min / 60) + " h " + (min % 60) + " min")) +
-        ") · actualisation automatique";
+      var min = Math.max(0, (Date.now() - generated.getTime()) / 60000);
+      label.textContent = (C.faillite ? "arrêt définitif" : alive ? "en vie" : "silencieux") + " · " + ago(min);
     }
+    // Actualisation automatique : la page relit data.json chaque minute et se recharge dès que
+    // le cycle a publié de nouvelles données (en pause quand l'onglet est caché).
     function check() {
       if (document.hidden || !window.fetch || location.protocol === "file:") return;
       fetch("data.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; })
         .then(function (fresh) { if (fresh && fresh.genere_le && fresh.genere_le !== D.genere_le) location.reload(); })
         .catch(function () {});
     }
-    age();
-    setInterval(age, 30000);
-    setInterval(check, 60000);
+    age(); setInterval(age, 30000); setInterval(check, 60000);
     document.addEventListener("visibilitychange", function () { if (!document.hidden) { age(); check(); } });
   })();
-  var realized = Number(C.capital_realise), target = Number(C.palier_suivant), initial = D.capital_initial;
-  var tiles = [
-    ["Solde disponible", fmt(C.solde_disponible, 2), "liquidités, hors positions"],
-    ["Capital total estimé", fmt(C.capital_total_estime, 2), "positions au meilleur prix d'achat"],
-    ["Gains réalisés nets", fmt(C.gains_realises_nets, 2), "frais payés : " + fmt(C.frais_payes, 2)],
-    ["Gains latents", fmt(C.gains_latents, 2), "ne comptent jamais comme liquidités"],
-    ["Palier suivant", fmt(target, 0), "capital réalisé " + fmt(realized, 2)],
-    ["Champion", C.champion || "aucun", C.champion ? "pilote le capital principal" : "le capital principal ne fait rien"]
-  ];
-  var tw = document.getElementById("tiles");
-  tiles.forEach(function (t, i) { var c = el("div", "card tile"); c.appendChild(el("div", "k", t[0]));
-    c.appendChild(el("div", "v", t[1])); c.appendChild(el("div", "sub", t[2]));
-    if (i === 4) { var b = el("div", "bar"), fill = el("i"); var start = target / 1.5;
-      fill.style.width = Math.max(0, Math.min(100, (realized - Math.min(start, initial)) /
-        (target - Math.min(start, initial)) * 100)) + "%"; b.appendChild(fill); c.appendChild(b); }
-    tw.appendChild(c); });
-  if (C.faillite) { var f = el("div", "card"); f.appendChild(pill("FAILLITE : " + C.raison_faillite, "ko")); tw.prepend(f); }
 
-  // --- graphique du capital principal (une série, pas de légende)
+  // ---------------------------------------------------------------- résumé
+  var initial = D.capital_initial, total = Number(C.capital_total_estime), realized = Number(C.capital_realise),
+    target = Number(C.palier_suivant), cash = Number(C.solde_disponible), invested = Number(C.capital_immobilise);
+  var perf = initial ? (total / initial - 1) * 100 : 0;
+  var arena = D.arene || [], best = arena.filter(function (s) { return !s.eliminee && s.operations > 0; })[0];
+  var share = arena.filter(function (s) { return s.champion; })[0];
+  document.getElementById("hero-kicker").textContent = "Situation · " + short(D.genere_le) + " UTC";
+  var hv = document.getElementById("hero-value"); hv.textContent = fmt(total, 2);
+  hv.appendChild(el("small", null, "capital total estimé"));
+  var hs = document.getElementById("hero-sub"); hs.textContent = "";
+  hs.appendChild(delta(perf, 2, " %")); hs.appendChild(document.createTextNode("  depuis le départ (" + fmt(initial, 0) + ")"));
+  var headline = C.faillite ? "Faillite : le trading est arrêté définitivement. Seul Etienne peut réinitialiser."
+    : !alive ? "Le cœur ne bat plus depuis " + ago(beatMin).replace("il y a ", "") + " : vérifier cron-job.org et GitHub Actions."
+    : C.champion ? "Le capital principal suit " + C.champion + ", et l'arène continue de chercher mieux."
+    : "Aucune stratégie n'a encore fait ses preuves. Le capital principal attend, l'arène s'entraîne.";
+  document.getElementById("headline").textContent = headline;
+  var cyclesOk = (H.cycles_24h || {}).OK || 0, cyclesAll = Object.keys(H.cycles_24h || {}).reduce(function (a, k) {
+    return a + H.cycles_24h[k]; }, 0);
+  var srcs = D.sources ? D.sources.etat : {}, srcNames = Object.keys(srcs);
+  var srcOk = srcNames.filter(function (n) { return /^ok/.test(srcs[n]); }).length;
+  [
+    "Solde disponible " + fmt(cash, 2) + ", investi " + fmt(invested, 2) + " sur " + C.positions_ouvertes + " position(s).",
+    "Gains réalisés " + (Number(C.gains_realises_nets) >= 0 ? "+" : "−") + fmt(Math.abs(C.gains_realises_nets), 2) +
+      ", latents " + (Number(C.gains_latents) >= 0 ? "+" : "−") + fmt(Math.abs(C.gains_latents), 2) + " (jamais comptés comme liquidités).",
+    best ? "Meilleure stratégie : " + best.nom + " (" + fmt(best.capital, 2) + " après " + best.operations + " opérations)."
+      : "Aucune stratégie n'a encore clôturé d'opération.",
+    cyclesOk + " cycle(s) réussi(s) sur " + cyclesAll + " en 24 h · " + srcOk + "/" + srcNames.length + " sources en marche.",
+    "Palier suivant " + fmt(target, 0) + " (capital réalisé " + fmt(realized, 2) + ").",
+    "Frais payés " + fmt(C.frais_payes, 2) + " · perte maximale depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %."
+  ].forEach(function (t) { document.getElementById("facts").appendChild(el("li", null, t)); });
+
+  // Grille de points : une part du capital par point (comme les sièges d'une assemblée).
+  function dotGrid(holder, n, cols, fill, label) {
+    var gap = 12, r = 4, rows = Math.ceil(n / cols), W = cols * gap, Hh = rows * gap;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", "aria-label": label }, null);
+    for (var i = 0; i < n; i++) { var c = i % cols, row = Math.floor(i / cols);
+      svgEl("circle", { cx: c * gap + gap / 2, cy: row * gap + gap / 2, r: r, fill: fill(i) }, svg); }
+    holder.appendChild(svg); return svg;
+  }
+  (function split() {
+    var n = 100, sum = Math.max(cash + invested, 0.0001), k = Math.round(cash / sum * n);
+    var L = document.getElementById("split-left"), R = document.getElementById("split-right");
+    L.appendChild(el("b", null, fmt(cash, 0))); L.appendChild(document.createTextNode("disponible"));
+    R.appendChild(el("b", null, fmt(invested, 0))); R.appendChild(document.createTextNode("investi"));
+    var narrow = document.getElementById("split").clientWidth < 560;
+    dotGrid(document.getElementById("split"), n, narrow ? 20 : 50, function (i) { return i < k ? "var(--dot-hi)" : "var(--dot-mid)"; },
+      "Capital : " + k + " points disponibles, " + (n - k) + " points investis sur 100");
+  })();
+  (function meter() {
+    var start = target / 1.5, lo = Math.min(start, initial), p = Math.max(0, Math.min(1, (realized - lo) / (target - lo || 1)));
+    var n = 50, k = Math.round(p * n);
+    document.getElementById("meter-left").textContent = "Vers le palier " + fmt(target, 0);
+    var mr = document.getElementById("meter-right"); mr.appendChild(el("b", null, fmt(p * 100, 0) + " %"));
+    mr.appendChild(document.createTextNode(" · " + fmt(realized, 0) + " réalisé"));
+    dotGrid(document.getElementById("meter"), n, document.getElementById("meter").clientWidth < 560 ? 25 : 50, function (i) { return i < k ? "var(--dot-hi)" : "var(--dot-lo)"; },
+      "Progression vers le palier : " + fmt(p * 100, 0) + " %");
+  })();
+
+  // ---------------------------------------------------------------- organisme
+  var pulse = H.pouls || [];
+  var durations = pulse.map(function (c) { return c.duree; }).filter(function (x) { return x !== null; });
+  var avgDur = durations.length ? durations.reduce(function (a, b) { return a + b; }, 0) / durations.length : null;
+  var lastExec = pulse.length ? pulse[pulse.length - 1].executions : 0;
+  // Rythme : un cœur au repos à 60, accéléré par l'activité ; lent et pâle s'il ne bat plus.
+  var BPM = C.faillite ? 0 : !alive ? 18 : Math.min(110, 60 + 4 * lastExec + (SYS.ordres_poses || 0));
+  var bpm = document.getElementById("bpm");
+  bpm.appendChild(el("b", null, BPM ? String(BPM) : "—")); bpm.appendChild(document.createTextNode(BPM ? "bpm" : "arrêt"));
+  function hud(id, items) { var box = document.getElementById(id);
+    items.forEach(function (it) { var d = el("div", "hud-item"); d.appendChild(el("div", "k", it[0]));
+      var v = el("div", "v", it[1]); if (it[2]) v.appendChild(el("small", null, " " + it[2])); d.appendChild(v); box.appendChild(d); }); }
+  var lastCycle = H.dernier_cycle || {};
+  hud("hud-l", [
+    ["dernier cycle", lastCycle.date ? short(lastCycle.date) : "—", "UTC"],
+    ["statut", lastCycle.statut || "—"],
+    ["battement", ago(beatMin)],
+    ["cycles 24 h", cyclesOk + " / " + cyclesAll, "réussis"],
+    ["durée moyenne", avgDur === null ? "—" : fmt(avgDur, 0) + " s"],
+    ["champion", C.champion || "aucun"]
+  ]);
+  hud("hud-r", [
+    ["marchés scannés", fmt(SYS.marches_scannes, 0)],
+    ["surveillés", fmt(SYS.surveilles, 0)],
+    ["stratégies", fmt(SYS.strategies_actives, 0), "en test"],
+    ["positions", fmt(SYS.positions_tous_portefeuilles, 0), "tous portefeuilles"],
+    ["ordres posés", fmt(SYS.ordres_poses, 0)],
+    ["appels IA", D.couts.appels_ia_aujourdhui + " / " + D.couts.plafond_ia]
+  ]);
+  (function consoleBox() {
+    var box = document.getElementById("console");
+    function line(parts) { var row = el("div"); parts.forEach(function (p) { row.appendChild(el("span", p[1] || "", p[0])); });
+      box.appendChild(row); }
+    line([["$ ", "p"], ["etat --sources", "w"]]);
+    srcNames.sort().forEach(function (n) { var s = srcs[n], obs = (D.sources.observations_24h || {})[n];
+      var mark = /^ok/.test(s) ? "●" : /indisponible|échec|erreur/.test(s) ? "○" : "◐";
+      var name = (n + " ").padEnd(22, "."), msg = s.length > 70 ? s.slice(0, 69) + "…" : s;
+      line([["  " + mark + " ", "w"], [name + " "], [msg, /^ok/.test(s) ? "p" : ""], [obs ? "   " + obs + " obs/24h" : ""]]); });
+    line([["$ ", "p"], ["etat --capital", "w"]]);
+    line([["  solde " + fmt(cash, 2) + " · investi " + fmt(invested, 2) + " · frais " + fmt(C.frais_payes, 2) +
+      " · faillite " + (C.faillite ? "OUI" : "non") + " · palier " + fmt(target, 0)]]);
+    line([["$ ", "p"], ["etat --cycle", "w"]]);
+    line([["  propositions " + fmt(SYS.propositions, 0) + " · acceptées " + fmt(SYS.acceptees, 0) + " · exécutions " +
+      fmt(SYS.executions, 0) + " · erreurs 24 h " + (H.erreurs || []).length]]);
+  })();
+
+  // Le cœur : une grille de points dans une forme de cœur, qui grossissent et rétrécissent au
+  // rythme d'un battement « lub-dub », l'onde partant du centre.
+  (function heart() {
+    var cv = document.getElementById("heart"), ctx = cv.getContext && cv.getContext("2d");
+    if (!ctx) return;
+    var dots = [], size = 0, dpr = 1, raf = null, t0 = performance.now();
+    function inside(x, y) { var a = x * x + y * y - 1; return a * a * a - x * x * y * y * y <= 0; }
+    function layout() {
+      var w = cv.clientWidth || 360; dpr = Math.min(window.devicePixelRatio || 1, 2); size = w;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(w * dpr);
+      dots = []; var n = 29, step = w / n;
+      for (var i = 0; i < n; i++) for (var j = 0; j < n; j++) {
+        var px = (i + 0.5) * step, py = (j + 0.5) * step;
+        var x = (px / w - 0.5) * 2.7, y = -((py / w - 0.52) * 2.7);
+        var d = Math.sqrt(x * x + (y - 0.15) * (y - 0.15));
+        dots.push({ x: px, y: py, d: d, h: inside(x, y), r: step * 0.36 });
+      }
+    }
+    function beat(ph) { // deux impulsions : « lub » puis « dub »
+      var g = function (c, w) { var u = (ph - c) / w; return Math.exp(-u * u); };
+      return g(0.06, 0.05) + 0.62 * g(0.24, 0.055);
+    }
+    function draw(now) {
+      var t = (now - t0) / 1000, period = BPM ? 60 / BPM : 0;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, size, size);
+      for (var k = 0; k < dots.length; k++) { var p = dots[k], e = 0;
+        if (period && !REDUCED) { var ph = ((t - p.d * 0.11) % period + period) % period / period; e = beat(ph); }
+        else if (period) e = 0.35;
+        var r, shade;
+        if (p.h) { r = p.r * (0.5 + 0.62 * e) * (C.faillite ? 0.55 : 1);
+          var light = alive ? 0.95 - p.d * 0.32 + e * 0.25 : 0.42 - p.d * 0.1;
+          shade = Math.round(Math.max(60, Math.min(244, light * 255))); }
+        else { r = p.r * 0.16; shade = 46 + Math.round(e * 20); }
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0.6, r), 0, Math.PI * 2);
+        ctx.fillStyle = "rgb(" + shade + "," + shade + "," + (shade + 2) + ")"; ctx.fill(); }
+      if (period && !REDUCED && !document.hidden) raf = requestAnimationFrame(draw);
+    }
+    function start() { if (raf) cancelAnimationFrame(raf); layout(); raf = requestAnimationFrame(draw); }
+    window.addEventListener("resize", start);
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) start(); });
+    start();
+  })();
+
+  // Pouls : un point par cycle, hauteur = durée ; creux = cycle en erreur.
+  (function pulseStrip() {
+    var box = document.getElementById("pulse");
+    if (pulse.length < 2) { box.appendChild(el("p", "empty", "Pas encore assez de cycles.")); return; }
+    var W = Math.max(300, box.clientWidth), Hh = 96, L = 34, R = 8, T = 10, B = 18;
+    var max = Math.max.apply(null, durations.concat([60]));
+    var sx = function (i) { return L + i / (pulse.length - 1) * (W - L - R); };
+    var sy = function (v) { return T + (1 - (v || 0) / max) * (Hh - T - B); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", tabindex: "0",
+      "aria-label": "Durée des " + pulse.length + " derniers cycles" }, box);
+    [0, max / 2, max].forEach(function (v) { svgEl("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--line)" }, svg);
+      svgEl("text", { x: L - 6, y: sy(v) + 3, "text-anchor": "end", "font-size": 10, fill: "var(--muted)",
+        "font-family": "var(--mono)" }, svg, fmt(v, 0)); });
+    var d = pulse.map(function (c, i) { return (i ? "L" : "M") + sx(i).toFixed(1) + " " + sy(c.duree).toFixed(1); }).join(" ");
+    svgEl("path", { d: d, fill: "none", stroke: "var(--dot-lo)", "stroke-width": 1.5, "stroke-linejoin": "round" }, svg);
+    var pr = W < 600 ? 2.2 : 3.5;
+    pulse.forEach(function (c, i) { var bad = c.erreur || (c.statut && c.statut !== "OK");
+      svgEl("circle", { cx: sx(i), cy: sy(c.duree), r: bad ? pr + 0.8 : pr, fill: bad ? "var(--card)" : "var(--dot-mid)",
+        stroke: bad ? "var(--ink)" : "var(--card)", "stroke-width": bad ? 1.5 : 2 }, svg); });
+    svgEl("circle", { cx: sx(pulse.length - 1), cy: sy(pulse[pulse.length - 1].duree), r: 4, fill: "var(--ink)",
+      stroke: "var(--card)", "stroke-width": 2 }, svg);
+    var tip = tooltip(box), cur = pulse.length - 1;
+    function show(i) { var c = pulse[i], k = svg.getBoundingClientRect().width / W;
+      tip.show(sx(i) * k, sy(c.duree) * k, (c.duree === null ? "—" : fmt(c.duree, 0) + " s"),
+        short(c.date) + " · " + (c.statut || "?") + " · " + c.executions + " exécution(s)"); }
+    function nearest(ev) { var r = svg.getBoundingClientRect(), X = (ev.clientX - r.left) / r.width * W;
+      return Math.max(0, Math.min(pulse.length - 1, Math.round((X - L) / (W - L - R) * (pulse.length - 1)))); }
+    svg.addEventListener("pointermove", function (e) { cur = nearest(e); show(cur); });
+    svg.addEventListener("pointerleave", tip.hide);
+    svg.addEventListener("focus", function () { show(cur); }); svg.addEventListener("blur", tip.hide);
+    svg.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") cur = Math.max(0, cur - 1);
+      else if (e.key === "ArrowRight") cur = Math.min(pulse.length - 1, cur + 1); else return; e.preventDefault(); show(cur); });
+  })();
+
+  // ---------------------------------------------------------------- capital principal
   (function chart() {
-    var pts = D.courbe.map(function (p) { return [new Date(p[0]).getTime(), p[1]]; });
-    var note = document.getElementById("chart-note");
-    note.textContent = "Capital total estimé à chaque battement de cœur (ligne grise : capital de départ). " +
-      "Palier suivant : " + fmt(target, 0) + ". Perte maximale depuis un sommet : " + fmt(C.drawdown_max * 100, 1) + " %.";
+    var pts = (D.courbe || []).map(function (p) { return [new Date(p[0]).getTime(), p[1]]; });
+    document.getElementById("chart-kicker").textContent = "perte max. " + fmt(C.drawdown_max * 100, 1) + " %";
+    document.getElementById("chart-note").textContent = "Capital total estimé à chaque battement (ligne grise : capital de départ). " +
+      "Le palier suivant se franchit avec le capital réalisé, jamais avec les gains latents.";
     var box = document.getElementById("chart");
     if (pts.length < 2) { box.appendChild(el("p", "empty", "Pas encore assez de cycles pour tracer une courbe.")); return; }
-    // Largeur réelle du conteneur : le texte garde sa taille, même sur téléphone.
-    var W = Math.max(300, Math.round(box.clientWidth)), H = W < 600 ? 220 : 280, L = 56, R = 12, T = 18, B = 30,
-      ns = "http://www.w3.org/2000/svg";
+    var W = Math.max(300, Math.round(box.clientWidth)), Hh = W < 600 ? 220 : 300, L = 58, R = 14, T = 18, B = 30;
     var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
     var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
     var lo = Math.min(Math.min.apply(null, ys), initial), hi = Math.max(Math.max.apply(null, ys), initial);
-    // Le palier n'élargit l'échelle que s'il est proche : sinon il écraserait la courbe.
-    var showTarget = target <= hi + (hi - lo) * 0.5 + 1;
-    if (showTarget) hi = Math.max(hi, target);
-    var pad = (hi - lo) * 0.08 || 10; lo -= pad; hi += pad;
+    var showTarget = target <= hi + (hi - lo) * 0.5 + 1; if (showTarget) hi = Math.max(hi, target);
+    var pad = (hi - lo) * 0.1 || 10; lo -= pad; hi += pad;
     var sx = function (x) { return L + (x - x0) / (x1 - x0 || 1) * (W - L - R); };
-    var sy = function (y) { return T + (hi - y) / (hi - lo) * (H - T - B); };
-    var svg = document.createElementNS(ns, "svg"); svg.setAttribute("viewBox", "0 0 " + W + " " + H);
-    svg.setAttribute("role", "img"); svg.setAttribute("tabindex", "0");
-    svg.setAttribute("aria-label", "Courbe du capital total estimé");
-    function add(tag, attrs, text) { var n = document.createElementNS(ns, tag);
-      Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
-      if (text !== undefined) n.textContent = text; svg.appendChild(n); return n; }
-    var ticks = 4;
-    for (var i = 0; i <= ticks; i++) { var v = lo + (hi - lo) * i / ticks, y = sy(v);
-      add("line", { x1: L, x2: W - R, y1: y, y2: y, stroke: "var(--grid)", "stroke-width": 1 });
-      add("text", { x: L - 8, y: y + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)" }, fmt(v, 0)); }
-    var days = function (t) { return new Date(t).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) + " " +
+    var sy = function (y) { return T + (hi - y) / (hi - lo) * (Hh - T - B); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", tabindex: "0",
+      "aria-label": "Courbe du capital total estimé" }, box);
+    for (var i = 0; i <= 4; i++) { var v = lo + (hi - lo) * i / 4;
+      svgEl("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--line)" }, svg);
+      svgEl("text", { x: L - 8, y: sy(v) + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)",
+        "font-family": "var(--mono)" }, svg, fmt(v, 0)); }
+    var stamp = function (t) { return new Date(t).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) + " " +
       new Date(t).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); };
-    [x0, (x0 + x1) / 2, x1].forEach(function (t, i) {
-      add("text", { x: sx(t), y: H - 10, "text-anchor": ["start", "middle", "end"][i], "font-size": 11,
-        fill: "var(--muted)" }, days(t)); });
-    add("line", { x1: L, x2: W - R, y1: sy(initial), y2: sy(initial), stroke: "var(--axis)", "stroke-width": 1 });
-    if (showTarget) {
-      add("line", { x1: L, x2: W - R, y1: sy(target), y2: sy(target), stroke: "var(--series)",
-        "stroke-width": 1.5, "stroke-dasharray": "5 5", opacity: 0.7 });
-      add("text", { x: W - R, y: sy(target) - 6, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)" },
-        "palier " + fmt(target, 0)); }
-    else add("text", { x: W - R, y: T - 4, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)" },
-      "palier " + fmt(target, 0) + " : au-dessus de l'échelle ↑");
-    var d = pts.map(function (p, i) { return (i ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ");
-    add("path", { d: d + " L" + sx(x1) + " " + (H - B) + " L" + sx(x0) + " " + (H - B) + " Z", fill: "var(--series-wash)" });
-    add("path", { d: d, fill: "none", stroke: "var(--series)", "stroke-width": 2, "stroke-linejoin": "round" });
+    [x0, (x0 + x1) / 2, x1].forEach(function (t, k) {
+      svgEl("text", { x: sx(t), y: Hh - 8, "text-anchor": ["start", "middle", "end"][k], "font-size": 11,
+        fill: "var(--muted)", "font-family": "var(--mono)" }, svg, stamp(t)); });
+    svgEl("line", { x1: L, x2: W - R, y1: sy(initial), y2: sy(initial), stroke: "var(--faint)" }, svg);
+    if (showTarget) svgEl("text", { x: W - R, y: sy(target) - 6, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)",
+      "font-family": "var(--mono)" }, svg, "palier " + fmt(target, 0));
+    else svgEl("text", { x: W - R, y: T - 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)",
+      "font-family": "var(--mono)" }, svg, "palier " + fmt(target, 0) + " ↑");
+    var d = pts.map(function (p, k) { return (k ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ");
+    svgEl("path", { d: d + " L" + sx(x1) + " " + (Hh - B) + " L" + sx(x0) + " " + (Hh - B) + " Z", fill: "var(--wash)" }, svg);
+    svgEl("path", { d: d, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
     var last = pts[pts.length - 1];
-    add("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 4, fill: "var(--series)", stroke: "var(--surface)", "stroke-width": 2 });
-    var hair = add("line", { y1: T, y2: H - B, stroke: "var(--axis)", "stroke-width": 1, visibility: "hidden" });
-    var dot = add("circle", { r: 4, fill: "var(--series)", stroke: "var(--surface)", "stroke-width": 2, visibility: "hidden" });
-    box.appendChild(svg);
-    var tip = el("div", "tip"); tip.hidden = true; box.appendChild(tip);
-    function show(idx) { var p = pts[idx], X = sx(p[0]), Y = sy(p[1]);
+    svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 4, fill: "var(--ink)", "class": "end-ring" }, svg);
+    svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2 }, svg);
+    var hair = svgEl("line", { y1: T, y2: Hh - B, stroke: "var(--line-2)", visibility: "hidden" }, svg);
+    var dot = svgEl("circle", { r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2, visibility: "hidden" }, svg);
+    var tip = tooltip(box), cur = pts.length - 1;
+    function show(k) { var p = pts[k], X = sx(p[0]), Y = sy(p[1]), s = svg.getBoundingClientRect().width / W;
       hair.setAttribute("x1", X); hair.setAttribute("x2", X); hair.setAttribute("visibility", "visible");
       dot.setAttribute("cx", X); dot.setAttribute("cy", Y); dot.setAttribute("visibility", "visible");
-      tip.textContent = ""; tip.appendChild(el("b", null, fmt(p[1], 2))); tip.appendChild(el("span", null, days(p[0])));
-      tip.hidden = false; var r = svg.getBoundingClientRect(), k = r.width / W;
-      tip.style.left = Math.min(X * k + 12, r.width - 150) + "px"; tip.style.top = Math.max(Y * k - 50, 0) + "px"; }
-    function nearest(clientX) { var r = svg.getBoundingClientRect(), X = (clientX - r.left) / r.width * W, best = 0;
-      pts.forEach(function (p, i) { if (Math.abs(sx(p[0]) - X) < Math.abs(sx(pts[best][0]) - X)) best = i; }); return best; }
-    var cur = pts.length - 1;
+      tip.show(X * s, Y * s, fmt(p[1], 2), stamp(p[0])); }
+    function hide() { tip.hide(); hair.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); }
+    function nearest(cx) { var r = svg.getBoundingClientRect(), X = (cx - r.left) / r.width * W, b = 0;
+      pts.forEach(function (p, k) { if (Math.abs(sx(p[0]) - X) < Math.abs(sx(pts[b][0]) - X)) b = k; }); return b; }
     svg.addEventListener("pointermove", function (e) { cur = nearest(e.clientX); show(cur); });
-    svg.addEventListener("pointerleave", function () { tip.hidden = true; hair.setAttribute("visibility", "hidden");
-      dot.setAttribute("visibility", "hidden"); });
-    svg.addEventListener("focus", function () { show(cur); });
-    svg.addEventListener("blur", function () { tip.hidden = true; });
+    svg.addEventListener("pointerleave", hide); svg.addEventListener("focus", function () { show(cur); });
+    svg.addEventListener("blur", hide);
     svg.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") cur = Math.max(0, cur - 1);
       else if (e.key === "ArrowRight") cur = Math.min(pts.length - 1, cur + 1); else return; e.preventDefault(); show(cur); });
-    var rows = D.courbe.slice(-40).reverse().map(function (p) { return [days(new Date(p[0]).getTime()), fmt(p[1], 2)]; });
     var holder = document.getElementById("chart-table"), t = el("table"); t.id = "chart-values"; holder.appendChild(t);
-    table("chart-values", [{ t: "date" }, { t: "capital", n: 1 }], rows, "");
+    table("chart-values", [{ t: "date" }, { t: "capital", n: 1 }], D.courbe.slice(-40).reverse().map(function (p) {
+      return [stamp(new Date(p[0]).getTime()), fmt(p[1], 2)]; }), "");
   })();
 
-  // --- arène, avec une mini-courbe par stratégie (même bleu, une série chacune)
+  // ---------------------------------------------------------------- arène
+  (function arenaRows() {
+    document.getElementById("arena-note").textContent = "Chaque stratégie trade dans son propre fantôme. Elle reçoit une part " +
+      "du capital principal quand elle passe le seuil d'entrée (réglé dans config/promotion.yaml, modifiable par le chercheur). " +
+      "Le point montre son capital face à « ne rien faire » (trait vertical), sa taille le nombre d'opérations clôturées.";
+    var box = document.getElementById("arena");
+    if (!arena.length) { box.appendChild(el("p", "empty", "Aucune stratégie active.")); return; }
+    var caps = arena.map(function (s) { return s.capital; }).concat([initial]);
+    var span = Math.max(20, Math.max.apply(null, caps.map(function (c) { return Math.abs(c - initial); }))) * 1.1;
+    var maxOps = Math.max.apply(null, arena.map(function (s) { return s.operations; }).concat([1]));
+    var head = el("div", "row th");
+    ["#", "stratégie", "face à ne rien faire", "capital", "clôt.", "courbe"].forEach(function (h, i) {
+      var c = el("div", ["", "", "c-track", "num c-cap", "num c-ops", "c-spark"][i], h); head.appendChild(c); });
+    box.appendChild(head);
+    arena.forEach(function (s, i) {
+      var row = el("div", "row"); row.appendChild(el("div", "rank", String(i + 1)));
+      var name = el("div", "name", s.nom.replace(/_v[\d.]+$/, ""));
+      var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee ? " off" : ""),
+        s.champion ? "champion" : s.eliminee ? "éliminée" : "en test"); name.appendChild(chip);
+      name.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict));
+      row.appendChild(name);
+      // piste commune : trait central = 1 000 (ne rien faire)
+      var tr = el("div", "c-track"), W = 220, Hh = 28, svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, "aria-hidden": "true" }, tr);
+      var sx = function (v) { return 8 + (v - (initial - span)) / (2 * span) * (W - 16); };
+      svgEl("line", { x1: 8, x2: W - 8, y1: Hh / 2, y2: Hh / 2, stroke: "var(--line)" }, svg);
+      svgEl("line", { x1: sx(initial), x2: sx(initial), y1: 4, y2: Hh - 4, stroke: "var(--faint)" }, svg);
+      svgEl("line", { x1: sx(initial), x2: sx(s.capital), y1: Hh / 2, y2: Hh / 2, stroke: "var(--dot-mid)", "stroke-width": 2 }, svg);
+      var rad = 3.5 + 6 * Math.sqrt(s.operations / maxOps);
+      svgEl("circle", { cx: sx(s.capital), cy: Hh / 2, r: rad, fill: s.eliminee ? "var(--card)" : s.champion ? "var(--ink)" : "var(--ink-2)",
+        stroke: s.eliminee ? "var(--ink-2)" : "var(--card)", "stroke-width": s.eliminee ? 1.5 : 2 }, svg);
+      row.appendChild(tr);
+      var cap = el("div", "num c-cap", fmt(s.capital, 2)); var g = (s.capital / initial - 1) * 100;
+      var sm = el("small"); sm.appendChild(delta(g, 1, " %")); cap.appendChild(sm); row.appendChild(cap);
+      row.appendChild(el("div", "num c-ops", String(s.operations)));
+      var sp = el("div", "c-spark"); sp.appendChild(spark(s.courbe)); row.appendChild(sp);
+      box.appendChild(row);
+    });
+  })();
   function spark(curve) {
-    var ns = "http://www.w3.org/2000/svg", w = 110, h = 26, svg = document.createElementNS(ns, "svg");
-    svg.setAttribute("viewBox", "0 0 " + w + " " + h); svg.setAttribute("width", w); svg.setAttribute("height", h);
-    svg.setAttribute("aria-hidden", "true");
-    if (!curve || curve.length < 2) return el("span", "empty", "—");
+    var w = 104, h = 30, svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, "aria-hidden": "true" });
+    if (!curve || curve.length < 2) return el("span", "flat", "—");
     var ys = curve.map(function (p) { return p[1]; }), lo = Math.min.apply(null, ys), hi = Math.max.apply(null, ys);
     if (hi === lo) { hi += 1; lo -= 1; }
-    var d = curve.map(function (p, i) { return (i ? "L" : "M") + (i / (curve.length - 1) * (w - 4) + 2).toFixed(1) + " " +
-      ((hi - p[1]) / (hi - lo) * (h - 6) + 3).toFixed(1); }).join(" ");
-    var path = document.createElementNS(ns, "path"); path.setAttribute("d", d); path.setAttribute("fill", "none");
-    path.setAttribute("stroke", "var(--series)"); path.setAttribute("stroke-width", "1.6"); svg.appendChild(path);
+    var X = function (i) { return i / (curve.length - 1) * (w - 8) + 2; }, Y = function (v) { return (hi - v) / (hi - lo) * (h - 8) + 4; };
+    svgEl("path", { d: curve.map(function (p, i) { return (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(p[1]).toFixed(1); }).join(" "),
+      fill: "none", stroke: "var(--ink)", "stroke-width": 1.6, "stroke-linejoin": "round" }, svg);
+    svgEl("circle", { cx: X(curve.length - 1), cy: Y(curve[curve.length - 1][1]), r: 3, fill: "var(--ink)" }, svg);
     return svg;
   }
-  var verdictCls = function (v) { return /prometteuse/.test(v) ? "ok" : /ne fonctionne pas/.test(v) ? "ko" :
-    /insuffisantes|aucune/.test(v) ? "neutral" : "wait"; };
-  table("arena", [{ t: "#" }, { t: "stratégie" }, { t: "statut" }, { t: "clôturées", n: 1 },
-    { t: "capital", n: 1 }, { t: "croiss. log", n: 1 }, { t: "courbe" }, { t: "verdict", s: 1 }],
-    D.arene.map(function (s, i) { return [String(i + 1), s.nom,
-      pill(s.champion ? "champion" : s.eliminee ? "éliminée" : "en test", s.champion ? "ok" : s.eliminee ? "ko" : "neutral"),
-      String(s.operations), fmt(s.capital, 2), s.croissance === null ? "—" : (s.croissance > 0 ? "+" : "") + fmt(s.croissance, 4),
-      spark(s.courbe), status(s.verdict, verdictCls(s.verdict))]; }), "Aucune stratégie active.");
 
-  table("positions", [{ t: "portefeuille" }, { t: "marché", q: 1 }, { t: "issue" }, { t: "coût", n: 1 },
-    { t: "prix moyen", n: 1 }, { t: "marque", n: 1 }, { t: "latent", n: 1 }, { t: "prévision [bas–haut]", n: 1 }],
-    D.positions.map(function (p) { return [p.portefeuille, p.marche, p.issue, fmt(p.cout, 2), fmt(p.prix_moyen, 3),
-      p.marque === null ? "—" : fmt(p.marque, 3), p.latent === null ? "—" : signed(p.latent),
-      p.proba ? fmt(p.proba, 3) + (p.proba_bas && p.proba_haut ? " [" + fmt(p.proba_bas, 3) + "–" +
-        fmt(p.proba_haut, 3) + "]" : "") : "—"]; }),
+  // ---------------------------------------------------------------- positions
+  function forecast(p) {
+    var w = 120, h = 18, svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, width: w, height: h, "aria-hidden": "true" });
+    var sx = function (v) { return 4 + Number(v) * (w - 8); };
+    svgEl("line", { x1: 4, x2: w - 4, y1: h / 2, y2: h / 2, stroke: "var(--line-2)", "stroke-width": 2, "stroke-linecap": "round" }, svg);
+    if (p.proba_bas && p.proba_haut) svgEl("line", { x1: sx(p.proba_bas), x2: sx(p.proba_haut), y1: h / 2, y2: h / 2,
+      stroke: "var(--dot-mid)", "stroke-width": 4, "stroke-linecap": "round" }, svg);
+    if (p.marque !== null && p.marque !== undefined) svgEl("circle", { cx: sx(p.marque), cy: h / 2, r: 4, fill: "var(--ink)",
+      stroke: "var(--card)", "stroke-width": 2 }, svg);
+    var box = el("span"); box.appendChild(svg);
+    box.appendChild(el("span", "detail", p.proba ? fmt(p.proba, 2) + " [" + fmt(p.proba_bas, 2) + "–" + fmt(p.proba_haut, 2) + "] · prix " +
+      fmt(p.marque, 2) : "prix " + fmt(p.marque, 2)));
+    return box;
+  }
+  var order = { principal: 0 };
+  table("positions-t", [{ t: "portefeuille" }, { t: "marché", q: 1 }, { t: "coût", n: 1 }, { t: "latent", n: 1 },
+    { t: "prévision et prix", s: 1 }],
+    (D.positions || []).slice().sort(function (a, b) { return (order[a.portefeuille] === 0 ? -1 : 0) - (order[b.portefeuille] === 0 ? -1 : 0); })
+      .map(function (p) { var m = el("span", null, p.marche); m.appendChild(el("span", "detail", "issue : " + p.issue + " · " +
+        p.strategie + " · ouverte " + short(p.ouverte)));
+        return [p.portefeuille.replace(/_v[\d.]+$/, ""), m, fmt(p.cout, 2), p.latent === null ? "—" : delta(p.latent, 2), forecast(p)]; }),
     "Aucune position ouverte.");
-  table("closed", [{ t: "date (UTC)", d: 1 }, { t: "marché", q: 1 }, { t: "stratégie" }, { t: "résultat", n: 1 }],
-    D.cloturees.map(function (t) { return [short(t.date), t.marche + " — " + t.issue, t.strategie,
-      signed(t.resultat)]; }), "Aucune opération clôturée.");
-  table("watched", [{ t: "marché", q: 1 }, { t: "catégorie" }, { t: "achat / vente", n: 1 }],
-    D.surveilles.map(function (m) { return [m.marche, m.categorie, fmt(m.bid, 3) + " / " + fmt(m.ask, 3)]; }),
-    "Aucun marché surveillé au dernier cycle.");
-  table("decisions", [{ t: "date (UTC)", d: 1 }, { t: "stratégie" }, { t: "marché", q: 1 }, { t: "décision" }, { t: "raison" }],
-    D.decisions.map(function (d) { return [short(d.date), d.strategie, d.marche,
-      d.acceptee ? pill(EXEC[d.execution] || d.execution || "acceptée", d.execution === "UNFILLED" ? "wait" : "ok")
-        : pill("rejetée", "ko"),
-      d.raisons.length ? d.raisons.join(" ; ") : "—"]; }), "Aucune décision enregistrée.");
 
-  // --- santé, sources, expériences, coûts
-  var H = D.sante, hbox = document.getElementById("health");
-  var age = H.dernier_battement ? (Date.now() - new Date(H.dernier_battement).getTime()) / 60000 : null;
-  hbox.appendChild(pill(age === null ? "jamais lancé" : age < 20 ? "actif" : "silencieux depuis " + fmt(age / 60, 1) + " h",
-    age !== null && age < 20 ? "ok" : "wait"));
-  var hl = el("p", "note"); hl.textContent = "Dernier cycle : " + (H.dernier_cycle ? H.dernier_cycle.date.replace("T", " ") +
-    " (" + H.dernier_cycle.statut + ")" : "—") + ". Cycles sur 24 h : " +
-    (Object.keys(H.cycles_24h).map(function (k) { return k + " " + H.cycles_24h[k]; }).join(", ") || "aucun") + ".";
-  hbox.appendChild(hl);
-  if (H.erreurs.length) { var ul = el("ul", "note"); H.erreurs.forEach(function (e) {
-    ul.appendChild(el("li", null, e.date.replace("T", " ") + " — " + e.erreur)); }); hbox.appendChild(ul); }
-  var S = D.sources, names = Object.keys(Object.assign({}, S.dernier_passage, S.etat)).sort();
-  table("sources", [{ t: "source" }, { t: "dernier état connu", s: 1 }, { t: "passage (UTC)", d: 1 },
-    { t: "obs. 24 h", n: 1 }], names.map(function (n) {
-    var s = S.etat[n] || "inconnu"; return [n, status(s, /^ok/.test(s) ? "ok" : /indisponible|échec|erreur/.test(s) ? "ko" :
-      /compte requis|désactiv/.test(s) ? "wait" : "neutral"),
-      short(S.dernier_passage[n]), String(S.observations_24h[n] || 0)]; }),
-    "Aucune source n'a encore été interrogée.");
-  var ex = document.getElementById("experiments");
-  [["Expériences (dossier experiments/)", D.experiences], ["Propositions de changement (dossier proposals/)", D.propositions]]
-    .forEach(function (g) { ex.appendChild(el("div", "eyebrow", g[0])); var ul = el("ul", "note");
-      if (!g[1].length) ul.appendChild(el("li", "empty", "aucune"));
-      g[1].forEach(function (f) { ul.appendChild(el("li", null, f.date + " — " + f.nom)); }); ex.appendChild(ul); });
-  var co = document.getElementById("costs"), T = D.tests;
-  co.appendChild(T ? pill(T.passed + " tests réussis, " + T.failed + " échoués", T.failed ? "ko" : "ok")
-    : status("en attente : résultat publié par GitHub Actions à chaque cycle (étape 9)", "neutral"));
-  var cp = el("p", "note");
-  cp.textContent = "Services payants : " + fmt(D.couts.services_payants_eur, 2) + " €. Appels à l'IA aujourd'hui : " +
-    D.couts.appels_ia_aujourdhui + " / " + D.couts.plafond_ia + " (offre gratuite).";
-  co.appendChild(cp);
+  // ---------------------------------------------------------------- journal
+  table("closed", [{ t: "date", d: 1 }, { t: "marché", q: 1 }, { t: "résultat", n: 1 }],
+    (D.cloturees || []).map(function (t) { var m = el("span", null, t.marche);
+      m.appendChild(el("span", "detail", t.issue + " · " + t.strategie + " · " + t.portefeuille.replace(/_v[\d.]+$/, "")));
+      return [short(t.date), m, delta(t.resultat, 2)]; }), "Aucune opération clôturée.");
+  table("watched", [{ t: "marché", q: 1 }, { t: "catégorie" }, { t: "achat / vente", n: 1 }],
+    (D.surveilles || []).map(function (m) { return [m.marche, m.categorie, fmt(m.bid, 3) + " / " + fmt(m.ask, 3)]; }),
+    "Aucun marché surveillé au dernier cycle.");
+  var EXEC = { FILLED: "exécutée", PARTIAL: "partielle", UNFILLED: "non exécutée" };
+  table("decisions", [{ t: "date", d: 1 }, { t: "stratégie" }, { t: "marché", q: 1 }, { t: "décision" }, { t: "raison", s: 1 }],
+    (D.decisions || []).map(function (d) { return [short(d.date), d.strategie, d.marche,
+      d.acceptee ? state(EXEC[d.execution] || d.execution || "acceptée", d.execution === "UNFILLED" ? "wait" : "")
+        : state("rejetée", "down"), d.raisons.length ? d.raisons.join(" ; ") : "—"]; }), "Aucune décision enregistrée.");
+
+  // ---------------------------------------------------------------- système
+  (function sources() {
+    var S = D.sources, names = Object.keys(Object.assign({}, S.dernier_passage, S.etat)).sort();
+    var obs = S.observations_24h || {}, max = Math.max.apply(null, Object.keys(obs).map(function (k) { return obs[k]; }).concat([1]));
+    table("sources", [{ t: "source" }, { t: "état", s: 1 }, { t: "obs.", n: 1 }], names.map(function (n) {
+      var s = S.etat[n] || "inconnu", kind = /^ok/.test(s) ? "" : /indisponible|échec|erreur/.test(s) ? "down" :
+        /compte requis|désactiv|pas encore/.test(s) ? "idle" : "wait";
+      var cell = el("span"); cell.appendChild(state(n, kind));
+      cell.appendChild(el("span", "detail", "passage " + short(S.dernier_passage[n])));
+      var o = el("span"), v = obs[n] || 0, b = svgEl("svg", { width: 22, height: 14, viewBox: "0 0 22 14", "aria-hidden": "true" }, o);
+      svgEl("circle", { cx: 11, cy: 7, r: v ? 2 + 5 * Math.sqrt(v / max) : 1.5, fill: v ? "var(--ink-2)" : "var(--dot-lo)" }, b);
+      b.style.verticalAlign = "middle"; b.style.marginRight = "6px"; o.appendChild(document.createTextNode(String(v)));
+      return [cell, withDetail(s), o]; }), "Aucune source n'a encore été interrogée.");
+  })();
+  var hbox = document.getElementById("health");
+  hbox.appendChild(state(C.faillite ? "faillite : arrêt définitif" : alive ? "en vie" : "silencieux " + ago(beatMin),
+    C.faillite || !alive ? "down" : ""));
+  hbox.appendChild(el("p", "note", "Dernier cycle " + (lastCycle.date ? short(lastCycle.date) + " UTC (" + lastCycle.statut + ")" : "—") +
+    " · " + cyclesOk + "/" + cyclesAll + " réussis sur 24 h."));
+  (H.erreurs || []).forEach(function (e) { hbox.appendChild(el("p", "detail", short(e.date) + " — " + e.erreur)); });
+  var co = document.getElementById("costs"), T = D.tests; co.style.marginTop = "14px";
+  co.appendChild(T ? state(T.passed + " tests réussis, " + T.failed + " échoués", T.failed ? "down" : "")
+    : state("tests : vérifiés à chaque pull request", "idle"));
+  co.appendChild(el("p", "note", "Services payants : " + fmt(D.couts.services_payants_eur, 2) + " € · appels à l'IA aujourd'hui : " +
+    D.couts.appels_ia_aujourdhui + " / " + D.couts.plafond_ia + " (offre gratuite)."));
+  var ex = document.getElementById("experiments"); ex.style.marginTop = "16px";
+  [["Expériences", D.experiences || []], ["Propositions", D.propositions || []]].forEach(function (g) {
+    ex.appendChild(el("div", "kicker", g[0])); var ul = el("ul", "files");
+    if (!g[1].length) ul.appendChild(el("li", "empty", "aucune"));
+    g[1].slice(0, 6).forEach(function (f) { var li = el("li"); li.appendChild(el("span", null, f.date));
+      li.appendChild(document.createTextNode(f.nom)); ul.appendChild(li); });
+    ex.appendChild(ul); });
+  if (C.faillite) { var f = el("p", "headline", "FAILLITE : " + C.raison_faillite); document.getElementById("resume").prepend(f); }
 })();
 </script>
