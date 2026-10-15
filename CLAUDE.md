@@ -91,4 +91,6 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 - Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
 - Laboratoire : `.venv/bin/python scripts/lab.py` (ajouter `--apply` pour écrire les recommandations)
 - Tableau de bord : `.venv/bin/python scripts/build_dashboard.py --dev-key` (sortie `site/`, régénéré par le cycle toutes les 30 min)
+- Réinitialisation (Etienne seul, via le workflow `reset-capital`) : `scripts/reset_capital.py`
+- Contrôle des fichiers protégés : `scripts/guard_check.py PROTECTED_PATHS.txt < liste_des_fichiers`
 - `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.

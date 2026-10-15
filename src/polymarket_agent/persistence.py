@@ -128,8 +128,23 @@ class Database:
     def __init__(self, path: Path):
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        # Base illisible : mise de côté (jamais effacée) et base neuve. Le capital n'en dépend
+        # pas ; seul l'ancrage anti-troncature est perdu, ce qui est signalé.
+        self.recovered_from: Path | None = None
+        try:
+            self._connect()
+        except sqlite3.DatabaseError:
+            self.conn.close()
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            self.recovered_from = self.path.with_name(f"{self.path.name}.corrompue-{stamp}")
+            self.path.rename(self.recovered_from)
+            self._connect()
+
+    def _connect(self) -> None:
         self.conn = sqlite3.connect(self.path)
         self.conn.row_factory = sqlite3.Row
+        if self.conn.execute("PRAGMA quick_check").fetchone()[0] != "ok":
+            raise sqlite3.DatabaseError("quick_check en échec")
         self.conn.executescript(SCHEMA)
         self.conn.commit()
 

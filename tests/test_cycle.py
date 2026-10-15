@@ -328,3 +328,37 @@ def test_cycle_executes_a_sell_from_strategy_exits(env, paths, tmp_path):
     state = Ledger.open(shadow_path, KEY, tmp_path / "x.lock").state
     assert "tokA" not in state.positions, report.messages
     assert state.realized_pnl > 0
+
+
+def test_regression_corrupt_database_is_set_aside_and_cycle_trades(env, paths, tmp_path, limits):
+    """Défaut du 15/10/2026 (étape 8) : une base SQLite illisible faisait planter tous les
+    cycles, indéfiniment. Elle est maintenant mise de côté (jamais effacée) et remplacée."""
+    make, _, _ = env
+    bad = tmp_path / "state" / "abimee.sqlite"
+    bad.write_bytes(b"ceci n'est pas une base sqlite " * 200)
+    db = Database(bad)
+    assert db.recovered_from is not None and db.recovered_from.exists()
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}))
+    deps.db = db
+    report = run_cycle(deps)
+    db.close()
+    assert report.status == "OK"
+    assert any("illisible" in m for m in report.messages)
+    assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1
+
+
+def test_crash_mid_cycle_then_clean_resume(env, paths):
+    """Panne inattendue pendant un cycle : rien d'écrit à moitié, le cycle suivant reprend."""
+    make, _, clock = env
+
+    class CrashingClob(FakeClob):
+        def get_books(self, token_ids):
+            raise RuntimeError("panne imprévue (test)")
+    report = run_cycle(make(FakeGamma([raw_market()]), CrashingClob({})))
+    assert report.status == "ERREUR" and report.exit_code == 1
+    before = Ledger.open(paths[0], KEY, paths[1]).state
+    assert before.cash == D("1000") and not before.positions
+    clock["now"] = NOW + timedelta(minutes=5)
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book(ts=clock["now"])})))
+    assert report.status == "OK"
+    assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1

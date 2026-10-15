@@ -317,3 +317,40 @@ messages d'erreur) est inséré avec `textContent`, jamais comme du HTML ; le JS
 **Pas encore fait :** la publication sur GitHub Pages (étape 9 : le workflow du cycle poussera
 `site/` ; Etienne activera Pages, une étape à la fois). `site/` est ignoré par Git sur `main`.
 
+## 19. Étape 8 — validation et verrouillage (15 octobre 2026)
+
+**Scénarios de panne vérifiés (tests) :** API Polymarket en panne (mode dégradé), source
+d'information en panne, collecte entièrement en échec, carnet périmé ou modifié avant exécution,
+journal absent / corrompu / tronqué / mauvaise clé / ligne partielle / horodatage antidaté,
+journal fantôme corrompu, faillite (aucun redémarrage), panne imprévue en plein cycle puis
+reprise propre, deux cycles simultanés (verrou), verrou laissé par un cycle tué (libéré après
+15 min), échec du tableau de bord, et **base SQLite illisible**.
+
+**Défaut trouvé et corrigé :** une base SQLite illisible faisait planter tous les cycles,
+indéfiniment. Elle est maintenant mise de côté (`*.corrompue-<date>`, jamais effacée) et
+remplacée ; le cycle le signale. Le capital n'en dépend pas ; seul l'ancrage anti-troncature est
+perdu jusqu'au cycle suivant (test de non-régression).
+
+**Verrouillage (code prêt, réglages GitHub à faire par Etienne : `docs/VERROUILLAGE.md`) :**
+- `tests.yml` : tests sur chaque pull request, sans aucun secret ;
+- `guard.yml` (`pull_request_target`) : exécute le code de `main`, lit seulement la liste des
+  fichiers modifiés via l'API (anciens noms des renommages compris, liste incomplète refusée),
+  comparaison insensible à la casse et aux `./` `..` ; logique dans `scripts/guard_check.py` ;
+- `automerge.yml` : fusion automatique des PR `claude/` après `guard` et `tests` ; jamais pour
+  une PR qui touche un fichier protégé ;
+- `reset-capital.yml` : environnement `production`, code lu dans le fichier de l'événement et
+  masqué (jamais interpolé, jamais affiché), comparaison à temps constant dans `ledger.py`,
+  écriture RESET signée sur la branche `data` (convention reprise à l'étape 9 :
+  `data` contient `ledger/` et `state/market.sqlite`) ;
+- actions épinglées par commit ; nouveaux fichiers protégés : `scripts/guard_check.py`,
+  `scripts/reset_capital.py`, `tests/test_guard.py`.
+
+**Limites honnêtes :**
+- le code non protégé qui tourne avec `LEDGER_KEY` (le cycle) pourrait en théorie écrire des
+  écritures fausses ; la défense est la validation de `ledger.py` (protégé), les règles de
+  CLAUDE.md et l'historique public des pull requests. Piste : un vérificateur protégé qui
+  recontrôle les règlements auprès de Gamma ;
+- `reset-capital.yml` ne pourra être essayé en réel qu'avec la branche `data` (étape 9) ;
+- le code saisi au lancement d'un workflow reste dans l'événement GitHub : d'où la consigne de
+  changer `RESET_CODE` après chaque utilisation.
+

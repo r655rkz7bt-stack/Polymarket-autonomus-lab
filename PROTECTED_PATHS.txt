@@ -11,3 +11,6 @@ config/promotion.yaml
 tests/test_capital.py
 tests/test_ledger.py
 tests/test_safety_controller.py
+scripts/guard_check.py
+scripts/reset_capital.py
+tests/test_guard.py

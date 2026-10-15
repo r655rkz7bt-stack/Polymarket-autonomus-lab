@@ -140,6 +140,10 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
     bucket = cycle_bucket(started, int(deps.settings["cycle"]["bucket_minutes"]))
     report = CycleReport(cycle_id=f"{bucket}-{started.strftime('%S%f')}")
     deps.db.start_cycle(report.cycle_id, started)
+    if getattr(deps.db, "recovered_from", None):
+        report.messages.append(f"base de données illisible mise de côté ({deps.db.recovered_from.name}), "
+                               "base neuve créée ; ancrage anti-troncature perdu")
+        log.critical("base de données illisible remplacée : %s", deps.db.recovered_from)
     assert_simulation_mode(deps.settings.get("mode"))
 
     # 1. Journal principal : vérification complète (signatures, chaîne, comptabilité).

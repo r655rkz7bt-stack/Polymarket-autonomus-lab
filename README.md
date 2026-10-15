@@ -8,7 +8,7 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 - Cahier des charges : [`docs/CAHIER_DES_CHARGES.md`](docs/CAHIER_DES_CHARGES.md)
 - Règles permanentes pour Claude : [`CLAUDE.md`](CLAUDE.md)
 
-## État d'avancement (étape 7 terminée — 15/10/2026)
+## État d'avancement (étape 8 : code prêt, réglages GitHub en cours — 15/10/2026)
 
 | Fonction | État |
 |---|---|
@@ -38,7 +38,8 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | **Stratégie rentable prouvée** | ❌ pas encore — l'arène tranche en réel |
 | Tableau de bord (page statique, clair/sombre, téléphone) | ✅ testé, régénéré par le cycle toutes les 30 min |
 | Publication du tableau de bord sur GitHub Pages | ⏳ étape 9 |
-| Verrouillage GitHub (rulesets, `guard`) | ⏳ étape 8 |
+| Scénarios de panne (dont base SQLite illisible) | ✅ testés |
+| Workflows `tests`, `guard`, `automerge`, `reset-capital` | ✅ écrits et testés localement — ⏳ réglages GitHub (`docs/VERROUILLAGE.md`) |
 | Exécution automatique toutes les 5 min | ⏳ étape 9 |
 
 ## Lancer le prototype (dans un terminal Linux / Claude Code)
