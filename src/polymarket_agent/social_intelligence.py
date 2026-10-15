@@ -41,21 +41,42 @@ def search_query(market: MarketInfo, n: int = 2) -> str:
     return " ".join(keywords(market, n))
 
 
-def match(observations: list[Observation], markets: list[MarketInfo], min_hits: int = 2) -> None:
-    """Rattache chaque observation aux marchés dont elle contient assez de mots distinctifs.
+def match(observations: list[Observation], markets: list[MarketInfo], min_hits: int = 2,
+          max_markets: int = 5) -> None:
+    """Rattache chaque observation aux marchés qui lui correspondent vraiment (15/10/2026) :
+    - assez de mots distinctifs du marché (`min_hits`), dont au moins un dans le TITRE ;
+    - les mots rares pèsent plus que ceux partagés par beaucoup de marchés (pondération
+      « fréquence inverse » : « bitcoin », présent dans 30 marchés, compte peu) ;
+    - au plus `max_markets` marchés par observation, les mieux notés (un article général ne se
+      retrouve plus sur 40 marchés, ce qui faussait les comptes et les avis de Gemini).
     Les commentaires Polymarket sont rattachés directement à leur événement."""
+    import math
     index = [(m, set(keywords(m))) for m in markets]
+    df: dict[str, int] = {}
+    for _, kws in index:
+        for w in kws:
+            df[w] = df.get(w, 0) + 1
+    n = max(1, len(index))
+    weight = {w: math.log(1 + n / c) for w, c in df.items()}
     for obs in observations:
         if obs.source == "polymarket_comments":
             event_id = obs.data.get("event_id")
             obs.market_ids = [m.market_id for m in markets if m.event_id == event_id]
             continue
-        if obs.source == "crypto_prices":
-            continue
-        words = tokens(f"{obs.title} {obs.text}")
+        if obs.source in ("crypto_prices", "meteo_metar"):
+            continue  # prix crypto : par actif ; météo : rattachée directement aux marchés de sa station
+        title = tokens(obs.title or "")
+        words = title | tokens(obs.text or "")
+        scored = []
         for market, kws in index:
+            hits = words & kws
             need = min(min_hits, len(kws))
-            if need and len(words & kws) >= need and market.market_id not in obs.market_ids:
+            if not need or len(hits) < need or not (hits & title):
+                continue
+            scored.append((sum(weight[w] for w in hits) + 0.5 * sum(weight[w] for w in hits & title), market))
+        scored.sort(key=lambda x: -x[0])
+        for _, market in scored[: max(1, max_markets)]:
+            if market.market_id not in obs.market_ids:
                 obs.market_ids.append(market.market_id)
 
 

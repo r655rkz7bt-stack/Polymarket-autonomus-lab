@@ -54,7 +54,7 @@ sources:
   # Étape 5 — toutes les sources gratuites actives dès le départ (décision du 15/10/2026).
   # Une source indisponible ne bloque jamais le cycle (mode dégradé, analyse partielle).
   polymarket_comments: {enabled: true, every_minutes: 15, per_event: 20}
-  crypto_prices: {enabled: true, every_minutes: 5}          # Coinbase, repli Kraken
+  crypto_prices: {enabled: true, every_minutes: 5}          # Binance (source de résolution), repli Coinbase, Kraken
   # GDELT refuse souvent les IP partagées de GitHub (HTTP 429) : une requête par heure, sans
   # nouvel essai, pour ne pas allonger les cycles (décision d'Etienne, 15/10/2026).
   gdelt: {enabled: true, every_minutes: 60, queries_per_run: 1, max_retries: 0, timespan: 3h}
@@ -131,6 +131,22 @@ sources:
       - {name: USGS séismes M4.5+, url: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.atom", official: true, language: en}
       - {name: Space.com, url: "https://www.space.com/feeds.xml", language: en}
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
+  # Relevés officiels NOAA (METAR) des stations qui tranchent les marchés de température.
+  meteo_metar: {enabled: true, every_minutes: 15, max_stations: 40}   # aviationweather.gov
+  # Scores officiels des ligues (sources de résolution, chantier n°0), sans clé.
+  mlb_stats: {enabled: true, every_minutes: 15}   # statsapi.mlb.com
+  nhl_stats: {enabled: true, every_minutes: 15}   # api-web.nhle.com
+  # Sources à CLÉ GRATUITE : actives seulement si Etienne a créé la clé (secret GitHub du même nom,
+  # environnement production). Sans clé : « désactivée (pas de clé …) », aucun appel.
+  football_data: {enabled: true, every_minutes: 30}   # FOOTBALL_DATA_KEY, scores Ligue des champions, championnats
+  odds_api:                                           # ODDS_API_KEY ; 1 crédit par sport et par appel (500/mois gratuits)
+    enabled: true
+    every_minutes: 720
+    regions: eu
+    sports: [soccer_uefa_champs_league, americanfootball_nfl, baseball_mlb, icehockey_nhl, basketball_nba]
+  guardian: {enabled: true, every_minutes: 30, queries_per_run: 5, per_query: 10}   # GUARDIAN_API_KEY
+  # Archive de la source de résolution des marchés surveillés (resolution_sources.py).
+  sources_resolution: {enabled: true, every_minutes: 60}
 
 # Règles de l'arène : config/promotion.yaml (libre depuis le 15/10/2026, lu par les scripts).
 

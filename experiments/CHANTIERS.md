@@ -34,6 +34,21 @@ Lire cette source directement, c'est regarder la réponse au même endroit que l
    de la source au seuil du marché, avec le temps restant avant la clôture.
 Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'inventaire et passer.
 
+**État (15/10/2026) : étapes 1 et 2 faites, étape 3 à faire.**
+- Étape 1 : `resolution_sources.py` archive la source de chaque marché surveillé (table
+  `market_rules`), résumé dans la console du tableau de bord ; inventaire des 1 500 marchés actifs
+  dans `experiments/sources_resolution.md` (Binance 234, NOAA/weather.gov 210, NFL 79, X 68…).
+- Étape 2 : lecteurs `crypto_prices` (Binance d'abord), `meteo_metar` (relevés NOAA des stations
+  citées, rattachés directement aux marchés), `mlb_stats`, `nhl_stats`, `football_data` (clé).
+- Étape 3 (pour le chercheur) : idées les plus prometteuses —
+  - **température** : le maximum du jour ne peut que monter. Quand le maximum prudent déjà relevé
+    (`data.max_jour_c` des observations `meteo_metar`) dépasse d'au moins 1 degré le haut d'une
+    tranche, cette tranche est perdue d'avance (NON quasi certain). Attention au jour LOCAL, aux
+    °F / °C et aux arrondis (docstring de `sources/weather.py`) ;
+  - **sport** : un match terminé (`etat` « terminé » dans les observations `mlb_stats`,
+    `nhl_stats`, `football_data`) dont le marché n'est pas encore réglé ; comparer aussi le prix
+    aux probabilités des bookmakers (`odds_api`).
+
 ## Sources sans clé (le chercheur peut tout faire seul) — par ordre de priorité
 
 | # | Chantier | Domaine(s) | Usage attendu | État |
@@ -42,7 +57,7 @@ Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'in
 | 2 | Manifold : prix des marchés équivalents | `api.manifold.markets` | même usage que Kalshi, plus de sujets couverts | à faire |
 | 3 | Deribit : volatilité implicite BTC/ETH | `www.deribit.com` (API publique) | remplacer la volatilité historique de `crypto_threshold` | à faire |
 | 4 | Polymarket Data API : grosses transactions et détenteurs | `data-api.polymarket.com` | suivre l'argent informé (« baleines »), flux d'ordres anormaux | à faire |
-| 5 | Open-Meteo et NWS : prévisions météo | `api.open-meteo.com`, `api.weather.gov` | marchés de température / pluie / neige | à faire |
+| 5 | Open-Meteo et NWS : prévisions météo | `api.open-meteo.com`, `api.weather.gov` | marchés de température / pluie / neige | en cours : relevés NOAA faits (`meteo_metar`, 15/10/2026) ; prévisions à faire |
 | 6 | USGS : séismes en direct (GeoJSON) | `earthquake.usgs.gov` | marchés « séisme de magnitude X avant… » | à faire |
 | 7 | Launch Library 2 : lancements spatiaux | `ll.thespacedevs.com` | marchés SpaceX / lancements | à faire |
 | 8 | Classement App Store d'Apple | `rss.marketingtools.apple.com` | marchés « appli n°1 » (ChatGPT, Threads…) | à faire |
@@ -51,7 +66,7 @@ Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'in
 | 11 | Federal Register : décrets et textes officiels américains | `www.federalregister.gov` (API publique) | marchés sur décrets, droits de douane, nominations | à faire |
 | 12 | Trésor américain (Fiscal Data) | `api.fiscaldata.treasury.gov` | dette, taux, adjudications | à faire |
 | 13 | BCE et Eurostat (données statistiques) | `data-api.ecb.europa.eu`, `ec.europa.eu/eurostat` | inflation, taux en zone euro | à faire |
-| 14 | MLB StatsAPI, NHL, Jolpica (F1) | `statsapi.mlb.com`, `api-web.nhle.com`, `api.jolpi.ca` | calendriers, blessures, résultats en direct | à faire |
+| 14 | MLB StatsAPI, NHL, Jolpica (F1) | `statsapi.mlb.com`, `api-web.nhle.com`, `api.jolpi.ca` | calendriers, blessures, résultats en direct | en cours : MLB et NHL faits (15/10/2026), F1 à faire |
 | 15 | OpenDota : statistiques Dota 2 | `api.opendota.com` | marchés esport | à faire |
 | 16 | Liquipedia (API MediaWiki, limite de débit à respecter) | `liquipedia.net` | calendriers et résultats esport (CS, LoL, Valorant) | à faire |
 | 17 | DefiLlama : TVL, stablecoins | `api.llama.fi` | marchés crypto DeFi | à faire |
@@ -79,9 +94,9 @@ et prévient Etienne, dans son journal, de la clé à créer.
 
 | # | Chantier | Secret attendu | Usage attendu | État |
 |---|---|---|---|---|
-| 21 | The Guardian (Open Platform) | `GUARDIAN_API_KEY` | actualités complètes, remplaçant de GDELT | à faire |
-| 22 | football-data.org | `FOOTBALL_DATA_KEY` | résultats, classements, compositions | à faire |
-| 23 | The Odds API | `ODDS_API_KEY` | cotes des bookmakers (500 requêtes / mois : très économe) | à faire |
+| 21 | The Guardian (Open Platform) | `GUARDIAN_API_KEY` | actualités complètes, remplaçant de GDELT | fait (15/10/2026), attend la clé |
+| 22 | football-data.org | `FOOTBALL_DATA_KEY` | résultats, classements, compositions | fait (15/10/2026, scores), attend la clé |
+| 23 | The Odds API | `ODDS_API_KEY` | cotes des bookmakers (500 requêtes / mois : très économe) | fait (15/10/2026), attend la clé |
 | 24 | balldontlie (NBA, NFL…) | `BALLDONTLIE_API_KEY` | statistiques sportives américaines | à faire |
 | 25 | PandaScore (esport) | `PANDASCORE_API_KEY` | matchs et résultats esport | à faire |
 | 26 | FRED (Réserve fédérale de Saint-Louis) | `FRED_API_KEY` | chiffres économiques officiels (taux, inflation, emploi) | à faire |

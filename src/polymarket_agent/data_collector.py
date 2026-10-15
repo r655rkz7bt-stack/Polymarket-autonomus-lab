@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import copy
 import logging
+import os
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
@@ -23,8 +24,12 @@ from polymarket_agent.sources.bluesky import BlueskySource
 from polymarket_agent.sources.crypto_prices import CryptoPricesSource, CryptoQuote
 from polymarket_agent.sources.gdelt import GdeltSource
 from polymarket_agent.sources.google_news import GoogleNewsSource
+from polymarket_agent.sources.guardian import GuardianSource
+from polymarket_agent.sources.odds_api import OddsApiSource
 from polymarket_agent.sources.polymarket_comments import CommentsSource
 from polymarket_agent.sources.rss import RssSource
+from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSource
+from polymarket_agent.sources.weather import MetarSource
 
 log = logging.getLogger(__name__)
 
@@ -87,17 +92,20 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     assets = sorted({correlation_group(m).split(":")[1] for m in markets
                      if correlation_group(m).startswith("crypto:")} | {"btc", "eth"})
 
-    def run(name: str, call) -> None:
+    def run(name: str, call, key: str | None = None) -> None:
         cfg = src.get(name, {})
         if not cfg.get("enabled"):
             result.status[name] = "désactivée"
+            return
+        if key and not os.environ.get(key) and name not in factories:
+            result.status[name] = f"désactivée (pas de clé {key})"
             return
         if not _due(db, name, float(cfg.get("every_minutes", 5)), now):
             result.status[name] = "pas encore (fréquence)"
             return
         try:
             obs = call(cfg)
-        except (SourceUnavailable, ValueError, KeyError, TypeError) as exc:
+        except (SourceUnavailable, ValueError, KeyError, TypeError, AttributeError) as exc:
             result.status[name] = f"indisponible : {exc}"[:200]
             log.warning("source %s indisponible : %s", name, exc)
             if db:  # une source en panne attend sa fréquence normale avant de réessayer
@@ -142,6 +150,17 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("bluesky", lambda cfg: factories.get("bluesky", lambda: BlueskySource(http))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
     result.status["x_api"] = "désactivée (payante)"
+    run("meteo_metar", lambda cfg: factories.get("meteo_metar", lambda: MetarSource(
+        http, int(cfg.get("max_stations", 40))))().fetch(markets, now))
+    run("mlb_stats", lambda cfg: factories.get("mlb_stats", lambda: MlbSource(http))().fetch(now))
+    run("nhl_stats", lambda cfg: factories.get("nhl_stats", lambda: NhlSource(http))().fetch(now))
+    run("football_data", lambda cfg: factories.get("football_data", lambda: FootballDataSource(http))().fetch(now),
+        key=FootballDataSource.KEY)
+    run("odds_api", lambda cfg: factories.get("odds_api", lambda: OddsApiSource(
+        http, list(cfg.get("sports", [])), str(cfg.get("regions", "eu"))))().fetch(now), key=OddsApiSource.KEY)
+    run("guardian", lambda cfg: factories.get("guardian", lambda: GuardianSource(
+        http, int(cfg.get("per_query", 10))))().fetch(queries[: int(cfg.get("queries_per_run", 5))], now),
+        key=GuardianSource.KEY)
 
     known = db.recent_dup_keys(now - timedelta(days=3)) if db else set()
     mark_duplicates(result.observations, known)

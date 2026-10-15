@@ -52,6 +52,10 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    FOOTBALL_DATA_KEY, ODDS_API_KEY, BALLDONTLIE_API_KEY, PANDASCORE_API_KEY, FRED_API_KEY,
    DATA_GOV_API_KEY, YOUTUBE_API_KEY, TMDB_API_KEY, COINGECKO_API_KEY, ETHERSCAN_API_KEY
    (une source sans sa clé doit dire « désactivée (pas de clé …) », jamais planter).
+   Source de résolution de chaque marché : `resolution_sources.domain_for(db, market_id)` et
+   `experiments/sources_resolution.md` ; relevés NOAA (`meteo_metar`), scores des ligues
+   (`mlb_stats`, `nhl_stats`, `football_data`), cotes (`odds_api`) arrivent comme observations
+   (`market.intel`, table `observations`, champ `data`). Chantier n°0, étape 3 : à toi.
 5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
    Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
 6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.

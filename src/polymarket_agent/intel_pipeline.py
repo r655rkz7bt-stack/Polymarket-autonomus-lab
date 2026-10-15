@@ -7,7 +7,7 @@ import logging
 from datetime import datetime
 
 from polymarket_agent.correlation import correlation_group
-from polymarket_agent import stance_eval
+from polymarket_agent import resolution_sources, stance_eval
 from polymarket_agent.data_collector import _due, collect, load_recent, with_retries
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.models import MarketInfo
@@ -85,6 +85,16 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
                     log.warning("justesse Gemini non mise à jour : %s", exc)
                 db.set_source_run("justesse_gemini", now)
             status["justesse_gemini"] = stance_eval.status_text(stance_eval.score(db))
+        # Source de résolution des marchés surveillés : archivée une fois par heure (chantier n°0).
+        res_cfg = settings.get("sources", {}).get("sources_resolution", {})
+        if db is not None and res_cfg.get("enabled", True):
+            try:
+                if _due(db, "sources_resolution", float(res_cfg.get("every_minutes", 60)), now):
+                    resolution_sources.archive(db, markets, now)
+                    db.set_source_run("sources_resolution", now)
+                status["sources_resolution"] = resolution_sources.status_text(db)
+            except Exception as exc:  # noqa: BLE001 - un inventaire ne bloque jamais le cycle
+                status["sources_resolution"] = f"erreur : {type(exc).__name__}: {exc}"[:200]
         down = [n for n, s in status.items() if s.startswith("indisponible")]
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment

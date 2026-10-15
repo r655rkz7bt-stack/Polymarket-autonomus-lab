@@ -452,3 +452,18 @@ depuis l'achat ; mise prudente (½ Kelly tant que moins de 20 prévisions jugée
 que le marché, ×¼ sinon) appliquée aux fantômes et au principal ; suspension d'une stratégie
 gagnante avant frais mais perdante après (≥ 20 opérations clôturées). Réglages : section
 `sante_strategies` de `config/settings.yaml`.
+
+## 25. Sources de résolution, scores officiels, sources à clé (15 octobre 2026)
+
+- `resolution_sources.py` : `resolutionSource` et `description` de Gamma (nouveaux champs de
+  `MarketInfo`) archivés une fois par heure pour les marchés surveillés (table `market_rules`) ;
+  `CATALOG` relie chaque domaine à son lecteur ; résumé `sources_resolution` dans la console.
+- Lecteurs : `crypto_prices` lit Binance d'abord (`data-api.binance.vision`, arbitre des marchés
+  crypto), puis Coinbase, Kraken ; `meteo_metar` (aviationweather.gov, relevés METAR des stations
+  citées par les marchés de température, maximum prudent du jour local estimé) ; `mlb_stats`,
+  `nhl_stats` (API des ligues) ; avec clé : `football_data`, `odds_api` (probabilités implicites
+  des bookmakers), `guardian`. Sans clé : « désactivée (pas de clé …) », aucun appel.
+- `HttpClient.get_json(..., headers=)` : en-têtes propres à une requête. Le jeton Bluesky n'est
+  plus mis dans la session partagée (il partait vers toutes les autres sources).
+- Rattachement des articles (`social_intelligence.match`) : au moins un mot du marché dans le
+  titre, mots rares pondérés (idf), au plus 5 marchés par article.

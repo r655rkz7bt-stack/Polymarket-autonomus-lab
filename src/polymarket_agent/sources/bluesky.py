@@ -39,11 +39,11 @@ class BlueskySource:
 
     def fetch(self, queries: list[str], now: datetime) -> list[Observation]:
         base, headers = self._base_and_headers()
-        self.http.session.headers.update(headers)
+        # Jeton Bluesky joint à SES requêtes seulement (jamais à la session partagée par les sources).
         out = []
         for query in queries:
             raw = self.http.get_json(f"{base}/xrpc/app.bsky.feed.searchPosts",
-                                     params={"q": query, "limit": self.limit, "sort": "latest"})
+                                     params={"q": query, "limit": self.limit, "sort": "latest"}, headers=headers)
             for post in (raw or {}).get("posts") or []:
                 record = post.get("record") or {}
                 if not record.get("text"):

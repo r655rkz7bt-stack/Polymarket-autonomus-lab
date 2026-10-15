@@ -121,6 +121,8 @@ def parse_market(raw: dict) -> MarketInfo:
         tick_size=_dec(raw.get("orderPriceMinTickSize")) or Decimal("0.01"),
         neg_risk=raw.get("negRisk") is True,
         issues=issues,
+        resolution_source=str(raw.get("resolutionSource") or ""),
+        description=str(raw.get("description") or ""),
     )
 
 
