@@ -330,6 +330,32 @@ def test_cycle_executes_a_sell_from_strategy_exits(env, paths, tmp_path):
     assert state.realized_pnl > 0
 
 
+
+def test_regression_dethroned_champion_still_exits_its_main_positions(env, paths, tmp_path):
+    """Constaté le 15/10/2026 : market_structure, champion 10 minutes, a acheté pour le principal puis a
+    été destitué. Ses positions du principal n'avaient plus personne pour les vendre (stop, durée
+    maximale) jusqu'à la résolution. La stratégie garde la main sur ses sorties, sans racheter."""
+    from polymarket_agent.strategies_v2 import MarketStructure
+    make, _, clock = env
+    s = MarketStructure("1.0.0", "2026-10-15", {
+        "min_imbalance": D("0.6"), "max_spread": D("0.02"), "depth_window": D("0.03"), "stake_fraction": D("0.05"),
+        "take_profit": D("0.02"), "stop_loss": D("0.03"), "max_hold_hours": D("6"), "max_extra_ticks": D("0"),
+        "max_proposals_per_cycle": D("2")})
+    crown(paths, "market_structure_v1.0.0")
+    gamma = FakeGamma([raw_market(yes_price="0.5", best_bid=0.49, best_ask=0.50)])
+    pressure = make_book("tokA", bids=(("0.49", "5000"),), asks=(("0.50", "500"),))
+    run_cycle(make(gamma, FakeClob({"tokA": pressure}), strategies=[s]))
+    assert "tokA" in Ledger.open(paths[0], KEY, paths[1]).state.positions
+    Ledger.open(paths[0], KEY, paths[1]).record_promotion("", "destitué (test)", now=NOW + timedelta(minutes=1))
+    clock["now"] = NOW + timedelta(minutes=30)
+    risen = make_book("tokA", bids=(("0.55", "5000"),), asks=(("0.56", "500"),), ts=clock["now"])
+    report = run_cycle(make(gamma, FakeClob({"tokA": risen}), strategies=[s]))
+    state = Ledger.open(paths[0], KEY, paths[1]).state
+    assert state.champion == "" and "tokA" not in state.positions, report.messages
+    assert state.realized_pnl > 0
+    types = [json.loads(l)["type"] for l in paths[0].read_text().splitlines()]
+    assert types.count("BUY") == 1  # aucun rachat après la destitution
+
 def test_regression_corrupt_database_is_set_aside_and_cycle_trades(env, paths, tmp_path, limits):
     """Défaut du 15/10/2026 (étape 8) : une base SQLite illisible faisait planter tous les
     cycles, indéfiniment. Elle est maintenant mise de côté (jamais effacée) et remplacée."""

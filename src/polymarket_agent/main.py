@@ -314,6 +314,12 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         shares = {champion: 1.0}  # champion en titre sans part calculée : il garde tout le capital
     main.strategies = [Weighted(s, Decimal(str(round(w, 6)))) for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
+    # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
+    # nulle) garde la main sur SES sorties (prise de bénéfice, stop, durée maximale), sans racheter.
+    held = {pos.strategy_id for pos in main.ledger.state.positions.values()}
+    active = {s.strategy_id for s in main.strategies}
+    main.strategies += [Weighted(s, Decimal("0")) for s in deps.strategies
+                        if hasattr(s, "exits") and s.strategy_id in held and s.strategy_id not in active]
     for event in report.arena.get("events", []):
         log.info("ARÈNE : %s", event)
 
