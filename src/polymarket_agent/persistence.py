@@ -107,6 +107,7 @@ CREATE TABLE IF NOT EXISTS observations (
 CREATE INDEX IF NOT EXISTS idx_observations_time ON observations(collected_at);
 CREATE TABLE IF NOT EXISTS source_runs (source TEXT PRIMARY KEY, last_run TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS llm_calls (day TEXT PRIMARY KEY, calls INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS ledger_anchor (
     id INTEGER PRIMARY KEY CHECK (id = 1),
     seq INTEGER NOT NULL,
@@ -236,6 +237,16 @@ class Database:
 
     def set_source_run(self, source: str, when: datetime) -> None:
         self.conn.execute("INSERT OR REPLACE INTO source_runs VALUES (?, ?)", (source, _iso(when)))
+        self.conn.commit()
+
+    def get_value(self, key: str) -> str | None:
+        """Petite mémoire entre cycles (ex. nom du modèle Gemini trouvé). Jamais de capital ici."""
+        row = self.conn.execute("SELECT value FROM kv WHERE key=?", (key,)).fetchone()
+        return row[0] if row else None
+
+    def set_value(self, key: str, value: str) -> None:
+        self.conn.execute("INSERT OR REPLACE INTO kv VALUES (?, ?, ?)",
+                          (key, value, datetime.now(timezone.utc).isoformat()))
         self.conn.commit()
 
     def llm_calls(self, day: str) -> int:

@@ -6,17 +6,24 @@
 - Sécurité : les textes collectés sont encadrés comme des DONNÉES non fiables. La réponse est
   limitée à des étiquettes fixes ; toute réponse hors format est jetée. Le modèle ne peut ni
   déclencher d'action, ni modifier une règle, ni voir un secret.
-LIMITE : endpoint et nom de modèle à revérifier sur ai.google.dev au moment d'activer la clé.
+- Nom du modèle : celui des réglages ; si Google répond 404 (modèle retiré ou renommé, constaté
+  le 15/10/2026 avec gemini-2.5-flash), la liste officielle des modèles est lue et le meilleur
+  modèle « flash » stable est choisi, puis retenu dans la base pour les cycles suivants.
 """
 
 from __future__ import annotations
 
 import json
 import os
+import re
 from datetime import datetime
 
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.observations import Observation
+
+API = "https://generativelanguage.googleapis.com/v1beta/models"
+MODEL_KEY = "gemini_model"
+UNSTABLE = ("preview", "exp", "image", "tts", "live", "audio", "embedding", "thinking", "8b")
 
 KINDS = ("annonce officielle", "fait rapporté", "rumeur", "opinion", "hors sujet")
 STANCES = ("oui", "non", "neutre")
@@ -35,6 +42,24 @@ Réponds uniquement par un tableau JSON : [{{"id": ..., "kind": ..., "stance": .
 <donnees>
 {items}
 </donnees>"""
+
+
+def pick_model(listing: dict) -> str | None:
+    """Meilleur modèle « flash » stable qui sait générer du texte, d'après la liste officielle :
+    version la plus récente, la variante complète avant « lite »."""
+    best, best_score = None, None
+    for m in (listing or {}).get("models") or []:
+        name = str(m.get("name", "")).removeprefix("models/")
+        methods = m.get("supportedGenerationMethods") or []
+        if not name.startswith("gemini") or "flash" not in name or "generateContent" not in methods:
+            continue
+        if any(word in name for word in UNSTABLE):
+            continue
+        version = re.match(r"gemini-(\d+(?:\.\d+)?)", name)
+        score = (float(version.group(1)) if version else 0.0, "lite" not in name, -len(name))
+        if best_score is None or score > best_score:
+            best, best_score = name, score
+    return best
 
 
 class GeminiClassifier:
@@ -65,9 +90,19 @@ class GeminiClassifier:
                                                                items=items)}]}],
                 "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}
         self.http.session.headers["x-goog-api-key"] = self._key
+        model = (self.db.get_value(MODEL_KEY) if self.db else None) or self.model
         try:
-            raw = self.http.post_json(
-                f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent", body)
+            try:
+                raw = self.http.post_json(f"{API}/{model}:generateContent", body)
+            except SourceUnavailable as exc:
+                if "HTTP 404" not in str(exc):
+                    raise
+                found = pick_model(self.http.get_json(API))
+                if not found or found == model:
+                    raise SourceUnavailable(f"modèle Gemini « {model} » introuvable, aucun remplaçant") from exc
+                if self.db:
+                    self.db.set_value(MODEL_KEY, found)
+                raw = self.http.post_json(f"{API}/{found}:generateContent", body)
         finally:
             self.http.session.headers.pop("x-goog-api-key", None)
             if self.db:
