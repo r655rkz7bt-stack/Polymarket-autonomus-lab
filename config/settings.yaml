@@ -53,20 +53,84 @@ sources:
   # nouvel essai, pour ne pas allonger les cycles (décision d'Etienne, 15/10/2026).
   gdelt: {enabled: true, every_minutes: 60, queries_per_run: 1, max_retries: 0, timespan: 3h}
   bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
+  # Google Actualités : une recherche par marché surveillé (remplace GDELT quand il refuse).
+  google_news: {enabled: true, every_minutes: 15, queries_per_run: 5, per_query: 15}
   rss:
     enabled: true
     every_minutes: 15
+    # Flux fournis par les médias et institutions eux-mêmes (aucune aspiration de pages).
+    # Un flux en panne ou déplacé est ignoré sans gêner les autres. official: true = source officielle.
     feeds:
+      # --- Actualité générale et géopolitique
       - {name: BBC World, url: "https://feeds.bbci.co.uk/news/world/rss.xml", language: en}
-      - {name: BBC Sport, url: "https://feeds.bbci.co.uk/sport/rss.xml", language: en}
+      - {name: BBC Politics, url: "https://feeds.bbci.co.uk/news/politics/rss.xml", language: en}
       - {name: NYT World, url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml", language: en}
-      - {name: ESPN, url: "https://www.espn.com/espn/rss/news", language: en}
-      - {name: CoinDesk, url: "https://www.coindesk.com/arc/outboundfeeds/rss/", language: en}
+      - {name: NYT Politics, url: "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml", language: en}
+      - {name: Guardian World, url: "https://www.theguardian.com/world/rss", language: en}
+      - {name: Guardian US Politics, url: "https://www.theguardian.com/us-news/us-politics/rss", language: en}
+      - {name: NPR Politics, url: "https://feeds.npr.org/1014/rss.xml", language: en}
+      - {name: Politico, url: "https://rss.politico.com/politics-news.xml", language: en}
+      - {name: The Hill, url: "https://thehill.com/feed/", language: en}
+      - {name: Fox News Politics, url: "https://moxie.foxnews.com/google-publisher/politics.xml", language: en}
+      - {name: Al Jazeera, url: "https://www.aljazeera.com/xml/rss/all.xml", language: en}
+      - {name: DW, url: "https://rss.dw.com/rdf/rss-en-all", language: en}
+      - {name: France 24, url: "https://www.france24.com/en/rss", language: en}
       - {name: Le Monde, url: "https://www.lemonde.fr/rss/une.xml", language: fr}
       - {name: France Info, url: "https://www.franceinfo.fr/titres.rss", language: fr}   # nouvelle adresse (oct. 2026)
+      # --- Sources officielles
       - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml", official: true, language: en}
       - {name: BCE, url: "https://www.ecb.europa.eu/rss/press.html", official: true, language: en}
+      - {name: Banque d'Angleterre, url: "https://www.bankofengland.co.uk/rss/news", official: true, language: en}
       - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
+      - {name: BLS, url: "https://www.bls.gov/feed/bls_latest.rss", official: true, language: en}
+      - {name: SEC, url: "https://www.sec.gov/news/pressreleases.rss", official: true, language: en}
+      - {name: ONU, url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", official: true, language: en}
+      - {name: NASA, url: "https://www.nasa.gov/news-release/feed/", official: true, language: en}
+      - {name: FDA, url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml", official: true, language: en}
+      # --- Économie et marchés
+      - {name: BBC Business, url: "https://feeds.bbci.co.uk/news/business/rss.xml", language: en}
+      - {name: CNBC, url: "https://www.cnbc.com/id/100003114/device/rss/rss.html", language: en}
+      - {name: MarketWatch, url: "https://feeds.marketwatch.com/marketwatch/topstories/", language: en}
+      - {name: WSJ Markets, url: "https://feeds.a.dj.com/rss/RSSMarketsMain.xml", language: en}
+      - {name: NYT Business, url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", language: en}
+      # --- Crypto
+      - {name: CoinDesk, url: "https://www.coindesk.com/arc/outboundfeeds/rss/", language: en}
+      - {name: Cointelegraph, url: "https://cointelegraph.com/rss", language: en}
+      - {name: Decrypt, url: "https://decrypt.co/feed", language: en}
+      - {name: The Block, url: "https://www.theblock.co/rss.xml", language: en}
+      - {name: Bitcoin Magazine, url: "https://bitcoinmagazine.com/.rss/full/", language: en}
+      # --- Sport
+      - {name: BBC Sport, url: "https://feeds.bbci.co.uk/sport/rss.xml", language: en}
+      - {name: BBC Football, url: "https://feeds.bbci.co.uk/sport/football/rss.xml", language: en}
+      - {name: BBC Tennis, url: "https://feeds.bbci.co.uk/sport/tennis/rss.xml", language: en}
+      - {name: BBC Formule 1, url: "https://feeds.bbci.co.uk/sport/formula1/rss.xml", language: en}
+      - {name: ESPN, url: "https://www.espn.com/espn/rss/news", language: en}
+      - {name: ESPN NFL, url: "https://www.espn.com/espn/rss/nfl/news", language: en}
+      - {name: ESPN NBA, url: "https://www.espn.com/espn/rss/nba/news", language: en}
+      - {name: ESPN MLB, url: "https://www.espn.com/espn/rss/mlb/news", language: en}
+      - {name: ESPN NHL, url: "https://www.espn.com/espn/rss/nhl/news", language: en}
+      - {name: ESPN Soccer, url: "https://www.espn.com/espn/rss/soccer/news", language: en}
+      - {name: CBS Sports, url: "https://www.cbssports.com/rss/headlines/", language: en}
+      - {name: L'Équipe, url: "https://dwh.lequipe.fr/api/edito/rss?path=/", language: fr}
+      # --- Esport (flux RSS officiels des sites)
+      - {name: HLTV (Counter-Strike), url: "https://www.hltv.org/rss/news", language: en}
+      - {name: Dexerto, url: "https://www.dexerto.com/feed/", language: en}
+      - {name: Dot Esports, url: "https://dotesports.com/feed", language: en}
+      # --- Technologie et IA
+      - {name: TechCrunch, url: "https://techcrunch.com/feed/", language: en}
+      - {name: The Verge, url: "https://www.theverge.com/rss/index.xml", language: en}
+      - {name: Ars Technica, url: "https://feeds.arstechnica.com/arstechnica/index", language: en}
+      - {name: BBC Technology, url: "https://feeds.bbci.co.uk/news/technology/rss.xml", language: en}
+      - {name: Hacker News, url: "https://hnrss.org/frontpage", language: en}
+      # --- Culture et divertissement (films, musique, récompenses)
+      - {name: Variety, url: "https://variety.com/feed/", language: en}
+      - {name: Hollywood Reporter, url: "https://www.hollywoodreporter.com/feed/", language: en}
+      - {name: Deadline, url: "https://deadline.com/feed/", language: en}
+      - {name: Billboard, url: "https://www.billboard.com/feed/", language: en}
+      # --- Science, météo extrême, espace
+      - {name: NHC (ouragans), url: "https://www.nhc.noaa.gov/index-at.xml", official: true, language: en}
+      - {name: USGS séismes M4.5+, url: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.atom", official: true, language: en}
+      - {name: Space.com, url: "https://www.space.com/feeds/all", language: en}
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
 
 # Règles de l'arène : config/promotion.yaml (libre depuis le 15/10/2026, lu par les scripts).
