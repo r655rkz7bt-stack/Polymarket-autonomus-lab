@@ -1,19 +1,20 @@
 {
  "dernier_seq": {
-  "principal": 95,
-  "fantome:calibration_patiente_v1.0.0": 40,
-  "fantome:calibration_v2.0.0": 91,
-  "fantome:cross_market_v1.0.0": 89,
-  "fantome:crypto_threshold_v1.0.0": 97,
-  "fantome:information_advantage_v1.0.0": 87,
+  "principal": 96,
+  "fantome:calibration_patiente_v1.0.0": 41,
+  "fantome:calibration_v2.0.0": 92,
+  "fantome:cross_market_v1.0.0": 90,
+  "fantome:crypto_threshold_v1.0.0": 98,
+  "fantome:information_advantage_v1.0.0": 88,
   "fantome:market_structure_v1.0.0": 236,
-  "fantome:naive_favorite_v1.0.0": 94,
-  "fantome:news_momentum_v1.0.0": 92,
-  "fantome:reversion_v1.0.0": 11,
-  "fantome:social_sentiment_v1.0.0": -1
+  "fantome:naive_favorite_v1.0.0": 95,
+  "fantome:news_momentum_v1.0.0": 93,
+  "fantome:reversion_v1.0.0": 99,
+  "fantome:social_sentiment_v1.0.0": 88,
+  "fantome:market_structure_patiente_v1.0.0": 1
  },
- "verifiees": 180,
+ "verifiees": 186,
  "non_verifiables": 0,
  "anomalies": [],
- "derniere_execution": "2026-10-15T19:56:52+00:00"
+ "derniere_execution": "2026-10-15T20:02:13+00:00"
 }
