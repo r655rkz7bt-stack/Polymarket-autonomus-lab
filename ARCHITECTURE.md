@@ -118,7 +118,7 @@ Attention : les Routines Claude Code poussent avec l'identité GitHub d'Etienne.
 
 Le verrouillage est activé à l'étape 8, avec Etienne qui fait les réglages GitHub guidé pas à pas.
 
-## 9. Apprentissage et promotion (`config/promotion.yaml`, protégé)
+## 9. Apprentissage et promotion (`config/promotion.yaml`, libre depuis le 15/10/2026)
 
 - **Niveau 1, paramètres** : ajustement automatique dans les bornes, chaque changement documenté et évalué.
 - **Niveau 2, stratégies** : walk-forward (entraînement, validation, période de test réservée et jamais utilisée pour choisir). Comparaison systématique à « ne rien faire » et à une stratégie naïve définie à l'avance.
@@ -273,7 +273,7 @@ signé ; marchés supplémentaires demandés par les stratégies ; moteur d'appr
 (`learning_engine.py`) avec verdicts par stratégie ; walk-forward (`backtest.walk_forward`, test
 anti-fuite : l'ajustement ne voit que le passé à chaque pli) ; laboratoire (`scripts/lab.py`) qui
 adapte les paramètres dans leurs bornes avec un score pénalisé pour les essais multiples
-(`deflated_score`) ; règles de l'arène dans `config/promotion.yaml` (protégé).
+(`deflated_score`) ; règles de l'arène dans `config/promotion.yaml` (protégé à l'époque, libre depuis l'étape 9).
 
 **Constats du laboratoire (walk-forward 4 plis, 111 528 marchés) :**
 - `naive_favorite` perd sur toutes les variantes ;
@@ -390,6 +390,14 @@ perdu jusqu'au cycle suivant (test de non-régression).
 initialisation puis refus d'une 2ᵉ initialisation ; deux cycles réels sur Polymarket ; journaux
 principal et fantômes relus et vérifiés depuis `data` ; tableau de bord publié au 1er cycle et
 pas au 2ᵉ (moins de 30 min) ; récupération des rapports publiés par la routine.
+
+**Liberté du chercheur (décision d'Etienne, 15/10/2026) :** routine 5 fois par jour ; le
+chercheur peut modifier tout le fonctionnement et créer des workflows `labo-*.yml`, sauf le
+**noyau** (`PROTECTED_PATHS.txt`) : règle n°1, règles du jeu (simulateur, frais), mots de passe
+(workflows qui les reçoivent, réinitialisation isolée), gardien. `config/promotion.yaml` (règles
+de l'arène) devient libre ; la méthode passe dans `docs/METHODE.md` (libre). `guard` vérifie le
+texte des workflows libres (ni secret, ni environnement, ni écriture, ni déclenchement sur
+PR/push, ni nom de contrôle exigé). Limite : le cycle exécute du code libre avec `LEDGER_KEY`.
 
 **Critère de fin :** 24 h de cycles sans erreur sur GitHub (à constater après la mise en service).
 

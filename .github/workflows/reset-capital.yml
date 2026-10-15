@@ -40,8 +40,8 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.13"
-      - name: Dépendances épinglées
-        run: python -m pip install -r requirements.txt
+      - name: Dépendances du noyau seulement (fichier protégé)
+        run: python -m pip install -r requirements-noyau.txt
       - name: Journal (branche data)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -59,7 +59,8 @@ jobs:
           export RESET_INPUT
           mkdir -p ledger
           cp -a _data/ledger/. ledger/
-          python scripts/reset_capital.py --reason "$RESET_REASON"
+          # -I : aucun fichier libre du dépôt n'est importé là où RESET_CODE est présent.
+          python -I scripts/reset_capital.py --reason "$RESET_REASON"
           cp -a ledger/. _data/ledger/
       - name: Enregistrement sur la branche data
         working-directory: _data

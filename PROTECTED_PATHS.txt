@@ -1,16 +1,37 @@
-# Fichiers protégés : une pull request qui en modifie un est bloquée par guard.yml
-# (activé à l'étape 8). Après le verrouillage, seul Etienne peut les modifier.
-# Une ligne = un chemin exact, ou un dossier terminé par « / ».
+# Noyau protégé : une pull request qui touche un de ces chemins est bloquée par guard.yml.
+# Seul Etienne peut les modifier. Tout le reste est libre (décision d'Etienne, 15/10/2026).
+# Une ligne = un chemin exact, un dossier terminé par « / », ou un motif (* ?).
+# « !motif » = exception : chemin libre malgré une règle plus large.
+
+# Règles permanentes et liste du noyau
 CLAUDE.md
 PROTECTED_PATHS.txt
-.github/
-src/polymarket_agent/safety_controller.py
+
+# Règle n°1 : à 0 € tu meurs
+src/polymarket_agent/__init__.py
 src/polymarket_agent/ledger.py
+src/polymarket_agent/safety_controller.py
 config/risk_limits.yaml
-config/promotion.yaml
 tests/test_capital.py
 tests/test_ledger.py
 tests/test_safety_controller.py
-scripts/guard_check.py
+
+# Règles du jeu : comment les exécutions et les frais sont comptés (score honnête)
+src/polymarket_agent/execution_simulator.py
+src/polymarket_agent/fees.py
+tests/test_execution_simulator.py
+
+# Mots de passe : workflows qui reçoivent LEDGER_KEY ou RESET_CODE, et la réinitialisation
+.github/workflows/cycle.yml
+.github/workflows/initialize.yml
+.github/workflows/reset-capital.yml
 scripts/reset_capital.py
+requirements-noyau.txt
+
+# Le gardien : contrôles exigés et fusion automatique
+.github/
+scripts/guard_check.py
 tests/test_guard.py
+
+# Libre : workflows créés par le chercheur, contrôlés par guard (aucun secret, aucune écriture)
+!.github/workflows/labo-*.yml

@@ -42,3 +42,28 @@ jobs:
           fi
       - name: Aucun fichier protégé
         run: python3 scripts/guard_check.py PROTECTED_PATHS.txt < "$RUNNER_TEMP/changed.txt"
+      - name: Workflows libres (labo-*.yml) sans secret, sans écriture, sans imitation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          # Sert uniquement à LIRE le texte des workflows libres via l'API (jamais exécuté).
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/labo"
+          # Liste écrite d'abord dans un fichier : un échec de l'API arrête le contrôle (refus),
+          # au lieu de laisser croire qu'aucun workflow libre n'a changé.
+          gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | select(.status != "removed") | .filename' > "$RUNNER_TEMP/present.txt"
+          files=()
+          while IFS= read -r f; do
+            case "${f,,}" in
+              .github/workflows/labo-*.yml|.github/workflows/labo-*.yaml)
+                out="$RUNNER_TEMP/labo/$(basename "$f")"
+                gh api "repos/$REPO/contents/$f?ref=$HEAD_SHA" -H "Accept: application/vnd.github.raw" > "$out"
+                files+=("$out") ;;
+            esac
+          done < "$RUNNER_TEMP/present.txt"
+          if [ "${#files[@]}" -eq 0 ]; then echo "Aucun workflow libre modifié."; exit 0; fi
+          python3 scripts/guard_check.py --workflow "${files[@]}"
