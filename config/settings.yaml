@@ -82,6 +82,6 @@ llm:
   # Gemini (offre gratuite Google AI Studio) : actif dès qu'Etienne ajoute GEMINI_API_KEY.
   enabled: true
   provider: gemini
-  model: gemini-2.5-flash      # à revérifier sur ai.google.dev au moment d'activer la clé
+  model: gemini-2.5-flash      # point de départ ; s'il est retiré (404), le meilleur « flash » stable est choisi seul
   max_calls_per_day: 200       # sous le quota gratuit ; jamais de dépassement
   markets_per_cycle: 2

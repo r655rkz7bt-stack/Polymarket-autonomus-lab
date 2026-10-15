@@ -235,3 +235,48 @@ def test_gdelt_refusal_costs_a_single_request():
         GdeltSource(with_retries(http, cfg["max_retries"]), sleep=lambda s: None).fetch(["Real Madrid"], NOW)
     assert len(calls) == 1
     assert http.max_retries == 3  # les autres sources gardent leurs nouveaux essais
+
+
+LISTING = {"models": [
+    {"name": "models/gemini-3.0-pro", "supportedGenerationMethods": ["generateContent"]},
+    {"name": "models/gemini-3.5-flash-preview-09", "supportedGenerationMethods": ["generateContent"]},
+    {"name": "models/gemini-3.0-flash-lite", "supportedGenerationMethods": ["generateContent"]},
+    {"name": "models/gemini-3.0-flash", "supportedGenerationMethods": ["generateContent", "countTokens"]},
+    {"name": "models/gemini-2.0-flash", "supportedGenerationMethods": ["generateContent"]},
+    {"name": "models/text-embedding-004", "supportedGenerationMethods": ["embedContent"]},
+]}
+
+
+def test_pick_model_prefers_latest_stable_full_flash():
+    from polymarket_agent.sources.gemini import pick_model
+    assert pick_model(LISTING) == "gemini-3.0-flash"
+    assert pick_model({"models": []}) is None
+
+
+def test_regression_retired_gemini_model_is_replaced_and_remembered(monkeypatch, tmp_path):
+    """Défaut du 15/10/2026 : gemini-2.5-flash répondait 404 (modèle retiré) à chaque cycle."""
+    db = Database(tmp_path / "db.sqlite")
+    monkeypatch.setenv("GEMINI_API_KEY", "fausse-cle-de-test")
+    answer = [{"id": 0, "kind": "fait rapporté", "stance": "oui", "confidence": 0.6}]
+    api = "https://generativelanguage.googleapis.com/v1beta/models"
+    http = FakeHttp({f"{api}/gemini-3.0-flash:": {"candidates": [{"content": {"parts": [{"text": json.dumps(answer)}]}}]},
+                     api: LISTING},
+                    down=(f"{api}/gemini-2.5-flash:",))
+    items = [obs("Real Madrid will win"), obs("Roma injured")]
+    original = http.get_json
+
+    def get_json(url, params=None):
+        try:
+            return original(url, params)
+        except SourceUnavailable as exc:
+            raise SourceUnavailable(f"{exc} : HTTP 404") from None
+    http.get_json = get_json
+    http.post_json = lambda url, body: get_json(url, body)
+    out = GeminiClassifier(http, "gemini-2.5-flash", 10, db).classify("Will Real Madrid win?", items, NOW)
+    assert list(out.values()) == [{"kind": "fait rapporté", "stance": "oui", "confidence": 0.6}]
+    assert db.get_value("gemini_model") == "gemini-3.0-flash"
+    http.calls.clear()  # cycle suivant : directement le bon modèle
+    GeminiClassifier(http, "gemini-2.5-flash", 10, db).classify("Will Real Madrid win?", items, NOW)
+    assert http.calls[0][0].startswith(f"{api}/gemini-3.0-flash:")
+    assert "x-goog-api-key" not in http.session.headers
+    db.close()
