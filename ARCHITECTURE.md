@@ -476,3 +476,14 @@ gagnante avant frais mais perdante après (≥ 20 opérations clôturées). Rég
 - `arena_history.py` : une photo du classement par heure (table `arena_history`, réglage
   `dashboard.arena_history_minutes`), graphique « classement dans le temps » sous l'arène
   (survol : nom, rang, capital ; vue tableau) et « plus forte remontée / chute depuis hier ».
+
+## 27. Audit des règlements (15 octobre 2026, option A du lot D)
+
+`scripts/audit_fills.py` (protégé) vérifie aussi chaque règlement (`SETTLE`) contre l'API publique
+Gamma : marché clos, jeton présent, paiement égal au prix final officiel de l'issue (1, 0 ou 0,5).
+Résolution pas encore définitive : réessayée, anomalie après 3 jours. Curseur à part
+(`dernier_seq_reglements`) : les règlements antérieurs sont vérifiés aussi. Compteur
+`reglements_verifies` dans `audit/etat.json`, affiché dans la console et dans « Aujourd'hui ».
+Le notaire (signature réservée à une machine protégée) n'est pas fait :
+`proposals/2026-10-15_notaire_et_audit_des_reglements.md`.
+

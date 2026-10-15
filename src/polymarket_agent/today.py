@@ -140,6 +140,7 @@ def build(data: dict, entries: dict[str, list[dict]], questions: dict[str, str],
     audit = data.get("audit")
     if audit:
         say("machine", f"Audit indépendant : {audit['verifiees']} exécutions vérifiées contre les vrais prix, "
+                       f"{audit.get('reglements_verifies', 0)} règlements conformes au résultat officiel, "
                        + (f"{audit['anomalies']} ANOMALIE(S) — voir la console." if audit["anomalies"]
                           else "aucune anomalie."))
     states = (data.get("sources") or {}).get("etat") or {}
