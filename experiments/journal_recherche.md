@@ -3,6 +3,21 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-15 (passage chercheur, ~20 h UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (19:46 UTC), classement.
+- **Constat** : capital réalisé 997,99 (palier 1500), aucun champion, aucune obligation. market_structure :
+  53 opérations, -145,27, verdict « ne fonctionne pas » (frais > moitié du résultat sur 16). crypto_threshold -128
+  (3 opérations, surconfiance). 5 stratégies : toujours 0 opération.
+- **Fait** : (1) nouvelle variante `market_structure_patiente` (ordres posés 1 cran au-dessus du meilleur
+  acheteur, déséquilibre ≥ 0,7, objectif 0,04) : hypothèse = les frais taker ruinent la version actuelle.
+  (2) Chantier n°0, étape 1 : inventaire des sources de résolution de 100 marchés réels
+  (`experiments/sources_resolution.md`) ; uefa.com domine (35 %), 22 % sans source déclarée.
+  Tests : 313 verts.
+- **Reste ouvert** : archivage automatique de `resolutionSource`, lecteurs dédiés, stratégie de comparaison
+  au seuil ; comprendre pourquoi 5 stratégies n'ont rien tradé.
+- **Limites** : inventaire sur un seul instantané ; variante non encore jugée (aucune donnée).
+
 ## 2026-10-15 (passage chercheur, ~14 h 30 UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, feuille de mission publiée (14:26 UTC), classement, verdicts.
