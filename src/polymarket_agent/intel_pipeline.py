@@ -48,11 +48,21 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         if gemini is not None and gemini.available:
             busiest = sorted(markets, key=lambda m: -sum(1 for o in recent if m.market_id in o.market_ids))
             try:
+                fresh_count = 0
                 for market in busiest[: int(llm_cfg.get("markets_per_cycle", 2))]:
                     obs = [o for o in recent if market.market_id in o.market_ids and not o.duplicate_of]
-                    if len(obs) >= 2:
-                        stances.update(gemini.classify(market.question, obs, now))
-                status["gemini"] = f"ok ({len(stances)} textes classés)"
+                    if len(obs) < 2:
+                        continue
+                    # Seuls les textes jamais classés pour ce marché sont envoyés à Gemini.
+                    known = db.get_stances(market.market_id, [o.external_id for o in obs]) if db else {}
+                    new = [o for o in obs if o.external_id not in known]
+                    fresh = gemini.classify(market.question, new, now) if new else {}
+                    if db and fresh:
+                        db.save_stances(market.market_id, fresh, now)
+                    fresh_count += len(fresh)
+                    stances.update(known)
+                    stances.update(fresh)
+                status["gemini"] = f"ok ({fresh_count} nouveaux textes classés, {len(stances)} au total)"
             except SourceUnavailable as exc:
                 status["gemini"] = f"indisponible : {exc}"[:200]
         else:

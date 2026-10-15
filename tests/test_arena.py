@@ -124,3 +124,39 @@ def test_regression_missing_arena_rule_fails_loudly(ledger):
     del incomplete["min_closed_trades"]
     with pytest.raises(KeyError):
         run_arena(ledger, {}, incomplete, NOW)
+
+
+def test_main_capital_is_shared_among_the_best_strategies():
+    """Décision du 15/10/2026 : le capital principal se répartit entre les meilleures
+    stratégies éligibles, au prorata de leur croissance (somme des parts = 1)."""
+    from polymarket_agent.arena import Standing, allocation
+    def s(name, trades, growth, eliminated=False):
+        return Standing(name, trades, 1000.0, 1000.0, growth, None, eliminated)
+    shares = allocation([s("a", 12, 0.3), s("b", 15, 0.1), s("c", 5, 0.9), s("d", 30, -0.2),
+                         s("e", 40, 0.5, eliminated=True)], min_trades=10, max_strategies=5)
+    assert set(shares) == {"a", "b"}  # c : trop peu d'opérations ; d : perd ; e : éliminée
+    assert abs(shares["a"] - 0.75) < 1e-9 and abs(sum(shares.values()) - 1) < 1e-9
+    top = allocation([s(f"x{i}", 20, 0.1 * (i + 1)) for i in range(8)], min_trades=10, max_strategies=3)
+    assert set(top) == {"x7", "x6", "x5"}
+    assert allocation([s("d", 30, -0.2)], min_trades=10, max_strategies=5) == {}
+
+
+def test_weighted_strategy_scales_buys_but_never_sells():
+    from dataclasses import dataclass
+    from decimal import Decimal
+    from types import SimpleNamespace
+    from polymarket_agent.main import Weighted
+
+    @dataclass
+    class P:
+        side: str
+        shares: Decimal
+
+    class Fake:
+        strategy_id, version = "fake", "1"
+
+        def propose(self, *args):
+            return SimpleNamespace(proposals=[P("BUY", Decimal("100")), P("SELL", Decimal("40")),
+                                              P("BUY", Decimal("0.01"))])
+    out = Weighted(Fake(), Decimal("0.25")).propose()
+    assert [(p.side, p.shares) for p in out.proposals] == [("BUY", Decimal("25.00")), ("SELL", Decimal("40"))]

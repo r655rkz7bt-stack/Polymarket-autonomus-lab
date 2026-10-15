@@ -18,6 +18,8 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 Liste de travail permanente : `experiments/CHANTIERS.md` (nouvelles sources, décidées par
 Etienne). Sans obligation dans la feuille de mission, avance au moins un chantier par passage.
+À chaque passage, ajoute au moins une nouvelle stratégie ou variante dans l'arène (tester en
+portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pas à s'abstenir).
 
 
 1. Lis la feuille de mission en premier : classement de l'arène, champion, palier suivant

@@ -2,9 +2,13 @@
 
 - Chaque stratégie active trade dans son propre journal fantôme (1 000 virtuels, vrais
   carnets). Le classement se fait sur la croissance logarithmique du capital RÉALISÉ.
-- Le meilleur en direct devient automatiquement le « champion » : le capital principal
-  suit ses décisions, dès qu'il a au moins N opérations clôturées et qu'il bat à la fois
-  « ne rien faire » (croissance > 0) et le champion en titre.
+- Le meilleur en direct devient automatiquement le « champion » dès qu'il a au moins N
+  opérations clôturées et qu'il bat à la fois « ne rien faire » (croissance > 0) et le
+  champion en titre.
+- Le capital principal se répartit entre les meilleures stratégies éligibles (au plus
+  `max_strategies_in_main`), chacune avec une part proportionnelle à sa croissance : la
+  somme des parts vaut 1, l'exposition totale reste celle d'une seule stratégie
+  (décision d'Etienne, 15/10/2026).
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -74,6 +78,16 @@ def choose_champion(standings: list[Standing], current: str, min_trades: int,
                        f"{best.closed_trades} opérations clôturées")
 
 
+def allocation(standings: list[Standing], min_trades: int, max_strategies: int) -> dict[str, float]:
+    """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne bat
+    « ne rien faire » sur assez d'opérations)."""
+    eligible = sorted((s for s in standings
+                       if not s.eliminated and s.closed_trades >= min_trades and s.log_growth > 0),
+                      key=lambda s: s.log_growth, reverse=True)[:max(0, max_strategies)]
+    total = sum(s.log_growth for s in eligible)
+    return {s.name: s.log_growth / total for s in eligible} if total > 0 else {}
+
+
 def choose_elimination(standings: list[Standing], champion: str, last_elimination: datetime | None,
                        now: datetime, min_trades: int, every_days: float,
                        min_days: float) -> Standing | None:
@@ -111,7 +125,8 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)
         events.append(f"élimination : {loser.name}")
     final = ranking([standing(n, l, main.state.eliminated) for n, l in competitors.items()])
-    return {"champion": main.state.champion, "events": events,
+    shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]))
+    return {"champion": main.state.champion, "events": events, "allocation": shares,
             "classement": [s.__dict__ | {"started_at": s.started_at.isoformat() if s.started_at else None}
                            for s in final]}
 
