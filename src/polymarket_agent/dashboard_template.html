@@ -550,7 +550,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         var ventricle = f[1] === "lv" || f[1] === "rv", atrium = f[1] === "ra" || f[1] === "la";
         var delay = ventricle ? Math.hypot(u + 0.1, v - 0.46) * 0.09 : atrium ? Math.hypot(u + 0.15, v + 0.16) * 0.12
           : Math.hypot(u, v + 0.12) * 0.35;
-        dots.push({ x: x, y: y, b: b, reg: f[1], r: step * (0.1 + 0.36 * b), d: delay });
+        // Rayon au repos : au plus 0,31 écart de grille (voir RMAX pour le battement).
+        dots.push({ x: x, y: y, b: b, reg: f[1], r: step * (0.07 + 0.24 * b), d: delay });
       }
     }
     function placeLabels(list, narrow) {
@@ -638,6 +639,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       return t < peak ? 0.5 - 0.5 * Math.cos(Math.PI * t / peak) : 0.5 + 0.5 * Math.cos(Math.PI * (t - peak) / (1 - peak));
     }
     var LAG = { ra: 0, la: 0.018, rv: 0.012, lv: 0 };
+    var RMAX = 0.43;  // rayon maximal d'un point, en écart de grille (< 0,5 : les bulles ne se touchent jamais)
     function chamber(reg, ph) {
       var l = LAG[reg] || 0;
       if (reg === "ra" || reg === "la") return 0.8 * bell(ph - l, 0, 0.16, 0.45);
@@ -664,7 +666,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       buckets.forEach(function (list, level) { if (!list.length) return;
         var sh = Math.round((40 + level * 10) * dim); ctx.fillStyle = "rgb(" + sh + "," + sh + "," + (sh + 3) + ")";
         ctx.beginPath(); list.forEach(function (q) { ctx.moveTo(q[0] + q[2], q[1]); ctx.arc(q[0], q[1], q[2], 0, 6.2832); }); ctx.fill(); });
-      var layers = {};  // points regroupés par teinte : un seul tracé par teinte (fluide sur tablette)
+      var rmax = RMAX * step, layers = {};  // points regroupés par teinte : un seul tracé par teinte (fluide sur tablette)
       for (var k = 0; k < dots.length; k++) { var p = dots[k], e = 0;
         if (moving) {
           if (p.reg === "ao" || p.reg === "ap") e = 0.75 * Math.exp(-Math.pow((ph - 0.26 - p.d) / 0.07, 2)); // onde d'éjection
@@ -672,8 +674,9 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
           else e = chamber(p.reg, ph - p.d);
         } else if (period) e = 0.25;
         // Les points restent en place : seule leur taille (donc leur clarté) suit la contraction.
+        // Jamais deux points ne se touchent : rayon plafonné à RMAX écart de grille (vide ≥ 0,14 écart).
         var shade = Math.round(Math.min(250, (48 + 196 * p.b + 40 * e) * dim) / 4) * 4;
-        (layers[shade] = layers[shade] || []).push(p.x, p.y, Math.max(0.5, p.r * (0.78 + 0.55 * e))); }
+        (layers[shade] = layers[shade] || []).push(p.x, p.y, Math.max(0.5, Math.min(rmax, p.r * (1 + 0.38 * e)))); }
       Object.keys(layers).forEach(function (sh) { var a = layers[sh];
         ctx.fillStyle = "rgb(" + sh + "," + sh + "," + Math.min(255, +sh + 2) + ")"; ctx.beginPath();
         for (var m = 0; m < a.length; m += 3) { ctx.moveTo(a[m] + a[m + 2], a[m + 1]); ctx.arc(a[m], a[m + 1], a[m + 2], 0, 6.2832); }
