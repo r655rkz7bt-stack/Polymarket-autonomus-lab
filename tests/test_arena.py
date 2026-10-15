@@ -14,6 +14,15 @@ from polymarket_agent.ledger import InvalidEntry, Ledger
 D = Decimal
 
 
+def _rules():
+    import yaml
+    from conftest import ROOT
+    return yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+
+
+RULES = _rules()
+
+
 def st(name, trades, growth, days=10, eliminated=False):
     return Standing(name, trades, 1000.0, 1000.0, growth, NOW - timedelta(days=days), eliminated)
 
@@ -48,7 +57,7 @@ def test_run_arena_writes_signed_promotion(ledger, paths, tmp_path):
         buy(shadow, f"b{i}", token=f"t{i}", shares="10", price="0.5", event=f"e{i}")
         shadow.record_settlement(op_id=f"s{i}", token_id=f"t{i}", payout_per_share="1",
                                  resolution="Yes", now=NOW)
-    summary = run_arena(ledger, {"star_v1": shadow}, {"min_closed_trades": 20}, NOW)
+    summary = run_arena(ledger, {"star_v1": shadow}, RULES, NOW)
     assert summary["champion"] == "star_v1" and summary["events"]
     assert Ledger.open(paths[0], KEY, paths[1]).state.champion == "star_v1"
 
@@ -87,7 +96,7 @@ def test_champion_cannot_be_eliminated(ledger):
 
 def test_brief_lists_innovation_obligations(ledger, tmp_path):
     from polymarket_agent.brief import build_brief, render_brief
-    cfg = {"min_strategies_in_test": 3, "radical_idea_after_days_without_record": 7}
+    cfg = RULES
     brief = build_brief(ledger, {}, ["a_v1"], cfg, now=NOW + timedelta(days=8))
     text = " ".join(brief["obligations"])
     assert "Ajouter 2 nouvelle(s)" in text and "RADICALEMENT" in text
@@ -95,3 +104,22 @@ def test_brief_lists_innovation_obligations(ledger, tmp_path):
     assert "Feuille de mission" in render_brief(brief)
     calm = build_brief(ledger, {}, ["a_v1", "b_v1", "c_v1"], cfg, now=NOW + timedelta(days=1))
     assert calm["obligations"] == []
+
+
+def test_arena_rules_live_in_the_protected_promotion_file():
+    import yaml
+    from conftest import ROOT
+    rules = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    assert rules["min_closed_trades"] == 20 and rules["elimination_every_days"] == 7
+    assert "config/promotion.yaml" in (ROOT / "PROTECTED_PATHS.txt").read_text(encoding="utf-8")
+    settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
+    assert "arena" not in settings  # pas de copie modifiable par le chercheur
+
+
+def test_regression_missing_arena_rule_fails_loudly(ledger):
+    """Défaut du 15/10/2026 : la section « arena » avait disparu de settings.yaml sans que rien
+    ne le signale (valeurs par défaut silencieuses). Une règle manquante doit faire échouer."""
+    incomplete = dict(RULES)
+    del incomplete["min_closed_trades"]
+    with pytest.raises(KeyError):
+        run_arena(ledger, {}, incomplete, NOW)

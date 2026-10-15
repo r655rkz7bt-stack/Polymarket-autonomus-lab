@@ -15,7 +15,7 @@ import os
 import time
 from datetime import datetime, timezone
 
-from _common import ROOT, get_key, load_settings, resolve, setup_logging
+from _common import ROOT, get_key, load_settings_with_arena as load_settings, resolve, setup_logging
 
 from polymarket_agent.http_client import HttpClient
 from polymarket_agent.intel_pipeline import make_collector

@@ -67,6 +67,8 @@ sources:
       - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
 
+# Règles de l'arène : config/promotion.yaml (fichier protégé, lu par les scripts).
+
 collector:
   markets_per_cycle: 5         # marchés surveillés pour lesquels on cherche des actualités
 

@@ -239,7 +239,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # 3 bis. Arène : classement, promotion du champion, élimination hebdomadaire.
     competitors = {p.name.removeprefix("fantome:"): p for p in portfolios[1:]}
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
-                             deps.settings.get("arena", {}), deps.now())
+                             deps.settings["arena"], deps.now())
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)

@@ -185,3 +185,24 @@ def test_regression_rss_with_utf8_bom_is_parsed():
     raw = "\ufeff".encode("utf-8") + RSS.encode("utf-8")
     assert parse_feed(raw)[0]["title"] == "Fed announces rate decision"
     assert parse_feed(raw.decode("latin-1"))[0]["title"] == "Fed announces rate decision"
+
+
+def test_regression_crypto_quote_reused_between_collections(tmp_path):
+    """Défaut du 15/10/2026 : sur les cycles où la source crypto n'est pas réinterrogée
+    (fréquence), crypto_threshold n'avait aucun prix. On réutilise le dernier prix enregistré."""
+    from polymarket_agent.intel_pipeline import make_collector
+    db = Database(tmp_path / "db.sqlite")
+    quote_obs = Observation("crypto_prices", "coinbase-btc-1", NOW - timedelta(minutes=3), NOW,
+                            "https://coinbase.com", "btc 81000", "", domain="coinbase.com",
+                            data={"asset": "btc", "price": 81000.0, "hourly_vol": 0.004}).finalize()
+    factories = {"crypto_prices": lambda: Fixed([quote_obs])}
+    cfg = settings(polymarket_comments={"enabled": False}, gdelt={"enabled": False}, rss={"enabled": False})
+    cfg["llm"] = {"enabled": False}
+    btc = parse_market(raw_market(question="Will the price of Bitcoin be above $80,000 on October 15?"))
+    run = make_collector(cfg, None, db, factories)
+    run([btc], NOW)
+    later = parse_market(raw_market(question="Will the price of Bitcoin be above $80,000 on October 15?"))
+    status = run([later], NOW + timedelta(minutes=2))  # source pas encore due
+    assert status["crypto_prices"] == "pas encore (fréquence)"
+    assert later.crypto_quote is not None and later.crypto_quote.price == 81000.0
+    db.close()

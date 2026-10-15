@@ -94,17 +94,18 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     # Attention : chaque écriture remplace main.state par une nouvelle copie ; on relit
     # donc toujours main.state (jamais une référence gardée d'avant l'écriture).
     standings = [standing(name, ledger, main.state.eliminated) for name, ledger in competitors.items()]
-    min_trades = int(cfg.get("min_closed_trades", 20))
+    # Règles obligatoires (config/promotion.yaml) : pas de valeur par défaut silencieuse.
+    min_trades = int(cfg["min_closed_trades"])
     events = []
     previous = main.state.champion
     champion, reason = choose_champion(standings, previous, min_trades,
-                                       float(cfg.get("promotion_margin", 0.0)))
+                                       float(cfg["promotion_margin"]))
     if champion != previous:
         main.record_promotion(champion, reason, {"from": previous}, now)
         events.append(f"promotion : {champion or 'ne rien faire'} ({reason})")
     loser = choose_elimination(standings, main.state.champion, main.state.last_elimination_at, now,
-                               min_trades, float(cfg.get("elimination_every_days", 7)),
-                               float(cfg.get("min_days_before_elimination", 7)))
+                               min_trades, float(cfg["elimination_every_days"]),
+                               float(cfg["min_days_before_elimination"]))
     if loser is not None:
         main.record_elimination(loser.name, "pire croissance de l'arène",
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)

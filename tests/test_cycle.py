@@ -7,6 +7,7 @@ from datetime import timedelta
 from decimal import Decimal
 
 import pytest
+import yaml
 
 from conftest import KEY, NOW, ROOT, buy, make_book, raw_market
 from polymarket_agent.config import load_settings
@@ -76,7 +77,10 @@ def env(tmp_path, ledger, paths, limits):
     clock = {"now": NOW}
 
     def make(gamma, clob, settings=None, strategies=None):
-        return CycleDeps(settings=settings or load_settings(), limits=limits,
+        if settings is None:
+            settings = load_settings()
+            settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+        return CycleDeps(settings=settings, limits=limits,
                          strategies=strategies if strategies is not None else [pipeline_strategy()],
                          ledger_path=paths[0], lock_path=paths[1], key=KEY, db=db,
                          gamma=gamma, clob=clob, now=lambda: clock["now"],
@@ -197,6 +201,7 @@ def test_truncated_ledger_is_detected_by_anchor(env, ledger, paths):
 def test_real_mode_is_refused(env):
     make, _, _ = env
     settings = load_settings()
+    settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
     settings["mode"] = "real"
     with pytest.raises(RealModeForbidden):
         run_cycle(make(FakeGamma(), FakeClob({}), settings))

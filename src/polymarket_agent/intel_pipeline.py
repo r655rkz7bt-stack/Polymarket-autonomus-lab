@@ -16,6 +16,21 @@ from polymarket_agent.sources.gemini import GeminiClassifier
 log = logging.getLogger(__name__)
 
 
+def latest_quotes(observations) -> dict:
+    """Dernier prix crypto connu par actif (la source n'est interrogée qu'une fois sur N cycles :
+    entre deux, on réutilise le dernier prix enregistré ; la stratégie vérifie son âge)."""
+    from polymarket_agent.sources.crypto_prices import CryptoQuote
+    best = {}
+    for o in observations:
+        if o.source != "crypto_prices" or "asset" not in o.data or o.published_at is None:
+            continue
+        asset = o.data["asset"]
+        if asset not in best or o.published_at > best[asset].as_of:
+            best[asset] = CryptoQuote(asset, float(o.data["price"]), float(o.data["hourly_vol"]),
+                                      o.published_at, o.domain)
+    return best
+
+
 def make_collector(settings: dict, http: HttpClient, db, factories: dict | None = None):
     llm_cfg = settings.get("llm", {})
     gemini = (GeminiClassifier(http, llm_cfg.get("model", "gemini-2.5-flash"),
@@ -40,11 +55,13 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         else:
             status["gemini"] = "désactivée (pas de clé GEMINI_API_KEY)"
         down = [n for n, s in status.items() if s.startswith("indisponible")]
+        quotes = latest_quotes(recent)
+        quotes.update(collection.crypto)  # les prix tout juste collectés priment
         for market in markets:
             market.intel = summarize(market.market_id, recent, now, down, stances)
             group = correlation_group(market)
             if group.startswith("crypto:"):
-                market.crypto_quote = collection.crypto.get(group.split(":")[1])
+                market.crypto_quote = quotes.get(group.split(":")[1])
         return status
 
     return run
