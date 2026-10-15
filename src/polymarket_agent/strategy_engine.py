@@ -7,6 +7,7 @@ paramètres bornés (config/strategies.yaml) et un historique (base SQLite).
 
 from __future__ import annotations
 
+import dataclasses
 import hashlib
 import logging
 from dataclasses import dataclass, field
@@ -55,6 +56,9 @@ def load_params(spec: dict) -> dict[str, Decimal]:
 @dataclass
 class StrategyOutput:
     proposals: list[Proposal] = field(default_factory=list)
+    # Ordres à cours limité à POSER dans le carnet (max_price = prix limite). Exécutés plus tard,
+    # seulement si le marché passe au travers du prix (execution_simulator.simulate_resting_*).
+    limit_orders: list[Proposal] = field(default_factory=list)
     abstentions: dict[str, int] = field(default_factory=dict)
 
     def abstain(self, reason: str) -> None:
@@ -436,6 +440,50 @@ STRATEGY_CLASSES: dict[str, Any] = {NaiveFavorite.strategy_id: NaiveFavorite,
                                     ReversionStrategy.strategy_id: ReversionStrategy}
 
 
+class PatientOrders:
+    """Mode « patient » d'une stratégie : au lieu d'acheter tout de suite au vendeur (ask), elle
+    pose un ordre d'achat à cours limité `ticks` crans au-dessus du meilleur acheteur, sans
+    jamais toucher le vendeur. Elle paie moins cher (et souvent sans frais), mais n'est servie
+    que si le marché redescend au travers de son prix — souvent jamais. Ventes inchangées."""
+
+    def __init__(self, strategy, ticks: int):
+        if ticks < 0:
+            raise StrategyConfigError("limit_ticks doit être >= 0")
+        self.inner, self.ticks = strategy, ticks
+        self.strategy_id, self.version = strategy.strategy_id, strategy.version
+        self.needs_price_history = getattr(strategy, "needs_price_history", False)
+        if hasattr(strategy, "exits"):
+            self.exits = strategy.exits
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.execution_simulator import maker_fee  # import tardif
+
+        out = self.inner.propose(watchlist, books, state, limits, bucket, marks)
+        markets = {m.market_id: m for m in watchlist}
+        kept = []
+        for p in out.proposals:
+            book, market = books.get(p.token_id), markets.get(p.market_id)
+            if p.side != "BUY" or book is None or market is None or book.best_bid is None \
+                    or book.best_ask is None:
+                kept.append(p)
+                continue
+            limit = min(book.best_bid + book.tick_size * self.ticks, book.best_ask - book.tick_size)
+            if limit <= 0 or limit <= book.best_bid - book.tick_size:
+                out.abstain("écart trop serré pour poser un ordre")
+                continue
+            try:
+                edge = p.prob_low - limit - maker_fee(ONE, limit, market.fees)
+            except UnknownFees:
+                out.abstain("frais inconnus")
+                continue
+            out.limit_orders.append(dataclasses.replace(p, max_price=limit, net_edge=edge))
+        out.proposals = kept
+        return out
+
+    def __getattr__(self, name):
+        return getattr(self.inner, name)
+
+
 def load_strategies(path: Path) -> list:
     try:
         raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
@@ -448,13 +496,18 @@ def load_strategies(path: Path) -> list:
     for strategy_id, spec in raw.items():
         if not isinstance(spec, dict) or not spec.get("enabled"):
             continue
-        cls = classes.get(strategy_id)
+        # « class: » : variante d'une stratégie existante sous un autre nom (son propre fantôme).
+        cls = classes.get(str(spec.get("class", strategy_id)))
         if cls is None:
-            raise StrategyConfigError(f"stratégie inconnue : {strategy_id}")
+            raise StrategyConfigError(f"stratégie inconnue : {spec.get('class', strategy_id)}")
         args = [str(spec["version"]), str(spec["created_at"]), load_params(spec.get("params"))]
         if "table" in spec:
             args.append(Path(path).parent / str(spec["table"]))
         strategy = cls(*args)
+        if "class" in spec:
+            strategy.strategy_id = strategy_id
+        if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
+            strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
         mode = str(spec.get("mode", "principal"))
         if mode not in ("principal", "fantome"):
             raise StrategyConfigError(f"{strategy_id} : mode inconnu {mode!r}")

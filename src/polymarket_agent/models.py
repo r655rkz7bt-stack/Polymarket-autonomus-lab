@@ -12,7 +12,7 @@ class FeeSchedule:
     enabled: bool | None  # None = inconnu
     rate: Decimal | None
     exponent: Decimal | None
-    taker_only: bool = True
+    taker_only: bool = False  # True seulement si le barème le dit (ordres posés sans frais)
     fee_type: str | None = None
 
 

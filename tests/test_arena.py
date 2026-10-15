@@ -57,8 +57,10 @@ def test_run_arena_writes_signed_promotion(ledger, paths, tmp_path):
         buy(shadow, f"b{i}", token=f"t{i}", shares="10", price="0.5", event=f"e{i}")
         shadow.record_settlement(op_id=f"s{i}", token_id=f"t{i}", payout_per_share="1",
                                  resolution="Yes", now=NOW)
-    summary = run_arena(ledger, {"star_v1": shadow}, RULES, NOW)
+    assert run_arena(ledger, {"star_v1": shadow}, RULES, NOW)["champion"] == ""  # moins de 24 h d'ancienneté
+    summary = run_arena(ledger, {"star_v1": shadow}, RULES, NOW + timedelta(hours=25))
     assert summary["champion"] == "star_v1" and summary["events"]
+    assert summary["allocation"] == {"star_v1": 1.0}
     assert Ledger.open(paths[0], KEY, paths[1]).state.champion == "star_v1"
 
 
@@ -112,7 +114,8 @@ def test_arena_rules_live_in_a_single_file():
     from conftest import ROOT
     rules = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
     assert {"min_closed_trades", "elimination_every_days", "min_days_before_elimination",
-            "min_strategies_in_test", "radical_idea_after_days_without_record", "promotion_margin"} <= set(rules)
+            "min_strategies_in_test", "radical_idea_after_days_without_record", "promotion_margin",
+            "min_age_hours", "min_log_growth", "keep_log_growth"} <= set(rules)
     settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
     assert "arena" not in settings
 
@@ -160,3 +163,27 @@ def test_weighted_strategy_scales_buys_but_never_sells():
                                               P("BUY", Decimal("0.01"))])
     out = Weighted(Fake(), Decimal("0.25")).propose()
     assert [(p.side, p.shares) for p in out.proposals] == [("BUY", Decimal("25.00")), ("SELL", Decimal("40"))]
+
+
+def test_regression_noise_is_not_promoted():
+    """15/10/2026 : market_structure promue sur +0,02 % après 27 opérations en 3 h, destituée 10 min
+    après. Seuil d'entrée (repository) : 20 opérations, 24 h, +2 % ; maintien au-dessus de 0."""
+    gates = {"now": NOW, "min_age_hours": float(RULES["min_age_hours"]),
+             "min_growth": float(RULES["min_log_growth"])}
+    keep, margin, n = float(RULES["keep_log_growth"]), float(RULES["promotion_margin"]), int(RULES["min_closed_trades"])
+    noise = st("market_structure", 27, 0.0002, days=3 / 24)
+    assert choose_champion([noise], "", n, margin, keep_growth=keep, **gates)[0] == ""
+    young_star = st("star", 27, 0.10, days=0.5)  # belle croissance mais moins de 24 h
+    assert choose_champion([young_star], "", n, margin, keep_growth=keep, **gates)[0] == ""
+    assert choose_champion([st("star", 27, 0.10, days=2)], "", n, margin, keep_growth=keep, **gates)[0] == "star"
+    # Hystérésis : un champion à +1 % (sous le seuil d'entrée) reste, et garde sa part du capital.
+    from polymarket_agent.arena import allocation
+    champ = st("champ", 40, 0.01, days=5)
+    assert choose_champion([champ], "champ", n, margin, keep_growth=keep, **gates)[0] == "champ"
+    assert allocation([champ], n, 5, champion="champ", keep_growth=keep, **gates) == {"champ": 1.0}
+    assert allocation([champ], n, 5, champion="", keep_growth=keep, **gates) == {}
+    # Marge : il faut battre le champion de +0,01 pour le détrôner.
+    assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.055, days=5)], "champ", n, margin,
+                           keep_growth=keep, **gates)[0] == "champ"
+    assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.07, days=5)], "champ", n, margin,
+                           keep_growth=keep, **gates)[0] == "b"

@@ -18,10 +18,11 @@ from polymarket_agent.observations import Observation
 from polymarket_agent.sources._util import domain_of, parse_date
 
 ATOM = "{http://www.w3.org/2005/Atom}"
+RSS1 = "{http://purl.org/rss/1.0/}"
 
 
 def parse_feed(xml_text: str | bytes) -> list[dict]:
-    """Retourne [{title, link, summary, published}] pour RSS 2.0 et Atom.
+    """Retourne [{title, link, summary, published}] pour RSS 2.0, RSS 1.0 (RDF) et Atom.
 
     Accepte des octets bruts (préférable : l'encodage déclaré dans le XML et un éventuel
     BOM UTF-8 sont alors gérés correctement, cf. flux de la Fed).
@@ -38,6 +39,11 @@ def parse_feed(xml_text: str | bytes) -> list[dict]:
                       "link": (item.findtext("link") or "").strip(),
                       "summary": (item.findtext("description") or "").strip(),
                       "published": item.findtext("pubDate") or item.findtext("{http://purl.org/dc/elements/1.1/}date")})
+    for item in root.iter(f"{RSS1}item"):  # RSS 1.0 (RDF), ex. DW
+        items.append({"title": (item.findtext(f"{RSS1}title") or "").strip(),
+                      "link": (item.findtext(f"{RSS1}link") or "").strip(),
+                      "summary": (item.findtext(f"{RSS1}description") or "").strip(),
+                      "published": item.findtext("{http://purl.org/dc/elements/1.1/}date")})
     for entry in root.iter(f"{ATOM}entry"):
         link = entry.find(f"{ATOM}link")
         items.append({"title": (entry.findtext(f"{ATOM}title") or "").strip(),

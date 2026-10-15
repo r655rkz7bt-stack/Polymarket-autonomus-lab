@@ -482,5 +482,72 @@ def test_gemini_never_pays_twice_for_the_same_text(tmp_path, monkeypatch):
     db.set_source_run("gdelt", NOW - timedelta(hours=2))  # nouvelle collecte avec un 3e texte
     texts.append(obs("Real Madrid Roma injury news", domain="espn.com", ext="c"))
     second = run(markets, NOW + timedelta(minutes=20))
-    assert sent[1] == ["c"] and "3 au total" in second["gemini"]
+    assert sent[1] == ["c"] and "3 avis sur 1 marchés" in second["gemini"]
     db.close()
+
+
+def test_regression_stances_are_kept_per_market(tmp_path, monkeypatch):
+    """Un même article lié à deux marchés : l'avis classé pour l'un ne doit jamais servir à l'autre
+    (avant : un seul dictionnaire par article, le dernier marché classé écrasait les autres)."""
+    from polymarket_agent import intel_pipeline
+    db = Database(tmp_path / "db.sqlite")
+
+    def fake_classify(self, question, observations, now):
+        stance = "oui" if question.startswith("Will Real Madrid") else "non"
+        return {o.external_id: {"kind": "fait rapporté", "stance": stance, "confidence": 0.8} for o in observations}
+    monkeypatch.setattr(intel_pipeline.GeminiClassifier, "classify", fake_classify)
+    monkeypatch.setattr(intel_pipeline.GeminiClassifier, "available", property(lambda self: True))
+    markets = [parse_market(raw_market("1", "y1", "n1", question="Will Real Madrid beat Roma?")),
+               parse_market(raw_market("2", "y2", "n2", question="Will Roma beat Real Madrid?", event_id="ev2"))]
+    texts = [obs("Real Madrid beat Roma in Rome", ext="a"), obs("Roma Real Madrid preview", domain="lemonde.fr", ext="b")]
+    cfg = dict(settings(), llm={"enabled": True, "markets_per_cycle": 15, "max_calls_per_day": 100})
+    run = intel_pipeline.make_collector(cfg, None, db, {"gdelt": lambda: Fixed(texts), "rss": lambda: Fixed([]),
+                                                        "polymarket_comments": lambda: Boom(),
+                                                        "crypto_prices": lambda: Boom()})
+    status = run(markets, NOW)
+    assert "4 avis sur 2 marchés" in status["gemini"]
+    assert markets[0].intel.stance == 1.0 and markets[1].intel.stance == -1.0
+    db.close()
+
+
+def test_rss_1_0_rdf_feed_is_read():
+    """Constaté le 15/10/2026 : le flux DW (RSS 1.0 / RDF) était lu comme vide."""
+    rdf = b"""<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel><title>DW</title></channel>
+  <item><title>EU summit ends</title><link>https://www.dw.com/a-1</link>
+    <description>Leaders agree</description><dc:date>2026-10-15T12:00:00Z</dc:date></item>
+</rdf:RDF>"""
+    item = parse_feed(rdf)[0]
+    assert item["title"] == "EU summit ends" and item["link"] == "https://www.dw.com/a-1"
+    assert item["published"] == "2026-10-15T12:00:00Z"
+
+
+def test_rss_status_names_the_failed_feeds_and_uses_the_full_user_agent(tmp_path):
+    """Les flux en échec sont nommés dans le statut (visibles dans le journal du cycle et le tableau
+    de bord) ; l'identifiant envoyé est celui des réglages (NPR refuse l'identifiant court)."""
+    from polymarket_agent.sources.rss import RssSource
+    class Session:
+        headers = {}
+
+        def get(self, url, timeout):
+            return _Resp(b"Access Denied", 403) if "mort" in url else _Resp(RSS.encode())
+
+    feeds = [{"name": "Vivant", "url": "https://vivant.org/rss"}, {"name": "Mort", "url": "https://mort.org/rss"}]
+    created = []
+
+    def factory():
+        created.append(RssSource(feeds, session=Session(), user_agent=cfg["http"]["user_agent"]))
+        return created[-1]
+    cfg = dict(settings(rss={"enabled": True, "every_minutes": 15, "feeds": feeds}),
+               http={"user_agent": "labo/0.1 (recherche)"})
+    db = Database(tmp_path / "db.sqlite")
+    result = collect(cfg, None, db, [], NOW, {"rss": factory, "polymarket_comments": lambda: Boom(),
+                                             "crypto_prices": lambda: Boom(), "gdelt": lambda: Fixed([])})
+    assert result.status["rss"].startswith("ok (") and result.status["rss"].endswith("1 flux en échec : Mort)")
+    db.close()
+    # Sans fabrique de test, le collecteur passe bien l'identifiant des réglages.
+    import inspect
+    from polymarket_agent import data_collector
+    assert 'settings.get("http", {}).get("user_agent"' in inspect.getsource(data_collector.collect)

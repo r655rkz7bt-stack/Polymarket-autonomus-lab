@@ -125,7 +125,20 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
     run("google_news", lambda cfg: factories.get("google_news", lambda: GoogleNewsSource(
         per_query=int(cfg.get("per_query", 15))))().fetch(queries[: int(cfg.get("queries_per_run", 5))], now))
-    run("rss", lambda cfg: factories.get("rss", lambda: RssSource(cfg.get("feeds", [])))().fetch(now))
+    rss_sources = []
+
+    def rss(cfg):
+        # Identifiant complet (settings → http.user_agent) : certains sites refusent l'identifiant court.
+        source = factories.get("rss", lambda: RssSource(
+            cfg.get("feeds", []), user_agent=settings.get("http", {}).get("user_agent", "polymarket-autonomous-lab")))()
+        rss_sources.append(source)
+        return source.fetch(now)
+    run("rss", rss)
+    failed = getattr(rss_sources[0], "failures", {}) if rss_sources else {}
+    if failed and result.status.get("rss", "").startswith("ok"):
+        names = {f["url"]: f.get("name", f["url"]) for f in src.get("rss", {}).get("feeds", [])}
+        result.status["rss"] = (result.status["rss"][:-1] + f", {len(failed)} flux en échec : "
+                                + ", ".join(sorted(names.get(u, u) for u in failed)) + ")")[:300]
     run("bluesky", lambda cfg: factories.get("bluesky", lambda: BlueskySource(http))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
     result.status["x_api"] = "désactivée (payante)"

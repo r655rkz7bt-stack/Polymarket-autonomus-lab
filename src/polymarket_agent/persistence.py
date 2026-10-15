@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -115,6 +115,20 @@ CREATE TABLE IF NOT EXISTS stances (
     collected_at TEXT NOT NULL,
     PRIMARY KEY (market_id, external_id)
 );
+CREATE TABLE IF NOT EXISTS pending_orders (
+    op_id TEXT PRIMARY KEY,
+    portfolio TEXT NOT NULL,
+    token_id TEXT NOT NULL,
+    side TEXT NOT NULL,
+    remaining TEXT NOT NULL,
+    fills INTEGER NOT NULL,
+    created_at TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    status TEXT NOT NULL,
+    proposal TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_pending_open ON pending_orders(portfolio, status);
 CREATE TABLE IF NOT EXISTS ledger_anchor (
     id INTEGER PRIMARY KEY CHECK (id = 1),
     seq INTEGER NOT NULL,
@@ -288,6 +302,40 @@ class Database:
     def set_anchor(self, seq: int, digest: str, now: datetime) -> None:
         self.conn.execute("INSERT OR REPLACE INTO ledger_anchor VALUES (1, ?, ?, ?)",
                           (seq, digest, _iso(now)))
+        self.conn.commit()
+
+    # ------------------------------------------------------------------ ordres posés
+    # Ordres à cours limité en attente. Ce n'est PAS de l'argent : seul le journal signé compte.
+    # Si la base est perdue, les ordres disparaissent (comme annulés) et rien d'autre ne change.
+
+    def add_pending_order(self, portfolio: str, proposal, created_at: datetime,
+                          expires_at: datetime) -> bool:
+        """Pose un ordre. Un nouvel ordre remplace l'ordre ouvert du même portefeuille sur le
+        même jeton et le même sens (une stratégie met son prix à jour à chaque cycle)."""
+        self.conn.execute("UPDATE pending_orders SET status='REMPLACE', updated_at=? WHERE portfolio=? "
+                          "AND token_id=? AND side=? AND status='OUVERT' AND op_id != ?",
+                          (_iso(created_at), portfolio, proposal.token_id, proposal.side, proposal.op_id))
+        payload = {k: (list(v) if isinstance(v, tuple) else str(v)) for k, v in proposal.__dict__.items()}
+        cur = self.conn.execute(
+            "INSERT OR IGNORE INTO pending_orders VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+            (proposal.op_id, portfolio, proposal.token_id, proposal.side, str(proposal.shares), 0,
+             _iso(created_at), _iso(expires_at), "OUVERT", json.dumps(payload, ensure_ascii=False),
+             _iso(created_at)))
+        # Historique des ordres terminés : 7 jours suffisent (le journal garde les exécutions).
+        self.conn.execute("DELETE FROM pending_orders WHERE status != 'OUVERT' AND updated_at < ?",
+                          (_iso(created_at - timedelta(days=7)),))
+        self.conn.commit()
+        return cur.rowcount > 0
+
+    def open_orders(self, portfolio: str | None = None) -> list[dict]:
+        sql, args = "SELECT * FROM pending_orders WHERE status='OUVERT'", ()
+        if portfolio is not None:
+            sql, args = sql + " AND portfolio=?", (portfolio,)
+        return [dict(r) for r in self.conn.execute(sql + " ORDER BY created_at, op_id", args)]
+
+    def update_order(self, op_id: str, *, remaining, fills: int, status: str, now: datetime) -> None:
+        self.conn.execute("UPDATE pending_orders SET remaining=?, fills=?, status=?, updated_at=? "
+                          "WHERE op_id=?", (str(remaining), fills, status, _iso(now), op_id))
         self.conn.commit()
 
     # ------------------------------------------------------------------ taille

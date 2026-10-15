@@ -208,9 +208,13 @@ faire » (drawdown nul) : à trancher par Etienne avant l'étape 6.
   dans le journal signé (`MILESTONE`), avec le temps mis. Impossible d'inscrire un palier non atteint.
 - **Arène** (`arena.py`) : chaque stratégie active trade dans son portefeuille fantôme (1 000,
   vrais carnets). Classement par croissance logarithmique du capital réalisé.
-- **Champion** : le meilleur avec ≥ 20 opérations clôturées, qui bat « ne rien faire » et le
-  champion en titre. Le capital principal suit ses décisions (`PROMOTION` signée). Un nouveau
-  champion n'est jugé qu'après 20 opérations ; déchu s'il passe sous « ne rien faire ».
+- **Champion** (seuils dans `config/promotion.yaml`, libres) : seuil d'ENTRÉE = ≥ 20 opérations
+  clôturées, ≥ 24 h d'ancienneté et ≥ +2 % de croissance ; il doit battre le champion en titre de
+  +1 %. Seuil de MAINTIEN plus bas (au-dessus de « ne rien faire ») : pas de va-et-vient sur du
+  bruit (durci le 15/10/2026 après une promotion à +0,02 % destituée 10 minutes plus tard). Le
+  capital principal se répartit entre les stratégies qui passent l'entrée (et le champion tant
+  qu'il tient le maintien). `PROMOTION` signée. Une stratégie retirée garde la main sur les
+  ventes de ses positions du principal, sans racheter.
 - **Élimination** : une fois par semaine, la pire stratégie éligible (≥ 20 opérations, ≥ 7 jours,
   jamais le champion) est éliminée (`ELIMINATION` signée) et ne trade plus.
 - **Innovation obligatoire** (`brief.py`, `scripts/research_brief.py`) : ≥ 3 idées en test,
@@ -401,3 +405,19 @@ PR/push, ni nom de contrôle exigé). Limite : le cycle exécute du code libre a
 
 **Critère de fin :** 24 h de cycles sans erreur sur GitHub (à constater après la mise en service).
 
+
+## 21. Ordres à cours limité posés (point 6, 15 octobre 2026)
+
+Décision d'Etienne : liberté maximale, y compris des ordres posés dans le carnet. Proposition :
+`proposals/2026-10-15_ordres_limites.md`.
+
+- Noyau : `execution_simulator.simulate_resting_buy/sell` (règle du passage au travers, au prix
+  posé, carnet relu après la pose, toucher insuffisant) et `maker_fee` (0 seulement si le barème
+  dit « taker seulement »).
+- Cycle : étape 5 bis exécute les ordres posés aux cycles précédents avec les carnets du cycle
+  (contrôleur + journal comme un ordre taker) ; les stratégies posent leurs nouveaux ordres
+  (carnet relu au moment de la pose, réservation du solde, 30 ordres ouverts au plus, 6 h au
+  plus, un ordre par jeton et par sens : le nouveau remplace l'ancien). Un ordre déjà exécutable
+  part dans le circuit taker. Expiré / marché fermé / position vendue / stratégie éliminée → fin.
+- Stratégies : `limit_orders` dans `StrategyOutput` ; `limit_ticks` dans `strategies.yaml` ;
+  variantes `class:`. Première variante : `calibration_patiente`.

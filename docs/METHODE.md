@@ -32,6 +32,19 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    atteindre 0. Prends des risques et essaie des idées neuves ; l'arène tranche en conditions réelles.
 4. Une nouvelle stratégie = une classe dans `strategy_engine.py` ou `strategies_v2.py`, une entrée
    dans `strategies.yaml`, des tests. Elle entre dans l'arène dans son propre portefeuille fantôme.
+   Variante sans nouveau code : une entrée `strategies.yaml` avec `class: <stratégie existante>`
+   (autres paramètres, autre nom, son propre fantôme). `limit_ticks: N` la passe en mode
+   « patient » : elle POSE ses achats N crans au-dessus du meilleur acheteur au lieu de payer le
+   vendeur. Une stratégie peut aussi remplir `StrategyOutput.limit_orders` elle-même.
+   Exécution d'un ordre posé (noyau, `execution_simulator.py`) : seulement si un carnet relu
+   APRÈS la pose montre le marché passé au travers du prix (vendeurs à prix − 1 cran ou moins),
+   pour la quantité affichée, au prix posé. Un nouvel ordre remplace l'ancien sur le même jeton ;
+   durée de vie et nombre d'ordres : `settings.yaml` → `limit_orders`.
+   Règles de l'arène et de la promotion : `config/promotion.yaml` et `arena.py`, entièrement
+   libres (seuils d'entrée et de maintien, marge, ancienneté, nombre de stratégies dans le
+   principal, élimination). Change-les quand les données le justifient ; explique pourquoi dans
+   `experiments/journal_recherche.md`. Seules limites : le noyau protégé (journal signé,
+   contrôleur, simulateur, frais, mots de passe).
 5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
    Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
 6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.

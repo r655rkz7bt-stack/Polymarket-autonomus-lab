@@ -43,7 +43,9 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
     def run(markets: list[MarketInfo], now: datetime) -> dict[str, str]:
         collection = collect(settings, http, db, markets, now, factories)
         recent = load_recent(db, now) if db else collection.observations
-        stances: dict[str, dict] = {}
+        # Avis classés PAR MARCHÉ : un même article peut être favorable à une question et
+        # défavorable à une autre.
+        stances: dict[str, dict[str, dict]] = {}
         status = dict(collection.status)
         if gemini is not None and gemini.available:
             busiest = sorted(markets, key=lambda m: -sum(1 for o in recent if m.market_id in o.market_ids))
@@ -60,9 +62,10 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
                     if db and fresh:
                         db.save_stances(market.market_id, fresh, now)
                     fresh_count += len(fresh)
-                    stances.update(known)
-                    stances.update(fresh)
-                status["gemini"] = f"ok ({fresh_count} nouveaux textes classés, {len(stances)} au total)"
+                    stances[market.market_id] = dict(known, **fresh)
+                total = sum(len(v) for v in stances.values())
+                status["gemini"] = (f"ok ({fresh_count} nouveaux textes classés, {total} avis sur "
+                                    f"{len(stances)} marchés)")
             except SourceUnavailable as exc:
                 status["gemini"] = f"indisponible : {exc}"[:200]
         else:
@@ -71,7 +74,7 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment
         for market in markets:
-            market.intel = summarize(market.market_id, recent, now, down, stances)
+            market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
             group = correlation_group(market)
             if group.startswith("crypto:"):
                 market.crypto_quote = quotes.get(group.split(":")[1])
