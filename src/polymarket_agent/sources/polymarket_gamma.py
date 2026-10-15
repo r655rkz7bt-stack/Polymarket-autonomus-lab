@@ -1,0 +1,148 @@
+"""Source : API Gamma de Polymarket (lecture seule, gratuite, sans clé).
+
+Endpoint : GET {base_url}/markets — vérifié le 14/10/2026 par appel réel :
+pagination `limit` (100 max) + `offset`, filtres `active`, `closed`,
+`end_date_min`, `end_date_max`, tri `order=volume24hr&ascending=false`.
+Les champs `outcomes`, `outcomePrices`, `clobTokenIds` sont des chaînes JSON.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
+from typing import Any
+
+from polymarket_agent.http_client import HttpClient
+from polymarket_agent.models import FeeSchedule, MarketInfo
+
+
+def _iso(ts: datetime) -> str:
+    return ts.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _dec(value: Any) -> Decimal | None:
+    if value is None or isinstance(value, bool) or value == "":
+        return None
+    try:
+        result = Decimal(str(value))
+    except (InvalidOperation, ValueError):
+        return None
+    return result if result.is_finite() else None
+
+
+def _json_list(value: Any) -> list | None:
+    if isinstance(value, list):
+        return value
+    if isinstance(value, str):
+        try:
+            parsed = json.loads(value)
+        except ValueError:
+            return None
+        return parsed if isinstance(parsed, list) else None
+    return None
+
+
+def _date(value: Any) -> datetime | None:
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        ts = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return ts if ts.tzinfo else ts.replace(tzinfo=timezone.utc)
+
+
+def parse_market(raw: dict) -> MarketInfo:
+    """Transforme une réponse Gamma en MarketInfo et liste les incohérences."""
+    issues: list[str] = []
+    outcomes = _json_list(raw.get("outcomes")) or []
+    token_ids = [str(t) for t in (_json_list(raw.get("clobTokenIds")) or [])]
+    prices_raw = _json_list(raw.get("outcomePrices")) or []
+    prices = [_dec(p) for p in prices_raw]
+    if len(outcomes) != 2 or len(token_ids) != 2:
+        issues.append("marché non binaire ou jetons manquants")
+    if len(prices) != len(outcomes) or any(p is None for p in prices):
+        issues.append("prix des issues manquants")
+        prices = []
+    elif prices and abs(sum(prices) - 1) > Decimal("0.05"):
+        issues.append("prix des issues incohérents (somme loin de 1)")
+    best_bid, best_ask = _dec(raw.get("bestBid")), _dec(raw.get("bestAsk"))
+    if best_bid is None or best_ask is None:
+        issues.append("meilleur prix achat/vente manquant")
+    elif not (0 <= best_bid <= best_ask <= 1):
+        issues.append("meilleurs prix incohérents")
+    end_date = _date(raw.get("endDate"))
+    if end_date is None:
+        issues.append("date d'échéance manquante")
+
+    fee_schedule = raw.get("feeSchedule") if isinstance(raw.get("feeSchedule"), dict) else None
+    fees_enabled = raw.get("feesEnabled")
+    if fees_enabled is True and fee_schedule is None:
+        issues.append("frais activés mais barème absent")
+    fees = FeeSchedule(
+        enabled=fees_enabled if isinstance(fees_enabled, bool) else None,
+        rate=_dec(fee_schedule.get("rate")) if fee_schedule else None,
+        exponent=_dec(fee_schedule.get("exponent")) if fee_schedule else None,
+        taker_only=bool(fee_schedule.get("takerOnly", True)) if fee_schedule else True,
+        fee_type=raw.get("feeType"),
+    )
+    if fees.enabled is None:
+        issues.append("statut des frais inconnu")
+
+    events = raw.get("events") if isinstance(raw.get("events"), list) else []
+    event = events[0] if events and isinstance(events[0], dict) else {}
+    return MarketInfo(
+        market_id=str(raw.get("id", "")),
+        condition_id=str(raw.get("conditionId", "")),
+        question=str(raw.get("question", "")),
+        slug=str(raw.get("slug", "")),
+        # Sans événement connu, chaque marché est son propre événement.
+        event_id=str(event.get("id") or f"market:{raw.get('id', '')}"),
+        event_title=str(event.get("title", "")),
+        outcomes=[str(o) for o in outcomes],
+        token_ids=token_ids,
+        outcome_prices=prices,
+        best_bid=best_bid,
+        best_ask=best_ask,
+        spread=_dec(raw.get("spread")),
+        last_trade_price=_dec(raw.get("lastTradePrice")),
+        volume_24h=_dec(raw.get("volume24hr")) or Decimal("0"),
+        volume_total=_dec(raw.get("volumeNum")) or _dec(raw.get("volume")) or Decimal("0"),
+        liquidity=_dec(raw.get("liquidityNum")) or _dec(raw.get("liquidity")) or Decimal("0"),
+        end_date=end_date,
+        active=raw.get("active") is True,
+        closed=raw.get("closed") is not False,
+        accepting_orders=raw.get("acceptingOrders") is True,
+        enable_order_book=raw.get("enableOrderBook") is True,
+        fees=fees,
+        min_order_size=_dec(raw.get("orderMinSize")) or Decimal("5"),
+        tick_size=_dec(raw.get("orderPriceMinTickSize")) or Decimal("0.01"),
+        neg_risk=raw.get("negRisk") is True,
+        issues=issues,
+    )
+
+
+class GammaClient:
+    def __init__(self, http: HttpClient, base_url: str = "https://gamma-api.polymarket.com"):
+        self.http = http
+        self.base_url = base_url.rstrip("/")
+
+    def list_markets(self, *, end_min: datetime, end_max: datetime, page_size: int = 100,
+                     max_pages: int = 3) -> list[dict]:
+        markets: list[dict] = []
+        for page in range(max_pages):
+            batch = self.http.get_json(f"{self.base_url}/markets", params={
+                "active": "true", "closed": "false", "limit": page_size,
+                "offset": page * page_size, "order": "volume24hr", "ascending": "false",
+                "end_date_min": _iso(end_min), "end_date_max": _iso(end_max),
+            })
+            if not isinstance(batch, list):
+                raise ValueError("Gamma : liste attendue")
+            markets.extend(m for m in batch if isinstance(m, dict))
+            if len(batch) < page_size:
+                break
+        return markets
+
+    def get_market(self, market_id: str) -> dict:
+        return self.http.get_json(f"{self.base_url}/markets/{market_id}")

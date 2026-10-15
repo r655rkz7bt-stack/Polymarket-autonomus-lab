@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Secrets : jamais dans Git
+.env
+*.key
+state/dev_ledger_key
+
+# Etat d'exécution (vivra sur les branches data / snapshots, pas sur main)
+ledger/*
+!ledger/.gitkeep
+state/*
+!state/.gitkeep
+logs/*
+!logs/.gitkeep
+data/*
+!data/.gitkeep
+!data/history/
+data/history/*
+!data/history/*.jsonl.gz
+!data/history/README.md
+
+# Rapports et tableau de bord générés (publiés par le cycle, étape 9)
+reports/
+site/

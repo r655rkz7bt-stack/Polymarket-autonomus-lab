@@ -1,0 +1,85 @@
+# Réglages généraux. Modifiable par Claude (hors garde-fous, qui sont dans risk_limits.yaml).
+
+# Seul mode existant. Le contrôleur refuse toute autre valeur.
+mode: simulation
+
+paths:
+  ledger: ledger/ledger.jsonl
+  shadow_dir: ledger/fantome   # journaux des stratégies en mode « fantome »
+  bankruptcy_lock: ledger/BANKRUPT.lock
+  database: state/market.sqlite
+  logs: logs
+  cycle_lock: state/cycle.lock
+
+cycle:
+  bucket_minutes: 5            # sert à fabriquer des identifiants d'opération idempotents
+
+http:
+  timeout_seconds: 15
+  max_retries: 3
+  backoff_seconds: 1.0         # 1 s, 2 s, 4 s...
+  min_interval_seconds: 0.2    # politesse envers les API publiques
+  user_agent: "polymarket-autonomous-lab/0.1 (paper trading research; no real orders)"
+
+scanner:
+  page_size: 100               # maximum accepté par Gamma (vérifié le 14/10/2026)
+  max_pages: 3
+  min_horizon_minutes: 30      # horizon validé : 30 min à 3 jours
+  max_horizon_hours: 72
+  min_liquidity: 1000
+  min_volume_24h: 1000
+  max_spread: 0.05
+  max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
+  watchlist_size: 30
+  full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
+  max_extra_markets: 40        # marchés supplémentaires que les stratégies peuvent demander
+
+database:
+  max_megabytes: 40
+
+sources:
+  polymarket_gamma:
+    enabled: true
+    base_url: https://gamma-api.polymarket.com
+  polymarket_clob:
+    enabled: true
+    base_url: https://clob.polymarket.com
+    books_batch_size: 20
+  # Étape 5 — toutes les sources gratuites actives dès le départ (décision du 15/10/2026).
+  # Une source indisponible ne bloque jamais le cycle (mode dégradé, analyse partielle).
+  polymarket_comments: {enabled: true, every_minutes: 15, per_event: 20}
+  crypto_prices: {enabled: true, every_minutes: 5}          # Coinbase, repli Kraken
+  gdelt: {enabled: true, every_minutes: 15, queries_per_run: 3, timespan: 3h}
+  bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
+  rss:
+    enabled: true
+    every_minutes: 15
+    feeds:
+      - {name: BBC World, url: "https://feeds.bbci.co.uk/news/world/rss.xml", language: en}
+      - {name: BBC Sport, url: "https://feeds.bbci.co.uk/sport/rss.xml", language: en}
+      - {name: NYT World, url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml", language: en}
+      - {name: ESPN, url: "https://www.espn.com/espn/rss/news", language: en}
+      - {name: CoinDesk, url: "https://www.coindesk.com/arc/outboundfeeds/rss/", language: en}
+      - {name: Le Monde, url: "https://www.lemonde.fr/rss/une.xml", language: fr}
+      - {name: France Info, url: "https://www.franceinfo.fr/titres.rss", language: fr}   # nouvelle adresse (oct. 2026)
+      - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml", official: true, language: en}
+      - {name: BCE, url: "https://www.ecb.europa.eu/rss/press.html", official: true, language: en}
+      - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
+  x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
+
+# Règles de l'arène : config/promotion.yaml (fichier protégé, lu par les scripts).
+
+dashboard:
+  output_dir: site             # page statique publiée sur GitHub Pages (étape 9)
+  every_minutes: 30            # régénérée au plus toutes les 30 minutes
+
+collector:
+  markets_per_cycle: 5         # marchés surveillés pour lesquels on cherche des actualités
+
+llm:
+  # Gemini (offre gratuite Google AI Studio) : actif dès qu'Etienne ajoute GEMINI_API_KEY.
+  enabled: true
+  provider: gemini
+  model: gemini-2.5-flash      # à revérifier sur ai.google.dev au moment d'activer la clé
+  max_calls_per_day: 200       # sous le quota gratuit ; jamais de dépassement
+  markets_per_cycle: 2

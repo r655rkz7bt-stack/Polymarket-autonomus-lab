@@ -1,0 +1,40 @@
+{
+ "metadata": {
+  "version": "1",
+  "fitted_on": "entraînement v2 (historique non biaisé, 40 jours)",
+  "period": [
+   "2025-08-30",
+   "2026-07-06"
+  ],
+  "min_move": 0.1,
+  "window_hours": 6,
+  "min_changes_24h": 4,
+  "shrink_k": 200,
+  "min_events": 150,
+  "created_at": "2026-10-14T23:22:05+00:00"
+ },
+ "cells": {
+  "baisse": {
+   "key": "baisse",
+   "n_samples": 5720,
+   "n_events": 1874,
+   "mean_price": 0.6061361888111888,
+   "win_rate": 0.7846153846153846,
+   "delta": 0.1784791958041958,
+   "delta_low": 0.14582292343305261,
+   "delta_high": 0.17688564636787232,
+   "delta_shrunk": 0.16126808724062822
+  },
+  "hausse": {
+   "key": "hausse",
+   "n_samples": 22828,
+   "n_events": 4061,
+   "mean_price": 0.8414033204836167,
+   "win_rate": 0.8278429998247766,
+   "delta": -0.013560320658840037,
+   "delta_low": -0.018077244171988763,
+   "delta_high": -0.008424349128863196,
+   "delta_shrunk": -0.012923835295834168
+  }
+ }
+}

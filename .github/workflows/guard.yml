@@ -1,0 +1,44 @@
+# Contrôle « guard » : une pull request qui modifie un fichier de PROTECTED_PATHS.txt échoue.
+# Le ruleset de main exige ce contrôle : une telle pull request ne peut pas être fusionnée.
+#
+# Sécurité : pull_request_target exécute le code de la branche de base (main), jamais celui de
+# la pull request. Ce workflow ne récupère ni n'exécute aucun fichier de la pull request :
+# il lit seulement la LISTE des fichiers modifiés via l'API GitHub.
+name: guard
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
+
+permissions: {}
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Code et règles de main (jamais ceux de la pull request)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Liste des fichiers modifiés (anciens noms des renommages compris)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          EXPECTED: ${{ github.event.pull_request.changed_files }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | .filename, (.previous_filename // empty)' > "$RUNNER_TEMP/changed.txt"
+          listed=$(gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[].filename' | wc -l)
+          # L'API ne liste que 3 000 fichiers : une liste incomplète est refusée par prudence.
+          if [ "$listed" -ne "$EXPECTED" ]; then
+            echo "BLOQUÉ : liste des fichiers incomplète ($listed sur $EXPECTED)."
+            exit 1
+          fi
+      - name: Aucun fichier protégé
+        run: python3 scripts/guard_check.py PROTECTED_PATHS.txt < "$RUNNER_TEMP/changed.txt"

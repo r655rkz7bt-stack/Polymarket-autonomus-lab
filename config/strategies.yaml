@@ -1,0 +1,147 @@
+# Paramètres des stratégies. Liberté totale (décision d'Etienne, 15/10/2026) : les bornes
+# [min, max] ne sont que des plages de recherche, modifiables par le chercheur.
+#
+# ARÈNE : chaque stratégie activée trade dans son propre portefeuille fantôme (1 000 virtuels,
+# vrais carnets). Le capital principal suit automatiquement le champion choisi par
+# src/polymarket_agent/arena.py (meilleure croissance après >= 20 opérations clôturées).
+# Au moins 3 idées doivent être en test en permanence ; la pire est éliminée chaque semaine.
+
+naive_favorite:
+  # Référence naïve. Perd sur l'historique (v2 validation −9 %, test −21 %) : sert de repère
+  # dans l'arène (si elle finit devant, les autres ne valent rien).
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-14"
+  hypothesis: >
+    Stratégie de RÉFÉRENCE définie à l'avance (pas une stratégie supposée rentable).
+    Hypothèse « biais favori / outsider » : le favori d'un marché binaire proche de son
+    échéance serait légèrement sous-évalué. Le biais est un a priori NON calibré ;
+    il sera mesuré, et la stratégie abandonnée si les résultats ne le confirment pas.
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+reversion:
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-14"
+  table: reversion_v1.json
+  hypothesis: >
+    Mean reversion conditionnelle : après un mouvement du favori >= 0,10 en 6 h, le prix
+    surréagit. Table ajustée sur l'entraînement v2 (historique non biaisé). Résultats de
+    backtest jugés NON fiables (effet concentré dans des marchés minuscules où le prix
+    historique n'est pas exécutable) : d'où le mode fantôme sur de vrais carnets.
+  params:
+    min_move:        {value: 0.10, min: 0.05, max: 0.30}
+    min_changes_24h: {value: 4, min: 4, max: 24}
+    min_events:      {value: 150, min: 150, max: 5000}
+    min_net_edge:    {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+calibration:
+  # v1 rejetée (biais de sélection) ; v2 échoue au critère 1 en validation, mais l'arène la
+  # juge en conditions réelles.
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-10-14"
+  table: calibration_v2.json
+  params:
+    min_events:      {value: 150, min: 150, max: 5000}
+    min_net_edge:    {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+crypto_threshold:
+  # Étape 5 : probabilité indépendante pour les marchés crypto à seuil (prix au comptant +
+  # volatilité réalisée, modèle log-normal ; crypto_model.py). Jugée par l'arène en réel.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    min_net_edge:    {value: 0.03, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    max_quote_age_minutes: {value: 20, min: 1, max: 120}
+    min_hours:       {value: 0.5, min: 0.1, max: 72}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet
+
+# ---------------------------------------------------------------- étape 6 : 5 nouvelles familles
+cross_market:
+  # Stratégie 7 : incohérences entre marchés liés (échelles de seuils) → arbitrage sans risque.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.10}   # marge garantie par paire
+    stake_fraction: {value: 0.20, min: 0.0, max: 1.0}     # sans risque : grosse mise
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+
+market_structure:
+  # Stratégie 5 : déséquilibre du carnet → hausse à court terme, sortie programmée.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    min_imbalance:  {value: 0.6, min: 0.2, max: 0.95}
+    max_spread:     {value: 0.02, min: 0.001, max: 0.10}
+    depth_window:   {value: 0.03, min: 0.005, max: 0.20}
+    stake_fraction: {value: 0.05, min: 0.0, max: 1.0}
+    take_profit:    {value: 0.02, min: 0.001, max: 0.30}
+    stop_loss:      {value: 0.03, min: 0.001, max: 0.50}
+    max_hold_hours: {value: 6, min: 0.1, max: 72}
+    max_extra_ticks: {value: 0, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+news_momentum:
+  # Stratégie 2 : actualité confirmée + mouvement amorcé → continuation (a priori non calibré).
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+information_advantage:
+  # Stratégie 3 : annonce officielle fraîche non encore intégrée (direction : Gemini).
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    max_age_minutes: {value: 60, min: 1, max: 1440}
+    min_stance:     {value: 0.5, min: 0.1, max: 1.0}
+    impact:         {value: 0.10, min: 0.0, max: 0.50}
+    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}
+    max_reaction:   {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.02, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+social_sentiment:
+  # Stratégie 6 : emballement social unilatéral non confirmé → pari contraire (direction : Gemini).
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  params:
+    min_stance:     {value: 0.7, min: 0.1, max: 1.0}
+    min_mentions:   {value: 10, min: 1, max: 1000}
+    fade:           {value: 0.03, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}

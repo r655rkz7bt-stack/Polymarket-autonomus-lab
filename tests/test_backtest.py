@@ -1,0 +1,211 @@
+"""Historique, backtest et calibration : anti-fuite temporelle, découpage, reproductibilité."""
+
+from __future__ import annotations
+
+import json
+import random
+
+import pytest
+
+from conftest import ROOT
+from polymarket_agent import calibration
+from polymarket_agent.backtest import Decision, build_samples, simulate, split_by_event
+from polymarket_agent.history import HistoricalMarket, categorize, parse_resolved
+
+H = 3600
+END = 1_790_000_000
+
+
+def meta(i, winner=0, end=END, closed=None, event=None, category="sports", fee=0.05):
+    return {"id": str(i), "event_id": event or f"e{i}", "end": end, "closed": closed or end + 2 * H,
+            "start": end - 10 * 24 * H, "winner": winner, "category": category, "fee_rate": fee,
+            "volume": 100000, "yes_token": f"t{i}"}
+
+
+def market(i, prices, **kw):
+    """prices : {heures avant l'échéance: prix Yes}."""
+    m = meta(i, **kw)
+    limit = min(m["end"], m["closed"])
+    points = sorted((m["end"] - h * H - limit, p) for h, p in prices.items())
+    return HistoricalMarket(m, points)
+
+
+def raw(prices='["1", "0"]', status="resolved", volume=60000, outcomes='["Yes", "No"]'):
+    return {"id": "1", "outcomes": outcomes, "clobTokenIds": '["a", "b"]', "outcomePrices": prices,
+            "closed": True, "umaResolutionStatus": status, "volumeNum": volume,
+            "endDate": "2026-09-01T00:00:00Z", "closedTime": "2026-09-01 02:00:00+00",
+            "startDate": "2026-08-01T00:00:00Z"}
+
+
+def test_parse_resolved_keeps_only_clean_binary_resolutions():
+    ev = {"id": "e", "tags": [{"slug": "nba"}]}
+    assert parse_resolved(raw(), ev, 50000)["winner"] == 0
+    assert parse_resolved(raw('["0", "1"]'), ev, 50000)["winner"] == 1
+    assert parse_resolved(raw('["0.5", "0.5"]'), ev, 50000) is None
+    assert parse_resolved(raw(status="proposed"), ev, 50000) is None
+    assert parse_resolved(raw(volume=10), ev, 50000) is None
+    assert parse_resolved(raw(outcomes='["A", "B", "C"]'), ev, 50000) is None
+
+
+def test_categorize_prefers_real_schedule_then_highest_rate():
+    assert categorize({"feesEnabled": True, "feeType": "crypto_fees_v2",
+                       "feeSchedule": {"rate": 0.07}}, []) == ("crypto", 0.07)
+    assert categorize({}, ["geopolitics", "politics"]) == ("politics", 0.04)
+    assert categorize({}, ["geopolitics"]) == ("geopolitics", 0.0)
+    assert categorize({}, ["inconnu"]) == ("other", 0.05)
+
+
+def test_price_lookup_never_reads_the_future():
+    m = market(1, {10: 0.6, 5: 0.7, 1: 0.99})
+    assert m.yes_price_at(END - 9 * H) == 0.6     # le point de 5 h n'existe pas encore
+    assert m.yes_price_at(END - 6 * H) is None    # 0,6 date de 4 h : périmé (2 h max)
+    assert m.yes_price_at(END - 5 * H) == 0.7
+    assert m.yes_price_at(END - 20 * H) is None   # rien avant
+    assert m.yes_price_at(END - 2 * H, max_age=3600) is None  # trop vieux
+
+
+def test_backtest_cannot_use_future_data():
+    """Le cas du cahier des charges : une stratégie ne voit jamais un prix postérieur.
+
+    Le prix saute à 0,99 une heure avant l'échéance. À l'horizon 2 h, la stratégie doit
+    voir 0,6, jamais 0,99. On vérifie aussi qu'un marché clos avant l'instant de décision
+    ne produit aucun échantillon (sinon on « saurait » qu'il s'est résolu tôt).
+    """
+    samples, _ = build_samples([market(1, {3: 0.6, 1: 0.99})], horizons=(2, 1))
+    by_h = {s.horizon_h: s.price_yes for s in samples["1"]}
+    assert by_h[2] == 0.6
+    early = market(2, {30: 0.5, 25: 0.97}, closed=END - 24 * H)  # résolu un jour avant l'échéance
+    samples, _ = build_samples([early], horizons=(24, 12, 1))
+    assert "2" not in samples
+
+
+def test_split_by_event_is_chronological_and_disjoint():
+    markets = [market(i, {2: 0.6}, end=END + i * 24 * H, event=f"e{i // 2}") for i in range(20)]
+    samples, _ = build_samples(markets, horizons=(2,))
+    (train, val, test), _ = split_by_event(samples)
+    events = [{s.event_id for rows in part.values() for s in rows} for part in (train, val, test)]
+    assert not (events[0] & events[1]) and not (events[1] & events[2]) and not (events[0] & events[2])
+    last_train = max(s.ts for rows in train.values() for s in rows)
+    first_test = min(s.ts for rows in test.values() for s in rows)
+    assert last_train < first_test
+
+
+def synthetic(n, true_offset, seed=1):
+    rng = random.Random(seed)
+    markets = []
+    for i in range(n):
+        price = rng.uniform(0.80, 0.90)
+        win = rng.random() < price + true_offset
+        markets.append(market(i, {6: price}, winner=0 if win else 1, end=END + i * H))
+    return markets
+
+
+def test_calibration_finds_no_edge_in_calibrated_prices():
+    samples, outcomes = build_samples(synthetic(3000, 0.0), horizons=(6,))
+    table = calibration.fit(samples, outcomes)
+    for cell in table.values():
+        assert cell.delta_low <= 0.0 <= cell.delta_high or abs(cell.delta_shrunk) < 0.02
+
+
+def test_calibration_detects_real_mispricing_and_strategy_profits(limits):
+    markets = synthetic(4000, 0.08)
+    samples, outcomes = build_samples(markets, horizons=(6,))
+    table = calibration.fit(samples, outcomes)
+    assert any(c.delta_low > 0.03 for c in table.values())
+
+    def rule(s):
+        cell = table.get(calibration.cell_key(s.category, s.horizon_h, s.price_yes))
+        if cell is None or cell.delta_low < 0.04:
+            return None
+        return Decision(0, s.price_yes + cell.delta_low, s.price_yes + cell.delta_shrunk,
+                        min(s.price_yes + cell.delta_high, 0.995))
+    result = simulate("test", rule, samples, outcomes, limits)
+    assert result.metrics()["operations"] > 100
+    assert result.final_cash > result.initial
+    assert not result.bankrupt
+
+
+def test_do_nothing_keeps_capital_and_simulation_is_reproducible(limits):
+    samples, outcomes = build_samples(synthetic(300, 0.08, seed=5), horizons=(6,))
+    nothing = simulate("rien", lambda s: None, samples, outcomes, limits)
+    assert nothing.final_cash == nothing.initial == 1000
+    rule = lambda s: Decision(0, s.price_yes + 0.05, s.price_yes + 0.06, s.price_yes + 0.07)
+    a = simulate("x", rule, samples, outcomes, limits).metrics()
+    b = simulate("x", rule, samples, outcomes, limits).metrics()
+    assert a == b
+
+
+def test_simulation_respects_rule_one_and_the_rules_of_the_game(limits):
+    """Une règle déraisonnable (avantage inventé, Kelly ×5) peut perdre beaucoup,
+    mais le journal empêche toujours de dépenser plus que le solde : jamais de solde < 0."""
+    samples, outcomes = build_samples(synthetic(500, -0.3, seed=3), horizons=(6,))
+    greedy = lambda s: Decision(0, 0.99, 0.995, 0.999)
+    from decimal import Decimal
+    result = simulate("avide", greedy, samples, outcomes, limits, kelly_fraction=Decimal("5"))
+    assert result.final_cash >= 0
+    assert result.final_cash < result.initial
+
+
+def test_activity_uses_only_past_points():
+    m = market(1, {30: 0.5, 20: 0.55, 10: 0.6, 5: 0.6, 2: 0.7})
+    assert m.price_changes(END - 9 * H) == 2      # 0,5 → 0,55 → 0,6 dans les 24 h
+    assert m.price_changes(END - 3 * H) == 2      # le 0,7 (2 h) n'est pas encore connu
+    assert m.price_changes(END - 1 * H) == 3
+    samples, _ = build_samples([m], horizons=(1,))
+    assert samples["1"][0].changes_24h == 3
+
+
+def test_regression_final_volume_is_not_used_as_a_filter():
+    """Défaut du 14/10/2026 : filtrer sur le volume FINAL (connu après l'issue) créait un faux
+    avantage. Aucune règle de recherche ne doit dépendre de Sample.volume."""
+    import inspect
+    from polymarket_agent import calibration as cal
+    source = inspect.getsource(cal) + (ROOT / "scripts" / "research_calibration.py").read_text(encoding="utf-8")
+    assert ".volume" not in source
+
+
+def test_random_sample_is_reproducible_and_uniform():
+    from polymarket_agent.history import can_produce_sample, in_random_sample
+    ids = [str(i) for i in range(20000)]
+    picked = [i for i in ids if in_random_sample(i, 0.4)]
+    assert 0.38 < len(picked) / len(ids) < 0.42
+    assert picked == [i for i in ids if in_random_sample(i, 0.4)]
+    assert can_produce_sample(meta(1)) and not can_produce_sample(meta(2, closed=END - 80 * H))
+
+
+def test_live_price_features_match_backtest():
+    """Le cycle réel et le backtest doivent calculer les mêmes caractéristiques."""
+    from polymarket_agent.price_features import changes_in_window, price_at
+    m = market(1, {30: 0.5, 20: 0.55, 10: 0.6, 7: 0.62, 5: 0.6, 2: 0.7})
+    absolute = [(m.limit + off, p) for off, p in m.points]
+    for h in (1, 3, 6, 9):
+        ts = END - h * H
+        assert price_at(absolute, ts) == m.yes_price_at(ts)
+        assert price_at(absolute, ts - 6 * H) == m.yes_price_at(ts - 6 * H)
+        assert changes_in_window(absolute, ts) == m.price_changes(ts)
+
+
+def test_walk_forward_never_trains_on_the_future(limits):
+    """Critère de l'étape 6 : à chaque pli, l'ajustement ne voit que le passé."""
+    from polymarket_agent.backtest import walk_forward
+    markets = synthetic(600, 0.05, seed=9)
+    samples, outcomes = build_samples(markets, horizons=(6,))
+    seen = []
+
+    def fit(train, train_outcomes):
+        assert set(train_outcomes) == set(train)  # aucune issue de la période testée
+        seen.append(max(s.ts for rows in train.values() for s in rows))
+        return None
+
+    rule = lambda model: (lambda s: None)
+    result = walk_forward(samples, outcomes, fit, rule, limits, n_folds=3)
+    assert result["n_plis"] == 3
+    for last_train_ts, fold in zip(seen, result["plis"]):
+        assert last_train_ts < fold["periode"][0]  # tout l'entraînement précède le pli testé
+    assert seen == sorted(seen)  # fenêtre croissante
+
+
+def test_deflated_score_penalizes_many_variants():
+    from polymarket_agent.backtest import deflated_score
+    assert deflated_score(0.1, 0.2, 4, 1) == 0.1
+    assert deflated_score(0.1, 0.2, 4, 50) < 0  # meilleure de 50 : ce résultat peut être de la chance
