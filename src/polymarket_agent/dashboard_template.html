@@ -782,9 +782,15 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     arena.forEach(function (s, i) {
       var row = el("div", "row"); row.appendChild(el("div", "rank", String(i + 1)));
       var name = el("div", "name", s.nom.replace(/_v[\d.]+$/, ""));
-      var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee ? " off" : ""),
-        s.champion ? "champion" : s.eliminee ? "éliminée" : "en test"); name.appendChild(chip);
+      var H2 = s.sante || {}, susp = !!H2.suspendue;
+      var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp ? " off" : ""),
+        s.champion ? "champion" : s.eliminee ? "éliminée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
       name.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict));
+      // Santé : mise autorisée, prévisions jugées (avance sur le marché), dérive des prix depuis l'achat.
+      if (s.sante) name.appendChild(el("span", "sub", susp ? H2.suspendue :
+        "mise ×" + fmt(H2.prudence, 2) + " · " + H2.jugees + " prévision(s) jugée(s)" +
+        (H2.avance === null || H2.avance === undefined ? "" : " · avance " + (H2.avance > 0 ? "+" : "") + fmt(H2.avance, 3)) +
+        (H2.derive === null || H2.derive === undefined ? "" : " · dérive " + (H2.derive > 0 ? "▲ +" : H2.derive < 0 ? "▼ " : "") + fmt(H2.derive, 3))));
       row.appendChild(name);
       // piste commune : trait central = 1 000 (ne rien faire)
       var tr = el("div", "c-track"), W = 220, Hh = 28, svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, "aria-hidden": "true" }, tr);

@@ -55,6 +55,12 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
 5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
    Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
 6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.
+7. Santé des stratégies (`strategy_health.py`, réglages `sante_strategies` dans `settings.yaml`) :
+   chaque prévision est jugée quand son marché est réglé (Brier comparé au prix payé : « avance »
+   positive = mieux que le marché). Tant que moins de 20 prévisions sont jugées, la mise est
+   réduite (½ Kelly) ; prouvée meilleure → mise entière ; moins bonne → ¼. Une stratégie gagnante
+   avant frais mais perdante après est suspendue. Visible dans l'arène du tableau de bord : sers-
+   t'en pour corriger une stratégie avant que l'élimination hebdomadaire ne tranche.
 
 ## Commandes
 

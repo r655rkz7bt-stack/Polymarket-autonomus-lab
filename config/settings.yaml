@@ -150,3 +150,14 @@ llm:
   timeout_seconds: 40          # Gemini peut mettre plus de 15 s ; trop lent = modèle suivant
   max_retries: 0
   markets_per_cycle: 15        # avec cache : seuls les textes nouveaux sont envoyés (15/10/2026)
+
+# Santé des stratégies (strategy_health.py, décision d'Etienne du 15/10/2026), libre :
+# mise réduite tant que les prévisions ne sont pas prouvées meilleures que le marché, et
+# suspension d'une stratégie gagnante avant frais mais perdante après.
+sante_strategies:
+  min_resolved: 20          # prévisions jugées (marchés réglés) avant de conclure
+  base: 0.5                 # part de la mise habituelle tant que rien n'est prouvé (½ Kelly)
+  proven: 1.0               # prouvée meilleure que le prix du marché
+  disproven: 0.25           # prouvée moins bonne
+  suspension_min_closed: 20 # opérations clôturées avant de pouvoir suspendre
+  outcomes_per_hour: 15     # marchés interrogés par heure pour juger les prévisions

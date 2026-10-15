@@ -15,6 +15,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 
+from polymarket_agent import strategy_health
 from polymarket_agent.arena import days_since_record, ranking, standing
 from polymarket_agent.config import resolve
 from polymarket_agent.learning_engine import analyze, categories_from_db
@@ -69,7 +70,8 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
                       "champion": s.name == state.champion, "verdict": verdict,
                       "courbe": _downsample(equity_curve(read_entries(shadows[s.name])), 60),
-                      "positions": len(shadows[s.name].state.positions)})
+                      "positions": len(shadows[s.name].state.positions),
+                      "sante": strategy_health.load(db, s.name)})
 
     # --- positions ouvertes (tous portefeuilles), avec prévision et incertitude
     buys = {}
