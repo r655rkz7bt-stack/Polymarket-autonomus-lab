@@ -6,9 +6,10 @@
 - Sécurité : les textes collectés sont encadrés comme des DONNÉES non fiables. La réponse est
   limitée à des étiquettes fixes ; toute réponse hors format est jetée. Le modèle ne peut ni
   déclencher d'action, ni modifier une règle, ni voir un secret.
-- Nom du modèle : celui des réglages ; si Google répond 404 (modèle retiré ou renommé, constaté
-  le 15/10/2026 avec gemini-2.5-flash), la liste officielle des modèles est lue et le meilleur
-  modèle « flash » stable est choisi, puis retenu dans la base pour les cycles suivants.
+- Nom du modèle : celui des réglages ; si Google refuse (404 modèle retiré, constaté le 15/10/2026
+  avec gemini-2.5-flash ; 503 saturé ou 429 quota, constatés ensuite avec gemini-3.8-flash), la
+  liste officielle des modèles est lue et les meilleurs modèles « flash » stables sont essayés dans
+  l'ordre ; le premier qui répond est retenu dans la base pour les cycles suivants.
 """
 
 from __future__ import annotations
@@ -44,10 +45,10 @@ Réponds uniquement par un tableau JSON : [{{"id": ..., "kind": ..., "stance": .
 </donnees>"""
 
 
-def pick_model(listing: dict) -> str | None:
-    """Meilleur modèle « flash » stable qui sait générer du texte, d'après la liste officielle :
-    version la plus récente, la variante complète avant « lite »."""
-    best, best_score = None, None
+def rank_models(listing: dict) -> list[str]:
+    """Modèles « flash » stables qui savent générer du texte, du meilleur au moins bon :
+    version la plus récente d'abord, la variante complète avant « lite »."""
+    scored = []
     for m in (listing or {}).get("models") or []:
         name = str(m.get("name", "")).removeprefix("models/")
         methods = m.get("supportedGenerationMethods") or []
@@ -56,10 +57,18 @@ def pick_model(listing: dict) -> str | None:
         if any(word in name for word in UNSTABLE):
             continue
         version = re.match(r"gemini-(\d+(?:\.\d+)?)", name)
-        score = (float(version.group(1)) if version else 0.0, "lite" not in name, -len(name))
-        if best_score is None or score > best_score:
-            best, best_score = name, score
-    return best
+        scored.append(((float(version.group(1)) if version else 0.0, "lite" not in name, -len(name)), name))
+    return [name for _, name in sorted(scored, reverse=True)]
+
+
+def pick_model(listing: dict) -> str | None:
+    ranked = rank_models(listing)
+    return ranked[0] if ranked else None
+
+
+# Refus qui justifient d'essayer un autre modèle : retiré (404), saturé (503), quota du modèle (429).
+SWITCH_ON = ("HTTP 404", "HTTP 503", "HTTP 429")
+MAX_ALTERNATIVES = 3
 
 
 class GeminiClassifier:
@@ -78,6 +87,22 @@ class GeminiClassifier:
         used = self.db.llm_calls(now.date().isoformat()) if self.db else 0
         return self.max_calls - used
 
+    def _try_alternatives(self, failed: str, body: dict, first_error: SourceUnavailable):
+        """Essaie les meilleurs autres modèles ; retient le premier qui répond."""
+        errors = [f"{failed} : {first_error}"]
+        for candidate in [m for m in rank_models(self.http.get_json(API)) if m != failed][:MAX_ALTERNATIVES]:
+            try:
+                raw = self.http.post_json(f"{API}/{candidate}:generateContent", body)
+            except SourceUnavailable as exc:
+                if not any(code in str(exc) for code in SWITCH_ON):
+                    raise
+                errors.append(f"{candidate} : {exc}")
+                continue
+            if self.db:
+                self.db.set_value(MODEL_KEY, candidate)
+            return raw
+        raise SourceUnavailable("aucun modèle Gemini disponible (" + " | ".join(e[-60:] for e in errors) + ")")
+
     def classify(self, question: str, observations: list[Observation], now: datetime) -> dict[str, dict]:
         """{external_id: {"kind", "stance", "confidence"}} ; {} si indisponible ou hors budget."""
         if not self.available or not observations:
@@ -95,14 +120,9 @@ class GeminiClassifier:
             try:
                 raw = self.http.post_json(f"{API}/{model}:generateContent", body)
             except SourceUnavailable as exc:
-                if "HTTP 404" not in str(exc):
+                if not any(code in str(exc) for code in SWITCH_ON):
                     raise
-                found = pick_model(self.http.get_json(API))
-                if not found or found == model:
-                    raise SourceUnavailable(f"modèle Gemini « {model} » introuvable, aucun remplaçant") from exc
-                if self.db:
-                    self.db.set_value(MODEL_KEY, found)
-                raw = self.http.post_json(f"{API}/{found}:generateContent", body)
+                raw = self._try_alternatives(model, body, exc)
         finally:
             self.http.session.headers.pop("x-goog-api-key", None)
             if self.db:

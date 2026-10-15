@@ -280,3 +280,52 @@ def test_regression_retired_gemini_model_is_replaced_and_remembered(monkeypatch,
     assert http.calls[0][0].startswith(f"{api}/gemini-3.0-flash:")
     assert "x-goog-api-key" not in http.session.headers
     db.close()
+
+
+def test_regression_overloaded_gemini_model_falls_back_to_the_next_one(monkeypatch, tmp_path):
+    """Défaut du 15/10/2026 : gemini-3.8-flash répondait 503 (saturé) à chaque cycle."""
+    from polymarket_agent.sources.gemini import rank_models
+    db = Database(tmp_path / "db.sqlite")
+    db.set_value("gemini_model", "gemini-3.0-flash")
+    monkeypatch.setenv("GEMINI_API_KEY", "fausse-cle-de-test")
+    assert rank_models(LISTING) == ["gemini-3.0-flash", "gemini-3.0-flash-lite", "gemini-2.0-flash"]
+    api = "https://generativelanguage.googleapis.com/v1beta/models"
+    answer = [{"id": 0, "kind": "opinion", "stance": "non", "confidence": 0.4}]
+    http = FakeHttp({f"{api}/gemini-2.0-flash:": {"candidates": [{"content": {"parts": [{"text": json.dumps(answer)}]}}]},
+                     api: LISTING},
+                    down=(f"{api}/gemini-3.0-flash:", f"{api}/gemini-3.0-flash-lite:"))
+    original = http.get_json
+
+    def get_json(url, params=None):
+        try:
+            return original(url, params)
+        except SourceUnavailable as exc:
+            raise SourceUnavailable(f"{exc} : échec après 2 essais (HTTP 503)") from None
+    http.get_json = get_json
+    http.post_json = lambda url, body: get_json(url, body)
+    items = [obs("Real Madrid will win"), obs("Roma injured")]
+    out = GeminiClassifier(http, "gemini-2.5-flash", 10, db).classify("Will Real Madrid win?", items, NOW)
+    assert list(out.values()) == [{"kind": "opinion", "stance": "non", "confidence": 0.4}]
+    assert db.get_value("gemini_model") == "gemini-2.0-flash"
+    db.close()
+
+
+def test_gemini_gives_up_cleanly_when_every_model_refuses(monkeypatch, tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    monkeypatch.setenv("GEMINI_API_KEY", "fausse-cle-de-test")
+    api = "https://generativelanguage.googleapis.com/v1beta/models"
+    http = FakeHttp({api: LISTING}, down=(f"{api}/gemini-",))
+    original = http.get_json
+
+    def get_json(url, params=None):
+        try:
+            return original(url, params)
+        except SourceUnavailable as exc:
+            raise SourceUnavailable(f"{exc} (HTTP 503)") from None
+    http.get_json = get_json
+    http.post_json = lambda url, body: get_json(url, body)
+    with pytest.raises(SourceUnavailable, match="aucun modèle Gemini disponible"):
+        GeminiClassifier(http, "gemini-2.5-flash", 10, db).classify("Q ?", [obs("a"), obs("b")], NOW)
+    assert db.get_value("gemini_model") is None
+    assert "x-goog-api-key" not in http.session.headers
+    db.close()
