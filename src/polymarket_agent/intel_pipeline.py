@@ -7,7 +7,7 @@ import logging
 from datetime import datetime
 
 from polymarket_agent.correlation import correlation_group
-from polymarket_agent.data_collector import collect, load_recent
+from polymarket_agent.data_collector import collect, load_recent, with_retries
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.models import MarketInfo
 from polymarket_agent.social_intelligence import summarize
@@ -33,7 +33,9 @@ def latest_quotes(observations) -> dict:
 
 def make_collector(settings: dict, http: HttpClient, db, factories: dict | None = None):
     llm_cfg = settings.get("llm", {})
-    gemini = (GeminiClassifier(http, llm_cfg.get("model", "gemini-2.5-flash"),
+    # Un seul nouvel essai par modèle : en cas de refus, mieux vaut passer au modèle suivant.
+    gemini = (GeminiClassifier(with_retries(http, llm_cfg.get("max_retries", 1)),
+                               llm_cfg.get("model", "gemini-2.5-flash"),
                                int(llm_cfg.get("max_calls_per_day", 0)), db)
               if llm_cfg.get("enabled") else None)
 
