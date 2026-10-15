@@ -15,7 +15,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 
-from polymarket_agent import strategy_health
+from polymarket_agent import arena_history, strategy_health, today
 from polymarket_agent.arena import days_since_record, ranking, standing
 from polymarket_agent.config import resolve
 from polymarket_agent.learning_engine import analyze, categories_from_db
@@ -183,7 +183,9 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         except ValueError:
             audit = None
     llm = settings.get("llm", {})
-    return {
+    # Historique du classement : une photo par heure (lot C).
+    arena_history.record(db, arena, now, float(settings.get("dashboard", {}).get("arena_history_minutes", 60)))
+    data = {
         "audit": audit,
         "genere_le": now.isoformat(timespec="seconds"),
         "capital": capital,
@@ -207,7 +209,11 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "tests": tests,
         "couts": {"services_payants_eur": 0, "appels_ia_aujourdhui": db.llm_calls(now.date().isoformat()),
                   "plafond_ia": llm.get("max_calls_per_day", 0)},
+        "historique_arene": arena_history.series(db, now),
     }
+    entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
+    data["aujourdhui"] = today.build(data, entries, questions, db, now)
+    return data
 
 
 def to_json(data: dict) -> str:

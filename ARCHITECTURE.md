@@ -467,3 +467,12 @@ gagnante avant frais mais perdante après (≥ 20 opérations clôturées). Rég
   plus mis dans la session partagée (il partait vers toutes les autres sources).
 - Rattachement des articles (`social_intelligence.match`) : au moins un mot du marché dans le
   titre, mots rares pondérés (idf), au plus 5 marchés par article.
+
+## 26. « Aujourd'hui » et historique de l'arène (15 octobre 2026)
+
+- `today.py` : les dernières 24 h en phrases simples, écrites par du code (capital, championne,
+  opérations, meilleure et pire opération, arène, cycles, audit, sources) ; section
+  « Aujourd'hui » du tableau de bord, juste sous le résumé.
+- `arena_history.py` : une photo du classement par heure (table `arena_history`, réglage
+  `dashboard.arena_history_minutes`), graphique « classement dans le temps » sous l'arène
+  (survol : nom, rang, capital ; vue tableau) et « plus forte remontée / chute depuis hier ».
