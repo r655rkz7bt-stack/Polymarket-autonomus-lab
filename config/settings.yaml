@@ -66,6 +66,9 @@ sources:
     every_minutes: 15
     # Flux fournis par les médias et institutions eux-mêmes (aucune aspiration de pages).
     # Un flux en panne ou déplacé est ignoré sans gêner les autres. official: true = source officielle.
+    # Retirés le 15/10/2026 : ESPN (HTTP 202, protection anti-robots) et FDA (HTTP 404) refusent les
+    # serveurs de GitHub alors qu'ils répondent ailleurs : blocage, on ne contourne pas.
+    # Également retirés plus tôt : BLS, CNBC (« Access Denied »), Dot Esports (flux supprimé).
     feeds:
       # --- Actualité générale et géopolitique
       - {name: BBC World, url: "https://feeds.bbci.co.uk/news/world/rss.xml", language: en}
@@ -91,7 +94,6 @@ sources:
       - {name: SEC, url: "https://www.sec.gov/news/pressreleases.rss", official: true, language: en}
       - {name: ONU, url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", official: true, language: en}
       - {name: NASA, url: "https://www.nasa.gov/news-release/feed/", official: true, language: en}
-      - {name: FDA, url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml", official: true, language: en}
       # --- Économie et marchés
       - {name: BBC Business, url: "https://feeds.bbci.co.uk/news/business/rss.xml", language: en}
       - {name: MarketWatch, url: "https://feeds.marketwatch.com/marketwatch/topstories/", language: en}
@@ -108,12 +110,6 @@ sources:
       - {name: BBC Football, url: "https://feeds.bbci.co.uk/sport/football/rss.xml", language: en}
       - {name: BBC Tennis, url: "https://feeds.bbci.co.uk/sport/tennis/rss.xml", language: en}
       - {name: BBC Formule 1, url: "https://feeds.bbci.co.uk/sport/formula1/rss.xml", language: en}
-      - {name: ESPN, url: "https://www.espn.com/espn/rss/news", language: en}
-      - {name: ESPN NFL, url: "https://www.espn.com/espn/rss/nfl/news", language: en}
-      - {name: ESPN NBA, url: "https://www.espn.com/espn/rss/nba/news", language: en}
-      - {name: ESPN MLB, url: "https://www.espn.com/espn/rss/mlb/news", language: en}
-      - {name: ESPN NHL, url: "https://www.espn.com/espn/rss/nhl/news", language: en}
-      - {name: ESPN Soccer, url: "https://www.espn.com/espn/rss/soccer/news", language: en}
       - {name: CBS Sports, url: "https://www.cbssports.com/rss/headlines/", language: en}
       - {name: L'Équipe, url: "https://dwh.lequipe.fr/api/edito/rss?path=/", language: fr}
       # --- Esport (flux RSS officiels des sites)
