@@ -345,6 +345,19 @@ perdu jusqu'au cycle suivant (test de non-régression).
 - actions épinglées par commit ; nouveaux fichiers protégés : `scripts/guard_check.py`,
   `scripts/reset_capital.py`, `tests/test_guard.py`.
 
+**Vérification réelle sur GitHub (15/10/2026) :**
+- PR n°1 (étapes 3 à 8) : contrôle `tests` vert sur GitHub (233 tests), fusionnée par Etienne ;
+- environnement `production` créé (déploiement limité à `main`), secrets `LEDGER_KEY` et
+  `RESET_CODE` ajoutés par Etienne (fabriqués sur son iPad, jamais vus par Claude) ;
+- PR n°2 de test (ligne ajoutée dans `config/risk_limits.yaml`) : `guard` en échec
+  (« BLOQUÉ … config/risk_limits.yaml »), `automerge` a refusé la fusion automatique, puis,
+  ruleset `protection-main` actif (aucun contournement), fusion **bloquée** (état `blocked`
+  confirmé par l'API). Fermée sans fusion. **Critère de fin de l'étape 8 atteint.**
+- fusion automatique autorisée ; cette mise à jour de la documentation sert de test du circuit
+  complet (PR `claude/` → `guard` et `tests` verts → fusion sans intervention).
+- non testé : une poussée directe sur `main` (Claude n'a pas le droit de pousser sur `main`) ;
+  le ruleset l'interdit par construction (pull request obligatoire).
+
 **Limites honnêtes :**
 - le code non protégé qui tourne avec `LEDGER_KEY` (le cycle) pourrait en théorie écrire des
   écritures fausses ; la défense est la validation de `ledger.py` (protégé), les règles de

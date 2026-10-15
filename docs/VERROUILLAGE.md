@@ -1,5 +1,7 @@
 # Verrouillage du dépôt (étape 8) — guide pour Etienne
 
+**État au 15/10/2026 : étapes 1 à 6 faites et vérifiées.**
+
 But : qu'aucune IA (ni personne d'autre que toi) ne puisse modifier les règles de sécurité,
 le journal comptable ou les workflows. La protection repose sur GitHub, pas sur la confiance.
 
@@ -26,6 +28,8 @@ secret dans une conversation avec Claude.
    Array.from(crypto.getRandomValues(new Uint8Array(32)), b => b.toString(16).padStart(2, "0")).join("")
    ```
    Une suite de 64 caractères s'affiche : c'est un secret. Recommence pour en avoir un second.
+   Sur iPad ou téléphone (pas de console) : la page privée « Coffre du labo » préparée par Claude
+   fait la même chose sur l'appareil, sans rien envoyer sur Internet.
    Garde `RESET_CODE` dans ton gestionnaire de mots de passe (c'est le seul que tu retaperas).
 3. **Environnement `production`** : **Settings** → **Environments** → **New environment** →
    nom `production` → **Configure environment**.
