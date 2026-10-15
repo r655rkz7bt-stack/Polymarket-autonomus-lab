@@ -67,8 +67,10 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 
 ## Méthode de recherche (chaque session de recherche)
 
-1. Lance `.venv/bin/python scripts/research_brief.py` et lis `reports/brief.md` en premier :
-   classement de l'arène, champion, palier suivant (cliquet ×1,5), obligations.
+1. Lis la feuille de mission en premier : classement de l'arène, champion, palier suivant
+   (cliquet ×1,5), obligations. En routine (production) : `bash scripts/fetch_published.sh`
+   puis `published/rapports/brief.md` (produite par le cycle avec la vraie clé). En local :
+   `.venv/bin/python scripts/research_brief.py --dev-key` puis `reports/brief.md`.
 2. Remplis **toutes** les obligations de la feuille de mission (idées à ajouter, stratégies
    éliminées à remplacer, idée radicale si aucun palier depuis 7 jours).
 3. Mission : battre le record, atteindre le palier suivant le plus vite possible, sans jamais
@@ -91,6 +93,8 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 - Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
 - Laboratoire : `.venv/bin/python scripts/lab.py` (ajouter `--apply` pour écrire les recommandations)
 - Tableau de bord : `.venv/bin/python scripts/build_dashboard.py --dev-key` (sortie `site/`, régénéré par le cycle toutes les 30 min)
+- Rapports publiés par le cycle de production : `bash scripts/fetch_published.sh` (dossier `published/`)
+- Production : workflows `cycle` (toutes les 5 min), `initialize` (une fois), exploitation dans `docs/EXPLOITATION.md`
 - Réinitialisation (Etienne seul, via le workflow `reset-capital`) : `scripts/reset_capital.py`
 - Contrôle des fichiers protégés : `scripts/guard_check.py PROTECTED_PATHS.txt < liste_des_fichiers`
 - `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.

@@ -43,7 +43,7 @@ Un seul cycle à la fois : `concurrency: group: cycle, cancel-in-progress: false
 ## 3. Stockage
 
 - **Journal comptable** (`ledger/ledger.jsonl`, branche `data`) : append-only, texte. Chaque ligne contient le hash de la précédente et une signature HMAC-SHA256 avec `LEDGER_KEY`. Solde, positions, gains réalisés et latents sont recalculés depuis le journal à chaque cycle. Un battement de cœur signé et horodaté est ajouté à chaque cycle : une troncature du journal est détectée par l'absence de battement récent. Toute anomalie déclenche l'arrêt « CORROMPU », jamais une réinitialisation.
-- **Données de marché** (`state/market.sqlite`) : snapshots, estimations, décisions, observations. Base tournante plafonnée à 40 Mo. Proposition : branche orpheline `snapshots` écrasée à chaque sauvegarde, pour ne pas gonfler l'historique git. À valider pendant le prototype en mesurant la taille du dépôt ; alternative : artefacts GitHub Actions.
+- **Données de marché** (`state/market.sqlite`) : snapshots, estimations, décisions, observations. Base tournante plafonnée à 40 Mo. En production : **cache GitHub Actions** (décision de l'étape 9, au lieu d'une branche `snapshots`), recréée si elle est perdue (le capital n'en dépend pas).
 - **Historique pour les backtests** : `data/history/` (versionné, compressé), construit par `scripts/build_history.py` à partir de Gamma `/events/keyset` et du CLOB `prices-history`. Échantillon **non biaisé** : jours tirés au hasard, tous les marchés résolus, tirage uniforme de 40 % (voir §14).
 - Toute observation stocke `published_at` et `collected_at`. Les backtests filtrent sur `collected_at <= instant de décision` (aucune fuite temporelle).
 
@@ -366,4 +366,30 @@ perdu jusqu'au cycle suivant (test de non-régression).
 - `reset-capital.yml` ne pourra être essayé en réel qu'avec la branche `data` (étape 9) ;
 - le code saisi au lancement d'un workflow reste dans l'événement GitHub : d'où la consigne de
   changer `RESET_CODE` après chaque utilisation.
+
+## 20. Étape 9 — mise en service (15 octobre 2026)
+
+**Fonctionnement en production :**
+- `cycle.yml` : `workflow_dispatch` appelé toutes les 5 min par cron-job.org, plus un
+  déclencheur horaire de secours (minute 7). Environnement `production`, branche `main`
+  seulement, jamais sur une pull request, un seul cycle à la fois (groupe `cycle`, partagé
+  avec `initialize` et `reset-capital`).
+- Journal : branche `data` (`ledger/`), un commit par cycle, jamais réécrit (ruleset
+  `protection-data`). Sauvegardé aussi après un cycle en erreur (code 1) ; jamais quand le
+  journal est illisible (code 2), et le workflow échoue alors (e-mail de GitHub).
+- Base d'analyse : cache GitHub Actions. Tableau de bord, rapports et feuille de mission :
+  branche `gh-pages` (un seul commit remplacé), GitHub Pages, toutes les 30 min.
+- `initialize.yml` : GENESIS de production avec `LEDGER_KEY`, une seule fois (refus si `data`
+  existe). Le journal de développement local n'est jamais utilisé en production.
+- Routine « chercheur » (une par jour) : n'a pas la clé du journal ; lit la feuille de mission
+  publiée par le cycle (`scripts/fetch_published.sh`), travaille sur une branche `claude/`,
+  PR fusionnée automatiquement si `guard` et `tests` passent (`docs/ROUTINE_CHERCHEUR.md`).
+- Démarrage, arrêt, reprise, incidents : `docs/EXPLOITATION.md`.
+
+**Vérifié avant mise en service :** simulation locale complète des workflows (dépôt factice) :
+initialisation puis refus d'une 2ᵉ initialisation ; deux cycles réels sur Polymarket ; journaux
+principal et fantômes relus et vérifiés depuis `data` ; tableau de bord publié au 1er cycle et
+pas au 2ᵉ (moins de 30 min) ; récupération des rapports publiés par la routine.
+
+**Critère de fin :** 24 h de cycles sans erreur sur GitHub (à constater après la mise en service).
 

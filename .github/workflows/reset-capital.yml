@@ -57,12 +57,10 @@ jobs:
           RESET_INPUT=$(jq -r '.inputs.code' "$GITHUB_EVENT_PATH")
           echo "::add-mask::$RESET_INPUT"
           export RESET_INPUT
-          mkdir -p ledger state
+          mkdir -p ledger
           cp -a _data/ledger/. ledger/
-          if [ -f _data/state/market.sqlite ]; then cp _data/state/market.sqlite state/; fi
           python scripts/reset_capital.py --reason "$RESET_REASON"
           cp -a ledger/. _data/ledger/
-          mkdir -p _data/state && cp state/market.sqlite _data/state/
       - name: Enregistrement sur la branche data
         working-directory: _data
         env:
@@ -71,6 +69,6 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A ledger state
+          git add -A ledger
           git commit -m "RESET du capital : $RESET_REASON"
           git push origin HEAD:data

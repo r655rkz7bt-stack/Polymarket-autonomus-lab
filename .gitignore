@@ -28,3 +28,6 @@ data/history/*
 # Rapports et tableau de bord générés (publiés par le cycle, étape 9)
 reports/
 site/
+
+# Copie locale de ce que le cycle a publié (scripts/fetch_published.sh)
+published/

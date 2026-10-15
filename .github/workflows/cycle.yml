@@ -1,0 +1,119 @@
+# Cycle de simulation : lancé toutes les 5 minutes par cron-job.org (workflow_dispatch),
+# avec un déclencheur horaire de secours si cron-job.org s'arrête.
+#
+# Où vivent les données :
+#   - journal signé : branche « data » (dossier ledger/), un commit par cycle, historique conservé
+#     (le ruleset de « data » interdit force push et suppression : toute réécriture se verrait) ;
+#   - base SQLite (analyse seulement, jamais le capital) : cache GitHub Actions ;
+#   - tableau de bord et rapports : branche « gh-pages » (GitHub Pages), toutes les 30 minutes.
+# Aucune pull request ne peut déclencher ce workflow : les secrets ne servent qu'au code de main.
+name: cycle
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7 * * * *"
+
+permissions: {}
+
+# Un seul cycle à la fois (la réinitialisation partage ce groupe).
+concurrency:
+  group: cycle
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Dépendances épinglées
+        run: python -m pip install -r requirements.txt
+      - name: Journal signé (branche data)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: _data
+      - name: Base d'analyse (cache)
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: state/market.sqlite
+          key: db-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: db-
+      - name: Préparation
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p ../ledger ../state ../site
+          cp -a ledger/. ../ledger/
+          # Date de la dernière publication du tableau de bord (régénéré toutes les 30 min).
+          if git fetch --depth 1 origin gh-pages 2>/dev/null; then
+            git show FETCH_HEAD:data.json > ../site/data.json 2>/dev/null || rm -f ../site/data.json
+          fi
+          cp ../site/data.json "$RUNNER_TEMP/data.before" 2>/dev/null || : > "$RUNNER_TEMP/data.before"
+      - name: Cycle
+        id: run
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: |
+          set +e
+          python scripts/run_simulation.py --once
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "Code de sortie du cycle : $code (0 OK, 1 erreur, 2 journal corrompu ou absent)"
+      - name: Enregistrement du journal (branche data)
+        if: steps.run.outputs.code != '2'
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          cp -a ../ledger/. ledger/
+          git add -A ledger
+          if git diff --cached --quiet; then echo "Journal inchangé."; exit 0; fi
+          git commit -q -m "cycle $(date -u +%Y-%m-%dT%H:%MZ) (code ${{ steps.run.outputs.code }})"
+          git push -q origin HEAD:data
+      - name: Rapports et feuille de mission (si le tableau de bord a été régénéré)
+        id: reports
+        if: steps.run.outputs.code != '2'
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+        run: |
+          set -euo pipefail
+          if [ ! -f site/data.json ] || cmp -s site/data.json "$RUNNER_TEMP/data.before"; then
+            echo "publish=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          python scripts/research_brief.py > /dev/null
+          python scripts/generate_report.py > /dev/null
+          mkdir -p site/rapports
+          cp -a reports/. site/rapports/
+          touch site/.nojekyll
+          echo "publish=yes" >> "$GITHUB_OUTPUT"
+      - name: Publication du tableau de bord (branche gh-pages)
+        if: steps.reports.outputs.publish == 'yes'
+        working-directory: site
+        run: |
+          set -euo pipefail
+          # Un seul commit, remplacé à chaque publication : pas d'historique qui gonfle le dépôt.
+          export GIT_DIR="$GITHUB_WORKSPACE/_data/.git" GIT_WORK_TREE=. GIT_INDEX_FILE="$RUNNER_TEMP/site.index"
+          git add -A .
+          tree=$(git write-tree)
+          commit=$(git commit-tree "$tree" -m "Tableau de bord $(date -u +%Y-%m-%dT%H:%MZ)")
+          git push -q --force origin "$commit:refs/heads/gh-pages"
+      - name: Échec signalé par e-mail (GitHub) si le cycle a échoué
+        if: steps.run.outputs.code != '0'
+        run: exit 1

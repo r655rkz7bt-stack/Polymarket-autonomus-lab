@@ -37,11 +37,11 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
 | **Stratégie rentable prouvée** | ❌ pas encore — l'arène tranche en réel |
 | Tableau de bord (page statique, clair/sombre, téléphone) | ✅ testé, régénéré par le cycle toutes les 30 min |
-| Publication du tableau de bord sur GitHub Pages | ⏳ étape 9 |
+| Publication du tableau de bord sur GitHub Pages | ✅ écrite et simulée — ⏳ activation de Pages |
 | Scénarios de panne (dont base SQLite illisible) | ✅ testés |
 | Verrouillage : ruleset `main`, environnement `production`, `guard`, `tests`, fusion automatique | ✅ actif, vérifié en réel (PR de test bloquée) |
 | Réinitialisation `reset-capital` | ✅ testée localement — ⏳ essai réel à l'étape 9 (branche `data`) |
-| Exécution automatique toutes les 5 min | ⏳ étape 9 |
+| Exécution automatique toutes les 5 min (`cycle.yml`, cron-job.org) | ✅ écrite et simulée — ⏳ mise en service (`docs/EXPLOITATION.md`) |
 
 ## Lancer le prototype (dans un terminal Linux / Claude Code)
 
