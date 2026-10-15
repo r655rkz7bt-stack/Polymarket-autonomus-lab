@@ -183,3 +183,29 @@ def test_live_price_features_match_backtest():
         assert price_at(absolute, ts) == m.yes_price_at(ts)
         assert price_at(absolute, ts - 6 * H) == m.yes_price_at(ts - 6 * H)
         assert changes_in_window(absolute, ts) == m.price_changes(ts)
+
+
+def test_walk_forward_never_trains_on_the_future(limits):
+    """Critère de l'étape 6 : à chaque pli, l'ajustement ne voit que le passé."""
+    from polymarket_agent.backtest import walk_forward
+    markets = synthetic(600, 0.05, seed=9)
+    samples, outcomes = build_samples(markets, horizons=(6,))
+    seen = []
+
+    def fit(train, train_outcomes):
+        assert set(train_outcomes) == set(train)  # aucune issue de la période testée
+        seen.append(max(s.ts for rows in train.values() for s in rows))
+        return None
+
+    rule = lambda model: (lambda s: None)
+    result = walk_forward(samples, outcomes, fit, rule, limits, n_folds=3)
+    assert result["n_plis"] == 3
+    for last_train_ts, fold in zip(seen, result["plis"]):
+        assert last_train_ts < fold["periode"][0]  # tout l'entraînement précède le pli testé
+    assert seen == sorted(seen)  # fenêtre croissante
+
+
+def test_deflated_score_penalizes_many_variants():
+    from polymarket_agent.backtest import deflated_score
+    assert deflated_score(0.1, 0.2, 4, 1) == 0.1
+    assert deflated_score(0.1, 0.2, 4, 50) < 0  # meilleure de 50 : ce résultat peut être de la chance

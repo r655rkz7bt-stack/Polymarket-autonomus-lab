@@ -280,3 +280,58 @@ def simulate(name: str, rule: Rule, samples: dict[str, list[Sample]], outcomes: 
         result.final_cash = float(ledger.state.cash)
         result.bankrupt = result.bankrupt or ledger.state.bankrupt
     return result
+
+
+# --------------------------------------------------------------------------- walk-forward
+
+
+def walk_forward(samples: dict[str, list[Sample]], outcomes: dict[str, Outcome], fit, make_rule,
+                 limits: RiskLimits, n_folds: int = 4, initial_fraction: float = 0.4,
+                 half_spread: float = 0.01, kelly_fraction: Decimal = Decimal("1"),
+                 name: str = "strategie") -> dict:
+    """Validation glissante : fenêtre d'entraînement croissante, test sur la tranche suivante.
+
+    Pli k : `fit` ne reçoit QUE les événements antérieurs au début du pli k (et leurs issues),
+    puis la règle est simulée sur le pli k. Répété sur `n_folds` plis consécutifs.
+    `fit(train_samples, train_outcomes)` → modèle ; `make_rule(model)` → règle.
+    """
+    event_time: dict[str, int] = {}
+    for rows in samples.values():
+        for s in rows:
+            event_time[s.event_id] = max(event_time.get(s.event_id, 0), s.ts)
+    ordered = sorted(event_time, key=lambda e: event_time[e])
+    n = len(ordered)
+    start = int(n * initial_fraction)
+    size = max((n - start) // n_folds, 1)
+    folds = []
+    for k in range(n_folds):
+        lo, hi = start + k * size, (start + (k + 1) * size if k < n_folds - 1 else n)
+        if lo >= hi:
+            break
+        train_events, test_events = set(ordered[:lo]), set(ordered[lo:hi])
+        train = {m: r for m, r in samples.items() if r[0].event_id in train_events}
+        test = {m: r for m, r in samples.items() if r[0].event_id in test_events}
+        model = fit(train, {m: outcomes[m] for m in train})
+        result = simulate(name, make_rule(model), test, outcomes, limits, half_spread=half_spread,
+                          kelly_fraction=kelly_fraction)
+        metrics = result.metrics()
+        metrics["periode"] = [event_time[ordered[lo]], event_time[ordered[hi - 1]]]
+        folds.append(metrics)
+    growths = [f["croissance_log"] if f["croissance_log"] is not None else -10.0 for f in folds]
+    mean = sum(growths) / len(growths) if growths else 0.0
+    sd = (math.sqrt(sum((g - mean) ** 2 for g in growths) / (len(growths) - 1)) if len(growths) > 1 else 0.0)
+    return {"plis": folds, "croissance_log_moyenne": round(mean, 4), "ecart_type": round(sd, 4),
+            "plis_positifs": sum(1 for g in growths if g > 0), "n_plis": len(folds),
+            "operations": sum(f["operations"] for f in folds),
+            "faillite": any(f["faillite"] for f in folds)}
+
+
+def deflated_score(mean: float, sd: float, n_folds: int, n_variants: int) -> float:
+    """Score pénalisé pour les essais multiples : moyenne − (bruit attendu du meilleur de N).
+
+    Le meilleur de N variantes sans aucun avantage dépasse 0 d'environ sd/√k × √(2 ln N).
+    Une variante n'est retenue que si elle fait mieux que ce seuil de chance.
+    """
+    if n_folds < 2 or n_variants < 2:
+        return mean
+    return mean - sd / math.sqrt(n_folds) * math.sqrt(2 * math.log(n_variants))
