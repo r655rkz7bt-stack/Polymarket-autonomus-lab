@@ -7,6 +7,7 @@ dépendance) ; un flux illisible est ignoré sans bloquer les autres.
 
 from __future__ import annotations
 
+import logging
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -16,6 +17,8 @@ import requests
 from polymarket_agent.http_client import SourceUnavailable
 from polymarket_agent.observations import Observation
 from polymarket_agent.sources._util import domain_of, parse_date
+
+log = logging.getLogger(__name__)
 
 ATOM = "{http://www.w3.org/2005/Atom}"
 RSS1 = "{http://purl.org/rss/1.0/}"
@@ -83,6 +86,8 @@ class RssSource:
             url = feed["url"]
             if error:
                 self.failures[url] = error
+                # Raison exacte dans le journal du cycle (GitHub Actions) : blocage, délai, format…
+                log.warning("flux RSS en échec %s (%s) : %s", feed.get("name", url), url, error)
                 continue
             source = "rss_officiel" if feed.get("official") else "rss"
             for it in items[: int(feed.get("max_items", 30))]:
