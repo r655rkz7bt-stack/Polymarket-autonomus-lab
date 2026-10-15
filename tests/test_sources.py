@@ -508,3 +508,46 @@ def test_regression_stances_are_kept_per_market(tmp_path, monkeypatch):
     assert "4 avis sur 2 marchés" in status["gemini"]
     assert markets[0].intel.stance == 1.0 and markets[1].intel.stance == -1.0
     db.close()
+
+
+def test_rss_1_0_rdf_feed_is_read():
+    """Constaté le 15/10/2026 : le flux DW (RSS 1.0 / RDF) était lu comme vide."""
+    rdf = b"""<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel><title>DW</title></channel>
+  <item><title>EU summit ends</title><link>https://www.dw.com/a-1</link>
+    <description>Leaders agree</description><dc:date>2026-10-15T12:00:00Z</dc:date></item>
+</rdf:RDF>"""
+    item = parse_feed(rdf)[0]
+    assert item["title"] == "EU summit ends" and item["link"] == "https://www.dw.com/a-1"
+    assert item["published"] == "2026-10-15T12:00:00Z"
+
+
+def test_rss_status_names_the_failed_feeds_and_uses_the_full_user_agent(tmp_path):
+    """Les flux en échec sont nommés dans le statut (visibles dans le journal du cycle et le tableau
+    de bord) ; l'identifiant envoyé est celui des réglages (NPR refuse l'identifiant court)."""
+    from polymarket_agent.sources.rss import RssSource
+    class Session:
+        headers = {}
+
+        def get(self, url, timeout):
+            return _Resp(b"Access Denied", 403) if "mort" in url else _Resp(RSS.encode())
+
+    feeds = [{"name": "Vivant", "url": "https://vivant.org/rss"}, {"name": "Mort", "url": "https://mort.org/rss"}]
+    created = []
+
+    def factory():
+        created.append(RssSource(feeds, session=Session(), user_agent=cfg["http"]["user_agent"]))
+        return created[-1]
+    cfg = dict(settings(rss={"enabled": True, "every_minutes": 15, "feeds": feeds}),
+               http={"user_agent": "labo/0.1 (recherche)"})
+    db = Database(tmp_path / "db.sqlite")
+    result = collect(cfg, None, db, [], NOW, {"rss": factory, "polymarket_comments": lambda: Boom(),
+                                             "crypto_prices": lambda: Boom(), "gdelt": lambda: Fixed([])})
+    assert result.status["rss"].startswith("ok (") and result.status["rss"].endswith("1 flux en échec : Mort)")
+    db.close()
+    # Sans fabrique de test, le collecteur passe bien l'identifiant des réglages.
+    import inspect
+    from polymarket_agent import data_collector
+    assert 'settings.get("http", {}).get("user_agent"' in inspect.getsource(data_collector.collect)

@@ -88,14 +88,12 @@ sources:
       - {name: BCE, url: "https://www.ecb.europa.eu/rss/press.html", official: true, language: en}
       - {name: Banque d'Angleterre, url: "https://www.bankofengland.co.uk/rss/news", official: true, language: en}
       - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
-      - {name: BLS, url: "https://www.bls.gov/feed/bls_latest.rss", official: true, language: en}
       - {name: SEC, url: "https://www.sec.gov/news/pressreleases.rss", official: true, language: en}
       - {name: ONU, url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", official: true, language: en}
       - {name: NASA, url: "https://www.nasa.gov/news-release/feed/", official: true, language: en}
       - {name: FDA, url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml", official: true, language: en}
       # --- Économie et marchés
       - {name: BBC Business, url: "https://feeds.bbci.co.uk/news/business/rss.xml", language: en}
-      - {name: CNBC, url: "https://www.cnbc.com/id/100003114/device/rss/rss.html", language: en}
       - {name: MarketWatch, url: "https://feeds.marketwatch.com/marketwatch/topstories/", language: en}
       - {name: WSJ Markets, url: "https://feeds.a.dj.com/rss/RSSMarketsMain.xml", language: en}
       - {name: NYT Business, url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", language: en}
@@ -104,7 +102,7 @@ sources:
       - {name: Cointelegraph, url: "https://cointelegraph.com/rss", language: en}
       - {name: Decrypt, url: "https://decrypt.co/feed", language: en}
       - {name: The Block, url: "https://www.theblock.co/rss.xml", language: en}
-      - {name: Bitcoin Magazine, url: "https://bitcoinmagazine.com/.rss/full/", language: en}
+      - {name: Bitcoin Magazine, url: "https://bitcoinmagazine.com/feed", language: en}
       # --- Sport
       - {name: BBC Sport, url: "https://feeds.bbci.co.uk/sport/rss.xml", language: en}
       - {name: BBC Football, url: "https://feeds.bbci.co.uk/sport/football/rss.xml", language: en}
@@ -121,7 +119,6 @@ sources:
       # --- Esport (flux RSS officiels des sites)
       - {name: HLTV (Counter-Strike), url: "https://www.hltv.org/rss/news", language: en}
       - {name: Dexerto, url: "https://www.dexerto.com/feed/", language: en}
-      - {name: Dot Esports, url: "https://dotesports.com/feed", language: en}
       # --- Technologie et IA
       - {name: TechCrunch, url: "https://techcrunch.com/feed/", language: en}
       - {name: The Verge, url: "https://www.theverge.com/rss/index.xml", language: en}
@@ -136,7 +133,7 @@ sources:
       # --- Science, météo extrême, espace
       - {name: NHC (ouragans), url: "https://www.nhc.noaa.gov/index-at.xml", official: true, language: en}
       - {name: USGS séismes M4.5+, url: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.atom", official: true, language: en}
-      - {name: Space.com, url: "https://www.space.com/feeds/all", language: en}
+      - {name: Space.com, url: "https://www.space.com/feeds.xml", language: en}
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
 
 # Règles de l'arène : config/promotion.yaml (libre depuis le 15/10/2026, lu par les scripts).
