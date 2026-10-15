@@ -7,3 +7,5 @@
 
 initial_capital: 1000          # unités virtuelles (jamais de l'argent réel)
 max_book_age_seconds: 120      # un carnet plus vieux est périmé : on n'achète pas à un prix passé
+
+# TEST DU VERROUILLAGE (étape 8) : cette ligne ne doit jamais atteindre main.
