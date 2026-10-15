@@ -133,6 +133,28 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "ORDER BY started_at DESC LIMIT 8", (since,))]
     obs_by_source = dict(db.conn.execute("SELECT source, COUNT(*) FROM observations WHERE collected_at >= ? "
                                          "GROUP BY source", (since,)).fetchall())
+    # Pouls : les derniers cycles, du plus ancien au plus récent (durée en secondes, exécutions).
+    pulse = []
+    for started, finished, status, fills, error in reversed(db.conn.execute(
+            "SELECT started_at, finished_at, status, fills, error FROM cycles WHERE finished_at IS NOT NULL "
+            "ORDER BY started_at DESC LIMIT 96").fetchall()):
+        try:
+            seconds = round((datetime.fromisoformat(finished) - datetime.fromisoformat(started)).total_seconds(), 1)
+        except (TypeError, ValueError):
+            seconds = None
+        pulse.append({"date": started[:16], "statut": status, "duree": seconds, "executions": fills or 0,
+                      "erreur": bool(error)})
+    counts = db.conn.execute("SELECT markets_scanned, watchlist_size, proposals, accepted, fills FROM cycles "
+                             "WHERE finished_at IS NOT NULL ORDER BY started_at DESC LIMIT 1").fetchone()
+    try:
+        open_orders = db.conn.execute("SELECT COUNT(*) FROM pending_orders WHERE status='OUVERT'").fetchone()[0]
+    except Exception:  # noqa: BLE001 - base d'avant les ordres posés
+        open_orders = 0
+    system = {"marches_scannes": counts[0] if counts else 0, "surveilles": counts[1] if counts else 0,
+              "propositions": counts[2] if counts else 0, "acceptees": counts[3] if counts else 0,
+              "executions": counts[4] if counts else 0, "ordres_poses": open_orders,
+              "strategies_actives": sum(1 for s in arena if not s["eliminee"]),
+              "positions_tous_portefeuilles": len(positions)}
 
     def listing(folder: str) -> list[dict]:
         path = root / folder
@@ -162,7 +184,8 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "sante": {"dernier_battement": state.last_heartbeat_at.isoformat(timespec="seconds")
                   if state.last_heartbeat_at else None,
                   "dernier_cycle": {"date": last[0][:16], "statut": last[1]} if last else None,
-                  "cycles_24h": cycles, "erreurs": errors},
+                  "cycles_24h": cycles, "erreurs": errors, "pouls": pulse},
+        "systeme": system,
         "sources": {"etat": source_state, "dernier_passage": {k: v[:16] for k, v in source_runs.items()},
                     "observations_24h": obs_by_source},
         "experiences": listing("experiments"),
