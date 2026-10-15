@@ -1,5 +1,11 @@
 # Proposition — le notaire : seule une machine protégée signe le journal (lot D)
 
+> **Décision d'Etienne (15/10/2026) : option A.** La partie 1 (audit des règlements) est faite :
+> `scripts/audit_fills.py` et `tests/test_audit_fills.py` (protégés). Essai sur les 10 vrais
+> règlements du journal de production (principal et fantômes) : 10 conformes à la résolution
+> officielle. La partie 2 (le notaire) n'est pas faite ; elle reste décrite ci-dessous si Etienne
+> veut y revenir.
+
 Date : 15/10/2026. Faisait partie de « Tu peux tout faire sauf le 3 ». **Rien n'est encore codé** :
 ce changement touche le cœur du noyau protégé (`ledger.py`, le fichier qui signe le journal).
 Pendant la session, le contrôle de sécurité de Claude a bloqué cette modification, et c'est

@@ -386,6 +386,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     "Palier suivant " + fmt(target, 0) + " (capital réalisé " + fmt(realized, 2) + ").",
     "Frais payés " + fmt(C.frais_payes, 2) + " · perte maximale depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %.",
     D.audit ? "Audit indépendant : " + fmt(D.audit.verifiees, 0) + " exécutions vérifiées contre l'historique de Polymarket, " +
+      fmt(D.audit.reglements_verifies || 0, 0) + " règlements conformes au résultat officiel, " +
       (D.audit.anomalies ? "▲ " + D.audit.anomalies + " anomalie(s) à examiner." : "aucune anomalie.")
       : "Audit indépendant des exécutions : pas encore lancé."
   ].forEach(function (t) { document.getElementById("facts").appendChild(el("li", null, t)); });
@@ -437,6 +438,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     if (srcs.sources_resolution) { line([["$ ", "p"], ["etat --sources-de-resolution", "w"]]); line([["  " + srcs.sources_resolution]]); }
     if (D.audit) { line([["$ ", "p"], ["audit --executions", "w"]]);
       line([["  vérifiées " + fmt(D.audit.verifiees, 0) + " · non vérifiables " + fmt(D.audit.non_verifiables, 0) +
+        " · règlements conformes " + fmt(D.audit.reglements_verifies || 0, 0) +
         " · anomalies " + D.audit.anomalies + " · dernier passage " + short(D.audit.derniere)]]);
       (D.audit.dernieres_anomalies || []).forEach(function (a) { line([["  ○ " + (a.portefeuille || "") + " : " + (a.detail || ""), "w"]]); }); }
     line([["$ ", "p"], ["etat --capital", "w"]]);

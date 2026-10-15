@@ -178,6 +178,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         try:
             raw_audit = json.loads(audit_file.read_text(encoding="utf-8"))
             audit = {"verifiees": raw_audit.get("verifiees", 0), "non_verifiables": raw_audit.get("non_verifiables", 0),
+                     "reglements_verifies": raw_audit.get("reglements_verifies", 0),
                      "anomalies": len(raw_audit.get("anomalies", [])), "derniere": raw_audit.get("derniere_execution"),
                      "dernieres_anomalies": raw_audit.get("anomalies", [])[-5:]}
         except ValueError:
