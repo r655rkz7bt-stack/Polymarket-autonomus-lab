@@ -69,6 +69,10 @@ sources:
 
 # Règles de l'arène : config/promotion.yaml (fichier protégé, lu par les scripts).
 
+dashboard:
+  output_dir: site             # page statique publiée sur GitHub Pages (étape 9)
+  every_minutes: 30            # régénérée au plus toutes les 30 minutes
+
 collector:
   markets_per_cycle: 5         # marchés surveillés pour lesquels on cherche des actualités
 

@@ -186,7 +186,7 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
         {t: m for t, m in main.marks.items() if t in ledger.state.positions})
     report.counts.update(main.counts)
     deps.db.finish_cycle(report.cycle_id, finished, report.status, counts=report.counts,
-                         summary=dict(report.summary, fantomes=report.shadows),
+                         summary=dict(report.summary, fantomes=report.shadows, sources=report.sources),
                          error="; ".join(report.messages) or None)
     deps.db.prune(float(deps.settings["database"]["max_megabytes"]))
     return report

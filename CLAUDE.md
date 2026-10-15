@@ -90,4 +90,5 @@ Pendant la construction initiale (étapes 3 à 8), tu crées ces fichiers. Aprè
 - Feuille de mission : `.venv/bin/python scripts/research_brief.py --dev-key`
 - Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
 - Laboratoire : `.venv/bin/python scripts/lab.py` (ajouter `--apply` pour écrire les recommandations)
+- Tableau de bord : `.venv/bin/python scripts/build_dashboard.py --dev-key` (sortie `site/`, régénéré par le cycle toutes les 30 min)
 - `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.

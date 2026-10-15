@@ -25,5 +25,6 @@ data/history/*
 !data/history/*.jsonl.gz
 !data/history/README.md
 
-# Rapports générés (publiés à l’étape 7)
+# Rapports et tableau de bord générés (publiés par le cycle, étape 9)
 reports/
+site/

@@ -1,0 +1,336 @@
+<title>Laboratoire Polymarket</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Mise en page : carnet de laboratoire — une colonne de sections, résumé d'abord, détail ensuite.
+   Couleur : un seul bleu pour les données, couleurs d'état réservées (gain, perte, alerte). */
+:root {
+  --plane: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #6f6d67;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+  --series: #2a78d6; --series-wash: rgba(42,120,214,0.12);
+  --good: #006300; --bad: #b42d2d; --warn: #8a5a00; --warn-wash: rgba(250,178,25,0.18);
+  --good-wash: rgba(12,163,12,0.12); --bad-wash: rgba(208,59,59,0.12);
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --plane: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a988f;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --series: #3987e5; --series-wash: rgba(57,135,229,0.18);
+    --good: #0ca30c; --bad: #e66767; --warn: #fab219; --warn-wash: rgba(250,178,25,0.14);
+    --good-wash: rgba(12,163,12,0.16); --bad-wash: rgba(230,103,103,0.16); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --plane: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a988f;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+  --series: #3987e5; --series-wash: rgba(57,135,229,0.18);
+  --good: #0ca30c; --bad: #e66767; --warn: #fab219; --warn-wash: rgba(250,178,25,0.14);
+  --good-wash: rgba(12,163,12,0.16); --bad-wash: rgba(230,103,103,0.16); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--plane); color: var(--ink); font: 15px/1.5 var(--sans); margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+h1 { font-size: 1.6rem; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-size: 1.05rem; margin: 0 0 10px; text-wrap: balance; }
+.sub { color: var(--ink-2); font-size: 0.9rem; }
+.eyebrow { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+section { min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 16px; min-width: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 12px; }
+.tile .v { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.01em; }
+.tile .k { color: var(--ink-2); font-size: 0.85rem; }
+.bar { height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; margin-top: 8px; }
+.bar > i { display: block; height: 100%; background: var(--series); border-radius: 3px; }
+.pill { display: inline-flex; align-items: baseline; gap: 6px; font-size: 0.8rem; font-weight: 600;
+  padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+.pill::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+  transform: translateY(-1px); }
+.ok { color: var(--good); background: var(--good-wash); }
+.ko { color: var(--bad); background: var(--bad-wash); }
+.wait { color: var(--warn); background: var(--warn-wash); }
+.neutral { color: var(--ink-2); background: var(--grid); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.q { min-width: 190px; }
+td.d { white-space: nowrap; }
+td.s { min-width: 150px; }
+.detail { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 3px; overflow-wrap: anywhere; }
+.pos { color: var(--good); } .neg { color: var(--bad); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px; }
+.empty { color: var(--muted); font-style: italic; }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--ring);
+  border-radius: 8px; padding: 6px 10px; font-size: 0.82rem; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+.tip b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+details summary { cursor: pointer; color: var(--ink-2); font-size: 0.85rem; margin-top: 8px; }
+details summary:focus-visible, .chart svg:focus-visible { outline: 2px solid var(--series); outline-offset: 2px; }
+.note { color: var(--ink-2); font-size: 0.85rem; max-width: 70ch; }
+code { font-family: var(--mono); font-size: 0.85em; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Simulation · unités virtuelles · aucun argent réel</div>
+      <h1>Laboratoire Polymarket</h1>
+    </div>
+    <div class="sub" id="generated"></div>
+  </header>
+
+  <section aria-label="Capital">
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="card">
+    <h2>Capital principal</h2>
+    <div class="note" id="chart-note"></div>
+    <div class="chart" id="chart"></div>
+    <details><summary>Voir les valeurs</summary><div class="scroll" id="chart-table"></div></details>
+  </section>
+
+  <section class="card">
+    <h2>Arène des stratégies</h2>
+    <div class="note">Chaque stratégie trade dans son propre portefeuille fantôme de 1 000. Le meilleur, après 20 opérations
+      clôturées et s'il bat « ne rien faire », pilote le capital principal. La pire est éliminée chaque semaine.</div>
+    <div class="scroll"><table id="arena"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Positions ouvertes et prévisions</h2>
+    <div class="scroll"><table id="positions"></table></div>
+  </section>
+
+  <div class="grid2">
+    <section class="card"><h2>Dernières opérations clôturées</h2><div class="scroll"><table id="closed"></table></div></section>
+    <section class="card"><h2>Marchés surveillés</h2><div class="scroll"><table id="watched"></table></div></section>
+  </div>
+
+  <section class="card">
+    <h2>Décisions récentes</h2>
+    <div class="scroll"><table id="decisions"></table></div>
+  </section>
+
+  <div class="grid2">
+    <section class="card"><h2>État du bot</h2><div id="health"></div></section>
+    <section class="card"><h2>Sources d'information</h2><div class="scroll"><table id="sources"></table></div></section>
+  </div>
+
+  <div class="grid2">
+    <section class="card"><h2>Expériences et propositions</h2><div id="experiments"></div></section>
+    <section class="card"><h2>Tests et coûts</h2><div id="costs"></div></section>
+  </div>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("data").textContent);
+  var fmt = function (x, d) { return x === null || x === undefined || x === "" ? "—" :
+    Number(x).toLocaleString("fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d }); };
+  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = String(text); return e; };
+  // « 2026-10-15T10:52 » -> « 15/10 10:52 » (dates UTC, comme dans les journaux).
+  var short = function (iso) { var m = /^\d{4}-(\d\d)-(\d\d)[T ](\d\d:\d\d)/.exec(iso || "");
+    return m ? m[2] + "/" + m[1] + " " + m[3] : (iso || "—"); };
+  var signed = function (x) { var e = el("span", x > 0 ? "pos" : x < 0 ? "neg" : "", (x > 0 ? "+" : "") + fmt(x, 2)); return e; };
+
+  function table(id, head, rows, empty) {
+    var t = document.getElementById(id); t.textContent = "";
+    if (!rows.length) { var p = el("p", "empty", empty); t.replaceWith(p); return; }
+    var tr = el("tr"); head.forEach(function (h) { tr.appendChild(el("th", h.n ? "n" : "", h.t)); });
+    var th = el("thead"); th.appendChild(tr); t.appendChild(th);
+    var tb = el("tbody");
+    rows.forEach(function (r) { var row = el("tr");
+      r.forEach(function (c, i) { var td = el("td", head[i].n ? "n" : head[i].q ? "q" : head[i].d ? "d" :
+        head[i].s ? "s" : "");
+        if (c instanceof Node) td.appendChild(c); else td.textContent = c === null || c === undefined ? "—" : String(c);
+        row.appendChild(td); });
+      tb.appendChild(row); });
+    t.appendChild(tb);
+  }
+  var EXEC = { FILLED: "exécutée", PARTIAL: "partielle", UNFILLED: "non exécutée" };
+  function pill(text, cls) { return el("span", "pill " + cls, text); }
+  // Étiquette courte + détail en petit texte (les messages d'erreur peuvent être longs).
+  function status(text, cls) { var m = /^(.*?)( : | \()(.*)$/.exec(text), box = el("span");
+    box.appendChild(pill(m ? m[1] : text, cls));
+    if (m) box.appendChild(el("span", "detail", m[2] === " (" ? m[3].replace(/\)$/, "") : m[3]));
+    return box; }
+
+  // --- en-tête et tuiles
+  var C = D.capital;
+  document.getElementById("generated").textContent = "Mis à jour le " + new Date(D.genere_le).toLocaleString("fr-FR");
+  var realized = Number(C.capital_realise), target = Number(C.palier_suivant), initial = D.capital_initial;
+  var tiles = [
+    ["Solde disponible", fmt(C.solde_disponible, 2), "liquidités, hors positions"],
+    ["Capital total estimé", fmt(C.capital_total_estime, 2), "positions au meilleur prix d'achat"],
+    ["Gains réalisés nets", fmt(C.gains_realises_nets, 2), "frais payés : " + fmt(C.frais_payes, 2)],
+    ["Gains latents", fmt(C.gains_latents, 2), "ne comptent jamais comme liquidités"],
+    ["Palier suivant", fmt(target, 0), "capital réalisé " + fmt(realized, 2)],
+    ["Champion", C.champion || "aucun", C.champion ? "pilote le capital principal" : "le capital principal ne fait rien"]
+  ];
+  var tw = document.getElementById("tiles");
+  tiles.forEach(function (t, i) { var c = el("div", "card tile"); c.appendChild(el("div", "k", t[0]));
+    c.appendChild(el("div", "v", t[1])); c.appendChild(el("div", "sub", t[2]));
+    if (i === 4) { var b = el("div", "bar"), fill = el("i"); var start = target / 1.5;
+      fill.style.width = Math.max(0, Math.min(100, (realized - Math.min(start, initial)) /
+        (target - Math.min(start, initial)) * 100)) + "%"; b.appendChild(fill); c.appendChild(b); }
+    tw.appendChild(c); });
+  if (C.faillite) { var f = el("div", "card"); f.appendChild(pill("FAILLITE : " + C.raison_faillite, "ko")); tw.prepend(f); }
+
+  // --- graphique du capital principal (une série, pas de légende)
+  (function chart() {
+    var pts = D.courbe.map(function (p) { return [new Date(p[0]).getTime(), p[1]]; });
+    var note = document.getElementById("chart-note");
+    note.textContent = "Capital total estimé à chaque battement de cœur (ligne grise : capital de départ). " +
+      "Palier suivant : " + fmt(target, 0) + ". Perte maximale depuis un sommet : " + fmt(C.drawdown_max * 100, 1) + " %.";
+    var box = document.getElementById("chart");
+    if (pts.length < 2) { box.appendChild(el("p", "empty", "Pas encore assez de cycles pour tracer une courbe.")); return; }
+    // Largeur réelle du conteneur : le texte garde sa taille, même sur téléphone.
+    var W = Math.max(300, Math.round(box.clientWidth)), H = W < 600 ? 220 : 280, L = 56, R = 12, T = 18, B = 30,
+      ns = "http://www.w3.org/2000/svg";
+    var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
+    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
+    var lo = Math.min(Math.min.apply(null, ys), initial), hi = Math.max(Math.max.apply(null, ys), initial);
+    // Le palier n'élargit l'échelle que s'il est proche : sinon il écraserait la courbe.
+    var showTarget = target <= hi + (hi - lo) * 0.5 + 1;
+    if (showTarget) hi = Math.max(hi, target);
+    var pad = (hi - lo) * 0.08 || 10; lo -= pad; hi += pad;
+    var sx = function (x) { return L + (x - x0) / (x1 - x0 || 1) * (W - L - R); };
+    var sy = function (y) { return T + (hi - y) / (hi - lo) * (H - T - B); };
+    var svg = document.createElementNS(ns, "svg"); svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("role", "img"); svg.setAttribute("tabindex", "0");
+    svg.setAttribute("aria-label", "Courbe du capital total estimé");
+    function add(tag, attrs, text) { var n = document.createElementNS(ns, tag);
+      Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+      if (text !== undefined) n.textContent = text; svg.appendChild(n); return n; }
+    var ticks = 4;
+    for (var i = 0; i <= ticks; i++) { var v = lo + (hi - lo) * i / ticks, y = sy(v);
+      add("line", { x1: L, x2: W - R, y1: y, y2: y, stroke: "var(--grid)", "stroke-width": 1 });
+      add("text", { x: L - 8, y: y + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)" }, fmt(v, 0)); }
+    var days = function (t) { return new Date(t).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) + " " +
+      new Date(t).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); };
+    [x0, (x0 + x1) / 2, x1].forEach(function (t, i) {
+      add("text", { x: sx(t), y: H - 10, "text-anchor": ["start", "middle", "end"][i], "font-size": 11,
+        fill: "var(--muted)" }, days(t)); });
+    add("line", { x1: L, x2: W - R, y1: sy(initial), y2: sy(initial), stroke: "var(--axis)", "stroke-width": 1 });
+    if (showTarget) {
+      add("line", { x1: L, x2: W - R, y1: sy(target), y2: sy(target), stroke: "var(--series)",
+        "stroke-width": 1.5, "stroke-dasharray": "5 5", opacity: 0.7 });
+      add("text", { x: W - R, y: sy(target) - 6, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)" },
+        "palier " + fmt(target, 0)); }
+    else add("text", { x: W - R, y: T - 4, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)" },
+      "palier " + fmt(target, 0) + " : au-dessus de l'échelle ↑");
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ");
+    add("path", { d: d + " L" + sx(x1) + " " + (H - B) + " L" + sx(x0) + " " + (H - B) + " Z", fill: "var(--series-wash)" });
+    add("path", { d: d, fill: "none", stroke: "var(--series)", "stroke-width": 2, "stroke-linejoin": "round" });
+    var last = pts[pts.length - 1];
+    add("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 4, fill: "var(--series)", stroke: "var(--surface)", "stroke-width": 2 });
+    var hair = add("line", { y1: T, y2: H - B, stroke: "var(--axis)", "stroke-width": 1, visibility: "hidden" });
+    var dot = add("circle", { r: 4, fill: "var(--series)", stroke: "var(--surface)", "stroke-width": 2, visibility: "hidden" });
+    box.appendChild(svg);
+    var tip = el("div", "tip"); tip.hidden = true; box.appendChild(tip);
+    function show(idx) { var p = pts[idx], X = sx(p[0]), Y = sy(p[1]);
+      hair.setAttribute("x1", X); hair.setAttribute("x2", X); hair.setAttribute("visibility", "visible");
+      dot.setAttribute("cx", X); dot.setAttribute("cy", Y); dot.setAttribute("visibility", "visible");
+      tip.textContent = ""; tip.appendChild(el("b", null, fmt(p[1], 2))); tip.appendChild(el("span", null, days(p[0])));
+      tip.hidden = false; var r = svg.getBoundingClientRect(), k = r.width / W;
+      tip.style.left = Math.min(X * k + 12, r.width - 150) + "px"; tip.style.top = Math.max(Y * k - 50, 0) + "px"; }
+    function nearest(clientX) { var r = svg.getBoundingClientRect(), X = (clientX - r.left) / r.width * W, best = 0;
+      pts.forEach(function (p, i) { if (Math.abs(sx(p[0]) - X) < Math.abs(sx(pts[best][0]) - X)) best = i; }); return best; }
+    var cur = pts.length - 1;
+    svg.addEventListener("pointermove", function (e) { cur = nearest(e.clientX); show(cur); });
+    svg.addEventListener("pointerleave", function () { tip.hidden = true; hair.setAttribute("visibility", "hidden");
+      dot.setAttribute("visibility", "hidden"); });
+    svg.addEventListener("focus", function () { show(cur); });
+    svg.addEventListener("blur", function () { tip.hidden = true; });
+    svg.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") cur = Math.max(0, cur - 1);
+      else if (e.key === "ArrowRight") cur = Math.min(pts.length - 1, cur + 1); else return; e.preventDefault(); show(cur); });
+    var rows = D.courbe.slice(-40).reverse().map(function (p) { return [days(new Date(p[0]).getTime()), fmt(p[1], 2)]; });
+    var holder = document.getElementById("chart-table"), t = el("table"); t.id = "chart-values"; holder.appendChild(t);
+    table("chart-values", [{ t: "date" }, { t: "capital", n: 1 }], rows, "");
+  })();
+
+  // --- arène, avec une mini-courbe par stratégie (même bleu, une série chacune)
+  function spark(curve) {
+    var ns = "http://www.w3.org/2000/svg", w = 110, h = 26, svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h); svg.setAttribute("width", w); svg.setAttribute("height", h);
+    svg.setAttribute("aria-hidden", "true");
+    if (!curve || curve.length < 2) return el("span", "empty", "—");
+    var ys = curve.map(function (p) { return p[1]; }), lo = Math.min.apply(null, ys), hi = Math.max.apply(null, ys);
+    if (hi === lo) { hi += 1; lo -= 1; }
+    var d = curve.map(function (p, i) { return (i ? "L" : "M") + (i / (curve.length - 1) * (w - 4) + 2).toFixed(1) + " " +
+      ((hi - p[1]) / (hi - lo) * (h - 6) + 3).toFixed(1); }).join(" ");
+    var path = document.createElementNS(ns, "path"); path.setAttribute("d", d); path.setAttribute("fill", "none");
+    path.setAttribute("stroke", "var(--series)"); path.setAttribute("stroke-width", "1.6"); svg.appendChild(path);
+    return svg;
+  }
+  var verdictCls = function (v) { return /prometteuse/.test(v) ? "ok" : /ne fonctionne pas/.test(v) ? "ko" :
+    /insuffisantes|aucune/.test(v) ? "neutral" : "wait"; };
+  table("arena", [{ t: "#" }, { t: "stratégie" }, { t: "statut" }, { t: "clôturées", n: 1 },
+    { t: "capital", n: 1 }, { t: "croiss. log", n: 1 }, { t: "courbe" }, { t: "verdict", s: 1 }],
+    D.arene.map(function (s, i) { return [String(i + 1), s.nom,
+      pill(s.champion ? "champion" : s.eliminee ? "éliminée" : "en test", s.champion ? "ok" : s.eliminee ? "ko" : "neutral"),
+      String(s.operations), fmt(s.capital, 2), s.croissance === null ? "—" : (s.croissance > 0 ? "+" : "") + fmt(s.croissance, 4),
+      spark(s.courbe), status(s.verdict, verdictCls(s.verdict))]; }), "Aucune stratégie active.");
+
+  table("positions", [{ t: "portefeuille" }, { t: "marché", q: 1 }, { t: "issue" }, { t: "coût", n: 1 },
+    { t: "prix moyen", n: 1 }, { t: "marque", n: 1 }, { t: "latent", n: 1 }, { t: "prévision [bas–haut]", n: 1 }],
+    D.positions.map(function (p) { return [p.portefeuille, p.marche, p.issue, fmt(p.cout, 2), fmt(p.prix_moyen, 3),
+      p.marque === null ? "—" : fmt(p.marque, 3), p.latent === null ? "—" : signed(p.latent),
+      p.proba ? fmt(p.proba, 3) + (p.proba_bas && p.proba_haut ? " [" + fmt(p.proba_bas, 3) + "–" +
+        fmt(p.proba_haut, 3) + "]" : "") : "—"]; }),
+    "Aucune position ouverte.");
+  table("closed", [{ t: "date (UTC)", d: 1 }, { t: "marché", q: 1 }, { t: "stratégie" }, { t: "résultat", n: 1 }],
+    D.cloturees.map(function (t) { return [short(t.date), t.marche + " — " + t.issue, t.strategie,
+      signed(t.resultat)]; }), "Aucune opération clôturée.");
+  table("watched", [{ t: "marché", q: 1 }, { t: "catégorie" }, { t: "achat / vente", n: 1 }],
+    D.surveilles.map(function (m) { return [m.marche, m.categorie, fmt(m.bid, 3) + " / " + fmt(m.ask, 3)]; }),
+    "Aucun marché surveillé au dernier cycle.");
+  table("decisions", [{ t: "date (UTC)", d: 1 }, { t: "stratégie" }, { t: "marché", q: 1 }, { t: "décision" }, { t: "raison" }],
+    D.decisions.map(function (d) { return [short(d.date), d.strategie, d.marche,
+      d.acceptee ? pill(EXEC[d.execution] || d.execution || "acceptée", d.execution === "UNFILLED" ? "wait" : "ok")
+        : pill("rejetée", "ko"),
+      d.raisons.length ? d.raisons.join(" ; ") : "—"]; }), "Aucune décision enregistrée.");
+
+  // --- santé, sources, expériences, coûts
+  var H = D.sante, hbox = document.getElementById("health");
+  var age = H.dernier_battement ? (Date.now() - new Date(H.dernier_battement).getTime()) / 60000 : null;
+  hbox.appendChild(pill(age === null ? "jamais lancé" : age < 20 ? "actif" : "silencieux depuis " + fmt(age / 60, 1) + " h",
+    age !== null && age < 20 ? "ok" : "wait"));
+  var hl = el("p", "note"); hl.textContent = "Dernier cycle : " + (H.dernier_cycle ? H.dernier_cycle.date.replace("T", " ") +
+    " (" + H.dernier_cycle.statut + ")" : "—") + ". Cycles sur 24 h : " +
+    (Object.keys(H.cycles_24h).map(function (k) { return k + " " + H.cycles_24h[k]; }).join(", ") || "aucun") + ".";
+  hbox.appendChild(hl);
+  if (H.erreurs.length) { var ul = el("ul", "note"); H.erreurs.forEach(function (e) {
+    ul.appendChild(el("li", null, e.date.replace("T", " ") + " — " + e.erreur)); }); hbox.appendChild(ul); }
+  var S = D.sources, names = Object.keys(Object.assign({}, S.dernier_passage, S.etat)).sort();
+  table("sources", [{ t: "source" }, { t: "dernier état connu", s: 1 }, { t: "passage (UTC)", d: 1 },
+    { t: "obs. 24 h", n: 1 }], names.map(function (n) {
+    var s = S.etat[n] || "inconnu"; return [n, status(s, /^ok/.test(s) ? "ok" : /indisponible|échec|erreur/.test(s) ? "ko" :
+      /compte requis|désactiv/.test(s) ? "wait" : "neutral"),
+      short(S.dernier_passage[n]), String(S.observations_24h[n] || 0)]; }),
+    "Aucune source n'a encore été interrogée.");
+  var ex = document.getElementById("experiments");
+  [["Expériences (dossier experiments/)", D.experiences], ["Propositions de changement (dossier proposals/)", D.propositions]]
+    .forEach(function (g) { ex.appendChild(el("div", "eyebrow", g[0])); var ul = el("ul", "note");
+      if (!g[1].length) ul.appendChild(el("li", "empty", "aucune"));
+      g[1].forEach(function (f) { ul.appendChild(el("li", null, f.date + " — " + f.nom)); }); ex.appendChild(ul); });
+  var co = document.getElementById("costs"), T = D.tests;
+  co.appendChild(T ? pill(T.passed + " tests réussis, " + T.failed + " échoués", T.failed ? "ko" : "ok")
+    : status("en attente : résultat publié par GitHub Actions à chaque cycle (étape 9)", "neutral"));
+  var cp = el("p", "note");
+  cp.textContent = "Services payants : " + fmt(D.couts.services_payants_eur, 2) + " €. Appels à l'IA aujourd'hui : " +
+    D.couts.appels_ia_aujourdhui + " / " + D.couts.plafond_ia + " (offre gratuite).";
+  co.appendChild(cp);
+})();
+</script>

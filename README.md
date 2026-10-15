@@ -8,7 +8,7 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 - Cahier des charges : [`docs/CAHIER_DES_CHARGES.md`](docs/CAHIER_DES_CHARGES.md)
 - Règles permanentes pour Claude : [`CLAUDE.md`](CLAUDE.md)
 
-## État d'avancement (étape 6 terminée — 15/10/2026)
+## État d'avancement (étape 7 terminée — 15/10/2026)
 
 | Fonction | État |
 |---|---|
@@ -31,11 +31,13 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Cliquet des paliers (×1,5) inscrit dans le journal signé | ✅ testé |
 | Feuille de mission du chercheur (`scripts/research_brief.py`) | ✅ testé |
 | Sources : commentaires Polymarket | ✅ vérifié en réel |
-| Sources : prix crypto, GDELT, RSS, Bluesky | ✅ testées (réponses simulées) — ⚠️ domaines bloqués ici |
+| Sources : prix crypto, RSS (10 flux) | ✅ testées et vérifiées en réel |
+| Sources : GDELT, Bluesky | ✅ testées — GDELT refuse souvent (429, IP partagée) ; Bluesky demande un compte (étape 8) |
 | Gemini (gratuit, optionnel) | ✅ testé — inactif tant qu'il n'y a pas de clé |
 | Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
 | **Stratégie rentable prouvée** | ❌ pas encore — l'arène tranche en réel |
-| Tableau de bord GitHub Pages | ⏳ étape 7 |
+| Tableau de bord (page statique, clair/sombre, téléphone) | ✅ testé, régénéré par le cycle toutes les 30 min |
+| Publication du tableau de bord sur GitHub Pages | ⏳ étape 9 |
 | Verrouillage GitHub (rulesets, `guard`) | ⏳ étape 8 |
 | Exécution automatique toutes les 5 min | ⏳ étape 9 |
 
@@ -61,6 +63,9 @@ Chaque commande, à quoi elle sert, et comment vérifier :
    `data/history/` (environ 1 minute). Ne jamais ajouter `--final-test` sans protocole écrit avant.
 8. (Laboratoire, ≈ 4 minutes) `.venv/bin/python scripts/lab.py` — teste des variantes de paramètres
    en walk-forward. Vérification : un rapport `experiments/lab_*.md` est écrit.
+9. `.venv/bin/python scripts/build_dashboard.py --dev-key` — génère le tableau de bord.
+   Vérification : le message `Tableau de bord : …/site/index.html` s'affiche ; ouvrir ce fichier
+   dans un navigateur. (Le cycle le régénère tout seul toutes les 30 minutes.)
 
 Codes de sortie de `run_simulation.py` : `0` OK / dégradé / faillite, `1` erreur, `2` journal corrompu ou absent.
 

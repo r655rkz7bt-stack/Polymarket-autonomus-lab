@@ -304,6 +304,9 @@ def test_collector_crash_never_stops_the_cycle(env, paths):
     assert report.status == "OK"
     assert report.sources["collecte"].startswith("indisponible")
     assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1
+    # L'état des sources est conservé dans le résumé du cycle (affiché par le tableau de bord).
+    summary = json.loads(deps.db.conn.execute("SELECT summary FROM cycles").fetchone()[0])
+    assert summary["sources"]["collecte"].startswith("indisponible")
 
 
 def test_cycle_executes_a_sell_from_strategy_exits(env, paths, tmp_path):

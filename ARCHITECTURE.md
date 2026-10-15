@@ -287,3 +287,33 @@ adapte les paramètres dans leurs bornes avec un score pénalisé pour les essai
 
 **Défauts corrigés (avec tests de non-régression) :** section arène perdue lors d'une édition
 de settings.yaml (règles désormais obligatoires) ; prix crypto absent entre deux collectes.
+
+## 18. Étape 7 — tableau de bord (15 octobre 2026)
+
+**Ce que c'est :** une page HTML statique et autonome (`site/index.html` + `site/data.json`),
+sans aucune bibliothèque externe, lisible en mode clair, sombre et sur téléphone. Générée par
+`src/polymarket_agent/dashboard.py` à partir du gabarit `dashboard_template.html`.
+
+**Contenu :** solde disponible, capital total estimé, gains réalisés et latents (jamais comptés
+comme liquidités), palier suivant avec barre de progression, champion ; courbe du capital
+principal (survol / flèches du clavier, table des valeurs) ; arène classée avec mini-courbe et
+verdict du moteur d'apprentissage ; positions ouvertes de tous les portefeuilles avec prévision et
+intervalle ; opérations clôturées ; décisions récentes et raisons de refus ; marchés surveillés ;
+état du bot (dernier battement, cycles 24 h, erreurs) ; état de chaque source (dernier résultat
+réel, pas « pas encore ») ; expériences et propositions ; tests ; coûts (0 €, appels IA / plafond).
+
+**Fonctionnement :**
+- `scripts/run_simulation.py` régénère la page après le cycle si elle a plus de 30 minutes
+  (`config/settings.yaml` → `dashboard`). Un échec n'interrompt jamais le cycle ; un journal
+  illisible n'est jamais affiché.
+- `scripts/build_dashboard.py` force une génération (option `--fragment` pour un aperçu).
+- Les journaux sont relus et vérifiés (signatures, chaîne) avant affichage.
+- L'état des sources est maintenant conservé dans le résumé de chaque cycle (table `cycles`).
+
+**Sécurité de l'affichage :** tout texte venu de l'extérieur (questions de marchés, raisons,
+messages d'erreur) est inséré avec `textContent`, jamais comme du HTML ; le JSON embarqué
+échappe `</` ; un test interdit `innerHTML`, `document.write`, `eval` et les scripts externes.
+
+**Pas encore fait :** la publication sur GitHub Pages (étape 9 : le workflow du cycle poussera
+`site/` ; Etienne activera Pages, une étape à la fois). `site/` est ignoré par Git sur `main`.
+

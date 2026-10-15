@@ -11,12 +11,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import time
 from datetime import datetime, timezone
 
 from _common import ROOT, get_key, load_settings_with_arena as load_settings, resolve, setup_logging
 
+from polymarket_agent import dashboard
 from polymarket_agent.http_client import HttpClient
 from polymarket_agent.intel_pipeline import make_collector
 from polymarket_agent.main import CycleDeps, run_cycle
@@ -41,6 +43,21 @@ def acquire_lock(path) -> bool:
     os.write(fd, str(os.getpid()).encode())
     os.close(fd)
     return True
+
+
+def maybe_build_dashboard(settings: dict, key: bytes, db, report) -> str:
+    """Régénère le tableau de bord toutes les 30 min. Un échec n'interrompt jamais le cycle."""
+    if report.exit_code == 2:  # journal corrompu ou absent : rien de fiable à afficher
+        return "non généré (journal illisible)"
+    cfg = settings["dashboard"]
+    now = datetime.now(timezone.utc)
+    if not dashboard.is_due(resolve(ROOT, cfg["output_dir"]), now, float(cfg["every_minutes"])):
+        return "à jour"
+    try:
+        return str(dashboard.build(settings, ROOT, key, db, now).relative_to(ROOT))
+    except Exception as exc:  # noqa: BLE001 - l'affichage ne doit jamais bloquer le trading
+        logging.getLogger(__name__).exception("tableau de bord non généré")
+        return f"échec : {type(exc).__name__}: {exc}"[:200]
 
 
 def one_cycle(settings: dict, key: bytes) -> int:
@@ -72,13 +89,14 @@ def one_cycle(settings: dict, key: bytes) -> int:
                 collector=make_collector(settings, http, db),
             )
             report = run_cycle(deps)
+            site = maybe_build_dashboard(settings, key, db, report)
         finally:
             db.close()
         print(json.dumps({"cycle": report.cycle_id, "statut": report.status,
                           "compteurs": report.counts, "capital": report.summary,
                           "fantomes": report.shadows, "sources": report.sources,
                           "arene": report.arena.get("events", []), "paliers": report.milestones,
-                          "messages": report.messages},
+                          "tableau_de_bord": site, "messages": report.messages},
                          ensure_ascii=False, indent=2))
         return report.exit_code
     finally:
