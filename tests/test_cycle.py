@@ -486,7 +486,10 @@ def test_resting_buys_cannot_reserve_more_than_the_cash(env, paths, tmp_path):
     crown(paths)
     markets = [raw_market(str(i), yes_token=f"y{i}", no_token=f"n{i}", event_id=f"e{i}") for i in range(6)]
     books = {f"y{i}": good_book(f"y{i}") for i in range(6)}
-    run_cycle(make(FakeGamma(markets), FakeClob(books), strategies=[_patient("6")]))
+    settings = load_settings()
+    settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    settings["sante_strategies"] = {"base": 1.0}  # mise entière : la réservation doit refuser un ordre
+    run_cycle(make(FakeGamma(markets), FakeClob(books), settings, [_patient("6")]))
     for name in ("principal", "fantome:naive_favorite_v1.0.0"):
         reserved = sum(D(o["remaining"]) * D(json.loads(o["proposal"])["max_price"])
                        for o in db.open_orders(name))
@@ -523,3 +526,54 @@ def test_orders_of_the_same_portfolio_share_the_book_in_a_cycle(env, paths, tmp_
     market = parse_market(raw_market())
     _execute(deps, portfolio, [market], {"tokA": good_book()}, CycleReport("c1"), "b1", [market])
     assert ledger.state.positions["tokA"].shares == D("10")  # 10 au total (25 % de 40), pas 20
+
+
+
+def test_strategy_health_halves_bets_until_proven_and_suspends_fee_burners(env, paths, tmp_path):
+    """Mise prudente (½ Kelly tant qu'aucune prévision n'est jugée) et suspension d'une stratégie
+    qui ne gagne pas ses frais : elle n'ouvre plus rien, ses sorties continuent."""
+    from polymarket_agent import strategy_health
+    make, db, clock = env
+    deep = {"tokA": make_book("tokA", bids=(("0.89", "5000"),), asks=(("0.90", "100000"),))}
+    full = load_settings()
+    full["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    full["sante_strategies"] = {"base": 1.0}
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob(deep), full))
+    shadow_path = tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl"
+    whole = Ledger.open(shadow_path, KEY, tmp_path / "x.lock").state.positions["tokA"].shares
+    shadow_path.unlink()
+    for f in (tmp_path / "fantome").glob("*"):
+        f.unlink()
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob(deep)))  # réglage du dépôt : ½ Kelly au départ
+    half = Ledger.open(shadow_path, KEY, tmp_path / "x.lock").state.positions["tokA"].shares
+    assert abs(half - whole / 2) <= D("0.02")
+    health = strategy_health.load(db, "naive_favorite_v1.0.0")
+    assert health["prudence"] == 0.5 and health["jugees"] == 0 and health["suspendue"] is None
+
+
+def test_forecast_score_beats_or_trails_the_market(tmp_path):
+    from polymarket_agent import strategy_health
+    db = Database(tmp_path / "db.sqlite")
+    items = [{"token_id": f"t{i}", "market_id": f"m{i}", "p": 0.9, "price": 0.6, "ts": "x"} for i in range(4)]
+    markets = {f"m{i}": raw_market(f"m{i}", f"t{i}", f"n{i}", closed=True,
+                                   outcomePrices=json.dumps(["1", "0"] if i < 3 else ["0", "1"])) for i in range(4)}
+    assert strategy_health.update_outcomes(db, markets.__getitem__, items, NOW) == 4
+    s = strategy_health.score(db, items)
+    assert s["jugees"] == 4 and s["brier"] == round((3 * 0.01 + 0.81) / 4, 4)
+    assert s["avance"] == round(((3 * 0.16 + 0.36) - (3 * 0.01 + 0.81)) / 4, 4)  # 3 bons paris sur 4 à 0,9
+    cfg = strategy_health.config({"sante_strategies": {"min_resolved": 4}})
+    assert strategy_health.prudence(s, cfg) == (1.0 if s["avance"] > 0 else 0.25)
+    assert strategy_health.prudence(dict(s, jugees=1), cfg) == 0.5
+    db.close()
+
+
+def test_fee_burner_is_suspended_only_after_enough_trades():
+    from types import SimpleNamespace
+    from polymarket_agent import strategy_health
+    cfg = strategy_health.config({})
+    burner = SimpleNamespace(realized_pnl=D("-40"), fees_paid=D("60"))   # brut +20, frais 60
+    honest_loser = SimpleNamespace(realized_pnl=D("-40"), fees_paid=D("5"))  # brut −35 : perd avant frais
+    winner = SimpleNamespace(realized_pnl=D("30"), fees_paid=D("60"))
+    assert strategy_health.suspension(burner, 25, cfg) and not strategy_health.suspension(burner, 5, cfg)
+    assert strategy_health.suspension(honest_loser, 25, cfg) is None  # l'élimination hebdomadaire s'en charge
+    assert strategy_health.suspension(winner, 25, cfg) is None

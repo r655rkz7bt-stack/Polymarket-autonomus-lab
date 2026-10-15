@@ -22,8 +22,10 @@ from decimal import Decimal, ROUND_DOWN, ROUND_UP
 from pathlib import Path
 from typing import Callable
 
+from polymarket_agent import strategy_health
 from polymarket_agent.arena import run_arena
 from polymarket_agent.correlation import correlation_group
+from polymarket_agent.data_collector import _due
 from polymarket_agent.execution_simulator import (simulate_buy, simulate_resting_buy,
                                                   simulate_resting_sell, simulate_sell)
 from polymarket_agent.http_client import SourceUnavailable
@@ -32,6 +34,7 @@ from polymarket_agent.market_scanner import scan
 from polymarket_agent.models import MarketInfo, OrderBook
 from polymarket_agent.persistence import Database
 from polymarket_agent.price_features import changes_in_window, price_at
+from polymarket_agent.reporting import read_entries
 from polymarket_agent.safety_controller import (MarketContext, Proposal, RiskLimits,
                                                 assert_simulation_mode, evaluate)
 from polymarket_agent.settlement import settle_positions
@@ -235,6 +238,41 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
     return report
 
 
+def _apply_health(deps: CycleDeps, competitors: dict, report: CycleReport, eliminated) -> set[str]:
+    """Santé des stratégies (strategy_health.py) : prévisions jugées, mise prudente (achats réduits
+    tant que rien n'est prouvé), suspension de celles qui ne gagnent pas leurs frais. Retourne
+    les noms suspendus. Une erreur ici ne bloque jamais le cycle (les stratégies restent telles quelles)."""
+    try:
+        cfg = strategy_health.config(deps.settings)
+        now = deps.now()
+        items = {name: strategy_health.forecasts(read_entries(p.ledger)) for name, p in competitors.items()}
+        if _due(deps.db, "bilan_previsions", 60, now):
+            try:
+                strategy_health.update_outcomes(deps.db, deps.gamma.get_market,
+                                                [f for v in items.values() for f in v], now,
+                                                int(cfg["outcomes_per_hour"]))
+            except Exception as exc:  # noqa: BLE001 - une mesure ne bloque jamais le cycle
+                log.warning("bilan des prévisions non mis à jour : %s", exc)
+            deps.db.set_source_run("bilan_previsions", now)
+        closed = {c["name"]: c["closed_trades"] for c in report.arena.get("classement", [])}
+        suspended = set()
+        for name, portfolio in competitors.items():
+            sc = strategy_health.score(deps.db, items[name])
+            factor = strategy_health.prudence(sc, cfg)
+            reason = None if name in eliminated else strategy_health.suspension(
+                portfolio.ledger.state, closed.get(name, 0), cfg)
+            if reason:
+                suspended.add(name)
+                factor = 0.0
+                log.info("SUSPENDUE %s : %s", name, reason)
+            strategy_health.save(deps.db, name, dict(sc, prudence=factor, suspendue=reason))
+            portfolio.strategies = [Weighted(s, Decimal(str(factor))) for s in portfolio.strategies]
+        return suspended
+    except Exception as exc:  # noqa: BLE001
+        log.exception("santé des stratégies indisponible : %s", exc)
+        return set()
+
+
 def _halt(deps: CycleDeps, report: CycleReport, status: str, message: str) -> CycleReport:
     log.critical("ARRÊT %s : %s", status, message)
     report.status, report.exit_code = status, EXIT_HALT
@@ -310,8 +348,11 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
+    suspended = _apply_health(deps, competitors, report, main.ledger.state.eliminated)
     # Le capital principal suit les meilleures stratégies, chacune pour sa part (arena.allocation).
-    shares = report.arena.get("allocation", {})
+    shares = {n: w for n, w in report.arena.get("allocation", {}).items() if n not in suspended}
+    total_w = sum(shares.values())
+    shares = {n: w / total_w for n, w in shares.items()} if total_w > 0 else {}
     champion = main.ledger.state.champion
     if not shares and champion and champion not in main.ledger.state.eliminated:
         shares = {champion: 1.0}  # champion en titre sans part calculée : il garde tout le capital

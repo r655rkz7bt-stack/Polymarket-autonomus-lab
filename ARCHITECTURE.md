@@ -443,3 +443,12 @@ Proposition : `proposals/2026-10-15_audit_sauvegarde_realisme_cles.md`.
 - Simulateur : 25 % du meilleur niveau, 50 % des suivants ; liquidité partagée entre les ordres d'un
   même portefeuille pendant un cycle (pas entre fantômes, scénarios indépendants).
 - `cycle.yml` transmet 11 clés optionnelles de sources gratuites.
+
+## 24. Santé des stratégies (15 octobre 2026)
+
+`strategy_health.py` (libre) : prévisions des fantômes jugées sur les marchés réglés (table
+`forecast_outcomes`, 15 marchés par heure), score de Brier contre le prix payé, dérive des prix
+depuis l'achat ; mise prudente (½ Kelly tant que moins de 20 prévisions jugées, ×1 si meilleure
+que le marché, ×¼ sinon) appliquée aux fantômes et au principal ; suspension d'une stratégie
+gagnante avant frais mais perdante après (≥ 20 opérations clôturées). Réglages : section
+`sante_strategies` de `config/settings.yaml`.
