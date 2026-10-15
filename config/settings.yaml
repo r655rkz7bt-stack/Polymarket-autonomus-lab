@@ -73,7 +73,7 @@ sources:
 
 dashboard:
   output_dir: site             # page statique publiée sur GitHub Pages (étape 9)
-  every_minutes: 30            # régénérée au plus toutes les 30 minutes
+  every_minutes: 10            # GitHub Pages limite à ~10 publications/heure ; la page se recharge seule
 
 collector:
   markets_per_cycle: 5         # marchés surveillés pour lesquels on cherche des actualités

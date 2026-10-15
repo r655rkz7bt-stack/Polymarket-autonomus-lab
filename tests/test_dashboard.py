@@ -7,6 +7,8 @@ import re
 from datetime import timedelta
 from decimal import Decimal
 
+import yaml
+
 from conftest import KEY, NOW, ROOT, buy, make_book
 from polymarket_agent import dashboard
 from polymarket_agent.ledger import Ledger
@@ -106,3 +108,13 @@ def test_downsample_keeps_last_point():
     curve = [(f"t{i}", Decimal(i)) for i in range(1000)]
     out = dashboard._downsample(curve, 50)
     assert len(out) == 50 and out[-1] == ["t999", 999.0] and out[0] == ["t0", 0.0]
+
+
+def test_page_refreshes_itself_from_its_own_data_file():
+    """Actualisation automatique : la page relit data.json (même site, sans cache) et se recharge
+    seulement si le cycle a publié de nouvelles données."""
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert 'fetch("data.json?t="' in template and 'cache: "no-store"' in template
+    assert "fresh.genere_le !== D.genere_le" in template and "document.hidden" in template
+    settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
+    assert 6 <= settings["dashboard"]["every_minutes"] <= 30  # GitHub Pages : ~10 publications par heure au plus

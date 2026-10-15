@@ -169,6 +169,27 @@ code { font-family: var(--mono); font-size: 0.85em; }
   // --- en-tête et tuiles
   var C = D.capital;
   document.getElementById("generated").textContent = "Mis à jour le " + new Date(D.genere_le).toLocaleString("fr-FR");
+  // Actualisation automatique : la page indique l'âge des données et se recharge dès que le cycle
+  // en publie de nouvelles (vérification chaque minute, en pause quand l'onglet est caché).
+  (function live() {
+    var box = document.getElementById("generated"), generated = new Date(D.genere_le);
+    function age() {
+      var min = Math.max(0, Math.round((Date.now() - generated.getTime()) / 60000));
+      box.textContent = "Mis à jour le " + generated.toLocaleString("fr-FR") + " (" +
+        (min < 1 ? "à l'instant" : "il y a " + (min < 60 ? min + " min" : Math.floor(min / 60) + " h " + (min % 60) + " min")) +
+        ") · actualisation automatique";
+    }
+    function check() {
+      if (document.hidden || !window.fetch || location.protocol === "file:") return;
+      fetch("data.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (fresh) { if (fresh && fresh.genere_le && fresh.genere_le !== D.genere_le) location.reload(); })
+        .catch(function () {});
+    }
+    age();
+    setInterval(age, 30000);
+    setInterval(check, 60000);
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) { age(); check(); } });
+  })();
   var realized = Number(C.capital_realise), target = Number(C.palier_suivant), initial = D.capital_initial;
   var tiles = [
     ["Solde disponible", fmt(C.solde_disponible, 2), "liquidités, hors positions"],
