@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from datetime import datetime
 
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
@@ -69,15 +70,18 @@ def pick_model(listing: dict) -> str | None:
 # Refus ou lenteur qui justifient d'essayer un autre modèle : retiré (404), saturé (503), quota du
 # modèle (429), trop lent (Timeout, constaté le 15/10/2026 avec gemini-3.7-flash).
 SWITCH_ON = ("HTTP 404", "HTTP 503", "HTTP 429", "Timeout")
-MAX_ALTERNATIVES = 2  # au pire 3 modèles × délai d'attente : le cycle reste sous 5 minutes
+# Toute la liste peut être essayée (l'offre gratuite n'ouvre pas tous les modèles : 429/503 sur
+# les plus récents le 15/10/2026), dans une limite de temps qui garde le cycle sous 5 minutes.
+MAX_ALTERNATIVES = 10
+TIME_BUDGET_SECONDS = 75
 
 
 class GeminiClassifier:
     name = "gemini"
 
-    def __init__(self, http: HttpClient, model: str, max_calls_per_day: int, db=None):
+    def __init__(self, http: HttpClient, model: str, max_calls_per_day: int, db=None, clock=time.monotonic):
         self.http, self.model, self.max_calls = http, model, int(max_calls_per_day)
-        self.db = db
+        self.db, self._clock = db, clock
         self._key = os.environ.get("GEMINI_API_KEY", "")
 
     @property
@@ -91,7 +95,11 @@ class GeminiClassifier:
     def _try_alternatives(self, failed: str, body: dict, first_error: SourceUnavailable):
         """Essaie les meilleurs autres modèles ; retient le premier qui répond."""
         errors = [f"{failed} : {first_error}"]
+        deadline = self._clock() + TIME_BUDGET_SECONDS
         for candidate in [m for m in rank_models(self.http.get_json(API)) if m != failed][:MAX_ALTERNATIVES]:
+            if self._clock() > deadline:
+                errors.append("temps écoulé")
+                break
             try:
                 raw = self.http.post_json(f"{API}/{candidate}:generateContent", body)
             except SourceUnavailable as exc:
@@ -102,7 +110,9 @@ class GeminiClassifier:
             if self.db:
                 self.db.set_value(MODEL_KEY, candidate)
             return raw
-        raise SourceUnavailable("aucun modèle Gemini disponible (" + " | ".join(e[-60:] for e in errors) + ")")
+        tried = ", ".join(e.split(" : ")[0] for e in errors)
+        raise SourceUnavailable(f"aucun modèle Gemini disponible ({len(errors)} essayés : {tried} ; "
+                                f"dernier refus : {errors[-1][-80:]})")
 
     def classify(self, question: str, observations: list[Observation], now: datetime) -> dict[str, dict]:
         """{external_id: {"kind", "stance", "confidence"}} ; {} si indisponible ou hors budget."""
