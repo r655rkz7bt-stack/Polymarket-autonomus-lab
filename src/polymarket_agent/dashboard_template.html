@@ -357,7 +357,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   document.getElementById("headline").textContent = headline;
   var cyclesOk = (H.cycles_24h || {}).OK || 0, cyclesAll = Object.keys(H.cycles_24h || {}).reduce(function (a, k) {
     return a + H.cycles_24h[k]; }, 0);
-  var srcs = D.sources ? D.sources.etat : {}, srcNames = Object.keys(srcs).filter(function (n) { return n !== "justesse_gemini"; });
+  var srcs = D.sources ? D.sources.etat : {}, srcNames = Object.keys(srcs).filter(function (n) { return n !== "justesse_gemini" && n !== "sources_resolution"; });
   var srcOk = srcNames.filter(function (n) { return /^ok/.test(srcs[n]); }).length;
   [
     "Solde disponible " + fmt(cash, 2) + ", investi " + fmt(invested, 2) + " sur " + C.positions_ouvertes + " position(s).",
@@ -417,6 +417,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var name = (n + " ").padEnd(22, "."), msg = s.length > 70 ? s.slice(0, 69) + "…" : s;
       line([["  " + mark + " ", "w"], [name + " "], [msg, /^ok/.test(s) ? "p" : ""], [obs ? "   " + obs + " obs/24h" : ""]]); });
     if (srcs.justesse_gemini) { line([["$ ", "p"], ["etat --justesse-gemini", "w"]]); line([["  " + srcs.justesse_gemini]]); }
+    if (srcs.sources_resolution) { line([["$ ", "p"], ["etat --sources-de-resolution", "w"]]); line([["  " + srcs.sources_resolution]]); }
     if (D.audit) { line([["$ ", "p"], ["audit --executions", "w"]]);
       line([["  vérifiées " + fmt(D.audit.verifiees, 0) + " · non vérifiables " + fmt(D.audit.non_verifiables, 0) +
         " · anomalies " + D.audit.anomalies + " · dernier passage " + short(D.audit.derniere)]]);

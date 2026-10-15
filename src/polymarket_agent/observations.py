@@ -26,6 +26,12 @@ SOURCE_RELIABILITY = {
     "polymarket_comments": 0.2,
     "bluesky": 0.25,
     "x_api": 0.25,
+    "meteo_metar": 0.97,    # relevés officiels NOAA de la station qui tranche le marché
+    "mlb_stats": 0.97,      # scores publiés par la ligue elle-même
+    "nhl_stats": 0.97,
+    "football_data": 0.9,
+    "odds_api": 0.8,        # probabilités des bookmakers : un avis chiffré, pas un fait
+    "guardian": 0.75,
 }
 OFFICIAL_DOMAINS = (".gov", ".gouv.fr", "federalreserve.gov", "ecb.europa.eu", "europa.eu",
                     "who.int", "un.org", "uefa.com", "fifa.com", "nba.com", "nfl.com", "sec.gov")

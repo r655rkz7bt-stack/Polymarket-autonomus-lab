@@ -44,6 +44,9 @@ class MarketInfo:
     tick_size: Decimal
     neg_risk: bool
     issues: list[str] = field(default_factory=list)
+    # Ce qui tranchera le marché (Gamma : resolutionSource, description) ; cf. resolution_sources.py.
+    resolution_source: str = ""
+    description: str = ""
     # Caractéristiques passées de l'issue n°0 (remplies par le cycle, None si inconnues).
     yes_price_6h_ago: float | None = None
     yes_price_1h_ago: float | None = None

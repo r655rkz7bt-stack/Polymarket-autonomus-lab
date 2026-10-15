@@ -32,8 +32,8 @@ class FakeHttp:
             headers = {}
         self.session = S()
 
-    def get_json(self, url, params=None):
-        self.calls.append((url, params, dict(self.session.headers)))
+    def get_json(self, url, params=None, headers=None):
+        self.calls.append((url, params, dict(self.session.headers) | (headers or {})))
         for prefix in self.down:
             if url.startswith(prefix):
                 raise SourceUnavailable(f"{url} en panne (test)")
@@ -591,3 +591,20 @@ def test_gemini_accuracy_is_measured_on_resolved_markets(tmp_path):
     # Un marché non résolu n'est réinterrogé qu'après le délai.
     assert stance_eval.update_outcomes(db, markets.__getitem__, NOW + timedelta(hours=1)) == 0
     db.close()
+
+
+def test_matching_is_precise_title_needed_rare_words_weigh_more_and_capped():
+    """Constaté le 15/10 : un même article se retrouvait sur des dizaines de marchés. Il faut un
+    mot-clé dans le titre, et au plus 5 marchés par article, les plus pertinents."""
+    from polymarket_agent.observations import Observation
+    from polymarket_agent.social_intelligence import match
+    markets = [parse_market(raw_market(f"b{i}", f"y{i}", f"n{i}", question=f"Will Bitcoin reach ${70 + i},000 by Friday?"))
+               for i in range(12)]
+    markets.append(parse_market(raw_market("rm", "yr", "nr", question="Will Real Madrid beat Bayern Munich?")))
+    article = Observation("rss", "x1", NOW, NOW, "https://bbc.co.uk/x", "Bitcoin rally: Real Madrid fans buy crypto",
+                          "Bayern Munich coach comments", domain="bbc.co.uk").finalize()
+    body_only = Observation("rss", "x2", NOW, NOW, "https://bbc.co.uk/y", "Markets wrap",
+                            "Real Madrid and Bayern Munich drew", domain="bbc.co.uk").finalize()
+    match([article, body_only], markets)
+    assert len(article.market_ids) <= 5 and article.market_ids[0] == "rm"  # le plus distinctif d'abord
+    assert body_only.market_ids == []  # aucun mot-clé dans le titre

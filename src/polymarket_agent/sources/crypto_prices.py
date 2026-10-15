@@ -1,13 +1,17 @@
-"""Source : prix crypto publics (Coinbase, repli Kraken), sans clé.
+"""Source : prix crypto publics (Binance, repli Coinbase puis Kraken), sans clé.
 
-Endpoints (documentation publique des deux plateformes) :
+Binance d'abord (15/10/2026) : c'est la SOURCE DE RÉSOLUTION des marchés crypto « au-dessus de /
+en hausse ou en baisse » de Polymarket (69 marchés sur 500 dans l'inventaire du 15/10/2026).
+  Binance  : GET https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=169
+             (point d'accès « données de marché seulement » documenté par Binance)
+             → [[ouverture ms, ouv, haut, bas, clôture, volume, fermeture ms, ...], ...] du plus
+             ancien au plus récent. Vérifié par un appel réel le 15/10/2026 (accessibilité depuis
+             les serveurs de GitHub à confirmer au premier cycle ; sinon repli automatique).
+Endpoints de repli (documentation publique des deux plateformes) :
   Coinbase : GET https://api.exchange.coinbase.com/products/{BTC-USD}/candles?granularity=3600
              → [[temps, bas, haut, ouverture, clôture, volume], ...] du plus récent au plus ancien.
   Kraken   : GET https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=60
              → {"result": {"XXBTZUSD": [[temps, ouv, haut, bas, clôt, vwap, vol, n], ...]}}.
-LIMITE : domaines bloqués dans l'environnement de construction (15/10/2026) ; formats à
-revérifier par un appel réel dès que les domaines sont autorisés. Binance non utilisé
-(souvent bloqué depuis les serveurs américains de GitHub).
 """
 
 from __future__ import annotations
@@ -19,6 +23,7 @@ from datetime import datetime, timezone
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.observations import Observation
 
+BINANCE = {"btc": "BTCUSDT", "eth": "ETHUSDT", "sol": "SOLUSDT", "xrp": "XRPUSDT", "doge": "DOGEUSDT"}
 COINBASE = {"btc": "BTC-USD", "eth": "ETH-USD", "sol": "SOL-USD", "xrp": "XRP-USD", "doge": "DOGE-USD"}
 KRAKEN = {"btc": "XBTUSD", "eth": "ETHUSD", "sol": "SOLUSD", "xrp": "XRPUSD", "doge": "XDGUSD"}
 
@@ -48,12 +53,20 @@ class CryptoPricesSource:
 
     def quote(self, asset: str) -> CryptoQuote:
         errors = []
-        for fetch in (self._coinbase, self._kraken):
+        for fetch in (self._binance, self._coinbase, self._kraken):
             try:
                 return fetch(asset)
             except (SourceUnavailable, ValueError, KeyError, TypeError, IndexError) as exc:
                 errors.append(f"{fetch.__name__.strip('_')}: {exc}")
         raise SourceUnavailable(f"prix {asset} indisponible ({'; '.join(errors)})")
+
+    def _binance(self, asset: str) -> CryptoQuote:
+        rows = self.http.get_json("https://data-api.binance.vision/api/v3/klines",
+                                  params={"symbol": BINANCE[asset], "interval": "1h", "limit": 169})
+        rows = sorted((r for r in rows if isinstance(r, list) and len(r) >= 5), key=lambda r: r[0])
+        closes = [float(r[4]) for r in rows][-169:]
+        return CryptoQuote(asset, closes[-1], _vol(closes),
+                           datetime.fromtimestamp(rows[-1][0] / 1000, tz=timezone.utc), "binance")
 
     def _coinbase(self, asset: str) -> CryptoQuote:
         rows = self.http.get_json(f"https://api.exchange.coinbase.com/products/{COINBASE[asset]}/candles",

@@ -30,7 +30,9 @@ class HttpClient:
         self._last_call = 0.0
 
     def request_json(self, method: str, url: str, *, params: dict | None = None,
-                     json_body: Any = None) -> Any:
+                     json_body: Any = None, headers: dict | None = None) -> Any:
+        """`headers` : en-têtes de CETTE requête seulement (une clé d'API ne doit jamais partir
+        vers un autre site : ne pas les mettre dans la session partagée)."""
         last_error = "inconnue"
         for attempt in range(self.max_retries + 1):
             wait = self.min_interval - (time.monotonic() - self._last_call)
@@ -39,7 +41,7 @@ class HttpClient:
             self._last_call = time.monotonic()
             try:
                 response = self.session.request(method, url, params=params, json=json_body,
-                                                timeout=self.timeout)
+                                                headers=headers, timeout=self.timeout)
             except requests.RequestException as exc:
                 last_error = f"{type(exc).__name__}"
             else:
@@ -62,8 +64,8 @@ class HttpClient:
                 self._sleep(delay)
         raise SourceUnavailable(f"{method} {url} : échec après {self.max_retries + 1} essais ({last_error})")
 
-    def get_json(self, url: str, params: dict | None = None) -> Any:
-        return self.request_json("GET", url, params=params)
+    def get_json(self, url: str, params: dict | None = None, headers: dict | None = None) -> Any:
+        return self.request_json("GET", url, params=params, headers=headers)
 
     def post_json(self, url: str, body: Any) -> Any:
         return self.request_json("POST", url, json_body=body)
