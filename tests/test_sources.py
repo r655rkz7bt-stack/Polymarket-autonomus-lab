@@ -359,3 +359,35 @@ def test_regression_slow_gemini_model_is_skipped(monkeypatch, tmp_path):
     slow = with_retries(base, 0, 40)
     assert (slow.timeout, slow.max_retries, base.timeout, base.max_retries) == (40.0, 0, 15, 3)
     db.close()
+
+
+def test_regression_free_tier_model_found_far_down_the_list(monkeypatch, tmp_path):
+    """15/10/2026 : les 3 premiers modèles refusaient (503, 429, 503) ; il faut continuer la
+    liste, dans une limite de temps."""
+    db = Database(tmp_path / "db.sqlite")
+    monkeypatch.setenv("GEMINI_API_KEY", "fausse-cle-de-test")
+    api = "https://generativelanguage.googleapis.com/v1beta/models"
+    many = {"models": [{"name": f"models/gemini-{v}-flash", "supportedGenerationMethods": ["generateContent"]}
+                       for v in ("3.8", "3.7", "3.6", "3.5", "3.0")]}
+    answer = [{"id": 0, "kind": "opinion", "stance": "oui", "confidence": 0.5}]
+    http = FakeHttp({f"{api}/gemini-3.0-flash:": {"candidates": [{"content": {"parts": [{"text": json.dumps(answer)}]}}]},
+                     api: many}, down=tuple(f"{api}/gemini-{v}-flash:" for v in ("3.8", "3.7", "3.6", "3.5")))
+    original = http.get_json
+
+    def get_json(url, params=None):
+        try:
+            return original(url, params)
+        except SourceUnavailable as exc:
+            raise SourceUnavailable(f"{exc} (HTTP 429)") from None
+    http.get_json = get_json
+    http.post_json = lambda url, body: get_json(url, body)
+    out = GeminiClassifier(http, "gemini-3.8-flash", 10, db).classify("Q ?", [obs("a"), obs("b")], NOW)
+    assert out and db.get_value("gemini_model") == "gemini-3.0-flash"
+    # Limite de temps : passé le délai, on abandonne au lieu d'allonger le cycle.
+    db2 = Database(tmp_path / "db2.sqlite")
+    ticks = iter(range(0, 1000, 50))
+    slow = GeminiClassifier(http, "gemini-3.8-flash", 10, db2, clock=lambda: next(ticks))
+    with pytest.raises(SourceUnavailable, match="temps écoulé"):
+        slow.classify("Q ?", [obs("a"), obs("b")], NOW)
+    db.close()
+    db2.close()
