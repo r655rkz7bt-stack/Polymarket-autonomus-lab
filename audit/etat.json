@@ -1,0 +1,19 @@
+{
+ "dernier_seq": {
+  "principal": 93,
+  "fantome:calibration_patiente_v1.0.0": 38,
+  "fantome:calibration_v2.0.0": 87,
+  "fantome:cross_market_v1.0.0": 87,
+  "fantome:crypto_threshold_v1.0.0": 95,
+  "fantome:information_advantage_v1.0.0": 85,
+  "fantome:market_structure_v1.0.0": 60,
+  "fantome:naive_favorite_v1.0.0": -1,
+  "fantome:news_momentum_v1.0.0": -1,
+  "fantome:reversion_v1.0.0": -1,
+  "fantome:social_sentiment_v1.0.0": -1
+ },
+ "verifiees": 60,
+ "non_verifiables": 0,
+ "anomalies": [],
+ "derniere_execution": "2026-10-15T19:47:11+00:00"
+}
