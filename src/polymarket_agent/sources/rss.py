@@ -19,8 +19,14 @@ from polymarket_agent.sources._util import domain_of, parse_date
 ATOM = "{http://www.w3.org/2005/Atom}"
 
 
-def parse_feed(xml_text: str) -> list[dict]:
-    """Retourne [{title, link, summary, published}] pour RSS 2.0 et Atom."""
+def parse_feed(xml_text: str | bytes) -> list[dict]:
+    """Retourne [{title, link, summary, published}] pour RSS 2.0 et Atom.
+
+    Accepte des octets bruts (préférable : l'encodage déclaré dans le XML et un éventuel
+    BOM UTF-8 sont alors gérés correctement, cf. flux de la Fed).
+    """
+    if isinstance(xml_text, str):
+        xml_text = xml_text.lstrip("\ufeff").lstrip("ï»¿")
     try:
         root = ET.fromstring(xml_text)
     except ET.ParseError as exc:
@@ -59,7 +65,7 @@ class RssSource:
                 response = self.session.get(url, timeout=self.timeout)
                 if response.status_code != 200:
                     raise SourceUnavailable(f"HTTP {response.status_code}")
-                items = parse_feed(response.text)
+                items = parse_feed(response.content)  # octets : BOM et encodage gérés par le parseur
             except (requests.RequestException, SourceUnavailable, ValueError) as exc:
                 self.failures[url] = f"{type(exc).__name__}: {exc}"[:200]
                 continue

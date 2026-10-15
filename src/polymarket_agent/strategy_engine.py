@@ -420,7 +420,7 @@ class CryptoThresholdStrategy:
                 prob_low=low_d, prob_high=Decimal(str(round(min(s_high, 0.999), 6))),
                 max_price=max_price, shares=shares, net_edge=low_d - cost_ps,
                 sources=("polymarket_clob", f"crypto_prices:{quote.source}"),
-                uncertainty=f"volatilité ×0,8 à ×1,25 ; prix {quote.price:.2f}, σ horaire {quote.hourly_vol:.4%}",
+                uncertainty=f"volatilité ×0,75 à ×1,5 ; prix {quote.price:.2f}, σ horaire {quote.hourly_vol:.4%}",
                 invalidation="saut de prix, source de résolution différente, question mal comprise",
                 horizon_hours=Decimal(str(round(hours, 2))),
                 strategy_id=self.strategy_id, strategy_version=self.version)))

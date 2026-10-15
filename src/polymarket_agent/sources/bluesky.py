@@ -13,7 +13,7 @@ from __future__ import annotations
 import os
 from datetime import datetime
 
-from polymarket_agent.http_client import HttpClient
+from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.observations import Observation
 from polymarket_agent.sources._util import parse_date
 
@@ -28,7 +28,9 @@ class BlueskySource:
     def _base_and_headers(self) -> tuple[str, dict]:
         handle, password = os.environ.get("BLUESKY_HANDLE"), os.environ.get("BLUESKY_APP_PASSWORD")
         if not (handle and password):
-            return "https://public.api.bsky.app", {}
+            # Vérifié le 15/10/2026 : la recherche publique sans compte renvoie 403.
+            raise SourceUnavailable("compte Bluesky requis (BLUESKY_HANDLE et BLUESKY_APP_PASSWORD) : "
+                                    "la recherche sans compte est refusée (403)")
         if self._token is None:
             session = self.http.post_json("https://bsky.social/xrpc/com.atproto.server.createSession",
                                           {"identifier": handle, "password": password})

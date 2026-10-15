@@ -5,8 +5,9 @@ volatilité réalisée horaire sur ~7 jours, marche aléatoire log-normale sans 
   - « au-dessus / en dessous de K à l'échéance » : P = Φ(∓ ln(K/S) / (σ√τ)) ;
   - « atteindre / descendre à K avant l'échéance » (barrière) : P = 2 × P(finir au-delà),
     principe de réflexion, plafonné à 1.
-Incertitude de modèle : on recalcule avec σ × 0,8 et σ × 1,25 (les queues épaisses de la
-crypto) ; l'intervalle va du plus petit au plus grand des trois résultats.
+Incertitude de modèle : on recalcule avec σ × 0,75 et σ × 1,5. Constaté le 15/10/2026 sur
+48 marchés réels : le modèle log-normal sous-estime les queues (krach soudain) ; le marché
+les paie plus cher. L'intervalle va du plus petit au plus grand des trois résultats.
 LIMITES : marchés « entre X et Y » ignorés ; la source de résolution (souvent une bougie
 Binance à 12 h ET) peut différer légèrement de Coinbase/Kraken ; pas de saut de prix modélisé.
 """
@@ -72,7 +73,7 @@ def probability(question: ThresholdQuestion, spot: float, hourly_vol: float, hou
 def probability_band(question: ThresholdQuestion, spot: float, hourly_vol: float,
                      hours: float) -> tuple[float, float, float] | None:
     """(bas, estimée, haut) en faisant varier la volatilité (incertitude de modèle)."""
-    values = [probability(question, spot, hourly_vol * k, hours) for k in (0.8, 1.0, 1.25)]
+    values = [probability(question, spot, hourly_vol * k, hours) for k in (0.75, 1.0, 1.5)]
     if any(v is None for v in values):
         return None
     clip = lambda v: min(max(v, 0.001), 0.999)

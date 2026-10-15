@@ -241,8 +241,14 @@ n'est pas un signal ; une source en panne attend sa fréquence normale et ne blo
 analyse toujours marquée partielle (X absent). Une date de publication dans le futur est
 signalée comme suspecte.
 
-**Limite au 15/10/2026 :** depuis l'environnement Claude Code, seules les API Polymarket sont
-joignables. Coinbase, Kraken, GDELT, Bluesky et les flux RSS renvoient 403 : formats codés
-d'après leur documentation publique et testés sur des réponses simulées, à vérifier par un vrai
-appel dès que les domaines sont autorisés. En production (GitHub Actions), pas de blocage attendu.
-Gemini s'active avec la clé `GEMINI_API_KEY` (environnement `production`, étape 8).
+**Vérifié par appels réels le 15/10/2026** (après ouverture des domaines par Etienne) :
+- Coinbase : bougies horaires conformes, 5 actifs OK (BTC, ETH, SOL, XRP, DOGE) ; Kraken conforme.
+- RSS : 9 flux sur 10 OK (≈ 225 articles). Corrigé : BOM UTF-8 du flux de la Fed (test de
+  non-régression) ; France Info a déménagé sur `www.franceinfo.fr` (domaine à autoriser).
+- GDELT : refuse systématiquement (429, « une requête toutes les 5 s ») depuis l'adresse IP
+  partagée du proxy. Source conservée « au mieux » : en cas de refus, elle attend 15 min.
+- Bluesky : la recherche sans compte est refusée (403). Compte optionnel nécessaire
+  (`BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, dans l'environnement `production`).
+- `crypto_threshold` : les 48 questions crypto du moment sont toutes correctement comprises ;
+  le modèle colle aux prix du marché, mais sous-estime les queues : intervalle élargi (σ × 0,75 à × 1,5).
+- Gemini s'active avec la clé `GEMINI_API_KEY` (environnement `production`, étape 8).

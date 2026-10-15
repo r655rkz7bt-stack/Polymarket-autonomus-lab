@@ -72,11 +72,17 @@ def test_comments_gdelt_bluesky_crypto_parsing():
                                                       "seendate": "20261014T100000Z", "domain": "bbc.co.uk"}]}})
     art = GdeltSource(gdelt, sleep=lambda s: None).fetch(["Real Madrid"], NOW)[0]
     assert art.published_at.hour == 10 and art.domain == "bbc.co.uk" and art.delay_seconds > 0
-    bsky = FakeHttp({"https://public.api.bsky.app": {"posts": [{"uri": "at://x", "author": {"handle": "a.bsky.social"},
+    import os
+    os.environ["BLUESKY_HANDLE"], os.environ["BLUESKY_APP_PASSWORD"] = "test.bsky.social", "mot-de-passe-test"
+    bsky = FakeHttp({"https://bsky.social/xrpc/com.atproto.server.createSession": {"accessJwt": "jwt"},
+                     "https://bsky.social/xrpc/app.bsky.feed.searchPosts": {"posts": [{"uri": "at://x", "author": {"handle": "a.bsky.social"},
                      "record": {"text": "Rumor: deal reportedly close", "createdAt": "2026-10-15T08:00:00Z"},
                      "likeCount": 9999, "repostCount": 5000}]}})
     post = BlueskySource(bsky).fetch(["deal"], NOW)[0]
     assert post.kind == "rumeur" and post.engagement == 14999
+    del os.environ["BLUESKY_HANDLE"], os.environ["BLUESKY_APP_PASSWORD"]
+    with pytest.raises(SourceUnavailable, match="compte Bluesky requis"):
+        BlueskySource(bsky).fetch(["deal"], NOW)
     candles = [[1792000000 + 3600 * i, 0, 0, 0, 80000 * (1.001 ** (i % 5)), 0] for i in range(170)]
     coin = FakeHttp({"https://api.exchange.coinbase.com": candles[::-1]})
     q = CryptoPricesSource(coin).quote("btc")
@@ -172,3 +178,10 @@ def test_gemini_disabled_without_key_and_output_strictly_validated(monkeypatch, 
 def test_publication_date_in_the_future_is_flagged():
     future = Observation("gdelt", "x", NOW + timedelta(hours=8), NOW, "https://a.com", "t", "").finalize()
     assert future.data.get("horodatage_suspect") is True and future.uncertainty == "élevée"
+
+
+def test_regression_rss_with_utf8_bom_is_parsed():
+    """Défaut du 15/10/2026 : le flux de la Fed commence par un BOM UTF-8 et était rejeté."""
+    raw = "\ufeff".encode("utf-8") + RSS.encode("utf-8")
+    assert parse_feed(raw)[0]["title"] == "Fed announces rate decision"
+    assert parse_feed(raw.decode("latin-1"))[0]["title"] == "Fed announces rate decision"

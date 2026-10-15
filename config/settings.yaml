@@ -60,7 +60,7 @@ sources:
       - {name: ESPN, url: "https://www.espn.com/espn/rss/news", language: en}
       - {name: CoinDesk, url: "https://www.coindesk.com/arc/outboundfeeds/rss/", language: en}
       - {name: Le Monde, url: "https://www.lemonde.fr/rss/une.xml", language: fr}
-      - {name: France Info, url: "https://www.francetvinfo.fr/titres.rss", language: fr}
+      - {name: France Info, url: "https://www.franceinfo.fr/titres.rss", language: fr}   # nouvelle adresse (oct. 2026)
       - {name: Federal Reserve, url: "https://www.federalreserve.gov/feeds/press_all.xml", official: true, language: en}
       - {name: BCE, url: "https://www.ecb.europa.eu/rss/press.html", official: true, language: en}
       - {name: Maison-Blanche, url: "https://www.whitehouse.gov/news/feed/", official: true, language: en}
