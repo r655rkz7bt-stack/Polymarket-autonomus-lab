@@ -551,3 +551,20 @@ def test_rss_status_names_the_failed_feeds_and_uses_the_full_user_agent(tmp_path
     import inspect
     from polymarket_agent import data_collector
     assert 'settings.get("http", {}).get("user_agent"' in inspect.getsource(data_collector.collect)
+
+
+def test_failed_rss_feed_reason_is_logged(caplog):
+    """Constaté le 15/10 : ESPN et FDA échouent depuis GitHub mais répondent ailleurs. La raison
+    exacte doit apparaître dans le journal du cycle pour décider (blocage, délai, format)."""
+    import logging
+    from polymarket_agent.sources.rss import RssSource
+
+    class Session:
+        headers = {}
+
+        def get(self, url, timeout):
+            return _Resp(b"Access Denied", 403) if "espn" in url else _Resp(RSS.encode())
+    feeds = [{"name": "ESPN", "url": "https://www.espn.com/espn/rss/news"}, {"name": "BBC", "url": "https://bbc.co.uk/rss"}]
+    with caplog.at_level(logging.WARNING):
+        RssSource(feeds, session=Session()).fetch(NOW)
+    assert "flux RSS en échec ESPN (https://www.espn.com/espn/rss/news) : SourceUnavailable: HTTP 403" in caplog.text
