@@ -21,6 +21,8 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html { overflow-x: hidden; }
+@supports (overflow: clip) { html { overflow-x: clip; } }
 body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); margin: 0;
   -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
@@ -82,7 +84,9 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
 .meter-row b { color: var(--ink); font-weight: 600; }
 
 /* --- organisme : un cœur anatomique en points, ses constantes tout autour (planche anatomique) */
-.organism { position: relative; overflow: hidden; }
+.organism { position: relative; overflow: hidden; margin-inline: calc(50% - 50vw); border-radius: 0;
+  border-left: 0; border-right: 0; padding: 22px 0; }
+.organism .inner { max-width: 1180px; margin: 0 auto; padding: 0 max(36px, env(safe-area-inset-right, 0px)) 0 max(36px, env(safe-area-inset-left, 0px)); }
 .stage { position: relative; width: 100%; height: 640px; margin-top: 6px; }
 .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .lab { position: absolute; font-family: var(--mono); max-width: 240px; pointer-events: none; }
@@ -211,14 +215,16 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   </section>
 
   <section id="organisme" class="card organism" aria-label="Organisme : le cycle qui bat">
-    <div class="head"><h2>Organisme</h2><span class="kicker">un battement = un cycle de 5 min</span></div>
+    <div class="inner"><div class="head"><h2>Organisme</h2><span class="kicker">un battement = un cycle de 5 min</span></div></div>
     <div class="stage" id="stage"><canvas id="heart" role="img" aria-label="Cœur du système"></canvas><div id="labels"></div></div>
+    <div class="inner">
     <div class="pulse">
       <div class="head" style="margin-bottom:8px"><span class="kicker">Pouls · 96 derniers cycles (durée en secondes)</span>
         <span class="kicker" id="pulse-legend">● réussi · ○ en erreur</span></div>
       <div class="chart" id="pulse"></div>
     </div>
     <div class="console" id="console" aria-label="Constantes du système"></div>
+    </div>
   </section>
 
   <section id="capital" class="card">
@@ -433,16 +439,20 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       (target - Math.min(target / 1.5, initial) || 1))) * 100, 0) + " % vers " + fmt(target, 0), s: "capital réalisé " + fmt(realized, 0), m: 1 }
   ];
 
-  // Le cœur : un cœur humain simplifié (ventricules, oreillettes, aorte, veine cave, artère
-  // pulmonaire), dessiné en points. Le relief vient d'une carte de hauteurs éclairée en haut à
-  // gauche : plus la surface fait face à la lumière, plus le point est gros et clair. Il bat en
-  // « lub-dub » : les oreillettes d'abord, puis les ventricules qui se contractent (jamais
-  // d'expansion : les légendes autour ne sont jamais touchées).
+  // Le cœur : un cœur humain simplifié (deux ventricules, deux oreillettes, aorte, veine cave,
+  // artère pulmonaire), dessiné en points comme une gravure au pointillé : relief doux (formes
+  // fondues les unes dans les autres, lumière en haut à gauche, grain léger). Il bat selon un
+  // vrai cycle cardiaque : le nœud sinusal déclenche les oreillettes (la droite un peu avant la
+  // gauche), puis les deux ventricules se contractent de la pointe vers la base et chassent le
+  // sang dans l'aorte et l'artère pulmonaire (une onde les parcourt), puis tout se relâche.
+  // Les points ne bougent jamais : seule leur taille change, et c'est cette variation de taille
+  // (donc de clarté) qui dessine le mouvement. Les légendes restent hors de portée.
   (function heart() {
     var stage = document.getElementById("stage"), cv = document.getElementById("heart"),
       layer = document.getElementById("labels"), ctx = cv.getContext && cv.getContext("2d");
     if (!ctx) return;
     // [type, région, profondeur, ...] e : ellipse (cx, cy, rx, ry, rotation°) ; c : tube (x1, y1, x2, y2, rayon)
+    // Région « v » : les ventricules, séparés en gauche / droit par le sillon interventriculaire.
     var PRIM = [
       ["e", "v", 1.0, 0.03, 0.15, 0.31, 0.34, -20],
       ["e", "v", 0.94, 0.14, 0.11, 0.19, 0.25, -12],
@@ -461,8 +471,10 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var GROOVE = [];  // sillon interventriculaire (courbe de Bézier échantillonnée)
     for (var g = 0; g <= 24; g++) { var t = g / 24, it = 1 - t;
       GROOVE.push([it * it * 0.07 + 2 * it * t * 0.02 + t * t * -0.15, it * it * -0.05 + 2 * it * t * 0.22 + t * t * 0.45]); }
+    // Maximum adouci : les formes se fondent au lieu de se couper net (pas d'arêtes dures).
+    function smax(a, b) { var k = 0.12, d = a - b; return (a + b + Math.sqrt(d * d + k * k)) / 2 - k / 2; }
     function field(u, v) {
-      var best = 0, reg = null, second = 0;
+      var soft = 0, top = 0, reg = null;
       for (var i = 0; i < PRIM.length; i++) { var p = PRIM[i], q;
         if (p[0] === "e") { var a = p[7] * Math.PI / 180, dx = u - p[3], dy = v - p[4];
           var lx = Math.cos(a) * dx + Math.sin(a) * dy, ly = -Math.sin(a) * dx + Math.cos(a) * dy, rx = p[5];
@@ -471,38 +483,54 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         else { var ex = p[5] - p[3], ey = p[6] - p[4], L2 = ex * ex + ey * ey;
           var tt = Math.max(0, Math.min(1, ((u - p[3]) * ex + (v - p[4]) * ey) / L2));
           var ddx = u - p[3] - tt * ex, ddy = v - p[4] - tt * ey; q = (ddx * ddx + ddy * ddy) / (p[7] * p[7]); }
-        if (q < 1) { var z = p[2] * Math.sqrt(1 - q);
-          if (z > best) { if (p[1] !== reg) second = best; best = z; reg = p[1]; }
-          else if (p[1] !== reg && z > second) second = z; } }
-      if (reg === "v") { var dm = 1;
-        for (var k = 0; k < GROOVE.length; k++) { var gx = u - GROOVE[k][0], gy = v - GROOVE[k][1];
-          dm = Math.min(dm, gx * gx + gy * gy); }
-        best -= 0.16 * Math.exp(-dm / 0.0005); }
-      return [best, reg, second ? Math.exp(-Math.pow((best - second) / 0.06, 2)) : 0];
+        if (q < 1) { var z = p[2] * Math.sqrt(1 - q); soft = soft ? smax(soft, z) : z;
+          if (z > top) { top = z; reg = p[1]; } } }
+      var side = 0;
+      if (reg === "v") { var dm = 1, ki = 0;
+        for (var k = 0; k < GROOVE.length; k++) { var gx = u - GROOVE[k][0], gy = v - GROOVE[k][1], dd = gx * gx + gy * gy;
+          if (dd < dm) { dm = dd; ki = k; } }
+        var k2 = Math.min(ki + 1, GROOVE.length - 1), k1 = k2 - 1;
+        var tx = GROOVE[k2][0] - GROOVE[k1][0], ty = GROOVE[k2][1] - GROOVE[k1][1];
+        side = tx * (v - GROOVE[ki][1]) - ty * (u - GROOVE[ki][0]);
+        reg = side < 0 ? "lv" : "rv";
+        soft -= 0.05 * Math.exp(-dm / 0.0016); }  // sillon doux, pas une entaille
+      return [soft, reg];
     }
-    var LIGHT = (function () { var l = [-0.38, -0.5, 0.78], n = Math.hypot(l[0], l[1], l[2]); return l.map(function (x) { return x / n; }); })();
-    var CENTER = { v: [0.02, 0.15], ra: [-0.215, -0.07], la: [0.235, -0.085] };
+    var LIGHT = (function () { var l = [-0.42, -0.5, 0.76], n = Math.hypot(l[0], l[1], l[2]); return l.map(function (x) { return x / n; }); })();
     var W, Hs, S, step, hx, hy, dots, ghosts, rects, lines, dpr, raf = null, t0 = performance.now();
+    var bg = null;
+    function paintBackground() {
+      bg = document.createElement("canvas"); bg.width = cv.width; bg.height = cv.height;
+      var b = bg.getContext("2d"), base = Math.max(0.8, step * 0.1), dim = C.faillite ? 0.5 : alive ? 1 : 0.7;
+      b.setTransform(dpr, 0, 0, dpr, 0, 0); var sh = Math.round(40 * dim);
+      b.fillStyle = "rgb(" + sh + "," + sh + "," + (sh + 3) + ")"; b.beginPath();
+      ghosts.forEach(function (gd) { b.moveTo(gd[0] + base, gd[1]); b.arc(gd[0], gd[1], base, 0, 6.2832); }); b.fill();
+    }
+    function grain(i, j) { var s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return s - Math.floor(s) - 0.5; }
 
     function build() {
       dots = []; ghosts = [];
       var cols = Math.ceil(W / step) + 1, rows = Math.ceil(Hs / step) + 1, ox = (W - (cols - 1) * step) / 2, oy = (Hs - (rows - 1) * step) / 2;
       for (var i = 0; i < cols; i++) for (var j = 0; j < rows; j++) {
         var x = ox + i * step, y = oy + j * step, u = (x - hx) / S, v = (y - hy) / S, f = field(u, v);
-        if (f[0] <= 0.02) { ghosts.push([x, y]); continue; }
-        var e = 0.006, zx = (field(u + e, v)[0] - field(u - e, v)[0]) / (2 * e), zy = (field(u, v + e)[0] - field(u, v - e)[0]) / (2 * e);
-        var nx = -0.5 * zx, ny = -0.5 * zy, nn = Math.hypot(nx, ny, 1);
+        if (f[0] <= 0.02) { ghosts.push([x, y, Math.hypot(x - hx, y - hy), (grain(j, i) + 0.5) * 6.2832, 0.35 + (grain(i + 7, j + 3) + 0.5) * 0.9]); continue; }
+        var e = 0.035, zx = (field(u + e, v)[0] - field(u - e, v)[0]) / (2 * e), zy = (field(u, v + e)[0] - field(u, v - e)[0]) / (2 * e);
+        var nx = -0.55 * zx, ny = -0.55 * zy, nn = Math.hypot(nx, ny, 1);
         var lit = Math.max(0, (nx * LIGHT[0] + ny * LIGHT[1] + LIGHT[2]) / nn);
-        var b = (0.2 + 0.8 * Math.pow(lit, 1.3)) * (0.5 + 0.5 * Math.min(1, f[0] * 2.6)) * (1 - 0.5 * f[2]);
-        var c = CENTER[f[1]] || CENTER.v, atrial = f[1] === "ra" || f[1] === "la" || f[1] === "vc";
-        dots.push({ x: x, y: y, b: b, atrial: atrial, cx: hx + c[0] * S, cy: hy + c[1] * S,
-          r: step * (0.1 + 0.36 * b), w: Math.hypot(u + 0.15, v + 0.16) });
+        var b = (0.2 + 0.8 * Math.pow(lit, 1.5)) * (0.5 + 0.5 * Math.min(1, f[0] * 2.5)) + 0.08 * grain(i, j);
+        b = Math.max(0.05, Math.min(1, b));
+        // Retard de l'onde dans chaque partie : les ventricules se contractent de la pointe vers la
+        // base, les oreillettes à partir du nœud sinusal, l'onde d'éjection remonte les artères.
+        var ventricle = f[1] === "lv" || f[1] === "rv", atrium = f[1] === "ra" || f[1] === "la";
+        var delay = ventricle ? Math.hypot(u + 0.1, v - 0.46) * 0.09 : atrium ? Math.hypot(u + 0.15, v + 0.16) * 0.12
+          : Math.hypot(u, v + 0.12) * 0.35;
+        dots.push({ x: x, y: y, b: b, reg: f[1], r: step * (0.1 + 0.36 * b), d: delay });
       }
     }
     function placeLabels(list, narrow) {
       // Chaque légende part du centre du cœur dans la direction de sa partie, et s'arrête au premier
       // endroit libre : assez loin du cœur (marge du battement comprise) et des autres légendes.
-      var gap = step * 0.7 + (narrow ? 8 : 18), cx = hx, cy = hy - 0.03 * S, out = [];
+      var gap = step * 0.7 + (narrow ? 8 : 18), cx = hx, cy = hy - 0.03 * S, out = [], edge = narrow ? 14 : 36;
       var items = list.map(function (L) { var ax = hx + L.a[0] * S, ay = hy + L.a[1] * S;
         return { L: L, ax: ax, ay: ay, th: Math.atan2(ay - cy, ax - cx), w: L.el.offsetWidth, h: L.el.offsetHeight }; });
       items.sort(function (p, q) { return p.th - q.th; });
@@ -512,7 +540,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         if (d < sep) { var push = (sep - d) / 2; p.th -= push; q.th += push; } }
       var heartDots = dots.filter(function (d, k) { return k % 2 === 0; });
       function free(x, y, w, h) {
-        if (x < 2 || y < 2 || x + w > W - 2 || y + h > Hs - 2) return false;
+        if (x < edge || y < 2 || x + w > W - edge || y + h > Hs - 2) return false;
         for (var k = 0; k < heartDots.length; k++) { var hd = heartDots[k];
           var ddx = Math.max(x - hd.x, 0, hd.x - x - w), ddy = Math.max(y - hd.y, 0, hd.y - y - h);
           if (ddx * ddx + ddy * ddy < gap * gap) return false; }
@@ -525,7 +553,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
           var th = o.th + sg * da, dx = Math.cos(th), dy = Math.sin(th);
           for (var t = 0; t < Math.max(W, Hs); t += 4) {
             var x = cx + dx * t - o.w / 2, y = cy + dy * t - o.h / 2;
-            if (x < 2 || y < 2 || x + o.w > W - 2 || y + o.h > Hs - 2) break;
+            if (x < edge || y < 2 || x + o.w > W - edge || y + o.h > Hs - 2) break;
             if (free(x, y, o.w, o.h)) {
               var px = Math.max(x, Math.min(o.ax, x + o.w)), py = Math.max(y, Math.min(o.ay, y + o.h));
               var len = Math.hypot(px - o.ax, py - o.ay) * (1 + 0.15 * da);
@@ -556,7 +584,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
           if (grow) Hs = Math.round(Hs * 1.1);
           var S0 = narrow ? W * 0.74 : Math.min(Hs * 0.86, W * 0.5);
           for (S = S0; S >= S0 * minScale && !got; S *= 0.94) {
-            step = Math.max(6, Math.min(13, S / 44)); hx = W / 2; hy = Hs / 2 + 0.02 * S; build();
+            step = Math.max(5, Math.min(11, S / 54)); hx = W / 2; hy = Hs / 2 + 0.02 * S; build();
             got = placeLabels(list, narrow); }
         }
         return got;
@@ -577,28 +605,60 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       cv.setAttribute("aria-label", "Cœur du système : " + (BPM ? BPM + " battements par minute" : "arrêté") + ". " +
         list.map(function (L) { return L.k + " " + (L.b || L.v) + (L.s ? " (" + L.s + ")" : ""); }).join(" ; "));
     }
-    function pulseAt(ph, c, w) { var u = (ph - c) / w; return Math.exp(-u * u); }
+    // Cycle cardiaque (phase 0 → 1 sur un battement) : systole auriculaire 0–0,16, systole
+    // ventriculaire 0,16–0,52 (montée rapide, relâchement plus lent), puis diastole.
+    function bell(ph, a, b, peak) {
+      if (ph < a || ph > b) return 0; var t = (ph - a) / (b - a);
+      return t < peak ? 0.5 - 0.5 * Math.cos(Math.PI * t / peak) : 0.5 + 0.5 * Math.cos(Math.PI * (t - peak) / (1 - peak));
+    }
+    var LAG = { ra: 0, la: 0.018, rv: 0.012, lv: 0 };
+    function chamber(reg, ph) {
+      var l = LAG[reg] || 0;
+      if (reg === "ra" || reg === "la") return 0.8 * bell(ph - l, 0, 0.16, 0.45);
+      if (reg === "rv" || reg === "lv") return bell(ph - l, 0.16, 0.52, 0.38) * (reg === "lv" ? 1 : 0.85);
+      return 0;
+    }
     function draw(now) {
       var t = (now - t0) / 1000, period = BPM ? 60 / BPM : 0, dim = C.faillite ? 0.5 : alive ? 1 : 0.7;
+      var ph = period ? (t % period) / period : 0, moving = period && !REDUCED;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, Hs);
-      ctx.fillStyle = "rgb(34,34,38)";
-      for (var g = 0; g < ghosts.length; g++) { ctx.beginPath(); ctx.arc(ghosts[g][0], ghosts[g][1], 0.9, 0, 6.2832); ctx.fill(); }
-      for (var k = 0; k < dots.length; k++) { var p = dots[k], e = 0.3;
-        if (period && !REDUCED) { var ph = ((t - p.w * 0.12) % period + period) % period / period;
-          e = p.atrial ? pulseAt(ph, 0.03, 0.05) + 0.25 * pulseAt(ph, 0.36, 0.05)
-                       : pulseAt(ph, 0.16, 0.05) + 0.55 * pulseAt(ph, 0.38, 0.05); }
-        else if (!period) e = 0;
-        var pull = (p.atrial ? 0.03 : 0.04) * e, x = p.x + (p.cx - p.x) * pull, y = p.y + (p.cy - p.y) * pull;
-        var shade = Math.round(Math.min(250, (58 + 186 * p.b + 26 * e) * dim));
-        ctx.beginPath(); ctx.arc(x, y, Math.max(0.6, p.r * (0.8 + 0.4 * e)), 0, 6.2832);
-        ctx.fillStyle = "rgb(" + shade + "," + shade + "," + Math.min(255, shade + 2) + ")"; ctx.fill(); }
+      // Fond : la grille de points sur toute la largeur ; une onde la traverse après chaque contraction.
+      var R = moving && ph > 0.3 ? (ph - 0.3) * period * 900 : -1e4, fade = moving ? Math.max(0, 1 - (ph - 0.3) / 0.7) : 0;
+      // Points de fond : chacun « respire » un peu, au hasard (rarement, et à peine), pour que tout
+      // le tissu paraisse vivant ; l'onde du battement les éclaire en passant. Le fond au repos est
+      // peint une fois ; seuls les points actifs sont redessinés à chaque image.
+      if (!bg) paintBackground();
+      ctx.drawImage(bg, 0, 0, W, Hs);
+      var buckets = [[], [], [], [], []], base = Math.max(0.8, step * 0.1);
+      if (moving) for (var g = 0; g < ghosts.length; g++) { var gd = ghosts[g];
+        var wv = R > 0 && Math.abs(gd[2] - R) < 140 ? Math.exp(-Math.pow((gd[2] - R) / 46, 2)) * fade : 0;
+        var tw = Math.pow(Math.max(0, Math.sin(t * gd[4] + gd[3])), 14);
+        if (wv + tw < 0.06) continue;
+        buckets[Math.min(4, Math.floor((wv + 0.7 * tw) * 4))].push([gd[0], gd[1], base * (1 + 0.8 * tw + 0.25 * wv)]); }
+      buckets.forEach(function (list, level) { if (!list.length) return;
+        var sh = Math.round((40 + level * 10) * dim); ctx.fillStyle = "rgb(" + sh + "," + sh + "," + (sh + 3) + ")";
+        ctx.beginPath(); list.forEach(function (q) { ctx.moveTo(q[0] + q[2], q[1]); ctx.arc(q[0], q[1], q[2], 0, 6.2832); }); ctx.fill(); });
+      var layers = {};  // points regroupés par teinte : un seul tracé par teinte (fluide sur tablette)
+      for (var k = 0; k < dots.length; k++) { var p = dots[k], e = 0;
+        if (moving) {
+          if (p.reg === "ao" || p.reg === "ap") e = 0.75 * Math.exp(-Math.pow((ph - 0.26 - p.d) / 0.07, 2)); // onde d'éjection
+          else if (p.reg === "vc") e = 0.35 * bell(ph, 0.55, 1, 0.5);  // retour veineux pendant la diastole
+          else e = chamber(p.reg, ph - p.d);
+        } else if (period) e = 0.25;
+        // Les points restent en place : seule leur taille (donc leur clarté) suit la contraction.
+        var shade = Math.round(Math.min(250, (48 + 196 * p.b + 40 * e) * dim) / 4) * 4;
+        (layers[shade] = layers[shade] || []).push(p.x, p.y, Math.max(0.5, p.r * (0.78 + 0.55 * e))); }
+      Object.keys(layers).forEach(function (sh) { var a = layers[sh];
+        ctx.fillStyle = "rgb(" + sh + "," + sh + "," + Math.min(255, +sh + 2) + ")"; ctx.beginPath();
+        for (var m = 0; m < a.length; m += 3) { ctx.moveTo(a[m] + a[m + 2], a[m + 1]); ctx.arc(a[m], a[m + 1], a[m + 2], 0, 6.2832); }
+        ctx.fill(); });
       ctx.strokeStyle = "rgba(196,196,200,0.42)"; ctx.lineWidth = 1;
       lines.forEach(function (l) { ctx.beginPath(); ctx.moveTo(l[0], l[1]); ctx.lineTo(l[2], l[3]); ctx.stroke();
         ctx.beginPath(); ctx.arc(l[0], l[1], 2.6, 0, 6.2832); ctx.fillStyle = "#141416"; ctx.fill();
         ctx.strokeStyle = "rgba(244,244,245,0.9)"; ctx.stroke(); ctx.strokeStyle = "rgba(196,196,200,0.42)"; });
-      if (period && !REDUCED && !document.hidden) raf = requestAnimationFrame(draw);
+      if (moving && !document.hidden) raf = requestAnimationFrame(draw);
     }
-    function start() { if (raf) cancelAnimationFrame(raf); layout(); raf = requestAnimationFrame(draw); }
+    function start() { if (raf) cancelAnimationFrame(raf); layout(); bg = null; raf = requestAnimationFrame(draw); }
     var timer = null;
     window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(start, 150); });
     document.addEventListener("visibilitychange", function () { if (!document.hidden) { if (raf) cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } });
