@@ -7,6 +7,12 @@ tableau de bord (`sources_resolution`). « Lecteur » = source du projet qui lit
 (ou un équivalent officiel) ; « — » = rien encore (voir la remarque). Pour compléter : `CATALOG`
 dans `src/polymarket_agent/resolution_sources.py`.
 
+Remplace l'instantané manuel du chercheur (100 marchés, 15/10/2026 vers 20 h UTC), qui notait :
+« binance.com bloque les machines GitHub ». C'est vrai pour api.binance.com depuis les États-Unis ;
+le lecteur passe par data-api.binance.vision (données publiques) et retombe sur Coinbase puis Kraken
+si ce domaine est refusé lui aussi : à vérifier dans le journal du premier cycle
+(`crypto_prices` : « ok » et la source utilisée dans les observations, domaine binance.com ou coinbase.com).
+
 Étape suivante (point 3 du chantier, libre) : une stratégie qui compare la valeur lue à la source
 (score, prix Binance) au seuil du marché et au temps restant. `crypto_threshold` le fait déjà pour
 les prix crypto, désormais lus chez Binance (l'arbitre) ; les scores MLB / NHL / football arrivent
