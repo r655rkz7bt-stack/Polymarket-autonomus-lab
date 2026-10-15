@@ -1,8 +1,8 @@
 # Chantiers du chercheur
 
 Liste de travail décidée par Etienne (15/10/2026). À chaque passage sans obligation dans la
-feuille de mission, le chercheur **avance au moins un chantier** (le premier non terminé, sauf
-raison écrite), le teste, l'ouvre en pull request, et met à jour son état ici.
+feuille de mission, le chercheur **avance au moins un chantier** (le n°0 d'abord, puis le premier
+non terminé, sauf raison écrite), le teste, l'ouvre en pull request, et met à jour son état ici.
 États : `à faire`, `en cours`, `fait` (avec la PR), `abandonné` (avec la raison).
 
 Règles communes à toute nouvelle source (voir `src/polymarket_agent/sources/`) :
@@ -18,6 +18,21 @@ Déjà en place (15/10/2026) : Polymarket (Gamma, CLOB, commentaires), prix cryp
 Kraken), GDELT, **Google Actualités** (recherche par marché), **61 flux RSS** couvrant toutes
 les catégories (`config/settings.yaml`), Gemini. Décision d'Etienne : « toutes les sources
 d'internet disponibles qui peuvent être utiles pour les marchés de Polymarket ».
+
+## Chantier prioritaire n°0 : la source de résolution de chaque marché
+
+Décidé par Etienne (15/10/2026), **avant tous les autres**. Chaque marché Polymarket indique
+d'après quoi il sera tranché (champ `resolutionSource` et texte `description` de Gamma) :
+cours de clôture d'une bourse précise, station météo, site officiel, compteur de publications…
+Lire cette source directement, c'est regarder la réponse au même endroit que l'arbitre.
+
+1. Pour les marchés surveillés, extraire et archiver la source de résolution (URL, organisme) ;
+   tenir un inventaire des sources les plus fréquentes (`experiments/sources_resolution.md`).
+2. Pour chaque source fréquente qui a une API officielle ou un flux gratuit : un lecteur
+   dédié (une classe dans `sources/`), relié aux marchés qu'elle tranche.
+3. Une stratégie (ou un signal pour les stratégies existantes) qui compare la valeur actuelle
+   de la source au seuil du marché, avec le temps restant avant la clôture.
+Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'inventaire et passer.
 
 ## Sources sans clé (le chercheur peut tout faire seul) — par ordre de priorité
 
@@ -43,6 +58,12 @@ d'internet disponibles qui peuvent être utiles pour les marchés de Polymarket 
 | 18 | mempool.space : réseau Bitcoin | `mempool.space` | frais, hashrate, halving | à faire |
 | 19 | Hacker News (API Firebase) et Mastodon (recherche publique) | `hacker-news.firebaseio.com`, `mastodon.social` | attention tech et sociale (Bluesky demande un compte) | à faire |
 | 20 | Metaculus et PredictIt | `www.metaculus.com`, `www.predictit.org` | autres prévisions publiques à comparer | à faire |
+| 20b | Truth Social (messages de Trump) | flux publics Mastodon de `truthsocial.com`, ou archive publique avec flux RSS | marchés sur ce que dit ou annonce Trump | à faire |
+
+À la place de X (payant ; Nitter, RSSHub et miroirs contournent ses conditions : interdits) :
+reprises des tweets par la presse (Google Actualités, déjà en place), Truth Social, Mastodon,
+Bluesky (compte gratuit d'Etienne, voir plus bas), et la source de résolution des marchés de
+« nombre de tweets » (chantier n°0).
 
 Rapprochement des marchés entre plateformes (chantiers 1, 2 et 20) : les questions ne sont jamais
 identiques ; exiger une correspondance stricte (même événement, même date, même seuil) et
@@ -70,9 +91,16 @@ et prévient Etienne, dans son journal, de la clé à créer.
 | 30 | CoinGecko (offre gratuite « Demo ») | `COINGECKO_API_KEY` | prix et volumes de toutes les cryptos | à faire |
 | 31 | Etherscan | `ETHERSCAN_API_KEY` | activité Ethereum, mouvements de gros portefeuilles | à faire |
 
+## Avec un compte d'Etienne (à lui proposer, pas à faire seul)
+
+| Chantier | Ce qu'il faut | Remarque |
+|---|---|---|
+| Bluesky (déjà codé) | compte gratuit + mot de passe d'application (`BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`) | beaucoup de comptes d'actualité de X y ont migré |
+| Telegram : chaînes publiques qui relaient l'actualité rapide | compte Telegram dédié, identifiants de l'API officielle | l'accès donné vaut celui du compte : compte dédié obligatoire ; seulement si l'arène montre que l'actualité rapide rapporte |
+
 ## Écartés (ne pas faire)
 
-X/Twitter et Truth Social (payant ou sans API), sites sans API ni flux (HLTV hors RSS, CME
+X/Twitter (payant ; Nitter, RSSHub et miroirs contournent ses conditions), sites sans API ni flux (HLTV hors RSS, CME
 FedWatch, sites de sondages, Box Office Mojo : aspiration interdite), Google Trends (pas d'API
 officielle), Reddit (conditions d'accès restrictives), Binance (bloque les machines américaines
 de GitHub), API « cachées » non documentées (ESPN…) : conditions d'utilisation non respectées.
