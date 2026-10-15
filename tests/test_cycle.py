@@ -299,3 +299,24 @@ def test_collector_crash_never_stops_the_cycle(env, paths):
     assert report.status == "OK"
     assert report.sources["collecte"].startswith("indisponible")
     assert report.shadows["fantome:naive_favorite_v1.0.0"]["fills"] == 1
+
+
+def test_cycle_executes_a_sell_from_strategy_exits(env, paths, tmp_path):
+    """Une stratégie avec sorties vend réellement (relecture du carnet, contrôleur, journal signé)."""
+    from polymarket_agent.strategies_v2 import MarketStructure
+    make, _, clock = env
+    s = MarketStructure("1.0.0", "2026-10-15", {
+        "min_imbalance": D("0.6"), "max_spread": D("0.02"), "depth_window": D("0.03"), "stake_fraction": D("0.05"),
+        "take_profit": D("0.02"), "stop_loss": D("0.03"), "max_hold_hours": D("6"), "max_extra_ticks": D("0"),
+        "max_proposals_per_cycle": D("2")})
+    gamma = FakeGamma([raw_market(yes_price="0.5", best_bid=0.49, best_ask=0.50)])
+    pressure = make_book("tokA", bids=(("0.49", "5000"),), asks=(("0.50", "500"),))
+    run_cycle(make(gamma, FakeClob({"tokA": pressure}), strategies=[s]))
+    shadow_path = tmp_path / "fantome" / "market_structure_v1.0.0.jsonl"
+    assert "tokA" in Ledger.open(shadow_path, KEY, tmp_path / "x.lock").state.positions
+    clock["now"] = NOW + timedelta(minutes=30)
+    risen = make_book("tokA", bids=(("0.55", "5000"),), asks=(("0.56", "500"),), ts=clock["now"])
+    report = run_cycle(make(gamma, FakeClob({"tokA": risen}), strategies=[s]))
+    state = Ledger.open(shadow_path, KEY, tmp_path / "x.lock").state
+    assert "tokA" not in state.positions, report.messages
+    assert state.realized_pnl > 0

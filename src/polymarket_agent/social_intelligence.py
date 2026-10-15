@@ -73,6 +73,8 @@ class MarketIntel:
     sentiment: float = 0.0  # moyenne pondérée par la fiabilité, -1 à 1
     stance: float = 0.0  # direction estimée par l'IA (-1 = Non, +1 = Oui), 0 si inconnue
     last_published: datetime | None = None
+    official_minutes: float | None = None  # âge de la dernière annonce officielle (minutes)
+    official_stance: float = 0.0  # direction de cette annonce selon l'IA (-1 à 1), 0 si inconnue
     signal: bool = False
     partial: bool = True
     sources_down: list[str] = field(default_factory=list)
@@ -108,6 +110,13 @@ def summarize(market_id: str, observations: list[Observation], now: datetime,
         den = sum(s["confidence"] * r for s, r in directed)
         intel.stance = round(num / den, 3) if den else 0.0
     intel.last_published = max((when(o) for o in last24), default=None)
+    officials = sorted((o for o in last24 if o.kind == "annonce officielle"), key=when)
+    if officials:
+        latest = officials[-1]
+        intel.official_minutes = round((now - when(latest)).total_seconds() / 60, 1)
+        s = stances.get(latest.external_id)
+        if s:
+            intel.official_stance = {"oui": 1, "non": -1}.get(s["stance"], 0) * s["confidence"]
     # Signal : jamais sur un message isolé, jamais sur la viralité, jamais sur l'absence.
     if not last24:
         intel.reasons.append("aucune information (l'absence n'est pas un signal)")

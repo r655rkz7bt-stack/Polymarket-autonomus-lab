@@ -17,13 +17,13 @@ import dataclasses
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from decimal import Decimal, ROUND_UP
+from decimal import Decimal, ROUND_DOWN, ROUND_UP
 from pathlib import Path
 from typing import Callable
 
 from polymarket_agent.arena import run_arena
 from polymarket_agent.correlation import correlation_group
-from polymarket_agent.execution_simulator import simulate_buy
+from polymarket_agent.execution_simulator import simulate_buy, simulate_sell
 from polymarket_agent.http_client import SourceUnavailable
 from polymarket_agent.ledger import Ledger, LedgerCorrupt, LedgerError, NotInitialized
 from polymarket_agent.market_scanner import scan
@@ -213,6 +213,7 @@ def _attach_price_features(deps: CycleDeps, watchlist: list[MarketInfo], now: da
             log.warning("historique de prix indisponible pour %s : %s", market.market_id, exc)
             continue
         market.yes_price_6h_ago = price_at(points, ts - 6 * 3600)
+        market.yes_price_1h_ago = price_at(points, ts - 3600)
         market.changes_24h = changes_in_window(points, ts)
 
 
@@ -263,6 +264,17 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     deps.db.save_markets(report.cycle_id, now, result.markets if full else result.watchlist)
     report.counts.update(markets=len(result.markets), watchlist=len(result.watchlist))
 
+    # 4 bis. Marchés supplémentaires demandés par les stratégies (ex. échelles de seuils).
+    eligible = [m for m in result.markets if m.eligible]
+    known = {m.market_id for m in result.watchlist}
+    max_extra = int(deps.settings["scanner"].get("max_extra_markets", 40))
+    for strategy in {id(s): s for p in portfolios for s in p.strategies}.values():
+        for market in getattr(strategy, "candidates", lambda ms: [])(eligible):
+            if market.market_id not in known and max_extra > 0:
+                result.watchlist.append(market)
+                known.add(market.market_id)
+                max_extra -= 1
+
     # 5. Carnets : les deux issues de chaque marché surveillé + positions détenues
     #    (tous portefeuilles) pour les prix de marque.
     wanted = [t for market in result.watchlist if len(market.token_ids) == 2 for t in market.token_ids]
@@ -281,7 +293,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
                                 if t in portfolio.ledger.state.positions and b.best_bid is not None})
 
     # 6. Historique de prix récent (seulement si une stratégie active en a besoin).
-    if any(getattr(s, "strategy_id", "") == "reversion" for p in portfolios for s in p.strategies):
+    if any(getattr(s, "needs_price_history", False) for p in portfolios for s in p.strategies):
         _attach_price_features(deps, result.watchlist, now)
 
     # 6 bis. Sources d'information (étape 5). Une source en panne ne bloque rien (mode dégradé).
@@ -296,19 +308,24 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     for portfolio in portfolios:
         if portfolio.ledger.state.bankrupt:
             continue  # un fantôme en faillite ne trade plus (le principal est vérifié plus haut)
-        _execute(deps, portfolio, result.watchlist, books, report, bucket)
+        _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets)
         if main.ledger.state.bankrupt:
             break
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
 
 
 def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
-             books: dict[str, OrderBook], report: CycleReport, bucket: str) -> None:
+             books: dict[str, OrderBook], report: CycleReport, bucket: str,
+             all_markets: list[MarketInfo] | None = None) -> None:
     ledger, marks = portfolio.ledger, portfolio.marks
-    by_market = {m.market_id: m for m in watchlist}
+    by_market = {m.market_id: m for m in (all_markets or [])} | {m.market_id: m for m in watchlist}
     proposals = []
     for strategy in portfolio.strategies:
         output = strategy.propose(watchlist, books, ledger.state, deps.limits, bucket, marks)
+        # Sorties (ventes) : seulement sur les positions ouvertes par cette stratégie.
+        if hasattr(strategy, "exits"):
+            mine = {t: p for t, p in ledger.state.positions.items() if p.strategy_id == strategy.strategy_id}
+            output.proposals += strategy.exits(mine, by_market, books, bucket, deps.now())
         if portfolio.name == "principal":
             # Identifiants distincts de ceux du fantôme du champion (même stratégie, autre journal).
             output.proposals = [dataclasses.replace(p, op_id="P" + p.op_id[:23]) for p in output.proposals]
@@ -318,7 +335,9 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
     accepted = fills = 0
 
     for proposal in proposals:
-        market = by_market[proposal.market_id]
+        market = by_market.get(proposal.market_id)
+        if market is None:  # marché sorti du scan : on garde la position jusqu'au règlement
+            continue
         verdict = evaluate(proposal, ledger.state, market_context(market, books.get(proposal.token_id),
                                                                   proposal.token_id),
                            deps.limits, deps.now(), marks)
@@ -342,6 +361,24 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
             log.info("rejet après relecture %s : %s", proposal.op_id, verdict.reasons)
             continue
         accepted += 1
+        if proposal.side == "SELL":
+            fill = simulate_sell(fresh, proposal.shares, proposal.max_price, market.fees)
+            if fill.executed:
+                try:
+                    ledger.record_sell(op_id=proposal.op_id, token_id=proposal.token_id,
+                                       shares=fill.filled_shares,
+                                       price=fill.avg_price.quantize(PRICE_QUANTUM, rounding=ROUND_DOWN),
+                                       fee=fill.fee, now=deps.now(),
+                                       extra={"cycle_id": report.cycle_id, "portfolio": portfolio.name,
+                                              "strategy_id": proposal.strategy_id, "reason": proposal.invalidation,
+                                              "fill_status": fill.status, "levels": fill.levels})
+                    fills += 1
+                    log.info("[%s] vente simulée %s : %s parts à %s, %s", portfolio.name, proposal.op_id,
+                             fill.filled_shares, fill.avg_price, proposal.invalidation)
+                except LedgerError as exc:
+                    fill.status, fill.reason = "REFUSE_JOURNAL", str(exc)
+            deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict, fill)
+            continue
         fill = simulate_buy(fresh, proposal.shares, proposal.max_price, market.fees)
         if fill.executed:
             # Écriture signée. Le journal revérifie solde, doublon et faillite.

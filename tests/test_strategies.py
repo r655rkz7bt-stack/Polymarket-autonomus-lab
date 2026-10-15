@@ -26,9 +26,10 @@ def strategy(**overrides):
 
 def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert sorted(s.strategy_id for s in loaded) == ["calibration", "crypto_threshold", "naive_favorite",
-                                                     "reversion"]
-    assert all(s.params["kelly_fraction"] == 1 for s in loaded)  # Kelly complet par défaut
+    assert sorted(s.strategy_id for s in loaded) == [
+        "calibration", "cross_market", "crypto_threshold", "information_advantage", "market_structure",
+        "naive_favorite", "news_momentum", "reversion", "social_sentiment"]
+    assert all(s.params["kelly_fraction"] == 1 for s in loaded if "kelly_fraction" in s.params)
 
 
 def test_param_outside_bounds_is_refused():

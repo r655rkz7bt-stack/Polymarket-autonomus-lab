@@ -287,6 +287,7 @@ class ReversionStrategy(CalibratedStrategy):
     """
 
     strategy_id = "reversion"
+    needs_price_history = True
     required = ("min_move", "min_changes_24h", "min_events", "min_net_edge", "max_extra_ticks",
                 "max_proposals_per_cycle")
 
@@ -440,11 +441,14 @@ def load_strategies(path: Path) -> list:
         raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     except (OSError, yaml.YAMLError) as exc:
         raise StrategyConfigError(f"impossible de lire {path}") from exc
+    from polymarket_agent.strategies_v2 import CLASSES as V2  # import tardif : évite une boucle
+
+    classes = dict(STRATEGY_CLASSES, **V2)
     strategies = []
     for strategy_id, spec in raw.items():
         if not isinstance(spec, dict) or not spec.get("enabled"):
             continue
-        cls = STRATEGY_CLASSES.get(strategy_id)
+        cls = classes.get(strategy_id)
         if cls is None:
             raise StrategyConfigError(f"stratégie inconnue : {strategy_id}")
         args = [str(spec["version"]), str(spec["created_at"]), load_params(spec.get("params"))]
