@@ -133,3 +133,7 @@ def test_pulse_and_system_vitals_feed_the_beating_heart(tmp_path):
     template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
     assert 'id="heart"' in template and "C.faillite ? 0" in template  # faillite : le cœur s'arrête
     assert "prefers-reduced-motion" in template
+    # Cœur anatomique : les constantes sont des légendes posées autour, hors de portée du battement.
+    for part in ("aorte", "veine cave", "nœud sinusal", "ventricule gauche", "ventricule droit", "apex"):
+        assert part in template
+    assert "placeLabels" in template and "jamais\n      // d'expansion" not in template
