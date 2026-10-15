@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import argparse
 
-from _common import ROOT, get_key, load_settings, resolve
+from _common import ROOT, get_key, load_settings_with_arena as load_settings, resolve
 
 from polymarket_agent.brief import build_brief, render_brief
 from polymarket_agent.ledger import Ledger
@@ -28,7 +28,14 @@ def main() -> int:
     for path in sorted(shadow_dir.glob("*.jsonl")) if shadow_dir.exists() else []:
         competitors[path.stem] = Ledger.open(path, key, path.with_suffix(".BANKRUPT.lock"))
     active = [competitor_name(s) for s in load_strategies(ROOT / "config" / "strategies.yaml")]
-    brief = build_brief(main_ledger, competitors, active, settings.get("arena", {}))
+    from polymarket_agent.learning_engine import analyze, categories_from_db
+    from polymarket_agent.persistence import Database
+    db = Database(resolve(ROOT, paths["database"]))
+    try:
+        learning = analyze(dict(competitors, principal=main_ledger), categories_from_db(db))
+    finally:
+        db.close()
+    brief = build_brief(main_ledger, competitors, active, settings["arena"], learning=learning)
     out = ROOT / "reports" / "brief.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render_brief(brief), encoding="utf-8")

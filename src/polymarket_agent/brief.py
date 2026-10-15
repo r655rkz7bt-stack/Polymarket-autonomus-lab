@@ -18,7 +18,7 @@ from polymarket_agent.ledger import Ledger
 
 
 def build_brief(main: Ledger, competitors: dict[str, Ledger], active: list[str], cfg: dict,
-                now: datetime | None = None) -> dict:
+                now: datetime | None = None, learning: dict | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     state = main.state
     standings = ranking([standing(n, l, state.eliminated) for n, l in competitors.items()])
@@ -26,14 +26,14 @@ def build_brief(main: Ledger, competitors: dict[str, Ledger], active: list[str],
     days = days_since_record(main, now)
     in_test = [n for n in active if n not in state.eliminated]
     obligations = []
-    missing = int(cfg.get("min_strategies_in_test", 3)) - len(in_test)
+    missing = int(cfg["min_strategies_in_test"]) - len(in_test)
     if missing > 0:
         obligations.append(f"Ajouter {missing} nouvelle(s) stratégie(s) : il faut au moins "
-                           f"{cfg.get('min_strategies_in_test', 3)} idées en test.")
+                           f"{cfg['min_strategies_in_test']} idées en test.")
     replace = [n for n in state.eliminated if n in active]
     if replace:
         obligations.append(f"Remplacer les stratégies éliminées encore configurées : {', '.join(replace)}.")
-    if days >= float(cfg.get("radical_idea_after_days_without_record", 7)):
+    if days >= float(cfg["radical_idea_after_days_without_record"]):
         obligations.append(f"Aucun nouveau palier depuis {days:.1f} jours : la prochaine idée doit être "
                            "RADICALEMENT différente (nouvelle source, nouveau type de marché, "
                            "nouveau mécanisme), pas une variante.")
@@ -52,6 +52,11 @@ def build_brief(main: Ledger, competitors: dict[str, Ledger], active: list[str],
                         "eliminee": s.eliminated, "champion": s.name == state.champion}
                        for s in standings],
         "obligations": obligations,
+        # Verdicts du moteur d'apprentissage, par portefeuille fantôme.
+        "verdicts": {name: {s: {k: r[k] for k in ("verdict", "operations", "profit_net", "brier",
+                                                    "probabilite_hasard", "lecons_frequentes")}
+                            for s, r in data["strategies"].items()}
+                     for name, data in (learning or {}).items()},
     }
 
 
@@ -73,6 +78,15 @@ def render_brief(brief: dict) -> str:
         status = "champion" if s["champion"] else ("éliminée" if s["eliminee"] else "en test")
         lines.append(f"| {i} | {s['strategie']} | {s['operations_cloturees']} | {s['capital_realise']} | "
                      f"{s['croissance_log']:+.4f} | {s['jours']} | {status} |")
+    if brief.get("verdicts"):
+        lines += ["", "## Verdicts du moteur d'apprentissage (opérations clôturées)", "",
+                  "| portefeuille | stratégie | verdict | opérations | profit net | Brier | P(hasard) | leçons |",
+                  "|---|---|---|---|---|---|---|---|"]
+        for name, per in brief["verdicts"].items():
+            for s, r in per.items():
+                lessons = "; ".join(f"{k} ({v})" for k, v in r["lecons_frequentes"].items()) or "—"
+                lines.append(f"| {name} | {s} | {r['verdict']} | {r['operations']} | {r['profit_net']} | "
+                             f"{r['brier']} | {r['probabilite_hasard']} | {lessons} |")
     lines += ["", "## Obligations de cette session", ""]
     lines += [f"- {o}" for o in brief["obligations"]] or ["- Aucune obligation : améliorer le champion ou tenter une idée neuve."]
     return "\n".join(lines) + "\n"

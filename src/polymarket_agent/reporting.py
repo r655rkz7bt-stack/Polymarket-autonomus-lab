@@ -39,9 +39,10 @@ def closed_trades(entries: list[dict]) -> list[dict]:
                 "token_id": data["token_id"], "market_id": data["market_id"],
                 "event_id": data["event_id"], "outcome": data["outcome"],
                 "strategy": f"{data['strategy_id']} v{data['strategy_version']}",
-                "opened_at": entry["ts"], "shares": ZERO, "cost": ZERO, "proceeds": ZERO,
+                "opened_at": entry["ts"], "shares": ZERO, "shares_bought": ZERO, "cost": ZERO, "proceeds": ZERO,
                 "fees": ZERO, "est_probability": extra.get("est_probability")})
             pos["shares"] += Decimal(data["shares"])
+            pos["shares_bought"] += Decimal(data["shares"])
             pos["cost"] += cost
             pos["fees"] += Decimal(data["fee"])
         elif etype in ("SELL", "SETTLE") and data.get("token_id") in open_:
