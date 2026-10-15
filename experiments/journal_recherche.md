@@ -3,6 +3,19 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-15 (passage chercheur, ~14 h 30 UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, feuille de mission publiée (14:26 UTC), classement, verdicts.
+- **Constat** : capital réalisé 1000 (palier 1500), aucun champion, aucune obligation. market_structure :
+  20 opérations, -30,24, verdict « ne fonctionne pas » (P(hasard) 0,965, frais > moitié du résultat
+  sur 4). reversion : 1 opération à -231,05 (Kelly complet, 23 % du capital sur un seul pari).
+  naive_favorite : 1 opération (+8,81). 6 stratégies : 0 opération.
+- **Fait** : tests lancés (273 verts). Aucune modification de code : trop peu de données.
+- **Reste ouvert** : market_structure à surveiller (take_profit plus large si encore négative vers
+  50 opérations) ; reversion : relire la taille des mises (kelly_fraction 1,0) si 3 pertes de plus ;
+  comprendre pourquoi 6 stratégies n'ont encore rien tradé.
+- **Limites** : échantillon minuscule, rien testé en arène.
+
 ## 2026-10-15 (passage chercheur, ~14 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, feuille de mission publiée (13:56 UTC), classement de l'arène.
