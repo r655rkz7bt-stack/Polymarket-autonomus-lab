@@ -22,6 +22,7 @@ from polymarket_agent.social_intelligence import match, search_query
 from polymarket_agent.sources.bluesky import BlueskySource
 from polymarket_agent.sources.crypto_prices import CryptoPricesSource, CryptoQuote
 from polymarket_agent.sources.gdelt import GdeltSource
+from polymarket_agent.sources.google_news import GoogleNewsSource
 from polymarket_agent.sources.polymarket_comments import CommentsSource
 from polymarket_agent.sources.rss import RssSource
 
@@ -122,6 +123,8 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("gdelt", lambda cfg: factories.get("gdelt", lambda: GdeltSource(
         with_retries(http, cfg.get("max_retries")), cfg.get("timespan", "3h")))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
+    run("google_news", lambda cfg: factories.get("google_news", lambda: GoogleNewsSource(
+        per_query=int(cfg.get("per_query", 15))))().fetch(queries[: int(cfg.get("queries_per_run", 5))], now))
     run("rss", lambda cfg: factories.get("rss", lambda: RssSource(cfg.get("feeds", [])))().fetch(now))
     run("bluesky", lambda cfg: factories.get("bluesky", lambda: BlueskySource(http))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))

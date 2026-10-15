@@ -8,6 +8,7 @@ dépendance) ; un flux illisible est ignoré sans bloquer les autres.
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 import requests
@@ -49,25 +50,33 @@ def parse_feed(xml_text: str | bytes) -> list[dict]:
 class RssSource:
     name = "rss"
 
-    def __init__(self, feeds: list[dict], timeout: float = 15, user_agent: str = "polymarket-autonomous-lab",
-                 session: requests.Session | None = None):
+    def __init__(self, feeds: list[dict], timeout: float = 10, user_agent: str = "polymarket-autonomous-lab",
+                 session: requests.Session | None = None, workers: int = 8):
         self.feeds = feeds
-        self.timeout = timeout
+        self.timeout, self.workers = timeout, max(1, workers)
         self.session = session or requests.Session()
         self.session.headers.update({"User-Agent": user_agent})
         self.failures: dict[str, str] = {}
 
+    def _download(self, feed: dict):
+        """(flux, éléments, erreur) — jamais d'exception : un flux en panne n'arrête pas les autres."""
+        try:
+            response = self.session.get(feed["url"], timeout=self.timeout)
+            if response.status_code != 200:
+                raise SourceUnavailable(f"HTTP {response.status_code}")
+            return feed, parse_feed(response.content), None  # octets : BOM et encodage gérés
+        except (requests.RequestException, SourceUnavailable, ValueError) as exc:
+            return feed, [], f"{type(exc).__name__}: {exc}"[:200]
+
     def fetch(self, now: datetime) -> list[Observation]:
         out, self.failures = [], {}
-        for feed in self.feeds:
+        # Plusieurs dizaines de flux : téléchargement en parallèle pour garder le cycle court.
+        with ThreadPoolExecutor(max_workers=self.workers) as pool:
+            results = list(pool.map(self._download, self.feeds))
+        for feed, items, error in results:
             url = feed["url"]
-            try:
-                response = self.session.get(url, timeout=self.timeout)
-                if response.status_code != 200:
-                    raise SourceUnavailable(f"HTTP {response.status_code}")
-                items = parse_feed(response.content)  # octets : BOM et encodage gérés par le parseur
-            except (requests.RequestException, SourceUnavailable, ValueError) as exc:
-                self.failures[url] = f"{type(exc).__name__}: {exc}"[:200]
+            if error:
+                self.failures[url] = error
                 continue
             source = "rss_officiel" if feed.get("official") else "rss"
             for it in items[: int(feed.get("max_items", 30))]:

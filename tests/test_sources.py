@@ -391,3 +391,70 @@ def test_regression_free_tier_model_found_far_down_the_list(monkeypatch, tmp_pat
         slow.classify("Q ?", [obs("a"), obs("b")], NOW)
     db.close()
     db2.close()
+
+
+GNEWS = b"""<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>
+<item><title>Real Madrid beat Roma 2-0 - BBC</title><link>https://news.google.com/rss/articles/abc</link>
+<pubDate>Wed, 14 Oct 2026 10:00:00 GMT</pubDate><source url="https://www.bbc.co.uk">BBC</source></item>
+<item><title>Roma coach under pressure - Reuters</title><link>https://news.google.com/rss/articles/def</link>
+<pubDate>Wed, 14 Oct 2026 09:00:00 GMT</pubDate><source url="https://www.reuters.com">Reuters</source></item>
+</channel></rss>"""
+
+
+class _Resp:
+    def __init__(self, content, status=200):
+        self.content, self.status_code = content, status
+
+
+def test_google_news_uses_the_real_publisher_domain():
+    """Les liens passent par news.google.com : c'est le média d'origine qui compte pour les
+    « sources indépendantes », sinon tout viendrait d'un seul domaine."""
+    from polymarket_agent.sources.google_news import GoogleNewsSource, parse_google_news
+    items = parse_google_news(GNEWS)
+    assert items[0]["title"] == "Real Madrid beat Roma 2-0" and items[0]["publisher"] == "BBC"
+
+    class Session:
+        headers, urls = {}, []
+
+        def get(self, url, timeout):
+            self.urls.append(url)
+            return _Resp(GNEWS)
+    session = Session()
+    obs = GoogleNewsSource(session=session).fetch(["Real Madrid Roma"], NOW)
+    assert {o.domain for o in obs} == {"bbc.co.uk", "reuters.com"}
+    assert "q=Real+Madrid+Roma+when%3A1d" in session.urls[0]
+
+
+def test_google_news_down_is_reported():
+    from polymarket_agent.sources.google_news import GoogleNewsSource
+
+    class Down:
+        headers = {}
+
+        def get(self, url, timeout):
+            return _Resp(b"", 503)
+    with pytest.raises(SourceUnavailable):
+        GoogleNewsSource(session=Down()).fetch(["a", "b"], NOW)
+
+
+def test_many_rss_feeds_in_parallel_one_broken_feed_ignored():
+    from polymarket_agent.sources.rss import RssSource
+
+    class Session:
+        headers = {}
+
+        def get(self, url, timeout):
+            return _Resp(b"<rss><pas ferme") if "casse" in url else _Resp(RSS.encode())
+    feeds = [{"name": f"f{i}", "url": f"https://ex{i}.org/rss"} for i in range(20)] + [{"url": "https://casse.org/rss"}]
+    source = RssSource(feeds, session=Session())
+    obs = source.fetch(NOW)
+    assert len(obs) == 20 and list(source.failures) == ["https://casse.org/rss"]
+
+
+def test_repository_feed_list_is_large_and_well_formed():
+    import yaml
+    from conftest import ROOT
+    feeds = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["sources"]["rss"]["feeds"]
+    urls = [f["url"] for f in feeds]
+    assert len(feeds) >= 50 and len(set(urls)) == len(urls)
+    assert all(u.startswith("https://") for u in urls)
