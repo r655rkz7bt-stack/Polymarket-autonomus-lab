@@ -33,9 +33,10 @@ def latest_quotes(observations) -> dict:
 
 def make_collector(settings: dict, http: HttpClient, db, factories: dict | None = None):
     llm_cfg = settings.get("llm", {})
-    # Un seul nouvel essai par modèle : en cas de refus, mieux vaut passer au modèle suivant.
-    gemini = (GeminiClassifier(with_retries(http, llm_cfg.get("max_retries", 1)),
-                               llm_cfg.get("model", "gemini-2.5-flash"),
+    # Gemini peut mettre plus de 15 s à classer 20 textes : délai plus long, aucun nouvel essai ;
+    # en cas de refus ou de lenteur, mieux vaut passer au modèle suivant.
+    gemini_http = with_retries(http, llm_cfg.get("max_retries", 0), llm_cfg.get("timeout_seconds", 40))
+    gemini = (GeminiClassifier(gemini_http, llm_cfg.get("model", "gemini-2.5-flash"),
                                int(llm_cfg.get("max_calls_per_day", 0)), db)
               if llm_cfg.get("enabled") else None)
 

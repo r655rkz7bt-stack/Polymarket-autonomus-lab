@@ -16,6 +16,10 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 ## Méthode de recherche (chaque session de recherche)
 
+Liste de travail permanente : `experiments/CHANTIERS.md` (nouvelles sources, décidées par
+Etienne). Sans obligation dans la feuille de mission, avance au moins un chantier par passage.
+
+
 1. Lis la feuille de mission en premier : classement de l'arène, champion, palier suivant
    (cliquet ×1,5), obligations. En routine (production) : `bash scripts/fetch_published.sh`
    puis `published/rapports/brief.md` (produite par le cycle avec la vraie clé). En local :
