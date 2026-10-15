@@ -26,6 +26,8 @@ ordre réel, aucun secret affiché).
 3. Remplis toutes les obligations de la feuille de mission. Mission : atteindre le palier
    suivant le plus vite possible sans jamais atteindre 0. Prends des risques, essaie des idées
    neuves ; l'arène tranche en conditions réelles.
+   S'il n'y a aucune obligation, avance au moins un chantier de `experiments/CHANTIERS.md`
+   (le premier non terminé, sauf raison écrite) et mets à jour son état dans ce fichier.
 4. Travaille sur une branche `claude/` partant de `origin/main`, petits commits, tests verts
    (`.venv/bin/python -m pytest -q`), puis ouvre une pull request vers `main` : elle est
    fusionnée automatiquement si `guard` et `tests` passent. Si `tests` échoue, corrige et repousse.
