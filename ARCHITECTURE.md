@@ -401,3 +401,19 @@ PR/push, ni nom de contrôle exigé). Limite : le cycle exécute du code libre a
 
 **Critère de fin :** 24 h de cycles sans erreur sur GitHub (à constater après la mise en service).
 
+
+## 21. Ordres à cours limité posés (point 6, 15 octobre 2026)
+
+Décision d'Etienne : liberté maximale, y compris des ordres posés dans le carnet. Proposition :
+`proposals/2026-10-15_ordres_limites.md`.
+
+- Noyau : `execution_simulator.simulate_resting_buy/sell` (règle du passage au travers, au prix
+  posé, carnet relu après la pose, toucher insuffisant) et `maker_fee` (0 seulement si le barème
+  dit « taker seulement »).
+- Cycle : étape 5 bis exécute les ordres posés aux cycles précédents avec les carnets du cycle
+  (contrôleur + journal comme un ordre taker) ; les stratégies posent leurs nouveaux ordres
+  (carnet relu au moment de la pose, réservation du solde, 30 ordres ouverts au plus, 6 h au
+  plus, un ordre par jeton et par sens : le nouveau remplace l'ancien). Un ordre déjà exécutable
+  part dans le circuit taker. Expiré / marché fermé / position vendue / stratégie éliminée → fin.
+- Stratégies : `limit_orders` dans `StrategyOutput` ; `limit_ticks` dans `strategies.yaml` ;
+  variantes `class:`. Première variante : `calibration_patiente`.

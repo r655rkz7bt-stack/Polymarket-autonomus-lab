@@ -17,22 +17,23 @@ import dataclasses
 import json
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal, ROUND_DOWN, ROUND_UP
 from pathlib import Path
 from typing import Callable
 
 from polymarket_agent.arena import run_arena
 from polymarket_agent.correlation import correlation_group
-from polymarket_agent.execution_simulator import simulate_buy, simulate_sell
+from polymarket_agent.execution_simulator import (simulate_buy, simulate_resting_buy,
+                                                  simulate_resting_sell, simulate_sell)
 from polymarket_agent.http_client import SourceUnavailable
 from polymarket_agent.ledger import Ledger, LedgerCorrupt, LedgerError, NotInitialized
 from polymarket_agent.market_scanner import scan
 from polymarket_agent.models import MarketInfo, OrderBook
 from polymarket_agent.persistence import Database
 from polymarket_agent.price_features import changes_in_window, price_at
-from polymarket_agent.safety_controller import (MarketContext, RiskLimits, assert_simulation_mode,
-                                                evaluate)
+from polymarket_agent.safety_controller import (MarketContext, Proposal, RiskLimits,
+                                                assert_simulation_mode, evaluate)
 from polymarket_agent.settlement import settle_positions
 from polymarket_agent.sources.polymarket_clob import ClobClient
 from polymarket_agent.sources.polymarket_gamma import GammaClient
@@ -146,16 +147,21 @@ class Weighted:
 
     def propose(self, *args, **kwargs):
         output = self.inner.propose(*args, **kwargs)
+        output.proposals = self._scale(output.proposals)
+        if getattr(output, "limit_orders", None):
+            output.limit_orders = self._scale(output.limit_orders)
+        return output
+
+    def _scale(self, proposals: list) -> list:
         scaled = []
-        for p in output.proposals:
+        for p in proposals:
             if p.side != "BUY":
                 scaled.append(p)
                 continue
             shares = (p.shares * self.weight).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
             if shares > 0:
                 scaled.append(dataclasses.replace(p, shares=shares))
-        output.proposals = scaled
-        return output
+        return scaled
 
     def __getattr__(self, name):
         return getattr(self.inner, name)
@@ -343,6 +349,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     wanted = [t for market in result.watchlist if len(market.token_ids) == 2 for t in market.token_ids]
     for portfolio in portfolios:
         wanted += [t for t in portfolio.ledger.state.positions if t not in wanted]
+    wanted += [o["token_id"] for o in deps.db.open_orders() if o["token_id"] not in wanted]
     try:
         books = deps.clob.get_books(wanted) if wanted else {}
     except (SourceUnavailable, ValueError) as exc:
@@ -354,6 +361,16 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     for portfolio in portfolios:
         portfolio.marks.update({t: b.best_bid for t, b in books.items()
                                 if t in portfolio.ledger.state.positions and b.best_bid is not None})
+
+    # 5 bis. Ordres à cours limité posés aux cycles précédents : exécutés avec ces carnets
+    #        (relus APRÈS leur pose) si le marché est passé au travers de leur prix.
+    by_market = {m.market_id: m for m in result.markets} | {m.market_id: m for m in result.watchlist}
+    for portfolio in portfolios:
+        if not portfolio.ledger.state.bankrupt:
+            _fill_resting(deps, portfolio, by_market, books, report, now)
+        if main.ledger.state.bankrupt:
+            report.status = "FAILLITE"
+            return
 
     # 6. Historique de prix récent (seulement si une stratégie active en a besoin).
     if any(getattr(s, "needs_price_history", False) for p in portfolios for s in p.strategies):
@@ -389,12 +406,16 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if hasattr(strategy, "exits"):
             mine = {t: p for t, p in ledger.state.positions.items() if p.strategy_id == strategy.strategy_id}
             output.proposals += strategy.exits(mine, by_market, books, bucket, deps.now())
+        limit_orders = list(getattr(output, "limit_orders", []))
         if portfolio.name == "principal":
             # Identifiants distincts de ceux du fantôme du champion (même stratégie, autre journal).
             output.proposals = [dataclasses.replace(p, op_id="P" + p.op_id[:23]) for p in output.proposals]
-        log.info("[%s] %s v%s : %d propositions, abstentions %s", portfolio.name,
-                 strategy.strategy_id, strategy.version, len(output.proposals), output.abstentions)
+            limit_orders = [dataclasses.replace(p, op_id="P" + p.op_id[:23]) for p in limit_orders]
+        log.info("[%s] %s v%s : %d propositions, %d ordres à poser, abstentions %s", portfolio.name,
+                 strategy.strategy_id, strategy.version, len(output.proposals), len(limit_orders),
+                 output.abstentions)
         proposals += output.proposals
+        proposals += _place_resting(deps, portfolio, limit_orders, by_market, report)
     accepted = fills = 0
 
     for proposal in proposals:
@@ -470,3 +491,135 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if ledger.state.bankrupt:
             break
     portfolio.counts.update(proposals=len(proposals), accepted=accepted, fills=fills)
+
+
+# --------------------------------------------------------------------------- ordres posés
+
+def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal],
+                   by_market: dict[str, MarketInfo], report: CycleReport) -> list[Proposal]:
+    """Pose les ordres à cours limité (base de données, pas d'argent). Un ordre déjà exécutable
+    (achat >= meilleur vendeur, vente <= meilleur acheteur) est renvoyé pour le circuit taker
+    habituel : il serait exécuté tout de suite sur le vrai marché."""
+    cfg = deps.settings.get("limit_orders", {})
+    max_open = int(cfg.get("max_open_per_portfolio", 30))
+    max_age = float(cfg.get("max_age_hours", 6))
+    ledger, now = portfolio.ledger, deps.now()
+    open_orders = deps.db.open_orders(portfolio.name)
+    marketable = []
+    for order in orders:
+        market = by_market.get(order.market_id)
+        if market is None:
+            continue
+        try:  # carnet relu au moment de la pose (celui du début du cycle peut avoir vieilli)
+            book = deps.clob.get_book(order.token_id)
+        except (SourceUnavailable, ValueError) as exc:
+            log.info("[%s] ordre non posé %s : carnet non relu (%s)", portfolio.name, order.op_id, exc)
+            continue
+        if book is not None and ((order.side == "BUY" and book.best_ask is not None
+                                  and order.max_price >= book.best_ask)
+                                 or (order.side == "SELL" and book.best_bid is not None
+                                     and order.max_price <= book.best_bid)):
+            marketable.append(order)
+            continue
+        verdict = evaluate(order, ledger.state, market_context(market, book, order.token_id),
+                           deps.limits, now, portfolio.marks)
+        others = [o for o in open_orders if not (o["token_id"] == order.token_id and o["side"] == order.side)]
+        if verdict.accepted and len(others) >= max_open:
+            verdict.accepted = False
+            verdict.reasons.append(f"trop d'ordres posés ({max_open} au plus)")
+        if verdict.accepted and order.side == "BUY":
+            # Réservation : les achats posés ne peuvent pas promettre plus que le solde disponible.
+            reserved = sum((Decimal(o["remaining"]) * Decimal(json.loads(o["proposal"])["max_price"])
+                            for o in others if o["side"] == "BUY"), Decimal("0"))
+            if reserved + Decimal(verdict.checks.get("cost_bound", "0")) > ledger.state.cash:
+                verdict.accepted = False
+                verdict.reasons.append(f"solde déjà réservé par les ordres posés ({reserved:.2f})")
+        verdict.checks["order_type"] = "limite"
+        if verdict.accepted:
+            hours = min(max(float(order.horizon_hours), 0.0), max_age)
+            if deps.db.add_pending_order(portfolio.name, order, now, now + timedelta(hours=hours)):
+                portfolio.counts["orders_placed"] = portfolio.counts.get("orders_placed", 0) + 1
+                open_orders = deps.db.open_orders(portfolio.name)
+                log.info("[%s] ordre posé %s : %s %s parts à %s", portfolio.name, order.op_id,
+                         order.side, order.shares, order.max_price)
+        deps.db.save_decision(report.cycle_id, now, order, verdict)
+    return marketable
+
+
+def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, MarketInfo],
+                  books: dict[str, OrderBook], report: CycleReport, now: datetime) -> None:
+    """Exécute les ordres posés dont le prix a été traversé (execution_simulator, règle prudente).
+    Chaque exécution repasse par le contrôleur et le journal, comme un ordre taker."""
+    ledger = portfolio.ledger
+    consumed: dict[tuple[str, str], Decimal] = {}
+    for order in deps.db.open_orders(portfolio.name):
+        proposal = Proposal.from_dict(json.loads(order["proposal"]))
+        remaining, n = Decimal(order["remaining"]), int(order["fills"])
+        while f"{proposal.op_id}-L{n + 1}" in ledger.state.op_ids:
+            n += 1  # exécution déjà au journal (cycle interrompu avant la mise à jour de la base)
+
+        def close(status: str) -> None:
+            deps.db.update_order(order["op_id"], remaining=remaining, fills=n, status=status, now=now)
+
+        if now >= datetime.fromisoformat(order["expires_at"]):
+            close("EXPIRE")
+            continue
+        if portfolio.name != "principal" and not portfolio.strategies:
+            close("ANNULE")  # stratégie éliminée
+            continue
+        market, book = by_market.get(proposal.market_id), books.get(proposal.token_id)
+        if market is not None and (market.closed or not market.active or not market.accepting_orders):
+            close("ANNULE")
+            continue
+        if market is None or book is None or book.fetched_at <= datetime.fromisoformat(order["created_at"]):
+            continue  # pas de carnet relu après la pose : on attend
+        shares = remaining
+        if proposal.side == "SELL":
+            position = ledger.state.positions.get(proposal.token_id)
+            if position is None:
+                close("ANNULE")
+                continue
+            shares = min(shares, position.shares)
+        simulate = simulate_resting_buy if proposal.side == "BUY" else simulate_resting_sell
+        key = (proposal.token_id, proposal.side)
+        fill = simulate(book, shares, proposal.max_price, market.fees, consumed.get(key, Decimal("0")))
+        if not fill.executed:
+            continue
+        part = dataclasses.replace(proposal, op_id=f"{proposal.op_id}-L{n + 1}", shares=fill.filled_shares)
+        verdict = evaluate(part, ledger.state, market_context(market, book, part.token_id),
+                           deps.limits, now, portfolio.marks)
+        verdict.checks["order_type"] = "limite"
+        if not verdict.accepted:
+            deps.db.save_decision(report.cycle_id, now, part, verdict, fill)
+            log.info("[%s] exécution d'ordre posé refusée %s : %s", portfolio.name, part.op_id, verdict.reasons)
+            continue
+        extra = {"cycle_id": report.cycle_id, "portfolio": portfolio.name, "order_type": "limite",
+                 "resting_order": proposal.op_id, "fill_status": fill.status, "levels": fill.levels}
+        try:
+            if proposal.side == "BUY":
+                ledger.record_buy(
+                    op_id=part.op_id, token_id=part.token_id, market_id=part.market_id,
+                    event_id=part.event_id, outcome=part.outcome, shares=fill.filled_shares,
+                    price=proposal.max_price, fee=fill.fee, strategy_id=part.strategy_id,
+                    strategy_version=part.strategy_version, now=now, group=correlation_group(market),
+                    extra=dict(extra, est_probability=str(part.est_probability), prob_low=str(part.prob_low),
+                               prob_high=str(part.prob_high), net_edge=str(part.net_edge),
+                               horizon_hours=str(part.horizon_hours)))
+            else:
+                ledger.record_sell(op_id=part.op_id, token_id=part.token_id, shares=fill.filled_shares,
+                                   price=proposal.max_price, fee=fill.fee, now=now,
+                                   extra=dict(extra, strategy_id=part.strategy_id, reason=part.invalidation))
+        except LedgerError as exc:
+            fill.status, fill.reason = "REFUSE_JOURNAL", str(exc)
+            deps.db.save_decision(report.cycle_id, now, part, verdict, fill)
+            log.warning("le journal refuse %s : %s", part.op_id, exc)
+            continue
+        consumed[key] = consumed.get(key, Decimal("0")) + fill.filled_shares
+        remaining, n = remaining - fill.filled_shares, n + 1
+        close("EXECUTE" if remaining <= 0 else "OUVERT")
+        portfolio.counts["resting_fills"] = portfolio.counts.get("resting_fills", 0) + 1
+        deps.db.save_decision(report.cycle_id, now, part, verdict, fill)
+        log.info("[%s] ordre posé exécuté %s : %s parts à %s (+%s de frais)", portfolio.name, part.op_id,
+                 fill.filled_shares, proposal.max_price, fill.fee)
+        if ledger.state.bankrupt:
+            break

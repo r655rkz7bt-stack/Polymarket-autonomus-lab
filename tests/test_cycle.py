@@ -16,7 +16,7 @@ from polymarket_agent.ledger import Ledger
 from polymarket_agent.main import EXIT_HALT, CycleDeps, run_cycle
 from polymarket_agent.persistence import Database
 from polymarket_agent.safety_controller import RealModeForbidden
-from polymarket_agent.strategy_engine import NaiveFavorite, load_strategies
+from polymarket_agent.strategy_engine import NaiveFavorite, PatientOrders, load_strategies
 
 
 def crown(paths, name="naive_favorite_v1.0.0"):
@@ -388,3 +388,80 @@ def test_price_history_is_cached_and_budgeted(tmp_path):
     assert len(calls) == 20  # seuls les 20 marchés jamais lus ; les autres viennent du cache
     assert all(m.yes_price_6h_ago == 0.4 for m in fresh)
     db.close()
+
+
+# --------------------------------------------------------------------------- ordres posés
+
+def _patient(max_proposals="3"):
+    inner = pipeline_strategy()
+    inner.params["max_proposals_per_cycle"] = D(max_proposals)
+    s = PatientOrders(inner, 1)
+    s.mode = "principal"
+    return s
+
+
+def _ledger_types(path):
+    return [json.loads(l)["type"] for l in path.read_text().splitlines()]
+
+
+def test_resting_order_is_placed_then_filled_only_when_traded_through(env, paths, tmp_path):
+    make, db, clock = env
+    crown(paths)
+    # Cycle 1 : écart 0,89 / 0,90 → achat posé à 0,89 (1 cran au-dessus de l'acheteur, sous le vendeur).
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), strategies=[_patient()]))
+    assert report.status == "OK", report.messages
+    assert "BUY" not in _ledger_types(paths[0])  # rien n'est exécuté au moment de la pose
+    orders = db.open_orders()
+    assert len(orders) == 2 and {o["portfolio"] for o in orders} == {"principal", "fantome:naive_favorite_v1.0.0"}
+    assert all(json.loads(o["proposal"])["max_price"] == "0.89" for o in orders)
+
+    # Cycle 2 : le meilleur vendeur touche 0,89 → pas d'exécution (file d'attente inconnue).
+    clock["now"] = NOW + timedelta(minutes=5)
+    touch = make_book("tokA", bids=(("0.88", "500"),), asks=(("0.89", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": touch}), strategies=[_patient()]))
+    assert "BUY" not in _ledger_types(paths[0])
+
+    # La stratégie a remis son prix à jour (0,88 / 0,89 → achat posé à 0,88) : l'ancien ordre est remplacé.
+    assert {json.loads(o["proposal"])["max_price"] for o in db.open_orders()} == {"0.88"}
+    assert db.conn.execute("SELECT COUNT(*) FROM pending_orders WHERE status='REMPLACE'").fetchone()[0] == 2
+
+    # Cycle 3 : des vendeurs à 0,87 → le marché est passé au travers : 30 parts au prix posé 0,88.
+    clock["now"] = NOW + timedelta(minutes=10)
+    through = make_book("tokA", bids=(("0.86", "500"),), asks=(("0.87", "30"), ("0.95", "500")), ts=clock["now"])
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": through}), strategies=[_patient()]))
+    state = Ledger.open(paths[0], KEY, paths[1]).state
+    pos = state.positions["tokA"]
+    assert pos.shares == D("30") and pos.cost_basis == D("30") * D("0.88")  # sans frais : barème taker seulement
+    assert state.fees_paid == 0
+    buys = [json.loads(l) for l in paths[0].read_text().splitlines() if json.loads(l)["type"] == "BUY"]
+    assert buys[0]["data"]["extra"]["order_type"] == "limite"
+
+
+def test_resting_order_expires_and_never_fills_after(env, paths):
+    make, db, clock = env
+    crown(paths)
+    settings = load_settings()
+    settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    settings["limit_orders"] = {"max_age_hours": 0.05, "max_open_per_portfolio": 30}  # 3 minutes
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), settings, [_patient()]))
+    assert len(db.open_orders()) == 2
+    clock["now"] = NOW + timedelta(minutes=5)
+    through = make_book("tokA", bids=(("0.70", "500"),), asks=(("0.71", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": through}), settings, [pipeline_strategy()]))
+    assert "BUY" not in [t for t in _ledger_types(paths[0])]
+    statuses = {r["status"] for r in db.conn.execute("SELECT status FROM pending_orders")}
+    assert statuses == {"EXPIRE"}
+
+
+def test_resting_buys_cannot_reserve_more_than_the_cash(env, paths, tmp_path):
+    make, db, _ = env
+    crown(paths)
+    markets = [raw_market(str(i), yes_token=f"y{i}", no_token=f"n{i}", event_id=f"e{i}") for i in range(6)]
+    books = {f"y{i}": good_book(f"y{i}") for i in range(6)}
+    run_cycle(make(FakeGamma(markets), FakeClob(books), strategies=[_patient("6")]))
+    for name in ("principal", "fantome:naive_favorite_v1.0.0"):
+        reserved = sum(D(o["remaining"]) * D(json.loads(o["proposal"])["max_price"])
+                       for o in db.open_orders(name))
+        assert 0 < reserved <= D("1000")
+    reasons = [r[0] for r in db.conn.execute("SELECT reasons FROM decisions WHERE accepted = 0")]
+    assert any("réservé" in r for r in reasons)  # Kelly complet : le 2e ordre ne tient plus dans le solde

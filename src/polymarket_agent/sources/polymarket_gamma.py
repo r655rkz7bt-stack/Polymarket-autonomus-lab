@@ -84,7 +84,8 @@ def parse_market(raw: dict) -> MarketInfo:
         enabled=fees_enabled if isinstance(fees_enabled, bool) else None,
         rate=_dec(fee_schedule.get("rate")) if fee_schedule else None,
         exponent=_dec(fee_schedule.get("exponent")) if fee_schedule else None,
-        taker_only=bool(fee_schedule.get("takerOnly", True)) if fee_schedule else True,
+        # Prudence : sans « takerOnly » explicite, un ordre posé paie les frais taker.
+        taker_only=fee_schedule.get("takerOnly") is True if fee_schedule else False,
         fee_type=raw.get("feeType"),
     )
     if fees.enabled is None:

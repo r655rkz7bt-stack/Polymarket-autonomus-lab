@@ -103,6 +103,25 @@ market_structure:
     max_extra_ticks: {value: 0, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
+calibration_patiente:
+  # Variante « patiente » (ordres à cours limité, 15/10/2026) : même modèle que calibration,
+  # mais au lieu d'acheter au vendeur elle POSE un achat 1 cran au-dessus du meilleur acheteur.
+  # Hypothèse : économiser l'écart et les frais taker vaut plus que les occasions manquées.
+  # « class » : réutilise le code d'une stratégie existante sous un autre nom (son propre fantôme).
+  # « limit_ticks » : active le mode patient (0 = rejoindre le meilleur acheteur).
+  class: calibration
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-15"
+  table: calibration_v2.json
+  params:
+    min_events:      {value: 150, min: 150, max: 5000}
+    min_net_edge:    {value: 0.00, min: 0.00, max: 0.50}   # avantage mesuré au vendeur ; le prix posé est meilleur
+    max_extra_ticks: {value: 0, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 5, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 news_momentum:
   # Stratégie 2 : actualité confirmée + mouvement amorcé → continuation (a priori non calibré).
   enabled: true
