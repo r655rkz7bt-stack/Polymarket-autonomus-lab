@@ -85,6 +85,38 @@ class NaiveFavorite:
         self.created_at = created_at
         self.params = params
 
+    # Options (16/10/2026, experiments/favori.md) — sans elles, comportement d'origine :
+    #   familles (YAML, liste) : familles de marchés acceptées (market_family) ;
+    #   min_hours / max_hours : fenêtre de temps avant l'échéance (avant le coup d'envoi en sport) ;
+    #   underdog = 1 : acheter l'OUTSIDER (l'issue la moins chère) au lieu du favori ;
+    #   shrink : estimation = milieu + shrink × (1 − milieu) au lieu de milieu + bias (le favori
+    #   perd « shrink » fois moins souvent que son prix ne l'annonce).
+    families: tuple[str, ...] = ()
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        """Variante ciblée (familles + `max_candidates`) : demande ses propres marchés au scanner,
+        ceux dont l'issue visée (favori ou outsider) est dans la plage de prix."""
+        p = self.params
+        if not self.families or p.get("max_candidates", Decimal("0")) <= 0:
+            return []
+        out = []
+        for m in markets:
+            if len(m.outcome_prices) != 2 or market_family(m) not in self.families:
+                continue
+            price = min(m.outcome_prices) if p.get("underdog", Decimal("0")) > 0 else max(m.outcome_prices)
+            if p["min_ask"] - Decimal("0.02") <= price <= p["max_ask"]:
+                out.append(m)
+        out.sort(key=lambda m: -m.volume_24h)
+        return out[: int(p["max_candidates"])]
+
+    def _window_ok(self, market: MarketInfo, now) -> bool:
+        p = self.params
+        ref = market.game_start or market.end_date
+        if ref is None or ("min_hours" not in p and "max_hours" not in p):
+            return "min_hours" not in p and "max_hours" not in p
+        hours = (ref - now).total_seconds() / 3600
+        return p.get("min_hours", Decimal("-1e9")) <= Decimal(str(hours)) <= p.get("max_hours", Decimal("1e9"))
+
     def propose(self, watchlist: list[MarketInfo], books: dict[str, OrderBook],
                 state: LedgerState, limits: RiskLimits, bucket: str,
                 marks: dict[str, Decimal] | None = None) -> StrategyOutput:
@@ -96,7 +128,12 @@ class NaiveFavorite:
             if not market.outcome_prices or len(market.token_ids) != 2:
                 out.abstain("marché non binaire")
                 continue
+            if self.families and market_family(market) not in self.families:
+                out.abstain("famille de marchés exclue")
+                continue
             idx = 0 if market.outcome_prices[0] >= market.outcome_prices[1] else 1
+            if p.get("underdog", Decimal("0")) > 0:
+                idx = 1 - idx
             token_id = market.token_ids[idx]
             if token_id in state.positions:
                 out.abstain("position déjà ouverte")
@@ -109,7 +146,13 @@ class NaiveFavorite:
             if not (p["min_ask"] <= ask <= p["max_ask"]):
                 out.abstain("favori hors de la plage de prix")
                 continue
-            q = min(book.mid + p["bias"], Decimal("0.99"))
+            if not self._window_ok(market, book.fetched_at):
+                out.abstain("hors de la fenêtre de temps")
+                continue
+            if "shrink" in p:
+                q = min(book.mid + p["shrink"] * (ONE - book.mid), Decimal("0.99"))
+            else:
+                q = min(book.mid + p["bias"], Decimal("0.99"))
             low = q - p["uncertainty"]
             high = min(q + p["uncertainty"], Decimal("0.995"))
             best: tuple[Decimal, Decimal] | None = None  # (prix limite, coût par part)
@@ -150,6 +193,17 @@ class NaiveFavorite:
         candidates.sort(key=lambda item: item[0], reverse=True)
         out.proposals = [prop for _, prop in candidates[: int(p["max_proposals_per_cycle"])]]
         return out
+
+
+def market_family(market: MarketInfo) -> str:
+    """Famille d'un marché d'après son barème de frais (Gamma `feeType`, vérifié le 16/10/2026) :
+    « politics_fees » → politics, « sports_fees_v3 » → sports, … ; marché SANS frais →
+    geopolitics (seule catégorie sans frais, docs Polymarket) ; barème inconnu → other."""
+    if market.fees.enabled is False:
+        return "geopolitics"
+    if market.fees.enabled and market.fees.fee_type:
+        return market.fees.fee_type.split("_")[0]
+    return "other"
 
 
 def market_category(market: MarketInfo) -> str:
@@ -506,6 +560,8 @@ def load_strategies(path: Path) -> list:
         strategy = cls(*args)
         if "class" in spec:
             strategy.strategy_id = strategy_id
+        if "familles" in spec:  # familles de marchés acceptées (ex. [politics, geopolitics])
+            strategy.families = tuple(str(f) for f in spec["familles"])
         if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
             strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
         mode = str(spec.get("mode", "principal"))

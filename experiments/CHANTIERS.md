@@ -137,3 +137,11 @@ de GitHub), API « cachées » non documentées (ESPN…) : conditions d'utilisa
 Leçon : ces marchés « faciles à modéliser » sont déjà bien cotés. Les avantages restants sont
 plutôt du côté des ordres POSÉS (pas de frais, remise aux poseurs) et des marchés peu suivis.
 
+## Le favori (16/10/2026, `experiments/favori.md`)
+- Seule poche solide : favori 0,85-0,97 en politique et géopolitique (+5,7 % après frais, 47 jours
+  gagnants sur 54) → `favori_politique` (+ patiente).
+- À éviter : favori dans les 6 dernières heures (sport, crypto, météo) → `naive_favorite_sans_fin`.
+- Fragile : outsider sportif avant le match → `outsider_sport_patiente`.
+- À refaire dans un mois avec de nouvelles données (la politique de septembre-octobre 2026 ne
+  se répète pas forcément).
+

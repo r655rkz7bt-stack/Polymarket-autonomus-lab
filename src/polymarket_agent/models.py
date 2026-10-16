@@ -64,6 +64,7 @@ class MarketInfo:
     rewards_min_size: Decimal | None = None
     rewards_max_spread: Decimal | None = None
     rewards_daily_rate: Decimal = Decimal("0")
+    game_start: datetime | None = None  # sport : coup d'envoi (Gamma gameStartTime) ; l'échéance n'est pas fiable
 
     @property
     def data_ok(self) -> bool:

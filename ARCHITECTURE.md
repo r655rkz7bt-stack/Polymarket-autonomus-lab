@@ -561,3 +561,16 @@ orienter le labo vers la tenue de marché, sans arrêter ce qui tourne déjà.
   inconnue (règle d'exécution prudente du simulateur : seulement si le prix est traversé) ;
   un ordre du capital principal réduit à sa part peut passer sous la taille récompensée.
 
+## 31. Le favori, raison par raison (16 octobre 2026)
+
+Étude `experiments/favori.md` (script `experiments/favori/analyse.py`, prix réellement payés,
+échéance ANNONCÉE comme référence de temps) : le favori est trop cher en moyenne, sauf en politique
+et géopolitique (+5,7 % après frais, stable) ; la fin de partie est un piège ailleurs.
+- `NaiveFavorite` (strategy_engine.py) gagne des options, sans changer l'originale : `familles`
+  (YAML, liste ; `market_family` d'après le barème de frais : politics, sports, crypto, economics…,
+  sans frais = geopolitics), `min_hours` / `max_hours` (avant l'échéance, ou avant le coup d'envoi
+  `MarketInfo.game_start` = Gamma `gameStartTime`), `underdog` (acheter l'outsider), `shrink`
+  (estimation = milieu + shrink × (1 − milieu)), `max_candidates` (marchés demandés au scanner).
+- Variantes : `favori_politique`, `favori_politique_patiente`, `naive_favorite_sans_fin`,
+  `outsider_sport_patiente`. `scanner.max_extra_markets` passé à 260.
+
