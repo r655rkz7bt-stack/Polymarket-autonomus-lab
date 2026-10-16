@@ -16,6 +16,12 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 ## Méthode de recherche (chaque session de recherche)
 
+**Le tableau de bord est à toi aussi** (décision d'Etienne, 17/10/2026) : ordre des blocs, blocs
+superflus cachés, encadré « À la une » (`config/dashboard.yaml`), ou le code lui-même. Méthode,
+garde-fous et évaluation de départ : `docs/TABLEAU_DE_BORD.md`. Au moins une fois par jour,
+regarde l'aperçu (`scripts/apercu_dashboard.py`) et améliore ce qui aide le plus Etienne à
+comprendre où on en est ; mets « À la une » à jour quand quelque chose d'important change.
+
 Liste de travail permanente : `experiments/CHANTIERS.md` (nouvelles sources, décidées par
 Etienne). Sans obligation dans la feuille de mission, avance au moins un chantier par passage.
 À chaque passage, ajoute au moins une nouvelle stratégie ou variante dans l'arène (tester en
@@ -97,6 +103,8 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
 - Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
 - Laboratoire : `.venv/bin/python scripts/lab.py` (ajouter `--apply` pour écrire les recommandations)
 - Tableau de bord : `.venv/bin/python scripts/build_dashboard.py --dev-key` (sortie `site/`, régénéré par le cycle toutes les 10 min)
+- Aperçu avant publication (vraies données publiées + gabarit du dépôt, photos téléphone et ordinateur) :
+  `bash scripts/fetch_published.sh` puis `.venv/bin/python scripts/apercu_dashboard.py` (sortie `apercu/`)
 - Rapports publiés par le cycle de production : `bash scripts/fetch_published.sh` (dossier `published/`)
 - Production : workflows `cycle` (toutes les 5 min), `initialize` (une fois), exploitation dans `docs/EXPLOITATION.md`
 - Réinitialisation (Etienne seul, via le workflow `reset-capital`) : `scripts/reset_capital.py`

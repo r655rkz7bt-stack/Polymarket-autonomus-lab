@@ -31,3 +31,6 @@ site/
 
 # Copie locale de ce que le cycle a publié (scripts/fetch_published.sh)
 published/
+
+# Aperçu local du tableau de bord (scripts/apercu_dashboard.py)
+apercu/
