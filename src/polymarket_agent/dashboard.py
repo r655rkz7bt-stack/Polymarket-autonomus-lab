@@ -42,6 +42,42 @@ def _marks(db, tokens) -> dict[str, Decimal]:
     return marks
 
 
+def research_log(root: Path, limit: int = 3) -> list[dict]:
+    """Derniers passages du chercheur (experiments/journal_recherche.md, écrit par la routine) :
+    {"date", "quand", "fait", "details": [{"titre", "texte"}]}. Le texte est une donnée : la page
+    l'insère comme du texte, jamais comme du HTML."""
+    import re
+    path = root / "experiments" / "journal_recherche.md"
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return []
+    clean = lambda s: re.sub(r"\s+", " ", s.replace("**", "").replace("`", "")).strip()
+    out = []
+    for block in re.split(r"^## ", text, flags=re.M)[1:]:
+        lines = block.splitlines()
+        title = lines[0].strip()
+        if "chercheur" not in title.lower():
+            continue
+        m = re.match(r"(\d{4}-\d{2}-\d{2})\s*(?:\(([^)]*)\))?", title)
+        items, current = [], None
+        for line in lines[1:]:
+            b = re.match(r"^- \*\*([^*]+)\*\*\s*:?\s*(.*)$", line)
+            if b:
+                current = {"titre": clean(b.group(1)), "texte": clean(b.group(2))}
+                items.append(current)
+            elif current is not None and line.startswith("  ") and line.strip():
+                current["texte"] = clean(current["texte"] + " " + line)
+        fait = next((i["texte"] for i in items if i["titre"].lower() == "fait"), "")
+        out.append({"date": m.group(1) if m else title[:10],
+                    "quand": (m.group(2) or "").replace("passage chercheur, ", "") if m else "",
+                    "fait": fait[:600],
+                    "details": [dict(i, texte=i["texte"][:600]) for i in items if i["titre"].lower() not in ("fait", "lu")]})
+        if len(out) >= limit:
+            break
+    return out
+
+
 def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: Path,
             now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
@@ -211,6 +247,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "couts": {"services_payants_eur": 0, "appels_ia_aujourdhui": db.llm_calls(now.date().isoformat()),
                   "plafond_ia": llm.get("max_calls_per_day", 0)},
         "historique_arene": arena_history.series(db, now),
+        "chercheur": research_log(root),
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)

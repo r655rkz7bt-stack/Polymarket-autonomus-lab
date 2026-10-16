@@ -193,3 +193,35 @@ def test_arena_ranking_history_one_photo_per_hour(tmp_path):
     assert "Plus forte remontée : test_v0, +1 place depuis hier." in texts
     assert "Plus forte chute : a, −1 place depuis hier." in texts
     db.close()
+
+
+def test_last_research_actions_are_read_from_the_journal(tmp_path):
+    journal = tmp_path / "experiments" / "journal_recherche.md"
+    journal.parent.mkdir()
+    journal.write_text("""# Journal de recherche
+
+## 2026-10-16 (passage chercheur, ~10 h UTC)
+
+- **Lu** : CLAUDE.md.
+- **Fait** : deux variantes « patientes » `meteo_prevision_patiente`
+  et `news_momentum_patiente` dans l'arène.
+- **Pas fait** : chantier sport.
+
+## 2026-10-16 (session avec Etienne, ~6 h UTC) — météo
+
+- **Fait** : stratégie meteo_prevision.
+
+## 2026-10-15 (passage chercheur, ~20 h UTC)
+
+- **Fait** : variante market_structure_patiente.
+""", encoding="utf-8")
+    log = dashboard.research_log(tmp_path)
+    assert [r["date"] for r in log] == ["2026-10-16", "2026-10-15"]  # sessions avec Etienne exclues
+    assert log[0]["quand"] == "~10 h UTC"
+    assert log[0]["fait"] == "deux variantes « patientes » meteo_prevision_patiente et news_momentum_patiente dans l'arène."
+    assert log[0]["details"] == [{"titre": "Pas fait", "texte": "chantier sport."}]
+    assert dashboard.research_log(tmp_path / "absent") == []
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    assert data["chercheur"][0]["date"] == "2026-10-16"
+    db.close()

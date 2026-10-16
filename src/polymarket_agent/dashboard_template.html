@@ -83,6 +83,25 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
   color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
 .meter-row b { color: var(--ink); font-weight: 600; }
 
+/* --- dernières actions du chercheur (journal de recherche), dans le résumé */
+.research { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 8px; }
+.research .kicker { margin-bottom: 2px; }
+.research details { background: var(--raised); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.research summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 4px 12px; align-items: baseline; margin: 0; color: var(--ink); font: 0.9rem/1.45 var(--sans); letter-spacing: 0; }
+.research summary::-webkit-details-marker { display: none; }
+.research summary .when { font: 500 0.74rem var(--mono); color: var(--muted); white-space: nowrap; }
+.research summary .what { overflow-wrap: anywhere; }
+.research summary .chev { font: 500 0.8rem var(--mono); color: var(--muted); transition: transform 0.15s; }
+.research details[open] summary .chev { transform: rotate(180deg); }
+.research details[open] summary .what { color: var(--ink); }
+.research summary:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 4px; border-radius: 6px; }
+.research dl { margin: 10px 0 2px; display: grid; gap: 6px; }
+.research dt { font: 500 0.7rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.research dd { margin: 0; color: var(--ink-2); font-size: 0.86rem; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .research summary { grid-template-columns: minmax(0, 1fr) auto; }
+  .research summary .when { grid-column: 1 / -1; } }
+
 /* --- organisme : un cœur anatomique en points, ses constantes tout autour (planche anatomique) */
 .organism { position: relative; overflow: hidden; margin-inline: calc(50% - 50vw); border-radius: 0;
   border-left: 0; border-right: 0; padding: 22px 0; }
@@ -233,6 +252,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       <p class="headline" id="headline"></p>
     </div>
     <ul class="facts" id="facts"></ul>
+    <div class="research" id="research" aria-label="Dernières actions du chercheur"></div>
     <div class="split">
       <div class="split-labels"><span id="split-left"></span><span id="split-right"></span></div>
       <div class="dots" id="split"></div>
@@ -760,6 +780,30 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(start, 150); });
     document.addEventListener("visibilitychange", function () { if (!document.hidden) { if (raf) cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } });
     start();
+  })();
+
+  // Dernières actions du chercheur (journal de recherche) : ce qu'il a fait, dépliable pour le reste.
+  (function researchBox() {
+    var box = document.getElementById("research"), items = D.chercheur || [];
+    if (!items.length) { box.remove(); return; }
+    box.appendChild(el("div", "kicker", "Dernières actions du chercheur"));
+    items.forEach(function (r, k) {
+      var det = el("details"), sum = el("summary");
+      var m = /^\d{4}-(\d\d)-(\d\d)$/.exec(r.date || "");
+      sum.appendChild(el("span", "when", (m ? m[2] + "/" + m[1] : r.date) + (r.quand ? " · " + r.quand : "")));
+      var fait = r.fait || "aucune action notée", short = fait.length > 170 ? fait.slice(0, 168) + "…" : fait;
+      var what = el("span", "what", short);
+      sum.appendChild(what);
+      sum.appendChild(el("span", "chev", "▾"));
+      det.appendChild(sum);
+      var dl = el("dl");
+      (r.details || []).forEach(function (x) { dl.appendChild(el("dt", null, x.titre)); dl.appendChild(el("dd", null, x.texte)); });
+      if (dl.children.length) det.appendChild(dl);
+      // Déplié : le texte complet remplace le résumé coupé.
+      det.addEventListener("toggle", function () { what.textContent = det.open ? fait : short; });
+      if (k === 0) { det.open = true; what.textContent = fait; }
+      box.appendChild(det);
+    });
   })();
 
   // Aujourd'hui : phrases écrites par du code (today.py), groupées par sujet.
