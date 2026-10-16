@@ -135,6 +135,8 @@ sources:
   meteo_metar: {enabled: true, every_minutes: 15, max_stations: 60}   # aviationweather.gov
   # Prévisions GFS + ECMWF aux stations (stratégie meteo_prevision) ; débit limité par adresse.
   meteo_prevision: {enabled: true, every_minutes: 60}                 # api.open-meteo.com
+  # Valeurs réelles (tranche gagnante des marchés météo résolus) : étalonnage par station.
+  meteo_reel: {enabled: true, every_minutes: 180, days: 10}           # gamma-api.polymarket.com
   # Scores officiels des ligues (sources de résolution, chantier n°0), sans clé.
   mlb_stats: {enabled: true, every_minutes: 15}   # statsapi.mlb.com
   nhl_stats: {enabled: true, every_minutes: 15}   # api-web.nhle.com

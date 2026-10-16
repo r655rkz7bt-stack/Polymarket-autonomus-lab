@@ -14,8 +14,9 @@ import json
 import logging
 import os
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
+from polymarket_agent import weather_calibration
 from polymarket_agent.correlation import correlation_group
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.models import MarketInfo
@@ -168,8 +169,28 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
                 coords[code] = tuple(json.loads(raw))
         if not coords:
             return []
-        return factories.get("meteo_prevision", lambda: ForecastSource(http))().fetch(coords, wanted, now)
+        obs = factories.get("meteo_prevision", lambda: ForecastSource(http))().fetch(coords, wanted, now)
+        if db:  # étalonnage par station : prévisions gardées, erreurs passées jointes à chaque prévision
+            weather_calibration.record_forecasts(db, obs, now)
+            try:  # une fois par station : prévisions des jours passés, pour étalonner sans attendre
+                weather_calibration.backfill_forecasts(db, http, coords, now)
+            except SourceUnavailable as exc:
+                log.warning("archive des prévisions indisponible : %s", exc)
+            today = now.astimezone(timezone.utc).strftime("%Y-%m-%d")
+            for o in obs:
+                o.data["erreurs"] = {k: weather_calibration.errors(db, o.data["station"], k, today)
+                                     for k in ("max", "min")}
+        return obs
     run("meteo_prevision", forecast)
+    truth_count: list[int] = []
+
+    def truth(cfg):  # valeurs réelles d'après les marchés météo résolus (aucune observation produite)
+        if db:
+            truth_count.append(weather_calibration.update_truth(db, http, now, int(cfg.get("days", 10))))
+        return []
+    run("meteo_reel", truth)
+    if truth_count:
+        result.status["meteo_reel"] = f"ok ({truth_count[0]} valeurs réelles)"
     run("mlb_stats", lambda cfg: factories.get("mlb_stats", lambda: MlbSource(http))().fetch(now))
     run("nhl_stats", lambda cfg: factories.get("nhl_stats", lambda: NhlSource(http))().fetch(now))
     run("football_data", lambda cfg: factories.get("football_data", lambda: FootballDataSource(http))().fetch(now),
