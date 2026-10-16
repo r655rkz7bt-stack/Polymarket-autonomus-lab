@@ -11,7 +11,7 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 - Cahier des charges : [`docs/CAHIER_DES_CHARGES.md`](docs/CAHIER_DES_CHARGES.md)
 - Règles permanentes pour Claude : [`CLAUDE.md`](CLAUDE.md)
 
-## État d'avancement (étape 8 terminée — 15/10/2026)
+## État d'avancement (étape 9 terminée — 16/10/2026 : 24 h de production sans erreur)
 
 | Fonction | État |
 |---|---|
@@ -27,24 +27,26 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Backtest via le vrai journal et le vrai contrôleur, anti-fuite temporelle | ✅ testé |
 | Portefeuilles « fantômes » (journal séparé par stratégie à l'essai) | ✅ testé |
 | Liberté de trading totale (seule règle : à 0 € tu meurs) | ✅ décision du 15/10/2026 |
-| Arène : 9 stratégies (les 7 familles du cahier des charges + 2), champion automatique, élimination hebdo | ✅ testé |
+| Arène : 15 stratégies (les 7 familles du cahier des charges, météo, variantes « patientes »), champion automatique, élimination hebdo | ✅ testé, en service |
 | Ventes (sorties objectif / stop / durée) | ✅ testé, vérifié en réel |
 | Moteur d'apprentissage (verdicts par stratégie) | ✅ testé |
 | Laboratoire : walk-forward, paramètres bornés, pénalité des essais multiples | ✅ testé |
 | Cliquet des paliers (×1,5) inscrit dans le journal signé | ✅ testé |
 | Feuille de mission du chercheur (`scripts/research_brief.py`) | ✅ testé |
 | Sources : commentaires Polymarket | ✅ vérifié en réel |
-| Sources : prix crypto, RSS (10 flux) | ✅ testées et vérifiées en réel |
+| Sources : prix crypto (Binance d'abord), 51 flux RSS, Google Actualités, scores MLB / NHL, relevés et prévisions météo, source de résolution de chaque marché | ✅ testées et vérifiées en réel |
+| Sources à clé gratuite (Guardian, cotes des bookmakers, football-data) | ✅ testées — inactives tant qu'il n'y a pas de clé |
 | Sources : GDELT, Bluesky | ✅ testées — GDELT refuse souvent (429, IP partagée) ; Bluesky demande un compte (étape 8) |
 | Gemini (gratuit, optionnel) | ✅ testé — inactif tant qu'il n'y a pas de clé |
 | Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
-| **Stratégie rentable prouvée** | ❌ pas encore — l'arène tranche en réel |
-| Tableau de bord (page statique, clair/sombre, téléphone) | ✅ testé, régénéré par le cycle toutes les 30 min |
-| Publication du tableau de bord sur GitHub Pages | ✅ écrite et simulée — ⏳ activation de Pages |
+| Stratégie météo (prévisions GFS + ECMWF), testée sur 14 553 marchés résolus | ✅ meilleure que le marché hors échantillon — ⏳ à confirmer par l'arène |
+| Audit indépendant des exécutions et des règlements | ✅ en service : 1 039 exécutions et 22 règlements vérifiés, 0 anomalie |
+| **Stratégie rentable prouvée** | ❌ pas encore — aucune championne après 24 h ; l'arène tranche en réel |
+| Tableau de bord (page statique, téléphone, tri et listes dépliables) | ✅ en ligne, régénéré toutes les 10 min ([lien](https://r655rkz7bt-stack.github.io/Polymarket-autonomus-lab/)) |
 | Scénarios de panne (dont base SQLite illisible) | ✅ testés |
 | Verrouillage : ruleset `main`, environnement `production`, `guard`, `tests`, fusion automatique | ✅ actif, vérifié en réel (PR de test bloquée) |
-| Réinitialisation `reset-capital` | ✅ testée localement — ⏳ essai réel à l'étape 9 (branche `data`) |
-| Exécution automatique toutes les 5 min (`cycle.yml`, cron-job.org) | ✅ écrite et simulée — ⏳ mise en service (`docs/EXPLOITATION.md`) |
+| Réinitialisation `reset-capital` | ✅ testée localement — pas lancée en production (aucune faillite) |
+| Exécution automatique toutes les 5 min (`cycle.yml`, cron-job.org) | ✅ en service depuis le 15/10 12:17 UTC : 287 cycles en 24 h, 0 erreur |
 
 ## Lancer le prototype (dans un terminal Linux / Claude Code)
 

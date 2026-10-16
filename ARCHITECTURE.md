@@ -403,7 +403,23 @@ de l'arène) devient libre ; la méthode passe dans `docs/METHODE.md` (libre). `
 texte des workflows libres (ni secret, ni environnement, ni écriture, ni déclenchement sur
 PR/push, ni nom de contrôle exigé). Limite : le cycle exécute du code libre avec `LEDGER_KEY`.
 
-**Critère de fin :** 24 h de cycles sans erreur sur GitHub (à constater après la mise en service).
+**Critère de fin :** 24 h de cycles sans erreur sur GitHub — **atteint le 16/10/2026 à 12:17 UTC.**
+
+**Bilan des 24 premières heures (15/10 12:17 → 16/10 12:17 UTC, constaté sur la branche `data`) :**
+- 287 cycles, tous terminés avec le code 0 (aucune erreur, aucun journal illisible) ; écart médian
+  entre deux cycles 5,0 min ; un seul trou de 38 min, au tout début (réglage de cron-job.org) ;
+  tableau de bord publié sur `gh-pages` toutes les 10 min.
+- Audit indépendant (job `audit`, depuis le 15/10 ~19:50) : 1 039 exécutions vérifiées contre
+  l'historique public des prix, 22 règlements conformes à la résolution officielle, 0 anomalie.
+- Routine « chercheur » : 5 passages notés dans `experiments/journal_recherche.md`, 5 pull
+  requests fusionnées (#6, #10, #26, #32, #35) ; aucune ne touchait le noyau.
+- Capital principal : 994,06 (−0,59 %), aucune championne : aucune stratégie n'a encore assez
+  d'opérations clôturées et une croissance suffisante (règles : `config/promotion.yaml`).
+- Limites constatées : le workflow `labo-alerte-coeur` (programmé toutes les heures) n'a tourné
+  que 3 fois, GitHub retardant ou sautant les déclenchements programmés ; le cycle exécute
+  toujours du code libre avec `LEDGER_KEY` (le « notaire » n'est pas fait, option A choisie :
+  `proposals/2026-10-15_notaire_et_audit_des_reglements.md`) ; `reset-capital` n'a pas été
+  essayé en production (aucune faillite).
 
 
 ## 21. Ordres à cours limité posés (point 6, 15 octobre 2026)
