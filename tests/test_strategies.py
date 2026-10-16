@@ -28,6 +28,7 @@ def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
     assert sorted(s.strategy_id for s in loaded) == [
         "calibration", "calibration_patiente", "cross_market", "crypto_threshold", "crypto_threshold_patiente", "information_advantage",
+        "market_maker", "market_maker_serre",
         "market_structure", "market_structure_patiente", "meteo_prevision", "meteo_prevision_patiente", "naive_favorite", "naive_favorite_patiente", "news_momentum",
         "news_momentum_patiente", "reversion",
         "social_sentiment", "temperature_floor"]

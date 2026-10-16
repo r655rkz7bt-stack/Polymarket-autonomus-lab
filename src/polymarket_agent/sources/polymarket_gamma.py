@@ -87,6 +87,7 @@ def parse_market(raw: dict) -> MarketInfo:
         # Prudence : sans « takerOnly » explicite, un ordre posé paie les frais taker.
         taker_only=fee_schedule.get("takerOnly") is True if fee_schedule else False,
         fee_type=raw.get("feeType"),
+        rebate_rate=_dec(fee_schedule.get("rebateRate")) if fee_schedule else None,
     )
     if fees.enabled is None:
         issues.append("statut des frais inconnu")
@@ -123,6 +124,10 @@ def parse_market(raw: dict) -> MarketInfo:
         issues=issues,
         resolution_source=str(raw.get("resolutionSource") or ""),
         description=str(raw.get("description") or ""),
+        rewards_min_size=_dec(raw.get("rewardsMinSize")),
+        rewards_max_spread=_dec(raw.get("rewardsMaxSpread")),
+        rewards_daily_rate=sum((_dec(r.get("rewardsDailyRate")) or Decimal("0")
+                                for r in (raw.get("clobRewards") or []) if isinstance(r, dict)), Decimal("0")),
     )
 
 

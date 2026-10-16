@@ -535,3 +535,29 @@ Le notaire (signature réservée à une machine protégée) n'est pas fait :
 - `idea_test.fetch_event_trades` / `taker_cost` : prix réellement payés par les preneurs
   (data-api, public). Leçon du 16/10/2026 (météo, crypto) : l'historique « 10 minutes » du CLOB
   invente des gains sur les marchés sans échange (carnets vides, prix périmés).
+
+## 30. Tenue de marché (16 octobre 2026)
+
+Décision d'Etienne après la veille (`experiments/veille_bots/Bots Polymarket et leurs gains.md`) :
+orienter le labo vers la tenue de marché, sans arrêter ce qui tourne déjà.
+- Stratégie `market_maker` (`strategies_v2.MarketMaker`, variantes `market_maker` et
+  `market_maker_serre`) : à chaque cycle, achat du OUI et achat du NON POSÉS au meilleur acheteur
+  de chaque côté (paire payée au plus 1 − `min_pair_margin`), sur des marchés calmes (milieu
+  0,15-0,85, prix stable sur 6 h, échéance ≥ 3 jours, ni sport ni crypto : `rebateRate` < 0,25),
+  avec une cagnotte de récompense ≥ 5 $/jour. Le stock détenu est revendu au meilleur vendeur ;
+  stock net plafonné (`max_net_quotes`) ; coupe-perte (`stop_loss`, vente immédiate). Cotes de
+  12 min renouvelées à chaque cycle. Exemptée de la « mise prudente » (elle ne prédit rien :
+  attribut `forecasting = False`), pas de la suspension.
+- `liquidity_rewards.py` : récompenses de liquidité ESTIMÉES (formule officielle, carnet du NON =
+  miroir du OUI, concurrents comptés une fois), table `recompenses_estimees`, jamais dans le
+  journal ni dans le capital (proposition au noyau si la piste se confirme).
+- `markout.py` : sélection adverse des ordres posés (écart avec le milieu à 5 min, 1 h, 6 h,
+  24 h et à la résolution), ordres servis contre ordres manqués, pour tous les portefeuilles qui
+  posent des ordres (tenue de marché et variantes « patientes »). Section « Ordres posés » du
+  tableau de bord.
+- Gamma : `rewardsMinSize`, `rewardsMaxSpread`, `clobRewards[].rewardsDailyRate` →
+  `MarketInfo.rewards_*` ; `feeSchedule.rebateRate` → `FeeSchedule.rebate_rate`.
+- Limites : photo du carnet toutes les 5 min (Polymarket : chaque minute) ; file d'attente
+  inconnue (règle d'exécution prudente du simulateur : seulement si le prix est traversé) ;
+  un ordre du capital principal réduit à sa part peut passer sous la taille récompensée.
+

@@ -301,6 +301,15 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <div class="scroll"><table id="positions-t"></table></div>
   </section>
 
+  <section id="ordres-poses" class="card">
+    <div class="head"><h2>Ordres posés</h2><span class="kicker">tenue de marché : récompenses estimées et sélection adverse (7 jours)</span></div>
+    <p class="note">Récompenses de liquidité : ESTIMATION d'après la formule de Polymarket, jamais comptée dans le capital
+      (versée seulement les jours à 1 $ ou plus). Markout : écart moyen par part entre notre prix et le prix du milieu plus
+      tard (positif = bon) ; si les ordres servis font moins bien que les ordres manqués, on est servi quand on a tort.</p>
+    <div class="scroll"><table id="rewards-t"></table></div>
+    <div class="scroll"><table id="markout-t"></table></div>
+  </section>
+
   <div class="grid2" id="journal">
     <section class="card"><div class="head"><h2>Opérations clôturées</h2></div><div class="scroll"><table id="closed"></table></div></section>
     <section class="card"><div class="head"><h2>Marchés surveillés</h2><span class="kicker">achat / vente</span></div>
@@ -1076,6 +1085,24 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         p.strategie + " · ouverte " + short(p.ouverte)));
         return [p.portefeuille.replace(/_v[\d.]+$/, ""), m, fmt(p.cout, 2), p.latent === null ? "—" : delta(p.latent, 2), forecast(p)]; }),
     "Aucune position ouverte.");
+
+  // ---------------------------------------------------------------- ordres posés
+  (function restingOrders() {
+    var O = D.ordres_poses || {}, R = O.recompenses || {}, M = O.markout || {};
+    table("rewards-t", [{ t: "portefeuille" }, { t: "estimé 7 j ($)", n: 1 }, { t: "versable ($)", n: 1 }, { t: "jours", n: 1 }],
+      Object.keys(R).sort().map(function (p) { return [p.replace(/^fantome:/, "").replace(/_v[\d.]+$/, ""), fmt(R[p].estime, 2), fmt(R[p].versable, 2), R[p].jours]; }),
+      "Aucune récompense estimée pour l'instant (aucun ordre posé sur un marché récompensé).");
+    var H = ["5 min", "1 h", "6 h", "24 h", "résolution"];
+    function cell(x) { return x && x.moyenne !== null && x.moyenne !== undefined ? delta(x.moyenne, 3) + " (" + x.cas + ")" : "—"; }
+    var rows = [];
+    Object.keys(M).sort().forEach(function (p) {
+      var name = p.replace(/^fantome:/, "").replace(/_v[\d.]+$/, "");
+      rows.push([name, "servis (" + M[p].servis.executions + ")"].concat(H.map(function (h) { return cell(M[p].servis[h]); })));
+      rows.push([name, "manqués (" + M[p].manques.ordres + ")"].concat(H.map(function (h) { return cell(M[p].manques[h]); })));
+    });
+    table("markout-t", [{ t: "portefeuille" }, { t: "ordres" }].concat(H.map(function (h) { return { t: h, n: 1 }; })), rows,
+      "Pas encore d'ordre posé à mesurer.");
+  })();
 
   // ---------------------------------------------------------------- journal
   table("closed", [{ t: "date", d: 1 }, { t: "marché", q: 1 }, { t: "résultat", n: 1 }],

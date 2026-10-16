@@ -40,6 +40,7 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Gemini (gratuit, optionnel) | ✅ testé — inactif tant qu'il n'y a pas de clé |
 | Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
 | Stratégie météo (prévisions GFS + ECMWF, étalonnées par station), testée sur 14 553 marchés résolus | ⚠️ prévision plus juste que le marché, mais aucun gain aux prix réellement payés (−6 %) — ⏳ l'arène tranche |
+| Tenue de marché (achat OUI + achat NON posés, marchés calmes récompensés), récompenses de liquidité estimées, sélection adverse mesurée | ✅ testée — ⏳ l'arène tranche |
 | Tests sur le passé aux prix réels : sport contre Kalshi, crypto, « argent informé » | ❌ aucun avantage (marchés efficaces aux frais près) : `experiments/` |
 | Audit indépendant des exécutions et des règlements | ✅ en service : 1 039 exécutions et 22 règlements vérifiés, 0 anomalie |
 | **Stratégie rentable prouvée** | ❌ pas encore — aucune championne après 24 h ; l'arène tranche en réel |

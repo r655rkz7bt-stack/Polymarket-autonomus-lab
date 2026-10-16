@@ -63,6 +63,12 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    `taker_cost`) : le 16/10/2026, la météo gagnait +28 % avec l'historique « 10 minutes » du
    CLOB, mais −6 % aux prix des vrais échanges (tout le gain venait de marchés sans échange) ;
    même piège en crypto (`experiments/crypto_backtest.md`).
+   Orientation depuis le 16/10/2026 (veille `experiments/veille_bots/`) : les gains durables sont
+   du côté des ordres POSÉS (tenue de marché `market_maker`, récompenses de liquidité, remise sur
+   les frais). Avant de juger une stratégie qui pose des ordres, regarde la section « Ordres
+   posés » du tableau de bord (`markout.py`) : si les ordres servis font nettement moins bien que
+   les ordres manqués, elle se fait choisir contre elle (sélection adverse). Les récompenses
+   estimées (`liquidity_rewards.py`) ne comptent pas dans le capital.
    Outil tout prêt : `src/polymarket_agent/idea_test.py` (marchés résolus d'une famille, prix à
    un instant sans regard vers le futur, jugement hors échantillon, simulation avec frais) ;
    exemple d'emploi : `experiments/meteo_backtest/station_bias.py`.

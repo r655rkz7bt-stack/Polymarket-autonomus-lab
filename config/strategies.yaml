@@ -338,3 +338,51 @@ naive_favorite_patiente:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
+
+market_maker:
+  # Tenue de marché (16/10/2026, experiments/veille_bots/Bots Polymarket et leurs gains.md) : ce
+  # que font les bots qui gagnent durablement (1 % des comptes = 76,5 % des profits, surtout des
+  # « faiseurs »). Achat du OUI et achat du NON posés au meilleur acheteur de chaque côté, sur des
+  # marchés calmes récompensés ; le stock détenu est revendu au meilleur vendeur. Gains : écart
+  # capturé (dans le capital) + récompenses de liquidité (ESTIMÉES à part, jamais dans le capital).
+  # Risque principal : sélection adverse (mesurée par markout.py). L'arène juge.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    min_days_to_end:  {value: 3, min: 0, max: 30}        # pas de marché qui se tranche bientôt
+    min_mid:          {value: 0.15, min: 0.01, max: 0.5}
+    max_mid:          {value: 0.85, min: 0.5, max: 0.99}
+    max_move_6h:      {value: 0.03, min: 0.0, max: 0.5}  # prix stable sur 6 h (marché calme)
+    min_reward_rate:  {value: 5, min: 0, max: 10000}     # cagnotte du marché, $ par jour
+    improve_ticks:    {value: 0, min: 0, max: 5}         # 0 = rejoindre le meilleur prix
+    min_pair_margin:  {value: 0.02, min: 0.0, max: 0.2}  # paire OUI + NON achetée au plus 0,98
+    market_fraction:  {value: 0.06, min: 0.0, max: 1.0}  # capital au plus engagé par marché et par côté
+    max_net_quotes:   {value: 2, min: 0, max: 20}        # stock net au plus = 2 cotes d'un côté
+    stop_loss:        {value: 0.10, min: 0.01, max: 1.0} # stock non apparié vendu si −0,10
+    quote_hours:      {value: 0.2, min: 0.05, max: 6}    # une cote vit 12 min (renouvelée à chaque cycle)
+    max_markets:      {value: 12, min: 0, max: 50}       # 2 ordres par marché (30 ordres au plus)
+    max_candidates:   {value: 30, min: 0, max: 200}
+
+market_maker_serre:
+  # Variante : 1 cran à l'intérieur de l'écart (servie plus souvent, plus de récompense car plus
+  # près du milieu, mais plus de sélection adverse) ; marge de paire 0,01.
+  class: market_maker
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    min_days_to_end:  {value: 3, min: 0, max: 30}
+    min_mid:          {value: 0.15, min: 0.01, max: 0.5}
+    max_mid:          {value: 0.85, min: 0.5, max: 0.99}
+    max_move_6h:      {value: 0.03, min: 0.0, max: 0.5}
+    min_reward_rate:  {value: 5, min: 0, max: 10000}
+    improve_ticks:    {value: 1, min: 0, max: 5}
+    min_pair_margin:  {value: 0.01, min: 0.0, max: 0.2}
+    market_fraction:  {value: 0.06, min: 0.0, max: 1.0}
+    max_net_quotes:   {value: 2, min: 0, max: 20}
+    stop_loss:        {value: 0.10, min: 0.01, max: 1.0}
+    quote_hours:      {value: 0.2, min: 0.05, max: 6}
+    max_markets:      {value: 12, min: 0, max: 50}
+    max_candidates:   {value: 30, min: 0, max: 200}
+
