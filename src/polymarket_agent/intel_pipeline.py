@@ -98,7 +98,15 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         down = [n for n, s in status.items() if s.startswith("indisponible")]
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment
+        latest_weather: dict[str, object] = {}
+        for o in recent:
+            if o.source == "meteo_metar" and o.published_at is not None:
+                for mid in o.market_ids:
+                    if mid not in latest_weather or o.published_at > latest_weather[mid].published_at:
+                        latest_weather[mid] = o
         for market in markets:
+            wobs = latest_weather.get(market.market_id)
+            market.weather = dict(wobs.data, published_at=wobs.published_at) if wobs else None
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
             group = correlation_group(market)
             if group.startswith("crypto:"):

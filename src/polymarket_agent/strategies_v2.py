@@ -382,5 +382,46 @@ class SocialSentiment(_Base):
         return self._finish(out, candidates)
 
 
+# --------------------------------------------------------------------------- 8. température (chantier n°0)
+
+
+class TemperatureFloor(_Base):
+    """Marchés « température maximale du jour » : le maximum ne peut que monter. Tranche déjà
+    dépassée de `margin_c` / `margin_f` degrés par le maximum METAR du jour → « Non » quasi certain ;
+    tranche « X ou plus » déjà atteinte → « Oui » quasi certain. Le risque restant (erreur de jour
+    local, de conversion, de source) est le paramètre `certainty`, borne basse de la probabilité."""
+
+    strategy_id = "temperature_floor"
+    required = ("margin_c", "margin_f", "certainty", "min_net_edge", "max_extra_ticks",
+                "max_proposals_per_cycle")
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.weather_model import certain_side, parse_bucket
+        out = StrategyOutput()
+        p = self.params
+        candidates = []
+        for m in watchlist:
+            w = getattr(m, "weather", None)
+            b = parse_bucket(m.question)
+            if w is None or b is None or w.get("max_jour_c") is None or len(m.token_ids) != 2:
+                continue
+            if str(w.get("jour_local", ""))[5:] != f"{b.month:02d}-{b.day:02d}":
+                out.abstain("jour de l'observation différent du jour du marché")
+                continue
+            if any(t in state.positions for t in m.token_ids):
+                continue
+            side = certain_side(b, float(w["max_jour_c"]), float(p["margin_c"]), float(p["margin_f"]))
+            if side is None:
+                continue
+            c = float(p["certainty"])
+            prop = self._buy(m, books, state, side, c, min(c + 0.02, 0.995), 0.999, bucket, marks, out,
+                             f"meteo_metar:{w.get('station')}:max={w['max_jour_c']}°C",
+                             "erreur de jour local, de conversion °F ou de source de résolution",
+                             "relevé METAR corrigé / source de résolution différente")
+            if prop:
+                candidates.append(prop)
+        return self._finish(out, candidates)
+
+
 CLASSES = {c.strategy_id: c for c in (CrossMarketLadder, MarketStructure, NewsMomentum,
-                                      InformationAdvantage, SocialSentiment)}
+                                      InformationAdvantage, SocialSentiment, TemperatureFloor)}
