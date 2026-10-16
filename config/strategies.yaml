@@ -71,7 +71,9 @@ crypto_threshold:
   params:
     min_net_edge:    {value: 0.03, min: 0.00, max: 0.50}
     max_extra_ticks: {value: 2, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    # En pause le 16/10/2026 : aucun avantage aux prix réellement payés (experiments/crypto_backtest.md,
+    # règle de production −6 à −48 % des mises sur les deux moitiés) ; −150 dans l'arène.
+    max_proposals_per_cycle: {value: 0, min: 0, max: 50}
     max_quote_age_minutes: {value: 20, min: 1, max: 120}
     min_hours:       {value: 0.5, min: 0.1, max: 72}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet
@@ -187,6 +189,8 @@ social_sentiment:
 
 meteo_prevision:
   # Marchés de température (16/10/2026) : prévisions GFS + ECMWF (Open-Meteo) contre le prix.
+  # ATTENTION : le gain du test ci-dessous venait de prix d'historique non achetables ; aux prix
+  # réellement payés : −6 % (experiments/meteo_backtest.md, « Vérification »). L'arène juge.
   # Testé hors échantillon sur 1er-15/10 (experiments/meteo_backtest.md) : NON sur la tranche
   # favorite surestimée, ≈ +20 % des mises après frais. Réglages issus de ce test.
   enabled: true
@@ -208,8 +212,9 @@ meteo_prevision:
     kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}    # Kelly réduit : beaucoup de petits paris
     stake_fraction: {value: 0.03, min: 0.0, max: 1.0}    # au plus 3 % du capital par pari
     # Étalonnage PAR STATION (16/10/2026, experiments/meteo_backtest.md) : biais et flou appris sur
-    # les 7 derniers jours de la station, tirés vers les réglages ci-dessus ; test hors échantillon
-    # +26 à +29 % des mises au lieu de +24 % avec le réglage global seul.
+    # les 7 derniers jours de la station, tirés vers les réglages ci-dessus. Prévision plus juste
+    # (Brier 0,090 au lieu de 0,097) ; mais aux prix réellement payés, aucun avantage mesuré sur le
+    # passé (−6 %) : seule l'arène, sur les vrais carnets, tranchera.
     station_calibration:  {value: 1, min: 0, max: 1}
     calibration_days:     {value: 7, min: 1, max: 30}
     calibration_min_days: {value: 3, min: 1, max: 30}
@@ -263,8 +268,9 @@ meteo_prevision_patiente:
     kelly_fraction: {value: 0.35, min: 0.0, max: 5.0}
     stake_fraction: {value: 0.05, min: 0.0, max: 1.0}
     # Étalonnage PAR STATION (16/10/2026, experiments/meteo_backtest.md) : biais et flou appris sur
-    # les 7 derniers jours de la station, tirés vers les réglages ci-dessus ; test hors échantillon
-    # +26 à +29 % des mises au lieu de +24 % avec le réglage global seul.
+    # les 7 derniers jours de la station, tirés vers les réglages ci-dessus. Prévision plus juste
+    # (Brier 0,090 au lieu de 0,097) ; mais aux prix réellement payés, aucun avantage mesuré sur le
+    # passé (−6 %) : seule l'arène, sur les vrais carnets, tranchera.
     station_calibration:  {value: 1, min: 0, max: 1}
     calibration_days:     {value: 7, min: 1, max: 30}
     calibration_min_days: {value: 3, min: 1, max: 30}
@@ -304,7 +310,9 @@ crypto_threshold_patiente:
   params:
     min_net_edge:    {value: 0.02, min: 0.00, max: 0.50}
     max_extra_ticks: {value: 0, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    # En pause le 16/10/2026 (même test) : le modèle n'a pas d'information que le marché n'a pas,
+    # ses ordres posés seraient surtout exécutés quand le marché va contre lui.
+    max_proposals_per_cycle: {value: 0, min: 0, max: 50}
     max_quote_age_minutes: {value: 20, min: 1, max: 120}
     min_hours:       {value: 0.5, min: 0.1, max: 72}
     kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}

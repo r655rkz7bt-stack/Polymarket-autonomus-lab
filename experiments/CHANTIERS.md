@@ -38,7 +38,8 @@ Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'in
 Météo, deuxième piste (16/10/2026, session avec Etienne) : stratégie
 `meteo_prevision` (prévisions GFS + ECMWF contre le prix), testée sur les marchés résolus du
 1er au 15/10 (`experiments/meteo_backtest.md` : NON sur la tranche favorite surestimée, ≈ +20 %
-des mises hors échantillon). Vérifié aussi : parier contre une tranche déjà dépassée par le
+des mises hors échantillon avec l'historique « 10 minutes », mais **−6 % aux prix réellement payés**,
+vérification du 16/10/2026). Vérifié aussi : parier contre une tranche déjà dépassée par le
 relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 - Étape 1 : `resolution_sources.py` archive la source de chaque marché surveillé (table
   `market_rules`), résumé dans la console du tableau de bord ; inventaire des 1 500 marchés actifs
@@ -124,3 +125,15 @@ X/Twitter (payant ; Nitter, RSSHub et miroirs contournent ses conditions), sites
 FedWatch, sites de sondages, Box Office Mojo : aspiration interdite), Google Trends (pas d'API
 officielle), Reddit (conditions d'accès restrictives), Binance (bloque les machines américaines
 de GitHub), API « cachées » non documentées (ESPN…) : conditions d'utilisation non respectées.
+
+## Pistes testées et écartées (16/10/2026, toutes aux prix réellement payés)
+- Sport, Polymarket contre Kalshi (`experiments/sport_kalshi.md`) : 1 813 matchs appariés, 14 ligues ;
+  les deux prix sont presque identiques (écart moyen 0,4 point), rien à gagner après frais.
+- Crypto à seuil (`experiments/crypto_backtest.md`) : 4 872 marchés ; aucune version du modèle ne
+  bat le marché aux prix réels ; `crypto_threshold` mise en pause.
+- Argent informé (`experiments/smart_money.md`) : les meilleurs portefeuilles d'un mois ne font pas
+  mieux le mois suivant (corrélation des rangs +0,04) ; les copier perd −2 à −15 %.
+- Arbitrage sur la somme des issues : quasi inexistant (mesuré le 16/10/2026).
+Leçon : ces marchés « faciles à modéliser » sont déjà bien cotés. Les avantages restants sont
+plutôt du côté des ordres POSÉS (pas de frais, remise aux poseurs) et des marchés peu suivis.
+

@@ -39,7 +39,8 @@ Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle u
 | Sources : GDELT, Bluesky | ✅ testées — GDELT refuse souvent (429, IP partagée) ; Bluesky demande un compte (étape 8) |
 | Gemini (gratuit, optionnel) | ✅ testé — inactif tant qu'il n'y a pas de clé |
 | Mode dégradé (source en panne) | ✅ testé et vérifié en réel |
-| Stratégie météo (prévisions GFS + ECMWF), testée sur 14 553 marchés résolus | ✅ meilleure que le marché hors échantillon — ⏳ à confirmer par l'arène |
+| Stratégie météo (prévisions GFS + ECMWF, étalonnées par station), testée sur 14 553 marchés résolus | ⚠️ prévision plus juste que le marché, mais aucun gain aux prix réellement payés (−6 %) — ⏳ l'arène tranche |
+| Tests sur le passé aux prix réels : sport contre Kalshi, crypto, « argent informé » | ❌ aucun avantage (marchés efficaces aux frais près) : `experiments/` |
 | Audit indépendant des exécutions et des règlements | ✅ en service : 1 039 exécutions et 22 règlements vérifiés, 0 anomalie |
 | **Stratégie rentable prouvée** | ❌ pas encore — aucune championne après 24 h ; l'arène tranche en réel |
 | Tableau de bord (page statique, téléphone, tri et listes dépliables) | ✅ en ligne, régénéré toutes les 10 min ([lien](https://r655rkz7bt-stack.github.io/Polymarket-autonomus-lab/)) |

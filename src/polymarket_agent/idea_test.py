@@ -8,6 +8,10 @@ Même méthode que le test météo (experiments/meteo_backtest.md), réutilisabl
 3. `evaluate` : la probabilité du modèle (fonction fournie) contre le prix du marché, réglée
    sur les premières dates et JUGÉE sur les suivantes ; simulation 1 part par pari avec frais
    réels du marché et un écart achat-vente simulé ; détail par type de pari et par jour.
+4. `fetch_event_trades` + `taker_cost` : prix RÉELLEMENT payés par les preneurs. À utiliser
+   TOUJOURS en vérification : le 16/10/2026, la météo gagnait +28 % avec l'historique (point 2)
+   et perdait −6 % aux prix des vrais échanges (gain venu de marchés sans échange : carnets vides,
+   prix périmés ; experiments/meteo_backtest.md, experiments/crypto_backtest.md).
 Les prix historiques ne sont pas des prix exécutables : seule l'arène (carnets réels) confirme.
 """
 
@@ -29,6 +33,7 @@ from polymarket_agent.http_client import HttpClient, SourceUnavailable
 
 GAMMA = "https://gamma-api.polymarket.com"
 CLOB = "https://clob.polymarket.com"
+TRADES = "https://data-api.polymarket.com/trades"
 
 
 def _jl(value) -> list:
@@ -140,6 +145,44 @@ class PriceCache:
         self.db.execute("INSERT OR REPLACE INTO prix VALUES (?,?,?,?)", (token, ts, window, p))
         self.db.commit()
         return None if p < 0 else p
+
+
+def fetch_event_trades(http: HttpClient, cache_dir: Path, event_id: str, max_pages: int = 11) -> list[list]:
+    """Échanges des preneurs d'un événement : [[heure, jeton, côté, prix, parts], ...] (cache gzip).
+      GET https://data-api.polymarket.com/trades?eventId=<id>&limit=1000&offset=..  (public)
+    L'API refuse un décalage au-delà de 10 000 : au plus 11 pages (les plus anciens manquent alors)."""
+    path = Path(cache_dir) / f"echanges_{event_id}.json.gz"
+    if path.exists():
+        return json.loads(gzip.decompress(path.read_bytes()))
+    rows: list[list] = []
+    for page in range(max_pages):
+        try:
+            batch = http.get_json(TRADES, params={"eventId": event_id, "limit": 1000, "offset": page * 1000})
+        except SourceUnavailable:
+            break
+        if not isinstance(batch, list) or not batch:
+            break
+        rows += [[int(t["timestamp"]), str(t["asset"]), str(t["side"]), float(t["price"]), float(t["size"])]
+                 for t in batch if t.get("timestamp") and t.get("price") is not None]
+        if len(batch) < 1000:
+            break
+    Path(cache_dir).mkdir(parents=True, exist_ok=True)
+    path.write_bytes(gzip.compress(json.dumps(rows).encode()))
+    return rows
+
+
+def taker_cost(trades: list[list], token: str, other_token: str, ts: int, window: int = 2 * 3600,
+               after: bool = False) -> float | None:
+    """Prix réellement payé pour ACHETER `token` : achat de `token` au prix p, ou vente de l'autre
+    issue au prix p (= `token` à 1 − p). Dernier échange dans `window` secondes AVANT `ts` (prix
+    connu à la décision) ou, avec `after`, premier échange dans `window` APRÈS (prix qu'on aurait payé)."""
+    pts = sorted((t[0], t[3] if t[1] == token else 1 - t[3]) for t in trades
+                 if (t[1] == token and t[2] == "BUY") or (t[1] == other_token and t[2] == "SELL"))
+    if after:
+        sel = [p for when, p in pts if ts <= when <= ts + window]
+        return sel[0] if sel else None
+    sel = [p for when, p in pts if ts - window <= when <= ts]
+    return sel[-1] if sel else None
 
 
 def fee(p: float, rate: float) -> float:

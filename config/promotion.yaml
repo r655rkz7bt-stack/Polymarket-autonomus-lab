@@ -12,11 +12,11 @@ min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 
 # échantillon documenté remplace une partie de l'attente. Clé = début du nom de la stratégie
 # (toutes ses versions et variantes). Elle doit quand même gagner en direct (croissance > 0).
 # Le chercheur ajoute une stratégie ici seulement avec un test documenté dans experiments/.
-validated_strategies:
-  meteo_prevision:               # experiments/meteo_backtest.md : NON +24 à +31 %, 8 jours sur 8
-    min_closed_trades: 8
-    min_age_hours: 8
-    min_log_growth: 0.005
+# ATTENTION (16/10/2026) : le test doit tenir AUX PRIX RÉELLEMENT PAYÉS (idea_test.taker_cost),
+# pas seulement avec l'historique « 10 minutes » du CLOB : la météo y gagnait +28 %, mais −6 %
+# aux prix réels (experiments/meteo_backtest.md) ; elle a donc été retirée d'ici.
+# Exemple : `nom_de_strategie: {min_closed_trades: 8, min_age_hours: 8, min_log_growth: 0.005}`
+validated_strategies: {}
 # Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
 # que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
 keep_log_growth: 0.0
