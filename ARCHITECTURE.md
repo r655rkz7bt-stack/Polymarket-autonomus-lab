@@ -588,3 +588,14 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   dépôt, photos téléphone / ordinateur (Node + Playwright), erreurs JavaScript et débordements.
 - Méthode, garde-fous, évaluation de départ de chaque bloc : `docs/TABLEAU_DE_BORD.md`.
 
+## 33. Entonnoir : mères, filles et phrases simples (17 octobre 2026)
+
+- `strategy_engine.Filtered` (YAML `filtres`) : une « fille » joue la stratégie mère sur un morceau
+  des marchés (`familles`, `heures_min`/`heures_max`, `prix_min`/`prix_max`, `issue` oui/non/autre).
+  Filtres de marché avant la mère, filtres d'issue après ; ventes jamais filtrées.
+- 17 filles : 11 de `naive_favorite` (`nf_*`), 6 de `news_momentum` (`nm_*`).
+- YAML `explication` (phrase simple pour Etienne, sous chaque nom dans l'arène), `mere`, `morceau` ;
+  `dashboard.strategy_info`, `dashboard.funnel` (fille comparée à la mère depuis sa naissance,
+  d'après la courbe de capital de la mère) ; bloc « Entonnoir » du tableau de bord.
+- Dissection des paris déjà faits : `experiments/dissection/dissequer.py`, `experiments/dissection.md`.
+

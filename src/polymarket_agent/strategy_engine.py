@@ -545,6 +545,71 @@ class PatientOrders:
         return getattr(self.inner, name)
 
 
+FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue")
+
+
+class Filtered:
+    """« Fille » d'une stratégie (entonnoir, 17/10/2026) : la stratégie mère ne joue qu'UN MORCEAU
+    des marchés, défini par `filtres` (YAML). Comparer chaque fille à sa mère dans l'arène montre
+    quel morceau fait vraiment gagner (ou perdre). Filtres possibles :
+      familles : [sports, politics, …] (market_family) ; heures_min / heures_max : délai jusqu'à
+      l'échéance (au coup d'envoi en sport) ; prix_min / prix_max : prix payé ;
+      issue : [oui, non, autre] (autre = équipe, joueur…).
+    Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
+    morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
+
+    def __init__(self, strategy, filters: dict):
+        unknown = set(filters) - set(FILTER_KEYS)
+        if unknown:
+            raise StrategyConfigError(f"filtres inconnus : {sorted(unknown)}")
+        self.inner, self.filters = strategy, dict(filters)
+        self.strategy_id, self.version = strategy.strategy_id, strategy.version
+        self.needs_price_history = getattr(strategy, "needs_price_history", False)
+        if hasattr(strategy, "exits"):
+            self.exits = strategy.exits
+
+    def _market_ok(self, m: MarketInfo, now) -> bool:
+        f = self.filters
+        if "familles" in f and market_family(m) not in f["familles"]:
+            return False
+        if ("heures_min" in f or "heures_max" in f) and now is not None:
+            ref = m.game_start or m.end_date
+            if ref is None:
+                return False
+            hours = (ref - now).total_seconds() / 3600
+            if not float(f.get("heures_min", -1e9)) <= hours <= float(f.get("heures_max", 1e9)):
+                return False
+        return True
+
+    def _order_ok(self, p) -> bool:
+        if p.side != "BUY":
+            return True
+        f = self.filters
+        if not float(f.get("prix_min", 0)) <= float(p.max_price) <= float(f.get("prix_max", 1)):
+            return False
+        if "issue" in f:
+            o = (p.outcome or "").lower()
+            kind = "oui" if o == "yes" else "non" if o == "no" else "autre"
+            return kind in f["issue"]
+        return True
+
+    def candidates(self, markets):
+        inner = getattr(self.inner, "candidates", None)
+        return [m for m in inner(markets) if self._market_ok(m, None)] if inner else []
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        now = max((b.fetched_at for b in books.values()), default=None)
+        kept = [m for m in watchlist if self._market_ok(m, now)]
+        out = self.inner.propose(kept, books, state, limits, bucket, marks)
+        out.proposals = [p for p in out.proposals if self._order_ok(p)]
+        if getattr(out, "limit_orders", None):
+            out.limit_orders = [p for p in out.limit_orders if self._order_ok(p)]
+        return out
+
+    def __getattr__(self, name):
+        return getattr(self.inner, name)
+
+
 def load_strategies(path: Path) -> list:
     try:
         raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
@@ -571,6 +636,8 @@ def load_strategies(path: Path) -> list:
             strategy.families = tuple(str(f) for f in spec["familles"])
         if "exclure_mots" in spec:  # marchés exclus si la question contient un de ces mots
             strategy.exclude_words = tuple(str(w).lower() for w in spec["exclure_mots"])
+        if "filtres" in spec:  # fille : la stratégie mère sur un morceau des marchés
+            strategy = Filtered(strategy, dict(spec["filtres"]))
         if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
             strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
         mode = str(spec.get("mode", "principal"))

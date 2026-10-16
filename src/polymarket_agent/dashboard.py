@@ -42,8 +42,8 @@ def _marks(db, tokens) -> dict[str, Decimal]:
     return marks
 
 
-BLOCKS = ("resume", "aujourdhui", "organisme", "capital", "arene", "positions", "ordres-poses", "journal",
-          "decisions-recentes", "systeme")
+BLOCKS = ("resume", "aujourdhui", "organisme", "capital", "arene", "entonnoir", "positions", "ordres-poses",
+          "journal", "decisions-recentes", "systeme")
 ALWAYS_VISIBLE = ("resume", "capital")  # règle n°1 : capital, solde disponible, faillite
 
 
@@ -63,6 +63,59 @@ def layout(root: Path) -> dict:
     une = raw.get("a_la_une") if isinstance(raw.get("a_la_une"), dict) else {}
     points = [str(p).strip()[:280] for p in (une.get("points") or []) if str(p).strip()][:5]
     return {"ordre": ordre, "masquer": masquer, "a_la_une": {"date": str(une.get("date") or ""), "points": points}}
+
+
+def strategy_info(root: Path) -> dict[str, dict]:
+    """config/strategies.yaml → {stratégie: {explication, mere, morceau}} (phrases pour Etienne)."""
+    import yaml
+    try:
+        raw = yaml.safe_load((Path(root) / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    return {sid: {k: str(spec[k]) for k in ("explication", "mere", "morceau") if spec.get(k)}
+            for sid, spec in raw.items() if isinstance(spec, dict)}
+
+
+def funnel(arena: list[dict], info: dict[str, dict], initial: float = 1000.0) -> list[dict]:
+    """Entonnoir : chaque mère et ses filles (même stratégie sur un morceau des marchés).
+    Comparaison ÉQUITABLE : une fille née après sa mère est comparée à ce que la mère a gagné
+    DEPUIS la naissance de la fille (courbe de capital de la mère), pas depuis le début."""
+    by_id = {a["nom"].rsplit("_v", 1)[0]: a for a in arena}
+
+    def last(curve, default):
+        return float(curve[-1][1]) if curve else default
+
+    def value_at(curve, when, default):
+        v = float(curve[0][1]) if curve else default
+        for t, x in curve or []:
+            if t > when:
+                break
+            v = float(x)
+        return v
+
+    out = []
+    for mother in sorted({v["mere"] for v in info.values() if v.get("mere")}):
+        m = by_id.get(mother)
+        kids = [dict(by_id[sid], morceau=v.get("morceau", sid)) for sid, v in info.items()
+                if v.get("mere") == mother and sid in by_id]
+        if m is None or not kids:
+            continue
+        keep = ("nom", "capital", "operations", "positions", "croissance")
+        m_curve = m.get("courbe") or []
+        m_now = last(m_curve, float(m["capital"]))
+        rows = []
+        for c in kids:
+            start = None
+            if m_curve and c.get("jours") is not None:
+                end = datetime.fromisoformat(m_curve[-1][0])
+                start = (end - timedelta(days=float(c["jours"]))).isoformat()
+            base = value_at(m_curve, start, initial) if start else initial
+            mother_since = 100 * (m_now / base - 1) if base else 0.0
+            child = 100 * (last(c.get("courbe") or [], float(c["capital"])) / initial - 1)
+            rows.append(dict({k: c[k] for k in keep + ("morceau",)}, mere_depuis=round(mother_since, 2),
+                             ecart=round(child - mother_since, 2)))
+        out.append({"mere": {k: m[k] for k in keep}, "filles": sorted(rows, key=lambda c: -c["ecart"])})
+    return out
 
 
 def research_log(root: Path, limit: int = 3) -> list[dict]:
@@ -124,12 +177,14 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                     "jours_depuis_palier": round(days_since_record(main, now), 2),
                     "faillite": state.bankrupt, "raison_faillite": state.bankrupt_reason})
 
-    # --- arène
+    # --- arène (avec la phrase simple de chaque stratégie, config/strategies.yaml → explication)
+    info = strategy_info(root)
     arena = []
     for s in ranking([standing(n, l, state.eliminated) for n, l in shadows.items()]):
         verdicts = learning.get(s.name, {}).get("strategies", {})
         verdict = next(iter(verdicts.values()), {}).get("verdict", "aucune opération clôturée")
-        arena.append({"nom": s.name, "operations": s.closed_trades, "capital": round(s.realized_capital, 2),
+        arena.append({"nom": s.name, "explication": info.get(s.name.rsplit("_v", 1)[0], {}).get("explication", ""),
+                      "operations": s.closed_trades, "capital": round(s.realized_capital, 2),
                       "croissance": round(s.log_growth, 4) if s.log_growth != float("-inf") else None,
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
                       "champion": s.name == state.champion, "verdict": verdict,
@@ -277,6 +332,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "historique_arene": arena_history.series(db, now),
         "chercheur": research_log(root),
         "mise_en_page": layout(root),
+        "entonnoir": funnel(arena, info),
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)
