@@ -7,6 +7,7 @@
 # Au moins 3 idées doivent être en test en permanence ; la pire est éliminée chaque semaine.
 
 naive_favorite:
+  explication: "On achète la réponse que tout le monde donne gagnante, en pariant qu'elle gagne encore un peu plus souvent que ce que dit son prix."
   # Référence naïve. Perd sur l'historique (v2 validation −9 %, test −21 %) : sert de repère
   # dans l'arène (si elle finit devant, les autres ne valent rien).
   enabled: true
@@ -30,6 +31,7 @@ naive_favorite:
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
 reversion:
+  explication: "Quand un prix a bougé très vite, on parie qu'il va revenir un peu en arrière, comme un élastique."
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-14"
@@ -49,6 +51,7 @@ reversion:
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
 calibration:
+  explication: "On regarde sur le passé si les prix disent vrai (un prix de 0,70 gagne-t-il 7 fois sur 10 ?) et on achète ce qui est trop bon marché."
   # v1 rejetée (biais de sélection) ; v2 échoue au critère 1 en validation, mais l'arène la
   # juge en conditions réelles.
   enabled: true
@@ -63,6 +66,7 @@ calibration:
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
 crypto_threshold:
+  explication: "On calcule avec des maths la chance que le Bitcoin dépasse un prix et on achète si le marché se trompe (en pause : ça ne marchait pas)."
   # Étape 5 : probabilité indépendante pour les marchés crypto à seuil (prix au comptant +
   # volatilité réalisée, modèle log-normal ; crypto_model.py). Jugée par l'arène en réel.
   enabled: true
@@ -80,6 +84,7 @@ crypto_threshold:
 
 # ---------------------------------------------------------------- étape 6 : 5 nouvelles familles
 cross_market:
+  explication: "Quand deux marchés liés se contredisent, on achète les deux côtés pour gagner à coup sûr."
   # Stratégie 7 : incohérences entre marchés liés (échelles de seuils) → arbitrage sans risque.
   enabled: true
   version: "1.0.0"
@@ -90,6 +95,7 @@ cross_market:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
 
 market_structure:
+  explication: "On regarde s'il y a beaucoup plus d'acheteurs que de vendeurs et on achète juste avant que le prix monte (mise de côté : elle perdait)."
   # Stratégie 5 : déséquilibre du carnet → hausse à court terme, sortie programmée.
   enabled: true
   version: "1.0.0"
@@ -106,6 +112,7 @@ market_structure:
     max_proposals_per_cycle: {value: 0, min: 0, max: 50}   # 16/10 : retirée (−47 % en 412 opérations, frais) ; sorties maintenues
 
 market_structure_patiente:
+  explication: "La même idée, mais on attend dans la file qu'un vendeur vienne à notre prix."
   # Variante du 15/10/2026 (chercheur) : market_structure paie le vendeur (frais taker + écart) et
   # perd (53 opérations, -145, frais > moitié du résultat). Ici : achat POSÉ 1 cran au-dessus du
   # meilleur acheteur, déséquilibre plus exigeant, objectif de gain plus large (0,04) que les frais.
@@ -126,6 +133,7 @@ market_structure_patiente:
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
 calibration_patiente:
+  explication: "La même idée que « calibration », mais on attend dans la file au lieu de payer le prix du vendeur."
   # Variante « patiente » (ordres à cours limité, 15/10/2026) : même modèle que calibration,
   # mais au lieu d'acheter au vendeur elle POSE un achat 1 cran au-dessus du meilleur acheteur.
   # Hypothèse : économiser l'écart et les frais taker vaut plus que les occasions manquées.
@@ -145,6 +153,7 @@ calibration_patiente:
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
 news_momentum:
+  explication: "Quand une vraie nouvelle tombe et que le prix commence à bouger, on suit le mouvement en pensant qu'il va continuer."
   # Stratégie 2 : actualité confirmée + mouvement amorcé → continuation (a priori non calibré).
   enabled: true
   version: "1.0.0"
@@ -159,6 +168,7 @@ news_momentum:
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
 information_advantage:
+  explication: "Quand une annonce officielle vient de sortir et que le prix n'a pas encore bougé, on achète avant les autres."
   # Stratégie 3 : annonce officielle fraîche non encore intégrée (direction : Gemini).
   enabled: true
   version: "1.0.0"
@@ -174,6 +184,7 @@ information_advantage:
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
 social_sentiment:
+  explication: "Quand tout le monde s'emballe sur les réseaux sans vraie source, on parie dans l'autre sens."
   # Stratégie 6 : emballement social unilatéral non confirmé → pari contraire (direction : Gemini).
   enabled: true
   version: "1.0.0"
@@ -188,6 +199,7 @@ social_sentiment:
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
 meteo_prevision:
+  explication: "On compare les prévisions météo au prix et on parie contre la température que le marché croit trop probable."
   # Marchés de température (16/10/2026) : prévisions GFS + ECMWF (Open-Meteo) contre le prix.
   # ATTENTION : le gain du test ci-dessous venait de prix d'historique non achetables ; aux prix
   # réellement payés : −6 % (experiments/meteo_backtest.md, « Vérification »). L'arène juge.
@@ -224,6 +236,7 @@ meteo_prevision:
     max_proposals_per_cycle: {value: 6, min: 0, max: 50}
 
 temperature_floor:
+  explication: "Si la station a déjà mesuré plus chaud qu'une réponse, cette réponse ne peut plus gagner : on parie contre elle."
   # Chantier n°0, étape 3 (16/10/2026) : le maximum du jour ne peut que monter. Tranche déjà
   # dépassée par le maximum METAR → « Non » quasi certain ; « X ou plus » atteint → « Oui ».
   enabled: true
@@ -242,6 +255,7 @@ temperature_floor:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
 
 meteo_prevision_patiente:
+  explication: "La même idée météo, mais on attend dans la file qu'un vendeur vienne à notre prix."
   # Variante « patiente » (16/10/2026, chercheur) : même modèle que meteo_prevision (seule
   # stratégie avec un avantage mesuré hors échantillon), mais l'achat de « Non » est POSÉ
   # 1 cran au-dessus du meilleur acheteur au lieu de payer le vendeur. Hypothèse : l'écart et
@@ -280,6 +294,7 @@ meteo_prevision_patiente:
     max_proposals_per_cycle: {value: 8, min: 0, max: 50}
 
 news_momentum_patiente:
+  explication: "Suivre les nouvelles, mais en attendant dans la file au lieu d'acheter tout de suite."
   # Variante « patiente » (16/10/2026, chercheur) de la seule stratégie positive de l'arène
   # (news_momentum : 3 opérations, +5,31). Achat posé 1 cran au-dessus du meilleur acheteur ;
   # seuil d'avantage abaissé car le prix posé est meilleur que celui du vendeur.
@@ -298,6 +313,7 @@ news_momentum_patiente:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
 
 crypto_threshold_patiente:
+  explication: "La même idée Bitcoin, en attendant dans la file (en pause)."
   # Variante « patiente » (16/10/2026 soir, chercheur) de crypto_threshold (4 opérations, -150 :
   # achats payés au vendeur, écart + frais taker). Achat posé 1 cran au-dessus du meilleur
   # acheteur, seuil d'avantage abaissé car le prix posé est meilleur que celui du vendeur,
@@ -318,6 +334,7 @@ crypto_threshold_patiente:
     kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
 
 naive_favorite_patiente:
+  explication: "Acheter le favori, mais en attendant dans la file qu'un vendeur vienne à notre prix, pour payer moins cher."
   # Variante « patiente » (16/10/2026 soir, chercheur) de la première de l'arène (naive_favorite :
   # 7 opérations, +79). Achat du favori POSÉ 1 cran au-dessus du meilleur acheteur au lieu de payer
   # le vendeur ; seuil d'avantage abaissé car le prix posé est meilleur ; Kelly 0,5 (échantillon minuscule).
@@ -340,6 +357,7 @@ naive_favorite_patiente:
     kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
 
 market_maker:
+  explication: "On tient un petit magasin : on propose d'acheter un peu moins cher et de revendre un peu plus cher, et on garde la différence."
   # Tenue de marché (16/10/2026, experiments/veille_bots/Bots Polymarket et leurs gains.md) : ce
   # que font les bots qui gagnent durablement (1 % des comptes = 76,5 % des profits, surtout des
   # « faiseurs »). Achat du OUI et achat du NON posés au meilleur acheteur de chaque côté, sur des
@@ -365,6 +383,7 @@ market_maker:
     max_candidates:   {value: 30, min: 0, max: 200}
 
 market_maker_serre:
+  explication: "Le même petit magasin, avec des prix plus serrés : on vend plus souvent, mais on se fait piéger plus souvent."
   # Variante : 1 cran à l'intérieur de l'écart (servie plus souvent, plus de récompense car plus
   # près du milieu, mais plus de sélection adverse) ; marge de paire 0,01.
   class: market_maker
@@ -392,6 +411,7 @@ market_maker_serre:
 # Chaque variante isole une raison ; naive_favorite (d'origine) reste le point de comparaison.
 
 favori_politique:
+  explication: "On achète le favori, mais seulement en politique, où les favoris gagnent plus souvent que leur prix ne le dit."
   # Raison n°1 : en politique et géopolitique, le favori perd ~70 % moins souvent que son prix
   # ne l'annonce (0,85-0,97 : 97,6 % de réussite pour un prix moyen de 0,922 ; +5,7 % après
   # frais ; 47 jours gagnants sur 54, 110 événements, les deux moitiés de la période positives,
@@ -417,6 +437,7 @@ favori_politique:
     kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
 
 favori_politique_patiente:
+  explication: "Le favori en politique, en attendant dans la file pour payer moins cher."
   # Même raison n°1, avec l'achat POSÉ un cran au-dessus du meilleur acheteur (pas de frais ni
   # d'écart) : la politique bouge lentement, un ordre posé a le temps d'être servi.
   class: naive_favorite
@@ -440,6 +461,7 @@ favori_politique_patiente:
     kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
 
 naive_favorite_sans_fin:
+  explication: "On achète le favori, mais jamais dans les dernières 24 heures, parce qu'à la fin c'est souvent un piège."
   # Raison n°2 (inverse) : dans les dernières heures, un favori encore à 0,80-0,97 est un PIÈGE
   # partout sauf en politique (sport −7,4 %, crypto −6,5 %, météo −13,6 % sur 0,5-6 h). Même
   # stratégie que naive_favorite, mais jamais à moins de 24 h de l'échéance (du coup d'envoi
@@ -460,6 +482,7 @@ naive_favorite_sans_fin:
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
 
 outsider_sport_patiente:
+  explication: "Avant un match, on achète un tout petit peu le moins fort, en pensant qu'il gagne plus souvent qu'on ne le croit."
   # Raison n°3 (miroir) : en sport, le favori 0,80-0,95 gagne 5 points de moins que son prix ;
   # l'OUTSIDER serait donc sous-coté. Signal fragile (gonflé par des prix périmés pendant les
   # matchs ; +12,8 % seulement avec des prix de moins de 10 min) : achat POSÉ de l'outsider
@@ -485,6 +508,7 @@ outsider_sport_patiente:
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
 
 suivre_politique:
+  explication: "En politique, quand un prix commence à bouger, on suit, car les nouvelles mettent du temps à arriver à tout le monde."
   # Mouvement de prix, n°1 : en politique et géopolitique, un prix qui a bougé de plus de 0,05 en
   # 6 h CONTINUE (l'information s'y diffuse lentement) : +3,2 % puis +7,3 % sur les deux moitiés
   # de la période, 17 jours gagnants sur 26 (103 paris : échantillon petit).
@@ -509,6 +533,7 @@ suivre_politique:
     kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
 
 contrer_crypto:
+  explication: "Sur le Bitcoin, quand un prix bouge trop vite, on parie qu'il va revenir, car les gens s'affolent."
   # Mouvement de prix, n°2 : sur les marchés crypto à seuil, un mouvement de plus de 0,05 en 6 h
   # est EXAGÉRÉ : le contrer a rapporté +11,7 % puis +17,4 % sur les deux moitiés (199 paris,
   # 17 jours gagnants sur 29). Achète surtout l'issue bon marché : résultats très irréguliers,
@@ -535,6 +560,7 @@ contrer_crypto:
     kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
 
 contrer_crypto_patiente:
+  explication: "La même idée Bitcoin, en attendant dans la file pour éviter les frais."
   # Même règle, achat POSÉ un cran au-dessus du meilleur acheteur (pas de frais à 0,07).
   class: price_move
   familles: [crypto]
@@ -559,6 +585,7 @@ contrer_crypto_patiente:
     kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
 
 favori_politique_quasi_certain:
+  explication: "En politique, on achète ce qui est presque sûr (97 %) pour gagner un tout petit peu, mais souvent."
   # Favori n°1 bis : politique et géopolitique 0,97-0,995 (« presque acquis », souvent un résultat
   # connu en attente de règlement) : 99,6 % gagnés pour 98,8 % de prix (+0,8 % après frais) ;
   # 0,95-0,98 : +2,8 %. Petit gain par pari, mais argent rendu vite. Une seule perte coûte cher.
@@ -582,6 +609,7 @@ favori_politique_quasi_certain:
     kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
 
 loterie_meteo:
+  explication: "On achète des billets à moins d'un centime sur la météo, parce que le « sûr à 99 % » se trompe parfois."
   # Billet de loterie (16/10/2026, experiments/favori.md §6) : dans les 6 dernières heures, 11
   # marchés « température maximale » sur 157 donnés quasi certains (≥ 0,95) se sont retournés
   # (arrondi, hausse tardive relevée par la station officielle). L'issue contraire, vendue
@@ -605,3 +633,348 @@ loterie_meteo:
     max_proposals_per_cycle: {value: 5, min: 0, max: 50}
     kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
 
+# ---------------------------------------------------------------- ENTONNOIR (17/10/2026)
+# Décision d'Etienne : découper chaque stratégie qui gagne en morceaux (« filles ») pour voir quel
+# morceau fait vraiment gagner. Chaque fille = la mère, mêmes réglages, sur UN morceau des marchés
+# (`filtres`, voir strategy_engine.Filtered). Le tableau de bord (bloc « Entonnoir ») compare
+# chaque fille à sa mère. Étape suivante : combiner les morceaux gagnants (familles + prix + délai).
+# Dissection des paris déjà faits : experiments/dissection/dissequer.py.
+
+nf_sport:
+  explication: "Comme naive_favorite, mais seulement le sport."
+  mere: naive_favorite
+  morceau: "sport"
+  class: naive_favorite
+  filtres: {familles: [sports]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_politique:
+  explication: "Comme naive_favorite, mais seulement la politique et la géopolitique."
+  mere: naive_favorite
+  morceau: "politique"
+  class: naive_favorite
+  filtres: {familles: [politics, sans_frais]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_autres_sujets:
+  explication: "Comme naive_favorite, mais seulement les autres sujets (culture, économie, crypto, météo…)."
+  mere: naive_favorite
+  morceau: "autres sujets"
+  class: naive_favorite
+  filtres: {familles: [culture, finance, economics, crypto, weather, tech, mentions, other]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_prix_bas:
+  explication: "Comme naive_favorite, mais seulement les favoris vendus 0,80 à 0,875."
+  mere: naive_favorite
+  morceau: "prix 0,80-0,875"
+  class: naive_favorite
+  filtres: {prix_min: 0.80, prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_prix_haut:
+  explication: "Comme naive_favorite, mais seulement les favoris vendus 0,875 à 0,95."
+  mere: naive_favorite
+  morceau: "prix 0,875-0,95"
+  class: naive_favorite
+  filtres: {prix_min: 0.875, prix_max: 0.95}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_court:
+  explication: "Comme naive_favorite, mais seulement à moins de 24 heures de la fin."
+  mere: naive_favorite
+  morceau: "moins de 24 h"
+  class: naive_favorite
+  filtres: {heures_min: 0, heures_max: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_moyen:
+  explication: "Comme naive_favorite, mais seulement entre 1 et 7 jours avant la fin."
+  mere: naive_favorite
+  morceau: "1 à 7 jours"
+  class: naive_favorite
+  filtres: {heures_min: 24, heures_max: 168}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_long:
+  explication: "Comme naive_favorite, mais seulement à plus de 7 jours de la fin."
+  mere: naive_favorite
+  morceau: "plus de 7 jours"
+  class: naive_favorite
+  filtres: {heures_min: 168}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_oui:
+  explication: "Comme naive_favorite, mais seulement quand le favori est un OUI."
+  mere: naive_favorite
+  morceau: "favori OUI"
+  class: naive_favorite
+  filtres: {issue: [oui]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_non:
+  explication: "Comme naive_favorite, mais seulement quand le favori est un NON."
+  mere: naive_favorite
+  morceau: "favori NON"
+  class: naive_favorite
+  filtres: {issue: [non]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_equipe:
+  explication: "Comme naive_favorite, mais seulement quand le favori est une équipe ou un joueur."
+  mere: naive_favorite
+  morceau: "équipe ou joueur"
+  class: naive_favorite
+  filtres: {issue: [autre]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nm_crypto:
+  explication: "Comme news_momentum, mais seulement la crypto."
+  mere: news_momentum
+  morceau: "crypto"
+  class: news_momentum
+  filtres: {familles: [crypto]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+nm_hors_crypto:
+  explication: "Comme news_momentum, mais tout sauf la crypto."
+  mere: news_momentum
+  morceau: "hors crypto"
+  class: news_momentum
+  filtres: {familles: [sports, politics, sans_frais, culture, finance, economics, weather, tech, mentions, other]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+nm_prix_haut:
+  explication: "Comme news_momentum, mais seulement les issues vendues 0,90 ou plus."
+  mere: news_momentum
+  morceau: "prix 0,90 et plus"
+  class: news_momentum
+  filtres: {prix_min: 0.90}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+nm_prix_bas:
+  explication: "Comme news_momentum, mais seulement les issues vendues moins de 0,90."
+  mere: news_momentum
+  morceau: "prix sous 0,90"
+  class: news_momentum
+  filtres: {prix_max: 0.90}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+nm_court:
+  explication: "Comme news_momentum, mais seulement à moins de 24 heures de la fin."
+  mere: news_momentum
+  morceau: "moins de 24 h"
+  class: news_momentum
+  filtres: {heures_min: 0, heures_max: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+nm_long:
+  explication: "Comme news_momentum, mais seulement à plus de 24 heures de la fin."
+  mere: news_momentum
+  morceau: "plus de 24 h"
+  class: news_momentum
+  filtres: {heures_min: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}

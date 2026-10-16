@@ -106,3 +106,44 @@ def test_excluded_words_skip_markets():
     assert words == ("up or down",) and loaded["contrer_crypto_patiente"].inner.exclude_words == words
     m = parse_market(raw_market("c", question="Bitcoin Up or Down on October 17?"))
     assert excluded(m, words) and not excluded(parse_market(raw_market("d", question="Will BTC hit $90k?")), words)
+
+
+def test_child_strategy_plays_only_its_piece_of_the_markets(tmp_path):
+    """Entonnoir (17/10/2026) : une fille = la mère sur un morceau ; les filtres de marché passent
+    AVANT la mère (elle choisit ses meilleurs paris dans le morceau), prix et issue APRÈS."""
+    import pytest
+    from polymarket_agent.strategy_engine import Filtered, StrategyConfigError
+    pol, pb, ledger, limits = _setup(tmp_path, end_hours=48)
+    spo, sb, _, _ = _setup(tmp_path / "s", fee_type="sports_fees_v3", end_hours=48)
+    spo.market_id, spo.token_ids = "s1", ["SY", "SN"]
+    books = dict(pb, SY=make_book("SY", bids=(("0.90", "500"),), asks=(("0.91", "500"),)),
+                 SN=make_book("SN", bids=(("0.09", "500"),), asks=(("0.10", "500"),)))
+    mother = _strategy(shrink=0.5)
+    both = {p.market_id for p in mother.propose([pol, spo], books, ledger.state, limits, "b").proposals}
+    assert both == {"p1", "s1"}
+    sport = Filtered(_strategy(shrink=0.5), {"familles": ["sports"]})
+    assert [p.market_id for p in sport.propose([pol, spo], books, ledger.state, limits, "b").proposals] == ["s1"]
+    assert not Filtered(_strategy(shrink=0.5), {"issue": ["non"]}).propose([pol, spo], books, ledger.state, limits, "b").proposals
+    assert not Filtered(_strategy(shrink=0.5), {"prix_max": 0.9}).propose([pol, spo], books, ledger.state, limits, "b").proposals
+    assert not Filtered(_strategy(shrink=0.5), {"heures_min": 72}).propose([pol, spo], books, ledger.state, limits, "b").proposals
+    with pytest.raises(StrategyConfigError):
+        Filtered(_strategy(), {"couleur": "bleu"})
+
+
+def test_funnel_compares_children_with_their_mother():
+    from polymarket_agent import dashboard
+    info = dashboard.strategy_info(ROOT)
+    assert info["nf_sport"]["mere"] == "naive_favorite" and info["naive_favorite"]["explication"]
+    assert all(v.get("explication") for v in info.values())  # chaque stratégie a sa phrase simple
+    # Mère : 1 000 → 1 050 le 15/10, puis 1 100 le 17/10 ; filles nées le 16/10 (1 jour).
+    mother = {"nom": "naive_favorite_v1.0.0", "capital": 1100.0, "operations": 9, "positions": 1, "croissance": 0.0,
+              "jours": 2.0, "courbe": [["2026-10-15T00:00:00+00:00", 1000.0], ["2026-10-16T00:00:00+00:00", 1050.0],
+                                       ["2026-10-17T00:00:00+00:00", 1100.0]]}
+    kids = [{"nom": n, "capital": c, "operations": 3, "positions": 1, "croissance": 0.0, "jours": 1.0,
+             "courbe": [["2026-10-16T00:00:00+00:00", 1000.0], ["2026-10-17T00:00:00+00:00", c]]}
+            for n, c in (("nf_sport_v1.0.0", 1100.0), ("nf_oui_v1.0.0", 990.0))]
+    f = dashboard.funnel([mother] + kids, info)
+    nf = next(g for g in f if g["mere"]["nom"] == "naive_favorite_v1.0.0")
+    assert [c["nom"] for c in nf["filles"]] == ["nf_sport_v1.0.0", "nf_oui_v1.0.0"] and nf["filles"][0]["morceau"]
+    # Équitable : la mère a fait +4,76 % depuis la naissance des filles (1 050 → 1 100), pas +10 %.
+    assert nf["filles"][0]["mere_depuis"] == 4.76 and nf["filles"][0]["ecart"] == round(10 - 4.7619, 2)

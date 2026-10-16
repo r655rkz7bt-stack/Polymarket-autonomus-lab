@@ -16,6 +16,13 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 ## Méthode de recherche (chaque session de recherche)
 
+**Entonnoir** (décision d'Etienne, 17/10/2026) : quand une stratégie gagne, découpe-la en
+« filles » (la mère sur un seul morceau : sujet, prix, délai, OUI/NON) avec `mere`, `morceau`,
+`filtres` dans `strategies.yaml`, et dissèque ses paris (`experiments/dissection/dissequer.py`).
+Une fille qui bat sa mère sur au moins 20 opérations clôturées → combine les morceaux gagnants en
+« petite-fille » ; élimine les morceaux perdants. Méthode : `experiments/dissection.md`. Chaque
+stratégie a une phrase simple (`explication`, comme pour un enfant de 6 ans) : écris-la toujours.
+
 **Le tableau de bord est à toi aussi** (décision d'Etienne, 17/10/2026) : ordre des blocs, blocs
 superflus cachés, encadré « À la une » (`config/dashboard.yaml`), ou le code lui-même. Méthode,
 garde-fous et évaluation de départ : `docs/TABLEAU_DE_BORD.md`. Au moins une fois par jour,

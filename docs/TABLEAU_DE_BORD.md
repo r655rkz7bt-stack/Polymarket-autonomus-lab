@@ -42,6 +42,7 @@ soit environ 17 écrans**. Objectif raisonnable : la moitié.
 |---|---|---|---|
 | `resume` | 1 940 px | essentielle | 7 puces : garder les 4 les plus utiles ; « Dernières actions du chercheur » très bavard (replier à 1) ; « À la une » ajouté en tête |
 | `aujourdhui` | 1 070 px | forte | le récit des 24 h : bien placé |
+| `entonnoir` (17/10) | — | forte | chaque mère et ses filles, comparaison équitable ; à garder près de l'arène |
 | `arene` | 2 360 px | forte | 28 stratégies ; le vocabulaire (« mise ×0,50 · prévisions jugées · avance · dérive ») est obscur pour un débutant : traduire ou replier ; regrouper « aucune opération clôturée » |
 | `capital` | 430 px | essentielle | courbe du principal ; garder |
 | `positions` | 990 px | moyenne | 287 positions tous portefeuilles confondus : surtout du bruit ; piste : principal d'abord, résumé par stratégie |

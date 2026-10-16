@@ -84,6 +84,9 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
 .meter-row b { color: var(--ink); font-weight: 600; }
 
 /* --- dernières actions du chercheur (journal de recherche), dans le résumé */
+.explain { display: block; font-weight: 400; color: var(--ink-2); font-size: 0.82rem; line-height: 1.4; margin: 3px 0 2px; }
+.funnel-group { margin-top: 14px; }
+.funnel-group h3 { margin: 0 0 4px; font-size: 0.95rem; }
 .une { margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--raised); }
 .une ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; }
 .une li { color: var(--ink); font-size: 0.92rem; line-height: 1.45; overflow-wrap: anywhere; }
@@ -240,7 +243,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   </div>
   <nav class="tabs" aria-label="Sections">
     <a href="#resume">Résumé</a><a href="#aujourdhui">Aujourd'hui</a><a href="#organisme">Organisme</a><a href="#capital">Capital</a>
-    <a href="#arene">Arène</a><a href="#positions">Positions</a><a href="#journal">Journal</a><a href="#systeme">Système</a>
+    <a href="#arene">Arène</a><a href="#entonnoir">Entonnoir</a><a href="#positions">Positions</a><a href="#journal">Journal</a><a href="#systeme">Système</a>
   </nav>
 </header>
 
@@ -300,6 +303,15 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <details><summary>Voir les classements</summary><div class="scroll"><table id="arena-hist-table"></table></div></details>
   </section>
 
+  <section id="entonnoir" class="card">
+    <div class="head"><h2>Entonnoir</h2><span class="kicker">chaque stratégie qui gagne, découpée en morceaux</span></div>
+    <p class="note">Une « fille » est la stratégie mère jouée sur un seul morceau des marchés (un sujet, une tranche de prix,
+      un délai, OUI ou NON). Si une fille fait nettement mieux que sa mère, c'est ce morceau qui fait gagner ; on combinera
+      ensuite les meilleurs morceaux. « Contre la mère » compare chaque fille à ce que la mère a gagné depuis la naissance de
+      la fille (comparaison équitable). Il faut une vingtaine d'opérations clôturées avant de conclure.</p>
+    <div id="funnel"></div>
+  </section>
+
   <section id="positions" class="card">
     <div class="head"><h2>Positions ouvertes</h2><span class="kicker">prévision : fourchette ━ et prix actuel ●</span></div>
     <div class="scroll"><table id="positions-t"></table></div>
@@ -348,7 +360,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // sont jamais cachés (filtré côté Python). Les liens du menu suivent le même ordre.
   (function layout() {
     var L = D.mise_en_page || {}, ids = (L.ordre || []).slice(), hide = L.masquer || [];
-    var blocks = ["resume", "aujourdhui", "organisme", "capital", "arene", "positions", "ordres-poses", "journal",
+    var blocks = ["resume", "aujourdhui", "organisme", "capital", "arene", "entonnoir", "positions", "ordres-poses", "journal",
       "decisions-recentes", "systeme"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
     if (blocks.length) {
       var anchor = blocks[blocks.length - 1].nextSibling, parent = blocks[0].parentNode;
@@ -990,6 +1002,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     arena.forEach(function (s, i) {
       var row = el("div", "row"); row.appendChild(el("div", "rank", String(i + 1)));
       var name = el("div", "name", sname(s.nom));
+      if (s.explication) name.appendChild(el("span", "explain", s.explication));
       var H2 = s.sante || {}, susp = !!H2.suspendue;
       var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp ? " off" : ""),
         s.champion ? "champion" : s.eliminee ? "éliminée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
@@ -1128,6 +1141,27 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         p.strategie + " · ouverte " + short(p.ouverte)));
         return [p.portefeuille.replace(/_v[\d.]+$/, ""), m, fmt(p.cout, 2), p.latent === null ? "—" : delta(p.latent, 2), forecast(p)]; }),
     "Aucune position ouverte.");
+
+  // ---------------------------------------------------------------- entonnoir (mères et filles)
+  (function funnelBlock() {
+    var F = D.entonnoir || [], box = document.getElementById("funnel");
+    if (!F.length) { box.appendChild(el("p", "empty", "Pas encore de stratégie découpée.")); return; }
+    var initial = D.capital_initial || 1000;
+    F.forEach(function (g, k) {
+      var wrap = el("div", "funnel-group"); wrap.appendChild(el("h3", null, "Mère : " + sname(g.mere.nom)));
+      var sc = el("div", "scroll"), t = el("table"); t.id = "funnel-t" + k; sc.appendChild(t); wrap.appendChild(sc); box.appendChild(wrap);
+      var mg = (g.mere.capital / initial - 1) * 100;
+      function cap(c, g) { var b = el("span", null, fmt(c, 2)); var d = el("span", "detail"); d.appendChild(delta(g, 1, " %"));
+        b.appendChild(d); return b; }
+      var rows = [[el("span", null, "la mère (tout)"), cap(g.mere.capital, mg), "—", String(g.mere.operations)]]
+        .concat(g.filles.map(function (f) { var fg = (f.capital / initial - 1) * 100, who = el("span", null, f.morceau);
+          who.appendChild(el("span", "detail", sname(f.nom)));
+          var gap = el("span"); gap.appendChild(delta(f.ecart, 1, " pt"));
+          gap.appendChild(el("span", "detail", "mère : " + (f.mere_depuis >= 0 ? "+" : "") + fmt(f.mere_depuis, 1) + " % pendant ce temps"));
+          return [who, cap(f.capital, fg), gap, String(f.operations)]; }));
+      table(t.id, [{ t: "morceau" }, { t: "capital", n: 1 }, { t: "contre la mère", n: 1 }, { t: "opér.", n: 1 }], rows, "—", 12);
+    });
+  })();
 
   // ---------------------------------------------------------------- ordres posés
   (function restingOrders() {
