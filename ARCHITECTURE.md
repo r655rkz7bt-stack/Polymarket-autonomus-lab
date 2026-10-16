@@ -526,8 +526,12 @@ Le notaire (signature réservée à une machine protégée) n'est pas fait :
   marchés météo résolus, source `meteo_reel` toutes les 3 h). La prévision collectée porte
   `data["erreurs"]` (7 dernières erreurs de la station) ; `meteo_prevision` en tire biais et flou,
   tirés vers le réglage global (`calibration_shrink` jours fictifs), plancher `sigma_floor`.
-  Test sur le passé : Brier 0,090 au lieu de 0,097 ; NON +28 à +31 % des mises au lieu de +24 à +26 %
-  (`experiments/meteo_backtest.md`).
+  Test sur le passé : Brier 0,090 au lieu de 0,097. **Aux prix réellement payés, aucun avantage**
+  (−6 % des mises, 0 jour gagnant sur 8 ; `experiments/meteo_backtest.md`, « Vérification ») : le
+  +28 % de l'historique « 10 minutes » venait de marchés sans échange.
 - Arène (`arena.py`, `config/promotion.yaml` → `validated_strategies`) : une stratégie validée sur
-  le passé entre au capital principal avec des seuils plus bas (météo : 8 opérations, 8 h, +0,5 %
-  au lieu de 20, 24 h, +2 %) ; elle doit toujours battre « ne rien faire » en direct.
+  le passé AUX PRIX RÉELLEMENT PAYÉS entre au capital principal avec des seuils plus bas ; elle doit
+  toujours battre « ne rien faire » en direct. Liste vide le 16/10/2026 (météo retirée).
+- `idea_test.fetch_event_trades` / `taker_cost` : prix réellement payés par les preneurs
+  (data-api, public). Leçon du 16/10/2026 (météo, crypto) : l'historique « 10 minutes » du CLOB
+  invente des gains sur les marchés sans échange (carnets vides, prix périmés).

@@ -56,9 +56,13 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    `experiments/sources_resolution.md` ; relevés NOAA (`meteo_metar`), scores des ligues
    (`mlb_stats`, `nhl_stats`, `football_data`), cotes (`odds_api`) arrivent comme observations
    (`market.intel`, table `observations`, champ `data`). Chantier n°0, étape 3 : à toi.
-   Exemple de méthode qui marche : `experiments/meteo_backtest.md` (prévisions passées sans
+   Exemple de méthode : `experiments/meteo_backtest.md` (prévisions passées sans
    regard vers le futur, réglage sur la première moitié des dates, jugement sur la seconde,
    coûts réels). Fais pareil avant toute nouvelle stratégie quand l'historique existe.
+   **Toujours vérifier aux prix réellement payés** (`idea_test.fetch_event_trades` et
+   `taker_cost`) : le 16/10/2026, la météo gagnait +28 % avec l'historique « 10 minutes » du
+   CLOB, mais −6 % aux prix des vrais échanges (tout le gain venait de marchés sans échange) ;
+   même piège en crypto (`experiments/crypto_backtest.md`).
    Outil tout prêt : `src/polymarket_agent/idea_test.py` (marchés résolus d'une famille, prix à
    un instant sans regard vers le futur, jugement hors échantillon, simulation avec frais) ;
    exemple d'emploi : `experiments/meteo_backtest/station_bias.py`.

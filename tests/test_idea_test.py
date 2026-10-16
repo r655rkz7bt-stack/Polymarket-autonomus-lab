@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
 from polymarket_agent import idea_test as it
 
 
@@ -62,3 +64,18 @@ def test_evaluation_is_out_of_sample_with_real_fees():
     rep = it.evaluate(cases, model)
     assert rep["test"] == 8 and "seuil 0.05 / écart 0.01" in rep["simulations"]
     assert "| Brier" in it.markdown("essai", rep)
+
+
+def test_taker_cost_reads_real_trades_and_never_looks_ahead(tmp_path):
+    from test_sources import FakeHttp
+    from polymarket_agent import idea_test as it
+    raw = [{"timestamp": 1000, "asset": "NO", "side": "BUY", "price": 0.40, "size": 10},
+           {"timestamp": 1500, "asset": "YES", "side": "SELL", "price": 0.55, "size": 5},   # NON à 0,45
+           {"timestamp": 1600, "asset": "NO", "side": "SELL", "price": 0.30, "size": 5},   # vente du NON : ignorée
+           {"timestamp": 2500, "asset": "NO", "side": "BUY", "price": 0.50, "size": 5}]
+    http = FakeHttp({it.TRADES: raw})
+    trades = it.fetch_event_trades(http, tmp_path, "e1")
+    assert it.fetch_event_trades(FakeHttp({}), tmp_path, "e1") == trades  # cache
+    assert it.taker_cost(trades, "NO", "YES", 2000) == pytest.approx(0.45)  # jamais l'échange de 2500
+    assert it.taker_cost(trades, "NO", "YES", 2000, after=True) == 0.50
+    assert it.taker_cost(trades, "NO", "YES", 1200, window=100) is None

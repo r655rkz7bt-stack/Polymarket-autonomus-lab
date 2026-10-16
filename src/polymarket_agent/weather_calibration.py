@@ -6,8 +6,9 @@ température du jour à un degré près. Pour chaque station et chaque type (max
   erreur du jour = valeur réelle − moyenne des prévisions faites AVANT ce jour ;
   biais = moyenne des erreurs des 7 derniers jours, tirée vers le biais global (`shrink` jours
   fictifs au biais global) ; flou = leur écart-type, tiré vers le flou global, jamais < plancher.
-Test sur le passé (experiments/meteo_backtest.md, 8-15/10) : Brier 0,092 au lieu de 0,097 (réglage
-global), marché 0,113 ; NON sur la tranche favorite : +26 à +29 % des mises au lieu de +24 %.
+Test sur le passé (experiments/meteo_backtest.md, 8-15/10) : prévision plus juste, Brier 0,090 au
+lieu de 0,097 (réglage global). Mais aux prix réellement payés, pas d'avantage contre le marché
+(−6 % des mises) : le gain affiché avec l'historique « 10 minutes » n'était pas achetable.
 """
 
 from __future__ import annotations

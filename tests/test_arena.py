@@ -193,7 +193,8 @@ def test_backtest_validated_strategies_enter_earlier_but_must_still_win():
     """16/10/2026 : une stratégie validée hors échantillon (validated_strategies) reçoit sa part
     plus tôt ; elle doit quand même battre « ne rien faire » en direct."""
     from polymarket_agent.arena import allocation, validated_gates
-    validated = RULES["validated_strategies"]
+    assert RULES["validated_strategies"] == {}  # 16/10/2026 : météo retirée (aucun gain aux prix réels)
+    validated = {"meteo_prevision": {"min_closed_trades": 8, "min_age_hours": 8, "min_log_growth": 0.005}}
     gates = {"now": NOW, "min_age_hours": float(RULES["min_age_hours"]),
              "min_growth": float(RULES["min_log_growth"])}
     n = int(RULES["min_closed_trades"])
