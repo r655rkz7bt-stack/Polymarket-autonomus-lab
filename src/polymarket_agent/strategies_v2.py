@@ -692,6 +692,76 @@ class MarketMaker(_Base):
                                            f"coupe-perte : {book.best_bid} contre un coût de {pos.avg_cost:.3f}"))
         return [o for o in out if o.shares > 0]
 
+
+# --------------------------------------------------------------------------- 10. mouvement de prix
+
+
+class PriceMove(_Base):
+    """Mouvement récent du prix (16/10/2026, experiments/favori.md §6) : selon la famille, un prix
+    qui vient de bouger continue (politique : l'information s'y diffuse lentement, SUIVRE +3 à +7 %
+    sur les deux moitiés de la période) ou revient en arrière (crypto à seuil : les mouvements y
+    sont exagérés, CONTRER +12 à +17 %). `direction` = 1 suivre, −1 contrer ; mouvement = milieu
+    actuel − prix d'il y a 6 h (historique du CLOB) ; estimation = prix de l'issue achetée +
+    `edge_prior` (a priori tiré du test, NON garanti). Familles : YAML `familles`."""
+
+    strategy_id = "price_move"
+    required = ("direction", "min_move", "min_price", "max_price", "edge_prior", "uncertainty",
+                "min_net_edge", "max_proposals_per_cycle")
+    needs_price_history = True
+    families: tuple[str, ...] = ()
+    exclude_words: tuple[str, ...] = ()
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        from polymarket_agent.strategy_engine import excluded, market_family
+        if not self.families or self.params.get("max_candidates", Decimal("0")) <= 0:
+            return []
+        out = [m for m in markets if len(m.token_ids) == 2 and market_family(m) in self.families
+               and not excluded(m, self.exclude_words) and m.best_bid is not None and m.best_ask is not None]
+        out.sort(key=lambda m: -m.volume_24h)
+        return out[: int(self.params["max_candidates"])]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.strategy_engine import excluded, market_family
+        p, out, candidates = self.params, StrategyOutput(), []
+        for m in watchlist:
+            if len(m.token_ids) != 2 or any(t in state.positions for t in m.token_ids):
+                continue
+            if (self.families and market_family(m) not in self.families) or excluded(m, self.exclude_words):
+                continue
+            if m.yes_price_6h_ago is None:
+                out.abstain("historique de prix indisponible")
+                continue
+            mid = self._mid(books, m)
+            book = books.get(m.token_ids[0])
+            if mid is None or book is None:
+                out.abstain("carnet indisponible")
+                continue
+            ref = m.game_start or m.end_date
+            if ref is not None and ("min_hours" in p or "max_hours" in p):
+                hours = Decimal(str((ref - book.fetched_at).total_seconds() / 3600))
+                if not p.get("min_hours", Decimal("-1e9")) <= hours <= p.get("max_hours", Decimal("1e9")):
+                    out.abstain("hors de la fenêtre de temps")
+                    continue
+            move = mid - m.yes_price_6h_ago
+            if abs(move) < float(p["min_move"]):
+                out.abstain("pas de mouvement suffisant")
+                continue
+            up = move > 0
+            side = (0 if up else 1) if p["direction"] > 0 else (1 if up else 0)
+            price = mid if side == 0 else 1 - mid
+            if not float(p["min_price"]) <= price <= float(p["max_price"]):
+                out.abstain("issue hors de la plage de prix")
+                continue
+            est = price + float(p["edge_prior"])
+            u = float(p["uncertainty"])
+            verb = "suivre" if p["direction"] > 0 else "contrer"
+            prop = self._buy(m, books, state, side, est - u, est, min(0.999, est + u), bucket, marks, out,
+                             f"mouvement_6h:{move:+.3f}", f"{verb} un mouvement de {move:+.2f} en 6 h (a priori ± {u})",
+                             "le mouvement était une vraie information (ou un vrai excès) : l'inverse de la règle")
+            if prop is not None:
+                candidates.append(prop)
+        return self._finish(out, candidates)
+
 CLASSES = {c.strategy_id: c for c in (CrossMarketLadder, MarketStructure, NewsMomentum,
                                       InformationAdvantage, SocialSentiment, MeteoForecast,
-                                      TemperatureFloor, MarketMaker)}
+                                      TemperatureFloor, MarketMaker, PriceMove)}

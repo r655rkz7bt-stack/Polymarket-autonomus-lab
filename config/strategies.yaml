@@ -398,7 +398,7 @@ favori_politique:
   # +4,8 % avec 1 centime d'écart en plus). Explications possibles : partisans qui paient leur
   # candidat, goût du scénario spectaculaire, peu de bots rapides, argent immobilisé longtemps.
   class: naive_favorite
-  familles: [politics, geopolitics]
+  familles: [politics, sans_frais]
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-16"
@@ -420,7 +420,7 @@ favori_politique_patiente:
   # Même raison n°1, avec l'achat POSÉ un cran au-dessus du meilleur acheteur (pas de frais ni
   # d'écart) : la politique bouge lentement, un ordre posé a le temps d'être servi.
   class: naive_favorite
-  familles: [politics, geopolitics]
+  familles: [politics, sans_frais]
   limit_ticks: 1
   enabled: true
   version: "1.0.0"
@@ -483,4 +483,125 @@ outsider_sport_patiente:
     max_extra_ticks: {value: 0, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+
+suivre_politique:
+  # Mouvement de prix, n°1 : en politique et géopolitique, un prix qui a bougé de plus de 0,05 en
+  # 6 h CONTINUE (l'information s'y diffuse lentement) : +3,2 % puis +7,3 % sur les deux moitiés
+  # de la période, 17 jours gagnants sur 26 (103 paris : échantillon petit).
+  class: price_move
+  familles: [politics, sans_frais]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    direction:      {value: 1, min: -1, max: 1}
+    min_move:       {value: 0.05, min: 0.01, max: 0.5}
+    min_price:      {value: 0.15, min: 0.01, max: 0.99}
+    max_price:      {value: 0.90, min: 0.01, max: 0.99}
+    edge_prior:     {value: 0.05, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.2}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.5}
+    min_hours:      {value: 2, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
+
+contrer_crypto:
+  # Mouvement de prix, n°2 : sur les marchés crypto à seuil, un mouvement de plus de 0,05 en 6 h
+  # est EXAGÉRÉ : le contrer a rapporté +11,7 % puis +17,4 % sur les deux moitiés (199 paris,
+  # 17 jours gagnants sur 29). Achète surtout l'issue bon marché : résultats très irréguliers,
+  # petites mises. Frais crypto élevés (0,07) : variante patiente à côté.
+  class: price_move
+  familles: [crypto]
+  exclure_mots: ["up or down"]   # hausse/baisse : instable dans le test (+52 % puis −26 %)
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    direction:      {value: -1, min: -1, max: 1}
+    min_move:       {value: 0.05, min: 0.01, max: 0.5}
+    min_price:      {value: 0.05, min: 0.01, max: 0.99}
+    max_price:      {value: 0.60, min: 0.01, max: 0.99}
+    edge_prior:     {value: 0.05, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.2}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.5}
+    min_hours:      {value: 2, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
+
+contrer_crypto_patiente:
+  # Même règle, achat POSÉ un cran au-dessus du meilleur acheteur (pas de frais à 0,07).
+  class: price_move
+  familles: [crypto]
+  exclure_mots: ["up or down"]   # hausse/baisse : instable dans le test (+52 % puis −26 %)
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    direction:      {value: -1, min: -1, max: 1}
+    min_move:       {value: 0.05, min: 0.01, max: 0.5}
+    min_price:      {value: 0.05, min: 0.01, max: 0.99}
+    max_price:      {value: 0.60, min: 0.01, max: 0.99}
+    edge_prior:     {value: 0.05, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.2}
+    min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
+    min_hours:      {value: 2, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
+
+favori_politique_quasi_certain:
+  # Favori n°1 bis : politique et géopolitique 0,97-0,995 (« presque acquis », souvent un résultat
+  # connu en attente de règlement) : 99,6 % gagnés pour 98,8 % de prix (+0,8 % après frais) ;
+  # 0,95-0,98 : +2,8 %. Petit gain par pari, mais argent rendu vite. Une seule perte coûte cher.
+  class: naive_favorite
+  familles: [politics, sans_frais]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    min_ask:        {value: 0.97, min: 0.50, max: 0.999}
+    max_ask:        {value: 0.995, min: 0.60, max: 0.999}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}
+    shrink:         {value: 0.5, min: 0.0, max: 0.9}
+    uncertainty:    {value: 0.003, min: 0.001, max: 0.10}
+    min_net_edge:   {value: 0.002, min: 0.00, max: 0.50}
+    min_hours:      {value: 1, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
+
+loterie_meteo:
+  # Billet de loterie (16/10/2026, experiments/favori.md §6) : dans les 6 dernières heures, 11
+  # marchés « température maximale » sur 157 donnés quasi certains (≥ 0,95) se sont retournés
+  # (arrondi, hausse tardive relevée par la station officielle). L'issue contraire, vendue
+  # ≈ 0,005, a gagné 4,5 % du temps. 11 cas seulement : très irrégulier, mises minuscules.
+  class: naive_favorite
+  familles: [weather]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    underdog:       {value: 1, min: 0, max: 1}
+    min_ask:        {value: 0.002, min: 0.001, max: 0.5}
+    max_ask:        {value: 0.03, min: 0.002, max: 0.5}
+    bias:           {value: 0.03, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.01, min: 0.001, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    min_hours:      {value: 0, min: 0, max: 720}
+    max_hours:      {value: 6, min: 1, max: 2000}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 5, min: 0, max: 50}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
 

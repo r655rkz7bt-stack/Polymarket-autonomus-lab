@@ -72,6 +72,24 @@ ministre à 0,89) ; `outsider_sport_patiente` aurait posé 3 achats d'outsiders 
   Brésil, en Russie, en Allemagne ; guerre au Moyen-Orient) ne se répètent pas forcément.
 - Plusieurs marchés d'un même événement sont liés (110 événements pour 223 marchés politiques).
 - Prix d'échange (≥ 100 $) et non prix du vendeur du carnet : l'écart réel peut être plus grand.
-- La famille vient du barème de frais (`politics_fees`, sans frais = géopolitique) ; le test, lui,
+- La famille vient du barème de frais (`politics_fees` ; sans frais = `sans_frais`, surtout la géopolitique, mais aussi santé ou séismes) ; le test, lui,
   utilisait les étiquettes Gamma : quelques marchés peuvent changer de famille.
 - `naive_favorite` mise en Kelly complet : une seule perte sur un pari à 0,92 peut coûter 40 % du capital.
+
+## 6. Nouvelles pistes (même données, même règle ; script `experiments/favori/pistes.py`)
+| Piste | Résultat | Stabilité | Stratégie |
+|---|---|---|---|
+| Politique : SUIVRE un mouvement de plus de 0,05 en 6 h | +5,4 % (103 paris) ; plus de 0,10 : +10,1 % | +3,2 % puis +7,3 % ; 17 jours gagnants sur 26 | `suivre_politique` |
+| Politique : CONTRER ce mouvement | −18 % à −35 % | — | (confirme : en politique, l'information se diffuse lentement) |
+| Crypto à seuil : CONTRER un mouvement de plus de 0,05 en 6 h | +14,1 % (199 paris) ; 0,10 en 24 h : +29,8 % | +11,7 % puis +17,4 % ; 17 jours sur 29 ; achète surtout l'issue à moins de 0,30 | `contrer_crypto` (+ patiente) |
+| Crypto hausse/baisse : contrer | +51,6 % puis −25,9 % | instable | écartée (`exclure_mots`) |
+| Politique 0,97-0,995 (« presque acquis ») | +0,8 % après frais (99,6 % gagnés) ; 0,95-0,98 : +2,8 % | toutes tranches positives | `favori_politique_quasi_certain` |
+| Météo : le « quasi certain » (≥ 0,95) des 6 dernières heures se retourne | 11 marchés sur 157 ; l'issue contraire à ≈ 0,005 gagne 4,5 % du temps | 11 cas : très fragile | `loterie_meteo` (mises minuscules) |
+
+Essai à blanc (16/10/2026 au soir) : `contrer_crypto` achèterait 1 issue, la patiente en poserait 3 ;
+`favori_politique_quasi_certain` achèterait 3 favoris à 0,97 (cessez-le-feu Russie-Ukraine non,
+Lieberman Premier ministre non, accord d'Ormuz non) ; `loterie_meteo` 1 billet ; `suivre_politique`
+rien (aucun mouvement de plus de 0,05 ce soir-là).
+Famille « sans_frais » : un marché sans frais est surtout de la géopolitique, mais aussi santé ou
+séismes ; les variantes politiques l'incluent.
+
