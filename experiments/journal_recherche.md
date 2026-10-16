@@ -3,6 +3,24 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-16 (passage chercheur, ~5 h UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (04:46 UTC), classement.
+- **Constat** : capital réalisé 994,06 (palier 1500), aucun champion, aucune obligation. market_structure :
+  192 opérations, -400,70, verdict « ne fonctionne pas » (frais). crypto_threshold -150 (4 opérations).
+  news_momentum +4,03 (2 opérations). Les autres : 0 à 3 opérations.
+- **Fait** : chantier n°0 étape 3 (température). Nouvelle stratégie `temperature_floor`
+  (`strategies_v2.py`, `weather_model.py`, entrée `strategies.yaml`) : le maximum METAR du jour ne peut que
+  monter, donc une tranche dépassée d'1 °C (2 °F) est perdue d'avance (achat de « Non »), et « X ou plus »
+  déjà atteint est gagné (achat de « Oui »). Observation météo rattachée aux marchés (`MarketInfo.weather`,
+  `intel_pipeline.py`). Formats de questions vérifiés sur Gamma (°C, °F, « or below », « or higher »).
+  Tests : 3 nouveaux, suite verte.
+- **Reste ouvert** : sport (match terminé non réglé, cotes `odds_api`) ; vérifier au premier cycle de
+  production que `market.weather` est bien rempli (les observations ne sont reliées qu'aux stations
+  citées) ; jugement de l'arène. market_structure reste très négative : à éliminer si rien ne change.
+- **Limites** : jour local estimé par la longitude ; rien vérifié en réel (pas d'accès au cycle de
+  production) ; prix des tranches météo non observés ici (le marché est peut-être déjà à jour).
+
 ## 2026-10-15 (passage chercheur, ~20 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (19:46 UTC), classement.

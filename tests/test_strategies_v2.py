@@ -151,3 +151,49 @@ def test_social_sentiment_fades_unconfirmed_crowd(ledger, limits):
     assert s.propose([crowd], books, ledger.state, limits, "B1").proposals[0].token_id == "tokB"  # contre la foule
     confirmed = market_with(0.5, stance=0.9, signal=True)
     assert not s.propose([confirmed], books, ledger.state, limits, "B1").proposals
+
+
+# ----------------------------------------------------------------- température (chantier n°0)
+
+
+def temp_market(mid, question, yes, no):
+    return parse_market(raw_market(market_id=mid, yes_token=yes, no_token=no, event_id=f"t{mid}",
+                                   question=question, end=NOW + timedelta(hours=6)))
+
+
+def test_parse_bucket_forms():
+    from polymarket_agent.weather_model import parse_bucket
+    q = "Will the highest temperature in {} be {} on October 15?"
+    b = parse_bucket(q.format("Paris", "18°C"))
+    assert (b.low, b.high, b.unit, b.month, b.day) == (18, 18, "C", 10, 15)
+    assert parse_bucket(q.format("Paris", "17°C or below")).low is None
+    assert parse_bucket(q.format("Paris", "27°C or higher")).high is None
+    b = parse_bucket(q.format("Los Angeles", "between 76-77°F"))
+    assert (b.low, b.high, b.unit) == (76, 77, "F")
+    assert parse_bucket("Will Bitcoin be above 80k on October 15?") is None
+
+
+def test_certain_side_margins():
+    from polymarket_agent.weather_model import certain_side, parse_bucket
+    b = parse_bucket("Will the highest temperature in Paris be 18°C on October 15?")
+    assert certain_side(b, 19.0) == 1 and certain_side(b, 18.0) is None
+    up = parse_bucket("Will the highest temperature in Paris be 20°C or higher on October 15?")
+    assert certain_side(up, 21.0) == 0 and certain_side(up, 20.0) is None
+    f = parse_bucket("Will the highest temperature in Los Angeles be between 76-77°F on October 15?")
+    assert certain_side(f, 27.0) == 1 and certain_side(f, 25.0) is None  # 27 °C = 80,6 °F ; 25 °C = 77 °F
+
+
+def test_temperature_floor_buys_no_on_lost_bucket(ledger, limits):
+    from polymarket_agent.strategies_v2 import TemperatureFloor
+    m = temp_market("9", "Will the highest temperature in Paris be 18°C on October 15?", "Y9", "N9")
+    m.weather = {"station": "LFPB", "jour_local": "2026-10-15", "max_jour_c": 21.0}
+    strat = TemperatureFloor("1.0.0", "2026-10-16", {
+        "margin_c": D("1"), "margin_f": D("2"), "certainty": D("0.96"), "min_net_edge": D("0.01"),
+        "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3"), "kelly_fraction": D("0.5")})
+    books = two_sided("Y9", "N9", "0.08", "0.10")
+    out = strat.propose([m], books, ledger.state, limits, "B1")
+    assert [p.token_id for p in out.proposals] == ["N9"]  # « Non » : le maximum a déjà dépassé 18 °C
+    m.weather = dict(m.weather, jour_local="2026-10-14")  # observation d'un autre jour : rien
+    assert not strat.propose([m], books, ledger.state, limits, "B1").proposals
+    m.weather = None
+    assert not strat.propose([m], books, ledger.state, limits, "B1").proposals

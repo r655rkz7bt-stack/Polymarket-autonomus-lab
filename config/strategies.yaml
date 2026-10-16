@@ -184,3 +184,21 @@ social_sentiment:
     min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+temperature_floor:
+  # Chantier n°0, étape 3 (16/10/2026) : le maximum du jour ne peut que monter. Tranche déjà
+  # dépassée par le maximum METAR → « Non » quasi certain ; « X ou plus » atteint → « Oui ».
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  hypothesis: >
+    La source de résolution (NOAA, station d'aéroport) est lisible en direct ; quand le relevé
+    rend une tranche impossible ou acquise, le prix du marché est en retard sur la réalité.
+  params:
+    margin_c:       {value: 1.0, min: 0.5, max: 3.0}
+    margin_f:       {value: 2.0, min: 1.0, max: 5.0}
+    certainty:      {value: 0.96, min: 0.80, max: 0.99}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}

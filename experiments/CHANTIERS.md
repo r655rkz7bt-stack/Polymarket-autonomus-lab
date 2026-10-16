@@ -34,7 +34,7 @@ Lire cette source directement, c'est regarder la réponse au même endroit que l
    de la source au seuil du marché, avec le temps restant avant la clôture.
 Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'inventaire et passer.
 
-**État (15/10/2026) : étapes 1 et 2 faites, étape 3 à faire.**
+**État (16/10/2026) : étapes 1 et 2 faites ; étape 3 : température faite (stratégie `temperature_floor`, en arène depuis le 16/10), sport (match terminé + cotes) à faire.**
 - Étape 1 : `resolution_sources.py` archive la source de chaque marché surveillé (table
   `market_rules`), résumé dans la console du tableau de bord ; inventaire des 1 500 marchés actifs
   dans `experiments/sources_resolution.md` (Binance 234, NOAA/weather.gov 210, NFL 79, X 68…).
