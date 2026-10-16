@@ -1,5 +1,8 @@
 # Polymarket Autonomous Lab
 
+> ### 📊 [Ouvrir le tableau de bord en direct](https://r655rkz7bt-stack.github.io/Polymarket-autonomus-lab/)
+> Capital, cœur du système, arène des stratégies, positions et « Aujourd'hui » (mis à jour toutes les 10 minutes).
+
 Agent de recherche et de **trading simulé** sur Polymarket.
 Capital : 1 000 unités virtuelles. **Aucun ordre réel, aucun portefeuille, aucune clé privée.**
 Règle n°1 : à 0 € tu meurs (arrêt définitif, réinitialisation manuelle uniquement).
