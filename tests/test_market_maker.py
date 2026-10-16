@@ -128,3 +128,7 @@ def test_markout_compares_filled_and_missed_resting_orders(tmp_path):
                      at.isoformat()))
     rep = markout.report(db, {"fantome:market_maker_v1.0.0": entries}, at + timedelta(days=3))
     assert rep["fantome:market_maker_v1.0.0"]["manques"]["5 min"]["moyenne"] == pytest.approx(0.50 - 0.41)
+    # Le tableau de bord nomme le fantôme sans « fantome: » (nom du fichier du journal) : même résultat.
+    rep2 = markout.report(db, {"market_maker_v1.0.0": entries}, at + timedelta(days=3))
+    assert rep2["market_maker_v1.0.0"]["manques"]["ordres"] == 1
+

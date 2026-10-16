@@ -88,10 +88,12 @@ def _aggregate(cases: list[tuple[str, float, float, datetime, str]], db, settled
 
 
 def unfilled_orders(db, portfolio: str, since: datetime, limit: int = 1500) -> list[dict]:
+    # La base nomme les fantômes « fantome:<nom> », le tableau de bord « <nom> » : les deux sont acceptés.
+    names = (portfolio, portfolio.removeprefix("fantome:"), "fantome:" + portfolio.removeprefix("fantome:"))
     rows = db.conn.execute(
-        "SELECT token_id, side, created_at, proposal FROM pending_orders WHERE portfolio=? AND fills=0 "
+        "SELECT token_id, side, created_at, proposal FROM pending_orders WHERE portfolio IN (?,?,?) AND fills=0 "
         "AND status IN ('EXPIRE', 'REMPLACE') AND created_at >= ? ORDER BY created_at DESC LIMIT ?",
-        (portfolio, since.isoformat(), limit)).fetchall()
+        (*names, since.isoformat(), limit)).fetchall()
     out = []
     for token, side, created, proposal in rows:
         try:
