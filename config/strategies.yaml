@@ -316,3 +316,25 @@ crypto_threshold_patiente:
     max_quote_age_minutes: {value: 20, min: 1, max: 120}
     min_hours:       {value: 0.5, min: 0.1, max: 72}
     kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
+
+naive_favorite_patiente:
+  # Variante « patiente » (16/10/2026 soir, chercheur) de la première de l'arène (naive_favorite :
+  # 7 opérations, +79). Achat du favori POSÉ 1 cran au-dessus du meilleur acheteur au lieu de payer
+  # le vendeur ; seuil d'avantage abaissé car le prix posé est meilleur ; Kelly 0,5 (échantillon minuscule).
+  class: naive_favorite
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  hypothesis: >
+    Même biais favori que naive_favorite ; hypothèse ajoutée : économiser écart et frais taker vaut
+    plus que les occasions manquées. Comparée à son jumeau « impatient » dans l'arène.
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
