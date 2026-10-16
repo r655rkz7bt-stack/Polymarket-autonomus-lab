@@ -291,7 +291,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <p class="note" id="arena-note"></p>
     <div class="rows" id="arena" style="margin-top:12px"></div>
     <div class="head" style="margin:26px 0 6px"><h3 class="h3">Classement dans le temps</h3>
-      <span class="kicker" id="hist-kicker">une photo par heure · 1 = en tête</span></div>
+      <span class="kicker" id="hist-kicker">une photo par heure · 1 = en tête · les 10 premières</span></div>
     <div class="chart" id="arena-hist"></div>
     <details><summary>Voir les classements</summary><div class="scroll"><table id="arena-hist-table"></table></div></details>
   </section>
@@ -305,7 +305,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <div class="head"><h2>Ordres posés</h2><span class="kicker">tenue de marché : récompenses estimées et sélection adverse (7 jours)</span></div>
     <p class="note">Récompenses de liquidité : ESTIMATION d'après la formule de Polymarket, jamais comptée dans le capital
       (versée seulement les jours à 1 $ ou plus). Markout : écart moyen par part entre notre prix et le prix du milieu plus
-      tard (positif = bon) ; si les ordres servis font moins bien que les ordres manqués, on est servi quand on a tort.</p>
+      tard (positif = bon), ordres servis en blanc et ordres manqués en gris dessous, nombre de cas entre parenthèses ;
+      si les servis font nettement moins bien que les manqués, on est servi quand on a tort.</p>
     <div class="scroll"><table id="rewards-t"></table></div>
     <div class="scroll"><table id="markout-t"></table></div>
   </section>
@@ -387,6 +388,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     holder.appendChild(btn); apply();
     return apply;
   }
+  // Nom de stratégie lisible : sans « fantome: » ni version, coupure permise après chaque « _ ».
+  function sname(n) { return String(n || "").replace(/^fantome:/, "").replace(/_v[\d.]+$/, "").replace(/_/g, "_\u200b"); }
   function table(id, head, rows, empty, limit) {
     var t = document.getElementById(id); t.textContent = "";
     if (!rows.length) { t.replaceWith(el("p", "empty", empty)); return; }
@@ -953,7 +956,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var more = el("div", "more-row");
     arena.forEach(function (s, i) {
       var row = el("div", "row"); row.appendChild(el("div", "rank", String(i + 1)));
-      var name = el("div", "name", s.nom.replace(/_v[\d.]+$/, ""));
+      var name = el("div", "name", sname(s.nom));
       var H2 = s.sante || {}, susp = !!H2.suspendue;
       var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp ? " off" : ""),
         s.champion ? "champion" : s.eliminee ? "éliminée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
@@ -993,7 +996,12 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     if (dates.length < 2 || !names.length) {
       box.appendChild(el("p", "empty", "Pas encore assez de photos du classement (une par heure).")); return; }
     var lead = arena.length ? arena[0].nom : names[0];
-    var maxRank = 1; names.forEach(function (n) { Hs.strategies[n].forEach(function (r) { if (r && r > maxRank) maxRank = r; }); });
+    // Lisible même avec 30 stratégies : seules les 10 premières d'aujourd'hui sont tracées ; un rang
+    // au-delà de 10 est posé sur la dernière ligne « 11+ ».
+    var TOP = 10, last = function (n) { var rs = Hs.strategies[n], i = rs.length - 1; while (i >= 0 && !rs[i]) i--; return i < 0 ? null : rs[i]; };
+    names = names.filter(function (n) { var r = last(n); return n === lead || (r !== null && r <= TOP); });
+    var clampRank = function (r) { return r ? Math.min(r, TOP + 1) : r; };
+    var maxRank = 1; names.forEach(function (n) { Hs.strategies[n].forEach(function (r) { if (r && clampRank(r) > maxRank) maxRank = clampRank(r); }); });
     var W = Math.max(300, Math.round(box.clientWidth)), narrow = W < 600, Hh = Math.max(160, Math.min(320, 26 * maxRank + 40));
     var L = 30, R = narrow ? 12 : 150, T = 12, B = 26;
     var sx = function (i) { return L + i / (dates.length - 1) * (W - L - R); };
@@ -1002,12 +1010,13 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       "aria-label": "Classement de l'arène sur " + dates.length + " photos ; en tête : " + lead }, box);
     for (var r = 1; r <= maxRank; r++) {
       svgEl("line", { x1: L, x2: W - R, y1: sy(r), y2: sy(r), stroke: "var(--line)", "stroke-dasharray": r === 1 ? "" : "2 4" }, svg);
-      svgEl("text", { x: L - 8, y: sy(r) + 3, "text-anchor": "end", "font-size": 10, fill: "var(--muted)" }, svg, String(r)); }
+      svgEl("text", { x: L - 8, y: sy(r) + 3, "text-anchor": "end", "font-size": 10, fill: "var(--muted)" }, svg,
+        r > TOP ? (TOP + 1) + "+" : String(r)); }
     [0, dates.length - 1].forEach(function (i) {
       svgEl("text", { x: sx(i), y: Hh - 6, "text-anchor": i ? "end" : "start", "font-size": 10, fill: "var(--muted)" }, svg, short(dates[i])); });
     function path(n) { var d = "", pen = false;
       Hs.strategies[n].forEach(function (rk, i) { if (!rk) { pen = false; return; }
-        d += (pen ? "L" : "M") + sx(i).toFixed(1) + " " + sy(rk).toFixed(1); pen = true; }); return d; }
+        d += (pen ? "L" : "M") + sx(i).toFixed(1) + " " + sy(clampRank(rk)).toFixed(1); pen = true; }); return d; }
     var order = names.filter(function (n) { return n !== lead; }).concat(names.indexOf(lead) >= 0 ? [lead] : []);
     var paths = {};
     order.forEach(function (n) { var hi = n === lead;
@@ -1016,17 +1025,18 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     // Fin de chaque ligne : un point ; noms en clair pour les trois premiers (écran large).
     names.forEach(function (n) { var rs = Hs.strategies[n], i = rs.length - 1; while (i >= 0 && !rs[i]) i--;
       if (i < 0) return; var hi = n === lead;
-      svgEl("circle", { cx: sx(i), cy: sy(rs[i]), r: hi ? 4.5 : 3, fill: hi ? "var(--ink)" : "var(--dot-mid)",
+      svgEl("circle", { cx: sx(i), cy: sy(clampRank(rs[i])), r: hi ? 4.5 : 3, fill: hi ? "var(--ink)" : "var(--dot-mid)",
         stroke: "var(--card)", "stroke-width": 2 }, svg);
       if (!narrow && i === rs.length - 1 && rs[i] <= 3)
         svgEl("text", { x: sx(i) + 10, y: sy(rs[i]) + 3, "font-size": 10.5, fill: hi ? "var(--ink)" : "var(--ink-2)" },
           svg, n.replace(/_v[\d.]+$/, "").slice(0, 20)); });
     var tip = tooltip(box), cur = { i: dates.length - 1, n: lead };
     function show() { var i = cur.i, n = cur.n, rk = Hs.strategies[n][i], k = svg.getBoundingClientRect().width / W;
+      var y = sy(clampRank(rk) || 1);
       Object.keys(paths).forEach(function (m) { paths[m].setAttribute("stroke", m === n ? "var(--ink)" : "var(--dot-lo)");
         paths[m].setAttribute("stroke-width", m === n ? 2.5 : 2); });
       paths[n].parentNode.appendChild(paths[n]);
-      tip.show(sx(i) * k, sy(rk || 1) * k, n.replace(/_v[\d.]+$/, "") + (rk ? " · n°" + rk : ""),
+      tip.show(sx(i) * k, y * k, n.replace(/_v[\d.]+$/, "") + (rk ? " · n°" + rk : ""),
         short(dates[i]) + " · capital " + fmt((Hs.capital[n] || [])[i], 2)); }
     function reset() { tip.hide(); Object.keys(paths).forEach(function (m) {
       paths[m].setAttribute("stroke", m === lead ? "var(--ink)" : "var(--dot-lo)"); paths[m].setAttribute("stroke-width", 2); });
@@ -1034,7 +1044,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     svg.addEventListener("pointermove", function (ev) { var b = svg.getBoundingClientRect(), X = (ev.clientX - b.left) / b.width * W,
       Y = (ev.clientY - b.top) / b.width * W, i = Math.max(0, Math.min(dates.length - 1, Math.round((X - L) / (W - L - R) * (dates.length - 1))));
       var best = null, dist = 1e9; names.forEach(function (n) { var rk = Hs.strategies[n][i];
-        if (rk && Math.abs(sy(rk) - Y) < dist) { dist = Math.abs(sy(rk) - Y); best = n; } });
+        if (rk && Math.abs(sy(clampRank(rk)) - Y) < dist) { dist = Math.abs(sy(clampRank(rk)) - Y); best = n; } });
       if (best) { cur = { i: i, n: best }; show(); } });
     svg.addEventListener("pointerleave", reset);
     svg.addEventListener("focus", show); svg.addEventListener("blur", reset);
@@ -1090,17 +1100,22 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   (function restingOrders() {
     var O = D.ordres_poses || {}, R = O.recompenses || {}, M = O.markout || {};
     table("rewards-t", [{ t: "portefeuille" }, { t: "estimé 7 j ($)", n: 1 }, { t: "versable ($)", n: 1 }, { t: "jours", n: 1 }],
-      Object.keys(R).sort().map(function (p) { return [p.replace(/^fantome:/, "").replace(/_v[\d.]+$/, ""), fmt(R[p].estime, 2), fmt(R[p].versable, 2), R[p].jours]; }),
+      Object.keys(R).sort().map(function (p) { return [sname(p), fmt(R[p].estime, 2), fmt(R[p].versable, 2), R[p].jours]; }),
       "Aucune récompense estimée pour l'instant (aucun ordre posé sur un marché récompensé).");
-    var H = ["5 min", "1 h", "6 h", "24 h", "résolution"];
-    function cell(x) { return x && x.moyenne !== null && x.moyenne !== undefined ? delta(x.moyenne, 3) + " (" + x.cas + ")" : "—"; }
-    var rows = [];
-    Object.keys(M).sort().forEach(function (p) {
-      var name = p.replace(/^fantome:/, "").replace(/_v[\d.]+$/, "");
-      rows.push([name, "servis (" + M[p].servis.executions + ")"].concat(H.map(function (h) { return cell(M[p].servis[h]); })));
-      rows.push([name, "manqués (" + M[p].manques.ordres + ")"].concat(H.map(function (h) { return cell(M[p].manques[h]); })));
+    var H = ["1 h", "24 h", "résolution"];
+    function pair(a, b) {  // servis (en haut) et manqués (en dessous, en gris)
+      var box = el("span");
+      function line(x, cls) { var ln = el("span", cls);
+        if (x && x.moyenne !== null && x.moyenne !== undefined) { ln.appendChild(delta(x.moyenne, 3));
+          ln.appendChild(document.createTextNode(" (" + x.cas + ")")); } else ln.appendChild(document.createTextNode("—"));
+        return ln; }
+      box.appendChild(line(a, null)); box.appendChild(line(b, "detail")); return box; }
+    var rows = Object.keys(M).sort().map(function (p) {
+      var who = el("span", null, sname(p));
+      who.appendChild(el("span", "detail", M[p].servis.executions + " servis · " + M[p].manques.ordres + " manqués"));
+      return [who].concat(H.map(function (h) { return pair(M[p].servis[h], M[p].manques[h]); }));
     });
-    table("markout-t", [{ t: "portefeuille" }, { t: "ordres" }].concat(H.map(function (h) { return { t: h, n: 1 }; })), rows,
+    table("markout-t", [{ t: "portefeuille" }].concat(H.map(function (h) { return { t: h, n: 1 }; })), rows,
       "Pas encore d'ordre posé à mesurer.");
   })();
 
