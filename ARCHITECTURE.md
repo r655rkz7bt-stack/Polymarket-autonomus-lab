@@ -568,9 +568,12 @@ orienter le labo vers la tenue de marché, sans arrêter ce qui tourne déjà.
 et géopolitique (+5,7 % après frais, stable) ; la fin de partie est un piège ailleurs.
 - `NaiveFavorite` (strategy_engine.py) gagne des options, sans changer l'originale : `familles`
   (YAML, liste ; `market_family` d'après le barème de frais : politics, sports, crypto, economics…,
-  sans frais = geopolitics), `min_hours` / `max_hours` (avant l'échéance, ou avant le coup d'envoi
+  sans frais = sans_frais (surtout géopolitique)), `min_hours` / `max_hours` (avant l'échéance, ou avant le coup d'envoi
   `MarketInfo.game_start` = Gamma `gameStartTime`), `underdog` (acheter l'outsider), `shrink`
   (estimation = milieu + shrink × (1 − milieu)), `max_candidates` (marchés demandés au scanner).
 - Variantes : `favori_politique`, `favori_politique_patiente`, `naive_favorite_sans_fin`,
   `outsider_sport_patiente`. `scanner.max_extra_markets` passé à 260.
+- `strategies_v2.PriceMove` (mouvement de prix sur 6 h, `direction` 1 suivre / −1 contrer) :
+  `suivre_politique`, `contrer_crypto` (+ patiente). Autres variantes : `favori_politique_quasi_certain`,
+  `loterie_meteo`. YAML `exclure_mots` (question contenant un mot → marché exclu).
 

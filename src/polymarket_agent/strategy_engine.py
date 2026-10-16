@@ -92,6 +92,7 @@ class NaiveFavorite:
     #   shrink : estimation = milieu + shrink × (1 − milieu) au lieu de milieu + bias (le favori
     #   perd « shrink » fois moins souvent que son prix ne l'annonce).
     families: tuple[str, ...] = ()
+    exclude_words: tuple[str, ...] = ()
 
     def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
         """Variante ciblée (familles + `max_candidates`) : demande ses propres marchés au scanner,
@@ -101,7 +102,7 @@ class NaiveFavorite:
             return []
         out = []
         for m in markets:
-            if len(m.outcome_prices) != 2 or market_family(m) not in self.families:
+            if len(m.outcome_prices) != 2 or market_family(m) not in self.families or excluded(m, self.exclude_words):
                 continue
             price = min(m.outcome_prices) if p.get("underdog", Decimal("0")) > 0 else max(m.outcome_prices)
             if p["min_ask"] - Decimal("0.02") <= price <= p["max_ask"]:
@@ -128,7 +129,7 @@ class NaiveFavorite:
             if not market.outcome_prices or len(market.token_ids) != 2:
                 out.abstain("marché non binaire")
                 continue
-            if self.families and market_family(market) not in self.families:
+            if (self.families and market_family(market) not in self.families) or excluded(market, self.exclude_words):
                 out.abstain("famille de marchés exclue")
                 continue
             idx = 0 if market.outcome_prices[0] >= market.outcome_prices[1] else 1
@@ -195,12 +196,18 @@ class NaiveFavorite:
         return out
 
 
+def excluded(market: MarketInfo, words: tuple[str, ...]) -> bool:
+    q = (market.question or "").lower()
+    return any(w in q for w in words)
+
+
 def market_family(market: MarketInfo) -> str:
     """Famille d'un marché d'après son barème de frais (Gamma `feeType`, vérifié le 16/10/2026) :
-    « politics_fees » → politics, « sports_fees_v3 » → sports, … ; marché SANS frais →
-    geopolitics (seule catégorie sans frais, docs Polymarket) ; barème inconnu → other."""
+    « politics_fees » → politics, « sports_fees_v3 » → sports, « weather_fees » → weather… ;
+    marché SANS frais → sans_frais (surtout la géopolitique, mais aussi santé, séismes…) ;
+    barème inconnu → other."""
     if market.fees.enabled is False:
-        return "geopolitics"
+        return "sans_frais"
     if market.fees.enabled and market.fees.fee_type:
         return market.fees.fee_type.split("_")[0]
     return "other"
@@ -560,8 +567,10 @@ def load_strategies(path: Path) -> list:
         strategy = cls(*args)
         if "class" in spec:
             strategy.strategy_id = strategy_id
-        if "familles" in spec:  # familles de marchés acceptées (ex. [politics, geopolitics])
+        if "familles" in spec:  # familles de marchés acceptées (ex. [politics, sans_frais])
             strategy.families = tuple(str(f) for f in spec["familles"])
+        if "exclure_mots" in spec:  # marchés exclus si la question contient un de ces mots
+            strategy.exclude_words = tuple(str(w).lower() for w in spec["exclure_mots"])
         if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
             strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
         mode = str(spec.get("mode", "principal"))
