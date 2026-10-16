@@ -84,6 +84,9 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
 .meter-row b { color: var(--ink); font-weight: 600; }
 
 /* --- dernières actions du chercheur (journal de recherche), dans le résumé */
+.une { margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--raised); }
+.une ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.une li { color: var(--ink); font-size: 0.92rem; line-height: 1.45; overflow-wrap: anywhere; }
 .research { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 8px; }
 .research .kicker { margin-bottom: 2px; }
 .research details { background: var(--raised); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
@@ -251,6 +254,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       </div>
       <p class="headline" id="headline"></p>
     </div>
+    <div class="une" id="une" hidden></div>
     <ul class="facts" id="facts"></ul>
     <div class="research" id="research" aria-label="Dernières actions du chercheur"></div>
     <div class="split">
@@ -317,7 +321,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       <div class="scroll"><table id="watched"></table></div></section>
   </div>
 
-  <section class="card">
+  <section id="decisions-recentes" class="card">
     <div class="head"><h2>Décisions récentes</h2><span class="kicker">le contrôleur tranche, les stratégies proposent</span></div>
     <div class="scroll"><table id="decisions"></table></div>
   </section>
@@ -338,6 +342,35 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   var D = JSON.parse(document.getElementById("data").textContent);
   var NS = "http://www.w3.org/2000/svg";
   var C = D.capital, SYS = D.systeme || {}, H = D.sante || {};
+
+  // ---------------------------------------------------------------- mise en page (réglée par le chercheur)
+  // config/dashboard.yaml → ordre des blocs, blocs cachés, « À la une ». Le résumé et le capital ne
+  // sont jamais cachés (filtré côté Python). Les liens du menu suivent le même ordre.
+  (function layout() {
+    var L = D.mise_en_page || {}, ids = (L.ordre || []).slice(), hide = L.masquer || [];
+    var blocks = ["resume", "aujourdhui", "organisme", "capital", "arene", "positions", "ordres-poses", "journal",
+      "decisions-recentes", "systeme"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    if (blocks.length) {
+      var anchor = blocks[blocks.length - 1].nextSibling, parent = blocks[0].parentNode;
+      ids.concat(blocks.map(function (b) { return b.id; }).filter(function (id) { return ids.indexOf(id) < 0; }))
+        .forEach(function (id) { var b = document.getElementById(id); if (b && b.parentNode === parent) parent.insertBefore(b, anchor); });
+      var nav = document.querySelector("nav.tabs");
+      if (nav) Array.prototype.slice.call(nav.querySelectorAll("a")).sort(function (a, b) {
+        var ia = Array.prototype.indexOf.call(parent.children, document.getElementById(a.getAttribute("href").slice(1)));
+        var ib = Array.prototype.indexOf.call(parent.children, document.getElementById(b.getAttribute("href").slice(1)));
+        return ia - ib; }).forEach(function (a) { nav.appendChild(a); });
+      hide.forEach(function (id) { var b = document.getElementById(id); if (b) b.hidden = true;
+        var a = nav && nav.querySelector('a[href="#' + id + '"]'); if (a) a.hidden = true; });
+    }
+    var une = L.a_la_une || {}, box = document.getElementById("une");
+    if (box && (une.points || []).length) {
+      var k = document.createElement("div"); k.className = "kicker";
+      k.textContent = "À la une · selon le chercheur" + (une.date ? " · " + une.date : "");
+      var ul = document.createElement("ul");
+      une.points.forEach(function (p) { var li = document.createElement("li"); li.textContent = p; ul.appendChild(li); });
+      box.appendChild(k); box.appendChild(ul); box.hidden = false;
+    }
+  })();
   var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ---------------------------------------------------------------- outils

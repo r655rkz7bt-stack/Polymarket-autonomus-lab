@@ -42,6 +42,29 @@ def _marks(db, tokens) -> dict[str, Decimal]:
     return marks
 
 
+BLOCKS = ("resume", "aujourdhui", "organisme", "capital", "arene", "positions", "ordres-poses", "journal",
+          "decisions-recentes", "systeme")
+ALWAYS_VISIBLE = ("resume", "capital")  # règle n°1 : capital, solde disponible, faillite
+
+
+def layout(root: Path) -> dict:
+    """Mise en page réglée par le chercheur (config/dashboard.yaml) : ordre des blocs, blocs cachés,
+    « À la une ». Fichier absent ou invalide : mise en page par défaut. Garde-fous : identifiants
+    inconnus ignorés, « resume » et « capital » jamais cachés, au plus 5 points de 280 caractères."""
+    import yaml
+    try:
+        raw = yaml.safe_load((Path(root) / "config" / "dashboard.yaml").read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        raw = {}
+    raw = raw if isinstance(raw, dict) else {}
+    ordre = [b for b in (raw.get("ordre") or []) if b in BLOCKS]
+    ordre = list(dict.fromkeys(ordre))
+    masquer = [b for b in (raw.get("masquer") or []) if b in BLOCKS and b not in ALWAYS_VISIBLE]
+    une = raw.get("a_la_une") if isinstance(raw.get("a_la_une"), dict) else {}
+    points = [str(p).strip()[:280] for p in (une.get("points") or []) if str(p).strip()][:5]
+    return {"ordre": ordre, "masquer": masquer, "a_la_une": {"date": str(une.get("date") or ""), "points": points}}
+
+
 def research_log(root: Path, limit: int = 3) -> list[dict]:
     """Derniers passages du chercheur (experiments/journal_recherche.md, écrit par la routine) :
     {"date", "quand", "fait", "details": [{"titre", "texte"}]}. Le texte est une donnée : la page
@@ -253,6 +276,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                   "plafond_ia": llm.get("max_calls_per_day", 0)},
         "historique_arene": arena_history.series(db, now),
         "chercheur": research_log(root),
+        "mise_en_page": layout(root),
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)

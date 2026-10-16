@@ -1,0 +1,22 @@
+# Mise en page du tableau de bord — LIBRE : le chercheur la règle (décision d'Etienne, 17/10/2026).
+# Ce que voit Etienne en premier doit être ce qui compte le plus pour lui (il lit sur iPad / téléphone).
+# Méthode et garde-fous : docs/TABLEAU_DE_BORD.md. Aperçu avant publication : scripts/apercu_dashboard.py.
+
+# Ordre des blocs, du haut vers le bas. Identifiants possibles : resume, aujourdhui, arene, capital,
+# positions, ordres-poses, organisme, decisions-recentes, journal, systeme.
+# Un bloc absent de la liste garde sa place après les blocs listés.
+ordre: [resume, aujourdhui, arene, capital, positions, journal, ordres-poses, organisme, decisions-recentes, systeme]
+
+# Blocs cachés (jugés superflus). « resume » et « capital » ne peuvent PAS être cachés (règle n°1 :
+# capital, solde disponible et faillite toujours visibles) : le code les réaffiche.
+masquer: []
+
+# « À la une » : au plus 5 points courts (280 caractères chacun), écrits par le chercheur, en tête
+# du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
+# (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
+a_la_une:
+  date: "2026-10-17"
+  points:
+    - "naive_favorite mène l'arène (+8 %), mais 7 paris gagnés sur 8 à 0,92 est le résultat attendu d'un marché juste : chance et grosses mises (experiments/favori.md)."
+    - "Seule poche solide sur le passé : le favori en politique (+5,7 % après frais) — à suivre dans favori_politique."
+    - "Ordres posés : pour plusieurs variantes patientes, le prix part contre nous dans l'heure qui suit l'exécution (section « Ordres posés »)."

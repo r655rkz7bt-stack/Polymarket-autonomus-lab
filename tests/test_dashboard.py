@@ -225,3 +225,23 @@ def test_last_research_actions_are_read_from_the_journal(tmp_path):
     data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
     assert data["chercheur"][0]["date"] == "2026-10-16"
     db.close()
+
+
+def test_layout_is_set_by_the_researcher_with_guardrails(tmp_path):
+    """17/10/2026 : le chercheur règle la mise en page (config/dashboard.yaml) ; le résumé et le
+    capital (règle n°1) ne peuvent jamais être cachés ; « À la une » est borné."""
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "dashboard.yaml").write_text(yaml.safe_dump({
+        "ordre": ["arene", "inconnu", "resume", "arene"], "masquer": ["capital", "resume", "systeme", "x"],
+        "a_la_une": {"date": "2026-10-17", "points": [EVIL] + [f"point {i}" for i in range(9)] + ["y" * 400]}}),
+        encoding="utf-8")
+    lay = dashboard.layout(tmp_path)
+    assert lay["ordre"] == ["arene", "resume"] and lay["masquer"] == ["systeme"]
+    assert len(lay["a_la_une"]["points"]) == 5 and lay["a_la_une"]["points"][0] == EVIL
+    assert dashboard.layout(tmp_path / "absent") == {"ordre": [], "masquer": [], "a_la_une": {"date": "", "points": []}}
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    page = dashboard.render(data)
+    assert data["mise_en_page"] == lay and EVIL not in page  # texte du chercheur échappé comme le reste
+    repo = dashboard.layout(ROOT)  # la configuration du dépôt est valide
+    assert repo["ordre"][0] == "resume" and not set(repo["masquer"]) & {"resume", "capital"}

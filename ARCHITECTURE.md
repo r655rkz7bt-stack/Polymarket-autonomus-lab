@@ -577,3 +577,14 @@ et géopolitique (+5,7 % après frais, stable) ; la fin de partie est un piège 
   `suivre_politique`, `contrer_crypto` (+ patiente). Autres variantes : `favori_politique_quasi_certain`,
   `loterie_meteo`. YAML `exclure_mots` (question contenant un mot → marché exclu).
 
+## 32. Tableau de bord réglé par le chercheur (17 octobre 2026)
+
+Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, suppression du superflu).
+- `config/dashboard.yaml` (libre) : `ordre` des blocs, `masquer`, `a_la_une` (5 points au plus) ;
+  lu par `dashboard.layout` (garde-fous : identifiants connus seulement, `resume` et `capital`
+  jamais cachés, textes bornés) ; appliqué dans le gabarit (blocs et menu réordonnés, encadré
+  « À la une » en tête du résumé, texte inséré par `textContent`).
+- `scripts/apercu_dashboard.py` : page reconstruite avec les données publiées et le gabarit du
+  dépôt, photos téléphone / ordinateur (Node + Playwright), erreurs JavaScript et débordements.
+- Méthode, garde-fous, évaluation de départ de chaque bloc : `docs/TABLEAU_DE_BORD.md`.
+
