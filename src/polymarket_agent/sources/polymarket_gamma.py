@@ -124,6 +124,7 @@ def parse_market(raw: dict) -> MarketInfo:
         issues=issues,
         resolution_source=str(raw.get("resolutionSource") or ""),
         description=str(raw.get("description") or ""),
+        game_start=_date(raw.get("gameStartTime")),
         rewards_min_size=_dec(raw.get("rewardsMinSize")),
         rewards_max_spread=_dec(raw.get("rewardsMaxSpread")),
         rewards_daily_rate=sum((_dec(r.get("rewardsDailyRate")) or Decimal("0")

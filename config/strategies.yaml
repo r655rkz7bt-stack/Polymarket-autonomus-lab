@@ -386,3 +386,101 @@ market_maker_serre:
     max_markets:      {value: 12, min: 0, max: 50}
     max_candidates:   {value: 30, min: 0, max: 200}
 
+# ---------------------------------------------------------------- favori : chaque raison testée à part
+# Étude du 16/10/2026 (experiments/favori.md, 16 680 marchés résolus, prix réellement payés) :
+# en moyenne le favori est TROP cher (−2 à −4 % après frais) ; il ne gagne que dans des poches.
+# Chaque variante isole une raison ; naive_favorite (d'origine) reste le point de comparaison.
+
+favori_politique:
+  # Raison n°1 : en politique et géopolitique, le favori perd ~70 % moins souvent que son prix
+  # ne l'annonce (0,85-0,97 : 97,6 % de réussite pour un prix moyen de 0,922 ; +5,7 % après
+  # frais ; 47 jours gagnants sur 54, 110 événements, les deux moitiés de la période positives,
+  # +4,8 % avec 1 centime d'écart en plus). Explications possibles : partisans qui paient leur
+  # candidat, goût du scénario spectaculaire, peu de bots rapides, argent immobilisé longtemps.
+  class: naive_favorite
+  familles: [politics, geopolitics]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    min_ask:        {value: 0.85, min: 0.50, max: 0.99}  # 0,80-0,85 : écart faible (+1,5 pt)
+    max_ask:        {value: 0.97, min: 0.60, max: 0.99}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}   # remplacé par shrink
+    shrink:         {value: 0.5, min: 0.0, max: 0.9}     # sous l'écart mesuré (0,70 ; 0,82 à 0,95-0,98)
+    uncertainty:    {value: 0.01, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    min_hours:      {value: 6, min: 0, max: 720}         # pas les dernières heures
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates:  {value: 40, min: 0, max: 200}   # marchés politiques demandés au scanner
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
+
+favori_politique_patiente:
+  # Même raison n°1, avec l'achat POSÉ un cran au-dessus du meilleur acheteur (pas de frais ni
+  # d'écart) : la politique bouge lentement, un ordre posé a le temps d'être servi.
+  class: naive_favorite
+  familles: [politics, geopolitics]
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    min_ask:        {value: 0.85, min: 0.50, max: 0.99}
+    max_ask:        {value: 0.97, min: 0.60, max: 0.99}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}
+    shrink:         {value: 0.5, min: 0.0, max: 0.9}
+    uncertainty:    {value: 0.01, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    min_hours:      {value: 6, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates:  {value: 40, min: 0, max: 200}   # marchés politiques demandés au scanner
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
+
+naive_favorite_sans_fin:
+  # Raison n°2 (inverse) : dans les dernières heures, un favori encore à 0,80-0,97 est un PIÈGE
+  # partout sauf en politique (sport −7,4 %, crypto −6,5 %, météo −13,6 % sur 0,5-6 h). Même
+  # stratégie que naive_favorite, mais jamais à moins de 24 h de l'échéance (du coup d'envoi
+  # en sport) : si elle fait mieux que l'originale, la fin de partie était le problème.
+  class: naive_favorite
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    min_hours:      {value: 24, min: 0, max: 720}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+
+outsider_sport_patiente:
+  # Raison n°3 (miroir) : en sport, le favori 0,80-0,95 gagne 5 points de moins que son prix ;
+  # l'OUTSIDER serait donc sous-coté. Signal fragile (gonflé par des prix périmés pendant les
+  # matchs ; +12,8 % seulement avec des prix de moins de 10 min) : achat POSÉ de l'outsider
+  # 0,08-0,20, uniquement AVANT le match (30 min à 24 h avant le coup d'envoi), petites mises.
+  class: naive_favorite
+  familles: [sports]
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-16"
+  params:
+    underdog:       {value: 1, min: 0, max: 1}
+    min_ask:        {value: 0.08, min: 0.01, max: 0.5}
+    max_ask:        {value: 0.20, min: 0.02, max: 0.5}
+    bias:           {value: 0.03, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.0, min: 0.00, max: 0.50}
+    min_hours:      {value: 0.5, min: 0, max: 720}
+    max_hours:      {value: 24, min: 1, max: 2000}
+    max_candidates:  {value: 30, min: 0, max: 200}   # matchs demandés au scanner
+    max_extra_ticks: {value: 0, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+

@@ -38,7 +38,7 @@ scanner:
   max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
   watchlist_size: 150          # marchés suivis en détail (carnets, actualités) à chaque cycle
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
-  max_extra_markets: 200       # marchés supplémentaires que les stratégies peuvent demander (météo : 100, tenue de marché : 30)
+  max_extra_markets: 260       # marchés supplémentaires demandés par les stratégies (météo 100, tenue de marché 30, politique 40, outsider sport 30)
 
 database:
   max_megabytes: 40
