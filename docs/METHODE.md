@@ -80,9 +80,29 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
 - Feuille de mission : `.venv/bin/python scripts/research_brief.py --dev-key`
 - Rapport : `.venv/bin/python scripts/generate_report.py --dev-key`
 - Laboratoire : `.venv/bin/python scripts/lab.py` (ajouter `--apply` pour écrire les recommandations)
-- Tableau de bord : `.venv/bin/python scripts/build_dashboard.py --dev-key` (sortie `site/`, régénéré par le cycle toutes les 30 min)
+- Tableau de bord : `.venv/bin/python scripts/build_dashboard.py --dev-key` (sortie `site/`, régénéré par le cycle toutes les 10 min)
 - Rapports publiés par le cycle de production : `bash scripts/fetch_published.sh` (dossier `published/`)
 - Production : workflows `cycle` (toutes les 5 min), `initialize` (une fois), exploitation dans `docs/EXPLOITATION.md`
 - Réinitialisation (Etienne seul, via le workflow `reset-capital`) : `scripts/reset_capital.py`
 - Contrôle des fichiers protégés : `scripts/guard_check.py PROTECTED_PATHS.txt < liste_des_fichiers`
 - `--dev-key` : clé locale de test (`state/dev_ledger_key`, ignorée par Git). En production, `LEDGER_KEY` vient de l'environnement GitHub `production`.
+
+### Commandes d'Etienne (dans la conversation)
+
+- **« AMELIORATION »** (décision d'Etienne, 16/10/2026) : à chaque fois que ce mot est envoyé,
+  répondre à la question : « Qu'est-ce qui peut être amélioré (workflow, limites à assouplir,
+  sources à apporter, stratégies à explorer…) ? Réfléchis à ton maximum, de manière out of the
+  box ; tourne et retourne les problèmes dans tous les sens possibles pour en extraire les idées
+  qui peuvent maximiser les gains. » Façon de répondre :
+  1. partir des faits du moment, jamais de mémoire : tableau de bord publié (`data.json` sur
+     `gh-pages` : capital, arène, positions, sources, audit), journaux (`data`), journal de
+     recherche, chantiers, derniers tests sur le passé ;
+  2. explorer tous les axes : stratégies (nouvelles familles, marchés tranchés vite, inefficacités
+     mesurables), exécution (ordres posés, frais, écart achat-vente), mise et répartition du
+     capital, règles de l'arène, sources (gratuites, officielles, source de résolution), workflow
+     et fiabilité, limites à assouplir, et ce qui ne marche pas (à couper) ;
+  3. pour chaque idée : pourquoi elle peut rapporter, comment la vérifier (test sur le passé ou
+     arène), coût et risque, en chiffrant quand c'est possible ; classer par gain attendu ;
+  4. finir par une courte liste de ce qu'il vaut mieux lancer d'abord et demander à Etienne
+     lesquelles lancer (ne rien construire sans son accord, sauf s'il l'a dit dans le message).
+
