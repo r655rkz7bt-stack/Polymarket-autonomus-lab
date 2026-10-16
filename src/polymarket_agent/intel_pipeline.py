@@ -35,7 +35,8 @@ def latest_quotes(observations) -> dict:
 
 
 def latest_weather(observations, now: datetime, max_age_hours: float = 8) -> dict[str, dict]:
-    """Par station : dernière prévision (meteo_prevision) et dernier relevé (meteo_metar) récents."""
+    """Par station : dernier relevé meteo_metar (ses données au premier niveau, avec `published_at`,
+    format attendu par temperature_floor) et dernière prévision meteo_prevision (clé "prevision")."""
     from datetime import timedelta
     out: dict[str, dict] = {}
     seen: dict[tuple[str, str], datetime] = {}
@@ -48,8 +49,11 @@ def latest_weather(observations, now: datetime, max_age_hours: float = 8) -> dic
         if key in seen and seen[key] >= o.published_at:
             continue
         seen[key] = o.published_at
-        out.setdefault(o.data["station"], {})["prevision" if o.source == "meteo_prevision" else "releve"] = (
-            dict(o.data, date_collecte=o.published_at.isoformat()))
+        entry = out.setdefault(o.data["station"], {})
+        if o.source == "meteo_prevision":
+            entry["prevision"] = dict(o.data, published_at=o.published_at)
+        else:
+            entry.update(o.data, published_at=o.published_at)
     return out
 
 
@@ -121,9 +125,9 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         quotes.update(collection.crypto)  # les prix tout juste collectés priment
         for market in markets:
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
+            # Météo de la station qui tranche le marché : relevé (temperature_floor) + prévision.
             station = station_of(market.resolution_source, market.description)
-            if station and station in weather:
-                market.weather = weather[station]
+            market.weather = weather.get(station) if station else None
             group = correlation_group(market)
             if group.startswith("crypto:"):
                 market.crypto_quote = quotes.get(group.split(":")[1])

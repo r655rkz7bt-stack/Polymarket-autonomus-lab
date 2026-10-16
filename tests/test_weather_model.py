@@ -46,7 +46,7 @@ def _setup_market(no_ask="0.45", question="Will the highest temperature in Paris
     m.weather = {"prevision": {"station": "LFPB", "utc_offset": offset,
                                "jours": {"2026-10-17": {"max": list(members), "min": [8.0, 8.5]}}}}
     if observed is not None:
-        m.weather["releve"] = {"jour_local": observed_day, "max_jour_c": observed}
+        m.weather.update(jour_local=observed_day, max_jour_c=observed)
     when = datetime(2026, 10, 16, 12, 0, tzinfo=timezone.utc)
     books = {"N": make_book("N", bids=((str(Decimal(no_ask) - Decimal("0.02")), "500"),), asks=((no_ask, "500"),),
                             ts=when, fetched=when),
@@ -120,7 +120,8 @@ def test_forecast_source_summarises_the_local_day_and_is_attached_to_markets(tmp
     assert day["max"] == [round(10 + 23 * 0.3, 6), round(11 + 23 * 0.2, 6)] or day["max"][0] > 16.8
     assert day["min"] == [10.0, 11.0] and fc.market_ids == ["w1"] and fc.data["utc_offset"] == 7200
     weather = latest_weather(result.observations, NOW + timedelta(minutes=1))
-    assert set(weather["LFPB"]) == {"prevision", "releve"}
+    assert "prevision" in weather["LFPB"] and weather["LFPB"]["station"] == "LFPB"
+    assert weather["LFPB"]["max_jour_c"] is not None or "jour_local" in weather["LFPB"]
     # Sans coordonnées connues (station jamais relevée) : rien n'est demandé.
     db2 = Database(tmp_path / "m2.sqlite")
     r2 = collect({"sources": {"meteo_prevision": {"enabled": True, "every_minutes": 60}}}, FakeHttp({}), db2, [m], NOW)
