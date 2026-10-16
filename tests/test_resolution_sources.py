@@ -181,3 +181,19 @@ def test_temperature_markets_get_the_official_readings_of_their_station():
     day, mx, n = day_max([(int(NOW.timestamp()) - 3600 * 23, 30.0)], 174.8, NOW - timedelta(hours=1))  # 01 h locale
     assert (day, mx, n) == ("2026-10-14", None, 0)
     assert MetarSource(FakeHttp({})).fetch([other], NOW) == []  # aucune station : aucun appel
+
+
+def test_regression_crypto_quote_time_is_the_fetch_time_not_the_open_of_the_running_candle():
+    """16/10/2026 : `as_of` valait l'ouverture de la bougie horaire en cours (jusqu'à 1 h avant le
+    prix réel) ; avec la limite d'âge de 20 min, crypto_threshold s'abstenait ≈ 40 min par heure."""
+    from datetime import datetime, timedelta, timezone
+    from polymarket_agent.sources.crypto_prices import CryptoPricesSource
+    start = 1792000000000
+    klines = [[start + 3_600_000 * i, "0", "0", "0", str(82000 + 10 * (i % 5)), "0"] for i in range(170)]
+    http = FakeHttp({"https://data-api.binance.vision/api/v3/klines": klines})
+    running = datetime.fromtimestamp(klines[-1][0] / 1000, tz=timezone.utc)
+    now = running + timedelta(minutes=45)
+    obs = CryptoPricesSource(http).fetch(["btc"], now)
+    assert obs[0].published_at == now
+    later = running + timedelta(hours=3)  # bougie terminée depuis longtemps : sa fin, pas « maintenant »
+    assert CryptoPricesSource(http).fetch(["btc"], later)[0].published_at == running + timedelta(hours=1)

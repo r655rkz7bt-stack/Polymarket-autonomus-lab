@@ -17,8 +17,8 @@ Endpoints de repli (documentation publique des deux plateformes) :
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
-from datetime import datetime, timezone
+from dataclasses import dataclass, replace
+from datetime import datetime, timedelta, timezone
 
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.observations import Observation
@@ -89,7 +89,10 @@ class CryptoPricesSource:
     def fetch(self, assets: list[str], now: datetime) -> list[Observation]:
         out = []
         for asset in assets:
+            # La dernière bougie horaire est EN COURS : sa clôture est le prix actuel. Son heure
+            # d'ouverture (jusqu'à 1 h plus tôt) faisait croire à un prix périmé (corrigé le 16/10/2026).
             q = self.quote(asset)
+            q = replace(q, as_of=min(q.as_of + timedelta(hours=1), now))
             out.append(Observation(
                 source=self.name, external_id=f"{q.source}-{asset}-{int(q.as_of.timestamp())}",
                 published_at=q.as_of, collected_at=now, url=f"https://{q.source}.com", title=f"{asset} {q.price}",
