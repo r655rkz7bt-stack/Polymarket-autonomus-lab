@@ -8,6 +8,15 @@
 min_closed_trades: 20            # opérations clôturées dans son fantôme (aussi : seuil pour être jugé/éliminé)
 min_age_hours: 24                # ancienneté minimale du fantôme (une journée de marchés réels)
 min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 (≈ +2 %)
+# Seuils d'entrée ALLÉGÉS pour les stratégies validées sur le passé (16/10/2026) : un test hors
+# échantillon documenté remplace une partie de l'attente. Clé = début du nom de la stratégie
+# (toutes ses versions et variantes). Elle doit quand même gagner en direct (croissance > 0).
+# Le chercheur ajoute une stratégie ici seulement avec un test documenté dans experiments/.
+validated_strategies:
+  meteo_prevision:               # experiments/meteo_backtest.md : NON +24 à +31 %, 8 jours sur 8
+    min_closed_trades: 8
+    min_age_hours: 8
+    min_log_growth: 0.005
 # Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
 # que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
 keep_log_growth: 0.0

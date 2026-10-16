@@ -187,3 +187,22 @@ def test_regression_noise_is_not_promoted():
                            keep_growth=keep, **gates)[0] == "champ"
     assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.07, days=5)], "champ", n, margin,
                            keep_growth=keep, **gates)[0] == "b"
+
+
+def test_backtest_validated_strategies_enter_earlier_but_must_still_win():
+    """16/10/2026 : une stratégie validée hors échantillon (validated_strategies) reçoit sa part
+    plus tôt ; elle doit quand même battre « ne rien faire » en direct."""
+    from polymarket_agent.arena import allocation, validated_gates
+    validated = RULES["validated_strategies"]
+    gates = {"now": NOW, "min_age_hours": float(RULES["min_age_hours"]),
+             "min_growth": float(RULES["min_log_growth"])}
+    n = int(RULES["min_closed_trades"])
+    assert validated_gates("meteo_prevision_patiente_v1.0.0", validated)["min_closed_trades"] < n
+    assert validated_gates("news_momentum_v1.0.0", validated) is None
+    meteo = st("meteo_prevision_v1.0.0", 10, 0.01, days=0.5)   # 10 opérations, 12 h, +1 %
+    other = st("news_momentum_v1.0.0", 10, 0.01, days=0.5)
+    assert allocation([meteo, other], n, 5, **gates) == {}                       # sans la règle
+    assert allocation([meteo, other], n, 5, validated=validated, **gates) == {"meteo_prevision_v1.0.0": 1.0}
+    losing = st("meteo_prevision_v1.0.0", 10, -0.01, days=0.5)
+    assert allocation([losing], n, 5, validated=validated, **gates) == {}
+    assert choose_champion([meteo, other], "", n, 0.01, validated=validated, **gates)[0] == "meteo_prevision_v1.0.0"
