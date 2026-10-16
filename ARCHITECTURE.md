@@ -514,3 +514,17 @@ Le notaire (signature réservée à une machine protégée) n'est pas fait :
   (`candidates`, `scanner.max_extra_markets` passé à 140), parie NON seulement, réglages issus du
   test sur le passé (`experiments/meteo_backtest.md`, scripts dans `experiments/meteo_backtest/`).
 
+## 29. Outil de test sur le passé et météo étalonnée par station (16 octobre 2026)
+
+- `idea_test.py` : outil générique pour juger une idée AVANT l'arène. `fetch_resolved` (marchés
+  résolus d'une famille Gamma, cache gzip), `PriceCache.price_at` (prix du « Oui » à un instant,
+  jamais un point postérieur, cache SQLite), `evaluate` (Brier, log loss, simulation 1 part par
+  pari avec frais réels et écart simulé, jugée sur la seconde moitié des dates).
+- `weather_calibration.py` : biais et flou propres à chaque station. Tables `meteo_previsions`
+  (dernière prévision faite avant le début du jour local ; rattrapage unique par station depuis
+  l'archive Open-Meteo `previous-runs`) et `meteo_reel` (valeur réelle = tranche gagnante des
+  marchés météo résolus, source `meteo_reel` toutes les 3 h). La prévision collectée porte
+  `data["erreurs"]` (7 dernières erreurs de la station) ; `meteo_prevision` en tire biais et flou,
+  tirés vers le réglage global (`calibration_shrink` jours fictifs), plancher `sigma_floor`.
+  Test sur le passé : Brier 0,090 au lieu de 0,097 ; NON +28 à +31 % des mises au lieu de +24 à +26 %
+  (`experiments/meteo_backtest.md`).

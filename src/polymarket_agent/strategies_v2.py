@@ -449,6 +449,15 @@ class MeteoForecast(_Base):
             if w.get("jour_local") == date:
                 observed = w.get("max_jour_c")  # le maximum relevé ne peut que monter
             sigma, bias = ((p["sigma_max"], p["bias_max"]) if q.kind == "max" else (p["sigma_min"], p["bias_min"]))
+            used = 0
+            if p.get("station_calibration", Decimal("0")) > 0:
+                # Biais et flou propres à la station (erreurs des jours précédents), tirés vers le réglage global.
+                from polymarket_agent.weather_calibration import station_params
+                past = ((fc.get("erreurs") or {}).get(q.kind) or [])[: int(p.get("calibration_days", 7))]
+                sigma, bias, used = station_params(past, float(sigma), float(bias),
+                                                   int(p.get("calibration_min_days", 3)),
+                                                   float(p.get("calibration_shrink", 3)),
+                                                   float(p.get("sigma_floor", Decimal("0.8"))))
             members = day["max" if q.kind == "max" else "min"]
             est_yes = wm.probability(q, members, float(sigma), float(bias), observed if q.kind == "max" else None)
             if est_yes is None:
@@ -469,7 +478,9 @@ class MeteoForecast(_Base):
                    ).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
             prop = self._buy(m, books, state, 1, est_no - margin, est_no, min(0.999, est_no + margin), bucket, marks,
                              out, f"meteo_prevision:gfs+ecmwf {date} {q.kind}",
-                             f"σ {float(sigma):.1f} °C, biais {float(bias):+.1f} °C, modèles {', '.join(f'{x:.1f}' for x in members)} °C",
+                             f"σ {float(sigma):.1f} °C, biais {float(bias):+.1f} °C"
+                             + (f" (station, {used} j)" if used >= int(p.get("calibration_min_days", 3)) else "")
+                             + f", modèles {', '.join(f'{x:.1f}' for x in members)} °C",
                              "prévision ratée, station ou jour mal compris, arrondi de la source",
                              shares=min(kelly, cap))
             if prop is not None:

@@ -59,6 +59,9 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    Exemple de méthode qui marche : `experiments/meteo_backtest.md` (prévisions passées sans
    regard vers le futur, réglage sur la première moitié des dates, jugement sur la seconde,
    coûts réels). Fais pareil avant toute nouvelle stratégie quand l'historique existe.
+   Outil tout prêt : `src/polymarket_agent/idea_test.py` (marchés résolus d'une famille, prix à
+   un instant sans regard vers le futur, jugement hors échantillon, simulation avec frais) ;
+   exemple d'emploi : `experiments/meteo_backtest/station_bias.py`.
 5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
    Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
 6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.

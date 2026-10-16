@@ -41,6 +41,26 @@ l'erreur d'une prévision à 1-2 jours est de l'ordre de 1,5 °C). Les « billet
 bon marché perdent, comme sur la plupart des marchés de prédiction.
 Villes : 50 à 53 sur 88 gagnantes (gain réparti, pas dû à une seule ville).
 
+## Étalonnage par station (16/10/2026)
+Chaque station a son propre écart avec les modèles. Valeur réelle du jour = tranche gagnante du
+marché résolu (à 1 degré près). Pour chaque station et type (max, min), à chaque date : erreurs
+des 7 jours PRÉCÉDENTS (réel − moyenne GFS/ECMWF de la veille), biais et flou tirés vers le
+réglage global (3 jours fictifs), flou ≥ 0,8 °C, réglage global tant qu'il y a moins de 3 jours.
+Jugé sur la seconde moitié des dates, NON seulement, écart simulé 0,01 :
+
+| Réglage | Brier (marché 0,1125) | Log loss (marché 0,3615) | seuil 0,05 | seuil 0,08 |
+|---|---|---|---|---|
+| global (σ 1,5 / biais +0,5 au max) | 0,0969 | 0,3205 | +24,0 % | +25,4 % |
+| biais par station seulement | 0,0949 | 0,3098 | | |
+| biais ET flou par station | **0,0921** | **0,2985** | +26,2 % (2 983 paris) | **+28,7 %** |
+
+Toutes les variantes gagnent 8 jours sur 8 et 41 à 43 stations sur 46. Script :
+`experiments/meteo_backtest/station_bias.py`.
+Le code de production (`weather_calibration.py`, rattrapage d'archive, valeurs réelles, erreurs)
+rejoué sur les mêmes données (moyenne des deux modèles) : Brier **0,0901** contre 0,0966 ;
+NON **+27,8 %** (2 854 paris) et **+30,8 %** (2 548 paris) contre +24,0 % et +25,7 %.
+Activé dans `meteo_prevision` et sa variante patiente (`station_calibration`).
+
 ## Limites (honnêtes)
 - Le prix historique est le dernier échange ou le milieu, pas le prix du vendeur dans le carnet :
   l'écart achat-vente est simulé (0,01 à 0,04). Les carnets réels peuvent être plus minces.
