@@ -38,7 +38,7 @@ scanner:
   max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
   watchlist_size: 150          # marchés suivis en détail (carnets, actualités) à chaque cycle
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
-  max_extra_markets: 40        # marchés supplémentaires que les stratégies peuvent demander
+  max_extra_markets: 140       # marchés supplémentaires que les stratégies peuvent demander (météo : 100)
 
 database:
   max_megabytes: 40
@@ -132,7 +132,9 @@ sources:
       - {name: Space.com, url: "https://www.space.com/feeds.xml", language: en}
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
   # Relevés officiels NOAA (METAR) des stations qui tranchent les marchés de température.
-  meteo_metar: {enabled: true, every_minutes: 15, max_stations: 40}   # aviationweather.gov
+  meteo_metar: {enabled: true, every_minutes: 15, max_stations: 60}   # aviationweather.gov
+  # Prévisions GFS + ECMWF aux stations (stratégie meteo_prevision) ; débit limité par adresse.
+  meteo_prevision: {enabled: true, every_minutes: 60}                 # api.open-meteo.com
   # Scores officiels des ligues (sources de résolution, chantier n°0), sans clé.
   mlb_stats: {enabled: true, every_minutes: 15}   # statsapi.mlb.com
   nhl_stats: {enabled: true, every_minutes: 15}   # api-web.nhle.com

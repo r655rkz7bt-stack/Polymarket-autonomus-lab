@@ -56,6 +56,9 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    `experiments/sources_resolution.md` ; relevés NOAA (`meteo_metar`), scores des ligues
    (`mlb_stats`, `nhl_stats`, `football_data`), cotes (`odds_api`) arrivent comme observations
    (`market.intel`, table `observations`, champ `data`). Chantier n°0, étape 3 : à toi.
+   Exemple de méthode qui marche : `experiments/meteo_backtest.md` (prévisions passées sans
+   regard vers le futur, réglage sur la première moitié des dates, jugement sur la seconde,
+   coûts réels). Fais pareil avant toute nouvelle stratégie quand l'historique existe.
 5. Pour ajuster des paramètres : `scripts/lab.py` (walk-forward, pénalité des essais multiples).
    Ses résultats sont des hypothèses : le prix historique n'est pas un prix exécutable.
 6. Lis les verdicts du moteur d'apprentissage dans la feuille de mission avant de juger une stratégie.

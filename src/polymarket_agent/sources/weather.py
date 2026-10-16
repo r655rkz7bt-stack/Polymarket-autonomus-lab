@@ -92,6 +92,74 @@ class MetarSource:
                 title=f"Météo {name} ({code}) : {float(last['temp']):.1f} °C à {last_t:%H:%M} UTC",
                 text=summary, domain="aviationweather.gov", market_ids=list(wanted[code]),
                 data={"station": code, "jour_local": day, "max_jour_c": mx, "releves_jour": n,
-                      "dernier_c": float(last["temp"]), "lon": last.get("lon"),
+                      "dernier_c": float(last["temp"]), "lon": last.get("lon"), "lat": last.get("lat"),
                       "releves": readings[-40:]}).finalize())
         return out
+
+
+FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
+MODELS = ("gfs_seamless", "ecmwf_ifs025")
+
+
+class ForecastSource:
+    """Prévisions horaires Open-Meteo (gratuit, sans clé) des modèles GFS et ECMWF aux
+    coordonnées des stations qui tranchent les marchés, résumées en maximum et minimum du JOUR
+    LOCAL (fuseau donné par Open-Meteo : timezone=auto).
+      GET https://api.open-meteo.com/v1/forecast?latitude=a,b&longitude=c,d&hourly=temperature_2m
+          &models=gfs_seamless,ecmwf_ifs025&timezone=auto&forecast_days=3
+      → une réponse par lieu : {"utc_offset_seconds", "hourly": {"time": [...],
+        "temperature_2m_gfs_seamless": [...], "temperature_2m_ecmwf_ifs025": [...]}}
+    Vérifié le 16/10/2026 (l'API limite le débit par adresse : HTTP 429 → « indisponible » pour
+    ce passage, les dernières prévisions restent utilisables). Mêmes modèles et même résumé que le
+    test sur les marchés résolus (experiments/meteo_backtest.md)."""
+
+    name = "meteo_prevision"
+
+    def __init__(self, http: HttpClient, per_request: int = 25):
+        self.http, self.per_request = http, per_request
+
+    @staticmethod
+    def daily(hourly: dict) -> dict[str, dict[str, list[float]]]:
+        """{jour local : {"max": [gfs, ecmwf], "min": [...]}} pour les jours assez complets."""
+        out: dict[str, dict[str, list[float]]] = {}
+        times = hourly.get("time") or []
+        for model in MODELS:
+            values = hourly.get(f"temperature_2m_{model}") or []
+            by_day: dict[str, list[float]] = {}
+            for t, v in zip(times, values):
+                if v is not None:
+                    by_day.setdefault(str(t)[:10], []).append(float(v))
+            for day, vals in by_day.items():
+                if len(vals) >= 20:
+                    d = out.setdefault(day, {"max": [], "min": []})
+                    d["max"].append(max(vals))
+                    d["min"].append(min(vals))
+        return {d: v for d, v in out.items() if len(v["max"]) == len(MODELS)}
+
+    def fetch(self, stations: dict[str, tuple[float, float]], markets_by_station: dict[str, list[str]],
+              now: datetime) -> list[Observation]:
+        codes = sorted(s for s in stations if s in markets_by_station)
+        out = []
+        for i in range(0, len(codes), self.per_request):
+            chunk = codes[i:i + self.per_request]
+            raw = self.http.get_json(FORECAST_URL, params={
+                "latitude": ",".join(str(stations[c][0]) for c in chunk),
+                "longitude": ",".join(str(stations[c][1]) for c in chunk),
+                "hourly": "temperature_2m", "models": ",".join(MODELS), "timezone": "auto", "forecast_days": 3})
+            raw = raw if isinstance(raw, list) else [raw]
+            for code, item in zip(chunk, raw):
+                if not isinstance(item, dict):
+                    continue
+                days = self.daily(item.get("hourly") or {})
+                if not days:
+                    continue
+                out.append(Observation(
+                    source=self.name, external_id=f"prevision-{code}-{now:%Y%m%d%H}", published_at=now,
+                    collected_at=now, url="https://open-meteo.com", domain="open-meteo.com",
+                    title=f"Prévision {code} : " + ", ".join(
+                        f"{d} max {sum(v['max']) / len(v['max']):.1f} °C" for d, v in sorted(days.items())[:3]),
+                    text="", market_ids=list(markets_by_station[code]),
+                    data={"station": code, "utc_offset": int(item.get("utc_offset_seconds") or 0),
+                          "jours": days}).finalize())
+        return out
+

@@ -382,6 +382,107 @@ class SocialSentiment(_Base):
         return self._finish(out, candidates)
 
 
+# --------------------------------------------------------------------------- météo
+
+
+class MeteoForecast(_Base):
+    """Marchés « température maximale / minimale à <ville> le <jour> » (≈ 400 par jour, réglés en
+    1 à 2 jours). Probabilité de chaque tranche tirée des prévisions GFS et ECMWF (Open-Meteo)
+    floutées de `sigma` et décalées de `bias` (weather_model.py), corrigée par ce que la station a
+    déjà relevé.
+
+    Test sur les marchés résolus du 1er au 15/10/2026, hors échantillon (experiments/meteo_backtest.md) :
+    le marché surestime la tranche favorite. Parier NON sur une tranche cotée 0,2 à 0,8 quand le
+    modèle la juge nettement moins probable a gagné tous les jours testés (≈ +20 % des mises après
+    frais et écart achat-vente), alors que les paris OUI sur les tranches bon marché perdaient.
+    D'où : NON seulement (`allow_yes` = 0), dans la fenêtre testée (de `max_lead_hours` avant le
+    début du jour local à `min_lead_hours` après). Prix réels, carnets réels : l'arène tranche.
+    """
+
+    strategy_id = "meteo_prevision"
+    required = ("min_net_edge", "margin", "sigma_max", "bias_max", "sigma_min", "bias_min",
+                "max_lead_hours", "min_lead_hours", "min_no_price", "max_no_price", "max_proposals_per_cycle")
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        from polymarket_agent import weather_model as wm
+        from polymarket_agent.sources.weather import station_of
+        out = []
+        for m in markets:
+            if station_of(m.resolution_source, m.description) and wm.parse_question(m.question):
+                if m.best_bid is not None and Decimal("0.15") <= m.best_bid <= Decimal("0.85"):
+                    out.append(m)
+        out.sort(key=lambda m: -float(m.liquidity))
+        return out[: int(self.params.get("max_candidates", 100))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from datetime import timedelta, timezone
+        from polymarket_agent import weather_model as wm
+        out = StrategyOutput()
+        p = self.params
+        candidates = []
+        for m in watchlist:
+            q = wm.parse_question(m.question)
+            if q is None or len(m.token_ids) != 2 or any(t in state.positions for t in m.token_ids):
+                continue
+            w = m.weather or {}
+            fc = w.get("prevision")
+            if not fc:
+                out.abstain("prévision météo indisponible")
+                continue
+            book = books.get(m.token_ids[1])
+            if book is None:
+                out.abstain("carnet indisponible")
+                continue
+            year = book.fetched_at.year
+            date = f"{year}-{q.month:02d}-{q.day:02d}"
+            day = (fc.get("jours") or {}).get(date)
+            if not day:
+                out.abstain("jour hors prévision")
+                continue
+            offset = timedelta(seconds=int(fc.get("utc_offset") or 0))
+            start = datetime.fromisoformat(date).replace(tzinfo=timezone.utc) - offset  # minuit local
+            lead = (start - book.fetched_at).total_seconds() / 3600
+            if not -float(p["min_lead_hours"]) <= lead <= float(p["max_lead_hours"]):
+                out.abstain("hors de la fenêtre testée")
+                continue
+            observed = None
+            if w.get("jour_local") == date:
+                observed = w.get("max_jour_c")  # le maximum relevé ne peut que monter
+            sigma, bias = ((p["sigma_max"], p["bias_max"]) if q.kind == "max" else (p["sigma_min"], p["bias_min"]))
+            members = day["max" if q.kind == "max" else "min"]
+            est_yes = wm.probability(q, members, float(sigma), float(bias), observed if q.kind == "max" else None)
+            if est_yes is None:
+                continue
+            no_ask = book.best_ask
+            if no_ask is None or not (p["min_no_price"] <= no_ask <= p["max_no_price"]):
+                out.abstain("prix du NON hors de la zone testée")
+                continue
+            est_no = 1 - est_yes
+            margin = float(p["margin"])
+            # Beaucoup de petits paris (le test a gagné en moyenne sur des centaines) : Kelly réduit,
+            # plafonné à `stake_fraction` du capital par pari.
+            low_no = _d(est_no - margin)
+            cost_ps = no_ask + taker_fee(ONE, no_ask, m.fees)
+            kelly = size_buy(state, prob_low=low_no, cost_per_share=cost_ps,
+                             kelly_fraction=p.get("kelly_fraction", Decimal("0.25")), marks=marks)
+            cap = (p.get("stake_fraction", Decimal("0.03")) * state.total_estimated(marks) / cost_ps
+                   ).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            prop = self._buy(m, books, state, 1, est_no - margin, est_no, min(0.999, est_no + margin), bucket, marks,
+                             out, f"meteo_prevision:gfs+ecmwf {date} {q.kind}",
+                             f"σ {float(sigma):.1f} °C, biais {float(bias):+.1f} °C, modèles {', '.join(f'{x:.1f}' for x in members)} °C",
+                             "prévision ratée, station ou jour mal compris, arrondi de la source",
+                             shares=min(kelly, cap))
+            if prop is not None:
+                candidates.append(prop)
+            if p.get("allow_yes", Decimal("0")) > 0 and est_yes - margin > float(m.best_ask or 1):
+                prop = self._buy(m, books, state, 0, est_yes - margin, est_yes, min(0.999, est_yes + margin),
+                                 bucket, marks, out, f"meteo_prevision:{date}", "OUI : non validé par le test",
+                                 "prévision ratée")
+                if prop is not None:
+                    candidates.append(prop)
+        return self._finish(out, candidates)
+
+
 # --------------------------------------------------------------------------- 8. température (chantier n°0)
 
 
@@ -424,4 +525,5 @@ class TemperatureFloor(_Base):
 
 
 CLASSES = {c.strategy_id: c for c in (CrossMarketLadder, MarketStructure, NewsMomentum,
-                                      InformationAdvantage, SocialSentiment, TemperatureFloor)}
+                                      InformationAdvantage, SocialSentiment, MeteoForecast,
+                                      TemperatureFloor)}

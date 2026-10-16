@@ -14,6 +14,7 @@ from polymarket_agent.models import MarketInfo
 from polymarket_agent.social_intelligence import summarize
 from polymarket_agent.sources.gemini import GeminiClassifier
 from polymarket_agent.sources.polymarket_gamma import GammaClient
+from polymarket_agent.sources.weather import station_of
 
 log = logging.getLogger(__name__)
 
@@ -31,6 +32,29 @@ def latest_quotes(observations) -> dict:
             best[asset] = CryptoQuote(asset, float(o.data["price"]), float(o.data["hourly_vol"]),
                                       o.published_at, o.domain)
     return best
+
+
+def latest_weather(observations, now: datetime, max_age_hours: float = 8) -> dict[str, dict]:
+    """Par station : dernier relevé meteo_metar (ses données au premier niveau, avec `published_at`,
+    format attendu par temperature_floor) et dernière prévision meteo_prevision (clé "prevision")."""
+    from datetime import timedelta
+    out: dict[str, dict] = {}
+    seen: dict[tuple[str, str], datetime] = {}
+    for o in observations:
+        if o.source not in ("meteo_prevision", "meteo_metar") or o.published_at is None:
+            continue
+        if now - o.published_at > timedelta(hours=max_age_hours) or "station" not in o.data:
+            continue
+        key = (o.data["station"], o.source)
+        if key in seen and seen[key] >= o.published_at:
+            continue
+        seen[key] = o.published_at
+        entry = out.setdefault(o.data["station"], {})
+        if o.source == "meteo_prevision":
+            entry["prevision"] = dict(o.data, published_at=o.published_at)
+        else:
+            entry.update(o.data, published_at=o.published_at)
+    return out
 
 
 def make_collector(settings: dict, http: HttpClient, db, factories: dict | None = None):
@@ -95,19 +119,15 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
                 status["sources_resolution"] = resolution_sources.status_text(db)
             except Exception as exc:  # noqa: BLE001 - un inventaire ne bloque jamais le cycle
                 status["sources_resolution"] = f"erreur : {type(exc).__name__}: {exc}"[:200]
+        weather = latest_weather(recent, now)
         down = [n for n, s in status.items() if s.startswith("indisponible")]
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment
-        latest_weather: dict[str, object] = {}
-        for o in recent:
-            if o.source == "meteo_metar" and o.published_at is not None:
-                for mid in o.market_ids:
-                    if mid not in latest_weather or o.published_at > latest_weather[mid].published_at:
-                        latest_weather[mid] = o
         for market in markets:
-            wobs = latest_weather.get(market.market_id)
-            market.weather = dict(wobs.data, published_at=wobs.published_at) if wobs else None
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
+            # Météo de la station qui tranche le marché : relevé (temperature_floor) + prévision.
+            station = station_of(market.resolution_source, market.description)
+            market.weather = weather.get(station) if station else None
             group = correlation_group(market)
             if group.startswith("crypto:"):
                 market.crypto_quote = quotes.get(group.split(":")[1])
