@@ -528,3 +528,6 @@ Le notaire (signature réservée à une machine protégée) n'est pas fait :
   tirés vers le réglage global (`calibration_shrink` jours fictifs), plancher `sigma_floor`.
   Test sur le passé : Brier 0,090 au lieu de 0,097 ; NON +28 à +31 % des mises au lieu de +24 à +26 %
   (`experiments/meteo_backtest.md`).
+- Arène (`arena.py`, `config/promotion.yaml` → `validated_strategies`) : une stratégie validée sur
+  le passé entre au capital principal avec des seuils plus bas (météo : 8 opérations, 8 h, +0,5 %
+  au lieu de 20, 24 h, +2 %) ; elle doit toujours battre « ne rien faire » en direct.

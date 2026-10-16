@@ -10,6 +10,8 @@
   `max_strategies_in_main`), chacune avec une part proportionnelle à sa croissance : la
   somme des parts vaut 1, l'exposition totale reste celle d'une seule stratégie
   (décision d'Etienne, 15/10/2026).
+- Une stratégie VALIDÉE sur le passé (test hors échantillon documenté, `validated_strategies`)
+  a des seuils d'entrée plus bas : elle reçoit sa part plus tôt (16/10/2026).
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -57,23 +59,38 @@ def _old_enough(s: Standing, now: datetime | None, min_age_hours: float) -> bool
     return min_age_hours <= 0 or (now is not None and s.days(now) * 24 >= min_age_hours)
 
 
+def validated_gates(name: str, validated: dict | None) -> dict | None:
+    """Seuils d'entrée allégés d'une stratégie VALIDÉE sur le passé (config/promotion.yaml,
+    `validated_strategies` : préfixe du nom → seuils), ou None. Le plus long préfixe gagne."""
+    hits = [k for k in (validated or {}) if name.startswith(k)]
+    return dict(validated[max(hits, key=len)]) if hits else None
+
+
 def _enters(s: Standing, min_trades: int, now: datetime | None, min_age_hours: float,
-            min_growth: float) -> bool:
+            min_growth: float, validated: dict | None = None) -> bool:
     """Seuil d'ENTRÉE (devenir champion ou recevoir une part) : assez d'opérations, assez
-    d'ancienneté, et une croissance qui bat « ne rien faire » d'au moins `min_growth`."""
+    d'ancienneté, et une croissance qui bat « ne rien faire » d'au moins `min_growth`.
+    Une stratégie validée sur le passé a ses propres seuils, plus bas ; elle doit quand même
+    battre « ne rien faire » en direct (croissance > 0)."""
+    own = validated_gates(s.name, validated)
+    if own:
+        min_trades = int(own.get("min_closed_trades", min_trades))
+        min_age_hours = float(own.get("min_age_hours", min_age_hours))
+        min_growth = float(own.get("min_log_growth", min_growth))
     return (not s.eliminated and s.closed_trades >= min_trades and s.log_growth > 0
             and s.log_growth >= min_growth and _old_enough(s, now, min_age_hours))
 
 
 def choose_champion(standings: list[Standing], current: str, min_trades: int,
                     margin: float = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
-                    min_growth: float = 0.0, keep_growth: float = 0.0) -> tuple[str, str]:
+                    min_growth: float = 0.0, keep_growth: float = 0.0,
+                    validated: dict | None = None) -> tuple[str, str]:
     """(nouveau champion, raison). "" = ne rien faire.
 
     Hystérésis : on entre à `min_growth`, on reste tant que la croissance dépasse `keep_growth`
     (plus bas) ; sinon un champion promu sur du bruit tombe au cycle suivant (15/10/2026)."""
     by_name = {s.name: s for s in standings}
-    eligible = [s for s in standings if _enters(s, min_trades, now, min_age_hours, min_growth)]
+    eligible = [s for s in standings if _enters(s, min_trades, now, min_age_hours, min_growth, validated)]
     best = max(eligible, key=lambda s: s.log_growth, default=None)
     incumbent = by_name.get(current)
     # Un champion n'est jugé qu'à partir de `min_trades` opérations clôturées.
@@ -96,14 +113,15 @@ def choose_champion(standings: list[Standing], current: str, min_trades: int,
 
 def allocation(standings: list[Standing], min_trades: int, max_strategies: int, *,
                now: datetime | None = None, min_age_hours: float = 0.0, min_growth: float = 0.0,
-               champion: str = "", keep_growth: float = 0.0) -> dict[str, float]:
+               champion: str = "", keep_growth: float = 0.0,
+               validated: dict | None = None) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
     le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`."""
     def kept(s: Standing) -> bool:
         return (s.name == champion and not s.eliminated and s.closed_trades >= min_trades
                 and s.log_growth > max(keep_growth, 0.0))
     eligible = sorted((s for s in standings
-                       if _enters(s, min_trades, now, min_age_hours, min_growth) or kept(s)),
+                       if _enters(s, min_trades, now, min_age_hours, min_growth, validated) or kept(s)),
                       key=lambda s: s.log_growth, reverse=True)[:max(0, max_strategies)]
     total = sum(s.log_growth for s in eligible)
     return {s.name: s.log_growth / total for s in eligible} if total > 0 else {}
@@ -132,7 +150,7 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     # Règles obligatoires (config/promotion.yaml) : pas de valeur par défaut silencieuse.
     min_trades = int(cfg["min_closed_trades"])
     gates = {"now": now, "min_age_hours": float(cfg["min_age_hours"]),
-             "min_growth": float(cfg["min_log_growth"])}
+             "min_growth": float(cfg["min_log_growth"]), "validated": cfg.get("validated_strategies") or {}}
     keep = float(cfg["keep_log_growth"])
     events = []
     previous = main.state.champion
