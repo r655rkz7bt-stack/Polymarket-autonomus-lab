@@ -84,6 +84,11 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     state = main.state
     questions = {r[0]: r[1] for r in db.conn.execute(
         "SELECT market_id, question FROM market_snapshots GROUP BY market_id")}
+    try:  # les instantanés sont élagués : la question reste dans l'archive des règles (sources de résolution)
+        for mid, q in db.conn.execute("SELECT market_id, question FROM market_rules"):
+            questions.setdefault(mid, q)
+    except Exception:  # noqa: BLE001 - base sans archive (avant le 15/10/2026)
+        pass
     learning = analyze(dict(shadows, principal=main), categories_from_db(db))
     marks = _marks(db, state.positions)
 

@@ -9,7 +9,10 @@ name: labo-alerte-coeur
 
 on:
   schedule:
-    - cron: "23 * * * *"
+    # GitHub retarde ou saute souvent les déclenchements programmés (3 passages en 13 h le
+    # 15-16/10) : trois tentatives par heure. Le plus fiable : le faire lancer par cron-job.org
+    # (« workflow_dispatch », comme le cycle), voir docs/EXPLOITATION.md.
+    - cron: "11,31,51 * * * *"
   workflow_dispatch:
 
 permissions:
