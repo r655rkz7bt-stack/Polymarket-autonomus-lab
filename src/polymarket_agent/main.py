@@ -259,6 +259,10 @@ def _apply_health(deps: CycleDeps, competitors: dict, report: CycleReport, elimi
         for name, portfolio in competitors.items():
             sc = strategy_health.score(deps.db, items[name])
             factor = strategy_health.prudence(sc, cfg)
+            if portfolio.strategies and not any(getattr(s, "forecasting", True) for s in portfolio.strategies):
+                # Tenue de marché : aucune prévision à juger (son « estimation » est le prix du milieu) ;
+                # sa prudence est dans ses propres réglages (part du capital par marché, stock maximal).
+                factor = 1.0
             reason = None if name in eliminated else strategy_health.suspension(
                 portfolio.ledger.state, closed.get(name, 0), cfg)
             if reason:
@@ -441,7 +445,41 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets)
         if main.ledger.state.bankrupt:
             break
+    # 12. Récompenses de liquidité ESTIMÉES pour les ordres restés posés (hors capital).
+    by_market = {m.market_id: m for m in result.markets} | {m.market_id: m for m in result.watchlist}
+    for portfolio in portfolios:
+        try:
+            _estimate_rewards(deps, portfolio, by_market, books, report, now)
+        except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais faire tomber le cycle
+            log.warning("[%s] estimation des récompenses impossible : %s", portfolio.name, exc)
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
+
+
+def _estimate_rewards(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, MarketInfo],
+                      books: dict[str, OrderBook], report: CycleReport, now: datetime) -> None:
+    """Part estimée de la cagnotte de chaque marché pour nos ordres ouverts, pendant un cycle
+    (liquidity_rewards.py). Écrite dans la table `recompenses_estimees`, jamais dans le journal."""
+    from polymarket_agent import liquidity_rewards as lr
+    quotes: dict[str, list] = {}
+    for order in deps.db.open_orders(portfolio.name):
+        proposal = Proposal.from_dict(json.loads(order["proposal"]))
+        market = by_market.get(proposal.market_id)
+        if market is None or market.rewards_daily_rate <= 0:
+            continue
+        q = lr.to_quote(market, proposal.token_id, proposal.side, float(proposal.max_price), float(order["remaining"]))
+        if q is not None:
+            quotes.setdefault(market.market_id, []).append(q)
+    minutes = float(deps.settings["cycle"]["bucket_minutes"])
+    total = 0.0
+    for market_id, qs in quotes.items():
+        market = by_market[market_id]
+        book = books.get(market.token_ids[0])
+        est = lr.estimate(market, book, qs, minutes) if book is not None else None
+        if est is not None and est.eligible:
+            lr.record(deps.db, report.cycle_id, now, portfolio.name, market_id, est, market.rewards_daily_rate)
+            total += est.amount
+    if total:
+        portfolio.counts["recompenses_estimees"] = round(total, 4)
 
 
 def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],

@@ -577,3 +577,38 @@ def test_fee_burner_is_suspended_only_after_enough_trades():
     assert strategy_health.suspension(burner, 25, cfg) and not strategy_health.suspension(burner, 5, cfg)
     assert strategy_health.suspension(honest_loser, 25, cfg) is None  # l'élimination hebdomadaire s'en charge
     assert strategy_health.suspension(winner, 25, cfg) is None
+
+
+def test_market_maker_quotes_both_sides_estimates_rewards_and_fills_when_traded_through(env, paths, tmp_path):
+    """Tenue de marché (16/10/2026) : deux ordres posés (OUI et NON), récompense ESTIMÉE à part
+    (jamais dans le journal), puis exécution du côté que le marché traverse."""
+    from polymarket_agent.strategies_v2 import MarketMaker
+    make, db, clock = env
+    mm = MarketMaker("1.0.0", "2026-10-16", {
+        "min_days_to_end": D("3"), "min_mid": D("0.15"), "max_mid": D("0.85"), "max_move_6h": D("0.03"),
+        "min_reward_rate": D("5"), "improve_ticks": D("0"), "min_pair_margin": D("0.02"),
+        "market_fraction": D("0.06"), "max_net_quotes": D("2"), "stop_loss": D("0.10"),
+        "quote_hours": D("0.2"), "max_markets": D("12"), "max_candidates": D("30")})
+    mm.mode = "fantome"
+    raw = raw_market("mm", yes_token="Y", no_token="N", yes_price="0.485", best_bid=0.47, best_ask=0.50,
+                     end=NOW + timedelta(days=10), rewardsMinSize=20, rewardsMaxSpread=3.5,
+                     clobRewards=[{"rewardsDailyRate": 50}])
+
+    def books(ybid, yask, ts):
+        return {"Y": make_book("Y", bids=((ybid, "300"),), asks=((yask, "300"),), ts=ts),
+                "N": make_book("N", bids=((str(D(1) - D(yask)), "300"),), asks=((str(D(1) - D(ybid)), "300"),), ts=ts)}
+    report = run_cycle(make(FakeGamma([raw]), FakeClob(books("0.47", "0.50", NOW)), strategies=[mm]))
+    assert report.status == "OK", report.messages
+    orders = {(o["token_id"], o["side"]): json.loads(o["proposal"])["max_price"] for o in db.open_orders()}
+    assert orders == {("Y", "BUY"): "0.47", ("N", "BUY"): "0.50"}
+    est = db.conn.execute("SELECT part, montant FROM recompenses_estimees").fetchall()
+    assert len(est) == 1 and est[0][0] > 0 and est[0][1] > 0
+    shadow = tmp_path / "fantome" / "market_maker_v1.0.0.jsonl"
+    assert "BUY" not in _ledger_types(shadow)
+
+    # Cycle 2 : des vendeurs du OUI à 0,45 (le prix chute) → notre achat du OUI à 0,47 est servi.
+    clock["now"] = NOW + timedelta(minutes=5)
+    run_cycle(make(FakeGamma([raw]), FakeClob(books("0.44", "0.45", clock["now"])), strategies=[mm]))
+    state = Ledger.open(shadow, KEY, tmp_path / "fantome" / "x.lock").state
+    assert state.positions["Y"].cost_basis / state.positions["Y"].shares == D("0.47")
+    assert state.fees_paid == 0  # ordre posé : pas de frais (barème preneur seulement)

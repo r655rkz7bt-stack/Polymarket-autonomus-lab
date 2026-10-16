@@ -256,6 +256,11 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)
+    # Ordres posés : récompenses de liquidité ESTIMÉES (hors capital) et sélection adverse (markout).
+    from polymarket_agent import liquidity_rewards, markout
+    since = (now - timedelta(days=7)).isoformat(timespec="seconds")
+    data["ordres_poses"] = {"recompenses": liquidity_rewards.summary(db, since),
+                            "markout": markout.report(db, entries, now)}
     return data
 
 

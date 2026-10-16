@@ -14,6 +14,9 @@ class FeeSchedule:
     exponent: Decimal | None
     taker_only: bool = False  # True seulement si le barème le dit (ordres posés sans frais)
     fee_type: str | None = None
+    # Part des frais des preneurs reversée aux ordres posés (docs Polymarket, 16/10/2026 : sport
+    # 0,15, crypto 0,20, autres 0,25). Information seulement : jamais comptée dans le capital.
+    rebate_rate: Decimal | None = None
 
 
 @dataclass
@@ -56,6 +59,11 @@ class MarketInfo:
     weather: dict | None = None  # relevé meteo_metar (data) de la station + clé "prevision" (meteo_prevision)
     eligible: bool = False
     exclusion: str = ""
+    # Récompenses de liquidité (Gamma : rewardsMinSize, rewardsMaxSpread en centimes,
+    # clobRewards[].rewardsDailyRate en $ par jour) ; voir liquidity_rewards.py.
+    rewards_min_size: Decimal | None = None
+    rewards_max_spread: Decimal | None = None
+    rewards_daily_rate: Decimal = Decimal("0")
 
     @property
     def data_ok(self) -> bool:

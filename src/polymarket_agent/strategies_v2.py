@@ -535,6 +535,163 @@ class TemperatureFloor(_Base):
         return self._finish(out, candidates)
 
 
+
+# --------------------------------------------------------------------------- 9. tenue de marché
+
+
+class MarketMaker(_Base):
+    """Tenue de marché (« market making », 16/10/2026, experiments/veille_bots/) : ce que font les
+    bots qui gagnent durablement. On ne prédit rien : on pose à chaque cycle un ordre d'ACHAT du OUI
+    au meilleur acheteur et un ordre d'ACHAT du NON au meilleur acheteur du NON (= vente du OUI au
+    meilleur vendeur). Si les deux sont servis, on détient une paire OUI + NON qui vaut 1 à coup
+    sûr, payée 1 − écart : c'est l'écart capturé. On gagne aussi (estimé à part, hors capital) les
+    récompenses de liquidité de Polymarket et, sur le vrai marché, une remise sur les frais.
+
+    Risques gérés :
+    - stock : ce qui est détenu est REVENDU au meilleur vendeur (libère le capital et capture
+      l'écart) au lieu d'acheter l'autre côté ; au-delà de `max_net_quotes` cotes nettes d'un côté,
+      on ne cote plus que le côté qui rééquilibre ; perte coupée par `stop_loss` (vente immédiate) ;
+    - sélection adverse (on est servi quand on a tort) : marchés CALMES seulement (prix stable sur
+      6 h, milieu 0,15-0,85, échéance lointaine), ni sport ni crypto (flux rapides), cotes jamais
+      plus serrées que `min_pair_margin` (paire achetée au plus 1 − marge) ;
+    - ordres de courte durée (`quote_hours`) : une cote non renouvelée disparaît d'elle-même.
+    Marchés choisis : cagnotte de récompense par dollar de liquidité déjà présente la plus haute.
+    """
+
+    strategy_id = "market_maker"
+    forecasting = False  # ne prédit rien : pas de « mise prudente » sur des prévisions (main._apply_health)
+    required = ("min_days_to_end", "min_mid", "max_mid", "max_move_6h", "min_reward_rate",
+                "improve_ticks", "min_pair_margin", "market_fraction", "max_net_quotes", "stop_loss",
+                "quote_hours", "max_markets", "max_candidates")
+    needs_price_history = True
+
+    def _calm(self, m: MarketInfo, now: datetime | None = None) -> bool:
+        p = self.params
+        if len(m.token_ids) != 2 or m.best_bid is None or m.best_ask is None:
+            return False
+        if m.fees.rebate_rate is not None and m.fees.rebate_rate < Decimal("0.25"):
+            return False  # sport (0,15) et crypto (0,20) : flux rapides, sélection adverse forte
+        mid = (m.best_bid + m.best_ask) / 2
+        if not (p["min_mid"] <= mid <= p["max_mid"]):
+            return False
+        if m.end_date is not None and now is not None and \
+                (m.end_date - now).total_seconds() < float(p["min_days_to_end"]) * 86400:
+            return False
+        if m.yes_price_6h_ago is not None and abs(float(mid) - m.yes_price_6h_ago) > float(p["max_move_6h"]):
+            return False
+        return m.rewards_daily_rate >= p["min_reward_rate"]
+
+    @staticmethod
+    def _attractiveness(m: MarketInfo) -> float:
+        return float(m.rewards_daily_rate) / (float(m.liquidity) + 1000)
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        out = [m for m in markets if self._calm(m)]  # échéance vérifiée dans propose (heure du carnet)
+        out.sort(key=self._attractiveness, reverse=True)
+        return out[: int(self.params["max_candidates"])]
+
+    def _order(self, m: MarketInfo, side: int, order_side: str, price: Decimal, shares: Decimal, mid: float,
+               bucket: str, why: str) -> Proposal:
+        token = m.token_ids[side]
+        est = mid if side == 0 else 1 - mid
+        est = min(0.98, max(0.02, est))
+        return Proposal(
+            op_id=make_op_id(bucket, self.strategy_id, self.version, token, order_side), side=order_side,
+            market_id=m.market_id, event_id=m.event_id, token_id=token, outcome=m.outcomes[side],
+            est_probability=_d(est), prob_low=_d(est - 0.01), prob_high=_d(est + 0.01), max_price=price,
+            shares=shares, net_edge=_d(est - float(price)), sources=("polymarket_clob", "tenue_de_marche"),
+            uncertainty=why, invalidation="nouvelle qui fait bouger le prix (sélection adverse)",
+            horizon_hours=Decimal(str(self.params["quote_hours"])), strategy_id=self.strategy_id,
+            strategy_version=self.version)
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        p, out, now = self.params, StrategyOutput(), None
+        mine = {t: pos for t, pos in state.positions.items() if pos.strategy_id == self.strategy_id}
+        total = state.total_estimated(marks)
+        quoted = 0
+        markets = sorted((m for m in watchlist if len(m.token_ids) == 2), key=self._attractiveness, reverse=True)
+        for m in markets:
+            yb, nb = books.get(m.token_ids[0]), books.get(m.token_ids[1])
+            held_y, held_n = mine.get(m.token_ids[0]), mine.get(m.token_ids[1])
+            if not (held_y or held_n):
+                if quoted >= int(p["max_markets"]):
+                    break
+                now = now or (yb.fetched_at if yb is not None else None)
+                if not self._calm(m, now):
+                    continue
+            if yb is None or nb is None or None in (yb.best_bid, yb.best_ask, nb.best_bid, nb.best_ask):
+                out.abstain("carnet incomplet")
+                continue
+            tick = yb.tick_size
+            qy = min(yb.best_bid + tick * int(p["improve_ticks"]), yb.best_ask - tick)
+            qn = min(nb.best_bid + tick * int(p["improve_ticks"]), nb.best_ask - tick)
+            if qy <= 0 or qn <= 0 or qy + qn > ONE - p["min_pair_margin"]:
+                out.abstain("écart trop serré pour coter")
+                continue
+            mid = float(yb.best_bid + yb.best_ask) / 2
+            budget = p["market_fraction"] * total
+            size = max(m.rewards_min_size or m.min_order_size, m.min_order_size)
+            ny = held_y.shares if held_y else Decimal("0")
+            nn = held_n.shares if held_n else Decimal("0")
+            net = ny - nn  # parts nettes de OUI (une paire OUI + NON est sans risque)
+            max_net = p["max_net_quotes"] * size
+            invested = (held_y.cost_basis if held_y else 0) + (held_n.cost_basis if held_n else 0)
+            room = budget - invested
+            orders = []
+            q2 = lambda x: x.quantize(Decimal("0.01"), rounding=ROUND_DOWN)  # noqa: E731
+            # Côté « acheteur du OUI » : revendre le NON détenu (libère du capital), sinon acheter le OUI.
+            if net < max_net:
+                if nn > 0:
+                    ask_n = max(nb.best_ask - tick * int(p["improve_ticks"]), nb.best_bid + tick)
+                    orders.append(self._order(m, 1, "SELL", ask_n, q2(min(nn, size)), mid, bucket,
+                                              "revente du NON détenu"))
+                elif room > 0:
+                    shares = min(size, q2(room / qy))
+                    if shares >= m.min_order_size:
+                        orders.append(self._order(m, 0, "BUY", qy, shares, mid, bucket, "cote d'achat du OUI"))
+            # Côté « vendeur du OUI » : revendre le OUI détenu, sinon acheter le NON.
+            if -net < max_net:
+                if ny > 0:
+                    ask_y = max(yb.best_ask - tick * int(p["improve_ticks"]), yb.best_bid + tick)
+                    orders.append(self._order(m, 0, "SELL", ask_y, q2(min(ny, size)), mid, bucket,
+                                              "revente du OUI détenu"))
+                elif room > 0:
+                    shares = min(size, q2(room / qn))
+                    if shares >= m.min_order_size:
+                        orders.append(self._order(m, 1, "BUY", qn, shares, mid, bucket, "cote d'achat du NON"))
+            orders = [o for o in orders if o.shares > 0]
+            if orders:
+                out.limit_orders += orders
+                quoted += 1
+        return out
+
+    def exits(self, positions: dict[str, Position], markets: dict[str, MarketInfo], books, bucket, now):
+        """Coupe la perte : la partie NON appariée d'un stock dont le prix a chuté de `stop_loss`
+        sous son coût est vendue au meilleur acheteur (preneur)."""
+        out = []
+        by_market: dict[str, list[Position]] = defaultdict(list)
+        for pos in positions.values():
+            by_market[pos.market_id].append(pos)
+        for market_id, held in by_market.items():
+            m = markets.get(market_id)
+            if m is None or len(m.token_ids) != 2:
+                continue
+            shares = {pos.token_id: pos.shares for pos in held}
+            for pos in held:
+                other = m.token_ids[1] if pos.token_id == m.token_ids[0] else m.token_ids[0]
+                excess = pos.shares - shares.get(other, Decimal("0"))
+                book = books.get(pos.token_id)
+                if excess <= 0 or book is None or book.best_bid is None:
+                    continue
+                if book.best_bid <= pos.avg_cost - self.params["stop_loss"]:
+                    side = m.token_ids.index(pos.token_id)
+                    mid = float(book.best_bid)
+                    out.append(self._order(m, side, "SELL", book.best_bid,
+                                           excess.quantize(Decimal("0.01"), rounding=ROUND_DOWN),
+                                           mid if side == 0 else 1 - mid, bucket,
+                                           f"coupe-perte : {book.best_bid} contre un coût de {pos.avg_cost:.3f}"))
+        return [o for o in out if o.shares > 0]
+
 CLASSES = {c.strategy_id: c for c in (CrossMarketLadder, MarketStructure, NewsMomentum,
                                       InformationAdvantage, SocialSentiment, MeteoForecast,
-                                      TemperatureFloor)}
+                                      TemperatureFloor, MarketMaker)}
