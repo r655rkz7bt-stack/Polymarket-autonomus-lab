@@ -154,6 +154,25 @@ svg text { font-family: var(--mono); }
 .today li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-2); }
 .today li:first-child { color: var(--ink); }
 
+/* --- tri (titres de colonnes) et listes dépliables */
+th button.sort { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+th button.sort::after { content: "↕"; opacity: 0.35; font-size: 0.9em; }
+th[aria-sort="ascending"] button.sort::after { content: "▲"; opacity: 0.9; }
+th[aria-sort="descending"] button.sort::after { content: "▼"; opacity: 0.9; }
+th button.sort:hover, th button.sort:focus-visible { color: var(--ink); }
+th button.sort:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 2px; border-radius: 4px; }
+th.n button.sort { justify-content: flex-end; }
+.more-row { display: flex; justify-content: center; }
+.row[hidden], tr[hidden] { display: none; }
+button.more { all: unset; cursor: pointer; margin-top: 10px; font: 500 0.78rem var(--mono); letter-spacing: 0.04em;
+  color: var(--ink-2); background: var(--raised); border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 14px; }
+button.more:hover, button.more:focus-visible { color: var(--ink); border-color: var(--ink-2); }
+button.more:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 2px; }
+.row.th button.sort { all: unset; cursor: pointer; display: inline-flex; gap: 4px; }
+.row.th button.sort::after { content: "↕"; opacity: 0.35; }
+.row.th [aria-sort="ascending"] button.sort::after { content: "▲"; opacity: 0.9; }
+.row.th [aria-sort="descending"] button.sort::after { content: "▼"; opacity: 0.9; }
+
 /* --- tableaux sobres */
 .scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
@@ -310,18 +329,65 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     if (min < 1) return "à l'instant"; if (min < 60) return "il y a " + Math.round(min) + " min";
     return "il y a " + Math.floor(min / 60) + " h " + Math.round(min % 60) + " min"; }
 
-  function table(id, head, rows, empty) {
+  // Valeur de tri d'une cellule : nombre (« ▼ −1 234,50 », « 0,45 / 0,46 »), date (« 16/10 07:16 »)
+  // ou texte. Une cellule vide (« — ») va toujours en fin de liste.
+  function sortKey(text) {
+    var s = (text || "").trim();
+    if (!s || s === "—") return null;
+    var d = /^(\d\d)\/(\d\d) (\d\d:\d\d)/.exec(s);
+    if (d) return d[2] + d[1] + d[3];
+    var m = /^[▲▼·\s]*([+−-]?)\s*(\d[\d\s\u202f\u00a0]*(?:,\d+)?)/.exec(s);
+    if (m) { var v = parseFloat(m[2].replace(/[\s\u202f\u00a0]/g, "").replace(",", "."));
+      return (m[1] && m[1] !== "+") || /^▼/.test(s) ? -v : v; }
+    return s.toLowerCase();
+  }
+  function compareKeys(a, b) {
+    if (a === null || b === null) return a === b ? 0 : a === null ? 1 : -1;
+    if (typeof a === "number" && typeof b === "number") return a - b;
+    return String(a).localeCompare(String(b), "fr");
+  }
+  // Liste dépliable : `limit` premières lignes visibles, bouton « Afficher les N autres ».
+  function collapsible(holder, items, limit, label) {
+    if (items().length <= limit) return function () {};
+    var open = false, btn = el("button", "more"); btn.type = "button";
+    function apply() { var visible = 0;
+      items().forEach(function (it) { it.hidden = !open && visible >= limit; visible++; });
+      btn.textContent = open ? "Réduire ▴" : "Afficher les " + (items().length - limit) + " autres " + (label || "") + " ▾";
+      btn.setAttribute("aria-expanded", open ? "true" : "false"); }
+    btn.addEventListener("click", function () { open = !open; apply(); });
+    holder.appendChild(btn); apply();
+    return apply;
+  }
+  function table(id, head, rows, empty, limit) {
     var t = document.getElementById(id); t.textContent = "";
     if (!rows.length) { t.replaceWith(el("p", "empty", empty)); return; }
-    var tr = el("tr"); head.forEach(function (h) { tr.appendChild(el("th", h.n ? "n" : "", h.t)); });
-    var th = el("thead"); th.appendChild(tr); t.appendChild(th);
-    var tb = el("tbody");
-    rows.forEach(function (r) { var row = el("tr");
+    var tb = el("tbody"), trs = [];
+    rows.forEach(function (r, k) { var row = el("tr"); row._order = k; row._keys = [];
       r.forEach(function (c, i) { var td = el("td", head[i].n ? "n" : head[i].q ? "q" : head[i].d ? "d" : head[i].s ? "s" : "");
         if (c instanceof Node) td.appendChild(c); else td.textContent = c === null || c === undefined ? "—" : String(c);
+        // Tri sur la première ligne de la cellule (le détail gris en dessous ne compte pas).
+        row._keys.push(sortKey(td.firstChild && td.firstChild.nodeType === 1 && td.firstChild.firstChild
+          ? (td.firstChild.firstChild.textContent || td.textContent) : td.textContent));
         row.appendChild(td); });
-      tb.appendChild(row); });
-    t.appendChild(tb);
+      trs.push(row); tb.appendChild(row); });
+    var tr = el("tr"), sorting = { col: -1, dir: 1 }, refold = function () {};
+    head.forEach(function (h, i) {
+      var cell = el("th", h.n ? "n" : ""), btn = el("button", "sort", h.t); btn.type = "button";
+      btn.setAttribute("aria-label", "Trier par " + h.t);
+      cell.appendChild(btn); cell.setAttribute("aria-sort", "none"); tr.appendChild(cell);
+      btn.addEventListener("click", function () {
+        sorting.dir = sorting.col === i ? -sorting.dir : (h.n || h.d ? -1 : 1); sorting.col = i;
+        trs.sort(function (a, b) { var c = compareKeys(a._keys[i], b._keys[i]);
+          return (c === 0 ? a._order - b._order : (a._keys[i] === null || b._keys[i] === null ? c : c * sorting.dir)); });
+        trs.forEach(function (row) { tb.appendChild(row); });
+        Array.prototype.forEach.call(tr.children, function (c2, j) {
+          c2.setAttribute("aria-sort", j === i ? (sorting.dir > 0 ? "ascending" : "descending") : "none"); });
+        refold(); });
+    });
+    var th = el("thead"); th.appendChild(tr); t.appendChild(th); t.appendChild(tb);
+    var wrap = t.parentNode && t.parentNode.classList && t.parentNode.classList.contains("scroll") ? t.parentNode : t;
+    var holder = el("div", "more-row"); wrap.parentNode.insertBefore(holder, wrap.nextSibling);
+    refold = collapsible(holder, function () { return trs; }, limit || 8, "lignes");
   }
   function withDetail(text) { var m = /^(.*?)( : | \()(.*)$/.exec(text || ""), box = el("span");
     box.appendChild(el("span", null, m ? m[1] : text));
@@ -810,10 +876,28 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var caps = arena.map(function (s) { return s.capital; }).concat([initial]);
     var span = Math.max(20, Math.max.apply(null, caps.map(function (c) { return Math.abs(c - initial); }))) * 1.1;
     var maxOps = Math.max.apply(null, arena.map(function (s) { return s.operations; }).concat([1]));
-    var head = el("div", "row th");
+    var head = el("div", "row th"), arenaRows = [];
+    // Colonnes triables : rang (ordre de l'arène), nom, capital, opérations clôturées.
+    var SORT = { 0: function (r) { return r._s.rang; }, 1: function (r) { return r._s.nom.toLowerCase(); },
+                 3: function (r) { return r._s.capital; }, 4: function (r) { return r._s.operations; } };
+    var arenaSort = { col: 0, dir: 1 }, arenaFold = function () {};
     ["#", "stratégie", "face à ne rien faire", "capital", "clôt.", "courbe"].forEach(function (h, i) {
-      var c = el("div", ["", "", "c-track", "num c-cap", "num c-ops", "c-spark"][i], h); head.appendChild(c); });
+      var c = el("div", ["", "", "c-track", "num c-cap", "num c-ops", "c-spark"][i]);
+      if (SORT[i]) { var b = el("button", "sort", h); b.type = "button"; b.setAttribute("aria-label", "Trier par " + (h === "#" ? "rang" : h));
+        c.appendChild(b); c.setAttribute("aria-sort", i === 0 ? "ascending" : "none");
+        b.addEventListener("click", function () {
+          arenaSort.dir = arenaSort.col === i ? -arenaSort.dir : (i >= 3 ? -1 : 1); arenaSort.col = i;
+          arenaRows.sort(function (x, y) { var a = SORT[i](x), z = SORT[i](y);
+            return (typeof a === "number" ? a - z : String(a).localeCompare(String(z), "fr")) * arenaSort.dir || x._s.rang - y._s.rang; });
+          arenaRows.forEach(function (r) { box.appendChild(r); });
+          box.appendChild(more);
+          Array.prototype.forEach.call(head.children, function (cc, j) { if (SORT[j]) cc.setAttribute("aria-sort",
+            j === i ? (arenaSort.dir > 0 ? "ascending" : "descending") : "none"); });
+          arenaFold(); }); }
+      else c.textContent = h;
+      head.appendChild(c); });
     box.appendChild(head);
+    var more = el("div", "more-row");
     arena.forEach(function (s, i) {
       var row = el("div", "row"); row.appendChild(el("div", "rank", String(i + 1)));
       var name = el("div", "name", s.nom.replace(/_v[\d.]+$/, ""));
@@ -841,8 +925,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var sm = el("small"); sm.appendChild(delta(g, 1, " %")); cap.appendChild(sm); row.appendChild(cap);
       row.appendChild(el("div", "num c-ops", String(s.operations)));
       var sp = el("div", "c-spark"); sp.appendChild(spark(s.courbe)); row.appendChild(sp);
-      box.appendChild(row);
+      row._s = { rang: i + 1, nom: s.nom, capital: s.capital, operations: s.operations };
+      arenaRows.push(row); box.appendChild(row);
     });
+    box.appendChild(more);
+    arenaFold = collapsible(more, function () { return arenaRows; }, 8, "stratégies");
   })();
 
   // Classement dans le temps : une ligne par stratégie (rang 1 en haut). En tête aujourd'hui en
