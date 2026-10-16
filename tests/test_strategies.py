@@ -28,10 +28,11 @@ def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
     assert sorted(s.strategy_id for s in loaded) == [
         "calibration", "calibration_patiente", "cross_market", "crypto_threshold", "information_advantage",
-        "market_structure", "market_structure_patiente", "meteo_prevision", "naive_favorite", "news_momentum", "reversion",
+        "market_structure", "market_structure_patiente", "meteo_prevision", "meteo_prevision_patiente", "naive_favorite", "news_momentum",
+        "news_momentum_patiente", "reversion",
         "social_sentiment", "temperature_floor"]
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
-               if "kelly_fraction" in s.params and s.strategy_id != "meteo_prevision")
+               if "kelly_fraction" in s.params and not s.strategy_id.startswith("meteo_prevision"))
 
 
 def test_param_outside_bounds_is_refused():

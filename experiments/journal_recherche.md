@@ -3,6 +3,19 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-16 (passage chercheur, ~10 h UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (09:47 UTC) : capital réalisé 994,06,
+  aucun champion, aucune obligation. market_structure : 285 opérations, -448, verdict « ne fonctionne pas ».
+- **Fait** : deux variantes « patientes » (sans nouveau code, ordres posés 1 cran au-dessus du meilleur
+  acheteur) dans l'arène : `meteo_prevision_patiente` (seule idée avec un avantage mesuré hors échantillon,
+  on économise écart + frais taker) et `news_momentum_patiente` (la seule stratégie positive du classement).
+  Test de configuration mis à jour ; suite verte.
+- **Pas fait** : chantier n°0 sport (match terminé, cotes) et chantiers Kalshi/Manifold, faute de temps
+  dans ce passage ; restent « à faire ». Rien vérifié en réel (jugement par l'arène).
+- **Limites** : échantillon minuscule (3 opérations pour news_momentum) ; un ordre posé peut ne jamais
+  être exécuté, d'où l'intérêt de comparer au fantôme « impatient ».
+
 ## 2026-10-16 (session avec Etienne, ~6 h UTC) — météo
 
 - **Constat** : aucune championne ; la plupart des stratégies détiennent des positions sur des
