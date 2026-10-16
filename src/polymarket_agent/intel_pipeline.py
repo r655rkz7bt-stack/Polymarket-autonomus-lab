@@ -14,6 +14,7 @@ from polymarket_agent.models import MarketInfo
 from polymarket_agent.social_intelligence import summarize
 from polymarket_agent.sources.gemini import GeminiClassifier
 from polymarket_agent.sources.polymarket_gamma import GammaClient
+from polymarket_agent.sources.weather import station_of
 
 log = logging.getLogger(__name__)
 
@@ -31,6 +32,25 @@ def latest_quotes(observations) -> dict:
             best[asset] = CryptoQuote(asset, float(o.data["price"]), float(o.data["hourly_vol"]),
                                       o.published_at, o.domain)
     return best
+
+
+def latest_weather(observations, now: datetime, max_age_hours: float = 8) -> dict[str, dict]:
+    """Par station : dernière prévision (meteo_prevision) et dernier relevé (meteo_metar) récents."""
+    from datetime import timedelta
+    out: dict[str, dict] = {}
+    seen: dict[tuple[str, str], datetime] = {}
+    for o in observations:
+        if o.source not in ("meteo_prevision", "meteo_metar") or o.published_at is None:
+            continue
+        if now - o.published_at > timedelta(hours=max_age_hours) or "station" not in o.data:
+            continue
+        key = (o.data["station"], o.source)
+        if key in seen and seen[key] >= o.published_at:
+            continue
+        seen[key] = o.published_at
+        out.setdefault(o.data["station"], {})["prevision" if o.source == "meteo_prevision" else "releve"] = (
+            dict(o.data, date_collecte=o.published_at.isoformat()))
+    return out
 
 
 def make_collector(settings: dict, http: HttpClient, db, factories: dict | None = None):
@@ -95,11 +115,15 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
                 status["sources_resolution"] = resolution_sources.status_text(db)
             except Exception as exc:  # noqa: BLE001 - un inventaire ne bloque jamais le cycle
                 status["sources_resolution"] = f"erreur : {type(exc).__name__}: {exc}"[:200]
+        weather = latest_weather(recent, now)
         down = [n for n, s in status.items() if s.startswith("indisponible")]
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment
         for market in markets:
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
+            station = station_of(market.resolution_source, market.description)
+            if station and station in weather:
+                market.weather = weather[station]
             group = correlation_group(market)
             if group.startswith("crypto:"):
                 market.crypto_quote = quotes.get(group.split(":")[1])

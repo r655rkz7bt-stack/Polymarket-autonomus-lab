@@ -487,3 +487,14 @@ Résolution pas encore définitive : réessayée, anomalie après 3 jours. Curse
 Le notaire (signature réservée à une machine protégée) n'est pas fait :
 `proposals/2026-10-15_notaire_et_audit_des_reglements.md`.
 
+## 28. Stratégie météo (16 octobre 2026)
+
+- `weather_model.py` : lecture des questions de température (tranche, °C / °F, jour), probabilité
+  d'une tranche à partir des prévisions floutées (σ, biais) et du relevé du jour.
+- Sources : `meteo_metar` garde les coordonnées des stations (kv `station:XXXX`) ;
+  `meteo_prevision` (Open-Meteo, toutes les heures) donne le maximum et le minimum du jour local
+  prévus par GFS et ECMWF ; `intel_pipeline.latest_weather` les attache à `MarketInfo.weather`.
+- Stratégie `meteo_prevision` (strategies_v2.py) : demande jusqu'à 100 marchés de température
+  (`candidates`, `scanner.max_extra_markets` passé à 140), parie NON seulement, réglages issus du
+  test sur le passé (`experiments/meteo_backtest.md`, scripts dans `experiments/meteo_backtest/`).
+

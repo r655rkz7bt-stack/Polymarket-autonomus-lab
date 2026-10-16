@@ -3,6 +3,22 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-16 (session avec Etienne, ~6 h UTC) — météo
+
+- **Constat** : aucune championne ; la plupart des stratégies détiennent des positions sur des
+  marchés à échéance lointaine, donc rien n'est prouvé vite et le capital principal attend.
+- **Idée écartée, mesurée** : relevé du jour au-delà d'une tranche → tranche perdue. Le marché la
+  cote déjà 0,001 (33 cas sur 33) : aucun avantage.
+- **Test** : prévisions GFS + ECMWF (Open-Meteo « previous runs », sans regard vers le futur)
+  contre les prix, 14 553 marchés de température résolus du 1er au 15/10, réglage sur le
+  1er-7/10, jugement sur le 8-15/10. Brier 0,097 (modèle) contre 0,113 (marché) ; NON sur la
+  tranche favorite cotée 0,2-0,8 : +23 à +27 % des mises, 8 jours gagnants sur 8 ; OUI bon
+  marché : −55 %. Détail : `experiments/meteo_backtest.md`.
+- **Fait** : stratégie `meteo_prevision` (NON seulement), sources `meteo_prevision` (Open-Meteo)
+  et coordonnées des stations ; essai réel complet (cycle local) : 6 paris de ≈ 15 € par cycle.
+- **Reste ouvert** : confirmer en réel (carnets réels, l'arène) ; essayer d'autres modèles
+  (ICON, ensembles) et un σ selon l'échéance ; regarder les marchés de pluie / neige.
+
 ## 2026-10-15 (passage chercheur, ~20 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (19:46 UTC), classement.

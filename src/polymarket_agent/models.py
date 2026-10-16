@@ -53,6 +53,7 @@ class MarketInfo:
     changes_24h: int | None = None
     intel: object | None = None  # social_intelligence.MarketIntel (étape 5)
     crypto_quote: object | None = None  # sources.crypto_prices.CryptoQuote de l'actif concerné
+    weather: dict | None = None  # {"prevision": données meteo_prevision, "releve": données meteo_metar}
     eligible: bool = False
     exclusion: str = ""
 

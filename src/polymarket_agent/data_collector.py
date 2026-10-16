@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import copy
+import json
 import logging
 import os
 from dataclasses import dataclass, field
@@ -29,7 +30,7 @@ from polymarket_agent.sources.odds_api import OddsApiSource
 from polymarket_agent.sources.polymarket_comments import CommentsSource
 from polymarket_agent.sources.rss import RssSource
 from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSource
-from polymarket_agent.sources.weather import MetarSource
+from polymarket_agent.sources.weather import ForecastSource, MetarSource, stations_for
 
 log = logging.getLogger(__name__)
 
@@ -150,8 +151,25 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("bluesky", lambda cfg: factories.get("bluesky", lambda: BlueskySource(http))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
     result.status["x_api"] = "désactivée (payante)"
-    run("meteo_metar", lambda cfg: factories.get("meteo_metar", lambda: MetarSource(
-        http, int(cfg.get("max_stations", 40))))().fetch(markets, now))
+    def metar(cfg):
+        obs = factories.get("meteo_metar", lambda: MetarSource(http, int(cfg.get("max_stations", 40))))().fetch(markets, now)
+        for o in obs:  # coordonnées des stations, pour les prévisions (qui tournent moins souvent)
+            if db and o.data.get("lat") is not None and o.data.get("lon") is not None:
+                db.set_value(f"station:{o.data['station']}", json.dumps([o.data["lat"], o.data["lon"]]))
+        return obs
+    run("meteo_metar", metar)
+
+    def forecast(cfg):
+        wanted = stations_for(markets)
+        coords = {}
+        for code in wanted:
+            raw = db.get_value(f"station:{code}") if db else None
+            if raw:
+                coords[code] = tuple(json.loads(raw))
+        if not coords:
+            return []
+        return factories.get("meteo_prevision", lambda: ForecastSource(http))().fetch(coords, wanted, now)
+    run("meteo_prevision", forecast)
     run("mlb_stats", lambda cfg: factories.get("mlb_stats", lambda: MlbSource(http))().fetch(now))
     run("nhl_stats", lambda cfg: factories.get("nhl_stats", lambda: NhlSource(http))().fetch(now))
     run("football_data", lambda cfg: factories.get("football_data", lambda: FootballDataSource(http))().fetch(now),
