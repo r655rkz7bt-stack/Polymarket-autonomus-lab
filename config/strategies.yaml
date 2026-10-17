@@ -254,6 +254,9 @@ meteo_prevision:
     calibration_min_days: {value: 3, min: 1, max: 30}
     calibration_shrink:   {value: 3, min: 0, max: 30}  # jours « fictifs » au réglage global
     sigma_floor:          {value: 0.8, min: 0.2, max: 3.0}
+    # Sortie (AMELIORATION n°7, 17/10/2026) : revendre le NON quand le marché le rachète plus cher
+    # que la probabilité du modèle + cette marge (frais et erreur du modèle couverts).
+    exit_margin:    {value: 0.03, min: 0.0, max: 0.30}
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 6, min: 0, max: 50}
 
@@ -1224,3 +1227,41 @@ outsider_sport_apres_midi:
     max_extra_ticks: {value: 0, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+
+fin_de_match:
+  explication: "Quand la ligue a annoncé le score final mais que Polymarket n'a pas encore payé, on achète le gagnant juste sous 1."
+  # AMELIORATION n°2 (17/10/2026) : score FINAL officiel (mlb.com, nhl.com, football-data.org) →
+  # gagnant connu ; tant que le marché n'est pas réglé, son jeton se vend parfois sous 0,99.
+  # Rattachement prudent marché ↔ match (sports_link.py). Test sur le passé : experiments/fin_de_match/.
+  # COUPÉE avant même de jouer (17/10/2026) : sur 175 matchs MLB (17/09-16/10), le gagnant ne se
+  # vend plus sous 0,999 au-delà de 1 à 2 minutes après la fin, jamais après 5 min ; notre cycle
+  # (5 min) arrive toujours trop tard. Gardée pour le football ou le hockey si un test les montre plus lents.
+  enabled: false
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    certainty:      {value: 0.995, min: 0.90, max: 0.999}  # risque restant : équipe mal reliée, litige
+    max_price:      {value: 0.99, min: 0.50, max: 0.999}
+    min_net_edge:   {value: 0.004, min: 0.0, max: 0.10}
+    stake_fraction: {value: 0.10, min: 0.0, max: 0.5}      # 10 % du capital par match terminé
+    window_hours:   {value: 8, min: 1, max: 48}            # matchs commencés depuis 1 à 8 h
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 5, min: 0, max: 50}
+
+cotes_bookmakers:
+  explication: "Avant un match, on compare le prix de Polymarket à l'avis des bookmakers ; si Polymarket est nettement moins cher, on achète."
+  # AMELIORATION n°5 (17/10/2026) : probabilité moyenne des bookmakers (The Odds API, marge retirée)
+  # contre le prix du carnet ; relevé toutes les 12 h (offre gratuite, 500 crédits par mois).
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    margin:             {value: 0.02, min: 0.0, max: 0.20}   # retirée de la probabilité des bookmakers
+    min_net_edge:       {value: 0.03, min: 0.0, max: 0.30}
+    max_odds_age_hours: {value: 13, min: 1, max: 48}
+    horizon_hours:      {value: 36, min: 1, max: 96}
+    max_candidates:     {value: 40, min: 0, max: 200}
+    kelly_fraction:     {value: 0.25, min: 0.0, max: 5.0}
+    max_extra_ticks:    {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 50}

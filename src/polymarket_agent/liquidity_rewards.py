@@ -165,3 +165,14 @@ def ranking_bonus(db, starts: dict[str, datetime | None], prudence: float, now: 
         if total > 0:
             out[name] = round(total * prudence, 4)
     return out
+
+
+def payable_day_counts(db, starts: dict[str, datetime | None], now: datetime) -> dict[str, int]:
+    """{nom de l'arène: journées terminées de récompenses versables (≥ 1 $)} depuis le début de chaque
+    fantôme : sert au mode « recompenses » de l'arène (la tenue de marché clôture peu d'opérations)."""
+    known = [s for s in starts.values() if s is not None]
+    if not known:
+        return {}
+    days = payable_days(db, min(known).isoformat(timespec="seconds"), now.date())
+    return {name: n for name, start in starts.items()
+            if (n := sum(1 for d in days.get("fantome:" + name, {}) if start is None or d >= start.date().isoformat()))}

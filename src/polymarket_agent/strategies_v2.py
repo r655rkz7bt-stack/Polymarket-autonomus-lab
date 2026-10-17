@@ -414,54 +414,68 @@ class MeteoForecast(_Base):
         out.sort(key=lambda m: -float(m.liquidity))
         return out[: int(self.params.get("max_candidates", 100))]
 
-    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+    def _model(self, m: MarketInfo, book: OrderBook, out: StrategyOutput | None = None) -> dict | None:
+        """Probabilité du OUI selon les prévisions (et ce qu'il faut pour l'expliquer), ou None."""
         from datetime import timedelta, timezone
         from polymarket_agent import weather_model as wm
+        p = self.params
+        abstain = out.abstain if out is not None else (lambda reason: None)
+        q = wm.parse_question(m.question)
+        if q is None:
+            return None
+        w = m.weather or {}
+        fc = w.get("prevision")
+        if not fc:
+            abstain("prévision météo indisponible")
+            return None
+        year = book.fetched_at.year
+        date = f"{year}-{q.month:02d}-{q.day:02d}"
+        day = (fc.get("jours") or {}).get(date)
+        if not day:
+            abstain("jour hors prévision")
+            return None
+        offset = timedelta(seconds=int(fc.get("utc_offset") or 0))
+        start = datetime.fromisoformat(date).replace(tzinfo=timezone.utc) - offset  # minuit local
+        lead = (start - book.fetched_at).total_seconds() / 3600
+        observed = None
+        if w.get("jour_local") == date:
+            observed = w.get("max_jour_c")  # le maximum relevé ne peut que monter
+        sigma, bias = ((p["sigma_max"], p["bias_max"]) if q.kind == "max" else (p["sigma_min"], p["bias_min"]))
+        used = 0
+        if p.get("station_calibration", Decimal("0")) > 0:
+            # Biais et flou propres à la station (erreurs des jours précédents), tirés vers le réglage global.
+            from polymarket_agent.weather_calibration import station_params
+            past = ((fc.get("erreurs") or {}).get(q.kind) or [])[: int(p.get("calibration_days", 7))]
+            sigma, bias, used = station_params(past, float(sigma), float(bias),
+                                               int(p.get("calibration_min_days", 3)),
+                                               float(p.get("calibration_shrink", 3)),
+                                               float(p.get("sigma_floor", Decimal("0.8"))))
+        members = day["max" if q.kind == "max" else "min"]
+        est_yes = wm.probability(q, members, float(sigma), float(bias), observed if q.kind == "max" else None)
+        if est_yes is None:
+            return None
+        return {"yes": est_yes, "q": q, "date": date, "lead": lead, "sigma": sigma, "bias": bias, "used": used,
+                "members": members}
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         out = StrategyOutput()
         p = self.params
         candidates = []
         for m in watchlist:
-            q = wm.parse_question(m.question)
-            if q is None or len(m.token_ids) != 2 or any(t in state.positions for t in m.token_ids):
-                continue
-            w = m.weather or {}
-            fc = w.get("prevision")
-            if not fc:
-                out.abstain("prévision météo indisponible")
+            if len(m.token_ids) != 2 or any(t in state.positions for t in m.token_ids):
                 continue
             book = books.get(m.token_ids[1])
             if book is None:
                 out.abstain("carnet indisponible")
                 continue
-            year = book.fetched_at.year
-            date = f"{year}-{q.month:02d}-{q.day:02d}"
-            day = (fc.get("jours") or {}).get(date)
-            if not day:
-                out.abstain("jour hors prévision")
+            model = self._model(m, book, out)
+            if model is None:
                 continue
-            offset = timedelta(seconds=int(fc.get("utc_offset") or 0))
-            start = datetime.fromisoformat(date).replace(tzinfo=timezone.utc) - offset  # minuit local
-            lead = (start - book.fetched_at).total_seconds() / 3600
-            if not -float(p["min_lead_hours"]) <= lead <= float(p["max_lead_hours"]):
+            if not -float(p["min_lead_hours"]) <= model["lead"] <= float(p["max_lead_hours"]):
                 out.abstain("hors de la fenêtre testée")
                 continue
-            observed = None
-            if w.get("jour_local") == date:
-                observed = w.get("max_jour_c")  # le maximum relevé ne peut que monter
-            sigma, bias = ((p["sigma_max"], p["bias_max"]) if q.kind == "max" else (p["sigma_min"], p["bias_min"]))
-            used = 0
-            if p.get("station_calibration", Decimal("0")) > 0:
-                # Biais et flou propres à la station (erreurs des jours précédents), tirés vers le réglage global.
-                from polymarket_agent.weather_calibration import station_params
-                past = ((fc.get("erreurs") or {}).get(q.kind) or [])[: int(p.get("calibration_days", 7))]
-                sigma, bias, used = station_params(past, float(sigma), float(bias),
-                                                   int(p.get("calibration_min_days", 3)),
-                                                   float(p.get("calibration_shrink", 3)),
-                                                   float(p.get("sigma_floor", Decimal("0.8"))))
-            members = day["max" if q.kind == "max" else "min"]
-            est_yes = wm.probability(q, members, float(sigma), float(bias), observed if q.kind == "max" else None)
-            if est_yes is None:
-                continue
+            est_yes, q, date, sigma, bias, used, members = (model[k] for k in
+                                                            ("yes", "q", "date", "sigma", "bias", "used", "members"))
             no_ask = book.best_ask
             if no_ask is None or not (p["min_no_price"] <= no_ask <= p["max_no_price"]):
                 out.abstain("prix du NON hors de la zone testée")
@@ -492,6 +506,36 @@ class MeteoForecast(_Base):
                 if prop is not None:
                     candidates.append(prop)
         return self._finish(out, candidates)
+
+    def exits(self, positions: dict[str, Position], markets: dict[str, MarketInfo],
+              books: dict[str, OrderBook], bucket: str, now: datetime) -> list[Proposal]:
+        """Sortie quand l'avantage s'est retourné (AMELIORATION n°7, 17/10/2026) : le marché RACHÈTE
+        le NON plus cher que ce que le modèle lui donne (meilleur acheteur ≥ probabilité du modèle
+        + `exit_margin`). Vendre est alors gagnant d'après le modèle lui-même ; sinon on garde
+        jusqu'au règlement. Sans prévision à jour pour ce marché : on garde."""
+        margin = float(self.params.get("exit_margin", Decimal("0.03")))
+        sells = []
+        for token_id, pos in positions.items():
+            market, book = markets.get(pos.market_id), books.get(token_id)
+            if market is None or book is None or book.best_bid is None or len(market.token_ids) != 2:
+                continue
+            if token_id != market.token_ids[1]:
+                continue  # seuls les paris NON sont pris par cette stratégie
+            model = self._model(market, book)
+            if model is None:
+                continue
+            est_no = 1 - model["yes"]
+            if float(book.best_bid) < est_no + margin:
+                continue
+            mid = _d(est_no)
+            sells.append(Proposal(
+                op_id=make_op_id(bucket, self.strategy_id, self.version, token_id, "SELL"), side="SELL",
+                market_id=pos.market_id, event_id=pos.event_id, token_id=token_id, outcome=pos.outcome,
+                est_probability=mid, prob_low=mid, prob_high=mid, max_price=book.best_bid,
+                shares=pos.shares, net_edge=Decimal("0"), sources=("open_meteo", "polymarket_clob"),
+                uncertainty="sortie", invalidation=f"le marché paie {float(book.best_bid):.2f}, le modèle n'en donne que {est_no:.2f}",
+                horizon_hours=Decimal("0"), strategy_id=self.strategy_id, strategy_version=self.version))
+        return sells
 
 
 # --------------------------------------------------------------------------- 8. température (chantier n°0)
@@ -762,6 +806,117 @@ class PriceMove(_Base):
                 candidates.append(prop)
         return self._finish(out, candidates)
 
+# --------------------------------------------------------------------------- 11. sport : scores et cotes
+
+
+def _two_teams(m: MarketInfo) -> bool:
+    return len(m.token_ids) == 2 and len(m.outcomes) == 2 and {o.lower() for o in m.outcomes} != {"yes", "no"}
+
+
+class FinDeMatch(_Base):
+    """« Le match est fini, le marché n'est pas encore réglé » (AMELIORATION n°2, 17/10/2026).
+
+    Le score FINAL officiel de la ligue (mlb.com, nhl.com, football-data.org) désigne le gagnant ;
+    tant que Polymarket n'a pas réglé le marché, son jeton se vend parfois encore sous 0,99 : on
+    l'achète (frais déduits, avantage ≥ `min_net_edge`). Risque restant (`certainty`) : mauvais
+    rattachement d'équipe (prudent, sports_link.py), score corrigé, litige de résolution.
+    Test sur le passé : experiments/fin_de_match/."""
+
+    strategy_id = "fin_de_match"
+    required = ("certainty", "max_price", "min_net_edge", "stake_fraction", "max_proposals_per_cycle")
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        from datetime import timedelta, timezone
+        now = datetime.now(timezone.utc)
+        hours = float(self.params.get("window_hours", 8))
+        out = [m for m in markets if _two_teams(m) and m.game_start is not None
+               and now - timedelta(hours=hours) <= m.game_start <= now - timedelta(minutes=60)]
+        out.sort(key=lambda m: -float(m.volume_24h))
+        return out[: int(self.params.get("max_candidates", 40))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out = StrategyOutput()
+        p = self.params
+        candidates = []
+        total = state.total_estimated(marks)
+        for m in watchlist:
+            sp = getattr(m, "sport", None)
+            if not sp or sp.get("gagnant") is None or not _two_teams(m):
+                continue
+            side = int(sp["gagnant"])
+            if any(t in state.positions for t in m.token_ids):
+                continue
+            book = books.get(m.token_ids[side])
+            if book is None or book.best_ask is None:
+                out.abstain("carnet indisponible")
+                continue
+            if book.best_ask > p["max_price"]:
+                out.abstain("gagnant déjà au prix plein")
+                continue
+            cost = book.best_ask + taker_fee(ONE, book.best_ask, m.fees)
+            shares = (min(p["stake_fraction"] * total, state.cash) / cost).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            sure = float(p["certainty"])
+            prop = self._buy(m, books, state, side, sure, sure, 0.999, bucket, marks, out,
+                             f"fin_de_match:{sp.get('ligue')} {sp.get('score')}",
+                             f"score final officiel ({sp.get('ligue')}), marché pas encore réglé",
+                             "mauvais rattachement d'équipe, score corrigé, litige de résolution", shares=shares)
+            if prop is not None:
+                candidates.append(prop)
+        return self._finish(out, candidates)
+
+
+class CotesBookmakers(_Base):
+    """Polymarket contre les bookmakers (AMELIORATION n°5, 17/10/2026) : avant le match, probabilité
+    implicite moyenne des bookmakers (The Odds API, marge retirée) ; on achète l'issue que Polymarket
+    vend nettement moins cher (avantage ≥ `min_net_edge` après frais, sur la borne basse
+    probabilité − `margin`). Cotes relevées toutes les 12 h (offre gratuite) : trop vieilles au-delà
+    de `max_odds_age_hours`, on s'abstient. La comparaison avec Kalshi n'avait rien donné
+    (experiments/sport_kalshi.md) ; l'arène juge celle-ci."""
+
+    strategy_id = "cotes_bookmakers"
+    required = ("margin", "min_net_edge", "max_odds_age_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        from datetime import timedelta, timezone
+        now = datetime.now(timezone.utc)
+        out = [m for m in markets if _two_teams(m) and m.game_start is not None
+               and now + timedelta(minutes=30) <= m.game_start <= now + timedelta(hours=float(self.params.get("horizon_hours", 36)))]
+        out.sort(key=lambda m: -float(m.volume_24h))
+        return out[: int(self.params.get("max_candidates", 40))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sports_link import age_minutes
+        out = StrategyOutput()
+        p = self.params
+        candidates = []
+        for m in watchlist:
+            sp = getattr(m, "sport", None)
+            if not sp or not sp.get("cotes") or not _two_teams(m) or any(t in state.positions for t in m.token_ids):
+                continue
+            book0 = books.get(m.token_ids[0])
+            if book0 is None:
+                continue
+            age = age_minutes(sp.get("cotes_le"), book0.fetched_at)
+            if age is None or age > float(p["max_odds_age_hours"]) * 60:
+                out.abstain("cotes trop vieilles")
+                continue
+            if sp.get("etat") in ("en cours", "terminé") or (m.game_start and m.game_start <= book0.fetched_at):
+                out.abstain("match commencé")
+                continue
+            margin = float(p["margin"])
+            best = None
+            for side in (0, 1):
+                prob = float(sp["cotes"][side])
+                prop = self._buy(m, books, state, side, prob - margin, prob, min(0.999, prob + margin), bucket, marks,
+                                 out, f"cotes_bookmakers:{prob:.3f}", f"moyenne des bookmakers {prob:.0%}, marge {margin:.0%}",
+                                 "cotes en retard sur l'actualité (blessure, composition)")
+                if prop is not None and (best is None or prop.net_edge > best.net_edge):
+                    best = prop
+            if best is not None:
+                candidates.append(best)
+        return self._finish(out, candidates)
+
+
 CLASSES = {c.strategy_id: c for c in (CrossMarketLadder, MarketStructure, NewsMomentum,
                                       InformationAdvantage, SocialSentiment, MeteoForecast,
-                                      TemperatureFloor, MarketMaker, PriceMove)}
+                                      TemperatureFloor, MarketMaker, PriceMove, FinDeMatch, CotesBookmakers)}

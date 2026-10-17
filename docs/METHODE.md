@@ -93,6 +93,9 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    **dès qu'une stratégie qui pose des ordres obtient une part du capital principal**, préviens
    Etienne (« À la une » du tableau de bord et réponse de session). C'est le moment de faire la
    partie noyau de `proposals/2026-10-17_recompenses_au_capital.md`.
+   Promotion (17/10/2026) : une stratégie n'entre au capital principal qu'avec des résultats
+   réguliers (score de confiance t ≥ `min_t_stat`) ; ne pas baisser ce seuil pour « débloquer »
+   une stratégie : meteo_prevision promu à t = 0,61 a coûté au principal (`experiments/promotion.md`).
    Outil tout prêt : `src/polymarket_agent/idea_test.py` (marchés résolus d'une famille, prix à
    un instant sans regard vers le futur, jugement hors échantillon, simulation avec frais) ;
    exemple d'emploi : `experiments/meteo_backtest/station_bias.py`.

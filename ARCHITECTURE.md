@@ -626,3 +626,18 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   `ledger.py`, contrôle par l'audit) : `proposals/2026-10-17_recompenses_au_capital.md`.
 - Limite : les entrées de l'arène exigent toujours 20 opérations clôturées ; une tenue de marché
   peu servie peut attendre longtemps avant d'être jugée.
+
+## 36. « AMELIORATION » du 17/10/2026 au soir (réponse d'Etienne : « Tout »)
+- **Promotion** (`arena.py`, `config/promotion.yaml`) : score de confiance `min_t_stat` (t de
+  Student des résultats par opération), période d'essai (`essai` → `arena.exposure`, appliquée
+  par `main.py` à chaque part), modes `juger_sur_recompenses` (tenue de marché) et
+  `juger_sur_valeur` (favori politique) avec `part_max`. Compte rendu : `experiments/promotion.md`.
+- **Sport** : `sports_link.py` relie un marché « A vs. B » à son match (scores officiels) et à ses
+  cotes (The Odds API) → `market.sport`. `cotes_bookmakers` (avant le match, Polymarket nettement
+  moins cher que les bookmakers) joue dans l'arène ; `fin_de_match` est écrite mais COUPÉE : sur
+  175 matchs MLB, le gagnant ne se vend plus sous 0,999 au-delà de 1 à 2 min après la fin
+  (`experiments/fin_de_match/`).
+- **Sortie météo** : `meteo_prevision` revend un NON quand le marché le rachète plus cher que la
+  probabilité du modèle + `exit_margin` (vaut aussi pour les positions du principal).
+- **Ménage** : stratégies coupées marquées « retirée » et rangées en bas de l'arène ; GDELT toutes
+  les 3 h (HTTP 429) ; Gemini « en pause » (budget de l'heure) n'est plus compté comme une panne.

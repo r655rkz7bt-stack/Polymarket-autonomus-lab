@@ -234,9 +234,62 @@ def test_estimated_rewards_count_for_ranking_but_never_in_ghost_capital(ledger, 
         shadow.record_settlement(op_id=f"s{i}", token_id=f"t{i}", payout_per_share="0.5",
                                  resolution="50-50", now=NOW)
     later = NOW + timedelta(hours=25)
-    assert run_arena(ledger, {"mm_v1": shadow}, RULES, later)["champion"] == ""  # croissance nulle
-    summary = run_arena(ledger, {"mm_v1": shadow}, RULES, later, rewards={"mm_v1": 30.0})
-    assert summary["champion"] == "mm_v1" and summary["allocation"] == {"mm_v1": 1.0}
+    name = "market_maker_v1"  # jugée sur ses journées de récompenses (promotion.yaml → juger_sur_recompenses)
+    assert run_arena(ledger, {name: shadow}, RULES, later)["champion"] == ""  # croissance nulle
+    summary = run_arena(ledger, {name: shadow}, RULES, later, rewards={name: 30.0}, reward_days={name: 3})
+    assert summary["champion"] == name and summary["allocation"] == {name: 1.0}
+    assert summary["engagement"] == {name: 0.3}  # part plafonnée
     row = summary["classement"][0]
     assert row["rewards"] == 30.0 and row["realized_capital"] == 1000.0
     assert shadow.state.cash == D("1000")
+
+
+def test_promotion_needs_regular_results_and_starts_with_a_trial_share():
+    """AMELIORATION n°1 (17/10/2026) : 20 opérations à +2 % ne suffisent plus si les résultats sont
+    du hasard (score de confiance t < min_t_stat) ; une stratégie promue n'engage d'abord qu'une
+    partie de sa part (période d'essai)."""
+    from polymarket_agent.arena import allocation, exposure, t_stat
+    assert RULES["min_t_stat"] >= 1.0
+    assert t_stat([10.4, 8.8, 16.6, 5.4, -15.0, 17.7, -1.8, -15.0, 10.2, -2.0]) < 1.0  # meteo_prevision le 17/10
+    assert t_stat([5.0, 6.0, 7.0]) > 5 and t_stat([1.0]) == 0.0 and t_stat([2.0, 2.0]) == 99.0
+    noisy = Standing("bruit_v1", 20, 1030.0, 1000.0, 0.03, NOW - timedelta(days=2), False, t_stat=0.6)
+    steady = Standing("regulier_v1", 20, 1030.0, 1000.0, 0.03, NOW - timedelta(days=2), False, t_stat=2.4)
+    gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02, "min_t": 1.5}
+    assert allocation([noisy, steady], 20, 5, **gates) == {"regulier_v1": 1.0}
+    assert choose_champion([noisy], "", 20, **gates)[0] == ""
+    assert choose_champion([noisy], "bruit_v1", 20, **gates)[0] == "bruit_v1"  # un champion en place reste (maintien)
+    trial = {"essai": {"pleine_part_apres_operations": 60, "part_minimale": 0.25}}
+    assert exposure([steady], {"regulier_v1": 1.0}, trial) == {"regulier_v1": 0.333333}
+    assert exposure([dataclasses_replace(steady, closed_trades=4)], {"regulier_v1": 1.0}, trial) == {"regulier_v1": 0.25}
+    assert exposure([dataclasses_replace(steady, closed_trades=90)], {"regulier_v1": 1.0}, trial) == {"regulier_v1": 1.0}
+
+
+def dataclasses_replace(obj, **kw):
+    import dataclasses
+    return dataclasses.replace(obj, **kw)
+
+
+def test_market_maker_is_judged_on_reward_days_and_politics_on_marked_value(ledger, tmp_path):
+    """AMELIORATION n°3 et 4 : la tenue de marché entre sur ses journées de récompenses (sans 20
+    opérations), le favori politique sur la valeur de ses positions ; chacun avec une part plafonnée."""
+    from polymarket_agent.arena import allocation, exposure, mode_for, standing
+    cfg = {"juger_sur_recompenses": {"market_maker": {"jours_min": 3, "part_max": 0.3}},
+           "juger_sur_valeur": {"favori_politique": {"min_age_hours": 72, "part_max": 0.2}}}
+    assert mode_for("market_maker_serre_v1.0.0", cfg)[0] == "recompenses"
+    assert mode_for("favori_politique_nuit_v1.0.0", cfg)[0] == "valeur" and mode_for("naive_v1", cfg)[0] == ""
+    gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02, "min_t": 1.5, "modes": cfg}
+    mm = Standing("market_maker_v1", 2, 1000.0, 1000.0, 0.03, NOW - timedelta(days=4), False, rewards=30.0,
+                  reward_days=3, mode="recompenses")
+    young_mm = dataclasses_replace(mm, reward_days=2)
+    assert allocation([mm], 20, 5, **gates) == {"market_maker_v1": 1.0}
+    assert allocation([young_mm], 20, 5, **gates) == {}
+    assert exposure([mm], {"market_maker_v1": 1.0}, cfg) == {"market_maker_v1": 0.3}
+    # Politique : le capital réalisé ne bouge pas (rien de réglé), la valeur au prix du carnet si.
+    shadow = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW - timedelta(days=4))
+    buy(shadow, "b1", token="tP", shares="200", price="0.85", now=NOW - timedelta(days=4))
+    shadow.heartbeat("c1", "OK", NOW, total_estimated="1040")
+    pol = standing("favori_politique_v1.0.0", shadow, set(), modes=cfg)
+    assert pol.mode == "valeur" and pol.realized_capital == 1000.0 and pol.log_growth > 0.03
+    assert allocation([pol], 20, 5, **gates) == {"favori_politique_v1.0.0": 1.0}
+    assert exposure([pol], {"favori_politique_v1.0.0": 1.0}, cfg) == {"favori_politique_v1.0.0": 0.2}
+    assert standing("autre_v1", shadow, set(), modes=cfg).log_growth == 0.0  # mode normal : capital réalisé

@@ -347,8 +347,9 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
 
     # 3 bis. Arène : classement, promotion du champion, élimination hebdomadaire.
     competitors = {p.name.removeprefix("fantome:"): p for p in portfolios[1:]}
+    rewards, reward_days = _ranking_rewards(deps, competitors)
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
-                             deps.settings["arena"], deps.now(), rewards=_ranking_rewards(deps, competitors))
+                             deps.settings["arena"], deps.now(), rewards=rewards, reward_days=reward_days)
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
@@ -360,6 +361,9 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     champion = main.ledger.state.champion
     if not shares and champion and champion not in main.ledger.state.eliminated:
         shares = {champion: 1.0}  # champion en titre sans part calculée : il garde tout le capital
+    # Période d'essai et plafonds (arena.exposure) : seule une fraction de chaque part est engagée.
+    alloc, engaged = report.arena.get("allocation", {}) or {champion: 1.0}, report.arena.get("engagement", {})
+    shares = {n: w * min(1.0, engaged[n] / alloc[n]) if n in engaged and alloc.get(n) else w for n, w in shares.items()}
     main.strategies = [Weighted(s, Decimal(str(round(w, 6)))) for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
     # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
@@ -455,19 +459,21 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
 
 
-def _ranking_rewards(deps: CycleDeps, competitors: dict) -> dict[str, float]:
+def _ranking_rewards(deps: CycleDeps, competitors: dict) -> tuple[dict[str, float], dict[str, int]]:
     """Option A d'Etienne (17/10/2026) : récompenses estimées comptées pour le CLASSEMENT de l'arène,
-    jamais dans le capital des fantômes (liquidity_rewards.ranking_bonus)."""
+    jamais dans le capital des fantômes (liquidity_rewards.ranking_bonus), et nombre de journées
+    versables (mode « recompenses » de l'arène)."""
     cfg = deps.settings.get("recompenses") or {}
     if not cfg.get("classement_arene"):
-        return {}
+        return {}, {}
     from polymarket_agent import liquidity_rewards as lr
+    starts = {n: p.ledger.state.epoch_started_at for n, p in competitors.items()}
     try:
-        return lr.ranking_bonus(deps.db, {n: p.ledger.state.epoch_started_at for n, p in competitors.items()},
-                                float(cfg.get("prudence", 0.5)), deps.now())
+        return (lr.ranking_bonus(deps.db, starts, float(cfg.get("prudence", 0.5)), deps.now()),
+                lr.payable_day_counts(deps.db, starts, deps.now()))
     except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais bloquer l'arène
         log.warning("récompenses estimées illisibles pour le classement : %s", exc)
-        return {}
+        return {}, {}
 
 
 def _estimate_rewards(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, MarketInfo],

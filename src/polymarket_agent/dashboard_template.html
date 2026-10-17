@@ -699,7 +699,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   var closedAll = D.cloturees || [], wins = closedAll.filter(function (r) { return r.resultat > 0; }).length;
   var rewards = (D.ordres_poses || {}).recompenses || {}, bestReward = Object.keys(rewards).reduce(function (m, k) {
     return Math.max(m, Number(rewards[k].versable) || 0); }, 0);
-  var leader = arena.filter(function (s) { return !s.eliminee; })[0];
+  var leader = arena.filter(function (s) { return !s.eliminee && !s.retiree; })[0];
   var gainsR = Number(C.gains_realises_nets), gainsL = Number(C.gains_latents);
   var palierPct = Math.max(0, Math.min(1, (realized - Math.min(target / 1.5, initial)) / (target - Math.min(target / 1.5, initial) || 1))) * 100;
   var tone = function (x) { return x > 0.005 ? "up" : x < -0.005 ? "down" : ""; };
@@ -1180,11 +1180,13 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       // Compact : nom + état, la phrase simple sur deux lignes au plus ; le reste au toucher.
       var name = el("div", "name", sname(s.nom));
       var H2 = s.sante || {}, susp = !!H2.suspendue;
-      var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp ? " off" : ""),
-        s.champion ? "champion" : s.eliminee ? "éliminée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
+      var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp || s.retiree ? " off" : ""),
+        s.champion ? "champion" : s.eliminee ? "éliminée" : s.retiree ? "retirée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
       if (s.explication) name.appendChild(el("span", "explain", s.explication));
       var info = el("span", "more-info"); name.appendChild(info);
-      info.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict));
+      info.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict +
+        (s.confiance !== undefined ? " · confiance " + fmt(s.confiance, 1) : "") +
+        (s.mode === "recompenses" ? " · jugée sur ses récompenses" : s.mode === "valeur" ? " · jugée sur la valeur de ses positions" : "")));
       // Option A (17/10/2026) : récompenses ESTIMÉES comptées pour le classement, pas dans le capital.
       if (s.recompenses_classement > 0) info.appendChild(el("span", "sub",
         "+ " + fmt(s.recompenses_classement, 2) + " de récompenses estimées, comptées pour le classement (pas dans le capital)"));
@@ -1488,7 +1490,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // au départ : config/dashboard.yaml → replier. Le choix d'Etienne est retenu par son navigateur.
   (function folding() {
     var start = (D.mise_en_page || {}).replier || [], SYSD = D.systeme || {};
-    var arenaLive = arena.filter(function (s) { return !s.eliminee; });
+    var arenaLive = arena.filter(function (s) { return !s.eliminee && !s.retiree; });
     var srcOkN = srcNames.filter(function (n) { return /^ok/.test(srcs[n]); }).length;
     var SUM = {
       "aujourdhui": function () { var t = (D.aujourdhui || [])[0]; return t ? t.texte : "rien à signaler"; },

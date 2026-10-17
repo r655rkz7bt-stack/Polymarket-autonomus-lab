@@ -16,6 +16,15 @@
   des ordres (journées terminées, × prudence, liquidity_rewards.ranking_bonus) comptent dans son
   CLASSEMENT, jamais dans son capital fantôme. La tenue de marché, payée surtout ainsi, peut donc
   gagner une part du capital principal.
+- Preuves avant promotion (AMELIORATION n°1, 17/10/2026) : en plus des seuils, le « score de
+  confiance » des résultats par opération (t de Student : moyenne / erreur type) doit atteindre
+  `min_t_stat`. meteo_prevision a été promu le 17/10 avec t = 0,61 (du hasard) et a coûté au
+  principal. Puis période d'essai : la part d'une stratégie croît avec ses opérations clôturées
+  (`essai`), de `part_minimale` jusqu'à la part entière.
+- Modes de jugement (AMELIORATION n°3 et 4) : `juger_sur_recompenses` (tenue de marché : jours de
+  récompenses au lieu d'opérations clôturées) et `juger_sur_valeur` (politique, réglée en
+  semaines : valeur des positions au prix du carnet au lieu du capital réalisé), chacun avec une
+  part plafonnée (`part_max`).
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -42,21 +51,54 @@ class Standing:
     started_at: datetime | None
     eliminated: bool
     rewards: float = 0.0  # récompenses estimées comptées pour le classement (hors capital)
+    t_stat: float = 0.0  # score de confiance des résultats par opération (moyenne / erreur type)
+    reward_days: int = 0  # journées de récompenses versables (≥ 1 $)
+    mode: str = ""  # "" (capital réalisé), "recompenses" ou "valeur" (voir mode_for)
 
     def days(self, now: datetime) -> float:
         return (now - self.started_at).total_seconds() / 86400 if self.started_at else 0.0
 
 
-def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0.0) -> Standing:
+def t_stat(values: list[float]) -> float:
+    """Moyenne / erreur type (t de Student) ; 0 sous 2 valeurs ; grand si toutes égales et positives."""
+    n = len(values)
+    if n < 2:
+        return 0.0
+    m = sum(values) / n
+    sd = math.sqrt(sum((x - m) ** 2 for x in values) / (n - 1))
+    return round(m / (sd / math.sqrt(n)), 3) if sd > 0 else (99.0 if m > 0 else 0.0)
+
+
+def mode_for(name: str, modes: dict | None) -> tuple[str, dict]:
+    """Mode de jugement d'une stratégie d'après les préfixes de config/promotion.yaml."""
+    for mode, key in (("recompenses", "juger_sur_recompenses"), ("valeur", "juger_sur_valeur")):
+        table = (modes or {}).get(key) or {}
+        hits = [k for k in table if name.startswith(k)]
+        if hits:
+            return mode, dict(table[max(hits, key=len)] or {})
+    return "", {}
+
+
+def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0.0, reward_days: int = 0,
+             modes: dict | None = None) -> Standing:
     """`rewards` : récompenses estimées (option A), ajoutées au capital réalisé pour la croissance
-    seulement ; `realized_capital` reste le vrai capital du fantôme."""
+    seulement ; `realized_capital` reste le vrai capital du fantôme. Mode « valeur » : la croissance
+    jugée part du capital total estimé du dernier battement (positions au prix du carnet)."""
     state = ledger.state
+    entries = read_entries(ledger)
+    trades = closed_trades(entries)
     realized = float(state.realized_capital())
     initial = float(state.initial_capital)
-    judged = realized + max(0.0, rewards)
+    mode, _ = mode_for(name, modes)
+    base = realized
+    if mode == "valeur":
+        beats = [e for e in entries if e.get("type") == "HEARTBEAT" and (e.get("data") or {}).get("total_estimated")]
+        if beats:
+            base = float(beats[-1]["data"]["total_estimated"])
+    judged = base + max(0.0, rewards)
     growth = math.log(judged / initial) if judged > 0 and initial > 0 else float("-inf")
-    return Standing(name, len(closed_trades(read_entries(ledger))), realized, initial, growth,
-                    state.epoch_started_at, name in eliminated, round(max(0.0, rewards), 4))
+    return Standing(name, len(trades), realized, initial, growth, state.epoch_started_at, name in eliminated,
+                    round(max(0.0, rewards), 4), t_stat([float(t["pnl"]) for t in trades]), int(reward_days), mode)
 
 
 def ranking(standings: list[Standing]) -> list[Standing]:
@@ -75,35 +117,47 @@ def validated_gates(name: str, validated: dict | None) -> dict | None:
 
 
 def _enters(s: Standing, min_trades: int, now: datetime | None, min_age_hours: float,
-            min_growth: float, validated: dict | None = None) -> bool:
+            min_growth: float, validated: dict | None = None, min_t: float | None = None,
+            modes: dict | None = None) -> bool:
     """Seuil d'ENTRÉE (devenir champion ou recevoir une part) : assez d'opérations, assez
-    d'ancienneté, et une croissance qui bat « ne rien faire » d'au moins `min_growth`.
-    Une stratégie validée sur le passé a ses propres seuils, plus bas ; elle doit quand même
-    battre « ne rien faire » en direct (croissance > 0)."""
+    d'ancienneté, une croissance qui bat « ne rien faire » d'au moins `min_growth`, et des résultats
+    assez réguliers (score de confiance ≥ `min_t`). Une stratégie validée sur le passé a ses propres
+    seuils, plus bas ; elle doit quand même battre « ne rien faire » en direct (croissance > 0).
+    Modes : « recompenses » (jours de récompenses au lieu d'opérations, sans score de confiance),
+    « valeur » (ancienneté plus longue, croissance au prix du carnet, sans opérations exigées)."""
     own = validated_gates(s.name, validated)
     if own:
         min_trades = int(own.get("min_closed_trades", min_trades))
         min_age_hours = float(own.get("min_age_hours", min_age_hours))
         min_growth = float(own.get("min_log_growth", min_growth))
-    return (not s.eliminated and s.closed_trades >= min_trades and s.log_growth > 0
-            and s.log_growth >= min_growth and _old_enough(s, now, min_age_hours))
+        min_t = own.get("min_t_stat", min_t)
+    if s.eliminated or not (s.log_growth > 0 and s.log_growth >= min_growth):
+        return False
+    mode, mp = mode_for(s.name, modes)
+    if mode == "recompenses":
+        return s.reward_days >= int(mp.get("jours_min", 3)) and _old_enough(s, now, min_age_hours)
+    if mode == "valeur":
+        return _old_enough(s, now, float(mp.get("min_age_hours", 72)))
+    return (s.closed_trades >= min_trades and _old_enough(s, now, min_age_hours)
+            and (min_t is None or s.t_stat >= float(min_t)))
 
 
 def choose_champion(standings: list[Standing], current: str, min_trades: int,
                     margin: float = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
                     min_growth: float = 0.0, keep_growth: float = 0.0,
-                    validated: dict | None = None) -> tuple[str, str]:
+                    validated: dict | None = None, min_t: float | None = None,
+                    modes: dict | None = None) -> tuple[str, str]:
     """(nouveau champion, raison). "" = ne rien faire.
 
     Hystérésis : on entre à `min_growth`, on reste tant que la croissance dépasse `keep_growth`
     (plus bas) ; sinon un champion promu sur du bruit tombe au cycle suivant (15/10/2026)."""
     by_name = {s.name: s for s in standings}
-    eligible = [s for s in standings if _enters(s, min_trades, now, min_age_hours, min_growth, validated)]
+    eligible = [s for s in standings if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes)]
     best = max(eligible, key=lambda s: s.log_growth, default=None)
     incumbent = by_name.get(current)
     # Un champion n'est jugé qu'à partir de `min_trades` opérations clôturées.
     incumbent_ok = (incumbent is not None and not incumbent.eliminated
-                    and (incumbent.closed_trades < min_trades or incumbent.log_growth > keep_growth))
+                    and ((incumbent.closed_trades < min_trades and not incumbent.mode) or incumbent.log_growth > keep_growth))
     if current and not incumbent_ok:
         if best is None:
             return "", "le champion ne bat plus « ne rien faire » (ou a disparu)"
@@ -116,23 +170,46 @@ def choose_champion(standings: list[Standing], current: str, min_trades: int,
     if best.name == current:
         return current, "le champion reste devant"
     return best.name, (f"{best.name} : croissance {best.log_growth:+.4f} sur "
-                       f"{best.closed_trades} opérations clôturées")
+                       f"{best.closed_trades} opérations clôturées, confiance t = {best.t_stat:.2f}"
+                       + (f", jugée sur {'ses récompenses' if best.mode == 'recompenses' else 'la valeur de ses positions'}"
+                          if best.mode else ""))
 
 
 def allocation(standings: list[Standing], min_trades: int, max_strategies: int, *,
                now: datetime | None = None, min_age_hours: float = 0.0, min_growth: float = 0.0,
                champion: str = "", keep_growth: float = 0.0,
-               validated: dict | None = None) -> dict[str, float]:
+               validated: dict | None = None, min_t: float | None = None,
+               modes: dict | None = None) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
     le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`."""
     def kept(s: Standing) -> bool:
-        return (s.name == champion and not s.eliminated and s.closed_trades >= min_trades
+        return (s.name == champion and not s.eliminated and (s.closed_trades >= min_trades or bool(s.mode))
                 and s.log_growth > max(keep_growth, 0.0))
     eligible = sorted((s for s in standings
-                       if _enters(s, min_trades, now, min_age_hours, min_growth, validated) or kept(s)),
+                       if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes) or kept(s)),
                       key=lambda s: s.log_growth, reverse=True)[:max(0, max_strategies)]
     total = sum(s.log_growth for s in eligible)
     return {s.name: s.log_growth / total for s in eligible} if total > 0 else {}
+
+
+def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> dict[str, float]:
+    """Part RÉELLEMENT engagée de chaque stratégie (≤ sa part) : période d'essai (la part croît avec
+    les opérations clôturées, de `part_minimale` à 1 après `pleine_part_apres_operations`) et
+    plafond `part_max` des modes « recompenses » et « valeur ». Le reste du capital attend."""
+    by = {s.name: s for s in standings}
+    trial = cfg.get("essai") or {}
+    full, floor = float(trial.get("pleine_part_apres_operations", 0)), float(trial.get("part_minimale", 1.0))
+    out = {}
+    for name, w in shares.items():
+        s = by.get(name)
+        mode, mp = mode_for(name, cfg)
+        if mode:
+            out[name] = min(w, float(mp.get("part_max", 1.0)))
+        elif s is not None and full > 0:
+            out[name] = w * min(1.0, max(floor, s.closed_trades / full))
+        else:
+            out[name] = w
+    return {n: round(v, 6) for n, v in out.items()}
 
 
 def choose_elimination(standings: list[Standing], champion: str, last_elimination: datetime | None,
@@ -182,19 +259,22 @@ def retire_inactive(main: Ledger, competitors: dict[str, Ledger], standings: lis
 
 
 def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
-              now: datetime | None = None, rewards: dict[str, float] | None = None) -> dict:
+              now: datetime | None = None, rewards: dict[str, float] | None = None,
+              reward_days: dict[str, int] | None = None) -> dict:
     """Met à jour champion et éliminations dans le journal principal. Retourne un résumé.
-    `rewards` : {nom: récompenses estimées comptées pour le classement} (option A)."""
-    rewards = rewards or {}
+    `rewards` : {nom: récompenses estimées comptées pour le classement} (option A) ;
+    `reward_days` : {nom: journées de récompenses versables} (mode « recompenses »)."""
+    rewards, reward_days = rewards or {}, reward_days or {}
     now = now or datetime.now(timezone.utc)
     # Attention : chaque écriture remplace main.state par une nouvelle copie ; on relit
     # donc toujours main.state (jamais une référence gardée d'avant l'écriture).
-    standings = [standing(name, ledger, main.state.eliminated, rewards.get(name, 0.0))
+    standings = [standing(name, ledger, main.state.eliminated, rewards.get(name, 0.0), reward_days.get(name, 0), cfg)
                  for name, ledger in competitors.items()]
     # Règles obligatoires (config/promotion.yaml) : pas de valeur par défaut silencieuse.
     min_trades = int(cfg["min_closed_trades"])
     gates = {"now": now, "min_age_hours": float(cfg["min_age_hours"]),
-             "min_growth": float(cfg["min_log_growth"]), "validated": cfg.get("validated_strategies") or {}}
+             "min_growth": float(cfg["min_log_growth"]), "validated": cfg.get("validated_strategies") or {},
+             "min_t": float(cfg["min_t_stat"]) if cfg.get("min_t_stat") is not None else None, "modes": cfg}
     keep = float(cfg["keep_log_growth"])
     events = []
     previous = main.state.champion
@@ -211,10 +291,14 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)
         events.append(f"élimination : {loser.name}")
     events += [f"retrait (inactive) : {n}" for n in retire_inactive(main, competitors, standings, cfg, now)]
-    final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0)) for n, l in competitors.items()])
+    final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0), reward_days.get(n, 0), cfg)
+                     for n, l in competitors.items()])
     shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
                         champion=main.state.champion, keep_growth=keep, **gates)
-    return {"champion": main.state.champion, "events": events, "allocation": shares,
+    engaged = exposure(final, shares, cfg)
+    if not shares and main.state.champion:
+        engaged = exposure(final, {main.state.champion: 1.0}, cfg)
+    return {"champion": main.state.champion, "events": events, "allocation": shares, "engagement": engaged,
             "classement": [s.__dict__ | {"started_at": s.started_at.isoformat() if s.started_at else None}
                            for s in final]}
 

@@ -93,7 +93,8 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
                 status["gemini"] = (f"ok ({fresh_count} nouveaux textes classés, {total} avis sur "
                                     f"{len(stances)} marchés)")
             except SourceUnavailable as exc:
-                status["gemini"] = f"indisponible : {exc}"[:200]
+                # Budget de l'heure atteint : une pause voulue (appels étalés sur 24 h), pas une panne.
+                status["gemini"] = (f"en pause : {exc}" if "budget" in str(exc) else f"indisponible : {exc}")[:200]
         else:
             status["gemini"] = "désactivée (pas de clé GEMINI_API_KEY)"
         # Justesse de Gemini : ses avis comparés au résultat des marchés résolus (une fois par heure).
@@ -123,6 +124,11 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         down = [n for n, s in status.items() if s.startswith("indisponible")]
         quotes = latest_quotes(recent)
         quotes.update(collection.crypto)  # les prix tout juste collectés priment
+        # Sport : score officiel et cotes des bookmakers de chaque marché « A vs. B » (sports_link.py).
+        from polymarket_agent import sports_link
+        linked = sports_link.attach(markets, recent)
+        if linked:
+            status["liaison_sport"] = f"ok ({linked} marchés reliés à leur match ou à leurs cotes)"
         for market in markets:
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
             # Météo de la station qui tranche le marché : relevé (temperature_floor) + prévision.

@@ -17,6 +17,21 @@ min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 
 # aux prix réels (experiments/meteo_backtest.md) ; elle a donc été retirée d'ici.
 # Exemple : `nom_de_strategie: {min_closed_trades: 8, min_age_hours: 8, min_log_growth: 0.005}`
 validated_strategies: {}
+# Preuves avant promotion (AMELIORATION n°1, 17/10/2026) : score de confiance des résultats par
+# opération (moyenne / erreur type). meteo_prevision a été promu à t = 0,61 (du hasard) et a coûté
+# au principal ; naive_favorite est à t = 2,4. Rejeu : experiments/promotion/rejouer.py.
+min_t_stat: 1.5
+# Période d'essai : la part engagée croît avec les opérations clôturées (25 % au départ, entière à 60).
+essai: {pleine_part_apres_operations: 60, part_minimale: 0.25}
+# Modes de jugement (AMELIORATION n°3 et 4), par préfixe de nom, avec une part plafonnée :
+# - tenue de marché : payée surtout en récompenses, elle clôture peu d'opérations → jugée sur ses
+#   journées de récompenses versables (+ capital au-dessus du départ, récompenses comprises) ;
+# - favori politique (seule poche solide sur le passé, réglée en semaines) → jugé sur la valeur de
+#   ses positions au prix du carnet, après 3 jours au moins.
+juger_sur_recompenses:
+  market_maker: {jours_min: 3, part_max: 0.3}
+juger_sur_valeur:
+  favori_politique: {min_age_hours: 72, part_max: 0.2}
 # Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
 # que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
 keep_log_growth: 0.0
