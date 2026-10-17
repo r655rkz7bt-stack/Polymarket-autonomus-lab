@@ -197,6 +197,25 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
 }
 details.howto summary { margin: 0 0 6px; }
 #positions-arena-box { margin-top: 10px; }
+/* Ordres du capital principal : à part, liseré bleu pastel (le vrai portefeuille). */
+.main-orders { border-color: var(--blue-line); box-shadow: inset 3px 0 0 var(--blue-line); }
+.orders { display: grid; margin-top: 12px; }
+.order { display: grid; grid-template-columns: 88px 92px minmax(0, 1fr) auto; gap: 4px 14px; align-items: baseline;
+  padding: 10px 2px; border-bottom: 1px solid var(--line); }
+.order:last-child { border-bottom: 0; }
+.order[hidden] { display: none; }
+.order .when { font: 500 0.74rem var(--mono); color: var(--muted); white-space: nowrap; }
+.order .side { font: 600 0.68rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.order .side.buy { color: var(--blue); } .order .side.sell { color: var(--red); }
+.order .what { min-width: 0; color: var(--ink); font-size: 0.9rem; overflow-wrap: anywhere; }
+.order .what .detail { margin-top: 2px; }
+.order .amt { font: 500 0.88rem var(--mono); text-align: right; white-space: nowrap; color: var(--ink); }
+.order .amt small { display: block; color: var(--muted); font-size: 0.72rem; }
+@media (max-width: 600px) {
+  .order { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .order .when { grid-column: 1; } .order .side { grid-column: 2; } .order .amt { grid-column: 3; grid-row: 1 / span 2; }
+  .order .what { grid-column: 1 / 3; }
+}
 /* Courbes qui se dessinent (comme sur Polymarket) : au survol, au toucher, à l'apparition. */
 .draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
 .spark-wrap { cursor: pointer; }
@@ -312,7 +331,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <span class="live" id="generated"><i></i><span>—</span></span>
   </div>
   <nav class="tabs" aria-label="Sections">
-    <a href="#organisme">Cœur</a><a href="#resume">Résumé</a><a href="#aujourdhui">Aujourd'hui</a><a href="#capital">Capital</a>
+    <a href="#organisme">Cœur</a><a href="#resume">Résumé</a><a href="#principal">Principal</a><a href="#aujourdhui">Aujourd'hui</a><a href="#capital">Capital</a>
     <a href="#arene">Arène</a><a href="#entonnoir">Entonnoir</a><a href="#positions">Positions</a><a href="#journal">Journal</a><a href="#systeme">Système</a>
   </nav>
 </header>
@@ -340,6 +359,14 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       <div class="split-labels"><span id="split-left"></span><span id="split-right"></span></div>
       <div class="dots" id="split"></div>
     </div>
+  </section>
+
+  <section id="principal" class="card main-orders" aria-label="Ordres du capital principal">
+    <div class="head"><h2>Ordres du capital principal</h2><span class="kicker">le vrai portefeuille · à part de l'arène</span></div>
+    <div class="pills" id="pr-pills" style="margin-top:0"></div>
+    <div class="orders" id="pr-list"></div>
+    <details id="pr-posed-box"><summary id="pr-posed-sum">Ordres posés en attente</summary><div class="scroll"><table id="pr-posed"></table></div></details>
+    <details id="pr-closed-box"><summary id="pr-closed-sum">Opérations clôturées</summary><div class="scroll"><table id="pr-closed"></table></div></details>
   </section>
 
   <section id="aujourdhui" class="card" aria-label="Ce qui s'est passé aujourd'hui">
@@ -432,7 +459,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // sont jamais cachés (filtré côté Python). Les liens du menu suivent le même ordre.
   (function layout() {
     var L = D.mise_en_page || {}, ids = (L.ordre || []).slice(), hide = L.masquer || [];
-    var blocks = ["organisme", "resume", "aujourdhui", "capital", "arene", "entonnoir", "positions", "ordres-poses", "journal",
+    var blocks = ["organisme", "resume", "principal", "aujourdhui", "capital", "arene", "entonnoir", "positions", "ordres-poses", "journal",
       "decisions-recentes", "systeme"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
     if (blocks.length) {
       var anchor = blocks[blocks.length - 1].nextSibling, parent = blocks[0].parentNode;
@@ -1315,6 +1342,40 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       fmt(p.marque, 2) : "prix " + fmt(p.marque, 2)));
     return box;
   }
+  // ---------------------------------------------------------------- ordres du capital principal
+  // Le vrai portefeuille (règle n°1) a son propre bloc, avant tout ce qui concerne l'arène.
+  (function mainOrders() {
+    var O = D.ordres_principal || { executions: [], poses: [], clotures: [], compte: {} }, K = O.compte || {};
+    var pbox = document.getElementById("pr-pills");
+    function pill(label, value) { var p = el("span", "pill"); p.appendChild(document.createTextNode(label + " "));
+      p.appendChild(el("b", null, value)); pbox.appendChild(p); }
+    pill("achats", fmt(K.achats || 0, 0)); pill("ventes", fmt(K.ventes || 0, 0)); pill("règlements", fmt(K.reglements || 0, 0));
+    pill("ordres posés", fmt((O.poses || []).length, 0)); pill("investi", fmt(invested, 2));
+    var list = document.getElementById("pr-list"), items = [];
+    if (!(O.executions || []).length) list.appendChild(el("p", "empty", "Le capital principal n'a encore passé aucun ordre."));
+    (O.executions || []).forEach(function (o) {
+      var row = el("div", "order"); row.appendChild(el("span", "when", short(o.date)));
+      row.appendChild(el("span", "side " + (o.sens === "achat" ? "buy" : o.sens === "vente" ? "sell" : ""), o.sens + (o.limite ? " posé" : "")));
+      var what = el("span", "what", o.marche);
+      what.appendChild(el("span", "detail", (o.issue ? "issue : " + o.issue : "") + (o.strategie ? " · " + o.strategie : "") +
+        (o.prevision ? " · prévu " + fmt(o.prevision * 100, 0) + " %" : "") + (o.resolution ? " · " + o.resolution : "")));
+      row.appendChild(what);
+      var amt = el("span", "amt", o.montant === null || o.montant === undefined ? fmt(o.prix, 2) + " / part" : fmt(o.montant, 2));
+      if (o.parts) amt.appendChild(el("small", null, fmt(o.parts, 2) + " parts à " + fmt(o.prix, 3)));
+      row.appendChild(amt); list.appendChild(row); items.push(row); });
+    var holder = el("div", "more-row"); list.appendChild(holder); collapsible(holder, function () { return items; }, 6, "ordres");
+    document.getElementById("pr-posed-sum").textContent = "Ordres posés en attente (" + (O.poses || []).length + ")";
+    table("pr-posed", [{ t: "posé le", d: 1 }, { t: "marché", q: 1 }, { t: "sens" }, { t: "prix", n: 1 }, { t: "parts", n: 1 }],
+      (O.poses || []).map(function (o) { var m = el("span", null, o.marche); m.appendChild(el("span", "detail", o.issue + " · " + o.strategie));
+        return [short(o.date), m, o.sens, fmt(o.prix, 3), fmt(o.parts, 2)]; }), "Aucun ordre posé en attente.");
+    var cl = O.clotures || [];
+    document.getElementById("pr-closed-sum").textContent = "Opérations clôturées du principal (" + cl.length +
+      (cl.length ? ", " + cl.filter(function (t) { return t.resultat > 0; }).length + " gagnées" : "") + ")";
+    table("pr-closed", [{ t: "date", d: 1 }, { t: "marché", q: 1 }, { t: "résultat", n: 1 }],
+      cl.map(function (t) { var m = el("span", null, t.marche); m.appendChild(el("span", "detail", t.issue + " · " + t.strategie));
+        return [short(t.date), m, delta(t.resultat, 2)]; }), "Aucune opération clôturée.");
+  })();
+
   // Le capital principal d'abord ; les positions des fantômes (souvent des centaines) dans un dépliant.
   function posRow(p, who) { var m = el("span", null, p.marche); m.appendChild(el("span", "detail", (who ? who + " · " : "") +
       "issue : " + p.issue + " · " + p.strategie + " · ouverte " + short(p.ouverte)));
@@ -1434,6 +1495,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       "arene": function () { return arenaLive.length + " stratégies en course" + (leader ? " · en tête : " +
         sname(leader.nom).replace(/\u200b/g, "") + " (" + (leader.capital >= initial ? "+" : "−") +
         fmt(Math.abs((leader.capital / initial - 1) * 100), 1) + " %)" : ""); },
+      "principal": function () { var K = (D.ordres_principal || {}).compte || {}; return fmt(K.achats || 0, 0) + " achats · " +
+        fmt(K.ventes || 0, 0) + " ventes · " + fmt(K.reglements || 0, 0) + " règlements · investi " + fmt(invested, 2); },
       "entonnoir": function () { return (D.entonnoir || []).length + " stratégie(s) mère(s) découpée(s) en morceaux"; },
       "positions": function () { return fmt(SYSD.positions_tous_portefeuilles, 0) + " positions ouvertes, dont " +
         fmt(C.positions_ouvertes, 0) + " pour le capital principal"; },
@@ -1448,7 +1511,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         D.couts.appels_ia_aujourdhui + "/" + D.couts.plafond_ia; }
     };
     var cards = [];
-    ["aujourdhui", "arene", "entonnoir", "positions", "ordres-poses", "decisions-recentes", "journal", "systeme"].forEach(function (id) {
+    ["principal", "aujourdhui", "arene", "entonnoir", "positions", "ordres-poses", "decisions-recentes", "journal", "systeme"].forEach(function (id) {
       var b = document.getElementById(id); if (!b) return;
       (b.classList.contains("card") ? [b] : Array.prototype.slice.call(b.querySelectorAll(":scope > .card"))).forEach(function (c) {
         var h2 = c.querySelector(".head h2"); if (!h2) return;

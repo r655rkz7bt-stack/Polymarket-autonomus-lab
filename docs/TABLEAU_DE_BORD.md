@@ -81,3 +81,6 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
   positions du capital principal d'abord (celles de l'arène dans un dépliant).
 - Téléphone : les tableaux deviennent des fiches empilées (aucune colonne coupée à droite).
 - Hauteur de page (téléphone) : environ 19 300 px avant, 8 600 px après.
+- Bloc `principal` (demande d'Etienne) : les ordres du capital PRINCIPAL, le vrai portefeuille, à
+  part de ceux de l'arène, juste sous le résumé (liseré bleu) : exécutions du journal signé (la plus
+  récente d'abord), ordres posés en attente, opérations clôturées (`dashboard.principal_orders`).

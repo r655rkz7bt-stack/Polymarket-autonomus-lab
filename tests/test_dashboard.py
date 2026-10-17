@@ -13,6 +13,7 @@ from conftest import KEY, NOW, ROOT, buy, make_book
 from polymarket_agent import dashboard
 from polymarket_agent.ledger import Ledger
 from polymarket_agent.persistence import Database
+from polymarket_agent.reporting import read_entries
 
 EVIL = "</script><script>alert(1)</script><img src=x onerror=alert(2)>"
 SETTINGS = {"paths": {"ledger": "ledger/ledger.jsonl", "bankruptcy_lock": "ledger/BANKRUPT.lock",
@@ -264,3 +265,21 @@ def test_situation_explains_why_there_is_no_champion():
     assert s["phrase"] == "Le capital principal suit meteo depuis le 17/10 08:32 UTC."
     assert dashboard.situation({"faillite": True, "raison_faillite": "solde 0"}, arena, [], rules, 1000.0)["detail"] == "solde 0"
     assert dashboard.situation({"champion": ""}, [], [], rules, 1000.0)["detail"] == "Aucune stratégie en course."
+
+
+def test_principal_orders_are_listed_apart_from_the_arena(ledger):
+    """17/10/2026 : les ordres du capital principal ont leur propre bloc (le plus récent d'abord)."""
+    from conftest import buy
+    buy(ledger, "b1", token="tA", shares="10", price="0.5", fee="0.1")
+    ledger.record_sell(op_id="s1", token_id="tA", shares="4", price="0.6", fee="0.05", now=NOW + timedelta(minutes=5))
+    ledger.record_settlement(op_id="r1", token_id="tA", payout_per_share="1", resolution="Yes", now=NOW + timedelta(minutes=9))
+    import json as _json
+    opened = [{"created_at": "2026-10-14T12:30:00", "side": "BUY", "remaining": "5",
+               "proposal": _json.dumps({"market_id": "m-tB", "outcome": "No", "max_price": "0.42", "strategy_id": "mm"})}]
+    out = dashboard.principal_orders(read_entries(ledger), {"m-tA": "Question A ?", "m-tB": "Question B ?"}, opened)
+    assert [o["sens"] for o in out["executions"]] == ["règlement", "vente", "achat"]
+    assert out["executions"][2]["marche"] == "Question A ?" and out["executions"][2]["montant"] == 5.1
+    assert out["executions"][1]["montant"] == 2.35 and out["executions"][0]["marche"] == "Question A ?"
+    assert out["compte"] == {"achats": 1, "ventes": 1, "reglements": 1}
+    assert out["poses"] == [{"date": "2026-10-14T12:30", "sens": "achat", "marche": "Question B ?", "issue": "No",
+                             "prix": 0.42, "parts": 5.0, "strategie": "mm"}]
