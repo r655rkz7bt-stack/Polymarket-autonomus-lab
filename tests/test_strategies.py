@@ -33,7 +33,7 @@ def test_repository_config_loads():
         "market_maker", "market_maker_serre",
         "market_structure", "market_structure_patiente", "meteo_prevision", "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_patiente", "naive_favorite_sans_fin",
         "nf_autres_sujets", "nf_court", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
-        "nf_prix_bas", "nf_prix_haut", "nf_sport", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
+        "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "news_momentum",
         "news_momentum_patiente", "outsider_sport_patiente", "reversion",
         "social_sentiment", "suivre_politique", "temperature_floor"])
