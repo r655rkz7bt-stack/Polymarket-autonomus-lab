@@ -752,6 +752,26 @@ nf_sport_court:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_tres_court:
+  explication: "Comme naive_favorite, mais seulement quand le marché se termine dans moins de 6 heures (on resserre le morceau « court » qui gagne)."
+  # Fille d'essai (17/10/2026, chercheur) : nf_court (20 opérations, gagnante) resserrée à 6 h. Fantôme : gratuit.
+  mere: naive_favorite
+  morceau: "moins de 6 h"
+  class: naive_favorite
+  filtres: {heures_min: 0, heures_max: 6}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_politique:
   explication: "Comme naive_favorite, mais seulement la politique et la géopolitique."
   mere: naive_favorite
