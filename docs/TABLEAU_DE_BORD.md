@@ -12,6 +12,8 @@ et ce qui va se passer ? »** Si non, plus bas, replié ou caché.
 1. **Sans code** (le plus courant) : `config/dashboard.yaml`
    - `ordre` : l'ordre des blocs du haut vers le bas ;
    - `masquer` : les blocs jugés superflus ;
+   - `replier` : les blocs repliés au départ (titre + une ligne de résumé ; Etienne les rouvre d'un
+     toucher, son navigateur retient son choix) ;
    - `a_la_une` : au plus 5 points courts en tête du résumé, ce que TU juges le plus important en ce
      moment (date du jour). Des faits avec leur source, jamais une promesse de gain. Mets-les à jour
      à chaque passage où quelque chose d'important a changé ; sinon laisse-les.
@@ -27,8 +29,8 @@ et ce qui va se passer ? »** Si non, plus bas, replié ou caché.
 ## Garde-fous (non négociables)
 - **Règle n°1** : le capital, le solde DISPONIBLE et l'état de faillite restent toujours visibles en
   haut (blocs `organisme`, `resume` et `capital` : le code refuse de les cacher).
-- **Couleurs** (17/10/2026) : gris partout ; bleu `--blue` = hausse, rouge `--red` = baisse, toujours
-  avec ▲ ▼ (jamais la couleur seule). Contraste vérifié sur le fond des cartes (7,6:1 et 6,5:1).
+- **Couleurs** (17/10/2026) : gris partout ; bleu pastel `--blue` = hausse, rouge pastel `--red` = baisse, toujours
+  avec ▲ ▼ (jamais la couleur seule). Contraste vérifié sur le fond des cartes (9,8:1 et 9,4:1).
 - Les gains latents ne sont jamais présentés comme de l'argent disponible ; une estimation (ex.
   récompenses de liquidité) est toujours marquée comme telle.
 - Tout texte venu de l'extérieur (questions de marchés, articles) reste affiché comme du texte
@@ -68,3 +70,14 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
 - Arène : chaque courbe (bleue au-dessus du départ, rouge en dessous) se dessine à son apparition,
   au survol et au toucher ; sur téléphone elle remplace la piste. Le classement dans le temps
   redessine la ligne survolée.
+
+## Version compacte (17/10/2026, deuxième passage : « que ça prenne moins de place, plus résumé »)
+- Ligne du haut : `dashboard.situation` écrit QUI pilote le capital principal, et sinon POURQUOI
+  personne (champion destitué : par qui, quand, pourquoi ; et la stratégie la plus proche du seuil).
+- Résumé = journal de phrases courtes (changements de champion, actions du chercheur), détail au
+  toucher ; frais, perte maximale et audit en pastilles.
+- Blocs repliables (`replier`), arène compacte (phrase sur deux lignes, détail au toucher, 6
+  stratégies), « Aujourd'hui » à 2 phrases par sujet, entonnoir limité aux filles qui ont joué,
+  positions du capital principal d'abord (celles de l'arène dans un dépliant).
+- Téléphone : les tableaux deviennent des fiches empilées (aucune colonne coupée à droite).
+- Hauteur de page (téléphone) : environ 19 300 px avant, 8 600 px après.

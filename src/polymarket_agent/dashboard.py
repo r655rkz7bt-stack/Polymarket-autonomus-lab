@@ -62,9 +62,83 @@ def layout(root: Path) -> dict:
     ordre = [b for b in (raw.get("ordre") or []) if b in BLOCKS]
     ordre = list(dict.fromkeys(ordre))
     masquer = [b for b in (raw.get("masquer") or []) if b in BLOCKS and b not in ALWAYS_VISIBLE]
+    # Blocs repliés au départ (une ligne de résumé ; Etienne les rouvre d'un toucher). Jamais ceux de la règle n°1.
+    replier = [b for b in (raw.get("replier") or []) if b in BLOCKS and b not in ALWAYS_VISIBLE]
     une = raw.get("a_la_une") if isinstance(raw.get("a_la_une"), dict) else {}
     points = [str(p).strip()[:280] for p in (une.get("points") or []) if str(p).strip()][:5]
-    return {"ordre": ordre, "masquer": masquer, "a_la_une": {"date": str(une.get("date") or ""), "points": points}}
+    return {"ordre": ordre, "masquer": masquer, "replier": list(dict.fromkeys(replier)),
+            "a_la_une": {"date": str(une.get("date") or ""), "points": points}}
+
+
+def _fr(x: float, d: int = 1) -> str:
+    return f"{x:,.{d}f}".replace(",", "\u202f").replace(".", ",")
+
+
+def _hm(iso: str) -> str:
+    """« 17/10 15:27 » depuis un horodatage ISO."""
+    return f"{iso[8:10]}/{iso[5:7]} {iso[11:16]}" if len(iso) >= 16 else iso
+
+
+def arena_rules(settings: dict, root: Path) -> dict:
+    """Seuils d'entrée de l'arène (config/promotion.yaml), pour expliquer la situation."""
+    cfg = settings.get("arena")
+    if not isinstance(cfg, dict):
+        import yaml
+        try:
+            cfg = yaml.safe_load((Path(root) / "config" / "promotion.yaml").read_text(encoding="utf-8")) or {}
+        except (OSError, yaml.YAMLError):
+            cfg = {}
+    return {"operations": int(cfg.get("min_closed_trades", 20)), "croissance": float(cfg.get("min_log_growth", 0.02)),
+            "heures": float(cfg.get("min_age_hours", 24))}
+
+
+def promotions(entries: list[dict], limit: int = 6) -> list[dict]:
+    """Derniers changements de champion du journal principal (le plus récent en premier)."""
+    out = [{"date": e["ts"][:16], "champion": e["data"].get("champion", ""),
+            "ancien": (e["data"].get("metrics") or {}).get("from", ""), "raison": e["data"].get("reason", "")}
+           for e in entries if e.get("type") == "PROMOTION"]
+    return out[::-1][:limit]
+
+
+def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict, initial: float) -> dict:
+    """La situation en UNE ligne (demande d'Etienne, 17/10/2026) : qui pilote le capital principal, et
+    sinon POURQUOI personne. {"phrase": la ligne en tête, "detail": une précision plus petite dessous}."""
+    import math
+    if capital.get("faillite"):
+        return {"phrase": "Faillite : le trading est arrêté pour de bon.", "detail": capital.get("raison_faillite", "")}
+    by_name = {a["nom"]: a for a in arena}
+    champ = capital.get("champion") or ""
+    pct = lambda a: (a["capital"] / initial - 1) * 100 if initial else 0.0  # noqa: E731
+    signed = lambda x: f"{'+' if x >= 0 else '−'}{_fr(abs(x))} %"  # noqa: E731
+    name = lambda n: n.rsplit("_v", 1)[0]  # noqa: E731
+    if champ:
+        since = next((h["date"] for h in history if h["champion"] == champ), "")
+        a = by_name.get(champ)
+        return {"phrase": f"Le capital principal suit {name(champ)}" + (f" depuis le {_hm(since)} UTC" if since else "") + ".",
+                "detail": f"{name(champ)} : {signed(pct(a))} sur {a['operations']} opérations clôturées." if a else ""}
+    # Pas de champion : la plus proche du seuil (croissance suffisante d'abord, puis le plus d'opérations).
+    need = math.exp(rules["croissance"]) * initial
+    live = [a for a in arena if not a.get("eliminee")]
+    near = max(live, key=lambda a: (a["capital"] >= need, a["operations"] if a["capital"] >= need else a["capital"]),
+               default=None)
+    if near is None:
+        tail = "Aucune stratégie en course."
+    elif near["capital"] >= need and near["operations"] < rules["operations"]:
+        tail = (f"La plus proche du titre : {name(near['nom'])} ({signed(pct(near))}), {near['operations']} opérations "
+                f"clôturées sur les {rules['operations']} exigées.")
+    elif near["capital"] >= need:
+        tail = f"{name(near['nom'])} remplit les conditions : promotion attendue au prochain cycle."
+    else:
+        tail = (f"Il faut +{_fr((math.exp(rules['croissance']) - 1) * 100, 0)} % et {rules['operations']} opérations ; "
+                f"la meilleure, {name(near['nom'])}, est à {signed(pct(near))}.")
+    last = history[0] if history else None
+    if last and not last["champion"] and last["ancien"]:
+        old = by_name.get(last["ancien"])
+        why = (f"{name(last['ancien'])} est retombé sous ses {_fr(initial, 0)} de départ ({_fr(old['capital'], 2)})"
+               if old and old["capital"] <= initial else f"{name(last['ancien'])} ne battait plus « ne rien faire »")
+        return {"phrase": f"Plus de champion depuis le {_hm(last['date'])} UTC : {why}.",
+                "detail": f"Le capital principal ne prend plus de nouveau pari. {tail}"}
+    return {"phrase": "Pas encore de champion : le capital principal attend.", "detail": tail}
 
 
 def strategy_info(root: Path) -> dict[str, dict]:
@@ -350,6 +424,10 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)
+    # La situation en une phrase (en tête du cœur) et les derniers changements de champion.
+    data["promotions"] = promotions(entries["principal"])
+    data["situation"] = situation(capital, arena, data["promotions"], arena_rules(settings, root),
+                                  float(state.initial_capital))
     # Ordres posés : récompenses de liquidité ESTIMÉES (hors capital) et sélection adverse (markout).
     from polymarket_agent import liquidity_rewards, markout
     since = (now - timedelta(days=7)).isoformat(timespec="seconds")

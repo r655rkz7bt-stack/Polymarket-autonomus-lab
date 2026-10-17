@@ -11,6 +11,11 @@ ordre: [organisme, resume, aujourdhui, arene, entonnoir, capital, positions, jou
 # capital, solde disponible et faillite toujours visibles) : le code les réaffiche.
 masquer: []
 
+# Blocs REPLIÉS au départ : seul leur titre et une ligne de résumé restent visibles ; un toucher sur
+# le titre les ouvre (le navigateur d'Etienne retient son choix). Le cœur, le résumé et le capital
+# ne se replient jamais.
+replier: [ordres-poses, journal, decisions-recentes, systeme]
+
 # « À la une » : au plus 5 points courts (280 caractères chacun), écrits par le chercheur, en tête
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.

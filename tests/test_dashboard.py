@@ -233,15 +233,34 @@ def test_layout_is_set_by_the_researcher_with_guardrails(tmp_path):
     (tmp_path / "config").mkdir()
     (tmp_path / "config" / "dashboard.yaml").write_text(yaml.safe_dump({
         "ordre": ["arene", "inconnu", "resume", "arene"], "masquer": ["capital", "resume", "systeme", "x"],
+        "replier": ["organisme", "journal", "capital", "journal", "y"],
         "a_la_une": {"date": "2026-10-17", "points": [EVIL] + [f"point {i}" for i in range(9)] + ["y" * 400]}}),
         encoding="utf-8")
     lay = dashboard.layout(tmp_path)
     assert lay["ordre"] == ["arene", "resume"] and lay["masquer"] == ["systeme"]
+    assert lay["replier"] == ["journal"]  # le cœur, le résumé et le capital ne se replient jamais
     assert len(lay["a_la_une"]["points"]) == 5 and lay["a_la_une"]["points"][0] == EVIL
-    assert dashboard.layout(tmp_path / "absent") == {"ordre": [], "masquer": [], "a_la_une": {"date": "", "points": []}}
+    assert dashboard.layout(tmp_path / "absent") == {"ordre": [], "masquer": [], "replier": [],
+                                                      "a_la_une": {"date": "", "points": []}}
     main, shadows, db = _setup(tmp_path)
     data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
     page = dashboard.render(data)
     assert data["mise_en_page"] == lay and EVIL not in page  # texte du chercheur échappé comme le reste
     repo = dashboard.layout(ROOT)  # la configuration du dépôt est valide
     assert repo["ordre"][0] in ("organisme", "resume") and not set(repo["masquer"]) & {"organisme", "resume", "capital"}
+
+
+def test_situation_explains_why_there_is_no_champion():
+    """17/10/2026 : la ligne du haut dit qui pilote le capital principal, et sinon pourquoi personne."""
+    rules = {"operations": 20, "croissance": 0.02, "heures": 24}
+    arena = [{"nom": "meteo_v1", "capital": 999.55, "operations": 29},
+             {"nom": "favori_v1", "capital": 1093.0, "operations": 11}]
+    lost = [{"date": "2026-10-17T15:27", "champion": "", "ancien": "meteo_v1", "raison": "ne bat plus"},
+            {"date": "2026-10-17T08:32", "champion": "meteo_v1", "ancien": "", "raison": "promu"}]
+    s = dashboard.situation({"champion": ""}, arena, lost, rules, 1000.0)
+    assert s["phrase"].startswith("Plus de champion depuis le 17/10 15:27 UTC : meteo est retombé sous ses")
+    assert "favori" in s["detail"] and "11 opérations" in s["detail"] and "20 exigées" in s["detail"]
+    s = dashboard.situation({"champion": "meteo_v1"}, arena, lost[1:], rules, 1000.0)
+    assert s["phrase"] == "Le capital principal suit meteo depuis le 17/10 08:32 UTC."
+    assert dashboard.situation({"faillite": True, "raison_faillite": "solde 0"}, arena, [], rules, 1000.0)["detail"] == "solde 0"
+    assert dashboard.situation({"champion": ""}, [], [], rules, 1000.0)["detail"] == "Aucune stratégie en course."

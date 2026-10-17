@@ -9,15 +9,17 @@
    Haut (refonte du 17/10/2026, demande d'Etienne) : le cœur qui bat, entouré des RÉSULTATS
    (capital, 24 h, gains, arène, palier…), en planche anatomique propre : légendes en deux
    colonnes, traits qui partent d'un point du cœur. Puis le résumé et le détail.
-   Couleurs : gris partout ; bleu = hausse, rouge = baisse (toujours avec ▲ ▼ : jamais la couleur
-   seule). Contraste vérifié sur le fond des cartes : bleu 7,6:1, rouge 6,5:1. */
+   Couleurs : gris partout ; bleu pastel = hausse, rouge pastel = baisse (toujours avec ▲ ▼ : jamais
+   la couleur seule). Contraste vérifié sur le fond des cartes : bleu 9,8:1, rouge 9,4:1.
+   Compact (17/10/2026) : chaque bloc se replie sur une ligne de résumé (choix retenu par le
+   navigateur) ; le résumé est un journal de phrases courtes. */
 :root {
   --bg: #0b0b0c; --card: #141416; --raised: #1c1c1f; --line: #26262a; --line-2: #313136;
   --ink: #f4f4f5; --ink-2: #c4c4c8; --muted: #8e8e94; --faint: #6c6c72;
   --dot-hi: #f4f4f5; --dot-mid: #8e8e94; --dot-lo: #3a3a3f; --dot-ghost: #232327;
   --wash: rgba(255,255,255,0.06);
-  --blue: #6ea8fe; --blue-soft: rgba(110,168,254,0.16); --blue-line: rgba(110,168,254,0.55);
-  --red: #f47174; --red-soft: rgba(244,113,116,0.16); --red-line: rgba(244,113,116,0.55);
+  --blue: #9dbff5; --blue-soft: rgba(157,191,245,0.13); --blue-line: rgba(157,191,245,0.45);
+  --red: #f2a5a8; --red-soft: rgba(242,165,168,0.13); --red-line: rgba(242,165,168,0.45);
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   color-scheme: dark;
@@ -118,7 +120,8 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
   border-left: 0; border-right: 0; padding: 24px 0 18px;
   background: radial-gradient(ellipse 60% 70% at 50% 58%, #18181b 0%, var(--card) 70%); }
 .o-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 28px; }
-.o-head .headline { color: var(--ink-2); font-weight: 500; }
+.o-head .headline { color: var(--ink); font-weight: 550; font-size: clamp(1rem, 2.8vw, 1.3rem); max-width: 44ch; }
+.o-head .headline small { display: block; margin-top: 6px; color: var(--muted); font: 400 0.82rem/1.45 var(--sans); letter-spacing: 0; }
 .o-foot { margin: 8px 0 0; text-align: center; }
 .organism .inner { max-width: 1180px; margin: 0 auto; padding: 0 max(36px, env(safe-area-inset-right, 0px)) 0 max(36px, env(safe-area-inset-left, 0px)); }
 .stage { position: relative; width: 100%; height: 640px; margin-top: 6px; }
@@ -143,6 +146,57 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
   .lab .s { font-size: 0.6rem; }
   .console { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.7rem; }
 }
+/* Blocs repliables : le titre ouvre / ferme ; replié, une ligne de résumé reste visible. */
+.fold-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+.fold-btn::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform 0.2s; }
+.folded .fold-btn::after { transform: rotate(-45deg); }
+.fold-btn:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 4px; border-radius: 6px; }
+.fold-sum { display: none; margin: -6px 0 0; color: var(--ink-2); font-size: 0.86rem; }
+.folded > .fold-sum { display: block; }
+.folded > :not(.head):not(.fold-sum) { display: none !important; }
+.folded { padding-bottom: 16px; }
+.folded > .head { margin-bottom: 10px; }
+/* Journal : une ligne par événement, l'heure à gauche, le détail en dépliant. */
+.journal { display: grid; gap: 2px; margin-top: 4px; }
+.journal details { border-radius: 10px; padding: 7px 10px; }
+.journal details[open], .journal details:hover { background: var(--raised); }
+.journal summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px;
+  align-items: baseline; margin: 0; color: var(--ink); font: 0.9rem/1.45 var(--sans); letter-spacing: 0; }
+.journal summary::-webkit-details-marker { display: none; }
+.journal .when { font: 500 0.72rem var(--mono); color: var(--muted); white-space: nowrap; }
+.journal .tag { font: 500 0.66rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.journal .tag.up { color: var(--blue); } .journal .tag.down { color: var(--red); }
+.journal dl { margin: 6px 0 2px 108px; display: grid; gap: 4px; }
+.journal dt { font: 500 0.68rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.journal dd { margin: 0; color: var(--ink-2); font-size: 0.84rem; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .journal summary { grid-template-columns: 1fr; gap: 2px; } .journal dl { margin-left: 0; } }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pill { font: 500 0.76rem var(--mono); color: var(--ink-2); background: var(--raised); border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px 11px; }
+.pill b { color: var(--ink); font-weight: 600; }
+/* Arène compacte : explication sur deux lignes au plus, détails au toucher. */
+.row .explain { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.row.open .explain { -webkit-line-clamp: unset; }
+.row .more-info { display: none; } .row.open .more-info { display: block; }
+.row:not(.th) { cursor: pointer; }
+.row:not(.th):hover { background: rgba(255,255,255,0.02); }
+/* Téléphone : les tableaux deviennent des fiches empilées (plus de colonnes coupées à droite). */
+@media (max-width: 600px) {
+  table.stack thead { display: none; }
+  table.stack tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; padding: 11px 2px;
+    border-bottom: 1px solid var(--line); }
+  table.stack tr:last-child { border-bottom: 0; }
+  table.stack tr[hidden] { display: none; }
+  table.stack td { border: 0; padding: 0; min-width: 0; }
+  table.stack td.q, table.stack td.s, table.stack td:first-child:not(.n):not(.d) { grid-column: 1 / -1; }
+  table.stack td.n { text-align: left; }
+  table.stack td.n:nth-child(odd) { text-align: right; }
+  table.stack td[data-k]::before { content: attr(data-k) " "; color: var(--muted); font: 500 0.64rem var(--mono);
+    letter-spacing: 0.06em; text-transform: uppercase; }
+}
+details.howto summary { margin: 0 0 6px; }
+#positions-arena-box { margin-top: 10px; }
 /* Courbes qui se dessinent (comme sur Polymarket) : au survol, au toucher, à l'apparition. */
 .draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
 .spark-wrap { cursor: pointer; }
@@ -280,8 +334,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   <section id="resume" class="card hero" aria-label="Résumé de la situation">
     <div class="head"><h2>Résumé</h2><span class="kicker" id="resume-kicker"></span></div>
     <div class="une" id="une" hidden></div>
-    <ul class="facts" id="facts"></ul>
-    <div class="research" id="research" aria-label="Dernières actions du chercheur"></div>
+    <div class="journal" id="research" aria-label="Journal du laboratoire"></div>
+    <div class="pills" id="facts"></div>
     <div class="split">
       <div class="split-labels"><span id="split-left"></span><span id="split-right"></span></div>
       <div class="dots" id="split"></div>
@@ -312,16 +366,19 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
 
   <section id="entonnoir" class="card">
     <div class="head"><h2>Entonnoir</h2><span class="kicker">chaque stratégie qui gagne, découpée en morceaux</span></div>
-    <p class="note">Une « fille » est la stratégie mère jouée sur un seul morceau des marchés (un sujet, une tranche de prix,
-      un délai, OUI ou NON). Si une fille fait nettement mieux que sa mère, c'est ce morceau qui fait gagner ; on combinera
-      ensuite les meilleurs morceaux. « Contre la mère » compare chaque fille à ce que la mère a gagné depuis la naissance de
-      la fille (comparaison équitable). Il faut une vingtaine d'opérations clôturées avant de conclure.</p>
+    <details class="howto"><summary>Comment le lire ?</summary><p class="note">Une « fille » est la stratégie mère jouée sur
+      un seul morceau des marchés (un sujet, une tranche de prix, un délai, OUI ou NON). Si une fille fait nettement mieux que
+      sa mère, c'est ce morceau qui fait gagner ; on combinera ensuite les meilleurs morceaux. « Contre la mère » compare
+      chaque fille à ce que la mère a gagné depuis la naissance de la fille (comparaison équitable). Il faut une vingtaine
+      d'opérations clôturées avant de conclure.</p></details>
     <div id="funnel"></div>
   </section>
 
   <section id="positions" class="card">
-    <div class="head"><h2>Positions ouvertes</h2><span class="kicker">prévision : fourchette ━ et prix actuel ●</span></div>
+    <div class="head"><h2>Positions ouvertes</h2><span class="kicker">capital principal · prévision ━ et prix actuel ●</span></div>
     <div class="scroll"><table id="positions-t"></table></div>
+    <details id="positions-arena-box"><summary id="positions-arena-sum">Positions des stratégies de l'arène</summary>
+      <div class="scroll"><table id="positions-arena"></table></div></details>
   </section>
 
   <section id="ordres-poses" class="card">
@@ -456,11 +513,12 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // Nom de stratégie lisible : sans « fantome: » ni version, coupure permise après chaque « _ ».
   function sname(n) { return String(n || "").replace(/^fantome:/, "").replace(/_v[\d.]+$/, "").replace(/_/g, "_\u200b"); }
   function table(id, head, rows, empty, limit) {
-    var t = document.getElementById(id); t.textContent = "";
+    var t = document.getElementById(id); t.textContent = ""; t.classList.add("stack");
     if (!rows.length) { t.replaceWith(el("p", "empty", empty)); return; }
     var tb = el("tbody"), trs = [];
     rows.forEach(function (r, k) { var row = el("tr"); row._order = k; row._keys = [];
       r.forEach(function (c, i) { var td = el("td", head[i].n ? "n" : head[i].q ? "q" : head[i].d ? "d" : head[i].s ? "s" : "");
+        if (head[i].n || head[i].d) td.setAttribute("data-k", head[i].t);
         if (c instanceof Node) td.appendChild(c); else td.textContent = c === null || c === undefined ? "—" : String(c);
         // Tri sur la première ligne de la cellule (le détail gris en dessous ne compte pas).
         row._keys.push(sortKey(td.firstChild && td.firstChild.nodeType === 1 && td.firstChild.firstChild
@@ -533,22 +591,25 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     " · disponible " + fmt(cash, 2)));
   var headline = C.faillite ? "Faillite : le trading est arrêté définitivement. Seul Etienne peut réinitialiser."
     : !alive ? "Le cœur ne bat plus depuis " + ago(beatMin).replace("il y a ", "") + " : vérifier cron-job.org et GitHub Actions."
+    : D.situation ? D.situation.phrase  // écrite par dashboard.situation (pourquoi ce champion, ou pourquoi aucun)
     : C.champion ? "Le capital principal suit " + C.champion + ", et l'arène continue de chercher mieux."
     : "Aucune stratégie n'a encore fait ses preuves. Le capital principal attend, l'arène s'entraîne.";
-  document.getElementById("headline").textContent = headline;
+  var hl = document.getElementById("headline"); hl.textContent = headline;
+  if (alive && !C.faillite && D.situation && D.situation.detail) hl.appendChild(el("small", null, D.situation.detail));
   var cyclesOk = (H.cycles_24h || {}).OK || 0, cyclesAll = Object.keys(H.cycles_24h || {}).reduce(function (a, k) {
     return a + H.cycles_24h[k]; }, 0);
   var srcs = D.sources ? D.sources.etat : {}, srcNames = Object.keys(srcs).filter(function (n) { return n !== "justesse_gemini" && n !== "sources_resolution"; });
   var srcOk = srcNames.filter(function (n) { return /^ok/.test(srcs[n]); }).length;
   // Les chiffres du capital, des gains, de l'arène et du palier sont autour du cœur (en haut) :
-  // ici, seulement ce qui n'y est pas.
-  [
-    "Frais payés " + fmt(C.frais_payes, 2) + " · perte maximale depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %.",
-    D.audit ? "Audit indépendant : " + fmt(D.audit.verifiees, 0) + " exécutions vérifiées contre l'historique de Polymarket, " +
-      fmt(D.audit.reglements_verifies || 0, 0) + " règlements conformes au résultat officiel, " +
-      (D.audit.anomalies ? "▲ " + D.audit.anomalies + " anomalie(s) à examiner." : "aucune anomalie.")
-      : "Audit indépendant des exécutions : pas encore lancé."
-  ].forEach(function (t) { document.getElementById("facts").appendChild(el("li", null, t)); });
+  // ici, en pastilles, seulement ce qui n'y est pas.
+  (function pills() { var box = document.getElementById("facts");
+    function pill(label, value) { var p = el("span", "pill"); p.appendChild(document.createTextNode(label + " "));
+      p.appendChild(el("b", null, value)); box.appendChild(p); }
+    pill("frais payés", fmt(C.frais_payes, 2));
+    pill("perte max. depuis un sommet", fmt(C.drawdown_max * 100, 1) + " %");
+    if (D.audit) pill("audit", fmt(D.audit.verifiees, 0) + " exécutions vérifiées · " +
+      (D.audit.anomalies ? "▲ " + D.audit.anomalies + " anomalie(s)" : "aucune anomalie"));
+  })();
 
   // Grille de points : une part du capital par point (comme les sièges d'une assemblée).
   function dotGrid(holder, n, cols, fill, label) {
@@ -564,8 +625,10 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     L.appendChild(el("b", null, fmt(cash, 0))); L.appendChild(document.createTextNode("disponible"));
     R.appendChild(el("b", null, fmt(invested, 0))); R.appendChild(document.createTextNode("investi"));
     var narrow = document.getElementById("split").clientWidth < 560;
-    dotGrid(document.getElementById("split"), n, narrow ? 20 : 50, function (i) { return i < k ? "var(--dot-hi)" : "var(--dot-mid)"; },
-      "Capital : " + k + " points disponibles, " + (n - k) + " points investis sur 100");
+    if (narrow) n = 40;
+    k = Math.round(cash / sum * n);
+    dotGrid(document.getElementById("split"), n, n, function (i) { return i < k ? "var(--dot-hi)" : "var(--dot-mid)"; },
+      "Capital : " + k + " points disponibles, " + (n - k) + " points investis sur " + n);
   })();
 
   // ---------------------------------------------------------------- organisme
@@ -626,8 +689,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     { k: "oreillette droite · 24 h", u: -0.28, v: -0.05, sd: "l", p: 9, m: 1,
       v1: ch24 === null ? "—" : delta(ch24, 2), s: ref24 === null ? "pas encore 24 h de courbe" : "capital il y a 24 h : " + fmt(ref24, 2), t: tone(ch24 || 0) },
     { k: "ventricule droit · arène", u: -0.12, v: 0.14, sd: "l", p: 8, m: 1,
-      v1: C.champion ? sname(C.champion) : "pas encore de champion",
-      s: leader ? txt("en tête : " + sname(leader.nom) + " ", delta((leader.capital / initial - 1) * 100, 1, " %")) : "aucune stratégie classée",
+      v1: C.champion ? "champion : " + sname(C.champion) : leader ? "en tête : " + sname(leader.nom) : "aucune stratégie classée",
+      s: leader ? txt(delta((leader.capital / initial - 1) * 100, 1, " %"), " · " + leader.operations + " opérations clôturées") : "",
       t: leader ? tone(leader.capital - initial) : "" },
     { k: "apex · palier", u: -0.13, v: 0.44, sd: "l", p: 6, m: 1, v1: fmt(palierPct, 0) + " % vers " + fmt(target, 0),
       s: "capital réalisé " + fmt(realized, 2) },
@@ -868,7 +931,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       ctx.drawImage(bg, 0, 0, W, Hs);
       // Onde du battement : un léger reflet bleu (rouge si la machine est en faillite) ; respiration : gris.
       var buckets = [[], [], [], [], []], wbuckets = [[], [], [], [], []], base = Math.max(0.8, step * 0.1);
-      var tint = C.faillite ? [244, 113, 116] : [110, 168, 254];
+      var tint = C.faillite ? [242, 165, 168] : [157, 191, 245];
       if (moving) for (var g = 0; g < ghosts.length; g++) { var gd = ghosts[g];
         var wv = R > 0 && Math.abs(gd[2] - R) < 140 ? Math.exp(-Math.pow((gd[2] - R) / 46, 2)) * fade : 0;
         var tw = Math.pow(Math.max(0, Math.sin(t * gd[4] + gd[3])), 14);
@@ -903,7 +966,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         ctx.lineTo(prev[0], prev[1]); ctx.lineTo(end[0] - (end[0] - prev[0]) / len * ring, end[1] - (end[1] - prev[1]) / len * ring);
         ctx.stroke();
         ctx.beginPath(); ctx.arc(end[0], end[1], ring, 0, 6.2832); ctx.lineWidth = 1.4;
-        ctx.strokeStyle = l.tone === "up" ? "#6ea8fe" : l.tone === "down" ? "#f47174" : "rgba(244,244,245,0.85)"; ctx.stroke(); });
+        ctx.strokeStyle = l.tone === "up" ? "#9dbff5" : l.tone === "down" ? "#f2a5a8" : "rgba(244,244,245,0.85)"; ctx.stroke(); });
       if (moving && !document.hidden) raf = requestAnimationFrame(draw);
     }
     function start() { if (raf) cancelAnimationFrame(raf); layout(); bg = null; raf = requestAnimationFrame(draw); }
@@ -913,28 +976,37 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     start();
   })();
 
-  // Dernières actions du chercheur (journal de recherche) : ce qu'il a fait, dépliable pour le reste.
-  (function researchBox() {
-    var box = document.getElementById("research"), items = D.chercheur || [];
-    if (!items.length) { box.remove(); return; }
-    box.appendChild(el("div", "kicker", "Dernières actions du chercheur"));
-    items.forEach(function (r, k) {
-      var det = el("details"), sum = el("summary");
-      var m = /^\d{4}-(\d\d)-(\d\d)$/.exec(r.date || "");
-      sum.appendChild(el("span", "when", (m ? m[2] + "/" + m[1] : r.date) + (r.quand ? " · " + r.quand : "")));
-      var fait = r.fait || "aucune action notée", short = fait.length > 170 ? fait.slice(0, 168) + "…" : fait;
-      var what = el("span", "what", short);
-      sum.appendChild(what);
-      sum.appendChild(el("span", "chev", "▾"));
-      det.appendChild(sum);
-      var dl = el("dl");
-      (r.details || []).forEach(function (x) { dl.appendChild(el("dt", null, x.titre)); dl.appendChild(el("dd", null, x.texte)); });
+  // Journal du laboratoire : une phrase courte par événement (changements de champion, actions du
+  // chercheur), le plus récent en haut ; le détail se déplie au toucher.
+  (function journal() {
+    var box = document.getElementById("research"), ev = [];
+    // Phrase courte : coupée au dernier mot entier avant n caractères (le texte complet se déplie).
+    var shortTxt = function (t, n) { t = String(t || "").replace(/\s+/g, " ").trim(); if (t.length <= n) return t;
+      t = t.slice(0, n); return t.slice(0, Math.max(t.lastIndexOf(" "), n * 0.6)).replace(/[\s(:;,]+$/, "") + "…"; };
+    (D.promotions || []).forEach(function (p) {
+      var who = sname(p.champion || p.ancien).replace(/\u200b/g, "");
+      ev.push({ key: p.date, when: short(p.date), tag: p.champion ? "champion" : "destitué", tone: p.champion ? "up" : "down",
+        text: p.champion ? who + " devient champion : le capital principal le suit."
+          : who + " perd sa place de champion : " + (/ne bat plus/.test(p.raison) ? "il ne bat plus « ne rien faire »." : p.raison),
+        details: [{ titre: "raison inscrite au journal signé", texte: p.raison }] }); });
+    (D.chercheur || []).forEach(function (r) {
+      var m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(r.date || ""), h = /(\d{1,2}) ?h/.exec(r.quand || "");
+      ev.push({ key: (r.date || "") + "T" + (h ? ("0" + h[1]).slice(-2) : "00") + ":00", tag: "chercheur",
+        when: (m ? m[3] + "/" + m[2] : r.date) + (h ? " ≈" + ("0" + h[1]).slice(-2) + ":00" : ""),
+        text: shortTxt(r.fait || "aucune action notée", 100),
+        details: [{ titre: "en entier", texte: r.fait }].concat(r.details || []) }); });
+    if (!ev.length) { box.remove(); return; }
+    ev.sort(function (a, b) { return a.key < b.key ? 1 : a.key > b.key ? -1 : 0; });
+    var rows = ev.map(function (e) {
+      var det = el("details"), sum = el("summary"); sum.appendChild(el("span", "when", e.when));
+      var what = el("span"); what.appendChild(el("span", "tag " + (e.tone || ""), e.tag)); what.appendChild(document.createTextNode(e.text));
+      sum.appendChild(what); det.appendChild(sum);
+      var dl = el("dl"); (e.details || []).forEach(function (x) { if (!x.texte) return;
+        dl.appendChild(el("dt", null, x.titre)); dl.appendChild(el("dd", null, x.texte)); });
       if (dl.children.length) det.appendChild(dl);
-      // Déplié : le texte complet remplace le résumé coupé.
-      det.addEventListener("toggle", function () { what.textContent = det.open ? fait : short; });
-      if (k === 0) { det.open = true; what.textContent = fait; }
-      box.appendChild(det);
-    });
+      box.appendChild(det); return det; });
+    var holder = el("div", "more-row"); box.appendChild(holder);
+    collapsible(holder, function () { return rows; }, 4, "événements");
   })();
 
   // Aujourd'hui : phrases écrites par du code (today.py), groupées par sujet.
@@ -945,8 +1017,9 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var list = items.filter(function (t) { return t.sujet === g[0]; });
       if (!list.length) return;
       var col = el("div"); col.appendChild(el("h3", null, g[1])); var ul = el("ul");
-      list.forEach(function (t) { ul.appendChild(el("li", null, t.texte)); });
-      col.appendChild(ul); box.appendChild(col); });
+      var lis = list.map(function (t) { var li = el("li", null, t.texte); ul.appendChild(li); return li; });
+      col.appendChild(ul); box.appendChild(col);
+      var holder = el("div"); col.appendChild(holder); collapsible(holder, function () { return lis; }, 2, ""); });
   })();
 
   // Pouls : un point par cycle, hauteur = durée ; creux = cycle en erreur.
@@ -1046,9 +1119,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
 
   // ---------------------------------------------------------------- arène
   (function arenaRows() {
-    document.getElementById("arena-note").textContent = "Chaque stratégie trade dans son propre fantôme. Elle reçoit une part " +
-      "du capital principal quand elle passe le seuil d'entrée (réglé dans config/promotion.yaml, modifiable par le chercheur). " +
-      "Le point montre son capital face à « ne rien faire » (trait vertical), sa taille le nombre d'opérations clôturées.";
+    document.getElementById("arena-note").textContent = "Chaque stratégie joue 1 000 virtuels dans son propre fantôme et reçoit " +
+      "une part du capital principal quand elle passe le seuil d'entrée. Touchez une ligne pour le détail.";
     var box = document.getElementById("arena");
     if (!arena.length) { box.appendChild(el("p", "empty", "Aucune stratégie active.")); return; }
     var caps = arena.map(function (s) { return s.capital; }).concat([initial]);
@@ -1078,17 +1150,19 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var more = el("div", "more-row");
     arena.forEach(function (s, i) {
       var row = el("div", "row"); row.appendChild(el("div", "rank", String(i + 1)));
+      // Compact : nom + état, la phrase simple sur deux lignes au plus ; le reste au toucher.
       var name = el("div", "name", sname(s.nom));
-      if (s.explication) name.appendChild(el("span", "explain", s.explication));
       var H2 = s.sante || {}, susp = !!H2.suspendue;
       var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp ? " off" : ""),
         s.champion ? "champion" : s.eliminee ? "éliminée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
-      name.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict));
+      if (s.explication) name.appendChild(el("span", "explain", s.explication));
+      var info = el("span", "more-info"); name.appendChild(info);
+      info.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict));
       // Option A (17/10/2026) : récompenses ESTIMÉES comptées pour le classement, pas dans le capital.
-      if (s.recompenses_classement > 0) name.appendChild(el("span", "sub",
+      if (s.recompenses_classement > 0) info.appendChild(el("span", "sub",
         "+ " + fmt(s.recompenses_classement, 2) + " de récompenses estimées, comptées pour le classement (pas dans le capital)"));
       // Santé : mise autorisée, prévisions jugées (avance sur le marché), dérive des prix depuis l'achat.
-      if (s.sante) name.appendChild(el("span", "sub", susp ? H2.suspendue :
+      if (s.sante) info.appendChild(el("span", "sub", susp ? H2.suspendue :
         "mise ×" + fmt(H2.prudence, 2) + " · " + H2.jugees + " prévision(s) jugée(s)" +
         (H2.avance === null || H2.avance === undefined ? "" : " · avance " + (H2.avance > 0 ? "+" : "") + fmt(H2.avance, 3)) +
         (H2.derive === null || H2.derive === undefined ? "" : " · dérive " + (H2.derive > 0 ? "▲ +" : H2.derive < 0 ? "▼ " : "") + fmt(H2.derive, 3))));
@@ -1113,10 +1187,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       sp.appendChild(sv); row.appendChild(sp);
       if (sv._play) { row.addEventListener("pointerenter", sv._play); onFirstView(sv); }
       row._s = { rang: i + 1, nom: s.nom, capital: s.capital, operations: s.operations };
+      row.addEventListener("click", function () { row.classList.toggle("open"); if (sv._play) sv._play(); });
       arenaRows.push(row); box.appendChild(row);
     });
     box.appendChild(more);
-    arenaFold = collapsible(more, function () { return arenaRows; }, 8, "stratégies");
+    arenaFold = collapsible(more, function () { return arenaRows; }, 6, "stratégies");
   })();
 
   // Classement dans le temps : une ligne par stratégie (rang 1 en haut). En tête aujourd'hui en
@@ -1240,14 +1315,16 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       fmt(p.marque, 2) : "prix " + fmt(p.marque, 2)));
     return box;
   }
-  var order = { principal: 0 };
-  table("positions-t", [{ t: "portefeuille" }, { t: "marché", q: 1 }, { t: "coût", n: 1 }, { t: "latent", n: 1 },
-    { t: "prévision et prix", s: 1 }],
-    (D.positions || []).slice().sort(function (a, b) { return (order[a.portefeuille] === 0 ? -1 : 0) - (order[b.portefeuille] === 0 ? -1 : 0); })
-      .map(function (p) { var m = el("span", null, p.marche); m.appendChild(el("span", "detail", "issue : " + p.issue + " · " +
-        p.strategie + " · ouverte " + short(p.ouverte)));
-        return [p.portefeuille.replace(/_v[\d.]+$/, ""), m, fmt(p.cout, 2), p.latent === null ? "—" : delta(p.latent, 2), forecast(p)]; }),
-    "Aucune position ouverte.");
+  // Le capital principal d'abord ; les positions des fantômes (souvent des centaines) dans un dépliant.
+  function posRow(p, who) { var m = el("span", null, p.marche); m.appendChild(el("span", "detail", (who ? who + " · " : "") +
+      "issue : " + p.issue + " · " + p.strategie + " · ouverte " + short(p.ouverte)));
+    return [m, fmt(p.cout, 2), p.latent === null ? "—" : delta(p.latent, 2), forecast(p)]; }
+  var POS_HEAD = [{ t: "marché", q: 1 }, { t: "coût", n: 1 }, { t: "latent", n: 1 }, { t: "prévision et prix", s: 1 }];
+  var posMain = (D.positions || []).filter(function (p) { return p.portefeuille === "principal"; }),
+    posArena = (D.positions || []).filter(function (p) { return p.portefeuille !== "principal"; });
+  table("positions-t", POS_HEAD, posMain.map(function (p) { return posRow(p); }), "Aucune position ouverte pour le capital principal.", 6);
+  document.getElementById("positions-arena-sum").textContent = "Positions des stratégies de l'arène (" + posArena.length + ")";
+  table("positions-arena", POS_HEAD, posArena.map(function (p) { return posRow(p, sname(p.portefeuille)); }), "Aucune.", 6);
 
   // ---------------------------------------------------------------- entonnoir (mères et filles)
   (function funnelBlock() {
@@ -1260,13 +1337,17 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var mg = (g.mere.capital / initial - 1) * 100;
       function cap(c, g) { var b = el("span", null, fmt(c, 2)); var d = el("span", "detail"); d.appendChild(delta(g, 1, " %"));
         b.appendChild(d); return b; }
+      // Seules les filles qui ont déjà joué, la meilleure d'abord ; les autres sont seulement comptées.
+      var played = g.filles.filter(function (f) { return f.operations > 0; })
+        .sort(function (a, b) { return (b.ecart || 0) - (a.ecart || 0); }), idle = g.filles.length - played.length;
+      if (idle) wrap.appendChild(el("p", "detail", idle + " fille(s) n'ont pas encore clôturé d'opération."));
       var rows = [[el("span", null, "la mère (tout)"), cap(g.mere.capital, mg), "—", String(g.mere.operations)]]
-        .concat(g.filles.map(function (f) { var fg = (f.capital / initial - 1) * 100, who = el("span", null, f.morceau);
+        .concat(played.map(function (f) { var fg = (f.capital / initial - 1) * 100, who = el("span", null, f.morceau);
           who.appendChild(el("span", "detail", sname(f.nom)));
           var gap = el("span"); gap.appendChild(delta(f.ecart, 1, " pt"));
           gap.appendChild(el("span", "detail", "mère : " + (f.mere_depuis >= 0 ? "+" : "") + fmt(f.mere_depuis, 1) + " % pendant ce temps"));
           return [who, cap(f.capital, fg), gap, String(f.operations)]; }));
-      table(t.id, [{ t: "morceau" }, { t: "capital", n: 1 }, { t: "contre la mère", n: 1 }, { t: "opér.", n: 1 }], rows, "—", 12);
+      table(t.id, [{ t: "morceau" }, { t: "capital", n: 1 }, { t: "contre la mère", n: 1 }, { t: "opér.", n: 1 }], rows, "—", 4);
     });
   })();
 
@@ -1340,5 +1421,50 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       li.appendChild(document.createTextNode(f.nom)); ul.appendChild(li); });
     ex.appendChild(ul); });
   if (C.faillite) { var f = el("p", "headline", "FAILLITE : " + C.raison_faillite); document.getElementById("resume").prepend(f); }
+
+  // ---------------------------------------------------------------- blocs repliables
+  // Chaque carte (sauf le cœur, le résumé et le capital) se replie sur une ligne de résumé. Repliés
+  // au départ : config/dashboard.yaml → replier. Le choix d'Etienne est retenu par son navigateur.
+  (function folding() {
+    var start = (D.mise_en_page || {}).replier || [], SYSD = D.systeme || {};
+    var arenaLive = arena.filter(function (s) { return !s.eliminee; });
+    var srcOkN = srcNames.filter(function (n) { return /^ok/.test(srcs[n]); }).length;
+    var SUM = {
+      "aujourdhui": function () { var t = (D.aujourdhui || [])[0]; return t ? t.texte : "rien à signaler"; },
+      "arene": function () { return arenaLive.length + " stratégies en course" + (leader ? " · en tête : " +
+        sname(leader.nom).replace(/\u200b/g, "") + " (" + (leader.capital >= initial ? "+" : "−") +
+        fmt(Math.abs((leader.capital / initial - 1) * 100), 1) + " %)" : ""); },
+      "entonnoir": function () { return (D.entonnoir || []).length + " stratégie(s) mère(s) découpée(s) en morceaux"; },
+      "positions": function () { return fmt(SYSD.positions_tous_portefeuilles, 0) + " positions ouvertes, dont " +
+        fmt(C.positions_ouvertes, 0) + " pour le capital principal"; },
+      "ordres-poses": function () { return fmt(SYSD.ordres_poses, 0) + " ordres posés · récompenses estimées jusqu'à " +
+        fmt(bestReward, 2) + " $ en 7 j (hors capital)"; },
+      "Opérations clôturées": function () { return closedAll.length ? wins + " gagnées sur les " + closedAll.length + " dernières" : "aucune"; },
+      "Marchés surveillés": function () { return fmt((D.surveilles || []).length, 0) + " marchés surveillés au dernier cycle"; },
+      "decisions-recentes": function () { return fmt((D.decisions || []).length, 0) + " décisions récentes du contrôleur"; },
+      "Pouls de la machine": function () { return cyclesOk + "/" + cyclesAll + " cycles réussis en 24 h · le cœur bat à " + (BPM ? BPM + " bpm" : "l'arrêt"); },
+      "Sources d'information": function () { return srcOkN + "/" + srcNames.length + " sources en marche"; },
+      "Système": function () { return (alive ? "en vie" : "silencieux") + " · services payants 0 € · IA " +
+        D.couts.appels_ia_aujourdhui + "/" + D.couts.plafond_ia; }
+    };
+    var cards = [];
+    ["aujourdhui", "arene", "entonnoir", "positions", "ordres-poses", "decisions-recentes", "journal", "systeme"].forEach(function (id) {
+      var b = document.getElementById(id); if (!b) return;
+      (b.classList.contains("card") ? [b] : Array.prototype.slice.call(b.querySelectorAll(":scope > .card"))).forEach(function (c) {
+        var h2 = c.querySelector(".head h2"); if (!h2) return;
+        cards.push({ card: c, block: id, title: h2.textContent, h2: h2 }); }); });
+    cards.forEach(function (x) {
+      var key = "labo-repli:" + x.block + ":" + x.title, saved = null;
+      try { saved = localStorage.getItem(key); } catch (e) { saved = null; }
+      var folded = saved === null ? start.indexOf(x.block) >= 0 : saved === "1";
+      var btn = el("button", "fold-btn"); btn.type = "button"; btn.appendChild(el("span", null, x.title));
+      x.h2.textContent = ""; x.h2.appendChild(btn);
+      var f = SUM[x.block] || SUM[x.title], sumLine = el("p", "fold-sum", f ? f() : "");
+      x.card.querySelector(".head").after(sumLine);
+      function apply() { x.card.classList.toggle("folded", folded); btn.setAttribute("aria-expanded", folded ? "false" : "true"); }
+      btn.addEventListener("click", function () { folded = !folded; apply();
+        try { localStorage.setItem(key, folded ? "1" : "0"); } catch (e) { /* navigation privée : on ne retient rien */ } });
+      apply(); });
+  })();
 })();
 </script>
