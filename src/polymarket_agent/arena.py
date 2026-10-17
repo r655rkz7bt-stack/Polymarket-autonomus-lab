@@ -12,6 +12,10 @@
   (décision d'Etienne, 15/10/2026).
 - Une stratégie VALIDÉE sur le passé (test hors échantillon documenté, `validated_strategies`)
   a des seuils d'entrée plus bas : elle reçoit sa part plus tôt (16/10/2026).
+- Option A d'Etienne (17/10/2026) : les récompenses de liquidité ESTIMÉES d'une stratégie qui pose
+  des ordres (journées terminées, × prudence, liquidity_rewards.ranking_bonus) comptent dans son
+  CLASSEMENT, jamais dans son capital fantôme. La tenue de marché, payée surtout ainsi, peut donc
+  gagner une part du capital principal.
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -37,18 +41,22 @@ class Standing:
     log_growth: float
     started_at: datetime | None
     eliminated: bool
+    rewards: float = 0.0  # récompenses estimées comptées pour le classement (hors capital)
 
     def days(self, now: datetime) -> float:
         return (now - self.started_at).total_seconds() / 86400 if self.started_at else 0.0
 
 
-def standing(name: str, ledger: Ledger, eliminated: set[str]) -> Standing:
+def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0.0) -> Standing:
+    """`rewards` : récompenses estimées (option A), ajoutées au capital réalisé pour la croissance
+    seulement ; `realized_capital` reste le vrai capital du fantôme."""
     state = ledger.state
     realized = float(state.realized_capital())
     initial = float(state.initial_capital)
-    growth = math.log(realized / initial) if realized > 0 and initial > 0 else float("-inf")
+    judged = realized + max(0.0, rewards)
+    growth = math.log(judged / initial) if judged > 0 and initial > 0 else float("-inf")
     return Standing(name, len(closed_trades(read_entries(ledger))), realized, initial, growth,
-                    state.epoch_started_at, name in eliminated)
+                    state.epoch_started_at, name in eliminated, round(max(0.0, rewards), 4))
 
 
 def ranking(standings: list[Standing]) -> list[Standing]:
@@ -174,12 +182,15 @@ def retire_inactive(main: Ledger, competitors: dict[str, Ledger], standings: lis
 
 
 def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
-              now: datetime | None = None) -> dict:
-    """Met à jour champion et éliminations dans le journal principal. Retourne un résumé."""
+              now: datetime | None = None, rewards: dict[str, float] | None = None) -> dict:
+    """Met à jour champion et éliminations dans le journal principal. Retourne un résumé.
+    `rewards` : {nom: récompenses estimées comptées pour le classement} (option A)."""
+    rewards = rewards or {}
     now = now or datetime.now(timezone.utc)
     # Attention : chaque écriture remplace main.state par une nouvelle copie ; on relit
     # donc toujours main.state (jamais une référence gardée d'avant l'écriture).
-    standings = [standing(name, ledger, main.state.eliminated) for name, ledger in competitors.items()]
+    standings = [standing(name, ledger, main.state.eliminated, rewards.get(name, 0.0))
+                 for name, ledger in competitors.items()]
     # Règles obligatoires (config/promotion.yaml) : pas de valeur par défaut silencieuse.
     min_trades = int(cfg["min_closed_trades"])
     gates = {"now": now, "min_age_hours": float(cfg["min_age_hours"]),
@@ -200,7 +211,7 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)
         events.append(f"élimination : {loser.name}")
     events += [f"retrait (inactive) : {n}" for n in retire_inactive(main, competitors, standings, cfg, now)]
-    final = ranking([standing(n, l, main.state.eliminated) for n, l in competitors.items()])
+    final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0)) for n, l in competitors.items()])
     shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
                         champion=main.state.champion, keep_growth=keep, **gates)
     return {"champion": main.state.champion, "events": events, "allocation": shares,
