@@ -244,4 +244,4 @@ def test_layout_is_set_by_the_researcher_with_guardrails(tmp_path):
     page = dashboard.render(data)
     assert data["mise_en_page"] == lay and EVIL not in page  # texte du chercheur échappé comme le reste
     repo = dashboard.layout(ROOT)  # la configuration du dépôt est valide
-    assert repo["ordre"][0] == "resume" and not set(repo["masquer"]) & {"resume", "capital"}
+    assert repo["ordre"][0] in ("organisme", "resume") and not set(repo["masquer"]) & {"organisme", "resume", "capital"}

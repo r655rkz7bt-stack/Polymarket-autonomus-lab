@@ -26,7 +26,9 @@ et ce qui va se passer ? »** Si non, plus bas, replié ou caché.
 
 ## Garde-fous (non négociables)
 - **Règle n°1** : le capital, le solde DISPONIBLE et l'état de faillite restent toujours visibles en
-  haut (blocs `resume` et `capital` : le code refuse de les cacher).
+  haut (blocs `organisme`, `resume` et `capital` : le code refuse de les cacher).
+- **Couleurs** (17/10/2026) : gris partout ; bleu `--blue` = hausse, rouge `--red` = baisse, toujours
+  avec ▲ ▼ (jamais la couleur seule). Contraste vérifié sur le fond des cartes (7,6:1 et 6,5:1).
 - Les gains latents ne sont jamais présentés comme de l'argent disponible ; une estimation (ex.
   récompenses de liquidité) est toujours marquée comme telle.
 - Tout texte venu de l'extérieur (questions de marchés, articles) reste affiché comme du texte
@@ -54,3 +56,15 @@ soit environ 17 écrans**. Objectif raisonnable : la moitié.
 
 Ordre appliqué le 17/10/2026 (point de départ) : résumé, aujourd'hui, arène, capital, positions,
 opérations, ordres posés, organisme, décisions, système. Rien n'a été caché : à toi de juger.
+
+## Refonte du 17/10/2026 (demande d'Etienne : « remets le cœur en haut, plus propre »)
+- Le cœur (`organisme`) est en tête : capital total, variation depuis le départ, solde disponible
+  et la phrase de situation au-dessus ; autour, des RÉSULTATS (capital, 24 h, gains réalisés et
+  latents, arène, palier, positions, réussite, récompenses estimées, frais, rythme). Le système
+  (sources, IA, pouls, terminal) est descendu dans `systeme`.
+- Légendes en planche anatomique propre : ordinateur, deux colonnes rangées dans l'ordre vertical
+  de leurs points ; téléphone, trois au-dessus et trois en dessous. Chaque trait part du centre
+  d'un point du cœur (cercle bleu / rouge / blanc selon le sens), jamais d'entre deux points.
+- Arène : chaque courbe (bleue au-dessus du départ, rouge en dessous) se dessine à son apparition,
+  au survol et au toucher ; sur téléphone elle remplace la piste. Le classement dans le temps
+  redessine la ligne survolée.

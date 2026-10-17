@@ -44,7 +44,9 @@ def _marks(db, tokens) -> dict[str, Decimal]:
 
 BLOCKS = ("resume", "aujourdhui", "organisme", "capital", "arene", "entonnoir", "positions", "ordres-poses",
           "journal", "decisions-recentes", "systeme")
-ALWAYS_VISIBLE = ("resume", "capital")  # règle n°1 : capital, solde disponible, faillite
+# Règle n°1 : capital, solde disponible, faillite. Depuis le 17/10/2026, le cœur (« organisme ») porte
+# le capital total, le solde disponible et l'état de faillite en tête de page : lui non plus ne se cache pas.
+ALWAYS_VISIBLE = ("organisme", "resume", "capital")
 
 
 def layout(root: Path) -> dict:
