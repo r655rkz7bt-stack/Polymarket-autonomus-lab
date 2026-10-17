@@ -87,7 +87,12 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    les frais). Avant de juger une stratégie qui pose des ordres, regarde la section « Ordres
    posés » du tableau de bord (`markout.py`) : si les ordres servis font nettement moins bien que
    les ordres manqués, elle se fait choisir contre elle (sélection adverse). Les récompenses
-   estimées (`liquidity_rewards.py`) ne comptent pas dans le capital.
+   estimées (`liquidity_rewards.py`) ne comptent pas dans le capital. Depuis le 17/10/2026
+   (option A d'Etienne), elles comptent dans le CLASSEMENT de l'arène, jamais dans le capital
+   d'un fantôme. Le versement au capital PUBLIC (noyau, écriture `REWARD`) est en attente :
+   **dès qu'une stratégie qui pose des ordres obtient une part du capital principal**, préviens
+   Etienne (« À la une » du tableau de bord et réponse de session). C'est le moment de faire la
+   partie noyau de `proposals/2026-10-17_recompenses_au_capital.md`.
    Outil tout prêt : `src/polymarket_agent/idea_test.py` (marchés résolus d'une famille, prix à
    un instant sans regard vers le futur, jugement hors échantillon, simulation avec frais) ;
    exemple d'emploi : `experiments/meteo_backtest/station_bias.py`.
