@@ -42,7 +42,7 @@ def _marks(db, tokens) -> dict[str, Decimal]:
     return marks
 
 
-BLOCKS = ("resume", "aujourdhui", "organisme", "capital", "arene", "entonnoir", "positions", "ordres-poses",
+BLOCKS = ("resume", "aujourdhui", "organisme", "principal", "capital", "arene", "entonnoir", "positions", "ordres-poses",
           "journal", "decisions-recentes", "systeme")
 # Règle n°1 : capital, solde disponible, faillite. Depuis le 17/10/2026, le cœur (« organisme ») porte
 # le capital total, le solde disponible et l'état de faillite en tête de page : lui non plus ne se cache pas.
@@ -68,6 +68,50 @@ def layout(root: Path) -> dict:
     points = [str(p).strip()[:280] for p in (une.get("points") or []) if str(p).strip()][:5]
     return {"ordre": ordre, "masquer": masquer, "replier": list(dict.fromkeys(replier)),
             "a_la_une": {"date": str(une.get("date") or ""), "points": points}}
+
+
+def principal_orders(entries: list[dict], questions: dict[str, str], open_orders: list[dict],
+                     limit: int = 60) -> dict:
+    """Ordres du capital PRINCIPAL (le vrai portefeuille, règle n°1), à part de ceux de l'arène
+    (demande d'Etienne, 17/10/2026) : exécutions du journal signé, la plus récente d'abord, et
+    ordres posés encore ouverts."""
+    token_market, token_outcome, rows = {}, {}, []
+    counts = {"achats": 0, "ventes": 0, "reglements": 0}
+    for e in entries:
+        t, d = e.get("type"), e.get("data") or {}
+        if t not in ("BUY", "SELL", "SETTLE"):
+            continue
+        tok = str(d.get("token_id"))
+        if t == "BUY":
+            token_market[tok], token_outcome[tok] = d.get("market_id", ""), d.get("outcome", "")
+        mid = d.get("market_id") or token_market.get(tok, "")
+        extra = d.get("extra") or {}
+        row = {"date": e["ts"][:16], "sens": {"BUY": "achat", "SELL": "vente", "SETTLE": "règlement"}[t],
+               "marche": questions.get(mid, mid), "issue": d.get("outcome") or token_outcome.get(tok, ""),
+               "strategie": d.get("strategy_id", ""), "limite": extra.get("order_type") == "limite"}
+        if t == "SETTLE":
+            counts["reglements"] += 1
+            row.update(prix=float(d.get("payout_per_share", 0)), parts=None, montant=None, resolution=d.get("resolution", ""))
+        else:
+            counts["achats" if t == "BUY" else "ventes"] += 1
+            price, shares, fee = float(d.get("price", 0)), float(d.get("shares", 0)), float(d.get("fee", 0))
+            row.update(prix=round(price, 4), parts=round(shares, 2), frais=round(fee, 4),
+                       montant=round(shares * price + (fee if t == "BUY" else -fee), 2))
+            if extra.get("est_probability"):
+                row["prevision"] = round(float(extra["est_probability"]), 3)
+        rows.append(row)
+    rows.reverse()
+    posed = []
+    for o in open_orders:
+        try:
+            prop = json.loads(o["proposal"])
+        except (TypeError, ValueError):
+            continue
+        posed.append({"date": str(o.get("created_at", ""))[:16], "sens": "achat" if o.get("side") == "BUY" else "vente",
+                      "marche": questions.get(prop.get("market_id", ""), prop.get("market_id", "")),
+                      "issue": prop.get("outcome", ""), "prix": float(prop.get("max_price", 0)),
+                      "parts": float(o.get("remaining", 0)), "strategie": prop.get("strategy_id", "")})
+    return {"executions": rows[:limit], "poses": posed, "compte": counts}
 
 
 def _fr(x: float, d: int = 1) -> str:
@@ -424,6 +468,12 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)
+    try:
+        main_open = db.open_orders("principal")
+    except Exception:  # noqa: BLE001 - base sans table des ordres posés
+        main_open = []
+    data["ordres_principal"] = principal_orders(entries["principal"], questions, main_open)
+    data["ordres_principal"]["clotures"] = [t for t in closed if t["portefeuille"] == "principal"][:20]
     # La situation en une phrase (en tête du cœur) et les derniers changements de champion.
     data["promotions"] = promotions(entries["principal"])
     data["situation"] = situation(capital, arena, data["promotions"], arena_rules(settings, root),
