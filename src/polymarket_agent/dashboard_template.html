@@ -6,15 +6,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
 /* Mise en page : un organisme vivant, en nuances de gris, inspiré de Polymarket.
-   Haut : la situation en une phrase et un chiffre. Puis le cœur (le cycle qui bat), entouré
-   des constantes vitales en police « code ». Puis le détail : capital, arène, positions, journal.
-   Gris uniquement : le sens (gain / perte, marche / panne) est porté par des signes
-   (▲ ▼ ● ○), jamais par une couleur seule. */
+   Haut (refonte du 17/10/2026, demande d'Etienne) : le cœur qui bat, entouré des RÉSULTATS
+   (capital, 24 h, gains, arène, palier…), en planche anatomique propre : légendes en deux
+   colonnes, traits qui partent d'un point du cœur. Puis le résumé et le détail.
+   Couleurs : gris partout ; bleu = hausse, rouge = baisse (toujours avec ▲ ▼ : jamais la couleur
+   seule). Contraste vérifié sur le fond des cartes : bleu 7,6:1, rouge 6,5:1. */
 :root {
   --bg: #0b0b0c; --card: #141416; --raised: #1c1c1f; --line: #26262a; --line-2: #313136;
   --ink: #f4f4f5; --ink-2: #c4c4c8; --muted: #8e8e94; --faint: #6c6c72;
   --dot-hi: #f4f4f5; --dot-mid: #8e8e94; --dot-lo: #3a3a3f; --dot-ghost: #232327;
   --wash: rgba(255,255,255,0.06);
+  --blue: #6ea8fe; --blue-soft: rgba(110,168,254,0.16); --blue-line: rgba(110,168,254,0.55);
+  --red: #f47174; --red-soft: rgba(244,113,116,0.16); --red-line: rgba(244,113,116,0.55);
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   color-scheme: dark;
@@ -41,7 +44,8 @@ a { color: inherit; }
 .live span { overflow: hidden; text-overflow: ellipsis; }
 .live i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); flex: none; }
 .live.alive i { animation: blink 1s ease-in-out infinite; }
-.live.dead i { background: transparent; border: 1.5px solid var(--muted); }
+.live.dead i { background: transparent; border: 1.5px solid var(--red); }
+.live.alive i { background: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 .tabs { max-width: 1180px; margin: 0 auto; display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none;
   padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
@@ -59,6 +63,7 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
 .kicker { font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .note { color: var(--ink-2); font-size: 0.86rem; max-width: 72ch; margin: 0; }
 .empty { color: var(--muted); font-style: italic; margin: 0; }
+.grid2 > .wide { grid-column: 1 / -1; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px; }
 
 /* --- résumé (le chiffre d'abord, comme « 91 % chance … ») */
@@ -110,27 +115,37 @@ h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; t
 
 /* --- organisme : un cœur anatomique en points, ses constantes tout autour (planche anatomique) */
 .organism { position: relative; overflow: hidden; margin-inline: calc(50% - 50vw); border-radius: 0;
-  border-left: 0; border-right: 0; padding: 22px 0; }
+  border-left: 0; border-right: 0; padding: 24px 0 18px;
+  background: radial-gradient(ellipse 60% 70% at 50% 58%, #18181b 0%, var(--card) 70%); }
+.o-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 28px; }
+.o-head .headline { color: var(--ink-2); font-weight: 500; }
+.o-foot { margin: 8px 0 0; text-align: center; }
 .organism .inner { max-width: 1180px; margin: 0 auto; padding: 0 max(36px, env(safe-area-inset-right, 0px)) 0 max(36px, env(safe-area-inset-left, 0px)); }
 .stage { position: relative; width: 100%; height: 640px; margin-top: 6px; }
 .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.lab { position: absolute; font-family: var(--mono); max-width: 240px; pointer-events: none; }
-.lab .k { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.lab .v { font-size: 0.95rem; color: var(--ink); font-weight: 500; margin-top: 2px; line-height: 1.25; }
+.lab { position: absolute; font-family: var(--mono); width: 230px; pointer-events: none; }
+.lab .k { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 14px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lab .v { font-size: 0.95rem; color: var(--ink); font-weight: 500; margin-top: 3px; line-height: 1.25; overflow-wrap: anywhere; }
 .lab .v b { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
-.lab .s { font-size: 0.72rem; color: var(--ink-2); margin-top: 2px; line-height: 1.35; }
+.lab .s { font-size: 0.72rem; color: var(--ink-2); margin-top: 3px; line-height: 1.4; overflow-wrap: anywhere; }
+.lab .up, .lab .down, .lab .flat { white-space: normal; }
 .lab.left { text-align: right; } .lab.mid { text-align: center; }
+.lab.mid .k { white-space: normal; }
 .console { font: 0.78rem/1.75 var(--mono); color: var(--muted); background: var(--bg); margin-top: 16px;
   border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; overflow-x: auto; white-space: pre; }
 .console .p { color: var(--ink-2); }
 .console .w { color: var(--ink); }
 .pulse { margin-top: 10px; }
 @media (max-width: 600px) {
-  .lab { max-width: 112px; }
-  .lab .k { font-size: 0.56rem; letter-spacing: 0.06em; white-space: normal; }
-  .lab .v { font-size: 0.76rem; } .lab .v b { font-size: 1.1rem; }
-  .lab .s { font-size: 0.62rem; }
+  .lab .k { font-size: 0.54rem; letter-spacing: 0.05em; line-height: 12px; }
+  .lab .v { font-size: 0.74rem; } .lab .v b { font-size: 1.05rem; }
+  .lab .s { font-size: 0.6rem; }
+  .console { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.7rem; }
 }
+/* Courbes qui se dessinent (comme sur Polymarket) : au survol, au toucher, à l'apparition. */
+.draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.spark-wrap { cursor: pointer; }
 
 /* --- graphiques */
 .chart { position: relative; }
@@ -161,14 +176,14 @@ svg text { font-family: var(--mono); }
   padding: 2px 9px; border-radius: 999px; background: var(--raised); color: var(--ink-2); border: 1px solid var(--line-2);
   white-space: nowrap; vertical-align: 1px; margin-left: 6px; }
 .chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.chip.hi { color: var(--ink); background: #2a2a2e; }
+.chip.hi { color: var(--blue); background: var(--blue-soft); border-color: var(--blue-line); }
 .chip.off::before { background: transparent; border: 1.2px solid currentColor; }
 @media (max-width: 720px) {
-  .row { grid-template-columns: 22px minmax(0, 1fr) 96px; grid-template-areas: "rank name cap" "rank track track"; row-gap: 6px; }
+  .row { grid-template-columns: 22px minmax(0, 1fr) 96px; grid-template-areas: "rank name cap" "rank spark spark"; row-gap: 8px; }
   .row .rank { grid-area: rank; align-self: start; padding-top: 2px; } .row .name { grid-area: name; }
-  .row .c-cap { grid-area: cap; align-self: start; } .row .c-track { grid-area: track; }
-  .row .c-ops, .row .c-spark { display: none; }
-  .row.th .c-track { display: none; }
+  .row .c-cap { grid-area: cap; align-self: start; } .row .c-spark { grid-area: spark; }
+  .row .c-ops, .row .c-track { display: none; }
+  .row.th .c-spark { display: none; }
 }
 
 /* --- aujourd'hui : quatre colonnes de phrases (capital, arène, opérations, machine) */
@@ -211,10 +226,10 @@ td.s { min-width: 160px; }
 td { color: var(--ink-2); }
 .detail { display: block; color: var(--muted); font-size: 0.76rem; margin-top: 3px; overflow-wrap: anywhere; }
 .up, .down, .flat { font-family: var(--mono); white-space: nowrap; }
-.up { color: var(--ink); } .down { color: var(--ink-2); } .flat { color: var(--muted); }
+.up { color: var(--blue); } .down { color: var(--red); } .flat { color: var(--muted); }
 .state { display: inline-flex; align-items: center; gap: 8px; font: 500 0.8rem var(--mono); color: var(--ink); white-space: nowrap; }
 .state::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
-.state.down::before { background: transparent; border: 1.5px solid var(--ink-2); }
+.state.down::before { background: transparent; border: 1.5px solid var(--red); }
 .state.wait::before { background: linear-gradient(90deg, var(--ink-2) 50%, transparent 50%); border: 1.5px solid var(--ink-2); }
 .state.idle { color: var(--muted); } .state.idle::before { background: var(--dot-lo); }
 .state.down { color: var(--ink-2); } .state.wait { color: var(--ink-2); }
@@ -226,6 +241,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .live.alive i, .end-ring { animation: none; }
+  .draw { transition: none !important; }
 }
 </style>
 
@@ -242,21 +258,27 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     <span class="live" id="generated"><i></i><span>—</span></span>
   </div>
   <nav class="tabs" aria-label="Sections">
-    <a href="#resume">Résumé</a><a href="#aujourdhui">Aujourd'hui</a><a href="#organisme">Organisme</a><a href="#capital">Capital</a>
+    <a href="#organisme">Cœur</a><a href="#resume">Résumé</a><a href="#aujourdhui">Aujourd'hui</a><a href="#capital">Capital</a>
     <a href="#arene">Arène</a><a href="#entonnoir">Entonnoir</a><a href="#positions">Positions</a><a href="#journal">Journal</a><a href="#systeme">Système</a>
   </nav>
 </header>
 
 <main class="wrap">
-  <section id="resume" class="card hero" aria-label="Résumé de la situation">
-    <div class="kicker" id="hero-kicker">Situation</div>
-    <div class="hero-top">
+  <section id="organisme" class="card organism" aria-label="Le cœur : capital et résultats">
+    <div class="inner"><div class="o-head">
       <div>
+        <div class="kicker" id="hero-kicker">Capital total estimé</div>
         <div class="big" id="hero-value">—</div>
         <div class="hero-sub" id="hero-sub"></div>
       </div>
       <p class="headline" id="headline"></p>
-    </div>
+    </div></div>
+    <div class="stage" id="stage"><canvas id="heart" role="img" aria-label="Cœur du système"></canvas><div id="labels"></div></div>
+    <div class="inner"><p class="kicker o-foot" id="o-foot">un battement = un cycle de 5 min</p></div>
+  </section>
+
+  <section id="resume" class="card hero" aria-label="Résumé de la situation">
+    <div class="head"><h2>Résumé</h2><span class="kicker" id="resume-kicker"></span></div>
     <div class="une" id="une" hidden></div>
     <ul class="facts" id="facts"></ul>
     <div class="research" id="research" aria-label="Dernières actions du chercheur"></div>
@@ -264,26 +286,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       <div class="split-labels"><span id="split-left"></span><span id="split-right"></span></div>
       <div class="dots" id="split"></div>
     </div>
-    <div class="meter-row"><span id="meter-left"></span><span id="meter-right"></span></div>
-    <div class="dots" id="meter"></div>
   </section>
 
   <section id="aujourdhui" class="card" aria-label="Ce qui s'est passé aujourd'hui">
     <div class="head"><h2>Aujourd'hui</h2><span class="kicker">les dernières 24 h, en clair</span></div>
     <div class="today" id="today"></div>
-  </section>
-
-  <section id="organisme" class="card organism" aria-label="Organisme : le cycle qui bat">
-    <div class="inner"><div class="head"><h2>Organisme</h2><span class="kicker">un battement = un cycle de 5 min</span></div></div>
-    <div class="stage" id="stage"><canvas id="heart" role="img" aria-label="Cœur du système"></canvas><div id="labels"></div></div>
-    <div class="inner">
-    <div class="pulse">
-      <div class="head" style="margin-bottom:8px"><span class="kicker">Pouls · 96 derniers cycles (durée en secondes)</span>
-        <span class="kicker" id="pulse-legend">● réussi · ○ en erreur</span></div>
-      <div class="chart" id="pulse"></div>
-    </div>
-    <div class="console" id="console" aria-label="Constantes du système"></div>
-    </div>
   </section>
 
   <section id="capital" class="card">
@@ -339,6 +346,14 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   </section>
 
   <div class="grid2" id="systeme">
+    <section class="card wide"><div class="head"><h2>Pouls de la machine</h2><span class="kicker">un battement = un cycle de 5 min</span></div>
+      <div class="pulse">
+        <div class="head" style="margin-bottom:8px"><span class="kicker">96 derniers cycles (durée en secondes)</span>
+          <span class="kicker" id="pulse-legend">● réussi · ○ en erreur</span></div>
+        <div class="chart" id="pulse"></div>
+      </div>
+      <div class="console" id="console" aria-label="Constantes du système"></div>
+    </section>
     <section class="card"><div class="head"><h2>Sources d'information</h2><span class="kicker">observations 24 h</span></div>
       <div class="scroll"><table id="sources"></table></div></section>
     <section class="card"><div class="head"><h2>Système</h2></div><div id="health"></div><div id="costs"></div><div id="experiments"></div></section>
@@ -360,7 +375,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // sont jamais cachés (filtré côté Python). Les liens du menu suivent le même ordre.
   (function layout() {
     var L = D.mise_en_page || {}, ids = (L.ordre || []).slice(), hide = L.masquer || [];
-    var blocks = ["resume", "aujourdhui", "organisme", "capital", "arene", "entonnoir", "positions", "ordres-poses", "journal",
+    var blocks = ["organisme", "resume", "aujourdhui", "capital", "arene", "entonnoir", "positions", "ordres-poses", "journal",
       "decisions-recentes", "systeme"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
     if (blocks.length) {
       var anchor = blocks[blocks.length - 1].nextSibling, parent = blocks[0].parentNode;
@@ -384,6 +399,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     }
   })();
   var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Dessin à la première apparition à l'écran (une seule fois par élément).
+  var seen = window.IntersectionObserver ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { seen.unobserve(en.target); if (en.target._play) en.target._play(); } }); },
+    { threshold: 0.4 }) : null;
+  function onFirstView(node) { if (seen && node && node._play) seen.observe(node); }
 
   // ---------------------------------------------------------------- outils
   var fmt = function (x, d) { return x === null || x === undefined || x === "" || isNaN(Number(x)) ? "—" :
@@ -505,11 +525,12 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   var perf = initial ? (total / initial - 1) * 100 : 0;
   var arena = D.arene || [], best = arena.filter(function (s) { return !s.eliminee && s.operations > 0; })[0];
   var share = arena.filter(function (s) { return s.champion; })[0];
-  document.getElementById("hero-kicker").textContent = "Situation · " + short(D.genere_le) + " UTC";
+  document.getElementById("hero-kicker").textContent = "Capital total estimé · " + short(D.genere_le) + " UTC";
+  document.getElementById("resume-kicker").textContent = "situation au " + short(D.genere_le) + " UTC";
   var hv = document.getElementById("hero-value"); hv.textContent = fmt(total, 2);
-  hv.appendChild(el("small", null, "capital total estimé"));
   var hs = document.getElementById("hero-sub"); hs.textContent = "";
-  hs.appendChild(delta(perf, 2, " %")); hs.appendChild(document.createTextNode("  depuis le départ (" + fmt(initial, 0) + ")"));
+  hs.appendChild(delta(perf, 2, " %")); hs.appendChild(document.createTextNode("  depuis le départ (" + fmt(initial, 0) + ")" +
+    " · disponible " + fmt(cash, 2)));
   var headline = C.faillite ? "Faillite : le trading est arrêté définitivement. Seul Etienne peut réinitialiser."
     : !alive ? "Le cœur ne bat plus depuis " + ago(beatMin).replace("il y a ", "") + " : vérifier cron-job.org et GitHub Actions."
     : C.champion ? "Le capital principal suit " + C.champion + ", et l'arène continue de chercher mieux."
@@ -519,14 +540,9 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     return a + H.cycles_24h[k]; }, 0);
   var srcs = D.sources ? D.sources.etat : {}, srcNames = Object.keys(srcs).filter(function (n) { return n !== "justesse_gemini" && n !== "sources_resolution"; });
   var srcOk = srcNames.filter(function (n) { return /^ok/.test(srcs[n]); }).length;
+  // Les chiffres du capital, des gains, de l'arène et du palier sont autour du cœur (en haut) :
+  // ici, seulement ce qui n'y est pas.
   [
-    "Solde disponible " + fmt(cash, 2) + ", investi " + fmt(invested, 2) + " sur " + C.positions_ouvertes + " position(s).",
-    "Gains réalisés " + (Number(C.gains_realises_nets) >= 0 ? "+" : "−") + fmt(Math.abs(C.gains_realises_nets), 2) +
-      ", latents " + (Number(C.gains_latents) >= 0 ? "+" : "−") + fmt(Math.abs(C.gains_latents), 2) + " (jamais comptés comme liquidités).",
-    best ? "Meilleure stratégie : " + best.nom + " (" + fmt(best.capital, 2) + " après " + best.operations + " opérations)."
-      : "Aucune stratégie n'a encore clôturé d'opération.",
-    cyclesOk + " cycle(s) réussi(s) sur " + cyclesAll + " en 24 h · " + srcOk + "/" + srcNames.length + " sources en marche.",
-    "Palier suivant " + fmt(target, 0) + " (capital réalisé " + fmt(realized, 2) + ").",
     "Frais payés " + fmt(C.frais_payes, 2) + " · perte maximale depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %.",
     D.audit ? "Audit indépendant : " + fmt(D.audit.verifiees, 0) + " exécutions vérifiées contre l'historique de Polymarket, " +
       fmt(D.audit.reglements_verifies || 0, 0) + " règlements conformes au résultat officiel, " +
@@ -550,15 +566,6 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var narrow = document.getElementById("split").clientWidth < 560;
     dotGrid(document.getElementById("split"), n, narrow ? 20 : 50, function (i) { return i < k ? "var(--dot-hi)" : "var(--dot-mid)"; },
       "Capital : " + k + " points disponibles, " + (n - k) + " points investis sur 100");
-  })();
-  (function meter() {
-    var start = target / 1.5, lo = Math.min(start, initial), p = Math.max(0, Math.min(1, (realized - lo) / (target - lo || 1)));
-    var n = 50, k = Math.round(p * n);
-    document.getElementById("meter-left").textContent = "Vers le palier " + fmt(target, 0);
-    var mr = document.getElementById("meter-right"); mr.appendChild(el("b", null, fmt(p * 100, 0) + " %"));
-    mr.appendChild(document.createTextNode(" · " + fmt(realized, 0) + " réalisé"));
-    dotGrid(document.getElementById("meter"), n, document.getElementById("meter").clientWidth < 560 ? 25 : 50, function (i) { return i < k ? "var(--dot-hi)" : "var(--dot-lo)"; },
-      "Progression vers le palier : " + fmt(p * 100, 0) + " %");
   })();
 
   // ---------------------------------------------------------------- organisme
@@ -593,22 +600,51 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   })();
 
   var lastCycle = H.dernier_cycle || {};
-  var obs24 = (D.sources && D.sources.observations_24h) || {}, rssObs = (obs24.rss || 0) + (obs24.rss_officiel || 0);
-  // Planche anatomique : chaque partie du cœur porte une fonction du système (m : affichée sur téléphone).
+  // Résultats autour du cœur (refonte du 17/10/2026) : chaque partie porte un RÉSULTAT ; le
+  // système (sources, IA, marchés scannés) est descendu dans le bloc « Système ».
+  var curve = D.courbe || [], ch24 = null, ref24 = null;
+  if (curve.length) { var tEnd = new Date(curve[curve.length - 1][0]).getTime();
+    for (var ci = 0; ci < curve.length; ci++) if (new Date(curve[ci][0]).getTime() >= tEnd - 864e5) { ref24 = curve[ci][1]; break; }
+    if (ref24 !== null) ch24 = total - ref24; }
+  var closedAll = D.cloturees || [], wins = closedAll.filter(function (r) { return r.resultat > 0; }).length;
+  var rewards = (D.ordres_poses || {}).recompenses || {}, bestReward = Object.keys(rewards).reduce(function (m, k) {
+    return Math.max(m, Number(rewards[k].versable) || 0); }, 0);
+  var leader = arena.filter(function (s) { return !s.eliminee; })[0];
+  var gainsR = Number(C.gains_realises_nets), gainsL = Number(C.gains_latents);
+  var palierPct = Math.max(0, Math.min(1, (realized - Math.min(target / 1.5, initial)) / (target - Math.min(target / 1.5, initial) || 1))) * 100;
+  var tone = function (x) { return x > 0.005 ? "up" : x < -0.005 ? "down" : ""; };
+  // Morceaux de texte : chaîne ou nœud (variation signée ▲ ▼ en bleu / rouge).
+  var txt = function () { var box = el("span"); Array.prototype.forEach.call(arguments, function (p) {
+    box.appendChild(p instanceof Node ? p : document.createTextNode(String(p))); }); return box; };
+  // Planche anatomique : partie du cœur (u, v : position dans le cœur), côté de la légende,
+  // m : visible sur téléphone, p : priorité (la plus basse disparaît si la place manque).
   var LABELS = [
-    { a: [-0.155, -0.50], k: "veine cave · sources", p: 3, v: srcOk + "/" + srcNames.length + " en marche", s: fmt(rssObs, 0) + " articles RSS en 24 h", m: 0 },
-    { a: [0.04, -0.52], k: "aorte · décisions", p: 6, v: fmt(SYS.propositions, 0) + " propositions", s: fmt(SYS.acceptees, 0) + " acceptées · " + fmt(SYS.executions, 0) + " exécutées", m: 1 },
-    { a: [0.33, -0.29], k: "artère pulmonaire · IA", p: 2, v: D.couts.appels_ia_aujourdhui + " / " + D.couts.plafond_ia, s: "appels Gemini aujourd'hui", m: 0 },
-    { a: [-0.15, -0.16], k: "nœud sinusal · rythme", p: 9, b: BPM ? BPM + " bpm" : "arrêt", s: cyclesOk + "/" + cyclesAll + " cycles réussis en 24 h", m: 1 },
-    { a: [-0.355, -0.05], k: "oreillette droite · cycle", p: 5, v: (lastCycle.date ? short(lastCycle.date) + " UTC" : "—") + " · " + (lastCycle.statut || "—"),
-      s: "battement " + ago(beatMin) + (avgDur === null ? "" : " · " + fmt(avgDur, 0) + " s"), m: 1 },
-    { a: [0.345, -0.09], k: "oreillette gauche · marchés", p: 4, v: fmt(SYS.marches_scannes, 0) + " scannés", s: fmt(SYS.surveilles, 0) + " surveillés", m: 0 },
-    { a: [0.27, 0.2], k: "ventricule gauche · capital", p: 10, b: fmt(total, 2), s: "disponible " + fmt(cash, 0) + " · investi " + fmt(invested, 0), m: 1 },
-    { a: [-0.24, 0.12], k: "ventricule droit · arène", p: 7, v: fmt(SYS.strategies_actives, 0) + " stratégies", s: "champion : " + (C.champion || "aucun"), m: 1 },
-    { a: [0.02, 0.24], k: "coronaire · positions", p: 1, v: fmt(SYS.positions_tous_portefeuilles, 0) + " ouvertes", s: fmt(SYS.ordres_poses, 0) + " ordre(s) posé(s)", m: 0 },
-    { a: [-0.13, 0.47], k: "apex · palier", p: 8, v: fmt(Math.max(0, Math.min(1, (realized - Math.min(target / 1.5, initial)) /
-      (target - Math.min(target / 1.5, initial) || 1))) * 100, 0) + " % vers " + fmt(target, 0), s: "capital réalisé " + fmt(realized, 0), m: 1 }
+    { k: "veine cave · frais", u: -0.155, v: -0.47, sd: "l", p: 1, m: 0,
+      v1: "frais payés " + fmt(C.frais_payes, 2), s: "perte max. depuis un sommet " + fmt(C.drawdown_max * 100, 1) + " %" },
+    { k: "nœud sinusal · rythme", u: -0.17, v: -0.17, sd: "l", p: 2, m: 0, b: BPM ? BPM + " bpm" : "arrêt",
+      s: cyclesOk + "/" + cyclesAll + " cycles réussis en 24 h", t: cyclesAll && cyclesOk < cyclesAll ? "down" : "" },
+    { k: "oreillette droite · 24 h", u: -0.28, v: -0.05, sd: "l", p: 9, m: 1,
+      v1: ch24 === null ? "—" : delta(ch24, 2), s: ref24 === null ? "pas encore 24 h de courbe" : "capital il y a 24 h : " + fmt(ref24, 2), t: tone(ch24 || 0) },
+    { k: "ventricule droit · arène", u: -0.12, v: 0.14, sd: "l", p: 8, m: 1,
+      v1: C.champion ? sname(C.champion) : "pas encore de champion",
+      s: leader ? txt("en tête : " + sname(leader.nom) + " ", delta((leader.capital / initial - 1) * 100, 1, " %")) : "aucune stratégie classée",
+      t: leader ? tone(leader.capital - initial) : "" },
+    { k: "apex · palier", u: -0.13, v: 0.44, sd: "l", p: 6, m: 1, v1: fmt(palierPct, 0) + " % vers " + fmt(target, 0),
+      s: "capital réalisé " + fmt(realized, 2) },
+    { k: "aorte · gains", u: 0.0, v: -0.40, sd: "r", p: 7, m: 1, v1: txt("réalisés ", delta(gainsR, 2)),
+      s: txt("latents ", delta(gainsL, 2), " (pas encore encaissés)"), t: tone(gainsR) },
+    { k: "artère pulmonaire · récompenses", u: 0.27, v: -0.29, sd: "r", p: 3, m: 0,
+      v1: bestReward ? "+" + fmt(bestReward, 2) + " $ estimés" : "aucune pour l'instant", s: "tenue de marché, 7 j · hors capital",
+      t: bestReward ? "up" : "" },
+    { k: "oreillette gauche · positions", u: 0.28, v: -0.09, sd: "r", p: 5, m: 1, v1: fmt(C.positions_ouvertes, 0) + " positions",
+      s: "investi " + fmt(invested, 2) },
+    { k: "coronaire · réussite", u: 0.03, v: 0.12, sd: "r", p: 4, m: 0,
+      v1: closedAll.length ? wins + " gagnées sur " + closedAll.length : "aucune opération", s: "dernières opérations clôturées (arène)",
+      t: closedAll.length ? (wins * 2 >= closedAll.length ? "up" : "down") : "" },
+    { k: "ventricule gauche · capital", u: 0.2, v: 0.2, sd: "r", p: 10, m: 1, b: fmt(total, 2),
+      s: txt(delta(perf, 2, " %"), " depuis le départ · disponible " + fmt(cash, 0)), t: tone(perf) }
   ];
+  document.getElementById("o-foot").textContent = "un battement = un cycle de 5 min · cercle bleu = en hausse, rouge = en baisse";
 
   // Le cœur : un cœur humain simplifié (deux ventricules, deux oreillettes, aorte, veine cave,
   // artère pulmonaire), dessiné en points comme une gravure au pointillé : relief doux (formes
@@ -670,12 +706,22 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var LIGHT = (function () { var l = [-0.42, -0.5, 0.76], n = Math.hypot(l[0], l[1], l[2]); return l.map(function (x) { return x / n; }); })();
     var W, Hs, S, step, hx, hy, dots, ghosts, rects, lines, dpr, raf = null, t0 = performance.now();
     var bg = null;
+    // Boîte englobante du cœur (en unités du cœur), calculée une fois : sert à centrer le cœur et à
+    // poser les deux colonnes de légendes juste à côté.
+    var HB = (function () { var b = { u0: 1, u1: -1, v0: 1, v1: -1 };
+      for (var u = -0.7; u <= 0.7; u += 0.01) for (var v = -0.75; v <= 0.75; v += 0.01) if (field(u, v)[0] > 0.02) {
+        b.u0 = Math.min(b.u0, u); b.u1 = Math.max(b.u1, u); b.v0 = Math.min(b.v0, v); b.v1 = Math.max(b.v1, v); }
+      return b; })();
+    // Les points autour du cœur sont dans la MÊME gamme de gris que le cœur (gris neutre, un
+    // soupçon de bleu), un peu plus clairs près du cœur et qui s'éteignent vers les bords.
+    function ghostShade(gd) { var d = gd[2] / (S * 0.75); return Math.round(25 + 15 * Math.exp(-Math.max(0, d - 0.55) * 1.6)); }
     function paintBackground() {
       bg = document.createElement("canvas"); bg.width = cv.width; bg.height = cv.height;
-      var b = bg.getContext("2d"), base = Math.max(0.8, step * 0.1), dim = C.faillite ? 0.5 : alive ? 1 : 0.7;
-      b.setTransform(dpr, 0, 0, dpr, 0, 0); var sh = Math.round(40 * dim);
-      b.fillStyle = "rgb(" + sh + "," + sh + "," + (sh + 3) + ")"; b.beginPath();
-      ghosts.forEach(function (gd) { b.moveTo(gd[0] + base, gd[1]); b.arc(gd[0], gd[1], base, 0, 6.2832); }); b.fill();
+      var b = bg.getContext("2d"), base = Math.max(0.8, step * 0.1), dim = C.faillite ? 0.5 : alive ? 1 : 0.7, byShade = {};
+      b.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ghosts.forEach(function (gd) { var sh = Math.round(ghostShade(gd) * dim); (byShade[sh] = byShade[sh] || []).push(gd); });
+      Object.keys(byShade).forEach(function (sh) { b.fillStyle = "rgb(" + sh + "," + sh + "," + (+sh + 3) + ")"; b.beginPath();
+        byShade[sh].forEach(function (gd) { b.moveTo(gd[0] + base, gd[1]); b.arc(gd[0], gd[1], base, 0, 6.2832); }); b.fill(); });
     }
     function grain(i, j) { var s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return s - Math.floor(s) - 0.5; }
 
@@ -699,83 +745,101 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         dots.push({ x: x, y: y, b: b, reg: f[1], r: step * (0.07 + 0.24 * b), d: delay });
       }
     }
-    function placeLabels(list, narrow) {
-      // Chaque légende part du centre du cœur dans la direction de sa partie, et s'arrête au premier
-      // endroit libre : assez loin du cœur (marge du battement comprise) et des autres légendes.
-      var gap = step * 0.7 + (narrow ? 8 : 18), cx = hx, cy = hy - 0.03 * S, out = [], edge = narrow ? 14 : 36;
-      var items = list.map(function (L) { var ax = hx + L.a[0] * S, ay = hy + L.a[1] * S;
-        return { L: L, ax: ax, ay: ay, th: Math.atan2(ay - cy, ax - cx), w: L.el.offsetWidth, h: L.el.offsetHeight }; });
-      items.sort(function (p, q) { return p.th - q.th; });
-      var sep = narrow ? 0.7 : 0.42;
-      for (var it = 0; it < 80; it++) for (var i = 0; i < items.length; i++) {
-        var p = items[i], q = items[(i + 1) % items.length], d = q.th - p.th + (i === items.length - 1 ? 2 * Math.PI : 0);
-        if (d < sep) { var push = (sep - d) / 2; p.th -= push; q.th += push; } }
-      var heartDots = dots.filter(function (d, k) { return k % 2 === 0; });
-      function free(x, y, w, h) {
-        if (x < edge || y < 2 || x + w > W - edge || y + h > Hs - 2) return false;
-        for (var k = 0; k < heartDots.length; k++) { var hd = heartDots[k];
-          var ddx = Math.max(x - hd.x, 0, hd.x - x - w), ddy = Math.max(y - hd.y, 0, hd.y - y - h);
-          if (ddx * ddx + ddy * ddy < gap * gap) return false; }
-        for (var m = 0; m < out.length; m++) { var r = out[m];
-          if (x < r.x + r.w + 12 && x + w + 12 > r.x && y < r.y + r.h + 10 && y + h + 10 > r.y) return false; }
-        return true;
-      }
-      for (var n = 0; n < items.length; n++) { var o = items[n], found = null, bestLen = Infinity;
-        for (var da = 0; da <= 1.2; da += 0.1) for (var sg = -1; sg <= 1; sg += 2) { if (!da && sg > 0) continue;
-          var th = o.th + sg * da, dx = Math.cos(th), dy = Math.sin(th);
-          for (var t = 0; t < Math.max(W, Hs); t += 4) {
-            var x = cx + dx * t - o.w / 2, y = cy + dy * t - o.h / 2;
-            if (x < edge || y < 2 || x + o.w > W - edge || y + o.h > Hs - 2) break;
-            if (free(x, y, o.w, o.h)) {
-              var px = Math.max(x, Math.min(o.ax, x + o.w)), py = Math.max(y, Math.min(o.ay, y + o.h));
-              var len = Math.hypot(px - o.ax, py - o.ay) * (1 + 0.15 * da);
-              if (len < bestLen) { bestLen = len; found = { x: x, y: y, w: o.w, h: o.h, o: o, dx: dx }; }
-              break; } } }
-        if (!found) return null;
-        out.push(found);
-      }
+    // Le trait d'une légende part TOUJOURS du centre d'un point du cœur (le plus proche de la partie
+    // nommée, parmi les points assez visibles), jamais d'un endroit entre deux points.
+    function snap(u, v) { var x = hx + u * S, y = hy + v * S, best = null, bd = Infinity;
+      dots.forEach(function (d) { if (d.b < 0.3) return; var dd = (d.x - x) * (d.x - x) + (d.y - y) * (d.y - y);
+        if (dd < bd) { bd = dd; best = d; } });
+      return best || { x: x, y: y }; }
+    // Deux colonnes, à gauche et à droite du cœur. Dans chaque colonne, les légendes sont rangées
+    // dans l'ordre vertical de leurs points (les traits ne se croisent pas) et ne se chevauchent
+    // jamais (écart minimal `vgap`). Chaque trait : horizontal depuis le titre de la légende, puis
+    // un coude, puis droit vers son point.
+    function placeLabels(sides, colW, edge, gapX, vgap) {
+      var xL = hx + HB.u0 * S - gapX, xR = hx + HB.u1 * S + gapX, out = [];
+      ["l", "r"].forEach(function (sd) {
+        var arr = sides[sd].map(function (L) { var a = snap(L.u, L.v), k = L.el.firstChild;
+          return { L: L, ax: a.x, ay: a.y, h: L.el.offsetHeight, ky: k.offsetTop + k.offsetHeight / 2 }; });
+        arr.sort(function (p, q) { return p.ay - q.ay; });
+        arr.forEach(function (o, i) { o.y = Math.max(8, o.ay - o.ky, i ? arr[i - 1].y + arr[i - 1].h + vgap : 0); });
+        var limit = Hs - 8;
+        for (var i = arr.length - 1; i >= 0; i--) { if (arr[i].y + arr[i].h > limit) arr[i].y = limit - arr[i].h; limit = arr[i].y - vgap; }
+        if (arr.length && arr[0].y < 4) return out.push(null);
+        arr.forEach(function (o) {
+          var x = sd === "l" ? Math.max(edge, xL - colW) : Math.min(W - edge - colW, xR), ly = o.y + o.ky;
+          var ex = sd === "l" ? x + colW + 8 : x - 8, kx = sd === "l" ? Math.min(ex + 14, o.ax - 4) : Math.max(ex - 14, o.ax + 4);
+          out.push({ x: x, y: o.y, w: colW, h: o.h, o: o, side: sd, pts: [[ex, ly], [kx, ly], [o.ax, o.ay]] }); });
+      });
+      return out.indexOf(null) >= 0 ? null : out;
+    }
+    // Téléphone : trop étroit pour deux colonnes ; le cœur reste grand, trois légendes au-dessus
+    // et trois en dessous, rangées de gauche à droite dans l'ordre de leurs points (traits sans
+    // croisement) : trait vertical depuis la légende, un coude, puis droit vers le point.
+    function placeRows(rows, colW, edge, gap, top) {
+      var out = [];
+      ["t", "b"].forEach(function (rw) {
+        var arr = rows[rw].map(function (L) { var a = snap(L.u, L.v); return { L: L, ax: a.x, ay: a.y, h: L.el.offsetHeight }; });
+        arr.sort(function (p, q) { return p.ax - q.ax; });
+        var hMax = arr.reduce(function (m, o) { return Math.max(m, o.h); }, 0);
+        arr.forEach(function (o, i) {
+          var x = edge + i * (colW + gap) + (3 - arr.length) * (colW + gap) / 2, cx = x + colW / 2;
+          var y = rw === "t" ? top + hMax - o.h : Hs - 8 - hMax, ey = rw === "t" ? y + o.h + 6 : y - 6, ky = rw === "t" ? ey + 10 : ey - 10;
+          out.push({ x: x, y: y, w: colW, h: o.h, o: o, pts: [[cx, ey], [cx, ky], [o.ax, o.ay]] }); });
+      });
       return out;
     }
     function layout() {
       W = stage.clientWidth; var narrow = W < 600;
-      Hs = narrow ? Math.round(W * 1.6) : W < 900 ? 620 : 660; stage.style.height = Hs + "px";
-      dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(W * dpr); cv.height = Math.round(Hs * dpr);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
       layer.textContent = "";
       var list = LABELS.filter(function (L) { return !narrow || L.m; });
-      list.forEach(function (L) { var d = el("div", "lab"); d.appendChild(el("div", "k", L.k));
-        var v = el("div", "v"); if (L.b) v.appendChild(el("b", null, L.b)); else v.textContent = L.v; d.appendChild(v);
-        if (L.s) d.appendChild(el("div", "s", L.s)); layer.appendChild(d); L.el = d; });
-      // Ordinateur : on réduit d'abord le cœur. Téléphone : on garde le cœur grand et on allonge la
-      // scène (les légendes se logent au-dessus, en dessous et dans les angles libres du cœur).
-      // En dernier recours, on retire la légende la moins importante et on recommence.
-      var H0 = Hs;
-      function fit() {
-        var grows = narrow ? 7 : 3, minScale = narrow ? 0.82 : 0.55, got = null;
-        Hs = H0;
-        for (var grow = 0; grow <= grows && !got; grow++) {
-          if (grow) Hs = Math.round(Hs * 1.1);
-          var S0 = narrow ? W * 0.74 : Math.min(Hs * 0.86, W * 0.5);
-          for (S = S0; S >= S0 * minScale && !got; S *= 0.94) {
-            step = Math.max(5, Math.min(11, S / 54)); hx = W / 2; hy = Hs / 2 + 0.02 * S; build();
-            got = placeLabels(list, narrow); }
-        }
-        return got;
-      }
-      rects = fit();
-      while (!rects && list.length > 3) {
+      list.forEach(function (L) { var d = el("div", "lab" + (L.sd === "l" ? " left" : "")); d.appendChild(el("div", "k", L.k));
+        var v = el("div", "v"); if (L.b) v.appendChild(el("b", null, L.b)); else if (L.v1 instanceof Node) v.appendChild(L.v1); else v.textContent = L.v1;
+        d.appendChild(v);
+        if (L.s) { var sub = el("div", "s"); if (L.s instanceof Node) sub.appendChild(L.s); else sub.textContent = L.s; d.appendChild(sub); }
+        layer.appendChild(d); L.el = d; });
+      var edge = narrow ? 8 : 32, gapX = narrow ? 12 : 44, vgap = narrow ? 12 : 20, hw = HB.u1 - HB.u0, hh = HB.v1 - HB.v0;
+      if (narrow) {
+        var colN = Math.floor((W - 2 * edge - 2 * 10) / 3), rows = { t: [], b: [] };
+        list.forEach(function (L) { L.el.style.width = colN + "px"; L.el.className = "lab mid"; });
+        list.slice().sort(function (p, q) { return p.v - q.v; }).forEach(function (L, i) { rows[i < 3 ? "t" : "b"].push(L); });
+        var hT = rows.t.reduce(function (m, L) { return Math.max(m, L.el.offsetHeight); }, 0),
+          hB = rows.b.reduce(function (m, L) { return Math.max(m, L.el.offsetHeight); }, 0);
+        S = Math.min(W * 0.8, (W - 2 * edge) / hw);
+        var gapY = 30;
+        Hs = Math.ceil(8 + hT + gapY + hh * S + gapY + hB + 8);
+        step = Math.max(4.4, Math.min(11, S / 54));
+        hx = W / 2 - (HB.u0 + HB.u1) / 2 * S; hy = 8 + hT + gapY - HB.v0 * S;
+        stage.style.height = Hs + "px"; build();
+        rects = placeRows(rows, colN, edge, 10, 8);
+      } else {
+      var minCol = narrow ? 104 : 190, maxCol = narrow ? 150 : 250, colW;
+      S = narrow ? W * 0.62 : Math.min(620, W * 0.44);
+      for (;;) { colW = Math.min(maxCol, Math.floor((W - hw * S - 2 * edge - 2 * gapX) / 2));
+        if (colW >= minCol || S < W * 0.3) break; S *= 0.96; }
+      list.forEach(function (L) { L.el.style.width = colW + "px"; });
+      // En dernier recours (écran très étroit, légendes trop hautes), on retire la moins importante.
+      for (;;) {
+        var sides = { l: [], r: [] }; list.forEach(function (L) { sides[L.sd].push(L); });
+        var stack = function (a) { return a.reduce(function (t, L) { return t + L.el.offsetHeight; }, 0) + Math.max(0, a.length - 1) * vgap; };
+        Hs = Math.ceil(Math.max(hh * S + (narrow ? 40 : 60), stack(sides.l) + 24, stack(sides.r) + 24, narrow ? 0 : 520));
+        step = Math.max(narrow ? 4.2 : 5, Math.min(11, S / 54));
+        hx = W / 2 - (HB.u0 + HB.u1) / 2 * S; hy = Hs / 2 - (HB.v0 + HB.v1) / 2 * S;
+        stage.style.height = Hs + "px"; build();
+        rects = placeLabels(sides, colW, edge, gapX, vgap);
+        if (rects || list.length <= 3) break;
         var low = list.reduce(function (m, L) { return L.p < m.p ? L : m; }, list[0]);
-        low.el.remove(); list = list.filter(function (L) { return L !== low; }); rects = fit(); }
-      stage.style.height = Hs + "px"; cv.width = Math.round(W * dpr); cv.height = Math.round(Hs * dpr);
+        low.el.remove(); list = list.filter(function (L) { return L !== low; });
+      }
+      }
+      cv.width = Math.round(W * dpr); cv.height = Math.round(Hs * dpr);
       lines = [];
-      (rects || []).forEach(function (r) { var o = r.o, d = o.L.el;
-        d.className = "lab " + (r.dx < -0.35 ? "left" : r.dx > 0.35 ? "right" : "mid");
-        d.style.left = r.x + "px"; d.style.top = r.y + "px";
-        var px = Math.max(r.x - 6, Math.min(o.ax, r.x + r.w + 6)), py = Math.max(r.y - 7, Math.min(o.ay, r.y + r.h + 7));
-        lines.push([o.ax, o.ay, px, py]); });
+      (rects || []).forEach(function (r) { var d = r.o.L.el; d.style.left = r.x + "px"; d.style.top = r.y + "px";
+        lines.push({ pts: r.pts, tone: r.o.L.t || "" }); });
       ghosts = ghosts.filter(function (g) { return !(rects || []).some(function (r) {
-        return g[0] > r.x - 6 && g[0] < r.x + r.w + 6 && g[1] > r.y - 6 && g[1] < r.y + r.h + 6; }); });
+        return g[0] > r.x - 10 && g[0] < r.x + r.w + 10 && g[1] > r.y - 8 && g[1] < r.y + r.h + 8; }); });
       cv.setAttribute("aria-label", "Cœur du système : " + (BPM ? BPM + " battements par minute" : "arrêté") + ". " +
-        list.map(function (L) { return L.k + " " + (L.b || L.v) + (L.s ? " (" + L.s + ")" : ""); }).join(" ; "));
+        list.map(function (L) { return L.k + " : " + L.el.textContent.replace(L.k, ""); }).join(" ; "));
     }
     // Cycle cardiaque (phase 0 → 1 sur un battement) : systole auriculaire 0–0,16, systole
     // ventriculaire 0,16–0,52 (montée rapide, relâchement plus lent), puis diastole.
@@ -802,15 +866,20 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       // peint une fois ; seuls les points actifs sont redessinés à chaque image.
       if (!bg) paintBackground();
       ctx.drawImage(bg, 0, 0, W, Hs);
-      var buckets = [[], [], [], [], []], base = Math.max(0.8, step * 0.1);
+      // Onde du battement : un léger reflet bleu (rouge si la machine est en faillite) ; respiration : gris.
+      var buckets = [[], [], [], [], []], wbuckets = [[], [], [], [], []], base = Math.max(0.8, step * 0.1);
+      var tint = C.faillite ? [244, 113, 116] : [110, 168, 254];
       if (moving) for (var g = 0; g < ghosts.length; g++) { var gd = ghosts[g];
         var wv = R > 0 && Math.abs(gd[2] - R) < 140 ? Math.exp(-Math.pow((gd[2] - R) / 46, 2)) * fade : 0;
         var tw = Math.pow(Math.max(0, Math.sin(t * gd[4] + gd[3])), 14);
         if (wv + tw < 0.06) continue;
-        buckets[Math.min(4, Math.floor((wv + 0.7 * tw) * 4))].push([gd[0], gd[1], base * (1 + 0.8 * tw + 0.25 * wv)]); }
-      buckets.forEach(function (list, level) { if (!list.length) return;
-        var sh = Math.round((40 + level * 10) * dim); ctx.fillStyle = "rgb(" + sh + "," + sh + "," + (sh + 3) + ")";
-        ctx.beginPath(); list.forEach(function (q) { ctx.moveTo(q[0] + q[2], q[1]); ctx.arc(q[0], q[1], q[2], 0, 6.2832); }); ctx.fill(); });
+        var lv = Math.min(4, Math.floor((wv + 0.7 * tw) * 4));
+        (wv > tw ? wbuckets : buckets)[lv].push([gd[0], gd[1], base * (1 + 0.8 * tw + 0.25 * wv)]); }
+      [buckets, wbuckets].forEach(function (set, isWave) { set.forEach(function (list, level) { if (!list.length) return;
+        var sh = (40 + level * 10) * dim, mix = isWave ? 0.12 + 0.09 * level : 0;
+        ctx.fillStyle = "rgb(" + Math.round(sh + (tint[0] - sh) * mix) + "," + Math.round(sh + (tint[1] - sh) * mix) + "," +
+          Math.round(sh + 3 + (tint[2] - sh) * mix) + ")";
+        ctx.beginPath(); list.forEach(function (q) { ctx.moveTo(q[0] + q[2], q[1]); ctx.arc(q[0], q[1], q[2], 0, 6.2832); }); ctx.fill(); }); });
       var rmax = RMAX * step, layers = {};  // points regroupés par teinte : un seul tracé par teinte (fluide sur tablette)
       for (var k = 0; k < dots.length; k++) { var p = dots[k], e = 0;
         if (moving) {
@@ -826,10 +895,15 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         ctx.fillStyle = "rgb(" + sh + "," + sh + "," + Math.min(255, +sh + 2) + ")"; ctx.beginPath();
         for (var m = 0; m < a.length; m += 3) { ctx.moveTo(a[m] + a[m + 2], a[m + 1]); ctx.arc(a[m], a[m + 1], a[m + 2], 0, 6.2832); }
         ctx.fill(); });
-      ctx.strokeStyle = "rgba(196,196,200,0.42)"; ctx.lineWidth = 1;
-      lines.forEach(function (l) { ctx.beginPath(); ctx.moveTo(l[0], l[1]); ctx.lineTo(l[2], l[3]); ctx.stroke();
-        ctx.beginPath(); ctx.arc(l[0], l[1], 2.6, 0, 6.2832); ctx.fillStyle = "#141416"; ctx.fill();
-        ctx.strokeStyle = "rgba(244,244,245,0.9)"; ctx.stroke(); ctx.strokeStyle = "rgba(196,196,200,0.42)"; });
+      // Traits des légendes : gris discret ; au bout, un cercle AUTOUR du point visé (bleu = en hausse,
+      // rouge = en baisse, blanc = neutre), assez large pour ne jamais toucher le point qui bat.
+      var ring = rmax + 2.5;
+      lines.forEach(function (l) { var P = l.pts, end = P[2], prev = P[1], len = Math.hypot(end[0] - prev[0], end[1] - prev[1]) || 1;
+        ctx.strokeStyle = "rgba(196,196,200,0.38)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+        ctx.lineTo(prev[0], prev[1]); ctx.lineTo(end[0] - (end[0] - prev[0]) / len * ring, end[1] - (end[1] - prev[1]) / len * ring);
+        ctx.stroke();
+        ctx.beginPath(); ctx.arc(end[0], end[1], ring, 0, 6.2832); ctx.lineWidth = 1.4;
+        ctx.strokeStyle = l.tone === "up" ? "#6ea8fe" : l.tone === "down" ? "#f47174" : "rgba(244,244,245,0.85)"; ctx.stroke(); });
       if (moving && !document.hidden) raf = requestAnimationFrame(draw);
     }
     function start() { if (raf) cancelAnimationFrame(raf); layout(); bg = null; raf = requestAnimationFrame(draw); }
@@ -942,8 +1016,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     else svgEl("text", { x: W - R, y: T - 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)",
       "font-family": "var(--mono)" }, svg, "palier " + fmt(target, 0) + " ↑");
     var d = pts.map(function (p, k) { return (k ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ");
-    svgEl("path", { d: d + " L" + sx(x1) + " " + (Hh - B) + " L" + sx(x0) + " " + (Hh - B) + " Z", fill: "var(--wash)" }, svg);
-    svgEl("path", { d: d, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+    var areaC = svgEl("path", { d: d + " L" + sx(x1) + " " + (Hh - B) + " L" + sx(x0) + " " + (Hh - B) + " Z",
+      fill: perf >= 0 ? "var(--blue-soft)" : "var(--red-soft)" }, svg);
+    var lineC = svgEl("path", { d: d, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round",
+      "stroke-linecap": "round", pathLength: 1, "class": "draw" }, svg);
+    svg._play = function () { play(lineC, [areaC], 1200); }; onFirstView(svg);
     var last = pts[pts.length - 1];
     svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 4, fill: "var(--ink)", "class": "end-ring" }, svg);
     svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2 }, svg);
@@ -1021,15 +1098,20 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var sx = function (v) { return 8 + (v - (initial - span)) / (2 * span) * (W - 16); };
       svgEl("line", { x1: 8, x2: W - 8, y1: Hh / 2, y2: Hh / 2, stroke: "var(--line)" }, svg);
       svgEl("line", { x1: sx(initial), x2: sx(initial), y1: 4, y2: Hh - 4, stroke: "var(--faint)" }, svg);
-      svgEl("line", { x1: sx(initial), x2: sx(s.capital), y1: Hh / 2, y2: Hh / 2, stroke: "var(--dot-mid)", "stroke-width": 2 }, svg);
+      var sideCol = s.capital > initial + 0.5 ? "var(--blue)" : s.capital < initial - 0.5 ? "var(--red)" : "var(--ink-2)";
+      svgEl("line", { x1: sx(initial), x2: sx(s.capital), y1: Hh / 2, y2: Hh / 2, stroke: sideCol, "stroke-width": 2, opacity: 0.7 }, svg);
       var rad = 3.5 + 6 * Math.sqrt(s.operations / maxOps);
-      svgEl("circle", { cx: sx(s.capital), cy: Hh / 2, r: rad, fill: s.eliminee ? "var(--card)" : s.champion ? "var(--ink)" : "var(--ink-2)",
+      svgEl("circle", { cx: sx(s.capital), cy: Hh / 2, r: rad, fill: s.eliminee ? "var(--card)" : sideCol,
         stroke: s.eliminee ? "var(--ink-2)" : "var(--card)", "stroke-width": s.eliminee ? 1.5 : 2 }, svg);
       row.appendChild(tr);
       var cap = el("div", "num c-cap", fmt(s.capital, 2)); var g = (s.capital / initial - 1) * 100;
       var sm = el("small"); sm.appendChild(delta(g, 1, " %")); cap.appendChild(sm); row.appendChild(cap);
       row.appendChild(el("div", "num c-ops", String(s.operations)));
-      var sp = el("div", "c-spark"); sp.appendChild(spark(s.courbe)); row.appendChild(sp);
+      // Téléphone : la courbe prend toute la largeur sous le nom (à la place de la piste).
+      var narrowRow = box.clientWidth < 700, sp = el("div", "c-spark spark-wrap"),
+        sv = spark(s.courbe, narrowRow ? Math.max(200, box.clientWidth - 34) : 104, narrowRow ? 40 : 30);
+      sp.appendChild(sv); row.appendChild(sp);
+      if (sv._play) { row.addEventListener("pointerenter", sv._play); onFirstView(sv); }
       row._s = { rang: i + 1, nom: s.nom, capital: s.capital, operations: s.operations };
       arenaRows.push(row); box.appendChild(row);
     });
@@ -1069,12 +1151,12 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var order = names.filter(function (n) { return n !== lead; }).concat(names.indexOf(lead) >= 0 ? [lead] : []);
     var paths = {};
     order.forEach(function (n) { var hi = n === lead;
-      paths[n] = svgEl("path", { d: path(n), fill: "none", stroke: hi ? "var(--ink)" : "var(--dot-lo)",
-        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg); });
+      paths[n] = svgEl("path", { d: path(n), fill: "none", stroke: hi ? "var(--blue)" : "var(--dot-lo)",
+        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", pathLength: 1, "class": "draw" }, svg); });
     // Fin de chaque ligne : un point ; noms en clair pour les trois premiers (écran large).
     names.forEach(function (n) { var rs = Hs.strategies[n], i = rs.length - 1; while (i >= 0 && !rs[i]) i--;
       if (i < 0) return; var hi = n === lead;
-      svgEl("circle", { cx: sx(i), cy: sy(clampRank(rs[i])), r: hi ? 4.5 : 3, fill: hi ? "var(--ink)" : "var(--dot-mid)",
+      svgEl("circle", { cx: sx(i), cy: sy(clampRank(rs[i])), r: hi ? 4.5 : 3, fill: hi ? "var(--blue)" : "var(--dot-mid)",
         stroke: "var(--card)", "stroke-width": 2 }, svg);
       if (!narrow && i === rs.length - 1 && rs[i] <= 3)
         svgEl("text", { x: sx(i) + 10, y: sy(rs[i]) + 3, "font-size": 10.5, fill: hi ? "var(--ink)" : "var(--ink-2)" },
@@ -1082,13 +1164,15 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var tip = tooltip(box), cur = { i: dates.length - 1, n: lead };
     function show() { var i = cur.i, n = cur.n, rk = Hs.strategies[n][i], k = svg.getBoundingClientRect().width / W;
       var y = sy(clampRank(rk) || 1);
-      Object.keys(paths).forEach(function (m) { paths[m].setAttribute("stroke", m === n ? "var(--ink)" : "var(--dot-lo)");
+      Object.keys(paths).forEach(function (m) { paths[m].setAttribute("stroke", m === n ? "var(--blue)" : "var(--dot-lo)");
         paths[m].setAttribute("stroke-width", m === n ? 2.5 : 2); });
       paths[n].parentNode.appendChild(paths[n]);
+      if (n !== shown) { shown = n; play(paths[n], [], 700); }  // la ligne survolée se redessine
       tip.show(sx(i) * k, y * k, n.replace(/_v[\d.]+$/, "") + (rk ? " · n°" + rk : ""),
         short(dates[i]) + " · capital " + fmt((Hs.capital[n] || [])[i], 2)); }
-    function reset() { tip.hide(); Object.keys(paths).forEach(function (m) {
-      paths[m].setAttribute("stroke", m === lead ? "var(--ink)" : "var(--dot-lo)"); paths[m].setAttribute("stroke-width", 2); });
+    var shown = null;
+    function reset() { tip.hide(); shown = null; Object.keys(paths).forEach(function (m) {
+      paths[m].setAttribute("stroke", m === lead ? "var(--blue)" : "var(--dot-lo)"); paths[m].setAttribute("stroke-width", 2); });
       if (paths[lead]) paths[lead].parentNode.appendChild(paths[lead]); }
     svg.addEventListener("pointermove", function (ev) { var b = svg.getBoundingClientRect(), X = (ev.clientX - b.left) / b.width * W,
       Y = (ev.clientY - b.top) / b.width * W, i = Math.max(0, Math.min(dates.length - 1, Math.round((X - L) / (W - L - R) * (dates.length - 1))));
@@ -1110,17 +1194,37 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       rows.push([short(dates[i]), ranked.slice(0, 5).map(function (n, k) { return (k + 1) + ". " + n.replace(/_v[\d.]+$/, ""); }).join(" · ")]); }
     table("arena-hist-table", [{ t: "photo", d: 1 }, { t: "classement (5 premiers)", q: 1 }], rows, "—");
   })();
-  function spark(curve) {
-    var w = 104, h = 30, svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, "aria-hidden": "true" });
+  // Petite courbe d'une stratégie : bleue si elle est au-dessus de son départ, rouge en dessous ;
+  // trait pointillé = « ne rien faire ». `sp._play()` la redessine de gauche à droite.
+  function spark(curve, w, h) {
+    w = w || 104; h = h || 30;
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, "aria-hidden": "true" });
     if (!curve || curve.length < 2) return el("span", "flat", "—");
-    var ys = curve.map(function (p) { return p[1]; }), lo = Math.min.apply(null, ys), hi = Math.max.apply(null, ys);
+    var ys = curve.map(function (p) { return p[1]; }), lo = Math.min.apply(null, ys.concat([initial])), hi = Math.max.apply(null, ys.concat([initial]));
     if (hi === lo) { hi += 1; lo -= 1; }
     var X = function (i) { return i / (curve.length - 1) * (w - 8) + 2; }, Y = function (v) { return (hi - v) / (hi - lo) * (h - 8) + 4; };
-    svgEl("path", { d: curve.map(function (p, i) { return (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(p[1]).toFixed(1); }).join(" "),
-      fill: "none", stroke: "var(--ink)", "stroke-width": 1.6, "stroke-linejoin": "round" }, svg);
-    svgEl("circle", { cx: X(curve.length - 1), cy: Y(curve[curve.length - 1][1]), r: 3, fill: "var(--ink)" }, svg);
+    var lastV = ys[ys.length - 1], col = lastV > initial + 0.5 ? "var(--blue)" : lastV < initial - 0.5 ? "var(--red)" : "var(--ink-2)";
+    var soft = lastV > initial + 0.5 ? "var(--blue-soft)" : lastV < initial - 0.5 ? "var(--red-soft)" : "var(--wash)";
+    svgEl("line", { x1: 2, x2: w - 6, y1: Y(initial), y2: Y(initial), stroke: "var(--line-2)", "stroke-dasharray": "2 3" }, svg);
+    var d = curve.map(function (p, i) { return (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(p[1]).toFixed(1); }).join(" ");
+    var area = svgEl("path", { d: d + " L" + X(curve.length - 1).toFixed(1) + " " + Y(initial).toFixed(1) + " L" + X(0).toFixed(1) + " " +
+      Y(initial).toFixed(1) + " Z", fill: soft, stroke: "none" }, svg);
+    var line = svgEl("path", { d: d, fill: "none", stroke: col, "stroke-width": 1.6, "stroke-linejoin": "round",
+      "stroke-linecap": "round", pathLength: 1, "class": "draw" }, svg);
+    var end = svgEl("circle", { cx: X(curve.length - 1), cy: Y(lastV), r: 2.8, fill: col }, svg);
+    svg._play = function () { play(line, [area, end]); };
     return svg;
   }
+  // La courbe se forme de gauche à droite (trait), puis la surface et le point final apparaissent.
+  function play(path, extras, ms) {
+    if (REDUCED || !path) return; ms = ms || 900;
+    path.style.transition = "none"; path.style.strokeDashoffset = "1";
+    (extras || []).forEach(function (e) { e.style.transition = "none"; e.style.opacity = "0"; });
+    path.getBoundingClientRect();
+    path.style.transition = "stroke-dashoffset " + ms + "ms cubic-bezier(.3,.7,.2,1)"; path.style.strokeDashoffset = "0";
+    (extras || []).forEach(function (e) { e.style.transition = "opacity 400ms ease " + Math.round(ms * 0.6) + "ms"; e.style.opacity = "1"; });
+  }
+
 
   // ---------------------------------------------------------------- positions
   function forecast(p) {
