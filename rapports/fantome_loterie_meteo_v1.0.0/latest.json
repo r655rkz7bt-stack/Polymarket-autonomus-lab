@@ -1,0 +1,243 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "991.4041",
+  "capital_immobilise": "8.5959",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-2.7650",
+  "frais_payes": "0.3998",
+  "capital_total_estime": "997.2350",
+  "positions_ouvertes": "17",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0042,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5720830",
+   "issue": "Yes",
+   "parts": "31.75",
+   "cout": "0.67",
+   "prix_moyen": "0.0210",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1192293",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "5720942",
+   "issue": "Yes",
+   "parts": "21.20",
+   "cout": "0.67",
+   "prix_moyen": "0.0317",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1192311",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "5724251",
+   "issue": "Yes",
+   "parts": "1.35",
+   "cout": "0.03",
+   "prix_moyen": "0.0241",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1192911",
+   "ouverte_le": "2026-10-16T22:02"
+  },
+  {
+   "marche": "5726931",
+   "issue": "Yes",
+   "parts": "6.27",
+   "cout": "0.18",
+   "prix_moyen": "0.0281",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1193530",
+   "ouverte_le": "2026-10-17T01:03"
+  },
+  {
+   "marche": "5729340",
+   "issue": "Yes",
+   "parts": "18.75",
+   "cout": "0.24",
+   "prix_moyen": "0.0126",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1194016",
+   "ouverte_le": "2026-10-17T01:08"
+  },
+  {
+   "marche": "5726926",
+   "issue": "Yes",
+   "parts": "13.75",
+   "cout": "0.37",
+   "prix_moyen": "0.0270",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1193530",
+   "ouverte_le": "2026-10-17T04:44"
+  },
+  {
+   "marche": "Will the highest temperature in Wuhan be 25°C on October 18?",
+   "issue": "Yes",
+   "parts": "4.25",
+   "cout": "0.13",
+   "prix_moyen": "0.0304",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198089",
+   "ouverte_le": "2026-10-17T12:23"
+  },
+  {
+   "marche": "Will the highest temperature in Shanghai be 34°C on October 18?",
+   "issue": "Yes",
+   "parts": "15.23",
+   "cout": "0.42",
+   "prix_moyen": "0.0273",
+   "prix_de_marque": "0.005",
+   "latent": "-0.34",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198073",
+   "ouverte_le": "2026-10-17T14:18"
+  },
+  {
+   "marche": "Will the highest temperature in Wuhan be 19°C on October 18?",
+   "issue": "Yes",
+   "parts": "7.75",
+   "cout": "0.24",
+   "prix_moyen": "0.0315",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198089",
+   "ouverte_le": "2026-10-17T14:48"
+  },
+  {
+   "marche": "Will the highest temperature in Chongqing be 20°C on October 18?",
+   "issue": "Yes",
+   "parts": "21.28",
+   "cout": "0.66",
+   "prix_moyen": "0.0311",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198087",
+   "ouverte_le": "2026-10-17T15:18"
+  },
+  {
+   "marche": "Will the highest temperature in Helsinki be 7°C on October 18?",
+   "issue": "Yes",
+   "parts": "47.24",
+   "cout": "1.48",
+   "prix_moyen": "0.0314",
+   "prix_de_marque": "0.002",
+   "latent": "-1.39",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198096",
+   "ouverte_le": "2026-10-17T15:23"
+  },
+  {
+   "marche": "Will the highest temperature in Wuhan be 20°C on October 18?",
+   "issue": "Yes",
+   "parts": "11.26",
+   "cout": "0.35",
+   "prix_moyen": "0.0313",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198089",
+   "ouverte_le": "2026-10-17T15:32"
+  },
+  {
+   "marche": "Will the highest temperature in Paris be 16°C on October 18?",
+   "issue": "Yes",
+   "parts": "101.58",
+   "cout": "1.91",
+   "prix_moyen": "0.0188",
+   "prix_de_marque": "0.008",
+   "latent": "-1.10",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198064",
+   "ouverte_le": "2026-10-17T16:04"
+  },
+  {
+   "marche": "Will the highest temperature in Munich be 13°C on October 18?",
+   "issue": "Yes",
+   "parts": "7.75",
+   "cout": "0.24",
+   "prix_moyen": "0.0315",
+   "prix_de_marque": "0.027",
+   "latent": "-0.03",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198069",
+   "ouverte_le": "2026-10-17T16:38"
+  },
+  {
+   "marche": "Will the highest temperature in Munich be 18°C on October 18?",
+   "issue": "Yes",
+   "parts": "30.60",
+   "cout": "0.63",
+   "prix_moyen": "0.0206",
+   "prix_de_marque": "0.026",
+   "latent": "0.17",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198069",
+   "ouverte_le": "2026-10-17T19:08"
+  },
+  {
+   "marche": "Will the highest temperature in London be 12°C on October 18?",
+   "issue": "Yes",
+   "parts": "3.25",
+   "cout": "0.07",
+   "prix_moyen": "0.0220",
+   "prix_de_marque": "0.02",
+   "latent": "-0.01",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198063",
+   "ouverte_le": "2026-10-17T21:09"
+  },
+  {
+   "marche": "Will the highest temperature in London be 16°C on October 18?",
+   "issue": "Yes",
+   "parts": "9.40",
+   "cout": "0.30",
+   "prix_moyen": "0.0317",
+   "prix_de_marque": "0.025",
+   "latent": "-0.06",
+   "strategie": "loterie_meteo v1.0.0",
+   "groupe": "1198063",
+   "ouverte_le": "2026-10-17T21:48"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

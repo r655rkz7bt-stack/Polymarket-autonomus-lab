@@ -1,0 +1,166 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "311.4249",
+  "capital_immobilise": "570.3202",
+  "gains_realises_nets": "-118.2550",
+  "gains_latents": "-3.4518",
+  "frais_payes": "1.5113",
+  "capital_total_estime": "878.2933",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1491,
+ "dernier_battement": "2026-10-17T10:48:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "74.99",
+   "cout": "69.67",
+   "prix_moyen": "0.9290",
+   "prix_de_marque": "0.976",
+   "latent": "3.52",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T20:31"
+  },
+  {
+   "marche": "5611007",
+   "issue": "No",
+   "parts": "86.34",
+   "cout": "77.97",
+   "prix_moyen": "0.9030",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1177781",
+   "ouverte_le": "2026-10-16T20:36"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "104.92",
+   "cout": "96.32",
+   "prix_moyen": "0.9180",
+   "prix_de_marque": "0.903",
+   "latent": "-1.57",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "56.21",
+   "cout": "47.67",
+   "prix_moyen": "0.8480",
+   "prix_de_marque": "0.844",
+   "latent": "-0.22",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T01:19"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "Yes",
+   "parts": "119.71",
+   "cout": "113.00",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "0.944",
+   "latent": "0.01",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T04:03"
+  },
+  {
+   "marche": "Will Elon Musk post 320-339 tweets from October 13 to October 20, 2026?",
+   "issue": "No",
+   "parts": "73.91",
+   "cout": "65.71",
+   "prix_moyen": "0.8890",
+   "prix_de_marque": "0.862",
+   "latent": "-2.00",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1162658",
+   "ouverte_le": "2026-10-17T04:22"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "107.45",
+   "cout": "100.00",
+   "prix_moyen": "0.9307",
+   "prix_de_marque": "0.901",
+   "latent": "-3.19",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "5733691",
+   "issue": "Yellow Submarine",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "resultat": "-133.81",
+   "resolution": "résolu : salamit",
+   "cloturee_le": "2026-10-17T00:02"
+  },
+  {
+   "marche": "5771282",
+   "issue": "Sinja Kraus",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "resultat": "8.14",
+   "resolution": "résolu : Sinja Kraus",
+   "cloturee_le": "2026-10-17T06:41"
+  },
+  {
+   "marche": "5772281",
+   "issue": "Mattia Bellucci",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "resultat": "7.41",
+   "resolution": "résolu : Mattia Bellucci",
+   "cloturee_le": "2026-10-17T10:46"
+  }
+ ],
+ "performances": {
+  "naive_favorite_patiente v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "-118.25",
+   "frais": "0.75",
+   "rendement_sur_mises": -0.3612,
+   "esperance_par_operation": "-39.42",
+   "ic90_rendement_par_euro": [
+    -0.6402,
+    0.0806
+   ],
+   "brier": 0.327,
+   "log_loss": 1.549,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

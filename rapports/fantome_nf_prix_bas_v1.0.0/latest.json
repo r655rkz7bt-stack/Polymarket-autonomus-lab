@@ -1,0 +1,63 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "892.3009",
+  "capital_immobilise": "107.6991",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-0.2473",
+  "frais_payes": "0.4925",
+  "capital_total_estime": "999.7527",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0032,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "113.45",
+   "cout": "96.76",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.844",
+   "latent": "-1.00",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will Yisrael Beiteinu win less than 5% of the vote in the 2026 Knesset elections?",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "10.94",
+   "prix_moyen": "0.8755",
+   "prix_de_marque": "0.936",
+   "latent": "0.76",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T18:35"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

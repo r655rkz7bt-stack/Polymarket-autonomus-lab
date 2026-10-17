@@ -1,0 +1,177 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "508.8666",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-491.1334",
+  "gains_latents": "0.0000",
+  "frais_payes": "215.9445",
+  "capital_total_estime": "508.8666",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4911,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 452,
+ "dernieres_operations": [
+  {
+   "marche": "5745691",
+   "issue": "Alejandro Davidovich Fokina",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-1.26",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T19:07"
+  },
+  {
+   "marche": "Will the Republicans win the Ohio Senate race in 2026?",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.53",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T19:42"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win Brazil, Gadi Eizenkot become Israeli PM, and Democrats win the US Senate?",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.70",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T19:55"
+  },
+  {
+   "marche": "Will Likud win the most seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.18",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:02"
+  },
+  {
+   "marche": "5263907",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.83",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:22"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.16",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:27"
+  },
+  {
+   "marche": "Will Aleksandar Vučić be the next Prime Minister of Serbia?",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.06",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:42"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-2.18",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "5349499",
+   "issue": "Indiana",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.23",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "Will FC Barcelona win on 2026-10-20?",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.55",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:06"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, D House",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.60",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:17"
+  },
+  {
+   "marche": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "0.26",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will the Republicans win the Michigan Senate race in 2026?",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.07",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T22:22"
+  },
+  {
+   "marche": "5680548",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "0.74",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T05:25"
+  },
+  {
+   "marche": "Fresno State vs. San Diego State: O/U 45.5",
+   "issue": "Under",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.75",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T05:53"
+  }
+ ],
+ "performances": {
+  "market_structure v1.0.0": {
+   "operations": 452,
+   "evenements": 151,
+   "gagnantes": 109,
+   "taux_reussite": 0.241,
+   "profit_net": "-491.13",
+   "frais": "215.94",
+   "rendement_sur_mises": -0.0912,
+   "esperance_par_operation": "-1.09",
+   "ic90_rendement_par_euro": [
+    -0.1084,
+    -0.0735
+   ],
+   "brier": 0.1725,
+   "log_loss": 0.5725,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

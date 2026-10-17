@@ -1,0 +1,159 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "0.1699",
+  "capital_immobilise": "999.8301",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "16.8702",
+  "frais_payes": "2.6422",
+  "capital_total_estime": "1016.8702",
+  "positions_ouvertes": "10",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0275,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "9.48",
+   "cout": "8.89",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.976",
+   "latent": "0.36",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "238.34",
+   "cout": "222.51",
+   "prix_moyen": "0.9336",
+   "prix_de_marque": "0.97",
+   "latent": "8.68",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Sevilla FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "214.44",
+   "cout": "200.13",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-2.84",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1135442",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "105.00",
+   "cout": "91.35",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.92",
+   "latent": "5.25",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $84,000 on October 19?",
+   "issue": "No",
+   "parts": "65.00",
+   "cout": "59.52",
+   "prix_moyen": "0.9157",
+   "prix_de_marque": "0.95",
+   "latent": "2.23",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "Yes",
+   "parts": "247.48",
+   "cout": "235.02",
+   "prix_moyen": "0.9496",
+   "prix_de_marque": "0.944",
+   "latent": "-1.39",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the highest temperature in Atlanta be between 62-63°F on October 18?",
+   "issue": "No",
+   "parts": "6.36",
+   "cout": "5.20",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.9",
+   "latent": "0.52",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1198465",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 19?",
+   "issue": "Yes",
+   "parts": "19.25",
+   "cout": "16.17",
+   "prix_moyen": "0.8399",
+   "prix_de_marque": "0.79",
+   "latent": "-0.96",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 21?",
+   "issue": "Yes",
+   "parts": "86.58",
+   "cout": "80.52",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.95",
+   "latent": "1.73",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "Will Bitcoin reach $84,000 October 12-18?",
+   "issue": "No",
+   "parts": "87.04",
+   "cout": "80.53",
+   "prix_moyen": "0.9252",
+   "prix_de_marque": "0.963",
+   "latent": "3.29",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:33"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

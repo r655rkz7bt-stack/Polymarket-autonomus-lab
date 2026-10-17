@@ -1,0 +1,147 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "0.1147",
+  "capital_immobilise": "999.8853",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-6.5274",
+  "frais_payes": "3.0218",
+  "capital_total_estime": "993.4726",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0089,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "43.46",
+   "cout": "40.85",
+   "prix_moyen": "0.9399",
+   "prix_de_marque": "0.916",
+   "latent": "-1.04",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by November 2?",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.21",
+   "prix_moyen": "0.9210",
+   "prix_de_marque": "0.907",
+   "latent": "-0.14",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "251.76",
+   "cout": "235.52",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.941",
+   "latent": "1.38",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will the Democratic Party win the WA-05 House seat?",
+   "issue": "No",
+   "parts": "147.64",
+   "cout": "131.65",
+   "prix_moyen": "0.8917",
+   "prix_de_marque": "0.887",
+   "latent": "-0.69",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will the Democrats win the Arizona governor race in 2026?",
+   "issue": "Yes",
+   "parts": "217.38",
+   "cout": "202.73",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.92",
+   "latent": "-2.74",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "168.80",
+   "cout": "152.85",
+   "prix_moyen": "0.9055",
+   "prix_de_marque": "0.901",
+   "latent": "-0.76",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "189.02",
+   "cout": "174.45",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-2.45",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "28.54",
+   "cout": "26.34",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.37",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "27.78",
+   "cout": "26.28",
+   "prix_moyen": "0.9460",
+   "prix_de_marque": "0.956",
+   "latent": "0.28",
+   "strategie": "nf_prix_haut_sans_fin v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T11:08"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

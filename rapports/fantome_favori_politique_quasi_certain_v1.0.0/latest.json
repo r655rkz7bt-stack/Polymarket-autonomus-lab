@@ -1,0 +1,279 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "7.5623",
+  "capital_immobilise": "992.4377",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-8.6904",
+  "frais_payes": "0.6380",
+  "capital_total_estime": "991.3096",
+  "positions_ouvertes": "20",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0111,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Russia x Ukraine ceasefire agreement by October 31, 2026?",
+   "issue": "No",
+   "parts": "91.22",
+   "cout": "88.76",
+   "prix_moyen": "0.9730",
+   "prix_de_marque": "0.978",
+   "latent": "0.46",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "478472",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will Avigdor Lieberman be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "89.65",
+   "cout": "87.32",
+   "prix_moyen": "0.9740",
+   "prix_de_marque": "0.977",
+   "latent": "0.27",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "78.00",
+   "cout": "75.74",
+   "prix_moyen": "0.9710",
+   "prix_de_marque": "0.916",
+   "latent": "-4.29",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will the Republican Party win the TN-04 House seat?",
+   "issue": "Yes",
+   "parts": "83.35",
+   "cout": "81.14",
+   "prix_moyen": "0.9735",
+   "prix_de_marque": "0.98",
+   "latent": "0.54",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "191628",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "21.25",
+   "cout": "20.61",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.956",
+   "latent": "-0.30",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "84.32",
+   "cout": "82.13",
+   "prix_moyen": "0.9741",
+   "prix_de_marque": "0.95",
+   "latent": "-2.03",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement by October 23, oil below $80, and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "84.26",
+   "cout": "82.07",
+   "prix_moyen": "0.9741",
+   "prix_de_marque": "0.973",
+   "latent": "-0.09",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1178893",
+   "ouverte_le": "2026-10-16T21:57"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by at least 12%?",
+   "issue": "No",
+   "parts": "82.65",
+   "cout": "80.58",
+   "prix_moyen": "0.9750",
+   "prix_de_marque": "0.97",
+   "latent": "-0.41",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T21:57"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "75.89",
+   "cout": "73.85",
+   "prix_moyen": "0.9731",
+   "prix_de_marque": "0.96",
+   "latent": "-0.99",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1171733",
+   "ouverte_le": "2026-10-16T21:57"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement by October 23, oil below $80, and the Republicans win the Senate?",
+   "issue": "No",
+   "parts": "74.63",
+   "cout": "73.05",
+   "prix_moyen": "0.9789",
+   "prix_de_marque": "0.981",
+   "latent": "0.16",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1178893",
+   "ouverte_le": "2026-10-16T22:02"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement and the Republicans win the Senate?",
+   "issue": "No",
+   "parts": "8.69",
+   "cout": "8.51",
+   "prix_moyen": "0.9796",
+   "prix_de_marque": "0.964",
+   "latent": "-0.14",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-16T22:02"
+  },
+  {
+   "marche": "Iran leadership change by October 31?",
+   "issue": "No",
+   "parts": "70.18",
+   "cout": "68.78",
+   "prix_moyen": "0.9800",
+   "prix_de_marque": "0.978",
+   "latent": "-0.14",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "255195",
+   "ouverte_le": "2026-10-16T22:02"
+  },
+  {
+   "marche": "5612092",
+   "issue": "No",
+   "parts": "55.74",
+   "cout": "54.51",
+   "prix_moyen": "0.9779",
+   "prix_de_marque": "0.974",
+   "latent": "-0.22",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1177906",
+   "ouverte_le": "2026-10-16T22:07"
+  },
+  {
+   "marche": "5693642",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "12.20",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.962",
+   "latent": "-0.18",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1053896",
+   "ouverte_le": "2026-10-16T22:07"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "38.97",
+   "cout": "38.33",
+   "prix_moyen": "0.9837",
+   "prix_de_marque": "0.982",
+   "latent": "-0.07",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1171733",
+   "ouverte_le": "2026-10-16T22:12"
+  },
+  {
+   "marche": "4826310",
+   "issue": "Democratic Party",
+   "parts": "36.84",
+   "cout": "36.17",
+   "prix_moyen": "0.9817",
+   "prix_de_marque": "0.961",
+   "latent": "-0.76",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1061767",
+   "ouverte_le": "2026-10-16T22:17"
+  },
+  {
+   "marche": "Will the Democratic Party win the NV-04 House seat?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.89",
+   "prix_moyen": "0.9789",
+   "prix_de_marque": "0.967",
+   "latent": "-0.06",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "106118",
+   "ouverte_le": "2026-10-16T22:52"
+  },
+  {
+   "marche": "5371681",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.21",
+   "prix_moyen": "0.9712",
+   "prix_de_marque": "0.963",
+   "latent": "-0.01",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1142254",
+   "ouverte_le": "2026-10-17T01:38"
+  },
+  {
+   "marche": "Will Steve Hilton win the California Governor Election in 2026?",
+   "issue": "No",
+   "parts": "15.40",
+   "cout": "15.03",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.958",
+   "latent": "-0.28",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "57096",
+   "ouverte_le": "2026-10-17T01:48"
+  },
+  {
+   "marche": "Will the Democrats win the Minnesota governor race in 2026?",
+   "issue": "Yes",
+   "parts": "7.77",
+   "cout": "7.55",
+   "prix_moyen": "0.9712",
+   "prix_de_marque": "0.95",
+   "latent": "-0.16",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "57177",
+   "ouverte_le": "2026-10-17T01:58"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

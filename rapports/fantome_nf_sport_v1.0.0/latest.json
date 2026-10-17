@@ -1,0 +1,290 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "0.1253",
+  "capital_immobilise": "1078.8140",
+  "gains_realises_nets": "78.9393",
+  "gains_latents": "-7.3782",
+  "frais_payes": "7.2036",
+  "capital_total_estime": "1071.5611",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1947,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "115.31",
+   "cout": "98.34",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.844",
+   "latent": "-1.02",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the Cleveland Guardians win the 2026 World Series?",
+   "issue": "No",
+   "parts": "89.50",
+   "cout": "72.56",
+   "prix_moyen": "0.8107",
+   "prix_de_marque": "0.794",
+   "latent": "-1.49",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will Sevilla FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "201.37",
+   "cout": "187.93",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-2.67",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1135442",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "138.06",
+   "cout": "125.97",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.91",
+   "latent": "-0.34",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T01:03"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "parts": "8.81",
+   "cout": "8.04",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.55",
+   "latent": "-3.19",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139669",
+   "ouverte_le": "2026-10-17T04:03"
+  },
+  {
+   "marche": "New Mexico vs. Hawai'i",
+   "issue": "New Mexico",
+   "parts": "5.16",
+   "cout": "4.41",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.84",
+   "latent": "-0.07",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139718",
+   "ouverte_le": "2026-10-17T15:18"
+  },
+  {
+   "marche": "Florida State vs. Miami (FL)",
+   "issue": "Miami (FL)",
+   "parts": "120.43",
+   "cout": "111.06",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-1.47",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139693",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "5353198",
+   "issue": "Oregon State",
+   "parts": "123.04",
+   "cout": "111.07",
+   "prix_moyen": "0.9027",
+   "prix_de_marque": "0.89",
+   "latent": "-1.56",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139689",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "5352841",
+   "issue": "Stephen F. Austin",
+   "parts": "130.98",
+   "cout": "122.07",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.991",
+   "latent": "7.73",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139681",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Will Alexia Putellas win the 2026 Women's Ballon d'Or?",
+   "issue": "Yes",
+   "parts": "55.83",
+   "cout": "52.35",
+   "prix_moyen": "0.9376",
+   "prix_de_marque": "0.93",
+   "latent": "-0.43",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Will Manchester City FC vs. AEK end in a draw?",
+   "issue": "No",
+   "parts": "37.07",
+   "cout": "34.95",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.93",
+   "latent": "-0.48",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1149349",
+   "ouverte_le": "2026-10-17T19:19"
+  },
+  {
+   "marche": "Spread: Titans (-3.5)",
+   "issue": "Colts",
+   "parts": "40.02",
+   "cout": "34.95",
+   "prix_moyen": "0.8734",
+   "prix_de_marque": "0.86",
+   "latent": "-0.54",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-17T19:19"
+  },
+  {
+   "marche": "Louisiana Tech vs. Louisiana-Monroe",
+   "issue": "Louisiana Tech",
+   "parts": "67.41",
+   "cout": "57.56",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.84",
+   "latent": "-0.93",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1139713",
+   "ouverte_le": "2026-10-17T19:49"
+  },
+  {
+   "marche": "Will Manchester City FC win on 2026-10-20?",
+   "issue": "Yes",
+   "parts": "63.64",
+   "cout": "57.56",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-0.92",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1149349",
+   "ouverte_le": "2026-10-17T19:49"
+  }
+ ],
+ "operations_cloturees": 8,
+ "dernieres_operations": [
+  {
+   "marche": "5765385",
+   "issue": "FURIA Esports",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "16.81",
+   "resolution": "résolu : FURIA Esports",
+   "cloturee_le": "2026-10-17T01:02"
+  },
+  {
+   "marche": "5348789",
+   "issue": "Under",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-17T04:02"
+  },
+  {
+   "marche": "5605994",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "13.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T06:12"
+  },
+  {
+   "marche": "5264071",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "0.57",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T14:02"
+  },
+  {
+   "marche": "5263915",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "14.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5263936",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "10.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T19:12"
+  },
+  {
+   "marche": "5269884",
+   "issue": "Over",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "7.19",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-17T19:12"
+  },
+  {
+   "marche": "5349365",
+   "issue": "LSU",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "14.58",
+   "resolution": "résolu : LSU",
+   "cloturee_le": "2026-10-17T19:47"
+  }
+ ],
+ "performances": {
+  "nf_sport v1.0.0": {
+   "operations": 8,
+   "evenements": 8,
+   "gagnantes": 8,
+   "taux_reussite": 1.0,
+   "profit_net": "78.94",
+   "frais": "3.49",
+   "rendement_sur_mises": 0.0809,
+   "esperance_par_operation": "9.87",
+   "ic90_rendement_par_euro": [
+    0.0729,
+    0.1018
+   ],
+   "brier": 0.0017,
+   "log_loss": 0.0359,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,418 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "0.0490",
+  "capital_immobilise": "1039.5456",
+  "gains_realises_nets": "39.5946",
+  "gains_latents": "19.3820",
+  "frais_payes": "9.5323",
+  "capital_total_estime": "1058.9767",
+  "positions_ouvertes": "20",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2588,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5296069",
+   "issue": "No",
+   "parts": "163.78",
+   "cout": "149.71",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.963",
+   "latent": "8.01",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1132471",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "80.31",
+   "cout": "73.28",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.91",
+   "latent": "-0.20",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T02:47"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "parts": "8.75",
+   "cout": "7.98",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.55",
+   "latent": "-3.17",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139669",
+   "ouverte_le": "2026-10-17T04:03"
+  },
+  {
+   "marche": "Florida State vs. Miami (FL)",
+   "issue": "Miami (FL)",
+   "parts": "22.11",
+   "cout": "20.39",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-0.27",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139693",
+   "ouverte_le": "2026-10-17T14:04"
+  },
+  {
+   "marche": "5353198",
+   "issue": "Oregon State",
+   "parts": "123.42",
+   "cout": "111.41",
+   "prix_moyen": "0.9027",
+   "prix_de_marque": "0.89",
+   "latent": "-1.57",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139689",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "5351547",
+   "issue": "Texas Tech",
+   "parts": "118.74",
+   "cout": "103.71",
+   "prix_moyen": "0.8734",
+   "prix_de_marque": "0.992",
+   "latent": "14.08",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139666",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "Will Tepatitlan FC win on 2026-10-17?",
+   "issue": "No",
+   "parts": "23.66",
+   "cout": "22.08",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.93",
+   "latent": "-0.08",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1178061",
+   "ouverte_le": "2026-10-17T16:48"
+  },
+  {
+   "marche": "New Mexico vs. Hawai'i",
+   "issue": "New Mexico",
+   "parts": "73.94",
+   "cout": "63.13",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.84",
+   "latent": "-1.02",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139718",
+   "ouverte_le": "2026-10-17T16:48"
+  },
+  {
+   "marche": "5282127",
+   "issue": "No",
+   "parts": "22.74",
+   "cout": "20.57",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "2.15",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1131135",
+   "ouverte_le": "2026-10-17T16:53"
+  },
+  {
+   "marche": "Will Atlético San Luis win on 2026-10-17?",
+   "issue": "No",
+   "parts": "22.74",
+   "cout": "20.57",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-0.33",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1131785",
+   "ouverte_le": "2026-10-17T16:53"
+  },
+  {
+   "marche": "5352841",
+   "issue": "Stephen F. Austin",
+   "parts": "130.18",
+   "cout": "121.32",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.991",
+   "latent": "7.69",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139681",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Will Sevilla FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "130.00",
+   "cout": "121.32",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-1.72",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1135442",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Spread: Titans (-3.5)",
+   "issue": "Colts",
+   "parts": "43.61",
+   "cout": "38.09",
+   "prix_moyen": "0.8734",
+   "prix_de_marque": "0.86",
+   "latent": "-0.58",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-17T19:19"
+  },
+  {
+   "marche": "Louisiana Tech vs. Louisiana-Monroe",
+   "issue": "Louisiana Tech",
+   "parts": "44.61",
+   "cout": "38.09",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.84",
+   "latent": "-0.62",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139713",
+   "ouverte_le": "2026-10-17T19:19"
+  },
+  {
+   "marche": "New York Red Bulls vs. Toronto FC: O/U 1.5",
+   "issue": "Over",
+   "parts": "34.31",
+   "cout": "30.70",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.88",
+   "latent": "-0.51",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1131873",
+   "ouverte_le": "2026-10-17T19:49"
+  },
+  {
+   "marche": "Will CF Montréal win on 2026-10-17?",
+   "issue": "No",
+   "parts": "34.68",
+   "cout": "30.70",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.53",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1131523",
+   "ouverte_le": "2026-10-17T19:49"
+  },
+  {
+   "marche": "5353303",
+   "issue": "Youngstown State",
+   "parts": "12.54",
+   "cout": "11.32",
+   "prix_moyen": "0.9027",
+   "prix_de_marque": "0.81",
+   "latent": "-1.16",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1139690",
+   "ouverte_le": "2026-10-17T20:39"
+  },
+  {
+   "marche": "Will Bitcoin dip to $81,000 on October 17?",
+   "issue": "No",
+   "parts": "12.36",
+   "cout": "11.32",
+   "prix_moyen": "0.9157",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T20:39"
+  },
+  {
+   "marche": "Spread: Los Angeles Galaxy (-2.5)",
+   "issue": "San Diego FC",
+   "parts": "24.50",
+   "cout": "21.92",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.88",
+   "latent": "-0.36",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1131867",
+   "ouverte_le": "2026-10-17T21:13"
+  },
+  {
+   "marche": "Will Crystal Palace FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "25.60",
+   "cout": "21.92",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-0.42",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1134904",
+   "ouverte_le": "2026-10-17T21:13"
+  }
+ ],
+ "operations_cloturees": 15,
+ "dernieres_operations": [
+  {
+   "marche": "5434599",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "14.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T02:47"
+  },
+  {
+   "marche": "5348789",
+   "issue": "Under",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-17T04:02"
+  },
+  {
+   "marche": "5679674",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "10.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T05:17"
+  },
+  {
+   "marche": "5777341",
+   "issue": "Katie Volynets",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "-73.27",
+   "resolution": "résolu : Katarzyna Kawa",
+   "cloturee_le": "2026-10-17T05:47"
+  },
+  {
+   "marche": "5605994",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "14.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T06:12"
+  },
+  {
+   "marche": "5264071",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T14:02"
+  },
+  {
+   "marche": "5263915",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "14.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5506667",
+   "issue": "Yes",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "0.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5267250",
+   "issue": "Over",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "11.31",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-17T16:47"
+  },
+  {
+   "marche": "5263936",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "14.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T19:12"
+  },
+  {
+   "marche": "5269884",
+   "issue": "Over",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "3.84",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-17T19:12"
+  },
+  {
+   "marche": "5268772",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "10.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T19:17"
+  },
+  {
+   "marche": "5349365",
+   "issue": "LSU",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "7.77",
+   "resolution": "résolu : LSU",
+   "cloturee_le": "2026-10-17T19:47"
+  },
+  {
+   "marche": "5349530",
+   "issue": "Ohio State",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "2.20",
+   "resolution": "résolu : Ohio State",
+   "cloturee_le": "2026-10-17T20:37"
+  },
+  {
+   "marche": "5258771",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "5.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T21:12"
+  }
+ ],
+ "performances": {
+  "nf_court v1.0.0": {
+   "operations": 15,
+   "evenements": 15,
+   "gagnantes": 14,
+   "taux_reussite": 0.933,
+   "profit_net": "39.59",
+   "frais": "5.56",
+   "rendement_sur_mises": 0.0319,
+   "esperance_par_operation": "2.64",
+   "ic90_rendement_par_euro": [
+    -0.1146,
+    0.1141
+   ],
+   "brier": 0.0604,
+   "log_loss": 0.2239,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

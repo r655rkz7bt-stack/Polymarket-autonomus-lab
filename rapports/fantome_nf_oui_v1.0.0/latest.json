@@ -1,0 +1,147 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "161.8963",
+  "capital_immobilise": "838.1037",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-11.6104",
+  "frais_payes": "1.7446",
+  "capital_total_estime": "988.3896",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0241,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "9.48",
+   "cout": "8.89",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.976",
+   "latent": "0.36",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "242.43",
+   "cout": "226.19",
+   "prix_moyen": "0.9330",
+   "prix_de_marque": "0.97",
+   "latent": "8.97",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T00:19"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "Yes",
+   "parts": "122.00",
+   "cout": "115.29",
+   "prix_moyen": "0.9450",
+   "prix_de_marque": "0.944",
+   "latent": "-0.12",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T00:33"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "128.81",
+   "cout": "121.37",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-1.58",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-17T01:03"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $100 in October?",
+   "issue": "Yes",
+   "parts": "77.76",
+   "cout": "73.27",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.87",
+   "latent": "-5.62",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T01:27"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "242.68",
+   "cout": "225.85",
+   "prix_moyen": "0.9306",
+   "prix_de_marque": "0.901",
+   "latent": "-7.19",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  },
+  {
+   "marche": "Will Alexia Putellas win the 2026 Women's Ballon d'Or?",
+   "issue": "Yes",
+   "parts": "10.95",
+   "cout": "10.27",
+   "prix_moyen": "0.9379",
+   "prix_de_marque": "0.93",
+   "latent": "-0.09",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T18:38"
+  },
+  {
+   "marche": "Will Russia target Kyiv on October 17, 2026?",
+   "issue": "Yes",
+   "parts": "8.00",
+   "cout": "7.19",
+   "prix_moyen": "0.8990",
+   "prix_de_marque": "0.155",
+   "latent": "-5.95",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1111230",
+   "ouverte_le": "2026-10-17T18:49"
+  },
+  {
+   "marche": "Will the Democrats win the Michigan governor race in 2026?",
+   "issue": "Yes",
+   "parts": "52.94",
+   "cout": "49.78",
+   "prix_moyen": "0.9403",
+   "prix_de_marque": "0.933",
+   "latent": "-0.39",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "57176",
+   "ouverte_le": "2026-10-17T21:54"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

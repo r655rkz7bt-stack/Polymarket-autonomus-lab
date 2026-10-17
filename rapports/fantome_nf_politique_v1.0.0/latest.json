@@ -1,0 +1,171 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "0.1607",
+  "capital_immobilise": "999.8393",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-3.6806",
+  "frais_payes": "3.2191",
+  "capital_total_estime": "996.3194",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0121,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Perim Island no longer under Houthi control by October 31?",
+   "issue": "No",
+   "parts": "37.25",
+   "cout": "33.50",
+   "prix_moyen": "0.8994",
+   "prix_de_marque": "0.906",
+   "latent": "0.24",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "9.48",
+   "cout": "8.89",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.976",
+   "latent": "0.36",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "199.98",
+   "cout": "183.69",
+   "prix_moyen": "0.9185",
+   "prix_de_marque": "0.903",
+   "latent": "-3.10",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-0.06",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "112.79",
+   "cout": "106.28",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-1.38",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "146.33",
+   "cout": "130.75",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.941",
+   "latent": "6.95",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "944313",
+   "issue": "No",
+   "parts": "189.14",
+   "cout": "174.57",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-2.45",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "29.01",
+   "cout": "26.77",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.38",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "630832",
+   "issue": "Yes",
+   "parts": "189.14",
+   "cout": "174.57",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-2.45",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "57660",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "85.47",
+   "cout": "78.06",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.91",
+   "latent": "-0.28",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+   "issue": "Yes",
+   "parts": "85.47",
+   "cout": "78.06",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.9",
+   "latent": "-1.13",
+   "strategie": "nf_politique v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-16T23:33"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

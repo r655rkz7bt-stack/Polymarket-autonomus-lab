@@ -1,0 +1,310 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "5.7816",
+  "capital_immobilise": "957.9043",
+  "gains_realises_nets": "-36.3141",
+  "gains_latents": "2.1566",
+  "frais_payes": "7.0542",
+  "capital_total_estime": "965.8426",
+  "positions_ouvertes": "19",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.079,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+   "issue": "Yes",
+   "parts": "111.66",
+   "cout": "97.78",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.86",
+   "latent": "-1.75",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "606422",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+   "issue": "No",
+   "parts": "111.66",
+   "cout": "97.78",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.86",
+   "latent": "-1.75",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "606422",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $84,000 on October 19?",
+   "issue": "No",
+   "parts": "65.00",
+   "cout": "59.52",
+   "prix_moyen": "0.9157",
+   "prix_de_marque": "0.95",
+   "latent": "2.23",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the highest temperature in Seoul (Incheon) be 20°C on October 18?",
+   "issue": "No",
+   "parts": "39.60",
+   "cout": "33.15",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.999",
+   "latent": "6.41",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1198065",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "Yes",
+   "parts": "247.93",
+   "cout": "235.65",
+   "prix_moyen": "0.9505",
+   "prix_de_marque": "0.944",
+   "latent": "-1.61",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $100 in October?",
+   "issue": "Yes",
+   "parts": "37.88",
+   "cout": "33.13",
+   "prix_moyen": "0.8745",
+   "prix_de_marque": "0.87",
+   "latent": "-0.17",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will Bitcoin reach $84,000 October 12-18?",
+   "issue": "No",
+   "parts": "109.06",
+   "cout": "99.87",
+   "prix_moyen": "0.9157",
+   "prix_de_marque": "0.963",
+   "latent": "5.15",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will the highest temperature in Kuala Lumpur be 31°C on October 18?",
+   "issue": "No",
+   "parts": "3.32",
+   "cout": "2.71",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.78",
+   "latent": "-0.13",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1198097",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will Elon Musk post 320-339 tweets from October 13 to October 20, 2026?",
+   "issue": "No",
+   "parts": "123.74",
+   "cout": "110.73",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.862",
+   "latent": "-4.07",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1162658",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "5726927",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.06",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.15",
+   "latent": "-0.87",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1193530",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "5724267",
+   "issue": "No",
+   "parts": "3.43",
+   "cout": "2.87",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.996",
+   "latent": "0.55",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1192912",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "Will the highest temperature in London be 13°C on October 18?",
+   "issue": "No",
+   "parts": "26.71",
+   "cout": "21.84",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.8",
+   "latent": "-0.47",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1198063",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,500 on October 19?",
+   "issue": "No",
+   "parts": "10.11",
+   "cout": "8.97",
+   "prix_moyen": "0.8874",
+   "prix_de_marque": "0.93",
+   "latent": "0.43",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-16T23:43"
+  },
+  {
+   "marche": "Will the highest temperature in Atlanta be between 62-63°F on October 18?",
+   "issue": "No",
+   "parts": "6.25",
+   "cout": "5.11",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.9",
+   "latent": "0.51",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1198465",
+   "ouverte_le": "2026-10-16T23:43"
+  },
+  {
+   "marche": "Will Bitcoin reach $92,500 in October?",
+   "issue": "No",
+   "parts": "55.79",
+   "cout": "51.61",
+   "prix_moyen": "0.9252",
+   "prix_de_marque": "0.92",
+   "latent": "-0.29",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "Will the highest temperature in Amsterdam be 13°C on October 18?",
+   "issue": "No",
+   "parts": "13.85",
+   "cout": "11.59",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.83",
+   "latent": "-0.10",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1198095",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "Will the highest temperature in Panama City be 30°C on October 18?",
+   "issue": "No",
+   "parts": "0.94",
+   "cout": "0.78",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.87",
+   "latent": "0.04",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1199668",
+   "ouverte_le": "2026-10-17T16:48"
+  },
+  {
+   "marche": "Will Bitcoin dip to $72,500 in October?",
+   "issue": "No",
+   "parts": "50.39",
+   "cout": "44.72",
+   "prix_moyen": "0.8874",
+   "prix_de_marque": "0.86",
+   "latent": "-1.38",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T16:53"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $115 in October?",
+   "issue": "No",
+   "parts": "41.29",
+   "cout": "39.03",
+   "prix_moyen": "0.9453",
+   "prix_de_marque": "0.931",
+   "latent": "-0.59",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T16:53"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "5506667",
+   "issue": "Yes",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "13.86",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5720887",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "7.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:52"
+  },
+  {
+   "marche": "5611005",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "-57.38",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T18:07"
+  }
+ ],
+ "performances": {
+  "nf_autres_sujets v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "-36.31",
+   "frais": "1.63",
+   "rendement_sur_mises": -0.1953,
+   "esperance_par_operation": "-12.10",
+   "ic90_rendement_par_euro": [
+    -0.6127,
+    0.1658
+   ],
+   "brier": 0.274,
+   "log_loss": 0.8232,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

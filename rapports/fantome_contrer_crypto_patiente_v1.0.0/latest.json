@@ -1,0 +1,242 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "972.9253",
+  "capital_immobilise": "20.2322",
+  "gains_realises_nets": "-6.8425",
+  "gains_latents": "15.4738",
+  "frais_payes": "0.1512",
+  "capital_total_estime": "1008.6313",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.012,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "No",
+   "parts": "50.18",
+   "cout": "2.91",
+   "prix_moyen": "0.0580",
+   "prix_de_marque": "0.054",
+   "latent": "-0.20",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T22:36"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,300 October 12-18?",
+   "issue": "Yes",
+   "parts": "52.76",
+   "cout": "2.69",
+   "prix_moyen": "0.0510",
+   "prix_de_marque": "0.162",
+   "latent": "5.86",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-17T02:02"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,400 on October 19?",
+   "issue": "No",
+   "parts": "6.29",
+   "cout": "2.07",
+   "prix_moyen": "0.3290",
+   "prix_de_marque": "0.55",
+   "latent": "1.39",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-17T03:33"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,400 on October 18?",
+   "issue": "No",
+   "parts": "5.61",
+   "cout": "1.34",
+   "prix_moyen": "0.2380",
+   "prix_de_marque": "0.609",
+   "latent": "2.08",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-17T04:47"
+  },
+  {
+   "marche": "Will Bitcoin dip to $80,000 October 12-18?",
+   "issue": "Yes",
+   "parts": "10.26",
+   "cout": "2.32",
+   "prix_moyen": "0.2260",
+   "prix_de_marque": "0.29",
+   "latent": "0.66",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T07:23"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 19?",
+   "issue": "No",
+   "parts": "6.42",
+   "cout": "0.77",
+   "prix_moyen": "0.1200",
+   "prix_de_marque": "0.2",
+   "latent": "0.51",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T09:17"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $82,000 on October 18?",
+   "issue": "Yes",
+   "parts": "5.03",
+   "cout": "1.66",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.15",
+   "latent": "-0.91",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T10:03"
+  },
+  {
+   "marche": "Will the price of Bitcoin be between $80,000 and $82,000 on October 18?",
+   "issue": "No",
+   "parts": "5.65",
+   "cout": "1.70",
+   "prix_moyen": "0.3000",
+   "prix_de_marque": "0.22",
+   "latent": "-0.45",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T13:12"
+  },
+  {
+   "marche": "Will Bitcoin reach $82,000 on October 17?",
+   "issue": "Yes",
+   "parts": "6.58",
+   "cout": "1.32",
+   "prix_moyen": "0.2008",
+   "prix_de_marque": "0.14",
+   "latent": "-0.40",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T15:53"
+  },
+  {
+   "marche": "Will Bitcoin dip to $81,000 on October 17?",
+   "issue": "Yes",
+   "parts": "8.49",
+   "cout": "1.36",
+   "prix_moyen": "0.1600",
+   "prix_de_marque": "0.999",
+   "latent": "7.12",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T18:48"
+  },
+  {
+   "marche": "Will Bitcoin dip to $80,000 in October?",
+   "issue": "No",
+   "parts": "5.56",
+   "cout": "1.17",
+   "prix_moyen": "0.2100",
+   "prix_de_marque": "0.2",
+   "latent": "-0.06",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T21:30"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,500 on October 19?",
+   "issue": "Yes",
+   "parts": "13.36",
+   "cout": "0.94",
+   "prix_moyen": "0.0700",
+   "prix_de_marque": "0.06",
+   "latent": "-0.13",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-17T21:34"
+  }
+ ],
+ "operations_cloturees": 5,
+ "dernieres_operations": [
+  {
+   "marche": "5506691",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.68",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:26"
+  },
+  {
+   "marche": "5506670",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:32"
+  },
+  {
+   "marche": "5506667",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-0.91",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5506668",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.67",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:47"
+  },
+  {
+   "marche": "5506695",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-0.91",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:47"
+  }
+ ],
+ "performances": {
+  "contrer_crypto_patiente v1.0.0": {
+   "operations": 5,
+   "evenements": 4,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-6.84",
+   "frais": "0.00",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-1.37",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.1022,
+   "log_loss": 0.3713,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

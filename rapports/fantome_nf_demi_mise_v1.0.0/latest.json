@@ -1,0 +1,298 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "0.0746",
+  "capital_immobilise": "1011.4534",
+  "gains_realises_nets": "11.5280",
+  "gains_latents": "-37.0608",
+  "frais_payes": "3.1587",
+  "capital_total_estime": "974.4672",
+  "positions_ouvertes": "18",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0451,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "43.46",
+   "cout": "40.85",
+   "prix_moyen": "0.9399",
+   "prix_de_marque": "0.916",
+   "latent": "-1.04",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by November 2?",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.21",
+   "prix_moyen": "0.9210",
+   "prix_de_marque": "0.907",
+   "latent": "-0.14",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "125.88",
+   "cout": "117.76",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.941",
+   "latent": "0.69",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "55.92",
+   "cout": "47.45",
+   "prix_moyen": "0.8486",
+   "prix_de_marque": "0.844",
+   "latent": "-0.26",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will the Democratic Party win the WA-05 House seat?",
+   "issue": "No",
+   "parts": "73.86",
+   "cout": "65.84",
+   "prix_moyen": "0.8914",
+   "prix_de_marque": "0.887",
+   "latent": "-0.32",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "96.66",
+   "cout": "89.14",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-1.18",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "84.59",
+   "cout": "76.60",
+   "prix_moyen": "0.9055",
+   "prix_de_marque": "0.901",
+   "latent": "-0.38",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "parts": "85.86",
+   "cout": "78.34",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.55",
+   "latent": "-31.12",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1139669",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "Will the Democrats win the Arizona governor race in 2026?",
+   "issue": "Yes",
+   "parts": "108.53",
+   "cout": "101.22",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.92",
+   "latent": "-1.37",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "94.44",
+   "cout": "87.16",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-1.22",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "94.44",
+   "cout": "87.16",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-1.22",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "91.19",
+   "cout": "86.37",
+   "prix_moyen": "0.9471",
+   "prix_de_marque": "0.956",
+   "latent": "0.81",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T11:13"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "16.51",
+   "cout": "14.97",
+   "prix_moyen": "0.9065",
+   "prix_de_marque": "0.903",
+   "latent": "-0.06",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "Florida State vs. Miami (FL)",
+   "issue": "Miami (FL)",
+   "parts": "16.26",
+   "cout": "15.00",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-0.20",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1139693",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "5352841",
+   "issue": "Stephen F. Austin",
+   "parts": "16.09",
+   "cout": "15.00",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.991",
+   "latent": "0.95",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1139681",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Will Alexia Putellas win the 2026 Women's Ballon d'Or?",
+   "issue": "Yes",
+   "parts": "15.97",
+   "cout": "14.97",
+   "prix_moyen": "0.9371",
+   "prix_de_marque": "0.93",
+   "latent": "-0.11",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "5353198",
+   "issue": "Oregon State",
+   "parts": "35.69",
+   "cout": "32.22",
+   "prix_moyen": "0.9027",
+   "prix_de_marque": "0.89",
+   "latent": "-0.45",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1139689",
+   "ouverte_le": "2026-10-17T19:49"
+  },
+  {
+   "marche": "Will Manchester City FC vs. AEK end in a draw?",
+   "issue": "No",
+   "parts": "34.17",
+   "cout": "32.22",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.93",
+   "latent": "-0.44",
+   "strategie": "nf_demi_mise v1.0.0",
+   "groupe": "1149349",
+   "ouverte_le": "2026-10-17T19:49"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "5263915",
+   "issue": "No",
+   "strategie": "nf_demi_mise v1.0.0",
+   "resultat": "2.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5263936",
+   "issue": "No",
+   "strategie": "nf_demi_mise v1.0.0",
+   "resultat": "2.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T19:12"
+  },
+  {
+   "marche": "5349365",
+   "issue": "LSU",
+   "strategie": "nf_demi_mise v1.0.0",
+   "resultat": "7.53",
+   "resolution": "résolu : LSU",
+   "cloturee_le": "2026-10-17T19:47"
+  }
+ ],
+ "performances": {
+  "nf_demi_mise v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 3,
+   "taux_reussite": 1.0,
+   "profit_net": "11.53",
+   "frais": "0.40",
+   "rendement_sur_mises": 0.1022,
+   "esperance_par_operation": "3.84",
+   "ic90_rendement_par_euro": [
+    0.0715,
+    0.112
+   ],
+   "brier": 0.0023,
+   "log_loss": 0.0429,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

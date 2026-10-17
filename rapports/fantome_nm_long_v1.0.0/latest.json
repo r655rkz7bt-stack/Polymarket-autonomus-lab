@@ -1,0 +1,75 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "875.7737",
+  "capital_immobilise": "124.2263",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-1.4568",
+  "frais_payes": "0.3791",
+  "capital_total_estime": "998.5432",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0028,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5769295",
+   "issue": "No",
+   "parts": "12.01",
+   "cout": "11.83",
+   "prix_moyen": "0.9848",
+   "prix_de_marque": "0.972",
+   "latent": "-0.15",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1198467",
+   "ouverte_le": "2026-10-17T02:13"
+  },
+  {
+   "marche": "Will the Republican Party win the NC-11 House seat?",
+   "issue": "No",
+   "parts": "43.48",
+   "cout": "37.60",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.85",
+   "latent": "-0.64",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "Will the Democratic Party win the CA-04 House seat?",
+   "issue": "Yes",
+   "parts": "78.87",
+   "cout": "74.80",
+   "prix_moyen": "0.9483",
+   "prix_de_marque": "0.94",
+   "latent": "-0.66",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

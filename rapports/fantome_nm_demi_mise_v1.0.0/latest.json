@@ -1,0 +1,110 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "880.7297",
+  "capital_immobilise": "91.0972",
+  "gains_realises_nets": "-28.1731",
+  "gains_latents": "-1.2699",
+  "frais_payes": "0.5582",
+  "capital_total_estime": "970.5570",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0339,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Republican Party win the NC-11 House seat?",
+   "issue": "No",
+   "parts": "21.74",
+   "cout": "18.80",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.85",
+   "latent": "-0.32",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "Will the Democratic Party win the CA-04 House seat?",
+   "issue": "Yes",
+   "parts": "61.86",
+   "cout": "58.65",
+   "prix_moyen": "0.9482",
+   "prix_de_marque": "0.94",
+   "latent": "-0.51",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "Will the highest temperature in Munich be 18°C on October 18?",
+   "issue": "No",
+   "parts": "13.88",
+   "cout": "13.64",
+   "prix_moyen": "0.9829",
+   "prix_de_marque": "0.951",
+   "latent": "-0.44",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1198069",
+   "ouverte_le": "2026-10-17T19:13"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "5787757",
+   "issue": "Team Falcons",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "3.22",
+   "resolution": "résolu : Team Falcons",
+   "cloturee_le": "2026-10-17T18:23"
+  },
+  {
+   "marche": "5787759",
+   "issue": "Team Falcons",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "-31.40",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T20:57"
+  }
+ ],
+ "performances": {
+  "nm_demi_mise v1.0.0": {
+   "operations": 2,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 0.5,
+   "profit_net": "-28.17",
+   "frais": "0.32",
+   "rendement_sur_mises": -0.3333,
+   "esperance_par_operation": "-14.09",
+   "ic90_rendement_par_euro": [
+    -0.4697,
+    -0.4697
+   ],
+   "brier": 0.4468,
+   "log_loss": 1.4629,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

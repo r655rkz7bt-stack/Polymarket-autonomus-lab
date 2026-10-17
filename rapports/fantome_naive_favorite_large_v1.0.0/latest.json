@@ -1,0 +1,171 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "0.2301",
+  "capital_immobilise": "1003.8594",
+  "gains_realises_nets": "4.0895",
+  "gains_latents": "-2.9240",
+  "frais_payes": "1.9971",
+  "capital_total_estime": "1001.1656",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0144,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "139.53",
+   "cout": "130.62",
+   "prix_moyen": "0.9362",
+   "prix_de_marque": "0.97",
+   "latent": "4.72",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "251.76",
+   "cout": "235.52",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.941",
+   "latent": "1.38",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "Perim Island no longer under Houthi control by October 31?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.50",
+   "prix_moyen": "0.9010",
+   "prix_de_marque": "0.906",
+   "latent": "0.02",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "181.80",
+   "cout": "166.03",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.903",
+   "latent": "-1.87",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-17T05:08"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "202.42",
+   "cout": "191.34",
+   "prix_moyen": "0.9452",
+   "prix_de_marque": "0.976",
+   "latent": "6.23",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-17T05:08"
+  },
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "193.23",
+   "cout": "178.20",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-2.36",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T05:08"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "46.47",
+   "cout": "43.92",
+   "prix_moyen": "0.9452",
+   "prix_de_marque": "0.956",
+   "latent": "0.50",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T05:18"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "28.77",
+   "cout": "26.78",
+   "prix_moyen": "0.9307",
+   "prix_de_marque": "0.901",
+   "latent": "-0.85",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "parts": "29.53",
+   "cout": "26.94",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.55",
+   "latent": "-10.70",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1139669",
+   "ouverte_le": "2026-10-17T06:43"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "5771282",
+   "issue": "Sinja Kraus",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "4.09",
+   "resolution": "résolu : Sinja Kraus",
+   "cloturee_le": "2026-10-17T06:40"
+  }
+ ],
+ "performances": {
+  "naive_favorite_large v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "4.09",
+   "frais": "0.20",
+   "rendement_sur_mises": 0.0894,
+   "esperance_par_operation": "4.09",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0003,
+   "log_loss": 0.0171,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

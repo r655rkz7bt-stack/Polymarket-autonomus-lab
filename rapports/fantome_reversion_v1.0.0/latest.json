@@ -1,0 +1,186 @@
+{
+ "genere_le": "2026-10-17T22:04:31+00:00",
+ "capital": {
+  "solde_disponible": "0.3626",
+  "capital_immobilise": "700.6338",
+  "gains_realises_nets": "-299.0036",
+  "gains_latents": "1.9443",
+  "frais_payes": "38.0166",
+  "capital_total_estime": "702.9407",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2837,
+ "dernier_battement": "2026-10-17T10:48:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5506689",
+   "issue": "Yes",
+   "parts": "342.15",
+   "cout": "200.90",
+   "prix_moyen": "0.5872",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "reversion v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-15T13:51"
+  },
+  {
+   "marche": "5506671",
+   "issue": "No",
+   "parts": "104.99",
+   "cout": "86.01",
+   "prix_moyen": "0.8192",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "reversion v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-15T16:16"
+  },
+  {
+   "marche": "Will Bitcoin reach $87,500 in October?",
+   "issue": "No",
+   "parts": "501.16",
+   "cout": "318.98",
+   "prix_moyen": "0.6365",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "reversion v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-15T16:21"
+  },
+  {
+   "marche": "Will Ethereum reach $2,600 in October?",
+   "issue": "No",
+   "parts": "121.23",
+   "cout": "64.02",
+   "prix_moyen": "0.5281",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "reversion v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-15T16:31"
+  },
+  {
+   "marche": "5506691",
+   "issue": "Yes",
+   "parts": "47.82",
+   "cout": "25.34",
+   "prix_moyen": "0.5298",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "reversion v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T04:16"
+  },
+  {
+   "marche": "5723184",
+   "issue": "No",
+   "parts": "7.58",
+   "cout": "5.39",
+   "prix_moyen": "0.7105",
+   "prix_de_marque": "0.967",
+   "latent": "1.94",
+   "strategie": "reversion v1.0.0",
+   "groupe": "1192688",
+   "ouverte_le": "2026-10-16T16:17"
+  }
+ ],
+ "operations_cloturees": 7,
+ "dernieres_operations": [
+  {
+   "marche": "5688703",
+   "issue": "Team Falcons",
+   "strategie": "reversion v1.0.0",
+   "resultat": "-231.05",
+   "resolution": "résolu : 9z",
+   "cloturee_le": "2026-10-15T14:01"
+  },
+  {
+   "marche": "5432712",
+   "issue": "Yes",
+   "strategie": "reversion v1.0.0",
+   "resultat": "191.88",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-15T16:15"
+  },
+  {
+   "marche": "5719562",
+   "issue": "No",
+   "strategie": "reversion v1.0.0",
+   "resultat": "20.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-16T04:15"
+  },
+  {
+   "marche": "5459764",
+   "issue": "Yes",
+   "strategie": "reversion v1.0.0",
+   "resultat": "2.33",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-16T16:15"
+  },
+  {
+   "marche": "5459795",
+   "issue": "Yes",
+   "strategie": "reversion v1.0.0",
+   "resultat": "-25.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-16T16:15"
+  },
+  {
+   "marche": "5766179",
+   "issue": "No",
+   "strategie": "reversion v1.0.0",
+   "resultat": "-5.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-16T17:35"
+  },
+  {
+   "marche": "5362547",
+   "issue": "No",
+   "strategie": "reversion v1.0.0",
+   "resultat": "-251.75",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-16T18:05"
+  }
+ ],
+ "performances": {
+  "reversion v1.0.0": {
+   "operations": 7,
+   "evenements": 7,
+   "gagnantes": 3,
+   "taux_reussite": 0.429,
+   "profit_net": "-299.00",
+   "frais": "19.71",
+   "rendement_sur_mises": -0.3479,
+   "esperance_par_operation": "-42.71",
+   "ic90_rendement_par_euro": [
+    -0.7685,
+    0.1326
+   ],
+   "brier": 0.32,
+   "log_loss": 0.8535,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,618 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "163.1089",
+  "capital_immobilise": "791.0896",
+  "gains_realises_nets": "-45.8014",
+  "gains_latents": "89.8694",
+  "frais_payes": "0.8307",
+  "capital_total_estime": "1044.0680",
+  "positions_ouvertes": "40",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1437,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5723183",
+   "issue": "No",
+   "parts": "69.46",
+   "cout": "29.48",
+   "prix_moyen": "0.4244",
+   "prix_de_marque": "0.89",
+   "latent": "32.34",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192688",
+   "ouverte_le": "2026-10-16T11:42"
+  },
+  {
+   "marche": "5720668",
+   "issue": "No",
+   "parts": "49.05",
+   "cout": "23.05",
+   "prix_moyen": "0.4700",
+   "prix_de_marque": "0.997",
+   "latent": "25.85",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192278",
+   "ouverte_le": "2026-10-16T11:56"
+  },
+  {
+   "marche": "5720800",
+   "issue": "No",
+   "parts": "53.38",
+   "cout": "23.49",
+   "prix_moyen": "0.4400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192291",
+   "ouverte_le": "2026-10-16T13:16"
+  },
+  {
+   "marche": "5724287",
+   "issue": "No",
+   "parts": "53.38",
+   "cout": "23.49",
+   "prix_moyen": "0.4400",
+   "prix_de_marque": "0.01",
+   "latent": "-22.95",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192914",
+   "ouverte_le": "2026-10-16T13:26"
+  },
+  {
+   "marche": "5723193",
+   "issue": "No",
+   "parts": "51.16",
+   "cout": "23.53",
+   "prix_moyen": "0.4600",
+   "prix_de_marque": "0.13",
+   "latent": "-16.88",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192690",
+   "ouverte_le": "2026-10-16T13:26"
+  },
+  {
+   "marche": "5720917",
+   "issue": "No",
+   "parts": "57.60",
+   "cout": "23.06",
+   "prix_moyen": "0.4003",
+   "prix_de_marque": "0.999",
+   "latent": "34.49",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192309",
+   "ouverte_le": "2026-10-16T16:26"
+  },
+  {
+   "marche": "5723203",
+   "issue": "No",
+   "parts": "59.51",
+   "cout": "23.21",
+   "prix_moyen": "0.3900",
+   "prix_de_marque": "0.999",
+   "latent": "36.24",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192691",
+   "ouverte_le": "2026-10-16T16:51"
+  },
+  {
+   "marche": "Will the highest temperature in Tel Aviv be 27°C on October 18?",
+   "issue": "No",
+   "parts": "54.04",
+   "cout": "23.24",
+   "prix_moyen": "0.4300",
+   "prix_de_marque": "0.38",
+   "latent": "-2.70",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198070",
+   "ouverte_le": "2026-10-16T16:56"
+  },
+  {
+   "marche": "5720951",
+   "issue": "No",
+   "parts": "59.60",
+   "cout": "22.05",
+   "prix_moyen": "0.3700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192312",
+   "ouverte_le": "2026-10-16T19:11"
+  },
+  {
+   "marche": "5726937",
+   "issue": "No",
+   "parts": "7.96",
+   "cout": "4.94",
+   "prix_moyen": "0.6200",
+   "prix_de_marque": "0.62",
+   "latent": "0.00",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1193531",
+   "ouverte_le": "2026-10-16T19:36"
+  },
+  {
+   "marche": "Will the highest temperature in Lucknow be 32°C on October 18?",
+   "issue": "No",
+   "parts": "41.38",
+   "cout": "22.76",
+   "prix_moyen": "0.5500",
+   "prix_de_marque": "0.54",
+   "latent": "-0.41",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198068",
+   "ouverte_le": "2026-10-16T20:02"
+  },
+  {
+   "marche": "5724276",
+   "issue": "No",
+   "parts": "35.46",
+   "cout": "22.34",
+   "prix_moyen": "0.6300",
+   "prix_de_marque": "0.999",
+   "latent": "13.08",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192913",
+   "ouverte_le": "2026-10-16T20:06"
+  },
+  {
+   "marche": "5720746",
+   "issue": "No",
+   "parts": "57.23",
+   "cout": "29.79",
+   "prix_moyen": "0.5205",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192286",
+   "ouverte_le": "2026-10-16T20:22"
+  },
+  {
+   "marche": "Will the highest temperature in Shenzhen be 31°C on October 18?",
+   "issue": "No",
+   "parts": "43.58",
+   "cout": "23.53",
+   "prix_moyen": "0.5400",
+   "prix_de_marque": "0.41",
+   "latent": "-5.67",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198091",
+   "ouverte_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "5720679",
+   "issue": "No",
+   "parts": "48.08",
+   "cout": "24.04",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192279",
+   "ouverte_le": "2026-10-16T21:51"
+  },
+  {
+   "marche": "5724266",
+   "issue": "No",
+   "parts": "49.88",
+   "cout": "23.44",
+   "prix_moyen": "0.4700",
+   "prix_de_marque": "0.001",
+   "latent": "-23.39",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192912",
+   "ouverte_le": "2026-10-16T22:51"
+  },
+  {
+   "marche": "Will the highest temperature in Singapore be 33°C on October 18?",
+   "issue": "No",
+   "parts": "49.31",
+   "cout": "23.67",
+   "prix_moyen": "0.4800",
+   "prix_de_marque": "0.58",
+   "latent": "4.93",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198074",
+   "ouverte_le": "2026-10-16T23:42"
+  },
+  {
+   "marche": "5720833",
+   "issue": "No",
+   "parts": "38.87",
+   "cout": "23.71",
+   "prix_moyen": "0.6100",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192293",
+   "ouverte_le": "2026-10-16T23:52"
+  },
+  {
+   "marche": "Will the highest temperature in Austin be between 72-73°F on October 18?",
+   "issue": "No",
+   "parts": "43.63",
+   "cout": "23.12",
+   "prix_moyen": "0.5300",
+   "prix_de_marque": "0.7",
+   "latent": "7.42",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198468",
+   "ouverte_le": "2026-10-17T00:02"
+  },
+  {
+   "marche": "Will the highest temperature in Atlanta be between 64-65°F on October 18?",
+   "issue": "No",
+   "parts": "6.25",
+   "cout": "3.51",
+   "prix_moyen": "0.5624",
+   "prix_de_marque": "0.46",
+   "latent": "-0.64",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198465",
+   "ouverte_le": "2026-10-17T00:03"
+  },
+  {
+   "marche": "5729338",
+   "issue": "No",
+   "parts": "45.01",
+   "cout": "23.41",
+   "prix_moyen": "0.5200",
+   "prix_de_marque": "0.93",
+   "latent": "18.45",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1194016",
+   "ouverte_le": "2026-10-17T00:22"
+  },
+  {
+   "marche": "Will the highest temperature in Tokyo be 24°C on October 18?",
+   "issue": "No",
+   "parts": "39.56",
+   "cout": "22.55",
+   "prix_moyen": "0.5700",
+   "prix_de_marque": "0.6",
+   "latent": "1.19",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198071",
+   "ouverte_le": "2026-10-17T02:12"
+  },
+  {
+   "marche": "5729324",
+   "issue": "No",
+   "parts": "43.37",
+   "cout": "21.68",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "0.998",
+   "latent": "21.60",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1194015",
+   "ouverte_le": "2026-10-17T04:12"
+  },
+  {
+   "marche": "Will the highest temperature in Toronto be 18°C on October 18?",
+   "issue": "No",
+   "parts": "19.25",
+   "cout": "9.19",
+   "prix_moyen": "0.4776",
+   "prix_de_marque": "0.5",
+   "latent": "0.43",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1199666",
+   "ouverte_le": "2026-10-17T06:14"
+  },
+  {
+   "marche": "Will the highest temperature in Guangzhou be 34°C on October 18?",
+   "issue": "No",
+   "parts": "36.90",
+   "cout": "21.77",
+   "prix_moyen": "0.5900",
+   "prix_de_marque": "0.61",
+   "latent": "0.74",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198100",
+   "ouverte_le": "2026-10-17T07:17"
+  },
+  {
+   "marche": "5720667",
+   "issue": "No",
+   "parts": "42.18",
+   "cout": "21.93",
+   "prix_moyen": "0.5200",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192278",
+   "ouverte_le": "2026-10-17T08:12"
+  },
+  {
+   "marche": "Will the highest temperature in Lucknow be 31°C on October 18?",
+   "issue": "No",
+   "parts": "35.81",
+   "cout": "21.13",
+   "prix_moyen": "0.5900",
+   "prix_de_marque": "0.53",
+   "latent": "-2.15",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198068",
+   "ouverte_le": "2026-10-17T08:22"
+  },
+  {
+   "marche": "5724277",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "0.72",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1192913",
+   "ouverte_le": "2026-10-17T08:23"
+  },
+  {
+   "marche": "Will the highest temperature in Beijing be 19°C on October 18?",
+   "issue": "No",
+   "parts": "42.85",
+   "cout": "23.14",
+   "prix_moyen": "0.5400",
+   "prix_de_marque": "0.57",
+   "latent": "1.29",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198088",
+   "ouverte_le": "2026-10-17T08:27"
+  },
+  {
+   "marche": "Will the highest temperature in London be 14°C on October 18?",
+   "issue": "No",
+   "parts": "43.58",
+   "cout": "23.10",
+   "prix_moyen": "0.5300",
+   "prix_de_marque": "0.4",
+   "latent": "-5.67",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198063",
+   "ouverte_le": "2026-10-17T08:47"
+  },
+  {
+   "marche": "Will the highest temperature in Ankara be 12°C on October 18?",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "0.78",
+   "prix_moyen": "0.6219",
+   "prix_de_marque": "0.66",
+   "latent": "0.05",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198066",
+   "ouverte_le": "2026-10-17T09:13"
+  },
+  {
+   "marche": "Will the highest temperature in New York City be between 58-59°F on October 18?",
+   "issue": "No",
+   "parts": "7.73",
+   "cout": "4.12",
+   "prix_moyen": "0.5325",
+   "prix_de_marque": "0.44",
+   "latent": "-0.71",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198463",
+   "ouverte_le": "2026-10-17T09:27"
+  },
+  {
+   "marche": "Will the highest temperature in Helsinki be 9°C on October 18?",
+   "issue": "No",
+   "parts": "50.71",
+   "cout": "24.34",
+   "prix_moyen": "0.4800",
+   "prix_de_marque": "0.32",
+   "latent": "-8.11",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198096",
+   "ouverte_le": "2026-10-17T10:17"
+  },
+  {
+   "marche": "Will the highest temperature in Seoul (Incheon) be 21°C on October 18?",
+   "issue": "No",
+   "parts": "40.55",
+   "cout": "22.71",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.54",
+   "latent": "-0.81",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198065",
+   "ouverte_le": "2026-10-17T10:27"
+  },
+  {
+   "marche": "Will the highest temperature in Paris be 14°C on October 18?",
+   "issue": "No",
+   "parts": "54.08",
+   "cout": "23.25",
+   "prix_moyen": "0.4300",
+   "prix_de_marque": "0.3",
+   "latent": "-7.03",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198064",
+   "ouverte_le": "2026-10-17T16:23"
+  },
+  {
+   "marche": "Will the highest temperature in Amsterdam be 12°C on October 18?",
+   "issue": "No",
+   "parts": "39.08",
+   "cout": "14.46",
+   "prix_moyen": "0.3700",
+   "prix_de_marque": "0.39",
+   "latent": "0.78",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198095",
+   "ouverte_le": "2026-10-17T18:23"
+  },
+  {
+   "marche": "Will the highest temperature in Buenos Aires be 16°C on October 18?",
+   "issue": "No",
+   "parts": "43.47",
+   "cout": "23.91",
+   "prix_moyen": "0.5500",
+   "prix_de_marque": "0.48",
+   "latent": "-3.04",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1199664",
+   "ouverte_le": "2026-10-17T19:18"
+  },
+  {
+   "marche": "Will the highest temperature in Cape Town be 17°C on October 18?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "2.51",
+   "prix_moyen": "0.5025",
+   "prix_de_marque": "0.46",
+   "latent": "-0.21",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-17T19:19"
+  },
+  {
+   "marche": "Will the highest temperature in Dallas be between 70-71°F on October 18?",
+   "issue": "No",
+   "parts": "50.86",
+   "cout": "23.40",
+   "prix_moyen": "0.4600",
+   "prix_de_marque": "0.37",
+   "latent": "-4.58",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198464",
+   "ouverte_le": "2026-10-17T20:03"
+  },
+  {
+   "marche": "Will the highest temperature in Tel Aviv be 26°C on October 19?",
+   "issue": "No",
+   "parts": "67.28",
+   "cout": "23.55",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "0.29",
+   "latent": "-4.04",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1203401",
+   "ouverte_le": "2026-10-17T21:13"
+  }
+ ],
+ "operations_cloturees": 10,
+ "dernieres_operations": [
+  {
+   "marche": "5681147",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "25.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T06:21"
+  },
+  {
+   "marche": "5720713",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-23.45",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T11:26"
+  },
+  {
+   "marche": "5720930",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-22.50",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T15:26"
+  },
+  {
+   "marche": "5720692",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "19.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T15:30"
+  },
+  {
+   "marche": "5720756",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "26.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T15:33"
+  },
+  {
+   "marche": "5720997",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-23.49",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:46"
+  },
+  {
+   "marche": "5720778",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-23.64",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:51"
+  },
+  {
+   "marche": "5720722",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-23.79",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T19:46"
+  },
+  {
+   "marche": "5721019",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "22.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T19:46"
+  },
+  {
+   "marche": "5720975",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-22.87",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T22:01"
+  }
+ ],
+ "performances": {
+  "meteo_prevision_patiente v1.0.0": {
+   "operations": 10,
+   "evenements": 10,
+   "gagnantes": 4,
+   "taux_reussite": 0.4,
+   "profit_net": "-45.80",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.1966,
+   "esperance_par_operation": "-4.58",
+   "ic90_rendement_par_euro": [
+    -0.6296,
+    0.3801
+   ],
+   "brier": 0.3773,
+   "log_loss": 0.9861,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

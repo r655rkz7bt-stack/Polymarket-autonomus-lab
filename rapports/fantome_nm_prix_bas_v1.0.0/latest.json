@@ -1,0 +1,75 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "907.4860",
+  "capital_immobilise": "37.6108",
+  "gains_realises_nets": "-54.9032",
+  "gains_latents": "-0.6444",
+  "frais_payes": "0.4826",
+  "capital_total_estime": "944.4525",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0597,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Republican Party win the NC-11 House seat?",
+   "issue": "No",
+   "parts": "43.49",
+   "cout": "37.61",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.85",
+   "latent": "-0.64",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:44"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "5787759",
+   "issue": "Team Falcons",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-54.90",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T20:57"
+  }
+ ],
+ "performances": {
+  "nm_prix_bas v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-54.90",
+   "frais": "0.27",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-54.90",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.8742,
+   "log_loss": 2.7334,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

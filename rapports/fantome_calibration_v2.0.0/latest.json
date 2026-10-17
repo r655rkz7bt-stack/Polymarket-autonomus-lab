@@ -1,0 +1,354 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "390.7189",
+  "capital_immobilise": "627.4245",
+  "gains_realises_nets": "18.1433",
+  "gains_latents": "-30.6399",
+  "frais_payes": "14.3269",
+  "capital_total_estime": "987.5035",
+  "positions_ouvertes": "18",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1484,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5127922",
+   "issue": "Under",
+   "parts": "83.99",
+   "cout": "48.49",
+   "prix_moyen": "0.5774",
+   "prix_de_marque": "0.55",
+   "latent": "-2.30",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982302",
+   "ouverte_le": "2026-10-15T17:11"
+  },
+  {
+   "marche": "5352686",
+   "issue": "Duke",
+   "parts": "85.88",
+   "cout": "51.29",
+   "prix_moyen": "0.5973",
+   "prix_de_marque": "0.18",
+   "latent": "-35.83",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1139678",
+   "ouverte_le": "2026-10-15T19:11"
+  },
+  {
+   "marche": "Kentucky vs. Oklahoma: O/U 45.5",
+   "issue": "Under",
+   "parts": "83.67",
+   "cout": "49.13",
+   "prix_moyen": "0.5872",
+   "prix_de_marque": "0.56",
+   "latent": "-2.27",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1139705",
+   "ouverte_le": "2026-10-15T19:46"
+  },
+  {
+   "marche": "5128793",
+   "issue": "Browns",
+   "parts": "41.32",
+   "cout": "23.44",
+   "prix_moyen": "0.5674",
+   "prix_de_marque": "0.59",
+   "latent": "0.93",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982298",
+   "ouverte_le": "2026-10-15T20:56"
+  },
+  {
+   "marche": "5481967",
+   "issue": "Golden State Valkyries",
+   "parts": "52.60",
+   "cout": "31.15",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "0.999",
+   "latent": "21.40",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1163087",
+   "ouverte_le": "2026-10-15T23:41"
+  },
+  {
+   "marche": "Louisiana Tech vs. Louisiana-Monroe: O/U 57.5",
+   "issue": "Under",
+   "parts": "41.29",
+   "cout": "23.43",
+   "prix_moyen": "0.5674",
+   "prix_de_marque": "0.54",
+   "latent": "-1.13",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1139713",
+   "ouverte_le": "2026-10-15T23:51"
+  },
+  {
+   "marche": "4367456",
+   "issue": "Browns",
+   "parts": "43.22",
+   "cout": "26.38",
+   "prix_moyen": "0.6103",
+   "prix_de_marque": "0.63",
+   "latent": "0.85",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982298",
+   "ouverte_le": "2026-10-16T00:18"
+  },
+  {
+   "marche": "Texans vs. Jaguars",
+   "issue": "Jaguars",
+   "parts": "41.45",
+   "cout": "23.93",
+   "prix_moyen": "0.5774",
+   "prix_de_marque": "0.56",
+   "latent": "-0.72",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982296",
+   "ouverte_le": "2026-10-16T01:56"
+  },
+  {
+   "marche": "Spread: Colts (-7.5)",
+   "issue": "Titans",
+   "parts": "40.90",
+   "cout": "23.21",
+   "prix_moyen": "0.5674",
+   "prix_de_marque": "0.56",
+   "latent": "-0.30",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-16T05:26"
+  },
+  {
+   "marche": "5296074",
+   "issue": "Yes",
+   "parts": "52.60",
+   "cout": "32.19",
+   "prix_moyen": "0.6120",
+   "prix_de_marque": "0.57",
+   "latent": "-2.21",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1132474",
+   "ouverte_le": "2026-10-17T01:37"
+  },
+  {
+   "marche": "Commanders vs. 49ers: O/U 50.5",
+   "issue": "Over",
+   "parts": "41.11",
+   "cout": "24.14",
+   "prix_moyen": "0.5873",
+   "prix_de_marque": "0.57",
+   "latent": "-0.71",
+   "strategie": "calibration v2.0.0",
+   "groupe": "987958",
+   "ouverte_le": "2026-10-17T02:58"
+  },
+  {
+   "marche": "Titans vs. Colts",
+   "issue": "Colts",
+   "parts": "50.96",
+   "cout": "38.00",
+   "prix_moyen": "0.7458",
+   "prix_de_marque": "0.74",
+   "latent": "-0.29",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-17T03:43"
+  },
+  {
+   "marche": "Oilers vs. Utah",
+   "issue": "Utah",
+   "parts": "50.59",
+   "cout": "29.46",
+   "prix_moyen": "0.5823",
+   "prix_de_marque": "0.56",
+   "latent": "-1.13",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1053885",
+   "ouverte_le": "2026-10-17T06:23"
+  },
+  {
+   "marche": "Will Paris FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "50.93",
+   "cout": "30.66",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "0.56",
+   "latent": "-2.14",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1134921",
+   "ouverte_le": "2026-10-17T16:38"
+  },
+  {
+   "marche": "Spread: Titans (-3.5)",
+   "issue": "Colts",
+   "parts": "90.31",
+   "cout": "78.88",
+   "prix_moyen": "0.8734",
+   "prix_de_marque": "0.86",
+   "latent": "-1.21",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-17T19:08"
+  },
+  {
+   "marche": "Spread: Colts (-5.5)",
+   "issue": "Colts",
+   "parts": "40.96",
+   "cout": "23.24",
+   "prix_moyen": "0.5674",
+   "prix_de_marque": "0.54",
+   "latent": "-1.12",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-17T19:08"
+  },
+  {
+   "marche": "Spread: Eagles (-3.5)",
+   "issue": "Panthers",
+   "parts": "51.48",
+   "cout": "38.90",
+   "prix_moyen": "0.7556",
+   "prix_de_marque": "0.74",
+   "latent": "-0.80",
+   "strategie": "calibration v2.0.0",
+   "groupe": "982302",
+   "ouverte_le": "2026-10-17T20:23"
+  },
+  {
+   "marche": "Valorant: LOUD vs Team Vitality (BO5) - VCT Champions Playoffs",
+   "issue": "LOUD",
+   "parts": "51.47",
+   "cout": "31.50",
+   "prix_moyen": "0.6120",
+   "prix_de_marque": "0.58",
+   "latent": "-1.65",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1205252",
+   "ouverte_le": "2026-10-17T21:23"
+  }
+ ],
+ "operations_cloturees": 10,
+ "dernieres_operations": [
+  {
+   "marche": "5504916",
+   "issue": "LOUD",
+   "strategie": "calibration v2.0.0",
+   "resultat": "43.80",
+   "resolution": "résolu : LOUD",
+   "cloturee_le": "2026-10-16T10:01"
+  },
+  {
+   "marche": "5762600",
+   "issue": "Astralis",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-30.17",
+   "resolution": "résolu : MIBR",
+   "cloturee_le": "2026-10-16T17:50"
+  },
+  {
+   "marche": "5765352",
+   "issue": "Over",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-34.19",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-16T21:20"
+  },
+  {
+   "marche": "5775168",
+   "issue": "Heroic",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-31.32",
+   "resolution": "résolu : NIP",
+   "cloturee_le": "2026-10-17T11:31"
+  },
+  {
+   "marche": "5263852",
+   "issue": "No",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-28.31",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T14:01"
+  },
+  {
+   "marche": "5268745",
+   "issue": "Yes",
+   "strategie": "calibration v2.0.0",
+   "resultat": "20.98",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T14:21"
+  },
+  {
+   "marche": "5263885",
+   "issue": "Yes",
+   "strategie": "calibration v2.0.0",
+   "resultat": "21.97",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:45"
+  },
+  {
+   "marche": "5349499",
+   "issue": "Ohio State",
+   "strategie": "calibration v2.0.0",
+   "resultat": "17.82",
+   "resolution": "résolu : Ohio State",
+   "cloturee_le": "2026-10-17T20:35"
+  },
+  {
+   "marche": "5787761",
+   "issue": "BetBoom Team",
+   "strategie": "calibration v2.0.0",
+   "resultat": "21.39",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T20:55"
+  },
+  {
+   "marche": "5351192",
+   "issue": "Stetson",
+   "strategie": "calibration v2.0.0",
+   "resultat": "16.17",
+   "resolution": "résolu : Stetson",
+   "cloturee_le": "2026-10-17T22:01"
+  }
+ ],
+ "performances": {
+  "calibration v2.0.0": {
+   "operations": 10,
+   "evenements": 10,
+   "gagnantes": 6,
+   "taux_reussite": 0.6,
+   "profit_net": "18.14",
+   "frais": "6.33",
+   "rendement_sur_mises": 0.0557,
+   "esperance_par_operation": "1.81",
+   "ic90_rendement_par_euro": [
+    -0.4847,
+    0.3714
+   ],
+   "brier": 0.2452,
+   "log_loss": 0.6845,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

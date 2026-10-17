@@ -1,0 +1,122 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "824.1147",
+  "capital_immobilise": "119.4254",
+  "gains_realises_nets": "-56.4599",
+  "gains_latents": "-1.0534",
+  "frais_payes": "0.8240",
+  "capital_total_estime": "942.4867",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0663,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5769295",
+   "issue": "No",
+   "parts": "12.01",
+   "cout": "11.83",
+   "prix_moyen": "0.9848",
+   "prix_de_marque": "0.972",
+   "latent": "-0.15",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "1198467",
+   "ouverte_le": "2026-10-17T02:13"
+  },
+  {
+   "marche": "5724254",
+   "issue": "Yes",
+   "parts": "19.38",
+   "cout": "19.16",
+   "prix_moyen": "0.9886",
+   "prix_de_marque": "0.999",
+   "latent": "0.20",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "1192911",
+   "ouverte_le": "2026-10-17T07:03"
+  },
+  {
+   "marche": "Will the Democratic Party win the CA-04 House seat?",
+   "issue": "Yes",
+   "parts": "78.87",
+   "cout": "74.80",
+   "prix_moyen": "0.9483",
+   "prix_de_marque": "0.94",
+   "latent": "-0.66",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "Will the highest temperature in Munich be 18°C on October 18?",
+   "issue": "No",
+   "parts": "13.88",
+   "cout": "13.64",
+   "prix_moyen": "0.9829",
+   "prix_de_marque": "0.951",
+   "latent": "-0.44",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "1198069",
+   "ouverte_le": "2026-10-17T19:13"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "5787757",
+   "issue": "Team Falcons",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "6.44",
+   "resolution": "résolu : Team Falcons",
+   "cloturee_le": "2026-10-17T18:22"
+  },
+  {
+   "marche": "5787759",
+   "issue": "Team Falcons",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "-62.90",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T20:57"
+  }
+ ],
+ "performances": {
+  "nm_prix_haut v1.0.0": {
+   "operations": 2,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 0.5,
+   "profit_net": "-56.46",
+   "frais": "0.63",
+   "rendement_sur_mises": -0.3339,
+   "esperance_par_operation": "-28.23",
+   "ic90_rendement_par_euro": [
+    -0.4697,
+    -0.4697
+   ],
+   "brier": 0.4468,
+   "log_loss": 1.4629,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

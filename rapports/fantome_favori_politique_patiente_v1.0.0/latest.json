@@ -1,0 +1,135 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "383.2481",
+  "capital_immobilise": "616.7519",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-48.5786",
+  "frais_payes": "0.3162",
+  "capital_total_estime": "951.4214",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0657,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "88.68",
+   "cout": "75.38",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.92",
+   "latent": "6.21",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T00:17"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "186.66",
+   "cout": "170.45",
+   "prix_moyen": "0.9131",
+   "prix_de_marque": "0.901",
+   "latent": "-2.27",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 24?",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "1.09",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.89",
+   "latent": "0.02",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T11:23"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "85.66",
+   "cout": "78.12",
+   "prix_moyen": "0.9120",
+   "prix_de_marque": "0.903",
+   "latent": "-0.77",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-17T13:12"
+  },
+  {
+   "marche": "Will Russia target Kyiv on October 17, 2026?",
+   "issue": "Yes",
+   "parts": "84.55",
+   "cout": "71.95",
+   "prix_moyen": "0.8510",
+   "prix_de_marque": "0.155",
+   "latent": "-58.85",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1111230",
+   "ouverte_le": "2026-10-17T15:17"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 31?",
+   "issue": "Yes",
+   "parts": "81.41",
+   "cout": "69.20",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.85",
+   "latent": "0.00",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-17T15:43"
+  },
+  {
+   "marche": "Will Yisrael Beiteinu win less than 5% of the vote in the 2026 Knesset elections?",
+   "issue": "No",
+   "parts": "105.94",
+   "cout": "90.73",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.936",
+   "latent": "8.43",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T18:38"
+  },
+  {
+   "marche": "Will Naftali Bennett be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "68.00",
+   "cout": "59.84",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.86",
+   "latent": "-1.36",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-17T18:43"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

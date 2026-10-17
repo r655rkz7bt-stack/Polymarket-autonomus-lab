@@ -1,0 +1,286 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "661.3954",
+  "capital_immobilise": "149.6693",
+  "gains_realises_nets": "-188.9353",
+  "gains_latents": "-24.1435",
+  "frais_payes": "13.8828",
+  "capital_total_estime": "786.9212",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2344,
+ "dernier_battement": "2026-10-17T10:48:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 31?",
+   "issue": "No",
+   "parts": "175.19",
+   "cout": "40.29",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "0.19",
+   "latent": "-7.01",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in October?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.00",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-16T23:42"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "Yes",
+   "parts": "181.16",
+   "cout": "19.20",
+   "prix_moyen": "0.1060",
+   "prix_de_marque": "0.049",
+   "latent": "-10.33",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T00:12"
+  },
+  {
+   "marche": "Will the Cleveland Guardians win the 2026 World Series?",
+   "issue": "Yes",
+   "parts": "42.14",
+   "cout": "8.22",
+   "prix_moyen": "0.1950",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T01:42"
+  },
+  {
+   "marche": "Will NVIDIA be the largest company in the world by market cap on October 31, 2026?",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "3.66",
+   "prix_moyen": "0.1830",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1114519",
+   "ouverte_le": "2026-10-17T02:27"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement or oil at least $80, and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "49.58",
+   "cout": "19.73",
+   "prix_moyen": "0.3980",
+   "prix_de_marque": "0.391",
+   "latent": "-0.35",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1177906",
+   "ouverte_le": "2026-10-17T04:17"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 24?",
+   "issue": "No",
+   "parts": "125.56",
+   "cout": "18.83",
+   "prix_moyen": "0.1500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T06:37"
+  },
+  {
+   "marche": "Will \"Grand Theft Auto VI Launch Trailer\" get between 60 and 80 million views on week 1?",
+   "issue": "No",
+   "parts": "23.80",
+   "cout": "19.71",
+   "prix_moyen": "0.8280",
+   "prix_de_marque": "0.587",
+   "latent": "-5.74",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1194438",
+   "ouverte_le": "2026-10-17T08:57"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "Yes",
+   "parts": "121.16",
+   "cout": "19.02",
+   "prix_moyen": "0.1570",
+   "prix_de_marque": "0.151",
+   "latent": "-0.73",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T09:17"
+  }
+ ],
+ "operations_cloturees": 45,
+ "dernieres_operations": [
+  {
+   "marche": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "1.59",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:57"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 21?",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-7.45",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T22:42"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in October?",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in October?",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in October?",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in October?",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "Will the highest temperature in London be 13°C on October 18?",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-1.56",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T00:33"
+  },
+  {
+   "marche": "5775016",
+   "issue": "FlyQuest",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-1.33",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T01:27"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $100 in October?",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-9.89",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T01:37"
+  },
+  {
+   "marche": "5506667",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-7.67",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T03:37"
+  },
+  {
+   "marche": "5611007",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-5.82",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T03:47"
+  },
+  {
+   "marche": "5779502",
+   "issue": "Amir Omarkhanov",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-14.36",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T06:18"
+  },
+  {
+   "marche": "5720832",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-1.91",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T06:33"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 28?",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.59",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T07:37"
+  },
+  {
+   "marche": "5611006",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "26.82",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T07:53"
+  }
+ ],
+ "performances": {
+  "market_structure_patiente v1.0.0": {
+   "operations": 45,
+   "evenements": 26,
+   "gagnantes": 6,
+   "taux_reussite": 0.133,
+   "profit_net": "-188.94",
+   "frais": "13.88",
+   "rendement_sur_mises": -0.2336,
+   "esperance_par_operation": "-4.20",
+   "ic90_rendement_par_euro": [
+    -0.312,
+    -0.1283
+   ],
+   "brier": null,
+   "log_loss": null,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,38 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "1000.0000",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1000.0000",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

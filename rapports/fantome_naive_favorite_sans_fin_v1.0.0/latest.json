@@ -1,0 +1,195 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "0.0379",
+  "capital_immobilise": "999.9621",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "10.0333",
+  "frais_payes": "2.6351",
+  "capital_total_estime": "1010.0333",
+  "positions_ouvertes": "13",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0097,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Perim Island no longer under Houthi control by October 31?",
+   "issue": "No",
+   "parts": "93.04",
+   "cout": "83.62",
+   "prix_moyen": "0.8988",
+   "prix_de_marque": "0.906",
+   "latent": "0.67",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "186.36",
+   "cout": "170.08",
+   "prix_moyen": "0.9126",
+   "prix_de_marque": "0.903",
+   "latent": "-1.79",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "115.46",
+   "cout": "98.47",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.844",
+   "latent": "-1.02",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "247.45",
+   "cout": "232.33",
+   "prix_moyen": "0.9389",
+   "prix_de_marque": "0.976",
+   "latent": "9.18",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T21:37"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.64",
+   "prix_moyen": "0.9290",
+   "prix_de_marque": "0.97",
+   "latent": "0.20",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T21:37"
+  },
+  {
+   "marche": "Will the Cleveland Guardians win the 2026 World Series?",
+   "issue": "No",
+   "parts": "90.29",
+   "cout": "73.02",
+   "prix_moyen": "0.8087",
+   "prix_de_marque": "0.794",
+   "latent": "-1.33",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T21:37"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "10.25",
+   "cout": "9.66",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-0.13",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "107.67",
+   "cout": "101.45",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-1.32",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "145.79",
+   "cout": "130.27",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.941",
+   "latent": "6.92",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "944313",
+   "issue": "No",
+   "parts": "52.20",
+   "cout": "48.18",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.68",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "29.01",
+   "cout": "26.77",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.38",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "630832",
+   "issue": "Yes",
+   "parts": "11.63",
+   "cout": "10.73",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.15",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "57660",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "Will Sevilla FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "11.50",
+   "cout": "10.73",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.15",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1135442",
+   "ouverte_le": "2026-10-16T21:52"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

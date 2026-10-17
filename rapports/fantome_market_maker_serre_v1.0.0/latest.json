@@ -1,0 +1,246 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "687.7824",
+  "capital_immobilise": "303.6827",
+  "gains_realises_nets": "-8.5349",
+  "gains_latents": "-25.5630",
+  "frais_payes": "0.1648",
+  "capital_total_estime": "965.9021",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0341,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 31?",
+   "issue": "No",
+   "parts": "200.00",
+   "cout": "46.00",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "0.19",
+   "latent": "-8.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 31?",
+   "issue": "Yes",
+   "parts": "50.00",
+   "cout": "41.50",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.85",
+   "latent": "1.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-17T00:17"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $105 in October?",
+   "issue": "No",
+   "parts": "104.05",
+   "cout": "59.64",
+   "prix_moyen": "0.5732",
+   "prix_de_marque": "0.51",
+   "latent": "-6.57",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T00:17"
+  },
+  {
+   "marche": "Will Likud win the most seats in the 2026 Israeli legislative election?",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "3.10",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.31",
+   "latent": "0.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "425728",
+   "ouverte_le": "2026-10-17T07:57"
+  },
+  {
+   "marche": "Will Benjamin Netanyahu be the next Prime Minister of Israel?",
+   "issue": "Yes",
+   "parts": "100.00",
+   "cout": "28.00",
+   "prix_moyen": "0.2800",
+   "prix_de_marque": "0.26",
+   "latent": "-2.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-17T11:48"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 24, 2026?",
+   "issue": "Yes",
+   "parts": "37.14",
+   "cout": "27.11",
+   "prix_moyen": "0.7300",
+   "prix_de_marque": "0.69",
+   "latent": "-1.49",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-17T13:42"
+  },
+  {
+   "marche": "Next White House Press Secretary announced by October 31, 2026?",
+   "issue": "Yes",
+   "parts": "139.97",
+   "cout": "29.39",
+   "prix_moyen": "0.2100",
+   "prix_de_marque": "0.18",
+   "latent": "-4.20",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1201095",
+   "ouverte_le": "2026-10-17T14:57"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $100 in October?",
+   "issue": "No",
+   "parts": "50.00",
+   "cout": "8.00",
+   "prix_moyen": "0.1600",
+   "prix_de_marque": "0.12",
+   "latent": "-2.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T17:23"
+  },
+  {
+   "marche": "Will the Republicans win the Michigan Senate race in 2026?",
+   "issue": "No",
+   "parts": "42.24",
+   "cout": "29.15",
+   "prix_moyen": "0.6900",
+   "prix_de_marque": "0.67",
+   "latent": "-0.84",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "57658",
+   "ouverte_le": "2026-10-17T19:23"
+  },
+  {
+   "marche": "US-Iran ceasefire continues through the midterms?",
+   "issue": "Yes",
+   "parts": "37.86",
+   "cout": "29.15",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "0.77",
+   "latent": "0.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1156710",
+   "ouverte_le": "2026-10-17T19:38"
+  },
+  {
+   "marche": "Will Yisrael Beiteinu win less than 5% of the vote in the 2026 Knesset elections?",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "2.64",
+   "prix_moyen": "0.1320",
+   "prix_de_marque": "0.059",
+   "latent": "-1.46",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T20:08"
+  }
+ ],
+ "operations_cloturees": 7,
+ "dernieres_operations": [
+  {
+   "marche": "Will Flávio Bolsonaro win Brazil, Gadi Eizenkot become Israeli PM, and Democrats win the US Senate?",
+   "issue": "No",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.57",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T06:12"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 21, 2026?",
+   "issue": "No",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-2.50",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T09:12"
+  },
+  {
+   "marche": "Next White House Press Secretary announced by October 31, 2026?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-1.39",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T13:38"
+  },
+  {
+   "marche": "Will Meta (META) beat quarterly earnings?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-1.71",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T15:13"
+  },
+  {
+   "marche": "Will Meta (META) beat quarterly earnings?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.94",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T15:36"
+  },
+  {
+   "marche": "Will the Democratic Party win the CA-04 House seat?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.45",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T15:36"
+  },
+  {
+   "marche": "Will the Republicans win the Michigan Senate race in 2026?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.97",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T16:23"
+  }
+ ],
+ "performances": {
+  "market_maker_serre v1.0.0": {
+   "operations": 7,
+   "evenements": 6,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-8.53",
+   "frais": "0.16",
+   "rendement_sur_mises": -0.0755,
+   "esperance_par_operation": "-1.22",
+   "ic90_rendement_par_euro": [
+    -0.4443,
+    -0.0494
+   ],
+   "brier": null,
+   "log_loss": null,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

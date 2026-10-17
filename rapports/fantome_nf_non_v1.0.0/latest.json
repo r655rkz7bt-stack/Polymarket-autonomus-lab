@@ -1,0 +1,255 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "10.5189",
+  "capital_immobilise": "992.7249",
+  "gains_realises_nets": "3.2438",
+  "gains_latents": "6.9150",
+  "frais_payes": "3.6202",
+  "capital_total_estime": "1010.1588",
+  "positions_ouvertes": "16",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0095,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Perim Island no longer under Houthi control by October 31?",
+   "issue": "No",
+   "parts": "37.25",
+   "cout": "33.50",
+   "prix_moyen": "0.8994",
+   "prix_de_marque": "0.906",
+   "latent": "0.24",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "199.98",
+   "cout": "183.69",
+   "prix_moyen": "0.9185",
+   "prix_de_marque": "0.903",
+   "latent": "-3.10",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "113.23",
+   "cout": "96.57",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.844",
+   "latent": "-1.00",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-0.06",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "146.23",
+   "cout": "130.66",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.941",
+   "latent": "6.94",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will Elon Musk post 320-339 tweets from October 13 to October 20, 2026?",
+   "issue": "No",
+   "parts": "59.11",
+   "cout": "52.90",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.862",
+   "latent": "-1.94",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1162658",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Republicans win the Senate?",
+   "issue": "No",
+   "parts": "226.32",
+   "cout": "211.29",
+   "prix_moyen": "0.9336",
+   "prix_de_marque": "0.977",
+   "latent": "9.83",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:57"
+  },
+  {
+   "marche": "Will the Cleveland Guardians win the 2026 World Series?",
+   "issue": "No",
+   "parts": "89.19",
+   "cout": "72.31",
+   "prix_moyen": "0.8107",
+   "prix_de_marque": "0.794",
+   "latent": "-1.49",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:57"
+  },
+  {
+   "marche": "944313",
+   "issue": "No",
+   "parts": "116.02",
+   "cout": "107.08",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-1.50",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-17T00:03"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "23.47",
+   "cout": "22.10",
+   "prix_moyen": "0.9417",
+   "prix_de_marque": "0.956",
+   "latent": "0.34",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T03:07"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $115 in October?",
+   "issue": "No",
+   "parts": "4.70",
+   "cout": "4.34",
+   "prix_moyen": "0.9239",
+   "prix_de_marque": "0.931",
+   "latent": "0.03",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T05:33"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "14.81",
+   "cout": "13.67",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.19",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-17T05:38"
+  },
+  {
+   "marche": "Will the Democratic Party win the WA-05 House seat?",
+   "issue": "No",
+   "parts": "7.69",
+   "cout": "6.83",
+   "prix_moyen": "0.8881",
+   "prix_de_marque": "0.887",
+   "latent": "-0.01",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T05:43"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "34.08",
+   "cout": "31.69",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.916",
+   "latent": "-0.48",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T17:23"
+  },
+  {
+   "marche": "Will Yisrael Beiteinu win less than 5% of the vote in the 2026 Knesset elections?",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "10.94",
+   "prix_moyen": "0.8755",
+   "prix_de_marque": "0.936",
+   "latent": "0.76",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T18:35"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,300 October 12-18?",
+   "issue": "No",
+   "parts": "11.07",
+   "cout": "10.45",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "0.813",
+   "latent": "-1.45",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-17T20:28"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "5264423",
+   "issue": "No",
+   "strategie": "nf_non v1.0.0",
+   "resultat": "3.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:47"
+  }
+ ],
+ "performances": {
+  "nf_non v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "3.24",
+   "frais": "0.16",
+   "rendement_sur_mises": 0.0606,
+   "esperance_par_operation": "3.24",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0001,
+   "log_loss": 0.0106,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,138 @@
+{
+ "genere_le": "2026-10-17T22:04:29+00:00",
+ "capital": {
+  "solde_disponible": "37.1685",
+  "capital_immobilise": "545.3039",
+  "gains_realises_nets": "-417.5276",
+  "gains_latents": "-60.6455",
+  "frais_payes": "3.2963",
+  "capital_total_estime": "521.8269",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.504,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "196.56",
+   "cout": "181.27",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-2.40",
+   "strategie": "nf_equipe v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T07:07"
+  },
+  {
+   "marche": "Florida State vs. Miami (FL)",
+   "issue": "Miami (FL)",
+   "parts": "195.64",
+   "cout": "180.42",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-2.39",
+   "strategie": "nf_equipe v1.0.0",
+   "groupe": "1139693",
+   "ouverte_le": "2026-10-17T16:08"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "parts": "160.59",
+   "cout": "146.53",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.55",
+   "latent": "-58.21",
+   "strategie": "nf_equipe v1.0.0",
+   "groupe": "1139669",
+   "ouverte_le": "2026-10-17T16:18"
+  },
+  {
+   "marche": "5352841",
+   "issue": "Stephen F. Austin",
+   "parts": "39.79",
+   "cout": "37.08",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.991",
+   "latent": "2.35",
+   "strategie": "nf_equipe v1.0.0",
+   "groupe": "1139681",
+   "ouverte_le": "2026-10-17T19:08"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "5775017",
+   "issue": "FlyQuest",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "15.88",
+   "resolution": "résolu : FlyQuest",
+   "cloturee_le": "2026-10-17T03:47"
+  },
+  {
+   "marche": "5787759",
+   "issue": "Team Falcons",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "-72.58",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T20:57"
+  },
+  {
+   "marche": "5350824",
+   "issue": "Temple",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "-179.99",
+   "resolution": "résolu : Charlotte",
+   "cloturee_le": "2026-10-17T21:03"
+  },
+  {
+   "marche": "5350808",
+   "issue": "Temple",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "-180.84",
+   "resolution": "résolu : Charlotte",
+   "cloturee_le": "2026-10-17T21:07"
+  }
+ ],
+ "performances": {
+  "nf_equipe v1.0.0": {
+   "operations": 4,
+   "evenements": 3,
+   "gagnantes": 1,
+   "taux_reussite": 0.25,
+   "profit_net": "-417.53",
+   "frais": "1.96",
+   "rendement_sur_mises": -0.6303,
+   "esperance_par_operation": "-104.38",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.2871
+   ],
+   "brier": 0.7007,
+   "log_loss": 2.5535,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

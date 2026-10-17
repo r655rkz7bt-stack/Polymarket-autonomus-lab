@@ -1,0 +1,150 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "887.7533",
+  "capital_immobilise": "48.3465",
+  "gains_realises_nets": "-63.9002",
+  "gains_latents": "-2.3336",
+  "frais_payes": "1.7407",
+  "capital_total_estime": "933.7662",
+  "positions_ouvertes": "5",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0994,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the price of Ethereum be above $2,500 on October 18?",
+   "issue": "Yes",
+   "parts": "93.95",
+   "cout": "13.15",
+   "prix_moyen": "0.1400",
+   "prix_de_marque": "0.012",
+   "latent": "-12.03",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-16T15:06"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "No",
+   "parts": "110.99",
+   "cout": "12.54",
+   "prix_moyen": "0.1130",
+   "prix_de_marque": "0.054",
+   "latent": "-6.55",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T16:11"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 19?",
+   "issue": "No",
+   "parts": "29.73",
+   "cout": "5.95",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "0.2",
+   "latent": "0.00",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T16:16"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,400 on October 18?",
+   "issue": "No",
+   "parts": "51.60",
+   "cout": "10.01",
+   "prix_moyen": "0.1940",
+   "prix_de_marque": "0.609",
+   "latent": "21.41",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-16T16:16"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $84,000 on October 18?",
+   "issue": "Yes",
+   "parts": "304.33",
+   "cout": "6.70",
+   "prix_moyen": "0.0220",
+   "prix_de_marque": "0.005",
+   "latent": "-5.17",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T16:51"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "5506691",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-38.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:32"
+  },
+  {
+   "marche": "5506689",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-7.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:32"
+  },
+  {
+   "marche": "5506667",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-6.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:41"
+  },
+  {
+   "marche": "5506671",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-11.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:46"
+  }
+ ],
+ "performances": {
+  "crypto_threshold_patiente v1.0.0": {
+   "operations": 4,
+   "evenements": 2,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-63.90",
+   "frais": "1.74",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-15.98",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.0991,
+   "log_loss": 0.3616,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

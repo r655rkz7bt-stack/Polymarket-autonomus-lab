@@ -1,0 +1,270 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "0.0456",
+  "capital_immobilise": "1003.2939",
+  "gains_realises_nets": "3.3395",
+  "gains_latents": "-3.6111",
+  "frais_payes": "3.6408",
+  "capital_total_estime": "999.7284",
+  "positions_ouvertes": "15",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0313,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Perim Island no longer under Houthi control by October 31?",
+   "issue": "No",
+   "parts": "37.25",
+   "cout": "33.50",
+   "prix_moyen": "0.8994",
+   "prix_de_marque": "0.906",
+   "latent": "0.24",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "9.48",
+   "cout": "8.89",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.976",
+   "latent": "0.36",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "199.98",
+   "cout": "183.69",
+   "prix_moyen": "0.9185",
+   "prix_de_marque": "0.903",
+   "latent": "-3.10",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-0.06",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "112.79",
+   "cout": "106.28",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.93",
+   "latent": "-1.38",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "146.11",
+   "cout": "130.55",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.941",
+   "latent": "6.94",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 18?",
+   "issue": "Yes",
+   "parts": "258.93",
+   "cout": "244.27",
+   "prix_moyen": "0.9434",
+   "prix_de_marque": "0.944",
+   "latent": "0.16",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "944313",
+   "issue": "No",
+   "parts": "189.15",
+   "cout": "174.57",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-2.45",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "Will Elon Musk post 320-339 tweets from October 13 to October 20, 2026?",
+   "issue": "No",
+   "parts": "55.18",
+   "cout": "49.38",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.862",
+   "latent": "-1.82",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1162658",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "29.01",
+   "cout": "26.77",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.38",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 18?",
+   "issue": "Yes",
+   "parts": "12.28",
+   "cout": "11.42",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.97",
+   "latent": "0.49",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:43"
+  },
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "6.73",
+   "cout": "6.14",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.91",
+   "latent": "-0.02",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T03:47"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "parts": "6.73",
+   "cout": "6.14",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.55",
+   "latent": "-2.44",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1139669",
+   "ouverte_le": "2026-10-17T03:47"
+  },
+  {
+   "marche": "Will the Democratic Party win the WA-05 House seat?",
+   "issue": "No",
+   "parts": "9.50",
+   "cout": "8.47",
+   "prix_moyen": "0.8920",
+   "prix_de_marque": "0.887",
+   "latent": "-0.05",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "Florida State vs. Miami (FL)",
+   "issue": "Miami (FL)",
+   "parts": "9.21",
+   "cout": "8.49",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-0.11",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1139693",
+   "ouverte_le": "2026-10-17T16:43"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "5775017",
+   "issue": "FlyQuest",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.79",
+   "resolution": "résolu : FlyQuest",
+   "cloturee_le": "2026-10-17T03:46"
+  },
+  {
+   "marche": "5348789",
+   "issue": "Under",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-17T04:02"
+  },
+  {
+   "marche": "5506667",
+   "issue": "Yes",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5263915",
+   "issue": "No",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.57",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:42"
+  }
+ ],
+ "performances": {
+  "nf_prix_haut v1.0.0": {
+   "operations": 4,
+   "evenements": 4,
+   "gagnantes": 4,
+   "taux_reussite": 1.0,
+   "profit_net": "3.34",
+   "frais": "0.15",
+   "rendement_sur_mises": 0.0801,
+   "esperance_par_operation": "0.83",
+   "ic90_rendement_par_euro": [
+    0.0709,
+    0.0893
+   ],
+   "brier": 0.0009,
+   "log_loss": 0.0294,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

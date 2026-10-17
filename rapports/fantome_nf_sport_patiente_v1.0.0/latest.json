@@ -1,0 +1,202 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "800.3918",
+  "capital_immobilise": "98.2254",
+  "gains_realises_nets": "-101.3828",
+  "gains_latents": "-1.2134",
+  "frais_payes": "5.5490",
+  "capital_total_estime": "897.4038",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2209,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Cleveland Guardians win the 2026 World Series?",
+   "issue": "No",
+   "parts": "120.33",
+   "cout": "96.74",
+   "prix_moyen": "0.8040",
+   "prix_de_marque": "0.794",
+   "latent": "-1.20",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T13:18"
+  },
+  {
+   "marche": "Will FC Kuressaare vs. FCI Levadia Tallinn end in a draw?",
+   "issue": "No",
+   "parts": "1.75",
+   "cout": "1.48",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.84",
+   "latent": "-0.01",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1195579",
+   "ouverte_le": "2026-10-17T16:38"
+  }
+ ],
+ "operations_cloturees": 17,
+ "dernieres_operations": [
+  {
+   "marche": "5779476",
+   "issue": "Zsombor Piros",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "12.81",
+   "resolution": "résolu : Zsombor Piros",
+   "cloturee_le": "2026-10-17T12:22"
+  },
+  {
+   "marche": "5790761",
+   "issue": "Federico Cina",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "0.20",
+   "resolution": "résolu : Federico Cina",
+   "cloturee_le": "2026-10-17T12:57"
+  },
+  {
+   "marche": "5790776",
+   "issue": "Gauthier Onclin",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "12.60",
+   "resolution": "résolu : Gauthier Onclin",
+   "cloturee_le": "2026-10-17T13:32"
+  },
+  {
+   "marche": "5786442",
+   "issue": "MIBR",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "13.53",
+   "resolution": "résolu : MIBR",
+   "cloturee_le": "2026-10-17T13:47"
+  },
+  {
+   "marche": "4397208",
+   "issue": "No",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "15.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T14:07"
+  },
+  {
+   "marche": "5787857",
+   "issue": "GamerLegion",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-63.24",
+   "resolution": "résolu : EYEBALLERS",
+   "cloturee_le": "2026-10-17T14:57"
+  },
+  {
+   "marche": "5779494",
+   "issue": "Alexander Shevchenko",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "13.90",
+   "resolution": "résolu : Alexander Shevchenko",
+   "cloturee_le": "2026-10-17T15:07"
+  },
+  {
+   "marche": "5779474",
+   "issue": "Damir Dzumhur",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "13.33",
+   "resolution": "résolu : Damir Dzumhur",
+   "cloturee_le": "2026-10-17T15:22"
+  },
+  {
+   "marche": "5540572",
+   "issue": "Beijing Royal Fighters",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.39",
+   "resolution": "résolu : Beijing Royal Fighters",
+   "cloturee_le": "2026-10-17T15:38"
+  },
+  {
+   "marche": "5785854",
+   "issue": "Phantom",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "15.76",
+   "resolution": "résolu : Phantom",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5790755",
+   "issue": "Andrea Guerrieri",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "15.65",
+   "resolution": "résolu : Andrea Guerrieri",
+   "cloturee_le": "2026-10-17T17:32"
+  },
+  {
+   "marche": "5792394",
+   "issue": "Lucas Andrade Da Silva",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "12.86",
+   "resolution": "résolu : Lucas Andrade Da Silva",
+   "cloturee_le": "2026-10-17T19:12"
+  },
+  {
+   "marche": "5787759",
+   "issue": "Team Falcons",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-223.29",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T21:02"
+  },
+  {
+   "marche": "5817742",
+   "issue": "NIP",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "1.22",
+   "resolution": "résolu : NIP",
+   "cloturee_le": "2026-10-17T21:02"
+  },
+  {
+   "marche": "5787759",
+   "issue": "BetBoom Team",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "3.08",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T21:02"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente v1.0.0": {
+   "operations": 17,
+   "evenements": 16,
+   "gagnantes": 15,
+   "taux_reussite": 0.882,
+   "profit_net": "-101.38",
+   "frais": "5.42",
+   "rendement_sur_mises": -0.0618,
+   "esperance_par_operation": "-5.96",
+   "ic90_rendement_par_euro": [
+    -0.132,
+    0.1545
+   ],
+   "brier": 0.1079,
+   "log_loss": 0.4102,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

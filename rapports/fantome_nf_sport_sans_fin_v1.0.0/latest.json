@@ -1,0 +1,183 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "6.6625",
+  "capital_immobilise": "993.3375",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-20.0605",
+  "frais_payes": "4.8371",
+  "capital_total_estime": "979.9395",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0204,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "111.95",
+   "cout": "95.02",
+   "prix_moyen": "0.8488",
+   "prix_de_marque": "0.844",
+   "latent": "-0.53",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will Sevilla FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "214.44",
+   "cout": "200.13",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-2.84",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1135442",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will the Cleveland Guardians win the 2026 World Series?",
+   "issue": "No",
+   "parts": "79.09",
+   "cout": "63.96",
+   "prix_moyen": "0.8087",
+   "prix_de_marque": "0.794",
+   "latent": "-1.16",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Tottenham Hotspur FC vs. Coventry City FC: O/U 4.5",
+   "issue": "Under",
+   "parts": "74.38",
+   "cout": "60.82",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-2.06",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1141211",
+   "ouverte_le": "2026-10-17T14:08"
+  },
+  {
+   "marche": "Will Coventry City FC win on 2026-10-19?",
+   "issue": "No",
+   "parts": "102.63",
+   "cout": "88.88",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.85",
+   "latent": "-1.64",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1140915",
+   "ouverte_le": "2026-10-17T15:08"
+  },
+  {
+   "marche": "Will Manchester City FC win on 2026-10-20?",
+   "issue": "Yes",
+   "parts": "185.01",
+   "cout": "170.89",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.89",
+   "latent": "-6.23",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1149349",
+   "ouverte_le": "2026-10-17T16:04"
+  },
+  {
+   "marche": "Will Sabah FK win on 2026-10-20?",
+   "issue": "No",
+   "parts": "146.28",
+   "cout": "132.31",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-2.12",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1143911",
+   "ouverte_le": "2026-10-17T16:04"
+  },
+  {
+   "marche": "Will Manchester City FC vs. AEK end in a draw?",
+   "issue": "No",
+   "parts": "99.59",
+   "cout": "93.90",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.93",
+   "latent": "-1.28",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1149349",
+   "ouverte_le": "2026-10-17T16:23"
+  },
+  {
+   "marche": "Spread: FC Barcelona (-2.5)",
+   "issue": "Paris Saint-Germain FC",
+   "parts": "51.41",
+   "cout": "46.99",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.88",
+   "latent": "-1.75",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1149450",
+   "ouverte_le": "2026-10-17T17:04"
+  },
+  {
+   "marche": "Paris Saint-Germain FC vs. FC Barcelona: O/U 2.5",
+   "issue": "Over",
+   "parts": "28.77",
+   "cout": "23.53",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.81",
+   "latent": "-0.22",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1149450",
+   "ouverte_le": "2026-10-17T18:27"
+  },
+  {
+   "marche": "Will Alexia Putellas win the 2026 Women's Ballon d'Or?",
+   "issue": "Yes",
+   "parts": "10.95",
+   "cout": "10.27",
+   "prix_moyen": "0.9379",
+   "prix_de_marque": "0.93",
+   "latent": "-0.09",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T18:38"
+  },
+  {
+   "marche": "Will FC Barcelona vs. Real Madrid CF end in a draw?",
+   "issue": "No",
+   "parts": "7.76",
+   "cout": "6.65",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-0.13",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1175548",
+   "ouverte_le": "2026-10-17T19:28"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

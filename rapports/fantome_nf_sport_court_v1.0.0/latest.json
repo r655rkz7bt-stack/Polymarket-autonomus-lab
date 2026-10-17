@@ -1,0 +1,135 @@
+{
+ "genere_le": "2026-10-17T22:04:30+00:00",
+ "capital": {
+  "solde_disponible": "0.1172",
+  "capital_immobilise": "999.8828",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-9.8646",
+  "frais_payes": "3.2947",
+  "capital_total_estime": "990.1354",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0143,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Kent State vs. South Florida",
+   "issue": "South Florida",
+   "parts": "193.49",
+   "cout": "178.44",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-2.36",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1139700",
+   "ouverte_le": "2026-10-17T20:04"
+  },
+  {
+   "marche": "Florida State vs. Miami (FL)",
+   "issue": "Miami (FL)",
+   "parts": "193.49",
+   "cout": "178.44",
+   "prix_moyen": "0.9222",
+   "prix_de_marque": "0.91",
+   "latent": "-2.36",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1139693",
+   "ouverte_le": "2026-10-17T20:04"
+  },
+  {
+   "marche": "5353198",
+   "issue": "Oregon State",
+   "parts": "155.25",
+   "cout": "140.14",
+   "prix_moyen": "0.9027",
+   "prix_de_marque": "0.89",
+   "latent": "-1.97",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1139689",
+   "ouverte_le": "2026-10-17T20:04"
+  },
+  {
+   "marche": "Will Sevilla FC win on 2026-10-18?",
+   "issue": "No",
+   "parts": "213.00",
+   "cout": "198.78",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-2.82",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1135442",
+   "ouverte_le": "2026-10-17T20:08"
+  },
+  {
+   "marche": "Spread: Titans (-3.5)",
+   "issue": "Colts",
+   "parts": "119.35",
+   "cout": "104.24",
+   "prix_moyen": "0.8734",
+   "prix_de_marque": "0.86",
+   "latent": "-1.60",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "982299",
+   "ouverte_le": "2026-10-17T20:08"
+  },
+  {
+   "marche": "New Mexico vs. Hawai'i",
+   "issue": "New Mexico",
+   "parts": "104.03",
+   "cout": "88.82",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.84",
+   "latent": "-1.44",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1139718",
+   "ouverte_le": "2026-10-17T20:08"
+  },
+  {
+   "marche": "Louisiana Tech vs. Louisiana-Monroe",
+   "issue": "Louisiana Tech",
+   "parts": "65.01",
+   "cout": "55.51",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.84",
+   "latent": "-0.90",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1139713",
+   "ouverte_le": "2026-10-17T20:13"
+  },
+  {
+   "marche": "5296069",
+   "issue": "No",
+   "parts": "61.37",
+   "cout": "55.51",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.963",
+   "latent": "3.59",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1132471",
+   "ouverte_le": "2026-10-17T20:13"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

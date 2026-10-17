@@ -1,0 +1,75 @@
+{
+ "genere_le": "2026-10-17T22:04:27+00:00",
+ "capital": {
+  "solde_disponible": "978.2209",
+  "capital_immobilise": "40.4040",
+  "gains_realises_nets": "18.6249",
+  "gains_latents": "31.6738",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1050.2988",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0219,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5481967",
+   "issue": "Golden State Valkyries",
+   "parts": "72.15",
+   "cout": "40.40",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.999",
+   "latent": "31.67",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1163087",
+   "ouverte_le": "2026-10-17T10:32"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "5625597",
+   "issue": "James Madison",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "18.62",
+   "resolution": "résolu : James Madison",
+   "cloturee_le": "2026-10-17T20:35"
+  }
+ ],
+ "performances": {
+  "calibration_patiente v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "18.62",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.9608,
+   "esperance_par_operation": "18.62",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.1885,
+   "log_loss": 0.5694,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}

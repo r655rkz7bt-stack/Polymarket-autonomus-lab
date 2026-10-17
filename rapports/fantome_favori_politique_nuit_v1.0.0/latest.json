@@ -1,0 +1,267 @@
+{
+ "genere_le": "2026-10-17T22:04:28+00:00",
+ "capital": {
+  "solde_disponible": "0.0369",
+  "capital_immobilise": "999.9631",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-6.6747",
+  "frais_payes": "2.1877",
+  "capital_total_estime": "993.3253",
+  "positions_ouvertes": "19",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0123,
+ "dernier_battement": "2026-10-17T22:04:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Israel x Iran ceasefire continues through October 31?",
+   "issue": "Yes",
+   "parts": "93.84",
+   "cout": "79.76",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.85",
+   "latent": "0.00",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will the Democratic Party win the WA-05 House seat?",
+   "issue": "No",
+   "parts": "105.67",
+   "cout": "94.21",
+   "prix_moyen": "0.8916",
+   "prix_de_marque": "0.887",
+   "latent": "-0.48",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "92.91",
+   "cout": "84.85",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.901",
+   "latent": "-1.14",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by November 2?",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.21",
+   "prix_moyen": "0.9210",
+   "prix_de_marque": "0.907",
+   "latent": "-0.14",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 24?",
+   "issue": "Yes",
+   "parts": "69.18",
+   "cout": "60.88",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.89",
+   "latent": "0.69",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "83.55",
+   "cout": "77.03",
+   "prix_moyen": "0.9220",
+   "prix_de_marque": "0.903",
+   "latent": "-1.59",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+   "issue": "Yes",
+   "parts": "68.30",
+   "cout": "62.38",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.9",
+   "latent": "-0.91",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "Will the Republican Party control the House after the 2026 Midterm elections?",
+   "issue": "No",
+   "parts": "68.30",
+   "cout": "62.38",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.9",
+   "latent": "-0.91",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "Will the Democrats win the New Hampshire Senate race in 2026?",
+   "issue": "Yes",
+   "parts": "68.30",
+   "cout": "62.38",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.9",
+   "latent": "-0.91",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "57661",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "78.45",
+   "cout": "73.39",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.941",
+   "latent": "0.43",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "US announces end of Iranian blockade by October 31, 2026?",
+   "issue": "No",
+   "parts": "76.91",
+   "cout": "72.30",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.93",
+   "latent": "-0.77",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "699735",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "Israeli airspace closed by October 31, 2026?",
+   "issue": "No",
+   "parts": "58.94",
+   "cout": "53.21",
+   "prix_moyen": "0.9027",
+   "prix_de_marque": "0.92",
+   "latent": "1.02",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1030155",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "US x Yemen ceasefire continues through October 31?",
+   "issue": "Yes",
+   "parts": "66.55",
+   "cout": "61.23",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.91",
+   "latent": "-0.67",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1053896",
+   "ouverte_le": "2026-10-17T11:13"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "58.65",
+   "cout": "54.13",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.76",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-17T11:13"
+  },
+  {
+   "marche": "Will Likud win 30-34 seats in the 2026 Israeli legislative election?",
+   "issue": "No",
+   "parts": "58.65",
+   "cout": "54.13",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.91",
+   "latent": "-0.76",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-17T11:13"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 21?",
+   "issue": "Yes",
+   "parts": "7.58",
+   "cout": "7.20",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.95",
+   "latent": "0.00",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-17T11:18"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "20.70",
+   "cout": "18.84",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.92",
+   "latent": "0.21",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T11:18"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "6.58",
+   "cout": "6.22",
+   "prix_moyen": "0.9460",
+   "prix_de_marque": "0.956",
+   "latent": "0.07",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T11:24"
+  },
+  {
+   "marche": "Next US-Iran senior diplomatic meeting by October 31, 2026? (copy)",
+   "issue": "No",
+   "parts": "6.57",
+   "cout": "6.24",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.94",
+   "latent": "-0.07",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1066394",
+   "ouverte_le": "2026-10-17T11:24"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 295
+ },
+ "decisions_24h": {
+  "acceptees": 16966,
+  "rejetees": 5053,
+  "raisons_de_rejet": {
+   "solde déjà réservé par les ordres posés": 2648,
+   "taille inférieure au minimum du marché": 2104,
+   "carnet périmé": 216,
+   "coût supérieur au solde disponible": 116,
+   "opération déjà comptabilisée": 2
+  }
+ },
+ "erreurs_recentes": []
+}
