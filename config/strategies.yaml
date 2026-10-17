@@ -30,6 +30,28 @@ naive_favorite:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
+naive_favorite_large:
+  explication: "Comme le favori de base, mais on accepte aussi les favoris moins sûrs (à partir de 65 % de chances), pour voir s'il y a de l'argent à gagner plus bas."
+  # Variante « large » (17/10/2026, chercheur) de la meilleure de l'arène (naive_favorite : 9 opérations,
+  # +84). Même idée, fourchette de prix élargie (0,65-0,97) au lieu de 0,80-0,95 : plus d'occasions,
+  # donc un échantillon qui se remplit plus vite. Sans nouveau code (class:). Fantôme : ne coûte rien.
+  class: naive_favorite
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  hypothesis: >
+    Le biais favori mesuré (experiments/favori.md) se limite-t-il à 0,85-0,97 ? On élargit vers le bas
+    pour voir où il disparaît, en direct, aux vrais carnets. Comparée à naive_favorite dans l'arène.
+  params:
+    min_ask:        {value: 0.65, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.97, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 reversion:
   explication: "Quand un prix a bougé très vite, on parie qu'il va revenir un peu en arrière, comme un élastique."
   enabled: true

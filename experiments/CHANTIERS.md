@@ -34,7 +34,7 @@ Lire cette source directement, c'est regarder la réponse au même endroit que l
    de la source au seuil du marché, avec le temps restant avant la clôture.
 Aucune aspiration de pages : si la source n'a ni API ni flux, la noter dans l'inventaire et passer.
 
-**État (16/10/2026) : étapes 1 et 2 faites ; étape 3 : température faite (stratégie `temperature_floor`, en arène depuis le 16/10), sport (match terminé + cotes) à faire.**
+**État (17/10/2026) : inchangé, étape 3 sport toujours à faire (passage court du 17/10 consacré à une variante d'arène). État (16/10/2026) : étapes 1 et 2 faites ; étape 3 : température faite (stratégie `temperature_floor`, en arène depuis le 16/10), sport (match terminé + cotes) à faire.**
 Météo, deuxième piste (16/10/2026, session avec Etienne) : stratégie
 `meteo_prevision` (prévisions GFS + ECMWF contre le prix), testée sur les marchés résolus du
 1er au 15/10 (`experiments/meteo_backtest.md` : NON sur la tranche favorite surestimée, ≈ +20 %

@@ -3,6 +3,16 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-17 (passage chercheur, ~5 h UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, ARCHITECTURE.md, CHANTIERS.md, feuille de mission (04:44 UTC) : capital réalisé
+  994,06, aucun champion, aucune obligation. naive_favorite en tête (+84, 9 opérations) ; market_structure -491 (450).
+- **Fait** : variante `naive_favorite_large` (sans nouveau code : fourchette 0,65-0,97 au lieu de 0,80-0,95) dans
+  l'arène. Test de configuration mis à jour.
+- **Pas fait** : chantier n°0 étape 3 sport, Kalshi/Manifold : restent « à faire ».
+- **Limites** : échantillon minuscule ; élargir vers le bas peut annuler le biais favori (étude favori.md : piège
+  hors politique). Rien vérifié en réel : l'arène tranchera.
+
 ## 2026-10-16 (passage chercheur, ~22 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (19:47 UTC) : capital réalisé 994,06,
