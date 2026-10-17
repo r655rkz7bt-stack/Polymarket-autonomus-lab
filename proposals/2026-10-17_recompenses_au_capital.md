@@ -54,6 +54,15 @@ Donc :
   ajouter au capital d'un fantôme (partie libre, `arena.py` et `liquidity_rewards.ranking_bonus`) ;
 - le versement au capital public sera ajouté **plus tard**, avec la modification du noyau.
 
+## État au 17/10/2026 au soir : en attente (choix d'Etienne : « on attend »)
+- L'option A est en place (PR #55).
+- La partie noyau est reportée. Aujourd'hui, le principal ne pose aucun ordre : il ne toucherait
+  rien. Le système de sécurité de la session de Claude bloquait en plus les tests et l'envoi
+  d'une modification du noyau.
+- **Déclencheur** : une stratégie qui pose des ordres (`market_maker`, `*_patiente`) reçoit une
+  part du capital principal. Alors, le faire depuis un ordinateur : le menu du mode de session
+  (« Accept edits ») y est visible et permet à Etienne d'autoriser chaque commande.
+
 ## Ce qu'il faudra écrire plus tard (noyau, avec l'accord d'Etienne)
 1. `ledger.py` : type `REWARD` (dans `ENTRY_TYPES` et `MONEY_TYPES`). Champs `op_id`
    (`REWARD-AAAA-MM-JJ`), `day`, `amount`, `source`, et en option `method` et `details`
