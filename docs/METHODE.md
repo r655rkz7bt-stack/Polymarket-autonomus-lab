@@ -23,6 +23,12 @@ Une fille qui bat sa mère sur au moins 20 opérations clôturées → combine l
 « petite-fille » ; élimine les morceaux perdants. Méthode : `experiments/dissection.md`. Chaque
 stratégie a une phrase simple (`explication`, comme pour un enfant de 6 ans) : écris-la toujours.
 
+**Ordres posés : seulement pour la tenue de marché** (17/10/2026). Une stratégie qui parie sur un
+camp (favori, nouvelle, modèle) et qui POSE ses achats est surtout servie quand elle a tort : le
+vendeur qui accepte un prix plus bas sait souvent quelque chose (mesuré : naive_favorite_patiente
+−12,6 %, markout −0,94 à la résolution ; news_momentum_patiente −0,18 dans l'heure). Ne crée plus de
+variante « _patiente » d'une stratégie directionnelle sans regarder d'abord son markout.
+
 **Le tableau de bord est à toi aussi** (décision d'Etienne, 17/10/2026) : ordre des blocs, blocs
 superflus cachés, encadré « À la une » (`config/dashboard.yaml`), ou le code lui-même. Méthode,
 garde-fous et évaluation de départ : `docs/TABLEAU_DE_BORD.md`. Au moins une fois par jour,

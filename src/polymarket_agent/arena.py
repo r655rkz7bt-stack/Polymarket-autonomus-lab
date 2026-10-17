@@ -140,6 +140,39 @@ def choose_elimination(standings: list[Standing], champion: str, last_eliminatio
     return min(pool, key=lambda s: s.log_growth)
 
 
+INACTIVE = "inactive"  # début du motif d'un retrait pour inactivité (≠ élimination hebdomadaire)
+
+
+def last_weekly_elimination(main: Ledger) -> datetime | None:
+    """Dernière élimination HEBDOMADAIRE (les retraits pour inactivité ne remettent pas le compteur à zéro)."""
+    last = None
+    for e in read_entries(main):
+        if e.get("type") == "ELIMINATION" and not str(e.get("data", {}).get("reason", "")).startswith(INACTIVE):
+            last = parse_ts(e["ts"])
+    return last
+
+
+def retire_inactive(main: Ledger, competitors: dict[str, Ledger], standings: list[Standing], cfg: dict,
+                    now: datetime) -> list[str]:
+    """Ménage (17/10/2026, AMELIORATION n°9) : une stratégie sans aucune opération clôturée ni position
+    après `retirer_inactives_apres_jours` jours est retirée (journal signé, comme une élimination).
+    Jamais le champion, ni les stratégies listées dans `jamais_retirer` (préfixes)."""
+    days = cfg.get("retirer_inactives_apres_jours")
+    if not days:
+        return []
+    keep = tuple(str(k) for k in cfg.get("jamais_retirer") or ())
+    out = []
+    for s in standings:
+        ledger = competitors.get(s.name)
+        if (ledger is None or s.eliminated or s.name == main.state.champion or s.closed_trades > 0
+                or ledger.state.positions or s.days(now) < float(days) or (keep and s.name.startswith(keep))):
+            continue
+        main.record_elimination(s.name, f"{INACTIVE} : aucune opération ni position en {float(days):g} jours",
+                                {"jours": round(s.days(now), 2)}, now)
+        out.append(s.name)
+    return out
+
+
 def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
               now: datetime | None = None) -> dict:
     """Met à jour champion et éliminations dans le journal principal. Retourne un résumé."""
@@ -159,13 +192,14 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     if champion != previous:
         main.record_promotion(champion, reason, {"from": previous}, now)
         events.append(f"promotion : {champion or 'ne rien faire'} ({reason})")
-    loser = choose_elimination(standings, main.state.champion, main.state.last_elimination_at, now,
+    loser = choose_elimination(standings, main.state.champion, last_weekly_elimination(main), now,
                                min_trades, float(cfg["elimination_every_days"]),
                                float(cfg["min_days_before_elimination"]))
     if loser is not None:
         main.record_elimination(loser.name, "pire croissance de l'arène",
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)
         events.append(f"élimination : {loser.name}")
+    events += [f"retrait (inactive) : {n}" for n in retire_inactive(main, competitors, standings, cfg, now)]
     final = ranking([standing(n, l, main.state.eliminated) for n, l in competitors.items()])
     shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
                         champion=main.state.champion, keep_growth=keep, **gates)

@@ -11,7 +11,7 @@ import dataclasses
 import hashlib
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -545,7 +545,7 @@ class PatientOrders:
         return getattr(self.inner, name)
 
 
-FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue")
+FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc")
 
 
 class Filtered:
@@ -554,7 +554,8 @@ class Filtered:
     quel morceau fait vraiment gagner (ou perdre). Filtres possibles :
       familles : [sports, politics, …] (market_family) ; heures_min / heures_max : délai jusqu'à
       l'échéance (au coup d'envoi en sport) ; prix_min / prix_max : prix payé ;
-      issue : [oui, non, autre] (autre = équipe, joueur…).
+      issue : [oui, non, autre] (autre = équipe, joueur…) ; heure_utc : [début, fin[ (heure de la
+      journée en temps universel, ex. [4, 12] ; [20, 4] passe minuit).
     Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
     morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
 
@@ -599,6 +600,11 @@ class Filtered:
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         now = max((b.fetched_at for b in books.values()), default=None)
+        if "heure_utc" in self.filters and now is not None:
+            start, end = (int(h) for h in self.filters["heure_utc"])
+            hour = now.astimezone(timezone.utc).hour
+            if not (start <= hour < end if start <= end else hour >= start or hour < end):
+                return StrategyOutput()  # hors de la plage horaire : aucune nouvelle position
         kept = [m for m in watchlist if self._market_ok(m, now)]
         out = self.inner.propose(kept, books, state, limits, bucket, marks)
         out.proposals = [p for p in out.proposals if self._order_ok(p)]

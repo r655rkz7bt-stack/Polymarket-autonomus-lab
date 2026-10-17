@@ -207,3 +207,19 @@ def test_backtest_validated_strategies_enter_earlier_but_must_still_win():
     losing = st("meteo_prevision_v1.0.0", 10, -0.01, days=0.5)
     assert allocation([losing], n, 5, validated=validated, **gates) == {}
     assert choose_champion([meteo, other], "", n, 0.01, validated=validated, **gates)[0] == "meteo_prevision_v1.0.0"
+
+
+def test_inactive_strategies_are_retired_without_resetting_the_weekly_elimination(tmp_path):
+    """17/10/2026 : ménage des stratégies sans opération ni position après 3 jours ; la tenue de
+    marché est épargnée ; l'élimination hebdomadaire garde son propre compteur."""
+    from polymarket_agent.arena import last_weekly_elimination, retire_inactive
+    main = Ledger.create(tmp_path / "m.jsonl", KEY, tmp_path / "m.lock", "1000", now=NOW)
+    ghosts = {n: Ledger.create(tmp_path / f"{n}.jsonl", KEY, tmp_path / f"{n}.lock", "1000", now=NOW)
+              for n in ("idle_v1", "market_maker_v1", "young_v1", "busy_v1")}
+    ghosts["busy_v1"].record_buy(op_id="b", token_id="t", market_id="m", event_id="e", outcome="Yes", shares="10",
+                                 price="0.5", fee="0", strategy_id="busy", strategy_version="1", now=NOW)
+    standings = [st("idle_v1", 0, 0.0, days=4), st("market_maker_v1", 0, 0.0, days=4), st("young_v1", 0, 0.0, days=1),
+                 st("busy_v1", 0, 0.0, days=4)]
+    cfg = dict(RULES, retirer_inactives_apres_jours=3, jamais_retirer=["market_maker"])
+    assert retire_inactive(main, ghosts, standings, cfg, NOW) == ["idle_v1"]
+    assert "idle_v1" in main.state.eliminated and last_weekly_elimination(main) is None

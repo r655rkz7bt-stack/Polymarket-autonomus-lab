@@ -608,3 +608,19 @@ def test_matching_is_precise_title_needed_rare_words_weigh_more_and_capped():
     match([article, body_only], markets)
     assert len(article.market_ids) <= 5 and article.market_ids[0] == "rm"  # le plus distinctif d'abord
     assert body_only.market_ids == []  # aucun mot-clé dans le titre
+
+
+def test_gemini_daily_budget_is_spread_over_the_day(tmp_path):
+    """17/10/2026 : les 500 appels partaient avant 10 h UTC ; le plafond est réparti heure par heure."""
+    from datetime import datetime, timezone
+    from polymarket_agent.persistence import Database
+    from polymarket_agent.sources.gemini import GeminiClassifier
+    db = Database(tmp_path / "g.sqlite")
+    g = GeminiClassifier(FakeHttp({}), "m", 480, db)
+    morning = datetime(2026, 10, 17, 1, 30, tzinfo=timezone.utc)   # fin de l'heure 1 : 2 × 20 = 40
+    assert g._budget_left(morning) == 40
+    for _ in range(40):
+        db.count_llm_call(morning.date().isoformat())
+    assert g._budget_left(morning) == 0  # budget de l'heure épuisé : on attend l'heure suivante
+    evening = datetime(2026, 10, 17, 23, 5, tzinfo=timezone.utc)
+    assert g._budget_left(evening) == 440  # ce qui n'a pas servi reste disponible plus tard

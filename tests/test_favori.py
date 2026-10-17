@@ -147,3 +147,12 @@ def test_funnel_compares_children_with_their_mother():
     assert [c["nom"] for c in nf["filles"]] == ["nf_sport_v1.0.0", "nf_oui_v1.0.0"] and nf["filles"][0]["morceau"]
     # Équitable : la mère a fait +4,76 % depuis la naissance des filles (1 050 → 1 100), pas +10 %.
     assert nf["filles"][0]["mere_depuis"] == 4.76 and nf["filles"][0]["ecart"] == round(10 - 4.7619, 2)
+
+
+def test_hour_of_day_filter(tmp_path):
+    from datetime import timedelta
+    from polymarket_agent.strategy_engine import Filtered
+    m, books, ledger, limits = _setup(tmp_path, end_hours=48)  # carnets à 12 h UTC (NOW)
+    assert Filtered(_strategy(shrink=0.5), {"heure_utc": [12, 24]}).propose([m], books, ledger.state, limits, "b").proposals
+    assert not Filtered(_strategy(shrink=0.5), {"heure_utc": [4, 12]}).propose([m], books, ledger.state, limits, "b").proposals
+    assert Filtered(_strategy(shrink=0.5), {"heure_utc": [20, 13]}).propose([m], books, ledger.state, limits, "b").proposals  # passe minuit

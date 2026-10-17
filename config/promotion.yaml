@@ -26,3 +26,8 @@ elimination_every_days: 7        # la pire stratégie éligible est éliminée u
 min_days_before_elimination: 7
 min_strategies_in_test: 3        # innovation obligatoire
 radical_idea_after_days_without_record: 7
+# Ménage (17/10/2026, AMELIORATION n°9) : une stratégie sans aucune opération clôturée ni position
+# après ce nombre de jours est retirée (comme une élimination, sans toucher au compteur hebdomadaire).
+retirer_inactives_apres_jours: 3
+jamais_retirer: [market_maker]   # la tenue de marché peut rester longtemps sans exécution (récompenses)
+

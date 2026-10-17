@@ -502,6 +502,9 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         log.info("[%s] %s v%s : %d propositions, %d ordres à poser, abstentions %s", portfolio.name,
                  strategy.strategy_id, strategy.version, len(output.proposals), len(limit_orders),
                  output.abstentions)
+        if portfolio.name == "principal":  # garde-fous du capital principal (settings.yaml → principal)
+            output.proposals = _cap_main(deps, portfolio, output.proposals, by_market)
+            limit_orders = _cap_main(deps, portfolio, limit_orders, by_market)
         proposals += output.proposals
         proposals += _place_resting(deps, portfolio, limit_orders, by_market, report)
     accepted = fills = 0
@@ -585,6 +588,45 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if ledger.state.bankrupt:
             break
     portfolio.counts.update(proposals=len(proposals), accepted=accepted, fills=fills)
+
+
+def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
+              by_market: dict[str, MarketInfo]) -> list[Proposal]:
+    """Capital principal (17/10/2026, AMELIORATION n°6) : un achat ne dépasse pas `max_mise` du
+    capital estimé, et l'argent engagé dans une même famille de marchés (météo, sport… : paris liés,
+    une même vague de chaleur peut tous les faire perdre) ne dépasse pas `max_famille`. Les
+    fantômes ne sont pas plafonnés : l'arène mesure chaque stratégie telle qu'elle est."""
+    from polymarket_agent.strategy_engine import market_family
+    cfg = deps.settings.get("principal", {})
+    if not cfg:
+        return proposals
+    state = portfolio.ledger.state
+    total = state.total_estimated(portfolio.marks)
+    max_bet = Decimal(str(cfg.get("max_mise", 1))) * total
+    max_family = Decimal(str(cfg.get("max_famille", 1))) * total
+    exposure: dict[str, Decimal] = {}
+    for pos in state.positions.values():
+        held = by_market.get(pos.market_id)
+        fam = market_family(held) if held is not None else "inconnue"
+        exposure[fam] = exposure.get(fam, Decimal("0")) + pos.cost_basis
+    out = []
+    for p in proposals:
+        market = by_market.get(p.market_id)
+        if p.side != "BUY" or market is None or p.max_price <= 0:
+            out.append(p)
+            continue
+        fam = market_family(market)
+        room = min(max_bet, max_family - exposure.get(fam, Decimal("0")))
+        shares = min(p.shares, (room / p.max_price).quantize(Decimal("0.01"), rounding=ROUND_DOWN)) if room > 0 else Decimal("0")
+        if shares <= 0:
+            log.info("[principal] %s écarté : famille %s déjà à %s (plafond %s)", p.op_id, fam,
+                     exposure.get(fam), max_family.quantize(Decimal("0.01")))
+            continue
+        if shares < p.shares:
+            p = dataclasses.replace(p, shares=shares)
+        exposure[fam] = exposure.get(fam, Decimal("0")) + shares * p.max_price
+        out.append(p)
+    return out
 
 
 # --------------------------------------------------------------------------- ordres posés

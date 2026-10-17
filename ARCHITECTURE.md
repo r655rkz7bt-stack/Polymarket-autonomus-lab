@@ -599,3 +599,19 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   d'après la courbe de capital de la mère) ; bloc « Entonnoir » du tableau de bord.
 - Dissection des paris déjà faits : `experiments/dissection/dissequer.py`, `experiments/dissection.md`.
 
+## 34. « AMELIORATION » du 17/10/2026 (réponse d'Etienne : « Tout »)
+
+- Gemini : plafond du jour réparti heure par heure (`GeminiClassifier._budget_left`) : les 500 appels
+  partaient avant 10 h UTC.
+- Entonnoir, étage 2 : `nf_sport_prix_haut`, `nf_sport_sans_fin`, `nf_prix_haut_sans_fin` ; taille des
+  mises : `nf_demi_mise`, `nf_quart_mise`, `nm_demi_mise` ; heure de la journée (filtre `heure_utc`) :
+  `favori_politique_nuit`, `outsider_sport_apres_midi` (`experiments/favori/heure.py`).
+- Coupées (servies quand elles ont tort ou perdantes) : `market_structure_patiente`, `reversion`,
+  `naive_favorite_patiente` ; règle : ordres posés seulement pour la tenue de marché (METHODE.md).
+- Capital principal plafonné (`settings.yaml` → `principal`) : 10 % du capital par achat, 40 % par
+  famille de marchés (`main._cap_main`) ; fantômes non plafonnés.
+- Ménage : retrait des stratégies sans opération ni position après 3 jours (`arena.retire_inactive`,
+  `promotion.yaml`), sans toucher au compteur de l'élimination hebdomadaire.
+- Tenue de marché élargie : 25 marchés, 3 % du capital par marché et par côté, 60 ordres posés au plus.
+- Proposition noyau : `proposals/2026-10-17_recompenses_au_capital.md` (récompenses dans le journal).
+

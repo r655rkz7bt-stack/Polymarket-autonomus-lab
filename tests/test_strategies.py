@@ -29,18 +29,19 @@ def test_repository_config_loads():
     assert sorted(s.strategy_id for s in loaded) == sorted([
         "calibration", "calibration_patiente", "contrer_crypto", "contrer_crypto_patiente", "cross_market",
         "crypto_threshold", "crypto_threshold_patiente",
-        "favori_politique", "favori_politique_patiente", "favori_politique_quasi_certain", "information_advantage", "loterie_meteo",
+        "favori_politique", "favori_politique_patiente", "favori_politique_quasi_certain", "favori_politique_nuit", "outsider_sport_apres_midi", "information_advantage", "loterie_meteo",
         "market_maker", "market_maker_serre",
-        "market_structure", "market_structure_patiente", "meteo_prevision", "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_patiente", "naive_favorite_sans_fin",
-        "nf_autres_sujets", "nf_court", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
+        "market_structure", "meteo_prevision", "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
+        "nf_autres_sujets", "nf_demi_mise", "nf_quart_mise", "nf_sport_prix_haut", "nf_sport_sans_fin",
+        "nf_prix_haut_sans_fin", "nm_demi_mise", "nf_court", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
         "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "news_momentum",
-        "news_momentum_patiente", "outsider_sport_patiente", "reversion",
-        "social_sentiment", "suivre_politique", "temperature_floor"])
+        "news_momentum_patiente", "outsider_sport_patiente", "social_sentiment", "suivre_politique", "temperature_floor"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
-                                                                   "loterie_meteo")))
+                                                                   "loterie_meteo", "naive_favorite_large", "nf_demi_mise",
+                                                                   "nf_quart_mise", "nm_demi_mise")))
 
 
 def test_param_outside_bounds_is_refused():
