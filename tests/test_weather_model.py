@@ -126,3 +126,29 @@ def test_forecast_source_summarises_the_local_day_and_is_attached_to_markets(tmp
     db2 = Database(tmp_path / "m2.sqlite")
     r2 = collect({"sources": {"meteo_prevision": {"enabled": True, "every_minutes": 60}}}, FakeHttp({}), db2, [m], NOW)
     assert r2.status["meteo_prevision"] == "ok (0 observations)"
+
+
+def test_meteo_exit_sells_a_no_the_market_now_overpays(tmp_path):
+    """AMELIORATION n°7 (17/10/2026) : on revend un NON quand le marché le rachète plus cher que ce
+    que le modèle lui donne (marge comprise) ; sinon on garde jusqu'au règlement."""
+    from datetime import datetime, timezone
+    from decimal import Decimal
+    from polymarket_agent.ledger import Position
+    pos = {"N": Position("N", "w1", "e1", "No", Decimal("10"), Decimal("4.5"), "2026-10-16T10:00:00+00:00",
+                         "meteo_prevision", "1.0.0")}
+    now = datetime(2026, 10, 16, 12, 0, tzinfo=timezone.utc)
+    # Modèles à 14-14,4 °C : 16 °C est peu probable, le NON vaut ≈ 0,9 selon le modèle.
+    m, books = _setup_market(no_ask="0.45")
+    assert _strategy().exits(pos, {"w1": m}, books, "b1", now) == []           # acheteur à 0,43 : on garde
+    m2, books2 = _setup_market(no_ask="0.99")                                   # acheteur à 0,97
+    est_no = 1 - _strategy()._model(m2, books2["N"])["yes"]
+    sells = _strategy().exits(pos, {"w1": m2}, books2, "b1", now)
+    assert (len(sells) == 1) == (0.97 >= est_no + 0.03)
+    # Nouvelles prévisions pile sur 16 °C : le NON ne vaut plus qu'environ 0,75 ; un acheteur à 0,83 le surpaie.
+    m3, books3 = _setup_market(no_ask="0.85", members=(16.0, 16.0))
+    assert 1 - _strategy()._model(m3, books3["N"])["yes"] < 0.8
+    sells = _strategy().exits(pos, {"w1": m3}, books3, "b1", now)
+    assert len(sells) == 1 and sells[0].side == "SELL" and sells[0].shares == Decimal("10")
+    assert sells[0].max_price == Decimal("0.83")
+    m3.weather = None                                                           # sans prévision : on garde
+    assert _strategy().exits(pos, {"w1": m3}, books3, "b1", now) == []

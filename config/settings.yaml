@@ -71,7 +71,7 @@ sources:
   crypto_prices: {enabled: true, every_minutes: 5}          # Binance (source de résolution), repli Coinbase, Kraken
   # GDELT refuse souvent les IP partagées de GitHub (HTTP 429) : une requête par heure, sans
   # nouvel essai, pour ne pas allonger les cycles (décision d'Etienne, 15/10/2026).
-  gdelt: {enabled: true, every_minutes: 60, queries_per_run: 1, max_retries: 0, timespan: 3h}
+  gdelt: {enabled: true, every_minutes: 180, queries_per_run: 1, max_retries: 0, timespan: 6h}  # 17/10 : HTTP 429 à 60 min (adresse partagée de GitHub)
   bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
   # Google Actualités : une recherche par marché surveillé (remplace GDELT quand il refuse).
   google_news: {enabled: true, every_minutes: 15, queries_per_run: 10, per_query: 15}

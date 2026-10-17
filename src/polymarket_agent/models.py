@@ -57,6 +57,7 @@ class MarketInfo:
     intel: object | None = None  # social_intelligence.MarketIntel (étape 5)
     crypto_quote: object | None = None  # sources.crypto_prices.CryptoQuote de l'actif concerné
     weather: dict | None = None  # relevé meteo_metar (data) de la station + clé "prevision" (meteo_prevision)
+    sport: dict | None = None  # match (score officiel) et cotes des bookmakers rattachés (sports_link.py)
     eligible: bool = False
     exclusion: str = ""
     # Récompenses de liquidité (Gamma : rewardsMinSize, rewardsMaxSpread en centimes,

@@ -15,7 +15,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 
-from polymarket_agent import arena_history, strategy_health, today
+from polymarket_agent import arena_history, liquidity_rewards, strategy_health, today
 from polymarket_agent.arena import days_since_record, ranking, standing
 from polymarket_agent.config import resolve
 from polymarket_agent.learning_engine import analyze, categories_from_db
@@ -123,8 +123,8 @@ def _hm(iso: str) -> str:
     return f"{iso[8:10]}/{iso[5:7]} {iso[11:16]}" if len(iso) >= 16 else iso
 
 
-def arena_rules(settings: dict, root: Path) -> dict:
-    """Seuils d'entrée de l'arène (config/promotion.yaml), pour expliquer la situation."""
+def arena_cfg(settings: dict, root: Path) -> dict:
+    """Règles de l'arène (config/promotion.yaml), déjà chargées par le cycle ou lues ici."""
     cfg = settings.get("arena")
     if not isinstance(cfg, dict):
         import yaml
@@ -132,8 +132,15 @@ def arena_rules(settings: dict, root: Path) -> dict:
             cfg = yaml.safe_load((Path(root) / "config" / "promotion.yaml").read_text(encoding="utf-8")) or {}
         except (OSError, yaml.YAMLError):
             cfg = {}
+    return cfg
+
+
+def arena_rules(settings: dict, root: Path) -> dict:
+    """Seuils d'entrée de l'arène, pour expliquer la situation."""
+    cfg = arena_cfg(settings, root)
     return {"operations": int(cfg.get("min_closed_trades", 20)), "croissance": float(cfg.get("min_log_growth", 0.02)),
-            "heures": float(cfg.get("min_age_hours", 24))}
+            "heures": float(cfg.get("min_age_hours", 24)),
+            "confiance": float(cfg["min_t_stat"]) if cfg.get("min_t_stat") is not None else None}
 
 
 def promotions(entries: list[dict], limit: int = 6) -> list[dict]:
@@ -162,7 +169,7 @@ def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict
                 "detail": f"{name(champ)} : {signed(pct(a))} sur {a['operations']} opérations clôturées." if a else ""}
     # Pas de champion : la plus proche du seuil (croissance suffisante d'abord, puis le plus d'opérations).
     need = math.exp(rules["croissance"]) * initial
-    live = [a for a in arena if not a.get("eliminee")]
+    live = [a for a in arena if not a.get("eliminee") and not a.get("retiree")]
     near = max(live, key=lambda a: (a["capital"] >= need, a["operations"] if a["capital"] >= need else a["capital"]),
                default=None)
     if near is None:
@@ -170,6 +177,9 @@ def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict
     elif near["capital"] >= need and near["operations"] < rules["operations"]:
         tail = (f"La plus proche du titre : {name(near['nom'])} ({signed(pct(near))}), {near['operations']} opérations "
                 f"clôturées sur les {rules['operations']} exigées.")
+    elif near["capital"] >= need and rules.get("confiance") and near.get("confiance", 0) < rules["confiance"]:
+        tail = (f"La plus proche du titre : {name(near['nom'])} ({signed(pct(near))}), mais ses résultats sont encore "
+                f"trop irréguliers (confiance {_fr(near.get('confiance', 0), 1)}, il faut {_fr(rules['confiance'], 1)}).")
     elif near["capital"] >= need:
         tail = f"{name(near['nom'])} remplit les conditions : promotion attendue au prochain cycle."
     else:
@@ -186,14 +196,22 @@ def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict
 
 
 def strategy_info(root: Path) -> dict[str, dict]:
-    """config/strategies.yaml → {stratégie: {explication, mere, morceau}} (phrases pour Etienne)."""
+    """config/strategies.yaml → {stratégie: {explication, mere, morceau, active}} (phrases pour Etienne).
+    `active` : activée et autorisée à proposer (une stratégie coupée garde son fantôme, sans trader)."""
     import yaml
     try:
         raw = yaml.safe_load((Path(root) / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
     except (OSError, yaml.YAMLError):
         return {}
-    return {sid: {k: str(spec[k]) for k in ("explication", "mere", "morceau") if spec.get(k)}
-            for sid, spec in raw.items() if isinstance(spec, dict)}
+    out = {}
+    for sid, spec in raw.items():
+        if not isinstance(spec, dict):
+            continue
+        info = {k: str(spec[k]) for k in ("explication", "mere", "morceau") if spec.get(k)}
+        cap = ((spec.get("params") or {}).get("max_proposals_per_cycle") or {})
+        info["active"] = bool(spec.get("enabled", True)) and not (isinstance(cap, dict) and cap.get("value") == 0)
+        out[sid] = info
+    return out
 
 
 def funnel(arena: list[dict], info: dict[str, dict], initial: float = 1000.0) -> list[dict]:
@@ -311,18 +329,27 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     # --- arène (avec la phrase simple de chaque stratégie, config/strategies.yaml → explication)
     info = strategy_info(root)
     arena = []
-    for s in ranking([standing(n, l, state.eliminated, bonus.get(n, 0.0)) for n, l in shadows.items()]):
+    acfg = arena_cfg(settings, root)
+    try:
+        days = liquidity_rewards.payable_day_counts(db, {n: l.state.epoch_started_at for n, l in shadows.items()}, now)
+    except Exception:  # noqa: BLE001 - base sans table de récompenses
+        days = {}
+    for s in ranking([standing(n, l, state.eliminated, bonus.get(n, 0.0), days.get(n, 0), acfg) for n, l in shadows.items()]):
         verdicts = learning.get(s.name, {}).get("strategies", {})
         verdict = next(iter(verdicts.values()), {}).get("verdict", "aucune opération clôturée")
         arena.append({"nom": s.name, "explication": info.get(s.name.rsplit("_v", 1)[0], {}).get("explication", ""),
                       "operations": s.closed_trades, "capital": round(s.realized_capital, 2),
-                      "recompenses_classement": s.rewards,
+                      "recompenses_classement": s.rewards, "confiance": s.t_stat, "mode": s.mode,
+                      # sans config/strategies.yaml (tests, copie partielle), personne n'est « retirée »
+                      "retiree": bool(info) and not s.eliminated
+                      and not info.get(s.name.rsplit("_v", 1)[0], {}).get("active", False),
                       "croissance": round(s.log_growth, 4) if s.log_growth != float("-inf") else None,
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
                       "champion": s.name == state.champion, "verdict": verdict,
                       "courbe": _downsample(equity_curve(read_entries(shadows[s.name])), 60),
                       "positions": len(shadows[s.name].state.positions),
                       "sante": strategy_health.load(db, s.name)})
+    arena.sort(key=lambda a: a["retiree"])  # ménage : les stratégies qui ne tradent plus passent en bas
 
     # --- positions ouvertes (tous portefeuilles), avec prévision et incertitude
     buys = {}
@@ -406,7 +433,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     system = {"marches_scannes": counts[0] if counts else 0, "surveilles": counts[1] if counts else 0,
               "propositions": counts[2] if counts else 0, "acceptees": counts[3] if counts else 0,
               "executions": counts[4] if counts else 0, "ordres_poses": open_orders,
-              "strategies_actives": sum(1 for s in arena if not s["eliminee"]),
+              "strategies_actives": sum(1 for s in arena if not s["eliminee"] and not s["retiree"]),
               "positions_tous_portefeuilles": len(positions)}
 
     def listing(folder: str) -> list[dict]:

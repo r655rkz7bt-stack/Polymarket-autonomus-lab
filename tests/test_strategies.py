@@ -36,12 +36,13 @@ def test_repository_config_loads():
         "nf_prix_haut_sans_fin", "nm_demi_mise", "nf_court", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
         "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "news_momentum",
-        "news_momentum_patiente", "outsider_sport_patiente", "social_sentiment", "suivre_politique", "temperature_floor"])
+        "news_momentum_patiente", "outsider_sport_patiente", "social_sentiment", "suivre_politique", "temperature_floor",
+        "cotes_bookmakers"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
                                                                    "loterie_meteo", "naive_favorite_large", "nf_demi_mise",
-                                                                   "nf_quart_mise", "nm_demi_mise")))
+                                                                   "nf_quart_mise", "nm_demi_mise", "cotes_bookmakers")))
 
 
 def test_param_outside_bounds_is_refused():
