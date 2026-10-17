@@ -1007,6 +1007,9 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp ? " off" : ""),
         s.champion ? "champion" : s.eliminee ? "éliminée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
       name.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict));
+      // Option A (17/10/2026) : récompenses ESTIMÉES comptées pour le classement, pas dans le capital.
+      if (s.recompenses_classement > 0) name.appendChild(el("span", "sub",
+        "+ " + fmt(s.recompenses_classement, 2) + " de récompenses estimées, comptées pour le classement (pas dans le capital)"));
       // Santé : mise autorisée, prévisions jugées (avance sur le marché), dérive des prix depuis l'achat.
       if (s.sante) name.appendChild(el("span", "sub", susp ? H2.suspendue :
         "mise ×" + fmt(H2.prudence, 2) + " · " + H2.jugees + " prévision(s) jugée(s)" +

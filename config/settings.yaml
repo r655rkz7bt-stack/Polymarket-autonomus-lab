@@ -22,6 +22,14 @@ principal:
   max_mise: 0.10      # un achat ≤ 10 % du capital estimé (Kelly complet allait jusqu'à 40 %)
   max_famille: 0.40   # ≤ 40 % du capital engagé dans une même famille (météo, sport…) : paris liés
 
+# Récompenses de liquidité (option A d'Etienne, 17/10/2026, libre) : les récompenses ESTIMÉES des
+# journées terminées (≥ 1 $, plafonnées à la cagnotte du marché) × prudence comptent dans le
+# CLASSEMENT de l'arène, jamais dans le capital d'un fantôme. Le versement au capital public
+# attend le noyau : proposals/2026-10-17_recompenses_au_capital.md.
+recompenses:
+  classement_arene: true
+  prudence: 0.5       # estimation sans doute trop optimiste : on n'en compte que la moitié
+
 limit_orders:
   max_age_hours: 6             # durée de vie maximale d'un ordre posé
   max_open_per_portfolio: 60   # ordres ouverts au plus par portefeuille (tenue de marché : 25 marchés × 2, 17/10/2026)

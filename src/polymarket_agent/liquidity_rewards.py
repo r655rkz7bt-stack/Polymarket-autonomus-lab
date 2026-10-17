@@ -14,13 +14,20 @@ du NON à 1 − p, mêmes ordres) : les concurrents ne sont comptés qu'une fois
 
 LIMITES (affichées avec le résultat) : une photo toutes les 5 minutes au lieu de chaque minute ;
 milieu simple au lieu du « milieu ajusté » officiel ; multiplicateur « en match » ignoré. C'est une
-ESTIMATION, jamais comptée dans le capital : seul le journal signé fait foi (proposition au noyau
-si la piste se confirme).
+ESTIMATION : seul le journal signé fait foi.
+
+Décisions d'Etienne (17/10/2026) :
+- option A : l'arène CLASSE chaque stratégie avec ses récompenses estimées (journées terminées,
+  au moins 1 $, plafonnées à la cagnotte, × prudence), SANS les mettre dans son capital fantôme ;
+- le capital PUBLIC (portefeuille principal), et lui seul, les reçoit dans son journal signé
+  (écriture REWARD, une par journée terminée) dès que le noyau l'accepte
+  (proposals/2026-10-17_recompenses_au_capital.md).
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import date, datetime
 from decimal import Decimal
 
 from polymarket_agent.models import MarketInfo, OrderBook
@@ -122,4 +129,39 @@ def summary(db, since_iso: str) -> dict[str, dict[str, float]]:
         out[p] = {"estime": round(sum(days.values()), 2),
                   "versable": round(sum(v for v in days.values() if v >= PAYOUT_MIN), 2),
                   "jours": len(days)}
+    return out
+
+
+def payable_days(db, since_iso: str, before: date) -> dict[str, dict[str, list[dict]]]:
+    """{portefeuille: {jour: [{market_id, montant, cagnotte}]}} des journées TERMINÉES (avant
+    `before`) dont le total atteint 1 $ (règle de versement de Polymarket). Le montant d'un
+    marché ne dépasse jamais sa cagnotte du jour."""
+    db.conn.executescript(SCHEMA)
+    raw: dict[str, dict[str, list[dict]]] = {}
+    for p, day, market, amount, pool in db.conn.execute(
+            "SELECT portefeuille, substr(estime_at, 1, 10), market_id, SUM(montant), MAX(cagnotte_jour) "
+            "FROM recompenses_estimees WHERE estime_at >= ? AND substr(estime_at, 1, 10) < ? "
+            "GROUP BY 1, 2, 3 ORDER BY 2, 3", (since_iso, before.isoformat())):
+        amount = min(float(amount or 0), float(pool or 0))
+        if amount > 0:
+            raw.setdefault(p, {}).setdefault(day, []).append(
+                {"market_id": market, "montant": round(amount, 6), "cagnotte": round(float(pool), 4)})
+    return {p: {d: ms for d, ms in days.items() if sum(m["montant"] for m in ms) >= PAYOUT_MIN}
+            for p, days in raw.items()}
+
+
+def ranking_bonus(db, starts: dict[str, datetime | None], prudence: float, now: datetime) -> dict[str, float]:
+    """Option A : {nom de l'arène: récompenses estimées comptées pour le CLASSEMENT}, depuis le début
+    de l'époque de chaque fantôme (base : « fantome:<nom> »). Jamais ajouté à un capital."""
+    known = [s for s in starts.values() if s is not None]
+    if not known or prudence <= 0:
+        return {}
+    days = payable_days(db, min(known).isoformat(timespec="seconds"), now.date())
+    out = {}
+    for name, start in starts.items():
+        mine = days.get("fantome:" + name, {})
+        total = sum(m["montant"] for d, ms in mine.items() if start is None or d >= start.date().isoformat()
+                    for m in ms)
+        if total > 0:
+            out[name] = round(total * prudence, 4)
     return out

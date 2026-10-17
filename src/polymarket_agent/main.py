@@ -348,7 +348,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # 3 bis. Arène : classement, promotion du champion, élimination hebdomadaire.
     competitors = {p.name.removeprefix("fantome:"): p for p in portfolios[1:]}
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
-                             deps.settings["arena"], deps.now())
+                             deps.settings["arena"], deps.now(), rewards=_ranking_rewards(deps, competitors))
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
@@ -453,6 +453,21 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais faire tomber le cycle
             log.warning("[%s] estimation des récompenses impossible : %s", portfolio.name, exc)
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
+
+
+def _ranking_rewards(deps: CycleDeps, competitors: dict) -> dict[str, float]:
+    """Option A d'Etienne (17/10/2026) : récompenses estimées comptées pour le CLASSEMENT de l'arène,
+    jamais dans le capital des fantômes (liquidity_rewards.ranking_bonus)."""
+    cfg = deps.settings.get("recompenses") or {}
+    if not cfg.get("classement_arene"):
+        return {}
+    from polymarket_agent import liquidity_rewards as lr
+    try:
+        return lr.ranking_bonus(deps.db, {n: p.ledger.state.epoch_started_at for n, p in competitors.items()},
+                                float(cfg.get("prudence", 0.5)), deps.now())
+    except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais bloquer l'arène
+        log.warning("récompenses estimées illisibles pour le classement : %s", exc)
+        return {}
 
 
 def _estimate_rewards(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, MarketInfo],

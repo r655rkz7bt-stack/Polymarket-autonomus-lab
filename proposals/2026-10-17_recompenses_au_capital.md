@@ -43,6 +43,44 @@ Cela fait environ **1,2 % du capital par jour** pour `market_maker`. C'est un or
 4. **Règle n°1 inchangée** : une récompense n'est jamais un gain latent. Elle n'est créditée qu'une
    fois le jour terminé, comme un versement réel.
 
+## Décision d'Etienne (17/10/2026)
+« Je veux que ça soit intégré, mais que pour le portefeuille public, évidemment. On ne va pas
+prendre les portefeuilles de l'arène et tout ajouter au capital. » Puis : option **A**, et
+« crée un fichier et une pull request […] qu'on va ajouter plus tard ».
+
+Donc :
+- **seul le journal principal** reçoit des écritures `REWARD` (prudence 0,5) ;
+- l'arène classe les stratégies avec leurs récompenses estimées (option A), **sans jamais** les
+  ajouter au capital d'un fantôme (partie libre, `arena.py` et `liquidity_rewards.ranking_bonus`) ;
+- le versement au capital public sera ajouté **plus tard**, avec la modification du noyau.
+
+## Ce qu'il faudra écrire plus tard (noyau, avec l'accord d'Etienne)
+1. `ledger.py` : type `REWARD` (dans `ENTRY_TYPES` et `MONEY_TYPES`). Champs `op_id`
+   (`REWARD-AAAA-MM-JJ`), `day`, `amount`, `source`, et en option `method` et `details`
+   (par marché : montant, cagnotte). Refus si :
+   - faillite ;
+   - journée non terminée (`day` ≥ date de l'écriture) ou antérieure au capital actuel ;
+   - jour déjà crédité ;
+   - montant ≤ 0, ou supérieur à 5 % du capital réalisé (plafond contre une estimation folle).
+
+   Effet : le solde disponible et les gains réalisés augmentent du montant. Nouveaux champs
+   d'état `rewards_total` et `reward_days` (à recopier dans `clone`). `summary()` gagne
+   `recompenses_recues`. Nouvelle méthode `record_reward(day, amount, source, method, details, now)`.
+2. `tests/test_ledger.py` : crédit, refus de chaque cas ci-dessus, rechargement à l'identique,
+   `clone` équivalent à `deepcopy`.
+3. `scripts/audit_fills.py` (+ test) : une `REWARD` dans un journal **fantôme** est une
+   anomalie (seul le principal en reçoit). Dans le principal, le montant ne doit pas dépasser
+   la somme des `details` × prudence, et chaque marché ne doit pas dépasser sa cagnotte.
+4. Partie libre (`main.py`, après l'étape 12) : pour chaque journée terminée des 3 derniers
+   jours qui n'a pas encore été versée, total estimé du portefeuille `principal`
+   (`liquidity_rewards.payable_days` : jours ≥ 1 $, plafonnés à la cagnotte) × prudence, puis
+   `ledger.record_reward(...)`. Rien n'est fait tant que le noyau ne connaît pas `REWARD`.
+
+Limite à connaître : le principal ne touche de récompenses que si une stratégie qui pose des
+ordres (tenue de marché, stratégies « patientes ») a une part de son capital. Ses ordres sont
+alors réduits à cette part : sous la taille minimale du marché (`rewardsMinSize`), ils ne
+rapportent rien.
+
 ## Ce qu'Etienne aurait à faire
 - Me répondre **« récompenses : oui »** (avec la prudence à 0,5) ou **« récompenses : non »**.
 - Si c'est oui, je prépare la pull request du noyau avec ses tests. Je te guide ensuite pour la

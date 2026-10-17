@@ -177,14 +177,26 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                     "jours_depuis_palier": round(days_since_record(main, now), 2),
                     "faillite": state.bankrupt, "raison_faillite": state.bankrupt_reason})
 
+    # --- récompenses estimées comptées pour le classement (option A, 17/10/2026), comme dans main.py
+    bonus = {}
+    rcfg = settings.get("recompenses") or {}
+    if rcfg.get("classement_arene"):
+        from polymarket_agent import liquidity_rewards
+        try:
+            bonus = liquidity_rewards.ranking_bonus(db, {n: l.state.epoch_started_at for n, l in shadows.items()},
+                                                    float(rcfg.get("prudence", 0.5)), now)
+        except Exception:  # noqa: BLE001 - base sans table de récompenses
+            bonus = {}
+
     # --- arène (avec la phrase simple de chaque stratégie, config/strategies.yaml → explication)
     info = strategy_info(root)
     arena = []
-    for s in ranking([standing(n, l, state.eliminated) for n, l in shadows.items()]):
+    for s in ranking([standing(n, l, state.eliminated, bonus.get(n, 0.0)) for n, l in shadows.items()]):
         verdicts = learning.get(s.name, {}).get("strategies", {})
         verdict = next(iter(verdicts.values()), {}).get("verdict", "aucune opération clôturée")
         arena.append({"nom": s.name, "explication": info.get(s.name.rsplit("_v", 1)[0], {}).get("explication", ""),
                       "operations": s.closed_trades, "capital": round(s.realized_capital, 2),
+                      "recompenses_classement": s.rewards,
                       "croissance": round(s.log_growth, 4) if s.log_growth != float("-inf") else None,
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
                       "champion": s.name == state.champion, "verdict": verdict,
