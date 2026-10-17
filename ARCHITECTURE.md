@@ -615,3 +615,14 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
 - Tenue de marché élargie : 25 marchés, 3 % du capital par marché et par côté, 60 ordres posés au plus.
 - Proposition noyau : `proposals/2026-10-17_recompenses_au_capital.md` (récompenses dans le journal).
 
+
+## 35. Récompenses de liquidité : classement de l'arène (17 octobre 2026, option A d'Etienne)
+- Les récompenses ESTIMÉES d'une stratégie qui pose des ordres (journées terminées d'au moins 1 $,
+  chaque marché plafonné à sa cagnotte, × prudence 0,5 : `liquidity_rewards.ranking_bonus`)
+  s'ajoutent à son capital réalisé pour calculer la croissance JUGÉE par l'arène (champion, parts
+  du capital principal). Le capital du fantôme, lui, ne change jamais. Réglage :
+  `settings.yaml → recompenses` (`classement_arene`, `prudence`).
+- Le versement au capital PUBLIC (et à lui seul) attend le noyau (écriture `REWARD` dans
+  `ledger.py`, contrôle par l'audit) : `proposals/2026-10-17_recompenses_au_capital.md`.
+- Limite : les entrées de l'arène exigent toujours 20 opérations clôturées ; une tenue de marché
+  peu servie peut attendre longtemps avant d'être jugée.

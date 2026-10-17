@@ -223,3 +223,20 @@ def test_inactive_strategies_are_retired_without_resetting_the_weekly_eliminatio
     cfg = dict(RULES, retirer_inactives_apres_jours=3, jamais_retirer=["market_maker"])
     assert retire_inactive(main, ghosts, standings, cfg, NOW) == ["idle_v1"]
     assert "idle_v1" in main.state.eliminated and last_weekly_elimination(main) is None
+
+
+def test_estimated_rewards_count_for_ranking_but_never_in_ghost_capital(ledger, tmp_path):
+    """Option A d'Etienne (17/10/2026) : une tenue de marché à l'équilibre devient championne grâce à
+    ses récompenses estimées, mais son capital fantôme ne bouge pas."""
+    shadow = Ledger.create(tmp_path / "mm.jsonl", KEY, tmp_path / "mm.lock", "1000", now=NOW)
+    for i in range(20):
+        buy(shadow, f"b{i}", token=f"t{i}", shares="10", price="0.5", event=f"e{i}")
+        shadow.record_settlement(op_id=f"s{i}", token_id=f"t{i}", payout_per_share="0.5",
+                                 resolution="50-50", now=NOW)
+    later = NOW + timedelta(hours=25)
+    assert run_arena(ledger, {"mm_v1": shadow}, RULES, later)["champion"] == ""  # croissance nulle
+    summary = run_arena(ledger, {"mm_v1": shadow}, RULES, later, rewards={"mm_v1": 30.0})
+    assert summary["champion"] == "mm_v1" and summary["allocation"] == {"mm_v1": 1.0}
+    row = summary["classement"][0]
+    assert row["rewards"] == 30.0 and row["realized_capital"] == 1000.0
+    assert shadow.state.cash == D("1000")

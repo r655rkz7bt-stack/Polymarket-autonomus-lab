@@ -132,3 +132,24 @@ def test_markout_compares_filled_and_missed_resting_orders(tmp_path):
     rep2 = markout.report(db, {"market_maker_v1.0.0": entries}, at + timedelta(days=3))
     assert rep2["market_maker_v1.0.0"]["manques"]["ordres"] == 1
 
+
+def test_ranking_bonus_counts_finished_paid_days_capped_by_the_pool(tmp_path):
+    from polymarket_agent.persistence import Database
+    db = Database(tmp_path / "r.sqlite")
+    day1, today = NOW - timedelta(days=1), NOW
+
+    def put(cycle, when, portfolio, market, amount, pool):
+        lr.record(db, cycle, when, portfolio, market, lr.Estimate(0.5, 1.0, 1.0, amount, True), D(str(pool)))
+
+    put("c1", day1, "fantome:mm_v1", "m1", 3.0, 2.0)      # plafonné à la cagnotte : 2 $
+    put("c2", day1, "fantome:mm_v1", "m2", 1.5, 50.0)
+    put("c3", day1, "fantome:petit_v1", "m1", 0.4, 50.0)  # moins de 1 $ : pas versé par Polymarket
+    put("c4", today, "fantome:mm_v1", "m1", 9.0, 50.0)    # journée pas terminée
+    put("c5", day1, "principal", "m1", 5.0, 50.0)
+    days = lr.payable_days(db, (day1 - timedelta(days=1)).isoformat(), today.date())
+    assert sum(m["montant"] for m in days["fantome:mm_v1"][day1.date().isoformat()]) == pytest.approx(3.5)
+    assert not days.get("fantome:petit_v1")
+    starts = {"mm_v1": day1 - timedelta(hours=1), "petit_v1": day1, "neuf_v1": today}
+    # Le principal n'est jamais un concurrent de l'arène ; prudence 0,5.
+    assert lr.ranking_bonus(db, starts, 0.5, today) == {"mm_v1": pytest.approx(1.75)}
+
