@@ -93,3 +93,11 @@ rien (aucun mouvement de plus de 0,05 ce soir-là).
 Famille « sans_frais » : un marché sans frais est surtout de la géopolitique, mais aussi santé ou
 séismes ; les variantes politiques l'incluent.
 
+## 7. L'heure de la journée (17/10/2026, `experiments/favori/heure.py`, 303 229 échanges réels)
+Pas d'effet général : le favori 0,80-0,97 fait −1,8 % à +0,2 % selon la tranche horaire, et le week-end
+ne diffère pas de la semaine (−1,1 % contre −1,0 %). Deux poches faibles, mises à l'essai dans l'arène :
+- favori politique la nuit et le matin (4 h-12 h UTC) : +1,5 à +2,0 % → `favori_politique_nuit` ;
+- outsider sportif l'après-midi et le soir (12 h-24 h UTC) : +8 à +10 % (négatif le matin) →
+  `outsider_sport_apres_midi`.
+L'outsider crypto perd à toute heure (−18 à −48 %).
+

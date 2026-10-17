@@ -18,7 +18,7 @@ import json
 import os
 import re
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.observations import Observation
@@ -89,8 +89,13 @@ class GeminiClassifier:
         return bool(self._key) and self.max_calls > 0
 
     def _budget_left(self, now: datetime) -> int:
+        """Appels encore permis MAINTENANT : le plafond du jour est réparti heure par heure (17/10/2026 :
+        les 500 appels partaient avant 10 h UTC, les stratégies d'actualité restaient aveugles 14 h).
+        À la fin de l'heure h (UTC), au plus plafond × (h + 1) / 24 appels ; ce qui n'a pas servi
+        reste disponible plus tard dans la journée."""
         used = self.db.llm_calls(now.date().isoformat()) if self.db else 0
-        return self.max_calls - used
+        paced = -(-self.max_calls * (now.astimezone(timezone.utc).hour + 1) // 24)  # arrondi au-dessus
+        return min(self.max_calls, paced) - used
 
     def _try_alternatives(self, failed: str, body: dict, first_error: SourceUnavailable):
         """Essaie les meilleurs autres modèles ; retient le premier qui répond."""
@@ -119,7 +124,7 @@ class GeminiClassifier:
         if not self.available or not observations:
             return {}
         if self._budget_left(now) <= 0:
-            raise SourceUnavailable("plafond quotidien d'appels Gemini atteint")
+            raise SourceUnavailable("budget Gemini de l'heure atteint (plafond du jour réparti sur 24 h)")
         items = "\n".join(json.dumps({"id": i, "texte": f"{o.title} {o.text}"[:600]}, ensure_ascii=False)
                           for i, o in enumerate(observations[:20]))
         body = {"contents": [{"parts": [{"text": PROMPT.format(question=question[:300], kinds=list(KINDS),

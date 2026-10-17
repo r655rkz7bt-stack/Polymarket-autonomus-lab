@@ -16,9 +16,15 @@ cycle:
 
 # Ordres à cours limité posés dans le carnet (stratégies en mode « patient », limit_ticks).
 # Exécutés seulement si le marché passe AU TRAVERS du prix (execution_simulator.py).
+# Capital principal (17/10/2026, AMELIORATION n°6), libre : plafonds du SEUL portefeuille principal
+# (les fantômes ne sont pas plafonnés : l'arène mesure chaque stratégie telle qu'elle est).
+principal:
+  max_mise: 0.10      # un achat ≤ 10 % du capital estimé (Kelly complet allait jusqu'à 40 %)
+  max_famille: 0.40   # ≤ 40 % du capital engagé dans une même famille (météo, sport…) : paris liés
+
 limit_orders:
   max_age_hours: 6             # durée de vie maximale d'un ordre posé
-  max_open_per_portfolio: 30   # ordres ouverts au plus par portefeuille
+  max_open_per_portfolio: 60   # ordres ouverts au plus par portefeuille (tenue de marché : 25 marchés × 2, 17/10/2026)
 
 http:
   timeout_seconds: 15
@@ -38,7 +44,7 @@ scanner:
   max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
   watchlist_size: 150          # marchés suivis en détail (carnets, actualités) à chaque cycle
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
-  max_extra_markets: 300       # marchés demandés par les stratégies (météo 100, tenue de marché 30, politique 40, sport 30, crypto 30) ; doublons comptés une fois
+  max_extra_markets: 320       # marchés demandés par les stratégies (météo 100, tenue de marché 30, politique 40, sport 30, crypto 30) ; doublons comptés une fois
 
 database:
   max_megabytes: 40

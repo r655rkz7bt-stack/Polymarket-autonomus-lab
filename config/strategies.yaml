@@ -54,7 +54,7 @@ naive_favorite_large:
 
 reversion:
   explication: "Quand un prix a bougé très vite, on parie qu'il va revenir un peu en arrière, comme un élastique."
-  enabled: true
+  enabled: false   # coupée le 17/10/2026 (AMELIORATION n°5) : −30 % sur 7 opérations (Kelly complet sur des paris perdants)
   version: "1.0.0"
   created_at: "2026-10-14"
   table: reversion_v1.json
@@ -140,7 +140,7 @@ market_structure_patiente:
   # meilleur acheteur, déséquilibre plus exigeant, objectif de gain plus large (0,04) que les frais.
   class: market_structure
   limit_ticks: 1
-  enabled: true
+  enabled: false   # coupée le 17/10/2026 (AMELIORATION n°5) : −19 % sur 45 opérations ; la stratégie mère (−49 %) est déjà arrêtée
   version: "1.0.0"
   created_at: "2026-10-15"
   params:
@@ -362,7 +362,7 @@ naive_favorite_patiente:
   # le vendeur ; seuil d'avantage abaissé car le prix posé est meilleur ; Kelly 0,5 (échantillon minuscule).
   class: naive_favorite
   limit_ticks: 1
-  enabled: true
+  enabled: false   # coupée le 17/10/2026 (AMELIORATION n°5) : −12,6 % ; ses ordres posés sont servis quand ils ont tort (markout à la résolution −0,94)
   version: "1.0.0"
   created_at: "2026-10-16"
   hypothesis: >
@@ -389,6 +389,8 @@ market_maker:
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-16"
+  # 17/10/2026 (AMELIORATION n°1) : 25 marchés au lieu de 12, 3 % du capital par marché et par côté
+  # au lieu de 6 % : les récompenses viennent surtout d'être présent dans beaucoup de cagnottes.
   params:
     min_days_to_end:  {value: 3, min: 0, max: 30}        # pas de marché qui se tranche bientôt
     min_mid:          {value: 0.15, min: 0.01, max: 0.5}
@@ -397,12 +399,12 @@ market_maker:
     min_reward_rate:  {value: 5, min: 0, max: 10000}     # cagnotte du marché, $ par jour
     improve_ticks:    {value: 0, min: 0, max: 5}         # 0 = rejoindre le meilleur prix
     min_pair_margin:  {value: 0.02, min: 0.0, max: 0.2}  # paire OUI + NON achetée au plus 0,98
-    market_fraction:  {value: 0.06, min: 0.0, max: 1.0}  # capital au plus engagé par marché et par côté
+    market_fraction:  {value: 0.03, min: 0.0, max: 1.0}  # capital au plus engagé par marché et par côté
     max_net_quotes:   {value: 2, min: 0, max: 20}        # stock net au plus = 2 cotes d'un côté
     stop_loss:        {value: 0.10, min: 0.01, max: 1.0} # stock non apparié vendu si −0,10
     quote_hours:      {value: 0.2, min: 0.05, max: 6}    # une cote vit 12 min (renouvelée à chaque cycle)
-    max_markets:      {value: 12, min: 0, max: 50}       # 2 ordres par marché (30 ordres au plus)
-    max_candidates:   {value: 30, min: 0, max: 200}
+    max_markets:      {value: 25, min: 0, max: 50}       # 2 ordres par marché (60 ordres au plus : limit_orders)
+    max_candidates:   {value: 50, min: 0, max: 200}
 
 market_maker_serre:
   explication: "Le même petit magasin, avec des prix plus serrés : on vend plus souvent, mais on se fait piéger plus souvent."
@@ -412,6 +414,8 @@ market_maker_serre:
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-16"
+  # 17/10/2026 (AMELIORATION n°1) : 25 marchés au lieu de 12, 3 % du capital par marché et par côté
+  # au lieu de 6 % : les récompenses viennent surtout d'être présent dans beaucoup de cagnottes.
   params:
     min_days_to_end:  {value: 3, min: 0, max: 30}
     min_mid:          {value: 0.15, min: 0.01, max: 0.5}
@@ -420,12 +424,12 @@ market_maker_serre:
     min_reward_rate:  {value: 5, min: 0, max: 10000}
     improve_ticks:    {value: 1, min: 0, max: 5}
     min_pair_margin:  {value: 0.01, min: 0.0, max: 0.2}
-    market_fraction:  {value: 0.06, min: 0.0, max: 1.0}
+    market_fraction:  {value: 0.03, min: 0.0, max: 1.0}
     max_net_quotes:   {value: 2, min: 0, max: 20}
     stop_loss:        {value: 0.10, min: 0.01, max: 1.0}
     quote_hours:      {value: 0.2, min: 0.05, max: 6}
-    max_markets:      {value: 12, min: 0, max: 50}
-    max_candidates:   {value: 30, min: 0, max: 200}
+    max_markets:      {value: 25, min: 0, max: 50}
+    max_candidates:   {value: 50, min: 0, max: 200}
 
 # ---------------------------------------------------------------- favori : chaque raison testée à part
 # Étude du 16/10/2026 (experiments/favori.md, 16 680 marchés résolus, prix réellement payés) :
@@ -1022,3 +1026,181 @@ nm_long:
     min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+# ---------------------------------------------------------------- ENTONNOIR, étage 2 (17/10/2026, « AMELIORATION »)
+# Petites-filles : combinaison des morceaux en tête (nf_sport +3,2 %, prix 0,875-0,95 ; nf_court
+# −3,3 % confirme le piège de la fin). Filles « taille de mise » : même stratégie, mise plus petite
+# (Kelly complet = jusqu'à 40 % du capital sur un pari : une perte efface 5 gains).
+
+nf_sport_prix_haut:
+  explication: "Comme naive_favorite, mais seulement le sport ET seulement les favoris vendus 0,875 à 0,95 (les deux meilleurs morceaux)."
+  mere: naive_favorite
+  morceau: "sport + prix 0,875-0,95"
+  class: naive_favorite
+  filtres: {familles: [sports], prix_min: 0.875, prix_max: 0.95}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_sport_sans_fin:
+  explication: "Comme naive_favorite, mais seulement le sport, et jamais à moins de 24 heures du match (la fin est un piège)."
+  mere: naive_favorite
+  morceau: "sport + plus de 24 h"
+  class: naive_favorite
+  filtres: {familles: [sports], heures_min: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_prix_haut_sans_fin:
+  explication: "Comme naive_favorite, mais seulement les favoris vendus 0,875 à 0,95, et jamais à moins de 24 heures de la fin."
+  mere: naive_favorite
+  morceau: "prix 0,875-0,95 + plus de 24 h"
+  class: naive_favorite
+  filtres: {prix_min: 0.875, prix_max: 0.95, heures_min: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_demi_mise:
+  explication: "Exactement naive_favorite, mais en misant moitié moins à chaque fois, pour qu'une perte fasse moins mal."
+  mere: naive_favorite
+  morceau: "demi-mise (Kelly 0,5)"
+  class: naive_favorite
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nf_quart_mise:
+  explication: "Exactement naive_favorite, mais en misant quatre fois moins à chaque fois."
+  mere: naive_favorite
+  morceau: "quart de mise (Kelly 0,25)"
+  class: naive_favorite
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    # borne basse = milieu + biais − incertitude = milieu + 0,035 : il faut au moins
+    # 0,02 de marge après le demi-écart et les frais, sinon aucune position n'est possible.
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
+
+nm_demi_mise:
+  explication: "Exactement news_momentum, mais en misant moitié moins à chaque fois."
+  mere: news_momentum
+  morceau: "demi-mise (Kelly 0,5)"
+  class: news_momentum
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
+    min_move:       {value: 0.05, min: 0.01, max: 0.50}
+    continuation:   {value: 0.04, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+
+# ---------------------------------------------------------------- heure de la journée (17/10/2026, AMELIORATION n°7)
+# experiments/favori/heure.py (303 229 échanges réels) : pas d'effet général de l'heure ni du week-end ;
+# deux poches faibles : favori politique 4-12 h UTC (+1,5 à +2 %), outsider sportif 12-24 h UTC (+8 à +10 %).
+
+favori_politique_nuit:
+  explication: "Comme favori_politique, mais seulement la nuit et le matin (4 h-12 h UTC), quand l'Amérique dort et que les prix bougent moins bien."
+  mere: favori_politique
+  morceau: "4 h-12 h UTC"
+  class: naive_favorite
+  familles: [politics, sans_frais]
+  filtres: {heure_utc: [4, 12]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    min_ask:        {value: 0.85, min: 0.50, max: 0.99}  # 0,80-0,85 : écart faible (+1,5 pt)
+    max_ask:        {value: 0.97, min: 0.60, max: 0.99}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}   # remplacé par shrink
+    shrink:         {value: 0.5, min: 0.0, max: 0.9}     # sous l'écart mesuré (0,70 ; 0,82 à 0,95-0,98)
+    uncertainty:    {value: 0.01, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    min_hours:      {value: 6, min: 0, max: 720}         # pas les dernières heures
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates:  {value: 40, min: 0, max: 200}   # marchés politiques demandés au scanner
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
+
+outsider_sport_apres_midi:
+  explication: "Comme outsider_sport_patiente, mais seulement l'après-midi et le soir (12 h-24 h UTC), où l'outsider gagnait plus souvent que son prix."
+  mere: outsider_sport_patiente
+  morceau: "12 h-24 h UTC"
+  class: naive_favorite
+  familles: [sports]
+  filtres: {heure_utc: [12, 24]}
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-17"
+  params:
+    underdog:       {value: 1, min: 0, max: 1}
+    min_ask:        {value: 0.08, min: 0.01, max: 0.5}
+    max_ask:        {value: 0.20, min: 0.02, max: 0.5}
+    bias:           {value: 0.03, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.0, min: 0.00, max: 0.50}
+    min_hours:      {value: 0.5, min: 0, max: 720}
+    max_hours:      {value: 24, min: 1, max: 2000}
+    max_candidates:  {value: 30, min: 0, max: 200}   # matchs demandés au scanner
+    max_extra_ticks: {value: 0, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
