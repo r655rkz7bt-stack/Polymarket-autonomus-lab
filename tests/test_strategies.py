@@ -34,7 +34,7 @@ def test_repository_config_loads():
         "market_structure", "meteo_prevision", "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
         "nf_autres_sujets", "nf_demi_mise", "nf_quart_mise", "nf_sport_prix_haut", "nf_sport_sans_fin",
         "nf_prix_haut_sans_fin", "nm_demi_mise", "nf_court", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
-        "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
+        "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_court", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "news_momentum",
         "news_momentum_patiente", "outsider_sport_patiente", "social_sentiment", "suivre_politique", "temperature_floor",
         "cotes_bookmakers"])
