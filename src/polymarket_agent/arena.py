@@ -26,10 +26,15 @@
   semaines : valeur des positions au prix du carnet au lieu du capital réalisé), chacun avec une
   part plafonnée (`part_max`).
 - Plusieurs championnes (décision d'Etienne, 18/10/2026) : toute stratégie qualifiée reçoit une
-  part, sans avoir à battre les autres (plus de marge de +1 %) ; une seule place par famille (une
-  mère et ses filles font les mêmes paris) ; parts = moitié à égalité, moitié selon les gains
+  part, sans avoir à battre les autres (plus de marge de +1 %) ; pas deux places pour les mêmes
+  paris (voir « chevauchement » ci-dessous) ; parts = moitié à égalité, moitié selon les gains
   (`repartition.merite`) ; au plus `part_max_par_strategie` du capital par stratégie. Le titre de
   « champion » (journal signé) reste à la doyenne tant qu'elle est qualifiée : pas de va-et-vient.
+- Chevauchement mesuré (décision d'Etienne, 18/10/2026, option B) : au lieu d'« une seule place par
+  famille », on compare les matchs/événements réellement achetés par deux qualifiées. Si plus de
+  `chevauchement_max` des paris de la plus petite ont aussi été faits par l'autre, ce sont des
+  doublons : seule la meilleure prend une place (même famille ou pas). Sinon, chacune a la sienne,
+  même deux sœurs. Sans mesure possible (aucun achat), on retombe sur la règle de la famille.
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -59,6 +64,12 @@ class Standing:
     t_stat: float = 0.0  # score de confiance des résultats par opération (moyenne / erreur type)
     reward_days: int = 0  # journées de récompenses versables (≥ 1 $)
     mode: str = ""  # "" (capital réalisé), "recompenses" ou "valeur" (voir mode_for)
+    events: frozenset = frozenset()  # événements (matchs…) achetés depuis le début de l'époque
+
+    def report(self) -> dict:
+        """Version lisible (JSON) : sans la liste des événements."""
+        return {k: v for k, v in self.__dict__.items() if k != "events"} | {
+            "started_at": self.started_at.isoformat() if self.started_at else None}
 
     def days(self, now: datetime) -> float:
         return (now - self.started_at).total_seconds() / 86400 if self.started_at else 0.0
@@ -72,6 +83,27 @@ def t_stat(values: list[float]) -> float:
     m = sum(values) / n
     sd = math.sqrt(sum((x - m) ** 2 for x in values) / (n - 1))
     return round(m / (sd / math.sqrt(n)), 3) if sd > 0 else (99.0 if m > 0 else 0.0)
+
+
+def bought_events(entries: list[dict]) -> frozenset:
+    """Événements achetés depuis la dernière remise à zéro (événement Polymarket, sinon marché)."""
+    out: set[str] = set()
+    for e in entries:
+        if e.get("type") == "RESET":
+            out.clear()
+        elif e.get("type") == "BUY":
+            d = e.get("data") or {}
+            key = d.get("event_id") or d.get("market_id")
+            if key:
+                out.add(str(key))
+    return frozenset(out)
+
+
+def overlap(a: Standing, b: Standing) -> float | None:
+    """Part des paris de la plus petite des deux que l'autre a aussi faits (0 à 1) ; None sans achat."""
+    if not a.events or not b.events:
+        return None
+    return len(a.events & b.events) / min(len(a.events), len(b.events))
 
 
 def mode_for(name: str, modes: dict | None) -> tuple[str, dict]:
@@ -103,7 +135,8 @@ def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0
     judged = base + max(0.0, rewards)
     growth = math.log(judged / initial) if judged > 0 and initial > 0 else float("-inf")
     return Standing(name, len(trades), realized, initial, growth, state.epoch_started_at, name in eliminated,
-                    round(max(0.0, rewards), 4), t_stat([float(t["pnl"]) for t in trades]), int(reward_days), mode)
+                    round(max(0.0, rewards), 4), t_stat([float(t["pnl"]) for t in trades]), int(reward_days), mode,
+                    bought_events(entries))
 
 
 def ranking(standings: list[Standing]) -> list[Standing]:
@@ -173,6 +206,14 @@ def _family(name: str, families: dict | None) -> str:
     return (families or {}).get(base, base)
 
 
+def _twins(a: Standing, b: Standing, families: dict | None, max_overlap: float | None) -> bool:
+    """Deux stratégies qui font les mêmes paris (une seule place pour les deux)."""
+    shared = overlap(a, b) if max_overlap is not None else None
+    if shared is None:  # pas de mesure : une mère et ses filles sont présumées jumelles
+        return _family(a.name, families) == _family(b.name, families)
+    return shared > max_overlap
+
+
 def choose_champion(standings: list[Standing], current: str, min_trades: int,
                     margin: float | None = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
                     min_growth: float = 0.0, keep_growth: float = 0.0,
@@ -212,21 +253,25 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
                now: datetime | None = None, min_age_hours: float = 0.0, min_growth: float = 0.0,
                champion: str = "", keep_growth: float = 0.0,
                validated: dict | None = None, min_t: float | None = None,
-               modes: dict | None = None, merit: float = 1.0, families: dict | None = None) -> dict[str, float]:
+               modes: dict | None = None, merit: float = 1.0, families: dict | None = None,
+               max_overlap: float | None = None, twins: dict | None = None) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
-    le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`."""
+    le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`.
+    `twins` (facultatif) reçoit les qualifiées écartées comme doublons : {nom: {comme, chevauchement}}."""
     def kept(s: Standing) -> bool:
         return (s.name == champion and not s.eliminated and (s.closed_trades >= min_trades or bool(s.mode))
                 and s.log_growth > max(keep_growth, 0.0))
     ranked = sorted((s for s in standings
                      if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes) or kept(s)),
                     key=lambda s: s.log_growth, reverse=True)
-    eligible, taken = [], set()
-    for s in ranked:  # une seule place par famille : la meilleure de chaque famille
-        fam = _family(s.name, families)
-        if fam not in taken:
-            taken.add(fam)
+    eligible = []
+    for s in ranked:  # pas deux places pour les mêmes paris : la meilleure des deux la garde
+        twin = next((e for e in eligible if _twins(s, e, families, max_overlap)), None)
+        if twin is None:
             eligible.append(s)
+        elif twins is not None:
+            shared = overlap(s, twin)
+            twins[s.name] = {"comme": twin.name, "chevauchement": None if shared is None else round(shared, 3)}
     eligible = eligible[:max(0, max_strategies)]
     total = sum(s.log_growth for s in eligible)
     if total <= 0:
@@ -338,15 +383,17 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     events += [f"retrait (inactive) : {n}" for n in retire_inactive(main, competitors, standings, cfg, now)]
     final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0), reward_days.get(n, 0), cfg)
                      for n, l in competitors.items()])
+    twins: dict = {}
+    max_overlap = cfg.get("chevauchement_max")
     shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
                         champion=main.state.champion, keep_growth=keep,
-                        merit=float((cfg.get("repartition") or {}).get("merite", 1.0)), families=families, **gates)
+                        merit=float((cfg.get("repartition") or {}).get("merite", 1.0)), families=families,
+                        max_overlap=None if max_overlap is None else float(max_overlap), twins=twins, **gates)
     engaged = exposure(final, shares, cfg)
     if not shares and main.state.champion:
         engaged = exposure(final, {main.state.champion: 1.0}, cfg)
     return {"champion": main.state.champion, "events": events, "allocation": shares, "engagement": engaged,
-            "classement": [s.__dict__ | {"started_at": s.started_at.isoformat() if s.started_at else None}
-                           for s in final]}
+            "doublons": twins, "classement": [s.report() for s in final]}
 
 
 def days_since_record(ledger: Ledger, now: datetime) -> float:
