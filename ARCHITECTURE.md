@@ -684,3 +684,23 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   même cycle, seule la première l'achète (les stratégies sautent déjà les positions ouvertes ;
   sans ce filtre, le test montrait un double achat).
 
+## 40. Copie fidèle : le principal refait les paris de ses championnes (AMELIORATION du 18/10/2026 au soir)
+- Constat (journaux de production, 18/10 à 21 h) : capital principal à 897 (réalisé 914) pendant
+  que nf_sport (+13 %) et nf_court (+11 %) gagnaient. Depuis 06:28, hors météo, le principal a
+  perdu 89 sur 12 opérations (−23 % des mises) quand les fantômes copiés perdaient 2 à 4 % de leurs
+  mises sur la même période. Cause : le principal relançait la stratégie sur SON état (son argent,
+  ses positions) ; il ne prenait donc pas les paris jugés par l'arène. À la promotion il achetait
+  d'un coup des positions que le fantôme tenait depuis des heures (Titans −55 : acheté par le
+  fantôme la veille), et ses mises étaient 1,5 à 3 fois plus grosses en proportion (Bitcoin −48 :
+  51 parts contre 17 pour le fantôme).
+- Règle (`main.Weighted`, `source`) : les fantômes tradent d'abord ; chaque pari exécuté (et
+  chaque ordre posé) est noté (`Portfolio.copied`) ; le principal refait ces paris dans le même
+  cycle, mêmes marchés, mise × (part × capital du principal / capital du fantôme). Il ne rachète
+  jamais une position que le fantôme tenait déjà avant la promotion. Les sorties restent celles de
+  la stratégie (`exits`) sur les positions du principal ; les reventes posées de la tenue de marché
+  sont copiées dans la limite du stock détenu. Plafonds inchangés : budget par stratégie
+  (part × capital), `_cap_main`, un seul achat par marché et par cycle.
+- Estimation sur les mêmes journaux : la copie aurait fait ≈ −5 au lieu de −89 depuis 06:28.
+- Limite connue : à petite part, une copie peut tomber sous le minimum d'un marché (5 parts) ; elle
+  est alors refusée par le contrôleur, comme tout ordre trop petit.
+

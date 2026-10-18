@@ -40,6 +40,7 @@ from polymarket_agent.safety_controller import (MarketContext, Proposal, RiskLim
 from polymarket_agent.settlement import settle_positions
 from polymarket_agent.sources.polymarket_clob import ClobClient
 from polymarket_agent.sources.polymarket_gamma import GammaClient
+from polymarket_agent.strategy_engine import StrategyOutput
 
 log = logging.getLogger(__name__)
 PRICE_QUANTUM = Decimal("0.00000001")
@@ -90,6 +91,10 @@ class Portfolio:
     # Liquidité déjà prise par CE portefeuille pendant le cycle : {(jeton, sens): parts}. Chaque
     # fantôme est un scénario « et si cette stratégie tradait seule » : pas de partage entre eux.
     taken: dict = field(default_factory=dict)
+    # Paris du fantôme pendant ce cycle, copiés par le capital principal (copie fidèle, 18/10/2026) :
+    # {stratégie: {"total": capital estimé du fantôme, "buys": [(proposition, parts exécutées)],
+    #  "orders": [ordres posés]}}.
+    copied: dict = field(default_factory=dict)
 
 
 def cycle_bucket(now: datetime, minutes: int) -> str:
@@ -144,39 +149,73 @@ class Weighted:
     du capital (somme des parts = 1). Ses ventes ne sont pas réduites : elles portent sur les
     parts que le principal détient réellement.
 
+    Copie fidèle (18/10/2026) : avec `source` (le fantôme de la stratégie), le principal ne relance
+    plus la stratégie sur son propre argent ; il refait les paris que le fantôme vient de faire dans
+    ce cycle, mêmes marchés, mise à la même échelle (part × capital du principal / capital du
+    fantôme). Avant, il prenait d'autres paris que ceux jugés par l'arène : à la promotion, il
+    rachetait d'un coup des positions que le fantôme tenait depuis des heures, avec des mises 1,5 à
+    3 fois plus grosses en proportion (−89 sur 12 opérations le 18/10, quand les fantômes copiés
+    perdaient 2 à 4 % de leurs mises). Les sorties restent celles de la stratégie (`exits`), sur les
+    positions du principal.
+
     Budget (18/10/2026) : réduire chaque mise ne suffisait pas, pari après pari une stratégie
     pouvait engager presque tout le capital (nf_court : 630 sur ≈ 1 000 pour une part d'environ 50 %).
     Désormais, ce qu'elle a déjà investi dans le principal (coût de ses positions ouvertes) plus
     ses nouveaux achats ne dépassent jamais part × capital total estimé ; le reste attend."""
 
-    def __init__(self, strategy, weight: Decimal):
-        self.inner, self.weight = strategy, weight
+    def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None):
+        self.inner, self.weight, self.source = strategy, weight, source
         self.strategy_id, self.version = strategy.strategy_id, strategy.version
         self.needs_price_history = getattr(strategy, "needs_price_history", False)
         if hasattr(strategy, "exits"):
             self.exits = strategy.exits
 
     def propose(self, *args, **kwargs):
-        output = self.inner.propose(*args, **kwargs)
         state = kwargs.get("state", args[2] if len(args) > 2 else None)
         marks = kwargs.get("marks", args[5] if len(args) > 5 else None)
+        if self.source is not None and state is not None:
+            output, factor = self._copy(state, marks)
+        else:
+            output, factor = self.inner.propose(*args, **kwargs), self.weight
         budget = None
         if state is not None:
             invested = sum((pos.cost_basis for pos in state.positions.values() if pos.strategy_id == self.strategy_id),
                            Decimal("0"))
             budget = self.weight * state.total_estimated(marks) - invested
-        output.proposals, budget = self._scale(output.proposals, budget)
+        output.proposals, budget = self._scale(output.proposals, budget, factor)
         if getattr(output, "limit_orders", None):
-            output.limit_orders, budget = self._scale(output.limit_orders, budget)
+            output.limit_orders, budget = self._scale(output.limit_orders, budget, factor)
         return output
 
-    def _scale(self, proposals: list, budget: Decimal | None = None) -> tuple[list, Decimal | None]:
+    def _copy(self, state, marks) -> tuple[StrategyOutput, Decimal]:
+        """Les paris du fantôme dans ce cycle, et le facteur d'échelle de leurs mises."""
+        out = StrategyOutput()
+        seen = self.source.copied.get(self.strategy_id)
+        ghost_total = seen["total"] if seen else Decimal("0")
+        if ghost_total <= 0:
+            return out, Decimal("0")
+        factor = self.weight * state.total_estimated(marks) / ghost_total
+        out.proposals = [dataclasses.replace(p, shares=filled) for p, filled in seen["buys"]
+                         if p.token_id not in state.positions]
+        for order in seen["orders"]:
+            held = state.positions.get(order.token_id)
+            if order.side == "BUY" and held is None:
+                out.limit_orders.append(order)
+            elif order.side == "SELL" and held is not None:  # tenue de marché : revendre son stock
+                shares = min(held.shares, (order.shares * factor).quantize(Decimal("0.01"), rounding=ROUND_DOWN))
+                if shares > 0:
+                    out.limit_orders.append(dataclasses.replace(order, shares=shares))
+        return out, factor
+
+    def _scale(self, proposals: list, budget: Decimal | None = None,
+               factor: Decimal | None = None) -> tuple[list, Decimal | None]:
+        factor = self.weight if factor is None else factor
         scaled = []
         for p in proposals:
             if p.side != "BUY":
                 scaled.append(p)
                 continue
-            shares = (p.shares * self.weight).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            shares = (p.shares * factor).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
             if budget is not None:  # plafond du total engagé par cette stratégie
                 if budget <= 0 or p.max_price <= 0:
                     continue
@@ -385,7 +424,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     alloc, engaged = report.arena.get("allocation", {}) or {champion: 1.0}, report.arena.get("engagement", {})
     shares = {n: w * min(1.0, engaged[n] / alloc[n]) if n in engaged and alloc.get(n) else w for n, w in shares.items()}
     shares = _steady_shares(deps, shares)
-    main.strategies = [Weighted(s, Decimal(str(round(w, 6)))) for n, p in competitors.items()
+    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p) for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
     # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
     # nulle) garde la main sur SES sorties (prise de bénéfice, stop, durée maximale), sans racheter.
@@ -464,7 +503,8 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
             log.exception("collecte des sources en échec, cycle poursuivi sans elles")
 
     # 7-11. Stratégies → propositions → contrôleur → exécution simulée, portefeuille par portefeuille.
-    for portfolio in portfolios:
+    # Les fantômes d'abord : le capital principal copie ensuite les paris qu'ils viennent de faire.
+    for portfolio in portfolios[1:] + portfolios[:1]:
         if portfolio.ledger.state.bankrupt:
             continue  # un fantôme en faillite ne trade plus (le principal est vérifié plus haut)
         _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets)
@@ -548,6 +588,9 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
              all_markets: list[MarketInfo] | None = None) -> None:
     ledger, marks = portfolio.ledger, portfolio.marks
     by_market = {m.market_id: m for m in (all_markets or [])} | {m.market_id: m for m in watchlist}
+    if portfolio.name != "principal":  # ce que le principal pourra copier (Weighted._copy)
+        total = ledger.state.total_estimated(marks)
+        portfolio.copied = {s.strategy_id: {"total": total, "buys": [], "orders": []} for s in portfolio.strategies}
     proposals, bought = [], set()
     for strategy in portfolio.strategies:
         output = strategy.propose(watchlist, books, ledger.state, deps.limits, bucket, marks)
@@ -646,6 +689,8 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
                            "net_edge": str(proposal.net_edge),
                            "horizon_hours": str(proposal.horizon_hours)})
                 fills += 1
+                if proposal.strategy_id in portfolio.copied:
+                    portfolio.copied[proposal.strategy_id]["buys"].append((proposal, fill.filled_shares))
                 log.info("[%s] exécution simulée %s : %s parts à %s (+%s de frais), %s", portfolio.name,
                          proposal.op_id, fill.filled_shares, fill.avg_price, fill.fee, fill.status)
             except LedgerError as exc:
@@ -742,6 +787,8 @@ def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal]
             hours = min(max(float(order.horizon_hours), 0.0), max_age)
             if deps.db.add_pending_order(portfolio.name, order, now, now + timedelta(hours=hours)):
                 portfolio.counts["orders_placed"] = portfolio.counts.get("orders_placed", 0) + 1
+                if order.strategy_id in portfolio.copied:
+                    portfolio.copied[order.strategy_id]["orders"].append(order)
                 open_orders = deps.db.open_orders(portfolio.name)
                 log.info("[%s] ordre posé %s : %s %s parts à %s", portfolio.name, order.op_id,
                          order.side, order.shares, order.max_price)
