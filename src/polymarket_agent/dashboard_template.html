@@ -1181,7 +1181,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var name = el("div", "name", sname(s.nom));
       var H2 = s.sante || {}, susp = !!H2.suspendue;
       var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp || s.retiree ? " off" : ""),
-        s.champion ? "champion" : s.eliminee ? "éliminée" : s.retiree ? "retirée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
+        s.champion ? "championne" + (s.part_principal ? " · " + fmt(s.part_principal * 100, 0) + " %" : "")
+          : s.eliminee ? "éliminée" : s.retiree ? "retirée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
       if (s.explication) name.appendChild(el("span", "explain", s.explication));
       var info = el("span", "more-info"); name.appendChild(info);
       info.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict +

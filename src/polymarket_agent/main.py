@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Callable
 
 from polymarket_agent import strategy_health
-from polymarket_agent.arena import run_arena
+from polymarket_agent.arena import family_map, run_arena
 from polymarket_agent.correlation import correlation_group
 from polymarket_agent.data_collector import _due
 from polymarket_agent.execution_simulator import (simulate_buy, simulate_resting_buy,
@@ -349,7 +349,8 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     competitors = {p.name.removeprefix("fantome:"): p for p in portfolios[1:]}
     rewards, reward_days = _ranking_rewards(deps, competitors)
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
-                             deps.settings["arena"], deps.now(), rewards=rewards, reward_days=reward_days)
+                             deps.settings["arena"], deps.now(), rewards=rewards, reward_days=reward_days,
+                             families=family_map())
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
@@ -364,6 +365,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # Période d'essai et plafonds (arena.exposure) : seule une fraction de chaque part est engagée.
     alloc, engaged = report.arena.get("allocation", {}) or {champion: 1.0}, report.arena.get("engagement", {})
     shares = {n: w * min(1.0, engaged[n] / alloc[n]) if n in engaged and alloc.get(n) else w for n, w in shares.items()}
+    shares = _steady_shares(deps, shares)
     main.strategies = [Weighted(s, Decimal(str(round(w, 6)))) for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
     # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
@@ -457,6 +459,25 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais faire tomber le cycle
             log.warning("[%s] estimation des récompenses impossible : %s", portfolio.name, exc)
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
+
+
+def _steady_shares(deps: CycleDeps, shares: dict[str, float]) -> dict[str, float]:
+    """Parts du capital principal recalculées au plus une fois par heure (décision d'Etienne,
+    18/10/2026) : pas de va-et-vient toutes les 5 minutes. Une stratégie qui ENTRE ou SORT change
+    la répartition tout de suite. Dernière répartition gardée en base (lue par le tableau de bord)."""
+    now = deps.now()
+    minutes = float(deps.settings["arena"].get("repartition", {}).get("recalcul_minutes", 60))
+    try:
+        prev = json.loads(deps.db.get_value("repartition_principal") or "{}")
+        age = (now - datetime.fromisoformat(prev["date"])).total_seconds() / 60 if prev.get("date") else None
+    except (ValueError, TypeError, KeyError):
+        prev, age = {}, None
+    old = prev.get("parts") or {}
+    if age is not None and age < minutes and set(old) == set(shares):
+        return {n: float(old[n]) for n in shares}
+    deps.db.set_value("repartition_principal", json.dumps({"date": now.isoformat(timespec="seconds"),
+                                                           "parts": {n: round(w, 6) for n, w in shares.items()}}))
+    return shares
 
 
 def _ranking_rewards(deps: CycleDeps, competitors: dict) -> tuple[dict[str, float], dict[str, int]]:

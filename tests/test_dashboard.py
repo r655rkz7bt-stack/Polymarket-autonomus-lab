@@ -283,3 +283,14 @@ def test_principal_orders_are_listed_apart_from_the_arena(ledger):
     assert out["compte"] == {"achats": 1, "ventes": 1, "reglements": 1}
     assert out["poses"] == [{"date": "2026-10-14T12:30", "sens": "achat", "marche": "Question B ?", "issue": "No",
                              "prix": 0.42, "parts": 5.0, "strategie": "mm"}]
+
+
+def test_situation_lists_several_champions_with_their_share():
+    """18/10/2026 : plusieurs championnes à la fois, chacune avec sa part du capital principal."""
+    rules = {"operations": 20, "croissance": 0.02, "heures": 24, "confiance": 1.5}
+    arena = [{"nom": "a_v1", "capital": 1150.0, "operations": 40}, {"nom": "b_v1", "capital": 1030.0, "operations": 30}]
+    s = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.33, "b_v1": 0.17})
+    assert s["phrase"] == "Le capital principal suit 2 championnes : a (33 %) et b (17 %)."
+    assert "50 %" in s["detail"]
+    one = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.5})
+    assert one["phrase"] == "Le capital principal suit a."

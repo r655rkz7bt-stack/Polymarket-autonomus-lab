@@ -25,6 +25,11 @@
   récompenses au lieu d'opérations clôturées) et `juger_sur_valeur` (politique, réglée en
   semaines : valeur des positions au prix du carnet au lieu du capital réalisé), chacun avec une
   part plafonnée (`part_max`).
+- Plusieurs championnes (décision d'Etienne, 18/10/2026) : toute stratégie qualifiée reçoit une
+  part, sans avoir à battre les autres (plus de marge de +1 %) ; une seule place par famille (une
+  mère et ses filles font les mêmes paris) ; parts = moitié à égalité, moitié selon les gains
+  (`repartition.merite`) ; au plus `part_max_par_strategie` du capital par stratégie. Le titre de
+  « champion » (journal signé) reste à la doyenne tant qu'elle est qualifiée : pas de va-et-vient.
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -142,8 +147,34 @@ def _enters(s: Standing, min_trades: int, now: datetime | None, min_age_hours: f
             and (min_t is None or s.t_stat >= float(min_t)))
 
 
+def family_map(path=None) -> dict[str, str]:
+    """{stratégie: sa famille} d'après config/strategies.yaml : la famille d'une fille est celle de
+    sa mère (champ `mere`, en remontant) ; une stratégie sans mère est sa propre famille."""
+    import yaml
+    from pathlib import Path
+    path = Path(path) if path else Path(__file__).resolve().parents[2] / "config" / "strategies.yaml"
+    try:
+        raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    mother = {sid: str(spec.get("mere") or "") for sid, spec in raw.items() if isinstance(spec, dict)}
+
+    def root(sid: str) -> str:
+        seen = set()
+        while mother.get(sid) and sid not in seen:
+            seen.add(sid)
+            sid = mother[sid]
+        return sid
+    return {sid: root(sid) for sid in mother}
+
+
+def _family(name: str, families: dict | None) -> str:
+    base = name.rsplit("_v", 1)[0]
+    return (families or {}).get(base, base)
+
+
 def choose_champion(standings: list[Standing], current: str, min_trades: int,
-                    margin: float = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
+                    margin: float | None = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
                     min_growth: float = 0.0, keep_growth: float = 0.0,
                     validated: dict | None = None, min_t: float | None = None,
                     modes: dict | None = None) -> tuple[str, str]:
@@ -165,8 +196,10 @@ def choose_champion(standings: list[Standing], current: str, min_trades: int,
                            f"{best.log_growth:+.4f} sur {best.closed_trades} opérations")
     if best is None:
         return current, "aucun challenger éligible"
-    if incumbent_ok and best.name != current and best.log_growth <= incumbent.log_growth + margin:
-        return current, "le champion reste devant"
+    if incumbent_ok and best.name != current and (margin is None or best.log_growth <= incumbent.log_growth + margin):
+        # Sans marge (18/10/2026) : le titre reste à la doyenne tant qu'elle est qualifiée ; les
+        # autres qualifiées reçoivent quand même leur part du capital (allocation).
+        return current, "le champion reste devant" if margin is not None else "le champion reste qualifié"
     if best.name == current:
         return current, "le champion reste devant"
     return best.name, (f"{best.name} : croissance {best.log_growth:+.4f} sur "
@@ -179,17 +212,27 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
                now: datetime | None = None, min_age_hours: float = 0.0, min_growth: float = 0.0,
                champion: str = "", keep_growth: float = 0.0,
                validated: dict | None = None, min_t: float | None = None,
-               modes: dict | None = None) -> dict[str, float]:
+               modes: dict | None = None, merit: float = 1.0, families: dict | None = None) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
     le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`."""
     def kept(s: Standing) -> bool:
         return (s.name == champion and not s.eliminated and (s.closed_trades >= min_trades or bool(s.mode))
                 and s.log_growth > max(keep_growth, 0.0))
-    eligible = sorted((s for s in standings
-                       if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes) or kept(s)),
-                      key=lambda s: s.log_growth, reverse=True)[:max(0, max_strategies)]
+    ranked = sorted((s for s in standings
+                     if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes) or kept(s)),
+                    key=lambda s: s.log_growth, reverse=True)
+    eligible, taken = [], set()
+    for s in ranked:  # une seule place par famille : la meilleure de chaque famille
+        fam = _family(s.name, families)
+        if fam not in taken:
+            taken.add(fam)
+            eligible.append(s)
+    eligible = eligible[:max(0, max_strategies)]
     total = sum(s.log_growth for s in eligible)
-    return {s.name: s.log_growth / total for s in eligible} if total > 0 else {}
+    if total <= 0:
+        return {}
+    k = len(eligible)  # moitié à égalité, moitié au mérite (merit = 1 : proportionnel pur)
+    return {s.name: (1 - merit) / k + merit * s.log_growth / total for s in eligible}
 
 
 def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> dict[str, float]:
@@ -199,6 +242,7 @@ def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> 
     by = {s.name: s for s in standings}
     trial = cfg.get("essai") or {}
     full, floor = float(trial.get("pleine_part_apres_operations", 0)), float(trial.get("part_minimale", 1.0))
+    cap = float(cfg.get("part_max_par_strategie") or 1.0)  # plafond commun (18/10/2026)
     out = {}
     for name, w in shares.items():
         s = by.get(name)
@@ -209,7 +253,7 @@ def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> 
             out[name] = w * min(1.0, max(floor, s.closed_trades / full))
         else:
             out[name] = w
-    return {n: round(v, 6) for n, v in out.items()}
+    return {n: round(min(v, cap), 6) for n, v in out.items()}
 
 
 def choose_elimination(standings: list[Standing], champion: str, last_elimination: datetime | None,
@@ -260,7 +304,7 @@ def retire_inactive(main: Ledger, competitors: dict[str, Ledger], standings: lis
 
 def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
               now: datetime | None = None, rewards: dict[str, float] | None = None,
-              reward_days: dict[str, int] | None = None) -> dict:
+              reward_days: dict[str, int] | None = None, families: dict[str, str] | None = None) -> dict:
     """Met à jour champion et éliminations dans le journal principal. Retourne un résumé.
     `rewards` : {nom: récompenses estimées comptées pour le classement} (option A) ;
     `reward_days` : {nom: journées de récompenses versables} (mode « recompenses »)."""
@@ -278,8 +322,9 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     keep = float(cfg["keep_log_growth"])
     events = []
     previous = main.state.champion
+    margin = cfg.get("promotion_margin")
     champion, reason = choose_champion(standings, previous, min_trades,
-                                       float(cfg["promotion_margin"]), keep_growth=keep, **gates)
+                                       None if margin is None else float(margin), keep_growth=keep, **gates)
     if champion != previous:
         main.record_promotion(champion, reason, {"from": previous}, now)
         events.append(f"promotion : {champion or 'ne rien faire'} ({reason})")
@@ -294,7 +339,8 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0), reward_days.get(n, 0), cfg)
                      for n, l in competitors.items()])
     shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
-                        champion=main.state.champion, keep_growth=keep, **gates)
+                        champion=main.state.champion, keep_growth=keep,
+                        merit=float((cfg.get("repartition") or {}).get("merite", 1.0)), families=families, **gates)
     engaged = exposure(final, shares, cfg)
     if not shares and main.state.champion:
         engaged = exposure(final, {main.state.champion: 1.0}, cfg)

@@ -170,7 +170,8 @@ def test_regression_noise_is_not_promoted():
     après. Seuil d'entrée (repository) : 20 opérations, 24 h, +2 % ; maintien au-dessus de 0."""
     gates = {"now": NOW, "min_age_hours": float(RULES["min_age_hours"]),
              "min_growth": float(RULES["min_log_growth"])}
-    keep, margin, n = float(RULES["keep_log_growth"]), float(RULES["promotion_margin"]), int(RULES["min_closed_trades"])
+    keep, margin, n = float(RULES["keep_log_growth"]), RULES["promotion_margin"], int(RULES["min_closed_trades"])
+    assert margin is None  # 18/10/2026 : plus de marge, plusieurs championnes
     noise = st("market_structure", 27, 0.0002, days=3 / 24)
     assert choose_champion([noise], "", n, margin, keep_growth=keep, **gates)[0] == ""
     young_star = st("star", 27, 0.10, days=0.5)  # belle croissance mais moins de 24 h
@@ -182,11 +183,15 @@ def test_regression_noise_is_not_promoted():
     assert choose_champion([champ], "champ", n, margin, keep_growth=keep, **gates)[0] == "champ"
     assert allocation([champ], n, 5, champion="champ", keep_growth=keep, **gates) == {"champ": 1.0}
     assert allocation([champ], n, 5, champion="", keep_growth=keep, **gates) == {}
-    # Marge : il faut battre le champion de +0,01 pour le détrôner.
-    assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.055, days=5)], "champ", n, margin,
+    # Ancienne règle (marge +0,01) : il fallait battre le champion de +0,01 pour le détrôner.
+    assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.055, days=5)], "champ", n, 0.01,
                            keep_growth=keep, **gates)[0] == "champ"
-    assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.07, days=5)], "champ", n, margin,
+    assert choose_champion([st("champ", 40, 0.05, days=5), st("b", 40, 0.07, days=5)], "champ", n, 0.01,
                            keep_growth=keep, **gates)[0] == "b"
+    # Sans marge (18/10/2026) : le titre reste à la doyenne tant qu'elle est qualifiée ; b a sa part quand même.
+    both = [st("champ", 40, 0.05, days=5), st("b", 40, 0.07, days=5)]
+    assert choose_champion(both, "champ", n, None, keep_growth=keep, **gates)[0] == "champ"
+    assert set(allocation(both, n, 5, champion="champ", keep_growth=keep, **gates)) == {"champ", "b"}
 
 
 def test_backtest_validated_strategies_enter_earlier_but_must_still_win():
@@ -293,3 +298,24 @@ def test_market_maker_is_judged_on_reward_days_and_politics_on_marked_value(ledg
     assert allocation([pol], 20, 5, **gates) == {"favori_politique_v1.0.0": 1.0}
     assert exposure([pol], {"favori_politique_v1.0.0": 1.0}, cfg) == {"favori_politique_v1.0.0": 0.2}
     assert standing("autre_v1", shadow, set(), modes=cfg).log_growth == 0.0  # mode normal : capital réalisé
+
+
+def test_several_champions_half_equal_half_merit_one_per_family_and_capped():
+    """Décision d'Etienne (18/10/2026) : toutes les qualifiées reçoivent une part, moitié à égalité
+    moitié selon les gains ; une seule place par famille ; au plus 50 % par stratégie."""
+    from polymarket_agent.arena import allocation, exposure, family_map
+    gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02}
+    a, b = st("a_v1", 40, 0.15, days=5), st("b_v1", 40, 0.03, days=5)
+    shares = allocation([a, b], 20, 5, merit=0.5, **gates)
+    assert shares["a_v1"] == pytest.approx(0.25 + 0.5 * 0.15 / 0.18) and sum(shares.values()) == pytest.approx(1)
+    assert round(shares["a_v1"], 2) == 0.67 and round(shares["b_v1"], 2) == 0.33
+    # Une mère et sa fille : seule la meilleure des deux prend une place.
+    mom, kid = st("naive_favorite_v1.0.0", 40, 0.09, days=5), st("nf_sport_v1.0.0", 40, 0.12, days=5)
+    fams = {"naive_favorite": "naive_favorite", "nf_sport": "naive_favorite"}
+    assert set(allocation([mom, kid, b], 20, 5, merit=0.5, families=fams, **gates)) == {"nf_sport_v1.0.0", "b_v1"}
+    # Le dépôt : les filles remontent bien à leur mère.
+    real = family_map()
+    assert real["nf_sport"] == "naive_favorite" and real["naive_favorite"] == "naive_favorite"
+    # Seule qualifiée : au plus 50 % du capital principal.
+    assert exposure([a], {"a_v1": 1.0}, {"part_max_par_strategie": 0.5}) == {"a_v1": 0.5}
+    assert RULES["part_max_par_strategie"] == 0.5 and RULES["repartition"]["merite"] == 0.5
