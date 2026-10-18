@@ -67,9 +67,8 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
 - Légendes en planche anatomique propre : ordinateur, deux colonnes rangées dans l'ordre vertical
   de leurs points ; téléphone, trois au-dessus et trois en dessous. Chaque trait part du centre
   d'un point du cœur (cercle bleu / rouge / blanc selon le sens), jamais d'entre deux points.
-- Arène : chaque courbe (bleue au-dessus du départ, rouge en dessous) se dessine à son apparition,
-  au survol et au toucher ; sur téléphone elle remplace la piste. Le classement dans le temps
-  redessine la ligne survolée.
+- Arène : chaque stratégie a sa petite courbe (bleue au-dessus du départ, rouge en dessous) ; sur
+  téléphone elle remplace la piste. Le classement dans le temps met en avant la ligne survolée.
 
 ## Version compacte (17/10/2026, deuxième passage : « que ça prenne moins de place, plus résumé »)
 - Ligne du haut : `dashboard.situation` écrit QUI pilote le capital principal, et sinon POURQUOI
@@ -84,22 +83,7 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
 - Bloc `principal` (demande d'Etienne) : les ordres du capital PRINCIPAL, le vrai portefeuille, à
   part de ceux de l'arène, juste sous le résumé (liseré bleu) : exécutions du journal signé (la plus
   récente d'abord), ordres posés en attente, opérations clôturées (`dashboard.principal_orders`).
-- Petits organes (18/10/2026, demande d'Etienne) : devant chaque titre, un organe en points dans
-  le style du cœur (cerveau, noyau, poumons, ADN, cellule qui se divise, artère, cellules,
-  neurone, colonne, œil, pouls, nerfs), choisi pour ce que fait le bloc (`organs()` dans le
-  gabarit, table PICK). Points au repos qui scintillent ; une seule boucle d'animation, organes
-  visibles seulement, image fixe si « moins d'animations ».
-- Tissu des cartes (18/10/2026, v2, demande d'Etienne) : les points sont À L'INTÉRIEUR des
-  cartes, seulement dans la place libre (les vraies lignes de texte, graphiques, boutons et
-  pastilles sont mesurés et évités, avec une marge), tous de la taille des points du cœur. Chaque
-  carte a son animation : ondes (résumé, entonnoir, système), courant (principal, capital,
-  journal, ordres posés), souffle (aujourd'hui), hélice (arène), étincelles (positions,
-  décisions) ; plus un scintillement au repos. Les cartes qui travaillent ensemble échangent des
-  influx (table LINKS : principal ↔ capital, positions, cœur, ordres posés, journal ; arène →
-  principal, entonnoir, journal ; système → arène, aujourd'hui…) : un influx part du point de
-  contrôle d'une carte (anneau dans sa marge intérieure, à hauteur du titre), longe les marges,
-  traverse l'espace entre les cartes et arrive à l'autre : l'anneau s'illumine, une onde parcourt
-  la carte et son petit organe s'active (`cardTissue()`). Hors des cartes, aucun point fixe :
-  seulement les influx en route. Une toile par-dessus la page, qui ne capte aucun clic ; jamais
-  sur la barre du haut ni sur une bulle d'information ; 25 images/s au plus, arrêt onglet caché,
-  image fixe si « moins d'animations ».
+- Animations (18/10/2026, décision d'Etienne) : le cœur est la SEULE animation de la page. Les
+  petits organes devant les titres, les points dans les cartes et leurs échanges, le tracé
+  progressif des courbes, l'anneau qui pulse au bout de la courbe du capital et la pastille
+  « en vie » qui clignote ont été retirés : tout le reste est immobile.
