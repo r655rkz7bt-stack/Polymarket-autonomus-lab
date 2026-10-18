@@ -19,7 +19,10 @@ min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 
 validated_strategies: {}
 # Preuves avant promotion (AMELIORATION n°1, 17/10/2026) : score de confiance des résultats par
 # opération (moyenne / erreur type). meteo_prevision a été promu à t = 0,61 (du hasard) et a coûté
-# au principal ; naive_favorite est à t = 2,4. Rejeu : experiments/promotion/rejouer.py.
+# au principal. Depuis le 18/10 au soir, il porte sur le RENDEMENT de chaque opération (résultat /
+# mise) et non plus sur les euros : avec des mises inégales, les euros mesuraient la taille des
+# mises (nf_sport 2,7 sans aucun avantage sur ses prix ; sur le rendement 0,4). Rejeu :
+# experiments/promotion/rejouer.py (règle actuelle −15, rendement +74, journaux du 15 au 18/10).
 min_t_stat: 1.5
 # Période d'essai : la part engagée croît avec les opérations clôturées (25 % au départ, entière à 60).
 essai: {pleine_part_apres_operations: 60, part_minimale: 0.25}
@@ -35,6 +38,9 @@ juger_sur_valeur:
 # Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
 # que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
 keep_log_growth: 0.0
+# … et tant que son score de confiance (rendement par mise) reste positif : un champion qui gagne de
+# l'argent en pariant moins bien que ses prix (nf_court, −0,7 le 18/10) est destitué (18/10/2026).
+keep_t_stat: 0.0
 # Plusieurs championnes (décision d'Etienne, 18/10/2026) : plus de marge de +1 % ; toute stratégie
 # qualifiée reçoit sa part. Le titre de « champion » du journal signé reste à la doyenne tant
 # qu'elle est qualifiée (aucun va-et-vient).

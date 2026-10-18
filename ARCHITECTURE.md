@@ -704,3 +704,23 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
 - Limite connue : à petite part, une copie peut tomber sous le minimum d'un marché (5 parts) ; elle
   est alors refusée par le contrôleur, comme tout ordre trop petit.
 
+## 41. Les favoris ne gagnent pas plus que leur prix : confiance sur le rendement (18/10/2026)
+- Mesure en direct (`experiments/favori.md` §6) : 160 paris sur favoris réglés dans les fantômes de
+  la famille naive_favorite (dédoublonnés) ; gagnés 86,9 % pour un coût moyen de 0,893 par part
+  (frais compris) ; estimation des stratégies 0,92 à 0,98 (prix + 5 points) : trop optimiste
+  d'environ 6 points, comme le test sur le passé (7 600 paris, favori surpayé de 1 à 2 points).
+- Le score de confiance de l'arène était calculé sur les résultats en euros : avec des mises Kelly
+  très inégales, il mesurait la taille des mises gagnantes. nf_sport : 2,7 (qualifiée) avec 24
+  gagnés pour 23,4 attendus ; nf_court : 1,2 en gagnant moins souvent que ses prix.
+- Désormais (`arena.trade_returns`) : t de Student des rendements (résultat / mise). Sur les mêmes
+  journaux : nf_sport 0,4, nf_court −0,7, naive_favorite −0,7 ; nf_sport_patiente 2,75 (40 gagnés
+  pour 36,2 attendus : ses ordres posés achètent moins cher) ; la météo reste à −1,2.
+- Rejeu (`experiments/promotion/rejouer.py`, copie de portefeuille, 15 → 18/10) : règle actuelle
+  (t ≥ 1,5 + essai) −15 ; même règle sur le rendement +74 (nf_sport_patiente seule). Attention :
+  mesure faite sur les journaux qui ont inspiré la règle ; c'est le principe (la taille des mises
+  ne prouve rien) qui justifie le changement, pas le chiffre du rejeu.
+- Maintien : la championne garde sa place tant que sa croissance reste positive ET que son score
+  de confiance reste ≥ `keep_t_stat` (0). Sans ce seuil, nf_court (−0,7) serait restée championne.
+  Simulation avec les journaux du 18/10 à 21 h : nf_sport_patiente devient championne, 50 % du
+  capital principal ; nf_court et nf_sport sortent (leurs positions vont à leur terme).
+

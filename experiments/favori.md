@@ -101,3 +101,26 @@ ne diffère pas de la semaine (−1,1 % contre −1,0 %). Deux poches faibles, m
   `outsider_sport_apres_midi`.
 L'outsider crypto perd à toute heure (−18 à −48 %).
 
+## 6. En direct, deux jours plus tard (18/10/2026 au soir, AMELIORATION)
+Journaux fantômes de la branche `data`, toutes les stratégies de la famille naive_favorite ; un
+même pari pris par plusieurs variantes n'est compté qu'une fois ; paris réglés seulement.
+
+| Prix payé | paris | gagnés | prix moyen | coût par part (frais) | estimation des stratégies |
+|---|---|---|---|---|---|
+| 0,50-0,85 | 32 | 78,1 % ± 7,3 | 0,822 | 0,828 | 0,875 |
+| 0,85-0,90 | 47 | 91,5 % ± 4,1 | 0,874 | 0,879 | 0,924 |
+| 0,90-0,93 | 47 | 78,7 % ± 6,0 | 0,913 | 0,917 | 0,961 |
+| 0,93-0,96 | 34 | 100 % | 0,935 | 0,938 | 0,982 |
+| **total** | **160** | **86,9 %** | | **0,893** | |
+
+- Le favori ne gagne pas plus souvent que son prix (86,9 % pour 89,3 % payés) : même conclusion que
+  le test sur le passé. L'estimation « prix + 5 points » est trop optimiste d'environ 6 points.
+- Les fantômes affichent pourtant +11 à +14 % : chance et taille des mises (Kelly sur une
+  estimation trop haute), pas un avantage. Le score de confiance de l'arène, calculé sur les
+  euros, s'y laissait prendre ; il porte désormais sur le rendement par mise (ARCHITECTURE §41).
+- Par stratégie (gagnés / attendus d'après les prix payés) : nf_sport_patiente 40 / 36,2
+  (z = 1,7 : ses ordres posés achètent moins cher), nf_sport 24 / 23,4, nf_court 56 / 57,9,
+  naive_favorite 13 / 13,9, nf_equipe 8 / 11,1.
+- À suivre : si l'avantage de nf_sport_patiente tient (au-delà de 60 opérations), le prix d'entrée
+  (ordre posé plutôt qu'achat immédiat) est la vraie source de gain du favori sportif.
+

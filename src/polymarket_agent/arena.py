@@ -17,7 +17,8 @@
   CLASSEMENT, jamais dans son capital fantôme. La tenue de marché, payée surtout ainsi, peut donc
   gagner une part du capital principal.
 - Preuves avant promotion (AMELIORATION n°1, 17/10/2026) : en plus des seuils, le « score de
-  confiance » des résultats par opération (t de Student : moyenne / erreur type) doit atteindre
+  confiance » des rendements par opération (t de Student : moyenne / erreur type ; rendement =
+  résultat / mise, pour que la taille des mises ne compte pas) doit atteindre
   `min_t_stat`. meteo_prevision a été promu le 17/10 avec t = 0,61 (du hasard) et a coûté au
   principal. Puis période d'essai : la part d'une stratégie croît avec ses opérations clôturées
   (`essai`), de `part_minimale` jusqu'à la part entière.
@@ -106,6 +107,17 @@ def overlap(a: Standing, b: Standing) -> float | None:
     return len(a.events & b.events) / min(len(a.events), len(b.events))
 
 
+def trade_returns(trades: list[dict]) -> list[float]:
+    """Rendement de chaque opération clôturée (résultat / mise), base du score de confiance.
+
+    Pourquoi le rendement et plus le résultat en euros (AMELIORATION du 18/10/2026) : avec des mises
+    très inégales (Kelly), le score sur les euros mesurait surtout la TAILLE des mises gagnantes.
+    nf_sport affichait 2,7 avec 24 paris gagnés pour 23,4 attendus d'après ses prix (aucun avantage)
+    et nf_court 1,2 en gagnant MOINS souvent que ses prix ; sur le rendement : 0,4 et −0,7. Seule
+    nf_sport_patiente (40 gagnés pour 36,2 attendus) passe : 2,75."""
+    return [float(t["pnl"]) / float(t["cost"]) for t in trades if float(t.get("cost") or 0) > 0]
+
+
 def mode_for(name: str, modes: dict | None) -> tuple[str, dict]:
     """Mode de jugement d'une stratégie d'après les préfixes de config/promotion.yaml."""
     for mode, key in (("recompenses", "juger_sur_recompenses"), ("valeur", "juger_sur_valeur")):
@@ -135,7 +147,7 @@ def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0
     judged = base + max(0.0, rewards)
     growth = math.log(judged / initial) if judged > 0 and initial > 0 else float("-inf")
     return Standing(name, len(trades), realized, initial, growth, state.epoch_started_at, name in eliminated,
-                    round(max(0.0, rewards), 4), t_stat([float(t["pnl"]) for t in trades]), int(reward_days), mode,
+                    round(max(0.0, rewards), 4), t_stat(trade_returns(trades)), int(reward_days), mode,
                     bought_events(entries))
 
 
@@ -214,22 +226,33 @@ def _twins(a: Standing, b: Standing, families: dict | None, max_overlap: float |
     return shared > max_overlap
 
 
+def _stays(s: Standing, min_trades: int, keep_growth: float, keep_t: float | None) -> bool:
+    """Seuil de MAINTIEN du champion (plus bas que l'entrée : pas de va-et-vient). Un champion
+    n'est jugé qu'à partir de `min_trades` opérations clôturées (sauf modes de jugement)."""
+    if s.eliminated:
+        return False
+    if s.closed_trades < min_trades and not s.mode:
+        return True
+    return s.log_growth > keep_growth and (keep_t is None or bool(s.mode) or s.t_stat >= keep_t)
+
+
 def choose_champion(standings: list[Standing], current: str, min_trades: int,
                     margin: float | None = 0.0, *, now: datetime | None = None, min_age_hours: float = 0.0,
                     min_growth: float = 0.0, keep_growth: float = 0.0,
                     validated: dict | None = None, min_t: float | None = None,
-                    modes: dict | None = None) -> tuple[str, str]:
+                    modes: dict | None = None, keep_t: float | None = None) -> tuple[str, str]:
     """(nouveau champion, raison). "" = ne rien faire.
 
     Hystérésis : on entre à `min_growth`, on reste tant que la croissance dépasse `keep_growth`
-    (plus bas) ; sinon un champion promu sur du bruit tombe au cycle suivant (15/10/2026)."""
+    (plus bas) ; sinon un champion promu sur du bruit tombe au cycle suivant (15/10/2026). Depuis le
+    18/10 au soir, il faut aussi garder un score de confiance d'au moins `keep_t` (plus bas que
+    l'entrée) : un champion qui gagne de l'argent en pariant MOINS bien que ses prix ne reste pas."""
     by_name = {s.name: s for s in standings}
     eligible = [s for s in standings if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes)]
     best = max(eligible, key=lambda s: s.log_growth, default=None)
     incumbent = by_name.get(current)
     # Un champion n'est jugé qu'à partir de `min_trades` opérations clôturées.
-    incumbent_ok = (incumbent is not None and not incumbent.eliminated
-                    and ((incumbent.closed_trades < min_trades and not incumbent.mode) or incumbent.log_growth > keep_growth))
+    incumbent_ok = incumbent is not None and _stays(incumbent, min_trades, keep_growth, keep_t)
     if current and not incumbent_ok:
         if best is None:
             return "", "le champion ne bat plus « ne rien faire » (ou a disparu)"
@@ -254,13 +277,14 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
                champion: str = "", keep_growth: float = 0.0,
                validated: dict | None = None, min_t: float | None = None,
                modes: dict | None = None, merit: float = 1.0, families: dict | None = None,
-               max_overlap: float | None = None, twins: dict | None = None) -> dict[str, float]:
+               max_overlap: float | None = None, twins: dict | None = None,
+               keep_t: float | None = None) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
     le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`.
     `twins` (facultatif) reçoit les qualifiées écartées comme doublons : {nom: {comme, chevauchement}}."""
     def kept(s: Standing) -> bool:
-        return (s.name == champion and not s.eliminated and (s.closed_trades >= min_trades or bool(s.mode))
-                and s.log_growth > max(keep_growth, 0.0))
+        return (s.name == champion and (s.closed_trades >= min_trades or bool(s.mode))
+                and _stays(s, min_trades, max(keep_growth, 0.0), keep_t))
     ranked = sorted((s for s in standings
                      if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes) or kept(s)),
                     key=lambda s: s.log_growth, reverse=True)
@@ -365,11 +389,13 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
              "min_growth": float(cfg["min_log_growth"]), "validated": cfg.get("validated_strategies") or {},
              "min_t": float(cfg["min_t_stat"]) if cfg.get("min_t_stat") is not None else None, "modes": cfg}
     keep = float(cfg["keep_log_growth"])
+    keep_t = None if cfg.get("keep_t_stat") is None else float(cfg["keep_t_stat"])
     events = []
     previous = main.state.champion
     margin = cfg.get("promotion_margin")
     champion, reason = choose_champion(standings, previous, min_trades,
-                                       None if margin is None else float(margin), keep_growth=keep, **gates)
+                                       None if margin is None else float(margin), keep_growth=keep, keep_t=keep_t,
+                                       **gates)
     if champion != previous:
         main.record_promotion(champion, reason, {"from": previous}, now)
         events.append(f"promotion : {champion or 'ne rien faire'} ({reason})")
@@ -388,7 +414,8 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
     shares = allocation(final, min_trades, int(cfg["max_strategies_in_main"]),
                         champion=main.state.champion, keep_growth=keep,
                         merit=float((cfg.get("repartition") or {}).get("merite", 1.0)), families=families,
-                        max_overlap=None if max_overlap is None else float(max_overlap), twins=twins, **gates)
+                        max_overlap=None if max_overlap is None else float(max_overlap), twins=twins,
+                        keep_t=keep_t, **gates)
     engaged = exposure(final, shares, cfg)
     if not shares and main.state.champion:
         engaged = exposure(final, {main.state.champion: 1.0}, cfg)

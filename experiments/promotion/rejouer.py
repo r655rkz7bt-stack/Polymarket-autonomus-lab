@@ -65,12 +65,16 @@ def replay(ledgers: dict[str, list[dict]], rule: dict, start: datetime, end: dat
     while t <= end:
         stats = {}
         for n, tr in trades.items():
-            done = [float(x["pnl"]) for x in tr if datetime.fromisoformat(x["closed_at"]) <= t]
+            closed = [x for x in tr if datetime.fromisoformat(x["closed_at"]) <= t]
+            done = [float(x["pnl"]) for x in closed]
             if n not in born or born[n] > t:
                 continue
             real = INITIAL + sum(done)
+            # Score de confiance sur les euros (avant le 18/10 au soir) ou sur le rendement par mise.
+            rets = [float(x["pnl"]) / float(x["cost"]) for x in closed if float(x["cost"]) > 0]
             stats[n] = {"n": len(done), "growth": math.log(real / INITIAL) if real > 0 else -9,
-                        "age_h": (t - born[n]).total_seconds() / 3600, "t": t_stat(done)}
+                        "age_h": (t - born[n]).total_seconds() / 3600,
+                        "t": t_stat(rets) if rule.get("rendement") else t_stat(done)}
         hist.append((t, allocation(stats, rule, hist[-1][1] if hist else None)))
         t += timedelta(hours=1)
     value, used = INITIAL, {}
@@ -114,6 +118,7 @@ def main() -> None:
         "+ t ≥ 1,5 + essai (n/60)": {"trades": 20, "t_min": 1.5, "ramp": 60},
         "actuelle + essai (n/60)": {"trades": 20, "ramp": 60},
         "30 op., +2 %": {"trades": 30},
+        "t ≥ 1,5 sur le rendement + essai": {"trades": 20, "t_min": 1.5, "ramp": 60, "rendement": True},
     }
     print(f"Période : {first:%d/%m %H:%M} → {end:%d/%m %H:%M} UTC, {len(ledgers)} fantômes")
     # Ce que voit chaque règle au moment de la vraie promotion (17/10 08:32) et maintenant.

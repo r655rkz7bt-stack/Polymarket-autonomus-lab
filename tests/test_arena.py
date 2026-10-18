@@ -369,3 +369,41 @@ def test_run_arena_reports_twins_and_keeps_its_ranking_readable(ledger, tmp_path
     out = run_arena(ledger, {"s_v1": shadow}, RULES, NOW)
     assert out["doublons"] == {} and "events" not in out["classement"][0]
     json.dumps(out)  # tout le résumé reste lisible en JSON
+
+
+def test_confidence_is_measured_on_returns_not_on_stake_sizes(tmp_path):
+    """AMELIORATION du 18/10/2026 au soir : le score de confiance porte sur le rendement de chaque
+    opération (résultat / mise). Sur les euros, deux gros paris gagnés suffisaient à faire croire à
+    un avantage (nf_sport : 2,7 avec 24 gagnés pour 23,4 attendus d'après ses prix)."""
+    from polymarket_agent.arena import standing, t_stat, trade_returns
+    trades = [{"pnl": D("10"), "cost": D("100")}, {"pnl": D("1"), "cost": D("10")}, {"pnl": D("2"), "cost": D("0")}]
+    assert trade_returns(trades) == [0.1, 0.1]  # mise nulle ignorée
+    shadow = Ledger.create(tmp_path / "s.jsonl", KEY, tmp_path / "s.lock", "1000", now=NOW)
+    for k, (shares, payout) in enumerate([("400", "1"), ("300", "1"), ("10", "0"), ("20", "1")]):
+        buy(shadow, f"b{k}", token=f"t{k}", shares=shares, price="0.9", event=f"e{k}")
+        shadow.record_settlement(op_id=f"s{k}", token_id=f"t{k}", payout_per_share=payout,
+                                 resolution="Yes" if payout == "1" else "No", now=NOW)
+    s = standing("s_v1", shadow, set())
+    returns = [1 / 9, 1 / 9, -1.0, 1 / 9]  # trois gains de 11 % et une perte totale (sur une petite mise)
+    assert s.t_stat == t_stat(returns) and s.t_stat < 1.0
+    assert t_stat([40.0, 30.0, -9.0, 2.0]) > s.t_stat  # sur les euros, la perte « disparaissait »
+
+
+def test_champion_betting_worse_than_its_prices_loses_its_place():
+    """18/10/2026 au soir : rester champion demande aussi un score de confiance ≥ `keep_t_stat`
+    (nf_court gagnait de l'argent avec un score de −0,7 sur le rendement)."""
+    from dataclasses import replace
+
+    from polymarket_agent.arena import allocation
+    gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02, "min_t": 1.5}
+    court = Standing("nf_court_v1", 65, 1116.0, 1000.0, 0.11, NOW - timedelta(days=2), False, t_stat=-0.7)
+    patient = Standing("nf_sport_patiente_v1", 42, 1144.0, 1000.0, 0.13, NOW - timedelta(days=2), False, t_stat=2.75)
+    assert RULES["keep_t_stat"] == 0.0
+    assert choose_champion([court, patient], "nf_court_v1", 20, None, keep_t=0.0, **gates)[0] == "nf_sport_patiente_v1"
+    assert choose_champion([court], "nf_court_v1", 20, None, keep_t=0.0, **gates)[0] == ""
+    assert set(allocation([court, patient], 20, 5, champion="nf_court_v1", keep_t=0.0, **gates)) == {
+        "nf_sport_patiente_v1"}
+    # Sans seuil de maintien (ancienne règle), le champion gardait sa place.
+    assert choose_champion([court], "nf_court_v1", 20, None, **gates)[0] == "nf_court_v1"
+    assert "nf_court_v1" in allocation([court, patient], 20, 5, champion="nf_court_v1", **gates)
+    assert choose_champion([replace(court, t_stat=0.3)], "nf_court_v1", 20, None, keep_t=0.0, **gates)[0] == "nf_court_v1"
