@@ -209,6 +209,26 @@ nf_sport_tres_court:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_6_24h:
+  explication: "Comme naive_favorite, mais seulement le sport ET seulement entre 6 et 24 heures avant la fin (le match n'a pas commencé ou vient de commencer)."
+  # Petite-fille d'essai (18/10/2026, chercheur) : complète nf_sport_tres_court (< 6 h) pour savoir où se cache le gain de nf_sport_court. Fantôme : gratuit.
+  mere: nf_sport_court
+  morceau: "sport + 6 à 24 h"
+  class: naive_favorite
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-18"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+
 nf_court_prix_haut:
   explication: "Comme naive_favorite, mais seulement à moins de 24 heures de la fin ET quand le favori coûte déjà 90 centimes ou plus (très probable, petit gain par pari)."
   # Fille d'essai (18/10/2026, chercheur) : court délai (champion) croisé avec prix haut. Remplace social_sentiment (éliminée). Fantôme : gratuit.
