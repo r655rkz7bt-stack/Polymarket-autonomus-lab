@@ -612,3 +612,20 @@ def test_market_maker_quotes_both_sides_estimates_rewards_and_fills_when_traded_
     state = Ledger.open(shadow, KEY, tmp_path / "fantome" / "x.lock").state
     assert state.positions["Y"].cost_basis / state.positions["Y"].shares == D("0.47")
     assert state.fees_paid == 0  # ordre posé : pas de frais (barème preneur seulement)
+
+
+def test_principal_never_buys_the_same_market_twice_for_two_strategies(env, paths):
+    """Plusieurs stratégies au principal (18/10/2026) : si deux d'entre elles veulent le même marché
+    dans le même cycle, seule la première l'achète."""
+    from polymarket_agent.main import CycleReport, Portfolio, Weighted, _execute
+    from polymarket_agent.sources.polymarket_gamma import parse_market
+    make, _, _ = env
+    deep = make_book("tokA", bids=(("0.89", "5000"),), asks=(("0.90", "5000"),))  # assez pour les deux
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": deep}))
+    twin = pipeline_strategy()
+    twin.strategy_id = "nf_jumelle"
+    main = Portfolio("principal", Ledger.open(paths[0], KEY, paths[1]),
+                     [Weighted(pipeline_strategy(), D("0.5")), Weighted(twin, D("0.5"))])
+    _execute(deps, main, [parse_market(raw_market())], {"tokA": deep}, CycleReport(cycle_id="c1"), "b1")
+    buys = [json.loads(l)["data"] for l in paths[0].read_text().splitlines() if json.loads(l)["type"] == "BUY"]
+    assert [b["strategy_id"] for b in buys] == ["naive_favorite"]

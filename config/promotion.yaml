@@ -42,8 +42,15 @@ promotion_margin: null
 max_strategies_in_main: 5        # le capital principal se répartit entre les 5 meilleures au plus
 # Répartition entre les qualifiées : moitié à égalité, moitié selon les gains (+15 % et +3 % →
 # 67 % / 33 %), recalculée au plus une fois par heure (une entrée ou une sortie s'applique tout de
-# suite). Une seule place par famille (une mère et ses filles font presque les mêmes paris).
+# suite).
 repartition: {merite: 0.5, recalcul_minutes: 60}
+# Doublons (décision d'Etienne, 18/10/2026, option B) : deux qualifiées dont plus de 50 % des paris
+# (événements achetés, comptés sur la plus petite des deux) sont communs n'ont qu'une place, celle
+# de la meilleure. En dessous, chacune a la sienne, même une mère et sa fille. Sans achat à
+# comparer, une mère et ses filles restent présumées jumelles. null = une seule place par famille.
+# Mesure du 18/10 : nf_sport a joué 79 % de ses matchs avec nf_court (doublon) ; nf_sport_patiente
+# 17 % seulement.
+chevauchement_max: 0.5
 # Au plus 50 % du capital principal sur une seule stratégie, même seule qualifiée (le reste attend).
 part_max_par_strategie: 0.5
 elimination_every_days: 7        # la pire stratégie éligible est éliminée une fois par semaine

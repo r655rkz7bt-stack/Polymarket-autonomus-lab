@@ -369,6 +369,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
                              deps.settings["arena"], deps.now(), rewards=rewards, reward_days=reward_days,
                              families=family_map())
+    deps.db.set_value("doublons_principal", json.dumps(report.arena.get("doublons") or {}))  # tableau de bord
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:
             portfolio.strategies = []  # éliminée : ne trade plus (ses positions se règlent)
@@ -547,7 +548,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
              all_markets: list[MarketInfo] | None = None) -> None:
     ledger, marks = portfolio.ledger, portfolio.marks
     by_market = {m.market_id: m for m in (all_markets or [])} | {m.market_id: m for m in watchlist}
-    proposals = []
+    proposals, bought = [], set()
     for strategy in portfolio.strategies:
         output = strategy.propose(watchlist, books, ledger.state, deps.limits, bucket, marks)
         # Sorties (ventes) : seulement sur les positions ouvertes par cette stratégie.
@@ -562,7 +563,13 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         log.info("[%s] %s v%s : %d propositions, %d ordres à poser, abstentions %s", portfolio.name,
                  strategy.strategy_id, strategy.version, len(output.proposals), len(limit_orders),
                  output.abstentions)
-        if portfolio.name == "principal":  # garde-fous du capital principal (settings.yaml → principal)
+        if portfolio.name == "principal":
+            # Plusieurs stratégies au principal (18/10/2026) : un marché déjà acheté dans ce cycle par
+            # l'une n'est pas racheté par une autre (les stratégies sautent déjà les positions ouvertes).
+            output.proposals = [p for p in output.proposals if p.side != "BUY" or p.market_id not in bought]
+            limit_orders = [p for p in limit_orders if p.side != "BUY" or p.market_id not in bought]
+            bought.update(p.market_id for p in output.proposals + limit_orders if p.side == "BUY")
+            # Garde-fous du capital principal (settings.yaml → principal).
             output.proposals = _cap_main(deps, portfolio, output.proposals, by_market)
             limit_orders = _cap_main(deps, portfolio, limit_orders, by_market)
         proposals += output.proposals

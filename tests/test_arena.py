@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from datetime import timedelta
 from decimal import Decimal
 
@@ -319,3 +320,52 @@ def test_several_champions_half_equal_half_merit_one_per_family_and_capped():
     # Seule qualifiée : au plus 50 % du capital principal.
     assert exposure([a], {"a_v1": 1.0}, {"part_max_par_strategie": 0.5}) == {"a_v1": 0.5}
     assert RULES["part_max_par_strategie"] == 0.5 and RULES["repartition"]["merite"] == 0.5
+
+
+def test_measured_overlap_decides_who_shares_a_place():
+    """Option B d'Etienne (18/10/2026) : deux qualifiées n'ont qu'une place si elles font surtout les
+    mêmes paris (mesurés), même famille ou pas ; deux sœurs qui jouent des matchs différents ont
+    chacune la sienne ; sans achat à comparer, une mère et ses filles restent jumelles."""
+    from dataclasses import replace
+
+    from polymarket_agent.arena import allocation, bought_events, overlap
+    gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02}
+    fams = {"nf_court": "naive_favorite", "nf_sport": "naive_favorite", "nf_sport_patiente": "naive_favorite"}
+    court = replace(st("nf_court_v1.0.0", 50, 0.15, days=5), events=frozenset(f"e{i}" for i in range(40)))
+    # 8 matchs sur 10 déjà joués par nf_court : doublon, la meilleure des deux garde la place.
+    sport = replace(st("nf_sport_v1.0.0", 40, 0.14, days=5), events=frozenset(["e1", "e2", "e3", "e4", "e5", "e6",
+                                                                               "e7", "e8", "x1", "x2"]))
+    assert overlap(court, sport) == pytest.approx(0.8)
+    twins = {}
+    assert set(allocation([court, sport], 20, 5, merit=0.5, families=fams, max_overlap=0.5, twins=twins,
+                          **gates)) == {"nf_court_v1.0.0"}
+    assert twins == {"nf_sport_v1.0.0": {"comme": "nf_court_v1.0.0", "chevauchement": 0.8}}
+    # 2 sur 10 : des paris différents, chacune sa place malgré la même mère.
+    other = replace(sport, events=frozenset(["e1", "e2"] + [f"y{i}" for i in range(8)]))
+    assert set(allocation([court, other], 20, 5, merit=0.5, families=fams, max_overlap=0.5, **gates)) == {
+        "nf_court_v1.0.0", "nf_sport_v1.0.0"}
+    # Familles différentes mais mêmes paris : doublon aussi.
+    clone = replace(sport, name="cotes_v1.0.0")
+    assert set(allocation([court, clone], 20, 5, merit=0.5, families=fams, max_overlap=0.5, **gates)) == {
+        "nf_court_v1.0.0"}
+    # Rien à comparer (aucun achat enregistré) : règle de la famille ; sans seuil : règle de la famille.
+    blind = replace(other, events=frozenset())
+    assert set(allocation([court, blind], 20, 5, merit=0.5, families=fams, max_overlap=0.5, **gates)) == {
+        "nf_court_v1.0.0"}
+    assert set(allocation([court, other], 20, 5, merit=0.5, families=fams, **gates)) == {"nf_court_v1.0.0"}
+    # Événements comptés depuis la dernière remise à zéro (événement, sinon marché).
+    entries = [{"type": "BUY", "data": {"event_id": "old", "market_id": "m0"}}, {"type": "RESET", "data": {}},
+               {"type": "BUY", "data": {"event_id": "e1", "market_id": "m1"}},
+               {"type": "BUY", "data": {"event_id": "", "market_id": "m2"}}, {"type": "SELL", "data": {"event_id": "e9"}}]
+    assert bought_events(entries) == frozenset({"e1", "m2"})
+    assert RULES["chevauchement_max"] == 0.5
+
+
+def test_run_arena_reports_twins_and_keeps_its_ranking_readable(ledger, tmp_path):
+    from polymarket_agent.arena import standing
+    shadow = Ledger.create(tmp_path / "s.jsonl", KEY, tmp_path / "s.lock", "1000", now=NOW - timedelta(days=2))
+    buy(shadow, "o1", "t1", shares="2")
+    assert standing("s_v1", shadow, set()).events
+    out = run_arena(ledger, {"s_v1": shadow}, RULES, NOW)
+    assert out["doublons"] == {} and "events" not in out["classement"][0]
+    json.dumps(out)  # tout le résumé reste lisible en JSON

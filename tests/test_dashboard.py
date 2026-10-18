@@ -294,3 +294,16 @@ def test_situation_lists_several_champions_with_their_share():
     assert "50 %" in s["detail"]
     one = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.5})
     assert one["phrase"] == "Le capital principal suit a."
+
+
+def test_arena_shows_why_a_qualified_twin_has_no_share(tmp_path):
+    """Option B (18/10/2026) : une qualifiée écartée comme doublon est signalée, avec le chevauchement."""
+    main, shadows, db = _setup(tmp_path)
+    db.set_value("doublons_principal", json.dumps({"test_v0": {"comme": "nf_court_v1.0.0", "chevauchement": 0.79}}))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    assert data["arene"][0]["doublon"] == {"comme": "nf_court_v1.0.0", "chevauchement": 0.79}
+    db.set_value("repartition_principal", json.dumps({"date": NOW.isoformat(), "parts": {"test_v0": 0.5}}))
+    assert dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)["arene"][0]["doublon"] is None
+    db.close()
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert "s.doublon.chevauchement" in template

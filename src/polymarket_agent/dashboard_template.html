@@ -1168,12 +1168,16 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var H2 = s.sante || {}, susp = !!H2.suspendue;
       var chip = el("span", "chip" + (s.champion ? " hi" : s.eliminee || susp || s.retiree ? " off" : ""),
         s.champion ? "championne" + (s.part_principal ? " · " + fmt(s.part_principal * 100, 0) + " %" : "")
-          : s.eliminee ? "éliminée" : s.retiree ? "retirée" : susp ? "suspendue" : "en test"); name.appendChild(chip);
+          : s.eliminee ? "éliminée" : s.retiree ? "retirée" : susp ? "suspendue" : s.doublon ? "doublon" : "en test"); name.appendChild(chip);
       if (s.explication) name.appendChild(el("span", "explain", s.explication));
       var info = el("span", "more-info"); name.appendChild(info);
       info.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict +
         (s.confiance !== undefined ? " · confiance " + fmt(s.confiance, 1) : "") +
         (s.mode === "recompenses" ? " · jugée sur ses récompenses" : s.mode === "valeur" ? " · jugée sur la valeur de ses positions" : "")));
+      // Doublon (18/10/2026) : qualifiée, mais elle fait surtout les mêmes paris qu'une autre déjà au principal.
+      if (s.doublon && s.doublon.comme) info.appendChild(el("span", "sub", "qualifiée, mais " +
+        (s.doublon.chevauchement != null ? fmt(s.doublon.chevauchement * 100, 0) + " % de ses paris sont" : "elle fait") +
+        " les mêmes que " + sname(s.doublon.comme) + " : une seule place pour les deux (la meilleure)"));
       // Option A (17/10/2026) : récompenses ESTIMÉES comptées pour le classement, pas dans le capital.
       if (s.recompenses_classement > 0) info.appendChild(el("span", "sub",
         "+ " + fmt(s.recompenses_classement, 2) + " de récompenses estimées, comptées pour le classement (pas dans le capital)"));

@@ -658,9 +658,29 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   capital principal ; le titre de « champion » du journal signé reste à la doyenne tant qu'elle
   est qualifiée (pas de va-et-vient d'écritures).
 - Parts (`arena.allocation`) : moitié à égalité, moitié selon les gains (`repartition.merite`
-  0,5) ; une seule place par famille (`arena.family_map`, champ `mere` de strategies.yaml) ; au
+  0,5) ; une seule place par famille (`arena.family_map`, champ `mere` de strategies.yaml ;
+  remplacé par la mesure des doublons, §39) ; au
   plus 50 % du capital par stratégie (`part_max_par_strategie`, dans `arena.exposure`), en plus de
   la période d'essai et des plafonds des modes.
 - `main._steady_shares` : parts recalculées au plus une fois par heure (une entrée ou une sortie
   s'applique tout de suite), gardées en base sous `repartition_principal` ; le tableau de bord
   affiche chaque championne et sa part, et la phrase du haut les cite toutes.
+
+## 39. Doublons mesurés au lieu d'« une place par famille » (décision d'Etienne, 18/10/2026, option B)
+- Constat : nf_sport (qualifiée, confiance 5,6) n'avait aucune part parce que nf_court, sa sœur,
+  avait la place de la famille naive_favorite ; à quelques dixièmes de pour cent près, la place
+  passait de l'une à l'autre.
+- Règle (`arena.allocation`, `_twins`, `overlap`) : on compare les événements (matchs…) réellement
+  achetés par deux qualifiées depuis le début de leur époque (`Standing.events`,
+  `bought_events`). Si plus de `chevauchement_max` (0,5, config/promotion.yaml) des paris de la
+  plus petite sont communs, ce sont des doublons : seule la meilleure prend une place, même entre
+  familles différentes. En dessous, chacune a la sienne, même une mère et sa fille. Sans achat à
+  comparer, ou si `chevauchement_max` est absent, la règle de la famille s'applique.
+- Mesure du 18/10 (journaux de production) : nf_sport partage 79 % de ses matchs avec nf_court
+  (doublon) ; nf_sport_patiente 17 % ; nf_sport_prix_haut 41 %.
+- `run_arena` renvoie `doublons` ({nom: {comme, chevauchement}}), gardé en base
+  (`doublons_principal`) ; le tableau de bord marque ces stratégies « doublon » et dit pourquoi.
+- Garde-fou du principal (`main._execute`) : si deux stratégies veulent le même marché dans le
+  même cycle, seule la première l'achète (les stratégies sautent déjà les positions ouvertes ;
+  sans ce filtre, le test montrait un double achat).
+

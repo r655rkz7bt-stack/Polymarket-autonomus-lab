@@ -344,6 +344,12 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         parts = {n: float(w) for n, w in (json.loads(db.get_value("repartition_principal") or "{}").get("parts") or {}).items()}
     except (ValueError, TypeError, AttributeError):
         parts = {}
+    # Qualifiées écartées parce qu'elles font les mêmes paris qu'une autre (arena.allocation, doublons).
+    try:
+        twins = json.loads(db.get_value("doublons_principal") or "{}")
+        twins = twins if isinstance(twins, dict) else {}
+    except (ValueError, TypeError, AttributeError):
+        twins = {}
     try:
         days = liquidity_rewards.payable_day_counts(db, {n: l.state.epoch_started_at for n, l in shadows.items()}, now)
     except Exception:  # noqa: BLE001 - base sans table de récompenses
@@ -361,6 +367,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
                       "champion": s.name == state.champion or s.name in parts, "verdict": verdict,
                       "part_principal": round(parts.get(s.name, 0.0), 4),
+                      "doublon": twins.get(s.name) if s.name not in parts else None,
                       "courbe": _downsample(equity_curve(read_entries(shadows[s.name])), 60),
                       "positions": len(shadows[s.name].state.positions),
                       "sante": strategy_health.load(db, s.name)})
