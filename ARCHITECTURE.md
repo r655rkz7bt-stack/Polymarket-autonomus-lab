@@ -652,3 +652,15 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   échanges) : après une vague, le prix revient en arrière ; suivre −9,1 %, contrer −4,6 % par
   opération après coûts ; 0 réglage gagnant sur 384. COUPÉE. Ce que la vague annonce : de
   l'agitation (+32 % de mouvement) — piste : s'en servir comme alarme pour la tenue de marché.
+
+## 38. Plusieurs championnes (décision d'Etienne, 18/10/2026)
+- Plus de marge de +1 % (`promotion_margin: null`) : toute stratégie qualifiée reçoit une part du
+  capital principal ; le titre de « champion » du journal signé reste à la doyenne tant qu'elle
+  est qualifiée (pas de va-et-vient d'écritures).
+- Parts (`arena.allocation`) : moitié à égalité, moitié selon les gains (`repartition.merite`
+  0,5) ; une seule place par famille (`arena.family_map`, champ `mere` de strategies.yaml) ; au
+  plus 50 % du capital par stratégie (`part_max_par_strategie`, dans `arena.exposure`), en plus de
+  la période d'essai et des plafonds des modes.
+- `main._steady_shares` : parts recalculées au plus une fois par heure (une entrée ou une sortie
+  s'applique tout de suite), gardées en base sous `repartition_principal` ; le tableau de bord
+  affiche chaque championne et sa part, et la phrase du haut les cite toutes.

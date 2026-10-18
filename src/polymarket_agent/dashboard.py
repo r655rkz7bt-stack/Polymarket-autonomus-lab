@@ -151,7 +151,8 @@ def promotions(entries: list[dict], limit: int = 6) -> list[dict]:
     return out[::-1][:limit]
 
 
-def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict, initial: float) -> dict:
+def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict, initial: float,
+              parts: dict[str, float] | None = None) -> dict:
     """La situation en UNE ligne (demande d'Etienne, 17/10/2026) : qui pilote le capital principal, et
     sinon POURQUOI personne. {"phrase": la ligne en tête, "detail": une précision plus petite dessous}."""
     import math
@@ -162,6 +163,14 @@ def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict
     pct = lambda a: (a["capital"] / initial - 1) * 100 if initial else 0.0  # noqa: E731
     signed = lambda x: f"{'+' if x >= 0 else '−'}{_fr(abs(x))} %"  # noqa: E731
     name = lambda n: n.rsplit("_v", 1)[0]  # noqa: E731
+    parts = {n: w for n, w in (parts or {}).items() if w > 0}
+    if len(parts) > 1:  # plusieurs championnes (18/10/2026)
+        listed = sorted(parts.items(), key=lambda kv: -kv[1])
+        names = [f"{name(n)} ({_fr(w * 100, 0)} %)" for n, w in listed]
+        return {"phrase": f"Le capital principal suit {len(parts)} championnes : "
+                          + ", ".join(names[:-1]) + f" et {names[-1]}.",
+                "detail": f"{_fr(sum(parts.values()) * 100, 0)} % du capital engagé au plus ; le reste attend "
+                          "(période d'essai et plafond de 50 % par stratégie)."}
     if champ:
         since = next((h["date"] for h in history if h["champion"] == champ), "")
         a = by_name.get(champ)
@@ -330,6 +339,11 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     info = strategy_info(root)
     arena = []
     acfg = arena_cfg(settings, root)
+    # Répartition du capital principal (main._steady_shares) : toutes les championnes et leur part.
+    try:
+        parts = {n: float(w) for n, w in (json.loads(db.get_value("repartition_principal") or "{}").get("parts") or {}).items()}
+    except (ValueError, TypeError, AttributeError):
+        parts = {}
     try:
         days = liquidity_rewards.payable_day_counts(db, {n: l.state.epoch_started_at for n, l in shadows.items()}, now)
     except Exception:  # noqa: BLE001 - base sans table de récompenses
@@ -345,7 +359,8 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                       and not info.get(s.name.rsplit("_v", 1)[0], {}).get("active", False),
                       "croissance": round(s.log_growth, 4) if s.log_growth != float("-inf") else None,
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
-                      "champion": s.name == state.champion, "verdict": verdict,
+                      "champion": s.name == state.champion or s.name in parts, "verdict": verdict,
+                      "part_principal": round(parts.get(s.name, 0.0), 4),
                       "courbe": _downsample(equity_curve(read_entries(shadows[s.name])), 60),
                       "positions": len(shadows[s.name].state.positions),
                       "sante": strategy_health.load(db, s.name)})
@@ -504,7 +519,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     # La situation en une phrase (en tête du cœur) et les derniers changements de champion.
     data["promotions"] = promotions(entries["principal"])
     data["situation"] = situation(capital, arena, data["promotions"], arena_rules(settings, root),
-                                  float(state.initial_capital))
+                                  float(state.initial_capital), parts)
     # Ordres posés : récompenses de liquidité ESTIMÉES (hors capital) et sélection adverse (markout).
     from polymarket_agent import liquidity_rewards, markout
     since = (now - timedelta(days=7)).isoformat(timespec="seconds")

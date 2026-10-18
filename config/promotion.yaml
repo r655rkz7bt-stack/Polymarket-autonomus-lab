@@ -35,8 +35,17 @@ juger_sur_valeur:
 # Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
 # que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
 keep_log_growth: 0.0
-promotion_margin: 0.01           # un challenger doit dépasser le champion de 0,01 (≈ +1 %)
+# Plusieurs championnes (décision d'Etienne, 18/10/2026) : plus de marge de +1 % ; toute stratégie
+# qualifiée reçoit sa part. Le titre de « champion » du journal signé reste à la doyenne tant
+# qu'elle est qualifiée (aucun va-et-vient).
+promotion_margin: null
 max_strategies_in_main: 5        # le capital principal se répartit entre les 5 meilleures au plus
+# Répartition entre les qualifiées : moitié à égalité, moitié selon les gains (+15 % et +3 % →
+# 67 % / 33 %), recalculée au plus une fois par heure (une entrée ou une sortie s'applique tout de
+# suite). Une seule place par famille (une mère et ses filles font presque les mêmes paris).
+repartition: {merite: 0.5, recalcul_minutes: 60}
+# Au plus 50 % du capital principal sur une seule stratégie, même seule qualifiée (le reste attend).
+part_max_par_strategie: 0.5
 elimination_every_days: 7        # la pire stratégie éligible est éliminée une fois par semaine
 min_days_before_elimination: 7
 min_strategies_in_test: 3        # innovation obligatoire
