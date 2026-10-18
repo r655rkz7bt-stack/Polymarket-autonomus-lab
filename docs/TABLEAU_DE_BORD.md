@@ -84,3 +84,8 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
 - Bloc `principal` (demande d'Etienne) : les ordres du capital PRINCIPAL, le vrai portefeuille, à
   part de ceux de l'arène, juste sous le résumé (liseré bleu) : exécutions du journal signé (la plus
   récente d'abord), ordres posés en attente, opérations clôturées (`dashboard.principal_orders`).
+- Petits organes (18/10/2026, demande d'Etienne) : devant chaque titre, un organe en points dans
+  le style du cœur (cerveau, noyau, poumons, ADN, cellule qui se divise, artère, cellules,
+  neurone, colonne, œil, pouls, nerfs), choisi pour ce que fait le bloc (`organs()` dans le
+  gabarit, table PICK). Points au repos qui scintillent ; une seule boucle d'animation, organes
+  visibles seulement, image fixe si « moins d'animations ».
