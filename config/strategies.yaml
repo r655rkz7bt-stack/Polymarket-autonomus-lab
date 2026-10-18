@@ -897,6 +897,26 @@ nf_court:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}   # 1 = Kelly complet (croissance maximale)
 
+nf_court_hors_sport:
+  explication: "Comme naive_favorite, mais seulement à moins de 24 heures de la fin ET jamais le sport (pour voir si le court délai gagne aussi ailleurs que dans le sport)."
+  # Petite-fille d'essai (18/10/2026, chercheur) : court délai (nf_court, champion) moins le sport. Fantôme : gratuit.
+  mere: nf_court
+  morceau: "moins de 24 h, hors sport"
+  class: naive_favorite
+  filtres: {familles: [politics, culture, finance, economics, crypto, weather, tech, mentions, other], heures_min: 0, heures_max: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-18"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_moyen:
   explication: "Comme naive_favorite, mais seulement entre 1 et 7 jours avant la fin."
   mere: naive_favorite
