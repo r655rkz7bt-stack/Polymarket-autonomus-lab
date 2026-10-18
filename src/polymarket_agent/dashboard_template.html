@@ -61,6 +61,9 @@ a { color: inherit; }
 section { min-width: 0; scroll-margin-top: 110px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; min-width: 0; }
 h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+/* Petit organe en points devant chaque titre (même esthétique que le cœur). */
+.organ { display: inline-block; vertical-align: middle; margin: -8px 12px -8px -4px; flex: none; }
+h2:has(.organ) { display: inline-flex; align-items: center; }
 .head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
 .kicker { font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .note { color: var(--ink-2); font-size: 0.86rem; max-width: 72ch; margin: 0; }
@@ -1531,6 +1534,141 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       btn.addEventListener("click", function () { folded = !folded; apply();
         try { localStorage.setItem(key, folded ? "1" : "0"); } catch (e) { /* navigation privée : on ne retient rien */ } });
       apply(); });
+  })();
+
+  // ---------------------------------------------------------------- petits organes (18/10/2026)
+  // Demande d'Etienne : l'esthétique du cœur partout dans la page. Chaque bloc porte, devant son
+  // titre, un petit organe en points (même gamme de gris, reflet bleu pastel quand il s'active),
+  // choisi pour ce que fait le bloc : cerveau (résumé), noyau (capital principal), poumons
+  // (aujourd'hui), ADN (arène), cellule qui se divise (entonnoir), artère (capital), cellules
+  // (positions), neurone (ordres posés), colonne (opérations), œil (marchés surveillés, décisions),
+  // tracé du pouls, nerfs (sources), noyau (système). Les points hors de l'organe sont au repos et
+  // scintillent de temps en temps. Une seule boucle d'animation, seulement pour les organes visibles,
+  // à l'arrêt si l'onglet est caché ; image fixe si l'utilisateur préfère moins d'animations.
+  (function organs() {
+    var TAU = 6.2832, BLUE = [157, 191, 245];
+    function seg(u, v, x1, y1, x2, y2) { var dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1;
+      var k = Math.max(0, Math.min(1, ((u - x1) * dx + (v - y1) * dy) / L)); return [Math.hypot(u - x1 - k * dx, v - y1 - k * dy), k]; }
+    function blob(d, r, soft) { return d > r ? 0 : Math.min(1, (r - d) / (soft || 0.12)); }
+    // Chaque forme : (u ∈ [−1,8 ; 1,8], v ∈ [−1 ; 1], t en s) → [présence 0-1, activité 0-1] ou 0.
+    var SHAPES = {
+      cerveau: function (u, v, t) { var e = u * u / 2.3 + (v + 0.05) * (v + 0.05) / 0.72; if (e > 1) return 0;
+        var f = (0.62 + 0.38 * Math.sin(u * 5.2 + Math.sin(v * 4) * 1.6)) * Math.min(1, (1 - e) * 4) * (Math.abs(u) < 0.06 ? 0.25 : 1);
+        var a = 0; for (var k = 0; k < 3; k++) { var cx = 1.15 * Math.sin(t * 0.55 + k * 2.1), cy = 0.5 * Math.cos(t * 0.8 + k * 1.3);
+          a = Math.max(a, Math.exp(-((u - cx) * (u - cx) + (v - cy) * (v - cy)) * 5) * (0.5 + 0.5 * Math.sin(t * 2.7 + k * 2))); }
+        return [f, a]; },
+      noyau: function (u, v, t) { var d = Math.hypot(u / 1.55, v / 0.92); if (d > 1) return 0;
+        var pulse = 0.5 + 0.5 * Math.sin(t * 2.2), nucleus = blob(Math.hypot(u, v), 0.36 + 0.05 * pulse, 0.1);
+        var ring = d > 0.86 ? 0.75 : 0;
+        return [Math.max(nucleus, ring, 0.22), nucleus * pulse + (ring ? 0.3 * (0.5 + 0.5 * Math.sin(Math.atan2(v, u) * 3 - t * 2)) : 0)]; },
+      poumons: function (u, v, t) { var s = 1 + 0.13 * Math.sin(t * 1.25), breath = 0.5 + 0.5 * Math.sin(t * 1.25);
+        var lobe = Math.max(blob(Math.hypot((Math.abs(u) - 0.72) / (0.62 * s), (v - 0.15) / (0.82 * s)), 1, 0.25), 0);
+        var trach = (Math.abs(u) < 0.08 && v < 0.05) || seg(Math.abs(u), v, 0, 0.0, 0.45, 0.3)[0] < 0.07 ? 0.9 : 0;
+        var f = Math.max(lobe, trach); return f ? [f, lobe * breath] : 0; },
+      adn: function (u, v, t) { var ph = u * 2.4 + t * 1.4, y = 0.62 * Math.sin(ph), front = 0.5 + 0.5 * Math.cos(ph);
+        var s1 = Math.exp(-Math.pow((v - y) / 0.14, 2)), s2 = Math.exp(-Math.pow((v + y) / 0.14, 2));
+        var rung = (Math.abs(((ph / Math.PI) % 1 + 1) % 1 - 0.5) > 0.42 && Math.abs(v) < Math.abs(y)) ? 0.45 : 0;
+        var f = Math.max(s1, s2, rung); return f > 0.15 ? [f, s1 > s2 ? front : 1 - front] : 0; },
+      division: function (u, v, t) { var p = 0.5 + 0.5 * Math.sin(t * 0.55), d = 0.12 + 0.72 * p;
+        var c1 = Math.hypot(u + d, v), c2 = Math.hypot(u - d, v), r = 0.62 - 0.08 * p;
+        var d = Math.min(c1, c2); if (d > r) return 0;
+        var membrane = d > r - 0.13 ? 0.85 : 0.22, nuc = Math.max(blob(c1, 0.2), blob(c2, 0.2));
+        return [Math.max(membrane, nuc), nuc * (0.4 + 0.6 * p) + (membrane > 0.5 ? 0.25 * (1 - p) : 0)]; },
+      artere: function (u, v, t) { var w = 0.42 + 0.05 * Math.sin(t * 2.4 - u * 1.5); if (Math.abs(v) > w) return 0;
+        var wall = Math.abs(v) > w - 0.12 ? 0.85 : 0.18, a = 0;
+        for (var k = 0; k < 4; k++) { var x = ((k * 0.95 + t * 0.7) % 3.8) - 1.9, y = 0.13 * Math.sin(k * 2.3);
+          a = Math.max(a, blob(Math.hypot(u - x, v - y), 0.2, 0.1)); }
+        return [Math.max(wall, a), a]; },
+      cellules: function (u, v, t) { var f = 0, a = 0;
+        for (var k = 0; k < 5; k++) { var cx = 1.3 * Math.sin(t * 0.22 + k * 1.7), cy = 0.55 * Math.cos(t * 0.31 + k * 2.3);
+          var d = Math.hypot(u - cx, v - cy), r = 0.27 + 0.04 * Math.sin(t * 1.4 + k);
+          if (d < r) { f = Math.max(f, d > r - 0.09 ? 0.8 : d < 0.08 ? 1 : 0.25); a = Math.max(a, (d < 0.1 ? 1 : 0.3) * (0.5 + 0.5 * Math.sin(t * 2 + k))); } }
+        return f ? [f, a] : 0; },
+      neurone: function (u, v, t) { var soma = blob(Math.hypot(u + 1.15, v), 0.34, 0.1), f = soma, a = 0;
+        var ax = seg(u, v, -0.85, 0, 1.75, 0.1 * Math.sin(1.2)), along = ax[1];
+        if (ax[0] < 0.1) { f = Math.max(f, 0.75); var imp = ((t * 0.55) % 1); a = Math.exp(-Math.pow((along - imp) / 0.07, 2)); }
+        [[-1.15, -0.3, -1.6, -0.85], [-1.15, 0.3, -1.65, 0.8], [-1.35, 0, -1.8, -0.1], [1.75, 0.1, 1.8, -0.5], [1.75, 0.1, 1.8, 0.6]]
+          .forEach(function (s) { if (seg(u, v, s[0], s[1], s[2], s[3])[0] < 0.09) f = Math.max(f, 0.6); });
+        return f ? [f, Math.max(a, soma * (0.5 + 0.5 * Math.sin(t * 3)))] : 0; },
+      colonne: function (u, v, t) { for (var i = 0; i < 8; i++) { var x = -1.55 + i * 0.44;
+          if (Math.abs(u - x) < 0.15 && Math.abs(v) < 0.5) return [0.85, 0.5 + 0.5 * Math.sin(t * 2.2 - i * 0.8)];
+          if (Math.abs(u - x - 0.22) < 0.05 && Math.abs(v) < 0.3) return [0.3, 0]; }
+        return Math.abs(v) < 0.06 ? [0.25, 0] : 0; },
+      oeil: function (u, v, t) { var cyc = t % 5.5, lid = cyc < 0.22 ? Math.abs(cyc - 0.11) / 0.11 : 1;
+        var h = 0.78 * (1 - Math.pow(u / 1.7, 2)) * lid; if (Math.abs(v) > h) return 0;
+        var gx = 0.3 * Math.sin(t * 0.4), d = Math.hypot(u - gx, v), edge = Math.abs(v) > h - 0.1 ? 0.7 : 0.2;
+        if (d < 0.17) return [0.15, 0]; if (d < 0.5) return [1, 0.5 + 0.5 * Math.sin(Math.atan2(v, u - gx) * 5 + t * 1.5)];
+        return [edge, 0]; },
+      pouls: function (u, v, t) { var x = ((u + 1.8) / 3.6 + t * 0.25) % 1, y;
+        y = x < 0.4 ? 0 : x < 0.45 ? -0.25 : x < 0.5 ? 0.85 : x < 0.55 ? -0.7 : x < 0.62 ? 0.15 : 0;
+        if (Math.abs(v + y * 0.9) > 0.14) return 0; var head = (u + 1.8) / 3.6;
+        return [0.85, Math.exp(-Math.pow((head - 0.8) / 0.12, 2))]; },
+      nerfs: function (u, v, t) { var f = 0, a = 0, S = [[-1.8, 0, 0, 0], [0, 0, 0.9, -0.55], [0, 0, 0.9, 0.55], [0.9, -0.55, 1.8, -0.85],
+          [0.9, -0.55, 1.8, -0.3], [0.9, 0.55, 1.8, 0.85], [0.9, 0.55, 1.8, 0.3], [-0.9, 0, -0.4, -0.7], [-0.9, 0, -0.4, 0.7]];
+        S.forEach(function (s, i) { var r = seg(u, v, s[0], s[1], s[2], s[3]); if (r[0] < 0.1) { f = 0.7;
+          a = Math.max(a, Math.exp(-Math.pow((r[1] - ((t * 0.6 + i * 0.27) % 1)) / 0.1, 2))); } });
+        return f ? [f, a] : 0; }
+    };
+    var PICK = { resume: "cerveau", principal: "noyau", aujourdhui: "poumons", arene: "adn", entonnoir: "division",
+      capital: "artere", positions: "cellules", "ordres-poses": "neurone", "decisions-recentes": "oeil",
+      "Opérations clôturées": "colonne", "Marchés surveillés": "oeil", "Pouls de la machine": "pouls",
+      "Sources d'information": "nerfs", "Système": "noyau" };
+    function grain(i, j) { var s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return s - Math.floor(s); }
+    var list = [];
+    Array.prototype.forEach.call(document.querySelectorAll("main section.card"), function (sec) {
+      if (sec.id === "organisme") return;
+      var h2 = sec.querySelector(".head h2"); if (!h2) return;
+      var title = h2.textContent.trim(), block = sec.id || (sec.parentNode && sec.parentNode.id) || "";
+      var kind = PICK[sec.id] || PICK[title] || PICK[block]; if (!kind) return;
+      var cv = document.createElement("canvas"); cv.className = "organ"; cv.setAttribute("aria-hidden", "true");
+      h2.insertBefore(cv, h2.firstChild);
+      var W = 92, Hh = 42, step = 3.1, dpr = Math.min(window.devicePixelRatio || 1, 2), ctx = cv.getContext && cv.getContext("2d");
+      if (!ctx) return;
+      cv.width = W * dpr; cv.height = Hh * dpr; cv.style.width = W + "px"; cv.style.height = Hh + "px";
+      var pts = [], cols = Math.floor(W / step), rows = Math.floor(Hh / step);
+      for (var i = 0; i < cols; i++) for (var j = 0; j < rows; j++)
+        pts.push({ x: (i + 0.5) * step + (W - cols * step) / 2, y: (j + 0.5) * step + (Hh - rows * step) / 2,
+          u: ((i + 0.5) / cols * 2 - 1) * 1.8, v: (j + 0.5) / rows * 2 - 1, ph: grain(i, j) * TAU, sp: 0.35 + grain(j + 3, i + 7) * 0.9 });
+      list.push({ cv: cv, ctx: ctx, pts: pts, shape: SHAPES[kind], W: W, H: Hh, step: step, dpr: dpr, visible: true });
+    });
+    if (!list.length) return;
+    function draw(o, t) {
+      var ctx = o.ctx; ctx.setTransform(o.dpr, 0, 0, o.dpr, 0, 0); ctx.clearRect(0, 0, o.W, o.H);
+      var rmax = o.step * 0.42, layers = {};
+      o.pts.forEach(function (p) {
+        var r = o.shape(p.u, p.v, t), sh, rad, mix = 0;
+        if (!r || r[0] <= 0.05) {  // au repos : petit point sombre qui scintille de temps en temps
+          var tw = REDUCED ? 0 : Math.pow(Math.max(0, Math.sin(t * p.sp + p.ph)), 16);
+          sh = Math.round(34 + 46 * tw); rad = o.step * (0.13 + 0.09 * tw);
+        } else {
+          var f = Math.min(1, r[0]), a = Math.min(1, Math.max(0, r[1] || 0));
+          sh = Math.round(64 + 150 * f + 30 * a); rad = Math.min(rmax, o.step * (0.14 + 0.2 * f + 0.1 * a)); mix = 0.42 * a;
+        }
+        var key = Math.round(sh / 6) * 6 + "|" + Math.round(mix * 8);
+        (layers[key] = layers[key] || []).push(p.x, p.y, rad);
+      });
+      Object.keys(layers).forEach(function (k) { var parts = k.split("|"), sh = +parts[0], m = +parts[1] / 8, a = layers[k];
+        ctx.fillStyle = "rgb(" + Math.round(sh + (BLUE[0] - sh) * m) + "," + Math.round(sh + (BLUE[1] - sh) * m) + "," +
+          Math.round(sh + 3 + (BLUE[2] - sh) * m) + ")";
+        ctx.beginPath(); for (var n = 0; n < a.length; n += 3) { ctx.moveTo(a[n] + a[n + 2], a[n + 1]); ctx.arc(a[n], a[n + 1], a[n + 2], 0, TAU); }
+        ctx.fill(); });
+    }
+    if (window.IntersectionObserver) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) {
+        list.forEach(function (o) { if (o.cv === e.target) o.visible = e.isIntersecting; }); }); });
+      list.forEach(function (o) { io.observe(o.cv); });
+    }
+    var raf = null, last = 0;
+    function loop(now) {
+      raf = null; if (document.hidden) return;
+      if (now - last > 40) { last = now; var t = now / 1000; list.forEach(function (o) { if (o.visible) draw(o, t); }); }
+      raf = requestAnimationFrame(loop);
+    }
+    list.forEach(function (o) { draw(o, 1.7); });  // première image (et image fixe sans animation)
+    if (!REDUCED) {
+      raf = requestAnimationFrame(loop);
+      document.addEventListener("visibilitychange", function () { if (!document.hidden && !raf) raf = requestAnimationFrame(loop); });
+    }
   })();
 })();
 </script>
