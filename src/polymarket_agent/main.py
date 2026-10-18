@@ -142,7 +142,12 @@ def _open_shadows(deps: CycleDeps, report: CycleReport, now: datetime) -> list[P
 class Weighted:
     """Une stratégie de l'arène vue par le capital principal : ses achats sont réduits à sa part
     du capital (somme des parts = 1). Ses ventes ne sont pas réduites : elles portent sur les
-    parts que le principal détient réellement."""
+    parts que le principal détient réellement.
+
+    Budget (18/10/2026) : réduire chaque mise ne suffisait pas, pari après pari une stratégie
+    pouvait engager presque tout le capital (nf_court : 630 sur ≈ 1 000 pour une part d'environ 50 %).
+    Désormais, ce qu'elle a déjà investi dans le principal (coût de ses positions ouvertes) plus
+    ses nouveaux achats ne dépassent jamais part × capital total estimé ; le reste attend."""
 
     def __init__(self, strategy, weight: Decimal):
         self.inner, self.weight = strategy, weight
@@ -153,21 +158,34 @@ class Weighted:
 
     def propose(self, *args, **kwargs):
         output = self.inner.propose(*args, **kwargs)
-        output.proposals = self._scale(output.proposals)
+        state = kwargs.get("state", args[2] if len(args) > 2 else None)
+        marks = kwargs.get("marks", args[5] if len(args) > 5 else None)
+        budget = None
+        if state is not None:
+            invested = sum((pos.cost_basis for pos in state.positions.values() if pos.strategy_id == self.strategy_id),
+                           Decimal("0"))
+            budget = self.weight * state.total_estimated(marks) - invested
+        output.proposals, budget = self._scale(output.proposals, budget)
         if getattr(output, "limit_orders", None):
-            output.limit_orders = self._scale(output.limit_orders)
+            output.limit_orders, budget = self._scale(output.limit_orders, budget)
         return output
 
-    def _scale(self, proposals: list) -> list:
+    def _scale(self, proposals: list, budget: Decimal | None = None) -> tuple[list, Decimal | None]:
         scaled = []
         for p in proposals:
             if p.side != "BUY":
                 scaled.append(p)
                 continue
             shares = (p.shares * self.weight).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            if budget is not None:  # plafond du total engagé par cette stratégie
+                if budget <= 0 or p.max_price <= 0:
+                    continue
+                shares = min(shares, (budget / p.max_price).quantize(Decimal("0.01"), rounding=ROUND_DOWN))
             if shares > 0:
                 scaled.append(dataclasses.replace(p, shares=shares))
-        return scaled
+                if budget is not None:
+                    budget -= shares * p.max_price
+        return scaled, budget
 
     def __getattr__(self, name):
         return getattr(self.inner, name)

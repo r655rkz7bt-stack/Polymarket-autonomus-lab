@@ -57,3 +57,39 @@ def test_shares_are_recomputed_at_most_hourly_but_entries_apply_at_once(tmp_path
     assert _steady_shares(deps, {"a": 0.3, "b": 0.2, "c": 0.1}) == {"a": 0.3, "b": 0.2, "c": 0.1}  # entrée
     clock["t"] = NOW + timedelta(minutes=70)
     assert _steady_shares(deps, {"a": 0.25, "b": 0.25, "c": 0.1}) == {"a": 0.25, "b": 0.25, "c": 0.1}  # 1 h passée
+
+
+def test_a_strategy_never_engages_more_than_its_share_in_total(tmp_path):
+    """18/10/2026 : nf_court avait 630 investis sur ≈ 1 000 pour une part d'environ 50 % ; réduire
+    chaque mise ne suffisait pas. Positions déjà ouvertes + nouveaux achats ≤ part × capital."""
+    import dataclasses
+    from decimal import Decimal as D
+    from types import SimpleNamespace
+    from conftest import KEY, NOW, buy
+    from polymarket_agent.ledger import Ledger
+    from polymarket_agent.main import Weighted
+    ledger = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW)
+    for k in range(4):  # 4 × 100 déjà investis par la stratégie
+        ledger.record_buy(op_id=f"o{k}", token_id=f"t{k}", market_id=f"m{k}", event_id=f"e{k}", outcome="Yes",
+                          shares="200", price="0.5", fee="0", strategy_id="nf_court", strategy_version="1", now=NOW)
+    buy(ledger, "x1", token="autre", shares="200", price="0.5")  # une autre stratégie : ne compte pas
+
+    @dataclasses.dataclass
+    class Prop:
+        side: str
+        shares: D
+        max_price: D
+        op_id: str
+
+    def prop(op, shares, price="0.5"):
+        return Prop("BUY", D(shares), D(price), op)
+
+    class Inner:
+        strategy_id, version = "nf_court", "1"
+
+        def propose(self, watchlist, books, state, limits, bucket, marks=None):
+            return SimpleNamespace(proposals=[prop("a", "300"), prop("b", "300"), prop("c", "300")], limit_orders=[])
+
+    out = Weighted(Inner(), D("0.5")).propose([], {}, ledger.state, None, "b1")
+    # Part 0,5 × capital 1 000 = 500 ; 400 déjà investis → 100 de budget, soit 200 parts à 0,5.
+    assert [(p.op_id, p.shares) for p in out.proposals] == [("a", D("150")), ("b", D("50"))]
