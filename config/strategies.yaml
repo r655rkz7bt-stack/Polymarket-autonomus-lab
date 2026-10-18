@@ -1352,7 +1352,12 @@ vague_opinion:
   # que les parieurs vont penser. Achat au début d'une vague d'attention (mentions, sources
   # indépendantes, direction de l'IA ou prix qui commence à bouger), revente quand elle est passée.
   # Critique et test sur le passé : experiments/vague_opinion/.
-  enabled: true
+  # COUPÉE avant de jouer (18/10/2026) : sur 140 marchés longs (15/09-15/10, 242 vagues mesurées
+  # sur les fichiers GDELT), le prix REVIENT en arrière après une vague (−1,7 point à 72 h) ;
+  # suivre la vague perd −9,1 % après écart et frais (intervalle [−12,9 ; −5,9]), la contrer
+  # aussi (−4,6 %) ; 0 réglage gagnant sur 384. La vague annonce de l'agitation (+32 % de
+  # mouvement), pas son sens.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-18"
   params:

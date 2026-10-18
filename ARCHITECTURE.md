@@ -641,3 +641,14 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   probabilité du modèle + `exit_margin` (vaut aussi pour les positions du principal).
 - **Ménage** : stratégies coupées marquées « retirée » et rangées en bas de l'arène ; GDELT toutes
   les 3 h (HTTP 429) ; Gemini « en pause » (budget de l'heure) n'est plus compté comme une panne.
+
+## 37. « Vague d'opinion » (idée d'Etienne, 18/10/2026)
+- Idée : sur un marché long, acheter au début d'une vague d'attention (réseaux, presse) et
+  revendre quand elle est passée, sans attendre le règlement. Stratégie `vague_opinion`
+  (`strategies_v2.OpinionWave`) : entrée sur pic de mentions + sources indépendantes + sens (IA ou
+  prix qui démarre), aller-retour (écart + frais aux deux bouts) vérifié, sorties objectif / stop /
+  vague retombée / durée maximale.
+- Test sur le passé (`experiments/vague_opinion/`, 140 marchés, fichiers GDELT GKG, prix des vrais
+  échanges) : après une vague, le prix revient en arrière ; suivre −9,1 %, contrer −4,6 % par
+  opération après coûts ; 0 réglage gagnant sur 384. COUPÉE. Ce que la vague annonce : de
+  l'agitation (+32 % de mouvement) — piste : s'en servir comme alarme pour la tenue de marché.

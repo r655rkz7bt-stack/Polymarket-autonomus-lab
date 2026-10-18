@@ -931,7 +931,9 @@ class OpinionWave(_Base):
     +5,4 % (l'information s'y diffuse lentement) ; le contrer perdait (experiments/favori.md §6).
     Pourquoi ça peut rater : le prix intègre déjà l'avis de ceux qui misent ; l'enthousiasme des
     réseaux fausse souvent les prix au lieu de les annoncer ; acheter puis revendre paie deux fois
-    l'écart achat-vente et les frais. Test sur le passé : experiments/vague_opinion/. L'arène juge."""
+    l'écart achat-vente et les frais. Test sur le passé (experiments/vague_opinion/, 18/10/2026) :
+    PERDANTE (−9,1 % par opération après coûts ; le prix revient en arrière après une vague) ;
+    coupée dans config/strategies.yaml, gardée pour d'autres réglages ou d'autres sources."""
 
     strategy_id = "vague_opinion"
     needs_price_history = True
