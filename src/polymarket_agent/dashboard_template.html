@@ -45,10 +45,8 @@ a { color: inherit; }
   background: var(--raised); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
 .live span { overflow: hidden; text-overflow: ellipsis; }
 .live i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); flex: none; }
-.live.alive i { animation: blink 1s ease-in-out infinite; }
 .live.dead i { background: transparent; border: 1.5px solid var(--red); }
 .live.alive i { background: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 .tabs { max-width: 1180px; margin: 0 auto; display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none;
   padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
 .tabs::-webkit-scrollbar { display: none; }
@@ -61,18 +59,11 @@ a { color: inherit; }
 section { min-width: 0; scroll-margin-top: 110px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; min-width: 0; }
 h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
-/* Petit organe en points devant chaque titre (même esthétique que le cœur). */
-.organ { display: inline-block; vertical-align: middle; margin: -8px 12px -8px -4px; flex: none; }
-h2:has(.organ) { display: inline-flex; align-items: center; }
 .head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
 .kicker { font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .note { color: var(--ink-2); font-size: 0.86rem; max-width: 72ch; margin: 0; }
 .empty { color: var(--muted); font-style: italic; margin: 0; }
 .grid2 > .wide { grid-column: 1 / -1; }
-/* Tissu des cartes (18/10/2026, v2) : une toile par-dessus la page, qui ne capte aucun clic ; les
-   points ne sont dessinés QUE dans la place libre à l'intérieur des cartes (jamais sur le texte),
-   et les influx relient les cartes qui travaillent ensemble (cardTissue() dans le script). */
-#field { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; display: block; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px; }
 
 /* --- résumé (le chiffre d'abord, comme « 91 % chance … ») */
@@ -224,7 +215,6 @@ details.howto summary { margin: 0 0 6px; }
   .order .what { grid-column: 1 / 3; }
 }
 /* Courbes qui se dessinent (comme sur Polymarket) : au survol, au toucher, à l'apparition. */
-.draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
 .spark-wrap { cursor: pointer; }
 
 /* --- graphiques */
@@ -236,8 +226,6 @@ svg text { font-family: var(--mono); }
   border-radius: 10px; padding: 7px 11px; font-size: 0.8rem; color: var(--ink-2); box-shadow: 0 8px 24px rgba(0,0,0,0.45);
   white-space: nowrap; z-index: 2; }
 .tip b { display: block; color: var(--ink); font: 600 0.95rem var(--mono); }
-.end-ring { transform-box: fill-box; transform-origin: center; animation: ring 2.4s ease-out infinite; }
-@keyframes ring { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(3.2); opacity: 0; } }
 
 /* --- arène : liste façon Polymarket (niveau, volume, 7 j, courbe) */
 .rows { display: grid; }
@@ -320,8 +308,6 @@ ul.files li span { font-family: var(--mono); color: var(--muted); margin-right: 
 footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center; padding-top: 6px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .live.alive i, .end-ring { animation: none; }
-  .draw { transition: none !important; }
 }
 </style>
 
@@ -343,7 +329,6 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   </nav>
 </header>
 
-<canvas id="field" aria-hidden="true"></canvas>
 <main class="wrap">
   <section id="organisme" class="card organism" aria-label="Le cœur : capital et résultats">
     <div class="inner"><div class="o-head">
@@ -491,11 +476,6 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     }
   })();
   var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Dessin à la première apparition à l'écran (une seule fois par élément).
-  var seen = window.IntersectionObserver ? new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) { if (en.isIntersecting) { seen.unobserve(en.target); if (en.target._play) en.target._play(); } }); },
-    { threshold: 0.4 }) : null;
-  function onFirstView(node) { if (seen && node && node._play) seen.observe(node); }
 
   // ---------------------------------------------------------------- outils
   var fmt = function (x, d) { return x === null || x === undefined || x === "" || isNaN(Number(x)) ? "—" :
@@ -752,10 +732,6 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // sang dans l'aorte et l'artère pulmonaire (une onde les parcourt), puis tout se relâche.
   // Les points ne bougent jamais : seule leur taille change, et c'est cette variation de taille
   // (donc de clarté) qui dessine le mouvement. Les légendes restent hors de portée.
-  // Taille des points du cœur (18/10/2026) : le tissu des cartes et les petits organes reprennent
-  // exactement cette taille, partout la même (seule la lumière anime les points).
-  var HEART_STEP = 10;
-  function heartDot() { return HEART_STEP * 0.21; }
   (function heart() {
     var stage = document.getElementById("stage"), cv = document.getElementById("heart"),
       layer = document.getElementById("labels"), ctx = cv.getContext && cv.getContext("2d");
@@ -935,7 +911,6 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       }
       }
       cv.width = Math.round(W * dpr); cv.height = Math.round(Hs * dpr);
-      HEART_STEP = step;
       lines = [];
       (rects || []).forEach(function (r) { var d = r.o.L.el; d.style.left = r.x + "px"; d.style.top = r.y + "px";
         lines.push({ pts: r.pts, tone: r.o.L.t || "" }); });
@@ -1129,13 +1104,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     else svgEl("text", { x: W - R, y: T - 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)",
       "font-family": "var(--mono)" }, svg, "palier " + fmt(target, 0) + " ↑");
     var d = pts.map(function (p, k) { return (k ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ");
-    var areaC = svgEl("path", { d: d + " L" + sx(x1) + " " + (Hh - B) + " L" + sx(x0) + " " + (Hh - B) + " Z",
+    svgEl("path", { d: d + " L" + sx(x1) + " " + (Hh - B) + " L" + sx(x0) + " " + (Hh - B) + " Z",
       fill: perf >= 0 ? "var(--blue-soft)" : "var(--red-soft)" }, svg);
-    var lineC = svgEl("path", { d: d, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round",
-      "stroke-linecap": "round", pathLength: 1, "class": "draw" }, svg);
-    svg._play = function () { play(lineC, [areaC], 1200); }; onFirstView(svg);
+    svgEl("path", { d: d, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round",
+      "stroke-linecap": "round" }, svg);
     var last = pts[pts.length - 1];
-    svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 4, fill: "var(--ink)", "class": "end-ring" }, svg);
     svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2 }, svg);
     var hair = svgEl("line", { y1: T, y2: Hh - B, stroke: "var(--line-2)", visibility: "hidden" }, svg);
     var dot = svgEl("circle", { r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2, visibility: "hidden" }, svg);
@@ -1228,9 +1201,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       var narrowRow = box.clientWidth < 700, sp = el("div", "c-spark spark-wrap"),
         sv = spark(s.courbe, narrowRow ? Math.max(200, box.clientWidth - 34) : 104, narrowRow ? 40 : 30);
       sp.appendChild(sv); row.appendChild(sp);
-      if (sv._play) { row.addEventListener("pointerenter", sv._play); onFirstView(sv); }
       row._s = { rang: i + 1, nom: s.nom, capital: s.capital, operations: s.operations };
-      row.addEventListener("click", function () { row.classList.toggle("open"); if (sv._play) sv._play(); });
+      row.addEventListener("click", function () { row.classList.toggle("open"); });
       arenaRows.push(row); box.appendChild(row);
     });
     box.appendChild(more);
@@ -1270,7 +1242,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var paths = {};
     order.forEach(function (n) { var hi = n === lead;
       paths[n] = svgEl("path", { d: path(n), fill: "none", stroke: hi ? "var(--blue)" : "var(--dot-lo)",
-        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", pathLength: 1, "class": "draw" }, svg); });
+        "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg); });
     // Fin de chaque ligne : un point ; noms en clair pour les trois premiers (écran large).
     names.forEach(function (n) { var rs = Hs.strategies[n], i = rs.length - 1; while (i >= 0 && !rs[i]) i--;
       if (i < 0) return; var hi = n === lead;
@@ -1285,11 +1257,9 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       Object.keys(paths).forEach(function (m) { paths[m].setAttribute("stroke", m === n ? "var(--blue)" : "var(--dot-lo)");
         paths[m].setAttribute("stroke-width", m === n ? 2.5 : 2); });
       paths[n].parentNode.appendChild(paths[n]);
-      if (n !== shown) { shown = n; play(paths[n], [], 700); }  // la ligne survolée se redessine
       tip.show(sx(i) * k, y * k, n.replace(/_v[\d.]+$/, "") + (rk ? " · n°" + rk : ""),
         short(dates[i]) + " · capital " + fmt((Hs.capital[n] || [])[i], 2)); }
-    var shown = null;
-    function reset() { tip.hide(); shown = null; Object.keys(paths).forEach(function (m) {
+    function reset() { tip.hide(); Object.keys(paths).forEach(function (m) {
       paths[m].setAttribute("stroke", m === lead ? "var(--blue)" : "var(--dot-lo)"); paths[m].setAttribute("stroke-width", 2); });
       if (paths[lead]) paths[lead].parentNode.appendChild(paths[lead]); }
     svg.addEventListener("pointermove", function (ev) { var b = svg.getBoundingClientRect(), X = (ev.clientX - b.left) / b.width * W,
@@ -1313,7 +1283,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     table("arena-hist-table", [{ t: "photo", d: 1 }, { t: "classement (5 premiers)", q: 1 }], rows, "—");
   })();
   // Petite courbe d'une stratégie : bleue si elle est au-dessus de son départ, rouge en dessous ;
-  // trait pointillé = « ne rien faire ». `sp._play()` la redessine de gauche à droite.
+  // trait pointillé = « ne rien faire ».
   function spark(curve, w, h) {
     w = w || 104; h = h || 30;
     var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, "aria-hidden": "true" });
@@ -1325,22 +1295,12 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     var soft = lastV > initial + 0.5 ? "var(--blue-soft)" : lastV < initial - 0.5 ? "var(--red-soft)" : "var(--wash)";
     svgEl("line", { x1: 2, x2: w - 6, y1: Y(initial), y2: Y(initial), stroke: "var(--line-2)", "stroke-dasharray": "2 3" }, svg);
     var d = curve.map(function (p, i) { return (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(p[1]).toFixed(1); }).join(" ");
-    var area = svgEl("path", { d: d + " L" + X(curve.length - 1).toFixed(1) + " " + Y(initial).toFixed(1) + " L" + X(0).toFixed(1) + " " +
+    svgEl("path", { d: d + " L" + X(curve.length - 1).toFixed(1) + " " + Y(initial).toFixed(1) + " L" + X(0).toFixed(1) + " " +
       Y(initial).toFixed(1) + " Z", fill: soft, stroke: "none" }, svg);
-    var line = svgEl("path", { d: d, fill: "none", stroke: col, "stroke-width": 1.6, "stroke-linejoin": "round",
-      "stroke-linecap": "round", pathLength: 1, "class": "draw" }, svg);
-    var end = svgEl("circle", { cx: X(curve.length - 1), cy: Y(lastV), r: 2.8, fill: col }, svg);
-    svg._play = function () { play(line, [area, end]); };
+    svgEl("path", { d: d, fill: "none", stroke: col, "stroke-width": 1.6, "stroke-linejoin": "round",
+      "stroke-linecap": "round" }, svg);
+    svgEl("circle", { cx: X(curve.length - 1), cy: Y(lastV), r: 2.8, fill: col }, svg);
     return svg;
-  }
-  // La courbe se forme de gauche à droite (trait), puis la surface et le point final apparaissent.
-  function play(path, extras, ms) {
-    if (REDUCED || !path) return; ms = ms || 900;
-    path.style.transition = "none"; path.style.strokeDashoffset = "1";
-    (extras || []).forEach(function (e) { e.style.transition = "none"; e.style.opacity = "0"; });
-    path.getBoundingClientRect();
-    path.style.transition = "stroke-dashoffset " + ms + "ms cubic-bezier(.3,.7,.2,1)"; path.style.strokeDashoffset = "0";
-    (extras || []).forEach(function (e) { e.style.transition = "opacity 400ms ease " + Math.round(ms * 0.6) + "ms"; e.style.opacity = "1"; });
   }
 
 
@@ -1544,288 +1504,6 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       btn.addEventListener("click", function () { folded = !folded; apply();
         try { localStorage.setItem(key, folded ? "1" : "0"); } catch (e) { /* navigation privée : on ne retient rien */ } });
       apply(); });
-  })();
-
-  // ---------------------------------------------------------------- petits organes (18/10/2026)
-  // Demande d'Etienne : l'esthétique du cœur partout dans la page. Chaque bloc porte, devant son
-  // titre, un petit organe en points (même gamme de gris, reflet bleu pastel quand il s'active),
-  // choisi pour ce que fait le bloc : cerveau (résumé), noyau (capital principal), poumons
-  // (aujourd'hui), ADN (arène), cellule qui se divise (entonnoir), artère (capital), cellules
-  // (positions), neurone (ordres posés), colonne (opérations), œil (marchés surveillés, décisions),
-  // tracé du pouls, nerfs (sources), noyau (système). Les points hors de l'organe sont au repos et
-  // scintillent de temps en temps. Une seule boucle d'animation, seulement pour les organes visibles,
-  // à l'arrêt si l'onglet est caché ; image fixe si l'utilisateur préfère moins d'animations.
-  var ORGANS = [];  // petits organes des titres, partagés avec le tissu des cartes (cardTissue)
-  (function organs() {
-    var TAU = 6.2832, BLUE = [157, 191, 245];
-    function seg(u, v, x1, y1, x2, y2) { var dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1;
-      var k = Math.max(0, Math.min(1, ((u - x1) * dx + (v - y1) * dy) / L)); return [Math.hypot(u - x1 - k * dx, v - y1 - k * dy), k]; }
-    function blob(d, r, soft) { return d > r ? 0 : Math.min(1, (r - d) / (soft || 0.12)); }
-    // Chaque forme : (u ∈ [−1,8 ; 1,8], v ∈ [−1 ; 1], t en s) → [présence 0-1, activité 0-1] ou 0.
-    var SHAPES = {
-      cerveau: function (u, v, t) { var e = u * u / 2.3 + (v + 0.05) * (v + 0.05) / 0.72; if (e > 1) return 0;
-        var f = (0.62 + 0.38 * Math.sin(u * 5.2 + Math.sin(v * 4) * 1.6)) * Math.min(1, (1 - e) * 4) * (Math.abs(u) < 0.06 ? 0.25 : 1);
-        var a = 0; for (var k = 0; k < 3; k++) { var cx = 1.15 * Math.sin(t * 0.55 + k * 2.1), cy = 0.5 * Math.cos(t * 0.8 + k * 1.3);
-          a = Math.max(a, Math.exp(-((u - cx) * (u - cx) + (v - cy) * (v - cy)) * 5) * (0.5 + 0.5 * Math.sin(t * 2.7 + k * 2))); }
-        return [f, a]; },
-      noyau: function (u, v, t) { var d = Math.hypot(u / 1.55, v / 0.92); if (d > 1) return 0;
-        var pulse = 0.5 + 0.5 * Math.sin(t * 2.2), nucleus = blob(Math.hypot(u, v), 0.36 + 0.05 * pulse, 0.1);
-        var ring = d > 0.86 ? 0.75 : 0;
-        return [Math.max(nucleus, ring, 0.22), nucleus * pulse + (ring ? 0.3 * (0.5 + 0.5 * Math.sin(Math.atan2(v, u) * 3 - t * 2)) : 0)]; },
-      poumons: function (u, v, t) { var s = 1 + 0.13 * Math.sin(t * 1.25), breath = 0.5 + 0.5 * Math.sin(t * 1.25);
-        var lobe = Math.max(blob(Math.hypot((Math.abs(u) - 0.72) / (0.62 * s), (v - 0.15) / (0.82 * s)), 1, 0.25), 0);
-        var trach = (Math.abs(u) < 0.08 && v < 0.05) || seg(Math.abs(u), v, 0, 0.0, 0.45, 0.3)[0] < 0.07 ? 0.9 : 0;
-        var f = Math.max(lobe, trach); return f ? [f, lobe * breath] : 0; },
-      adn: function (u, v, t) { var ph = u * 2.4 + t * 1.4, y = 0.62 * Math.sin(ph), front = 0.5 + 0.5 * Math.cos(ph);
-        var s1 = Math.exp(-Math.pow((v - y) / 0.14, 2)), s2 = Math.exp(-Math.pow((v + y) / 0.14, 2));
-        var rung = (Math.abs(((ph / Math.PI) % 1 + 1) % 1 - 0.5) > 0.42 && Math.abs(v) < Math.abs(y)) ? 0.45 : 0;
-        var f = Math.max(s1, s2, rung); return f > 0.15 ? [f, s1 > s2 ? front : 1 - front] : 0; },
-      division: function (u, v, t) { var p = 0.5 + 0.5 * Math.sin(t * 0.55), d = 0.12 + 0.72 * p;
-        var c1 = Math.hypot(u + d, v), c2 = Math.hypot(u - d, v), r = 0.62 - 0.08 * p;
-        var d = Math.min(c1, c2); if (d > r) return 0;
-        var membrane = d > r - 0.13 ? 0.85 : 0.22, nuc = Math.max(blob(c1, 0.2), blob(c2, 0.2));
-        return [Math.max(membrane, nuc), nuc * (0.4 + 0.6 * p) + (membrane > 0.5 ? 0.25 * (1 - p) : 0)]; },
-      artere: function (u, v, t) { var w = 0.42 + 0.05 * Math.sin(t * 2.4 - u * 1.5); if (Math.abs(v) > w) return 0;
-        var wall = Math.abs(v) > w - 0.12 ? 0.85 : 0.18, a = 0;
-        for (var k = 0; k < 4; k++) { var x = ((k * 0.95 + t * 0.7) % 3.8) - 1.9, y = 0.13 * Math.sin(k * 2.3);
-          a = Math.max(a, blob(Math.hypot(u - x, v - y), 0.2, 0.1)); }
-        return [Math.max(wall, a), a]; },
-      cellules: function (u, v, t) { var f = 0, a = 0;
-        for (var k = 0; k < 5; k++) { var cx = 1.3 * Math.sin(t * 0.22 + k * 1.7), cy = 0.55 * Math.cos(t * 0.31 + k * 2.3);
-          var d = Math.hypot(u - cx, v - cy), r = 0.27 + 0.04 * Math.sin(t * 1.4 + k);
-          if (d < r) { f = Math.max(f, d > r - 0.09 ? 0.8 : d < 0.08 ? 1 : 0.25); a = Math.max(a, (d < 0.1 ? 1 : 0.3) * (0.5 + 0.5 * Math.sin(t * 2 + k))); } }
-        return f ? [f, a] : 0; },
-      neurone: function (u, v, t) { var soma = blob(Math.hypot(u + 1.15, v), 0.34, 0.1), f = soma, a = 0;
-        var ax = seg(u, v, -0.85, 0, 1.75, 0.1 * Math.sin(1.2)), along = ax[1];
-        if (ax[0] < 0.1) { f = Math.max(f, 0.75); var imp = ((t * 0.55) % 1); a = Math.exp(-Math.pow((along - imp) / 0.07, 2)); }
-        [[-1.15, -0.3, -1.6, -0.85], [-1.15, 0.3, -1.65, 0.8], [-1.35, 0, -1.8, -0.1], [1.75, 0.1, 1.8, -0.5], [1.75, 0.1, 1.8, 0.6]]
-          .forEach(function (s) { if (seg(u, v, s[0], s[1], s[2], s[3])[0] < 0.09) f = Math.max(f, 0.6); });
-        return f ? [f, Math.max(a, soma * (0.5 + 0.5 * Math.sin(t * 3)))] : 0; },
-      colonne: function (u, v, t) { for (var i = 0; i < 8; i++) { var x = -1.55 + i * 0.44;
-          if (Math.abs(u - x) < 0.15 && Math.abs(v) < 0.5) return [0.85, 0.5 + 0.5 * Math.sin(t * 2.2 - i * 0.8)];
-          if (Math.abs(u - x - 0.22) < 0.05 && Math.abs(v) < 0.3) return [0.3, 0]; }
-        return Math.abs(v) < 0.06 ? [0.25, 0] : 0; },
-      oeil: function (u, v, t) { var cyc = t % 5.5, lid = cyc < 0.22 ? Math.abs(cyc - 0.11) / 0.11 : 1;
-        var h = 0.78 * (1 - Math.pow(u / 1.7, 2)) * lid; if (Math.abs(v) > h) return 0;
-        var gx = 0.3 * Math.sin(t * 0.4), d = Math.hypot(u - gx, v), edge = Math.abs(v) > h - 0.1 ? 0.7 : 0.2;
-        if (d < 0.17) return [0.15, 0]; if (d < 0.5) return [1, 0.5 + 0.5 * Math.sin(Math.atan2(v, u - gx) * 5 + t * 1.5)];
-        return [edge, 0]; },
-      pouls: function (u, v, t) { var x = ((u + 1.8) / 3.6 + t * 0.25) % 1, y;
-        y = x < 0.4 ? 0 : x < 0.45 ? -0.25 : x < 0.5 ? 0.85 : x < 0.55 ? -0.7 : x < 0.62 ? 0.15 : 0;
-        if (Math.abs(v + y * 0.9) > 0.14) return 0; var head = (u + 1.8) / 3.6;
-        return [0.85, Math.exp(-Math.pow((head - 0.8) / 0.12, 2))]; },
-      nerfs: function (u, v, t) { var f = 0, a = 0, S = [[-1.8, 0, 0, 0], [0, 0, 0.9, -0.55], [0, 0, 0.9, 0.55], [0.9, -0.55, 1.8, -0.85],
-          [0.9, -0.55, 1.8, -0.3], [0.9, 0.55, 1.8, 0.85], [0.9, 0.55, 1.8, 0.3], [-0.9, 0, -0.4, -0.7], [-0.9, 0, -0.4, 0.7]];
-        S.forEach(function (s, i) { var r = seg(u, v, s[0], s[1], s[2], s[3]); if (r[0] < 0.1) { f = 0.7;
-          a = Math.max(a, Math.exp(-Math.pow((r[1] - ((t * 0.6 + i * 0.27) % 1)) / 0.1, 2))); } });
-        return f ? [f, a] : 0; }
-    };
-    var PICK = { resume: "cerveau", principal: "noyau", aujourdhui: "poumons", arene: "adn", entonnoir: "division",
-      capital: "artere", positions: "cellules", "ordres-poses": "neurone", "decisions-recentes": "oeil",
-      "Opérations clôturées": "colonne", "Marchés surveillés": "oeil", "Pouls de la machine": "pouls",
-      "Sources d'information": "nerfs", "Système": "noyau" };
-    function grain(i, j) { var s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return s - Math.floor(s); }
-    var list = [];
-    Array.prototype.forEach.call(document.querySelectorAll("main section.card"), function (sec) {
-      if (sec.id === "organisme") return;
-      var h2 = sec.querySelector(".head h2"); if (!h2) return;
-      var title = h2.textContent.trim(), block = sec.id || (sec.parentNode && sec.parentNode.id) || "";
-      var kind = PICK[sec.id] || PICK[title] || PICK[block]; if (!kind) return;
-      var cv = document.createElement("canvas"); cv.className = "organ"; cv.setAttribute("aria-hidden", "true");
-      h2.insertBefore(cv, h2.firstChild);
-      // Grille fixe de 30 × 13 points ; l'écart suit la taille des points du cœur (même taille partout).
-      var step = Math.max(3.1, Math.min(5.4, heartDot() / 0.4)), W = Math.round(30 * step), Hh = Math.round(13 * step);
-      var dpr = Math.min(window.devicePixelRatio || 1, 2), ctx = cv.getContext && cv.getContext("2d");
-      if (!ctx) return;
-      cv.width = W * dpr; cv.height = Hh * dpr; cv.style.width = W + "px"; cv.style.height = Hh + "px";
-      var pts = [], cols = Math.floor(W / step), rows = Math.floor(Hh / step);
-      for (var i = 0; i < cols; i++) for (var j = 0; j < rows; j++)
-        pts.push({ x: (i + 0.5) * step + (W - cols * step) / 2, y: (j + 0.5) * step + (Hh - rows * step) / 2,
-          u: ((i + 0.5) / cols * 2 - 1) * 1.8, v: (j + 0.5) / rows * 2 - 1, ph: grain(i, j) * TAU, sp: 0.35 + grain(j + 3, i + 7) * 0.9 });
-      var organ = { cv: cv, ctx: ctx, pts: pts, shape: SHAPES[kind], W: W, H: Hh, step: step, dpr: dpr, visible: true,
-        dot: Math.min(heartDot(), step * 0.42),
-        sec: sec, boost: 0 };
-      list.push(organ); ORGANS.push(organ);
-    });
-    if (!list.length) return;
-    function draw(o, t) {
-      var ctx = o.ctx; ctx.setTransform(o.dpr, 0, 0, o.dpr, 0, 0); ctx.clearRect(0, 0, o.W, o.H);
-      var layers = {};
-      o.pts.forEach(function (p) {
-        var r = o.shape(p.u, p.v, t), sh, rad, mix = 0;
-        if (!r || r[0] <= 0.05) {  // au repos : petit point sombre qui scintille de temps en temps
-          var tw = REDUCED ? 0 : Math.pow(Math.max(0, Math.sin(t * p.sp + p.ph)), 16);
-          sh = Math.round(34 + 46 * tw); rad = o.dot;
-        } else {
-          var f = Math.min(1, r[0]), a = Math.min(1, Math.max(0, (r[1] || 0) + o.boost));  // boost : un influx vient d'arriver
-          sh = Math.round(64 + 150 * f + 30 * a); rad = o.dot; mix = 0.42 * a;
-        }
-        var key = Math.round(sh / 6) * 6 + "|" + Math.round(mix * 8);
-        (layers[key] = layers[key] || []).push(p.x, p.y, rad);
-      });
-      Object.keys(layers).forEach(function (k) { var parts = k.split("|"), sh = +parts[0], m = +parts[1] / 8, a = layers[k];
-        ctx.fillStyle = "rgb(" + Math.round(sh + (BLUE[0] - sh) * m) + "," + Math.round(sh + (BLUE[1] - sh) * m) + "," +
-          Math.round(sh + 3 + (BLUE[2] - sh) * m) + ")";
-        ctx.beginPath(); for (var n = 0; n < a.length; n += 3) { ctx.moveTo(a[n] + a[n + 2], a[n + 1]); ctx.arc(a[n], a[n + 1], a[n + 2], 0, TAU); }
-        ctx.fill(); });
-    }
-    if (window.IntersectionObserver) {
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) {
-        list.forEach(function (o) { if (o.cv === e.target) o.visible = e.isIntersecting; }); }); });
-      list.forEach(function (o) { io.observe(o.cv); });
-    }
-    var raf = null, last = 0;
-    function loop(now) {
-      raf = null; if (document.hidden) return;
-      if (now - last > 40) { last = now; var t = now / 1000;
-        list.forEach(function (o) { if (o.visible) draw(o, t); o.boost *= 0.92; if (o.boost < 0.01) o.boost = 0; }); }
-      raf = requestAnimationFrame(loop);
-    }
-    list.forEach(function (o) { draw(o, 1.7); });  // première image (et image fixe sans animation)
-    if (!REDUCED) {
-      raf = requestAnimationFrame(loop);
-      document.addEventListener("visibilitychange", function () { if (!document.hidden && !raf) raf = requestAnimationFrame(loop); });
-    }
-  })();
-
-  // ---------------------------------------------------------------- tissu des cartes (18/10/2026, v2)
-  // Demande d'Etienne : les points À L'INTÉRIEUR des cartes, dans la place libre autour du texte
-  // (jamais sur un mot, un graphique ou un bouton), et des animations ENTRE les cartes qui
-  // travaillent ensemble : les ordres du capital principal parlent à la courbe du capital, aux
-  // positions et au cœur ; l'arène parle au principal et à l'entonnoir ; les sources à l'arène…
-  // - Chaque carte a son tissu de points (taille des points du cœur), qui scintillent au repos et
-  //   suivent une animation propre à la carte (ondes, courant, respiration, hélice, étincelles).
-  // - Un lien = un influx qui part du point de contrôle d'une carte (anneau dans sa marge
-  //   intérieure, à hauteur du titre), longe la marge intérieure des cartes, traverse l'espace qui
-  //   les sépare et arrive au point de contrôle de l'autre carte : l'anneau s'illumine, une onde
-  //   parcourt le tissu de la carte et son petit organe s'active.
-  // Une seule toile par-dessus la page (elle ne capte aucun clic) ; les zones de texte sont
-  // calculées depuis les vraies lignes de texte et recalculées quand une carte change de taille.
-  (function cardTissue() {
-    var cv = document.getElementById("field"), ctx = cv && cv.getContext && cv.getContext("2d");
-    if (!ctx) return;
-    var STEP = Math.max(8, HEART_STEP), DOT = heartDot(), TAU = 6.2832, BLUE = [157, 191, 245];
-    var dpr = 1, W = 0, Hv = 0, raf = null, last = 0, nextSpawn = 0, packets = [];
-    // Animation propre à chaque carte, et liens entre cartes (qui « parle » à qui).
-    var MOOD = { resume: "ondes", principal: "courant", aujourdhui: "souffle", arene: "helice", entonnoir: "ondes",
-      capital: "courant", positions: "etincelles", "ordres-poses": "courant", "decisions-recentes": "etincelles",
-      journal: "courant", systeme: "ondes" };
-    var LINKS = [["principal", "capital"], ["principal", "positions"], ["principal", "organisme"],
-      ["principal", "ordres-poses"], ["principal", "journal"], ["arene", "principal"], ["arene", "entonnoir"],
-      ["arene", "journal"], ["systeme", "arene"], ["systeme", "aujourdhui"], ["aujourdhui", "resume"],
-      ["positions", "capital"], ["decisions-recentes", "principal"], ["entonnoir", "arene"]];
-    function grain(i, j) { var s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return s - Math.floor(s); }
-    function blockOf(sec) { var p = sec.parentNode; return sec.id || (p && p.id) || ""; }
-    var cards = Array.prototype.map.call(document.querySelectorAll("main section.card"), function (sec) {
-      return { el: sec, block: blockOf(sec), mood: MOOD[blockOf(sec)] || "ondes", w: -1, h: -1, dots: [], pulse: -9, px: 0, py: 0 };
-    });
-    var heartCard = { el: document.getElementById("organisme"), block: "organisme" };
-    // Zones occupées d'une carte : lignes de texte réelles + graphiques, boutons, pastilles…
-    function rebuild(c) {
-      var r = c.el.getBoundingClientRect(), busy = [], pad = 5;
-      c.w = c.el.offsetWidth; c.h = c.el.offsetHeight;
-      if (c.el.id === "organisme" || c.h === 0) { c.dots = []; return; }
-      var walker = document.createTreeWalker(c.el, NodeFilter.SHOW_TEXT, null), node, range = document.createRange();
-      while ((node = walker.nextNode())) { if (!node.nodeValue.trim()) continue;
-        range.selectNodeContents(node);
-        Array.prototype.forEach.call(range.getClientRects(), function (q) { if (q.width && q.height) busy.push(q); }); }
-      Array.prototype.forEach.call(c.el.querySelectorAll("svg, canvas, button, .pill, .chip, .tip, input, img, summary"),
-        function (e) { var q = e.getBoundingClientRect(); if (q.width && q.height) busy.push(q); });
-      // Grille d'occupation : chaque zone occupée noircit les cases qu'elle couvre (rapide même avec beaucoup de texte).
-      var dots = [], x0 = 10, y0 = 10, nx = Math.max(0, Math.ceil((r.width - 8 - x0) / STEP)),
-        ny = Math.max(0, Math.ceil((r.height - 8 - y0) / STEP)), taken = new Uint8Array(nx * ny);
-      busy.forEach(function (q) {
-        var i0 = Math.max(0, Math.ceil((q.left - pad - r.left - x0) / STEP)), i1 = Math.min(nx - 1, Math.floor((q.right + pad - r.left - x0) / STEP)),
-          j0 = Math.max(0, Math.ceil((q.top - pad - r.top - y0) / STEP)), j1 = Math.min(ny - 1, Math.floor((q.bottom + pad - r.top - y0) / STEP));
-        for (var j = j0; j <= j1; j++) for (var i = i0; i <= i1; i++) taken[j * nx + i] = 1; });
-      for (var j = 0; j < ny; j++) for (var i = 0; i < nx; i++) if (!taken[j * nx + i]) {
-        var x = x0 + i * STEP, y = y0 + j * STEP; dots.push([x, y, grain(x, y) * TAU, 0.3 + grain(y, x) * 0.9]); }
-      c.dots = dots; c.built = performance.now();
-    }
-    function size() { dpr = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; Hv = window.innerHeight;
-      cv.width = Math.round(W * dpr); cv.height = Math.round(Hv * dpr); }
-    // Point de contrôle : marge intérieure gauche ou droite de la carte, à hauteur du titre.
-    function checkpoint(c, right) { var r = c.el.getBoundingClientRect(), h = c.el.querySelector(".head h2, .o-head");
-      var hr = h ? h.getBoundingClientRect() : r;
-      return [right ? r.right - 10 : r.left + 10, Math.min(r.bottom - 10, Math.max(r.top + 12, hr.top + hr.height / 2))]; }
-    function find(block) { return block === "organisme" ? heartCard : cards.filter(function (c) { return c.block === block && c.el.offsetParent !== null; })[0]; }
-    function spawn(t) {
-      var live = LINKS.filter(function (l) { return find(l[0]) && find(l[1]); });
-      if (!live.length) return;
-      var l = live[Math.floor(Math.random() * live.length)], back = Math.random() < 0.35;
-      packets.push({ from: back ? l[1] : l[0], to: back ? l[0] : l[1], right: Math.random() < 0.5, t0: t, dur: 0 });
-    }
-    function ambient(c, x, y, t, w, h) {
-      var m = c.mood, v = 0;
-      if (m === "ondes") { var d = Math.hypot(x - 60, y - 30); v = Math.pow(0.5 + 0.5 * Math.sin(d / 26 - t * 1.6), 6); }
-      else if (m === "courant") v = Math.pow(0.5 + 0.5 * Math.sin(x / 34 - t * 2.1 + Math.sin(y / 50)), 8);
-      else if (m === "souffle") v = 0.35 * (0.5 + 0.5 * Math.sin(t * 1.2 - y / 160));
-      else if (m === "helice") { var s = Math.sin(x / 38 + t * 1.3) * h * 0.32 + h / 2; v = Math.exp(-Math.pow((y - s) / 16, 2)) * 0.8
-        + Math.exp(-Math.pow((y - (h - s)) / 16, 2)) * 0.5; }
-      if (c.pulse > -9) { var age = t - c.pulse, dd = Math.hypot(x - c.px, y - c.py) - age * 360;
-        if (age < 1.6) v = Math.max(v, Math.exp(-dd * dd / 900) * (1 - age / 1.6)); }
-      return Math.min(1, v);
-    }
-    function draw(t) {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, Hv);
-      var moving = !REDUCED, layers = [], head = document.querySelector(".top"), topLimit = head ? head.getBoundingClientRect().bottom : 0;
-      // Teintes regroupées en paliers (gris → bleu) : un seul tracé par palier, c'est ce qui garde l'animation fluide.
-      // Bulles d'information des graphiques ouvertes au survol : jamais de point par-dessus.
-      var tips = Array.prototype.filter.call(document.querySelectorAll(".tip"), function (e) {
-        return e.offsetParent !== null && getComputedStyle(e).opacity !== "0"; }).map(function (e) { return e.getBoundingClientRect(); });
-      function put(x, y, sh, mix) { if (y < topLimit - 2) return;  // jamais sous la barre du haut
-        for (var q = 0; q < tips.length; q++) if (x > tips[q].left - 4 && x < tips[q].right + 4 && y > tips[q].top - 4 && y < tips[q].bottom + 4) return;
-        var key = Math.min(47, Math.round(sh / 6)) * 9 + Math.round(mix * 8); (layers[key] = layers[key] || []).push(x, y); }
-      cards.forEach(function (c) {
-        if (c.el.offsetParent === null) return;
-        var r = c.el.getBoundingClientRect(); if (r.bottom < 0 || r.top > Hv) return;
-        if (c.el.offsetWidth !== c.w || c.el.offsetHeight !== c.h || !c.built || performance.now() - c.built > 6000) rebuild(c);
-        for (var n = 0; n < c.dots.length; n++) { var d = c.dots[n], x = r.left + d[0], y = r.top + d[1];
-          if (y < topLimit - 2 || y > Hv + STEP) continue;
-          var tw = moving ? Math.pow(Math.max(0, Math.sin(t * d[3] + d[2])), 18) : 0;
-          var a = moving ? ambient(c, d[0], d[1], t, r.width, r.height) : 0;
-          put(x, y, 34 + 46 * tw + 70 * a, 0.35 * a); }
-      });
-      // Influx entre cartes : le long de la marge intérieure, à travers l'espace entre les cartes.
-      if (moving && t >= nextSpawn && packets.length < 4) { spawn(t); nextSpawn = t + 0.7 + Math.random() * 1.2; }
-      packets = packets.filter(function (p) {
-        var A = find(p.from), B = find(p.to); if (!A || !B) return false;
-        var a = checkpoint(A, p.right), b = checkpoint(B, p.right);
-        if (!p.dur) p.dur = Math.max(0.6, Math.abs(b[1] - a[1]) / 520);
-        var prog = (t - p.t0) / p.dur;
-        if (prog >= 1) { if (B.el) { var rb = B.el.getBoundingClientRect(); B.pulse = t; B.px = b[0] - rb.left; B.py = b[1] - rb.top; }
-          ORGANS.forEach(function (o) { if (o.sec === B.el || (B.el && B.el.contains(o.sec))) o.boost = 1; });
-          B.flash = t; A.flash = A.flash || 0; return false; }
-        if (prog < 0.05) A.flash = t;
-        var dir = b[1] > a[1] ? 1 : -1, yHead = a[1] + (b[1] - a[1]) * prog;
-        for (var k = 0; k < 8; k++) { var y = Math.round((yHead - dir * k * STEP * 0.9) / STEP) * STEP + (a[1] % STEP);
-          if ((y - a[1]) * dir < 0) break; put(a[0], y, 70 + 170 * (1 - k / 8), 0.6 * (1 - k / 8)); }
-        return true; });
-      layers.forEach(function (arr, k) { if (!arr) return; var sh = Math.floor(k / 9) * 6, m = (k % 9) / 8;
-        ctx.fillStyle = "rgb(" + Math.round(sh + (BLUE[0] - sh) * m) + "," + Math.round(sh + (BLUE[1] - sh) * m) + "," +
-          Math.round(sh + 3 + (BLUE[2] - sh) * m) + ")";
-        ctx.beginPath(); for (var n = 0; n < arr.length; n += 2) { ctx.moveTo(arr[n] + DOT, arr[n + 1]); ctx.arc(arr[n], arr[n + 1], DOT, 0, TAU); }
-        ctx.fill(); });
-      // Points de contrôle : un anneau discret par carte et par marge ; il s'illumine à chaque échange.
-      cards.concat([heartCard]).forEach(function (c) {
-        if (!c.el || c.el.offsetParent === null || !LINKS.some(function (l) { return l[0] === c.block || l[1] === c.block; })) return;
-        [false, true].forEach(function (right) { var q = checkpoint(c, right);
-          if (q[1] < topLimit || q[1] > Hv) return;
-          var glow = c.flash !== undefined ? Math.max(0, 1 - (t - c.flash) / 0.9) : 0;
-          ctx.beginPath(); ctx.arc(q[0], q[1], DOT + 1.6 + 1.4 * glow, 0, TAU); ctx.lineWidth = 1.1;
-          ctx.strokeStyle = glow ? "rgba(157,191,245," + (0.4 + 0.6 * glow) + ")" : "rgba(196,196,200,0.35)"; ctx.stroke(); });
-      });
-    }
-    function loop(now) {
-      raf = null; if (document.hidden) return;
-      if (now - last > 40) { last = now; draw(now / 1000); }
-      raf = requestAnimationFrame(loop);
-    }
-    size();
-    window.addEventListener("resize", function () { size(); cards.forEach(function (c) { c.w = -1; }); if (REDUCED) draw(0); });
-    if (REDUCED) { draw(0); window.addEventListener("scroll", function () { draw(0); }, { passive: true }); return; }
-    raf = requestAnimationFrame(loop);
-    document.addEventListener("visibilitychange", function () { if (!document.hidden && !raf) raf = requestAnimationFrame(loop); });
   })();
 })();
 </script>
