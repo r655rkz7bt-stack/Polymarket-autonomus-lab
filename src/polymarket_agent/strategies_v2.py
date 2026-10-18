@@ -917,6 +917,131 @@ class CotesBookmakers(_Base):
         return self._finish(out, candidates)
 
 
+# --------------------------------------------------------------------------- 12. vague d'opinion
+
+
+class OpinionWave(_Base):
+    """« Vague d'opinion » (idée d'Etienne, 18/10/2026) : sur un marché LONG, ce qui paie avant le
+    règlement, c'est ce que les parieurs vont penser. On achète au début d'une vague (on en parle
+    de plus en plus, plusieurs sources indépendantes, direction donnée par l'IA ou par un prix qui
+    commence à bouger, mais pas encore trop) et on REVEND quand la vague est passée : objectif
+    atteint, attention retombée, stop ou durée maximale. Jamais gardé jusqu'au règlement.
+
+    Pourquoi ça peut marcher : sur le passé, en politique, SUIVRE un mouvement de 6 h a rapporté
+    +5,4 % (l'information s'y diffuse lentement) ; le contrer perdait (experiments/favori.md §6).
+    Pourquoi ça peut rater : le prix intègre déjà l'avis de ceux qui misent ; l'enthousiasme des
+    réseaux fausse souvent les prix au lieu de les annoncer ; acheter puis revendre paie deux fois
+    l'écart achat-vente et les frais. Test sur le passé : experiments/vague_opinion/. L'arène juge."""
+
+    strategy_id = "vague_opinion"
+    needs_price_history = True
+    required = ("min_days_left", "min_spike", "min_mentions", "min_sources", "min_stance", "max_move",
+                "push", "uncertainty", "min_net_edge", "stake_fraction", "take_profit", "stop_loss",
+                "max_hold_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        from datetime import timedelta, timezone
+        now = datetime.now(timezone.utc)
+        long_ = now + timedelta(days=float(self.params["min_days_left"]))
+        out = [m for m in markets if len(m.token_ids) == 2 and m.end_date is not None and m.end_date >= long_
+               and m.best_bid is not None and Decimal("0.08") <= m.best_bid <= Decimal("0.92")]
+        out.sort(key=lambda m: -float(m.volume_24h))
+        return out[: int(self.params.get("max_candidates", 40))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out = StrategyOutput()
+        p = self.params
+        candidates = []
+        total = state.total_estimated(marks)
+        for m in watchlist:
+            intel, mid = m.intel, self._mid(books, m)
+            if intel is None or mid is None or any(t in state.positions for t in m.token_ids):
+                continue
+            book0 = books.get(m.token_ids[0])
+            if m.end_date is None or (m.end_date - book0.fetched_at).total_seconds() < float(p["min_days_left"]) * 86400:
+                out.abstain("marché trop court")
+                continue
+            if (intel.spike < float(p["min_spike"]) or intel.mentions_24h < int(p["min_mentions"])
+                    or intel.independent_sources < int(p["min_sources"])):
+                out.abstain("pas de vague d'attention")
+                continue
+            drift = mid - m.yes_price_6h_ago if m.yes_price_6h_ago is not None else 0.0
+            if abs(intel.stance) >= float(p["min_stance"]):
+                up = intel.stance > 0  # l'IA dit dans quel sens penchent les textes
+            elif abs(drift) >= float(p.get("min_drift", Decimal("0.02"))):
+                up = drift > 0  # sans avis de l'IA : le sens où le prix commence à partir
+            else:
+                out.abstain("direction inconnue")
+                continue
+            if (drift if up else -drift) > float(p["max_move"]):
+                out.abstain("la vague est déjà dans le prix")
+                continue
+            if intel.stance and abs(intel.stance) >= float(p["min_stance"]) and drift and (drift > 0) != up:
+                out.abstain("le prix part à l'inverse des textes")
+                continue
+            side = 0 if up else 1
+            side_mid = mid if up else 1 - mid
+            est, u = side_mid + float(p["push"]), float(p["uncertainty"])
+            book = books.get(m.token_ids[side])
+            if book is None or book.best_ask is None:
+                continue
+            if book.best_bid is None:
+                continue
+            # Aller-retour : on achète au vendeur et on revendra à l'acheteur, frais aux deux bouts.
+            try:
+                fee = taker_fee(ONE, book.best_ask, m.fees)
+            except UnknownFees:
+                out.abstain("frais inconnus")
+                continue
+            round_trip = (book.best_ask - book.best_bid) + 2 * fee
+            if float(p["push"]) - float(round_trip) < float(p["min_net_edge"]):
+                out.abstain("aller-retour trop cher pour la poussée attendue")
+                continue
+            shares = (min(p["stake_fraction"] * total, state.cash) / (book.best_ask + fee)
+                      ).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            prop = self._buy(m, books, state, side, est - u, est, est + u, bucket, marks, out,
+                             f"vague_opinion:{intel.mentions_24h} mentions, pic ×{intel.spike:.1f}, "
+                             f"{intel.independent_sources} sources, IA {intel.stance:+.2f}, 6 h {drift:+.3f}",
+                             f"poussée attendue +{float(p['push']):.2f} non calibrée ± {u}, "
+                             f"aller-retour {float(round_trip):.3f}",
+                             "vague retombée, démenti, ou prix qui part à l'inverse", shares=shares,
+                             skip_edge=True)  # gain visé à la revente (aller-retour testé ci-dessus), pas au règlement
+            if prop:
+                candidates.append(prop)
+        return self._finish(out, candidates)
+
+    def exits(self, positions: dict[str, Position], markets: dict[str, MarketInfo],
+              books: dict[str, OrderBook], bucket: str, now: datetime) -> list[Proposal]:
+        """Revendre quand la vague est passée : objectif atteint, stop, durée maximale, ou attention
+        retombée (pic sous 1) alors qu'on est en gain."""
+        p = self.params
+        sells = []
+        for token_id, pos in positions.items():
+            book, market = books.get(token_id), markets.get(pos.market_id)
+            if book is None or book.best_bid is None:
+                continue
+            held_h = (now - datetime.fromisoformat(pos.opened_at)).total_seconds() / 3600
+            gain = book.best_bid - pos.avg_cost
+            intel = getattr(market, "intel", None) if market is not None else None
+            faded = intel is not None and intel.spike < 1.0 and held_h >= float(p.get("min_hold_hours", 6))
+            reason = ("objectif atteint" if gain >= p["take_profit"] else
+                      "stop" if gain <= -p["stop_loss"] else
+                      "durée maximale" if held_h >= float(p["max_hold_hours"]) else
+                      "vague retombée" if faded and gain > 0 else None)
+            if reason is None:
+                continue
+            mid = _d(float(book.mid or book.best_bid))
+            sells.append(Proposal(
+                op_id=make_op_id(bucket, self.strategy_id, self.version, token_id, "SELL"), side="SELL",
+                market_id=pos.market_id, event_id=pos.event_id, token_id=token_id, outcome=pos.outcome,
+                est_probability=mid, prob_low=mid, prob_high=mid, max_price=book.best_bid,
+                shares=pos.shares, net_edge=Decimal("0"), sources=("polymarket_clob",),
+                uncertainty="sortie", invalidation=reason, horizon_hours=Decimal("0"),
+                strategy_id=self.strategy_id, strategy_version=self.version))
+        return sells
+
+
 CLASSES = {c.strategy_id: c for c in (CrossMarketLadder, MarketStructure, NewsMomentum,
                                       InformationAdvantage, SocialSentiment, MeteoForecast,
-                                      TemperatureFloor, MarketMaker, PriceMove, FinDeMatch, CotesBookmakers)}
+                                      TemperatureFloor, MarketMaker, PriceMove, FinDeMatch, CotesBookmakers,
+                                      OpinionWave)}
