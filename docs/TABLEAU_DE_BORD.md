@@ -89,3 +89,10 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
   neurone, colonne, œil, pouls, nerfs), choisi pour ce que fait le bloc (`organs()` dans le
   gabarit, table PICK). Points au repos qui scintillent ; une seule boucle d'animation, organes
   visibles seulement, image fixe si « moins d'animations ».
+- Tissu de la page (18/10/2026, demande d'Etienne) : derrière les cartes, des points couvrent
+  toute la place libre (marges, espaces entre les blocs) et scintillent au repos. Deux vaisseaux
+  longent les marges, chaque bloc y a un point de contrôle (à hauteur de son titre) ; des influx
+  voyagent d'un bloc à l'autre (par le vaisseau ou en traversant l'espace entre deux blocs) ; à
+  l'arrivée, le point de contrôle s'illumine et le petit organe du bloc s'active (`field()`).
+  Rien n'est dessiné sous les cartes ; 25 images/s au plus, arrêt onglet caché, image fixe si
+  « moins d'animations ».
