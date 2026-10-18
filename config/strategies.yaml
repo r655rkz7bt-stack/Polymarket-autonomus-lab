@@ -189,36 +189,45 @@ news_momentum:
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
     max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
-information_advantage:
-  explication: "Quand une annonce officielle vient de sortir et que le prix n'a pas encore bougé, on achète avant les autres."
-  # Stratégie 3 : annonce officielle fraîche non encore intégrée (direction : Gemini).
+nf_sport_tres_court:
+  explication: "Comme naive_favorite, mais seulement le sport ET seulement à moins de 6 heures de la fin (le match est presque joué)."
+  # Petite-fille d'essai (18/10/2026, chercheur) : sport croisé avec très court délai. Remplace information_advantage (éliminée). Fantôme : gratuit.
+  mere: nf_sport_court
+  morceau: "sport + moins de 6 h"
+  class: naive_favorite
+  filtres: {familles: [sports], heures_min: 0, heures_max: 6}
   enabled: true
   version: "1.0.0"
-  created_at: "2026-10-15"
+  created_at: "2026-10-18"
   params:
-    max_age_minutes: {value: 60, min: 1, max: 1440}
-    min_stance:     {value: 0.5, min: 0.1, max: 1.0}
-    impact:         {value: 0.10, min: 0.0, max: 0.50}
-    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}
-    max_reaction:   {value: 0.02, min: 0.0, max: 0.30}
-    min_net_edge:   {value: 0.02, min: 0.0, max: 0.50}
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
-    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
-social_sentiment:
-  explication: "Quand tout le monde s'emballe sur les réseaux sans vraie source, on parie dans l'autre sens."
-  # Stratégie 6 : emballement social unilatéral non confirmé → pari contraire (direction : Gemini).
+nf_court_prix_haut:
+  explication: "Comme naive_favorite, mais seulement à moins de 24 heures de la fin ET quand le favori coûte déjà 90 centimes ou plus (très probable, petit gain par pari)."
+  # Fille d'essai (18/10/2026, chercheur) : court délai (champion) croisé avec prix haut. Remplace social_sentiment (éliminée). Fantôme : gratuit.
+  mere: nf_court
+  morceau: "moins de 24 h, prix >= 0,90"
+  class: naive_favorite
+  filtres: {heures_min: 0, heures_max: 24}
   enabled: true
   version: "1.0.0"
-  created_at: "2026-10-15"
+  created_at: "2026-10-18"
   params:
-    min_stance:     {value: 0.7, min: 0.1, max: 1.0}
-    min_mentions:   {value: 10, min: 1, max: 1000}
-    fade:           {value: 0.03, min: 0.0, max: 0.30}
-    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
-    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    min_ask:        {value: 0.90, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.97, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
-    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
 meteo_prevision:
   explication: "On compare les prévisions météo au prix et on parie contre la température que le marché croit trop probable."
