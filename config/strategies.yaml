@@ -1345,3 +1345,37 @@ cotes_bookmakers:
     kelly_fraction:     {value: 0.25, min: 0.0, max: 5.0}
     max_extra_ticks:    {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 4, min: 0, max: 50}
+
+vague_opinion:
+  explication: "Sur un marché qui dure longtemps, on achète quand tout le monde commence à en parler dans un sens, et on revend quand la vague est passée, sans attendre la fin."
+  # Idée d'Etienne (18/10/2026) : sur les marchés longs, ce qui paie avant le règlement, c'est ce
+  # que les parieurs vont penser. Achat au début d'une vague d'attention (mentions, sources
+  # indépendantes, direction de l'IA ou prix qui commence à bouger), revente quand elle est passée.
+  # Critique et test sur le passé : experiments/vague_opinion/.
+  # COUPÉE avant de jouer (18/10/2026) : sur 140 marchés longs (15/09-15/10, 242 vagues mesurées
+  # sur les fichiers GDELT), le prix REVIENT en arrière après une vague (−1,7 point à 72 h) ;
+  # suivre la vague perd −9,1 % après écart et frais (intervalle [−12,9 ; −5,9]), la contrer
+  # aussi (−4,6 %) ; 0 réglage gagnant sur 384. La vague annonce de l'agitation (+32 % de
+  # mouvement), pas son sens.
+  enabled: false
+  version: "1.0.0"
+  created_at: "2026-10-18"
+  params:
+    min_days_left:  {value: 7, min: 1, max: 365}      # marchés longs seulement
+    min_spike:      {value: 2.0, min: 1.0, max: 50.0}  # on en parle 2 fois plus que d'habitude
+    min_mentions:   {value: 4, min: 1, max: 1000}
+    min_sources:    {value: 2, min: 1, max: 50}        # au moins 2 sites différents
+    min_stance:     {value: 0.3, min: 0.0, max: 1.0}   # avis de l'IA assez net pour donner le sens
+    min_drift:      {value: 0.02, min: 0.0, max: 0.30} # sinon : le prix doit avoir commencé à bouger
+    max_move:       {value: 0.08, min: 0.0, max: 0.50} # au-delà, la vague est déjà dans le prix
+    push:           {value: 0.04, min: 0.0, max: 0.30} # poussée attendue (a priori non calibré)
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
+    stake_fraction: {value: 0.03, min: 0.0, max: 0.5}  # 3 % du capital par vague
+    take_profit:    {value: 0.05, min: 0.0, max: 0.50} # revente à +5 centimes par part
+    stop_loss:      {value: 0.05, min: 0.0, max: 0.50}
+    max_hold_hours: {value: 120, min: 1, max: 2000}    # 5 jours au plus
+    min_hold_hours: {value: 6, min: 0, max: 200}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}

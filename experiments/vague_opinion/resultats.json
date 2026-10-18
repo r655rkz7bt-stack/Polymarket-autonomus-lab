@@ -1,0 +1,2235 @@
+{
+ "params": {
+  "SPIKE_MIN": 2.0,
+  "MIN_ART3": 5,
+  "DRIFT": [
+   0.02,
+   0.08
+  ],
+  "DRIFT_H": 6,
+  "COOLDOWN_H": 24,
+  "NOSPIKE_MAX": 1.2,
+  "MIN_BASE_H": 48,
+  "P": [
+   0.05,
+   0.95
+  ],
+  "HALF_SPREAD": 0.01,
+  "TP": 0.05,
+  "SL": 0.05,
+  "MAX_HOLD_H": 120
+ },
+ "n_marches": 140,
+ "n_marches_attention": 120,
+ "n_heures": 48645,
+ "frais": {
+  "0.0 (feesEnabled=false)": 62,
+  "0.04 (feeSchedule.rate (politics_fees))": 71,
+  "0.05 (feeSchedule.rate (culture_fees))": 5,
+  "0.04 (feeSchedule.rate (finance_prices_fees))": 2
+ },
+ "couverture_gdelt": {
+  "heures_gkg_presentes": 912,
+  "heures_attendues": 912,
+  "articles_par_heure_median": 3765.5,
+  "recoupement_api_doc": [
+   {
+    "requete": "Lula Brazil",
+    "debut": "2026-09-07",
+    "heures": 168,
+    "articles_gkg": 325,
+    "articles_doc": 242,
+    "correlation": 0.823
+   },
+   {
+    "requete": "Lula Brazil",
+    "debut": "2026-09-14",
+    "heures": 168,
+    "articles_gkg": 158,
+    "articles_doc": 15,
+    "correlation": 0.028
+   },
+   {
+    "requete": "Lula Brazil",
+    "debut": "2026-09-21",
+    "heures": 168,
+    "articles_gkg": 312,
+    "articles_doc": 248,
+    "correlation": 0.312
+   }
+  ]
+ },
+ "groupes": {
+  "A vague + suivre": {
+   "n": 242,
+   "marches": 83,
+   "sujets": 60,
+   "move6": -0.007,
+   "hit6": 0.273,
+   "flat6": 0.112,
+   "move24": -0.0083,
+   "hit24": 0.372,
+   "flat24": 0.054,
+   "move72": -0.0169,
+   "hit72": 0.405,
+   "flat72": 0.041,
+   "move24_ic95": [
+    -0.0161,
+    -0.0008
+   ],
+   "move72_ic95": [
+    -0.0352,
+    -0.0023
+   ],
+   "pnl_ic95": [
+    -0.0412,
+    -0.0277
+   ],
+   "pnl": -0.0342,
+   "ret": -0.0907,
+   "ret_med": -0.0865,
+   "win": 0.306,
+   "ret_ic95": [
+    -0.1293,
+    -0.0592
+   ],
+   "fees": 0.0095,
+   "hold_h": 66.7,
+   "sorties": {
+    "objectif": 71,
+    "stop": 85,
+    "durée": 86
+   },
+   "moities": {
+    "1re moitié (15/09-29/09)": {
+     "n": 154,
+     "marches": 69,
+     "sujets": 50,
+     "move6": -0.0075,
+     "hit6": 0.312,
+     "flat6": 0.123,
+     "move24": -0.0104,
+     "hit24": 0.377,
+     "flat24": 0.039,
+     "move72": -0.0226,
+     "hit72": 0.409,
+     "flat72": 0.032,
+     "move24_ic95": [
+      -0.0212,
+      -0.0002
+     ],
+     "move72_ic95": [
+      -0.0482,
+      -0.0014
+     ],
+     "pnl_ic95": [
+      -0.0421,
+      -0.0248
+     ],
+     "pnl": -0.033,
+     "ret": -0.079,
+     "ret_med": -0.0772,
+     "win": 0.338,
+     "ret_ic95": [
+      -0.1364,
+      -0.0316
+     ],
+     "fees": 0.0092,
+     "hold_h": 60.2,
+     "sorties": {
+      "objectif": 50,
+      "stop": 58,
+      "durée": 46
+     }
+    },
+    "2e moitié (30/09-14/10)": {
+     "n": 88,
+     "marches": 45,
+     "sujets": 36,
+     "move6": -0.0063,
+     "hit6": 0.205,
+     "flat6": 0.091,
+     "move24": -0.0045,
+     "hit24": 0.364,
+     "flat24": 0.08,
+     "move72": -0.007,
+     "hit72": 0.398,
+     "flat72": 0.057,
+     "move24_ic95": [
+      -0.0099,
+      0.0015
+     ],
+     "move72_ic95": [
+      -0.0148,
+      0.0013
+     ],
+     "pnl_ic95": [
+      -0.0454,
+      -0.0266
+     ],
+     "pnl": -0.0362,
+     "ret": -0.1111,
+     "ret_med": -0.0993,
+     "win": 0.25,
+     "ret_ic95": [
+      -0.1471,
+      -0.0784
+     ],
+     "fees": 0.0101,
+     "hold_h": 78.0,
+     "sorties": {
+      "objectif": 21,
+      "stop": 27,
+      "durée": 40
+     }
+    }
+   }
+  },
+  "B sans vague (momentum seul) + suivre": {
+   "n": 853,
+   "marches": 109,
+   "sujets": 76,
+   "move6": -0.0059,
+   "hit6": 0.29,
+   "flat6": 0.141,
+   "move24": -0.0046,
+   "hit24": 0.347,
+   "flat24": 0.068,
+   "move72": -0.0013,
+   "hit72": 0.403,
+   "flat72": 0.046,
+   "move24_ic95": [
+    -0.0076,
+    -0.0015
+   ],
+   "move72_ic95": [
+    -0.0081,
+    0.0084
+   ],
+   "pnl_ic95": [
+    -0.0374,
+    -0.0286
+   ],
+   "pnl": -0.0327,
+   "ret": -0.1015,
+   "ret_med": -0.0857,
+   "win": 0.314,
+   "ret_ic95": [
+    -0.1254,
+    -0.0815
+   ],
+   "fees": 0.0084,
+   "hold_h": 68.0,
+   "sorties": {
+    "objectif": 245,
+    "stop": 308,
+    "durée": 300
+   },
+   "moities": {
+    "1re moitié (15/09-29/09)": {
+     "n": 540,
+     "marches": 101,
+     "sujets": 69,
+     "move6": -0.0057,
+     "hit6": 0.319,
+     "flat6": 0.141,
+     "move24": -0.0031,
+     "hit24": 0.381,
+     "flat24": 0.069,
+     "move72": 0.0015,
+     "hit72": 0.43,
+     "flat72": 0.026,
+     "move24_ic95": [
+      -0.0075,
+      0.0019
+     ],
+     "move72_ic95": [
+      -0.0087,
+      0.0151
+     ],
+     "pnl_ic95": [
+      -0.0375,
+      -0.0268
+     ],
+     "pnl": -0.032,
+     "ret": -0.1073,
+     "ret_med": -0.0791,
+     "win": 0.361,
+     "ret_ic95": [
+      -0.1427,
+      -0.0772
+     ],
+     "fees": 0.0088,
+     "hold_h": 62.3,
+     "sorties": {
+      "objectif": 180,
+      "stop": 208,
+      "durée": 152
+     }
+    },
+    "2e moitié (30/09-14/10)": {
+     "n": 313,
+     "marches": 72,
+     "sujets": 60,
+     "move6": -0.0062,
+     "hit6": 0.24,
+     "flat6": 0.141,
+     "move24": -0.0073,
+     "hit24": 0.288,
+     "flat24": 0.067,
+     "move72": -0.006,
+     "hit72": 0.358,
+     "flat72": 0.08,
+     "move24_ic95": [
+      -0.0108,
+      -0.0042
+     ],
+     "move72_ic95": [
+      -0.0094,
+      -0.0024
+     ],
+     "pnl_ic95": [
+      -0.0417,
+      -0.0252
+     ],
+     "pnl": -0.0339,
+     "ret": -0.0916,
+     "ret_med": -0.0882,
+     "win": 0.233,
+     "ret_ic95": [
+      -0.1215,
+      -0.063
+     ],
+     "fees": 0.0077,
+     "hold_h": 77.8,
+     "sorties": {
+      "objectif": 65,
+      "stop": 100,
+      "durée": 148
+     }
+    }
+   }
+  },
+  "C vague + contrer (fade)": {
+   "n": 242,
+   "marches": 83,
+   "sujets": 60,
+   "move6": 0.007,
+   "hit6": 0.616,
+   "flat6": 0.112,
+   "move24": 0.0083,
+   "hit24": 0.574,
+   "flat24": 0.054,
+   "move72": 0.0169,
+   "hit72": 0.554,
+   "flat72": 0.041,
+   "move24_ic95": [
+    0.0009,
+    0.0161
+   ],
+   "move72_ic95": [
+    0.0023,
+    0.0352
+   ],
+   "pnl_ic95": [
+    -0.0329,
+    -0.0168
+   ],
+   "pnl": -0.0248,
+   "ret": -0.0456,
+   "ret_med": -0.0445,
+   "win": 0.388,
+   "ret_ic95": [
+    -0.0676,
+    -0.0246
+   ],
+   "fees": 0.0095,
+   "hold_h": 67.1,
+   "sorties": {
+    "objectif": 84,
+    "stop": 70,
+    "durée": 88
+   },
+   "moities": {
+    "1re moitié (15/09-29/09)": {
+     "n": 154,
+     "marches": 69,
+     "sujets": 50,
+     "move6": 0.0075,
+     "hit6": 0.565,
+     "flat6": 0.123,
+     "move24": 0.0104,
+     "hit24": 0.584,
+     "flat24": 0.039,
+     "move72": 0.0226,
+     "hit72": 0.558,
+     "flat72": 0.032,
+     "move24_ic95": [
+      0.0002,
+      0.0212
+     ],
+     "move72_ic95": [
+      0.0014,
+      0.0484
+     ],
+     "pnl_ic95": [
+      -0.0346,
+      -0.0149
+     ],
+     "pnl": -0.0253,
+     "ret": -0.0495,
+     "ret_med": -0.0508,
+     "win": 0.416,
+     "ret_ic95": [
+      -0.0801,
+      -0.0221
+     ],
+     "fees": 0.0092,
+     "hold_h": 60.8,
+     "sorties": {
+      "objectif": 57,
+      "stop": 49,
+      "durée": 48
+     }
+    },
+    "2e moitié (30/09-14/10)": {
+     "n": 88,
+     "marches": 45,
+     "sujets": 36,
+     "move6": 0.0063,
+     "hit6": 0.705,
+     "flat6": 0.091,
+     "move24": 0.0045,
+     "hit24": 0.557,
+     "flat24": 0.08,
+     "move72": 0.007,
+     "hit72": 0.545,
+     "flat72": 0.057,
+     "move24_ic95": [
+      -0.0015,
+      0.0099
+     ],
+     "move72_ic95": [
+      -0.0012,
+      0.0149
+     ],
+     "pnl_ic95": [
+      -0.0359,
+      -0.0138
+     ],
+     "pnl": -0.024,
+     "ret": -0.0389,
+     "ret_med": -0.0417,
+     "win": 0.341,
+     "ret_ic95": [
+      -0.0673,
+      -0.0132
+     ],
+     "fees": 0.0101,
+     "hold_h": 78.0,
+     "sorties": {
+      "objectif": 27,
+      "stop": 21,
+      "durée": 40
+     }
+    }
+   }
+  },
+  "D sans vague + contrer": {
+   "n": 853,
+   "marches": 109,
+   "sujets": 76,
+   "move6": 0.0059,
+   "hit6": 0.57,
+   "flat6": 0.141,
+   "move24": 0.0046,
+   "hit24": 0.585,
+   "flat24": 0.068,
+   "move72": 0.0013,
+   "hit72": 0.551,
+   "flat72": 0.046,
+   "move24_ic95": [
+    0.0015,
+    0.0077
+   ],
+   "move72_ic95": [
+    -0.0084,
+    0.0081
+   ],
+   "pnl_ic95": [
+    -0.0279,
+    -0.0196
+   ],
+   "pnl": -0.0236,
+   "ret": -0.0567,
+   "ret_med": -0.0341,
+   "win": 0.409,
+   "ret_ic95": [
+    -0.0733,
+    -0.0411
+   ],
+   "fees": 0.0084,
+   "hold_h": 67.9,
+   "sorties": {
+    "objectif": 310,
+    "stop": 243,
+    "durée": 300
+   },
+   "moities": {
+    "1re moitié (15/09-29/09)": {
+     "n": 540,
+     "marches": 101,
+     "sujets": 69,
+     "move6": 0.0057,
+     "hit6": 0.541,
+     "flat6": 0.141,
+     "move24": 0.0031,
+     "hit24": 0.55,
+     "flat24": 0.069,
+     "move72": -0.0015,
+     "hit72": 0.544,
+     "flat72": 0.026,
+     "move24_ic95": [
+      -0.0018,
+      0.0075
+     ],
+     "move72_ic95": [
+      -0.015,
+      0.0088
+     ],
+     "pnl_ic95": [
+      -0.0313,
+      -0.019
+     ],
+     "pnl": -0.0251,
+     "ret": -0.0582,
+     "ret_med": -0.0388,
+     "win": 0.435,
+     "ret_ic95": [
+      -0.0802,
+      -0.0372
+     ],
+     "fees": 0.0088,
+     "hold_h": 62.2,
+     "sorties": {
+      "objectif": 209,
+      "stop": 179,
+      "durée": 152
+     }
+    },
+    "2e moitié (30/09-14/10)": {
+     "n": 313,
+     "marches": 72,
+     "sujets": 60,
+     "move6": 0.0062,
+     "hit6": 0.62,
+     "flat6": 0.141,
+     "move24": 0.0073,
+     "hit24": 0.645,
+     "flat24": 0.067,
+     "move72": 0.006,
+     "hit72": 0.562,
+     "flat72": 0.08,
+     "move24_ic95": [
+      0.0043,
+      0.0108
+     ],
+     "move72_ic95": [
+      0.0024,
+      0.0094
+     ],
+     "pnl_ic95": [
+      -0.0281,
+      -0.0157
+     ],
+     "pnl": -0.021,
+     "ret": -0.0541,
+     "ret_med": -0.0338,
+     "win": 0.364,
+     "ret_ic95": [
+      -0.0769,
+      -0.0328
+     ],
+     "fees": 0.0077,
+     "hold_h": 77.7,
+     "sorties": {
+      "objectif": 101,
+      "stop": 64,
+      "durée": 148
+     }
+    }
+   }
+  },
+  "E toute dérive (attention ignorée) + suivre": {
+   "n": 975,
+   "marches": 112,
+   "sujets": 78,
+   "move6": -0.0067,
+   "hit6": 0.28,
+   "flat6": 0.15,
+   "move24": -0.0057,
+   "hit24": 0.356,
+   "flat24": 0.073,
+   "move72": -0.0045,
+   "hit72": 0.396,
+   "flat72": 0.042,
+   "move24_ic95": [
+    -0.0086,
+    -0.0029
+   ],
+   "move72_ic95": [
+    -0.0083,
+    0.0001
+   ],
+   "pnl_ic95": [
+    -0.0367,
+    -0.0286
+   ],
+   "pnl": -0.0325,
+   "ret": -0.1037,
+   "ret_med": -0.0778,
+   "win": 0.306,
+   "ret_ic95": [
+    -0.1282,
+    -0.0841
+   ],
+   "fees": 0.0085,
+   "hold_h": 69.4,
+   "sorties": {
+    "objectif": 277,
+    "stop": 331,
+    "durée": 367
+   },
+   "moities": {
+    "1re moitié (15/09-29/09)": {
+     "n": 611,
+     "marches": 104,
+     "sujets": 71,
+     "move6": -0.0081,
+     "hit6": 0.298,
+     "flat6": 0.155,
+     "move24": -0.0056,
+     "hit24": 0.383,
+     "flat24": 0.065,
+     "move72": -0.0046,
+     "hit72": 0.409,
+     "flat72": 0.031,
+     "move24_ic95": [
+      -0.0098,
+      -0.0011
+     ],
+     "move72_ic95": [
+      -0.0111,
+      0.0028
+     ],
+     "pnl_ic95": [
+      -0.0377,
+      -0.0276
+     ],
+     "pnl": -0.0328,
+     "ret": -0.1089,
+     "ret_med": -0.0765,
+     "win": 0.344,
+     "ret_ic95": [
+      -0.144,
+      -0.0805
+     ],
+     "fees": 0.0088,
+     "hold_h": 63.6,
+     "sorties": {
+      "objectif": 194,
+      "stop": 228,
+      "durée": 189
+     }
+    },
+    "2e moitié (30/09-14/10)": {
+     "n": 364,
+     "marches": 74,
+     "sujets": 61,
+     "move6": -0.0044,
+     "hit6": 0.25,
+     "flat6": 0.14,
+     "move24": -0.0059,
+     "hit24": 0.31,
+     "flat24": 0.085,
+     "move72": -0.0043,
+     "hit72": 0.374,
+     "flat72": 0.06,
+     "move24_ic95": [
+      -0.009,
+      -0.0032
+     ],
+     "move72_ic95": [
+      -0.008,
+      -0.0003
+     ],
+     "pnl_ic95": [
+      -0.0396,
+      -0.025
+     ],
+     "pnl": -0.0321,
+     "ret": -0.095,
+     "ret_med": -0.0867,
+     "win": 0.242,
+     "ret_ic95": [
+      -0.1273,
+      -0.0658
+     ],
+     "fees": 0.0081,
+     "hold_h": 79.2,
+     "sorties": {
+      "objectif": 83,
+      "stop": 103,
+      "durée": 178
+     }
+    }
+   }
+  }
+ },
+ "agitation": {
+  "pic >= 2": {
+   "heures": 5592,
+   "absmove6": 0.0107,
+   "absmove24": 0.0225,
+   "absmove72": 0.0352,
+   "absdrift6_avant": 0.0114
+  },
+  "calme < 1,2": {
+   "heures": 36787,
+   "absmove6": 0.0097,
+   "absmove24": 0.017,
+   "absmove72": 0.0297,
+   "absdrift6_avant": 0.0098
+  }
+ },
+ "grille_meilleurs": [
+  {
+   "spike": 1.5,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 94,
+   "marches": 49,
+   "ret": -0.008,
+   "win": 0.457,
+   "ret_h1": -0.0079,
+   "ret_h2": -0.0082
+  },
+  {
+   "spike": 1.5,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.08,
+   "sl": 0.05,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 94,
+   "marches": 49,
+   "ret": -0.0086,
+   "win": 0.436,
+   "ret_h1": -0.0005,
+   "ret_h2": -0.0349
+  },
+  {
+   "spike": 1.5,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.08,
+   "sl": 0.05,
+   "hold": 120,
+   "sens": "contrer",
+   "n": 94,
+   "marches": 49,
+   "ret": -0.0101,
+   "win": 0.447,
+   "ret_h1": -0.0034,
+   "ret_h2": -0.0319
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.02,
+    0.05
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 98,
+   "marches": 58,
+   "ret": -0.0103,
+   "win": 0.388,
+   "ret_h1": -0.0191,
+   "ret_h2": 0.0049
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.02,
+    0.05
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 120,
+   "sens": "contrer",
+   "n": 98,
+   "marches": 58,
+   "ret": -0.0119,
+   "win": 0.408,
+   "ret_h1": -0.0201,
+   "ret_h2": 0.0023
+  },
+  {
+   "spike": 1.5,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 120,
+   "sens": "contrer",
+   "n": 94,
+   "marches": 49,
+   "ret": -0.0154,
+   "win": 0.468,
+   "ret_h1": -0.0134,
+   "ret_h2": -0.0222
+  },
+  {
+   "spike": 3.0,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 61,
+   "marches": 39,
+   "ret": -0.0221,
+   "win": 0.426,
+   "ret_h1": -0.033,
+   "ret_h2": 0.0063
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.02,
+    0.08
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 105,
+   "marches": 59,
+   "ret": -0.0238,
+   "win": 0.362,
+   "ret_h1": -0.0298,
+   "ret_h2": -0.0136
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.02,
+    0.05
+   ],
+   "tp": 0.05,
+   "sl": 0.05,
+   "hold": 120,
+   "sens": "contrer",
+   "n": 98,
+   "marches": 58,
+   "ret": -0.0246,
+   "win": 0.469,
+   "ret_h1": -0.0287,
+   "ret_h2": -0.0175
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.02,
+    0.15
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 107,
+   "marches": 60,
+   "ret": -0.0248,
+   "win": 0.364,
+   "ret_h1": -0.0298,
+   "ret_h2": -0.0167
+  },
+  {
+   "spike": 2.0,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.03,
+   "sl": 0.03,
+   "hold": 120,
+   "sens": "contrer",
+   "n": 80,
+   "marches": 45,
+   "ret": -0.0255,
+   "win": 0.463,
+   "ret_h1": -0.0146,
+   "ret_h2": -0.0581
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.02,
+    0.08
+   ],
+   "tp": 0.1,
+   "sl": 0.1,
+   "hold": 120,
+   "sens": "contrer",
+   "n": 105,
+   "marches": 59,
+   "ret": -0.0255,
+   "win": 0.381,
+   "ret_h1": -0.0319,
+   "ret_h2": -0.0145
+  },
+  {
+   "spike": 5.0,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.05,
+   "sl": 0.05,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 36,
+   "marches": 23,
+   "ret": -0.0256,
+   "win": 0.472,
+   "ret_h1": -0.0114,
+   "ret_h2": -0.0481
+  },
+  {
+   "spike": 1.5,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.08,
+   "sl": 0.05,
+   "hold": 24,
+   "sens": "contrer",
+   "n": 94,
+   "marches": 49,
+   "ret": -0.0261,
+   "win": 0.34,
+   "ret_h1": -0.017,
+   "ret_h2": -0.0557
+  },
+  {
+   "spike": 2.0,
+   "drift": [
+    0.04,
+    0.08
+   ],
+   "tp": 0.03,
+   "sl": 0.03,
+   "hold": 72,
+   "sens": "contrer",
+   "n": 80,
+   "marches": 45,
+   "ret": -0.0265,
+   "win": 0.45,
+   "ret_h1": -0.0159,
+   "ret_h2": -0.0581
+  }
+ ],
+ "grille_n": 384,
+ "grille_part_positive": 0.0,
+ "A_demi_ecart_0.02": {
+  "n": 242,
+  "marches": 83,
+  "sujets": 60,
+  "move6": -0.007,
+  "hit6": 0.273,
+  "flat6": 0.112,
+  "move24": -0.0083,
+  "hit24": 0.372,
+  "flat24": 0.054,
+  "move72": -0.0169,
+  "hit72": 0.405,
+  "flat72": 0.041,
+  "move24_ic95": [
+   -0.0161,
+   -0.0008
+  ],
+  "move72_ic95": [
+   -0.0352,
+   -0.0023
+  ],
+  "pnl_ic95": [
+   -0.0611,
+   -0.0476
+  ],
+  "pnl": -0.0541,
+  "ret": -0.1437,
+  "ret_med": -0.1122,
+  "win": 0.211,
+  "ret_ic95": [
+   -0.1849,
+   -0.1118
+  ],
+  "fees": 0.0095,
+  "hold_h": 66.7,
+  "sorties": {
+   "objectif": 71,
+   "stop": 85,
+   "durée": 86
+  }
+ },
+ "A_sans_frais_ni_ecart": {
+  "n": 242,
+  "marches": 83,
+  "sujets": 60,
+  "move6": -0.007,
+  "hit6": 0.273,
+  "flat6": 0.112,
+  "move24": -0.0083,
+  "hit24": 0.372,
+  "flat24": 0.054,
+  "move72": -0.0169,
+  "hit72": 0.405,
+  "flat72": 0.041,
+  "move24_ic95": [
+   -0.0161,
+   -0.0008
+  ],
+  "move72_ic95": [
+   -0.0352,
+   -0.0023
+  ],
+  "pnl_ic95": [
+   -0.0115,
+   0.0021
+  ],
+  "pnl": -0.0046,
+  "ret": -0.0078,
+  "ret_med": -0.0183,
+  "win": 0.405,
+  "ret_ic95": [
+   -0.0446,
+   0.0239
+  ],
+  "fees": 0.0,
+  "hold_h": 66.7,
+  "sorties": {
+   "objectif": 71,
+   "stop": 85,
+   "durée": 86
+  }
+ },
+ "C_sans_frais_ni_ecart": {
+  "n": 242,
+  "marches": 83,
+  "sujets": 60,
+  "move6": 0.007,
+  "hit6": 0.616,
+  "flat6": 0.112,
+  "move24": 0.0083,
+  "hit24": 0.574,
+  "flat24": 0.054,
+  "move72": 0.0169,
+  "hit72": 0.554,
+  "flat72": 0.041,
+  "move24_ic95": [
+   0.0009,
+   0.0161
+  ],
+  "move72_ic95": [
+   0.0023,
+   0.0352
+  ],
+  "pnl_ic95": [
+   -0.0019,
+   0.0115
+  ],
+  "pnl": 0.0047,
+  "ret": 0.0346,
+  "ret_med": 0.0228,
+  "win": 0.554,
+  "ret_ic95": [
+   0.013,
+   0.0551
+  ],
+  "fees": 0.0,
+  "hold_h": 67.1,
+  "sorties": {
+   "objectif": 84,
+   "stop": 70,
+   "durée": 88
+  }
+ },
+ "prix_median_1h": {
+  "A vague + suivre": {
+   "n": 222,
+   "marches": 81,
+   "sujets": 60,
+   "move6": -0.005,
+   "hit6": 0.333,
+   "flat6": 0.099,
+   "move24": -0.0067,
+   "hit24": 0.41,
+   "flat24": 0.041,
+   "move72": -0.0174,
+   "hit72": 0.41,
+   "flat72": 0.045,
+   "move24_ic95": [
+    -0.0144,
+    0.0005
+   ],
+   "move72_ic95": [
+    -0.0362,
+    -0.0027
+   ],
+   "pnl_ic95": [
+    -0.0442,
+    -0.0318
+   ],
+   "pnl": -0.0378,
+   "ret": -0.0972,
+   "ret_med": -0.0882,
+   "win": 0.288,
+   "ret_ic95": [
+    -0.1277,
+    -0.0722
+   ],
+   "fees": 0.0092,
+   "hold_h": 67.7,
+   "sorties": {
+    "objectif": 58,
+    "stop": 84,
+    "durée": 80
+   }
+  },
+  "B sans vague + suivre": {
+   "n": 778,
+   "marches": 111,
+   "sujets": 76,
+   "move6": -0.007,
+   "hit6": 0.32,
+   "flat6": 0.112,
+   "move24": -0.007,
+   "hit24": 0.368,
+   "flat24": 0.041,
+   "move72": -0.0015,
+   "hit72": 0.42,
+   "flat72": 0.024,
+   "move24_ic95": [
+    -0.0113,
+    -0.0032
+   ],
+   "move72_ic95": [
+    -0.0098,
+    0.0108
+   ],
+   "pnl_ic95": [
+    -0.0389,
+    -0.031
+   ],
+   "pnl": -0.0349,
+   "ret": -0.1078,
+   "ret_med": -0.0876,
+   "win": 0.307,
+   "ret_ic95": [
+    -0.1344,
+    -0.0854
+   ],
+   "fees": 0.0085,
+   "hold_h": 66.3,
+   "sorties": {
+    "objectif": 218,
+    "stop": 299,
+    "durée": 261
+   }
+  },
+  "C vague + contrer": {
+   "n": 222,
+   "marches": 81,
+   "sujets": 60,
+   "move6": 0.005,
+   "hit6": 0.568,
+   "flat6": 0.099,
+   "move24": 0.0067,
+   "hit24": 0.55,
+   "flat24": 0.041,
+   "move72": 0.0174,
+   "hit72": 0.545,
+   "flat72": 0.045,
+   "move24_ic95": [
+    -0.0005,
+    0.0144
+   ],
+   "move72_ic95": [
+    0.0027,
+    0.0364
+   ],
+   "pnl_ic95": [
+    -0.0286,
+    -0.0123
+   ],
+   "pnl": -0.0204,
+   "ret": -0.0432,
+   "ret_med": -0.0293,
+   "win": 0.432,
+   "ret_ic95": [
+    -0.0654,
+    -0.021
+   ],
+   "fees": 0.0093,
+   "hold_h": 67.9,
+   "sorties": {
+    "objectif": 83,
+    "stop": 58,
+    "durée": 81
+   }
+  },
+  "E toute dérive + suivre": {
+   "n": 889,
+   "marches": 113,
+   "sujets": 78,
+   "move6": -0.0048,
+   "hit6": 0.317,
+   "flat6": 0.125,
+   "move24": -0.0034,
+   "hit24": 0.39,
+   "flat24": 0.049,
+   "move72": -0.0008,
+   "hit72": 0.434,
+   "flat72": 0.026,
+   "move24_ic95": [
+    -0.007,
+    0.0005
+   ],
+   "move72_ic95": [
+    -0.0067,
+    0.0072
+   ],
+   "pnl_ic95": [
+    -0.0363,
+    -0.0287
+   ],
+   "pnl": -0.0325,
+   "ret": -0.1025,
+   "ret_med": -0.0778,
+   "win": 0.321,
+   "ret_ic95": [
+    -0.1271,
+    -0.0814
+   ],
+   "fees": 0.0086,
+   "hold_h": 68.0,
+   "sorties": {
+    "objectif": 259,
+    "stop": 312,
+    "durée": 318
+   }
+  }
+ },
+ "attention_par_marche": [
+  {
+   "cid": "0x502a94e5c525766d5ee7f16c6568131ba1b2cbadb69c703af05a6ef00336ed64",
+   "query": "\"United Russia\"",
+   "articles": 1915,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d",
+   "query": "(\"Flavio Bolsonaro\" OR \"Flávio Bolsonaro\")",
+   "articles": 1449,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x5db999fad322cea2914535aae5517060c3f80ad6d8c0231cde2124a434d16846",
+   "query": "Iran invasion",
+   "articles": 331,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xdf8e2dc5860027decbe6164555c3c1c9645c3bd33e16b9dc57ca87125047d4a8",
+   "query": "Lula Brazil",
+   "articles": 2699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd5d9fc47718bd553592d126b1fa5e87183d27f3936975b0c04cc0f2dec1f1bb4",
+   "query": "(midterm OR midterms) House",
+   "articles": 9079,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xa08a5ce99e14ce0b22767af6f16c08a2ab012249444c20887193a9a3e98e11fc",
+   "query": "Hormuz",
+   "articles": 9164,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xcee04ba47d02f6c64642369b34193c355f64de1b9ae425c71ea4efef1989d271",
+   "query": "Iran blockade",
+   "articles": 754,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd9fb1184af0064e5e34b129f5b79afa5a17b7e32f2953ab05efed82315fee6d4",
+   "query": "China Taiwan",
+   "articles": 19205,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x9cb23d04b2ded06147482076688b69b487a8d982c63ebdda2ab3678cf27cf390",
+   "query": "\"Clarity Act\"",
+   "articles": 1270,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x7586a96520578acaaaa4ea84a2582f197f84255da1f3392a7aa300386c187b37",
+   "query": "Netanyahu",
+   "articles": 25229,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x5c79dfde05559b79a9cb9f7c4187e4d49632dd042572ae676952f812732591cc",
+   "query": "Hormuz",
+   "articles": 9164,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x16c63b7cc37f012b9f59ee164ec03877914c701d06d48291ae8d6fc08a088b0d",
+   "query": "(midterm OR midterms)",
+   "articles": 23040,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xf19d6b617a3c6382448444824b42ba172be2d88b8a1491f7dfc7be6327e510a1",
+   "query": "Lula Brazil",
+   "articles": 2699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x3cb06270073639b93774e844b0cb35ac24d51d2fb6ced666401c817618b5c4e2",
+   "query": "(\"Flavio Bolsonaro\" OR \"Flávio Bolsonaro\")",
+   "articles": 1449,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x962e5b226a77266ab429029ee04665e8fcfeb10b91af593786ceab871d2e945f",
+   "query": "\"Nobel Peace Prize\" Trump",
+   "articles": 2021,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xc5eae79d1ffe716572353962eb926b1e3964c500a4880a7a94f58408218ee76b",
+   "query": "(midterm OR midterms)",
+   "articles": 23040,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xa467b14d51f01b957109d9cbb1d6c124fab2a089d52ed8f471d23c2812e743b7",
+   "query": "\"Xi Jinping\"",
+   "articles": 23681,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x30174f3f46398e37c96a07b45916e01eab9a8a854ecb624ac73a91a8490fd074",
+   "query": "Iran blockade",
+   "articles": 754,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6bd56627aa21311850825edb27e53434a0e17a4f782be0086bc07f71eee00d0d",
+   "query": "Putin",
+   "articles": 33611,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x4e4f77e7dbf4cab666e9a1943674d7ae66348e862df03ea6f44b11eb95731928",
+   "query": "(midterm OR midterms) House",
+   "articles": 9079,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xbb4d51e6364066d92eb6f9b8413dd7193de70966736044463b205834805a1f3b",
+   "query": "Iran regime",
+   "articles": 469,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6114306f724135bd1db2f5f3169386decf18f618653c196ef0a6c1afd27f4c73",
+   "query": "(\"Flavio Bolsonaro\" OR \"Flávio Bolsonaro\")",
+   "articles": 1449,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x46ca741da4abd7ffa993f59ac65bfe83de43ae027accac71d263a493e44064e7",
+   "query": "Iran blockade",
+   "articles": 754,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x46477994c02fdd4f7be7eacc58d343457d80333d92e5c4ad9a3117274d0e5639",
+   "query": "\"Kharg Island\"",
+   "articles": 1515,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xce610556ec78cfd7894f4169d91fe70e31c2fb49f927fffd7fe7d06530f88d56",
+   "query": "Lisnard",
+   "articles": 1,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xc3d5708780de5528998aeb53ca90e7ade64804f9f2386392a681435d5c42b44d",
+   "query": "Israel Iran ceasefire",
+   "articles": 252,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x95fc6a4ed7f6856d26aa7f21b9f902d05c9cf76b616fd3463de4d147f7a9126b",
+   "query": "Mandeb",
+   "articles": 12954,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x05297f854d3b757d5e51a1a29c7f225a80b14b2a161d6b7f9a61677da7a80ced",
+   "query": "\"Renan Santos\"",
+   "articles": 360,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x8ee27c276a1bee094293751285d8a6697674b023196cb21fdd14bf3ca12f6ec0",
+   "query": "Lula Brazil",
+   "articles": 2699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xae76ef049f09b109cfb0a9bfa2335d7c9fde5bd262c64548b43308c810c314ec",
+   "query": "\"Nobel Peace Prize\" Navalnaya",
+   "articles": 44,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x94521176f57d2ce81dde01e0b7699ca4279423042d37ed53908f0c8bfefe7e14",
+   "query": "Paxton",
+   "articles": 9800,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x94ffc785f73c9d70c0c9550b2412842d025d20d02f9e9e20a18cc4598944cbc5",
+   "query": "\"United Russia\"",
+   "articles": 1915,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x34918035a590555ba1fb1d6a019d766ab6e557d63e7f3140b63b4550eee7f417",
+   "query": "Talarico",
+   "articles": 8040,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3",
+   "query": "(midterm OR midterms) Senate",
+   "articles": 8305,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x8126317d621047fb13d508a2651eecc8d38305904671822a62309c5aabd353aa",
+   "query": "\"Le Pen\"",
+   "articles": 1806,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x2a4fcda5c1598fc8621cf96cabc410f9f23a2d0336c3bff5070a37a663d39e94",
+   "query": "NATO Russia",
+   "articles": 3097,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x524ce344b80a160c237d91a33efdd8b82468b0dc0d33f60d500f8bf69b80b8bb",
+   "query": "Israel Iran ceasefire",
+   "articles": 252,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd8659b58a90d0d69fb1170f25b2b896871a1328115fd11c6f4cfe2b01a2a8ba0",
+   "query": "Mandeb",
+   "articles": 12954,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xdbe93b5a701f36076a560fa4b9ba59e365a6e8e2ea6a83764640010657277ca4",
+   "query": "Eizenkot",
+   "articles": 29,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xc65fb00eb998335039e5120dc390967576c4bfaee22a2342a17ced0fbc2c7e4e",
+   "query": "Yabloko",
+   "articles": 157,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x9bb80411fb159d9f3798fe125672a61af141f7dc7d5465c14a5936e4ba878e49",
+   "query": "Mandeb",
+   "articles": 12954,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x2a25f3fd54fd0b18fee936f7f6b701e119c86f08f6d2a621b995193851014fb3",
+   "query": "Saudi pipeline",
+   "articles": 3429,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd0536d9612e041312235baceac52bde48821e8aad4607533513b3782904b7d49",
+   "query": "Alckmin",
+   "articles": 72,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x86bfb53af7250a40928975c551d12c185b762fa4ce0b40c6a64a50c946d72587",
+   "query": "(midterm OR midterms) Senate",
+   "articles": 8305,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x405b56fc75f56d7635a94df9836d6cb6f9b9571d1fd33eb165c1e59d1d11801f",
+   "query": "Hormuz",
+   "articles": 9164,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x998bc71817b2d76921d1999ce0f3431cfd5945583667a371280ca2b430b0c06e",
+   "query": "(midterm OR midterms)",
+   "articles": 23040,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x9639a6a92c4b2a434ee674c104c7f4660340663b91e418e2be1ee4377971aa32",
+   "query": "(Vucic OR Vučić)",
+   "articles": 607,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x087469b4129c64c688397028059dfd366796adbd426e0079ee4cfdd2e4a07b61",
+   "query": "Brazil election",
+   "articles": 1808,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xf2bf04609e7458df56c9bb4b1e051286dea11da1c944bbc1dafbcc6b76904e52",
+   "query": "NATO Russia",
+   "articles": 3097,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x23667427b34ca1c7144d50540beba9e7ffb608443a84252c194bb8b40919a0cb",
+   "query": "\"nuclear deal\" Iran",
+   "articles": 109,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x71dd44fa5059fbed28a279172185d3623aa34ce86be1936281df26b5d1b87200",
+   "query": "Iran blockade",
+   "articles": 754,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x8a5c0b5fc339f2dbaf584def66bcf8bff94d91f0250562e452782fed3d18f821",
+   "query": "\"crude oil\"",
+   "articles": 1733,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x176e84015b1cc54d470836ef1d8a60753e17fa232d9b55e9aa8dde580d03f436",
+   "query": "Merz",
+   "articles": 5974,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xed5a9e7831ee363d92cb102f2c21e2465b09196ef5beb7c8e23671851a1c3ca4",
+   "query": "Iran talks",
+   "articles": 4042,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x094772b3529f455e881a4483eaf1c24266384f55e97c23f24f638f5726ba9920",
+   "query": "\"supreme leader\" Iran",
+   "articles": 2362,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x377e7fe65cf198a7fc4fdae3f2136b74729279267858daaf96718b23bc2a5607",
+   "query": "\"supreme leader\" Iran",
+   "articles": 2362,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x48b0b0bca515f68fccf95af4793dbd0edbfec1f8ec6e8df2c0f69ba74f8c4722",
+   "query": "Trump",
+   "articles": 321322,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x7ad403c3508f8e3912940fd1a913f227591145ca0614074208e0b962d5fcc422",
+   "query": "\"JD Vance\"",
+   "articles": 1764,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x7b22caeed454d3c7dbd07b83d8255c74e1482c4f958b4ba4dd0c27b864cd47a2",
+   "query": "Lula Brazil",
+   "articles": 2699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x67f3f8d0a0ecdfc008c99650284a4674388a8c3029b0eb7ca0abd65dde8d996f",
+   "query": "Maduro",
+   "articles": 2729,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xcba20965509d04b5f3ae2c51a221747317aff9387c197ca6d5919e85e5a20ee9",
+   "query": "\"Renan Santos\"",
+   "articles": 360,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x19d2ff72e389d190c183e6b114817301d29eba651d67d75a38ee201a05188fd9",
+   "query": "Peltola",
+   "articles": 1633,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xc788500313fb20ebab5b6577c3dcfc24e911e44e45c3aebabb8eee4bb70f4431",
+   "query": "Putin",
+   "articles": 33611,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xdce84960dce38aa4a5800a5eba7c9ac34d2ce49ba9d44c42572c472d468af264",
+   "query": "Warnock",
+   "articles": 502,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x968a1a79e001d49fa3ee1429e3b95eb01797587740f86d4e6becf3ab1b275bfb",
+   "query": "\"Sherrod Brown\"",
+   "articles": 3404,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xbfeb6d4cf3eab6071e204219b0647c8224d63a12778df467311b5f2a4b3a5bd4",
+   "query": "\"El-Sayed\" Michigan",
+   "articles": 7368,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xadffc96f54f350b3655f72fe2853c81bfd705e9703f62469e6a14782ad5d4ec0",
+   "query": "Lieberman Israel",
+   "articles": 343,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xc3794a8d3a34d04b9f39773e35c4cecdac89d32eab93e8589d9a6f03e04e9490",
+   "query": "Trump",
+   "articles": 321322,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xb55b2b13aee7a480ab0695912a65cb34a5fe5e84d5da810873d9c3e1182f9fd0",
+   "query": "Iran regime",
+   "articles": 469,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x1c4c6a698f0591ddf0c96e1beb56f8c75112ef849331bf3b0388f14830a7421d",
+   "query": "Israel Iran ceasefire",
+   "articles": 252,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x2f112a1cd954debe3438caac411ca4395cc53be0e1580a5802ab42618b94aff7",
+   "query": "\"United Russia\"",
+   "articles": 1915,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6a7aed00fae37de19e0b789a6b50a7475ff1afa898c50b9da11ca733a23199fa",
+   "query": "Greenland",
+   "articles": 10627,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xb8b5349814450b8bba2ecdda2eeb9f48bd3c795bfb858bedf7a383712b877743",
+   "query": "\"Roger Marshall\" Kansas",
+   "articles": 2222,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x4255ffaae08929ba32c64f174cf270d082cc742560ddcfe98ed211c848a055f6",
+   "query": "\"Xi Jinping\" visit",
+   "articles": 2760,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xa01d48a973e40770719dab42faf1aeae5da4376d9eca46e77265c7551d1be0f7",
+   "query": "(\"Delcy Rodriguez\" OR \"Delcy Rodríguez\")",
+   "articles": 1398,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x0844f5be2e87761e128eac1b68d4880b47aa06ff4108be71eaaf7ed3fc463d41",
+   "query": "\"Xi Jinping\" visit",
+   "articles": 2760,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xfd155fdd279dc1f5aaa451285a2f98777fcf7d37719d630aa7918472e5d57ce2",
+   "query": "\"Kanye West\" Russia",
+   "articles": 101,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x79b7408f02df2eba4034ca4c06ddf17b8dbeacc5adbe8595969e7573912c4e3b",
+   "query": "\"nuclear deal\" Iran",
+   "articles": 109,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x9ed0ecc8b8589e67967d44c4420944a41b6a6806419019a1581d514174eee9b1",
+   "query": "\"Naftali Bennett\"",
+   "articles": 1328,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x66bbf6d55e0296278858b3147689f3df9259374f158f9f028b608baa322a639c",
+   "query": "\"Troy Jackson\" Maine",
+   "articles": 2454,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x93fc7c6516bf347c566a3860da34e97f98413081e1b6306332fab90f7d405369",
+   "query": "\"nuclear deal\" Iran",
+   "articles": 109,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x91e20860241f7c90fcff5ec348a68f953bd66a02d5662ac26cab32ac1f904be6",
+   "query": "(\"Pedro Sanchez\" OR \"Pedro Sánchez\")",
+   "articles": 1482,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xbc0070bd88b113d9beedbae5efd78df0e605ca029aff8ef470c881010c923a24",
+   "query": "\"Augusto Cury\"",
+   "articles": 363,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6a18969bc603992de4c5c9d53c2881e1378ac193cdad01e7f932afa7fdc4af3e",
+   "query": "\"crude oil\"",
+   "articles": 1733,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x97c0b1316b8d9ba677414e8a682948e7560c1af60fc239b085a68cc467c21f23",
+   "query": "(Feijoo OR Feijóo)",
+   "articles": 179,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x0808de4f0cfd47947f2d1be51f9a9c52ea0fec76f73a75cfbe79ddec98d8a908",
+   "query": "(midterm OR midterms)",
+   "articles": 23040,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xc4ebab9f2830f6df67ab1b98615d5a9be8eebd106fd0f37e9a25e4a4edcc427c",
+   "query": "Iran talks",
+   "articles": 4042,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd64b917e1f7cdf1ad3f51326cf8985ce80e140291d2eaf2bf62821ef02231550",
+   "query": "Hormuz",
+   "articles": 9164,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x174ea87d011bfd0b230efc45e0b4d0756d38af91f0ffbab70013a582603c2be8",
+   "query": "(Melenchon OR Mélenchon)",
+   "articles": 289,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xbe9d61d80c767264a0adc8a16453fbcaf0413e673e665cc7c14701691143fac0",
+   "query": "Crimea Ukraine",
+   "articles": 482,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x2c00cb09722a0f0501c5e49131b898ed57bb5c075db4dc2bcbc14908f45b8c48",
+   "query": "\"Susan Collins\"",
+   "articles": 5643,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x910aabbfae28b3569929c31fb5461f4db13f7ddd427bdee1e696d313125838e3",
+   "query": "\"Puma Shen\"",
+   "articles": 152,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x2dcbc71a3f8108936e768b503d565fbda7a644b2a0bd9ed45f74982a2bb11fba",
+   "query": "Israel Iran ceasefire",
+   "articles": 252,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x3fd189cac9280dfc49a07115581e8d4c9e0b7e1c1e8580a44e9ff3d74e39cf2d",
+   "query": "\"Mike Rogers\" Michigan",
+   "articles": 5699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xe1fb01493e2ca98095947320c96338e7cc4566e3567b85b46071eaa8858c8523",
+   "query": "\"Xi Jinping\" visit",
+   "articles": 2760,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd50c016598c499fceea10a1a714e48d9b4953487fe215daeaf916068fae722f1",
+   "query": "\"Josh Turek\"",
+   "articles": 1571,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x1ba55a9ab62aaa724cc52a06d5f5b90104cdd3b85bf4383f7ab4bd415a14d808",
+   "query": "Iran talks",
+   "articles": 4042,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd7e906eaec2c7f66697447785aa1d4fdaa82f536ca533a2bc0d3535b04e832ec",
+   "query": "\"Xi Jinping\" visit",
+   "articles": 2760,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x771873c365f87bffd990644e4b688aebc1be7f18396d2eab64b996ff66e88669",
+   "query": "\"Jon Husted\"",
+   "articles": 4007,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xa4b952e2e0ab85e2949b2f67190d10da6212e030993ad930f55b21adbefda2d3",
+   "query": "\"supreme leader\" Iran",
+   "articles": 2362,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x83dc0351975e61ea9666c22265026e5cea3aa45d99ac80973299156f762cb20e",
+   "query": "Oman Hormuz",
+   "articles": 2722,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x2c03c41e5032364cb7166e842bdd22913f28aa2c837d8432704aa89c338875c8",
+   "query": "Buttigieg",
+   "articles": 1040,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xbf7a9da08326512f76129d4accf9f7d852dbf1cb7dd2c512479ff40c872f5659",
+   "query": "\"Chiang Wan-an\"",
+   "articles": 132,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6b6fc067a481ea2426eab480e4041751f2d21b3af575e08be54d20f6dcdfe783",
+   "query": "Iran Hormuz",
+   "articles": 8258,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x51f624dbbf14f9edb575fef1be6f7a303751de70783fa144fce27b957452c803",
+   "query": "(Zelensky OR Zelenskyy)",
+   "articles": 23761,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x46f2f457e14ee9021ebd0ef4c27eacd98fdceaf7f2938b484e2551e9e3275ae8",
+   "query": "(\"Edouard Philippe\" OR \"Édouard Philippe\")",
+   "articles": 156,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x460d3942d385cdeda20519c0c5ad804ae48dc18efc9a82e1f1be87a29e69adb3",
+   "query": "\"Adam Hamilton\" Kansas",
+   "articles": 1530,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6557ff312837c0707d82bc2def893572289e012cff21a264593c6551f85d7e50",
+   "query": "(Dobropillia OR Dobropillya OR Dobropolye)",
+   "articles": 113,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x25fb28382075f418a944a781a9f8840e2f541152eea0d9798d1cabfa1466adbb",
+   "query": "\"Mojtaba Khamenei\"",
+   "articles": 1121,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x0f49db97f71c68b1e42a6d16e3de93d85dbf7d4148e3f018eb79e88554be9f75",
+   "query": "Newsom",
+   "articles": 12092,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x951088c48f392379dc9b8a3becaad7a939b5fd3124ec98dd167d859350f049fc",
+   "query": "Iran airspace",
+   "articles": 57,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x1c017cbb38a9d0ab233ebb265b25c78290317e6a2470657ca18a73a112397b55",
+   "query": "\"Lindsey Graham\"",
+   "articles": 3441,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x119b6b3b744ac3239c7a71100165d254234eaecea401abde5a3d303bef21d19e",
+   "query": "\"Steve Hilton\"",
+   "articles": 1153,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x5512bfa9294bf914063ed120969908dee5cdf6e14293f28ca405d3ce4edcf485",
+   "query": "Iotova",
+   "articles": 87,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x6c3f1009a0c91ba9f7aae44aeadf86863b0d433b60f7a090fd00c945019aa32f",
+   "query": "Russia Ukraine ceasefire",
+   "articles": 2048,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xcd953913ecd5bf5387092bf447fe13190871b2bc9436c85b0918b4767c3fa58a",
+   "query": "\"Greg Abbott\"",
+   "articles": 4322,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x890f9b8de730479549e95027f26aad5ce89ecc4a42a6fd6316d0b0aec9a5aad1",
+   "query": "(\"Pedro Sanchez\" OR \"Pedro Sánchez\")",
+   "articles": 1482,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x1d78389ca8fbb953ab8ed8d1fecb5160ac4c3a2b0185fed3c248f4d2e5cf5192",
+   "query": "\"peace talks\" Ukraine",
+   "articles": 170,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd595eb9b81885ff018738300c79047e3ec89e87294424f57a29a7fa9162bf116",
+   "query": "Greenland",
+   "articles": 10627,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xd1796c09d0d6f876f8580086ae9808ec991784e3a74b25a1830a25de71a78c96",
+   "query": "Netanyahu",
+   "articles": 25229,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x3dbbbe0f8e69b1aee0092e1eca397b24c954c00ecc54995035a8683201ad26aa",
+   "query": "Caiado",
+   "articles": 386,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x741bb46008b72234857c5118c8365ab3c2f69dbf28b30b59de04f173b8a778de",
+   "query": "\"Dan Sullivan\" Alaska",
+   "articles": 2224,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x80ebf0a88a44bf737d4047b3accd7108285c69b84257e5c684bdc4c715c81139",
+   "query": "Cuba invasion",
+   "articles": 100,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xe6d5e5da83874cd82c9b651a8a5d4fc541a800a295fb62e85124b4f5a04a4b7d",
+   "query": "China Taiwan",
+   "articles": 19205,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xf59c65f8c75e1140bdda92fc572fa421137b11d690106a3665888cfc391a1265",
+   "query": "Iran talks",
+   "articles": 4042,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x38a1025bfc56539ed1ff8fdd468283d55cf9002412decd61aa8d6c578c7d01a2",
+   "query": "\"Ashley Hinson\"",
+   "articles": 2795,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x5377b12dd060efd8e3597620f120648f1bf99452a95eb70374b128d9ca133227",
+   "query": "Lula Brazil",
+   "articles": 2699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x9b8a472f0f5f8a3b2c11b345d969ed90203c800b8c60ef4e4b7f5ad38df5338f",
+   "query": "Niculescu",
+   "articles": 182,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x71e9f5312aac62bdc9b87fa8d171fa929eca6243d815298c4c7d61303f7d53dd",
+   "query": "\"Pete Ricketts\"",
+   "articles": 1425,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x36081a32ac369bad207447fa2bc5d6d663fb576e935178a4a297931ec571f5d1",
+   "query": "\"Nobel Peace Prize\" \"International Court of Justice\"",
+   "articles": 2,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xf43c1ec924a35e1f55453c31b662ea65e623ca9d21aeec1b2af24844567f15c9",
+   "query": "\"Nobel Peace Prize\" Sudan",
+   "articles": 236,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x9345d5142a67f5541264c96515496affee02580f1c572680759eac9fd2a1588a",
+   "query": "\"wealth tax\" California",
+   "articles": 114,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xe6bcc2f1dd025ce5e1833190f7c60a71171c94f805df55b9ab0ded695ec93565",
+   "query": "\"Ocasio-Cortez\"",
+   "articles": 2480,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x5ca616aaa0e1e5df6c38439f8bee4b96bacfe32f8f39cb2f1604c0196548662f",
+   "query": "China Taiwan",
+   "articles": 19205,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x5d5b8feb963ddcc0f4688f7ac0c0d375f99945b7a07155d60cd1a306c6b3054b",
+   "query": "Lula Brazil",
+   "articles": 2699,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x84c625fdccf5c5246a15e476361e4563033906ee225800e1136c0d737596a72f",
+   "query": "Russia Ukraine ceasefire",
+   "articles": 2048,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x25966b196ffc1682fc77df0298784831a60aea8abe03b9aa4fc219d1422feb9f",
+   "query": "(\"Flavio Bolsonaro\" OR \"Flávio Bolsonaro\")",
+   "articles": 1449,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xb818eb1084fdbc85161dda72c93e1e2da6eb3cc675aa815becb69f45f30683c9",
+   "query": "Iran Hormuz",
+   "articles": 8258,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0xcfbc2e5fbabb9e8a03bf234367244d4c97eaaf3ac33e2ba001541ee3e0e62416",
+   "query": "Israel airspace",
+   "articles": 70,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  },
+  {
+   "cid": "0x74dba1ce1ae9dd535414e85f2d9ab5ea32c0fb1acc9b7130b67e6d91217e24e1",
+   "query": "Ossoff",
+   "articles": 2781,
+   "heures_couvertes": 912,
+   "resolution": "GKG 15 min -> heure"
+  }
+ ]
+}
