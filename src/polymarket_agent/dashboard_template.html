@@ -69,9 +69,10 @@ h2:has(.organ) { display: inline-flex; align-items: center; }
 .note { color: var(--ink-2); font-size: 0.86rem; max-width: 72ch; margin: 0; }
 .empty { color: var(--muted); font-style: italic; margin: 0; }
 .grid2 > .wide { grid-column: 1 / -1; }
-/* Tissu de points de toute la page (18/10/2026) : derrière les cartes, visible dans les marges et
-   entre les blocs ; des influx y circulent entre les blocs (field() dans le script). */
-#field { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: block; }
+/* Tissu des cartes (18/10/2026, v2) : une toile par-dessus la page, qui ne capte aucun clic ; les
+   points ne sont dessinés QUE dans la place libre à l'intérieur des cartes (jamais sur le texte),
+   et les influx relient les cartes qui travaillent ensemble (cardTissue() dans le script). */
+#field { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; display: block; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 20px; }
 
 /* --- résumé (le chiffre d'abord, comme « 91 % chance … ») */
@@ -751,7 +752,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // sang dans l'aorte et l'artère pulmonaire (une onde les parcourt), puis tout se relâche.
   // Les points ne bougent jamais : seule leur taille change, et c'est cette variation de taille
   // (donc de clarté) qui dessine le mouvement. Les légendes restent hors de portée.
-  // Taille des points du cœur (18/10/2026) : le tissu de la page et les petits organes reprennent
+  // Taille des points du cœur (18/10/2026) : le tissu des cartes et les petits organes reprennent
   // exactement cette taille, partout la même (seule la lumière anime les points).
   var HEART_STEP = 10;
   function heartDot() { return HEART_STEP * 0.21; }
@@ -1554,7 +1555,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // tracé du pouls, nerfs (sources), noyau (système). Les points hors de l'organe sont au repos et
   // scintillent de temps en temps. Une seule boucle d'animation, seulement pour les organes visibles,
   // à l'arrêt si l'onglet est caché ; image fixe si l'utilisateur préfère moins d'animations.
-  var ORGANS = [];  // petits organes des titres, partagés avec le tissu de la page (field)
+  var ORGANS = [];  // petits organes des titres, partagés avec le tissu des cartes (cardTissue)
   (function organs() {
     var TAU = 6.2832, BLUE = [157, 191, 245];
     function seg(u, v, x1, y1, x2, y2) { var dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1;
@@ -1687,106 +1688,133 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     }
   })();
 
-  // ---------------------------------------------------------------- tissu de la page (18/10/2026)
-  // Demande d'Etienne : les points prennent toute la place libre, et les blocs « échangent des
-  // informations » entre eux. Derrière les cartes, un tissu de points couvre la page ; au repos ils
-  // scintillent. Deux vaisseaux longent les marges, chaque bloc y a un point de contrôle (à hauteur
-  // de son titre), et des passages traversent les espaces entre les blocs. Des influx (points qui
-  // s'allument, reflet bleu pastel, traîne qui s'éteint) partent d'un bloc et rejoignent le voisin,
-  // par le vaisseau ou en traversant un passage ; à l'arrivée, le point de contrôle s'illumine et
-  // le petit organe du bloc s'active. Rien n'est dessiné sous les cartes (aucune gêne à la lecture).
-  (function field() {
+  // ---------------------------------------------------------------- tissu des cartes (18/10/2026, v2)
+  // Demande d'Etienne : les points À L'INTÉRIEUR des cartes, dans la place libre autour du texte
+  // (jamais sur un mot, un graphique ou un bouton), et des animations ENTRE les cartes qui
+  // travaillent ensemble : les ordres du capital principal parlent à la courbe du capital, aux
+  // positions et au cœur ; l'arène parle au principal et à l'entonnoir ; les sources à l'arène…
+  // - Chaque carte a son tissu de points (taille des points du cœur), qui scintillent au repos et
+  //   suivent une animation propre à la carte (ondes, courant, respiration, hélice, étincelles).
+  // - Un lien = un influx qui part du point de contrôle d'une carte (anneau dans sa marge
+  //   intérieure, à hauteur du titre), longe la marge intérieure des cartes, traverse l'espace qui
+  //   les sépare et arrive au point de contrôle de l'autre carte : l'anneau s'illumine, une onde
+  //   parcourt le tissu de la carte et son petit organe s'active.
+  // Une seule toile par-dessus la page (elle ne capte aucun clic) ; les zones de texte sont
+  // calculées depuis les vraies lignes de texte et recalculées quand une carte change de taille.
+  (function cardTissue() {
     var cv = document.getElementById("field"), ctx = cv && cv.getContext && cv.getContext("2d");
     if (!ctx) return;
-    var STEP = Math.max(8, HEART_STEP), DOT = heartDot(), TAU = 6.2832, BLUE = [157, 191, 245], dpr = 1, W = 0, Hv = 0;
-    var packets = [], flashes = {}, nextSpawn = 0, raf = null, last = 0;
+    var STEP = Math.max(8, HEART_STEP), DOT = heartDot(), TAU = 6.2832, BLUE = [157, 191, 245];
+    var dpr = 1, W = 0, Hv = 0, raf = null, last = 0, nextSpawn = 0, packets = [];
+    // Animation propre à chaque carte, et liens entre cartes (qui « parle » à qui).
+    var MOOD = { resume: "ondes", principal: "courant", aujourdhui: "souffle", arene: "helice", entonnoir: "ondes",
+      capital: "courant", positions: "etincelles", "ordres-poses": "courant", "decisions-recentes": "etincelles",
+      journal: "courant", systeme: "ondes" };
+    var LINKS = [["principal", "capital"], ["principal", "positions"], ["principal", "organisme"],
+      ["principal", "ordres-poses"], ["principal", "journal"], ["arene", "principal"], ["arene", "entonnoir"],
+      ["arene", "journal"], ["systeme", "arene"], ["systeme", "aujourdhui"], ["aujourdhui", "resume"],
+      ["positions", "capital"], ["decisions-recentes", "principal"], ["entonnoir", "arene"]];
     function grain(i, j) { var s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return s - Math.floor(s); }
+    function blockOf(sec) { var p = sec.parentNode; return sec.id || (p && p.id) || ""; }
+    var cards = Array.prototype.map.call(document.querySelectorAll("main section.card"), function (sec) {
+      return { el: sec, block: blockOf(sec), mood: MOOD[blockOf(sec)] || "ondes", w: -1, h: -1, dots: [], pulse: -9, px: 0, py: 0 };
+    });
+    var heartCard = { el: document.getElementById("organisme"), block: "organisme" };
+    // Zones occupées d'une carte : lignes de texte réelles + graphiques, boutons, pastilles…
+    function rebuild(c) {
+      var r = c.el.getBoundingClientRect(), busy = [], pad = 5;
+      c.w = c.el.offsetWidth; c.h = c.el.offsetHeight;
+      if (c.el.id === "organisme" || c.h === 0) { c.dots = []; return; }
+      var walker = document.createTreeWalker(c.el, NodeFilter.SHOW_TEXT, null), node, range = document.createRange();
+      while ((node = walker.nextNode())) { if (!node.nodeValue.trim()) continue;
+        range.selectNodeContents(node);
+        Array.prototype.forEach.call(range.getClientRects(), function (q) { if (q.width && q.height) busy.push(q); }); }
+      Array.prototype.forEach.call(c.el.querySelectorAll("svg, canvas, button, .pill, .chip, .tip, input, img, summary"),
+        function (e) { var q = e.getBoundingClientRect(); if (q.width && q.height) busy.push(q); });
+      // Grille d'occupation : chaque zone occupée noircit les cases qu'elle couvre (rapide même avec beaucoup de texte).
+      var dots = [], x0 = 10, y0 = 10, nx = Math.max(0, Math.ceil((r.width - 8 - x0) / STEP)),
+        ny = Math.max(0, Math.ceil((r.height - 8 - y0) / STEP)), taken = new Uint8Array(nx * ny);
+      busy.forEach(function (q) {
+        var i0 = Math.max(0, Math.ceil((q.left - pad - r.left - x0) / STEP)), i1 = Math.min(nx - 1, Math.floor((q.right + pad - r.left - x0) / STEP)),
+          j0 = Math.max(0, Math.ceil((q.top - pad - r.top - y0) / STEP)), j1 = Math.min(ny - 1, Math.floor((q.bottom + pad - r.top - y0) / STEP));
+        for (var j = j0; j <= j1; j++) for (var i = i0; i <= i1; i++) taken[j * nx + i] = 1; });
+      for (var j = 0; j < ny; j++) for (var i = 0; i < nx; i++) if (!taken[j * nx + i]) {
+        var x = x0 + i * STEP, y = y0 + j * STEP; dots.push([x, y, grain(x, y) * TAU, 0.3 + grain(y, x) * 0.9]); }
+      c.dots = dots; c.built = performance.now();
+    }
     function size() { dpr = Math.min(window.devicePixelRatio || 1, 2); W = window.innerWidth; Hv = window.innerHeight;
       cv.width = Math.round(W * dpr); cv.height = Math.round(Hv * dpr); }
-    function snapX(x) { return (Math.floor(x / STEP) + 0.5) * STEP; }
-    function snapY(y) { return (Math.floor(y / STEP) + 0.5) * STEP; }
-    // Carte du moment : cartes (obstacles), vaisseaux, points de contrôle, passages (coordonnées de page).
-    function layout() {
-      var sy = window.scrollY, blocks = [], obstacles = [];
-      var top = document.querySelector(".top"); if (top) obstacles.push(top.getBoundingClientRect());
-      Array.prototype.forEach.call(document.querySelectorAll("main section.card"), function (sec) {
-        if (sec.offsetParent === null) return;
-        var r = sec.getBoundingClientRect(); obstacles.push(r);
-        if (sec.id !== "organisme") blocks.push({ sec: sec, r: r, top: r.top + sy, bottom: r.bottom + sy });
-      });
-      if (!blocks.length) return null;
-      var minL = Math.min.apply(null, blocks.map(function (b) { return b.r.left; }));
-      var maxR = Math.max.apply(null, blocks.map(function (b) { return b.r.right; }));
-      var xL = snapX(Math.max(4, minL / 2)), xR = snapX(Math.min(W - 4, maxR + (W - maxR) / 2));
-      blocks.sort(function (a, b) { return a.top - b.top; });
-      var cps = blocks.map(function (b) { return { sec: b.sec, y: snapY(b.top + 26) }; });
-      var lanes = [];
-      for (var k = 0; k + 1 < blocks.length; k++) { var g0 = blocks[k].bottom, g1 = blocks[k + 1].top;
-        if (g1 - g0 >= STEP) lanes.push({ y: snapY((g0 + g1) / 2), after: k }); }
-      return { sy: sy, obstacles: obstacles, xL: xL, xR: xR, cps: cps, lanes: lanes };
+    // Point de contrôle : marge intérieure gauche ou droite de la carte, à hauteur du titre.
+    function checkpoint(c, right) { var r = c.el.getBoundingClientRect(), h = c.el.querySelector(".head h2, .o-head");
+      var hr = h ? h.getBoundingClientRect() : r;
+      return [right ? r.right - 10 : r.left + 10, Math.min(r.bottom - 10, Math.max(r.top + 12, hr.top + hr.height / 2))]; }
+    function find(block) { return block === "organisme" ? heartCard : cards.filter(function (c) { return c.block === block && c.el.offsetParent !== null; })[0]; }
+    function spawn(t) {
+      var live = LINKS.filter(function (l) { return find(l[0]) && find(l[1]); });
+      if (!live.length) return;
+      var l = live[Math.floor(Math.random() * live.length)], back = Math.random() < 0.35;
+      packets.push({ from: back ? l[1] : l[0], to: back ? l[0] : l[1], right: Math.random() < 0.5, t0: t, dur: 0 });
     }
-    function spawn(L, t) {
-      if (L.cps.length < 2) return;
-      var k = Math.floor(Math.random() * (L.cps.length - 1)), down = Math.random() < 0.5;
-      var a = L.cps[down ? k : k + 1], b = L.cps[down ? k + 1 : k], left = Math.random() < 0.5;
-      var x0 = left ? L.xL : L.xR, x1 = left ? L.xR : L.xL, lane = L.lanes.filter(function (l) { return l.after === k; })[0];
-      var path = lane && Math.random() < 0.55 ? [[x0, a.y], [x0, lane.y], [x1, lane.y], [x1, b.y]] : [[x0, a.y], [x0, b.y]];
-      var len = 0; for (var i = 1; i < path.length; i++) len += Math.abs(path[i][0] - path[i - 1][0]) + Math.abs(path[i][1] - path[i - 1][1]);
-      packets.push({ path: path, len: len, t0: t, dur: Math.max(0.8, len / 300), to: b, from: a });
-      flashes[a.y + "|" + x0] = t;
-    }
-    function at(p, d) {  // point à la distance d le long du chemin (segments horizontaux ou verticaux)
-      for (var i = 1; i < p.path.length; i++) { var A = p.path[i - 1], B = p.path[i], s = Math.abs(B[0] - A[0]) + Math.abs(B[1] - A[1]);
-        if (d <= s || i === p.path.length - 1) { var k = s ? Math.max(0, Math.min(1, d / s)) : 0;
-          return [A[0] + (B[0] - A[0]) * k, A[1] + (B[1] - A[1]) * k]; } d -= s; }
-      return p.path[p.path.length - 1];
+    function ambient(c, x, y, t, w, h) {
+      var m = c.mood, v = 0;
+      if (m === "ondes") { var d = Math.hypot(x - 60, y - 30); v = Math.pow(0.5 + 0.5 * Math.sin(d / 26 - t * 1.6), 6); }
+      else if (m === "courant") v = Math.pow(0.5 + 0.5 * Math.sin(x / 34 - t * 2.1 + Math.sin(y / 50)), 8);
+      else if (m === "souffle") v = 0.35 * (0.5 + 0.5 * Math.sin(t * 1.2 - y / 160));
+      else if (m === "helice") { var s = Math.sin(x / 38 + t * 1.3) * h * 0.32 + h / 2; v = Math.exp(-Math.pow((y - s) / 16, 2)) * 0.8
+        + Math.exp(-Math.pow((y - (h - s)) / 16, 2)) * 0.5; }
+      if (c.pulse > -9) { var age = t - c.pulse, dd = Math.hypot(x - c.px, y - c.py) - age * 360;
+        if (age < 1.6) v = Math.max(v, Math.exp(-dd * dd / 900) * (1 - age / 1.6)); }
+      return Math.min(1, v);
     }
     function draw(t) {
-      var L = layout(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, Hv);
-      if (!L) return;
-      var moving = !REDUCED;
-      if (moving && t >= nextSpawn && packets.length < 6) { spawn(L, t); nextSpawn = t + 0.5 + Math.random() * 1.1; }
-      // Influx : tête + traîne, posées sur la grille (intensité par case).
-      var lit = {};
-      function light(x, y, v) { var key = Math.floor(x / STEP) + "," + Math.floor(y / STEP); if (!(lit[key] >= v)) lit[key] = v; }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, Hv);
+      var moving = !REDUCED, layers = [], head = document.querySelector(".top"), topLimit = head ? head.getBoundingClientRect().bottom : 0;
+      // Teintes regroupées en paliers (gris → bleu) : un seul tracé par palier, c'est ce qui garde l'animation fluide.
+      // Bulles d'information des graphiques ouvertes au survol : jamais de point par-dessus.
+      var tips = Array.prototype.filter.call(document.querySelectorAll(".tip"), function (e) {
+        return e.offsetParent !== null && getComputedStyle(e).opacity !== "0"; }).map(function (e) { return e.getBoundingClientRect(); });
+      function put(x, y, sh, mix) { if (y < topLimit - 2) return;  // jamais sous la barre du haut
+        for (var q = 0; q < tips.length; q++) if (x > tips[q].left - 4 && x < tips[q].right + 4 && y > tips[q].top - 4 && y < tips[q].bottom + 4) return;
+        var key = Math.min(47, Math.round(sh / 6)) * 9 + Math.round(mix * 8); (layers[key] = layers[key] || []).push(x, y); }
+      cards.forEach(function (c) {
+        if (c.el.offsetParent === null) return;
+        var r = c.el.getBoundingClientRect(); if (r.bottom < 0 || r.top > Hv) return;
+        if (c.el.offsetWidth !== c.w || c.el.offsetHeight !== c.h || !c.built || performance.now() - c.built > 6000) rebuild(c);
+        for (var n = 0; n < c.dots.length; n++) { var d = c.dots[n], x = r.left + d[0], y = r.top + d[1];
+          if (y < topLimit - 2 || y > Hv + STEP) continue;
+          var tw = moving ? Math.pow(Math.max(0, Math.sin(t * d[3] + d[2])), 18) : 0;
+          var a = moving ? ambient(c, d[0], d[1], t, r.width, r.height) : 0;
+          put(x, y, 34 + 46 * tw + 70 * a, 0.35 * a); }
+      });
+      // Influx entre cartes : le long de la marge intérieure, à travers l'espace entre les cartes.
+      if (moving && t >= nextSpawn && packets.length < 4) { spawn(t); nextSpawn = t + 0.7 + Math.random() * 1.2; }
       packets = packets.filter(function (p) {
+        var A = find(p.from), B = find(p.to); if (!A || !B) return false;
+        var a = checkpoint(A, p.right), b = checkpoint(B, p.right);
+        if (!p.dur) p.dur = Math.max(0.6, Math.abs(b[1] - a[1]) / 520);
         var prog = (t - p.t0) / p.dur;
-        if (prog >= 1) { flashes[p.to.y + "|" + p.path[p.path.length - 1][0]] = t;
-          ORGANS.forEach(function (o) { if (o.sec === p.to.sec) o.boost = 1; }); return false; }
-        for (var k = 0; k < 7; k++) { var q = at(p, prog * p.len - k * STEP * 0.9); light(q[0], q[1], (1 - k / 7) * (k ? 0.75 : 1)); }
+        if (prog >= 1) { if (B.el) { var rb = B.el.getBoundingClientRect(); B.pulse = t; B.px = b[0] - rb.left; B.py = b[1] - rb.top; }
+          ORGANS.forEach(function (o) { if (o.sec === B.el || (B.el && B.el.contains(o.sec))) o.boost = 1; });
+          B.flash = t; A.flash = A.flash || 0; return false; }
+        if (prog < 0.05) A.flash = t;
+        var dir = b[1] > a[1] ? 1 : -1, yHead = a[1] + (b[1] - a[1]) * prog;
+        for (var k = 0; k < 8; k++) { var y = Math.round((yHead - dir * k * STEP * 0.9) / STEP) * STEP + (a[1] % STEP);
+          if ((y - a[1]) * dir < 0) break; put(a[0], y, 70 + 170 * (1 - k / 8), 0.6 * (1 - k / 8)); }
         return true; });
-      var structure = {};  // vaisseaux et passages : un peu plus marqués que le reste du tissu
-      var j0 = Math.floor(L.sy / STEP), j1 = Math.floor((L.sy + Hv) / STEP) + 1, cols = Math.ceil(W / STEP);
-      L.lanes.forEach(function (l) { structure["y" + Math.floor(l.y / STEP)] = 1; });
-      var cL = Math.floor(L.xL / STEP), cR = Math.floor(L.xR / STEP), layers = {};
-      for (var j = j0; j <= j1; j++) {
-        // Zones couvertes par une carte sur cette ligne : on saute directement par-dessus.
-        var yRow = (j + 0.5) * STEP - L.sy, cover = [];
-        for (var o = 0; o < L.obstacles.length; o++) { var r = L.obstacles[o];
-          if (yRow > r.top - 3 && yRow < r.bottom + 3) cover.push([r.left - 3, r.right + 3]); }
-        for (var i = 0; i < cols; i++) {
-        var x = (i + 0.5) * STEP, yPage = (j + 0.5) * STEP, y = yRow, jump = -1;
-        for (var c = 0; c < cover.length; c++) if (x > cover[c][0] && x < cover[c][1]) jump = Math.max(jump, cover[c][1]);
-        if (jump >= 0) { i = Math.max(i, Math.floor(jump / STEP - 0.5)); continue; }
-        var onStruct = i === cL || i === cR || structure["y" + j], v = lit[i + "," + j] || 0;
-        var tw = moving ? Math.pow(Math.max(0, Math.sin(t * (0.3 + grain(j, i) * 0.8) + grain(i, j) * TAU)), 18) : 0;
-        var sh = (onStruct ? 46 : 30) + 52 * tw + 160 * v, rad = DOT, mix = 0.5 * v;  // même taille partout
-        var key = Math.round(sh / 6) * 6 + "|" + Math.round(mix * 8) + "|" + Math.round(rad * 4);
-        (layers[key] = layers[key] || []).push(x, y);
-        }
-      }
-      Object.keys(layers).forEach(function (k) { var p = k.split("|"), sh = +p[0], m = +p[1] / 8, rad = +p[2] / 4, a = layers[k];
+      layers.forEach(function (arr, k) { if (!arr) return; var sh = Math.floor(k / 9) * 6, m = (k % 9) / 8;
         ctx.fillStyle = "rgb(" + Math.round(sh + (BLUE[0] - sh) * m) + "," + Math.round(sh + (BLUE[1] - sh) * m) + "," +
           Math.round(sh + 3 + (BLUE[2] - sh) * m) + ")";
-        ctx.beginPath(); for (var n = 0; n < a.length; n += 2) { ctx.moveTo(a[n] + rad, a[n + 1]); ctx.arc(a[n], a[n + 1], rad, 0, TAU); }
+        ctx.beginPath(); for (var n = 0; n < arr.length; n += 2) { ctx.moveTo(arr[n] + DOT, arr[n + 1]); ctx.arc(arr[n], arr[n + 1], DOT, 0, TAU); }
         ctx.fill(); });
-      // Points de contrôle : un anneau sur chaque vaisseau, à hauteur du titre de chaque bloc ; il
-      // s'illumine quand un influx part ou arrive.
-      L.cps.forEach(function (c) { [L.xL, L.xR].forEach(function (x) {
-        var y = c.y - L.sy; if (y < -10 || y > Hv + 10) return;
-        var f = flashes[c.y + "|" + x], glow = f !== undefined ? Math.max(0, 1 - (t - f) / 0.9) : 0;
-        ctx.beginPath(); ctx.arc(x, y, 3.2 + 1.6 * glow, 0, TAU); ctx.lineWidth = 1.2;
-        ctx.strokeStyle = glow ? "rgba(157,191,245," + (0.45 + 0.55 * glow) + ")" : "rgba(196,196,200,0.45)"; ctx.stroke(); }); });
+      // Points de contrôle : un anneau discret par carte et par marge ; il s'illumine à chaque échange.
+      cards.concat([heartCard]).forEach(function (c) {
+        if (!c.el || c.el.offsetParent === null || !LINKS.some(function (l) { return l[0] === c.block || l[1] === c.block; })) return;
+        [false, true].forEach(function (right) { var q = checkpoint(c, right);
+          if (q[1] < topLimit || q[1] > Hv) return;
+          var glow = c.flash !== undefined ? Math.max(0, 1 - (t - c.flash) / 0.9) : 0;
+          ctx.beginPath(); ctx.arc(q[0], q[1], DOT + 1.6 + 1.4 * glow, 0, TAU); ctx.lineWidth = 1.1;
+          ctx.strokeStyle = glow ? "rgba(157,191,245," + (0.4 + 0.6 * glow) + ")" : "rgba(196,196,200,0.35)"; ctx.stroke(); });
+      });
     }
     function loop(now) {
       raf = null; if (document.hidden) return;
@@ -1794,7 +1822,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       raf = requestAnimationFrame(loop);
     }
     size();
-    window.addEventListener("resize", function () { size(); if (REDUCED) draw(0); });
+    window.addEventListener("resize", function () { size(); cards.forEach(function (c) { c.w = -1; }); if (REDUCED) draw(0); });
     if (REDUCED) { draw(0); window.addEventListener("scroll", function () { draw(0); }, { passive: true }); return; }
     raf = requestAnimationFrame(loop);
     document.addEventListener("visibilitychange", function () { if (!document.hidden && !raf) raf = requestAnimationFrame(loop); });

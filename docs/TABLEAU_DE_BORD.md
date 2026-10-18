@@ -89,10 +89,17 @@ opérations, ordres posés, organisme, décisions, système. Rien n'a été cach
   neurone, colonne, œil, pouls, nerfs), choisi pour ce que fait le bloc (`organs()` dans le
   gabarit, table PICK). Points au repos qui scintillent ; une seule boucle d'animation, organes
   visibles seulement, image fixe si « moins d'animations ».
-- Tissu de la page (18/10/2026, demande d'Etienne) : derrière les cartes, des points couvrent
-  toute la place libre (marges, espaces entre les blocs) et scintillent au repos. Deux vaisseaux
-  longent les marges, chaque bloc y a un point de contrôle (à hauteur de son titre) ; des influx
-  voyagent d'un bloc à l'autre (par le vaisseau ou en traversant l'espace entre deux blocs) ; à
-  l'arrivée, le point de contrôle s'illumine et le petit organe du bloc s'active (`field()`).
-  Rien n'est dessiné sous les cartes ; 25 images/s au plus, arrêt onglet caché, image fixe si
-  « moins d'animations ».
+- Tissu des cartes (18/10/2026, v2, demande d'Etienne) : les points sont À L'INTÉRIEUR des
+  cartes, seulement dans la place libre (les vraies lignes de texte, graphiques, boutons et
+  pastilles sont mesurés et évités, avec une marge), tous de la taille des points du cœur. Chaque
+  carte a son animation : ondes (résumé, entonnoir, système), courant (principal, capital,
+  journal, ordres posés), souffle (aujourd'hui), hélice (arène), étincelles (positions,
+  décisions) ; plus un scintillement au repos. Les cartes qui travaillent ensemble échangent des
+  influx (table LINKS : principal ↔ capital, positions, cœur, ordres posés, journal ; arène →
+  principal, entonnoir, journal ; système → arène, aujourd'hui…) : un influx part du point de
+  contrôle d'une carte (anneau dans sa marge intérieure, à hauteur du titre), longe les marges,
+  traverse l'espace entre les cartes et arrive à l'autre : l'anneau s'illumine, une onde parcourt
+  la carte et son petit organe s'active (`cardTissue()`). Hors des cartes, aucun point fixe :
+  seulement les influx en route. Une toile par-dessus la page, qui ne capte aucun clic ; jamais
+  sur la barre du haut ni sur une bulle d'information ; 25 images/s au plus, arrêt onglet caché,
+  image fixe si « moins d'animations ».
