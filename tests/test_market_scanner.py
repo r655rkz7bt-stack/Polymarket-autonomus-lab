@@ -122,3 +122,24 @@ def test_unavailable_source_raises_cleanly():
     blocked = HttpClient(session=FakeSession([FakeResponse(403)]), sleep=lambda s: None)
     with pytest.raises(SourceUnavailable):
         blocked.get_json("https://x")
+
+
+def test_long_markets_with_holding_rewards_are_scanned_too():
+    """19/10/2026 : l'horizon normal (ici 72 h) écartait les marchés à récompense de détention, qui
+    se règlent souvent dans un ou deux ans ; une page de plus les ajoute, eux seuls."""
+    class TwoCalls:
+        def __init__(self):
+            self.calls = []
+
+        def list_markets(self, **kwargs):
+            self.calls.append(kwargs)
+            if len(self.calls) == 1:
+                return [raw_market("court")]
+            return [raw_market("long", end=NOW + timedelta(days=400), holdingRewardsEnabled=True),
+                    raw_market("long_sans", end=NOW + timedelta(days=400)),
+                    raw_market("court", holdingRewardsEnabled=True)]
+    g = TwoCalls()
+    result = scan(g, NOW, dict(CFG, holding_pages=1, holding_max_horizon_days=900))
+    assert [m.market_id for m in result.markets] == ["court", "long"]
+    assert all(m.eligible for m in result.markets) and g.calls[1]["max_pages"] == 1
+    assert len(TwoCalls().calls) == 0 and len(scan(TwoCalls(), NOW, CFG).markets) == 1  # désactivé par défaut
