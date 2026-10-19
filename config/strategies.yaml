@@ -289,25 +289,6 @@ meteo_prevision:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 6, min: 0, max: 50}
 
-temperature_floor:
-  explication: "Si la station a déjà mesuré plus chaud qu'une réponse, cette réponse ne peut plus gagner : on parie contre elle."
-  # Chantier n°0, étape 3 (16/10/2026) : le maximum du jour ne peut que monter. Tranche déjà
-  # dépassée par le maximum METAR → « Non » quasi certain ; « X ou plus » atteint → « Oui ».
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-16"
-  hypothesis: >
-    La source de résolution (NOAA, station d'aéroport) est lisible en direct ; quand le relevé
-    rend une tranche impossible ou acquise, le prix du marché est en retard sur la réalité.
-  params:
-    margin_c:       {value: 1.0, min: 0.5, max: 3.0}
-    margin_f:       {value: 2.0, min: 1.0, max: 5.0}
-    certainty:      {value: 0.96, min: 0.80, max: 0.99}
-    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
-    max_extra_ticks: {value: 2, min: 0, max: 5}
-    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
-
 meteo_prevision_patiente:
   explication: "La même idée météo, mais on attend dans la file qu'un vendeur vienne à notre prix."
   # Variante « patiente » (16/10/2026, chercheur) : même modèle que meteo_prevision (seule
@@ -772,6 +753,48 @@ nf_sport_patiente_prix_moyen:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], prix_min: 0.80, prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_oui:
+  explication: "Le favori de sport qui gagne le plus (nf_sport_patiente), mais seulement quand le favori est un OUI : on sépare les deux camps."
+  # Petite-fille d'essai (19/10/2026, chercheur) : remplace temperature_floor (éliminée). Champion + favori OUI. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente + favori OUI"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], issue: [oui]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_2crans:
+  explication: "Comme le champion de sport, mais l'achat est posé 2 crans au-dessus du vendeur le plus bas : on paie encore moins cher, au risque d'être moins souvent servi."
+  # Variante d'essai (19/10/2026, chercheur) : remplace temperature_floor (éliminée). Teste la profondeur de l'ordre posé. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, ordre posé à 2 crans"
+  class: naive_favorite
+  limit_ticks: 2
+  filtres: {familles: [sports]}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-19"
