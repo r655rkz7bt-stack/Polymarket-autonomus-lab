@@ -116,23 +116,6 @@ cross_market:
     stake_fraction: {value: 0.20, min: 0.0, max: 1.0}     # sans risque : grosse mise
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
 
-market_structure:
-  explication: "On regarde s'il y a beaucoup plus d'acheteurs que de vendeurs et on achète juste avant que le prix monte (mise de côté : elle perdait)."
-  # Stratégie 5 : déséquilibre du carnet → hausse à court terme, sortie programmée.
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-15"
-  params:
-    min_imbalance:  {value: 0.6, min: 0.2, max: 0.95}
-    max_spread:     {value: 0.02, min: 0.001, max: 0.10}
-    depth_window:   {value: 0.03, min: 0.005, max: 0.20}
-    stake_fraction: {value: 0.05, min: 0.0, max: 1.0}
-    take_profit:    {value: 0.02, min: 0.001, max: 0.30}
-    stop_loss:      {value: 0.03, min: 0.001, max: 0.50}
-    max_hold_hours: {value: 6, min: 0.1, max: 72}
-    max_extra_ticks: {value: 0, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 0, min: 0, max: 50}   # 16/10 : retirée (−47 % en 412 opérations, frais) ; sorties maintenues
-
 market_structure_patiente:
   explication: "La même idée, mais on attend dans la file qu'un vendeur vienne à notre prix."
   # Variante du 15/10/2026 (chercheur) : market_structure paie le vendeur (frais taker + écart) et
@@ -173,21 +156,6 @@ calibration_patiente:
     max_extra_ticks: {value: 0, min: 0, max: 5}
     max_proposals_per_cycle: {value: 5, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
-
-news_momentum:
-  explication: "Quand une vraie nouvelle tombe et que le prix commence à bouger, on suit le mouvement en pensant qu'il va continuer."
-  # Stratégie 2 : actualité confirmée + mouvement amorcé → continuation (a priori non calibré).
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-15"
-  params:
-    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
-    min_move:       {value: 0.05, min: 0.01, max: 0.50}
-    continuation:   {value: 0.04, min: 0.0, max: 0.30}
-    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
-    min_net_edge:   {value: 0.01, min: 0.0, max: 0.50}
-    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
-    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
 
 nf_sport_tres_court:
   explication: "Comme naive_favorite, mais seulement le sport ET seulement à moins de 6 heures de la fin (le match est presque joué)."
@@ -249,46 +217,6 @@ nf_court_prix_haut:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
 
-meteo_prevision:
-  explication: "On compare les prévisions météo au prix et on parie contre la température que le marché croit trop probable."
-  # Marchés de température (16/10/2026) : prévisions GFS + ECMWF (Open-Meteo) contre le prix.
-  # ATTENTION : le gain du test ci-dessous venait de prix d'historique non achetables ; aux prix
-  # réellement payés : −6 % (experiments/meteo_backtest.md, « Vérification »). L'arène juge.
-  # Testé hors échantillon sur 1er-15/10 (experiments/meteo_backtest.md) : NON sur la tranche
-  # favorite surestimée, ≈ +20 % des mises après frais. Réglages issus de ce test.
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-16"
-  params:
-    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}
-    margin:         {value: 0.02, min: 0.0, max: 0.20}   # retirée de la probabilité estimée
-    sigma_max:      {value: 1.5, min: 0.3, max: 4.0}     # flou des prévisions de maximum (°C)
-    bias_max:       {value: 0.5, min: -3.0, max: 3.0}    # la station est plus chaude que le modèle
-    sigma_min:      {value: 1.8, min: 0.3, max: 4.0}
-    bias_min:       {value: 0.0, min: -3.0, max: 3.0}
-    max_lead_hours: {value: 36, min: 0, max: 72}         # au plus 36 h avant le début du jour local
-    min_lead_hours: {value: 6, min: 0, max: 24}          # au plus 6 h après
-    min_no_price:   {value: 0.2, min: 0.01, max: 0.99}   # zone où le test a gagné : NON coté 0,2 à 0,8
-    max_no_price:   {value: 0.8, min: 0.01, max: 0.99}
-    allow_yes:      {value: 0, min: 0, max: 1}           # OUI perdant dans le test : désactivé
-    max_candidates: {value: 100, min: 0, max: 400}
-    kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}    # Kelly réduit : beaucoup de petits paris
-    stake_fraction: {value: 0.03, min: 0.0, max: 1.0}    # au plus 3 % du capital par pari
-    # Étalonnage PAR STATION (16/10/2026, experiments/meteo_backtest.md) : biais et flou appris sur
-    # les 7 derniers jours de la station, tirés vers les réglages ci-dessus. Prévision plus juste
-    # (Brier 0,090 au lieu de 0,097) ; mais aux prix réellement payés, aucun avantage mesuré sur le
-    # passé (−6 %) : seule l'arène, sur les vrais carnets, tranchera.
-    station_calibration:  {value: 1, min: 0, max: 1}
-    calibration_days:     {value: 7, min: 1, max: 30}
-    calibration_min_days: {value: 3, min: 1, max: 30}
-    calibration_shrink:   {value: 3, min: 0, max: 30}  # jours « fictifs » au réglage global
-    sigma_floor:          {value: 0.8, min: 0.2, max: 3.0}
-    # Sortie (AMELIORATION n°7, 17/10/2026) : revendre le NON quand le marché le rachète plus cher
-    # que la probabilité du modèle + cette marge (frais et erreur du modèle couverts).
-    exit_margin:    {value: 0.03, min: 0.0, max: 0.30}
-    max_extra_ticks: {value: 1, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 6, min: 0, max: 50}
-
 meteo_prevision_patiente:
   explication: "La même idée météo, mais on attend dans la file qu'un vendeur vienne à notre prix."
   # Variante « patiente » (16/10/2026, chercheur) : même modèle que meteo_prevision (seule
@@ -327,25 +255,6 @@ meteo_prevision_patiente:
     sigma_floor:          {value: 0.8, min: 0.2, max: 3.0}
     max_extra_ticks: {value: 0, min: 0, max: 5}
     max_proposals_per_cycle: {value: 8, min: 0, max: 50}
-
-news_momentum_patiente:
-  explication: "Suivre les nouvelles, mais en attendant dans la file au lieu d'acheter tout de suite."
-  # Variante « patiente » (16/10/2026, chercheur) de la seule stratégie positive de l'arène
-  # (news_momentum : 3 opérations, +5,31). Achat posé 1 cran au-dessus du meilleur acheteur ;
-  # seuil d'avantage abaissé car le prix posé est meilleur que celui du vendeur.
-  class: news_momentum
-  limit_ticks: 1
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-16"
-  params:
-    min_spike:      {value: 3.0, min: 1.0, max: 50.0}
-    min_move:       {value: 0.05, min: 0.01, max: 0.50}
-    continuation:   {value: 0.04, min: 0.0, max: 0.30}
-    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
-    min_net_edge:   {value: 0.0, min: 0.0, max: 0.50}
-    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
 
 crypto_threshold_patiente:
   explication: "La même idée Bitcoin, en attendant dans la file (en pause)."
@@ -1505,3 +1414,66 @@ vague_opinion:
     max_candidates: {value: 40, min: 0, max: 200}
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+
+nf_sport_patiente_6_24h:
+  explication: "Le favori de sport qui gagne le plus, mais seulement entre 6 et 24 heures avant la fin, quand le match n'a pas encore commencé."
+  # Petite-fille d'essai (19/10/2026, chercheur) : remplace market_structure/news_momentum (éliminées). Champion + fenêtre 6-24 h. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, 6 à 24 h"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_demi_mise:
+  explication: "Le favori de sport qui gagne le plus, mais en misant deux fois moins à chaque pari, pour mieux encaisser une série de pertes."
+  # Variante d'essai (19/10/2026, chercheur) : champion à demi-Kelly (la croissance logarithmique peut y gagner si le bord est incertain). Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, demi-mise"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
+
+nf_sport_patiente_large:
+  explication: "Le favori de sport qui gagne le plus, mais on accepte aussi des favoris un peu moins sûrs (dès 65 centimes)."
+  # Variante d'essai (19/10/2026, chercheur) : champion avec fourchette de prix élargie vers le bas. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, prix 0,65-0,95"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.65, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
