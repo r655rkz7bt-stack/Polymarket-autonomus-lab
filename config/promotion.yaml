@@ -66,5 +66,9 @@ radical_idea_after_days_without_record: 7
 # Ménage (17/10/2026, AMELIORATION n°9) : une stratégie sans aucune opération clôturée ni position
 # après ce nombre de jours est retirée (comme une élimination, sans toucher au compteur hebdomadaire).
 retirer_inactives_apres_jours: 3
-jamais_retirer: [market_maker]   # la tenue de marché peut rester longtemps sans exécution (récompenses)
+jamais_retirer: [market_maker]
+# Ménage (19/10/2026) : retrait immédiat d'une stratégie clairement pire que le hasard (score de
+# confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
+# Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).
+retirer_perdantes: {min_operations: 20, confiance_max: -1.5}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
 

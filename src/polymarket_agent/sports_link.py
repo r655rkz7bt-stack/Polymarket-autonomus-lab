@@ -57,10 +57,27 @@ def _close(market, start: str | None) -> bool:
     return game_start is None or when is None or abs(game_start - when) <= MAX_START_GAP
 
 
+# Paris qui ne portent PAS sur le vainqueur du match (19/10/2026) : leurs deux issues sont aussi des
+# noms d'équipes (« Spread: Titans (-3.5) » → Titans / Colts), mais le score officiel et les cotes
+# des bookmakers (vainqueur) ne s'y appliquent pas. cotes_bookmakers les prenait pour le vainqueur :
+# Patriots estimés à 75 % vendus 28 %, Colts achetés dans 3 paris du même match (−287 sur 14 paris).
+NOT_WINNER = re.compile(r"spread|handicap|o/u|over/under|total|1h|2h|half|quarter|period|inning|"
+                        r"map \d|game \d|set \d|round \d|exact score|both teams|first|player", re.IGNORECASE)
+
+
+def winner_market(market) -> bool:
+    """Le marché porte-t-il sur le vainqueur du match ? Type donné par Gamma s'il existe, sinon le
+    libellé (« A vs. B » sans précision)."""
+    kind = getattr(market, "sports_market_type", None)
+    if kind:
+        return kind == "moneyline"
+    return not NOT_WINNER.search(str(market.question or ""))
+
+
 def link(market, observations: list) -> dict | None:
     """Le match et les cotes du marché, d'après les observations les plus récentes."""
     outcomes = [str(o) for o in (market.outcomes or [])]
-    if len(outcomes) != 2 or {o.lower() for o in outcomes} == {"yes", "no"}:
+    if len(outcomes) != 2 or {o.lower() for o in outcomes} == {"yes", "no"} or not winner_market(market):
         return None
     game, odds = None, None
     for o in observations:
