@@ -763,6 +763,28 @@ nf_sport_patiente_prix_haut:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_patiente_prix_moyen:
+  explication: "Le favori de sport qui gagne le plus (nf_sport_patiente), mais seulement quand il coûte 0,80 à 0,875 : la moitié moins chère, où une défaite coûte moins."
+  # Petite-fille d'essai (19/10/2026, chercheur) : complément de nf_sport_patiente_prix_haut (0,875-0,95),
+  # dont la première opération a perdu −180. Même champion, tranche de prix du bas. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente + prix 0,80-0,875"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], prix_min: 0.80, prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_sport_oui:
   explication: "Comme naive_favorite, mais seulement le sport ET seulement quand le favori est un OUI (on sépare les deux morceaux qui gagnent)."
   # Petite-fille d'essai (17/10/2026, chercheur) : sport (nf_sport) croisé avec favori OUI (nf_oui). Fantôme : gratuit.
