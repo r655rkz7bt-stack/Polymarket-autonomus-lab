@@ -510,11 +510,20 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets)
         if main.ledger.state.bankrupt:
             break
-    # 12. Récompenses de liquidité ESTIMÉES pour les ordres restés posés (hors capital).
+    # 12. Récompenses ESTIMÉES (hors capital) : liquidité pour les ordres restés posés, détention
+    #     pour les positions des marchés éligibles (holding_rewards.py, 19/10/2026).
     by_market = {m.market_id: m for m in result.markets} | {m.market_id: m for m in result.watchlist}
+    rate = float((deps.settings.get("recompenses") or {}).get("detention_taux_annuel", 0) or 0)
     for portfolio in portfolios:
         try:
             _estimate_rewards(deps, portfolio, by_market, books, report, now)
+            if rate > 0:
+                from polymarket_agent import holding_rewards
+                amounts = holding_rewards.accrue(portfolio.ledger.state.positions, portfolio.marks, by_market, rate,
+                                                 float(deps.settings["cycle"]["bucket_minutes"]))
+                if amounts:
+                    total = holding_rewards.record(deps.db, report.cycle_id, now, portfolio.name, amounts)
+                    portfolio.counts["detention_estimee"] = round(total, 6)
         except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais faire tomber le cycle
             log.warning("[%s] estimation des récompenses impossible : %s", portfolio.name, exc)
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
@@ -546,11 +555,15 @@ def _ranking_rewards(deps: CycleDeps, competitors: dict) -> tuple[dict[str, floa
     cfg = deps.settings.get("recompenses") or {}
     if not cfg.get("classement_arene"):
         return {}, {}
+    from polymarket_agent import holding_rewards
     from polymarket_agent import liquidity_rewards as lr
     starts = {n: p.ledger.state.epoch_started_at for n, p in competitors.items()}
     try:
-        return (lr.ranking_bonus(deps.db, starts, float(cfg.get("prudence", 0.5)), deps.now()),
-                lr.payable_day_counts(deps.db, starts, deps.now()))
+        prudence = float(cfg.get("prudence", 0.5))
+        bonus = lr.ranking_bonus(deps.db, starts, prudence, deps.now())
+        for name, amount in holding_rewards.ranking_bonus(deps.db, starts, prudence).items():  # détention (19/10)
+            bonus[name] = round(bonus.get(name, 0.0) + amount, 4)
+        return bonus, lr.payable_day_counts(deps.db, starts, deps.now())
     except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais bloquer l'arène
         log.warning("récompenses estimées illisibles pour le classement : %s", exc)
         return {}, {}

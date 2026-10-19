@@ -37,12 +37,13 @@ def test_repository_config_loads():
         "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nf_sport_court", "nf_tres_court", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "news_momentum",
         "news_momentum_patiente", "outsider_sport_patiente", "suivre_politique",
-        "cotes_bookmakers"])
+        "cotes_bookmakers", "parking_politique"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
                                                                    "loterie_meteo", "naive_favorite_large", "nf_demi_mise",
-                                                                   "nf_quart_mise", "nm_demi_mise", "cotes_bookmakers")))
+                                                                   "nf_quart_mise", "nm_demi_mise", "cotes_bookmakers",
+                                                                   "parking_politique")))
 
 
 def test_param_outside_bounds_is_refused():
@@ -217,3 +218,51 @@ def test_reversion_uses_real_book_not_history(tmp_path, ledger, limits):
     out = reversion(tmp_path).propose([moved_market(0.75)], books_for("0.46", "0.74"),
                                       ledger.state, limits, "B1")
     assert not out.proposals
+
+
+def test_parking_counts_the_holding_reward_only_on_eligible_markets(tmp_path):
+    """19/10/2026 : sur un marché à récompense de détention (4 %/an), un favori à 0,97 qui se règle
+    dans un an est un bon placement (≈ +4 % de récompense) ; sans la récompense, pas d'avantage ;
+    marché non éligible : rien."""
+    from datetime import timedelta
+    from conftest import KEY, NOW, make_book, raw_market
+    from polymarket_agent.ledger import Ledger
+    from polymarket_agent.safety_controller import RiskLimits
+    from polymarket_agent.sources.polymarket_gamma import parse_market
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+    state = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW).state
+    park = strategy(min_ask=D("0.93"), max_ask=D("0.99"), bias=D("0"), shrink=D("0.5"), uncertainty=D("0.01"),
+                    min_net_edge=D("0.01"), max_extra_ticks=D("1"), kelly_fraction=D("0.15"), holding_only=D("1"),
+                    holding_rate=D("0.04"), holding_years_max=D("1"))
+    books = {"tokA": make_book("tokA", bids=(("0.96", "5000"),), asks=(("0.97", "5000"),)),
+             "tokB": make_book("tokB", bids=(("0.03", "5000"),), asks=(("0.04", "5000"),))}
+    raw = raw_market(yes_price="0.965", best_bid=0.96, best_ask=0.97, end=NOW + timedelta(days=365),
+                     holdingRewardsEnabled=True)
+    out = park.propose([parse_market(raw)], books, state, limits, "b1")
+    assert len(out.proposals) == 1 and out.proposals[0].prob_low < out.proposals[0].est_probability < 1
+    assert out.proposals[0].net_edge > D("0.03")  # la récompense compte dans l'avantage déclaré
+    raw["holdingRewardsEnabled"] = False
+    out = park.propose([parse_market(raw)], books, state, limits, "b1")
+    assert not out.proposals and "pas de récompense de détention" in out.abstentions
+    plain = strategy(min_ask=D("0.93"), max_ask=D("0.99"), bias=D("0"), shrink=D("0.5"), uncertainty=D("0.01"),
+                     min_net_edge=D("0.01"), max_extra_ticks=D("1"))
+    raw["holdingRewardsEnabled"] = True
+    assert not plain.propose([parse_market(raw)], books, state, limits, "b1").proposals  # sans la récompense
+
+
+def test_holding_reward_estimate_is_kept_outside_capital(tmp_path):
+    from datetime import timedelta
+    from types import SimpleNamespace
+    from conftest import NOW
+    from polymarket_agent import holding_rewards
+    from polymarket_agent.persistence import Database
+    db = Database(tmp_path / "db.sqlite")
+    pos = {"t1": SimpleNamespace(market_id="m1", shares=D("1000")), "t2": SimpleNamespace(market_id="m2", shares=D("10"))}
+    markets = {"m1": SimpleNamespace(holding_rewards=True), "m2": SimpleNamespace(holding_rewards=False)}
+    amounts = holding_rewards.accrue(pos, {"t1": D("0.97"), "t2": D("0.5")}, markets, 0.04, 60 * 24 * 365)
+    assert list(amounts) == ["m1"] and abs(amounts["m1"][1] - 970 * 0.04) < 1e-9  # un an à 4 % sur 970
+    assert holding_rewards.accrue(pos, {}, markets, 0.04, 5) == {}  # sans prix de revente : rien
+    holding_rewards.record(db, "c1", NOW, "fantome:parking_v1", {"m1": (970.0, 0.5)})
+    assert holding_rewards.ranking_bonus(db, {"parking_v1": NOW - timedelta(days=1)}, 0.5) == {"parking_v1": 0.25}
+    assert holding_rewards.ranking_bonus(db, {"parking_v1": NOW + timedelta(days=1)}, 0.5) == {}
+    db.close()

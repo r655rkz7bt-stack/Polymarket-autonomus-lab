@@ -741,3 +741,19 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   coupée) ; les stratégies actives ne revendent plus qu'avec des ordres posés (tenue de marché)
   ou rarement (météo : 3 ventes, +15). Rien à changer.
 
+## 43. Récompense de détention et parking politique (19/10/2026, lot 2)
+- Polymarket verse un taux annuel (4 % le 19/10, variable) sur la valeur des positions des marchés
+  éligibles (Gamma `holdingRewardsEnabled`, lu dans `MarketInfo.holding_rewards`).
+- `holding_rewards.py` : à chaque cycle, valeur de chaque position éligible au meilleur acheteur ×
+  taux (`recompenses.detention_taux_annuel`) × durée du cycle → table `recompenses_detention`.
+  Comptée pour le classement de l'arène (× prudence, comme les récompenses de liquidité), jamais
+  dans le capital d'un fantôme ; celle du principal est affichée à part (« hors capital »).
+  Versement au capital public : proposals/2026-10-19_detention_et_remises.md (noyau).
+- `parking_politique` (naive_favorite, `holding_only`) : favoris politiques 0,93-0,99, au moins 2
+  semaines avant la fin, marchés éligibles seulement ; l'avantage et la mise comptent la
+  récompense attendue (`holding_rate` × années, au plus `holding_years_max`), pas les
+  probabilités déclarées (vérifiées par le contrôleur). Jugée sur la valeur (part max 30 %).
+- Pas encore de « placement de l'argent qui dort » dans le principal : tant que la récompense
+  n'est pas versée au journal signé, il ne gagnerait que le mouvement des prix (≈ 0) pour un
+  risque de plus ; l'arène mesure d'abord parking_politique.
+

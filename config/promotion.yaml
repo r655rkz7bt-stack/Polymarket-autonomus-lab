@@ -35,6 +35,7 @@ juger_sur_recompenses:
   market_maker: {jours_min: 3, part_max: 0.3}
 juger_sur_valeur:
   favori_politique: {min_age_hours: 72, part_max: 0.2}
+  parking_politique: {min_age_hours: 72, part_max: 0.3}   # 19/10/2026 : marchés à récompense de détention
 # Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
 # que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
 keep_log_growth: 0.0

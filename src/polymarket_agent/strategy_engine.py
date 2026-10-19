@@ -90,7 +90,10 @@ class NaiveFavorite:
     #   min_hours / max_hours : fenêtre de temps avant l'échéance (avant le coup d'envoi en sport) ;
     #   underdog = 1 : acheter l'OUTSIDER (l'issue la moins chère) au lieu du favori ;
     #   shrink : estimation = milieu + shrink × (1 − milieu) au lieu de milieu + bias (le favori
-    #   perd « shrink » fois moins souvent que son prix ne l'annonce).
+    #   perd « shrink » fois moins souvent que son prix ne l'annonce) ;
+    #   holding_only = 1 (19/10/2026) : seulement les marchés à récompense de détention (Gamma
+    #   holdingRewardsEnabled) ; leur avantage compte alors `holding_rate` × années jusqu'à la fin
+    #   (au plus `holding_years_max`), puisque Polymarket verse ce taux sur la valeur détenue.
     families: tuple[str, ...] = ()
     exclude_words: tuple[str, ...] = ()
 
@@ -103,6 +106,8 @@ class NaiveFavorite:
         out = []
         for m in markets:
             if len(m.outcome_prices) != 2 or market_family(m) not in self.families or excluded(m, self.exclude_words):
+                continue
+            if p.get("holding_only", Decimal("0")) > 0 and not m.holding_rewards:
                 continue
             price = min(m.outcome_prices) if p.get("underdog", Decimal("0")) > 0 else max(m.outcome_prices)
             if p["min_ask"] - Decimal("0.02") <= price <= p["max_ask"]:
@@ -132,6 +137,9 @@ class NaiveFavorite:
             if (self.families and market_family(market) not in self.families) or excluded(market, self.exclude_words):
                 out.abstain("famille de marchés exclue")
                 continue
+            if p.get("holding_only", Decimal("0")) > 0 and not market.holding_rewards:
+                out.abstain("pas de récompense de détention")
+                continue
             idx = 0 if market.outcome_prices[0] >= market.outcome_prices[1] else 1
             if p.get("underdog", Decimal("0")) > 0:
                 idx = 1 - idx
@@ -156,6 +164,12 @@ class NaiveFavorite:
                 q = min(book.mid + p["bias"], Decimal("0.99"))
             low = q - p["uncertainty"]
             high = min(q + p["uncertainty"], Decimal("0.995"))
+            # Récompense de détention attendue (par part, en fraction du prix) : elle s'ajoute à
+            # l'avantage et à la mise, pas aux probabilités déclarées (le contrôleur les vérifie).
+            bonus = Decimal("0")
+            if p.get("holding_only", Decimal("0")) > 0 and market.end_date is not None:
+                years = Decimal(str(max((market.end_date - book.fetched_at).total_seconds(), 0) / (365 * 86400)))
+                bonus = p.get("holding_rate", Decimal("0")) * min(years, p.get("holding_years_max", Decimal("1")))
             best: tuple[Decimal, Decimal] | None = None  # (prix limite, coût par part)
             tick = book.tick_size
             try:
@@ -164,7 +178,7 @@ class NaiveFavorite:
                     if price >= ONE:
                         break
                     cost_ps = price + taker_fee(ONE, price, market.fees)
-                    if low - cost_ps >= min_edge:
+                    if low + bonus - cost_ps >= min_edge:
                         best = (price, cost_ps)
             except UnknownFees:
                 out.abstain("frais inconnus")
@@ -173,12 +187,12 @@ class NaiveFavorite:
                 out.abstain("avantage net insuffisant")
                 continue
             max_price, cost_ps = best
-            shares = size_buy(state, prob_low=low, cost_per_share=cost_ps,
+            shares = size_buy(state, prob_low=min(low + bonus, Decimal("0.995")), cost_per_share=cost_ps,
                               kelly_fraction=p.get("kelly_fraction", Decimal("1")), marks=marks)
             if shares < max(market.min_order_size, book.min_order_size):
                 out.abstain("taille autorisée trop faible")
                 continue
-            edge = low - cost_ps
+            edge = low + bonus - cost_ps
             candidates.append((edge, Proposal(
                 op_id=make_op_id(bucket, self.strategy_id, self.version, token_id, "BUY"),
                 side="BUY", market_id=market.market_id, event_id=market.event_id,
