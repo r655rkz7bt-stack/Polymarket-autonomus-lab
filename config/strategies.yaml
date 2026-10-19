@@ -475,6 +475,34 @@ favori_politique:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
 
+parking_politique:
+  explication: "On place l'argent qui dort sur des favoris politiques presque sûrs qui touchent la récompense de détention de Polymarket (4 % par an)."
+  # AMELIORATION du 19/10/2026 : Polymarket verse un taux annuel (4 % le 19/10) sur la valeur des
+  # positions des marchés éligibles (Gamma holdingRewardsEnabled, surtout la politique à long terme).
+  # Seule poche gagnante en direct ET sur le passé : le favori politique (+2,3 % ; +5,7 % après frais).
+  # Jugée sur la valeur de ses positions (mode « valeur ») + la récompense estimée (classement).
+  class: naive_favorite
+  familles: [politics, sans_frais]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.93, min: 0.50, max: 0.99}
+    max_ask:        {value: 0.99, min: 0.60, max: 0.999}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}
+    shrink:         {value: 0.5, min: 0.0, max: 0.9}
+    uncertainty:    {value: 0.01, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    min_hours:      {value: 336, min: 0, max: 20000}      # au moins 2 semaines : la récompense compte
+    max_hours:      {value: 20000, min: 1, max: 40000}
+    max_candidates:  {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+    kelly_fraction: {value: 0.15, min: 0.0, max: 5.0}
+    holding_only:   {value: 1, min: 0, max: 1}
+    holding_rate:   {value: 0.04, min: 0.0, max: 0.2}     # taux annoncé le 19/10/2026 (variable)
+    holding_years_max: {value: 1, min: 0, max: 3}        # le taux peut changer : au plus 1 an compté
+
 favori_politique_patiente:
   explication: "Le favori en politique, en attendant dans la file pour payer moins cher."
   # Même raison n°1, avec l'achat POSÉ un cran au-dessus du meilleur acheteur (pas de frais ni

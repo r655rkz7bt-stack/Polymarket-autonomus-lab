@@ -622,6 +622,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       p.appendChild(el("b", null, value)); box.appendChild(p); }
     pill("frais payés", fmt(C.frais_payes, 2));
     pill("perte max. depuis un sommet", fmt(C.drawdown_max * 100, 1) + " %");
+    if (C.detention_estimee > 0) pill("récompense de détention estimée (hors capital)", fmt(C.detention_estimee, 2));
     if (D.audit) pill("audit", fmt(D.audit.verifiees, 0) + " exécutions vérifiées · " +
       (D.audit.anomalies ? "▲ " + D.audit.anomalies + " anomalie(s)" : "aucune anomalie"));
   })();

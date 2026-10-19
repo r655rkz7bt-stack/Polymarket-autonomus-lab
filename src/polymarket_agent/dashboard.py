@@ -323,15 +323,24 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                     "drawdown_max": round(max_drawdown(curve), 4),
                     "jours_depuis_palier": round(days_since_record(main, now), 2),
                     "faillite": state.bankrupt, "raison_faillite": state.bankrupt_reason})
+    try:  # récompense de détention ESTIMÉE du capital principal (hors capital, holding_rewards.py)
+        from polymarket_agent import holding_rewards
+        since = state.epoch_started_at.isoformat(timespec="seconds") if state.epoch_started_at else ""
+        capital["detention_estimee"] = round(holding_rewards.totals(db, since).get("principal", 0.0), 4)
+    except Exception:  # noqa: BLE001 - base sans table de récompenses
+        capital["detention_estimee"] = 0.0
 
     # --- récompenses estimées comptées pour le classement (option A, 17/10/2026), comme dans main.py
     bonus = {}
     rcfg = settings.get("recompenses") or {}
     if rcfg.get("classement_arene"):
         from polymarket_agent import liquidity_rewards
+        from polymarket_agent import holding_rewards
+        starts = {n: l.state.epoch_started_at for n, l in shadows.items()}
         try:
-            bonus = liquidity_rewards.ranking_bonus(db, {n: l.state.epoch_started_at for n, l in shadows.items()},
-                                                    float(rcfg.get("prudence", 0.5)), now)
+            bonus = liquidity_rewards.ranking_bonus(db, starts, float(rcfg.get("prudence", 0.5)), now)
+            for n, amount in holding_rewards.ranking_bonus(db, starts, float(rcfg.get("prudence", 0.5))).items():
+                bonus[n] = round(bonus.get(n, 0.0) + amount, 4)  # récompense de détention (19/10/2026)
         except Exception:  # noqa: BLE001 - base sans table de récompenses
             bonus = {}
 

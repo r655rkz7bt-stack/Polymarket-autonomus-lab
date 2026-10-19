@@ -29,6 +29,9 @@ principal:
 recompenses:
   classement_arene: true
   prudence: 0.5       # estimation sans doute trop optimiste : on n'en compte que la moitié
+  # Récompense de DÉTENTION (19/10/2026) : taux annuel versé par Polymarket sur la valeur des positions
+  # des marchés éligibles (Gamma holdingRewardsEnabled) ; estimée comme ci-dessus (holding_rewards.py).
+  detention_taux_annuel: 0.04
 
 limit_orders:
   max_age_hours: 6             # durée de vie maximale d'un ordre posé
