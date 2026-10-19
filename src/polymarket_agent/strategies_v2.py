@@ -907,6 +907,12 @@ class CotesBookmakers(_Base):
             best = None
             for side in (0, 1):
                 prob = float(sp["cotes"][side])
+                # Garde-fou (19/10/2026) : Polymarket et les bookmakers ne divergent jamais de 25 points
+                # sur un vrai vainqueur de match ; un tel écart signale un mauvais rattachement.
+                if (len(m.outcome_prices) == 2 and "max_gap" in p
+                        and abs(prob - float(m.outcome_prices[side])) > float(p["max_gap"])):
+                    out.abstain("écart trop grand avec les bookmakers (rattachement douteux)")
+                    continue
                 prop = self._buy(m, books, state, side, prob - margin, prob, min(0.999, prob + margin), bucket, marks,
                                  out, f"cotes_bookmakers:{prob:.3f}", f"moyenne des bookmakers {prob:.0%}, marge {margin:.0%}",
                                  "cotes en retard sur l'actualité (blessure, composition)")

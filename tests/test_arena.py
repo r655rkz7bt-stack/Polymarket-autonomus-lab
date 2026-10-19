@@ -407,3 +407,21 @@ def test_champion_betting_worse_than_its_prices_loses_its_place():
     assert choose_champion([court], "nf_court_v1", 20, None, **gates)[0] == "nf_court_v1"
     assert "nf_court_v1" in allocation([court, patient], 20, 5, champion="nf_court_v1", **gates)
     assert choose_champion([replace(court, t_stat=0.3)], "nf_court_v1", 20, None, keep_t=0.0, **gates)[0] == "nf_court_v1"
+
+
+def test_clearly_losing_strategies_are_retired_at_once(tmp_path):
+    """19/10/2026 : confiance ≤ −1,5 après 20 opérations → retrait immédiat (journal signé), sans
+    toucher au compteur hebdomadaire ; jamais le champion, ni les modes de jugement, ni trop tôt."""
+    from dataclasses import replace
+
+    from polymarket_agent.arena import last_weekly_elimination, retire_hopeless
+    main = Ledger.create(tmp_path / "m.jsonl", KEY, tmp_path / "m.lock", "1000", now=NOW)
+    main.record_promotion("champ_v1", "test", now=NOW)
+    bad = replace(st("news_momentum_v1", 128, -0.1), t_stat=-1.6)
+    standings = [bad, replace(st("champ_v1", 50, -0.1), t_stat=-2.0), replace(st("jeune_v1", 12, -0.1), t_stat=-3.0),
+                 replace(st("market_maker_v1", 30, -0.1), t_stat=-2.0, mode="recompenses"),
+                 replace(st("moyenne_v1", 40, 0.0), t_stat=-1.0)]
+    assert retire_hopeless(main, standings, RULES, NOW) == ["news_momentum_v1"]
+    assert "news_momentum_v1" in main.state.eliminated and last_weekly_elimination(main) is None
+    assert RULES["retirer_perdantes"] == {"min_operations": 20, "confiance_max": -1.5}
+    assert retire_hopeless(main, standings, {}, NOW) == []

@@ -724,3 +724,20 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   Simulation avec les journaux du 18/10 à 21 h : nf_sport_patiente devient championne, 50 % du
   capital principal ; nf_court et nf_sport sortent (leurs positions vont à leur terme).
 
+## 42. AMELIORATION du 19/10/2026 (réponse d'Etienne : « Tout »), lot 1
+- Constat d'ensemble (1 549 opérations clôturées de tous les fantômes) : −3 416 au total ; les
+  paris gardés jusqu'au règlement gagnent 4,4 points de moins que leur prix ; seules poches non
+  négatives : favori politique (+2,3 %), favori sportif posé (+4,9 %), favori météo (≈ 0).
+- cotes_bookmakers : 17 de ses 20 achats étaient des HANDICAPS (« Spread: Colts (-7.5) ») auxquels
+  elle appliquait les cotes du vainqueur. `sports_link.winner_market` : seul le pari « vainqueur »
+  est rattaché (Gamma `sportsMarketType == "moneyline"`, sinon le libellé) ; garde-fou `max_gap`
+  (25 points d'écart avec les bookmakers = mauvais rattachement). `MarketInfo` lit aussi
+  `sportsMarketType` et `holdingRewardsEnabled` (récompense de détention, lot 2).
+- Ménage (`arena.retire_hopeless`, `retirer_perdantes` dans promotion.yaml) : confiance ≤ −1,5
+  après 20 opérations → retrait immédiat (journal signé, hors compteur hebdomadaire ; jamais le
+  champion, ni les modes de jugement). Le 19/10 : news_momentum, news_momentum_patiente,
+  meteo_prevision.
+- Reventes immédiates : −656 sur 524 ventes, mais presque toutes par market_structure (déjà
+  coupée) ; les stratégies actives ne revendent plus qu'avec des ordres posés (tenue de marché)
+  ou rarement (météo : 3 ventes, +15). Rien à changer.
+

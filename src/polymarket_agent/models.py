@@ -66,6 +66,10 @@ class MarketInfo:
     rewards_max_spread: Decimal | None = None
     rewards_daily_rate: Decimal = Decimal("0")
     game_start: datetime | None = None  # sport : coup d'envoi (Gamma gameStartTime) ; l'échéance n'est pas fiable
+    # Sport : type de pari (Gamma sportsMarketType : "moneyline" = vainqueur, "totals", "spreads",
+    # "child_moneyline" = une manche/carte…) ; None hors sport ou si Gamma ne le dit pas.
+    sports_market_type: str | None = None
+    holding_rewards: bool = False  # Gamma holdingRewardsEnabled : récompense de détention (4 %/an)
 
     @property
     def data_ok(self) -> bool:

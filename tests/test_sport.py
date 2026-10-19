@@ -99,3 +99,31 @@ def test_cotes_bookmakers_buys_what_polymarket_sells_too_cheap_before_kickoff(tm
     m.sport = sports_link.link(m, [_odds(0.40, 0.60, start, seen=NOW - timedelta(hours=20))])
     books["T0"] = make_book("T0", bids=(("0.49", "500"),), asks=(("0.50", "500"),))
     assert not s.propose([m], books, _state(tmp_path), limits, "b1").proposals
+
+
+def test_only_the_match_winner_market_is_linked_to_scores_and_odds(tmp_path):
+    """19/10/2026 : cotes_bookmakers appliquait les cotes du vainqueur aux handicaps et aux totaux du
+    même match (Patriots estimés à 75 % vendus 28 %, −287 sur 14 paris)."""
+    start = NOW + timedelta(hours=6)
+    odds = [_odds(0.40, 0.60, start)]
+    assert sports_link.link(_market(start), odds)["cotes"] == [0.6, 0.4]
+    assert sports_link.link(_market(start, question="Spread: Dodgers (-1.5)"), odds) is None
+    assert sports_link.link(_market(start, question="Dodgers vs. Brewers: O/U 8.5"), odds) is None
+    typed = _market(start)
+    typed.sports_market_type = "spreads"  # Gamma le dit : jamais rattaché
+    assert sports_link.link(typed, odds) is None
+    typed.sports_market_type = "moneyline"
+    assert sports_link.link(typed, odds) is not None
+    raw = raw_market("g2", sportsMarketType="totals", holdingRewardsEnabled=True)
+    assert parse_market(raw).sports_market_type == "totals" and parse_market(raw).holding_rewards
+    # Garde-fou : plus de 25 points d'écart avec les bookmakers = rattachement douteux, rien n'est acheté.
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+    s = _strategy(CotesBookmakers, margin=0.02, min_net_edge=0.03, max_odds_age_hours=13, kelly_fraction=0.25,
+                  max_proposals_per_cycle=4, max_extra_ticks=1, max_gap=0.25)
+    m = _market(start)
+    m.sport = sports_link.link(m, [_odds(0.25, 0.75, start, seen=NOW - timedelta(hours=2))])
+    m.outcome_prices = [D("0.28"), D("0.72")]
+    books = {"T0": make_book("T0", bids=(("0.27", "500"),), asks=(("0.28", "500"),)),
+             "T1": make_book("T1", bids=(("0.71", "500"),), asks=(("0.72", "500"),))}
+    out = s.propose([m], books, _state(tmp_path), limits, "b1")
+    assert not out.proposals and "écart trop grand avec les bookmakers (rattachement douteux)" in out.abstentions

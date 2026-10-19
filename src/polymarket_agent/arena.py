@@ -339,13 +339,14 @@ def choose_elimination(standings: list[Standing], champion: str, last_eliminatio
 
 
 INACTIVE = "inactive"  # début du motif d'un retrait pour inactivité (≠ élimination hebdomadaire)
+HOPELESS = "perdante"  # début du motif d'un retrait pour résultats clairement mauvais (idem)
 
 
 def last_weekly_elimination(main: Ledger) -> datetime | None:
     """Dernière élimination HEBDOMADAIRE (les retraits pour inactivité ne remettent pas le compteur à zéro)."""
     last = None
     for e in read_entries(main):
-        if e.get("type") == "ELIMINATION" and not str(e.get("data", {}).get("reason", "")).startswith(INACTIVE):
+        if e.get("type") == "ELIMINATION" and not str(e.get("data", {}).get("reason", "")).startswith((INACTIVE, HOPELESS)):
             last = parse_ts(e["ts"])
     return last
 
@@ -367,6 +368,28 @@ def retire_inactive(main: Ledger, competitors: dict[str, Ledger], standings: lis
             continue
         main.record_elimination(s.name, f"{INACTIVE} : aucune opération ni position en {float(days):g} jours",
                                 {"jours": round(s.days(now), 2)}, now)
+        out.append(s.name)
+    return out
+
+
+def retire_hopeless(main: Ledger, standings: list[Standing], cfg: dict, now: datetime) -> list[str]:
+    """Ménage (AMELIORATION du 19/10/2026) : une stratégie qui parie clairement MOINS bien que le
+    hasard (score de confiance ≤ `confiance_max` après `min_operations` opérations) est retirée tout
+    de suite, sans attendre l'élimination hebdomadaire (une par semaine : news_momentum_patiente
+    perdait encore à t = −1,6 après 128 opérations). Jamais le champion, ni les modes de jugement
+    (tenue de marché, politique), ni `jamais_retirer`."""
+    rule = cfg.get("retirer_perdantes") or {}
+    if not rule:
+        return []
+    keep = tuple(str(k) for k in cfg.get("jamais_retirer") or ())
+    n_min, t_max = int(rule.get("min_operations", 20)), float(rule.get("confiance_max", -1.5))
+    out = []
+    for s in standings:
+        if (s.eliminated or s.mode or s.name == main.state.champion or s.closed_trades < n_min
+                or s.t_stat > t_max or (keep and s.name.startswith(keep))):
+            continue
+        main.record_elimination(s.name, f"{HOPELESS} : confiance {s.t_stat:.2f} après {s.closed_trades} opérations",
+                                {"confiance": s.t_stat, "trades": s.closed_trades}, now)
         out.append(s.name)
     return out
 
@@ -407,6 +430,7 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                                 {"log_growth": loser.log_growth, "trades": loser.closed_trades}, now)
         events.append(f"élimination : {loser.name}")
     events += [f"retrait (inactive) : {n}" for n in retire_inactive(main, competitors, standings, cfg, now)]
+    events += [f"retrait (perdante) : {n}" for n in retire_hopeless(main, standings, cfg, now)]
     final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0), reward_days.get(n, 0), cfg)
                      for n, l in competitors.items()])
     twins: dict = {}
