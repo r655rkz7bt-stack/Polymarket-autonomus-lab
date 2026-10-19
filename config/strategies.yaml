@@ -703,6 +703,27 @@ nf_sport_patiente_prix_moyen:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_patiente_non:
+  explication: "Le favori de sport qui gagne le plus (nf_sport_patiente), mais seulement quand le favori est un NON : l'autre moitié de nf_sport_patiente_oui."
+  # Variante d'essai (19/10/2026, chercheur) : complète nf_sport_patiente_oui, pour savoir quel camp porte le gain. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente + favori NON"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], issue: [non]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-19"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_sport_patiente_oui:
   explication: "Le favori de sport qui gagne le plus (nf_sport_patiente), mais seulement quand le favori est un OUI : on sépare les deux camps."
   # Petite-fille d'essai (19/10/2026, chercheur) : remplace temperature_floor (éliminée). Champion + favori OUI. Fantôme : gratuit.
