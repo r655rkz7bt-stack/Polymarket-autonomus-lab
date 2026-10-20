@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-20 (passage chercheur, ~06 h UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (04:49 UTC) : capital réalisé 804,43 (palier 1500, 4,7 jours
+  sans palier), champion nf_sport_patiente (73 opérations, 1184 en fantôme). Aucune obligation.
+- **Fait** : variante `nf_sport_patiente_jour` (sans nouveau code : champion sport + ordre posé, seulement 0-18 h UTC),
+  complément de `nf_sport_patiente_soir`. Test de configuration mis à jour.
+- **Pas fait** : chantier n°0 étape 3 sport, Kalshi/Manifold : restent « à faire » (passage court).
+- **Limites** : échantillon nul au départ ; ordres posés, markout à surveiller. Rien vérifié en réel.
+
 ## 2026-10-20 (passage chercheur, ~01 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (23:49 UTC) : capital réalisé 794,02 (palier 1500, 4,5 jours
