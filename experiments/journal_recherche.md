@@ -3,6 +3,21 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-20 (passage chercheur, ~20 h UTC)
+
+- **Enquête** (détail : `experiments/enquetes/2026-10-20_soir_copie_et_deux_camps.md`) : aucun nouveau défaut de code.
+  - Obligation « le 18/10 fait 84 % du gain » : déjà traitée à 15 h (z 1,86 / meilleur de 35, contrôle `selection_multiple`) ; rien de nouveau.
+  - Copie du principal (famille 1) : 33 jetons, 0 absent du fantôme, mise médiane = 0,34 de celle du fantôme (0,21-0,44).
+  - Deux camps : 11 marchés, principal compris (Safiullin/Shimabukuro, −20 €) ; le 2e achat a rapporté +67 € sur 9 paires
+    hors teneur de marché : pas de blocage créé. Le contrôle automatique ignore le principal.
+  - `cotes_bookmakers` muette depuis le 19/10 04 h (≈ 40 h) : tous ses paris étaient des handicaps pris pour le vainqueur,
+    avant le correctif #81. Non tranché si le filtre retire tout ou si le rattachement est cassé.
+- **Recherche** (`experiments/nba.md`) : fatigue NBA, 1 222 matchs 2025-26 (basketball-reference + Gamma + prices-history), règlement
+  relu 1 231/1 231. Pente repos +0,007/jour (t +0,5) ; 7 découpages dans des sens opposés : **écartée**.
+- **Arène** : trois filles de la feuille de mission : `nf_court_football`, `nf_tennis_12_18h`, `nf_sport_patiente_72_168h_12_18h`.
+- **Reste ouvert** : abstentions de `cotes_bookmakers` ; refaire le contrôle des deux camps à 30 paires ; la piste n° 1 de PISTES.md est
+  maintenant `compteur_tweets, filles`.
+
 ## 2026-10-20 (session avec Etienne, ~16 h UTC) : achat échelonné et façons d'entrer / sortir
 
 - **Demande** : « acheter un petit bout, attendre, racheter… ; trouver des stratégies similaires ».
