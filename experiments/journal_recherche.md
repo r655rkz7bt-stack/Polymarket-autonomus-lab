@@ -3,6 +3,16 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-20 (passage chercheur, ~10 h UTC)
+
+- **Lu** : CLAUDE.md, METHODE.md, feuille de mission (09:49 UTC) : capital réalisé 813,67 (palier 1500, 4,9 jours sans palier),
+  champion nf_sport_patiente (78 opérations, +228). Obligations : 3 filles de l'entonnoir 80/20 (`pareto.md`).
+- **Fait** : les 3 filles, sans nouveau code, chacune dans son fantôme : `nf_sport_patiente_72_168h` (délai 72-168 h, 45 op., +11,4 %
+  par mise), `nf_sport_patiente_matin` (achat 6-12 h UTC, 28 op., +7,1 %), `crypto_threshold_non` (issue non, prix <= 0,80, 9 op.,
+  très petit échantillon ; la mère est en pause, la fille a 2 propositions par cycle). Test de configuration mis à jour, 407 tests verts.
+- **Pas fait** : chantier n°0 étape 3 sport, Kalshi/Manifold : restent « à faire ». `nf_sport_patiente_jour`/`soir` toujours sans résultat.
+- **Limites** : les morceaux gagnants sont des pistes (échantillons petits, z < 2), pas des preuves ; rien vérifié en réel.
+
 ## 2026-10-20 (passage chercheur, ~06 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, CHANTIERS.md, feuille de mission (04:49 UTC) : capital réalisé 804,43 (palier 1500, 4,7 jours
