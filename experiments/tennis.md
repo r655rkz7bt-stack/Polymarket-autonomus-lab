@@ -55,6 +55,22 @@ rencontre par hasard environ une fois sur trois à quatre. D'où la prudence du 
 immédiat) ; test de la fenêtre (`tests/test_favori.py`). L'arène confirme ou infirme avec ses propres paris
 (≥ 100 paris avant de la croire).
 
+## Suite du même passage : e-sport (piste n° 2 de l'ancienne liste)
+23 379 marchés réglés (CS2, LoL, Dota 2, Valorant ; 8 069 matchs entiers et 15 301 cartes), même méthode
+(`scripts/releve_esport.py`, `releve_prix_esport.py`, `esport_analyse.py`). Favori à 0,80-0,95 :
+| marché | moment | paris | gagnés / attendus | rendement après frais + 1 ¢ |
+|---|---|---|---|---|
+| match entier | 60 min avant | 1 489 | 1 303 / 1 283 | −0,1 % |
+| match entier | 10 min avant | 1 533 | 1 350 / 1 320 | +0,6 % |
+| match entier | 30 min après le début | 1 963 | 1 728 / 1 701 | −0,1 % |
+| carte | 60 min avant | 907 | 794 / 770 | +1,4 % (t 1,1) |
+| carte | 30 min après | 2 031 | 1 766 / 1 754 | −0,9 % |
+Par jeu (+30 min) : CS2 +1,6 %, LoL +1,1 %, Dota 2 −0,9 %, Valorant −3,4 %. **Verdict : écartée** : le favori
+gagne légèrement plus que son prix mais les frais et l'écart mangent tout (t par match entre −1,9 et +1,1, mois
+gagnants 3 sur 9 à 7 sur 9 selon le réglage, 18 réglages essayés). Les paris e-sport de la championne
+(Falcons, LOUD, Lynn Vision…) n'ont donc pas d'avantage mesurable : ils profitent du même biais de 1-2 points
+que le tennis, sans le dépasser.
+
 **Reste ouvert** : écart de classement (Sackmann) ; même test sur le tennis de table et le e-sport (en jeu,
 mêmes fenêtres) ; tester le biais favori/outsider pour les cartes (CS2) ; refaire ce test dans un mois, avec
 les paris de l'arène comme échantillon sans sélection.

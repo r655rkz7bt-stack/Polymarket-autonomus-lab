@@ -3,6 +3,33 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-20 (passage chercheur, ~15 h UTC, 1 h de travail)
+
+- **Enquête** (détail : `experiments/enquetes/2026-10-20_championne_chance_et_en_jeu.md`) :
+  - obligation « le 18/10 fait 88 % du gain » : la championne `nf_sport_patiente` gagne 86 paris pour 79,8
+    attendus (z 1,86) ; c'est le **meilleur z de 35 stratégies** (≈ 2,1 attendu sans aucun avantage), et ses
+    variantes non patientes ont le même rendement (+4,3 %). Le 18/10 : 29 gagnés sur 29 (probabilité 0,7 %).
+    Pas un avantage prouvé. Nouveau contrôle `selection_multiple` ;
+  - **84 % de ses achats sont faits après le coup d'envoi** (médiane « horizon » affichée 165 h = date de fin
+    placeholder de Gamma, règlement réel 2,2 h après l'achat) : les filles « délai 72-168 h » mesurent la
+    convention de date de chaque sport. Le journal inscrit désormais `depuis_coup_d_envoi_h` ; contrôle `achats_en_jeu` ;
+  - deux camps d'un même match achetés (Falcons/BetBoom, Safiullin/Shimabukuro : −275 €), seulement par les variantes à
+    ordre posé : contrôle `deux_camps` ;
+  - 10 paris relus sur Gamma (règlement, camp, type de pari) : conformes ; copie à 100 % sur exécution partielle
+    expliquée (ordre posé recopié à sa taille demandée, 2 paris sur 32, non corrigé) ; `positions_oubliees` ne
+    regarde plus les stratégies coupées ni les teneurs de marché (faux positifs).
+- **Recherche** (`experiments/tennis.md`) : piste n° 1 tennis, 6 131 matchs (Gamma + prices-history + vrais échanges),
+  règlement relu (2 261 / 2 263 cohérents). Avant le match : rien (+0,6 %). Recalibrer le prix ne bat pas le marché hors
+  échantillon. En jeu, favori 0,80-0,95 à +30 min, aux prix réellement payés : **+3,1 % par mise** (1 096 matchs, t +2,8,
+  4 mois sur 4, mais 1re moitié +4,5 % et 2e +1,6 %, ~40 réglages essayés) → **indice**, fantôme `nf_tennis_debut_match`.
+  E-sport (CS2/LoL/Dota/Valorant, 23 379 marchés) : **écartée** (−0,1 % à +0,6 %). Sackmann inaccessible.
+- **Arène** : ajoutées `nf_tennis_debut_match` et les trois filles de la feuille de mission
+  (`crypto_threshold_prix_bas`, `crypto_threshold_24_72h`, `nf_sport_patiente_prix_850_875`) ; coupées les éliminées
+  `calibration` (v2) et `choc_sans_nouvelle`.
+- **Reste ouvert** : la championne est-elle encore bonne en dehors de la chance ? (regarder ses paris à partir du
+  21/10) ; écart de classement au tennis (autre source que Sackmann) ; le biais favori 0,80-0,95 sur d'autres sports
+  (voir fin de `tennis.md`) ; suivi des paris en jeu (`depuis_coup_d_envoi_h`) dans l'enquête dans 2 jours.
+
 ## 2026-10-20 (session avec Etienne, ~14 h UTC) : enquête et chercheur « profond »
 
 - **Demande** : « que le chercheur fasse des recherches plus profondes, cherche les problèmes comme
