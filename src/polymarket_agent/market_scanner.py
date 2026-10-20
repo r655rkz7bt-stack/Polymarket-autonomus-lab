@@ -72,6 +72,34 @@ def _add_holding_markets(gamma: GammaClient, now: datetime, cfg: dict, result: S
         result.markets.append(market)
 
 
+def _add_ended_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
+    """Marchés dont l'échéance vient de PASSER (20/10/2026, stratégie apres_echeance) : encore
+    échangés en attendant la résolution officielle. `ended_pages` pages, échéance entre
+    `ended_max_hours` et `ended_min_hours` heures dans le passé, mêmes filtres sinon."""
+    pages = int(cfg.get("ended_pages", 0) or 0)
+    if pages <= 0:
+        return
+    oldest, newest = float(cfg.get("ended_max_hours", 72)), float(cfg.get("ended_min_hours", 1))
+    past_cfg = dict(cfg, min_horizon_minutes=-oldest * 60, max_horizon_hours=-newest)
+    try:
+        raw = gamma.list_markets(end_min=now - timedelta(hours=oldest), end_max=now - timedelta(hours=newest),
+                                 page_size=cfg["page_size"], max_pages=pages)
+    except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
+        log.warning("scanner : marchés échus indisponibles (%s)", exc)
+        return
+    for item in raw:
+        market = parse_market(item)
+        if market.market_id in seen:
+            continue
+        seen.add(market.market_id)
+        market.exclusion = classify(market, now, past_cfg)
+        market.eligible = not market.exclusion
+        market.ended = True
+        if market.exclusion:
+            result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
+        result.markets.append(market)
+
+
 def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
     raw = gamma.list_markets(
         end_min=now + timedelta(minutes=cfg["min_horizon_minutes"]),
@@ -91,7 +119,8 @@ def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
             result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
         result.markets.append(market)
     _add_holding_markets(gamma, now, cfg, result, seen)
-    eligible = sorted((m for m in result.markets if m.eligible), key=lambda m: m.volume_24h, reverse=True)
+    _add_ended_markets(gamma, now, cfg, result, seen)
+    eligible = sorted((m for m in result.markets if m.eligible and not m.ended), key=lambda m: m.volume_24h, reverse=True)
     result.watchlist = eligible[: cfg["watchlist_size"]]
     log.info("scanner : %d marchés, %d exploitables, %d surveillés, exclusions %s",
              len(result.markets), len(eligible), len(result.watchlist), result.excluded)
