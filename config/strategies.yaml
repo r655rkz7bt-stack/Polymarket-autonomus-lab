@@ -2092,3 +2092,68 @@ nf_sport_patiente_prix_850_875:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_court_football:
+  explication: "Le favori à moins de 24 heures de la fin, mais seulement au football."
+  # Fille 80/20 (obligation feuille de mission du 20/10 19:50 UTC) : discipline football = 41 opérations, +171,
+  # +3,8 % par mise de plus que nf_court entière. À juger sur la même période que sa mère (contrôle filles_periode).
+  mere: nf_court
+  morceau: "moins de 24 h, football"
+  class: naive_favorite
+  filtres: {heures_min: 0, heures_max: 24, disciplines: [football]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_tennis_12_18h:
+  explication: "Le favori en tennis, acheté tout de suite, mais seulement entre 12 h et 18 h (heure UTC)."
+  # Fille 80/20 (obligation feuille de mission du 20/10 19:50 UTC) : heure d'achat 12-18 h UTC = 18 opérations, +164,
+  # +19,4 % par mise de plus que nf_tennis entière. Peu d'opérations : probablement un morceau choisi par hasard.
+  mere: nf_tennis
+  morceau: "tennis, achat 12-18 h UTC"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], heure_utc: [12, 18]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_72_168h_12_18h:
+  explication: "Le favori de sport posé en attente, quand le match est dans 3 à 7 jours, acheté entre 12 h et 18 h (heure UTC)."
+  # Fille 80/20 (obligation feuille de mission du 20/10 19:50 UTC) : délai 72-168 h + heure 12-18 h UTC = 12 opérations,
+  # +159, +17,8 % par mise de plus. Attention : le délai 72-168 h est surtout une convention de date de Gamma (la plupart
+  # des achats sont en jeu, voir 2026-10-20_championne_chance_et_en_jeu.md) ; à juger avec `depuis_coup_d_envoi_h`.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, 72-168 h, 12-18 h UTC"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168, heure_utc: [12, 18]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
