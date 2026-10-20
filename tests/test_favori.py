@@ -180,3 +180,21 @@ def test_tennis_debut_match_only_buys_in_the_first_36_minutes_after_kickoff(tmp_
     assert proposals(20, tmp_path / "a")
     assert not proposals(-120, tmp_path / "b")   # match dans 2 h
     assert not proposals(90, tmp_path / "c")     # match commencé depuis 1 h 30
+
+
+def test_source_filter_keeps_only_one_tennis_circuit(tmp_path):
+    """20/10/2026 : les outsiders du circuit ITF sont sous-cotés, pas ceux de l'ATP ni de la WTA ; le
+    filtre `sources` garde les marchés dont la source de résolution est sur un domaine donné."""
+    from polymarket_agent.strategy_engine import Filtered
+    m, books, ledger, limits = _setup(tmp_path, end_hours=48)
+    m.resolution_source = "https://www.itftennis.com/en/tournament-calendar/"
+    itf = Filtered(_strategy(shrink=0.5), {"sources": ["itftennis.com"]})
+    assert itf.propose([m], books, ledger.state, limits, "b").proposals
+    m.resolution_source = "https://www.atptour.com/en/scores/current"
+    assert not itf.propose([m], books, ledger.state, limits, "b").proposals
+    m.resolution_source = ""
+    assert not itf.propose([m], books, ledger.state, limits, "b").proposals
+    no_itf = Filtered(_strategy(shrink=0.5), {"sources_exclues": ["itftennis.com"]})
+    assert no_itf.propose([m], books, ledger.state, limits, "b").proposals  # source inconnue : gardé
+    m.resolution_source = "https://www.itftennis.com/en/tournament-calendar/"
+    assert not no_itf.propose([m], books, ledger.state, limits, "b").proposals

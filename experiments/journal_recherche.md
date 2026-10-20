@@ -3,6 +3,17 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-20 (session avec Etienne, ~16 h UTC) : achat échelonné et façons d'entrer / sortir
+
+- **Demande** : « acheter un petit bout, attendre, racheter… ; trouver des stratégies similaires ».
+- **Recherche** : études (Vanguard, Kaminski & Lo, Polymarket et Kalshi) + 386 vrais paris (chemin
+  minute par minute) + 2 152 matchs passés + vrais échanges. Échelonné, renfort en baisse ou en
+  hausse, stops, prises de gain : écartés (prix juste après une chute). Découverte : favoris ITF
+  −13,9 % aux vrais prix (5 semaines perdantes) ; outsiders ITF +17 % (indice, 150 matchs).
+- **Arène** : `outsider_itf`, `nf_sport_patiente_sans_itf` ; filtres `sources` / `sources_exclues`.
+- **Reste ouvert** : outsider_itf peut rester muette si le scan ne voit pas les matchs ITF (peu
+  de volume) : l'enquête automatique le dira. Détail : `experiments/achat_echelonne.md`.
+
 ## 2026-10-20 (passage chercheur, ~15 h UTC, 1 h de travail)
 
 - **Enquête** (détail : `experiments/enquetes/2026-10-20_championne_chance_et_en_jeu.md`) :

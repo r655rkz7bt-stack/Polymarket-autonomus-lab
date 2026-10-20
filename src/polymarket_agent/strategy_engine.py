@@ -560,7 +560,8 @@ class PatientOrders:
 
 
 FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
-               "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max")
+               "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max", "sources",
+               "sources_exclues")
 
 
 class Filtered:
@@ -574,7 +575,10 @@ class Filtered:
       disciplines : [tennis, counter-strike, nfl, …] et types_pari : [vainqueur, handicap, total, …]
       (20/10/2026, entonnoir 80/20 : même classement que pareto.discipline / pareto.bet_type) ;
       echeance_min / echeance_max : heures jusqu'à l'ÉCHÉANCE du marché (pas le coup d'envoi),
-      comme le délai noté à l'achat ; ecart_max : écart achat-vente maximal (marchés liquides).
+      comme le délai noté à l'achat ; ecart_max : écart achat-vente maximal (marchés liquides) ;
+      sources : domaines de la source de résolution acceptés, ex. [itftennis.com] pour le seul
+      circuit ITF (20/10/2026 : outsiders ITF sous-cotés, ATP et WTA non) ; sources_exclues :
+      domaines refusés (favoris ITF : −13,9 % aux vrais prix, experiments/achat_echelonne.md).
     Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
     morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
 
@@ -600,6 +604,13 @@ class Filtered:
                 return False
         if "ecart_max" in f and (m.spread is None or float(m.spread) > float(f["ecart_max"])):
             return False
+        if "sources" in f or "sources_exclues" in f:
+            from polymarket_agent.resolution_sources import domain_of
+            domain = domain_of(m.resolution_source) if m.resolution_source else ""
+            if "sources" in f and domain not in f["sources"]:
+                return False
+            if domain and domain in f.get("sources_exclues", ()):
+                return False
         if "disciplines" in f or "types_pari" in f:
             from polymarket_agent.pareto import bet_type, discipline  # import tardif : évite une boucle
             if "disciplines" in f and discipline(m.question, m.resolution_source) not in f["disciplines"]:

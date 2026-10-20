@@ -829,3 +829,6 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
   `experiments/vingt_pistes/scripts/`.
 - Consigne du chercheur réécrite (docs/ROUTINE_CHERCHEUR.md) : A enquête, B une piste jusqu'au
   verdict, C arène ; passages de 45 à 90 minutes.
+- Filtres de fille `sources` / `sources_exclues` (`strategy_engine.Filtered`, 20/10/2026) :
+  domaine de la source de résolution (ex. `itftennis.com`), pour `outsider_itf` et
+  `nf_sport_patiente_sans_itf` (experiments/achat_echelonne.md).

@@ -29,6 +29,10 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| achat échelonné, renfort en baisse ou en hausse, stop-loss, prise de gain, stop suiveur | écartées | prix juste après une chute (2 152 matchs) ; tennis −5 à −6 % | achat_echelonne.md |
+| favoris ITF (à éviter) | écartée | −13,9 % aux vrais prix, 5 semaines perdantes | achat_echelonne.md |
+| outsider_itf | indice | +17 % aux vrais prix (150 matchs) | achat_echelonne.md |
+| favoris e-sport | écartée | −0,4 % aux vrais prix | achat_echelonne.md |
 | compteur_tweets | retenue | +12 % par achat, chaque mois gagnant (177 périodes) | vingt_pistes.md |
 | mots_prononces | retenue | +19 à +27 % (billets ≥ 0,30) | vingt_pistes.md |
 | mots_nouveaux | indice | +9 à +20 % (2 mois seulement) | vingt_pistes.md |

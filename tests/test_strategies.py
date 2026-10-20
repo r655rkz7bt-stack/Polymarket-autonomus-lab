@@ -45,7 +45,9 @@ def test_repository_config_loads():
         "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",
         "football_trois_issues", "compteur_tweets", "cotes_tennis",
         # Lot C.
-        "mots_prononces", "mots_nouveaux", "fatigue_nhl"])
+        "mots_prononces", "mots_nouveaux", "fatigue_nhl",
+        # Achat échelonné et outsiders (20/10/2026).
+        "nf_sport_patiente_sans_itf", "outsider_itf"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
@@ -55,7 +57,8 @@ def test_repository_config_loads():
                                                                    "marche_neuf", "apres_echeance", "choc_sans_nouvelle", "kalshi_reference",
                                                                    "predictit_reference", "manifold_reference", "futurs_bookmakers",
                                                                    "football_trois_issues", "compteur_tweets", "cotes_tennis",
-                                                                   "mots_prononces", "mots_nouveaux", "fatigue_nhl")))
+                                                                   "mots_prononces", "mots_nouveaux", "fatigue_nhl",
+                                                                   "outsider_itf")))
 
 
 def test_param_outside_bounds_is_refused():
