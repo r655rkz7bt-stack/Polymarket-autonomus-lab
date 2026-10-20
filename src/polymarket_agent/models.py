@@ -79,6 +79,10 @@ class MarketInfo:
     neg_risk_other: bool = False
     uma_statuses: tuple[str, ...] = ()
     ended: bool = False  # échéance passée (scanner, ended_pages) : seulement pour les stratégies `wants_ended`
+    # Prix de la même question ailleurs (references.py : kalshi, predictit, manifold, outright,
+    # bookmakers_3) et période XTracker du marché « combien de tweets » (posés par le cycle).
+    references: dict | None = None
+    tweets: dict | None = None
 
     @property
     def data_ok(self) -> bool:

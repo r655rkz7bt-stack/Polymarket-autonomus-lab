@@ -27,6 +27,7 @@ au premier cycle avec la clé).
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 from datetime import datetime, timedelta
@@ -72,10 +73,12 @@ class OddsApiSource:
 
     def __init__(self, http: HttpClient, sports: list[str], regions: str = "eu", state=None,
                  window_hours: float = 6, refresh_hours: float = 2.5, daily_budget: int = 15,
-                 fallback_hours: float = 12):
+                 fallback_hours: float = 12, tennis: bool = False):
         """`state` : petite mémoire entre cycles (get_value / set_value de la base) ; sans elle,
-        toutes les ligues sont relevées à chaque passage (ancien comportement)."""
-        self.http, self.sports, self.regions, self.state = http, sports, regions, state
+        toutes les ligues sont relevées à chaque passage (ancien comportement). `tennis` (20/10/2026,
+        cotes_tennis) : ajoute les tournois de tennis en cours (liste des sports, gratuite)."""
+        self.http, self.sports, self.regions, self.state = http, list(sports), regions, state
+        self.tennis = tennis
         self.window, self.refresh, self.budget = window_hours, refresh_hours, daily_budget
         self.fallback = fallback_hours
 
@@ -114,10 +117,21 @@ class OddsApiSource:
                 soon.append((min(starts), sport))
         return [sport for _, sport in sorted(soon)]
 
+    def _tennis_keys(self, key: str) -> list[str]:
+        """Tournois de tennis en cours (GET /v4/sports, gratuit d'après la documentation)."""
+        try:
+            sports = self.http.get_json("https://api.the-odds-api.com/v4/sports", params={"apiKey": key}) or []
+        except SourceUnavailable:
+            return []
+        return [s["key"] for s in sports if isinstance(s, dict) and str(s.get("key", "")).startswith("tennis_")
+                and s.get("active") and not s.get("has_outrights")]
+
     def fetch(self, now: datetime) -> list[Observation]:
         key = os.environ.get(self.KEY)
         if not key:
             raise SourceUnavailable(f"pas de clé {self.KEY}")
+        if self.tennis:
+            self.sports += [k for k in self._tennis_keys(key) if k not in self.sports]
         day = f"odds_api:credits:{now:%Y-%m-%d}"
         used = int(self._get(day) or 0)
         out, errors = [], []
@@ -154,3 +168,73 @@ class OddsApiSource:
         if errors and not out:
             raise SourceUnavailable("; ".join(errors)[:200])
         return out
+
+
+class OutrightsSource:
+    """Cotes des CHAMPIONS de saison (vingt nouvelles pistes, futurs_bookmakers, 20/10/2026) :
+    GET /v4/sports/{sport}/odds?markets=outrights (1 crédit par appel), une fois par jour par
+    championnat, dans le même budget quotidien que les matchs (clé « odds_api:credits:<jour> »).
+    Probabilité de chaque équipe : Pinnacle si présent, sinon moyenne des bookmakers, marge
+    retirée (normalisation). Résultat : instantané « ref:outrights » dans la base."""
+
+    URL = "https://api.the-odds-api.com/v4/sports/{sport}/odds"
+
+    def __init__(self, http: HttpClient, sports: list[str], state, regions: str = "eu",
+                 daily_budget: int = 16, refresh_hours: float = 24):
+        self.http, self.sports, self.state, self.regions = http, list(sports), state, regions
+        self.budget, self.refresh = daily_budget, refresh_hours
+
+    def fetch(self, now: datetime) -> list[dict]:
+        key = os.environ.get(OddsApiSource.KEY)
+        if not key:
+            raise SourceUnavailable(f"pas de clé {OddsApiSource.KEY}")
+        day = f"odds_api:credits:{now:%Y-%m-%d}"
+        used = int(self.state.get_value(day) or 0)
+        try:
+            old = json.loads(self.state.get_value("ref:outrights") or "{}").get("rows") or []
+        except (ValueError, TypeError):
+            old = []
+        rows = [r for r in old if r.get("sport") in self.sports]
+        for sport in self.sports:
+            last = parse_date(self.state.get_value(f"odds_api:dernier:{sport}") or "")
+            if (last and (now - last).total_seconds() < self.refresh * 3600) or used >= self.budget:
+                continue
+            try:
+                events = self.http.get_json(self.URL.format(sport=sport), params={
+                    "apiKey": key, "regions": self.regions, "markets": "outrights", "oddsFormat": "decimal"})
+            except SourceUnavailable:
+                continue
+            used += 1
+            self.state.set_value(day, str(used))
+            self.state.set_value(f"odds_api:dernier:{sport}", now.isoformat(timespec="seconds"))
+            rows = [r for r in rows if r.get("sport") != sport]
+            for ev in events or []:
+                books = ev.get("bookmakers") or []
+                ref = [b for b in books if b.get("key") == OddsApiSource.REFERENCE]
+                probs = _outright_probs(ref or books)
+                rows += [{"sport": sport, "titre": ev.get("sport_title", sport), "equipe": team, "p": p,
+                          "reference": "pinnacle" if ref else "moyenne", "vu_le": now.isoformat(timespec="seconds")}
+                         for team, p in probs.items()]
+        self.state.set_value("ref:outrights", json.dumps({"vu_le": now.isoformat(timespec="seconds"), "rows": rows}))
+        return rows
+
+
+def _outright_probs(bookmakers: list[dict]) -> dict[str, float]:
+    sums: dict[str, float] = {}
+    count = 0
+    for book in bookmakers or []:
+        market = next((m for m in book.get("markets") or [] if m.get("key") == "outrights"), None)
+        inv = {}
+        for o in (market or {}).get("outcomes") or []:
+            try:
+                if float(o["price"]) > 1:
+                    inv[str(o.get("name"))] = 1 / float(o["price"])
+            except (KeyError, TypeError, ValueError):
+                continue
+        total = sum(inv.values())
+        if total <= 0 or len(inv) < 3:
+            continue
+        count += 1
+        for name, v in inv.items():
+            sums[name] = sums.get(name, 0.0) + v / total
+    return {k: round(v / count, 4) for k, v in sums.items()} if count else {}

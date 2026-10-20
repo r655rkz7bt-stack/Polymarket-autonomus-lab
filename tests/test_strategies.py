@@ -39,14 +39,19 @@ def test_repository_config_loads():
         "cotes_bookmakers", "parking_politique", "nf_sport_patiente_tennis", "nf_tennis", "nf_tennis_prix_bas",
         # Vingt nouvelles pistes (20/10/2026), lot A.
         "decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
-        "outsiders_surcotes", "marche_neuf", "apres_echeance", "marches_jumeaux", "choc_sans_nouvelle"])
+        "outsiders_surcotes", "marche_neuf", "apres_echeance", "marches_jumeaux", "choc_sans_nouvelle",
+        # Lot B.
+        "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",
+        "football_trois_issues", "compteur_tweets", "cotes_tennis"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
                                                                    "loterie_meteo", "naive_favorite_large", "nf_demi_mise",
                                                                    "nf_quart_mise", "nm_demi_mise", "nf_sport_patiente_demi_mise", "cotes_bookmakers",
                                                                    "parking_politique", "decroissance_temps", "outsiders_surcotes",
-                                                                   "marche_neuf", "apres_echeance", "choc_sans_nouvelle")))
+                                                                   "marche_neuf", "apres_echeance", "choc_sans_nouvelle", "kalshi_reference",
+                                                                   "predictit_reference", "manifold_reference", "futurs_bookmakers",
+                                                                   "football_trois_issues", "compteur_tweets", "cotes_tennis")))
 
 
 def test_param_outside_bounds_is_refused():

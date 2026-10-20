@@ -129,6 +129,15 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         linked = sports_link.attach(markets, recent)
         if linked:
             status["liaison_sport"] = f"ok ({linked} marchés reliés à leur match ou à leurs cotes)"
+        # Vingt nouvelles pistes, lot B : prix de la même question ailleurs (references.py).
+        from polymarket_agent import references
+        try:
+            n = references.attach(markets, db, now)
+            n["champions"] = references.attach_outrights(markets, db)
+            n["football_3"] = references.attach_football(markets, recent)
+            status["references"] = "ok (" + ", ".join(f"{k} {v}" for k, v in n.items()) + ")"
+        except Exception as exc:  # noqa: BLE001 - un rattachement ne bloque jamais le cycle
+            status["references"] = f"erreur : {type(exc).__name__}: {exc}"[:200]
         for market in markets:
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
             # Météo de la station qui tranche le marché : relevé (temperature_floor) + prévision.

@@ -64,6 +64,39 @@ implication_politique, paire_oui_non, choc_sans_nouvelle : rien à ce moment-là
 Après l'échéance, un favori encore à 0,90 a souvent une raison (« Russia target Kyiv on October
 17 ? ») : seuil relevé à 0,94 ; les marchés en contestation UMA (températures du Cap) sont écartés.
 
+## Lot B : vérifications en direct et sur le passé (20/10/2026)
+**Rattachements** (scan réel du 20/10 vers 11 h UTC) : Kalshi 2 marchés, PredictIt 8, Manifold 0
+à ce moment-là, compteur de tweets 26 marchés. Les premiers rattachements PredictIt contenaient des
+erreurs (« course la plus serrée » du Texas, vice-président pris pour président, tranches d'écart,
+district pris pour chambre) : règles durcies (mots du contrat ET du marché, mêmes nombres, aucun
+nombre en trop) ; après correction, les 10 rattachements relus à la main étaient justes.
+
+**Compteur de tweets** : premier essai en direct, le modèle (rythme des 72 dernières heures,
+dispersion 4) s'écartait beaucoup du marché (« moins de 40 » : 0,051 au marché, 0,208 au calcul).
+Vérifié sur le passé avant d'envoyer :
+- XTracker garde chaque message (`/api/users/{compte}/posts`) : le nombre de messages de chaque
+  période en cours égale exactement son « Post Counter » (131, 107, 126, 90, 34, 14, 18, 1 le 20/10).
+  Le relevé lit désormais 14 jours de messages heure par heure (avant, seulement la période en cours).
+- **Calibrage** (7 comptes, toutes les semaines depuis le début de leur historique, une prévision
+  toutes les 6 h, 6 058 prévisions) : meilleur réglage = moitié rythme des 7 derniers jours, moitié
+  rythme des 14 derniers jours, dispersion 8 à 16 (dispersion 4 : tranches trop larges).
+- **Contre le marché** (177 périodes passées, juillet-octobre 2026, prix réels heure par heure,
+  frais 0,05·p·(1−p) et demi-écart 0,01 à 0,02 comptés) : avec la dispersion 4, perte (−13 % par
+  achat) ; dispersion 12 : log-score du modèle −1,046 contre −1,085 pour le marché. Les billets à
+  moins de 0,10 perdent avec tous les réglages (−34 % à −63 %) : `min_price 0,10`. Avec la
+  dispersion 12 et ce plancher : +12 % par achat, gagnant chaque mois (juillet +22 %, août +3 %,
+  septembre +15 %, octobre +5 %), moyenne par période +8 % (t 1,7). NYC Mayor (très peu de
+  messages) perd avec tous les réglages : une fille sans lui pourra le vérifier.
+
+## Lot C : vérifications sur le passé (20/10/2026)
+- **haut_ou_bas_crypto, écartée** : 444 marchés quotidiens « Bitcoin / Ethereum / Solana / XRP Up
+  or Down » (juillet-octobre 2026), prix réels toutes les 10 minutes, Binance (la source de
+  règlement, notre lecture redonne le règlement dans 443 cas sur 444). Modèle log-normal (prix
+  actuel contre prix d'ouverture, volatilité horaire de 7 jours) : log-score −0,540 contre −0,521
+  pour le marché ; acheter quand le modèle s'écarte de 3 points : **−16 % par achat** (3 880
+  achats, t −8), perdant sur les 4 monnaies et à toute heure. Frais 0,07·p·(1−p) en plus. Le
+  marché est plus juste que le modèle : pas de stratégie.
+
 ## Ce qu'on regardera
 Chaque piste est un fantôme gratuit : l'arène la juge (confiance sur le rendement, retrait des
 perdantes) et l'entonnoir 80/20 (reports/pareto.md) propose ses filles dès qu'elle grandit.

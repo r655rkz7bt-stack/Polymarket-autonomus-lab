@@ -1,5 +1,7 @@
-"""Vingt nouvelles pistes (demande d'Etienne, 20/10/2026) — lot A : dix stratégies qui n'utilisent
+"""Vingt nouvelles pistes (demande d'Etienne, 20/10/2026). Lot A : dix stratégies qui n'utilisent
 que les données de Polymarket (prix, carnets, échéances, libellés, structure des événements).
+Lot B : le prix de la même question ailleurs (Kalshi, PredictIt, Manifold, bookmakers) et le
+compteur de tweets XTracker (references.py).
 
 « Fais une recherche pour 20 stratégies différentes de celles qu'on a déjà (explore de nouvelles
 pistes), qui auront elles-mêmes des filles petit à petit. » Aucune n'est supposée rentable : ce
@@ -515,6 +517,134 @@ class ChocSansNouvelle(_Base):
         return sells
 
 
+# =========================================================================== lot B : autres sources
+
+
+class _Reference(_Base):
+    """Le prix de la MÊME question sur une autre plateforme (ou chez les bookmakers) sert
+    d'estimation (references.py) : on achète le côté que Polymarket vend nettement moins cher,
+    marge `margin` retirée. Garde-fous : référence de moins de `max_age_hours` ; écart avec
+    Polymarket au plus `max_gap` (au-delà, c'est presque toujours un mauvais rattachement)."""
+
+    ref_key = ""
+    required = ("margin", "max_gap", "max_age_hours", "uncertainty", "min_net_edge", "max_proposals_per_cycle")
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get(self.ref_key)
+            if not ref or not _yes_no(m) or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or now is None or (now - seen).total_seconds() > float(p["max_age_hours"]) * 3600:
+                out.abstain("référence trop vieille")
+                continue
+            mid = _book_mid(books, m.token_ids[0])
+            prob = float(ref["p"])
+            if mid is None or abs(prob - mid) > float(p["max_gap"]):
+                out.abstain("écart trop grand (rattachement douteux)")
+                continue
+            margin, unc, best = float(p["margin"]), float(p["uncertainty"]), None
+            for side in (0, 1):
+                q = prob if side == 0 else 1 - prob
+                prop = self._buy(m, books, state, side, q - margin - unc, q - margin, q - margin + unc, bucket, marks,
+                                 out, f"{self.strategy_id}:{prob:.3f}", f"{ref.get('titre', '')[:80]} : {prob:.1%}",
+                                 "les deux plateformes ne tranchent pas la même question")
+                if prop is not None and (best is None or prop.net_edge > best.net_edge):
+                    best = prop
+            if best is not None:
+                props.append(best)
+        return self._finish(out, props)
+
+
+class KalshiReference(_Reference):
+    """Kalshi (plateforme américaine réglementée) : hors sport, sur l'économie, la politique, la
+    météo. L'étude de la Fed trouve Kalshi meilleur que le consensus sur l'inflation."""
+    strategy_id = "kalshi_reference"
+    ref_key = "kalshi"
+
+
+class PredictItReference(_Reference):
+    """PredictIt (politique américaine) : d'autres parieurs, d'autres biais (frais de 10 % sur les
+    gains, plafond de 850 $ par contrat)."""
+    strategy_id = "predictit_reference"
+    ref_key = "predictit"
+
+
+class ManifoldReference(_Reference):
+    """Manifold : monnaie fictive, mais beaucoup de prévisionnistes attentifs sur les questions
+    longues ; souvent cité comme bien calibré."""
+    strategy_id = "manifold_reference"
+    ref_key = "manifold"
+
+
+class FutursBookmakers(_Reference):
+    """Champion de la saison (NBA, NFL, MLB, NHL) : la cote de Pinnacle, marge retirée, contre le
+    marché « Will the X win the 2027 NBA Finals? »."""
+    strategy_id = "futurs_bookmakers"
+    ref_key = "outright"
+
+
+class FootballTroisIssues(_Reference):
+    """Football : victoire, nul ou victoire, chacun dans son marché OUI/NON sur Polymarket ; les
+    bookmakers cotent les trois issues ensemble (cotes_bookmakers ne voyait que deux équipes)."""
+    strategy_id = "football_trois_issues"
+    ref_key = "bookmakers_3"
+
+
+class CompteurTweets(_Base):
+    """« Combien de messages Elon Musk publiera-t-il cette semaine ? » : une tranche par marché
+    (« 200-219 »). XTracker (le compteur qui tranche) donne le total déjà compté et le rythme heure
+    par heure ; total final ≈ déjà compté + rythme (mélange des `recent_hours` et `long_hours`
+    dernières heures) × heures restantes, loi binomiale négative (les rafales de messages sont
+    fréquentes, `dispersion`). On achète la tranche (ou son NON) que le marché vend nettement moins
+    cher que ce calcul, jamais un billet sous `min_price`. Réglages choisis sur le passé
+    (experiments/vingt_pistes.md : 177 périodes de juillet à octobre 2026, +12 % par achat)."""
+
+    strategy_id = "compteur_tweets"
+    required = ("dispersion", "recent_hours", "max_stale_hours", "margin", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.references import bucket_of, tweet_bucket_probability
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            tr = getattr(m, "tweets", None)
+            if not tr or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            rng = bucket_of(m.group_title)
+            last = parse_date(tr.get("vu_le") or "")
+            if rng is None:
+                out.abstain("tranche illisible")
+                continue
+            if last is None or (now - last).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("compteur pas à jour")
+                continue
+            prob = tweet_bucket_probability(tr, rng, now, float(p["dispersion"]), int(p["recent_hours"]),
+                                            int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5)))
+            if prob is None:
+                continue
+            margin, unc, best = float(p["margin"]), float(p["uncertainty"]), None
+            for side in (0, 1):
+                q = prob if side == 0 else 1 - prob
+                ask = books.get(m.token_ids[side]).best_ask if books.get(m.token_ids[side]) else None
+                if ask is not None and float(ask) < float(p.get("min_price", 0)):
+                    out.abstain("billet trop bon marché")  # sur le passé : < 0,10 perdant (-34 %)
+                    continue
+                prop = self._buy(m, books, state, side, q - margin - unc, q - margin, q - margin + unc, bucket, marks,
+                                 out, f"compteur_tweets:{prob:.3f}",
+                                 f"{tr.get('compte')} : {tr.get('total')} déjà, tranche {m.group_title} à {prob:.1%}",
+                                 "rafale ou silence inhabituel, ou règle de comptage différente")
+                if prop is not None and (best is None or prop.net_edge > best.net_edge):
+                    best = prop
+            if best is not None:
+                props.append(best)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
-                                      ChocSansNouvelle)}
+                                      ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
+                                      FutursBookmakers, FootballTroisIssues, CompteurTweets)}
