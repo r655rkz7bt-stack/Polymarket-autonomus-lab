@@ -1607,3 +1607,63 @@ nf_sport_patiente_jour:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_72_168h:
+  explication: "Le favori de sport qui gagne le plus, mais seulement quand le match est dans 3 à 7 jours : plus le temps passe, plus le prix a le temps de se tromper."
+  # Fille 80/20 (obligation feuille de mission 09:49 UTC) : délai 72-168 h = 45 opérations, +460, +11,4 % par mise. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, 72-168 h"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_matin:
+  explication: "Le favori de sport qui gagne le plus, mais seulement le matin (6 h à 12 h UTC), avant les gros matchs du soir."
+  # Fille 80/20 (obligation feuille de mission 09:49 UTC) : heure d'achat 6-12 h UTC = 28 opérations, +283, +7,1 % par mise. Fantôme : gratuit.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, 6-12 h UTC"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heure_utc: [6, 12]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+crypto_threshold_non:
+  explication: "Le calcul Bitcoin (maths sur le prix), mais seulement quand il dit que le prix NE dépassera PAS le seuil, et jamais au-dessus de 0,80 : c'est là que la mère a gagné."
+  # Fille 80/20 (obligation feuille de mission 09:49 UTC) : issue non + prix 0-0,80 = 9 opérations, +290, +203,7 % par mise (très petit échantillon, piste seulement). Fantôme : gratuit.
+  mere: crypto_threshold
+  morceau: "issue non, prix 0-0,80"
+  class: crypto_threshold
+  filtres: {issue: [non], prix_min: 0.0, prix_max: 0.8}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:    {value: 0.03, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+    max_quote_age_minutes: {value: 20, min: 1, max: 120}
+    min_hours:       {value: 0.5, min: 0.1, max: 72}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}

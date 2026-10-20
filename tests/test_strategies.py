@@ -33,7 +33,7 @@ def test_repository_config_loads():
         "market_maker", "market_maker_serre",
         "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
         "nf_autres_sujets", "nf_demi_mise", "nf_quart_mise", "nf_sport_prix_haut", "nf_sport_sans_fin",
-        "nf_prix_haut_sans_fin", "nm_demi_mise", "nf_court", "nf_court_hors_sport", "nf_court_prix_haut", "nf_sport_tres_court", "nf_sport_6_24h", "nf_sport_patiente_prix_haut", "nf_sport_patiente_prix_moyen", "nf_sport_patiente_oui", "nf_sport_patiente_non", "nf_sport_patiente_2crans", "nf_sport_patiente_6_24h", "nf_sport_patiente_demi_mise", "nf_sport_patiente_large", "nf_sport_patiente_soir", "nf_sport_patiente_jour", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
+        "nf_prix_haut_sans_fin", "nm_demi_mise", "nf_court", "nf_court_hors_sport", "nf_court_prix_haut", "nf_sport_tres_court", "nf_sport_6_24h", "nf_sport_patiente_prix_haut", "nf_sport_patiente_prix_moyen", "nf_sport_patiente_oui", "nf_sport_patiente_non", "nf_sport_patiente_2crans", "nf_sport_patiente_6_24h", "nf_sport_patiente_demi_mise", "nf_sport_patiente_large", "nf_sport_patiente_soir", "nf_sport_patiente_jour", "nf_sport_patiente_72_168h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
         "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nf_sport_court", "nf_tres_court", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "outsider_sport_patiente", "suivre_politique",
         "cotes_bookmakers", "parking_politique", "nf_sport_patiente_tennis", "nf_tennis", "nf_tennis_prix_bas"])
