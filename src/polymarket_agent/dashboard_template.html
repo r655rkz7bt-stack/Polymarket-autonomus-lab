@@ -391,6 +391,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       sa mère, c'est ce morceau qui fait gagner ; on combinera ensuite les meilleurs morceaux. « Contre la mère » compare
       chaque fille à ce que la mère a gagné depuis la naissance de la fille (comparaison équitable). Il faut une vingtaine
       d'opérations clôturées avant de conclure.</p></details>
+    <div id="pareto"></div>
     <div id="funnel"></div>
   </section>
 
@@ -1367,6 +1368,28 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   table("positions-t", POS_HEAD, posMain.map(function (p) { return posRow(p); }), "Aucune position ouverte pour le capital principal.", 6);
   document.getElementById("positions-arena-sum").textContent = "Positions des stratégies de l'arène (" + posArena.length + ")";
   table("positions-arena", POS_HEAD, posArena.map(function (p) { return posRow(p, sname(p.portefeuille)); }), "Aucune.", 6);
+
+  // Entonnoir 80/20 (20/10/2026) : pour chaque stratégie qui grandit, le petit morceau qui fait ses gains.
+  (function paretoBlock() {
+    var P = D.pareto || [], box = document.getElementById("pareto");
+    if (!box || !P.length) return;
+    var NAMES = { prix: "prix payé", delai: "délai jusqu'à la fin", issue: "issue", heure_utc: "heure d'achat",
+      discipline: "discipline", type_pari: "type de pari", mode: "mode d'achat", source: "source de résolution" };
+    var wrap = el("div", "funnel-group"); wrap.appendChild(el("h3", null, "Ce qui fait les gains (règle des 80/20)"));
+    var holder = el("div", "today"), ul = el("ul"); holder.appendChild(ul); wrap.appendChild(holder); box.appendChild(wrap);
+    P.forEach(function (r) {
+      var li = el("li"), c = r.coeur;
+      li.appendChild(el("b", null, sname(r.strategie)));
+      li.appendChild(document.createTextNode(" (" + (r.croissance >= 0 ? "+" : "") + fmt(r.croissance * 100, 1) + " % sur " +
+        r.operations + " opérations) : " + (c ? fmt(c.part_des_paris * 100, 0) + " % des paris font " +
+        fmt(c.part_des_gains * 100, 0) + " % des gains → " + (NAMES[c.caracteristique] || c.caracteristique) + " « " +
+        c.morceaux.join(", ") + " »." : "gains encore trop dispersés.")));
+      var todo = (r.filles || []).filter(function (f) { return !f.existe; });
+      if (todo.length) li.appendChild(el("span", "detail", " Filles à créer : " + todo.map(function (f) {
+        return f.morceau + " (" + f.n + " op., " + (f.pnl >= 0 ? "+" : "") + fmt(f.pnl, 0) + ")"; }).join(" ; ")));
+      ul.appendChild(li);
+    });
+  })();
 
   // ---------------------------------------------------------------- entonnoir (mères et filles)
   (function funnelBlock() {

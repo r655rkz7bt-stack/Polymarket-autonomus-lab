@@ -559,7 +559,8 @@ class PatientOrders:
         return getattr(self.inner, name)
 
 
-FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc")
+FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
+               "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max")
 
 
 class Filtered:
@@ -569,7 +570,11 @@ class Filtered:
       familles : [sports, politics, …] (market_family) ; heures_min / heures_max : délai jusqu'à
       l'échéance (au coup d'envoi en sport) ; prix_min / prix_max : prix payé ;
       issue : [oui, non, autre] (autre = équipe, joueur…) ; heure_utc : [début, fin[ (heure de la
-      journée en temps universel, ex. [4, 12] ; [20, 4] passe minuit).
+      journée en temps universel, ex. [4, 12] ; [20, 4] passe minuit) ;
+      disciplines : [tennis, counter-strike, nfl, …] et types_pari : [vainqueur, handicap, total, …]
+      (20/10/2026, entonnoir 80/20 : même classement que pareto.discipline / pareto.bet_type) ;
+      echeance_min / echeance_max : heures jusqu'à l'ÉCHÉANCE du marché (pas le coup d'envoi),
+      comme le délai noté à l'achat ; ecart_max : écart achat-vente maximal (marchés liquides).
     Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
     morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
 
@@ -587,6 +592,20 @@ class Filtered:
         f = self.filters
         if "familles" in f and market_family(m) not in f["familles"]:
             return False
+        if ("echeance_min" in f or "echeance_max" in f) and now is not None:
+            if m.end_date is None:
+                return False
+            hours = (m.end_date - now).total_seconds() / 3600
+            if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
+                return False
+        if "ecart_max" in f and (m.spread is None or float(m.spread) > float(f["ecart_max"])):
+            return False
+        if "disciplines" in f or "types_pari" in f:
+            from polymarket_agent.pareto import bet_type, discipline  # import tardif : évite une boucle
+            if "disciplines" in f and discipline(m.question, m.resolution_source) not in f["disciplines"]:
+                return False
+            if "types_pari" in f and bet_type(m.question, getattr(m, "sports_market_type", None)) not in f["types_pari"]:
+                return False
         if ("heures_min" in f or "heures_max" in f) and now is not None:
             ref = m.game_start or m.end_date
             if ref is None:

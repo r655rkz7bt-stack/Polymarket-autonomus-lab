@@ -659,6 +659,73 @@ nf_sport_patiente:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_patiente_tennis:
+  explication: "La championne (favori de sport, achat posé), mais seulement le tennis : c'est là qu'elle gagne."
+  # Entonnoir 80/20 (20/10/2026, reports/pareto.md) : sur 75 opérations de nf_sport_patiente, le
+  # tennis (source atptour / wtatennis / itftennis) fait +411 avec 37 gagnés pour 32,6 attendus
+  # (z +2,1) ; tout le reste −188 (z +0,1). Les « 3 à 7 jours avant l'échéance » sont le même
+  # morceau (les marchés de tennis se règlent une semaine après le match).
+  mere: nf_sport_patiente
+  morceau: "tennis"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], disciplines: [tennis]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_tennis:
+  explication: "Le favori en tennis, acheté tout de suite (les achats immédiats de la championne gagnaient mieux que ses achats posés)."
+  # Entonnoir 80/20 (20/10/2026) : chez nf_sport_patiente, achats immédiats +10,4 % par mise
+  # (z +1,9), achats posés −2,7 % : l'avantage n'est pas l'ordre posé. Même morceau tennis, achat direct.
+  mere: nf_sport_patiente
+  morceau: "tennis, achat immédiat"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_tennis_prix_bas:
+  explication: "Le favori en tennis seulement quand il coûte 0,80 à 0,875 : plus cher, il ne gagnait rien."
+  # Entonnoir 80/20 (20/10/2026) : nf_sport_prix_haut (0,875-0,95) sur le tennis : 20 opérations,
+  # 17 gagnés pour 18,2 attendus (−6,7 % par mise) ; chez nf_sport_patiente, les prix 0,80-0,875
+  # font l'essentiel des gains.
+  mere: nf_sport_patiente
+  morceau: "tennis, prix 0,80-0,875"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_sport_patiente_prix_haut:
   explication: "Le favori de sport qui gagne le plus (nf_sport_patiente), mais seulement quand il coûte 0,875 à 0,95, en posant l'achat pour payer moins cher."
   # Petite-fille d'essai (18/10/2026, chercheur) : champion (sport, patient) croisé avec le meilleur

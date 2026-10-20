@@ -36,7 +36,7 @@ def test_repository_config_loads():
         "nf_prix_haut_sans_fin", "nm_demi_mise", "nf_court", "nf_court_hors_sport", "nf_court_prix_haut", "nf_sport_tres_court", "nf_sport_6_24h", "nf_sport_patiente_prix_haut", "nf_sport_patiente_prix_moyen", "nf_sport_patiente_oui", "nf_sport_patiente_non", "nf_sport_patiente_2crans", "nf_sport_patiente_6_24h", "nf_sport_patiente_demi_mise", "nf_sport_patiente_large", "nf_sport_patiente_soir", "nf_sport_patiente_jour", "nf_equipe", "nf_long", "nf_moyen", "nf_non", "nf_oui", "nf_politique",
         "nf_prix_bas", "nf_prix_haut", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nf_sport_court", "nf_tres_court", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "outsider_sport_patiente", "suivre_politique",
-        "cotes_bookmakers", "parking_politique"])
+        "cotes_bookmakers", "parking_politique", "nf_sport_patiente_tennis", "nf_tennis", "nf_tennis_prix_bas"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",

@@ -23,6 +23,17 @@ Une fille qui bat sa mère sur au moins 20 opérations clôturées → combine l
 « petite-fille » ; élimine les morceaux perdants. Méthode : `experiments/dissection.md`. Chaque
 stratégie a une phrase simple (`explication`, comme pour un enfant de 6 ans) : écris-la toujours.
 
+**Entonnoir 80/20, à chaque passage** (décision d'Etienne, 20/10/2026) : « trouve les 20 % qui
+créent 80 % des résultats, et applique ça à tout ce qui fait une grosse croissance ». Lis
+`reports/pareto.md` (recalculé à chaque feuille de mission, `pareto.py`) : pour chaque stratégie
+qui grandit (≥ +5 % sur 15 opérations) ou qui bat sa mère (le marqueur d'Etienne), ses gains sont
+découpés par prix, délai jusqu'à la fin, issue, heure d'achat, discipline, type de pari, mode
+d'achat et source de résolution. Crée les filles proposées (obligations de la feuille de mission,
+filtres déjà prêts : `disciplines`, `types_pari`, `echeance_min/max`, `ecart_max`…). Tant que le
+vrai avantage n'est pas trouvé, continue à créer des filles ; une fille qui bat sa mère est
+disséquée à son tour. Un morceau qui n'est pas filtrable (mode d'achat, source) : ajoute le filtre
+dans `strategy_engine.Filtered` plutôt que de l'ignorer.
+
 **Ordres posés : seulement pour la tenue de marché** (17/10/2026). Une stratégie qui parie sur un
 camp (favori, nouvelle, modèle) et qui POSE ses achats est surtout servie quand elle a tort : le
 vendeur qui accepte un prix plus bas sait souvent quelque chose (mesuré : naive_favorite_patiente
