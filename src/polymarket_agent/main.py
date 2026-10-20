@@ -700,6 +700,13 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
                     fill.status, fill.reason = "REFUSE_JOURNAL", str(exc)
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict, fill)
             continue
+        drop = _price_drop(deps, proposal, books.get(proposal.token_id), fresh)
+        if drop is not None:
+            verdict.accepted = False
+            verdict.reasons.append(drop)
+            deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
+            log.info("rejet après relecture %s : %s", proposal.op_id, drop)
+            continue
         key = (proposal.token_id, "BUY")
         fill = simulate_buy(fresh, proposal.shares, proposal.max_price, market.fees,
                             portfolio.taken.get(key, Decimal("0")))
@@ -733,6 +740,25 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if ledger.state.bankrupt:
             break
     portfolio.counts.update(proposals=len(proposals), accepted=accepted, fills=fills)
+
+
+def _price_drop(deps: CycleDeps, proposal: Proposal, before: OrderBook | None, fresh: OrderBook | None) -> str | None:
+    """Enquête du 20/10/2026 (experiments/enquetes/2026-10-20_carnet_perime.md) : l'estimation
+    d'une stratégie est calculée sur le carnet lu au début du cycle ; si le prix de vente a chuté
+    de plus de `relecture.chute_max` avant l'exécution (mauvaise nouvelle en plein match), cette
+    estimation est périmée et la mise, calculée sur elle, trop grosse (Moyuka Uchijima : estimée
+    0,98, payée 0,817, 23 % du fantôme et 8,9 % du principal). On ne joue pas : la stratégie
+    redécidera au cycle suivant avec un carnet frais. Les jambes d'arbitrage (`relecture.sauf`)
+    ne sont pas concernées : une jambe moins chère rend la paire meilleure."""
+    cfg = deps.settings.get("relecture") or {}
+    if (proposal.side != "BUY" or not cfg or proposal.strategy_id in set(cfg.get("sauf") or [])
+            or before is None or fresh is None or before.best_ask is None or fresh.best_ask is None):
+        return None
+    fall = before.best_ask - fresh.best_ask
+    if fall > Decimal(str(cfg.get("chute_max", "1"))):
+        return (f"le prix a chuté de {before.best_ask} à {fresh.best_ask} pendant le cycle : "
+                "estimation périmée, décision reportée au prochain cycle")
+    return None
 
 
 def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],

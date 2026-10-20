@@ -33,8 +33,16 @@ recompenses:
   # des marchés éligibles (Gamma holdingRewardsEnabled) ; estimée comme ci-dessus (holding_rewards.py).
   detention_taux_annuel: 0.04
 
+# Relecture avant d'acheter (enquête du 20/10/2026, experiments/enquetes/2026-10-20_carnet_perime.md) :
+# si le prix de vente a chuté de plus de `chute_max` depuis le début du cycle, l'estimation de la
+# stratégie est périmée → pas d'achat ce cycle-ci (sauf jambes d'arbitrage).
+relecture:
+  chute_max: 0.03
+  sauf: [paire_oui_non, echelle_dates, coherence_match, implication_politique, marches_jumeaux, cross_market,
+         outsiders_surcotes]
+
 limit_orders:
-  max_age_hours: 6             # durée de vie maximale d'un ordre posé
+  max_age_hours: 6            # durée de vie maximale d'un ordre posé
   max_open_per_portfolio: 60   # ordres ouverts au plus par portefeuille (tenue de marché : 25 marchés × 2, 17/10/2026)
 
 http:

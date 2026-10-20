@@ -79,3 +79,18 @@ def test_taker_cost_reads_real_trades_and_never_looks_ahead(tmp_path):
     assert it.taker_cost(trades, "NO", "YES", 2000) == pytest.approx(0.45)  # jamais l'échange de 2500
     assert it.taker_cost(trades, "NO", "YES", 2000, after=True) == 0.50
     assert it.taker_cost(trades, "NO", "YES", 1200, window=100) is None
+
+
+def test_verdict_counts_linked_bets_once_per_event():
+    """Protocole des vingt pistes (20/10/2026) : 26 tranches d'une même semaine de tweets ne
+    valent pas 26 preuves ; la confiance qui compte est celle de la moyenne par événement."""
+    good = [{"gain": 0.2 if i % 4 else -0.3, "evenement": f"e{i % 40}", "mois": f"2026-0{7 + i % 3}", "cout": 0.5}
+            for i in range(200)]
+    v = it.verdict(good)
+    assert v["verdict"] == "retenue" and v["evenements"] == 40 and v["mois_gagnants"] == "3/3"
+    one_event = [dict(b, evenement="seul") for b in good]
+    assert it.verdict(one_event)["verdict"] == "écartée"  # un seul événement : aucune confiance
+    cheap = [{"gain": -0.6, "evenement": f"c{i}", "mois": "2026-09", "cout": 0.05} for i in range(30)]
+    detail = it.verdict(good + cheap)["par_prix"]
+    assert detail["< 0,10"]["rendement"] == -0.6 and detail["0,30-0,70"]["paris"] == 200
+    assert it.verdict(good[:10])["raison"].startswith("moins de")

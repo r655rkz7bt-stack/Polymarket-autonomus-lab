@@ -16,6 +16,16 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 ## Méthode de recherche (chaque session de recherche)
 
+**Enquête et recherche profonde d'abord** (décision d'Etienne, 20/10/2026 : « que le chercheur
+cherche les problèmes comme celui du principal qui augmentait les mises, et fasse de vraies
+recherches profondes ; pousse-le beaucoup plus ») : chaque passage commence par l'enquête
+(partie A de docs/ROUTINE_CHERCHEUR.md : obligations de `reports/enquete.md`, un constat « à
+regarder », un contrôle à la main dans une famille de défauts d'`experiments/enquetes/README.md`)
+puis mène UNE piste d'`experiments/PISTES.md` jusqu'au verdict sur le passé (partie B : vrais prix,
+vrais frais, contrôle du règlement, `idea_test.verdict`). Un passage sérieux dure 45 à 90 minutes ;
+« passage court » n'excuse rien. Les défauts trouvés deviennent des tests et des contrôles de
+`enquete.py`, pour ne jamais revenir.
+
 **Entonnoir** (décision d'Etienne, 17/10/2026) : quand une stratégie gagne, découpe-la en
 « filles » (la mère sur un seul morceau : sujet, prix, délai, OUI/NON) avec `mere`, `morceau`,
 `filtres` dans `strategies.yaml`, et dissèque ses paris (`experiments/dissection/dissequer.py`).

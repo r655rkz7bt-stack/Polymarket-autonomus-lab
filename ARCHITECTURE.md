@@ -813,3 +813,19 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
   « mentions » réglés, comptés par orateur et par mot deux fois par jour ;
   `references["mentions"]`, `references["mot_nouveau"]`). haut_ou_bas_crypto, totaux et séries
   NHL testés sur le passé puis écartés (experiments/vingt_pistes.md).
+
+## 47. Enquête automatique et chercheur « profond » (demande d'Etienne, 20/10/2026)
+- `enquete.py` : contrôles des journaux nés de vrais défauts (copie fidèle du principal, mises au
+  regard du capital, estimation périmée, chance contre avantage, champion sans avantage récent,
+  fille contre mère sur la même période, plage de prix contournée, mêmes paris à d'autres prix,
+  stratégies muettes, positions oubliées, cycle arrêté). `scripts/research_brief.py` écrit
+  `reports/enquete.md` (publié par le cycle dans `rapports/`) et met chaque constat « grave » en
+  TÊTE des obligations. Sans clé : `scripts/fetch_data.sh` (branche data) + `scripts/enquete.py`.
+- `main._price_drop` + `settings.yaml → relecture` : pas d'achat si le prix de vente a chuté de
+  plus de `chute_max` entre le carnet du début de cycle (celui de l'estimation) et la relecture
+  (experiments/enquetes/2026-10-20_carnet_perime.md) ; jambes d'arbitrage exemptées.
+- `idea_test.verdict` : verdict d'une piste testée sur le passé (moyenne par événement, mois,
+  tranches de prix). Liste de travail : `experiments/PISTES.md` ; exemples :
+  `experiments/vingt_pistes/scripts/`.
+- Consigne du chercheur réécrite (docs/ROUTINE_CHERCHEUR.md) : A enquête, B une piste jusqu'au
+  verdict, C arène ; passages de 45 à 90 minutes.

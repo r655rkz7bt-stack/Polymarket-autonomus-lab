@@ -278,3 +278,54 @@ def markdown(title: str, report: dict) -> str:
 
 def day_of(ts: int) -> str:
     return datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d")
+
+
+def _t_stat(values: list[float]) -> float:
+    if len(values) < 3:
+        return 0.0
+    mean = sum(values) / len(values)
+    sd = math.sqrt(sum((v - mean) ** 2 for v in values) / (len(values) - 1))
+    return mean / sd * math.sqrt(len(values)) if sd > 0 else 0.0
+
+
+def verdict(bets: list[dict], min_bets: int = 30) -> dict:
+    """Jugement d'une piste à partir de paris simulés (protocole des vingt pistes, 20/10/2026).
+
+    `bets` : {"gain": résultat par euro misé (frais et écart compris), "evenement": regroupement des
+    paris liés (même événement, même période de tweets…), "mois": "AAAA-MM", "cout": prix payé}.
+    Les paris d'un même événement sont liés : la confiance qui compte est celle de la MOYENNE PAR
+    ÉVÉNEMENT, pas celle des paris (sinon 26 tranches d'une même semaine comptent pour 26).
+    Verdict : « retenue » si le rendement moyen est positif, la confiance par événement ≥ 1,5 et au
+    moins deux mois sur trois gagnants ; « indice » si positif avec une confiance par événement
+    ≥ 0,8 (fantôme, l'arène tranchera) ; sinon « écartée ». Détail par tranche de prix : sur le
+    passé, les billets à moins de 0,10 (tweets) ou 0,30 (mentions) perdaient presque toujours.
+    """
+    if not bets:
+        return {"paris": 0, "verdict": "écartée", "raison": "aucun pari"}
+    gains = [b["gain"] for b in bets]
+    by_event: dict[str, list[float]] = defaultdict(list)
+    by_month: dict[str, list[float]] = defaultdict(list)
+    by_price: dict[str, list[float]] = defaultdict(list)
+    for b in bets:
+        by_event[str(b.get("evenement", ""))].append(b["gain"])
+        by_month[str(b.get("mois", ""))].append(b["gain"])
+        cost = float(b.get("cout", 0.5))
+        by_price["< 0,10" if cost < 0.10 else "0,10-0,30" if cost < 0.30 else "0,30-0,70" if cost < 0.70 else "≥ 0,70"].append(b["gain"])
+    events = [sum(v) / len(v) for v in by_event.values()]
+    mean = sum(gains) / len(gains)
+    t_event = _t_stat(events)
+    months = {m: round(sum(v) / len(v), 4) for m, v in sorted(by_month.items())}
+    winning = sum(1 for v in months.values() if v > 0)
+    if len(bets) < min_bets:
+        label, why = "écartée", f"moins de {min_bets} paris"
+    elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months):
+        label, why = "retenue", "positive, régulière par événement et par mois"
+    elif mean > 0 and t_event >= 0.8:
+        label, why = "indice", "positive mais encore fragile : fantôme, l'arène tranchera"
+    else:
+        label, why = "écartée", "pas d'avantage régulier après frais"
+    return {"paris": len(bets), "rendement_moyen": round(mean, 4), "confiance_paris": round(_t_stat(gains), 2),
+            "evenements": len(events), "confiance_evenements": round(t_event, 2),
+            "mois": months, "mois_gagnants": f"{winning}/{len(months)}",
+            "par_prix": {k: {"paris": len(v), "rendement": round(sum(v) / len(v), 4)} for k, v in sorted(by_price.items())},
+            "verdict": label, "raison": why}

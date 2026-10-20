@@ -150,6 +150,27 @@ def test_book_changed_before_execution_is_rechecked(env, paths):
     assert not Ledger.open(paths[0], KEY, paths[1]).state.positions
 
 
+def test_price_crash_during_the_cycle_postpones_the_buy(env, paths):
+    """Enquête du 20/10/2026 : estimation calculée sur le carnet du début de cycle (vente 0,90),
+    prix effondré à la relecture (0,80) ; acheter « l'aubaine » avec une mise calculée sur
+    l'ancien prix revenait à acheter une mauvaise nouvelle. On reporte au cycle suivant."""
+    make, db, _ = env
+    crown(paths)
+    crashed = make_book("tokA", bids=(("0.79", "500"),), asks=(("0.80", "500"),))
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}, fresh={"tokA": crashed})))
+    assert report.counts.get("fills", 0) == 0
+    reasons = [r["reasons"] for r in db.conn.execute("SELECT reasons FROM decisions")]
+    assert any("chuté" in r for r in reasons)
+
+
+def test_a_one_cent_dip_during_the_cycle_still_trades(env, paths):
+    make, _, _ = env
+    crown(paths)
+    dip = make_book("tokA", bids=(("0.88", "500"),), asks=(("0.89", "40"), ("0.90", "500")))
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}, fresh={"tokA": dip})))
+    assert report.counts["fills"] == 1
+
+
 def test_stale_book_on_reread_means_no_trade(env, paths):
     make, _, _ = env
     crown(paths)

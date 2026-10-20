@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import math
+from datetime import datetime, timezone
 
 from _common import ROOT, get_key, load_settings_with_arena as load_settings, resolve
 
@@ -38,14 +39,29 @@ def main() -> int:
     finally:
         db.close()
     brief = build_brief(main_ledger, competitors, active, settings["arena"], learning=learning)
-    from polymarket_agent import pareto
-    brief["obligations"] += pareto.obligations(reports)
+    from polymarket_agent import enquete, pareto
+    findings = _enquete(competitors, main_ledger, active, settings)
+    # Enquête d'abord (20/10/2026) : un défaut fausse tout le reste, filles comprises.
+    brief["obligations"] = enquete.obligations(findings) + brief["obligations"] + pareto.obligations(reports)
     out = ROOT / "reports" / "brief.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render_brief(brief), encoding="utf-8")
     (ROOT / "reports" / "pareto.md").write_text(pareto.render(reports), encoding="utf-8")
+    (ROOT / "reports" / "enquete.md").write_text(enquete.render(findings, datetime.now(timezone.utc)), encoding="utf-8")
     print(out.read_text(encoding="utf-8"))
     return 0
+
+
+def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict) -> list[dict]:
+    """Enquête automatique (enquete.py, 20/10/2026) sur les journaux vérifiés."""
+    import yaml
+
+    from polymarket_agent import enquete
+    from polymarket_agent.reporting import read_entries
+    configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
+    entries = {n: read_entries(l) for n, l in competitors.items()} | {"principal": read_entries(main_ledger)}
+    cap = float((settings.get("principal") or {}).get("max_mise", 0.10))
+    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap)
 
 
 def _pareto(competitors: dict, main_ledger, db) -> list[dict]:
