@@ -3,6 +3,24 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-20 (session avec Etienne, ~14 h UTC) : enquête et chercheur « profond »
+
+- **Demande** : « que le chercheur fasse des recherches plus profondes, cherche les problèmes comme
+  celui du principal qui augmentait les mises, et de vraies recherches sur les nouvelles
+  stratégies ; pousse-le beaucoup plus ». Constat : les 5 routines duraient 1 à 2 minutes.
+- **Enquête** (journaux publiés, 101 fantômes + principal) : achats sur carnet périmé (estimation
+  0,98, payé 0,817, 8,9 % du principal) → corrigé (`relecture.chute_max`) ; la championne fait 95 %
+  de son gain le 18/10 et n'a plus d'avantage mesurable depuis ; filles jugées sur une autre
+  période que leur mère ; « demi-mise » ne fait pas les mêmes paris ; plage de prix contournée par
+  les ordres posés ; copie à 100 % sur exécutions partielles. Détail :
+  `experiments/enquetes/2026-10-20_carnet_perime.md`.
+- **Outils** : `enquete.py` (11 contrôles, dans la feuille de mission), `scripts/enquete.py` et
+  `scripts/fetch_data.sh` (sans clé), `idea_test.verdict`, `experiments/PISTES.md`, scripts des
+  vingt pistes rangés en exemples. Consigne du chercheur réécrite (A enquête, B une piste
+  jusqu'au verdict, C arène ; 45 à 90 minutes).
+- **Reste ouvert** : obligation « championne sans avantage depuis le 19/10 » (cause à trouver) ;
+  piste n° 1 de PISTES.md (tennis).
+
 ## 2026-10-20 (passage chercheur, ~10 h UTC)
 
 - **Lu** : CLAUDE.md, METHODE.md, feuille de mission (09:49 UTC) : capital réalisé 813,67 (palier 1500, 4,9 jours sans palier),

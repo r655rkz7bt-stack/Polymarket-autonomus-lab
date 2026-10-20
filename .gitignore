@@ -34,3 +34,5 @@ published/
 
 # Aperçu local du tableau de bord (scripts/apercu_dashboard.py)
 apercu/
+published_data/
+donnees/
