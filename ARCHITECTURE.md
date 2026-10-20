@@ -792,3 +792,19 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   nf_tennis (achat immédiat), nf_tennis_prix_bas (0,80-0,875 ; plus cher, le tennis ne gagnait rien
   chez nf_sport_prix_haut).
 
+
+## 46. Vingt nouvelles pistes (demande d'Etienne, 20/10/2026)
+Recherche et tableau des 20 pistes : `experiments/vingt_pistes.md`. Toutes entrent dans l'arène
+comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
+- Lot A (`strategies_v3.py`, données Polymarket seules) : decroissance_temps, echelle_dates,
+  coherence_match, implication_politique, paire_oui_non, outsiders_surcotes, marche_neuf,
+  apres_echeance (marchés échus non réglés : `ended_pages` du scanner, réservés aux stratégies
+  `wants_ended`), marches_jumeaux, choc_sans_nouvelle.
+- Lot B (`references.py`) : instantanés gratuits dans la petite mémoire de la base (`ref:kalshi`,
+  `ref:predictit`, `ref:tweets`, `ref:outrights`, cache `manifold:<id>`), rattachés aux marchés
+  (`market.references`, `market.tweets`) par des règles strictes (mêmes nombres, mots distinctifs,
+  échéance proche). Stratégies `*_reference` (Kalshi, PredictIt, Manifold, champions contre
+  Pinnacle via `OutrightsSource`, football à trois issues), compteur_tweets (XTracker : messages
+  comptés + rythme de 14 jours heure par heure, loi binomiale négative réglée sur le passé),
+  cotes_tennis (fille de cotes_bookmakers ; tournois de tennis ajoutés à odds_api). Les cotes
+  de champion partagent le budget quotidien de crédits de The Odds API.

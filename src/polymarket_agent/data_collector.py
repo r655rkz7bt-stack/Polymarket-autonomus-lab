@@ -198,7 +198,54 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("odds_api", lambda cfg: factories.get("odds_api", lambda: OddsApiSource(
         http, list(cfg.get("sports", [])), str(cfg.get("regions", "eu")), state=db,
         window_hours=float(cfg.get("fenetre_heures", 6)), refresh_hours=float(cfg.get("rafraichir_heures", 2.5)),
-        daily_budget=int(cfg.get("credits_par_jour", 15))))().fetch(now), key=OddsApiSource.KEY)
+        daily_budget=int(cfg.get("credits_par_jour", 15)), tennis=bool(cfg.get("tennis"))))().fetch(now),
+        key=OddsApiSource.KEY)
+
+    # Vingt nouvelles pistes, lot B (20/10/2026) : prix de la même question ailleurs, gardés en
+    # instantané dans la base (references.py) ; aucune observation ajoutée.
+    from polymarket_agent import references as refs
+
+    def snapshot(name: str, fetch, key: str):
+        counted = []
+
+        def call(cfg):
+            rows = fetch(cfg)
+            if db is not None:
+                refs._save(db, key, rows, now)
+            counted.append(len(rows))
+            return []
+        run(name, call)
+        if counted and result.status.get(name, "").startswith("ok"):
+            result.status[name] = f"ok ({counted[0]} prix relevés)"
+    snapshot("kalshi", lambda cfg: factories.get("kalshi", lambda c: refs.fetch_kalshi(http, int(c.get("pages", 5))))(cfg),
+             "ref:kalshi")
+    snapshot("predictit", lambda cfg: factories.get("predictit", lambda c: refs.fetch_predictit(http))(cfg), "ref:predictit")
+    snapshot("xtracker", lambda cfg: factories.get("xtracker", lambda c: refs.fetch_tweet_trackings(
+        http, c.get("comptes") or None, now))(cfg), "ref:tweets")
+    if db is not None:
+        from polymarket_agent.strategy_engine import market_family
+        found = []
+
+        def manifold(cfg):
+            pool = [m for m in markets if market_family(m) != "sports"
+                    and [str(o).lower() for o in m.outcomes] == ["yes", "no"]]
+            found.append(factories.get("manifold", lambda: refs.ManifoldMatcher(http, db, float(cfg.get(
+                "similarite_min", 0.6))))().run(pool, now, int(cfg.get("recherches", 15)), int(cfg.get("rafraichir", 30))))
+            return []
+        run("manifold", manifold)
+        if found and result.status.get("manifold", "").startswith("ok"):
+            result.status["manifold"] = f"ok ({found[0]} marchés rattachés)"
+        from polymarket_agent.sources.odds_api import OutrightsSource
+        champions = []
+
+        def outrights(cfg):
+            champions.append(len(factories.get("odds_outrights", lambda: OutrightsSource(
+                http, list(cfg.get("sports", [])), db, str(cfg.get("regions", "eu")),
+                int(cfg.get("credits_par_jour", 16))))().fetch(now)))
+            return []
+        run("odds_outrights", outrights, key=OddsApiSource.KEY)
+        if champions and result.status.get("odds_outrights", "").startswith("ok"):
+            result.status["odds_outrights"] = f"ok ({champions[0]} cotes de champion)"
     run("guardian", lambda cfg: factories.get("guardian", lambda: GuardianSource(
         http, int(cfg.get("per_query", 10))))().fetch(queries[: int(cfg.get("queries_per_run", 5))], now),
         key=GuardianSource.KEY)

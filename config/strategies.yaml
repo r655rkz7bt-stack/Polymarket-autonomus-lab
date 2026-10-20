@@ -1811,3 +1811,100 @@ choc_sans_nouvelle:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+# Lot B (strategies_v3.py + references.py) : le prix de la même question ailleurs.
+kalshi_reference:
+  explication: "On regarde la même question sur Kalshi, une autre plateforme ; si Polymarket la vend nettement moins cher, on achète."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params: &reference
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    max_gap:        {value: 0.20, min: 0.02, max: 1.0}
+    max_age_hours:  {value: 2, min: 0.1, max: 48}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+predictit_reference:
+  explication: "Même idée avec PredictIt (politique américaine) : si son prix est nettement plus haut que celui de Polymarket, on achète sur Polymarket."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    <<: *reference
+    margin:         {value: 0.05, min: 0.0, max: 0.3}   # frais de PredictIt (10 % des gains) : prix biaisés
+
+manifold_reference:
+  explication: "Même idée avec Manifold, où des milliers de passionnés font des prévisions (en argent fictif)."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    <<: *reference
+    margin:         {value: 0.05, min: 0.0, max: 0.3}
+    max_age_hours:  {value: 3, min: 0.1, max: 48}
+
+futurs_bookmakers:
+  explication: "Qui sera champion de la saison (NBA, NFL…) ? On compare Polymarket à la cote du meilleur bookmaker, Pinnacle."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    <<: *reference
+    margin:         {value: 0.02, min: 0.0, max: 0.3}
+    max_age_hours:  {value: 30, min: 0.1, max: 72}
+
+football_trois_issues:
+  explication: "En football il y a trois issues (victoire, nul, victoire) : on compare chacune aux cotes des bookmakers."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    <<: *reference
+    margin:         {value: 0.02, min: 0.0, max: 0.3}
+    max_age_hours:  {value: 4, min: 0.1, max: 48}
+
+compteur_tweets:
+  explication: "Combien de messages Elon Musk (ou Trump, la Maison-Blanche...) publiera-t-il cette semaine ? On compte ceux déjà publiés et son rythme, et on achète la tranche (ou son NON) la moins chère par rapport au calcul."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    # Réglages choisis sur le passé (7 comptes, juillet-octobre 2026) : experiments/vingt_pistes.md
+    dispersion:     {value: 12, min: 0.5, max: 1000}     # petite = rafales fréquentes (loi binomiale négative)
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}    # passé : billets < 0,10 perdants
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}      # relevé : 14 jours heure par heure
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}      # relevé toutes les 15 minutes
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+cotes_tennis:
+  explication: "Le tennis (là où notre championne gagne) comparé à la cote de Pinnacle juste avant le match."
+  # Fille de cotes_bookmakers : mêmes calculs, seulement le tennis (tournois ajoutés à odds_api,
+  # `tennis: true` dans settings.yaml). Le tennis est le morceau gagnant de nf_sport_patiente.
+  mere: cotes_bookmakers
+  morceau: "tennis"
+  class: cotes_bookmakers
+  filtres: {disciplines: [tennis]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    margin:             {value: 0.02, min: 0.0, max: 0.20}
+    min_net_edge:       {value: 0.03, min: 0.0, max: 0.30}
+    max_odds_age_hours: {value: 4, min: 1, max: 48}
+    max_gap:            {value: 0.25, min: 0.05, max: 1.0}
+    horizon_hours:      {value: 36, min: 1, max: 96}
+    max_candidates:     {value: 40, min: 0, max: 200}
+    kelly_fraction:     {value: 0.25, min: 0.0, max: 5.0}
+    max_extra_ticks:    {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 50}

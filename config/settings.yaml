@@ -171,10 +171,22 @@ sources:
     regions: eu                # comprend Pinnacle (référence)
     fenetre_heures: 6          # match dans les 6 h
     rafraichir_heures: 2.5     # cotes d'une ligue relevées au plus toutes les 2 h 30
-    credits_par_jour: 15       # 15 × 30 = 450 crédits par mois (500 gratuits)
+    credits_par_jour: 12       # 12 par jour pour les matchs ; avec les champions, au plus 16 par jour (480 par mois, 500 gratuits)
+    tennis: true               # 20/10/2026 (cotes_tennis) : tournois de tennis en cours ajoutés automatiquement
     sports: [americanfootball_nfl, baseball_mlb, icehockey_nhl, basketball_nba, americanfootball_ncaaf,
              soccer_uefa_champs_league, soccer_epl]
   guardian: {enabled: true, every_minutes: 30, queries_per_run: 5, per_query: 10}   # GUARDIAN_API_KEY
+  # Vingt nouvelles pistes, lot B (20/10/2026) : prix de la même question ailleurs (references.py).
+  kalshi: {enabled: true, every_minutes: 30, pages: 5}          # hors sport ; gratuit, sans clé
+  predictit: {enabled: true, every_minutes: 30}                 # politique américaine ; gratuit
+  manifold: {enabled: true, every_minutes: 30, recherches: 15, rafraichir: 30, similarite_min: 0.6}
+  xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
+  odds_outrights:                                                # ODDS_API_KEY ; champions de saison, 1 crédit par jour et par championnat
+    enabled: true
+    every_minutes: 60
+    credits_par_jour: 16   # budget PARTAGÉ avec les matchs (odds_api) : 16 × 30 = 480 crédits par mois
+    sports: [basketball_nba_championship_winner, americanfootball_nfl_super_bowl_winner,
+             baseball_mlb_world_series_winner, icehockey_nhl_championship_winner]
   # Archive de la source de résolution des marchés surveillés (resolution_sources.py).
   sources_resolution: {enabled: true, every_minutes: 60}
 
