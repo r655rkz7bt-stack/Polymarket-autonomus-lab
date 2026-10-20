@@ -526,6 +526,16 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)
+    try:  # entonnoir 80/20 (pareto.py, 20/10/2026) : ce qui fait les gains des stratégies qui grandissent
+        from polymarket_agent import pareto
+        import yaml
+        configs = yaml.safe_load((Path(root) / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
+        mothers = {k: str(v.get("mere")) for k, v in configs.items() if isinstance(v, dict) and v.get("mere")}
+        growth = {a["nom"]: a["capital"] / float(state.initial_capital) - 1 for a in arena}
+        data["pareto"] = pareto.summary(pareto.analyse({n: e for n, e in entries.items() if n != "principal"},
+                                                       growth, mothers, pareto.market_labels(db), configs))
+    except Exception:  # noqa: BLE001 - l'affichage ne doit jamais bloquer
+        data["pareto"] = []
     try:
         main_open = db.open_orders("principal")
     except Exception:  # noqa: BLE001 - base sans table des ordres posés

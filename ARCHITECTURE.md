@@ -772,3 +772,23 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   - GDELT limité à 6 s d'attente (15 s avant).
   Cycle sans source en attente : 109 → 65 s (comparaison approchée).
 
+## 45. Entonnoir 80/20 (demande d'Etienne, 20/10/2026)
+- `pareto.py` : opérations clôturées de chaque fantôme rangées par prix payé, délai jusqu'à
+  l'échéance (noté à l'achat), issue, heure d'achat (UTC), discipline et type de pari (classement
+  par source de résolution puis libellé, partagé avec les filtres), mode d'achat (immédiat ou ordre
+  posé) et source de résolution. Par caractéristique : résultat, rendement par mise, confiance,
+  gagnés contre attendus (z) et « cœur » = morceaux qui font 80 % des gains des morceaux gagnants.
+  Filles proposées : morceau filtrable d'au moins 8 opérations, gagnant, meilleur que la stratégie
+  entière, z ≥ 0 (+ le meilleur croisement de deux morceaux).
+- Disséquées : croissance ≥ +5 % sur 15 opérations, ou croissance supérieure à celle de la mère.
+- `scripts/research_brief.py` écrit `reports/pareto.md` et ajoute à la feuille de mission les 3
+  meilleures filles pas encore dans l'arène ; le tableau de bord (bloc Entonnoir) montre, par
+  stratégie, le cœur le plus simple et les filles à créer.
+- Nouveaux filtres de fille (`strategy_engine.Filtered`) : `disciplines`, `types_pari`,
+  `echeance_min` / `echeance_max` (heures jusqu'à l'échéance), `ecart_max`.
+- Premier résultat (journaux du 20/10) : nf_sport_patiente gagne par le TENNIS (38 opérations,
+  +411, 37 gagnés pour 32,6 attendus, z +2,1 ; le reste −188, z +0,1) et par ses achats IMMÉDIATS
+  (+10,4 % par mise contre −2,7 % pour ses ordres posés). Filles créées : nf_sport_patiente_tennis,
+  nf_tennis (achat immédiat), nf_tennis_prix_bas (0,80-0,875 ; plus cher, le tennis ne gagnait rien
+  chez nf_sport_prix_haut).
+
