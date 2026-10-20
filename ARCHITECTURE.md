@@ -808,3 +808,8 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
   comptés + rythme de 14 jours heure par heure, loi binomiale négative réglée sur le passé),
   cotes_tennis (fille de cotes_bookmakers ; tournois de tennis ajoutés à odds_api). Les cotes
   de champion partagent le budget quotidien de crédits de The Odds API.
+- Lot C : fatigue_nhl (`ref:nhl_repos` : calendrier NHL depuis la veille, une requête par heure ;
+  `references["repos_nhl"]`), mots_prononces et mots_nouveaux (`ref:mentions` : marchés
+  « mentions » réglés, comptés par orateur et par mot deux fois par jour ;
+  `references["mentions"]`, `references["mot_nouveau"]`). haut_ou_bas_crypto, totaux et séries
+  NHL testés sur le passé puis écartés (experiments/vingt_pistes.md).

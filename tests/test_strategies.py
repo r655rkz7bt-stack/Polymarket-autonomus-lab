@@ -42,7 +42,9 @@ def test_repository_config_loads():
         "outsiders_surcotes", "marche_neuf", "apres_echeance", "marches_jumeaux", "choc_sans_nouvelle",
         # Lot B.
         "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",
-        "football_trois_issues", "compteur_tweets", "cotes_tennis"])
+        "football_trois_issues", "compteur_tweets", "cotes_tennis",
+        # Lot C.
+        "mots_prononces", "mots_nouveaux", "fatigue_nhl"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
@@ -51,7 +53,8 @@ def test_repository_config_loads():
                                                                    "parking_politique", "decroissance_temps", "outsiders_surcotes",
                                                                    "marche_neuf", "apres_echeance", "choc_sans_nouvelle", "kalshi_reference",
                                                                    "predictit_reference", "manifold_reference", "futurs_bookmakers",
-                                                                   "football_trois_issues", "compteur_tweets", "cotes_tennis")))
+                                                                   "football_trois_issues", "compteur_tweets", "cotes_tennis",
+                                                                   "mots_prononces", "mots_nouveaux", "fatigue_nhl")))
 
 
 def test_param_outside_bounds_is_refused():

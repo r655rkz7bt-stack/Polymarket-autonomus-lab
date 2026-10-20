@@ -222,6 +222,11 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     snapshot("predictit", lambda cfg: factories.get("predictit", lambda c: refs.fetch_predictit(http))(cfg), "ref:predictit")
     snapshot("xtracker", lambda cfg: factories.get("xtracker", lambda c: refs.fetch_tweet_trackings(
         http, c.get("comptes") or None, now))(cfg), "ref:tweets")
+    # Lot C : qui a joué la veille en NHL, et ce que chaque orateur a déjà dit (marchés « mentions »).
+    snapshot("nhl_repos", lambda cfg: factories.get("nhl_repos", lambda c: refs.fetch_nhl_rest(http, now))(cfg),
+             "ref:nhl_repos")
+    snapshot("mentions", lambda cfg: factories.get("mentions", lambda c: refs.fetch_mention_history(
+        http, int(c.get("pages", 20))))(cfg), "ref:mentions")
     if db is not None:
         from polymarket_agent.strategy_engine import market_family
         found = []

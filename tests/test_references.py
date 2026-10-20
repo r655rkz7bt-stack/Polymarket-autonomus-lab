@@ -16,7 +16,8 @@ from polymarket_agent.observations import Observation
 from polymarket_agent.persistence import Database
 from polymarket_agent.safety_controller import RiskLimits
 from polymarket_agent.sources.polymarket_gamma import parse_market
-from polymarket_agent.strategies_v3 import CompteurTweets, FootballTroisIssues, KalshiReference
+from polymarket_agent.strategies_v3 import (CompteurTweets, FatigueNhl, FootballTroisIssues, KalshiReference,
+                                            MotsNouveaux, MotsPrononces)
 
 LIMITS = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 REF = {"margin": 0.03, "max_gap": 0.2, "max_age_hours": 2, "uncertainty": 0.005, "min_net_edge": 0.01,
@@ -163,3 +164,95 @@ def test_collector_keeps_reference_snapshots_without_observations(tmp_path):
     assert res.status["kalshi"] == "ok (1 prix relevés)" and res.status["xtracker"] == "ok (1 prix relevés)"
     assert json.loads(db.get_value("ref:kalshi"))["rows"][0]["p"] == 0.4 and not res.observations
     db.close()
+
+
+def test_nhl_rest_flags_the_team_that_played_yesterday(tmp_path):
+    """Lot C : le calendrier part d'hier ; une équipe qui y figure est « fatiguée » le lendemain."""
+    start = NOW + timedelta(hours=8)
+
+    def team(abbrev, name, place):
+        return {"abbrev": abbrev, "commonName": {"default": name}, "placeName": {"default": place}}
+
+    class Http:
+        def get_json(self, url, params=None, headers=None):
+            assert url.endswith("/schedule/2026-10-13")
+            return {"gameWeek": [
+                {"date": "2026-10-13", "games": [{"awayTeam": team("NYR", "Rangers", "New York"),
+                                                  "homeTeam": team("BOS", "Bruins", "Boston")}]},
+                {"date": "2026-10-14", "games": [{"startTimeUTC": start.isoformat(),
+                                                  "awayTeam": team("NYR", "Rangers", "New York"),
+                                                  "homeTeam": team("PIT", "Penguins", "Pittsburgh")}]}]}
+    rows = refs.fetch_nhl_rest(Http(), NOW)
+    assert len(rows) == 1 and rows[0]["fatigue_exterieur"] and not rows[0]["fatigue_domicile"]
+    db = Database(tmp_path / "db.sqlite")
+    refs._save(db, "ref:nhl_repos", rows, NOW)
+    m = parse_market(raw_market("h", yes_token="hR", no_token="hP", outcomes=json.dumps(["Rangers", "Penguins"]),
+                                gameStartTime=start.strftime("%Y-%m-%d %H:%M:%S+00")))
+    assert refs.attach_nhl_rest([m], db) == 1 and m.references["repos_nhl"]["fatigue"] == [True, False]
+    db.close()
+    books = {"hR": make_book("hR", bids=(("0.54", "1000"),), asks=(("0.55", "1000"),)),
+             "hP": make_book("hP", bids=(("0.45", "1000"),), asks=(("0.46", "1000"),))}
+    s = _s(FatigueNhl, shift=0.05, margin=0.01, uncertainty=0.005, min_net_edge=0.01, max_age_hours=3,
+           max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    out = s.propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["Penguins"]  # l'équipe reposée
+    m.references["repos_nhl"]["fatigue"] = [True, True]
+    assert not s.propose([m], books, _state(tmp_path, "b"), LIMITS, "b1").proposals
+
+
+def test_mention_base_rates_need_precedents_and_skip_cheap_tickets(tmp_path):
+    """Lot C : taux de OUI passé du même mot chez le même orateur."""
+    def mk(word, yes):
+        return {"question": f'Will Trump say "{word}" this week?', "groupItemTitle": word,
+                "outcomePrices": json.dumps(["1", "0"] if yes else ["0", "1"])}
+
+    class Http:
+        def get_json(self, url, params=None, headers=None):
+            if params["offset"]:
+                return []
+            return [{"markets": [mk("Crypto / Bitcoin", True), mk("Crypto/Bitcoin", True), mk("crypto / bitcoin", True),
+                                 mk("Crypto / Bitcoin", False), mk("Tariff", False),
+                                 {"question": 'Will "Doom" be said?', "groupItemTitle": "Doom",
+                                  "outcomePrices": json.dumps(["1", "0"])}]}]
+    rows = {(r["orateur"], r["mot"]): r for r in refs.fetch_mention_history(Http())}
+    assert rows[("trump", "crypto/bitcoin")]["oui"] == 3 and rows[("trump", "crypto/bitcoin")]["n"] == 4
+    assert rows[("trump", "*")]["n"] == 5 and not any(k[0].startswith('"') for k in rows)
+    db = Database(tmp_path / "db.sqlite")
+    refs._save(db, "ref:mentions", list(rows.values()), NOW)
+    m = parse_market(raw_market("w", yes_token="wY", no_token="wN", question='Will Trump say "crypto" or "Bitcoin" this week?',
+                                groupItemTitle="Crypto / Bitcoin"))
+    assert refs.attach_mentions([m], db) == 1
+    ref = m.references["mentions"]
+    assert ref["n"] == 4 and ref["p"] == pytest.approx((3 + 2 * 4 / 7) / 6, abs=1e-4)  # 0,69
+    db.close()
+    books = {"wY": make_book("wY", bids=(("0.40", "1000"),), asks=(("0.41", "1000"),)),
+             "wN": make_book("wN", bids=(("0.59", "1000"),), asks=(("0.60", "1000"),))}
+    params = dict(REF, margin=0.05, max_gap=0.6, max_age_hours=26, min_count=3, min_price=0.30)
+    out = _s(MotsPrononces, **params).propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["Yes"]
+    out = _s(MotsPrononces, **dict(params, min_count=5)).propose([m], books, _state(tmp_path, "b"), LIMITS, "b1")
+    assert not out.proposals and "trop peu de précédents" in out.abstentions
+    out = _s(MotsPrononces, **dict(params, min_price=0.45)).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1")
+    assert not out.proposals and "billet trop bon marché" in out.abstentions
+
+
+def test_a_word_never_offered_for_a_regular_speaker_is_marked_new(tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    refs._save(db, "ref:mentions", [{"orateur": "trump", "mot": "*", "oui": 6, "n": 12},
+                                    {"orateur": "trump", "mot": "tariff", "oui": 6, "n": 12},
+                                    {"orateur": "vance", "mot": "*", "oui": 1, "n": 4}], NOW)
+    new = parse_market(raw_market("n", yes_token="nY", no_token="nN", question='Will Trump say "Hormuz" this week?',
+                                  groupItemTitle="Hormuz"))
+    rare = parse_market(raw_market("r", question='Will Vance say "Hormuz" today?', groupItemTitle="Hormuz"))
+    assert refs.attach_mentions([new, rare], db) == 1 and "mot_nouveau" in new.references and not rare.references
+    db.close()
+    books = {"nY": make_book("nY", bids=(("0.49", "1000"),), asks=(("0.50", "1000"),)),
+             "nN": make_book("nN", bids=(("0.50", "1000"),), asks=(("0.51", "1000"),))}
+    s = _s(MotsNouveaux, shift=0.10, margin=0.02, uncertainty=0.005, min_yes=0.30, max_yes=0.85, min_net_edge=0.01,
+           max_age_hours=26, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    assert [p.outcome for p in s.propose([new], books, _state(tmp_path), LIMITS, "b1").proposals] == ["No"]
+    books["nY"] = make_book("nY", bids=(("0.19", "1000"),), asks=(("0.20", "1000"),))
+    assert not s.propose([new], books, _state(tmp_path, "b"), LIMITS, "b1").proposals  # OUI déjà bon marché
+    books["nY"] = make_book("nY", bids=(("0.16", "1000"),), asks=(("0.85", "1000"),))
+    s.params["max_spread"] = D("0.10")
+    assert "carnet trop écarté" in s.propose([new], books, _state(tmp_path, "c"), LIMITS, "b1").abstentions

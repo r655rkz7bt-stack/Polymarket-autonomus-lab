@@ -545,9 +545,15 @@ class _Reference(_Base):
             if mid is None or abs(prob - mid) > float(p["max_gap"]):
                 out.abstain("écart trop grand (rattachement douteux)")
                 continue
+            if not self._usable(ref, out):
+                continue
             margin, unc, best = float(p["margin"]), float(p["uncertainty"]), None
             for side in (0, 1):
                 q = prob if side == 0 else 1 - prob
+                book = books.get(m.token_ids[side])
+                if book is not None and book.best_ask is not None and float(book.best_ask) < float(p.get("min_price", 0)):
+                    out.abstain("billet trop bon marché")
+                    continue
                 prop = self._buy(m, books, state, side, q - margin - unc, q - margin, q - margin + unc, bucket, marks,
                                  out, f"{self.strategy_id}:{prob:.3f}", f"{ref.get('titre', '')[:80]} : {prob:.1%}",
                                  "les deux plateformes ne tranchent pas la même question")
@@ -556,6 +562,9 @@ class _Reference(_Base):
             if best is not None:
                 props.append(best)
         return self._finish(out, props)
+
+    def _usable(self, ref: dict, out: StrategyOutput) -> bool:
+        return True
 
 
 class KalshiReference(_Reference):
@@ -644,7 +653,105 @@ class CompteurTweets(_Base):
         return self._finish(out, props)
 
 
+class MotsPrononces(_Reference):
+    """« Trump dira-t-il "crypto" cette semaine ? » : le taux de OUI passé du même mot chez le même
+    orateur (marchés « mentions » réglés de Polymarket, rapproché de son taux tous mots confondus).
+    Sur le passé (experiments/vingt_pistes.md, 794 marchés, prix réels deux heures après
+    l'ouverture) : le marché est mieux calibré en moyenne, mais acheter quand le taux historique
+    s'écarte de 5 points ET que le billet coûte au moins 0,30 gagnait (+17 % à +27 % par achat
+    selon les réglages) ; sous 0,30, rien. Il faut au moins `min_count` précédents."""
+    strategy_id = "mots_prononces"
+    ref_key = "mentions"
+    required = _Reference.required + ("min_count", "min_price")
+
+    def _usable(self, ref: dict, out: StrategyOutput) -> bool:
+        if int(ref.get("n") or 0) < int(self.params["min_count"]):
+            out.abstain("trop peu de précédents")
+            return False
+        return True
+
+
+class MotsNouveaux(_Base):
+    """« Dira-t-il ce mot ? » quand le mot n'a JAMAIS été proposé pour cet orateur (qui a pourtant au
+    moins 10 marchés passés) : mot à la mode, le OUI est trop cher. Sur le passé
+    (experiments/vingt_pistes.md, septembre-octobre 2026 seulement) : OUI à 0,30-0,85, réalisé
+    nettement en dessous ; acheter le NON gagnait +16 % (2 h après l'ouverture, 228 achats,
+    t +1,8), +20 % (12 h), +9 % (24 h). Indice encore court : fantôme. NON estimé à son prix +
+    `shift`."""
+    strategy_id = "mots_nouveaux"
+    required = ("shift", "margin", "uncertainty", "min_yes", "max_yes", "min_net_edge", "max_age_hours",
+                "max_proposals_per_cycle")
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("mot_nouveau")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_age_hours"]) * 3600:
+                out.abstain("historique trop vieux")
+                continue
+            mid, book = _book_mid(books, m.token_ids[0]), books.get(m.token_ids[0])
+            if mid is None or not float(p["min_yes"]) <= mid <= float(p["max_yes"]):
+                continue
+            if book.best_bid is None or book.best_ask is None or float(book.best_ask - book.best_bid) > float(p.get("max_spread", 1)):
+                out.abstain("carnet trop écarté")  # milieu sans valeur (souvent 0,16 / 0,85 le 20/10)
+                continue
+            est, unc = 1 - mid + float(p["shift"]) - float(p["margin"]), float(p["uncertainty"])
+            prop = self._buy(m, books, state, 1, est - unc, est, est + unc, bucket, marks, out,
+                             f"mots_nouveaux:{mid:.3f}", ref.get("titre", ""), "le mot est vraiment dans l'actualité")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
+class FatigueNhl(_Base):
+    """NHL : l'équipe qui a joué la veille, contre un adversaire reposé, gagne moins souvent que son
+    prix. Sur le passé (experiments/vingt_pistes.md, saisons 2024-25 et 2025-26, prix Polymarket une
+    heure avant le match) : 299 matchs « fatiguée à l'extérieur », 37,8 % gagnés pour 43,2 % de prix
+    (−5,4 points), même sens les deux saisons ; à domicile −3,3 points (99 matchs). Encore faible
+    statistiquement (t +1,2) : l'arène tranchera. On achète l'équipe reposée, estimée à son prix +
+    `shift`."""
+    strategy_id = "fatigue_nhl"
+    required = ("shift", "margin", "uncertainty", "min_net_edge", "max_age_hours", "max_proposals_per_cycle")
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from datetime import timedelta
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("repos_nhl")
+            if not ref or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            tired = ref.get("fatigue") or []
+            if sorted(tired) != [False, True]:
+                continue  # aucune ou les deux fatiguées
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_age_hours"]) * 3600:
+                out.abstain("calendrier trop vieux")
+                continue
+            if m.game_start is None or m.game_start <= now + timedelta(minutes=10):
+                out.abstain("match commencé")
+                continue
+            if int(p.get("seulement_exterieur", 0)) and (ref.get("domicile") or [False, False])[tired.index(True)]:
+                continue
+            side = tired.index(False)
+            mid = _book_mid(books, m.token_ids[side])
+            if mid is None:
+                continue
+            est, unc = mid + float(p["shift"]) - float(p["margin"]), float(p["uncertainty"])
+            prop = self._buy(m, books, state, side, est - unc, est, est + unc, bucket, marks, out,
+                             f"fatigue_nhl:{mid:.3f}", f"{ref.get('titre', '')} : {m.outcomes[1 - side]} a joué la veille",
+                             "l'effet de la fatigue est déjà dans le prix")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
-                                      FutursBookmakers, FootballTroisIssues, CompteurTweets)}
+                                      FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
+                                      MotsNouveaux, FatigueNhl)}
