@@ -76,7 +76,7 @@ calibration:
   explication: "On regarde sur le passé si les prix disent vrai (un prix de 0,70 gagne-t-il 7 fois sur 10 ?) et on achète ce qui est trop bon marché."
   # v1 rejetée (biais de sélection) ; v2 échoue au critère 1 en validation, mais l'arène la
   # juge en conditions réelles.
-  enabled: true
+  enabled: false   # éliminée par l'arène (−388 € en 46 opérations, 22 gagnés pour 28,3 attendus) ; coupée le 20/10/2026 (chercheur)
   version: "2.0.0"
   created_at: "2026-10-14"
   table: calibration_v2.json
@@ -713,6 +713,30 @@ nf_tennis_prix_bas:
   morceau: "tennis, prix 0,80-0,875"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis], prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_tennis_debut_match:
+  explication: "Le favori en tennis (0,80-0,95) acheté tout de suite dans la demi-heure qui suit le début du match : sur 1 096 matchs réglés, aux prix réellement payés, il gagnait un peu plus souvent que son prix."
+  # Piste n° 1 de PISTES.md (20/10/2026, experiments/tennis.md) : 6 131 matchs ATP/WTA/ITF réglés
+  # (juillet-octobre 2026), favori à 0,80-0,95 vu 30 min après le coup d'envoi, prix payé = premier
+  # échange d'achat dans les 10 minutes : +3,1 % par mise (t par match +2,8, 4 mois sur 4 positifs,
+  # mais 1re moitié +4,5 %, 2e moitié +1,6 %). Verdict « indice » (≈ 40 réglages essayés) : fantôme.
+  # Fenêtre : heures_min -0.6 / heures_max 0 = de 0 à 36 min après le coup d'envoi (Gamma gameStartTime).
+  mere: nf_tennis
+  morceau: "tennis, vainqueur, 0-36 min après le coup d'envoi"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], types_pari: [vainqueur], heures_min: -0.6, heures_max: 0}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -1796,9 +1820,10 @@ marches_jumeaux:
 
 choc_sans_nouvelle:
   explication: "Le prix a sauté d'un coup sans aucune nouvelle : c'est souvent un gros parieur seul, on parie sur un retour en arrière et on revend vite."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
+  # Coupée le 20/10/2026 (chercheur) : éliminée par l'arène, achats à 0,20-0,55 estimés 0,37-0,68 (estimation périmée, enquête.md).
   params:
     min_move:       {value: 0.08, min: 0.02, max: 0.5}
     reversion:      {value: 0.4, min: 0.0, max: 1.0}
@@ -1955,3 +1980,64 @@ cotes_tennis:
     kelly_fraction:     {value: 0.25, min: 0.0, max: 5.0}
     max_extra_ticks:    {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 4, min: 0, max: 50}
+
+# ============================================================================ filles de l'entonnoir 80/20 (feuille de mission 20/10/2026 14:50 UTC)
+crypto_threshold_prix_bas:
+  explication: "Le calcul Bitcoin (maths sur le prix), mais seulement quand l'achat coûte moins de 0,80 : c'est là que la mère a gagné."
+  # Fille 80/20 (reports/pareto.md) : prix payé 0-0,80 = 13 opérations, +234, +110,2 % par mise contre la stratégie entière
+  # (très petit échantillon : piste seulement). La mère est en pause ; la fille a 2 propositions par cycle. Fantôme : gratuit.
+  mere: crypto_threshold
+  morceau: "prix payé 0-0,80"
+  class: crypto_threshold
+  filtres: {prix_min: 0.0, prix_max: 0.8}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:    {value: 0.03, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+    max_quote_age_minutes: {value: 20, min: 1, max: 120}
+    min_hours:       {value: 0.5, min: 0.1, max: 72}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+crypto_threshold_24_72h:
+  explication: "Le calcul Bitcoin (maths sur le prix), mais seulement sur les marchés qui se terminent dans 1 à 3 jours : c'est là que la mère a gagné."
+  # Fille 80/20 (reports/pareto.md) : délai jusqu'à la fin 24-72 h = 10 opérations, +194, +83,3 % par mise contre la stratégie
+  # entière (très petit échantillon : piste seulement). Fantôme : gratuit.
+  mere: crypto_threshold
+  morceau: "délai jusqu'à la fin 24-72 h"
+  class: crypto_threshold
+  filtres: {echeance_min: 24, echeance_max: 72}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:    {value: 0.03, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 50}
+    max_quote_age_minutes: {value: 20, min: 1, max: 120}
+    min_hours:       {value: 0.5, min: 0.1, max: 72}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_prix_850_875:
+  explication: "La championne (favori de sport, achat posé), mais seulement quand le prix payé est entre 0,85 et 0,875."
+  # Fille 80/20 (reports/pareto.md) : prix payé 0,850-0,875 = 16 opérations, +210, +16,1 % par mise contre la stratégie entière.
+  # Attention (enquête 20/10 soir) : la championne est le meilleur de 35 (z 1,86) ; un morceau de 16 paris est une piste, pas une preuve.
+  mere: nf_sport_patiente
+  morceau: "prix payé 0,850-0,875"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], prix_min: 0.85, prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
