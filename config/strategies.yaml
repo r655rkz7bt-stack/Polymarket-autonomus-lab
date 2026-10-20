@@ -683,6 +683,57 @@ nf_sport_patiente_tennis:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_patiente_sans_itf:
+  explication: "La championne, mais jamais sur les petits tournois de tennis ITF, où le favori est trop cher."
+  # Test sur le passé (20/10/2026, experiments/achat_echelonne.md) : 204 favoris ITF (0,70-0,95)
+  # achetés une heure avant le match aux prix RÉELLEMENT payés : 72,1 % gagnés pour 83,2 % de prix,
+  # −13,9 % par pari, perdants les 5 semaines (t −3,65). ATP +1,1 %, WTA −3,4 %.
+  mere: nf_sport_patiente
+  morceau: "sans ITF"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], sources_exclues: [itftennis.com]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+outsider_itf:
+  explication: "Dans les petits tournois de tennis ITF, le moins fort gagne plus souvent que son prix : on l'achète juste avant le match, en petite mise."
+  # Test sur le passé (20/10/2026, experiments/achat_echelonne.md) : outsiders ITF (0,05-0,30) une
+  # heure avant le match. Prix historiques : +62 % (571 matchs) ; aux prix RÉELLEMENT payés (seuls
+  # 150 matchs avaient un échange avant le début) : +17 %, 3 semaines gagnantes sur 5, confiance
+  # +0,78 → indice, pas preuve. ATP −9 %, WTA +1,5 % : seulement l'ITF. Achat immédiat (vendeur),
+  # 15 min à 3 h avant le coup d'envoi, quart de Kelly (billets bon marché, gros écarts).
+  # Carnets ITF très écartés la veille (0,04 / 0,94 le 20/10) : écart ≤ 5 centimes exigé.
+  class: naive_favorite
+  familles: [sports]
+  filtres: {sources: [itftennis.com], ecart_max: 0.05}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    underdog:       {value: 1, min: 0, max: 1}
+    min_ask:        {value: 0.05, min: 0.01, max: 0.5}
+    max_ask:        {value: 0.30, min: 0.02, max: 0.5}
+    bias:           {value: 0.05, min: 0.00, max: 0.15}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.0, min: 0.00, max: 0.50}
+    min_hours:      {value: 0.25, min: 0, max: 720}
+    max_hours:      {value: 3, min: 0.5, max: 2000}
+    max_candidates:  {value: 40, min: 0, max: 200}   # matchs demandés au scanner
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
+
 nf_tennis:
   explication: "Le favori en tennis, acheté tout de suite (les achats immédiats de la championne gagnaient mieux que ses achats posés)."
   # Entonnoir 80/20 (20/10/2026) : chez nf_sport_patiente, achats immédiats +10,4 % par mise
