@@ -131,7 +131,7 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         return obs
     run("crypto_prices", crypto)
     run("gdelt", lambda cfg: factories.get("gdelt", lambda: GdeltSource(
-        with_retries(http, cfg.get("max_retries")), cfg.get("timespan", "3h")))()
+        with_retries(http, cfg.get("max_retries"), cfg.get("timeout")), cfg.get("timespan", "3h")))()
         .fetch(queries[: int(cfg.get("queries_per_run", 3))], now))
     run("google_news", lambda cfg: factories.get("google_news", lambda: GoogleNewsSource(
         per_query=int(cfg.get("per_query", 15))))().fetch(queries[: int(cfg.get("queries_per_run", 5))], now))
@@ -196,7 +196,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("football_data", lambda cfg: factories.get("football_data", lambda: FootballDataSource(http))().fetch(now),
         key=FootballDataSource.KEY)
     run("odds_api", lambda cfg: factories.get("odds_api", lambda: OddsApiSource(
-        http, list(cfg.get("sports", [])), str(cfg.get("regions", "eu"))))().fetch(now), key=OddsApiSource.KEY)
+        http, list(cfg.get("sports", [])), str(cfg.get("regions", "eu")), state=db,
+        window_hours=float(cfg.get("fenetre_heures", 6)), refresh_hours=float(cfg.get("rafraichir_heures", 2.5)),
+        daily_budget=int(cfg.get("credits_par_jour", 15))))().fetch(now), key=OddsApiSource.KEY)
     run("guardian", lambda cfg: factories.get("guardian", lambda: GuardianSource(
         http, int(cfg.get("per_query", 10))))().fetch(queries[: int(cfg.get("queries_per_run", 5))], now),
         key=GuardianSource.KEY)

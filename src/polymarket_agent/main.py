@@ -342,6 +342,22 @@ def _halt(deps: CycleDeps, report: CycleReport, status: str, message: str) -> Cy
     return report
 
 
+# Relecture d'un carnet juste avant d'exécuter (19/10/2026) : un carnet relu il y a moins de
+# FRESH_BOOK_SECONDS par un autre portefeuille du même cycle est réutilisé. Plusieurs fantômes
+# visent souvent le même marché : 148 relectures une à une prenaient 28 s sur un cycle de 141 s.
+FRESH_BOOK_SECONDS = 20
+
+
+def _reread_book(deps: CycleDeps, token_id: str, cache: dict | None) -> OrderBook:
+    hit = cache.get(token_id) if cache is not None else None
+    if hit is not None and hit.fetched_at is not None and (deps.now() - hit.fetched_at).total_seconds() <= FRESH_BOOK_SECONDS:
+        return hit
+    book = deps.clob.get_book(token_id)
+    if cache is not None and book is not None:
+        cache[token_id] = book
+    return book
+
+
 PRICE_FEATURES_MAX_AGE = 20 * 60   # secondes : au-delà, l'historique d'un marché est relu
 PRICE_FEATURES_PER_CYCLE = 40      # relectures au plus par cycle (150 marchés suivis)
 
@@ -504,10 +520,11 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
 
     # 7-11. Stratégies → propositions → contrôleur → exécution simulée, portefeuille par portefeuille.
     # Les fantômes d'abord : le capital principal copie ensuite les paris qu'ils viennent de faire.
+    fresh_books: dict = {}  # carnets relus pendant ce cycle (_reread_book)
     for portfolio in portfolios[1:] + portfolios[:1]:
         if portfolio.ledger.state.bankrupt:
             continue  # un fantôme en faillite ne trade plus (le principal est vérifié plus haut)
-        _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets)
+        _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets, fresh_books)
         if main.ledger.state.bankrupt:
             break
     # 12. Récompenses ESTIMÉES (hors capital) : liquidité pour les ordres restés posés, détention
@@ -598,7 +615,7 @@ def _estimate_rewards(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str
 
 def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
              books: dict[str, OrderBook], report: CycleReport, bucket: str,
-             all_markets: list[MarketInfo] | None = None) -> None:
+             all_markets: list[MarketInfo] | None = None, fresh_books: dict | None = None) -> None:
     ledger, marks = portfolio.ledger, portfolio.marks
     by_market = {m.market_id: m for m in (all_markets or [])} | {m.market_id: m for m in watchlist}
     if portfolio.name != "principal":  # ce que le principal pourra copier (Weighted._copy)
@@ -629,7 +646,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
             output.proposals = _cap_main(deps, portfolio, output.proposals, by_market)
             limit_orders = _cap_main(deps, portfolio, limit_orders, by_market)
         proposals += output.proposals
-        proposals += _place_resting(deps, portfolio, limit_orders, by_market, report)
+        proposals += _place_resting(deps, portfolio, limit_orders, by_market, report, fresh_books)
     accepted = fills = 0
 
     for proposal in proposals:
@@ -646,7 +663,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
 
         # Relecture du carnet juste avant l'exécution, puis nouveau contrôle.
         try:
-            fresh = deps.clob.get_book(proposal.token_id)
+            fresh = _reread_book(deps, proposal.token_id, fresh_books)
         except (SourceUnavailable, ValueError) as exc:
             verdict.accepted = False
             verdict.reasons.append(f"carnet non relu : {exc}")
@@ -757,7 +774,8 @@ def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
 # --------------------------------------------------------------------------- ordres posés
 
 def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal],
-                   by_market: dict[str, MarketInfo], report: CycleReport) -> list[Proposal]:
+                   by_market: dict[str, MarketInfo], report: CycleReport,
+                   fresh_books: dict | None = None) -> list[Proposal]:
     """Pose les ordres à cours limité (base de données, pas d'argent). Un ordre déjà exécutable
     (achat >= meilleur vendeur, vente <= meilleur acheteur) est renvoyé pour le circuit taker
     habituel : il serait exécuté tout de suite sur le vrai marché."""
@@ -772,7 +790,7 @@ def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal]
         if market is None:
             continue
         try:  # carnet relu au moment de la pose (celui du début du cycle peut avoir vieilli)
-            book = deps.clob.get_book(order.token_id)
+            book = _reread_book(deps, order.token_id, fresh_books)
         except (SourceUnavailable, ValueError) as exc:
             log.info("[%s] ordre non posé %s : carnet non relu (%s)", portfolio.name, order.op_id, exc)
             continue

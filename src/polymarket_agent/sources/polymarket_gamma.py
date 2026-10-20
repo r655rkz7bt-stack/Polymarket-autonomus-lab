@@ -139,20 +139,31 @@ class GammaClient:
         self.http = http
         self.base_url = base_url.rstrip("/")
 
+    PARALLEL_PAGES = 4  # pages lues en même temps (19/10/2026 : 15 pages une à une = 16 s par cycle)
+
     def list_markets(self, *, end_min: datetime, end_max: datetime, page_size: int = 100,
                      max_pages: int = 3) -> list[dict]:
-        markets: list[dict] = []
-        for page in range(max_pages):
+        """Marchés actifs triés par volume, page par page ; les pages sont lues par groupes de
+        PARALLEL_PAGES en même temps, et la lecture s'arrête à la première page incomplète."""
+        from concurrent.futures import ThreadPoolExecutor
+
+        def page(n: int) -> list:
             batch = self.http.get_json(f"{self.base_url}/markets", params={
                 "active": "true", "closed": "false", "limit": page_size,
-                "offset": page * page_size, "order": "volume24hr", "ascending": "false",
+                "offset": n * page_size, "order": "volume24hr", "ascending": "false",
                 "end_date_min": _iso(end_min), "end_date_max": _iso(end_max),
             })
             if not isinstance(batch, list):
                 raise ValueError("Gamma : liste attendue")
-            markets.extend(m for m in batch if isinstance(m, dict))
-            if len(batch) < page_size:
-                break
+            return batch
+
+        markets: list[dict] = []
+        with ThreadPoolExecutor(max_workers=self.PARALLEL_PAGES) as pool:
+            for start in range(0, max_pages, self.PARALLEL_PAGES):
+                for batch in pool.map(page, range(start, min(start + self.PARALLEL_PAGES, max_pages))):
+                    markets.extend(m for m in batch if isinstance(m, dict))
+                    if len(batch) < page_size:
+                        return markets
         return markets
 
     def get_market(self, market_id: str) -> dict:

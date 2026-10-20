@@ -757,3 +757,18 @@ Décision d'Etienne : le chercheur améliore le tableau de bord (ordre, tri, sup
   n'est pas versée au journal signé, il ne gagnerait que le mouvement des prix (≈ 0) pour un
   risque de plus ; l'arène mesure d'abord parking_politique.
 
+## 44. Cotes fraîches avant les matchs et cycles plus rapides (19-20/10/2026)
+- Cotes (`sources/odds_api.py`) : passage horaire ; la liste des matchs à venir de chaque ligue
+  (`/events`, gratuite, vérifiée à chaque appel par l'en-tête `x-requests-last`, sinon retour au
+  rythme de 12 h) dit quelles ligues ont un match dans les 6 h ; seules celles-là sont relevées,
+  au plus toutes les 2 h 30 par ligue, le match le plus proche d'abord, dans la limite de 15
+  crédits par jour (450 par mois sur 500 gratuits). Pinnacle (bookmaker de référence) est gardé à
+  part (`reference`) et préféré par `sports_link`. cotes_bookmakers refuse des cotes de plus de 4 h.
+- Cycles (mesure locale d'un cycle complet : 141 s dont 125 s d'attente réseau) :
+  - relecture des carnets partagée dans le cycle (`main._reread_book`, 20 s) : 148 → 96 relectures,
+    28 → 18 s ;
+  - pages du scanner lues par 4 en même temps (`GammaClient.list_markets`, intervalle minimal
+    protégé par un verrou dans `HttpClient`) : 16 → 8 s ;
+  - GDELT limité à 6 s d'attente (15 s avant).
+  Cycle sans source en attente : 109 → 65 s (comparaison approchée).
+

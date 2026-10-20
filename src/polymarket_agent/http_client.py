@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import threading
 import time
 from typing import Any
 
@@ -28,6 +29,8 @@ class HttpClient:
         self.session.headers.update({"User-Agent": user_agent, "Accept": "application/json"})
         self._sleep = sleep
         self._last_call = 0.0
+        self._lock = threading.Lock()  # plusieurs pages lues en même temps (scanner) : intervalle respecté
+        self.last_headers: dict[str, str] = {}  # en-têtes de la dernière réponse réussie (quotas d'API)
 
     def request_json(self, method: str, url: str, *, params: dict | None = None,
                      json_body: Any = None, headers: dict | None = None) -> Any:
@@ -35,10 +38,11 @@ class HttpClient:
         vers un autre site : ne pas les mettre dans la session partagée)."""
         last_error = "inconnue"
         for attempt in range(self.max_retries + 1):
-            wait = self.min_interval - (time.monotonic() - self._last_call)
-            if wait > 0:
-                self._sleep(wait)
-            self._last_call = time.monotonic()
+            with self._lock:
+                wait = self.min_interval - (time.monotonic() - self._last_call)
+                if wait > 0:
+                    self._sleep(wait)
+                self._last_call = time.monotonic()
             try:
                 response = self.session.request(method, url, params=params, json=json_body,
                                                 headers=headers, timeout=self.timeout)
@@ -46,6 +50,7 @@ class HttpClient:
                 last_error = f"{type(exc).__name__}"
             else:
                 if response.status_code == 200:
+                    self.last_headers = {k.lower(): v for k, v in (response.headers or {}).items()}
                     try:
                         return response.json()
                     except ValueError:
