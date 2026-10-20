@@ -727,7 +727,8 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
                            "est_probability": str(proposal.est_probability),
                            "prob_low": str(proposal.prob_low), "prob_high": str(proposal.prob_high),
                            "net_edge": str(proposal.net_edge),
-                           "horizon_hours": str(proposal.horizon_hours)})
+                           "horizon_hours": str(proposal.horizon_hours),
+                           **_depuis_coup_d_envoi(market, deps.now())})
                 fills += 1
                 if proposal.strategy_id in portfolio.copied:
                     portfolio.copied[proposal.strategy_id]["buys"].append((proposal, fill.filled_shares))
@@ -740,6 +741,14 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if ledger.state.bankrupt:
             break
     portfolio.counts.update(proposals=len(proposals), accepted=accepted, fills=fills)
+
+
+def _depuis_coup_d_envoi(market: MarketInfo, now: datetime) -> dict[str, str]:
+    """Heures écoulées depuis le coup d'envoi (négatif : avant). `horizon_hours` est l'échéance Gamma, une
+    date placeholder pour un match ; ce champ dit si l'achat a eu lieu avant ou pendant le jeu (enquête 20/10)."""
+    if getattr(market, "game_start", None) is None:
+        return {}
+    return {"depuis_coup_d_envoi_h": f"{(now - market.game_start).total_seconds() / 3600:.2f}"}
 
 
 def _price_drop(deps: CycleDeps, proposal: Proposal, before: OrderBook | None, fresh: OrderBook | None) -> str | None:
@@ -914,7 +923,7 @@ def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, Ma
                     strategy_version=part.strategy_version, now=now, group=correlation_group(market),
                     extra=dict(extra, est_probability=str(part.est_probability), prob_low=str(part.prob_low),
                                prob_high=str(part.prob_high), net_edge=str(part.net_edge),
-                               horizon_hours=str(part.horizon_hours)))
+                               horizon_hours=str(part.horizon_hours), **_depuis_coup_d_envoi(market, now)))
             else:
                 ledger.record_sell(op_id=part.op_id, token_id=part.token_id, shares=fill.filled_shares,
                                    price=proposal.max_price, fee=fill.fee, now=now,
