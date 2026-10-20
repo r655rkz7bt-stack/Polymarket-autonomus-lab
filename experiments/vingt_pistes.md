@@ -51,8 +51,13 @@ match, cotes des bookmakers (vainqueur), vague d'opinion, parking politique.
 | 16 | football_trois_issues | victoire / nul / victoire contre les bookmakers | The Odds API | B |
 | 17 | cotes_tennis | tennis contre Pinnacle (le morceau qui gagne) | The Odds API | B |
 | 18 | fatigue_nhl | équipe qui a joué la veille | API de la NHL | C |
-| 19 | haut_ou_bas_crypto | « monte ou baisse aujourd'hui » : modèle du prix | prix crypto | C |
-| 20 | mots_prononces | « dira-t-il ce mot ? » : fréquence dans l'actualité | Google Actualités | C |
+| 19 | mots_nouveaux | « dira-t-il ce mot ? » jamais proposé : le OUI est trop cher | Polymarket | C |
+| 20 | mots_prononces | « dira-t-il ce mot ? » : combien de fois il l'a déjà dit | Polymarket | C |
+
+Écartées après test sur le passé (lot C) : haut_ou_bas_crypto (prévue en n° 19), totaux de buts
+NHL, séries de victoires ou de défaites NHL. Pour mots_prononces, le taux historique des marchés
+passés a remplacé l'idée de départ (fréquence dans Google Actualités, impossible à tester sur le
+passé).
 
 ## Lot A : essai à blanc en direct (20/10/2026, vers 9 h UTC)
 Scan réel (922 marchés dont 100 échus), carnets réels, journal d'essai à 1 000 :
@@ -96,6 +101,39 @@ Vérifié sur le passé avant d'envoyer :
   pour le marché ; acheter quand le modèle s'écarte de 3 points : **−16 % par achat** (3 880
   achats, t −8), perdant sur les 4 monnaies et à toute heure. Frais 0,07·p·(1−p) en plus. Le
   marché est plus juste que le modèle : pas de stratégie.
+- **fatigue_nhl, retenue (faible)** : saisons 2024-25 et 2025-26, calendrier officiel de la NHL et
+  1 861 matchs Polymarket (prix une heure avant le match). Équipe qui a joué la veille, à
+  l'extérieur, contre un adversaire reposé : 299 matchs, 37,8 % gagnés pour un prix moyen de
+  43,2 % (−5,4 points ; −5,7 en 2024-25, −5,1 en 2025-26) ; acheter l'adversaire reposé au prix
+  + 0,01, frais 0,05·p·(1−p) : +6,1 % par achat (t +1,2). À domicile : −3,3 points (99 matchs,
+  +5,7 %, t +0,5). Matchs sans fatigue : rien (−1 point). Même sens les deux saisons, mais encore
+  faible statistiquement : fantôme, l'arène tranchera.
+- **mots_prononces, retenue** : 21 824 marchés « mentions » réglés ; prix réels pour 3 000 marchés
+  dont le mot avait déjà au moins 3 précédents chez le même orateur. Taux historique du mot,
+  rapproché du taux de l'orateur (2 marchés fictifs). En moyenne, le marché est mieux calibré
+  (log-score −0,536 contre −0,576). Mais acheter quand le taux s'écarte de 5 points ET que le
+  billet coûte au moins 0,30, frais 0,04·p·(1−p) et 0,02 d'écart comptés : +19 % par achat
+  (223 achats, t +2,8) au prix de deux heures après l'ouverture, +27 % (t +4,0) à douze heures,
+  +21 % à vingt-quatre heures ; moyenne par événement +11 % (t +1,3) à +26 % (t +3,2). Sous 0,30 :
+  rien ou perte. Les questions « Will "X" be said » sans orateur sont écartées.
+- **mots_nouveaux, retenue (indice court)** : mots jamais proposés chez un orateur qui a au moins
+  10 marchés passés ; prix réels seulement pour septembre-octobre 2026 (314 marchés sur 2 500,
+  les plus anciens n'ont plus d'historique de prix). OUI à 0,30-0,85 : réalisé nettement en
+  dessous (prix 0,44 → 29 % ; 0,55 → 45 %). Acheter le NON, frais et écart comptés : +16 % par
+  achat deux heures après l'ouverture (228 achats, t +1,8 ; par événement +24 %, t +2,5), +20 %
+  à douze heures, +9 % à vingt-quatre heures. Garde-fou ajouté après l'essai en direct : carnet
+  écarté de plus de 0,10 ignoré (les marchés mensuels de Trump affichent souvent 0,16 / 0,85).
+- **Totaux de buts NHL, écartés** : 1 440 marchés « plus ou moins de 5,5 / 6,5 buts » : le marché
+  est bien calibré (« plus » gagné 51,2 % pour un prix moyen de 49,7 %), écart effacé par les
+  frais ; trop peu de matchs avec plusieurs lignes (40) pour tester leur cohérence.
+- **Séries NHL, écartées** : après 3 défaites, 4 victoires, une lourde défaite ou une large
+  victoire : aucun écart régulier sur les deux saisons (le seul signal, « après une large
+  victoire, l'équipe est trop chère », t −1,9 sur 4 essais, n'est pas retenu).
+
+**Essai en direct du lot C (20/10 vers 13 h UTC)** : 44 matchs NHL à venir rattachés au
+calendrier, 9 avec une seule équipe fatiguée (ex. Maple Leafs à Columbus le 20/10, après leur match
+du 19) ; 240 marchés « mentions » ouverts, 116 rattachés à leur historique (5 achats possibles à ce
+moment-là), 68 mots nouveaux dont 36 dans la fourchette 0,30-0,85.
 
 ## Ce qu'on regardera
 Chaque piste est un fantôme gratuit : l'arène la juge (confiance sur le rendement, retrait des

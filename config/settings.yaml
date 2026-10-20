@@ -181,6 +181,8 @@ sources:
   predictit: {enabled: true, every_minutes: 30}                 # politique américaine ; gratuit
   manifold: {enabled: true, every_minutes: 30, recherches: 15, rafraichir: 30, similarite_min: 0.6}
   xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
+  nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
+  mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
   odds_outrights:                                                # ODDS_API_KEY ; champions de saison, 1 crédit par jour et par championnat
     enabled: true
     every_minutes: 60

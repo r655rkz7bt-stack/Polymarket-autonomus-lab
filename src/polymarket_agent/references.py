@@ -397,3 +397,144 @@ def attach_football(markets, observations) -> int:
                                              "titre": best[0].title}}
             n += 1
     return n
+
+
+# ------------------------------------------------------------------ NHL : qui a joué la veille ?
+
+NHL_SCHEDULE = "https://api-web.nhle.com/v1/schedule/{day}"
+
+
+def _team_names(team: dict) -> list[str]:
+    return [n for n in ((team.get("commonName") or {}).get("default"), (team.get("placeName") or {}).get("default"),
+                        team.get("abbrev")) if n]
+
+
+def fetch_nhl_rest(http: HttpClient, now: datetime | None = None) -> list[dict]:
+    """Matchs NHL des 6 prochains jours, avec pour chaque équipe « a joué la veille » (un seul appel :
+    le calendrier part d'hier et couvre 7 jours ; dates de la NHL, heure de l'Est)."""
+    now = now or now_utc()
+    yesterday = (now - timedelta(hours=4) - timedelta(days=1)).date()  # heure de l'Est, à peu près
+    raw = http.get_json(NHL_SCHEDULE.format(day=yesterday.isoformat())) or {}
+    played: dict[str, set[str]] = {}
+    days = raw.get("gameWeek") or []
+    for day in days:
+        for g in day.get("games") or []:
+            for side in ("awayTeam", "homeTeam"):
+                played.setdefault(day["date"], set()).add((g.get(side) or {}).get("abbrev"))
+    rows = []
+    for day in days[1:]:  # hier ne sert qu'à savoir qui a joué
+        before = (datetime.fromisoformat(day["date"]) - timedelta(days=1)).date().isoformat()
+        for g in day.get("games") or []:
+            away, home = g.get("awayTeam") or {}, g.get("homeTeam") or {}
+            rows.append({"debut": g.get("startTimeUTC"), "date": day["date"],
+                         "exterieur": _team_names(away), "domicile": _team_names(home),
+                         "fatigue_exterieur": away.get("abbrev") in played.get(before, set()),
+                         "fatigue_domicile": home.get("abbrev") in played.get(before, set())})
+    return rows
+
+
+def attach_nhl_rest(markets, db) -> int:
+    """`market.references["repos_nhl"] = {"fatigue": [issue 0 a joué la veille, issue 1 …], "vu_le"}`
+    pour les marchés « vainqueur » NHL (deux équipes, même coup d'envoi à 3 h près)."""
+    if db is None:
+        return 0
+    seen, rows = _load(db, "ref:nhl_repos")
+    n = 0
+    for m in markets:
+        if len(m.outcomes) != 2 or m.game_start is None or {o.lower() for o in m.outcomes} == {"yes", "no"}:
+            continue
+        for r in rows:
+            start = parse_date(r.get("debut") or "")
+            if start is None or abs((start - m.game_start).total_seconds()) > 3 * 3600:
+                continue
+            teams = {"e": [x.lower() for x in r["exterieur"]], "d": [x.lower() for x in r["domicile"]]}
+
+            def side(outcome: str) -> str | None:
+                o = outcome.lower()
+                hits = [k for k, names in teams.items() if any(x == o or (len(x) > 3 and x in o) or o in x for x in names)]
+                return hits[0] if len(hits) == 1 else None
+            sides = [side(str(o)) for o in m.outcomes]
+            if sorted(s or "" for s in sides) != ["d", "e"]:
+                continue
+            tired = {"e": bool(r["fatigue_exterieur"]), "d": bool(r["fatigue_domicile"])}
+            m.references = dict(m.references or {}, repos_nhl={
+                "fatigue": [tired[s] for s in sides], "domicile": [s == "d" for s in sides],
+                "vu_le": seen.isoformat() if seen else None,
+                "titre": f"{r['exterieur'][0]} à {r['domicile'][0]}, {r['date']}"})
+            n += 1
+            break
+    return n
+
+
+# ------------------------------------------------------------------ « dira-t-il ce mot ? » : taux historique
+
+MENTION = re.compile(r"^will (.+?) (?:say|mention|be said)\b", re.IGNORECASE)
+
+
+def mention_key(question: str, word: str) -> tuple[str, str] | None:
+    """(orateur, mot) : « Will Trump say "crypto" or "Bitcoin" this week? », tranche « Crypto / Bitcoin »
+    → ("trump", "crypto/bitcoin"). Les questions « Will "X" be said … » (sans orateur) sont écartées."""
+    m = MENTION.match((question or "").strip())
+    speaker = m.group(1).strip().lower() if m else ""
+    w = re.sub(r"\s*/\s*", "/", (word or "").strip().lower())
+    if not speaker or not w or speaker[0] in "\"'“”":
+        return None
+    return speaker, w
+
+
+def fetch_mention_history(http: HttpClient, pages: int = 20) -> list[dict]:
+    """Marchés « mentions » réglés (les plus récents d'abord) → par orateur et par mot : nombre de
+    OUI et de marchés ; une ligne « * » par orateur (son taux de OUI tous mots confondus)."""
+    counts: dict[tuple[str, str], list[int]] = {}
+    for page in range(pages):
+        events = http.get_json("https://gamma-api.polymarket.com/events", params={
+            "tag_slug": "mention-markets", "closed": "true", "limit": 100, "offset": 100 * page,
+            "order": "endDate", "ascending": "false"})
+        if not isinstance(events, list) or not events:
+            break
+        for e in events:
+            for mk in e.get("markets") or []:
+                try:
+                    res = json.loads(mk.get("outcomePrices") or "[]")
+                except (ValueError, TypeError):
+                    continue
+                key = mention_key(mk.get("question") or "", mk.get("groupItemTitle") or "")
+                if key is None or res not in (["1", "0"], ["0", "1"]):
+                    continue
+                for k in (key, (key[0], "*")):
+                    c = counts.setdefault(k, [0, 0])
+                    c[0] += res == ["1", "0"]
+                    c[1] += 1
+    return [{"orateur": s, "mot": w, "oui": c[0], "n": c[1]} for (s, w), c in counts.items()]
+
+
+def attach_mentions(markets, db, prior: float = 2.0, new_word_min: int = 10) -> int:
+    """`market.references["mentions"] = {"p", "n", "vu_le", "titre"}` : taux de OUI passé du même mot
+    chez le même orateur, rapproché de son taux tous mots confondus (`prior` marchés fictifs).
+    Mot jamais proposé chez un orateur qui a au moins `new_word_min` marchés passés :
+    `market.references["mot_nouveau"] = {"n_orateur", "vu_le", "titre"}`."""
+    if db is None:
+        return 0
+    seen, rows = _load(db, "ref:mentions")
+    table = {(r["orateur"], r["mot"]): r for r in rows}
+    n = 0
+    for m in markets:
+        if [str(o).lower() for o in m.outcomes] != ["yes", "no"]:
+            continue
+        key = mention_key(m.question, m.group_title)
+        hit = table.get(key) if key else None
+        base = table.get((key[0], "*"), {"oui": 1, "n": 2}) if key else None
+        if key and not hit and base["n"] >= new_word_min:
+            m.references = dict(m.references or {}, mot_nouveau={
+                "n_orateur": base["n"], "vu_le": seen.isoformat() if seen else None,
+                "titre": f"« {key[1]} » jamais proposé en {base['n']} marchés de {key[0]}"})
+            n += 1
+        if not hit:
+            continue
+        g = (base["oui"] + 1) / (base["n"] + 2)
+        p = (hit["oui"] + prior * g) / (hit["n"] + prior)
+        m.references = dict(m.references or {}, mentions={
+            "p": round(p, 4), "n": hit["n"], "vu_le": seen.isoformat() if seen else None,
+            "titre": f"{key[0]} a dit « {key[1]} » {hit['oui']} fois sur {hit['n']}"})
+        n += 1
+    return n

@@ -135,6 +135,8 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
             n = references.attach(markets, db, now)
             n["champions"] = references.attach_outrights(markets, db)
             n["football_3"] = references.attach_football(markets, recent)
+            n["repos_nhl"] = references.attach_nhl_rest(markets, db)
+            n["mentions"] = references.attach_mentions(markets, db)
             status["references"] = "ok (" + ", ".join(f"{k} {v}" for k, v in n.items()) + ")"
         except Exception as exc:  # noqa: BLE001 - un rattachement ne bloque jamais le cycle
             status["references"] = f"erreur : {type(exc).__name__}: {exc}"[:200]
