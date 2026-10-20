@@ -340,9 +340,16 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
 
 
-def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hours: float = 72) -> list[dict]:
+def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hours: float = 72,
+                       active: list[str] | None = None) -> list[dict]:
+    """Positions ouvertes bien après l'échéance notée à l'achat. Ne regarde que les stratégies qui tournent
+    (`active`) : une stratégie coupée ne règle plus rien (reversion, 20/10 : marché de Dallas réglé le 18/10,
+    position jamais réglée car la stratégie est coupée depuis le 17/10) ; ni les teneurs de marché, dont
+    `horizon_hours` est la durée de la cote et non l'échéance du marché (market_maker, 20/10)."""
     out = []
     for name, rows in entries.items():
+        if (active is not None and name not in active) or name.startswith("market_maker"):
+            continue
         opened: dict[str, dict] = {}
         shares: dict[str, Decimal] = defaultdict(Decimal)
         for e in rows:
@@ -477,7 +484,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + selection_multiple(entries, copied_by_principal(entries, now))
                 + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
-                + meme_pari_prix_differents(entries) + muettes(entries, active, now) + positions_oubliees(entries, now))
+                + meme_pari_prix_differents(entries) + muettes(entries, active, now) + positions_oubliees(entries, now, active=active))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 

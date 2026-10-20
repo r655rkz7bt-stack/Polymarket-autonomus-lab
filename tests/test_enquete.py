@@ -99,6 +99,10 @@ def test_silent_strategies_forgotten_positions_and_stopped_cycle():
                "oubli_v1.0.0": _ledger(_buy(old, "x", 0.9, 10, horizon="2"), born=old)}
     assert enquete.muettes(entries, ["muette_v1.0.0", "oubli_v1.0.0"], NOW)[0]["exemples"] == ["muette_v1.0.0 (née le 2026-10-16)"]
     assert "oubli_v1.0.0" in enquete.positions_oubliees(entries, NOW)[0]["titre"]
+    # Une stratégie coupée (reversion, 20/10) et un teneur de marché (horizon = durée de la cote) ne sont pas « oubliés ».
+    entries["market_maker_v1.0.0"] = _ledger(_buy(old, "m", 0.5, 10, strategy="market_maker", horizon="2"), born=old)
+    assert [f["titre"].split(" :")[0] for f in enquete.positions_oubliees(entries, NOW)] == ["oubli_v1.0.0"]
+    assert enquete.positions_oubliees(entries, NOW, active=["autre_v1.0.0"]) == []
     stopped = enquete.cycle_arrete(entries, NOW)
     assert stopped and stopped[0]["gravite"] == enquete.GRAVE
 

@@ -27,6 +27,16 @@ copié par le principal) : 93 paris réglés, +276 €, 6 471 € misés au tota
    se remplit quand le prix tombe, donc souvent quand le favori s'effondre en jeu. Pas de défaut de
    règlement : 10 paris tirés au hasard relus sur Gamma (famille 3), résolution, camp et type de pari
    (moneyline, spread, carte gagnée) tous conformes au journal.
+5. **Copie à 100 % sur exécution partielle** (constat « à regarder » de l'enquête automatique, mené
+   jusqu'au bout) : sur les 32 paris de la championne copiés par le principal depuis le 19/10, 30 sont à
+   33-38 % de la taille du fantôme (c'est l'échelle voulue : capital du principal / capital du fantôme) ;
+   2 sont à 100 % (Mannarino 5,32 parts le 19/10, Lynn Vision 33,34 parts le 20/10). Cause : un ordre posé
+   du fantôme (97,7 parts demandées, 33,3 obtenues) est recopié par le principal à sa taille *demandée* ×
+   0,35 (34 parts), et non à sa taille *obtenue* × 0,35 (11,7) ; le carnet mince donne alors aux deux la
+   même quantité (`Principal._copy` → `limit_orders`, `main.py`). Ampleur : 2 paris sur 32, 33 € au lieu de
+   ≈ 11 € pour Lynn Vision (3,5 % du capital), gagnants tous les deux. Non corrigé : le principal reposte
+   l'ordre et laisse le carnet décider, une copie « à la taille obtenue » demanderait de suivre les
+   exécutions partielles d'un cycle à l'autre ; le contrôle `copie_fidele` le signale déjà.
 
 ## Cause
 Pas de bug de calcul : une série de chance sélectionnée (meilleur de 35 sur une période de 3,2 jours),

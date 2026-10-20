@@ -106,3 +106,16 @@ jamais une raison de sauter une partie : si le temps manque vraiment, sauvegarde
    retirées), **Reste ouvert**.
 4. Réponds à la fin en quelques lignes simples, en français, pour Etienne : le défaut trouvé (ou
    « rien trouvé, j'ai vérifié… »), le verdict de la recherche, ce qui a changé.
+
+## Astuces techniques (apprises au passage du 20/10/2026, 15 h UTC)
+- Gamma refuse le User-Agent par défaut de `urllib` (403) : utiliser `requests` ou un en-tête `User-Agent: curl/8`.
+  Un marché se lit avec `/markets/<id>` (le filtre `?id=` renvoie une liste vide pour les marchés clos).
+- Les matchs de sport ne sont PAS retrouvés par `tag_id` (ils n'apparaissent que comme « futurs » de saison) mais par
+  `series_id` (ATP 10365, WTA 10366, ITF 11634, CS2 10310, LoL 10311, Dota 2 10309, Valorant 10369 ; liste : `/sports`),
+  `closed=true&order=endDate&ascending=false`, par pages de 100 (jusqu'à plusieurs dizaines de milliers de lignes).
+  `endDate` d'un match est une date placeholder (souvent +7 jours) ; l'heure réelle est `gameStartTime`.
+- `prices-history` (CLOB, pas de 10 min) et `data-api.polymarket.com/trades?eventId=` répondent sans clé : 6 000 matchs en
+  ≈ 8 minutes avec 6 fils. Scripts réutilisables : `experiments/tennis/scripts/`.
+- Les dépôts GitHub tiers (Jeff Sackmann) ne sont pas accessibles depuis la routine : prévoir une autre source.
+- Test de sélection : une stratégie « première de l'arène » parmi ~40 a un z attendu de ≈ 2 sans aucun avantage
+  (contrôle `selection_multiple`) ; ne l'appeler « avantage » qu'après de nouveaux paris.
