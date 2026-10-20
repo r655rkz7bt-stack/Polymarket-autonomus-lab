@@ -76,7 +76,7 @@ sources:
   crypto_prices: {enabled: true, every_minutes: 5}          # Binance (source de résolution), repli Coinbase, Kraken
   # GDELT refuse souvent les IP partagées de GitHub (HTTP 429) : une requête par heure, sans
   # nouvel essai, pour ne pas allonger les cycles (décision d'Etienne, 15/10/2026).
-  gdelt: {enabled: true, every_minutes: 180, queries_per_run: 1, max_retries: 0, timespan: 6h}  # 17/10 : HTTP 429 à 60 min (adresse partagée de GitHub)
+  gdelt: {enabled: true, every_minutes: 180, queries_per_run: 1, max_retries: 0, timeout: 6, timespan: 6h}  # 19/10 : 16 s d'attente par cycle → 6 s au plus  # 17/10 : HTTP 429 à 60 min (adresse partagée de GitHub)
   bluesky: {enabled: true, every_minutes: 15, queries_per_run: 3}  # compte optionnel (BLUESKY_*)
   # Google Actualités : une recherche par marché surveillé (remplace GDELT quand il refuse).
   google_news: {enabled: true, every_minutes: 15, queries_per_run: 10, per_query: 15}
@@ -164,9 +164,13 @@ sources:
   football_data: {enabled: true, every_minutes: 30}   # FOOTBALL_DATA_KEY, scores Ligue des champions, championnats
   odds_api:                                           # ODDS_API_KEY ; 1 crédit par sport et par appel (500/mois gratuits)
     enabled: true
-    every_minutes: 720
-    regions: eu
-    sports: [soccer_uefa_champs_league, americanfootball_nfl, baseball_mlb, icehockey_nhl, basketball_nba]
+    every_minutes: 60          # 19/10/2026 : passage horaire ; seules les ligues avec un match proche paient
+    regions: eu                # comprend Pinnacle (référence)
+    fenetre_heures: 6          # match dans les 6 h
+    rafraichir_heures: 2.5     # cotes d'une ligue relevées au plus toutes les 2 h 30
+    credits_par_jour: 15       # 15 × 30 = 450 crédits par mois (500 gratuits)
+    sports: [americanfootball_nfl, baseball_mlb, icehockey_nhl, basketball_nba, americanfootball_ncaaf,
+             soccer_uefa_champs_league, soccer_epl]
   guardian: {enabled: true, every_minutes: 30, queries_per_run: 5, per_query: 10}   # GUARDIAN_API_KEY
   # Archive de la source de résolution des marchés surveillés (resolution_sources.py).
   sources_resolution: {enabled: true, every_minutes: 60}

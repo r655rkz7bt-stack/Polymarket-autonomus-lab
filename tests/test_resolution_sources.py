@@ -197,3 +197,66 @@ def test_regression_crypto_quote_time_is_the_fetch_time_not_the_open_of_the_runn
     assert obs[0].published_at == now
     later = running + timedelta(hours=3)  # bougie terminée depuis longtemps : sa fin, pas « maintenant »
     assert CryptoPricesSource(http).fetch(["btc"], later)[0].published_at == running + timedelta(hours=1)
+
+
+def test_odds_are_bought_only_for_leagues_with_a_game_soon_within_a_daily_budget(monkeypatch):
+    """19/10/2026 : la liste des matchs (gratuite) dit quelles ligues ont un match dans les 6 h ;
+    seules celles-là sont relevées (le match le plus proche d'abord), au plus `daily_budget`
+    crédits par jour et une fois toutes les 2 h 30 par ligue ; Pinnacle est gardé à part."""
+    from datetime import timedelta
+    monkeypatch.setenv("ODDS_API_KEY", "cle-test")
+
+    class State(dict):
+        def get_value(self, k):
+            return self.get(k)
+
+        def set_value(self, k, v):
+            self[k] = v
+
+    def ev(hours):
+        return [{"id": "e", "commence_time": (NOW + timedelta(hours=hours)).isoformat().replace("+00:00", "Z")}]
+    books = [{"key": "pinnacle", "markets": [{"key": "h2h", "outcomes": [{"name": "X", "price": 1.25}, {"name": "Y", "price": 5.0}]}]},
+             {"key": "b", "markets": [{"key": "h2h", "outcomes": [{"name": "X", "price": 2.0}, {"name": "Y", "price": 2.0}]}]}]
+    odds = [{"id": "o", "commence_time": "2026-10-14T23:00:00Z", "home_team": "Y", "away_team": "X", "bookmakers": books}]
+
+    class Http:
+        def __init__(self, cost="0"):
+            self.calls, self.last_headers, self.cost = [], {}, cost
+
+        def get_json(self, url, params=None, headers=None):
+            self.calls.append(url.split("/sports/")[1])
+            self.last_headers = {"x-requests-last": self.cost if url.endswith("/events") else "1"}
+            sport = url.split("/sports/")[1].split("/")[0]
+            if url.endswith("/events"):
+                return {"mlb": ev(2), "nhl": ev(1), "nba": ev(30)}[sport]
+            return odds
+    state, http = State(), Http()
+    obs = OddsApiSource(http, ["mlb", "nhl", "nba"], state=state, daily_budget=1).fetch(NOW)
+    assert http.calls == ["mlb/events", "nhl/events", "nba/events", "nhl/odds"]  # NHL d'abord ; NBA trop loin
+    assert len(obs) == 1 and obs[0].data["reference"]["X"] == pytest.approx(0.8) and obs[0].data["reference_nom"] == "pinnacle"
+    assert state[f"odds_api:credits:{NOW:%Y-%m-%d}"] == "1"
+    http.calls.clear()
+    OddsApiSource(http, ["mlb", "nhl", "nba"], state=state, daily_budget=1).fetch(NOW)
+    assert "mlb/odds" not in http.calls  # budget du jour épuisé
+    http.calls.clear()
+    OddsApiSource(http, ["mlb", "nhl", "nba"], state=state, daily_budget=5).fetch(NOW + timedelta(hours=1))
+    assert "nhl/events" not in http.calls and "mlb/odds" in http.calls  # NHL relevée il y a 1 h : pas encore
+    # Si la liste des matchs coûte des crédits : ancien rythme (toutes les 12 h par ligue).
+    paid, st2 = Http(cost="1"), State()
+    OddsApiSource(paid, ["mlb", "nhl"], state=st2).fetch(NOW)
+    assert st2["odds_api:events_payants"] == "oui" and paid.calls == ["mlb/events", "mlb/odds", "nhl/odds"]
+
+
+def test_sports_link_prefers_the_reference_bookmaker():
+    from datetime import timedelta
+    from polymarket_agent import sports_link
+    from polymarket_agent.observations import Observation
+    import json as _json
+    start = NOW + timedelta(hours=3)
+    m = parse_market(raw_market("g", question="Dodgers vs. Brewers", outcomes=_json.dumps(["Dodgers", "Brewers"]),
+                                gameStartTime=start.strftime("%Y-%m-%d %H:%M:%S+00")))
+    o = Observation(source="odds_api", external_id="o", published_at=NOW, collected_at=NOW, url="", title="", text="",
+                    data={"domicile": "Milwaukee Brewers", "exterieur": "Los Angeles Dodgers", "debut": start.isoformat(),
+                          "probabilites": {"Milwaukee Brewers": 0.5, "Los Angeles Dodgers": 0.5},
+                          "reference": {"Milwaukee Brewers": 0.4, "Los Angeles Dodgers": 0.6}})
+    assert sports_link.link(m, [o])["cotes"] == [0.6, 0.4]

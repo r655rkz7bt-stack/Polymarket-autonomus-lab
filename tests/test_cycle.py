@@ -632,3 +632,24 @@ def test_principal_never_buys_the_same_market_twice_for_two_strategies(env, path
     _execute(deps, main, [parse_market(raw_market())], {"tokA": deep}, CycleReport(cycle_id="c1"), "b1")
     buys = [json.loads(l)["data"] for l in paths[0].read_text().splitlines() if json.loads(l)["type"] == "BUY"]
     assert [b["strategy_id"] for b in buys] == ["naive_favorite"]
+
+
+def test_a_book_reread_by_one_portfolio_is_reused_by_the_next_within_seconds(env):
+    """19/10/2026 : plusieurs fantômes visent le même marché ; un carnet relu il y a moins de
+    20 s dans le même cycle n'est pas relu une deuxième fois."""
+    from polymarket_agent.main import _reread_book
+    make, _, clock = env
+
+    class Counting(FakeClob):
+        reads = 0
+
+        def get_book(self, token_id):
+            Counting.reads += 1
+            return good_book(ts=clock["now"])
+    deps = make(FakeGamma([raw_market()]), Counting({"tokA": good_book()}))
+    cache = {}
+    assert _reread_book(deps, "tokA", cache) is _reread_book(deps, "tokA", cache) and Counting.reads == 1
+    clock["now"] = NOW + timedelta(seconds=30)  # trop vieux : relu
+    _reread_book(deps, "tokA", cache)
+    _reread_book(deps, "tokA", None)  # sans mémoire : toujours relu
+    assert Counting.reads == 3

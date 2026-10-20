@@ -143,3 +143,20 @@ def test_long_markets_with_holding_rewards_are_scanned_too():
     assert [m.market_id for m in result.markets] == ["court", "long"]
     assert all(m.eligible for m in result.markets) and g.calls[1]["max_pages"] == 1
     assert len(TwoCalls().calls) == 0 and len(scan(TwoCalls(), NOW, CFG).markets) == 1  # désactivé par défaut
+
+
+def test_gamma_pages_are_read_in_parallel_in_order_and_stop_at_the_first_short_page():
+    from polymarket_agent.sources.polymarket_gamma import GammaClient
+
+    class Http:
+        def __init__(self, pages):
+            self.pages, self.offsets = pages, []
+
+        def get_json(self, url, params=None, headers=None):
+            self.offsets.append(params["offset"])
+            n = params["offset"] // params["limit"]
+            return [{"id": f"{n}-{i}"} for i in range(self.pages[n] if n < len(self.pages) else 0)]
+    http = Http([2, 2, 2, 1, 2, 2])
+    out = GammaClient(http).list_markets(end_min=NOW, end_max=NOW + timedelta(days=1), page_size=2, max_pages=10)
+    assert [m["id"] for m in out] == ["0-0", "0-1", "1-0", "1-1", "2-0", "2-1", "3-0"]  # ordre gardé
+    assert max(http.offsets) < 8  # arrêt après le premier groupe qui contient une page incomplète

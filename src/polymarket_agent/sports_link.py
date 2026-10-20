@@ -110,7 +110,8 @@ def link(market, observations: list) -> dict | None:
                 out["gagnant"] = 0 if score[t0] > score[t1] else 1
     if odds is not None:
         o, (t0, t1) = odds
-        probs = o.data.get("probabilites") or {}
+        # Pinnacle (le bookmaker le plus précis) s'il cote le match, sinon la moyenne des bookmakers.
+        probs = o.data.get("reference") or o.data.get("probabilites") or {}
         p0 = next((float(v) for k, v in probs.items() if same_team(k, t0)), None)
         p1 = next((float(v) for k, v in probs.items() if same_team(k, t1)), None)
         if p0 is not None and p1 is not None and p0 + p1 > 0:
