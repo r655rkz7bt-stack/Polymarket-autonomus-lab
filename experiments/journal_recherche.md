@@ -22,13 +22,13 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
   règlement relu (2 261 / 2 263 cohérents). Avant le match : rien (+0,6 %). Recalibrer le prix ne bat pas le marché hors
   échantillon. En jeu, favori 0,80-0,95 à +30 min, aux prix réellement payés : **+3,1 % par mise** (1 096 matchs, t +2,8,
   4 mois sur 4, mais 1re moitié +4,5 % et 2e +1,6 %, ~40 réglages essayés) → **indice**, fantôme `nf_tennis_debut_match`.
-  E-sport (CS2/LoL/Dota/Valorant, 23 379 marchés) : **écartée** (−0,1 % à +0,6 %). Sackmann inaccessible.
+  E-sport (CS2/LoL/Dota/Valorant, 23 379 marchés) : **écartée** (−0,1 % à +0,6 %). Autres sports (14 097 marchés) : **écartée**
+  (−1 % à −2 % par mise : l'effet du tennis n'est pas un biais général). Sackmann inaccessible.
 - **Arène** : ajoutées `nf_tennis_debut_match` et les trois filles de la feuille de mission
   (`crypto_threshold_prix_bas`, `crypto_threshold_24_72h`, `nf_sport_patiente_prix_850_875`) ; coupées les éliminées
   `calibration` (v2) et `choc_sans_nouvelle`.
 - **Reste ouvert** : la championne est-elle encore bonne en dehors de la chance ? (regarder ses paris à partir du
-  21/10) ; écart de classement au tennis (autre source que Sackmann) ; le biais favori 0,80-0,95 sur d'autres sports
-  (voir fin de `tennis.md`) ; suivi des paris en jeu (`depuis_coup_d_envoi_h`) dans l'enquête dans 2 jours.
+  21/10) ; écart de classement au tennis (autre source que Sackmann) ; pourquoi le tennis en jeu seul bat les frais ; suivi des paris en jeu (`depuis_coup_d_envoi_h`) dans l'enquête dans 2 jours.
 
 ## 2026-10-20 (session avec Etienne, ~14 h UTC) : enquête et chercheur « profond »
 

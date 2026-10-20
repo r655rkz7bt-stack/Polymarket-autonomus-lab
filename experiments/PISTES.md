@@ -41,3 +41,4 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | Kalshi contre Polymarket en sport | écartée | prix identiques à 0,4 point | sport_kalshi.md |
 | tennis, favori avant/pendant le match (6 131 matchs) | indice | en jeu à +30 min, favori 0,80-0,95 : +3,1 % par mise aux prix payés (t +2,8, ~40 réglages) ; avant le match +0,6 % ; recalibrage ne bat pas le marché | tennis.md |
 | e-sport (CS2, LoL, Dota 2, Valorant), favoris avant/pendant le match (23 379 marchés) | écartée | favori 0,80-0,95 : −0,1 % à +0,6 % par mise après frais et écart, à tous les retards (−60 min … +60 min) ; le favori gagne un peu plus que son prix (z +1,5 à +2,2) mais l'écart ne couvre pas les frais | tennis.md |
+| autres sports (NFL, NBA, NHL, MLB, football, UFC… 14 097 marchés), favori 0,80-0,95 | écartée | −1,1 % à −2,0 % par mise après frais et écart, avant et pendant le match (le favori gagne autant que son prix) | tennis.md |

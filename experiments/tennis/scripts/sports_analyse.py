@@ -1,4 +1,4 @@
-"""E-sport (CS2, LoL, Dota 2, Valorant) : le favori gagne-t-il plus souvent que son prix, avant et pendant le match ?
+"""Autres sports (NFL, NBA, NHL, MLB, football, UFC…) : le favori gagne-t-il plus souvent que son prix, avant et pendant le match ?
 Mêmes règles que le tennis (prix CLOB connus à l'instant, écart 1 ¢, frais du marché, idea_test.verdict).
 Usage depuis experiments/tennis : ../../.venv/bin/python scripts/esport_analyse.py"""
 import json, math, sys, collections
@@ -29,11 +29,11 @@ def run(lag, lo, hi, select=lambda r: True, label=""):
     v = verdict(b)
     print(f"{label:34} lag={lag // 60:4d} min prix {lo}-{hi}: n={n:5} gagnés={w} attendus={e:.0f} z={(w - e) / math.sqrt(var):+.2f} rend={v['rendement_moyen']:+.3f} t_ev={v['confiance_evenements']:+.2f} mois={v['mois_gagnants']} -> {v['verdict']}")
     return v
-for typ in ("moneyline", "child_moneyline"):
+for typ in ("moneyline",):
     for lag in (-3600, -600, 900, 1800, 3600):
         for lo, hi in ((0.5, 0.8), (0.8, 0.95)):
             run(lag, lo, hi, lambda r, typ=typ: r["type"] == typ, typ)
 print("-- par jeu, favori 0,80-0,95, match entier")
-for g in ("cs2", "lol", "dota2", "val"):
+for g in ("nfl", "nba", "nhl", "mlb", "mls", "epl", "lal", "bun", "fl1", "ucl", "uel", "sea", "cfb", "cbb", "wnba", "ufc"):
     for lag in (-3600, 1800):
         run(lag, 0.8, 0.95, lambda r, g=g: r["circuit"] == g and r["type"] == "moneyline", g)

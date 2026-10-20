@@ -71,6 +71,16 @@ gagnants 3 sur 9 à 7 sur 9 selon le réglage, 18 réglages essayés). Les paris
 (Falcons, LOUD, Lynn Vision…) n'ont donc pas d'avantage mesurable : ils profitent du même biais de 1-2 points
 que le tennis, sans le dépasser.
 
+## Contre-épreuve : le même test sur les autres sports (14 097 marchés)
+NFL, NBA, NHL, MLB, MLS, Premier League, Liga, Bundesliga, Ligue 1, Serie A, Ligue des champions / Europa League,
+football et basket universitaires, WNBA, UFC (marchés `moneyline`, `scripts/releve_sports.py`, `sports_analyse.py`).
+Favori à 0,80-0,95, après frais et écart d'1 ¢ : 60 min avant −2,0 % (t par match −2,7), 10 min avant −1,9 %,
+15 min après le début −1,5 %, 30 min après −1,8 % (t −2,6), 60 min après −1,1 %. Le favori gagne **autant** que
+son prix (2 606 pour 2 616 attendus à +30 min), jamais plus : les frais le coulent. Aucun sport isolé n'est
+positif de façon régulière (seuls UEFA Europa League +3,6 % et UFC +3,2 % à +30 min, sur 184 et 86 paris : bruit
+parmi 32 découpages). **L'effet du tennis n'est donc pas un biais général « favori sous-coté »** : il est propre au
+tennis en jeu (ou un accident de 4 mois). C'est pourquoi on ne copie pas la recette aux autres sports.
+
 **Reste ouvert** : écart de classement (Sackmann) ; même test sur le tennis de table et le e-sport (en jeu,
 mêmes fenêtres) ; tester le biais favori/outsider pour les cartes (CS2) ; refaire ce test dans un mois, avec
 les paris de l'arène comme échantillon sans sélection.
