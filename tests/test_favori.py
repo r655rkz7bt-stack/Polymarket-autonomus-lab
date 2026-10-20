@@ -156,3 +156,27 @@ def test_hour_of_day_filter(tmp_path):
     assert Filtered(_strategy(shrink=0.5), {"heure_utc": [12, 24]}).propose([m], books, ledger.state, limits, "b").proposals
     assert not Filtered(_strategy(shrink=0.5), {"heure_utc": [4, 12]}).propose([m], books, ledger.state, limits, "b").proposals
     assert Filtered(_strategy(shrink=0.5), {"heure_utc": [20, 13]}).propose([m], books, ledger.state, limits, "b").proposals  # passe minuit
+
+
+def test_tennis_debut_match_only_buys_in_the_first_36_minutes_after_kickoff(tmp_path):
+    """Piste tennis (20/10/2026) : le favori à 0,80-0,95 gagnait un peu plus souvent que son prix 15 à 30 minutes
+    après le coup d'envoi (+3,1 % aux prix payés, 1 096 matchs) ; avant le match et plus tard, rien."""
+    from polymarket_agent.strategy_engine import Filtered
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["nf_tennis_debut_match"]
+    assert cfg.filters == {"familles": ["sports"], "disciplines": ["tennis"], "types_pari": ["vainqueur"],
+                           "heures_min": -0.6, "heures_max": 0}
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+    mother = _strategy(("sports",), min_ask=0.80, max_ask=0.95, bias=0.05, uncertainty=0.015, min_net_edge=0.01)
+    window = Filtered(mother, cfg.filters)
+
+    def proposals(minutes_after_start, tmp):
+        start = NOW - timedelta(minutes=minutes_after_start)
+        m, books, ledger, _ = _setup(tmp, fee_type="sports_fees_v3", end_hours=24 * 7, bid="0.86", ask="0.87",
+                                     gameStartTime=start.strftime("%Y-%m-%d %H:%M:%S+00"),
+                                     question="Lisbon: Sumit Nagal vs Alejo Sanchez Quilez", sportsMarketType="moneyline",
+                                     resolutionSource="https://www.atptour.com/")
+        return window.propose([m], books, ledger.state, limits, "b").proposals
+
+    assert proposals(20, tmp_path / "a")
+    assert not proposals(-120, tmp_path / "b")   # match dans 2 h
+    assert not proposals(90, tmp_path / "c")     # match commencé depuis 1 h 30

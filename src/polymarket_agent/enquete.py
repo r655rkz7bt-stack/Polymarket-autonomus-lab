@@ -15,6 +15,11 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - filtre_prix : achats hors de la plage de prix d'une stratégie (20/10 : « prix haut »
     0,875-0,95 achetée à 0,79 par un ordre posé dans un carnet très écarté) ;
   - meme_pari_prix_differents : deux stratégies, même pari, prix d'entrée très différents ;
+  - selection_multiple : la championne est la meilleure de ~35 stratégies ; son avance sur les prix
+    dépasse-t-elle ce que le seul hasard donne au meilleur de 35 ? (20/10 : non, z = 1,86) ;
+  - deux_camps : une stratégie achète les deux camps d'un même match (20/10 : 2 matchs, −275 €) ;
+  - achats_en_jeu : part des achats faits après le coup d'envoi (20/10 : 84 % pour la championne,
+    alors que son « horizon » affiché est de 165 h : c'est la date de fin placeholder de Gamma) ;
   - muettes, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -335,9 +340,16 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
 
 
-def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hours: float = 72) -> list[dict]:
+def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hours: float = 72,
+                       active: list[str] | None = None) -> list[dict]:
+    """Positions ouvertes bien après l'échéance notée à l'achat. Ne regarde que les stratégies qui tournent
+    (`active`) : une stratégie coupée ne règle plus rien (reversion, 20/10 : marché de Dallas réglé le 18/10,
+    position jamais réglée car la stratégie est coupée depuis le 17/10) ; ni les teneurs de marché, dont
+    `horizon_hours` est la durée de la cote et non l'échéance du marché (market_maker, 20/10)."""
     out = []
     for name, rows in entries.items():
+        if (active is not None and name not in active) or name.startswith("market_maker"):
+            continue
         opened: dict[str, dict] = {}
         shares: dict[str, Decimal] = defaultdict(Decimal)
         for e in rows:
@@ -375,6 +387,89 @@ def cycle_arrete(entries: dict[str, list[dict]], now: datetime, minutes: float =
     return []
 
 
+def _p_one_sided(z: float) -> float:
+    return 0.5 * math.erfc(z / math.sqrt(2))
+
+
+def selection_multiple(entries: dict[str, list[dict]], copied: set[str], min_trades: int = 15,
+                       alpha: float = 0.05) -> list[dict]:
+    """Une stratégie copiée gagne-t-elle plus souvent que ses prix, APRÈS correction du fait qu'on
+    l'a choisie parmi N ? (20/10 : la championne a z = 1,86 ; le meilleur de 35 stratégies sans aucun
+    avantage atteint en moyenne 2,1 : son avance ne se distingue pas de la chance de la sélection.)"""
+    zs: dict[str, tuple[float, int, float]] = {}
+    for name, rows in entries.items():
+        if name == "principal":
+            continue
+        trades = closed_trades(rows)
+        if len(trades) < min_trades:
+            continue
+        won, expected = _won_vs_expected(trades)
+        var = sum((float(t["cost"]) / float(t["shares_bought"])) * (1 - float(t["cost"]) / float(t["shares_bought"]))
+                  for t in trades if float(t["shares_bought"]) > 0)
+        if var > 0:
+            zs[name] = ((won - expected) / math.sqrt(var), len(trades), expected)
+    n = len(zs)
+    out = []
+    for name in sorted(copied & set(zs)):
+        z, count, expected = zs[name]
+        adjusted = min(1.0, _p_one_sided(z) * n)
+        if adjusted > alpha:
+            best = max(v[0] for v in zs.values())
+            out.append(_finding("selection_multiple", A_REGARDER,
+                                f"{name} : z = {z:+.2f} sur {count} paris, mais choisie parmi {n} stratégies",
+                                f"P(hasard) corrigée = {adjusted:.2f} (> {alpha}) : le meilleur z de l'arène est {best:+.2f}, "
+                                f"ce que {n} stratégies sans avantage donnent déjà. Ne pas confondre « première du classement » "
+                                "et « avantage prouvé » : confirmer sur de nouveaux paris (ou un test sur le passé).", []))
+    return out
+
+
+def deux_camps(entries: dict[str, list[dict]], since: datetime | None = None, min_price: float = 0.7) -> list[dict]:
+    """Même stratégie, même marché, les deux camps achetés CHERS (prix ≥ 0,70 : un favori puis le camp opposé
+    devenu favori ; les jambes à 0,50 des teneurs de marché et paires sont voulues) : le deuxième achat
+    rattrape un favori qui vient de s'effondrer (en jeu) ; la mise est doublée sur un seul match."""
+    out = []
+    for name, rows in entries.items():
+        if name == "principal":
+            continue
+        by_market: dict[str, dict[str, dict]] = defaultdict(dict)
+        for e in _buys(rows, since):
+            d = e["data"]
+            slot = by_market[d["market_id"]].setdefault(d["token_id"], {"outcome": d["outcome"], "cost": 0.0, "ts": e["ts"],
+                                                                        "price": float(d["price"])})
+            slot["cost"] += _cost(d)
+        pairs = [v for v in by_market.values() if len(v) > 1 and all(x["price"] >= min_price for x in v.values())]
+        if pairs:
+            total = sum(x["cost"] for v in pairs for x in v.values())
+            out.append(_finding("deux_camps", A_REGARDER,
+                                f"{name} : {len(pairs)} marché(s) dont les deux camps sont achetés ({total:.0f} € misés)",
+                                "Le deuxième achat suit l'effondrement du premier favori : regarder si la stratégie doit "
+                                "refuser le camp opposé d'une position ouverte ou fermée.",
+                                [" ↔ ".join(f"{x['ts'][:16]} « {x['outcome']} » {x['cost']:.0f} €" for x in v.values())
+                                 for v in pairs]))
+    return out
+
+
+def achats_en_jeu(entries: dict[str, list[dict]], copied: set[str], since: datetime | None = None,
+                  min_trades: int = 10, share: float = 0.5) -> list[dict]:
+    """Part des achats faits après le coup d'envoi (champ `depuis_coup_d_envoi_h` du journal, ajouté le
+    20/10/2026). L'échéance Gamma d'un match est une date placeholder (jusqu'à +7 jours) : `horizon_hours`
+    ne dit rien de la date réelle de règlement (championne : horizon médian 165 h, règlement réel 2,2 h)."""
+    out = []
+    for name in sorted(copied & set(entries)):
+        timed = [float((e["data"].get("extra") or {})["depuis_coup_d_envoi_h"]) for e in _buys(entries[name], since)
+                 if (e["data"].get("extra") or {}).get("depuis_coup_d_envoi_h") not in (None, "")]
+        if len(timed) < min_trades:
+            continue
+        live = sum(1 for h in timed if h > 0)
+        if live / len(timed) > share:
+            out.append(_finding("achats_en_jeu", A_REGARDER,
+                                f"{name} : {live} achats sur {len(timed)} faits après le coup d'envoi",
+                                "La stratégie achète des favoris EN COURS de match, pas des « paris patients » : ses filtres "
+                                "d'échéance (`echeance_*`, `delai` du pareto) mesurent la date placeholder de Gamma, pas le "
+                                "temps réel ; utiliser `heures_min/heures_max` (coup d'envoi) pour découper par délai.", []))
+    return out
+
+
 # ------------------------------------------------------------------ ensemble
 
 
@@ -386,8 +481,10 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
     findings = (cycle_arrete(entries, now) + copie_fidele(entries, since) + mises(entries, max_principal, since=since)
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
+                + selection_multiple(entries, copied_by_principal(entries, now))
+                + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
-                + meme_pari_prix_differents(entries) + muettes(entries, active, now) + positions_oubliees(entries, now))
+                + meme_pari_prix_differents(entries) + muettes(entries, active, now) + positions_oubliees(entries, now, active=active))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 

@@ -99,6 +99,10 @@ def test_silent_strategies_forgotten_positions_and_stopped_cycle():
                "oubli_v1.0.0": _ledger(_buy(old, "x", 0.9, 10, horizon="2"), born=old)}
     assert enquete.muettes(entries, ["muette_v1.0.0", "oubli_v1.0.0"], NOW)[0]["exemples"] == ["muette_v1.0.0 (née le 2026-10-16)"]
     assert "oubli_v1.0.0" in enquete.positions_oubliees(entries, NOW)[0]["titre"]
+    # Une stratégie coupée (reversion, 20/10) et un teneur de marché (horizon = durée de la cote) ne sont pas « oubliés ».
+    entries["market_maker_v1.0.0"] = _ledger(_buy(old, "m", 0.5, 10, strategy="market_maker", horizon="2"), born=old)
+    assert [f["titre"].split(" :")[0] for f in enquete.positions_oubliees(entries, NOW)] == ["oubli_v1.0.0"]
+    assert enquete.positions_oubliees(entries, NOW, active=["autre_v1.0.0"]) == []
     stopped = enquete.cycle_arrete(entries, NOW)
     assert stopped and stopped[0]["gravite"] == enquete.GRAVE
 
@@ -120,3 +124,60 @@ def test_run_and_render_put_grave_findings_first():
     assert found and found[0]["gravite"] == enquete.GRAVE
     text = enquete.render(found, NOW)
     assert text.startswith("# Enquête automatique") and "[grave]" in text
+
+
+def _fav_ledger(wins, losses, strategy="champ", price=0.9, **kw):
+    """`wins` favoris gagnés, `losses` perdus, tous payés `price`."""
+    rows = []
+    for i in range(wins + losses):
+        t = NOW - timedelta(hours=40 - i)
+        rows += [_buy(t, f"{strategy}{i}", price, 10, strategy=strategy, **kw), _settle(t + timedelta(hours=1), f"{strategy}{i}", 1 if i < wins else 0)]
+    return _ledger(*rows)
+
+
+def test_best_of_many_with_a_small_lead_is_not_proof():
+    """20/10 : la championne (86 gagnés pour 79,8 attendus, z = 1,86) est la meilleure de ~35 stratégies :
+    le hasard seul donne ce z au meilleur de 35."""
+    entries = {"champ_v1.0.0": _fav_ledger(44, 6)}  # 44 gagnés pour 45 attendus : pas d'avance du tout
+    entries |= {f"autre{i}_v1.0.0": _fav_ledger(45, 5, strategy=f"autre{i}") for i in range(30)}
+    entries["chanceuse_v1.0.0"] = _fav_ledger(49, 1, strategy="chanceuse")  # z ≈ +1,9, mais 1 sur 32
+    found = enquete.selection_multiple(entries, {"chanceuse_v1.0.0", "champ_v1.0.0"})
+    assert [f["titre"].split(" :")[0] for f in found] == ["champ_v1.0.0", "chanceuse_v1.0.0"]
+    assert all(f["gravite"] == enquete.A_REGARDER and "choisie parmi 32" in f["titre"] for f in found)
+    # Seule, la même stratégie chanceuse (z ≈ 1,9, p = 0,03) serait un signal.
+    alone = enquete.selection_multiple({"chanceuse_v1.0.0": _fav_ledger(49, 1, strategy="chanceuse")}, {"chanceuse_v1.0.0"})
+    assert alone == []
+
+
+def test_both_sides_of_one_match_are_reported():
+    """17/10 : Team Falcons (0,918, −223 €) puis BetBoom (0,871) sur le même match ; 20/10 : Safiullin puis Shimabukuro."""
+    t = NOW - timedelta(hours=5)
+    first = _buy(t, "falcons", 0.918, 200, strategy="champ")
+    second = _buy(t + timedelta(hours=2), "betboom", 0.871, 25, strategy="champ")
+    first["data"]["market_id"] = second["data"]["market_id"] = "5787759"
+    one_side = _buy(t, "autre", 0.9, 10, strategy="champ")
+    found = enquete.deux_camps({"champ_v1.0.0": _ledger(first, second, one_side)}, NOW - timedelta(days=3))
+    assert len(found) == 1 and "1 marché(s)" in found[0]["titre"] and "↔" in found[0]["exemples"][0]
+    assert enquete.deux_camps({"champ_v1.0.0": _ledger(first, one_side)}) == []
+
+
+def test_live_buys_are_counted_from_the_kickoff_field():
+    """20/10 : 84 % des achats de la championne ont lieu après le coup d'envoi, malgré un « horizon » de 165 h."""
+    rows = []
+    for i in range(12):
+        row = _buy(NOW - timedelta(hours=20 - i), f"x{i}", 0.9, 10, strategy="champ", horizon="165")
+        row["data"]["extra"]["depuis_coup_d_envoi_h"] = "1.50" if i < 9 else "-3.00"
+        rows.append(row)
+    found = enquete.achats_en_jeu({"champ_v1.0.0": _ledger(*rows)}, {"champ_v1.0.0"})
+    assert len(found) == 1 and "9 achats sur 12" in found[0]["titre"]
+    # Anciens journaux sans le champ : rien à dire, pas d'erreur.
+    old = [_buy(NOW - timedelta(hours=20 - i), f"y{i}", 0.9, 10, strategy="champ") for i in range(12)]
+    assert enquete.achats_en_jeu({"champ_v1.0.0": _ledger(*old)}, {"champ_v1.0.0"}) == []
+
+
+def test_kickoff_hours_are_logged_with_the_buy():
+    from polymarket_agent import main
+    from types import SimpleNamespace
+    start = NOW - timedelta(hours=1.5)
+    assert main._depuis_coup_d_envoi(SimpleNamespace(game_start=start), NOW) == {"depuis_coup_d_envoi_h": "1.50"}
+    assert main._depuis_coup_d_envoi(SimpleNamespace(game_start=None), NOW) == {}
