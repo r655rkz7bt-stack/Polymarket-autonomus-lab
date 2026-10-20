@@ -469,10 +469,12 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
 
     # 4 bis. Marchés supplémentaires demandés par les stratégies (ex. échelles de seuils).
     eligible = [m for m in result.markets if m.eligible]
+    live = [m for m in eligible if not m.ended]  # marchés échus : seulement pour `wants_ended` (20/10/2026)
     known = {m.market_id for m in result.watchlist}
     max_extra = int(deps.settings["scanner"].get("max_extra_markets", 40))
     for strategy in {id(s): s for p in portfolios for s in p.strategies}.values():
-        for market in getattr(strategy, "candidates", lambda ms: [])(eligible):
+        pool = eligible if getattr(strategy, "wants_ended", False) else live
+        for market in getattr(strategy, "candidates", lambda ms: [])(pool):
             if market.market_id not in known and max_extra > 0:
                 result.watchlist.append(market)
                 known.add(market.market_id)
@@ -623,7 +625,8 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         portfolio.copied = {s.strategy_id: {"total": total, "buys": [], "orders": []} for s in portfolio.strategies}
     proposals, bought = [], set()
     for strategy in portfolio.strategies:
-        output = strategy.propose(watchlist, books, ledger.state, deps.limits, bucket, marks)
+        seen = watchlist if getattr(strategy, "wants_ended", False) else [m for m in watchlist if not m.ended]
+        output = strategy.propose(seen, books, ledger.state, deps.limits, bucket, marks)
         # Sorties (ventes) : seulement sur les positions ouvertes par cette stratégie.
         if hasattr(strategy, "exits"):
             mine = {t: p for t, p in ledger.state.positions.items() if p.strategy_id == strategy.strategy_id}

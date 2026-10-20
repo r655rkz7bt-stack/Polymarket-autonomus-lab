@@ -57,6 +57,9 @@ scanner:
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
   holding_pages: 1             # 19/10/2026 : 100 marchés longs de plus (récompense de détention, parking_politique)
   holding_max_horizon_days: 900
+  ended_pages: 1               # 20/10/2026 : 100 marchés échus depuis 1 à 72 h (apres_echeance)
+  ended_min_hours: 1
+  ended_max_hours: 72
   max_extra_markets: 320       # marchés demandés par les stratégies (météo 100, tenue de marché 30, politique 40, sport 30, crypto 30) ; doublons comptés une fois
 
 database:

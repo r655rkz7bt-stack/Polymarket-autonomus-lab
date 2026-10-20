@@ -655,8 +655,9 @@ def load_strategies(path: Path) -> list:
     except (OSError, yaml.YAMLError) as exc:
         raise StrategyConfigError(f"impossible de lire {path}") from exc
     from polymarket_agent.strategies_v2 import CLASSES as V2  # import tardif : évite une boucle
+    from polymarket_agent.strategies_v3 import CLASSES as V3  # vingt nouvelles pistes (20/10/2026)
 
-    classes = dict(STRATEGY_CLASSES, **V2)
+    classes = dict(STRATEGY_CLASSES, **V2, **V3)
     strategies = []
     for strategy_id, spec in raw.items():
         if not isinstance(spec, dict) or not spec.get("enabled"):

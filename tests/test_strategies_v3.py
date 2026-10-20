@@ -1,0 +1,164 @@
+"""Vingt nouvelles pistes (20/10/2026), lot A : dix stratégies sur les seules données de Polymarket."""
+
+from __future__ import annotations
+
+import json
+from datetime import timedelta
+from decimal import Decimal as D
+
+from conftest import KEY, NOW, ROOT, make_book, raw_market
+from polymarket_agent.ledger import Ledger
+from polymarket_agent.safety_controller import RiskLimits
+from polymarket_agent.sources.polymarket_gamma import parse_market
+from polymarket_agent.strategies_v3 import (ApresEcheance, ChocSansNouvelle, CoherenceMatch, DecroissanceTemps,
+                                            EchelleDates, ImplicationPolitique, MarcheNeuf, MarchesJumeaux,
+                                            OutsidersSurcotes, PaireOuiNon)
+
+LIMITS = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+_N = [0]
+
+
+def _state(tmp_path):
+    _N[0] += 1
+    return Ledger.create(tmp_path / f"l{_N[0]}.jsonl", KEY, tmp_path / f"l{_N[0]}.lock", "1000", now=NOW).state
+
+
+def _s(cls, **params):
+    return cls("1.0.0", "2026-10-20", {k: D(str(v)) for k, v in params.items()})
+
+
+def _m(mid, yes="Y", no="N", **kw):
+    return parse_market(raw_market(mid, yes_token=f"{mid}{yes}", no_token=f"{mid}{no}", **kw))
+
+
+def _books(*pairs):
+    """pairs : (token, meilleur acheteur, meilleur vendeur)."""
+    return {t: make_book(t, bids=((str(b), "1000"),), asks=((str(a), "1000"),)) for t, b, a in pairs}
+
+
+ARB = {"min_net_edge": 0.005, "stake_fraction": 0.1, "max_proposals_per_cycle": 2}
+
+
+def test_time_decay_buys_no_when_yes_has_not_melted(tmp_path):
+    s = _s(DecroissanceTemps, yes_min=0.03, yes_max=0.35, min_hours=12, max_hours=720, min_gap=0.01, max_spike=2,
+           uncertainty=0.005, min_net_edge=0.003, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    m = _m("d", question="Will X resign by October 21?", end=NOW + timedelta(hours=24), yes_price="0.10")
+    m.yes_price_6h_ago = 0.10  # même prix qu'il y a 6 h alors que 20 % du temps restant est passé
+    books = _books(("dY", "0.09", "0.10"), ("dN", "0.90", "0.905"))
+    out = s.propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert len(out.proposals) == 1 and out.proposals[0].outcome == "No"
+    m.yes_price_6h_ago = 0.20  # le OUI a déjà fondu de 0,20 à 0,10 : rien
+    assert not s.propose([m], books, _state(tmp_path), LIMITS, "b1").proposals
+    other = _m("o", question="Will X resign?", end=NOW + timedelta(hours=24))  # pas d'échéance dans le libellé
+    other.yes_price_6h_ago = 0.1
+    assert not s.propose([other], _books(("oY", "0.09", "0.10"), ("oN", "0.9", "0.905")), _state(tmp_path), LIMITS, "b1").proposals
+
+
+def test_date_ladder_coherence_and_twins_are_arbitrages(tmp_path):
+    near = _m("n", question="Will X happen by June 30?", end=NOW + timedelta(days=10), event_id="e1")
+    far = _m("f", question="Will X happen by December 31?", end=NOW + timedelta(days=100), event_id="e1")
+    # OUI(décembre) 0,30 + NON(juin) 0,60 = 0,90 < 1 : la date proche vaut plus que la lointaine.
+    books = _books(("fY", "0.29", "0.30"), ("fN", "0.69", "0.70"), ("nY", "0.39", "0.40"), ("nN", "0.59", "0.60"))
+    out = _s(EchelleDates, **ARB).propose([near, far], books, _state(tmp_path), LIMITS, "b1")
+    assert sorted((p.market_id, p.outcome) for p in out.proposals) == [("f", "Yes"), ("n", "No")]
+    fair = _books(("fY", "0.44", "0.45"), ("fN", "0.55", "0.56"), ("nY", "0.29", "0.30"), ("nN", "0.69", "0.70"))
+    assert not _s(EchelleDates, **ARB).propose([near, far], fair, _state(tmp_path), LIMITS, "b1").proposals
+    # Jumeaux : même question, deux marchés.
+    a = _m("a", question="Will X happen by June 30?", end=NOW + timedelta(days=10), event_id="e1")
+    b = _m("b", question="Will X happen by June 30?", end=NOW + timedelta(days=10), event_id="e2")
+    tw = _books(("aY", "0.29", "0.30"), ("aN", "0.69", "0.70"), ("bY", "0.39", "0.40"), ("bN", "0.59", "0.60"))
+    out = _s(MarchesJumeaux, **ARB).propose([a, b], tw, _state(tmp_path), LIMITS, "b1")
+    assert sorted((p.market_id, p.outcome) for p in out.proposals) == [("a", "Yes"), ("b", "No")]
+
+
+def test_spread_implies_winning_and_president_implies_nominee(tmp_path):
+    teams = json.dumps(["Titans", "Colts"])
+    win = _m("w", question="Titans vs. Colts", outcomes=teams, event_id="g", sportsMarketType="moneyline")
+    spread = _m("s", question="Spread: Titans (-3.5)", outcomes=teams, event_id="g", sportsMarketType="spreads")
+    # Victoire des Titans 0,55 + Colts au handicap 0,40 = 0,95 < 1.
+    books = _books(("wY", "0.54", "0.55"), ("wN", "0.44", "0.45"), ("sY", "0.59", "0.60"), ("sN", "0.39", "0.40"))
+    out = _s(CoherenceMatch, **ARB).propose([win, spread], books, _state(tmp_path), LIMITS, "b1")
+    assert sorted((p.market_id, p.outcome) for p in out.proposals) == [("s", "Colts"), ("w", "Titans")]
+    pres = _m("p", question="Will Gavin Newsom win the 2028 US Presidential Election?", end=NOW + timedelta(days=700))
+    nom = _m("q", question="Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+             end=NOW + timedelta(days=600))
+    books = _books(("pY", "0.29", "0.30"), ("pN", "0.69", "0.70"), ("qY", "0.24", "0.25"), ("qN", "0.74", "0.75"))
+    out = _s(ImplicationPolitique, **dict(ARB, min_net_edge=0.01)).propose([pres, nom], books, _state(tmp_path), LIMITS, "b1")
+    assert sorted((p.market_id, p.outcome) for p in out.proposals) == [("p", "No"), ("q", "Yes")]
+
+
+def test_yes_plus_no_below_one_and_overpriced_longshots(tmp_path):
+    m = _m("x")
+    out = _s(PaireOuiNon, **ARB).propose([m], _books(("xY", "0.47", "0.48"), ("xN", "0.47", "0.48")),
+                                         _state(tmp_path), LIMITS, "b1")
+    assert sorted(p.outcome for p in out.proposals) == ["No", "Yes"]
+    assert not _s(PaireOuiNon, **ARB).propose([m], _books(("xY", "0.49", "0.50"), ("xN", "0.49", "0.51")),
+                                              _state(tmp_path), LIMITS, "b1").proposals
+    s = _s(OutsidersSurcotes, min_outcomes=5, min_overround=0.03, yes_min=0.02, yes_max=0.15, longshot_factor=0.85,
+           uncertainty=0.002, min_net_edge=0.003, max_extra_ticks=1, max_proposals_per_cycle=3, kelly_fraction=0.25)
+    mids = [0.40, 0.30, 0.20, 0.12, 0.08]  # somme 1,10
+    ms = [_m(f"c{i}", negRisk=True, event_id="champ") for i in range(5)]
+    books = {}
+    for i, mid in enumerate(mids):
+        books.update(_books((f"c{i}Y", f"{mid - 0.005:.3f}", f"{mid + 0.005:.3f}"),
+                            (f"c{i}N", f"{1 - mid - 0.005:.3f}", f"{1 - mid + 0.005:.3f}")))
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert {p.market_id for p in out.proposals} == {"c3", "c4"} and all(p.outcome == "No" for p in out.proposals)
+
+
+def test_young_markets_ended_markets_and_shocks_without_news(tmp_path):
+    young = _m("y", createdAt=(NOW - timedelta(hours=3)).isoformat())
+    old = _m("o", createdAt=(NOW - timedelta(days=10)).isoformat())
+    s = _s(MarcheNeuf, max_age_hours=24, fav_min=0.6, fav_max=0.88, extremize=1.3, uncertainty=0.005, min_net_edge=0.01,
+           max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    books = _books(("yY", "0.69", "0.70"), ("yN", "0.30", "0.31"), ("oY", "0.69", "0.70"), ("oN", "0.30", "0.31"))
+    out = s.propose([young, old], books, _state(tmp_path), LIMITS, "b1")
+    assert [(p.market_id, p.outcome) for p in out.proposals] == [("y", "Yes")]
+    ended = _m("e", end=NOW - timedelta(hours=3))
+    ended.ended = True
+    a = _s(ApresEcheance, fav_min=0.94, fav_max=0.985, est=0.99, uncertainty=0.003, min_net_edge=0.002,
+           max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    assert a.wants_ended
+    eb = _books(("eY", "0.955", "0.96"), ("eN", "0.04", "0.045"))
+    assert [p.outcome for p in a.propose([ended], eb, _state(tmp_path), LIMITS, "b1").proposals] == ["Yes"]
+    ended.uma_statuses = ("disputed",)
+    assert not a.propose([ended], eb, _state(tmp_path), LIMITS, "b1").proposals
+    c = _s(ChocSansNouvelle, min_move=0.08, reversion=0.5, max_mentions=3, uncertainty=0.005, min_net_edge=0.01,
+           take_profit=0.03, stop_loss=0.05, max_hold_hours=24, max_extra_ticks=1, max_proposals_per_cycle=2,
+           kelly_fraction=0.25)
+    jump = _m("j")
+    jump.yes_price_1h_ago = 0.40  # bond à 0,55 sans nouvelle → retour partiel vers 0,475 : le NON
+    jb = _books(("jY", "0.545", "0.555"), ("jN", "0.445", "0.455"))
+    assert [p.outcome for p in c.propose([jump], jb, _state(tmp_path), LIMITS, "b1").proposals] == ["No"]
+    from polymarket_agent.social_intelligence import MarketIntel
+    jump.intel = MarketIntel("j", mentions_24h=12, spike=3.0, independent_sources=4, stance=0.5)
+    assert not c.propose([jump], jb, _state(tmp_path), LIMITS, "b1").proposals  # le mouvement a une nouvelle
+
+
+def test_new_gamma_fields_and_ended_markets_stay_away_from_other_strategies():
+    m = parse_market(raw_market("g", groupItemTitle="200-219", createdAt="2026-10-14T10:00:00Z", negRiskOther=True,
+                                umaResolutionStatuses='["proposed"]', events=[{"id": "e", "slug": "elon-tweets"}]))
+    assert m.group_title == "200-219" and m.created_at.year == 2026 and m.neg_risk_other
+    assert m.uma_statuses == ("proposed",) and m.event_slug == "elon-tweets" and not m.ended
+    from polymarket_agent.market_scanner import scan
+
+    class Gamma:
+        def __init__(self):
+            self.calls = 0
+
+        def list_markets(self, **kw):
+            self.calls += 1
+            return [raw_market("vivant")] if self.calls == 1 else [raw_market("echu", end=NOW - timedelta(hours=5))]
+    cfg = {"page_size": 100, "max_pages": 1, "min_horizon_minutes": 30, "max_horizon_hours": 72, "min_liquidity": 1000,
+           "min_volume_24h": 1000, "max_spread": 0.05, "watchlist_size": 30, "ended_pages": 1, "ended_min_hours": 1,
+           "ended_max_hours": 72}
+    r = scan(Gamma(), NOW, cfg)
+    ended = next(x for x in r.markets if x.market_id == "echu")
+    assert ended.ended and ended.eligible and [x.market_id for x in r.watchlist] == ["vivant"]
+
+
+def test_all_twenty_strategies_lot_a_load_from_the_repository_config():
+    from polymarket_agent.strategy_engine import load_strategies
+    ids = {s.strategy_id for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    assert {"decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
+            "outsiders_surcotes", "marche_neuf", "apres_echeance", "marches_jumeaux", "choc_sans_nouvelle"} <= ids

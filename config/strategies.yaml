@@ -1667,3 +1667,147 @@ crypto_threshold_non:
     max_quote_age_minutes: {value: 20, min: 1, max: 120}
     min_hours:       {value: 0.5, min: 0.1, max: 72}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+# ============================================================================ vingt nouvelles pistes
+# Demande d'Etienne (20/10/2026) : « 20 stratégies différentes de celles qu'on a déjà, qui auront
+# elles-mêmes des filles petit à petit ». Recherche et sources : experiments/vingt_pistes.md.
+# Lot A (strategies_v3.py) : seulement les données de Polymarket. Mises prudentes (kelly 0,25)
+# tant que rien n'est prouvé ; l'entonnoir 80/20 découpera celles qui grandissent.
+
+decroissance_temps:
+  explication: "« Est-ce que ça arrivera d'ici le 31 ? » : si rien ne se passe, le OUI doit baisser chaque jour ; s'il ne baisse pas assez, on achète le NON."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    yes_min:        {value: 0.03, min: 0.0, max: 0.5}
+    yes_max:        {value: 0.35, min: 0.0, max: 0.9}
+    min_hours:      {value: 12, min: 1, max: 720}
+    max_hours:      {value: 720, min: 6, max: 5000}
+    min_gap:        {value: 0.01, min: 0.0, max: 0.2}
+    max_spike:      {value: 2.0, min: 1.0, max: 10.0}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.2}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+echelle_dates:
+  explication: "« D'ici juin » ne peut pas valoir plus que « d'ici décembre » : quand c'est le cas, on achète les deux côtés qui gagnent à coup sûr."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.1}
+    stake_fraction: {value: 0.1, min: 0.0, max: 0.5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+
+coherence_match:
+  explication: "Gagner de plus de 7 points, c'est d'abord gagner : si le handicap coûte plus cher que la victoire, on achète la paire qui gagne à coup sûr."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.1}
+    stake_fraction: {value: 0.1, min: 0.0, max: 0.5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+
+implication_politique:
+  explication: "Pour être élu président il faut être le candidat de son parti : si « président » coûte plus que « candidat », on achète la paire gagnante."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.1}
+    stake_fraction: {value: 0.05, min: 0.0, max: 0.5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+
+paire_oui_non:
+  explication: "Le OUI ou le NON gagne toujours : si les deux ensemble coûtent moins de 1 €, on achète les deux."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:   {value: 0.003, min: 0.0, max: 0.1}
+    stake_fraction: {value: 0.1, min: 0.0, max: 0.5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+
+outsiders_surcotes:
+  explication: "Quand toutes les chances d'un « qui va gagner ? » font plus de 100 %, ce sont les outsiders qui sont trop chers : on parie qu'ils perdent."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_outcomes:   {value: 5, min: 3, max: 100}
+    min_overround:  {value: 0.03, min: 0.0, max: 0.5}
+    yes_min:        {value: 0.02, min: 0.0, max: 0.5}
+    yes_max:        {value: 0.15, min: 0.0, max: 0.5}
+    longshot_factor: {value: 0.85, min: 0.3, max: 1.0}   # biais des longs tirs : l'outsider vaut 15 % de moins
+    uncertainty:    {value: 0.005, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.2}
+    max_candidates: {value: 120, min: 0, max: 300}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+marche_neuf:
+  explication: "Un marché tout neuf hésite trop : si un camp est déjà favori, on parie qu'il l'est encore plus que son prix ne le dit."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    max_age_hours:  {value: 24, min: 1, max: 168}
+    fav_min:        {value: 0.60, min: 0.5, max: 0.95}
+    fav_max:        {value: 0.88, min: 0.5, max: 0.99}
+    extremize:      {value: 1.15, min: 1.0, max: 2.0}    # pente mesurée sur Polymarket : 1,11 (Princeton)
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+apres_echeance:
+  explication: "La date est passée et le résultat est presque sûr, mais le marché n'est pas encore réglé : on achète le gagnant presque certain."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    fav_min:        {value: 0.94, min: 0.5, max: 0.99}    # 20/10 : à 0,90 après l'échéance, le doute est réel (Kiev)
+    fav_max:        {value: 0.985, min: 0.5, max: 0.999}
+    est:            {value: 0.985, min: 0.5, max: 0.999}
+    uncertainty:    {value: 0.004, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.003, min: 0.0, max: 0.2}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.15, min: 0.0, max: 2.0}
+
+marches_jumeaux:
+  explication: "La même question posée deux fois à deux prix différents : on achète le OUI le moins cher et le NON de l'autre, ça gagne à coup sûr."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.1}
+    stake_fraction: {value: 0.1, min: 0.0, max: 0.5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+
+choc_sans_nouvelle:
+  explication: "Le prix a sauté d'un coup sans aucune nouvelle : c'est souvent un gros parieur seul, on parie sur un retour en arrière et on revend vite."
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_move:       {value: 0.08, min: 0.02, max: 0.5}
+    reversion:      {value: 0.4, min: 0.0, max: 1.0}
+    max_mentions:   {value: 3, min: 0, max: 100}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    take_profit:    {value: 0.03, min: 0.0, max: 0.5}
+    stop_loss:      {value: 0.05, min: 0.0, max: 0.5}
+    max_hold_hours: {value: 24, min: 1, max: 240}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}

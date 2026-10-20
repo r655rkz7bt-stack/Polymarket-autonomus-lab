@@ -127,11 +127,26 @@ def parse_market(raw: dict) -> MarketInfo:
         game_start=_date(raw.get("gameStartTime")),
         sports_market_type=str(raw["sportsMarketType"]) if raw.get("sportsMarketType") else None,
         holding_rewards=raw.get("holdingRewardsEnabled") is True,
+        group_title=str(raw.get("groupItemTitle") or ""),
+        created_at=_date(raw.get("createdAt")),
+        event_slug=str(((raw.get("events") or [{}])[0] or {}).get("slug") or "") if isinstance(raw.get("events"), list) else "",
+        neg_risk_other=raw.get("negRiskOther") is True,
+        uma_statuses=_statuses(raw.get("umaResolutionStatuses")),
         rewards_min_size=_dec(raw.get("rewardsMinSize")),
         rewards_max_spread=_dec(raw.get("rewardsMaxSpread")),
         rewards_daily_rate=sum((_dec(r.get("rewardsDailyRate")) or Decimal("0")
                                 for r in (raw.get("clobRewards") or []) if isinstance(r, dict)), Decimal("0")),
     )
+
+
+def _statuses(raw) -> tuple[str, ...]:
+    """umaResolutionStatuses : liste JSON (souvent encodée en texte) ; vide si illisible."""
+    if isinstance(raw, str):
+        try:
+            raw = json.loads(raw)
+        except ValueError:
+            return ()
+    return tuple(str(s).lower() for s in raw) if isinstance(raw, list) else ()
 
 
 class GammaClient:

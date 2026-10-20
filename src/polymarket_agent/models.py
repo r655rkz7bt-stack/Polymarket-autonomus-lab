@@ -70,6 +70,15 @@ class MarketInfo:
     # "child_moneyline" = une manche/carte…) ; None hors sport ou si Gamma ne le dit pas.
     sports_market_type: str | None = None
     holding_rewards: bool = False  # Gamma holdingRewardsEnabled : récompense de détention (4 %/an)
+    # 20/10/2026 (20 nouvelles stratégies) : libellé de l'issue dans son événement (« 50+ bps »,
+    # « 200-219 »…), création du marché, adresse de l'événement, issue « Autre » d'un événement
+    # augmenté, états de la résolution UMA (« proposed », « disputed »…).
+    group_title: str = ""
+    created_at: datetime | None = None
+    event_slug: str = ""
+    neg_risk_other: bool = False
+    uma_statuses: tuple[str, ...] = ()
+    ended: bool = False  # échéance passée (scanner, ended_pages) : seulement pour les stratégies `wants_ended`
 
     @property
     def data_ok(self) -> bool:
