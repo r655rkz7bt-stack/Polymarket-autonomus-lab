@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 1984,
+  "principal": 1985,
   "fantome:calibration_patiente_v1.0.0": 1675,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1671,
@@ -126,9 +126,9 @@
  "verifiees": 4991,
  "non_verifiables": 0,
  "anomalies": [],
- "derniere_execution": "2026-10-21T08:15:38+00:00",
+ "derniere_execution": "2026-10-21T08:18:19+00:00",
  "dernier_seq_reglements": {
-  "principal": 1984,
+  "principal": 1985,
   "fantome:calibration_patiente_v1.0.0": 1675,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1671,
