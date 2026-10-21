@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2005,
+  "principal": 2006,
   "fantome:calibration_patiente_v1.0.0": 1678,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1674,
@@ -14,7 +14,7 @@
   "fantome:market_structure_patiente_v1.0.0": 716,
   "fantome:temperature_floor_v1.0.0": 942,
   "fantome:meteo_prevision_v1.0.0": 1274,
-  "fantome:meteo_prevision_patiente_v1.0.0": 1595,
+  "fantome:meteo_prevision_patiente_v1.0.0": 1597,
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1369,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
@@ -126,9 +126,9 @@
  "verifiees": 5057,
  "non_verifiables": 0,
  "anomalies": [],
- "derniere_execution": "2026-10-21T09:48:26+00:00",
+ "derniere_execution": "2026-10-21T09:53:17+00:00",
  "dernier_seq_reglements": {
-  "principal": 2005,
+  "principal": 2006,
   "fantome:calibration_patiente_v1.0.0": 1678,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1674,
@@ -142,7 +142,7 @@
   "fantome:social_sentiment_v1.0.0": 907,
   "fantome:temperature_floor_v1.0.0": 942,
   "fantome:meteo_prevision_v1.0.0": 1274,
-  "fantome:meteo_prevision_patiente_v1.0.0": 1595,
+  "fantome:meteo_prevision_patiente_v1.0.0": 1597,
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1369,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
@@ -248,8 +248,8 @@
   "fantome:nf_sport_football_v1.0.0": 38,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 42,
   "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 39,
-  "fantome:compteur_tweets_non_patiente_v1.0.0": 8,
+  "fantome:compteur_tweets_non_patiente_v1.0.0": 10,
   "fantome:mots_prononces_patiente_v1.0.0": 5
  },
- "reglements_verifies": 2176
+ "reglements_verifies": 2177
 }
