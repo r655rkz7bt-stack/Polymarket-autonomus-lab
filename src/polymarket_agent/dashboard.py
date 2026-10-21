@@ -506,7 +506,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "audit": audit,
         "genere_le": now.isoformat(timespec="seconds"),
         "capital": capital,
-        "courbe": _downsample(curve),
+        "courbe": _downsample(curve, 600),  # 21/10/2026 : assez de points pour la vue « 24 h »
         "paliers": state.milestones,
         "capital_initial": float(state.initial_capital),
         "arene": arena,

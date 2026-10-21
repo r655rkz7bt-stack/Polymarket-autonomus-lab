@@ -226,6 +226,30 @@ svg text { font-family: var(--mono); }
   border-radius: 10px; padding: 7px 11px; font-size: 0.8rem; color: var(--ink-2); box-shadow: 0 8px 24px rgba(0,0,0,0.45);
   white-space: nowrap; z-index: 2; }
 .tip b { display: block; color: var(--ink); font: 600 0.95rem var(--mono); }
+.tip span { display: block; }
+
+/* --- courbe du capital (21/10/2026, demande d'Etienne : sous le cœur, avec valeurs et tendances).
+   Tendances : ambre = moyenne courte (6 h), violet = moyenne longue (2 j) ; palette validée sur le
+   fond des cartes (daltonisme compris) ; trait plein / pointillé et étiquettes : jamais la couleur seule. */
+:root { --trend-short: #c98500; --trend-long: #9085e9; }
+.cap-stats { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(128px, 100%), 1fr)); }
+@media (max-width: 600px) { .cap-stats { grid-template-columns: 1fr 1fr; } .stat.main { grid-column: 1 / -1; } }
+.stat { background: var(--raised); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; min-width: 0; }
+.stat .k { font: 500 0.66rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.stat .v { font: 600 1.25rem var(--mono); color: var(--ink); margin-top: 4px; letter-spacing: -0.02em; white-space: nowrap; }
+.stat .s { font: 500 0.74rem var(--mono); color: var(--ink-2); margin-top: 2px; overflow-wrap: anywhere; }
+.stat .s .up, .stat .s .down, .stat .s .flat { white-space: normal; }
+.stat.main { border-color: var(--line-2); }
+.stat.main .v { font-size: 1.6rem; }
+.cap-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin: 16px 0 6px; }
+.ranges { display: inline-flex; background: var(--raised); border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; }
+.ranges button { all: unset; cursor: pointer; font: 500 0.76rem var(--mono); color: var(--muted); padding: 5px 11px; border-radius: 999px; }
+.ranges button:hover { color: var(--ink); }
+.ranges button[aria-pressed="true"] { color: var(--ink); background: var(--line-2); }
+.ranges button:focus-visible { outline: 2px solid var(--ink-2); outline-offset: 1px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font: 500 0.74rem var(--mono); color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.legend svg { width: 22px; height: 8px; flex: none; }
 
 /* --- arène : liste façon Polymarket (niveau, volume, 7 j, courbe) */
 .rows { display: grid; }
@@ -369,8 +393,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
 
   <section id="capital" class="card">
     <div class="head"><h2>Capital principal</h2><span class="kicker" id="chart-kicker"></span></div>
-    <p class="note" id="chart-note"></p>
-    <div class="chart" id="chart" style="margin-top:14px"></div>
+    <div class="cap-stats" id="cap-stats"></div>
+    <div class="cap-bar"><div class="ranges" id="chart-ranges" role="group" aria-label="Période affichée"></div>
+      <div class="legend" id="chart-legend"></div></div>
+    <div class="chart" id="chart"></div>
+    <p class="note" id="chart-note" style="margin-top:10px"></p>
     <details><summary>Voir les valeurs</summary><div class="scroll" id="chart-table"></div></details>
   </section>
 
@@ -566,7 +593,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
     return box; }
   function tooltip(box) { var tip = el("div", "tip"); tip.hidden = true; box.appendChild(tip);
     return { show: function (x, y, title, sub) { tip.textContent = ""; tip.appendChild(el("b", null, title));
-        if (sub) tip.appendChild(el("span", null, sub)); tip.hidden = false;
+        [].concat(sub || []).forEach(function (line) { tip.appendChild(el("span", null, line)); }); tip.hidden = false;
         var w = box.clientWidth, tw = tip.offsetWidth;
         tip.style.left = Math.max(0, Math.min(x + 12, w - tw)) + "px"; tip.style.top = Math.max(0, y - 54) + "px"; },
       hide: function () { tip.hidden = true; } }; }
@@ -1074,62 +1101,170 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   })();
 
   // ---------------------------------------------------------------- capital principal
+  // Courbe du capital (21/10/2026, demande d'Etienne) : sous le cœur, avec le plus haut, le plus bas,
+  // les variations en %, et deux tendances (moyennes mobiles) : courte 6 h, longue 2 jours.
   (function chart() {
-    var pts = (D.courbe || []).map(function (p) { return [new Date(p[0]).getTime(), p[1]]; });
-    document.getElementById("chart-kicker").textContent = "perte max. " + fmt(C.drawdown_max * 100, 1) + " %";
-    document.getElementById("chart-note").textContent = "Capital total estimé à chaque battement (ligne grise : capital de départ). " +
-      "Le palier suivant se franchit avec le capital réalisé, jamais avec les gains latents.";
-    var box = document.getElementById("chart");
-    if (pts.length < 2) { box.appendChild(el("p", "empty", "Pas encore assez de cycles pour tracer une courbe.")); return; }
-    var W = Math.max(300, Math.round(box.clientWidth)), Hh = W < 600 ? 220 : 300, L = 58, R = 14, T = 18, B = 30;
-    var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
-    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
-    var lo = Math.min(Math.min.apply(null, ys), initial), hi = Math.max(Math.max.apply(null, ys), initial);
-    var showTarget = target <= hi + (hi - lo) * 0.5 + 1; if (showTarget) hi = Math.max(hi, target);
-    var pad = (hi - lo) * 0.1 || 10; lo -= pad; hi += pad;
-    var sx = function (x) { return L + (x - x0) / (x1 - x0 || 1) * (W - L - R); };
-    var sy = function (y) { return T + (hi - y) / (hi - lo) * (Hh - T - B); };
-    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", tabindex: "0",
-      "aria-label": "Courbe du capital total estimé" }, box);
-    for (var i = 0; i <= 4; i++) { var v = lo + (hi - lo) * i / 4;
-      svgEl("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--line)" }, svg);
-      svgEl("text", { x: L - 8, y: sy(v) + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)",
-        "font-family": "var(--mono)" }, svg, fmt(v, 0)); }
+    var all = (D.courbe || []).map(function (p) { return [new Date(p[0]).getTime(), Number(p[1])]; })
+      .filter(function (p) { return isFinite(p[0]) && isFinite(p[1]); });
+    var box = document.getElementById("chart"), stats = document.getElementById("cap-stats");
+    document.getElementById("chart-note").textContent = "Capital total estimé à chaque battement (positions au prix du carnet). " +
+      "Ligne pointillée grise : capital de départ. Tendance courte : moyenne des 6 dernières heures ; tendance longue : " +
+      "moyenne des 2 derniers jours. Le palier se franchit avec le capital réalisé, jamais avec les gains latents.";
+    if (all.length < 2) { box.appendChild(el("p", "empty", "Pas encore assez de cycles pour tracer une courbe.")); return; }
+    var HOUR = 3600000, SHORT = 6 * HOUR, LONG = 48 * HOUR;
+    // Moyenne mobile sur une fenêtre de temps (pas un nombre de points : les battements ne sont pas réguliers).
+    function moving(win) { var out = [], sum = 0, j = 0;
+      for (var i = 0; i < all.length; i++) { sum += all[i][1];
+        while (all[j][0] <= all[i][0] - win) { sum -= all[j][1]; j++; }
+        out.push(sum / (i - j + 1)); }
+      return out; }
+    var maS = moving(SHORT), maL = moving(LONG);
     var stamp = function (t) { return new Date(t).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) + " " +
       new Date(t).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); };
-    [x0, (x0 + x1) / 2, x1].forEach(function (t, k) {
-      svgEl("text", { x: sx(t), y: Hh - 8, "text-anchor": ["start", "middle", "end"][k], "font-size": 11,
-        fill: "var(--muted)", "font-family": "var(--mono)" }, svg, stamp(t)); });
-    svgEl("line", { x1: L, x2: W - R, y1: sy(initial), y2: sy(initial), stroke: "var(--faint)" }, svg);
-    if (showTarget) svgEl("text", { x: W - R, y: sy(target) - 6, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)",
-      "font-family": "var(--mono)" }, svg, "palier " + fmt(target, 0));
-    else svgEl("text", { x: W - R, y: T - 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)",
-      "font-family": "var(--mono)" }, svg, "palier " + fmt(target, 0) + " ↑");
-    var d = pts.map(function (p, k) { return (k ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ");
-    svgEl("path", { d: d + " L" + sx(x1) + " " + (Hh - B) + " L" + sx(x0) + " " + (Hh - B) + " Z",
-      fill: perf >= 0 ? "var(--blue-soft)" : "var(--red-soft)" }, svg);
-    svgEl("path", { d: d, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round",
-      "stroke-linecap": "round" }, svg);
-    var last = pts[pts.length - 1];
-    svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2 }, svg);
-    var hair = svgEl("line", { y1: T, y2: Hh - B, stroke: "var(--line-2)", visibility: "hidden" }, svg);
-    var dot = svgEl("circle", { r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2, visibility: "hidden" }, svg);
-    var tip = tooltip(box), cur = pts.length - 1;
-    function show(k) { var p = pts[k], X = sx(p[0]), Y = sy(p[1]), s = svg.getBoundingClientRect().width / W;
-      hair.setAttribute("x1", X); hair.setAttribute("x2", X); hair.setAttribute("visibility", "visible");
-      dot.setAttribute("cx", X); dot.setAttribute("cy", Y); dot.setAttribute("visibility", "visible");
-      tip.show(X * s, Y * s, fmt(p[1], 2), stamp(p[0])); }
-    function hide() { tip.hide(); hair.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); }
-    function nearest(cx) { var r = svg.getBoundingClientRect(), X = (cx - r.left) / r.width * W, b = 0;
-      pts.forEach(function (p, k) { if (Math.abs(sx(p[0]) - X) < Math.abs(sx(pts[b][0]) - X)) b = k; }); return b; }
-    svg.addEventListener("pointermove", function (e) { cur = nearest(e.clientX); show(cur); });
-    svg.addEventListener("pointerleave", hide); svg.addEventListener("focus", function () { show(cur); });
-    svg.addEventListener("blur", hide);
-    svg.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") cur = Math.max(0, cur - 1);
-      else if (e.key === "ArrowRight") cur = Math.min(pts.length - 1, cur + 1); else return; e.preventDefault(); show(cur); });
+    var pct = function (v, ref) { return ref ? (v / ref - 1) * 100 : 0; };
+    function at(series, t) { var k = 0; while (k + 1 < all.length && all[k + 1][0] <= t) k++; return all[k][0] <= t ? series[k] : null; }
+    // Tendance : variation de la moyenne sur sa propre fenêtre (−6 h pour la courte, −2 j pour la longue).
+    function trend(series, win) { var now = all[all.length - 1][0], before = at(series, now - win);
+      return before === null || all[0][0] > now - win ? null : pct(series[series.length - 1], before); }
+    var tS = trend(maS, SHORT), tL = trend(maL, LONG);
+    var RANGES = [["24 h", 24 * HOUR], ["3 j", 72 * HOUR], ["7 j", 168 * HOUR], ["Tout", 0]];
+    var choice = "Tout";
+    try { choice = localStorage.getItem("courbe-periode") || "Tout"; } catch (e) { /* stockage indisponible */ }
+    var bar = document.getElementById("chart-ranges");
+    RANGES.forEach(function (r) { var b = el("button", null, r[0]); b.type = "button";
+      b.addEventListener("click", function () { choice = r[0];
+        try { localStorage.setItem("courbe-periode", choice); } catch (e) { /* stockage indisponible */ }
+        draw(); });
+      bar.appendChild(b); });
+    // Légende (toujours là, plus les étiquettes au bout des lignes) : la couleur n'est jamais seule.
+    var legend = document.getElementById("chart-legend");
+    [["capital", "var(--ink)", ""], ["tendance courte · 6 h", "var(--trend-short)", ""],
+     ["tendance longue · 2 j", "var(--trend-long)", "5 4"], ["départ " + fmt(initial, 0), "var(--faint)", "2 3"]].forEach(function (l) {
+      var span = el("span"), sw = svgEl("svg", { viewBox: "0 0 22 8", "aria-hidden": "true" }, span);
+      svgEl("line", { x1: 1, x2: 21, y1: 4, y2: 4, stroke: l[1], "stroke-width": 2, "stroke-linecap": "round",
+        "stroke-dasharray": l[2] || "none" }, sw);
+      span.appendChild(document.createTextNode(l[0])); legend.appendChild(span); });
+
+    function tile(k, v, sub, main) { var t = el("div", "stat" + (main ? " main" : "")); t.appendChild(el("div", "k", k));
+      var vv = el("div", "v"); if (v instanceof Node) vv.appendChild(v); else vv.textContent = v; t.appendChild(vv);
+      var s = el("div", "s");
+      (sub || []).forEach(function (x) { s.appendChild(x instanceof Node ? x : document.createTextNode(x)); });
+      t.appendChild(s); stats.appendChild(t); }
+    function draw() {
+      Array.prototype.forEach.call(bar.children, function (b) { b.setAttribute("aria-pressed", b.textContent === choice ? "true" : "false"); });
+      var span = RANGES.filter(function (r) { return r[0] === choice; })[0][1], t1 = all[all.length - 1][0];
+      var from = span ? t1 - span : -Infinity, idx = [];
+      all.forEach(function (p, k) { if (p[0] >= from) idx.push(k); });
+      if (idx.length < 2) idx = [all.length - 2, all.length - 1];
+      var pts = idx.map(function (k) { return all[k]; }), first = pts[0], last = pts[pts.length - 1];
+      var iHi = 0, iLo = 0;
+      pts.forEach(function (p, k) { if (p[1] > pts[iHi][1]) iHi = k; if (p[1] < pts[iLo][1]) iLo = k; });
+      var peak = -Infinity, dd = 0;
+      pts.forEach(function (p) { peak = Math.max(peak, p[1]); dd = Math.max(dd, peak > 0 ? (peak - p[1]) / peak : 0); });
+      // --- chiffres
+      stats.textContent = "";
+      tile("Maintenant", fmt(last[1], 2), [delta(pct(last[1], initial), 1, " %"), " depuis le départ"], true);
+      tile(choice === "Tout" ? "Depuis le début" : "Sur " + choice, (last[1] - first[1] >= 0 ? "+" : "−") + fmt(Math.abs(last[1] - first[1]), 2),
+        [delta(pct(last[1], first[1]), 1, " %")]);
+      tile("Plus haut", fmt(pts[iHi][1], 2), [stamp(pts[iHi][0]) + " · ", delta(pct(pts[iHi][1], initial), 1, " %")]);
+      tile("Plus bas", fmt(pts[iLo][1], 2), [stamp(pts[iLo][0]) + " · ", delta(pct(pts[iLo][1], initial), 1, " %")]);
+      tile("Pire repli", "−" + fmt(dd * 100, 1) + " %", ["depuis un sommet, sur la période"]);
+      tile("Tendance courte", tS === null ? "—" : delta(tS, 1, " %"), [tS === null ? "pas encore 6 h" : "moyenne 6 h, contre il y a 6 h"]);
+      tile("Tendance longue", tL === null ? "—" : delta(tL, 1, " %"), [tL === null ? "pas encore 2 jours" : "moyenne 2 j, contre il y a 2 j"]);
+      document.getElementById("chart-kicker").textContent = stamp(first[0]) + " → " + stamp(last[0]);
+      // --- courbe
+      box.textContent = "";
+      var W = Math.max(300, Math.round(box.clientWidth)), Hh = W < 600 ? 250 : 330, L = 56, R = W < 600 ? 44 : 64, T = 26, B = 30;
+      var vals = [];
+      idx.forEach(function (k) { vals.push(all[k][1], maS[k], maL[k]); });
+      var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), spanY = Math.max(hi - lo, 1);
+      // Le capital de départ n'entre dans l'échelle que s'il est proche (sinon la courbe serait écrasée) :
+      // une flèche indique alors de quel côté il se trouve.
+      var showStart = choice === "Tout" || (initial >= lo - spanY * 0.6 && initial <= hi + spanY * 0.6);
+      if (showStart) { lo = Math.min(lo, initial); hi = Math.max(hi, initial); }
+      var showTarget = target <= hi + (hi - lo) * 0.35; if (showTarget) hi = Math.max(hi, target);
+      var pad = (hi - lo) * 0.12 || 10; lo -= pad; hi += pad;
+      var x0 = first[0], x1 = last[0];
+      var sx = function (x) { return L + (x - x0) / (x1 - x0 || 1) * (W - L - R); };
+      var sy = function (y) { return T + (hi - y) / (hi - lo) * (Hh - T - B); };
+      var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", tabindex: "0",
+        "aria-label": "Courbe du capital total estimé, " + choice + " : de " + fmt(first[1], 0) + " à " + fmt(last[1], 0) +
+          ", plus haut " + fmt(pts[iHi][1], 0) + ", plus bas " + fmt(pts[iLo][1], 0) }, box);
+      var defs = svgEl("defs", {}, svg), up = last[1] >= first[1];  // bleu : la période monte ; rouge : elle baisse
+      var grad = svgEl("linearGradient", { id: "cap-fill", x1: 0, x2: 0, y1: 0, y2: 1 }, defs);
+      svgEl("stop", { offset: "0%", "stop-color": up ? "var(--blue)" : "var(--red)", "stop-opacity": 0.22 }, grad);
+      svgEl("stop", { offset: "100%", "stop-color": up ? "var(--blue)" : "var(--red)", "stop-opacity": 0 }, grad);
+      // Graduations rondes (1, 2, 2,5 ou 5 × 10ⁿ), environ 4 lignes.
+      var raw = (hi - lo) / 4, mag = Math.pow(10, Math.floor(Math.log10(raw))), step = mag;
+      [1, 2, 2.5, 5, 10].some(function (m) { step = m * mag; return step >= raw; });
+      for (var v = Math.ceil(lo / step) * step; v <= hi; v += step) {
+        svgEl("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--line)" }, svg);
+        svgEl("text", { x: L - 8, y: sy(v) + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)" }, svg, fmt(v, 0)); }
+      // Dates : heures seules sur 24 h, jours seuls sur téléphone, jour et heure sinon.
+      var hours = x1 - x0 <= 36 * HOUR, ticks = W < 600 ? 3 : 5;
+      var tickText = function (t) { var dte = new Date(t);
+        if (hours) return dte.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+        return W < 600 ? dte.toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) : stamp(t); };
+      for (var q = 0; q < ticks; q++) { var tt = x0 + (x1 - x0) * q / (ticks - 1);
+        svgEl("text", { x: sx(tt), y: Hh - 8, "text-anchor": q === 0 ? "start" : q === ticks - 1 ? "end" : "middle",
+          "font-size": 11, fill: "var(--muted)" }, svg, tickText(tt)); }
+      if (showStart) svgEl("line", { x1: L, x2: W - R, y1: sy(initial), y2: sy(initial), stroke: "var(--faint)", "stroke-dasharray": "2 3" }, svg);
+      else svgEl("text", { x: W - R, y: initial > hi ? T - 10 : Hh - B - 6, "text-anchor": "end", "font-size": 11, fill: "var(--muted)" },
+        svg, "départ " + fmt(initial, 0) + (initial > hi ? " ↑" : " ↓"));
+      if (showTarget) {
+        svgEl("line", { x1: L, x2: W - R, y1: sy(target), y2: sy(target), stroke: "var(--line-2)", "stroke-dasharray": "6 4" }, svg);
+        svgEl("text", { x: L + 6, y: sy(target) - 6, "font-size": 11, fill: "var(--ink-2)" }, svg, "palier " + fmt(target, 0));
+      } else svgEl("text", { x: L + 6, y: T - 10, "font-size": 11, fill: "var(--muted)" }, svg, "palier " + fmt(target, 0) + " ↑");
+      var path = function (get) { return idx.map(function (k, n) { return (n ? "L" : "M") + sx(all[k][0]).toFixed(1) + " " + sy(get(k)).toFixed(1); }).join(" "); };
+      var dCap = path(function (k) { return all[k][1]; });
+      svgEl("path", { d: dCap + " L" + sx(x1).toFixed(1) + " " + (Hh - B) + " L" + sx(x0).toFixed(1) + " " + (Hh - B) + " Z",
+        fill: "url(#cap-fill)" }, svg);
+      svgEl("path", { d: path(function (k) { return maL[k]; }), fill: "none", stroke: "var(--trend-long)", "stroke-width": 2,
+        "stroke-dasharray": "5 4", "stroke-linecap": "round", "stroke-linejoin": "round" }, svg);
+      svgEl("path", { d: path(function (k) { return maS[k]; }), fill: "none", stroke: "var(--trend-short)", "stroke-width": 2,
+        "stroke-linecap": "round", "stroke-linejoin": "round" }, svg);
+      svgEl("path", { d: dCap, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+      // Étiquettes au bout des lignes (texte en encre, pas en couleur), écartées si elles se chevauchent.
+      var ends = [[sy(last[1]), fmt(last[1], 0), "var(--ink)"], [sy(maS[idx[idx.length - 1]]), "6 h", "var(--trend-short)"],
+        [sy(maL[idx[idx.length - 1]]), "2 j", "var(--trend-long)"]].sort(function (a, b) { return a[0] - b[0]; });
+      for (var e = 1; e < ends.length; e++) ends[e][0] = Math.max(ends[e][0], ends[e - 1][0] + 13);
+      ends.forEach(function (l) { svgEl("circle", { cx: W - R + 8, cy: l[0] - 4, r: 3, fill: l[2] }, svg);
+        svgEl("text", { x: W - R + 14, y: l[0], "font-size": 11, fill: "var(--ink-2)" }, svg, l[1]); });
+      // Plus haut / plus bas : un point et sa valeur.
+      [[iHi, -10, "plus haut "], [iLo, 18, "plus bas "]].forEach(function (m, n) {
+        if ((n === 1 && iLo === iHi) || m[0] === pts.length - 1) return;  // le dernier point a déjà son étiquette
+        var p = pts[m[0]], X = sx(p[0]), Y = sy(p[1]);
+        var anchor = X < L + 70 ? "start" : X > W - R - 70 ? "end" : "middle";
+        svgEl("circle", { cx: X, cy: Y, r: 4, fill: "var(--card)", stroke: "var(--ink)", "stroke-width": 2 }, svg);
+        svgEl("text", { x: X, y: Y + m[1], "text-anchor": anchor, "font-size": 11, fill: "var(--ink-2)" }, svg, m[2] + fmt(p[1], 1)); });
+      svgEl("circle", { cx: sx(last[0]), cy: sy(last[1]), r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2 }, svg);
+      // --- survol : réticule, point, bulle
+      var hair = svgEl("line", { y1: T, y2: Hh - B, stroke: "var(--line-2)", visibility: "hidden" }, svg);
+      var dot = svgEl("circle", { r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2, visibility: "hidden" }, svg);
+      var tip = tooltip(box), cur = idx.length - 1;
+      function show(n) { var k = idx[n], X = sx(all[k][0]), Y = sy(all[k][1]), sc = svg.getBoundingClientRect().width / W;
+        hair.setAttribute("x1", X); hair.setAttribute("x2", X); hair.setAttribute("visibility", "visible");
+        dot.setAttribute("cx", X); dot.setAttribute("cy", Y); dot.setAttribute("visibility", "visible");
+        var d0 = pct(all[k][1], initial);
+        tip.show(X * sc, Y * sc, fmt(all[k][1], 2), [stamp(all[k][0]) + " · " + (d0 >= 0 ? "+" : "−") + fmt(Math.abs(d0), 1) +
+          " % depuis le départ", "moyenne 6 h " + fmt(maS[k], 1) + " · 2 j " + fmt(maL[k], 1)]); }
+      function hide() { tip.hide(); hair.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); }
+      function nearest(cx) { var r = svg.getBoundingClientRect(), X = (cx - r.left) / r.width * W, b = 0;
+        idx.forEach(function (k, n) { if (Math.abs(sx(all[k][0]) - X) < Math.abs(sx(all[idx[b]][0]) - X)) b = n; }); return b; }
+      svg.addEventListener("pointermove", function (ev) { cur = nearest(ev.clientX); show(cur); });
+      svg.addEventListener("pointerleave", hide); svg.addEventListener("focus", function () { show(cur); });
+      svg.addEventListener("blur", hide);
+      svg.addEventListener("keydown", function (ev) { if (ev.key === "ArrowLeft") cur = Math.max(0, cur - 1);
+        else if (ev.key === "ArrowRight") cur = Math.min(idx.length - 1, cur + 1); else return; ev.preventDefault(); show(cur); });
+    }
+    draw();
+    var lastW = box.clientWidth, timer = null;
+    window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(function () {
+      if (Math.abs(box.clientWidth - lastW) > 20) { lastW = box.clientWidth; draw(); } }, 200); });
     var holder = document.getElementById("chart-table"), t = el("table"); t.id = "chart-values"; holder.appendChild(t);
-    table("chart-values", [{ t: "date" }, { t: "capital", n: 1 }], D.courbe.slice(-40).reverse().map(function (p) {
-      return [stamp(new Date(p[0]).getTime()), fmt(p[1], 2)]; }), "");
+    table("chart-values", [{ t: "date" }, { t: "capital", n: 1 }, { t: "depuis le départ", n: 1 }, { t: "moyenne 6 h", n: 1 },
+      { t: "moyenne 2 j", n: 1 }], all.map(function (p, k) { return [stamp(p[0]), fmt(p[1], 2), delta(pct(p[1], initial), 1, " %"),
+        fmt(maS[k], 2), fmt(maL[k], 2)]; }).slice(-60).reverse(), "");
   })();
 
   // ---------------------------------------------------------------- arène
