@@ -834,8 +834,61 @@ class CpiTranches(_Base):
         return self._finish(out, props)
 
 
+_JOBS_EVENT = re.compile(r"^How many [Jj]obs added in [A-Z][a-z]+\?$")
+
+
+class JobsFavoriNon(_Base):
+    """« Combien d'emplois créés en <mois> ? » (rapport américain, tranches de 25-50 k) : la tranche favorite du marché, à 25-70 %,
+    gagne environ moitié moins souvent que son prix (même un bon pronostic ne tombe que rarement dans 50 k quand la surprise
+    typique fait 75 k). On achète son NON de 4 à 72 heures avant la publication.
+    Test sur le passé (29 événements, 2024-03 → 2026-10) : experiments/emploi_nfp.md, verdict « indice » (5 victoires pour 11 attendues)."""
+
+    strategy_id = "jobs_favori_non"
+    required = ("yes_min", "yes_max", "yes_factor", "hours_min", "hours_max", "min_buckets", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+
+    @staticmethod
+    def _is_jobs(m: MarketInfo) -> bool:
+        return _yes_no(m) and bool(_JOBS_EVENT.match(m.event_title or ""))
+
+    def candidates(self, markets):
+        return [m for m in markets if self._is_jobs(m)][: int(self.params.get("max_candidates", 40))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, props = StrategyOutput(), self.params, []
+        now = _now(books)
+        if now is None:
+            return self._finish(out, props)
+        events: dict[str, list[tuple[float, MarketInfo]]] = {}
+        for m in watchlist:
+            if not self._is_jobs(m) or m.end_date is None:
+                continue
+            yes = _book_mid(books, m.token_ids[0])
+            if yes is not None:
+                events.setdefault(m.event_id, []).append((yes, m))
+        for tranches in events.values():
+            if len(tranches) < int(p["min_buckets"]):
+                out.abstain("trop peu de tranches suivies pour désigner le favori")
+                continue
+            yes, m = max(tranches, key=lambda x: x[0])
+            hours = (m.end_date - now).total_seconds() / 3600
+            if not float(p["hours_min"]) <= hours <= float(p["hours_max"]):
+                out.abstain("hors de la fenêtre avant la publication")
+                continue
+            if any(t in state.positions for t in m.token_ids) or not float(p["yes_min"]) <= yes <= float(p["yes_max"]):
+                continue
+            fair = yes * float(p["yes_factor"])
+            unc = float(p["uncertainty"])
+            prop = self._buy(m, books, state, 1, 1 - fair - unc, 1 - fair, 1 - fair + unc, bucket, marks, out,
+                             f"jobs_favori_non:{yes:.3f}", f"tranche favorite des emplois à {yes:.1%}, juste {fair:.1%}",
+                             "le nombre d'emplois tombe dans cette tranche")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
-                                      MotsNouveaux, FatigueNhl, CpiTranches)}
+                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon)}

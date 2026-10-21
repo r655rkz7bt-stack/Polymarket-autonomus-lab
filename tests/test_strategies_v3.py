@@ -12,7 +12,7 @@ from polymarket_agent.safety_controller import RiskLimits
 from polymarket_agent.sources.polymarket_gamma import parse_market
 from polymarket_agent.strategies_v3 import (ApresEcheance, ChocSansNouvelle, CoherenceMatch, DecroissanceTemps,
                                             EchelleDates, ImplicationPolitique, MarcheNeuf, MarchesJumeaux,
-                                            OutsidersSurcotes, PaireOuiNon, CpiTranches)
+                                            OutsidersSurcotes, PaireOuiNon, CpiTranches, JobsFavoriNon)
 
 LIMITS = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 _N = [0]
@@ -179,3 +179,26 @@ def test_cpi_tranches_buys_no_on_unlikely_buckets_only_for_us_cpi_in_window(tmp_
     assert {m.market_id for m in s.candidates(ms)} == {"a", "b", "far", "core"}
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert {p.market_id for p in out.proposals} == {"a", "core"} and all(p.outcome == "No" for p in out.proposals)
+
+
+def test_jobs_favori_non_buys_no_on_the_favorite_bucket_only_inside_window_and_price_band(tmp_path):
+    s = _s(JobsFavoriNon, yes_min=0.25, yes_max=0.70, yes_factor=0.6, hours_min=4, hours_max=72, min_buckets=4, uncertainty=0.03,
+           min_net_edge=0.005, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    ev = [{"id": "jobs", "title": "How many jobs added in October?"}]
+    ms = [_m(f"j{i}", events=ev, end=NOW + timedelta(hours=30)) for i in range(5)]
+    ms += [_m(f"o{i}", events=[{"id": "other", "title": "How many jobs added in September?"}], end=NOW + timedelta(hours=30)) for i in range(5)]
+    ms += [_m("u", events=[{"id": "u", "title": "October Unemployment Rate"}], end=NOW + timedelta(hours=30))]
+    books = {}
+    for i, yes in enumerate((0.05, 0.15, 0.40, 0.25, 0.15)):  # favorite : j2 à 0,40
+        books.update(_books((f"j{i}Y", f"{yes - 0.005:.3f}", f"{yes + 0.005:.3f}"), (f"j{i}N", f"{1 - yes - 0.005:.3f}", f"{1 - yes + 0.005:.3f}")))
+    for i, yes in enumerate((0.02, 0.10, 0.15, 0.12, 0.08)):  # favorite à 0,15 : sous la bande, rien
+        books.update(_books((f"o{i}Y", f"{yes - 0.005:.3f}", f"{yes + 0.005:.3f}"), (f"o{i}N", f"{1 - yes - 0.005:.3f}", f"{1 - yes + 0.005:.3f}")))
+    books.update(_books(("uY", "0.395", "0.405"), ("uN", "0.595", "0.605")))
+    assert {m.market_id for m in s.candidates(ms)} == {f"j{i}" for i in range(5)} | {f"o{i}" for i in range(5)}
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [(p.market_id, p.outcome) for p in out.proposals] == [("j2", "No")]
+    late = _s(JobsFavoriNon, yes_min=0.25, yes_max=0.70, yes_factor=0.6, hours_min=40, hours_max=72, min_buckets=4, uncertainty=0.03,
+              min_net_edge=0.005, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    assert not late.propose(ms, books, _state(tmp_path), LIMITS, "b1").proposals  # à 30 h : hors de la fenêtre 40-72 h
+    few = [m for m in ms if m.market_id in ("j0", "j2")]
+    assert not s.propose(few, books, _state(tmp_path), LIMITS, "b1").proposals  # 2 tranches suivies : pas de favori fiable

@@ -2555,3 +2555,25 @@ statu_quo_ia:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}
+
+jobs_favori_non:
+  explication: "Quand on parie sur le nombre d'emplois créés aux États-Unis, la case que le marché croit la plus probable sort environ deux fois moins souvent que son prix : on parie qu'elle ne sort pas."
+  # Piste n° 3 (suite) du 21/10 (experiments/emploi_nfp.md) : 29 événements « jobs added », règlement relu 17/17 contre les chiffres BLS connus ; la tranche favorite
+  # gagne 5 fois pour 11 attendues à T-24 h (z −2,4), 2/11,3 à T-6 h, 4/10,6 à T-72 h ; NON +20 à +50 % aux prix des vrais échanges (9-15 paris par réglage).
+  # Indice, pas preuve : 3 réglages liés, un seul marché, log-score aplati bon sur 2 horizons sur 4 hors échantillon. Fantôme pour confirmer en direct.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    yes_min:        {value: 0.25, min: 0.0, max: 0.6}
+    yes_max:        {value: 0.70, min: 0.1, max: 0.95}
+    yes_factor:     {value: 0.6, min: 0.2, max: 1.0}    # la favorite gagne ~0,45 à 0,6 fois son prix (mesuré 5/11,1 à T-24 h, 2/11,3 à T-6 h)
+    hours_min:      {value: 4, min: 0, max: 100}
+    hours_max:      {value: 72, min: 0, max: 400}
+    min_buckets:    {value: 4, min: 2, max: 12}
+    uncertainty:    {value: 0.03, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.2}
+    max_candidates: {value: 40, min: 0, max: 300}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
