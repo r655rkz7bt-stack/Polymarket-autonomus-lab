@@ -71,6 +71,8 @@ class Standing:
     mode: str = ""  # "" (capital réalisé), "recompenses" ou "valeur" (voir mode_for)
     events: frozenset = frozenset()  # événements (matchs…) achetés depuis le début de l'époque
     day_confidence: float | None = None  # confiance par jour, 0 à 1 (voir day_confidence) ; None = inconnue
+    excess_wins: float | None = None  # Σ (gagné − prix payé) sur les opérations clôturées ; None = inconnu
+    assumed_edge: float | None = None  # avantage supposé moyen à l'achat (estimation − prix payé)
 
     def report(self) -> dict:
         """Version lisible (JSON) : sans la liste des événements."""
@@ -120,6 +122,35 @@ def day_confidence(trades: list[dict]) -> float:
     var = max(var_model, sum(e * e for e in days.values()))
     z = sum(days.values()) / math.sqrt(var) if var > 0 else 0.0
     return round(0.5 * (1 + math.erf(z / math.sqrt(2))), 4)
+
+
+def edge_figures(trades: list[dict]) -> tuple[float, float | None]:
+    """(Σ gagné − prix payé, avantage supposé moyen) des opérations clôturées. L'avantage supposé
+    vient de l'estimation notée à l'achat (`est_probability`) ; None si aucune n'est notée."""
+    excess, assumed = 0.0, []
+    for t in trades:
+        cost, bought = float(t.get("cost") or 0), float(t.get("shares_bought") or 0)
+        if cost <= 0 or bought <= 0:
+            continue
+        p = cost / bought
+        excess += (float(t["pnl"]) > 0) - p
+        if t.get("est_probability") not in (None, ""):
+            assumed.append(float(t["est_probability"]) - p)
+    return round(excess, 4), (round(sum(assumed) / len(assumed), 4) if assumed else None)
+
+
+def measured_stake(s: Standing, rule: dict | None) -> float:
+    """Mise sur l'avantage MESURÉ (décision d'Etienne, 21/10/2026) : part de la mise habituelle
+    = avantage mesuré / avantage supposé, bornée à [`part_min`, `part_max`]. Avantage mesuré =
+    Σ(gagné − prix payé) / (opérations + `paris_fictifs`) : peu de paris → ramené vers 0, mise
+    prudente ; il grossit si l'avantage se confirme. Les fantômes, eux, misent normalement (ils
+    mesurent). Simulation sur 30 jours : experiments/taille_des_mises.md. Libre : le chercheur peut
+    la rendre plus libre (moins de paris fictifs, `part_min` plus haute) s'il le juge bon."""
+    if not rule or s.excess_wins is None:
+        return 1.0
+    assumed = s.assumed_edge if s.assumed_edge and s.assumed_edge > 0 else float(rule.get("avantage_suppose_defaut", 0.035))
+    measured = s.excess_wins / (s.closed_trades + float(rule.get("paris_fictifs", 30)))
+    return min(float(rule.get("part_max", 1.0)), max(float(rule.get("part_min", 0.0)), measured / max(assumed, 0.005)))
 
 
 def bought_events(entries: list[dict]) -> frozenset:
@@ -182,9 +213,10 @@ def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0
             base = float(beats[-1]["data"]["total_estimated"])
     judged = base + max(0.0, rewards)
     growth = math.log(judged / initial) if judged > 0 and initial > 0 else float("-inf")
+    excess, assumed = edge_figures(trades)
     return Standing(name, len(trades), realized, initial, growth, state.epoch_started_at, name in eliminated,
                     round(max(0.0, rewards), 4), t_stat(trade_returns(trades)), int(reward_days), mode,
-                    bought_events(entries), day_confidence(trades))
+                    bought_events(entries), day_confidence(trades), excess, assumed)
 
 
 def ranking(standings: list[Standing]) -> list[Standing]:
@@ -369,9 +401,10 @@ def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> 
     les opérations clôturées, de `part_minimale` à 1 après `pleine_part_apres_operations`) et
     plafond `part_max` des modes « recompenses » et « valeur ». Garde-fou par jour (`garde_fou_jour`,
     21/10/2026) : part multipliée par `reduction` si la confiance par jour est sous `confiance_min`.
-    Le reste du capital attend."""
+    Mise sur l'avantage mesuré (`mise_avantage_mesure`, voir measured_stake). Le reste du capital attend."""
     by = {s.name: s for s in standings}
     guard = cfg.get("garde_fou_jour") or {}
+    stake_rule = cfg.get("mise_avantage_mesure") or None
     trial = cfg.get("essai") or {}
     full, floor = float(trial.get("pleine_part_apres_operations", 0)), float(trial.get("part_minimale", 1.0))
     cap = float(cfg.get("part_max_par_strategie") or 1.0)  # plafond commun (18/10/2026)
@@ -388,6 +421,8 @@ def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> 
         if (guard and not mode and s is not None and s.day_confidence is not None
                 and s.day_confidence < float(guard.get("confiance_min", 0.0))):
             out[name] *= float(guard.get("reduction", 1.0))
+        if not mode and s is not None:
+            out[name] *= measured_stake(s, stake_rule)
     return {n: round(min(v, cap), 6) for n, v in out.items()}
 
 

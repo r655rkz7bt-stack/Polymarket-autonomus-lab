@@ -913,3 +913,15 @@ Rejeu de la semaine du 15 au 21/10 (`experiments/regle_confiance.md`) : la règl
   et de celui mesuré entre les journées. Une seule belle journée ne donne jamais plus de ≈ 84 %.
   Sous 80 %, la part engagée est divisée par deux (pas pour les modes « recompenses » et « valeur »).
 - Règle n°1 inchangée (noyau protégé).
+
+## 52. Mise sur l'avantage mesuré (21/10/2026, décision d'Etienne)
+
+Le principal copie chaque pari d'une stratégie à `avantage mesuré / avantage supposé` de sa mise
+(`arena.measured_stake`, `config/promotion.yaml` → `mise_avantage_mesure`), entre `part_min` et
+`part_max`. Avantage mesuré = Σ(gagné − prix payé) / (opérations + `paris_fictifs`) ; avantage
+supposé = moyenne de (estimation − prix payé) notée à l'achat. Les fantômes misent normalement :
+ils continuent de mesurer. Ne s'applique pas aux modes « recompenses » et « valeur ».
+Pourquoi : la championne misait comme avec 5,7 points d'avantage et en mesure ~0 hors du 18/10 ;
+sur 30 jours simulés (experiments/taille_des_mises.md), passer sous 700 € arrive 6 à 9 % du temps
+au lieu de 50 à 69 % si l'avantage réel est de 0 à 1 point. Au 21/10 au soir : championne 63 %.
+Libre : le chercheur peut la rendre plus libre s'il le juge bon (docs/METHODE.md).

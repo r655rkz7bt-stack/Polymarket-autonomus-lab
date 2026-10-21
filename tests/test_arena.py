@@ -529,3 +529,26 @@ def test_day_confidence_and_guard_halve_a_share_until_the_days_agree():
     assert exposure([good], {"a_v1": 1.0}, cfg) == {"a_v1": 0.7}
     assert exposure([dataclasses_replace(good, day_confidence=None)], {"a_v1": 0.4}, cfg) == {"a_v1": 0.4}
     assert RULES["garde_fou_jour"] == {"confiance_min": 0.8, "reduction": 0.5}
+
+
+def test_measured_stake_copies_bets_at_the_measured_edge_only():
+    """Mise sur l'avantage mesuré (Etienne, 21/10/2026) : sans avantage mesuré, le principal ne
+    copie rien ; avec un avantage prouvé égal à celui supposé, presque la mise entière."""
+    from polymarket_agent.arena import edge_figures, exposure, measured_stake
+    trades = [{"cost": 8.5, "shares_bought": 10, "pnl": 1.5, "est_probability": 0.9, "closed_at": "2026-10-20"},
+              {"cost": 8.5, "shares_bought": 10, "pnl": -8.5, "est_probability": 0.9, "closed_at": "2026-10-20"}]
+    excess, assumed = edge_figures(trades)
+    assert excess == pytest.approx(-0.7) and assumed == pytest.approx(0.05)
+    rule = RULES["mise_avantage_mesure"]
+    assert rule == {"paris_fictifs": 30, "part_min": 0.0, "part_max": 1.0, "avantage_suppose_defaut": 0.035}
+    base = Standing("a_v1", 70, 1100.0, 1000.0, 0.1, NOW - timedelta(days=5), False, assumed_edge=0.05)
+    assert measured_stake(dataclasses_replace(base, excess_wins=-2.0), rule) == 0.0
+    assert measured_stake(dataclasses_replace(base, excess_wins=2.5), rule) == pytest.approx(0.5)  # 2,5/100 = 2,5 pts
+    assert measured_stake(dataclasses_replace(base, excess_wins=9.0), rule) == 1.0
+    assert measured_stake(base, rule) == 1.0 and measured_stake(dataclasses_replace(base, excess_wins=-2.0), None) == 1.0
+    free = dict(rule, paris_fictifs=0, part_min=0.25)  # plus libre (le chercheur peut)
+    assert measured_stake(dataclasses_replace(base, excess_wins=-2.0), free) == 0.25
+    assert measured_stake(dataclasses_replace(base, excess_wins=2.5), free) == pytest.approx(0.714286, abs=1e-5)
+    cfg = {"mise_avantage_mesure": rule, "part_max_par_strategie": 0.7}
+    half = dataclasses_replace(base, excess_wins=2.5)
+    assert exposure([half], {"a_v1": 1.0}, cfg) == {"a_v1": 0.5}

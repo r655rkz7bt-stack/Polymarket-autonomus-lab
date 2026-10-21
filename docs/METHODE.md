@@ -85,6 +85,11 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    principal, élimination). Change-les quand les données le justifient ; explique pourquoi dans
    `experiments/journal_recherche.md`. Seules limites : le noyau protégé (journal signé,
    contrôleur, simulateur, frais, mots de passe).
+   Taille des mises du principal (`mise_avantage_mesure`, 21/10/2026) : il copie chaque pari à
+   la part de l'avantage MESURÉ sur l'avantage supposé. Etienne veut que tu puisses la rendre plus
+   libre si tu le juges bon (moins de `paris_fictifs`, `part_min` plus haute) : fais-le sur la foi
+   d'un rejeu (`experiments/taille_des_mises/simuler.py`, à relancer sur les paris récents) et
+   note la raison dans le journal de recherche. Repasse à plus prudent si l'avantage s'efface.
    Simulation (noyau) : 25 % de la quantité au meilleur prix, 50 % aux niveaux suivants, liquidité
    partagée entre tes ordres d'un même cycle. Chaque exécution est auditée contre l'historique
    public des prix (job `audit`) : un prix impossible déclenche une alerte à Etienne.
