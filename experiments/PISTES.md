@@ -11,6 +11,7 @@ Ordre : gain espéré × facilité de test. Les marchés répétitifs et peu liq
 ont été les plus battables le 20/10 ; les marchés suivis par des robots (crypto au jour près) non.
 
 ## À tester
+0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10).
 1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
 3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI

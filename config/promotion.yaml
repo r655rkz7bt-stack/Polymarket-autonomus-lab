@@ -42,6 +42,17 @@ essai: {pleine_part_apres_operations: 30, part_minimale: 0.5}
 # jour (arena.day_confidence : paris gagnés contre attendus d'après les prix, journée par journée)
 # est sous 80 %. Ne s'applique pas aux modes « recompenses » et « valeur ». null = désactivé.
 garde_fou_jour: {confiance_min: 0.8, reduction: 0.5}
+# Mise sur l'avantage MESURÉ (décision d'Etienne, 21/10/2026, arena.measured_stake) : le principal
+# copie chaque pari à (avantage mesuré / avantage supposé) de sa mise, entre `part_min` et
+# `part_max`. Avantage mesuré = Σ(gagné − prix payé) / (opérations + `paris_fictifs`). La
+# championne misait comme avec 5,7 points d'avantage, elle en mesure ~0 hors du 18/10. Simulation
+# sur 30 jours (experiments/taille_des_mises.md) : avec 0 à +1 point d'avantage réel, passer sous
+# 700 € arrive 6 à 9 % du temps au lieu de 50 à 69 %. Ne s'applique pas aux modes « recompenses »
+# et « valeur », ni aux fantômes. null = désactivé (mises habituelles).
+# LIBRE : Etienne veut que le chercheur puisse la rendre plus libre s'il le juge bon (moins de
+# paris fictifs, `part_min` plus haute, `part_max` jusqu'à 1) : chaque changement est noté dans
+# experiments/journal_recherche.md avec sa raison (un rejeu de experiments/taille_des_mises/).
+mise_avantage_mesure: {paris_fictifs: 30, part_min: 0.0, part_max: 1.0, avantage_suppose_defaut: 0.035}
 # Modes de jugement (AMELIORATION n°3 et 4), par préfixe de nom, avec une part plafonnée :
 # - tenue de marché : payée surtout en récompenses, elle clôture peu d'opérations → jugée sur ses
 #   journées de récompenses versables (+ capital au-dessus du départ, récompenses comprises) ;

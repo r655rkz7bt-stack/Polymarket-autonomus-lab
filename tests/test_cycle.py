@@ -80,9 +80,10 @@ def env(tmp_path, ledger, paths, limits):
         if settings is None:
             settings = load_settings()
             settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
-            # Le champion de test engage toute sa part (sans période d'essai, garde-fou par jour ni
-            # plafond) : le principal copie alors les paris du fantôme à l'identique (18/10/2026).
-            settings["arena"].update(essai={}, part_max_par_strategie=None, garde_fou_jour=None)
+            # Le champion de test engage toute sa part (sans période d'essai, garde-fou par jour, mise
+            # sur l'avantage mesuré ni plafond) : le principal copie alors les paris du fantôme à l'identique (18/10/2026).
+            settings["arena"].update(essai={}, part_max_par_strategie=None, garde_fou_jour=None,
+                                     mise_avantage_mesure=None)
         return CycleDeps(settings=settings, limits=limits,
                          strategies=strategies if strategies is not None else [pipeline_strategy()],
                          ledger_path=paths[0], lock_path=paths[1], key=KEY, db=db,
@@ -504,6 +505,7 @@ def test_resting_order_expires_and_never_fills_after(env, paths):
     crown(paths)
     settings = load_settings()
     settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    settings["arena"]["mise_avantage_mesure"] = None  # champion de test sans pari : copie entière
     settings["limit_orders"] = {"max_age_hours": 0.05, "max_open_per_portfolio": 30}  # 3 minutes
     run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), settings, [_patient()]))
     assert len(db.open_orders()) == 2
@@ -522,6 +524,7 @@ def test_resting_buys_cannot_reserve_more_than_the_cash(env, paths, tmp_path):
     books = {f"y{i}": good_book(f"y{i}") for i in range(6)}
     settings = load_settings()
     settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    settings["arena"]["mise_avantage_mesure"] = None  # champion de test sans pari : copie entière
     settings["sante_strategies"] = {"base": 1.0}  # mise entière : la réservation doit refuser un ordre
     run_cycle(make(FakeGamma(markets), FakeClob(books), settings, [_patient("6")]))
     for name in ("principal", "fantome:naive_favorite_v1.0.0"):
