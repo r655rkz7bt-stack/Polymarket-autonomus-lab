@@ -75,7 +75,11 @@ scanner:
   ended_pages: 1               # 20/10/2026 : 100 marchés échus depuis 1 à 72 h (apres_echeance)
   # 21/10/2026 : marchés « mentions » (peu de volume, absents des pages normales : mots_prononces,
   # mots_nouveaux). 176 ouverts ce jour-là, 56 passent ces filtres propres (liquidité médiane 170 $).
-  tag_pages: {100343: {pages: 2, min_liquidity: 100, min_volume_24h: 0, max_spread: 0.10}}
+  # 21/10/2026 (soir) : marchés « données économiques » (emplois : étiquette nfp 102964 ; CPI : étiquette cpi 101701) : 400-2 000 $ de liquidité et
+  # ~0-700 $ de volume par jour, donc écartés par min_volume_24h ; `cpi_tranches` et `jobs_favori_non` ne voyaient aucun marché (0 achat, abstentions vides).
+  tag_pages: {100343: {pages: 2, min_liquidity: 100, min_volume_24h: 0, max_spread: 0.10},
+              102964: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
+              101701: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
   ended_min_hours: 1
   ended_max_hours: 72
   max_extra_markets: 320       # marchés demandés par les stratégies (météo 100, tenue de marché 30, politique 40, sport 30, crypto 30) ; doublons comptés une fois

@@ -178,3 +178,17 @@ def test_tag_pages_add_markets_of_a_tag_once():
     assert sorted(m.market_id for m in result.markets) == ["1", "8", "9"]
     assert [m.market_id for m in result.watchlist if m.market_id == "9"] == ["9"]
     assert result.excluded == {"liquidité insuffisante": 1}
+
+
+def test_repository_config_lets_economic_data_markets_through_the_scanner():
+    """21/10/2026 (soir) : emplois (étiquette nfp) et CPI (étiquette cpi) ont 400-2 000 $ de liquidité et ~0-700 $ de volume par jour ;
+    `min_volume_24h: 1000` les écartait, donc `jobs_favori_non` et `cpi_tranches` ne voyaient aucun marché (0 achat, abstentions vides)."""
+    import yaml
+    from conftest import ROOT
+    cfg = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["scanner"]
+    assert classify(parse_market(raw_market(volume24hr=20, liquidityNum=1500)), NOW, cfg)  # le scan général les écarte
+    for tag in (102964, 101701):
+        spec = cfg["tag_pages"][tag]
+        assert spec["pages"] >= 1 and spec["min_volume_24h"] == 0
+        tag_cfg = dict(cfg, **{k: v for k, v in spec.items() if k != "pages"})
+        assert not classify(parse_market(raw_market(volume24hr=20, liquidityNum=1500)), NOW, tag_cfg)

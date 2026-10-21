@@ -15,9 +15,11 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
 3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI
    (historique par versions introuvable), une prévision indépendante (consensus, ADP) pour l'emploi, les demandes d'allocations chômage hebdomadaires (même mécanisme : tranches fines).
-4. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
-   le test crypto (attention : le test crypto a été négatif, marché suivi par des robots).
-
+4. **Prix de l'essence (AAA) au jour près** : relevé commencé le 21/10 (`experiments/essence/releve.py` → `releve.csv`, à relancer à chaque passage). Marchés « Gas prices on <date> ? » (6 tranches
+   de 1 cent du prix moyen AAA, ~700-2 200 $ de volume par jour, nés le 16/10/2026 : 6 jours seulement ; février 2025 : 2 jours) et « What will gas hit the week of… / by end of <mois> » (10-14 tranches,
+   depuis mars 2026). **Pas encore testable** : AAA est inaccessible (403, pas de contournement), l'EIA hebdomadaire existe (`eia.gov/dnav/pet/hist_xls/EMM_EPMR_PTE_NUS_DPGw.xls`) mais pas au jour près.
+   À reprendre quand ~40 jours sont réglés : le prix du jour tient-il son niveau de la veille (variation d'un jour = quelques cents, marché de tranches à 1 cent) ? Modèle de marche aléatoire calibré sur les
+   gagnantes précédentes (aucune autre source nécessaire), comme le test crypto (négatif : marché suivi par des robots, mais ici les volumes sont minces).
 5. **Mots nouveaux par type d'événement** (rallye, conférence, mois entier) : reste de l'ancienne piste n° 1 ;
    les « annonceurs » et « anyone » sont jugés (ci-dessous).
 6. **Matchs de NFL, suite** : `mots_prononces_nfl` (fantôme) à confirmer sur de nouveaux matchs ; si oui,
