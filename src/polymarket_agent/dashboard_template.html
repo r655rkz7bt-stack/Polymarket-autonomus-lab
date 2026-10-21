@@ -1309,7 +1309,8 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
       if (s.explication) name.appendChild(el("span", "explain", s.explication));
       var info = el("span", "more-info"); name.appendChild(info);
       info.appendChild(el("span", "sub", s.nom.replace(/^.*_v/, "v") + " · " + s.verdict +
-        (s.confiance !== undefined ? " · confiance " + fmt(s.confiance, 1) : "") +
+        (s.confiance_pct !== undefined ? " · confiance " + fmt(s.confiance_pct, 0) + " %"
+          : s.confiance !== undefined ? " · confiance " + fmt(s.confiance, 1) : "") +
         (s.mode === "recompenses" ? " · jugée sur ses récompenses" : s.mode === "valeur" ? " · jugée sur la valeur de ses positions" : "")));
       // Doublon (18/10/2026) : qualifiée, mais elle fait surtout les mêmes paris qu'une autre déjà au principal.
       if (s.doublon && s.doublon.comme) info.appendChild(el("span", "sub", "qualifiée, mais " +

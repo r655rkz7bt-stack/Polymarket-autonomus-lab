@@ -500,3 +500,9 @@ def test_daughters_are_capped_and_duplicate_or_mute_daughters_retired(ledger, tm
     assert out == ["muette_v1", "copie_v1", "a_v1", "b_v1"]
     assert ledger.state.eliminated >= set(out) and last_weekly_elimination(ledger) is None
     assert retire_daughters(ledger, competitors, standings, {}, NOW, mothers) == []
+
+
+def test_confidence_is_shown_as_a_percentage():
+    """21/10/2026 (demande d'Etienne) : la confiance affichée en pourcentage."""
+    from polymarket_agent.arena import confidence_percent
+    assert [confidence_percent(t) for t in (0, 1.5, 2.08, 0.43, -1.5, 99)] == [50, 93, 98, 67, 7, 100]
