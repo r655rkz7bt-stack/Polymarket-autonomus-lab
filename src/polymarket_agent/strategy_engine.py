@@ -561,7 +561,7 @@ class PatientOrders:
 
 FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
                "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max", "sources",
-               "sources_exclues")
+               "sources_exclues", "question_contient", "question_exclut", "prix_final")
 
 
 class Filtered:
@@ -578,7 +578,13 @@ class Filtered:
       comme le délai noté à l'achat ; ecart_max : écart achat-vente maximal (marchés liquides) ;
       sources : domaines de la source de résolution acceptés, ex. [itftennis.com] pour le seul
       circuit ITF (20/10/2026 : outsiders ITF sous-cotés, ATP et WTA non) ; sources_exclues :
-      domaines refusés (favoris ITF : −13,9 % aux vrais prix, experiments/achat_echelonne.md).
+      domaines refusés (favoris ITF : −13,9 % aux vrais prix, experiments/achat_echelonne.md) ;
+      question_contient : le marché est gardé si sa question contient un de ces mots (sans tenir
+      compte des majuscules) ; question_exclut : refusé s'il en contient un (21/10/2026 : annonceurs
+      NFL gagnants, Coupe du monde perdante, experiments/mentions_annonceurs.md) ;
+      prix_final : true (avec `limit_ticks`) → prix_min / prix_max portent sur le prix de l'ORDRE POSÉ
+      et non sur le prix du vendeur (21/10/2026 : sinon une fille « prix payé 0,875-0,90 » achète à 0,84,
+      experiments/enquetes/2026-10-21_filtres_et_prix_executable.md).
     Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
     morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
 
@@ -602,6 +608,11 @@ class Filtered:
             hours = (m.end_date - now).total_seconds() / 3600
             if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
                 return False
+        question = (m.question or "").lower()
+        if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):
+            return False
+        if any(str(w).lower() in question for w in f.get("question_exclut", ())):
+            return False
         if "ecart_max" in f and (m.spread is None or float(m.spread) > float(f["ecart_max"])):
             return False
         if "sources" in f or "sources_exclues" in f:
@@ -687,10 +698,15 @@ def load_strategies(path: Path) -> list:
             strategy.families = tuple(str(f) for f in spec["familles"])
         if "exclure_mots" in spec:  # marchés exclus si la question contient un de ces mots
             strategy.exclude_words = tuple(str(w).lower() for w in spec["exclure_mots"])
-        if "filtres" in spec:  # fille : la stratégie mère sur un morceau des marchés
-            strategy = Filtered(strategy, dict(spec["filtres"]))
-        if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
-            strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
+        filters = dict(spec.get("filtres") or {})
+        if filters.pop("prix_final", False) and "limit_ticks" in spec:
+            # Le filtre de prix se lit sur l'ordre posé : le mode patient passe DANS la fille.
+            strategy = Filtered(PatientOrders(strategy, int(spec["limit_ticks"])), filters)
+        else:
+            if "filtres" in spec:  # fille : la stratégie mère sur un morceau des marchés
+                strategy = Filtered(strategy, dict(spec["filtres"]))
+            if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
+                strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
         mode = str(spec.get("mode", "principal"))
         if mode not in ("principal", "fantome"):
             raise StrategyConfigError(f"{strategy_id} : mode inconnu {mode!r}")

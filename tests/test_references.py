@@ -16,6 +16,7 @@ from polymarket_agent.observations import Observation
 from polymarket_agent.persistence import Database
 from polymarket_agent.safety_controller import RiskLimits
 from polymarket_agent.sources.polymarket_gamma import parse_market
+from polymarket_agent.strategy_engine import load_strategies
 from polymarket_agent.strategies_v3 import (CompteurTweets, FatigueNhl, FootballTroisIssues, KalshiReference,
                                             MotsNouveaux, MotsPrononces)
 
@@ -234,6 +235,29 @@ def test_mention_base_rates_need_precedents_and_skip_cheap_tickets(tmp_path):
     assert not out.proposals and "trop peu de précédents" in out.abstentions
     out = _s(MotsPrononces, **dict(params, min_price=0.45)).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1")
     assert not out.proposals and "billet trop bon marché" in out.abstentions
+
+
+def test_announcers_of_football_and_of_the_rest_have_separate_histories():
+    """21/10 (experiments/mentions_annonceurs.md) : aux prix payés, les commentateurs de NFL gagnent et ceux
+    de la Coupe du monde perdent : un même mot ne doit pas mélanger leurs deux historiques."""
+    nfl = refs.mention_key('Will the announcers say "Flag" 15+ times during the 49ers vs Rams game?', "Flag 15+ times")
+    wc = refs.mention_key('Will the announcers say "Flag" 15+ times during Norway vs Senegal World Cup Match?', "Flag 15+ times")
+    ufc = refs.mention_key('Will announcers say "Knockout" during McGregor vs Holloway at UFC 329?', "Knockout")
+    assert nfl == ("the announcers (game)", "flag 15+ times") and ufc == ("the announcers", "knockout")
+    assert wc == ("the announcers (world cup)", "flag 15+ times")
+    assert refs.mention_key('Will Trump say "crypto" this week?', "Crypto") == ("trump", "crypto")
+
+
+def test_question_filters_split_nfl_announcers_from_the_world_cup(tmp_path):
+    from polymarket_agent.strategy_engine import Filtered
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["mots_prononces_nfl"]
+    assert cfg.filters == {"question_contient": ["game?"], "question_exclut": ["world cup", "ufc"]}
+    nfl = parse_market(raw_market("a", question='Will the announcers say "Flag" during the 49ers vs Rams game?'))
+    wc = parse_market(raw_market("b", question='Will the announcers say "Goal" during Norway vs Senegal World Cup Match?'))
+    ufc = parse_market(raw_market("c", question='Will announcers say "Knockout" during McGregor vs Holloway at UFC 329?'))
+    trump = parse_market(raw_market("d", question='Will Trump say "crypto" this week?'))
+    window = Filtered(cfg.inner, cfg.filters)
+    assert [window._market_ok(m, None) for m in (nfl, wc, ufc, trump)] == [True, False, False, False]
 
 
 def test_a_word_never_offered_for_a_regular_speaker_is_marked_new(tmp_path):

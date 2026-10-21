@@ -116,6 +116,40 @@ def test_price_outside_the_strategy_range_is_a_lead():
     assert len(found) == 1 and found[0]["exemples"] == [f"{(NOW - timedelta(hours=1)).isoformat()[:16]} « Yes » à 0.790 (ordre posé)"]
 
 
+def test_daughter_price_filter_is_audited_like_the_strategy_range():
+    """21/10 : le contrôle ne lisait que min_ask/max_ask ; la plage `filtres.prix_min/prix_max` des
+    filles (ex. nf_sport_patiente_prix_haut : « mellren » à 0,783 pour 0,875-0,95) n'était jamais vérifiée."""
+    configs = {"fille": {"version": "1.0.0", "params": {"min_ask": {"value": 0.8}, "max_ask": {"value": 0.95}},
+                         "filtres": {"prix_min": 0.875, "prix_max": 0.95}}}
+    t = NOW - timedelta(hours=1)
+    rows = _ledger(_buy(t, "a", 0.783, 10, strategy="fille", posted=True), _buy(t, "b", 0.90, 10, strategy="fille"))
+    found = enquete.filtre_prix({"fille_v1.0.0": rows}, configs, NOW - timedelta(days=3))
+    assert len(found) == 1 and "0.875–0.95" in found[0]["titre"] and "0.783" in found[0]["exemples"][0]
+
+
+def test_time_window_filters_are_audited_for_immediate_buys_only():
+    configs = {"tres_court": {"version": "1.0.0", "filtres": {"heures_min": 0, "heures_max": 6, "heure_utc": [4, 12]}},
+               "moyen": {"version": "1.0.0", "filtres": {"echeance_min": 72, "echeance_max": 168}}}
+    t = datetime(2026, 10, 20, 9, 0, tzinfo=timezone.utc)
+
+    def buy(strategy, token, kickoff=None, horizon="5", posted=False, when=t):
+        b = _buy(when, token, 0.9, 10, strategy=strategy, horizon=horizon, posted=posted)
+        if kickoff is not None:
+            b["data"]["extra"]["depuis_coup_d_envoi_h"] = kickoff
+        return b
+
+    entries = {
+        "tres_court_v1.0.0": _ledger(buy("tres_court", "ok", kickoff="-2.5"), buy("tres_court", "tard", kickoff="-9.0"),
+                                     buy("tres_court", "nuit", kickoff="-1.0", when=t.replace(hour=2)),
+                                     buy("tres_court", "pose", kickoff="-9.0", posted=True)),
+        "moyen_v1.0.0": _ledger(buy("moyen", "bon", horizon="100"), buy("moyen", "trop_tot", horizon="10")),
+    }
+    found = {f["titre"].split(" : ")[0]: f for f in enquete.filtre_delai(entries, configs, NOW - timedelta(days=3))}
+    assert set(found) == {"tres_court", "moyen"}
+    assert len(found["tres_court"]["exemples"]) == 2 and "9.0" in found["tres_court"]["exemples"][0]
+    assert len(found["moyen"]["exemples"]) == 1 and "10.0 h" in found["moyen"]["exemples"][0]
+
+
 def test_run_and_render_put_grave_findings_first():
     t = NOW - timedelta(hours=1)
     entries = {"principal": _ledger(_buy(t, "b", 0.5, 300), _e("HEARTBEAT", NOW, total_estimated="1000")),

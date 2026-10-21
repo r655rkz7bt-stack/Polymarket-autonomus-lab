@@ -198,3 +198,23 @@ def test_source_filter_keeps_only_one_tennis_circuit(tmp_path):
     assert no_itf.propose([m], books, ledger.state, limits, "b").proposals  # source inconnue : gardé
     m.resolution_source = "https://www.itftennis.com/en/tournament-calendar/"
     assert not no_itf.propose([m], books, ledger.state, limits, "b").proposals
+
+
+def test_price_filter_of_a_patient_daughter_reads_the_posted_order_price(tmp_path):
+    """21/10 : la fille « prix payé 0,875-0,90 » filtrait le prix du VENDEUR (0,89) puis l'ordre posé au meilleur
+    acheteur (0,84) était servi sous la plage : le morceau testé n'était pas celui annoncé (`prix_final`)."""
+    from polymarket_agent.strategy_engine import Filtered, PatientOrders
+    m, books, ledger, limits = _setup(tmp_path, fee_type="sports_fees_v3", end_hours=24, bid="0.83", ask="0.89")
+    rng = {"prix_min": 0.875, "prix_max": 0.90}
+    old = PatientOrders(Filtered(_strategy(("sports",), min_ask=0.80, max_ask=0.95, shrink=0.5), rng), 1)
+    out = old.propose([m], books, ledger.state, limits, "b")
+    assert [o.max_price for o in out.limit_orders] == [D("0.84")]  # l'ancien montage laisse passer 0,84
+    new = Filtered(PatientOrders(_strategy(("sports",), min_ask=0.80, max_ask=0.95, shrink=0.5), 1), rng)
+    assert not new.propose([m], books, ledger.state, limits, "b").limit_orders
+    tight, tb, tl, _ = _setup(tmp_path / "t", fee_type="sports_fees_v3", end_hours=24, bid="0.88", ask="0.89")
+    assert [o.max_price for o in new.propose([tight], tb, tl.state, limits, "b").limit_orders] == [D("0.88")]  # dans la plage
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    daughter = loaded["nf_sport_patiente_tennis_875_900"]
+    assert isinstance(daughter, Filtered) and isinstance(daughter.inner, PatientOrders)
+    assert "prix_final" not in daughter.filters and daughter.filters["prix_min"] == 0.875
+    assert isinstance(loaded["nf_sport_patiente_prix_850_875"], PatientOrders)  # les anciennes filles ne changent pas

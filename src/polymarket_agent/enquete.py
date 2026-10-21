@@ -14,6 +14,7 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - filles_periode : une fille est jugée sur une autre période que sa mère (20/10) ;
   - filtre_prix : achats hors de la plage de prix d'une stratégie (20/10 : « prix haut »
     0,875-0,95 achetée à 0,79 par un ordre posé dans un carnet très écarté) ;
+  - filtre_delai : achats au comptant hors des fenêtres `echeance_*`, `heures_*`, `heure_utc` d'une fille ;
   - meme_pari_prix_differents : deux stratégies, même pari, prix d'entrée très différents ;
   - selection_multiple : la championne est la meilleure de ~35 stratégies ; son avance sur les prix
     dépasse-t-elle ce que le seul hasard donne au meilleur de 35 ? (20/10 : non, z = 1,86) ;
@@ -279,25 +280,77 @@ def filles_periode(entries: dict[str, list[dict]], configs: dict, min_trades: in
                      [r[1] for r in rows])]
 
 
+def _price_range(cfg: dict) -> tuple[float, float] | None:
+    """Plage de prix d'une stratégie : `min_ask`/`max_ask` de ses paramètres, resserrée par les
+    `prix_min`/`prix_max` de ses `filtres` (21/10 : les filles n'étaient jamais contrôlées)."""
+    params = cfg.get("params") or {}
+    lo, hi = (params.get(k, {}).get("value") if isinstance(params.get(k), dict) else None for k in ("min_ask", "max_ask"))
+    filters = cfg.get("filtres") or {}
+    if lo is None and hi is None and "prix_min" not in filters and "prix_max" not in filters:
+        return None
+    lows = [float(v) for v in (lo, filters.get("prix_min")) if v is not None]
+    highs = [float(v) for v in (hi, filters.get("prix_max")) if v is not None]
+    return (max(lows) if lows else 0.0), (min(highs) if highs else 1.0)
+
+
 def filtre_prix(entries: dict[str, list[dict]], configs: dict, since: datetime | None = None) -> list[dict]:
-    """Achats hors de la plage de prix `min_ask`–`max_ask` de la stratégie (3 centimes de tolérance)."""
+    """Achats hors de la plage de prix de la stratégie (3 centimes de tolérance)."""
     out = []
     for key, cfg in configs.items():
         if not isinstance(cfg, dict):
             continue
-        params = cfg.get("params") or {}
-        lo, hi = (params.get(k, {}).get("value") if isinstance(params.get(k), dict) else None for k in ("min_ask", "max_ask"))
+        rng = _price_range(cfg)
         name = f"{key}_v{cfg.get('version', '1.0.0')}"
-        if lo is None or hi is None or name not in entries:
+        if rng is None or name not in entries:
             continue
+        lo, hi = rng
         odd = [e for e in _buys(entries[name], since)
-               if not float(lo) - 0.03 <= float(e["data"]["price"]) <= float(hi) + 0.03]
+               if not lo - 0.03 <= float(e["data"]["price"]) <= hi + 0.03]
         if odd:
-            out.append(_finding("filtre_prix", A_REGARDER, f"{key} : {len(odd)} achat(s) hors de sa plage {lo}–{hi}",
+            out.append(_finding("filtre_prix", A_REGARDER, f"{key} : {len(odd)} achat(s) hors de sa plage {lo:g}–{hi:g}",
                                 "Le morceau testé n'est pas celui qu'on croit : souvent un ordre posé au meilleur "
                                 "acheteur dans un carnet très écarté (la plage est vérifiée sur le prix de vente).",
                                 [f"{e['ts'][:16]} « {e['data']['outcome']} » à {float(e['data']['price']):.3f}"
                                  f"{' (ordre posé)' if _posted(e['data'].get('extra') or {}) else ''}" for e in odd]))
+    return out
+
+
+def filtre_delai(entries: dict[str, list[dict]], configs: dict, since: datetime | None = None, tol: float = 0.5) -> list[dict]:
+    """Achats au comptant hors des fenêtres de temps des `filtres` d'une fille : `echeance_min/max`
+    (heures jusqu'à l'échéance notées à l'achat, `horizon_hours`), `heures_min/max` (heures jusqu'au
+    coup d'envoi, champ `depuis_coup_d_envoi_h` de signe opposé) et `heure_utc`. Les ordres posés sont
+    ignorés : ils sont servis plus tard que la décision."""
+    out = []
+    for key, cfg in configs.items():
+        f = cfg.get("filtres") if isinstance(cfg, dict) else None
+        name = f"{key}_v{cfg.get('version', '1.0.0')}" if f else None
+        if not f or name not in entries:
+            continue
+        odd = []
+        for e in _buys(entries[name], since):
+            x = e["data"].get("extra") or {}
+            if _posted(x):
+                continue
+            why = None
+            h = x.get("horizon_hours")
+            if h not in (None, "") and ("echeance_min" in f or "echeance_max" in f):
+                if not float(f.get("echeance_min", -1e9)) - tol <= float(h) <= float(f.get("echeance_max", 1e9)) + tol:
+                    why = f"échéance dans {float(h):.1f} h"
+            g = x.get("depuis_coup_d_envoi_h")
+            if why is None and g not in (None, "") and ("heures_min" in f or "heures_max" in f):
+                if not float(f.get("heures_min", -1e9)) - tol <= -float(g) <= float(f.get("heures_max", 1e9)) + tol:
+                    why = f"coup d'envoi dans {-float(g):.1f} h"
+            if why is None and "heure_utc" in f:
+                a, b = (int(v) for v in f["heure_utc"])
+                hour = _ts(e).hour
+                if not (a <= hour < b if a <= b else hour >= a or hour < b):
+                    why = f"acheté à {hour} h UTC"
+            if why:
+                odd.append(f"{e['ts'][:16]} « {e['data']['outcome']} » {why}")
+        if odd:
+            out.append(_finding("filtre_delai", A_REGARDER, f"{key} : {len(odd)} achat(s) hors de sa fenêtre de temps",
+                                "Le filtre de délai ou d'heure ne coupe pas ce qu'il annonce : la fille ne teste pas le morceau "
+                                "qu'on croit (mauvaise date lue, ou heure de décision différente de l'heure du journal).", odd))
     return out
 
 
@@ -484,6 +537,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + selection_multiple(entries, copied_by_principal(entries, now))
                 + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
+                + filtre_delai(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now) + positions_oubliees(entries, now, active=active))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
