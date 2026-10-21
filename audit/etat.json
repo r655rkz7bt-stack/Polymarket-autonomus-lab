@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 1989,
+  "principal": 1990,
   "fantome:calibration_patiente_v1.0.0": 1676,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1672,
@@ -71,7 +71,7 @@
   "fantome:nf_sport_patiente_oui_v1.0.0": 529,
   "fantome:parking_politique_v1.0.0": 517,
   "fantome:nf_sport_patiente_6_24h_v1.0.0": 496,
-  "fantome:nf_sport_patiente_demi_mise_v1.0.0": 562,
+  "fantome:nf_sport_patiente_demi_mise_v1.0.0": 564,
   "fantome:nf_sport_patiente_large_v1.0.0": 543,
   "fantome:nf_sport_patiente_non_v1.0.0": 430,
   "fantome:nf_sport_patiente_soir_v1.0.0": 383,
@@ -115,7 +115,7 @@
   "fantome:nf_court_football_soir_v1.0.0": 94,
   "fantome:nf_court_soir_v1.0.0": 94,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 94,
-  "fantome:nf_sport_patiente_vainqueur_v1.0.0": 107,
+  "fantome:nf_sport_patiente_vainqueur_v1.0.0": 109,
   "fantome:mots_prononces_nfl_v1.0.0": 33,
   "fantome:nf_sport_football_v1.0.0": 36,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 36,
@@ -123,12 +123,12 @@
   "fantome:compteur_tweets_non_patiente_v1.0.0": 2,
   "fantome:mots_prononces_patiente_v1.0.0": 1
  },
- "verifiees": 5004,
+ "verifiees": 5006,
  "non_verifiables": 0,
  "anomalies": [],
- "derniere_execution": "2026-10-21T08:38:07+00:00",
+ "derniere_execution": "2026-10-21T08:44:00+00:00",
  "dernier_seq_reglements": {
-  "principal": 1989,
+  "principal": 1990,
   "fantome:calibration_patiente_v1.0.0": 1676,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1672,
