@@ -10,6 +10,11 @@ Suite de [2026-10-21_posees_sous_la_plage.md](2026-10-21_posees_sous_la_plage.md
 - Le **champion** `nf_sport_patiente` : 6 achats sous 0,80 (0,72-0,78), les 6 gagnés (+). Imposer `prix_final` aux mères lui aurait fait perdre
   6 gagnants. Le principal n'a que 1 achat de ce type dans la famille (0,761, gagné).
 
+## Déjà corrigé le même jour
+La championne et ses filles sans plage de prix posent désormais leurs ordres avec `prix_min: 0.80` (amélioration n° 2 du 21/10, décision d'Etienne ; test
+`test_championne_family_never_posts_below_080`) : l'échantillon ci-dessus décrit l'ancien comportement. Les 6 achats du champion sous 0,80 datent tous du 18-19/10.
+Ce que cette suite ajoute : la perte de −12 % était concentrée sur une seule journée (20/10), donc la règle « jamais sous 0,80 » reste prudente mais n'est pas prouvée.
+
 ## Verdict
 Indice de sélection adverse **affaibli** (chiffre concentré sur le 20/10, pas de régularité d'un jour à l'autre). Aucun correctif : on ne
 passe pas les mères en `prix_final`. Reste à regarder : aucun achat sous 0,80 du champion depuis le 19/10 (le carnet est moins écarté ?).
