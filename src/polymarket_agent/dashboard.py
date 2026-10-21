@@ -16,7 +16,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from polymarket_agent import arena_history, liquidity_rewards, strategy_health, today
-from polymarket_agent.arena import days_since_record, ranking, standing
+from polymarket_agent.arena import confidence_percent, days_since_record, ranking, standing
 from polymarket_agent.config import resolve
 from polymarket_agent.learning_engine import analyze, categories_from_db
 from polymarket_agent.ledger import Ledger
@@ -195,7 +195,8 @@ def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict
                 f"clôturées sur les {rules['operations']} exigées.")
     elif near["capital"] >= need and rules.get("confiance") and near.get("confiance", 0) < rules["confiance"]:
         tail = (f"La plus proche du titre : {name(near['nom'])} ({signed(pct(near))}), mais ses résultats sont encore "
-                f"trop irréguliers (confiance {_fr(near.get('confiance', 0), 1)}, il faut {_fr(rules['confiance'], 1)}).")
+                f"trop irréguliers (confiance {confidence_percent(near.get('confiance', 0))} %, "
+                f"il faut {confidence_percent(rules['confiance'])} %).")
     elif near["capital"] >= need:
         tail = f"{name(near['nom'])} remplit les conditions : promotion attendue au prochain cycle."
     else:
@@ -375,7 +376,8 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         verdict = next(iter(verdicts.values()), {}).get("verdict", "aucune opération clôturée")
         arena.append({"nom": s.name, "explication": info.get(s.name.rsplit("_v", 1)[0], {}).get("explication", ""),
                       "operations": s.closed_trades, "capital": round(s.realized_capital, 2),
-                      "recompenses_classement": s.rewards, "confiance": s.t_stat, "mode": s.mode,
+                      "recompenses_classement": s.rewards, "confiance": s.t_stat,
+                      "confiance_pct": confidence_percent(s.t_stat), "mode": s.mode,
                       # sans config/strategies.yaml (tests, copie partielle), personne n'est « retirée »
                       "retiree": bool(info) and not s.eliminated
                       and not info.get(s.name.rsplit("_v", 1)[0], {}).get("active", False),

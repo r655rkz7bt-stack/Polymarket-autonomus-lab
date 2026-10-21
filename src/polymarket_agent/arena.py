@@ -90,6 +90,14 @@ def t_stat(values: list[float]) -> float:
     return round(m / (sd / math.sqrt(n)), 3) if sd > 0 else (99.0 if m > 0 else 0.0)
 
 
+def confidence_percent(t: float) -> int:
+    """Confiance en pourcentage (affichage, demande d'Etienne du 21/10/2026) : probabilité, d'après le
+    score t, que le rendement moyen par pari soit vraiment au-dessus de zéro (loi normale).
+    t = 0 → 50 % (pile ou face), 1,5 → 93 %, 2 → 98 %, −1,5 → 7 %. Ne tient pas compte du nombre de
+    stratégies essayées : sur 96, une au moins dépasse souvent 93 % par chance."""
+    return int(round(100 * 0.5 * (1 + math.erf(float(t) / math.sqrt(2)))))
+
+
 def bought_events(entries: list[dict]) -> frozenset:
     """Événements achetés depuis la dernière remise à zéro (événement Polymarket, sinon marché)."""
     out: set[str] = set()
