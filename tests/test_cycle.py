@@ -171,6 +171,16 @@ def test_a_one_cent_dip_during_the_cycle_still_trades(env, paths):
     assert report.counts["fills"] == 1
 
 
+def test_book_aged_by_earlier_portfolios_is_reread_not_rejected(env, paths):
+    """21/10/2026 : un cycle de plusieurs minutes vieillit les carnets du début de cycle ; les portefeuilles passés en dernier
+    voyaient leurs propositions rejetées « carnet périmé » avant même la relecture. Le carnet relu, frais, doit suffire."""
+    make, _, _ = env
+    crown(paths)
+    old = good_book(ts=NOW - timedelta(minutes=4))
+    report = run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": old}, fresh={"tokA": good_book()})))
+    assert report.counts["fills"] == 1
+
+
 def test_stale_book_on_reread_means_no_trade(env, paths):
     make, _, _ = env
     crown(paths)

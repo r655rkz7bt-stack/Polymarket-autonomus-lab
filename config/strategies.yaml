@@ -164,7 +164,8 @@ nf_sport_tres_court:
   morceau: "sport + moins de 6 h"
   class: naive_favorite
   filtres: {familles: [sports], heures_min: 0, heures_max: 6}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-18"
   params:
@@ -838,7 +839,8 @@ nf_sport_patiente_prix_moyen:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], prix_min: 0.80, prix_max: 0.875}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-19"
   params:
@@ -905,7 +907,8 @@ nf_sport_patiente_2crans:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], prix_min: 0.80, prix_final: true}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-19"
   params:
@@ -1110,7 +1113,8 @@ nf_court_hors_sport:
   morceau: "moins de 24 h, hors sport"
   class: naive_favorite
   filtres: {familles: [politics, culture, finance, economics, crypto, weather, tech, mentions, other], heures_min: 0, heures_max: 24}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-18"
   params:
@@ -1150,7 +1154,8 @@ nf_long:
   morceau: "plus de 7 jours"
   class: naive_favorite
   filtres: {heures_min: 168}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1539,7 +1544,8 @@ cotes_bookmakers:
   explication: "Avant un match, on compare le prix de Polymarket à l'avis des bookmakers ; si Polymarket est nettement moins cher, on achète."
   # AMELIORATION n°5 (17/10/2026) : probabilité moyenne des bookmakers (The Odds API, marge retirée)
   # contre le prix du carnet ; relevé toutes les 12 h (offre gratuite, 500 crédits par mois).
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1621,7 +1627,8 @@ nf_sport_patiente_demi_mise:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], prix_min: 0.80, prix_final: true}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-19"
   params:
@@ -1642,7 +1649,8 @@ nf_sport_patiente_large:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports]}
-  enabled: true
+  # Éliminée par l'arène, coupée le 21/10/2026 (soir, passage chercheur) : obligation de la feuille de mission.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-19"
   params:
@@ -2577,3 +2585,45 @@ jobs_favori_non:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+nf_tennis_vainqueur:
+  explication: "Le favori en tennis, acheté tout de suite, mais seulement les paris « qui gagne le match » (pas les handicaps ni les totaux)."
+  # Fille 80/20 (obligation du 21/10, soir) : type de pari vainqueur = 68 opérations, +147, +4,8 % par mise contre nf_tennis entière.
+  # Rappel (enquête 21/10) : les variantes « favori » gagnent 0,0 % sur le type vainqueur en sport en général : à suivre, pas à croire.
+  mere: nf_tennis
+  morceau: "tennis, type vainqueur"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], types_pari: [vainqueur]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_tennis_12_18h_vainqueur:
+  explication: "Le favori en tennis, seulement les paris « qui gagne le match », achetés entre 12 h et 18 h (heure UTC)."
+  # Fille 80/20 (obligation du 21/10, soir) : heure 12-18 h UTC + vainqueur = 15 opérations, +144, +19,4 % par mise. Quinze paris : probablement le hasard.
+  # Le morceau « prix 0,80-0,85 » de la même obligation existe déjà (nf_tennis_prix_bas_800_850, mêmes filtres) : pas de doublon.
+  mere: nf_tennis
+  morceau: "tennis, type vainqueur, achat 12-18 h UTC"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], heure_utc: [12, 18], types_pari: [vainqueur]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
