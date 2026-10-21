@@ -23,9 +23,29 @@ nos résultats** (partie A) et **trouver de vrais avantages, prouvés sur le pas
 trouvé. Les défauts qui ont coûté cher (le principal qui misait 3 fois trop gros, la confiance
 calculée en euros, les cotes « vainqueur » appliquées aux handicaps, les estimations sur un carnet
 périmé) et les seules stratégies prouvées sur le passé ont demandé des heures de téléchargements
-et de calculs. Un passage sérieux dure **45 à 90 minutes de travail réel**. « Passage court » n'est
-jamais une raison de sauter une partie : si le temps manque vraiment, sauvegarde ton état
-(scripts, chiffres, étape atteinte) pour que le passage suivant reprenne exactement là.
+et de calculs. « Passage court » n'est jamais une raison de sauter une partie : si le temps manque
+vraiment, sauvegarde ton état (scripts, chiffres, étape atteinte) pour que le passage suivant
+reprenne exactement là.
+
+**Budget d'un passage (décision d'Etienne, 21/10/2026 : le chercheur doit utiliser environ 70 % de
+son quota de la journée).** Mesuré le 21/10 : les passages duraient 9 à 16 minutes (un seul de
+51 minutes), soit environ un huitième de ce qu'Etienne voulait y mettre.
+- **Quand** : à partir du **vendredi 24/10/2026 à 00:00 UTC** (2 h à Paris), heure de remise à zéro
+  de la limite d'usage de la semaine, déjà en « avertissement » le 21/10 (choix d'Etienne : ne pas
+  risquer de tout bloquer avant). **Avant cette date : 45 à 90 minutes par passage**, comme avant ;
+  vérifie la date avec `date -u` au début du passage.
+- **Durée visée : 2 heures de travail par passage** (entre 1 h 45 et 2 h 15). Note l'heure de
+  départ tout de suite (`date -u +%H:%M > /tmp/debut_passage`) et regarde l'heure (`date -u`) à la
+  fin de chaque partie. Le passage suivant commence 5 heures après : il reste toujours de la marge.
+- **Tant que 1 h 45 n'est pas passée, ne termine pas** : enchaîne la partie D (ci-dessous).
+- **Ce temps sert à du vrai travail**, jamais à remplir : pas de calcul refait pour rien, pas de
+  rapport gonflé. Le temps en plus va d'abord à des données plus nombreuses (plus de saisons, plus
+  de vrais échanges), puis à une deuxième piste, puis à une deuxième enquête.
+- **Sous-agents** : lance en parallèle (outil Agent) les gros téléchargements ou plusieurs
+  découpages d'une même piste ; chacun rend des chiffres, toi tu juges et tu écris.
+- **Limite d'usage** : si la session signale que la limite d'usage (5 heures ou semaine) est proche
+  ou atteinte, sauvegarde, pousse ce qui est prêt et termine tout de suite. Ne force jamais.
+- Dans l'entrée du journal, note l'heure de début et de fin du passage.
 
 ### 0. Préparer et lire
 1. `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` si besoin.
@@ -97,6 +117,18 @@ jamais une raison de sauter une partie : si le temps manque vraiment, sauvegarde
 2. Au moins une nouvelle stratégie ou variante dans l'arène à chaque passage (décision d'Etienne,
    15/10/2026) : de préférence celle de la partie B.
 3. Sans obligation, avance aussi un chantier de `experiments/CHANTIERS.md`.
+
+### D. Tant qu'il reste du temps (budget de 2 heures, à partir du 24/10/2026)
+Dans cet ordre, en regardant l'heure entre chaque étape :
+1. La piste de la partie B n'a pas son verdict : continue-la (plus de données, plus de réglages,
+   les vrais prix payés si ce n'est pas fait).
+2. Verdict rendu : prends la piste suivante de `experiments/PISTES.md` et mène-la aussi loin que
+   possible (au pire, sauvegarde ton état pour le passage suivant).
+3. Une deuxième enquête à la main dans une autre famille de `experiments/enquetes/README.md`.
+4. Un chantier de `experiments/CHANTIERS.md`, ou une nouvelle piste ajoutée à `PISTES.md` (avec
+   la raison) et son premier relevé de données.
+Pousse ton travail au fil de l'eau (une pull request peut recevoir plusieurs commits) : si le
+passage s'arrête net, rien n'est perdu.
 
 ### Fin du passage
 1. Branche `claude/` depuis `origin/main`, petits commits, tests verts
