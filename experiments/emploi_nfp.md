@@ -50,6 +50,10 @@ simple, et le test coûte un fantôme. Stratégie : `jobs_favori_non` (classe `J
 la publication, estimation « juste » = 0,6 × le prix (mesuré 4-5 / 7-11 attendues), Kelly ¼.
 À confirmer sur les prochaines publications (NFP d'octobre : vendredi 6/11/2026 à 13 h 30 UTC ; les tranches existent déjà).
 
+## Généralise-t-il ? PIB et ISM : non
+Même mesure sur 14 événements PIB / ISM (`macro_releve.py`, `macro_favori.py`) : favori 8 gagnés / 5,5 attendus (T-6 h), 3 / 4,8 (T-24 h), 4 / 4,8 (T-72 h), 5 / 3,7 (T-168 h) : z de −1,0 à +1,4, rien de régulier. L'effet des emplois
+n'est donc pas « toutes les séries à tranches » ; il pourrait tenir à la largeur des tranches d'emplois (25-50 k contre une surprise de ~75 k) ou au hasard. Un argument de plus pour rester à « indice ».
+
 ## Limites et suite
 - Le fantôme dépend de la date de fin Gamma (placeholder, souvent la veille ou le lendemain du rapport) : la fenêtre 4-72 h est large exprès ; après la publication le prix du favori
   sort de la bande 0,25-0,70 et la stratégie se tait.

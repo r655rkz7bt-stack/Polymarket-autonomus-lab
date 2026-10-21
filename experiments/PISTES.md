@@ -25,10 +25,10 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 6. **Matchs de NFL, suite** : `mots_prononces_nfl` (fantôme) à confirmer sur de nouveaux matchs ; si oui,
    tester les mots à seuil (« Referee 5+ times ») séparément des mots simples.
 
-7. **Autres données économiques à tranches** : premier relevé du 21/10 (`experiments/emploi_nfp/claims_releve.py`). **Demandes d'allocations hebdomadaires : écartée** (23 événements réglés, tous de 2021-2022 sauf
-   février 2025, 47 marchés, 811 échanges réels : trop peu et trop vieux). Restent, pas encore téléchargés : « US GDP growth in <trimestre> » (9 événements), ISM Services / Manufacturing PMI (5 + 5),
-   « Fed decision in <mois> » (16, bien piloté par les contrats à terme : pas de source gratuite). Même méthode que `experiments/emploi_nfp/` (`telecharger.py`, `analyse.py`, `contre_kalshi.py` ; l'API
-   `historical/` de Kalshi donne chiffres officiels et prix horaires, ~3 s par appel). Question d'abord : la tranche centrale est-elle surévaluée comme pour les emplois ?
+7. **Autres données économiques à tranches** (21/10, `experiments/emploi_nfp/claims_releve.py`, `macro_releve.py`, `macro_favori.py`). **Demandes d'allocations hebdomadaires : écartée** (23 événements, tous de 2021-2022 sauf février 2025,
+   811 échanges réels). **PIB américain et ISM (services, industrie) : écartée** (19 événements réglés, 14 avec heure de publication ; la tranche favorite gagne 8/5,5, 3/4,8, 4/4,8, 5/3,7 à T-6/24/72/168 h, z entre −1,0 et +1,4 :
+   rien de régulier, et le sens inverse de celui des emplois : l'effet « tranche favorite surévaluée » n'est pas général, il tient peut-être aux seuls emplois). Reste : « Fed decision in <mois> » (16, bien piloté par les contrats
+   à terme : pas de source gratuite). Méthode et scripts réutilisables : `experiments/emploi_nfp/` ; l'API `historical/` de Kalshi donne chiffres officiels et prix horaires (~3 s par appel).
 
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
