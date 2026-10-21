@@ -3,6 +3,19 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (session avec Etienne, matin : AMELIORATION, lots 2 et 3)
+
+- **Prix payés** (`experiments/prix_payes.md`) : avant d'inscrire les deux pistes « retenues » dans `validated_strategies`
+  (option B d'Etienne), recalcul aux prix de vrais preneurs (data-api, premier achat dans les 6 h).
+  - `mots_prononces` : **trompeuse**. 46 % des décisions sans aucun échange (elles faisaient le gain) ; les autres −1,5 % par achat,
+    −8,1 % par événement ; Trump −17 %. Fantôme seulement.
+  - `compteur_tweets_non` : **indice**. Par période +2,6 % (t +0,65) aux mêmes décisions, +8,0 % (t +1,49) en décidant au prix payé ;
+    le NON ≥ 0,70 perd (−3,5 %), le NON 0,30-0,70 reste positif aux 6 réglages → fille `compteur_tweets_non_prix_moyen`.
+  - `validated_strategies` reste vide : la priorité aux prouvées (lot 2) attend une stratégie vraiment prouvée. Troisième fois qu'un
+    gain « au prix horaire » disparaît aux vrais prix (météo, annonceurs, mots) : toujours vérifier aux échanges réels.
+- **Lot 2** fusionné (PR #102) : priorité aux validées, ménage des filles (13 retraits à blanc sur 110), variantes à ordre posé.
+- **Lot 3** (noyau, PR #103) : récompenses estimées créditées au seul principal ; attend la fusion d'Etienne.
+
 ## 2026-10-21 (session avec Etienne, matin : AMELIORATION, lot 1)
 
 - **Cause des stratégies muettes trouvée** : références rattachées aux seuls 150 marchés surveillés et pas de `candidates()`

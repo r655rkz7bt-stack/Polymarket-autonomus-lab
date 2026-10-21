@@ -1965,6 +1965,9 @@ compteur_tweets:
 
 mots_prononces:
   explication: "« Trump dira-t-il tel mot ? » : on regarde combien de fois il l'a dit dans les marchés passés du même genre, et on achète si le prix s'en écarte nettement (jamais un billet à moins de 0,30)."
+  # Retenue le 20/10 au prix HORAIRE (+19 % par achat, experiments/vingt_pistes.md). AUX PRIX PAYÉS (vrais échanges de
+  # preneurs, experiments/prix_payes.md, 21/10/2026) : TROMPEUSE. 46 % des décisions n'ont aucun échange en 6 h (c'est
+  # elles qui faisaient le gain) ; les autres : −1,5 % par achat, −8,1 % par événement ; Trump −17 %. Fantôme seulement.
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -2284,12 +2287,41 @@ nf_sport_patiente_vainqueur:
 
 compteur_tweets_non:
   explication: "Combien de messages un compte publiera-t-il cette semaine ? On n'achète que le « NON » d'une tranche trop chère, et jamais pour NYC Mayor."
-  # Piste n° 1 de PISTES.md (21/10/2026), retenue : sur 147 périodes passées (juillet-octobre 2026, prix réels), NON sans
-  # NYC Mayor = +10 % à +19 % par achat aux 6 réglages essayés, t par période +2,9 à +4,5, 4 mois sur 4
-  # (experiments/tweets_filles.md). Elon Musk et Trump seuls : rien (≈ 0).
+  # Piste n° 1 de PISTES.md (21/10/2026), retenue au prix HORAIRE : NON sans NYC Mayor = +10 % à +19 % par achat aux
+  # 6 réglages, t par période +2,9 à +4,5, 4 mois sur 4 (experiments/tweets_filles.md). AUX PRIX PAYÉS (vrais échanges
+  # de preneurs, experiments/prix_payes.md, 21/10/2026) : seulement un INDICE (par période +2,6 %, t +0,65 aux mêmes
+  # décisions ; +8,0 %, t +1,49 en décidant au prix payé ; 61 % des décisions sans aucun échange en 6 h). Pas validée.
   mere: compteur_tweets
   morceau: "NON seulement, sans NYC Mayor"
   class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
+
+compteur_tweets_non_prix_moyen:
+  explication: "Comme « compteur de tweets, NON seulement », mais seulement quand le NON coûte entre 0,30 et 0,70."
+  # Prix payés (experiments/prix_payes.md, 21/10/2026) : le NON à 0,70 ou plus (63 % des achats) perd −3,5 % aux vrais
+  # prix ; le NON payé 0,30-0,70 reste positif aux 6 réglages (+4 % à +17 % par période, t +0,5 à +1,9). Indice : à
+  # confirmer en direct (au moins 4 semaines, t ≥ 1,5) avant toute inscription dans validated_strategies.
+  mere: compteur_tweets_non
+  morceau: "NON payé 0,30-0,70"
+  class: compteur_tweets
+  filtres: {prix_min: 0.30, prix_max: 0.70}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-21"

@@ -862,7 +862,10 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
   (places, doublons) et se partagent le capital principal ; les autres qualifiées, championne
   comprise, gardent ensemble `part_des_autres` (20 %). Sans validée qualifiée, rien ne change. Une
   valeur `null` dans `validated_strategies` exclut une fille d'une mère validée. N'entre dans la
-  liste qu'un test tenu **aux prix réellement payés** (`experiments/prix_payes.md`).
+  liste qu'un test tenu **aux prix réellement payés** (`experiments/prix_payes.md`). Vérification
+  du 21/10 : `mots_prononces` trompeuse (−1,5 % par achat aux vrais échanges), `compteur_tweets_non`
+  seulement un indice ; la liste reste vide, la règle attend une stratégie vraiment prouvée.
+  Fille d'essai : `compteur_tweets_non_prix_moyen` (NON payé 0,30-0,70, seul morceau positif).
 - **Moins de filles** (`promotion.yaml → filles`, `arena.retire_daughters`) : retrait des filles
   muettes depuis 48 h, des doublons (≥ 90 % de paris communs avec la mère ou une sœur et pas
   meilleures par opération sur la période commune) et des filles en trop (au-delà de 10 vivantes par
