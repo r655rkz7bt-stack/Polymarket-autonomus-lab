@@ -29,5 +29,5 @@ ampleur, correctif (ou proposition si noyau), test de non-régression, contrôle
 2. **La mesure récompense la chance** (euros au lieu du rendement, quelques gros paris, un seul jour, une seule période).
 3. **La donnée n'est pas celle qu'on croit** (mauvais marché rattaché, mauvais type de pari, prix historique non exécutable, carnet périmé, source en retard).
 4. **Le filtre ne filtre pas** (plage de prix vérifiée sur un prix, pari pris à un autre ; fenêtre de temps sur la mauvaise date).
-5. **Comparaisons faussées** (périodes différentes, fantômes au capital différent, paris liés comptés comme indépendants).
-6. **Ce qui ne tourne plus** (stratégie muette, source en panne, position jamais réglée).
+5. **Comparaisons faussées** (périodes différentes, fantômes au capital différent, **argent disponible différent** : une mère à Kelly complet sans cash contre ses filles, paris liés comptés comme indépendants, portefeuille traité en dernier dans le cycle).
+6. **Ce qui ne tourne plus** (stratégie muette, source en panne, position jamais réglée, **stratégie sourde** : marchés écartés par le scanner, `min_volume_24h`, `tag_pages` ; abstentions vides = elle ne voit rien).

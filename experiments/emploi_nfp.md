@@ -37,6 +37,9 @@ Gagnés / attendus par tranche de prix, T-6 h à T-168 h : écarts de −1,2 à 
 - **NON sur la tranche favorite, aux prix des vrais échanges** (premier échange dans les 2 h après la décision, frais du marché) : T-6 h +32,8 % (15 paris, t événement +1,95,
   13 mois sur 15), T-24 h +20,1 % (15, t +0,84), T-72 h +50,1 % (9, t +2,19) ; coût moyen du NON 0,60. NON si Polymarket dépasse Kalshi de 3 à 5 points : T-72 h +56 à +60 %
   (8-10 paris, t +3,4 à +3,8), T-24 h −5 % à +24 % (8-16 paris, sens non régulier).
+- **Robustesse du NON sur la tranche favorite** (`favori_robustesse.py`, prix des vrais échanges) : par moitié de période — T-6 h 1re moitié +41 % (6 paris), 2e moitié +27 % (9) ; T-24 h +35 % (6) puis +10 % (9) ;
+  T-72 h 2e moitié +50 % (5) — donc positif des deux côtés mais en baisse sur la période récente ; sans les tranches ouvertes (« <x », « >x ») +32 % / +25 % / +51 % (13 / 12 / 8 paris) ; sans le meilleur pari
+  +23 % / +9 % / +36 %. Le favori perd 24-27 fois sur 29.
 - Réglages regardés : 4 horizons × 4 plages de prix × OUI/NON × 3 familles (~150 cellules de `analyse.py`) + 3 horizons × 4 filtres favori + 6 filtres Kalshi.
   Un z de −3 parmi ~50 cellules de calibration est ce que le meilleur de 50 donne par hasard (≈ −2,3).
 
