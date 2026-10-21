@@ -70,6 +70,7 @@ class Standing:
     reward_days: int = 0  # journées de récompenses versables (≥ 1 $)
     mode: str = ""  # "" (capital réalisé), "recompenses" ou "valeur" (voir mode_for)
     events: frozenset = frozenset()  # événements (matchs…) achetés depuis le début de l'époque
+    day_confidence: float | None = None  # confiance par jour, 0 à 1 (voir day_confidence) ; None = inconnue
 
     def report(self) -> dict:
         """Version lisible (JSON) : sans la liste des événements."""
@@ -96,6 +97,29 @@ def confidence_percent(t: float) -> int:
     t = 0 → 50 % (pile ou face), 1,5 → 93 %, 2 → 98 %, −1,5 → 7 %. Ne tient pas compte du nombre de
     stratégies essayées : sur 96, une au moins dépasse souvent 93 % par chance."""
     return int(round(100 * 0.5 * (1 + math.erf(float(t) / math.sqrt(2)))))
+
+
+def day_confidence(trades: list[dict]) -> float:
+    """Confiance « par jour » (règle mélange, décision d'Etienne du 21/10/2026), de 0 à 1.
+
+    Pour chaque opération, le prix payé est la chance de gagner annoncée par le marché. On compare,
+    jour par jour (jour de clôture), les paris gagnés à ceux attendus ; z = somme des écarts / écart
+    type, l'écart type étant le plus grand des deux : celui du hasard (Σ p(1−p)) ou celui mesuré
+    entre les journées. Une seule journée exceptionnelle (le 18/10) compte donc moins qu'avec t.
+    Championne le 21/10 : 85 % (t : 98 %). Rejeu : experiments/regle_confiance.md."""
+    days: dict = {}
+    var_model = 0.0
+    for t in trades:
+        cost, bought = float(t.get("cost") or 0), float(t.get("shares_bought") or 0)
+        if cost <= 0 or bought <= 0:
+            continue
+        p = min(max(cost / bought, 0.01), 0.99)
+        day = str(t["closed_at"])[:10]
+        days[day] = days.get(day, 0.0) + (float(t["pnl"]) > 0) - p
+        var_model += p * (1 - p)
+    var = max(var_model, sum(e * e for e in days.values()))
+    z = sum(days.values()) / math.sqrt(var) if var > 0 else 0.0
+    return round(0.5 * (1 + math.erf(z / math.sqrt(2))), 4)
 
 
 def bought_events(entries: list[dict]) -> frozenset:
@@ -160,7 +184,7 @@ def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0
     growth = math.log(judged / initial) if judged > 0 and initial > 0 else float("-inf")
     return Standing(name, len(trades), realized, initial, growth, state.epoch_started_at, name in eliminated,
                     round(max(0.0, rewards), 4), t_stat(trade_returns(trades)), int(reward_days), mode,
-                    bought_events(entries))
+                    bought_events(entries), day_confidence(trades))
 
 
 def ranking(standings: list[Standing]) -> list[Standing]:
@@ -343,8 +367,11 @@ def _split(group: list[Standing], merit: float) -> dict[str, float]:
 def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> dict[str, float]:
     """Part RÉELLEMENT engagée de chaque stratégie (≤ sa part) : période d'essai (la part croît avec
     les opérations clôturées, de `part_minimale` à 1 après `pleine_part_apres_operations`) et
-    plafond `part_max` des modes « recompenses » et « valeur ». Le reste du capital attend."""
+    plafond `part_max` des modes « recompenses » et « valeur ». Garde-fou par jour (`garde_fou_jour`,
+    21/10/2026) : part multipliée par `reduction` si la confiance par jour est sous `confiance_min`.
+    Le reste du capital attend."""
     by = {s.name: s for s in standings}
+    guard = cfg.get("garde_fou_jour") or {}
     trial = cfg.get("essai") or {}
     full, floor = float(trial.get("pleine_part_apres_operations", 0)), float(trial.get("part_minimale", 1.0))
     cap = float(cfg.get("part_max_par_strategie") or 1.0)  # plafond commun (18/10/2026)
@@ -358,6 +385,9 @@ def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> 
             out[name] = w * min(1.0, max(floor, s.closed_trades / full))
         else:
             out[name] = w
+        if (guard and not mode and s is not None and s.day_confidence is not None
+                and s.day_confidence < float(guard.get("confiance_min", 0.0))):
+            out[name] *= float(guard.get("reduction", 1.0))
     return {n: round(min(v, cap), 6) for n, v in out.items()}
 
 
