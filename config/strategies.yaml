@@ -1976,6 +1976,26 @@ mots_prononces:
     min_count:      {value: 3, min: 1, max: 50}          # au moins 3 marchés passés du même mot
     min_price:      {value: 0.30, min: 0.0, max: 0.9}    # passé : sous 0,30, rien à gagner
 
+mots_prononces_nfl:
+  explication: "« Les commentateurs diront-ils ce mot pendant le match de NFL ? » : on regarde combien de fois ils l'ont dit lors des matchs passés, et on achète si le prix s'en écarte (jamais pour la Coupe du monde, qui perdait)."
+  # Piste « mentions : the announcers et anyone » (21/10/2026, experiments/mentions_annonceurs.md) : INDICE
+  # seulement. Aux prix des vrais échanges : NFL +69 % par achat (14 matchs, t par match +4,8, 6 réglages sur 6
+  # positifs, deux moitiés positives) ; Coupe du monde −4 % à −34 % ; « anyone » : presque aucun échange. Fantôme.
+  mere: mots_prononces
+  morceau: "commentateurs NFL / football américain"
+  class: mots_prononces
+  filtres: {question_contient: ["game?"], question_exclut: ["world cup", "ufc"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    <<: *reference
+    margin:         {value: 0.05, min: 0.0, max: 0.4}
+    max_gap:        {value: 0.60, min: 0.05, max: 1.0}
+    max_age_hours:  {value: 26, min: 1, max: 168}
+    min_count:      {value: 3, min: 1, max: 50}
+    min_price:      {value: 0.30, min: 0.0, max: 0.9}    # passé : 0,30-0,70 +42 % ; sous 0,30 trop peu d'achats pour le dire
+
 mots_nouveaux:
   explication: "« Dira-t-il ce mot ? » quand le mot n'a jamais été proposé pour cet orateur : mot à la mode, le OUI est souvent trop cher ; on achète le NON."
   enabled: true
@@ -2268,3 +2288,68 @@ compteur_tweets_non:
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
     only_no:        {value: 1, min: 0, max: 1}
     skip_nyc:       {value: 1, min: 0, max: 1}
+
+nf_sport_patiente_tennis_875_900:
+  explication: "La championne du tennis (favori, achat posé), mais seulement quand le prix payé est entre 0,875 et 0,90."
+  # Fille 80/20 (obligation du 21/10) : prix payé 0,875-0,900 = 10 opérations, +158, +12,0 % par mise contre la mère.
+  # Un morceau de 10 paris est une piste, pas une preuve. `prix_final` : le filtre porte sur le prix de l'ordre posé
+  # (enquête 21/10 : sinon l'achat se fait sous la plage, au meilleur acheteur).
+  mere: nf_sport_patiente_tennis
+  morceau: "tennis, prix payé 0,875-0,900"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.875, prix_max: 0.90, prix_final: true}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_72_168h_850_875:
+  explication: "La championne (favori de sport, achat posé), mais seulement 3 à 7 jours avant la fin et au prix payé 0,85-0,875."
+  # Fille 80/20 (obligation du 21/10) : délai 72-168 h + prix payé 0,850-0,875 = 9 opérations, +150, +16,4 % par mise.
+  # Rappel (enquête 20/10) : le délai « 72-168 h » est la date placeholder de Gamma, pas le coup d'envoi.
+  mere: nf_sport_patiente
+  morceau: "échéance 72-168 h, prix payé 0,850-0,875"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168, prix_min: 0.85, prix_max: 0.875, prix_final: true}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_football:
+  explication: "Le favori de sport, mais seulement au football."
+  # Fille 80/20 (obligation du 21/10) : discipline football = 19 opérations, +138, +9,4 % par mise contre nf_sport entière.
+  mere: nf_sport
+  morceau: "football"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [football]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}

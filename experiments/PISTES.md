@@ -11,16 +11,19 @@ Ordre : gain espéré × facilité de test. Les marchés répétitifs et peu liq
 ont été les plus battables le 20/10 ; les marchés suivis par des robots (crypto au jour près) non.
 
 ## À tester
-1. **Mentions : « the announcers » et « anyone »** (meilleurs morceaux sur le passé, +29 % à +45 %),
-   et mots nouveaux par type d'événement (rallye, conférence, mois entier).
-2. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
-3. **Classements « status quo »** : « quel modèle d'IA sera n° 1 du classement LMArena », « n° 1
+1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
+2. **Classements « status quo »** : « quel modèle d'IA sera n° 1 du classement LMArena », « n° 1
    Spotify / Billboard » : le leader actuel reste-t-il plus souvent que son prix ne le dit ?
    (historiques publics des classements).
-4. **Données économiques** : inflation (CPI) et emploi contre la prévision « nowcast » de la Fed de
+3. **Données économiques** : inflation (CPI) et emploi contre la prévision « nowcast » de la Fed de
    Cleveland (gratuite) et contre Kalshi (kalshi_reference).
-5. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
+4. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
    le test crypto (attention : le test crypto a été négatif, marché suivi par des robots).
+
+5. **Mots nouveaux par type d'événement** (rallye, conférence, mois entier) : reste de l'ancienne piste n° 1 ;
+   les « annonceurs » et « anyone » sont jugés (ci-dessous).
+6. **Matchs de NFL, suite** : `mots_prononces_nfl` (fantôme) à confirmer sur de nouveaux matchs ; si oui,
+   tester les mots à seuil (« Referee 5+ times ») séparément des mots simples.
 
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
@@ -44,3 +47,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | autres sports (NFL, NBA, NHL, MLB, football, UFC… 14 097 marchés), favori 0,80-0,95 | écartée | −1,1 % à −2,0 % par mise après frais et écart, avant et pendant le match (le favori gagne autant que son prix) | tennis.md |
 | fatigue NBA (dos-à-dos, 3 en 4 soirs, écart de repos ; 1 222 matchs 2025-26) | écartée | pente repos +0,007 par jour (t +0,5), 7 découpages dans des sens opposés ; calendrier basketball-reference, règlement 1 231/1 231 | nba.md |
 | compteur_tweets, filles (182 périodes, 7 comptes) | retenue : NON seulement, sans NYC Mayor | +16,3 % par achat, +12,8 % par période (t +3,9), 6 réglages sur 6 positifs, 4 mois sur 4 ; Elon seul −3,6 %, 48 dernières heures +1 % (écartées) ; Elon et Trump ≈ 0 | tweets_filles.md |
+| mentions « the announcers » et « anyone », prix historique (3 555 marchés) | trompeuse | +31 % (t +6,8) au prix horaire du CLOB, −7 % aux prix des vrais échanges ; 715 prix à exactement 0,50 (carnet vide) | mentions_annonceurs.md |
+| mentions « anyone » (Big Brother, Love Island, séries, résultats d'entreprise) | écartée | presque aucun échange réel (4 achats possibles) | mentions_annonceurs.md |
+| mentions « annonceurs » Coupe du monde 2026 | écartée | 7 réglages sur 7 négatifs, −4 % à −34 % par achat (43-56 événements) | mentions_annonceurs.md |
+| mentions « annonceurs » NFL (14 matchs) | indice | +21 % à +91 % par achat sur 6 réglages, t par match +0,8 à +4,8 ; 2 mois, marchés minces : fantôme `mots_prononces_nfl` | mentions_annonceurs.md |

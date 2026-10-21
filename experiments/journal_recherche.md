@@ -3,6 +3,24 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (passage chercheur, ~5 h UTC)
+
+- **Enquête** (détail : `experiments/enquetes/2026-10-21_filtres_et_prix_executable.md`, famille 4 « le filtre ne filtre pas »).
+  - Aucune enquête obligatoire dans la feuille de mission. Le contrôle `filtre_prix` ne lisait pas la plage de prix des filles (`filtres.prix_min/prix_max`) :
+    sur 1 279 opérations clôturées, **13 achats hors plage** (9 gagnés, +20,7 €). Cause : `Filtered` filtre le prix du vendeur, puis `PatientOrders`
+    pose l'ordre jusqu'à 10 centimes plus bas. Correctif : filtre `prix_final` (le mode patient passe dans la fille) pour les nouvelles filles ; contrôles
+    `filtre_prix` (filles) et `filtre_delai` ajoutés, 2 tests. Fenêtres de délai (`echeance_*`, `heures_*`, `heure_utc`) vérifiées : respectées.
+  - Constats « à regarder » : `estimation_perimee` (mises prises sur un modèle, pas sur un carnet périmé ; 3 achats du principal datent d'avant le
+    correctif de la veille) et `copie_fidele` (2 exécutions partielles copiées à 100 % : non creusé).
+- **Recherche** (`experiments/mentions_annonceurs.md`) : piste n° 1, mentions « the announcers » et « anyone », 3 555 marchés, vrais échanges de 198 événements,
+  règlement relu (607 marchés à seuils, 0 incohérence). **+31 % au prix horaire (t +6,8) devient −7 % aux prix payés** : 715 prix à exactement 0,50 (carnets vides),
+  le même défaut que la météo du 16/10. « anyone » : écartée (presque aucun échange) ; Coupe du monde : écartée (−4 % à −34 %, 7 réglages sur 7) ;
+  **NFL : indice** (+21 % à +91 %, 14 matchs, 6 réglages sur 6 positifs, deux mois). ~15 découpages regardés.
+- **Arène** : `mots_prononces_nfl` (fantôme, nouveau filtre `question_contient/exclut`, historiques séparés pour les annonceurs) ; les trois filles de la feuille de
+  mission : `nf_sport_patiente_tennis_875_900`, `nf_sport_patiente_72_168h_850_875` (avec `prix_final`) et `nf_sport_football`.
+- **Reste ouvert** : confirmer `mots_prononces_nfl` sur les prochains matchs de NFL ; `mots_prononces` (mère) joue peut-être encore des annonceurs Coupe du monde ;
+  copies partielles du principal (Mannarino, Lynn Vision) ; `cotes_bookmakers` toujours muette ; piste suivante : champions de saison contre Pinnacle.
+
 ## 2026-10-21 (passage chercheur, ~0 h UTC)
 
 - **Enquête** (détail : `experiments/enquetes/2026-10-21_type_de_pari_et_reglement.md`, famille 3) : aucun défaut de code nouveau.

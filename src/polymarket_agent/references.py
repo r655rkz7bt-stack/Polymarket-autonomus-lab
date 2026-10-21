@@ -468,6 +468,7 @@ def attach_nhl_rest(markets, db) -> int:
 
 # ------------------------------------------------------------------ « dira-t-il ce mot ? » : taux historique
 
+ANNOUNCERS = ("the announcers", "announcers")
 MENTION = re.compile(r"^will (.+?) (?:say|mention|be said)\b", re.IGNORECASE)
 
 
@@ -479,6 +480,9 @@ def mention_key(question: str, word: str) -> tuple[str, str] | None:
     w = re.sub(r"\s*/\s*", "/", (word or "").strip().lower())
     if not speaker or not w or speaker[0] in "\"'“”":
         return None
+    if speaker in ANNOUNCERS:  # 21/10 : Coupe du monde, matchs de NFL (« … game? ») et le reste (UFC) ne se ressemblent pas
+        q = (question or "").lower().strip().rstrip("?").strip()
+        speaker = "the announcers (world cup)" if "world cup" in q else "the announcers (game)" if q.endswith(" game") else "the announcers"
     return speaker, w
 
 
