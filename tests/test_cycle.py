@@ -674,3 +674,44 @@ def test_a_book_reread_by_one_portfolio_is_reused_by_the_next_within_seconds(env
     _reread_book(deps, "tokA", cache)
     _reread_book(deps, "tokA", None)  # sans mémoire : toujours relu
     assert Counting.reads == 3
+
+
+def test_idle_ghost_beats_only_every_half_hour_and_cycle_publishes_timings(env, paths, tmp_path):
+    """21/10/2026 : les battements faisaient 92,5 % des lignes des journaux fantômes. Un fantôme
+    qui n'a rien écrit pendant le cycle ne bat plus qu'à intervalle (`cycle.battement_fantomes_minutes`) ;
+    le principal bat à chaque cycle. Le minutage et les abstentions sont publiés dans la base."""
+    make, db, clock = env
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}),
+                strategies=[pipeline_strategy("fantome")])
+    shadow_path = tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl"
+
+    def beats(path):
+        return sum(json.loads(l)["type"] == "HEARTBEAT" for l in path.read_text().splitlines())
+    run_cycle(deps)  # achat du fantôme : il a écrit, il bat
+    assert beats(shadow_path) == 1 and beats(paths[0]) == 1
+    clock["now"] = NOW + timedelta(minutes=5)
+    run_cycle(deps)  # rien écrit, battement récent : pas de battement
+    assert beats(shadow_path) == 1 and beats(paths[0]) == 2
+    clock["now"] = NOW + timedelta(minutes=31)
+    run_cycle(deps)
+    assert beats(shadow_path) == 2 and beats(paths[0]) == 3
+    timings = json.loads(db.get_value("durees_cycle"))["etapes"]
+    assert {"reglements", "scanner", "references", "carnets", "fantomes", "total"} <= set(timings)
+    reasons = json.loads(db.get_value("abstentions"))["portefeuilles"]["fantome:naive_favorite_v1.0.0"]
+    assert reasons["naive_favorite"]["marches"] == 1
+
+
+def test_round_robin_and_once_gamma():
+    from polymarket_agent.main import _OnceGamma, _round_robin
+    assert _round_robin([["a1", "a2"], ["b1"], [], ["c1", "c2", "c3"]]) == ["a1", "b1", "c1", "a2", "c2", "c3"]
+    gamma = FakeGamma([raw_market("m1")])
+    calls = []
+    real = gamma.get_market
+    gamma.get_market = lambda mid: calls.append(mid) or real(mid)
+    once = _OnceGamma(gamma)
+    assert once.get_market("m1") is once.get_market("m1") and calls == ["m1"]
+    for _ in range(2):  # l'erreur aussi est gardée : un seul appel
+        with pytest.raises(SourceUnavailable):
+            once.get_market("inconnu")
+    assert calls == ["m1", "inconnu"]
+    assert once.list_markets() == gamma.markets  # le reste passe au vrai client

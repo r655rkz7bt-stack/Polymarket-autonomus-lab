@@ -16,6 +16,7 @@ from __future__ import annotations
 import dataclasses
 import json
 import logging
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal, ROUND_DOWN, ROUND_UP
@@ -79,6 +80,19 @@ class CycleReport:
     sources: dict[str, str] = field(default_factory=dict)
     milestones: list[str] = field(default_factory=list)
     messages: list[str] = field(default_factory=list)
+    # Minutage par étape (secondes, 21/10/2026 : cycles de 220 à 285 s pour un créneau de 300 s),
+    # rattachements des références, abstentions par portefeuille et par stratégie.
+    timings: dict[str, float] = field(default_factory=dict)
+    references: dict[str, int] = field(default_factory=dict)
+    abstentions: dict[str, dict] = field(default_factory=dict)
+    lap_at: float = 0.0
+
+
+def _lap(report: CycleReport, name: str) -> None:
+    """Ajoute à `report.timings[name]` le temps écoulé depuis l'étape précédente."""
+    now = time.monotonic()
+    report.timings[name] = round(report.timings.get(name, 0.0) + (now - (report.lap_at or now)), 2)
+    report.lap_at = now
 
 
 @dataclass
@@ -259,8 +273,12 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
             return _halt(deps, report, "CORROMPU",
                          f"le journal ne contient plus l'écriture n°{seq} déjà vue : troncature ou remplacement")
 
+    report.lap_at = time.monotonic()
+    _lap(report, "journal_principal")
     main = Portfolio("principal", ledger, [])  # stratégie fixée par l'arène (champion)
     portfolios = [main] + _open_shadows(deps, report, started)
+    seq_at_open = {p.name: p.ledger.state.last_seq for p in portfolios}
+    _lap(report, "journaux_fantomes")
     try:
         _trade(deps, portfolios, report, bucket)
     except LedgerError as exc:  # garde-fou : jamais d'état à moitié écrit
@@ -273,18 +291,29 @@ def run_cycle(deps: CycleDeps) -> CycleReport:
         log.exception("erreur inattendue pendant le cycle")
 
     finished = deps.now()
+    try:
+        beats = json.loads(deps.db.get_value("battements_fantomes") or "{}")
+    except (ValueError, TypeError):
+        beats = {}
     for portfolio in portfolios:
         if not portfolio.ledger.state.bankrupt:
             for m in portfolio.ledger.record_milestones(finished):
                 report.milestones.append(f"{portfolio.name} : palier {m['target']} en {m['seconds'] / 3600:.1f} h")
                 log.info("PALIER %s atteint par %s", m["target"], portfolio.name)
         held = {t: m for t, m in portfolio.marks.items() if t in portfolio.ledger.state.positions}
-        portfolio.ledger.heartbeat(report.cycle_id, report.status, finished,
-                                   total_estimated=portfolio.ledger.state.total_estimated(held))
+        if portfolio is main or _ghost_beat_due(deps, portfolio, finished, seq_at_open, beats):
+            portfolio.ledger.heartbeat(report.cycle_id, report.status, finished,
+                                       total_estimated=portfolio.ledger.state.total_estimated(held))
+            beats[portfolio.name] = finished.isoformat()
         if portfolio is not main:
             report.shadows[portfolio.name] = dict(portfolio.ledger.state.summary(held),
                                                   **portfolio.counts)
+    deps.db.set_value("battements_fantomes", json.dumps(beats))
     deps.db.set_anchor(ledger.state.last_seq, ledger.state.last_hash, finished)
+    _lap(report, "battements")
+    report.timings["total"] = round((deps.now() - started).total_seconds(), 1)
+    deps.db.set_value("durees_cycle", json.dumps({"cycle": report.cycle_id, "etapes": report.timings}))
+    deps.db.set_value("abstentions", json.dumps({"cycle": report.cycle_id, "portefeuilles": report.abstentions}))
     report.summary = ledger.state.summary(
         {t: m for t, m in main.marks.items() if t in ledger.state.positions})
     report.counts.update(main.counts)
@@ -409,11 +438,15 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         log.critical("FAILLITE : %s — aucun trading", main.ledger.state.bankrupt_reason)
         return
 
-    # 3. Règlements : les marchés résolus libèrent le capital avant toute nouvelle entrée.
+    # 3. Règlements : les marchés résolus libèrent le capital avant toute nouvelle entrée. Un marché
+    #    détenu par plusieurs portefeuilles n'est lu qu'une fois par cycle (21/10/2026 : 948 positions,
+    #    beaucoup en double, 16,7 s de règlements sur un cycle de 59 s).
+    gamma_once = _OnceGamma(deps.gamma)
     for portfolio in portfolios:
         if portfolio.ledger.state.positions and not portfolio.ledger.state.bankrupt:
-            settled = settle_positions(portfolio.ledger, deps.gamma, deps.now())
+            settled = settle_positions(portfolio.ledger, gamma_once, deps.now())
             portfolio.counts["settled"] = len(settled)
+    _lap(report, "reglements")
     if main.ledger.state.bankrupt:
         report.status = "FAILLITE"
         return
@@ -452,6 +485,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         log.info("ARÈNE : %s", event)
 
     # 4. Scanner.
+    _lap(report, "arene_et_sante")
     now = deps.now()
     try:
         result = scan(deps.gamma, now, deps.settings["scanner"])
@@ -466,19 +500,32 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     full = now.minute % full_every < int(deps.settings["cycle"]["bucket_minutes"])
     deps.db.save_markets(report.cycle_id, now, result.markets if full else result.watchlist)
     report.counts.update(markets=len(result.markets), watchlist=len(result.watchlist))
+    _lap(report, "scanner")
 
     # 4 bis. Marchés supplémentaires demandés par les stratégies (ex. échelles de seuils).
     eligible = [m for m in result.markets if m.eligible]
     live = [m for m in eligible if not m.ended]  # marchés échus : seulement pour `wants_ended` (20/10/2026)
+    # Références externes (Kalshi, PredictIt, Manifold, tweets, champions, NHL, mentions) rattachées
+    # à TOUS les marchés scannés, AVANT que les stratégies demandent leurs marchés (21/10/2026 :
+    # sur les seuls 150 surveillés, elles ne trouvaient presque rien et 8 stratégies restaient muettes).
+    report.references = _attach_references(deps, live, now)
+    _lap(report, "references")
     known = {m.market_id for m in result.watchlist}
     max_extra = int(deps.settings["scanner"].get("max_extra_markets", 40))
+    # Places réparties à tour de rôle (21/10/2026) : la première stratégie servie ne prend plus
+    # toutes les places des suivantes.
+    wishes = []
     for strategy in {id(s): s for p in portfolios for s in p.strategies}.values():
         pool = eligible if getattr(strategy, "wants_ended", False) else live
-        for market in getattr(strategy, "candidates", lambda ms: [])(pool):
-            if market.market_id not in known and max_extra > 0:
-                result.watchlist.append(market)
-                known.add(market.market_id)
-                max_extra -= 1
+        wishes.append([m for m in getattr(strategy, "candidates", lambda ms: [])(pool)])
+    for market in _round_robin(wishes):
+        if max_extra <= 0:
+            break
+        if market.market_id not in known:
+            result.watchlist.append(market)
+            known.add(market.market_id)
+            max_extra -= 1
+    _lap(report, "candidats")
 
     # 5. Carnets : les deux issues de chaque marché surveillé + positions détenues
     #    (tous portefeuilles) pour les prix de marque.
@@ -494,6 +541,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         log.warning("carnets indisponibles, cycle sans trading : %s", exc)
         return
     deps.db.save_books(report.cycle_id, books.values())
+    _lap(report, "carnets")
     for portfolio in portfolios:
         portfolio.marks.update({t: b.best_bid for t, b in books.items()
                                 if t in portfolio.ledger.state.positions and b.best_bid is not None})
@@ -508,10 +556,12 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
             report.status = "FAILLITE"
             return
 
+    _lap(report, "ordres_poses")
     # 6. Historique de prix récent (seulement si une stratégie active en a besoin).
     if any(getattr(s, "needs_price_history", False) for p in portfolios for s in p.strategies):
         _attach_price_features(deps, result.watchlist, now)
 
+    _lap(report, "historique_prix")
     # 6 bis. Sources d'information (étape 5). Une source en panne ne bloque rien (mode dégradé).
     if deps.collector is not None:
         try:
@@ -519,6 +569,9 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         except Exception as exc:  # noqa: BLE001 - la collecte ne doit jamais faire tomber le cycle
             report.sources = {"collecte": f"indisponible : {type(exc).__name__}: {exc}"[:200]}
             log.exception("collecte des sources en échec, cycle poursuivi sans elles")
+    if report.references:
+        report.sources["references"] = "ok (" + ", ".join(f"{k} {v}" for k, v in report.references.items()) + ")"
+    _lap(report, "sources")
 
     # 7-11. Stratégies → propositions → contrôleur → exécution simulée, portefeuille par portefeuille.
     # Les fantômes d'abord : le capital principal copie ensuite les paris qu'ils viennent de faire.
@@ -527,6 +580,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         if portfolio.ledger.state.bankrupt:
             continue  # un fantôme en faillite ne trade plus (le principal est vérifié plus haut)
         _execute(deps, portfolio, result.watchlist, books, report, bucket, result.markets, fresh_books)
+        _lap(report, "principal" if portfolio is main else "fantomes")
         if main.ledger.state.bankrupt:
             break
     # 12. Récompenses ESTIMÉES (hors capital) : liquidité pour les ordres restés posés, détention
@@ -639,6 +693,10 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         log.info("[%s] %s v%s : %d propositions, %d ordres à poser, abstentions %s", portfolio.name,
                  strategy.strategy_id, strategy.version, len(output.proposals), len(limit_orders),
                  output.abstentions)
+        # Raisons d'abstention publiées (21/10/2026) : pourquoi une stratégie reste muette.
+        report.abstentions.setdefault(portfolio.name, {})[strategy.strategy_id] = {
+            "marches": len(seen), "propositions": len(output.proposals), "ordres": len(limit_orders),
+            "raisons": dict(sorted(output.abstentions.items(), key=lambda kv: -kv[1])[:6])}
         if portfolio.name == "principal":
             # Plusieurs stratégies au principal (18/10/2026) : un marché déjà acheté dans ce cycle par
             # l'une n'est pas racheté par une autre (les stratégies sautent déjà les positions ouvertes).
@@ -749,6 +807,61 @@ def _depuis_coup_d_envoi(market: MarketInfo, now: datetime) -> dict[str, str]:
     if getattr(market, "game_start", None) is None:
         return {}
     return {"depuis_coup_d_envoi_h": f"{(now - market.game_start).total_seconds() / 3600:.2f}"}
+
+
+class _OnceGamma:
+    """`get_market` lu une seule fois par marché pendant un cycle (réponse ou erreur gardée)."""
+
+    def __init__(self, gamma):
+        self.gamma, self.cache = gamma, {}
+
+    def get_market(self, market_id):
+        if market_id not in self.cache:
+            try:
+                self.cache[market_id] = (True, self.gamma.get_market(market_id))
+            except (SourceUnavailable, ValueError) as exc:
+                self.cache[market_id] = (False, exc)
+        ok, value = self.cache[market_id]
+        if not ok:
+            raise value
+        return value
+
+    def __getattr__(self, name):
+        return getattr(self.gamma, name)
+
+
+def _ghost_beat_due(deps: CycleDeps, portfolio: Portfolio, now: datetime, seq_at_open: dict, beats: dict) -> bool:
+    """Battement d'un fantôme (21/10/2026) : s'il a écrit pendant le cycle (achat, vente, règlement),
+    sinon au plus toutes les `cycle.battement_fantomes_minutes` minutes. Les battements faisaient
+    92,5 % des lignes des journaux fantômes (85 579 sur 92 496), relues et vérifiées à chaque cycle."""
+    if portfolio.ledger.state.last_seq != seq_at_open.get(portfolio.name):
+        return True
+    minutes = float(deps.settings.get("cycle", {}).get("battement_fantomes_minutes", 0) or 0)
+    last = beats.get(portfolio.name)
+    if minutes <= 0 or not last:
+        return True
+    try:
+        return (now - datetime.fromisoformat(last)).total_seconds() >= minutes * 60 - 30
+    except ValueError:
+        return True
+
+
+def _attach_references(deps: CycleDeps, markets: list[MarketInfo], now: datetime) -> dict[str, int]:
+    """references.attach_all sur tous les marchés scannés ; une erreur ne bloque jamais le cycle."""
+    from polymarket_agent import references
+    try:
+        return references.attach_all(markets, deps.db, now)
+    except Exception as exc:  # noqa: BLE001 - un rattachement ne bloque jamais le cycle
+        log.warning("références non rattachées : %s", exc)
+        return {}
+
+
+def _round_robin(lists: list[list]) -> list:
+    """[a1, a2], [b1], [c1, c2, c3] → a1, b1, c1, a2, c2, c3 (chaque stratégie à son tour)."""
+    out, depth = [], max((len(x) for x in lists), default=0)
+    for i in range(depth):
+        out += [x[i] for x in lists if i < len(x)]
+    return out
 
 
 def _price_drop(deps: CycleDeps, proposal: Proposal, before: OrderBook | None, fresh: OrderBook | None) -> str | None:

@@ -13,6 +13,7 @@ paths:
 
 cycle:
   bucket_minutes: 5            # sert à fabriquer des identifiants d'opération idempotents
+  battement_fantomes_minutes: 30   # 21/10/2026 : battement d'un fantôme inactif au plus toutes les 30 min (journaux 6× plus légers)
 
 # Ordres à cours limité posés dans le carnet (stratégies en mode « patient », limit_ticks).
 # Exécutés seulement si le marché passe AU TRAVERS du prix (execution_simulator.py).
@@ -66,6 +67,9 @@ scanner:
   holding_pages: 1             # 19/10/2026 : 100 marchés longs de plus (récompense de détention, parking_politique)
   holding_max_horizon_days: 900
   ended_pages: 1               # 20/10/2026 : 100 marchés échus depuis 1 à 72 h (apres_echeance)
+  # 21/10/2026 : marchés « mentions » (peu de volume, absents des pages normales : mots_prononces,
+  # mots_nouveaux). 176 ouverts ce jour-là, 56 passent ces filtres propres (liquidité médiane 170 $).
+  tag_pages: {100343: {pages: 2, min_liquidity: 100, min_volume_24h: 0, max_spread: 0.10}}
   ended_min_hours: 1
   ended_max_hours: 72
   max_extra_markets: 320       # marchés demandés par les stratégies (météo 100, tenue de marché 30, politique 40, sport 30, crypto 30) ; doublons comptés une fois

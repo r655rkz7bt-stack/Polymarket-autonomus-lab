@@ -72,6 +72,36 @@ def _add_holding_markets(gamma: GammaClient, now: datetime, cfg: dict, result: S
         result.markets.append(market)
 
 
+def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
+    """Marchés d'une étiquette précise (21/10/2026) : les marchés « mentions » (étiquette 100343)
+    ont peu de volume et n'entraient presque jamais dans les pages triées par volume ;
+    mots_prononces (retenue sur le passé) ne voyait aucun marché. `tag_pages: {étiquette: pages}` ou
+    `{étiquette: {pages, min_liquidity, ...}}` : filtres propres à l'étiquette (ces marchés ont
+    rarement 1 000 $ de liquidité ; le carnet réel décide de toute façon de ce qui s'exécute)."""
+    for tag, spec in (cfg.get("tag_pages") or {}).items():
+        spec = dict(spec) if isinstance(spec, dict) else {"pages": spec}
+        pages = int(spec.pop("pages", 0) or 0)
+        if pages <= 0:
+            continue
+        tag_cfg = dict(cfg, **spec)
+        try:
+            raw = gamma.list_markets(end_min=now, end_max=now + timedelta(hours=cfg["max_horizon_hours"]),
+                                     page_size=cfg["page_size"], max_pages=pages, tag_id=tag)
+        except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
+            log.warning("scanner : marchés de l'étiquette %s indisponibles (%s)", tag, exc)
+            continue
+        for item in raw:
+            market = parse_market(item)
+            if market.market_id in seen:
+                continue
+            seen.add(market.market_id)
+            market.exclusion = classify(market, now, tag_cfg)
+            market.eligible = not market.exclusion
+            if market.exclusion:
+                result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
+            result.markets.append(market)
+
+
 def _add_ended_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
     """Marchés dont l'échéance vient de PASSER (20/10/2026, stratégie apres_echeance) : encore
     échangés en attendant la résolution officielle. `ended_pages` pages, échéance entre
@@ -119,6 +149,7 @@ def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
             result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
         result.markets.append(market)
     _add_holding_markets(gamma, now, cfg, result, seen)
+    _add_tag_markets(gamma, now, cfg, result, seen)
     _add_ended_markets(gamma, now, cfg, result, seen)
     eligible = sorted((m for m in result.markets if m.eligible and not m.ended), key=lambda m: m.volume_24h, reverse=True)
     result.watchlist = eligible[: cfg["watchlist_size"]]

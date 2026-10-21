@@ -832,3 +832,26 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
 - Filtres de fille `sources` / `sources_exclues` (`strategy_engine.Filtered`, 20/10/2026) :
   domaine de la source de résolution (ex. `itftennis.com`), pour `outsider_itf` et
   `nf_sport_patiente_sans_itf` (experiments/achat_echelonne.md).
+
+## 48. AMELIORATION du 21/10/2026 (réponse d'Etienne : « Tout, et B pour le 2 »), lot 1
+- **Stratégies branchées sur leurs marchés** : les références externes (Kalshi, PredictIt, Manifold,
+  tweets, champions, repos NHL, mentions) étaient rattachées aux seuls 150 marchés surveillés, et les
+  stratégies à référence n'avaient pas de `candidates()` : 14 restaient muettes. Désormais
+  `main._attach_references` → `references.attach_all` sur TOUS les marchés scannés avant l'étape
+  des candidats ; `candidates()` ajouté à `_Reference`, `CompteurTweets`, `FootballTroisIssues`,
+  `MotsNouveaux`, `FatigueNhl` (helper `strategies_v3._with_reference`). Places supplémentaires
+  (`max_extra_markets`) réparties à tour de rôle (`main._round_robin`). `intel_pipeline` ne rattache
+  plus que le football.
+- **Marchés « mentions »** : `scanner.tag_pages` (étiquette Gamma 100343, `GammaClient.list_markets(tag_id=)`)
+  avec filtres propres (liquidité ≥ 100 $, écart ≤ 0,10) : 176 marchés ouverts, 56 retenus, 51
+  rattachés à leur historique ; `mots_prononces` et `mots_nouveaux` proposent enfin.
+- **Index de rapprochement** (`references.KalshiIndex`, `PredictItIndex`) : mêmes résultats sur
+  1 700 marchés réels, 42,9 s → 0,13 s (Kalshi) et 2,8 s → 0,03 s (PredictIt).
+- **Vitesse du cycle** : minutage par étape (`CycleReport.timings`, clé `durees_cycle` de la base,
+  `etapes_cycle` dans `data.json`) ; règlements lus une seule fois par marché (`main._OnceGamma`) ;
+  un fantôme qui n'a rien écrit ne bat plus qu'une fois par `cycle.battement_fantomes_minutes`
+  (30) minutes (`main._ghost_beat_due`) : les battements faisaient 92,5 % des lignes de ses journaux.
+  Le principal bat à chaque cycle. Cycle local : 115 s → 55 s.
+- **Raisons d'abstention publiées** : par portefeuille et par stratégie, à chaque cycle (marchés vus,
+  propositions, ordres, 6 premières raisons) ; clé `abstentions` de la base, `abstentions` dans
+  `data.json`, et dans l'enquête « stratégies muettes » (`enquete.muettes`).

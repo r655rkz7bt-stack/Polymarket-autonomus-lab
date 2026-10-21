@@ -193,19 +193,41 @@ def _close_dates(a: datetime | None, b: str | None, days: float) -> bool:
     return a is None or when is None or abs((a - when).total_seconds()) <= days * 86400
 
 
+class KalshiIndex:
+    """Index des titres Kalshi (21/10/2026) : mots et nombres calculés une fois, lignes rangées par
+    ensemble de nombres puis par mot. Sans lui, chaque marché était comparé aux 4 414 titres
+    (8 s par cycle sur 190 marchés, plus d'une minute sur les 1 621 marchés scannés)."""
+
+    def __init__(self, rows: list[dict]):
+        self.rows = rows
+        self.sets = [(words(r["titre"]), numbers(r["titre"])) for r in rows]
+        self.by_numbers: dict[frozenset, dict[str, list[int]]] = {}
+        for i, (w, n) in enumerate(self.sets):
+            bucket = self.by_numbers.setdefault(frozenset(n), {})
+            for x in w - GENERIC:
+                bucket.setdefault(x, []).append(i)
+
+    def match(self, market, min_sim: float = 0.55) -> dict | None:
+        if [str(o).lower() for o in market.outcomes] != ["yes", "no"]:
+            return None
+        text = f"{market.question} {market.group_title}"
+        wm, nm = words(text), numbers(text)
+        bucket = self.by_numbers.get(frozenset(nm))  # mêmes nombres exigés
+        if not bucket or not wm:
+            return None
+        best, best_sim = None, 0.0
+        for i in {i for x in wm - GENERIC for i in bucket.get(x, ())}:
+            wt = self.sets[i][0]
+            sim = len(wm & wt) / len(wm | wt)
+            # Échéance proche, et aucun mot distinctif de Kalshi absent de Polymarket (au plus un :
+            # les titres de Kalshi ajoutent souvent « be the … »).
+            if sim > best_sim and _close_dates(market.end_date, self.rows[i].get("fin"), 7) and len(wt - GENERIC - wm) <= 1:
+                best, best_sim = self.rows[i], sim
+        return dict(best, similarite=round(best_sim, 3)) if best is not None and best_sim >= min_sim else None
+
+
 def match_kalshi(market, rows: list[dict], min_sim: float = 0.55) -> dict | None:
-    if [str(o).lower() for o in market.outcomes] != ["yes", "no"]:
-        return None
-    text = f"{market.question} {market.group_title}"
-    best, best_sim = None, 0.0
-    for r in rows:
-        sim = similarity(text, r["titre"])
-        # Mêmes nombres, échéance proche, et aucun mot distinctif de Kalshi absent de Polymarket
-        # (au plus un : les titres de Kalshi ajoutent souvent « be the … »).
-        if (sim > best_sim and numbers(text) == numbers(r["titre"]) and _close_dates(market.end_date, r.get("fin"), 7)
-                and len(words(r["titre"]) - GENERIC - words(text)) <= 1):
-            best, best_sim = r, sim
-    return dict(best, similarite=round(best_sim, 3)) if best is not None and best_sim >= min_sim else None
+    return KalshiIndex(rows).match(market, min_sim)
 
 
 def match_predictit(market, rows: list[dict], min_sim: float = 0.4) -> dict | None:
@@ -216,28 +238,43 @@ def match_predictit(market, rows: list[dict], min_sim: float = 0.4) -> dict | No
     - chaque mot distinctif du marché PredictIt figure dans la question Polymarket ;
     - mêmes nombres des deux côtés (années, districts) et aucun nombre dans l'intitulé de l'issue
       qui ne soit pas dans le contrat (tranches « 8-1 », « 25-30% »)."""
-    if [str(o).lower() for o in market.outcomes] != ["yes", "no"]:
-        return None
-    q = market.question or ""
-    text = f"{q} {market.group_title}"
-    best, best_sim = None, 0.0
-    for r in rows:
-        name = words(r["contrat"])
-        if not name or not (name <= words(text)) or numbers(market.group_title) - numbers(r["contrat"]):
-            continue
-        if not (words(r["marche"]) - GENERIC - name) <= words(text):
-            continue
-        if numbers(q) != numbers(r["marche"]) | numbers(r["contrat"]):
-            continue
-        sim = similarity(q, f"{r['marche']} {r['contrat']}")
-        if sim > best_sim:
-            best, best_sim = r, sim
-    return dict(best, titre=f"{best['marche']} — {best['contrat']}", similarite=round(best_sim, 3)) \
-        if best is not None and best_sim >= min_sim else None
+    return PredictItIndex(rows).match(market, min_sim)
+
+
+class PredictItIndex:
+    """Mêmes règles que `match_predictit`, avec les mots et nombres de chaque contrat calculés une
+    fois et les contrats rangés par un mot de leur nom (21/10/2026, rattachement à tous les marchés)."""
+
+    def __init__(self, rows: list[dict]):
+        self.rows = rows
+        self.pre = []
+        self.by_word: dict[str, list[int]] = {}
+        for i, r in enumerate(rows):
+            name = words(r["contrat"])
+            self.pre.append((name, words(r["marche"]) - GENERIC - name, numbers(r["contrat"]),
+                             numbers(r["marche"]) | numbers(r["contrat"]), words(f"{r['marche']} {r['contrat']}")))
+            if name:
+                self.by_word.setdefault(min(name), []).append(i)
+
+    def match(self, market, min_sim: float = 0.4) -> dict | None:
+        if [str(o).lower() for o in market.outcomes] != ["yes", "no"]:
+            return None
+        q = market.question or ""
+        wt, wq, nq, ng = words(f"{q} {market.group_title}"), words(q), numbers(q), numbers(market.group_title)
+        best, best_sim = None, 0.0
+        for i in {i for x in wt for i in self.by_word.get(x, ())}:
+            name, distinct, n_contract, n_both, w_sim = self.pre[i]
+            if not name <= wt or ng - n_contract or not distinct <= wt or nq != n_both:
+                continue
+            sim = len(wq & w_sim) / len(wq | w_sim) if wq and w_sim else 0.0
+            if sim > best_sim:
+                best, best_sim = self.rows[i], sim
+        return dict(best, titre=f"{best['marche']} — {best['contrat']}", similarite=round(best_sim, 3)) \
+            if best is not None and best_sim >= min_sim else None
 
 
 def attach(markets, db, now: datetime) -> dict[str, int]:
-    """Pose `market.references` (et `market.tweets`) sur les marchés surveillés ; renvoie le nombre
+    """Pose `market.references` (et `market.tweets`) sur les marchés donnés ; renvoie le nombre
     de rattachements par source."""
     counts = {"kalshi": 0, "predictit": 0, "manifold": 0, "tweets": 0}
     if db is None:
@@ -246,12 +283,14 @@ def attach(markets, db, now: datetime) -> dict[str, int]:
     p_seen, predictit = _load(db, "ref:predictit")
     _, tweets = _load(db, "ref:tweets")
     by_slug = {t["slug"]: t for t in tweets if t.get("slug")}
+    k_index = KalshiIndex(kalshi) if kalshi else None
+    p_index = PredictItIndex(predictit) if predictit else None
     for m in markets:
         refs = {}
-        hit = match_kalshi(m, kalshi) if kalshi else None
+        hit = k_index.match(m) if k_index else None
         if hit:
             refs["kalshi"] = dict(hit, vu_le=k_seen.isoformat() if k_seen else None)
-        hit = match_predictit(m, predictit) if predictit else None
+        hit = p_index.match(m) if p_index else None
         if hit:
             refs["predictit"] = dict(hit, vu_le=p_seen.isoformat() if p_seen else None)
         try:
@@ -265,6 +304,18 @@ def attach(markets, db, now: datetime) -> dict[str, int]:
         for k in ("kalshi", "predictit", "manifold"):
             counts[k] += k in refs
         counts["tweets"] += m.tweets is not None
+    return counts
+
+
+def attach_all(markets, db, now: datetime) -> dict[str, int]:
+    """Toutes les références qui ne dépendent que des instantanés de la base, sur TOUS les marchés
+    scannés (21/10/2026 : rattachées aux seuls 150 marchés surveillés, elles ne trouvaient presque
+    rien — Kalshi 1, champions 0, NHL 0, mentions 0 — et 8 stratégies restaient muettes). Les
+    stratégies qui en dépendent demandent ensuite leurs marchés au scanner (`candidates`)."""
+    counts = attach(markets, db, now)
+    counts["champions"] = attach_outrights(markets, db)
+    counts["repos_nhl"] = attach_nhl_rest(markets, db)
+    counts["mentions"] = attach_mentions(markets, db)
     return counts
 
 

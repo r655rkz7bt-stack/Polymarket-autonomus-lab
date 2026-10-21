@@ -215,3 +215,13 @@ def test_kickoff_hours_are_logged_with_the_buy():
     start = NOW - timedelta(hours=1.5)
     assert main._depuis_coup_d_envoi(SimpleNamespace(game_start=start), NOW) == {"depuis_coup_d_envoi_h": "1.50"}
     assert main._depuis_coup_d_envoi(SimpleNamespace(game_start=None), NOW) == {}
+
+
+def test_silent_strategy_shows_its_abstention_reasons():
+    """21/10/2026 : les raisons d'abstention du dernier cycle accompagnent le constat « muette »."""
+    old = NOW - timedelta(days=4)
+    entries = {"principal": _ledger(born=old), "kalshi_reference_v1.0.0": _ledger(born=old)}
+    abst = {"portefeuilles": {"fantome:kalshi_reference_v1.0.0": {"kalshi_reference": {
+        "marches": 190, "propositions": 0, "ordres": 0, "raisons": {"écart trop grand (rattachement douteux)": 1}}}}}
+    found = enquete.muettes(entries, ["kalshi_reference_v1.0.0"], NOW, abstentions=abst)
+    assert "190 marchés vus" in found[0]["exemples"][0] and "(rattachement douteux) ×1" in found[0]["exemples"][0]

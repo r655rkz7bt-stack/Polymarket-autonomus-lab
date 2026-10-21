@@ -25,6 +25,13 @@ from polymarket_agent.reporting import closed_trades, equity_curve, max_drawdown
 MAX_POINTS = 300
 
 
+def _kv_json(db, key: str):
+    try:
+        return json.loads(db.get_value(key) or "null")
+    except (ValueError, TypeError):
+        return None
+
+
 def _downsample(curve: list[tuple[str, Decimal]], n: int = MAX_POINTS) -> list[list]:
     if len(curve) > n:
         step = len(curve) / n
@@ -512,6 +519,10 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                   "dernier_cycle": {"date": last[0][:16], "statut": last[1]} if last else None,
                   "cycles_24h": cycles, "erreurs": errors, "pouls": pulse},
         "systeme": system,
+        # 21/10/2026 : durée de chaque étape du dernier cycle, et pourquoi chaque stratégie s'abstient
+        # (marchés vus, propositions, raisons les plus fréquentes), pour l'enquête sur les muettes.
+        "etapes_cycle": _kv_json(db, "durees_cycle"),
+        "abstentions": _kv_json(db, "abstentions"),
         "sources": {"etat": source_state, "dernier_passage": {k: v[:16] for k, v in source_runs.items()},
                     "observations_24h": obs_by_source},
         "experiences": listing("experiments"),
