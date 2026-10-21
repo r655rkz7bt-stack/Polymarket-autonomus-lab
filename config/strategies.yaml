@@ -645,7 +645,9 @@ nf_sport_patiente:
   morceau: "sport, patiente"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-17"
@@ -669,7 +671,9 @@ nf_sport_patiente_tennis:
   morceau: "tennis"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], disciplines: [tennis]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -692,7 +696,9 @@ nf_sport_patiente_sans_itf:
   morceau: "sans ITF"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], sources_exclues: [itftennis.com]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], sources_exclues: [itftennis.com], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -852,7 +858,9 @@ nf_sport_patiente_non:
   morceau: "sport, patiente + favori NON"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], issue: [non]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], issue: [non], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-19"
@@ -894,7 +902,9 @@ nf_sport_patiente_2crans:
   morceau: "sport, patiente, ordre posé à 2 crans"
   class: naive_favorite
   limit_ticks: 2
-  filtres: {familles: [sports]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-19"
@@ -1585,7 +1595,9 @@ nf_sport_patiente_6_24h:
   morceau: "sport, patiente, 6 à 24 h"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], heures_min: 6, heures_max: 24}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24, prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-19"
@@ -1606,7 +1618,9 @@ nf_sport_patiente_demi_mise:
   morceau: "sport, patiente, demi-mise"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-19"
@@ -1648,7 +1662,9 @@ nf_sport_patiente_soir:
   morceau: "sport, patiente, 18-24 h UTC"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], heure_utc: [18, 24]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], heure_utc: [18, 24], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -1669,7 +1685,9 @@ nf_sport_patiente_jour:
   morceau: "sport, patiente, 0-18 h UTC"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], heure_utc: [0, 18]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], heure_utc: [0, 18], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -1690,7 +1708,9 @@ nf_sport_patiente_72_168h:
   morceau: "sport, patiente, 72-168 h"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168, prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -1711,7 +1731,9 @@ nf_sport_patiente_matin:
   morceau: "sport, patiente, 6-12 h UTC"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], heure_utc: [6, 12]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], heure_utc: [6, 12], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -2184,7 +2206,9 @@ nf_sport_patiente_72_168h_12_18h:
   morceau: "sport, patiente, 72-168 h, 12-18 h UTC"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168, heure_utc: [12, 18]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], echeance_min: 72, echeance_max: 168, heure_utc: [12, 18], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -2245,7 +2269,9 @@ nf_sport_patiente_12_18h:
   morceau: "sport, patiente, achat 12-18 h UTC"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], heure_utc: [12, 18]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], heure_utc: [12, 18], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-21"
@@ -2268,7 +2294,9 @@ nf_sport_patiente_vainqueur:
   morceau: "sport, patiente, vainqueur seulement"
   class: naive_favorite
   limit_ticks: 1
-  filtres: {familles: [sports], types_pari: [vainqueur]}
+  # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
+  # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
+  filtres: {familles: [sports], types_pari: [vainqueur], prix_min: 0.80, prix_final: true}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-21"

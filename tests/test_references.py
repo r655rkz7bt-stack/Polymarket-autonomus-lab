@@ -300,3 +300,24 @@ def test_tweet_strategy_only_no_and_skip_nyc(tmp_path):
     assert out.proposals == [] and any("NYC Mayor" in a for a in out.abstentions)
     m.tweets["compte"] = "tedcruz"  # un autre compte reste joué
     assert [p.outcome for p in _s(CompteurTweets, skip_nyc=1, **base).propose([m], books, _state(tmp_path, "d"), LIMITS, "b1").proposals] == ["Yes"]
+
+
+def test_reference_history_keeps_hourly_price_pairs(tmp_path):
+    """21/10/2026 : photo horaire des références rattachées avec le prix Polymarket du même instant,
+    pour tester plus tard « Polymarket contre Kalshi / Pinnacle » sans clé d'API."""
+    from datetime import datetime, timedelta, timezone
+    from types import SimpleNamespace
+    from decimal import Decimal
+    from polymarket_agent import references
+    from polymarket_agent.persistence import Database
+    db = Database(tmp_path / "x.sqlite")
+    now = datetime(2026, 10, 21, 12, 0, tzinfo=timezone.utc)
+    m = SimpleNamespace(market_id="m1", outcome_prices=[Decimal("0.42"), Decimal("0.58")], best_bid=Decimal("0.41"),
+                        best_ask=Decimal("0.43"), references={"kalshi": {"p": 0.47, "titre": "x"}}, tweets={"compte": "a"})
+    bare = SimpleNamespace(market_id="m2", outcome_prices=[], best_bid=None, best_ask=None, references={}, tweets=None)
+    assert references.record_history([m, bare], db, now, 60) == 2
+    assert references.record_history([m], db, now + timedelta(minutes=30), 60) == 0  # trop tôt
+    assert references.record_history([m], db, now + timedelta(hours=1), 60, keep_days=0.01) == 2
+    rows = db.conn.execute("SELECT source, p_ref, prix_oui, achat, vente FROM historique_references ORDER BY source").fetchall()
+    assert [tuple(r) for r in rows] == [("kalshi", 0.47, 0.42, 0.41, 0.43), ("tweets", None, 0.42, 0.41, 0.43)]
+    db.close()

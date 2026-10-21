@@ -14,6 +14,12 @@ paths:
 cycle:
   bucket_minutes: 5            # sert à fabriquer des identifiants d'opération idempotents
   battement_fantomes_minutes: 30   # 21/10/2026 : battement d'un fantôme inactif au plus toutes les 30 min (journaux 6× plus légers)
+  reglements_par_lot: 100      # 21/10/2026 : marchés détenus lus par lots de 100 pour les règlements (723 requêtes → ~16)
+
+# Historique des références externes (AMELIORATION n°4 du 21/10/2026) : une photo par heure des prix
+# Kalshi, PredictIt, Manifold, champions, mentions, NHL et tweets rattachés à nos marchés, avec le prix
+# Polymarket du même instant (table historique_references, gardée dans la sauvegarde quotidienne).
+references_historique: {toutes_les_minutes: 60, garder_jours: 45}
 
 # Ordres à cours limité posés dans le carnet (stratégies en mode « patient », limit_ticks).
 # Exécutés seulement si le marché passe AU TRAVERS du prix (execution_simulator.py).

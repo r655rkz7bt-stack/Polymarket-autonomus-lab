@@ -415,6 +415,7 @@ def test_clearly_losing_strategies_are_retired_at_once(tmp_path):
     from dataclasses import replace
 
     from polymarket_agent.arena import last_weekly_elimination, retire_hopeless
+    from polymarket_agent.reporting import read_entries
     main = Ledger.create(tmp_path / "m.jsonl", KEY, tmp_path / "m.lock", "1000", now=NOW)
     main.record_promotion("champ_v1", "test", now=NOW)
     bad = replace(st("news_momentum_v1", 128, -0.1), t_stat=-1.6)
@@ -423,8 +424,14 @@ def test_clearly_losing_strategies_are_retired_at_once(tmp_path):
                  replace(st("moyenne_v1", 40, 0.0), t_stat=-1.0)]
     assert retire_hopeless(main, standings, RULES, NOW) == ["news_momentum_v1"]
     assert "news_momentum_v1" in main.state.eliminated and last_weekly_elimination(main) is None
-    assert RULES["retirer_perdantes"] == {"min_operations": 20, "confiance_max": -1.5}
+    assert RULES["retirer_perdantes"] == {"min_operations": 20, "confiance_max": -1.5, "capital_min": 750}
     assert retire_hopeless(main, standings, {}, NOW) == []
+    # 21/10/2026 (AMELIORATION n°5) : sous 750 € de capital après 20 opérations, même avec une confiance
+    # de −0,8 (cotes_bookmakers : 625 €) ; pas avant 20 opérations.
+    poor = replace(st("cotes_bookmakers_v1", 20, -0.47), realized_capital=624.6, t_stat=-0.8)
+    young = replace(st("jeune_pauvre_v1", 12, -0.5), realized_capital=600.0, t_stat=-0.5)
+    assert retire_hopeless(main, [poor, young], RULES, NOW) == ["cotes_bookmakers_v1"]
+    assert "capital 625 sous 750" in [e for e in read_entries(main) if e["type"] == "ELIMINATION"][-1]["data"]["reason"]
 
 
 def test_proven_strategies_come_first_and_the_others_keep_a_small_share():

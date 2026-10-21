@@ -874,3 +874,27 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
   `compteur_tweets_non_patiente` (`limit_ticks: 1`), surveillées par le markout.
 - **Sources** : GDELT coûte au plus 6 s toutes les 3 h (rien à gagner) ; Bluesky reste optionnel
   (compte gratuit et deux secrets, utile seulement pour une stratégie d'opinion).
+
+## 50. AMELIORATION du 21/10/2026 (après-midi, réponse d'Etienne : « Tout »)
+- **Règlements par lots** (`GammaClient.markets_by_ids`, `main._OnceGamma.prefetch`,
+  `cycle.reglements_par_lot: 100`) : les marchés détenus (723 en production) étaient relus un par un,
+  avec la pause de politesse de 0,2 s, soit 79 s sur un cycle de 131 s. Gamma rend plusieurs marchés
+  en une requête (`/markets?id=…&closed=true|false`, mêmes champs que `/markets/{id}`). Mesuré :
+  723 marchés en 3,7 s, même règlement sur 25 marchés vérifiés un par un. Un lot refusé est coupé en
+  deux (un marché supprimé ne bloque pas le lot) ; si tout échoue, Gamma est jugé en panne pour le
+  cycle et les règlements attendent le suivant (pendant la panne du 21/10 vers 15 h 25 UTC, le cycle
+  passait 79 s à relire des marchés qui répondaient tous 404).
+- **Historique des références** (`references.record_history`, table `historique_references`,
+  `settings.yaml → references_historique`) : une photo par heure des prix Kalshi, PredictIt, Manifold,
+  champions, mentions, NHL et tweets rattachés, avec le prix Polymarket du même instant (OUI, meilleur
+  acheteur, meilleur vendeur), gardée 45 jours dans la sauvegarde quotidienne. Le chercheur, sans clé
+  d'API, pourra tester « Polymarket contre Pinnacle / Kalshi » sur de vraies paires de prix.
+- **Pas d'ordre posé servi sous 0,80** pour la championne `nf_sport_patiente` et ses 13 filles sans
+  plage de prix (`filtres: prix_min: 0.80, prix_final: true`) : −11,9 % sur 44 paris sous 0,80
+  (`experiments/enquetes/2026-10-21_posees_sous_la_plage.md`). Les filles qui avaient déjà une plage
+  ne changent pas.
+- **Retrait des perdantes nettes** (`promotion.yaml → retirer_perdantes.capital_min: 750`) : capital
+  réalisé sous 750 € après 20 opérations, même si la confiance n'est pas sous −1,5. Essai à blanc sur
+  les données du 21/10 : `cotes_bookmakers` (625 €) et `nf_sport_tres_court` (675 €).
+- Non retenus par Etienne : la règle « sans sa meilleure journée » (la championne garde sa part) et
+  le passage du chercheur sur Opus (il reste sur Sonnet).

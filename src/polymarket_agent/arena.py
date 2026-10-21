@@ -407,20 +407,30 @@ def retire_hopeless(main: Ledger, standings: list[Standing], cfg: dict, now: dat
     """Ménage (AMELIORATION du 19/10/2026) : une stratégie qui parie clairement MOINS bien que le
     hasard (score de confiance ≤ `confiance_max` après `min_operations` opérations) est retirée tout
     de suite, sans attendre l'élimination hebdomadaire (une par semaine : news_momentum_patiente
-    perdait encore à t = −1,6 après 128 opérations). Jamais le champion, ni les modes de jugement
-    (tenue de marché, politique), ni `jamais_retirer`."""
+    perdait encore à t = −1,6 après 128 opérations). Depuis le 21/10/2026 (AMELIORATION n°5) : aussi
+    quand le capital réalisé est sous `capital_min` après `min_operations` opérations (cotes_bookmakers
+    à 625 €, −37 %, gardait t = −0,8). Jamais le champion, ni les modes de jugement (tenue de marché,
+    politique), ni `jamais_retirer`."""
     rule = cfg.get("retirer_perdantes") or {}
     if not rule:
         return []
     keep = tuple(str(k) for k in cfg.get("jamais_retirer") or ())
     n_min, t_max = int(rule.get("min_operations", 20)), float(rule.get("confiance_max", -1.5))
+    floor = rule.get("capital_min")  # AMELIORATION n°5 du 21/10/2026 : capital réalisé sous ce seuil
     out = []
     for s in standings:
         if (s.eliminated or s.mode or s.name == main.state.champion or s.closed_trades < n_min
-                or s.t_stat > t_max or (keep and s.name.startswith(keep))):
+                or (keep and s.name.startswith(keep))):
             continue
-        main.record_elimination(s.name, f"{HOPELESS} : confiance {s.t_stat:.2f} après {s.closed_trades} opérations",
-                                {"confiance": s.t_stat, "trades": s.closed_trades}, now)
+        if s.t_stat <= t_max:
+            reason = f"{HOPELESS} : confiance {s.t_stat:.2f} après {s.closed_trades} opérations"
+        elif floor is not None and s.realized_capital < float(floor):
+            reason = (f"{HOPELESS} : capital {s.realized_capital:.0f} sous {float(floor):.0f} après "
+                      f"{s.closed_trades} opérations")
+        else:
+            continue
+        main.record_elimination(s.name, reason, {"confiance": s.t_stat, "trades": s.closed_trades,
+                                                 "capital": round(s.realized_capital, 2)}, now)
         out.append(s.name)
     return out
 

@@ -715,3 +715,61 @@ def test_round_robin_and_once_gamma():
             once.get_market("inconnu")
     assert calls == ["m1", "inconnu"]
     assert once.list_markets() == gamma.markets  # le reste passe au vrai client
+
+
+def test_settlement_reads_held_markets_by_batches():
+    """21/10/2026 : 723 marchés détenus relus un par un (pause de 0,2 s entre deux requêtes) = 79 s
+    de règlements. Lus par lots (fermés puis ouverts) ; un marché absent des lots ou un lot en erreur
+    retombe sur la lecture une par une."""
+    from polymarket_agent.main import _OnceGamma
+
+    class Batch(FakeGamma):
+        def __init__(self, markets):
+            super().__init__(markets)
+            self.batches, self.singles = [], []
+
+        def markets_by_ids(self, ids, *, closed):
+            self.batches.append((len(ids), closed))
+            if closed and len(ids) == 1:
+                raise SourceUnavailable("lot en panne (test)")
+            return [m for m in self.markets if m["id"] in ids and bool(m.get("closed")) == closed]
+
+        def get_market(self, market_id):
+            self.singles.append(market_id)
+            return super().get_market(market_id)
+    gamma = Batch([dict(raw_market("1"), closed=True), raw_market("2"), raw_market("3")])
+    once = _OnceGamma(gamma)
+    once.prefetch(["1", "2", "3", "absent"], batch=3)
+    assert gamma.batches == [(3, True), (3, False), (1, True), (1, False)]
+    assert once.get_market("1")["closed"] is True and once.get_market("2")["id"] == "2" and gamma.singles == []
+    with pytest.raises(SourceUnavailable):
+        once.get_market("absent")  # absent des lots : lu une fois seul (inconnu du faux Gamma)
+    assert gamma.singles == ["absent"]
+    once.prefetch(["1"], batch=1)  # lot d'un seul : rien à gagner, lecture normale
+    assert len(gamma.batches) == 4
+
+    class Poisoned(Batch):  # Gamma refuse tout lot qui contient un marché supprimé
+        def markets_by_ids(self, ids, *, closed):
+            self.batches.append((len(ids), closed))
+            if "mort" in ids:
+                raise SourceUnavailable("HTTP 404 (test)")
+            return [m for m in self.markets if m["id"] in ids and bool(m.get("closed")) == closed]
+    ids = [str(i) for i in range(16)] + ["mort"]
+    poisoned = Poisoned([dict(raw_market(i), closed=True) for i in ids if i != "mort"])
+    once = _OnceGamma(poisoned)
+    once.prefetch(ids, batch=100)
+    # Coupé en deux (deux fois) : 12 marchés lus par lots ; le petit lot du marché supprimé est lu un par un.
+    assert len(once.cache) == 12 and not once.down
+    assert once.get_market("15")["id"] == "15" and poisoned.singles == ["15"]
+
+    class Down(Batch):
+        def markets_by_ids(self, ids, *, closed):
+            self.batches.append((len(ids), closed))
+            raise SourceUnavailable("HTTP 404 (panne, test)")
+    down = Down([raw_market("1")])
+    once = _OnceGamma(down)
+    once.prefetch([str(i) for i in range(250)], batch=100)
+    assert once.down and len(down.batches) <= 30  # premier lot seulement, puis arrêt
+    with pytest.raises(SourceUnavailable):
+        once.get_market("1")
+    assert down.singles == []  # pas 250 lectures une par une pendant une panne

@@ -9,7 +9,7 @@ from conftest import KEY, NOW, ROOT, make_book, raw_market
 from polymarket_agent.ledger import Ledger
 from polymarket_agent.safety_controller import RiskLimits
 from polymarket_agent.sources.polymarket_gamma import parse_market
-from polymarket_agent.strategy_engine import NaiveFavorite, load_strategies, market_family
+from polymarket_agent.strategy_engine import NaiveFavorite, PatientOrders, load_strategies, market_family
 
 BASE = {"min_ask": D("0.85"), "max_ask": D("0.97"), "bias": D("0"), "uncertainty": D("0.01"),
         "min_net_edge": D("0.01"), "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3"),
@@ -218,3 +218,16 @@ def test_price_filter_of_a_patient_daughter_reads_the_posted_order_price(tmp_pat
     assert isinstance(daughter, Filtered) and isinstance(daughter.inner, PatientOrders)
     assert "prix_final" not in daughter.filters and daughter.filters["prix_min"] == 0.875
     assert isinstance(loaded["nf_sport_patiente_prix_850_875"], PatientOrders)  # les anciennes filles ne changent pas
+
+
+def test_championne_family_never_posts_below_080(tmp_path):
+    """AMELIORATION n°2 (21/10/2026, décision d'Etienne) : les ordres posés servis sous 0,80 perdaient −11,9 %
+    (44 paris) ; la championne et ses filles sans plage de prix ont désormais `prix_min: 0.80` sur l'ordre posé."""
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    champ = loaded["nf_sport_patiente"]
+    wide, books, ledger, limits = _setup(tmp_path, fee_type="sports_fees_v3", end_hours=24, bid="0.78", ask="0.82")
+    assert not champ.propose([wide], books, ledger.state, limits, "b").limit_orders  # aurait posé à 0,79
+    ok, ob, ol, _ = _setup(tmp_path / "ok", fee_type="sports_fees_v3", end_hours=24, bid="0.83", ask="0.86")
+    assert [o.max_price for o in champ.propose([ok], ob, ol.state, limits, "b").limit_orders] == [D("0.84")]
+    for name in ("nf_sport_patiente_tennis", "nf_sport_patiente_vainqueur", "nf_sport_patiente_2crans"):
+        assert loaded[name].filters["prix_min"] == 0.80 and isinstance(loaded[name].inner, PatientOrders)
