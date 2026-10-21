@@ -27,24 +27,30 @@ et de calculs. « Passage court » n'est jamais une raison de sauter une partie 
 vraiment, sauvegarde ton état (scripts, chiffres, étape atteinte) pour que le passage suivant
 reprenne exactement là.
 
-**Budget d'un passage (décision d'Etienne, 21/10/2026 : le chercheur doit utiliser environ 70 % de
-son quota de la journée).** Mesuré le 21/10 : les passages duraient 9 à 16 minutes (un seul de
-51 minutes), soit environ un huitième de ce qu'Etienne voulait y mettre.
-- **Quand** : à partir du **vendredi 24/10/2026 à 00:00 UTC** (2 h à Paris), heure de remise à zéro
-  de la limite d'usage de la semaine, déjà en « avertissement » le 21/10 (choix d'Etienne : ne pas
-  risquer de tout bloquer avant). **Avant cette date : 45 à 90 minutes par passage**, comme avant ;
-  vérifie la date avec `date -u` au début du passage.
-- **Durée visée : 2 heures de travail par passage** (entre 1 h 45 et 2 h 15). Note l'heure de
-  départ tout de suite (`date -u +%H:%M > /tmp/debut_passage`) et regarde l'heure (`date -u`) à la
-  fin de chaque partie. Le passage suivant commence 5 heures après : il reste toujours de la marge.
-- **Tant que 1 h 45 n'est pas passée, ne termine pas** : enchaîne la partie D (ci-dessous).
+**Budget d'un passage (décisions d'Etienne, 21/10/2026 : le chercheur utilise environ 70 % de son
+quota de la journée, et sur la semaine il reste toujours de la marge, environ 25 %).** Mesuré le
+21/10 : les passages duraient 9 à 16 minutes (un seul de 51 minutes). Tu ne vois pas la jauge de la
+limite d'usage : on te pilote en minutes de travail.
+- **Tout au début du passage** : `.venv/bin/python scripts/budget_chercheur.py debut` (ou
+  `python3`). Il note l'heure et affiche ta **durée visée** : le budget de la semaine
+  (`config/chercheur.yaml`, 60 h au départ, recalibré chaque samedi) moins les minutes déjà faites
+  depuis la remise à zéro de la limite de la semaine (samedi 00:00 UTC), divisé par les passages qui
+  restent ; entre 30 minutes et 2 h 15. Avant le **samedi 24/10/2026 à 00:00 UTC** : 45 à 90 minutes,
+  comme avant (choix d'Etienne : la limite de la semaine était déjà en « avertissement »).
+- **Tant que la durée visée n'est pas atteinte, ne termine pas** : enchaîne la partie D (ci-dessous).
+  Regarde l'heure (`date -u`) à la fin de chaque partie. Le passage suivant commence 5 heures après.
+- **Tout à la fin, avant le dernier commit** : `.venv/bin/python scripts/budget_chercheur.py fin`
+  (ajoute ta ligne à `experiments/budget_chercheur.csv`, à committer dans ta pull request : c'est
+  ce qui permet aux passages suivants de garder la marge de la semaine).
+- « Budget de la semaine ÉPUISÉ » : passage court, enquêtes obligatoires seulement, puis termine.
 - **Ce temps sert à du vrai travail**, jamais à remplir : pas de calcul refait pour rien, pas de
   rapport gonflé. Le temps en plus va d'abord à des données plus nombreuses (plus de saisons, plus
   de vrais échanges), puis à une deuxième piste, puis à une deuxième enquête.
 - **Sous-agents** : lance en parallèle (outil Agent) les gros téléchargements ou plusieurs
   découpages d'une même piste ; chacun rend des chiffres, toi tu juges et tu écris.
 - **Limite d'usage** : si la session signale que la limite d'usage (5 heures ou semaine) est proche
-  ou atteinte, sauvegarde, pousse ce qui est prêt et termine tout de suite. Ne force jamais.
+  ou atteinte, sauvegarde, pousse ce qui est prêt, lance `budget_chercheur.py fin` et termine tout de
+  suite. Ne force jamais.
 - Dans l'entrée du journal, note l'heure de début et de fin du passage.
 
 ### 0. Préparer et lire
@@ -118,7 +124,7 @@ son quota de la journée).** Mesuré le 21/10 : les passages duraient 9 à 16 mi
    15/10/2026) : de préférence celle de la partie B.
 3. Sans obligation, avance aussi un chantier de `experiments/CHANTIERS.md`.
 
-### D. Tant qu'il reste du temps (budget de 2 heures, à partir du 24/10/2026)
+### D. Tant qu'il reste du temps (durée visée de `budget_chercheur.py`)
 Dans cet ordre, en regardant l'heure entre chaque étape :
 1. La piste de la partie B n'a pas son verdict : continue-la (plus de données, plus de réglages,
    les vrais prix payés si ce n'est pas fait).
