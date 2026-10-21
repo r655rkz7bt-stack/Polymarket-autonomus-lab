@@ -21,6 +21,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - deux_camps : une stratégie achète les deux camps d'un même match (20/10 : 2 matchs, −275 €) ;
   - achats_en_jeu : part des achats faits après le coup d'envoi (20/10 : 84 % pour la championne,
     alors que son « horizon » affiché est de 165 h : c'est la date de fin placeholder de Gamma) ;
+  - capital_bloque : un fantôme sans argent disponible (21/10 : la mère naive_favorite à 0,2 € dès le 16/10, ses
+    filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
   - muettes, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -424,6 +426,30 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
 
 
+def capital_bloque(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 48,
+                   max_share: float = 0.10, min_buys: int = 5) -> list[dict]:
+    """Fantômes dont l'argent disponible est resté sous `max_share` du total pendant toutes les `hours` dernières heures :
+    ils ne peuvent plus rien acheter (positions longues, mise de Kelly complet). Comparer ce fantôme à sa fille ou à sa
+    mère n'a alors pas de sens (même règle, pas le même argent) ; il n'est pas « muet » faute de marché."""
+    blocked = []
+    for name in active:
+        rows = entries.get(name) or []
+        beats = [(_ts(e), float(e["data"]["cash"]), float(e["data"]["total_estimated"])) for e in rows
+                 if e["type"] == "HEARTBEAT" and e["data"].get("cash") is not None and e["data"].get("total_estimated")]
+        recent = [b for b in beats if b[0] >= now - timedelta(hours=hours)]
+        if len(_buys(rows)) < min_buys or len(recent) < 3 or _ts(rows[0]) > now - timedelta(hours=hours):
+            continue
+        if all(cash < max_share * total for _, cash, total in recent):
+            last = max(_buys(rows), key=_ts)
+            opened = len({e["data"]["token_id"] for e in _buys(rows)} - {e["data"]["token_id"] for e in rows if e["type"] == "SETTLE"})
+            blocked.append(f"{name} : {recent[-1][1]:.2f} € disponibles sur {recent[-1][2]:.0f} €, {opened} positions ouvertes, "
+                           f"dernier achat le {last['ts'][:16]}")
+    return [_finding("capital_bloque", A_REGARDER, f"{len(blocked)} fantôme(s) sans argent disponible depuis plus de {hours:.0f} h",
+                     "Capital immobilisé dans des positions longues : le fantôme ne teste plus rien, et le comparer à une fille "
+                     "ou à une mère qui a de l'argent compare deux situations différentes (juger sur la même période "
+                     "ET avec le même argent disponible).", blocked)] if blocked else []
+
+
 def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hours: float = 72,
                        active: list[str] | None = None) -> list[dict]:
     """Positions ouvertes bien après l'échéance notée à l'achat. Ne regarde que les stratégies qui tournent
@@ -570,6 +596,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
+                + capital_bloque(entries, active, now)
                 + positions_oubliees(entries, now, active=active))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 

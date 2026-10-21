@@ -229,5 +229,5 @@ def test_championne_family_never_posts_below_080(tmp_path):
     assert not champ.propose([wide], books, ledger.state, limits, "b").limit_orders  # aurait posé à 0,79
     ok, ob, ol, _ = _setup(tmp_path / "ok", fee_type="sports_fees_v3", end_hours=24, bid="0.83", ask="0.86")
     assert [o.max_price for o in champ.propose([ok], ob, ol.state, limits, "b").limit_orders] == [D("0.84")]
-    for name in ("nf_sport_patiente_tennis", "nf_sport_patiente_vainqueur", "nf_sport_patiente_2crans"):
+    for name in ("nf_sport_patiente_tennis", "nf_sport_patiente_vainqueur", "nf_sport_patiente_72_168h"):
         assert loaded[name].filters["prix_min"] == 0.80 and isinstance(loaded[name].inner, PatientOrders)

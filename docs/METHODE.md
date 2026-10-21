@@ -56,6 +56,10 @@ garde-fous et évaluation de départ : `docs/TABLEAU_DE_BORD.md`. Au moins une f
 regarde l'aperçu (`scripts/apercu_dashboard.py`) et améliore ce qui aide le plus Etienne à
 comprendre où on en est ; mets « À la une » à jour quand quelque chose d'important change.
 
+**Une stratégie nouvelle doit voir des marchés** (21/10/2026) : `cpi_tranches` et `jobs_favori_non` sont restées sourdes (abstentions vides) parce que leurs marchés (400-2 000 $ de liquidité,
+peu de volume) étaient écartés par le scanner (`min_volume_24h 1000`). Après avoir écrit une stratégie, lancer un cycle local (`scripts/run_simulation.py --once --dev-key`) et lire sa ligne
+`propositions … abstentions {…}` : `{}` et 0 proposition = elle ne voit rien ; ajouter l'étiquette dans `scanner.tag_pages` (config/settings.yaml) et un test.
+
 Liste de travail permanente : `experiments/CHANTIERS.md` (nouvelles sources, décidées par
 Etienne). Sans obligation dans la feuille de mission, avance au moins un chantier par passage.
 À chaque passage, ajoute au moins une nouvelle stratégie ou variante dans l'arène (tester en

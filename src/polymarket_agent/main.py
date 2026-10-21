@@ -731,7 +731,9 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         verdict = evaluate(proposal, ledger.state, market_context(market, books.get(proposal.token_id),
                                                                   proposal.token_id),
                            deps.limits, deps.now(), marks)
-        if not verdict.accepted:
+        # Carnet du début de cycle vieilli pendant les portefeuilles précédents (21/10/2026) : ce n'est pas un motif de
+        # rejet, le carnet est relu juste après et contrôlé de nouveau (même plafond d'âge).
+        if not verdict.accepted and not all(r.startswith("carnet périmé") for r in verdict.reasons):
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
             log.info("rejet %s : %s", proposal.op_id, verdict.reasons)
             continue

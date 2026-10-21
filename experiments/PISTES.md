@@ -14,15 +14,22 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10).
 1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
-3. **Données économiques** : emploi (NFP) contre Kalshi (kalshi_reference). Le CPI a été testé le 21/10 (voir « Testées » : indice,
-   `cpi_tranches`) sans le nowcast de Cleveland (historique par versions introuvable) : le nowcast reste une idée neuve.
-4. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
-   le test crypto (attention : le test crypto a été négatif, marché suivi par des robots).
-
+3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI
+   (historique par versions introuvable), une prévision indépendante (consensus, ADP) pour l'emploi, les demandes d'allocations chômage hebdomadaires (même mécanisme : tranches fines).
+4. **Prix de l'essence (AAA) au jour près** : relevé commencé le 21/10 (`experiments/essence/releve.py` → `releve.csv`, à relancer à chaque passage). Marchés « Gas prices on <date> ? » (6 tranches
+   de 1 cent du prix moyen AAA, ~700-2 200 $ de volume par jour, nés le 16/10/2026 : 6 jours seulement ; février 2025 : 2 jours) et « What will gas hit the week of… / by end of <mois> » (10-14 tranches,
+   depuis mars 2026). **Pas encore testable** : AAA est inaccessible (403, pas de contournement), l'EIA hebdomadaire existe (`eia.gov/dnav/pet/hist_xls/EMM_EPMR_PTE_NUS_DPGw.xls`) mais pas au jour près.
+   À reprendre quand ~40 jours sont réglés : le prix du jour tient-il son niveau de la veille (variation d'un jour = quelques cents, marché de tranches à 1 cent) ? Modèle de marche aléatoire calibré sur les
+   gagnantes précédentes (aucune autre source nécessaire), comme le test crypto (négatif : marché suivi par des robots, mais ici les volumes sont minces).
 5. **Mots nouveaux par type d'événement** (rallye, conférence, mois entier) : reste de l'ancienne piste n° 1 ;
    les « annonceurs » et « anyone » sont jugés (ci-dessous).
 6. **Matchs de NFL, suite** : `mots_prononces_nfl` (fantôme) à confirmer sur de nouveaux matchs ; si oui,
    tester les mots à seuil (« Referee 5+ times ») séparément des mots simples.
+
+7. **Autres données économiques à tranches** (21/10, `experiments/emploi_nfp/claims_releve.py`, `macro_releve.py`, `macro_favori.py`). **Demandes d'allocations hebdomadaires : écartée** (23 événements, tous de 2021-2022 sauf février 2025,
+   811 échanges réels). **PIB américain et ISM (services, industrie) : écartée** (19 événements réglés, 14 avec heure de publication ; la tranche favorite gagne 8/5,5, 3/4,8, 4/4,8, 5/3,7 à T-6/24/72/168 h, z entre −1,0 et +1,4 :
+   rien de régulier, et le sens inverse de celui des emplois : l'effet « tranche favorite surévaluée » n'est pas général, il tient peut-être aux seuls emplois). Reste : « Fed decision in <mois> » (16, bien piloté par les contrats
+   à terme : pas de source gratuite). Méthode et scripts réutilisables : `experiments/emploi_nfp/` ; l'API `historical/` de Kalshi donne chiffres officiels et prix horaires (~3 s par appel).
 
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
@@ -52,3 +59,4 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | mentions « annonceurs » NFL (14 matchs) | indice | +21 % à +91 % par achat sur 6 réglages, t par match +0,8 à +4,8 ; 2 mois, marchés minces : fantôme `mots_prononces_nfl` | mentions_annonceurs.md |
 | CPI américain (48 événements, 337 tranches) : NON sur les tranches à 5-30 % | indice | cases à 3-25 % gagnent ~moitié moins que leur prix ; NON +3 à +6 % par achat aux prix réels (12 réglages, 10 positifs ; mensuel/annuel, core négatif) ; 47 événements seulement : fantôme `cpi_tranches` | cpi_nowcast.md |
 | classements « status quo » (211 événements : IA 1er-3e rang, plus grande entreprise, applis n° 1, Spotify) | indice (IA) ; autres écartées | IA, leader 0,70-0,95 à J-14 : 12 gagnés sur 12 pour 10,6 attendus aux prix payés (+13 %), mais P(tout gagner aux prix) = 23 % et ~45 découpages ; plus grande entreprise J-3/J-1 −13/−18 %, applis −9/−10 % ; `idea_test.verdict` corrigé (`z_prix`) : fantôme `statu_quo_ia` | classements_status_quo.md |
+| emploi américain (NFP, 28 événements) et chômage (26) contre le marché et contre Kalshi | indice (tranche favorite des emplois) ; chômage écartée | tranche favorite des « jobs added » : 5 gagnées pour 11,1 attendues à T-24 h (z −2,4 ; Kalshi, non biaisé par le choix : −1,3), NON +20 à +50 % aux prix payés (9-15 paris, ~200 cellules regardées) ; chômage calibré ; règlement 27/28 (sept. 2025 faux chez Polymarket) : fantôme `jobs_favori_non` | emploi_nfp.md |

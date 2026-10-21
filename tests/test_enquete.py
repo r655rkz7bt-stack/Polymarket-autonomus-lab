@@ -243,3 +243,23 @@ def test_silent_strategy_shows_its_abstention_reasons():
         "marches": 190, "propositions": 0, "ordres": 0, "raisons": {"écart trop grand (rattachement douteux)": 1}}}}}
     found = enquete.muettes(entries, ["kalshi_reference_v1.0.0"], NOW, abstentions=abst)
     assert "190 marchés vus" in found[0]["exemples"][0] and "(rattachement douteux) ×1" in found[0]["exemples"][0]
+
+
+def _beat(when, cash, total):
+    return _e("HEARTBEAT", when, cash=str(cash), total_estimated=str(total))
+
+
+def test_ghost_without_cash_is_a_lead_but_one_with_cash_is_not():
+    """21/10 : naive_favorite (mère) à 0,2 € disponibles depuis le 16/10 pendant que ses filles filtrées achetaient : une fille
+    « battait » sa mère faute d'argent, pas à cause de sa règle."""
+    old = NOW - timedelta(days=5)
+    buys = [_buy(NOW - timedelta(days=4, hours=i), f"t{i}", 0.9, 10) for i in range(6)]
+    beats = [_beat(NOW - timedelta(hours=h), 0.2, 1100) for h in (47, 30, 10, 1)]
+    rich = [_beat(NOW - timedelta(hours=h), 257, 1100) for h in (47, 30, 10, 1)]
+    entries = {"mere_v1.0.0": _ledger(*buys, *beats, born=old), "fille_v1.0.0": _ledger(*buys, *rich, born=old),
+               "jeune_v1.0.0": _ledger(*beats, born=NOW - timedelta(hours=5))}
+    found = enquete.capital_bloque(entries, ["mere_v1.0.0", "fille_v1.0.0", "jeune_v1.0.0"], NOW)
+    assert len(found) == 1 and found[0]["exemples"][0].startswith("mere_v1.0.0 : 0.20 €") and "6 positions" in found[0]["exemples"][0]
+    # Un solde qui remonte dans la fenêtre (règlement) n'est pas un capital bloqué.
+    entries["mere_v1.0.0"] = _ledger(*buys, *beats[:3], _beat(NOW - timedelta(hours=1), 300, 1100), born=old)
+    assert enquete.capital_bloque(entries, ["mere_v1.0.0"], NOW) == []

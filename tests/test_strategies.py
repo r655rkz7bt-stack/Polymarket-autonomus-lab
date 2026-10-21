@@ -33,9 +33,9 @@ def test_repository_config_loads():
         "market_maker", "market_maker_serre",
         "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
         "nf_sport_prix_haut", "nf_sport_sans_fin",
-        "nm_demi_mise", "nf_court", "nf_court_hors_sport", "nf_court_prix_haut", "nf_sport_tres_court", "nf_sport_6_24h", "nf_sport_patiente_prix_moyen", "nf_sport_patiente_non", "nf_sport_patiente_2crans", "nf_sport_patiente_6_24h", "nf_sport_patiente_demi_mise", "nf_sport_patiente_large", "nf_sport_patiente_soir", "nf_sport_patiente_jour", "nf_sport_patiente_72_168h", "nf_court_football", "nf_tennis_12_18h", "nf_sport_patiente_72_168h_12_18h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_long", "nf_moyen", "nf_oui", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
+        "nm_demi_mise", "nf_court", "nf_court_prix_haut", "nf_sport_6_24h", "nf_sport_patiente_non", "nf_sport_patiente_6_24h", "nf_sport_patiente_soir", "nf_sport_patiente_jour", "nf_sport_patiente_72_168h", "nf_court_football", "nf_tennis_12_18h", "nf_sport_patiente_72_168h_12_18h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_moyen", "nf_oui", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "outsider_sport_patiente", "suivre_politique",
-        "cotes_bookmakers", "parking_politique", "nf_sport_patiente_tennis", "nf_tennis_prix_bas", "nf_tennis_prix_bas_vainqueur", "nf_tennis_prix_bas_800_850", "statu_quo_ia", "nf_tennis_debut_match",
+        "parking_politique", "nf_sport_patiente_tennis", "nf_tennis_prix_bas", "nf_tennis_prix_bas_vainqueur", "nf_tennis_prix_bas_800_850", "statu_quo_ia", "nf_tennis_debut_match",
         "crypto_threshold_prix_bas", "crypto_threshold_24_72h", "nf_sport_patiente_prix_850_875",
         # Vingt nouvelles pistes (20/10/2026), lot A.
         "decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
@@ -51,7 +51,7 @@ def test_repository_config_loads():
             "nf_court_soir", "nf_court_football_soir", "nf_sport_patiente_12_18h",
             "nf_sport_patiente_vainqueur", "compteur_tweets_non", "mots_prononces_nfl",
             "mots_prononces_patiente", "compteur_tweets_non_patiente",
-            "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875"])
+            "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
@@ -62,7 +62,7 @@ def test_repository_config_loads():
                                                                    "predictit_reference", "manifold_reference", "futurs_bookmakers",
                                                                    "football_trois_issues", "compteur_tweets", "cotes_tennis",
                                                                    "mots_prononces", "mots_nouveaux", "fatigue_nhl",
-                                                                   "outsider_itf", "cpi_tranches")))
+                                                                   "outsider_itf", "cpi_tranches", "jobs_favori_non")))
 
 
 def test_param_outside_bounds_is_refused():

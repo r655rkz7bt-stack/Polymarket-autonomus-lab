@@ -3,6 +3,27 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (passage chercheur, soir : 19 h 54 → 20 h 41 UTC)
+
+- **Enquête** (fiches : `experiments/enquetes/2026-10-21_soir_capital_bloque_et_carnet_vieilli.md`, `..._posees_sous_la_plage_suite.md` ; famille 4 du jour, puis 6 et 5).
+  - Aucune enquête obligatoire. Suite « ordres posés sous 0,80 » : −12,0 % mais **concentré sur le 20/10** (+82 € le 18, −211 € le 20, t par événement −0,9) ; les 6 achats du
+    champion sous 0,80 ont tous gagné ; déjà corrigé le 21/10 (`prix_min 0.80` sur l'ordre posé) : aucun changement.
+  - **Mères sans argent** : `naive_favorite`, `favori_politique` (+3 variantes), `naive_favorite_large/_sans_fin` à moins de 1 % d'argent disponible des jours durant (Kelly complet) pendant que leurs
+    filles achetaient (118 jetons sur 122 absents de la mère) : une fille « bat sa mère » sans règle meilleure. Contrôle `capital_bloque` ajouté (+ test). La mère `naive_favorite` n'a plus acheté
+    depuis le 18/10 alors qu'elle avait 87 → 257 € : **cause non établie** (un cycle local avec argent neuf : elle propose et exécute).
+  - **Carnet du début de cycle rejeté « périmé » avant relecture** (`main._execute`) : 12 rejets sur 158 propositions dans un cycle local de 2 min ; corrigé (le contrôle après relecture garde le plafond d'âge) + test.
+  - **Stratégies sourdes** : `cpi_tranches` et le nouveau `jobs_favori_non` ne voyaient aucun marché (emplois et CPI : 400-2 000 $ de liquidité, ~0-700 $ de volume par jour, écartés par `min_volume_24h 1000`).
+    Corrigé : `scanner.tag_pages` pour les étiquettes nfp (102964) et cpi (101701) + test (le CPI du 21/10 matin, 0 achat, était sourd depuis sa naissance).
+- **Recherche** (`experiments/emploi_nfp.md`, piste n° 3 : emploi américain). 28 événements « jobs added » + 26 de chômage, 81 794 échanges réels, règlement relu 27/28 contre les chiffres officiels
+  (septembre 2025 : Polymarket « 0-25 k », officiel +119 k). Chômage bien calibré (**écartée**). Emploi : la tranche favorite gagne 5 fois pour 11,1 attendues à T-24 h (z −2,4) ; chez Kalshi (non biaisé par le
+  choix du favori) z ≈ −1,3 ; NON aux prix payés +20 à +50 % (9-15 paris). ~200 cellules regardées. **Verdict : indice**. Comparaison Kalshi : les deux marchés s'accordent (Brier 0,1644 / 0,1640).
+- **Arène** : `jobs_favori_non` (classe `JobsFavoriNon`, test) ; filles de la feuille de mission `nf_tennis_vainqueur` et `nf_tennis_12_18h_vainqueur` (le morceau « prix 0,80-0,85 » existait déjà :
+  `nf_tennis_prix_bas_800_850`) ; 8 éliminées mises à `enabled: false` (cotes_bookmakers, nf_court_hors_sport, nf_long, nf_sport_patiente_demi_mise / 2crans / large / prix_moyen, nf_sport_tres_court).
+- **Piste n° 7 (autres séries économiques)** : demandes d'allocations (23 événements de 2021-22) et PIB / ISM (14 événements) : **écartées** ; la tranche favorite des PIB / ISM ne perd pas plus que son prix (z −1,0 à +1,4) : l'effet des emplois ne généralise pas (argument de plus pour « indice »).
+- **Piste n° 4 (essence AAA)** : relevé commencé (`experiments/essence/releve.py`) ; pas testable (6 jours de marchés quotidiens, AAA inaccessible en 403).
+- **Reste ouvert** : résultat du NFP du 6/11 pour `jobs_favori_non` ; pourquoi `naive_favorite` (mère) n'achète plus malgré son argent (publier propositions et rejets par cycle : `cycle.yml` est protégé, proposition
+  à écrire) ; relancer `essence/releve.py` ; autres stratégies à zéro achat à vérifier avec les abstentions de production (`statu_quo_ia`, références Kalshi/PredictIt/Manifold, `mots_prononces_nfl`).
+
 ## 2026-10-21 (session avec Etienne, après-midi : AMELIORATION, réponse « Tout »)
 
 - **Règlements par lots** : 723 marchés détenus lus en 3,7 s au lieu d'environ 79 s (même règlement sur 25 vérifiés un par un) ;
