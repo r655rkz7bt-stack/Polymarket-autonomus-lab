@@ -97,6 +97,7 @@ def main() -> int:
     args = parser.parse_args()
     data = load_data()
     data["mise_en_page"] = dashboard.layout(ROOT)  # mise en page du dépôt, pas celle publiée
+    data["fiche"] = dashboard.fiche(ROOT)  # fiche d'une stratégie : réglages du dépôt
     OUT.mkdir(exist_ok=True)
     page = OUT / "index.html"
     page.write_text(dashboard.render(data), encoding="utf-8")

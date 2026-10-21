@@ -307,3 +307,64 @@ def test_arena_shows_why_a_qualified_twin_has_no_share(tmp_path):
     db.close()
     template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
     assert "s.doublon.chevauchement" in template
+
+
+def test_strategy_sheet_is_computed_on_click_from_the_public_journal(tmp_path):
+    """Demande d'Etienne (21/10/2026) : toucher une stratégie de l'arène affiche ses courbes, calculées
+    au moment du clic à partir de son journal public ; rien n'est précalculé par le cycle."""
+    root = tmp_path / "depot"
+    (root / "config").mkdir(parents=True)
+    (root / "config" / "dashboard.yaml").write_text('journaux_url: "https://exemple.org/x/"\n', encoding="utf-8")
+    assert dashboard.fiche(root, {"arena": {}})["journaux"] == ""  # seule une adresse raw.githubusercontent.com
+    real = dashboard.fiche(ROOT, {})
+    assert real["journaux"].startswith("https://raw.githubusercontent.com/") and real["journaux"].endswith("/fantome/")
+    assert real["mise"]["paris_fictifs"] == 30 and real["garde_fou"]["confiance_min"] == 0.8
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    db.close()
+    assert set(data["fiche"]) == {"journaux", "mise", "garde_fou"}  # des réglages, aucune courbe
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert "openFiche(holder, s)" in template and "!holder._done" in template  # chargé au premier toucher seulement
+
+
+def test_strategy_sheet_matches_the_python_figures(tmp_path):
+    """Les chiffres de la fiche (JavaScript) sont ceux de l'arène (Python) : opérations, résultat,
+    paris gagnés en plus de l'attendu, confiance (t et par jour), mise sur l'avantage mesuré."""
+    import shutil
+    import subprocess
+
+    import pytest
+    from polymarket_agent.arena import (Standing, confidence_percent, day_confidence, edge_figures,
+                                        measured_stake, t_stat, trade_returns)
+    from polymarket_agent.reporting import closed_trades
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("Node absent : calcul JavaScript non vérifiable ici")
+    path = tmp_path / "f.jsonl"
+    ghost = Ledger.create(path, KEY, tmp_path / "f.lock", "1000", now=NOW)
+    for i, (price, won) in enumerate([("0.80", True), ("0.85", False), ("0.90", True), ("0.82", True), ("0.88", True)]):
+        ghost.record_buy(op_id=f"b{i}", token_id=f"t{i}", market_id=f"m{i}", event_id=f"e{i}", outcome="Yes",
+                         shares="50", price=price, fee="0.1", strategy_id="f", strategy_version="0",
+                         now=NOW + timedelta(hours=i), extra={"est_probability": str(float(price) + 0.05)})
+        ghost.record_settlement(op_id=f"s{i}", token_id=f"t{i}", payout_per_share="1" if won else "0",
+                                resolution="test", now=NOW + timedelta(hours=i, minutes=30) + timedelta(days=i // 3))
+    ghost.heartbeat("c1", "OK", NOW + timedelta(days=2), total_estimated="1040")
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    rule = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))["mise_avantage_mesure"]
+    code = (f"var FICHE = {{mise: {json.dumps(rule)}}};\n"
+            + template[template.index("  function readJournal("):template.index("  // Courbe générique de la fiche")]
+            + "var J = readJournal(require('fs').readFileSync(process.argv[2], 'utf8')), P = perTrade(J), l = P[P.length - 1];"
+              "console.log(JSON.stringify({n: J.trades.length, pnl: J.trades.reduce(function (a, t) { return a + t.pnl; }, 0),"
+              "excess: l.excess, conf: l.conf, day: l.confDay, stake: l.stake, beats: J.beats.length}));")
+    script = tmp_path / "fiche.js"
+    script.write_text(code, encoding="utf-8")
+    js = json.loads(subprocess.run([node, str(script), str(path)], capture_output=True, text=True, check=True).stdout)
+    trades = closed_trades(read_entries(ghost))
+    excess, assumed = edge_figures(trades)
+    stake = measured_stake(Standing("f", len(trades), 0, 1000, 0, None, False, excess_wins=excess, assumed_edge=assumed), rule)
+    assert js["n"] == len(trades) == 5 and js["beats"] >= 1
+    assert js["pnl"] == pytest.approx(sum(float(t["pnl"]) for t in trades))
+    assert js["excess"] == pytest.approx(excess, abs=1e-4)
+    assert js["conf"] == pytest.approx(confidence_percent(t_stat(trade_returns(trades))), abs=0.6)
+    assert js["day"] == pytest.approx(100 * day_confidence(trades), abs=0.05)
+    assert js["stake"] == pytest.approx(100 * stake, abs=0.05)

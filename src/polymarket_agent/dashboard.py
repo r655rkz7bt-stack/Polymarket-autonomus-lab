@@ -77,6 +77,27 @@ def layout(root: Path) -> dict:
             "a_la_une": {"date": str(une.get("date") or ""), "points": points}}
 
 
+RAW_PREFIX = "https://raw.githubusercontent.com/"
+
+
+def fiche(root: Path, settings: dict | None = None) -> dict:
+    """Réglages de la fiche d'une stratégie (demande d'Etienne, 21/10/2026) : la page charge le
+    journal PUBLIC de la stratégie touchée (branche data, `journaux_url` de config/dashboard.yaml)
+    et calcule ses courbes à ce moment-là, dans le navigateur : rien n'est précalculé ici. Seule une
+    adresse raw.githubusercontent.com est acceptée ; sinon la page la déduit de son adresse GitHub
+    Pages. Les règles de mise (`mise_avantage_mesure`, `garde_fou_jour`) servent aux courbes
+    « mise » et « confiance par jour »."""
+    import yaml
+    try:
+        raw = yaml.safe_load((Path(root) / "config" / "dashboard.yaml").read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        raw = {}
+    url = str((raw if isinstance(raw, dict) else {}).get("journaux_url") or "")
+    cfg = arena_cfg(settings or {}, root)
+    return {"journaux": url if url.startswith(RAW_PREFIX) and url.endswith("/") else "",
+            "mise": cfg.get("mise_avantage_mesure") or None, "garde_fou": cfg.get("garde_fou_jour") or None}
+
+
 def principal_orders(entries: list[dict], questions: dict[str, str], open_orders: list[dict],
                      limit: int = 60) -> dict:
     """Ordres du capital PRINCIPAL (le vrai portefeuille, règle n°1), à part de ceux de l'arène
@@ -536,6 +557,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "chercheur": research_log(root),
         "mise_en_page": layout(root),
         "entonnoir": funnel(arena, info),
+        "fiche": fiche(root, settings),
     }
     entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)

@@ -26,6 +26,12 @@ et ce qui va se passer ? »** Si non, plus bas, replié ou caché.
    JavaScript et les débordements horizontaux : il n'en faut aucun.
 4. Écris ce que tu as changé et pourquoi dans `experiments/journal_recherche.md`.
 
+## Fiche d'une stratégie (21/10/2026)
+Toucher une ligne de l'arène ouvre ses courbes, calculées à ce moment-là dans le navigateur à
+partir de son journal public (`config/dashboard.yaml` → `journaux_url`). Tu peux ajouter des
+onglets (`VIEWS` dans `drawFiche`) ; garde les formules alignées sur `arena.py` (le test
+`test_strategy_sheet_matches_the_python_figures` les compare).
+
 ## Garde-fous (non négociables)
 - **Règle n°1** : le capital, le solde DISPONIBLE et l'état de faillite restent toujours visibles en
   haut (blocs `organisme`, `resume` et `capital` : le code refuse de les cacher).

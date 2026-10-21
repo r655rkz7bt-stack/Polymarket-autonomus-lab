@@ -925,3 +925,15 @@ Pourquoi : la championne misait comme avec 5,7 points d'avantage et en mesure ~0
 sur 30 jours simulés (experiments/taille_des_mises.md), passer sous 700 € arrive 6 à 9 % du temps
 au lieu de 50 à 69 % si l'avantage réel est de 0 à 1 point. Au 21/10 au soir : championne 63 %.
 Libre : le chercheur peut la rendre plus libre s'il le juge bon (docs/METHODE.md).
+
+## 53. Fiche cliquable de chaque stratégie de l'arène (21/10/2026, demande d'Etienne)
+
+Toucher une ligne de l'arène ouvre sa fiche : capital estimé et réalisé (plus haut, plus bas, pire
+repli, tendances 6 h et 2 j, périodes 24 h / 3 j / 7 j / tout), résultat cumulé pari par pari,
+paris gagnés en plus de l'attendu, confiance (score t et par jour) et mise sur l'avantage mesuré
+après chaque pari, résultat par jour, derniers paris. **Rien n'est précalculé** : au premier
+toucher, la page télécharge le journal public de la stratégie (branche `data`, adresse
+`config/dashboard.yaml` → `journaux_url`, raw.githubusercontent.com seulement) et calcule tout
+dans le navigateur (`readJournal`, `perTrade`, `ficheChart` dans `dashboard_template.html`). Les
+formules sont celles de `reporting.closed_trades` et `arena.py` ; un test compare les deux
+(tests/test_dashboard.py, si Node est présent). Le cycle ne publie que les réglages (`fiche`).
