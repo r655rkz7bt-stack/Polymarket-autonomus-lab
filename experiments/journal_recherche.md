@@ -3,6 +3,25 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (passage chercheur, ~0 h UTC)
+
+- **Enquête** (détail : `experiments/enquetes/2026-10-21_type_de_pari_et_reglement.md`, famille 3) : aucun défaut de code nouveau.
+  - Règlement relu sur Gamma : 30 paris tirés au hasard sur 1 944 réglés, 30 / 30 conformes (jeton, camp, résultat).
+  - Estimation périmée : écart estimation − prix p99 0,366 avant le correctif de 14 h 27, **0,075 après** (416 achats) ; les écarts restants
+    sont des modèles (tweets, décroissance du temps), pas des carnets périmés. Les 3 achats du principal signalés datent d'avant le correctif.
+  - Type de pari des variantes « favori » : vainqueur **+0,0 %** (28 837 € misés, 414,5 gagnés pour 411,7 attendus) ; handicap −10,5 %
+    (principal −14,9 %, 13 paris) ; « autre » du principal −20,6 % (47 paris, météo). Pas d'avantage « favori » sur le vainqueur, en cohérence
+    avec `selection_multiple` (la championne est le meilleur de 42).
+  - `cotes_bookmakers` toujours muette (≈ 44 h) : cause non tranchée, la sauvegarde n'a pas les observations ni le budget de crédits.
+- **Recherche** (`experiments/tweets_filles.md`) : piste n° 1, compteur de tweets, 182 périodes / 7 comptes (règlement relu 178 / 182),
+  référence retrouvée (+12,2 %). **NON seulement, sans NYC Mayor : retenue** (+16,3 % par achat, +12,8 % par période, t +3,9 ; 6 réglages sur 6
+  positifs, 4 mois sur 4, deux moitiés positives). Elon seul (−3,6 %) et 48 dernières heures (+1 %) : écartées. Elon et Trump ≈ 0.
+  ~60 découpages regardés.
+- **Arène** : `compteur_tweets_non` (nouveau réglage `only_no` / `skip_nyc` dans `CompteurTweets`, avec test) ; `nf_sport_patiente_vainqueur` ;
+  les trois filles de la feuille de mission (`nf_court_soir`, `nf_court_football_soir`, `nf_sport_patiente_12_18h`).
+- **Reste ouvert** : consigner la raison d'abstention de chaque stratégie à chaque cycle (pour trancher `cotes_bookmakers`) ; la mère
+  `compteur_tweets` n'a que 3 opérations en direct ; piste suivante : mentions (« the announcers », « anyone »).
+
 ## 2026-10-20 (passage chercheur, ~20 h UTC)
 
 - **Enquête** (détail : `experiments/enquetes/2026-10-20_soir_copie_et_deux_camps.md`) : aucun nouveau défaut de code.

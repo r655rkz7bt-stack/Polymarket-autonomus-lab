@@ -2157,3 +2157,114 @@ nf_sport_patiente_72_168h_12_18h:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_court_soir:
+  explication: "Le favori à moins de 24 heures de la fin, mais seulement s'il est acheté le soir (18 h à minuit, heure UTC)."
+  # Fille 80/20 (obligation feuille de mission du 20/10 23:54 UTC) : heure d'achat 18-24 h UTC = 37 opérations, +154, +4,0 % par mise de plus que nf_court. À juger sur la même période que sa mère.
+  mere: nf_court
+  morceau: "moins de 24 h, achat 18-24 h UTC"
+  class: naive_favorite
+  filtres: {heures_min: 0, heures_max: 24, heure_utc: [18, 24]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_court_football_soir:
+  explication: "Le favori de football à moins de 24 heures de la fin, acheté le soir (18 h à minuit, heure UTC)."
+  # Fille 80/20 (obligation du 20/10 23:54 UTC) : football + achat 18-24 h UTC = 20 opérations, +139, +9,9 % par mise de plus que nf_court. Peu d'opérations : risque de morceau choisi par hasard.
+  mere: nf_court
+  morceau: "moins de 24 h, football, achat 18-24 h UTC"
+  class: naive_favorite
+  filtres: {heures_min: 0, heures_max: 24, disciplines: [football], heure_utc: [18, 24]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_12_18h:
+  explication: "Le favori de sport, acheté en posant l'ordre et en attendant un vendeur, mais seulement entre 12 h et 18 h (heure UTC)."
+  # Fille 80/20 (obligation du 20/10 23:54 UTC) : heure d'achat 12-18 h UTC = 26 opérations, +122, +8,4 % par mise de plus que nf_sport_patiente.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, achat 12-18 h UTC"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heure_utc: [12, 18]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_vainqueur:
+  explication: "Le favori de sport en posant l'achat, mais seulement quand on parie sur le vainqueur du match (jamais sur un handicap ou un score)."
+  # Enquête 21/10/2026 (famille 3, type de pari) : sur 1 944 paris réglés des variantes « favori »,
+  # vainqueur = 0,0 % (28 837 € misés), handicap = −10,5 % (97 paris), principal −14,9 % sur handicap.
+  # nf_sport_patiente : vainqueur +4,7 %, handicap −15,7 % (4 paris). À juger contre sa mère, même période.
+  mere: nf_sport_patiente
+  morceau: "sport, patiente, vainqueur seulement"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], types_pari: [vainqueur]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+compteur_tweets_non:
+  explication: "Combien de messages un compte publiera-t-il cette semaine ? On n'achète que le « NON » d'une tranche trop chère, et jamais pour NYC Mayor."
+  # Piste n° 1 de PISTES.md (21/10/2026), retenue : sur 147 périodes passées (juillet-octobre 2026, prix réels), NON sans
+  # NYC Mayor = +10 % à +19 % par achat aux 6 réglages essayés, t par période +2,9 à +4,5, 4 mois sur 4
+  # (experiments/tweets_filles.md). Elon Musk et Trump seuls : rien (≈ 0).
+  mere: compteur_tweets
+  morceau: "NON seulement, sans NYC Mayor"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
