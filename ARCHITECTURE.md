@@ -898,3 +898,18 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
   les données du 21/10 : `cotes_bookmakers` (625 €) et `nf_sport_tres_court` (675 €).
 - Non retenus par Etienne : la règle « sans sa meilleure journée » (la championne garde sa part) et
   le passage du chercheur sur Opus (il reste sur Sonnet).
+
+## 51. Règle « mélange » de l'arène (21/10/2026, décision d'Etienne : « Oui »)
+
+Etienne voulait moins de prudence et un peu plus de capital engagé, sans laisser entrer le hasard.
+Rejeu de la semaine du 15 au 21/10 (`experiments/regle_confiance.md`) : la règle d'avant gagnait
++146 € (pire repli −52 €) ; la règle retenue +198 € (pire repli −73 €). Un engagement plus fort
+(80 %, 100 %) gagnait plus sur cette semaine mais agrandissait la baisse au même rythme (effet loupe).
+
+- Entrée (`config/promotion.yaml`) : 12 opérations, 12 h, croissance ≥ 2 %, confiance t ≥ 1,0.
+- Engagement : au plus 70 % par stratégie ; période d'essai de 50 % à la part pleine après 30 opérations.
+- Garde-fou par jour (`arena.day_confidence`, `garde_fou_jour`) : paris gagnés contre attendus
+  d'après les prix payés, journée par journée ; l'écart type est le plus grand de celui du hasard
+  et de celui mesuré entre les journées. Une seule belle journée ne donne jamais plus de ≈ 84 %.
+  Sous 80 %, la part engagée est divisée par deux (pas pour les modes « recompenses » et « valeur »).
+- Règle n°1 inchangée (noyau protégé).

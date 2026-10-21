@@ -80,9 +80,9 @@ def env(tmp_path, ledger, paths, limits):
         if settings is None:
             settings = load_settings()
             settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
-            # Le champion de test engage toute sa part (sans période d'essai ni plafond de 50 %) : le
-            # principal copie alors les paris du fantôme à l'identique (copie fidèle, 18/10/2026).
-            settings["arena"].update(essai={}, part_max_par_strategie=None)
+            # Le champion de test engage toute sa part (sans période d'essai, garde-fou par jour ni
+            # plafond) : le principal copie alors les paris du fantôme à l'identique (18/10/2026).
+            settings["arena"].update(essai={}, part_max_par_strategie=None, garde_fou_jour=None)
         return CycleDeps(settings=settings, limits=limits,
                          strategies=strategies if strategies is not None else [pipeline_strategy()],
                          ledger_path=paths[0], lock_path=paths[1], key=KEY, db=db,

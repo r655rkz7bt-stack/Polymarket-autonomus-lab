@@ -5,8 +5,12 @@
 # Seuil d'ENTRÉE (devenir champion ou recevoir une part du capital principal) : les trois à la fois.
 # Durcis le 15/10/2026 : market_structure avait été promue sur +0,02 % après 27 opérations en
 # 3 h (du bruit), puis destituée 10 minutes plus tard. Le chercheur peut tout changer ici.
-min_closed_trades: 20            # opérations clôturées dans son fantôme (aussi : seuil pour être jugé/éliminé)
-min_age_hours: 24                # ancienneté minimale du fantôme (une journée de marchés réels)
+# Règle « mélange » (décision d'Etienne, 21/10/2026) : entrée un peu plus libre (12 opérations,
+# 12 h, confiance t ≥ 1,0), plus de capital sur les prouvées (70 % au plus, part pleine après 30
+# opérations) et un garde-fou par jour (`garde_fou_jour`). Rejeu de la semaine du 15 au 21/10 :
+# +198 € au lieu de +146 €, pire repli −73 € au lieu de −52 € (experiments/regle_confiance.md).
+min_closed_trades: 12            # opérations clôturées dans son fantôme (aussi : seuil pour être jugé/éliminé)
+min_age_hours: 12                # ancienneté minimale du fantôme
 min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 (≈ +2 %)
 # Seuils d'entrée ALLÉGÉS pour les stratégies validées sur le passé (16/10/2026) : un test hors
 # échantillon documenté remplace une partie de l'attente. Clé = début du nom de la stratégie
@@ -31,9 +35,13 @@ priorite_validees: {part_des_autres: 0.2}
 # mise) et non plus sur les euros : avec des mises inégales, les euros mesuraient la taille des
 # mises (nf_sport 2,7 sans aucun avantage sur ses prix ; sur le rendement 0,4). Rejeu :
 # experiments/promotion/rejouer.py (règle actuelle −15, rendement +74, journaux du 15 au 18/10).
-min_t_stat: 1.5
-# Période d'essai : la part engagée croît avec les opérations clôturées (25 % au départ, entière à 60).
-essai: {pleine_part_apres_operations: 60, part_minimale: 0.25}
+min_t_stat: 1.0
+# Période d'essai : la part engagée croît avec les opérations clôturées (50 % au départ, entière à 30).
+essai: {pleine_part_apres_operations: 30, part_minimale: 0.5}
+# Garde-fou par jour (règle mélange, 21/10/2026) : part divisée par deux tant que la confiance par
+# jour (arena.day_confidence : paris gagnés contre attendus d'après les prix, journée par journée)
+# est sous 80 %. Ne s'applique pas aux modes « recompenses » et « valeur ». null = désactivé.
+garde_fou_jour: {confiance_min: 0.8, reduction: 0.5}
 # Modes de jugement (AMELIORATION n°3 et 4), par préfixe de nom, avec une part plafonnée :
 # - tenue de marché : payée surtout en récompenses, elle clôture peu d'opérations → jugée sur ses
 #   journées de récompenses versables (+ capital au-dessus du départ, récompenses comprises) ;
@@ -66,8 +74,9 @@ repartition: {merite: 0.5, recalcul_minutes: 60}
 # Mesure du 18/10 : nf_sport a joué 79 % de ses matchs avec nf_court (doublon) ; nf_sport_patiente
 # 17 % seulement.
 chevauchement_max: 0.5
-# Au plus 50 % du capital principal sur une seule stratégie, même seule qualifiée (le reste attend).
-part_max_par_strategie: 0.5
+# Au plus 70 % du capital principal sur une seule stratégie, même seule qualifiée (le reste attend).
+# 50 % jusqu'au 21/10/2026 ; 70 % sur demande d'Etienne (règle mélange).
+part_max_par_strategie: 0.7
 elimination_every_days: 7        # la pire stratégie éligible est éliminée une fois par semaine
 min_days_before_elimination: 7
 min_strategies_in_test: 3        # innovation obligatoire

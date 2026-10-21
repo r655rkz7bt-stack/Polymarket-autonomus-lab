@@ -175,7 +175,7 @@ def test_regression_noise_is_not_promoted():
     assert margin is None  # 18/10/2026 : plus de marge, plusieurs championnes
     noise = st("market_structure", 27, 0.0002, days=3 / 24)
     assert choose_champion([noise], "", n, margin, keep_growth=keep, **gates)[0] == ""
-    young_star = st("star", 27, 0.10, days=0.5)  # belle croissance mais moins de 24 h
+    young_star = st("star", 27, 0.10, days=0.25)  # belle croissance mais moins de 12 h (24 h avant le 21/10)
     assert choose_champion([young_star], "", n, margin, keep_growth=keep, **gates)[0] == ""
     assert choose_champion([st("star", 27, 0.10, days=2)], "", n, margin, keep_growth=keep, **gates)[0] == "star"
     # Hystérésis : un champion à +1 % (sous le seuil d'entrée) reste, et garde sa part du capital.
@@ -319,7 +319,7 @@ def test_several_champions_half_equal_half_merit_one_per_family_and_capped():
     assert real["nf_sport"] == "naive_favorite" and real["naive_favorite"] == "naive_favorite"
     # Seule qualifiée : au plus 50 % du capital principal.
     assert exposure([a], {"a_v1": 1.0}, {"part_max_par_strategie": 0.5}) == {"a_v1": 0.5}
-    assert RULES["part_max_par_strategie"] == 0.5 and RULES["repartition"]["merite"] == 0.5
+    assert RULES["part_max_par_strategie"] == 0.7 and RULES["repartition"]["merite"] == 0.5
 
 
 def test_measured_overlap_decides_who_shares_a_place():
@@ -506,3 +506,26 @@ def test_confidence_is_shown_as_a_percentage():
     """21/10/2026 (demande d'Etienne) : la confiance affichée en pourcentage."""
     from polymarket_agent.arena import confidence_percent
     assert [confidence_percent(t) for t in (0, 1.5, 2.08, 0.43, -1.5, 99)] == [50, 93, 98, 67, 7, 100]
+
+
+def test_day_confidence_and_guard_halve_a_share_until_the_days_agree():
+    """Règle mélange (Etienne, 21/10/2026) : la confiance par jour compare paris gagnés et attendus
+    journée par journée ; sous 80 %, la part engagée est divisée par deux."""
+    from polymarket_agent.arena import day_confidence, exposure
+
+    def trade(day, won, price=0.5):
+        return {"cost": price * 10, "shares_bought": 10, "pnl": 10 - price * 10 if won else -price * 10,
+                "closed_at": f"2026-10-{day:02d}T12:00:00+00:00"}
+    regular = [trade(d, w) for d in range(15, 20) for w in (True, True, True, False)]
+    lucky = [trade(15, True)] * 6 + [trade(d, w) for d in range(16, 20) for w in (True, False, False)]
+    one_day = [trade(15, True)] * 12 + [trade(d, w) for d in range(16, 20) for w in (True, False)]
+    assert day_confidence(regular) > 0.9 and day_confidence(lucky) < 0.7
+    assert day_confidence(one_day) == 0.8413  # une seule belle journée : jamais plus de ≈ 84 %
+    assert day_confidence([]) == 0.5
+    cfg = {"garde_fou_jour": {"confiance_min": 0.8, "reduction": 0.5}, "part_max_par_strategie": 0.7}
+    good = Standing("a_v1", 40, 1100.0, 1000.0, 0.1, NOW - timedelta(days=5), False, day_confidence=0.85)
+    weak = dataclasses_replace(good, name="b_v1", day_confidence=0.55)
+    assert exposure([good, weak], {"a_v1": 0.6, "b_v1": 0.4}, cfg) == {"a_v1": 0.6, "b_v1": 0.2}
+    assert exposure([good], {"a_v1": 1.0}, cfg) == {"a_v1": 0.7}
+    assert exposure([dataclasses_replace(good, day_confidence=None)], {"a_v1": 0.4}, cfg) == {"a_v1": 0.4}
+    assert RULES["garde_fou_jour"] == {"confiance_min": 0.8, "reduction": 0.5}
