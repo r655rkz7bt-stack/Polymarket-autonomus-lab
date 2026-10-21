@@ -194,7 +194,8 @@ def render_markdown(report: dict) -> str:
     lines += ["## Capital", "", "| poste | valeur |", "|---|---|"]
     labels = {"solde_disponible": "Solde disponible", "capital_immobilise": "Capital immobilisé",
               "gains_realises_nets": "Gains et pertes réalisés (nets)", "gains_latents": "Gains et pertes latents",
-              "frais_payes": "Frais payés", "capital_total_estime": "Capital total estimé",
+              "frais_payes": "Frais payés", "recompenses_recues": "Récompenses créditées (estimées)",
+              "capital_total_estime": "Capital total estimé",
               "positions_ouvertes": "Positions ouvertes"}
     lines += [f"| {labels[k]} | {cap[k]} |" for k in labels]
     lines += [f"| Perte maximale depuis un sommet | {report['drawdown_max']:.2%} |",

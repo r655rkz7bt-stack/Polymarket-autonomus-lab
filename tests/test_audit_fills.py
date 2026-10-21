@@ -133,3 +133,25 @@ def test_settlement_checks_cover_every_rule():
     bad = {"data": {"token_id": "t", "payout_per_share": "abc"}}
     assert audit.check_settlement(bad, "m", _market("t", ["1", "0"]), 0)[0] == "anomalie"
 
+
+
+def test_rewards_are_checked_only_the_principal_may_receive_them(tmp_path):
+    """21/10/2026 : une récompense dans un fantôme est une anomalie ; dans le principal, son montant
+    ne dépasse ni la somme de ses détails ni, marché par marché, la cagnotte du jour."""
+    audit = _audit_module()
+    main, shadow = _data(tmp_path)
+    later = NOW + timedelta(days=1)
+    day = NOW.date().isoformat()
+    main.record_reward(day=day, amount="2", source="liquidite",
+                       details=[{"market_id": "m1", "montant": 3.0, "cagnotte": 10.0}], now=later)
+    main.record_reward(day=day, amount="5", source="detention", details=[{"market_id": "m2", "montant": 4.0}],
+                       now=later)
+    shadow.record_reward(day=day, amount="1", source="liquidite",
+                         details=[{"market_id": "m1", "montant": 2.0, "cagnotte": 10.0}], now=later)
+    state, new = audit.audit(tmp_path, KEY, later + timedelta(hours=1), fetch=lambda t, ts: [])
+    assert state["recompenses_verifiees"] == 1 and new == 2
+    details = sorted(a["detail"] for a in state["anomalies"])
+    assert any("fantôme" in d for d in details) and any("supérieure à la somme" in d for d in details)
+    assert audit.check_reward("principal", {"data": {"amount": "1", "details": [
+        {"market_id": "m", "montant": 12.0, "cagnotte": 10.0}]}})[0] == "anomalie"
+    assert audit.check_reward("principal", {"data": {"amount": "1"}})[0] == "anomalie"

@@ -33,6 +33,11 @@ recompenses:
   # Récompense de DÉTENTION (19/10/2026) : taux annuel versé par Polymarket sur la valeur des positions
   # des marchés éligibles (Gamma holdingRewardsEnabled) ; estimée comme ci-dessus (holding_rewards.py).
   detention_taux_annuel: 0.04
+  # Versement au capital PRINCIPAL (décision d'Etienne du 17/10/2026, AMELIORATION n°7 du 21/10/2026) :
+  # une fois la journée terminée, les récompenses estimées du principal (liquidité : journées ≥ 1 $ ;
+  # détention) × prudence sont créditées à son journal signé (écriture REWARD). Jamais aux fantômes.
+  verser_au_principal: true
+  jours_rattrapage: 3
 
 # Relecture avant d'acheter (enquête du 20/10/2026, experiments/enquetes/2026-10-20_carnet_perime.md) :
 # si le prix de vente a chuté de plus de `chute_max` depuis le début du cycle, l'estimation de la

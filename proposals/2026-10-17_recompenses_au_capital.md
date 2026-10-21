@@ -98,3 +98,22 @@ rapportent rien.
 
 En attendant, rien ne change : les récompenses restent affichées à part, dans la section
 « Ordres posés » du tableau de bord.
+
+## 21/10/2026 : pull request du noyau (AMELIORATION n°7, réponse d'Etienne : « Tout »)
+Le déclencheur est atteint depuis le 18/10 : la championne nf_sport_patiente pose tous ses achats
+et le principal les copie. Contenu de la pull request :
+- `ledger.py` : écriture signée `REWARD` (`record_reward`), sources `liquidite`, `detention`,
+  `remise_maker` ; identifiant `REWARD-<source>-<jour>` (une seule fois par source et par jour) ;
+  refus en faillite, pour une journée non terminée ou antérieure au capital actuel, pour un montant
+  ≤ 0 ou supérieur à 5 % du capital réalisé. Le solde et les gains réalisés augmentent ;
+  `rewards_by_source` dans l'état (recopié par `clone`, remis à zéro par `RESET`) ;
+  `summary()["recompenses_recues"]`.
+- `tests/test_ledger.py` : crédit et rechargement, 6 refus, identifiant forgé, faillite.
+- `scripts/audit_fills.py` (+ test) : une `REWARD` dans un fantôme est une anomalie ; dans le
+  principal, le montant ne dépasse pas la somme de ses détails, ni un marché sa cagnotte.
+- Partie libre : `main._credit_rewards` (étape 3 bis, juste après les règlements) crédite au seul
+  principal les journées terminées des 3 derniers jours : liquidité (journées ≥ 1 $, marchés
+  plafonnés à leur cagnotte) et détention, × prudence 0,5 (`settings.yaml → recompenses`,
+  `verser_au_principal`). Tableau de bord : « dont récompenses créditées (estimées) ».
+- La remise aux ordres posés (`remise_maker`) est acceptée par le noyau mais pas encore calculée :
+  il faudra le taux de remise de chaque catégorie (Gamma `feeSchedule`).
