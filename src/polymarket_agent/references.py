@@ -307,6 +307,58 @@ def attach(markets, db, now: datetime) -> dict[str, int]:
     return counts
 
 
+HISTORY_SCHEMA = """
+CREATE TABLE IF NOT EXISTS historique_references (
+    pris_le TEXT, market_id TEXT, source TEXT, p_ref REAL, prix_oui REAL, achat REAL, vente REAL,
+    detail TEXT, PRIMARY KEY (pris_le, market_id, source)
+);
+"""
+
+
+def record_history(markets, db, now: datetime, every_minutes: float = 60, keep_days: float = 45) -> int:
+    """Historique des références rattachées (21/10/2026, AMELIORATION n°4) : au plus une photo
+    toutes les `every_minutes` minutes, chaque référence externe (Kalshi, PredictIt, Manifold,
+    champions, mentions, NHL, tweets) avec le prix Polymarket du même instant (prix du OUI, meilleur
+    acheteur, meilleur vendeur). Sans clé d'API, le chercheur peut ainsi tester plus tard « Polymarket
+    contre Pinnacle / Kalshi » sur de vraies paires de prix (sauvegarde quotidienne de la base).
+    Gardé `keep_days` jours. Renvoie le nombre de lignes écrites (0 si trop tôt)."""
+    if db is None or every_minutes <= 0:
+        return 0
+    last = db.get_value("historique_references_le")
+    try:
+        if last and (now - datetime.fromisoformat(last)).total_seconds() < every_minutes * 60 - 30:
+            return 0
+    except ValueError:
+        pass
+    taken = now.isoformat(timespec="seconds")
+    rows = []
+    for m in markets:
+        refs = dict(getattr(m, "references", None) or {})
+        if getattr(m, "tweets", None):
+            refs["tweets"] = m.tweets
+        if not refs:
+            continue
+        prices = list(getattr(m, "outcome_prices", None) or [])
+        yes = float(prices[0]) if prices else None
+        bid = float(m.best_bid) if getattr(m, "best_bid", None) is not None else None
+        ask = float(m.best_ask) if getattr(m, "best_ask", None) is not None else None
+        for source, ref in refs.items():
+            p = ref.get("p") if isinstance(ref, dict) else None
+            try:
+                p = float(p) if p is not None else None
+            except (TypeError, ValueError):
+                p = None
+            detail = json.dumps(ref, ensure_ascii=False, default=str)[:300]
+            rows.append((taken, str(m.market_id), str(source), p, yes, bid, ask, detail))
+    db.conn.executescript(HISTORY_SCHEMA)
+    db.conn.executemany("INSERT OR REPLACE INTO historique_references VALUES (?,?,?,?,?,?,?,?)", rows)
+    db.conn.execute("DELETE FROM historique_references WHERE pris_le < ?",
+                    ((now - timedelta(days=keep_days)).isoformat(timespec="seconds"),))
+    db.conn.commit()
+    db.set_value("historique_references_le", taken)
+    return len(rows)
+
+
 def attach_all(markets, db, now: datetime) -> dict[str, int]:
     """Toutes les références qui ne dépendent que des instantanés de la base, sur TOUS les marchés
     scannés (21/10/2026 : rattachées aux seuls 150 marchés surveillés, elles ne trouvaient presque

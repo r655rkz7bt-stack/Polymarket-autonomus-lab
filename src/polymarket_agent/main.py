@@ -442,6 +442,11 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     #    détenu par plusieurs portefeuilles n'est lu qu'une fois par cycle (21/10/2026 : 948 positions,
     #    beaucoup en double, 16,7 s de règlements sur un cycle de 59 s).
     gamma_once = _OnceGamma(deps.gamma)
+    # Lus d'abord par lots de 100 (21/10/2026 : 723 marchés détenus relus un par un = 79 s sur 131 s,
+    # à cause de la pause de politesse de 0,2 s entre deux requêtes).
+    gamma_once.prefetch({p.market_id for pf in portfolios if not pf.ledger.state.bankrupt
+                         for p in pf.ledger.state.positions.values()},
+                        int(deps.settings.get("cycle", {}).get("reglements_par_lot", 1) or 1))
     for portfolio in portfolios:
         if portfolio.ledger.state.positions and not portfolio.ledger.state.bankrupt:
             settled = settle_positions(portfolio.ledger, gamma_once, deps.now())
@@ -509,6 +514,15 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # à TOUS les marchés scannés, AVANT que les stratégies demandent leurs marchés (21/10/2026 :
     # sur les seuls 150 surveillés, elles ne trouvaient presque rien et 8 stratégies restaient muettes).
     report.references = _attach_references(deps, live, now)
+    try:  # historique des références (paires de prix pour le chercheur), au plus une fois par heure
+        from polymarket_agent import references as refs_mod
+        cfg = deps.settings.get("references_historique") or {}
+        written = refs_mod.record_history(live, deps.db, now, float(cfg.get("toutes_les_minutes", 0) or 0),
+                                          float(cfg.get("garder_jours", 45)))
+        if written:
+            report.counts["historique_references"] = written
+    except Exception as exc:  # noqa: BLE001 - un historique ne bloque jamais le cycle
+        log.warning("historique des références non écrit : %s", exc)
     _lap(report, "references")
     known = {m.market_id for m in result.watchlist}
     max_extra = int(deps.settings["scanner"].get("max_extra_markets", 40))
@@ -815,7 +829,12 @@ class _OnceGamma:
     def __init__(self, gamma):
         self.gamma, self.cache = gamma, {}
 
+    down = False  # Gamma en panne pendant ce cycle (prefetch) : pas de lecture une par une
+
     def get_market(self, market_id):
+        market_id = str(market_id)
+        if market_id not in self.cache and self.down:
+            raise SourceUnavailable("Gamma indisponible pendant ce cycle (lots refusés)")
         if market_id not in self.cache:
             try:
                 self.cache[market_id] = (True, self.gamma.get_market(market_id))
@@ -825,6 +844,40 @@ class _OnceGamma:
         if not ok:
             raise value
         return value
+
+    def prefetch(self, market_ids, batch: int = 100) -> None:
+        """Lit d'avance les marchés pas encore lus, par lots (`GammaClient.markets_by_ids`, fermés puis
+        ouverts). Un lot refusé est coupé en deux (un marché supprimé ne bloque pas tout le lot). Si
+        tout échoue, Gamma est jugé en panne pour ce cycle : les marchés non lus ne sont pas relus un
+        par un (cela prenait plus de deux minutes) ; leur règlement attend le cycle suivant. Un marché
+        simplement absent des lots est lu un par un, comme avant."""
+        todo = [str(m) for m in market_ids if str(m) not in self.cache]
+        if batch <= 1 or len(todo) < 2 or not hasattr(self.gamma, "markets_by_ids"):
+            return
+        for k in range(0, len(todo), batch):
+            chunk, any_ok = todo[k:k + batch], False
+            for closed in (True, False):
+                rows, ok = self._lot(chunk, closed)
+                any_ok = any_ok or ok
+                for raw in rows:
+                    if isinstance(raw, dict) and str(raw.get("id")) in chunk:
+                        self.cache[str(raw["id"])] = (True, raw)
+            if not any_ok:
+                self.down = True
+                log.warning("règlements : Gamma ne répond pas aux lots, règlements remis au cycle suivant")
+                return
+
+    def _lot(self, chunk: list[str], closed: bool, depth: int = 0) -> tuple[list, bool]:
+        try:
+            return self.gamma.markets_by_ids(chunk, closed=closed), True
+        except (SourceUnavailable, ValueError) as exc:
+            if len(chunk) < 8 or depth >= 3:
+                log.warning("règlements : lot de %d marchés illisible (%s)", len(chunk), exc)
+                return [], False
+            half = len(chunk) // 2
+            a, ok_a = self._lot(chunk[:half], closed, depth + 1)
+            b, ok_b = self._lot(chunk[half:], closed, depth + 1)
+            return a + b, ok_a or ok_b
 
     def __getattr__(self, name):
         return getattr(self.gamma, name)

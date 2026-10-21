@@ -3,6 +3,17 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (session avec Etienne, après-midi : AMELIORATION, réponse « Tout »)
+
+- **Règlements par lots** : 723 marchés détenus lus en 3,7 s au lieu d'environ 79 s (même règlement sur 25 vérifiés un par un) ;
+  détection de panne de Gamma (panne réelle vers 15 h 25 UTC : scanner vide, 79 s de relectures en 404).
+- **Historique des références** : table `historique_references`, une photo par heure, pour tester plus tard Polymarket contre Kalshi / Pinnacle.
+- **Championne et filles** : plus d'ordre posé servi sous 0,80 (`prix_final`), suite de l'enquête « posées sous la plage ».
+- **Ménage** : retrait sous 750 € après 20 opérations (à blanc : `cotes_bookmakers`, `nf_sport_tres_court`).
+- **Budget du chercheur** (PR #106, #108) : passages pilotés par `scripts/budget_chercheur.py` à partir du samedi 24/10, 60 h par semaine au départ.
+- **Enquête du 18/10** (`experiments/enquetes/2026-10-21_journee_du_18.md`, arrive avec la PR #103) : chance puis sélection sur la chance (sans le 18/10, confiance 0,43).
+  Etienne garde la règle actuelle (pas de règle « sans sa meilleure journée »).
+
 ## 2026-10-21 (passage chercheur, ~15 h UTC)
 
 - **Enquête** (détail : `experiments/enquetes/2026-10-21_soir_copie_ordres_poses_et_deux_camps.md`, famille 4 du jour + 1 et 2).

@@ -79,7 +79,8 @@ jamais_retirer: [market_maker]
 # Ménage (19/10/2026) : retrait immédiat d'une stratégie clairement pire que le hasard (score de
 # confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).
-retirer_perdantes: {min_operations: 20, confiance_max: -1.5}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
+# 21/10/2026 (AMELIORATION n°5) : aussi sous 750 € de capital réalisé après 20 opérations (−25 %).
+retirer_perdantes: {min_operations: 20, confiance_max: -1.5, capital_min: 750}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
 # Moins de filles (AMELIORATION n°5 du 21/10/2026, arena.retire_daughters). Plus on teste de
 # variantes, plus l'une gagne par chance, et plus le cycle ralentit (naive_favorite et
 # nf_sport_patiente avaient 21 filles vivantes chacune). Une fille est retirée si elle est :

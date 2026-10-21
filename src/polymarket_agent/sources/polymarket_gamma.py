@@ -185,3 +185,14 @@ class GammaClient:
 
     def get_market(self, market_id: str) -> dict:
         return self.http.get_json(f"{self.base_url}/markets/{market_id}")
+
+    def markets_by_ids(self, market_ids: list[str], *, closed: bool) -> list[dict]:
+        """Plusieurs marchés en une requête (21/10/2026, règlements). Gamma ne rend que les marchés
+        fermés (`closed=True`) ou que les ouverts : appeler les deux pour tout couvrir. Mêmes champs
+        que `get_market` (comparé sur 60 marchés réels)."""
+        params = [("id", str(m)) for m in market_ids] + [("closed", "true" if closed else "false"),
+                                                          ("limit", str(max(1, len(market_ids))))]
+        rows = self.http.get_json(f"{self.base_url}/markets", params=params)
+        if not isinstance(rows, list):
+            raise ValueError("Gamma : liste attendue")
+        return rows
