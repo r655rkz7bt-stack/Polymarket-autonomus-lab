@@ -742,7 +742,7 @@ nf_tennis:
   morceau: "tennis, achat immédiat"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -874,7 +874,7 @@ nf_sport_patiente_oui:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], issue: [oui]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-19"
   params:
@@ -2463,3 +2463,67 @@ cpi_tranches:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+nf_tennis_prix_bas_vainqueur:
+  explication: "Le favori en tennis à 0,80-0,875, mais seulement les paris « qui gagne le match » (pas les handicaps ni les totaux)."
+  # Fille 80/20 (obligation du 21/10, soir) : type de pari vainqueur = 51 opérations, +208, +6,7 % par mise contre la mère.
+  # Rappel (enquête 21/10) : les variantes « favori » gagnent 0,0 % sur le type vainqueur en sport en général : à suivre, pas à croire.
+  mere: nf_tennis_prix_bas
+  morceau: "tennis, prix 0,80-0,875, type vainqueur"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], prix_max: 0.875, types_pari: [vainqueur]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_tennis_prix_bas_800_850:
+  explication: "Le favori en tennis, mais seulement quand il coûte entre 0,80 et 0,85."
+  # Fille 80/20 (obligation du 21/10, soir) : prix payé 0,800-0,850 = 33 opérations, +191, +13,4 % par mise contre la mère.
+  # Un morceau de 33 paris, choisi parmi les tranches de prix regardées, est une piste, pas une preuve.
+  mere: nf_tennis_prix_bas
+  morceau: "tennis, prix payé 0,800-0,850"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.80, prix_max: 0.85}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+statu_quo_ia:
+  explication: "Dans les marchés « quelle entreprise a le meilleur modèle d'IA à la fin du mois » (1er, 2e, 3e rang), le leader actuel garde sa place : on l'achète 12 à 35 jours avant la fin quand il coûte 0,70-0,95."
+  # Piste n° 2 du 21/10 (experiments/classements_status_quo.md) : 25+11+8 événements mensuels réglés. À J-14, aux prix des vrais échanges,
+  # le leader a gagné 12 fois sur 12 (0,70-0,95) pour 10,6 attendus par les prix : INDICE seulement (P(tout gagner aux prix) = 23 %, ~45 découpages
+  # regardés, 9 mois). Fantôme pour confirmer sur de nouveaux mois ; les cases « Company A/B » à 0,50 n'ont pas de vendeur (ask 1,00) : jamais achetées.
+  mere: naive_favorite
+  morceau: "classements d'IA, leader à 12-35 jours"
+  class: naive_favorite
+  filtres: {question_contient: ["best ai model"], issue: [oui], echeance_min: 288, echeance_max: 840}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.70, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 0.5, min: 0.0, max: 5.0}

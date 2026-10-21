@@ -14,12 +14,14 @@ def _e(kind: str, when: datetime, **data) -> dict:
 
 
 def _buy(when, token, price, shares, strategy="nf", version="1.0.0", cycle="c1", est=None, posted=False,
-         status="FILLED", horizon="5"):
+         status="FILLED", horizon="5", order=None):
     extra = {"cycle_id": cycle, "fill_status": status, "horizon_hours": horizon}
     if est is not None:
         extra["est_probability"] = str(est)
     if posted:
         extra["order_type"] = "limite"
+    if order:
+        extra["resting_order"] = order
     return _e("BUY", when, token_id=token, market_id="m" + token, event_id="e", outcome="Yes", price=str(price),
               shares=str(shares), fee="0", strategy_id=strategy, strategy_version=version, extra=extra)
 
@@ -40,6 +42,22 @@ def test_principal_buy_without_ghost_twin_is_grave():
     found = enquete.copie_fidele({"principal": principal, "nf_v1.0.0": ghost}, NOW - timedelta(days=3))
     assert found[0]["gravite"] == enquete.GRAVE and "1 achat" in found[0]["titre"]
     assert enquete.obligations(found) and "copie_fidele" in enquete.obligations(found)[0]
+
+
+def test_partial_fill_of_a_smaller_resting_order_is_not_a_full_copy():
+    """21/10 (Lynn Vision) : un ordre posé du fantôme se remplit en 5 fois (119 parts), celui du principal, 3 fois plus petit,
+    prend la première exécution (22,56) : même quantité, mais 31 % du total, donc copie proportionnelle."""
+    t = NOW - timedelta(hours=3)
+    ghost = _ledger(*[_buy(t + timedelta(minutes=5 * i), "a", 0.86, sh, cycle=f"c{i}", posted=True, status="PARTIAL",
+                           order="1714e19ec62e1951fc254e7b") for i, sh in enumerate((22.56, 14.28, 21.78, 35.32, 25.49))])
+    principal = _ledger(_buy(t, "a", 0.86, 22.56, cycle="c0", posted=True, status="PARTIAL", order="P1714e19ec62e1951fc254e7"),
+                        _buy(t + timedelta(minutes=5), "a", 0.86, 14.28, cycle="c1", posted=True, status="PARTIAL",
+                             order="P1714e19ec62e1951fc254e7"))
+    assert not enquete.copie_fidele({"principal": principal, "nf_v1.0.0": ghost}, NOW - timedelta(days=3))
+    # Si le principal avait pris autant que le fantôme sur tout l'ordre, le contrôle le dit toujours.
+    big = _ledger(*[_buy(t + timedelta(minutes=5 * i), "a", 0.86, sh, cycle=f"c{i}", posted=True, status="PARTIAL",
+                         order="P1714e19ec62e1951fc254e7") for i, sh in enumerate((22.56, 14.28, 21.78, 35.32, 25.49))])
+    assert enquete.copie_fidele({"principal": big, "nf_v1.0.0": ghost}, NOW - timedelta(days=3))
 
 
 def test_principal_stake_above_its_cap_is_grave_ghost_stake_is_a_lead():

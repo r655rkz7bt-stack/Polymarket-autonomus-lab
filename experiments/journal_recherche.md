@@ -3,6 +3,22 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (passage chercheur, ~15 h UTC)
+
+- **Enquête** (détail : `experiments/enquetes/2026-10-21_soir_copie_ordres_poses_et_deux_camps.md`, famille 4 du jour + 1 et 2).
+  - Aucune enquête obligatoire. `copie_fidele` (4 copies « à 100 % ») : **faux positif** : ordres posés remplis en 3 à 5 fois, le principal prend 31-32 % du total du fantôme
+    (part prévue un tiers). Contrôle réécrit (comparaison par ordre posé) + test du cas réel.
+  - `deux_camps` re-mesuré : 9 paires mais 3 matchs seulement (premier camp 0/9 gagné, −630 € ; deuxième 9/9, +66 €) : pas assez pour bloquer le camp opposé.
+  - **`idea_test.verdict` trompeur** : 12 victoires sur 12 aux prix 0,78-0,95 = « retenue » (t +6) alors que les prix seuls le font arriver 23 % du temps. Ajout de `z_prix`
+    (« retenue » seulement avec `z_prix ≥ 1,5`), test ajouté.
+- **Recherche** (`experiments/classements_status_quo.md`, piste n° 2). 211 événements réglés (règlement relu 209/211). IA : le leader à J-14 / J-30 gagne un peu plus que son prix
+  (12/12 pour 10,6 attendus aux prix payés, +13 %), mais P(hasard) = 23 % et ~45 découpages : **indice**. Plus grande entreprise (J-3 −13 %, J-1 −18 %) et applis n° 1
+  (−9/−10 %) : **écartées** (le leader perd plus que son prix). Spotify : 6 mois, rien.
+- **Arène** : fantôme `statu_quo_ia` ; filles de la feuille de mission `nf_tennis_prix_bas_vainqueur` et `nf_tennis_prix_bas_800_850` (la troisième, `nf_sport_patiente_tennis_875_900`,
+  existait déjà) ; `nf_sport_patiente_oui` et `nf_tennis` (éliminées) mises à `enabled: false`.
+- **Reste ouvert** : confirmer `statu_quo_ia` sur les mois de novembre et décembre (leader Google à 0,58 pour fin novembre) ; relire les anciens « retenue » avec `z_prix` ;
+  NFP contre Kalshi ; LMArena (scores publics) comme référence du leader d'IA ; `deux_camps` à refaire avec plus de matchs.
+
 ## 2026-10-21 (passage chercheur, ~10 h UTC)
 
 - **Enquête** (détail : `experiments/enquetes/2026-10-21_posees_sous_la_plage.md`, famille 4 « le filtre ne filtre pas »).

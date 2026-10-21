@@ -94,3 +94,11 @@ def test_verdict_counts_linked_bets_once_per_event():
     detail = it.verdict(good + cheap)["par_prix"]
     assert detail["< 0,10"]["rendement"] == -0.6 and detail["0,30-0,70"]["paris"] == 200
     assert it.verdict(good[:10])["raison"].startswith("moins de")
+
+
+def test_verdict_does_not_retain_a_run_of_wins_the_prices_already_explain():
+    """21/10/2026 (classements) : 12 gagnés sur 12 à 0,78-0,95 donnaient t +6 « retenue » ; aux prix payés, P(tout gagner) = 23 %."""
+    prices = [0.78, 0.80, 0.86, 0.86, 0.88, 0.90, 0.90, 0.91, 0.92, 0.94, 0.94, 0.95]
+    bets = [{"gain": 1 / p - 1, "evenement": f"e{i}", "mois": f"2026-0{1 + i % 6}", "cout": p} for i, p in enumerate(prices)]
+    v = it.verdict(bets, min_bets=10)
+    assert v["z_prix"] < 1.5 and v["verdict"] == "indice"
