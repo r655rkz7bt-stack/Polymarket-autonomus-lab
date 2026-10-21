@@ -89,7 +89,11 @@ jamais une raison de sauter une partie : si le temps manque vraiment, sauvegarde
 ### C. Arène et feuille de mission
 1. Remplis les autres obligations de la feuille de mission (filles de l'entonnoir 80/20,
    stratégies éliminées à remplacer…). Juge une fille contre sa mère **sur la même période**
-   (enquête automatique, contrôle `filles_periode`).
+   (enquête automatique, contrôle `filles_periode`). Au plus 10 filles vivantes par mère
+   (`config/promotion.yaml` → `filles`, 21/10/2026) : l'arène retire d'elle-même les plus faibles, les
+   muettes depuis 48 h et les doublons ; ne crée pas de fille d'une mère pleine (la feuille de mission
+   le dit). Une stratégie n'entre dans `validated_strategies` (priorité au capital principal) qu'avec
+   un test tenu **aux prix réellement payés** (exemple : `experiments/prix_payes.md`).
 2. Au moins une nouvelle stratégie ou variante dans l'arène à chaque passage (décision d'Etienne,
    15/10/2026) : de préférence celle de la partie B.
 3. Sans obligation, avance aussi un chantier de `experiments/CHANTIERS.md`.

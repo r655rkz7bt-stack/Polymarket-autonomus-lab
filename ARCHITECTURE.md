@@ -855,3 +855,22 @@ comme fantômes ; l'entonnoir 80/20 leur proposera des filles.
 - **Raisons d'abstention publiées** : par portefeuille et par stratégie, à chaque cycle (marchés vus,
   propositions, ordres, 6 premières raisons) ; clé `abstentions` de la base, `abstentions` dans
   `data.json`, et dans l'enquête « stratégies muettes » (`enquete.muettes`).
+
+## 49. AMELIORATION du 21/10/2026, lot 2 : priorité aux prouvées, moins de filles, ordres posés
+- **Option B d'Etienne** (`promotion.yaml → priorite_validees`, `arena.allocation(others_share=)`) :
+  dès qu'une stratégie de `validated_strategies` est qualifiée en direct, les validées passent devant
+  (places, doublons) et se partagent le capital principal ; les autres qualifiées, championne
+  comprise, gardent ensemble `part_des_autres` (20 %). Sans validée qualifiée, rien ne change. Une
+  valeur `null` dans `validated_strategies` exclut une fille d'une mère validée. N'entre dans la
+  liste qu'un test tenu **aux prix réellement payés** (`experiments/prix_payes.md`).
+- **Moins de filles** (`promotion.yaml → filles`, `arena.retire_daughters`) : retrait des filles
+  muettes depuis 48 h, des doublons (≥ 90 % de paris communs avec la mère ou une sœur et pas
+  meilleures par opération sur la période commune) et des filles en trop (au-delà de 10 vivantes par
+  mère : les plus faibles de plus de 2 jours, sous +2 % de croissance). Jamais le champion, une
+  qualifiée, un mode de jugement ni `jamais_retirer` ; ne compte pas pour l'élimination
+  hebdomadaire. La feuille de mission ne demande plus de fille pour une mère pleine
+  (`pareto.obligations(full=)`). Essai à blanc sur les journaux du 21/10 : 13 retraits sur 110.
+- **Ordres posés pour les stratégies à modèle** : `mots_prononces_patiente`,
+  `compteur_tweets_non_patiente` (`limit_ticks: 1`), surveillées par le markout.
+- **Sources** : GDELT coûte au plus 6 s toutes les 3 h (rien à gagner) ; Bluesky reste optionnel
+  (compte gratuit et deux secrets, utile seulement pour une stratégie d'opinion).

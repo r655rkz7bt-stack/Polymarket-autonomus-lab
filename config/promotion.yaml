@@ -17,6 +17,14 @@ min_log_growth: 0.02             # croissance log du capital réalisé ≥ 0,02 
 # aux prix réels (experiments/meteo_backtest.md) ; elle a donc été retirée d'ici.
 # Exemple : `nom_de_strategie: {min_closed_trades: 8, min_age_hours: 8, min_log_growth: 0.005}`
 validated_strategies: {}
+# Priorité aux stratégies prouvées sur le passé (option B d'Etienne, 21/10/2026) : dès qu'une
+# stratégie de `validated_strategies` est qualifiée en direct (seuils ci-dessus), les validées
+# passent devant pour les places et les doublons, et se partagent le capital principal ; les autres
+# qualifiées (la championne comprise) gardent ensemble `part_des_autres`. Sans validée qualifiée,
+# rien ne change. Raison : avec 95 stratégies, la meilleure en direct est souvent la meilleure
+# par chance (nf_sport_patiente, z 1,57 = ce qu'on attend du meilleur de 43 sans avantage).
+# null = règle désactivée. Une fille d'une mère validée s'exclut avec `nom_de_la_fille: null`.
+priorite_validees: {part_des_autres: 0.2}
 # Preuves avant promotion (AMELIORATION n°1, 17/10/2026) : score de confiance des résultats par
 # opération (moyenne / erreur type). meteo_prevision a été promu à t = 0,61 (du hasard) et a coûté
 # au principal. Depuis le 18/10 au soir, il porte sur le RENDEMENT de chaque opération (résultat /
@@ -72,4 +80,22 @@ jamais_retirer: [market_maker]
 # confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).
 retirer_perdantes: {min_operations: 20, confiance_max: -1.5}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
+# Moins de filles (AMELIORATION n°5 du 21/10/2026, arena.retire_daughters). Plus on teste de
+# variantes, plus l'une gagne par chance, et plus le cycle ralentit (naive_favorite et
+# nf_sport_patiente avaient 21 filles vivantes chacune). Une fille est retirée si elle est :
+# - muette : ni opération ni position après `inactives_apres_jours` jours ;
+# - un doublon : ≥ `doublon_chevauchement` de paris communs avec sa mère ou une sœur, et sur la
+#   période commune (≥ `doublon_min_operations` opérations chacune) pas meilleure par opération ;
+# - en trop : au-delà de `max_par_mere` filles vivantes, les plus faibles d'au moins `age_min_jours`
+#   jours dont la croissance est sous `garder_croissance`.
+# Jamais le champion, une qualifiée, un mode de jugement ni `jamais_retirer`. Essai à blanc sur les
+# journaux du 21/10 au matin : 13 retraits sur 110 stratégies vivantes (12 en trop, 1 doublon).
+# Le chercheur ne crée pas de nouvelle fille d'une mère qui en a déjà `max_par_mere`.
+filles:
+  max_par_mere: 10
+  age_min_jours: 2
+  garder_croissance: 0.02
+  inactives_apres_jours: 2
+  doublon_chevauchement: 0.9
+  doublon_min_operations: 20
 

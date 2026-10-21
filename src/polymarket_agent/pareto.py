@@ -334,10 +334,22 @@ def analyse(entries: dict[str, list[dict]], growth: dict[str, float], mothers: d
     return out
 
 
-def obligations(reports: list[dict], limit: int = 3) -> list[str]:
-    """Pour la feuille de mission : les filles proposées pas encore dans l'arène."""
+def obligations(reports: list[dict], limit: int = 3, full: dict[str, int] | None = None,
+                cap: int | None = None) -> list[str]:
+    """Pour la feuille de mission : les filles proposées pas encore dans l'arène. `full` : {mère:
+    filles vivantes} des mères qui en ont déjà `cap` ou plus (21/10/2026, promotion.yaml → filles) :
+    pas de nouvelle fille pour elles, une seule ligne le dit."""
+    full = full or {}
     todo = [p for r in reports for p in r["filles"] if not p.get("existe")]
     todo.sort(key=lambda p: -p["pnl"])
-    return [f"Entonnoir 80/20 (reports/pareto.md) : créer la fille de {p['strategie']} « {p['morceau']} » "
-            f"({p['n']} opérations, {p['pnl']:+.0f}, {p['rendement']:+.1%} par mise contre la stratégie entière) "
-            f"avec `mere: {p['strategie']}` et `filtres: {p['filtres']}`." for p in todo[:limit]]
+    blocked = sorted({p["strategie"] for p in todo if p["strategie"] in full})
+    out = [f"Entonnoir 80/20 (reports/pareto.md) : créer la fille de {p['strategie']} « {p['morceau']} » "
+           f"({p['n']} opérations, {p['pnl']:+.0f}, {p['rendement']:+.1%} par mise contre la stratégie entière) "
+           f"avec `mere: {p['strategie']}` et `filtres: {p['filtres']}`."
+           for p in [p for p in todo if p["strategie"] not in full][:limit]]
+    if blocked:
+        out.append("Entonnoir 80/20 : pas de nouvelle fille pour " + ", ".join(
+            f"{m} ({full[m]} filles vivantes)" for m in blocked) + f" : au plus {cap} par mère "
+            "(config/promotion.yaml → filles) ; l'arène retire d'elle-même les plus faibles, les muettes et "
+            "les doublons. Si un morceau vaut vraiment mieux, retirer d'abord la fille la plus faible.")
+    return out

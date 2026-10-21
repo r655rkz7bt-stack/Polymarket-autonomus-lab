@@ -59,6 +59,9 @@ def test_only_growing_strategies_are_dissected_and_existing_daughters_are_not_pr
     assert tennis["existe"]
     todo = pareto.obligations(reports)
     assert todo and all("discipline tennis" not in t for t in todo)
+    # 21/10/2026 : une mère qui a déjà ses 10 filles vivantes n'en reçoit pas de nouvelle.
+    blocked = pareto.obligations(reports, full={"mere_x": 10}, cap=10)
+    assert len(blocked) == 1 and "pas de nouvelle fille pour mere_x (10 filles vivantes)" in blocked[0]
     assert "Entonnoir 80/20" in pareto.render(reports)
     # Une fille qui fait mieux que sa mère est disséquée même avec une croissance modeste.
     both = pareto.analyse({"m_v1": entries, "f_v1": entries}, {"m_v1": -0.1, "f_v1": 0.01}, {"f": "m"}, markets,
