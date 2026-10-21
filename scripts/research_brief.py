@@ -42,7 +42,9 @@ def main() -> int:
     brief = build_brief(main_ledger, competitors, active, settings["arena"], learning=learning)
     from polymarket_agent import enquete, pareto
     # Enquête d'abord (20/10/2026) : un défaut fausse tout le reste, filles comprises.
-    brief["obligations"] = enquete.obligations(findings) + brief["obligations"] + pareto.obligations(reports)
+    full, cap = _full_mothers(main_ledger, settings["arena"])
+    brief["obligations"] = (enquete.obligations(findings) + brief["obligations"]
+                            + pareto.obligations(reports, full=full, cap=cap))
     out = ROOT / "reports" / "brief.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render_brief(brief), encoding="utf-8")
@@ -69,6 +71,21 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, 
     except (ValueError, TypeError):
         abstentions = None
     return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions)
+
+
+def _full_mothers(main_ledger, arena_cfg: dict) -> tuple[dict[str, int], int | None]:
+    """({mère: filles vivantes} des mères au plafond `filles.max_par_mere`, plafond) (21/10/2026)."""
+    import yaml
+    cap = (arena_cfg.get("filles") or {}).get("max_par_mere")
+    if cap is None:
+        return {}, None
+    configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
+    count: dict[str, int] = {}
+    for sid, spec in configs.items():
+        if (isinstance(spec, dict) and spec.get("mere") and spec.get("enabled", True)
+                and f"{sid}_v{spec.get('version')}" not in main_ledger.state.eliminated):
+            count[str(spec["mere"])] = count.get(str(spec["mere"]), 0) + 1
+    return {m: n for m, n in count.items() if n >= int(cap)}, int(cap)
 
 
 def _pareto(competitors: dict, main_ledger, db) -> list[dict]:

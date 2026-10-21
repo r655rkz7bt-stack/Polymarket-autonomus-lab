@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Callable
 
 from polymarket_agent import strategy_health
-from polymarket_agent.arena import family_map, run_arena
+from polymarket_agent.arena import family_map, mother_map, run_arena
 from polymarket_agent.correlation import correlation_group
 from polymarket_agent.data_collector import _due
 from polymarket_agent.execution_simulator import (simulate_buy, simulate_resting_buy,
@@ -456,7 +456,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     rewards, reward_days = _ranking_rewards(deps, competitors)
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
                              deps.settings["arena"], deps.now(), rewards=rewards, reward_days=reward_days,
-                             families=family_map())
+                             families=family_map(), mothers=mother_map())
     deps.db.set_value("doublons_principal", json.dumps(report.arena.get("doublons") or {}))  # tableau de bord
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:

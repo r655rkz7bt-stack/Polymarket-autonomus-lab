@@ -36,6 +36,10 @@
   `chevauchement_max` des paris de la plus petite ont aussi été faits par l'autre, ce sont des
   doublons : seule la meilleure prend une place (même famille ou pas). Sinon, chacune a la sienne,
   même deux sœurs. Sans mesure possible (aucun achat), on retombe sur la règle de la famille.
+- Priorité aux stratégies prouvées sur le passé (option B d'Etienne, 21/10/2026,
+  `priorite_validees`) : dès qu'une stratégie de `validated_strategies` est qualifiée en direct,
+  les validées passent devant pour les places et se partagent l'essentiel du capital ; les autres
+  qualifiées (la championne comprise) gardent ensemble `part_des_autres`.
 - Chaque semaine, la pire stratégie éligible est éliminée (jamais le champion) : sa place
   revient à une nouvelle idée (`scripts/research_brief.py` le signale au chercheur).
 
@@ -161,9 +165,11 @@ def _old_enough(s: Standing, now: datetime | None, min_age_hours: float) -> bool
 
 def validated_gates(name: str, validated: dict | None) -> dict | None:
     """Seuils d'entrée allégés d'une stratégie VALIDÉE sur le passé (config/promotion.yaml,
-    `validated_strategies` : préfixe du nom → seuils), ou None. Le plus long préfixe gagne."""
+    `validated_strategies` : préfixe du nom → seuils), ou None. Le plus long préfixe gagne ; une
+    valeur vide (`null`) exclut une fille d'une mère validée (21/10/2026)."""
     hits = [k for k in (validated or {}) if name.startswith(k)]
-    return dict(validated[max(hits, key=len)]) if hits else None
+    own = validated[max(hits, key=len)] if hits else None
+    return dict(own) if own else None
 
 
 def _enters(s: Standing, min_trades: int, now: datetime | None, min_age_hours: float,
@@ -192,9 +198,8 @@ def _enters(s: Standing, min_trades: int, now: datetime | None, min_age_hours: f
             and (min_t is None or s.t_stat >= float(min_t)))
 
 
-def family_map(path=None) -> dict[str, str]:
-    """{stratégie: sa famille} d'après config/strategies.yaml : la famille d'une fille est celle de
-    sa mère (champ `mere`, en remontant) ; une stratégie sans mère est sa propre famille."""
+def mother_map(path=None) -> dict[str, str]:
+    """{stratégie: sa mère directe (champ `mere`), "" sans mère} d'après config/strategies.yaml."""
     import yaml
     from pathlib import Path
     path = Path(path) if path else Path(__file__).resolve().parents[2] / "config" / "strategies.yaml"
@@ -202,7 +207,13 @@ def family_map(path=None) -> dict[str, str]:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     except (OSError, yaml.YAMLError):
         return {}
-    mother = {sid: str(spec.get("mere") or "") for sid, spec in raw.items() if isinstance(spec, dict)}
+    return {sid: str(spec.get("mere") or "") for sid, spec in raw.items() if isinstance(spec, dict)}
+
+
+def family_map(path=None) -> dict[str, str]:
+    """{stratégie: sa famille} d'après config/strategies.yaml : la famille d'une fille est celle de
+    sa mère (champ `mere`, en remontant) ; une stratégie sans mère est sa propre famille."""
+    mother = mother_map(path)
 
     def root(sid: str) -> str:
         seen = set()
@@ -278,16 +289,22 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
                validated: dict | None = None, min_t: float | None = None,
                modes: dict | None = None, merit: float = 1.0, families: dict | None = None,
                max_overlap: float | None = None, twins: dict | None = None,
-               keep_t: float | None = None) -> dict[str, float]:
+               keep_t: float | None = None, others_share: float | None = None) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
     le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`.
-    `twins` (facultatif) reçoit les qualifiées écartées comme doublons : {nom: {comme, chevauchement}}."""
+    `twins` (facultatif) reçoit les qualifiées écartées comme doublons : {nom: {comme, chevauchement}}.
+    `others_share` (option B d'Etienne, 21/10/2026) : dès qu'une stratégie VALIDÉE sur le passé est
+    qualifiée, les validées passent d'abord (places, doublons) et les autres se partagent au plus
+    `others_share` du capital ; sans validée qualifiée, rien ne change."""
     def kept(s: Standing) -> bool:
         return (s.name == champion and (s.closed_trades >= min_trades or bool(s.mode))
                 and _stays(s, min_trades, max(keep_growth, 0.0), keep_t))
+
+    def proven(s: Standing) -> bool:
+        return others_share is not None and validated_gates(s.name, validated) is not None
     ranked = sorted((s for s in standings
                      if _enters(s, min_trades, now, min_age_hours, min_growth, validated, min_t, modes) or kept(s)),
-                    key=lambda s: s.log_growth, reverse=True)
+                    key=lambda s: (proven(s), s.log_growth), reverse=True)
     eligible = []
     for s in ranked:  # pas deux places pour les mêmes paris : la meilleure des deux la garde
         twin = next((e for e in eligible if _twins(s, e, families, max_overlap)), None)
@@ -297,11 +314,22 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
             shared = overlap(s, twin)
             twins[s.name] = {"comme": twin.name, "chevauchement": None if shared is None else round(shared, 3)}
     eligible = eligible[:max(0, max_strategies)]
-    total = sum(s.log_growth for s in eligible)
+    first = [s for s in eligible if proven(s)]
+    if not first or len(first) == len(eligible):
+        return _split(eligible, merit)
+    rest = min(1.0, max(0.0, float(others_share)))
+    out = {n: w * (1 - rest) for n, w in _split(first, merit).items()}
+    out.update({n: w * rest for n, w in _split([s for s in eligible if not proven(s)], merit).items()})
+    return out
+
+
+def _split(group: list[Standing], merit: float) -> dict[str, float]:
+    """Moitié à égalité, moitié au mérite (merit = 1 : proportionnel pur à la croissance)."""
+    total = sum(s.log_growth for s in group)
     if total <= 0:
         return {}
-    k = len(eligible)  # moitié à égalité, moitié au mérite (merit = 1 : proportionnel pur)
-    return {s.name: (1 - merit) / k + merit * s.log_growth / total for s in eligible}
+    k = len(group)
+    return {s.name: (1 - merit) / k + merit * s.log_growth / total for s in group}
 
 
 def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> dict[str, float]:
@@ -340,13 +368,16 @@ def choose_elimination(standings: list[Standing], champion: str, last_eliminatio
 
 INACTIVE = "inactive"  # début du motif d'un retrait pour inactivité (≠ élimination hebdomadaire)
 HOPELESS = "perdante"  # début du motif d'un retrait pour résultats clairement mauvais (idem)
+SURPLUS = "fille en trop"  # retrait d'une fille au-delà de `filles.max_par_mere` (idem, 21/10/2026)
+DUPLICATE = "doublon"  # retrait d'une fille qui refait les paris de sa mère ou d'une sœur, sans mieux (idem)
 
 
 def last_weekly_elimination(main: Ledger) -> datetime | None:
     """Dernière élimination HEBDOMADAIRE (les retraits pour inactivité ne remettent pas le compteur à zéro)."""
     last = None
     for e in read_entries(main):
-        if e.get("type") == "ELIMINATION" and not str(e.get("data", {}).get("reason", "")).startswith((INACTIVE, HOPELESS)):
+        if e.get("type") == "ELIMINATION" and not str(e.get("data", {}).get("reason", "")).startswith(
+                (INACTIVE, HOPELESS, SURPLUS, DUPLICATE)):
             last = parse_ts(e["ts"])
     return last
 
@@ -394,9 +425,99 @@ def retire_hopeless(main: Ledger, standings: list[Standing], cfg: dict, now: dat
     return out
 
 
+def _mean_return_since(trades: list[dict], since: datetime | None) -> tuple[float, int]:
+    """(rendement moyen par opération, nombre) des opérations clôturées ouvertes depuis `since`."""
+    values = trade_returns([t for t in trades if since is None or (parse_ts(t["opened_at"]) or since) >= since])
+    return (sum(values) / len(values) if values else 0.0), len(values)
+
+
+def retire_daughters(main: Ledger, competitors: dict[str, Ledger], standings: list[Standing], cfg: dict,
+                     now: datetime, mothers: dict[str, str] | None, qualified=lambda s: False) -> list[str]:
+    """Moins de filles (AMELIORATION n°5 du 21/10/2026, `filles` de config/promotion.yaml). Plus on
+    teste de variantes, plus l'une gagne par chance (la championne était la meilleure de 43 par
+    chance), et plus le cycle ralentit ; naive_favorite et nf_sport_patiente avaient 21 filles chacune.
+    Une fille (stratégie qui a une `mere`) est retirée, dans l'ordre :
+    1. muette : aucune opération ni position après `inactives_apres_jours` jours ;
+    2. doublon : ses paris recoupent ceux de sa mère ou d'une sœur à `doublon_chevauchement` au moins,
+       et sur la période commune (au moins `doublon_min_operations` opérations chacune) son rendement
+       moyen par opération ne fait pas mieux : son filtre n'apporte rien ;
+    3. en trop : au-delà de `max_par_mere` filles vivantes pour une même mère, les plus faibles
+       (croissance) parmi celles qui ont au moins `age_min_jours` jours et une croissance sous
+       `garder_croissance` (une fille qui gagne vraiment n'est pas retirée pour faire de la place à
+       des filles trop jeunes pour être jugées).
+    Jamais le champion, une qualifiée (qui a ou peut avoir une part du principal), un mode de
+    jugement ni `jamais_retirer`. Comme les autres retraits, ne compte pas pour l'élimination
+    hebdomadaire."""
+    rule = cfg.get("filles") or {}
+    if not rule or not mothers:
+        return []
+    keep = tuple(str(k) for k in cfg.get("jamais_retirer") or ())
+    base = {s.name: s.name.rsplit("_v", 1)[0] for s in standings}
+    out: list[str] = []
+
+    def alive(s: Standing) -> bool:
+        return s.name not in main.state.eliminated
+
+    def safe(s: Standing) -> bool:
+        return (s.name == main.state.champion or bool(s.mode) or (keep and s.name.startswith(keep))
+                or bool(qualified(s)))
+
+    def retire(s: Standing, reason: str, data: dict) -> None:
+        main.record_elimination(s.name, reason, data, now)
+        out.append(s.name)
+    kids = [s for s in standings if mothers.get(base[s.name]) and alive(s)]
+    days = rule.get("inactives_apres_jours")
+    for s in kids:
+        ledger = competitors.get(s.name)
+        if (days and ledger is not None and not safe(s) and s.closed_trades == 0 and not ledger.state.positions
+                and s.days(now) >= float(days)):
+            retire(s, f"{INACTIVE} : fille sans opération ni position en {float(days):g} jours",
+                   {"jours": round(s.days(now), 2)})
+    by_base = {base[s.name]: s for s in standings}
+    lim, n_min = rule.get("doublon_chevauchement"), int(rule.get("doublon_min_operations", 20))
+    trades: dict[str, list[dict]] = {}  # opérations clôturées, lues une fois par stratégie
+    for s in kids:
+        if lim is None or not alive(s) or safe(s) or s.closed_trades < n_min:
+            continue
+        mother = by_base.get(mothers[base[s.name]])
+        rivals = ([mother] if mother is not None else []) + [
+            k for k in kids if k is not s and mothers[base[k.name]] == mothers[base[s.name]]]
+        for r in rivals:
+            shared = overlap(s, r)
+            if not alive(r) or r.closed_trades < n_min or shared is None or shared < float(lim):
+                continue
+            starts = [t for t in (s.started_at, r.started_at) if t is not None]
+            since = max(starts) if starts else None
+            for name in (s.name, r.name):
+                if name not in trades:
+                    trades[name] = closed_trades(read_entries(competitors[name]))
+            (mine, n_mine), (theirs, n_theirs) = (_mean_return_since(trades[s.name], since),
+                                                  _mean_return_since(trades[r.name], since))
+            if n_mine >= n_min and n_theirs >= n_min and mine <= theirs:
+                retire(s, f"{DUPLICATE} de {r.name} : {shared:.0%} de paris communs, rendement {mine:+.1%} "
+                          f"contre {theirs:+.1%} par opération", {"comme": r.name, "chevauchement": round(shared, 3)})
+                break
+    cap, age = rule.get("max_par_mere"), float(rule.get("age_min_jours", 2))
+    good = float(rule.get("garder_croissance", float("inf")))
+    if cap is not None:
+        groups: dict[str, list[Standing]] = {}
+        for s in kids:
+            if alive(s):
+                groups.setdefault(mothers[base[s.name]], []).append(s)
+        for mother, group in sorted(groups.items()):
+            extra = len(group) - int(cap)
+            pool = sorted((s for s in group if not safe(s) and s.days(now) >= age and s.log_growth < good),
+                          key=lambda s: (s.log_growth, s.closed_trades))
+            for s in pool[:max(0, extra)]:
+                retire(s, f"{SURPLUS} : {mother} a {len(group)} filles vivantes (au plus {int(cap)}), "
+                          f"croissance {s.log_growth:+.3f}", {"mere": mother, "filles": len(group)})
+    return out
+
+
 def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
               now: datetime | None = None, rewards: dict[str, float] | None = None,
-              reward_days: dict[str, int] | None = None, families: dict[str, str] | None = None) -> dict:
+              reward_days: dict[str, int] | None = None, families: dict[str, str] | None = None,
+              mothers: dict[str, str] | None = None) -> dict:
     """Met à jour champion et éliminations dans le journal principal. Retourne un résumé.
     `rewards` : {nom: récompenses estimées comptées pour le classement} (option A) ;
     `reward_days` : {nom: journées de récompenses versables} (mode « recompenses »)."""
@@ -431,6 +552,10 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
         events.append(f"élimination : {loser.name}")
     events += [f"retrait (inactive) : {n}" for n in retire_inactive(main, competitors, standings, cfg, now)]
     events += [f"retrait (perdante) : {n}" for n in retire_hopeless(main, standings, cfg, now)]
+    events += [f"retrait (fille) : {n}" for n in retire_daughters(
+        main, competitors, standings, cfg, now, mothers,
+        qualified=lambda s: _enters(s, min_trades, gates["now"], gates["min_age_hours"], gates["min_growth"],
+                                    gates["validated"], gates["min_t"], gates["modes"]))]
     final = ranking([standing(n, l, main.state.eliminated, rewards.get(n, 0.0), reward_days.get(n, 0), cfg)
                      for n, l in competitors.items()])
     twins: dict = {}
@@ -439,12 +564,19 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                         champion=main.state.champion, keep_growth=keep,
                         merit=float((cfg.get("repartition") or {}).get("merite", 1.0)), families=families,
                         max_overlap=None if max_overlap is None else float(max_overlap), twins=twins,
-                        keep_t=keep_t, **gates)
+                        keep_t=keep_t, others_share=_others_share(cfg), **gates)
     engaged = exposure(final, shares, cfg)
     if not shares and main.state.champion:
         engaged = exposure(final, {main.state.champion: 1.0}, cfg)
     return {"champion": main.state.champion, "events": events, "allocation": shares, "engagement": engaged,
             "doublons": twins, "classement": [s.report() for s in final]}
+
+
+def _others_share(cfg: dict) -> float | None:
+    """`priorite_validees.part_des_autres` (option B, 21/10/2026), ou None (règle désactivée)."""
+    rule = cfg.get("priorite_validees") or {}
+    value = rule.get("part_des_autres") if isinstance(rule, dict) else None
+    return None if value is None else float(value)
 
 
 def days_since_record(ledger: Ledger, now: datetime) -> float:

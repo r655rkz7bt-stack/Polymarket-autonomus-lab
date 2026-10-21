@@ -425,3 +425,71 @@ def test_clearly_losing_strategies_are_retired_at_once(tmp_path):
     assert "news_momentum_v1" in main.state.eliminated and last_weekly_elimination(main) is None
     assert RULES["retirer_perdantes"] == {"min_operations": 20, "confiance_max": -1.5}
     assert retire_hopeless(main, standings, {}, NOW) == []
+
+
+def test_proven_strategies_come_first_and_the_others_keep_a_small_share():
+    """Option B d'Etienne (21/10/2026) : dès qu'une stratégie validée sur le passé est qualifiée en
+    direct, elle passe devant (places, doublons) ; les autres se partagent `part_des_autres`.
+    Sans validée qualifiée, la répartition ne change pas. `null` exclut une fille d'une mère validée."""
+    from polymarket_agent.arena import _others_share, allocation, validated_gates
+    validated = {"tweets": {"min_closed_trades": 8, "min_age_hours": 8, "min_log_growth": 0.005},
+                 "tweets_nyc": None}
+    assert validated_gates("tweets_nyc_v1", validated) is None and validated_gates("tweets_v1", validated)
+    gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02, "validated": validated}
+    champ, tweets = st("champ_v1", 60, 0.15, days=5), st("tweets_v1", 10, 0.01, days=1)
+    shares = allocation([champ, tweets], 20, 5, merit=0.5, others_share=0.2, **gates)
+    assert shares == pytest.approx({"tweets_v1": 0.8, "champ_v1": 0.2})
+    assert allocation([champ, tweets], 20, 5, merit=0.5, **gates) == pytest.approx(
+        {"champ_v1": 0.25 + 0.5 * 0.15 / 0.16, "tweets_v1": 0.25 + 0.5 * 0.01 / 0.16})  # règle absente
+    losing = st("tweets_v1", 10, -0.01, days=1)  # validée mais perdante en direct : rien ne change
+    assert allocation([champ, losing], 20, 5, merit=0.5, others_share=0.2, **gates) == {"champ_v1": 1.0}
+    # Une seule place : la validée la prend, même moins bonne.
+    assert allocation([champ, tweets], 20, 1, merit=0.5, others_share=0.2, **gates) == {"tweets_v1": 1.0}
+    assert _others_share(RULES) == pytest.approx(float(RULES["priorite_validees"]["part_des_autres"]))
+
+
+def _fake_ghost(tmp_path, name, results, events, start=NOW - timedelta(days=5)):
+    """Journal fantôme brut : une opération réglée par résultat (True = gagnée), mise 50 à 0,5."""
+    from types import SimpleNamespace
+    rows = [{"type": "GENESIS", "ts": start.isoformat(), "data": {"initial_capital": "1000"}}]
+    for i, (won, ev) in enumerate(zip(results, events)):
+        ts = (start + timedelta(hours=i + 1)).isoformat()
+        rows.append({"type": "BUY", "ts": ts, "data": {
+            "token_id": f"t{i}", "market_id": f"m{i}", "event_id": ev, "outcome": "Yes", "shares": "100",
+            "price": "0.5", "fee": "0", "strategy_id": name, "strategy_version": "1", "extra": {}}})
+        rows.append({"type": "SETTLE", "ts": ts, "data": {"token_id": f"t{i}", "payout_per_share": "1" if won else "0"}})
+    path = tmp_path / f"{name}.jsonl"
+    path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    return SimpleNamespace(path=path, state=SimpleNamespace(positions={}))
+
+
+def test_daughters_are_capped_and_duplicate_or_mute_daughters_retired(ledger, tmp_path):
+    """AMELIORATION n°5 (21/10/2026) : au plus `max_par_mere` filles vivantes (les plus faibles
+    partent, jamais celles qui gagnent vraiment ni les trop jeunes), retrait des filles muettes et
+    des doublons qui ne font pas mieux que leur mère par opération ; le compteur hebdomadaire
+    n'est pas touché."""
+    from polymarket_agent.arena import last_weekly_elimination, retire_daughters
+    cfg = {"filles": {"max_par_mere": 2, "age_min_jours": 2, "garder_croissance": 0.02, "inactives_apres_jours": 2,
+                      "doublon_chevauchement": 0.9, "doublon_min_operations": 20}}
+    mothers = {"mere": "", "copie": "mere", "meilleure": "mere", "a": "mere", "b": "mere", "bonne": "mere",
+               "jeune": "mere", "muette": "mere"}
+    evs = [f"e{i}" for i in range(30)]
+    results = {"mere": [True, False] * 15, "copie": [True, False, False] + [True, False] * 13 + [True],
+               "meilleure": [True, True, False] * 10}
+    competitors = {f"{n}_v1": _fake_ghost(tmp_path, n, r, evs) for n, r in results.items()}
+    competitors["muette_v1"] = _fake_ghost(tmp_path, "muette", [], [])
+    for n in ("a", "b", "bonne", "jeune"):
+        competitors[f"{n}_v1"] = _fake_ghost(tmp_path, n, [], [])
+
+    def stand(name, growth, trades=0, days=5, events=frozenset()):
+        return Standing(name, trades, 1000.0, 1000.0, growth, NOW - timedelta(days=days), False, events=events)
+    standings = [stand("mere_v1", 0.05, 30, 9, frozenset(evs)), stand("copie_v1", 0.04, 30, 5, frozenset(evs)),
+                 stand("meilleure_v1", 0.30, 30, 5, frozenset(evs)), stand("a_v1", -0.1, 5), stand("b_v1", 0.01, 5),
+                 stand("bonne_v1", 0.05, 5), stand("jeune_v1", -0.3, 1, days=1), stand("muette_v1", 0.0, 0, days=3)]
+    out = retire_daughters(ledger, competitors, standings, cfg, NOW, mothers)
+    # muette (3 jours, rien) ; copie : mêmes paris que sa mère, pas mieux par opération ; puis 5 filles
+    # vivantes pour 2 places : a et b (sous +2 %, plus de 2 jours) partent ; bonne (+5 %), jeune
+    # (1 jour) et meilleure (+30 %) restent, même au-delà du plafond.
+    assert out == ["muette_v1", "copie_v1", "a_v1", "b_v1"]
+    assert ledger.state.eliminated >= set(out) and last_weekly_elimination(ledger) is None
+    assert retire_daughters(ledger, competitors, standings, {}, NOW, mothers) == []

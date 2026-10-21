@@ -1976,6 +1976,26 @@ mots_prononces:
     min_count:      {value: 3, min: 1, max: 50}          # au moins 3 marchés passés du même mot
     min_price:      {value: 0.30, min: 0.0, max: 0.9}    # passé : sous 0,30, rien à gagner
 
+mots_prononces_patiente:
+  explication: "La même idée que « mots prononcés », mais on pose l'achat et on attend un vendeur au lieu de payer son prix (moins cher, sans frais, servi seulement si quelqu'un vend jusqu'à notre prix)."
+  # AMELIORATION n°6 du 21/10/2026 (décision d'Etienne : « Tout ») : marchés « mentions » peu liquides, écart
+  # achat-vente souvent de 0,03 à 0,10 ; seul l'acheteur pressé paie les frais. Risque : n'être servi que quand on a
+  # tort (sélection adverse) ; mesuré par le markout (`markout.py`), comme pour la championne. Même signal que la mère.
+  mere: mots_prononces
+  morceau: "patiente (ordre posé)"
+  class: mots_prononces
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    <<: *reference
+    margin:         {value: 0.05, min: 0.0, max: 0.4}
+    max_gap:        {value: 0.60, min: 0.05, max: 1.0}
+    max_age_hours:  {value: 26, min: 1, max: 168}
+    min_count:      {value: 3, min: 1, max: 50}
+    min_price:      {value: 0.30, min: 0.0, max: 0.9}
+
 mots_prononces_nfl:
   explication: "« Les commentateurs diront-ils ce mot pendant le match de NFL ? » : on regarde combien de fois ils l'ont dit lors des matchs passés, et on achète si le prix s'en écarte (jamais pour la Coupe du monde, qui perdait)."
   # Piste « mentions : the announcers et anyone » (21/10/2026, experiments/mentions_annonceurs.md) : INDICE
@@ -2270,6 +2290,33 @@ compteur_tweets_non:
   mere: compteur_tweets
   morceau: "NON seulement, sans NYC Mayor"
   class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
+
+compteur_tweets_non_patiente:
+  explication: "La même idée que « compteur de tweets, NON seulement », mais on pose l'achat et on attend un vendeur au lieu de payer son prix."
+  # AMELIORATION n°6 du 21/10/2026 : tranches de tweets peu liquides ; seul l'acheteur pressé paie les frais.
+  # Risque surveillé par le markout (sélection adverse). Même signal que la mère.
+  mere: compteur_tweets_non
+  morceau: "patiente (ordre posé)"
+  class: compteur_tweets
+  limit_ticks: 1
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-21"
