@@ -68,16 +68,22 @@ class _Arbitrage(_Base):
 
     def _pair(self, legs, books, state, marks, out, bucket, tag: str, used: set) -> list[Proposal]:
         books_ = [books.get(m.token_ids[s]) for m, s in legs]
+        # Raisons d'abstention (21/10/2026, « réveiller les muettes ») : sans elles, le tableau de bord
+        # ne disait pas pourquoi un arbitrage n'achetait rien (paires absentes ou écart insuffisant).
         if any(b is None or b.best_ask is None or not b.asks for b in books_):
+            out.abstain("une jambe sans vendeur")
             return []
         if any(m.token_ids[s] in state.positions or m.market_id in used for m, s in legs):
+            out.abstain("position déjà ouverte")
             return []
         try:
             costs = [b.best_ask + taker_fee(ONE, b.best_ask, m.fees) for b, (m, _) in zip(books_, legs)]
         except UnknownFees:
+            out.abstain("frais inconnus")
             return []
         edge = ONE - sum(costs)
         if edge < self.params["min_net_edge"]:
+            out.abstain("paire cohérente : aucun écart après frais")
             return []
         depth = min(b.asks[0].size for b in books_)
         budget = min(self.params["stake_fraction"] * state.total_estimated(marks), state.cash)
@@ -94,7 +100,9 @@ class _Arbitrage(_Base):
         used.update(m.market_id for m, _ in legs)
         return props
 
-    def _finish_pairs(self, out: StrategyOutput, props: list[Proposal]) -> StrategyOutput:
+    def _finish_pairs(self, out: StrategyOutput, props: list[Proposal], pairs_seen: int | None = None) -> StrategyOutput:
+        if pairs_seen == 0:
+            out.abstain("aucune paire complète parmi les marchés vus")
         out.proposals = props[: 2 * int(self.params["max_proposals_per_cycle"])]
         return out
 
@@ -180,14 +188,15 @@ class EchelleDates(_Arbitrage):
         return [m for g in self._group(markets).values() for m in g]
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
-        out, props, used = StrategyOutput(), [], set()
+        out, props, used, seen = StrategyOutput(), [], set(), 0
         for event, items in self._group(watchlist).items():
             for i, near in enumerate(items):
                 for far in items[i + 1:]:
                     if far.end_date.date() > near.end_date.date():
+                        seen += 1
                         props += self._pair(((far, 0), (near, 1)), books, state, marks, out, bucket,
                                             f"{event}:{near.end_date:%m%d}<{far.end_date:%m%d}", used)
-        return self._finish_pairs(out, props)
+        return self._finish_pairs(out, props, seen)
 
 
 # --------------------------------------------------------------------------- 3. cohérence d'un match
@@ -231,10 +240,11 @@ class CoherenceMatch(_Arbitrage):
         return list({id(m): m for a, b, _ in self._pairs(markets) for m in (a[0], b[0])}.values())
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
-        out, props, used = StrategyOutput(), [], set()
+        out, props, used, seen = StrategyOutput(), [], set(), 0
         for win_leg, sp_leg, team in self._pairs(watchlist):
+            seen += 1
             props += self._pair((win_leg, sp_leg), books, state, marks, out, bucket, f"{team}", used)
-        return self._finish_pairs(out, props)
+        return self._finish_pairs(out, props, seen)
 
 
 # --------------------------------------------------------------------------- 4. implication politique
@@ -269,9 +279,10 @@ class ImplicationPolitique(_Arbitrage):
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         out, props, used = StrategyOutput(), [], set()
-        for pres, nom, name in self._pairs(watchlist):
+        pairs = self._pairs(watchlist)
+        for pres, nom, name in pairs:
             props += self._pair(((pres, 1), (nom, 0)), books, state, marks, out, bucket, name, used)
-        return self._finish_pairs(out, props)
+        return self._finish_pairs(out, props, len(pairs))
 
 
 # --------------------------------------------------------------------------- 5. OUI + NON < 1
@@ -453,13 +464,14 @@ class MarchesJumeaux(_Arbitrage):
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         out, props, used = StrategyOutput(), [], set()
-        for g in self._twins(watchlist):
+        twins = self._twins(watchlist)
+        for g in twins:
             for a in g:
                 for b in g:
                     if a.market_id != b.market_id:
                         props += self._pair(((a, 0), (b, 1)), books, state, marks, out, bucket,
                                             f"{a.market_id}={b.market_id}", used)
-        return self._finish_pairs(out, props)
+        return self._finish_pairs(out, props, len(twins))
 
 
 # --------------------------------------------------------------------------- 10. choc sans nouvelle
