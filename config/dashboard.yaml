@@ -5,7 +5,8 @@
 # Ordre des blocs, du haut vers le bas. Identifiants possibles : organisme, resume, principal, aujourdhui, arene, entonnoir, capital,
 # positions, ordres-poses, decisions-recentes, journal, systeme.
 # Un bloc absent de la liste garde sa place après les blocs listés.
-ordre: [organisme, resume, principal, aujourdhui, arene, entonnoir, capital, positions, journal, ordres-poses, decisions-recentes, systeme]
+# 21/10/2026 (demande d'Etienne) : la courbe du capital juste sous le cœur.
+ordre: [organisme, capital, resume, principal, aujourdhui, arene, entonnoir, positions, journal, ordres-poses, decisions-recentes, systeme]
 
 # Blocs cachés (jugés superflus). « resume » et « capital » ne peuvent PAS être cachés (règle n°1 :
 # capital, solde disponible et faillite toujours visibles) : le code les réaffiche.
