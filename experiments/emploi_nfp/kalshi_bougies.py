@@ -31,7 +31,7 @@ for i, m in enumerate(ms):
         break
     if r.status_code != 200: print(m['ticker'], r.status_code, r.text[:80]); continue
     out[m['ticker']] = {'close': t1, 'floor': m.get('floor_strike'), 'result': m.get('result'), 'value': m.get('expiration_value'),
-                        'c': [(c['end_period_ts'], c['yes_bid']['close'], c['yes_ask']['close']) for c in r.json().get('candlesticks', [])]}
+                        'c': [(c['end_period_ts'], (c['yes_bid'].get('close') or c['yes_bid'].get('close_dollars')), (c['yes_ask'].get('close') or c['yes_ask'].get('close_dollars'))) for c in r.json().get('candlesticks', [])]}
     print(i, len(ms), len(out), flush=True); json.dump(out, open(P, 'w'))
     time.sleep(1.2)
 json.dump(out, open(P, 'w')); print('fini', len(out))

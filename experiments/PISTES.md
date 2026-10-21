@@ -13,8 +13,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## À tester
 1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
-3. **Données économiques** : emploi (NFP) contre Kalshi (kalshi_reference). Le CPI a été testé le 21/10 (voir « Testées » : indice,
-   `cpi_tranches`) sans le nowcast de Cleveland (historique par versions introuvable) : le nowcast reste une idée neuve.
+3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI
+   (historique par versions introuvable), une prévision indépendante (consensus, ADP) pour l'emploi, les demandes d'allocations chômage hebdomadaires (même mécanisme : tranches fines).
 4. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
    le test crypto (attention : le test crypto a été négatif, marché suivi par des robots).
 
@@ -51,3 +51,4 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | mentions « annonceurs » NFL (14 matchs) | indice | +21 % à +91 % par achat sur 6 réglages, t par match +0,8 à +4,8 ; 2 mois, marchés minces : fantôme `mots_prononces_nfl` | mentions_annonceurs.md |
 | CPI américain (48 événements, 337 tranches) : NON sur les tranches à 5-30 % | indice | cases à 3-25 % gagnent ~moitié moins que leur prix ; NON +3 à +6 % par achat aux prix réels (12 réglages, 10 positifs ; mensuel/annuel, core négatif) ; 47 événements seulement : fantôme `cpi_tranches` | cpi_nowcast.md |
 | classements « status quo » (211 événements : IA 1er-3e rang, plus grande entreprise, applis n° 1, Spotify) | indice (IA) ; autres écartées | IA, leader 0,70-0,95 à J-14 : 12 gagnés sur 12 pour 10,6 attendus aux prix payés (+13 %), mais P(tout gagner aux prix) = 23 % et ~45 découpages ; plus grande entreprise J-3/J-1 −13/−18 %, applis −9/−10 % ; `idea_test.verdict` corrigé (`z_prix`) : fantôme `statu_quo_ia` | classements_status_quo.md |
+| emploi américain (NFP, 28 événements) et chômage (26) contre le marché et contre Kalshi | indice (tranche favorite des emplois) ; chômage écartée | tranche favorite des « jobs added » : 5 gagnées pour 11,1 attendues à T-24 h (z −2,4 ; Kalshi, non biaisé par le choix : −1,3), NON +20 à +50 % aux prix payés (9-15 paris, ~200 cellules regardées) ; chômage calibré ; règlement 27/28 (sept. 2025 faux chez Polymarket) : fantôme `jobs_favori_non` | emploi_nfp.md |

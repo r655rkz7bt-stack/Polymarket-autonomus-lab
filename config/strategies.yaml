@@ -2566,9 +2566,9 @@ statu_quo_ia:
 
 jobs_favori_non:
   explication: "Quand on parie sur le nombre d'emplois créés aux États-Unis, la case que le marché croit la plus probable sort environ deux fois moins souvent que son prix : on parie qu'elle ne sort pas."
-  # Piste n° 3 (suite) du 21/10 (experiments/emploi_nfp.md) : 29 événements « jobs added », règlement relu 17/17 contre les chiffres BLS connus ; la tranche favorite
+  # Piste n° 3 (suite) du 21/10 (experiments/emploi_nfp.md) : 29 événements « jobs added », règlement relu 27/28 contre les chiffres officiels (Kalshi/BLS) ; la tranche favorite
   # gagne 5 fois pour 11 attendues à T-24 h (z −2,4), 2/11,3 à T-6 h, 4/10,6 à T-72 h ; NON +20 à +50 % aux prix des vrais échanges (9-15 paris par réglage).
-  # Indice, pas preuve : 3 réglages liés, un seul marché, log-score aplati bon sur 2 horizons sur 4 hors échantillon. Fantôme pour confirmer en direct.
+  # Indice, pas preuve : 3 réglages liés, un seul marché ; la mesure non biaisée par le choix (même tranche chez Kalshi) donne z ≈ −1,3 ; ~200 cellules regardées. Fantôme pour confirmer en direct (NFP du 6/11).
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-21"
