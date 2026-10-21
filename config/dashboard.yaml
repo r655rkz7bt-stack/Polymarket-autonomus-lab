@@ -26,3 +26,9 @@ a_la_une:
     - "naive_favorite mène l'arène (+8 %), mais 7 paris gagnés sur 8 à 0,92 est le résultat attendu d'un marché juste : chance et grosses mises (experiments/favori.md)."
     - "Seule poche solide sur le passé : le favori en politique (+5,7 % après frais) — à suivre dans favori_politique."
     - "Ordres posés : pour plusieurs variantes patientes, le prix part contre nous dans l'heure qui suit l'exécution (section « Ordres posés »)."
+
+# Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
+# journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses
+# courbes dans le navigateur, à ce moment-là. Seule une adresse raw.githubusercontent.com finissant
+# par « / » est acceptée (sinon la page la déduit de son adresse GitHub Pages).
+journaux_url: "https://raw.githubusercontent.com/r655rkz7bt-stack/Polymarket-autonomus-lab/data/ledger/fantome/"

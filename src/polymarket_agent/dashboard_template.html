@@ -278,6 +278,17 @@ svg text { font-family: var(--mono); }
   .row.th .c-spark { display: none; }
 }
 
+/* --- fiche d'une stratégie (21/10/2026) : sous la ligne touchée, sur toute la largeur */
+.row { cursor: pointer; }
+.row .fiche { display: none; grid-column: 1 / -1; cursor: auto; min-width: 0; padding: 6px 0 4px; }
+.row.open .fiche { display: block; }
+.row .fiche .ranges { flex-wrap: wrap; border-radius: 14px; }
+.row .fiche table { width: 100%; }
+.row .fiche .legend { margin-top: 4px; }
+.row .fiche .legend svg { width: 22px; height: 8px; display: inline; }
+.row .fiche .chart svg { width: 100%; height: auto; }
+.row .fiche td svg { width: 120px; height: 12px; }
+
 /* --- aujourd'hui : quatre colonnes de phrases (capital, arène, opérations, machine) */
 .today { display: grid; gap: 18px 28px; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); }
 .today h3, .h3 { font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
@@ -1270,7 +1281,7 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
   // ---------------------------------------------------------------- arène
   (function arenaRows() {
     document.getElementById("arena-note").textContent = "Chaque stratégie joue 1 000 virtuels dans son propre fantôme et reçoit " +
-      "une part du capital principal quand elle passe le seuil d'entrée. Touchez une ligne pour le détail.";
+      "une part du capital principal quand elle passe le seuil d'entrée. Touchez une ligne pour ses courbes et ses chiffres.";
     var box = document.getElementById("arena");
     if (!arena.length) { box.appendChild(el("p", "empty", "Aucune stratégie active.")); return; }
     var caps = arena.map(function (s) { return s.capital; }).concat([initial]);
@@ -1344,12 +1355,347 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         sv = spark(s.courbe, narrowRow ? Math.max(200, box.clientWidth - 34) : 104, narrowRow ? 40 : 30);
       sp.appendChild(sv); row.appendChild(sp);
       row._s = { rang: i + 1, nom: s.nom, capital: s.capital, operations: s.operations };
-      row.addEventListener("click", function () { row.classList.toggle("open"); });
+      // Fiche (21/10/2026) : ouverte au premier toucher, calculée à ce moment-là (openFiche).
+      var holder = el("div", "fiche");
+      holder.addEventListener("click", function (ev) { ev.stopPropagation(); });
+      row.appendChild(holder);
+      row.addEventListener("click", function () { row.classList.toggle("open");
+        if (row.classList.contains("open") && !holder._done) { holder._done = true; openFiche(holder, s); } });
       arenaRows.push(row); box.appendChild(row);
     });
     box.appendChild(more);
     arenaFold = collapsible(more, function () { return arenaRows; }, 6, "stratégies");
   })();
+
+  // ---------------------------------------------------------------- fiche d'une stratégie
+  // Demande d'Etienne (21/10/2026) : toucher une stratégie de l'arène ouvre ses courbes (capital, par
+  // pari, confiance, mise, par jour) avec plus haut, plus bas, tendances. Tout est calculé À CE
+  // MOMENT, dans le navigateur, à partir du journal public de la stratégie (branche data) : rien
+  // n'est précalculé par le cycle. Les noms de marchés restent du texte (textContent).
+  var FICHE = D.fiche || {};
+  function journalUrl(name) {
+    var base = FICHE.journaux;
+    if (!base) { var m = /^([^.]+)\.github\.io$/.exec(location.hostname), repo = location.pathname.split("/").filter(Boolean)[0];
+      base = m && repo ? "https://raw.githubusercontent.com/" + m[1] + "/" + repo + "/data/ledger/fantome/" : ""; }
+    return base ? base + encodeURIComponent(name) + ".jsonl" : "";
+  }
+  // Même reconstruction que reporting.closed_trades (Python) : une opération se ferme quand toutes
+  // ses parts sont vendues ou réglées ; une remise à zéro (RESET) repart de rien.
+  function readJournal(text) {
+    var cap0 = 1000, beats = [], trades = [], open = {}, start = null;
+    text.split("\n").forEach(function (line) {
+      if (!line) return; var e; try { e = JSON.parse(line); } catch (x) { return; }
+      var d = e.data || {}, t = new Date(e.ts).getTime();
+      if (e.type === "GENESIS" || e.type === "RESET") { open = {}; trades = []; beats = []; start = t;
+        cap0 = Number(d.initial_capital) || cap0; }
+      else if (e.type === "HEARTBEAT") { if (d.total_estimated) beats.push([t, Number(d.total_estimated), Number(d.cash)]); }
+      else if (e.type === "BUY") { var x = d.extra || {}, p = open[d.token_id], sh = Number(d.shares);
+        if (!p) p = open[d.token_id] = { open: t, shares: 0, bought: 0, cost: 0, proceeds: 0, fees: 0, outcome: d.outcome || "",
+          est: x.est_probability !== undefined && x.est_probability !== null && x.est_probability !== "" ? Number(x.est_probability) : null };
+        p.shares += sh; p.bought += sh; p.cost += sh * Number(d.price) + Number(d.fee); p.fees += Number(d.fee); }
+      else if ((e.type === "SELL" || e.type === "SETTLE") && open[d.token_id]) { var q = open[d.token_id];
+        if (e.type === "SELL") { var s2 = Number(d.shares); q.proceeds += s2 * Number(d.price) - Number(d.fee); q.fees += Number(d.fee);
+          q.shares -= s2; q.how = "vendu"; }
+        else { q.proceeds += q.shares * Number(d.payout_per_share); q.shares = 0; q.how = "réglé"; }
+        if (Math.abs(q.shares) < 1e-6) { q.close = t; q.pnl = q.proceeds - q.cost; delete open[d.token_id];
+          if (q.cost > 0 && q.bought > 0) { q.price = q.cost / q.bought; trades.push(q); } } } });
+    return { cap0: cap0, start: start, beats: beats, trades: trades,
+             open: Object.keys(open).map(function (k) { return open[k]; }) };
+  }
+  // Loi normale (Abramowitz et Stegun 7.1.26), comme arena.confidence_percent et day_confidence.
+  function phi(z) { var a = Math.abs(z) / Math.SQRT2, k = 1 / (1 + 0.3275911 * a);
+    var y = 1 - ((((1.061405429 * k - 1.453152027) * k + 1.421413741) * k - 0.284496736) * k + 0.254829592) * k * Math.exp(-a * a);
+    return 0.5 * (1 + (z >= 0 ? y : -y)); }
+  // Après chaque opération : capital réalisé, paris gagnés contre attendus, confiance (score t et par
+  // jour), mise sur l'avantage mesuré (mêmes formules que arena.py).
+  function perTrade(J) {
+    var rule = FICHE.mise || {}, K = Number(rule.paris_fictifs || 30), pmin = Number(rule.part_min || 0),
+      pmax = Number(rule.part_max === undefined ? 1 : rule.part_max), assumed0 = Number(rule.avantage_suppose_defaut || 0.035);
+    var cum = 0, wins = 0, expct = 0, n = 0, mean = 0, m2 = 0, varModel = 0, days = {}, sumsq = 0, asum = 0, an = 0, out = [];
+    J.trades.forEach(function (t) {
+      var p = t.price, won = t.pnl > 0, r = t.pnl / t.cost, pc = Math.min(Math.max(p, 0.01), 0.99);
+      n++; cum += t.pnl; wins += won ? 1 : 0; expct += p;
+      var dm = r - mean; mean += dm / n; m2 += dm * (r - mean);
+      var day = new Date(t.close).toISOString().slice(0, 10), old = days[day] || 0, nw = old + (won ? 1 : 0) - pc;
+      days[day] = nw; sumsq += nw * nw - old * old; varModel += pc * (1 - pc);
+      if (t.est !== null) { asum += t.est - p; an++; }
+      var sd = n > 1 ? Math.sqrt(m2 / (n - 1)) : 0, tt = n < 2 ? 0 : sd > 0 ? mean / (sd / Math.sqrt(n)) : (mean > 0 ? 99 : 0);
+      var v = Math.max(varModel, sumsq), excess = wins - expct, zs = 0;
+      Object.keys(days).forEach(function (k2) { zs += days[k2]; });
+      var assumed = an && asum / an > 0 ? asum / an : assumed0;
+      out.push({ t: t, n: n, real: J.cap0 + cum, wins: wins, expct: expct, excess: excess,
+        conf: phi(tt) * 100, confDay: v > 0 ? phi(zs / Math.sqrt(v)) * 100 : 50,
+        stake: Math.min(pmax, Math.max(pmin, excess / (n + K) / Math.max(assumed, 0.005))) * 100 }); });
+    return out;
+  }
+
+  // Courbe générique de la fiche : plusieurs séries, plus haut et plus bas de la première, lignes de
+  // repère, survol (réticule et bulle avec toutes les séries), flèches du clavier.
+  function ficheChart(box, o) {
+    box.textContent = "";
+    var S = o.series.filter(function (s) { return s.pts.length; }), main = S[0];
+    if (!main || main.pts.length < 2) { box.appendChild(el("p", "empty", o.empty || "Pas encore assez de données.")); return; }
+    var W = Math.max(280, Math.round(box.clientWidth || 600)), Hh = W < 600 ? 220 : 280, L = 50, R = W < 600 ? 40 : 56, T = 24, B = 28;
+    var xs = [], ys = [];
+    S.forEach(function (s) { s.pts.forEach(function (p) { xs.push(p[0]); ys.push(p[1]); }); });
+    (o.refs || []).forEach(function (r) { if (r.keep) ys.push(r.y); });
+    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), lo = Math.min.apply(null, ys), hi = Math.max.apply(null, ys);
+    if (o.yMin !== undefined) lo = Math.min(lo, o.yMin); if (o.yMax !== undefined) hi = Math.max(hi, o.yMax);
+    var pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
+    if (o.clampLo !== undefined) lo = Math.max(lo, o.clampLo); if (o.clampHi !== undefined) hi = Math.min(hi, o.clampHi);
+    var sx = function (x) { return L + (x - x0) / (x1 - x0 || 1) * (W - L - R); };
+    var sy = function (y) { return T + (hi - y) / (hi - lo || 1) * (Hh - T - B); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + Hh, role: "img", tabindex: "0", "aria-label": o.label }, box);
+    var raw = (hi - lo) / 4, mag = Math.pow(10, Math.floor(Math.log10(raw || 1))), step = mag;
+    [1, 2, 2.5, 5, 10].some(function (m) { step = m * mag; return step >= raw; });
+    for (var v = Math.ceil(lo / step) * step; v <= hi; v += step) {
+      svgEl("line", { x1: L, x2: W - R, y1: sy(v), y2: sy(v), stroke: "var(--line)" }, svg);
+      svgEl("text", { x: L - 7, y: sy(v) + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)" }, svg, o.fy(v, true)); }
+    var ticks = W < 600 ? 3 : 5;
+    for (var q = 0; q < ticks; q++) { var tx = x0 + (x1 - x0) * q / (ticks - 1);
+      svgEl("text", { x: sx(tx), y: Hh - 8, "text-anchor": q === 0 ? "start" : q === ticks - 1 ? "end" : "middle",
+        "font-size": 11, fill: "var(--muted)" }, svg, o.fx(tx, true)); }
+    (o.refs || []).forEach(function (r) { if (r.y < lo || r.y > hi) return;
+      svgEl("line", { x1: L, x2: W - R, y1: sy(r.y), y2: sy(r.y), stroke: "var(--faint)", "stroke-dasharray": "2 3" }, svg);
+      svgEl("text", { x: L + 6, y: sy(r.y) - 5, "font-size": 11, fill: "var(--muted)" }, svg, r.label); });
+    var line = function (pts) { return pts.map(function (p, k) { return (k ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" "); };
+    if (o.area) { var up = main.pts[main.pts.length - 1][1] >= main.pts[0][1], gid = "fg" + Math.random().toString(36).slice(2, 8);
+      var grad = svgEl("linearGradient", { id: gid, x1: 0, x2: 0, y1: 0, y2: 1 }, svgEl("defs", {}, svg));
+      svgEl("stop", { offset: "0%", "stop-color": up ? "var(--blue)" : "var(--red)", "stop-opacity": 0.2 }, grad);
+      svgEl("stop", { offset: "100%", "stop-color": up ? "var(--blue)" : "var(--red)", "stop-opacity": 0 }, grad);
+      svgEl("path", { d: line(main.pts) + " L" + sx(main.pts[main.pts.length - 1][0]).toFixed(1) + " " + (Hh - B) + " L" +
+        sx(main.pts[0][0]).toFixed(1) + " " + (Hh - B) + " Z", fill: "url(#" + gid + ")" }, svg); }
+    S.slice().reverse().forEach(function (s) { svgEl("path", { d: line(s.pts), fill: "none", stroke: s.color, "stroke-width": 2,
+      "stroke-dasharray": s.dash || "none", "stroke-linejoin": "round", "stroke-linecap": "round" }, svg); });
+    // Plus haut, plus bas (première série), puis étiquettes au bout des lignes, écartées si besoin.
+    var iHi = 0, iLo = 0, mp = main.pts;
+    mp.forEach(function (p, k) { if (p[1] > mp[iHi][1]) iHi = k; if (p[1] < mp[iLo][1]) iLo = k; });
+    [[iHi, -10, "plus haut "], [iLo, 18, "plus bas "]].forEach(function (m, n) {
+      if ((n === 1 && iLo === iHi) || m[0] === mp.length - 1) return;
+      var X = sx(mp[m[0]][0]), Y = sy(mp[m[0]][1]), anchor = X < L + 70 ? "start" : X > W - R - 70 ? "end" : "middle";
+      svgEl("circle", { cx: X, cy: Y, r: 4, fill: "var(--card)", stroke: "var(--ink)", "stroke-width": 2 }, svg);
+      svgEl("text", { x: X, y: Y + m[1], "text-anchor": anchor, "font-size": 11, fill: "var(--ink-2)" }, svg, m[2] + o.fy(mp[m[0]][1])); });
+    var ends = S.map(function (s) { var p = s.pts[s.pts.length - 1]; return [sy(p[1]), s.end || o.fy(p[1], true), s.color]; })
+      .sort(function (a, b) { return a[0] - b[0]; });
+    for (var e2 = 1; e2 < ends.length; e2++) ends[e2][0] = Math.max(ends[e2][0], ends[e2 - 1][0] + 13);
+    ends.forEach(function (l) { svgEl("circle", { cx: W - R + 7, cy: l[0] - 4, r: 3, fill: l[2] }, svg);
+      svgEl("text", { x: W - R + 13, y: l[0], "font-size": 11, fill: "var(--ink-2)" }, svg, l[1]); });
+    var hair = svgEl("line", { y1: T, y2: Hh - B, stroke: "var(--line-2)", visibility: "hidden" }, svg);
+    var dot = svgEl("circle", { r: 5, fill: "var(--ink)", stroke: "var(--card)", "stroke-width": 2, visibility: "hidden" }, svg);
+    var tip = tooltip(box), cur = mp.length - 1;
+    function valueAt(s, x) { var best = null; s.pts.forEach(function (p) { if (p[0] <= x) best = p; }); return best; }
+    function show(k) { var p = mp[k], X = sx(p[0]), Y = sy(p[1]), sc = svg.getBoundingClientRect().width / W;
+      hair.setAttribute("x1", X); hair.setAttribute("x2", X); hair.setAttribute("visibility", "visible");
+      dot.setAttribute("cx", X); dot.setAttribute("cy", Y); dot.setAttribute("visibility", "visible");
+      var lines = [o.fx(p[0])].concat(S.slice(1).map(function (s) { var w = valueAt(s, p[0]);
+        return s.label + " " + (w ? o.fy(w[1]) : "—"); })).concat(o.extra ? o.extra(k) : []);
+      tip.show(X * sc, Y * sc, main.label + " " + o.fy(p[1]), lines); }
+    function hide() { tip.hide(); hair.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); }
+    function nearest(cx) { var r = svg.getBoundingClientRect(), X = (cx - r.left) / r.width * W, b = 0;
+      mp.forEach(function (p, k) { if (Math.abs(sx(p[0]) - X) < Math.abs(sx(mp[b][0]) - X)) b = k; }); return b; }
+    svg.addEventListener("pointermove", function (ev) { cur = nearest(ev.clientX); show(cur); });
+    svg.addEventListener("pointerleave", hide); svg.addEventListener("focus", function () { show(cur); });
+    svg.addEventListener("blur", hide);
+    svg.addEventListener("keydown", function (ev) { if (ev.key === "ArrowLeft") cur = Math.max(0, cur - 1);
+      else if (ev.key === "ArrowRight") cur = Math.min(mp.length - 1, cur + 1); else return; ev.preventDefault(); show(cur); });
+  }
+  function legendOf(box, items) { box.textContent = "";
+    items.forEach(function (l) { var span = el("span"), sw = svgEl("svg", { viewBox: "0 0 22 8", "aria-hidden": "true" }, span);
+      svgEl("line", { x1: 1, x2: 21, y1: 4, y2: 4, stroke: l[1], "stroke-width": 2, "stroke-linecap": "round", "stroke-dasharray": l[2] || "none" }, sw);
+      span.appendChild(document.createTextNode(l[0])); box.appendChild(span); }); }
+  function movingAvg(pts, win) { var out = [], sum = 0, j = 0;
+    for (var i = 0; i < pts.length; i++) { sum += pts[i][1];
+      while (pts[j][0] <= pts[i][0] - win) { sum -= pts[j][1]; j++; }
+      out.push([pts[i][0], sum / (i - j + 1)]); }
+    return out; }
+  function thin(pts, max) { if (pts.length <= max) return pts; var step = pts.length / max, out = [];
+    for (var i = 0; i < max; i++) out.push(pts[Math.floor(i * step)]);
+    out.push(pts[pts.length - 1]); return out; }
+
+  function openFiche(holder, s) {
+    var url = journalUrl(s.nom);
+    holder.appendChild(el("p", "note", "Chargement du journal de " + sname(s.nom) + "…"));
+    if (!url) { holder.textContent = ""; holder.appendChild(el("p", "empty", "Adresse du journal inconnue (config/dashboard.yaml → journaux_url).")); return; }
+    var t0 = Date.now();
+    fetch(url, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(function (text) { var J = readJournal(text); holder.textContent = ""; drawFiche(holder, s, J, Date.now() - t0); })
+      .catch(function (err) { holder.textContent = "";
+        holder.appendChild(el("p", "empty", "Journal indisponible pour l'instant (" + err.message + "). Réessayez dans quelques minutes."));
+        holder._done = false; });
+  }
+
+  function drawFiche(holder, s, J, ms) {
+    var HOUR = 3600000, P = perTrade(J), cap0 = J.cap0, trades = J.trades;
+    var stamp = function (t) { var d = new Date(t); return d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) + " " +
+      d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); };
+    var day = function (t) { return new Date(t).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }); };
+    var eur = function (v) { return fmt(v, 2); }, sgn = function (v, d) { return (v >= 0 ? "+" : "−") + fmt(Math.abs(v), d); };
+    var beats = thin(J.beats.map(function (b) { return [b[0], b[1]]; }), 900);
+    var last = P[P.length - 1];
+    // --- chiffres clés
+    var stats = el("div", "cap-stats"); holder.appendChild(stats);
+    function tile(k, v, sub, mainT) { var t = el("div", "stat" + (mainT ? " main" : "")); t.appendChild(el("div", "k", k));
+      var vv = el("div", "v"); if (v instanceof Node) vv.appendChild(v); else vv.textContent = v; t.appendChild(vv);
+      var sb = el("div", "s"); (sub || []).forEach(function (x) { sb.appendChild(x instanceof Node ? x : document.createTextNode(x)); });
+      t.appendChild(sb); stats.appendChild(t); }
+    var nowCap = beats.length ? beats[beats.length - 1][1] : cap0 + (last ? last.real - cap0 : 0);
+    var hiB = beats.reduce(function (m, p) { return p[1] > m[1] ? p : m; }, beats[0] || [0, nowCap]);
+    var loB = beats.reduce(function (m, p) { return p[1] < m[1] ? p : m; }, beats[0] || [0, nowCap]);
+    var peak = -Infinity, dd = 0; beats.forEach(function (p) { peak = Math.max(peak, p[1]); dd = Math.max(dd, peak > 0 ? (peak - p[1]) / peak : 0); });
+    tile("Capital estimé", eur(nowCap), [delta((nowCap / cap0 - 1) * 100, 1, " %"), " depuis " + fmt(cap0, 0)], true);
+    tile("Plus haut", eur(hiB[1]), [beats.length ? stamp(hiB[0]) : "—"]);
+    tile("Plus bas", eur(loB[1]), [beats.length ? stamp(loB[0]) : "—"]);
+    tile("Pire repli", "−" + fmt(dd * 100, 1) + " %", ["depuis un sommet"]);
+    if (last) {
+      var winsN = last.wins, ret = trades.reduce(function (a, t) { return a + t.pnl / t.cost; }, 0) / trades.length;
+      var won = trades.filter(function (t) { return t.pnl > 0; }), lost = trades.filter(function (t) { return t.pnl <= 0; });
+      var best = trades.reduce(function (m, t) { return t.pnl > m.pnl ? t : m; }, trades[0]), worst = trades.reduce(function (m, t) { return t.pnl < m.pnl ? t : m; }, trades[0]);
+      var spanDays = Math.max(1 / 24, (trades[trades.length - 1].close - (J.start || trades[0].open)) / 86400000);
+      var hold = trades.reduce(function (a, t) { return a + (t.close - t.open); }, 0) / trades.length / HOUR;
+      tile("Paris clôturés", String(last.n), [fmt(last.n / spanDays, 1) + " par jour"]);
+      tile("Gagnés / attendus", winsN + " / " + fmt(last.expct, 1), [delta(last.excess, 1, ""), " d'après les prix payés"]);
+      tile("Rendement par pari", delta(ret * 100, 1, " %"), ["moyenne résultat ÷ mise"]);
+      tile("Gain moyen", won.length ? "+" + fmt(won.reduce(function (a, t) { return a + t.pnl; }, 0) / won.length, 2) : "—", [won.length + " paris gagnés"]);
+      tile("Perte moyenne", lost.length ? "−" + fmt(Math.abs(lost.reduce(function (a, t) { return a + t.pnl; }, 0) / lost.length), 2) : "—", [lost.length + " paris perdus"]);
+      tile("Meilleur pari", sgn(best.pnl, 2), [String(best.outcome || "").slice(0, 28)]);
+      tile("Pire pari", sgn(worst.pnl, 2), [String(worst.outcome || "").slice(0, 28)]);
+      tile("Prix payé moyen", fmt(trades.reduce(function (a, t) { return a + t.price; }, 0) / trades.length, 3), ["chance annoncée par le marché"]);
+      tile("Confiance", fmt(last.conf, 0) + " %", ["par jour " + fmt(last.confDay, 0) + " %"]);
+      tile("Mise du principal", fmt(last.stake, 0) + " %", ["de sa mise, sur l'avantage mesuré"]);
+      tile("Durée d'un pari", hold < 48 ? fmt(hold, 1) + " h" : fmt(hold / 24, 1) + " j", ["frais payés " + eur(trades.reduce(function (a, t) { return a + t.fees; }, 0))]);
+    }
+    tile("En cours", String(J.open.length), ["positions ouvertes · " + (J.beats.length ? "liquidités " + eur(J.beats[J.beats.length - 1][2]) : "")]);
+    // --- onglets
+    var bar = el("div", "cap-bar"), tabs = el("div", "ranges"), ranges = el("div", "ranges"), legend = el("div", "legend");
+    tabs.setAttribute("role", "group"); tabs.setAttribute("aria-label", "Courbe affichée");
+    ranges.setAttribute("role", "group"); ranges.setAttribute("aria-label", "Période affichée");
+    bar.appendChild(tabs); bar.appendChild(ranges); holder.appendChild(bar); holder.appendChild(legend);
+    var chartBox = el("div", "chart"); chartBox.style.marginTop = "8px"; holder.appendChild(chartBox);
+    var note = el("p", "note"); note.style.marginTop = "8px"; holder.appendChild(note);
+    var tab = "Capital", span = 0;
+    var fxTime = function (t, axis) { return axis && (W0() < 600) ? day(t) : stamp(t); };
+    var W0 = function () { return chartBox.clientWidth || 600; };
+    var fxBet = function (x, axis) { var k = Math.round(x); if (axis) return "pari " + k;
+      var p = P[k - 1]; return p ? "pari n°" + k + " · " + stamp(p.t.close) : "pari " + k; };
+    var betExtra = function (k) { var p = P[k]; if (!p) return [];
+      return [String(p.t.outcome || "").slice(0, 48) + " · " + (p.t.pnl > 0 ? "gagné " : "perdu ") + sgn(p.t.pnl, 2) + " (payé " + fmt(p.t.price, 3) + ")"]; };
+    function within(pts) { if (!span || !pts.length) return pts; var t1 = pts[pts.length - 1][0];
+      return pts.filter(function (p) { return p[0] >= t1 - span; }); }
+    var VIEWS = {
+      "Capital": function () {
+        var cap = within(beats), all = beats;
+        var realized = within(P.map(function (p) { return [p.t.close, p.real]; }));
+        if (J.start && !span) realized.unshift([J.start, cap0]);
+        var maS = within(movingAvg(all, 6 * HOUR)), maL = within(movingAvg(all, 48 * HOUR));
+        legendOf(legend, [["capital estimé", "var(--ink)"], ["capital réalisé", "var(--blue)", "1 3"],
+          ["tendance 6 h", "var(--trend-short)"], ["tendance 2 j", "var(--trend-long)", "5 4"], ["départ", "var(--faint)", "2 3"]]);
+        var tr = function (pts, win) { if (pts.length < 2) return null; var t1 = pts[pts.length - 1][0], b = null;
+          pts.forEach(function (p) { if (p[0] <= t1 - win) b = p; }); return b ? (pts[pts.length - 1][1] / b[1] - 1) * 100 : null; };
+        var tS = tr(movingAvg(all, 6 * HOUR), 6 * HOUR), tL = tr(movingAvg(all, 48 * HOUR), 48 * HOUR);
+        note.textContent = "Capital estimé : liquidités + positions au prix du carnet, à chaque battement. Capital réalisé : " +
+          "seulement les paris terminés. Tendance courte " + (tS === null ? "—" : sgn(tS, 1) + " %") + " (moyenne 6 h contre il y a 6 h), longue " +
+          (tL === null ? "—" : sgn(tL, 1) + " %") + " (moyenne 2 j contre il y a 2 j).";
+        ficheChart(chartBox, { label: "Capital de " + sname(s.nom), area: true, fx: fxTime, fy: function (v) { return fmt(v, v > 999 ? 0 : 1); },
+          refs: [{ y: cap0, label: "départ " + fmt(cap0, 0), keep: true }],
+          series: [{ label: "estimé", color: "var(--ink)", pts: cap }, { label: "réalisé", color: "var(--blue)", dash: "1 3", pts: realized, end: "réal." },
+            { label: "moyenne 6 h", color: "var(--trend-short)", pts: maS, end: "6 h" }, { label: "moyenne 2 j", color: "var(--trend-long)", dash: "5 4", pts: maL, end: "2 j" }] });
+      },
+      "Par pari": function () {
+        legendOf(legend, [["résultat cumulé", "var(--ink)"], ["tendance (10 paris)", "var(--trend-short)"]]);
+        var cum = P.map(function (p) { return [p.n, p.real - cap0]; });
+        var ma = cum.map(function (p, k) { var a = Math.max(0, k - 9), sl = cum.slice(a, k + 1);
+          return [p[0], sl.reduce(function (x, q) { return x + q[1]; }, 0) / sl.length]; });
+        note.textContent = "Chaque point est un pari terminé, dans l'ordre : on voit si les gains viennent de beaucoup de petits " +
+          "paris ou de quelques gros. Survolez un point pour le marché, le prix payé et le résultat.";
+        ficheChart(chartBox, { label: "Résultat cumulé pari par pari", fx: fxBet, fy: function (v) { return sgn(v, 1); }, extra: betExtra,
+          refs: [{ y: 0, label: "0", keep: true }], empty: "Aucun pari terminé pour l'instant.",
+          series: [{ label: "cumulé", color: "var(--ink)", pts: cum }, { label: "tendance", color: "var(--trend-short)", pts: ma, end: "moy." }] });
+      },
+      "Gagnés / attendus": function () {
+        legendOf(legend, [["paris gagnés en plus de l'attendu", "var(--ink)"], ["zéro = autant que les prix l'annoncent", "var(--faint)", "2 3"]]);
+        note.textContent = "Après chaque pari : paris gagnés moins paris attendus d'après les prix payés (un prix de 0,85 = 0,85 pari " +
+          "attendu). Une courbe qui monte régulièrement est un vrai avantage ; une marche d'un seul coup, souvent de la chance.";
+        ficheChart(chartBox, { label: "Paris gagnés en plus de l'attendu", fx: fxBet, fy: function (v) { return sgn(v, 1); }, extra: betExtra,
+          refs: [{ y: 0, label: "0", keep: true }], empty: "Aucun pari terminé pour l'instant.",
+          series: [{ label: "en plus de l'attendu", color: "var(--ink)", pts: P.map(function (p) { return [p.n, p.excess]; }) }] });
+      },
+      "Confiance": function () {
+        var g = FICHE.garde_fou || {};
+        legendOf(legend, [["confiance (score t)", "var(--ink)"], ["confiance par jour", "var(--trend-long)", "5 4"]]);
+        note.textContent = "Confiance : chance, d'après les paris déjà faits, que la stratégie gagne vraiment plus que ses prix. " +
+          "Score t : pari par pari. Par jour : journée par journée (une seule belle journée ne dépasse jamais ≈ 84 %)." +
+          (g.confiance_min ? " Sous " + fmt(g.confiance_min * 100, 0) + " % par jour, la part du principal est divisée par deux." : "");
+        ficheChart(chartBox, { label: "Confiance après chaque pari", fx: fxBet, fy: function (v) { return fmt(v, 0) + " %"; }, extra: betExtra,
+          yMin: 0, yMax: 100, clampLo: 0, clampHi: 100, empty: "Aucun pari terminé pour l'instant.",
+          refs: [{ y: 50, label: "50 % (pile ou face)" }].concat(g.confiance_min ? [{ y: g.confiance_min * 100, label: "garde-fou " + fmt(g.confiance_min * 100, 0) + " %" }] : []),
+          series: [{ label: "score t", color: "var(--ink)", pts: P.map(function (p) { return [p.n, p.conf]; }) },
+            { label: "par jour", color: "var(--trend-long)", dash: "5 4", pts: P.map(function (p) { return [p.n, p.confDay]; }), end: "jour" }] });
+      },
+      "Mise": function () {
+        var r = FICHE.mise || {};
+        legendOf(legend, [["part de sa mise copiée par le principal", "var(--ink)"]]);
+        note.textContent = "Mise sur l'avantage mesuré : le principal copie chaque pari à (avantage mesuré ÷ avantage supposé) de sa " +
+          "mise" + (r.paris_fictifs !== undefined ? ", l'avantage mesuré étant ramené vers 0 par " + r.paris_fictifs + " paris fictifs" : "") +
+          ". 100 % = la stratégie a prouvé l'avantage qu'elle croit avoir. Le fantôme, lui, mise toujours normalement.";
+        ficheChart(chartBox, { label: "Part de la mise copiée", fx: fxBet, fy: function (v) { return fmt(v, 0) + " %"; }, extra: betExtra,
+          yMin: 0, yMax: 100, clampLo: 0, empty: "Aucun pari terminé pour l'instant.",
+          series: [{ label: "mise", color: "var(--ink)", pts: P.map(function (p) { return [p.n, p.stake]; }) }] });
+      },
+      "Par jour": function () {
+        legend.textContent = ""; chartBox.textContent = "";
+        var byDay = {}, order = [];
+        trades.forEach(function (t) { var k = new Date(t.close).toISOString().slice(0, 10);
+          if (!byDay[k]) { byDay[k] = { n: 0, w: 0, e: 0, pnl: 0, stake: 0 }; order.push(k); }
+          var b = byDay[k]; b.n++; b.w += t.pnl > 0 ? 1 : 0; b.e += t.price; b.pnl += t.pnl; b.stake += t.cost; });
+        if (!order.length) { chartBox.appendChild(el("p", "empty", "Aucun pari terminé pour l'instant.")); note.textContent = ""; return; }
+        var maxAbs = Math.max.apply(null, order.map(function (k) { return Math.abs(byDay[k].pnl); }).concat([1]));
+        var tbl = el("table"), hd = el("tr");
+        ["jour", "résultat", "", "paris", "gagnés / attendus", "misé"].forEach(function (h, i) { var th = el("th", i === 1 || i >= 3 ? "n" : "", h); hd.appendChild(th); });
+        var thead = el("thead"); thead.appendChild(hd); tbl.appendChild(thead); var tb = el("tbody"); tbl.appendChild(tb);
+        order.forEach(function (k) { var b = byDay[k], row = el("tr");
+          row.appendChild(el("td", "", new Date(k + "T12:00:00Z").toLocaleDateString("fr-FR", { day: "numeric", month: "short" })));
+          var c = el("td", "n"); c.appendChild(delta(b.pnl, 2)); row.appendChild(c);
+          var cb = el("td"), sv = svgEl("svg", { viewBox: "0 0 120 12", width: 120, height: 12, "aria-hidden": "true" }, cb), w = 58 * Math.abs(b.pnl) / maxAbs;
+          svgEl("line", { x1: 60, x2: 60, y1: 0, y2: 12, stroke: "var(--line-2)" }, sv);
+          svgEl("rect", { x: b.pnl >= 0 ? 60 : 60 - w, y: 2, width: Math.max(1, w), height: 8, rx: 2, fill: b.pnl >= 0 ? "var(--blue)" : "var(--red)" }, sv);
+          row.appendChild(cb);
+          row.appendChild(el("td", "n", String(b.n)));
+          row.appendChild(el("td", "n", b.w + " / " + fmt(b.e, 1) + " (" + sgn(b.w - b.e, 1) + ")"));
+          row.appendChild(el("td", "n", eur(b.stake))); tb.appendChild(row); });
+        var sc = el("div", "scroll"); sc.appendChild(tbl); chartBox.appendChild(sc);
+        note.textContent = "Résultat de chaque journée (jour où le pari s'est terminé, heure UTC), ▲ en bleu, ▼ en rouge, et paris " +
+          "gagnés contre attendus d'après les prix payés.";
+      }
+    };
+    var timeTabs = { "Capital": 1 };
+    function draw() {
+      Array.prototype.forEach.call(tabs.children, function (b) { b.setAttribute("aria-pressed", b.textContent === tab ? "true" : "false"); });
+      ranges.style.display = timeTabs[tab] ? "" : "none";
+      Array.prototype.forEach.call(ranges.children, function (b) { b.setAttribute("aria-pressed", b._span === span ? "true" : "false"); });
+      VIEWS[tab]();
+    }
+    Object.keys(VIEWS).forEach(function (k) { var b = el("button", null, k); b.type = "button";
+      b.addEventListener("click", function () { tab = k; draw(); }); tabs.appendChild(b); });
+    [["24 h", 24 * HOUR], ["3 j", 72 * HOUR], ["7 j", 168 * HOUR], ["Tout", 0]].forEach(function (r) {
+      var b = el("button", null, r[0]); b.type = "button"; b._span = r[1];
+      b.addEventListener("click", function () { span = r[1]; draw(); }); ranges.appendChild(b); });
+    draw();
+    // --- derniers paris
+    if (trades.length) {
+      var det = el("details"); det.appendChild(el("summary", null, "Les 15 derniers paris terminés"));
+      var t2 = el("table"), h2 = el("tr");
+      ["terminé", "issue achetée", "payé", "misé", "résultat"].forEach(function (h, i) { h2.appendChild(el("th", i >= 2 ? "n" : "", h)); });
+      var th2 = el("thead"); th2.appendChild(h2); t2.appendChild(th2); var b2 = el("tbody"); t2.appendChild(b2);
+      trades.slice(-15).reverse().forEach(function (t) { var r2 = el("tr");
+        r2.appendChild(el("td", "", stamp(t.close))); r2.appendChild(el("td", "", String(t.outcome || "—")));
+        r2.appendChild(el("td", "n", fmt(t.price, 3))); r2.appendChild(el("td", "n", eur(t.cost)));
+        var c2 = el("td", "n"); c2.appendChild(delta(t.pnl, 2)); r2.appendChild(c2); b2.appendChild(r2); });
+      var sc2 = el("div", "scroll"); sc2.appendChild(t2); det.appendChild(sc2); holder.appendChild(det);
+    }
+    holder.appendChild(el("p", "note", "Calculé à l'instant dans votre navigateur, à partir du journal public de la stratégie (" +
+      J.beats.length + " battements, " + trades.length + " paris terminés, " + fmt(ms / 1000, 1) + " s). Le fantôme joue 1 000 virtuels ; " +
+      "le capital principal n'en copie qu'une part."));
+  }
 
   // Classement dans le temps : une ligne par stratégie (rang 1 en haut). En tête aujourd'hui en
   // blanc, les autres en gris ; survol = la ligne la plus proche, son nom, son rang, son capital.
