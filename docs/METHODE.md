@@ -94,6 +94,9 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    libre si tu le juges bon (moins de `paris_fictifs`, `part_min` plus haute) : fais-le sur la foi
    d'un rejeu (`experiments/taille_des_mises/simuler.py`, à relancer sur les paris récents) et
    note la raison dans le journal de recherche. Repasse à plus prudent si l'avantage s'efface.
+   Renfort (« grossir les gagnantes », 21/10/2026) : `sante_strategies.renfort` (fantômes) et
+   `mise_avantage_mesure.renfort` / `part_max` (principal) ; une stratégie qui prouve plus d'avantage
+   qu'elle n'en suppose mise jusqu'à 2 fois plus. Mêmes règles : rejeu d'abord, raison notée.
    Simulation (noyau) : 25 % de la quantité au meilleur prix, 50 % aux niveaux suivants, liquidité
    partagée entre tes ordres d'un même cycle. Chaque exécution est auditée contre l'historique
    public des prix (job `audit`) : un prix impossible déclenche une alerte à Etienne.

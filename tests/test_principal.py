@@ -139,3 +139,36 @@ def test_principal_copies_the_ghost_bets_at_its_own_scale(tmp_path):
     ghost.copied = {}
     out = Weighted(Inner(), D("0.5"), source=ghost).propose([], {}, main.state, None, "b1")
     assert out.proposals == [] and out.limit_orders == []
+
+
+def test_principal_copies_at_base_stake_whatever_the_ghost_prudence(tmp_path):
+    """« Grossir les gagnantes » (21/10/2026) : la prudence du fantôme (½, entière, ¼, renfort) sert à
+    l'arène ; le principal copie toujours à la mise de base simulée avec Etienne (son propre renfort
+    passe par l'arène, une seule fois)."""
+    import dataclasses
+    from decimal import Decimal as D
+    from conftest import KEY, NOW
+    from polymarket_agent.ledger import Ledger
+    from polymarket_agent.main import Portfolio, Weighted
+
+    @dataclasses.dataclass
+    class Prop:
+        side: str
+        token_id: str
+        shares: D
+        max_price: D
+        op_id: str
+
+    class Inner:
+        strategy_id, version = "nf_sport", "1"
+
+    main = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW)
+    ghost = Portfolio("fantome:nf_sport_v1", None, [])
+    ghost.copied = {"nf_sport": {"total": D("1000"), "buys": [(Prop("BUY", "t1", D("80"), D("0.9"), "a"), D("80"))],
+                                 "orders": []}}
+    for prudence, want in [(D("0.5"), D("40")), (D("1"), D("20")), (D("2"), D("10")), (D("0.25"), D("80"))]:
+        out = Weighted(Weighted(Inner(), prudence), D("0.5"), source=ghost, base=D("0.5")).propose([], {}, main.state, None, "b1")
+        # 80 parts du fantôme, part 0,5, mise de base 0,5 : comme si le fantôme avait misé à ½.
+        assert [(p.op_id, p.shares) for p in out.proposals] == [("a", want)], prudence
+    plain = Weighted(Weighted(Inner(), D("1")), D("0.5"), source=ghost).propose([], {}, main.state, None, "b1")
+    assert [p.shares for p in plain.proposals] == [D("40")]  # sans `base` : copie à l'échelle, comme avant

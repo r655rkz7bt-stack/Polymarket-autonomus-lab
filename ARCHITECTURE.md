@@ -946,3 +946,12 @@ Diagnostic (`experiments/muettes.md`) : 20 fantômes n'avaient jamais acheté ; 
 `main._visible`, attribut `asked_markets` posé à chaque cycle), filles `question_contient` /
 `sources` qui demandent leurs marchés (`Filtered.candidates`), raisons d'abstention des arbitrages
 (`_Arbitrage._pair`, `_finish_pairs`), `max_extra_markets` 600.
+
+## 55. Grossir les gagnantes (21/10/2026, décision d'Etienne)
+
+`experiments/grossir_gagnantes.md`. (1) Prévisions jugées aussi par les règlements du journal
+(`strategy_health.settled_outcomes`) : avant, 15 vérifications Gamma par heure pour toute l'arène,
+personne n'atteignait 20 jugées (toutes à ½ mise) ; 11 stratégies passent à la mise entière, 26 au
+quart. (2) Renfort (`strategy_health.boost`, `arena.measured_stake`) : avantage mesuré ÷ supposé,
+entre 1 et 2, après 30 opérations et confiance par jour ≥ 80 %. (3) Le principal copie à la mise de
+base (`Weighted(..., base=)` divise par la prudence du fantôme) : un seul renfort, par l'arène.

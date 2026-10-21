@@ -150,7 +150,15 @@ def measured_stake(s: Standing, rule: dict | None) -> float:
         return 1.0
     assumed = s.assumed_edge if s.assumed_edge and s.assumed_edge > 0 else float(rule.get("avantage_suppose_defaut", 0.035))
     measured = s.excess_wins / (s.closed_trades + float(rule.get("paris_fictifs", 30)))
-    return min(float(rule.get("part_max", 1.0)), max(float(rule.get("part_min", 0.0)), measured / max(assumed, 0.005)))
+    ratio = measured / max(assumed, 0.005)
+    # Renfort (« grossir les gagnantes », 21/10/2026) : au-delà de la mise habituelle seulement avec
+    # assez d'opérations et une confiance par jour suffisante ; sinon plafonné à 1.
+    renfort = rule.get("renfort") or {}
+    if ratio > 1 and not (renfort and s.closed_trades >= int(renfort.get("min_operations", 30))
+                          and s.day_confidence is not None
+                          and s.day_confidence >= float(renfort.get("confiance_jour_min", 0.8))):
+        ratio = 1.0
+    return min(float(rule.get("part_max", 1.0)), max(float(rule.get("part_min", 0.0)), ratio))
 
 
 def bought_events(entries: list[dict]) -> frozenset:

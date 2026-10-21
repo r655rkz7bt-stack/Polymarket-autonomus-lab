@@ -251,3 +251,10 @@ sante_strategies:
   disproven: 0.25           # prouvée moins bonne
   suspension_min_closed: 20 # opérations clôturées avant de pouvoir suspendre
   outcomes_per_hour: 15     # marchés interrogés par heure pour juger les prévisions
+  # 21/10/2026 (« grossir les gagnantes », experiments/grossir_gagnantes.md) : les prévisions réglées
+  # sont aussi lues dans le journal du fantôme (avant : 15 vérifications par heure pour toute l'arène,
+  # personne n'atteignait 20 jugées). Renfort : une stratégie qui prouve PLUS d'avantage qu'elle n'en
+  # suppose (≥ 30 opérations, confiance par jour ≥ 80 %) mise jusqu'à 2 fois plus dans son fantôme.
+  # Le capital principal, lui, copie toujours à la mise de base et reçoit son propre renfort par
+  # l'arène (config/promotion.yaml → mise_avantage_mesure). Libre : le chercheur peut le régler.
+  renfort: {min_operations: 30, confiance_jour_min: 0.8, paris_fictifs: 30, max: 2.0}

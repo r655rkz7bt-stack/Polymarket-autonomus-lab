@@ -786,3 +786,32 @@ def test_settlement_reads_held_markets_by_batches():
     with pytest.raises(SourceUnavailable):
         once.get_market("1")
     assert down.singles == []  # pas 250 lectures une par une pendant une panne
+
+
+def test_settled_bets_are_judged_from_the_journal_and_proven_winners_bet_more(tmp_path):
+    """« Grossir les gagnantes » (Etienne, 21/10/2026) : une prévision réglée dans le journal du fantôme
+    est jugée tout de suite (avant : 15 vérifications par heure pour toute l'arène, personne n'atteignait
+    20 jugées) ; renfort jusqu'à 2 pour qui prouve plus d'avantage qu'il n'en suppose."""
+    from polymarket_agent import strategy_health
+    db = Database(tmp_path / "db.sqlite")
+    entries = [{"type": "SETTLE", "data": {"token_id": "t1", "payout_per_share": "1"}},
+               {"type": "SETTLE", "data": {"token_id": "t2", "payout_per_share": "0"}},
+               {"type": "RESET", "data": {}},
+               {"type": "SETTLE", "data": {"token_id": "t3", "payout_per_share": "1"}}]
+    assert strategy_health.settled_outcomes(entries) == {"t3": 1.0}  # une remise à zéro repart de rien
+    items = [{"token_id": f"t{i}", "market_id": f"m{i}", "p": 0.9, "price": 0.8, "ts": "x"} for i in range(25)]
+    settled = {f"t{i}": 1.0 for i in range(25)}
+    s = strategy_health.score(db, items, settled)
+    assert s["jugees"] == 25 and s["avance"] > 0
+    cfg = strategy_health.config({"sante_strategies": {"renfort": {"min_operations": 30, "confiance_jour_min": 0.8,
+                                                                   "paris_fictifs": 30, "max": 2.0}}})
+    assert strategy_health.prudence(s, cfg) == 1.0  # prouvée : mise entière (au lieu de ½)
+    row = {"closed_trades": 60, "excess_wins": 6.8, "assumed_edge": 0.0509, "day_confidence": 0.95}
+    assert strategy_health.boost(row, cfg) == round(6.8 / 90 / 0.0509, 4)  # contrer_crypto_patiente : ≈ 1,48
+    assert strategy_health.boost(dict(row, excess_wins=40), cfg) == 2.0  # plafond
+    assert strategy_health.boost(dict(row, excess_wins=1.0), cfg) == 1.0  # moins que supposé : pas de renfort
+    assert strategy_health.boost(dict(row, closed_trades=20), cfg) == 1.0  # trop tôt
+    assert strategy_health.boost(dict(row, day_confidence=0.7), cfg) == 1.0  # une belle journée ne suffit pas
+    assert strategy_health.boost(row, strategy_health.config({})) == 1.0  # sans réglage : aucun renfort
+    real = strategy_health.config(load_settings())
+    assert real["renfort"]["max"] == 2.0 and real["renfort"]["min_operations"] == 30
