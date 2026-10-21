@@ -810,7 +810,7 @@ nf_sport_patiente_prix_haut:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], prix_min: 0.875, prix_max: 0.95}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-18"
   params:
@@ -955,7 +955,7 @@ nf_sport_court:
   morceau: "sport + moins de 24 h"
   class: naive_favorite
   filtres: {familles: [sports], heures_min: 0, heures_max: 24}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -975,7 +975,7 @@ nf_tres_court:
   morceau: "moins de 6 h"
   class: naive_favorite
   filtres: {heures_min: 0, heures_max: 6}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -994,7 +994,7 @@ nf_politique:
   morceau: "politique"
   class: naive_favorite
   filtres: {familles: [politics, sans_frais]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1015,7 +1015,7 @@ nf_autres_sujets:
   morceau: "autres sujets"
   class: naive_favorite
   filtres: {familles: [culture, finance, economics, crypto, weather, tech, mentions, other]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1036,7 +1036,7 @@ nf_prix_bas:
   morceau: "prix 0,80-0,875"
   class: naive_favorite
   filtres: {prix_min: 0.80, prix_max: 0.875}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1057,7 +1057,7 @@ nf_prix_haut:
   morceau: "prix 0,875-0,95"
   class: naive_favorite
   filtres: {prix_min: 0.875, prix_max: 0.95}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1182,7 +1182,7 @@ nf_non:
   morceau: "favori NON"
   class: naive_favorite
   filtres: {issue: [non]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1203,7 +1203,7 @@ nf_equipe:
   morceau: "équipe ou joueur"
   class: naive_favorite
   filtres: {issue: [autre]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1379,7 +1379,7 @@ nf_prix_haut_sans_fin:
   morceau: "prix 0,875-0,95 + plus de 24 h"
   class: naive_favorite
   filtres: {prix_min: 0.875, prix_max: 0.95, heures_min: 24}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1399,7 +1399,7 @@ nf_demi_mise:
   mere: naive_favorite
   morceau: "demi-mise (Kelly 0,5)"
   class: naive_favorite
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1419,7 +1419,7 @@ nf_quart_mise:
   mere: naive_favorite
   morceau: "quart de mise (Kelly 0,25)"
   class: naive_favorite
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -2400,3 +2400,66 @@ nf_sport_football:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_vainqueur:
+  explication: "Le favori de sport, mais seulement les paris « qui gagne le match » (pas les handicaps ni les totaux)."
+  # Fille 80/20 (obligation du 21/10) : type de pari vainqueur = 28 opérations, +139, +3,6 % par mise contre nf_sport entière.
+  # Rappel (enquête 21/10) : les variantes « favori » gagnent 0,0 % sur le type vainqueur (28 837 € misés) : à suivre, pas à croire.
+  mere: nf_sport
+  morceau: "type de pari vainqueur"
+  class: naive_favorite
+  filtres: {familles: [sports], types_pari: [vainqueur]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_tennis_850_875:
+  explication: "La championne du tennis (favori, achat posé), mais seulement quand le prix payé est entre 0,85 et 0,875."
+  # Fille 80/20 (obligation du 21/10) : prix payé 0,850-0,875 = 11 opérations, +130, +16,3 % par mise contre la mère.
+  # Un morceau de 11 paris est une piste, pas une preuve. `prix_final` : le filtre porte sur le prix de l'ordre posé.
+  mere: nf_sport_patiente_tennis
+  morceau: "tennis, prix payé 0,850-0,875"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.85, prix_max: 0.875, prix_final: true}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+cpi_tranches:
+  explication: "Quand on parie sur le chiffre de l'inflation américaine, les cases improbables (5 à 30 %) sortent environ deux fois moins que leur prix : on parie qu'elles ne sortent pas."
+  # Piste n° 3 du 21/10 (experiments/cpi_nowcast.md) : 48 événements CPI, règlement relu 48/48, NON 3-25 % : +3 à +9 % par achat aux prix des
+  # vrais échanges (indice, pas preuve : 47 événements, 40 % des tranches sans échange avant la décision). Fantôme pour confirmer en direct.
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-21"
+  params:
+    yes_min:        {value: 0.05, min: 0.0, max: 0.5}
+    yes_max:        {value: 0.30, min: 0.0, max: 0.6}
+    yes_factor:     {value: 0.6, min: 0.2, max: 1.0}    # la case gagne ~0,5 à 0,6 fois son prix (mesuré à 0,018/0,057 et 0,088/0,167)
+    hours_min:      {value: 20, min: 0, max: 200}
+    hours_max:      {value: 170, min: 0, max: 400}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.2}
+    max_candidates: {value: 80, min: 0, max: 300}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}

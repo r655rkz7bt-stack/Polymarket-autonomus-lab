@@ -789,8 +789,53 @@ class FatigueNhl(_Base):
         return self._finish(out, props)
 
 
+# --------------------------------------------------------------------------- 8. tranches improbables du CPI américain
+
+_CPI_EVENT = re.compile(r"^(?:[A-Z][a-z]+ Inflation(?: US)? - (?:Annual|Monthly)|Core CPI (?:YoY|MoM) - .*)$")
+
+
+class CpiTranches(_Base):
+    """Événement CPI américain découpé en tranches (« inflation mensuelle : 0,2 % / 0,3 % / 0,4 %… ») : les tranches
+    à 5-30 % gagnent environ moitié moins que leur prix (long tir). On achète leur NON, de 1 à 7 jours avant la publication.
+    Test sur le passé (48 événements, 2024-12 → 2026-10) : experiments/cpi_nowcast.md, verdict « indice »."""
+
+    strategy_id = "cpi_tranches"
+    required = ("yes_min", "yes_max", "yes_factor", "hours_min", "hours_max", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+
+    @staticmethod
+    def _is_cpi(m: MarketInfo) -> bool:
+        return _yes_no(m) and bool(_CPI_EVENT.match(m.event_title or ""))
+
+    def candidates(self, markets):
+        return [m for m in markets if self._is_cpi(m)][: int(self.params.get("max_candidates", 80))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, props = StrategyOutput(), self.params, []
+        for m in watchlist:
+            if not self._is_cpi(m) or m.end_date is None or any(t in state.positions for t in m.token_ids):
+                continue
+            now = _now(books)
+            if now is None:
+                continue
+            hours = (m.end_date - now).total_seconds() / 3600
+            if not float(p["hours_min"]) <= hours <= float(p["hours_max"]):
+                out.abstain("hors de la fenêtre avant la publication")
+                continue
+            yes = _book_mid(books, m.token_ids[0])
+            if yes is None or not float(p["yes_min"]) <= yes <= float(p["yes_max"]):
+                continue
+            fair = yes * float(p["yes_factor"])
+            unc = float(p["uncertainty"])
+            prop = self._buy(m, books, state, 1, 1 - fair - unc, 1 - fair, 1 - fair + unc, bucket, marks, out,
+                             f"cpi_tranches:{yes:.3f}", f"tranche CPI à {yes:.1%}, juste {fair:.1%}", "le CPI tombe dans cette tranche")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
-                                      MotsNouveaux, FatigueNhl)}
+                                      MotsNouveaux, FatigueNhl, CpiTranches)}

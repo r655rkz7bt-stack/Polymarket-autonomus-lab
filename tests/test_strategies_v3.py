@@ -12,7 +12,7 @@ from polymarket_agent.safety_controller import RiskLimits
 from polymarket_agent.sources.polymarket_gamma import parse_market
 from polymarket_agent.strategies_v3 import (ApresEcheance, ChocSansNouvelle, CoherenceMatch, DecroissanceTemps,
                                             EchelleDates, ImplicationPolitique, MarcheNeuf, MarchesJumeaux,
-                                            OutsidersSurcotes, PaireOuiNon)
+                                            OutsidersSurcotes, PaireOuiNon, CpiTranches)
 
 LIMITS = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 _N = [0]
@@ -163,3 +163,19 @@ def test_all_twenty_strategies_lot_a_load_from_the_repository_config():
     assert {"decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
             "outsiders_surcotes", "marche_neuf", "apres_echeance", "marches_jumeaux"} <= ids
     assert "choc_sans_nouvelle" not in ids  # éliminée par l'arène, coupée le 20/10/2026 (enabled: false)
+
+
+def test_cpi_tranches_buys_no_on_unlikely_buckets_only_for_us_cpi_in_window(tmp_path):
+    s = _s(CpiTranches, yes_min=0.05, yes_max=0.30, yes_factor=0.6, hours_min=20, hours_max=170, uncertainty=0.02,
+           min_net_edge=0.005, max_extra_ticks=1, max_proposals_per_cycle=5, kelly_fraction=0.25)
+    cpi = lambda mid, **kw: _m(mid, events=[{"id": "cpi", "title": "September Inflation US - Monthly"}], **kw)
+    ms = [cpi("a"), cpi("b"), cpi("far", end=NOW + timedelta(hours=300)),
+          _m("arg", events=[{"id": "ar", "title": "Argentina Monthly Inflation - September"}]),
+          _m("core", events=[{"id": "co", "title": "Core CPI MoM - September 2026"}])]
+    books = {}
+    for mid, yes in (("a", 0.15), ("b", 0.55), ("far", 0.15), ("arg", 0.15), ("core", 0.10)):
+        books.update(_books((f"{mid}Y", f"{yes - 0.005:.3f}", f"{yes + 0.005:.3f}"),
+                            (f"{mid}N", f"{1 - yes - 0.005:.3f}", f"{1 - yes + 0.005:.3f}")))
+    assert {m.market_id for m in s.candidates(ms)} == {"a", "b", "far", "core"}
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert {p.market_id for p in out.proposals} == {"a", "core"} and all(p.outcome == "No" for p in out.proposals)

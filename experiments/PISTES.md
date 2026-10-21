@@ -15,8 +15,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 2. **Classements « status quo »** : « quel modèle d'IA sera n° 1 du classement LMArena », « n° 1
    Spotify / Billboard » : le leader actuel reste-t-il plus souvent que son prix ne le dit ?
    (historiques publics des classements).
-3. **Données économiques** : inflation (CPI) et emploi contre la prévision « nowcast » de la Fed de
-   Cleveland (gratuite) et contre Kalshi (kalshi_reference).
+3. **Données économiques** : emploi (NFP) contre Kalshi (kalshi_reference). Le CPI a été testé le 21/10 (voir « Testées » : indice,
+   `cpi_tranches`) sans le nowcast de Cleveland (historique par versions introuvable) : le nowcast reste une idée neuve.
 4. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
    le test crypto (attention : le test crypto a été négatif, marché suivi par des robots).
 
@@ -51,3 +51,4 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | mentions « anyone » (Big Brother, Love Island, séries, résultats d'entreprise) | écartée | presque aucun échange réel (4 achats possibles) | mentions_annonceurs.md |
 | mentions « annonceurs » Coupe du monde 2026 | écartée | 7 réglages sur 7 négatifs, −4 % à −34 % par achat (43-56 événements) | mentions_annonceurs.md |
 | mentions « annonceurs » NFL (14 matchs) | indice | +21 % à +91 % par achat sur 6 réglages, t par match +0,8 à +4,8 ; 2 mois, marchés minces : fantôme `mots_prononces_nfl` | mentions_annonceurs.md |
+| CPI américain (48 événements, 337 tranches) : NON sur les tranches à 5-30 % | indice | cases à 3-25 % gagnent ~moitié moins que leur prix ; NON +3 à +6 % par achat aux prix réels (12 réglages, 10 positifs ; mensuel/annuel, core négatif) ; 47 événements seulement : fantôme `cpi_tranches` | cpi_nowcast.md |
