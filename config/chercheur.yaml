@@ -1,0 +1,20 @@
+# Budget du chercheur (routine docs/ROUTINE_CHERCHEUR.md) — LIBRE.
+# Décisions d'Etienne (21/10/2026) : le chercheur utilise environ 70 % de son quota de la journée,
+# et sur la SEMAINE il en reste toujours de la marge (au plus ~75 % de la limite de la semaine).
+# Le chercheur ne voit pas la jauge de la limite : on le pilote en temps de travail. Chaque passage
+# lance `scripts/budget_chercheur.py debut`, qui donne sa durée visée d'après les minutes déjà
+# faites depuis la remise à zéro de la semaine (experiments/budget_chercheur.csv) et le nombre de
+# passages qui restent avant la prochaine remise à zéro.
+#
+# Calibrage du 21/10/2026 : un passage coûte environ 4 à 9 $ d'équivalent par heure (Sonnet,
+# 5 passages mesurés les 20 et 21/10) ; la limite de la semaine était en « avertissement » avec
+# environ 450 à 550 $ consommés (surtout la conversation d'Etienne). 3 600 minutes (60 h, environ
+# 1 h 45 par passage) est un départ prudent ; recalibré chaque samedi d'après la consommation réelle.
+demarrage: "2026-10-24T00:00:00+00:00"    # avant : 45 à 90 minutes par passage, comme avant
+remise_a_zero: {jour: samedi, heure_utc: 0}   # limite de la semaine : remise à zéro le samedi 00:00 UTC (2 h à Paris)
+budget_semaine_minutes: 3600
+duree_min_minutes: 30
+duree_max_minutes: 135
+avant_demarrage_minutes: [45, 90]
+# Heures des 5 passages (heure de Paris, routines « Chercheur Polymarket 1 à 5 »).
+passages_paris: ["01:54", "06:54", "11:54", "16:54", "21:54"]
