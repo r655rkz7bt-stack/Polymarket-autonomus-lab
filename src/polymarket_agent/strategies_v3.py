@@ -48,6 +48,14 @@ def _book_mid(books: dict, token: str) -> float | None:
     return float(b.mid) if b is not None and b.mid is not None else None
 
 
+def _with_reference(markets, key: str, limit: int) -> list[MarketInfo]:
+    """Marchés scannés qui portent la référence `key` (rattachée en amont à tous les marchés,
+    21/10/2026), les plus actifs d'abord : la stratégie les demande au scanner (`candidates`)."""
+    out = [m for m in markets if (getattr(m, "references", None) or {}).get(key)]
+    out.sort(key=lambda m: -float(m.volume_24h or 0))
+    return out[:limit]
+
+
 def _now(books: dict) -> datetime | None:
     return max((b.fetched_at for b in books.values() if b.fetched_at is not None), default=None)
 
@@ -529,6 +537,9 @@ class _Reference(_Base):
     ref_key = ""
     required = ("margin", "max_gap", "max_age_hours", "uncertainty", "min_net_edge", "max_proposals_per_cycle")
 
+    def candidates(self, markets) -> list[MarketInfo]:
+        return _with_reference(markets, self.ref_key, int(self.params.get("max_candidates", 25)))
+
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.sources._util import parse_date
         out, p, now, props = StrategyOutput(), self.params, _now(books), []
@@ -601,6 +612,15 @@ class FootballTroisIssues(_Reference):
     strategy_id = "football_trois_issues"
     ref_key = "bookmakers_3"
 
+    def candidates(self, markets) -> list[MarketInfo]:
+        """Les cotes à 3 issues sont rattachées plus tard (marchés surveillés) : on demande les marchés
+        « Will X win on AAAA-MM-JJ? » et « Will A vs. B end in a draw? » d'après leur libellé."""
+        from polymarket_agent.references import DRAW, WIN_ON
+        out = [m for m in markets if _yes_no(m) and (WIN_ON.match((m.question or "").strip())
+                                                       or DRAW.match((m.question or "").strip()))]
+        out.sort(key=lambda m: -float(m.volume_24h or 0))
+        return out[: int(self.params.get("max_candidates", 30))]
+
 
 class CompteurTweets(_Base):
     """« Combien de messages Elon Musk publiera-t-il cette semaine ? » : une tranche par marché
@@ -616,6 +636,11 @@ class CompteurTweets(_Base):
     strategy_id = "compteur_tweets"
     required = ("dispersion", "recent_hours", "max_stale_hours", "margin", "uncertainty", "min_net_edge",
                 "max_proposals_per_cycle")
+
+    def candidates(self, markets) -> list[MarketInfo]:
+        out = [m for m in markets if getattr(m, "tweets", None)]
+        out.sort(key=lambda m: -float(m.volume_24h or 0))
+        return out[: int(self.params.get("max_candidates", 60))]
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.references import bucket_of, tweet_bucket_probability
@@ -687,6 +712,9 @@ class MotsNouveaux(_Base):
     required = ("shift", "margin", "uncertainty", "min_yes", "max_yes", "min_net_edge", "max_age_hours",
                 "max_proposals_per_cycle")
 
+    def candidates(self, markets) -> list[MarketInfo]:
+        return _with_reference(markets, "mot_nouveau", int(self.params.get("max_candidates", 25)))
+
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.sources._util import parse_date
         out, p, now, props = StrategyOutput(), self.params, _now(books), []
@@ -721,6 +749,12 @@ class FatigueNhl(_Base):
     `shift`."""
     strategy_id = "fatigue_nhl"
     required = ("shift", "margin", "uncertainty", "min_net_edge", "max_age_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets) -> list[MarketInfo]:
+        """Seulement les matchs où une seule équipe a joué la veille."""
+        out = [m for m in _with_reference(markets, "repos_nhl", 200)
+               if sorted(m.references["repos_nhl"].get("fatigue") or []) == [False, True]]
+        return out[: int(self.params.get("max_candidates", 20))]
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from datetime import timedelta

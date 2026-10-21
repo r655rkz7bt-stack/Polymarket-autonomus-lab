@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (session avec Etienne, matin : AMELIORATION, lot 1)
+
+- **Cause des stratégies muettes trouvée** : références rattachées aux seuls 150 marchés surveillés et pas de `candidates()`
+  pour les stratégies à référence ; marchés « mentions » tous écartés par le scanner (liquidité médiane 170 $ pour un seuil de 1 000 $).
+  Corrigé (ARCHITECTURE § 48). Cycle local réel : `mots_prononces` 2 achats, `mots_nouveaux` 2 propositions, mentions 51 rattachées,
+  `fatigue_nhl`, `compteur_tweets` et `outsider_itf` proposent ; Kalshi et PredictIt évaluent (« avantage net insuffisant »).
+- **Raisons d'abstention** maintenant publiées à chaque cycle (demandé au passage de ~0 h) : `cotes_bookmakers` pourra être tranchée.
+- **Cycle** : 115 s → 55 s en local (index de rapprochement, règlements dédoublonnés, battements des fantômes espacés).
+
 ## 2026-10-21 (passage chercheur, ~5 h UTC)
 
 - **Enquête** (détail : `experiments/enquetes/2026-10-21_filtres_et_prix_executable.md`, famille 4 « le filtre ne filtre pas »).

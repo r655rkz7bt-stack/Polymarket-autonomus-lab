@@ -382,12 +382,20 @@ def meme_pari_prix_differents(entries: dict[str, list[dict]], min_common: int = 
                      [r[1] for r in rows])]
 
 
-def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 48) -> list[dict]:
+def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 48,
+            abstentions: dict | None = None) -> list[dict]:
+    """Stratégies sans aucun achat. `abstentions` (21/10/2026, clé « abstentions » de la base, écrite
+    à chaque cycle) : marchés vus et raisons les plus fréquentes du dernier cycle, ajoutées au constat."""
     silent = []
+    seen = (abstentions or {}).get("portefeuilles") or {}
     for name in active:
         rows = entries.get(name)
         if rows and _ts(rows[0]) < now - timedelta(hours=hours) and not _buys(rows):
-            silent.append(f"{name} (née le {rows[0]['ts'][:10]})")
+            why = ""
+            for info in (seen.get(f"fantome:{name}") or {}).values():
+                reasons = ", ".join(f"{k} ×{v}" for k, v in (info.get("raisons") or {}).items()) or "aucune raison notée"
+                why = f" — dernier cycle : {info.get('marches', 0)} marchés vus, {info.get('propositions', 0)} propositions ; {reasons}"
+            silent.append(f"{name} (née le {rows[0]['ts'][:10]}){why}")
     return [_finding("muettes", A_REGARDER, f"{len(silent)} stratégie(s) sans aucun achat depuis plus de {hours:.0f} h",
                      "Une stratégie muette ne teste rien : lire ses abstentions (journal du cycle, tableau de bord) "
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
@@ -527,7 +535,7 @@ def achats_en_jeu(entries: dict[str, list[dict]], copied: set[str], since: datet
 
 
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
-        max_principal: float = 0.10, days: float = 3) -> list[dict]:
+        max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -538,7 +546,8 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since)
-                + meme_pari_prix_differents(entries) + muettes(entries, active, now) + positions_oubliees(entries, now, active=active))
+                + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
+                + positions_oubliees(entries, now, active=active))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 

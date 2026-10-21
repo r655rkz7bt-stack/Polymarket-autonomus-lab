@@ -36,11 +36,11 @@ def main() -> int:
     try:
         learning = analyze(dict(competitors, principal=main_ledger), categories_from_db(db))
         reports = _pareto(competitors, main_ledger, db)
+        findings = _enquete(competitors, main_ledger, active, settings, db)
     finally:
         db.close()
     brief = build_brief(main_ledger, competitors, active, settings["arena"], learning=learning)
     from polymarket_agent import enquete, pareto
-    findings = _enquete(competitors, main_ledger, active, settings)
     # Enquête d'abord (20/10/2026) : un défaut fausse tout le reste, filles comprises.
     brief["obligations"] = enquete.obligations(findings) + brief["obligations"] + pareto.obligations(reports)
     out = ROOT / "reports" / "brief.md"
@@ -52,8 +52,11 @@ def main() -> int:
     return 0
 
 
-def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict) -> list[dict]:
-    """Enquête automatique (enquete.py, 20/10/2026) sur les journaux vérifiés."""
+def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, db=None) -> list[dict]:
+    """Enquête automatique (enquete.py, 20/10/2026) sur les journaux vérifiés ; raisons d'abstention du
+    dernier cycle (clé « abstentions » de la base, 21/10/2026) pour les stratégies muettes."""
+    import json
+
     import yaml
 
     from polymarket_agent import enquete
@@ -61,7 +64,11 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict) 
     configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
     entries = {n: read_entries(l) for n, l in competitors.items()} | {"principal": read_entries(main_ledger)}
     cap = float((settings.get("principal") or {}).get("max_mise", 0.10))
-    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap)
+    try:
+        abstentions = json.loads(db.get_value("abstentions") or "null") if db is not None else None
+    except (ValueError, TypeError):
+        abstentions = None
+    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions)
 
 
 def _pareto(competitors: dict, main_ledger, db) -> list[dict]:

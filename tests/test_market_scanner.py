@@ -160,3 +160,21 @@ def test_gamma_pages_are_read_in_parallel_in_order_and_stop_at_the_first_short_p
     out = GammaClient(http).list_markets(end_min=NOW, end_max=NOW + timedelta(days=1), page_size=2, max_pages=10)
     assert [m["id"] for m in out] == ["0-0", "0-1", "1-0", "1-1", "2-0", "2-1", "3-0"]  # ordre gardé
     assert max(http.offsets) < 8  # arrêt après le premier groupe qui contient une page incomplète
+
+
+def test_tag_pages_add_markets_of_a_tag_once():
+    """21/10/2026 : les marchés « mentions » (étiquette 100343) n'entraient pas dans les pages
+    triées par volume ; `tag_pages` les ajoute, sans doublon et avec les mêmes filtres."""
+    class TagGamma(FakeGamma):
+        def list_markets(self, **kwargs):
+            if kwargs.get("tag_id") == 100343:
+                return [raw_market("1"), raw_market("9", volume24hr=40, liquidityNum=500),
+                        raw_market("8", liquidityNum=10)]
+            if kwargs.get("tag_id") is not None:
+                raise SourceUnavailable("étiquette en panne (test)")
+            return self.markets
+    tags = {100343: {"pages": 2, "min_liquidity": 100, "min_volume_24h": 0}, 7: 1, 5: 0}
+    result = scan(TagGamma([raw_market("1")]), NOW, dict(CFG, tag_pages=tags))
+    assert sorted(m.market_id for m in result.markets) == ["1", "8", "9"]
+    assert [m.market_id for m in result.watchlist if m.market_id == "9"] == ["9"]
+    assert result.excluded == {"liquidité insuffisante": 1}
