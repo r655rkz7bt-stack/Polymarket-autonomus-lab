@@ -256,3 +256,23 @@ def test_a_word_never_offered_for_a_regular_speaker_is_marked_new(tmp_path):
     books["nY"] = make_book("nY", bids=(("0.16", "1000"),), asks=(("0.85", "1000"),))
     s.params["max_spread"] = D("0.10")
     assert "carnet trop écarté" in s.propose([new], books, _state(tmp_path, "c"), LIMITS, "b1").abstentions
+
+
+def test_tweet_strategy_only_no_and_skip_nyc(tmp_path):
+    m = parse_market(raw_market("t", yes_token="tY", no_token="tN", groupItemTitle="200-219",
+                                end=NOW + timedelta(hours=24)))
+    m.tweets = {"compte": "NYCMayor", "fin": (NOW + timedelta(hours=24)).isoformat(), "total": 180,
+                "heures": [1] * 72, "vu_le": NOW.isoformat()}
+    # le calcul donne ~0,6 pour la tranche : OUI à 0,21 est une affaire, NON à 0,80 n'en est pas une
+    books = {"tY": make_book("tY", bids=(("0.20", "1000"),), asks=(("0.21", "1000"),)),
+             "tN": make_book("tN", bids=(("0.79", "1000"),), asks=(("0.80", "1000"),))}
+    base = dict(dispersion=1000, recent_hours=72, max_stale_hours=6, margin=0.03, uncertainty=0.005,
+                min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    assert [p.outcome for p in _s(CompteurTweets, **base).propose([m], books, _state(tmp_path), LIMITS, "b1").proposals] == ["Yes"]
+    # NON seulement : le OUI n'est plus envisagé, donc rien à acheter ici
+    assert _s(CompteurTweets, only_no=1, **base).propose([m], books, _state(tmp_path, "b"), LIMITS, "b1").proposals == []
+    # NYC Mayor écarté : abstention nommée, même avec l'affaire du OUI
+    out = _s(CompteurTweets, skip_nyc=1, **base).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1")
+    assert out.proposals == [] and any("NYC Mayor" in a for a in out.abstentions)
+    m.tweets["compte"] = "tedcruz"  # un autre compte reste joué
+    assert [p.outcome for p in _s(CompteurTweets, skip_nyc=1, **base).propose([m], books, _state(tmp_path, "d"), LIMITS, "b1").proposals] == ["Yes"]

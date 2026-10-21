@@ -17,6 +17,7 @@ ampleur, correctif (ou proposition si noyau), test de non-régression, contrôle
 | 20/10 | Estimation calculée sur le carnet du début de cycle | mises +46 % sur les chutes de prix, 8,9 % du principal sur un pari | `relecture.chute_max` ([2026-10-20_carnet_perime.md](2026-10-20_carnet_perime.md)) |
 | 20/10 | Fille jugée sur une autre période que sa mère ; « demi-mise » ≠ mêmes paris ; plage de prix contournée par l'ordre posé | conclusions fausses sur les filles | contrôles `filles_periode`, `meme_pari_prix_differents`, `filtre_prix` |
 | 20/10 (soir) | Championne = meilleur de 35 (z 1,86 : chance de sélection), 84 % des achats en jeu malgré « horizon 165 h » (date placeholder Gamma), deux camps d'un match achetés (−275 €) | gain attribué à un avantage non prouvé ; filtres d'échéance sans sens pour le sport | contrôles `selection_multiple`, `deux_camps`, `achats_en_jeu`, champ `depuis_coup_d_envoi_h` ([fiche](2026-10-20_championne_chance_et_en_jeu.md)) |
+| 21/10 | Les variantes « favori » gagnent 0,0 % sur le type vainqueur (28 837 € misés) et perdent sur les handicaps (−10,5 %) ; principal −14,9 % sur handicap | le gain de l'arène vient des types annexes, de la sélection et de la chance | fille `nf_sport_patiente_vainqueur` ([fiche](2026-10-21_type_de_pari_et_reglement.md)) |
 
 ## Familles de défauts (où chercher)
 1. **Le principal ne joue pas ce que l'arène mesure** (copie, mise, ordre d'exécution, liquidité partagée).

@@ -609,7 +609,9 @@ class CompteurTweets(_Base):
     dernières heures) × heures restantes, loi binomiale négative (les rafales de messages sont
     fréquentes, `dispersion`). On achète la tranche (ou son NON) que le marché vend nettement moins
     cher que ce calcul, jamais un billet sous `min_price`. Réglages choisis sur le passé
-    (experiments/vingt_pistes.md : 177 périodes de juillet à octobre 2026, +12 % par achat)."""
+    (experiments/vingt_pistes.md : 177 périodes de juillet à octobre 2026, +12 % par achat).
+    Réglages optionnels (fille « NON sans NYC Mayor », 21/10/2026, experiments/tweets_filles.md) :
+    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor."""
 
     strategy_id = "compteur_tweets"
     required = ("dispersion", "recent_hours", "max_stale_hours", "margin", "uncertainty", "min_net_edge",
@@ -631,12 +633,15 @@ class CompteurTweets(_Base):
             if last is None or (now - last).total_seconds() > float(p["max_stale_hours"]) * 3600:
                 out.abstain("compteur pas à jour")
                 continue
+            if float(p.get("skip_nyc", 0)) and str(tr.get("compte", "")).lower() == "nycmayor":
+                out.abstain("compte écarté (NYC Mayor : perdant à tous les réglages sur le passé)")
+                continue
             prob = tweet_bucket_probability(tr, rng, now, float(p["dispersion"]), int(p["recent_hours"]),
                                             int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5)))
             if prob is None:
                 continue
             margin, unc, best = float(p["margin"]), float(p["uncertainty"]), None
-            for side in (0, 1):
+            for side in ((1,) if float(p.get("only_no", 0)) else (0, 1)):
                 q = prob if side == 0 else 1 - prob
                 ask = books.get(m.token_ids[side]).best_ask if books.get(m.token_ids[side]) else None
                 if ask is not None and float(ask) < float(p.get("min_price", 0)):

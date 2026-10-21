@@ -11,17 +11,15 @@ Ordre : gain espéré × facilité de test. Les marchés répétitifs et peu liq
 ont été les plus battables le 20/10 ; les marchés suivis par des robots (crypto au jour près) non.
 
 ## À tester
-1. **compteur_tweets, filles** : sans NYC Mayor (perdant à tous les réglages), Elon seul, dernières
-   48 h seulement, NON seulement. Données déjà prêtes (scripts tweets_*).
-2. **Mentions : « the announcers » et « anyone »** (meilleurs morceaux sur le passé, +29 % à +45 %),
+1. **Mentions : « the announcers » et « anyone »** (meilleurs morceaux sur le passé, +29 % à +45 %),
    et mots nouveaux par type d'événement (rallye, conférence, mois entier).
-3. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
-4. **Classements « status quo »** : « quel modèle d'IA sera n° 1 du classement LMArena », « n° 1
+2. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
+3. **Classements « status quo »** : « quel modèle d'IA sera n° 1 du classement LMArena », « n° 1
    Spotify / Billboard » : le leader actuel reste-t-il plus souvent que son prix ne le dit ?
    (historiques publics des classements).
-5. **Données économiques** : inflation (CPI) et emploi contre la prévision « nowcast » de la Fed de
+4. **Données économiques** : inflation (CPI) et emploi contre la prévision « nowcast » de la Fed de
    Cleveland (gratuite) et contre Kalshi (kalshi_reference).
-6. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
+5. **Prix de l'essence (AAA) / pétrole** au jour près : modèle de marche aléatoire calibré, comme
    le test crypto (attention : le test crypto a été négatif, marché suivi par des robots).
 
 ## Testées
@@ -45,3 +43,4 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | e-sport (CS2, LoL, Dota 2, Valorant), favoris avant/pendant le match (23 379 marchés) | écartée | favori 0,80-0,95 : −0,1 % à +0,6 % par mise après frais et écart, à tous les retards (−60 min … +60 min) ; le favori gagne un peu plus que son prix (z +1,5 à +2,2) mais l'écart ne couvre pas les frais | tennis.md |
 | autres sports (NFL, NBA, NHL, MLB, football, UFC… 14 097 marchés), favori 0,80-0,95 | écartée | −1,1 % à −2,0 % par mise après frais et écart, avant et pendant le match (le favori gagne autant que son prix) | tennis.md |
 | fatigue NBA (dos-à-dos, 3 en 4 soirs, écart de repos ; 1 222 matchs 2025-26) | écartée | pente repos +0,007 par jour (t +0,5), 7 découpages dans des sens opposés ; calendrier basketball-reference, règlement 1 231/1 231 | nba.md |
+| compteur_tweets, filles (182 périodes, 7 comptes) | retenue : NON seulement, sans NYC Mayor | +16,3 % par achat, +12,8 % par période (t +3,9), 6 réglages sur 6 positifs, 4 mois sur 4 ; Elon seul −3,6 %, 48 dernières heures +1 % (écartées) ; Elon et Trump ≈ 0 | tweets_filles.md |
