@@ -52,7 +52,15 @@ garde_fou_jour: {confiance_min: 0.8, reduction: 0.5}
 # LIBRE : Etienne veut que le chercheur puisse la rendre plus libre s'il le juge bon (moins de
 # paris fictifs, `part_min` plus haute, `part_max` jusqu'à 1) : chaque changement est noté dans
 # experiments/journal_recherche.md avec sa raison (un rejeu de experiments/taille_des_mises/).
-mise_avantage_mesure: {paris_fictifs: 30, part_min: 0.0, part_max: 1.0, avantage_suppose_defaut: 0.035}
+# Renfort (« grossir les gagnantes », 21/10/2026) : au-delà de 1 (jusqu'à `part_max`) seulement si la
+# stratégie prouve PLUS d'avantage qu'elle n'en suppose, après `renfort.min_operations` opérations et
+# avec une confiance par jour d'au moins `renfort.confiance_jour_min`.
+mise_avantage_mesure:
+  paris_fictifs: 30
+  part_min: 0.0
+  part_max: 2.0
+  avantage_suppose_defaut: 0.035
+  renfort: {min_operations: 30, confiance_jour_min: 0.8}
 # Modes de jugement (AMELIORATION n°3 et 4), par préfixe de nom, avec une part plafonnée :
 # - tenue de marché : payée surtout en récompenses, elle clôture peu d'opérations → jugée sur ses
 #   journées de récompenses versables (+ capital au-dessus du départ, récompenses comprises) ;

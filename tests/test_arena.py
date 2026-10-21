@@ -540,7 +540,8 @@ def test_measured_stake_copies_bets_at_the_measured_edge_only():
     excess, assumed = edge_figures(trades)
     assert excess == pytest.approx(-0.7) and assumed == pytest.approx(0.05)
     rule = RULES["mise_avantage_mesure"]
-    assert rule == {"paris_fictifs": 30, "part_min": 0.0, "part_max": 1.0, "avantage_suppose_defaut": 0.035}
+    assert rule == {"paris_fictifs": 30, "part_min": 0.0, "part_max": 2.0, "avantage_suppose_defaut": 0.035,
+                    "renfort": {"min_operations": 30, "confiance_jour_min": 0.8}}
     base = Standing("a_v1", 70, 1100.0, 1000.0, 0.1, NOW - timedelta(days=5), False, assumed_edge=0.05)
     assert measured_stake(dataclasses_replace(base, excess_wins=-2.0), rule) == 0.0
     assert measured_stake(dataclasses_replace(base, excess_wins=2.5), rule) == pytest.approx(0.5)  # 2,5/100 = 2,5 pts
@@ -552,3 +553,19 @@ def test_measured_stake_copies_bets_at_the_measured_edge_only():
     cfg = {"mise_avantage_mesure": rule, "part_max_par_strategie": 0.7}
     half = dataclasses_replace(base, excess_wins=2.5)
     assert exposure([half], {"a_v1": 1.0}, cfg) == {"a_v1": 0.5}
+
+
+def test_principal_stake_goes_above_one_only_for_proven_winners():
+    """Renfort du principal (« grossir les gagnantes », 21/10/2026) : au-delà de la mise habituelle
+    seulement après 30 opérations et avec une confiance par jour d'au moins 80 %, plafonné à 2."""
+    from polymarket_agent.arena import exposure, measured_stake
+    rule = RULES["mise_avantage_mesure"]
+    s = Standing("contrer_crypto_patiente_v1", 60, 1033.0, 1000.0, 0.032, NOW - timedelta(days=5), False,
+                 excess_wins=6.8, assumed_edge=0.0509, day_confidence=0.95)
+    assert measured_stake(s, rule) == pytest.approx(6.8 / 90 / 0.0509)  # ≈ 1,48
+    assert measured_stake(dataclasses_replace(s, excess_wins=40.0), rule) == 2.0
+    assert measured_stake(dataclasses_replace(s, day_confidence=0.7), rule) == 1.0
+    assert measured_stake(dataclasses_replace(s, closed_trades=20), rule) == pytest.approx(min(1.0, 6.8 / 50 / 0.0509))
+    cfg = {"mise_avantage_mesure": rule, "part_max_par_strategie": 0.7}
+    assert exposure([s], {"contrer_crypto_patiente_v1": 0.21}, cfg) == {"contrer_crypto_patiente_v1": pytest.approx(0.21 * 6.8 / 90 / 0.0509, abs=1e-6)}
+    assert exposure([s], {"contrer_crypto_patiente_v1": 0.6}, cfg) == {"contrer_crypto_patiente_v1": 0.7}  # plafond par stratégie

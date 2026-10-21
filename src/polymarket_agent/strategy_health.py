@@ -68,6 +68,24 @@ def forecasts(entries: list[dict]) -> list[dict]:
     return out
 
 
+def settled_outcomes(entries: list[dict]) -> dict[str, float]:
+    """Résultat connu par le journal lui-même (21/10/2026) : un jeton réglé (SETTLE) dit déjà ce qu'il a
+    payé. Avant, seules 15 prévisions par heure étaient vérifiées auprès de Gamma pour toute l'arène :
+    la championne avait 15 prévisions jugées pour 97 paris réglés, aucune stratégie n'atteignait les
+    20 qui débloquent la mise entière (experiments/grossir_gagnantes.md)."""
+    out: dict[str, float] = {}
+    for e in entries:
+        if e.get("type") == "RESET":
+            out.clear()
+        elif e.get("type") == "SETTLE":
+            d = e.get("data") or {}
+            try:
+                out[str(d["token_id"])] = float(d["payout_per_share"])
+            except (KeyError, TypeError, ValueError):
+                continue
+    return out
+
+
 def update_outcomes(db, get_market, items: list[dict], now: datetime, budget: int = 15,
                     recheck_hours: float = 6) -> int:
     """Résultat des marchés prévus (au plus `budget` interrogations). Retourne les nouveaux réglés."""
@@ -105,10 +123,12 @@ def _mid(db, token: str) -> float | None:
     return (float(row[0]) + float(row[1])) / 2
 
 
-def score(db, items: list[dict]) -> dict:
-    """{"jugees", "brier", "brier_marche", "avance", "derive", "positions_derive"}."""
+def score(db, items: list[dict], settled: dict[str, float] | None = None) -> dict:
+    """{"jugees", "brier", "brier_marche", "avance", "derive", "positions_derive"}. `settled` : résultats
+    lus dans le journal (settled_outcomes), prioritaires sur ceux vérifiés auprès de Gamma."""
     db.conn.executescript(SCHEMA)
     outcomes = {r[0]: r[1] for r in db.conn.execute("SELECT token_id, payout FROM forecast_outcomes")}
+    outcomes.update(settled or {})
     b_s = b_m = 0.0
     n = 0
     drift, nd = 0.0, 0
@@ -134,6 +154,26 @@ def prudence(s: dict, cfg: dict) -> float:
     if s["jugees"] < int(cfg["min_resolved"]) or s["avance"] is None:
         return float(cfg["base"])
     return float(cfg["proven"]) if s["avance"] > 0 else float(cfg["disproven"])
+
+
+def boost(row: dict | None, cfg: dict) -> float:
+    """Renfort (« grossir les gagnantes », décision d'Etienne du 21/10/2026) : une stratégie qui prouve
+    PLUS d'avantage qu'elle n'en suppose mise davantage, avec un plafond. Avantage mesuré = Σ(gagné −
+    prix payé) / (opérations + `paris_fictifs`), comparé à l'avantage supposé à l'achat (estimation −
+    prix payé). Seulement après `min_operations` opérations et avec une confiance par jour d'au moins
+    `confiance_jour_min` ; renfort = mesuré / supposé, entre 1 et `max`. `row` : une ligne du
+    classement de l'arène (Standing.report). Sans réglage `renfort` : 1 (aucun renfort)."""
+    rule = cfg.get("renfort") or {}
+    if not rule or not row:
+        return 1.0
+    n = int(row.get("closed_trades") or 0)
+    excess, assumed, conf = row.get("excess_wins"), row.get("assumed_edge"), row.get("day_confidence")
+    if n < int(rule.get("min_operations", 30)) or excess is None or not assumed or float(assumed) <= 0:
+        return 1.0
+    if conf is None or float(conf) < float(rule.get("confiance_jour_min", 0.8)):
+        return 1.0
+    measured = float(excess) / (n + float(rule.get("paris_fictifs", 30)))
+    return round(min(float(rule.get("max", 2.0)), max(1.0, measured / float(assumed))), 4)
 
 
 def suspension(state, closed: int, cfg: dict) -> str | None:

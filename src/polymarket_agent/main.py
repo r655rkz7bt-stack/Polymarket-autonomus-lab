@@ -177,8 +177,18 @@ class Weighted:
     Désormais, ce qu'elle a déjà investi dans le principal (coût de ses positions ouvertes) plus
     ses nouveaux achats ne dépassent jamais part × capital total estimé ; le reste attend."""
 
-    def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None):
+    def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None, base: Decimal | None = None):
         self.inner, self.weight, self.source = strategy, weight, source
+        # Copie à la mise de BASE (21/10/2026, « grossir les gagnantes ») : la prudence du fantôme
+        # (½ tant que rien n'est prouvé, entière, ¼, renfort) sert à l'arène ; le principal garde sa
+        # propre mise, celle simulée avec Etienne (experiments/taille_des_mises.md) : il divise par la
+        # prudence du fantôme et remultiplie par `base`. Son renfort à lui passe par l'arène
+        # (arena.measured_stake), une seule fois.
+        self.stake_adjust = Decimal("1")
+        ghost_weight = getattr(strategy, "weight", None) if isinstance(strategy, Weighted) else None
+        if source is not None and base is not None and ghost_weight and ghost_weight > 0 \
+                and getattr(strategy, "forecasting", True):
+            self.stake_adjust = Decimal(str(base)) / ghost_weight
         self.strategy_id, self.version = strategy.strategy_id, strategy.version
         self.needs_price_history = getattr(strategy, "needs_price_history", False)
         if hasattr(strategy, "exits"):
@@ -208,7 +218,7 @@ class Weighted:
         ghost_total = seen["total"] if seen else Decimal("0")
         if ghost_total <= 0:
             return out, Decimal("0")
-        factor = self.weight * state.total_estimated(marks) / ghost_total
+        factor = self.weight * state.total_estimated(marks) / ghost_total * self.stake_adjust
         out.proposals = [dataclasses.replace(p, shares=filled) for p, filled in seen["buys"]
                          if p.token_id not in state.positions]
         for order in seen["orders"]:
@@ -331,31 +341,37 @@ def _apply_health(deps: CycleDeps, competitors: dict, report: CycleReport, elimi
     try:
         cfg = strategy_health.config(deps.settings)
         now = deps.now()
-        items = {name: strategy_health.forecasts(read_entries(p.ledger)) for name, p in competitors.items()}
+        entries = {name: read_entries(p.ledger) for name, p in competitors.items()}
+        items = {name: strategy_health.forecasts(e) for name, e in entries.items()}
+        settled = {name: strategy_health.settled_outcomes(e) for name, e in entries.items()}
         if _due(deps.db, "bilan_previsions", 60, now):
-            try:
+            try:  # Gamma seulement pour les prévisions que le journal ne règle pas (revendues, en cours)
                 strategy_health.update_outcomes(deps.db, deps.gamma.get_market,
-                                                [f for v in items.values() for f in v], now,
-                                                int(cfg["outcomes_per_hour"]))
+                                                [f for n, v in items.items() for f in v if f["token_id"] not in settled[n]],
+                                                now, int(cfg["outcomes_per_hour"]))
             except Exception as exc:  # noqa: BLE001 - une mesure ne bloque jamais le cycle
                 log.warning("bilan des prévisions non mis à jour : %s", exc)
             deps.db.set_source_run("bilan_previsions", now)
-        closed = {c["name"]: c["closed_trades"] for c in report.arena.get("classement", [])}
+        rows = {c["name"]: c for c in report.arena.get("classement", [])}
+        closed = {n: c["closed_trades"] for n, c in rows.items()}
         suspended = set()
         for name, portfolio in competitors.items():
-            sc = strategy_health.score(deps.db, items[name])
-            factor = strategy_health.prudence(sc, cfg)
+            sc = strategy_health.score(deps.db, items[name], settled[name])
+            factor, renfort = strategy_health.prudence(sc, cfg), 1.0
             if portfolio.strategies and not any(getattr(s, "forecasting", True) for s in portfolio.strategies):
                 # Tenue de marché : aucune prévision à juger (son « estimation » est le prix du milieu) ;
                 # sa prudence est dans ses propres réglages (part du capital par marché, stock maximal).
                 factor = 1.0
+            else:  # renfort : plus d'avantage prouvé que supposé → mise plus grosse, plafonnée
+                renfort = strategy_health.boost(rows.get(name), cfg)
+                factor *= renfort
             reason = None if name in eliminated else strategy_health.suspension(
                 portfolio.ledger.state, closed.get(name, 0), cfg)
             if reason:
                 suspended.add(name)
                 factor = 0.0
                 log.info("SUSPENDUE %s : %s", name, reason)
-            strategy_health.save(deps.db, name, dict(sc, prudence=factor, suspendue=reason))
+            strategy_health.save(deps.db, name, dict(sc, prudence=factor, renfort=renfort, suspendue=reason))
             portfolio.strategies = [Weighted(s, Decimal(str(factor))) for s in portfolio.strategies]
         return suspended
     except Exception as exc:  # noqa: BLE001
@@ -478,7 +494,8 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     alloc, engaged = report.arena.get("allocation", {}) or {champion: 1.0}, report.arena.get("engagement", {})
     shares = {n: w * min(1.0, engaged[n] / alloc[n]) if n in engaged and alloc.get(n) else w for n, w in shares.items()}
     shares = _steady_shares(deps, shares)
-    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p) for n, p in competitors.items()
+    base = Decimal(str(strategy_health.config(deps.settings)["base"]))
+    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p, base=base) for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
     # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
     # nulle) garde la main sur SES sorties (prise de bénéfice, stop, durée maximale), sans racheter.
