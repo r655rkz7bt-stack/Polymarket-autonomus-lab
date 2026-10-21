@@ -649,9 +649,19 @@ class Filtered:
             return kind in f["issue"]
         return True
 
+    # Filtres assez étroits pour qu'une fille demande ELLE-MÊME ses marchés au scanner (21/10/2026) :
+    # sans cela, statu_quo_ia (« best ai model ») et outsider_itf (source itftennis.com) ne voyaient
+    # que les 150 marchés les plus échangés, où leurs marchés n'entrent presque jamais.
+    OWN_MARKETS = ("question_contient", "sources")
+    OWN_MARKETS_MAX = 25
+
     def candidates(self, markets):
         inner = getattr(self.inner, "candidates", None)
-        return [m for m in inner(markets) if self._market_ok(m, None)] if inner else []
+        out = [m for m in inner(markets) if self._market_ok(m, None)] if inner else []
+        if not out and any(k in self.filters for k in self.OWN_MARKETS):
+            out = sorted((m for m in markets if self._market_ok(m, None)), key=lambda m: -float(m.volume_24h or 0))
+            out = out[: self.OWN_MARKETS_MAX]
+        return out
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         now = max((b.fetched_at for b in books.values()), default=None)

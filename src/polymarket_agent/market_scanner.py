@@ -72,6 +72,40 @@ def _add_holding_markets(gamma: GammaClient, now: datetime, cfg: dict, result: S
         result.markets.append(market)
 
 
+def _add_long_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
+    """Marchés LONGS, toutes sortes (21/10/2026, « réveiller les muettes ») : au-delà de l'horizon
+    normal (30 jours), le scanner ne lisait que les marchés à récompense de détention ; échelle de
+    dates, implication politique, échelles de seuils et jumeaux ne voyaient donc presque rien
+    (diagnostic du 21/10 : echelle_dates 12 marchés au lieu de 433, implication_politique 0 au lieu
+    de 60 ; experiments/muettes.md). `long_pages` pages triées par volume jusqu'à
+    `long_max_horizon_days`, mêmes filtres sauf le volume du jour (`long_min_volume_24h` : un marché
+    de 2028 s'échange peu chaque jour). Ces marchés n'entrent PAS dans la liste de surveillance de
+    base (`extra_only`) : seulement si une stratégie les demande."""
+    pages = int(cfg.get("long_pages", 0) or 0)
+    if pages <= 0:
+        return
+    days = float(cfg.get("long_max_horizon_days", 900))
+    long_cfg = dict(cfg, max_horizon_hours=days * 24,
+                    min_volume_24h=cfg.get("long_min_volume_24h", cfg.get("min_volume_24h", 0)))
+    try:
+        raw = gamma.list_markets(end_min=now + timedelta(hours=cfg["max_horizon_hours"]),
+                                 end_max=now + timedelta(days=days), page_size=cfg["page_size"], max_pages=pages)
+    except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
+        log.warning("scanner : marchés longs indisponibles (%s)", exc)
+        return
+    for item in raw:
+        market = parse_market(item)
+        if market.market_id in seen:
+            continue
+        seen.add(market.market_id)
+        market.exclusion = classify(market, now, long_cfg)
+        market.eligible = not market.exclusion
+        market.extra_only = True
+        if market.exclusion:
+            result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
+        result.markets.append(market)
+
+
 def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
     """Marchés d'une étiquette précise (21/10/2026) : les marchés « mentions » (étiquette 100343)
     ont peu de volume et n'entraient presque jamais dans les pages triées par volume ;
@@ -149,9 +183,11 @@ def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
             result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
         result.markets.append(market)
     _add_holding_markets(gamma, now, cfg, result, seen)
+    _add_long_markets(gamma, now, cfg, result, seen)
     _add_tag_markets(gamma, now, cfg, result, seen)
     _add_ended_markets(gamma, now, cfg, result, seen)
-    eligible = sorted((m for m in result.markets if m.eligible and not m.ended), key=lambda m: m.volume_24h, reverse=True)
+    eligible = sorted((m for m in result.markets if m.eligible and not m.ended and not m.extra_only),
+                      key=lambda m: m.volume_24h, reverse=True)
     result.watchlist = eligible[: cfg["watchlist_size"]]
     log.info("scanner : %d marchés, %d exploitables, %d surveillés, exclusions %s",
              len(result.markets), len(eligible), len(result.watchlist), result.excluded)

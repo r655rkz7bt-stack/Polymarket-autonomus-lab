@@ -937,3 +937,12 @@ toucher, la page télécharge le journal public de la stratégie (branche `data`
 dans le navigateur (`readJournal`, `perTrade`, `ficheChart` dans `dashboard_template.html`). Les
 formules sont celles de `reporting.closed_trades` et `arena.py` ; un test compare les deux
 (tests/test_dashboard.py, si Node est présent). Le cycle ne publie que les réglages (`fiche`).
+
+## 54. Réveiller les stratégies muettes (21/10/2026, décision d'Etienne)
+
+Diagnostic (`experiments/muettes.md`) : 20 fantômes n'avaient jamais acheté ; le scanner gardait
+~1 100 des 10 000 marchés ouverts, surtout à cause de l'horizon de 30 jours. Changements :
+`long_pages` (1 000 marchés longs, `extra_only`, montrés seulement aux stratégies qui les demandent :
+`main._visible`, attribut `asked_markets` posé à chaque cycle), filles `question_contient` /
+`sources` qui demandent leurs marchés (`Filtered.candidates`), raisons d'abstention des arbitrages
+(`_Arbitrage._pair`, `_finish_pairs`), `max_extra_markets` 600.

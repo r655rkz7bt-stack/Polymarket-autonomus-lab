@@ -192,3 +192,48 @@ def test_repository_config_lets_economic_data_markets_through_the_scanner():
         assert spec["pages"] >= 1 and spec["min_volume_24h"] == 0
         tag_cfg = dict(cfg, **{k: v for k, v in spec.items() if k != "pages"})
         assert not classify(parse_market(raw_market(volume24hr=20, liquidityNum=1500)), NOW, tag_cfg)
+
+
+def test_long_pages_add_any_long_market_only_for_strategies_that_ask():
+    """« Réveiller les muettes » (21/10/2026) : au-delà de 30 jours, le scanner ne lisait que les
+    marchés à récompense de détention ; `long_pages` ajoute tous les marchés longs (volume du jour
+    plus bas), jamais dans la liste de surveillance de base (`extra_only`)."""
+    class TwoCalls:
+        def __init__(self):
+            self.calls = []
+
+        def list_markets(self, **kwargs):
+            self.calls.append(kwargs)
+            if len(self.calls) == 1:
+                return [raw_market("court", volume24hr=5000)]
+            return [raw_market("2028", end=NOW + timedelta(days=700), volume24hr=500),
+                    raw_market("calme", end=NOW + timedelta(days=200), volume24hr=50),
+                    raw_market("court", volume24hr=5000)]
+    g = TwoCalls()
+    result = scan(g, NOW, dict(CFG, long_pages=2, long_max_horizon_days=900, long_min_volume_24h=100))
+    by = {m.market_id: m for m in result.markets}
+    assert set(by) == {"court", "2028", "calme"} and g.calls[1]["max_pages"] == 2
+    assert by["2028"].eligible and by["2028"].extra_only and not by["court"].extra_only
+    assert by["calme"].exclusion == "volume insuffisant"
+    assert [m.market_id for m in result.watchlist] == ["court"]  # le marché long n'y entre que s'il est demandé
+    assert len(scan(TwoCalls(), NOW, CFG).markets) == 1  # désactivé par défaut
+
+
+def test_long_markets_are_shown_only_to_the_strategies_that_asked_for_them():
+    """Un marché des pages longues (2028…) n'est montré qu'aux stratégies qui l'ont demandé ; les
+    marchés échus seulement à celles qui les veulent (`wants_ended`)."""
+    from polymarket_agent.main import _visible
+    court, long_, echu = (parse_market(raw_market(i)) for i in ("court", "2028", "echu"))
+    long_.extra_only, echu.ended = True, True
+
+    class S:
+        asked_markets = {"2028"}
+
+    class Other:
+        pass
+
+    class Late:
+        wants_ended = True
+    assert [m.market_id for m in _visible(S(), [court, long_, echu])] == ["court", "2028"]
+    assert [m.market_id for m in _visible(Other(), [court, long_, echu])] == ["court"]
+    assert [m.market_id for m in _visible(Late(), [court, long_, echu])] == ["court", "echu"]

@@ -202,3 +202,21 @@ def test_jobs_favori_non_buys_no_on_the_favorite_bucket_only_inside_window_and_p
     assert not late.propose(ms, books, _state(tmp_path), LIMITS, "b1").proposals  # à 30 h : hors de la fenêtre 40-72 h
     few = [m for m in ms if m.market_id in ("j0", "j2")]
     assert not s.propose(few, books, _state(tmp_path), LIMITS, "b1").proposals  # 2 tranches suivies : pas de favori fiable
+
+
+def test_arbitrages_say_why_they_stay_silent(tmp_path):
+    """« Réveiller les muettes » (21/10/2026) : un arbitrage qui n'achète rien dit pourquoi (aucune
+    paire parmi les marchés vus, ou paire cohérente sans écart après frais)."""
+    near = _m("n", question="Will X happen by June 30?", end=NOW + timedelta(days=10), event_id="e1")
+    far = _m("f", question="Will X happen by December 31?", end=NOW + timedelta(days=100), event_id="e1")
+    alone = _s(EchelleDates, **ARB).propose([near], _books(("nY", "0.39", "0.40"), ("nN", "0.59", "0.60")),
+                                           _state(tmp_path), LIMITS, "b1")
+    assert alone.abstentions == {"aucune paire complète parmi les marchés vus": 1}
+    fair = _books(("fY", "0.44", "0.45"), ("fN", "0.55", "0.56"), ("nY", "0.29", "0.30"), ("nN", "0.69", "0.70"))
+    out = _s(EchelleDates, **ARB).propose([near, far], fair, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and out.abstentions == {"paire cohérente : aucun écart après frais": 1}
+    empty = _s(MarchesJumeaux, **ARB).propose([near, far], fair, _state(tmp_path), LIMITS, "b1")
+    assert empty.abstentions == {"aucune paire complète parmi les marchés vus": 1}
+    no_ask = _s(EchelleDates, **ARB).propose([near, far], _books(("fY", "0.44", "0.45")),  # NON(juin) sans carnet
+                                            _state(tmp_path), LIMITS, "b1")
+    assert no_ask.abstentions == {"une jambe sans vendeur": 1}

@@ -531,7 +531,9 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     wishes = []
     for strategy in {id(s): s for p in portfolios for s in p.strategies}.values():
         pool = eligible if getattr(strategy, "wants_ended", False) else live
-        wishes.append([m for m in getattr(strategy, "candidates", lambda ms: [])(pool)])
+        wished = [m for m in getattr(strategy, "candidates", lambda ms: [])(pool)]
+        strategy.asked_markets = {m.market_id for m in wished}  # marchés longs : vus par qui les demande (_visible)
+        wishes.append(wished)
     for market in _round_robin(wishes):
         if max_extra <= 0:
             break
@@ -693,7 +695,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         portfolio.copied = {s.strategy_id: {"total": total, "buys": [], "orders": []} for s in portfolio.strategies}
     proposals, bought = [], set()
     for strategy in portfolio.strategies:
-        seen = watchlist if getattr(strategy, "wants_ended", False) else [m for m in watchlist if not m.ended]
+        seen = _visible(strategy, watchlist)
         output = strategy.propose(seen, books, ledger.state, deps.limits, bucket, marks)
         # Sorties (ventes) : seulement sur les positions ouvertes par cette stratégie.
         if hasattr(strategy, "exits"):
@@ -909,6 +911,16 @@ def _attach_references(deps: CycleDeps, markets: list[MarketInfo], now: datetime
     except Exception as exc:  # noqa: BLE001 - un rattachement ne bloque jamais le cycle
         log.warning("références non rattachées : %s", exc)
         return {}
+
+
+def _visible(strategy, watchlist: list[MarketInfo]) -> list[MarketInfo]:
+    """Marchés montrés à une stratégie : pas les marchés échus (sauf `wants_ended`), et les marchés
+    longs des pages longues (`extra_only`, 21/10/2026) seulement si ELLE les a demandés : sinon le
+    favori de base, sans fenêtre de temps, achèterait un favori de 2028 et bloquerait son fantôme
+    deux ans (experiments/muettes.md)."""
+    asked = getattr(strategy, "asked_markets", None) or set()
+    ended_ok = getattr(strategy, "wants_ended", False)
+    return [m for m in watchlist if (ended_ok or not m.ended) and (not m.extra_only or m.market_id in asked)]
 
 
 def _round_robin(lists: list[list]) -> list:

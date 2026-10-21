@@ -92,3 +92,22 @@ def test_discipline_bet_type_and_new_daughter_filters():
         inner = Inner()
         Filtered(inner, filt).propose([tennis, nfl], books, None, None, "b1")
         assert inner.seen == want, filt
+
+
+def test_daughters_with_keywords_or_sources_ask_for_their_own_markets():
+    """« Réveiller les muettes » (21/10/2026) : une fille à mots-clés (statu_quo_ia : « best ai
+    model ») ou à source de résolution (outsider_itf : itftennis.com) demande ses marchés au scanner ;
+    sans cela elle ne voyait que les 150 marchés les plus échangés."""
+    class Inner:
+        strategy_id, version = "naive_favorite", "1.0.0"
+
+        def candidates(self, markets):
+            return []
+    ia = parse_market(raw_market("ia", question="Will Anthropic have the best AI model at the end of October 2026?",
+                                 volume24hr=300))
+    itf = parse_market(raw_market("itf", question="M15 Ithaca: A vs B", resolutionSource="https://www.itftennis.com/x",
+                                  volume24hr=50))
+    other = parse_market(raw_market("o", question="Lakers vs. Celtics", volume24hr=90000))
+    assert [m.market_id for m in Filtered(Inner(), {"question_contient": ["best ai model"]}).candidates([ia, itf, other])] == ["ia"]
+    assert [m.market_id for m in Filtered(Inner(), {"sources": ["itftennis.com"]}).candidates([ia, itf, other])] == ["itf"]
+    assert Filtered(Inner(), {"familles": ["sports"]}).candidates([ia, itf, other]) == []  # filtre large : rien de plus

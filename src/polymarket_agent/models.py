@@ -79,6 +79,9 @@ class MarketInfo:
     neg_risk_other: bool = False
     uma_statuses: tuple[str, ...] = ()
     ended: bool = False  # échéance passée (scanner, ended_pages) : seulement pour les stratégies `wants_ended`
+    # Marché lu par les pages longues du scanner (long_pages, 21/10/2026) : jamais dans la liste de
+    # surveillance de base, seulement si une stratégie le demande (`candidates`).
+    extra_only: bool = False
     # Prix de la même question ailleurs (references.py : kalshi, predictit, manifold, outright,
     # bookmakers_3) et période XTracker du marché « combien de tweets » (posés par le cycle).
     references: dict | None = None
