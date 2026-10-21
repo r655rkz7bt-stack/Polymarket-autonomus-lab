@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 1971,
+  "principal": 1984,
   "fantome:calibration_patiente_v1.0.0": 1675,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1671,
@@ -119,14 +119,16 @@
   "fantome:mots_prononces_nfl_v1.0.0": 32,
   "fantome:nf_sport_football_v1.0.0": 35,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 34,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 33
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 33,
+  "fantome:compteur_tweets_non_patiente_v1.0.0": 0,
+  "fantome:mots_prononces_patiente_v1.0.0": 1
  },
  "verifiees": 4991,
  "non_verifiables": 0,
  "anomalies": [],
- "derniere_execution": "2026-10-21T08:12:44+00:00",
+ "derniere_execution": "2026-10-21T08:15:38+00:00",
  "dernier_seq_reglements": {
-  "principal": 1971,
+  "principal": 1984,
   "fantome:calibration_patiente_v1.0.0": 1675,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1671,
@@ -189,7 +191,7 @@
   "fantome:nf_sport_non_v1.0.0": 924,
   "fantome:nf_court_hors_sport_v1.0.0": 906,
   "fantome:nf_court_prix_haut_v1.0.0": 822,
-  "fantome:nf_sport_tres_court_v1.0.0": 913,
+  "fantome:nf_sport_tres_court_v1.0.0": 915,
   "fantome:nf_sport_6_24h_v1.0.0": 734,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 697,
   "fantome:nf_sport_patiente_prix_moyen_v1.0.0": 669,
@@ -245,7 +247,9 @@
   "fantome:mots_prononces_nfl_v1.0.0": 32,
   "fantome:nf_sport_football_v1.0.0": 35,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 34,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 33
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 33,
+  "fantome:compteur_tweets_non_patiente_v1.0.0": 2,
+  "fantome:mots_prononces_patiente_v1.0.0": 1
  },
  "reglements_verifies": 2155
 }
