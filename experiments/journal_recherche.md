@@ -3,6 +3,22 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-21 (passage chercheur, ~10 h UTC)
+
+- **Enquête** (détail : `experiments/enquetes/2026-10-21_posees_sous_la_plage.md`, famille 4 « le filtre ne filtre pas »).
+  - Aucune enquête obligatoire dans la feuille de mission. Contrôle à la main sur le constat `filtre_prix` (11 achats hors plage) : les ordres posés servis
+    **sous 0,80** (famille nf_sport_patiente/nf_tennis, 44 paris distincts, 1 601 € misés) font **−11,9 %** contre +6,7 % dans 0,80-0,875 (t −1,2 : indice de
+    sélection adverse, pas de preuve). Pas de défaut de code ; à confirmer sur de nouveaux paris avant de passer les mères en `prix_final`.
+  - `positions_oubliees` : marché 5167158 (« Russia target Kyiv ? ») en litige UMA (`disputed`), 5 portefeuilles bloqués 78 h : légitime, rien à corriger.
+  - `copie_fidele` (4 copies partielles à 100 %) et `estimation_perimee` (modèles, pas des carnets périmés) : revus, pas de nouveau défaut.
+- **Recherche** (`experiments/cpi_nowcast.md`, piste n° 3 : CPI américain). 48 événements réglés (règlement relu 48/48), 337 tranches, 205 703 échanges réels.
+  Les cases à 3-25 % gagnent ~moitié moins que leur prix ; NON : +3 à +6 % par achat aux prix réels (12 réglages essayés, 10 positifs ; core négatif).
+  **Verdict : indice** (47 événements, tranches liées, beaucoup de tranches sans échange avant la décision). Nowcast de Cleveland non testé (pas d'historique par versions).
+- **Arène** : nouvelle stratégie `cpi_tranches` (classe `CpiTranches`, test) ; filles de la feuille de mission `nf_sport_vainqueur` et `nf_sport_patiente_tennis_850_875`
+  (`nf_sport_patiente_tennis_875_900` existait déjà) ; 12 stratégies éliminées mises à `enabled: false`.
+- **Reste ouvert** : confirmer `cpi_tranches` sur le CPI du 11/11 ; `prix_final` sur les mères si les achats < 0,80 restent négatifs ; piste suivante : emploi (NFP) contre Kalshi,
+  champions de saison (besoin d'une clé The Odds API, absente de la routine) ; `cotes_bookmakers` toujours muette/perdante.
+
 ## 2026-10-21 (session avec Etienne, matin : AMELIORATION, lot 1)
 
 - **Cause des stratégies muettes trouvée** : références rattachées aux seuls 150 marchés surveillés et pas de `candidates()`
