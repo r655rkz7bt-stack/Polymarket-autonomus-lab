@@ -316,16 +316,24 @@ def verdict(bets: list[dict], min_bets: int = 30) -> dict:
     t_event = _t_stat(events)
     months = {m: round(sum(v) / len(v), 4) for m, v in sorted(by_month.items())}
     winning = sum(1 for v in months.values() if v > 0)
+    # Gagnés contre attendus par les prix payés. Quand presque tous les paris gagnent (statu quo à 0,9),
+    # l'écart-type des gains est minuscule et le t explose : 12 gagnés sur 12 à 0,78-0,95 donnent t +6 alors
+    # que les prix seuls le font arriver 1 fois sur 4 (classements, 21/10/2026).
+    costs = [min(0.999, max(0.001, float(b.get("cout", 0.5)))) for b in bets]
+    variance = sum(c * (1 - c) for c in costs)
+    z_prix = (sum(1 for g in gains if g > 0) - sum(costs)) / math.sqrt(variance) if variance > 0 else 0.0
     if len(bets) < min_bets:
         label, why = "écartée", f"moins de {min_bets} paris"
-    elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months):
+    elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months) and z_prix >= 1.5:
         label, why = "retenue", "positive, régulière par événement et par mois"
+    elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months):
+        label, why = "indice", f"régulière mais gagne autant que ses prix le disent (z des prix {z_prix:+.1f}) : chance possible"
     elif mean > 0 and t_event >= 0.8:
         label, why = "indice", "positive mais encore fragile : fantôme, l'arène tranchera"
     else:
         label, why = "écartée", "pas d'avantage régulier après frais"
     return {"paris": len(bets), "rendement_moyen": round(mean, 4), "confiance_paris": round(_t_stat(gains), 2),
-            "evenements": len(events), "confiance_evenements": round(t_event, 2),
+            "evenements": len(events), "confiance_evenements": round(t_event, 2), "z_prix": round(z_prix, 2),
             "mois": months, "mois_gagnants": f"{winning}/{len(months)}",
             "par_prix": {k: {"paris": len(v), "rendement": round(sum(v) / len(v), 4)} for k, v in sorted(by_price.items())},
             "verdict": label, "raison": why}

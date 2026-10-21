@@ -84,6 +84,28 @@ def _won_vs_expected(trades: list[dict]) -> tuple[int, float]:
 # ------------------------------------------------------------------ contrôles
 
 
+def _order_shares(rows: list[dict], token: str, order_id: str) -> float:
+    """Parts obtenues par un ordre posé sur ce jeton (toutes ses exécutions partielles). Le principal préfixe
+    l'identifiant du fantôme par « P » (et le tronque d'un caractère) : on compare sans ce préfixe."""
+    total = 0.0
+    for e in _buys(rows):
+        d, rid = e["data"], str((e["data"].get("extra") or {}).get("resting_order") or "").removeprefix("P")
+        if d["token_id"] == token and rid and (rid.startswith(order_id) or order_id.startswith(rid)):
+            total += float(d["shares"])
+    return total
+
+
+def _smaller_order(principal: list[dict], ghost_rows: list[dict], d: dict, x: dict) -> bool:
+    """Un ordre posé se remplit en plusieurs fois : la première exécution partielle du fantôme peut être
+    toute petite et celle du principal, dont l'ordre est plus petit, la même. 21/10/2026 (Lynn Vision) : fantôme 105
+    parts en tout, principal 33 (32 %) : la copie était proportionnelle. Faux positif si on compare exécution par exécution."""
+    order_id = str(x.get("resting_order") or "").removeprefix("P")
+    if not order_id:
+        return False
+    mine, theirs = _order_shares(principal, d["token_id"], order_id), _order_shares(ghost_rows, d["token_id"], order_id)
+    return theirs > 0 and mine < 0.95 * theirs
+
+
 def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) -> list[dict]:
     """Chaque achat du principal doit avoir son jumeau dans le fantôme copié (même stratégie, même
     jeton, même cycle), au même prix à 2 centimes près."""
@@ -109,7 +131,8 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
         g = twin["data"]
         if abs(float(d["price"]) - float(g["price"])) > 0.02:
             prices.append(f"{label} ; fantôme à {float(g['price']):.3f}")
-        if (g.get("extra") or {}).get("fill_status") == "PARTIAL" and float(d["shares"]) >= 0.95 * float(g["shares"]):
+        if (g.get("extra") or {}).get("fill_status") == "PARTIAL" and float(d["shares"]) >= 0.95 * float(g["shares"]) \
+                and not _smaller_order(principal, entries[ghost], d, x):
             full.append(f"{label} ; fantôme {g['shares']} parts (exécution partielle)")
     out = []
     if orphans:
