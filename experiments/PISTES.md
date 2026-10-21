@@ -25,6 +25,11 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 6. **Matchs de NFL, suite** : `mots_prononces_nfl` (fantôme) à confirmer sur de nouveaux matchs ; si oui,
    tester les mots à seuil (« Referee 5+ times ») séparément des mots simples.
 
+7. **Autres données économiques à tranches** : premier relevé du 21/10 (`experiments/emploi_nfp/claims_releve.py`). **Demandes d'allocations hebdomadaires : écartée** (23 événements réglés, tous de 2021-2022 sauf
+   février 2025, 47 marchés, 811 échanges réels : trop peu et trop vieux). Restent, pas encore téléchargés : « US GDP growth in <trimestre> » (9 événements), ISM Services / Manufacturing PMI (5 + 5),
+   « Fed decision in <mois> » (16, bien piloté par les contrats à terme : pas de source gratuite). Même méthode que `experiments/emploi_nfp/` (`telecharger.py`, `analyse.py`, `contre_kalshi.py` ; l'API
+   `historical/` de Kalshi donne chiffres officiels et prix horaires, ~3 s par appel). Question d'abord : la tranche centrale est-elle surévaluée comme pour les emplois ?
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
