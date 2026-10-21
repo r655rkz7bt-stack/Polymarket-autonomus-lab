@@ -54,7 +54,7 @@ def run(disp, margin, minp, win=6, extra=0.0, all_sides=False):
             if rows is not None:
                 pp = paid(rows, m["tok"][1], m["tok"][0], c["t"], min(c["t"] + win * 3600, c["fin"]))
             if hourly_buy:
-                hourly.append(base | {"gain": gain(won, cost, FEE), "cout": cost})
+                hourly.append(base | {"gain": gain(won, cost, FEE), "cout": cost, "apparie": pp is not None})
                 if pp is None:
                     missing += 1
                 elif 0 < pp[1] + extra < 1:
@@ -109,6 +109,7 @@ if __name__ == "__main__":
         print(f"\nréglage dispersion {s[0]} marge {s[1]} billet ≥ {s[2]} (NON sans NYC Mayor, fenêtre 6 h)")
         resume(hourly, "horaire (21/10, reproduit)")
         print(f"  décisions horaires sans aucun échange de preneur dans les 6 h : {missing} sur {len(hourly)}")
+        resume([b for b in hourly if not b["apparie"]], "horaire, décisions SANS échange")
         resume(same_h, "horaire, mêmes décisions appariées")
         v = resume(same, "PAYÉ, mêmes décisions")
         resume(first_per_bucket(same), "PAYÉ, mêmes décisions, 1er par tranche")
@@ -119,13 +120,22 @@ if __name__ == "__main__":
                   f"{st.mean(b['cout'] - b['horaire'] for b in same):+.3f}")
         out[str(s)] = {"horaire": len(hourly), "sans_echange": missing, "paye": v}
     print("\nsensibilité (réglage principal 12 / 0,03 / 0,10)")
-    for win, extra in ((1, 0), (24, 0), (6, 0.01)):
-        _, same, _, decided, missing = run(12.0, 0.03, 0.10, win, extra)
+    for win, extra in ((0.5, 0), (1, 0), (2, 0), (24, 0), (6, 0.01)):
+        _, same, same_h, decided, missing = run(12.0, 0.03, 0.10, win, extra)
+        resume(same_h, f"fenêtre {win} h : horaire des décisions appariées")
         resume(same, f"fenêtre {win} h, +{extra} : mêmes décisions ({missing} sans échange)")
         resume(decided, f"fenêtre {win} h, +{extra} : décision au prix payé")
     hourly, same, same_h, decided, missing = run(12.0, 0.03, 0.10)
+    detail(hourly, "réglage principal, HORAIRE (référence du 21/10)")
     detail(same, "réglage principal, PAYÉ mêmes décisions")
     detail(decided, "réglage principal, PAYÉ décision au prix payé")
     print("\nparts du premier échange (mêmes décisions) : médiane", st.median(b["parts"] for b in same))
+    print("\ntranche de prix PAYÉ 0,30-0,70 (repérée le 21/10 au prix horaire : 0,30-0,60 +39 %) et ≥ 0,70, six réglages")
+    for s in SETTINGS:
+        _, sm, _, dc, _ = run(*s)
+        resume([b for b in sm if 0.30 <= b["cout"] < 0.70], f"{s} mêmes déc. 0,30-0,70")
+        resume([b for b in dc if 0.30 <= b["cout"] < 0.70], f"{s} décidé 0,30-0,70")
+        resume([b for b in dc if b["cout"] >= 0.70], f"{s} décidé ≥ 0,70")
+    detail([b for b in decided if 0.30 <= b["cout"] < 0.70], "réglage principal, décidé au prix payé 0,30-0,70")
     json.dump({"reglages": out, "paris_payes": same, "paris_decides": decided}, open("donnees/prix_payes/tweets_resultats.json", "w"),
               default=list)

@@ -447,6 +447,10 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
             settled = settle_positions(portfolio.ledger, gamma_once, deps.now())
             portfolio.counts["settled"] = len(settled)
     _lap(report, "reglements")
+    # 3 bis. Récompenses estimées des journées terminées, créditées au SEUL capital principal
+    #        (décision d'Etienne du 17/10/2026, AMELIORATION n°7 du 21/10/2026).
+    if not main.ledger.state.bankrupt:
+        report.messages += _credit_rewards(deps, main.ledger, deps.now(), report)
     if main.ledger.state.bankrupt:
         report.status = "FAILLITE"
         return
@@ -619,6 +623,47 @@ def _steady_shares(deps: CycleDeps, shares: dict[str, float]) -> dict[str, float
     deps.db.set_value("repartition_principal", json.dumps({"date": now.isoformat(timespec="seconds"),
                                                            "parts": {n: round(w, 6) for n, w in shares.items()}}))
     return shares
+
+
+def _credit_rewards(deps: CycleDeps, ledger: Ledger, now: datetime, report: CycleReport) -> list[str]:
+    """Récompenses ESTIMÉES des journées terminées du portefeuille « principal » créditées à son
+    journal (écriture signée REWARD, noyau) : liquidité (journées ≥ 1 $, chaque marché plafonné à sa
+    cagnotte, liquidity_rewards.payable_days) et détention (holding_rewards.payable_days), × prudence.
+    `recompenses.verser_au_principal` ; au plus `jours_rattrapage` jours en arrière ; jamais avant
+    le début du capital actuel. Les fantômes n'en reçoivent jamais (l'audit le vérifie). Une
+    écriture refusée par le noyau (ex. plus de 5 % du capital) est signalée (message retourné),
+    jamais forcée ; le total crédité va dans `report.counts["recompenses_creditees"]`."""
+    from polymarket_agent import holding_rewards
+    from polymarket_agent import liquidity_rewards as lr
+    from polymarket_agent.ledger import DuplicateOperation, InvalidEntry
+    cfg = deps.settings.get("recompenses") or {}
+    if not cfg.get("verser_au_principal"):
+        return []
+    prudence = Decimal(str(cfg.get("prudence", 0.5)))
+    start = ledger.state.epoch_started_at
+    since = now - timedelta(days=int(cfg.get("jours_rattrapage", 3)))
+    since = max(since, start) if start else since
+    since_iso = since.replace(hour=0, minute=0, second=0, microsecond=0).isoformat(timespec="seconds")
+    found = {"liquidite": lr.payable_days(deps.db, since_iso, now.date()).get("principal", {}),
+             "detention": holding_rewards.payable_days(deps.db, "principal", since_iso, now.date())}
+    messages = []
+    for source, days in found.items():
+        for day, markets in sorted(days.items()):
+            if (start and day < start.date().isoformat()) or f"REWARD-{source}-{day}" in ledger.state.op_ids:
+                continue
+            amount = (Decimal(str(sum(m["montant"] for m in markets))) * prudence).quantize(
+                Decimal("0.000001"), rounding=ROUND_DOWN)
+            if amount <= 0:
+                continue
+            try:
+                ledger.record_reward(day=day, amount=amount, source=source, now=now, details=markets,
+                                     method=f"estimation × prudence {prudence}")
+            except (InvalidEntry, DuplicateOperation) as exc:
+                messages.append(f"récompense {source} du {day} refusée par le journal : {exc}")
+                continue
+            report.counts["recompenses_creditees"] = float(amount) + report.counts.get("recompenses_creditees", 0)
+            log.info("RÉCOMPENSE %s du %s créditée au principal : %s", source, day, amount)
+    return messages
 
 
 def _ranking_rewards(deps: CycleDeps, competitors: dict) -> tuple[dict[str, float], dict[str, int]]:

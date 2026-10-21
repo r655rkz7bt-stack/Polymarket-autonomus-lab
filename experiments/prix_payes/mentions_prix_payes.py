@@ -107,11 +107,15 @@ if __name__ == "__main__":
                   f"{st.median(b['cout'] - b['horaire'] for b in same):+.3f}")
         out[str(s)] = {"horaire": len(hourly), "sans_echange": missing, "paye": v}
     print("\nsensibilité (réglage principal 0,05 / 2 / 3 / 2 h / 0,30)")
-    for win, extra in ((1, 0), (24, 0), (6, 0.01)):
-        _, same, _, decided, missing, _ = run(0.05, 2, 3, 2, 0.30, win, extra)
+    for win, extra in ((1, 0), (2, 0), (24, 0), (6, 0.01)):
+        _, same, same_h, decided, missing, _ = run(0.05, 2, 3, 2, 0.30, win, extra)
+        resume(same_h, f"fenêtre {win} h : horaire des décisions appariées")
         resume(same, f"fenêtre {win} h, +{extra} : mêmes décisions ({missing} sans échange)")
         resume(decided, f"fenêtre {win} h, +{extra} : décision au prix payé")
     hourly, same, same_h, decided, missing, lags = run(0.05, 2, 3, 2, 0.30)
+    print("\ndétail du réglage principal, HORAIRE (référence du 20/10)")
+    v = resume(hourly, "tous")
+    print("  par mois", v["mois"])
     print("\ndétail du réglage principal, PAYÉ mêmes décisions")
     v = resume(same, "tous")
     print("  par mois", v["mois"])

@@ -62,6 +62,20 @@ def totals(db, since_iso: str) -> dict[str, float]:
         (since_iso,))}
 
 
+def payable_days(db, portfolio: str, since_iso: str, before) -> dict[str, list[dict]]:
+    """{jour: [{market_id, montant}]} des journées TERMINÉES (avant `before`, une date) d'un portefeuille
+    (versement au capital principal, AMELIORATION n°7 du 21/10/2026)."""
+    db.conn.executescript(SCHEMA)
+    out: dict[str, list[dict]] = {}
+    for day, market, amount in db.conn.execute(
+            "SELECT substr(estime_at, 1, 10), market_id, SUM(montant) FROM recompenses_detention "
+            "WHERE portefeuille = ? AND estime_at >= ? AND substr(estime_at, 1, 10) < ? GROUP BY 1, 2 ORDER BY 1, 2",
+            (portfolio, since_iso, before.isoformat())):
+        if amount and amount > 0:
+            out.setdefault(day, []).append({"market_id": market, "montant": round(float(amount), 6)})
+    return out
+
+
 def ranking_bonus(db, starts: dict[str, datetime | None], prudence: float) -> dict[str, float]:
     """{nom de l'arène: récompense de détention estimée × prudence}, depuis le début de l'époque de
     chaque fantôme (base : « fantome:<nom> »). Jamais ajoutée à un capital."""

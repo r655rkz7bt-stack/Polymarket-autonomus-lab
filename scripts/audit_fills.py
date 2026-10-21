@@ -20,6 +20,9 @@ publique Gamma (/markets/{id}, le marché du jeton est celui de son achat dans l
 Anomalie si le marché n'est pas clos, si le jeton n'en fait pas partie, ou si le paiement inscrit
 diffère du prix final officiel de l'issue (1, 0 ou 0,5). Une résolution pas encore définitive
 (litige UMA, prix intermédiaires) est réessayée plus tard, puis devient une anomalie après 3 jours.
+Récompenses (21/10/2026) : une écriture REWARD dans un journal fantôme est une anomalie (seul le
+principal en reçoit) ; dans le principal, son montant ne doit pas dépasser la somme de ses
+détails, et le détail d'un marché ne doit pas dépasser sa cagnotte du jour.
 Résultat dans la branche data : audit/etat.json. Nouvelle anomalie → code de sortie 1 → le job
 échoue et GitHub envoie un e-mail à Etienne.
 
@@ -131,6 +134,28 @@ def check_settlement(entry: dict, market_id: str | None, raw: dict | None, age_s
     return "ok", f"paiement {paid} conforme à la résolution officielle"
 
 
+def check_reward(portfolio: str, entry: dict) -> tuple[str, str]:
+    """(verdict, détail) d'une récompense ; verdict ∈ ok, anomalie (aucun appel réseau)."""
+    data = entry.get("data") or {}
+    if portfolio != "principal":
+        return "anomalie", "récompense dans un journal fantôme (seul le principal en reçoit)"
+    try:
+        amount = Decimal(str(data["amount"]))
+        details = [(Decimal(str(d["montant"])), None if d.get("cagnotte") is None else Decimal(str(d["cagnotte"])))
+                   for d in data.get("details") or []]
+    except (KeyError, TypeError, InvalidOperation, ValueError):
+        return "anomalie", "récompense illisible (montant ou détails)"
+    if not details:
+        return "anomalie", f"récompense de {amount} sans détail par marché"
+    over = [m for m, pool in details if pool is not None and m > pool + Decimal("0.000001")]
+    if over:
+        return "anomalie", f"{len(over)} marché(s) au-dessus de leur cagnotte du jour"
+    total = sum((m for m, _ in details), Decimal("0"))
+    if amount > total + Decimal("0.000001"):
+        return "anomalie", f"récompense {amount} supérieure à la somme de ses détails ({total})"
+    return "ok", f"récompense {amount} ≤ détails {total}"
+
+
 def check_entry(entry: dict, prices: list[float] | None) -> tuple[str, str]:
     """(verdict, détail) ; verdict ∈ ok, anomalie, non vérifiable, réessayer."""
     data = entry.get("data") or {}
@@ -170,7 +195,7 @@ def audit(data_dir: Path, key: bytes, now: datetime, fetch=fetch_prices,
         state = {}
     state.setdefault("dernier_seq", {})
     state.setdefault("dernier_seq_reglements", {})  # curseur à part : les anciens règlements sont vérifiés aussi
-    for k in ("verifiees", "non_verifiables", "reglements_verifies"):
+    for k in ("verifiees", "non_verifiables", "reglements_verifies", "recompenses_verifiees"):
         state.setdefault(k, 0)
     state.setdefault("anomalies", [])
     new_anomalies, budget = 0, BUDGET
@@ -190,6 +215,17 @@ def audit(data_dir: Path, key: bytes, now: datetime, fetch=fetch_prices,
                 break
             entry = json.loads(line)
             if entry["seq"] <= last:
+                continue
+            if entry["type"] == "REWARD":  # sans réseau : ne consomme pas le budget
+                verdict, detail = check_reward(name, entry)
+                last = entry["seq"]
+                if verdict == "ok":
+                    state["recompenses_verifiees"] += 1
+                else:
+                    new_anomalies += 1
+                    state["anomalies"].append({"portefeuille": name, "seq": entry["seq"], "type": "REWARD",
+                                               "date": entry["ts"][:19], "detail": detail,
+                                               "op_id": entry["data"].get("op_id")})
                 continue
             if entry["type"] not in ("BUY", "SELL"):
                 last = entry["seq"]
@@ -257,6 +293,7 @@ def main() -> int:
     state, new = audit(Path(args.data), load_key_from_env(), datetime.now(timezone.utc))
     print(f"Audit : {state['verifiees']} exécutions vérifiées, {state['non_verifiables']} non vérifiables, "
           f"{state['reglements_verifies']} règlements conformes, "
+          f"{state['recompenses_verifiees']} récompenses conformes, "
           f"{len(state['anomalies'])} anomalie(s) au total, {new} nouvelle(s).")
     for a in state["anomalies"][-new:] if new else []:
         print(f"ANOMALIE {a.get('portefeuille')} n°{a.get('seq')} : {a.get('detail')}")

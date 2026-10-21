@@ -51,7 +51,7 @@ def test_repository_config_loads():
             # Filles 80/20 du 21/10/2026.
             "nf_court_soir", "nf_court_football_soir", "nf_sport_patiente_12_18h",
             "nf_sport_patiente_vainqueur", "compteur_tweets_non", "mots_prononces_nfl",
-            "mots_prononces_patiente", "compteur_tweets_non_patiente",
+            "mots_prononces_patiente", "compteur_tweets_non_patiente", "compteur_tweets_non_prix_moyen",
             "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",

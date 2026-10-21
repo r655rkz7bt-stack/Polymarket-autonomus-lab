@@ -715,3 +715,28 @@ def test_round_robin_and_once_gamma():
             once.get_market("inconnu")
     assert calls == ["m1", "inconnu"]
     assert once.list_markets() == gamma.markets  # le reste passe au vrai client
+
+
+def test_finished_day_rewards_are_credited_to_the_principal_only_once(env, paths, tmp_path):
+    """AMELIORATION n°7 (21/10/2026) : les récompenses estimées d'une journée terminée du principal
+    (liquidité ≥ 1 $, plafonnée à la cagnotte ; détention) × prudence sont créditées à son journal
+    signé, une seule fois ; jamais celles d'un fantôme ; rien pour la journée en cours."""
+    from types import SimpleNamespace
+    from polymarket_agent import holding_rewards
+    from polymarket_agent import liquidity_rewards as lr
+    make, db, clock = env
+    noon = NOW.replace(hour=12, minute=0)
+    for i, (portfolio, amount) in enumerate((("principal", 1.5), ("principal", 2.0), ("fantome:x_v1", 9.0))):
+        lr.record(db, f"c{i}", noon, portfolio, f"m{i % 2}", SimpleNamespace(share=0.1, amount=amount), Decimal("3"))
+    holding_rewards.record(db, "c9", noon, "principal", {"m5": (100.0, 0.04)})
+    clock["now"] = NOW + timedelta(days=1)
+    lr.record(db, "c10", clock["now"], "principal", "m0", SimpleNamespace(share=0.1, amount=5.0), Decimal("9"))
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book(ts=clock["now"])}), strategies=[])
+    report = run_cycle(deps)
+    main = Ledger.open(paths[0], KEY, paths[1]).state
+    # liquidité : m0 1,5 + m1 2,0 (cagnotte 3) = 3,5 × 0,5 ; détention 0,04 × 0,5.
+    assert main.rewards_by_source == {"liquidite": Decimal("1.75"), "detention": Decimal("0.02")}
+    assert main.cash == Decimal("1001.77") and report.counts["recompenses_creditees"] == pytest.approx(1.77)
+    clock["now"] += timedelta(minutes=5)
+    run_cycle(deps)
+    assert Ledger.open(paths[0], KEY, paths[1]).state.cash == Decimal("1001.77")

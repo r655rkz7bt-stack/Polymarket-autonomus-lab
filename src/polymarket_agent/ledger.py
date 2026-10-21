@@ -12,7 +12,12 @@ Chaque ligne contient :
 Le solde, les positions, les gains réalisés sont TOUJOURS recalculés depuis le
 journal. Aucune autre source de vérité. Les gains latents ne sont jamais des fonds
 disponibles : le solde disponible ne bouge qu'avec des flux réalisés (achat,
-vente, règlement).
+vente, règlement, récompense d'une journée TERMINÉE).
+
+Récompenses (décision d'Etienne du 17/10/2026, AMELIORATION n°7 du 21/10/2026) : une écriture
+REWARD crédite au solde la récompense estimée d'une journée terminée (liquidité, détention ou
+remise aux ordres posés), une seule fois par source et par jour, jamais en faillite, jamais plus
+de 5 % du capital réalisé. Seul le journal principal en reçoit (l'audit le vérifie).
 
 Faillite : dès que le solde disponible est <= 0, une écriture BANKRUPT signée est
 ajoutée et un fichier verrou signé est écrit. Ensuite plus aucune opération n'est
@@ -34,16 +39,18 @@ import hmac
 import json
 import os
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
 GENESIS_PREV = "0" * 64
 MIN_KEY_BYTES = 32
-MONEY_TYPES = ("BUY", "SELL", "SETTLE")
+MONEY_TYPES = ("BUY", "SELL", "SETTLE", "REWARD")
 ENTRY_TYPES = ("GENESIS", "BUY", "SELL", "SETTLE", "HEARTBEAT", "BANKRUPT", "RESET",
-               "MILESTONE", "PROMOTION", "ELIMINATION")
+               "MILESTONE", "PROMOTION", "ELIMINATION", "REWARD")
+REWARD_SOURCES = ("liquidite", "detention", "remise_maker")
+REWARD_MAX_SHARE = Decimal("0.05")  # plafond d'une récompense : 5 % du capital réalisé (estimation folle)
 # Cliquet (décision d'Etienne, 15/10/2026) : l'objectif suivant vaut toujours 1,5 × le
 # palier précédent (premier objectif : 1,5 × le capital initial). Il ne redescend jamais.
 RATCHET = Decimal("1.5")
@@ -190,6 +197,8 @@ class LedgerState:
     last_hash: str = GENESIS_PREV
     last_ts: datetime | None = None
     last_heartbeat_at: datetime | None = None
+    # Récompenses créditées depuis le début de l'époque, par source (écritures REWARD).
+    rewards_by_source: dict[str, Decimal] = field(default_factory=dict)
 
     def clone(self) -> "LedgerState":
         """Copie indépendante, équivalente à copy.deepcopy mais bien plus rapide.
@@ -204,6 +213,7 @@ class LedgerState:
         new.realized_by_day = dict(self.realized_by_day)
         new.milestones = [dict(m) for m in self.milestones]
         new.eliminated = set(self.eliminated)
+        new.rewards_by_source = dict(self.rewards_by_source)
         return new
 
     def realized_capital(self) -> Decimal:
@@ -230,6 +240,9 @@ class LedgerState:
         """Capital total ESTIMÉ (informatif). Jamais utilisé comme fonds disponibles."""
         return self.cash + self.position_value(marks)
 
+    def rewards_total(self) -> Decimal:
+        return sum(self.rewards_by_source.values(), ZERO)
+
     def realized_today(self, now: datetime) -> Decimal:
         return self.realized_by_day.get(now.astimezone(timezone.utc).date().isoformat(), ZERO)
 
@@ -243,6 +256,7 @@ class LedgerState:
             "gains_realises_nets": fmt(self.realized_pnl),
             "gains_latents": fmt(self.unrealized_pnl(marks)),
             "frais_payes": fmt(self.fees_paid),
+            "recompenses_recues": fmt(self.rewards_total()),
             "capital_total_estime": fmt(self.total_estimated(marks)),
             "positions_ouvertes": str(len(self.positions)),
             "faillite": "oui" if self.bankrupt else "non",
@@ -316,6 +330,7 @@ def apply_entry(state: LedgerState, entry_type: str, data: dict, ts: datetime) -
         state.epoch_started_at = ts
         state.milestones = []
         state.next_target = capital * RATCHET
+        state.rewards_by_source = {}
         return
 
     if entry_type == "MILESTONE":
@@ -353,6 +368,11 @@ def apply_entry(state: LedgerState, entry_type: str, data: dict, ts: datetime) -
     # ----- écritures monétaires
     if state.bankrupt:
         raise LedgerLocked(f"faillite : {state.bankrupt_reason}")
+
+    if entry_type == "REWARD":
+        _apply_reward(state, data, ts)
+        return
+
     _require(data, ("op_id", "token_id"), entry_type)
     op_id = str(data["op_id"])
     if not op_id:
@@ -440,6 +460,36 @@ def apply_entry(state: LedgerState, entry_type: str, data: dict, ts: datetime) -
         del state.positions[token_id]
         state.op_ids.add(op_id)
         return
+
+
+def _apply_reward(state: LedgerState, data: dict, ts: datetime) -> None:
+    """Récompense estimée d'une journée TERMINÉE, créditée au solde comme un règlement."""
+    _require(data, ("op_id", "day", "amount", "source"), "REWARD")
+    source, day_text = str(data["source"]), str(data["day"])
+    if source not in REWARD_SOURCES:
+        raise InvalidEntry(f"REWARD : source inconnue {source!r}")
+    try:
+        day = date.fromisoformat(day_text)
+    except ValueError as exc:
+        raise InvalidEntry(f"REWARD : jour invalide {day_text!r}") from exc
+    op_id = str(data["op_id"])
+    if op_id != f"REWARD-{source}-{day.isoformat()}":
+        raise InvalidEntry(f"REWARD : identifiant {op_id!r} différent de REWARD-{source}-{day.isoformat()}")
+    if op_id in state.op_ids:
+        raise DuplicateOperation(f"récompense déjà créditée : {op_id}")
+    if day >= ts.date():
+        raise InvalidEntry("REWARD : journée non terminée")
+    if state.epoch_started_at is not None and day < state.epoch_started_at.date():
+        raise InvalidEntry("REWARD : journée antérieure au capital actuel")
+    amount = to_decimal(data["amount"], "amount")
+    if amount <= 0:
+        raise InvalidEntry("REWARD : montant <= 0")
+    if amount > state.realized_capital() * REWARD_MAX_SHARE:
+        raise InvalidEntry(f"REWARD : {amount} dépasse {REWARD_MAX_SHARE:.0%} du capital réalisé")
+    state.cash += amount
+    _book_realized(state, ts, amount)
+    state.rewards_by_source[source] = state.rewards_by_source.get(source, ZERO) + amount
+    state.op_ids.add(op_id)
 
 
 # --------------------------------------------------------------------------- journal
@@ -643,6 +693,20 @@ class Ledger:
         data = {"op_id": op_id, "token_id": token_id,
                 "payout_per_share": str(to_decimal(payout_per_share)), "resolution": resolution}
         record = self._append("SETTLE", data, now)
+        self._after_money_entry(now)
+        return record
+
+    def record_reward(self, *, day: str, amount: Any, source: str, method: str = "",
+                      details: list | None = None, now: datetime | None = None) -> dict:
+        """Récompense estimée d'une journée terminée (voir _apply_reward). Journal principal seulement."""
+        self._guard_money()
+        data = {"op_id": f"REWARD-{source}-{day}", "day": str(day), "amount": str(to_decimal(amount)),
+                "source": str(source)}
+        if method:
+            data["method"] = str(method)
+        if details:
+            data["details"] = details
+        record = self._append("REWARD", data, now)
         self._after_money_entry(now)
         return record
 
