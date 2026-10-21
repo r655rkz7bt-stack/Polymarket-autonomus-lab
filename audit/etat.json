@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2199,
+  "principal": 2203,
   "fantome:calibration_patiente_v1.0.0": 1720,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1702,
@@ -18,7 +18,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1394,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1635,
+  "fantome:market_maker_serre_v1.0.0": 1637,
   "fantome:market_maker_v1.0.0": 1419,
   "fantome:favori_politique_patiente_v1.0.0": 1309,
   "fantome:favori_politique_v1.0.0": 1311,
@@ -47,7 +47,7 @@
   "fantome:nm_prix_bas_v1.0.0": 1328,
   "fantome:nm_prix_haut_v1.0.0": 1328,
   "fantome:naive_favorite_large_v1.0.0": 1225,
-  "fantome:nf_sport_patiente_v1.0.0": 1387,
+  "fantome:nf_sport_patiente_v1.0.0": 1389,
   "fantome:favori_politique_nuit_v1.0.0": 1150,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
@@ -74,9 +74,9 @@
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 467,
-  "fantome:nf_sport_patiente_soir_v1.0.0": 430,
+  "fantome:nf_sport_patiente_soir_v1.0.0": 432,
   "fantome:nf_sport_patiente_jour_v1.0.0": 431,
-  "fantome:nf_sport_patiente_tennis_v1.0.0": 502,
+  "fantome:nf_sport_patiente_tennis_v1.0.0": 504,
   "fantome:nf_tennis_prix_bas_v1.0.0": 475,
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 284,
@@ -132,7 +132,7 @@
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 4,
   "fantome:nf_tennis_vainqueur_v1.0.0": 11
  },
- "verifiees": 5709,
+ "verifiees": 5714,
  "non_verifiables": 0,
  "anomalies": [
   {
@@ -400,9 +400,9 @@
    "op_id": "settle-114456228014367036267531451925847682552055700410196785419345117816722012070387"
   }
  ],
- "derniere_execution": "2026-10-21T22:27:17+00:00",
+ "derniere_execution": "2026-10-21T22:33:13+00:00",
  "dernier_seq_reglements": {
-  "principal": 2202,
+  "principal": 2203,
   "fantome:calibration_patiente_v1.0.0": 1720,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1702,
@@ -490,7 +490,7 @@
   "fantome:decroissance_temps_v1.0.0": 291,
   "fantome:echelle_dates_v1.0.0": 261,
   "fantome:implication_politique_v1.0.0": 260,
-  "fantome:marche_neuf_v1.0.0": 348,
+  "fantome:marche_neuf_v1.0.0": 350,
   "fantome:marches_jumeaux_v1.0.0": 260,
   "fantome:outsiders_surcotes_v1.0.0": 266,
   "fantome:paire_oui_non_v1.0.0": 260,
