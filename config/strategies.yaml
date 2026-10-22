@@ -2714,3 +2714,31 @@ nf_sport_prix_haut_3_6h:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+favori_politique_quasi_certain_connu:
+  explication: "En politique, on achète le presque sûr (97,5 à 99,5 %) en croyant qu'il gagne 99,6 % du temps, comme dans l'essai de la mère : celle-ci ne pouvait pas acheter au-dessus de 0,985."
+  # Fille d'enquête (22/10/2026, chercheur). Constat : le 22/10, 23 des 27 marchés « 1re place dans l'État » du 2e tour brésilien étaient à 0,98-0,995 pour le vainqueur
+  # du 1er tour ; dans 22 d'entre eux la marge du 1er tour (TSE) est à 4 écarts-types ou plus d'un renversement (experiments/bresil_etats.md). La mère plafonne son estimation à 0,99
+  # (borne basse 0,987) : au prix 0,99 elle ne montre jamais d'avantage, d'où ses 0 achat en 6 jours. Ici `q_max` 0,996 = les 99,6 % gagnés de son propre test (favori.md §3).
+  # Une seule perte coûte ~100 gains : à confirmer en direct (fantôme), jamais au capital principal sans preuve.
+  mere: favori_politique_quasi_certain
+  morceau: "politique, 0,975-0,995, estimation 0,996"
+  class: naive_favorite
+  familles: [politics, sans_frais]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  params:
+    min_ask:        {value: 0.975, min: 0.50, max: 0.999}
+    max_ask:        {value: 0.995, min: 0.60, max: 0.999}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}
+    shrink:         {value: 0.7, min: 0.0, max: 0.9}
+    q_max:          {value: 0.996, min: 0.90, max: 0.999}
+    uncertainty:    {value: 0.003, min: 0.001, max: 0.10}
+    min_net_edge:   {value: 0.002, min: 0.00, max: 0.50}
+    min_hours:      {value: 1, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}

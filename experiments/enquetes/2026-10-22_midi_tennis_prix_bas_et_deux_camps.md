@@ -19,7 +19,7 @@ Script : `experiments/enquetes/scripts/charge_fantome.py` (un pari = un jeton, j
 ## Contrôles à la main (rien de nouveau, mais chiffré)
 1. **Règlements relus (famille 3)** : 16 paris tirés au hasard (graine 22) parmi 7 fantômes ; marché relu un par un sur Gamma (`/markets/<id>`, `outcomePrices`
    et `clobTokenIds`) : **16 règlements sur 16 identiques** (tennis, e-sport, football « exact score », handicap NFL, bitcoin). Types de marché vus : moneyline,
-   child_moneyline, spreads, soccer_exact_score, soccer_halftime_result ; la championne achète aussi le NON de « Exact Score » à 0,90-0,93 (voir la piste du jour).
+   child_moneyline, spreads, soccer_exact_score, soccer_halftime_result ; 
 2. **Copie du principal (famille 1)** : `nf_sport_patiente` : 50 jetons côté principal, 48 en commun avec les 58 du fantôme depuis le 19/10 ; part moyenne
    0,34 (min 0,08, max 0,94) ; `nf_tennis_prix_bas` : 5 jetons communs sur 13, part 0,08-0,17 : la mise sur l'avantage mesuré (`mise_avantage_mesure`) réduit bien
    la copie quand l'avantage mesuré est faible. Les 44 achats du principal sur `nf_sport` (18/10 16 h-21 h) sont antérieurs à la copie fidèle (PR #76) : défaut déjà
@@ -31,6 +31,17 @@ Script : `experiments/enquetes/scripts/charge_fantome.py` (un pari = un jeton, j
    Mary Stoiana achetée à 0,80 à 04 h 32 (gagnée, +20 €) puis Moyuka Uchijima à 0,82 à 05 h 46 (perdue, −120 €). Pas assez de matchs pour bloquer le camp opposé
    (même conclusion que le 21/10) ; **aucun correctif**. À refaire à 20 matchs.
 
+4. **Audit indépendant (famille 6, ce qui ne tourne plus comme prévu)** : `audit/etat.json` contient **62 anomalies**, toutes « réglé alors que le marché N n'est pas clos », apparues le 21/10
+   à 16 h 15 UTC (13 audits). Relu un par un sur Gamma : les 62 marchés sont aujourd'hui `closed`, `resolved` ; le règlement du journal tombe **17 à 225 s (médiane 78 s) après le `closedTime`**
+   officiel, jamais avant, avec **le bon paiement 62 fois sur 62**. Le cycle n'a rien réglé trop tôt (`settlement.resolution_payout` exige `closed is True`) : l'audit (`scripts/audit_fills.py`, **protégé**)
+   lit `closed` avant que Gamma l'affiche. Chaque alerte fait échouer le job d'audit (e-mail à Etienne) et noie une vraie anomalie. Correctif côté noyau : `proposals/2026-10-22_audit_reglements_trop_tot.md`
+   (réessayer pendant 30 minutes). Côté libre : contrôle `audit_anomalies` dans `enquete.py` (fausses alertes « à regarder », autres anomalies « graves ») + test `test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_finding`.
+
+5. **Par type de pari (famille 3)** : les 107 paris de la championne rangés par `sportsMarketType` (Gamma) : **89 « moneyline » = 7 434 € misés, +8 € (+0,1 %)**, 81 gagnés pour 77 attendus ;
+   18 paris annexes = +136 € (child_moneyline 5 paris +66 €, totaux 3 paris +36 €, 2 sans type +39 €, exact score NON 2 paris +21 €, totaux d'équipe +16 €, handicaps 4 paris −43 €).
+   Le gain de +145 € de la championne vient de **18 paris annexes sur 107** ; sur son vrai terrain (le vainqueur du match) elle ne rapporte rien. Même constat que la fiche du 21/10 (types annexes).
+   Les scores exacts (piste n° 1, `experiments/score_exact.md`) ne rapportent rien non plus au prix.
+
 ## Correctif
-Aucun changement de stratégie ce passage (les chiffres ci-dessus ne distinguent pas −1 % de +3 % ; la décision sur `bias` reste à Etienne, voir la fiche du matin).
+Aucun changement de stratégie de stratégie ce passage (les chiffres ci-dessus ne distinguent pas −1 % de +3 % ; la décision sur `bias` reste à Etienne, voir la fiche du matin).
 Script de chargement des journaux ajouté (`experiments/enquetes/scripts/charge_fantome.py`) pour que les enquêtes suivantes ne le réécrivent pas.

@@ -3,6 +3,27 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22 (passage chercheur, midi : 09 h 55 → 10 h 39 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-22_midi_tennis_prix_bas_et_deux_camps.md`, familles 5, 3 et 6).
+  - **Audit : 62 « anomalies » toutes fausses** (`audit/etat.json`) : « réglé alors que le marché n'est pas clos », apparues le 21/10 à 16 h 15 ; relues une à une sur Gamma, le règlement tombe 17 à 225 s après la fermeture
+    officielle (`closedTime`) avec le bon paiement 62 fois sur 62. L'audit (`scripts/audit_fills.py`, protégé) lit `closed` trop tôt ; chaque alerte fait échouer son job (e-mail à Etienne).
+    Proposition `proposals/2026-10-22_audit_reglements_trop_tot.md` (réessayer 30 minutes) ; contrôle libre `audit_anomalies` (+ test) : fausses alertes « à regarder », autres anomalies « graves ».
+  - Obligations `nf_tennis_prix_bas` / `nf_sport_patiente` : 73 gagnés pour 70,8 attendus (sans les 3 meilleurs paris −15 €) ; championne par type de pari : **89 « moneyline » = +8 € (+0,1 %)**, 18 paris annexes = +136 €
+    (le gain de +145 € ne vient pas du vainqueur du match). Règlements relus : 16 sur 16 conformes. Deux camps : 6 matchs, premier camp gagné 1 fois sur 6 (renversement en cours de match), pas de correctif.
+- **Recherche** (`experiments/score_exact.md`, piste n° 1 ; `experiments/bresil_etats.md`, piste n° 16).
+  - n° 1 `score_exact_poisson` : 9 654 matchs de football relevés, 3 471 téléchargés avec leurs échanges réels (10 400 fichiers), 2 111 utilisables, 36 501 paris aux prix des vrais échanges. Règlement relu 1 870 / 1 870.
+    Modèle de Poisson (1X2 + O/U 2,5) contre prix : log-score −0,2301 contre −0,2307 ; OUI des scores à 0,03-0,30 : −8 à −20 % ; NON à 0,70-0,97 : −0,6 % ; 4 réglages × 4 seuils ; totaux O/U et BTTS (15 921 paris) : −1 à −7 % par ligne.
+    **Écartée** (un seul découpage « retenue » sur 30 paris, perdu aux 3 autres réglages).
+  - n° 16 `etats_comme_avant` : 27 États, votes du 1er tour TSE (données ouvertes accessibles). Le favori du 2e tour est le vainqueur du 1er tour dans 26 États sur 27 ; les 4 États incertains sont retrouvés à ±0,03 par un modèle
+    de marge : **marché déjà « comme avant »**. 22 États sûrs à 0,98-0,997. **Écartée** comme écart de prix ; indice pour le quasi-certain (à confirmer le 26/10).
+- **Arène** : filles `nf_sport_18_24h_vainqueur` (de `nf_sport`), `nf_sport_prix_haut_3_6h` (de `nf_sport_prix_haut`) ; `favori_politique_quasi_certain_connu` (paramètre optionnel `q_max` de `naive_favorite`, 0,99 par défaut ; la mère
+  restait muette parce que son estimation plafonnée à 0,99 ne montre aucun avantage au-dessus de 0,985) ; `meteo_prevision_patiente` et `nf_sport_patiente_jour` (éliminées) mises à `enabled: false` ; la fille « nf_tennis 0,800-0,850 »
+  de la feuille de mission existe déjà (`nf_tennis_prix_bas_800_850`).
+- **Reste ouvert** : décision d'Etienne sur le noyau (`proposals/2026-10-22_audit_reglements_trop_tot.md`) ; `bias` de la championne (0,02 ou 0,05) toujours à trancher ; résultat des 22 États sûrs le 25/10 (relancer
+  `experiments/bresil_etats/releve.py` avant le 25/10 puis après) ; piste n° 15 (dépouillement en direct) : seulement la nuit du 25/10 ; totaux et handicaps de football des matchs de moins de 3 000 $ de volume non téléchargés ;
+  piste n° 2 (`toucher_avant_fin`) : non commencée (les relevés Gamma ne montrent que peu d'événements « touche » réglés ; à vérifier) ; principal : 88 % en caisse (713 € de 795 €) par la mise sur l'avantage mesuré, pertes venues de `nf_court` (−145 €) et `meteo_prevision` (−58 €) d'avant la copie fidèle.
+
 ## 2026-10-22 (passage chercheur, nuit : 04 h 55 → 05 h 51 UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-22_championne_biais_et_mises.md`, `..._muettes_budget_cotes.md`, et la 3e ligne du README ; familles 5 puis 2, 6 et 3).

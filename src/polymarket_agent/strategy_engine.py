@@ -91,6 +91,8 @@ class NaiveFavorite:
     #   underdog = 1 : acheter l'OUTSIDER (l'issue la moins chère) au lieu du favori ;
     #   shrink : estimation = milieu + shrink × (1 − milieu) au lieu de milieu + bias (le favori
     #   perd « shrink » fois moins souvent que son prix ne l'annonce) ;
+    #   q_max (22/10/2026) : plafond de l'estimation (0,99 par défaut). Avec 0,99, un favori vendu 0,985 ou plus
+    #   ne peut jamais montrer d'avantage (borne basse 0,987) : `favori_politique_quasi_certain` restait muette ;
     #   holding_only = 1 (19/10/2026) : seulement les marchés à récompense de détention (Gamma
     #   holdingRewardsEnabled) ; leur avantage compte alors `holding_rate` × années jusqu'à la fin
     #   (au plus `holding_years_max`), puisque Polymarket verse ce taux sur la valeur détenue.
@@ -158,12 +160,13 @@ class NaiveFavorite:
             if not self._window_ok(market, book.fetched_at):
                 out.abstain("hors de la fenêtre de temps")
                 continue
+            q_cap = p.get("q_max", Decimal("0.99"))  # 22/10/2026 : plafond de l'estimation, 0,99 par défaut
             if "shrink" in p:
-                q = min(book.mid + p["shrink"] * (ONE - book.mid), Decimal("0.99"))
+                q = min(book.mid + p["shrink"] * (ONE - book.mid), q_cap)
             else:
-                q = min(book.mid + p["bias"], Decimal("0.99"))
+                q = min(book.mid + p["bias"], q_cap)
             low = q - p["uncertainty"]
-            high = min(q + p["uncertainty"], Decimal("0.995"))
+            high = min(q + p["uncertainty"], max(Decimal("0.995"), q_cap))
             # Récompense de détention attendue (par part, en fraction du prix) : elle s'ajoute à
             # l'avantage et à la mise, pas aux probabilités déclarées (le contrôleur les vérifie).
             bonus = Decimal("0")

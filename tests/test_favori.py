@@ -231,3 +231,13 @@ def test_championne_family_never_posts_below_080(tmp_path):
     assert [o.max_price for o in champ.propose([ok], ob, ol.state, limits, "b").limit_orders] == [D("0.84")]
     for name in ("nf_sport_patiente_tennis", "nf_sport_patiente_72_168h"):
         assert loaded[name].filters["prix_min"] == 0.80 and isinstance(loaded[name].inner, PatientOrders)
+
+
+def test_estimate_cap_lets_a_quasi_certain_favorite_priced_0_99_show_an_edge(tmp_path):
+    """22/10 : 23 des 27 marchés « 1re place dans l'État » du 2e tour brésilien étaient à 0,98-0,995 (même vainqueur qu'au 1er tour) ;
+    `favori_politique_quasi_certain` (estimation plafonnée à 0,99, borne basse 0,987) n'achetait jamais au-dessus de 0,985."""
+    m, books, ledger, limits = _setup(tmp_path, bid="0.985", ask="0.99")
+    quasi = dict(min_ask=0.97, max_ask=0.995, uncertainty=0.003, min_net_edge=0.002, max_extra_ticks=1, shrink=0.7)
+    assert not _strategy(("politics",), **quasi).propose([m], books, ledger.state, limits, "b").proposals
+    out = _strategy(("politics",), q_max=0.996, **quasi).propose([m], books, ledger.state, limits, "b")
+    assert len(out.proposals) == 1 and out.proposals[0].prob_low == D("0.993") and out.proposals[0].est_probability == D("0.996")
