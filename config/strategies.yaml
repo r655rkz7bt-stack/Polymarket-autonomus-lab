@@ -227,7 +227,7 @@ meteo_prevision_patiente:
   # paris que tous les payer plein tarif. Mise un peu plus forte, car moins de paris exécutés.
   class: meteo_prevision
   limit_ticks: 1
-  enabled: true
+  enabled: false  # éliminée par l'arène (22/10/2026) : remplacée, voir experiments/journal_recherche.md
   version: "1.0.0"
   created_at: "2026-10-16"
   params:
@@ -1696,7 +1696,7 @@ nf_sport_patiente_jour:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], heure_utc: [0, 18], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false  # éliminée par l'arène (22/10/2026) : remplacée, voir experiments/journal_recherche.md
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2670,3 +2670,75 @@ nf_tennis_12_18h_vainqueur:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_18_24h_vainqueur:
+  explication: "Le favori de sport, seulement les paris « qui gagne le match », achetés entre 18 h et 24 h UTC."
+  # Fille 80/20 (obligation du 22/10) : heure d'achat 18-24 h UTC + type vainqueur = 17 opérations, +119, +3,8 % par mise contre la mère.
+  # Dix-sept paris, morceau choisi parmi les heures et les types regardés : une piste, pas une preuve (les variantes « vainqueur »
+  # des favoris de sport gagnent 0,0 % en général, enquête du 21/10).
+  mere: nf_sport
+  morceau: "sport, type vainqueur, heure d'achat 18-24 h UTC"
+  class: naive_favorite
+  filtres: {familles: [sports], heure_utc: [18, 24], types_pari: [vainqueur]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_prix_haut_3_6h:
+  explication: "Le favori de sport vendu 0,875 à 0,95, seulement quand la fin annoncée du marché est dans 3 à 6 heures."
+  # Fille 80/20 (obligation du 22/10) : délai jusqu'à la fin 3-6 h = 15 opérations, +114, +1,7 % par mise contre la mère.
+  # Quinze paris : une piste, pas une preuve. Attention : la fin annoncée d'un match est souvent une date de remplissage (enquête du 20/10) ;
+  # ce filtre ne retient que les marchés dont la date de fin est réellement proche.
+  mere: nf_sport_prix_haut
+  morceau: "sport, prix 0,875-0,95, fin dans 3-6 h"
+  class: naive_favorite
+  filtres: {familles: [sports], prix_min: 0.875, prix_max: 0.95, echeance_min: 3, echeance_max: 6}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+favori_politique_quasi_certain_connu:
+  explication: "En politique, on achète le presque sûr (97,5 à 99,5 %) en croyant qu'il gagne 99,6 % du temps, comme dans l'essai de la mère : celle-ci ne pouvait pas acheter au-dessus de 0,985."
+  # Fille d'enquête (22/10/2026, chercheur). Constat : le 22/10, 23 des 27 marchés « 1re place dans l'État » du 2e tour brésilien étaient à 0,98-0,995 pour le vainqueur
+  # du 1er tour ; dans 22 d'entre eux la marge du 1er tour (TSE) est à 4 écarts-types ou plus d'un renversement (experiments/bresil_etats.md). La mère plafonne son estimation à 0,99
+  # (borne basse 0,987) : au prix 0,99 elle ne montre jamais d'avantage, d'où ses 0 achat en 6 jours. Ici `q_max` 0,996 = les 99,6 % gagnés de son propre test (favori.md §3).
+  # Une seule perte coûte ~100 gains : à confirmer en direct (fantôme), jamais au capital principal sans preuve.
+  mere: favori_politique_quasi_certain
+  morceau: "politique, 0,975-0,995, estimation 0,996"
+  class: naive_favorite
+  familles: [politics, sans_frais]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  params:
+    min_ask:        {value: 0.975, min: 0.50, max: 0.999}
+    max_ask:        {value: 0.995, min: 0.60, max: 0.999}
+    bias:           {value: 0.0, min: 0.00, max: 0.06}
+    shrink:         {value: 0.7, min: 0.0, max: 0.9}
+    q_max:          {value: 0.996, min: 0.90, max: 0.999}
+    uncertainty:    {value: 0.003, min: 0.001, max: 0.10}
+    min_net_edge:   {value: 0.002, min: 0.00, max: 0.50}
+    min_hours:      {value: 1, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}

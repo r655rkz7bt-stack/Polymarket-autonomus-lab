@@ -275,3 +275,15 @@ def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token
     # Estimation honnête (= le prix) ou trop peu de paris : rien.
     assert enquete.estimation_gonflee({"honnete_v1.0.0": _fav_ledger(90, 10, strategy="h", price=0.90, est=0.90)}) == []
     assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []
+
+
+def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_finding():
+    """22/10 : 62 anomalies « réglé alors que le marché n'est pas clos », toutes postérieures de 17 à 225 s à la fermeture officielle."""
+    early = {"portefeuille": "fantome:nf_tennis_prix_bas_v1.0.0", "seq": 9, "type": "SETTLE", "date": "2026-10-22T06:55:06",
+             "detail": "réglé à 1 alors que le marché 5966837 n'est pas clos"}
+    found = enquete.audit_anomalies({"anomalies": [early]})
+    assert [f["gravite"] for f in found] == [enquete.A_REGARDER] and "fausses alertes" in found[0]["titre"]
+    real = {"portefeuille": "principal", "seq": 3, "type": "BUY", "date": "2026-10-22T07:00:00",
+            "detail": "achat à 0.5000, plus bas prix observé 0.7000"}
+    found = enquete.audit_anomalies({"anomalies": [early, real]})
+    assert [f["gravite"] for f in found] == [enquete.GRAVE, enquete.A_REGARDER] and not enquete.audit_anomalies(None)

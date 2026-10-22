@@ -48,8 +48,12 @@ def main() -> int:
     settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8")) or {}
     active = [competitor_name(s) for s in load_strategies(ROOT / "config" / "strategies.yaml")]
     now = datetime.now(timezone.utc)
+    try:
+        audit = json.loads((Path(args.data) / "audit" / "etat.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        audit = None
     findings = enquete.run(entries, configs, active, now, float((settings.get("principal") or {}).get("max_mise", 0.10)),
-                           days=args.jours)
+                           days=args.jours, audit=audit)
     out = ROOT / "reports" / "enquete.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(enquete.render(findings, now), encoding="utf-8")
