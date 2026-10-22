@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2277,
+  "principal": 2279,
   "fantome:calibration_patiente_v1.0.0": 1730,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1715,
@@ -19,7 +19,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1405,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 1669,
-  "fantome:market_maker_v1.0.0": 1438,
+  "fantome:market_maker_v1.0.0": 1440,
   "fantome:favori_politique_patiente_v1.0.0": 1320,
   "fantome:favori_politique_v1.0.0": 1322,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1322,
@@ -76,13 +76,13 @@
   "fantome:nf_sport_patiente_non_v1.0.0": 478,
   "fantome:nf_sport_patiente_soir_v1.0.0": 444,
   "fantome:nf_sport_patiente_jour_v1.0.0": 446,
-  "fantome:nf_sport_patiente_tennis_v1.0.0": 523,
-  "fantome:nf_tennis_prix_bas_v1.0.0": 496,
+  "fantome:nf_sport_patiente_tennis_v1.0.0": 525,
+  "fantome:nf_tennis_prix_bas_v1.0.0": 498,
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 295,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 337,
   "fantome:nf_sport_patiente_matin_v1.0.0": 324,
-  "fantome:apres_echeance_v1.0.0": 533,
+  "fantome:apres_echeance_v1.0.0": 535,
   "fantome:choc_sans_nouvelle_v1.0.0": 112,
   "fantome:coherence_match_v1.0.0": 271,
   "fantome:decroissance_temps_v1.0.0": 302,
@@ -119,20 +119,20 @@
   "fantome:mots_prononces_nfl_v1.0.0": 71,
   "fantome:nf_sport_football_v1.0.0": 76,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 100,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 126,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 128,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 65,
   "fantome:mots_prononces_patiente_v1.0.0": 61,
   "fantome:cpi_tranches_v1.0.0": 35,
-  "fantome:nf_sport_patiente_tennis_850_875_v1.0.0": 62,
+  "fantome:nf_sport_patiente_tennis_850_875_v1.0.0": 64,
   "fantome:nf_sport_vainqueur_v1.0.0": 65,
-  "fantome:nf_tennis_prix_bas_800_850_v1.0.0": 58,
-  "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 75,
+  "fantome:nf_tennis_prix_bas_800_850_v1.0.0": 60,
+  "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 77,
   "fantome:statu_quo_ia_v1.0.0": 25,
   "fantome:jobs_favori_non_v1.0.0": 15,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 15,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 39
+  "fantome:nf_tennis_vainqueur_v1.0.0": 40
  },
- "verifiees": 5886,
+ "verifiees": 5888,
  "non_verifiables": 0,
  "anomalies": [
   {
@@ -448,9 +448,9 @@
    "op_id": "settle-75027262396426150544442010302784759941134902074631413553524331544548092344678"
   }
  ],
- "derniere_execution": "2026-10-22T03:57:42+00:00",
+ "derniere_execution": "2026-10-22T04:03:51+00:00",
  "dernier_seq_reglements": {
-  "principal": 2277,
+  "principal": 2279,
   "fantome:calibration_patiente_v1.0.0": 1730,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1715,
@@ -526,8 +526,8 @@
   "fantome:nf_sport_patiente_non_v1.0.0": 478,
   "fantome:nf_sport_patiente_soir_v1.0.0": 444,
   "fantome:nf_sport_patiente_jour_v1.0.0": 446,
-  "fantome:nf_sport_patiente_tennis_v1.0.0": 523,
-  "fantome:nf_tennis_prix_bas_v1.0.0": 496,
+  "fantome:nf_sport_patiente_tennis_v1.0.0": 525,
+  "fantome:nf_tennis_prix_bas_v1.0.0": 498,
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 295,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 337,
@@ -569,18 +569,18 @@
   "fantome:mots_prononces_nfl_v1.0.0": 71,
   "fantome:nf_sport_football_v1.0.0": 76,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 100,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 126,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 128,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 65,
   "fantome:mots_prononces_patiente_v1.0.0": 61,
   "fantome:cpi_tranches_v1.0.0": 35,
-  "fantome:nf_sport_patiente_tennis_850_875_v1.0.0": 62,
+  "fantome:nf_sport_patiente_tennis_850_875_v1.0.0": 64,
   "fantome:nf_sport_vainqueur_v1.0.0": 65,
-  "fantome:nf_tennis_prix_bas_800_850_v1.0.0": 58,
-  "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 75,
+  "fantome:nf_tennis_prix_bas_800_850_v1.0.0": 60,
+  "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 77,
   "fantome:statu_quo_ia_v1.0.0": 25,
   "fantome:jobs_favori_non_v1.0.0": 15,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 15,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 39
+  "fantome:nf_tennis_vainqueur_v1.0.0": 42
  },
- "reglements_verifies": 2685
+ "reglements_verifies": 2693
 }
