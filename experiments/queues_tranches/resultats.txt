@@ -1,0 +1,100 @@
+17796 marchés avec historique
+10625 cas (marché × horizon)
+
+== T-24 h : OUI gagnés / attendus par le prix
+  0.01-0.03: n=703 gagnés 7 attendus 12.2 (-0.74 pts, z -1.51)
+  0.03-0.06: n=381 gagnés 16 attendus 16.4 (-0.10 pts, z -0.10)
+  0.06-0.10: n=242 gagnés 14 attendus 18.9 (-2.01 pts, z -1.17)
+  0.10-0.18: n=325 gagnés 34 attendus 43.6 (-2.97 pts, z -1.57)
+  0.18-0.25: n=194 gagnés 39 attendus 41.1 (-1.09 pts, z -0.37)
+  0.25-0.40: n=299 gagnés 84 attendus 94.8 (-3.62 pts, z -1.35)
+  0.40-0.60: n=267 gagnés 126 attendus 131.1 (-1.92 pts, z -0.63)
+  0.60-0.99: n=567 gagnés 496 attendus 485.1 (+1.91 pts, z +1.38)
+
+== T-72 h : OUI gagnés / attendus par le prix
+  0.01-0.03: n=890 gagnés 8 attendus 16.0 (-0.90 pts, z -2.02)
+  0.03-0.06: n=484 gagnés 18 attendus 20.9 (-0.60 pts, z -0.65)
+  0.06-0.10: n=311 gagnés 16 attendus 24.3 (-2.68 pts, z -1.76)
+  0.10-0.18: n=420 gagnés 52 attendus 57.7 (-1.37 pts, z -0.82)
+  0.18-0.25: n=260 gagnés 53 attendus 55.8 (-1.07 pts, z -0.42)
+  0.25-0.40: n=480 gagnés 127 attendus 152.7 (-5.36 pts, z -2.53)
+  0.40-0.60: n=277 gagnés 108 attendus 135.7 (-10.01 pts, z -3.35)
+  0.60-0.99: n=561 gagnés 482 attendus 474.4 (+1.36 pts, z +0.95)
+
+== T-168 h : OUI gagnés / attendus par le prix
+  0.01-0.03: n=854 gagnés 4 attendus 15.6 (-1.35 pts, z -2.96)
+  0.03-0.06: n=582 gagnés 14 attendus 24.9 (-1.86 pts, z -2.23)
+  0.06-0.10: n=387 gagnés 25 attendus 29.9 (-1.27 pts, z -0.94)
+  0.10-0.18: n=596 gagnés 75 attendus 80.7 (-0.96 pts, z -0.69)
+  0.18-0.25: n=320 gagnés 62 attendus 68.0 (-1.88 pts, z -0.82)
+  0.25-0.40: n=445 gagnés 119 attendus 141.6 (-5.07 pts, z -2.31)
+  0.40-0.60: n=263 gagnés 108 attendus 126.5 (-7.04 pts, z -2.30)
+  0.60-0.99: n=502 gagnés 434 attendus 427.5 (+1.30 pts, z +0.87)
+
+== Achat du NON des petites tranches : verdict (idea_test.verdict)
+T-24h OUI 0.03-0.25 écart 0.01: 1142 paris, rend 0.0016, t évts -0.16 (566 évts), z prix 0.14, mois 2/5 -> écartée
+T-24h OUI 0.03-0.25 écart 0.02: 1142 paris, rend -0.009, t évts -1.1 (566 évts), z prix -1.07, mois 2/5 -> écartée
+T-24h OUI 0.05-0.2 écart 0.01: 725 paris, rend 0.0088, t évts 0.74 (420 évts), z prix 0.72, mois 3/5 -> écartée
+T-24h OUI 0.05-0.2 écart 0.02: 725 paris, rend -0.0018, t évts -0.08 (420 évts), z prix -0.18, mois 3/5 -> écartée
+T-24h OUI 0.1-0.25 écart 0.01: 519 paris, rend 0.0077, t évts 0.7 (345 évts), z prix 0.45, mois 4/5 -> écartée
+T-24h OUI 0.1-0.25 écart 0.02: 519 paris, rend -0.0036, t évts 0.11 (345 évts), z prix -0.19, mois 2/5 -> écartée
+T-72h OUI 0.03-0.25 écart 0.01: 1475 paris, rend -0.0006, t évts -0.25 (623 évts), z prix -0.07, mois 3/5 -> écartée
+T-72h OUI 0.03-0.25 écart 0.02: 1475 paris, rend -0.0112, t évts -1.31 (623 évts), z prix -1.44, mois 3/5 -> écartée
+T-72h OUI 0.05-0.2 écart 0.01: 951 paris, rend -0.003, t évts 0.24 (493 évts), z prix -0.26, mois 3/5 -> écartée
+T-72h OUI 0.05-0.2 écart 0.02: 951 paris, rend -0.0135, t évts -0.68 (493 évts), z prix -1.35, mois 3/5 -> écartée
+T-72h OUI 0.1-0.25 écart 0.01: 680 paris, rend -0.0041, t évts -0.22 (413 évts), z prix -0.26, mois 3/5 -> écartée
+T-72h OUI 0.1-0.25 écart 0.02: 680 paris, rend -0.0153, t évts -0.86 (413 évts), z prix -1.0, mois 2/5 -> écartée
+T-168h OUI 0.03-0.25 écart 0.01: 1885 paris, rend 0.001, t évts -0.79 (646 évts), z prix 0.12, mois 3/4 -> écartée
+T-168h OUI 0.03-0.25 écart 0.02: 1885 paris, rend -0.0096, t évts -1.91 (646 évts), z prix -1.42, mois 1/4 -> écartée
+T-168h OUI 0.05-0.2 écart 0.01: 1228 paris, rend -0.0046, t évts -0.4 (537 évts), z prix -0.52, mois 2/4 -> écartée
+T-168h OUI 0.05-0.2 écart 0.02: 1228 paris, rend -0.0151, t évts -1.35 (537 évts), z prix -1.75, mois 1/4 -> écartée
+T-168h OUI 0.1-0.25 écart 0.01: 916 paris, rend -0.0025, t évts -0.78 (450 évts), z prix -0.25, mois 2/4 -> écartée
+T-168h OUI 0.1-0.25 écart 0.02: 916 paris, rend -0.0138, t évts -1.47 (450 évts), z prix -1.12, mois 2/4 -> écartée
+18 réglages essayés
+
+== Par famille (T-72 h, OUI 0,03-0,25, écart 0,01)
+  tweets: 347 paris, rend -0.0161, t évts -0.34 (128 évts), z prix -0.8 -> écartée
+  elections: 460 paris, rend -0.0119, t évts -1.2 (235 évts), z prix -0.76 -> écartée
+  crypto: 102 paris, rend 0.0642, t évts 1.69 (44 évts), z prix 1.82 -> retenue
+  ia: 93 paris, rend 0.0411, t évts 1.53 (49 évts), z prix 1.37 -> indice
+  autres: 473 paris, rend -0.0005, t évts 0.29 (167 évts), z prix -0.11 -> écartée
+
+== Tranches moyennes : achat du NON, OUI entre 0,25 et 0,60
+T-24h OUI 0.25-0.6 écart 0.01: 566 paris, rend 0.0111, t évts -0.1 (337 évts), z prix 0.37, mois 2/4 {'2026-07': 0.5368, '2026-08': 0.0576, '2026-09': -0.004, '2026-10': -0.0186} -> écartée
+T-24h OUI 0.25-0.6 écart 0.02: 566 paris, rend -0.0052, t évts -0.64 (337 évts), z prix -0.12, mois 2/4 {'2026-07': 0.5135, '2026-08': 0.0413, '2026-09': -0.0204, '2026-10': -0.0346} -> écartée
+T-24h OUI 0.25-0.6 écart 0.03: 566 paris, rend -0.021, t évts -1.18 (337 évts), z prix -0.62, mois 2/4 {'2026-07': 0.4908, '2026-08': 0.0255, '2026-09': -0.0363, '2026-10': -0.0501} -> écartée
+T-24h OUI 0.25-0.4 écart 0.01: 299 paris, rend 0.0203, t évts 0.18 (238 évts), z prix 0.63, mois 3/4 {'2026-07': 0.334, '2026-08': 0.1478, '2026-09': 0.0055, '2026-10': -0.0852} -> écartée
+T-24h OUI 0.25-0.4 écart 0.02: 299 paris, rend 0.0063, t évts -0.17 (238 évts), z prix 0.26, mois 2/4 {'2026-07': 0.3169, '2026-08': 0.132, '2026-09': -0.0084, '2026-10': -0.0978} -> écartée
+T-24h OUI 0.25-0.4 écart 0.03: 299 paris, rend -0.0074, t évts -0.53 (238 évts), z prix -0.11, mois 2/4 {'2026-07': 0.3002, '2026-08': 0.1167, '2026-09': -0.022, '2026-10': -0.11} -> écartée
+T-24h OUI 0.4-0.6 écart 0.01: 267 paris, rend 0.0007, t évts -0.3 (198 évts), z prix -0.1, mois 2/4 {'2026-07': 0.7396, '2026-08': -0.0537, '2026-09': -0.0135, '2026-10': 0.0603} -> écartée
+T-24h OUI 0.4-0.6 écart 0.02: 267 paris, rend -0.0181, t évts -0.63 (198 évts), z prix -0.42, mois 2/4 {'2026-07': 0.7101, '2026-08': -0.0707, '2026-09': -0.0325, '2026-10': 0.0403} -> écartée
+T-24h OUI 0.4-0.6 écart 0.03: 267 paris, rend -0.0361, t évts -0.95 (198 évts), z prix -0.75, mois 2/4 {'2026-07': 0.6815, '2026-08': -0.0871, '2026-09': -0.0507, '2026-10': 0.021} -> écartée
+T-72h OUI 0.25-0.6 écart 0.01: 757 paris, rend 0.0878, t évts 1.5 (392 évts), z prix 2.89, mois 2/3 {'2026-08': 0.1443, '2026-09': 0.1127, '2026-10': -0.0108} -> indice
+T-72h OUI 0.25-0.6 écart 0.02: 757 paris, rend 0.0707, t évts 0.89 (392 évts), z prix 2.32, mois 2/3 {'2026-08': 0.1265, '2026-09': 0.0955, '2026-10': -0.027} -> indice
+T-72h OUI 0.25-0.6 écart 0.03: 757 paris, rend 0.0541, t évts 0.28 (392 évts), z prix 1.76, mois 2/3 {'2026-08': 0.1092, '2026-09': 0.0789, '2026-10': -0.0427} -> écartée
+T-72h OUI 0.25-0.4 écart 0.01: 480 paris, rend 0.0488, t évts 0.68 (318 évts), z prix 1.6, mois 2/3 {'2026-08': 0.1581, '2026-09': 0.0841, '2026-10': -0.1303} -> écartée
+T-72h OUI 0.25-0.4 écart 0.02: 480 paris, rend 0.0343, t évts 0.24 (318 évts), z prix 1.14, mois 2/3 {'2026-08': 0.142, '2026-09': 0.0692, '2026-10': -0.1425} -> écartée
+T-72h OUI 0.25-0.4 écart 0.03: 480 paris, rend 0.0202, t évts -0.2 (318 évts), z prix 0.67, mois 2/3 {'2026-08': 0.1263, '2026-09': 0.0548, '2026-10': -0.1543} -> écartée
+T-72h OUI 0.4-0.6 écart 0.01: 277 paris, rend 0.1554, t évts 1.16 (192 évts), z prix 2.59, mois 3/3 {'2026-08': 0.1223, '2026-09': 0.1706, '2026-10': 0.1727} -> indice
+T-72h OUI 0.4-0.6 écart 0.02: 277 paris, rend 0.1337, t évts 0.86 (192 évts), z prix 2.26, mois 3/3 {'2026-08': 0.1017, '2026-09': 0.1487, '2026-10': 0.1502} -> indice
+T-72h OUI 0.4-0.6 écart 0.03: 277 paris, rend 0.1129, t évts 0.55 (192 évts), z prix 1.93, mois 3/3 {'2026-08': 0.0819, '2026-09': 0.1276, '2026-10': 0.1287} -> écartée
+T-168h OUI 0.25-0.6 écart 0.01: 708 paris, rend 0.0566, t évts 0.87 (376 évts), z prix 2.16, mois 3/3 {'2026-08': 0.1099, '2026-09': 0.0305, '2026-10': 0.0226} -> indice
+T-168h OUI 0.25-0.6 écart 0.02: 708 paris, rend 0.0402, t évts 0.29 (376 évts), z prix 1.61, mois 3/3 {'2026-08': 0.0929, '2026-09': 0.0146, '2026-10': 0.0065} -> écartée
+T-168h OUI 0.25-0.6 écart 0.03: 708 paris, rend 0.0244, t évts -0.3 (376 évts), z prix 1.05, mois 1/3 {'2026-08': 0.0764, '2026-09': -0.0008, '2026-10': -0.009} -> écartée
+T-168h OUI 0.25-0.4 écart 0.01: 445 paris, rend 0.0438, t évts -0.05 (295 évts), z prix 1.46, mois 3/3 {'2026-08': 0.079, '2026-09': 0.0345, '2026-10': 0.0086} -> écartée
+T-168h OUI 0.25-0.4 écart 0.02: 445 paris, rend 0.0294, t évts -0.46 (295 évts), z prix 1.01, mois 2/3 {'2026-08': 0.064, '2026-09': 0.0201, '2026-10': -0.0053} -> écartée
+T-168h OUI 0.25-0.4 écart 0.03: 445 paris, rend 0.0153, t évts -0.88 (295 évts), z prix 0.56, mois 2/3 {'2026-08': 0.0495, '2026-09': 0.0062, '2026-10': -0.0189} -> écartée
+T-168h OUI 0.4-0.6 écart 0.01: 263 paris, rend 0.0781, t évts 1.08 (204 évts), z prix 1.62, mois 3/3 {'2026-08': 0.1674, '2026-09': 0.0242, '2026-10': 0.0451} -> indice
+T-168h OUI 0.4-0.6 écart 0.02: 263 paris, rend 0.0586, t évts 0.77 (204 évts), z prix 1.3, mois 3/3 {'2026-08': 0.1467, '2026-09': 0.0058, '2026-10': 0.0257} -> écartée
+T-168h OUI 0.4-0.6 écart 0.03: 263 paris, rend 0.0398, t évts 0.45 (204 évts), z prix 0.97, mois 2/3 {'2026-08': 0.1266, '2026-09': -0.012, '2026-10': 0.007} -> écartée
+27 réglages essayés ici
+
+== Par famille (T-72 h, OUI 0,25-0,60, écart 0,02)
+  tweets: 154 paris, rend 0.0555, t évts 1.07 (88 évts), z prix 0.8 -> indice
+  elections: 208 paris, rend -0.0406, t évts -0.83 (133 évts), z prix -0.87 -> écartée
+  crypto: 174 paris, rend 0.235, t évts 2.22 (50 évts), z prix 3.78 -> retenue
+  ia: 36 paris, rend 0.0861, t évts 0.53 (18 évts), z prix 0.51 -> écartée
+  autres: 185 paris, rend 0.0509, t évts 0.25 (103 évts), z prix 0.95 -> écartée
+
+== Somme des OUI par événement à T-72 h (exclusifs : devrait faire 1)
+  83 événements complets, médiane 1.052, moyenne 1.193, quartiles 0.990-1.123

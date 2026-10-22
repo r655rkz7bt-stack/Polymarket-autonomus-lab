@@ -263,3 +263,15 @@ def test_ghost_without_cash_is_a_lead_but_one_with_cash_is_not():
     # Un solde qui remonte dans la fenêtre (règlement) n'est pas un capital bloqué.
     entries["mere_v1.0.0"] = _ledger(*buys, *beats[:3], _beat(NOW - timedelta(hours=1), 300, 1100), born=old)
     assert enquete.capital_bloque(entries, ["mere_v1.0.0"], NOW) == []
+
+
+def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token():
+    """22/10 : 530 favoris de sport, estimation prix + 0,05 (≈ 0,92), gagnés = ce que les prix annoncent (z < −2).
+    Un jeton copié par plusieurs fantômes ne compte qu'une fois."""
+    entries = {f"mere{k}_v1.0.0": _fav_ledger(90, 10, strategy="mere", price=0.90, est=0.95) for k in range(3)}
+    found = enquete.estimation_gonflee(entries)
+    assert len(found) == 1 and found[0]["controle"] == "estimation_gonflee"
+    assert "100 paris distincts, 90 gagnés pour 95.0 annoncés" in found[0]["titre"]  # pas 300 : un seul jeton par pari
+    # Estimation honnête (= le prix) ou trop peu de paris : rien.
+    assert enquete.estimation_gonflee({"honnete_v1.0.0": _fav_ledger(90, 10, strategy="h", price=0.90, est=0.90)}) == []
+    assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []

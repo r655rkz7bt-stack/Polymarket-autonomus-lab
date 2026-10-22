@@ -33,7 +33,7 @@ def test_repository_config_loads():
         "market_maker", "market_maker_serre",
         "meteo_prevision_patiente", "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
         "nf_sport_prix_haut", "nf_sport_sans_fin",
-        "nm_demi_mise", "nf_court", "nf_court_prix_haut", "nf_sport_6_24h", "nf_sport_patiente_non", "nf_sport_patiente_6_24h", "nf_sport_patiente_soir", "nf_sport_patiente_jour", "nf_sport_patiente_72_168h", "nf_court_football", "nf_tennis_12_18h", "nf_sport_patiente_72_168h_12_18h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_moyen", "nf_oui", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
+        "nm_demi_mise", "nf_court", "nf_court_prix_haut", "nf_sport_6_24h", "nf_sport_patiente_6_24h", "nf_sport_patiente_jour", "nf_sport_patiente_72_168h", "nf_court_football", "nf_tennis_12_18h", "nf_sport_patiente_72_168h_12_18h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_moyen", "nf_oui", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
         "nm_prix_haut", "outsider_sport_patiente", "suivre_politique",
         "parking_politique", "nf_sport_patiente_tennis", "nf_tennis_prix_bas", "nf_tennis_prix_bas_vainqueur", "nf_tennis_prix_bas_800_850", "statu_quo_ia", "nf_tennis_debut_match",
         "crypto_threshold_prix_bas", "crypto_threshold_24_72h", "nf_sport_patiente_prix_850_875",
@@ -48,8 +48,8 @@ def test_repository_config_loads():
         # Achat échelonné et outsiders (20/10/2026).
         "nf_sport_patiente_sans_itf", "outsider_itf",
             # Filles 80/20 du 21/10/2026.
-            "nf_court_soir", "nf_court_football_soir", "nf_sport_patiente_12_18h",
-            "nf_sport_patiente_vainqueur", "compteur_tweets_non", "mots_prononces_nfl",
+            "nf_court_soir", "nf_court_football_soir", "nf_sport_18_24h", "nf_sport_925_950", "nf_sport_patiente_12_18h",
+            "compteur_tweets_non", "mots_prononces_nfl",
             "mots_prononces_patiente", "compteur_tweets_non_patiente",
             "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
