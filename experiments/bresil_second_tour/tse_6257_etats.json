@@ -1,0 +1,2354 @@
+{
+ "ac": {
+  "uf": "ac",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 613742,
+  "comparecimento": 488330,
+  "validos": 469066,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 302807,
+    "pct_validos": 64.555307782
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 134770,
+    "pct_validos": 28.731564428
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 13523,
+    "pct_validos": 2.882963165
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 8594,
+    "pct_validos": 1.832151552
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 7980,
+    "pct_validos": 1.701253129
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 573,
+    "pct_validos": 0.122157649
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 314,
+    "pct_validos": 0.066941539
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 215,
+    "pct_validos": 0.045835767
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 140,
+    "pct_validos": 0.029846546
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 71,
+    "pct_validos": 0.015136463
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 40,
+    "pct_validos": 0.008527585
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 39,
+    "pct_validos": 0.008314395
+   }
+  ]
+ },
+ "al": {
+  "uf": "al",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2442126,
+  "comparecimento": 1938428,
+  "validos": 1818856,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 995459,
+    "pct_validos": 54.729951134
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 735718,
+    "pct_validos": 40.449491329
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 42427,
+    "pct_validos": 2.332620064
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 26851,
+    "pct_validos": 1.476257604
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 14198,
+    "pct_validos": 0.780600553
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1345,
+    "pct_validos": 0.07394758
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1168,
+    "pct_validos": 0.064216189
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 636,
+    "pct_validos": 0.034967034
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 431,
+    "pct_validos": 0.023696213
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 267,
+    "pct_validos": 0.014679557
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 246,
+    "pct_validos": 0.013524985
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 110,
+    "pct_validos": 0.006047757
+   }
+  ]
+ },
+ "am": {
+  "uf": "am",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2798611,
+  "comparecimento": 2234549,
+  "validos": 2170763,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 1046996,
+    "pct_validos": 48.231704705
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 976764,
+    "pct_validos": 44.996344603
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 77531,
+    "pct_validos": 3.571601322
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 35411,
+    "pct_validos": 1.631269742
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 28310,
+    "pct_validos": 1.304149739
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1867,
+    "pct_validos": 0.086006625
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1781,
+    "pct_validos": 0.082044885
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 929,
+    "pct_validos": 0.042796012
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 457,
+    "pct_validos": 0.021052506
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 291,
+    "pct_validos": 0.013405425
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 265,
+    "pct_validos": 0.012207689
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 161,
+    "pct_validos": 0.007416747
+   }
+  ]
+ },
+ "ap": {
+  "uf": "ap",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 576988,
+  "comparecimento": 476562,
+  "validos": 464858,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 212503,
+    "pct_validos": 45.713529723
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 212278,
+    "pct_validos": 45.665127845
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 19057,
+    "pct_validos": 4.09953147
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 11342,
+    "pct_validos": 2.439884868
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 8304,
+    "pct_validos": 1.786351961
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 508,
+    "pct_validos": 0.109280684
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 341,
+    "pct_validos": 0.073355734
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 229,
+    "pct_validos": 0.049262355
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 132,
+    "pct_validos": 0.028395768
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 62,
+    "pct_validos": 0.013337406
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 53,
+    "pct_validos": 0.011401331
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 49,
+    "pct_validos": 0.010540853
+   }
+  ]
+ },
+ "ba": {
+  "uf": "ba",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 11312752,
+  "comparecimento": 9053601,
+  "validos": 8560291,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 5664771,
+    "pct_validos": 66.174981668
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 2442585,
+    "pct_validos": 28.533901476
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 195451,
+    "pct_validos": 2.283228456
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 122705,
+    "pct_validos": 1.433420897
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 117518,
+    "pct_validos": 1.372827162
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 6497,
+    "pct_validos": 0.075896953
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 4649,
+    "pct_validos": 0.054308901
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 1791,
+    "pct_validos": 0.020922186
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 1676,
+    "pct_validos": 0.019578774
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 1299,
+    "pct_validos": 0.015174718
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 724,
+    "pct_validos": 0.008457656
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 625,
+    "pct_validos": 0.007301154
+   }
+  ]
+ },
+ "ce": {
+  "uf": "ce",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 6996545,
+  "comparecimento": 5910471,
+  "validos": 5617814,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 3555263,
+    "pct_validos": 63.285523515
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 1756850,
+    "pct_validos": 31.27284029
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 140524,
+    "pct_validos": 2.501400011
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 107587,
+    "pct_validos": 1.915104345
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 45604,
+    "pct_validos": 0.811774829
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 4310,
+    "pct_validos": 0.076720233
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 3352,
+    "pct_validos": 0.059667337
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 1491,
+    "pct_validos": 0.026540573
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 1071,
+    "pct_validos": 0.019064355
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 783,
+    "pct_validos": 0.013937806
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 498,
+    "pct_validos": 0.008864658
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 481,
+    "pct_validos": 0.008562049
+   }
+  ]
+ },
+ "df": {
+  "uf": "df",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2258320,
+  "comparecimento": 1831396,
+  "validos": 1772808,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 909616,
+    "pct_validos": 51.309335247
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 675627,
+    "pct_validos": 38.110556812
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 85076,
+    "pct_validos": 4.798940438
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 46714,
+    "pct_validos": 2.635028723
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 45979,
+    "pct_validos": 2.593569072
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 4915,
+    "pct_validos": 0.277243785
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 2297,
+    "pct_validos": 0.129568459
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 828,
+    "pct_validos": 0.046705565
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 716,
+    "pct_validos": 0.040387904
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 382,
+    "pct_validos": 0.021547737
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 334,
+    "pct_validos": 0.018840168
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 324,
+    "pct_validos": 0.018276091
+   }
+  ]
+ },
+ "es": {
+  "uf": "es",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2991650,
+  "comparecimento": 2352282,
+  "validos": 2251078,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 1233194,
+    "pct_validos": 54.782375377
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 850028,
+    "pct_validos": 37.760930541
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 65121,
+    "pct_validos": 2.892880655
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 53236,
+    "pct_validos": 2.364911389
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 39097,
+    "pct_validos": 1.736812318
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 5873,
+    "pct_validos": 0.260897223
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1973,
+    "pct_validos": 0.087646896
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 974,
+    "pct_validos": 0.043268159
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 638,
+    "pct_validos": 0.028341977
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 388,
+    "pct_validos": 0.017236186
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 311,
+    "pct_validos": 0.013815603
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 245,
+    "pct_validos": 0.010883674
+   }
+  ]
+ },
+ "go": {
+  "uf": "go",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 5080590,
+  "comparecimento": 3971587,
+  "validos": 3827823,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 2051888,
+    "pct_validos": 53.604568445
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 1188880,
+    "pct_validos": 31.058907374
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 472041,
+    "pct_validos": 12.331839795
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 54105,
+    "pct_validos": 1.41346661
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 53849,
+    "pct_validos": 1.406778736
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 2672,
+    "pct_validos": 0.069804691
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 2087,
+    "pct_validos": 0.054521852
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 668,
+    "pct_validos": 0.017451173
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 559,
+    "pct_validos": 0.014603601
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 468,
+    "pct_validos": 0.012226271
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 346,
+    "pct_validos": 0.00903908
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 260,
+    "pct_validos": 0.006792373
+   }
+  ]
+ },
+ "ma": {
+  "uf": "ma",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 5183115,
+  "comparecimento": 4160343,
+  "validos": 4010439,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 2566301,
+    "pct_validos": 63.990525725
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 1239040,
+    "pct_validos": 30.895370806
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 84830,
+    "pct_validos": 2.115229779
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 60387,
+    "pct_validos": 1.505745381
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 50155,
+    "pct_validos": 1.250611217
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 4584,
+    "pct_validos": 0.114301701
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1795,
+    "pct_validos": 0.044758192
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 1459,
+    "pct_validos": 0.036380057
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 895,
+    "pct_validos": 0.022316759
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 475,
+    "pct_validos": 0.01184409
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 307,
+    "pct_validos": 0.007655022
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 211,
+    "pct_validos": 0.005261269
+   }
+  ]
+ },
+ "mg": {
+  "uf": "mg",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 16372372,
+  "comparecimento": 12637274,
+  "validos": 11976235,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 5777548,
+    "pct_validos": 48.241772143
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 5188936,
+    "pct_validos": 43.326938725
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 409737,
+    "pct_validos": 3.421250502
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 247209,
+    "pct_validos": 2.064162903
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 230423,
+    "pct_validos": 1.924001992
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 98407,
+    "pct_validos": 0.821685613
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 11026,
+    "pct_validos": 0.092065662
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 4085,
+    "pct_validos": 0.034109217
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 3411,
+    "pct_validos": 0.028481405
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 2300,
+    "pct_validos": 0.0192047
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 1732,
+    "pct_validos": 0.014461974
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 1421,
+    "pct_validos": 0.011865165
+   }
+  ]
+ },
+ "ms": {
+  "uf": "ms",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2024430,
+  "comparecimento": 1541220,
+  "validos": 1490278,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 873351,
+    "pct_validos": 58.603227049
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 516855,
+    "pct_validos": 34.681784204
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 39148,
+    "pct_validos": 2.626892432
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 31847,
+    "pct_validos": 2.136983838
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 23291,
+    "pct_validos": 1.562862768
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 2792,
+    "pct_validos": 0.187347596
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1291,
+    "pct_validos": 0.086628132
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 626,
+    "pct_validos": 0.042005586
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 353,
+    "pct_validos": 0.023686856
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 332,
+    "pct_validos": 0.022277723
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 209,
+    "pct_validos": 0.014024229
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 183,
+    "pct_validos": 0.012279588
+   }
+  ]
+ },
+ "mt": {
+  "uf": "mt",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2637801,
+  "comparecimento": 2052133,
+  "validos": 1993288,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 1298581,
+    "pct_validos": 65.147685633
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 581681,
+    "pct_validos": 29.181984741
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 40019,
+    "pct_validos": 2.0076878
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 33170,
+    "pct_validos": 1.664084668
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 33079,
+    "pct_validos": 1.659519347
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 2424,
+    "pct_validos": 0.121608117
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 1869,
+    "pct_validos": 0.093764674
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1584,
+    "pct_validos": 0.07946669
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 340,
+    "pct_validos": 0.017057244
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 239,
+    "pct_validos": 0.011990239
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 172,
+    "pct_validos": 0.008628959
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 130,
+    "pct_validos": 0.006521887
+   }
+  ]
+ },
+ "pa": {
+  "uf": "pa",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 6262397,
+  "comparecimento": 5066504,
+  "validos": 4863172,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 2427237,
+    "pct_validos": 49.91057277
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 2163957,
+    "pct_validos": 44.496822239
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 125172,
+    "pct_validos": 2.573875652
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 84165,
+    "pct_validos": 1.730660565
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 51991,
+    "pct_validos": 1.069075904
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 3824,
+    "pct_validos": 0.078631807
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 3064,
+    "pct_validos": 0.063004146
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 1293,
+    "pct_validos": 0.026587585
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 1045,
+    "pct_validos": 0.021488033
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 674,
+    "pct_validos": 0.013859267
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 442,
+    "pct_validos": 0.009088718
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 308,
+    "pct_validos": 0.006333315
+   }
+  ]
+ },
+ "pb": {
+  "uf": "pb",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 3248531,
+  "comparecimento": 2683988,
+  "validos": 2513747,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 1541127,
+    "pct_validos": 61.307959791
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 831377,
+    "pct_validos": 33.073216994
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 73831,
+    "pct_validos": 2.937089532
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 42247,
+    "pct_validos": 1.680638505
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 19511,
+    "pct_validos": 0.776171985
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1988,
+    "pct_validos": 0.079085127
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1593,
+    "pct_validos": 0.063371533
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 627,
+    "pct_validos": 0.024942844
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 604,
+    "pct_validos": 0.024027876
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 347,
+    "pct_validos": 0.013804094
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 274,
+    "pct_validos": 0.010900063
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 221,
+    "pct_validos": 0.008791656
+   }
+  ]
+ },
+ "pe": {
+  "uf": "pe",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 7223450,
+  "comparecimento": 5911062,
+  "validos": 5601017,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 3553971,
+    "pct_validos": 63.452244476
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 1738043,
+    "pct_validos": 31.030846719
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 137960,
+    "pct_validos": 2.463124108
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 85865,
+    "pct_validos": 1.533025163
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 73176,
+    "pct_validos": 1.30647702
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 6060,
+    "pct_validos": 0.108194637
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 2387,
+    "pct_validos": 0.04261726
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 1114,
+    "pct_validos": 0.019889245
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 869,
+    "pct_validos": 0.01551504
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 705,
+    "pct_validos": 0.012587
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 457,
+    "pct_validos": 0.008159233
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 410,
+    "pct_validos": 0.007320099
+   }
+  ]
+ },
+ "pi": {
+  "uf": "pi",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2704758,
+  "comparecimento": 2240883,
+  "validos": 2146394,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 1523710,
+    "pct_validos": 70.989296467
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 517028,
+    "pct_validos": 24.088214932
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 47692,
+    "pct_validos": 2.221959249
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 32274,
+    "pct_validos": 1.503638195
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 21629,
+    "pct_validos": 1.007690107
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1357,
+    "pct_validos": 0.063222316
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1099,
+    "pct_validos": 0.051202156
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 504,
+    "pct_validos": 0.023481243
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 443,
+    "pct_validos": 0.020639268
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 319,
+    "pct_validos": 0.014862136
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 193,
+    "pct_validos": 0.008991825
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 146,
+    "pct_validos": 0.006802106
+   }
+  ]
+ },
+ "pr": {
+  "uf": "pr",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 8613657,
+  "comparecimento": 6841457,
+  "validos": 6585243,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 3945345,
+    "pct_validos": 59.911912134
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 2054597,
+    "pct_validos": 31.20001798
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 205095,
+    "pct_validos": 3.114463658
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 177434,
+    "pct_validos": 2.694418414
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 171294,
+    "pct_validos": 2.601179638
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 17172,
+    "pct_validos": 0.260764865
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 6731,
+    "pct_validos": 0.102213388
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 2445,
+    "pct_validos": 0.03712847
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 2056,
+    "pct_validos": 0.031221323
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 1195,
+    "pct_validos": 0.018146635
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 962,
+    "pct_validos": 0.014608421
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 917,
+    "pct_validos": 0.013925075
+   }
+  ]
+ },
+ "rj": {
+  "uf": "rj",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 12857648,
+  "comparecimento": 9859802,
+  "validos": 9369700,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 4966844,
+    "pct_validos": 53.009637448
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 3693021,
+    "pct_validos": 39.414506334
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 247397,
+    "pct_validos": 2.640394036
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 211843,
+    "pct_validos": 2.26093685
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 199844,
+    "pct_validos": 2.132875119
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 21907,
+    "pct_validos": 0.233806845
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 14186,
+    "pct_validos": 0.151402926
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 4082,
+    "pct_validos": 0.043565963
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 3999,
+    "pct_validos": 0.042680128
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 2854,
+    "pct_validos": 0.030459887
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 1930,
+    "pct_validos": 0.020598312
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 1793,
+    "pct_validos": 0.019136152
+   }
+  ]
+ },
+ "rn": {
+  "uf": "rn",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 2659825,
+  "comparecimento": 2171013,
+  "validos": 2071898,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 1237963,
+    "pct_validos": 59.750190405
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 720493,
+    "pct_validos": 34.774540059
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 57367,
+    "pct_validos": 2.768813909
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 35261,
+    "pct_validos": 1.701869494
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 16407,
+    "pct_validos": 0.791882612
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1525,
+    "pct_validos": 0.073604009
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1228,
+    "pct_validos": 0.059269327
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 572,
+    "pct_validos": 0.027607537
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 405,
+    "pct_validos": 0.019547294
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 315,
+    "pct_validos": 0.015203451
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 185,
+    "pct_validos": 0.008929011
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 177,
+    "pct_validos": 0.008542892
+   }
+  ]
+ },
+ "ro": {
+  "uf": "ro",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 1265893,
+  "comparecimento": 991080,
+  "validos": 968059,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 652988,
+    "pct_validos": 67.453326708
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 250667,
+    "pct_validos": 25.893773004
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 25280,
+    "pct_validos": 2.611411081
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 19187,
+    "pct_validos": 1.982007295
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 16929,
+    "pct_validos": 1.748757049
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1318,
+    "pct_validos": 0.136148726
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 843,
+    "pct_validos": 0.087081469
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 356,
+    "pct_validos": 0.036774618
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 174,
+    "pct_validos": 0.017974111
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 160,
+    "pct_validos": 0.016527918
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 97,
+    "pct_validos": 0.01002005
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 60,
+    "pct_validos": 0.006197969
+   }
+  ]
+ },
+ "rr": {
+  "uf": "rr",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 401521,
+  "comparecimento": 332772,
+  "validos": 325545,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 231322,
+    "pct_validos": 71.05684314
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 74420,
+    "pct_validos": 22.860126864
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 8579,
+    "pct_validos": 2.635273157
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 6623,
+    "pct_validos": 2.034434564
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 3639,
+    "pct_validos": 1.117817813
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 337,
+    "pct_validos": 0.103518715
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 280,
+    "pct_validos": 0.086009615
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 168,
+    "pct_validos": 0.051605769
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 60,
+    "pct_validos": 0.018430632
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 42,
+    "pct_validos": 0.012901442
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 41,
+    "pct_validos": 0.012594265
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 34,
+    "pct_validos": 0.010444025
+   }
+  ]
+ },
+ "rs": {
+  "uf": "rs",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 8522545,
+  "comparecimento": 6702903,
+  "validos": 6423046,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 3573783,
+    "pct_validos": 55.640003201
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 2294759,
+    "pct_validos": 35.726958829
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 195296,
+    "pct_validos": 3.040551165
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 167558,
+    "pct_validos": 2.608699984
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 158821,
+    "pct_validos": 2.47267418
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 18988,
+    "pct_validos": 0.29562298
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 6632,
+    "pct_validos": 0.103253192
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 2146,
+    "pct_validos": 0.033410939
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 2066,
+    "pct_validos": 0.032165424
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 1043,
+    "pct_validos": 0.016238402
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 1031,
+    "pct_validos": 0.016051574
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 923,
+    "pct_validos": 0.014370129
+   }
+  ]
+ },
+ "sc": {
+  "uf": "sc",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 5734651,
+  "comparecimento": 4648159,
+  "validos": 4500897,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 3000020,
+    "pct_validos": 66.653824782
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 1127168,
+    "pct_validos": 25.043185836
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 134273,
+    "pct_validos": 2.983249783
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 132795,
+    "pct_validos": 2.950411885
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 79911,
+    "pct_validos": 1.775446094
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 16718,
+    "pct_validos": 0.371437071
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 5049,
+    "pct_validos": 0.112177639
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 1503,
+    "pct_validos": 0.033393344
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 1429,
+    "pct_validos": 0.031749227
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 828,
+    "pct_validos": 0.018396333
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 643,
+    "pct_validos": 0.014286041
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 560,
+    "pct_validos": 0.012441964
+   }
+  ]
+ },
+ "se": {
+  "uf": "se",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 1740135,
+  "comparecimento": 1439082,
+  "validos": 1364196,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 856019,
+    "pct_validos": 62.748974488
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 417839,
+    "pct_validos": 30.628956543
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 38895,
+    "pct_validos": 2.851129896
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 26651,
+    "pct_validos": 1.953604907
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 21405,
+    "pct_validos": 1.569056059
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 1158,
+    "pct_validos": 0.084885163
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 991,
+    "pct_validos": 0.07264352
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 457,
+    "pct_validos": 0.033499585
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 331,
+    "pct_validos": 0.024263376
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 204,
+    "pct_validos": 0.014953863
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 138,
+    "pct_validos": 0.010115848
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 108,
+    "pct_validos": 0.007916751
+   }
+  ]
+ },
+ "sp": {
+  "uf": "sp",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 34122892,
+  "comparecimento": 26431992,
+  "validos": 24882948,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 12922023,
+    "pct_validos": 51.931238212
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 9505413,
+    "pct_validos": 38.200509843
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 892368,
+    "pct_validos": 3.586263171
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 804310,
+    "pct_validos": 3.232374235
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 579571,
+    "pct_validos": 2.329189451
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 94635,
+    "pct_validos": 0.380320692
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 42532,
+    "pct_validos": 0.1709283
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 15815,
+    "pct_validos": 0.063557582
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 10563,
+    "pct_validos": 0.042450758
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 6129,
+    "pct_validos": 0.024631326
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 5160,
+    "pct_validos": 0.020737093
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 4429,
+    "pct_validos": 0.017799338
+   }
+  ]
+ },
+ "to": {
+  "uf": "to",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 1182023,
+  "comparecimento": 965196,
+  "validos": 930447,
+  "candidatos": [
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 469321,
+    "pct_validos": 50.440379731
+   },
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 404009,
+    "pct_validos": 43.420957884
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 22434,
+    "pct_validos": 2.411099181
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 20189,
+    "pct_validos": 2.169817303
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 12983,
+    "pct_validos": 1.395350837
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 595,
+    "pct_validos": 0.063947758
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 395,
+    "pct_validos": 0.042452714
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 171,
+    "pct_validos": 0.018378263
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 117,
+    "pct_validos": 0.012574601
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 101,
+    "pct_validos": 0.010854998
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 67,
+    "pct_validos": 0.00720084
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 65,
+    "pct_validos": 0.00698589
+   }
+  ]
+ },
+ "zz": {
+  "uf": "zz",
+  "data": "05/10/2026",
+  "hora": "12:51:05",
+  "pct_secoes": 100.0,
+  "eleitores_nao_totalizados": 0,
+  "eleitorado": 916534,
+  "comparecimento": 341766,
+  "validos": 330882,
+  "candidatos": [
+   {
+    "nome": "LULA",
+    "numero": "13",
+    "votos": 157387,
+    "pct_validos": 47.565899626
+   },
+   {
+    "nome": "FLAVIO BOLSONARO",
+    "numero": "22",
+    "votos": 143900,
+    "pct_validos": 43.489824167
+   },
+   {
+    "nome": "ESCRITOR AUGUSTO CURY",
+    "numero": "70",
+    "votos": 9734,
+    "pct_validos": 2.941834249
+   },
+   {
+    "nome": "RENAN SANTOS",
+    "numero": "14",
+    "votos": 8580,
+    "pct_validos": 2.593069433
+   },
+   {
+    "nome": "RONALDO CAIADO",
+    "numero": "55",
+    "votos": 4708,
+    "pct_validos": 1.42286374
+   },
+   {
+    "nome": "ZEMA",
+    "numero": "30",
+    "votos": 3329,
+    "pct_validos": 1.006098851
+   },
+   {
+    "nome": "SAMARA",
+    "numero": "80",
+    "votos": 1053,
+    "pct_validos": 0.318240339
+   },
+   {
+    "nome": "CLARIANA BARAO",
+    "numero": "27",
+    "votos": 825,
+    "pct_validos": 0.249333599
+   },
+   {
+    "nome": "EDMILSON COSTA",
+    "numero": "21",
+    "votos": 421,
+    "pct_validos": 0.127235691
+   },
+   {
+    "nome": "HERTZ DIAS",
+    "numero": "16",
+    "votos": 373,
+    "pct_validos": 0.112729009
+   },
+   {
+    "nome": "VETERINÁRIO WILSON GRASSI",
+    "numero": "35",
+    "votos": 373,
+    "pct_validos": 0.112729009
+   },
+   {
+    "nome": "RUI COSTA PIMENTA",
+    "numero": "29",
+    "votos": 199,
+    "pct_validos": 0.060142286
+   }
+  ]
+ }
+}
