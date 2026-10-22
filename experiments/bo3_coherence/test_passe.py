@@ -99,6 +99,38 @@ for (h, fen, mode) in ((1, 2, "avant"), (1, 2, "après"), (3, 6, "avant"), (3, 6
     cands, _ = cache_cands[(h, fen, mode)]
     for edge in (0.03, 0.10):
         print(resume(paris(cands, edge), f"h={h} fen={fen}h {mode} avance>{edge} brut"))
+print("\n## Sans modèle : acheter toujours le même côté d'un type de marché lié (h = 3, fenêtre 6 h), « avant » puis « après »")
+print("| côté acheté | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |")
+print("|---|---|---|---|---|---|---|---|")
+for mode in ("avant", "après"):
+    cands, _ = cache_cands[(3, 6, mode)]
+    for k in ("manche 1", "handicap", "total"):
+        for issue in (0, 1):
+            sub = [c for c in cands if c["li"]["kind"] == k and c["issue"] == issue]
+            bets = []
+            for c in sub:
+                paid = c["cost"] + it.fee(c["cost"], c["li"]["rate"])
+                bets.append({"gain": c["win"] / paid - 1, "evenement": c["cas"]["event"], "cout": paid, "win": c["win"],
+                             "mois": jour(c["cas"]["start"])[:7]})
+            nom = {"manche 1": ["équipe / joueur A", "B"], "handicap": ["côté −1,5 (gagne sans perdre de manche en BO3)", "côté +1,5"],
+                   "total": ["plus (3 manches en BO3)", "moins"]}[k][issue]
+            print(resume(bets, f"{mode} : {k}, {nom}"))
+print("\n## Prix « avant » : âge du dernier échange (T0 − heure de l'échange) des paris du réglage h=3 fen=6h avance>0,03 brut")
+cands, _ = cache_cands[(3, 6, "avant")]
+bets_age = defaultdict(list)
+for c in cands:
+    paid = c["cost"] + it.fee(c["cost"], c["li"]["rate"])
+    if c["pm"] - paid > 0.03:
+        got = None
+        from echanges import cout_preneur as _cp
+        tok, autre = c["li"]["toks"][c["issue"]], c["li"]["toks"][1 - c["issue"]]
+        got = _cp(trades[c["cas"]["event"]], tok, autre, c["cas"]["start"] - 3 * 3600, 6 * 3600, apres=False)
+        age = (c["cas"]["start"] - 3 * 3600 - got[0]) / 3600 if got else None
+        tranche = "moins de 30 min" if age is not None and age < 0.5 else "30 min à 2 h" if age is not None and age < 2 else "2 à 6 h"
+        bets_age[tranche].append({"gain": c["win"] / paid - 1, "evenement": c["cas"]["event"], "cout": paid, "win": c["win"],
+                                  "mois": jour(c["cas"]["start"])[:7]})
+for k in ("moins de 30 min", "30 min à 2 h", "2 à 6 h"):
+    print(resume(bets_age.get(k, []), f"échange vieux de {k}"))
 if best:
     print(f"\n## Réglage choisi sur l'apprentissage : h={best['h']} fen={best['fen']}h {best['mode']} avance>{best['edge']} {'recalibré' if best['cal'] else 'brut'}")
     v = it.verdict(best["test"]) if best["test"] else None
