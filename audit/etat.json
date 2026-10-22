@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2312,
+  "principal": 2313,
   "fantome:calibration_patiente_v1.0.0": 1735,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1722,
@@ -44,7 +44,7 @@
   "fantome:nm_crypto_v1.0.0": 1309,
   "fantome:nm_hors_crypto_v1.0.0": 1345,
   "fantome:nm_long_v1.0.0": 1323,
-  "fantome:nm_prix_bas_v1.0.0": 1348,
+  "fantome:nm_prix_bas_v1.0.0": 1350,
   "fantome:nm_prix_haut_v1.0.0": 1347,
   "fantome:naive_favorite_large_v1.0.0": 1241,
   "fantome:nf_sport_patiente_v1.0.0": 1420,
@@ -134,7 +134,7 @@
   "fantome:nf_sport_18_24h_v1.0.0": 2,
   "fantome:nf_sport_925_950_v1.0.0": 6
  },
- "verifiees": 5943,
+ "verifiees": 5944,
  "non_verifiables": 0,
  "anomalies": [
   {
@@ -474,9 +474,9 @@
    "op_id": "settle-53487783687332087976686871146228626912641670154904734169541233534575345435226"
   }
  ],
- "derniere_execution": "2026-10-22T06:28:00+00:00",
+ "derniere_execution": "2026-10-22T06:32:38+00:00",
  "dernier_seq_reglements": {
-  "principal": 2312,
+  "principal": 2313,
   "fantome:calibration_patiente_v1.0.0": 1735,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1722,
@@ -500,8 +500,8 @@
   "fantome:favori_politique_v1.0.0": 1327,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1327,
   "fantome:outsider_sport_patiente_v1.0.0": 1352,
-  "fantome:contrer_crypto_patiente_v1.0.0": 1513,
-  "fantome:contrer_crypto_v1.0.0": 1458,
+  "fantome:contrer_crypto_patiente_v1.0.0": 1515,
+  "fantome:contrer_crypto_v1.0.0": 1460,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1327,
   "fantome:loterie_meteo_v1.0.0": 1399,
   "fantome:suivre_politique_v1.0.0": 1374,
@@ -576,7 +576,7 @@
   "fantome:manifold_reference_v1.0.0": 268,
   "fantome:predictit_reference_v1.0.0": 268,
   "fantome:fatigue_nhl_v1.0.0": 286,
-  "fantome:mots_nouveaux_v1.0.0": 286,
+  "fantome:mots_nouveaux_v1.0.0": 288,
   "fantome:mots_prononces_v1.0.0": 310,
   "fantome:crypto_threshold_24_72h_v1.0.0": 231,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 240,
