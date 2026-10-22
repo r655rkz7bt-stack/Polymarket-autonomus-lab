@@ -21,11 +21,12 @@ replier: [ordres-poses, journal, decisions-recentes, systeme]
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-10-17"
+  date: "2026-10-22"
   points:
-    - "naive_favorite mène l'arène (+8 %), mais 7 paris gagnés sur 8 à 0,92 est le résultat attendu d'un marché juste : chance et grosses mises (experiments/favori.md)."
-    - "Seule poche solide sur le passé : le favori en politique (+5,7 % après frais) — à suivre dans favori_politique."
-    - "Ordres posés : pour plusieurs variantes patientes, le prix part contre nous dans l'heure qui suit l'exécution (section « Ordres posés »)."
+    - "Capital principal : 787,5 € réalisés sur 1 000 de départ. Les pertes viennent d'avant la copie fidèle (nf_court −145 €, météo −58 €) ; depuis, le principal copie à environ un tiers de la mise des fantômes (enquête du 22/10)."
+    - "La championne nf_sport_patiente n'a pas d'avantage de prix prouvé : sans ses 3 meilleurs paris elle fait +2 € ; 459 favoris de sport gagnés pour 461 attendus par les prix (experiments/enquetes/2026-10-22_championne_biais_et_mises.md)."
+    - "Huit pistes écartées ou trompeuses le 22/10 (score exact, tranches, lissage, proposition UMA, NON des drames, touche/au-dessus, BO3 e-sport, résultats d'entreprises) : les marchés liquides sont déjà cohérents entre eux."
+    - "Brésil, 2e tour le 25/10 : les tranches « marge de victoire » de Flávio dépassent son prix « vainqueur » de 2,6 points (relevé experiments/marge_coherente/) ; gain sans risque d'environ 0,65 %, trop petit pour l'arène."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses

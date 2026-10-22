@@ -3,6 +3,23 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22 (passage chercheur, après-midi : 14 h 55 → 15 h 38 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-22_apres_midi_copie_et_positions.md` ; famille du jour 5, puis 1 et 6).
+  - Les 6 obligations de la feuille de mission sont les mêmes que ce matin (championne `nf_sport_patiente` / `nf_tennis_prix_bas` : déjà traitées dans les deux fiches du jour). Constat « à regarder » : un fantôme a misé 475 € (45 % de son capital) sur un seul pari (Michelsen, 0,924).
+  - **Copie du principal vérifiée jeton par jeton** : 67 jetons copiés sur 88 achats du fantôme depuis le 19/10 (21 non copiés dont 13 datent d'aujourd'hui), taille médiane **0,338** de la mise du fantôme à tous les prix ; le principal n'a pas pris les 475 € (10,6 €). Ticket minimal ~10 € : les petites convictions sont copiées à 94-111 %. Pas de défaut.
+  - **Positions non réglées** : 121 marchés clos sur Gamma ont encore une position ouverte dans les journaux, 105 chez des fantômes éteints (plus de cycle), 16 chez des actifs (UMA : les marchés de température ne passent « resolved » que 2 jours après). Aucun défaut de code.
+- **Recherche** (6 pistes de `vingt_cinq_pistes.md`, toutes avec vrais prix ou carnets) :
+  - n° 11 `non_aux_drames` (686 marchés hors sport) : **écartée** (~40 réglages, +2,8 % à T-60 j avec écart 0,01 puis +1,7 % avec 0,02, négatif aux autres horizons) → `experiments/non_aux_drames.md`.
+  - n° 2 `toucher_avant_fin` (433 couples « touche/au-dessus » BTC-ETH-SOL, 27 561 points) : **écartée** (un seul couple à plus de 2 cents d'arbitrage ; NON du « touche » t < 1) → `experiments/toucher_avant_fin.md`.
+  - n° 4 `bo3_coherence` (**2 317 matchs** LoL/CS2/Dota 2/Valorant avec leurs vrais échanges, règlement 2 290/2 291) : **écartée** (le prix du match bat le calcul tiré de la carte 1 à tous les retards, log-score 0,536-0,556 contre 0,545-0,579 ; 12 réglages ≤ +5 %) → `experiments/bo3_coherence.md`.
+  - n° 5 `tennis_sets_coherence` : **écartée par manque d'échanges** (19 échanges « Total Sets » sur 25 matchs ATP).
+  - n° 17 `battre_resultats` (**1 391 marchés** « beat quarterly earnings », taux de OUI 74,4 %) : **écartée** (marché calibré, 30 réglages, meilleur indice +2,9 % qui tombe à l'écart de 0,02) → `experiments/battre_resultats.md`.
+  - n° 3 `marge_coherente` (Brésil, relevé en direct) : **indice, non exploitable** : tranches de Flávio 0,803 contre « vainqueur » 0,777 (+0,026, ≥ 709 parts), gain sans risque ≈ 0,65 % sur 4 jambes ; sur le 1er tour le sens change d'un mois à l'autre → `experiments/marge_coherente.md`.
+  - Astuce technique : `prices-history` du CLOB refuse les fenêtres longues (400) et ne rend rien pour un marché clos avec `interval=max` : passer `startTs`/`endTs` par tranches de 15 jours.
+- **Arène** : nouvelle sœur de la championne `nf_sport_patiente_biais_faible` (biais 0,03 au lieu de 0,05, même filtre ; la mère a déjà 10 filles) : les mises ne grossissent plus comme 1/(1 − prix) ; à comparer sur la même période. Aucune stratégie issue des pistes (rien de retenu). « À la une » du tableau de bord remis à jour (il datait du 17/10).
+- **Reste ouvert** : `bias` de la championne (0,02 ou 0,05, décision d'Etienne) et verdict de la sœur à 0,03 dans 3-5 jours ; `experiments/marge_coherente/releve.py` à relancer avant le 25/10 (si l'écart de +0,026 persiste, stratégie à jambes multiples) ; pistes 15 (nuit du 25/10) et 7, 8, 12, 13 de `vingt_cinq_pistes.md` ; proposition d'audit (`proposals/2026-10-22_audit_reglements_trop_tot.md`) toujours en attente d'Etienne.
+
 ## 2026-10-22 (passage chercheur, midi : 09 h 55 → 10 h 39 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-22_midi_tennis_prix_bas_et_deux_camps.md`, familles 5, 3 et 6).
