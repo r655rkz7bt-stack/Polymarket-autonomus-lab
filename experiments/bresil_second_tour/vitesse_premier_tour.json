@@ -2057,6 +2057,326 @@
   "n_achats_<=0.99_apres_fin_depouillement": 0
  },
  {
+  "event_id": "1098373",
+  "uf": "br",
+  "vainqueur": "45-48%",
+  "market_id": "5080397",
+  "condition_id": "0x4a7d4db2ecdb3a14522d5812f5714e3cdf309dd1fe22aaa26fdb415e50931751",
+  "marge_finale_points": 1.87,
+  "part_a_compter_pour_decider": 0.986,
+  "decide_estime_min_apres_17h": 300.51666666666665,
+  "fin_depouillement_min_apres_17h": 1191.1,
+  "echanges_lus": 237,
+  "plus_ancien_echange": "2026-09-28T20:57:24+00:00",
+  "couverture_complete": true,
+  "prix_a_17h": 0.4899999884,
+  "prix_a_17h30": 0.529999998,
+  "prix_a_18h": 0.74,
+  "prix_a_19h": 0.9,
+  "prix_a_decision": 0.998812508,
+  "prix_a_fin_depouillement": 0.999,
+  "chemin_10min": [
+   {
+    "min_apres_17h": -60,
+    "achat_min": 0.4299999919,
+    "achat_max": 0.4299999919,
+    "usd": 13
+   },
+   {
+    "min_apres_17h": -40,
+    "achat_min": 0.45,
+    "achat_max": 0.4563,
+    "usd": 594
+   },
+   {
+    "min_apres_17h": -30,
+    "achat_min": 0.46,
+    "achat_max": 0.48,
+    "usd": 10
+   },
+   {
+    "min_apres_17h": -10,
+    "achat_min": 0.48,
+    "achat_max": 0.4899999884,
+    "usd": 118
+   },
+   {
+    "min_apres_17h": 10,
+    "achat_min": 0.5153153116,
+    "achat_max": 0.5153153116,
+    "usd": 11
+   },
+   {
+    "min_apres_17h": 20,
+    "achat_min": 0.529999998,
+    "achat_max": 0.529999998,
+    "usd": 50
+   },
+   {
+    "min_apres_17h": 30,
+    "achat_min": 0.5599999707,
+    "achat_max": 0.5599999707,
+    "usd": 2
+   },
+   {
+    "min_apres_17h": 40,
+    "achat_min": 0.7250811608,
+    "achat_max": 0.87,
+    "usd": 963
+   },
+   {
+    "min_apres_17h": 60,
+    "achat_min": 0.71,
+    "achat_max": 0.73,
+    "usd": 186
+   },
+   {
+    "min_apres_17h": 70,
+    "achat_min": 0.8795238095,
+    "achat_max": 0.9082393174,
+    "usd": 361
+   },
+   {
+    "min_apres_17h": 80,
+    "achat_min": 0.8595744681,
+    "achat_max": 0.9,
+    "usd": 205
+   },
+   {
+    "min_apres_17h": 90,
+    "achat_min": 0.9,
+    "achat_max": 0.9,
+    "usd": 108
+   },
+   {
+    "min_apres_17h": 100,
+    "achat_min": 0.81,
+    "achat_max": 0.91,
+    "usd": 1102
+   },
+   {
+    "min_apres_17h": 130,
+    "achat_min": 0.92,
+    "achat_max": 0.9552534679,
+    "usd": 298
+   },
+   {
+    "min_apres_17h": 140,
+    "achat_min": 0.96,
+    "achat_max": 0.97,
+    "usd": 164
+   },
+   {
+    "min_apres_17h": 160,
+    "achat_min": 0.9820825627,
+    "achat_max": 0.9820825627,
+    "usd": 59
+   },
+   {
+    "min_apres_17h": 180,
+    "achat_min": 0.9789489412,
+    "achat_max": 0.9789489412,
+    "usd": 250
+   },
+   {
+    "min_apres_17h": 200,
+    "achat_min": 0.9939999992,
+    "achat_max": 0.9939999992,
+    "usd": 2
+   },
+   {
+    "min_apres_17h": 210,
+    "achat_min": 0.992,
+    "achat_max": 0.992,
+    "usd": 63
+   },
+   {
+    "min_apres_17h": 290,
+    "achat_min": 0.998812508,
+    "achat_max": 0.998812508,
+    "usd": 698
+   }
+  ],
+  "dernier_achat_<=0.9_min_apres_17h": 108.8,
+  "usd_achats_<=0.9_apres_decision": 0,
+  "n_achats_<=0.9_apres_decision": 0,
+  "usd_achats_<=0.9_apres_decision_plus_10min": 0,
+  "n_achats_<=0.9_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.9_apres_decision_plus_15min": 0,
+  "n_achats_<=0.9_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.9_apres_fin_depouillement": 0,
+  "n_achats_<=0.9_apres_fin_depouillement": 0,
+  "dernier_achat_<=0.95_min_apres_17h": 137.9,
+  "usd_achats_<=0.95_apres_decision": 0,
+  "n_achats_<=0.95_apres_decision": 0,
+  "usd_achats_<=0.95_apres_decision_plus_10min": 0,
+  "n_achats_<=0.95_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.95_apres_decision_plus_15min": 0,
+  "n_achats_<=0.95_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.95_apres_fin_depouillement": 0,
+  "n_achats_<=0.95_apres_fin_depouillement": 0,
+  "dernier_achat_<=0.97_min_apres_17h": 145.2,
+  "usd_achats_<=0.97_apres_decision": 0,
+  "n_achats_<=0.97_apres_decision": 0,
+  "usd_achats_<=0.97_apres_decision_plus_10min": 0,
+  "n_achats_<=0.97_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.97_apres_decision_plus_15min": 0,
+  "n_achats_<=0.97_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.97_apres_fin_depouillement": 0,
+  "n_achats_<=0.97_apres_fin_depouillement": 0,
+  "dernier_achat_<=0.99_min_apres_17h": 185.5,
+  "usd_achats_<=0.99_apres_decision": 0,
+  "n_achats_<=0.99_apres_decision": 0,
+  "usd_achats_<=0.99_apres_decision_plus_10min": 0,
+  "n_achats_<=0.99_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.99_apres_decision_plus_15min": 0,
+  "n_achats_<=0.99_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.99_apres_fin_depouillement": 0,
+  "n_achats_<=0.99_apres_fin_depouillement": 0
+ },
+ {
+  "event_id": "1120128",
+  "uf": "br",
+  "vainqueur": "44-47%",
+  "market_id": "5211891",
+  "condition_id": "0x89438f85f7209f06e4ab025b8cda260d513ace94eb63379fd1efc6ff95a6ceff",
+  "marge_finale_points": 1.87,
+  "part_a_compter_pour_decider": 0.981,
+  "decide_estime_min_apres_17h": 286.73333333333335,
+  "fin_depouillement_min_apres_17h": 1191.1,
+  "echanges_lus": 149,
+  "plus_ancien_echange": "2026-10-02T20:01:59+00:00",
+  "couverture_complete": true,
+  "prix_a_17h": 0.64,
+  "prix_a_17h30": 0.64,
+  "prix_a_18h": 0.71,
+  "prix_a_19h": 0.92,
+  "prix_a_decision": 0.99,
+  "prix_a_fin_depouillement": 0.99,
+  "chemin_10min": [
+   {
+    "min_apres_17h": 40,
+    "achat_min": 0.7,
+    "achat_max": 0.71,
+    "usd": 138
+   },
+   {
+    "min_apres_17h": 60,
+    "achat_min": 0.8699999716,
+    "achat_max": 0.8799999918,
+    "usd": 49
+   },
+   {
+    "min_apres_17h": 80,
+    "achat_min": 0.87,
+    "achat_max": 0.88,
+    "usd": 120
+   },
+   {
+    "min_apres_17h": 90,
+    "achat_min": 0.87,
+    "achat_max": 0.91,
+    "usd": 508
+   },
+   {
+    "min_apres_17h": 110,
+    "achat_min": 0.91,
+    "achat_max": 0.92,
+    "usd": 276
+   },
+   {
+    "min_apres_17h": 120,
+    "achat_min": 0.92,
+    "achat_max": 0.92,
+    "usd": 28
+   },
+   {
+    "min_apres_17h": 140,
+    "achat_min": 0.93,
+    "achat_max": 0.9482710893,
+    "usd": 395
+   },
+   {
+    "min_apres_17h": 150,
+    "achat_min": 0.9699999997,
+    "achat_max": 0.9769999854,
+    "usd": 68
+   },
+   {
+    "min_apres_17h": 160,
+    "achat_min": 0.977,
+    "achat_max": 0.982,
+    "usd": 120
+   },
+   {
+    "min_apres_17h": 190,
+    "achat_min": 0.987,
+    "achat_max": 0.9889999968,
+    "usd": 56
+   },
+   {
+    "min_apres_17h": 200,
+    "achat_min": 0.9889999976,
+    "achat_max": 0.99,
+    "usd": 97
+   },
+   {
+    "min_apres_17h": 210,
+    "achat_min": 0.99,
+    "achat_max": 0.99,
+    "usd": 440
+   },
+   {
+    "min_apres_17h": 340,
+    "achat_min": 0.999,
+    "achat_max": 0.999,
+    "usd": 145
+   },
+   {
+    "min_apres_17h": 410,
+    "achat_min": 0.995,
+    "achat_max": 0.9959999509,
+    "usd": 9
+   }
+  ],
+  "dernier_achat_<=0.9_min_apres_17h": 99.1,
+  "usd_achats_<=0.9_apres_decision": 0,
+  "n_achats_<=0.9_apres_decision": 0,
+  "usd_achats_<=0.9_apres_decision_plus_10min": 0,
+  "n_achats_<=0.9_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.9_apres_decision_plus_15min": 0,
+  "n_achats_<=0.9_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.9_apres_fin_depouillement": 0,
+  "n_achats_<=0.9_apres_fin_depouillement": 0,
+  "dernier_achat_<=0.95_min_apres_17h": 147.3,
+  "usd_achats_<=0.95_apres_decision": 0,
+  "n_achats_<=0.95_apres_decision": 0,
+  "usd_achats_<=0.95_apres_decision_plus_10min": 0,
+  "n_achats_<=0.95_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.95_apres_decision_plus_15min": 0,
+  "n_achats_<=0.95_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.95_apres_fin_depouillement": 0,
+  "n_achats_<=0.95_apres_fin_depouillement": 0,
+  "dernier_achat_<=0.97_min_apres_17h": 156.7,
+  "usd_achats_<=0.97_apres_decision": 0,
+  "n_achats_<=0.97_apres_decision": 0,
+  "usd_achats_<=0.97_apres_decision_plus_10min": 0,
+  "n_achats_<=0.97_apres_decision_plus_10min": 0,
+  "usd_achats_<=0.97_apres_decision_plus_15min": 0,
+  "n_achats_<=0.97_apres_decision_plus_15min": 0,
+  "usd_achats_<=0.97_apres_fin_depouillement": 0,
+  "n_achats_<=0.97_apres_fin_depouillement": 0,
+  "dernier_achat_<=0.99_min_apres_17h": 1361.0,
+  "usd_achats_<=0.99_apres_decision": 14.8,
+  "n_achats_<=0.99_apres_decision": 1,
+  "usd_achats_<=0.99_apres_decision_plus_10min": 14.8,
+  "n_achats_<=0.99_apres_decision_plus_10min": 1,
+  "usd_achats_<=0.99_apres_decision_plus_15min": 14.8,
+  "n_achats_<=0.99_apres_decision_plus_15min": 1,
+  "usd_achats_<=0.99_apres_fin_depouillement": 14.8,
+  "n_achats_<=0.99_apres_fin_depouillement": 1
+ },
+ {
   "event_id": "205029",
   "uf": "br",
   "vainqueur": "Flávio Bolsonaro <5%",

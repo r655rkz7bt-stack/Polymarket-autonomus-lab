@@ -41,6 +41,11 @@ SLUG_UF = {"acre": "ac", "alagoas": "al", "amapa": "ap", "amazonas": "am", "bahi
            "rio-grande-do-sul": "rs", "rondonia": "ro", "roraima": "rr", "santa-catarina": "sc",
            "sao-paulo": "sp", "sergipe": "se", "tocantins": "to", "abroad": "zz"}
 THRESHOLDS = (0.90, 0.95, 0.97, 0.99)
+# Tranches de part des voix (décidées tard) : part des électeurs à compter pour que la tranche gagnante soit
+# certaine, calculée avec les chiffres finaux du TSE (votes valides 119,3 M, électeurs 158,7 M) :
+# Flávio 47,03 % dans « 45-48 % » → bornes 48 % (f ≥ 0,986) et 45 % (f ≥ 0,967) ;
+# Lula 45,16 % dans « 44-47 % » → bornes 47 % (f ≥ 0,975) et 44 % (f ≥ 0,981).
+VOTE_SHARE_F_STAR = {"1098373": 0.986, "1120128": 0.981}
 
 
 def market_trades(condition_id: str) -> list[dict]:
@@ -117,7 +122,7 @@ def winner_market(event: dict) -> dict | None:
 
 
 def analyse(event_id: str, uf: str, margin: float, valid_ratio: float, t100: datetime | None,
-            curve: list[tuple[float, float]] | None) -> dict:
+            curve: list[tuple[float, float]] | None, f_star: float | None = None) -> dict:
     event = cached_json(f"{GAMMA}/events/{event_id}", name=f"event_{event_id}")
     m = winner_market(event)
     yes = json.loads(m["clobTokenIds"])[0]
@@ -127,7 +132,8 @@ def analyse(event_id: str, uf: str, margin: float, valid_ratio: float, t100: dat
     oldest = min((x["t"] for x in trades), default=None)
     close_ts = POLLS_CLOSE.timestamp()
     # Estimation du moment « mathématiquement décidé » : f* = 1 / (1 + marge × votes valides/électeurs)
-    f_star = 1 / (1 + margin * valid_ratio) if margin > 0 else 1.0
+    if f_star is None:
+        f_star = 1 / (1 + margin * valid_ratio) if margin > 0 else 1.0
     m_dec = minutes_to_share(curve, f_star) if curve else None
     t_dec = close_ts + m_dec * 60 if m_dec is not None else None
     if t100 is not None and (t_dec is None or t_dec > t100.timestamp()):
@@ -177,7 +183,7 @@ def main() -> None:
         if "brazil-presidential-election-first-round-1st-place-in-" in slug:
             uf = SLUG_UF[slug.rsplit("-in-", 1)[1]]
         elif slug in ("brazil-presidential-election-first-round-winner",
-                      "brazil-presidential-election-first-round-margin-of-victory"):
+                      "brazil-presidential-election-first-round-margin-of-victory") or e["id"] in VOTE_SHARE_F_STAR:
             uf = "br"  # la tranche « Flávio < 5 % » se décide en même temps que le vainqueur (marge finale 1,9 point)
         else:
             continue
@@ -189,7 +195,7 @@ def main() -> None:
         valid_ratio = r["validos"] / max(1, r["eleitorado"])
         # Chronologie 2022 publiée pour le Brésil entier seulement : même courbe pour chaque État (approximation).
         curve = hist.get("br")
-        rows.append(analyse(e["id"], uf, margin, valid_ratio, t100.get(uf), curve))
+        rows.append(analyse(e["id"], uf, margin, valid_ratio, t100.get(uf), curve, VOTE_SHARE_F_STAR.get(e["id"])))
         x = rows[-1]
         print(f"{uf} {x['vainqueur'][:16]:<16} marge {x['marge_finale_points']:>6} f* {x['part_a_compter_pour_decider']:.3f} "
               f"décidé~{x['decide_estime_min_apres_17h']} fin {x['fin_depouillement_min_apres_17h']} | prix 17h {x['prix_a_17h']} "
