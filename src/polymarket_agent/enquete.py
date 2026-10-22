@@ -23,6 +23,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
     alors que son « horizon » affiché est de 165 h : c'est la date de fin placeholder de Gamma) ;
   - capital_bloque : un fantôme sans argent disponible (21/10 : la mère naive_favorite à 0,2 € dès le 16/10, ses
     filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
+  - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
+    pour 461 attendus par les prix mais 489 annoncés : le biais fixe +0,05 n'existe pas) ;
   - muettes, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -533,6 +535,40 @@ def selection_multiple(entries: dict[str, list[dict]], copied: set[str], min_tra
     return out
 
 
+def estimation_gonflee(entries: dict[str, list[dict]], min_trades: int = 100, z_max: float = -2.0) -> list[dict]:
+    """Les probabilités annoncées par les stratégies se réalisent-elles ? Un jeton = un pari (le plus ancien
+    de l'arène, sinon les fantômes copiés les uns sur les autres comptent dix fois). 22/10 : 530 favoris de
+    sport, estimation moyenne 0,92 (prix + biais fixe de 0,05), gagnés 459 pour 461 attendus par les PRIX :
+    le biais n'existe à aucun prix, et le Kelly complet mise d'autant plus que le prix est haut (écart
+    annoncé fixe : mise ∝ 1/(1 − prix))."""
+    seen: dict[str, tuple[str, float, float, bool]] = {}
+    for name, rows in entries.items():
+        if name == "principal":
+            continue
+        for t in closed_trades(rows):
+            if t.get("payout") is None or t.get("est_probability") is None or float(t["shares_bought"]) <= 0:
+                continue
+            row = (t["opened_at"], float(t["cost"]) / float(t["shares_bought"]), float(t["est_probability"]),
+                   float(t["payout"]) > 0.5)
+            if t["token_id"] not in seen or row[0] < seen[t["token_id"]][0]:
+                seen[t["token_id"]] = row
+    rows = [r for r in seen.values() if 0 < r[2] < 1]
+    if len(rows) < min_trades:
+        return []
+    won = sum(r[3] for r in rows)
+    est = sum(r[2] for r in rows)
+    by_price = sum(r[1] for r in rows)
+    var = sum(r[2] * (1 - r[2]) for r in rows)
+    z = (won - est) / math.sqrt(var) if var > 0 else 0.0
+    if z > z_max:
+        return []
+    return [_finding("estimation_gonflee", A_REGARDER,
+                     f"arène : {len(rows)} paris distincts, {won} gagnés pour {est:.1f} annoncés par les estimations "
+                     f"({by_price:.1f} par les prix payés), z = {z:+.1f}",
+                     "Les probabilités des stratégies sont trop hautes : l'avantage annoncé n'existe pas et sert de base "
+                     "à la mise (Kelly). Regarder le paramètre `bias`/`shrink` de la stratégie et la mise par tranche de prix.")]
+
+
 def deux_camps(entries: dict[str, list[dict]], since: datetime | None = None, min_price: float = 0.7) -> list[dict]:
     """Même stratégie, même marché, les deux camps achetés CHERS (prix ≥ 0,70 : un favori puis le camp opposé
     devenu favori ; les jambes à 0,50 des teneurs de marché et paires sont voulues) : le deuxième achat
@@ -591,7 +627,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
     findings = (cycle_arrete(entries, now) + copie_fidele(entries, since) + mises(entries, max_principal, since=since)
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
-                + selection_multiple(entries, copied_by_principal(entries, now))
+                + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries)
                 + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since)

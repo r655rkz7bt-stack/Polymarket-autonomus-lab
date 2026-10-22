@@ -863,7 +863,7 @@ nf_sport_patiente_non:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], issue: [non], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false  # éliminée par l'arène (feuille de mission du 22/10/2026)
   version: "1.0.0"
   created_at: "2026-10-19"
   params:
@@ -1673,7 +1673,7 @@ nf_sport_patiente_soir:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], heure_utc: [18, 24], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false  # éliminée par l'arène (feuille de mission du 22/10/2026)
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2305,7 +2305,7 @@ nf_sport_patiente_vainqueur:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], types_pari: [vainqueur], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false  # éliminée par l'arène (feuille de mission du 22/10/2026)
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2538,6 +2538,49 @@ nf_tennis_prix_bas_800_850:
     bias:           {value: 0.05, min: 0.00, max: 0.06}
     uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
     min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_18_24h:
+  explication: "Le favori de sport, mais seulement les achats faits entre 18 h et 24 h UTC."
+  # Fille 80/20 (obligation du 22/10) : heure d'achat 18-24 h UTC = 26 opérations, +139, +1,2 % par mise contre la mère.
+  # Un morceau de 26 paris, choisi parmi les heures regardées, est une piste, pas une preuve.
+  mere: nf_sport
+  morceau: "sport, heure d'achat 18-24 h UTC"
+  class: naive_favorite
+  filtres: {familles: [sports], heure_utc: [18, 24]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_925_950:
+  explication: "Le favori de sport, mais seulement quand il coûte entre 0,925 et 0,95."
+  # Fille 80/20 (obligation du 22/10) : prix payé 0,925-0,950 = 24 opérations, +120, +2,2 % par mise contre la mère.
+  # Piste, pas preuve : sur 530 favoris de sport de toute l'arène (un jeton = un pari), cette tranche gagne 0,8 point DE MOINS
+  # que son prix (enquête du 22/10) ; et chez la championne elle perd (−16 %). Le Kelly à biais fixe y mise le plus gros.
+  mere: nf_sport
+  morceau: "sport, prix payé 0,925-0,950"
+  class: naive_favorite
+  filtres: {familles: [sports], prix_min: 0.925, prix_max: 0.95}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
