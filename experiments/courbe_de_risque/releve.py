@@ -32,7 +32,7 @@ with cf.ThreadPoolExecutor(6) as ex:
             ms = e.get("markets") or []
             if len(ms) >= 4 and sum(1 for m in ms if PAT.search(m.get("question") or "")) >= 4 and float(e.get("volume") or 0) >= 5000: out[e["id"]] = e
     print("événements", len(out), flush=True)
-with open(D / "echelles.jsonl", "w") as f:
+with open(D / (sys.argv[3] if len(sys.argv) > 3 else "echelles.jsonl"), "w") as f:
     for e in out.values(): f.write(json.dumps(e) + "\n")
 http = HttpClient(min_interval=0.03)
 def un(e): it.fetch_event_trades(http, D / "echanges", str(e["id"])); return 1

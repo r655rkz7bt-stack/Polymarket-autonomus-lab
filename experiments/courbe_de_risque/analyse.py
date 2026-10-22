@@ -18,8 +18,12 @@ def categorie(t):
     return "autre"
 def load():
     out = []
-    for l in open(D / "echelles.jsonl"):
-        e = json.loads(l); p = D / "echanges" / f"echanges_{e['id']}.json.gz"
+    lignes = [l for f in sorted(D.glob("echelles*.jsonl")) for l in open(f)]
+    seen = set()
+    for l in lignes:
+        e = json.loads(l)
+        if e["id"] in seen: continue
+        seen.add(e["id"]); p = D / "echanges" / f"echanges_{e['id']}.json.gz"
         if not p.exists(): continue
         out.append((e, json.loads(gzip.decompress(p.read_bytes()))))
     return out

@@ -2785,25 +2785,3 @@ favori_politique_quasi_certain_connu:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 0.5, min: 0.0, max: 5.0}
-
-echelle_non:
-  explication: "Quand on parie « X d'ici telle date » et que l'échéance est dans 3 à 5 semaines, le OUI est trop cher (espoir) : on achète son NON."
-  # Piste n° 8 (22/10/2026, experiments/courbe_de_risque.md) : 1 062 échelles de dates réglées avec leurs vrais échanges ; NON à 30 jours de l'échéance
-  # +16 % aux prix payés (228 paris, 143 événements, confiance par événement +1,25, 8 mois sur 11), mais 0 à −4 % à 7-14 jours et +7 % à 21 jours :
-  # « indice » fragile (≈ 45 réglages regardés), donc fantôme pour confirmer en direct.
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-22"
-  params:
-    yes_min:        {value: 0.15, min: 0.0, max: 0.6}
-    yes_max:        {value: 0.85, min: 0.1, max: 0.98}
-    yes_factor:     {value: 0.85, min: 0.3, max: 1.0}    # le OUI vaut ~85 % de son prix (NON +16 % mesuré : on n'en croit que la moitié)
-    hours_min:      {value: 504, min: 0, max: 2000}
-    hours_max:      {value: 960, min: 0, max: 4000}
-    min_dates:      {value: 4, min: 2, max: 12}
-    uncertainty:    {value: 0.03, min: 0.0, max: 0.1}
-    min_net_edge:   {value: 0.005, min: 0.0, max: 0.2}
-    max_candidates: {value: 300, min: 0, max: 1000}
-    max_extra_ticks: {value: 1, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
-    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}

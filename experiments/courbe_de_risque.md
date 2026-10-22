@@ -17,7 +17,13 @@ Catégories par mots du titre (géopolitique, sorties, mots de Trump, autre ; le
 - Par tranche de prix du NON à 30 j : < 0,70 +20,1 % (z +2,7), 0,70-0,85 +6,7 %, 0,85-0,95 +6,8 %, ≥ 0,95 −5,2 %. Par mois à 30 j : 8 positifs sur 11 (juin −8 %, mai +25 %).
 - Les paris d'une même échelle sont liés (les échéances proches se ressemblent) : le z des paris est surévalué, la confiance par événement (+1,2) est la bonne mesure ; elle reste en dessous de 1,5.
 
-**Verdict : indice, fragile.** Le OUI des échelles est trop cher à 3-5 semaines de l'échéance (cohérent aux horizons 7-30 jours), mais l'avantage du NON n'est net qu'à un seul horizon et tombe
-en dessous de 1,5 de confiance par événement ; il n'existe pas à 7-14 jours. Pas de preuve → **fantôme `echelle_non`** (NON, OUI à 15-85 %, 504-960 h avant l'échéance, Kelly 0,25) pour confirmer
-sur de nouveaux paris. Pas encore testé : la courbe de risque elle-même (la date qui sort de la courbe), les lancements de jetons (échéances Gamma à revoir), un test hors échantillon (les mois
-les plus récents ne sont pas mis de côté ici : il faut les nouveaux paris du fantôme).
+## Correction le jour même : le relevé était incomplet (biais de survie)
+Le relevé par fenêtres sur la **date de fin de l'événement** (`end_date_min/max`) oublie les échelles **réglées avant leur dernière échéance** (la chose est arrivée tôt : toutes les
+échéances sont closes, mais la date de fin Gamma reste dans le futur) : 111 échelles de plus (9 %), relevées avec `end_date_min = 22/10/2026`. Ce sont justement les échelles où le OUI a gagné.
+Sans ce manque, le résultat change : NON à 30 j **+8,1 %** (392 paris, 209 événements, t événement **+0,28**, 8 mois sur 12) au lieu de +11,8 % (t +1,18) ; à prix ≤ 0,85 : +11,9 % (t +0,72) ;
+21 j +4,7 % (t −0,13) ; 7-14 j −3,7 à −6,7 % (t −1,4 à −2,0). **Les 12 réglages du verdict sont « écartée »** (`resultats_avec_futur.txt`).
+Le OUI reste perdant à tous les horizons avec les 111 échelles ajoutées : −10,1 % / −10,7 % / −12,1 % / −10,8 % à 7 / 14 / 21 / 30 jours (z −2,3 / −1,9 / −2,3 / −1,9 ; t par événement −3,2 à +0,7) ; mais le NON ne gagne pas autant (−5 à +8 %) : l'écart et les frais payés aux deux côtés mangent le reste.
+
+**Verdict : écartée.** L'« indice » de la première analyse venait d'un relevé qui avait perdu les échelles réglées tôt. Aucune stratégie dans l'arène (le fantôme `echelle_non`, écrit après la première analyse, est retiré dans la même pull request).
+**Règle pour les prochaines pistes** : relever aussi les événements clos dont la date de fin est dans le futur (`closed=true&end_date_min=<aujourd'hui>`), sinon les événements « arrivés tôt » manquent.
+Pas encore testé : la courbe de risque elle-même (la date qui sort de la courbe), les lancements de jetons (aucun dans le relevé d'origine : tous réglés avant leur date de fin).

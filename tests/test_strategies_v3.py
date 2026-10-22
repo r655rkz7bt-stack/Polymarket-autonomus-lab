@@ -12,7 +12,7 @@ from polymarket_agent.safety_controller import RiskLimits
 from polymarket_agent.sources.polymarket_gamma import parse_market
 from polymarket_agent.strategies_v3 import (ApresEcheance, ChocSansNouvelle, CoherenceMatch, DecroissanceTemps,
                                             EchelleDates, ImplicationPolitique, MarcheNeuf, MarchesJumeaux,
-                                            OutsidersSurcotes, PaireOuiNon, CpiTranches, JobsFavoriNon, EchelleNon)
+                                            OutsidersSurcotes, PaireOuiNon, CpiTranches, JobsFavoriNon)
 
 LIMITS = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 _N = [0]
@@ -202,27 +202,6 @@ def test_jobs_favori_non_buys_no_on_the_favorite_bucket_only_inside_window_and_p
     assert not late.propose(ms, books, _state(tmp_path), LIMITS, "b1").proposals  # à 30 h : hors de la fenêtre 40-72 h
     few = [m for m in ms if m.market_id in ("j0", "j2")]
     assert not s.propose(few, books, _state(tmp_path), LIMITS, "b1").proposals  # 2 tranches suivies : pas de favori fiable
-
-
-def test_echelle_non_buys_no_only_on_dated_ladders_inside_window_and_price_band(tmp_path):
-    s = _s(EchelleNon, yes_min=0.15, yes_max=0.85, yes_factor=0.85, hours_min=504, hours_max=960, min_dates=4, uncertainty=0.03,
-           min_net_edge=0.005, max_extra_ticks=1, max_proposals_per_cycle=5, kelly_fraction=0.25)
-    ev = "ladder"
-    ms = [_m(f"m{i}", question=f"Will X launch by {mois} 2026?", event_id=ev, end=NOW + timedelta(hours=h))
-          for i, (mois, h) in enumerate((("June", 700), ("July", 740), ("August", 800), ("September", 900)))]
-    ms += [_m("near", question="Will X launch by May 2026?", event_id=ev, end=NOW + timedelta(hours=100))]      # trop proche
-    ms += [_m("far", question="Will X launch by December 2026?", event_id=ev, end=NOW + timedelta(hours=3000))]  # trop loin
-    ms += [_m(f"s{i}", question=f"Will Y happen by day {i}?", event_id="small", end=NOW + timedelta(hours=700)) for i in range(2)]  # 2 échéances
-    ms += [_m("nodate", question="Who will win the cup?", event_id="other", end=NOW + timedelta(hours=700))]
-    books = {}
-    for mid, yes in (("m0", 0.40), ("m1", 0.50), ("m2", 0.10), ("m3", 0.90), ("near", 0.40), ("far", 0.40), ("s0", 0.4), ("s1", 0.4), ("nodate", 0.4)):
-        books.update(_books((f"{mid}Y", f"{yes - 0.005:.3f}", f"{yes + 0.005:.3f}"), (f"{mid}N", f"{1 - yes - 0.005:.3f}", f"{1 - yes + 0.005:.3f}")))
-    assert {m.market_id for m in s.candidates(ms)} == {"m0", "m1", "m2", "m3", "near", "far"}  # ni « nodate » ni la petite échelle
-    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
-    # m2 (OUI à 0,10) et m3 (0,90) hors de la bande 0,15-0,85 ; near/far hors fenêtre ; petite échelle ignorée
-    assert sorted((p.market_id, p.outcome) for p in out.proposals) == [("m0", "No"), ("m1", "No")]
-    assert out.abstentions["hors de la fenêtre avant l'échéance"] == 2
-    assert out.abstentions["trop peu d'échéances suivies pour une échelle de dates"] == 1
 
 
 def test_arbitrages_say_why_they_stay_silent(tmp_path):
