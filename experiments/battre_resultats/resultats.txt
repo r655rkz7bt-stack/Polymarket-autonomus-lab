@@ -1,0 +1,49 @@
+1391 marchés réglés ; taux de OUI 0.744
+--- prix du OUI à T-1 j : 1355 marchés
+       < 0,50 :  223 marchés, prix moyen 0.327, OUI réalisés 0.372
+    0,50-0,65 :  150 marchés, prix moyen 0.583, OUI réalisés 0.647
+    0,65-0,80 :  305 marchés, prix moyen 0.733, OUI réalisés 0.738
+    0,80-0,90 :  380 marchés, prix moyen 0.853, OUI réalisés 0.853
+       ≥ 0,90 :  297 marchés, prix moyen 0.928, OUI réalisés 0.949
+   OUI 0.00-0.65, écart 0.01: 373 paris, rendement +0.084, t +1.16, z prix +1.75, mois 10/14, indice
+   OUI 0.00-0.65, écart 0.02: 373 paris, rendement +0.054, t +0.79, z prix +1.33, mois 9/14, écartée
+   OUI 0.65-0.80, écart 0.01: 305 paris, rendement -0.017, t -0.50, z prix -0.23, mois 6/14, écartée
+   OUI 0.65-0.80, écart 0.02: 305 paris, rendement -0.030, t -0.89, z prix -0.64, mois 6/14, écartée
+   OUI 0.80-0.90, écart 0.01: 380 paris, rendement -0.014, t -0.66, z prix -0.62, mois 8/14, écartée
+   OUI 0.80-0.90, écart 0.02: 380 paris, rendement -0.025, t -1.20, z prix -1.22, mois 8/14, écartée
+   NON 0.90-1.00, écart 0.01: 297 paris, rendement -0.365, t -2.21, z prix -1.99, mois 4/13, écartée
+   NON 0.90-1.00, écart 0.02: 297 paris, rendement -0.441, t -3.06, z prix -2.48, mois 4/13, écartée
+   OUI 0.00-0.50, écart 0.01: 223 paris, rendement +0.086, t +0.77, z prix +1.14, mois 5/13, écartée
+   OUI 0.00-0.50, écart 0.02: 223 paris, rendement +0.048, t +0.45, z prix +0.81, mois 5/13, écartée
+--- prix du OUI à T-3 j : 1346 marchés
+       < 0,50 :  213 marchés, prix moyen 0.350, OUI réalisés 0.385
+    0,50-0,65 :  157 marchés, prix moyen 0.578, OUI réalisés 0.605
+    0,65-0,80 :  323 marchés, prix moyen 0.731, OUI réalisés 0.762
+    0,80-0,90 :  399 marchés, prix moyen 0.853, OUI réalisés 0.882
+       ≥ 0,90 :  254 marchés, prix moyen 0.928, OUI réalisés 0.909
+   OUI 0.00-0.65, écart 0.01: 370 paris, rendement +0.021, t +0.34, z prix +0.88, mois 9/13, écartée
+   OUI 0.00-0.65, écart 0.02: 370 paris, rendement -0.003, t -0.05, z prix +0.48, mois 9/13, écartée
+   OUI 0.65-0.80, écart 0.01: 323 paris, rendement +0.022, t +0.68, z prix +0.83, mois 10/14, écartée
+   OUI 0.65-0.80, écart 0.02: 323 paris, rendement +0.008, t +0.27, z prix +0.43, mois 10/14, écartée
+   OUI 0.80-0.90, écart 0.01: 399 paris, rendement +0.021, t +1.11, z prix +1.14, mois 8/14, indice
+   OUI 0.80-0.90, écart 0.02: 399 paris, rendement +0.009, t +0.50, z prix +0.58, mois 8/14, écartée
+   NON 0.90-1.00, écart 0.01: 254 paris, rendement +0.133, t +0.57, z prix +0.50, mois 8/13, écartée
+   NON 0.90-1.00, écart 0.02: 254 paris, rendement -0.001, t -0.01, z prix -0.08, mois 7/13, écartée
+   OUI 0.00-0.50, écart 0.01: 213 paris, rendement +0.017, t +0.18, z prix +0.79, mois 6/13, écartée
+   OUI 0.00-0.50, écart 0.02: 213 paris, rendement -0.011, t -0.12, z prix +0.48, mois 6/13, écartée
+--- prix du OUI à T-7 j : 1128 marchés
+       < 0,50 :  152 marchés, prix moyen 0.370, OUI réalisés 0.362
+    0,50-0,65 :  175 marchés, prix moyen 0.568, OUI réalisés 0.669
+    0,65-0,80 :  305 marchés, prix moyen 0.733, OUI réalisés 0.751
+    0,80-0,90 :  331 marchés, prix moyen 0.851, OUI réalisés 0.888
+       ≥ 0,90 :  165 marchés, prix moyen 0.928, OUI réalisés 0.903
+   OUI 0.00-0.65, écart 0.01: 327 paris, rendement +0.030, t +0.52, z prix +1.50, mois 9/13, écartée
+   OUI 0.00-0.65, écart 0.02: 327 paris, rendement +0.009, t +0.16, z prix +1.13, mois 9/13, écartée
+   OUI 0.65-0.80, écart 0.01: 305 paris, rendement +0.002, t +0.07, z prix +0.32, mois 7/13, écartée
+   OUI 0.65-0.80, écart 0.02: 305 paris, rendement -0.011, t -0.33, z prix -0.08, mois 6/13, écartée
+   OUI 0.80-0.90, écart 0.01: 331 paris, rendement +0.029, t +1.43, z prix +1.42, mois 10/13, indice
+   OUI 0.80-0.90, écart 0.02: 331 paris, rendement +0.017, t +0.86, z prix +0.92, mois 10/13, indice
+   NON 0.90-1.00, écart 0.01: 165 paris, rendement +0.211, t +0.69, z prix +0.69, mois 6/13, écartée
+   NON 0.90-1.00, écart 0.02: 165 paris, rendement +0.064, t +0.24, z prix +0.21, mois 6/13, écartée
+   OUI 0.00-0.50, écart 0.01: 152 paris, rendement -0.110, t -1.08, z prix -0.47, mois 6/13, écartée
+   OUI 0.00-0.50, écart 0.02: 152 paris, rendement -0.133, t -1.35, z prix -0.72, mois 6/13, écartée

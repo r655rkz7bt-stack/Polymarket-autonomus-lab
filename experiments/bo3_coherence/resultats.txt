@@ -1,0 +1,17 @@
+2317 matchs relevés, 2317 BO3/BO5
+retard   0 min : 1372 matchs, log-score match 0.5561 ; modèle (carte 1 → match) 0.5788 ; moyenne 0.5574 ; écart moyen |m − m*| 0.071
+   seuil 0.03: 894 paris, rendement -0.015, t -0.38, z prix +0.73, mois 1/2, écartée
+   seuil 0.05: 633 paris, rendement +0.008, t +0.15, z prix +0.67, mois 1/2, écartée
+   seuil 0.08: 393 paris, rendement +0.050, t +0.68, z prix +0.79, mois 2/2, écartée
+retard  30 min : 982 matchs, log-score match 0.5475 ; modèle (carte 1 → match) 0.5693 ; moyenne 0.5515 ; écart moyen |m − m*| 0.044
+   seuil 0.03: 459 paris, rendement -0.024, t -0.48, z prix +0.48, mois 2/3, écartée
+   seuil 0.05: 260 paris, rendement -0.033, t -0.46, z prix +0.16, mois 0/2, écartée
+   seuil 0.08: 110 paris, rendement -0.109, t -0.87, z prix -0.92, mois 1/2, écartée
+retard  60 min : 843 matchs, log-score match 0.5429 ; modèle (carte 1 → match) 0.5545 ; moyenne 0.5457 ; écart moyen |m − m*| 0.038
+   seuil 0.03: 377 paris, rendement -0.096, t -1.84, z prix -0.99, mois 0/2, écartée
+   seuil 0.05: 182 paris, rendement -0.154, t -2.10, z prix -1.22, mois 0/2, écartée
+   seuil 0.08: 76 paris, rendement -0.152, t -1.25, z prix -0.55, mois 1/2, écartée
+retard 180 min : 589 matchs, log-score match 0.5356 ; modèle (carte 1 → match) 0.5452 ; moyenne 0.5387 ; écart moyen |m − m*| 0.036
+   seuil 0.03: 268 paris, rendement -0.154, t -2.67, z prix -0.91, mois 0/2, écartée
+   seuil 0.05: 131 paris, rendement -0.176, t -1.92, z prix -0.85, mois 0/2, écartée
+   seuil 0.08: 47 paris, rendement -0.153, t -1.01, z prix +0.18, mois 0/2, écartée
