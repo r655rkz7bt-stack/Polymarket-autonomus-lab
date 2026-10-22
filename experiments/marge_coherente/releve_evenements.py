@@ -9,6 +9,8 @@ Sortie : donnees/marges.json (ignoré par Git) et un résumé à l'écran.
 """
 import json
 import re
+import time
+
 import requests
 
 H = {"User-Agent": "polymarket-autonomous-lab (etude)"}
@@ -16,14 +18,29 @@ G = "https://gamma-api.polymarket.com"
 SPORT = re.compile(r"ufc|nfl|cfb|nba|super-bowl|boxing|vs-|mnf|tnf|fight|joshua|canelo|paul|red-vs-blue")
 
 
-def search(q, closed=True, pages=6):
+def get(url, params=None):
+    """GET avec 4 nouvelles tentatives (2, 4, 8, 16 s) : le réseau coupe parfois (SSL EOF)."""
+    for essai in range(5):
+        try:
+            r = requests.get(url, headers=H, timeout=40, params=params)
+            if r.status_code == 200:
+                return r.json()
+            if r.status_code not in (429, 500, 502, 503, 504):
+                return None
+        except (requests.RequestException, ValueError):
+            pass
+        time.sleep(2 ** (essai + 1))
+    return None
+
+
+def search(q, closed=True, pages=3):
     out = {}
     for page in range(1, pages + 1):
-        r = requests.get(f"{G}/public-search", headers=H, timeout=40, params={
-            "q": q, "events_status": "closed" if closed else "active", "limit_per_type": 50, "page": page})
-        if r.status_code != 200:
+        d = get(f"{G}/public-search", {"q": q, "events_status": "closed" if closed else "active",
+                                       "limit_per_type": 50, "page": page})
+        if not d:
             break
-        evs = r.json().get("events") or []
+        evs = d.get("events") or []
         for e in evs:
             out[str(e["id"])] = e
         if len(evs) < 50:
@@ -32,14 +49,13 @@ def search(q, closed=True, pages=6):
 
 
 def event(eid):
-    r = requests.get(f"{G}/events/{eid}", headers=H, timeout=40)
-    return r.json() if r.status_code == 200 else None
+    return get(f"{G}/events/{eid}")
 
 
 found = {}
 for q in ("margin of victory", "margin", "popular vote margin", "vote share margin", "runoff margin of victory",
           "second round margin of victory", "electoral college margin"):
-    for k, e in search(q).items():
+    for k, e in search(q, pages=6).items():
         if e.get("closed") and not SPORT.search(e.get("slug") or "") and "margin" in (e.get("slug") or ""):
             found[k] = e
 rows = []

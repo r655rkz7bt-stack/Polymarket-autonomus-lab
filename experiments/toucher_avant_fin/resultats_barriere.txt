@@ -1,0 +1,35 @@
+barrières : 3948 ; cas : 2925 ; écartés : {'sans échange avant': 10849, 'déjà touchée': 2999}
+coupure : 2026-09-16 ; apprentissage 1500 cas, jugement 1425 cas
+Brier sur le jugement (578 cas avec les deux côtés échangés) : marché 0.0793 | DVOL 0.0761 | σ réalisée 0.0777
+réglages essayés : 24 (σ × k × seuil)
+   dvol k 0.9 seuil 0.03 : apprentissage 214 paris -1.6 % | jugement 160 paris +26.6 %
+   dvol k 0.9 seuil 0.05 : apprentissage 151 paris -9.4 % | jugement 104 paris +40.4 %
+   dvol k 0.9 seuil 0.08 : apprentissage 114 paris -5.1 % | jugement 66 paris +64.2 %
+   dvol k 1.0 seuil 0.03 : apprentissage 212 paris +14.6 % | jugement 187 paris +15.0 %
+   dvol k 1.0 seuil 0.05 : apprentissage 159 paris -5.7 % | jugement 137 paris +31.7 %
+   dvol k 1.0 seuil 0.08 : apprentissage 121 paris -16.6 % | jugement 93 paris +53.1 %
+   dvol k 1.15 seuil 0.03 : apprentissage 243 paris -8.1 % | jugement 261 paris -11.4 %
+   dvol k 1.15 seuil 0.05 : apprentissage 205 paris -0.4 % | jugement 211 paris -1.0 %
+   dvol k 1.15 seuil 0.08 : apprentissage 154 paris +21.0 % | jugement 157 paris +13.5 %
+   dvol k 1.3 seuil 0.03 : apprentissage 308 paris -14.1 % | jugement 333 paris -19.2 %
+   dvol k 1.3 seuil 0.05 : apprentissage 259 paris -11.0 % | jugement 286 paris -11.9 %
+   dvol k 1.3 seuil 0.08 : apprentissage 209 paris -7.3 % | jugement 227 paris -7.9 %
+   rv k 0.9 seuil 0.03 : apprentissage 184 paris -22.5 % | jugement 196 paris +12.6 %
+   rv k 0.9 seuil 0.05 : apprentissage 133 paris -17.7 % | jugement 121 paris +24.9 %
+   rv k 0.9 seuil 0.08 : apprentissage 94 paris -9.8 % | jugement 73 paris +43.5 %
+   rv k 1.0 seuil 0.03 : apprentissage 197 paris -19.6 % | jugement 184 paris +12.1 %
+   rv k 1.0 seuil 0.05 : apprentissage 142 paris -36.2 % | jugement 117 paris +17.9 %
+   rv k 1.0 seuil 0.08 : apprentissage 98 paris -29.3 % | jugement 83 paris +32.1 %
+   rv k 1.15 seuil 0.03 : apprentissage 231 paris -13.3 % | jugement 202 paris +4.7 %
+   rv k 1.15 seuil 0.05 : apprentissage 191 paris -13.2 % | jugement 153 paris +10.2 %
+   rv k 1.15 seuil 0.08 : apprentissage 142 paris -13.9 % | jugement 118 paris +25.5 %
+   rv k 1.3 seuil 0.03 : apprentissage 289 paris -8.4 % | jugement 265 paris -16.1 %
+   rv k 1.3 seuil 0.05 : apprentissage 250 paris -18.2 % | jugement 215 paris -7.5 %
+   rv k 1.3 seuil 0.08 : apprentissage 189 paris -2.3 % | jugement 165 paris +5.2 %
+réglages gagnants sur le jugement : 17 / 24
+
+meilleur réglage sur l'apprentissage : σ dvol, k 1.15, seuil 0.08 → jugement :
+{"paris": 157, "rendement_moyen": 0.1348, "confiance_paris": 0.64, "evenements": 58, "confiance_evenements": 0.49, "z_prix": 2.77, "mois": {"2026-09": 0.0871, "2026-10": 0.1795}, "mois_gagnants": "2/2", "par_prix": {"0,10-0,30": {"paris": 53, "rendement": 0.3402}, "0,30-0,70": {"paris": 37, "rendement": 0.4071}, "< 0,10": {"paris": 59, "rendement": -0.2117}, "≥ 0,70": {"paris": 8, "rendement": 0.069}}, "verdict": "écartée", "raison": "pas d'avantage régulier après frais"}
+   par sens : {'NON': '2 paris +21.3 %', 'OUI': '155 paris +13.4 %'}
+   par typ : {'jour': '146 paris +9.9 %', 'mois': '1 paris +373.5 %', 'semaine': '10 paris +30.2 %'}
+   jours gagnants : 17 / 29
