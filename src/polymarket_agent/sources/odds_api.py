@@ -89,6 +89,12 @@ class OddsApiSource:
         if self.state is not None:
             self.state.set_value(key, value)
 
+    def allowed_today(self, now: datetime) -> int:
+        """Crédits permis À CET INSTANT : le budget du jour se dépense au fil de la journée UTC, pas d'un coup.
+        22/10/2026 : 12 crédits par jour épuisés vers 13 h (21/10) ou 20 h (20/10) UTC, donc plus aucune cote pour les
+        matchs du soir (NBA, tennis américain) ; cotes_tennis, football_trois_issues, futurs_bookmakers restaient muets."""
+        return min(self.budget, -(-self.budget * (now.hour + 4) // 24))
+
     def _age_hours(self, sport: str, now: datetime) -> float:
         last = parse_date(self._get(f"odds_api:dernier:{sport}") or "")
         return (now - last).total_seconds() / 3600 if last else 1e9
@@ -136,7 +142,7 @@ class OddsApiSource:
         used = int(self._get(day) or 0)
         out, errors = [], []
         for sport in self.plan(key, now):
-            if self.state is not None and used >= self.budget:
+            if self.state is not None and used >= self.allowed_today(now):
                 break
             try:
                 events = self.http.get_json(self.URL.format(sport=sport), params={
