@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2521,
+  "principal": 2522,
   "fantome:calibration_patiente_v1.0.0": 1767,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1751,
@@ -18,7 +18,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1439,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1812,
+  "fantome:market_maker_serre_v1.0.0": 1816,
   "fantome:market_maker_v1.0.0": 1506,
   "fantome:favori_politique_patiente_v1.0.0": 1354,
   "fantome:favori_politique_v1.0.0": 1356,
@@ -40,7 +40,7 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 1457,
-  "fantome:nm_court_v1.0.0": 1387,
+  "fantome:nm_court_v1.0.0": 1389,
   "fantome:nm_crypto_v1.0.0": 1342,
   "fantome:nm_hors_crypto_v1.0.0": 1378,
   "fantome:nm_long_v1.0.0": 1358,
@@ -130,16 +130,16 @@
   "fantome:statu_quo_ia_v1.0.0": 59,
   "fantome:jobs_favori_non_v1.0.0": 49,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 122,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 191,
+  "fantome:nf_tennis_vainqueur_v1.0.0": 193,
   "fantome:nf_sport_18_24h_v1.0.0": 36,
   "fantome:nf_sport_925_950_v1.0.0": 52,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 26,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 38,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 68,
-  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 39,
+  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 41,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 2
  },
- "verifiees": 6590,
+ "verifiees": 6595,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -831,9 +831,9 @@
    "op_id": "settle-67216360801849652375054413392080528959059028862800479256645093272510382533145"
   }
  ],
- "derniere_execution": "2026-10-22T21:27:06+00:00",
+ "derniere_execution": "2026-10-22T21:33:22+00:00",
  "dernier_seq_reglements": {
-  "principal": 2521,
+  "principal": 2522,
   "fantome:calibration_patiente_v1.0.0": 1767,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1751,
