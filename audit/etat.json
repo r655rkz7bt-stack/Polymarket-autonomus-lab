@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2499,
+  "principal": 2500,
   "fantome:calibration_patiente_v1.0.0": 1765,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1749,
@@ -23,7 +23,7 @@
   "fantome:favori_politique_patiente_v1.0.0": 1352,
   "fantome:favori_politique_v1.0.0": 1354,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1354,
-  "fantome:outsider_sport_patiente_v1.0.0": 1403,
+  "fantome:outsider_sport_patiente_v1.0.0": 1404,
   "fantome:contrer_crypto_patiente_v1.0.0": 1580,
   "fantome:contrer_crypto_v1.0.0": 1507,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1354,
@@ -40,11 +40,11 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 1455,
-  "fantome:nm_court_v1.0.0": 1384,
+  "fantome:nm_court_v1.0.0": 1386,
   "fantome:nm_crypto_v1.0.0": 1340,
   "fantome:nm_hors_crypto_v1.0.0": 1376,
   "fantome:nm_long_v1.0.0": 1356,
-  "fantome:nm_prix_bas_v1.0.0": 1393,
+  "fantome:nm_prix_bas_v1.0.0": 1395,
   "fantome:nm_prix_haut_v1.0.0": 1374,
   "fantome:naive_favorite_large_v1.0.0": 1268,
   "fantome:nf_sport_patiente_v1.0.0": 1507,
@@ -55,7 +55,7 @@
   "fantome:nf_sport_prix_haut_v1.0.0": 1375,
   "fantome:nf_sport_sans_fin_v1.0.0": 1208,
   "fantome:nm_demi_mise_v1.0.0": 1262,
-  "fantome:outsider_sport_apres_midi_v1.0.0": 1191,
+  "fantome:outsider_sport_apres_midi_v1.0.0": 1192,
   "fantome:nf_sport_oui_v1.0.0": 1128,
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 60,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 28
  },
- "verifiees": 6544,
+ "verifiees": 6546,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -830,9 +830,9 @@
    "op_id": "settle-67216360801849652375054413392080528959059028862800479256645093272510382533145"
   }
  ],
- "derniere_execution": "2026-10-22T20:27:40+00:00",
+ "derniere_execution": "2026-10-22T20:32:52+00:00",
  "dernier_seq_reglements": {
-  "principal": 2499,
+  "principal": 2500,
   "fantome:calibration_patiente_v1.0.0": 1765,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1749,
@@ -855,7 +855,7 @@
   "fantome:favori_politique_patiente_v1.0.0": 1352,
   "fantome:favori_politique_v1.0.0": 1354,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1354,
-  "fantome:outsider_sport_patiente_v1.0.0": 1403,
+  "fantome:outsider_sport_patiente_v1.0.0": 1404,
   "fantome:contrer_crypto_patiente_v1.0.0": 1580,
   "fantome:contrer_crypto_v1.0.0": 1507,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1354,
@@ -887,7 +887,7 @@
   "fantome:nf_sport_prix_haut_v1.0.0": 1375,
   "fantome:nf_sport_sans_fin_v1.0.0": 1208,
   "fantome:nm_demi_mise_v1.0.0": 1262,
-  "fantome:outsider_sport_apres_midi_v1.0.0": 1191,
+  "fantome:outsider_sport_apres_midi_v1.0.0": 1192,
   "fantome:nf_sport_oui_v1.0.0": 1128,
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
@@ -902,7 +902,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 589,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 591,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 593,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
@@ -938,13 +938,13 @@
   "fantome:crypto_threshold_prix_bas_v1.0.0": 271,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 346,
   "fantome:nf_tennis_debut_match_v1.0.0": 380,
-  "fantome:nf_sport_patiente_sans_itf_v1.0.0": 358,
+  "fantome:nf_sport_patiente_sans_itf_v1.0.0": 360,
   "fantome:outsider_itf_v1.0.0": 247,
-  "fantome:nf_court_football_v1.0.0": 229,
+  "fantome:nf_court_football_v1.0.0": 231,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 288,
   "fantome:nf_tennis_12_18h_v1.0.0": 325,
   "fantome:compteur_tweets_non_v1.0.0": 201,
-  "fantome:nf_court_football_soir_v1.0.0": 189,
+  "fantome:nf_court_football_soir_v1.0.0": 191,
   "fantome:nf_court_soir_v1.0.0": 186,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 233,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
@@ -968,7 +968,7 @@
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 24,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 36,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 62,
-  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 30
+  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 32
  },
  "reglements_verifies": 3164
 }
