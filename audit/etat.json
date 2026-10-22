@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2446,
+  "principal": 2447,
   "fantome:calibration_patiente_v1.0.0": 1755,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1742,
@@ -758,9 +758,9 @@
    "op_id": "settle-56520476068963252650631416517493985548542050506245690860142349987169749292077"
   }
  ],
- "derniere_execution": "2026-10-22T17:12:43+00:00",
+ "derniere_execution": "2026-10-22T17:15:17+00:00",
  "dernier_seq_reglements": {
-  "principal": 2446,
+  "principal": 2447,
   "fantome:calibration_patiente_v1.0.0": 1755,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1742,
@@ -778,7 +778,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1430,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1763,
+  "fantome:market_maker_serre_v1.0.0": 1765,
   "fantome:market_maker_v1.0.0": 1486,
   "fantome:favori_politique_patiente_v1.0.0": 1345,
   "fantome:favori_politique_v1.0.0": 1347,
@@ -870,7 +870,7 @@
   "fantome:outsider_itf_v1.0.0": 239,
   "fantome:nf_court_football_v1.0.0": 222,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 270,
-  "fantome:nf_tennis_12_18h_v1.0.0": 300,
+  "fantome:nf_tennis_12_18h_v1.0.0": 302,
   "fantome:compteur_tweets_non_v1.0.0": 190,
   "fantome:nf_court_football_soir_v1.0.0": 178,
   "fantome:nf_court_soir_v1.0.0": 176,
@@ -889,8 +889,8 @@
   "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 162,
   "fantome:statu_quo_ia_v1.0.0": 50,
   "fantome:jobs_favori_non_v1.0.0": 40,
-  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 93,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 149,
+  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 95,
+  "fantome:nf_tennis_vainqueur_v1.0.0": 151,
   "fantome:nf_sport_18_24h_v1.0.0": 22,
   "fantome:nf_sport_925_950_v1.0.0": 33,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 17,
