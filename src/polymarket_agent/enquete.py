@@ -616,11 +616,36 @@ def achats_en_jeu(entries: dict[str, list[dict]], copied: set[str], since: datet
     return out
 
 
+def audit_anomalies(audit: dict | None) -> list[dict]:
+    """Anomalies de l'audit indépendant (`audit/etat.json` de la branche data, scripts/audit_fills.py, protégé).
+    Le 22/10/2026 : 62 anomalies, toutes « réglé alors que le marché n'est pas clos », mais chaque règlement
+    est tombé 17 à 225 s APRÈS la fermeture officielle du marché (`closedTime` de Gamma) et avec le bon paiement :
+    l'audit lit `closed` avant que Gamma ne le montre. Ce sont des fausses alertes (et chacune fait échouer le
+    job d'audit, donc un e-mail à Etienne) ; les autres anomalies restent graves."""
+    anomalies = (audit or {}).get("anomalies") or []
+    early = [a for a in anomalies if "n'est pas clos" in str(a.get("detail", ""))]
+    other = [a for a in anomalies if a not in early]
+    out = []
+    if other:
+        out.append(_finding("audit", GRAVE, f"{len(other)} anomalie(s) d'audit autres que « marché pas clos »",
+                            "L'audit indépendant (prix des achats, jeton du marché, paiement différent du résultat officiel) a signalé "
+                            "des écritures impossibles : lire le détail, comparer au journal et à Gamma.",
+                            [f"{a.get('date')} {a.get('portefeuille')} : {a.get('detail')}" for a in other[:8]]))
+    if early:
+        out.append(_finding("audit", A_REGARDER, f"{len(early)} règlement(s) audités « pas clos » (probables fausses alertes)",
+                            "Comparer la date du règlement à `closedTime` de Gamma : si le règlement est postérieur et son paiement "
+                            "égal au prix final officiel, l'audit a lu le marché avant que Gamma n'affiche `closed` (voir "
+                            "proposals/2026-10-22_audit_reglements_trop_tot.md).",
+                            [f"{a.get('date')} {a.get('portefeuille')} : {a.get('detail')}" for a in early[:5]]))
+    return out
+
+
 # ------------------------------------------------------------------ ensemble
 
 
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
-        max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None) -> list[dict]:
+        max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
+        audit: dict | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -633,7 +658,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filtre_delai(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + capital_bloque(entries, active, now)
-                + positions_oubliees(entries, now, active=active))
+                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 
