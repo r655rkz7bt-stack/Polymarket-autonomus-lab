@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2229,
+  "principal": 2230,
   "fantome:calibration_patiente_v1.0.0": 1723,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1708,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1315,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1315,
   "fantome:outsider_sport_patiente_v1.0.0": 1329,
-  "fantome:contrer_crypto_patiente_v1.0.0": 1480,
+  "fantome:contrer_crypto_patiente_v1.0.0": 1481,
   "fantome:contrer_crypto_v1.0.0": 1432,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1315,
   "fantome:loterie_meteo_v1.0.0": 1384,
@@ -400,9 +400,9 @@
    "op_id": "settle-114456228014367036267531451925847682552055700410196785419345117816722012070387"
   }
  ],
- "derniere_execution": "2026-10-22T00:22:26+00:00",
+ "derniere_execution": "2026-10-22T00:27:37+00:00",
  "dernier_seq_reglements": {
-  "principal": 2229,
+  "principal": 2230,
   "fantome:calibration_patiente_v1.0.0": 1723,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1708,
@@ -425,8 +425,8 @@
   "fantome:favori_politique_patiente_v1.0.0": 1313,
   "fantome:favori_politique_v1.0.0": 1315,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1315,
-  "fantome:outsider_sport_patiente_v1.0.0": 1329,
-  "fantome:contrer_crypto_patiente_v1.0.0": 1480,
+  "fantome:outsider_sport_patiente_v1.0.0": 1331,
+  "fantome:contrer_crypto_patiente_v1.0.0": 1481,
   "fantome:contrer_crypto_v1.0.0": 1432,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1315,
   "fantome:loterie_meteo_v1.0.0": 1384,
@@ -457,7 +457,7 @@
   "fantome:nf_sport_prix_haut_v1.0.0": 1332,
   "fantome:nf_sport_sans_fin_v1.0.0": 1169,
   "fantome:nm_demi_mise_v1.0.0": 1192,
-  "fantome:outsider_sport_apres_midi_v1.0.0": 1143,
+  "fantome:outsider_sport_apres_midi_v1.0.0": 1145,
   "fantome:nf_sport_oui_v1.0.0": 1089,
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
@@ -484,7 +484,7 @@
   "fantome:crypto_threshold_non_v1.0.0": 288,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 330,
   "fantome:nf_sport_patiente_matin_v1.0.0": 317,
-  "fantome:apres_echeance_v1.0.0": 473,
+  "fantome:apres_echeance_v1.0.0": 475,
   "fantome:choc_sans_nouvelle_v1.0.0": 112,
   "fantome:coherence_match_v1.0.0": 264,
   "fantome:decroissance_temps_v1.0.0": 295,
