@@ -11,7 +11,7 @@ Ordre : gain espéré × facilité de test. Les marchés répétitifs et peu liq
 ont été les plus battables le 20/10 ; les marchés suivis par des robots (crypto au jour près) non.
 
 ## À tester
-0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10).
+0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10). Faites le 22/10 : n° 14 (écartée), n° 10 (écartée), n° 9 (voir « Testées »). Restent dans l'ordre : 1, 2, 11, 3, 4, 5.
 1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
 3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI
@@ -56,6 +56,10 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | mentions « the announcers » et « anyone », prix historique (3 555 marchés) | trompeuse | +31 % (t +6,8) au prix horaire du CLOB, −7 % aux prix des vrais échanges ; 715 prix à exactement 0,50 (carnet vide) | mentions_annonceurs.md |
 | mentions « anyone » (Big Brother, Love Island, séries, résultats d'entreprise) | écartée | presque aucun échange réel (4 achats possibles) | mentions_annonceurs.md |
 | mentions « annonceurs » Coupe du monde 2026 | écartée | 7 réglages sur 7 négatifs, −4 % à −34 % par achat (43-56 événements) | mentions_annonceurs.md |
+| `proposition_uma` (n° 14 : acheter l'issue « proposed » à 0,90-0,98) | écartée | 36 marchés « proposed » ouverts le 22/10 : 33 à 0,9995 / 0,0005, aucune marge ; le seul cas à marge est un litige (`disputed`) | proposition_uma.md |
+| `queues_tranches` (n° 10 : NON des OUI à 3-25 %, 990 événements à tranches, 17 796 marchés) | écartée | 18 réglages, −1,3 % à +0,9 % par pari, t par événement −1,9 à +0,7 ; seuls les OUI à 1-3 % sont sous leur prix mais leur NON ne rapporte rien après écart | queues_tranches.md |
+| tranches moyennes (OUI 0,25-0,60 à T-72 h, NON) | trompeuse | +8,8 % au prix du CLOB (757 paris, z des prix +2,9), −0,6 % aux prix payés dans les 24 h (520 paris), 25-75 % des paris sans échange dans les 2 h ; ~55 réglages | queues_tranches.md |
+| `lissage_tranches` (n° 9 : creux / pic isolé d'un événement à tranches, 679 événements) | trompeuse | NON des pics : +19 à +21 % (t +6) au prix du CLOB, mais 13 pics sur 58 seulement ont un échange réel avant T0 et +2,0 % (t +0,4, 25 paris) aux prix d'achat réels ; creux : rien (z +0,6) | queues_tranches.md |
 | mentions « annonceurs » NFL (14 matchs) | indice | +21 % à +91 % par achat sur 6 réglages, t par match +0,8 à +4,8 ; 2 mois, marchés minces : fantôme `mots_prononces_nfl` | mentions_annonceurs.md |
 | CPI américain (48 événements, 337 tranches) : NON sur les tranches à 5-30 % | indice | cases à 3-25 % gagnent ~moitié moins que leur prix ; NON +3 à +6 % par achat aux prix réels (12 réglages, 10 positifs ; mensuel/annuel, core négatif) ; 47 événements seulement : fantôme `cpi_tranches` | cpi_nowcast.md |
 | classements « status quo » (211 événements : IA 1er-3e rang, plus grande entreprise, applis n° 1, Spotify) | indice (IA) ; autres écartées | IA, leader 0,70-0,95 à J-14 : 12 gagnés sur 12 pour 10,6 attendus aux prix payés (+13 %), mais P(tout gagner aux prix) = 23 % et ~45 découpages ; plus grande entreprise J-3/J-1 −13/−18 %, applis −9/−10 % ; `idea_test.verdict` corrigé (`z_prix`) : fantôme `statu_quo_ia` | classements_status_quo.md |

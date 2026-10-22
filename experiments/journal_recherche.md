@@ -3,6 +3,25 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22 (passage chercheur, nuit : 04 h 55 → 05 h 51 UTC)
+
+- **Enquête** (fiches : `experiments/enquetes/2026-10-22_championne_biais_et_mises.md`, `..._muettes_budget_cotes.md`, et la 3e ligne du README ; familles 5 puis 2, 6 et 3).
+  - Obligations sur `nf_sport_patiente` : **sans ses 3 meilleurs paris +2 € (sur +126 €)**, sans les 5 meilleurs −48 € ; 95 gagnés pour 90,8 attendus ; depuis que le principal la copie (18/10, 21 h 30) elle fait −30 € sur 58 paris,
+    le principal −19 € sur 48. Cause : `bias 0,05` fixe, donc `mise ∝ 1/(1 − prix)` (111 € à 0,95, 74 € à 0,82) ; 25 paris à 0,925-0,95 = −522 €. Sur **530 favoris de sport de toute l'arène (un jeton = un pari)** :
+    459 gagnés pour 460,9 attendus par les prix : le biais n'existe à aucun prix. Contrôle `estimation_gonflee` (+ test) : arène 827 gagnés pour 938,8 annoncés (z −9,7). Championne **non modifiée** (décision à Etienne : `bias` 0,02 sur les sports).
+  - Stratégies muettes : la mère `naive_favorite` n'est pas sourde (279/429 hors plage, 28 « avantage net insuffisant » : `min_net_edge 0,02`) ; 12 stratégies à zéro achat dont 9 expliquées (cohérence / références) ;
+    **budget des cotes (The Odds API) épuisé à 12 h 57 UTC le 21/10** : `OddsApiSource.allowed_today` étale les 12 crédits sur la journée (+ test).
+  - Pistes sur événements à tranches : le même défaut revient 3 fois (prix `prices-history` d'un carnet vide ou écarté) ; règle ajoutée au README des enquêtes.
+- **Recherche** (`experiments/queues_tranches.md`, `experiments/proposition_uma.md` ; pistes n° 14, 10, 9 de `vingt_cinq_pistes.md`). 990 événements à tranches (17 796 marchés, août-octobre) puis 43 207 marchés d'avril à octobre.
+  - n° 14 `proposition_uma` : **écartée** (33 des 36 marchés « proposed » à 0,9995).
+  - n° 10 `queues_tranches` : **écartée** (NON des OUI à 3-25 % : −1,3 % à +0,9 %, 18 réglages) ; tranches moyennes 0,25-0,60 : +8,8 % au prix du CLOB mais −0,6 % aux prix payés (520 paris) : **trompeuse**.
+  - n° 9 `lissage_tranches` : pic isolé +20 % (t +6) au prix du CLOB, **+2,0 % (t +0,4) aux prix payés** (13 pics sur 58 ont un échange réel) : **trompeuse** ; creux : rien.
+- **Arène** : filles `nf_sport_18_24h` et `nf_sport_925_950` (de `nf_sport`, pistes 80/20, la seconde avec la réserve écrite dans le YAML) ; pas de fille `nf_tennis` 0,80-0,85 (existe déjà : `nf_tennis_prix_bas_800_850`, −9,8 € sur 12 paris) ;
+  `nf_sport_patiente_soir`, `_non`, `_vainqueur` mises à `enabled: false` (éliminées). Aucune stratégie issue de la recherche (rien de retenu).
+- **Reste ouvert** : décider du biais de la championne (0,02 ou 0,05) ; `football_trois_issues` et `cotes_tennis` à revoir dans 2 jours (cotes du soir étalées) ; `prix_payes.py` et le contrôle de l'échange réel à T0 comme étape
+  obligatoire des tests de tranches ; piste n° 1 (`score_exact_poisson`) et 2 (`toucher_avant_fin`) ; 31 000 marchés d'avril-juillet restent à télécharger (`releve_prix.py`, reprise possible) mais le verdict ne changerait pas
+  sans prix d'échange ; 2e tour au Brésil le 25/10 (pistes 15 et 16).
+
 ## 2026-10-21 (passage chercheur, soir : 19 h 54 → 20 h 41 UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-21_soir_capital_bloque_et_carnet_vieilli.md`, `..._posees_sous_la_plage_suite.md` ; famille 4 du jour, puis 6 et 5).

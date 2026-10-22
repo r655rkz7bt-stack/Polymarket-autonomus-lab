@@ -19,6 +19,9 @@ def window(w):
         if not isinstance(b, list) or not b:
             break
         for ev in b:
+            tags = [t.get("slug") for t in ev.get("tags") or []]
+            if "sports" in tags or "games" in tags or not ev.get("negRisk"):
+                continue  # le sport (28 000 événements) pèse 300 Mo et n'est pas l'objet de cette piste
             ms = ev.get("markets") or []
             rows = []
             for m in ms:
@@ -34,15 +37,17 @@ def window(w):
                                  neg=m.get("negRisk"), tick=m.get("orderPriceMinTickSize"), start=m.get("startDate")))
             if len(rows) >= 4:
                 out.append(dict(id=ev["id"], slug=ev.get("slug"), title=ev.get("title"), end=ev.get("endDate"), neg=ev.get("negRisk"),
-                                tags=[t.get("slug") for t in ev.get("tags") or []], markets=rows))
+                                tags=tags, markets=rows))
         if len(b) < 100:
             break
     return out
 
-allev = {}
+import os
+OUT = "experiments/queues_tranches/donnees/evenements.json"
+allev = {e["id"]: e for e in json.load(open(OUT))} if os.path.exists(OUT) else {}  # fusion avec les relevés précédents
 with cf.ThreadPoolExecutor(6) as ex:
     for res in ex.map(window, wins):
         for e in res:
             allev[e["id"]] = e
-json.dump(list(allev.values()), open("experiments/queues_tranches/donnees/evenements.json", "w"))
+json.dump(list(allev.values()), open(OUT, "w"))
 print(len(allev), "événements,", sum(len(e["markets"]) for e in allev.values()), "marchés")
