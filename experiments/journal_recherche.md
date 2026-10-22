@@ -3,6 +3,24 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22 (passage chercheur, soir : 19 h 55 → 20 h 42 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-22_soir_mises_geantes_et_types.md` ; famille du jour 5, puis constat « 11 mises de fantômes au-dessus de 25 % du capital »).
+  - Les 3 obligations de la feuille de mission sont les mêmes que ce matin (championne, `nf_tennis_prix_bas`, concentration de `nf_sport_patiente_prix_850_875`) : causes déjà écrites dans les fiches du jour.
+  - **Mises géantes** : `nf_court_prix_haut` (fantôme) a misé 489 € (53 % de son capital) et 498 € (48 %) sur un seul pari ; cause : `bias` 0,05 fixe (estimation = prix + 0,045, mise ∝ 1/(1 − prix)), comme la championne.
+  - **Types de marchés** (4 610 couples stratégie-jeton, 1 383 jetons réglés distincts, 1 896 marchés relus sur Gamma) : aucun type (moneyline, spread, totaux, score exact, crypto, « X gagne ») ne bat son prix ;
+    2 300 gagnés pour 2 347,5 attendus par les prix et 2 542 annoncés, dans toutes les tranches de mise. Pas de défaut de code nouveau.
+  - **Défaut de méthode trouvé en recherche** : un relevé par fenêtres sur la date de fin de l'événement oublie les événements réglés avant leur date de fin (111 échelles de dates sur 1 173, 9 %, justement celles où le OUI a gagné) : voir « Recherche ».
+- **Recherche** (2 pistes de `vingt_cinq_pistes.md`, vrais échanges, règlement relu) :
+  - n° 13 `contrer_football_en_jeu` (**1 110 matchs**, saut de prix en match, règlement 2 206/2 207) : **écartée**. 28 réglages ; contrarien −0,4 à −4,8 % (J 0,08-0,18), +2,4 à +6,7 % (J 0,25, z +1,0 à +1,9), **−8,8 à −10,6 % (J 0,35)** ; suiveur −0,6 à −6 % → `experiments/contrer_football.md`.
+  - n° 8 `courbe_de_risque` (**1 173 échelles de dates** « by <date> », ≈ 50 réglages) : **écartée**. Première analyse (1 062 échelles) : NON à 30 jours +11,8 % (t événement +1,18) = « indice », fantôme `echelle_non` écrit et testé ; puis le relevé complété
+    (111 échelles réglées avant leur date de fin) donne +8,1 % (t +0,28) et **12 réglages sur 12 « écartée »** : le fantôme est retiré. Le OUI reste perdant (−10 à −12 % à 7-30 jours), mais pas payant pour le NON (écart + frais) → `experiments/courbe_de_risque.md`.
+  - n° 3 `marge_coherente` (relevé en direct, 19 h 59 UTC) : écart « vendre les tranches − acheter le vainqueur » Flávio +0,015, Lula −0,033 (4 jambes) : toujours non exploitable. Brésil, États : relevé refait (`bresil_etats/releve_20261022_2000.json`), 22 États sûrs toujours à 0,98-0,997.
+- **Arène** : nouvelle sœur `nf_court_prix_haut_biais_faible` (biais 0,02 au lieu de 0,05, mêmes filtres : moins de 24 h, prix ≥ 0,90) à comparer sur la même période. Aucune stratégie issue des pistes (rien de retenu).
+- **Reste ouvert** : `bias` de la championne (décision d'Etienne) ; **vérifier si les pistes à tranches du 22/10** (`queues_tranches`, `lissage_tranches`) **ont le même biais de relevé** : 133 événements à tranches (neg-risk, hors sport, volume ≥ 5 000 $) sont clos avec une
+  date de fin dans le futur (Fed Chair, Nobel…) et manquent, mais leur date de décision n'est pas « fin − H » (à traiter avec la date de clôture réelle) ; piste n° 8 : la courbe de risque elle-même et les lancements de jetons ;
+  pistes 15 (nuit du 25/10), 7, 12, 6 de `vingt_cinq_pistes.md` ; proposition d'audit (`proposals/2026-10-22_audit_reglements_trop_tot.md`) toujours en attente d'Etienne.
+
 ## 2026-10-22 (passage chercheur, après-midi : 14 h 55 → 15 h 38 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-22_apres_midi_copie_et_positions.md` ; famille du jour 5, puis 1 et 6).
