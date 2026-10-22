@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2299,
+  "principal": 2300,
   "fantome:calibration_patiente_v1.0.0": 1733,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1718,
@@ -30,12 +30,12 @@
   "fantome:loterie_meteo_v1.0.0": 1394,
   "fantome:suivre_politique_v1.0.0": 1372,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 1537,
+  "fantome:nf_court_v1.0.0": 1539,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1324,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1307,
+  "fantome:nf_oui_v1.0.0": 1308,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
@@ -62,7 +62,7 @@
   "fantome:nf_tres_court_v1.0.0": 1177,
   "fantome:nf_sport_non_v1.0.0": 982,
   "fantome:nf_court_hors_sport_v1.0.0": 940,
-  "fantome:nf_court_prix_haut_v1.0.0": 896,
+  "fantome:nf_court_prix_haut_v1.0.0": 901,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
   "fantome:nf_sport_6_24h_v1.0.0": 800,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 701,
@@ -132,7 +132,7 @@
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 18,
   "fantome:nf_tennis_vainqueur_v1.0.0": 54
  },
- "verifiees": 5920,
+ "verifiees": 5924,
  "non_verifiables": 0,
  "anomalies": [
   {
@@ -464,9 +464,9 @@
    "op_id": "settle-81744737143764365530229721327564540190466811052284462490952919535673613957893"
   }
  ],
- "derniere_execution": "2026-10-22T05:22:18+00:00",
+ "derniere_execution": "2026-10-22T05:27:51+00:00",
  "dernier_seq_reglements": {
-  "principal": 2299,
+  "principal": 2300,
   "fantome:calibration_patiente_v1.0.0": 1733,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1718,
@@ -484,7 +484,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1408,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1674,
+  "fantome:market_maker_serre_v1.0.0": 1676,
   "fantome:market_maker_v1.0.0": 1446,
   "fantome:favori_politique_patiente_v1.0.0": 1323,
   "fantome:favori_politique_v1.0.0": 1325,
@@ -501,7 +501,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1324,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1307,
+  "fantome:nf_oui_v1.0.0": 1308,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
