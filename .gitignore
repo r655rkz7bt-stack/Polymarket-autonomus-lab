@@ -36,3 +36,7 @@ published/
 apercu/
 published_data/
 donnees/
+
+# Copies de travail des agents en arrière-plan (Claude Code) et environnement de recherche lourd
+.claude/worktrees/
+.venv-recherche/

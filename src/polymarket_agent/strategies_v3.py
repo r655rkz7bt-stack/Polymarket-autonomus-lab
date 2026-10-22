@@ -537,6 +537,82 @@ class ChocSansNouvelle(_Base):
         return sells
 
 
+# --------------------------------------------------------------------------- vague de volume
+
+
+class VagueVolume(_Base):
+    """Vague de volume (22/10/2026, idée des skills Polymarket de mjunaidca, `momentum_scanner`) : un
+    marché qui s'échange au moins `surge_min` fois plus que sa moyenne des 7 derniers jours (Gamma :
+    volume du jour contre volume de la semaine / 7), et dont le prix du OUI a bougé d'au moins
+    `min_move` en 24 h (marchés d'au moins `min_age_days` jours). `direction` = 1 : on SUIT le mouvement (la foule a une information) ;
+    `direction` = -1 : on le CONTRE (la foule s'emballe). Chance estimée = milieu du carnet de l'issue
+    achetée + `shift`. Pas testée sur le passé (Gamma ne garde pas le volume de la semaine d'hier) :
+    l'arène mesure les deux sens. Pourquoi ça peut rater : une vague de volume suit souvent une
+    nouvelle déjà dans le prix."""
+
+    strategy_id = "vague_volume"
+    required = ("surge_min", "min_move", "side_min", "side_max", "shift", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+
+    def _surge(self, m: MarketInfo, now: datetime | None) -> float | None:
+        """Volume du jour ÷ moyenne des jours PRÉCÉDENTS de la semaine. Un marché de moins de
+        `min_age_days` jours n'a pas de référence (créé hier : volume de la semaine = volume du jour,
+        fausse vague ×7, vu le 22/10 sur les marchés météo du jour)."""
+        if not _yes_no(m) or m.created_at is None or now is None:
+            return None
+        # Près de l'échéance (Bitcoin du jour, match du soir), le volume monte toujours : pas une information.
+        if m.end_date is None or (m.end_date - now).total_seconds() / 3600 < float(self.params.get("min_hours_to_end", 48)):
+            return None
+        age = (now - m.created_at).total_seconds() / 86400
+        if age < float(self.params.get("min_age_days", 3)):
+            return None
+        days = min(7.0, age)
+        before = (float(m.volume_1wk or 0) - float(m.volume_24h or 0)) / max(days - 1, 1)
+        # Marché endormi (quelques dollars par jour) : un rapport ×8 000 ne veut rien dire.
+        if before < float(self.params.get("min_base_volume", 500)):
+            return None
+        return float(m.volume_24h or 0) / before
+
+    def candidates(self, markets) -> list[MarketInfo]:
+        from datetime import timezone
+        p, now = self.params, datetime.now(timezone.utc)
+        out = [(r, m) for m in markets for r in [self._surge(m, now)] if r is not None and r >= float(p["surge_min"])
+               and m.price_change_1d is not None and abs(m.price_change_1d) >= float(p["min_move"])]
+        out.sort(key=lambda x: -x[0])
+        return [m for _, m in out[: int(p.get("max_candidates", 30))]]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, props, now = StrategyOutput(), self.params, [], _now(books)
+        follow = int(p.get("direction", 1)) >= 0
+        for m in watchlist:
+            ratio = self._surge(m, now)
+            if ratio is None or any(t in state.positions for t in m.token_ids):
+                continue
+            if ratio < float(p["surge_min"]):
+                continue
+            move = m.price_change_1d
+            if move is None or abs(move) < float(p["min_move"]):
+                out.abstain("vague de volume sans mouvement de prix")
+                continue
+            rose = 0 if move > 0 else 1  # issue dont le prix a monté : OUI si le OUI a monté, sinon NON
+            side = rose if follow else 1 - rose
+            mid = _book_mid(books, m.token_ids[side])
+            if mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            if not float(p["side_min"]) <= mid <= float(p["side_max"]):
+                out.abstain("issue hors de la plage de prix")
+                continue
+            est, unc = mid + float(p["shift"]), float(p["uncertainty"])
+            prop = self._buy(m, books, state, side, est - unc, est, est + unc, bucket, marks, out,
+                             f"vague_volume:{ratio:.1f}x:{move:+.3f}",
+                             f"volume ×{ratio:.1f} contre la semaine, prix {move:+.1%} en 24 h",
+                             "la vague était déjà dans le prix" if follow else "la foule avait raison")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 # =========================================================================== lot B : autres sources
 
 
@@ -903,4 +979,4 @@ CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, Coherence
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
-                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon)}
+                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume)}

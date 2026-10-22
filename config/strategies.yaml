@@ -2670,3 +2670,61 @@ nf_tennis_12_18h_vainqueur:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+# --------------------------------------------------------------------------- skills Polymarket (22/10/2026)
+# Demande d'Etienne : « regarder comment fonctionnent les skills Polymarket et intégrer leurs stratégies ».
+# Seule idée nouvelle pour l'arène : la vague de volume (mjunaidca/polymarket-skills, momentum_scanner) ;
+# les autres (tenue de marché, arbitrage OUI + NON, actualités, billets météo) existent déjà ou ont été
+# écartées sur nos données (experiments/skills_polymarket.md). Deux sens, l'arène tranche.
+vague_volume_suivre:
+  explication: "Quand un marché s'échange 3 fois plus que d'habitude et que son prix bouge, on suit le mouvement : la foule sait peut-être quelque chose."
+  class: vague_volume
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  hypothesis: >
+    Idée reprise des skills Polymarket de mjunaidca (score de momentum : volume du jour contre la
+    moyenne de la semaine). Une vague de volume avec un mouvement de prix serait une information qui
+    arrive : le prix continuerait dans le même sens. Non testée sur le passé : fantôme seulement.
+  params:
+    direction:      {value: 1, min: -1, max: 1}
+    surge_min:      {value: 3.0, min: 1.5, max: 20.0}
+    min_age_days:   {value: 3, min: 2, max: 30}         # référence : les jours précédents (sinon fausse vague ×7)
+    min_base_volume: {value: 500, min: 0, max: 100000}  # $ par jour avant la vague (marché endormi : rapport sans valeur)
+    min_hours_to_end: {value: 48, min: 0, max: 2000}    # près de l'échéance, le volume monte toujours
+    min_move:       {value: 0.03, min: 0.0, max: 0.5}
+    side_min:       {value: 0.55, min: 0.05, max: 0.95}
+    side_max:       {value: 0.90, min: 0.10, max: 0.99}
+    shift:          {value: 0.03, min: 0.0, max: 0.2}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+vague_volume_contrer:
+  explication: "Quand un marché s'échange 3 fois plus que d'habitude et que son prix bouge, on parie qu'il est allé trop loin et on prend l'autre côté."
+  class: vague_volume
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-22"
+  hypothesis: >
+    L'inverse de vague_volume_suivre : la foule s'emballe pendant une vague de volume, le prix dépasse
+    sa juste valeur et revient un peu. Les deux sens sont mesurés côte à côte dans l'arène.
+  params:
+    direction:      {value: -1, min: -1, max: 1}
+    surge_min:      {value: 3.0, min: 1.5, max: 20.0}
+    min_age_days:   {value: 3, min: 2, max: 30}         # référence : les jours précédents (sinon fausse vague ×7)
+    min_base_volume: {value: 500, min: 0, max: 100000}  # $ par jour avant la vague (marché endormi : rapport sans valeur)
+    min_hours_to_end: {value: 48, min: 0, max: 2000}    # près de l'échéance, le volume monte toujours
+    min_move:       {value: 0.03, min: 0.0, max: 0.5}
+    side_min:       {value: 0.10, min: 0.02, max: 0.95}
+    side_max:       {value: 0.45, min: 0.05, max: 0.99}
+    shift:          {value: 0.03, min: 0.0, max: 0.2}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}

@@ -51,7 +51,8 @@ def test_repository_config_loads():
             "nf_court_soir", "nf_court_football_soir", "nf_sport_18_24h", "nf_sport_925_950", "nf_sport_patiente_12_18h",
             "compteur_tweets_non", "mots_prononces_nfl",
             "mots_prononces_patiente", "compteur_tweets_non_patiente",
-            "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur"])
+            "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur",
+            "vague_volume_suivre", "vague_volume_contrer"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
@@ -62,7 +63,7 @@ def test_repository_config_loads():
                                                                    "predictit_reference", "manifold_reference", "futurs_bookmakers",
                                                                    "football_trois_issues", "compteur_tweets", "cotes_tennis",
                                                                    "mots_prononces", "mots_nouveaux", "fatigue_nhl",
-                                                                   "outsider_itf", "cpi_tranches", "jobs_favori_non")))
+                                                                   "outsider_itf", "cpi_tranches", "jobs_favori_non", "vague_volume")))
 
 
 def test_param_outside_bounds_is_refused():

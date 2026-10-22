@@ -53,6 +53,13 @@ def _date(value: Any) -> datetime | None:
     return ts if ts.tzinfo else ts.replace(tzinfo=timezone.utc)
 
 
+def _float_or_none(value) -> float | None:
+    try:
+        return None if value is None or value == "" else float(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def parse_market(raw: dict) -> MarketInfo:
     """Transforme une réponse Gamma en MarketInfo et liste les incohérences."""
     issues: list[str] = []
@@ -111,6 +118,8 @@ def parse_market(raw: dict) -> MarketInfo:
         last_trade_price=_dec(raw.get("lastTradePrice")),
         volume_24h=_dec(raw.get("volume24hr")) or Decimal("0"),
         volume_total=_dec(raw.get("volumeNum")) or _dec(raw.get("volume")) or Decimal("0"),
+        volume_1wk=_dec(raw.get("volume1wk")) or Decimal("0"),
+        price_change_1d=_float_or_none(raw.get("oneDayPriceChange")),
         liquidity=_dec(raw.get("liquidityNum")) or _dec(raw.get("liquidity")) or Decimal("0"),
         end_date=end_date,
         active=raw.get("active") is True,
