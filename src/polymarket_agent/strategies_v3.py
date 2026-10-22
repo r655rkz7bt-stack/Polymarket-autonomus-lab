@@ -899,8 +899,64 @@ class JobsFavoriNon(_Base):
         return self._finish(out, props)
 
 
+_ECHELLE_DATE = re.compile(r"\b(?:by|through|before)\b", re.I)
+
+
+class EchelleNon(_Base):
+    """« X d'ici <date> ? » en échelle de dates (au moins `min_dates` échéances suivies pour un même événement) : à 3-5 semaines de
+    l'échéance, le OUI se paie trop cher (les gens parient sur ce qu'ils espèrent voir arriver) et son NON gagne plus souvent que son prix.
+    On achète le NON de 504 à 960 heures avant l'échéance, quand le OUI vaut 15-85 %.
+    Test sur le passé (1 062 échelles réglées, vrais échanges) : experiments/courbe_de_risque.md, verdict « indice » à 30 jours
+    seulement (+16 %, 228 paris, 143 événements, confiance par événement +1,25) ; 0 à −4 % à 7-14 jours : fantôme."""
+
+    strategy_id = "echelle_non"
+    required = ("yes_min", "yes_max", "yes_factor", "hours_min", "hours_max", "min_dates", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+
+    @staticmethod
+    def _is_dated(m: MarketInfo) -> bool:
+        return _yes_no(m) and bool(_ECHELLE_DATE.search(m.question or ""))
+
+    def candidates(self, markets):
+        dated = [m for m in markets if self._is_dated(m) and m.end_date is not None and m.event_id]
+        size: dict[str, int] = {}
+        for m in dated:
+            size[m.event_id] = size.get(m.event_id, 0) + 1
+        return [m for m in dated if size[m.event_id] >= int(self.params["min_dates"])][: int(self.params.get("max_candidates", 300))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, props = StrategyOutput(), self.params, []
+        now = _now(books)
+        if now is None:
+            return self._finish(out, props)
+        events: dict[str, list[MarketInfo]] = {}
+        for m in watchlist:
+            if self._is_dated(m) and m.end_date is not None and m.event_id:
+                events.setdefault(m.event_id, []).append(m)
+        for dates in events.values():
+            if len(dates) < int(p["min_dates"]):
+                out.abstain("trop peu d'échéances suivies pour une échelle de dates")
+                continue
+            for m in dates:
+                hours = (m.end_date - now).total_seconds() / 3600
+                if not float(p["hours_min"]) <= hours <= float(p["hours_max"]):
+                    out.abstain("hors de la fenêtre avant l'échéance")
+                    continue
+                yes = _book_mid(books, m.token_ids[0])
+                if yes is None or any(t in state.positions for t in m.token_ids) or not float(p["yes_min"]) <= yes <= float(p["yes_max"]):
+                    continue
+                fair = yes * float(p["yes_factor"])
+                unc = float(p["uncertainty"])
+                prop = self._buy(m, books, state, 1, 1 - fair - unc, 1 - fair, 1 - fair + unc, bucket, marks, out,
+                                 f"echelle_non:{yes:.3f}", f"OUI de l'échelle de dates à {yes:.1%}, juste {fair:.1%}",
+                                 "l'échéance n'est pas tenue")
+                if prop is not None:
+                    props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
-                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon)}
+                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, EchelleNon)}

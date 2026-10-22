@@ -1,0 +1,76 @@
+contre J=0.08 regard=5min délai=1min n= 931 gagnés= 295 attendus= 295.8 z=-0.06 rendement=-3.0%
+contre J=0.08 regard=2min délai=1min n= 933 gagnés= 292 attendus= 298.4 z=-0.50 rendement=-4.8%
+contre J=0.08 regard=5min délai=3min n= 882 gagnés= 286 attendus= 288.1 z=-0.17 rendement=-3.4%
+contre J=0.12 regard=5min délai=1min n= 900 gagnés= 273 attendus= 277.4 z=-0.35 rendement=-4.4%
+contre J=0.12 regard=2min délai=1min n= 900 gagnés= 282 attendus= 283.0 z=-0.08 rendement=-3.1%
+contre J=0.12 regard=5min délai=3min n= 853 gagnés= 265 attendus= 268.2 z=-0.26 rendement=-3.9%
+contre J=0.18 regard=5min délai=1min n= 824 gagnés= 265 attendus= 270.4 z=-0.43 rendement=-4.8%
+contre J=0.18 regard=2min délai=1min n= 801 gagnés= 278 attendus= 271.4 z=+0.53 rendement=-0.4%
+contre J=0.18 regard=5min délai=3min n= 802 gagnés= 262 attendus= 266.8 z=-0.39 rendement=-4.5%
+contre J=0.25 regard=5min délai=1min n= 718 gagnés= 250 attendus= 230.6 z=+1.65 rendement=+5.3%
+contre J=0.25 regard=2min délai=1min n= 648 gagnés= 220 attendus= 208.7 z=+1.02 rendement=+2.4%
+contre J=0.25 regard=5min délai=3min n= 669 gagnés= 237 attendus= 215.9 z=+1.90 rendement=+6.7%
+suiveur J=0.08 regard=5min délai=1min n= 947 gagnés= 653 attendus= 651.4 z=+0.12 rendement=-1.0%
+suiveur J=0.08 regard=2min délai=1min n= 932 gagnés= 649 attendus= 640.1 z=+0.70 rendement=+0.1%
+suiveur J=0.08 regard=5min délai=3min n= 926 gagnés= 636 attendus= 636.0 z=+0.00 rendement=-1.3%
+suiveur J=0.12 regard=5min délai=1min n= 927 gagnés= 651 attendus= 646.9 z=+0.32 rendement=-0.6%
+suiveur J=0.12 regard=2min délai=1min n= 903 gagnés= 627 attendus= 624.6 z=+0.19 rendement=-0.9%
+suiveur J=0.12 regard=5min délai=3min n= 898 gagnés= 629 attendus= 625.5 z=+0.28 rendement=-0.7%
+suiveur J=0.18 regard=5min délai=1min n= 862 gagnés= 588 attendus= 585.6 z=+0.19 rendement=-1.0%
+suiveur J=0.18 regard=2min délai=1min n= 813 gagnés= 536 attendus= 543.6 z=-0.61 rendement=-2.8%
+suiveur J=0.18 regard=5min délai=3min n= 824 gagnés= 560 attendus= 559.1 z=+0.07 rendement=-1.2%
+suiveur J=0.25 regard=5min délai=1min n= 733 gagnés= 483 attendus= 502.7 z=-1.68 rendement=-5.2%
+suiveur J=0.25 regard=2min délai=1min n= 660 gagnés= 438 attendus= 453.2 z=-1.36 rendement=-4.7%
+suiveur J=0.25 regard=5min délai=3min n= 704 gagnés= 457 attendus= 479.8 z=-2.01 rendement=-6.0%
+== contre 0.25 5 1 n= 718 gagnés= 250 attendus= 230.6 z=+1.65 rendement=+5.3%
+   minute<45  n= 308 gagnés= 124 attendus= 111.4 z=+1.57 rendement=+8.2%
+   45-70      n= 107 gagnés=  36 attendus=  38.3 z=-0.48 rendement=-8.6%
+   70-95      n= 221 gagnés=  73 attendus=  65.0 z=+1.26 rendement=+9.0%
+   >=95       n=  82 gagnés=  17 attendus=  16.0 z=+0.31 rendement=+2.9%
+   prix<0.3   n= 338 gagnés=  69 attendus=  61.9 z=+1.01 rendement=+7.2%
+   0.3-0.6    n= 342 gagnés= 157 attendus= 142.1 z=+1.66 rendement=+7.4%
+   0.6-0.85   n=  36 gagnés=  22 attendus=  24.7 z=-1.00 rendement=-12.4%
+   >=0.85     n=   2 gagnés=   2 attendus=   1.9 z=+0.38 rendement=+6.6%
+   hausse     n= 532 gagnés= 179 attendus= 166.1 z=+1.29 rendement=+4.6%
+   baisse     n= 186 gagnés=  71 attendus=  64.6 z=+1.06 rendement=+6.9%
+   mois 2026-09 n= 264 gagnés=  90 attendus=  87.8 z=+0.31 rendement=-0.4%
+   mois 2026-10 n= 454 gagnés= 160 attendus= 142.8 z=+1.85 rendement=+8.7%
+== contre 0.25 5 3 n= 669 gagnés= 237 attendus= 215.9 z=+1.90 rendement=+6.7%
+   minute<45  n= 286 gagnés= 119 attendus= 102.4 z=+2.16 rendement=+12.9%
+   45-70      n=  99 gagnés=  31 attendus=  34.8 z=-0.84 rendement=-13.4%
+   70-95      n= 215 gagnés=  70 attendus=  63.3 z=+1.09 rendement=+7.4%
+   >=95       n=  69 gagnés=  17 attendus=  15.4 z=+0.60 rendement=+8.0%
+   prix<0.3   n= 332 gagnés=  69 attendus=  60.3 z=+1.26 rendement=+10.1%
+   0.3-0.6    n= 285 gagnés= 128 attendus= 116.7 z=+1.37 rendement=+6.6%
+   0.6-0.85   n=  42 gagnés=  31 attendus=  29.8 z=+0.43 rendement=+2.7%
+   >=0.85     n=  10 gagnés=   9 attendus=   9.1 z=-0.10 rendement=-1.4%
+   hausse     n= 499 gagnés= 170 attendus= 156.7 z=+1.40 rendement=+5.4%
+   baisse     n= 170 gagnés=  67 attendus=  59.2 z=+1.35 rendement=+10.1%
+   mois 2026-09 n= 253 gagnés=  90 attendus=  85.2 z=+0.69 rendement=+2.8%
+   mois 2026-10 n= 416 gagnés= 147 attendus= 130.7 z=+1.87 rendement=+9.3%
+== contre 0.35 5 1 n= 487 gagnés= 122 attendus= 129.6 z=-0.84 rendement=-8.8%
+   minute<45  n=  48 gagnés=  12 attendus=  13.3 z=-0.45 rendement=-12.3%
+   45-70      n=  27 gagnés=  11 attendus=   9.2 z=+0.76 rendement=+16.1%
+   70-95      n= 247 gagnés=  73 attendus=  74.7 z=-0.25 rendement=-5.3%
+   >=95       n= 165 gagnés=  26 attendus=  32.4 z=-1.36 rendement=-22.5%
+   prix<0.3   n= 308 gagnés=  45 attendus=  52.8 z=-1.20 rendement=-18.1%
+   0.3-0.6    n= 161 gagnés=  66 attendus=  63.0 z=+0.49 rendement=+1.8%
+   0.6-0.85   n=  14 gagnés=   7 attendus=  10.2 z=-1.94 rendement=-32.3%
+   >=0.85     n=   4 gagnés=   4 attendus=   3.6 z=+0.64 rendement=+9.7%
+   hausse     n= 293 gagnés=  76 attendus=  77.0 z=-0.14 rendement=-4.4%
+   baisse     n= 194 gagnés=  46 attendus=  52.6 z=-1.15 rendement=-15.3%
+   mois 2026-09 n= 169 gagnés=  43 attendus=  46.5 z=-0.65 rendement=-10.4%
+   mois 2026-10 n= 318 gagnés=  79 attendus=  83.1 z=-0.56 rendement=-7.9%
+== contre 0.35 5 3 n= 454 gagnés= 117 attendus= 127.2 z=-1.20 rendement=-10.6%
+   minute<45  n=  46 gagnés=  13 attendus=  13.5 z=-0.17 rendement=-6.1%
+   45-70      n=  25 gagnés=  10 attendus=   8.7 z=+0.58 rendement=+11.7%
+   70-95      n= 238 gagnés=  69 attendus=  72.6 z=-0.55 rendement=-7.7%
+   >=95       n= 145 gagnés=  25 attendus=  32.5 z=-1.84 rendement=-24.9%
+   prix<0.3   n= 290 gagnés=  41 attendus=  47.5 z=-1.06 rendement=-17.1%
+   0.3-0.6    n= 128 gagnés=  49 attendus=  49.8 z=-0.15 rendement=-4.5%
+   0.6-0.85   n=  18 gagnés=  13 attendus=  13.6 z=-0.33 rendement=-5.5%
+   >=0.85     n=  18 gagnés=  14 attendus=  16.3 z=-1.85 rendement=-14.4%
+   hausse     n= 272 gagnés=  72 attendus=  75.1 z=-0.46 rendement=-6.8%
+   baisse     n= 182 gagnés=  45 attendus=  52.2 z=-1.33 rendement=-16.1%
+   mois 2026-09 n= 157 gagnés=  41 attendus=  44.6 z=-0.71 rendement=-10.6%
+   mois 2026-10 n= 297 gagnés=  76 attendus=  82.7 z=-0.97 rendement=-10.6%
