@@ -3,6 +3,30 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (passage chercheur, matin : 09 h 55 → 10 h 42 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-23_apres_echeance_match_en_cours.md` ; famille du jour 6 « ce qui ne tourne plus », puis famille 5/2).
+  - **Défaut trouvé** : `apres_echeance` (copiée par le principal) achetait les favoris à 0,95-0,97 **1 à 2 h après le coup d'envoi** : pour un match, l'« échéance » Gamma est le début du
+    match. 140 achats sur 173 à ce retard : 130 gagnés pour 134,4 attendus, −381 € (−7,8 %) ; le 23/10, huit jambes d'un même Cavaliers-76ers (vainqueur, 5 écarts, total) perdues ensemble :
+    **−475 € sur le fantôme, ≈ −16 € pour le principal**. Correctif dans le code (3 h minimum après le coup d'envoi, un pari par événement, tests), contrôle `jambes_meme_evenement`
+    (6 fantômes signalés, rien d'anormal chez la championne : +64 € sur ses 4 événements à plusieurs jambes), puis la stratégie est écartée sur le passé (voir Recherche) et éteinte.
+  - Obligation `copie_fidele` (1 achat du principal sans jumeau) : ordre posé de `contrer_crypto_patiente` servi au principal une minute avant le fantôme (0,36 €), pas un défaut de copie ; le
+    contrôle le classe désormais « à regarder » si le fantôme achète le même jeton dans les 48 h, « grave » sinon (test).
+  - Obligations `champion_sans_avantage` (apres_echeance, nf_sport_patiente_prix_850_875) et `chance` (championne : 3 paris = 126 %, 18/10 = 225 %) : causes déjà écrites le 22/10, rien de neuf.
+  - Famille 6 à la main (cycle local, lignes « abstentions ») : 14 fantômes sans aucun achat, tous expliqués (calendrier : CPI du 11/11, emploi du 6/11, classements d'IA ≥ 12 jours ; aucun écart :
+    Kalshi ≤ 1,6 point, Manifold ≤ 3,6 points, cohérences ; PredictIt écarts > 0,20 refusés exprès ; clé ODDS_API_KEY absente en local).
+  - 10 achats tirés au hasard relus sur Gamma : bons jetons, bons marchés (déjà connu : estimations 0,99 pour des prix de 0,92-0,95).
+- **Recherche** :
+  - **Après la fin du match** (`experiments/apres_fin_match.md`, 10 234 événements de 37 ligues depuis le 30/09, vrais échanges, 36 réglages) : favori à 0,94-0,985 acheté +1…+4 h après le coup d'envoi =
+    −0,9 / +1,0 / 0,0 / +0,7 % (t −1,7 à +1,8), idem dans les deux tranches voisines : **écartée**. Le +2,8 % du début du fantôme était de la chance.
+  - **n° 6 UFC** (`experiments/ufc_coherence.md`, 687 combats, 548/549 règlements relus) : KO + soumission + décision = 1, mais les trois jambes ne s'échangent jamais ensemble (≤ 63 paniers
+    OUI et 20 NON réalisables en 15 min sur 611 combats), les OUI coûtent 1,11-1,20 : **écartée**.
+  - **Tennis en jeu relu** sur le relevé de 3 semaines : +30 min −1,9 % (520 paris, 30/09-20/10) puis −4,5 % (63 paris, après) ; 499 gagnés pour 506 attendus : l'« indice » de +3,1 % ne se retrouve pas.
+- **Arène** : `apres_echeance` éteinte (écartée sur le passé) ; fille `compteur_tweets_non_hors_elon_trump` (la mère « NON sans NYC Mayor » est retenue sur le passé, Elon −1 % et Trump −2 % : découpage
+  a posteriori, ~60 découpages, indice de sélection) ; contrôles `jambes_meme_evenement` et `copie_fidele` affiné.
+- **Reste ouvert** : l'identité par combattant des UFC à 19 marchés (volumes de quelques dollars) ; refaire le tennis en jeu avec ≥ 500 matchs ATP/WTA de plus ; vérifier que les marchés « best AI model »
+  entrent dans la fenêtre de `statu_quo_ia` vers le 27/10 ; `nf_court_soir` et `nf_court_prix_haut` jouent 3 marchés d'un même match (188-277 €) : à surveiller avec `jambes_meme_evenement`.
+
 ## 2026-10-23 (session avec Etienne : verdict de la vague de volume)
 
 - **Recherche** : `experiments/vague_volume_backtest.md` (13 714 marchés, prix payés, 72 réglages) : « contrer » écartée (36/36 perdants),

@@ -166,3 +166,8 @@ passage s'arrête net, rien n'est perdu.
 - Test de sélection : une stratégie « première de l'arène » parmi ~40 a un z attendu de ≈ 2 sans aucun avantage
   (contrôle `selection_multiple`) ; ne l'appeler « avantage » qu'après de nouveaux paris.
 - Relevé d'événements réglés : `closed=true&end_date_min/max` ne rend que les événements dont la date de fin Gamma tombe dans la fenêtre ; ceux **réglés avant leur date de fin** (la chose est arrivée tôt) n'y sont pas. Les ajouter avec `end_date_min=<aujourd'hui>` (22/10/2026 : 9 % des échelles de dates, ce qui a fait disparaître un « indice », `experiments/courbe_de_risque.md`).
+- Relevé massif (23/10/2026) : 10 242 événements de 37 ligues (`experiments/apres_fin_match/scripts/releve.py`) et leurs échanges en ≈ 10 minutes avec deux processus de 6 fils (le second lancé avec `REV=1` parcourt la liste à l'envers ; dédoublonner `echanges.jsonl` ensuite). `/sports` donne les `series_id` (491 lignes : ne pas l'afficher en entier).
+  Pour l'analyse : trier les échanges de l'événement une fois et chercher les fenêtres avec `bisect` (de 5 minutes à 25 secondes pour 10 000 événements).
+- `pkill -f <motif>` tue aussi la commande qui le contient : utiliser `pgrep -f` pour compter, et un motif qui n'apparaît pas dans sa propre ligne de commande.
+- « Échéance passée » d'un marché de match = coup d'envoi (voir `enquetes/2026-10-23_apres_echeance_match_en_cours.md`) : toute stratégie qui raisonne sur `ended` ou `end_date` pour du sport doit regarder `game_start`.
+- Le cycle local (`initialize.py --dev-key` puis `run_simulation.py --once --dev-key`) crée `ledger/` et `state/` ignorés par Git, mais **ne jamais** faire `rm -rf ledger state` : cela supprime les `.gitkeep` suivis.

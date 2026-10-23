@@ -1961,13 +1961,16 @@ marche_neuf:
 
 apres_echeance:
   explication: "La date est passée et le résultat est presque sûr, mais le marché n'est pas encore réglé : on achète le gagnant presque certain."
-  enabled: true
+  # 23/10/2026 : écartée sur le passé (experiments/apres_fin_match.md, 10 234 événements de 37 ligues, vrais prix) : favori à 0,94-0,985 acheté 1 à 4 h après
+  # le coup d'envoi = -0,9 / +1,0 / 0,0 / +0,7 % (t -1,7 / +1,8 / 0,0 / +0,2), rien à aucun retard ni dans les deux autres tranches de prix ; le +2,8 % du début venait de la chance.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
-  params:
+  params: &apres_echeance_params
     fav_min:        {value: 0.94, min: 0.5, max: 0.99}    # 20/10 : à 0,90 après l'échéance, le doute est réel (Kiev)
     fav_max:        {value: 0.985, min: 0.5, max: 0.999}
     est:            {value: 0.985, min: 0.5, max: 0.999}
+    heures_apres_coup_d_envoi_min: {value: 3, min: 0, max: 12}   # 23/10 : un match n'est pas fini 1 à 2 h après son coup d'envoi (enquête, -474 € en une soirée)
     uncertainty:    {value: 0.004, min: 0.0, max: 0.1}
     min_net_edge:   {value: 0.003, min: 0.0, max: 0.2}
     max_candidates: {value: 40, min: 0, max: 200}
@@ -2430,6 +2433,34 @@ compteur_tweets_non:
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
     only_no:        {value: 1, min: 0, max: 1}
     skip_nyc:       {value: 1, min: 0, max: 1}
+
+compteur_tweets_non_hors_elon_trump:
+  explication: "Le compteur de tweets, NON seulement, mais sans les deux comptes les plus suivis (Elon Musk et Trump), où on ne gagnait rien."
+  # 23/10/2026 : découpage a posteriori de experiments/tweets_filles.md (NON sans NYC Mayor : Elon -1 %, Trump -2 %, tedcruz +22 %, Zelensky +23 %,
+  # cz_binance +8 %, WhiteHouse +13 %) : ~60 découpages regardés, donc INDICE de sélection, pas preuve. L'arène compare cette fille à sa mère
+  # sur la même période (contrôle filles_periode) ; elle devient muette quand seuls Elon et Trump ont des marchés ouverts.
+  mere: compteur_tweets_non
+  morceau: "sans Elon Musk ni Trump"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
+    skip_elon_trump: {value: 1, min: 0, max: 1}
 
 compteur_tweets_non_patiente:
   explication: "La même idée que « compteur de tweets, NON seulement », mais on pose l'achat et on attend un vendeur au lieu de payer son prix."

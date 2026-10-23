@@ -1,0 +1,122 @@
+événements avec échanges 10234 fourchette 0.985 0.999
+== UN PARI PAR ÉVÉNEMENT (le premier acheté) ==
++1 h: 1328 paris, 1302 gagnés / 1319.7 attendus, rendement -1.4 %, t événement -3.58, z prix -6.17, verdict écartée
++2 h: 1289 paris, 1279 gagnés / 1283.1 attendus, rendement -0.3 %, t événement -1.37, z prix -1.67, verdict écartée
++3 h: 513 paris, 507 gagnés / 510.7 attendus, rendement -0.7 %, t événement -1.54, z prix -2.4, verdict écartée
++4 h: 106 paris, 105 gagnés / 105.7 attendus, rendement -0.6 %, t événement -0.66, z prix -1.11, verdict écartée
++6 h: 20 paris, 16 gagnés / 19.9 attendus, rendement -19.8 %, t événement -2.15, z prix -17.17, verdict écartée
++8 h: 9 paris, 8 gagnés / 9.0 attendus, rendement -11.0 %, t événement -0.99, z prix -9.99, verdict écartée
+== TOUTES LES JAMBES ==
++1 h: 2010 paris, 1978 gagnés / 1997.4 attendus, rendement -1.0 %, t événement -3.67, z prix -5.47, verdict écartée
++2 h: 3202 paris, 3186 gagnés / 3188.4 attendus, rendement -0.1 %, t événement -1.66, z prix -0.66, verdict écartée
++3 h: 1548 paris, 1538 gagnés / 1542.1 attendus, rendement -0.3 %, t événement -1.53, z prix -1.67, verdict écartée
++4 h: 180 paris, 179 gagnés / 179.5 attendus, rendement -0.3 %, t événement -0.68, z prix -0.74, verdict écartée
++6 h: 22 paris, 18 gagnés / 21.9 attendus, rendement -18.0 %, t événement -2.15, z prix -16.85, verdict écartée
++8 h: 10 paris, 9 gagnés / 10.0 attendus, rendement -9.9 %, t événement -0.99, z prix -9.51, verdict écartée
+== PAR SPORT (un pari par événement, +3 h et plus) ==
+cfb: 199 paris, 197 gagnés / 198.0 attendus, rendement -0.5 %, t événement -0.49, z prix -1.0, verdict écartée
+nfl: 77 paris, 76 gagnés / 76.7 attendus, rendement -0.9 %, t événement -0.71, z prix -1.22, verdict écartée
+cs2: 65 paris, 65 gagnés / 64.7 attendus, rendement +0.4 %, t événement 7.16, z prix 0.52, verdict indice
+atp: 60 paris, 60 gagnés / 59.7 attendus, rendement +0.6 %, t événement 8.82, z prix 0.59, verdict indice
+itf: 42 paris, 42 gagnés / 41.9 attendus, rendement +0.3 %, t événement 5.57, z prix 0.38, verdict indice
+mlb: 30 paris, 30 gagnés / 29.8 attendus, rendement +0.5 %, t événement 7.2, z prix 0.41, verdict indice
+lol: 24 paris, 24 gagnés / 23.9 attendus, rendement +0.5 %, t événement 4.79, z prix 0.34, verdict écartée
+kbo: 19 paris, 13 gagnés / 19.0 attendus, rendement -31.5 %, t événement -1.89, z prix -35.1, verdict écartée
+dota2: 16 paris, 16 gagnés / 15.9 attendus, rendement +0.3 %, t événement 3.01, z prix 0.23, verdict écartée
+uel: 13 paris, 13 gagnés / 13.0 attendus, rendement +0.2 %, t événement 2.55, z prix 0.15, verdict écartée
+npb: 11 paris, 11 gagnés / 11.0 attendus, rendement +0.4 %, t événement 2.85, z prix 0.2, verdict écartée
+nba: 10 paris, 8 gagnés / 9.9 attendus, rendement -19.6 %, t événement -1.46, z prix -7.69, verdict écartée
+wta: 10 paris, 10 gagnés / 10.0 attendus, rendement +0.3 %, t événement 2.32, z prix 0.17, verdict écartée
+nhl: 8 paris, 8 gagnés / 8.0 attendus, rendement +0.3 %, t événement 2.2, z prix 0.16, verdict écartée
+elc: 8 paris, 8 gagnés / 8.0 attendus, rendement +0.1 %, t événement 8.98, z prix 0.09, verdict écartée
+epl: 7 paris, 7 gagnés / 7.0 attendus, rendement +0.1 %, t événement 1.9613527244956864e+16, z prix 0.08, verdict écartée
+ucl: 7 paris, 6 gagnés / 7.0 attendus, rendement -14.0 %, t événement -0.97, z prix -5.26, verdict écartée
+bra: 7 paris, 7 gagnés / 7.0 attendus, rendement +0.2 %, t événement 1.65, z prix 0.13, verdict écartée
+tur: 6 paris, 6 gagnés / 6.0 attendus, rendement +0.1 %, t événement 30180.68, z prix 0.08, verdict écartée
+ahl: 5 paris, 5 gagnés / 5.0 attendus, rendement +0.2 %, t événement 2.66, z prix 0.09, verdict écartée
+lal: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.1 %, t événement 3006.86, z prix 0.05, verdict écartée
+fl1: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.4 %, t événement 1.33, z prix 0.11, verdict écartée
+por: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.4 %, t événement 1.33, z prix 0.11, verdict écartée
+mex: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.1 %, t événement 1.2404683808766188e+16, z prix 0.05, verdict écartée
+sea: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.04, verdict écartée
+mls: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.05, verdict écartée
+val: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.5 %, t événement 0.0, z prix 0.11, verdict écartée
+ere: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.04, verdict écartée
+bun: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+khl: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+euroleague: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+wnba: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.3 %, t événement 0.0, z prix 0.12, verdict écartée
+== PAR TYPE DE PARI (+3 h et plus, toutes jambes) ==
+spreads: 545 paris, 543 gagnés / 543.1 attendus, rendement -0.0 %, t événement -0.52, z prix -0.05, verdict écartée
+totals: 262 paris, 261 gagnés / 260.8 attendus, rendement +0.1 %, t événement 0.47, z prix 0.15, verdict écartée
+moneyline: 215 paris, 208 gagnés / 214.2 attendus, rendement -2.9 %, t événement -1.52, z prix -6.84, verdict écartée
+team_totals: 184 paris, 183 gagnés / 183.5 attendus, rendement -0.3 %, t événement -0.84, z prix -0.73, verdict écartée
+anytime_touchdowns: 154 paris, 154 gagnés / 153.8 attendus, rendement +0.1 %, t événement 4.28, z prix 0.43, verdict indice
+tennis_completed_match: 38 paris, 38 gagnés / 37.7 attendus, rendement +0.8 %, t événement 10.63, z prix 0.55, verdict indice
+map_handicap: 24 paris, 24 gagnés / 23.9 attendus, rendement +0.3 %, t événement 3.52, z prix 0.28, verdict écartée
+rebounds: 21 paris, 21 gagnés / 20.8 attendus, rendement +1.0 %, t événement 16.0, z prix 0.46, verdict écartée
+receiving_yards: 19 paris, 18 gagnés / 18.9 attendus, rendement -4.9 %, t événement -0.94, z prix -3.45, verdict écartée
+total_corners: 19 paris, 19 gagnés / 19.0 attendus, rendement +0.2 %, t événement 2.98, z prix 0.22, verdict écartée
+child_moneyline: 17 paris, 17 gagnés / 16.9 attendus, rendement +0.3 %, t événement 2.89, z prix 0.24, verdict écartée
+assists: 16 paris, 16 gagnés / 15.8 attendus, rendement +1.0 %, t événement 385.39, z prix 0.4, verdict écartée
+rushing_yards: 16 paris, 16 gagnés / 16.0 attendus, rendement +0.2 %, t événement 2.21, z prix 0.16, verdict écartée
+round_over_under_game_3: 14 paris, 14 gagnés / 13.9 attendus, rendement +0.8 %, t événement 5.25, z prix 0.35, verdict écartée
+soccer_team_total_corners: 12 paris, 12 gagnés / 12.0 attendus, rendement +0.1 %, t événement 25.9, z prix 0.11, verdict écartée
+soccer_exact_score: 11 paris, 11 gagnés / 11.0 attendus, rendement +0.1 %, t événement 14204.12, z prix 0.1, verdict écartée
+kill_over_under_game: 11 paris, 11 gagnés / 11.0 attendus, rendement +0.2 %, t événement 1.66, z prix 0.14, verdict écartée
+soccer_player_shots: 10 paris, 9 gagnés / 10.0 attendus, rendement -9.8 %, t événement -0.98, z prix -5.83, verdict écartée
+round_handicap_game_3: 10 paris, 10 gagnés / 9.9 attendus, rendement +0.9 %, t événement 14.54, z prix 0.3, verdict écartée
+second_half_spreads: 9 paris, 9 gagnés / 8.9 attendus, rendement +0.7 %, t événement 5.3, z prix 0.26, verdict écartée
+soccer_anytime_goalscorer: 9 paris, 9 gagnés / 9.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.09, verdict écartée
+steals: 8 paris, 8 gagnés / 7.9 attendus, rendement +1.0 %, t événement 0.0, z prix 0.28, verdict écartée
+soccer_first_corner: 7 paris, 7 gagnés / 7.0 attendus, rendement +0.1 %, t événement 2.1485542608610056e+16, z prix 0.08, verdict écartée
+tennis_set_games_totals: 7 paris, 7 gagnés / 7.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.08, verdict écartée
+tennis_set_handicap: 7 paris, 7 gagnés / 7.0 attendus, rendement +0.1 %, t événement 6992633.55, z prix 0.08, verdict écartée
+soccer_player_assists: 6 paris, 6 gagnés / 6.0 attendus, rendement +0.2 %, t événement 1.33, z prix 0.12, verdict écartée
+passing_yards: 5 paris, 5 gagnés / 5.0 attendus, rendement +1.0 %, t événement 131.68, z prix 0.22, verdict écartée
+soccer_player_goals_plus_assists: 5 paris, 5 gagnés / 5.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.07, verdict écartée
+soccer_player_shots_on_target: 5 paris, 5 gagnés / 5.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.07, verdict écartée
+lol_odd_even_total_kills: 5 paris, 5 gagnés / 5.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.07, verdict écartée
+soccer_first_to_score: 5 paris, 5 gagnés / 5.0 attendus, rendement +0.1 %, t événement 20120.78, z prix 0.07, verdict écartée
+blocks: 4 paris, 4 gagnés / 4.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.2, verdict écartée
+first_half_totals: 4 paris, 4 gagnés / 4.0 attendus, rendement +0.1 %, t événement 3995791.03, z prix 0.06, verdict écartée
+baseball_player_home_runs: 4 paris, 4 gagnés / 4.0 attendus, rendement +0.2 %, t événement 4.99, z prix 0.1, verdict écartée
+soccer_player_goals: 4 paris, 4 gagnés / 4.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.06, verdict écartée
+tennis_game_handicap: 4 paris, 4 gagnés / 4.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.06, verdict écartée
+soccer_halftime_result: 4 paris, 4 gagnés / 4.0 attendus, rendement +0.1 %, t événement 1.2404683808766188e+16, z prix 0.06, verdict écartée
+points: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.8 %, t événement 2.23, z prix 0.15, verdict écartée
+baseball_player_strikeouts: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.1 %, t événement 3.99, z prix 0.06, verdict écartée
+exact_margin: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.7 %, t événement 0.0, z prix 0.15, verdict écartée
+q4_spreads: 3 paris, 2 gagnés / 3.0 attendus, rendement -33.0 %, t événement 0.0, z prix -6.79, verdict écartée
+soccer_first_half_total_corners: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.1 %, t événement 3.99, z prix 0.06, verdict écartée
+tennis_first_set_winner: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.1 %, t événement 3.99, z prix 0.06, verdict écartée
+tennis_first_set_totals: 3 paris, 3 gagnés / 3.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.05, verdict écartée
+basketball_odd_even: 2 paris, 0 gagnés / 2.0 attendus, rendement -100.0 %, t événement 0.0, z prix -14.07, verdict écartée
+second_half_moneyline: 2 paris, 2 gagnés / 2.0 attendus, rendement +1.1 %, t événement 0.0, z prix 0.15, verdict écartée
+two_plus_touchdowns: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.3 %, t événement 0.0, z prix 0.08, verdict écartée
+receptions: 2 paris, 2 gagnés / 2.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.14, verdict écartée
+team_offensive_yards: 2 paris, 2 gagnés / 2.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.14, verdict écartée
+first_half_spreads: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.04, verdict écartée
+q4_totals: 2 paris, 2 gagnés / 2.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.14, verdict écartée
+second_half_totals: 2 paris, 2 gagnés / 2.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.14, verdict écartée
+tennis_set_winner: 2 paris, 2 gagnés / 2.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.04, verdict écartée
+lol_both_teams_inhibitors: 2 paris, 2 gagnés / 2.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.14, verdict écartée
+baseball_game_extra_innings: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+safety: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+passing_touchdowns: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+two_point_conversions: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+longest_reception: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+q3_spreads: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.1 %, t événement 0.0, z prix 0.11, verdict écartée
+football_team_total_40_plus_yard_field_goals_made: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+tennis_match_totals: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+round_handicap_game_2: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+round_over_under_game_1: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+dota2_both_teams_barracks: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+both_teams_to_score: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+soccer_first_half_team_totals: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+soccer_team_totals: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+team_first_touchdowns: 1 paris, 1 gagnés / 1.0 attendus, rendement +1.0 %, t événement 0.0, z prix 0.1, verdict écartée
+tennis_set_totals: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+round_over_under_game_2: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+both_teams_to_score_second_half: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée
+soccer_second_half_result: 1 paris, 1 gagnés / 1.0 attendus, rendement +0.1 %, t événement 0.0, z prix 0.03, verdict écartée

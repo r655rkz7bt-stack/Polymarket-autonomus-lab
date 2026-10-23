@@ -60,6 +60,20 @@ def test_partial_fill_of_a_smaller_resting_order_is_not_a_full_copy():
     assert enquete.copie_fidele({"principal": big, "nf_v1.0.0": ghost}, NOW - timedelta(days=3))
 
 
+def test_posted_order_copied_and_served_before_the_ghost_is_a_lead_not_grave():
+    """23/10 (contrer_crypto_patiente) : l'ordre posé à 04:00 est servi au principal (0,072) une minute plus tard ; le fantôme,
+    passé avant lui dans le cycle, ne l'est pas et repose un ordre à 04:25 : même pari, exécution décalée, 0,36 €."""
+    t = NOW - timedelta(hours=3)
+    principal = _ledger(_buy(t, "a", 0.072, 5.07, strategy="cc", cycle="c0", posted=True, order="P67d9cdb49ac2db5b7c056d9"))
+    ghost = _ledger(_buy(t + timedelta(minutes=25), "a", 0.065, 65, strategy="cc", cycle="c2", posted=True, order="1be98c5e8dd628000cceec74"))
+    found = enquete.copie_fidele({"principal": principal, "cc_v1.0.0": ghost}, NOW - timedelta(days=3))
+    assert [f["gravite"] for f in found] == [enquete.A_REGARDER] and "avant le fantôme" in found[0]["titre"]
+    assert not enquete.obligations(found)
+    # Sans aucun achat du fantôme sur ce jeton, c'est toujours un achat sans jumeau.
+    other = _ledger(_buy(t + timedelta(minutes=25), "z", 0.065, 65, strategy="cc", cycle="c2", posted=True, order="x"))
+    assert enquete.copie_fidele({"principal": principal, "cc_v1.0.0": other}, NOW - timedelta(days=3))[0]["gravite"] == enquete.GRAVE
+
+
 def test_principal_stake_above_its_cap_is_grave_ghost_stake_is_a_lead():
     t = NOW - timedelta(hours=2)
     principal = _ledger(_buy(t, "a", 0.8, 200))  # 160 € sur 1000
@@ -303,3 +317,15 @@ def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_fi
             "detail": "achat à 0.5000, plus bas prix observé 0.7000"}
     found = enquete.audit_anomalies({"anomalies": [early, real]})
     assert [f["gravite"] for f in found] == [enquete.GRAVE, enquete.A_REGARDER] and not enquete.audit_anomalies(None)
+
+
+def test_many_legs_of_one_event_in_an_hour_are_flagged():
+    """23/10 : apres_echeance joue vainqueur, 5 écarts et le total de Cavaliers-76ers en 50 minutes (-474 € d'un coup)."""
+    t = NOW - timedelta(hours=3)
+    legs = [_e("BUY", t + timedelta(minutes=5 * i), token_id=f"t{i}", market_id=f"m{i}", event_id="nba1", outcome="Cavaliers", price="0.96",
+               shares="90", fee="0", strategy_id="apres_echeance", strategy_version="1.0.0", extra={}) for i in range(4)]
+    found = enquete.jambes_meme_evenement({"apres_echeance_v1.0.0": _ledger(*legs)}, NOW - timedelta(days=3))
+    assert found and found[0]["controle"] == "jambes_meme_evenement" and "4 marchés" in found[0]["exemples"][0]
+    # Deux jambes seulement, ou une stratégie qui veut ses jambes (teneur de marché) : rien.
+    assert not enquete.jambes_meme_evenement({"apres_echeance_v1.0.0": _ledger(*legs[:2])}, NOW - timedelta(days=3))
+    assert not enquete.jambes_meme_evenement({"market_maker_v1.0.0": _ledger(*legs)}, NOW - timedelta(days=3))

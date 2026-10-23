@@ -21,11 +21,12 @@ replier: [ordres-poses, journal, decisions-recentes, systeme]
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-10-22"
+  date: "2026-10-23"
   points:
-    - "Capital principal : 787,5 € réalisés sur 1 000 de départ. Les pertes viennent d'avant la copie fidèle (nf_court −145 €, météo −58 €) ; depuis, le principal copie à environ un tiers de la mise des fantômes (enquête du 22/10)."
+    - "Capital principal : 763,7 € réalisés sur 1 000 de départ. Les pertes datent surtout d'avant la copie fidèle (18-19/10 : −200 €) ; depuis le 20/10 il perd environ 30 €, en copiant à un tiers de la mise des fantômes."
+    - "Défaut trouvé le 23/10 : « après la date » achetait des favoris pendant les matchs (huit paris sur un même match de NBA perdus : −475 € chez le fantôme, −16 € pour le principal). Testée sur 10 234 événements : aucun avantage, stratégie éteinte."
     - "La championne nf_sport_patiente n'a pas d'avantage de prix prouvé : sans ses 3 meilleurs paris elle fait +2 € ; 459 favoris de sport gagnés pour 461 attendus par les prix (experiments/enquetes/2026-10-22_championne_biais_et_mises.md)."
-    - "Huit pistes écartées ou trompeuses le 22/10 (score exact, tranches, lissage, proposition UMA, NON des drames, touche/au-dessus, BO3 e-sport, résultats d'entreprises) : les marchés liquides sont déjà cohérents entre eux."
+    - "Le tennis en direct ne confirme pas son « indice » de +3,1 % : −1,9 % sur 520 paris, puis −4,5 % sur 63 nouveaux (experiments/apres_fin_match.md). Pistes écartées le 23/10 : UFC (KO + soumission + décision), après la fin du match."
     - "Brésil, 2e tour le 25/10 : les tranches « marge de victoire » de Flávio dépassent son prix « vainqueur » de 2,6 points (relevé experiments/marge_coherente/) ; gain sans risque d'environ 0,65 %, trop petit pour l'arène."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le

@@ -416,9 +416,19 @@ class ApresEcheance(_Base):
         return out[: int(self.params.get("max_candidates", 40))]
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
-        out, p, props = StrategyOutput(), self.params, []
+        out, p, props, now = StrategyOutput(), self.params, [], _now(books)
+        # 23/10/2026 : « échéance passée » = coup d'envoi pour un match (Gamma ne donne qu'une date placeholder) ; 140 des 173 achats
+        # étaient faits 1 à 2 h après le coup d'envoi (-7,8 %), et 8 jambes du même Cavaliers-76ers (-474 €) pendant le match.
+        min_hours = float(p.get("heures_apres_coup_d_envoi_min", 0))
+        events = {pos.event_id for pos in state.positions.values() if pos.event_id}
         for m in watchlist:
             if not m.ended or "disputed" in m.uma_statuses or any(t in state.positions for t in m.token_ids):
+                continue
+            if m.game_start is not None and now is not None and (now - m.game_start).total_seconds() < min_hours * 3600:
+                out.abstain("match probablement en cours")
+                continue
+            if m.event_id and m.event_id in events:  # moneyline, écarts et totaux d'un même match : un seul pari
+                out.abstain("événement déjà joué")
                 continue
             mids = [_book_mid(books, t) for t in m.token_ids]
             if None in mids:
@@ -432,6 +442,7 @@ class ApresEcheance(_Base):
                              "résolution contestée ou règle ambiguë")
             if prop is not None:
                 props.append(prop)
+                events.add(m.event_id)
         return self._finish(out, props)
 
 
@@ -719,7 +730,7 @@ class CompteurTweets(_Base):
     cher que ce calcul, jamais un billet sous `min_price`. Réglages choisis sur le passé
     (experiments/vingt_pistes.md : 177 périodes de juillet à octobre 2026, +12 % par achat).
     Réglages optionnels (fille « NON sans NYC Mayor », 21/10/2026, experiments/tweets_filles.md) :
-    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor."""
+    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor ; `skip_elon_trump` = 1 ignore Elon Musk et Trump."""
 
     strategy_id = "compteur_tweets"
     required = ("dispersion", "recent_hours", "max_stale_hours", "margin", "uncertainty", "min_net_edge",
@@ -748,6 +759,9 @@ class CompteurTweets(_Base):
                 continue
             if float(p.get("skip_nyc", 0)) and str(tr.get("compte", "")).lower() == "nycmayor":
                 out.abstain("compte écarté (NYC Mayor : perdant à tous les réglages sur le passé)")
+                continue
+            if float(p.get("skip_elon_trump", 0)) and str(tr.get("compte", "")).lower() in ("elonmusk", "realdonaldtrump"):
+                out.abstain("compte écarté (Elon Musk et Trump : ≈ 0 % sur le passé, les plus suivis par les gros acheteurs)")
                 continue
             prob = tweet_bucket_probability(tr, rng, now, float(p["dispersion"]), int(p["recent_hours"]),
                                             int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5)))

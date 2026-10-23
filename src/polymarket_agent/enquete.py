@@ -21,6 +21,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - deux_camps : une stratégie achète les deux camps d'un même match (20/10 : 2 matchs, −275 €) ;
   - achats_en_jeu : part des achats faits après le coup d'envoi (20/10 : 84 % pour la championne,
     alors que son « horizon » affiché est de 165 h : c'est la date de fin placeholder de Gamma) ;
+  - jambes_meme_evenement : plusieurs marchés d'un même match achetés dans l'heure (23/10 : 8 jambes de Cavaliers-76ers par
+    apres_echeance, vainqueur + écarts + total, −474 € en une soirée : un seul pari compté huit fois) ;
   - capital_bloque : un fantôme sans argent disponible (21/10 : la mère naive_favorite à 0,2 € dès le 16/10, ses
     filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
   - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
@@ -111,6 +113,11 @@ def _smaller_order(principal: list[dict], ghost_rows: list[dict], d: dict, x: di
     return theirs > 0 and mine < 0.95 * theirs
 
 
+def _ghost_buys_later(ghost_rows: list[dict], token: str, when: datetime, hours: float = 48) -> bool:
+    """Le fantôme achète-t-il ce jeton dans les `hours` heures qui suivent ? (le pari est bien le sien, seulement décalé)"""
+    return any(e["data"]["token_id"] == token and when <= _ts(e) <= when + timedelta(hours=hours) for e in _buys(ghost_rows))
+
+
 def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) -> list[dict]:
     """Chaque achat du principal doit avoir son jumeau dans le fantôme copié (même stratégie, même
     jeton, même cycle), au même prix à 2 centimes près."""
@@ -121,7 +128,7 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
             continue
         for e in _buys(rows):
             twins.setdefault((name, e["data"]["token_id"], (e["data"].get("extra") or {}).get("cycle_id")), e)
-    orphans, prices, full = [], [], []
+    orphans, shifted, prices, full = [], [], [], []
     since = max(since or COPIE_FIDELE_DEPUIS, COPIE_FIDELE_DEPUIS)
     for e in _buys(principal, since):
         d, x = e["data"], e["data"].get("extra") or {}
@@ -131,7 +138,10 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
         twin = twins.get((ghost, d["token_id"], x.get("cycle_id")))
         label = f"{e['ts'][:16]} {d['strategy_id']} « {d['outcome']} » {d['shares']} parts à {float(d['price']):.3f}"
         if twin is None:
-            orphans.append(label)
+            if x.get("resting_order") and _ghost_buys_later(entries[ghost], d["token_id"], _ts(e)):
+                shifted.append(label)
+            else:
+                orphans.append(label)
             continue
         g = twin["data"]
         if abs(float(d["price"]) - float(g["price"])) > 0.02:
@@ -144,6 +154,12 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
         out.append(_finding("copie_fidele", GRAVE, f"{len(orphans)} achat(s) du principal sans jumeau dans le fantôme copié",
                             "Le principal doit refaire les paris du fantôme (copie fidèle) : un achat sans jumeau "
                             "veut dire qu'il joue une autre stratégie que celle que l'arène note.", orphans))
+    if shifted:
+        out.append(_finding("copie_fidele", A_REGARDER, f"{len(shifted)} ordre(s) posé(s) copié(s) servi(s) au principal avant le fantôme",
+                            "Le principal passe après les fantômes dans le cycle et relit le carnet : son exemplaire de "
+                            "l'ordre posé peut être servi une minute avant celui du fantôme, qui est servi (ou remplacé) "
+                            "au cycle suivant. Même pari, exécution décalée (23/10/2026, contrer_crypto_patiente, 0,36 €) : "
+                            "à surveiller seulement si les montants grossissent.", shifted))
     if prices:
         out.append(_finding("copie_fidele", A_REGARDER, f"{len(prices)} achat(s) copiés à un autre prix (> 2 centimes)",
                             "Même pari, prix différent : vérifier l'ordre d'exécution et la liquidité partagée.", prices))
@@ -570,6 +586,41 @@ def estimation_gonflee(entries: dict[str, list[dict]], min_trades: int = 100, z_
                      "à la mise (Kelly). Regarder le paramètre `bias`/`shrink` de la stratégie et la mise par tranche de prix.")]
 
 
+# Stratégies dont les jambes multiples d'un même événement sont voulues (arbitrages, échelles, teneurs de marché).
+_JAMBES_VOULUES = ("market_maker", "cross_market", "paire_oui_non", "echelle_dates", "coherence_match", "marches_jumeaux",
+                   "implication_politique", "outsiders_surcotes", "football_trois_issues", "market_structure", "compteur_tweets",
+                   "mots_", "meteo", "loterie_meteo", "crypto_threshold", "cpi_tranches", "jobs_favori_non", "saison_non")
+
+
+def jambes_meme_evenement(entries: dict[str, list[dict]], since: datetime | None = None, min_markets: int = 3,
+                          min_cost: float = 100.0, window_hours: float = 2.0) -> list[dict]:
+    """Au moins `min_markets` marchés différents du MÊME événement achetés par un même fantôme dans `window_hours` heures,
+    pour plus de `min_cost` € : vainqueur, écarts et total d'un match sont un seul pari compté plusieurs fois."""
+    out = []
+    for name, rows in entries.items():
+        if name == "principal" or name.startswith(_JAMBES_VOULUES):
+            continue
+        by_event: dict[str, list[dict]] = defaultdict(list)
+        for e in _buys(rows, since):
+            if e["data"].get("event_id"):
+                by_event[e["data"]["event_id"]].append(e)
+        bad = []
+        for eid, buys in by_event.items():
+            buys.sort(key=_ts)
+            for i, first in enumerate(buys):
+                group = [b for b in buys[i:] if _ts(b) - _ts(first) <= timedelta(hours=window_hours)]
+                markets = {b["data"]["market_id"] for b in group}
+                cost = sum(_cost(b["data"]) for b in group)
+                if len(markets) >= min_markets and cost >= min_cost:
+                    bad.append(f"{first['ts'][:16]} événement {eid} : {len(markets)} marchés, {cost:.0f} €")
+                    break
+        if bad:
+            out.append(_finding("jambes_meme_evenement", A_REGARDER, f"{name} : {len(bad)} événement(s) joué(s) par {min_markets} marchés ou plus",
+                                "Les marchés d'un même match (vainqueur, écarts, totaux) tombent ensemble : une seule perte "
+                                "fait perdre toutes les jambes. Limiter la stratégie à un pari par événement.", bad))
+    return out
+
+
 def deux_camps(entries: dict[str, list[dict]], since: datetime | None = None, min_price: float = 0.7) -> list[dict]:
     """Même stratégie, même marché, les deux camps achetés CHERS (prix ≥ 0,70 : un favori puis le camp opposé
     devenu favori ; les jambes à 0,50 des teneurs de marché et paires sont voulues) : le deuxième achat
@@ -680,7 +731,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
                 + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries)
-                + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
+                + deux_camps(entries, since) + jambes_meme_evenement(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
