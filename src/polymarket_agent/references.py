@@ -368,6 +368,7 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["champions"] = attach_outrights(markets, db)
     counts["repos_nhl"] = attach_nhl_rest(markets, db)
     counts["mentions"] = attach_mentions(markets, db)
+    counts["detroits"] = attach_detroits(markets, db)
     return counts
 
 
@@ -643,5 +644,105 @@ def attach_mentions(markets, db, prior: float = 2.0, new_word_min: int = 10) -> 
         m.references = dict(m.references or {}, mentions={
             "p": round(p, 4), "n": hit["n"], "vu_le": seen.isoformat() if seen else None,
             "titre": f"{key[0]} a dit « {key[1]} » {hit['oui']} fois sur {hit['n']}"})
+        n += 1
+    return n
+
+
+# ------------------------------------------------------------------ détroits (IMF PortWatch, 23/10/2026)
+
+PORTWATCH = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query"
+DETROITS = {"bab el-mandeb": "Bab el-Mandeb Strait", "hormuz": "Strait of Hormuz"}
+DETROIT_EVENT = re.compile(r"^Avg\. # of ships transiting (Bab el-Mandeb Strait|Strait of Hormuz)\b", re.IGNORECASE)
+DETROIT_TRANCHE = re.compile(r"(?:fewer than (\d+)|between (\d+) and (\d+)|(\d+) or more) average daily transits", re.IGNORECASE)
+
+
+def fetch_portwatch(http: HttpClient, days: int = 800) -> list[dict]:
+    """Passages quotidiens (`n_total`, navires de tous types) des deux détroits, `days` derniers jours, publiés par
+    le FMI avec ≈ 5 jours de retard : c'est la source qui TRANCHE les marchés « Avg. # of ships transiting… »."""
+    rows = []
+    for name in DETROITS.values():
+        data = http.get_json(PORTWATCH, params={"where": f"portname='{name}'", "outFields": "date,n_total", "orderByFields": "date DESC",
+                                                "resultRecordCount": days, "f": "json"}) or {}
+        pts = sorted((str(f["attributes"]["date"])[:10], int(f["attributes"]["n_total"])) for f in data.get("features") or []
+                     if f.get("attributes", {}).get("n_total") is not None)
+        if pts:
+            rows.append({"detroit": name, "jours": pts})
+    return rows
+
+
+def detroit_tranche(question: str, detroit: str) -> tuple[float, float] | None:
+    """Bornes [bas, haut[ de la tranche. Bab el-Mandeb : « entre 20 et 24 » = [20, 25[ ; Ormuz : « entre 5 et 10 » = [5, 10[
+    (« exactement entre deux tranches → la plus haute »)."""
+    m = DETROIT_TRANCHE.search(question or "")
+    if not m:
+        return None
+    if m.group(1):
+        return (-1e9, float(m.group(1)))
+    if m.group(4):
+        return (float(m.group(4)), 1e9)
+    lo, hi = float(m.group(2)), float(m.group(3))
+    return (lo, hi + 1.0) if detroit.startswith("Bab") else (lo, hi)
+
+
+def ma7_forecast(counts: list[int], horizon: int, level_days: int = 45, weight: float = 0.5, window: int = 365,
+                 regime_days: int = 120, regime_ratio: float = 2.0) -> tuple[float, float] | None:
+    """Loi (moyenne, écart-type) de la moyenne sur 7 jours dans `horizon` jours. Moyenne = mélange (`weight`) de la moyenne sur 7 jours
+    d'aujourd'hui et du niveau des `level_days` derniers jours ; écart-type = erreur quadratique de ce même calcul sur les
+    `window` dernières origines dont le résultat est CONNU (aucun regard vers le futur). Étalonné le 23/10/2026
+    (experiments/detroits.md) : sur 2 ans, la tranche de 5 qui contient la vraie valeur reçoit en moyenne 0,36 (Bab el-Mandeb).
+    Garde-fou de régime : si la moyenne sur 7 jours a varié de plus du simple au double sur les `regime_days` derniers jours, la loi n'est
+    pas fiable (Ormuz : de 100 passages par jour à 4 en mars 2026, écart-type calculé 19 pour un trafic de 4) : aucune loi."""
+    n = len(counts)
+    if horizon < 1 or n < level_days + 60 + horizon:
+        return None
+    recent = [sum(counts[i - 6:i + 1]) / 7 for i in range(max(6, n - regime_days), n)]
+    if max(recent) > regime_ratio * max(min(recent), 0.5):
+        return None
+
+    def mu(i: int) -> float:
+        return weight * sum(counts[i - 6:i + 1]) / 7 + (1 - weight) * sum(counts[i - level_days + 1:i + 1]) / level_days
+
+    errs = [sum(counts[j + horizon - 6:j + horizon + 1]) / 7 - mu(j) for j in range(level_days, n - horizon)]
+    errs = errs[-window:]
+    if len(errs) < 60:
+        return None
+    sd = math.sqrt(sum(e * e for e in errs) / len(errs))
+    return mu(n - 1), max(sd, 0.5)
+
+
+def _normal_cdf(x: float) -> float:
+    return 0.5 * (1 + math.erf(x / math.sqrt(2)))
+
+
+def attach_detroits(markets, db) -> int:
+    """`market.references["detroit"] = {"p", "mu", "sd", "dernier_jour", "tranche", "vu_le", "titre"}` : chance que la moyenne sur
+    7 jours de PortWatch à la date du marché tombe dans la tranche de ce marché (marchés « Avg. # of ships transiting… end of <mois> »)."""
+    if db is None:
+        return 0
+    seen, rows = _load(db, "ref:portwatch")
+    series = {r["detroit"]: r["jours"] for r in rows}
+    n = 0
+    for m in markets:
+        ev = DETROIT_EVENT.match(m.event_title or "")
+        if not ev or m.end_date is None or [str(o).lower() for o in m.outcomes] != ["yes", "no"]:
+            continue
+        name = DETROITS["bab el-mandeb" if ev.group(1).lower().startswith("bab") else "hormuz"]
+        jours = series.get(name) or []
+        tranche = detroit_tranche(m.question, name)
+        if not jours or tranche is None:
+            continue
+        days = [datetime.fromisoformat(d).date() for d, _ in jours]
+        if any((b - a).days != 1 for a, b in zip(days, days[1:])):  # un trou dans la série : pas de calcul
+            continue
+        target = (m.end_date.astimezone(timezone.utc) - timedelta(hours=4)).date()  # échéance 03:59 UTC du lendemain
+        forecast = ma7_forecast([c for _, c in jours], (target - days[-1]).days)
+        if forecast is None:
+            continue
+        mu, sd = forecast
+        p = _normal_cdf((tranche[1] - mu) / sd) - _normal_cdf((tranche[0] - mu) / sd)
+        m.references = dict(m.references or {}, detroit={
+            "p": round(p, 4), "mu": round(mu, 2), "sd": round(sd, 2), "dernier_jour": days[-1].isoformat(),
+            "vu_le": seen.isoformat() if seen else None,
+            "titre": f"{name} : moyenne sur 7 jours attendue le {target} {mu:.1f} ± {sd:.1f}, tranche {tranche[0]:g}-{tranche[1]:g}"})
         n += 1
     return n

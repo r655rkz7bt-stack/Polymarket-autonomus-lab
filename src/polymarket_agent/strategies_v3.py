@@ -1117,8 +1117,55 @@ class NonAuxDrames(_Base):
                 events.add(m.event_id)
         return self._finish(out, props)
 
+
+class DetroitsTranches(_Base):
+    """« Avg. # of ships transiting Bab el-Mandeb Strait / Strait of Hormuz end of <mois> ? » : tranches de la moyenne sur 7 jours
+    publiée par IMF PortWatch (avec ≈ 5 jours de retard). On prolonge la série du FMI (references.attach_detroits : moyenne sur
+    7 jours d'aujourd'hui mélangée au niveau des 45 derniers jours, écart-type tiré des erreurs passées) et on achète le côté que
+    le marché vend nettement moins cher que cette loi. Le 23/10/2026 la tranche 25-29 de Bab el-Mandeb était à 0,81 pour 0,45-0,51
+    d'après 2 ans d'historique ; AUCUN prix passé de ce type de marché n'existe (deux événements seulement) : verdict « indice »,
+    fantôme en quart de Kelly (experiments/detroits.md)."""
+
+    strategy_id = "detroits_tranches"
+    required = ("min_gap", "uncertainty", "max_stale_hours", "min_net_edge", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "detroit", int(self.params.get("max_candidates", 40)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("detroit")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("relevé PortWatch pas à jour")
+                continue
+            yes = _book_mid(books, m.token_ids[0])
+            if yes is None:
+                out.abstain("carnet indisponible")
+                continue
+            fair, unc, gap = float(ref["p"]), float(p["uncertainty"]), float(p["min_gap"])
+            if fair - yes >= gap:
+                side, est = 0, fair
+            elif yes - fair >= gap:
+                side, est = 1, 1 - fair
+            else:
+                out.abstain("prix proche de la loi calculée")
+                continue
+            prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
+                             f"detroits:{ref['titre']}", f"loi calculée {fair:.3f} contre prix {yes:.3f}",
+                             "la moyenne sur 7 jours de PortWatch sort de la loi calculée (changement de régime)")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
-                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume)}
+                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
+                                      DetroitsTranches)}

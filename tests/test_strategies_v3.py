@@ -314,3 +314,24 @@ def test_after_deadline_waits_for_the_match_to_end_and_plays_one_leg_per_event(t
         m.game_start = NOW - timedelta(hours=4)  # fini depuis longtemps
     out = a.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert len(out.proposals) == 1  # trois jambes du même match : une seule
+
+
+def test_detroits_tranches_sells_the_overpriced_bucket_and_buys_the_cheap_one(tmp_path):
+    from polymarket_agent.strategies_v3 import DetroitsTranches
+    s = _s(DetroitsTranches, min_gap=0.12, uncertainty=0.12, max_stale_hours=12, min_net_edge=0.02, max_extra_ticks=1,
+           max_proposals_per_cycle=3, kelly_fraction=0.25)
+    fresh = NOW.isoformat()
+
+    def tr(mid, p, yes_mid, vu=fresh):
+        m = _m(mid, events=[{"id": "ev9", "title": "Avg. # of ships transiting Bab el-Mandeb Strait end of October?"}])
+        m.references = {"detroit": {"p": p, "mu": 26.7, "sd": 3.6, "dernier_jour": "2026-10-18", "vu_le": vu, "titre": "Bab el-Mandeb : test"}}
+        return m, _books((f"{mid}Y", f"{yes_mid - 0.01:.3f}", f"{yes_mid + 0.01:.3f}"), (f"{mid}N", f"{1 - yes_mid - 0.01:.3f}", f"{1 - yes_mid + 0.01:.3f}"))
+    cases = [tr("c", 0.48, 0.81), tr("b", 0.28, 0.07), tr("d", 0.17, 0.105), tr("old", 0.48, 0.81, vu=(NOW - timedelta(hours=40)).isoformat())]
+    ms, books = [c[0] for c in cases], {}
+    for _, b in cases:
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    got = {p.market_id: p.outcome for p in out.proposals}
+    assert got == {"c": "No", "b": "Yes"}  # d : écart de 0,065 < 0,12 ; old : relevé périmé
+    assert out.abstentions
+    assert {m.market_id for m in s.candidates(ms)} == {"c", "b", "d", "old"}

@@ -337,3 +337,68 @@ def test_tweet_strategy_can_skip_elon_and_trump(tmp_path):
     assert not _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path, "b"), LIMITS, "b1").proposals
     m.tweets["compte"] = "tedcruz"  # les autres comptes restent joués
     assert [p.outcome for p in _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1").proposals] == ["Yes"]
+
+
+# ------------------------------------------------------------------ détroits (IMF PortWatch, 23/10/2026)
+
+def _jours(counts, fin="2026-10-18"):
+    from datetime import date
+    end = date.fromisoformat(fin)
+    return [((end - timedelta(days=len(counts) - 1 - i)).isoformat(), c) for i, c in enumerate(counts)]
+
+
+def _bab_series():
+    """Série du genre Bab el-Mandeb d'octobre 2026 : niveau autour de 27 qui dérive, bruit quotidien de ±5 (17 à 37 par jour)."""
+    import random
+    rnd, level, out = random.Random(7), 27.0, []
+    for _ in range(600):
+        level = min(max(level + rnd.gauss(0, 0.6) + 0.02 * (27 - level), 20), 36)
+        out.append(max(int(round(rnd.gauss(level, 5))), 0))
+    out[-7:] = [34, 17, 24, 24, 25, 29, 32]  # les 7 derniers jours réels : moyenne sur 7 jours 26,4
+    return out
+
+
+def test_detroit_tranche_bounds_follow_each_market_rule():
+    assert refs.detroit_tranche("Will there be between 20 and 24 average daily transits of the Bab el-Mandeb Strait?", "Bab el-Mandeb Strait") == (20.0, 25.0)
+    assert refs.detroit_tranche("Will there be fewer than 20 average daily transits of the Bab el-Mandeb Strait?", "Bab el-Mandeb Strait")[1] == 20.0
+    assert refs.detroit_tranche("Will there be 35 or more average daily transits of the Bab el-Mandeb Strait?", "Bab el-Mandeb Strait")[0] == 35.0
+    # Ormuz : « exactement entre deux tranches → la plus haute » : [5, 10[
+    assert refs.detroit_tranche("Will there be between 5 and 10 average daily transits of the Strait of Hormuz?", "Strait of Hormuz") == (5.0, 10.0)
+    assert refs.detroit_tranche("Will Iran close the Strait of Hormuz?", "Strait of Hormuz") is None
+
+
+def test_ma7_forecast_is_wide_and_never_uses_the_future():
+    counts = _bab_series()
+    mu, sd = refs.ma7_forecast(counts, 13)
+    assert 25 < mu < 29 and 1.0 < sd < 4.5  # bruit quotidien ±6 : la moyenne sur 7 jours bouge de quelques unités
+    assert refs.ma7_forecast(counts[:50], 13) is None  # historique trop court
+    # Ormuz (mars 2026) : de 100 passages par jour à 4 — régime changé dans les 120 derniers jours, aucune loi
+    assert refs.ma7_forecast([100] * 300 + [4] * 100, 13) is None
+    assert refs.ma7_forecast([100] * 300 + [4] * 200, 13) is not None  # régime établi depuis plus de 120 jours
+    # changer le futur d'un point passé (hors origines connues) ne change pas l'écart-type d'une origine antérieure
+    cut = counts[:-20]
+    assert refs.ma7_forecast(cut, 13) is not None
+
+
+def test_attach_detroits_gives_the_probability_of_each_bucket_and_they_sum_to_one(tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    refs._save(db, "ref:portwatch", [{"detroit": "Bab el-Mandeb Strait", "jours": _jours(_bab_series())}], NOW)
+    end = NOW.replace(hour=3, minute=59) + timedelta(days=13)
+    mk = lambda mid, q: parse_market(raw_market(mid, question=q, end=end, events=[
+        {"id": "ev9", "title": "Avg. # of ships transiting Bab el-Mandeb Strait end of October?"}]))
+    qs = {"a": "Will there be fewer than 20 average daily transits of the Bab el-Mandeb Strait end of October?",
+          "b": "Will there be between 20 and 24 average daily transits of the Bab el-Mandeb Strait end of October?",
+          "c": "Will there be between 25 and 29 average daily transits of the Bab el-Mandeb Strait end of October?",
+          "d": "Will there be between 30 and 34 average daily transits of the Bab el-Mandeb Strait end of October?",
+          "e": "Will there be 35 or more average daily transits of the Bab el-Mandeb Strait end of October?"}
+    markets = [mk(k, q) for k, q in qs.items()] + [parse_market(raw_market("x", question="Will it rain?", end=end))]
+    assert refs.attach_detroits(markets, db) == 5
+    p = {m.market_id: m.references["detroit"]["p"] for m in markets[:5]}
+    assert abs(sum(p.values()) - 1) < 0.01
+    assert max(p, key=p.get) == "c" and p["c"] < 0.7  # jamais la quasi-certitude que le marché affichait (0,81)
+    assert not getattr(markets[5], "references", None) or "detroit" not in markets[5].references
+    # série avec un trou : aucun calcul
+    gap = _jours(_bab_series())
+    del gap[100]
+    refs._save(db, "ref:portwatch", [{"detroit": "Bab el-Mandeb Strait", "jours": gap}], NOW)
+    assert refs.attach_detroits([mk("c2", qs["c"])], db) == 0

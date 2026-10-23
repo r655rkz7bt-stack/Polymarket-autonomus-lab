@@ -96,7 +96,10 @@ scanner:
   # ~0-700 $ de volume par jour, donc écartés par min_volume_24h ; `cpi_tranches` et `jobs_favori_non` ne voyaient aucun marché (0 achat, abstentions vides).
   tag_pages: {100343: {pages: 2, min_liquidity: 100, min_volume_24h: 0, max_spread: 0.10},
               102964: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
-              101701: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
+              101701: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
+              # 23/10/2026 : étiquette bab-el-mandeb (105617), tranches « average daily transits » : 191-546 $ de volume par jour
+              # pour 3 tranches sur 5 (sous min_volume_24h), donc invisibles ; `detroits_tranches` les demande.
+              105617: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
@@ -230,6 +233,7 @@ sources:
   xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
+  portwatch: {enabled: true, every_minutes: 120}                # FMI : passages dans les détroits (Ormuz, Bab el-Mandeb), publiés avec ≈ 5 jours de retard
   odds_outrights:                                                # ODDS_API_KEY ; champions de saison, 1 crédit par jour et par championnat
     enabled: true
     every_minutes: 60
