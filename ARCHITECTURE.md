@@ -955,3 +955,11 @@ personne n'atteignait 20 jugées (toutes à ½ mise) ; 11 stratégies passent à
 quart. (2) Renfort (`strategy_health.boost`, `arena.measured_stake`) : avantage mesuré ÷ supposé,
 entre 1 et 2, après 30 opérations et confiance par jour ≥ 80 %. (3) Le principal copie à la mise de
 base (`Weighted(..., base=)` divise par la prudence du fantôme) : un seul renfort, par l'arène.
+
+## 56. Deux camps d'un même match, mise plafonnée des fantômes (23/10/2026, demande d'Etienne)
+
+`experiments/enquetes/2026-10-23_deux_camps_et_mises_geantes.md`. (1) `main._opposite_side`
+(`settings.yaml` → `deux_camps.prix_min` 0,70) : pas d'achat au-dessus de 0,70 d'un jeton d'un marché où
+le portefeuille tient déjà un autre jeton payé au-dessus de 0,70, ni de deux camps dans le même cycle
+(arbitrages et tenue de marché, autour de 0,50, passent). (2) `main._cap_ghost` (`fantomes.max_mise` 0,25) :
+une mise de fantôme ≤ 25 % de son capital estimé ; mêmes paris, taille seulement.
