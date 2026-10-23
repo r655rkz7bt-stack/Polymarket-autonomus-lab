@@ -197,3 +197,28 @@ def test_temperature_floor_buys_no_on_lost_bucket(ledger, limits):
     assert not strat.propose([m], books, ledger.state, limits, "B1").proposals
     m.weather = None
     assert not strat.propose([m], books, ledger.state, limits, "B1").proposals
+
+
+def test_news_momentum_does_not_claim_an_edge_beyond_certainty(ledger, limits):
+    """Enquête du 23/10/2026 : « prix + continuation » dépassait 1 pour un « Non » vendu 0,986 (marché
+    météo du Cap), l'estimation était plafonnée à 0,999 (borne basse comprise) et la mise montait à 20 %
+    du fantôme pour 1,3 point de gain possible. La continuation ne peut plus dépasser la moitié de ce
+    qui sépare le prix de la certitude."""
+    near_certain = market_with(0.014, before_6h=0.10)  # le OUI s'effondre : on achète le NON à 0,986
+    out = news().propose([near_certain], books_mid("0.013", "0.014"), ledger.state, limits, "B1")
+    assert not out.proposals and out.abstentions == {"avantage net insuffisant": 1}
+    # loin de la certitude, rien ne change : milieu 0,5975 + 0,06 (la moitié de 0,4025 est 0,20)
+    assert news().propose([market_with(0.6, before_6h=0.50)], books_mid("0.595", "0.60"),
+                          ledger.state, limits, "B1").proposals[0].est_probability == D("0.6575")
+
+
+def test_information_advantage_and_social_sentiment_do_not_claim_an_edge_beyond_certainty(ledger, limits):
+    """Même plafond que `news_momentum` (`_bump`) : un bonus sur un favori à 0,985 ne promet plus 0,999."""
+    books = books_mid("0.984", "0.985")
+    near = market_with(0.985, before_1h=0.985, official_minutes=10, official_stance=0.9)
+    assert not info().propose([near], books, ledger.state, limits, "B1").proposals
+    s = SocialSentiment("1.0.0", "2026-10-15", {"min_stance": D("0.7"), "min_mentions": D("10"), "fade": D("0.03"),
+                                                "uncertainty": D("0.0"), "min_net_edge": D("0.01"),
+                                                "max_proposals_per_cycle": D("2")})
+    crowd = market_with(0.015, stance=0.9, signal=False)  # la foule achète le OUI à 0,015 ; on achète le favori « Non » à 0,985
+    assert not s.propose([crowd], books_mid("0.014", "0.015"), ledger.state, limits, "B1").proposals

@@ -3049,3 +3049,45 @@ detroits_marche_log:
     max_candidates: {value: 60, min: 0, max: 200}
     max_proposals_per_cycle: {value: 4, min: 0, max: 20}
     kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly : 40 événements seulement, 5 mois
+
+nf_tennis_12_18h_vainqueur_800_850:
+  explication: "Le favori en tennis, seulement les paris « qui gagne le match », achetés entre 12 h et 18 h (heure UTC), et seulement quand le prix payé est entre 0,80 et 0,85."
+  # Fille 80/20 (obligation du 23/10, soir) : prix payé 0,800-0,850 = 12 opérations, +162, +10,2 % par mise contre la mère. Douze paris : une piste,
+  # pas une preuve (la famille entière gagne autant que ses prix, enquête du 22/10). Fantôme gratuit ; jugée contre sa mère sur la même période.
+  mere: nf_tennis_12_18h_vainqueur
+  morceau: "tennis, vainqueur, 12-18 h UTC, prix payé 0,800-0,850"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], heure_utc: [12, 18], types_pari: [vainqueur], prix_min: 0.8, prix_max: 0.85}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_6_24h_autre:
+  explication: "Le favori de sport de la championne entre 6 et 24 heures avant la fin, mais seulement quand on achète une équipe ou un joueur (pas un « Oui » ni un « Non »)."
+  # Fille 80/20 (obligation du 23/10, soir) : issue « autre » = 11 opérations, +149, +17,3 % par mise contre la mère. Onze paris : une piste, pas une preuve.
+  mere: nf_sport_patiente_6_24h
+  morceau: "sport, patiente, 6 à 24 h, issue autre (équipe, joueur)"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24, prix_min: 0.8, prix_final: true, issue: [autre]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
