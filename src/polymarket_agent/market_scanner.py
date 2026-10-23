@@ -136,6 +136,45 @@ def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanR
             result.markets.append(market)
 
 
+def _add_series_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
+    """Marchés d'une SÉRIE de sport (23/10/2026, piste « moins de cartes » en e-sport,
+    experiments/pistes_sport_coherence.md) : `series_pages: {série: {types, titre_contient, ...}}`.
+    Ces marchés s'échangent souvent moins de 1 000 $ par jour et n'entraient jamais dans le scan ;
+    seuls les types demandés (`types`, Gamma sportsMarketType) des événements dont le titre contient
+    l'un des `titre_contient` sont gardés, avec les filtres propres à la série. Comme les marchés
+    longs, ils ne sont vus que par les stratégies qui les demandent (`extra_only`)."""
+    for series, spec in (cfg.get("series_pages") or {}).items():
+        spec = dict(spec or {})
+        types = set(spec.pop("types", []) or [])
+        words = list(spec.pop("titre_contient", []) or [])
+        series_cfg = dict(cfg, **spec)
+        try:
+            events = gamma.list_series_events(series, end_min=now)
+        except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
+            log.warning("scanner : série %s indisponible (%s)", series, exc)
+            continue
+        for event in events:
+            title = str(event.get("title") or "")
+            if words and not any(w in title for w in words):
+                continue
+            for item in event.get("markets") or []:
+                if not isinstance(item, dict) or (types and item.get("sportsMarketType") not in types):
+                    continue
+                item = dict(item, events=[{"id": event.get("id"), "slug": event.get("slug"), "title": title}])
+                if item.get("spread") is None and item.get("bestAsk") is not None and item.get("bestBid") is not None:
+                    item["spread"] = float(item["bestAsk"]) - float(item["bestBid"])
+                market = parse_market(item)
+                if market.market_id in seen:
+                    continue
+                seen.add(market.market_id)
+                market.exclusion = classify(market, now, series_cfg)
+                market.eligible = not market.exclusion
+                market.extra_only = True
+                if market.exclusion:
+                    result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
+                result.markets.append(market)
+
+
 def _add_ended_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
     """Marchés dont l'échéance vient de PASSER (20/10/2026, stratégie apres_echeance) : encore
     échangés en attendant la résolution officielle. `ended_pages` pages, échéance entre
@@ -185,6 +224,7 @@ def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
     _add_holding_markets(gamma, now, cfg, result, seen)
     _add_long_markets(gamma, now, cfg, result, seen)
     _add_tag_markets(gamma, now, cfg, result, seen)
+    _add_series_markets(gamma, now, cfg, result, seen)
     _add_ended_markets(gamma, now, cfg, result, seen)
     eligible = sorted((m for m in result.markets if m.eligible and not m.ended and not m.extra_only),
                       key=lambda m: m.volume_24h, reverse=True)

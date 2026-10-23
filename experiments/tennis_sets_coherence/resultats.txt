@@ -1,0 +1,70 @@
+matchs tirés 1030, dont échanges relevés 1030
+# tennis : 1030 matchs de l'échantillon, 3560 marchés liés réglés, du 2025-11-07 au 2026-10-22 ; apprentissage avant le 2026-05-29
+types de marchés liés : {'total': 1023, 'manche 1': 1028, 'handicap': 1062, 'manche 2': 439, 'manche 3': 8}
+BO : {3: 978, 5: 52} ; échanges indisponibles : 0 ; tronqués : 1
+
+72 réglages essayés.
+
+## Diagnostic (h = 3, fenêtre 6 h, prix « avant ») : Brier du modèle contre Brier du prix payé, issue 0 des marchés liés
+comptes : {'marchés liés examinés': 2930, 'marché lié sans échange dans la fenêtre': 2131, "vainqueur sans échange réel dans l'heure avant T0": 184, 'échanges tronqués avant T0': 1}
+   handicap   n=  245  Brier modèle 0.2455  Brier prix payé 0.2384  écart moyen |modèle − prix| 0.076  gagnés 133 / attendus modèle 105.2 / prix 123.5
+   manche 1   n=  116  Brier modèle 0.2165  Brier prix payé 0.2216  écart moyen |modèle − prix| 0.030  gagnés 69 / attendus modèle 64.1 / prix 64.9
+   manche 2   n=    7  Brier modèle 0.2098  Brier prix payé 0.1783  écart moyen |modèle − prix| 0.049  gagnés 6 / attendus modèle 4.3 / prix 4.2
+   total      n=  160  Brier modèle 0.2522  Brier prix payé 0.2442  écart moyen |modèle − prix| 0.081  gagnés 58 / attendus modèle 76.1 / prix 63.8
+
+## Réglages classés sur l'apprentissage (1re moitié), jugés sur la 2e moitié
+| réglage | paris appr. | rendement appr. | paris test | matchs | rendement test | t par match | mois gagnants | gagnés / attendus (z) | verdict test |
+|---|---|---|---|---|---|---|---|---|---|
+| h=1 fen=6h avant avance>0.06 recalibré | 58 | +69.8 % | 42 | 37 | +39.0 % | +1.05 | 5/6 | 20 / 17.0 (z +1.0) | indice |
+| h=6 fen=2h avant avance>0.03 recalibré | 43 | +56.6 % | 36 | 32 | +38.9 % | +0.56 | 3/6 | 15 / 13.5 (z +0.5) | écartée |
+| h=6 fen=6h avant avance>0.03 recalibré | 66 | +54.0 % | 51 | 39 | +30.5 % | +0.74 | 2/6 | 22 / 20.9 (z +0.3) | écartée |
+| h=3 fen=2h après avance>0.03 recalibré | 62 | +51.7 % | 30 | 28 | -0.6 % | +0.27 | 3/6 | 12 / 11.6 (z +0.2) | écartée |
+| h=3 fen=6h avant avance>0.1 recalibré | 33 | +43.4 % | 30 | 25 | +45.6 % | +0.58 | 4/6 | 16 / 14.4 (z +0.6) | écartée |
+| h=6 fen=2h après avance>0.1 recalibré | 43 | +42.8 % | 42 | 41 | -13.0 % | -0.97 | 3/6 | 17 / 20.9 (z -1.2) | écartée |
+| h=1 fen=2h avant avance>0.03 recalibré | 89 | +40.2 % | 57 | 49 | +15.5 % | +0.06 | 5/6 | 30 / 27.1 (z +0.8) | écartée |
+| h=3 fen=6h avant avance>0.03 recalibré | 146 | +38.4 % | 140 | 116 | +8.2 % | -0.15 | 3/6 | 71 / 70.9 (z +0.0) | écartée |
+
+## Période entière, quelques réglages fixes (pas de choix sur le résultat)
+| réglage | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |
+|---|---|---|---|---|---|---|---|
+| h=1 fen=2h avant avance>0.03 brut | 323 | 264 | +3.5 % | +0.44 | 6/12 | 157 / 158.9 (z -0.2) | écartée |
+| h=1 fen=2h avant avance>0.1 brut | 23 | 21 | +21.0 % | +0.66 | 6/9 | 11 / 8.9 (z +0.9) | écartée |
+| h=1 fen=2h après avance>0.03 brut | 351 | 275 | -8.9 % | -0.88 | 3/12 | 154 / 170.4 (z -1.8) | écartée |
+| h=1 fen=2h après avance>0.1 brut | 33 | 28 | +12.1 % | +0.44 | 5/12 | 14 / 12.3 (z +0.6) | écartée |
+| h=3 fen=6h avant avance>0.03 brut | 357 | 277 | +9.8 % | +1.08 | 9/12 | 182 / 176.0 (z +0.7) | indice |
+| h=3 fen=6h avant avance>0.1 brut | 31 | 25 | +74.3 % | +1.87 | 9/12 | 18 / 12.0 (z +2.3) | retenue |
+| h=3 fen=6h après avance>0.03 brut | 489 | 366 | -3.9 % | -0.58 | 5/12 | 225 / 238.0 (z -1.2) | écartée |
+| h=3 fen=6h après avance>0.1 brut | 39 | 34 | +1.4 % | +0.31 | 4/11 | 15 / 15.5 (z -0.2) | écartée |
+| h=6 fen=6h après avance>0.03 brut | 568 | 386 | -0.3 % | -0.17 | 6/12 | 273 / 277.7 (z -0.4) | écartée |
+| h=6 fen=6h après avance>0.1 brut | 52 | 44 | -8.2 % | -0.45 | 6/11 | 21 / 20.1 (z +0.3) | écartée |
+
+## Sans modèle : acheter toujours le même côté d'un type de marché lié (h = 3, fenêtre 6 h), « avant » puis « après »
+| côté acheté | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |
+|---|---|---|---|---|---|---|---|
+| avant : manche 1, équipe / joueur A | 116 | 116 | +5.3 % | +0.60 | 7/10 | 69 / 65.6 (z +0.7) | écartée |
+| avant : manche 1, B | 101 | 101 | -0.1 % | -0.01 | 4/11 | 50 / 52.7 (z -0.6) | écartée |
+| avant : handicap, côté −1,5 (gagne sans perdre de manche en BO3) | 245 | 233 | +7.8 % | +1.14 | 8/12 | 133 / 125.2 (z +1.1) | indice |
+| avant : handicap, côté +1,5 | 283 | 256 | +7.9 % | +0.93 | 5/12 | 169 / 166.7 (z +0.3) | indice |
+| avant : total, plus (3 manches en BO3) | 160 | 157 | -4.3 % | -0.52 | 5/12 | 58 / 64.8 (z -1.1) | écartée |
+| avant : total, moins | 126 | 125 | +4.7 % | +0.56 | 7/12 | 82 / 79.6 (z +0.5) | écartée |
+| après : manche 1, équipe / joueur A | 248 | 248 | -4.0 % | -0.65 | 6/12 | 136 / 142.2 (z -0.8) | écartée |
+| après : manche 1, B | 235 | 235 | -4.4 % | -0.62 | 3/12 | 116 / 122.4 (z -0.9) | écartée |
+| après : handicap, côté −1,5 (gagne sans perdre de manche en BO3) | 351 | 321 | -0.8 % | -0.41 | 6/12 | 168 / 171.2 (z -0.4) | écartée |
+| après : handicap, côté +1,5 | 358 | 325 | -4.3 % | -0.71 | 5/12 | 197 / 210.1 (z -1.5) | écartée |
+| après : total, plus (3 manches en BO3) | 243 | 239 | -1.1 % | -0.09 | 6/12 | 97 / 102.9 (z -0.8) | écartée |
+| après : total, moins | 180 | 174 | +2.6 % | +0.67 | 7/12 | 119 / 117.7 (z +0.2) | écartée |
+
+## Prix « avant » : âge du dernier échange (T0 − heure de l'échange) des paris du réglage h=3 fen=6h avance>0,03 brut
+| échange vieux de moins de 30 min | 61 | 53 | -6.4 % | -1.53 | 5/12 | 30 / 31.6 (z -0.4) | écartée |
+| échange vieux de 30 min à 2 h | 139 | 125 | +4.7 % | +0.78 | 5/11 | 74 / 71.6 (z +0.4) | écartée |
+| échange vieux de 2 à 6 h | 158 | 140 | +21.1 % | +1.32 | 8/11 | 79 / 73.3 (z +0.9) | indice |
+
+## Réglage choisi sur l'apprentissage : h=1 fen=6h avant avance>0.06 recalibré
+{"paris": 42, "rendement_moyen": 0.3896, "confiance_paris": 1.11, "evenements": 37, "confiance_evenements": 1.05, "z_prix": 0.98, "mois": {"2026-05": 0.3397, "2026-06": -0.7292, "2026-07": 1.0509, "2026-08": 0.5325, "2026-09": 0.0007, "2026-10": 0.9537}, "mois_gagnants": "5/6", "par_prix": {"0,10-0,30": {"paris": 6, "rendement": -1.0}, "0,30-0,70": {"paris": 35, "rendement": 0.2775}, "< 0,10": {"paris": 1, "rendement": 12.651}}, "verdict": "indice", "raison": "positive mais encore fragile : fantôme, l'arène tranchera"}
+| test, kind = handicap | 30 | 30 | +52.3 % | +1.11 | 4/5 | 15 / 12.6 (z +0.9) | indice |
+| test, kind = manche 1 | 3 | 3 | +0.7 % | +0.01 | 1/2 | 1 / 0.8 (z +0.3) | écartée |
+| test, kind = manche 2 | 1 | 1 | -100.0 % | +0.00 | 0/1 | 0 / 0.5 (z -1.0) | écartée |
+| test, kind = total | 8 | 8 | +20.5 % | +0.44 | 3/5 | 4 / 3.1 (z +0.7) | écartée |
+| test, serie = atp | 29 | 25 | +64.1 % | +1.27 | 5/6 | 15 / 11.9 (z +1.2) | écartée |
+| test, serie = wta | 13 | 12 | -17.1 % | -0.31 | 1/4 | 5 / 5.0 (z -0.0) | écartée |
+comptes (période entière) : {'marchés liés examinés': 3237, 'marché lié sans échange dans la fenêtre': 2140, "vainqueur sans échange réel dans l'heure avant T0": 101, 'échanges tronqués avant T0': 1}

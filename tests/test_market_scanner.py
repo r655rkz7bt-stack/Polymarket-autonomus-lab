@@ -237,3 +237,24 @@ def test_long_markets_are_shown_only_to_the_strategies_that_asked_for_them():
     assert [m.market_id for m in _visible(S(), [court, long_, echu])] == ["court", "2028"]
     assert [m.market_id for m in _visible(Other(), [court, long_, echu])] == ["court"]
     assert [m.market_id for m in _visible(Late(), [court, long_, echu])] == ["court", "echu"]
+
+
+def test_series_pages_add_esport_totals_seen_only_by_who_asks():
+    """23/10/2026 : les matchs d'e-sport ne se trouvent que par série ; `series_pages` ajoute les
+    « Games Total » des BO3/BO5, avec les filtres de la série, en `extra_only`."""
+    class SeriesGamma(FakeGamma):
+        def list_series_events(self, series, end_min):
+            if series != 10309:
+                raise SourceUnavailable("série en panne (test)")
+            tot = raw_market("t", volume24hr=0, liquidityNum=0, sportsMarketType="totals", spread=None)
+            del tot["events"]
+            win = raw_market("w", sportsMarketType="moneyline")
+            bo1 = raw_market("b", sportsMarketType="totals")
+            return [{"id": "e1", "slug": "dota2-1win-og", "title": "Dota 2: 1win vs OG (BO3) - PARI", "markets": [tot, win]},
+                    {"id": "e2", "title": "Dota 2: A vs B (BO1)", "markets": [bo1]}]
+    spec = {"types": ["totals"], "titre_contient": ["(BO3)", "(BO5)"], "min_liquidity": 0, "min_volume_24h": 0, "max_spread": 0.2}
+    result = scan(SeriesGamma([raw_market("1")]), NOW, dict(CFG, series_pages={10309: spec, 10310: spec}))
+    added = [m for m in result.markets if m.market_id == "t"]
+    assert len(result.markets) == 2 and added[0].eligible and added[0].extra_only
+    assert added[0].event_title.startswith("Dota 2: 1win vs OG (BO3)") and added[0].event_id == "e1"
+    assert [m.market_id for m in result.watchlist] == ["1"]
