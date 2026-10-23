@@ -113,6 +113,10 @@ Raisonnable. Attention : depuis la session, les API « previous runs », « hist
    (`fetch_event_trades` + `taker_cost(after=True)`), frais du marché (0 depuis le 20/10 : `zero_fees`) ;
 5. `idea_test.verdict` pour 3 flous (σ 0,3 / 0,6 / 1,0 °C) × 3 écarts (0,05 / 0,10 / 0,15) = **9 réglages** (à dire dans le verdict).
 Il faut au moins 4 jours réglés (2 pour régler, 2 pour juger) ; mieux : 7 à 10 jours (≈ 300 marchés par jour relevés 4 fois).
+Ce qui a été vérifié du script le 23/10 : la lecture des tables sur un vrai relevé (66 tranches de Londres et Hong Kong, filtre
+d'avance, relecture sur Gamma : 0 réglé pour l'instant), puis la suite (biais, échanges, 9 réglages, verdict) **à blanc**, avec des
+règlements et des échanges fictifs : elle tourne sans erreur, ses chiffres ne veulent rien dire. Sur la base complète, la relecture
+Gamma prend plusieurs minutes (≈ 2 000 marchés) : prévoir `timeout` large ou lancer en tâche de fond.
 
 ## 5. Ce que montrent les relevés déjà pris
 - **Relevé manuel du 23/10, 15 h 23 UTC** (session précédente, `experiments/ensemble_meteo/releves/`) : 1 012 marchés, 48 stations,
