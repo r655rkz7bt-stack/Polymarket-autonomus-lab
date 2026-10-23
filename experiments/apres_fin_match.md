@@ -26,10 +26,10 @@ coup d'envoi + d ; on garde le pari si ce prix est dans la fourchette. Un seul p
 | +2 h | 781, 762 / 753, **+1,0 %** (t +1,8) | 578, 538 / 532, +0,8 % (t +0,7) | 1 289, 1 279 / 1 283, −0,3 % (t −1,4) |
 | +3 h | 282, 272 / 272, **0,0 %** (t 0,0) | 187, 171 / 172, −1,0 % (t −0,5) | 513, 507 / 511, −0,7 % (t −1,5) |
 | +4 h | 36, 35 / 35, +0,7 % | 29, 25 / 27, −6,6 % | 106, 105 / 106, −0,6 % |
-| +6 h et plus | 8 paris | 4 paris | 29 paris : 24 gagnés / 29, **−17 %** (z des prix −10) |
+| +6 h et plus | 8 paris | 4 paris | 29 paris : 24 gagnés / 28,9, **−17 %** (à +6 h : 16 gagnés / 19,9, z des prix −17) |
 
 Toutes jambes confondues : mêmes ordres de grandeur (+2 h : +0,9 %, t +1,8). Par sport à +3 h et plus : aucun sport significatif (CFB +1,3 %, ATP −5,9 %, ITF −0,4 %, NFL −2,0 %…).
-Les rares paris tardifs sont presque tous perdus quand la cote est ≥ 0,985 (4 pertes sur 20 à +6 h : 24 % de matchs « pas finis » ou à issue annulée), comme un favori à 0,99 qui n'est plus sûr.
+À +6 h et plus, les favoris ≥ 0,985 perdent 5 fois sur 29 (4 sur 20 à +6 h) : un prix à 0,99 ne dit plus rien de sûr à ce stade (peu de cas, à ne pas surinterpréter).
 
 ## Verdict : **écartée**
 À aucun retard, dans aucune des trois tranches de prix, le favori d'un match en cours ou fini ne rapporte plus que son prix après frais : de −1,4 % à +1,0 %, avec
