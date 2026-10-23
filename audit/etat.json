@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2679,
+  "principal": 2680,
   "fantome:calibration_patiente_v1.0.0": 1798,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1773,
@@ -138,15 +138,15 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 110,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 94,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 24,
-  "fantome:moins_de_cartes_v1.0.0": 32,
+  "fantome:moins_de_cartes_v1.0.0": 34,
   "fantome:non_aux_drames_v1.0.0": 56,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 55,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 44,
+  "fantome:vague_volume_suivre_v1.0.0": 57,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 46,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 27,
   "fantome:saison_non_v1.0.0": 16
  },
- "verifiees": 7025,
+ "verifiees": 7027,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1022,9 +1022,9 @@
    "op_id": "settle-2346341110142983446430536833231797955075437470583530785549582267597439451850"
   }
  ],
- "derniere_execution": "2026-10-23T08:28:27+00:00",
+ "derniere_execution": "2026-10-23T08:32:42+00:00",
  "dernier_seq_reglements": {
-  "principal": 2679,
+  "principal": 2680,
   "fantome:calibration_patiente_v1.0.0": 1798,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1773,
@@ -1043,7 +1043,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1461,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 1907,
-  "fantome:market_maker_v1.0.0": 1561,
+  "fantome:market_maker_v1.0.0": 1563,
   "fantome:favori_politique_patiente_v1.0.0": 1376,
   "fantome:favori_politique_v1.0.0": 1378,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1378,
@@ -1162,7 +1162,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 110,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 94,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 24,
-  "fantome:moins_de_cartes_v1.0.0": 32,
+  "fantome:moins_de_cartes_v1.0.0": 34,
   "fantome:non_aux_drames_v1.0.0": 56,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 57,
@@ -1170,5 +1170,5 @@
   "fantome:nf_sport_patiente_matchs_v1.0.0": 27,
   "fantome:saison_non_v1.0.0": 16
  },
- "reglements_verifies": 3534
+ "reglements_verifies": 3535
 }
