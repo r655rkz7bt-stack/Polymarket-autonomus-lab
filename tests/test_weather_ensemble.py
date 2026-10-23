@@ -85,9 +85,10 @@ def test_ensemble_is_fetched_for_cited_stations_and_recorded_next_to_prices(tmp_
     http = FakeHttp({ENSEMBLE_URL: payload})
     markets = [london(), london("63", "17°C", "L7", "N7"), hong_kong(), hong_kong("64", "26°C"),
                parse_market(raw_market("65", question="Will Bitcoin be above 80k on October 24?"))]
-    settings = {"sources": {"meteo_ensemble": {"enabled": True, "every_minutes": 360, "per_request": 10}}}
+    settings = {"sources": {"meteo_ensemble": {"enabled": True, "every_minutes": 360, "per_request": 10,
+                                               "tous_les_marches": False}}}
     result = collect(settings, http, db, markets, NOW)
-    assert result.status["meteo_ensemble"] == "ok (2 observations, 4 tranches relevées)"
+    assert result.status["meteo_ensemble"] == "ok (4 tranches relevées, 2 observations)"
     params = http.calls[0][1]
     assert params["models"] == "gfs025,ecmwf_ifs025" and params["latitude"] == "51.505,22.302"  # EGLC puis HKO (ordre alphabétique)
     rows = {r[0]: r for r in db.conn.execute(
@@ -116,3 +117,28 @@ def test_ensemble_outage_or_no_station_is_degraded_not_fatal(tmp_path):
     assert nothing.status["meteo_ensemble"] == "ok (0 observations)"
     assert we.record(db, [london()], [], NOW) == 0
     assert hko.is_hko_market(hong_kong()) and not hko.is_hko_market(london())
+
+
+def test_the_releve_covers_every_open_temperature_market_not_only_the_watched_ones(tmp_path):
+    """La liste surveillée garde 150 marchés toutes familles confondues : le relevé relit lui-même les marchés de
+    température ouverts (Gamma) et localise leurs stations (aviationweather.gov) ; les observations ne citent que les
+    marchés surveillés."""
+    db = Database(tmp_path / "m.sqlite")
+    paris = raw_market("71", yes_token="PY", no_token="PN", question="Will the highest temperature in Paris be 18°C on October 24?",
+                       resolutionSource="https://aviationweather.gov/api/data/metar?ids=LFPG&format=raw")
+    events = [{"id": "ev-paris", "slug": "highest-temperature-in-paris-on-october-24-2026", "title": "Paris", "markets": [paris]},
+              {"id": "ev-btc", "slug": "bitcoin-above-on-october-24", "markets": [raw_market("72")]}]
+    http = FakeHttp({we.GAMMA_EVENTS: events, we.METAR_URL: [{"icaoId": "LFPG", "lat": 49.0, "lon": 2.5}] * 2,
+                     ENSEMBLE_URL: [dict(utc_offset_seconds=7200, hourly=hourly(gefs=(18.2,), ecmwf=(17.9, 19.0)))]})
+    result = collect({"sources": {"meteo_ensemble": {"enabled": True}}}, http, db, [london()], NOW)
+    assert db.get_value("station:LFPG") == json.dumps([49.0, 2.5])
+    rows = db.conn.execute("SELECT marche, evenement, station, p_ensemble FROM meteo_ensemble_releves").fetchall()
+    assert [tuple(r) for r in rows] == [("71", "ev-paris", "LFPG", 2 / 3)]
+    assert result.observations == [] and result.status["meteo_ensemble"] == "ok (1 tranches relevées, 0 observations)"
+    from polymarket_agent.enquete import sources_vides  # le relevé tourne : pas une « source vide »
+    assert sources_vides({"meteo_ensemble": result.status["meteo_ensemble"]}) == []
+    assert sources_vides({"meteo_ensemble": "ok (0 tranches relevées, 0 observations)"})
+    # Gamma en panne : relevé limité aux marchés surveillés, sans faire tomber la source.
+    down = collect({"sources": {"meteo_ensemble": {"enabled": True}}}, FakeHttp({ENSEMBLE_URL: []}, down=(we.GAMMA_EVENTS,)),
+                   Database(tmp_path / "n.sqlite"), [london()], NOW)
+    assert down.status["meteo_ensemble"] == "ok (0 observations)"

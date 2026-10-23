@@ -164,6 +164,8 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # Observatoire de Hong Kong (23/10/2026) : arbitre des marchés de Hong Kong, qui ne citent aucune station METAR.
     run("meteo_hko", lambda cfg: factories.get("meteo_hko", lambda: HkoSource(http, bool(cfg.get("veille", True))))()
         .fetch(markets, now))
+    if result.status.get("meteo_hko") == "ok (0 observations)" and not any(hko.is_hko_market(m) for m in markets):
+        result.status["meteo_hko"] = "ok (aucun marché de Hong Kong surveillé : aucun appel)"  # pas une panne (sources_vides)
 
     def forecast(cfg):
         wanted = stations_for(markets)
@@ -190,8 +192,17 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     ensemble_count: list[int] = []
 
     def ensemble(cfg):  # prévisions d'ensemble (23/10/2026) : probabilité par tranche relevée à côté des prix
-        wanted = stations_for(markets)
-        hk = [m.market_id for m in markets if hko.is_hko_market(m)]
+        pool = list(markets)
+        if db and cfg.get("tous_les_marches", True):  # tous les marchés de température ouverts, pas seulement les surveillés
+            known = {m.market_id for m in pool}
+            try:
+                pool += [m for m in weather_ensemble.open_temperature_markets(http, now, float(cfg.get("heures", 48)))
+                         if m.market_id not in known]
+                weather_ensemble.locate_stations(http, db, sorted(stations_for(pool)))
+            except SourceUnavailable as exc:
+                log.warning("marchés de température non relus (relevé limité aux marchés surveillés) : %s", exc)
+        wanted = stations_for(pool)
+        hk = [m.market_id for m in pool if hko.is_hko_market(m)]
         coords = {hko.STATION: (hko.LAT, hko.LON)} if hk else {}
         if hk:
             wanted[hko.STATION] = hk
@@ -202,14 +213,20 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         if not coords:
             return []
         models = tuple(cfg.get("models") or ("gfs025", "ecmwf_ifs025"))
-        obs = factories.get("meteo_ensemble", lambda: EnsembleSource(http, int(cfg.get("per_request", 10)), models))().fetch(
+        slow = with_retries(http, cfg.get("max_retries"), cfg.get("timeout", 60))  # 10 lieux × 82 membres : réponse lente
+        obs = factories.get("meteo_ensemble", lambda: EnsembleSource(slow, int(cfg.get("per_request", 10)), models))().fetch(
             coords, wanted, now)
         if db:
-            ensemble_count.append(weather_ensemble.record(db, markets, obs, now))
-        return obs
+            ensemble_count.append(weather_ensemble.record(db, pool, obs, now))
+        watched = {m.market_id for m in markets}
+        for o in obs:  # les observations ne citent que les marchés surveillés (les autres ne servent qu'au relevé)
+            o.market_ids = [i for i in o.market_ids if i in watched]
+        return [o for o in obs if o.market_ids]
     run("meteo_ensemble", ensemble)
     if ensemble_count and result.status.get("meteo_ensemble", "").startswith("ok"):
-        result.status["meteo_ensemble"] = result.status["meteo_ensemble"][:-1] + f", {ensemble_count[0]} tranches relevées)"
+        # Le relevé d'abord : « ok (0 tranches relevées, …) » est signalé par l'enquête (sources_vides), pas « 0 observations »
+        # quand aucun marché de température n'est surveillé (le relevé, lui, les couvre tous).
+        result.status["meteo_ensemble"] = f"ok ({ensemble_count[0]} tranches relevées, " + result.status["meteo_ensemble"][4:]
     truth_count: list[int] = []
 
     def truth(cfg):  # valeurs réelles d'après les marchés météo résolus (aucune observation produite)

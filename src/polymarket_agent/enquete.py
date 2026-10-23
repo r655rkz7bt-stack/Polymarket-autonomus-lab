@@ -471,7 +471,7 @@ def sources_vides(etat: dict | None) -> list[dict]:
     (23/10/2026 : `meteo_metar` et `meteo_prevision` à 0 depuis que Gamma cite `aviationweather.gov/api/data/metar?ids=…` au lieu de
     `weather.gov/wrh/timeseries?site=…`, alors que 199 marchés de température sur 255 en dépendent)."""
     out = [f"{name} : {status}" for name, status in (etat or {}).items()
-           if isinstance(status, str) and re.match(r"ok \(0 (observations|prix relevés|marchés|cotes)", status)]
+           if isinstance(status, str) and re.match(r"ok \(0 (observations|prix relevés|marchés|cotes|tranches relevées)", status)]
     return [_finding("sources_vides", A_REGARDER, f"{len(out)} source(s) « ok » sans aucune donnée au dernier cycle",
                      "Vérifier que la source a bien des marchés à servir (format du lien, filtre, clé absente) ; un statut « ok (0 …) » n'est pas "
                      "un fonctionnement.", out)] if out else []

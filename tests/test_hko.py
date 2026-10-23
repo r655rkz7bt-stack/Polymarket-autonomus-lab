@@ -84,6 +84,10 @@ def test_hko_failure_is_a_degraded_source_not_a_crash(tmp_path):
     assert garbled.status["meteo_hko"].startswith("indisponible")
     off = collect({"sources": {"meteo_hko": {"enabled": False}}}, FakeHko(), None, [hk_market()], WHEN)
     assert off.status["meteo_hko"] == "désactivée"
+    # Aucun marché de Hong Kong surveillé (cycle local du 23/10) : ce n'est pas une source vide pour l'enquête.
+    from polymarket_agent.enquete import sources_vides
+    quiet = collect(settings, FakeHko(), Database(tmp_path / "o.sqlite"), [], WHEN)
+    assert quiet.status["meteo_hko"].startswith("ok (aucun marché de Hong Kong") and not sources_vides(quiet.status)
 
 
 def test_latest_weather_serves_hko_like_metar_so_lost_buckets_are_seen(ledger, limits):
