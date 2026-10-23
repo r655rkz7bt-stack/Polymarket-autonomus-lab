@@ -3,6 +3,16 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (session avec Etienne : intégration des pistes revues)
+
+- **Enquête** : sans objet (voir la session « anomalies » du même jour).
+- **Recherche** : rapports des trois analyses à part fusionnés (`pistes_sport_coherence.md`, `pistes_crypto_elections_drames.md`, `bresil_second_tour.md`).
+  Pistes 15 et 16 (Brésil) écartées ; 1, 2, 3, 5 écartées ; n° 4 : indice annexe « moins de cartes » en e-sport ; n° 11 : indice sur les seuls drames
+  (le chercheur l'avait écartée sur tous les marchés longs : les deux résultats se recoupent, témoin non-drames +0,9 %).
+- **Arène** : fantômes `moins_de_cartes` (scanner : `series_pages`, 91 marchés « Games Total » vus le 23/10) et `non_aux_drames` ; cycle local : 1 et 2 achats relus à la main.
+- **Reste ouvert** : `non_aux_drames` immobilise l'argent 1 à 4 mois : juger après 30 paris réglés, arrêter si deux drames arrivent le même mois ;
+  `moins_de_cartes` : fille LoL seule si l'arène confirme ; ajouter les filtres `start`/`end` de data-api à `idea_test.fetch_event_trades` (échanges anciens).
+
 ## 2026-10-22 (session dédiée : 2e tour au Brésil, pistes 15 et 16)
 
 - **Lu** : CLAUDE.md, METHODE.md, enquêtes, `fin_de_match.md`, `vingt_cinq_pistes.md`.
