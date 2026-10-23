@@ -39,7 +39,7 @@ Les écarts plus grands ont 3 à 12 paris : aucun sens statistique.
 - Limite : ces événements s'échangent peu (long tir, 20-60 marchés dont la moitié à moins de 2 cents) et la data-api n'en rend que les 10 000 derniers échanges : le test ne peut pas conclure à l'inverse non plus.
 - Rien ajouté à l'arène. À refaire si on trouve une source d'échanges plus ancienne ou si l'on relève les carnets en direct (événements à 8-36 marchés sur 30 jours, k connu : Ligue des champions « top 8 », relégation).
 
-## Relevé en direct des carnets (23/10, 20 h 33 UTC, `scripts/direct.py`)
+## Relevé en direct des carnets (23/10, 20 h 32 UTC, `scripts/direct.py`)
 Événements ouverts « Top N » à k connu par le titre, somme des meilleurs prix d'achat (Σbid) et de vente (Σask) du OUI contre k :
 - Σbid dépasse k dans les plus gros : Ballon d'Or top 3 3,108 pour k = 3 (19 marchés, 753 k$), top 5 5,137, LaLiga top 2 2,016, Premier League top 2 2,112, Europa League « top 8 » 8,125 (36 marchés), Ligue des champions « top 8 » 8,134.
   Acheter tous les NON (= vendre tous les OUI) rapporterait l'écart, soit **0,3 à 0,7 % du capital immobilisé** (par exemple 0,108 pour 15,9 sur le Ballon d'Or) avant frais, sur des mois, avec 19 à 36 jambes dont la plus mince limite la taille : pas un arbitrage à lancer.
