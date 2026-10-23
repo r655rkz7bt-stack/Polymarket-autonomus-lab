@@ -3,6 +3,22 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (passage chercheur, soir : 19 h 55 → 20 h 4x UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-23_soir_news_momentum_certitude.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations).
+  - **Défaut trouvé : `news_momentum` promet 0,999 pour un favori à 0,986.** En regardant les 27 positions « ouvertes bien après l'échéance » (990 € bloqués : marchés du Cap et de Kyiv en litige UMA, référendum d'Alberta en attente du résultat officiel),
+    trois fantômes de la famille (`nm_hors_crypto`, `nm_demi_mise`, `nm_prix_haut`) avaient chacun misé 188,8 € (20 % de leur capital) sur « Non » à 0,986 pour la température du Cap, estimation 0,999, gain possible 1,3 point.
+    Cause : `estimation = prix + 0,04`, puis bornes ramenées à 0,999 (la borne basse ne dépend plus de l'incertitude). Famille entière : 319 paris, 205 gagnés pour 216 attendus, −526 € ; prix ≥ 0,95 : −42 € pour 5 618 € misés ; 0,90-0,95 : −362 €.
+    Correctif `_bump` (la continuation ne dépasse pas la moitié de l'écart à la certitude) pour `news_momentum`, `information_advantage`, `social_sentiment` ; tests (échouent sans le plafond) ; contrôle `certitude_promise` (27 paris à 0,995 et plus : −154 €).
+  - **Obligations** : `apres_echeance` et la championne (jour du 18/10) : causes déjà écrites, rien de neuf ; `contrer_crypto_patiente` : 24 gagnés pour 18,4 attendus sur 97 paris, le déficit (−45,7 €) vient de 31 billets à moins de 0,10 (0 gagné, 12 % de chance) : variance, pas de défaut.
+  - **Vérifié** : 10 achats tirés au hasard depuis 12 h UTC relus sur Gamma (bons jetons, bons marchés, 10/10) ; copie du principal : un seul constat automatique (ordre posé servi une minute avant, déjà connu) ; le plafond de 25 % tient (671 achats de fantômes depuis le 23/10 00 h 30 : 17 à 20 % ou plus, au plus 25 %) ; `loterie_meteo` : à 19 h 45 UTC aucun marché météo n'est dans sa fenêtre de 6 h (échéances à 12 h UTC) : elle ne peut pas acheter le soir, à relire demain entre 6 h et 12 h UTC pour vérifier que le correctif de la famille météo l'a réveillée.
+- **Recherche** (`experiments/k_gagnants.md`) : somme des prix OUI = k (top N, qualifiés, relégués, huitièmes ; 121 événements, 3 713 marchés). Au premier relevé (prix du CLOB) : Σp/k 1,13-1,15 à J-14/J-30 et z −6 : carnets vides à 0,50 (défaut connu).
+  Aux vrais échanges : Σp/k médian 1,00-1,03 (13 à 24 événements utilisables, les anciens échanges manquent), renormaliser gagne 0,0004-0,012 de log-score, 27 réglages, un seul « indice » (+31 %, 13 événements) non répliqué : **écartée, preuve insuffisante**.
+  Relevé d'ensembles météo : 2e relevé (2 024 marchés, 184 événements) versionné, à évaluer le 24-25/10.
+- **Arène** : deux filles 80/20 (fantômes, morceaux de 11-12 opérations : pistes, pas preuves) `nf_tennis_12_18h_vainqueur_800_850` et `nf_sport_patiente_6_24h_autre` (cycle local : la seconde pose 2 ordres, la première est hors de sa fenêtre 12-18 h) ; pas de fille de `nf_tennis` 0,80-0,85 (doublon de `nf_tennis_prix_bas_800_850`).
+  Les 15 « éliminées encore configurées » de la feuille de mission : non remplacées (les retraits pour inactivité sont déjà traités par `jamais_retirer`, les autres sont des variantes de la famille sans avantage mesuré).
+- **Reste ouvert** : vérifier `loterie_meteo` le 24/10 le matin ; évaluer les deux relevés d'ensembles ; rattachement d'actualités aux marchés météo (un « pic de mentions » sur une température du Cap) ; `k_gagnants` avec des échanges plus anciens ou des carnets relevés en direct.
+
 ## 2026-10-23 (session avec Etienne : détroits, sources « arbitres »)
 
 - **Recherche** (`experiments/detroits.md`) : 96 événements réglés sur IMF PortWatch, dont 58 à tranches clos ; règlement relu 40/40 depuis juin
