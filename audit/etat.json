@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2867,
+  "principal": 2868,
   "fantome:calibration_patiente_v1.0.0": 1833,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1799,
@@ -18,8 +18,8 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1487,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2012,
-  "fantome:market_maker_v1.0.0": 1625,
+  "fantome:market_maker_serre_v1.0.0": 2014,
+  "fantome:market_maker_v1.0.0": 1627,
   "fantome:favori_politique_patiente_v1.0.0": 1402,
   "fantome:favori_politique_v1.0.0": 1404,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1404,
@@ -152,7 +152,7 @@
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 5,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 3
  },
- "verifiees": 7608,
+ "verifiees": 7610,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1180,9 +1180,9 @@
    "op_id": "settle-92115898218306076450567041406796447248246153018350261518461973181059512995174"
   }
  ],
- "derniere_execution": "2026-10-23T21:53:19+00:00",
+ "derniere_execution": "2026-10-23T21:57:38+00:00",
  "dernier_seq_reglements": {
-  "principal": 2867,
+  "principal": 2868,
   "fantome:calibration_patiente_v1.0.0": 1833,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1799,
@@ -1200,7 +1200,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1487,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2016,
+  "fantome:market_maker_serre_v1.0.0": 2018,
   "fantome:market_maker_v1.0.0": 1629,
   "fantome:favori_politique_patiente_v1.0.0": 1402,
   "fantome:favori_politique_v1.0.0": 1404,
@@ -1242,7 +1242,7 @@
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
   "fantome:nf_tres_court_v1.0.0": 1177,
-  "fantome:nf_sport_non_v1.0.0": 1088,
+  "fantome:nf_sport_non_v1.0.0": 1090,
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1013,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
