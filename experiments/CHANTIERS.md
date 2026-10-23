@@ -80,6 +80,12 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 19 | Hacker News (API Firebase) et Mastodon (recherche publique) | `hacker-news.firebaseio.com`, `mastodon.social` | attention tech et sociale (Bluesky demande un compte) | à faire |
 | 20 | Metaculus et PredictIt | `www.metaculus.com`, `www.predictit.org` | autres prévisions publiques à comparer | à faire |
 | 20b | Truth Social (messages de Trump) | flux publics Mastodon de `truthsocial.com`, ou archive publique avec flux RSS | marchés sur ce que dit ou annonce Trump | à faire |
+| 32 | IMF PortWatch : passages dans les détroits (arbitre) | `services9.arcgis.com` (ArcGIS public du FMI, `Daily_Chokepoints_Data`) | marchés Ormuz et Bab el-Mandeb (≈ 30, ≈ 300 000 $/24 h) : moyenne sur 7 jours, tranches | à faire (veille du 23/10, `veille_api_publiques.md`) |
+| 33 | Strait of Hormuz Ship Monitor (AIS toutes les 30 min) | `hormuz.data-tracking.net` | tendance des 5 jours que PortWatch n'a pas encore publiés | à faire (23/10) |
+| 34 | Open-Meteo Ensemble (31 membres GFS vérifiés le 23/10 ; autres modèles proposés) | `ensemble-api.open-meteo.com` | probabilité par tranche de température (107 marchés le 23/10) | à faire (23/10) |
+| 35 | Hong Kong Observatory (arbitre des marchés de Hong Kong) | `data.weather.gov.hk` | températures de Hong Kong, lues comme les METAR | à faire (23/10) |
+| 36 | Pyth Hermes (arbitre des marchés « Pyth ») | `hermes.pyth.network` | prix exact de l'arbitre au lieu de Binance | à faire (23/10) |
+| 37 | BLS (inflation, emploi : arbitre) | `api.bls.gov`, clé gratuite `BLS_API_KEY` (sans clé : quota partagé dépassé le 23/10) | marchés CPI et emploi | à faire (23/10) |
 
 À la place de X (payant ; Nitter, RSSHub et miroirs contournent ses conditions : interdits) :
 reprises des tweets par la presse (Google Actualités, déjà en place), Truth Social, Mastodon,

@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (session avec Etienne : veille des API publiques)
+
+- **Recherche** : liste GitHub `public-apis` (2 191 API) triée, 28 candidates appelées sans clé (`experiments/veille_api_publiques.md`).
+  Retenues en premier : IMF PortWatch (arbitre des marchés Ormuz et Bab el-Mandeb, ≈ 300 000 $/24 h, publié avec ≈ 5 jours de retard) et le suivi AIS d'Ormuz,
+  Open-Meteo Ensemble (probabilité par tranche de température, 107 marchés), Hong Kong Observatory (arbitre), OpenDota, Pyth Hermes (arbitre).
+  Écartés : revendeurs de cotes de bookmakers et de données X, agrégateurs de marchés de prédiction, SportScore (protégé), Econdb (identification).
+- **Arène** : rien (sources à brancher : chantiers n° 32 à 37).
+- **Reste ouvert** : piste 0b (détroits) ; clé gratuite `BLS_API_KEY` à proposer à Etienne.
+
 ## 2026-10-23 (passage chercheur, matin : 09 h 55 → 10 h 42 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-23_apres_echeance_match_en_cours.md` ; famille du jour 6 « ce qui ne tourne plus », puis famille 5/2).
