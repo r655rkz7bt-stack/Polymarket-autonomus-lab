@@ -1,0 +1,28 @@
+points comparés : 27561  couples : 433
+marge au milieu > 0.00 : 182 points (0.66%), 28 couples
+marge au milieu > 0.01 : 5 points (0.02%), 4 couples
+marge au milieu > 0.02 : 1 points (0.00%), 1 couples
+marge au milieu > 0.03 : 1 points (0.00%), 1 couples
+marge au milieu > 0.05 : 1 points (0.00%), 1 couples
+marge au milieu > 0.10 : 0 points (0.00%), 0 couples
+0.06 ('solana', '2026-07-08', 80.0, True) touche 0.295 au-dessus 0.355
+0.019 ('ethereum', '2026-05-18', 1800.0, False) touche 0.0045 au-dessus 0.9765
+0.01 ('bitcoin', '2026-06-26', 56000.0, False) touche 0.0215 au-dessus 0.9685
+0.01 ('bitcoin', '2026-04-18', 80000.0, True) touche 0.0085 au-dessus 0.0185
+0.009 ('solana', '2026-06-05', 60.0, False) touche 0.0235 au-dessus 0.9675
+0.006 ('solana', '2026-05-12', 100.0, True) touche 0.0155 au-dessus 0.0215
+0.005 ('solana', '2026-07-08', 70.0, False) touche 0.005 au-dessus 0.9895
+0.004 ('solana', '2026-07-02', 60.0, False) touche 0.008 au-dessus 0.9875
+--- calibration du prix « touche » (OUI) à 12 h UTC, jours Bitcoin/Ethereum/Solana, marchés ↑ et ↓ ---
+0,02-0,05 : 68 marchés, prix moyen 0.027, touchés 0.015
+0,05-0,15 : 30 marchés, prix moyen 0.087, touchés 0.033
+0,15-0,40 : 40 marchés, prix moyen 0.258, touchés 0.200
+0,40-0,70 : 20 marchés, prix moyen 0.528, touchés 0.650
+≥ 0,70 : 14 marchés, prix moyen 0.961, touchés 1.000
+--- NON de « touche » (OUI 0,02-0,40) à 12 h UTC (8 h ET) : verdict ---
+OUI 0.02-0.15, écart 0.01: 98 paris, rendement 0.0162, t jours 0.55, z prix 0.8, mois 3/4, écartée
+OUI 0.02-0.15, écart 0.02: 98 paris, rendement 0.0058, t jours 0.11, z prix -2.32, mois 3/4, écartée
+OUI 0.05-0.40, écart 0.01: 70 paris, rendement 0.0665, t jours 0.74, z prix 1.05, mois 4/4, écartée
+OUI 0.05-0.40, écart 0.02: 70 paris, rendement 0.0534, t jours 0.55, z prix 0.84, mois 4/4, écartée
+OUI 0.02-0.40, écart 0.01: 138 paris, rendement 0.0348, t jours 0.63, z prix 1.03, mois 3/4, écartée
+OUI 0.02-0.40, écart 0.02: 138 paris, rendement 0.0232, t jours 0.35, z prix -0.66, mois 3/4, écartée

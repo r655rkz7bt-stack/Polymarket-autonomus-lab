@@ -165,3 +165,4 @@ passage s'arrête net, rien n'est perdu.
 - Les dépôts GitHub tiers (Jeff Sackmann) ne sont pas accessibles depuis la routine : prévoir une autre source.
 - Test de sélection : une stratégie « première de l'arène » parmi ~40 a un z attendu de ≈ 2 sans aucun avantage
   (contrôle `selection_multiple`) ; ne l'appeler « avantage » qu'après de nouveaux paris.
+- Relevé d'événements réglés : `closed=true&end_date_min/max` ne rend que les événements dont la date de fin Gamma tombe dans la fenêtre ; ceux **réglés avant leur date de fin** (la chose est arrivée tôt) n'y sont pas. Les ajouter avec `end_date_min=<aujourd'hui>` (22/10/2026 : 9 % des échelles de dates, ce qui a fait disparaître un « indice », `experiments/courbe_de_risque.md`).

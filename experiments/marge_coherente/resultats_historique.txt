@@ -1,0 +1,2 @@
+Flávio: 67 points de 01/09 à 04/10, écart (somme des tranches − vainqueur) moyen +0.0441, médiane +0.0395, |écart| > 0,02 : 78%, > 0,05 : 46% ; par mois : 9 +0.053, 10 -0.031
+Lula: 67 points de 01/09 à 04/10, écart (somme des tranches − vainqueur) moyen -0.0262, médiane -0.0195, |écart| > 0,02 : 69%, > 0,05 : 40% ; par mois : 9 -0.033, 10 +0.028

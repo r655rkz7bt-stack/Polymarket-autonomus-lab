@@ -13,6 +13,61 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Outils** : skills dans `.claude/skills/` (README) : nos méthodes `enqueter`, `tester-une-piste`, `nouvelle-strategie`, `verifier-tableau-de-bord`, `evaluer-source-externe` ;
   repris (MIT) `systematic-debugging`, `verification-before-completion`, `test-driven-development`, `statsmodels`, `pymc` ; bibliothèques dans `requirements-recherche.txt` (vérifiées sous Python 3.13).
 - **Reste ouvert** : verdict du test de la vague de volume ; biais de la championne (0,02 ou 0,05) à décider par Etienne.
+## 2026-10-22 (passage chercheur, soir : 19 h 55 → 20 h 42 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-22_soir_mises_geantes_et_types.md` ; famille du jour 5, puis constat « 11 mises de fantômes au-dessus de 25 % du capital »).
+  - Les 3 obligations de la feuille de mission sont les mêmes que ce matin (championne, `nf_tennis_prix_bas`, concentration de `nf_sport_patiente_prix_850_875`) : causes déjà écrites dans les fiches du jour.
+  - **Mises géantes** : `nf_court_prix_haut` (fantôme) a misé 489 € (53 % de son capital) et 498 € (48 %) sur un seul pari ; cause : `bias` 0,05 fixe (estimation = prix + 0,045, mise ∝ 1/(1 − prix)), comme la championne.
+  - **Types de marchés** (4 610 couples stratégie-jeton, 1 383 jetons réglés distincts, 1 896 marchés relus sur Gamma) : aucun type (moneyline, spread, totaux, score exact, crypto, « X gagne ») ne bat son prix ;
+    2 300 gagnés pour 2 347,5 attendus par les prix et 2 542 annoncés, dans toutes les tranches de mise. Pas de défaut de code nouveau.
+  - **Défaut de méthode trouvé en recherche** : un relevé par fenêtres sur la date de fin de l'événement oublie les événements réglés avant leur date de fin (111 échelles de dates sur 1 173, 9 %, justement celles où le OUI a gagné) : voir « Recherche ».
+- **Recherche** (2 pistes de `vingt_cinq_pistes.md`, vrais échanges, règlement relu) :
+  - n° 13 `contrer_football_en_jeu` (**1 110 matchs**, saut de prix en match, règlement 2 206/2 207) : **écartée**. 28 réglages ; contrarien −0,4 à −4,8 % (J 0,08-0,18), +2,4 à +6,7 % (J 0,25, z +1,0 à +1,9), **−8,8 à −10,6 % (J 0,35)** ; suiveur −0,6 à −6 % → `experiments/contrer_football.md`.
+  - n° 8 `courbe_de_risque` (**1 173 échelles de dates** « by <date> », ≈ 50 réglages) : **écartée**. Première analyse (1 062 échelles) : NON à 30 jours +11,8 % (t événement +1,18) = « indice », fantôme `echelle_non` écrit et testé ; puis le relevé complété
+    (111 échelles réglées avant leur date de fin) donne +8,1 % (t +0,28) et **12 réglages sur 12 « écartée »** : le fantôme est retiré. Le OUI reste perdant (−10 à −12 % à 7-30 jours), mais pas payant pour le NON (écart + frais) → `experiments/courbe_de_risque.md`.
+  - n° 3 `marge_coherente` (relevé en direct, 19 h 59 UTC) : écart « vendre les tranches − acheter le vainqueur » Flávio +0,015, Lula −0,033 (4 jambes) : toujours non exploitable. Brésil, États : relevé refait (`bresil_etats/releve_20261022_2000.json`), 22 États sûrs toujours à 0,98-0,997.
+- **Arène** : nouvelle sœur `nf_court_prix_haut_biais_faible` (biais 0,02 au lieu de 0,05, mêmes filtres : moins de 24 h, prix ≥ 0,90) à comparer sur la même période. Aucune stratégie issue des pistes (rien de retenu).
+- **Reste ouvert** : `bias` de la championne (décision d'Etienne) ; **vérifier si les pistes à tranches du 22/10** (`queues_tranches`, `lissage_tranches`) **ont le même biais de relevé** : 133 événements à tranches (neg-risk, hors sport, volume ≥ 5 000 $) sont clos avec une
+  date de fin dans le futur (Fed Chair, Nobel…) et manquent, mais leur date de décision n'est pas « fin − H » (à traiter avec la date de clôture réelle) ; piste n° 8 : la courbe de risque elle-même et les lancements de jetons ;
+  pistes 15 (nuit du 25/10), 7, 12, 6 de `vingt_cinq_pistes.md` ; proposition d'audit (`proposals/2026-10-22_audit_reglements_trop_tot.md`) toujours en attente d'Etienne.
+
+## 2026-10-22 (passage chercheur, après-midi : 14 h 55 → 15 h 38 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-22_apres_midi_copie_et_positions.md` ; famille du jour 5, puis 1 et 6).
+  - Les 6 obligations de la feuille de mission sont les mêmes que ce matin (championne `nf_sport_patiente` / `nf_tennis_prix_bas` : déjà traitées dans les deux fiches du jour). Constat « à regarder » : un fantôme a misé 475 € (45 % de son capital) sur un seul pari (Michelsen, 0,924).
+  - **Copie du principal vérifiée jeton par jeton** : 67 jetons copiés sur 88 achats du fantôme depuis le 19/10 (21 non copiés dont 13 datent d'aujourd'hui), taille médiane **0,338** de la mise du fantôme à tous les prix ; le principal n'a pas pris les 475 € (10,6 €). Ticket minimal ~10 € : les petites convictions sont copiées à 94-111 %. Pas de défaut.
+  - **Positions non réglées** : 121 marchés clos sur Gamma ont encore une position ouverte dans les journaux, 105 chez des fantômes éteints (plus de cycle), 16 chez des actifs (UMA : les marchés de température ne passent « resolved » que 2 jours après). Aucun défaut de code.
+- **Recherche** (6 pistes de `vingt_cinq_pistes.md`, toutes avec vrais prix ou carnets) :
+  - n° 11 `non_aux_drames` (686 marchés hors sport) : **écartée** (~40 réglages, +2,8 % à T-60 j avec écart 0,01 puis +1,7 % avec 0,02, négatif aux autres horizons) → `experiments/non_aux_drames.md`.
+  - n° 2 `toucher_avant_fin` (433 couples « touche/au-dessus » BTC-ETH-SOL, 27 561 points) : **écartée** (un seul couple à plus de 2 cents d'arbitrage ; NON du « touche » t < 1) → `experiments/toucher_avant_fin.md`.
+  - n° 4 `bo3_coherence` (**2 317 matchs** LoL/CS2/Dota 2/Valorant avec leurs vrais échanges, règlement 2 290/2 291) : **écartée** (le prix du match bat le calcul tiré de la carte 1 à tous les retards, log-score 0,536-0,556 contre 0,545-0,579 ; 12 réglages ≤ +5 %) → `experiments/bo3_coherence.md`.
+  - n° 5 `tennis_sets_coherence` : **écartée par manque d'échanges** (19 échanges « Total Sets » sur 25 matchs ATP).
+  - n° 17 `battre_resultats` (**1 391 marchés** « beat quarterly earnings », taux de OUI 74,4 %) : **écartée** (marché calibré, 30 réglages, meilleur indice +2,9 % qui tombe à l'écart de 0,02) → `experiments/battre_resultats.md`.
+  - n° 3 `marge_coherente` (Brésil, relevé en direct) : **indice, non exploitable** : tranches de Flávio 0,803 contre « vainqueur » 0,777 (+0,026, ≥ 709 parts), gain sans risque ≈ 0,65 % sur 4 jambes ; sur le 1er tour le sens change d'un mois à l'autre → `experiments/marge_coherente.md`.
+  - Astuce technique : `prices-history` du CLOB refuse les fenêtres longues (400) et ne rend rien pour un marché clos avec `interval=max` : passer `startTs`/`endTs` par tranches de 15 jours.
+- **Arène** : nouvelle sœur de la championne `nf_sport_patiente_biais_faible` (biais 0,03 au lieu de 0,05, même filtre ; la mère a déjà 10 filles) : les mises ne grossissent plus comme 1/(1 − prix) ; à comparer sur la même période. Aucune stratégie issue des pistes (rien de retenu). « À la une » du tableau de bord remis à jour (il datait du 17/10).
+- **Reste ouvert** : `bias` de la championne (0,02 ou 0,05, décision d'Etienne) et verdict de la sœur à 0,03 dans 3-5 jours ; `experiments/marge_coherente/releve.py` à relancer avant le 25/10 (si l'écart de +0,026 persiste, stratégie à jambes multiples) ; pistes 15 (nuit du 25/10) et 7, 8, 12, 13 de `vingt_cinq_pistes.md` ; proposition d'audit (`proposals/2026-10-22_audit_reglements_trop_tot.md`) toujours en attente d'Etienne.
+
+## 2026-10-22 (passage chercheur, midi : 09 h 55 → 10 h 39 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-22_midi_tennis_prix_bas_et_deux_camps.md`, familles 5, 3 et 6).
+  - **Audit : 62 « anomalies » toutes fausses** (`audit/etat.json`) : « réglé alors que le marché n'est pas clos », apparues le 21/10 à 16 h 15 ; relues une à une sur Gamma, le règlement tombe 17 à 225 s après la fermeture
+    officielle (`closedTime`) avec le bon paiement 62 fois sur 62. L'audit (`scripts/audit_fills.py`, protégé) lit `closed` trop tôt ; chaque alerte fait échouer son job (e-mail à Etienne).
+    Proposition `proposals/2026-10-22_audit_reglements_trop_tot.md` (réessayer 30 minutes) ; contrôle libre `audit_anomalies` (+ test) : fausses alertes « à regarder », autres anomalies « graves ».
+  - Obligations `nf_tennis_prix_bas` / `nf_sport_patiente` : 73 gagnés pour 70,8 attendus (sans les 3 meilleurs paris −15 €) ; championne par type de pari : **89 « moneyline » = +8 € (+0,1 %)**, 18 paris annexes = +136 €
+    (le gain de +145 € ne vient pas du vainqueur du match). Règlements relus : 16 sur 16 conformes. Deux camps : 6 matchs, premier camp gagné 1 fois sur 6 (renversement en cours de match), pas de correctif.
+- **Recherche** (`experiments/score_exact.md`, piste n° 1 ; `experiments/bresil_etats.md`, piste n° 16).
+  - n° 1 `score_exact_poisson` : 9 654 matchs de football relevés, 3 471 téléchargés avec leurs échanges réels (10 400 fichiers), 2 111 utilisables, 36 501 paris aux prix des vrais échanges. Règlement relu 1 870 / 1 870.
+    Modèle de Poisson (1X2 + O/U 2,5) contre prix : log-score −0,2301 contre −0,2307 ; OUI des scores à 0,03-0,30 : −8 à −20 % ; NON à 0,70-0,97 : −0,6 % ; 4 réglages × 4 seuils ; totaux O/U et BTTS (15 921 paris) : −1 à −7 % par ligne.
+    **Écartée** (un seul découpage « retenue » sur 30 paris, perdu aux 3 autres réglages).
+  - n° 16 `etats_comme_avant` : 27 États, votes du 1er tour TSE (données ouvertes accessibles). Le favori du 2e tour est le vainqueur du 1er tour dans 26 États sur 27 ; les 4 États incertains sont retrouvés à ±0,03 par un modèle
+    de marge : **marché déjà « comme avant »**. 22 États sûrs à 0,98-0,997. **Écartée** comme écart de prix ; indice pour le quasi-certain (à confirmer le 26/10).
+- **Arène** : filles `nf_sport_18_24h_vainqueur` (de `nf_sport`), `nf_sport_prix_haut_3_6h` (de `nf_sport_prix_haut`) ; `favori_politique_quasi_certain_connu` (paramètre optionnel `q_max` de `naive_favorite`, 0,99 par défaut ; la mère
+  restait muette parce que son estimation plafonnée à 0,99 ne montre aucun avantage au-dessus de 0,985) ; `meteo_prevision_patiente` et `nf_sport_patiente_jour` (éliminées) mises à `enabled: false` ; la fille « nf_tennis 0,800-0,850 »
+  de la feuille de mission existe déjà (`nf_tennis_prix_bas_800_850`).
+- **Reste ouvert** : décision d'Etienne sur le noyau (`proposals/2026-10-22_audit_reglements_trop_tot.md`) ; `bias` de la championne (0,02 ou 0,05) toujours à trancher ; résultat des 22 États sûrs le 25/10 (relancer
+  `experiments/bresil_etats/releve.py` avant le 25/10 puis après) ; piste n° 15 (dépouillement en direct) : seulement la nuit du 25/10 ; totaux et handicaps de football des matchs de moins de 3 000 $ de volume non téléchargés ;
+  piste n° 2 (`toucher_avant_fin`) : non commencée (les relevés Gamma ne montrent que peu d'événements « touche » réglés ; à vérifier) ; principal : 88 % en caisse (713 € de 795 €) par la mise sur l'avantage mesuré, pertes venues de `nf_court` (−145 €) et `meteo_prevision` (−58 €) d'avant la copie fidèle.
 
 ## 2026-10-22 (passage chercheur, nuit : 04 h 55 → 05 h 51 UTC)
 

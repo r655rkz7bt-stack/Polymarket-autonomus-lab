@@ -1,0 +1,126 @@
+== NON à 3 j: n= 1176 évts= 623 gagnés=  733 attendus=  729.5 z=+0.24 rendement=-0.3% t_par_événement=-0.84
+     autre              n= 1007 évts= 536 gagnés=  612 attendus=  603.1 z=+0.64 rendement=+0.6% t_par_événement=-0.20
+     crypto_lancement   n=    1 évts=   1 gagnés=    0 attendus=    0.0 z=-0.21 rendement=-100.0% t_par_événement=+0.00
+     geopolitique       n=  105 évts=  60 gagnés=   72 attendus=   79.8 z=-2.28 rendement=-9.8% t_par_événement=-4.00
+     sorties            n=   26 évts=  11 gagnés=   17 attendus=   17.9 z=-0.46 rendement=-5.6% t_par_événement=-1.28
+     trump_mots         n=   37 évts=  15 gagnés=   32 attendus=   28.7 z=+1.56 rendement=+10.8% t_par_événement=+0.91
+== NON à 7 j: n=  708 évts= 442 gagnés=  474 attendus=  467.3 z=+0.63 rendement=+0.7% t_par_événement=-1.91
+     autre              n=  538 évts= 357 gagnés=  343 attendus=  344.7 z=-0.18 rendement=-1.3% t_par_événement=-1.82
+     crypto_lancement   n=    1 évts=   1 gagnés=    0 attendus=    0.1 z=-0.40 rendement=-100.0% t_par_événement=+0.00
+     geopolitique       n=  103 évts=  56 gagnés=   88 attendus=   81.3 z=+1.95 rendement=+8.2% t_par_événement=+0.42
+     sorties            n=   30 évts=  13 gagnés=   18 attendus=   15.8 z=+1.02 rendement=+13.1% t_par_événement=-0.65
+     trump_mots         n=   36 évts=  15 gagnés=   25 attendus=   25.4 z=-0.19 rendement=-2.4% t_par_événement=-0.95
+== NON à 14 j: n=  465 évts= 265 gagnés=  319 attendus=  315.6 z=+0.42 rendement=+0.5% t_par_événement=-0.85
+     autre              n=  307 évts= 188 gagnés=  204 attendus=  206.2 z=-0.33 rendement=-1.8% t_par_événement=-2.18
+     crypto_lancement   n=    1 évts=   1 gagnés=    0 attendus=    0.1 z=-0.25 rendement=-100.0% t_par_événement=+0.00
+     geopolitique       n=  102 évts=  50 gagnés=   83 attendus=   76.1 z=+1.88 rendement=+8.9% t_par_événement=+1.02
+     sorties            n=   27 évts=  13 gagnés=   16 attendus=   13.8 z=+1.05 rendement=+14.6% t_par_événement=-0.49
+     trump_mots         n=   28 évts=  13 gagnés=   16 attendus=   19.3 z=-1.58 rendement=-17.8% t_par_événement=-2.04
+== NON à 30 j: n=  352 évts= 185 gagnés=  255 attendus=  231.8 z=+3.18 rendement=+9.3% t_par_événement=+1.18
+     autre              n=  237 évts= 126 gagnés=  174 attendus=  155.6 z=+3.10 rendement=+10.9% t_par_événement=+1.14
+     geopolitique       n=   73 évts=  39 gagnés=   58 attendus=   51.1 z=+2.02 rendement=+13.4% t_par_événement=+1.63
+     sorties            n=   15 évts=   9 gagnés=    7 attendus=    7.8 z=-0.50 rendement=-10.9% t_par_événement=-0.43
+     trump_mots         n=   27 évts=  11 gagnés=   16 attendus=   17.3 z=-0.68 rendement=-8.6% t_par_événement=-1.71
+== OUI à 3 j: n= 1143 évts= 615 gagnés=  474 attendus=  467.3 z=+0.46 rendement=+0.2% t_par_événement=-0.23
+     autre              n=  993 évts= 533 gagnés=  433 attendus=  423.8 z=+0.66 rendement=+0.9% t_par_événement=+0.41
+     crypto_lancement   n=    1 évts=   1 gagnés=    1 attendus=    1.0 z=+0.20 rendement=+3.8% t_par_événement=+0.00
+     geopolitique       n=   95 évts=  55 gagnés=   25 attendus=   23.3 z=+0.50 rendement=+7.0% t_par_événement=-1.22
+     sorties            n=   25 évts=  11 gagnés=    9 attendus=    8.5 z=+0.26 rendement=+4.0% t_par_événement=-1.99
+     trump_mots         n=   29 évts=  15 gagnés=    6 attendus=   10.7 z=-2.20 rendement=-44.5% t_par_événement=-1.27
+== OUI à 7 j: n=  679 évts= 439 gagnés=  237 attendus=  264.1 z=-2.52 rendement=-11.3% t_par_événement=-3.73
+     autre              n=  535 évts= 361 gagnés=  202 attendus=  217.5 z=-1.58 rendement=-8.3% t_par_événement=-2.27
+     crypto_lancement   n=    1 évts=   1 gagnés=    1 attendus=    0.9 z=+0.24 rendement=+5.7% t_par_événement=+0.00
+     geopolitique       n=   86 évts=  49 gagnés=   12 attendus=   19.4 z=-2.27 rendement=-38.2% t_par_événement=-3.79
+     sorties            n=   30 évts=  13 gagnés=   13 attendus=   15.5 z=-1.08 rendement=-16.8% t_par_événement=-0.83
+     trump_mots         n=   27 évts=  15 gagnés=    9 attendus=   10.9 z=-0.93 rendement=-18.3% t_par_événement=-2.91
+== OUI à 14 j: n=  432 évts= 254 gagnés=  133 attendus=  151.2 z=-2.25 rendement=-13.1% t_par_événement=-1.31
+     autre              n=  301 évts= 189 gagnés=  103 attendus=  110.6 z=-1.11 rendement=-8.2% t_par_événement=-0.67
+     crypto_lancement   n=    1 évts=   1 gagnés=    1 attendus=    0.9 z=+0.25 rendement=+6.4% t_par_événement=+0.00
+     geopolitique       n=   86 évts=  45 gagnés=   13 attendus=   22.2 z=-2.73 rendement=-41.5% t_par_événement=-3.71
+     sorties            n=   26 évts=  10 gagnés=    9 attendus=   11.6 z=-1.25 rendement=-23.1% t_par_événement=+0.49
+     trump_mots         n=   18 évts=   9 gagnés=    7 attendus=    5.9 z=+0.64 rendement=+16.3% t_par_événement=-0.91
+== OUI à 30 j: n=  301 évts= 168 gagnés=  105 attendus=  125.2 z=-2.91 rendement=-17.0% t_par_événement=-0.75
+     autre              n=  202 évts= 110 gagnés=   75 attendus=   85.2 z=-1.83 rendement=-13.1% t_par_événement=-0.47
+     geopolitique       n=   60 évts=  36 gagnés=   12 attendus=   21.1 z=-2.93 rendement=-43.3% t_par_événement=-5.34
+     sorties            n=   17 évts=  11 gagnés=    9 attendus=    9.5 z=-0.31 rendement=-6.5% t_par_événement=+0.01
+     trump_mots         n=   22 évts=  11 gagnés=    9 attendus=    9.3 z=-0.14 rendement=-4.7% t_par_événement=+0.73
+== NON à 21 j n=  405 évts= 198 gagnés=  279 attendus=  263.6 z=+2.02 rendement=+5.2% t_par_événement=+0.26
+     NON<0.70   n=  181 évts= 123 gagnés=   76 attendus=   68.8 z=+1.23 rendement=+8.9% t_par_événement=+0.67
+     0.70-0.85  n=   82 évts=  63 gagnés=   66 attendus=   63.9 z=+0.56 rendement=+2.7% t_par_événement=+0.42
+     0.85-0.95  n=  101 évts=  75 gagnés=   96 attendus=   91.5 z=+1.55 rendement=+4.7% t_par_événement=+3.19
+     >=0.95     n=   41 évts=  34 gagnés=   41 attendus=   39.4 z=+1.29 rendement=+4.0% t_par_événement=+35.47
+     mois 2025-10 n=    1 évts=   1 gagnés=    1 attendus=    0.9 z=+0.26 rendement=+6.7% t_par_événement=+0.00
+     mois 2025-11 n=    3 évts=   3 gagnés=    3 attendus=    2.3 z=+1.09 rendement=+31.2% t_par_événement=+1.35
+     mois 2025-12 n=    5 évts=   5 gagnés=    5 attendus=    4.4 z=+0.84 rendement=+13.0% t_par_événement=+2.21
+     mois 2026-01 n=    4 évts=   3 gagnés=    3 attendus=    3.4 z=-0.52 rendement=-11.0% t_par_événement=-0.24
+     mois 2026-02 n=    1 évts=   1 gagnés=    1 attendus=    0.9 z=+0.25 rendement=+6.4% t_par_événement=+0.00
+     mois 2026-03 n=   40 évts=  21 gagnés=   26 attendus=   25.1 z=+0.35 rendement=+3.4% t_par_événement=-0.46
+     mois 2026-04 n=   68 évts=  26 gagnés=   42 attendus=   43.1 z=-0.36 rendement=-3.0% t_par_événement=-0.77
+     mois 2026-05 n=   64 évts=  29 gagnés=   46 attendus=   42.7 z=+1.08 rendement=+7.0% t_par_événement=+0.77
+     mois 2026-06 n=   55 évts=  29 gagnés=   41 attendus=   39.3 z=+0.61 rendement=+3.7% t_par_événement=+1.07
+     mois 2026-07 n=   50 évts=  25 gagnés=   35 attendus=   30.2 z=+1.82 rendement=+15.3% t_par_événement=+0.48
+     mois 2026-08 n=   57 évts=  35 gagnés=   41 attendus=   37.9 z=+1.07 rendement=+7.2% t_par_événement=-1.61
+     mois 2026-09 n=   30 évts=  23 gagnés=   20 attendus=   18.6 z=+0.66 rendement=+6.5% t_par_événement=+0.11
+     mois 2026-10 n=   27 évts=  19 gagnés=   15 attendus=   14.7 z=+0.14 rendement=+0.7% t_par_événement=+0.08
+== NON à 30 j n=  352 évts= 185 gagnés=  255 attendus=  231.8 z=+3.18 rendement=+9.3% t_par_événement=+1.18
+     NON<0.70   n=  169 évts= 118 gagnés=   87 attendus=   71.4 z=+2.66 rendement=+20.1% t_par_événement=+1.28
+     0.70-0.85  n=   58 évts=  48 gagnés=   48 attendus=   44.7 z=+1.03 rendement=+6.7% t_par_événement=+0.56
+     0.85-0.95  n=   92 évts=  67 gagnés=   90 attendus=   84.1 z=+2.21 rendement=+6.8% t_par_événement=+3.65
+     >=0.95     n=   33 évts=  30 gagnés=   30 attendus=   31.6 z=-1.39 rendement=-5.2% t_par_événement=-1.06
+     mois 2025-11 n=    4 évts=   4 gagnés=    4 attendus=    2.8 z=+1.47 rendement=+41.8% t_par_événement=+1.49
+     mois 2025-12 n=    5 évts=   5 gagnés=    5 attendus=    3.9 z=+1.26 rendement=+28.5% t_par_événement=+2.57
+     mois 2026-01 n=    3 évts=   3 gagnés=    2 attendus=    2.3 z=-0.41 rendement=-13.0% t_par_événement=-0.27
+     mois 2026-03 n=   24 évts=  16 gagnés=   16 attendus=   14.8 z=+0.61 rendement=+7.8% t_par_événement=+0.58
+     mois 2026-04 n=   34 évts=  17 gagnés=   26 attendus=   23.3 z=+1.15 rendement=+11.1% t_par_événement=+1.24
+     mois 2026-05 n=   46 évts=  22 gagnés=   36 attendus=   28.5 z=+2.77 rendement=+25.1% t_par_événement=+1.48
+     mois 2026-06 n=   42 évts=  27 gagnés=   26 attendus=   28.2 z=-0.87 rendement=-8.3% t_par_événement=-0.11
+     mois 2026-07 n=   56 évts=  29 gagnés=   39 attendus=   37.9 z=+0.41 rendement=+2.3% t_par_événement=-1.31
+     mois 2026-08 n=   59 évts=  30 gagnés=   47 attendus=   41.7 z=+1.88 rendement=+11.8% t_par_événement=+1.51
+     mois 2026-09 n=   41 évts=  25 gagnés=   27 attendus=   25.2 z=+0.67 rendement=+5.8% t_par_événement=+0.32
+     mois 2026-10 n=   38 évts=  23 gagnés=   27 attendus=   23.1 z=+1.52 rendement=+15.8% t_par_événement=+1.01
+== NON à 45 j n=  129 évts=  69 gagnés=   87 attendus=   86.0 z=+0.25 rendement=+0.7% t_par_événement=+0.12
+     NON<0.70   n=   53 évts=  43 gagnés=   23 attendus=   19.1 z=+1.22 rendement=+18.6% t_par_événement=+0.90
+     0.70-0.85  n=   23 évts=  18 gagnés=   16 attendus=   18.0 z=-1.03 rendement=-11.6% t_par_événement=-0.81
+     0.85-0.95  n=   37 évts=  25 gagnés=   32 attendus=   33.5 z=-0.83 rendement=-4.6% t_par_événement=-0.49
+     >=0.95     n=   16 évts=  14 gagnés=   16 attendus=   15.3 z=+0.83 rendement=+4.2% t_par_événement=+23.99
+     mois 2025-12 n=    3 évts=   3 gagnés=    3 attendus=    2.0 z=+1.62 rendement=+48.5% t_par_événement=+1.11
+     mois 2026-01 n=    1 évts=   1 gagnés=    1 attendus=    0.7 z=+0.62 rendement=+38.9% t_par_événement=+0.00
+     mois 2026-03 n=   25 évts=  14 gagnés=   17 attendus=   17.8 z=-0.42 rendement=-4.6% t_par_événement=+0.28
+     mois 2026-04 n=   10 évts=   8 gagnés=    7 attendus=    6.9 z=+0.05 rendement=+0.4% t_par_événement=+0.11
+     mois 2026-05 n=   14 évts=   7 gagnés=   12 attendus=   10.4 z=+1.21 rendement=+14.7% t_par_événement=+0.18
+     mois 2026-06 n=   29 évts=  19 gagnés=   18 attendus=   18.7 z=-0.38 rendement=-4.4% t_par_événement=-1.23
+     mois 2026-07 n=   10 évts=   5 gagnés=    6 attendus=    6.4 z=-0.38 rendement=-7.6% t_par_événement=-1.69
+     mois 2026-08 n=   24 évts=  10 gagnés=   16 attendus=   17.0 z=-0.55 rendement=-6.1% t_par_événement=-0.63
+     mois 2026-09 n=   11 évts=   9 gagnés=    6 attendus=    5.2 z=+0.57 rendement=+13.3% t_par_événement=+0.59
+     mois 2026-10 n=    1 évts=   1 gagnés=    0 attendus=    0.2 z=-0.58 rendement=-100.0% t_par_événement=+0.00
+     mois 2026-11 n=    1 évts=   1 gagnés=    1 attendus=    0.5 z=+1.03 rendement=+100.9% t_par_événement=+0.00
+== NON à 60 j n=   52 évts=  39 gagnés=   30 attendus=   32.5 z=-0.83 rendement=-8.2% t_par_événement=+0.61
+     NON<0.70   n=   27 évts=  24 gagnés=   12 attendus=   11.4 z=+0.23 rendement=+3.8% t_par_événement=+0.72
+     0.70-0.85  n=   13 évts=  11 gagnés=    9 attendus=   10.1 z=-0.71 rendement=-11.0% t_par_événement=-0.28
+     0.85-0.95  n=    9 évts=   9 gagnés=    7 attendus=    8.1 z=-1.32 rendement=-14.2% t_par_événement=-0.89
+     >=0.95     n=    3 évts=   3 gagnés=    2 attendus=    2.9 z=-2.26 rendement=-29.8% t_par_événement=-0.85
+     mois 2025-11 n=    1 évts=   1 gagnés=    1 attendus=    0.5 z=+1.06 rendement=+112.8% t_par_événement=+0.00
+     mois 2025-12 n=    3 évts=   3 gagnés=    3 attendus=    2.0 z=+1.51 rendement=+46.5% t_par_événement=+1.17
+     mois 2026-03 n=   19 évts=  11 gagnés=   11 attendus=   13.6 z=-1.56 rendement=-19.3% t_par_événement=+0.07
+     mois 2026-04 n=    1 évts=   1 gagnés=    1 attendus=    0.4 z=+1.22 rendement=+142.7% t_par_événement=+0.00
+     mois 2026-05 n=    2 évts=   2 gagnés=    1 attendus=    0.9 z=+0.09 rendement=+4.2% t_par_événement=+0.00
+     mois 2026-06 n=   13 évts=  10 gagnés=    7 attendus=    8.4 z=-0.95 rendement=-17.8% t_par_événement=+0.27
+     mois 2026-07 n=    4 évts=   4 gagnés=    2 attendus=    2.2 z=-0.18 rendement=-8.6% t_par_événement=-0.38
+     mois 2026-08 n=    2 évts=   2 gagnés=    1 attendus=    0.7 z=+0.52 rendement=+49.6% t_par_événement=+0.00
+     mois 2026-09 n=    2 évts=   2 gagnés=    1 attendus=    1.2 z=-0.43 rendement=-19.5% t_par_événement=+0.00
+     mois 2026-10 n=    2 évts=   2 gagnés=    0 attendus=    0.8 z=-1.66 rendement=-100.0% t_par_événement=+0.00
+     mois 2026-11 n=    2 évts=   1 gagnés=    2 attendus=    1.1 z=+1.37 rendement=+72.5% t_par_événement=+0.00
+     mois 2026-12 n=    1 évts=   1 gagnés=    0 attendus=    0.6 z=-1.18 rendement=-100.0% t_par_événement=+0.00
+NON, prix <= 0.97, à  7 j : paris= 708 évts= 442 rendement= -3.8% t_évt=-1.91 z_prix=+0.63 mois+ 5/13 -> écartée
+NON, prix <= 0.97, à 10 j : paris= 470 évts= 279 rendement= -6.3% t_évt=-2.07 z_prix=-0.56 mois+ 5/13 -> écartée
+NON, prix <= 0.97, à 14 j : paris= 465 évts= 265 rendement= -2.8% t_évt=-0.85 z_prix=+0.42 mois+ 7/14 -> écartée
+NON, prix <= 0.97, à 21 j : paris= 405 évts= 198 rendement= +7.1% t_évt=+0.26 z_prix=+2.02 mois+ 9/13 -> écartée
+NON, prix <= 0.97, à 30 j : paris= 352 évts= 185 rendement=+11.8% t_évt=+1.18 z_prix=+3.18 mois+ 8/11 -> indice
+NON, prix <= 0.97, à 45 j : paris= 129 évts=  69 rendement=+12.7% t_évt=+0.12 z_prix=+0.25 mois+ 8/11 -> écartée
+NON, prix <= 0.85, à  7 j : paris= 507 évts= 377 rendement= -5.6% t_évt=-2.00 z_prix=+0.46 mois+ 5/12 -> écartée
+NON, prix <= 0.85, à 10 j : paris= 302 évts= 216 rendement=-11.1% t_évt=-1.79 z_prix=-1.09 mois+ 4/12 -> écartée
+NON, prix <= 0.85, à 14 j : paris= 298 évts= 207 rendement= -3.6% t_évt=-0.79 z_prix=+0.66 mois+ 6/13 -> écartée
+NON, prix <= 0.85, à 21 j : paris= 267 évts= 159 rendement= +8.7% t_évt=+0.39 z_prix=+1.41 mois+ 7/11 -> écartée
+NON, prix <= 0.85, à 30 j : paris= 228 évts= 143 rendement=+16.3% t_évt=+1.25 z_prix=+2.84 mois+ 8/11 -> indice
+NON, prix <= 0.85, à 45 j : paris=  78 évts=  53 rendement=+21.4% t_évt=+0.59 z_prix=+0.31 mois+ 8/11 -> écartée
+réglages essayés ici: 12

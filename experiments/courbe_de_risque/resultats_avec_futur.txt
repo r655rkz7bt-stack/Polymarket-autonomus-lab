@@ -1,0 +1,17 @@
+NON, prix <= 0.97, à  7 j : paris= 749 évts= 466 rendement= -3.7% t_évt=-1.90 z_prix=+0.49 mois+ 6/13 -> écartée
+NON, prix <= 0.97, à 10 j : paris= 515 évts= 307 rendement= -6.7% t_évt=-1.95 z_prix=-0.76 mois+ 6/13 -> écartée
+NON, prix <= 0.97, à 14 j : paris= 516 évts= 292 rendement= -5.2% t_évt=-1.39 z_prix=+0.22 mois+ 6/15 -> écartée
+NON, prix <= 0.97, à 21 j : paris= 439 évts= 224 rendement= +4.7% t_évt=-0.13 z_prix=+1.53 mois+ 8/14 -> écartée
+NON, prix <= 0.97, à 30 j : paris= 392 évts= 209 rendement= +8.1% t_évt=+0.28 z_prix=+2.61 mois+ 8/12 -> écartée
+NON, prix <= 0.97, à 45 j : paris= 150 évts=  86 rendement= +6.1% t_évt=-0.59 z_prix=-0.22 mois+ 7/11 -> écartée
+NON, prix <= 0.85, à  7 j : paris= 529 évts= 393 rendement= -5.5% t_évt=-2.01 z_prix=+0.36 mois+ 6/12 -> écartée
+NON, prix <= 0.85, à 10 j : paris= 328 évts= 235 rendement=-11.5% t_évt=-1.73 z_prix=-1.27 mois+ 4/12 -> écartée
+NON, prix <= 0.85, à 14 j : paris= 329 évts= 230 rendement= -7.2% t_évt=-1.27 z_prix=+0.59 mois+ 5/13 -> écartée
+NON, prix <= 0.85, à 21 j : paris= 290 évts= 180 rendement= +6.0% t_évt=+0.13 z_prix=+1.21 mois+ 6/12 -> écartée
+NON, prix <= 0.85, à 30 j : paris= 257 évts= 160 rendement=+11.9% t_évt=+0.72 z_prix=+2.68 mois+ 8/12 -> écartée
+NON, prix <= 0.85, à 45 j : paris=  94 évts=  67 rendement=+11.9% t_évt=+0.09 z_prix=+0.18 mois+ 7/11 -> écartée
+réglages essayés ici: 12
+OUI à 7 j (avec les échelles réglées tôt): n=  717 évts= 462 gagnés=  254 attendus=  279.3 z=-2.30 rendement=-10.1% t_par_événement=-3.17
+OUI à 14 j (avec les échelles réglées tôt): n=  466 évts= 276 gagnés=  150 attendus=  166.1 z=-1.93 rendement=-10.7% t_par_événement=-1.16
+OUI à 21 j (avec les échelles réglées tôt): n=  398 évts= 215 gagnés=  137 attendus=  154.4 z=-2.28 rendement=-12.1% t_par_événement=-1.03
+OUI à 30 j (avec les échelles réglées tôt): n=  337 évts= 192 gagnés=  126 attendus=  139.7 z=-1.88 rendement=-10.8% t_par_événement=+0.70

@@ -1,0 +1,13 @@
+--- robustesse (T-60 j et T-30 j, OUI 0,02-0,15) : volume et écart achat-vente
+T-30 j, volume ≥   5000, écart 0.01: 168 paris, rendement -0.003, t événements -0.03, z prix -0.06, écartée
+T-30 j, volume ≥   5000, écart 0.02: 168 paris, rendement -0.013, t événements -0.59, z prix -0.71, écartée
+T-30 j, volume ≥  20000, écart 0.01: 120 paris, rendement -0.029, t événements -1.14, z prix -1.30, écartée
+T-30 j, volume ≥  20000, écart 0.02: 120 paris, rendement -0.039, t événements -1.54, z prix -2.02, écartée
+T-30 j, volume ≥ 100000, écart 0.01:  57 paris, rendement -0.085, t événements -1.85, z prix -2.79, écartée
+T-30 j, volume ≥ 100000, écart 0.02:  57 paris, rendement -0.094, t événements -2.07, z prix -3.56, écartée
+T-60 j, volume ≥   5000, écart 0.01: 122 paris, rendement +0.028, t événements +1.33, z prix +1.32, indice
+T-60 j, volume ≥   5000, écart 0.02: 122 paris, rendement +0.017, t événements +0.79, z prix +0.93, écartée
+T-60 j, volume ≥  20000, écart 0.01:  97 paris, rendement +0.025, t événements +1.14, z prix +1.11, indice
+T-60 j, volume ≥  20000, écart 0.02:  97 paris, rendement +0.015, t événements +0.63, z prix +0.75, écartée
+T-60 j, volume ≥ 100000, écart 0.01:  45 paris, rendement +0.025, t événements +0.94, z prix +0.79, indice
+T-60 j, volume ≥ 100000, écart 0.02:  45 paris, rendement +0.014, t événements +0.53, z prix +0.53, écartée
