@@ -34,6 +34,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| après la fin du match (favori 0,94-0,985 à +1…+8 h du coup d'envoi, 10 234 événements de 37 ligues, vrais échanges) | écartée | −0,9 / +1,0 / 0,0 / +0,7 % à +1/+2/+3/+4 h (t entre −1,7 et +1,8), mêmes ordres de grandeur à 0,90-0,94 et ≥ 0,985 (−1,4 % à +1 h, t −3,6) ; 36 réglages ; apres_echeance éteinte | apres_fin_match.md |
 | ufc_coherence (n° 6 : KO/TKO + soumission + décision = 1, 611 combats UFC, 548/549 règlements relus) | écartée | trois jambes jamais échangées ensemble : ≤ 63 paniers OUI et 20 paniers NON réalisables en 15 min sur 611 combats ; OUI coûte 1,11-1,20, NON 1,98-2,00 ; 5 combats sous le seuil (+1 à +5 %, jambes de quelques dollars) ; ≈ 8 réglages | ufc_coherence.md |
 | gagnant de saison, NON des candidats à 10-30 % (120 événements sport, 3 927 candidats) | indice faible, non répliqué | sport 14 jours : +8,2 % (91 gagnés / 84,2), +9,9 % aux vrais prix ; 7 jours = un seul événement ; 30 jours 0 % ; ~120 réglages ; hors sport (120 événements) 14 jours +5,6 % (t +0,2), 7 et 30 jours négatifs | saison_sport.md |
 | tennis en jeu, hors échantillon (629 matchs après le 20/10) | non confirmé | +30 min : 43 gagnés / 44,7, −4,5 % (n = 51) ; trop peu de matchs | saison_sport.md |

@@ -1961,7 +1961,9 @@ marche_neuf:
 
 apres_echeance:
   explication: "La date est passée et le résultat est presque sûr, mais le marché n'est pas encore réglé : on achète le gagnant presque certain."
-  enabled: true
+  # 23/10/2026 : écartée sur le passé (experiments/apres_fin_match.md, 10 234 événements de 37 ligues, vrais prix) : favori à 0,94-0,985 acheté 1 à 4 h après
+  # le coup d'envoi = -0,9 / +1,0 / 0,0 / +0,7 % (t -1,7 / +1,8 / 0,0 / +0,2), rien à aucun retard ni dans les deux autres tranches de prix ; le +2,8 % du début venait de la chance.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params: &apres_echeance_params
@@ -1975,28 +1977,6 @@ apres_echeance:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     kelly_fraction: {value: 0.15, min: 0.0, max: 2.0}
-
-apres_echeance_2h:
-  explication: "Comme « après la date », mais on attend seulement 2 heures après le début du match avant d'acheter le gagnant presque certain."
-  # 23/10/2026 (enquête `2026-10-23_apres_echeance_match_en_cours.md`) : à 1-2 h après le coup d'envoi −7,8 % (140 achats), à 2-3 h 22 gagnés sur 22 (+4 %).
-  # Les deux variantes (2 h et 6 h) encadrent la mère (3 h) pour trouver à partir de quand un match est vraiment fini.
-  class: apres_echeance
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-23"
-  params:
-    <<: *apres_echeance_params
-    heures_apres_coup_d_envoi_min: {value: 2, min: 0, max: 12}
-
-apres_echeance_6h:
-  explication: "Comme « après la date », mais on attend 6 heures après le début du match : le résultat est alors vraiment fini."
-  class: apres_echeance
-  enabled: true
-  version: "1.0.0"
-  created_at: "2026-10-23"
-  params:
-    <<: *apres_echeance_params
-    heures_apres_coup_d_envoi_min: {value: 6, min: 0, max: 12}
 
 marches_jumeaux:
   explication: "La même question posée deux fois à deux prix différents : on achète le OUI le moins cher et le NON de l'autre, ça gagne à coup sûr."

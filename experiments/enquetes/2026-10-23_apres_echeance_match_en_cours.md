@@ -47,6 +47,11 @@ cas (ordre posé, le fantôme achète le même jeton dans les 48 h) à « à reg
 `nf_sport_patiente` : 3 paris = 126 % du gain et le 18/10 = 225 % : causes écrites le 22/10 (`2026-10-22_championne_biais_et_mises.md`).
 `nf_sport_patiente_prix_850_875` : 25 gagnés pour 25,6 attendus (+1,5 %) : même mécanisme (mise ∝ 1/(1 − prix), aucun avantage mesuré).
 
+## Suite du même jour : la stratégie elle-même est écartée
+Le test sur le passé demandé par le correctif (`experiments/apres_fin_match.md`, 10 234 événements, vrais échanges) ne trouve aucun avantage à aucun retard
+(−0,9 à +1,0 % à +1…+4 h) : `apres_echeance` est éteinte dans l'arène (`enabled: false`). Le garde-fou (3 h après le coup d'envoi, un pari par événement)
+reste dans le code avec ses tests.
+
 ## Contrôle à la main, famille n° 6 (ce qui ne tourne plus) : rien de cassé
 Cycle local complet (`run_simulation.py --once --dev-key`, lignes « abstentions ») : 14 fantômes sans aucun achat depuis leur naissance.
 - **Calendrier** : `cpi_tranches` (CPI du 11/11, fenêtre 20-170 h), `jobs_favori_non` (emploi du 6/11, fenêtre 4-72 h), `statu_quo_ia` (fenêtre
