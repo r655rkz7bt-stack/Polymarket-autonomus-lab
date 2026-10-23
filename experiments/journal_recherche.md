@@ -3,6 +3,13 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (session avec Etienne : verdict de la vague de volume)
+
+- **Recherche** : `experiments/vague_volume_backtest.md` (13 714 marchés, prix payés, 72 réglages) : « contrer » écartée (36/36 perdants),
+  « suivre » indice (+1,4 à +2,2 %, presque nul depuis juillet 2026 ; même règle sans vague +1,3 %).
+- **Arène** : `vague_volume_contrer` éteinte ; fille `vague_volume_suivre_x5` (meilleur réglage sur 72 : sélection, l'arène confirme).
+- **Reste ouvert** : `idea_test.fetch_event_trades` pourrait utiliser le paramètre `end` de data-api (échanges au-delà de 10 000, vérifié sur 5 030 échanges).
+
 ## 2026-10-23 (session avec Etienne : intégration des pistes revues)
 
 - **Enquête** : sans objet (voir la session « anomalies » du même jour).
