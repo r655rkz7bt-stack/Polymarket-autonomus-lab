@@ -3,6 +3,20 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22/23 (session à part : pistes n° 1, 4, 5 de `vingt_cinq_pistes.md`, cohérence des marchés de sport)
+
+- **Fait** (`experiments/pistes_sport_coherence.md`, scripts `experiments/score_exact_poisson/`, `bo3_coherence/`, `tennis_sets_coherence/`) :
+  inventaire Gamma par `sportsMarketType` (pagination keyset) puis test aux prix réellement payés (« avant » / « après » T0, frais, 72 réglages par piste,
+  réglage sur la 1re moitié, jugement sur la 2e). Échantillons tirés par mois : 1 030 matchs de tennis, 1 417 d'e-sport, 505 de football.
+- **Tennis, sets** (n° 5) : **écartée (trompeuse)** : « après » −8,9 % à +1,4 % ; le gain « avant » (+9,8 %, +74 % sur 31 paris) vient d'échanges vieux de 2 à 6 h
+  (< 30 min : −6,4 %, 2-6 h : +21 %) ; le binomial est moins bon que le prix du marché lié.
+- **E-sport, cartes** (n° 4) : cohérence binomiale **écartée** (mêmes prix périmés) ; découverte annexe : acheter le « Under » des totaux de cartes
+  (la série finit 2-0), prix « après » : **+13,5 %, 457 paris, t par match +2,75, 10 mois sur 12, z +2,9**, deux moitiés positives, « Over » −15,5 % ;
+  trouvée parmi ~90 essais : **indice fort, fantôme `esport_moins_de_cartes` proposé** (règle exacte dans le rapport ; non créé : étude seule).
+- **Football, score exact** (n° 1) : **écartée (marchés trop peu négociés)** : 13 061 matchs existent mais 15 à 52 paris par réglage ; 2 paris en test.
+- **Défaut à retenir** : prix « avant » d'un marché mince = prix périmé ; ranger les paris par âge du prix avant de conclure.
+- **Reste ouvert** : créer le fantôme (et vérifier que le scanner voit les totaux d'e-sport, < 1 000 $/jour) ; fille LoL ; variante en jeu (état du set / de la carte).
+
 ## 2026-10-22 (passage chercheur, nuit : 04 h 55 → 05 h 51 UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-22_championne_biais_et_mises.md`, `..._muettes_budget_cotes.md`, et la 3e ligne du README ; familles 5 puis 2, 6 et 3).

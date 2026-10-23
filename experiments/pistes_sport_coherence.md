@@ -10,8 +10,8 @@ Données (ignorées par Git) : `donnees/` de chaque dossier.
 | piste | question | verdict | chiffres clés (aux prix réellement payés, après frais) |
 |---|---|---|---|
 | n° 5 `tennis_sets_coherence` | « set 1 », « gagne en 2 sets », « nombre de sets » s'accordent-ils avec « vainqueur du match » ? | **écartée (trompeuse)** | prix « après » T0 : −8,9 % à +1,4 % par pari (t par match −0,9 à +0,3) ; le gain du prix « avant » (+9,8 %, jusqu'à +74 % sur 31 paris) vient d'échanges vieux de 2 à 6 h (prix périmés) |
-| n° 4 `bo3_coherence` | « carte 1 », « handicap de cartes », « nombre de cartes » s'accordent-ils avec « vainqueur de la série » ? | _à remplir_ | _à remplir_ |
-| n° 1 `score_exact_poisson` | les scores exacts sont-ils mal cotés par rapport à une loi de Poisson tirée du vainqueur et des « plus/moins de 2,5 buts » ? | _à remplir_ | _à remplir_ |
+| n° 4 `bo3_coherence` | « carte 1 », « handicap de cartes », « nombre de cartes » s'accordent-ils avec « vainqueur de la série » ? | **écartée telle quelle** ; découverte annexe « moins de cartes » : **indice fort → fantôme** | modèle, prix « après » : −13 % à +2 % (réglages fixes) ; acheter « Under » du nombre de cartes, prix « après » : **+13,5 % par pari, 457 paris, 412 matchs, t +2,75, 10 mois sur 12, z des prix +2,9** (trouvé parmi ~90 essais) |
+| n° 1 `score_exact_poisson` | les scores exacts sont-ils mal cotés par rapport à une loi de Poisson tirée du vainqueur et des « plus/moins de 2,5 buts » ? | **écartée : marchés trop peu négociés** | 13 061 matchs existent, mais sur 481 tirés seuls 134-233 ont des prix réels pour le modèle ; 15 à 52 paris par réglage sur 8 mois ; le réglage choisi en apprentissage n'a que 0-2 paris en test |
 
 ## Règles communes (les mêmes pour les trois pistes)
 
@@ -86,3 +86,113 @@ lui-même. Pas de fantôme.
 qui a gagné le set 1, et quand ; possible avec les échanges du marché « set 1 » qui passent à 0,99, non fait) ; modèle à
 sets indépendants seulement (la recalibration logistique corrige le biais moyen, pas plus) ; pas de carnet historique
 (le prix « après » est celui du premier preneur, pas forcément le meilleur vendeur à T0).
+
+## Piste n° 4 : e-sport, les cartes contre le vainqueur de la série
+
+**Question.** Même calcul binomial qu'au tennis, avec q = chance de gagner une carte : « Map 1 / Map 2 Winner »
+(`child_moneyline`), « Map Handicap −1,5 » (`map_handicap`, 2-0 en BO3), « Games Total O/U 2.5 » (`totals`, 3 cartes en BO3 ;
+O/U 3,5 et 4,5 en BO5) contre « Match Winner » (`moneyline`). Le BO est lu dans le titre (« (BO3) », « (BO5) »).
+
+**Les marchés existent.** CS2 11 901 matchs réglés, LoL 3 576, Dota 2 3 138, Valorant 2 629 (octobre 2025 → octobre 2026) ;
+~15 300 matchs BO3/BO5 utilisables avec au moins un marché lié de volume > 0. Volumes médians : carte 1 650 à 55 700 $
+(LoL le plus liquide), handicap 100 à 1 700 $, total 150 à 1 850 $.
+
+**Données du test.** 1 417 matchs tirés (30 par mois et par jeu), 6 092 marchés liés réglés (1 368 carte 1, 1 364 carte 2,
+138 carte 3 en BO5, 1 688 handicaps, 1 534 totaux), 1 278 BO3 et 139 BO5 ; 29 événements tronqués par la limite de la data-api.
+À h = 3 h : 2 470 des 4 312 marchés liés examinés sans échange dans les 6 h avant T0 ; 419 matchs sans échange du vainqueur
+dans l'heure avant T0.
+
+**Résultats.**
+1. *Le modèle n'est pas meilleur que le prix* (Brier égaux à 0,003 près). Mais il montre où il se trompe : les séries en
+   3 cartes arrivent **146 fois pour 180 attendues par le modèle ET 179 par le prix** ; le côté −1,5 gagne 197 fois pour 169
+   (modèle) et 184 (prix). Les cartes ne sont pas indépendantes (l'équipe en forme le jour gagne 2-0) et **le marché des
+   totaux semble coté comme la binomiale**, donc trop cher pour « 3 cartes ».
+2. *Le modèle, aux prix payés* : réglages fixes « après » −13 % à +2 % (sauf avance > 0,10 à h = 6 h : +28 %, 47 paris, t +0,9).
+   Réglage choisi en apprentissage (h = 6 h, « avant » 6 h, avance > 0,06, recalibré) : test +18,6 % (118 paris, t +1,68,
+   z +1,75, « retenue » pour `verdict`) — mais prix « avant » : rangés par âge de l'échange, < 30 min **−40 %**, 2-6 h +22 %
+   (prix périmés, comme au tennis). Meilleur réglage « après » : test +21,7 % (99 paris, t +1,37) : indice faible.
+3. *Sans modèle* (12 essais : 3 types × 2 côtés × avant/après ; contrôle `sous_2_5.py`, sortie `resultats_sous_2_5.txt`) :
+
+   | acheter « Under » des totaux de cartes, prix « après » | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) |
+   |---|---|---|---|---|---|---|
+   | h = 3 h, fenêtre 6 h, période entière | 457 | 412 | **+13,5 %** | **+2,75** | 10/12 | 298 / 268,8 (+2,9) |
+   | 1re moitié (avant le 28/04/2026) | 175 | 160 | +9,8 % | +1,33 | 4/6 | 110 / 102,4 (+1,2) |
+   | 2e moitié | 282 | 252 | +15,8 % | +2,48 | 6/7 | 188 / 166,4 (+2,7) |
+   | autres délais (h = 1 / 3 / 6, fenêtre 2 ou 6 h) | 178-520 | | +7,6 % à +20,0 % | +1,6 à +2,8 | 9-10/12 | |
+   | LoL / CS2 / Dota 2 / Valorant | 238 / 68 / 70 / 81 | | +22,2 / +7,2 / +7,5 / −1,5 % | +3,2 / +0,7 / +0,7 / 0,0 | | |
+   | BO3 seulement / BO5 | 339 / 118 | 339 / 73 | +7,7 % / +30,3 % | +1,71 / +2,51 | 9/12 / 8/11 | |
+   | prix payé 0,30-0,70 / ≥ 0,70 | 363 / 75 | | +15,9 % / +1,9 % | | | |
+   | contre-épreuve : « Over », après | 538 | 501 | −15,5 % | −2,96 | 1/12 | 218 / 260,0 (−3,8) |
+   | « Under », prix « avant » (connu à T0, sans sélection future) | 322 | 290 | +8,5 % | +1,55 | 8/12 | 201 / 191,0 (+1,2) |
+
+**Verdict.** La cohérence binomiale elle-même : **écartée** (le marché lié n'est pas moins bien coté que le modèle ; les gains
+« avant » sont des prix périmés). La découverte annexe — **les séries finissent 2-0 plus souvent que les totaux ne le disent** —
+est **un indice fort** : positive à tous les délais, dans les deux moitiés, mécanisme clair (la binomiale qu'applique le
+marché ignore la dépendance entre cartes), contre-épreuve nette (« Over » −15,5 %), et positive aussi au prix « avant » qui ne
+dépend d'aucun échange futur. `verdict` dit « retenue », mais elle a été trouvée parmi ~90 essais (72 réglages du modèle,
+12 côtés, découpages) et la 2e moitié n'est pas un vrai hors-échantillon : **fantôme, pas de part du principal**.
+Elle tient surtout à LoL et au BO5 ; en BO3 seul, +7,7 % (t +1,7).
+
+**Règle exacte du fantôme proposé (`esport_moins_de_cartes`)** :
+- marchés : événements e-sport des séries CS2 (10310), LoL (10311), Dota 2 (10309), Valorant (10369) dont le titre contient
+  « (BO3) » ou « (BO5) » ; type Gamma `sportsMarketType == "totals"` (« Games Total: O/U 2.5 », en BO5 O/U 3.5 et 4.5) ;
+- moment : entre 6 h et 1 h avant `gameStartTime`, jamais après ;
+- achat : l'issue « Under », en preneur, si le prix (frais compris) est entre 0,30 et 0,70 ; un seul achat par marché ;
+- mise fixe et petite (volume médian 150-1 850 $ par marché) ; garder jusqu'au règlement ;
+- fille à suivre : LoL seul. Attention « stratégie sourde » : ces marchés font souvent moins de 1 000 $ par jour ;
+  vérifier que le scanner les voit (`min_volume_24h`, `tag_pages`) après un cycle local.
+
+**Limites.** Échantillon (1 417 matchs sur ~15 300) ; prix « après » = premier preneur, pas le carnet (l'arène tranchera) ;
+pas de variante en jeu ; carte 1 souvent choisie par une équipe (avantage du choix ignoré).
+
+## Piste n° 1 : football, score exact contre loi de Poisson
+
+**Question.** Les prix « domicile / nul / extérieur » et « plus/moins de 1,5 / 2,5 / 3,5 buts » donnent λ domicile et λ extérieur
+(deux lois de Poisson ajustées aux moindres carrés ; variante Dixon-Coles ρ = −0,1) ; on achète le OUI ou le NON d'un score
+exact vendu loin de ce calcul.
+
+**Les marchés existent.** 13 061 événements « … - Exact Score » réglés (265 701 marchés, type `soccer_exact_score`, 37 marchés
+par match : 0-0 à 5-5 et « Any Other Score »), de février à octobre 2026 (4 067 en août), surtout ligues secondaires
+(Ligue Europa Conference, MLS, Amérique du Sud, Brésil 2, USL…) ; le match lui-même est l'événement sans suffixe, les totaux
+dans « …-more-markets ». Volume médian d'un match : 1 225 $ pour les 37 scores réunis (p90 20 000 $).
+
+**Données du test.** 505 matchs tirés (60 par mois), 481 utilisables, 9 214 scores réglés, 113 023 échanges sur les scores.
+Le modèle exige un échange réel des 4 marchés indispensables dans les 2 h avant T0 : seuls **233 matchs à h = 1 h, 176 à 3 h,
+134 à 6 h** l'ont. À h = 3 h, 2 151 des 3 131 scores examinés n'ont aucun échange dans les 6 h avant T0.
+
+**Résultats.** Les OUI des scores qui ont un échange gagnent 48 fois pour 51 attendues par le modèle et 63,5 par le prix payé
+(Brier modèle 0,0608, prix 0,0632) : les scores exacts sont **trop chers** (biais des billets improbables), et le modèle le voit.
+Mais il y a très peu de paris : 15 à 52 par réglage sur 8 mois (11 à 23 matchs) ; OUI seulement : 0 gagné sur 4 à 6 paris dans
+la plupart des réglages ; NON seulement, prix « après » : +9,4 % (33 paris, 17 matchs, 2 mois) à +12,9 % (46 paris, 19 matchs).
+Réglage choisi en apprentissage (h = 1 h, « avant » 6 h, avance > 0,03, ρ = −0,1 : +22,9 % sur 30 paris) : **2 paris en test,
+tous deux perdus**.
+
+**Verdict : écartée (marchés trop peu négociés).** Les marchés existent mais presque aucun ne s'échange avant le coup d'envoi ;
+trop peu de matchs pour un jugement, rien de régulier. La surcote des OUI de scores exacts rejoint la piste n° 10 (queues de
+tranches, écartée : le NON à 0,90-0,97 ne laisse rien après frais) ; pas de fantôme.
+
+**Limites.** Échantillon de 505 matchs ; les grandes ligues (Premier League 170 matchs) sont rares dans le tirage ;
+Dixon-Coles seulement à ρ = −0,1 ; pas de variante en jeu.
+
+## Ce qu'on en retient
+
+- Le défaut du 22/10 revient sous une nouvelle forme : **le prix « avant » d'un marché mince est souvent périmé** (gain qui
+  croît avec l'âge du dernier échange). Pour tout test, ranger les paris « avant » par âge du prix ; ne juger que sur « après ».
+- Les marchés liés du sport sont minces : 55 à 75 % sans échange dans les 6 h avant le match.
+- La seule piste vivante est structurelle, pas « de cohérence » : en e-sport, le marché suppose des cartes indépendantes ;
+  en réalité les séries se finissent 2-0 plus souvent. Au tennis, l'effet de même sens existe pour les sets mais il est
+  déjà dans les prix (z −1,1 « avant », rien « après »).
+
+## Reproduire
+
+```
+python experiments/score_exact_poisson/releve_marches.py
+python experiments/score_exact_poisson/releve_matchs.py 60
+python experiments/score_exact_poisson/test_passe.py
+python experiments/bo3_coherence/releve_evenements.py cs2 lol dota2 val atp wta
+python experiments/bo3_coherence/inventaire.py cs2 lol dota2 val atp wta
+FILS=8 python experiments/bo3_coherence/releve_echanges.py 30 cs2 lol dota2 val
+FILS=8 python experiments/bo3_coherence/releve_echanges.py 50 atp wta
+python experiments/bo3_coherence/test_passe.py esport   # et : tennis
+python experiments/bo3_coherence/sous_2_5.py esport
+```
