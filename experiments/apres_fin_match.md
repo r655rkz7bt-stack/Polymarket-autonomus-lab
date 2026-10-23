@@ -29,7 +29,7 @@ coup d'envoi + d ; on garde le pari si ce prix est dans la fourchette. Un seul p
 | +6 h et plus | 8 paris | 4 paris | 29 paris : 24 gagnés / 28,9, **−17 %** (à +6 h : 16 gagnés / 19,9, z des prix −17) |
 
 Toutes jambes confondues : mêmes ordres de grandeur (+2 h : +0,9 %, t +1,8). Par sport à +3 h et plus : aucun sport significatif (CFB +1,3 %, ATP −5,9 %, ITF −0,4 %, NFL −2,0 %…).
-À +6 h et plus, les favoris ≥ 0,985 perdent 5 fois sur 29 (4 sur 20 à +6 h) : un prix à 0,99 ne dit plus rien de sûr à ce stade (peu de cas, à ne pas surinterpréter).
+À +6 h et plus, les favoris ≥ 0,985 perdent 5 fois sur 29 (4 sur 20 à +6 h) : un prix à 0,99 ne dit plus rien de sûr à ce stade (peu de cas, à ne pas surinterpréter). Relu à la main (Kiwoom-Hanwha, 5/10) : 4 des 5 pertes sont des matchs de baseball coréen (KBO) achetés à 0,999 à +4,5 h, réglés pour l'autre équipe deux jours plus tard (`closedTime` 7/10) : match interrompu ou reporté, le marché reste ouvert « jusqu'à ce que le match soit terminé » (règle du marché) ; le prix de 0,99 était celui d'un match en cours, pas d'un match fini (un seul des quatre relu en détail, les autres sont du même type).
 
 ## Verdict : **écartée**
 À aucun retard, dans aucune des trois tranches de prix, le favori d'un match en cours ou fini ne rapporte plus que son prix après frais : de −1,4 % à +1,0 %, avec

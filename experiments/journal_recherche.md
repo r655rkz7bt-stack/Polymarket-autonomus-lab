@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-23 (passage chercheur, matin : 09 h 55 → 10 h 45 UTC)
+## 2026-10-23 (passage chercheur, matin : 09 h 55 → 10 h 42 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-23_apres_echeance_match_en_cours.md` ; famille du jour 6 « ce qui ne tourne plus », puis famille 5/2).
   - **Défaut trouvé** : `apres_echeance` (copiée par le principal) achetait les favoris à 0,95-0,97 **1 à 2 h après le coup d'envoi** : pour un match, l'« échéance » Gamma est le début du
