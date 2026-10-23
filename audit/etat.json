@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2749,
+  "principal": 2750,
   "fantome:calibration_patiente_v1.0.0": 1810,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1783,
@@ -18,7 +18,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1471,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1932,
+  "fantome:market_maker_serre_v1.0.0": 1935,
   "fantome:market_maker_v1.0.0": 1578,
   "fantome:favori_politique_patiente_v1.0.0": 1386,
   "fantome:favori_politique_v1.0.0": 1388,
@@ -119,7 +119,7 @@
   "fantome:mots_prononces_nfl_v1.0.0": 137,
   "fantome:nf_sport_football_v1.0.0": 156,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 210,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 284,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 286,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 144,
   "fantome:mots_prononces_patiente_v1.0.0": 149,
   "fantome:cpi_tranches_v1.0.0": 101,
@@ -147,7 +147,7 @@
   "fantome:saison_non_v1.0.0": 26,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 6
  },
- "verifiees": 7208,
+ "verifiees": 7211,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1079,9 +1079,9 @@
    "op_id": "settle-78811777713558303970425688318448305972762487530241001490951093854049468164512"
   }
  ],
- "derniere_execution": "2026-10-23T13:27:36+00:00",
+ "derniere_execution": "2026-10-23T13:33:43+00:00",
  "dernier_seq_reglements": {
-  "principal": 2749,
+  "principal": 2750,
   "fantome:calibration_patiente_v1.0.0": 1810,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1783,
@@ -1099,8 +1099,8 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1471,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1937,
-  "fantome:market_maker_v1.0.0": 1578,
+  "fantome:market_maker_serre_v1.0.0": 1940,
+  "fantome:market_maker_v1.0.0": 1582,
   "fantome:favori_politique_patiente_v1.0.0": 1386,
   "fantome:favori_politique_v1.0.0": 1388,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1388,
@@ -1220,7 +1220,7 @@
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 119,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 34,
   "fantome:moins_de_cartes_v1.0.0": 57,
-  "fantome:non_aux_drames_v1.0.0": 69,
+  "fantome:non_aux_drames_v1.0.0": 71,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 78,
   "fantome:vague_volume_suivre_x5_v1.0.0": 66,
