@@ -179,3 +179,15 @@ for direction, name in ((1, "suivre"), (-1, "contrer")):
         results[f"{name}_reference_{lab}"] = brief(it.verdict(br))
         print(f"  référence {lab} :", brief(it.verdict(br)))
 json.dump(results, open(D / f"resultats_{'_'.join(map(str, HOURS))}.json", "w"), ensure_ascii=False, indent=1)
+
+# ---------------------------------------------------------------- 4. robustesse du réglage en direct
+print("\n## Robustesse (vague ×3, mouvement 0,03, plages)")
+for direction, name in ((1, "suivre"), (-1, "contrer")):
+    b, _ = bets_for(direction, 3.0, 1e18, 0.03, *RANGES[direction])
+    top = sorted(b, key=lambda r: -r["gain"])[3:]
+    print(name, "sans les 3 meilleurs paris :", brief(it.verdict(top)))
+    for lab, keep in (("décisions avant 2026-07", lambda r: r["mois"] < "2026-07"),
+                      ("décisions 2026-07 à 2026-10", lambda r: r["mois"] >= "2026-07")):
+        print(name, lab, ":", brief(it.verdict([r for r in b if keep(r)])))
+    s = sum(r["gain"] * r["cout"] for r in b) / sum(r["cout"] for r in b)
+    print(name, "rendement des mises (1 part par pari) :", round(s, 4))

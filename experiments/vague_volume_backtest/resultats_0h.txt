@@ -59,3 +59,13 @@ contrer {"paris": 413, "rendement_moyen": -0.0908, "confiance_paris": -1.01, "ev
   référence sans vague (rapport < 1,5) : {'paris': 1086, 'evenements': 364, 'rendement_moyen': -0.2351, 'confiance_evenements': -1.58, 'z_prix': -3.29, 'mois_gagnants': '5/17', 'verdict': 'écartée'}
   référence rapport 1,5-3 : {'paris': 545, 'evenements': 244, 'rendement_moyen': -0.128, 'confiance_evenements': -1.18, 'z_prix': -0.69, 'mois_gagnants': '4/13', 'verdict': 'écartée'}
   référence tous rapports : {'paris': 2044, 'evenements': 499, 'rendement_moyen': -0.1774, 'confiance_evenements': -1.66, 'z_prix': -2.86, 'mois_gagnants': '5/18', 'verdict': 'écartée'}
+
+## Robustesse (vague ×3, mouvement 0,03, plages)
+suivre sans les 3 meilleurs paris : {'paris': 465, 'evenements': 253, 'rendement_moyen': 0.0084, 'confiance_evenements': 1.17, 'z_prix': 0.99, 'mois_gagnants': '10/15', 'verdict': 'indice'}
+suivre décisions avant 2026-07 : {'paris': 88, 'evenements': 62, 'rendement_moyen': 0.0445, 'confiance_evenements': 0.72, 'z_prix': 1.0, 'mois_gagnants': '8/11', 'verdict': 'écartée'}
+suivre décisions 2026-07 à 2026-10 : {'paris': 380, 'evenements': 206, 'rendement_moyen': 0.0071, 'confiance_evenements': 0.72, 'z_prix': 0.78, 'mois_gagnants': '2/4', 'verdict': 'écartée'}
+suivre rendement des mises (1 part par pari) : 0.0217
+contrer sans les 3 meilleurs paris : {'paris': 410, 'evenements': 223, 'rendement_moyen': -0.1551, 'confiance_evenements': -2.03, 'z_prix': -0.52, 'mois_gagnants': '7/16', 'verdict': 'écartée'}
+contrer décisions avant 2026-07 : {'paris': 73, 'evenements': 47, 'rendement_moyen': -0.0029, 'confiance_evenements': 0.15, 'z_prix': 0.31, 'mois_gagnants': '5/12', 'verdict': 'écartée'}
+contrer décisions 2026-07 à 2026-10 : {'paris': 340, 'evenements': 187, 'rendement_moyen': -0.1097, 'confiance_evenements': -1.83, 'z_prix': -0.37, 'mois_gagnants': '2/4', 'verdict': 'écartée'}
+contrer rendement des mises (1 part par pari) : -0.0392
