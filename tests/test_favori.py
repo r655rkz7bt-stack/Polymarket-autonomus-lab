@@ -241,3 +241,15 @@ def test_estimate_cap_lets_a_quasi_certain_favorite_priced_0_99_show_an_edge(tmp
     assert not _strategy(("politics",), **quasi).propose([m], books, ledger.state, limits, "b").proposals
     out = _strategy(("politics",), q_max=0.996, **quasi).propose([m], books, ledger.state, limits, "b")
     assert len(out.proposals) == 1 and out.proposals[0].prob_low == D("0.993") and out.proposals[0].est_probability == D("0.996")
+
+
+def test_match_only_filter_refuses_season_and_award_markets(tmp_path):
+    """23/10/2026 : « Mbappé gagne le Ballon d'Or, NON » (pas de `sportsMarketType`) était pris par la
+    famille « sports » : 359 € à 0,94 pour une estimation de 0,99. `un_match` ne garde que les paris de match."""
+    from polymarket_agent.strategy_engine import Filtered
+    m, books, ledger, limits = _setup(tmp_path, fee_type="sports_fees_v3", end_hours=48)
+    only = Filtered(_strategy(shrink=0.5), {"familles": ["sports"], "un_match": True})
+    assert not only.propose([m], books, ledger.state, limits, "b").proposals  # marché de saison : pas de type
+    m.sports_market_type = "moneyline"
+    assert only.propose([m], books, ledger.state, limits, "b").proposals
+    assert Filtered(_strategy(shrink=0.5), {"familles": ["sports"]}).propose([m], books, ledger.state, limits, "b").proposals

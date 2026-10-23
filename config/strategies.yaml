@@ -705,6 +705,28 @@ nf_sport_patiente_biais_faible:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_patiente_matchs:
+  explication: "La championne (favori de sport, achat posé), mais seulement les paris de match : jamais un marché de saison ou de prix (Ballon d'Or, Coupe, Série mondiale)."
+  # 23/10/2026 (enquête 2026-10-23_marches_de_saison_dans_le_sport.md) : la championne a pris 15 paris sur des marchés sans type de
+  # match (Ballon d'Or, coupes), 857 € dont 359 € (30 % du capital) sur « Mbappé gagne le Ballon d'Or, NON » à 0,94, estimé 0,99. Sœur
+  # (pas une fille : la mère en a déjà 10) à comparer sur la MÊME période ; mêmes paramètres que la championne.
+  morceau: "sport, patiente, matchs seulement"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], un_match: true, prix_min: 0.80, prix_final: true}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_sport_patiente_tennis:
   explication: "La championne (favori de sport, achat posé), mais seulement le tennis : c'est là qu'elle gagne."
   # Entonnoir 80/20 (20/10/2026, reports/pareto.md) : sur 75 opérations de nf_sport_patiente, le
