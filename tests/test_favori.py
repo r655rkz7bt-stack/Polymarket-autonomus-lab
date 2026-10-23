@@ -257,3 +257,23 @@ def test_match_only_filter_refuses_season_and_award_markets(tmp_path):
     assert not season.propose([m], books, ledger.state, limits, "b").proposals  # un match : refusé par le filtre « saison »
     m.sports_market_type = None
     assert season.propose([m], books, ledger.state, limits, "b").proposals
+
+
+def test_season_no_buys_the_no_of_a_season_candidate_inside_its_window(tmp_path):
+    """23/10/2026 (experiments/saison_sport.md) : NON d'un candidat à 10-30 % dans un marché de saison, 10 à 18 jours avant la fin.
+    Refuse un pari de match, une échéance hors fenêtre et le OUI."""
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["saison_non"]
+    assert cfg.filters == {"familles": ["sports"], "un_match": False, "issue": ["non"], "echeance_min": 240, "echeance_max": 432,
+                           "prix_min": 0.70, "prix_max": 0.90}
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+    season = cfg  # la stratégie telle que le dépôt la charge (paramètres et filtres de strategies.yaml)
+
+    def proposals(hours, tmp, **raw):
+        m, books, ledger, _ = _setup(tmp, fee_type="sports_fees_v3", end_hours=hours, bid="0.15", ask="0.16", **raw)  # OUI à 0,16 : le NON (0,85) est le favori
+        m.outcome_prices = [D("0.155"), D("0.845")]
+        return season.propose([m], books, ledger.state, limits, "b").proposals
+
+    assert proposals(24 * 14, tmp_path / "a")
+    assert not proposals(24 * 3, tmp_path / "b")                    # trop près de la fin
+    assert not proposals(24 * 30, tmp_path / "c")                   # trop loin
+    assert not proposals(24 * 14, tmp_path / "d", sportsMarketType="moneyline")  # un match

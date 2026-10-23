@@ -22,16 +22,17 @@ au point que son NON (80-90 centimes) rapporte après frais et écart ? Naissanc
    Gain de l'horizon 14 jours : 5 meilleurs couples (événement, horizon) = 51 % du gain.
 3. *Aux prix de vrais échanges* (premier achat du NON dans les 6 h après la décision, 196 marchés) : payé 0,813 contre 0,809 au prix horaire (le prix horaire est exécutable) ; H = 14 j, 0,10-0,30 : n = 75, 67 gagnés pour 61,0, **+9,9 %**
    (t par événement +3,0) ; H = 7 j : n = 59, +9,6 % mais pas robuste (même événement) ; fenêtre 1 h : +8,2 % (n = 46).
-4. **Réglages essayés** : environ 120 (30 + 72 + 18), corrélés (les mêmes marchés reviennent à plusieurs horizons). Le meilleur est un maximum parmi ces essais.
+4. *Bootstrap par événement* (`scripts/bootstrap.py`, 2 000 tirages) : sport 14 jours, P(rendement ≤ 0) = 0,007 ; 7 jours 0,12 ; 30 jours 0,47 ; hors sport 14 jours 0,23, 7 jours 0,57, 30 jours 0,69. Un p de 0,007 sur le meilleur de ~120 réglages corrélés ne se lit pas comme 0,5 %.
+5. **Réglages essayés** : environ 120 (30 + 72 + 18), corrélés (les mêmes marchés reviennent à plusieurs horizons). Le meilleur est un maximum parmi ces essais.
 
 **Verdict : indice faible, non répliqué hors sport** (pas « retenue », malgré `idea_test.verdict` qui dit « retenue » à 14 jours)
 - pour : le sens est le même aux horizons 3 à 14 jours pour les OUI à 10-20 %, aux prix de vrais échanges, en 2025 comme en 2026, et il correspond à un biais connu (candidats « possibles » surcotés près de la fin) ;
 - contre : un seul horizon survit à la retraite de l'événement louche (14 jours), pas à 30 ni à 60 jours ; ~120 réglages ; 51 % du gain porté par 5 couples ; z des prix seulement +1,8 sur 75 paris ; 120 événements, quelques sports seulement ; **non répliqué sur 120 événements hors sport** (résultat 5).
 
-5. *Réplication hors sport* (même méthode, 120 événements « un seul gagnant » hors sport : élections, Eurovision, Premier ministre, Oscars, chef de gouvernement ; 3 024 candidats, 6 044 relevés ; 72 réglages) :
+6. *Réplication hors sport* (même méthode, 120 événements « un seul gagnant » hors sport : élections, Eurovision, Premier ministre, Oscars, chef de gouvernement ; 3 024 candidats, 6 044 relevés ; 72 réglages) :
    NON à 0,10-0,30, **14 jours +5,6 % (38/35,7, t par événement +0,2, +1,7 % sans les 3 meilleurs), 7 jours −4,0 %, 30 jours −5,8 % (40/42,5)**. Aucun réglage « retenue ». L'effet du sport à 14 jours ne se retrouve pas ailleurs : probablement du bruit de sélection.
 
-**Arène** : fantôme `saison_non` (NON d'un candidat à 10-30 % dans un marché de saison, 10 à 18 jours avant la fin, quart de Kelly, biais 0,03), via le nouveau filtre `un_match: false`. À confirmer sur ≥ 100 paris réglés avant de la croire.
+**Arène** : fantôme `saison_non` (NON d'un candidat à 10-30 % dans un marché de saison, 10 à 18 jours avant la fin, quart de Kelly, biais 0,04), via le nouveau filtre `un_match: false`. À confirmer sur ≥ 100 paris réglés avant de la croire.
 Les marchés de ce type sont rares (une dizaine d'événements ouverts en même temps) : il faudra des semaines.
 
 **Suite possible** : (a) ajouter les événements non marqués « sports » (prix de la saison des films, élections à plusieurs candidats : même structure, déjà vue dans `queues_tranches.md`) ;

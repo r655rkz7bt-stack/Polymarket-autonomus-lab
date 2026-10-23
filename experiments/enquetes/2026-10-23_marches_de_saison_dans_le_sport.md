@@ -30,6 +30,9 @@ Dans la copie par jeton des 4 762 couples (stratégie, jeton) réglés ou non : 
 - contrôle automatique **`sport_hors_match`** (`enquete.py`) : achats de ≥ 100 € sans `depuis_coup_d_envoi_h` par une stratégie « sports » sans `un_match` ; test `test_sport_buy_without_kickoff_is_a_lead`.
   Il signale aujourd'hui 6 stratégies (359, 237, 160, 136, 122, 104 €).
 
+## Note (fusion avec main)
+Le plafond de 25 % du capital par pari de fantôme (PR #125, fusionnée pendant ce passage) aurait réduit le pari de 359 € ; il ne change pas le fond : un marché sans test.
+
 ## Reste ouvert
 Résultat du Ballon d'Or 2026 (clôture du marché 27/10) : donnera le premier pari réglé de ce type à ce prix. Les marchés de saison pourraient avoir un avantage à part (NON sur les outsiders) :
 à tester sur l'historique (`PISTES.md`, piste « NON sur les marchés de gagnant de saison »), pas à jouer sans test.
