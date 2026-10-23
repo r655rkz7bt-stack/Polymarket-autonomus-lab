@@ -43,11 +43,11 @@ def from_base(path: str) -> list[dict]:
         "SELECT pris_le, station, jour, type, gefs, ecmwf FROM meteo_ensemble_membres")}
     out = []
     for r in db.execute("SELECT pris_le, marche, evenement, question, station, jour, type, regle, meilleur_acheteur, "
-                        "meilleur_vendeur, dernier_prix, jeton_oui FROM meteo_ensemble_releves"):
+                        "meilleur_vendeur, dernier_prix, jeton_oui, avance_h FROM meteo_ensemble_releves"):
         mem = members.get((r[0], r[4], r[5], r[6]))
         if mem:
             out.append({"pris_le": r[0], "id": r[1], "question": r[3], "station": r[4], "jour": r[5], "regle": r[7],
-                        "bid": r[8], "ask": r[9], "last": r[10], "membres": mem})
+                        "bid": r[8], "ask": r[9], "last": r[10], "avance_h": r[12], "membres": mem})
     return out
 
 
@@ -109,8 +109,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base")
     ap.add_argument("--releves")
+    ap.add_argument("--avance-min", type=float, default=0.0,
+                    help="heures minimum entre T0 et minuit local du jour du marché (0 : décision avant le début du jour)")
+    ap.add_argument("--avance-max", type=float, default=48.0)
     args = ap.parse_args()
     rows = (from_base(args.base) if args.base else []) + (from_files(args.releves) if args.releves else [])
+    # Avance connue (relevés de la base) : on ne garde que les décisions prises avant le début du jour local, sans
+    # relevé du jour en cours (les anciens relevés manuels ne la donnent pas : tous gardés, à lire avec prudence).
+    rows = [r for r in rows if r.get("avance_h") is None or args.avance_min <= r["avance_h"] <= args.avance_max]
     print(f"{len(rows)} relevés ({len({r['pris_le'] for r in rows})} instants, {len({r['id'] for r in rows})} marchés)")
     http = HttpClient(user_agent="curl/8", max_retries=2)
     with ThreadPoolExecutor(8) as ex:

@@ -176,3 +176,8 @@ passage s'arrête net, rien n'est perdu.
 - IMF PortWatch (FMI, sans clé) : `services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query?where=portname='Bab el-Mandeb Strait'&outFields=date,n_total&orderByFields=date DESC&resultRecordCount=800&f=json` (la date est une chaîne `AAAA-MM-JJ`) ; Ormuz : `portname='Strait of Hormuz'`. Le suivi AIS `hormuz.data-tracking.net/api/crossings/daily?days=60` ne couvre qu'Ormuz.
 - Open-Meteo ensembles : `ensemble-api.open-meteo.com/v1/ensemble?...&models=gfs025,ecmwf_ifs025` (31 + 51 membres) ; relevé versionné dans `experiments/ensemble_meteo/releves/` (gz), à évaluer par `evalue.py` quand les marchés sont réglés (en parallèle : 1 000 marchés).
 - Un relevé qui doit servir au passage suivant va dans un dossier versionné (pas `donnees/`, ignoré par Git : le passage suivant repart d'un clone neuf).
+- Marchés de température de **Hong Kong** : réglés par TRONCATURE de la valeur au dixième de l'Observatoire (« 27°C » = 27,0 à 27,9 ;
+  166 règlements sur 166, `experiments/meteo_ensemble.md`), pas par arrondi : `weather_model.truncated`, `certain_side(..., truncation=True)`.
+- Ensembles Open-Meteo : **pas d'historique** des membres (3 jours passés, recollés des derniers passages : regard vers le futur).
+  Le cycle les relève lui-même toutes les 6 h (tables `meteo_ensemble_releves` / `meteo_ensemble_membres` de la base, sauvegardées
+  chaque jour) ; à juger avec `experiments/meteo_ensemble/evaluer_releve.py --base …`. Archives brutes : NOAA GEFS et ECMWF sur AWS (GRIB2).
