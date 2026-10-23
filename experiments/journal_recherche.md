@@ -50,6 +50,16 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Football, score exact** (n° 1) : **écartée (marchés trop peu négociés)** : 13 061 matchs existent mais 15 à 52 paris par réglage ; 2 paris en test.
 - **Défaut à retenir** : prix « avant » d'un marché mince = prix périmé ; ranger les paris par âge du prix avant de conclure.
 - **Reste ouvert** : créer le fantôme (et vérifier que le scanner voit les totaux d'e-sport, < 1 000 $/jour) ; fille LoL ; variante en jeu (état du set / de la carte).
+## 2026-10-22 (session avec Etienne : skills)
+
+- **Enquête** : sans objet (session d'outillage).
+- **Recherche** : skills Polymarket publics lus en entier (`experiments/skills_polymarket.md`) ; aucun fichier installé (ordres réels avec clé privée, pas de licence) ;
+  leurs stratégies existent déjà chez nous ou ont été écartées (billets météo : 0 cas sur nos 245 paris météo clôturés ; 46 billets sous 0,10 : 1 gagné pour 1,21 attendu).
+  Une idée nouvelle, la vague de volume, réécrite (`VagueVolume`) ; son test sur le passé aux prix payés est lancé (`experiments/vague_volume_backtest.md`, à venir).
+- **Arène** : fantômes `vague_volume_suivre` et `vague_volume_contrer` (quart de Kelly), à régler ou retirer selon le test.
+- **Outils** : skills dans `.claude/skills/` (README) : nos méthodes `enqueter`, `tester-une-piste`, `nouvelle-strategie`, `verifier-tableau-de-bord`, `evaluer-source-externe` ;
+  repris (MIT) `systematic-debugging`, `verification-before-completion`, `test-driven-development`, `statsmodels`, `pymc` ; bibliothèques dans `requirements-recherche.txt` (vérifiées sous Python 3.13).
+- **Reste ouvert** : verdict du test de la vague de volume ; biais de la championne (0,02 ou 0,05) à décider par Etienne.
 ## 2026-10-23 (session avec Etienne : anomalies de l'enquête automatique)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-23_deux_camps_et_mises_geantes.md`) : deux camps d'un même match encore achetés le 22/10 (11 fantômes, 1 322 €) → `main._opposite_side` ;

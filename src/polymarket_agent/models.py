@@ -82,6 +82,10 @@ class MarketInfo:
     # Marché lu par les pages longues du scanner (long_pages, 21/10/2026) : jamais dans la liste de
     # surveillance de base, seulement si une stratégie le demande (`candidates`).
     extra_only: bool = False
+    # Vague de volume (22/10/2026, idée reprise des skills Polymarket de mjunaidca) : volume des
+    # 7 derniers jours et variation du prix du OUI sur 24 h (Gamma volume1wk, oneDayPriceChange).
+    volume_1wk: Decimal = Decimal("0")
+    price_change_1d: float | None = None
     # Prix de la même question ailleurs (references.py : kalshi, predictit, manifold, outright,
     # bookmakers_3) et période XTracker du marché « combien de tweets » (posés par le cycle).
     references: dict | None = None

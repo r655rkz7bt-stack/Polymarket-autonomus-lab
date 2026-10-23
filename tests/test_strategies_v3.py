@@ -222,6 +222,36 @@ def test_arbitrages_say_why_they_stay_silent(tmp_path):
     assert no_ask.abstentions == {"une jambe sans vendeur": 1}
 
 
+def test_volume_surge_follows_or_fades_the_move(tmp_path):
+    """Vague de volume (22/10/2026, idée des skills Polymarket de mjunaidca) : volume du jour ≥ 3 fois la
+    moyenne de la semaine et prix du OUI +5 points en 24 h → `suivre` achète le OUI, `contrer` le NON."""
+    from polymarket_agent.strategies_v3 import VagueVolume
+    common = dict(surge_min=3, min_move=0.03, shift=0.03, uncertainty=0.01, min_net_edge=0.005,
+                  max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    follow = _s(VagueVolume, direction=1, side_min=0.55, side_max=0.90, **common)
+    fade = _s(VagueVolume, direction=-1, side_min=0.10, side_max=0.45, **common)
+    old = (NOW - timedelta(days=20)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    far = NOW + timedelta(days=30)
+    m = _m("v", volume24hr=30000, volume1wk=72000, oneDayPriceChange=0.05, createdAt=old, end=far)  # 30 000 contre 7 000 par jour avant
+    assert m.volume_1wk == D("72000") and m.price_change_1d == 0.05
+    books = _books(("vY", "0.69", "0.70"), ("vN", "0.30", "0.31"))
+    up = follow.propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in up.proposals] == ["Yes"]
+    down = fade.propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in down.proposals] == ["No"]
+    calm = _m("c", volume24hr=8000, volume1wk=50000, oneDayPriceChange=0.05, createdAt=old, end=far)  # pas de vague
+    still = _m("s", volume24hr=30000, volume1wk=72000, oneDayPriceChange=0.01, createdAt=old, end=far)  # vague sans mouvement
+    new = _m("n", volume24hr=30000, volume1wk=30000, oneDayPriceChange=0.05, end=far,  # créé hier : pas de référence
+             createdAt=(NOW - timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    soon = _m("t", volume24hr=30000, volume1wk=72000, oneDayPriceChange=0.05, createdAt=old)  # se termine demain
+    assert follow.candidates([soon]) == []
+    out = follow.propose([new], _books(("nY", "0.69", "0.70"), ("nN", "0.30", "0.31")), _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals
+    out = follow.propose([calm, still], _books(("cY", "0.69", "0.70"), ("cN", "0.30", "0.31"),
+                                               ("sY", "0.69", "0.70"), ("sN", "0.30", "0.31")), _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and out.abstentions == {"vague de volume sans mouvement de prix": 1}
+
+
 def _esport(mid, start_h, title="Dota 2: 1win vs OG (BO3) - PARI Universe Group A", **kw):
     return _m(mid, yes="O", no="U", question="Games Total: O/U 2.5", outcomes=json.dumps(["Over", "Under"]),
               sportsMarketType="totals", gameStartTime=(NOW + timedelta(hours=start_h)).strftime("%Y-%m-%d %H:%M:%S+00"),
