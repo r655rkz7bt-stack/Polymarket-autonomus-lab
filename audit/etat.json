@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2705,
+  "principal": 2706,
   "fantome:calibration_patiente_v1.0.0": 1802,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1777,
@@ -40,7 +40,7 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 1486,
-  "fantome:nm_court_v1.0.0": 1452,
+  "fantome:nm_court_v1.0.0": 1454,
   "fantome:nm_crypto_v1.0.0": 1368,
   "fantome:nm_hors_crypto_v1.0.0": 1404,
   "fantome:nm_long_v1.0.0": 1386,
@@ -76,7 +76,7 @@
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
   "fantome:nf_sport_patiente_soir_v1.0.0": 449,
   "fantome:nf_sport_patiente_jour_v1.0.0": 463,
-  "fantome:nf_sport_patiente_tennis_v1.0.0": 709,
+  "fantome:nf_sport_patiente_tennis_v1.0.0": 713,
   "fantome:nf_tennis_prix_bas_v1.0.0": 604,
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 357,
@@ -138,15 +138,15 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 119,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 107,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 28,
-  "fantome:moins_de_cartes_v1.0.0": 39,
+  "fantome:moins_de_cartes_v1.0.0": 41,
   "fantome:non_aux_drames_v1.0.0": 60,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 62,
   "fantome:vague_volume_suivre_x5_v1.0.0": 51,
-  "fantome:nf_sport_patiente_matchs_v1.0.0": 40,
+  "fantome:nf_sport_patiente_matchs_v1.0.0": 44,
   "fantome:saison_non_v1.0.0": 20
  },
- "verifiees": 7078,
+ "verifiees": 7082,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1078,9 +1078,9 @@
    "op_id": "settle-78811777713558303970425688318448305972762487530241001490951093854049468164512"
   }
  ],
- "derniere_execution": "2026-10-23T10:28:39+00:00",
+ "derniere_execution": "2026-10-23T10:32:40+00:00",
  "dernier_seq_reglements": {
-  "principal": 2705,
+  "principal": 2706,
   "fantome:calibration_patiente_v1.0.0": 1802,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1777,
@@ -1210,7 +1210,7 @@
   "fantome:statu_quo_ia_v1.0.0": 85,
   "fantome:jobs_favori_non_v1.0.0": 75,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 148,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 270,
+  "fantome:nf_tennis_vainqueur_v1.0.0": 272,
   "fantome:nf_sport_18_24h_v1.0.0": 76,
   "fantome:nf_sport_925_950_v1.0.0": 97,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 52,
