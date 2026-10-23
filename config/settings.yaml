@@ -29,6 +29,16 @@ principal:
   max_mise: 0.10      # un achat ≤ 10 % du capital estimé (Kelly complet allait jusqu'à 40 %)
   max_famille: 0.40   # ≤ 40 % du capital engagé dans une même famille (météo, sport…) : paris liés
 
+# Fantômes (23/10/2026, enquête « mises géantes ») : une mise ≤ 25 % du capital estimé du fantôme.
+# Mêmes paris, taille seulement : la confiance de l'arène se mesure sur le rendement par mise.
+fantomes:
+  max_mise: 0.25
+
+# Deux camps d'un même match (23/10/2026, contrôle `deux_camps`) : pas d'achat au-dessus de `prix_min`
+# d'un jeton d'un marché où le portefeuille tient déjà un autre jeton payé au-dessus de ce prix.
+deux_camps:
+  prix_min: 0.70
+
 # Récompenses de liquidité (option A d'Etienne, 17/10/2026, libre) : les récompenses ESTIMÉES des
 # journées terminées (≥ 1 $, plafonnées à la cagnotte du marché) × prudence comptent dans le
 # CLASSEMENT de l'arène, jamais dans le capital d'un fantôme. Le versement au capital public

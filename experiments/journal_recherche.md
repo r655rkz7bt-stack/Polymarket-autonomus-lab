@@ -50,6 +50,14 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Football, score exact** (n° 1) : **écartée (marchés trop peu négociés)** : 13 061 matchs existent mais 15 à 52 paris par réglage ; 2 paris en test.
 - **Défaut à retenir** : prix « avant » d'un marché mince = prix périmé ; ranger les paris par âge du prix avant de conclure.
 - **Reste ouvert** : créer le fantôme (et vérifier que le scanner voit les totaux d'e-sport, < 1 000 $/jour) ; fille LoL ; variante en jeu (état du set / de la carte).
+## 2026-10-23 (session avec Etienne : anomalies de l'enquête automatique)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-23_deux_camps_et_mises_geantes.md`) : deux camps d'un même match encore achetés le 22/10 (11 fantômes, 1 322 €) → `main._opposite_side` ;
+  12 mises de fantômes au-dessus de 25 % du capital (jusqu'à 53 %) → `main._cap_ghost` ; achats hors plage : tous du 20/10, déjà corrigés le 21/10.
+- **Recherche** : sans objet.
+- **Arène** : biais de la championne laissé à 0,05 (à 0,02 elle deviendrait muette ; les sœurs à 0,03 et 0,02 comparent sur la même période).
+- **Reste ouvert** : vérifier que les contrôles `deux_camps` et `mises` tombent à zéro après le 23/10.
+
 ## 2026-10-22 (passage chercheur, soir : 19 h 55 → 20 h 42 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-22_soir_mises_geantes_et_types.md` ; famille du jour 5, puis constat « 11 mises de fantômes au-dessus de 25 % du capital »).
