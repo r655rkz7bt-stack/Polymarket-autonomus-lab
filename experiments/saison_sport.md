@@ -38,3 +38,11 @@ Les marchés de ce type sont rares (une dizaine d'événements ouverts en même 
 `experiments/tennis_oos/` : même méthode que `tennis.md` (décision à +15 et +30 min, favori à 0,80-0,95, prix du premier échange d'achat dans les 10 min) sur les **matchs commencés après le 20/10 16 h UTC** (629 matchs :
 523 ITF, 90 ATP, 16 WTA ; 43 et 51 paris). +30 min : 43 gagnés pour 44,7 attendus, **−4,5 %** (t par événement −0,7) ; +15 min : −9,5 %. Trop peu de matchs pour trancher (écart-type ≈ 5 %) : l'« indice » du 20/10 (+3,1 %) n'est ni confirmé ni infirmé.
 Le fantôme `nf_tennis_debut_match` dit la même chose : 46 paris, 40 gagnés pour 40,1 attendus (+70 € = mises plus grosses sur les gagnés, pas un meilleur taux de réussite). À refaire avec ≥ 500 nouveaux matchs ATP/WTA (octobre-novembre : saison indoor, peu de matchs).
+
+## Troisième résultat du même passage : « après l'échéance » au tennis (`experiments/tennis_apres/`)
+Le fantôme `apres_echeance` (acheter le gagnant presque sûr d'un marché pas encore réglé) est le premier des non-sport de l'arène : 146 paris, 144 gagnés pour 140,2 attendus, +123 € (+2,8 % sur 4 402 € misés ; achats à 0,95-0,98 ; 2 pertes : 62 €).
+Test sur le passé avec 4 663 matchs de tennis (ATP 1 817, WTA 785, ITF 2 061, matchs commencés depuis le 15/09) : favori à 0,94-0,985 à +2/+3/+4 h après le coup d'envoi.
+- *Prix horaire de l'historique* : +2 h −0,9 % (287 gagnés / 289,2) ; +3 h +1,6 % (128/125,8) ; **+4 h à +6 h, favori à 0,90-0,94 : +6,5 à +7,7 % (68/62,9, 70/65,5) = « retenue » par `idea_test.verdict`**.
+- *Défaut de mesure* : sur ces cas, **85 à 97 % n'ont aucun échange dans les 30 minutes** (prix périmé, ITF et matchs finis : rien à acheter à ce prix). Aux prix réellement payés (premier achat du favori dans les 30 min) : +3 h, 82 servis sur 235,
+  77 gagnés pour 75,3, **+1,0 %** (t +0,35) ; +4 h et plus : 3 à 25 cas servis seulement. Même piège que le 16/10 (météo) et le 21/10 (mentions) : un prix d'historique n'est pas un prix exécutable.
+- **Verdict : écartée pour le tennis** (aucun avantage exécutable). `apres_echeance` reste dans l'arène (ses achats sont des vrais carnets à 0,95-0,98) mais son +2,8 % n'est pas prouvé sur le passé.
