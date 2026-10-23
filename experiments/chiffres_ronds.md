@@ -1,0 +1,7 @@
+# Piste n° 12 `chiffres_ronds` : poser son ordre un cran au-dessus d'un prix rond (23/10/2026)
+
+**Question** : un ordre posé à un prix rond (0,85, 0,90, 0,95) est-il servi plus ou moins souvent qu'un autre ? (Idée : les acheteurs réels s'empilent sur les prix ronds ; se poser un cran au-dessus passe devant la file.)
+**Données** : table `pending_orders` de la sauvegarde publiée (`published_data/backup/essentiel.sqlite.gz`) : 85 645 ordres, dont 79 447 « remplacés » à chaque cycle (le même ordre reposé), 4 952 expirés, 999 exécutés, 83 annulés, 164 ouverts. Ordres d'achat de prix 0,80-0,96.
+**Résultat** (états finaux EXECUTE / EXPIRE) : prix multiple de 5 centimes : 84 exécutés pour 155 expirés (**35,1 %**) ; autres prix : 363 pour 665 (**35,3 %**). Par centime : 80 → 10 %, 81 → 21 %, 85 → 51 %, 88 → 58 %, 89 → 55 %, 91 → 18 % ; les prix « un cran au-dessus d'un multiple de 5 » (81, 86, 91, 96) : 31 % contre 35 % : rien de régulier, et l'écart entre centimes vient du carnet (quels marchés se trouvent à ce prix), pas du chiffre.
+**Limite essentielle** : ces exécutions sont celles du **simulateur** (`execution_simulator.py`, noyau protégé) ; elles ne disent rien de la file d'attente réelle de Polymarket, que nous ne voyons pas (aucun ordre réel n'existe dans ce projet). Pour tester vraiment l'effet de file, il faudrait un historique d'ordres réels du carnet, qui n'est pas public.
+**Verdict : écartée** (aucune différence mesurable, et la mesure ne peut pas dépasser le simulateur). Un seul réglage essayé (multiple de 5 / un cran au-dessus), deux lectures.

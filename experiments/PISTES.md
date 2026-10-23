@@ -11,7 +11,7 @@ Ordre : gain espéré × facilité de test. Les marchés répétitifs et peu liq
 ont été les plus battables le 20/10 ; les marchés suivis par des robots (crypto au jour près) non.
 
 ## À tester
-0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10). Faites le 22/10 : n° 13 (écartée, `contrer_football.md`), n° 8 (écartée, `courbe_de_risque.md`), n° 17 (écartée), n° 5 (écartée), n° 3 (relevé en direct), n° 4 (écartée), n° 2 (écartée), n° 11 (écartée), n° 14 (écartée), n° 10 (écartée), n° 9 (voir « Testées »), n° 1 (écartée, `score_exact.md`). n° 15 et 16 (écartées, `bresil_second_tour.md`, 23/10). Revus le 23/10 par une 2e analyse : n° 4 (indice annexe « moins de cartes » en e-sport : fantôme `esport_moins_de_cartes`, `pistes_sport_coherence.md`), n° 11 (indice : fantôme `non_aux_drames`, `pistes_crypto_elections_drames.md`). Reste : 3 (rejouer le relevé avant le 25/10).
+0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10). Faites le 22/10 : n° 13 (écartée, `contrer_football.md`), n° 8 (écartée, `courbe_de_risque.md`), n° 17 (écartée), n° 5 (écartée), n° 3 (relevé en direct), n° 4 (écartée), n° 2 (écartée), n° 11 (écartée), n° 14 (écartée), n° 10 (écartée), n° 9 (voir « Testées »), n° 1 (écartée, `score_exact.md`). n° 15 et 16 (écartées, `bresil_second_tour.md`, 23/10). Revus le 23/10 par une 2e analyse : n° 4 (indice annexe « moins de cartes » en e-sport : fantôme `esport_moins_de_cartes`, `pistes_sport_coherence.md`), n° 11 (indice : fantôme `non_aux_drames`, `pistes_crypto_elections_drames.md`). Reste : 3 (rejouer le relevé avant le 25/10). Faite le 23/10 (autre passage) : n° 12 (écartée, `chiffres_ronds.md`).
 1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
 3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI
@@ -34,6 +34,10 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| gagnant de saison, NON des candidats à 10-30 % (120 événements sport, 3 927 candidats) | indice faible, non répliqué | sport 14 jours : +8,2 % (91 gagnés / 84,2), +9,9 % aux vrais prix ; 7 jours = un seul événement ; 30 jours 0 % ; ~120 réglages ; hors sport (120 événements) 14 jours +5,6 % (t +0,2), 7 et 30 jours négatifs | saison_sport.md |
+| tennis en jeu, hors échantillon (629 matchs après le 20/10) | non confirmé | +30 min : 43 gagnés / 44,7, −4,5 % (n = 51) ; trop peu de matchs | saison_sport.md |
+| après l'échéance au tennis (4 663 matchs, favori 0,94-0,985 à +2…+6 h) | écartée | prix horaire +6 % mais 85-97 % sans échange dans les 30 min ; aux prix payés +3 h : +1,0 % (82 servis, t +0,35) | saison_sport.md |
+| chiffres_ronds (ordres posés à prix ronds, 5 187 ordres terminés) | écartée | servis 35,1 % (prix ronds) contre 35,3 % ; mesure = simulateur, pas la vraie file | chiffres_ronds.md |
 | achat échelonné, renfort en baisse ou en hausse, stop-loss, prise de gain, stop suiveur | écartées | prix juste après une chute (2 152 matchs) ; tennis −5 à −6 % | achat_echelonne.md |
 | favoris ITF (à éviter) | écartée | −13,9 % aux vrais prix, 5 semaines perdantes | achat_echelonne.md |
 | outsider_itf | indice | +17 % aux vrais prix (150 matchs) | achat_echelonne.md |

@@ -20,6 +20,20 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Reste ouvert** : `non_aux_drames` immobilise l'argent 1 à 4 mois : juger après 30 paris réglés, arrêter si deux drames arrivent le même mois ;
   `moins_de_cartes` : fille LoL seule si l'arène confirme ; ajouter les filtres `start`/`end` de data-api à `idea_test.fetch_event_trades` (échanges anciens).
 
+## 2026-10-23 (passage chercheur, nuit : 23 h 55 UTC (22/10) → 00 h 40 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-23_marches_de_saison_dans_le_sport.md` ; famille du jour 5, puis famille 3).
+  - Les 4 obligations de la feuille de mission sont les mêmes que ce soir (championne, `nf_tennis_prix_bas`, concentration de `nf_sport_patiente_prix_850_875` et de la journée du 18/10) : causes déjà écrites dans les fiches du 22/10.
+  - Contrôle à la main de la copie du principal (jeton par jeton depuis le 19/10) : 53 jetons de la championne copiés, mise médiane 0,333 de celle du fantôme, gain du principal −22,6 € contre −121 € chez le fantôme sur les mêmes jetons ; ses autres achats viennent de `apres_echeance`, `nf_court_prix_haut`, `contrer_crypto_patiente`, `nf_sport_patiente_prix_850_875`. Pas de défaut.
+  - **Défaut trouvé** : la famille « sports » laisse passer les marchés de saison (Ballon d'Or, Série mondiale, coupes) : 15 achats de la championne, 857 €, dont **359 € (30 % du capital) sur « Mbappé gagne le Ballon d'Or, NON » à 0,94**, estimé 0,99 ; aucun test sur le passé ne couvre ce type. Le principal en a copié 18 €. Correctif : filtre `un_match` (+ test), contrôle `sport_hors_match` (+ test), sœur `nf_sport_patiente_matchs` à comparer à la championne.
+- **Recherche** (vrais prix, règlement relu) :
+  - **Gagnant de saison** (`experiments/saison_sport.md`, 120 événements de sport / 3 927 candidats ; 120 événements hors sport en réplication) : NON d'un candidat à 10-30 % : à 14 jours +8,2 % (91 gagnés / 84,2, t par événement +3,0), +9,9 % aux prix de vrais échanges (196 marchés) ; à 7 jours tout vient d'un seul événement (« Uniswap Cup »), à 30 jours 0 %, **hors sport non répliqué** (14 jours +5,6 %, t +0,2). ≈ 120 réglages : **indice faible**, fantôme `saison_non`.
+  - **Tennis en jeu, hors échantillon** (629 matchs depuis le 20/10) : +30 min −4,5 % (43/44,7, n = 51) : ni confirmé ni infirmé (trop peu de matchs).
+  - **Après l'échéance au tennis** (4 663 matchs, `experiments/tennis_apres/`) : +6 % sur prix horaires à +4…+6 h mais 85-97 % sans échange : aux prix payés +1,0 % (82 servis, t +0,35) : **écartée**.
+  - **n° 12 `chiffres_ronds`** (5 187 ordres posés terminés) : servis 35,1 % (prix ronds) contre 35,3 % : **écartée**, et la mesure ne dépasse pas le simulateur.
+- **Arène** : sœur `nf_sport_patiente_matchs` (championne limitée aux matchs) ; fantôme `saison_non` (NON des candidats de saison à 10-30 %, 10 à 18 jours de la fin, quart de Kelly, biais 0,04 ; 5 candidats NASCAR passent aujourd'hui les filtres). Aucune stratégie retirée.
+- **Reste ouvert** : résultat du Ballon d'Or (marché fermé le 27/10) pour les 5 paris ouverts de la championne ; `bias` de la championne (décision d'Etienne) ; refaire le tennis hors échantillon avec ≥ 500 nouveaux matchs ATP/WTA ; événements à plusieurs candidats hors « sports » (cinéma, e-sport) pour la piste de saison ; comparaison à Pinnacle (piste n° 1). Une autre session a étudié les pistes 15 et 16 (`bresil_second_tour.md`) : j'ai retiré mon écoute du dépouillement, inutile.
+
 ## 2026-10-22 (session dédiée : 2e tour au Brésil, pistes 15 et 16)
 
 - **Lu** : CLAUDE.md, METHODE.md, enquêtes, `fin_de_match.md`, `vingt_cinq_pistes.md`.

@@ -241,3 +241,39 @@ def test_estimate_cap_lets_a_quasi_certain_favorite_priced_0_99_show_an_edge(tmp
     assert not _strategy(("politics",), **quasi).propose([m], books, ledger.state, limits, "b").proposals
     out = _strategy(("politics",), q_max=0.996, **quasi).propose([m], books, ledger.state, limits, "b")
     assert len(out.proposals) == 1 and out.proposals[0].prob_low == D("0.993") and out.proposals[0].est_probability == D("0.996")
+
+
+def test_match_only_filter_refuses_season_and_award_markets(tmp_path):
+    """23/10/2026 : « Mbappé gagne le Ballon d'Or, NON » (pas de `sportsMarketType`) était pris par la
+    famille « sports » : 359 € à 0,94 pour une estimation de 0,99. `un_match` ne garde que les paris de match."""
+    from polymarket_agent.strategy_engine import Filtered
+    m, books, ledger, limits = _setup(tmp_path, fee_type="sports_fees_v3", end_hours=48)
+    only = Filtered(_strategy(shrink=0.5), {"familles": ["sports"], "un_match": True})
+    assert not only.propose([m], books, ledger.state, limits, "b").proposals  # marché de saison : pas de type
+    m.sports_market_type = "moneyline"
+    assert only.propose([m], books, ledger.state, limits, "b").proposals
+    assert Filtered(_strategy(shrink=0.5), {"familles": ["sports"]}).propose([m], books, ledger.state, limits, "b").proposals
+    season = Filtered(_strategy(shrink=0.5), {"familles": ["sports"], "un_match": False})
+    assert not season.propose([m], books, ledger.state, limits, "b").proposals  # un match : refusé par le filtre « saison »
+    m.sports_market_type = None
+    assert season.propose([m], books, ledger.state, limits, "b").proposals
+
+
+def test_season_no_buys_the_no_of_a_season_candidate_inside_its_window(tmp_path):
+    """23/10/2026 (experiments/saison_sport.md) : NON d'un candidat à 10-30 % dans un marché de saison, 10 à 18 jours avant la fin.
+    Refuse un pari de match, une échéance hors fenêtre et le OUI."""
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["saison_non"]
+    assert cfg.filters == {"familles": ["sports"], "un_match": False, "issue": ["non"], "echeance_min": 240, "echeance_max": 432,
+                           "prix_min": 0.70, "prix_max": 0.90}
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+    season = cfg  # la stratégie telle que le dépôt la charge (paramètres et filtres de strategies.yaml)
+
+    def proposals(hours, tmp, **raw):
+        m, books, ledger, _ = _setup(tmp, fee_type="sports_fees_v3", end_hours=hours, bid="0.15", ask="0.16", **raw)  # OUI à 0,16 : le NON (0,85) est le favori
+        m.outcome_prices = [D("0.155"), D("0.845")]
+        return season.propose([m], books, ledger.state, limits, "b").proposals
+
+    assert proposals(24 * 14, tmp_path / "a")
+    assert not proposals(24 * 3, tmp_path / "b")                    # trop près de la fin
+    assert not proposals(24 * 30, tmp_path / "c")                   # trop loin
+    assert not proposals(24 * 14, tmp_path / "d", sportsMarketType="moneyline")  # un match

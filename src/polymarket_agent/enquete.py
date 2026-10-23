@@ -43,6 +43,7 @@ from decimal import Decimal
 from polymarket_agent.reporting import closed_trades
 
 GRAVE, A_REGARDER = "grave", "à regarder"
+CHAMP_COUP_D_ENVOI = "2026-10-20T16:00"  # le journal note `depuis_coup_d_envoi_h` depuis cette date (20/10/2026)
 # Copie fidèle en service depuis la promotion du 18/10/2026 à 21 h 38 (PR #76) : avant, le
 # principal rejouait lui-même les stratégies (aucun jumeau attendu).
 COPIE_FIDELE_DEPUIS = datetime.fromisoformat("2026-10-18T21:30:00+00:00")
@@ -643,6 +644,32 @@ def audit_anomalies(audit: dict | None) -> list[dict]:
 # ------------------------------------------------------------------ ensemble
 
 
+def sport_hors_match(entries: dict[str, list[dict]], configs: dict, since: datetime | None = None,
+                     min_cost: float = 100.0) -> list[dict]:
+    """Achats « sport » qui ne sont pas des paris de match : le journal n'a pas `depuis_coup_d_envoi_h` (le
+    marché n'a pas de coup d'envoi Gamma : Ballon d'Or, Coupe, Série mondiale). La famille « sports » les laisse
+    passer sauf filtre `un_match` (23/10/2026 : 359 € = 30 % du capital sur « Mbappé gagne le Ballon d'Or, NON »)."""
+    out = []
+    for key, cfg in configs.items():
+        if not isinstance(cfg, dict):
+            continue
+        f = cfg.get("filtres") or {}
+        name = f"{key}_v{cfg.get('version', '1.0.0')}"
+        if "sports" not in (f.get("familles") or ()) or f.get("un_match") or name not in entries:
+            continue
+        odd = [e for e in _buys(entries[name], since)
+               if e["ts"] >= CHAMP_COUP_D_ENVOI and (e["data"].get("extra") or {}).get("depuis_coup_d_envoi_h") in (None, "")
+               and _cost(e["data"]) >= min_cost]
+        if odd:
+            out.append(_finding("sport_hors_match", A_REGARDER,
+                                f"{key} : {len(odd)} achat(s) de sport de {min_cost:g} € ou plus sur un marché sans match",
+                                "Marché de saison ou de prix (pas de coup d'envoi) : les tests sur le passé portent sur des "
+                                "matchs ; ajouter `un_match: true` aux `filtres` ou prouver ce type à part.",
+                                [f"{e['ts'][:16]} « {e['data']['outcome']} » {_cost(e['data']):.0f} € à {float(e['data']['price']):.3f}"
+                                 for e in odd]))
+    return out
+
+
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
         audit: dict | None = None) -> list[dict]:
@@ -655,7 +682,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries)
                 + deux_camps(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
-                + filtre_delai(entries, configs, since)
+                + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + capital_bloque(entries, active, now)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))

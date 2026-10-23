@@ -168,6 +168,22 @@ def test_time_window_filters_are_audited_for_immediate_buys_only():
     assert len(found["moyen"]["exemples"]) == 1 and "10.0 h" in found["moyen"]["exemples"][0]
 
 
+def test_sport_buy_without_kickoff_is_a_lead():
+    """23/10 : la championne a misé 359 € (30 % du capital) sur « Mbappé gagne le Ballon d'Or, NON » : marché de
+    saison sans coup d'envoi, famille « sports » sans filtre `un_match`."""
+    t = datetime(2026, 10, 22, 20, 0, tzinfo=timezone.utc)
+    configs = {"sp": {"version": "1.0.0", "filtres": {"familles": ["sports"]}},
+               "match": {"version": "1.0.0", "filtres": {"familles": ["sports"], "un_match": True}}}
+    saison = _buy(t, "ballon", 0.94, 382, strategy="sp")
+    match = _buy(t, "tennis", 0.90, 400, strategy="sp")
+    match["data"]["extra"]["depuis_coup_d_envoi_h"] = "-1.5"
+    petit = _buy(t, "petit", 0.94, 20, strategy="sp")
+    entries = {"sp_v1.0.0": _ledger(saison, match, petit), "match_v1.0.0": _ledger(_buy(t, "x", 0.94, 382, strategy="match"))}
+    found = enquete.sport_hors_match(entries, configs, t - timedelta(days=3))
+    assert len(found) == 1 and found[0]["titre"].startswith("sp :") and len(found[0]["exemples"]) == 1
+    assert "359 €" in found[0]["exemples"][0]
+
+
 def test_run_and_render_put_grave_findings_first():
     t = NOW - timedelta(hours=1)
     entries = {"principal": _ledger(_buy(t, "b", 0.5, 300), _e("HEARTBEAT", NOW, total_estimated="1000")),

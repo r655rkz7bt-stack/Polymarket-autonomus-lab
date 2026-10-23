@@ -564,7 +564,7 @@ class PatientOrders:
 
 FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
                "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max", "sources",
-               "sources_exclues", "question_contient", "question_exclut", "prix_final")
+               "sources_exclues", "question_contient", "question_exclut", "prix_final", "un_match")
 
 
 class Filtered:
@@ -585,6 +585,11 @@ class Filtered:
       question_contient : le marché est gardé si sa question contient un de ces mots (sans tenir
       compte des majuscules) ; question_exclut : refusé s'il en contient un (21/10/2026 : annonceurs
       NFL gagnants, Coupe du monde perdante, experiments/mentions_annonceurs.md) ;
+      un_match : true → seulement les paris sur UN match (Gamma donne un `sportsMarketType`) ; false → seulement les
+      marchés de saison (gagnant du championnat…). Refuse, si true, les
+      marchés de saison ou de prix (Ballon d'Or, Coupe, Série mondiale), que la famille « sports »
+      laisse passer (23/10/2026 : 359 € = 30 % du capital sur « Mbappé gagne le Ballon d'Or, NON » à 0,94,
+      experiments/enquetes/2026-10-23_marches_de_saison_dans_le_sport.md) ;
       prix_final : true (avec `limit_ticks`) → prix_min / prix_max portent sur le prix de l'ORDRE POSÉ
       et non sur le prix du vendeur (21/10/2026 : sinon une fille « prix payé 0,875-0,90 » achète à 0,84,
       experiments/enquetes/2026-10-21_filtres_et_prix_executable.md).
@@ -611,6 +616,8 @@ class Filtered:
             hours = (m.end_date - now).total_seconds() / 3600
             if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
                 return False
+        if "un_match" in f and bool(f["un_match"]) != bool(getattr(m, "sports_market_type", None)):
+            return False
         question = (m.question or "").lower()
         if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):
             return False
