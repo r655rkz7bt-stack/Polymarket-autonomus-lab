@@ -38,3 +38,13 @@ fantôme (146 paris, +123 €) était de la chance. Conséquence : `apres_echean
 un pari par événement) reste dans le code, avec ses tests, si l'on veut un jour la rallumer.
 Limites : 3 semaines de matchs seulement (ligues d'octobre), pas de saison complète pour la NBA et la NHL (84 et 163 événements) ; seul le premier échange de la fenêtre est un prix exécutable
 (petites tailles).
+
+## Bonus : le même relevé relit l'« indice » du tennis en jeu (`scripts/tennis_oos.py`)
+Même règle que `tennis.md` (favori à 0,80-0,95 dans une fenêtre de 10 min à +15 / +30 min du coup d'envoi, premier échange preneur, moneyline, frais du marché) ; le favori
+est le jeton au prix médian le plus haut de la fenêtre (règle un peu différente de l'original, donc chiffres non identiques).
+| période | +15 min | +30 min |
+|---|---|---|
+| 30/09 → 20/10 16 h (ATP 325, WTA 118, ITF 77 à +30 min) | 364 paris, 322 gagnés / 312,5, **+2,4 %** (t +1,2) | 520 paris, 446 / 450,8, **−1,9 %** (t −1,1) |
+| après le 20/10 16 h (hors échantillon) | 54 paris, 43 / 46,7, **−8,8 %** (t −1,4) | 63 paris, 53 / 55,2, **−4,5 %** (t −0,8) |
+Sur les trois dernières semaines, le favori de tennis en jeu à 0,80-0,95 gagne autant que son prix (499 pour 506 attendus à +30 min, −2,3 %) : l'« indice » de +3,1 % de `tennis.md`
+(6 131 matchs, ~40 réglages) ne se retrouve pas, ni avant ni après la date de sa découverte. `PISTES.md` : indice non confirmé. Les fantômes `nf_tennis_*` restent en arène (ils jouent aussi avant le match).
