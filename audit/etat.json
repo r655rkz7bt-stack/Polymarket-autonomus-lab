@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2753,
+  "principal": 2754,
   "fantome:calibration_patiente_v1.0.0": 1810,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1783,
@@ -40,10 +40,10 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 1493,
-  "fantome:nm_court_v1.0.0": 1463,
+  "fantome:nm_court_v1.0.0": 1466,
   "fantome:nm_crypto_v1.0.0": 1374,
   "fantome:nm_hors_crypto_v1.0.0": 1410,
-  "fantome:nm_long_v1.0.0": 1392,
+  "fantome:nm_long_v1.0.0": 1393,
   "fantome:nm_prix_bas_v1.0.0": 1450,
   "fantome:nm_prix_haut_v1.0.0": 1411,
   "fantome:naive_favorite_large_v1.0.0": 1302,
@@ -114,7 +114,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 238,
   "fantome:nf_court_football_soir_v1.0.0": 241,
   "fantome:nf_court_soir_v1.0.0": 245,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 273,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 274,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 137,
   "fantome:nf_sport_football_v1.0.0": 157,
@@ -147,7 +147,7 @@
   "fantome:saison_non_v1.0.0": 27,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 7
  },
- "verifiees": 7223,
+ "verifiees": 7225,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1079,9 +1079,9 @@
    "op_id": "settle-78811777713558303970425688318448305972762487530241001490951093854049468164512"
   }
  ],
- "derniere_execution": "2026-10-23T13:48:06+00:00",
+ "derniere_execution": "2026-10-23T13:52:43+00:00",
  "dernier_seq_reglements": {
-  "principal": 2753,
+  "principal": 2754,
   "fantome:calibration_patiente_v1.0.0": 1810,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1783,
@@ -1124,7 +1124,7 @@
   "fantome:nm_court_v1.0.0": 1466,
   "fantome:nm_crypto_v1.0.0": 1374,
   "fantome:nm_hors_crypto_v1.0.0": 1410,
-  "fantome:nm_long_v1.0.0": 1392,
+  "fantome:nm_long_v1.0.0": 1393,
   "fantome:nm_prix_bas_v1.0.0": 1450,
   "fantome:nm_prix_haut_v1.0.0": 1411,
   "fantome:naive_favorite_large_v1.0.0": 1302,
@@ -1195,7 +1195,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 238,
   "fantome:nf_court_football_soir_v1.0.0": 241,
   "fantome:nf_court_soir_v1.0.0": 245,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 273,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 274,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 137,
   "fantome:nf_sport_football_v1.0.0": 157,
