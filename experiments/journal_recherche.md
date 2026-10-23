@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-23 (passage chercheur, soir : 19 h 55 → 20 h 4x UTC)
+## 2026-10-23 (passage chercheur, soir : 19 h 55 → 20 h 33 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-23_soir_news_momentum_certitude.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations).
   - **Défaut trouvé : `news_momentum` promet 0,999 pour un favori à 0,986.** En regardant les 27 positions « ouvertes bien après l'échéance » (990 € bloqués : marchés du Cap et de Kyiv en litige UMA, référendum d'Alberta en attente du résultat officiel),
