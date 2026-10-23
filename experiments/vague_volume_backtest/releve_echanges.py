@@ -1,6 +1,6 @@
 """Vague de volume, étape 2 : vrais échanges des preneurs (data-api, public, sans clé), marché par marché.
 
-Usage : PYTHONPATH=src python experiments/vague_volume_backtest/releve_echanges.py [pages_max]
+Usage : PYTHONPATH=src python experiments/vague_volume_backtest/releve_echanges.py [pages_max] [inverse]
 Même format que `idea_test.fetch_event_trades` ([heure, jeton, côté, prix, parts]), deux différences :
 - par marché (`market=<conditionId>`) et non par événement : un événement de 30 marchés atteint vite la
   limite de 11 pages ;
@@ -24,6 +24,8 @@ U = "https://data-api.polymarket.com/trades"
 DIR = Path("experiments/vague_volume_backtest/donnees/echanges")
 PAGES = int(sys.argv[1]) if len(sys.argv) > 1 else 40
 markets = json.load(open("experiments/vague_volume_backtest/donnees/marches.json"))
+if len(sys.argv) > 2 and sys.argv[2] == "inverse":  # second processus parallèle : part de la fin (cache partagé)
+    markets.reverse()
 DIR.mkdir(parents=True, exist_ok=True)
 session = threading.local()
 
