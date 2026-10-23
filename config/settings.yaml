@@ -99,7 +99,10 @@ scanner:
               101701: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
               # 23/10/2026 : étiquette bab-el-mandeb (105617), tranches « average daily transits » : 191-546 $ de volume par jour
               # pour 3 tranches sur 5 (sous min_volume_24h), donc invisibles ; `detroits_tranches` les demande.
-              105617: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
+              105617: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
+              # 23/10/2026 : étiquette hormuz (104139) : tranches hebdomadaires et mensuelles d'Ormuz ET de Bab el-Mandeb (40 marchés
+              # PortWatch sur 74 dans les 30 jours) ; sans elle, `detroits_marche_log` ne voyait aucun marché d'Ormuz.
+              104139: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
