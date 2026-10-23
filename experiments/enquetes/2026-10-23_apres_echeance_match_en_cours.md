@@ -36,6 +36,12 @@ a commencé », pas « le match est fini ». La stratégie fixe `est = 0,985` qu
   match NBA), `nf_court_soir` (277 €), `nf_court_prix_haut` (188 €) : pistes à surveiller, pas de perte anormale (naive_favorite et la championne :
   événements à plusieurs jambes = +64 € et +49 € sur 948 € et 480 € misés).
 
+## Les événements à plusieurs jambes sont-ils un défaut général ? Non
+Tous les fantômes « favori » (hors teneurs de marché, météo, crypto, tweets, mentions, arbitrages), événements entièrement réglés : 146 événements joués par ≥ 2 marchés
+(−9,0 % des euros misés, −1 405 € sur 15 560 €) contre 2 180 à un seul marché (−1,4 %, −1 760 € sur 129 346 €) ; mais **par événement** la différence disparaît
+(−1,9 %, t −0,7, contre −2,5 %, t −2,9 ; les mêmes événements sont comptés dans plusieurs fantômes : ces t sont trop optimistes). La perte en euros des événements
+à jambes vient de quelques gros événements (Cavaliers-76ers). Le contrôle reste une piste à surveiller, pas une obligation. À noter : l'ensemble des fantômes « favori » perd en moyenne 2,5 % par événement.
+
 ## Autre point : achat du principal sans jumeau (obligation `copie_fidele`)
 `contrer_crypto_patiente`, 23/10 04:01 : le principal a eu 5,07 parts à 0,072 (0,36 €) d'un ordre posé copié du fantôme (identifiant `P67d9cdb4…`).
 Le fantôme, passé avant lui dans le cycle, n'a pas été servi ce cycle-là ; son ordre est remplacé à 04:25 (0,065, 65 parts servies à 04:25 et 04:38).
