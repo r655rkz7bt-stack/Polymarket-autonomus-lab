@@ -28,7 +28,9 @@ from datetime import datetime, timedelta, timezone
 from polymarket_agent.http_client import HttpClient
 from polymarket_agent.observations import Observation
 
-STATION = re.compile(r"weather\.gov/wrh/timeseries\?site=([a-z0-9]{3,5})", re.I)
+# 19-20/10/2026 : Gamma cite désormais « aviationweather.gov/api/data/metar?ids=EGLC&… » pour 199 événements de température sur 255 (les 46 autres
+# gardent « weather.gov/wrh/timeseries?site=… ») : sans cette forme, `meteo_metar` et `meteo_prevision` disaient « ok (0 observations) ».
+STATION = re.compile(r"(?:weather\.gov/wrh/timeseries\?site=|aviationweather\.gov/api/data/metar\?(?:[^\s#]*&)?ids=)([a-z0-9]{3,5})", re.I)
 URL = "https://aviationweather.gov/api/data/metar"
 
 

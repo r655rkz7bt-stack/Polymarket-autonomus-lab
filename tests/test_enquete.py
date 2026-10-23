@@ -329,3 +329,39 @@ def test_many_legs_of_one_event_in_an_hour_are_flagged():
     # Deux jambes seulement, ou une stratégie qui veut ses jambes (teneur de marché) : rien.
     assert not enquete.jambes_meme_evenement({"apres_echeance_v1.0.0": _ledger(*legs[:2])}, NOW - timedelta(days=3))
     assert not enquete.jambes_meme_evenement({"market_maker_v1.0.0": _ledger(*legs)}, NOW - timedelta(days=3))
+
+
+def test_strategies_retired_for_inactivity_are_reported_once_and_not_called_silent():
+    """23/10/2026 : paire_oui_non, coherence_match… retirées après 3 jours sans écart, mots_prononces_nfl après 2 jours sans match :
+    le retrait est définitif, il doit sortir comme tel (et pas comme dix « muettes » sans fin)."""
+    old = NOW - timedelta(days=4)
+    retired = _e("ELIMINATION", NOW - timedelta(hours=5), strategy="paire_oui_non_v1.0.0",
+                 reason="inactive : aucune opération ni position en 3 jours", metrics={"jours": 3.0})
+    weekly = _e("ELIMINATION", NOW - timedelta(hours=6), strategy="vieille_v1.0.0", reason="pire croissance logarithmique")
+    traded = _e("ELIMINATION", NOW - timedelta(hours=4), strategy="active_v1.0.0", reason="inactive : fille sans opération ni position en 2 jours")
+    entries = {"principal": _ledger(retired, weekly, traded, born=old), "paire_oui_non_v1.0.0": _ledger(born=old),
+               "active_v1.0.0": _ledger(_buy(old, "x", 0.9, 10), born=old)}
+    found = enquete.retraits_inactifs(entries, NOW)
+    assert len(found) == 1 and found[0]["exemples"][0].startswith("paire_oui_non_v1.0.0 : retirée le 2026-10-20T09:00")
+    assert not enquete.muettes(entries, ["paire_oui_non_v1.0.0"], NOW)  # déjà dit ailleurs : plus de « muette » à vie
+    assert not enquete.retraits_inactifs(entries, NOW + timedelta(days=10))  # trop ancien
+
+
+def test_empty_family_is_reported_even_when_the_strategy_bought_before():
+    """23/10/2026 : loterie_meteo (familles [weather]) n'achetait plus depuis le 20/10 : 371 marchés vus, 371 « famille de marchés exclue »."""
+    abst = {"portefeuilles": {
+        "fantome:loterie_meteo_v1.0.0": {"loterie_meteo": {"marches": 371, "propositions": 0, "ordres": 0, "raisons": {"famille de marchés exclue": 371}}},
+        "fantome:favori_politique_v1.0.0": {"favori_politique": {"marches": 393, "propositions": 0, "ordres": 0, "raisons": {"famille de marchés exclue": 299, "favori hors de la plage de prix": 45}}},
+        "fantome:petite_v1.0.0": {"petite": {"marches": 10, "propositions": 0, "ordres": 0, "raisons": {"famille de marchés exclue": 10}}}}}
+    found = enquete.familles_vides(abst)
+    assert len(found) == 1 and found[0]["exemples"] == ["loterie_meteo_v1.0.0 : 371 marchés vus, tous écartés par la famille"]
+    assert not enquete.familles_vides(None)
+
+
+def test_sources_ok_without_any_data_are_reported():
+    """23/10/2026 : « meteo_metar : ok (0 observations) » cachait l'absence totale de relevés depuis le changement de lien de Gamma."""
+    etat = {"meteo_metar": "ok (0 observations)", "meteo_prevision": "ok (0 observations)", "rss": "ok (1148 observations)",
+            "bluesky": "indisponible : compte requis", "mentions": "pas encore (fréquence)", "kalshi": "ok (0 prix relevés)"}
+    found = enquete.sources_vides(etat)
+    assert len(found) == 1 and [e.split(" :")[0] for e in found[0]["exemples"]] == ["meteo_metar", "meteo_prevision", "kalshi"]
+    assert not enquete.sources_vides(None)

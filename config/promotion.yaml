@@ -103,7 +103,13 @@ radical_idea_after_days_without_record: 7
 # Ménage (17/10/2026, AMELIORATION n°9) : une stratégie sans aucune opération clôturée ni position
 # après ce nombre de jours est retirée (comme une élimination, sans toucher au compteur hebdomadaire).
 retirer_inactives_apres_jours: 3
-jamais_retirer: [market_maker]
+# 23/10/2026 (enquête, famille 6) : le ménage ci-dessus a retiré pour « inactivité » des stratégies qui n'ont aucune raison d'agir
+# avant une date (mots_prononces_nfl : pas de match entre le jeudi soir et le dimanche). cpi_tranches (CPI le 11/11), jobs_favori_non
+# (emploi le 6/11), statu_quo_ia (classements d'IA, ≥ 12 jours), saison_non (fenêtre de 10 à 18 jours avant la fin d'un
+# marché de saison), non_aux_drames et detroits_tranches (une tranche, le 31/10) allaient l'être avant leur premier jour utile :
+# elles ne sont jamais retirées pour inactivité (elles restent soumises à « perdante » et à l'élimination hebdomadaire).
+jamais_retirer: [market_maker, cpi_tranches, jobs_favori_non, statu_quo_ia, saison_non, non_aux_drames, detroits_tranches,
+                 mots_prononces_nfl]
 # Ménage (19/10/2026) : retrait immédiat d'une stratégie clairement pire que le hasard (score de
 # confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).

@@ -569,3 +569,17 @@ def test_principal_stake_goes_above_one_only_for_proven_winners():
     cfg = {"mise_avantage_mesure": rule, "part_max_par_strategie": 0.7}
     assert exposure([s], {"contrer_crypto_patiente_v1": 0.21}, cfg) == {"contrer_crypto_patiente_v1": pytest.approx(0.21 * 6.8 / 90 / 0.0509, abs=1e-6)}
     assert exposure([s], {"contrer_crypto_patiente_v1": 0.6}, cfg) == {"contrer_crypto_patiente_v1": 0.7}  # plafond par stratégie
+
+
+def test_calendar_strategies_are_never_retired_for_inactivity(tmp_path):
+    """23/10/2026 (enquête, famille 6) : le ménage des inactives (3 jours) retirait des stratégies qui n'ont rien à faire avant une
+    date (CPI le 11/11, emploi le 6/11, classements d'IA, mots de matchs NFL, tranche du 31/10) ; coherence_match, paire_oui_non… avaient
+    déjà été retirées le 23/10 après 3 jours sans écart. Les calendriers sont protégés, les autres non."""
+    from polymarket_agent.arena import retire_inactive
+    cfg = dict(RULES)  # config/promotion.yaml réel
+    main = Ledger.create(tmp_path / "m.jsonl", KEY, tmp_path / "m.lock", "1000", now=NOW)
+    names = ["cpi_tranches_v1.0.0", "jobs_favori_non_v1.0.0", "statu_quo_ia_v1.0.0", "saison_non_v1.0.0", "non_aux_drames_v1.0.0",
+             "detroits_tranches_v1.0.0", "mots_prononces_nfl_v1.1.0", "paire_oui_non_v1.0.0"]
+    ghosts = {n: Ledger.create(tmp_path / f"{n}.jsonl", KEY, tmp_path / f"{n}.lock", "1000", now=NOW) for n in names}
+    standings = [st(n, 0, 0.0, days=5) for n in names]
+    assert retire_inactive(main, ghosts, standings, cfg, NOW) == ["paire_oui_non_v1.0.0"]

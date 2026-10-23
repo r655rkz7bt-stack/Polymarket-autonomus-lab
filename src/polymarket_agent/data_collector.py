@@ -227,6 +227,8 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
              "ref:nhl_repos")
     snapshot("mentions", lambda cfg: factories.get("mentions", lambda c: refs.fetch_mention_history(
         http, int(c.get("pages", 20))))(cfg), "ref:mentions")
+    # Passages dans les détroits (IMF PortWatch, 23/10/2026) : la source qui tranche les marchés Ormuz et Bab el-Mandeb.
+    snapshot("portwatch", lambda cfg: factories.get("portwatch", lambda c: refs.fetch_portwatch(http))(cfg), "ref:portwatch")
     if db is not None:
         from polymarket_agent.strategy_engine import market_family
         found = []

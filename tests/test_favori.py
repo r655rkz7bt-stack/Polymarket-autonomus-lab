@@ -38,6 +38,18 @@ def test_market_family_comes_from_the_fee_schedule(tmp_path):
     assert market_family(_setup(tmp_path / "c", fee_type=None, enabled=False)[0]) == "sans_frais"
 
 
+def test_zero_fee_weather_markets_stay_in_the_weather_family(tmp_path):
+    """19-20/10/2026 : Gamma passe les marchés de température en « zero_fees » ; sans l'adresse de l'événement la famille devenait
+    « zero » et loterie_meteo (familles [weather]) ne voyait plus rien : dernier achat le 20/10 à 16 h 27."""
+    events = [{"id": "e1", "slug": "highest-temperature-in-paris-on-october-24-2026", "title": "Highest temperature in Paris"}]
+    paris = _setup(tmp_path, fee_type="zero_fees", events=events)[0]
+    assert market_family(paris) == "weather"
+    fed = _setup(tmp_path / "b", fee_type="zero_fees", events=[{"id": "e2", "slug": "fed-decision-in-december", "title": "Fed"}])[0]
+    assert market_family(fed) == "zero"  # un marché sans frais qui n'est pas de la météo ne devient pas « météo »
+    old = _setup(tmp_path / "c", fee_type="weather_fees", events=events)[0]
+    assert market_family(old) == "weather"  # ancien barème inchangé
+
+
 def test_shrink_estimate_family_filter_and_time_window(tmp_path):
     m, books, ledger, limits = _setup(tmp_path)
     # Milieu 0,905 ; shrink 0,5 → estimation 0,905 + 0,5 × 0,095 = 0,9525 ; achat du OUI à 0,91.
