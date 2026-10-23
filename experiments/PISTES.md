@@ -12,8 +12,9 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 ## À tester
 0. **Vingt-cinq pistes inédites du 21/10/2026** : `experiments/vingt_cinq_pistes.md` (ordre conseillé en fin de fichier ; 15 et 16 avant le 2e tour au Brésil, le 25/10). Faites le 22/10 : n° 13 (écartée, `contrer_football.md`), n° 8 (écartée, `courbe_de_risque.md`), n° 17 (écartée), n° 5 (écartée), n° 3 (relevé en direct), n° 4 (écartée), n° 2 (écartée), n° 11 (écartée), n° 14 (écartée), n° 10 (écartée), n° 9 (voir « Testées »), n° 1 (écartée, `score_exact.md`). n° 15 et 16 (écartées, `bresil_second_tour.md`, 23/10). Revus le 23/10 par une 2e analyse : n° 4 (indice annexe « moins de cartes » en e-sport : fantôme `esport_moins_de_cartes`, `pistes_sport_coherence.md`), n° 11 (indice : fantôme `non_aux_drames`, `pistes_crypto_elections_drames.md`). Reste : 3 (rejouer le relevé avant le 25/10). Faite le 23/10 (passage du matin) : n° 6 (écartée, `ufc_coherence.md`). Faite le 23/10 (autre passage) : n° 12 (écartée, `chiffres_ronds.md`).
-0b. **Détroits (Ormuz, Bab el-Mandeb), 23/10/2026** : testée le 23/10 (passage de l'après-midi), verdict **indice** (voir « Testées » et `experiments/detroits.md`). Reste : relever les prix des tranches
-   « average daily transits » dès leur création (aucun prix passé n'existe) et juger le fantôme `detroits_tranches` au règlement du 31/10 (≈ 5/11).
+0b. ~~Détroits (Ormuz, Bab el-Mandeb)~~ : testée le 23/10 (`experiments/detroits.md`) : tranches hebdomadaires et mensuelles réglées sur PortWatch,
+   **retenue mais fragile** (40 événements, 150 paris, +24 % aux prix payés, t par événement 2,13, z des prix 2,83 ; choisie parmi 16 réglages) → fantôme
+   `detroits_marche_log` en demi-Kelly. Restent : les marchés à seuil (« returns to normal », 20 événements clos, les plus gros volumes) et la course à la publication du mardi.
 1. **Champions de saison contre Pinnacle** (golf, F1, football européen : outrights de The Odds API).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
 3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI

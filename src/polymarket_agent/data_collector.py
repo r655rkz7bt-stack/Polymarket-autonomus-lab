@@ -29,6 +29,7 @@ from polymarket_agent.sources.google_news import GoogleNewsSource
 from polymarket_agent.sources.guardian import GuardianSource
 from polymarket_agent.sources.odds_api import OddsApiSource
 from polymarket_agent.sources.polymarket_comments import CommentsSource
+from polymarket_agent.sources.portwatch import PortWatchSource
 from polymarket_agent.sources.rss import RssSource
 from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSource
 from polymarket_agent.sources.weather import ForecastSource, MetarSource, stations_for
@@ -227,8 +228,16 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
              "ref:nhl_repos")
     snapshot("mentions", lambda cfg: factories.get("mentions", lambda c: refs.fetch_mention_history(
         http, int(c.get("pages", 20))))(cfg), "ref:mentions")
-    # Passages dans les détroits (IMF PortWatch, 23/10/2026) : la source qui tranche les marchés Ormuz et Bab el-Mandeb.
-    snapshot("portwatch", lambda cfg: factories.get("portwatch", lambda c: refs.fetch_portwatch(http))(cfg), "ref:portwatch")
+    # Passages dans les détroits (IMF PortWatch, 23/10/2026) : la source qui tranche les marchés Ormuz, Bab el-Mandeb, Panama, Suez.
+    # Une observation par détroit (rattachée aux marchés qui citent PortWatch) et la série complète pour `attach_detroits`.
+    def portwatch(cfg):
+        source = factories.get("portwatch", lambda: PortWatchSource(
+            http, int(cfg.get("days", 800)), ais=bool(cfg.get("ais", True)), max_chokepoints=int(cfg.get("max_detroits", 6))))()
+        obs = source.fetch(markets, now)
+        if db is not None and source.rows:
+            refs._save(db, "ref:portwatch", source.rows, now)
+        return obs
+    run("portwatch", portwatch)
     if db is not None:
         from polymarket_agent.strategy_engine import market_family
         found = []

@@ -33,6 +33,7 @@ SOURCE_RELIABILITY = {
     "football_data": 0.9,
     "odds_api": 0.8,        # probabilités des bookmakers : un avis chiffré, pas un fait
     "guardian": 0.75,
+    "portwatch": 0.97,      # FMI : passages publiés par l'arbitre des marchés de détroits (hebdomadaire, le mardi)
 }
 OFFICIAL_DOMAINS = (".gov", ".gouv.fr", "federalreserve.gov", "ecb.europa.eu", "europa.eu",
                     "who.int", "un.org", "uefa.com", "fifa.com", "nba.com", "nfl.com", "sec.gov")

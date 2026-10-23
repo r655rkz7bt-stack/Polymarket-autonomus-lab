@@ -1163,9 +1163,55 @@ class DetroitsTranches(_Base):
         return self._finish(out, props)
 
 
+class DetroitsMarcheLog(_Base):
+    """Tranches hebdomadaires (« How many ships transit … week of … ») et mensuelles (« Avg. # of ships transiting … ») d'Ormuz et
+    de Bab el-Mandeb, réglées sur IMF PortWatch. Loi de la somme des 7 jours à la date cible : celle d'aujourd'hui × chaque
+    variation relative déjà vue à ce même horizon depuis 2019 (references.attach_detroits_log). On achète le côté (OUI ou NON)
+    dont la chance calculée dépasse le prix demandé + frais d'au moins `min_net_edge`, entre `min_price` et `max_price`.
+    Test sur le passé (experiments/detroits.md, 23/10/2026) : 40 événements réglés de juin à octobre, 150 paris aux prix payés,
+    +24 % par pari, t par événement 2,1, z des prix 2,8, 5 mois sur 5 ; les billets sous 0,10 perdaient tous (3 sur 3)."""
+
+    strategy_id = "detroits_marche_log"
+    required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "detroit_log", int(self.params.get("max_candidates", 60)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("detroit_log")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("relevé PortWatch pas à jour")
+                continue
+            fair, unc = float(ref["p"]), float(p.get("uncertainty", 0))
+            best = None
+            for side, est in ((0, fair), (1, 1 - fair)):
+                book = books.get(m.token_ids[side])
+                ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
+                if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
+                    continue
+                if best is None or est - ask > best[2]:
+                    best = (side, est, est - ask)
+            if best is None:
+                out.abstain("issue hors de la plage de prix ou carnet vide")
+                continue
+            side, est, _ = best
+            prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
+                             f"detroits_log:{ref['titre']}", f"loi calculée {est:.3f} pour l'issue achetée",
+                             "PortWatch change de rythme ou de chiffres (révision), ou le trafic change de régime")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches)}
+                                      DetroitsTranches, DetroitsMarcheLog)}
