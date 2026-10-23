@@ -50,6 +50,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | totaux de buts NHL | écartée | marché bien calibré | vingt_pistes.md |
 | séries NHL | écartée | rien de régulier | vingt_pistes.md |
 | vague d'opinion (presse) | écartée | −9,1 % | vague_opinion/ |
+| vague de volume (skills Polymarket, 23/10) : suivre / contrer | indice / écartée | +1,4 à +2,2 % / −9 à −23 % | vague_volume_backtest.md |
 | copier les portefeuilles gagnants | écartée | −9,7 % ensuite | smart_money.md |
 | Kalshi contre Polymarket en sport | écartée | prix identiques à 0,4 point | sport_kalshi.md |
 | tennis, favori avant/pendant le match (6 131 matchs) | indice | en jeu à +30 min, favori 0,80-0,95 : +3,1 % par mise aux prix payés (t +2,8, ~40 réglages) ; avant le match +0,6 % ; recalibrage ne bat pas le marché | tennis.md |
