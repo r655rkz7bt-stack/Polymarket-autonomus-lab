@@ -321,3 +321,19 @@ def test_reference_history_keeps_hourly_price_pairs(tmp_path):
     rows = db.conn.execute("SELECT source, p_ref, prix_oui, achat, vente FROM historique_references ORDER BY source").fetchall()
     assert [tuple(r) for r in rows] == [("kalshi", 0.47, 0.42, 0.41, 0.43), ("tweets", None, 0.42, 0.41, 0.43)]
     db.close()
+
+
+def test_tweet_strategy_can_skip_elon_and_trump(tmp_path):
+    """23/10/2026 : fille « sans Elon Musk ni Trump » du compteur de tweets (NON sans NYC Mayor : Elon -1 %, Trump -2 % sur le passé)."""
+    m = parse_market(raw_market("t", yes_token="tY", no_token="tN", groupItemTitle="200-219", end=NOW + timedelta(hours=24)))
+    m.tweets = {"compte": "elonmusk", "fin": (NOW + timedelta(hours=24)).isoformat(), "total": 180, "heures": [1] * 72, "vu_le": NOW.isoformat()}
+    books = {"tY": make_book("tY", bids=(("0.20", "1000"),), asks=(("0.21", "1000"),)),
+             "tN": make_book("tN", bids=(("0.79", "1000"),), asks=(("0.80", "1000"),))}
+    base = dict(dispersion=1000, recent_hours=72, max_stale_hours=6, margin=0.03, uncertainty=0.005,
+                min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    out = _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert out.proposals == [] and any("Elon" in a for a in out.abstentions)
+    m.tweets["compte"] = "realDonaldTrump"
+    assert not _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path, "b"), LIMITS, "b1").proposals
+    m.tweets["compte"] = "tedcruz"  # les autres comptes restent joués
+    assert [p.outcome for p in _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1").proposals] == ["Yes"]

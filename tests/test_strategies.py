@@ -52,7 +52,7 @@ def test_repository_config_loads():
             "compteur_tweets_non", "mots_prononces_nfl",
             "mots_prononces_patiente", "compteur_tweets_non_patiente",
             "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur", "nf_sport_patiente_biais_faible", "nf_court_prix_haut_biais_faible",
-            "vague_volume_suivre", "vague_volume_suivre_x5", "moins_de_cartes", "non_aux_drames", "nf_sport_patiente_matchs", "saison_non"])
+            "vague_volume_suivre", "vague_volume_suivre_x5", "moins_de_cartes", "non_aux_drames", "nf_sport_patiente_matchs", "saison_non", "compteur_tweets_non_hors_elon_trump"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
