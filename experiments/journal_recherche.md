@@ -20,7 +20,7 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Recherche** : piste 0b, **détroits** (`experiments/detroits.md`) : verdict **indice, sans preuve**. Loi calculée sur 2 ans de PortWatch (800 jours en production) : la tranche 25-29 de Bab el-Mandeb, cotée 0,81, a 0,45-0,51 ; la même tranche de
     5 revient 51 % du temps à +13 jours ; mais **aucun prix passé** de ces marchés (2 événements ouverts). Ormuz : pas de loi (régime changé en mars, garde-fou). Relevé en direct des ensembles Open-Meteo
     pour la météo (`experiments/ensemble_meteo/releve.py`), à évaluer au prochain passage sur les marchés réglés (frais nuls depuis le 20/10, donc le « −6 % » du test météo est à refaire).
-- **Arène** : fantôme `detroits_tranches` (indice, quart de Kelly ; premier cycle : NON de la tranche 25-29 à 0,20 et OUI de 20-24 à 0,09, ≈ 28 € ; règlement le 31/10) ; `mots_prononces_nfl` 1.1.0 ;
+- **Arène** : fantôme `detroits_tranches` (indice, quart de Kelly ; premier cycle : NON de la tranche 25-29 à 0,20 et OUI de 20-24 à 0,09, ≈ 28 € ; entrée le jour d'un saut de prix du marché, 0,60 → 0,81 : acheteur peut-être informé ; règlement le 31/10) ; `mots_prononces_nfl` 1.1.0 ;
     étiquette `bab-el-mandeb` (105617) dans le scanner (3 tranches sur 5 sous `min_volume_24h`).
 - **Reste ouvert** : évaluer le relevé d'ensembles (marchés réglés, aux vrais prix, frais nuls) ; décider si `zero` entre dans les listes `familles` politiques (94 marchés sur 393 seulement) ; le prix des tranches « average daily transits »
     est enregistré toutes les heures (`historique_references`, source « detroit ») : juger l'erreur du marché après quelques règlements ; refaire les tests politiques/météo avec des frais nuls.

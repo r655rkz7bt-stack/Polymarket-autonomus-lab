@@ -1,0 +1,66 @@
+événement créé le 2026-10-01T00:03:41.469323Z
+an 20 average daily transits of the Bab el-Mandeb Str | tranche (-1000000000.0, 20.0)
+    2026-10-11 marché 0.205  loi 0.021
+    2026-10-12 marché 0.125  loi 0.011
+    2026-10-13 marché 0.095  loi 0.014
+    2026-10-14 marché 0.085  loi 0.016
+    2026-10-15 marché 0.085  loi 0.024
+    2026-10-16 marché 0.070  loi 0.025
+    2026-10-17 marché 0.075  loi 0.017
+    2026-10-19 marché 0.070  loi 0.052
+    2026-10-20 marché 0.020  loi 0.052
+    2026-10-21 marché 0.027  loi 0.045
+    2026-10-22 marché 0.015  loi 0.034
+    2026-10-23 marché 0.030  loi 0.030
+20 and 24 average daily transits of the Bab el-Mandeb | tranche (20.0, 25.0)
+    2026-10-12 marché 0.190  loi 0.149
+    2026-10-13 marché 0.195  loi 0.169
+    2026-10-14 marché 0.195  loi 0.180
+    2026-10-15 marché 0.190  loi 0.219
+    2026-10-16 marché 0.135  loi 0.225
+    2026-10-17 marché 0.120  loi 0.191
+    2026-10-18 marché 0.070  loi 0.270
+    2026-10-19 marché 0.095  loi 0.332
+    2026-10-20 marché 0.135  loi 0.338
+    2026-10-21 marché 0.100  loi 0.328
+    2026-10-22 marché 0.120  loi 0.297
+    2026-10-23 marché 0.090  loi 0.284
+25 and 29 average daily transits of the Bab el-Mandeb | tranche (25.0, 30.0)
+    2026-10-12 marché 0.565  loi 0.459
+    2026-10-13 marché 0.530  loi 0.468
+    2026-10-14 marché 0.550  loi 0.469
+    2026-10-15 marché 0.540  loi 0.476
+    2026-10-16 marché 0.545  loi 0.479
+    2026-10-17 marché 0.565  loi 0.479
+    2026-10-18 marché 0.645  loi 0.485
+    2026-10-19 marché 0.585  loi 0.466
+    2026-10-20 marché 0.590  loi 0.468
+    2026-10-21 marché 0.600  loi 0.479
+    2026-10-22 marché 0.600  loi 0.499
+    2026-10-23 marché 0.710  loi 0.506
+30 and 34 average daily transits of the Bab el-Mandeb | tranche (30.0, 35.0)
+    2026-10-12 marché 0.135  loi 0.326
+    2026-10-13 marché 0.175  loi 0.302
+    2026-10-14 marché 0.175  loi 0.291
+    2026-10-15 marché 0.175  loi 0.249
+    2026-10-16 marché 0.205  loi 0.242
+    2026-10-17 marché 0.250  loi 0.276
+    2026-10-18 marché 0.245  loi 0.194
+    2026-10-19 marché 0.245  loi 0.141
+    2026-10-20 marché 0.250  loi 0.135
+    2026-10-21 marché 0.245  loi 0.139
+    2026-10-22 marché 0.245  loi 0.161
+    2026-10-23 marché 0.125  loi 0.170
+re average daily transits of the Bab el-Mandeb Strait | tranche (35.0, 1000000000.0)
+    2026-10-12 marché 0.002  loi 0.055
+    2026-10-13 marché 0.002  loi 0.046
+    2026-10-14 marché 0.002  loi 0.044
+    2026-10-15 marché 0.002  loi 0.032
+    2026-10-16 marché 0.004  loi 0.029
+    2026-10-17 marché 0.018  loi 0.037
+    2026-10-18 marché 0.014  loi 0.017
+    2026-10-19 marché 0.009  loi 0.009
+    2026-10-20 marché 0.010  loi 0.008
+    2026-10-21 marché 0.009  loi 0.008
+    2026-10-22 marché 0.006  loi 0.010
+    2026-10-23 marché 0.008  loi 0.010

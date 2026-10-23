@@ -4,9 +4,10 @@
 de passages que le FMI (IMF PortWatch) publie pour la dernière date du mois, avec ≈ 5 jours de retard. Le marché les cote-t-il
 mieux qu'une simple prolongation de la série du FMI ?
 
-**Verdict : INDICE (pas de preuve).** La loi calculée sur 2 ans d'historique donne à la tranche favorite du marché deux fois
-moins de chance que son prix (Bab el-Mandeb : 0,45-0,51 contre 0,81), mais il n'existe **aucun prix passé** de ce type de marché
-(deux événements seulement, tous deux ouverts : fin octobre) : on ne peut pas dire si le marché fait toujours cette erreur.
+**Verdict : INDICE FAIBLE (pas de preuve).** La loi calculée sur 2 ans d'historique donne à la tranche favorite du marché (25-29) 0,45-0,51 contre
+0,81 aujourd'hui, **mais le marché ne cotait pas 0,81 pendant sa vie** : 0,53-0,65 du 12 au 22/10 (loi 0,46-0,50), puis un saut à 0,71 puis 0,81 le 23/10 avec des
+échanges lourds (tranche 30-34 de 0,245 à 0,125). Un écart qui date de quelques heures peut être un acheteur mieux informé (la page du FMI montre peut-être des jours que
+l'API ne donne pas encore). Il n'existe aucun autre événement de ce type (deux seulement, ouverts) : on ne peut pas dire si le marché se trompe d'habitude.
 Fantôme `detroits_tranches` (quart de Kelly) ; le règlement du 31/10 sera la première mesure réelle.
 
 ## Données
@@ -38,6 +39,19 @@ Fantôme `detroits_tranches` (quart de Kelly) ; le règlement du 31/10 sera la p
 - **Ormuz : aucune loi.** Le trafic est passé de 100 à 4 passages par jour en mars 2026 ; l'écart-type calculé sur un an (19) donnerait
   0,10 à la tranche 0-5 cotée 0,93 : une absurdité. Garde-fou de régime dans `references.ma7_forecast` (moyenne sur 7 jours variée de
   plus du simple au double en 120 jours → pas de loi). Les tranches d'Ormuz (7 marchés) ne sont donc pas jouées.
+
+## Le marché pendant sa vie (`scripts/marche_contre_modele.py`, résultats : `resultats_marche_contre_modele.txt`)
+Événement créé le 01/10. Pour chaque jour (12 h UTC), prix du OUI de chaque tranche (historique CLOB) contre la loi calculée avec les seules données PortWatch publiées ce jour-là
+(dernier jour connu = jour − 5), cible le 31/10. Moyennes du 12 au 23/10 :
+| tranche | prix moyen du OUI | loi moyenne | écart |
+|---|---|---|---|
+| < 20 | 0,075 | 0,028 | +0,05 (le marché craignait une chute en début de mois) |
+| 20-24 | 0,136 | 0,248 | **−0,11** (le marché la sous-cote tout le mois, 0,09 aujourd'hui contre 0,28) |
+| **25-29** | 0,585 | 0,478 | **+0,11**, puis +0,30 le 23/10 (0,81 contre 0,51) |
+| 30-34 | 0,206 | 0,219 | 0 (0,125 aujourd'hui contre 0,17) |
+| 35+ | 0,007 | 0,025 | −0,02 |
+Le marché ressemble donc à la loi pendant presque tout le mois, avec un excès de confiance dans la tranche du milieu (+0,11) qui grossit brutalement le 23/10. Le fantôme est entré à cet
+instant précis (NON 25-29 à 0,20, OUI 20-24 à 0,09) : si c'est un acheteur informé, il perd ; si c'est du bruit, il gagne. Le règlement du 31/10 (≈ 5/11) en décidera, rien de plus.
 
 ## Pourquoi ce n'est qu'un indice
 1. **Aucun prix passé.** Une tranche à 0,81 était peut-être une erreur isolée ou le prix d'acheteurs mieux informés (suivi AIS, flux

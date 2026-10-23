@@ -3014,8 +3014,8 @@ detroits_tranches:
   hypothesis: >
     Piste 0b (experiments/detroits.md), verdict INDICE : la moyenne sur 7 jours de PortWatch à +13 jours reste dans sa tranche de 5
     de 40 à 51 % du temps sur 2 ans (Bab el-Mandeb), alors que le marché de fin octobre cotait la tranche 25-29 à 0,81 (loi calculée
-    0,45-0,51) et la tranche 20-24 à 0,07 (0,26-0,31). Aucun prix passé de ce type de marché (deux événements seulement) : le gain
-    n'est PAS prouvé, un seul règlement (≈ 5/11) donnera la première mesure réelle. Quart de Kelly, grande incertitude.
+    0,45-0,51) et la tranche 20-24 à 0,07 (0,26-0,31) ; mais le marché cotait 25-29 entre 0,53 et 0,65 jusqu'au 22/10 : l'écart date du 23/10 (saut avec gros
+    volume, acheteur peut-être informé). Aucun prix passé de ce type de marché : le gain n'est PAS prouvé, un seul règlement (≈ 5/11) donnera la première mesure. Quart de Kelly.
   params:
     min_gap:        {value: 0.12, min: 0.02, max: 0.50}   # écart minimal entre la loi calculée et le prix du OUI
     uncertainty:    {value: 0.12, min: 0.0, max: 0.40}    # large : un seul événement, erreurs de la loi corrélées
