@@ -16,7 +16,7 @@ import os
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 
-from polymarket_agent import weather_calibration
+from polymarket_agent import weather_calibration, weather_ensemble
 from polymarket_agent.correlation import correlation_group
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.models import MarketInfo
@@ -32,7 +32,8 @@ from polymarket_agent.sources.odds_api import OddsApiSource
 from polymarket_agent.sources.polymarket_comments import CommentsSource
 from polymarket_agent.sources.rss import RssSource
 from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSource
-from polymarket_agent.sources.weather import ForecastSource, MetarSource, stations_for
+from polymarket_agent.sources import hko
+from polymarket_agent.sources.weather import EnsembleSource, ForecastSource, MetarSource, stations_for
 
 log = logging.getLogger(__name__)
 
@@ -186,6 +187,29 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
                                      for k in ("max", "min")}
         return obs
     run("meteo_prevision", forecast)
+    ensemble_count: list[int] = []
+
+    def ensemble(cfg):  # prévisions d'ensemble (23/10/2026) : probabilité par tranche relevée à côté des prix
+        wanted = stations_for(markets)
+        hk = [m.market_id for m in markets if hko.is_hko_market(m)]
+        coords = {hko.STATION: (hko.LAT, hko.LON)} if hk else {}
+        if hk:
+            wanted[hko.STATION] = hk
+        for code in wanted:
+            raw = db.get_value(f"station:{code}") if db else None
+            if raw:
+                coords[code] = tuple(json.loads(raw))
+        if not coords:
+            return []
+        models = tuple(cfg.get("models") or ("gfs025", "ecmwf_ifs025"))
+        obs = factories.get("meteo_ensemble", lambda: EnsembleSource(http, int(cfg.get("per_request", 10)), models))().fetch(
+            coords, wanted, now)
+        if db:
+            ensemble_count.append(weather_ensemble.record(db, markets, obs, now))
+        return obs
+    run("meteo_ensemble", ensemble)
+    if ensemble_count and result.status.get("meteo_ensemble", "").startswith("ok"):
+        result.status["meteo_ensemble"] = result.status["meteo_ensemble"][:-1] + f", {ensemble_count[0]} tranches relevées)"
     truth_count: list[int] = []
 
     def truth(cfg):  # valeurs réelles d'après les marchés météo résolus (aucune observation produite)
