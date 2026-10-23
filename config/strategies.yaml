@@ -1964,7 +1964,7 @@ apres_echeance:
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
-  params:
+  params: &apres_echeance_params
     fav_min:        {value: 0.94, min: 0.5, max: 0.99}    # 20/10 : à 0,90 après l'échéance, le doute est réel (Kiev)
     fav_max:        {value: 0.985, min: 0.5, max: 0.999}
     est:            {value: 0.985, min: 0.5, max: 0.999}
@@ -1975,6 +1975,28 @@ apres_echeance:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     kelly_fraction: {value: 0.15, min: 0.0, max: 2.0}
+
+apres_echeance_2h:
+  explication: "Comme « après la date », mais on attend seulement 2 heures après le début du match avant d'acheter le gagnant presque certain."
+  # 23/10/2026 (enquête `2026-10-23_apres_echeance_match_en_cours.md`) : à 1-2 h après le coup d'envoi −7,8 % (140 achats), à 2-3 h 22 gagnés sur 22 (+4 %).
+  # Les deux variantes (2 h et 6 h) encadrent la mère (3 h) pour trouver à partir de quand un match est vraiment fini.
+  class: apres_echeance
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    <<: *apres_echeance_params
+    heures_apres_coup_d_envoi_min: {value: 2, min: 0, max: 12}
+
+apres_echeance_6h:
+  explication: "Comme « après la date », mais on attend 6 heures après le début du match : le résultat est alors vraiment fini."
+  class: apres_echeance
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    <<: *apres_echeance_params
+    heures_apres_coup_d_envoi_min: {value: 6, min: 0, max: 12}
 
 marches_jumeaux:
   explication: "La même question posée deux fois à deux prix différents : on achète le OUI le moins cher et le NON de l'autre, ça gagne à coup sûr."
