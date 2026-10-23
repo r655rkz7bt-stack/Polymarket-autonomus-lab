@@ -36,6 +36,9 @@ Gamma du 23/10 ; les 46 autres gardent `weather.gov/wrh/timeseries?site=…`), e
 prévision, aucune « valeur réelle » nouvelle pour l'étalonnage (`meteo_reel` : 828 valeurs, anciennes). Correctif : `STATION` accepte les deux formes (test sur le lien réel
 d'EGLC, avec `ids` après d'autres paramètres, et refus d'un lien TAF) ; `resolution_sources.py` connaît le domaine `aviationweather.gov`.
 
+- `nm_hors_crypto` (« tout sauf la crypto », fille de `news_momentum`) : `zero` ajouté à sa liste de familles, sinon elle perdait la politique, la finance et la culture passées en
+  zero_fees. Avec la correction de `market_family`, elle (et `nf_autres_sujets`, `nf_court_hors_sport`, éteintes) retrouve aussi les marchés de température, comme avant le 20/10.
+
 ## Reste ouvert (décision de recherche, pas un bug)
 - La politique et la finance ne se reconnaissent pas à leur barème (pas d'étiquette dans la réponse Gamma `/markets`). Ajouter `zero` aux listes `familles` de `favori_politique*`
   élargirait leur univers à tous les marchés sans frais (Fed, culture, tech) : à décider avec une preuve sur le passé, pas à la volée.

@@ -1342,7 +1342,7 @@ nm_hors_crypto:
   mere: news_momentum
   morceau: "hors crypto"
   class: news_momentum
-  filtres: {familles: [sports, politics, sans_frais, culture, finance, economics, weather, tech, mentions, other]}
+  filtres: {familles: [sports, politics, sans_frais, culture, finance, economics, weather, tech, mentions, other, zero]}   # 23/10/2026 : + zero (marchés passés en zero_fees le 19-20/10 : « tout sauf la crypto »)
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-17"

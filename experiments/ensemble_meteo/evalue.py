@@ -33,8 +33,11 @@ if not done:
     sys.exit(0)
 
 def mid(r):
+    """Milieu du carnet ; dernier prix si le carnet est vide ou écarté (bid 0,001 / ask 0,999 donnerait un faux 0,50 : 23/10, Moscou « -2 °C ou moins »)."""
     b, a = r.get("bid"), r.get("ask")
-    return (float(b) + float(a)) / 2 if b is not None and a is not None else float(r["last"])
+    if b is not None and a is not None and float(a) - float(b) <= 0.2:
+        return (float(b) + float(a)) / 2
+    return float(r["last"])
 
 def ll(p, y):
     p = min(max(p, 0.001), 0.999)
