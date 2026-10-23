@@ -1,0 +1,30 @@
+# Écoute du dépouillement du 2e tour au Brésil (piste n° 15, experiments/depouillement/). Workflow libre, lecture seule,
+# aucun secret, aucun environnement. Le 25/10/2026 à 20 h 20 UTC (les urnes ferment à 20 h UTC), une ligne CSV toutes les 30 s pendant
+# 3 h : résultats officiels du TSE (public) et prix Polymarket de Lula et Flávio. Le journal du travail (onglet Actions) est lu ensuite
+# par le chercheur. Déclenchement manuel possible (« workflow_dispatch »).
+name: labo-depouillement
+
+on:
+  schedule:
+    - cron: "20 20 25 10 *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ecoute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Une ligne toutes les 30 secondes
+        run: |
+          python3 experiments/depouillement/ecoute.py --entete
+          end=$(( $(date +%s) + 3 * 3600 ))
+          while [ "$(date +%s)" -lt "$end" ]; do
+            python3 experiments/depouillement/ecoute.py || echo "erreur,$(date -u +%FT%TZ)"
+            sleep 30
+          done
