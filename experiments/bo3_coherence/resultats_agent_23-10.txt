@@ -1,0 +1,73 @@
+matchs tirés 1418, dont échanges relevés 1417
+# esport : 1417 matchs de l'échantillon, 6092 marchés liés réglés, du 2025-10-19 au 2026-10-21 ; apprentissage avant le 2026-04-28
+types de marchés liés : {'manche 1': 1368, 'manche 2': 1364, 'total': 1534, 'manche 3': 138, 'handicap': 1688}
+BO : {3: 1278, 5: 139} ; échanges indisponibles : 0 ; tronqués : 29
+
+72 réglages essayés.
+
+## Diagnostic (h = 3, fenêtre 6 h, prix « avant ») : Brier du modèle contre Brier du prix payé, issue 0 des marchés liés
+comptes : {'marchés liés examinés': 4312, 'marché lié sans échange dans la fenêtre': 2470, "vainqueur sans échange réel dans l'heure avant T0": 419, 'échanges tronqués avant T0': 27}
+   handicap   n=  396  Brier modèle 0.2336  Brier prix payé 0.2337  écart moyen |modèle − prix| 0.042  gagnés 197 / attendus modèle 168.7 / prix 184.3
+   manche 1   n=  417  Brier modèle 0.2094  Brier prix payé 0.2059  écart moyen |modèle − prix| 0.026  gagnés 238 / attendus modèle 226.2 / prix 232.4
+   manche 2   n=  286  Brier modèle 0.2130  Brier prix payé 0.2150  écart moyen |modèle − prix| 0.026  gagnés 155 / attendus modèle 155.3 / prix 159.2
+   manche 3   n=   41  Brier modèle 0.1759  Brier prix payé 0.1792  écart moyen |modèle − prix| 0.028  gagnés 26 / attendus modèle 24.6 / prix 25.1
+   total      n=  383  Brier modèle 0.2395  Brier prix payé 0.2383  écart moyen |modèle − prix| 0.030  gagnés 146 / attendus modèle 180.1 / prix 179.4
+
+## Réglages classés sur l'apprentissage (1re moitié), jugés sur la 2e moitié
+| réglage | paris appr. | rendement appr. | paris test | matchs | rendement test | t par match | mois gagnants | gagnés / attendus (z) | verdict test |
+|---|---|---|---|---|---|---|---|---|---|
+| h=6 fen=6h avant avance>0.06 recalibré | 63 | +51.1 % | 118 | 109 | +18.6 % | +1.68 | 6/7 | 76 / 67.3 (z +1.8) | retenue |
+| h=6 fen=2h avant avance>0.03 brut | 34 | +44.1 % | 90 | 60 | -39.6 % | -2.18 | 0/6 | 25 / 37.1 (z -2.8) | écartée |
+| h=1 fen=6h avant avance>0.06 brut | 38 | +38.0 % | 65 | 46 | -19.6 % | -0.33 | 2/7 | 22 / 24.6 (z -0.8) | écartée |
+| h=6 fen=2h après avance>0.06 recalibré | 51 | +34.9 % | 99 | 80 | +21.7 % | +1.37 | 6/7 | 58 / 52.1 (z +1.3) | indice |
+| h=1 fen=6h avant avance>0.06 recalibré | 66 | +30.2 % | 79 | 61 | -5.0 % | -0.14 | 3/7 | 33 / 33.3 (z -0.1) | écartée |
+| h=6 fen=6h avant avance>0.03 recalibré | 140 | +29.7 % | 285 | 192 | +4.6 % | +1.16 | 5/7 | 173 / 166.7 (z +0.8) | indice |
+| h=6 fen=6h avant avance>0.03 brut | 55 | +29.7 % | 127 | 85 | -27.8 % | -1.37 | 1/7 | 39 / 53.0 (z -2.7) | écartée |
+| h=3 fen=2h avant avance>0.1 recalibré | 39 | +25.7 % | 63 | 60 | -0.5 % | -0.07 | 4/7 | 39 / 38.9 (z +0.0) | écartée |
+
+## Période entière, quelques réglages fixes (pas de choix sur le résultat)
+| réglage | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |
+|---|---|---|---|---|---|---|---|
+| h=1 fen=2h avant avance>0.03 brut | 235 | 162 | -18.1 % | -1.80 | 4/13 | 73 / 86.0 (z -1.9) | écartée |
+| h=1 fen=2h avant avance>0.1 brut | 33 | 27 | -35.9 % | -1.26 | 3/12 | 8 / 8.9 (z -0.4) | écartée |
+| h=1 fen=2h après avance>0.03 brut | 316 | 234 | -10.4 % | -0.54 | 6/13 | 110 / 118.2 (z -1.0) | écartée |
+| h=1 fen=2h après avance>0.1 brut | 56 | 46 | +2.1 % | +0.62 | 4/12 | 22 / 17.9 (z +1.3) | écartée |
+| h=3 fen=6h avant avance>0.03 brut | 219 | 154 | -7.8 % | +0.07 | 6/13 | 88 / 88.5 (z -0.1) | écartée |
+| h=3 fen=6h avant avance>0.1 brut | 23 | 21 | +9.3 % | +0.28 | 6/10 | 11 / 8.6 (z +1.1) | écartée |
+| h=3 fen=6h après avance>0.03 brut | 354 | 237 | -12.9 % | -1.47 | 2/13 | 130 / 136.4 (z -0.8) | écartée |
+| h=3 fen=6h après avance>0.1 brut | 61 | 49 | -23.2 % | -0.89 | 5/12 | 20 / 18.8 (z +0.4) | écartée |
+| h=6 fen=6h après avance>0.03 brut | 364 | 248 | -7.0 % | -0.62 | 7/13 | 134 / 142.4 (z -1.0) | écartée |
+| h=6 fen=6h après avance>0.1 brut | 47 | 40 | +28.3 % | +0.94 | 6/12 | 20 / 15.4 (z +1.5) | indice |
+
+## Sans modèle : acheter toujours le même côté d'un type de marché lié (h = 3, fenêtre 6 h), « avant » puis « après »
+| côté acheté | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |
+|---|---|---|---|---|---|---|---|
+| avant : manche 1, équipe / joueur A | 417 | 417 | -2.0 % | -0.43 | 4/13 | 238 / 235.0 (z +0.3) | écartée |
+| avant : manche 1, B | 393 | 393 | -9.6 % | -1.69 | 3/13 | 181 / 194.8 (z -1.5) | écartée |
+| avant : handicap, côté −1,5 (gagne sans perdre de manche en BO3) | 396 | 364 | +6.7 % | +0.95 | 6/10 | 197 / 187.5 (z +1.0) | indice |
+| avant : handicap, côté +1,5 | 388 | 358 | -14.3 % | -2.59 | 3/10 | 196 / 224.1 (z -3.0) | écartée |
+| avant : total, plus (3 manches en BO3) | 383 | 353 | -19.6 % | -3.22 | 1/12 | 146 / 182.0 (z -3.8) | écartée |
+| avant : total, moins | 296 | 268 | +9.3 % | +1.55 | 8/12 | 185 / 173.7 (z +1.4) | indice |
+| après : manche 1, équipe / joueur A | 676 | 676 | +0.1 % | +0.03 | 7/13 | 382 / 373.3 (z +0.7) | écartée |
+| après : manche 1, B | 651 | 651 | -9.4 % | -2.12 | 2/13 | 296 / 319.9 (z -2.0) | écartée |
+| après : handicap, côté −1,5 (gagne sans perdre de manche en BO3) | 497 | 447 | +10.3 % | +0.94 | 6/10 | 242 / 227.1 (z +1.4) | indice |
+| après : handicap, côté +1,5 | 504 | 441 | -10.2 % | -1.92 | 2/10 | 269 / 297.8 (z -2.8) | écartée |
+| après : total, plus (3 manches en BO3) | 498 | 465 | -18.3 % | -3.30 | 2/12 | 197 / 240.8 (z -4.1) | écartée |
+| après : total, moins | 418 | 379 | +14.4 % | +2.74 | 10/12 | 274 / 244.3 (z +3.1) | retenue |
+
+## Prix « avant » : âge du dernier échange (T0 − heure de l'échange) des paris du réglage h=3 fen=6h avance>0,03 brut
+| échange vieux de moins de 30 min | 82 | 64 | -40.3 % | -2.35 | 3/13 | 24 / 32.8 (z -2.1) | écartée |
+| échange vieux de 30 min à 2 h | 67 | 59 | -1.6 % | +0.41 | 5/13 | 29 / 27.1 (z +0.5) | écartée |
+| échange vieux de 2 à 6 h | 71 | 56 | +22.5 % | +1.20 | 7/10 | 35 / 28.7 (z +1.6) | indice |
+
+## Réglage choisi sur l'apprentissage : h=6 fen=6h avant avance>0.06 recalibré
+{"paris": 118, "rendement_moyen": 0.1863, "confiance_paris": 1.75, "evenements": 109, "confiance_evenements": 1.68, "z_prix": 1.75, "mois": {"2026-04": 0.3007, "2026-05": 0.1859, "2026-06": 0.079, "2026-07": -0.0325, "2026-08": 0.1734, "2026-09": 0.4548, "2026-10": 0.2628}, "mois_gagnants": "6/7", "par_prix": {"0,10-0,30": {"paris": 15, "rendement": 0.8826}, "0,30-0,70": {"paris": 65, "rendement": 0.074}, "≥ 0,70": {"paris": 38, "rendement": 0.1036}}, "verdict": "retenue", "raison": "positive, régulière par événement et par mois"}
+| test, kind = handicap | 15 | 15 | -35.0 % | -1.39 | 1/6 | 5 / 6.8 (z -1.0) | écartée |
+| test, kind = manche 1 | 66 | 66 | +13.0 % | +1.11 | 5/7 | 49 / 45.5 (z +1.0) | indice |
+| test, kind = manche 2 | 7 | 7 | +44.8 % | +7.69 | 4/4 | 7 / 4.9 (z +1.8) | écartée |
+| test, kind = total | 30 | 29 | +51.7 % | +1.75 | 5/6 | 15 / 10.2 (z +1.9) | retenue |
+| test, serie = cs2 | 15 | 15 | +27.9 % | +0.63 | 4/6 | 9 / 8.2 (z +0.4) | écartée |
+| test, serie = dota2 | 16 | 16 | +10.5 % | +0.45 | 4/5 | 11 / 10.4 (z +0.3) | écartée |
+| test, serie = lol | 71 | 62 | +16.0 % | +1.08 | 5/7 | 44 / 39.9 (z +1.1) | indice |
+| test, serie = val | 16 | 16 | +29.9 % | +1.32 | 4/6 | 12 / 8.7 (z +1.8) | écartée |
+comptes (période entière) : {'marchés liés examinés': 3709, 'marché lié sans échange dans la fenêtre': 2288, "vainqueur sans échange réel dans l'heure avant T0": 569, 'échanges tronqués avant T0': 27}

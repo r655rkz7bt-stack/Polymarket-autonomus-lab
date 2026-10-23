@@ -1,0 +1,57 @@
+# score exact : 505 matchs tirés, 481 utilisables ({'échanges non relevés': 7, 'marchés du match introuvables (vainqueur / 2,5 buts)': 17}), du 2026-02-27 au 2026-10-21 ; apprentissage avant le 2026-07-09
+scores exacts réglés : 9214 ; échanges du score exact : 113023 ; listes tronquées (entrées) : 10
+h=1 : {'matchs avec modèle': 233, 'match sans échange réel dans les 2 h avant T0 (vainqueur ou 2,5 buts)': 240, 'entrées tronquées avant T0': 8}
+h=3 : {'matchs avec modèle': 176, 'match sans échange réel dans les 2 h avant T0 (vainqueur ou 2,5 buts)': 297, 'entrées tronquées avant T0': 8}
+h=6 : {'matchs avec modèle': 134, 'match sans échange réel dans les 2 h avant T0 (vainqueur ou 2,5 buts)': 339, 'entrées tronquées avant T0': 8}
+
+72 réglages essayés.
+
+## Diagnostic (h = 3, fenêtre 6 h, « avant », Poisson simple) : {'scores examinés': 3131, 'score sans échange dans la fenêtre': 2151}
+   OUI des scores avec un échange : n=700 Brier modèle 0.0608 / prix payé 0.0632 ; gagnés 48 ; attendus modèle 51.2 / prix 63.5 ; écart moyen 0.019
+
+## Réglages classés sur l'apprentissage, jugés sur la 2e moitié
+| réglage | paris appr. | rendement appr. | paris test | matchs | rendement test | t par match | mois gagnants | gagnés / attendus (z) | verdict test |
+|---|---|---|---|---|---|---|---|---|---|
+| h=1 fen=6h avant avance>0.03 ρ=-0.1 | 30 | +22.9 % | 2 | 2 | -100.0 % | +0.00 | 0/2 | 0 / 0.2 (z -0.5) | écartée |
+| h=1 fen=6h avant avance>0.03 ρ=0.0 | 30 | +19.4 % | 2 | 2 | -100.0 % | +0.00 | 0/2 | 0 / 0.2 (z -0.5) | écartée |
+| h=6 fen=6h après avance>0.03 ρ=-0.1 | 51 | +14.1 % | 1 | 1 | -100.0 % | +0.00 | 0/1 | 0 / 0.2 (z -0.4) | écartée |
+| h=6 fen=6h après avance>0.03 ρ=0.0 | 51 | +12.0 % | 1 | 1 | -100.0 % | +0.00 | 0/1 | 0 / 0.2 (z -0.4) | écartée |
+| h=3 fen=6h après avance>0.03 ρ=-0.1 | 36 | -2.7 % | 0 | | | | | | |
+| h=3 fen=6h après avance>0.03 ρ=0.0 | 39 | -7.4 % | 0 | | | | | | |
+| h=1 fen=2h après avance>0.03 ρ=0.0 | 31 | -8.6 % | 1 | 1 | -100.0 % | +0.00 | 0/1 | 0 / 0.1 (z -0.3) | écartée |
+| h=1 fen=6h après avance>0.03 ρ=0.0 | 31 | -8.6 % | 1 | 1 | -100.0 % | +0.00 | 0/1 | 0 / 0.1 (z -0.3) | écartée |
+
+## Période entière, réglages fixes
+| réglage | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |
+|---|---|---|---|---|---|---|---|
+| h=1 fen=2h avant avance>0.03 ρ=0.0 | 15 | 11 | -22.5 % | -2.01 | 1/5 | 11 / 11.0 (z -0.0) | écartée |
+|    … OUI seulement | 4 | 4 | -100.0 % | +0.00 | 0/4 | 0 / 0.6 (z -0.9) | écartée |
+|    … NON seulement | 11 | 7 | +5.7 % | +7.07 | 2/2 | 11 / 10.4 (z +0.8) | écartée |
+| h=1 fen=2h avant avance>0.1 ρ=0.0 | 2 | 2 | -100.0 % | +0.00 | 0/2 | 0 / 0.2 (z -0.5) | écartée |
+|    … OUI seulement | 2 | 2 | -100.0 % | +0.00 | 0/2 | 0 / 0.2 (z -0.5) | écartée |
+| h=1 fen=2h après avance>0.03 ρ=0.0 | 32 | 20 | -11.4 % | -1.82 | 1/6 | 25 / 24.1 (z +0.6) | écartée |
+|    … OUI seulement | 6 | 6 | -100.0 % | +0.00 | 0/4 | 0 / 0.8 (z -1.0) | écartée |
+|    … NON seulement | 26 | 15 | +9.0 % | +2.45 | 3/4 | 25 / 23.3 (z +1.2) | écartée |
+| h=1 fen=2h après avance>0.1 ρ=0.0 | 6 | 5 | -16.1 % | -0.42 | 1/4 | 3 / 2.8 (z +0.2) | écartée |
+|    … OUI seulement | 2 | 2 | -100.0 % | +0.00 | 0/2 | 0 / 0.3 (z -0.6) | écartée |
+|    … NON seulement | 4 | 3 | +25.9 % | +1.19 | 1/2 | 3 / 2.5 (z +0.5) | écartée |
+| h=3 fen=6h avant avance>0.03 ρ=0.0 | 19 | 11 | +44.4 % | +1.11 | 3/4 | 18 / 15.7 (z +2.0) | écartée |
+|    … OUI seulement | 2 | 2 | +212.5 % | +0.00 | 1/2 | 1 / 0.4 (z +1.1) | écartée |
+|    … NON seulement | 17 | 10 | +24.6 % | +1.23 | 3/3 | 17 / 15.3 (z +1.7) | écartée |
+| h=3 fen=6h avant avance>0.1 ρ=0.0 | 2 | 2 | +420.8 % | +0.00 | 2/2 | 2 / 0.4 (z +2.8) | écartée |
+|    … OUI seulement | 1 | 1 | +525.0 % | +0.00 | 1/1 | 1 / 0.2 (z +2.3) | écartée |
+|    … NON seulement | 1 | 1 | +316.7 % | +0.00 | 1/1 | 1 / 0.2 (z +1.8) | écartée |
+| h=3 fen=6h après avance>0.03 ρ=0.0 | 39 | 22 | -7.4 % | -1.67 | 1/4 | 33 / 31.6 (z +0.8) | écartée |
+|    … OUI seulement | 6 | 6 | -100.0 % | +0.00 | 0/3 | 0 / 1.0 (z -1.2) | écartée |
+|    … NON seulement | 33 | 17 | +9.4 % | +3.26 | 2/2 | 33 / 30.6 (z +1.7) | retenue |
+| h=3 fen=6h après avance>0.1 ρ=0.0 | 2 | 2 | +66.7 % | +0.00 | 1/1 | 2 / 1.2 (z +1.1) | écartée |
+|    … NON seulement | 2 | 2 | +66.7 % | +0.00 | 1/1 | 2 / 1.2 (z +1.1) | écartée |
+| h=6 fen=6h après avance>0.03 ρ=-0.1 | 52 | 23 | +11.9 % | -0.65 | 2/5 | 46 / 43.4 (z +1.3) | écartée |
+|    … OUI seulement | 6 | 6 | +4.2 % | +0.04 | 1/5 | 1 / 1.3 (z -0.3) | écartée |
+|    … NON seulement | 46 | 19 | +12.9 % | +2.28 | 3/3 | 45 / 42.1 (z +1.7) | retenue |
+| h=6 fen=6h après avance>0.1 ρ=-0.1 | 4 | 4 | +243.8 % | +2.18 | 2/2 | 4 / 1.6 (z +2.7) | écartée |
+|    … OUI seulement | 1 | 1 | +525.0 % | +0.00 | 1/1 | 1 / 0.2 (z +2.3) | écartée |
+|    … NON seulement | 3 | 3 | +150.0 % | +1.75 | 1/1 | 3 / 1.5 (z +1.9) | écartée |
+
+## Réglage choisi : h=1 fen=6h avant avance>0.03 ρ=-0.1
+{"paris": 2, "rendement_moyen": -1.0, "confiance_paris": 0.0, "evenements": 2, "confiance_evenements": 0.0, "z_prix": -0.5, "mois": {"2026-07": -1.0, "2026-09": -1.0}, "mois_gagnants": "0/2", "par_prix": {"0,10-0,30": {"paris": 1, "rendement": -1.0}, "< 0,10": {"paris": 1, "rendement": -1.0}}, "verdict": "écartée", "raison": "moins de 30 paris"}
