@@ -307,6 +307,19 @@ def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token
     assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []
 
 
+def test_near_certain_promises_that_lose_money_are_flagged_per_strategy():
+    """23/10 : `news_momentum` promet 0,999 pour un « Non » vendu 0,986 ; 16 paris à ce prix dont 2 perdus = −16 × 0,3 € de gain
+    contre 2 mises entières."""
+    entries = {"nm_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999),
+               "nm_fille_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999)}  # mêmes jetons : comptés une fois
+    found = enquete.certitude_promise(entries)
+    assert len(found) == 1 and found[0]["controle"] == "certitude_promise" and "arène : 16 paris promis" in found[0]["titre"]
+    # Estimation raisonnable, trop peu de paris, ou paris gagnants : rien.
+    assert enquete.certitude_promise({"a_v1.0.0": _fav_ledger(14, 2, strategy="a", price=0.97, est=0.98)}) == []
+    assert enquete.certitude_promise({"b_v1.0.0": _fav_ledger(5, 1, strategy="b", price=0.97, est=0.999)}) == []
+    assert enquete.certitude_promise({"c_v1.0.0": _fav_ledger(16, 0, strategy="c", price=0.97, est=0.999)}) == []
+
+
 def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_finding():
     """22/10 : 62 anomalies « réglé alors que le marché n'est pas clos », toutes postérieures de 17 à 225 s à la fermeture officielle."""
     early = {"portefeuille": "fantome:nf_tennis_prix_bas_v1.0.0", "seq": 9, "type": "SETTLE", "date": "2026-10-22T06:55:06",
