@@ -3,6 +3,20 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22 (session manuelle, pistes 2, 3 et 11 aux prix payés)
+
+- **Fait** (`experiments/pistes_crypto_elections_drames.md`, scripts dans `toucher_avant_fin/`, `marge_coherente/`, `non_aux_drames/`) :
+  - n° 2 `toucher_avant_fin` : **écartée**. 8 693 paires barrière × échelle (17/08-15/10) : la cohérence « toucher ≥ au-dessus » tient aux prix payés
+    (13 demi-heures sur 6 488 sous 1, 3 paniers exécutés à 1,000) ; le marché paie le toucher 4,6 fois le au-dessus et c'est ce qui arrive ; règle « 2 fois » −11 % ;
+    modèle de barrière (DVOL) : 17 réglages sur 24 perdent sur la 1re moitié, le choisi fait +13,5 % sur la 2e (hausse du Bitcoin) mais t par événement 0,49.
+  - n° 3 `marge_coherente` : **écartée** (indice minuscule). 13 élections (2024-2026), écart médian 1,9 point, 49 paniers sans risque vus, 18 exécutables, +0,64 % par panier.
+  - n° 11 `non_aux_drames` : **retenue** (petit échantillon). 149 paris sur 106 événements de 2024 à 2026 : +4,6 % par pari, ≈ +23 %/an, 2 drames arrivés pour 9,3 attendus,
+    t par événement 2,81, 26 mois sur 28 ; témoin non-drames : +0,9 % par pari (784 paris). Règle du fantôme écrite dans la fiche (mise ≤ 2 % par événement).
+  - Découverte : `data-api /trades` accepte `start` et `end` : la limite de 10 000 échanges ne gêne plus (fenêtre autour de T0).
+- **Reste ouvert** : créer le fantôme `non_aux_drames` (et peut-être `non_aux_outsiders_longs`, témoin 0,05-0,10) ; ajouter `start`/`end` à `idea_test.fetch_event_trades` ;
+  élargir la piste 2 à avril-octobre si on veut revoir les barrières hors d'une période de hausse.
+- **Limites** : piste 11 jugée sur 2 pertes seulement ; piste 2 sur 60 jours ; piste 3 sans la quantité disponible.
+
 ## 2026-10-22 (passage chercheur, nuit : 04 h 55 → 05 h 51 UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-22_championne_biais_et_mises.md`, `..._muettes_budget_cotes.md`, et la 3e ligne du README ; familles 5 puis 2, 6 et 3).
