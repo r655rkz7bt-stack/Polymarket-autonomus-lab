@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2599,
+  "principal": 2600,
   "fantome:calibration_patiente_v1.0.0": 1780,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1761,
@@ -966,9 +966,9 @@
    "op_id": "settle-74041211685173083338571107745620706045690880362995161883454944669719077180872"
   }
  ],
- "derniere_execution": "2026-10-23T02:27:50+00:00",
+ "derniere_execution": "2026-10-23T02:32:37+00:00",
  "dernier_seq_reglements": {
-  "principal": 2599,
+  "principal": 2600,
   "fantome:calibration_patiente_v1.0.0": 1780,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1761,
@@ -992,8 +992,8 @@
   "fantome:favori_politique_v1.0.0": 1366,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1366,
   "fantome:outsider_sport_patiente_v1.0.0": 1419,
-  "fantome:contrer_crypto_patiente_v1.0.0": 1593,
-  "fantome:contrer_crypto_v1.0.0": 1525,
+  "fantome:contrer_crypto_patiente_v1.0.0": 1598,
+  "fantome:contrer_crypto_v1.0.0": 1528,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1366,
   "fantome:loterie_meteo_v1.0.0": 1448,
   "fantome:suivre_politique_v1.0.0": 1413,
@@ -1089,7 +1089,7 @@
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 167,
   "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 236,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 121,
-  "fantome:mots_prononces_patiente_v1.0.0": 121,
+  "fantome:mots_prononces_patiente_v1.0.0": 123,
   "fantome:cpi_tranches_v1.0.0": 79,
   "fantome:nf_sport_patiente_tennis_850_875_v1.0.0": 166,
   "fantome:nf_sport_vainqueur_v1.0.0": 149,
