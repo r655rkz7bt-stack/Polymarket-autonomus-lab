@@ -53,7 +53,7 @@ Suite (sonde_runs.py) :
 - run=2026-10-22T00:00 ecmwf_ifs025 sur single-runs-api.open-meteo.com : HTTP 429, Daily API request limit exceeded. Please try again tomorrow.
 - run=2026-10-19T00:00 ecmwf_ifs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-19T00:00Z
 - run=2026-10-19T00:00 ecmwf_ifs025 sur single-runs-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-19T00:00Z
-- past_days=30, GEFS (relu à part, curl, 23/10 18 h 55 UTC) : 744 heures demandées, seules les 96 dernières remplies
+- past_days=30, GEFS (relu à part, curl, 23/10 vers 18 h 30 UTC) : 744 heures demandées, seules les 96 dernières remplies
   (2026-10-20T00:00 → 2026-10-23T23:00) ; les heures passées remplies sont recollées à partir des derniers passages
   (échéance courte), ce ne sont PAS des prévisions faites la veille.
 noaa-gefs-pds (AWS, archives GRIB2 de GEFS) : HTTP 200
