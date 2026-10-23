@@ -27,7 +27,7 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
     filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
   - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
     pour 461 attendus par les prix mais 489 annoncés : le biais fixe +0,05 n'existe pas) ;
-  - muettes, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
+  - muettes, retraits_inactifs, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
 mission (enquêter, corriger ou proposer, test de non-régression, compte rendu dans
@@ -432,9 +432,10 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
     à chaque cycle) : marchés vus et raisons les plus fréquentes du dernier cycle, ajoutées au constat."""
     silent = []
     seen = (abstentions or {}).get("portefeuilles") or {}
+    gone = retirees(entries)  # déjà retirées par l'arène : plus jouées, donc « muettes » à vie (voir retraits_inactifs)
     for name in active:
         rows = entries.get(name)
-        if rows and _ts(rows[0]) < now - timedelta(hours=hours) and not _buys(rows):
+        if name not in gone and rows and _ts(rows[0]) < now - timedelta(hours=hours) and not _buys(rows):
             why = ""
             for info in (seen.get(f"fantome:{name}") or {}).values():
                 reasons = ", ".join(f"{k} ×{v}" for k, v in (info.get("raisons") or {}).items()) or "aucune raison notée"
@@ -443,6 +444,31 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
     return [_finding("muettes", A_REGARDER, f"{len(silent)} stratégie(s) sans aucun achat depuis plus de {hours:.0f} h",
                      "Une stratégie muette ne teste rien : lire ses abstentions (journal du cycle, tableau de bord) "
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
+
+
+def retirees(entries: dict[str, list[dict]]) -> dict[str, dict]:
+    """Stratégies retirées de l'arène (journal du principal, événements ELIMINATION) : nom -> {ts, reason}."""
+    return {e["data"]["strategy"]: {"ts": e["ts"], "reason": str(e["data"].get("reason", ""))}
+            for e in entries.get("principal", []) if e.get("type") == "ELIMINATION" and e.get("data", {}).get("strategy")}
+
+
+def retraits_inactifs(entries: dict[str, list[dict]], now: datetime, days: float = 4) -> list[dict]:
+    """Stratégies retirées pour INACTIVITÉ (`inactive : …`) ces `days` derniers jours, sans un seul achat dans leur vie
+    (23/10/2026 : coherence_match, paire_oui_non… après 3 jours sans écart ; mots_prononces_nfl après 2 jours sans match NFL ;
+    cpi_tranches, jobs_favori_non, statu_quo_ia allaient l'être avant la date de leur premier marché). Le retrait est
+    définitif : une stratégie qui n'a rien à faire avant une date, ou qui guette une rareté, n'a pas à être retirée pour ça
+    (config/promotion.yaml → jamais_retirer). À regarder : son silence venait-il du calendrier, d'un arbitrage rare ou d'un bug ?"""
+    out = []
+    for name, info in retirees(entries).items():
+        if not info["reason"].startswith("inactive") or _ts({"ts": info["ts"]}) < now - timedelta(days=days):
+            continue
+        if _buys(entries.get(name) or []):
+            continue
+        out.append(f"{name} : retirée le {info['ts'][:16]} ({info['reason'][:90]})")
+    return [_finding("retraits_inactifs", A_REGARDER, f"{len(out)} stratégie(s) retirée(s) pour inactivité sans aucun achat",
+                     "Retrait définitif d'une stratégie qui n'avait peut-être rien à faire (calendrier, arbitrage rare, source en panne). "
+                     "Si elle attend une date ou une rareté : l'ajouter à `jamais_retirer` (config/promotion.yaml) et relancer une "
+                     "nouvelle version ; si c'est un bug, le corriger avant.", out)] if out else []
 
 
 def capital_bloque(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 48,
@@ -735,6 +761,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
+                + retraits_inactifs(entries, now)
                 + capital_bloque(entries, active, now)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
