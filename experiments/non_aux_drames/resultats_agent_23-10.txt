@@ -1,0 +1,49 @@
+marchés à longue échéance : 7531 ; « drames » réglés oui/non : 193 {'dirigeant': 104, 'economie': 11, 'guerre': 70, 'insolite': 8}
+instants de décision : 297 (à lire : 297)
+écartés : {'hors plage': 110, 'sans échange avant': 15, 'sans échange après': 23} ; paris : 149
+
+== Horizon 30 jours avant l'échéance
+   tous : 78 paris, 75 événements | rendement par pari +2.43 % (moyenne +2.38 %) | par jour +0.0703 % (≈ +25.7 %/an) | durée moyenne 35 j | OUI arrivés 2 pour 4.3 attendus | t événements 1.1 | mois gagnants 16/18 | indice
+   OUI à 0.02-0.05 : 47 paris, 45 événements | rendement par pari +0.95 % (moyenne +0.84 %) | par jour +0.0270 % (≈ +9.8 %/an) | durée moyenne 35 j | OUI arrivés 1 pour 1.6 attendus | t événements 0.32 | mois gagnants 15/16 | écartée
+   OUI à 0.05-0.10 : 20 paris, 20 événements | rendement par pari +6.33 % (moyenne +6.35 %) | par jour +0.2054 % (≈ +75.0 %/an) | durée moyenne 31 j | OUI arrivés 0 pour 1.4 attendus | t événements 18.48 | mois gagnants 9/9 | écartée
+   OUI à 0.10-0.15 : 11 paris, 11 événements | rendement par pari +1.89 % (moyenne +1.72 %) | par jour +0.0472 % (≈ +17.2 %/an) | durée moyenne 40 j | OUI arrivés 1 pour 1.3 attendus | t événements 0.17 | mois gagnants 7/8 | écartée
+   guerre : 31 paris, 31 événements | rendement par pari +5.28 % (moyenne +5.35 %) | par jour +0.1710 % (≈ +62.4 %/an) | durée moyenne 31 j | OUI arrivés 0 pour 1.8 attendus | t événements 10.53 | mois gagnants 11/11 | indice
+   dirigeant : 43 paris, 40 événements | rendement par pari +0.30 % (moyenne +0.14 %) | par jour +0.0080 % (≈ +2.9 %/an) | durée moyenne 38 j | OUI arrivés 2 pour 2.4 attendus | t événements -0.09 | mois gagnants 14/16 | écartée
+   economie : 3 paris, 3 événements | rendement par pari +1.96 % (moyenne +1.96 %) | par jour +0.0643 % (≈ +23.5 %/an) | durée moyenne 30 j | OUI arrivés 0 pour 0.1 attendus | t événements 10.69 | mois gagnants 3/3 | écartée
+   insolite : 1 paris, 1 événements | rendement par pari +7.53 % (moyenne +7.53 %) | par jour +0.2456 % (≈ +89.7 %/an) | durée moyenne 31 j | OUI arrivés 0 pour 0.1 attendus | t événements 0.0 | mois gagnants 1/1 | écartée
+   première moitié : 39 paris, 37 événements | rendement par pari +5.37 % (moyenne +5.48 %) | par jour +0.1367 % (≈ +49.9 %/an) | durée moyenne 39 j | OUI arrivés 0 pour 2.3 attendus | t événements 11.08 | mois gagnants 8/8 | indice
+   seconde moitié : 39 paris, 38 événements | rendement par pari -0.49 % (moyenne -0.72 %) | par jour -0.0162 % (≈ -5.9 %/an) | durée moyenne 30 j | OUI arrivés 2 pour 2.0 attendus | t événements -0.22 | mois gagnants 8/10 | écartée
+
+== Horizon 90 jours avant l'échéance
+   tous : 45 paris, 44 événements | rendement par pari +6.12 % (moyenne +6.25 %) | par jour +0.0697 % (≈ +25.4 %/an) | durée moyenne 88 j | OUI arrivés 0 pour 2.8 attendus | t événements 11.06 | mois gagnants 15/15 | retenue
+   OUI à 0.02-0.05 : 20 paris, 20 événements | rendement par pari +3.67 % (moyenne +3.68 %) | par jour +0.0419 % (≈ +15.3 %/an) | durée moyenne 88 j | OUI arrivés 0 pour 0.7 attendus | t événements 15.03 | mois gagnants 9/9 | écartée
+   OUI à 0.05-0.10 : 18 paris, 18 événements | rendement par pari +6.43 % (moyenne +6.49 %) | par jour +0.0739 % (≈ +27.0 %/an) | durée moyenne 87 j | OUI arrivés 0 pour 1.3 attendus | t événements 11.1 | mois gagnants 9/9 | écartée
+   OUI à 0.10-0.15 : 7 paris, 7 événements | rendement par pari +12.90 % (moyenne +12.96 %) | par jour +0.1421 % (≈ +51.9 %/an) | durée moyenne 91 j | OUI arrivés 0 pour 0.9 attendus | t événements 12.22 | mois gagnants 5/5 | écartée
+   guerre : 19 paris, 19 événements | rendement par pari +7.73 % (moyenne +7.84 %) | par jour +0.0851 % (≈ +31.1 %/an) | durée moyenne 91 j | OUI arrivés 0 pour 1.4 attendus | t événements 9.6 | mois gagnants 11/11 | écartée
+   dirigeant : 18 paris, 17 événements | rendement par pari +5.84 % (moyenne +5.97 %) | par jour +0.0673 % (≈ +24.6 %/an) | durée moyenne 87 j | OUI arrivés 0 pour 1.1 attendus | t événements 6.31 | mois gagnants 7/7 | écartée
+   economie : 4 paris, 4 événements | rendement par pari +2.70 % (moyenne +2.70 %) | par jour +0.0356 % (≈ +13.0 %/an) | durée moyenne 76 j | OUI arrivés 0 pour 0.1 attendus | t événements 12.65 | mois gagnants 4/4 | écartée
+   insolite : 4 paris, 4 événements | rendement par pari +3.47 % (moyenne +3.47 %) | par jour +0.0382 % (≈ +13.9 %/an) | durée moyenne 91 j | OUI arrivés 0 pour 0.2 attendus | t événements 8.6 | mois gagnants 3/3 | écartée
+   première moitié : 18 paris, 18 événements | rendement par pari +6.30 % (moyenne +6.40 %) | par jour +0.0723 % (≈ +26.4 %/an) | durée moyenne 87 j | OUI arrivés 0 pour 1.1 attendus | t événements 7.89 | mois gagnants 9/9 | écartée
+   seconde moitié : 27 paris, 26 événements | rendement par pari +6.00 % (moyenne +6.14 %) | par jour +0.0680 % (≈ +24.8 %/an) | durée moyenne 88 j | OUI arrivés 0 pour 1.7 attendus | t événements 7.82 | mois gagnants 6/6 | écartée
+
+== Horizon 180 jours avant l'échéance
+   tous : 26 paris, 24 événements | rendement par pari +8.85 % (moyenne +8.99 %) | par jour +0.0513 % (≈ +18.7 %/an) | durée moyenne 172 j | OUI arrivés 0 pour 2.2 attendus | t événements 10.38 | mois gagnants 8/8 | écartée
+   OUI à 0.02-0.05 : 4 paris, 4 événements | rendement par pari +4.07 % (moyenne +4.08 %) | par jour +0.0225 % (≈ +8.2 %/an) | durée moyenne 181 j | OUI arrivés 0 pour 0.2 attendus | t événements 10.2 | mois gagnants 3/3 | écartée
+   OUI à 0.05-0.10 : 14 paris, 14 événements | rendement par pari +7.89 % (moyenne +7.92 %) | par jour +0.0447 % (≈ +16.3 %/an) | durée moyenne 177 j | OUI arrivés 0 pour 1.1 attendus | t événements 16.28 | mois gagnants 6/6 | écartée
+   OUI à 0.10-0.15 : 8 paris, 7 événements | rendement par pari +13.21 % (moyenne +13.34 %) | par jour +0.0824 % (≈ +30.1 %/an) | durée moyenne 159 j | OUI arrivés 0 pour 1.0 attendus | t événements 8.39 | mois gagnants 4/4 | écartée
+   guerre : 9 paris, 9 événements | rendement par pari +9.44 % (moyenne +9.48 %) | par jour +0.0522 % (≈ +19.0 %/an) | durée moyenne 181 j | OUI arrivés 0 pour 0.8 attendus | t événements 13.27 | mois gagnants 5/5 | écartée
+   dirigeant : 11 paris, 9 événements | rendement par pari +9.40 % (moyenne +9.63 %) | par jour +0.0565 % (≈ +20.6 %/an) | durée moyenne 165 j | OUI arrivés 0 pour 0.9 attendus | t événements 4.86 | mois gagnants 5/5 | écartée
+   economie : 3 paris, 3 événements | rendement par pari +5.26 % (moyenne +5.32 %) | par jour +0.0325 % (≈ +11.9 %/an) | durée moyenne 161 j | OUI arrivés 0 pour 0.2 attendus | t événements 3.1 | mois gagnants 3/3 | écartée
+   insolite : 3 paris, 3 événements | rendement par pari +8.80 % (moyenne +8.88 %) | par jour +0.0487 % (≈ +17.8 %/an) | durée moyenne 181 j | OUI arrivés 0 pour 0.3 attendus | t événements 4.31 | mois gagnants 2/2 | écartée
+   première moitié : 9 paris, 9 événements | rendement par pari +10.64 % (moyenne +10.85 %) | par jour +0.0652 % (≈ +23.8 %/an) | durée moyenne 161 j | OUI arrivés 0 pour 0.8 attendus | t événements 6.11 | mois gagnants 5/5 | écartée
+   seconde moitié : 17 paris, 15 événements | rendement par pari +7.93 % (moyenne +8.01 %) | par jour +0.0447 % (≈ +16.3 %/an) | durée moyenne 177 j | OUI arrivés 0 pour 1.4 attendus | t événements 9.9 | mois gagnants 3/3 | écartée
+
+== Tous horizons confondus (un marché peut compter jusqu'à 3 fois : paris liés, regroupés par événement)
+   tous : 149 paris, 106 événements | rendement par pari +4.64 % (moyenne +4.70 %) | par jour +0.0626 % (≈ +22.8 %/an) | durée moyenne 75 j | OUI arrivés 2 pour 9.3 attendus | t événements 2.81 | mois gagnants 26/28 | retenue
+{"paris": 149, "rendement_moyen": 0.047, "confiance_paris": 4.46, "evenements": 106, "confiance_evenements": 2.81, "z_prix": 2.32, "mois": {"2024-01": 0.0543, "2024-03": 0.0627, "2024-04": 0.0812, "2024-05": 0.0401, "2024-06": 0.078, "2024-07": 0.0799, "2024-08": 0.0561, "2024-09": 0.0702, "2024-10": 0.045, "2024-11": 0.0515, "2024-12": 0.0472, "2025-01": 0.0573, "2025-02": 0.1236, "2025-03": 0.0815, "2025-04": 0.0477, "2025-05": 0.0288, "2025-07": 0.0856, "2025-08": -0.048, "2025-09": 0.087, "2025-10": 0.0633, "2025-11": 0.037, "2025-12": 0.0501, "2026-01": 0.0784, "2026-03": 0.043, "2026-04": 0.0396, "2026-05": -1.0, "2026-06": 0.0098, "2026-07": 0.0635}, "mois_gagnants": "26/28", "par_prix": {"≥ 0,70": {"paris": 149, "rendement": 0.047}}, "verdict": "retenue", "raison": "positive, régulière par événement et par mois"}
+
+== Pires cas (le drame est arrivé) : 2 paris perdus sur 149
+   1 pari(s), mise perdue 0.92 $ | Will Jair Bolsonaro be arrested in Brazil by August 31? | OUI payé 0.044 | 2025-08
+   1 pari(s), mise perdue 0.86 $ | Starmer out by June 30, 2026? | OUI payé 0.140 | 2026-05
+   pire mois de décision : 2026-05 (1 paris, -0.86 $ pour 0.86 $ misés)
+   marchés avec récompense de détention (holdingRewardsEnabled) : 0 paris

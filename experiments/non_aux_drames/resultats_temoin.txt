@@ -1,0 +1,31 @@
+marchés à longue échéance : 7531 ; « drames » réglés oui/non : 7150 {'dirigeant': 0, 'economie': 0, 'guerre': 0, 'insolite': 0}
+instants de décision : 4514 (à lire : 4514)
+écartés : {'sans échange avant': 728, 'sans échange après': 239, 'hors plage': 2756, 'panne': 2, 'NON trop cher': 5} ; paris : 784
+
+== Horizon 90 jours avant l'échéance
+   tous : 784 paris, 370 événements | rendement par pari +0.92 % (moyenne +0.95 %) | par jour +0.0117 % (≈ +4.3 %/an) | durée moyenne 78 j | OUI arrivés 40 pour 49.9 attendus | t événements 2.45 | mois gagnants 20/31 | indice
+   OUI à 0.02-0.05 : 334 paris, 194 événements | rendement par pari -0.70 % (moyenne -0.70 %) | par jour -0.0091 % (≈ -3.3 %/an) | durée moyenne 77 j | OUI arrivés 12 pour 10.6 attendus | t événements -0.29 | mois gagnants 19/28 | écartée
+   OUI à 0.05-0.10 : 307 paris, 192 événements | rendement par pari +2.59 % (moyenne +2.61 %) | par jour +0.0331 % (≈ +12.1 %/an) | durée moyenne 78 j | OUI arrivés 13 pour 21.9 attendus | t événements 3.59 | mois gagnants 22/29 | retenue
+   OUI à 0.10-0.15 : 143 paris, 120 événements | rendement par pari +1.29 % (moyenne +1.22 %) | par jour +0.0162 % (≈ +5.9 %/an) | durée moyenne 80 j | OUI arrivés 15 pour 17.5 attendus | t événements 0.76 | mois gagnants 15/26 | écartée
+   première moitié : 389 paris, 169 événements | rendement par pari +0.83 % (moyenne +0.86 %) | par jour +0.0109 % (≈ +4.0 %/an) | durée moyenne 76 j | OUI arrivés 20 pour 24.5 attendus | t événements 1.62 | mois gagnants 14/19 | indice
+   seconde moitié : 395 paris, 201 événements | rendement par pari +1.00 % (moyenne +1.03 %) | par jour +0.0125 % (≈ +4.6 %/an) | durée moyenne 80 j | OUI arrivés 20 pour 25.4 attendus | t événements 1.84 | mois gagnants 6/13 | indice
+
+== Tous horizons confondus (un marché peut compter jusqu'à 3 fois : paris liés, regroupés par événement)
+   tous : 784 paris, 370 événements | rendement par pari +0.92 % (moyenne +0.95 %) | par jour +0.0117 % (≈ +4.3 %/an) | durée moyenne 78 j | OUI arrivés 40 pour 49.9 attendus | t événements 2.45 | mois gagnants 20/31 | indice
+{"paris": 784, "rendement_moyen": 0.0095, "confiance_paris": 1.11, "evenements": 370, "confiance_evenements": 2.45, "z_prix": 1.03, "mois": {"2023-11": 0.0989, "2024-01": 0.1306, "2024-02": 0.0417, "2024-03": 0.0814, "2024-04": 0.0601, "2024-05": -0.2124, "2024-06": -0.0402, "2024-07": 0.0782, "2024-08": 0.0229, "2024-09": 0.0731, "2024-10": 0.0038, "2024-11": -0.0117, "2024-12": 0.0391, "2025-01": -0.0114, "2025-02": 0.0258, "2025-03": 0.009, "2025-05": 0.0549, "2025-06": 0.0668, "2025-07": -0.0577, "2025-08": 0.0724, "2025-09": -0.027, "2025-10": -0.0034, "2025-11": -0.0141, "2025-12": -0.0118, "2026-01": 0.0211, "2026-02": 0.0548, "2026-03": -0.0172, "2026-04": 0.005, "2026-05": 0.0954, "2026-06": -0.0293, "2026-07": 0.0276}, "mois_gagnants": "20/31", "par_prix": {"≥ 0,70": {"paris": 784, "rendement": 0.0095}}, "verdict": "indice", "raison": "positive mais encore fragile : fantôme, l'arène tranchera"}
+
+== Pires cas (le drame est arrivé) : 40 paris perdus sur 784
+   1 pari(s), mise perdue 0.98 $ | Will Kamala Harris win the 2024 Democratic Presidential Nomination? | OUI payé 0.020 | 2024-05
+   1 pari(s), mise perdue 0.98 $ | Will the Cleveland Guardians win the AL Central Division? | OUI payé 0.026 | 2025-07
+   1 pari(s), mise perdue 0.98 $ | Will Michael B. Jordan win Best Actor at the 98th Academy Awards? | OUI payé 0.029 | 2025-12
+   1 pari(s), mise perdue 0.97 $ | Will Patrick Surtain II win NFL Defensive Player of the Year? | OUI payé 0.031 | 2024-11
+   1 pari(s), mise perdue 0.97 $ | Will Austria win Eurovision 2025? | OUI payé 0.035 | 2025-02
+   1 pari(s), mise perdue 0.96 $ | Will Luiz Inácio Lula da Silva finish in second place in the first round of the 2026 Brazi | OUI payé 0.038 | 2026-07
+   1 pari(s), mise perdue 0.96 $ | Will María Corina Machado win the Nobel Peace Prize in 2025? | OUI payé 0.040 | 2025-07
+   1 pari(s), mise perdue 0.96 $ | Trump imposes 40% tariff on China in first 100 days? | OUI payé 0.046 | 2025-01
+   1 pari(s), mise perdue 0.96 $ | Will the Las Vegas Aces win the 2025 WNBA Championship? | OUI payé 0.037 | 2025-07
+   1 pari(s), mise perdue 0.96 $ | Will Max Verstappen finish second in the 2025 Drivers Championship? | OUI payé 0.053 | 2025-09
+   1 pari(s), mise perdue 0.96 $ | Will Alexander Zverev win the 2026 Men's US Open? | OUI payé 0.042 | 2026-06
+   1 pari(s), mise perdue 0.96 $ | Will the New York Knicks win the 2026 NBA Finals? | OUI payé 0.044 | 2026-04
+   pire mois de décision : 2025-07 (38 paris, -2.12 $ pour 36.12 $ misés)
+   marchés avec récompense de détention (holdingRewardsEnabled) : 9 paris

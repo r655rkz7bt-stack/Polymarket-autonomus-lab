@@ -1,0 +1,69 @@
+   electoral-college-margin-of-victory-in-the-2024-presidential-election / GOP : 8 tranches ↔ « Will Donald Trump win the 2024 US Presidential Election? » (règlement vainqueur ["1", "0"])
+   electoral-college-margin-of-victory-in-the-2024-presidential-election / Dems : 8 tranches ↔ « Will Kamala Harris win the 2024 US Presidential Election? » (règlement vainqueur ["0", "1"])
+   popular-vote-margin-of-victory-in-presidential-election / GOP : 8 tranches, 2 marché(s) vainqueur → écarté
+   popular-vote-margin-of-victory-in-presidential-election / Dems : 8 tranches, 2 marché(s) vainqueur → écarté
+   georgia-margin-of-victory / Trump : 5 tranches ↔ « Will a Republican win Georgia Presidential Election? » (règlement vainqueur ["1", "0"])
+   georgia-margin-of-victory / Harris : 5 tranches ↔ « Will a Democrat win Georgia Presidential Election? » (règlement vainqueur ["0", "1"])
+   portugal-presidential-election-margin-of-victory-second-round / Seguro : 6 tranches ↔ « Will António José Seguro win the 2026 Portugal presidential election? » (règlement vainqueur ["1", "0"])
+   portugal-presidential-election-margin-of-victory-second-round / Ventura : 1 tranches ↔ « Will André Ventura win the 2026 Portugal presidential election? » (règlement vainqueur ["0", "1"])
+   colombia-presidential-election-runoff-margin-of-victory-20260604201910879 / de la Espriella : 4 tranches ↔ « Will Abelardo de la Espriella  win the 2026 Colombian presidential election? » (règlement vainqueur ["1", "0"])
+   colombia-presidential-election-runoff-margin-of-victory-20260604201910879 / Cepeda Castro : 1 tranches ↔ « Will Ivan Cepeda Castro win the 2026 Colombian presidential election? » (règlement vainqueur ["0", "1"])
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Tisza : 4 tranches ↔ « Will Tisza win the most national list votes in the 2026 Hungarian parliamentary election? » (règlement vainqueur ["1", "0"])
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Fidesz-KDNP : 4 tranches ↔ « Will Fidesz–KDNP win the most national list votes in the 2026 Hungarian parliamentary election? » (règlement vainqueur ["0", "1"])
+   massachusetts-democratic-senate-primary-margin-of-victory / Markey : 9 tranches ↔ « Will Ed Markey be the Democratic nominee for Senate in Massachusetts? » (règlement vainqueur ["1", "0"])
+   massachusetts-democratic-senate-primary-margin-of-victory / Moulton : 2 tranches ↔ « Will Seth Moulton be the Democratic nominee for Senate in Massachusetts? » (règlement vainqueur ["0", "1"])
+   holborn-and-st-pancras-by-election-vote-share-margin-of-victory / Labour : 4 tranches, 0 marché(s) vainqueur → écarté
+   holborn-and-st-pancras-by-election-vote-share-margin-of-victory / Green : 4 tranches, 0 marché(s) vainqueur → écarté
+   sweden-parliamentary-election-vote-share-margin-of-victory / S : 5 tranches ↔ « Will the Swedish Social Democratic Party (S) win the most seats in the 2026 Swedish parliamentary election? » (règlement vainqueur ["1", "0"])
+   mecklenburg-vorpommern-parliamentary-election-vote-share-margin-of-victory / AfD : 4 tranches ↔ « Will AfD win the most seats in the 2026 Mecklenburg-Vorpommern parliamentary elections? » (règlement vainqueur ["1", "0"])
+   mecklenburg-vorpommern-parliamentary-election-vote-share-margin-of-victory / SPD : 4 tranches ↔ « Will SPD win the most seats in the 2026 Mecklenburg-Vorpommern parliamentary elections? » (règlement vainqueur ["0", "1"])
+   berlin-state-election-vote-share-margin-of-victory / Linke : 4 tranches ↔ « Will Linke win the most seats in the 2026 Berlin state elections? » (règlement vainqueur ["1", "0"])
+   berlin-state-election-vote-share-margin-of-victory / CDU : 4 tranches ↔ « Will CDU win the most seats in the 2026 Berlin state elections? » (règlement vainqueur ["0", "1"])
+   latvia-parliamentary-election-vote-share-margin-of-victory-20260930223740402 / AS : 5 tranches ↔ « Will Apvienotais Saraksts (AS) win the most seats in the 2026 Latvian parliamentary election? » (règlement vainqueur ["1", "0"])
+   denmark-election-popular-vote-margin-of-victory / Social Democrats : 4 tranches, 2 marché(s) vainqueur → écarté
+
+paires candidat : 18 ; lectures d'échanges : 2992 (à faire : 2992)
+
+observations complètes (toutes les jambes échangées dans les 2 h) : 151 ; paniers sous leur paiement (prix connus) : 49 ; exécutables aux prix d'après : 18
+écart |Σ tranches − vainqueur| au dernier prix échangé : 122 cas, médiane 0.019, 9e décile 0.058, max 0.124
+   colombia-presidential-election-runoff-margin-of-victory-20260604201910879 / de la Espriella : Σ tranches − vainqueur = +0.124
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Fidesz-KDNP : Σ tranches − vainqueur = +0.098
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Fidesz-KDNP : Σ tranches − vainqueur = +0.074
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Tisza : Σ tranches − vainqueur = -0.074
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Tisza : Σ tranches − vainqueur = -0.071
+   hungary-parliamentary-election-popular-vote-margin-of-victory / Tisza : Σ tranches − vainqueur = -0.069
+   electoral-college-margin-of-victory-in-the-2024-presidential-election : 39 observations complètes, 19 signaux
+       D2 2024-10-11 connu 7.996/8 : jambe sans échange après
+       D2 2024-10-13 connu 7.987/8 : jambe sans échange après
+       D2 2024-10-19 connu 7.999/8 payé 7.999
+       D2 2024-10-26 connu 7.988/8 : jambe sans échange après
+       D2 2024-10-06 connu 7.965/8 : jambe sans échange après
+       D2 2024-10-09 connu 7.958/8 : jambe sans échange après
+   georgia-margin-of-victory : 9 observations complètes, 4 signaux
+       D2 2024-10-22 connu 4.960/5 : jambe sans échange après
+       D2 2024-10-24 connu 4.950/5 : jambe sans échange après
+       D2 2024-10-25 connu 4.977/5 : jambe sans échange après
+       D2 2024-10-29 connu 4.950/5 : jambe sans échange après
+   portugal-presidential-election-margin-of-victory-second-round : 42 observations complètes, 7 signaux
+       D2 2026-01-21 connu 5.994/6 payé 6.006
+       D2 2026-02-03 connu 5.996/6 : jambe sans échange après
+       D1 2026-01-21 connu 0.998/1 : jambe sans échange après
+       D1 2026-01-23 connu 0.999/1 payé 0.998
+       D1 2026-01-24 connu 1.000/1 payé 1.000
+       D1 2026-01-25 connu 1.000/1 : jambe sans échange après
+   colombia-presidential-election-runoff-margin-of-victory-20260604201910879 : 21 observations complètes, 4 signaux
+       D2 2026-06-13 connu 3.998/4 : jambe sans échange après
+       D1 2026-06-09 connu 1.000/1 : jambe sans échange après
+       D1 2026-06-12 connu 0.989/1 payé 0.998
+       D1 2026-06-13 connu 0.998/1 : jambe sans échange après
+   hungary-parliamentary-election-popular-vote-margin-of-victory : 39 observations complètes, 14 signaux
+       D2 2026-03-21 connu 3.970/4 : jambe sans échange après
+       D2 2026-03-25 connu 3.990/4 : jambe sans échange après
+       D2 2026-03-26 connu 3.990/4 : jambe sans échange après
+       D1 2026-04-01 connu 0.976/1 payé 0.957
+       D2 2026-03-14 connu 3.938/4 : jambe sans échange après
+       D2 2026-03-18 connu 3.971/4 : jambe sans échange après
+   latvia-parliamentary-election-vote-share-margin-of-victory-20260930223740402 : 1 observations complètes, 1 signaux
+       D2 2026-10-01 connu 4.972/5 : jambe sans échange après
+{"paris": 18, "rendement_moyen": 0.0064, "confiance_paris": 2.4, "evenements": 4, "confiance_evenements": 1.47, "z_prix": -5.57, "mois": {"2024-10": 0.0021, "2024-11": 0.0069, "2026-01": 0.0003, "2026-03": 0.0035, "2026-04": 0.0174, "2026-06": 0.0019}, "mois_gagnants": "6/6", "par_prix": {"≥ 0,70": {"paris": 18, "rendement": 0.0064}}, "verdict": "indice", "raison": "positive mais encore fragile : fantôme, l'arène tranchera"}
+gain moyen par panier exécuté : 0.0064
