@@ -1,0 +1,59 @@
+- ensemble, dates passées (start/end)
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs025&start_date=2026-10-01&end_date=2026-10-03
+  → HTTP 200, 72 heures (2026-10-01T00:00 → 2026-10-03T23:00), 31 séries, valeurs non vides 0-0, modèles : (sans suffixe)
+- ensemble, dates passées lointaines
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs025&start_date=2026-07-01&end_date=2026-07-02
+  → HTTP 400, erreur : Parameter 'start_date' is out of allowed range from 2026-07-22 to 2026-11-27
+- ensemble, past_days=30
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs025&past_days=30&forecast_days=1
+  → HTTP 200, 744 heures (2026-09-23T00:00 → 2026-10-23T23:00), 31 séries, valeurs non vides 96-96, modèles : (sans suffixe)
+- ensemble, past_days=92
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs025&past_days=92&forecast_days=1
+  → HTTP 200, 2232 heures (2026-07-23T00:00 → 2026-10-23T23:00), 31 séries, valeurs non vides 96-96, modèles : (sans suffixe)
+- ensemble, variable previous_day1
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m_previous_day1&models=gfs025&past_days=3&forecast_days=1
+  → HTTP 200, 96 heures (2026-10-20T00:00 → 2026-10-23T23:00), 31 séries, valeurs non vides 0-0, modèles : previous_day1, previous_day1_member01, previous_day1_member02, previous_day1_member03, previous_day1_member04, previous_day1_member05, previous_day1_member06, previous_day1_member07, previous_day1_member08, previous_day1_member09, previous_day1_member10, previous_day1_member11, previous_day1_member12, previous_day1_member13, previous_day1_member14, previous_day1_member15, previous_day1_member16, p
+- ensemble, run= (un passage précis)
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs025&run=2026-10-10T00%3A00&forecast_days=2
+  → HTTP 400, erreur : The requested model run is not available. Model: ncep_gefs025, run: 2026-10-10T00:00Z
+- previous-runs, modèle d'ensemble
+  https://previous-runs-api.open-meteo.com/v1/forecast?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m_previous_day1&models=ncep_gefs025&past_days=3
+  → HTTP 429, erreur : Daily API request limit exceeded. Please try again tomorrow.
+- historical-forecast, modèle d'ensemble
+  https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=ncep_gefs025&start_date=2026-10-01&end_date=2026-10-02
+  → HTTP 429, erreur : Daily API request limit exceeded. Please try again tomorrow.
+- single-runs, déterministe (référence)
+  https://single-runs-api.open-meteo.com/v1/forecast?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs_seamless&run=2026-10-10T00%3A00&forecast_days=2
+  → HTTP 429, erreur : Daily API request limit exceeded. Please try again tomorrow.
+- single-runs, modèle d'ensemble
+  https://single-runs-api.open-meteo.com/v1/forecast?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=ncep_gefs025&run=2026-10-10T00%3A00&forecast_days=2
+  → HTTP 400, erreur : The requested model run is not available. Model: ncep_gefs025, run: 2026-10-10T00:00Z
+- ensemble single-runs (sous-domaine)
+  https://ensemble-single-runs-api.open-meteo.com/v1/ensemble
+  → échec réseau : HTTPSConnectionPool(host='ensemble-single-runs-api.open-meteo.com', port=443): Max retries exceeded with url: /v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&models=gfs025&run=2026-10-10T00%3A00&forecast_days=2 (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))
+- ensemble, modèles disponibles aujourd'hui
+  https://ensemble-api.open-meteo.com/v1/ensemble?latitude=51.505&longitude=0.055&timezone=UTC&hourly=temperature_2m&forecast_days=2&models=icon_seamless%2Cicon_global%2Cicon_eu%2Cicon_d2%2Cgfs025%2Cgfs05%2Cecmwf_ifs025%2Cecmwf_aifs025%2Cgem_global%2Cbom_access_global_ensemble%2Cukmo_global_ensemble_20km%2Cukmo_uk_ensemble_2km%2Cmeteoswiss_icon_ch1%2Cmeteoswiss_icon_ch2
+  → HTTP 200, 48 heures (2026-10-23T00:00 → 2026-10-24T23:00), 364 séries, valeurs non vides 0-48, modèles : bom_access_global_ensemble, ecmwf_aifs025_ensemble, ecmwf_ifs025_ensemble, gem_global_ensemble, icon_d2_eps, icon_eu_eps, icon_global_eps, icon_seamless_eps, ncep_gefs025, ncep_gefs05, ukmo_global_ensemble_20km, ukmo_uk_ensemble_2km
+
+Suite (sonde_runs.py) :
+- past_days=30, GEFS : heures remplies - → - (0 sur 0)
+- run=2026-10-23T12:00 gfs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ncep_gefs025, run: 2026-10-23T12:00Z
+- run=2026-10-23T12:00 gfs025 sur single-runs-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ncep_gefs025, run: 2026-10-23T12:00Z
+- run=2026-10-23T00:00 gfs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ncep_gefs025, run: 2026-10-23T00:00Z
+- run=2026-10-23T00:00 gfs025 sur single-runs-api.open-meteo.com : HTTP échec réseau, SSLError
+- run=2026-10-22T00:00 gfs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ncep_gefs025, run: 2026-10-22T00:00Z
+- run=2026-10-22T00:00 gfs025 sur single-runs-api.open-meteo.com : HTTP échec réseau, SSLError
+- run=2026-10-19T00:00 gfs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ncep_gefs025, run: 2026-10-19T00:00Z
+- run=2026-10-19T00:00 gfs025 sur single-runs-api.open-meteo.com : HTTP 429, Daily API request limit exceeded. Please try again tomorrow.
+- run=2026-10-23T12:00 ecmwf_ifs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-23T12:00Z
+- run=2026-10-23T12:00 ecmwf_ifs025 sur single-runs-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-23T12:00Z
+- run=2026-10-23T00:00 ecmwf_ifs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-23T00:00Z
+- run=2026-10-23T00:00 ecmwf_ifs025 sur single-runs-api.open-meteo.com : HTTP échec réseau, SSLError
+- run=2026-10-22T00:00 ecmwf_ifs025 sur ensemble-api.open-meteo.com : HTTP échec réseau, SSLError
+- run=2026-10-22T00:00 ecmwf_ifs025 sur single-runs-api.open-meteo.com : HTTP 429, Daily API request limit exceeded. Please try again tomorrow.
+- run=2026-10-19T00:00 ecmwf_ifs025 sur ensemble-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-19T00:00Z
+- run=2026-10-19T00:00 ecmwf_ifs025 sur single-runs-api.open-meteo.com : HTTP 400, The requested model run is not available. Model: ecmwf_ifs025_ensemble, run: 2026-10-19T00:00Z
+- past_days=30, GEFS (relu à part, curl, 23/10 18 h 55 UTC) : 744 heures demandées, seules les 96 dernières remplies
+  (2026-10-20T00:00 → 2026-10-23T23:00) ; les heures passées remplies sont recollées à partir des derniers passages
+  (échéance courte), ce ne sont PAS des prévisions faites la veille.
+noaa-gefs-pds (AWS, archives GRIB2 de GEFS) : HTTP 200

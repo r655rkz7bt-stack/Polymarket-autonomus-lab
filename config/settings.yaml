@@ -205,6 +205,9 @@ sources:
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
   # Relevés officiels NOAA (METAR) des stations qui tranchent les marchés de température.
   meteo_metar: {enabled: true, every_minutes: 15, max_stations: 60}   # aviationweather.gov
+  # Observatoire de Hong Kong (arbitre des marchés de Hong Kong, tranches par TRONCATURE) : max et min depuis minuit
+  # + bulletin de la veille (`veille`) ; 2 appels par passage, sans clé.
+  meteo_hko: {enabled: true, every_minutes: 15, veille: true}       # data.weather.gov.hk
   # Prévisions GFS + ECMWF aux stations (stratégie meteo_prevision) ; débit limité par adresse.
   meteo_prevision: {enabled: true, every_minutes: 60}                 # api.open-meteo.com
   # Valeurs réelles (tranche gagnante des marchés météo résolus) : étalonnage par station.

@@ -27,6 +27,7 @@ SOURCE_RELIABILITY = {
     "bluesky": 0.25,
     "x_api": 0.25,
     "meteo_metar": 0.97,    # relevés officiels NOAA de la station qui tranche le marché
+    "meteo_hko": 0.97,      # Observatoire de Hong Kong : l'arbitre lui-même (relevé depuis minuit)
     "meteo_prevision": 0.7,  # prévisions GFS / ECMWF (Open-Meteo) : un modèle, pas un fait
     "mlb_stats": 0.97,      # scores publiés par la ligue elle-même
     "nhl_stats": 0.97,

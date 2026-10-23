@@ -27,6 +27,7 @@ from polymarket_agent.sources.crypto_prices import CryptoPricesSource, CryptoQuo
 from polymarket_agent.sources.gdelt import GdeltSource
 from polymarket_agent.sources.google_news import GoogleNewsSource
 from polymarket_agent.sources.guardian import GuardianSource
+from polymarket_agent.sources.hko import HkoSource
 from polymarket_agent.sources.odds_api import OddsApiSource
 from polymarket_agent.sources.polymarket_comments import CommentsSource
 from polymarket_agent.sources.rss import RssSource
@@ -159,6 +160,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
                 db.set_value(f"station:{o.data['station']}", json.dumps([o.data["lat"], o.data["lon"]]))
         return obs
     run("meteo_metar", metar)
+    # Observatoire de Hong Kong (23/10/2026) : arbitre des marchés de Hong Kong, qui ne citent aucune station METAR.
+    run("meteo_hko", lambda cfg: factories.get("meteo_hko", lambda: HkoSource(http, bool(cfg.get("veille", True))))()
+        .fetch(markets, now))
 
     def forecast(cfg):
         wanted = stations_for(markets)

@@ -77,6 +77,31 @@ def main():
                     line.append(f"{name} {'oui' if good else 'NON'}")
                 print(f"{kind:8} {month:02d}-{day:02d} HKO {v:5.1f} gagnante « {q} » : " + ", ".join(line))
     print(f"\n{n} marchés réglés relus : " + ", ".join(f"{k} {v}/{n}" for k, v in ok.items()))
+    # Octobre : pas encore dans CLMMAXT ; le bulletin du lendemain (RYES, ≈ 00 h 15 heure de Hong Kong, « provisoire »)
+    # donne le maximum et le minimum de la veille à l'Observatoire. C'est ce que lit le lecteur meteo_hko.
+    n2, ok2 = 0, 0
+    for day in range(1, 23):
+        path = D / f"ryes_202610{day:02d}.json"
+        if not path.exists():
+            r = requests.get(HKO, params={"dataType": "RYES", "date": f"202610{day:02d}", "lang": "en"}, timeout=60)
+            path.write_text(r.text)
+        try:
+            ryes = json.loads(path.read_text())
+        except ValueError:
+            continue
+        for kind, key in (("highest", "HKOReadingsMaxTemp"), ("lowest", "HKOReadingsMinTemp")):
+            if not ryes.get(key):
+                continue
+            v = float(ryes[key])
+            q = winner(f"{kind}-temperature-in-hong-kong-on-october-{day}-2026")
+            b = wm.parse_question(q) if q else None
+            if b is None:
+                continue
+            n2 += 1
+            good = b.low <= math.floor(v) <= b.high
+            ok2 += good
+            print(f"{kind:8} 10-{day:02d} RYES {v:5.1f} gagnante « {q} » : troncature {'oui' if good else 'NON'}")
+    print(f"\nOctobre (bulletin RYES du lendemain) : troncature {ok2}/{n2}")
 
 
 if __name__ == "__main__":

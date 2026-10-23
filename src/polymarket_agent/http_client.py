@@ -33,9 +33,10 @@ class HttpClient:
         self.last_headers: dict[str, str] = {}  # en-têtes de la dernière réponse réussie (quotas d'API)
 
     def request_json(self, method: str, url: str, *, params: dict | None = None,
-                     json_body: Any = None, headers: dict | None = None) -> Any:
+                     json_body: Any = None, headers: dict | None = None, as_text: bool = False) -> Any:
         """`headers` : en-têtes de CETTE requête seulement (une clé d'API ne doit jamais partir
-        vers un autre site : ne pas les mettre dans la session partagée)."""
+        vers un autre site : ne pas les mettre dans la session partagée). `as_text` : renvoie le
+        texte brut (fichiers CSV de l'Observatoire de Hong Kong, 23/10/2026)."""
         last_error = "inconnue"
         for attempt in range(self.max_retries + 1):
             with self._lock:
@@ -51,6 +52,8 @@ class HttpClient:
             else:
                 if response.status_code == 200:
                     self.last_headers = {k.lower(): v for k, v in (response.headers or {}).items()}
+                    if as_text:
+                        return response.text
                     try:
                         return response.json()
                     except ValueError:
@@ -71,6 +74,10 @@ class HttpClient:
 
     def get_json(self, url: str, params: dict | None = None, headers: dict | None = None) -> Any:
         return self.request_json("GET", url, params=params, headers=headers)
+
+    def get_text(self, url: str, params: dict | None = None, headers: dict | None = None) -> str:
+        return self.request_json("GET", url, params=params, headers=dict({"Accept": "*/*"}, **(headers or {})),
+                                 as_text=True)
 
     def post_json(self, url: str, body: Any) -> Any:
         return self.request_json("POST", url, json_body=body)

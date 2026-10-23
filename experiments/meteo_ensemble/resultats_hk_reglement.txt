@@ -122,3 +122,49 @@ lowest   09-29 HKO  28.7 gagnante « Will the lowest temperature in Hong Kong be
 lowest   09-30 HKO  28.8 gagnante « Will the lowest temperature in Hong Kong be 28°C on September 30? » : arrondi NON, troncature oui
 
 122 marchés réglés relus : arrondi 61/122, troncature 122/122
+highest  10-01 RYES  33.6 gagnante « Will the highest temperature in Hong Kong be 33°C on October 1? » : troncature oui
+lowest   10-01 RYES  28.3 gagnante « Will the lowest temperature in Hong Kong be 28°C on October 1? » : troncature oui
+highest  10-02 RYES  31.7 gagnante « Will the highest temperature in Hong Kong be 31°C on October 2? » : troncature oui
+lowest   10-02 RYES  27.0 gagnante « Will the lowest temperature in Hong Kong be 27°C on October 2? » : troncature oui
+highest  10-03 RYES  29.6 gagnante « Will the highest temperature in Hong Kong be 29°C on October 3? » : troncature oui
+lowest   10-03 RYES  25.0 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 3? » : troncature oui
+highest  10-04 RYES  30.6 gagnante « Will the highest temperature in Hong Kong be 30°C on October 4? » : troncature oui
+lowest   10-04 RYES  25.6 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 4? » : troncature oui
+highest  10-05 RYES  31.2 gagnante « Will the highest temperature in Hong Kong be 31°C on October 5? » : troncature oui
+lowest   10-05 RYES  25.1 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 5? » : troncature oui
+highest  10-06 RYES  28.2 gagnante « Will the highest temperature in Hong Kong be 28°C on October 6? » : troncature oui
+lowest   10-06 RYES  23.3 gagnante « Will the lowest temperature in Hong Kong be 23°C on October 6? » : troncature oui
+highest  10-07 RYES  28.8 gagnante « Will the highest temperature in Hong Kong be 28°C on October 7? » : troncature oui
+lowest   10-07 RYES  23.5 gagnante « Will the lowest temperature in Hong Kong be 23°C on October 7? » : troncature oui
+highest  10-08 RYES  29.0 gagnante « Will the highest temperature in Hong Kong be 29°C on October 8? » : troncature oui
+lowest   10-08 RYES  25.6 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 8? » : troncature oui
+highest  10-09 RYES  30.6 gagnante « Will the highest temperature in Hong Kong be 30°C on October 9? » : troncature oui
+lowest   10-09 RYES  25.7 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 9? » : troncature oui
+highest  10-10 RYES  31.1 gagnante « Will the highest temperature in Hong Kong be 31°C on October 10? » : troncature oui
+lowest   10-10 RYES  25.9 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 10? » : troncature oui
+highest  10-11 RYES  31.0 gagnante « Will the highest temperature in Hong Kong be 31°C on October 11? » : troncature oui
+lowest   10-11 RYES  26.4 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 11? » : troncature oui
+highest  10-12 RYES  31.3 gagnante « Will the highest temperature in Hong Kong be 31°C on October 12? » : troncature oui
+lowest   10-12 RYES  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 12? » : troncature oui
+highest  10-13 RYES  31.0 gagnante « Will the highest temperature in Hong Kong be 31°C on October 13? » : troncature oui
+lowest   10-13 RYES  26.1 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 13? » : troncature oui
+highest  10-14 RYES  30.0 gagnante « Will the highest temperature in Hong Kong be 30°C on October 14? » : troncature oui
+lowest   10-14 RYES  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 14? » : troncature oui
+highest  10-15 RYES  29.7 gagnante « Will the highest temperature in Hong Kong be 29°C on October 15? » : troncature oui
+lowest   10-15 RYES  26.6 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 15? » : troncature oui
+highest  10-16 RYES  29.8 gagnante « Will the highest temperature in Hong Kong be 29°C on October 16? » : troncature oui
+lowest   10-16 RYES  26.2 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 16? » : troncature oui
+highest  10-17 RYES  29.2 gagnante « Will the highest temperature in Hong Kong be 29°C on October 17? » : troncature oui
+lowest   10-17 RYES  26.8 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 17? » : troncature oui
+highest  10-18 RYES  31.5 gagnante « Will the highest temperature in Hong Kong be 31°C on October 18? » : troncature oui
+lowest   10-18 RYES  27.4 gagnante « Will the lowest temperature in Hong Kong be 27°C on October 18? » : troncature oui
+highest  10-19 RYES  31.9 gagnante « Will the highest temperature in Hong Kong be 31°C on October 19? » : troncature oui
+lowest   10-19 RYES  26.5 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 19? » : troncature oui
+highest  10-20 RYES  31.8 gagnante « Will the highest temperature in Hong Kong be 31°C on October 20? » : troncature oui
+lowest   10-20 RYES  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 20? » : troncature oui
+highest  10-21 RYES  32.5 gagnante « Will the highest temperature in Hong Kong be 32°C on October 21? » : troncature oui
+lowest   10-21 RYES  26.8 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 21? » : troncature oui
+highest  10-22 RYES  30.7 gagnante « Will the highest temperature in Hong Kong be 30°C on October 22? » : troncature oui
+lowest   10-22 RYES  25.9 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 22? » : troncature oui
+
+Octobre (bulletin RYES du lendemain) : troncature 44/44
