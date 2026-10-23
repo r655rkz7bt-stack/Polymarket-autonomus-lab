@@ -335,3 +335,31 @@ def test_detroits_tranches_sells_the_overpriced_bucket_and_buys_the_cheap_one(tm
     assert got == {"c": "No", "b": "Yes"}  # d : écart de 0,065 < 0,12 ; old : relevé périmé
     assert out.abstentions
     assert {m.market_id for m in s.candidates(ms)} == {"c", "b", "d", "old"}
+
+
+def test_detroits_marche_log_buys_the_side_cheaper_than_the_law_and_skips_cheap_tickets(tmp_path):
+    from polymarket_agent.strategies_v3 import DetroitsMarcheLog
+    s = _s(DetroitsMarcheLog, min_net_edge=0.05, uncertainty=0.0, min_price=0.10, max_price=0.95, max_stale_hours=12,
+           max_extra_ticks=1, max_proposals_per_cycle=4, kelly_fraction=0.5)
+    fresh = NOW.isoformat()
+
+    def tr(mid, p, yes_mid, vu=fresh):
+        m = _m(mid, events=[{"id": "w9", "title": "How many ships transit Bab el-Mandeb Strait week of October 26?"}])
+        m.references = {"detroit_log": {"p": p, "mediane": 186.0, "dernier_jour": "2026-10-18", "horizon": 14, "vu_le": vu,
+                                        "titre": "Bab el-Mandeb : test"}}
+        return m, _books((f"{mid}Y", f"{yes_mid - 0.01:.3f}", f"{yes_mid + 0.01:.3f}"),
+                         (f"{mid}N", f"{1 - yes_mid - 0.01:.3f}", f"{1 - yes_mid + 0.01:.3f}"))
+    cases = [tr("fav", 0.55, 0.80),              # favori trop cher : NON à 0,21 pour une chance de 0,45
+             tr("cheap", 0.30, 0.15),            # tranche voisine trop peu chère : OUI à 0,16 pour 0,30
+             tr("close", 0.50, 0.48),            # prix proche de la loi : rien
+             tr("ticket", 0.12, 0.04),           # billet à 0,05 : sous min_price, rien (3 perdus sur 3 dans le test)
+             tr("old", 0.55, 0.80, vu=(NOW - timedelta(hours=40)).isoformat())]
+    ms, books = [c[0] for c in cases], {}
+    for _, b in cases:
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    got = {p.market_id: p.outcome for p in out.proposals}
+    assert got == {"fav": "No", "cheap": "Yes"}
+    assert all(p.strategy_id == "detroits_marche_log" for p in out.proposals)
+    assert out.abstentions
+    assert {m.market_id for m in s.candidates(ms)} == {"fav", "cheap", "close", "ticket", "old"}

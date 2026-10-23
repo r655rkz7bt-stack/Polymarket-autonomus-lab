@@ -34,6 +34,7 @@ URL = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_
 AIS = "https://hormuz.data-tracking.net"
 AIS_DAILY = {"Strait of Hormuz": "/api/crossings/daily", "Bab el-Mandeb Strait": "/api/bab/daily"}
 PAGE = "https://portwatch.imf.org"
+PAGE_SIZE = 1000
 # Nom PortWatch → mots qui le désignent dans un marché (minuscules). Seuls les passages cités par des marchés sont relevés.
 CHOKEPOINTS = {
     "Strait of Hormuz": ("hormuz",),
@@ -125,15 +126,26 @@ class PortWatchSource:
             self.failures[f"AIS {name}"] = str(exc)[:120]
             return []
 
+    def _series(self, name: str) -> list[tuple[str, int]]:
+        """Les `days` derniers jours, par pages de 1 000 lignes (plafond du service ArcGIS, `maxRecordCount`)."""
+        got: dict[str, int] = {}
+        for offset in range(0, self.days, PAGE_SIZE):
+            data = self.http.get_json(URL, params={
+                "where": f"portname='{name}'", "outFields": "date,n_total", "orderByFields": "date DESC",
+                "resultOffset": offset, "resultRecordCount": min(PAGE_SIZE, self.days - offset), "f": "json"})
+            page = parse_portwatch(data)
+            got.update(page)
+            if len(page) < min(PAGE_SIZE, self.days - offset) and not (data or {}).get("exceededTransferLimit"):
+                break
+        return sorted(got.items())
+
     def fetch(self, markets, now: datetime) -> list[Observation]:
         wanted = markets_by_chokepoint(markets)
         names = list(dict.fromkeys(list(self.always) + sorted(wanted, key=lambda n: -len(wanted[n]))))[: self.max_chokepoints]
         self.rows, self.failures, out = [], {}, []
         for name in names:
             try:
-                pts = parse_portwatch(self.http.get_json(URL, params={
-                    "where": f"portname='{name}'", "outFields": "date,n_total", "orderByFields": "date DESC",
-                    "resultRecordCount": self.days, "f": "json"}))
+                pts = self._series(name)
             except (SourceUnavailable, ValueError, TypeError) as exc:
                 self.failures[name] = str(exc)[:120]
                 continue

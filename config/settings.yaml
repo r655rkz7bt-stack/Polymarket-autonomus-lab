@@ -233,7 +233,7 @@ sources:
   xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
-  portwatch: {enabled: true, every_minutes: 120, days: 800, ais: true, max_detroits: 6}   # FMI (arbitre) : passages dans les détroits cités par les marchés, mis à jour le mardi jusqu'au dimanche ; + AIS hormuz.data-tracking.net (appoint, 2 appels)
+  portwatch: {enabled: true, every_minutes: 120, days: 3000, ais: true, max_detroits: 6}   # FMI (arbitre) : passages dans les détroits cités par les marchés, mis à jour le mardi jusqu'au dimanche ; + AIS hormuz.data-tracking.net (appoint, 2 appels)
   odds_outrights:                                                # ODDS_API_KEY ; champions de saison, 1 crédit par jour et par championnat
     enabled: true
     every_minutes: 60

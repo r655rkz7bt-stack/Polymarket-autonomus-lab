@@ -402,3 +402,53 @@ def test_attach_detroits_gives_the_probability_of_each_bucket_and_they_sum_to_on
     del gap[100]
     refs._save(db, "ref:portwatch", [{"detroit": "Bab el-Mandeb Strait", "jours": gap}], NOW)
     assert refs.attach_detroits([mk("c2", qs["c"])], db) == 0
+
+
+# ------------------------------------------------------------------ détroits, suite : tranches hebdomadaires, loi relative (23/10/2026)
+
+WEEK_RULES = ("This market will resolve according to the total number of transit calls that IMF Portwatch reports for the Bab el-Mandeb "
+              "Strait for all days from October 26, 2026, through November 1, 2026, inclusive.")
+
+
+def test_tranche_labels_and_intervals_follow_the_settlement_check():
+    assert refs.tranche_label("Will 220-229 ships transit the Bab el-Mandeb Strait between July 20-July 26?") == (220, 229)
+    assert refs.tranche_label("Will fewer than 220 ships transit the Bab el-Mandeb Strait between July 20-July 26?") == (None, 220)
+    assert refs.tranche_label("Will 260 or more ships transit the Bab el-Mandeb Strait between July 20-July 26?") == (260, None)
+    assert refs.tranche_label("Will the 7-day moving average of Strait of Hormuz transits be less than 4 on April 12, 2026?") == (None, 4)
+    assert refs.tranche_label("Will Iran close the Strait of Hormuz?") is None
+    # tranches entières : [bas, haut + 1[ ; tranches jointives (« 0 et 10 », « 10 et 20 ») : [bas, haut[
+    iv = refs.tranche_intervals({"a": (None, 220), "b": (220, 229), "c": (230, 239), "d": (240, None)})
+    assert iv == {"a": (-1e9, 220), "b": (220, 230), "c": (230, 240), "d": (240, 1e9)}
+    iv = refs.tranche_intervals({"a": (0, 10), "b": (10, 20), "c": (60, None)})
+    assert iv["a"] == (0, 10) and iv["b"] == (10, 20)
+
+
+def test_s7_draws_scale_relative_moves_and_never_use_the_future():
+    counts = [100] * 300 + [4] * 200            # Ormuz : régime effondré, la loi relative reste à l'échelle d'aujourd'hui
+    draws = refs.s7_draws(counts, 7)
+    assert draws and max(draws) < 7 * 100 and sorted(draws)[len(draws) // 2] == pytest.approx(28, abs=0.01)
+    assert refs.s7_draws(counts[:60], 7) is None  # historique trop court
+    assert len(draws) == len(counts) - 6 - 7      # une origine par jour dont le résultat est connu, pas une de plus
+
+
+def test_attach_detroits_log_covers_weekly_and_monthly_buckets(tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    refs._save(db, "ref:portwatch", [{"detroit": "Bab el-Mandeb Strait", "jours": _jours(_bab_series())}], NOW)
+    ev = [{"id": "w1", "title": "How many ships transit Bab el-Mandeb Strait week of October 26?"}]
+    qs = {"a": "Will fewer than 170 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+          "b": "Will 170-189 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+          "c": "Will 190-209 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+          "d": "Will 210 or more ships transit the Bab el-Mandeb Strait between October 26-November 1?"}
+    week = [parse_market(raw_market(k, question=q, description=WEEK_RULES, events=ev)) for k, q in qs.items()]
+    month_ev = [{"id": "m1", "title": "Avg. # of ships transiting Bab el-Mandeb Strait end of October?"}]
+    month = [parse_market(raw_market(k, question=q, events=month_ev,
+                                     description="7-day moving average that IMF Portwatch reports for October 31, 2026."))
+             for k, q in {"m1": "Will there be between 25 and 29 average daily transits of the Bab el-Mandeb Strait on October 31?",
+                          "m2": "Will there be 30 or more average daily transits of the Bab el-Mandeb Strait on October 31?"}.items()]
+    no_pw = parse_market(raw_market("z", question=qs["b"], events=ev, description="Resolves per credible reporting."))
+    assert refs.attach_detroits_log(week + month + [no_pw], db) == 6
+    p = {m.market_id: m.references["detroit_log"] for m in week + month}
+    assert abs(sum(p[k]["p"] for k in qs) - 1) < 0.01
+    assert p["a"]["horizon"] == 14 and p["m1"]["horizon"] == 13 and p["m1"]["tranche"] == [25, 30]
+    assert 150 < p["b"]["mediane"] < 230 and 20 < p["m1"]["mediane"] < 33  # somme sur 7 jours contre moyenne
+    assert "detroit_log" not in (no_pw.references or {})  # ne cite pas PortWatch

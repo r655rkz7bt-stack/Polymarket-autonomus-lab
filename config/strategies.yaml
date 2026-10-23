@@ -3025,3 +3025,27 @@ detroits_tranches:
     max_candidates: {value: 40, min: 0, max: 200}
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+detroits_marche_log:
+  explication: "Le FMI compte chaque semaine les bateaux qui passent dans deux détroits ; on regarde de combien ce nombre a déjà bougé d'une semaine à l'autre depuis 2019, et on achète la tranche (ou le contraire d'une tranche) que le marché vend trop peu cher."
+  class: detroits_marche_log
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  hypothesis: >
+    Test sur le passé (experiments/detroits.md, 23/10/2026), verdict RETENUE mais sur peu d'événements : tranches hebdomadaires et
+    mensuelles d'Ormuz et de Bab el-Mandeb réglées sur IMF PortWatch, 40 événements réglés du 07/06 au 19/10/2026, données PortWatch
+    supposées connues le mercredi seulement, achat au premier échange réel dans les 2 h : 150 paris, +24 % par pari, t par événement
+    2,13, z des prix 2,83, 5 mois sur 5, les deux moitiés des dates positives (+18 % puis +30 %), +12 % sans les 3 meilleurs paris,
+    Ormuz +17 % et Bab el-Mandeb +39 %. Choisi parmi 4 modèles et 2 seuils (16 essais) : seul ce modèle tient à toutes les épreuves.
+    Le marché surestime la tranche centrale ; la loi relative depuis 2019 lui donne moins. Billets sous 0,10 exclus (3 perdus sur 3).
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance calculée − prix demandé − frais (seuil du test)
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}     # 0 = la règle du test telle quelle
+    min_price:      {value: 0.10, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 12, min: 1, max: 72}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly : 40 événements seulement, 5 mois
