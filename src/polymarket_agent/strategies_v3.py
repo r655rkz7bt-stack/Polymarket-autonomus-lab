@@ -647,7 +647,7 @@ class _Reference(_Base):
             if not self._usable(ref, out):
                 continue
             margin, unc, best = float(p["margin"]), float(p["uncertainty"]), None
-            for side in (0, 1):
+            for side in ((1,) if float(p.get("only_no", 0)) else (0, 1)):  # only_no : mots_prononces_non (23/10/2026)
                 q = prob if side == 0 else 1 - prob
                 book = books.get(m.token_ids[side])
                 if book is not None and book.best_ask is not None and float(book.best_ask) < float(p.get("min_price", 0)):

@@ -34,6 +34,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| mots_prononces, orateurs nommés, aux prix des vrais échanges (3 991 marchés, 9 réglages) | deux côtés : écartée aux prix payés ; NON seul : indice faible | tous −7,8 % à +1,2 % par achat (contre +19 %) ; OUI −4 % à −19 % (8 réglages sur 9), NON −0,7 % à +13,5 % (6 sur 9 au-dessus de +5 %, t jusqu'à +2,0, trouvé après coup) | mots_prononces_prix_payes.md |
+| fatigue_nhl aux prix des vrais échanges (2 404 matchs, 3 saisons, 3,3 millions d'échanges) | indice confirmé (pas retenue) | visiteur fatigué : 373 achats, +5,9 % à +6,7 % par achat (t +1,3), 5 réglages, 3 saisons positives ; témoins ≈ 0 | nhl_prix_payes.md |
 | ufc_coherence (n° 6 : KO + soumission + distance = 1 ; KO combat = KO A + KO B), 549 combats, 893 438 échanges + 28 carnets en direct | écartée | aucun trio sous son paiement dans les carnets (meilleur −4,7 %) ; l'historique ne montre que des prix non simultanés | ufc_coherence.md |
 | compteur_tweets, NON sans NYC, aux prix des vrais échanges (196 périodes, 317 361 échanges, 9 réglages) | écartée aux prix payés | par période −5,3 % à +2,9 % (t −0,9 à +0,6) contre +12,8 % (t +3,9) à l'historique horaire du CLOB ; témoin « dernier échange + 0,02 » −1,6 % | tweets_prix_payes.md |
 | gagnant de saison, NON des candidats à 10-30 % (120 événements sport, 3 927 candidats) | indice faible, non répliqué | sport 14 jours : +8,2 % (91 gagnés / 84,2), +9,9 % aux vrais prix ; 7 jours = un seul événement ; 30 jours 0 % ; ~120 réglages ; hors sport (120 événements) 14 jours +5,6 % (t +0,2), 7 et 30 jours négatifs | saison_sport.md |
@@ -45,7 +47,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | outsider_itf | indice | +17 % aux vrais prix (150 matchs) | achat_echelonne.md |
 | favoris e-sport | écartée | −0,4 % aux vrais prix | achat_echelonne.md |
 | compteur_tweets | retenue sur l'historique horaire, **écartée aux prix payés (23/10)** | +12 % par achat, chaque mois gagnant (177 périodes) ; aux échanges réels −5 % à +3 % par période | vingt_pistes.md, tweets_prix_payes.md |
-| mots_prononces | retenue | +19 à +27 % (billets ≥ 0,30) | vingt_pistes.md |
+| mots_prononces | retenue sur l'historique horaire, **écartée aux prix payés (23/10)** | +19 à +27 % (billets ≥ 0,30) ; aux échanges réels −8 % à +1 % (deux côtés) | vingt_pistes.md, mots_prononces_prix_payes.md |
 | mots_nouveaux | indice | +9 à +20 % (2 mois seulement) | vingt_pistes.md |
 | fatigue_nhl | indice | +6 %, t +1,2 (2 saisons, même sens) | vingt_pistes.md |
 | haut_ou_bas_crypto | écartée | −16 % par achat, t −8 | vingt_pistes.md |

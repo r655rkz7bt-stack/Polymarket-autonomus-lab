@@ -2083,6 +2083,8 @@ compteur_tweets:
 
 mots_prononces:
   explication: "« Trump dira-t-il tel mot ? » : on regarde combien de fois il l'a dit dans les marchés passés du même genre, et on achète si le prix s'en écarte nettement (jamais un billet à moins de 0,30)."
+  # ATTENTION (23/10/2026) : le gain du test (+19 %) était celui de l'historique horaire du CLOB ; aux prix des vrais échanges la règle
+  # à deux côtés vaut −8 % à +1 % (experiments/mots_prononces_prix_payes.md). Fantôme à confirmer, pas une stratégie validée.
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-20"
@@ -2093,6 +2095,26 @@ mots_prononces:
     max_age_hours:  {value: 26, min: 1, max: 168}        # taux relevés deux fois par jour
     min_count:      {value: 3, min: 1, max: 50}          # au moins 3 marchés passés du même mot
     min_price:      {value: 0.30, min: 0.0, max: 0.9}    # passé : sous 0,30, rien à gagner
+
+mots_prononces_non:
+  explication: "La même idée que « mots prononcés », mais on n'achète que le « NON » (le mot ne sera pas dit) : c'est le seul côté qui gagne aux prix réellement payés."
+  # Test du 23/10/2026 aux prix des vrais échanges (experiments/mots_prononces_prix_payes.md, 3 991 marchés d'orateurs nommés) : la
+  # règle des deux côtés ne gagne plus (−8 % à +1 % par achat, +19 % à l'historique horaire), mais le OUI perd (−4 % à −19 %
+  # dans 8 réglages sur 9) et le NON fait +5 % à +13 % dans 6 réglages sur 9 (t +1,0 à +2,0) : indice choisi après coup, donc fantôme.
+  mere: mots_prononces
+  morceau: "NON seulement"
+  class: mots_prononces
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    <<: *reference
+    margin:         {value: 0.05, min: 0.0, max: 0.4}
+    max_gap:        {value: 0.60, min: 0.05, max: 1.0}
+    max_age_hours:  {value: 26, min: 1, max: 168}
+    min_count:      {value: 3, min: 1, max: 50}
+    min_price:      {value: 0.30, min: 0.0, max: 0.9}
+    only_no:        {value: 1, min: 0, max: 1}
 
 mots_prononces_patiente:
   explication: "La même idée que « mots prononcés », mais on pose l'achat et on attend un vendeur au lieu de payer son prix (moins cher, sans frais, servi seulement si quelqu'un vend jusqu'à notre prix)."

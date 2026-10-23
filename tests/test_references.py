@@ -235,6 +235,11 @@ def test_mention_base_rates_need_precedents_and_skip_cheap_tickets(tmp_path):
     assert not out.proposals and "trop peu de précédents" in out.abstentions
     out = _s(MotsPrononces, **dict(params, min_price=0.45)).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1")
     assert not out.proposals and "billet trop bon marché" in out.abstentions
+    # mots_prononces_non (23/10/2026) : le OUI n'est plus envisagé ; le NON (estimé 0,31) ne s'achète que s'il coûte nettement moins
+    assert not _s(MotsPrononces, **dict(params, only_no=1)).propose([m], books, _state(tmp_path, "d"), LIMITS, "b1").proposals
+    books["wN"] = make_book("wN", bids=(("0.19", "1000"),), asks=(("0.20", "1000"),))
+    out = _s(MotsPrononces, **dict(params, only_no=1, min_price=0.10)).propose([m], books, _state(tmp_path, "e"), LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["No"]
 
 
 def test_announcers_of_football_and_of_the_rest_have_separate_histories():
