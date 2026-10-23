@@ -34,6 +34,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| compteur_tweets, NON sans NYC, aux prix des vrais échanges (196 périodes, 317 361 échanges, 9 réglages) | écartée aux prix payés | par période −5,3 % à +2,9 % (t −0,9 à +0,6) contre +12,8 % (t +3,9) à l'historique horaire du CLOB ; témoin « dernier échange + 0,02 » −1,6 % | tweets_prix_payes.md |
 | gagnant de saison, NON des candidats à 10-30 % (120 événements sport, 3 927 candidats) | indice faible, non répliqué | sport 14 jours : +8,2 % (91 gagnés / 84,2), +9,9 % aux vrais prix ; 7 jours = un seul événement ; 30 jours 0 % ; ~120 réglages ; hors sport (120 événements) 14 jours +5,6 % (t +0,2), 7 et 30 jours négatifs | saison_sport.md |
 | tennis en jeu, hors échantillon (629 matchs après le 20/10) | non confirmé | +30 min : 43 gagnés / 44,7, −4,5 % (n = 51) ; trop peu de matchs | saison_sport.md |
 | après l'échéance au tennis (4 663 matchs, favori 0,94-0,985 à +2…+6 h) | écartée | prix horaire +6 % mais 85-97 % sans échange dans les 30 min ; aux prix payés +3 h : +1,0 % (82 servis, t +0,35) | saison_sport.md |
@@ -42,7 +43,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | favoris ITF (à éviter) | écartée | −13,9 % aux vrais prix, 5 semaines perdantes | achat_echelonne.md |
 | outsider_itf | indice | +17 % aux vrais prix (150 matchs) | achat_echelonne.md |
 | favoris e-sport | écartée | −0,4 % aux vrais prix | achat_echelonne.md |
-| compteur_tweets | retenue | +12 % par achat, chaque mois gagnant (177 périodes) | vingt_pistes.md |
+| compteur_tweets | retenue sur l'historique horaire, **écartée aux prix payés (23/10)** | +12 % par achat, chaque mois gagnant (177 périodes) ; aux échanges réels −5 % à +3 % par période | vingt_pistes.md, tweets_prix_payes.md |
 | mots_prononces | retenue | +19 à +27 % (billets ≥ 0,30) | vingt_pistes.md |
 | mots_nouveaux | indice | +9 à +20 % (2 mois seulement) | vingt_pistes.md |
 | fatigue_nhl | indice | +6 %, t +1,2 (2 saisons, même sens) | vingt_pistes.md |
@@ -57,7 +58,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | e-sport (CS2, LoL, Dota 2, Valorant), favoris avant/pendant le match (23 379 marchés) | écartée | favori 0,80-0,95 : −0,1 % à +0,6 % par mise après frais et écart, à tous les retards (−60 min … +60 min) ; le favori gagne un peu plus que son prix (z +1,5 à +2,2) mais l'écart ne couvre pas les frais | tennis.md |
 | autres sports (NFL, NBA, NHL, MLB, football, UFC… 14 097 marchés), favori 0,80-0,95 | écartée | −1,1 % à −2,0 % par mise après frais et écart, avant et pendant le match (le favori gagne autant que son prix) | tennis.md |
 | fatigue NBA (dos-à-dos, 3 en 4 soirs, écart de repos ; 1 222 matchs 2025-26) | écartée | pente repos +0,007 par jour (t +0,5), 7 découpages dans des sens opposés ; calendrier basketball-reference, règlement 1 231/1 231 | nba.md |
-| compteur_tweets, filles (182 périodes, 7 comptes) | retenue : NON seulement, sans NYC Mayor | +16,3 % par achat, +12,8 % par période (t +3,9), 6 réglages sur 6 positifs, 4 mois sur 4 ; Elon seul −3,6 %, 48 dernières heures +1 % (écartées) ; Elon et Trump ≈ 0 | tweets_filles.md |
+| compteur_tweets, filles (182 périodes, 7 comptes) | retenue sur l'historique horaire, **écartée aux prix payés (23/10)** : NON seulement, sans NYC Mayor | +16,3 % par achat, +12,8 % par période (t +3,9), 6 réglages sur 6 positifs, 4 mois sur 4 ; Elon seul −3,6 %, 48 dernières heures +1 % (écartées) ; Elon et Trump ≈ 0 | tweets_filles.md |
 | mentions « the announcers » et « anyone », prix historique (3 555 marchés) | trompeuse | +31 % (t +6,8) au prix horaire du CLOB, −7 % aux prix des vrais échanges ; 715 prix à exactement 0,50 (carnet vide) | mentions_annonceurs.md |
 | mentions « anyone » (Big Brother, Love Island, séries, résultats d'entreprise) | écartée | presque aucun échange réel (4 achats possibles) | mentions_annonceurs.md |
 | mentions « annonceurs » Coupe du monde 2026 | écartée | 7 réglages sur 7 négatifs, −4 % à −34 % par achat (43-56 événements) | mentions_annonceurs.md |

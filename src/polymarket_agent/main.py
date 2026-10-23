@@ -582,6 +582,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # 5 bis. Ordres à cours limité posés aux cycles précédents : exécutés avec ces carnets
     #        (relus APRÈS leur pose) si le marché est passé au travers de leur prix.
     by_market = {m.market_id: m for m in result.markets} | {m.market_id: m for m in result.watchlist}
+    _drop_orphan_copies(deps, portfolios, now)
     for portfolio in portfolios:
         if not portfolio.ledger.state.bankrupt:
             _fill_resting(deps, portfolio, by_market, books, report, now)
@@ -1125,6 +1126,23 @@ def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal]
                          order.side, order.shares, order.max_price)
         deps.db.save_decision(report.cycle_id, now, order, verdict)
     return marketable
+
+
+def _drop_orphan_copies(deps: CycleDeps, portfolios: list[Portfolio], now: datetime) -> None:
+    """Un ordre posé du principal n'a de sens que tant que le fantôme copié garde le sien (enquête 23/10/2026 :
+    contrer_crypto_patiente, ordre périmé du principal rempli à 0,072 alors que le fantôme, qui avait remis son
+    prix à jour, n'a acheté que 25 minutes plus tard à 0,065). Le fantôme remplace son ordre à chaque cycle ; si
+    la copie du nouvel ordre est refusée côté principal, l'ancien restait posé à l'ancien prix."""
+    ghosts = {p.name for p in portfolios[1:]}
+    live = {(o["portfolio"], o["token_id"], o["side"]) for o in deps.db.open_orders() if o["portfolio"] in ghosts}
+    for order in deps.db.open_orders("principal"):
+        proposal = json.loads(order["proposal"])
+        ghost = f"fantome:{proposal['strategy_id']}_v{proposal['strategy_version']}"
+        if ghost in ghosts and (ghost, order["token_id"], order["side"]) not in live:
+            deps.db.update_order(order["op_id"], remaining=order["remaining"], fills=int(order["fills"]),
+                                 status="ANNULE", now=now)
+            log.info("[principal] ordre %s annulé : le fantôme %s n'a plus d'ordre posé sur ce jeton",
+                     order["op_id"], ghost)
 
 
 def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, MarketInfo],

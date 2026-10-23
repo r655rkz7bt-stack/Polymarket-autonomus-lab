@@ -1,5 +1,7 @@
 # Compteur de tweets : les filles (piste n° 1, 21/10/2026)
 
+> **23/10/2026 : ces rendements sont ceux de l'historique horaire du CLOB, pas des prix payés.** Aux prix des vrais échanges, A + D vaut −0,1 % par période (t −0,02), neuf réglages entre −5 % et +3 % : voir `tweets_prix_payes.md`.
+
 **Question** : la stratégie `compteur_tweets` (+12 % par achat sur le passé) gagne-t-elle partout, ou
 seulement sur un morceau (sans NYC Mayor, Elon seul, 48 dernières heures, NON seul) ?
 

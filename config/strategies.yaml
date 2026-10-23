@@ -2066,6 +2066,8 @@ compteur_tweets:
   created_at: "2026-10-20"
   params:
     # Réglages choisis sur le passé (7 comptes, juillet-octobre 2026) : experiments/vingt_pistes.md
+    # ATTENTION (23/10/2026) : ce gain était mesuré sur l'historique horaire du CLOB ; aux prix des vrais échanges il disparaît
+    # (experiments/tweets_prix_payes.md). Fantôme à confirmer en direct, pas une stratégie validée.
     dispersion:     {value: 12, min: 0.5, max: 1000}     # petite = rafales fréquentes (loi binomiale négative)
     min_price:      {value: 0.10, min: 0.0, max: 0.5}    # passé : billets < 0,10 perdants
     recent_hours:   {value: 168, min: 6, max: 336}

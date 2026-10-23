@@ -818,3 +818,24 @@ def test_settled_bets_are_judged_from_the_journal_and_proven_winners_bet_more(tm
     assert strategy_health.boost(row, strategy_health.config({})) == 1.0  # sans réglage : aucun renfort
     real = strategy_health.config(load_settings())
     assert real["renfort"]["max"] == 2.0 and real["renfort"]["min_operations"] == 30
+
+
+def test_principal_order_is_dropped_when_the_copied_ghost_has_no_order_left(env, paths):
+    """Enquête 23/10/2026 (contrer_crypto_patiente) : le fantôme remplace son ordre posé à chaque cycle ; si le
+    principal garde l'ancien (copie du nouveau refusée), il achète à l'ancien prix un pari que le fantôme n'a pas fait."""
+    make, db, clock = env
+    crown(paths)
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), strategies=[_patient()]))
+    ghost = "fantome:naive_favorite_v1.0.0"
+    ghost_order = db.open_orders(ghost)[0]
+    db.update_order(ghost_order["op_id"], remaining=ghost_order["remaining"], fills=0, status="REMPLACE", now=NOW)
+    assert len(db.open_orders("principal")) == 1
+
+    clock["now"] = NOW + timedelta(minutes=5)
+    through = make_book("tokA", bids=(("0.80", "500"),), asks=(("0.85", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": through}), strategies=[_patient()]))
+    assert "BUY" not in _ledger_types(paths[0])
+    statuses = [r["status"] for r in db.conn.execute(
+        "SELECT status FROM pending_orders WHERE portfolio='principal' AND op_id=?", (db.conn.execute(
+            "SELECT op_id FROM pending_orders WHERE portfolio='principal' ORDER BY created_at LIMIT 1").fetchone()[0],))]
+    assert statuses == ["ANNULE"]
