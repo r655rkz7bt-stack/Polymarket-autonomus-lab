@@ -1,0 +1,20 @@
+# esport : 1418 matchs ; coupure des moitiés le 2026-04-28
+| réglage | paris | matchs | rendement | t par match | mois gagnants | gagnés / attendus (z) | verdict |
+|---|---|---|---|---|---|---|---|
+| MOINS, après, h=1 fen=2h, période entière | 335 | 305 | +15.7 % | +2.78 | 9/12 | 221 / 195.8 (z +2.9) | retenue |
+| MOINS, après, h=1 fen=6h, période entière | 335 | 305 | +15.7 % | +2.78 | 9/12 | 221 / 195.8 (z +2.9) | retenue |
+| MOINS, après, h=3 fen=2h, période entière | 307 | 282 | +13.6 % | +2.51 | 9/12 | 201 / 181.1 (z +2.4) | retenue |
+| MOINS, après, h=3 fen=6h, période entière | 457 | 412 | +13.5 % | +2.75 | 10/12 | 298 / 268.8 (z +2.9) | retenue |
+| MOINS, après, h=6 fen=2h, période entière | 178 | 164 | +20.0 % | +2.67 | 10/12 | 121 / 104.3 (z +2.6) | retenue |
+| MOINS, après, h=6 fen=6h, période entière | 520 | 468 | +7.6 % | +1.56 | 9/12 | 325 / 306.8 (z +1.7) | retenue |
+| MOINS, après, h=3 fen=6h, 1re moitié | 175 | 160 | +9.8 % | +1.33 | 4/6 | 110 / 102.4 (z +1.2) | indice |
+| MOINS, après, h=3 fen=6h, 2e moitié | 282 | 252 | +15.8 % | +2.48 | 6/7 | 188 / 166.4 (z +2.7) | retenue |
+| MOINS, après, h=3 fen=6h, serie = cs2 | 68 | 68 | +7.2 % | +0.70 | 9/12 | 43 / 41.4 (z +0.4) | écartée |
+| MOINS, après, h=3 fen=6h, serie = dota2 | 70 | 70 | +7.5 % | +0.73 | 6/12 | 44 / 40.9 (z +0.8) | écartée |
+| MOINS, après, h=3 fen=6h, serie = lol | 238 | 194 | +22.2 % | +3.16 | 10/12 | 165 / 140.8 (z +3.4) | retenue |
+| MOINS, après, h=3 fen=6h, serie = val | 81 | 80 | -1.5 % | -0.03 | 5/12 | 46 / 45.7 (z +0.1) | écartée |
+| MOINS, après, h=3 fen=6h, bo = 3 | 339 | 339 | +7.7 % | +1.71 | 9/12 | 219 / 204.1 (z +1.7) | retenue |
+| MOINS, après, h=3 fen=6h, bo = 5 | 118 | 73 | +30.3 % | +2.51 | 8/11 | 79 / 64.6 (z +2.9) | retenue |
+par tranche de prix payé (h=3, 6 h) : {"0,10-0,30": {"paris": 16, "rendement": 0.3499}, "0,30-0,70": {"paris": 363, "rendement": 0.159}, "< 0,10": {"paris": 3, "rendement": -1.0}, "≥ 0,70": {"paris": 75, "rendement": 0.0191}}
+| PLUS, après, h=3 fen=6h (contre-épreuve) | 538 | 501 | -15.5 % | -2.96 | 1/12 | 218 / 260.0 (z -3.8) | écartée |
+| MOINS, avant, h=3 fen=6h | 322 | 290 | +8.5 % | +1.55 | 8/12 | 201 / 191.0 (z +1.2) | indice |

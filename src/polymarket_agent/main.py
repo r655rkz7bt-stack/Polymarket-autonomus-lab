@@ -711,6 +711,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         total = ledger.state.total_estimated(marks)
         portfolio.copied = {s.strategy_id: {"total": total, "buys": [], "orders": []} for s in portfolio.strategies}
     proposals, bought = [], set()
+    held_now: dict[str, set[str]] = {}  # marché → jetons de favoris pris ou proposés dans ce cycle
     for strategy in portfolio.strategies:
         seen = _visible(strategy, watchlist)
         output = strategy.propose(seen, books, ledger.state, deps.limits, bucket, marks)
@@ -730,6 +731,17 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         report.abstentions.setdefault(portfolio.name, {})[strategy.strategy_id] = {
             "marches": len(seen), "propositions": len(output.proposals), "ordres": len(limit_orders),
             "raisons": dict(sorted(output.abstentions.items(), key=lambda kv: -kv[1])[:6])}
+        # Deux camps d'un même match (enquêtes des 20 et 22/10/2026) et mise d'un fantôme plafonnée.
+        before = len(output.proposals) + len(limit_orders)
+        output.proposals = _opposite_side(deps, portfolio, output.proposals, held_now)
+        limit_orders = _opposite_side(deps, portfolio, limit_orders, held_now)
+        dropped = before - len(output.proposals) - len(limit_orders)
+        if dropped:
+            reasons = report.abstentions[portfolio.name][strategy.strategy_id]["raisons"]
+            reasons["camp opposé d'une position déjà prise"] = dropped
+        if portfolio.name != "principal":
+            output.proposals = _cap_ghost(deps, portfolio, output.proposals)
+            limit_orders = _cap_ghost(deps, portfolio, limit_orders)
         if portfolio.name == "principal":
             # Plusieurs stratégies au principal (18/10/2026) : un marché déjà acheté dans ce cycle par
             # l'une n'est pas racheté par une autre (les stratégies sautent déjà les positions ouvertes).
@@ -967,12 +979,65 @@ def _price_drop(deps: CycleDeps, proposal: Proposal, before: OrderBook | None, f
     return None
 
 
+def _opposite_side(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
+                   held_now: dict[str, set[str]]) -> list[Proposal]:
+    """Deux camps d'un même match (enquêtes des 20 et 22/10/2026, contrôle `deux_camps`) : un favori
+    acheté à 0,85 s'effondre en plein match, l'autre camp devient favori et la même stratégie l'achète
+    aussi : la mise est doublée sur un seul match et l'un des deux paris perd forcément (22/10 :
+    Stoiana puis Uchijima, Bencic puis Kawa, Krejcova puis Sviglerova ; 11 fantômes, 1 322 € misés).
+    Un portefeuille n'achète donc pas, au-dessus de `deux_camps.prix_min`, un jeton d'un marché où il
+    tient déjà un AUTRE jeton payé au-dessus de ce prix. Les jambes d'arbitrage et de tenue de marché
+    (autour de 0,50, somme < 1) ne sont pas concernées."""
+    cfg = deps.settings.get("deux_camps") or {}
+    if not cfg:
+        return proposals
+    floor = Decimal(str(cfg.get("prix_min", "0.70")))
+    held = {m: set(t) for m, t in held_now.items()}
+    for pos in portfolio.ledger.state.positions.values():
+        if pos.shares > 0 and pos.avg_cost >= floor:
+            held.setdefault(pos.market_id, set()).add(pos.token_id)
+    out = []
+    for p in proposals:
+        if p.side == "BUY" and p.max_price >= floor:
+            if held.get(p.market_id, set()) - {p.token_id}:
+                log.info("[%s] %s écarté : camp opposé d'une position déjà prise sur %s", portfolio.name,
+                         p.op_id, p.market_id)
+                continue
+            held.setdefault(p.market_id, set()).add(p.token_id)
+            held_now.setdefault(p.market_id, set()).add(p.token_id)
+        out.append(p)
+    return out
+
+
+def _cap_ghost(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal]) -> list[Proposal]:
+    """Mise d'un fantôme plafonnée à `fantomes.max_mise` de son capital estimé (23/10/2026) : Kelly
+    complet sur une estimation gonflée (biais fixe +0,05) misait 45 à 53 % du capital sur un seul pari
+    (nf_court_prix_haut 489 €, nf_sport_patiente 475 €) ; un seul pari faisait alors le résultat du
+    fantôme. Les paris pris restent les mêmes : seule la taille change, et la confiance de l'arène se
+    mesure sur le rendement par mise."""
+    cap = (deps.settings.get("fantomes") or {}).get("max_mise")
+    if not cap:
+        return proposals
+    max_bet = Decimal(str(cap)) * portfolio.ledger.state.total_estimated(portfolio.marks)
+    out = []
+    for p in proposals:
+        if p.side == "BUY" and p.max_price > 0 and p.shares * p.max_price > max_bet:
+            shares = (max_bet / p.max_price).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            if shares <= 0:
+                continue
+            log.info("[%s] %s ramené de %s à %s parts (plafond %s du capital)", portfolio.name, p.op_id,
+                     p.shares, shares, cap)
+            p = dataclasses.replace(p, shares=shares)
+        out.append(p)
+    return out
+
+
 def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
               by_market: dict[str, MarketInfo]) -> list[Proposal]:
     """Capital principal (17/10/2026, AMELIORATION n°6) : un achat ne dépasse pas `max_mise` du
     capital estimé, et l'argent engagé dans une même famille de marchés (météo, sport… : paris liés,
     une même vague de chaleur peut tous les faire perdre) ne dépasse pas `max_famille`. Les
-    fantômes ne sont pas plafonnés : l'arène mesure chaque stratégie telle qu'elle est."""
+    fantômes ont leur propre plafond, plus large (`_cap_ghost`)."""
     from polymarket_agent.strategy_engine import market_family
     cfg = deps.settings.get("principal", {})
     if not cfg:

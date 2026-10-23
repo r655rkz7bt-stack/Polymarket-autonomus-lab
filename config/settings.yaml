@@ -29,6 +29,16 @@ principal:
   max_mise: 0.10      # un achat ≤ 10 % du capital estimé (Kelly complet allait jusqu'à 40 %)
   max_famille: 0.40   # ≤ 40 % du capital engagé dans une même famille (météo, sport…) : paris liés
 
+# Fantômes (23/10/2026, enquête « mises géantes ») : une mise ≤ 25 % du capital estimé du fantôme.
+# Mêmes paris, taille seulement : la confiance de l'arène se mesure sur le rendement par mise.
+fantomes:
+  max_mise: 0.25
+
+# Deux camps d'un même match (23/10/2026, contrôle `deux_camps`) : pas d'achat au-dessus de `prix_min`
+# d'un jeton d'un marché où le portefeuille tient déjà un autre jeton payé au-dessus de ce prix.
+deux_camps:
+  prix_min: 0.70
+
 # Récompenses de liquidité (option A d'Etienne, 17/10/2026, libre) : les récompenses ESTIMÉES des
 # journées terminées (≥ 1 $, plafonnées à la cagnotte du marché) × prudence comptent dans le
 # CLASSEMENT de l'arène, jamais dans le capital d'un fantôme. Le versement au capital public
@@ -87,6 +97,13 @@ scanner:
   tag_pages: {100343: {pages: 2, min_liquidity: 100, min_volume_24h: 0, max_spread: 0.10},
               102964: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
               101701: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
+  # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
+  # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
+  series_pages:
+    10310: {types: [totals], titre_contient: ["(BO3)", "(BO5)"], min_liquidity: 0, min_volume_24h: 0, max_spread: 0.20}
+    10311: {types: [totals], titre_contient: ["(BO3)", "(BO5)"], min_liquidity: 0, min_volume_24h: 0, max_spread: 0.20}
+    10309: {types: [totals], titre_contient: ["(BO3)", "(BO5)"], min_liquidity: 0, min_volume_24h: 0, max_spread: 0.20}
+    10369: {types: [totals], titre_contient: ["(BO3)", "(BO5)"], min_liquidity: 0, min_volume_24h: 0, max_spread: 0.20}
   ended_min_hours: 1
   ended_max_hours: 72
   max_extra_markets: 600       # marchés demandés par les stratégies (météo 100, tenue de marché 30, politique 40, sport 30, crypto 30) ; doublons comptés une fois

@@ -49,8 +49,8 @@ Ce que dit la recherche (à vérifier, pas des preuves) :
 ### C. Avec une source gratuite
 | # | Nom proposé | Idée | Source |
 |---|---|---|---|
-| 15 | `depouillement_officiel` | Pendant le dépouillement, l'organisme officiel publie les résultats en direct. Quand l'avance dépasse ce qui reste à compter, on achète le gagnant avant que Polymarket suive (comme `fin_de_match`, pour les élections). **2e tour au Brésil le 25/10/2026.** | TSE (Brésil), CIK (Bulgarie) : flux publics |
-| 16 | `etats_comme_avant` | « 1re place dans l'État d'Amapá » : un État vote presque toujours comme au tour d'avant ; on compare au résultat officiel du 1er tour. | TSE (données ouvertes) |
+| 15 | `depouillement_officiel` (**écartée le 22/10** : Polymarket fixe le prix bien avant la certitude, `bresil_second_tour.md`) | Pendant le dépouillement, l'organisme officiel publie les résultats en direct. Quand l'avance dépasse ce qui reste à compter, on achète le gagnant avant que Polymarket suive (comme `fin_de_match`, pour les élections). **2e tour au Brésil le 25/10/2026.** | TSE (Brésil), CIK (Bulgarie) : flux publics |
+| 16 | `etats_comme_avant` (**écartée le 22/10** : déjà dans les prix, `bresil_second_tour.md`) | « 1re place dans l'État d'Amapá » : un État vote presque toujours comme au tour d'avant ; on compare au résultat officiel du 1er tour. | TSE (données ouvertes) |
 | 17 | `battre_resultats` | « IMAX battra-t-il ses résultats ? » : environ 3 entreprises sur 4 battent la prévision des analystes. On mesure ce taux sur les marchés Polymarket déjà réglés, par entreprise, et on achète le OUI vendu en dessous. | Polymarket (historique) |
 | 18 | `kpi_tendance` | « Croissance des paiements de Visa ce trimestre ? » : la croissance d'un trimestre ressemble à celle du précédent. On centre la courbe sur le dernier chiffre publié. | Rapports trimestriels (SEC EDGAR, gratuit) |
 | 19 | `fed_taux_courts` | Décision de la Fed : les taux des bons du Trésor à 1-3 mois (FRED) disent combien de baisses les marchés financiers attendent. On compare aux prix Polymarket. | FRED (clé gratuite) |

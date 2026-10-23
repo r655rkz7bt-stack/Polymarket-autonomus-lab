@@ -84,6 +84,7 @@ def env(tmp_path, ledger, paths, limits):
             # sur l'avantage mesuré ni plafond) : le principal copie alors les paris du fantôme à l'identique (18/10/2026).
             settings["arena"].update(essai={}, part_max_par_strategie=None, garde_fou_jour=None,
                                      mise_avantage_mesure=None)
+            settings["fantomes"] = {}  # mise des fantômes non plafonnée : tests/test_deux_camps.py
         return CycleDeps(settings=settings, limits=limits,
                          strategies=strategies if strategies is not None else [pipeline_strategy()],
                          ledger_path=paths[0], lock_path=paths[1], key=KEY, db=db,
@@ -526,6 +527,7 @@ def test_resting_buys_cannot_reserve_more_than_the_cash(env, paths, tmp_path):
     settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
     settings["arena"]["mise_avantage_mesure"] = None  # champion de test sans pari : copie entière
     settings["sante_strategies"] = {"base": 1.0}  # mise entière : la réservation doit refuser un ordre
+    settings["fantomes"] = {}  # mise non plafonnée : c'est la réservation de l'argent qui est testée
     run_cycle(make(FakeGamma(markets), FakeClob(books), settings, [_patient("6")]))
     for name in ("principal", "fantome:naive_favorite_v1.0.0"):
         reserved = sum(D(o["remaining"]) * D(json.loads(o["proposal"])["max_price"])
@@ -575,6 +577,7 @@ def test_strategy_health_halves_bets_until_proven_and_suspends_fee_burners(env, 
     full = load_settings()
     full["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
     full["sante_strategies"] = {"base": 1.0}
+    full["fantomes"] = {}  # mise non plafonnée : on compare ½ Kelly à Kelly complet
     run_cycle(make(FakeGamma([raw_market()]), FakeClob(deep), full))
     shadow_path = tmp_path / "fantome" / "naive_favorite_v1.0.0.jsonl"
     whole = Ledger.open(shadow_path, KEY, tmp_path / "x.lock").state.positions["tokA"].shares

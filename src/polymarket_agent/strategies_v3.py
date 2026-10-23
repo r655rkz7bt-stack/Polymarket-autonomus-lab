@@ -537,6 +537,82 @@ class ChocSansNouvelle(_Base):
         return sells
 
 
+# --------------------------------------------------------------------------- vague de volume
+
+
+class VagueVolume(_Base):
+    """Vague de volume (22/10/2026, idée des skills Polymarket de mjunaidca, `momentum_scanner`) : un
+    marché qui s'échange au moins `surge_min` fois plus que sa moyenne des 7 derniers jours (Gamma :
+    volume du jour contre volume de la semaine / 7), et dont le prix du OUI a bougé d'au moins
+    `min_move` en 24 h (marchés d'au moins `min_age_days` jours). `direction` = 1 : on SUIT le mouvement (la foule a une information) ;
+    `direction` = -1 : on le CONTRE (la foule s'emballe). Chance estimée = milieu du carnet de l'issue
+    achetée + `shift`. Pas testée sur le passé (Gamma ne garde pas le volume de la semaine d'hier) :
+    l'arène mesure les deux sens. Pourquoi ça peut rater : une vague de volume suit souvent une
+    nouvelle déjà dans le prix."""
+
+    strategy_id = "vague_volume"
+    required = ("surge_min", "min_move", "side_min", "side_max", "shift", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+
+    def _surge(self, m: MarketInfo, now: datetime | None) -> float | None:
+        """Volume du jour ÷ moyenne des jours PRÉCÉDENTS de la semaine. Un marché de moins de
+        `min_age_days` jours n'a pas de référence (créé hier : volume de la semaine = volume du jour,
+        fausse vague ×7, vu le 22/10 sur les marchés météo du jour)."""
+        if not _yes_no(m) or m.created_at is None or now is None:
+            return None
+        # Près de l'échéance (Bitcoin du jour, match du soir), le volume monte toujours : pas une information.
+        if m.end_date is None or (m.end_date - now).total_seconds() / 3600 < float(self.params.get("min_hours_to_end", 48)):
+            return None
+        age = (now - m.created_at).total_seconds() / 86400
+        if age < float(self.params.get("min_age_days", 3)):
+            return None
+        days = min(7.0, age)
+        before = (float(m.volume_1wk or 0) - float(m.volume_24h or 0)) / max(days - 1, 1)
+        # Marché endormi (quelques dollars par jour) : un rapport ×8 000 ne veut rien dire.
+        if before < float(self.params.get("min_base_volume", 500)):
+            return None
+        return float(m.volume_24h or 0) / before
+
+    def candidates(self, markets) -> list[MarketInfo]:
+        from datetime import timezone
+        p, now = self.params, datetime.now(timezone.utc)
+        out = [(r, m) for m in markets for r in [self._surge(m, now)] if r is not None and r >= float(p["surge_min"])
+               and m.price_change_1d is not None and abs(m.price_change_1d) >= float(p["min_move"])]
+        out.sort(key=lambda x: -x[0])
+        return [m for _, m in out[: int(p.get("max_candidates", 30))]]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, props, now = StrategyOutput(), self.params, [], _now(books)
+        follow = int(p.get("direction", 1)) >= 0
+        for m in watchlist:
+            ratio = self._surge(m, now)
+            if ratio is None or any(t in state.positions for t in m.token_ids):
+                continue
+            if ratio < float(p["surge_min"]):
+                continue
+            move = m.price_change_1d
+            if move is None or abs(move) < float(p["min_move"]):
+                out.abstain("vague de volume sans mouvement de prix")
+                continue
+            rose = 0 if move > 0 else 1  # issue dont le prix a monté : OUI si le OUI a monté, sinon NON
+            side = rose if follow else 1 - rose
+            mid = _book_mid(books, m.token_ids[side])
+            if mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            if not float(p["side_min"]) <= mid <= float(p["side_max"]):
+                out.abstain("issue hors de la plage de prix")
+                continue
+            est, unc = mid + float(p["shift"]), float(p["uncertainty"])
+            prop = self._buy(m, books, state, side, est - unc, est, est + unc, bucket, marks, out,
+                             f"vague_volume:{ratio:.1f}x:{move:+.3f}",
+                             f"volume ×{ratio:.1f} contre la semaine, prix {move:+.1%} en 24 h",
+                             "la vague était déjà dans le prix" if follow else "la foule avait raison")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 # =========================================================================== lot B : autres sources
 
 
@@ -899,8 +975,136 @@ class JobsFavoriNon(_Base):
         return self._finish(out, props)
 
 
-CLASSES = {c.strategy_id: c for c in (DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+
+# --------------------------------------------------------------------------- pistes du 23/10/2026
+
+class MoinsDeCartes(_Base):
+    """E-sport en 2 ou 3 manches gagnantes (BO3, BO5) : le marché « Games Total » (nombre de cartes
+    jouées) semble calculé comme si chaque carte était un tirage indépendant ; en vrai, l'équipe la
+    plus forte du jour gagne souvent 2-0. On achète « Under » entre 6 h et 1 h avant le match.
+    Sur le passé, aux prix payés : +13,5 % par pari, 457 paris, 412 matchs, t +2,75, 10 mois sur 12
+    (experiments/pistes_sport_coherence.md ; trouvé parmi ~90 essais : fantôme, l'arène tranche).
+    Pourquoi ça peut rater : sélection parmi beaucoup d'essais ; marchés minces."""
+
+    strategy_id = "moins_de_cartes"
+    required = ("min_hours", "max_hours", "price_min", "price_max", "shift", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+    WORDS = ("(BO3)", "(BO5)")
+
+    def _ok(self, m: MarketInfo, now: datetime | None) -> bool:
+        if (m.sports_market_type != "totals" or not (m.question or "").startswith("Games Total")
+                or [str(o).lower() for o in m.outcomes] != ["over", "under"] or len(m.token_ids) != 2
+                or not any(w in (m.event_title or "") for w in self.WORDS) or m.game_start is None or now is None):
+            return False
+        hours = (m.game_start - now).total_seconds() / 3600
+        return float(self.params["min_hours"]) <= hours <= float(self.params["max_hours"])
+
+    def candidates(self, markets):
+        from datetime import timezone
+        now = datetime.now(timezone.utc)
+        out = [m for m in markets if self._ok(m, now)]
+        out.sort(key=lambda m: m.game_start)
+        return out[: int(self.params.get("max_candidates", 40))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            if not self._ok(m, now):
+                continue
+            if any(t in state.positions for t in m.token_ids):
+                out.abstain("position déjà ouverte")
+                continue
+            book = books.get(m.token_ids[1])
+            if book is None or book.best_ask is None or book.mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            if not float(p["price_min"]) <= float(book.best_ask) <= float(p["price_max"]):
+                out.abstain("« Under » hors de la plage de prix")
+                continue
+            est = float(book.mid) + float(p["shift"])
+            prop = self._buy(m, books, state, 1, est - float(p["uncertainty"]), est, est + float(p["uncertainty"]),
+                             bucket, marks, out, f"moins_de_cartes:{m.question[-7:].strip()}",
+                             "écart mesuré sur le passé (+13,5 % par pari), trouvé parmi ~90 essais",
+                             "le match va au bout des cartes")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
+DRAME = re.compile(
+    r"\b(invade|invades|invasion|war\b|wars\b|military action|military clash|strikes? on|attacks?\b|airstrikes?|"
+    r"missiles?|nuclear|bomb|troops|blockade|annex|annexes|annexation|ceasefire|cease-fire|truce|clash|"
+    r"declares? war|hostilities|drone strike|conflict|"
+    r"out as|out by|out in|ousted|resigns?|resignation|step down|steps down|leaves? office|removed|impeach|"
+    r"impeached|impeachment|coup\b|assassinat\w*|dies?\b|death|dead\b|jail|prison|arrest(ed)?|indicted|"
+    r"convicted|extradited|detained|captured|25th amendment|deported|expelled|"
+    r"bankrupt\w*|default|recession|collapse|crash|insolven\w*|bank run|hyperinflation|depeg|de-peg|"
+    r"delisted|shutdown|nationaliz\w*|"
+    r"aliens?|ufo|uap|extraterrestrial|non-human|jesus|rapture|asteroid|apocalypse|martial law|secede|"
+    r"secession|civil war|pandemic|outbreak|lockdown|state of emergency|meteor)", re.I)
+STATU_QUO = re.compile(r"\b(remain|remains|still|survive|survives|stay|stays|keep|keeps|alive|retain|hold on)\b"
+                       r"|sentenced to between", re.I)
+
+
+class NonAuxDrames(_Base):
+    """« Est-ce que <drame> arrivera avant <date> ? » (invasion, chef d'État renversé, faillite,
+    extraterrestres…) à 2-15 % plus d'un mois avant l'échéance : la foule paie trop cher le frisson.
+    On achète le NON, au plus 2 % du capital par événement. Sur le passé (2024-2026, prix payés) :
+    149 paris, +4,6 % par pari, 2 drames arrivés pour 9,3 attendus, t par événement 2,81 ; les marchés
+    longs qui ne sont pas des drames : +0,9 % seulement (experiments/pistes_crypto_elections_drames.md).
+    Pourquoi ça peut rater : 2 pertes seulement dans l'échantillon ; une guerre fait tout perdre d'un coup."""
+
+    strategy_id = "non_aux_drames"
+    required = ("min_days", "max_days", "yes_min", "yes_max", "min_volume", "yes_factor", "uncertainty",
+                "stake_fraction", "min_net_edge", "max_proposals_per_cycle")
+
+    def _ok(self, m: MarketInfo, now: datetime | None) -> bool:
+        q = m.question or ""
+        if not _yes_no(m) or m.end_date is None or now is None or not DRAME.search(q) or STATU_QUO.search(q):
+            return False
+        days = (m.end_date - now).total_seconds() / 86400
+        return (float(self.params["min_days"]) <= days <= float(self.params["max_days"])
+                and float(m.volume_total or 0) >= float(self.params["min_volume"]))
+
+    def candidates(self, markets):
+        from datetime import timezone
+        now = datetime.now(timezone.utc)
+        p = self.params
+        out = [m for m in markets if self._ok(m, now) and m.outcome_prices
+               and float(p["yes_min"]) <= float(m.outcome_prices[0]) <= float(p["yes_max"])]
+        out.sort(key=lambda m: -float(m.volume_total or 0))
+        return out[: int(p.get("max_candidates", 40))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        events = {pos.event_id for pos in state.positions.values()}
+        for m in watchlist:
+            if not self._ok(m, now):
+                continue
+            if m.event_id in events or any(t in state.positions for t in m.token_ids):
+                out.abstain("événement déjà joué")
+                continue
+            yes, book = _book_mid(books, m.token_ids[0]), books.get(m.token_ids[1])
+            if yes is None or book is None or book.best_ask is None:
+                out.abstain("carnet indisponible")
+                continue
+            if not float(p["yes_min"]) <= yes <= float(p["yes_max"]):
+                out.abstain("OUI hors de la plage de prix")
+                continue
+            est = 1 - yes * float(p["yes_factor"])
+            budget = p["stake_fraction"] * state.total_estimated(marks)
+            shares = min(budget, state.cash) / book.best_ask
+            prop = self._buy(m, books, state, 1, est - float(p["uncertainty"]), est,
+                             min(est + float(p["uncertainty"]), 0.999), bucket, marks, out,
+                             f"non_aux_drames:oui={yes:.3f}", "drames arrivés 2 fois pour 9,3 attendus sur le passé",
+                             "le drame arrive", shares=shares.quantize(Decimal("0.01"), rounding=ROUND_DOWN))
+            if prop is not None:
+                props.append(prop)
+                events.add(m.event_id)
+        return self._finish(out, props)
+
+CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
-                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon)}
+                                      MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume)}
