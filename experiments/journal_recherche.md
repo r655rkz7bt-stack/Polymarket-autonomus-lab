@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-23 (passage chercheur, matin : 04 h 55 UTC → 05 h 45 UTC)
+## 2026-10-23 (passage chercheur, matin : 04 h 55 UTC → 05 h 40 UTC)
 
 - **Enquête** (fiches : `enquetes/2026-10-23_ordre_perime_du_principal.md`, `enquetes/2026-10-23_tweets_marches_de_2_jours.md` ; famille du jour 6, puis famille 3).
   - Obligations de la feuille de mission : `copie_fidele` (1 achat du principal sans jumeau) ; les autres (`champion_sans_avantage` ×3, `chance` ×2) renvoient aux fiches du 22/10 (championne et
@@ -16,10 +16,11 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
   - **`compteur_tweets`, NON sans NYC** : +12,8 % par période (t +3,9) au prix horaire du CLOB devient **−0,1 % (t −0,02)** aux échanges réels (196 périodes, 317 361 échanges, 9 réglages de −5,3 % à +2,9 %) : **écartée aux prix payés** (`tweets_prix_payes.md`).
   - **`mots_prononces`** (orateurs nommés, 3 991 marchés) : +19 % → −8 % à +1 % (deux côtés, 9 réglages) ; OUI perd (−4 % à −19 %), NON +5 à +13 % dans 6 réglages sur 9 (trouvé après coup) : **écartée** à deux côtés, **indice faible** pour le NON (`mots_prononces_prix_payes.md`).
   - **`fatigue_nhl`** (2 404 matchs, 3 saisons, 3,3 millions d'échanges) : **tient** : visiteur fatigué +5,9 % à +6,7 % par achat (373 achats, t +1,3), trois saisons positives : indice confirmé, pas retenue (`nhl_prix_payes.md`).
+  - **`mots_nouveaux`** (28 mois) : indice faible qui s'érode (+4,4 à +5,0 %, t événements +0,9 à +1,7 ; 2024 +16 %, 2026 ≈ 0 ; volume échangé 25-150 USDC). Ma première version donnait +12 % (t +4,3) : erreur de méthode (nouveau défini par la date de clôture), corrigée avant écriture (`mots_prononces_prix_payes.md`).
   - **Piste n° 6 `ufc_coherence`** (549 combats, 893 438 échanges, 28 carnets en direct) : aucun trio sous son paiement ; **écartée** (`ufc_coherence.md`).
 - **Arène** : sœurs `compteur_tweets_non_hebdo` (semaines seulement) et `mots_prononces_non` (fille de `mots_prononces`, NON seul, réglage `only_no` dans `_Reference`) ; commentaires d'avertissement sur `compteur_tweets` et `mots_prononces`. Rien retiré.
   Cycle local non relancé dans ce passage (nouveau réglage couvert par des tests unitaires seulement).
-- **Reste ouvert** : `validated_strategies` reste vide (aucune piste ne tient t ≥ 2 aux prix payés) ; recenser les autres pistes « retenues/indice » encore mesurées au prix horaire (`outsider_itf`, `mots_nouveaux`, `cpi_tranches`) ;
+- **Reste ouvert** : `validated_strategies` reste vide (aucune piste ne tient t ≥ 2 aux prix payés) ; recenser les autres pistes « retenues/indice » encore mesurées au prix horaire (`cpi_tranches`, `jobs_favori_non`) ;
   `fetch_event_trades` plafonné à 10 000 échanges (filtre `market=<conditionId>` du data-api, utilisé ici, contourne le plafond par événement : à y intégrer) ; `enquete.py` ne garde pas la durée de période des marchés de tweets.
 
 ## 2026-10-23 (session avec Etienne : verdict de la vague de volume)

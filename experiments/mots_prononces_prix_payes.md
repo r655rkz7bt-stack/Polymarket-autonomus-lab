@@ -34,3 +34,13 @@ neuf à plus de +5 %). Cette asymétrie a été **trouvée après coup** (neuf r
 - Règle d'origine (deux côtés) : **écartée aux prix payés** (cinquième piste de suite faussée par le prix horaire du CLOB : météo, mentions « annonceurs », tranches, tweets, et celle-ci).
 - Côté NON seul : **indice faible** (+5 à +13 %, t +1,0 à +2,0, 18 regards, mois récents à peine positifs) → fantôme `mots_prononces_non` (fille de `mots_prononces` : `only_no`), à confirmer sur de nouveaux marchés.
 - `mots_prononces` (mère) reste en arène mais **ne doit pas entrer dans `validated_strategies`**.
+
+## Mots nouveaux aux prix payés (`mots_nouveaux`, indice du 20/10 : NON +16 %, t +1,8 sur septembre-octobre seulement)
+Mêmes données (`experiments/mots_prix_payes/nouveaux.py`, `nouveaux2.py`) : mot jamais proposé chez un orateur qui a déjà au moins 10 marchés ; on achète le NON quand le OUI vaut 0,30 à 0,85 ; prix payé
+= premier échange du NON après T (+0,01, frais 0,04).
+- **Première version (mot « nouveau » = aucun marché clos avant)** : +12 % à +13 % par achat, t +4,3 à +5,5, 2 000 à 2 900 achats sur 28 mois. **Erreur de méthode** : classer par date de clôture compte
+  comme nouveau un mot déjà proposé dans un événement ouvert plus tôt mais clos plus tard. Je l'ai refait avec la date de **début** de l'événement (rien de ce qui commence en même temps n'est « connu avant »).
+- **Version corrigée (`nouveaux2.py`, `idea_test.verdict`)** : 1 118 à 2 606 paris, 422 à 607 événements, **+4,4 % à +5,0 % par pari, t par événement +0,9 à +1,7** (4 réglages : délai 2/12 h,
+  fenêtre 2/6/24 h), gagnés contre attendus z +1,6 à +2,8, 15 à 19 mois gagnants sur 28. **Le gain s'érode** : 2024 +14 % à +18 %, 2025 −1 % à +4 %, 2026 0 % à +6 %. Par prix payé : 0,10-0,30 +10 % à +16 %
+  (200 à 450 paris), 0,30-0,70 +2 % à +3,5 %. **Volume échangé sur le NON dans la fenêtre : médiane 25 à 150 USDC** : un fantôme de plusieurs dizaines d'euros ne serait pas servi.
+- **Verdict : indice faible, qui s'effrite** (le fantôme `mots_nouveaux` suffit, rien à changer). Leçon : définir « nouveau » avec la date de début, jamais la date de clôture.
