@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (session avec Etienne : détroits, sources « arbitres »)
+
+- **Recherche** (`experiments/detroits.md`) : 96 événements réglés sur IMF PortWatch, dont 58 à tranches clos ; règlement relu 40/40 depuis juin
+  (7/17 de mars à mai : PortWatch a révisé ses chiffres, exclus). PortWatch se met à jour le mardi vers 11 h UTC jusqu'au dimanche (retard de 2 à 9 jours).
+  Tranches hebdomadaires et mensuelles, 16 réglages : **retenue mais fragile** (150 paris, +24 %, t par événement 2,13, z des prix 2,83 ; sans les 3 meilleurs +11,8 % ;
+  regroupé par détroit et par mois t 2,77, vérifié à part). L'AIS d'Ormuz ne suit pas PortWatch (corrélation 0,1 à 0,3 sur 26 jours).
+- **Arène** : fantôme `detroits_marche_log` (demi-Kelly, pas dans `validated_strategies`) ; scanner : étiquette `hormuz` (104139) ; cycle local : 22 marchés, 7 achats relus.
+- **Reste ouvert** : marchés à seuil (« returns to normal », 20 événements clos) ; course à la publication du mardi ; comparaison AIS / PortWatch sur 60 jours.
+
 ## 2026-10-23 (passage chercheur, après-midi : 14 h 56 → 15 h 5x UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-23_meteo_zero_fees_famille.md`, `2026-10-23_inactives_retirees_et_calendriers.md` ; famille du jour 6, puis famille 1).
