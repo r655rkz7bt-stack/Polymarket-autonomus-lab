@@ -1,13 +1,14 @@
 """Prix (CLOB prices-history, pas de 60 min) du OUI de chaque marché de gagnant de saison, dans la journée qui précède
 H jours avant la fin de l'événement (H = 3, 7, 14, 30, 60). Reprend où il s'est arrêté (donnees/prix.jsonl)."""
 import json, os, time, requests
+NOM = os.environ.get("NOM", "")
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 HOR = (3, 7, 14, 30, 60)
-ev = json.load(open("donnees/evenements.json"))
+ev = json.load(open("donnees/evenements%s.json" % NOM))
 def ts(x): return int(datetime.fromisoformat(x.replace(" ", "T").replace("Z", "+00:00").replace("+00", "+00:00") if not x.endswith("+00:00") else x).timestamp())
 done = set()
-if os.path.exists("donnees/prix.jsonl"): done = {(r["id"], r["h"]) for r in map(json.loads, open("donnees/prix.jsonl"))}
+if os.path.exists("donnees/prix%s.jsonl" % NOM): done = {(r["id"], r["h"]) for r in map(json.loads, open("donnees/prix%s.jsonl" % NOM))}
 todo = []
 for e in ev:
     T = ts(e["closed"])
@@ -27,7 +28,7 @@ def get(a):
             return {"id": m["id"], "h": h, "ev": evid, "t": t, "hist": [[p["t"], p["p"]] for p in r.get("history") or []]}
         except Exception: time.sleep(2 ** k)
     return None
-with open("donnees/prix.jsonl", "a") as f, ThreadPoolExecutor(8) as ex:
+with open("donnees/prix%s.jsonl" % NOM, "a") as f, ThreadPoolExecutor(8) as ex:
     for i, o in enumerate(ex.map(get, todo)):
         if o: f.write(json.dumps(o) + "\n"); f.flush()
         if i % 500 == 0: print(i, flush=True)

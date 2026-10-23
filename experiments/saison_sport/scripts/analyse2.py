@@ -1,11 +1,12 @@
 """NON des candidats à 0,10-0,30 (marchés de gagnant de saison) : un seul horizon à la fois, paris regroupés par événement,
 par année, sans les 3 meilleurs événements, selon l'écart. Usage : PYTHONPATH=../../src python scripts/analyse2.py"""
-import json, collections, math
+import json, collections, os
+NOM = os.environ.get("NOM", "")  # "" = sport ; "_candidats" = hors sport (élections, Eurovision…)
 from datetime import datetime, timezone
 from polymarket_agent.idea_test import verdict, fee
-ev = {e["id"]: e for e in json.load(open("donnees/evenements.json"))}
+ev = {e["id"]: e for e in json.load(open("donnees/evenements%s.json" % NOM))}
 mk = {m["id"]: (m, e) for e in ev.values() for m in e["markets"]}
-rows = [json.loads(l) for l in open("donnees/prix.jsonl")]
+rows = [json.loads(l) for l in open("donnees/prix%s.jsonl" % NOM)]
 def dec(r):
     pts = [p for p in r["hist"] if p[0] <= r["t"]]
     return pts[-1][1] if pts and r["t"] - pts[-1][0] <= 43200 else None
