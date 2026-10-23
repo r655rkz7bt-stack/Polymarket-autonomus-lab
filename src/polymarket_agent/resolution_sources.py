@@ -54,6 +54,8 @@ CATALOG: dict[str, tuple[str, str | None, str]] = {
     "federalreserve.gov": ("Réserve fédérale américaine", "rss", "flux RSS officiels (déjà lus)"),
     "weather.gov": ("NOAA (station d'aéroport citée)", "meteo_metar",
                     "relevés METAR officiels via aviationweather.gov ; max METAR ≤ max officiel"),
+    "aviationweather.gov": ("NOAA (METAR de la station citée dans le lien)", "meteo_metar",
+                            "nouvelle source des marchés de température depuis le 19-20/10/2026 (199 événements sur 255) : relevés METAR directs"),
     "app.pyth.com": ("Pyth (oracle de prix)", None, "hermes.pyth.network, API publique : à étudier"),
     "pythdata.app": ("Pyth (oracle de prix)", None, "hermes.pyth.network, API publique : à étudier"),
     "arena.ai": ("LMArena (classement des modèles d'IA)", None, "chantier n°9"),

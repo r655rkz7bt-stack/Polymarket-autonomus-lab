@@ -3,6 +3,28 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (passage chercheur, après-midi : 14 h 56 → 15 h 5x UTC)
+
+- **Enquête** (fiches : `experiments/enquetes/2026-10-23_meteo_zero_fees_famille.md`, `2026-10-23_inactives_retirees_et_calendriers.md` ; famille du jour 6, puis famille 1).
+  - Obligations de la feuille de mission (championne : 3 paris = 95 % du gain, le 18/10 = 170 % ; `apres_echeance` et `nf_sport_patiente_prix_850_875` sans avantage récent) : causes déjà écrites les 22 et 23/10, rien de neuf.
+  - **Vérifié** : les correctifs du matin tiennent. Sur 470 achats de fantômes faits après leur mise en service (23/10 00 h 30 UTC) : aucune mise au-dessus de 26 % du capital, aucun deuxième camp d'un même match.
+  - **Défaut 1 (famille 6) : deux pannes météo silencieuses.** Gamma a passé la météo en `feeType: zero_fees` (événements du 19-20/10) : `market_family`, qui tire la famille du barème de frais, ne la voyait plus ;
+    `loterie_meteo` voit 371 marchés, en écarte 371, plus aucun achat depuis le 20/10 à 16 h 27. En même temps les marchés citent `aviationweather.gov/api/data/metar?ids=…` (199 événements sur 255)
+    que `sources/weather.py` ne lisait pas : **`meteo_metar` et `meteo_prevision` « ok (0 observations) »** depuis. Politique et finance sont aussi en `zero_fees` (471/600 et 577/582). Correctifs : `market_family`
+    (météo reconnue à l'adresse de l'événement), `STATION` (deux formes de lien), `resolution_sources` ; contrôles `familles_vides` et `sources_vides` (testés, ils signalent bien `loterie_meteo` et les deux sources sur les données publiées).
+  - **Défaut 2 (famille 6) : le ménage de l'arène retire définitivement les stratégies « inactives » (3 jours, filles 2)** : 13 retraits dont 10 en deux jours (quatre arbitrages sans écart, `mots_prononces_nfl` entre deux matchs
+    NFL, les deux de cotes à budget épuisé) ; cinq stratégies prouvées sur le passé et vivantes (`cpi_tranches` CPI le 11/11, `jobs_favori_non` le 6/11, `statu_quo_ia`, `saison_non`, `non_aux_drames`) allaient l'être avant leur
+    premier jour utile. Correctif : `jamais_retirer` (config/promotion.yaml), `mots_prononces_nfl` en version 1.1.0, contrôle `retraits_inactifs`, test sur la config réelle.
+  - Famille 1 à la main : gain réalisé du principal −235,7 € ; 18/10 −134 € (copie d'avant le correctif : paris à 2-3 fois la taille du fantôme sur `nf_court`) ; depuis le 19/10 −2,4 % par mise (1 784 € misés),
+    des favoris à 0,83-0,93 qui perdent : pas de défaut de copie. Constaté sans correctif : 13 ordres posés « OUVERT » de deux portefeuilles éteints (≈ 486 € réservés, sans effet) ; marchés Cape Town 17 et 18 °C en litige UMA.
+- **Recherche** : piste 0b, **détroits** (`experiments/detroits.md`) : verdict **indice, sans preuve**. Loi calculée sur 2 ans de PortWatch (800 jours en production) : la tranche 25-29 de Bab el-Mandeb, cotée 0,81, a 0,45-0,51 ; la même tranche de
+    5 revient 51 % du temps à +13 jours ; mais **aucun prix passé** de ces marchés (2 événements ouverts). Ormuz : pas de loi (régime changé en mars, garde-fou). Relevé en direct des ensembles Open-Meteo
+    pour la météo (`experiments/ensemble_meteo/releve.py`), à évaluer au prochain passage sur les marchés réglés (frais nuls depuis le 20/10, donc le « −6 % » du test météo est à refaire).
+- **Arène** : fantôme `detroits_tranches` (indice, quart de Kelly ; premier cycle : NON de la tranche 25-29 à 0,20 et OUI de 20-24 à 0,09, ≈ 28 € ; règlement le 31/10) ; `mots_prononces_nfl` 1.1.0 ;
+    étiquette `bab-el-mandeb` (105617) dans le scanner (3 tranches sur 5 sous `min_volume_24h`).
+- **Reste ouvert** : évaluer le relevé d'ensembles (marchés réglés, aux vrais prix, frais nuls) ; décider si `zero` entre dans les listes `familles` politiques (94 marchés sur 393 seulement) ; le prix des tranches « average daily transits »
+    est enregistré toutes les heures (`historique_references`, source « detroit ») : juger l'erreur du marché après quelques règlements ; refaire les tests politiques/météo avec des frais nuls.
+
 ## 2026-10-23 (session avec Etienne : veille des API publiques)
 
 - **Recherche** : liste GitHub `public-apis` (2 191 API) triée, 28 candidates appelées sans clé (`experiments/veille_api_publiques.md`).

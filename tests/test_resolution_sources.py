@@ -168,6 +168,10 @@ def test_temperature_markets_get_the_official_readings_of_their_station():
     m = parse_market(raw_market("9", resolutionSource="https://www.weather.gov/wrh/timeseries?site=nzwn"))
     other = parse_market(raw_market("10"))
     assert station_of(m.resolution_source) == "NZWN" and station_of("", "see weather.gov/wrh/timeseries?site=kdal") == "KDAL"
+    # Nouveau format de Gamma (19-20/10/2026) : source METAR directe, avec ou sans autres paramètres devant « ids ».
+    assert station_of("https://aviationweather.gov/api/data/metar?ids=EGLC&format=raw&date=2026-10-25T02:00:00Z&hours=30") == "EGLC"
+    assert station_of("https://aviationweather.gov/api/data/metar?format=raw&ids=KJFK") == "KJFK"
+    assert station_of("https://aviationweather.gov/api/data/taf?ids=KJFK") is None
     # Wellington (longitude 175 → UTC+12) ; NOW = 14/10 12:00 UTC = 15/10 00:00 locale.
     base = int((NOW - timedelta(hours=10)).timestamp())  # 14/10 14:00 locale
     rows = [{"icaoId": "NZWN", "obsTime": base + 1800 * i, "temp": 10 + (i % 4), "name": "Wellington Intl",

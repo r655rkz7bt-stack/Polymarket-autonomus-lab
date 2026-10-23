@@ -52,8 +52,13 @@ def main() -> int:
         audit = json.loads((Path(args.data) / "audit" / "etat.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
         audit = None
+    try:  # raisons d'abstention et état des sources du dernier cycle (bash scripts/fetch_published.sh -> published/data.json), si présents
+        published = json.loads((ROOT / "published" / "data.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        published = {}
+    abstentions, sources = published.get("abstentions"), (published.get("sources") or {}).get("etat")
     findings = enquete.run(entries, configs, active, now, float((settings.get("principal") or {}).get("max_mise", 0.10)),
-                           days=args.jours, audit=audit)
+                           days=args.jours, audit=audit, abstentions=abstentions, sources=sources)
     out = ROOT / "reports" / "enquete.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(enquete.render(findings, now), encoding="utf-8")

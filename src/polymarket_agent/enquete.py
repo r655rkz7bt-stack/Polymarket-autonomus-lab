@@ -27,7 +27,7 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
     filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
   - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
     pour 461 attendus par les prix mais 489 annoncés : le biais fixe +0,05 n'existe pas) ;
-  - muettes, retraits_inactifs, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
+  - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
 mission (enquêter, corriger ou proposer, test de non-régression, compte rendu dans
@@ -37,6 +37,7 @@ mission (enquêter, corriger ou proposer, test de non-régression, compte rendu 
 from __future__ import annotations
 
 import math
+import re
 import statistics
 from collections import defaultdict
 from datetime import datetime, timedelta
@@ -446,6 +447,36 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
 
 
+def familles_vides(abstentions: dict | None, entries: dict[str, list[dict]] | None = None) -> list[dict]:
+    """Stratégies dont le filtre `familles` écarte TOUS les marchés vus au dernier cycle (« famille de marchés exclue » = nombre de marchés).
+    23/10/2026 : Gamma a passé la météo en `zero_fees` le 19-20/10 ; la famille « weather » (déduite du barème de frais) n'existait plus et
+    loterie_meteo ne voyait rien depuis le 20/10 à 16 h 27, sans jamais être « muette » (elle avait déjà acheté)."""
+    gone = retirees(entries or {})
+    out = []
+    for pf, per in ((abstentions or {}).get("portefeuilles") or {}).items():
+        name = pf.split(":", 1)[-1]
+        if name in gone:
+            continue
+        for sid, info in per.items():
+            seen, excluded = int(info.get("marches") or 0), int((info.get("raisons") or {}).get("famille de marchés exclue") or 0)
+            if seen >= 50 and excluded >= seen and not info.get("propositions") and not info.get("ordres"):
+                out.append(f"{name} : {excluded} marchés vus, tous écartés par la famille")
+    return [_finding("familles_vides", A_REGARDER, f"{len(out)} stratégie(s) dont la famille de marchés ne laisse passer aucun marché",
+                     "Le barème de frais Gamma (feeType) donne la famille (market_family) ; il a changé (weather_fees, politics_fees → "
+                     "zero_fees le 19-20/10/2026). Vérifier le feeType des marchés visés et corriger market_family ou la liste `familles`.", out)] if out else []
+
+
+def sources_vides(etat: dict | None) -> list[dict]:
+    """Sources dont le statut du dernier cycle est « ok (0 observations) » : un « ok » qui ne rapporte rien peut cacher une panne totale
+    (23/10/2026 : `meteo_metar` et `meteo_prevision` à 0 depuis que Gamma cite `aviationweather.gov/api/data/metar?ids=…` au lieu de
+    `weather.gov/wrh/timeseries?site=…`, alors que 199 marchés de température sur 255 en dépendent)."""
+    out = [f"{name} : {status}" for name, status in (etat or {}).items()
+           if isinstance(status, str) and re.match(r"ok \(0 (observations|prix relevés|marchés|cotes)", status)]
+    return [_finding("sources_vides", A_REGARDER, f"{len(out)} source(s) « ok » sans aucune donnée au dernier cycle",
+                     "Vérifier que la source a bien des marchés à servir (format du lien, filtre, clé absente) ; un statut « ok (0 …) » n'est pas "
+                     "un fonctionnement.", out)] if out else []
+
+
 def retirees(entries: dict[str, list[dict]]) -> dict[str, dict]:
     """Stratégies retirées de l'arène (journal du principal, événements ELIMINATION) : nom -> {ts, reason}."""
     return {e["data"]["strategy"]: {"ts": e["ts"], "reason": str(e["data"].get("reason", ""))}
@@ -749,7 +780,7 @@ def sport_hors_match(entries: dict[str, list[dict]], configs: dict, since: datet
 
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
-        audit: dict | None = None) -> list[dict]:
+        audit: dict | None = None, sources: dict | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -761,7 +792,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
-                + retraits_inactifs(entries, now)
+                + retraits_inactifs(entries, now) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)

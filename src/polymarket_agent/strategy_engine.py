@@ -218,6 +218,9 @@ def excluded(market: MarketInfo, words: tuple[str, ...]) -> bool:
     return any(w in q for w in words)
 
 
+WEATHER_SLUGS = ("highest-temperature", "lowest-temperature", "precipitation", "where-will-it-rain", "will-it-rain", "rain-in-", "snow-in-")
+
+
 def market_family(market: MarketInfo) -> str:
     """Famille d'un marché d'après son barème de frais (Gamma `feeType`, vérifié le 16/10/2026) :
     « politics_fees » → politics, « sports_fees_v3 » → sports, « weather_fees » → weather… ;
@@ -226,7 +229,12 @@ def market_family(market: MarketInfo) -> str:
     if market.fees.enabled is False:
         return "sans_frais"
     if market.fees.enabled and market.fees.fee_type:
-        return market.fees.fee_type.split("_")[0]
+        family = market.fees.fee_type.split("_")[0]
+        # 19-20/10/2026 : Gamma passe la météo (et la politique, la finance…) en « zero_fees » : le barème ne dit plus la famille et
+        # loterie_meteo ne voyait plus rien (dernier achat le 20/10 à 16 h 27). La météo se reconnaît à l'adresse de l'événement.
+        if family == "zero" and (market.event_slug or market.slug or "").startswith(WEATHER_SLUGS):
+            return "weather"
+        return family
     return "other"
 
 
