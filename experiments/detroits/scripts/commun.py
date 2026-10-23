@@ -103,7 +103,7 @@ def connu_jusqua(t: dt.datetime, heure_maj=11):
     """Dernier jour publié par PortWatch à l'instant t (UTC) : mise à jour le mardi vers `heure_maj` h UTC, jusqu'au dimanche
     précédent (rythme mesuré, voir controle_reglement.py)."""
     mardi = t.date() - dt.timedelta(days=(t.weekday() - 1) % 7)
-    if mardi == t.date() and t.hour < heure_maj:
+    if mardi == t.date() and t.hour + t.minute / 60 < heure_maj:
         mardi -= dt.timedelta(days=7)
     return mardi - dt.timedelta(days=2)
 
