@@ -34,6 +34,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| gagnant de saison, NON des candidats à 10-30 % (120 événements sport, 3 927 candidats) | indice faible | 14 jours : +8,2 % (91 gagnés / 84,2), +9,9 % aux vrais prix ; 7 jours = un seul événement ; 30 jours 0 % ; ~120 réglages | saison_sport.md |
+| tennis en jeu, hors échantillon (629 matchs après le 20/10) | non confirmé | +30 min : 43 gagnés / 44,7, −4,5 % (n = 51) ; trop peu de matchs | saison_sport.md |
 | achat échelonné, renfort en baisse ou en hausse, stop-loss, prise de gain, stop suiveur | écartées | prix juste après une chute (2 152 matchs) ; tennis −5 à −6 % | achat_echelonne.md |
 | favoris ITF (à éviter) | écartée | −13,9 % aux vrais prix, 5 semaines perdantes | achat_echelonne.md |
 | outsider_itf | indice | +17 % aux vrais prix (150 matchs) | achat_echelonne.md |

@@ -585,7 +585,8 @@ class Filtered:
       question_contient : le marché est gardé si sa question contient un de ces mots (sans tenir
       compte des majuscules) ; question_exclut : refusé s'il en contient un (21/10/2026 : annonceurs
       NFL gagnants, Coupe du monde perdante, experiments/mentions_annonceurs.md) ;
-      un_match : true → seulement les paris sur UN match (Gamma donne un `sportsMarketType`) ; refuse les
+      un_match : true → seulement les paris sur UN match (Gamma donne un `sportsMarketType`) ; false → seulement les
+      marchés de saison (gagnant du championnat…). Refuse, si true, les
       marchés de saison ou de prix (Ballon d'Or, Coupe, Série mondiale), que la famille « sports »
       laisse passer (23/10/2026 : 359 € = 30 % du capital sur « Mbappé gagne le Ballon d'Or, NON » à 0,94,
       experiments/enquetes/2026-10-23_marches_de_saison_dans_le_sport.md) ;
@@ -615,7 +616,7 @@ class Filtered:
             hours = (m.end_date - now).total_seconds() / 3600
             if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
                 return False
-        if f.get("un_match") and not getattr(m, "sports_market_type", None):
+        if "un_match" in f and bool(f["un_match"]) != bool(getattr(m, "sports_market_type", None)):
             return False
         question = (m.question or "").lower()
         if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):

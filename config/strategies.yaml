@@ -727,6 +727,27 @@ nf_sport_patiente_matchs:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+saison_non:
+  explication: "Le NON d'un candidat à 10-30 % dans un marché de gagnant de saison (champion, MVP, Ballon d'Or), de 10 à 18 jours avant la fin : sur le passé (un seul horizon, 14 jours) il gagne plus souvent que son prix."
+  # Piste « gagnant de saison » (23/10/2026, experiments/saison_sport.md) : 120 événements de sport (3 927 candidats), NON d'un candidat à
+  # 0,10-0,30 à 14 jours de la fin : +7,6 % par achat après écart et frais (91 gagnés pour 84 attendus, t par événement +3,0), +9,9 % aux prix de
+  # vrais échanges ; mais ni à 7 jours (hors un événement louche, +2,6 %), ni à 30 jours. VERDICT « indice faible » (≈ 120 réglages) :
+  # fantôme en quart de Kelly, biais 0,03, fenêtre 10-18 jours ; l'arène confirme ou non.
+  class: naive_favorite
+  filtres: {familles: [sports], un_match: false, issue: [non], echeance_min: 240, echeance_max: 432, prix_min: 0.70, prix_max: 0.90}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    min_ask:        {value: 0.70, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.90, min: 0.60, max: 0.98}
+    bias:           {value: 0.03, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
+
 nf_sport_patiente_tennis:
   explication: "La championne (favori de sport, achat posé), mais seulement le tennis : c'est là qu'elle gagne."
   # Entonnoir 80/20 (20/10/2026, reports/pareto.md) : sur 75 opérations de nf_sport_patiente, le

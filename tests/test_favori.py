@@ -253,3 +253,7 @@ def test_match_only_filter_refuses_season_and_award_markets(tmp_path):
     m.sports_market_type = "moneyline"
     assert only.propose([m], books, ledger.state, limits, "b").proposals
     assert Filtered(_strategy(shrink=0.5), {"familles": ["sports"]}).propose([m], books, ledger.state, limits, "b").proposals
+    season = Filtered(_strategy(shrink=0.5), {"familles": ["sports"], "un_match": False})
+    assert not season.propose([m], books, ledger.state, limits, "b").proposals  # un match : refusé par le filtre « saison »
+    m.sports_market_type = None
+    assert season.propose([m], books, ledger.state, limits, "b").proposals
