@@ -1968,6 +1968,7 @@ apres_echeance:
     fav_min:        {value: 0.94, min: 0.5, max: 0.99}    # 20/10 : à 0,90 après l'échéance, le doute est réel (Kiev)
     fav_max:        {value: 0.985, min: 0.5, max: 0.999}
     est:            {value: 0.985, min: 0.5, max: 0.999}
+    heures_apres_coup_d_envoi_min: {value: 3, min: 0, max: 12}   # 23/10 : un match n'est pas fini 1 à 2 h après son coup d'envoi (enquête, -474 € en une soirée)
     uncertainty:    {value: 0.004, min: 0.0, max: 0.1}
     min_net_edge:   {value: 0.003, min: 0.0, max: 0.2}
     max_candidates: {value: 40, min: 0, max: 200}

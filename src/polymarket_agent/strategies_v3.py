@@ -416,9 +416,19 @@ class ApresEcheance(_Base):
         return out[: int(self.params.get("max_candidates", 40))]
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
-        out, p, props = StrategyOutput(), self.params, []
+        out, p, props, now = StrategyOutput(), self.params, [], _now(books)
+        # 23/10/2026 : « échéance passée » = coup d'envoi pour un match (Gamma ne donne qu'une date placeholder) ; 140 des 173 achats
+        # étaient faits 1 à 2 h après le coup d'envoi (-7,8 %), et 8 jambes du même Cavaliers-76ers (-474 €) pendant le match.
+        min_hours = float(p.get("heures_apres_coup_d_envoi_min", 0))
+        events = {pos.event_id for pos in state.positions.values() if pos.event_id}
         for m in watchlist:
             if not m.ended or "disputed" in m.uma_statuses or any(t in state.positions for t in m.token_ids):
+                continue
+            if m.game_start is not None and now is not None and (now - m.game_start).total_seconds() < min_hours * 3600:
+                out.abstain("match probablement en cours")
+                continue
+            if m.event_id and m.event_id in events:  # moneyline, écarts et totaux d'un même match : un seul pari
+                out.abstain("événement déjà joué")
                 continue
             mids = [_book_mid(books, t) for t in m.token_ids]
             if None in mids:
@@ -432,6 +442,7 @@ class ApresEcheance(_Base):
                              "résolution contestée ou règle ambiguë")
             if prop is not None:
                 props.append(prop)
+                events.add(m.event_id)
         return self._finish(out, props)
 
 

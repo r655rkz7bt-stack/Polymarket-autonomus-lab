@@ -296,3 +296,21 @@ def test_no_to_far_dramas_buys_no_with_a_small_stake_once_per_event(tmp_path):
     calm = _m("c", question="Will Bitcoin reach $200k before 2027?", end=far, yes_price="0.08", event_id="e4")
     books.update(_books(*[(f"{x}{y}", "0.07", "0.08") for x in "soc" for y in "Y"], *[(f"{x}N", "0.92", "0.93") for x in "soc"]))
     assert not s.propose([stay, soon, calm], books, _state(tmp_path), LIMITS, "b1").proposals
+
+
+def test_after_deadline_waits_for_the_match_to_end_and_plays_one_leg_per_event(tmp_path):
+    """23/10/2026 : Cavaliers-76ers, coup d'envoi 23:00, huit jambes (vainqueur, écarts, total) achetées entre 1 h et 1 h 52 après le début,
+    toutes perdues (-474 € sur le fantôme). `endDate` d'un match = le coup d'envoi : « échéance passée » ne veut pas dire « match fini »."""
+    a = _s(ApresEcheance, fav_min=0.94, fav_max=0.985, est=0.99, uncertainty=0.003, min_net_edge=0.002, heures_apres_coup_d_envoi_min=3,
+           max_extra_ticks=1, max_proposals_per_cycle=3, kelly_fraction=0.25)
+    ms = []
+    for i in range(3):
+        m = _m(f"g{i}", end=NOW - timedelta(hours=1), event_id="nba1", gameStartTime=(NOW - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M:%SZ"))
+        m.ended = True
+        ms.append(m)
+    books = _books(*[(f"g{i}{t}", b, k) for i in range(3) for t, b, k in (("Y", "0.955", "0.96"), ("N", "0.04", "0.045"))])
+    assert not a.propose(ms, books, _state(tmp_path), LIMITS, "b1").proposals  # le match est en cours
+    for m in ms:
+        m.game_start = NOW - timedelta(hours=4)  # fini depuis longtemps
+    out = a.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert len(out.proposals) == 1  # trois jambes du même match : une seule
