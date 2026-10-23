@@ -57,10 +57,13 @@ Essai en direct (22/10, après ces filtres) : 30 candidats, par exemple « Will 
 the KY-06 House seat? » ×32,6 (+0,06), « Will Ethereum reach $2,700 October 19-25? » ×18,4 (−0,053),
 « Will Iliana Iotova win the 2026 Bulgarian presidential first… » ×17,1 (+0,24).
 
-**Test sur le passé** : lancé le 22/10 (relevé des vrais échanges, achats aux prix payés,
-`idea_test.verdict`) ; compte rendu à venir dans `experiments/vague_volume_backtest.md`. Les deux
-fantômes restent dans l'arène en attendant (ils ne coûtent rien ; le principal ne copie qu'après les
-seuils de `config/promotion.yaml`) ; ils seront réglés ou retirés selon ce verdict.
+**Test sur le passé (23/10/2026, `experiments/vague_volume_backtest.md`)** : 13 714 marchés réglés, vrais échanges
+(remontés avec le paramètre `end` de data-api), règlement relu 400 fois sur 400, 72 réglages essayés.
+- `vague_volume_contrer` : **écartée**, 36 réglages perdants sur 36 (−9 à −23 % aux prix payés) → `enabled: false`.
+- `vague_volume_suivre` : **indice**, +1,4 % (une décision par jour) à +2,2 % (deux), t par événement 1,3 à 2,4 ;
+  mais +0,1 % seulement depuis juillet 2026, et la même règle SANS vague fait +1,3 % : le gain vient surtout des
+  plages de prix. Gardée comme fantôme, avec une fille `vague_volume_suivre_x5` (vague ×5 : +5,3 % sur 390 paris,
+  meilleur réglage sur 72, à confirmer par l'arène).
 
 ## Skills installés à la place
 Méthode et statistiques, pas de trading : voir `.claude/skills/README.md` (provenance, licences, ce qui
