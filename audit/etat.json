@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 2671,
+  "principal": 2672,
   "fantome:calibration_patiente_v1.0.0": 1797,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1771,
@@ -1022,9 +1022,9 @@
    "op_id": "settle-2346341110142983446430536833231797955075437470583530785549582267597439451850"
   }
  ],
- "derniere_execution": "2026-10-23T07:48:02+00:00",
+ "derniere_execution": "2026-10-23T07:52:16+00:00",
  "dernier_seq_reglements": {
-  "principal": 2671,
+  "principal": 2672,
   "fantome:calibration_patiente_v1.0.0": 1797,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1771,
@@ -1042,8 +1042,8 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1459,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 1901,
-  "fantome:market_maker_v1.0.0": 1556,
+  "fantome:market_maker_serre_v1.0.0": 1903,
+  "fantome:market_maker_v1.0.0": 1558,
   "fantome:favori_politique_patiente_v1.0.0": 1374,
   "fantome:favori_politique_v1.0.0": 1376,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1376,
@@ -1100,7 +1100,7 @@
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
   "fantome:nf_sport_patiente_soir_v1.0.0": 449,
   "fantome:nf_sport_patiente_jour_v1.0.0": 463,
-  "fantome:nf_sport_patiente_tennis_v1.0.0": 680,
+  "fantome:nf_sport_patiente_tennis_v1.0.0": 683,
   "fantome:nf_tennis_prix_bas_v1.0.0": 599,
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 352,
