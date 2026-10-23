@@ -3,6 +3,17 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-22 (session dédiée : 2e tour au Brésil, pistes 15 et 16)
+
+- **Lu** : CLAUDE.md, METHODE.md, enquêtes, `fin_de_match.md`, `vingt_cinq_pistes.md`.
+- **Fait** : accès aux résultats officiels du TSE (codes 6257/6258, chemins vérifiés) ; vitesse de
+  Polymarket au 1er tour sur 31 marchés (échanges réels) ; taux de base officiels 2006-2022 (140 cas) ;
+  carnets actuels des 28 marchés « 1re place » du 2e tour. Rapport : `experiments/bresil_second_tour.md`.
+- **Verdicts** : piste 15 écartée (35,88 $ achetables à ≤ 0,97 après « décidé + 10 min », le vainqueur
+  national à 0,99 à +140 min pour une certitude vers +300 min) ; piste 16 écartée (22/28 États déjà au
+  prix de l'histoire, États serrés : références contradictoires). Aucune stratégie ajoutée.
+- **Reste ouvert** : prévision à partir des résultats partiels (modèle par région) ; tester l'accès au
+  TSE depuis GitHub Actions (workflow `labo-*`) avant la prochaine élection.
 ## 2026-10-22 (session manuelle, pistes 2, 3 et 11 aux prix payés)
 
 - **Fait** (`experiments/pistes_crypto_elections_drames.md`, scripts dans `toucher_avant_fin/`, `marge_coherente/`, `non_aux_drames/`) :
