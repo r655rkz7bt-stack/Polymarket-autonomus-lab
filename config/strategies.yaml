@@ -2843,3 +2843,55 @@ vague_volume_contrer:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+# --------------------------------------------------------------------------- pistes revues le 23/10/2026
+# Deux indices de la 2e analyse des vingt-cinq pistes (vrais prix payés) : fantômes, l'arène tranche.
+moins_de_cartes:
+  explication: "Dans un match d'e-sport en 2 ou 3 manches gagnantes, on parie qu'il se finira vite (2-0) : l'équipe la plus forte du jour gagne souvent sans laisser une carte."
+  class: moins_de_cartes
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  hypothesis: >
+    Piste n° 4 revue (experiments/pistes_sport_coherence.md) : « Under » sur les marchés « Games Total »
+    des BO3/BO5 (CS2, LoL, Dota 2, Valorant), 6 h à 1 h avant le match, prix 0,30-0,70 : +13,5 % par pari
+    aux prix payés, 457 paris, t par match +2,75, 10 mois sur 12 ; trouvé parmi ~90 essais (sélection) :
+    fantôme seulement, pas de part du capital principal avant la preuve de l'arène.
+  params:
+    min_hours:      {value: 1, min: 0, max: 48}
+    max_hours:      {value: 6, min: 1, max: 72}
+    price_min:      {value: 0.30, min: 0.05, max: 0.90}
+    price_max:      {value: 0.70, min: 0.10, max: 0.95}
+    shift:          {value: 0.05, min: 0.0, max: 0.2}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+non_aux_drames:
+  explication: "Les gens paient trop cher le frisson d'une catastrophe lointaine (une invasion, un président renversé) : on parie qu'elle n'arrivera pas, avec une petite mise."
+  class: non_aux_drames
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  hypothesis: >
+    Piste n° 11 revue (experiments/pistes_crypto_elections_drames.md) : NON des « drames » (liste de mots
+    fixée avant les résultats) à OUI 2-15 %, 30 à 120 jours avant l'échéance : 149 paris 2024-2026, +4,6 %
+    par pari aux prix payés, 2 drames pour 9,3 attendus, t par événement 2,81 ; témoin non-drames +0,9 %.
+    Le chercheur l'avait écartée sur TOUS les marchés longs (+1,7 à +2,8 %, experiments/non_aux_drames.md) :
+    l'effet est sur les drames. 2 % du capital par événement ; arrêter si deux drames arrivent le même mois.
+  params:
+    min_days:       {value: 30, min: 7, max: 365}
+    max_days:       {value: 120, min: 14, max: 900}
+    yes_min:        {value: 0.02, min: 0.005, max: 0.30}
+    yes_max:        {value: 0.15, min: 0.01, max: 0.40}
+    min_volume:     {value: 5000, min: 0, max: 10000000}
+    yes_factor:     {value: 0.5, min: 0.0, max: 1.0}   # chance réelle ≈ moitié du prix (2 pour 9,3 sur le passé : prudent)
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    stake_fraction: {value: 0.02, min: 0.0, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.0, max: 0.2}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}

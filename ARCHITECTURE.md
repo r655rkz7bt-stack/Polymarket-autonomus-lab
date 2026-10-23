@@ -963,3 +963,10 @@ base (`Weighted(..., base=)` divise par la prudence du fantôme) : un seul renfo
 le portefeuille tient déjà un autre jeton payé au-dessus de 0,70, ni de deux camps dans le même cycle
 (arbitrages et tenue de marché, autour de 0,50, passent). (2) `main._cap_ghost` (`fantomes.max_mise` 0,25) :
 une mise de fantôme ≤ 25 % de son capital estimé ; mêmes paris, taille seulement.
+## 57. Séries de sport au scanner ; fantômes moins_de_cartes et non_aux_drames (23/10/2026)
+
+Deux indices de la 2e analyse des vingt-cinq pistes (vrais prix payés). (1) `market_scanner._add_series_markets`
+(`scanner.series_pages`) : les matchs d'e-sport ne se trouvent que par série Gamma (`GammaClient.list_series_events`) ;
+seuls les « Games Total » des BO3/BO5 sont ajoutés, en `extra_only`. (2) `MoinsDeCartes` : « Under » 6 h à 1 h avant le
+match (experiments/pistes_sport_coherence.md). (3) `NonAuxDrames` : NON des drames à OUI 2-15 %, 30 à 120 jours avant
+l'échéance, 2 % du capital par événement (experiments/pistes_crypto_elections_drames.md).

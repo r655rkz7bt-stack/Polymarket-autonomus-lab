@@ -1,0 +1,33 @@
+marchés : 6618 (sans fichier d'échanges : 0) ; paires barrière × échelle : 8693
+   par type : {'jour': 1582, 'mois': 3889, 'semaine': 3222}
+
+== Test 1 : arbitrage strict (deux jambes connues à moins de 15 min l'une de l'autre)
+observations (paire × demi-heure) : 6488 ; somme des prix payés < 1 : 13 (0.20 %) ; < 1 après frais : 7 (0.11 %)
+paires avec un signal : 5 ; exécutées aux prix d'après : 3 ; sans échange dans l'heure : 2
+   coût payé moyen 1.000 (connu 0.998) ; exécutions encore sous 1 : 1 ; gain total -0.00 $ pour 3 paniers
+   09-03 14:00 connu 0.995 payé 0.992 reçu 1 | Will Bitcoin dip to $72,000 August 31-September 6? | Will the price of Bitcoin be above $72,000 on September 6
+   09-11 07:00 connu 0.999 payé 1.001 reçu 1 | Will Bitcoin reach $82,000 on September 11? | Will the price of Bitcoin be above $82,000 on September 11?
+   09-01 11:30 connu 0.999 payé 1.008 reçu 1 | Will Bitcoin reach $82,000 on September 1? | Will the price of Bitcoin be above $82,000 on September 1?
+{"paris": 3, "rendement_moyen": -0.0004, "confiance_paris": -0.09, "evenements": 3, "confiance_evenements": -0.09, "z_prix": -0.58, "mois": {"2026-09": -0.0004}, "mois_gagnants": "0/1", "par_prix": {"0,30-0,70": {"paris": 3, "rendement": -0.0004}}, "verdict": "écartée", "raison": "moins de 10 paris"}
+
+== Test 2 : règle « toucher ≈ r × au-dessus » (162 cas, 113 barrières ; coupure 2026-09-17)
+   au-dessus (prix payé) | cas | prix du toucher | 2 × au-dessus | toucher réel | au-dessus réel | rapport marché | rapport réel
+   0,02-0,10 | 93 | 0.188 | 0.081 | 0.247 | 0.054 | 4.62 | 4.60
+   0,10-0,25 | 22 | 0.521 | 0.306 | 0.409 | 0.045 | 3.41 | 9.00
+   0,25-0,60 | 16 | 0.847 | 0.704 | 0.875 | 0.312 | 2.41 | 2.80
+   réglages essayés : 12 (r × seuil)
+   r 1.5 seuil 0.03 : apprentissage 34 paris +8.6 % | jugement 39 paris -16.3 %
+   r 1.5 seuil 0.05 : apprentissage 28 paris +12.4 % | jugement 36 paris -18.4 %
+   r 1.5 seuil 0.08 : apprentissage 23 paris +12.5 % | jugement 32 paris -22.1 %
+   r 1.75 seuil 0.03 : apprentissage 32 paris +8.5 % | jugement 37 paris -14.7 %
+   r 1.75 seuil 0.05 : apprentissage 26 paris +12.5 % | jugement 33 paris -14.3 %
+   r 1.75 seuil 0.08 : apprentissage 22 paris +12.0 % | jugement 29 paris -19.0 %
+   r 2.0 seuil 0.03 : apprentissage 31 paris +8.6 % | jugement 34 paris -10.4 %
+   r 2.0 seuil 0.05 : apprentissage 23 paris +17.4 % | jugement 29 paris -11.2 %
+   r 2.0 seuil 0.08 : apprentissage 20 paris +7.9 % | jugement 24 paris -17.8 %
+   r 2.25 seuil 0.03 : apprentissage 23 paris +2.1 % | jugement 29 paris +0.1 %
+   r 2.25 seuil 0.05 : apprentissage 17 paris -12.1 % | jugement 26 paris -1.3 %
+   r 2.25 seuil 0.08 : apprentissage 14 paris -9.2 % | jugement 18 paris -26.9 %
+   meilleur réglage sur l'apprentissage : r 2.0, seuil 0.05 → jugement :
+   {"paris": 29, "rendement_moyen": -0.1119, "confiance_paris": -0.86, "evenements": 19, "confiance_evenements": -0.2, "z_prix": -0.78, "mois": {"2026-09": -0.0438, "2026-10": -0.2233}, "mois_gagnants": "0/2", "par_prix": {"0,30-0,70": {"paris": 10, "rendement": -0.1404}, "≥ 0,70": {"paris": 19, "rendement": -0.0968}}, "verdict": "écartée", "raison": "moins de 30 paris"}
+   jugement, achat du NON : 29 paris, -11.2 %

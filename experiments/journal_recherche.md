@@ -3,6 +3,53 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-23 (session avec Etienne : intégration des pistes revues)
+
+- **Enquête** : sans objet (voir la session « anomalies » du même jour).
+- **Recherche** : rapports des trois analyses à part fusionnés (`pistes_sport_coherence.md`, `pistes_crypto_elections_drames.md`, `bresil_second_tour.md`).
+  Pistes 15 et 16 (Brésil) écartées ; 1, 2, 3, 5 écartées ; n° 4 : indice annexe « moins de cartes » en e-sport ; n° 11 : indice sur les seuls drames
+  (le chercheur l'avait écartée sur tous les marchés longs : les deux résultats se recoupent, témoin non-drames +0,9 %).
+- **Arène** : fantômes `moins_de_cartes` (scanner : `series_pages`, 91 marchés « Games Total » vus le 23/10) et `non_aux_drames` ; cycle local : 1 et 2 achats relus à la main.
+- **Reste ouvert** : `non_aux_drames` immobilise l'argent 1 à 4 mois : juger après 30 paris réglés, arrêter si deux drames arrivent le même mois ;
+  `moins_de_cartes` : fille LoL seule si l'arène confirme ; ajouter les filtres `start`/`end` de data-api à `idea_test.fetch_event_trades` (échanges anciens).
+
+## 2026-10-22 (session dédiée : 2e tour au Brésil, pistes 15 et 16)
+
+- **Lu** : CLAUDE.md, METHODE.md, enquêtes, `fin_de_match.md`, `vingt_cinq_pistes.md`.
+- **Fait** : accès aux résultats officiels du TSE (codes 6257/6258, chemins vérifiés) ; vitesse de
+  Polymarket au 1er tour sur 31 marchés (échanges réels) ; taux de base officiels 2006-2022 (140 cas) ;
+  carnets actuels des 28 marchés « 1re place » du 2e tour. Rapport : `experiments/bresil_second_tour.md`.
+- **Verdicts** : piste 15 écartée (35,88 $ achetables à ≤ 0,97 après « décidé + 10 min », le vainqueur
+  national à 0,99 à +140 min pour une certitude vers +300 min) ; piste 16 écartée (22/28 États déjà au
+  prix de l'histoire, États serrés : références contradictoires). Aucune stratégie ajoutée.
+- **Reste ouvert** : prévision à partir des résultats partiels (modèle par région) ; tester l'accès au
+  TSE depuis GitHub Actions (workflow `labo-*`) avant la prochaine élection.
+## 2026-10-22 (session manuelle, pistes 2, 3 et 11 aux prix payés)
+
+- **Fait** (`experiments/pistes_crypto_elections_drames.md`, scripts dans `toucher_avant_fin/`, `marge_coherente/`, `non_aux_drames/`) :
+  - n° 2 `toucher_avant_fin` : **écartée**. 8 693 paires barrière × échelle (17/08-15/10) : la cohérence « toucher ≥ au-dessus » tient aux prix payés
+    (13 demi-heures sur 6 488 sous 1, 3 paniers exécutés à 1,000) ; le marché paie le toucher 4,6 fois le au-dessus et c'est ce qui arrive ; règle « 2 fois » −11 % ;
+    modèle de barrière (DVOL) : 17 réglages sur 24 perdent sur la 1re moitié, le choisi fait +13,5 % sur la 2e (hausse du Bitcoin) mais t par événement 0,49.
+  - n° 3 `marge_coherente` : **écartée** (indice minuscule). 13 élections (2024-2026), écart médian 1,9 point, 49 paniers sans risque vus, 18 exécutables, +0,64 % par panier.
+  - n° 11 `non_aux_drames` : **retenue** (petit échantillon). 149 paris sur 106 événements de 2024 à 2026 : +4,6 % par pari, ≈ +23 %/an, 2 drames arrivés pour 9,3 attendus,
+    t par événement 2,81, 26 mois sur 28 ; témoin non-drames : +0,9 % par pari (784 paris). Règle du fantôme écrite dans la fiche (mise ≤ 2 % par événement).
+  - Découverte : `data-api /trades` accepte `start` et `end` : la limite de 10 000 échanges ne gêne plus (fenêtre autour de T0).
+- **Reste ouvert** : créer le fantôme `non_aux_drames` (et peut-être `non_aux_outsiders_longs`, témoin 0,05-0,10) ; ajouter `start`/`end` à `idea_test.fetch_event_trades` ;
+  élargir la piste 2 à avril-octobre si on veut revoir les barrières hors d'une période de hausse.
+- **Limites** : piste 11 jugée sur 2 pertes seulement ; piste 2 sur 60 jours ; piste 3 sans la quantité disponible.
+## 2026-10-22/23 (session à part : pistes n° 1, 4, 5 de `vingt_cinq_pistes.md`, cohérence des marchés de sport)
+
+- **Fait** (`experiments/pistes_sport_coherence.md`, scripts `experiments/score_exact_poisson/`, `bo3_coherence/`, `tennis_sets_coherence/`) :
+  inventaire Gamma par `sportsMarketType` (pagination keyset) puis test aux prix réellement payés (« avant » / « après » T0, frais, 72 réglages par piste,
+  réglage sur la 1re moitié, jugement sur la 2e). Échantillons tirés par mois : 1 030 matchs de tennis, 1 417 d'e-sport, 505 de football.
+- **Tennis, sets** (n° 5) : **écartée (trompeuse)** : « après » −8,9 % à +1,4 % ; le gain « avant » (+9,8 %, +74 % sur 31 paris) vient d'échanges vieux de 2 à 6 h
+  (< 30 min : −6,4 %, 2-6 h : +21 %) ; le binomial est moins bon que le prix du marché lié.
+- **E-sport, cartes** (n° 4) : cohérence binomiale **écartée** (mêmes prix périmés) ; découverte annexe : acheter le « Under » des totaux de cartes
+  (la série finit 2-0), prix « après » : **+13,5 %, 457 paris, t par match +2,75, 10 mois sur 12, z +2,9**, deux moitiés positives, « Over » −15,5 % ;
+  trouvée parmi ~90 essais : **indice fort, fantôme `esport_moins_de_cartes` proposé** (règle exacte dans le rapport ; non créé : étude seule).
+- **Football, score exact** (n° 1) : **écartée (marchés trop peu négociés)** : 13 061 matchs existent mais 15 à 52 paris par réglage ; 2 paris en test.
+- **Défaut à retenir** : prix « avant » d'un marché mince = prix périmé ; ranger les paris par âge du prix avant de conclure.
+- **Reste ouvert** : créer le fantôme (et vérifier que le scanner voit les totaux d'e-sport, < 1 000 $/jour) ; fille LoL ; variante en jeu (état du set / de la carte).
 ## 2026-10-22 (session avec Etienne : skills)
 
 - **Enquête** : sans objet (session d'outillage).

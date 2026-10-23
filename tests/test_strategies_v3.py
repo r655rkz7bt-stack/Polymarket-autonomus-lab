@@ -250,3 +250,49 @@ def test_volume_surge_follows_or_fades_the_move(tmp_path):
     out = follow.propose([calm, still], _books(("cY", "0.69", "0.70"), ("cN", "0.30", "0.31"),
                                                ("sY", "0.69", "0.70"), ("sN", "0.30", "0.31")), _state(tmp_path), LIMITS, "b1")
     assert not out.proposals and out.abstentions == {"vague de volume sans mouvement de prix": 1}
+
+
+def _esport(mid, start_h, title="Dota 2: 1win vs OG (BO3) - PARI Universe Group A", **kw):
+    return _m(mid, yes="O", no="U", question="Games Total: O/U 2.5", outcomes=json.dumps(["Over", "Under"]),
+              sportsMarketType="totals", gameStartTime=(NOW + timedelta(hours=start_h)).strftime("%Y-%m-%d %H:%M:%S+00"),
+              events=[{"id": f"e{mid}", "title": title}], **kw)
+
+
+def test_fewer_maps_buys_under_a_few_hours_before_an_esport_series(tmp_path):
+    from polymarket_agent.strategies_v3 import MoinsDeCartes
+    s = _s(MoinsDeCartes, min_hours=1, max_hours=6, price_min=0.30, price_max=0.70, shift=0.05, uncertainty=0.01,
+           min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=3, kelly_fraction=0.25)
+    ok = _esport("a", 3)
+    books = _books(("aO", "0.49", "0.50"), ("aU", "0.50", "0.51"))
+    out = s.propose([ok], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["Under"]
+    # Trop tôt (10 h avant), déjà commencé, un BO1, un total de NBA, « Under » hors plage : rien.
+    late, started = _esport("b", 10), _esport("c", -0.5)
+    bo1 = _esport("d", 3, title="LoL: A vs B (BO1) - Nexus League")
+    nba = _m("e", yes="O", no="U", question="Nuggets vs. Thunder: O/U 236.5", outcomes=json.dumps(["Over", "Under"]),
+             sportsMarketType="totals", gameStartTime=(NOW + timedelta(hours=3)).strftime("%Y-%m-%d %H:%M:%S+00"))
+    dear = _esport("f", 3)
+    books.update(_books(*[(f"{x}{y}", "0.49", "0.50") for x in "bcde" for y in "OU"], ("fO", "0.19", "0.20"), ("fU", "0.80", "0.81")))
+    out = s.propose([late, started, bo1, nba, dear], books, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and out.abstentions == {"« Under » hors de la plage de prix": 1}
+
+
+def test_no_to_far_dramas_buys_no_with_a_small_stake_once_per_event(tmp_path):
+    from polymarket_agent.strategies_v3 import NonAuxDrames
+    s = _s(NonAuxDrames, min_days=30, max_days=120, yes_min=0.02, yes_max=0.15, min_volume=5000, yes_factor=0.5,
+           uncertainty=0.01, stake_fraction=0.02, min_net_edge=0.005, max_extra_ticks=1, max_proposals_per_cycle=2)
+    far = NOW + timedelta(days=60)
+    war = _m("w", question="Will China invade Taiwan before 2027?", end=far, yes_price="0.08", event_id="ev")
+    twin = _m("t", question="Will China blockade Taiwan before 2027?", end=far, yes_price="0.08", event_id="ev")
+    books = _books(("wY", "0.07", "0.08"), ("wN", "0.92", "0.93"), ("tY", "0.07", "0.08"), ("tN", "0.92", "0.93"))
+    state = _state(tmp_path)
+    out = s.propose([war, twin], books, state, LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["No"]  # un seul pari par événement
+    assert out.proposals[0].shares * out.proposals[0].max_price <= D("20.5")  # 2 % de 1 000
+    # Statu quo, échéance trop proche, pas un drame : rien.
+    stay = _m("s", question="Will Maduro remain president through 2026?", end=far, yes_price="0.08", event_id="e2")
+    soon = _m("o", question="Will Russia invade Finland by November 10?", end=NOW + timedelta(days=10), yes_price="0.08",
+              event_id="e3")
+    calm = _m("c", question="Will Bitcoin reach $200k before 2027?", end=far, yes_price="0.08", event_id="e4")
+    books.update(_books(*[(f"{x}{y}", "0.07", "0.08") for x in "soc" for y in "Y"], *[(f"{x}N", "0.92", "0.93") for x in "soc"]))
+    assert not s.propose([stay, soon, calm], books, _state(tmp_path), LIMITS, "b1").proposals
