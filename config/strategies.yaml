@@ -2433,6 +2433,35 @@ compteur_tweets_non:
     only_no:        {value: 1, min: 0, max: 1}
     skip_nyc:       {value: 1, min: 0, max: 1}
 
+compteur_tweets_non_hebdo:
+  explication: "La même idée que « compteur de tweets, NON seulement », mais seulement sur les marchés d'une semaine, les seuls que le test sur le passé a couverts (pas ceux de 2 jours)."
+  # Enquête du 23/10/2026 : 19 des 81 achats de la famille compteur_tweets (246 € sur 1 190 €) portaient sur des marchés de
+  # 2 jours (« du 22 au 24 octobre »), absents des 196 périodes testées. Sœur de compteur_tweets_non (même réglage, mêmes comptes) :
+  # l'arène compare les deux sur la même période. Rappel : le gain du test est celui de l'historique horaire du CLOB ; aux prix
+  # des vrais échanges il disparaît (experiments/tweets_prix_payes.md) : fantôme de contrôle, pas une stratégie validée.
+  mere: compteur_tweets_non
+  morceau: "marchés d'une semaine seulement"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
+    min_period_days: {value: 5, min: 0, max: 30}
+
 compteur_tweets_non_patiente:
   explication: "La même idée que « compteur de tweets, NON seulement », mais on pose l'achat et on attend un vendeur au lieu de payer son prix."
   # AMELIORATION n°6 du 21/10/2026 : tranches de tweets peu liquides ; seul l'acheteur pressé paie les frais.

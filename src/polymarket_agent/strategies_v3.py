@@ -719,7 +719,8 @@ class CompteurTweets(_Base):
     cher que ce calcul, jamais un billet sous `min_price`. Réglages choisis sur le passé
     (experiments/vingt_pistes.md : 177 périodes de juillet à octobre 2026, +12 % par achat).
     Réglages optionnels (fille « NON sans NYC Mayor », 21/10/2026, experiments/tweets_filles.md) :
-    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor."""
+    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor ; `min_period_days` = 5 ignore
+    les marchés de 2 jours, jamais testés (23/10/2026 : 19 achats sur 81, 246 €)."""
 
     strategy_id = "compteur_tweets"
     required = ("dispersion", "recent_hours", "max_stale_hours", "margin", "uncertainty", "min_net_edge",
@@ -749,6 +750,12 @@ class CompteurTweets(_Base):
             if float(p.get("skip_nyc", 0)) and str(tr.get("compte", "")).lower() == "nycmayor":
                 out.abstain("compte écarté (NYC Mayor : perdant à tous les réglages sur le passé)")
                 continue
+            if float(p.get("min_period_days", 0)):
+                # Les marchés de 2 jours (« du 22 au 24 octobre ») n'ont jamais été testés sur le passé (enquête 23/10/2026).
+                begin, finish = parse_date(tr.get("debut") or ""), parse_date(tr.get("fin") or "")
+                if begin is None or finish is None or (finish - begin).total_seconds() < float(p["min_period_days"]) * 86400:
+                    out.abstain("période plus courte que celles du test sur le passé")
+                    continue
             prob = tweet_bucket_probability(tr, rng, now, float(p["dispersion"]), int(p["recent_hours"]),
                                             int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5)))
             if prob is None:
