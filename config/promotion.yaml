@@ -109,7 +109,7 @@ retirer_inactives_apres_jours: 3
 # marché de saison), non_aux_drames et detroits_tranches (une tranche, le 31/10) allaient l'être avant leur premier jour utile :
 # elles ne sont jamais retirées pour inactivité (elles restent soumises à « perdante » et à l'élimination hebdomadaire).
 jamais_retirer: [market_maker, cpi_tranches, jobs_favori_non, statu_quo_ia, saison_non, non_aux_drames, detroits_tranches,
-                 mots_prononces_nfl, seismes_marche]
+                 mots_prononces_nfl, seismes_marche, box_office_favori]   # box_office_favori : ne joue que le dimanche matin (UTC), 24/10/2026
 # Ménage (19/10/2026) : retrait immédiat d'une stratégie clairement pire que le hasard (score de
 # confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).
