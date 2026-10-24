@@ -11,6 +11,7 @@ import dataclasses
 import hashlib
 import logging
 from dataclasses import dataclass, field
+import re
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -219,6 +220,11 @@ def excluded(market: MarketInfo, words: tuple[str, ...]) -> bool:
 
 
 WEATHER_SLUGS = ("highest-temperature", "lowest-temperature", "precipitation", "where-will-it-rain", "will-it-rain", "rain-in-", "snow-in-")
+# 24/10/2026 : Gamma a aussi passé la POLITIQUE en « zero_fees » (19-20/10) ; les stratégies `familles: [politics, sans_frais]` (favori_politique*, parking_politique…)
+# n'en voyaient plus que 94 marchés sur 393 (« famille de marchés exclue : 360 »), `favori_politique` n'a plus acheté depuis le 16/10. Comme la météo, la politique se
+# reconnaît à l'adresse de l'événement ; Fed, culture, tech restent « zero ». Relevé du 24/10 : 859 des 2 377 marchés « zero » du scan, relus à la main (échantillon de 12).
+POLITICS_SLUGS = re.compile(r"election|senate|governor|mayor|midterm|primary|nominee|prime-minister|presidential|president-of|parliament|balance-of-power|"
+                            r"win-the-house|house-election|control-the-house|house-margin|margin-of-victory|speaker|referendum|coalition")
 
 
 def market_family(market: MarketInfo) -> str:
@@ -234,6 +240,8 @@ def market_family(market: MarketInfo) -> str:
         # loterie_meteo ne voyait plus rien (dernier achat le 20/10 à 16 h 27). La météo se reconnaît à l'adresse de l'événement.
         if family == "zero" and (market.event_slug or market.slug or "").startswith(WEATHER_SLUGS):
             return "weather"
+        if family == "zero" and POLITICS_SLUGS.search((market.event_slug or market.slug or "").lower()):
+            return "politics"
         return family
     return "other"
 

@@ -319,3 +319,18 @@ def test_candidates_no_buys_the_no_of_a_multi_candidate_election_market_inside_i
     assert not proposals(24 * 14, tmp_path / "f", question="Will the Democratic Party candidate win the 2026 Florida gubernatorial election by 0%-3%?")  # tranche de marge
     assert not proposals(24 * 14, tmp_path / "h", question="Will the Democratic Party candidate win the 2026 South Carolina Senate election?")  # parti, pas candidat (24/10, cycle local)
     assert not proposals(24 * 14, tmp_path / "g", field=1)          # un marché isolé : pas un champ de candidats
+
+
+def test_zero_fee_political_markets_are_politics_again(tmp_path):
+    """24/10/2026 : Gamma passe la politique en « zero_fees » (19-20/10) ; favori_politique (familles [politics, sans_frais]) ne voyait plus que 94 marchés
+    sur 393 et n'achetait plus depuis le 16/10. Les marchés d'élection se reconnaissent à l'adresse de l'événement ; la Fed, le box-office, les IPO restent « zero »."""
+    def fam(slug, sub):
+        return market_family(_setup(tmp_path / sub, fee_type="zero_fees", events=[{"id": "e", "slug": slug, "title": "t"}])[0])
+    assert fam("texas-senate-election-winner", "a") == "politics"
+    assert fam("which-party-will-win-the-house-in-2026", "b") == "politics"
+    assert fam("next-prime-minister-of-serbia-20260629223938642", "c") == "politics"
+    assert fam("fl-27-house-margin-of-victory-2026", "d") == "politics"
+    assert fam("fed-decision-in-december", "e") == "zero"
+    assert fam("largest-ipo-by-market-cap-in-2026-287", "f") == "zero"
+    assert fam("white-house-posts-october-27-november-3-2026", "g") == "zero"
+    assert fam("highest-temperature-in-paris-on-october-24-2026", "h") == "weather"
