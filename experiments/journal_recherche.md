@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-24 (passage chercheur, après-midi : 14 h 54 UTC → FIN_HEURE)
+## 2026-10-24 (passage chercheur, après-midi : 14 h 54 → 16 h 12 UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-24_apres_midi_copie_prix_et_jetons.md`, `2026-10-24_seismes_doublon_entre_reseaux.md`, `2026-10-24_touche_deja_touchee_non_a_0_001.md` ; famille du jour n° 1, plus deux autres en famille 3).
   - **Famille 1, copie du principal au prix près** (217 achats, 151 jetons réglés) : prix payé identique à celui du fantôme (−0,0007 en moyenne pour la championne), gain réalisé −244 € contre −257 € au prix du fantôme ; les 48 jetons sans fantôme datent tous d'avant le 18/10 22 h UTC (copie fidèle, PR #76) ; 0 sur 111 achats depuis.
