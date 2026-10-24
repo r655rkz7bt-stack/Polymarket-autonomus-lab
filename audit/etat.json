@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3174,
+  "principal": 3180,
   "fantome:calibration_patiente_v1.0.0": 1902,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1846,
@@ -40,7 +40,7 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 1556,
-  "fantome:nm_court_v1.0.0": 1552,
+  "fantome:nm_court_v1.0.0": 1554,
   "fantome:nm_crypto_v1.0.0": 1443,
   "fantome:nm_hors_crypto_v1.0.0": 1470,
   "fantome:nm_long_v1.0.0": 1475,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 1522,
+  "fantome:nf_sport_prix_haut_v1.0.0": 1524,
   "fantome:nf_sport_sans_fin_v1.0.0": 1322,
   "fantome:nm_demi_mise_v1.0.0": 1368,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1296,
@@ -64,7 +64,7 @@
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1057,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
-  "fantome:nf_sport_6_24h_v1.0.0": 979,
+  "fantome:nf_sport_6_24h_v1.0.0": 981,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 701,
   "fantome:nf_sport_patiente_prix_moyen_v1.0.0": 737,
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
@@ -108,11 +108,11 @@
   "fantome:nf_tennis_debut_match_v1.0.0": 577,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 532,
   "fantome:outsider_itf_v1.0.0": 353,
-  "fantome:nf_court_football_v1.0.0": 385,
+  "fantome:nf_court_football_v1.0.0": 388,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 439,
   "fantome:nf_tennis_12_18h_v1.0.0": 547,
   "fantome:compteur_tweets_non_v1.0.0": 315,
-  "fantome:nf_court_football_soir_v1.0.0": 326,
+  "fantome:nf_court_football_soir_v1.0.0": 331,
   "fantome:nf_court_soir_v1.0.0": 370,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 350,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
@@ -159,7 +159,7 @@
   "fantome:spacex_cumul_v1.0.0": 10,
   "fantome:toucher_metaux_v1.0.0": 8
  },
- "verifiees": 8493,
+ "verifiees": 8502,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1475,9 +1475,9 @@
    "op_id": "7e9a9fee5a13acb6d010305b"
   }
  ],
- "derniere_execution": "2026-10-24T20:12:49+00:00",
+ "derniere_execution": "2026-10-24T20:18:01+00:00",
  "dernier_seq_reglements": {
-  "principal": 3179,
+  "principal": 3180,
   "fantome:calibration_patiente_v1.0.0": 1904,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1846,
