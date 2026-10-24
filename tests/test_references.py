@@ -339,6 +339,31 @@ def test_tweet_strategy_can_skip_elon_and_trump(tmp_path):
     assert [p.outcome for p in _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1").proposals] == ["Yes"]
 
 
+def test_wide_gap_tweet_daughter_buys_only_a_big_disagreement(tmp_path):
+    """24/10/2026 : fille « calcul et prix à 15 points ou plus » (réglages du config) : le NON à 10 points d'écart que la mère achète est refusé,
+    celui à 25 points est acheté (rejeu passé : écart < 0,10 perdait 4 %, écart ≥ 0,20 gagnait ≥ 25 %)."""
+    import yaml
+    from pathlib import Path
+    from polymarket_agent.references import tweet_bucket_probability
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "strategies.yaml").read_text(encoding="utf-8"))
+    p = {k: v["value"] for k, v in cfg["compteur_tweets_non_ecart_large"]["params"].items()}
+    mother = {k: v["value"] for k, v in cfg["compteur_tweets_non"]["params"].items()}
+    m = parse_market(raw_market("t", yes_token="tY", no_token="tN", groupItemTitle="200-219", end=NOW + timedelta(hours=24)))
+    m.tweets = {"compte": "tedcruz", "debut": (NOW - timedelta(days=6)).isoformat(), "fin": (NOW + timedelta(hours=24)).isoformat(), "total": 180,
+                "heures": [1] * 336, "vu_le": NOW.isoformat()}
+    q_no = 1 - tweet_bucket_probability(m.tweets, (200, 219), NOW, p["dispersion"], int(p["recent_hours"]), int(p["long_hours"]), p["recent_weight"])
+    assert 0.2 < q_no < 0.9
+
+    def books(no_ask):
+        return {"tY": make_book("tY", bids=(("0.20", "1000"),), asks=(("0.21", "1000"),)),
+                "tN": make_book("tN", bids=((f"{no_ask - 0.01:.2f}", "1000"),), asks=((f"{no_ask:.2f}", "1000"),))}
+    small, big = round(q_no - 0.10, 2), round(q_no - 0.25, 2)
+    daughter, mum = _s(CompteurTweets, **p), _s(CompteurTweets, **mother)
+    assert [x.outcome for x in mum.propose([m], books(small), _state(tmp_path), LIMITS, "b1").proposals] == ["No"]  # la mère achète à 10 points
+    assert daughter.propose([m], books(small), _state(tmp_path, "b"), LIMITS, "b1").proposals == []
+    assert [x.outcome for x in daughter.propose([m], books(big), _state(tmp_path, "c"), LIMITS, "b1").proposals] == ["No"]
+
+
 # ------------------------------------------------------------------ détroits (IMF PortWatch, 23/10/2026)
 
 def _jours(counts, fin="2026-10-18"):

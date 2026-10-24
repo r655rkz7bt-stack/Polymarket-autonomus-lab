@@ -13,3 +13,8 @@ Lula −0,026 (septembre −0,033, octobre +0,028) ; |écart| > 0,02 dans 78 % /
 
 **Verdict : indice, non exploitable par l'arène** (un seul scrutin ; gain maximal ≈ 0,65 % sur 4 jambes, quelques centaines de parts). À relancer 2-3 fois avant le 25/10 pour voir si l'écart persiste ; si oui, à noter comme chantier de
 stratégie à jambes multiples (l'arène achète une jambe à la fois, ce qui ne permet pas de verrouiller l'écart).
+
+## Relevés suivants (relancés le 24/10/2026 à minuit UTC)
+`releves.csv` (5 lignes) : l'écart « vendre les tranches − acheter le vainqueur » de Flávio était +0,026 (22/10 15 h), +0,017 (22/10 20 h), +0,018 (23/10 0 h) ; **le 24/10 à 0 h 18 il vaut −0,002**
+(meilleur achat « vainqueur » 0,768, somme des ventes des 4 tranches 0,766 ; plus petite taille 16 parts). L'écart s'est refermé avant le scrutin du 25/10 : le montage à 4 jambes (+0,65 %) n'existe plus et ne
+valait de toute façon que quelques centaines de parts. Lula : −0,032 (sens opposé, tailles nulles). **Verdict final : écartée** (arbitrage ponctuel refermé par le marché, un seul scrutin, aucune confiance statistique possible).
