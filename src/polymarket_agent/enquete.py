@@ -27,6 +27,7 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
     filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
   - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
     pour 461 attendus par les prix mais 489 annoncés : le biais fixe +0,05 n'existe pas) ;
+  - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
   - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -205,7 +206,10 @@ def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost
 
 def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = None, extra_gap: float = 0.08) -> list[dict]:
     """Achats immédiats dont l'écart estimation − prix payé dépasse de `extra_gap` l'écart habituel
-    de la stratégie (médiane de ses achats immédiats) : estimation calculée sur un autre carnet."""
+    de la stratégie (médiane de ses achats immédiats) : estimation calculée sur un autre carnet.
+    Seuil = écart habituel + max(`extra_gap`, 3 × écart interquartile) : une stratégie à modèle propre (tweets, mots, météo,
+    cotes) a un écart très variable par construction ; le 24/10, 8 de ses 16 constats étaient de ce genre (compteur_tweets :
+    écarts de 0,04 à 0,10 habituels, et ceux de 0,3 à 0,7 gagnaient +25 % sur le passé, `experiments/tweets_fin_periode.md`)."""
     out = []
     for name, rows in entries.items():
         gaps = []
@@ -216,11 +220,13 @@ def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = 
         if len(gaps) < 5:
             continue
         usual = statistics.median(g for g, _ in gaps)
-        odd = [(g, e) for g, e in gaps if g > usual + extra_gap and (since is None or _ts(e) >= since)]
+        quartiles = statistics.quantiles([g for g, _ in gaps], n=4)
+        threshold = usual + max(extra_gap, 3 * (quartiles[2] - quartiles[0]))
+        odd = [(g, e) for g, e in gaps if g > threshold and (since is None or _ts(e) >= since)]
         if odd:
             odd.sort(key=lambda r: -r[0])
             out.append(_finding("estimation_perimee", A_REGARDER,
-                                f"{name} : {len(odd)} achat(s) estimés {extra_gap:.0%} au-dessus de l'écart habituel ({usual:+.3f})",
+                                f"{name} : {len(odd)} achat(s) estimés {threshold - usual:.0%} au-dessus de l'écart habituel ({usual:+.3f})",
                                 "L'estimation ne correspond pas au prix payé : carnet périmé (le prix a bougé pendant "
                                 "le cycle), mauvais marché rattaché, ou modèle qui s'emballe. La mise, calculée sur "
                                 "cette estimation, est trop grosse.",
@@ -643,6 +649,41 @@ def estimation_gonflee(entries: dict[str, list[dict]], min_trades: int = 100, z_
                      "à la mise (Kelly). Regarder le paramètre `bias`/`shrink` de la stratégie et la mise par tranche de prix.")]
 
 
+def certitude_promise(entries: dict[str, list[dict]], min_trades: int = 15, est_min: float = 0.995,
+                      price_max: float = 0.99) -> list[dict]:
+    """Paris « quasi certains » promis (estimation ≥ `est_min`) pour un prix d'au plus `price_max`, toute l'arène (un jeton =
+    un pari, le plus ancien) : combien, à quel prix moyen, avec quel résultat. 23/10 : `news_momentum` ajoutait +0,04 à un
+    favori déjà à 0,986 (estimation plafonnée à 0,999) et misait 20 % du fantôme pour 1,3 point de gain possible ; sur les
+    27 paris réglés promis à 0,995 et plus : −154 € pour 1 747 € misés."""
+    first: dict[str, tuple[str, str, float, float, float, float]] = {}
+    for name, rows in entries.items():
+        if name == "principal":
+            continue
+        for t in closed_trades(rows):
+            if t.get("est_probability") is None or float(t["shares_bought"]) <= 0:
+                continue
+            price = float(t["cost"]) / float(t["shares_bought"])
+            row = (t["opened_at"], t["strategy"], float(t["est_probability"]), price, float(t["cost"]), float(t["pnl"]))
+            if t["token_id"] not in first or row[0] < first[t["token_id"]][0]:
+                first[t["token_id"]] = row
+    rows = [r for r in first.values() if r[2] >= est_min and r[3] <= price_max]
+    cost, pnl = sum(r[4] for r in rows), sum(r[5] for r in rows)
+    if len(rows) < min_trades or pnl >= 0:
+        return []
+    per: dict[str, list[float]] = defaultdict(lambda: [0, 0.0, 0.0])
+    for r in rows:
+        acc = per[r[1]]
+        acc[0] += 1; acc[1] += r[4]; acc[2] += r[5]
+    examples = [f"{k} : {int(v[0])} paris, {v[2]:+.0f} € pour {v[1]:.0f} € misés"
+                for k, v in sorted(per.items(), key=lambda kv: kv[1][2])[:8]]
+    return [_finding("certitude_promise", A_REGARDER,
+                     f"arène : {len(rows)} paris promis à plus de {est_min:.3f} pour {sum(r[3] for r in rows) / len(rows):.3f} "
+                     f"en moyenne, {pnl:+.0f} € pour {cost:.0f} € misés",
+                     "Une estimation collée au plafond promet un gain de quelques points sur un favori déjà quasi sûr : "
+                     "le Kelly y mise le maximum autorisé. Regarder comment l'estimation est construite "
+                     "(prix + bonus ? plafond 0,999 ?) et ce que rapportent ces paris.", examples)]
+
+
 # Stratégies dont les jambes multiples d'un même événement sont voulues (arbitrages, échelles, teneurs de marché).
 _JAMBES_VOULUES = ("market_maker", "cross_market", "paire_oui_non", "echelle_dates", "coherence_match", "marches_jumeaux",
                    "implication_politique", "outsiders_surcotes", "football_trois_issues", "market_structure", "compteur_tweets",
@@ -787,7 +828,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
     findings = (cycle_arrete(entries, now) + copie_fidele(entries, since) + mises(entries, max_principal, since=since)
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
-                + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries)
+                + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries) + certitude_promise(entries)
                 + deux_camps(entries, since) + jambes_meme_evenement(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)

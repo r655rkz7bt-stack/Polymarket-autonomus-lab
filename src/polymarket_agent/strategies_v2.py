@@ -87,6 +87,11 @@ class _Base:
             horizon_hours=Decimal(str(round(max(hours, 0), 2))),
             strategy_id=self.strategy_id, strategy_version=self.version)
 
+    def _bump(self, side_mid: float, bump: float) -> float:
+        """Estimation « prix du camp + bonus » sans dépasser `bump_share` (0,5) de l'écart à la certitude
+        (enquête du 23/10/2026 : +0,04 sur un favori à 0,986 promettait 0,999 et une mise de 20 %)."""
+        return side_mid + min(bump, float(self.params.get("bump_share", 0.5)) * (1 - side_mid))
+
     @staticmethod
     def _mid(books, market) -> float | None:
         book = books.get(market.token_ids[0]) if market.token_ids else None
@@ -286,7 +291,11 @@ class NewsMomentum(_Base):
                 continue
             side = 0 if move > 0 else 1
             side_mid = mid if side == 0 else 1 - mid
-            est = side_mid + float(p["continuation"])
+            # Enquête du 23/10/2026 : « prix + continuation » dépassait 1 pour un favori à 0,986 ; plafonnée
+            # à 0,999 (bornes comprises), l'estimation promettait +1,3 point et la mise montait à 20 % du
+            # fantôme (−0,75 % à 0,95 et plus, −22 % entre 0,90 et 0,95). La continuation ne peut plus
+            # dépasser `bump_share` (0,5) de ce qui sépare le prix de la certitude (`_bump`).
+            est = self._bump(side_mid, float(p["continuation"]))
             u = float(p["uncertainty"])
             prop = self._buy(m, books, state, side, est - u, est, est + u, bucket, marks, out,
                              f"news_momentum:{intel.independent_sources} sources, pic ×{intel.spike}",
@@ -331,7 +340,7 @@ class InformationAdvantage(_Base):
                 continue
             side = 0 if intel.official_stance > 0 else 1
             side_mid = mid if side == 0 else 1 - mid
-            est = side_mid + float(p["impact"]) * abs(intel.official_stance)
+            est = self._bump(side_mid, float(p["impact"]) * abs(intel.official_stance))
             u = float(p["uncertainty"])
             prop = self._buy(m, books, state, side, est - u, est, est + u, bucket, marks, out,
                              "information_advantage:annonce officielle",
@@ -372,7 +381,7 @@ class SocialSentiment(_Base):
                 continue
             side = 1 if intel.stance > 0 else 0  # contre la foule
             side_mid = mid if side == 0 else 1 - mid
-            est = side_mid + float(p["fade"])
+            est = self._bump(side_mid, float(p["fade"]))
             u = float(p["uncertainty"])
             prop = self._buy(m, books, state, side, est - u, est, est + u, bucket, marks, out,
                              f"social_sentiment:stance={intel.stance}", f"a priori contrarian ± {u}",

@@ -2462,6 +2462,37 @@ compteur_tweets_non_hors_elon_trump:
     skip_nyc:       {value: 1, min: 0, max: 1}
     skip_elon_trump: {value: 1, min: 0, max: 1}
 
+compteur_tweets_non_ecart_large:
+  explication: "Le compteur de tweets, NON seulement, mais on n'achète que quand le calcul et le prix sont très loin l'un de l'autre (15 points au moins) : c'est là que le calcul gagnait."
+  # 24/10/2026 (experiments/tweets_fin_periode.md) : rejeu heure par heure de 189 périodes passées (juillet-octobre 2026), NON sans NYC Mayor. Plus l'écart exigé entre le
+  # calcul et le prix est grand, plus le rendement monte : 0,03 → +11 %, 0,08 → +16 %, 0,12 → +20 %, 0,18 → +23 % par achat (écart < 0,10 : -4 %). Aux prix réellement
+  # payés (premier échange de preneur sur NON dans l'heure) : +41 % par achat avec frais (288 achats, 57 périodes, tranches à prix tous frais) à +14 % (1 631 achats, 133 périodes, toutes tranches, t +2,1) : « retenue ». MAIS :
+  # le découpage « NON sans NYC » vient lui-même d'une sélection (~60 découpages), 13 % seulement des signaux ont un échange dans l'heure, octobre est faible (5 périodes,
+  # -14 % par période au prix du relevé) : fantôme, pas dans validated_strategies. Écart exigé = marge 0,03 + incertitude 0,01 + gain net 0,11 = 0,15.
+  # Sans Elon Musk ni Trump : le rejeu ne couvre presque pas Elon (carnets de 30 tranches, 0 achat) ni Trump (13 périodes, -9 %), et `tweets_filles.md` les donnait à ≈ 0 %.
+  mere: compteur_tweets_non
+  morceau: "sans Elon ni Trump, calcul et prix à 15 points ou plus"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.11, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
+    skip_elon_trump: {value: 1, min: 0, max: 1}
+
 compteur_tweets_non_patiente:
   explication: "La même idée que « compteur de tweets, NON seulement », mais on pose l'achat et on attend un vendeur au lieu de payer son prix."
   # AMELIORATION n°6 du 21/10/2026 : tranches de tweets peu liquides ; seul l'acheteur pressé paie les frais.
@@ -3025,3 +3056,137 @@ detroits_tranches:
     max_candidates: {value: 40, min: 0, max: 200}
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
+detroits_marche_log:
+  explication: "Le FMI compte chaque semaine les bateaux qui passent dans deux détroits ; on regarde de combien ce nombre a déjà bougé d'une semaine à l'autre depuis 2019, et on achète la tranche (ou le contraire d'une tranche) que le marché vend trop peu cher."
+  class: detroits_marche_log
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  hypothesis: >
+    Test sur le passé (experiments/detroits.md, 23/10/2026), verdict RETENUE mais sur peu d'événements : tranches hebdomadaires et
+    mensuelles d'Ormuz et de Bab el-Mandeb réglées sur IMF PortWatch, 40 événements réglés du 07/06 au 19/10/2026, données PortWatch
+    supposées connues le mercredi seulement, achat au premier échange réel dans les 2 h : 150 paris, +24 % par pari, t par événement
+    2,13, z des prix 2,83, 5 mois sur 5, les deux moitiés des dates positives (+18 % puis +30 %), +12 % sans les 3 meilleurs paris,
+    Ormuz +17 % et Bab el-Mandeb +39 %. Choisi parmi 4 modèles et 2 seuils (16 essais) : 3 réglages « retenue », celui-ci a le plus de paris (le mélange normal, 44 paris seulement) ; regroupé par détroit et par mois (semaines qui se chevauchent), t 2,77 sur 9 groupes.
+    Le marché surestime la tranche centrale ; la loi relative depuis 2019 lui donne moins. Billets sous 0,10 exclus (3 perdus sur 3).
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance calculée − prix demandé − frais (seuil du test)
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}     # 0 = la règle du test telle quelle
+    min_price:      {value: 0.10, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 12, min: 1, max: 72}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly : 40 événements seulement, 5 mois
+
+nf_tennis_12_18h_vainqueur_800_850:
+  explication: "Le favori en tennis, seulement les paris « qui gagne le match », achetés entre 12 h et 18 h (heure UTC), et seulement quand le prix payé est entre 0,80 et 0,85."
+  # Fille 80/20 (obligation du 23/10, soir) : prix payé 0,800-0,850 = 12 opérations, +162, +10,2 % par mise contre la mère. Douze paris : une piste,
+  # pas une preuve (la famille entière gagne autant que ses prix, enquête du 22/10). Fantôme gratuit ; jugée contre sa mère sur la même période.
+  mere: nf_tennis_12_18h_vainqueur
+  morceau: "tennis, vainqueur, 12-18 h UTC, prix payé 0,800-0,850"
+  class: naive_favorite
+  filtres: {familles: [sports], disciplines: [tennis], heure_utc: [12, 18], types_pari: [vainqueur], prix_min: 0.8, prix_max: 0.85}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_6_24h_autre:
+  explication: "Le favori de sport de la championne entre 6 et 24 heures avant la fin, mais seulement quand on achète une équipe ou un joueur (pas un « Oui » ni un « Non »)."
+  # Fille 80/20 (obligation du 23/10, soir) : issue « autre » = 11 opérations, +149, +17,3 % par mise contre la mère. Onze paris : une piste, pas une preuve.
+  mere: nf_sport_patiente_6_24h
+  morceau: "sport, patiente, 6 à 24 h, issue autre (équipe, joueur)"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24, prix_min: 0.8, prix_final: true, issue: [autre]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-23"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_6_24h_6_12h:
+  explication: "Le favori de sport de la championne entre 6 et 24 heures avant la fin, mais seulement les paris qui se terminent dans 6 à 12 heures."
+  # Fille 80/20 (obligation du 24/10) : délai 6-12 h = 11 opérations, +164, +14,5 % par mise contre la mère. Onze paris : une piste, pas une preuve
+  # (la famille entière gagne autant que ses prix, enquête du 24/10) ; fantôme gratuit, jugée contre sa mère sur la même période.
+  mere: nf_sport_patiente_6_24h
+  morceau: "sport, patiente, 6 à 24 h, fin dans 6 à 12 h"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24, prix_min: 0.8, prix_final: true, echeance_min: 6, echeance_max: 12}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_non_900_925:
+  explication: "Le favori de sport quand c'est un « Non », mais seulement quand le prix payé est entre 0,90 et 0,925."
+  # Fille 80/20 (obligation du 24/10) : prix payé 0,900-0,925 = 12 opérations, +157, +9,3 % par mise contre la mère. Douze paris : une piste, pas une preuve
+  # (favoris de l'arène à 0,90-0,925 : 159 gagnés pour 157,3 attendus, enquête du 24/10) ; fantôme gratuit.
+  mere: nf_sport_non
+  morceau: "sport + favori NON, prix payé 0,900-0,925"
+  class: naive_favorite
+  filtres: {familles: [sports], issue: [non], prix_min: 0.9, prix_max: 0.925}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+seismes_marche:
+  explication: "Un site officiel américain liste chaque séisme du monde ; on voit déjà le plus fort de la journée (ou combien il y en a eu cette semaine) et on achète la tranche que le marché vend trop peu cher, ou on parie contre celle qu'il vend trop cher."
+  class: seismes_marche
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  hypothesis: >
+    Test sur le passé (experiments/seismes.md, 24/10/2026), verdict INDICE : 27 marchés « plus gros séisme du jour » (25/09 → 22/10) et
+    55 marchés « combien de séismes cette semaine » (décembre → octobre) réglés sur l'USGS, règlement relu 26/27 (jour) et 47/57 (semaine ;
+    les 10 écarts sont tous des marchés >= 5,5 où le marché a compté un séisme de plus que le catalogue d'aujourd'hui). Le modèle ne bat pas clairement le marché
+    (test apparié par événement : jour meilleur 31 fois sur 56, t −1,3 ; semaine ≥ 5,5 t +1,2 en sa défaveur) ; aux prix payés (premier achat dans les 2 h) : jour 27 paris +69 % (13 jours,
+    t 1,15), semaine >= 5,5 +24 % après frais (181 paris, 27 événements, t 2,05), semaine >= 6,5 +7 % (t 0,6). ~30 découpages regardés,
+    marchés minces (médiane 8 $ par échange) : le gain n'est PAS prouvé. Quart de Kelly.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance calculée − prix demandé − frais
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}
+    min_price:      {value: 0.04, min: 0.01, max: 0.50}
+    max_price:      {value: 0.96, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 0.25, min: 0.1, max: 24}   # catalogue relevé toutes les 10 min ; un séisme récent absent fausse la loi
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces

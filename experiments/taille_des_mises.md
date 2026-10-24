@@ -46,3 +46,20 @@ confirme. Elle n'empêche pas une baisse, mais la limite fortement dans tous les
 
 Limites : paris supposés indépendants ; profil d'une seule stratégie ; 30 jours ; l'avantage
 réel est supposé constant.
+
+## 23/10/2026 : deux règles pour le principal, testées et non retenues
+
+Question d'Etienne : « à quoi sont dues les pertes ? » (principal à 764 €, −236 € sur 187 opérations clôturées ;
+143 gagnées pour 151,8 attendues par les prix payés, z −1,8 ; frais 25 €).
+
+1. **Ne plus copier les favoris à 0,90 ou plus** (le principal y perdait −128 € sur 52 paris) : **non retenue**.
+   Sur toute l'arène (un jeton = un pari), les tranches chères sont les MOINS mauvaises : 0,90-0,95 −0,9 % par mise
+   (292 gagnés pour 297,3 attendus, 321 paris), ≥ 0,95 −1,5 % (203 paris) ; contre 0,80-0,85 −4,7 % (248 paris) et
+   < 0,80 −12,4 % (889 paris, z −5,9). La perte du principal sur les favoris chers vient de son petit échantillon.
+2. **Avantage mesuré sur une fenêtre récente** (le plus prudent de « tout l'historique » et « les N derniers paris ») :
+   **non retenue**. Rejeu approché des 187 opérations (mise ∝ part copiée) : N = 20 → −196 € ; N = 30 → −247 € ;
+   N = 50 → −206 € ; N = 80 → −235 € ; réel −236 €. Pas de sens régulier : 4 réglages essayés, rien de robuste.
+
+Constat commun : aucune tranche de prix ne bat ses prix dans l'arène. Le principal perd parce qu'il copie des
+stratégies sans avantage prouvé ; la règle actuelle (`part_min` 0) cesse de les copier dès que l'avantage mesuré
+tombe à zéro. La vraie piste est de trouver un avantage (sources « arbitres », `experiments/veille_api_publiques.md`).

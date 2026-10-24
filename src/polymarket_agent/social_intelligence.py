@@ -63,8 +63,8 @@ def match(observations: list[Observation], markets: list[MarketInfo], min_hits: 
             event_id = obs.data.get("event_id")
             obs.market_ids = [m.market_id for m in markets if m.event_id == event_id]
             continue
-        if obs.source in ("crypto_prices", "meteo_metar", "meteo_hko", "meteo_prevision", "meteo_ensemble"):
-            continue  # prix crypto : par actif ; météo : rattachée directement aux marchés de sa station
+        if obs.source in ("crypto_prices", "meteo_metar", "meteo_hko", "meteo_prevision", "meteo_ensemble", "portwatch"):
+            continue  # prix crypto : par actif ; météo, détroits : rattachés directement aux marchés de leur station ou détroit
         title = tokens(obs.title or "")
         words = title | tokens(obs.text or "")
         scored = []

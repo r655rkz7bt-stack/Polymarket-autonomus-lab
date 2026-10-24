@@ -1,0 +1,86 @@
+
+=== marche_abs_365 seuil 0.05 : 145 paris, 40 év., rendement +0.205, t év. 1.04, z 1.66, mois 3/5 → indice
+  Bab el-Ma  49 paris, 16 év., rendement +0.629, t év. 2.07, z 2.49, mois 3/4 → retenue
+  Strait of  96 paris, 24 év., rendement -0.011, t év. -0.77, z 0.16, mois 2/5 → écartée
+  1re moitié (avant 2026-08-12) : 67 paris, 19 év., rendement +0.226, t év. 0.51, z 0.93, mois 2/3 → écartée
+  2e moitié               : 78 paris, 23 év., rendement +0.186, t év. 0.7, z 1.4, mois 2/3 → écartée
+  sans les 3 meilleurs    : 142 paris, 40 év., rendement +0.012, t év. 0.03, z 1.11, mois 2/5 → écartée
+  sans le meilleur év. (664342) : 140 paris, 39 év., rendement +0.119, t év. 0.73, z 1.43, mois 3/5 → écartée
+  OUI : 57 paris, 35 év., rendement +0.412, t év. 1.07, z 1.03, mois 3/5 → indice ; prix payé moyen 0.180
+  NON : 88 paris, 39 év., rendement +0.070, t év. 0.5, z 1.31, mois 3/5 → écartée ; prix payé moyen 0.679
+  par horizon : {'h 8-13': (1, 0.139), 'h ≤ 7': (71, 0.083), 'h ≥ 14': (73, 0.324)}
+
+=== marche_abs_365 seuil 0.1 : 112 paris, 39 év., rendement +0.190, t év. 0.56, z 1.27, mois 5/5 → écartée
+  Bab el-Ma  30 paris, 15 év., rendement +0.610, t év. 1.22, z 2.25, mois 3/4 → indice
+  Strait of  82 paris, 24 év., rendement +0.036, t év. -0.42, z 0.03, mois 3/5 → écartée
+  1re moitié (avant 2026-08-10) : 55 paris, 19 év., rendement +0.353, t év. 0.74, z 0.97, mois 3/3 → écartée
+  2e moitié               : 57 paris, 21 év., rendement +0.033, t év. -0.3, z 0.83, mois 3/3 → écartée
+  sans les 3 meilleurs    : 109 paris, 39 év., rendement -0.039, t év. -0.22, z 0.67, mois 3/5 → écartée
+  sans le meilleur év. (664342) : 107 paris, 38 év., rendement +0.088, t év. 0.25, z 1.1, mois 5/5 → écartée
+  OUI : 43 paris, 30 év., rendement +0.406, t év. 0.71, z 0.94, mois 3/5 → écartée ; prix payé moyen 0.181
+  NON : 69 paris, 36 év., rendement +0.056, t év. 0.21, z 0.91, mois 3/5 → écartée ; prix payé moyen 0.632
+  par horizon : {'h 8-13': (1, 0.333), 'h ≤ 7': (56, 0.202), 'h ≥ 14': (55, 0.175)}
+
+=== marche_log_90 seuil 0.05 : 138 paris, 40 év., rendement +0.232, t év. 1.4, z 1.68, mois 4/5 → indice
+  Bab el-Ma  49 paris, 16 év., rendement +0.573, t év. 2.11, z 2.43, mois 3/4 → retenue
+  Strait of  89 paris, 24 év., rendement +0.045, t év. -0.1, z 0.18, mois 2/5 → écartée
+  1re moitié (avant 2026-08-09) : 64 paris, 17 év., rendement +0.266, t év. 0.79, z 1.07, mois 2/3 → écartée
+  2e moitié               : 74 paris, 23 év., rendement +0.203, t év. 1.2, z 1.3, mois 3/3 → indice
+  sans les 3 meilleurs    : 135 paris, 40 év., rendement +0.044, t év. 0.65, z 1.13, mois 3/5 → écartée
+  sans le meilleur év. (664342) : 133 paris, 39 év., rendement +0.144, t év. 1.11, z 1.47, mois 4/5 → indice
+  OUI : 50 paris, 35 év., rendement +0.542, t év. 1.18, z 1.51, mois 4/5 → indice ; prix payé moyen 0.183
+  NON : 88 paris, 40 év., rendement +0.057, t év. 0.88, z 1.03, mois 5/5 → indice ; prix payé moyen 0.681
+  par horizon : {'h 8-13': (1, 0.139), 'h ≤ 7': (62, 0.27), 'h ≥ 14': (75, 0.202)}
+
+=== marche_log_90 seuil 0.1 : 120 paris, 40 év., rendement +0.323, t év. 1.47, z 1.88, mois 5/5 → indice
+  Bab el-Ma  42 paris, 16 év., rendement +0.699, t év. 2.05, z 2.33, mois 3/4 → retenue
+  Strait of  78 paris, 24 év., rendement +0.121, t év. 0.03, z 0.55, mois 3/5 → écartée
+  1re moitié (avant 2026-08-10) : 59 paris, 19 év., rendement +0.358, t év. 0.85, z 1.42, mois 3/3 → indice
+  2e moitié               : 61 paris, 23 év., rendement +0.290, t év. 0.97, z 1.24, mois 3/3 → indice
+  sans les 3 meilleurs    : 117 paris, 40 év., rendement +0.108, t év. 0.7, z 1.31, mois 4/5 → écartée
+  sans le meilleur év. (664342) : 115 paris, 39 év., rendement +0.223, t év. 1.21, z 1.64, mois 5/5 → indice
+  OUI : 44 paris, 34 év., rendement +0.765, t év. 1.65, z 1.78, mois 4/5 → retenue ; prix payé moyen 0.196
+  NON : 76 paris, 40 év., rendement +0.068, t év. 0.45, z 1.09, mois 5/5 → écartée ; prix payé moyen 0.641
+  par horizon : {'h ≤ 7': (58, 0.364), 'h ≥ 14': (62, 0.285)}
+
+=== marche_log_depuis_2019 seuil 0.05 : 151 paris, 40 év., rendement +0.316, t év. 2.05, z 2.66, mois 4/5 → retenue
+  Bab el-Ma  52 paris, 16 év., rendement +0.570, t év. 2.27, z 2.52, mois 3/4 → retenue
+  Strait of  99 paris, 24 év., rendement +0.182, t év. 0.71, z 1.4, mois 3/5 → écartée
+  1re moitié (avant 2026-08-16) : 76 paris, 21 év., rendement +0.318, t év. 0.99, z 1.71, mois 2/3 → indice
+  2e moitié               : 75 paris, 19 év., rendement +0.313, t év. 2.04, z 2.05, mois 3/3 → retenue
+  sans les 3 meilleurs    : 148 paris, 40 év., rendement +0.146, t év. 1.04, z 2.13, mois 3/5 → indice
+  sans le meilleur év. (664342) : 146 paris, 39 év., rendement +0.244, t év. 1.76, z 2.53, mois 4/5 → retenue
+  OUI : 53 paris, 33 év., rendement +0.712, t év. 2.33, z 1.73, mois 4/5 → retenue ; prix payé moyen 0.296
+  NON : 98 paris, 40 év., rendement +0.101, t év. 1.36, z 2.02, mois 4/5 → indice ; prix payé moyen 0.758
+  par horizon : {'h 8-13': (1, 0.139), 'h ≤ 7': (67, 0.44), 'h ≥ 14': (83, 0.218)}
+
+=== marche_log_depuis_2019 seuil 0.1 : 122 paris, 40 év., rendement +0.266, t év. 1.59, z 2.39, mois 4/5 → retenue
+  Bab el-Ma  41 paris, 16 év., rendement +0.646, t év. 1.71, z 2.13, mois 3/4 → retenue
+  Strait of  81 paris, 24 év., rendement +0.074, t év. 0.35, z 1.39, mois 3/5 → écartée
+  1re moitié (avant 2026-08-11) : 59 paris, 19 év., rendement +0.133, t év. 0.53, z 1.17, mois 2/3 → écartée
+  2e moitié               : 63 paris, 22 év., rendement +0.390, t év. 1.62, z 2.21, mois 3/3 → retenue
+  sans les 3 meilleurs    : 119 paris, 40 év., rendement +0.113, t év. 0.68, z 1.85, mois 2/5 → écartée
+  sans le meilleur év. (745502) : 120 paris, 39 év., rendement +0.208, t év. 1.22, z 2.08, mois 4/5 → indice
+  OUI : 49 paris, 33 év., rendement +0.503, t év. 1.98, z 1.57, mois 4/5 → retenue ; prix payé moyen 0.294
+  NON : 73 paris, 37 év., rendement +0.107, t év. 1.12, z 1.8, mois 3/5 → indice ; prix payé moyen 0.690
+  par horizon : {'h ≤ 7': (56, 0.245), 'h ≥ 14': (66, 0.284)}
+
+=== melange_normal seuil 0.05 : 43 paris, 14 év., rendement +0.788, t év. 2.21, z 2.79, mois 3/4 → retenue
+  Bab el-Ma  43 paris, 14 év., rendement +0.788, t év. 2.21, z 2.79, mois 3/4 → retenue
+  1re moitié (avant 2026-08-24) : 20 paris, 8 év., rendement +0.731, t év. 1.39, z 1.6, mois 1/2 → indice
+  2e moitié               : 23 paris, 7 év., rendement +0.838, t év. 1.96, z 2.35, mois 3/3 → retenue
+  sans les 3 meilleurs    : 40 paris, 14 év., rendement +0.346, t év. 1.49, z 1.9, mois 3/4 → indice
+  sans le meilleur év. (850698) : 40 paris, 13 év., rendement +0.621, t év. 1.82, z 2.32, mois 3/4 → retenue
+  OUI : 16 paris, 10 év., rendement +1.696, t év. 2.29, z 2.58, mois 3/3 → retenue ; prix payé moyen 0.190
+  NON : 27 paris, 14 év., rendement +0.250, t év. 1.22, z 1.64, mois 3/4 → indice ; prix payé moyen 0.675
+  par horizon : {'h 8-13': (1, 0.139), 'h ≤ 7': (17, 0.479), 'h ≥ 14': (25, 1.024)}
+
+=== melange_normal seuil 0.1 : 30 paris, 12 év., rendement +0.661, t év. 1.46, z 1.63, mois 2/4 → indice
+  Bab el-Ma  30 paris, 12 év., rendement +0.661, t év. 1.46, z 1.63, mois 2/4 → indice
+  1re moitié (avant 2026-08-20) : 16 paris, 7 év., rendement +0.923, t év. 1.27, z 1.82, mois 1/2 → indice
+  2e moitié               : 14 paris, 6 év., rendement +0.362, t év. 0.24, z 0.45, mois 1/3 → écartée
+  sans les 3 meilleurs    : 27 paris, 12 év., rendement +0.081, t év. 0.76, z 0.59, mois 1/4 → écartée
+  sans le meilleur év. (850698) : 27 paris, 11 év., rendement +0.399, t év. 1.02, z 1.04, mois 2/4 → indice
+  OUI : 10 paris, 8 év., rendement +1.590, t év. 1.51, z 1.8, mois 2/3 → retenue ; prix payé moyen 0.182
+  NON : 20 paris, 12 év., rendement +0.197, t év. 0.81, z 0.84, mois 2/4 → indice ; prix payé moyen 0.613
+  par horizon : {'h ≤ 7': (13, 0.518), 'h ≥ 14': (17, 0.77)}

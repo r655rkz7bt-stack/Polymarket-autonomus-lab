@@ -187,7 +187,7 @@ def test_repository_config_lets_economic_data_markets_through_the_scanner():
     from conftest import ROOT
     cfg = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["scanner"]
     assert classify(parse_market(raw_market(volume24hr=20, liquidityNum=1500)), NOW, cfg)  # le scan général les écarte
-    for tag in (102964, 101701):
+    for tag in (102964, 101701, 105617, 104139, 103038):  # + séismes (103038, 24/10/2026) + détroits (bab-el-mandeb, hormuz : detroits_marche_log, 23/10/2026)
         spec = cfg["tag_pages"][tag]
         assert spec["pages"] >= 1 and spec["min_volume_24h"] == 0
         tag_cfg = dict(cfg, **{k: v for k, v in spec.items() if k != "pages"})

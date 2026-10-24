@@ -1,0 +1,94 @@
+# Séismes : « plus gros séisme du jour » et « combien de séismes cette semaine » (24/10/2026)
+
+Chantier n°6 de `experiments/CHANTIERS.md` (USGS), devenu une piste à tester. **Verdict : indice → fantôme `seismes_marche`** (quart de Kelly).
+Scripts : `experiments/seismes/scripts/` (`usgs.py` catalogue, `releve.py` marchés et échanges, `hebdo.py`, `jour.py`, `tables.py`) ;
+relevés versionnés dans `experiments/seismes/releves/` (catalogue USGS M ≥ 5 depuis 2014 : 22 526 séismes ; 122 événements Polymarket).
+
+## Les marchés
+- **Jour** : « What will the biggest earthquake be on <date> ? », 6 tranches (sous 5,3 / 5,3-5,4 / 5,5-5,6 / 5,7-5,8 / 5,9-6,0 / 6,1 ou plus), jour UTC,
+  magnitude USGS arrondie au dixième ; 27 jours réglés (25/09 → 22/10), **sans frais** (`zero_fees`), 240-900 $ de liquidité.
+- **Semaine** : « How many 5.5 (ou 6.5) or above earthquakes worldwide <lundi> - <dimanche> ? », 7 à 9 tranches de compte, semaine du lundi 00 h au dimanche 24 h
+  **heure de l'Est**, 57 événements réglés depuis décembre (dont 28 en ≥ 5,5), frais 5 % × p(1 − p) (`weather_fees`).
+- Les deux se règlent sur le catalogue USGS, lisible en direct et sans clé.
+
+## Contrôle du règlement (ma lecture redonne-t-elle le résultat officiel ?)
+- Jour : **26 sur 27** (le 27/09 : maximum 5,3 chez moi, « sous 5,3 » chez Polymarket, magnitude révisée entre-temps).
+- Semaine : **47 sur 57**. Les 10 écarts sont **tous** des marchés ≥ 5,5 où Polymarket a compté **un séisme de plus** que le catalogue d'aujourd'hui
+  (1 fois 3 de plus) ; les 29 marchés ≥ 6,5 sont tous bons. Cause non trouvée (fenêtre horaire, arrondi et type de magnitude essayés, rien de régulier) : probablement
+  des magnitudes révisées à la baisse depuis le règlement. Les paris simulés sont réglés sur le résultat **officiel du marché**, pas sur mon compte.
+
+## Modèle (rien de futur)
+- Jour : maximum déjà vu à l'heure de décision + part des jours des 3 dernières années sans séisme ≥ x dans les heures restantes (x = 5,25 / 5,45 / 5,65 / 5,85 / 6,05).
+  **Étalonnage hors marché** sur 660 jours (2025 → 22/10/2026, décision à 12 h UTC) : observés / attendus par tranche 111/124,5, 96/100,1, 117/114,0, 96/91,6, 92/85,4, 148/144,4
+  (|z| ≤ 1,6) ; le modèle est calibré.
+- Semaine : compte déjà vu + binomiale négative (Gamma-Poisson) calibrée sur les 156 semaines précédentes. Variance ≈ 4 × la moyenne à ≥ 5,5 (tables) (répliques), 1,2 × à ≥ 6,5 :
+  un Poisson simple sous-estimerait les queues.
+
+## Contre le marché d'abord (perte log, dernier échange des 6 heures précédentes)
+| Jour : heure de décision | cas | modèle | marché |
+|---|---|---|---|
+| 6 h UTC | 57 | 0,350 | 0,499 |
+| 12 h | 89 | 0,264 | 0,322 |
+| 18 h | 91 | 0,181 | 0,288 |
+
+**Test apparié par événement** (perte log moyenne du modèle moins celle du marché, par tranche, une valeur par événement et par heure de décision, probabilités bornées à 0,01-0,99) : jour −0,124 (56 couples, **modèle meilleur dans 31, t −1,3**) ;
+à 6 h −0,34 (16, t −1,3), à 12 h −0,02 (19, t −0,2), à 18 h −0,06 (21, t −0,5). Semaine ≥ 5,5 : +0,029 (160 couples, t +1,2, modèle meilleur 82 fois sur 160) ; ≥ 6,5 : +0,007 (t +0,8). **Le modèle n'est donc pas démontré meilleur que le
+marché** : l'écart du tableau vient de quelques événements (un dernier prix de 6 h sur un marché mince) ; seul le jour penche du bon côté, sans être significatif.
+Semaine ≥ 6,5 : modèle 0,13-0,36 contre marché 0,14-0,35 (égalité). Semaine ≥ 5,5 : égalité de J-6 à J-3, **le marché meilleur à J-2 et J-1** (0,31/0,33 contre 0,36/0,43) :
+il connaît le compte presque exact de la fin de semaine, y compris l'écart de comptage ci-dessus. Le dernier échange d'un marché mince peut dater de 6 heures : cette comparaison avantage le modèle.
+
+## Achats simulés aux prix réellement payés (1er achat dans les 2 h après la décision, écart ≥ 0,03, billets 0,03-0,97)
+| | paris | événements | rendement | t par événement | z des prix |
+|---|---|---|---|---|---|
+| **Jour**, 6/12/18 h, OUI et NON, écart ≥ 0,03 | 27 | 13 | **+69 %** | 1,15 | 2,5 |
+| Jour, NON seulement | 11 | 9 | +53 % | 2,72 | 2,2 |
+| Jour, écart ≥ 0,10 | 12 | 9 | +139 % | 1,74 | 2,5 |
+| **Semaine ≥ 5,5**, frais compris | 181 | 27 | **+24 %** | 2,05 | 1,4 |
+| Semaine ≥ 5,5, OUI seulement | 79 | 25 | +51 % | 1,79 | 2,5 |
+| Semaine ≥ 5,5, J-3 à J-6 | 104 | 25 | +37 % | 1,53 | 2,2 |
+| Semaine ≥ 6,5 | 96 | 28 | +7 % | 0,58 | −0,2 |
+
+Robustesse de la semaine ≥ 5,5 (écart ≥ 0,03, frais compris) : référence sur 3 ans +24,1 % ; sur 1 an +18,4 % ; sur 6 ans +24,8 % ; **sans les 3 meilleurs paris +8 %** (1 an : +2 %) ;
+1re moitié des semaines +37 %, 2e moitié +13 % ; mois : 5 gagnants sur 7. Le gain vient des queues (billets OUI à 0,05-0,30 sur des comptes bien plus hauts que la normale
+après un séisme majeur et ses répliques) : le marché les cote trop bas, mais ce sont peu de paris gagnants. Les OUI de tranche voisine du compte déjà vu perdent.
+
+## Verdict : indice faible, pas « retenue »
+- 27 jours seulement côté jour (13 avec un achat possible), ~30 découpages regardés (heures, côtés, seuils d'écart, 3 références, 2 magnitudes) : le t par événement reste sous 1,5
+  (jour) ou 2,05 (semaine) avec une sélection de découpages ; sans les 3 meilleurs paris, la semaine tombe à +8 %.
+- Marchés minces : échange médian 8 $, carnets larges (OUI 0,15 / 0,75 vus le 24/10) ; ce que l'on peut vraiment acheter reste à mesurer dans l'arène.
+- Mais : modèle étalonné sur 660 jours (et sur 1 094 jours selon le maximum déjà vu), une source officielle lisible en direct, et des paris simulés positifs aux prix payés ; en revanche l'avantage sur la **qualité** des prix du marché n'est pas démontré (test apparié ci-dessus, t −1,3 au mieux) : les gains simulés viennent de peu de paris de queue.
+→ **fantôme `seismes_marche`** (quart de Kelly, `jamais_retirer` : des jours sans marché utile ne doivent pas le faire retirer), pas dans `validated_strategies`.
+Essai en direct le 24/10 à 05 h UTC : lecteur USGS (61 séismes en 10 jours), 16 tranches de la semaine rattachées (par exemple « plus de 13 séismes ≥ 5,5 » : modèle 0,68 contre prix 0,38-0,42).
+
+## Le comptage de Polymarket à 5,5 (à lire avant de se fier aux tranches de la semaine ≥ 5,5)
+Sur les 28 semaines ≥ 5,5, mon compte tombe dans la tranche gagnante 18 fois (64 %) ; pour ≥ 6,5, 29 fois sur 29. Aucun décalage de fenêtre (de −24 h à +24 h au début et à la fin : au mieux 20 sur 28) ni seuil
+de magnitude (5,4 / 5,45 / 5,5 / 5,55 : 15 / 18 / 18 / 9) n'explique les 10 écarts ; le marché compte toujours un séisme de PLUS. Les paris simulés ≥ 5,5 sont réglés sur le résultat officiel du marché, donc ce défaut est déjà payé
+dans le +24 % ; à titre d'illustration (sélection sur l'issue, à ne pas utiliser comme preuve) : semaines où mon compte = celui du marché +69 % (103 paris), semaines où il diffère −35 % (78 paris). Une stratégie qui parie sur le compte
+exact depuis le catalogue d'aujourd'hui joue donc contre un règlement dont la règle exacte est inconnue : raison de plus pour un quart de Kelly et un fantôme.
+**Hypothèse la plus probable (non vérifiable)** : le règlement a lieu 1 à 2 jours après la fin de la semaine, avec les séismes que l'USGS listait ALORS (provisoires) ; certains ont depuis été fusionnés, supprimés ou révisés sous 5,5, et le catalogue
+d'aujourd'hui (celui de mon relevé) ne les contient plus. Le sens des écarts (toujours un de PLUS chez le marché) et le fait que les séismes ≥ 6,5, mieux revus, ne bougent jamais vont dans ce sens. Si c'est vrai, le flux en direct que lit la stratégie
+voit les mêmes séismes provisoires que le résolveur : le décalage serait plus petit en direct que dans ce test.
+
+## Ce qui a été regardé et écarté (24/10, suite)
+- **Après la fin du jour** (le maximum est connu, le marché reste ouvert jusqu'à 18 h UTC le lendemain) : le gagnant s'achète 0,97 en moyenne (9 jours, 1re heure et demie après minuit UTC), 0,977 à +2 h, 0,997 à +6 h ; or mon maximum redonne le bon
+  résultat 26 fois sur 27 (96 %, une révision de magnitude). Rendement +3,4 % pour 3,7 % d'échecs : **rien à prendre**, la stratégie s'abstient après 23 h UTC.
+- **Étalonnage conditionnel du modèle du jour** (1 094 jours, 12 h UTC) : selon le maximum déjà vu (< 5,25, 5,25-5,65, 5,65-6,05) la chance qu'aucun séisme ≥ x n'arrive dans le reste de la journée est juste à ±3 % près (par ex. 214 observés pour 205 attendus,
+  96 pour 104) : pas de correction de répliques à ajouter.
+- **Marché annuel** « How many 7.0 or above earthquakes in 2026 ? » (13 séismes déjà vus, ≈ 2,6 de plus attendus, moyenne 2014-2025 : 13,75 par an) : loi de Poisson 14-16 : 0,66 (marché 0,665), 17-19 : 0,27 (0,305), 20 ou plus : ≈ 0,03 (0,0585), 11-13 : 0,075 (0,05).
+  Le marché est calé sauf peut-être la queue 20+ ; aucun prix passé, pas de stratégie (relevé du 24/10).
+
+## Limites et suite
+- Plage horaire testée : jour entre 6 h et 23 h UTC ; semaine entre 0,5 et 6,6 jours avant la fin (pas de test avant 6 h : la stratégie s'abstient).
+- Le comptage ≥ 5,5 de Polymarket dépasse parfois le mien d'un séisme : si le fantôme perd sur les tranches ≥ 5,5, regarder ce décalage avant tout.
+- À refaire : `tables.py` chaque mois (tables du modèle) ; rejouer le test avec les ~25 jours de plus qui seront réglés d'ici un mois ; marchés mensuels
+  (« How strong … by <mois> », « Where will a 6.0+ … ») et « Another 7.0+ earthquake by… » non testés (peu d'événements).
+
+## Comment juger le fantôme (à lire au prochain passage)
+- Rythme attendu : environ 1 pari par jour (marchés du jour, entre 6 h et 23 h UTC) et 5 à 6 par semaine (compte ≥ 5,5 / 6,5, au plus 2 tranches par événement). 30 paris réglés d'ici environ trois semaines (mi-novembre).
+- Regarder séparément : (1) jour, (2) semaine ≥ 6,5, (3) semaine ≥ 5,5 (règlement incertain, voir plus haut) ; chaque morceau contre ses prix (gagnés / attendus, `enquete.py` contrôle `chance`) et contre −3,8 % de l'arène.
+- Refaire `tables.py` (tables du modèle) et `releve.py` + `hebdo.py` + `jour.py` avec les 3-4 semaines de marchés réglés en plus ; si le test apparié par événement reste non significatif et que le fantôme perd, écarter la piste.
+- Risque connu : retard du catalogue USGS (10 à 20 minutes avant qu'un grand séisme apparaisse) : juste après un séisme, le marché a déjà bougé et le modèle, qui ne le voit pas, achète le mauvais côté (le contrôle `ordres_apres_choc` n'existe pas ; à regarder dans les achats du fantôme faits dans les 20 minutes d'un séisme ≥ 5,5). Dans le test sur le passé, 2 paris du jour sur 27 tombent dans les 30 minutes d'un séisme ≥ 5,25 ; sans eux : 25 paris, +54 % (au lieu de +69 %) : le biais est faible.
+
+## Relecture indépendante du code (24/10) : suites
+Aucun bug de calcul (sommes à 1, bornes, heure d'hiver, OUI/NON). Deux risques corrigés : probabilité bornée à 0,03-0,97 dans la stratégie (une « certitude » fausse aurait misé ~25 % du capital) et fraîcheur du catalogue ramenée à 15 minutes.
+Restent : le biais de comptage ≥ 5,5 ; `eventtype=earthquake` non filtré dans la requête USGS (explosions de carrière ≥ 5 : rare, non vérifié).

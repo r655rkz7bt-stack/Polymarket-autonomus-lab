@@ -3,6 +3,73 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-24 (passage chercheur, matin : 04 h 55 UTC → voir fin de l'entrée)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-24_principal_contre_fantome_copie.md` ; famille du jour 1 « le principal ne joue pas ce que l'arène mesure », puis les trois obligations « chance »).
+  - **Rien de faux trouvé dans la copie** : le principal (772 €, −228 € réglés) a bien joué 62 jetons de `nf_sport_patiente`, tous présents dans son fantôme (+161 € sur 13 585 €). Sur la même période, les paris copiés font −2,5 % (74 paris) et les non copiés +5,1 % (50) :
+    l'écart (tranche 0,90-0,95 : −15,6 % contre +8,0 %) ne vient ni de la taille de mise ni du prix (copiés par quartile de mise 13/34, 17/35, 28/34, 23/35, prix moyen 0,85-0,89) : hasard d'échantillon.
+  - **Constat de fond** : sur les 1 798 jetons réglés de toute l'arène (premier achat de chacun), les favoris gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8, z −2,2 ; 0,80-0,95 : z −1,4 à +0,6).
+    Les trois obligations « chance » ont la même cause qu'aux 22 et 23/10 (mises ∝ 1/(1 − prix) à biais fixe, rien derrière). Aucun correctif de code, pas de nouveau contrôle.
+- **Recherche** (`experiments/seismes.md`, scripts `experiments/seismes/scripts/`, chantier n°6 USGS) : marchés « plus gros séisme du jour » (27 jours réglés) et « combien de séismes cette semaine » (57 événements), règlement sur l'USGS.
+  Règlement relu : jour 26/27, semaine 47/57 (les 10 écarts : marchés ≥ 5,5 où Polymarket compte un séisme de plus que le catalogue d'aujourd'hui). Modèle du jour étalonné sur 660 jours (|z| ≤ 1,6 par tranche) ; modèle de la semaine Gamma-Poisson (variance 3 × la moyenne).
+  **Contre le marché** : jour, perte log 0,18-0,35 contre 0,29-0,50 au tableau brut, mais test apparié par événement non significatif (modèle meilleur 31 fois sur 56, t −1,3) ; semaine égalité (≥ 5,5 : t +1,2 en sa défaveur). **Aux prix payés** : jour 27 paris +69 % (13 jours, t 1,15), semaine ≥ 5,5 +24 % après frais (181 paris, 27 événements, t 2,05 ; sans les 3 meilleurs +8 %), ≥ 6,5 +7 % (t 0,6).
+  ~30 découpages regardés, marchés minces (échange médian 8 $) : **indice faible → fantôme**, pas « retenue ».
+- **Arène** : fantôme `seismes_marche` (quart de Kelly, `jamais_retirer`) avec lecteur `sources/usgs.py` (séismes M ≥ 5 des 10 derniers jours, toutes les 10 minutes), module `seismes.py` (lois du jour et de la semaine, tables `seismes_tables.json` à refaire chaque mois par `experiments/seismes/scripts/tables.py`),
+  étiquette `earthquakes` (103038) dans `tag_pages`, 16 tests. Cycle local : 1er cycle « seismes 0 » (le catalogue est lu pendant le cycle, rattaché au suivant), 2e cycle : 6 marchés rattachés, 3 achats relus à la main (« plus de 13 séismes ≥ 5,5 » OUI à 0,42 pour 0,68, 11 déjà vus dont une réplique de 7,0 ;
+  « 4 séismes ≥ 6,5 » OUI à 0,05 pour 0,27, 3 déjà vus ; « 12 séismes ≥ 5,5 » NON à 0,82 pour 0,89). Filles 80/20 de la feuille de mission : `nf_sport_patiente_6_24h_6_12h` et `nf_sport_non_900_925` (fantômes, 11-12 opérations : pistes, pas preuves) ;
+  pas de fille de `nf_tennis` 0,80-0,85 (doublon de `nf_tennis_12_18h_vainqueur_800_850`, déjà en arène).
+- **Tableau de bord** : « À la une » remis à jour ; bloc `entonnoir` replié au départ (8 900 px sur téléphone, près de la moitié de la page : la page passe de 18 400 à 9 600 px, aperçu `apercu_dashboard.py`, 20 tests du tableau verts).
+- **Reste ouvert** : refaire `releve.py` + `hebdo.py` + `jour.py` dans un mois (≈ 25 jours de plus) ; comprendre l'écart de comptage ≥ 5,5 (10 semaines sur 28 : +1) avant de se fier aux tranches ≥ 5,5 ; marchés mensuels de séismes non testés ;
+  évaluer les relevés d'ensembles météo quand Gamma les aura clos (aujourd'hui à 12 h UTC pour les premiers).
+
+## 2026-10-24 (passage chercheur, minuit : 23 h 55 UTC → voir fin de l'entrée)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-24_ecart_estimation_et_reference_arene.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations et contrôle `estimation_gonflee`).
+  - **Obligations** (`apres_echeance`, championne, `contrer_crypto_patiente`) : causes déjà écrites les 22 et 23/10, rien de neuf.
+  - **Défaut trouvé : `estimation_perimee` signalait des erreurs qui n'en sont pas.** Les 6 constats du rapport publié (compteur_tweets ×3, decroissance_temps, detroits_marche_log, mots_prononces) concernent des stratégies à modèle propre dont
+    l'écart « estimation − prix » varie par construction (écart interquartile 0,04 à 0,25 contre 0,00 à 0,02 pour les `nf_*`). Sur le passé des tweets, les achats à écart ≥ 0,20 sont les meilleurs (+25 à +29 %), ceux à écart < 0,10 perdent 4 %.
+    Correctif : seuil = écart habituel + max(8 points, 3 × écart interquartile) ; test ; rapport 6 → 2 constats (le CZ du 23/10, estimé 0,81 payé 0,10 à 33 minutes de la fin, reste signalé).
+  - **Référence** : l'arène entière (1 721 jetons, 59 509 € misés) perd 3,8 % par mise hors frais (−2 264 € pour un hasard de ±945 €) ; `estimation_gonflee` (z −10,9) vient surtout des estimations des `nf_*`/`naive_favorite` (biais fixe, déjà tracé le 22/10) et de `meteo_prevision`
+    (154 achats, tous avant le 19/10 : 0,81 annoncé, 54 % gagnés). Toute stratégie doit se comparer à −3,8 %, pas à 0.
+  - **Vérifié** : `loterie_meteo` voit bien les marchés de température (94 sur 94 classés `weather`, 30 candidats dans la fenêtre à 8 h UTC) ; les « 377 exclus par famille » du cycle de 23 h 45 sont les marchés non météo de la liste ; sources météo « ok (5 / 3 observations) » ;
+    12 achats tirés au hasard parmi 195 (stratégies hors `nf_`/`nm_`) relus sur Gamma : bons marchés, bons côtés.
+  - **Deuxième contrôle à la main (famille 4, filtres de prix)** : sur 2 013 achats des 3 derniers jours, 39 (1,9 %) sont 1 à 2 crans hors de la plage de leur stratégie (tennis à 0,78 pour 0,80-0,95) : filtre sur le prix du scan, sans effet mesurable, aucun correctif.
+- **Recherche** (`experiments/tweets_fin_periode.md`, scripts `experiments/tweets_fin_periode/`) : compteur de tweets, 189 périodes (juillet → 20/10), rejeu heure par heure jusqu'à 10 minutes de la fin, règlement relu 185/189, échanges réels des 189 événements.
+  - Dernières heures : **non démontré** (53 achats, 6 périodes, tous cz_binance, +17 à +38 % ; les 4 pertes en direct sont compatibles avec la malchance).
+  - Écart exigé entre le calcul et le prix : plus il est grand, plus le rendement monte (NON sans NYC : 0,03 +11 %, 0,12 +20 %, 0,18 +23 % par achat). Aux prix réellement payés : **+41 % (288 achats, 57 périodes, tranches toutes fraîches) à +14 % (1 631 achats, 133 périodes, toutes tranches, t +2,1)**,
+    « retenue » par `idea_test.verdict`, mais 13 % seulement des signaux ont un échange dans l'heure, le prix horaire d'une tranche peu échangée gonfle l'écart (21 % → 12 % au prix payé), WhiteHouse (−14,5 %) et Elon (−8,7 %) perdent, découpage issu d'une sélection (~60 coupes) : **indice fort → fantôme**. ~25 réglages regardés.
+  - Relevé d'ensembles météo n° 3 versionné (2 024 marchés) ; toujours 0 marché réglé à minuit (les premiers finissent le 24/10 à 12 h UTC) : évaluation le 24/10 au soir.
+  - `marge_coherente` (n° 3) : l'écart de +0,026 du 22/10 est refermé (−0,002 le 24/10 à 0 h) : **écartée**.
+- **Arène** : fille `compteur_tweets_non_ecart_large` (fantôme, mère `compteur_tweets_non`, écart calcul − prix ≥ 0,15, sans Elon ni Trump, pas dans `validated_strategies`) ; cycle local : 467 marchés, 2 propositions relues à la main (Elon, avant l'ajout du filtre Elon/Trump).
+- **Reste ouvert** : confirmer à 6-12 h UTC que `loterie_meteo` achète ; évaluer les relevés d'ensembles météo quand Gamma les aura clos (0 réglé à minuit) ; fille de `compteur_tweets_non_ecart_large` avec NON ≤ 0,60 et sans WhiteHouse seulement après 30 paris en direct ;
+  rejeu des tweets aux échanges (pas aux prix horaires) pour Elon et Trump ; ordres posés sur les 13 % de signaux échangés.
+
+## 2026-10-23 (passage chercheur, soir : 19 h 55 → 20 h 33 UTC)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-23_soir_news_momentum_certitude.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations).
+  - **Défaut trouvé : `news_momentum` promet 0,999 pour un favori à 0,986.** En regardant les 27 positions « ouvertes bien après l'échéance » (990 € bloqués : marchés du Cap et de Kyiv en litige UMA, référendum d'Alberta en attente du résultat officiel),
+    trois fantômes de la famille (`nm_hors_crypto`, `nm_demi_mise`, `nm_prix_haut`) avaient chacun misé 188,8 € (20 % de leur capital) sur « Non » à 0,986 pour la température du Cap, estimation 0,999, gain possible 1,3 point.
+    Cause : `estimation = prix + 0,04`, puis bornes ramenées à 0,999 (la borne basse ne dépend plus de l'incertitude). Famille entière : 319 paris, 205 gagnés pour 216 attendus, −526 € ; prix ≥ 0,95 : −42 € pour 5 618 € misés ; 0,90-0,95 : −362 €.
+    Correctif `_bump` (la continuation ne dépasse pas la moitié de l'écart à la certitude) pour `news_momentum`, `information_advantage`, `social_sentiment` ; tests (échouent sans le plafond) ; contrôle `certitude_promise` (27 paris à 0,995 et plus : −154 €).
+  - **Obligations** : `apres_echeance` et la championne (jour du 18/10) : causes déjà écrites, rien de neuf ; `contrer_crypto_patiente` : 24 gagnés pour 18,4 attendus sur 97 paris, le déficit (−45,7 €) vient de 31 billets à moins de 0,10 (0 gagné, 12 % de chance) : variance, pas de défaut.
+  - **Contrôle de la chance** sur les trois premières de l'arène : `nf_sport` (65 paris, +268 €, sans les 3 meilleurs +200 €, z des prix +0,49), `nf_tennis_12_18h_vainqueur` (40 paris, +175 €, sans les 3 meilleurs +99 €, z +0,93), `nf_sport_patiente_6_24h` (19 paris, +159 €, sans les 3 meilleurs +90 €, z +1,08) : gains qui survivent au retrait des 3 plus gros paris, mais z de 0,5 à 1,1 (aucun avantage prouvé, 75 stratégies en concurrence).
+  - **Vérifié** : 10 achats tirés au hasard depuis 12 h UTC relus sur Gamma (bons jetons, bons marchés, 10/10) ; copie du principal : un seul constat automatique (ordre posé servi une minute avant, déjà connu) ; le plafond de 25 % tient (671 achats de fantômes depuis le 23/10 00 h 30 : 17 à 20 % ou plus, au plus 25 %) ; `loterie_meteo` : à 19 h 45 UTC aucun marché météo n'est dans sa fenêtre de 6 h (échéances à 12 h UTC) : elle ne peut pas acheter le soir, à relire demain entre 6 h et 12 h UTC pour vérifier que le correctif de la famille météo l'a réveillée.
+- **Recherche** (`experiments/k_gagnants.md`) : somme des prix OUI = k (top N, qualifiés, relégués, huitièmes ; 121 événements, 3 713 marchés). Au premier relevé (prix du CLOB) : Σp/k 1,13-1,15 à J-14/J-30 et z −6 : carnets vides à 0,50 (défaut connu).
+  Aux vrais échanges : Σp/k médian 1,00-1,03 (13 à 24 événements utilisables, les anciens échanges manquent), renormaliser gagne 0,0004-0,012 de log-score, 27 réglages, un seul « indice » (+31 %, 13 événements) non répliqué : **écartée, preuve insuffisante**.
+  Relevé d'ensembles météo : 2e relevé (2 024 marchés, 184 événements) versionné, à évaluer le 24-25/10.
+- **Arène** : deux filles 80/20 (fantômes, morceaux de 11-12 opérations : pistes, pas preuves) `nf_tennis_12_18h_vainqueur_800_850` et `nf_sport_patiente_6_24h_autre` (cycle local : la seconde pose 2 ordres, la première est hors de sa fenêtre 12-18 h) ; pas de fille de `nf_tennis` 0,80-0,85 (doublon de `nf_tennis_prix_bas_800_850`).
+  Les 15 « éliminées encore configurées » de la feuille de mission : non remplacées (les retraits pour inactivité sont déjà traités par `jamais_retirer`, les autres sont des variantes de la famille sans avantage mesuré).
+- **Reste ouvert** : vérifier `loterie_meteo` le 24/10 le matin ; évaluer les deux relevés d'ensembles ; rattachement d'actualités aux marchés météo (un « pic de mentions » sur une température du Cap) ; `k_gagnants` avec des échanges plus anciens ou des carnets relevés en direct.
+
+## 2026-10-23 (session avec Etienne : détroits, sources « arbitres »)
+
+- **Recherche** (`experiments/detroits.md`) : 96 événements réglés sur IMF PortWatch, dont 58 à tranches clos ; règlement relu 40/40 depuis juin
+  (7/17 de mars à mai : PortWatch a révisé ses chiffres, exclus). PortWatch se met à jour le mardi vers 11 h UTC jusqu'au dimanche (retard de 2 à 9 jours).
+  Tranches hebdomadaires et mensuelles, 16 réglages : **retenue mais fragile** (150 paris, +24 %, t par événement 2,13, z des prix 2,83 ; sans les 3 meilleurs +11,8 % ;
+  regroupé par détroit et par mois t 2,77, vérifié à part). L'AIS d'Ormuz ne suit pas PortWatch (corrélation 0,1 à 0,3 sur 26 jours).
+- **Arène** : fantôme `detroits_marche_log` (demi-Kelly, pas dans `validated_strategies`) ; scanner : étiquette `hormuz` (104139) ; cycle local : 22 marchés, 7 achats relus.
+- **Reste ouvert** : marchés à seuil (« returns to normal », 20 événements clos) ; course à la publication du mardi ; comparaison AIS / PortWatch sur 60 jours.
+
 ## 2026-10-23 (passage chercheur, après-midi : 14 h 56 → 15 h 5x UTC)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-23_meteo_zero_fees_famille.md`, `2026-10-23_inactives_retirees_et_calendriers.md` ; famille du jour 6, puis famille 1).

@@ -92,6 +92,21 @@ def test_estimate_far_above_the_usual_gap_is_flagged():
     assert len(found) == 1 and "1 achat" in found[0]["titre"] and "0.817" in found[0]["exemples"][0]
 
 
+def test_a_model_with_a_naturally_wide_gap_is_not_flagged_for_ordinary_spread():
+    """24/10 : compteur_tweets (écart médian 0,04, écarts de 0,3 à 0,7 qui gagnaient +25 % sur le passé) remplissait le rapport de
+    faux constats ; une stratégie à prix + biais fixe (écart toujours 0,05) reste surveillée de près."""
+    t = NOW - timedelta(hours=5)
+    spread = [0.01, 0.02, 0.04, 0.05, 0.08, 0.12, 0.15, 0.18, 0.2, 0.24]
+    model = [_buy(t + timedelta(minutes=i), f"m{i}", 0.5, 10, est=0.5 + g) for i, g in enumerate(spread)]
+    model.append(_buy(t + timedelta(hours=1), "wide", 0.5, 10, est=0.5 + 0.30))  # 0,30 : dans l'étendue de ce modèle
+    fixed = [_buy(t + timedelta(minutes=i), f"f{i}", 0.85, 10, est=0.90) for i in range(8)]
+    fixed.append(_buy(t + timedelta(hours=1), "odd", 0.85, 10, est=0.99))
+    found = enquete.estimation_perimee({"tweets_v1.0.0": _ledger(*model), "nf_v1.0.0": _ledger(*fixed)}, NOW - timedelta(days=3))
+    assert [f["titre"].split(" : ")[0] for f in found] == ["nf_v1.0.0"]
+    huge = model + [_buy(t + timedelta(hours=2), "huge", 0.10, 10, est=0.81)]  # CZ du 23/10 : écart 0,71
+    assert any(f["titre"].startswith("tweets_v1.0.0") for f in enquete.estimation_perimee({"tweets_v1.0.0": _ledger(*huge)}, NOW - timedelta(days=3)))
+
+
 def test_a_gain_made_in_one_day_is_grave_when_the_principal_copies_it():
     """20/10 : 95 % du gain de la championne vient du 18/10."""
     rows = []
@@ -305,6 +320,19 @@ def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token
     # Estimation honnête (= le prix) ou trop peu de paris : rien.
     assert enquete.estimation_gonflee({"honnete_v1.0.0": _fav_ledger(90, 10, strategy="h", price=0.90, est=0.90)}) == []
     assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []
+
+
+def test_near_certain_promises_that_lose_money_are_flagged_per_strategy():
+    """23/10 : `news_momentum` promet 0,999 pour un « Non » vendu 0,986 ; 16 paris à ce prix dont 2 perdus = −16 × 0,3 € de gain
+    contre 2 mises entières."""
+    entries = {"nm_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999),
+               "nm_fille_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999)}  # mêmes jetons : comptés une fois
+    found = enquete.certitude_promise(entries)
+    assert len(found) == 1 and found[0]["controle"] == "certitude_promise" and "arène : 16 paris promis" in found[0]["titre"]
+    # Estimation raisonnable, trop peu de paris, ou paris gagnants : rien.
+    assert enquete.certitude_promise({"a_v1.0.0": _fav_ledger(14, 2, strategy="a", price=0.97, est=0.98)}) == []
+    assert enquete.certitude_promise({"b_v1.0.0": _fav_ledger(5, 1, strategy="b", price=0.97, est=0.999)}) == []
+    assert enquete.certitude_promise({"c_v1.0.0": _fav_ledger(16, 0, strategy="c", price=0.97, est=0.999)}) == []
 
 
 def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_finding():

@@ -23,7 +23,7 @@ import json
 import logging
 import math
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.sources._util import parse_date
@@ -369,6 +369,9 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["repos_nhl"] = attach_nhl_rest(markets, db)
     counts["mentions"] = attach_mentions(markets, db)
     counts["detroits"] = attach_detroits(markets, db)
+    counts["detroits_log"] = attach_detroits_log(markets, db)
+    from polymarket_agent.seismes import attach_seismes
+    counts["seismes"] = attach_seismes(markets, db, now)
     return counts
 
 
@@ -745,4 +748,126 @@ def attach_detroits(markets, db) -> int:
             "vu_le": seen.isoformat() if seen else None,
             "titre": f"{name} : moyenne sur 7 jours attendue le {target} {mu:.1f} ± {sd:.1f}, tranche {tranche[0]:g}-{tranche[1]:g}"})
         n += 1
+    return n
+
+
+# Détroits, suite (23/10/2026, experiments/detroits.md) : tranches HEBDOMADAIRES (« How many ships transit … week of … », somme
+# des 7 jours) et mensuelles, loi « marche aléatoire relative » (erreurs depuis 2019) : +24 % par pari aux prix payés sur 40
+# événements réglés (juin-octobre 2026), t par événement 2,1.
+TRANSIT_WEEK = re.compile(r"^How many ships transit (?:the )?(Bab el-Mandeb Strait|Strait of Hormuz)\b", re.IGNORECASE)
+TRANCHE_ANY = re.compile(r"(?:(?:fewer|less) than (\d+)|between (\d+) and (\d+)|(\d+)-(\d+)|(\d+) or more)\s+"
+                         r"(?:average daily transits|ships|on )", re.IGNORECASE)
+_MONTHS = {m: i + 1 for i, m in enumerate(("january", "february", "march", "april", "may", "june", "july", "august",
+                                            "september", "october", "november", "december"))}
+_THROUGH = re.compile(r"from (\w+) (\d+), (\d{4}),? through (\w+) (\d+), (\d{4})", re.IGNORECASE)
+_REPORTS_FOR = re.compile(r"reports for (\w+) (\d+), (\d{4})", re.IGNORECASE)
+
+
+def tranche_label(question: str) -> tuple[float | None, float | None] | None:
+    """(bas, haut) écrits dans la question, None = borne ouverte : « 220-229 ships » → (220, 229), « fewer than 25 » → (None, 25)."""
+    m = TRANCHE_ANY.search(question or "")
+    if not m:
+        return None
+    if m.group(1):
+        return None, float(m.group(1))
+    if m.group(6):
+        return float(m.group(6)), None
+    lo, hi = (m.group(2), m.group(3)) if m.group(2) else (m.group(4), m.group(5))
+    return float(lo), float(hi)
+
+
+def tranche_intervals(labels: dict[str, tuple]) -> dict[str, tuple[float, float]]:
+    """[bas, haut[ de chaque tranche d'un événement. Tranches jointives (« 0 et 10 », « 10 et 20 » : la valeur exactement entre
+    deux va à la plus haute) → [bas, haut[ ; tranches entières (« 25 et 27 », « 28 et 30 », « 220-229 ») → [bas, haut + 1[.
+    Contrôle du règlement (experiments/detroits.md) : 40 événements sur 40 depuis juin 2026 avec cette lecture."""
+    closed = sorted(v for v in labels.values() if v[0] is not None and v[1] is not None)
+    joint = any(b[0] == a[1] for a, b in zip(closed, closed[1:]))
+    out = {}
+    for k, (lo, hi) in labels.items():
+        a = -1e9 if lo is None else lo
+        b = 1e9 if hi is None else (hi if joint or lo is None else hi + 1)
+        out[k] = (a, b)
+    return out
+
+
+def _detroit_target(m) -> tuple[str, date] | None:
+    """(« somme » | « moyenne », date D) : dernier jour de la semaine, ou date de la moyenne sur 7 jours."""
+    desc = getattr(m, "description", "") or ""
+    title = m.event_title or ""
+    try:
+        if TRANSIT_WEEK.match(title):
+            f = _THROUGH.search(desc)
+            return ("somme", date(int(f.group(6)), _MONTHS[f.group(4).lower()], int(f.group(5)))) if f else None
+        if DETROIT_EVENT.match(title):
+            f = _REPORTS_FOR.search(desc)
+            if f:
+                return "moyenne", date(int(f.group(3)), _MONTHS[f.group(1).lower()], int(f.group(2)))
+            if m.end_date is not None:
+                return "moyenne", (m.end_date.astimezone(timezone.utc) - timedelta(hours=4)).date()
+    except (KeyError, ValueError):
+        return None
+    return None
+
+
+def s7_draws(counts: list[int], horizon: int, min_origins: int = 60) -> list[float] | None:
+    """Tirages de la somme des 7 jours dans `horizon` jours : somme d'aujourd'hui × chaque variation RELATIVE déjà observée à cet
+    horizon sur tout l'historique (log((S(t+h) + 7) / (S(t) + 7)), origines dont le résultat est connu : aucun regard vers le futur).
+    Le relatif suit les changements de régime (Ormuz à 4 passages par jour) mieux qu'un écart en passages."""
+    n = len(counts)
+    if horizon < 1 or n < 7 + horizon + min_origins:
+        return None
+    s7 = [sum(counts[i - 6:i + 1]) for i in range(6, n)]
+    base = s7[-1] + 7
+    return [max(0.0, base * (s7[j + horizon] + 7) / (s7[j] + 7) - 7) for j in range(len(s7) - horizon)]
+
+
+def attach_detroits_log(markets, db) -> int:
+    """`market.references["detroit_log"] = {"p", "mediane", "dernier_jour", "horizon", "tranche", "vu_le", "titre"}` pour les tranches
+    hebdomadaires et mensuelles d'Ormuz et de Bab el-Mandeb (marchés qui citent PortWatch), loi `s7_draws`."""
+    if db is None:
+        return 0
+    seen, rows = _load(db, "ref:portwatch")
+    series = {r["detroit"]: r["jours"] for r in rows}
+    events: dict[str, list] = {}
+    for m in markets:
+        title = m.event_title or ""
+        if not (TRANSIT_WEEK.match(title) or DETROIT_EVENT.match(title)) or [str(o).lower() for o in m.outcomes] != ["yes", "no"]:
+            continue
+        if "portwatch" not in (getattr(m, "description", "") or "").lower().replace(" ", ""):
+            continue
+        events.setdefault(m.event_id, []).append(m)
+    n, cache = 0, {}
+    for group in events.values():
+        name = "Bab el-Mandeb Strait" if "bab" in (group[0].event_title or "").lower() else "Strait of Hormuz"
+        jours = series.get(name) or []
+        labels = {m.market_id: tranche_label(m.question) for m in group}
+        labels = {k: v for k, v in labels.items() if v}
+        target = _detroit_target(group[0])
+        if not jours or not labels or target is None:
+            continue
+        days = [datetime.fromisoformat(d).date() for d, _ in jours]
+        if any((b - a).days != 1 for a, b in zip(days, days[1:])):
+            continue
+        kind, d = target
+        h = (d - days[-1]).days
+        if h < 1:
+            continue  # la valeur est déjà publiée : rien à prévoir
+        if (name, h) not in cache:
+            cache[(name, h)] = s7_draws([c for _, c in jours], h)
+        draws = cache[(name, h)]
+        if not draws:
+            continue
+        values = sorted(v if kind == "somme" else v / 7 for v in draws)
+        med = values[len(values) // 2]
+        for m in group:
+            if m.market_id not in labels:
+                continue
+            a, b = tranche_intervals(labels)[m.market_id]
+            p = (sum(1 for v in values if a <= v < b) + 0.5) / (len(values) + 1)
+            m.references = dict(m.references or {}, detroit_log={
+                "p": round(p, 4), "mediane": round(med, 1), "dernier_jour": days[-1].isoformat(), "horizon": h,
+                "tranche": [a, b], "vu_le": seen.isoformat() if seen else None,
+                "titre": f"{name} : {'somme sur 7 jours' if kind == 'somme' else 'moyenne sur 7 jours'} au {d} attendue {med:.1f} "
+                         f"(médiane, {h} j après le dernier jour publié), tranche {a:g}-{b:g}"})
+            n += 1
     return n

@@ -58,6 +58,8 @@ CATALOG: dict[str, tuple[str, str | None, str]] = {
                             "nouvelle source des marchés de température depuis le 19-20/10/2026 (199 événements sur 255) : relevés METAR directs"),
     "weather.gov.hk": ("Observatoire de Hong Kong (Daily Extract)", "meteo_hko",
                        "open data data.weather.gov.hk : max / min depuis minuit au dixième ; tranches par troncature"),
+    "portwatch.imf.org": ("IMF PortWatch (passages dans les détroits)", "portwatch",
+                          "ArcGIS public du FMI (Daily_Chokepoints_Data), mis à jour le mardi jusqu'au dimanche ; 96 événements le 23/10/2026"),
     "app.pyth.com": ("Pyth (oracle de prix)", None, "hermes.pyth.network, API publique : à étudier"),
     "pythdata.app": ("Pyth (oracle de prix)", None, "hermes.pyth.network, API publique : à étudier"),
     "arena.ai": ("LMArena (classement des modèles d'IA)", None, "chantier n°9"),

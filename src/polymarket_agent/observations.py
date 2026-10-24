@@ -28,13 +28,14 @@ SOURCE_RELIABILITY = {
     "x_api": 0.25,
     "meteo_metar": 0.97,    # relevés officiels NOAA de la station qui tranche le marché
     "meteo_hko": 0.97,      # Observatoire de Hong Kong : l'arbitre lui-même (relevé depuis minuit)
-    "meteo_prevision": 0.7,
-    "meteo_ensemble": 0.7,  # membres d'ensemble GEFS / ECMWF : un modèle, pas un fait  # prévisions GFS / ECMWF (Open-Meteo) : un modèle, pas un fait
+    "meteo_prevision": 0.7,  # prévisions GFS / ECMWF (Open-Meteo) : un modèle, pas un fait
+    "meteo_ensemble": 0.7,   # membres d'ensemble GEFS / ECMWF : un modèle, pas un fait
     "mlb_stats": 0.97,      # scores publiés par la ligue elle-même
     "nhl_stats": 0.97,
     "football_data": 0.9,
     "odds_api": 0.8,        # probabilités des bookmakers : un avis chiffré, pas un fait
     "guardian": 0.75,
+    "portwatch": 0.97,      # FMI : passages publiés par l'arbitre des marchés de détroits (hebdomadaire, le mardi)
 }
 OFFICIAL_DOMAINS = (".gov", ".gouv.fr", "federalreserve.gov", "ecb.europa.eu", "europa.eu",
                     "who.int", "un.org", "uefa.com", "fifa.com", "nba.com", "nfl.com", "sec.gov")
