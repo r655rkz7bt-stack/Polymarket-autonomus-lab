@@ -18,6 +18,7 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
   étiquette `earthquakes` (103038) dans `tag_pages`, 16 tests. Cycle local : 1er cycle « seismes 0 » (le catalogue est lu pendant le cycle, rattaché au suivant), 2e cycle : 6 marchés rattachés, 3 achats relus à la main (« plus de 13 séismes ≥ 5,5 » OUI à 0,42 pour 0,68, 11 déjà vus dont une réplique de 7,0 ;
   « 4 séismes ≥ 6,5 » OUI à 0,05 pour 0,27, 3 déjà vus ; « 12 séismes ≥ 5,5 » NON à 0,82 pour 0,89). Filles 80/20 de la feuille de mission : `nf_sport_patiente_6_24h_6_12h` et `nf_sport_non_900_925` (fantômes, 11-12 opérations : pistes, pas preuves) ;
   pas de fille de `nf_tennis` 0,80-0,85 (doublon de `nf_tennis_12_18h_vainqueur_800_850`, déjà en arène).
+- **Tableau de bord** : « À la une » remis à jour ; bloc `entonnoir` replié au départ (8 900 px sur téléphone, près de la moitié de la page : la page passe de 18 400 à 9 600 px, aperçu `apercu_dashboard.py`, 20 tests du tableau verts).
 - **Reste ouvert** : refaire `releve.py` + `hebdo.py` + `jour.py` dans un mois (≈ 25 jours de plus) ; comprendre l'écart de comptage ≥ 5,5 (10 semaines sur 28 : +1) avant de se fier aux tranches ≥ 5,5 ; marchés mensuels de séismes non testés ;
   évaluer les relevés d'ensembles météo quand Gamma les aura clos (aujourd'hui à 12 h UTC pour les premiers).
 
