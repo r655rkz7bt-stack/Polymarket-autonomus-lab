@@ -104,7 +104,9 @@ scanner:
               # PortWatch sur 74 dans les 30 jours) ; sans elle, `detroits_marche_log` ne voyait aucun marché d'Ormuz.
               104139: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
               # 24/10/2026 : étiquette earthquakes (103038) : « plus gros séisme du jour » et « combien de séismes cette semaine » (seismes_marche), 240-900 $ de liquidité
-              103038: {pages: 1, min_liquidity: 200, min_volume_24h: 0, max_spread: 0.15}}
+              103038: {pages: 1, min_liquidity: 200, min_volume_24h: 0, max_spread: 0.15},
+              # 24/10/2026 : étiquette box-office (51), tranches de recettes du premier week-end (`box_office_favori`)
+              51: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:

@@ -151,15 +151,20 @@ class CrossMarketLadder(_Base):
                     legs = ((low_m, 0), (high_m, 1)) if kind == "above" else ((low_m, 1), (high_m, 0))
                     books_ = [books.get(m.token_ids[s]) for m, s in legs]
                     if any(b is None or b.best_ask is None for b in books_):
+                        out.abstain("carnet indisponible")
                         continue
                     if any(m.token_ids[s] in state.positions or m.market_id in used for m, s in legs):
+                        out.abstain("position déjà ouverte")
                         continue
                     try:
                         costs = [b.best_ask + taker_fee(ONE, b.best_ask, m.fees) for b, (m, _) in zip(books_, legs)]
                     except UnknownFees:
+                        out.abstain("frais inconnus")
                         continue
                     edge = ONE - sum(costs)
                     if edge < p["min_net_edge"]:
+                        # 24/10/2026 : sans raison écrite, « paires examinées sans écart » ne se distinguait pas de « ne voit rien »
+                        out.abstain("paire cohérente : aucun écart après frais")
                         continue
                     depth = min(b.asks[0].size for b in books_)
                     budget = min(p["stake_fraction"] * total, state.cash)

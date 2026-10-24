@@ -363,3 +363,57 @@ def test_detroits_marche_log_buys_the_side_cheaper_than_the_law_and_skips_cheap_
     assert all(p.strategy_id == "detroits_marche_log" for p in out.proposals)
     assert out.abstentions
     assert {m.market_id for m in s.candidates(ms)} == {"fav", "cheap", "close", "ticket", "old"}
+
+
+def test_box_office_favori_buys_only_the_favorite_tranche_once_per_film_inside_the_window(tmp_path):
+    from polymarket_agent.strategies_v3 import BoxOfficeFavori
+    s = _s(BoxOfficeFavori, min_hours=14, max_hours=40, price_min=0.5, price_max=0.95, shift=0.03, uncertainty=0.01,
+           min_net_edge=0, max_extra_ticks=2, max_proposals_per_cycle=3, kelly_fraction=1)
+    title = '"Clayface" Opening Weekend Box Office'
+
+    def film(prefix, asks, hours=24, name=title):
+        ms, books = [], {}
+        for i, a in enumerate(asks):
+            mid = f"{prefix}{i}"
+            ms.append(_m(mid, end=NOW + timedelta(hours=hours), events=[{"id": prefix, "title": name}]))
+            books.update(_books((f"{mid}Y", f"{a - 0.01:.3f}", f"{a:.3f}"), (f"{mid}N", f"{1 - a - 0.01:.3f}", f"{1 - a + 0.01:.3f}")))
+        return ms, books
+    ms, books = film("a", [0.05, 0.12, 0.70, 0.13])
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [(p.market_id, p.outcome) for p in out.proposals] == [("a2", "Yes")]  # seulement la favorite
+    for kwargs, why in (({"hours": 60}, "hors de la fenêtre avant la fin"), ({"name": "Un autre marché"}, None)):
+        ms2, books2 = film("z", [0.05, 0.12, 0.70, 0.13], **kwargs)
+        out2 = s.propose(ms2, books2, _state(tmp_path), LIMITS, "b1")
+        assert not out2.proposals
+        assert why is None or why in out2.abstentions
+    ms3, books3 = film("c", [0.30, 0.31, 0.32, 0.07])  # favorite sous le prix minimal
+    out3 = s.propose(ms3, books3, _state(tmp_path), LIMITS, "b1")
+    assert not out3.proposals and "favorite hors de la plage de prix" in out3.abstentions
+    assert {m.market_id for m in s.candidates(ms + ms2)} == {m.market_id for m in ms}
+    ms4, books4 = film("h", [0.20, 0.30])  # trois tranches cachées pèsent jusqu'à 0,50 > 0,30 : favorite incertaine
+    out4 = s.propose(ms4, books4, _state(tmp_path), LIMITS, "b1")
+    assert not out4.proposals and "une tranche cachée pourrait être la favorite" in out4.abstentions
+    ms5, books5 = film("k", [0.10, 0.75])  # reste 0,15 de masse cachée < 0,75 : la favorite est sûre même avec deux tranches visibles
+    assert [p.market_id for p in s.propose(ms5, books5, _state(tmp_path), LIMITS, "b1").proposals] == ["k1"]
+
+
+def test_box_office_favori_plays_only_on_sunday_morning_utc(tmp_path):
+    from datetime import datetime, timezone
+    from polymarket_agent.strategies_v3 import BoxOfficeFavori
+    from conftest import make_book
+    s = _s(BoxOfficeFavori, min_hours=1, max_hours=48, weekday=6, hour_from=0, hour_to=16, price_min=0.5, price_max=0.95, shift=0.05,
+           uncertainty=0.01, min_net_edge=0, max_extra_ticks=2, max_proposals_per_cycle=3, kelly_fraction=1)
+    end = datetime(2026, 10, 26, 12, 0, tzinfo=timezone.utc)  # lundi 12 h UTC
+
+    def go(when):
+        ms, books = [], {}
+        for i, a in enumerate([0.05, 0.12, 0.70, 0.13]):
+            mid = f"w{i}"
+            ms.append(_m(mid, end=end, events=[{"id": "w", "title": '"Clayface" Opening Weekend Box Office'}]))
+            for tok, bid, ask in ((f"{mid}Y", a - 0.01, a), (f"{mid}N", 1 - a - 0.01, 1 - a + 0.01)):
+                books[tok] = make_book(tok, bids=((f"{bid:.3f}", "1000"),), asks=((f"{ask:.3f}", "1000"),), ts=when)
+        return s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [p.market_id for p in go(datetime(2026, 10, 25, 6, 0, tzinfo=timezone.utc)).proposals] == ["w2"]  # dimanche 6 h
+    for when in (datetime(2026, 10, 24, 20, 0, tzinfo=timezone.utc), datetime(2026, 10, 25, 17, 0, tzinfo=timezone.utc)):  # samedi soir, dimanche 17 h
+        out = go(when)
+        assert not out.proposals and "hors de la fenêtre du week-end" in out.abstentions

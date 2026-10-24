@@ -55,7 +55,9 @@ def test_cross_market_ignores_consistent_ladders(ledger, limits):
     low = ladder_market("1", 80000, "L1", "L0")
     high = ladder_market("2", 82000, "H1", "H0")
     books = two_sided("L1", "L0", "0.70", "0.71") | two_sided("H1", "H0", "0.30", "0.31")
-    assert not cross().propose([low, high], books, ledger.state, limits, "B1").proposals
+    out = cross().propose([low, high], books, ledger.state, limits, "B1")
+    assert not out.proposals
+    assert out.abstentions == {"paire cohérente : aucun écart après frais": 1}  # 24/10/2026 : « voit mais rien à faire » ≠ « ne voit rien »
 
 
 def structure():

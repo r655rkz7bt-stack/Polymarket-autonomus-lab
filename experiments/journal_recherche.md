@@ -3,6 +3,24 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-24 (passage chercheur, matin : 09 h 54 UTC → voir fin de l'entrée)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-24_matin_cross_market_muette_sans_raison.md` ; famille 6 « ce qui ne tourne plus » + dix paris relus à la main, famille 3).
+  - **Défaut trouvé (observabilité)** : 20 stratégies actives affichent des abstentions vides ; `cross_market` (0 opération en 8,9 jours, 424 marchés) ne disait pas si elle voyait des échelles sans écart ou rien du tout : quatre `continue` de `CrossMarketLadder.propose` sans raison écrite. Corrigé (« paire cohérente : aucun écart après frais »…) + test.
+    Les autres `{}` sont des fenêtres horaires/calendaires de filles (`Filtered` écarte avant la stratégie) ou des sources sans rattachement : rien de faux ; `saison_non` n'a réellement presque aucun marché dans sa fenêtre (3-11/11 : Ballon d'Or, Grands Prix).
+  - **Quatre obligations « chance / champion sans avantage »** : même mécanisme que les 22, 23 et 24/10 (biais fixe, mise ∝ 1/(1 − prix), 26 gagnés pour 26,4 attendus sur les 30 dernières opérations, −1,2 %). Pas de défaut de code.
+  - **Dix paris au hasard** (685 achats hors `nf_*`/`nm_*`, graine 2410) : question, issue et règle concordent ; le seul perdant notable (`apres_echeance` NON à 0,964 sur « l'Ukraine vise Moscou le 21/10 », non réglé 3 jours après sa date, OUI à 0,18) vient d'une stratégie coupée depuis le 23/10.
+- **Recherche** (`experiments/box_office.md`, `experiments/familles_tranches.md`, scripts versionnés) : **box-office du premier week-end** (240 films « Opening Weekend » réglés 2022-2026, leurs échanges réels : 6,7 Mo versionnés). Favorite (tranche la plus chère) : à 24 h de la fin 110 films, 100 gagnées pour 93,6 attendues, +7,5 % par pari aux prix du dernier achat réel et frais 5 % (t par film 1,96) ;
+  signe positif de 12 à 96 h (+1 à +8 %), mais instable selon le jour de fin du marché (dimanche midi : −7 à +15 %) et selon l'heure : ancrée sur le week-end, dimanche 0 h → 16 h UTC +6,6 % (142 films, t 1,56), samedi 18 h → dimanche 16 h −2,0 %. ~40 réglages. NON des tranches basses (miroir du même biais), flux d'ordres (9 réglages) : écartés ; 2e week-end : non testé (27 films, libellés irréguliers).
+  **Contrôle sur 6 autres familles à tranches répétitives** (Netflix 174, vues 241, Rotten Tomatoes 51, Billboard 75, Spotify 38, App Store 182) : aucun effet de favorite sous-cotée (−21 % à +5 %). L'App Store donne un « gagnant précédent trop cher » (z des prix −4,1) dont le NON est une loterie (sans les 3 meilleurs −48 à +62 %) : écartée.
+  Test de permutation (2 000 tirages, 24 cases) : le meilleur rendement observé (+20,5 %, 24 h, favorite 0,5-0,8, 39 paris) dépasse le 95e centile du hasard (17 %), P = 0,022, mais le §7 de `box_office.md` (règle « premier achat » : −2 %, bande 0,5-0,8 −4 %) montre la fragilité.
+  Verdict box-office : **indice faible → fantôme**, plafonné par le contrôle ; la confiance viendra des week-ends joués en arène (24-25/10, 30/10-1/11…).
+- **Arène** : fantôme `box_office_favori` (nouvelle classe `BoxOfficeFavori`, quart de Kelly, dimanche 0 h → 16 h UTC, marché encore ouvert 1 h au moins, favorite sûre même si le scanner cache des tranches : masse cachée < favorite), étiquette `box-office` (51) dans `tag_pages` ;
+  cycle local : voit 4 films (« une tranche cachée pourrait être la favorite » 1, « hors de la fenêtre » 2…) ; 2 tests. Pas de nouvelle fille de `nf_sport_patiente` (mère pleine : 10 filles vivantes). « À la une » : 5e point.
+- **Reste ouvert** : lire `box_office_favori` après le week-end du 24-25/10 puis après celui du 30/10 (achats sur les films « Clayface », « Wildwood », « Klara and the Sun »…) ; refaire `box_office/scripts/releve.py` + `favori.py`/`fenetre.py` pour les films réglés depuis (≈ 3 par week-end) ;
+  vérifier le règlement sur the-numbers.com (non lu aujourd'hui) ; séries « 2nd… weekend » (65 événements) quand les tranches seront comparables ; relevés essence/rougeole/ensembles météo (aucune échéance atteinte aujourd'hui) ;
+  marchés de Hong Kong : sur 13 marchés scannés le 24/10, 1 seul éligible et aucun dans la liste de surveillance (6 « meilleur prix manquant » = tranches déjà jouées à 0,0005, 4 quasi certains, 2 sans liquidité) : le lecteur `meteo_hko` n'est appelé que s'il en voit un ; à surveiller avant de juger le relevé d'ensembles. La sauvegarde de la base du 24/10 (faite au premier cycle du jour) ne contient pas encore les tables `meteo_ensemble_*` : la première utilisable est celle du 25/10.
+
 ## 2026-10-24 (session avec Etienne : météo par ensemble et Hong Kong)
 
 - **Enquête** : les marchés de température de Hong Kong se règlent par TRONCATURE du dixième (« 27°C » = 27,0 à 27,9), pas par arrondi :
