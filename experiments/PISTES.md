@@ -34,6 +34,14 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
    rien de régulier, et le sens inverse de celui des emplois : l'effet « tranche favorite surévaluée » n'est pas général, il tient peut-être aux seuls emplois). Reste : « Fed decision in <mois> » (16, bien piloté par les contrats
    à terme : pas de source gratuite). Méthode et scripts réutilisables : `experiments/emploi_nfp/` ; l'API `historical/` de Kalshi donne chiffres officiels et prix horaires (~3 s par appel).
 
+8. **Compteurs officiels à lecture directe** (24/10/2026, suite de `seismes.md`) : même mécanisme que les séismes (la source qui tranche est lisible en direct, la valeur partielle est connue avant la fin).
+   Séries Polymarket repérées : **rougeole aux États-Unis** (« Measles cases in U.S. by <fin de mois> », 11 seuils, 9 ladders mensuels de 2026 réglés + 2025, compteur CDC mis à jour le mercredi,
+   4 588 cas au 22/10 ; échanges relevés dans `experiments/rougeole/releves/echanges/`) : **historique hebdomadaire du CDC introuvable** (web.archive.org bloqué, `archive.org/wayback/available` limite à quelques appels) →
+   `experiments/rougeole/scripts/cdc_historique.py` ajoute une ligne par mercredi à `cdc_totaux.csv` (première ligne le 24/10) : **à relancer à chaque passage**, testable quand ~8 mercredis seront là
+   (hypothèse : compteur du mois = dernier total + croissance de la semaine, et les 11 seuils cotent-ils la bonne tranche ?). **TSA** (« Number of TSA passengers <jour> ? », ≈ 100 événements quotidiens et hebdomadaires depuis
+   décembre 2025, 7 tranches de 100 000) : **bloquée**, tsa.gov répond 403 aux robots (pas de contournement) ; les seules valeurs connues sont les tranches gagnantes des marchés réglés. **Tornades** (NCEI, mensuel, 9 tranches) :
+   publication 10 jours après la fin du mois, le marché d'octobre cote déjà 0,97 une tranche à 11 jours de la publication → peu de marge. À regarder si besoin : qualité de l'air (AirNow), « geomagnetic storm level » (NOAA, un seul événement relevé).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
