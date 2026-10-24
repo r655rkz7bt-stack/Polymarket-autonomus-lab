@@ -43,7 +43,9 @@ et ce n'est pas rejoué dans l'arène (seule la favorite l'est). Écartée comme
 Parmi les tranches à 0,10-0,85, celle dont les achats nets des 6/12/24 dernières heures sont les plus gros (au moins 20 $) à 72/48/24 h de la fin : rendements de −27 % à +13 %, aucun régulier
 (24 h : −21 %, −5 %, −27 % ; 72 h/12 h : +13 %, t 0,95). **Écartée.**
 
-## 5. Deuxième week-end et suivants (65 événements « 2nd/3rd… Weekend », 2026) : **pas testé**
+## 5. Deuxième week-end et suivants (78 événements « 2nd/3rd… Weekend » utilisables, 2026)
+Favorite (`scripts/suivants.py`, mêmes règles, sans lier le film à son ouverture) : 23-35 paris par horizon, de −2 % à +5 % (z des prix −1,5 à +1,0) : **rien** (écartée, trop peu de cas).
+**Loi de baisse (ouverture → 2e week-end)** : pas testée,
 Lien avec l'ouverture du même film (bracket gagnant) tenté : 27 films, libellés de tranches irréguliers (« 5-Day », tranches serrées/larges, doublons) et ratios incohérents (de 0,15 à 1,43) ;
 trop peu de films propres pour une loi de baisse. À reprendre quand la série « 2nd Weekend » aura 60+ films réglés avec des tranches comparables.
 

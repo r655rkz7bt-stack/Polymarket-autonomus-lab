@@ -1,0 +1,355 @@
+{
+ "relevé": "2026-10-24T10:55:02.412140Z",
+ "evenements": [
+  {
+   "id": "1235500",
+   "titre": "\"You Can See Everything\" 2nd Weekend Box Office (Higher Brackets)",
+   "fin": "2026-10-25T11:59:00Z",
+   "tranches": [
+    {
+     "tranche": "<15M",
+     "bestBid": null,
+     "bestAsk": 0.012,
+     "last": 0.007
+    },
+    {
+     "tranche": "15-16.5M",
+     "bestBid": 0.004,
+     "bestAsk": 0.017,
+     "last": 0.004
+    },
+    {
+     "tranche": "16.5-18M",
+     "bestBid": 0.023,
+     "bestAsk": 0.034,
+     "last": 0.047
+    },
+    {
+     "tranche": "18-19.5M",
+     "bestBid": 0.213,
+     "bestAsk": 0.415,
+     "last": 0.23
+    },
+    {
+     "tranche": "19.5-21M",
+     "bestBid": 0.331,
+     "bestAsk": 0.488,
+     "last": 0.379
+    },
+    {
+     "tranche": "21M+",
+     "bestBid": 0.23,
+     "bestAsk": 0.26,
+     "last": 0.26
+    }
+   ]
+  },
+  {
+   "id": "1235501",
+   "titre": "\"Clayface\" Opening Weekend Box Office (Tighter Brackets)",
+   "fin": "2026-10-25T11:59:00Z",
+   "tranches": [
+    {
+     "tranche": "<19.5M",
+     "bestBid": null,
+     "bestAsk": 0.007,
+     "last": 0.007
+    },
+    {
+     "tranche": "19.5-21M",
+     "bestBid": 0.15,
+     "bestAsk": 0.17,
+     "last": 0.16
+    },
+    {
+     "tranche": "21-22.5M",
+     "bestBid": 0.43,
+     "bestAsk": 0.64,
+     "last": 0.45
+    },
+    {
+     "tranche": "22.5-24M",
+     "bestBid": 0.16,
+     "bestAsk": 0.38,
+     "last": 0.3
+    },
+    {
+     "tranche": "24M+",
+     "bestBid": 0.05,
+     "bestAsk": 0.1,
+     "last": 0.08
+    }
+   ]
+  },
+  {
+   "id": "1191140",
+   "titre": "\"Wildwood\" Opening Weekend Box Office",
+   "fin": "2026-10-25T12:00:00Z",
+   "tranches": [
+    {
+     "tranche": "<8m",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.003
+    },
+    {
+     "tranche": "8m-10m",
+     "bestBid": 0.017,
+     "bestAsk": 0.04,
+     "last": 0.04
+    },
+    {
+     "tranche": "10m-12m",
+     "bestBid": 0.36,
+     "bestAsk": 0.48,
+     "last": 0.47
+    },
+    {
+     "tranche": "12m-14m",
+     "bestBid": 0.47,
+     "bestAsk": 0.604,
+     "last": 0.502
+    },
+    {
+     "tranche": "14m-16m",
+     "bestBid": 0.021,
+     "bestAsk": 0.049,
+     "last": 0.03
+    },
+    {
+     "tranche": "16m-18m",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.003
+    },
+    {
+     "tranche": "18m+",
+     "bestBid": 0.002,
+     "bestAsk": 0.004,
+     "last": 0.002
+    }
+   ]
+  },
+  {
+   "id": "1226718",
+   "titre": "\"You Can See Everything\" 2nd Weekend Box Office",
+   "fin": "2026-10-25T12:00:00Z",
+   "tranches": [
+    {
+     "tranche": "<3M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.009
+    },
+    {
+     "tranche": "3-5M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.004
+    },
+    {
+     "tranche": "5-7M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.006
+    },
+    {
+     "tranche": "7-9M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.005
+    },
+    {
+     "tranche": "9-11M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.009
+    },
+    {
+     "tranche": "11M+",
+     "bestBid": 0.993,
+     "bestAsk": 0.999,
+     "last": 0.998
+    }
+   ]
+  },
+  {
+   "id": "1226756",
+   "titre": "\"Klara and the Sun\" Opening Weekend Box Office",
+   "fin": "2026-10-25T12:00:00Z",
+   "tranches": [
+    {
+     "tranche": "<2M",
+     "bestBid": 0.964,
+     "bestAsk": 0.996,
+     "last": 0.985
+    },
+    {
+     "tranche": "2-3M",
+     "bestBid": 0.001,
+     "bestAsk": 0.018,
+     "last": 0.012
+    },
+    {
+     "tranche": "3-4M",
+     "bestBid": null,
+     "bestAsk": 0.005,
+     "last": 0.01
+    },
+    {
+     "tranche": "4-5M",
+     "bestBid": null,
+     "bestAsk": 0.006,
+     "last": 0.001
+    },
+    {
+     "tranche": "5-6M",
+     "bestBid": null,
+     "bestAsk": 0.009,
+     "last": 0.001
+    },
+    {
+     "tranche": "6M+",
+     "bestBid": null,
+     "bestAsk": 0.007,
+     "last": 0.007
+    }
+   ]
+  },
+  {
+   "id": "1226757",
+   "titre": "\"Ali G: Who Iz I?\" Opening Weekend Box Office",
+   "fin": "2026-10-25T12:00:00Z",
+   "tranches": [
+    {
+     "tranche": "<2M",
+     "bestBid": 0.98,
+     "bestAsk": 0.997,
+     "last": 0.987
+    },
+    {
+     "tranche": "2-3M",
+     "bestBid": 0.005,
+     "bestAsk": 0.053,
+     "last": 0.024
+    },
+    {
+     "tranche": "3-4M",
+     "bestBid": null,
+     "bestAsk": 0.012,
+     "last": 0.012
+    },
+    {
+     "tranche": "4-5M",
+     "bestBid": null,
+     "bestAsk": 0.008,
+     "last": 0.005
+    },
+    {
+     "tranche": "5-6M",
+     "bestBid": null,
+     "bestAsk": 0.007,
+     "last": 0.018
+    },
+    {
+     "tranche": "6M+",
+     "bestBid": null,
+     "bestAsk": 0.011,
+     "last": 0.014
+    }
+   ]
+  },
+  {
+   "id": "1226758",
+   "titre": "\"Street Fighter\" 2nd Weekend Box Office",
+   "fin": "2026-10-25T12:00:00Z",
+   "tranches": [
+    {
+     "tranche": "<8M",
+     "bestBid": 0.029,
+     "bestAsk": 0.087,
+     "last": 0.078
+    },
+    {
+     "tranche": "8-11M",
+     "bestBid": 0.91,
+     "bestAsk": 0.96,
+     "last": 0.94
+    },
+    {
+     "tranche": "11-14M",
+     "bestBid": 0.002,
+     "bestAsk": 0.062,
+     "last": 0.007
+    },
+    {
+     "tranche": "14-17M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.005
+    },
+    {
+     "tranche": "17-20M",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.001
+    },
+    {
+     "tranche": "20M+",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.005
+    }
+   ]
+  },
+  {
+   "id": "1220614",
+   "titre": "\"Clayface\" Opening Weekend Box Office",
+   "fin": "2026-10-26T03:59:00Z",
+   "tranches": [
+    {
+     "tranche": "<22m",
+     "bestBid": 0.35,
+     "bestAsk": 0.38,
+     "last": 0.38
+    },
+    {
+     "tranche": "22m-25m",
+     "bestBid": 0.52,
+     "bestAsk": 0.59,
+     "last": 0.58
+    },
+    {
+     "tranche": "25m-28m",
+     "bestBid": 0.06,
+     "bestAsk": 0.086,
+     "last": 0.057
+    },
+    {
+     "tranche": "28m-31m",
+     "bestBid": 0.001,
+     "bestAsk": 0.027,
+     "last": 0.001
+    },
+    {
+     "tranche": "31m-34m",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.004
+    },
+    {
+     "tranche": "34m-37m",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.001
+    },
+    {
+     "tranche": "37m+",
+     "bestBid": null,
+     "bestAsk": 0.001,
+     "last": 0.001
+    }
+   ]
+  }
+ ]
+}
