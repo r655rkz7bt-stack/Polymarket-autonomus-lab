@@ -31,3 +31,9 @@ Aucun avantage à acheter le favori avant le match, avec ou sans 50-50. Conséqu
 - `nf_*` ne tire pas son (faible) résultat de l'avant-match (déjà 10 à 16 % des mises) ; les 50-50 mesurés en arène (−0,27 % de la mise) sont du bon ordre de grandeur.
 - Volume mince : 301 paris à −6 h sur 10 438 événements (peu d'échanges de favoris à ce prix avant le match).
 - Pas de décote ajoutée aux stratégies. Les tests futurs d'une entrée avant-match doivent inclure les 50-50 (paiement 0,5) : `experiments/avant_match_50_50/scripts/analyse.py` montre comment.
+
+## Piste annexe : l'outsider d'un marché qui peut finir à 50-50 (`scripts/outsiders.py`, chiffres `resultats_outsiders_005_020.txt`)
+Raisonnement : un 50-50 paie 0,5 par part de chaque camp, soit 3 à 10 fois le prix d'un outsider à 0,05-0,20 ; avec 3 % de 50-50 (CS2 8,2 %) l'outsider vaudrait +5 à +10 % de plus que son prix de gagnant pur.
+Test, même relevé, même règle, jeton à 0,05-0,20 acheté 1 à 24 h avant le match : 480 / 287 / 201 / 135 / 64 paris, 50-50 = 1,5 / 1,0 / 2,0 / 0 / 0 % des paris ; rendement **+1,4 / +0,5 / −2,2 / −40,1 / +10,8 %** avec les 50-50 (z des prix +0,8 / +0,3 / +0,8 / −1,6 / +0,4), −3,5 / −2,0 / −10,0 % sans.
+Par ligue à −6 h : CS2 +55,6 % (24 paris, 2 à 50-50, z des prix 2,1), ATP +36,7 % (38), LoL −62 % (21) : cases de 20 à 40 paris à ±50 % d'écart-type, rien à conclure.
+**Verdict : non concluant (puissance insuffisante)** : le gain attendu (+5 %) est dix fois plus petit que le bruit de 200-500 paris d'outsiders ; il faudrait ~5 000 paris pour le voir. Pas de fantôme.
