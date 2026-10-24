@@ -51,6 +51,7 @@ def main():
                     i = bisect.bisect_right(times, int(T.timestamp()) - 3600) - 1
                     if i < 240: break
                     S = bars[i][4]
+                    if not S or S <= 0 or K <= 0: break
                     j0 = bisect.bisect_left(times, int(wstart.timestamp()))
                     run = bars[j0:i + 1] if i >= j0 else []
                     if run and ((max(b[2] for b in run) >= K) if side == "HIGH" else (min(b[3] for b in run) <= K)):
