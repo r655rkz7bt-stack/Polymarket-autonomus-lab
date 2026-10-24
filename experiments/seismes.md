@@ -21,7 +21,7 @@ relevés versionnés dans `experiments/seismes/releves/` (catalogue USGS M ≥ 5
 - Jour : maximum déjà vu à l'heure de décision + part des jours des 3 dernières années sans séisme ≥ x dans les heures restantes (x = 5,25 / 5,45 / 5,65 / 5,85 / 6,05).
   **Étalonnage hors marché** sur 660 jours (2025 → 22/10/2026, décision à 12 h UTC) : observés / attendus par tranche 111/124,5, 96/100,1, 117/114,0, 96/91,6, 92/85,4, 148/144,4
   (|z| ≤ 1,6) ; le modèle est calibré.
-- Semaine : compte déjà vu + binomiale négative (Gamma-Poisson) calibrée sur les 156 semaines précédentes. Variance = 3,1 × la moyenne à ≥ 5,5 (répliques), 1,2 × à ≥ 6,5 :
+- Semaine : compte déjà vu + binomiale négative (Gamma-Poisson) calibrée sur les 156 semaines précédentes. Variance ≈ 4 × la moyenne à ≥ 5,5 (tables) (répliques), 1,2 × à ≥ 6,5 :
   un Poisson simple sous-estimerait les queues.
 
 ## Contre le marché d'abord (perte log, dernier échange des 6 heures précédentes)
@@ -88,3 +88,7 @@ voit les mêmes séismes provisoires que le résolveur : le décalage serait plu
 - Regarder séparément : (1) jour, (2) semaine ≥ 6,5, (3) semaine ≥ 5,5 (règlement incertain, voir plus haut) ; chaque morceau contre ses prix (gagnés / attendus, `enquete.py` contrôle `chance`) et contre −3,8 % de l'arène.
 - Refaire `tables.py` (tables du modèle) et `releve.py` + `hebdo.py` + `jour.py` avec les 3-4 semaines de marchés réglés en plus ; si le test apparié par événement reste non significatif et que le fantôme perd, écarter la piste.
 - Risque connu : retard du catalogue USGS (10 à 20 minutes avant qu'un grand séisme apparaisse) : juste après un séisme, le marché a déjà bougé et le modèle, qui ne le voit pas, achète le mauvais côté (le contrôle `ordres_apres_choc` n'existe pas ; à regarder dans les achats du fantôme faits dans les 20 minutes d'un séisme ≥ 5,5). Dans le test sur le passé, 2 paris du jour sur 27 tombent dans les 30 minutes d'un séisme ≥ 5,25 ; sans eux : 25 paris, +54 % (au lieu de +69 %) : le biais est faible.
+
+## Relecture indépendante du code (24/10) : suites
+Aucun bug de calcul (sommes à 1, bornes, heure d'hiver, OUI/NON). Deux risques corrigés : probabilité bornée à 0,03-0,97 dans la stratégie (une « certitude » fausse aurait misé ~25 % du capital) et fraîcheur du catalogue ramenée à 15 minutes.
+Restent : le biais de comptage ≥ 5,5 ; `eventtype=earthquake` non filtré dans la requête USGS (explosions de carrière ≥ 5 : rare, non vérifié).

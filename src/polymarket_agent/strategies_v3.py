@@ -1236,7 +1236,8 @@ class SeismesMarche(_Base):
             if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
                 out.abstain("catalogue USGS pas à jour")
                 continue
-            fair = float(ref["p"])
+            # Jamais de certitude : le catalogue du règlement peut différer du flux (révision, séisme encore absent), 1 fois sur 27 côté jour et 10 sur 57 côté semaine >= 5,5.
+            fair = min(max(float(ref["p"]), 0.03), 0.97)
             best = None
             for side, est in ((0, fair), (1, 1 - fair)):
                 book = books.get(m.token_ids[side])

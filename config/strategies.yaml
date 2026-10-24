@@ -3184,7 +3184,7 @@ seismes_marche:
     uncertainty:    {value: 0.0, min: 0.0, max: 0.30}
     min_price:      {value: 0.04, min: 0.01, max: 0.50}
     max_price:      {value: 0.96, min: 0.50, max: 0.99}
-    max_stale_hours: {value: 1, min: 0.25, max: 24}
+    max_stale_hours: {value: 0.25, min: 0.1, max: 24}   # catalogue relevé toutes les 10 min ; un séisme récent absent fausse la loi
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_candidates: {value: 60, min: 0, max: 200}
     max_proposals_per_cycle: {value: 4, min: 0, max: 20}
