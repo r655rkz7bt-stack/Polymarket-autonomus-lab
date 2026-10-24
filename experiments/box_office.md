@@ -60,6 +60,12 @@ La fin du marché varie (lundi 12 h ou dimanche midi UTC). Ancre = dimanche 00 h
 dimanche 12 h UTC +4,5 % (t 0,9) ; avant, rien. Règle « premier achat réel entre le samedi 18 h et le dimanche 16 h UTC » : **−2,0 %** (154 films, t −0,44) ; « dimanche 0 h → 16 h » : **+6,6 %** (142 films, t 1,56, 120 gagnés pour 112,5).
 Le signal n'existe qu'après les chiffres du samedi (mécanisme plausible : le marché sous-réagit au vendredi et au samedi) mais il disparaît si l'on commence trois heures trop tôt : fragile. La règle jouée par le fantôme est celle de dimanche 0 h → 16 h UTC (`weekday`, `hour_from`, `hour_to`).
 
+## 8. Test de permutation sur la sélection (`scripts/permutation.py`)
+Combien de fois le meilleur des 24 réglages (6 horizons × 4 plages de prix) atteint-il un rendement aussi fort si le marché est calibré à 24 h ? 2 000 tirages du gagnant selon les prix normalisés à 24 h (mêmes événements, mêmes prix payés, mêmes frais), 160 événements, cases d'au moins 30 paris.
+Observé : meilleur rendement **+20,5 %** (24 h, favorite à 0,5-0,8, 39 paris), suivi de +13,9 % (24 h, 0,6-0,9), +12,3 % (48 h, 0,5-0,8) ; sous l'hypothèse nulle : médiane du meilleur 7 %, 95e centile 17 %, **P(meilleur ≥ observé) = 0,022**.
+Donc la sélection parmi 24 cases à elle seule explique mal le résultat ; elle ne couvre pas les ~15 autres découpages (ancre, premier achat, fin du marché) ni l'absence d'effet dans les 6 autres familles, ni le fait que la bande 0,5-0,8 (+20 % ici) fait −4 % dans la règle « premier achat » du §7.
+Lecture : indice réel mais fragile, plus net pour les favorites à 0,5-0,8 que pour les très hautes.
+
 ## Verdict : **indice faible → fantôme** `box_office_favori`
 Positif à tous les horizons, significatif seulement à 24 h (t 1,96-2,2) après sélection parmi ~30 réglages (z attendu du meilleur de 30 ≈ 2) ; la favorite gagne 6 fois de plus que son prix
 sur 110 (z des prix ≈ +2). Fantôme en quart de Kelly, fenêtre dimanche 0 h → 16 h UTC ; l'arène (carnets réels, 2-3 week-ends par mois) confirmera ou non.
