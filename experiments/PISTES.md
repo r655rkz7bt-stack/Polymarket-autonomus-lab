@@ -42,6 +42,10 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
    décembre 2025, 7 tranches de 100 000) : **bloquée**, tsa.gov répond 403 aux robots (pas de contournement) ; les seules valeurs connues sont les tranches gagnantes des marchés réglés. **Tornades** (NCEI, mensuel, 9 tranches) :
    publication 10 jours après la fin du mois, le marché d'octobre cote déjà 0,97 une tranche à 11 jours de la publication → peu de marge. À regarder si besoin : qualité de l'air (AirNow), « geomagnetic storm level » (NOAA, un seul événement relevé).
 
+9. **Barres touchées (échelles « hit »)** (24/10/2026, `experiments/commodites_toucher.md`) : or / argent en fantôme `toucher_metaux` (journal des prix gold-api, premiers achats vers le 02/11). Reste : relancer le test avec octobre-novembre réglés (septembre-octobre étaient perdants), pétrole et gaz
+   (source de prix libre ou clé Pyth), mensuels (pas de répétition au 24/10), actions (NVDA, TSLA… : 1 à 3 semaines réglées chacune, trop peu), cryptos hebdomadaires (voir « Testées »).
+10. **Compteurs de lancements SpaceX** (24/10/2026, `experiments/spacex_cadence.md`) : fantôme `spacex_cumul` ; à relire quand les octobre/novembre sont réglés (compteur du mois), puis le 31/12 pour l'année (position « 140-159 »). Starship (« flight test 15 by… », LL2 donne 31/12 « TBD » : sans information).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
