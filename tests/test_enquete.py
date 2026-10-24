@@ -422,3 +422,15 @@ def test_fifty_fifty_settlements_are_counted_per_market_with_their_cost():
     assert enquete.reglements_50_50(rows, min_markets=4) == []
     normal = {"a": _ledger(_buy(NOW - timedelta(hours=9), "x", 0.88, 100), _settle(NOW, "x", 1))}
     assert enquete.reglements_50_50(normal, min_markets=1) == []
+
+
+def test_strategies_that_used_to_buy_and_stopped_are_listed_with_their_last_cycle_reasons():
+    """24/10/2026 : favori_politique n'achetait plus depuis le 16/10 (la politique est passée en zero_fees) sans être « muette » ni « famille vide »."""
+    old = NOW - timedelta(days=5)
+    rows = {"favori_politique_v1.0.0": _ledger(*[_buy(old + timedelta(hours=i), f"t{i}", 0.9, 10) for i in range(4)], born=NOW - timedelta(days=9)),
+            "toujours_active_v1.0.0": _ledger(*[_buy(NOW - timedelta(hours=i + 1), f"u{i}", 0.9, 10) for i in range(4)], born=NOW - timedelta(days=9)),
+            "peu_active_v1.0.0": _ledger(_buy(old, "v", 0.9, 10), born=NOW - timedelta(days=9))}
+    ab = {"portefeuilles": {"fantome:favori_politique_v1.0.0": {"favori_politique": {"marches": 491, "raisons": {"famille de marchés exclue": 360, "avantage net insuffisant": 7}}}}}
+    found = enquete.acheteuses_arretees(rows, list(rows), NOW, abstentions=ab)
+    assert len(found) == 1 and "1 stratégie(s)" in found[0]["titre"]
+    assert "favori_politique_v1.0.0 : 4 achats" in found[0]["exemples"][0] and "famille de marchés exclue ×360" in found[0]["exemples"][0]

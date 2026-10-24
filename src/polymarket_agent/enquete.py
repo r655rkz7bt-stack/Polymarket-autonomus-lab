@@ -519,6 +519,29 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
 
 
+def acheteuses_arretees(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 72, min_buys: int = 3,
+                        abstentions: dict | None = None) -> list[dict]:
+    """Stratégies qui achetaient et n'achètent plus depuis `hours` heures (24/10/2026 : `favori_politique*` n'ont plus rien acheté depuis le 16-18/10, quand Gamma
+    a passé la politique en `zero_fees` ; `muettes` ne regarde que celles qui n'ont JAMAIS acheté et `familles_vides` seulement celles dont TOUS les marchés sont
+    écartés : une stratégie qui perd 70 % de son univers passait entre les deux). Les raisons du dernier cycle sont jointes au constat."""
+    seen = (abstentions or {}).get("portefeuilles") or {}
+    gone = retirees(entries)
+    stale = []
+    for name in active:
+        rows = entries.get(name)
+        buys = _buys(rows or [])
+        if name in gone or len(buys) < min_buys or _ts(buys[-1]) >= now - timedelta(hours=hours):
+            continue
+        why = ""
+        for info in (seen.get(f"fantome:{name}") or {}).values():
+            reasons = ", ".join(f"{k} ×{v}" for k, v in sorted((info.get("raisons") or {}).items(), key=lambda kv: -kv[1])[:3]) or "aucune raison notée"
+            why = f" — dernier cycle : {info.get('marches', 0)} marchés vus ; {reasons}"
+        stale.append((_ts(buys[-1]), f"{name} : {len(buys)} achats, le dernier le {buys[-1]['ts'][:16]}{why}"))
+    return [_finding("acheteuses_arretees", A_REGARDER, f"{len(stale)} stratégie(s) qui achetaient et n'achètent plus depuis plus de {hours:.0f} h",
+                     "Une stratégie qui s'arrête peut attendre un calendrier (match, publication) ou avoir perdu son univers (famille de marchés, source, étiquette) : "
+                     "lire les raisons du dernier cycle, puis vérifier à la main un marché qu'elle aurait dû jouer.", [t for _, t in sorted(stale)])] if stale else []
+
+
 def familles_vides(abstentions: dict | None, entries: dict[str, list[dict]] | None = None) -> list[dict]:
     """Stratégies dont le filtre `familles` écarte TOUS les marchés vus au dernier cycle (« famille de marchés exclue » = nombre de marchés).
     23/10/2026 : Gamma a passé la météo en `zero_fees` le 19-20/10 ; la famille « weather » (déduite du barème de frais) n'existait plus et
@@ -899,7 +922,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
-                + retraits_inactifs(entries, now) + familles_vides(abstentions, entries) + sources_vides(sources)
+                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
