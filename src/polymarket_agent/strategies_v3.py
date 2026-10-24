@@ -1209,9 +1209,56 @@ class DetroitsMarcheLog(_Base):
         return self._finish(out, props)
 
 
+class SeismesMarche(_Base):
+    """Marchés « plus gros séisme du jour » (6 tranches) et « combien de séismes >= 5,5 / 6,5 cette semaine », réglés sur le catalogue USGS
+    que l'on lit en direct (sources/usgs.py). Chance calculée par seismes.py : maximum déjà vu et heures restantes (jour), compte déjà vu et
+    binomiale négative des 156 dernières semaines (semaine). On achète le côté (OUI ou NON) dont la chance calculée dépasse le prix demandé
+    + frais d'au moins `min_net_edge`, entre `min_price` et `max_price`.
+    Test sur le passé (experiments/seismes.md, 24/10/2026) : jour, 27 jours réglés : perte log du modèle 0,18-0,35 contre 0,29-0,50 pour le
+    dernier prix du marché, 27 paris aux prix payés +69 % (t par jour 1,15) ; semaine, 55 événements, séismes >= 5,5 +24 % après frais
+    (t par événement 2,05), >= 6,5 rien (+7 %, t 0,6) : indice, fantôme."""
+
+    strategy_id = "seismes_marche"
+    required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "seismes", int(self.params.get("max_candidates", 60)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("seismes")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("catalogue USGS pas à jour")
+                continue
+            fair, unc = float(ref["p"]), float(p.get("uncertainty", 0))
+            best = None
+            for side, est in ((0, fair), (1, 1 - fair)):
+                book = books.get(m.token_ids[side])
+                ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
+                if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
+                    continue
+                if best is None or est - ask > best[2]:
+                    best = (side, est, est - ask)
+            if best is None:
+                out.abstain("issue hors de la plage de prix ou carnet vide")
+                continue
+            side, est, _ = best
+            prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
+                             f"seismes:{ref['titre']}", f"loi calculée {est:.3f} pour l'issue achetée",
+                             "une réplique ou un séisme fort de dernière minute, ou une révision de magnitude par l'USGS")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche)}
