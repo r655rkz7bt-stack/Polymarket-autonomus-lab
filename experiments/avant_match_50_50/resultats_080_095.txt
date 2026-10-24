@@ -1,0 +1,37 @@
+événements avec échanges 10438 fourchette 0.8 0.95
+-1 h tous sports: 691 paris dont 9 à 50-50 (1.3%) ; avec 50-50 -0.9 % (t -0.58, z prix -0.66) ; sans -0.3 % ; 590 gagnés / 588.1 attendus
+-3 h tous sports: 380 paris dont 5 à 50-50 (1.3%) ; avec 50-50 -1.6 % (t -0.78, z prix -0.8) ; sans -1.1 % ; 322 gagnés / 323.1 attendus
+-6 h tous sports: 301 paris dont 4 à 50-50 (1.3%) ; avec 50-50 -1.5 % (t -0.65, z prix -0.72) ; sans -1.0 % ; 256 gagnés / 256.7 attendus
+-12 h tous sports: 273 paris dont 4 à 50-50 (1.5%) ; avec 50-50 -3.2 % (t -1.25, z prix -1.38) ; sans -2.6 % ; 227 gagnés / 231.3 attendus
+-24 h tous sports: 84 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +0.7 % (t 0.17, z prix 0.29) ; sans +0.7 % ; 74 gagnés / 73.1 attendus
+== PAR GROUPE (-1 h … -24 h cumulés ne sont pas indépendants : un délai à la fois) ==
+-1 h tennis: 245 paris dont 3 à 50-50 (1.2%) ; avec 50-50 -0.9 % (t -0.34, z prix -0.38) ; sans -0.3 % ; 211 gagnés / 210.4 attendus
+-1 h esport: 232 paris dont 6 à 50-50 (2.6%) ; avec 50-50 +0.3 % (t 0.1, z prix -0.22) ; sans +1.4 % ; 199 gagnés / 194.9 attendus
+-1 h autre: 214 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -2.1 % (t -0.72, z prix -0.55) ; sans -2.1 % ; 180 gagnés / 182.8 attendus
+-3 h tennis: 117 paris dont 1 à 50-50 (0.9%) ; avec 50-50 +0.9 % (t 0.26, z prix 0.34) ; sans +1.2 % ; 103 gagnés / 100.9 attendus
+-3 h esport: 118 paris dont 4 à 50-50 (3.4%) ; avec 50-50 +0.5 % (t 0.15, z prix -0.19) ; sans +2.0 % ; 101 gagnés / 98.3 attendus
+-3 h autre: 145 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -5.4 % (t -1.42, z prix -1.4) ; sans -5.4 % ; 118 gagnés / 123.9 attendus
+-6 h tennis: 119 paris dont 2 à 50-50 (1.7%) ; avec 50-50 -4.2 % (t -1.1, z prix -1.27) ; sans -3.5 % ; 99 gagnés / 101.8 attendus
+-6 h esport: 80 paris dont 2 à 50-50 (2.5%) ; avec 50-50 -0.4 % (t -0.1, z prix -0.27) ; sans +0.6 % ; 68 gagnés / 67.1 attendus
+-6 h autre: 102 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +0.8 % (t 0.2, z prix 0.34) ; sans +0.8 % ; 89 gagnés / 87.8 attendus
+-12 h tennis: 94 paris dont 1 à 50-50 (1.1%) ; avec 50-50 -6.8 % (t -1.47, z prix -1.71) ; sans -6.4 % ; 76 gagnés / 80.6 attendus
+-12 h esport: 76 paris dont 3 à 50-50 (3.9%) ; avec 50-50 -0.3 % (t -0.07, z prix -0.4) ; sans +1.4 % ; 64 gagnés / 62.6 attendus
+-12 h autre: 103 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -2.1 % (t -0.49, z prix -0.3) ; sans -2.1 % ; 87 gagnés / 88.1 attendus
+-24 h tennis: 18 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +6.0 % (t 0.93, z prix 0.76) ; sans +6.0 % ; 17 gagnés / 16.0 attendus
+-24 h esport: 18 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +14.1 % (t 8.87, z prix 1.63) ; sans +14.1 % ; 18 gagnés / 15.7 attendus
+-24 h autre: 48 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -6.3 % (t -0.95, z prix -1.0) ; sans -6.3 % ; 39 gagnés / 41.4 attendus
+== PAR LIGUE à -6 h ==
+atp: 48 paris dont 1 à 50-50 (2.1%) ; avec 50-50 -4.4 % (t -0.74, z prix -0.92) ; sans -3.5 % ; 40 gagnés / 41.1 attendus
+itf: 38 paris dont 1 à 50-50 (2.6%) ; avec 50-50 -1.8 % (t -0.27, z prix -0.39) ; sans -0.7 % ; 32 gagnés / 32.0 attendus
+cs2: 36 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -3.4 % (t -0.47, z prix -0.41) ; sans -3.4 % ; 30 gagnés / 30.8 attendus
+wta: 33 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -6.7 % (t -0.85, z prix -0.89) ; sans -6.7 % ; 27 gagnés / 28.7 attendus
+lol: 24 paris dont 1 à 50-50 (4.2%) ; avec 50-50 -1.9 % (t -0.24, z prix -0.46) ; sans -0.2 % ; 20 gagnés / 19.9 attendus
+dota2: 17 paris dont 1 à 50-50 (5.9%) ; avec 50-50 +4.2 % (t 0.56, z prix 0.16) ; sans +7.1 % ; 15 gagnés / 13.9 attendus
+uel: 14 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +6.9 % (t 0.83, z prix 0.71) ; sans +6.9 % ; 13 gagnés / 12.1 attendus
+cfb: 13 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -3.1 % (t -0.25, z prix -0.25) ; sans -3.1 % ; 11 gagnés / 11.3 attendus
+ucl: 12 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +4.9 % (t 0.5, z prix 0.44) ; sans +4.9 % ; 11 gagnés / 10.5 attendus
+epl: 8 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +2.7 % (t 0.18, z prix 0.24) ; sans +2.7 % ; 7 gagnés / 6.7 attendus
+lal: 8 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +1.7 % (t 0.12, z prix 0.21) ; sans +1.7 % ; 7 gagnés / 6.8 attendus
+sea: 6 paris dont 0 à 50-50 (0.0%) ; avec 50-50 +16.0 % (t 28.79, z prix 1.0) ; sans +16.0 % ; 6 gagnés / 5.1 attendus
+nba: 5 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -3.0 % (t -0.12, z prix -0.13) ; sans -3.0 % ; 4 gagnés / 4.1 attendus
+bun: 5 paris dont 0 à 50-50 (0.0%) ; avec 50-50 -29.3 % (t -1.0, z prix -1.55) ; sans -29.3 % ; 3 gagnés / 4.2 attendus

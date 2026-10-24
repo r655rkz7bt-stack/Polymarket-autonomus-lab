@@ -748,6 +748,28 @@ saison_non:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
 
+candidats_non:
+  explication: "Dans une élection ou une nomination à plusieurs candidats, le NON d'un candidat que le marché croit à 10-30 % de chances, de 10 à 18 jours avant la fin : sur le passé il gagne un peu plus souvent que son prix."
+  # Piste « primaires américaines 2026 » (24/10/2026, experiments/primaires.md) : 298 événements, 1 658 candidats. NON d'un candidat coté 0,10-0,30 à 14 jours du scrutin :
+  # +7,1 % sur le prix horaire (103 événements, t par événement 2,0, 10 mois sur 10) mais +3,7 % aux vrais prix (t 0,7, un signal sur deux sans échange du NON) ; l'effet croît avec le nombre de candidats (2 : +24 % sur 10 paris, 3-4 : +2 à +6 %, 5-8 : +5 à +6 %, 9 et plus : +9 à +12 %) d'où `candidats_min` (2 marchés LIÉS VISIBLES : le scanner écarte les candidats à moins de 1 % (favori du NON > 0,99), un champ de 30 candidats n'en montre que 2 ou 3) ; même signe que
+  # `saison_non` (sport, +8 % à 14 jours). CONTRÔLE NÉGATIF : les élections hors primaires (499 événements, experiments/primaires.md) ne montrent rien (+1,9 % à J-14, t 0,3) : jouer les élections
+  # du 03/11 est un essai hors échantillon, pas une confirmation. VERDICT « indice faible » (≈ 60 réglages) : fantôme en quart de Kelly, biais 0,04, fenêtre 10-18 jours ; l'arène confirme ou non.
+  class: naive_favorite
+  filtres: {familles: [zero, sans_frais, politics], un_match: false, issue: [non], echeance_min: 240, echeance_max: 432, prix_min: 0.70, prix_max: 0.90,
+            question_contient: ["nominee", "primary", "next prime minister", "next president", "win the 2026"], question_exclut: ["margin", "party candidate", " by ", "%"], candidats_min: 2}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    min_ask:        {value: 0.70, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.90, min: 0.60, max: 0.98}
+    bias:           {value: 0.04, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
+
 nf_sport_patiente_tennis:
   explication: "La championne (favori de sport, achat posé), mais seulement le tennis : c'est là qu'elle gagne."
   # Entonnoir 80/20 (20/10/2026, reports/pareto.md) : sur 75 opérations de nf_sport_patiente, le

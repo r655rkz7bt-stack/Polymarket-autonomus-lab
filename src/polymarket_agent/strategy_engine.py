@@ -11,6 +11,7 @@ import dataclasses
 import hashlib
 import logging
 from dataclasses import dataclass, field
+import re
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -219,6 +220,11 @@ def excluded(market: MarketInfo, words: tuple[str, ...]) -> bool:
 
 
 WEATHER_SLUGS = ("highest-temperature", "lowest-temperature", "precipitation", "where-will-it-rain", "will-it-rain", "rain-in-", "snow-in-")
+# 24/10/2026 : Gamma a aussi passé la POLITIQUE en « zero_fees » (19-20/10) ; les stratégies `familles: [politics, sans_frais]` (favori_politique*, parking_politique…)
+# n'en voyaient plus que 94 marchés sur 393 (« famille de marchés exclue : 360 »), `favori_politique` n'a plus acheté depuis le 16/10. Comme la météo, la politique se
+# reconnaît à l'adresse de l'événement ; Fed, culture, tech restent « zero ». Relevé du 24/10 : 859 des 2 377 marchés « zero » du scan, relus à la main (échantillon de 12).
+POLITICS_SLUGS = re.compile(r"election|senate|governor|mayor|midterm|primary|nominee|prime-minister|presidential|president-of|parliament|balance-of-power|"
+                            r"win-the-house|house-election|control-the-house|house-margin|margin-of-victory|speaker|referendum|coalition")
 
 
 def market_family(market: MarketInfo) -> str:
@@ -234,6 +240,8 @@ def market_family(market: MarketInfo) -> str:
         # loterie_meteo ne voyait plus rien (dernier achat le 20/10 à 16 h 27). La météo se reconnaît à l'adresse de l'événement.
         if family == "zero" and (market.event_slug or market.slug or "").startswith(WEATHER_SLUGS):
             return "weather"
+        if family == "zero" and POLITICS_SLUGS.search((market.event_slug or market.slug or "").lower()):
+            return "politics"
         return family
     return "other"
 
@@ -582,7 +590,7 @@ class PatientOrders:
 
 FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
                "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max", "sources",
-               "sources_exclues", "question_contient", "question_exclut", "prix_final", "un_match")
+               "sources_exclues", "question_contient", "question_exclut", "prix_final", "un_match", "candidats_min")
 
 
 class Filtered:
@@ -610,7 +618,9 @@ class Filtered:
       experiments/enquetes/2026-10-23_marches_de_saison_dans_le_sport.md) ;
       prix_final : true (avec `limit_ticks`) → prix_min / prix_max portent sur le prix de l'ORDRE POSÉ
       et non sur le prix du vendeur (21/10/2026 : sinon une fille « prix payé 0,875-0,90 » achète à 0,84,
-      experiments/enquetes/2026-10-21_filtres_et_prix_executable.md).
+      experiments/enquetes/2026-10-21_filtres_et_prix_executable.md) ;
+      candidats_min : au moins N marchés « candidat » (même événement, marchés liés `neg_risk`) parmi les marchés vus (24/10/2026,
+      experiments/primaires.md : le NON d'un candidat à 10-30 % rapporte surtout dans les champs de 5 candidats et plus).
     Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
     morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
 
@@ -619,6 +629,7 @@ class Filtered:
         if unknown:
             raise StrategyConfigError(f"filtres inconnus : {sorted(unknown)}")
         self.inner, self.filters = strategy, dict(filters)
+        self._field: dict[str, int] = {}
         self.strategy_id, self.version = strategy.strategy_id, strategy.version
         self.needs_price_history = getattr(strategy, "needs_price_history", False)
         if hasattr(strategy, "exits"):
@@ -635,6 +646,8 @@ class Filtered:
             if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
                 return False
         if "un_match" in f and bool(f["un_match"]) != bool(getattr(m, "sports_market_type", None)):
+            return False
+        if "candidats_min" in f and (not m.neg_risk or self._field.get(m.event_id, 0) < int(f["candidats_min"])):
             return False
         question = (m.question or "").lower()
         if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):
@@ -683,11 +696,21 @@ class Filtered:
     OWN_MARKETS = ("question_contient", "sources")
     OWN_MARKETS_MAX = 25
 
+    def _count_field(self, markets) -> None:
+        if "candidats_min" in self.filters:
+            self._field = {}
+            for m in markets:
+                if m.neg_risk:
+                    self._field[m.event_id] = self._field.get(m.event_id, 0) + 1
+
     def candidates(self, markets):
+        self._count_field(markets)
         inner = getattr(self.inner, "candidates", None)
         out = [m for m in inner(markets) if self._market_ok(m, None)] if inner else []
         if not out and any(k in self.filters for k in self.OWN_MARKETS):
-            out = sorted((m for m in markets if self._market_ok(m, None)), key=lambda m: -float(m.volume_24h or 0))
+            # 24/10/2026 : la fenêtre d'échéance compte AVANT le plafond de 25 marchés (sinon les 25 plus échangés, hors fenêtre, chassent les bons)
+            now = datetime.now(timezone.utc) if ("echeance_min" in self.filters or "echeance_max" in self.filters) else None
+            out = sorted((m for m in markets if self._market_ok(m, now)), key=lambda m: -float(m.volume_24h or 0))
             out = out[: self.OWN_MARKETS_MAX]
         return out
 
@@ -698,6 +721,7 @@ class Filtered:
             hour = now.astimezone(timezone.utc).hour
             if not (start <= hour < end if start <= end else hour >= start or hour < end):
                 return StrategyOutput()  # hors de la plage horaire : aucune nouvelle position
+        self._count_field(watchlist)
         kept = [m for m in watchlist if self._market_ok(m, now)]
         out = self.inner.propose(kept, books, state, limits, bucket, marks)
         out.proposals = [p for p in out.proposals if self._order_ok(p)]

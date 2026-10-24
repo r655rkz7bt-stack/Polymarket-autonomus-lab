@@ -408,3 +408,29 @@ def test_tokens_sold_for_almost_nothing_but_estimated_high_are_flagged():
     assert "crypto_threshold_non" in found[0]["exemples"][0] and "0.001" in found[0]["exemples"][0]
     assert enquete.jetons_sans_valeur({"fantome:x": [_buy(NOW, "t4", "0.2", 10, est=0.5)]}) == []
     assert enquete.jetons_sans_valeur(entries, since=NOW + timedelta(hours=1)) == []           # achats plus anciens que la fenêtre : ignorés
+
+
+def test_fifty_fifty_settlements_are_counted_per_market_with_their_cost():
+    """24/10/2026 : 9INE Academy (CS2) et Australia Women (cricket) réglés à 50-50 ; 13 portefeuilles payés 0,50 au lieu de 1."""
+    rows = {}
+    for i, name in enumerate(["a", "b"]):
+        rows[name] = _ledger(*[_buy(NOW - timedelta(hours=9), t, 0.88, 100, strategy=name) for t in ("x", "y", "z")],
+                             *[_settle(NOW - timedelta(hours=1), t, 0.5) for t in ("x", "y", "z")])
+    found = enquete.reglements_50_50(rows)
+    assert len(found) == 1 and "3 marché(s) réglés à 50-50" in found[0]["titre"]
+    assert "2 portefeuille(s)" in found[0]["exemples"][0] and "perte 76 €" in found[0]["exemples"][0]
+    assert enquete.reglements_50_50(rows, min_markets=4) == []
+    normal = {"a": _ledger(_buy(NOW - timedelta(hours=9), "x", 0.88, 100), _settle(NOW, "x", 1))}
+    assert enquete.reglements_50_50(normal, min_markets=1) == []
+
+
+def test_strategies_that_used_to_buy_and_stopped_are_listed_with_their_last_cycle_reasons():
+    """24/10/2026 : favori_politique n'achetait plus depuis le 16/10 (la politique est passée en zero_fees) sans être « muette » ni « famille vide »."""
+    old = NOW - timedelta(days=5)
+    rows = {"favori_politique_v1.0.0": _ledger(*[_buy(old + timedelta(hours=i), f"t{i}", 0.9, 10) for i in range(4)], born=NOW - timedelta(days=9)),
+            "toujours_active_v1.0.0": _ledger(*[_buy(NOW - timedelta(hours=i + 1), f"u{i}", 0.9, 10) for i in range(4)], born=NOW - timedelta(days=9)),
+            "peu_active_v1.0.0": _ledger(_buy(old, "v", 0.9, 10), born=NOW - timedelta(days=9))}
+    ab = {"portefeuilles": {"fantome:favori_politique_v1.0.0": {"favori_politique": {"marches": 491, "raisons": {"famille de marchés exclue": 360, "avantage net insuffisant": 7}}}}}
+    found = enquete.acheteuses_arretees(rows, list(rows), NOW, abstentions=ab)
+    assert len(found) == 1 and "1 stratégie(s)" in found[0]["titre"]
+    assert "favori_politique_v1.0.0 : 4 achats" in found[0]["exemples"][0] and "famille de marchés exclue ×360" in found[0]["exemples"][0]

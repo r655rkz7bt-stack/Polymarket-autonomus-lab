@@ -199,6 +199,46 @@ def jetons_sans_valeur(entries: dict[str, list[dict]], since: datetime | None = 
                      "dans la journée, match fini) et le modèle ne le voit pas. Relire le marché et la question.", lines)]
 
 
+def reglements_50_50(entries: dict[str, list[dict]], min_markets: int = 3) -> list[dict]:
+    """Marchés réglés à 50-50 (match annulé, abandonné, walkover) où des portefeuilles avaient acheté (24/10/2026). Une part payée 0,50 au lieu de 1 coûte
+    0,35 à 0,45 € par euro sur un favori à 0,85-0,90 ; les tests sur le passé (`history.parse_resolved`, `idea_test.parse_event_market`) écartent ces marchés
+    en silence. Taux Gamma sur les derniers matchs réglés (experiments/void_5050.md) : UFC et CS2 10 %, tennis en double 6-10 %, WTA 4,8 %, ATP 2,5 %. Dans l'arène
+    les achats se font surtout après le coup d'envoi (84 à 90 %) : peu de 50-50 (0,5 % des règlements). Un achat AVANT le coup d'envoi en porte le plein risque."""
+    markets: dict[str, dict] = {}
+    for name, rows in entries.items():
+        bought: dict[str, dict] = {}
+        for e in _buys(rows):
+            d, x = e["data"], e["data"].get("extra") or {}
+            b = bought.setdefault(d["token_id"], {"cost": 0.0, "shares": 0.0, "market": d["market_id"], "pre": False})
+            b["cost"] += _cost(d)
+            b["shares"] += float(d["shares"])
+            try:
+                b["pre"] = b["pre"] or float(x.get("depuis_coup_d_envoi_h")) < 0
+            except (TypeError, ValueError):
+                pass
+        for e in rows:
+            if e["type"] == "SETTLE" and e["data"].get("token_id") in bought:
+                try:
+                    if abs(float(e["data"]["payout_per_share"]) - 0.5) > 1e-9:
+                        continue
+                except (TypeError, ValueError):
+                    continue
+                b = bought[e["data"]["token_id"]]
+                m = markets.setdefault(b["market"], {"cost": 0.0, "loss": 0.0, "portfolios": 0, "pre": False, "date": e["ts"][:16]})
+                m["cost"] += b["cost"]
+                m["loss"] += b["cost"] - 0.5 * b["shares"]
+                m["portfolios"] += 1
+                m["pre"] = m["pre"] or b["pre"]
+    if len(markets) < min_markets:
+        return []
+    cost, loss = sum(m["cost"] for m in markets.values()), sum(m["loss"] for m in markets.values())
+    lines = [f"{m['date']} marché {k} : {m['portfolios']} portefeuille(s), {m['cost']:.0f} € misés, perte {m['loss']:.0f} €"
+             f"{' (acheté avant le coup d envoi)' if m['pre'] else ''}" for k, m in sorted(markets.items(), key=lambda kv: -kv[1]["loss"])]
+    return [_finding("reglements_50_50", A_REGARDER, f"{len(markets)} marché(s) réglés à 50-50 où l'arène avait acheté ({loss:.0f} € perdus sur {cost:.0f} € misés)",
+                     "Match annulé, abandonné ou walkover : chaque part vaut 0,50. Les tests sur le passé écartent ces marchés ; "
+                     "un achat avant le coup d'envoi (ou sur un sport à forts taux : UFC, CS2, doubles) paie ce risque sans l'avoir compté.", lines)]
+
+
 def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost: float = 0.25,
           since: datetime | None = None) -> list[dict]:
     """Mises rapportées au capital estimé (dernier battement avant l'achat). Principal : au-delà de son
@@ -477,6 +517,29 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
     return [_finding("muettes", A_REGARDER, f"{len(silent)} stratégie(s) sans aucun achat depuis plus de {hours:.0f} h",
                      "Une stratégie muette ne teste rien : lire ses abstentions (journal du cycle, tableau de bord) "
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
+
+
+def acheteuses_arretees(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 72, min_buys: int = 3,
+                        abstentions: dict | None = None) -> list[dict]:
+    """Stratégies qui achetaient et n'achètent plus depuis `hours` heures (24/10/2026 : `favori_politique*` n'ont plus rien acheté depuis le 16-18/10, quand Gamma
+    a passé la politique en `zero_fees` ; `muettes` ne regarde que celles qui n'ont JAMAIS acheté et `familles_vides` seulement celles dont TOUS les marchés sont
+    écartés : une stratégie qui perd 70 % de son univers passait entre les deux). Les raisons du dernier cycle sont jointes au constat."""
+    seen = (abstentions or {}).get("portefeuilles") or {}
+    gone = retirees(entries)
+    stale = []
+    for name in active:
+        rows = entries.get(name)
+        buys = _buys(rows or [])
+        if name in gone or len(buys) < min_buys or _ts(buys[-1]) >= now - timedelta(hours=hours):
+            continue
+        why = ""
+        for info in (seen.get(f"fantome:{name}") or {}).values():
+            reasons = ", ".join(f"{k} ×{v}" for k, v in sorted((info.get("raisons") or {}).items(), key=lambda kv: -kv[1])[:3]) or "aucune raison notée"
+            why = f" — dernier cycle : {info.get('marches', 0)} marchés vus ; {reasons}"
+        stale.append((_ts(buys[-1]), f"{name} : {len(buys)} achats, le dernier le {buys[-1]['ts'][:16]}{why}"))
+    return [_finding("acheteuses_arretees", A_REGARDER, f"{len(stale)} stratégie(s) qui achetaient et n'achètent plus depuis plus de {hours:.0f} h",
+                     "Une stratégie qui s'arrête peut attendre un calendrier (match, publication) ou avoir perdu son univers (famille de marchés, source, étiquette) : "
+                     "lire les raisons du dernier cycle, puis vérifier à la main un marché qu'elle aurait dû jouer.", [t for _, t in sorted(stale)])] if stale else []
 
 
 def familles_vides(abstentions: dict | None, entries: dict[str, list[dict]] | None = None) -> list[dict]:
@@ -859,8 +922,8 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
-                + retraits_inactifs(entries, now) + familles_vides(abstentions, entries) + sources_vides(sources)
-                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since)
+                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
+                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 

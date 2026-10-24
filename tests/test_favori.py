@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import copy
+
 from datetime import timedelta
 from decimal import Decimal as D
 
@@ -289,3 +291,46 @@ def test_season_no_buys_the_no_of_a_season_candidate_inside_its_window(tmp_path)
     assert not proposals(24 * 3, tmp_path / "b")                    # trop près de la fin
     assert not proposals(24 * 30, tmp_path / "c")                   # trop loin
     assert not proposals(24 * 14, tmp_path / "d", sportsMarketType="moneyline")  # un match
+
+
+def test_candidates_no_buys_the_no_of_a_multi_candidate_election_market_inside_its_window(tmp_path):
+    """24/10/2026 (experiments/primaires.md) : NON d'un candidat à 10-30 % d'une élection ou d'une nomination dont au moins 2 candidats sont visibles (le scanner écarte ceux à moins de 1 %), 10 à 18 jours
+    avant la fin. Refuse une question sans « nominee / primary… », une échéance hors fenêtre, un pari de match, une tranche de marge et un champ de 2 candidats."""
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["candidats_non"]
+    assert cfg.filters["issue"] == ["non"] and cfg.filters["echeance_min"] == 240 and cfg.filters["echeance_max"] == 432 and cfg.filters["candidats_min"] == 2
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+
+    def proposals(hours, tmp, question="Will Ana Souza be the Democratic nominee for Governor in Ohio?", field=3, **raw):
+        m, books, ledger, _ = _setup(tmp, fee_type="zero_fees", end_hours=hours, bid="0.15", ask="0.16", negRisk=True, **raw)
+        m.question = question
+        m.outcome_prices = [D("0.155"), D("0.845")]
+        sisters = []
+        for k in range(field - 1):
+            sister = copy.copy(m)
+            sister.market_id = f"s{k}"
+            sisters.append(sister)
+        return cfg.propose([m] + sisters, books, ledger.state, limits, "b").proposals
+
+    assert proposals(24 * 14, tmp_path / "a")
+    assert not proposals(24 * 3, tmp_path / "b")                    # trop près de la fin
+    assert not proposals(24 * 30, tmp_path / "c")                   # trop loin
+    assert not proposals(24 * 14, tmp_path / "d", question="Will the Fed cut rates in December?")  # pas une élection
+    assert not proposals(24 * 14, tmp_path / "e", sportsMarketType="moneyline")                       # un match
+    assert not proposals(24 * 14, tmp_path / "f", question="Will the Democratic Party candidate win the 2026 Florida gubernatorial election by 0%-3%?")  # tranche de marge
+    assert not proposals(24 * 14, tmp_path / "h", question="Will the Democratic Party candidate win the 2026 South Carolina Senate election?")  # parti, pas candidat (24/10, cycle local)
+    assert not proposals(24 * 14, tmp_path / "g", field=1)          # un marché isolé : pas un champ de candidats
+
+
+def test_zero_fee_political_markets_are_politics_again(tmp_path):
+    """24/10/2026 : Gamma passe la politique en « zero_fees » (19-20/10) ; favori_politique (familles [politics, sans_frais]) ne voyait plus que 94 marchés
+    sur 393 et n'achetait plus depuis le 16/10. Les marchés d'élection se reconnaissent à l'adresse de l'événement ; la Fed, le box-office, les IPO restent « zero »."""
+    def fam(slug, sub):
+        return market_family(_setup(tmp_path / sub, fee_type="zero_fees", events=[{"id": "e", "slug": slug, "title": "t"}])[0])
+    assert fam("texas-senate-election-winner", "a") == "politics"
+    assert fam("which-party-will-win-the-house-in-2026", "b") == "politics"
+    assert fam("next-prime-minister-of-serbia-20260629223938642", "c") == "politics"
+    assert fam("fl-27-house-margin-of-victory-2026", "d") == "politics"
+    assert fam("fed-decision-in-december", "e") == "zero"
+    assert fam("largest-ipo-by-market-cap-in-2026-287", "f") == "zero"
+    assert fam("white-house-posts-october-27-november-3-2026", "g") == "zero"
+    assert fam("highest-temperature-in-paris-on-october-24-2026", "h") == "weather"
