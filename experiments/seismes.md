@@ -57,6 +57,12 @@ après un séisme majeur et ses répliques) : le marché les cote trop bas, mais
 → **fantôme `seismes_marche`** (quart de Kelly, `jamais_retirer` : des jours sans marché utile ne doivent pas le faire retirer), pas dans `validated_strategies`.
 Essai en direct le 24/10 à 05 h UTC : lecteur USGS (61 séismes en 10 jours), 16 tranches de la semaine rattachées (par exemple « plus de 13 séismes ≥ 5,5 » : modèle 0,68 contre prix 0,38-0,42).
 
+## Le comptage de Polymarket à 5,5 (à lire avant de se fier aux tranches de la semaine ≥ 5,5)
+Sur les 28 semaines ≥ 5,5, mon compte tombe dans la tranche gagnante 18 fois (64 %) ; pour ≥ 6,5, 29 fois sur 29. Aucun décalage de fenêtre (de −24 h à +24 h au début et à la fin : au mieux 20 sur 28) ni seuil
+de magnitude (5,4 / 5,45 / 5,5 / 5,55 : 15 / 18 / 18 / 9) n'explique les 10 écarts ; le marché compte toujours un séisme de PLUS. Les paris simulés ≥ 5,5 sont réglés sur le résultat officiel du marché, donc ce défaut est déjà payé
+dans le +24 % ; à titre d'illustration (sélection sur l'issue, à ne pas utiliser comme preuve) : semaines où mon compte = celui du marché +69 % (103 paris), semaines où il diffère −35 % (78 paris). Une stratégie qui parie sur le compte
+exact depuis le catalogue d'aujourd'hui joue donc contre un règlement dont la règle exacte est inconnue : raison de plus pour un quart de Kelly et un fantôme.
+
 ## Limites et suite
 - Plage horaire testée : jour entre 6 h et 23 h UTC ; semaine entre 0,5 et 6,6 jours avant la fin (pas de test avant 6 h : la stratégie s'abstient).
 - Le comptage ≥ 5,5 de Polymarket dépasse parfois le mien d'un séisme : si le fantôme perd sur les tranches ≥ 5,5, regarder ce décalage avant tout.

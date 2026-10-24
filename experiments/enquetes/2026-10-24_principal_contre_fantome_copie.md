@@ -38,3 +38,23 @@ Les favoris de l'arène gagnent **exactement autant (ou un peu moins) que leurs 
 - Conséquence pour Etienne : tant qu'aucune stratégie validée sur le passé ne tient en direct (`validated_strategies` vide), le principal suit le « meilleur de 75 par chance »
   (z ≈ 1,5 attendu sans avantage). Les seules pistes prouvées sur le passé aux vrais prix sont les tweets (NON, écart large), les détroits et, depuis ce jour, un indice sur les séismes
   (`experiments/seismes.md`) : à promouvoir quand elles auront ≥ 20 opérations réglées en direct.
+
+## Deuxième contrôle (famille 2, la chance) : les dix premières de l'arène, gagnés contre attendus par les prix
+Paris réglés de chaque fantôme (`published_data`, 24/10/2026 05 h UTC), gain total puis gain sans les 3 meilleurs paris, victoires contre victoires attendues par les prix payés :
+
+| stratégie | paris | misé | gain | sans les 3 meilleurs | gagnés / attendus | z des prix | par mise |
+|---|---|---|---|---|---|---|---|
+| nf_sport | 67 | 4 438 | +271 | +204 | 62 / 60,7 | +0,56 | +6,1 % |
+| nf_court_soir | 29 | 2 832 | +213 | +145 | 28 / 26,5 | +0,99 | +7,5 % |
+| nf_sport_patiente_6_24h | 43 | 1 903 | +185 | +144 | 42 / 38,0 | **+1,92** | +9,7 % |
+| nf_tennis_12_18h_vainqueur | 43 | 3 451 | +165 | +90 | 39 / 37,6 | +0,65 | +4,8 % |
+| nf_sport_patiente (championne) | 178 | 13 585 | +161 | **+38** | 163 / 154,2 | **+1,96** | +1,2 % |
+| nf_court | 136 | 5 397 | +152 | +106 | 121 / 121,6 | −0,17 | +2,8 % |
+| nf_sport_925_950 | 23 | 2 312 | +152 | +95 | 23 / 21,5 | +1,26 | +6,6 % |
+| nf_sport_prix_haut | 107 | 6 188 | +145 | +66 | 99 / 97,8 | +0,42 | +2,3 % |
+| nf_sport_patiente_prix_850_875 | 48 | 3 165 | +127 | +39 | 42 / 40,9 | +0,45 | +4,0 % |
+| naive_favorite | 20 | 1 762 | +118 | +42 | 18 / 18,3 | −0,27 | +6,7 % |
+
+Lecture : les gains tiennent presque tous sans leurs 3 meilleurs paris, mais le z des prix reste sous 2 (deux stratégies à +1,9, la championne et `nf_sport_patiente_6_24h`, qui jouent en grande partie les mêmes paris) :
+avec une dizaine de familles de paris presque identiques, voir un z de 1,9 est ce que le hasard donne (≈ 1 chance sur 4). La championne gagne +161 € mais +38 € sans ses 3 meilleurs paris (+0,3 %). Pas d'avantage prouvé, mais la tendance est
+positive pour la deuxième fois consécutive (z de la championne : +1,57 le 22/10, +1,96 le 24/10) : à suivre, sans toucher à la règle de promotion.
