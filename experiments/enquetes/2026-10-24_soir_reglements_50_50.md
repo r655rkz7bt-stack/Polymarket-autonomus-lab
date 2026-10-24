@@ -11,7 +11,7 @@ Scripts : `experiments/void_5050/scripts/releve_void.py` (taux Gamma par sport),
 
 ## Cause
 `history.parse_resolved` et `idea_test.parse_event_market` écartent en silence tout marché dont les prix finaux ne sont pas exactement {0 ; 1} (« annulé, 50-50 ou non réglé : exclu (limite documentée) »). Un test sur le passé qui achète des favoris AVANT le match ne voit donc jamais le risque d'annulation.
-Taux de 50-50 des marchés « vainqueur » (moneyline) réglés récemment (Gamma, 600 derniers événements par série, 24/10) : UFC 11,3 %, CS2 10,7 %, MLB 8,3 %, cricket international 7,3 %, WTA 4,8 %, Dota 2 4,2 %, NBA 3,3 %, ATP 2,5 %, LoL 1,7 %, ITF 0,7 %, Valorant 0,2 %, NHL/CBB/football 0 %. À 0,88 une part 50-50 coûte 0,43 € par euro : **ATP −1,1 point, WTA −2,1 points, CS2 −4,6 points, UFC −4,9 points par pari acheté avant le match**.
+Taux de 50-50 des marchés « vainqueur » (moneyline) réglés récemment (Gamma, 600 derniers événements par série, 24/10 ; sur les 7 815 « vainqueur » avec échanges de `avant_match_50_50.md` : tous 3,0 %, CS2 8,2 %, Dota 2 5,9 %, WTA 4,9 %, ATP 2,4 %, ITF 2,3 %, LoL 0,8 %, football/NHL 0 % : les deux relevés concordent sauf UFC, non rejoué) : UFC 11,3 %, CS2 10,7 %, MLB 8,3 %, cricket international 7,3 %, WTA 4,8 %, Dota 2 4,2 %, NBA 3,3 %, ATP 2,5 %, LoL 1,7 %, ITF 0,7 %, Valorant 0,2 %, NHL/CBB/football 0 %. À 0,88 une part 50-50 coûte 0,43 € par euro : **ATP −1,1 point, WTA −2,1 points, CS2 −4,6 points, UFC −4,9 points par pari acheté avant le match**.
 Ce n'est pas une anomalie de code : c'est un angle mort de la mesure.
 
 ## Ce qu'il faut en retenir
@@ -25,4 +25,5 @@ Ce n'est pas une anomalie de code : c'est un angle mort de la mesure.
 - Pas de décote ajoutée aux estimations `nf_*` : les achats d'avant-match représentent 10 à 16 % des mises et le coût mesuré dans l'arène est de 0,27 % de la mise ; la décote est à appliquer **dans les tests sur le passé** (`experiments/PISTES.md`, rappel ajouté) quand l'entrée est avant le match.
 
 ## Reste ouvert
-- Mesurer le taux de 50-50 des marchés ATP/WTA **parmi ceux observés 12-18 h avant le match** (Gamma ne dit pas à quel moment le walkover est connu) ; `idea_test.fetch_resolved` pourrait compter les 50-50 écartés (aujourd'hui invisibles).
+- Fait dans la foulée : `experiments/avant_match_50_50.md` (favori acheté 1 à 24 h avant le match, 50-50 compris : −0,9 à −3,2 % avec, −0,3 à −2,6 % sans ; les 50-50 coûtent 0,5-0,6 point, 1-2 en e-sport ; écartée).
+- Reste : `idea_test.fetch_resolved` pourrait compter les 50-50 écartés (aujourd'hui invisibles).
