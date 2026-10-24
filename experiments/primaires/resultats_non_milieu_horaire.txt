@@ -1,0 +1,24 @@
+== NON, candidats cotés 0.05-0.15
+ J-3: 107 paris (87 événements), NON gagné 93 / 99.3 attendus, rendement -6.6 %, t événement -1.99, z prix -2.37, verdict écartée
+ J-7: 108 paris (93 événements), NON gagné 97 / 99.8 attendus, rendement -3.0 %, t événement -0.51, z prix -1.02, verdict écartée
+ J-14: 125 paris (90 événements), NON gagné 117 / 115.6 attendus, rendement +1.1 %, t événement 0.26, z prix 0.48, verdict écartée
+ J-21: 141 paris (101 événements), NON gagné 134 / 130.8 attendus, rendement +2.2 %, t événement 0.85, z prix 1.04, verdict indice
+ J-30: 135 paris (87 événements), NON gagné 130 / 124.8 attendus, rendement +4.0 %, t événement 2.13, z prix 1.71, verdict retenue
+== NON, candidats cotés 0.1-0.3
+ J-3: 107 paris (90 événements), NON gagné 87 / 88.7 attendus, rendement -2.7 %, t événement -0.91, z prix -0.43, verdict écartée
+ J-7: 119 paris (102 événements), NON gagné 101 / 99.5 attendus, rendement +1.2 %, t événement 0.09, z prix 0.37, verdict écartée
+ J-14: 132 paris (103 événements), NON gagné 118 / 110.0 attendus, rendement +7.1 %, t événement 2.02, z prix 1.89, verdict retenue
+ J-21: 138 paris (103 événements), NON gagné 123 / 114.8 attendus, rendement +7.0 %, t événement 1.43, z prix 1.88, verdict indice
+ J-30: 120 paris (89 événements), NON gagné 106 / 100.9 attendus, rendement +4.1 %, t événement 0.83, z prix 1.28, verdict indice
+== NON, candidats cotés 0.15-0.4
+ J-3: 101 paris (87 événements), NON gagné 80 / 76.5 attendus, rendement +4.7 %, t événement 0.8, z prix 0.82, verdict indice
+ J-7: 100 paris (85 événements), NON gagné 75 / 76.3 attendus, rendement -2.1 %, t événement -0.56, z prix -0.31, verdict écartée
+ J-14: 125 paris (100 événements), NON gagné 99 / 95.1 attendus, rendement +2.9 %, t événement -0.09, z prix 0.82, verdict écartée
+ J-21: 121 paris (95 événements), NON gagné 98 / 92.9 attendus, rendement +4.8 %, t événement 0.49, z prix 1.12, verdict écartée
+ J-30: 92 paris (69 événements), NON gagné 71 / 69.4 attendus, rendement +0.8 %, t événement 0.14, z prix 0.39, verdict écartée
+== NON, candidats cotés 0.05-0.4
+ J-3: 208 paris (158 événements), NON gagné 173 / 175.8 attendus, rendement -1.1 %, t événement -0.52, z prix -0.56, verdict écartée
+ J-7: 208 paris (154 événements), NON gagné 172 / 176.1 attendus, rendement -2.6 %, t événement -0.82, z prix -0.82, verdict écartée
+ J-14: 248 paris (157 événements), NON gagné 214 / 209.0 attendus, rendement +1.9 %, t événement 0.29, z prix 0.91, verdict écartée
+ J-21: 260 paris (152 événements), NON gagné 230 / 222.0 attendus, rendement +3.3 %, t événement 1.35, z prix 1.46, verdict indice
+ J-30: 227 paris (124 événements), NON gagné 201 / 194.2 attendus, rendement +2.7 %, t événement 0.54, z prix 1.34, verdict écartée

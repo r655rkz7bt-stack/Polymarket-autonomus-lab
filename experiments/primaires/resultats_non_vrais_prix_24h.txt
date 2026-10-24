@@ -1,0 +1,15 @@
+== NON, candidats cotés 0.1-0.3, fenêtre 24 h
+ J-7: 72 paris (68 événements ; sans échange dans la fenêtre 47, marchés incomplets 0), NON gagné 62 / 60.3 attendus, rendement +2.5 %, t événement 0.48, z prix 0.56, mois gagnants 6/8, verdict écartée
+ J-14: 77 paris (59 événements ; sans échange dans la fenêtre 55, marchés incomplets 0), NON gagné 67 / 64.6 attendus, rendement +3.7 %, t événement 0.68, z prix 0.75, mois gagnants 7/9, verdict écartée
+ J-21: 57 paris (51 événements ; sans échange dans la fenêtre 78, marchés incomplets 0), NON gagné 49 / 47.9 attendus, rendement +2.6 %, t événement 0.36, z prix 0.39, mois gagnants 7/8, verdict écartée
+ J-30: 58 paris (51 événements ; sans échange dans la fenêtre 62, marchés incomplets 0), NON gagné 53 / 48.3 attendus, rendement +9.3 %, t événement 1.81, z prix 1.68, mois gagnants 6/7, verdict retenue
+== NON, candidats cotés 0.05-0.15, fenêtre 24 h
+ J-7: 59 paris (53 événements ; sans échange dans la fenêtre 32, marchés incomplets 0), NON gagné 55 / 53.7 attendus, rendement +2.3 %, t événement 0.71, z prix 0.58, mois gagnants 6/8, verdict écartée
+ J-14: 57 paris (43 événements ; sans échange dans la fenêtre 43, marchés incomplets 0), NON gagné 51 / 52.4 attendus, rendement -2.6 %, t événement -0.45, z prix -0.66, mois gagnants 3/7, verdict écartée
+ J-21: 39 paris (33 événements ; sans échange dans la fenêtre 61, marchés incomplets 0), NON gagné 37 / 35.7 attendus, rendement +3.8 %, t événement 1.25, z prix 0.78, mois gagnants 4/6, verdict indice
+ J-30: 37 paris (35 événements ; sans échange dans la fenêtre 55, marchés incomplets 0), NON gagné 35 / 33.0 attendus, rendement +6.0 %, t événement 1.27, z prix 1.06, mois gagnants 7/7, verdict indice
+== NON, candidats cotés 0.15-0.4, fenêtre 24 h
+ J-7: 62 paris (58 événements ; sans échange dans la fenêtre 31, marchés incomplets 0), NON gagné 45 / 47.4 attendus, rendement -5.9 %, t événement -0.76, z prix -0.73, mois gagnants 5/8, verdict écartée
+ J-14: 72 paris (62 événements ; sans échange dans la fenêtre 48, marchés incomplets 0), NON gagné 55 / 56.9 attendus, rendement -5.0 %, t événement -1.06, z prix -0.57, mois gagnants 4/9, verdict écartée
+ J-21: 53 paris (47 événements ; sans échange dans la fenêtre 62, marchés incomplets 0), NON gagné 41 / 41.0 attendus, rendement +2.6 %, t événement 0.05, z prix -0.0, mois gagnants 4/7, verdict écartée
+ J-30: 43 paris (37 événements ; sans échange dans la fenêtre 43, marchés incomplets 0), NON gagné 37 / 32.9 attendus, rendement +12.2 %, t événement 2.13, z prix 1.5, mois gagnants 5/6, verdict indice
