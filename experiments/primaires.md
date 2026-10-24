@@ -7,14 +7,14 @@ Les marchés « <État> <parti> Primary Winner » se répètent par centaines (m
 Même mécanisme que « gagnant de saison, NON des candidats à 10-30 % » (`saison_sport.md`, indice faible non répliqué), mais dans un autre domaine : la politique, où des sondages informent déjà le marché.
 
 ## Données
-- Gamma : **393 événements de primaires et de runoffs** réglés (mars → septembre 2026, plus quelques-uns de 2024-2025), 1 658 candidats réels de 18+ événements de plus de 10 000 $ de volume (les « Person B / Candidate C » de remplissage sont écartés), prix finaux {0 ; 1} seulement.
+- Gamma : **393 événements de primaires et de runoffs** réglés (mars → septembre 2026, plus quelques-uns de 2024-2025), 1 658 candidats réels de **298 événements** de plus de 10 000 $ de volume (les « Person B / Candidate C » de remplissage sont écartés), prix finaux {0 ; 1} seulement.
 - CLOB `prices-history` à l'heure (par tranches de 14 jours, le serveur refuse plus), de J-35 à la veille du scrutin (`endDate` = jour du scrutin 0 h UTC, donc J-1 = la veille au soir, avant tout dépouillement).
 - Vrais échanges (data-api, par marché, tous récupérés) pour 327 candidats cotés 0,08-0,35 à J-7, J-14, J-21 ou J-30.
 - Règlement : prix finaux Gamma (résolution UMA ; pas de seconde source).
 
 ## Calibration (prix horaire du marché à J-d contre résultat, `resultats_calibration.txt`)
 Le marché est bien calibré : à J-14, 0,60-0,80 → 0,726 gagné pour 0,710 de prix ; 0,80-0,90 → 0,893 / 0,846 ; 0,90-0,97 → 0,952 / 0,944 ; ≥ 0,97 → 49 sur 49 (prix moyen 0,983). Seul écart visible : 0,10-0,20 à J-30 (4 gagnés pour 11,6 attendus, 84 candidats) et 0,10-0,20 à J-14 (8 / 12,9), tandis que 0,05-0,10 à J-1 et J-3 gagne PLUS que son prix (9 / 4,7 et 10 / 5,0) : signes opposés selon l'horizon, du bruit.
-Favoris : 0,90-0,97 à J-1 : 58 / 62,5 (z −1,9), mais J-3 65 / 67,7, J-7 63 / 63,0, J-14 59 / 58,5. Rien de stable.
+Favoris : 0,90-0,97 à J-1 : 58 / 62,5, mais J-3 65 / 67,7, J-7 63 / 63,0, J-14 59 / 58,5. Rien de stable.
 
 ## NON des candidats (achat du NON, frais du marché, écart d'achat supposé 1,5 point sur le prix horaire)
 - Candidats cotés 0,10-0,30 : J-3 −2,7 %, J-7 +1,2 %, **J-14 +7,1 %** (132 paris, 103 événements, t par événement 2,02, z des prix 1,89, 10 mois sur 10 gagnants, sans les 3 pires +9,6 %), J-21 +7,0 %, J-30 +4,1 %. Avec un écart d'achat de 0 / 3 / 5 points : +9,1 / +5,2 / +2,7 %. `idea_test.verdict` : « retenue » à J-14, « indice » ailleurs.
@@ -24,5 +24,5 @@ Favoris : 0,90-0,97 à J-1 : 58 / 62,5 (z −1,9), mais J-3 65 / 67,7, J-7 63 / 
 
 ## Verdict : **indice faible, non joué**
 Le NON des candidats à 10-30 % rapporte +4 à +7 % sur le prix horaire dans 10 mois sur 10, mais (1) le prix horaire n'est pas exécutable : à prix réels il reste +3 à +9 % avec t ≤ 1,8, (2) un signal sur deux n'a aucun échange du NON dans les 24 h, (3) ~60 cases regardées.
-Il rejoint l'« indice » de `saison_sport.md` (+8 % à 14 jours, 120 événements) : même signe, même ordre de grandeur, deux domaines indépendants : **piste à garder en tête pour la prochaine saison de primaires (2028)**, pas de fantôme : les primaires de 2026 sont finies (il reste quelques runoffs et les élections de novembre, de structure différente : partis, pas candidats).
+Il rejoint l'« indice » de `saison_sport.md` (+8 % à 14 jours, 120 événements) : même signe, même ordre de grandeur, deux domaines indépendants : **piste à garder en tête pour la prochaine saison de primaires (2028)**, pas de fantôme : la saison des primaires de 2026 est finie (dernier événement relevé : septembre ; les élections de novembre ont une autre structure : partis, pas candidats).
 Prochaine étape quand il y aura des événements à jouer : un fantôme « NON des candidats à 10-30 % à 14-30 jours du scrutin » sur les événements ≥ 50 000 $ de volume.
