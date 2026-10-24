@@ -39,6 +39,10 @@ OUI à 0,05-0,15 (NON acheté au dernier achat réel, frais 5 %) : +2,5 % (96 h)
 Gagnés contre attendus par les prix : z +0,9 à +1,8 seulement. C'est l'image dans le miroir du même biais (la masse que les tranches basses surcotent, la favorite la sous-cote) : pas une deuxième preuve,
 et ce n'est pas rejoué dans l'arène (seule la favorite l'est). Écartée comme piste séparée.
 
+## 4b. Suivre l'argent (`scripts/flux.py`, 9 réglages)
+Parmi les tranches à 0,10-0,85, celle dont les achats nets des 6/12/24 dernières heures sont les plus gros (au moins 20 $) à 72/48/24 h de la fin : rendements de −27 % à +13 %, aucun régulier
+(24 h : −21 %, −5 %, −27 % ; 72 h/12 h : +13 %, t 0,95). **Écartée.**
+
 ## 5. Deuxième week-end et suivants (65 événements « 2nd/3rd… Weekend », 2026) : **pas testé**
 Lien avec l'ouverture du même film (bracket gagnant) tenté : 27 films, libellés de tranches irréguliers (« 5-Day », tranches serrées/larges, doublons) et ratios incohérents (de 0,15 à 1,43) ;
 trop peu de films propres pour une loi de baisse. À reprendre quand la série « 2nd Weekend » aura 60+ films réglés avec des tranches comparables.
