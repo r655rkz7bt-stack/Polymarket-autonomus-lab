@@ -24,7 +24,9 @@ beyond the listed price », après la création du marché, séances de la semai
 - **Ce qui inquiète.** Septembre (−17 %, 62 paris) et octobre (−18 %, 47 paris) perdent : l'effet s'est peut-être résorbé (ou le hasard : z −1,7 et −1,0). Le log-score du modèle est **moins bon** que celui du marché (0,471 contre 0,451 pour le pétrole et le gaz ; 0,617 contre 0,608
   pour l'or et l'argent) : l'avantage ne vient que des endroits où le modèle s'écarte beaucoup du marché. Or et argent : contrat à terme (GC=F, SI=F) au lieu du prix au comptant de Pyth (écart de base ≈ 1 %).
   Le prix payé est celui du premier échange réel après la décision, pas un carnet profond : marchés minces (médiane de quelques dizaines de dollars par échange).
-- **Verdict : RETENUE au sens d'`idea_test` (t 2,35, z 1,96, 5/7 mois), mais fragile** (~25 regards, effet qui s'affaiblit, modèle moins bon que le marché en log-score) → fantôme `toucher_metaux` (quart de Kelly), or et argent seulement.
+- **Jugement hors échantillon (le juge de paix)** : avril-juillet **+58 %** (166 paris, 54 événements, t 2,71, z des prix +3,6 ; barres 0,10-0,45 : +103 %, z +4,8) contre août-octobre **+8 %** (162 paris, 44 événements, t 0,40, z −0,8 ; barres 0,10-0,45 : +9 %) ; au seuil 0,10 : +77 % contre +29 % (t 1,06).
+  Le gain global vient donc surtout de la première moitié ; sur les trois derniers mois il est positif mais indiscernable de zéro.
+- **Verdict : INDICE FAIBLE** (`idea_test.verdict` global : « retenue », t 2,35, z 1,96, 5/7 mois ; mais ~25 regards, effet qui s'efface depuis août, pas de répétition sur les échelles mensuelles, modèle moins bon que le marché en log-score) → fantôme `toucher_metaux` (quart de Kelly), or et argent seulement : l'arène dira si l'effet existe encore.
 
 ## Production (fantôme `toucher_metaux`)
 - **Source des prix** : l'historique de Pyth (arbitre) demande désormais une clé (`benchmarks.pyth.network` : 401, `hermes.pyth.network/v2/updates/price/*` : 401 ; seule la liste des flux répond), Yahoo n'a pas d'API documentée (interdit par `CHANTIERS.md`),

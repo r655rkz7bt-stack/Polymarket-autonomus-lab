@@ -1278,7 +1278,7 @@ class ToucherMetaux(_Base):
     demandé + frais d'au moins `min_net_edge`.
     Test sur le passé (experiments/commodites_toucher.md, 24/10/2026, avril → octobre) : 4 matières (pétrole, gaz, or, argent), 112 semaines, prix des vrais
     échanges : 328 paris sur 98 événements, +33 % (seuil 0,05), confiance par événement 2,35, z des prix 1,96, 5 mois sur 7 gagnants, +19 % sans les 3 meilleurs ;
-    gain seulement sur les barres cotées 0,10-0,45 (le marché sous-cote les touches ; prix demandé plafonné à `max_price`, choix après coup) ; septembre et octobre perdants (−17 %) : INDICE, fantôme (or et argent seuls :
+    gain seulement sur les barres cotées 0,10-0,45 (le marché sous-cote les touches ; prix demandé plafonné à `max_price`, choix après coup) ; avril-juillet +58 % puis août-octobre +8 % (t 0,4) : INDICE FAIBLE, fantôme (or et argent seuls :
     le cycle n'a pas de prix pour le pétrole et le gaz). Pourquoi ça peut rater : volatilité fixe, bougies d'1 minute de Pyth plus extrêmes que nos relevés,
     marché qui apprend (mois récents)."""
 

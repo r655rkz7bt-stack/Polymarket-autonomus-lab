@@ -25,7 +25,7 @@ a_la_une:
   points:
     - "Capital principal : 772 € réalisés sur 1 000 de départ (−228 € de paris réglés, dont −145 € de nf_court et −58 € de la météo, presque tout avant le 20/10). Vérifié le 24/10 : le principal copie bien les paris de sa championne, l'écart avec son fantôme (+161 €) est du hasard."
     - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +161 €, mais +38 € sans ses 3 meilleurs paris."
-    - "Nouvelle piste le 24/10 : « l'or, l'argent, le pétrole ou le gaz vont-ils toucher tel prix cette semaine ? ». Sur 112 semaines réglées, acheter les barres sous-cotées (0,10-0,45) gagne +33 %, mais surtout avant septembre. Fragile : fantôme toucher_metaux (or, argent)."
+    - "Nouvelle piste le 24/10 : l'or, l'argent, le pétrole ou le gaz vont-ils toucher tel prix cette semaine ? Sur 112 semaines, acheter les barres sous-cotées gagne +33 % : +58 % jusqu'en juillet, +8 % depuis août. Indice faible : fantôme toucher_metaux (or, argent)."
     - "SpaceX : le nombre de lancements du mois ou de l'année se lit en direct (cumul + cadence ≈ 0,43 par jour). Test passé trop mince (9 compteurs), mais « 140-159 en 2026 » cotée 0,78 pour ~0,95 de chance : fantôme spacex_cumul. Séismes : un doublon USGS (pt + us) corrigé."
     - "Écartés le 24/10 : détroits, course à la publication (le marché saute en 3 secondes), température mondiale (carnets vides), séismes après la fin du jour. Indices faibles gardés en fantôme : séismes, box-office. Rougeole : on attend les mercredis du CDC."
 

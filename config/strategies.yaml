@@ -3223,7 +3223,7 @@ toucher_metaux:
   version: "1.0.0"
   created_at: "2026-10-24"
   hypothesis: >
-    Test sur le passé (experiments/commodites_toucher.md, 24/10/2026), verdict RETENUE au sens d'idea_test mais FRAGILE : 4 matières (pétrole, gaz naturel, or, argent),
+    Test sur le passé (experiments/commodites_toucher.md, 24/10/2026), verdict global « retenue » d'idea_test mais INDICE FAIBLE (hors échantillon : avril-juillet +58 %, août-octobre +8 %, t 0,4) : 4 matières (pétrole, gaz naturel, or, argent),
     112 échelles hebdomadaires (avril → octobre 2026), prix horaires de contrats à terme (Yahoo) pour le modèle et prix des vrais échanges pour les achats ;
     328 paris sur 98 événements : +33,5 % (t par événement 2,35, z des prix 1,96, 5 mois sur 7 gagnants, +19 % sans les 3 meilleurs paris), concentré sur les barres cotées 0,10-0,45
     (+61 %, z 2,9) ; barres à plus de 0,40 sans effet (prix demandé plafonné à 0,50 : choix après coup) ; septembre −17 %, octobre −18 % ; ~25 réglages regardés ; log-score du modèle un peu moins bon que celui du marché.
