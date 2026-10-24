@@ -3191,6 +3191,30 @@ seismes_marche:
     max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
 
+spacex_cumul:
+  explication: "SpaceX tire une fusée presque tous les deux jours et un site officiel les compte ; on regarde combien il y en a déjà eu dans le mois ou l'année, et on achète la case que tout le monde sous-estime ou on parie contre celle qui est devenue impossible."
+  class: spacex_cumul
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  hypothesis: >
+    Test sur le passé (experiments/spacex_cadence.md, 24/10/2026), verdict INDICE FAIBLE : 9 compteurs réglés (année 2025, janvier → septembre 2026),
+    compte de Launch Library 2 dans la tranche gagnante 9 fois sur 9. Modèle = compte déjà fait + cadence des 120 derniers jours (Poisson, loi régulière,
+    fenêtres des 365 jours) ; aux prix payés (premier achat dans les 2 h) : paris à chance modeste (0,1-0,5) 20 paris −19 %, quasi-certains (chance ≥ 0,96,
+    prix 0,84-0,93) 7 paris sur 7 gagnés, +10 % (3 événements). Trop peu de paris pour `idea_test.verdict` (< 30). En direct le 24/10 : « 140-159 » de l'année
+    cotée 0,78 (chance 0,94-1,00 avec 122 déjà faits et 68 jours restants), « 120-139 » et « 160-179 » vendues 0,12 et 0,03 pour 0 à 0,04 de chance. Quart de Kelly.
+  params:
+    min_net_edge:   {value: 0.03, min: 0.0, max: 0.30}    # chance prudente − prix demandé − frais
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}
+    min_price:      {value: 0.50, min: 0.01, max: 0.90}   # les paris à chance modeste perdaient sur le passé : seulement le côté probable
+    max_price:      {value: 0.97, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 6, min: 0.1, max: 48}        # relevé toutes les 2 h ; un lancement de plus change peu la chance sauf en fin de mois
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur 9 événements
+
 box_office_favori:
   explication: "Pour chaque film qui sort, les gens parient sur combien d'argent il gagnera le premier week-end ; le samedi, quand on sait déjà comment s'est passé le vendredi, on achète la case que tout le monde trouve la plus probable, parce qu'elle gagne un peu plus souvent que son prix."
   class: box_office_favori

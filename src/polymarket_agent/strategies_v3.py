@@ -1266,6 +1266,64 @@ class SeismesMarche(_Base):
         return self._finish(out, props)
 
 
+class SpaceXCumul(_Base):
+    """Marchés « How many SpaceX launches in <mois / année> ? » (tranches de nombre de lancements), réglés sur spacex.com/launches. Le compte ne fait que
+    monter et se lit en direct (Launch Library 2, sources/ll2.py) : compte déjà fait + cadence des 120 derniers jours sous trois lois (spacex.py). On achète
+    seulement le côté (OUI ou NON) que les trois lois jugent probable (prix demandé entre `min_price` et `max_price`) quand la chance la PLUS PRUDENTE des
+    trois dépasse le prix + frais d'au moins `min_net_edge`.
+    Test sur le passé (experiments/spacex_cadence.md, 24/10/2026) : règlement relu 9 fois sur 9 (compte LL2 dans la tranche gagnante) mais 9 événements
+    seulement (1 466 à 6 886 échanges) : les paris à chance modeste (0,1 à 0,5) perdent (20 paris, −19 %), les quasi-certains gagnent (7 paris sur 7, +10 %,
+    3 événements) : INDICE FAIBLE, sans preuve statistique, fantôme. Pourquoi ça peut rater : spacex.com ne compte pas comme LL2 (essai, charge utile),
+    ou une pause de plusieurs semaines de la flotte."""
+
+    strategy_id = "spacex_cumul"
+    required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "spacex", int(self.params.get("max_candidates", 40)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, scored = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("spacex")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("relevé des lancements pas à jour")
+                continue
+            # Jamais de certitude : spacex.com peut compter autrement que Launch Library 2.
+            yes_fair = min(max(float(ref["p_min"]), 0.03), 0.97)
+            no_fair = min(max(1 - float(ref["p_max"]), 0.03), 0.97)
+            best = None
+            for side, est in ((0, yes_fair), (1, no_fair)):
+                book = books.get(m.token_ids[side])
+                ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
+                if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
+                    continue
+                if best is None or est - ask > best[2]:
+                    best = (side, est, est - ask)
+            if best is None:
+                out.abstain("issue hors de la plage de prix ou carnet vide")
+                continue
+            scored.append((best[2], m, best[0], best[1], ref))
+        per_event: dict = {}
+        props = []
+        unc = float(p.get("uncertainty", 0))
+        for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
+            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 2)):
+                out.abstain("déjà deux tranches de cet événement")
+                continue
+            prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
+                             f"spacex:{ref['titre']}", f"chance prudente {est:.3f} pour l'issue achetée",
+                             "pause de la flotte de plusieurs semaines, ou spacex.com compte autrement que Launch Library 2")
+            if prop is not None:
+                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
+                props.append(prop)
+        return self._finish(out, props)
+
+
 class BoxOfficeFavori(_Base):
     """« Box-office du premier week-end » (5 tranches de recettes par film) : on achète le OUI de la tranche
     favorite, entre `min_hours` et `max_hours` avant la fin du marché (vendredi et samedi déjà connus du public).
@@ -1346,4 +1404,4 @@ CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceT
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, BoxOfficeFavori)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, BoxOfficeFavori, SpaceXCumul)}

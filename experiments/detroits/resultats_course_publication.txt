@@ -1,0 +1,44 @@
+40 événements, échanges 57587
+heure de règlement après publication (h), médiane : 27.616944444444446
++   0 h :  44/207 marchés avec un échange dans l'heure, prix moyen 0.864, gain moyen par part +0.136, rendement moyen par pari +36.8%, sous 0,97 : 24 paris, événements concernés 18
++ 0.5 h :  68/207 marchés avec un échange dans l'heure, prix moyen 0.835, gain moyen par part +0.165, rendement moyen par pari +42.9%, sous 0,97 : 45 paris, événements concernés 23
++   1 h : 108/207 marchés avec un échange dans l'heure, prix moyen 0.877, gain moyen par part +0.123, rendement moyen par pari +27.1%, sous 0,97 : 57 paris, événements concernés 29
++   2 h :  63/207 marchés avec un échange dans l'heure, prix moyen 0.969, gain moyen par part +0.031, rendement moyen par pari +23.0%, sous 0,97 : 7 paris, événements concernés 23
++   4 h :  52/207 marchés avec un échange dans l'heure, prix moyen 0.898, gain moyen par part +0.102, rendement moyen par pari +89.6%, sous 0,97 : 15 paris, événements concernés 21
++   8 h :  25/207 marchés avec un échange dans l'heure, prix moyen 0.956, gain moyen par part +0.044, rendement moyen par pari +96.6%, sous 0,97 : 2 paris, événements concernés 14
++  24 h :  21/207 marchés avec un échange dans l'heure, prix moyen 0.940, gain moyen par part +0.060, rendement moyen par pari +10.4%, sous 0,97 : 4 paris, événements concernés 7
+jour du premier saut du marché : {'Tue': 23, 'Wed': 6, 'Mon': 1}
+heure UTC : {3: 1, 8: 2, 10: 4, 12: 18, 14: 1, 15: 4}
+('701326', '2026-07-26', 'Tue 12:38', 1.6397222222222223)
+('701283', '2026-07-31', 'Tue 15:19', 4.327222222222222)
+('745502', '2026-08-02', 'Tue 15:19', 4.322222222222222)
+('778946', '2026-08-09', 'Tue 12:54', 1.9125)
+('816151', '2026-08-16', 'Tue 08:16', -2.7172222222222224)
+('850698', '2026-08-23', 'Tue 12:31', 1.5227777777777778)
+('886381', '2026-08-30', 'Wed 10:14', 23.241944444444446)
+('777470', '2026-08-31', 'Wed 14:51', 27.850277777777777)
+('927914', '2026-09-06', 'Mon 15:10', -19.828333333333333)
+('959365', '2026-09-13', 'Tue 12:26', 1.4344444444444444)
+('1006676', '2026-09-20', 'Tue 12:15', 1.2577777777777779)
+('1065118', '2026-09-27', 'Tue 12:20', 1.3433333333333333)
+('1065119', '2026-10-04', 'Tue 12:08', 1.1494444444444445)
+('1111192', '2026-10-11', 'Wed 12:37', 25.63)
+('1161399', '2026-10-18', 'Tue 10:48', -0.18694444444444444)
+('562974', '2026-06-14', 'Tue 12:57', 1.9502777777777778)
+('588830', '2026-06-21', 'Tue 08:16', -2.727222222222222)
+('664342', '2026-07-12', 'Tue 12:48', 1.8127777777777778)
+('715441', '2026-07-26', 'Tue 12:38', 1.643888888888889)
+('745445', '2026-08-02', 'Tue 15:19', 4.323888888888889)
+('778744', '2026-08-09', 'Tue 12:54', 1.9133333333333333)
+('816150', '2026-08-16', 'Tue 12:34', 1.5708333333333333)
+('886362', '2026-08-30', 'Wed 10:14', 23.241944444444446)
+('927829', '2026-09-06', 'Wed 12:16', 25.27)
+('959364', '2026-09-13', 'Tue 12:26', 1.4361111111111111)
+('1006677', '2026-09-20', 'Tue 12:15', 1.2577777777777779)
+('1065116', '2026-09-27', 'Tue 12:20', 1.3463888888888889)
+('1065117', '2026-10-04', 'Tue 03:39', -7.349722222222222)
+('1111191', '2026-10-11', 'Wed 12:37', 25.63138888888889)
+('1161395', '2026-10-18', 'Tue 10:48', -0.18444444444444444)
+délai 0 h après 11 h : 62 échanges sous 0,97 dans l'heure, gain théorique 457 $ pour 4221 $ misés (+10.8%) sur toute la période
+délai 1.0 h après 11 h : 200 échanges sous 0,97 dans l'heure, gain théorique 2949 $ pour 12501 $ misés (+23.6%) sur toute la période
+délai 0.5 h après 11 h : 137 échanges sous 0,97 dans l'heure, gain théorique 1474 $ pour 5220 $ misés (+28.2%) sur toute la période

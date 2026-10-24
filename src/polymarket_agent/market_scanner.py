@@ -111,7 +111,8 @@ def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanR
     ont peu de volume et n'entraient presque jamais dans les pages triées par volume ;
     mots_prononces (retenue sur le passé) ne voyait aucun marché. `tag_pages: {étiquette: pages}` ou
     `{étiquette: {pages, min_liquidity, ...}}` : filtres propres à l'étiquette (ces marchés ont
-    rarement 1 000 $ de liquidité ; le carnet réel décide de toute façon de ce qui s'exécute)."""
+    rarement 1 000 $ de liquidité ; le carnet réel décide de toute façon de ce qui s'exécute). Une étiquette peut aussi
+    fixer son propre `max_horizon_hours` (24/10/2026 : compteurs annuels de SpaceX, fin dans 68 jours)."""
     for tag, spec in (cfg.get("tag_pages") or {}).items():
         spec = dict(spec) if isinstance(spec, dict) else {"pages": spec}
         pages = int(spec.pop("pages", 0) or 0)
@@ -119,7 +120,7 @@ def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanR
             continue
         tag_cfg = dict(cfg, **spec)
         try:
-            raw = gamma.list_markets(end_min=now, end_max=now + timedelta(hours=cfg["max_horizon_hours"]),
+            raw = gamma.list_markets(end_min=now, end_max=now + timedelta(hours=tag_cfg["max_horizon_hours"]),
                                      page_size=cfg["page_size"], max_pages=pages, tag_id=tag)
         except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
             log.warning("scanner : marchés de l'étiquette %s indisponibles (%s)", tag, exc)
