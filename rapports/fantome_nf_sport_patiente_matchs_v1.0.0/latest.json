@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "710.1178",
+  "capital_immobilise": "195.7377",
+  "gains_realises_nets": "-94.1445",
+  "gains_latents": "6.7047",
+  "frais_payes": "6.1408",
+  "capital_total_estime": "912.5602",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2174,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "17.13",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T15:47"
+  },
+  {
+   "marche": "Counter-Strike: Vitality vs 9z (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "Vitality",
+   "parts": "39.15",
+   "cout": "33.28",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.9",
+   "latent": "1.96",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-23T19:05"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "15.00",
+   "cout": "13.80",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.91",
+   "latent": "-0.15",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T21:35"
+  },
+  {
+   "marche": "Will Kimi Antonelli win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "29.74",
+   "cout": "24.09",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.8",
+   "latent": "-0.30",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:06"
+  },
+  {
+   "marche": "Will Charles Leclerc win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "34.05",
+   "cout": "29.21",
+   "prix_moyen": "0.8579",
+   "prix_de_marque": "0.84",
+   "latent": "-0.61",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:36"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: Yulia Starodubtseva vs Aliaksandra Sasnovich",
+   "issue": "Aliaksandra Sasnovich",
+   "parts": "84.12",
+   "cout": "78.23",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.999",
+   "latent": "5.80",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "groupe": "1239984",
+   "ouverte_le": "2026-10-24T03:16"
+  }
+ ],
+ "operations_cloturees": 42,
+ "dernieres_operations": [
+  {
+   "marche": "6083606",
+   "issue": "Virtus.pro",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "6.57",
+   "resolution": "résolu : Virtus.pro",
+   "cloturee_le": "2026-10-23T23:40"
+  },
+  {
+   "marche": "5770244",
+   "issue": "KRÜ Blaze",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "0.23",
+   "resolution": "résolu : KRÜ Blaze",
+   "cloturee_le": "2026-10-23T23:55"
+  },
+  {
+   "marche": "6070239",
+   "issue": "Imperial",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "1.10",
+   "resolution": "résolu : Imperial",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "6094808",
+   "issue": "Connie Ma",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "1.57",
+   "resolution": "résolu : Connie Ma",
+   "cloturee_le": "2026-10-24T01:41"
+  },
+  {
+   "marche": "6076718",
+   "issue": "Hikaru Sato",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "6.08",
+   "resolution": "résolu : Hikaru Sato",
+   "cloturee_le": "2026-10-24T02:50"
+  },
+  {
+   "marche": "6082331",
+   "issue": "Matthew Dellavedova",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-25.89",
+   "resolution": "résolu : Stefan Vujic",
+   "cloturee_le": "2026-10-24T03:25"
+  },
+  {
+   "marche": "5969232",
+   "issue": "Milwaukee Brewers",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "4.56",
+   "resolution": "résolu : Milwaukee Brewers",
+   "cloturee_le": "2026-10-24T04:01"
+  },
+  {
+   "marche": "6078339",
+   "issue": "Ena Shibahara",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-21.09",
+   "resolution": "résolu : Alycia Parks",
+   "cloturee_le": "2026-10-24T06:25"
+  },
+  {
+   "marche": "5509281",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "1.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:05"
+  },
+  {
+   "marche": "5799001",
+   "issue": "Brisbane Bullets",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "5.96",
+   "resolution": "résolu : Brisbane Bullets",
+   "cloturee_le": "2026-10-24T10:31"
+  },
+  {
+   "marche": "6099838",
+   "issue": "Yannick Hanfmann",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "4.78",
+   "resolution": "résolu : Yannick Hanfmann",
+   "cloturee_le": "2026-10-24T11:41"
+  },
+  {
+   "marche": "6065034",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T13:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-33.69",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "6086038",
+   "issue": "Sandro Kopp",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-6.89",
+   "resolution": "résolu : Filippo Romano",
+   "cloturee_le": "2026-10-24T13:55"
+  },
+  {
+   "marche": "6065038",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "5.18",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T14:46"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_matchs v1.0.0": {
+   "operations": 42,
+   "evenements": 40,
+   "gagnantes": 33,
+   "taux_reussite": 0.786,
+   "profit_net": "-94.14",
+   "frais": "5.89",
+   "rendement_sur_mises": -0.0463,
+   "esperance_par_operation": "-2.24",
+   "ic90_rendement_par_euro": [
+    -0.2312,
+    0.0017
+   ],
+   "brier": 0.1717,
+   "log_loss": 0.5118,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

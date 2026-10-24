@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "597.1655",
+  "capital_immobilise": "164.1316",
+  "gains_realises_nets": "-238.7028",
+  "gains_latents": "2.0268",
+  "frais_payes": "8.7102",
+  "capital_total_estime": "763.3240",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3595,
+ "dernier_battement": "2026-10-21T20:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "52.30",
+   "cout": "35.09",
+   "prix_moyen": "0.6710",
+   "prix_de_marque": "0.721",
+   "latent": "2.62",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-20T00:58"
+  },
+  {
+   "marche": "5541301",
+   "issue": "No",
+   "parts": "85.14",
+   "cout": "72.37",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "groupe": "1169569",
+   "ouverte_le": "2026-10-20T08:43"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "9.19",
+   "cout": "7.52",
+   "prix_moyen": "0.8185",
+   "prix_de_marque": "0.91",
+   "latent": "0.84",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  },
+  {
+   "marche": "Will Harry Kane win the 2026 Ballon d'Or?",
+   "issue": "Yes",
+   "parts": "67.02",
+   "cout": "49.15",
+   "prix_moyen": "0.7333",
+   "prix_de_marque": "0.712",
+   "latent": "-1.43",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:44"
+  }
+ ],
+ "operations_cloturees": 44,
+ "dernieres_operations": [
+  {
+   "marche": "5400534",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "1.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:01"
+  },
+  {
+   "marche": "5409221",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "7.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:54"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "17.28",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:15"
+  },
+  {
+   "marche": "5952191",
+   "issue": "Sloane Stephens",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "0.42",
+   "resolution": "résolu : Sloane Stephens",
+   "cloturee_le": "2026-10-21T00:20"
+  },
+  {
+   "marche": "5958978",
+   "issue": "Carlos Maria Zarate",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "1.34",
+   "resolution": "résolu : Carlos Maria Zarate",
+   "cloturee_le": "2026-10-21T02:29"
+  },
+  {
+   "marche": "5856966",
+   "issue": "Miguel Tobon",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "16.14",
+   "resolution": "résolu : Miguel Tobon",
+   "cloturee_le": "2026-10-21T03:19"
+  },
+  {
+   "marche": "5965245",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "13.42",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-21T03:29"
+  },
+  {
+   "marche": "5825781",
+   "issue": "Tomas Machac",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "15.18",
+   "resolution": "résolu : Tomas Machac",
+   "cloturee_le": "2026-10-21T10:21"
+  },
+  {
+   "marche": "5931591",
+   "issue": "Francisco Cerundolo",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "13.99",
+   "resolution": "résolu : Francisco Cerundolo",
+   "cloturee_le": "2026-10-21T11:51"
+  },
+  {
+   "marche": "5966827",
+   "issue": "Sorana Cirstea",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "-31.33",
+   "resolution": "résolu : Sara Bejlek",
+   "cloturee_le": "2026-10-21T13:21"
+  },
+  {
+   "marche": "5992995",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "-110.70",
+   "resolution": "résolu : Nexus",
+   "cloturee_le": "2026-10-21T14:29"
+  },
+  {
+   "marche": "5992922",
+   "issue": "fnatic",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "-30.39",
+   "resolution": "résolu : PRIVATE",
+   "cloturee_le": "2026-10-21T14:46"
+  },
+  {
+   "marche": "5992977",
+   "issue": "Sinners",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "5.09",
+   "resolution": "résolu : Sinners",
+   "cloturee_le": "2026-10-21T15:10"
+  },
+  {
+   "marche": "5931585",
+   "issue": "Yanaki Milev",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "13.23",
+   "resolution": "résolu : Yanaki Milev",
+   "cloturee_le": "2026-10-21T15:50"
+  },
+  {
+   "marche": "5971906",
+   "issue": "9INE Academy",
+   "strategie": "nf_sport_patiente_large v1.0.0",
+   "resultat": "-44.23",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-21T16:51"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_large v1.0.0": {
+   "operations": 44,
+   "evenements": 42,
+   "gagnantes": 31,
+   "taux_reussite": 0.705,
+   "profit_net": "-238.70",
+   "frais": "8.58",
+   "rendement_sur_mises": -0.0961,
+   "esperance_par_operation": "-5.43",
+   "ic90_rendement_par_euro": [
+    -0.2143,
+    0.0491
+   ],
+   "brier": 0.1974,
+   "log_loss": 0.6768,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

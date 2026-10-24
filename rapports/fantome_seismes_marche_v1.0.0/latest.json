@@ -1,0 +1,114 @@
+{
+ "genere_le": "2026-10-24T15:38:03+00:00",
+ "capital": {
+  "solde_disponible": "923.3885",
+  "capital_immobilise": "76.6115",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-0.6103",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "999.3897",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0078,
+ "dernier_battement": "2026-10-24T15:22:34+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will there be 4 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "21.01",
+   "cout": "0.98",
+   "prix_moyen": "0.0465",
+   "prix_de_marque": "0.014",
+   "latent": "-0.68",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1199935",
+   "ouverte_le": "2026-10-24T05:43"
+  },
+  {
+   "marche": "Will there be more than 13 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "3.00",
+   "prix_moyen": "0.6000",
+   "prix_de_marque": "0.86",
+   "latent": "1.30",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1199934",
+   "ouverte_le": "2026-10-24T05:43"
+  },
+  {
+   "marche": "Will there be 12 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "21.75",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.959",
+   "latent": "2.22",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1199934",
+   "ouverte_le": "2026-10-24T05:52"
+  },
+  {
+   "marche": "Will there be 13 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "20.25",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.9",
+   "latent": "2.25",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1199934",
+   "ouverte_le": "2026-10-24T05:52"
+  },
+  {
+   "marche": "Will there be 3 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "15.00",
+   "cout": "3.15",
+   "prix_moyen": "0.2100",
+   "prix_de_marque": "0.164",
+   "latent": "-0.69",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1199935",
+   "ouverte_le": "2026-10-24T10:57"
+  },
+  {
+   "marche": "Will there be 2 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "106.00",
+   "cout": "27.49",
+   "prix_moyen": "0.2593",
+   "prix_de_marque": "0.212",
+   "latent": "-5.01",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1199935",
+   "ouverte_le": "2026-10-24T13:22"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

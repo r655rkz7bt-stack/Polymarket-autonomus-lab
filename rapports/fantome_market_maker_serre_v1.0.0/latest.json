@@ -1,0 +1,529 @@
+{
+ "genere_le": "2026-10-24T15:37:52+00:00",
+ "capital": {
+  "solde_disponible": "348.0557",
+  "capital_immobilise": "330.9614",
+  "gains_realises_nets": "-320.9829",
+  "gains_latents": "-16.0621",
+  "frais_payes": "15.9211",
+  "capital_total_estime": "662.9550",
+  "positions_ouvertes": "29",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3465,
+ "dernier_battement": "2026-10-24T15:22:34+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4375452",
+   "issue": "Yes",
+   "parts": "40.00",
+   "cout": "3.90",
+   "prix_moyen": "0.0975",
+   "prix_de_marque": "0.167",
+   "latent": "2.78",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T20:08"
+  },
+  {
+   "marche": "943542",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "16.80",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.84",
+   "latent": "0.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-18T04:13"
+  },
+  {
+   "marche": "5794233",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "6.20",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.03",
+   "latent": "-5.60",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1203164",
+   "ouverte_le": "2026-10-18T13:34"
+  },
+  {
+   "marche": "McDonald's (MCD) Q3 global comparable sales growth 1% to 2%?",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "12.60",
+   "prix_moyen": "0.6300",
+   "prix_de_marque": "0.64",
+   "latent": "0.20",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1194125",
+   "ouverte_le": "2026-10-19T00:43"
+  },
+  {
+   "marche": "5794217",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "7.00",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "0.364",
+   "latent": "0.28",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1203165",
+   "ouverte_le": "2026-10-19T01:08"
+  },
+  {
+   "marche": "5648367",
+   "issue": "Yes",
+   "parts": "40.00",
+   "cout": "18.20",
+   "prix_moyen": "0.4549",
+   "prix_de_marque": "0.14",
+   "latent": "-12.60",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1182678",
+   "ouverte_le": "2026-10-19T01:38"
+  },
+  {
+   "marche": "2100981",
+   "issue": "No",
+   "parts": "24.08",
+   "cout": "17.38",
+   "prix_moyen": "0.7216",
+   "prix_de_marque": "0.69",
+   "latent": "-0.76",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "425728",
+   "ouverte_le": "2026-10-20T05:09"
+  },
+  {
+   "marche": "5951114",
+   "issue": "No",
+   "parts": "15.50",
+   "cout": "9.30",
+   "prix_moyen": "0.6000",
+   "prix_de_marque": "0.54",
+   "latent": "-0.93",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1220618",
+   "ouverte_le": "2026-10-20T05:37"
+  },
+  {
+   "marche": "1892487",
+   "issue": "Yes",
+   "parts": "13.80",
+   "cout": "7.97",
+   "prix_moyen": "0.5774",
+   "prix_de_marque": "0.75",
+   "latent": "2.38",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "350828",
+   "ouverte_le": "2026-10-20T21:25"
+  },
+  {
+   "marche": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+   "issue": "Yes",
+   "parts": "45.92",
+   "cout": "24.34",
+   "prix_moyen": "0.5300",
+   "prix_de_marque": "0.517",
+   "latent": "-0.60",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-21T16:35"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ debut at a score of at least 1430 by June 30, 2027?",
+   "issue": "No",
+   "parts": "40.00",
+   "cout": "7.00",
+   "prix_moyen": "0.1750",
+   "prix_de_marque": "0.22",
+   "latent": "1.80",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1230584",
+   "ouverte_le": "2026-10-21T21:35"
+  },
+  {
+   "marche": "Paris curfew effectively lifted by November 7?",
+   "issue": "No",
+   "parts": "40.00",
+   "cout": "8.20",
+   "prix_moyen": "0.2050",
+   "prix_de_marque": "0.15",
+   "latent": "-2.20",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1220812",
+   "ouverte_le": "2026-10-22T03:01"
+  },
+  {
+   "marche": "2677115",
+   "issue": "No",
+   "parts": "2.44",
+   "cout": "1.81",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.76",
+   "latent": "0.05",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "201493",
+   "ouverte_le": "2026-10-22T13:51"
+  },
+  {
+   "marche": "Russia x Ukraine ceasefire by December 31, 2027?",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "10.00",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "0.47",
+   "latent": "-0.60",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "486199",
+   "ouverte_le": "2026-10-23T00:31"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ debut with an HLE-Diamond score of 65% or higher?",
+   "issue": "Yes",
+   "parts": "40.86",
+   "cout": "8.17",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "0.38",
+   "latent": "7.35",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1237266",
+   "ouverte_le": "2026-10-23T04:51"
+  },
+  {
+   "marche": "6066584",
+   "issue": "Yes",
+   "parts": "15.00",
+   "cout": "2.55",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "0.12",
+   "latent": "-0.75",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1237450",
+   "ouverte_le": "2026-10-23T13:21"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 29, 2026?",
+   "issue": "Yes",
+   "parts": "33.91",
+   "cout": "8.41",
+   "prix_moyen": "0.2481",
+   "prix_de_marque": "0.24",
+   "latent": "-0.28",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-23T13:31"
+  },
+  {
+   "marche": "Will there be between 25 and 29 average daily transits of the Bab el-Mandeb Strait on October 31?",
+   "issue": "Yes",
+   "parts": "25.36",
+   "cout": "20.54",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.76",
+   "latent": "-1.27",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-23T21:31"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 30, 2026?",
+   "issue": "Yes",
+   "parts": "76.23",
+   "cout": "19.86",
+   "prix_moyen": "0.2605",
+   "prix_de_marque": "0.26",
+   "latent": "-0.04",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-23T21:55"
+  },
+  {
+   "marche": "Will the next Claude Opus model (5.6+) debut with an HLE-Diamond score of 65% or higher?",
+   "issue": "No",
+   "parts": "24.06",
+   "cout": "20.21",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.79",
+   "latent": "-1.20",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1237249",
+   "ouverte_le": "2026-10-24T04:51"
+  },
+  {
+   "marche": "Next OpenAI GPT Terra (5.7+) released by October 30, 2026?",
+   "issue": "No",
+   "parts": "37.45",
+   "cout": "20.22",
+   "prix_moyen": "0.5400",
+   "prix_de_marque": "0.56",
+   "latent": "0.75",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "850712",
+   "ouverte_le": "2026-10-24T05:31"
+  },
+  {
+   "marche": "Will \"Alien\" be said during the first Joe Rogan Experience of the week of October 26?",
+   "issue": "Yes",
+   "parts": "21.64",
+   "cout": "12.55",
+   "prix_moyen": "0.5800",
+   "prix_de_marque": "0.51",
+   "latent": "-1.51",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1232466",
+   "ouverte_le": "2026-10-24T07:22"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut at a score of at least 1500 by June 30, 2027?",
+   "issue": "No",
+   "parts": "3.75",
+   "cout": "2.91",
+   "prix_moyen": "0.7767",
+   "prix_de_marque": "0.86",
+   "latent": "0.31",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1243958",
+   "ouverte_le": "2026-10-24T09:03"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut in the top 5 of the Text Arena leaderboard by June 30, 2027?",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "3.40",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "0.13",
+   "latent": "-0.80",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1243971",
+   "ouverte_le": "2026-10-24T09:51"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut with an HLE-Diamond score of 35% or higher?",
+   "issue": "Yes",
+   "parts": "5.24",
+   "cout": "1.00",
+   "prix_moyen": "0.1900",
+   "prix_de_marque": "0.19",
+   "latent": "0.00",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1243969",
+   "ouverte_le": "2026-10-24T09:57"
+  },
+  {
+   "marche": "Will Benjamin Netanyahu be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "12.72",
+   "cout": "9.29",
+   "prix_moyen": "0.7300",
+   "prix_de_marque": "0.72",
+   "latent": "-0.13",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-24T11:57"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 20, 2026?",
+   "issue": "No",
+   "parts": "22.30",
+   "cout": "17.84",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.75",
+   "latent": "-1.12",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-24T12:22"
+  },
+  {
+   "marche": "Will the 5-year Treasury yield dip below 4.70% before 2027?",
+   "issue": "Yes",
+   "parts": "26.13",
+   "cout": "19.60",
+   "prix_moyen": "0.7500",
+   "prix_de_marque": "0.71",
+   "latent": "-1.05",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "956932",
+   "ouverte_le": "2026-10-24T13:46"
+  },
+  {
+   "marche": "US-Iran ceasefire continues through the midterms?",
+   "issue": "No",
+   "parts": "54.91",
+   "cout": "13.73",
+   "prix_moyen": "0.2500",
+   "prix_de_marque": "0.24",
+   "latent": "-0.55",
+   "strategie": "market_maker_serre v1.0.0",
+   "groupe": "1156710",
+   "ouverte_le": "2026-10-24T14:04"
+  }
+ ],
+ "operations_cloturees": 161,
+ "dernieres_operations": [
+  {
+   "marche": "US x Iran ceasefire continues through October 28?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.52",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-23T22:51"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 31?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.55",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T00:22"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 28?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.50",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T00:25"
+  },
+  {
+   "marche": "2915296",
+   "issue": "No",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-4.14",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T00:37"
+  },
+  {
+   "marche": "Will Vance peak at Category 4?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-1.26",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T00:51"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ debut with an HLE-Diamond score of 60% or higher?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "0.82",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T01:32"
+  },
+  {
+   "marche": "Will the 5-year Treasury yield dip below 4.65% before 2027?",
+   "issue": "No",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-3.08",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T03:17"
+  },
+  {
+   "marche": "Will Vivek Ramaswamy pull the Amy Acton mother ad?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-2.80",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T06:01"
+  },
+  {
+   "marche": "5997211",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-2.62",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T06:32"
+  },
+  {
+   "marche": "Will Vance peak at Category 3?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-4.72",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T08:56"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut with an HLE-Diamond score of 30% or higher?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-2.00",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T10:41"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut at a score of at least 1490 by June 30, 2027?",
+   "issue": "No",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-0.40",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T10:52"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 28?",
+   "issue": "No",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-5.66",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T13:03"
+  },
+  {
+   "marche": "Marathon Fusion's high-rate gold alchemy confirmed by June 30, 2027?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "3.40",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "Will \"Love Is Blind: Boston\" be the top US Netflix show this week?",
+   "issue": "Yes",
+   "strategie": "market_maker_serre v1.0.0",
+   "resultat": "-3.12",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-24T15:13"
+  }
+ ],
+ "performances": {
+  "market_maker_serre v1.0.0": {
+   "operations": 161,
+   "evenements": 56,
+   "gagnantes": 36,
+   "taux_reussite": 0.224,
+   "profit_net": "-319.55",
+   "frais": "15.46",
+   "rendement_sur_mises": -0.0922,
+   "esperance_par_operation": "-1.98",
+   "ic90_rendement_par_euro": [
+    -0.1644,
+    -0.0881
+   ],
+   "brier": null,
+   "log_loss": null,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

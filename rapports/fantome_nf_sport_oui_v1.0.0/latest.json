@@ -1,0 +1,89 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "1014.1935",
+  "capital_immobilise": "10.2700",
+  "gains_realises_nets": "24.4635",
+  "gains_latents": "0.0449",
+  "frais_payes": "1.2039",
+  "capital_total_estime": "1024.5084",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0916,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "10.95",
+   "cout": "10.27",
+   "prix_moyen": "0.9379",
+   "prix_de_marque": "0.942",
+   "latent": "0.04",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T18:38"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "5339871",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "10.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T22:07"
+  },
+  {
+   "marche": "5409194",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "14.05",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T21:58"
+  }
+ ],
+ "performances": {
+  "nf_sport_oui v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 1.0,
+   "profit_net": "24.46",
+   "frais": "1.17",
+   "rendement_sur_mises": 0.087,
+   "esperance_par_operation": "12.23",
+   "ic90_rendement_par_euro": [
+    0.0703,
+    0.1056
+   ],
+   "brier": 0.0018,
+   "log_loss": 0.0397,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

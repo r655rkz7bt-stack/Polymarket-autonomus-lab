@@ -1,0 +1,138 @@
+{
+ "genere_le": "2026-10-24T15:38:02+00:00",
+ "capital": {
+  "solde_disponible": "628.0774",
+  "capital_immobilise": "371.9226",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-1.0946",
+  "frais_payes": "0.4864",
+  "capital_total_estime": "998.9054",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0013,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "74.04",
+   "cout": "69.12",
+   "prix_moyen": "0.9336",
+   "prix_de_marque": "0.934",
+   "latent": "0.03",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:28"
+  },
+  {
+   "marche": "559654",
+   "issue": "No",
+   "parts": "69.79",
+   "cout": "66.57",
+   "prix_moyen": "0.9538",
+   "prix_de_marque": "0.949",
+   "latent": "-0.34",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:28"
+  },
+  {
+   "marche": "Will Ron DeSantis win the 2028 Republican presidential nomination?",
+   "issue": "No",
+   "parts": "22.50",
+   "cout": "21.86",
+   "prix_moyen": "0.9716",
+   "prix_de_marque": "0.966",
+   "latent": "-0.13",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-19T20:34"
+  },
+  {
+   "marche": "Will James Talarico win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "60.75",
+   "cout": "59.23",
+   "prix_moyen": "0.9750",
+   "prix_de_marque": "0.972",
+   "latent": "-0.18",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:34"
+  },
+  {
+   "marche": "Will Raphael Warnock win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "55.36",
+   "cout": "54.30",
+   "prix_moyen": "0.9808",
+   "prix_de_marque": "0.98",
+   "latent": "-0.04",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:40"
+  },
+  {
+   "marche": "Will J.B. Pritzker win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "36.21",
+   "cout": "35.83",
+   "prix_moyen": "0.9894",
+   "prix_de_marque": "0.987",
+   "latent": "-0.09",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:44"
+  },
+  {
+   "marche": "561243",
+   "issue": "No",
+   "parts": "42.87",
+   "cout": "42.33",
+   "prix_moyen": "0.9875",
+   "prix_de_marque": "0.985",
+   "latent": "-0.11",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-20T17:20"
+  },
+  {
+   "marche": "Zelenskyy out as Ukraine president by end of 2026?",
+   "issue": "No",
+   "parts": "24.13",
+   "cout": "22.68",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.93",
+   "latent": "-0.24",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "34052",
+   "ouverte_le": "2026-10-21T21:22"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

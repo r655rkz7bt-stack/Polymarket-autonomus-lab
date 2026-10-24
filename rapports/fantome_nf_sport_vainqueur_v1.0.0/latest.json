@@ -1,0 +1,241 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "819.1684",
+  "capital_immobilise": "98.7867",
+  "gains_realises_nets": "-82.0449",
+  "gains_latents": "-2.0081",
+  "frais_payes": "6.4952",
+  "capital_total_estime": "915.9470",
+  "positions_ouvertes": "5",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1542,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "5.25",
+   "cout": "4.33",
+   "prix_moyen": "0.8239",
+   "prix_de_marque": "0.91",
+   "latent": "0.45",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T15:46"
+  },
+  {
+   "marche": "4551277",
+   "issue": "Texans",
+   "parts": "87.09",
+   "cout": "70.94",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-1.27",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "groupe": "1022440",
+   "ouverte_le": "2026-10-21T21:32"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "parts": "7.05",
+   "cout": "6.44",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.89",
+   "latent": "-0.17",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "groupe": "1186366",
+   "ouverte_le": "2026-10-21T23:32"
+  },
+  {
+   "marche": "Will Jacob Misiorowski win the 2026 World Series MVP?",
+   "issue": "No",
+   "parts": "7.42",
+   "cout": "6.82",
+   "prix_moyen": "0.9189",
+   "prix_de_marque": "0.965",
+   "latent": "0.34",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "groupe": "1105184",
+   "ouverte_le": "2026-10-22T00:32"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "10.86",
+   "cout": "10.25",
+   "prix_moyen": "0.9442",
+   "prix_de_marque": "0.819",
+   "latent": "-1.36",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:37"
+  }
+ ],
+ "operations_cloturees": 27,
+ "dernieres_operations": [
+  {
+   "marche": "5967419",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-22T14:12"
+  },
+  {
+   "marche": "6028845",
+   "issue": "Alex Michelsen",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "3.87",
+   "resolution": "résolu : Alex Michelsen",
+   "cloturee_le": "2026-10-22T15:21"
+  },
+  {
+   "marche": "5769515",
+   "issue": "Fujian Sturgeons",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "1.56",
+   "resolution": "résolu : Fujian Sturgeons",
+   "cloturee_le": "2026-10-22T15:41"
+  },
+  {
+   "marche": "5541301",
+   "issue": "Yes",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "4.07",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T16:11"
+  },
+  {
+   "marche": "5997771",
+   "issue": "Svyatoslav Gulin",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "2.82",
+   "resolution": "résolu : Svyatoslav Gulin",
+   "cloturee_le": "2026-10-22T16:11"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "3.24",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "5724493",
+   "issue": "England",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-6.75",
+   "resolution": "résolu : Sri Lanka",
+   "cloturee_le": "2026-10-22T18:20"
+  },
+  {
+   "marche": "5439913",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "14.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5439915",
+   "issue": "Yes",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-5.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5438173",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "3.75",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5470652",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "2.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T22:50"
+  },
+  {
+   "marche": "5470407",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "1.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "5614642",
+   "issue": "James Madison",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-5.14",
+   "resolution": "résolu : Appalachian State",
+   "cloturee_le": "2026-10-23T03:21"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "2.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5906238",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-4.59",
+   "resolution": "résolu : Movistar KOI",
+   "cloturee_le": "2026-10-23T20:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_vainqueur v1.0.0": {
+   "operations": 27,
+   "evenements": 26,
+   "gagnantes": 19,
+   "taux_reussite": 0.704,
+   "profit_net": "-82.04",
+   "frais": "5.99",
+   "rendement_sur_mises": -0.0556,
+   "esperance_par_operation": "-3.04",
+   "ic90_rendement_par_euro": [
+    -0.3591,
+    -0.0603
+   ],
+   "brier": 0.2261,
+   "log_loss": 0.8007,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

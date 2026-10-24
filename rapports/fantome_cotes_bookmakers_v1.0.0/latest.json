@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-24T15:37:50+00:00",
+ "capital": {
+  "solde_disponible": "624.5926",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-375.4074",
+  "gains_latents": "0.0000",
+  "frais_payes": "14.1290",
+  "capital_total_estime": "624.5926",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.446,
+ "dernier_battement": "2026-10-21T20:41:45+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 20,
+ "dernieres_operations": [
+  {
+   "marche": "4367427",
+   "issue": "Colts",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-46.72",
+   "resolution": "résolu : Titans",
+   "cloturee_le": "2026-10-18T20:33"
+  },
+  {
+   "marche": "5128553",
+   "issue": "Colts",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-39.53",
+   "resolution": "résolu : Titans",
+   "cloturee_le": "2026-10-18T20:33"
+  },
+  {
+   "marche": "5128537",
+   "issue": "Titans",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "64.00",
+   "resolution": "résolu : Titans",
+   "cloturee_le": "2026-10-18T20:33"
+  },
+  {
+   "marche": "4367428",
+   "issue": "Colts",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-56.88",
+   "resolution": "résolu : Titans",
+   "cloturee_le": "2026-10-18T20:51"
+  },
+  {
+   "marche": "4367346",
+   "issue": "Eagles",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-13.73",
+   "resolution": "résolu : Panthers",
+   "cloturee_le": "2026-10-18T21:05"
+  },
+  {
+   "marche": "5129377",
+   "issue": "Rams",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-91.53",
+   "resolution": "résolu : Cardinals",
+   "cloturee_le": "2026-10-18T23:23"
+  },
+  {
+   "marche": "5129897",
+   "issue": "Chiefs",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "32.36",
+   "resolution": "résolu : Chiefs",
+   "cloturee_le": "2026-10-18T23:48"
+  },
+  {
+   "marche": "5129637",
+   "issue": "Raiders",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-15.29",
+   "resolution": "résolu : Bills",
+   "cloturee_le": "2026-10-18T23:53"
+  },
+  {
+   "marche": "5130152",
+   "issue": "Packers",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "118.17",
+   "resolution": "résolu : Packers",
+   "cloturee_le": "2026-10-19T04:08"
+  },
+  {
+   "marche": "5130465",
+   "issue": "49ers",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-57.98",
+   "resolution": "résolu : Commanders",
+   "cloturee_le": "2026-10-20T03:43"
+  },
+  {
+   "marche": "5130451",
+   "issue": "Commanders",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-6.19",
+   "resolution": "résolu : 49ers",
+   "cloturee_le": "2026-10-20T03:43"
+  },
+  {
+   "marche": "5130452",
+   "issue": "Commanders",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-2.39",
+   "resolution": "résolu : 49ers",
+   "cloturee_le": "2026-10-20T03:43"
+  },
+  {
+   "marche": "4367145",
+   "issue": "49ers",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "10.32",
+   "resolution": "résolu : 49ers",
+   "cloturee_le": "2026-10-20T03:43"
+  },
+  {
+   "marche": "5130460",
+   "issue": "49ers",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-44.23",
+   "resolution": "résolu : Commanders",
+   "cloturee_le": "2026-10-20T03:48"
+  },
+  {
+   "marche": "5410000",
+   "issue": "FC Barcelona",
+   "strategie": "cotes_bookmakers v1.0.0",
+   "resultat": "-31.70",
+   "resolution": "résolu : Paris Saint-Germain FC",
+   "cloturee_le": "2026-10-20T22:15"
+  }
+ ],
+ "performances": {
+  "cotes_bookmakers v1.0.0": {
+   "operations": 20,
+   "evenements": 11,
+   "gagnantes": 4,
+   "taux_reussite": 0.2,
+   "profit_net": "-375.41",
+   "frais": "14.13",
+   "rendement_sur_mises": -0.5236,
+   "esperance_par_operation": "-18.77",
+   "ic90_rendement_par_euro": [
+    -0.8116,
+    0.2535
+   ],
+   "brier": 0.328,
+   "log_loss": 0.8802,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,221 @@
+{
+ "genere_le": "2026-10-24T15:37:53+00:00",
+ "capital": {
+  "solde_disponible": "921.5427",
+  "capital_immobilise": "51.2375",
+  "gains_realises_nets": "-27.2198",
+  "gains_latents": "-14.0777",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "958.7025",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1102,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Trump say \"Russia\" or \"Ukraine\" during his Midterm Rally in Georgia?",
+   "issue": "No",
+   "parts": "72.50",
+   "cout": "13.78",
+   "prix_moyen": "0.1900",
+   "prix_de_marque": "0.1",
+   "latent": "-6.52",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-23T19:46"
+  },
+  {
+   "marche": "Will Trump say \"Hormuz\" or \"Blockade\" during his Midterm Rally in Georgia?",
+   "issue": "No",
+   "parts": "29.28",
+   "cout": "9.08",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.21",
+   "latent": "-2.93",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "Will Trump say \"Drill Baby Drill\" during his Midterm Rally in Georgia?",
+   "issue": "Yes",
+   "parts": "16.28",
+   "cout": "3.58",
+   "prix_moyen": "0.2200",
+   "prix_de_marque": "0.2",
+   "latent": "-0.33",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-24T02:21"
+  },
+  {
+   "marche": "Will Trump say \"Russia\" or \"Ukraine\" during his Midterm Rally in Michigan?",
+   "issue": "No",
+   "parts": "52.75",
+   "cout": "14.24",
+   "prix_moyen": "0.2700",
+   "prix_de_marque": "0.2",
+   "latent": "-3.69",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "groupe": "1242924",
+   "ouverte_le": "2026-10-24T03:55"
+  },
+  {
+   "marche": "Will Trump say \"SI\" or \"Super Intelligence\" during his Midterm Rally in Michigan?",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "5.12",
+   "prix_moyen": "0.4100",
+   "prix_de_marque": "0.37",
+   "latent": "-0.50",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "groupe": "1242924",
+   "ouverte_le": "2026-10-24T11:42"
+  },
+  {
+   "marche": "Will Trump say \"Biden\" or \"Kamala\" or \"Obama\" 15+ times during his Midterm Rally in Michigan?",
+   "issue": "No",
+   "parts": "10.66",
+   "cout": "5.44",
+   "prix_moyen": "0.5100",
+   "prix_de_marque": "0.5",
+   "latent": "-0.11",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "groupe": "1242924",
+   "ouverte_le": "2026-10-24T14:29"
+  }
+ ],
+ "operations_cloturees": 11,
+ "dernieres_operations": [
+  {
+   "marche": "5979822",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-23.47",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T01:55"
+  },
+  {
+   "marche": "5979811",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "32.70",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T02:10"
+  },
+  {
+   "marche": "5979807",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-4.55",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T02:15"
+  },
+  {
+   "marche": "5979816",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "14.80",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T02:20"
+  },
+  {
+   "marche": "6015459",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "46.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T02:51"
+  },
+  {
+   "marche": "6030800",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-23.06",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T03:40"
+  },
+  {
+   "marche": "6030813",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-28.95",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T03:45"
+  },
+  {
+   "marche": "6030803",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "32.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:31"
+  },
+  {
+   "marche": "6043856",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-2.17",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:40"
+  },
+  {
+   "marche": "6043855",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-32.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:46"
+  },
+  {
+   "marche": "6043851",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-39.68",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T22:31"
+  }
+ ],
+ "performances": {
+  "mots_prononces_patiente v1.0.0": {
+   "operations": 11,
+   "evenements": 3,
+   "gagnantes": 4,
+   "taux_reussite": 0.364,
+   "profit_net": "-27.22",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.0965,
+   "esperance_par_operation": "-2.47",
+   "ic90_rendement_par_euro": [
+    -0.6825,
+    0.0804
+   ],
+   "brier": 0.26,
+   "log_loss": 0.7109,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

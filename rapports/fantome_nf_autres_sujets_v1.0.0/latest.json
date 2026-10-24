@@ -1,0 +1,277 @@
+{
+ "genere_le": "2026-10-24T15:37:54+00:00",
+ "capital": {
+  "solde_disponible": "452.1692",
+  "capital_immobilise": "450.5386",
+  "gains_realises_nets": "-97.2923",
+  "gains_latents": "17.2715",
+  "frais_payes": "7.7499",
+  "capital_total_estime": "919.9792",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1261,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+   "issue": "Yes",
+   "parts": "111.66",
+   "cout": "97.78",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.94",
+   "latent": "7.18",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "606422",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+   "issue": "No",
+   "parts": "111.66",
+   "cout": "97.78",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.94",
+   "latent": "7.18",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "606422",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Bitcoin reach $92,500 in October?",
+   "issue": "No",
+   "parts": "55.79",
+   "cout": "51.61",
+   "prix_moyen": "0.9252",
+   "prix_de_marque": "0.981",
+   "latent": "3.12",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "Will Bitcoin dip to $72,500 in October?",
+   "issue": "No",
+   "parts": "50.39",
+   "cout": "44.72",
+   "prix_moyen": "0.8874",
+   "prix_de_marque": "0.872",
+   "latent": "-0.78",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T16:53"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $115 in October?",
+   "issue": "No",
+   "parts": "41.29",
+   "cout": "39.03",
+   "prix_moyen": "0.9453",
+   "prix_de_marque": "0.897",
+   "latent": "-1.99",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T16:53"
+  },
+  {
+   "marche": "1339767",
+   "issue": "No",
+   "parts": "29.54",
+   "cout": "27.88",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T10:59"
+  },
+  {
+   "marche": "4319440",
+   "issue": "No",
+   "parts": "34.73",
+   "cout": "31.55",
+   "prix_moyen": "0.9084",
+   "prix_de_marque": "0.982",
+   "latent": "2.55",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-20T16:27"
+  },
+  {
+   "marche": "5776854",
+   "issue": "No",
+   "parts": "65.05",
+   "cout": "60.19",
+   "prix_moyen": "0.9253",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T18:15"
+  }
+ ],
+ "operations_cloturees": 20,
+ "dernieres_operations": [
+  {
+   "marche": "5766859",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "6.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T15:52"
+  },
+  {
+   "marche": "5564853",
+   "issue": "Yes",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "12.28",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T16:19"
+  },
+  {
+   "marche": "5767131",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "0.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:47"
+  },
+  {
+   "marche": "5767111",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "2.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T22:57"
+  },
+  {
+   "marche": "5766837",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "4.87",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T00:08"
+  },
+  {
+   "marche": "5692175",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "9.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T04:17"
+  },
+  {
+   "marche": "5769270",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "1.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T05:17"
+  },
+  {
+   "marche": "5774615",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "0.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T06:32"
+  },
+  {
+   "marche": "5610602",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "5.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5610576",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "1.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5610598",
+   "issue": "Yes",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "4936103",
+   "issue": "Yes",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "4.75",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T10:57"
+  },
+  {
+   "marche": "5653789",
+   "issue": "Yes",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "1.03",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T16:25"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "-110.73",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T18:12"
+  },
+  {
+   "marche": "5479394",
+   "issue": "No",
+   "strategie": "nf_autres_sujets v1.0.0",
+   "resultat": "0.43",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T18:12"
+  }
+ ],
+ "performances": {
+  "nf_autres_sujets v1.0.0": {
+   "operations": 20,
+   "evenements": 18,
+   "gagnantes": 17,
+   "taux_reussite": 0.85,
+   "profit_net": "-97.29",
+   "frais": "5.17",
+   "rendement_sur_mises": -0.1158,
+   "esperance_par_operation": "-4.86",
+   "ic90_rendement_par_euro": [
+    -0.178,
+    0.1092
+   ],
+   "brier": 0.1315,
+   "log_loss": 0.438,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

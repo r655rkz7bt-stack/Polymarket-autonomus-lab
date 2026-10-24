@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "250.5432",
+  "capital_immobilise": "911.8376",
+  "gains_realises_nets": "162.3807",
+  "gains_latents": "63.0623",
+  "frais_payes": "9.7357",
+  "capital_total_estime": "1225.4430",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0955,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "97.39",
+   "cout": "79.96",
+   "prix_moyen": "0.8210",
+   "prix_de_marque": "0.91",
+   "latent": "8.67",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T12:20"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "159.28",
+   "cout": "151.16",
+   "prix_moyen": "0.9490",
+   "prix_de_marque": "0.819",
+   "latent": "-20.71",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:06"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: En-Shuo Liang vs Tereza Valentova",
+   "issue": "Tereza Valentova",
+   "parts": "301.86",
+   "cout": "275.35",
+   "prix_moyen": "0.9122",
+   "prix_de_marque": "0.999",
+   "latent": "26.21",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "1244170",
+   "ouverte_le": "2026-10-24T13:56"
+  },
+  {
+   "marche": "M25 Sarreguemines: Philip Henning vs Adrien Gobat",
+   "issue": "Philip Henning",
+   "parts": "119.04",
+   "cout": "103.56",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.999",
+   "latent": "15.36",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "1242345",
+   "ouverte_le": "2026-10-24T14:01"
+  },
+  {
+   "marche": "Ireland Tour of Namibia ODIs: Namibia vs Ireland",
+   "issue": "Namibia",
+   "parts": "161.75",
+   "cout": "139.10",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.999",
+   "latent": "22.48",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "1204081",
+   "ouverte_le": "2026-10-24T14:11"
+  },
+  {
+   "marche": "Florence: Oriol Roca Batalla vs Michele Ribecai",
+   "issue": "Michele Ribecai",
+   "parts": "169.50",
+   "cout": "156.56",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "12.77",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "1245572",
+   "ouverte_le": "2026-10-24T14:32"
+  },
+  {
+   "marche": "European Open: Francisco Cerundolo vs Tallon Griekspoor",
+   "issue": "Francisco Cerundolo",
+   "parts": "7.14",
+   "cout": "6.14",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.62",
+   "latent": "-1.71",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "groupe": "1241427",
+   "ouverte_le": "2026-10-24T15:01"
+  }
+ ],
+ "operations_cloturees": 29,
+ "dernieres_operations": [
+  {
+   "marche": "5541301",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.56",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T16:11"
+  },
+  {
+   "marche": "5978962",
+   "issue": "Sandro Kopp",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "17.77",
+   "resolution": "résolu : Sandro Kopp",
+   "cloturee_le": "2026-10-22T16:22"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "17.39",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "6017244",
+   "issue": "Zizou Bergs",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "12.79",
+   "resolution": "résolu : Zizou Bergs",
+   "cloturee_le": "2026-10-22T17:15"
+  },
+  {
+   "marche": "5724493",
+   "issue": "England",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "-70.73",
+   "resolution": "résolu : Sri Lanka",
+   "cloturee_le": "2026-10-22T18:20"
+  },
+  {
+   "marche": "6017246",
+   "issue": "Flavio Cobolli",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "11.63",
+   "resolution": "résolu : Flavio Cobolli",
+   "cloturee_le": "2026-10-22T18:51"
+  },
+  {
+   "marche": "6037983",
+   "issue": "Yuki Naito",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "15.40",
+   "resolution": "résolu : Yuki Naito",
+   "cloturee_le": "2026-10-22T19:55"
+  },
+  {
+   "marche": "5799003",
+   "issue": "Liaoning Flying Leopards",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "3.17",
+   "resolution": "résolu : Liaoning Flying Leopards",
+   "cloturee_le": "2026-10-23T15:31"
+  },
+  {
+   "marche": "6065675",
+   "issue": "Jodie Anna Burrage",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "5.54",
+   "resolution": "résolu : Jodie Anna Burrage",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6051895",
+   "issue": "Felipe Meligeni Alves",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "5.31",
+   "resolution": "résolu : Felipe Meligeni Alves",
+   "cloturee_le": "2026-10-23T18:31"
+  },
+  {
+   "marche": "6086038",
+   "issue": "Filippo Romano",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "1.89",
+   "resolution": "résolu : Filippo Romano",
+   "cloturee_le": "2026-10-24T13:55"
+  },
+  {
+   "marche": "6099814",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.97",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-10-24T14:01"
+  },
+  {
+   "marche": "6094816",
+   "issue": "Hannah Klugman",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "5.45",
+   "resolution": "résolu : Hannah Klugman",
+   "cloturee_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "6099812",
+   "issue": "Alex Molcan",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "20.82",
+   "resolution": "résolu : Alex Molcan",
+   "cloturee_le": "2026-10-24T15:11"
+  },
+  {
+   "marche": "Guangzhou Open, Qualification: Yihan Qu vs Teodora Kostovic",
+   "issue": "Teodora Kostovic",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "13.92",
+   "resolution": "résolu : Teodora Kostovic",
+   "cloturee_le": "2026-10-24T15:35"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_72_168h_12_18h v1.0.0": {
+   "operations": 29,
+   "evenements": 29,
+   "gagnantes": 27,
+   "taux_reussite": 0.931,
+   "profit_net": "162.38",
+   "frais": "7.85",
+   "rendement_sur_mises": 0.0603,
+   "esperance_par_operation": "5.60",
+   "ic90_rendement_par_euro": [
+    -0.034,
+    0.1347
+   ],
+   "brier": 0.0668,
+   "log_loss": 0.2965,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

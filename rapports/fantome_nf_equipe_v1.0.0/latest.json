@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-24T15:37:55+00:00",
+ "capital": {
+  "solde_disponible": "554.8896",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-445.1104",
+  "gains_latents": "0.0000",
+  "frais_payes": "7.0862",
+  "capital_total_estime": "554.8896",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.6539,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 19,
+ "dernieres_operations": [
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "-146.53",
+   "resolution": "résolu : Auburn",
+   "cloturee_le": "2026-10-17T23:22"
+  },
+  {
+   "marche": "5352841",
+   "issue": "Stephen F. Austin",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "2.71",
+   "resolution": "résolu : Stephen F. Austin",
+   "cloturee_le": "2026-10-17T23:42"
+  },
+  {
+   "marche": "5353969",
+   "issue": "South Florida",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "15.29",
+   "resolution": "résolu : South Florida",
+   "cloturee_le": "2026-10-18T02:47"
+  },
+  {
+   "marche": "5353447",
+   "issue": "Miami (FL)",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "15.22",
+   "resolution": "résolu : Miami (FL)",
+   "cloturee_le": "2026-10-18T03:27"
+  },
+  {
+   "marche": "5843288",
+   "issue": "Sergi Perez Contri",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "7.70",
+   "resolution": "résolu : Sergi Perez Contri",
+   "cloturee_le": "2026-10-18T11:08"
+  },
+  {
+   "marche": "5314294",
+   "issue": "Manchester United FC",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "7.74",
+   "resolution": "résolu : Manchester United FC",
+   "cloturee_le": "2026-10-18T15:20"
+  },
+  {
+   "marche": "5127217",
+   "issue": "Jaguars",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "7.05",
+   "resolution": "résolu : Jaguars",
+   "cloturee_le": "2026-10-18T17:13"
+  },
+  {
+   "marche": "5314050",
+   "issue": "TSG 1899 Hoffenheim",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "7.75",
+   "resolution": "résolu : TSG 1899 Hoffenheim",
+   "cloturee_le": "2026-10-18T17:44"
+  },
+  {
+   "marche": "5129885",
+   "issue": "Chiefs",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "4.12",
+   "resolution": "résolu : Chiefs",
+   "cloturee_le": "2026-10-18T23:52"
+  },
+  {
+   "marche": "5129887",
+   "issue": "Chiefs",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "8.40",
+   "resolution": "résolu : Chiefs",
+   "cloturee_le": "2026-10-18T23:52"
+  },
+  {
+   "marche": "5889781",
+   "issue": "Aliaksandra Sasnovich",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "10.75",
+   "resolution": "résolu : Aliaksandra Sasnovich",
+   "cloturee_le": "2026-10-19T10:12"
+  },
+  {
+   "marche": "5825791",
+   "issue": "Coleman Wong",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "8.41",
+   "resolution": "résolu : Coleman Wong",
+   "cloturee_le": "2026-10-19T12:27"
+  },
+  {
+   "marche": "5660055",
+   "issue": "Fram Reykjavik",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "6.39",
+   "resolution": "résolu : Fram Reykjavik",
+   "cloturee_le": "2026-10-19T23:32"
+  },
+  {
+   "marche": "5919965",
+   "issue": "Yi Zhou",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "8.75",
+   "resolution": "résolu : Yi Zhou",
+   "cloturee_le": "2026-10-20T04:47"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Under",
+   "strategie": "nf_equipe v1.0.0",
+   "resultat": "8.67",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:14"
+  }
+ ],
+ "performances": {
+  "nf_equipe v1.0.0": {
+   "operations": 19,
+   "evenements": 17,
+   "gagnantes": 15,
+   "taux_reussite": 0.789,
+   "profit_net": "-445.11",
+   "frais": "7.09",
+   "rendement_sur_mises": -0.1829,
+   "esperance_par_operation": "-23.43",
+   "ic90_rendement_par_euro": [
+    -0.356,
+    0.0187
+   ],
+   "brier": 0.1959,
+   "log_loss": 0.7161,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "821.7175",
+  "capital_immobilise": "141.6668",
+  "gains_realises_nets": "-36.6157",
+  "gains_latents": "7.1757",
+  "frais_payes": "2.9508",
+  "capital_total_estime": "970.5600",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.216,
+ "dernier_battement": "2026-10-22T10:17:04+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5541301",
+   "issue": "No",
+   "parts": "26.09",
+   "cout": "22.18",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "groupe": "1169569",
+   "ouverte_le": "2026-10-20T08:43"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "59.53",
+   "cout": "56.37",
+   "prix_moyen": "0.9470",
+   "prix_de_marque": "0.942",
+   "latent": "-0.30",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-21T12:22"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "77.57",
+   "cout": "63.12",
+   "prix_moyen": "0.8137",
+   "prix_de_marque": "0.91",
+   "latent": "7.47",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  }
+ ],
+ "operations_cloturees": 30,
+ "dernieres_operations": [
+  {
+   "marche": "5964893",
+   "issue": "Lynn Vision",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "14.18",
+   "resolution": "résolu : Lynn Vision",
+   "cloturee_le": "2026-10-21T13:11"
+  },
+  {
+   "marche": "5992995",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "-149.63",
+   "resolution": "résolu : Nexus",
+   "cloturee_le": "2026-10-21T14:29"
+  },
+  {
+   "marche": "5992921",
+   "issue": "fnatic",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "-31.43",
+   "resolution": "résolu : PRIVATE",
+   "cloturee_le": "2026-10-21T14:52"
+  },
+  {
+   "marche": "5993001",
+   "issue": "Betclic Apogee Esports",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "4.05",
+   "resolution": "résolu : Betclic Apogee Esports",
+   "cloturee_le": "2026-10-21T15:21"
+  },
+  {
+   "marche": "5992996",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "11.90",
+   "resolution": "résolu : BC.Game Esports",
+   "cloturee_le": "2026-10-21T15:41"
+  },
+  {
+   "marche": "5971906",
+   "issue": "9INE Academy",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "-56.86",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-21T16:51"
+  },
+  {
+   "marche": "5978946",
+   "issue": "Corentin Moutet",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "1.43",
+   "resolution": "résolu : Corentin Moutet",
+   "cloturee_le": "2026-10-21T17:20"
+  },
+  {
+   "marche": "5409948",
+   "issue": "Over",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "7.17",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-21T19:01"
+  },
+  {
+   "marche": "6001043",
+   "issue": "Linea Bajraliu",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "5.13",
+   "resolution": "résolu : Linea Bajraliu",
+   "cloturee_le": "2026-10-21T19:05"
+  },
+  {
+   "marche": "5437389",
+   "issue": "Over",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "13.77",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-21T21:10"
+  },
+  {
+   "marche": "5437366",
+   "issue": "FC Bayern München",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "7.22",
+   "resolution": "résolu : FC Bayern München",
+   "cloturee_le": "2026-10-21T21:25"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "-54.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "6011785",
+   "issue": "Ya Yi Yang",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "4.32",
+   "resolution": "résolu : Ya Yi Yang",
+   "cloturee_le": "2026-10-22T04:33"
+  },
+  {
+   "marche": "5520534",
+   "issue": "SE Palmeiras",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "4.43",
+   "resolution": "résolu : SE Palmeiras",
+   "cloturee_le": "2026-10-22T04:50"
+  },
+  {
+   "marche": "6011791",
+   "issue": "Kurea Hayasaka",
+   "strategie": "nf_sport_patiente_jour v1.0.0",
+   "resultat": "2.86",
+   "resolution": "résolu : Kurea Hayasaka",
+   "cloturee_le": "2026-10-22T05:10"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_jour v1.0.0": {
+   "operations": 30,
+   "evenements": 27,
+   "gagnantes": 25,
+   "taux_reussite": 0.833,
+   "profit_net": "-36.62",
+   "frais": "2.91",
+   "rendement_sur_mises": -0.0137,
+   "esperance_par_operation": "-1.22",
+   "ic90_rendement_par_euro": [
+    -0.1462,
+    0.0688
+   ],
+   "brier": 0.129,
+   "log_loss": 0.5176,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

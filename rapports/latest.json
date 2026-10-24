@@ -1,0 +1,528 @@
+{
+ "genere_le": "2026-10-24T15:37:48+00:00",
+ "capital": {
+  "solde_disponible": "644.0540",
+  "capital_immobilise": "111.4448",
+  "gains_realises_nets": "-244.5012",
+  "gains_latents": "5.7216",
+  "frais_payes": "25.9765",
+  "capital_total_estime": "761.2204",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2861,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "8.75",
+   "cout": "8.18",
+   "prix_moyen": "0.9345",
+   "prix_de_marque": "0.942",
+   "latent": "0.07",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-18T16:16"
+  },
+  {
+   "marche": "Will FC Barcelona vs. Real Madrid CF end in a draw?",
+   "issue": "No",
+   "parts": "7.00",
+   "cout": "6.06",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.84",
+   "latent": "-0.18",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1175548",
+   "ouverte_le": "2026-10-18T17:28"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "37.32",
+   "cout": "30.60",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.91",
+   "latent": "3.36",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T19:16"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "19.24",
+   "cout": "18.12",
+   "prix_moyen": "0.9417",
+   "prix_de_marque": "0.819",
+   "latent": "-2.36",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T20:00"
+  },
+  {
+   "marche": "Will Bitcoin dip to $78,000 October 19-25?",
+   "issue": "Yes",
+   "parts": "5.07",
+   "cout": "0.37",
+   "prix_moyen": "0.0720",
+   "prix_de_marque": "0.441",
+   "latent": "1.87",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T04:01"
+  },
+  {
+   "marche": "Will Charles Leclerc win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "5.97",
+   "cout": "5.11",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-0.10",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:36"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "10.66",
+   "cout": "9.95",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.91",
+   "latent": "-0.25",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T23:47"
+  },
+  {
+   "marche": "Will Parma Calcio 1913 win on 2026-10-24?",
+   "issue": "No",
+   "parts": "8.95",
+   "cout": "7.92",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.14",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1167432",
+   "ouverte_le": "2026-10-24T05:48"
+  },
+  {
+   "marche": "LoL: G2 Esports vs LOS (BO1) - Worlds Group Stage",
+   "issue": "G2 Esports",
+   "parts": "7.03",
+   "cout": "5.76",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.81",
+   "latent": "-0.07",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1243548",
+   "ouverte_le": "2026-10-24T06:06"
+  },
+  {
+   "marche": "M25 Sarreguemines: Philip Henning vs Adrien Gobat",
+   "issue": "Philip Henning",
+   "parts": "14.09",
+   "cout": "11.79",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.999",
+   "latent": "2.28",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1242345",
+   "ouverte_le": "2026-10-24T14:04"
+  },
+  {
+   "marche": "Swiss Indoors Basel, Qualification: Henry Bernet vs Daniel Altmaier",
+   "issue": "Daniel Altmaier",
+   "parts": "9.38",
+   "cout": "7.58",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.94",
+   "latent": "1.24",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1243107",
+   "ouverte_le": "2026-10-24T15:27"
+  }
+ ],
+ "operations_cloturees": 201,
+ "dernieres_operations": [
+  {
+   "marche": "5458317",
+   "issue": "No",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "1.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "0.55",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "6065672",
+   "issue": "Harmony Tan",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "1.44",
+   "resolution": "résolu : Harmony Tan",
+   "cloturee_le": "2026-10-23T15:46"
+  },
+  {
+   "marche": "6051895",
+   "issue": "Felipe Meligeni Alves",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "0.65",
+   "resolution": "résolu : Felipe Meligeni Alves",
+   "cloturee_le": "2026-10-23T18:31"
+  },
+  {
+   "marche": "6065403",
+   "issue": "Philip Henning",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "1.32",
+   "resolution": "résolu : Philip Henning",
+   "cloturee_le": "2026-10-23T19:15"
+  },
+  {
+   "marche": "6071874",
+   "issue": "Oliver Ojakaar",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : Oliver Ojakaar",
+   "cloturee_le": "2026-10-23T19:25"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "1.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "6035008",
+   "issue": "Brute",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "1.72",
+   "resolution": "résolu : Brute",
+   "cloturee_le": "2026-10-23T21:35"
+  },
+  {
+   "marche": "6089721",
+   "issue": "Sinners",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-5.12",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-23T23:31"
+  },
+  {
+   "marche": "6028860",
+   "issue": "Jenson Brooksby",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "1.21",
+   "resolution": "résolu : Jenson Brooksby",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "6070239",
+   "issue": "Imperial",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "2.22",
+   "resolution": "résolu : Imperial",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "5615497",
+   "issue": "UConn",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "1.80",
+   "resolution": "résolu : UConn",
+   "cloturee_le": "2026-10-24T02:40"
+  },
+  {
+   "marche": "6078343",
+   "issue": "Kamilla Rakhimova",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "0.47",
+   "resolution": "résolu : Kamilla Rakhimova",
+   "cloturee_le": "2026-10-24T03:40"
+  },
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "-12.16",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-4.81",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  }
+ ],
+ "performances": {
+  "apres_echeance v1.0.0": {
+   "operations": 17,
+   "evenements": 14,
+   "gagnantes": 14,
+   "taux_reussite": 0.824,
+   "profit_net": "-12.38",
+   "frais": "0.19",
+   "rendement_sur_mises": -0.1262,
+   "esperance_par_operation": "-0.73",
+   "ic90_rendement_par_euro": [
+    -0.3807,
+    0.0516
+   ],
+   "brier": 0.1714,
+   "log_loss": 0.7536,
+   "assez_de_donnees": false
+  },
+  "contrer_crypto_patiente v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-0.43",
+   "frais": "0.03",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-0.43",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0174,
+   "log_loss": 0.1416,
+   "assez_de_donnees": false
+  },
+  "market_structure v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-5.94",
+   "frais": "3.25",
+   "rendement_sur_mises": -0.0824,
+   "esperance_par_operation": "-1.98",
+   "ic90_rendement_par_euro": [
+    -0.6972,
+    -0.0815
+   ],
+   "brier": 0.014,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "meteo_prevision v1.0.0": {
+   "operations": 41,
+   "evenements": 32,
+   "gagnantes": 24,
+   "taux_reussite": 0.585,
+   "profit_net": "-51.72",
+   "frais": "11.58",
+   "rendement_sur_mises": -0.0955,
+   "esperance_par_operation": "-1.26",
+   "ic90_rendement_par_euro": [
+    -0.2452,
+    0.1257
+   ],
+   "brier": 0.2849,
+   "log_loss": 0.7913,
+   "assez_de_donnees": true
+  },
+  "nf_court v1.0.0": {
+   "operations": 18,
+   "evenements": 17,
+   "gagnantes": 14,
+   "taux_reussite": 0.778,
+   "profit_net": "-144.96",
+   "frais": "2.73",
+   "rendement_sur_mises": -0.2199,
+   "esperance_par_operation": "-8.05",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.059
+   ],
+   "brier": 0.1973,
+   "log_loss": 0.6683,
+   "assez_de_donnees": false
+  },
+  "nf_court_prix_haut v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 1.0,
+   "profit_net": "1.29",
+   "frais": "0.06",
+   "rendement_sur_mises": 0.082,
+   "esperance_par_operation": "0.64",
+   "ic90_rendement_par_euro": [
+    0.0715,
+    0.094
+   ],
+   "brier": 0.0013,
+   "log_loss": 0.0357,
+   "assez_de_donnees": false
+  },
+  "nf_sport v1.0.0": {
+   "operations": 42,
+   "evenements": 34,
+   "gagnantes": 37,
+   "taux_reussite": 0.881,
+   "profit_net": "10.53",
+   "frais": "1.99",
+   "rendement_sur_mises": 0.029,
+   "esperance_par_operation": "0.25",
+   "ic90_rendement_par_euro": [
+    -0.0998,
+    0.0831
+   ],
+   "brier": 0.1014,
+   "log_loss": 0.3441,
+   "assez_de_donnees": true
+  },
+  "nf_sport_925_950 v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 1,
+   "taux_reussite": 0.5,
+   "profit_net": "-10.96",
+   "frais": "0.10",
+   "rendement_sur_mises": -0.3417,
+   "esperance_par_operation": "-5.48",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.0606
+   ],
+   "brier": 0.4852,
+   "log_loss": 2.1074,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente v1.0.0": {
+   "operations": 59,
+   "evenements": 57,
+   "gagnantes": 50,
+   "taux_reussite": 0.847,
+   "profit_net": "-19.84",
+   "frais": "4.89",
+   "rendement_sur_mises": -0.0121,
+   "esperance_par_operation": "-0.34",
+   "ic90_rendement_par_euro": [
+    -0.1041,
+    0.0619
+   ],
+   "brier": 0.1284,
+   "log_loss": 0.5129,
+   "assez_de_donnees": true
+  },
+  "nf_sport_patiente_6_24h v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "-2.47",
+   "frais": "0.02",
+   "rendement_sur_mises": -0.1237,
+   "esperance_par_operation": "-0.82",
+   "ic90_rendement_par_euro": [
+    -0.6337,
+    0.1581
+   ],
+   "brier": 0.2652,
+   "log_loss": 0.7698,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_biais_faible v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.47",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.0894,
+   "esperance_par_operation": "0.47",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0027,
+   "log_loss": 0.0534,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-22.07",
+   "frais": "0.07",
+   "rendement_sur_mises": -0.778,
+   "esperance_par_operation": "-7.36",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.6124
+   ],
+   "brier": 0.5841,
+   "log_loss": 1.8886,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_12_18h_vainqueur v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 3,
+   "taux_reussite": 1.0,
+   "profit_net": "3.36",
+   "frais": "0.15",
+   "rendement_sur_mises": 0.1258,
+   "esperance_par_operation": "1.12",
+   "ic90_rendement_par_euro": [
+    0.1018,
+    0.1689
+   ],
+   "brier": 0.0055,
+   "log_loss": 0.0686,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_prix_bas v1.0.0": {
+   "operations": 6,
+   "evenements": 6,
+   "gagnantes": 6,
+   "taux_reussite": 1.0,
+   "profit_net": "10.61",
+   "frais": "0.46",
+   "rendement_sur_mises": 0.1888,
+   "esperance_par_operation": "1.77",
+   "ic90_rendement_par_euro": [
+    0.1658,
+    0.2089
+   ],
+   "brier": 0.0143,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,493 @@
+{
+ "genere_le": "2026-10-24T15:37:49+00:00",
+ "capital": {
+  "solde_disponible": "597.5891",
+  "capital_immobilise": "424.3712",
+  "gains_realises_nets": "21.9603",
+  "gains_latents": "96.7632",
+  "frais_payes": "3.5759",
+  "capital_total_estime": "1118.7235",
+  "positions_ouvertes": "26",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0707,
+ "dernier_battement": "2026-10-24T15:10:44+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5929770",
+   "issue": "Yes",
+   "parts": "79.24",
+   "cout": "13.86",
+   "prix_moyen": "0.1749",
+   "prix_de_marque": "0.999",
+   "latent": "65.30",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1218521",
+   "ouverte_le": "2026-10-20T12:21"
+  },
+  {
+   "marche": "Will Elon Musk post 260-279 tweets from October 23 to October 30, 2026?",
+   "issue": "No",
+   "parts": "23.66",
+   "cout": "20.26",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.83",
+   "latent": "-0.62",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221575",
+   "ouverte_le": "2026-10-20T12:26"
+  },
+  {
+   "marche": "Will Elon Musk post 200-219 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "25.70",
+   "cout": "23.00",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "2.68",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-20T12:30"
+  },
+  {
+   "marche": "Will Elon Musk post 220-239 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "19.50",
+   "cout": "17.26",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.997",
+   "latent": "2.18",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-20T12:35"
+  },
+  {
+   "marche": "Will Elon Musk post 240-259 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "15.30",
+   "cout": "13.40",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.982",
+   "latent": "1.63",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-20T12:35"
+  },
+  {
+   "marche": "Will Elon Musk post 180-199 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "18.85",
+   "cout": "17.23",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.999",
+   "latent": "1.60",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-20T12:40"
+  },
+  {
+   "marche": "5957119",
+   "issue": "Yes",
+   "parts": "44.53",
+   "cout": "22.89",
+   "prix_moyen": "0.5140",
+   "prix_de_marque": "0.55",
+   "latent": "1.60",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221571",
+   "ouverte_le": "2026-10-20T16:54"
+  },
+  {
+   "marche": "Will Elon Musk post 260-279 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "12.78",
+   "cout": "11.25",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.9",
+   "latent": "0.26",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-20T18:15"
+  },
+  {
+   "marche": "5929769",
+   "issue": "No",
+   "parts": "28.01",
+   "cout": "17.00",
+   "prix_moyen": "0.6070",
+   "prix_de_marque": "0.999",
+   "latent": "10.98",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1218521",
+   "ouverte_le": "2026-10-21T16:16"
+  },
+  {
+   "marche": "5794272",
+   "issue": "Yes",
+   "parts": "14.19",
+   "cout": "5.48",
+   "prix_moyen": "0.3865",
+   "prix_de_marque": "0.957",
+   "latent": "8.10",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203167",
+   "ouverte_le": "2026-10-21T16:16"
+  },
+  {
+   "marche": "Will Elon Musk post 280-299 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "13.59",
+   "cout": "11.82",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.8",
+   "latent": "-0.95",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-21T18:11"
+  },
+  {
+   "marche": "Will Elon Musk post 300-319 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "8.79",
+   "cout": "7.56",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.74",
+   "latent": "-1.05",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-21T18:11"
+  },
+  {
+   "marche": "Will Elon Musk post 220-239 tweets from October 23 to October 30, 2026?",
+   "issue": "No",
+   "parts": "25.83",
+   "cout": "22.94",
+   "prix_moyen": "0.8883",
+   "prix_de_marque": "0.93",
+   "latent": "1.08",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221575",
+   "ouverte_le": "2026-10-22T00:57"
+  },
+  {
+   "marche": "Will Elon Musk post 240-259 tweets from October 23 to October 30, 2026?",
+   "issue": "No",
+   "parts": "21.68",
+   "cout": "18.86",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.89",
+   "latent": "0.43",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221575",
+   "ouverte_le": "2026-10-22T00:57"
+  },
+  {
+   "marche": "Will Elon Musk post 200-219 tweets from October 23 to October 30, 2026?",
+   "issue": "No",
+   "parts": "31.86",
+   "cout": "28.54",
+   "prix_moyen": "0.8957",
+   "prix_de_marque": "0.968",
+   "latent": "2.30",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221575",
+   "ouverte_le": "2026-10-22T01:12"
+  },
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from October 23 to October 30, 2026?",
+   "issue": "Yes",
+   "parts": "5.86",
+   "cout": "2.93",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "0.45",
+   "latent": "-0.29",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221568",
+   "ouverte_le": "2026-10-22T15:17"
+  },
+  {
+   "marche": "5929771",
+   "issue": "Yes",
+   "parts": "15.78",
+   "cout": "1.66",
+   "prix_moyen": "0.1053",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1218521",
+   "ouverte_le": "2026-10-22T17:16"
+  },
+  {
+   "marche": "Will Donald Trump post 180-199 Truth Social posts from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "16.62",
+   "cout": "14.29",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.997",
+   "latent": "2.28",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203167",
+   "ouverte_le": "2026-10-22T17:56"
+  },
+  {
+   "marche": "Will Elon Musk post 40-64 tweets from October 24 to October 26, 2026?",
+   "issue": "No",
+   "parts": "59.47",
+   "cout": "37.47",
+   "prix_moyen": "0.6300",
+   "prix_de_marque": "0.61",
+   "latent": "-1.19",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1235797",
+   "ouverte_le": "2026-10-23T11:32"
+  },
+  {
+   "marche": "Will Elon Musk post 90-114 tweets from October 24 to October 26, 2026?",
+   "issue": "Yes",
+   "parts": "55.13",
+   "cout": "8.02",
+   "prix_moyen": "0.1455",
+   "prix_de_marque": "0.16",
+   "latent": "0.80",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1235797",
+   "ouverte_le": "2026-10-23T19:57"
+  },
+  {
+   "marche": "Will Elon Musk post 280-299 tweets from October 23 to October 30, 2026?",
+   "issue": "No",
+   "parts": "1.31",
+   "cout": "1.11",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.82",
+   "latent": "-0.04",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1221575",
+   "ouverte_le": "2026-10-23T20:47"
+  },
+  {
+   "marche": "Will Elon Musk post 340-359 tweets from October 20 to October 27, 2026?",
+   "issue": "Yes",
+   "parts": "14.85",
+   "cout": "1.56",
+   "prix_moyen": "0.1050",
+   "prix_de_marque": "0.106",
+   "latent": "0.01",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-24T06:36"
+  },
+  {
+   "marche": "Will Khamenei post 0-4 posts from October 27 to November 3, 2026?",
+   "issue": "Yes",
+   "parts": "66.39",
+   "cout": "60.41",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.9",
+   "latent": "-0.66",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244062",
+   "ouverte_le": "2026-10-24T11:32"
+  },
+  {
+   "marche": "Will Elon Musk post 260-279 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "15.98",
+   "cout": "13.58",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.85",
+   "latent": "0.00",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-24T13:17"
+  },
+  {
+   "marche": "Will Elon Musk post 280-299 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "17.47",
+   "cout": "14.85",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.87",
+   "latent": "0.35",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-24T13:32"
+  },
+  {
+   "marche": "Will Elon Musk post 240-259 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "20.15",
+   "cout": "17.13",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.85",
+   "latent": "0.00",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-24T14:04"
+  }
+ ],
+ "operations_cloturees": 17,
+ "dernieres_operations": [
+  {
+   "marche": "5824120",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T20:04"
+  },
+  {
+   "marche": "5824121",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "23.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T19:05"
+  },
+  {
+   "marche": "5824122",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "3.15",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T19:20"
+  },
+  {
+   "marche": "5640317",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T20:05"
+  },
+  {
+   "marche": "5640284",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "8.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:40"
+  },
+  {
+   "marche": "5640308",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "2.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T15:25"
+  },
+  {
+   "marche": "5640297",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "3.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T15:25"
+  },
+  {
+   "marche": "5640323",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T17:20"
+  },
+  {
+   "marche": "5640330",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "9.37",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T17:25"
+  },
+  {
+   "marche": "5640336",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "3.37",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T03:40"
+  },
+  {
+   "marche": "5640344",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-2.64",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640340",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "6.56",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640349",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-2.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640220",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-7.50",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5929768",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "2.36",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:16"
+  }
+ ],
+ "performances": {
+  "compteur_tweets v1.0.0": {
+   "operations": 17,
+   "evenements": 6,
+   "gagnantes": 12,
+   "taux_reussite": 0.706,
+   "profit_net": "21.96",
+   "frais": "1.92",
+   "rendement_sur_mises": 0.1246,
+   "esperance_par_operation": "1.29",
+   "ic90_rendement_par_euro": [
+    -0.1449,
+    0.8606
+   ],
+   "brier": 0.217,
+   "log_loss": 0.6393,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

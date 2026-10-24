@@ -1,0 +1,397 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "180.5190",
+  "capital_immobilise": "634.2950",
+  "gains_realises_nets": "-185.1860",
+  "gains_latents": "36.4339",
+  "frais_payes": "3.5099",
+  "capital_total_estime": "851.2480",
+  "positions_ouvertes": "18",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2257,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "943539",
+   "issue": "No",
+   "parts": "21.74",
+   "cout": "18.80",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.84",
+   "latent": "-0.54",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "1280957",
+   "issue": "Yes",
+   "parts": "61.86",
+   "cout": "58.65",
+   "prix_moyen": "0.9482",
+   "prix_de_marque": "0.996",
+   "latent": "2.96",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "Yes",
+   "parts": "11.44",
+   "cout": "2.80",
+   "prix_moyen": "0.2445",
+   "prix_de_marque": "0.268",
+   "latent": "0.27",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T03:59"
+  },
+  {
+   "marche": "5767158",
+   "issue": "No",
+   "parts": "191.24",
+   "cout": "188.77",
+   "prix_moyen": "0.9871",
+   "prix_de_marque": "0.98",
+   "latent": "-1.35",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-18T09:19"
+  },
+  {
+   "marche": "5767157",
+   "issue": "No",
+   "parts": "13.66",
+   "cout": "13.49",
+   "prix_moyen": "0.9876",
+   "prix_de_marque": "0.99",
+   "latent": "0.03",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-18T09:24"
+  },
+  {
+   "marche": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "17.24",
+   "cout": "9.00",
+   "prix_moyen": "0.5220",
+   "prix_de_marque": "0.482",
+   "latent": "-0.69",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-18T16:44"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "No",
+   "parts": "5.24",
+   "cout": "0.96",
+   "prix_moyen": "0.1828",
+   "prix_de_marque": "0.066",
+   "latent": "-0.61",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-19T14:52"
+  },
+  {
+   "marche": "5167210",
+   "issue": "Yes",
+   "parts": "16.78",
+   "cout": "11.24",
+   "prix_moyen": "0.6700",
+   "prix_de_marque": "0.58",
+   "latent": "-1.51",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1111240",
+   "ouverte_le": "2026-10-19T17:05"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement and the Democrats win the Senate?",
+   "issue": "Yes",
+   "parts": "27.29",
+   "cout": "3.28",
+   "prix_moyen": "0.1201",
+   "prix_de_marque": "0.052",
+   "latent": "-1.86",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-19T17:05"
+  },
+  {
+   "marche": "2941850",
+   "issue": "No",
+   "parts": "7.15",
+   "cout": "4.94",
+   "prix_moyen": "0.6910",
+   "prix_de_marque": "0.808",
+   "latent": "0.84",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "708477",
+   "ouverte_le": "2026-10-20T18:20"
+  },
+  {
+   "marche": "3741671",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "9.75",
+   "prix_moyen": "0.3900",
+   "prix_de_marque": "0.999",
+   "latent": "15.22",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "878226",
+   "ouverte_le": "2026-10-22T12:42"
+  },
+  {
+   "marche": "5822953",
+   "issue": "No",
+   "parts": "21.25",
+   "cout": "2.39",
+   "prix_moyen": "0.1127",
+   "prix_de_marque": "0.516",
+   "latent": "8.57",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-22T12:42"
+  },
+  {
+   "marche": "Will Apple be the largest company in the world by market cap on October 31, 2026?",
+   "issue": "Yes",
+   "parts": "45.81",
+   "cout": "8.21",
+   "prix_moyen": "0.1793",
+   "prix_de_marque": "0.438",
+   "latent": "11.85",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1114519",
+   "ouverte_le": "2026-10-22T13:37"
+  },
+  {
+   "marche": "Ilhan Omar federally charged by October 31?",
+   "issue": "No",
+   "parts": "117.49",
+   "cout": "110.38",
+   "prix_moyen": "0.9395",
+   "prix_de_marque": "0.962",
+   "latent": "2.64",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1177681",
+   "ouverte_le": "2026-10-22T13:52"
+  },
+  {
+   "marche": "3554659",
+   "issue": "Yes",
+   "parts": "4.70",
+   "cout": "4.06",
+   "prix_moyen": "0.8640",
+   "prix_de_marque": "0.896",
+   "latent": "0.15",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "841230",
+   "ouverte_le": "2026-10-22T16:25"
+  },
+  {
+   "marche": "Will Donald Trump post 180-199 Truth Social posts from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.25",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.997",
+   "latent": "0.24",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "1203167",
+   "ouverte_le": "2026-10-22T16:42"
+  },
+  {
+   "marche": "Will Todd Achilles win the Idaho Senate race in 2026?",
+   "issue": "No",
+   "parts": "175.00",
+   "cout": "168.85",
+   "prix_moyen": "0.9649",
+   "prix_de_marque": "0.966",
+   "latent": "0.20",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "57643",
+   "ouverte_le": "2026-10-22T18:47"
+  },
+  {
+   "marche": "Will the Republicans win the Idaho Senate race in 2026?",
+   "issue": "Yes",
+   "parts": "17.08",
+   "cout": "16.47",
+   "prix_moyen": "0.9640",
+   "prix_de_marque": "0.965",
+   "latent": "0.02",
+   "strategie": "nm_demi_mise v1.0.0",
+   "groupe": "57643",
+   "ouverte_le": "2026-10-22T19:04"
+  }
+ ],
+ "operations_cloturees": 34,
+ "dernieres_operations": [
+  {
+   "marche": "5795758",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "0.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T05:14"
+  },
+  {
+   "marche": "5855417",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:31"
+  },
+  {
+   "marche": "5878049",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "0.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T07:15"
+  },
+  {
+   "marche": "5855368",
+   "issue": "Yes",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:31"
+  },
+  {
+   "marche": "5855321",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T08:51"
+  },
+  {
+   "marche": "5878079",
+   "issue": "Yes",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "4.16",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T10:40"
+  },
+  {
+   "marche": "5739674",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "6.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "5724493",
+   "issue": "England",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "-194.44",
+   "resolution": "résolu : Sri Lanka",
+   "cloturee_le": "2026-10-22T18:20"
+  },
+  {
+   "marche": "5640336",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "5.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T03:40"
+  },
+  {
+   "marche": "6030812",
+   "issue": "Yes",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "-8.68",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T03:50"
+  },
+  {
+   "marche": "6030805",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "-0.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T04:31"
+  },
+  {
+   "marche": "5914296",
+   "issue": "No",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "2.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T05:40"
+  },
+  {
+   "marche": "5640340",
+   "issue": "Yes",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "4.10",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640344",
+   "issue": "Yes",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "-3.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640349",
+   "issue": "Yes",
+   "strategie": "nm_demi_mise v1.0.0",
+   "resultat": "-0.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  }
+ ],
+ "performances": {
+  "nm_demi_mise v1.0.0": {
+   "operations": 34,
+   "evenements": 27,
+   "gagnantes": 28,
+   "taux_reussite": 0.824,
+   "profit_net": "-185.19",
+   "frais": "2.80",
+   "rendement_sur_mises": -0.1458,
+   "esperance_par_operation": "-5.45",
+   "ic90_rendement_par_euro": [
+    -0.0973,
+    0.7041
+   ],
+   "brier": 0.1301,
+   "log_loss": 0.4993,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

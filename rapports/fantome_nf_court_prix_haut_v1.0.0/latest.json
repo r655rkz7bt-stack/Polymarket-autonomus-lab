@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-24T15:37:54+00:00",
+ "capital": {
+  "solde_disponible": "501.9590",
+  "capital_immobilise": "488.7698",
+  "gains_realises_nets": "-9.2712",
+  "gains_latents": "23.2502",
+  "frais_payes": "19.6449",
+  "capital_total_estime": "1013.9789",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2769,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "516.67",
+   "cout": "488.77",
+   "prix_moyen": "0.9460",
+   "prix_de_marque": "0.991",
+   "latent": "23.25",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-22T05:12"
+  }
+ ],
+ "operations_cloturees": 58,
+ "dernieres_operations": [
+  {
+   "marche": "5967419",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.41",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-22T14:12"
+  },
+  {
+   "marche": "5975670",
+   "issue": "Down",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "7.03",
+   "resolution": "résolu : Down",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "5439913",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "13.68",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.37",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5471628",
+   "issue": "Over",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "7.57",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "5470377",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "8.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:15"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458310",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "-22.11",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458321",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "1.04",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458322",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "12.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "1.42",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5776825",
+   "issue": "Yes",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.86",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "14.65",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  }
+ ],
+ "performances": {
+  "nf_court_prix_haut v1.0.0": {
+   "operations": 58,
+   "evenements": 51,
+   "gagnantes": 55,
+   "taux_reussite": 0.948,
+   "profit_net": "-9.27",
+   "frais": "19.64",
+   "rendement_sur_mises": -0.0018,
+   "esperance_par_operation": "-0.16",
+   "ic90_rendement_par_euro": [
+    -0.0412,
+    0.0597
+   ],
+   "brier": 0.0502,
+   "log_loss": 0.2306,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

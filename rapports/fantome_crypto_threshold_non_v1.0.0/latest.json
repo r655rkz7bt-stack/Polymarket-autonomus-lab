@@ -1,0 +1,121 @@
+{
+ "genere_le": "2026-10-24T15:37:50+00:00",
+ "capital": {
+  "solde_disponible": "783.9987",
+  "capital_immobilise": "0.1742",
+  "gains_realises_nets": "-215.8271",
+  "gains_latents": "0.9580",
+  "frais_payes": "9.3782",
+  "capital_total_estime": "785.1309",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2225,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 25?",
+   "issue": "No",
+   "parts": "1.80",
+   "cout": "0.17",
+   "prix_moyen": "0.0968",
+   "prix_de_marque": "0.629",
+   "latent": "0.96",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T22:32"
+  }
+ ],
+ "operations_cloturees": 6,
+ "dernieres_operations": [
+  {
+   "marche": "5653747",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-152.82",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T16:26"
+  },
+  {
+   "marche": "6002420",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-4.57",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T07:48"
+  },
+  {
+   "marche": "6002436",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-11.23",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T15:10"
+  },
+  {
+   "marche": "6034720",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-0.33",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T17:09"
+  },
+  {
+   "marche": "6104754",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-14.89",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,300 on October 24?",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-31.99",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T15:35"
+  }
+ ],
+ "performances": {
+  "crypto_threshold_non v1.0.0": {
+   "operations": 6,
+   "evenements": 6,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-215.83",
+   "frais": "9.37",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-35.97",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.1311,
+   "log_loss": 0.4074,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

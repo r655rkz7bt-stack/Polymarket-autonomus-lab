@@ -1,0 +1,65 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "1016.8188",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "16.8188",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1016.8188",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1343,
+ "dernier_battement": "2026-10-21T15:06:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "5339871",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_oui v1.0.0",
+   "resultat": "16.82",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T22:07"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_oui v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "16.82",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0741,
+   "esperance_par_operation": "16.82",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0003,
+   "log_loss": 0.0177,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "715.8172",
+  "capital_immobilise": "229.0250",
+  "gains_realises_nets": "-55.1578",
+  "gains_latents": "-15.5990",
+  "frais_payes": "5.2409",
+  "capital_total_estime": "929.2432",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1802,
+ "dernier_battement": "2026-10-24T15:22:34+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "9.19",
+   "cout": "7.52",
+   "prix_moyen": "0.8185",
+   "prix_de_marque": "0.91",
+   "latent": "0.84",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  },
+  {
+   "marche": "1892491",
+   "issue": "No",
+   "parts": "67.61",
+   "cout": "54.09",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.754",
+   "latent": "-3.11",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "350828",
+   "ouverte_le": "2026-10-22T16:55"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "144.47",
+   "cout": "137.10",
+   "prix_moyen": "0.9490",
+   "prix_de_marque": "0.819",
+   "latent": "-18.78",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:06"
+  },
+  {
+   "marche": "Ireland Tour of Namibia ODIs: Namibia vs Ireland",
+   "issue": "Namibia",
+   "parts": "35.80",
+   "cout": "30.31",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.999",
+   "latent": "5.45",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "1204081",
+   "ouverte_le": "2026-10-24T13:52"
+  }
+ ],
+ "operations_cloturees": 25,
+ "dernieres_operations": [
+  {
+   "marche": "6029905",
+   "issue": "Team Nemesis",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.84",
+   "resolution": "résolu : Team Nemesis",
+   "cloturee_le": "2026-10-22T16:22"
+  },
+  {
+   "marche": "5978962",
+   "issue": "Sandro Kopp",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "14.84",
+   "resolution": "résolu : Sandro Kopp",
+   "cloturee_le": "2026-10-22T16:22"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "14.95",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "6028225",
+   "issue": "Yellow Submarine",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-9.06",
+   "resolution": "résolu : CyberHero",
+   "cloturee_le": "2026-10-22T17:20"
+  },
+  {
+   "marche": "6024716",
+   "issue": "UNiTY esports",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "14.74",
+   "resolution": "résolu : UNiTY esports",
+   "cloturee_le": "2026-10-22T17:40"
+  },
+  {
+   "marche": "5724493",
+   "issue": "England",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-9.00",
+   "resolution": "résolu : Sri Lanka",
+   "cloturee_le": "2026-10-22T18:20"
+  },
+  {
+   "marche": "5798637",
+   "issue": "PARIVISION",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.86",
+   "resolution": "résolu : PARIVISION",
+   "cloturee_le": "2026-10-22T19:06"
+  },
+  {
+   "marche": "6028132",
+   "issue": "Eternal Fire",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "8.17",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-22T19:11"
+  },
+  {
+   "marche": "6037983",
+   "issue": "Yuki Naito",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "12.66",
+   "resolution": "résolu : Yuki Naito",
+   "cloturee_le": "2026-10-22T19:55"
+  },
+  {
+   "marche": "6065397",
+   "issue": "Jack Loge",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "9.53",
+   "resolution": "résolu : Jack Loge",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5799003",
+   "issue": "Liaoning Flying Leopards",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "12.30",
+   "resolution": "résolu : Liaoning Flying Leopards",
+   "cloturee_le": "2026-10-23T15:31"
+  },
+  {
+   "marche": "5799006",
+   "issue": "Zhejiang Golden Bulls",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "1.25",
+   "resolution": "résolu : Zhejiang Golden Bulls",
+   "cloturee_le": "2026-10-23T15:31"
+  },
+  {
+   "marche": "5799002",
+   "issue": "Beijing Royal Fighters",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "7.88",
+   "resolution": "résolu : Beijing Royal Fighters",
+   "cloturee_le": "2026-10-23T15:35"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-41.97",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_12_18h v1.0.0": {
+   "operations": 25,
+   "evenements": 25,
+   "gagnantes": 20,
+   "taux_reussite": 0.8,
+   "profit_net": "-55.16",
+   "frais": "4.96",
+   "rendement_sur_mises": -0.0259,
+   "esperance_par_operation": "-2.21",
+   "ic90_rendement_par_euro": [
+    -0.2168,
+    0.0482
+   ],
+   "brier": 0.1569,
+   "log_loss": 0.669,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

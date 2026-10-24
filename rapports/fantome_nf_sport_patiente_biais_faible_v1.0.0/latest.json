@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "467.7329",
+  "capital_immobilise": "392.1284",
+  "gains_realises_nets": "-140.1387",
+  "gains_latents": "-0.6732",
+  "frais_payes": "9.1065",
+  "capital_total_estime": "859.1881",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2231,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "63.16",
+   "cout": "52.78",
+   "prix_moyen": "0.8356",
+   "prix_de_marque": "0.91",
+   "latent": "4.70",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T16:09"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "125.73",
+   "cout": "119.32",
+   "prix_moyen": "0.9490",
+   "prix_de_marque": "0.819",
+   "latent": "-16.34",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:06"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: Yulia Starodubtseva vs Aliaksandra Sasnovich",
+   "issue": "Aliaksandra Sasnovich",
+   "parts": "180.44",
+   "cout": "168.40",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "11.86",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "groupe": "1239984",
+   "ouverte_le": "2026-10-24T02:51"
+  },
+  {
+   "marche": "Will Parma Calcio 1913 win on 2026-10-24?",
+   "issue": "No",
+   "parts": "58.33",
+   "cout": "51.64",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.89",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "groupe": "1167432",
+   "ouverte_le": "2026-10-24T05:48"
+  }
+ ],
+ "operations_cloturees": 48,
+ "dernieres_operations": [
+  {
+   "marche": "6078343",
+   "issue": "Kamilla Rakhimova",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "9.41",
+   "resolution": "résolu : Kamilla Rakhimova",
+   "cloturee_le": "2026-10-24T03:40"
+  },
+  {
+   "marche": "5969232",
+   "issue": "Milwaukee Brewers",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "5.31",
+   "resolution": "résolu : Milwaukee Brewers",
+   "cloturee_le": "2026-10-24T04:01"
+  },
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "-52.35",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "5509281",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "3.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:05"
+  },
+  {
+   "marche": "6076719",
+   "issue": "Xinxin Yao",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "7.60",
+   "resolution": "résolu : Xinxin Yao",
+   "cloturee_le": "2026-10-24T08:01"
+  },
+  {
+   "marche": "6084823",
+   "issue": "Carol Young Suh Lee",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "8.69",
+   "resolution": "résolu : Carol Young Suh Lee",
+   "cloturee_le": "2026-10-24T08:55"
+  },
+  {
+   "marche": "5774478",
+   "issue": "FUT Esports",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "8.45",
+   "resolution": "résolu : FUT Esports",
+   "cloturee_le": "2026-10-24T09:31"
+  },
+  {
+   "marche": "6084819",
+   "issue": "Tatiana Prozorova",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "9.80",
+   "resolution": "résolu : Tatiana Prozorova",
+   "cloturee_le": "2026-10-24T09:55"
+  },
+  {
+   "marche": "6099838",
+   "issue": "Yannick Hanfmann",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "12.38",
+   "resolution": "résolu : Yannick Hanfmann",
+   "cloturee_le": "2026-10-24T11:41"
+  },
+  {
+   "marche": "6084827",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "9.54",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-24T12:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "-92.34",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "6105759",
+   "issue": "Linda Fruhvirtova",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "-37.76",
+   "resolution": "résolu : Mei Yamaguchi",
+   "cloturee_le": "2026-10-24T14:06"
+  },
+  {
+   "marche": "5774500",
+   "issue": "Spirit",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "-105.33",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-24T14:21"
+  },
+  {
+   "marche": "6065036",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "2.25",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T14:46"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_biais_faible v1.0.0": {
+   "operations": 48,
+   "evenements": 47,
+   "gagnantes": 43,
+   "taux_reussite": 0.896,
+   "profit_net": "-140.14",
+   "frais": "8.08",
+   "rendement_sur_mises": -0.0429,
+   "esperance_par_operation": "-2.92",
+   "ic90_rendement_par_euro": [
+    -0.1167,
+    0.0452
+   ],
+   "brier": 0.0947,
+   "log_loss": 0.3445,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

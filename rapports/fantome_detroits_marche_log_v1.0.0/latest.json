@@ -1,0 +1,198 @@
+{
+ "genere_le": "2026-10-24T15:37:50+00:00",
+ "capital": {
+  "solde_disponible": "506.2970",
+  "capital_immobilise": "493.7030",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-21.2735",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "978.7265",
+  "positions_ouvertes": "13",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0706,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will 170-189 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+   "issue": "Yes",
+   "parts": "37.07",
+   "cout": "7.03",
+   "prix_moyen": "0.1896",
+   "prix_de_marque": "0.237",
+   "latent": "1.76",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236991",
+   "ouverte_le": "2026-10-23T18:57"
+  },
+  {
+   "marche": "Will there be between 25 and 29 average daily transits of the Bab el-Mandeb Strait on October 31?",
+   "issue": "No",
+   "parts": "272.03",
+   "cout": "52.87",
+   "prix_moyen": "0.1944",
+   "prix_de_marque": "0.22",
+   "latent": "6.97",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-23T18:57"
+  },
+  {
+   "marche": "Will 230 or more ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+   "issue": "No",
+   "parts": "77.50",
+   "cout": "62.78",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.9",
+   "latent": "6.98",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236991",
+   "ouverte_le": "2026-10-23T18:57"
+  },
+  {
+   "marche": "Will 190-209 ships transit the Bab el-Mandeb Strait between October 19-October 25?",
+   "issue": "No",
+   "parts": "94.37",
+   "cout": "56.32",
+   "prix_moyen": "0.5968",
+   "prix_de_marque": "0.57",
+   "latent": "-2.53",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1181964",
+   "ouverte_le": "2026-10-23T18:57"
+  },
+  {
+   "marche": "Will 190-209 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+   "issue": "No",
+   "parts": "88.91",
+   "cout": "55.35",
+   "prix_moyen": "0.6226",
+   "prix_de_marque": "0.51",
+   "latent": "-10.01",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236991",
+   "ouverte_le": "2026-10-23T19:03"
+  },
+  {
+   "marche": "Will 25-29 ships transit the Strait of Hormuz between October 26-November 1?",
+   "issue": "No",
+   "parts": "82.01",
+   "cout": "51.02",
+   "prix_moyen": "0.6222",
+   "prix_de_marque": "0.69",
+   "latent": "5.56",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236985",
+   "ouverte_le": "2026-10-23T19:03"
+  },
+  {
+   "marche": "Will fewer than 170 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+   "issue": "Yes",
+   "parts": "102.91",
+   "cout": "14.36",
+   "prix_moyen": "0.1396",
+   "prix_de_marque": "0.09",
+   "latent": "-5.10",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236991",
+   "ouverte_le": "2026-10-23T19:03"
+  },
+  {
+   "marche": "Will there be between 20 and 24 average daily transits of the Bab el-Mandeb Strait on October 31?",
+   "issue": "Yes",
+   "parts": "308.64",
+   "cout": "30.89",
+   "prix_moyen": "0.1001",
+   "prix_de_marque": "0.05",
+   "latent": "-15.46",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-23T19:27"
+  },
+  {
+   "marche": "Will 25-29 ships transit the Strait of Hormuz between October 19-October 25?",
+   "issue": "Yes",
+   "parts": "76.76",
+   "cout": "28.40",
+   "prix_moyen": "0.3700",
+   "prix_de_marque": "0.34",
+   "latent": "-2.30",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1181963",
+   "ouverte_le": "2026-10-23T19:47"
+  },
+  {
+   "marche": "Will fewer than 20 ships transit the Strait of Hormuz between October 26-November 1?",
+   "issue": "No",
+   "parts": "118.46",
+   "cout": "100.32",
+   "prix_moyen": "0.8468",
+   "prix_de_marque": "0.8",
+   "latent": "-5.55",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236985",
+   "ouverte_le": "2026-10-23T19:47"
+  },
+  {
+   "marche": "Will 20-24 ships transit the Strait of Hormuz between October 26-November 1?",
+   "issue": "Yes",
+   "parts": "75.03",
+   "cout": "18.09",
+   "prix_moyen": "0.2411",
+   "prix_de_marque": "0.22",
+   "latent": "-1.58",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236985",
+   "ouverte_le": "2026-10-23T19:47"
+  },
+  {
+   "marche": "Will there be between 30 and 34 average daily transits of the Bab el-Mandeb Strait on October 31?",
+   "issue": "No",
+   "parts": "9.92",
+   "cout": "8.43",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.84",
+   "latent": "-0.10",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-23T23:52"
+  },
+  {
+   "marche": "Will 210-229 ships transit the Bab el-Mandeb Strait between October 26-November 1?",
+   "issue": "No",
+   "parts": "9.11",
+   "cout": "7.83",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.87",
+   "latent": "0.09",
+   "strategie": "detroits_marche_log v1.0.0",
+   "groupe": "1236991",
+   "ouverte_le": "2026-10-24T07:12"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,445 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "288.0318",
+  "capital_immobilise": "677.4478",
+  "gains_realises_nets": "-34.5204",
+  "gains_latents": "-2.6383",
+  "frais_payes": "5.0438",
+  "capital_total_estime": "962.8413",
+  "positions_ouvertes": "22",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0855,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "43.46",
+   "cout": "40.85",
+   "prix_moyen": "0.9399",
+   "prix_de_marque": "0.948",
+   "latent": "0.35",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by November 2?",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.21",
+   "prix_moyen": "0.9210",
+   "prix_de_marque": "0.93",
+   "latent": "0.09",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "62.94",
+   "cout": "58.88",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.967",
+   "latent": "1.98",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "27.97",
+   "cout": "23.73",
+   "prix_moyen": "0.8482",
+   "prix_de_marque": "0.721",
+   "latent": "-3.56",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "1285152",
+   "issue": "No",
+   "parts": "36.94",
+   "cout": "32.91",
+   "prix_moyen": "0.8908",
+   "prix_de_marque": "0.856",
+   "latent": "-1.29",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T10:58"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "42.35",
+   "cout": "38.35",
+   "prix_moyen": "0.9055",
+   "prix_de_marque": "0.931",
+   "latent": "1.08",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "Will the Democrats win the Arizona governor race in 2026?",
+   "issue": "Yes",
+   "parts": "54.33",
+   "cout": "50.67",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.9",
+   "latent": "-1.77",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-17T11:04"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "47.35",
+   "cout": "43.70",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.92",
+   "latent": "-0.14",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "47.35",
+   "cout": "43.70",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.92",
+   "latent": "-0.14",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-17T11:08"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "68.12",
+   "cout": "64.50",
+   "prix_moyen": "0.9468",
+   "prix_de_marque": "0.964",
+   "latent": "1.17",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T11:13"
+  },
+  {
+   "marche": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+   "issue": "Yes",
+   "parts": "41.88",
+   "cout": "38.25",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.91",
+   "latent": "-0.14",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-17T11:18"
+  },
+  {
+   "marche": "Will the Republican Party control the House after the 2026 Midterm elections?",
+   "issue": "No",
+   "parts": "41.79",
+   "cout": "38.17",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.91",
+   "latent": "-0.14",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-17T11:24"
+  },
+  {
+   "marche": "Will the Democrats win the New Hampshire Senate race in 2026?",
+   "issue": "Yes",
+   "parts": "41.71",
+   "cout": "38.09",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.91",
+   "latent": "-0.14",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "57661",
+   "ouverte_le": "2026-10-17T11:28"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "46.15",
+   "cout": "42.54",
+   "prix_moyen": "0.9219",
+   "prix_de_marque": "0.927",
+   "latent": "0.24",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-17T11:28"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "55.83",
+   "cout": "52.35",
+   "prix_moyen": "0.9376",
+   "prix_de_marque": "0.942",
+   "latent": "0.24",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "4375452",
+   "issue": "No",
+   "parts": "6.12",
+   "cout": "5.77",
+   "prix_moyen": "0.9432",
+   "prix_de_marque": "0.798",
+   "latent": "-0.89",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T22:24"
+  },
+  {
+   "marche": "Will the Democrats win the Michigan governor race in 2026?",
+   "issue": "Yes",
+   "parts": "6.15",
+   "cout": "5.77",
+   "prix_moyen": "0.9384",
+   "prix_de_marque": "0.937",
+   "latent": "-0.01",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "57176",
+   "ouverte_le": "2026-10-17T22:24"
+  },
+  {
+   "marche": "1280957",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "1.12",
+   "prix_moyen": "0.8988",
+   "prix_de_marque": "0.996",
+   "latent": "0.12",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T23:38"
+  },
+  {
+   "marche": "5167158",
+   "issue": "No",
+   "parts": "19.02",
+   "cout": "17.52",
+   "prix_moyen": "0.9211",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "1111230",
+   "ouverte_le": "2026-10-17T23:49"
+  },
+  {
+   "marche": "3758964",
+   "issue": "No",
+   "parts": "18.15",
+   "cout": "17.07",
+   "prix_moyen": "0.9406",
+   "prix_de_marque": "0.974",
+   "latent": "0.61",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "276527",
+   "ouverte_le": "2026-10-18T02:19"
+  },
+  {
+   "marche": "5091133",
+   "issue": "No",
+   "parts": "7.95",
+   "cout": "7.27",
+   "prix_moyen": "0.9140",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "1099776",
+   "ouverte_le": "2026-10-18T05:09"
+  },
+  {
+   "marche": "Will the Republicans win the Arizona governor race in 2026?",
+   "issue": "No",
+   "parts": "7.55",
+   "cout": "7.04",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.89",
+   "latent": "-0.32",
+   "strategie": "nf_quart_mise v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-18T08:19"
+  }
+ ],
+ "operations_cloturees": 42,
+ "dernieres_operations": [
+  {
+   "marche": "5128537",
+   "issue": "Colts",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "-26.58",
+   "resolution": "résolu : Titans",
+   "cloturee_le": "2026-10-18T20:33"
+  },
+  {
+   "marche": "5316191",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T21:29"
+  },
+  {
+   "marche": "5315589",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "3.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T21:33"
+  },
+  {
+   "marche": "5672898",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "-13.58",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T23:10"
+  },
+  {
+   "marche": "4329890",
+   "issue": "Rams",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "-25.36",
+   "resolution": "résolu : Cardinals",
+   "cloturee_le": "2026-10-18T23:23"
+  },
+  {
+   "marche": "5129637",
+   "issue": "Bills",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.97",
+   "resolution": "résolu : Bills",
+   "cloturee_le": "2026-10-18T23:53"
+  },
+  {
+   "marche": "5851293",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T04:18"
+  },
+  {
+   "marche": "5593550",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T04:18"
+  },
+  {
+   "marche": "5610602",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.43",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "3.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:15"
+  },
+  {
+   "marche": "4936103",
+   "issue": "Yes",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.77",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T10:57"
+  },
+  {
+   "marche": "5653786",
+   "issue": "Yes",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "0.41",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T16:26"
+  },
+  {
+   "marche": "5479394",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "1.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T18:12"
+  },
+  {
+   "marche": "5409195",
+   "issue": "No",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "3.02",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:53"
+  },
+  {
+   "marche": "5409194",
+   "issue": "Yes",
+   "strategie": "nf_quart_mise v1.0.0",
+   "resultat": "2.04",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T21:53"
+  }
+ ],
+ "performances": {
+  "nf_quart_mise v1.0.0": {
+   "operations": 42,
+   "evenements": 40,
+   "gagnantes": 37,
+   "taux_reussite": 0.881,
+   "profit_net": "-34.52",
+   "frais": "3.29",
+   "rendement_sur_mises": -0.0374,
+   "esperance_par_operation": "-0.82",
+   "ic90_rendement_par_euro": [
+    -0.1275,
+    0.0516
+   ],
+   "brier": 0.1068,
+   "log_loss": 0.3737,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

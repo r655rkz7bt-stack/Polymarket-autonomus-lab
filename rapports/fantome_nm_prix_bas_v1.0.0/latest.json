@@ -1,0 +1,481 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "590.5385",
+  "capital_immobilise": "375.8140",
+  "gains_realises_nets": "-33.6475",
+  "gains_latents": "16.0600",
+  "frais_payes": "2.7752",
+  "capital_total_estime": "982.4125",
+  "positions_ouvertes": "25",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0998,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "943539",
+   "issue": "No",
+   "parts": "43.49",
+   "cout": "37.61",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.84",
+   "latent": "-1.08",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "Yes",
+   "parts": "11.44",
+   "cout": "2.80",
+   "prix_moyen": "0.2445",
+   "prix_de_marque": "0.268",
+   "latent": "0.27",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T03:59"
+  },
+  {
+   "marche": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "33.48",
+   "cout": "17.48",
+   "prix_moyen": "0.5220",
+   "prix_de_marque": "0.482",
+   "latent": "-1.34",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-18T16:44"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement and the Democrats win the Senate?",
+   "issue": "Yes",
+   "parts": "2.95",
+   "cout": "0.43",
+   "prix_moyen": "0.1458",
+   "prix_de_marque": "0.052",
+   "latent": "-0.28",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-19T12:39"
+  },
+  {
+   "marche": "5167210",
+   "issue": "Yes",
+   "parts": "31.05",
+   "cout": "19.56",
+   "prix_moyen": "0.6300",
+   "prix_de_marque": "0.58",
+   "latent": "-1.55",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1111240",
+   "ouverte_le": "2026-10-19T13:05"
+  },
+  {
+   "marche": "5475240",
+   "issue": "No",
+   "parts": "9.91",
+   "cout": "8.95",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.99",
+   "latent": "0.86",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1161442",
+   "ouverte_le": "2026-10-19T14:15"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "No",
+   "parts": "34.48",
+   "cout": "6.30",
+   "prix_moyen": "0.1828",
+   "prix_de_marque": "0.066",
+   "latent": "-4.03",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-19T14:52"
+  },
+  {
+   "marche": "2110578",
+   "issue": "No",
+   "parts": "41.77",
+   "cout": "36.12",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.77",
+   "latent": "-3.96",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-19T20:10"
+  },
+  {
+   "marche": "2941850",
+   "issue": "No",
+   "parts": "2.38",
+   "cout": "2.00",
+   "prix_moyen": "0.8409",
+   "prix_de_marque": "0.808",
+   "latent": "-0.08",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "708477",
+   "ouverte_le": "2026-10-19T22:49"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 31?",
+   "issue": "Yes",
+   "parts": "45.06",
+   "cout": "36.05",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.78",
+   "latent": "-0.90",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-20T00:30"
+  },
+  {
+   "marche": "4118937",
+   "issue": "Yes",
+   "parts": "51.50",
+   "cout": "8.76",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "0.048",
+   "latent": "-6.28",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-10-20T17:50"
+  },
+  {
+   "marche": "3741671",
+   "issue": "Yes",
+   "parts": "7.50",
+   "cout": "1.88",
+   "prix_moyen": "0.2500",
+   "prix_de_marque": "0.999",
+   "latent": "5.62",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "878226",
+   "ouverte_le": "2026-10-20T18:25"
+  },
+  {
+   "marche": "2941849",
+   "issue": "Yes",
+   "parts": "38.87",
+   "cout": "26.35",
+   "prix_moyen": "0.6780",
+   "prix_de_marque": "0.797",
+   "latent": "4.63",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "708477",
+   "ouverte_le": "2026-10-20T18:49"
+  },
+  {
+   "marche": "3554659",
+   "issue": "Yes",
+   "parts": "44.48",
+   "cout": "35.27",
+   "prix_moyen": "0.7930",
+   "prix_de_marque": "0.896",
+   "latent": "4.58",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "841230",
+   "ouverte_le": "2026-10-20T18:49"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by less than 4%?",
+   "issue": "No",
+   "parts": "31.67",
+   "cout": "20.59",
+   "prix_moyen": "0.6500",
+   "prix_de_marque": "0.61",
+   "latent": "-1.27",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-20T19:15"
+  },
+  {
+   "marche": "5167204",
+   "issue": "Yes",
+   "parts": "20.46",
+   "cout": "13.91",
+   "prix_moyen": "0.6800",
+   "prix_de_marque": "0.74",
+   "latent": "1.23",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1111240",
+   "ouverte_le": "2026-10-20T19:20"
+  },
+  {
+   "marche": "Will the Republicans win the Texas governor race in 2026?",
+   "issue": "No",
+   "parts": "13.25",
+   "cout": "3.82",
+   "prix_moyen": "0.2880",
+   "prix_de_marque": "0.294",
+   "latent": "0.08",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "57222",
+   "ouverte_le": "2026-10-20T19:40"
+  },
+  {
+   "marche": "Will the Democrats win the Ohio governor race in 2026?",
+   "issue": "Yes",
+   "parts": "44.96",
+   "cout": "35.97",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.82",
+   "latent": "0.90",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "57185",
+   "ouverte_le": "2026-10-20T19:45"
+  },
+  {
+   "marche": "Will the Republicans win the Ohio governor race in 2026?",
+   "issue": "No",
+   "parts": "44.96",
+   "cout": "35.97",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.82",
+   "latent": "0.90",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "57185",
+   "ouverte_le": "2026-10-20T19:45"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through October 31?",
+   "issue": "No",
+   "parts": "6.51",
+   "cout": "1.30",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "0.14",
+   "latent": "-0.39",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-22T01:22"
+  },
+  {
+   "marche": "5822953",
+   "issue": "No",
+   "parts": "21.25",
+   "cout": "2.39",
+   "prix_moyen": "0.1127",
+   "prix_de_marque": "0.516",
+   "latent": "8.57",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-22T12:42"
+  },
+  {
+   "marche": "Will Apple be the largest company in the world by market cap on October 31, 2026?",
+   "issue": "Yes",
+   "parts": "43.29",
+   "cout": "7.76",
+   "prix_moyen": "0.1792",
+   "prix_de_marque": "0.438",
+   "latent": "11.20",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1114519",
+   "ouverte_le": "2026-10-22T13:37"
+  },
+  {
+   "marche": "Will Donald Trump post 180-199 Truth Social posts from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.25",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.997",
+   "latent": "0.24",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1203167",
+   "ouverte_le": "2026-10-22T16:42"
+  },
+  {
+   "marche": "Will Student List – Students Win win the most seats in the 2026 Serbian parliamentary election?",
+   "issue": "No",
+   "parts": "5.33",
+   "cout": "3.94",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.7",
+   "latent": "-0.21",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1061332",
+   "ouverte_le": "2026-10-22T20:56"
+  },
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from October 23 to October 30, 2026?",
+   "issue": "Yes",
+   "parts": "14.91",
+   "cout": "8.35",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.45",
+   "latent": "-1.64",
+   "strategie": "nm_prix_bas v1.0.0",
+   "groupe": "1221568",
+   "ouverte_le": "2026-10-23T04:26"
+  }
+ ],
+ "operations_cloturees": 37,
+ "dernieres_operations": [
+  {
+   "marche": "5914097",
+   "issue": "No",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-12.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T06:05"
+  },
+  {
+   "marche": "5914098",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-0.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T06:05"
+  },
+  {
+   "marche": "5963445",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "1.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T06:20"
+  },
+  {
+   "marche": "5640344",
+   "issue": "No",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "1.96",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640340",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "9.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640349",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-0.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6043855",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "0.24",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:46"
+  },
+  {
+   "marche": "5958321",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-1.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:21"
+  },
+  {
+   "marche": "5958665",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "2.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T04:41"
+  },
+  {
+   "marche": "5958444",
+   "issue": "No",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-1.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5958445",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-13.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5958647",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5958332",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "12.80",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5958333",
+   "issue": "No",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "10.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5568258",
+   "issue": "Yes",
+   "strategie": "nm_prix_bas v1.0.0",
+   "resultat": "-1.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T06:06"
+  }
+ ],
+ "performances": {
+  "nm_prix_bas v1.0.0": {
+   "operations": 37,
+   "evenements": 26,
+   "gagnantes": 19,
+   "taux_reussite": 0.514,
+   "profit_net": "-33.65",
+   "frais": "1.89",
+   "rendement_sur_mises": -0.0734,
+   "esperance_par_operation": "-0.91",
+   "ic90_rendement_par_euro": [
+    -0.3528,
+    0.4969
+   ],
+   "brier": 0.184,
+   "log_loss": 0.5531,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

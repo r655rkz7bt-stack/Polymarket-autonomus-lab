@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "918.4052",
+  "capital_immobilise": "109.5982",
+  "gains_realises_nets": "28.0034",
+  "gains_latents": "-87.1023",
+  "frais_payes": "2.8128",
+  "capital_total_estime": "940.9011",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0992,
+ "dernier_battement": "2026-10-24T15:27:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5475240",
+   "issue": "No",
+   "parts": "9.91",
+   "cout": "8.95",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.99",
+   "latent": "0.86",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1161442",
+   "ouverte_le": "2026-10-19T14:15"
+  },
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from October 23 to October 30, 2026?",
+   "issue": "Yes",
+   "parts": "10.18",
+   "cout": "5.70",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.45",
+   "latent": "-1.12",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1221568",
+   "ouverte_le": "2026-10-23T05:57"
+  },
+  {
+   "marche": "5822993",
+   "issue": "Yes",
+   "parts": "96.40",
+   "cout": "92.62",
+   "prix_moyen": "0.9608",
+   "prix_de_marque": "0.06",
+   "latent": "-86.84",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T16:32"
+  },
+  {
+   "marche": "Will the highest temperature in Jeddah be 36°C on October 25?",
+   "issue": "No",
+   "parts": "4.00",
+   "cout": "2.32",
+   "prix_moyen": "0.5800",
+   "prix_de_marque": "0.58",
+   "latent": "0.00",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1238930",
+   "ouverte_le": "2026-10-24T14:27"
+  }
+ ],
+ "operations_cloturees": 54,
+ "dernieres_operations": [
+  {
+   "marche": "5963445",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "1.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T06:20"
+  },
+  {
+   "marche": "5967367",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "6.25",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T08:15"
+  },
+  {
+   "marche": "6043844",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "3.14",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:40"
+  },
+  {
+   "marche": "6043855",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "0.24",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:46"
+  },
+  {
+   "marche": "6043851",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-0.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T22:31"
+  },
+  {
+   "marche": "6043848",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T22:31"
+  },
+  {
+   "marche": "5792075",
+   "issue": "Raptors",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "4.96",
+   "resolution": "résolu : Raptors",
+   "cloturee_le": "2026-10-24T01:56"
+  },
+  {
+   "marche": "6036668",
+   "issue": "Raptors",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "6.64",
+   "resolution": "résolu : Raptors",
+   "cloturee_le": "2026-10-24T01:56"
+  },
+  {
+   "marche": "6036667",
+   "issue": "Raptors",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "6.30",
+   "resolution": "résolu : Raptors",
+   "cloturee_le": "2026-10-24T01:56"
+  },
+  {
+   "marche": "6053361",
+   "issue": "Raptors",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "6.00",
+   "resolution": "résolu : Raptors",
+   "cloturee_le": "2026-10-24T01:56"
+  },
+  {
+   "marche": "6072729",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "5958321",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-1.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:21"
+  },
+  {
+   "marche": "6075688",
+   "issue": "Pelicans",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "7.01",
+   "resolution": "résolu : Pelicans",
+   "cloturee_le": "2026-10-24T04:25"
+  },
+  {
+   "marche": "5958332",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "12.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5958333",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "9.91",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  }
+ ],
+ "performances": {
+  "nm_court v1.0.0": {
+   "operations": 54,
+   "evenements": 36,
+   "gagnantes": 37,
+   "taux_reussite": 0.685,
+   "profit_net": "28.00",
+   "frais": "2.51",
+   "rendement_sur_mises": 0.022,
+   "esperance_par_operation": "0.52",
+   "ic90_rendement_par_euro": [
+    -0.1875,
+    0.2219
+   ],
+   "brier": 0.1381,
+   "log_loss": 0.4316,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

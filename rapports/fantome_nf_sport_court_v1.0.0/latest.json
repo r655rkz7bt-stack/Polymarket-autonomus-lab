@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "754.0645",
+  "capital_immobilise": "250.3197",
+  "gains_realises_nets": "4.3843",
+  "gains_latents": "0.0000",
+  "frais_payes": "13.5592",
+  "capital_total_estime": "1004.3843",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2661,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "parts": "126.46",
+   "cout": "119.23",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1154828",
+   "ouverte_le": "2026-10-20T22:16"
+  },
+  {
+   "marche": "5436849",
+   "issue": "No",
+   "parts": "126.46",
+   "cout": "119.23",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1154845",
+   "ouverte_le": "2026-10-20T22:16"
+  },
+  {
+   "marche": "5436749",
+   "issue": "No",
+   "parts": "12.71",
+   "cout": "11.86",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_court v1.0.0",
+   "groupe": "1154833",
+   "ouverte_le": "2026-10-20T23:10"
+  }
+ ],
+ "operations_cloturees": 54,
+ "dernieres_operations": [
+  {
+   "marche": "5362806",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "11.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T21:20"
+  },
+  {
+   "marche": "5364552",
+   "issue": "Coventry City FC",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "4.67",
+   "resolution": "résolu : Coventry City FC",
+   "cloturee_le": "2026-10-19T21:20"
+  },
+  {
+   "marche": "5362519",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "12.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T21:20"
+  },
+  {
+   "marche": "5339871",
+   "issue": "Yes",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "10.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T22:07"
+  },
+  {
+   "marche": "5404325",
+   "issue": "Over",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "12.14",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-20T03:17"
+  },
+  {
+   "marche": "5130444",
+   "issue": "49ers",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "1.53",
+   "resolution": "résolu : 49ers",
+   "cloturee_le": "2026-10-20T03:47"
+  },
+  {
+   "marche": "5801197",
+   "issue": "Katie Boulter",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "2.96",
+   "resolution": "résolu : Katie Boulter",
+   "cloturee_le": "2026-10-20T05:47"
+  },
+  {
+   "marche": "5789469",
+   "issue": "Uganda",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : Uganda",
+   "cloturee_le": "2026-10-20T14:20"
+  },
+  {
+   "marche": "5383441",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T18:56"
+  },
+  {
+   "marche": "5383767",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "3.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T19:02"
+  },
+  {
+   "marche": "5409294",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "4.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:48"
+  },
+  {
+   "marche": "5409195",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "1.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:52"
+  },
+  {
+   "marche": "5409639",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "9.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Under",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "14.16",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:14"
+  },
+  {
+   "marche": "5409699",
+   "issue": "No",
+   "strategie": "nf_sport_court v1.0.0",
+   "resultat": "0.74",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T23:07"
+  }
+ ],
+ "performances": {
+  "nf_sport_court v1.0.0": {
+   "operations": 54,
+   "evenements": 52,
+   "gagnantes": 47,
+   "taux_reussite": 0.87,
+   "profit_net": "4.38",
+   "frais": "12.80",
+   "rendement_sur_mises": 0.0014,
+   "esperance_par_operation": "0.08",
+   "ic90_rendement_par_euro": [
+    -0.1259,
+    0.0494
+   ],
+   "brier": 0.1154,
+   "log_loss": 0.4172,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

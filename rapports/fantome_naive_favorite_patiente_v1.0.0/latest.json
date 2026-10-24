@@ -1,0 +1,169 @@
+{
+ "genere_le": "2026-10-24T15:37:53+00:00",
+ "capital": {
+  "solde_disponible": "311.4249",
+  "capital_immobilise": "570.3202",
+  "gains_realises_nets": "-118.2550",
+  "gains_latents": "-6.1592",
+  "frais_payes": "1.5113",
+  "capital_total_estime": "875.5858",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1491,
+ "dernier_battement": "2026-10-17T10:48:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5697537",
+   "issue": "Yes",
+   "parts": "74.99",
+   "cout": "69.67",
+   "prix_moyen": "0.9290",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-16T20:31"
+  },
+  {
+   "marche": "5611007",
+   "issue": "No",
+   "parts": "86.34",
+   "cout": "77.97",
+   "prix_moyen": "0.9030",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1177781",
+   "ouverte_le": "2026-10-16T20:36"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "104.92",
+   "cout": "96.32",
+   "prix_moyen": "0.9180",
+   "prix_de_marque": "0.927",
+   "latent": "0.94",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "56.21",
+   "cout": "47.67",
+   "prix_moyen": "0.8480",
+   "prix_de_marque": "0.721",
+   "latent": "-7.14",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T01:19"
+  },
+  {
+   "marche": "5564853",
+   "issue": "Yes",
+   "parts": "119.71",
+   "cout": "113.00",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-17T04:03"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "parts": "73.91",
+   "cout": "65.71",
+   "prix_moyen": "0.8890",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1162658",
+   "ouverte_le": "2026-10-17T04:22"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "107.45",
+   "cout": "100.00",
+   "prix_moyen": "0.9307",
+   "prix_de_marque": "0.931",
+   "latent": "0.04",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "5733691",
+   "issue": "Yellow Submarine",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "resultat": "-133.81",
+   "resolution": "résolu : salamit",
+   "cloturee_le": "2026-10-17T00:02"
+  },
+  {
+   "marche": "5771282",
+   "issue": "Sinja Kraus",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "resultat": "8.14",
+   "resolution": "résolu : Sinja Kraus",
+   "cloturee_le": "2026-10-17T06:41"
+  },
+  {
+   "marche": "5772281",
+   "issue": "Mattia Bellucci",
+   "strategie": "naive_favorite_patiente v1.0.0",
+   "resultat": "7.41",
+   "resolution": "résolu : Mattia Bellucci",
+   "cloturee_le": "2026-10-17T10:46"
+  }
+ ],
+ "performances": {
+  "naive_favorite_patiente v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "-118.25",
+   "frais": "0.75",
+   "rendement_sur_mises": -0.3612,
+   "esperance_par_operation": "-39.42",
+   "ic90_rendement_par_euro": [
+    -0.6402,
+    0.0806
+   ],
+   "brier": 0.327,
+   "log_loss": 1.549,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

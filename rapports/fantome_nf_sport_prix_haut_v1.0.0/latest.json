@@ -1,0 +1,277 @@
+{
+ "genere_le": "2026-10-24T15:37:59+00:00",
+ "capital": {
+  "solde_disponible": "820.0812",
+  "capital_immobilise": "271.5217",
+  "gains_realises_nets": "91.6028",
+  "gains_latents": "1.8945",
+  "frais_payes": "26.0519",
+  "capital_total_estime": "1093.4974",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1996,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "55.83",
+   "cout": "52.35",
+   "prix_moyen": "0.9376",
+   "prix_de_marque": "0.942",
+   "latent": "0.24",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "33.83",
+   "cout": "31.79",
+   "prix_moyen": "0.9398",
+   "prix_de_marque": "0.819",
+   "latent": "-4.09",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T23:03"
+  },
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "50.74",
+   "cout": "45.89",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "4.79",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-23T01:22"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "18.81",
+   "cout": "17.55",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.25",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T00:42"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: Yulia Starodubtseva vs Aliaksandra Sasnovich",
+   "issue": "Aliaksandra Sasnovich",
+   "parts": "51.97",
+   "cout": "49.00",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.999",
+   "latent": "2.92",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1239984",
+   "ouverte_le": "2026-10-24T03:07"
+  },
+  {
+   "marche": "Spread: Real Madrid CF (-1.5)",
+   "issue": "FC Barcelona",
+   "parts": "19.38",
+   "cout": "17.16",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.30",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1175738",
+   "ouverte_le": "2026-10-24T04:08"
+  },
+  {
+   "marche": "Will Parma Calcio 1913 win on 2026-10-24?",
+   "issue": "No",
+   "parts": "53.53",
+   "cout": "47.90",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.87",
+   "latent": "-1.33",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1167432",
+   "ouverte_le": "2026-10-24T07:03"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "10.74",
+   "cout": "9.87",
+   "prix_moyen": "0.9193",
+   "prix_de_marque": "0.91",
+   "latent": "-0.10",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-24T13:42"
+  }
+ ],
+ "operations_cloturees": 110,
+ "dernieres_operations": [
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "4.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5471628",
+   "issue": "Over",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "7.23",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "6003904",
+   "issue": "J.J. Wolf",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "-59.71",
+   "resolution": "résolu : Alexander Maarten Jong",
+   "cloturee_le": "2026-10-23T01:20"
+  },
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "5.32",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "4.61",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.86",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "4.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5516770",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "7.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:10"
+  },
+  {
+   "marche": "5969234",
+   "issue": "Under",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "7.13",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T04:05"
+  },
+  {
+   "marche": "6079119",
+   "issue": "Coleman Wong",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "7.23",
+   "resolution": "résolu : Coleman Wong",
+   "cloturee_le": "2026-10-24T05:05"
+  },
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "-61.41",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_prix_haut v1.0.0": {
+   "operations": 110,
+   "evenements": 104,
+   "gagnantes": 101,
+   "taux_reussite": 0.918,
+   "profit_net": "91.60",
+   "frais": "25.00",
+   "rendement_sur_mises": 0.0145,
+   "esperance_par_operation": "0.83",
+   "ic90_rendement_par_euro": [
+    -0.047,
+    0.0496
+   ],
+   "brier": 0.0761,
+   "log_loss": 0.2959,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:37:48+00:00",
+ "capital": {
+  "solde_disponible": "588.9527",
+  "capital_immobilise": "60.0331",
+  "gains_realises_nets": "-351.0141",
+  "gains_latents": "0.0000",
+  "frais_payes": "9.4256",
+  "capital_total_estime": "648.9859",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4818,
+ "dernier_battement": "2026-10-23T10:27:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5475241",
+   "issue": "Yes",
+   "parts": "18.69",
+   "cout": "18.21",
+   "prix_moyen": "0.9745",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "apres_echeance v1.0.0",
+   "groupe": "1161442",
+   "ouverte_le": "2026-10-20T22:01"
+  },
+  {
+   "marche": "5237635",
+   "issue": "No",
+   "parts": "13.20",
+   "cout": "12.72",
+   "prix_moyen": "0.9640",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "apres_echeance v1.0.0",
+   "groupe": "1124896",
+   "ouverte_le": "2026-10-22T07:36"
+  },
+  {
+   "marche": "5958647",
+   "issue": "No",
+   "parts": "29.79",
+   "cout": "29.09",
+   "prix_moyen": "0.9767",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "apres_echeance v1.0.0",
+   "groupe": "1221833",
+   "ouverte_le": "2026-10-22T23:22"
+  }
+ ],
+ "operations_cloturees": 170,
+ "dernieres_operations": [
+  {
+   "marche": "5765055",
+   "issue": "Cavaliers",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "-59.96",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-23T02:15"
+  },
+  {
+   "marche": "5996243",
+   "issue": "Cavaliers",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "-61.06",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-23T02:15"
+  },
+  {
+   "marche": "5765067",
+   "issue": "Cavaliers",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "-21.86",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-23T02:15"
+  },
+  {
+   "marche": "5996247",
+   "issue": "Over",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "-55.96",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T02:15"
+  },
+  {
+   "marche": "6070459",
+   "issue": "76ers",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "0.57",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-23T02:15"
+  },
+  {
+   "marche": "5614446",
+   "issue": "Liberty",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "3.47",
+   "resolution": "résolu : Liberty",
+   "cloturee_le": "2026-10-23T02:35"
+  },
+  {
+   "marche": "6013905",
+   "issue": "Kings",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "0.82",
+   "resolution": "résolu : Kings",
+   "cloturee_le": "2026-10-23T02:35"
+  },
+  {
+   "marche": "5377523",
+   "issue": "Over",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T02:41"
+  },
+  {
+   "marche": "5614646",
+   "issue": "Appalachian State",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "1.31",
+   "resolution": "résolu : Appalachian State",
+   "cloturee_le": "2026-10-23T03:21"
+  },
+  {
+   "marche": "5614647",
+   "issue": "Appalachian State",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "3.50",
+   "resolution": "résolu : Appalachian State",
+   "cloturee_le": "2026-10-23T03:21"
+  },
+  {
+   "marche": "5614648",
+   "issue": "Appalachian State",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "0.04",
+   "resolution": "résolu : Appalachian State",
+   "cloturee_le": "2026-10-23T03:21"
+  },
+  {
+   "marche": "5377525",
+   "issue": "Over",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "4.39",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T03:31"
+  },
+  {
+   "marche": "5914266",
+   "issue": "No",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "0.49",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:31"
+  },
+  {
+   "marche": "5493852",
+   "issue": "Under",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "4.22",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T04:40"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "apres_echeance v1.0.0",
+   "resultat": "1.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  }
+ ],
+ "performances": {
+  "apres_echeance v1.0.0": {
+   "operations": 170,
+   "evenements": 113,
+   "gagnantes": 160,
+   "taux_reussite": 0.941,
+   "profit_net": "-351.01",
+   "frais": "9.43",
+   "rendement_sur_mises": -0.062,
+   "esperance_par_operation": "-2.06",
+   "ic90_rendement_par_euro": [
+    -0.0994,
+    0.039
+   ],
+   "brier": 0.0573,
+   "log_loss": 0.2613,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

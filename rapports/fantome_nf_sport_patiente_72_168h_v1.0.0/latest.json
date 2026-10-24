@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "999.9714",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-0.0286",
+  "gains_latents": "0.0000",
+  "frais_payes": "5.1346",
+  "capital_total_estime": "999.9714",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1313,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "5931576",
+   "issue": "Dimitris Sakellaridis",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Dimitris Sakellaridis",
+   "cloturee_le": "2026-10-20T13:10"
+  },
+  {
+   "marche": "5938724",
+   "issue": "Guelord Kayombo",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "11.54",
+   "resolution": "résolu : Guelord Kayombo",
+   "cloturee_le": "2026-10-20T14:03"
+  },
+  {
+   "marche": "5843248",
+   "issue": "Henry Searle",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "10.00",
+   "resolution": "résolu : Henry Searle",
+   "cloturee_le": "2026-10-20T14:13"
+  },
+  {
+   "marche": "5919245",
+   "issue": "Daria Snigur",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "-119.04",
+   "resolution": "résolu : Katarzyna Kawa",
+   "cloturee_le": "2026-10-20T15:17"
+  },
+  {
+   "marche": "5796212",
+   "issue": "Jacob Fearnley",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "12.62",
+   "resolution": "résolu : Jacob Fearnley",
+   "cloturee_le": "2026-10-20T15:53"
+  },
+  {
+   "marche": "5680881",
+   "issue": "Xinjiang Flying Tigers",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "4.07",
+   "resolution": "résolu : Xinjiang Flying Tigers",
+   "cloturee_le": "2026-10-20T16:03"
+  },
+  {
+   "marche": "5958970",
+   "issue": "Juan Bautista Torres",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "10.21",
+   "resolution": "résolu : Juan Bautista Torres",
+   "cloturee_le": "2026-10-20T16:53"
+  },
+  {
+   "marche": "5958972",
+   "issue": "Matheus Pucinelli de Almeida",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "10.62",
+   "resolution": "résolu : Matheus Pucinelli de Almeida",
+   "cloturee_le": "2026-10-20T17:48"
+  },
+  {
+   "marche": "5958966",
+   "issue": "Gustavo Heide",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "11.91",
+   "resolution": "résolu : Gustavo Heide",
+   "cloturee_le": "2026-10-20T18:13"
+  },
+  {
+   "marche": "5796208",
+   "issue": "Zizou Bergs",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "13.45",
+   "resolution": "résolu : Zizou Bergs",
+   "cloturee_le": "2026-10-20T18:13"
+  },
+  {
+   "marche": "5843264",
+   "issue": "Benjamin Bonzi",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "10.03",
+   "resolution": "résolu : Benjamin Bonzi",
+   "cloturee_le": "2026-10-20T18:28"
+  },
+  {
+   "marche": "5958990",
+   "issue": "Darwin Blanch",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "25.51",
+   "resolution": "résolu : Darwin Blanch",
+   "cloturee_le": "2026-10-20T19:39"
+  },
+  {
+   "marche": "5918398",
+   "issue": "BC Lietkabelis Panevezys",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "11.34",
+   "resolution": "résolu : BC Lietkabelis Panevezys",
+   "cloturee_le": "2026-10-20T20:04"
+  },
+  {
+   "marche": "5958984",
+   "issue": "Andres Martin",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "-43.81",
+   "resolution": "résolu : Erik Arutiunian",
+   "cloturee_le": "2026-10-20T22:58"
+  },
+  {
+   "marche": "5952191",
+   "issue": "Sloane Stephens",
+   "strategie": "nf_sport_patiente_72_168h v1.0.0",
+   "resultat": "3.79",
+   "resolution": "résolu : Sloane Stephens",
+   "cloturee_le": "2026-10-21T00:20"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_72_168h v1.0.0": {
+   "operations": 23,
+   "evenements": 22,
+   "gagnantes": 20,
+   "taux_reussite": 0.87,
+   "profit_net": "-0.03",
+   "frais": "5.13",
+   "rendement_sur_mises": -0.0,
+   "esperance_par_operation": "-0.00",
+   "ic90_rendement_par_euro": [
+    -0.1353,
+    0.118
+   ],
+   "brier": 0.1126,
+   "log_loss": 0.3904,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

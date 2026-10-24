@@ -1,0 +1,225 @@
+{
+ "genere_le": "2026-10-24T15:37:53+00:00",
+ "capital": {
+  "solde_disponible": "342.0688",
+  "capital_immobilise": "647.3761",
+  "gains_realises_nets": "-10.5552",
+  "gains_latents": "11.3623",
+  "frais_payes": "2.7632",
+  "capital_total_estime": "1000.8071",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0678,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "251.76",
+   "cout": "235.52",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.967",
+   "latent": "7.93",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.50",
+   "prix_moyen": "0.9010",
+   "prix_de_marque": "0.968",
+   "latent": "0.34",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "181.80",
+   "cout": "166.03",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.927",
+   "latent": "2.50",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-17T05:08"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "46.47",
+   "cout": "43.92",
+   "prix_moyen": "0.9452",
+   "prix_de_marque": "0.964",
+   "latent": "0.88",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T05:18"
+  },
+  {
+   "marche": "Will there be no Hormuz agreement?",
+   "issue": "Yes",
+   "parts": "28.77",
+   "cout": "26.78",
+   "prix_moyen": "0.9307",
+   "prix_de_marque": "0.931",
+   "latent": "0.01",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  },
+  {
+   "marche": "Will the Democrats win the Michigan governor race in 2026?",
+   "issue": "Yes",
+   "parts": "102.97",
+   "cout": "96.43",
+   "prix_moyen": "0.9365",
+   "prix_de_marque": "0.937",
+   "latent": "0.06",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "57176",
+   "ouverte_le": "2026-10-18T02:48"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "11.72",
+   "cout": "10.82",
+   "prix_moyen": "0.9230",
+   "prix_de_marque": "0.948",
+   "latent": "0.29",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-18T02:48"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "39.51",
+   "cout": "36.92",
+   "prix_moyen": "0.9346",
+   "prix_de_marque": "0.942",
+   "latent": "0.29",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-18T02:53"
+  },
+  {
+   "marche": "Will the Democrats win the Arizona governor race in 2026?",
+   "issue": "Yes",
+   "parts": "28.36",
+   "cout": "26.45",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.9",
+   "latent": "-0.92",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-18T06:15"
+  }
+ ],
+ "operations_cloturees": 7,
+ "dernieres_operations": [
+  {
+   "marche": "5771282",
+   "issue": "Sinja Kraus",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "4.09",
+   "resolution": "résolu : Sinja Kraus",
+   "cloturee_le": "2026-10-17T06:40"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "-26.94",
+   "resolution": "résolu : Auburn",
+   "cloturee_le": "2026-10-17T23:20"
+  },
+  {
+   "marche": "5353969",
+   "issue": "South Florida",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "15.03",
+   "resolution": "résolu : South Florida",
+   "cloturee_le": "2026-10-18T02:46"
+  },
+  {
+   "marche": "5557832",
+   "issue": "Tampa Bay Rays",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "3.68",
+   "resolution": "résolu : Tampa Bay Rays",
+   "cloturee_le": "2026-10-18T06:01"
+  },
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "8.91",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:46"
+  },
+  {
+   "marche": "5697537",
+   "issue": "Yes",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "11.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:46"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "-26.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T18:10"
+  }
+ ],
+ "performances": {
+  "naive_favorite_large v1.0.0": {
+   "operations": 7,
+   "evenements": 7,
+   "gagnantes": 5,
+   "taux_reussite": 0.714,
+   "profit_net": "-10.56",
+   "frais": "1.01",
+   "rendement_sur_mises": -0.0164,
+   "esperance_par_operation": "-1.51",
+   "ic90_rendement_par_euro": [
+    -0.5391,
+    0.0761
+   ],
+   "brier": 0.2586,
+   "log_loss": 0.8761,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

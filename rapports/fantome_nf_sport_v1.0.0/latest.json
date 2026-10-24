@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "799.4384",
+  "capital_immobilise": "472.0461",
+  "gains_realises_nets": "271.4845",
+  "gains_latents": "-2.7915",
+  "frais_payes": "20.2777",
+  "capital_total_estime": "1268.6930",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1947,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "115.31",
+   "cout": "98.34",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.721",
+   "latent": "-15.20",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "55.83",
+   "cout": "52.35",
+   "prix_moyen": "0.9376",
+   "prix_de_marque": "0.942",
+   "latent": "0.24",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T19:13"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "192.33",
+   "cout": "159.96",
+   "prix_moyen": "0.8317",
+   "prix_de_marque": "0.91",
+   "latent": "15.06",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T21:26"
+  },
+  {
+   "marche": "4551277",
+   "issue": "Texans",
+   "parts": "198.13",
+   "cout": "161.40",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-2.90",
+   "strategie": "nf_sport v1.0.0",
+   "groupe": "1022440",
+   "ouverte_le": "2026-10-21T21:32"
+  }
+ ],
+ "operations_cloturees": 67,
+ "dernieres_operations": [
+  {
+   "marche": "5437487",
+   "issue": "Racing Club de Lens",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "8.53",
+   "resolution": "résolu : Racing Club de Lens",
+   "cloturee_le": "2026-10-21T21:10"
+  },
+  {
+   "marche": "5436651",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "2.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:15"
+  },
+  {
+   "marche": "5436907",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "0.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:25"
+  },
+  {
+   "marche": "5436749",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "4.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:35"
+  },
+  {
+   "marche": "5436849",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "4.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "-6.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5922028",
+   "issue": "Hapoel Jerusalem",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "0.32",
+   "resolution": "résolu : Hapoel Jerusalem",
+   "cloturee_le": "2026-10-21T22:45"
+  },
+  {
+   "marche": "6012028",
+   "issue": "Eternal Fire",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "6.89",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-21T22:50"
+  },
+  {
+   "marche": "5433448",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "3.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:05"
+  },
+  {
+   "marche": "5798570",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "31.30",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-22T10:45"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "3.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470469",
+   "issue": "No",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "19.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "0.16",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_sport v1.0.0",
+   "resultat": "3.73",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  }
+ ],
+ "performances": {
+  "nf_sport v1.0.0": {
+   "operations": 67,
+   "evenements": 64,
+   "gagnantes": 62,
+   "taux_reussite": 0.925,
+   "profit_net": "271.48",
+   "frais": "17.92",
+   "rendement_sur_mises": 0.0612,
+   "esperance_par_operation": "4.05",
+   "ic90_rendement_par_euro": [
+    -0.0469,
+    0.0693
+   ],
+   "brier": 0.0687,
+   "log_loss": 0.2649,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,625 @@
+{
+ "genere_le": "2026-10-24T15:37:49+00:00",
+ "capital": {
+  "solde_disponible": "876.9986",
+  "capital_immobilise": "104.7456",
+  "gains_realises_nets": "-18.2558",
+  "gains_latents": "108.0995",
+  "frais_payes": "4.6913",
+  "capital_total_estime": "1089.8437",
+  "positions_ouvertes": "37",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0935,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5170789",
+   "issue": "Yes",
+   "parts": "10.49",
+   "cout": "3.44",
+   "prix_moyen": "0.3276",
+   "prix_de_marque": "0.56",
+   "latent": "2.44",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-19T02:49"
+  },
+  {
+   "marche": "5822953",
+   "issue": "No",
+   "parts": "7.17",
+   "cout": "1.29",
+   "prix_moyen": "0.1800",
+   "prix_de_marque": "0.516",
+   "latent": "2.41",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-19T04:53"
+  },
+  {
+   "marche": "Will Bitcoin reach $85,000 in October?",
+   "issue": "No",
+   "parts": "10.27",
+   "cout": "3.36",
+   "prix_moyen": "0.3274",
+   "prix_de_marque": "0.79",
+   "latent": "4.75",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-19T07:34"
+  },
+  {
+   "marche": "Will Bitcoin dip to $77,500 in October?",
+   "issue": "Yes",
+   "parts": "5.68",
+   "cout": "1.70",
+   "prix_moyen": "0.3000",
+   "prix_de_marque": "0.61",
+   "latent": "1.76",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-19T07:38"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 25?",
+   "issue": "No",
+   "parts": "6.04",
+   "cout": "1.21",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "0.629",
+   "latent": "2.59",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-19T09:38"
+  },
+  {
+   "marche": "Will Bitcoin reach $87,500 in October?",
+   "issue": "Yes",
+   "parts": "10.47",
+   "cout": "3.43",
+   "prix_moyen": "0.3276",
+   "prix_de_marque": "0.07",
+   "latent": "-2.70",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-19T13:59"
+  },
+  {
+   "marche": "Will Bitcoin dip to $76,000 October 19-25?",
+   "issue": "Yes",
+   "parts": "114.09",
+   "cout": "6.13",
+   "prix_moyen": "0.0537",
+   "prix_de_marque": "0.102",
+   "latent": "5.51",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T15:41"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,400 on October 22?",
+   "issue": "No",
+   "parts": "5.76",
+   "cout": "1.73",
+   "prix_moyen": "0.3000",
+   "prix_de_marque": "0.999",
+   "latent": "4.03",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-20T19:44"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $80,000 on October 26?",
+   "issue": "No",
+   "parts": "7.23",
+   "cout": "1.30",
+   "prix_moyen": "0.1800",
+   "prix_de_marque": "0.58",
+   "latent": "2.89",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T22:05"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $78,000 on October 25?",
+   "issue": "No",
+   "parts": "9.94",
+   "cout": "0.50",
+   "prix_moyen": "0.0500",
+   "prix_de_marque": "0.133",
+   "latent": "0.83",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T22:10"
+  },
+  {
+   "marche": "5407572",
+   "issue": "No",
+   "parts": "5.34",
+   "cout": "1.71",
+   "prix_moyen": "0.3200",
+   "prix_de_marque": "0.89",
+   "latent": "3.04",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-21T17:40"
+  },
+  {
+   "marche": "5822996",
+   "issue": "No",
+   "parts": "5.05",
+   "cout": "0.71",
+   "prix_moyen": "0.1400",
+   "prix_de_marque": "0.999",
+   "latent": "4.34",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-21T19:18"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $82,000 on October 25?",
+   "issue": "No",
+   "parts": "6.60",
+   "cout": "0.79",
+   "prix_moyen": "0.1200",
+   "prix_de_marque": "0.962",
+   "latent": "5.56",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-21T21:31"
+  },
+  {
+   "marche": "Will Bitcoin reach $86,000 October 19-25?",
+   "issue": "No",
+   "parts": "12.40",
+   "cout": "4.96",
+   "prix_moyen": "0.4000",
+   "prix_de_marque": "0.991",
+   "latent": "7.33",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-21T21:31"
+  },
+  {
+   "marche": "Will Bitcoin reach $88,000 October 19-25?",
+   "issue": "Yes",
+   "parts": "19.58",
+   "cout": "2.57",
+   "prix_moyen": "0.1310",
+   "prix_de_marque": "0.001",
+   "latent": "-2.55",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-21T23:56"
+  },
+  {
+   "marche": "5822999",
+   "issue": "Yes",
+   "parts": "11.94",
+   "cout": "6.57",
+   "prix_moyen": "0.5500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T01:01"
+  },
+  {
+   "marche": "5823002",
+   "issue": "Yes",
+   "parts": "8.57",
+   "cout": "1.54",
+   "prix_moyen": "0.1800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T01:01"
+  },
+  {
+   "marche": "5822957",
+   "issue": "Yes",
+   "parts": "13.74",
+   "cout": "4.95",
+   "prix_moyen": "0.3600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-22T01:35"
+  },
+  {
+   "marche": "Will Bitcoin reach $90,000 in October?",
+   "issue": "Yes",
+   "parts": "9.79",
+   "cout": "1.66",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "0.03",
+   "latent": "-1.37",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T02:21"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $84,000 on October 25?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.55",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.004",
+   "latent": "-1.53",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T03:05"
+  },
+  {
+   "marche": "5929072",
+   "issue": "Yes",
+   "parts": "55.87",
+   "cout": "2.18",
+   "prix_moyen": "0.0390",
+   "prix_de_marque": "0.005",
+   "latent": "-1.90",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T06:31"
+  },
+  {
+   "marche": "5929048",
+   "issue": "Yes",
+   "parts": "44.07",
+   "cout": "2.64",
+   "prix_moyen": "0.0600",
+   "prix_de_marque": "0.01",
+   "latent": "-2.20",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-22T08:41"
+  },
+  {
+   "marche": "5822955",
+   "issue": "Yes",
+   "parts": "11.55",
+   "cout": "6.24",
+   "prix_moyen": "0.5400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-22T11:55"
+  },
+  {
+   "marche": "5822993",
+   "issue": "No",
+   "parts": "25.24",
+   "cout": "3.31",
+   "prix_moyen": "0.1310",
+   "prix_de_marque": "0.921",
+   "latent": "19.94",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T02:31"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,400 on October 25?",
+   "issue": "No",
+   "parts": "10.79",
+   "cout": "5.18",
+   "prix_moyen": "0.4800",
+   "prix_de_marque": "0.94",
+   "latent": "4.96",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-23T02:31"
+  },
+  {
+   "marche": "Will Bitcoin reach $82,500 in October?",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "0.17",
+   "prix_moyen": "0.1379",
+   "prix_de_marque": "0.52",
+   "latent": "0.48",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T02:32"
+  },
+  {
+   "marche": "Will Bitcoin dip to $78,000 October 19-25?",
+   "issue": "Yes",
+   "parts": "105.82",
+   "cout": "6.88",
+   "prix_moyen": "0.0650",
+   "prix_de_marque": "0.441",
+   "latent": "39.79",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T04:25"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $84,000 on October 26?",
+   "issue": "Yes",
+   "parts": "47.16",
+   "cout": "2.56",
+   "prix_moyen": "0.0543",
+   "prix_de_marque": "0.03",
+   "latent": "-1.15",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T20:07"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $82,000 on October 26?",
+   "issue": "Yes",
+   "parts": "8.87",
+   "cout": "3.10",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "0.11",
+   "latent": "-2.13",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T22:31"
+  },
+  {
+   "marche": "5822954",
+   "issue": "No",
+   "parts": "21.66",
+   "cout": "2.90",
+   "prix_moyen": "0.1340",
+   "prix_de_marque": "0.936",
+   "latent": "17.37",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T23:42"
+  },
+  {
+   "marche": "Will Bitcoin reach $84,000 October 19-25?",
+   "issue": "Yes",
+   "parts": "97.65",
+   "cout": "4.69",
+   "prix_moyen": "0.0480",
+   "prix_de_marque": "0.031",
+   "latent": "-1.66",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T00:11"
+  },
+  {
+   "marche": "Will Bitcoin reach $82,000 October 19-25?",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "0.43",
+   "prix_moyen": "0.3455",
+   "prix_de_marque": "0.11",
+   "latent": "-0.29",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T00:35"
+  },
+  {
+   "marche": "Will Ethereum reach $2,500 October 19-25?",
+   "issue": "Yes",
+   "parts": "66.74",
+   "cout": "3.20",
+   "prix_moyen": "0.0480",
+   "prix_de_marque": "0.021",
+   "latent": "-1.80",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-24T05:11"
+  },
+  {
+   "marche": "5823041",
+   "issue": "Yes",
+   "parts": "68.30",
+   "cout": "3.48",
+   "prix_moyen": "0.0510",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:sol",
+   "ouverte_le": "2026-10-24T06:35"
+  },
+  {
+   "marche": "Will Ethereum reach $2,400 on October 24?",
+   "issue": "Yes",
+   "parts": "8.65",
+   "cout": "2.08",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.06",
+   "latent": "-1.56",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "Will Bitcoin dip to $79,000 on October 24?",
+   "issue": "No",
+   "parts": "3.46",
+   "cout": "2.00",
+   "prix_moyen": "0.5792",
+   "prix_de_marque": "0.388",
+   "latent": "-0.66",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T15:13"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $82,000 on October 27?",
+   "issue": "Yes",
+   "parts": "13.70",
+   "cout": "2.60",
+   "prix_moyen": "0.1900",
+   "prix_de_marque": "0.16",
+   "latent": "-0.41",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T15:16"
+  }
+ ],
+ "operations_cloturees": 106,
+ "dernieres_operations": [
+  {
+   "marche": "5776854",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-14.08",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5776831",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-4.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5776830",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-3.02",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5776829",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-4.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5776827",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-6.76",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5776823",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-3.47",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "6072728",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "4.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T23:01"
+  },
+  {
+   "marche": "6072726",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.73",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "6072729",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-3.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "6072747",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-0.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "6072745",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "5170805",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T14:31"
+  },
+  {
+   "marche": "5742250",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-1.17",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "5912693",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "6.72",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T14:46"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,300 October 19-25?",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "26.23",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T15:35"
+  }
+ ],
+ "performances": {
+  "contrer_crypto_patiente v1.0.0": {
+   "operations": 106,
+   "evenements": 44,
+   "gagnantes": 27,
+   "taux_reussite": 0.255,
+   "profit_net": "-18.26",
+   "frais": "4.00",
+   "rendement_sur_mises": -0.0796,
+   "esperance_par_operation": "-0.17",
+   "ic90_rendement_par_euro": [
+    -0.1576,
+    0.6431
+   ],
+   "brier": 0.1731,
+   "log_loss": 0.5158,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

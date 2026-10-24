@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-24T15:37:59+00:00",
+ "capital": {
+  "solde_disponible": "696.1312",
+  "capital_immobilise": "7.5224",
+  "gains_realises_nets": "-296.3464",
+  "gains_latents": "0.8405",
+  "frais_payes": "6.4715",
+  "capital_total_estime": "704.4941",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.352,
+ "dernier_battement": "2026-10-22T05:46:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "9.19",
+   "cout": "7.52",
+   "prix_moyen": "0.8185",
+   "prix_de_marque": "0.91",
+   "latent": "0.84",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  }
+ ],
+ "operations_cloturees": 29,
+ "dernieres_operations": [
+  {
+   "marche": "5971906",
+   "issue": "9INE Academy",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "-54.05",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-21T16:51"
+  },
+  {
+   "marche": "5997761",
+   "issue": "Darwin Blanch",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "11.48",
+   "resolution": "résolu : Darwin Blanch",
+   "cloturee_le": "2026-10-21T17:55"
+  },
+  {
+   "marche": "5799355",
+   "issue": "Mozambique",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "1.63",
+   "resolution": "résolu : Mozambique",
+   "cloturee_le": "2026-10-21T18:25"
+  },
+  {
+   "marche": "5971973",
+   "issue": "Fluxo W7M",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "13.39",
+   "resolution": "résolu : Fluxo W7M",
+   "cloturee_le": "2026-10-21T18:51"
+  },
+  {
+   "marche": "6011890",
+   "issue": "Heroic",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "10.97",
+   "resolution": "résolu : Heroic",
+   "cloturee_le": "2026-10-21T18:51"
+  },
+  {
+   "marche": "6001043",
+   "issue": "Linea Bajraliu",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "13.17",
+   "resolution": "résolu : Linea Bajraliu",
+   "cloturee_le": "2026-10-21T19:05"
+  },
+  {
+   "marche": "6001046",
+   "issue": "Barbora Palicova",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "5.57",
+   "resolution": "résolu : Barbora Palicova",
+   "cloturee_le": "2026-10-21T20:01"
+  },
+  {
+   "marche": "5681589",
+   "issue": "Afghanistan",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "0.12",
+   "resolution": "résolu : Afghanistan",
+   "cloturee_le": "2026-10-21T20:10"
+  },
+  {
+   "marche": "6012037",
+   "issue": "TheMongolz",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "11.63",
+   "resolution": "résolu : TheMongolz",
+   "cloturee_le": "2026-10-21T20:20"
+  },
+  {
+   "marche": "6001059",
+   "issue": "Astra Sharma",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : Astra Sharma",
+   "cloturee_le": "2026-10-21T21:01"
+  },
+  {
+   "marche": "5436749",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:35"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "-65.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5994501",
+   "issue": "DNK",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "6.68",
+   "resolution": "résolu : DNK",
+   "cloturee_le": "2026-10-21T23:35"
+  },
+  {
+   "marche": "6012029",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "-254.08",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-22T00:31"
+  },
+  {
+   "marche": "6001634",
+   "issue": "Los Niños",
+   "strategie": "nf_sport_patiente_vainqueur v1.0.0",
+   "resultat": "11.96",
+   "resolution": "résolu : Los Niños",
+   "cloturee_le": "2026-10-22T04:05"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_vainqueur v1.0.0": {
+   "operations": 29,
+   "evenements": 29,
+   "gagnantes": 25,
+   "taux_reussite": 0.862,
+   "profit_net": "-296.35",
+   "frais": "6.43",
+   "rendement_sur_mises": -0.1572,
+   "esperance_par_operation": "-10.22",
+   "ic90_rendement_par_euro": [
+    -0.115,
+    0.1108
+   ],
+   "brier": 0.1076,
+   "log_loss": 0.4571,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

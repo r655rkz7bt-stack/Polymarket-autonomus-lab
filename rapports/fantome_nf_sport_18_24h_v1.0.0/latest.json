@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "782.7914",
+  "capital_immobilise": "249.4361",
+  "gains_realises_nets": "32.2276",
+  "gains_latents": "17.0730",
+  "frais_payes": "6.3700",
+  "capital_total_estime": "1049.3006",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0763,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "106.14",
+   "cout": "89.07",
+   "prix_moyen": "0.8391",
+   "prix_de_marque": "0.91",
+   "latent": "7.52",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:05"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "33.83",
+   "cout": "31.79",
+   "prix_moyen": "0.9398",
+   "prix_de_marque": "0.819",
+   "latent": "-4.09",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T23:03"
+  },
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "133.23",
+   "cout": "119.23",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "13.87",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-23T21:32"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "10.02",
+   "cout": "9.35",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.91",
+   "latent": "-0.23",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T23:47"
+  }
+ ],
+ "operations_cloturees": 16,
+ "dernieres_operations": [
+  {
+   "marche": "5470377",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "14.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:15"
+  },
+  {
+   "marche": "6003904",
+   "issue": "J.J. Wolf",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "-78.05",
+   "resolution": "résolu : Alexander Maarten Jong",
+   "cloturee_le": "2026-10-23T01:21"
+  },
+  {
+   "marche": "5377279",
+   "issue": "Bears",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "15.63",
+   "resolution": "résolu : Bears",
+   "cloturee_le": "2026-10-23T03:40"
+  },
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "10.32",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.82",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "15.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "7.39",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "6035008",
+   "issue": "Brute",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.69",
+   "resolution": "résolu : Brute",
+   "cloturee_le": "2026-10-23T21:35"
+  },
+  {
+   "marche": "6069390",
+   "issue": "Gustavo Heide",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.67",
+   "resolution": "résolu : Gustavo Heide",
+   "cloturee_le": "2026-10-23T22:50"
+  },
+  {
+   "marche": "6028860",
+   "issue": "Jenson Brooksby",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.92",
+   "resolution": "résolu : Jenson Brooksby",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "5615497",
+   "issue": "UConn",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "8.02",
+   "resolution": "résolu : UConn",
+   "cloturee_le": "2026-10-24T02:40"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "4.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5516770",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "14.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:10"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_18_24h v1.0.0": {
+   "operations": 16,
+   "evenements": 16,
+   "gagnantes": 15,
+   "taux_reussite": 0.938,
+   "profit_net": "32.23",
+   "frais": "5.19",
+   "rendement_sur_mises": 0.0224,
+   "esperance_par_operation": "2.01",
+   "ic90_rendement_par_euro": [
+    -0.1137,
+    0.0981
+   ],
+   "brier": 0.0605,
+   "log_loss": 0.2458,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

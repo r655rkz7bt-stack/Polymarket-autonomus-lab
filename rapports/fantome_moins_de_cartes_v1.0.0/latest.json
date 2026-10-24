@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-10-24T15:37:53+00:00",
+ "capital": {
+  "solde_disponible": "914.2480",
+  "capital_immobilise": "88.4392",
+  "gains_realises_nets": "2.6872",
+  "gains_latents": "-1.5857",
+  "frais_payes": "4.3159",
+  "capital_total_estime": "1001.1015",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.03,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "17.12",
+   "cout": "11.83",
+   "prix_moyen": "0.6909",
+   "prix_de_marque": "0.55",
+   "latent": "-2.41",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-24T07:03"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "13.15",
+   "cout": "7.53",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "0.57",
+   "latent": "-0.03",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1199660",
+   "ouverte_le": "2026-10-24T07:03"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "15.28",
+   "cout": "9.96",
+   "prix_moyen": "0.6515",
+   "prix_de_marque": "0.73",
+   "latent": "1.20",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1236927",
+   "ouverte_le": "2026-10-24T08:03"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "13.02",
+   "cout": "7.45",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "0.7",
+   "latent": "1.66",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1237195",
+   "ouverte_le": "2026-10-24T08:03"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "12.67",
+   "cout": "6.87",
+   "prix_moyen": "0.5425",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1242407",
+   "ouverte_le": "2026-10-24T09:42"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "15.19",
+   "cout": "9.99",
+   "prix_moyen": "0.6578",
+   "prix_de_marque": "0.63",
+   "latent": "-0.42",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1199665",
+   "ouverte_le": "2026-10-24T10:02"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "12.62",
+   "cout": "6.83",
+   "prix_moyen": "0.5415",
+   "prix_de_marque": "0.51",
+   "latent": "-0.40",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1199663",
+   "ouverte_le": "2026-10-24T10:02"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "1.25",
+   "cout": "0.69",
+   "prix_moyen": "0.5524",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1242967",
+   "ouverte_le": "2026-10-24T10:27"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "22.57",
+   "cout": "15.59",
+   "prix_moyen": "0.6909",
+   "prix_de_marque": "0.67",
+   "latent": "-0.47",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1236928",
+   "ouverte_le": "2026-10-24T11:02"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "17.94",
+   "cout": "9.91",
+   "prix_moyen": "0.5524",
+   "prix_de_marque": "0.52",
+   "latent": "-0.58",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1243365",
+   "ouverte_le": "2026-10-24T12:03"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "3.12",
+   "cout": "1.79",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "0.53",
+   "latent": "-0.13",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1243366",
+   "ouverte_le": "2026-10-24T15:10"
+  }
+ ],
+ "operations_cloturees": 29,
+ "dernieres_operations": [
+  {
+   "marche": "6036910",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "2.76",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T20:25"
+  },
+  {
+   "marche": "5770241",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "0.56",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T20:41"
+  },
+  {
+   "marche": "6070236",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "3.97",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T20:55"
+  },
+  {
+   "marche": "6035009",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-3.53",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:35"
+  },
+  {
+   "marche": "6036922",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "0.53",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T22:55"
+  },
+  {
+   "marche": "6070240",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-3.66",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "6035628",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "3.65",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T01:56"
+  },
+  {
+   "marche": "5774479",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "2.71",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T09:31"
+  },
+  {
+   "marche": "5774490",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-3.97",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-24T10:51"
+  },
+  {
+   "marche": "6065017",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "5.75",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T10:56"
+  },
+  {
+   "marche": "6098067",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "6.04",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T12:05"
+  },
+  {
+   "marche": "5774512",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-14.38",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5774501",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-9.59",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-24T14:25"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "4.51",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T14:46"
+  },
+  {
+   "marche": "6069306",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "2.61",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-24T15:11"
+  }
+ ],
+ "performances": {
+  "moins_de_cartes v1.0.0": {
+   "operations": 29,
+   "evenements": 29,
+   "gagnantes": 16,
+   "taux_reussite": 0.552,
+   "profit_net": "2.69",
+   "frais": "2.62",
+   "rendement_sur_mises": 0.0213,
+   "esperance_par_operation": "0.09",
+   "ic90_rendement_par_euro": [
+    -0.1521,
+    0.3599
+   ],
+   "brier": 0.2103,
+   "log_loss": 0.6838,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "619.5791",
+  "capital_immobilise": "328.6350",
+  "gains_realises_nets": "-51.7859",
+  "gains_latents": "15.0502",
+  "frais_payes": "7.3260",
+  "capital_total_estime": "963.2643",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.194,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "106.14",
+   "cout": "89.07",
+   "prix_moyen": "0.8391",
+   "prix_de_marque": "0.91",
+   "latent": "7.52",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:05"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "6.92",
+   "cout": "6.53",
+   "prix_moyen": "0.9436",
+   "prix_de_marque": "0.819",
+   "latent": "-0.86",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T18:42"
+  },
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "61.04",
+   "cout": "55.21",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "5.77",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-22T19:52"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "parts": "29.89",
+   "cout": "27.04",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-0.43",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1186366",
+   "ouverte_le": "2026-10-22T20:17"
+  },
+  {
+   "marche": "Will FC Barcelona vs. Real Madrid CF end in a draw?",
+   "issue": "No",
+   "parts": "86.62",
+   "cout": "74.18",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-1.42",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1175548",
+   "ouverte_le": "2026-10-23T18:12"
+  },
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "6.43",
+   "cout": "5.51",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T23:32"
+  },
+  {
+   "marche": "Counter-Strike: Vitality vs 9z (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "Vitality",
+   "parts": "83.98",
+   "cout": "71.11",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.9",
+   "latent": "4.47",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-23T23:47"
+  }
+ ],
+ "operations_cloturees": 19,
+ "dernieres_operations": [
+  {
+   "marche": "5470407",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "14.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "6003904",
+   "issue": "J.J. Wolf",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-93.73",
+   "resolution": "résolu : Alexander Maarten Jong",
+   "cloturee_le": "2026-10-23T01:21"
+  },
+  {
+   "marche": "5614642",
+   "issue": "James Madison",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-60.39",
+   "resolution": "résolu : Appalachian State",
+   "cloturee_le": "2026-10-23T03:21"
+  },
+  {
+   "marche": "5614814",
+   "issue": "Memphis",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "16.20",
+   "resolution": "résolu : Memphis",
+   "cloturee_le": "2026-10-23T04:01"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "0.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "0.99",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5482106",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "12.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:15"
+  },
+  {
+   "marche": "6069390",
+   "issue": "Gustavo Heide",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "7.65",
+   "resolution": "résolu : Gustavo Heide",
+   "cloturee_le": "2026-10-23T22:50"
+  },
+  {
+   "marche": "6028860",
+   "issue": "Jenson Brooksby",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "7.98",
+   "resolution": "résolu : Jenson Brooksby",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "5.30",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  },
+  {
+   "marche": "6070239",
+   "issue": "Imperial",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "1.45",
+   "resolution": "résolu : Imperial",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "5615497",
+   "issue": "UConn",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "13.97",
+   "resolution": "résolu : UConn",
+   "cloturee_le": "2026-10-24T02:40"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-7.87",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  }
+ ],
+ "performances": {
+  "nf_sport_18_24h_vainqueur v1.0.0": {
+   "operations": 19,
+   "evenements": 19,
+   "gagnantes": 16,
+   "taux_reussite": 0.842,
+   "profit_net": "-51.79",
+   "frais": "5.31",
+   "rendement_sur_mises": -0.0501,
+   "esperance_par_operation": "-2.73",
+   "ic90_rendement_par_euro": [
+    -0.2285,
+    0.0771
+   ],
+   "brier": 0.1341,
+   "log_loss": 0.4507,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

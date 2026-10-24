@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "500.6747",
+  "capital_immobilise": "179.4487",
+  "gains_realises_nets": "-319.8766",
+  "gains_latents": "0.0000",
+  "frais_payes": "4.2314",
+  "capital_total_estime": "680.1234",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3822,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5825781",
+   "issue": "Tomas Machac",
+   "parts": "190.70",
+   "cout": "179.45",
+   "prix_moyen": "0.9410",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "groupe": "1206110",
+   "ouverte_le": "2026-10-21T07:44"
+  }
+ ],
+ "operations_cloturees": 22,
+ "dernieres_operations": [
+  {
+   "marche": "5339871",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "0.10",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T22:07"
+  },
+  {
+   "marche": "5648278",
+   "issue": "Tampa Bay Rays",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "17.74",
+   "resolution": "résolu : Tampa Bay Rays",
+   "cloturee_le": "2026-10-20T03:26"
+  },
+  {
+   "marche": "5130444",
+   "issue": "49ers",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "17.30",
+   "resolution": "résolu : 49ers",
+   "cloturee_le": "2026-10-20T03:47"
+  },
+  {
+   "marche": "5851001",
+   "issue": "Lynn Vision",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "12.40",
+   "resolution": "résolu : Lynn Vision",
+   "cloturee_le": "2026-10-20T07:42"
+  },
+  {
+   "marche": "5801205",
+   "issue": "Moyuka Uchijima",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "1.40",
+   "resolution": "résolu : Moyuka Uchijima",
+   "cloturee_le": "2026-10-20T08:32"
+  },
+  {
+   "marche": "5893072",
+   "issue": "Roman Safiullin",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "-133.99",
+   "resolution": "résolu : Sho Shimabukuro",
+   "cloturee_le": "2026-10-20T09:22"
+  },
+  {
+   "marche": "5863056",
+   "issue": "Metizport",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "4.16",
+   "resolution": "résolu : Metizport",
+   "cloturee_le": "2026-10-20T12:09"
+  },
+  {
+   "marche": "5950845",
+   "issue": "Alexander Ritschard",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "7.00",
+   "resolution": "résolu : Alexander Ritschard",
+   "cloturee_le": "2026-10-20T12:52"
+  },
+  {
+   "marche": "5931576",
+   "issue": "Dimitris Sakellaridis",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Dimitris Sakellaridis",
+   "cloturee_le": "2026-10-20T13:16"
+  },
+  {
+   "marche": "5789469",
+   "issue": "Uganda",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "4.04",
+   "resolution": "résolu : Uganda",
+   "cloturee_le": "2026-10-20T14:20"
+  },
+  {
+   "marche": "5409221",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "10.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "11.61",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:13"
+  },
+  {
+   "marche": "5952191",
+   "issue": "Sloane Stephens",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "3.22",
+   "resolution": "résolu : Sloane Stephens",
+   "cloturee_le": "2026-10-21T00:19"
+  },
+  {
+   "marche": "5965245",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "19.50",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-21T03:33"
+  },
+  {
+   "marche": "5856968",
+   "issue": "Nicolas Mejia",
+   "strategie": "nf_sport_patiente_prix_haut v1.0.0",
+   "resultat": "1.41",
+   "resolution": "résolu : Nicolas Mejia",
+   "cloturee_le": "2026-10-21T05:38"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_prix_haut v1.0.0": {
+   "operations": 22,
+   "evenements": 22,
+   "gagnantes": 18,
+   "taux_reussite": 0.818,
+   "profit_net": "-319.88",
+   "frais": "4.23",
+   "rendement_sur_mises": -0.1659,
+   "esperance_par_operation": "-14.54",
+   "ic90_rendement_par_euro": [
+    -0.2555,
+    0.0403
+   ],
+   "brier": 0.1675,
+   "log_loss": 0.623,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

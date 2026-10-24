@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "619.2046",
+  "capital_immobilise": "71.4081",
+  "gains_realises_nets": "-309.3873",
+  "gains_latents": "0.0000",
+  "frais_payes": "13.0647",
+  "capital_total_estime": "690.6127",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3645,
+ "dernier_battement": "2026-10-21T20:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5436907",
+   "issue": "No",
+   "parts": "23.91",
+   "cout": "22.54",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "groupe": "1154853",
+   "ouverte_le": "2026-10-21T14:41"
+  },
+  {
+   "marche": "5436912",
+   "issue": "No",
+   "parts": "52.36",
+   "cout": "48.87",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "groupe": "1154853",
+   "ouverte_le": "2026-10-21T15:22"
+  }
+ ],
+ "operations_cloturees": 83,
+ "dernieres_operations": [
+  {
+   "marche": "5425523",
+   "issue": "Under",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "4.82",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-21T04:12"
+  },
+  {
+   "marche": "5408633",
+   "issue": "No",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "2.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:31"
+  },
+  {
+   "marche": "5430814",
+   "issue": "CA Boca Juniors",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "4.87",
+   "resolution": "résolu : CA Boca Juniors",
+   "cloturee_le": "2026-10-21T04:31"
+  },
+  {
+   "marche": "5430817",
+   "issue": "CR Vasco da Gama",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "-37.73",
+   "resolution": "résolu : CA Boca Juniors",
+   "cloturee_le": "2026-10-21T04:36"
+  },
+  {
+   "marche": "5966831",
+   "issue": "Marie Bouzkova",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "1.51",
+   "resolution": "résolu : Marie Bouzkova",
+   "cloturee_le": "2026-10-21T07:42"
+  },
+  {
+   "marche": "5970791",
+   "issue": "No",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "1.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T08:10"
+  },
+  {
+   "marche": "5825781",
+   "issue": "Tomas Machac",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "4.83",
+   "resolution": "résolu : Tomas Machac",
+   "cloturee_le": "2026-10-21T10:21"
+  },
+  {
+   "marche": "5971915",
+   "issue": "Eternal Fire",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "4.50",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-21T14:39"
+  },
+  {
+   "marche": "5992261",
+   "issue": "Ilary Pistola",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "3.67",
+   "resolution": "résolu : Ilary Pistola",
+   "cloturee_le": "2026-10-21T15:01"
+  },
+  {
+   "marche": "5958488",
+   "issue": "No",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "1.07",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T15:01"
+  },
+  {
+   "marche": "5958552",
+   "issue": "No",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "0.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T15:10"
+  },
+  {
+   "marche": "5993001",
+   "issue": "Betclic Apogee Esports",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "0.02",
+   "resolution": "résolu : Betclic Apogee Esports",
+   "cloturee_le": "2026-10-21T15:20"
+  },
+  {
+   "marche": "5992996",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "4.52",
+   "resolution": "résolu : BC.Game Esports",
+   "cloturee_le": "2026-10-21T15:41"
+  },
+  {
+   "marche": "5967423",
+   "issue": "Stefanos Tsitsipas",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "4.77",
+   "resolution": "résolu : Stefanos Tsitsipas",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "5799343",
+   "issue": "Nigeria",
+   "strategie": "nf_sport_tres_court v1.0.0",
+   "resultat": "0.85",
+   "resolution": "résolu : Nigeria",
+   "cloturee_le": "2026-10-21T19:50"
+  }
+ ],
+ "performances": {
+  "nf_sport_tres_court v1.0.0": {
+   "operations": 83,
+   "evenements": 73,
+   "gagnantes": 72,
+   "taux_reussite": 0.867,
+   "profit_net": "-309.39",
+   "frais": "12.83",
+   "rendement_sur_mises": -0.1171,
+   "esperance_par_operation": "-3.73",
+   "ic90_rendement_par_euro": [
+    -0.0937,
+    0.0423
+   ],
+   "brier": 0.1101,
+   "log_loss": 0.3532,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

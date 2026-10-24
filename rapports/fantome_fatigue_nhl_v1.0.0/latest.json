@@ -1,0 +1,177 @@
+{
+ "genere_le": "2026-10-24T15:37:51+00:00",
+ "capital": {
+  "solde_disponible": "998.2556",
+  "capital_immobilise": "3.6048",
+  "gains_realises_nets": "1.8605",
+  "gains_latents": "0.0489",
+  "frais_payes": "1.1660",
+  "capital_total_estime": "1001.9093",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0303,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Lightning vs. Utah",
+   "issue": "Utah",
+   "parts": "6.41",
+   "cout": "3.60",
+   "prix_moyen": "0.5624",
+   "prix_de_marque": "0.57",
+   "latent": "0.05",
+   "strategie": "fatigue_nhl v1.0.0",
+   "groupe": "1092370",
+   "ouverte_le": "2026-10-23T03:26"
+  }
+ ],
+ "operations_cloturees": 13,
+ "dernieres_operations": [
+  {
+   "marche": "5928616",
+   "issue": "Islanders",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-2.67",
+   "resolution": "résolu : Ducks",
+   "cloturee_le": "2026-10-21T01:54"
+  },
+  {
+   "marche": "4882638",
+   "issue": "Islanders",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "2.65",
+   "resolution": "résolu : Islanders",
+   "cloturee_le": "2026-10-21T01:59"
+  },
+  {
+   "marche": "4882643",
+   "issue": "Devils",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "2.98",
+   "resolution": "résolu : Devils",
+   "cloturee_le": "2026-10-21T01:59"
+  },
+  {
+   "marche": "5931040",
+   "issue": "Devils",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-2.62",
+   "resolution": "résolu : Avalanche",
+   "cloturee_le": "2026-10-21T01:59"
+  },
+  {
+   "marche": "5928615",
+   "issue": "Devils",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "2.55",
+   "resolution": "résolu : Devils",
+   "cloturee_le": "2026-10-21T01:59"
+  },
+  {
+   "marche": "4882628",
+   "issue": "Blue Jackets",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-4.18",
+   "resolution": "résolu : Maple Leafs",
+   "cloturee_le": "2026-10-21T02:04"
+  },
+  {
+   "marche": "5928618",
+   "issue": "Blue Jackets",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-2.71",
+   "resolution": "résolu : Maple Leafs",
+   "cloturee_le": "2026-10-21T02:04"
+  },
+  {
+   "marche": "4882648",
+   "issue": "Canadiens",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-5.46",
+   "resolution": "résolu : Sharks",
+   "cloturee_le": "2026-10-21T02:09"
+  },
+  {
+   "marche": "5928614",
+   "issue": "Canadiens",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-2.93",
+   "resolution": "résolu : Sharks",
+   "cloturee_le": "2026-10-21T02:09"
+  },
+  {
+   "marche": "4950262",
+   "issue": "Penguins",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "3.01",
+   "resolution": "résolu : Penguins",
+   "cloturee_le": "2026-10-23T02:01"
+  },
+  {
+   "marche": "4950267",
+   "issue": "Sharks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "3.46",
+   "resolution": "résolu : Sharks",
+   "cloturee_le": "2026-10-23T02:01"
+  },
+  {
+   "marche": "6013909",
+   "issue": "Penguins",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "5.26",
+   "resolution": "résolu : Penguins",
+   "cloturee_le": "2026-10-23T02:01"
+  },
+  {
+   "marche": "6013908",
+   "issue": "Sharks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "2.52",
+   "resolution": "résolu : Sharks",
+   "cloturee_le": "2026-10-23T02:01"
+  }
+ ],
+ "performances": {
+  "fatigue_nhl v1.0.0": {
+   "operations": 13,
+   "evenements": 6,
+   "gagnantes": 7,
+   "taux_reussite": 0.538,
+   "profit_net": "1.86",
+   "frais": "1.09",
+   "rendement_sur_mises": 0.0378,
+   "esperance_par_operation": "0.14",
+   "ic90_rendement_par_euro": [
+    -0.4974,
+    0.5824
+   ],
+   "brier": 0.2282,
+   "log_loss": 0.6479,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

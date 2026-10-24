@@ -1,0 +1,277 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "706.4573",
+  "capital_immobilise": "218.5949",
+  "gains_realises_nets": "-74.9479",
+  "gains_latents": "4.7784",
+  "frais_payes": "12.0721",
+  "capital_total_estime": "929.8305",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1977,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Counter-Strike: Vitality vs 9z (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "Vitality",
+   "parts": "47.10",
+   "cout": "40.79",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.9",
+   "latent": "1.60",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-23T14:32"
+  },
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "28.25",
+   "cout": "25.28",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "2.94",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-23T20:42"
+  },
+  {
+   "marche": "Spread: Club Atlético de Madrid (-3.5)",
+   "issue": "RC Deportivo A Coruña",
+   "parts": "37.49",
+   "cout": "31.38",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.82",
+   "latent": "-0.64",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1169310",
+   "ouverte_le": "2026-10-23T21:12"
+  },
+  {
+   "marche": "UFC 333: Nikita Krylov vs. Abdul-Rakhman Yakhyaev (Light Heavyweight, Prelims)",
+   "issue": "Abdul-Rakhman Yakhyaev",
+   "parts": "28.20",
+   "cout": "23.60",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.81",
+   "latent": "-0.76",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1167182",
+   "ouverte_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "26.11",
+   "cout": "24.37",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.35",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T00:42"
+  },
+  {
+   "marche": "Dota 2: Team Spirit vs BetBoom Team (BO3) - PARI Universe Group B",
+   "issue": "Team Spirit",
+   "parts": "42.92",
+   "cout": "36.34",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.91",
+   "latent": "2.72",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1236927",
+   "ouverte_le": "2026-10-24T02:41"
+  },
+  {
+   "marche": "LoL: G2 Esports vs LOS (BO1) - Worlds Group Stage",
+   "issue": "G2 Esports",
+   "parts": "9.00",
+   "cout": "7.53",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.81",
+   "latent": "-0.24",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1243548",
+   "ouverte_le": "2026-10-24T02:41"
+  },
+  {
+   "marche": "Louisiana-Monroe vs. Troy",
+   "issue": "Troy",
+   "parts": "34.71",
+   "cout": "29.30",
+   "prix_moyen": "0.8440",
+   "prix_de_marque": "0.83",
+   "latent": "-0.49",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1178375",
+   "ouverte_le": "2026-10-24T13:07"
+  }
+ ],
+ "operations_cloturees": 40,
+ "dernieres_operations": [
+  {
+   "marche": "5798570",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "2.27",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-22T10:45"
+  },
+  {
+   "marche": "5967419",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "7.70",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-22T14:12"
+  },
+  {
+   "marche": "5439913",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "5.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "1.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "0.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5471628",
+   "issue": "Over",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "1.33",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "5.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "2.91",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5906238",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-31.83",
+   "resolution": "résolu : Movistar KOI",
+   "cloturee_le": "2026-10-23T20:41"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "5.85",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480989",
+   "issue": "Under",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "1.47",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "2.81",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  },
+  {
+   "marche": "5615497",
+   "issue": "UConn",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "7.45",
+   "resolution": "résolu : UConn",
+   "cloturee_le": "2026-10-24T02:40"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-38.93",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_6_24h v1.0.0": {
+   "operations": 40,
+   "evenements": 35,
+   "gagnantes": 34,
+   "taux_reussite": 0.85,
+   "profit_net": "-74.95",
+   "frais": "10.61",
+   "rendement_sur_mises": -0.0334,
+   "esperance_par_operation": "-1.87",
+   "ic90_rendement_par_euro": [
+    -0.193,
+    0.0434
+   ],
+   "brier": 0.1236,
+   "log_loss": 0.4002,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

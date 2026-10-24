@@ -1,0 +1,246 @@
+{
+ "genere_le": "2026-10-24T15:37:51+00:00",
+ "capital": {
+  "solde_disponible": "81.4725",
+  "capital_immobilise": "924.1314",
+  "gains_realises_nets": "5.6040",
+  "gains_latents": "37.5280",
+  "frais_payes": "1.8160",
+  "capital_total_estime": "1043.1319",
+  "positions_ouvertes": "15",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0999,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 24?",
+   "issue": "Yes",
+   "parts": "88.32",
+   "cout": "75.07",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.98",
+   "latent": "11.48",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "103.17",
+   "cout": "92.17",
+   "prix_moyen": "0.8934",
+   "prix_de_marque": "0.967",
+   "latent": "7.60",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "93.04",
+   "cout": "83.62",
+   "prix_moyen": "0.8988",
+   "prix_de_marque": "0.968",
+   "latent": "6.44",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "Will Naftali Bennett be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "82.66",
+   "cout": "71.91",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.85",
+   "latent": "-1.65",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-16T21:37"
+  },
+  {
+   "marche": "4599795",
+   "issue": "No",
+   "parts": "76.63",
+   "cout": "66.24",
+   "prix_moyen": "0.8644",
+   "prix_de_marque": "0.92",
+   "latent": "4.26",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1030155",
+   "ouverte_le": "2026-10-16T21:37"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "95.28",
+   "cout": "86.92",
+   "prix_moyen": "0.9123",
+   "prix_de_marque": "0.927",
+   "latent": "1.40",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T21:37"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "76.00",
+   "cout": "66.12",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.991",
+   "latent": "9.20",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Republicans win the Senate?",
+   "issue": "No",
+   "parts": "76.37",
+   "cout": "71.04",
+   "prix_moyen": "0.9302",
+   "prix_de_marque": "0.954",
+   "latent": "1.82",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "4839196",
+   "issue": "No",
+   "parts": "2.75",
+   "cout": "2.45",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.885",
+   "latent": "-0.01",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "907008",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "67.95",
+   "cout": "62.06",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.92",
+   "latent": "0.46",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+   "issue": "Yes",
+   "parts": "67.95",
+   "cout": "62.06",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.91",
+   "latent": "-0.22",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will the Republican Party control the House after the 2026 Midterm elections?",
+   "issue": "No",
+   "parts": "67.82",
+   "cout": "61.94",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.91",
+   "latent": "-0.22",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "32225",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "Will the Republicans win the Mississippi Senate race in 2026?",
+   "issue": "Yes",
+   "parts": "67.82",
+   "cout": "61.94",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.87",
+   "latent": "-2.93",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "57678",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "US x Yemen ceasefire continues through October 31?",
+   "issue": "Yes",
+   "parts": "32.75",
+   "cout": "30.13",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.91",
+   "latent": "-0.33",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1053896",
+   "ouverte_le": "2026-10-16T21:57"
+  },
+  {
+   "marche": "4118937",
+   "issue": "No",
+   "parts": "32.40",
+   "cout": "30.46",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.948",
+   "latent": "0.26",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-10-16T21:57"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "favori_politique v1.0.0",
+   "resultat": "5.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:41"
+  }
+ ],
+ "performances": {
+  "favori_politique v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "5.60",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0742,
+   "esperance_par_operation": "5.60",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0014,
+   "log_loss": 0.0387,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

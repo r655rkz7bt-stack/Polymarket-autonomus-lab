@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-10-24T15:37:59+00:00",
+ "capital": {
+  "solde_disponible": "87.8795",
+  "capital_immobilise": "975.7154",
+  "gains_realises_nets": "63.5950",
+  "gains_latents": "-8.4388",
+  "frais_payes": "58.7480",
+  "capital_total_estime": "1055.1561",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3347,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "120.52",
+   "cout": "102.03",
+   "prix_moyen": "0.8466",
+   "prix_de_marque": "0.721",
+   "latent": "-15.13",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T23:18"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "14.86",
+   "cout": "14.07",
+   "prix_moyen": "0.9470",
+   "prix_de_marque": "0.942",
+   "latent": "-0.07",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-21T12:22"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "166.28",
+   "cout": "136.34",
+   "prix_moyen": "0.8199",
+   "prix_de_marque": "0.91",
+   "latent": "14.97",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T19:16"
+  },
+  {
+   "marche": "5542675",
+   "issue": "Yes",
+   "parts": "42.00",
+   "cout": "34.34",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.993",
+   "latent": "7.36",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1169798",
+   "ouverte_le": "2026-10-22T19:52"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "381.75",
+   "cout": "359.49",
+   "prix_moyen": "0.9417",
+   "prix_de_marque": "0.819",
+   "latent": "-46.84",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T20:00"
+  },
+  {
+   "marche": "Will Charles Leclerc win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "76.25",
+   "cout": "65.30",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-1.25",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:36"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: Yulia Starodubtseva vs Aliaksandra Sasnovich",
+   "issue": "Aliaksandra Sasnovich",
+   "parts": "13.89",
+   "cout": "12.92",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.999",
+   "latent": "0.96",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1239984",
+   "ouverte_le": "2026-10-24T03:16"
+  },
+  {
+   "marche": "LoL: G2 Esports vs LOS (BO1) - Worlds Group Stage",
+   "issue": "G2 Esports",
+   "parts": "48.70",
+   "cout": "39.93",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.81",
+   "latent": "-0.49",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1243548",
+   "ouverte_le": "2026-10-24T06:06"
+  },
+  {
+   "marche": "Ireland Tour of Namibia ODIs: Namibia vs Ireland",
+   "issue": "Namibia",
+   "parts": "160.21",
+   "cout": "135.65",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.999",
+   "latent": "24.40",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1204081",
+   "ouverte_le": "2026-10-24T13:52"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: En-Shuo Liang vs Tereza Valentova",
+   "issue": "Tereza Valentova",
+   "parts": "77.89",
+   "cout": "71.05",
+   "prix_moyen": "0.9122",
+   "prix_de_marque": "0.999",
+   "latent": "6.76",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1244170",
+   "ouverte_le": "2026-10-24T13:56"
+  },
+  {
+   "marche": "M25 Sarreguemines: Philip Henning vs Adrien Gobat",
+   "issue": "Philip Henning",
+   "parts": "5.48",
+   "cout": "4.59",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.999",
+   "latent": "0.89",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1242345",
+   "ouverte_le": "2026-10-24T14:04"
+  }
+ ],
+ "operations_cloturees": 168,
+ "dernieres_operations": [
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-64.42",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "5509281",
+   "issue": "No",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "3.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:05"
+  },
+  {
+   "marche": "6076719",
+   "issue": "Xinxin Yao",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "24.66",
+   "resolution": "résolu : Xinxin Yao",
+   "cloturee_le": "2026-10-24T08:01"
+  },
+  {
+   "marche": "6084823",
+   "issue": "Carol Young Suh Lee",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "10.24",
+   "resolution": "résolu : Carol Young Suh Lee",
+   "cloturee_le": "2026-10-24T08:55"
+  },
+  {
+   "marche": "6084819",
+   "issue": "Tatiana Prozorova",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "2.38",
+   "resolution": "résolu : Tatiana Prozorova",
+   "cloturee_le": "2026-10-24T09:55"
+  },
+  {
+   "marche": "5799001",
+   "issue": "Brisbane Bullets",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "12.49",
+   "resolution": "résolu : Brisbane Bullets",
+   "cloturee_le": "2026-10-24T10:31"
+  },
+  {
+   "marche": "5774489",
+   "issue": "Aurora Gaming",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-102.96",
+   "resolution": "résolu : TheMongolz",
+   "cloturee_le": "2026-10-24T10:51"
+  },
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "6084821",
+   "issue": "Joanna Garland",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "13.81",
+   "resolution": "résolu : Joanna Garland",
+   "cloturee_le": "2026-10-24T11:21"
+  },
+  {
+   "marche": "6099838",
+   "issue": "Yannick Hanfmann",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "2.37",
+   "resolution": "résolu : Yannick Hanfmann",
+   "cloturee_le": "2026-10-24T11:41"
+  },
+  {
+   "marche": "6065034",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T13:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-13.15",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "5534020",
+   "issue": "No",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "4.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "6065038",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "3.93",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T14:46"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente v1.0.0": {
+   "operations": 168,
+   "evenements": 162,
+   "gagnantes": 150,
+   "taux_reussite": 0.893,
+   "profit_net": "63.59",
+   "frais": "55.56",
+   "rendement_sur_mises": 0.0044,
+   "esperance_par_operation": "0.38",
+   "ic90_rendement_par_euro": [
+    -0.0148,
+    0.0735
+   ],
+   "brier": 0.0936,
+   "log_loss": 0.3594,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

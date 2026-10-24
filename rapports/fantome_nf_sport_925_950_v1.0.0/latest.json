@@ -1,0 +1,325 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "112.9897",
+  "capital_immobilise": "813.6501",
+  "gains_realises_nets": "-73.3602",
+  "gains_latents": "9.1173",
+  "frais_payes": "14.0462",
+  "capital_total_estime": "935.7571",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2768,
+ "dernier_battement": "2026-10-24T15:32:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "11.48",
+   "cout": "10.88",
+   "prix_moyen": "0.9475",
+   "prix_de_marque": "0.819",
+   "latent": "-1.48",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T20:52"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "6.95",
+   "cout": "6.49",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.09",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-23T20:52"
+  },
+  {
+   "marche": "Will Lewis Hamilton win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "14.00",
+   "cout": "13.07",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.91",
+   "latent": "-0.33",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T23:21"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "298.27",
+   "cout": "278.36",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.91",
+   "latent": "-6.94",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T23:47"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: Yulia Starodubtseva vs Aliaksandra Sasnovich",
+   "issue": "Aliaksandra Sasnovich",
+   "parts": "44.86",
+   "cout": "42.29",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.999",
+   "latent": "2.52",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1239984",
+   "ouverte_le": "2026-10-24T03:07"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 2 - 2 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "6.31",
+   "cout": "5.89",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.08",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T09:47"
+  },
+  {
+   "marche": "5616107",
+   "issue": "Miami (FL)",
+   "parts": "7.52",
+   "cout": "7.01",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.91",
+   "latent": "-0.17",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1178232",
+   "ouverte_le": "2026-10-24T12:47"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: En-Shuo Liang vs Tereza Valentova",
+   "issue": "Tereza Valentova",
+   "parts": "242.28",
+   "cout": "228.80",
+   "prix_moyen": "0.9444",
+   "prix_de_marque": "0.999",
+   "latent": "13.24",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1244170",
+   "ouverte_le": "2026-10-24T14:04"
+  },
+  {
+   "marche": "Florence: Oriol Roca Batalla vs Michele Ribecai",
+   "issue": "Michele Ribecai",
+   "parts": "72.50",
+   "cout": "68.35",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.999",
+   "latent": "4.07",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1245572",
+   "ouverte_le": "2026-10-24T14:27"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 3 - 1 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "44.00",
+   "cout": "41.48",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.12",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T14:29"
+  },
+  {
+   "marche": "5536905",
+   "issue": "Over",
+   "parts": "103.76",
+   "cout": "97.83",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.93",
+   "latent": "-1.33",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1168862",
+   "ouverte_le": "2026-10-24T14:42"
+  },
+  {
+   "marche": "Will George Russell win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "14.00",
+   "cout": "13.20",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.93",
+   "latent": "-0.18",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-24T15:17"
+  }
+ ],
+ "operations_cloturees": 30,
+ "dernieres_operations": [
+  {
+   "marche": "5476454",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480989",
+   "issue": "Under",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "10.36",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "3.70",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "6035008",
+   "issue": "Brute",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "0.40",
+   "resolution": "résolu : Brute",
+   "cloturee_le": "2026-10-23T21:35"
+  },
+  {
+   "marche": "6069390",
+   "issue": "Gustavo Heide",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "3.20",
+   "resolution": "résolu : Gustavo Heide",
+   "cloturee_le": "2026-10-23T22:50"
+  },
+  {
+   "marche": "6028860",
+   "issue": "Jenson Brooksby",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "15.72",
+   "resolution": "résolu : Jenson Brooksby",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "6076717",
+   "issue": "I Wen Wan",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "20.29",
+   "resolution": "résolu : I Wen Wan",
+   "cloturee_le": "2026-10-24T02:31"
+  },
+  {
+   "marche": "5969232",
+   "issue": "Milwaukee Brewers",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "20.67",
+   "resolution": "résolu : Milwaukee Brewers",
+   "cloturee_le": "2026-10-24T04:01"
+  },
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "-290.29",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "5509281",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "17.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:05"
+  },
+  {
+   "marche": "6084819",
+   "issue": "Tatiana Prozorova",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "5.36",
+   "resolution": "résolu : Tatiana Prozorova",
+   "cloturee_le": "2026-10-24T09:55"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "15.08",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "5534020",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "14.12",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "5537309",
+   "issue": "Manchester City FC",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "6.35",
+   "resolution": "résolu : Manchester City FC",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "6097972",
+   "issue": "Zero Tenacity",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "6.88",
+   "resolution": "résolu : Zero Tenacity",
+   "cloturee_le": "2026-10-24T15:31"
+  }
+ ],
+ "performances": {
+  "nf_sport_925_950 v1.0.0": {
+   "operations": 30,
+   "evenements": 28,
+   "gagnantes": 29,
+   "taux_reussite": 0.967,
+   "profit_net": "-73.36",
+   "frais": "11.50",
+   "rendement_sur_mises": -0.0205,
+   "esperance_par_operation": "-2.45",
+   "ic90_rendement_par_euro": [
+    -0.04,
+    0.0676
+   ],
+   "brier": 0.0327,
+   "log_loss": 0.1585,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

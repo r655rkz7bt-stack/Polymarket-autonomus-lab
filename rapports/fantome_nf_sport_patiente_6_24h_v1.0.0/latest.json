@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "811.6759",
+  "capital_immobilise": "268.8173",
+  "gains_realises_nets": "80.4932",
+  "gains_latents": "-4.0212",
+  "frais_payes": "3.2534",
+  "capital_total_estime": "1076.4720",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1138,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "17.13",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T15:47"
+  },
+  {
+   "marche": "Will Parma Calcio 1913 win on 2026-10-24?",
+   "issue": "No",
+   "parts": "212.27",
+   "cout": "187.92",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-3.24",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1167432",
+   "ouverte_le": "2026-10-24T05:48"
+  },
+  {
+   "marche": "LoL: G2 Esports vs LOS (BO1) - Worlds Group Stage",
+   "issue": "G2 Esports",
+   "parts": "77.77",
+   "cout": "63.77",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.81",
+   "latent": "-0.78",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1243548",
+   "ouverte_le": "2026-10-24T06:06"
+  }
+ ],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "5411179",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-53.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:05"
+  },
+  {
+   "marche": "5437389",
+   "issue": "Over",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "12.77",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-21T21:10"
+  },
+  {
+   "marche": "5437560",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "22.45",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-21T21:35"
+  },
+  {
+   "marche": "5436699",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "7.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5798570",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "13.53",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-22T10:45"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "7.55",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "2.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458316",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "14.12",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458321",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "13.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "13.76",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5473150",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "6.48",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T17:31"
+  },
+  {
+   "marche": "5615497",
+   "issue": "UConn",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "25.44",
+   "resolution": "résolu : UConn",
+   "cloturee_le": "2026-10-24T02:40"
+  },
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-108.71",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_6_24h v1.0.0": {
+   "operations": 23,
+   "evenements": 21,
+   "gagnantes": 21,
+   "taux_reussite": 0.913,
+   "profit_net": "80.49",
+   "frais": "2.01",
+   "rendement_sur_mises": 0.0395,
+   "esperance_par_operation": "3.50",
+   "ic90_rendement_par_euro": [
+    -0.065,
+    0.1639
+   ],
+   "brier": 0.0752,
+   "log_loss": 0.2612,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

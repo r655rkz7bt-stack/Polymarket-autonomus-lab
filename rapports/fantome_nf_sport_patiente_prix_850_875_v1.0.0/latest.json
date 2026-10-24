@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "128.4060",
+  "capital_immobilise": "1038.8591",
+  "gains_realises_nets": "167.2650",
+  "gains_latents": "35.3490",
+  "frais_payes": "8.5410",
+  "capital_total_estime": "1202.6141",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2082,
+ "dernier_battement": "2026-10-24T15:32:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "266.50",
+   "cout": "228.66",
+   "prix_moyen": "0.8580",
+   "prix_de_marque": "0.91",
+   "latent": "13.86",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-23T01:01"
+  },
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "17.13",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T15:47"
+  },
+  {
+   "marche": "Counter-Strike: Vitality vs 9z (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "Vitality",
+   "parts": "171.14",
+   "cout": "145.47",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.9",
+   "latent": "8.56",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-23T19:05"
+  },
+  {
+   "marche": "Will Charles Leclerc win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "257.01",
+   "cout": "220.75",
+   "prix_moyen": "0.8589",
+   "prix_de_marque": "0.84",
+   "latent": "-4.86",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:36"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "298.35",
+   "cout": "255.54",
+   "prix_moyen": "0.8565",
+   "prix_de_marque": "0.819",
+   "latent": "-11.20",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-24T10:07"
+  },
+  {
+   "marche": "Ireland Tour of Namibia ODIs: Namibia vs Ireland",
+   "issue": "Namibia",
+   "parts": "187.44",
+   "cout": "158.71",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.999",
+   "latent": "28.54",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1204081",
+   "ouverte_le": "2026-10-24T13:52"
+  },
+  {
+   "marche": "Counter-Strike: Nuclear TigeRES vs FORZE Reload (BO3) - NODWIN Clutch Series Playoffs",
+   "issue": "Nuclear TigeRES",
+   "parts": "15.00",
+   "cout": "12.60",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.87",
+   "latent": "0.45",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1237195",
+   "ouverte_le": "2026-10-24T15:31"
+  }
+ ],
+ "operations_cloturees": 41,
+ "dernieres_operations": [
+  {
+   "marche": "6037983",
+   "issue": "Yuki Naito",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "29.93",
+   "resolution": "résolu : Yuki Naito",
+   "cloturee_le": "2026-10-22T19:55"
+  },
+  {
+   "marche": "6033280",
+   "issue": "Yawara Esports",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "2.60",
+   "resolution": "résolu : Yawara Esports",
+   "cloturee_le": "2026-10-22T22:40"
+  },
+  {
+   "marche": "5520549",
+   "issue": "CR Flamengo",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "-139.25",
+   "resolution": "résolu : Estudiantes de La Plata",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5493842",
+   "issue": "Estudiantes de La Plata",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "26.40",
+   "resolution": "résolu : Estudiantes de La Plata",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458317",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "27.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "6042903",
+   "issue": "Kosuke Ogura",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "3.94",
+   "resolution": "résolu : Kosuke Ogura",
+   "cloturee_le": "2026-10-23T07:45"
+  },
+  {
+   "marche": "6051872",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "4.30",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-23T11:31"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "4.25",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "6065675",
+   "issue": "Jodie Anna Burrage",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "23.71",
+   "resolution": "résolu : Jodie Anna Burrage",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6089721",
+   "issue": "Eternal Fire",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "31.69",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-23T23:31"
+  },
+  {
+   "marche": "6070239",
+   "issue": "Imperial",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "25.91",
+   "resolution": "résolu : Imperial",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "6094808",
+   "issue": "Connie Ma",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "19.86",
+   "resolution": "résolu : Connie Ma",
+   "cloturee_le": "2026-10-24T01:41"
+  },
+  {
+   "marche": "6079422",
+   "issue": "Chinggis Warriors",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "27.50",
+   "resolution": "résolu : Chinggis Warriors",
+   "cloturee_le": "2026-10-24T07:41"
+  },
+  {
+   "marche": "5799001",
+   "issue": "Brisbane Bullets",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "12.49",
+   "resolution": "résolu : Brisbane Bullets",
+   "cloturee_le": "2026-10-24T10:31"
+  },
+  {
+   "marche": "6065034",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T13:01"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 41,
+   "evenements": 40,
+   "gagnantes": 36,
+   "taux_reussite": 0.878,
+   "profit_net": "167.27",
+   "frais": "6.58",
+   "rendement_sur_mises": 0.0492,
+   "esperance_par_operation": "4.08",
+   "ic90_rendement_par_euro": [
+    -0.0313,
+    0.1401
+   ],
+   "brier": 0.0744,
+   "log_loss": 0.3116,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

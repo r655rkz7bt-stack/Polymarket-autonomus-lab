@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-10-24T15:37:49+00:00",
+ "capital": {
+  "solde_disponible": "789.5573",
+  "capital_immobilise": "139.1558",
+  "gains_realises_nets": "-71.2869",
+  "gains_latents": "-3.2408",
+  "frais_payes": "4.7476",
+  "capital_total_estime": "925.4723",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2378,
+ "dernier_battement": "2026-10-24T15:22:34+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "UFC 333: Abubakar Vagaev vs. Jacob Malkoun (Middleweight, Early Prelims)",
+   "issue": "Abubakar Vagaev",
+   "parts": "28.78",
+   "cout": "17.33",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "0.66",
+   "latent": "1.67",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1196761",
+   "ouverte_le": "2026-10-23T17:09"
+  },
+  {
+   "marche": "Will Chelsea FC win on 2026-10-24?",
+   "issue": "Yes",
+   "parts": "32.19",
+   "cout": "17.70",
+   "prix_moyen": "0.5500",
+   "prix_de_marque": "0.48",
+   "latent": "-2.25",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1168565",
+   "ouverte_le": "2026-10-23T18:05"
+  },
+  {
+   "marche": "Lightning vs. Utah",
+   "issue": "Utah",
+   "parts": "34.06",
+   "cout": "20.17",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "0.57",
+   "latent": "-0.76",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1092370",
+   "ouverte_le": "2026-10-24T04:26"
+  },
+  {
+   "marche": "Total Kills Over/Under 24.5 in Game 1?",
+   "issue": "Over",
+   "parts": "34.13",
+   "cout": "20.19",
+   "prix_moyen": "0.5916",
+   "prix_de_marque": "0.61",
+   "latent": "0.63",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1243550",
+   "ouverte_le": "2026-10-24T08:56"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "51.27",
+   "cout": "44.71",
+   "prix_moyen": "0.8720",
+   "prix_de_marque": "0.819",
+   "latent": "-2.72",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-24T10:41"
+  },
+  {
+   "marche": "Will Harry Kane win the 2026 Ballon d'Or?",
+   "issue": "Yes",
+   "parts": "27.03",
+   "cout": "19.06",
+   "prix_moyen": "0.7050",
+   "prix_de_marque": "0.712",
+   "latent": "0.19",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-24T12:35"
+  }
+ ],
+ "operations_cloturees": 40,
+ "dernieres_operations": [
+  {
+   "marche": "5437436",
+   "issue": "Over",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-34.84",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-21T21:25"
+  },
+  {
+   "marche": "5437366",
+   "issue": "FC Bayern München",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "3.82",
+   "resolution": "résolu : FC Bayern München",
+   "cloturee_le": "2026-10-21T21:25"
+  },
+  {
+   "marche": "5972071",
+   "issue": "BESTIA",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "5.30",
+   "resolution": "résolu : BESTIA",
+   "cloturee_le": "2026-10-22T18:06"
+  },
+  {
+   "marche": "4950262",
+   "issue": "Panthers",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-6.48",
+   "resolution": "résolu : Penguins",
+   "cloturee_le": "2026-10-23T02:01"
+  },
+  {
+   "marche": "5996241",
+   "issue": "Cavaliers",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-6.48",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-23T02:15"
+  },
+  {
+   "marche": "5922473",
+   "issue": "No",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "7.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T05:01"
+  },
+  {
+   "marche": "5914130",
+   "issue": "No",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-11.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T05:05"
+  },
+  {
+   "marche": "5792257",
+   "issue": "Under",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "32.18",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T05:21"
+  },
+  {
+   "marche": "5914077",
+   "issue": "Yes",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "8.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T06:05"
+  },
+  {
+   "marche": "6070448",
+   "issue": "paiN",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "14.07",
+   "resolution": "résolu : paiN",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "4984345",
+   "issue": "Canadiens",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "14.22",
+   "resolution": "résolu : Canadiens",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5958421",
+   "issue": "No",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-5.70",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T04:25"
+  },
+  {
+   "marche": "5969217",
+   "issue": "No",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-6.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "6079422",
+   "issue": "Chinggis Warriors",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "10.10",
+   "resolution": "résolu : Chinggis Warriors",
+   "cloturee_le": "2026-10-24T07:41"
+  },
+  {
+   "marche": "5940749",
+   "issue": "Kody Steele",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "0.82",
+   "resolution": "résolu : Kody Steele",
+   "cloturee_le": "2026-10-24T15:21"
+  }
+ ],
+ "performances": {
+  "calibration_patiente v1.0.0": {
+   "operations": 40,
+   "evenements": 38,
+   "gagnantes": 24,
+   "taux_reussite": 0.6,
+   "profit_net": "-71.29",
+   "frais": "3.57",
+   "rendement_sur_mises": -0.05,
+   "esperance_par_operation": "-1.78",
+   "ic90_rendement_par_euro": [
+    -0.2381,
+    0.194
+   ],
+   "brier": 0.2049,
+   "log_loss": 0.5964,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "501.6833",
+  "capital_immobilise": "751.4988",
+  "gains_realises_nets": "253.1820",
+  "gains_latents": "44.2060",
+  "frais_payes": "36.0860",
+  "capital_total_estime": "1297.3881",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1574,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Lisbon: Svyatoslav Gulin vs Elmer Moeller",
+   "issue": "Elmer Moeller",
+   "parts": "8.23",
+   "cout": "7.13",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1243095",
+   "ouverte_le": "2026-10-24T13:12"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: En-Shuo Liang vs Tereza Valentova",
+   "issue": "Tereza Valentova",
+   "parts": "118.88",
+   "cout": "108.44",
+   "prix_moyen": "0.9122",
+   "prix_de_marque": "0.999",
+   "latent": "10.32",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1244170",
+   "ouverte_le": "2026-10-24T13:56"
+  },
+  {
+   "marche": "M25 Sarreguemines: Philip Henning vs Adrien Gobat",
+   "issue": "Philip Henning",
+   "parts": "180.36",
+   "cout": "152.40",
+   "prix_moyen": "0.8450",
+   "prix_de_marque": "0.999",
+   "latent": "27.78",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1242345",
+   "ouverte_le": "2026-10-24T14:04"
+  },
+  {
+   "marche": "Florence: Oriol Roca Batalla vs Michele Ribecai",
+   "issue": "Michele Ribecai",
+   "parts": "64.64",
+   "cout": "52.23",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.999",
+   "latent": "12.35",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1245572",
+   "ouverte_le": "2026-10-24T14:12"
+  },
+  {
+   "marche": "European Open: Francisco Cerundolo vs Tallon Griekspoor",
+   "issue": "Francisco Cerundolo",
+   "parts": "178.65",
+   "cout": "156.44",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.62",
+   "latent": "-45.67",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1241427",
+   "ouverte_le": "2026-10-24T14:32"
+  },
+  {
+   "marche": "W100 Wrexham: Suzan Lamens vs Elsa Jacquemot",
+   "issue": "Elsa Jacquemot",
+   "parts": "183.06",
+   "cout": "161.90",
+   "prix_moyen": "0.8844",
+   "prix_de_marque": "0.999",
+   "latent": "20.97",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1242429",
+   "ouverte_le": "2026-10-24T14:42"
+  },
+  {
+   "marche": "Swiss Indoors Basel, Qualification: Henry Bernet vs Daniel Altmaier",
+   "issue": "Daniel Altmaier",
+   "parts": "139.81",
+   "cout": "112.97",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.94",
+   "latent": "18.45",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "groupe": "1243107",
+   "ouverte_le": "2026-10-24T15:27"
+  }
+ ],
+ "operations_cloturees": 58,
+ "dernieres_operations": [
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "8.69",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "6039160",
+   "issue": "Oriol Roca Batalla",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "22.09",
+   "resolution": "résolu : Oriol Roca Batalla",
+   "cloturee_le": "2026-10-24T11:05"
+  },
+  {
+   "marche": "6099830",
+   "issue": "Juan Manuel Cerundolo",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "1.57",
+   "resolution": "résolu : Juan Manuel Cerundolo",
+   "cloturee_le": "2026-10-24T12:55"
+  },
+  {
+   "marche": "6084815",
+   "issue": "Harriet Dart",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "19.35",
+   "resolution": "résolu : Harriet Dart",
+   "cloturee_le": "2026-10-24T13:21"
+  },
+  {
+   "marche": "6084799",
+   "issue": "Dayana Yastremska",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "22.17",
+   "resolution": "résolu : Dayana Yastremska",
+   "cloturee_le": "2026-10-24T13:46"
+  },
+  {
+   "marche": "6099814",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "19.92",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-10-24T14:01"
+  },
+  {
+   "marche": "6078331",
+   "issue": "Shuai Zhang",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "17.93",
+   "resolution": "résolu : Shuai Zhang",
+   "cloturee_le": "2026-10-24T14:01"
+  },
+  {
+   "marche": "6105759",
+   "issue": "Linda Fruhvirtova",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "-129.84",
+   "resolution": "résolu : Mei Yamaguchi",
+   "cloturee_le": "2026-10-24T14:06"
+  },
+  {
+   "marche": "6099834",
+   "issue": "Mika Brunold",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "19.39",
+   "resolution": "résolu : Mika Brunold",
+   "cloturee_le": "2026-10-24T14:11"
+  },
+  {
+   "marche": "6099824",
+   "issue": "Titouan Droguet",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "20.80",
+   "resolution": "résolu : Titouan Droguet",
+   "cloturee_le": "2026-10-24T14:25"
+  },
+  {
+   "marche": "6094816",
+   "issue": "Hannah Klugman",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "19.57",
+   "resolution": "résolu : Hannah Klugman",
+   "cloturee_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "6082350",
+   "issue": "Arthur Nagel",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "22.82",
+   "resolution": "résolu : Arthur Nagel",
+   "cloturee_le": "2026-10-24T14:41"
+  },
+  {
+   "marche": "6099826",
+   "issue": "Giovanni Mpetshi Perricard",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "8.06",
+   "resolution": "résolu : Giovanni Mpetshi Perricard",
+   "cloturee_le": "2026-10-24T14:46"
+  },
+  {
+   "marche": "6099812",
+   "issue": "Alex Molcan",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "14.39",
+   "resolution": "résolu : Alex Molcan",
+   "cloturee_le": "2026-10-24T15:11"
+  },
+  {
+   "marche": "Guangzhou Open, Qualification: Yihan Qu vs Teodora Kostovic",
+   "issue": "Teodora Kostovic",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "1.05",
+   "resolution": "résolu : Teodora Kostovic",
+   "cloturee_le": "2026-10-24T15:35"
+  }
+ ],
+ "performances": {
+  "nf_tennis_12_18h_vainqueur v1.0.0": {
+   "operations": 58,
+   "evenements": 58,
+   "gagnantes": 53,
+   "taux_reussite": 0.914,
+   "profit_net": "253.18",
+   "frais": "30.70",
+   "rendement_sur_mises": 0.0495,
+   "esperance_par_operation": "4.37",
+   "ic90_rendement_par_euro": [
+    -0.0346,
+    0.1106
+   ],
+   "brier": 0.0773,
+   "log_loss": 0.2749,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

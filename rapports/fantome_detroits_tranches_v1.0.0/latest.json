@@ -1,0 +1,66 @@
+{
+ "genere_le": "2026-10-24T15:37:51+00:00",
+ "capital": {
+  "solde_disponible": "967.7924",
+  "capital_immobilise": "32.2076",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-0.6578",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "999.3422",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0051,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will there be between 25 and 29 average daily transits of the Bab el-Mandeb Strait on October 31?",
+   "issue": "No",
+   "parts": "123.29",
+   "cout": "24.37",
+   "prix_moyen": "0.1976",
+   "prix_de_marque": "0.22",
+   "latent": "2.76",
+   "strategie": "detroits_tranches v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-23T15:47"
+  },
+  {
+   "marche": "Will there be between 20 and 24 average daily transits of the Bab el-Mandeb Strait on October 31?",
+   "issue": "Yes",
+   "parts": "88.52",
+   "cout": "7.84",
+   "prix_moyen": "0.0886",
+   "prix_de_marque": "0.05",
+   "latent": "-3.42",
+   "strategie": "detroits_tranches v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-23T15:47"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

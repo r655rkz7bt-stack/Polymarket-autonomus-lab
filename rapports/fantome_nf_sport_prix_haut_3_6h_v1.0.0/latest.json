@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:37:59+00:00",
+ "capital": {
+  "solde_disponible": "617.7562",
+  "capital_immobilise": "178.8216",
+  "gains_realises_nets": "-203.4223",
+  "gains_latents": "-2.2395",
+  "frais_payes": "17.0226",
+  "capital_total_estime": "794.3383",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3297,
+ "dernier_battement": "2026-10-24T15:27:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Parma Calcio 1913 win on 2026-10-24?",
+   "issue": "No",
+   "parts": "48.42",
+   "cout": "42.87",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.74",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "groupe": "1167432",
+   "ouverte_le": "2026-10-24T13:42"
+  },
+  {
+   "marche": "Counter-Strike: Vitality vs 9z (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "Vitality",
+   "parts": "74.20",
+   "cout": "67.26",
+   "prix_moyen": "0.9065",
+   "prix_de_marque": "0.9",
+   "latent": "-0.48",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-24T14:52"
+  },
+  {
+   "marche": "Will RC Deportivo A Coruña win on 2026-10-24?",
+   "issue": "No",
+   "parts": "74.37",
+   "cout": "68.69",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-1.02",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "groupe": "1169114",
+   "ouverte_le": "2026-10-24T14:57"
+  }
+ ],
+ "operations_cloturees": 48,
+ "dernieres_operations": [
+  {
+   "marche": "5479426",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "-228.82",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T20:46"
+  },
+  {
+   "marche": "5476454",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "19.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476456",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "0.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476457",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "13.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "5.50",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5480989",
+   "issue": "Under",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "2.50",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "6035008",
+   "issue": "Brute",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "9.12",
+   "resolution": "résolu : Brute",
+   "cloturee_le": "2026-10-23T21:35"
+  },
+  {
+   "marche": "6070237",
+   "issue": "Imperial",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "7.42",
+   "resolution": "résolu : Imperial",
+   "cloturee_le": "2026-10-23T22:46"
+  },
+  {
+   "marche": "6036921",
+   "issue": "RED Canids Academy",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "3.03",
+   "resolution": "résolu : RED Canids Academy",
+   "cloturee_le": "2026-10-23T22:55"
+  },
+  {
+   "marche": "6089721",
+   "issue": "Sinners",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "-153.84",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-23T23:31"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "26.07",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  },
+  {
+   "marche": "6070239",
+   "issue": "Imperial",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "0.60",
+   "resolution": "résolu : Imperial",
+   "cloturee_le": "2026-10-24T01:16"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "5.75",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "5534020",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "6.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T13:41"
+  },
+  {
+   "marche": "5534009",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "-19.88",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_prix_haut_3_6h v1.0.0": {
+   "operations": 48,
+   "evenements": 36,
+   "gagnantes": 44,
+   "taux_reussite": 0.917,
+   "profit_net": "-203.42",
+   "frais": "16.17",
+   "rendement_sur_mises": -0.0558,
+   "esperance_par_operation": "-4.24",
+   "ic90_rendement_par_euro": [
+    -0.0868,
+    0.0655
+   ],
+   "brier": 0.0779,
+   "log_loss": 0.3174,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

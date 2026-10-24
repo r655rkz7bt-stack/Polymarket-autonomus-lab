@@ -1,0 +1,66 @@
+{
+ "genere_le": "2026-10-24T15:38:02+00:00",
+ "capital": {
+  "solde_disponible": "996.7280",
+  "capital_immobilise": "3.2720",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "0.3510",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1000.3510",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0006,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Bernadette Wilson win the 2026 Alaska governor election?",
+   "issue": "Yes",
+   "parts": "10.37",
+   "cout": "1.35",
+   "prix_moyen": "0.1300",
+   "prix_de_marque": "0.12",
+   "latent": "-0.10",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-22T12:06"
+  },
+  {
+   "marche": "Will Jonathan Kreiss-Tomkins win the 2026 Alaska governor election?",
+   "issue": "No",
+   "parts": "17.49",
+   "cout": "1.92",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.136",
+   "latent": "0.45",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-23T03:26"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

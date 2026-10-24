@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:37:54+00:00",
+ "capital": {
+  "solde_disponible": "643.2787",
+  "capital_immobilise": "437.2411",
+  "gains_realises_nets": "80.5198",
+  "gains_latents": "11.1364",
+  "frais_payes": "10.3533",
+  "capital_total_estime": "1091.6562",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0859,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "143.81",
+   "cout": "128.69",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "14.97",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-23T21:02"
+  },
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "45.00",
+   "cout": "38.54",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T21:07"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "289.32",
+   "cout": "270.01",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-3.83",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-23T22:22"
+  }
+ ],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "5470652",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "13.63",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T22:50"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "0.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470469",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "14.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470470",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "4.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470407",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "13.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "0.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "5473150",
+   "issue": "Yes",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "13.96",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T17:31"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "1.12",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "16.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480989",
+   "issue": "Under",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "1.50",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "14.03",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "0.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_court_football_soir v1.0.0",
+   "resultat": "0.43",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_court_football_soir v1.0.0": {
+   "operations": 23,
+   "evenements": 19,
+   "gagnantes": 22,
+   "taux_reussite": 0.957,
+   "profit_net": "80.52",
+   "frais": "8.42",
+   "rendement_sur_mises": 0.0399,
+   "esperance_par_operation": "3.50",
+   "ic90_rendement_par_euro": [
+    -0.055,
+    0.1028
+   ],
+   "brier": 0.0379,
+   "log_loss": 0.1389,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

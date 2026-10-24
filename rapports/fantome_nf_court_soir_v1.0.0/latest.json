@@ -1,0 +1,289 @@
+{
+ "genere_le": "2026-10-24T15:37:55+00:00",
+ "capital": {
+  "solde_disponible": "571.0398",
+  "capital_immobilise": "454.8353",
+  "gains_realises_nets": "25.8751",
+  "gains_latents": "14.7225",
+  "frais_payes": "15.2997",
+  "capital_total_estime": "1040.5976",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1854,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "7.41",
+   "cout": "6.63",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "0.77",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-23T20:21"
+  },
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "45.00",
+   "cout": "38.54",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T21:07"
+  },
+  {
+   "marche": "Counter-Strike: Vitality vs 9z (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "Vitality",
+   "parts": "102.43",
+   "cout": "86.73",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.9",
+   "latent": "5.46",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1199661",
+   "ouverte_le": "2026-10-23T21:07"
+  },
+  {
+   "marche": "Spread: Club Atlético de Madrid (-3.5)",
+   "issue": "RC Deportivo A Coruña",
+   "parts": "162.93",
+   "cout": "136.38",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.82",
+   "latent": "-2.78",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1169310",
+   "ouverte_le": "2026-10-23T21:12"
+  },
+  {
+   "marche": "Will Elon Musk post 90-114 tweets from October 24 to October 26, 2026?",
+   "issue": "No",
+   "parts": "1.50",
+   "cout": "1.28",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.82",
+   "latent": "-0.04",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1235797",
+   "ouverte_le": "2026-10-23T21:22"
+  },
+  {
+   "marche": "UFC 333: Nikita Krylov vs. Abdul-Rakhman Yakhyaev (Light Heavyweight, Prelims)",
+   "issue": "Abdul-Rakhman Yakhyaev",
+   "parts": "92.72",
+   "cout": "77.61",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.81",
+   "latent": "-2.51",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1167182",
+   "ouverte_le": "2026-10-23T21:22"
+  },
+  {
+   "marche": "5822996",
+   "issue": "No",
+   "parts": "107.00",
+   "cout": "92.92",
+   "prix_moyen": "0.8684",
+   "prix_de_marque": "0.999",
+   "latent": "13.97",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T21:27"
+  },
+  {
+   "marche": "Counter-Strike: FURIA vs DENDELE CS (BO3) - PGL Masters Bucharest Group Stage",
+   "issue": "FURIA",
+   "parts": "5.37",
+   "cout": "4.49",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.81",
+   "latent": "-0.15",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1199665",
+   "ouverte_le": "2026-10-23T22:36"
+  },
+  {
+   "marche": "Will Trump say \"Russia\" or \"Ukraine\" during his Midterm Rally in Georgia?",
+   "issue": "Yes",
+   "parts": "11.52",
+   "cout": "10.25",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.89",
+   "latent": "0.00",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-23T23:52"
+  }
+ ],
+ "operations_cloturees": 31,
+ "dernieres_operations": [
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "6051323",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "1.46",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-23T14:31"
+  },
+  {
+   "marche": "5776825",
+   "issue": "Yes",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "2.47",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.49",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "17.91",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "16.07",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "8.20",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  },
+  {
+   "marche": "5615497",
+   "issue": "UConn",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.92",
+   "resolution": "résolu : UConn",
+   "cloturee_le": "2026-10-24T02:40"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5516770",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "27.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:10"
+  },
+  {
+   "marche": "6072729",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "6072747",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "2.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "5797992",
+   "issue": "Trail Blazers",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "22.89",
+   "resolution": "résolu : Trail Blazers",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "-187.93",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_court_soir v1.0.0": {
+   "operations": 31,
+   "evenements": 27,
+   "gagnantes": 29,
+   "taux_reussite": 0.935,
+   "profit_net": "25.88",
+   "frais": "11.54",
+   "rendement_sur_mises": 0.0085,
+   "esperance_par_operation": "0.83",
+   "ic90_rendement_par_euro": [
+    -0.0662,
+    0.0914
+   ],
+   "brier": 0.0578,
+   "log_loss": 0.2111,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

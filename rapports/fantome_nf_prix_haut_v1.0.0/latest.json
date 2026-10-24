@@ -1,0 +1,269 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "280.7562",
+  "capital_immobilise": "684.4719",
+  "gains_realises_nets": "-34.7720",
+  "gains_latents": "9.5751",
+  "frais_payes": "3.6892",
+  "capital_total_estime": "974.8032",
+  "positions_ouvertes": "10",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0562,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "37.25",
+   "cout": "33.50",
+   "prix_moyen": "0.8994",
+   "prix_de_marque": "0.968",
+   "latent": "2.55",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "199.98",
+   "cout": "183.69",
+   "prix_moyen": "0.9185",
+   "prix_de_marque": "0.927",
+   "latent": "1.70",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.85",
+   "latent": "-0.46",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "112.79",
+   "cout": "106.28",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.94",
+   "latent": "-0.25",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "146.11",
+   "cout": "130.55",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.967",
+   "latent": "10.74",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will the Republican Party win the WA-03 House seat?",
+   "issue": "No",
+   "parts": "189.15",
+   "cout": "174.57",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.9",
+   "latent": "-4.34",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "29.01",
+   "cout": "26.77",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.92",
+   "latent": "-0.09",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-16T23:37"
+  },
+  {
+   "marche": "1285152",
+   "issue": "No",
+   "parts": "9.50",
+   "cout": "8.47",
+   "prix_moyen": "0.8920",
+   "prix_de_marque": "0.856",
+   "latent": "-0.34",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "Will the Democrats win the Michigan governor race in 2026?",
+   "issue": "Yes",
+   "parts": "8.50",
+   "cout": "7.96",
+   "prix_moyen": "0.9365",
+   "prix_de_marque": "0.937",
+   "latent": "0.00",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "57176",
+   "ouverte_le": "2026-10-18T03:29"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "8.52",
+   "cout": "7.96",
+   "prix_moyen": "0.9342",
+   "prix_de_marque": "0.942",
+   "latent": "0.07",
+   "strategie": "nf_prix_haut v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-18T03:29"
+  }
+ ],
+ "operations_cloturees": 11,
+ "dernieres_operations": [
+  {
+   "marche": "5775017",
+   "issue": "FlyQuest",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.79",
+   "resolution": "résolu : FlyQuest",
+   "cloturee_le": "2026-10-17T03:46"
+  },
+  {
+   "marche": "5348789",
+   "issue": "Under",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-17T04:02"
+  },
+  {
+   "marche": "5506667",
+   "issue": "Yes",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5263915",
+   "issue": "No",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.57",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:42"
+  },
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "-6.14",
+   "resolution": "résolu : Auburn",
+   "cloturee_le": "2026-10-17T23:22"
+  },
+  {
+   "marche": "5353969",
+   "issue": "South Florida",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.59",
+   "resolution": "résolu : South Florida",
+   "cloturee_le": "2026-10-18T02:47"
+  },
+  {
+   "marche": "5353447",
+   "issue": "Miami (FL)",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.72",
+   "resolution": "résolu : Miami (FL)",
+   "cloturee_le": "2026-10-18T03:27"
+  },
+  {
+   "marche": "5564853",
+   "issue": "Yes",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "14.66",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T16:15"
+  },
+  {
+   "marche": "5697537",
+   "issue": "Yes",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.59",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:42"
+  },
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "0.86",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:42"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "strategie": "nf_prix_haut v1.0.0",
+   "resultat": "-49.38",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T18:12"
+  }
+ ],
+ "performances": {
+  "nf_prix_haut v1.0.0": {
+   "operations": 11,
+   "evenements": 11,
+   "gagnantes": 9,
+   "taux_reussite": 0.818,
+   "profit_net": "-34.77",
+   "frais": "1.50",
+   "rendement_sur_mises": -0.0924,
+   "esperance_par_operation": "-3.16",
+   "ic90_rendement_par_euro": [
+    -0.3171,
+    0.0778
+   ],
+   "brier": 0.1639,
+   "log_loss": 0.56,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

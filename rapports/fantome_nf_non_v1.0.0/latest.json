@@ -1,0 +1,261 @@
+{
+ "genere_le": "2026-10-24T15:37:55+00:00",
+ "capital": {
+  "solde_disponible": "105.5412",
+  "capital_immobilise": "862.3104",
+  "gains_realises_nets": "-32.1485",
+  "gains_latents": "1.3191",
+  "frais_payes": "3.6437",
+  "capital_total_estime": "969.1706",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0673,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "37.25",
+   "cout": "33.50",
+   "prix_moyen": "0.8994",
+   "prix_de_marque": "0.968",
+   "latent": "2.55",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "199.98",
+   "cout": "183.69",
+   "prix_moyen": "0.9185",
+   "prix_de_marque": "0.927",
+   "latent": "1.70",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "113.23",
+   "cout": "96.57",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.721",
+   "latent": "-14.93",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.85",
+   "latent": "-0.46",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "146.23",
+   "cout": "130.66",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.967",
+   "latent": "10.75",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Republicans win the Senate?",
+   "issue": "No",
+   "parts": "226.32",
+   "cout": "211.29",
+   "prix_moyen": "0.9336",
+   "prix_de_marque": "0.954",
+   "latent": "4.62",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:57"
+  },
+  {
+   "marche": "Will the Republican Party win the WA-03 House seat?",
+   "issue": "No",
+   "parts": "116.02",
+   "cout": "107.08",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.9",
+   "latent": "-2.66",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-17T00:03"
+  },
+  {
+   "marche": "US imports Russian diesel by October 31?",
+   "issue": "No",
+   "parts": "23.47",
+   "cout": "22.10",
+   "prix_moyen": "0.9417",
+   "prix_de_marque": "0.964",
+   "latent": "0.52",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T03:07"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $115 in October?",
+   "issue": "No",
+   "parts": "4.70",
+   "cout": "4.34",
+   "prix_moyen": "0.9239",
+   "prix_de_marque": "0.897",
+   "latent": "-0.13",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-17T05:33"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "14.81",
+   "cout": "13.67",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.92",
+   "latent": "-0.04",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-17T05:38"
+  },
+  {
+   "marche": "1285152",
+   "issue": "No",
+   "parts": "7.69",
+   "cout": "6.83",
+   "prix_moyen": "0.8881",
+   "prix_de_marque": "0.856",
+   "latent": "-0.25",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-10-17T05:43"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "34.08",
+   "cout": "31.69",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.948",
+   "latent": "0.61",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-17T17:23"
+  },
+  {
+   "marche": "4375452",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "10.94",
+   "prix_moyen": "0.8755",
+   "prix_de_marque": "0.798",
+   "latent": "-0.97",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T18:35"
+  },
+  {
+   "marche": "5640323",
+   "issue": "No",
+   "parts": "5.73",
+   "cout": "5.24",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_non v1.0.0",
+   "groupe": "1180837",
+   "ouverte_le": "2026-10-17T23:18"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "5264423",
+   "issue": "No",
+   "strategie": "nf_non v1.0.0",
+   "resultat": "3.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:47"
+  },
+  {
+   "marche": "5593550",
+   "issue": "No",
+   "strategie": "nf_non v1.0.0",
+   "resultat": "0.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T04:17"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nf_non v1.0.0",
+   "resultat": "16.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:15"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "strategie": "nf_non v1.0.0",
+   "resultat": "-52.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T18:12"
+  }
+ ],
+ "performances": {
+  "nf_non v1.0.0": {
+   "operations": 4,
+   "evenements": 4,
+   "gagnantes": 3,
+   "taux_reussite": 0.75,
+   "profit_net": "-32.15",
+   "frais": "0.91",
+   "rendement_sur_mises": -0.17,
+   "esperance_par_operation": "-8.04",
+   "ic90_rendement_par_euro": [
+    -0.4703,
+    0.1471
+   ],
+   "brier": 0.226,
+   "log_loss": 0.7457,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

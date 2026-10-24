@@ -1,0 +1,173 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "863.0835",
+  "capital_immobilise": "105.2022",
+  "gains_realises_nets": "-31.7144",
+  "gains_latents": "-87.8172",
+  "frais_payes": "4.1820",
+  "capital_total_estime": "880.4685",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1358,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5822953",
+   "issue": "No",
+   "parts": "21.25",
+   "cout": "2.39",
+   "prix_moyen": "0.1127",
+   "prix_de_marque": "0.516",
+   "latent": "8.57",
+   "strategie": "nm_crypto v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-22T12:42"
+  },
+  {
+   "marche": "5822993",
+   "issue": "Yes",
+   "parts": "107.00",
+   "cout": "102.81",
+   "prix_moyen": "0.9608",
+   "prix_de_marque": "0.06",
+   "latent": "-96.39",
+   "strategie": "nm_crypto v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-23T16:32"
+  }
+ ],
+ "operations_cloturees": 11,
+ "dernieres_operations": [
+  {
+   "marche": "5564855",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "5.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:20"
+  },
+  {
+   "marche": "5610602",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "8.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5610574",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-78.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5912696",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "1.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T04:17"
+  },
+  {
+   "marche": "5653750",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "3.87",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T16:25"
+  },
+  {
+   "marche": "5957192",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "0.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:13"
+  },
+  {
+   "marche": "5690022",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "6002422",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:15"
+  },
+  {
+   "marche": "6002421",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:20"
+  },
+  {
+   "marche": "5739674",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "7.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "6072729",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  }
+ ],
+ "performances": {
+  "nm_crypto v1.0.0": {
+   "operations": 11,
+   "evenements": 10,
+   "gagnantes": 10,
+   "taux_reussite": 0.909,
+   "profit_net": "-31.71",
+   "frais": "3.74",
+   "rendement_sur_mises": -0.0242,
+   "esperance_par_operation": "-2.88",
+   "ic90_rendement_par_euro": [
+    -0.2417,
+    0.0514
+   ],
+   "brier": 0.085,
+   "log_loss": 0.3162,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

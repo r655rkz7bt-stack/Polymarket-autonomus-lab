@@ -1,0 +1,685 @@
+{
+ "genere_le": "2026-10-24T15:37:54+00:00",
+ "capital": {
+  "solde_disponible": "417.9133",
+  "capital_immobilise": "450.2921",
+  "gains_realises_nets": "-131.7946",
+  "gains_latents": "6.1980",
+  "frais_payes": "1.2373",
+  "capital_total_estime": "874.4033",
+  "positions_ouvertes": "42",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1658,
+ "dernier_battement": "2026-10-19T15:03:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5610574",
+   "issue": "Yes",
+   "parts": "16.90",
+   "cout": "14.87",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-16T12:11"
+  },
+  {
+   "marche": "5795621",
+   "issue": "No",
+   "parts": "13.84",
+   "cout": "11.63",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203395",
+   "ouverte_le": "2026-10-17T15:31"
+  },
+  {
+   "marche": "5795830",
+   "issue": "Yes",
+   "parts": "18.84",
+   "cout": "3.77",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203421",
+   "ouverte_le": "2026-10-17T18:26"
+  },
+  {
+   "marche": "5795698",
+   "issue": "Yes",
+   "parts": "6.00",
+   "cout": "1.86",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203402",
+   "ouverte_le": "2026-10-17T22:08"
+  },
+  {
+   "marche": "5795767",
+   "issue": "No",
+   "parts": "15.42",
+   "cout": "11.56",
+   "prix_moyen": "0.7500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203408",
+   "ouverte_le": "2026-10-17T23:13"
+  },
+  {
+   "marche": "5795745",
+   "issue": "No",
+   "parts": "18.00",
+   "cout": "13.86",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203406",
+   "ouverte_le": "2026-10-17T23:33"
+  },
+  {
+   "marche": "5795720",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.95",
+   "prix_moyen": "0.1900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203404",
+   "ouverte_le": "2026-10-18T00:01"
+  },
+  {
+   "marche": "5798074",
+   "issue": "No",
+   "parts": "8.16",
+   "cout": "5.30",
+   "prix_moyen": "0.6500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203797",
+   "ouverte_le": "2026-10-18T02:13"
+  },
+  {
+   "marche": "5792257",
+   "issue": "Under",
+   "parts": "5.99",
+   "cout": "3.53",
+   "prix_moyen": "0.5900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1170777",
+   "ouverte_le": "2026-10-18T02:13"
+  },
+  {
+   "marche": "5795633",
+   "issue": "Yes",
+   "parts": "5.46",
+   "cout": "1.64",
+   "prix_moyen": "0.3000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203396",
+   "ouverte_le": "2026-10-18T02:58"
+  },
+  {
+   "marche": "5795870",
+   "issue": "Yes",
+   "parts": "13.89",
+   "cout": "3.33",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203425",
+   "ouverte_le": "2026-10-18T03:08"
+  },
+  {
+   "marche": "5795915",
+   "issue": "No",
+   "parts": "7.96",
+   "cout": "5.49",
+   "prix_moyen": "0.6900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203434",
+   "ouverte_le": "2026-10-18T04:26"
+  },
+  {
+   "marche": "5795873",
+   "issue": "No",
+   "parts": "32.27",
+   "cout": "27.11",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203425",
+   "ouverte_le": "2026-10-18T05:28"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "parts": "42.23",
+   "cout": "36.32",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T05:43"
+  },
+  {
+   "marche": "5795917",
+   "issue": "Yes",
+   "parts": "22.17",
+   "cout": "3.77",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203434",
+   "ouverte_le": "2026-10-18T08:18"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "Yes",
+   "parts": "29.56",
+   "cout": "6.80",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "0.268",
+   "latent": "1.12",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T08:33"
+  },
+  {
+   "marche": "5795807",
+   "issue": "No",
+   "parts": "30.94",
+   "cout": "25.99",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203419",
+   "ouverte_le": "2026-10-18T09:41"
+  },
+  {
+   "marche": "5795700",
+   "issue": "Yes",
+   "parts": "14.90",
+   "cout": "3.28",
+   "prix_moyen": "0.2200",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203402",
+   "ouverte_le": "2026-10-18T11:33"
+  },
+  {
+   "marche": "5798049",
+   "issue": "No",
+   "parts": "12.65",
+   "cout": "9.23",
+   "prix_moyen": "0.7300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203795",
+   "ouverte_le": "2026-10-18T12:09"
+  },
+  {
+   "marche": "5795926",
+   "issue": "Yes",
+   "parts": "9.71",
+   "cout": "2.72",
+   "prix_moyen": "0.2800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203435",
+   "ouverte_le": "2026-10-18T12:33"
+  },
+  {
+   "marche": "5795850",
+   "issue": "No",
+   "parts": "12.47",
+   "cout": "9.10",
+   "prix_moyen": "0.7300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203423",
+   "ouverte_le": "2026-10-18T12:58"
+  },
+  {
+   "marche": "5795961",
+   "issue": "No",
+   "parts": "5.02",
+   "cout": "2.81",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203438",
+   "ouverte_le": "2026-10-18T13:34"
+  },
+  {
+   "marche": "5795990",
+   "issue": "Yes",
+   "parts": "7.36",
+   "cout": "2.43",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203441",
+   "ouverte_le": "2026-10-18T13:34"
+  },
+  {
+   "marche": "5795623",
+   "issue": "No",
+   "parts": "17.01",
+   "cout": "13.10",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203395",
+   "ouverte_le": "2026-10-18T13:43"
+  },
+  {
+   "marche": "5795829",
+   "issue": "No",
+   "parts": "10.29",
+   "cout": "7.20",
+   "prix_moyen": "0.7000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203421",
+   "ouverte_le": "2026-10-18T14:13"
+  },
+  {
+   "marche": "5795827",
+   "issue": "Yes",
+   "parts": "17.43",
+   "cout": "3.49",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203421",
+   "ouverte_le": "2026-10-18T15:16"
+  },
+  {
+   "marche": "5803678",
+   "issue": "No",
+   "parts": "11.57",
+   "cout": "8.33",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1204645",
+   "ouverte_le": "2026-10-18T15:53"
+  },
+  {
+   "marche": "5795992",
+   "issue": "No",
+   "parts": "27.87",
+   "cout": "23.13",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203441",
+   "ouverte_le": "2026-10-18T17:40"
+  },
+  {
+   "marche": "5795666",
+   "issue": "No",
+   "parts": "19.71",
+   "cout": "15.57",
+   "prix_moyen": "0.7900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203399",
+   "ouverte_le": "2026-10-18T19:13"
+  },
+  {
+   "marche": "5799238",
+   "issue": "Yes",
+   "parts": "21.80",
+   "cout": "3.71",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1204033",
+   "ouverte_le": "2026-10-19T02:53"
+  },
+  {
+   "marche": "5795611",
+   "issue": "Yes",
+   "parts": "13.69",
+   "cout": "3.15",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203394",
+   "ouverte_le": "2026-10-19T03:03"
+  },
+  {
+   "marche": "5798094",
+   "issue": "No",
+   "parts": "16.65",
+   "cout": "12.82",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203799",
+   "ouverte_le": "2026-10-19T04:18"
+  },
+  {
+   "marche": "5795613",
+   "issue": "No",
+   "parts": "21.57",
+   "cout": "17.47",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1203394",
+   "ouverte_le": "2026-10-19T05:03"
+  },
+  {
+   "marche": "5475240",
+   "issue": "No",
+   "parts": "32.85",
+   "cout": "29.28",
+   "prix_moyen": "0.8913",
+   "prix_de_marque": "0.99",
+   "latent": "3.24",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1161442",
+   "ouverte_le": "2026-10-19T05:24"
+  },
+  {
+   "marche": "5475242",
+   "issue": "No",
+   "parts": "35.26",
+   "cout": "33.14",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.992",
+   "latent": "1.83",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1161442",
+   "ouverte_le": "2026-10-19T06:16"
+  },
+  {
+   "marche": "5610598",
+   "issue": "Yes",
+   "parts": "28.16",
+   "cout": "27.85",
+   "prix_moyen": "0.9888",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-19T06:38"
+  },
+  {
+   "marche": "5809277",
+   "issue": "No",
+   "parts": "23.48",
+   "cout": "19.49",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1205031",
+   "ouverte_le": "2026-10-19T08:13"
+  },
+  {
+   "marche": "5855456",
+   "issue": "Yes",
+   "parts": "7.75",
+   "cout": "2.48",
+   "prix_moyen": "0.3200",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1209517",
+   "ouverte_le": "2026-10-19T08:13"
+  },
+  {
+   "marche": "5855563",
+   "issue": "Yes",
+   "parts": "8.09",
+   "cout": "2.10",
+   "prix_moyen": "0.2600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1209534",
+   "ouverte_le": "2026-10-19T09:03"
+  },
+  {
+   "marche": "5855515",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "3.60",
+   "prix_moyen": "0.1800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1209530",
+   "ouverte_le": "2026-10-19T09:23"
+  },
+  {
+   "marche": "5610600",
+   "issue": "Yes",
+   "parts": "14.75",
+   "cout": "13.18",
+   "prix_moyen": "0.8937",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-19T09:58"
+  },
+  {
+   "marche": "5855313",
+   "issue": "Yes",
+   "parts": "22.60",
+   "cout": "3.84",
+   "prix_moyen": "0.1700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "groupe": "1209504",
+   "ouverte_le": "2026-10-19T10:13"
+  }
+ ],
+ "operations_cloturees": 128,
+ "dernieres_operations": [
+  {
+   "marche": "5769283",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-0.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T05:26"
+  },
+  {
+   "marche": "5769281",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "3.47",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T05:26"
+  },
+  {
+   "marche": "5769249",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-4.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T05:31"
+  },
+  {
+   "marche": "5774550",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-1.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T05:41"
+  },
+  {
+   "marche": "5774595",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-3.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T06:14"
+  },
+  {
+   "marche": "5769304",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "2.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T06:18"
+  },
+  {
+   "marche": "5769260",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "2.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T06:23"
+  },
+  {
+   "marche": "5769294",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "4.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T06:27"
+  },
+  {
+   "marche": "5769250",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "2.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T06:36"
+  },
+  {
+   "marche": "5769282",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "5.43",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:01"
+  },
+  {
+   "marche": "5774604",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-2.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T07:26"
+  },
+  {
+   "marche": "5769305",
+   "issue": "Yes",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "2.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:46"
+  },
+  {
+   "marche": "5774617",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-7.76",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:56"
+  },
+  {
+   "marche": "5772114",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "1.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T08:21"
+  },
+  {
+   "marche": "5769316",
+   "issue": "No",
+   "strategie": "news_momentum_patiente v1.0.0",
+   "resultat": "-11.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T10:16"
+  }
+ ],
+ "performances": {
+  "news_momentum_patiente v1.0.0": {
+   "operations": 128,
+   "evenements": 82,
+   "gagnantes": 59,
+   "taux_reussite": 0.461,
+   "profit_net": "-131.79",
+   "frais": "1.03",
+   "rendement_sur_mises": -0.0841,
+   "esperance_par_operation": "-1.03",
+   "ic90_rendement_par_euro": [
+    -0.311,
+    -0.0094
+   ],
+   "brier": 0.2056,
+   "log_loss": 0.5948,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,186 @@
+{
+ "genere_le": "2026-10-24T15:37:55+00:00",
+ "capital": {
+  "solde_disponible": "42.4631",
+  "capital_immobilise": "965.5447",
+  "gains_realises_nets": "8.0078",
+  "gains_latents": "-5.3680",
+  "frais_payes": "3.4155",
+  "capital_total_estime": "1002.6398",
+  "positions_ouvertes": "10",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0221,
+ "dernier_battement": "2026-10-21T20:41:45+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "37.25",
+   "cout": "33.50",
+   "prix_moyen": "0.8994",
+   "prix_de_marque": "0.968",
+   "latent": "2.55",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "199.98",
+   "cout": "183.69",
+   "prix_moyen": "0.9185",
+   "prix_de_marque": "0.927",
+   "latent": "1.70",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.85",
+   "latent": "-0.46",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "113.23",
+   "cout": "96.57",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.721",
+   "latent": "-14.93",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "112.79",
+   "cout": "106.28",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.94",
+   "latent": "-0.25",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will oil be below $85 on November 2 and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "146.32",
+   "cout": "130.74",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.967",
+   "latent": "10.75",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will the Republican Party win the WA-03 House seat?",
+   "issue": "No",
+   "parts": "189.02",
+   "cout": "174.45",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.9",
+   "latent": "-4.34",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "29.01",
+   "cout": "26.77",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.92",
+   "latent": "-0.09",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "Will the Republicans win the Montana Senate race in 2026?",
+   "issue": "Yes",
+   "parts": "189.02",
+   "cout": "174.45",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.92",
+   "latent": "-0.56",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "57660",
+   "ouverte_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, R House",
+   "issue": "No",
+   "parts": "37.64",
+   "cout": "34.38",
+   "prix_moyen": "0.9133",
+   "prix_de_marque": "0.92",
+   "latent": "0.25",
+   "strategie": "nf_long v1.0.0",
+   "groupe": "32228",
+   "ouverte_le": "2026-10-16T23:33"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nf_long v1.0.0",
+   "resultat": "8.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:14"
+  }
+ ],
+ "performances": {
+  "nf_long v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "8.01",
+   "frais": "0.20",
+   "rendement_sur_mises": 0.2335,
+   "esperance_par_operation": "8.01",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0212,
+   "log_loss": 0.1572,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

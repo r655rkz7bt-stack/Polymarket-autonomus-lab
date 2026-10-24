@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "475.1711",
+  "capital_immobilise": "389.1799",
+  "gains_realises_nets": "-135.6490",
+  "gains_latents": "3.9361",
+  "frais_payes": "4.6880",
+  "capital_total_estime": "868.2871",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2576,
+ "dernier_battement": "2026-10-21T20:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5541301",
+   "issue": "No",
+   "parts": "36.04",
+   "cout": "30.99",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "groupe": "1169569",
+   "ouverte_le": "2026-10-20T07:03"
+  },
+  {
+   "marche": "5437682",
+   "issue": "Under",
+   "parts": "112.57",
+   "cout": "105.03",
+   "prix_moyen": "0.9330",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "groupe": "1154910",
+   "ouverte_le": "2026-10-21T08:32"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "parts": "86.78",
+   "cout": "80.71",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "groupe": "1154828",
+   "ouverte_le": "2026-10-21T10:07"
+  },
+  {
+   "marche": "5437389",
+   "issue": "Over",
+   "parts": "33.98",
+   "cout": "28.54",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "groupe": "1154903",
+   "ouverte_le": "2026-10-21T10:17"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "111.68",
+   "cout": "105.76",
+   "prix_moyen": "0.9470",
+   "prix_de_marque": "0.942",
+   "latent": "-0.56",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-21T12:22"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "46.86",
+   "cout": "38.15",
+   "prix_moyen": "0.8141",
+   "prix_de_marque": "0.91",
+   "latent": "4.49",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  }
+ ],
+ "operations_cloturees": 50,
+ "dernieres_operations": [
+  {
+   "marche": "5952184",
+   "issue": "Carolina Kuhl",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "1.02",
+   "resolution": "résolu : Carolina Kuhl",
+   "cloturee_le": "2026-10-20T23:03"
+  },
+  {
+   "marche": "5952191",
+   "issue": "Sloane Stephens",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "5.91",
+   "resolution": "résolu : Sloane Stephens",
+   "cloturee_le": "2026-10-21T00:20"
+  },
+  {
+   "marche": "5958978",
+   "issue": "Carlos Maria Zarate",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "1.34",
+   "resolution": "résolu : Carlos Maria Zarate",
+   "cloturee_le": "2026-10-21T02:29"
+  },
+  {
+   "marche": "5856966",
+   "issue": "Miguel Tobon",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "7.73",
+   "resolution": "résolu : Miguel Tobon",
+   "cloturee_le": "2026-10-21T03:19"
+  },
+  {
+   "marche": "5965245",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "12.86",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-21T03:29"
+  },
+  {
+   "marche": "5965249",
+   "issue": "Moerani Bouzige",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "5.26",
+   "resolution": "résolu : Moerani Bouzige",
+   "cloturee_le": "2026-10-21T05:09"
+  },
+  {
+   "marche": "5856968",
+   "issue": "Nicolas Mejia",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "7.42",
+   "resolution": "résolu : Nicolas Mejia",
+   "cloturee_le": "2026-10-21T05:39"
+  },
+  {
+   "marche": "5965655",
+   "issue": "Erika Sema",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "5.37",
+   "resolution": "résolu : Erika Sema",
+   "cloturee_le": "2026-10-21T06:03"
+  },
+  {
+   "marche": "5966831",
+   "issue": "Marie Bouzkova",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "5.09",
+   "resolution": "résolu : Marie Bouzkova",
+   "cloturee_le": "2026-10-21T07:39"
+  },
+  {
+   "marche": "5825781",
+   "issue": "Tomas Machac",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "7.38",
+   "resolution": "résolu : Tomas Machac",
+   "cloturee_le": "2026-10-21T10:21"
+  },
+  {
+   "marche": "5992357",
+   "issue": "FOKUS",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "5.58",
+   "resolution": "résolu : FOKUS",
+   "cloturee_le": "2026-10-21T12:16"
+  },
+  {
+   "marche": "5964893",
+   "issue": "Lynn Vision",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "1.25",
+   "resolution": "résolu : Lynn Vision",
+   "cloturee_le": "2026-10-21T13:11"
+  },
+  {
+   "marche": "5992995",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "-56.98",
+   "resolution": "résolu : Nexus",
+   "cloturee_le": "2026-10-21T14:29"
+  },
+  {
+   "marche": "5992996",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "5.18",
+   "resolution": "résolu : BC.Game Esports",
+   "cloturee_le": "2026-10-21T15:41"
+  },
+  {
+   "marche": "5971906",
+   "issue": "9INE Academy",
+   "strategie": "nf_sport_patiente_demi_mise v1.0.0",
+   "resultat": "-7.00",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-21T16:51"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_demi_mise v1.0.0": {
+   "operations": 50,
+   "evenements": 47,
+   "gagnantes": 43,
+   "taux_reussite": 0.86,
+   "profit_net": "-135.65",
+   "frais": "4.65",
+   "rendement_sur_mises": -0.0565,
+   "esperance_par_operation": "-2.71",
+   "ic90_rendement_par_euro": [
+    -0.0915,
+    0.0779
+   ],
+   "brier": 0.1141,
+   "log_loss": 0.4629,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

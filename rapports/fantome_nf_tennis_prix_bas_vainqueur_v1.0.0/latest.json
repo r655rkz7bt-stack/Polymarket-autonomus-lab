@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "816.1694",
+  "capital_immobilise": "15.6226",
+  "gains_realises_nets": "-168.2079",
+  "gains_latents": "3.9278",
+  "frais_payes": "22.0202",
+  "capital_total_estime": "835.7199",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.22,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Pan Pacific Open, Qualification: Yulia Starodubtseva vs Aliaksandra Sasnovich",
+   "issue": "Aliaksandra Sasnovich",
+   "parts": "19.57",
+   "cout": "15.62",
+   "prix_moyen": "0.7983",
+   "prix_de_marque": "0.999",
+   "latent": "3.93",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "groupe": "1239984",
+   "ouverte_le": "2026-10-24T03:21"
+  }
+ ],
+ "operations_cloturees": 99,
+ "dernieres_operations": [
+  {
+   "marche": "6069390",
+   "issue": "Gustavo Heide",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "4.49",
+   "resolution": "résolu : Gustavo Heide",
+   "cloturee_le": "2026-10-23T22:50"
+  },
+  {
+   "marche": "6028860",
+   "issue": "Jenson Brooksby",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "3.30",
+   "resolution": "résolu : Jenson Brooksby",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "6051876",
+   "issue": "Lorenzo Musetti",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "3.34",
+   "resolution": "résolu : Lorenzo Musetti",
+   "cloturee_le": "2026-10-23T23:51"
+  },
+  {
+   "marche": "6082329",
+   "issue": "Blake Ellis",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "3.90",
+   "resolution": "résolu : Blake Ellis",
+   "cloturee_le": "2026-10-24T02:31"
+  },
+  {
+   "marche": "6082331",
+   "issue": "Matthew Dellavedova",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "-16.64",
+   "resolution": "résolu : Stefan Vujic",
+   "cloturee_le": "2026-10-24T03:25"
+  },
+  {
+   "marche": "6094807",
+   "issue": "Jenna DeFalco",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "5.28",
+   "resolution": "résolu : Jenna DeFalco",
+   "cloturee_le": "2026-10-24T04:21"
+  },
+  {
+   "marche": "6084805",
+   "issue": "Polina Iatcenko",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "4.58",
+   "resolution": "résolu : Polina Iatcenko",
+   "cloturee_le": "2026-10-24T05:51"
+  },
+  {
+   "marche": "6078339",
+   "issue": "Ena Shibahara",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "-28.31",
+   "resolution": "résolu : Alycia Parks",
+   "cloturee_le": "2026-10-24T06:25"
+  },
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "-21.50",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "6084825",
+   "issue": "Elena Pridankina",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "4.31",
+   "resolution": "résolu : Elena Pridankina",
+   "cloturee_le": "2026-10-24T07:31"
+  },
+  {
+   "marche": "6078349",
+   "issue": "Mai Hontama",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "3.69",
+   "resolution": "résolu : Mai Hontama",
+   "cloturee_le": "2026-10-24T07:50"
+  },
+  {
+   "marche": "6076719",
+   "issue": "Xinxin Yao",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "4.76",
+   "resolution": "résolu : Xinxin Yao",
+   "cloturee_le": "2026-10-24T08:01"
+  },
+  {
+   "marche": "6084823",
+   "issue": "Jeline Vandromme",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "-15.45",
+   "resolution": "résolu : Carol Young Suh Lee",
+   "cloturee_le": "2026-10-24T08:55"
+  },
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "3.36",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "6039160",
+   "issue": "Oriol Roca Batalla",
+   "strategie": "nf_tennis_prix_bas_vainqueur v1.0.0",
+   "resultat": "4.01",
+   "resolution": "résolu : Oriol Roca Batalla",
+   "cloturee_le": "2026-10-24T11:05"
+  }
+ ],
+ "performances": {
+  "nf_tennis_prix_bas_vainqueur v1.0.0": {
+   "operations": 99,
+   "evenements": 98,
+   "gagnantes": 76,
+   "taux_reussite": 0.768,
+   "profit_net": "-168.21",
+   "frais": "21.86",
+   "rendement_sur_mises": -0.0648,
+   "esperance_par_operation": "-1.70",
+   "ic90_rendement_par_euro": [
+    -0.1632,
+    0.0058
+   ],
+   "brier": 0.1928,
+   "log_loss": 0.6006,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

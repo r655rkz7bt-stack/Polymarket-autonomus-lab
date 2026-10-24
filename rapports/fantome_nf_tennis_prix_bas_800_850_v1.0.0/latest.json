@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "943.8601",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-56.1399",
+  "gains_latents": "0.0000",
+  "frais_payes": "9.9404",
+  "capital_total_estime": "943.8601",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0887,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 29,
+ "dernieres_operations": [
+  {
+   "marche": "5977671",
+   "issue": "Belinda Bencic",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "-38.82",
+   "resolution": "résolu : Katarzyna Kawa",
+   "cloturee_le": "2026-10-22T09:05"
+  },
+  {
+   "marche": "6008349",
+   "issue": "Mattia Bellucci",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "-33.21",
+   "resolution": "résolu : Terence Atmane",
+   "cloturee_le": "2026-10-22T10:01"
+  },
+  {
+   "marche": "5978938",
+   "issue": "Oriol Roca Batalla",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "8.05",
+   "resolution": "résolu : Oriol Roca Batalla",
+   "cloturee_le": "2026-10-22T11:11"
+  },
+  {
+   "marche": "6008383",
+   "issue": "Karen Khachanov",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "7.67",
+   "resolution": "résolu : Karen Khachanov",
+   "cloturee_le": "2026-10-22T12:55"
+  },
+  {
+   "marche": "5978970",
+   "issue": "Daniel Altmaier",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "7.72",
+   "resolution": "résolu : Daniel Altmaier",
+   "cloturee_le": "2026-10-22T13:55"
+  },
+  {
+   "marche": "6025783",
+   "issue": "Kayo Nishimura",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "7.47",
+   "resolution": "résolu : Kayo Nishimura",
+   "cloturee_le": "2026-10-22T14:12"
+  },
+  {
+   "marche": "6017248",
+   "issue": "Filippo Romano",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "7.90",
+   "resolution": "résolu : Filippo Romano",
+   "cloturee_le": "2026-10-22T14:35"
+  },
+  {
+   "marche": "5978964",
+   "issue": "Sumit Nagal",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "7.55",
+   "resolution": "résolu : Sumit Nagal",
+   "cloturee_le": "2026-10-22T14:35"
+  },
+  {
+   "marche": "6025806",
+   "issue": "Elsa Jacquemot",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "10.93",
+   "resolution": "résolu : Elsa Jacquemot",
+   "cloturee_le": "2026-10-22T15:00"
+  },
+  {
+   "marche": "5997773",
+   "issue": "Valentin Vacherot",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "-41.15",
+   "resolution": "résolu : Luca Van Assche",
+   "cloturee_le": "2026-10-22T15:00"
+  },
+  {
+   "marche": "6025373",
+   "issue": "Paul Jubb",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "6.83",
+   "resolution": "résolu : Paul Jubb",
+   "cloturee_le": "2026-10-22T15:51"
+  },
+  {
+   "marche": "6025813",
+   "issue": "Angela Fita Boluda",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "5.33",
+   "resolution": "résolu : Angela Fita Boluda",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "6025792",
+   "issue": "Tereza Krejcova",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "-35.36",
+   "resolution": "résolu : Pavla Sviglerova",
+   "cloturee_le": "2026-10-22T16:26"
+  },
+  {
+   "marche": "6025792",
+   "issue": "Pavla Sviglerova",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "8.26",
+   "resolution": "résolu : Pavla Sviglerova",
+   "cloturee_le": "2026-10-22T16:26"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_tennis_prix_bas_800_850 v1.0.0",
+   "resultat": "7.80",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  }
+ ],
+ "performances": {
+  "nf_tennis_prix_bas_800_850 v1.0.0": {
+   "operations": 29,
+   "evenements": 28,
+   "gagnantes": 22,
+   "taux_reussite": 0.759,
+   "profit_net": "-56.14",
+   "frais": "9.94",
+   "rendement_sur_mises": -0.0505,
+   "esperance_par_operation": "-1.94",
+   "ic90_rendement_par_euro": [
+    -0.2338,
+    0.082
+   ],
+   "brier": 0.196,
+   "log_loss": 0.6006,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

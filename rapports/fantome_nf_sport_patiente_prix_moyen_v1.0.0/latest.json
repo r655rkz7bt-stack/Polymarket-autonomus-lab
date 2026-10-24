@@ -1,0 +1,241 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "683.9221",
+  "capital_immobilise": "322.3916",
+  "gains_realises_nets": "6.3137",
+  "gains_latents": "5.0484",
+  "frais_payes": "7.0572",
+  "capital_total_estime": "1011.3621",
+  "positions_ouvertes": "5",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1712,
+ "dernier_battement": "2026-10-21T20:26:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5541301",
+   "issue": "No",
+   "parts": "78.65",
+   "cout": "66.85",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "groupe": "1169569",
+   "ouverte_le": "2026-10-20T08:43"
+  },
+  {
+   "marche": "5437389",
+   "issue": "Over",
+   "parts": "77.73",
+   "cout": "65.29",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "groupe": "1154903",
+   "ouverte_le": "2026-10-21T10:17"
+  },
+  {
+   "marche": "5437438",
+   "issue": "Under",
+   "parts": "79.55",
+   "cout": "66.82",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "groupe": "1154904",
+   "ouverte_le": "2026-10-21T12:47"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "52.57",
+   "cout": "42.79",
+   "prix_moyen": "0.8140",
+   "prix_de_marque": "0.91",
+   "latent": "5.05",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  },
+  {
+   "marche": "5436699",
+   "issue": "No",
+   "parts": "93.76",
+   "cout": "80.63",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "groupe": "1154828",
+   "ouverte_le": "2026-10-21T16:25"
+  }
+ ],
+ "operations_cloturees": 48,
+ "dernieres_operations": [
+  {
+   "marche": "5965245",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "13.68",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-21T03:33"
+  },
+  {
+   "marche": "5965249",
+   "issue": "Moerani Bouzige",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.49",
+   "resolution": "résolu : Moerani Bouzige",
+   "cloturee_le": "2026-10-21T05:07"
+  },
+  {
+   "marche": "5965655",
+   "issue": "Erika Sema",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.33",
+   "resolution": "résolu : Erika Sema",
+   "cloturee_le": "2026-10-21T06:08"
+  },
+  {
+   "marche": "5966831",
+   "issue": "Marie Bouzkova",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "11.78",
+   "resolution": "résolu : Marie Bouzkova",
+   "cloturee_le": "2026-10-21T07:43"
+  },
+  {
+   "marche": "5825777",
+   "issue": "Mattia Bellucci",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.93",
+   "resolution": "résolu : Mattia Bellucci",
+   "cloturee_le": "2026-10-21T09:46"
+  },
+  {
+   "marche": "5992357",
+   "issue": "FOKUS",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.92",
+   "resolution": "résolu : FOKUS",
+   "cloturee_le": "2026-10-21T12:16"
+  },
+  {
+   "marche": "5964893",
+   "issue": "Lynn Vision",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.92",
+   "resolution": "résolu : Lynn Vision",
+   "cloturee_le": "2026-10-21T13:11"
+  },
+  {
+   "marche": "5992921",
+   "issue": "fnatic",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "-70.57",
+   "resolution": "résolu : PRIVATE",
+   "cloturee_le": "2026-10-21T14:51"
+  },
+  {
+   "marche": "5993001",
+   "issue": "Betclic Apogee Esports",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "4.05",
+   "resolution": "résolu : Betclic Apogee Esports",
+   "cloturee_le": "2026-10-21T15:20"
+  },
+  {
+   "marche": "5992996",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "11.98",
+   "resolution": "résolu : BC.Game Esports",
+   "cloturee_le": "2026-10-21T15:41"
+  },
+  {
+   "marche": "5971906",
+   "issue": "9INE Academy",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "-31.21",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-21T16:51"
+  },
+  {
+   "marche": "5994435",
+   "issue": "Falcons Force",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.48",
+   "resolution": "résolu : Falcons Force",
+   "cloturee_le": "2026-10-21T18:25"
+  },
+  {
+   "marche": "5409948",
+   "issue": "Over",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "12.80",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-21T19:01"
+  },
+  {
+   "marche": "6001043",
+   "issue": "Linea Bajraliu",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "11.93",
+   "resolution": "résolu : Linea Bajraliu",
+   "cloturee_le": "2026-10-21T19:05"
+  },
+  {
+   "marche": "5971957",
+   "issue": "Lavked",
+   "strategie": "nf_sport_patiente_prix_moyen v1.0.0",
+   "resultat": "-45.51",
+   "resolution": "résolu : Spirit Academy",
+   "cloturee_le": "2026-10-21T19:25"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_prix_moyen v1.0.0": {
+   "operations": 48,
+   "evenements": 46,
+   "gagnantes": 40,
+   "taux_reussite": 0.833,
+   "profit_net": "6.31",
+   "frais": "7.02",
+   "rendement_sur_mises": 0.0021,
+   "esperance_par_operation": "0.13",
+   "ic90_rendement_par_euro": [
+    -0.1037,
+    0.0922
+   ],
+   "brier": 0.1256,
+   "log_loss": 0.4284,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

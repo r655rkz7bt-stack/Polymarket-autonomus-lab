@@ -1,0 +1,97 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "904.6627",
+  "capital_immobilise": "53.8412",
+  "gains_realises_nets": "-41.4961",
+  "gains_latents": "-0.6566",
+  "frais_payes": "0.1887",
+  "capital_total_estime": "957.8473",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0494,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "LoL: G2 Esports vs LOS (BO1) - Worlds Group Stage",
+   "issue": "G2 Esports",
+   "parts": "65.66",
+   "cout": "53.84",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.81",
+   "latent": "-0.66",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "groupe": "1243548",
+   "ouverte_le": "2026-10-24T06:06"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "-45.88",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_6_24h_autre v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "-41.50",
+   "frais": "0.19",
+   "rendement_sur_mises": -0.5724,
+   "esperance_par_operation": "-13.83",
+   "ic90_rendement_par_euro": [
+    -0.6428,
+    0.1823
+   ],
+   "brier": 0.2686,
+   "log_loss": 0.7802,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

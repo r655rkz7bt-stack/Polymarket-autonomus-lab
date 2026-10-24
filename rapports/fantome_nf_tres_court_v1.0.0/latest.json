@@ -1,0 +1,289 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "660.9940",
+  "capital_immobilise": "173.2914",
+  "gains_realises_nets": "-165.7146",
+  "gains_latents": "0.0000",
+  "frais_payes": "22.5306",
+  "capital_total_estime": "834.2854",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3036,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5167158",
+   "issue": "No",
+   "parts": "35.43",
+   "cout": "33.19",
+   "prix_moyen": "0.9369",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1111230",
+   "ouverte_le": "2026-10-18T00:12"
+  },
+  {
+   "marche": "5855313",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.07",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1209504",
+   "ouverte_le": "2026-10-19T07:48"
+  },
+  {
+   "marche": "5855283",
+   "issue": "No",
+   "parts": "1.56",
+   "cout": "1.28",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1209501",
+   "ouverte_le": "2026-10-19T20:18"
+  },
+  {
+   "marche": "5914042",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "19.87",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1215921",
+   "ouverte_le": "2026-10-20T09:53"
+  },
+  {
+   "marche": "5825781",
+   "issue": "Tomas Machac",
+   "parts": "56.60",
+   "cout": "53.36",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1206110",
+   "ouverte_le": "2026-10-21T04:44"
+  },
+  {
+   "marche": "5971915",
+   "issue": "Eternal Fire",
+   "parts": "16.19",
+   "cout": "13.08",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1224197",
+   "ouverte_le": "2026-10-21T05:40"
+  },
+  {
+   "marche": "5917564",
+   "issue": "No",
+   "parts": "1.90",
+   "cout": "1.62",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1216553",
+   "ouverte_le": "2026-10-21T07:45"
+  },
+  {
+   "marche": "5958552",
+   "issue": "No",
+   "parts": "28.89",
+   "cout": "27.35",
+   "prix_moyen": "0.9466",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1221818",
+   "ouverte_le": "2026-10-21T07:50"
+  },
+  {
+   "marche": "5992261",
+   "issue": "Ilary Pistola",
+   "parts": "26.24",
+   "cout": "22.47",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tres_court v1.0.0",
+   "groupe": "1225847",
+   "ouverte_le": "2026-10-21T08:12"
+  }
+ ],
+ "operations_cloturees": 111,
+ "dernieres_operations": [
+  {
+   "marche": "5409221",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "0.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "5409639",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "2.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Under",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "2.16",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:14"
+  },
+  {
+   "marche": "5410008",
+   "issue": "Over",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "1.09",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-20T22:19"
+  },
+  {
+   "marche": "5612869",
+   "issue": "Missouri State",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "-25.21",
+   "resolution": "résolu : Delaware",
+   "cloturee_le": "2026-10-21T02:52"
+  },
+  {
+   "marche": "5407975",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "0.64",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:13"
+  },
+  {
+   "marche": "5425523",
+   "issue": "Under",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "5.95",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-21T04:13"
+  },
+  {
+   "marche": "5957165",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "0.74",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:18"
+  },
+  {
+   "marche": "5408633",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "1.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:32"
+  },
+  {
+   "marche": "5430817",
+   "issue": "CR Vasco da Gama",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "-21.36",
+   "resolution": "résolu : CA Boca Juniors",
+   "cloturee_le": "2026-10-21T04:37"
+  },
+  {
+   "marche": "5795611",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "1.74",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:57"
+  },
+  {
+   "marche": "5966831",
+   "issue": "Marie Bouzkova",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "5.78",
+   "resolution": "résolu : Marie Bouzkova",
+   "cloturee_le": "2026-10-21T07:43"
+  },
+  {
+   "marche": "5970791",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "1.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T08:10"
+  },
+  {
+   "marche": "5809312",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "8.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T08:32"
+  },
+  {
+   "marche": "5809298",
+   "issue": "No",
+   "strategie": "nf_tres_court v1.0.0",
+   "resultat": "0.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T09:21"
+  }
+ ],
+ "performances": {
+  "nf_tres_court v1.0.0": {
+   "operations": 111,
+   "evenements": 100,
+   "gagnantes": 98,
+   "taux_reussite": 0.883,
+   "profit_net": "-165.71",
+   "frais": "21.81",
+   "rendement_sur_mises": -0.0386,
+   "esperance_par_operation": "-1.49",
+   "ic90_rendement_par_euro": [
+    -0.0682,
+    0.0542
+   ],
+   "brier": 0.0992,
+   "log_loss": 0.3408,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

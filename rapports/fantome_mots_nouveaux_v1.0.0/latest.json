@@ -1,0 +1,337 @@
+{
+ "genere_le": "2026-10-24T15:37:53+00:00",
+ "capital": {
+  "solde_disponible": "928.0517",
+  "capital_immobilise": "85.4325",
+  "gains_realises_nets": "13.4842",
+  "gains_latents": "-13.4406",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1000.0436",
+  "positions_ouvertes": "15",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0315,
+ "dernier_battement": "2026-10-24T15:22:34+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Warsh say \"SI\" or \"Super Intelligence\" during October Press Conference?",
+   "issue": "No",
+   "parts": "23.21",
+   "cout": "13.57",
+   "prix_moyen": "0.5846",
+   "prix_de_marque": "0.62",
+   "latent": "0.82",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1191141",
+   "ouverte_le": "2026-10-21T08:28"
+  },
+  {
+   "marche": "Will Warsh say \"Price\" 30+ times during October Press Conference?",
+   "issue": "No",
+   "parts": "5.03",
+   "cout": "1.91",
+   "prix_moyen": "0.3800",
+   "prix_de_marque": "0.15",
+   "latent": "-1.16",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1191141",
+   "ouverte_le": "2026-10-22T15:36"
+  },
+  {
+   "marche": "Will Warsh say \"Oil\" or \"Gas\" or \"Gasoline\" or \"Natural Gas\" during October Press Conference?",
+   "issue": "No",
+   "parts": "11.01",
+   "cout": "2.31",
+   "prix_moyen": "0.2100",
+   "prix_de_marque": "0.1",
+   "latent": "-1.21",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1191141",
+   "ouverte_le": "2026-10-22T15:47"
+  },
+  {
+   "marche": "Will Warsh say \"Pandemic\" or \"Recession\" during October Press Conference?",
+   "issue": "No",
+   "parts": "10.08",
+   "cout": "7.36",
+   "prix_moyen": "0.7300",
+   "prix_de_marque": "0.57",
+   "latent": "-1.61",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1191141",
+   "ouverte_le": "2026-10-22T15:47"
+  },
+  {
+   "marche": "Will Warsh say \"President\" or \"Trump\" during October Press Conference?",
+   "issue": "No",
+   "parts": "7.86",
+   "cout": "3.14",
+   "prix_moyen": "0.4000",
+   "prix_de_marque": "0.19",
+   "latent": "-1.65",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1191141",
+   "ouverte_le": "2026-10-22T15:56"
+  },
+  {
+   "marche": "Will Warsh say \"Conflict\" or \"Middle East\" during October Press Conference?",
+   "issue": "No",
+   "parts": "8.40",
+   "cout": "2.86",
+   "prix_moyen": "0.3400",
+   "prix_de_marque": "0.31",
+   "latent": "-0.25",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1191141",
+   "ouverte_le": "2026-10-22T16:09"
+  },
+  {
+   "marche": "Will Trump say \"Border\" 22+ times during his Midterm Rally in Georgia?",
+   "issue": "No",
+   "parts": "17.26",
+   "cout": "8.80",
+   "prix_moyen": "0.5100",
+   "prix_de_marque": "0.52",
+   "latent": "0.17",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-23T19:51"
+  },
+  {
+   "marche": "Will Trump say \"Two Percent\" during his Midterm Rally in Georgia?",
+   "issue": "No",
+   "parts": "26.98",
+   "cout": "16.73",
+   "prix_moyen": "0.6200",
+   "prix_de_marque": "0.52",
+   "latent": "-2.70",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-23T21:07"
+  },
+  {
+   "marche": "Will Verizon say \"Simplicity\" during earnings call?",
+   "issue": "No",
+   "parts": "12.52",
+   "cout": "3.88",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.18",
+   "latent": "-1.63",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1242673",
+   "ouverte_le": "2026-10-24T04:12"
+  },
+  {
+   "marche": "Will Verizon say \"Satellite\" during earnings call?",
+   "issue": "No",
+   "parts": "11.95",
+   "cout": "3.47",
+   "prix_moyen": "0.2900",
+   "prix_de_marque": "0.21",
+   "latent": "-0.96",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1242673",
+   "ouverte_le": "2026-10-24T07:52"
+  },
+  {
+   "marche": "Will Verizon say \"5G\" during earnings call?",
+   "issue": "No",
+   "parts": "22.56",
+   "cout": "11.28",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "0.46",
+   "latent": "-0.90",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1242673",
+   "ouverte_le": "2026-10-24T08:12"
+  },
+  {
+   "marche": "Will Robinhood say \"Bitcoin\" during earnings call?",
+   "issue": "No",
+   "parts": "7.65",
+   "cout": "4.28",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.47",
+   "latent": "-0.69",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T08:37"
+  },
+  {
+   "marche": "Will Trump say \"Canada\" 4+ times during his Midterm Rally in Michigan?",
+   "issue": "No",
+   "parts": "1.66",
+   "cout": "0.73",
+   "prix_moyen": "0.4400",
+   "prix_de_marque": "0.28",
+   "latent": "-0.27",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1242924",
+   "ouverte_le": "2026-10-24T09:07"
+  },
+  {
+   "marche": "Will Trump say \"China\" or \"Chinese\" 7+ times during his Midterm Rally in Michigan?",
+   "issue": "No",
+   "parts": "5.09",
+   "cout": "2.85",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.46",
+   "latent": "-0.51",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1242924",
+   "ouverte_le": "2026-10-24T11:17"
+  },
+  {
+   "marche": "Will Robinhood say \"Robinhood Chain\" during earnings call?",
+   "issue": "No",
+   "parts": "11.30",
+   "cout": "2.26",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "0.12",
+   "latent": "-0.90",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1242675",
+   "ouverte_le": "2026-10-24T13:52"
+  }
+ ],
+ "operations_cloturees": 12,
+ "dernieres_operations": [
+  {
+   "marche": "5837730",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-13.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T23:40"
+  },
+  {
+   "marche": "5837725",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-3.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T00:35"
+  },
+  {
+   "marche": "5979818",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-7.31",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T01:41"
+  },
+  {
+   "marche": "5837856",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-1.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T01:51"
+  },
+  {
+   "marche": "5979809",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "3.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T02:51"
+  },
+  {
+   "marche": "5979808",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "0.75",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T02:51"
+  },
+  {
+   "marche": "5951001",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-5.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T15:19"
+  },
+  {
+   "marche": "5951012",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "36.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T15:41"
+  },
+  {
+   "marche": "6030807",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-14.94",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T03:16"
+  },
+  {
+   "marche": "6030809",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "7.05",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:01"
+  },
+  {
+   "marche": "6043850",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "13.25",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T22:31"
+  },
+  {
+   "marche": "6072350",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-2.28",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T22:31"
+  }
+ ],
+ "performances": {
+  "mots_nouveaux v1.0.0": {
+   "operations": 12,
+   "evenements": 6,
+   "gagnantes": 5,
+   "taux_reussite": 0.417,
+   "profit_net": "13.48",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.1767,
+   "esperance_par_operation": "1.12",
+   "ic90_rendement_par_euro": [
+    -0.3949,
+    0.8063
+   ],
+   "brier": 0.3059,
+   "log_loss": 0.8201,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

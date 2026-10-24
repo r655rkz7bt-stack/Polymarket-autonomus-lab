@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "829.0376",
+  "capital_immobilise": "202.1503",
+  "gains_realises_nets": "31.1879",
+  "gains_latents": "1.2929",
+  "frais_payes": "5.4080",
+  "capital_total_estime": "1032.4807",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2168,
+ "dernier_battement": "2026-10-21T20:36:58+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4970924",
+   "issue": "No",
+   "parts": "3.70",
+   "cout": "3.40",
+   "prix_moyen": "0.9179",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "groupe": "1083788",
+   "ouverte_le": "2026-10-20T04:05"
+  },
+  {
+   "marche": "5541301",
+   "issue": "No",
+   "parts": "35.89",
+   "cout": "30.87",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "groupe": "1169569",
+   "ouverte_le": "2026-10-20T07:03"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "parts": "49.69",
+   "cout": "46.21",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "groupe": "1154828",
+   "ouverte_le": "2026-10-21T10:07"
+  },
+  {
+   "marche": "5437389",
+   "issue": "Over",
+   "parts": "77.11",
+   "cout": "64.77",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "groupe": "1154903",
+   "ouverte_le": "2026-10-21T10:17"
+  },
+  {
+   "marche": "5437438",
+   "issue": "Under",
+   "parts": "53.91",
+   "cout": "45.28",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "groupe": "1154904",
+   "ouverte_le": "2026-10-21T12:47"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "14.19",
+   "cout": "11.62",
+   "prix_moyen": "0.8189",
+   "prix_de_marque": "0.91",
+   "latent": "1.29",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  }
+ ],
+ "operations_cloturees": 41,
+ "dernieres_operations": [
+  {
+   "marche": "5409221",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "7.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "17.10",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:14"
+  },
+  {
+   "marche": "5410016",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "7.66",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T22:14"
+  },
+  {
+   "marche": "5409705",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "0.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T22:14"
+  },
+  {
+   "marche": "5952191",
+   "issue": "Sloane Stephens",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : Sloane Stephens",
+   "cloturee_le": "2026-10-21T00:19"
+  },
+  {
+   "marche": "5958978",
+   "issue": "Carlos Maria Zarate",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "1.34",
+   "resolution": "résolu : Carlos Maria Zarate",
+   "cloturee_le": "2026-10-21T02:27"
+  },
+  {
+   "marche": "5856966",
+   "issue": "Miguel Tobon",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "18.12",
+   "resolution": "résolu : Miguel Tobon",
+   "cloturee_le": "2026-10-21T03:18"
+  },
+  {
+   "marche": "5965245",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "14.94",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-21T03:33"
+  },
+  {
+   "marche": "5992357",
+   "issue": "FOKUS",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "12.64",
+   "resolution": "résolu : FOKUS",
+   "cloturee_le": "2026-10-21T12:16"
+  },
+  {
+   "marche": "5992977",
+   "issue": "Sinners",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "7.87",
+   "resolution": "résolu : Sinners",
+   "cloturee_le": "2026-10-21T15:10"
+  },
+  {
+   "marche": "5993001",
+   "issue": "Betclic Apogee Esports",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "4.05",
+   "resolution": "résolu : Betclic Apogee Esports",
+   "cloturee_le": "2026-10-21T15:20"
+  },
+  {
+   "marche": "5992996",
+   "issue": "BC.Game Esports",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "5.83",
+   "resolution": "résolu : BC.Game Esports",
+   "cloturee_le": "2026-10-21T15:41"
+  },
+  {
+   "marche": "5971906",
+   "issue": "9INE Academy",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "-51.92",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-21T16:51"
+  },
+  {
+   "marche": "5994435",
+   "issue": "Falcons Force",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "8.13",
+   "resolution": "résolu : Falcons Force",
+   "cloturee_le": "2026-10-21T18:25"
+  },
+  {
+   "marche": "5409948",
+   "issue": "Over",
+   "strategie": "nf_sport_patiente_2crans v1.0.0",
+   "resultat": "9.29",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-21T19:01"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_2crans v1.0.0": {
+   "operations": 41,
+   "evenements": 40,
+   "gagnantes": 38,
+   "taux_reussite": 0.927,
+   "profit_net": "31.19",
+   "frais": "5.33",
+   "rendement_sur_mises": 0.0109,
+   "esperance_par_operation": "0.76",
+   "ic90_rendement_par_euro": [
+    0.0081,
+    0.1456
+   ],
+   "brier": 0.059,
+   "log_loss": 0.3051,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

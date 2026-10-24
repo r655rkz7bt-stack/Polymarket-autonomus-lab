@@ -1,0 +1,589 @@
+{
+ "genere_le": "2026-10-24T15:37:52+00:00",
+ "capital": {
+  "solde_disponible": "782.2516",
+  "capital_immobilise": "222.5844",
+  "gains_realises_nets": "4.8361",
+  "gains_latents": "-19.7116",
+  "frais_payes": "0.4981",
+  "capital_total_estime": "985.1245",
+  "positions_ouvertes": "34",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0369,
+ "dernier_battement": "2026-10-24T15:10:44+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5951556",
+   "issue": "No",
+   "parts": "8.15",
+   "cout": "6.44",
+   "prix_moyen": "0.7900",
+   "prix_de_marque": "0.985",
+   "latent": "1.59",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1220816",
+   "ouverte_le": "2026-10-20T20:12"
+  },
+  {
+   "marche": "5971417",
+   "issue": "No",
+   "parts": "11.72",
+   "cout": "10.17",
+   "prix_moyen": "0.8680",
+   "prix_de_marque": "0.885",
+   "latent": "0.20",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1224114",
+   "ouverte_le": "2026-10-20T21:15"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 29, 2026?",
+   "issue": "Yes",
+   "parts": "7.53",
+   "cout": "5.42",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.24",
+   "latent": "-3.61",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-21T13:43"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 26, 2026?",
+   "issue": "No",
+   "parts": "8.82",
+   "cout": "6.53",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.924",
+   "latent": "1.62",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-21T13:58"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 30, 2026?",
+   "issue": "Yes",
+   "parts": "7.49",
+   "cout": "5.39",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.26",
+   "latent": "-3.45",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-21T18:52"
+  },
+  {
+   "marche": "6015215",
+   "issue": "Yes",
+   "parts": "3.00",
+   "cout": "2.31",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "0.9",
+   "latent": "0.39",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230219",
+   "ouverte_le": "2026-10-21T18:56"
+  },
+  {
+   "marche": "Will \"Klara and the Sun\" Opening Weekend Box Office be less than $2M?",
+   "issue": "Yes",
+   "parts": "6.83",
+   "cout": "4.85",
+   "prix_moyen": "0.7100",
+   "prix_de_marque": "0.981",
+   "latent": "1.85",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1226756",
+   "ouverte_le": "2026-10-21T19:02"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ debut at a score of at least 1430 by June 30, 2027?",
+   "issue": "Yes",
+   "parts": "13.05",
+   "cout": "10.57",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.75",
+   "latent": "-0.78",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230584",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ debut at a score of at least 1470 by June 30, 2027?",
+   "issue": "No",
+   "parts": "13.58",
+   "cout": "11.14",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.77",
+   "latent": "-0.68",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230584",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ debut at a score of at least 1440 by June 30, 2027?",
+   "issue": "Yes",
+   "parts": "7.59",
+   "cout": "5.92",
+   "prix_moyen": "0.7800",
+   "prix_de_marque": "0.48",
+   "latent": "-2.28",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230584",
+   "ouverte_le": "2026-10-21T21:26"
+  },
+  {
+   "marche": "France accuses foreign country of provoking unrest by November 30?",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "0.92",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.85",
+   "latent": "0.14",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230492",
+   "ouverte_le": "2026-10-21T21:32"
+  },
+  {
+   "marche": "Will Vivek Ramaswamy pull the Amy Acton mother ad?",
+   "issue": "No",
+   "parts": "7.51",
+   "cout": "5.41",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.62",
+   "latent": "-0.75",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230390",
+   "ouverte_le": "2026-10-22T00:12"
+  },
+  {
+   "marche": "6018052",
+   "issue": "No",
+   "parts": "11.32",
+   "cout": "8.83",
+   "prix_moyen": "0.7800",
+   "prix_de_marque": "0.76",
+   "latent": "-0.23",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230650",
+   "ouverte_le": "2026-10-22T01:32"
+  },
+  {
+   "marche": "6018053",
+   "issue": "No",
+   "parts": "26.10",
+   "cout": "21.14",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.77",
+   "latent": "-1.04",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1230650",
+   "ouverte_le": "2026-10-22T02:56"
+  },
+  {
+   "marche": "Paris curfew effectively lifted by November 7?",
+   "issue": "Yes",
+   "parts": "12.26",
+   "cout": "10.01",
+   "prix_moyen": "0.8162",
+   "prix_de_marque": "0.84",
+   "latent": "0.29",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1220812",
+   "ouverte_le": "2026-10-22T03:16"
+  },
+  {
+   "marche": "6026468",
+   "issue": "Yes",
+   "parts": "18.68",
+   "cout": "15.32",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.29",
+   "latent": "-9.90",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1231809",
+   "ouverte_le": "2026-10-22T03:36"
+  },
+  {
+   "marche": "Will Trump say \"Iran\" 5+ times during his Midterm Rally in Georgia?",
+   "issue": "Yes",
+   "parts": "5.94",
+   "cout": "4.69",
+   "prix_moyen": "0.7900",
+   "prix_de_marque": "0.8",
+   "latent": "0.06",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-24T04:52"
+  },
+  {
+   "marche": "Will the biggest earthquake on October 26, 2026 be 5.5 to 5.6?",
+   "issue": "No",
+   "parts": "7.04",
+   "cout": "5.84",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.82",
+   "latent": "-0.07",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-24T05:36"
+  },
+  {
+   "marche": "Will the biggest earthquake on October 26, 2026 be under 5.3?",
+   "issue": "No",
+   "parts": "7.28",
+   "cout": "6.12",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.83",
+   "latent": "-0.07",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-24T05:36"
+  },
+  {
+   "marche": "Will the biggest earthquake on October 26, 2026 be 5.3 to 5.4?",
+   "issue": "No",
+   "parts": "7.47",
+   "cout": "6.35",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.84",
+   "latent": "-0.07",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-24T06:17"
+  },
+  {
+   "marche": "Will the biggest earthquake on October 26, 2026 be 6.1 or more?",
+   "issue": "No",
+   "parts": "5.32",
+   "cout": "4.10",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "0.76",
+   "latent": "-0.05",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-24T06:17"
+  },
+  {
+   "marche": "Will the biggest earthquake on October 26, 2026 be 5.7 to 5.8?",
+   "issue": "No",
+   "parts": "7.64",
+   "cout": "6.57",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.85",
+   "latent": "-0.08",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-24T06:27"
+  },
+  {
+   "marche": "Will the biggest earthquake on October 26, 2026 be 5.9 to 6.0?",
+   "issue": "No",
+   "parts": "7.91",
+   "cout": "6.96",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.87",
+   "latent": "-0.08",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-24T06:36"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut at a score of at least 1500 by June 30, 2027?",
+   "issue": "No",
+   "parts": "6.76",
+   "cout": "5.54",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.86",
+   "latent": "0.27",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1243958",
+   "ouverte_le": "2026-10-24T07:32"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut with an HLE-Diamond score of 35% or higher?",
+   "issue": "No",
+   "parts": "7.01",
+   "cout": "5.82",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.79",
+   "latent": "-0.28",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1243969",
+   "ouverte_le": "2026-10-24T07:32"
+  },
+  {
+   "marche": "Will Trump say \"Russia\" or \"Ukraine\" during his Midterm Rally in Michigan?",
+   "issue": "Yes",
+   "parts": "5.62",
+   "cout": "4.38",
+   "prix_moyen": "0.7800",
+   "prix_de_marque": "0.78",
+   "latent": "0.00",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1242924",
+   "ouverte_le": "2026-10-24T07:57"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut at a score of at least 1470 by June 30, 2027?",
+   "issue": "Yes",
+   "parts": "5.63",
+   "cout": "4.39",
+   "prix_moyen": "0.7800",
+   "prix_de_marque": "0.72",
+   "latent": "-0.34",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1243958",
+   "ouverte_le": "2026-10-24T08:41"
+  },
+  {
+   "marche": "Will Trump say \"Drill Baby Drill\" during his Midterm Rally in Georgia?",
+   "issue": "No",
+   "parts": "5.19",
+   "cout": "4.20",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.78",
+   "latent": "-0.16",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-24T09:03"
+  },
+  {
+   "marche": "Will Kimi K3.1 Pro debut in the top 5 of the Text Arena leaderboard by June 30, 2027?",
+   "issue": "No",
+   "parts": "7.01",
+   "cout": "5.82",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.86",
+   "latent": "0.21",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1243971",
+   "ouverte_le": "2026-10-24T09:27"
+  },
+  {
+   "marche": "Will Trump say \"AI\" or \"Artificial Intelligence\" during his Midterm Rally in Georgia?",
+   "issue": "No",
+   "parts": "5.02",
+   "cout": "3.82",
+   "prix_moyen": "0.7600",
+   "prix_de_marque": "0.74",
+   "latent": "-0.10",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1240998",
+   "ouverte_le": "2026-10-24T10:07"
+  },
+  {
+   "marche": "Will Elon Musk post 260-279 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "5.23",
+   "cout": "4.50",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.85",
+   "latent": "-0.05",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-24T13:04"
+  },
+  {
+   "marche": "Will Elon Musk post 280-299 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "5.14",
+   "cout": "4.37",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.87",
+   "latent": "0.10",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-24T13:32"
+  },
+  {
+   "marche": "Will Elon Musk post 240-259 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "5.16",
+   "cout": "4.39",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.85",
+   "latent": "0.00",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-24T14:04"
+  },
+  {
+   "marche": "Will Bitcoin dip to $79,000 on October 24?",
+   "issue": "No",
+   "parts": "5.16",
+   "cout": "4.36",
+   "prix_moyen": "0.8459",
+   "prix_de_marque": "0.388",
+   "latent": "-2.36",
+   "strategie": "marche_neuf v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T14:37"
+  }
+ ],
+ "operations_cloturees": 61,
+ "dernieres_operations": [
+  {
+   "marche": "5958367",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "-2.47",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5958366",
+   "issue": "Yes",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "-4.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5958445",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "2.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5958763",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "0.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5969185",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "1.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:50"
+  },
+  {
+   "marche": "5958333",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "2.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5958386",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "2.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5958647",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "2.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5969218",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "0.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "5969216",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "0.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:01"
+  },
+  {
+   "marche": "6005165",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "2.36",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:20"
+  },
+  {
+   "marche": "6005152",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "0.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T05:25"
+  },
+  {
+   "marche": "5998479",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "1.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T06:06"
+  },
+  {
+   "marche": "6010916",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "1.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:16"
+  },
+  {
+   "marche": "6007834",
+   "issue": "No",
+   "strategie": "marche_neuf v1.0.0",
+   "resultat": "2.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T08:21"
+  }
+ ],
+ "performances": {
+  "marche_neuf v1.0.0": {
+   "operations": 61,
+   "evenements": 49,
+   "gagnantes": 46,
+   "taux_reussite": 0.754,
+   "profit_net": "4.84",
+   "frais": "0.37",
+   "rendement_sur_mises": 0.0114,
+   "esperance_par_operation": "0.08",
+   "ic90_rendement_par_euro": [
+    -0.1939,
+    0.0984
+   ],
+   "brier": 0.174,
+   "log_loss": 0.5417,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

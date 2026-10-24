@@ -1,0 +1,337 @@
+{
+ "genere_le": "2026-10-24T15:37:59+00:00",
+ "capital": {
+  "solde_disponible": "525.5180",
+  "capital_immobilise": "508.6198",
+  "gains_realises_nets": "34.1378",
+  "gains_latents": "-15.8368",
+  "frais_payes": "6.7620",
+  "capital_total_estime": "1018.3010",
+  "positions_ouvertes": "13",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0922,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "111.95",
+   "cout": "95.02",
+   "prix_moyen": "0.8488",
+   "prix_de_marque": "0.721",
+   "latent": "-14.30",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T10:53"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "parts": "10.95",
+   "cout": "10.27",
+   "prix_moyen": "0.9379",
+   "prix_de_marque": "0.942",
+   "latent": "0.04",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-17T18:38"
+  },
+  {
+   "marche": "Will FC Barcelona vs. Real Madrid CF end in a draw?",
+   "issue": "No",
+   "parts": "7.76",
+   "cout": "6.65",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-0.13",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1175548",
+   "ouverte_le": "2026-10-17T19:28"
+  },
+  {
+   "marche": "5910672",
+   "issue": "No",
+   "parts": "6.03",
+   "cout": "4.93",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-0.17",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1214886",
+   "ouverte_le": "2026-10-20T20:27"
+  },
+  {
+   "marche": "4412002",
+   "issue": "No",
+   "parts": "249.14",
+   "cout": "237.18",
+   "prix_moyen": "0.9520",
+   "prix_de_marque": "0.955",
+   "latent": "0.75",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "994444",
+   "ouverte_le": "2026-10-20T21:55"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "32.90",
+   "cout": "27.26",
+   "prix_moyen": "0.8286",
+   "prix_de_marque": "0.91",
+   "latent": "2.68",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T21:42"
+  },
+  {
+   "marche": "Will Jacob Misiorowski win the 2026 World Series MVP?",
+   "issue": "No",
+   "parts": "7.42",
+   "cout": "6.83",
+   "prix_moyen": "0.9198",
+   "prix_de_marque": "0.965",
+   "latent": "0.34",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1105184",
+   "ouverte_le": "2026-10-21T21:46"
+  },
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "5.12",
+   "cout": "4.63",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "0.48",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-22T20:47"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "33.83",
+   "cout": "31.79",
+   "prix_moyen": "0.9398",
+   "prix_de_marque": "0.819",
+   "latent": "-4.09",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T23:03"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "parts": "76.23",
+   "cout": "68.95",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-1.11",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1186366",
+   "ouverte_le": "2026-10-22T23:12"
+  },
+  {
+   "marche": "Will George Russell win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "5.19",
+   "cout": "4.94",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.93",
+   "latent": "-0.12",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:03"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "6.30",
+   "cout": "5.88",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.91",
+   "latent": "-0.15",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-24T00:42"
+  },
+  {
+   "marche": "4551277",
+   "issue": "Texans",
+   "parts": "5.27",
+   "cout": "4.29",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-0.08",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1022440",
+   "ouverte_le": "2026-10-24T05:46"
+  }
+ ],
+ "operations_cloturees": 16,
+ "dernieres_operations": [
+  {
+   "marche": "5364571",
+   "issue": "Under",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "13.56",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-19T21:21"
+  },
+  {
+   "marche": "5362519",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "13.75",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T21:21"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "15.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:15"
+  },
+  {
+   "marche": "5383441",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "13.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T18:57"
+  },
+  {
+   "marche": "5409194",
+   "issue": "Yes",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "14.12",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T21:53"
+  },
+  {
+   "marche": "5409195",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "5.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:53"
+  },
+  {
+   "marche": "5410000",
+   "issue": "Paris Saint-Germain FC",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "4.42",
+   "resolution": "résolu : Paris Saint-Germain FC",
+   "cloturee_le": "2026-10-20T22:14"
+  },
+  {
+   "marche": "5410009",
+   "issue": "Over",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "5.24",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-21T00:53"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-65.65",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "4.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5906238",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-5.34",
+   "resolution": "résolu : Movistar KOI",
+   "cloturee_le": "2026-10-23T20:41"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.16",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5906226",
+   "issue": "T1",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.67",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-1.90",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  }
+ ],
+ "performances": {
+  "nf_sport_sans_fin v1.0.0": {
+   "operations": 16,
+   "evenements": 13,
+   "gagnantes": 13,
+   "taux_reussite": 0.812,
+   "profit_net": "34.14",
+   "frais": "4.94",
+   "rendement_sur_mises": 0.0322,
+   "esperance_par_operation": "2.13",
+   "ic90_rendement_par_euro": [
+    -0.2882,
+    0.0822
+   ],
+   "brier": 0.1584,
+   "log_loss": 0.5357,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

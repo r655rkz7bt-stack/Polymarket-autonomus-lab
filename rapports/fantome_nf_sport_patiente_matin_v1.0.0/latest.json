@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-10-24T15:37:58+00:00",
+ "capital": {
+  "solde_disponible": "815.4788",
+  "capital_immobilise": "191.5449",
+  "gains_realises_nets": "7.0238",
+  "gains_latents": "-11.5233",
+  "frais_payes": "2.5410",
+  "capital_total_estime": "995.5005",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1027,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "70.44",
+   "cout": "58.07",
+   "prix_moyen": "0.8244",
+   "prix_de_marque": "0.91",
+   "latent": "6.03",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T06:04"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "141.54",
+   "cout": "133.47",
+   "prix_moyen": "0.9430",
+   "prix_de_marque": "0.819",
+   "latent": "-17.55",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-23T08:51"
+  }
+ ],
+ "operations_cloturees": 32,
+ "dernieres_operations": [
+  {
+   "marche": "5798591",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "8.43",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-22T12:31"
+  },
+  {
+   "marche": "5967419",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.98",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-22T14:12"
+  },
+  {
+   "marche": "5541301",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "12.89",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T16:11"
+  },
+  {
+   "marche": "6029905",
+   "issue": "Team Nemesis",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "12.60",
+   "resolution": "résolu : Team Nemesis",
+   "cloturee_le": "2026-10-22T16:22"
+  },
+  {
+   "marche": "5439915",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "-63.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "6017258",
+   "issue": "Stefanos Tsitsipas",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "1.02",
+   "resolution": "résolu : Stefanos Tsitsipas",
+   "cloturee_le": "2026-10-23T09:55"
+  },
+  {
+   "marche": "6025817",
+   "issue": "Eliska Tichackova",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "-27.63",
+   "resolution": "résolu : Andrea Obradovic",
+   "cloturee_le": "2026-10-23T14:11"
+  },
+  {
+   "marche": "5918037",
+   "issue": "Nigeria",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.95",
+   "resolution": "résolu : Nigeria",
+   "cloturee_le": "2026-10-23T14:16"
+  },
+  {
+   "marche": "6084819",
+   "issue": "Tatiana Prozorova",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "1.32",
+   "resolution": "résolu : Tatiana Prozorova",
+   "cloturee_le": "2026-10-24T09:55"
+  },
+  {
+   "marche": "5799001",
+   "issue": "Brisbane Bullets",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "6.41",
+   "resolution": "résolu : Brisbane Bullets",
+   "cloturee_le": "2026-10-24T10:31"
+  },
+  {
+   "marche": "6084821",
+   "issue": "Joanna Garland",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "1.71",
+   "resolution": "résolu : Joanna Garland",
+   "cloturee_le": "2026-10-24T11:21"
+  },
+  {
+   "marche": "6109497",
+   "issue": "Lynn Vision",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "3.60",
+   "resolution": "résolu : Lynn Vision",
+   "cloturee_le": "2026-10-24T12:16"
+  },
+  {
+   "marche": "6065034",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T13:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "-12.60",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "5534020",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "1.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_matin v1.0.0": {
+   "operations": 32,
+   "evenements": 32,
+   "gagnantes": 27,
+   "taux_reussite": 0.844,
+   "profit_net": "7.02",
+   "frais": "2.23",
+   "rendement_sur_mises": 0.0035,
+   "esperance_par_operation": "0.22",
+   "ic90_rendement_par_euro": [
+    -0.1887,
+    0.0752
+   ],
+   "brier": 0.1255,
+   "log_loss": 0.385,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

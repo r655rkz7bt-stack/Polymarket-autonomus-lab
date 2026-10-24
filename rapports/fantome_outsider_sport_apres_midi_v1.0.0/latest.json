@@ -1,0 +1,145 @@
+{
+ "genere_le": "2026-10-24T15:38:02+00:00",
+ "capital": {
+  "solde_disponible": "971.1885",
+  "capital_immobilise": "2.8063",
+  "gains_realises_nets": "-26.0052",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.2146",
+  "capital_total_estime": "973.9948",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0331,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "ICC Men's T20 World Cup Africa Sub Regional Qualifier C: Gambia vs Zambia",
+   "issue": "Gambia",
+   "parts": "40.09",
+   "cout": "2.81",
+   "prix_moyen": "0.0700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "groupe": "1222672",
+   "ouverte_le": "2026-10-24T12:46"
+  }
+ ],
+ "operations_cloturees": 9,
+ "dernieres_operations": [
+  {
+   "marche": "5331806",
+   "issue": "Columbus Crew",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-3.80",
+   "resolution": "résolu : FC Cincinnati",
+   "cloturee_le": "2026-10-18T23:48"
+  },
+  {
+   "marche": "5410014",
+   "issue": "Over",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-4.93",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T22:15"
+  },
+  {
+   "marche": "5967423",
+   "issue": "Mikhail Kukushkin",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.86",
+   "resolution": "résolu : Stefanos Tsitsipas",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "5520534",
+   "issue": "Fluminense FC",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.19",
+   "resolution": "résolu : SE Palmeiras",
+   "cloturee_le": "2026-10-22T04:50"
+  },
+  {
+   "marche": "5433448",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.73",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:05"
+  },
+  {
+   "marche": "5798570",
+   "issue": "GamerLegion",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.44",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-22T10:45"
+  },
+  {
+   "marche": "5438912",
+   "issue": "Under",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.57",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5458322",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5906226",
+   "issue": "LOS",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.16",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-24T00:40"
+  }
+ ],
+ "performances": {
+  "outsider_sport_apres_midi v1.0.0": {
+   "operations": 9,
+   "evenements": 9,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-26.01",
+   "frais": "0.21",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-2.89",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.0179,
+   "log_loss": 0.1425,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

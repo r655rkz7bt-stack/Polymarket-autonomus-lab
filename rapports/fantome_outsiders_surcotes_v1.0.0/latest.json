@@ -1,0 +1,341 @@
+{
+ "genere_le": "2026-10-24T15:38:02+00:00",
+ "capital": {
+  "solde_disponible": "845.7908",
+  "capital_immobilise": "153.5596",
+  "gains_realises_nets": "-0.6495",
+  "gains_latents": "1.6725",
+  "frais_payes": "0.3572",
+  "capital_total_estime": "1001.0230",
+  "positions_ouvertes": "20",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0065,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4890263",
+   "issue": "No",
+   "parts": "6.80",
+   "cout": "5.96",
+   "prix_moyen": "0.8765",
+   "prix_de_marque": "0.988",
+   "latent": "0.76",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1071009",
+   "ouverte_le": "2026-10-20T16:45"
+  },
+  {
+   "marche": "4890262",
+   "issue": "No",
+   "parts": "14.97",
+   "cout": "13.43",
+   "prix_moyen": "0.8970",
+   "prix_de_marque": "0.983",
+   "latent": "1.29",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1071009",
+   "ouverte_le": "2026-10-20T21:45"
+  },
+  {
+   "marche": "Will monthly inflation increase by 0.4% in October?",
+   "issue": "No",
+   "parts": "6.28",
+   "cout": "5.46",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.83",
+   "latent": "-0.25",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-10-21T21:11"
+  },
+  {
+   "marche": "Will Lamine Yamal finish 2nd in the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "5.72",
+   "cout": "4.95",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.89",
+   "latent": "0.14",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1218178",
+   "ouverte_le": "2026-10-21T23:47"
+  },
+  {
+   "marche": "3343532",
+   "issue": "No",
+   "parts": "13.18",
+   "cout": "11.53",
+   "prix_moyen": "0.8750",
+   "prix_de_marque": "0.862",
+   "latent": "-0.17",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "797234",
+   "ouverte_le": "2026-10-22T03:56"
+  },
+  {
+   "marche": "Will monthly inflation increase by 0.1% or less in October?",
+   "issue": "No",
+   "parts": "14.68",
+   "cout": "12.62",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.88",
+   "latent": "0.29",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-10-22T07:26"
+  },
+  {
+   "marche": "Will the US add between 25k and 50k jobs in October?",
+   "issue": "No",
+   "parts": "13.97",
+   "cout": "12.29",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.87",
+   "latent": "-0.14",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1120074",
+   "ouverte_le": "2026-10-22T17:16"
+  },
+  {
+   "marche": "2412749",
+   "issue": "No",
+   "parts": "9.22",
+   "cout": "8.11",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.9",
+   "latent": "0.18",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "548858",
+   "ouverte_le": "2026-10-22T19:32"
+  },
+  {
+   "marche": "Will Elon Musk post 240-259 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "9.24",
+   "cout": "8.13",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.982",
+   "latent": "0.94",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-23T04:11"
+  },
+  {
+   "marche": "Will Elon Musk post 320-339 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "7.73",
+   "cout": "6.88",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.78",
+   "latent": "-0.85",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-23T04:11"
+  },
+  {
+   "marche": "Will Elon Musk post 340-359 tweets from October 20 to October 27, 2026?",
+   "issue": "No",
+   "parts": "3.11",
+   "cout": "2.90",
+   "prix_moyen": "0.9330",
+   "prix_de_marque": "0.882",
+   "latent": "-0.16",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-23T04:11"
+  },
+  {
+   "marche": "Will \"Wildwood\" Opening Weekend Box Office be between 16m and 18m?",
+   "issue": "No",
+   "parts": "6.75",
+   "cout": "5.92",
+   "prix_moyen": "0.8765",
+   "prix_de_marque": "0.998",
+   "latent": "0.82",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1191140",
+   "ouverte_le": "2026-10-23T04:56"
+  },
+  {
+   "marche": "2412745",
+   "issue": "No",
+   "parts": "11.45",
+   "cout": "10.75",
+   "prix_moyen": "0.9390",
+   "prix_de_marque": "0.925",
+   "latent": "-0.16",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "548858",
+   "ouverte_le": "2026-10-23T15:42"
+  },
+  {
+   "marche": "Will Core CPI MoM be 0.4% in October?",
+   "issue": "No",
+   "parts": "6.42",
+   "cout": "5.65",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.85",
+   "latent": "-0.19",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1189688",
+   "ouverte_le": "2026-10-23T17:22"
+  },
+  {
+   "marche": "Will US win 50-55% of the vote in the 2026 Serbian parliamentary election?",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.18",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.9",
+   "latent": "0.08",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1082240",
+   "ouverte_le": "2026-10-23T19:09"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "11.32",
+   "cout": "9.80",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.88",
+   "latent": "0.16",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-23T21:32"
+  },
+  {
+   "marche": "Will Charles Leclerc win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "9.32",
+   "cout": "8.16",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.84",
+   "latent": "-0.33",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T22:27"
+  },
+  {
+   "marche": "Will UKMTO publish 12-15 notices between October 26-November 1?",
+   "issue": "No",
+   "parts": "7.16",
+   "cout": "6.23",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.82",
+   "latent": "-0.36",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1236947",
+   "ouverte_le": "2026-10-23T23:32"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "7.75",
+   "cout": "7.02",
+   "prix_moyen": "0.9059",
+   "prix_de_marque": "0.899",
+   "latent": "-0.05",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-24T02:37"
+  },
+  {
+   "marche": "4961852",
+   "issue": "No",
+   "parts": "6.33",
+   "cout": "5.57",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.83",
+   "latent": "-0.32",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1082240",
+   "ouverte_le": "2026-10-24T11:42"
+  }
+ ],
+ "operations_cloturees": 5,
+ "dernieres_operations": [
+  {
+   "marche": "5640323",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T17:20"
+  },
+  {
+   "marche": "5640344",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640340",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "-4.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640349",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6003514",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T23:45"
+  }
+ ],
+ "performances": {
+  "outsiders_surcotes v1.0.0": {
+   "operations": 5,
+   "evenements": 2,
+   "gagnantes": 4,
+   "taux_reussite": 0.8,
+   "profit_net": "-0.65",
+   "frais": "0.14",
+   "rendement_sur_mises": -0.0192,
+   "esperance_par_operation": "-0.13",
+   "ic90_rendement_par_euro": [
+    -0.1463,
+    0.0753
+   ],
+   "brier": 0.1629,
+   "log_loss": 0.5058,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

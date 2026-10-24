@@ -1,0 +1,90 @@
+{
+ "genere_le": "2026-10-24T15:37:51+00:00",
+ "capital": {
+  "solde_disponible": "934.4616",
+  "capital_immobilise": "65.5384",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "8.4802",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1008.4802",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0105,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1294367",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "0.75",
+   "prix_moyen": "0.0300",
+   "prix_de_marque": "0.023",
+   "latent": "-0.18",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "192787",
+   "ouverte_le": "2026-10-21T22:05"
+  },
+  {
+   "marche": "3392719",
+   "issue": "Yes",
+   "parts": "64.92",
+   "cout": "21.42",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.37",
+   "latent": "2.60",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "808659",
+   "ouverte_le": "2026-10-23T00:42"
+  },
+  {
+   "marche": "3392721",
+   "issue": "No",
+   "parts": "64.92",
+   "cout": "28.56",
+   "prix_moyen": "0.4400",
+   "prix_de_marque": "0.46",
+   "latent": "1.30",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "808659",
+   "ouverte_le": "2026-10-23T00:42"
+  },
+  {
+   "marche": "NATO x Russia military clash by October 31, 2026?",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "14.80",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.978",
+   "latent": "4.76",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-10-23T15:57"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

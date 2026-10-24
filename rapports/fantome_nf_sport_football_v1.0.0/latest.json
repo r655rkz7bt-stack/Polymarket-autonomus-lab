@@ -1,0 +1,273 @@
+{
+ "genere_le": "2026-10-24T15:37:56+00:00",
+ "capital": {
+  "solde_disponible": "405.8881",
+  "capital_immobilise": "411.6412",
+  "gains_realises_nets": "-182.4708",
+  "gains_latents": "5.6093",
+  "frais_payes": "5.7888",
+  "capital_total_estime": "823.1386",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2571,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "115.60",
+   "cout": "104.56",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "10.92",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-22T20:47"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "parts": "14.43",
+   "cout": "13.05",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-0.21",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1186366",
+   "ouverte_le": "2026-10-22T20:47"
+  },
+  {
+   "marche": "Will FC Barcelona vs. Real Madrid CF end in a draw?",
+   "issue": "No",
+   "parts": "75.26",
+   "cout": "64.45",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-1.23",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1175548",
+   "ouverte_le": "2026-10-22T23:03"
+  },
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "parts": "45.00",
+   "cout": "38.54",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1230080",
+   "ouverte_le": "2026-10-23T22:07"
+  },
+  {
+   "marche": "Will Sporting CP win on 2026-10-25?",
+   "issue": "Yes",
+   "parts": "60.19",
+   "cout": "49.22",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-1.67",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1178210",
+   "ouverte_le": "2026-10-23T22:12"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "72.65",
+   "cout": "67.80",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.96",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-23T22:22"
+  },
+  {
+   "marche": "Spread: Real Madrid CF (-1.5)",
+   "issue": "FC Barcelona",
+   "parts": "69.45",
+   "cout": "61.48",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-1.06",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1175738",
+   "ouverte_le": "2026-10-24T03:07"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 2 - 2 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "6.44",
+   "cout": "6.01",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.09",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T13:42"
+  },
+  {
+   "marche": "Will RC Deportivo A Coruña win on 2026-10-24?",
+   "issue": "No",
+   "parts": "7.07",
+   "cout": "6.53",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-0.10",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1169114",
+   "ouverte_le": "2026-10-24T15:37"
+  }
+ ],
+ "operations_cloturees": 13,
+ "dernieres_operations": [
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "-237.43",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5439913",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "8.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "14.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "1.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5473150",
+   "issue": "Yes",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "10.67",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T17:31"
+  },
+  {
+   "marche": "5473148",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T17:31"
+  },
+  {
+   "marche": "5480911",
+   "issue": "Over",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.43",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "3.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5480989",
+   "issue": "Under",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "9.22",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5480969",
+   "issue": "Over",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.29",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-23T21:21"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "5.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5537325",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.45",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_football v1.0.0": {
+   "operations": 13,
+   "evenements": 10,
+   "gagnantes": 12,
+   "taux_reussite": 0.923,
+   "profit_net": "-182.47",
+   "frais": "3.32",
+   "rendement_sur_mises": -0.1919,
+   "esperance_par_operation": "-14.04",
+   "ic90_rendement_par_euro": [
+    -0.179,
+    0.0946
+   ],
+   "brier": 0.077,
+   "log_loss": 0.3549,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

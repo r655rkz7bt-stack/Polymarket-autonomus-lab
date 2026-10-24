@@ -1,0 +1,337 @@
+{
+ "genere_le": "2026-10-24T15:37:57+00:00",
+ "capital": {
+  "solde_disponible": "9.1697",
+  "capital_immobilise": "1060.5016",
+  "gains_realises_nets": "69.6713",
+  "gains_latents": "-13.4480",
+  "frais_payes": "20.8907",
+  "capital_total_estime": "1056.2233",
+  "positions_ouvertes": "13",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.215,
+ "dernier_battement": "2026-10-24T15:37:19+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "15.92",
+   "cout": "13.08",
+   "prix_moyen": "0.8215",
+   "prix_de_marque": "0.91",
+   "latent": "1.41",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T21:02"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "33.83",
+   "cout": "31.79",
+   "prix_moyen": "0.9398",
+   "prix_de_marque": "0.819",
+   "latent": "-4.09",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-22T23:03"
+  },
+  {
+   "marche": "Will Everton FC win on 2026-10-24?",
+   "issue": "No",
+   "parts": "71.36",
+   "cout": "64.55",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "6.74",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1168519",
+   "ouverte_le": "2026-10-22T23:06"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "264.66",
+   "cout": "247.00",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-3.51",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-23T17:32"
+  },
+  {
+   "marche": "Will FC Barcelona vs. Real Madrid CF end in a draw?",
+   "issue": "No",
+   "parts": "157.29",
+   "cout": "134.70",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-2.58",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1175548",
+   "ouverte_le": "2026-10-23T21:57"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "12.93",
+   "cout": "12.07",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.91",
+   "latent": "-0.30",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-23T23:52"
+  },
+  {
+   "marche": "Will MOUZ Win the PGL Masters Bucharest 2026?",
+   "issue": "No",
+   "parts": "0.67",
+   "cout": "0.59",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.9",
+   "latent": "0.02",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1218363",
+   "ouverte_le": "2026-10-24T03:21"
+  },
+  {
+   "marche": "Will Parma Calcio 1913 win on 2026-10-24?",
+   "issue": "No",
+   "parts": "278.51",
+   "cout": "249.24",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.87",
+   "latent": "-6.93",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1167432",
+   "ouverte_le": "2026-10-24T05:12"
+  },
+  {
+   "marche": "Will Charles Leclerc win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "7.78",
+   "cout": "6.81",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.84",
+   "latent": "-0.28",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-24T05:36"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 2 - 2 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "19.37",
+   "cout": "18.08",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.26",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T08:12"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 3 - 1 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "44.00",
+   "cout": "41.48",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.12",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-24T14:27"
+  },
+  {
+   "marche": "Will George Russell win the 2026 F1 United States Grand Prix?",
+   "issue": "No",
+   "parts": "14.00",
+   "cout": "13.20",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.93",
+   "latent": "-0.18",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1123927",
+   "ouverte_le": "2026-10-24T15:32"
+  },
+  {
+   "marche": "Will RC Deportivo A Coruña win on 2026-10-24?",
+   "issue": "No",
+   "parts": "246.76",
+   "cout": "227.93",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-3.38",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1169114",
+   "ouverte_le": "2026-10-24T15:37"
+  }
+ ],
+ "operations_cloturees": 39,
+ "dernieres_operations": [
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "-150.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5433448",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "29.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:05"
+  },
+  {
+   "marche": "5439913",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "1.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5470465",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "2.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470477",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5470469",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "29.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:01"
+  },
+  {
+   "marche": "5458322",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "6.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5046924",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:55"
+  },
+  {
+   "marche": "5474434",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "2.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T12:55"
+  },
+  {
+   "marche": "5473148",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "6.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T17:31"
+  },
+  {
+   "marche": "5476454",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "2.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5476461",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "16.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T21:01"
+  },
+  {
+   "marche": "5516778",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "23.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:06"
+  },
+  {
+   "marche": "5516770",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "23.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T03:10"
+  },
+  {
+   "marche": "5534020",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "16.90",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T13:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_non v1.0.0": {
+   "operations": 39,
+   "evenements": 35,
+   "gagnantes": 37,
+   "taux_reussite": 0.949,
+   "profit_net": "69.67",
+   "frais": "15.99",
+   "rendement_sur_mises": 0.0175,
+   "esperance_par_operation": "1.79",
+   "ic90_rendement_par_euro": [
+    -0.0385,
+    0.0846
+   ],
+   "brier": 0.0469,
+   "log_loss": 0.1887,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

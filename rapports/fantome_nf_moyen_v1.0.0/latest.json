@@ -1,0 +1,325 @@
+{
+ "genere_le": "2026-10-24T15:37:55+00:00",
+ "capital": {
+  "solde_disponible": "529.5073",
+  "capital_immobilise": "559.7999",
+  "gains_realises_nets": "89.3072",
+  "gains_latents": "10.0215",
+  "frais_payes": "5.4125",
+  "capital_total_estime": "1099.3287",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.065,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "105.00",
+   "cout": "91.35",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.991",
+   "latent": "12.70",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "Will Flávio Bolsonaro win the second round of the 2026 Brazilian presidential election by 8–12%?",
+   "issue": "No",
+   "parts": "90.16",
+   "cout": "82.69",
+   "prix_moyen": "0.9171",
+   "prix_de_marque": "0.927",
+   "latent": "0.89",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1138953",
+   "ouverte_le": "2026-10-19T04:19"
+  },
+  {
+   "marche": "Will Bitcoin reach $90,000 October 19-25?",
+   "issue": "No",
+   "parts": "5.15",
+   "cout": "4.86",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "0.998",
+   "latent": "0.28",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T14:36"
+  },
+  {
+   "marche": "4890262",
+   "issue": "No",
+   "parts": "8.10",
+   "cout": "7.25",
+   "prix_moyen": "0.8950",
+   "prix_de_marque": "0.983",
+   "latent": "0.71",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1071009",
+   "ouverte_le": "2026-10-20T21:55"
+  },
+  {
+   "marche": "4890270",
+   "issue": "No",
+   "parts": "129.41",
+   "cout": "121.38",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.988",
+   "latent": "6.48",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1071009",
+   "ouverte_le": "2026-10-21T21:16"
+  },
+  {
+   "marche": "Will Lamine Yamal win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "6.82",
+   "cout": "5.64",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.91",
+   "latent": "0.56",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T21:42"
+  },
+  {
+   "marche": "Will Bitcoin reach $86,000 October 19-25?",
+   "issue": "No",
+   "parts": "72.42",
+   "cout": "68.36",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "0.991",
+   "latent": "3.41",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T16:20"
+  },
+  {
+   "marche": "5822999",
+   "issue": "No",
+   "parts": "86.37",
+   "cout": "81.53",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "0.999",
+   "latent": "4.75",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-22T19:47"
+  },
+  {
+   "marche": "Will Kylian Mbappé win the 2026 Ballon d'Or?",
+   "issue": "No",
+   "parts": "5.05",
+   "cout": "4.75",
+   "prix_moyen": "0.9407",
+   "prix_de_marque": "0.819",
+   "latent": "-0.61",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-23T11:05"
+  },
+  {
+   "marche": "Exact Score: Chelsea FC 1 - 0 Tottenham Hotspur FC?",
+   "issue": "No",
+   "parts": "7.45",
+   "cout": "6.95",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.10",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1168572",
+   "ouverte_le": "2026-10-23T16:17"
+  },
+  {
+   "marche": "Will Bitcoin dip to $78,000 October 19-25?",
+   "issue": "No",
+   "parts": "50.54",
+   "cout": "46.15",
+   "prix_moyen": "0.9131",
+   "prix_de_marque": "0.55",
+   "latent": "-18.35",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-24T06:07"
+  },
+  {
+   "marche": "4551277",
+   "issue": "Texans",
+   "parts": "47.73",
+   "cout": "38.88",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-0.70",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1022440",
+   "ouverte_le": "2026-10-24T06:11"
+  }
+ ],
+ "operations_cloturees": 18,
+ "dernieres_operations": [
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "15.83",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:42"
+  },
+  {
+   "marche": "5692175",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "6.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T04:17"
+  },
+  {
+   "marche": "5769270",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "1.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T05:17"
+  },
+  {
+   "marche": "5610602",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "5.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5610598",
+   "issue": "Yes",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "3.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5847928",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "-5.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T19:42"
+  },
+  {
+   "marche": "5409195",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "0.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:53"
+  },
+  {
+   "marche": "5690018",
+   "issue": "Yes",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "5.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "5436651",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "11.12",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:15"
+  },
+  {
+   "marche": "5436849",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "0.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5739653",
+   "issue": "Yes",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "3.62",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "5697539",
+   "issue": "Yes",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "6.06",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T19:46"
+  },
+  {
+   "marche": "5219322",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "0.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T06:05"
+  },
+  {
+   "marche": "5776830",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "0.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T16:16"
+  },
+  {
+   "marche": "4882040",
+   "issue": "No",
+   "strategie": "nf_moyen v1.0.0",
+   "resultat": "6.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T06:06"
+  }
+ ],
+ "performances": {
+  "nf_moyen v1.0.0": {
+   "operations": 18,
+   "evenements": 16,
+   "gagnantes": 17,
+   "taux_reussite": 0.944,
+   "profit_net": "89.31",
+   "frais": "3.90",
+   "rendement_sur_mises": 0.0697,
+   "esperance_par_operation": "4.96",
+   "ic90_rendement_par_euro": [
+    -0.0912,
+    0.1036
+   ],
+   "brier": 0.0569,
+   "log_loss": 0.2742,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

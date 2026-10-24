@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-10-24T15:37:53+00:00",
+ "capital": {
+  "solde_disponible": "546.3367",
+  "capital_immobilise": "120.9663",
+  "gains_realises_nets": "-332.6971",
+  "gains_latents": "26.9825",
+  "frais_payes": "1.8467",
+  "capital_total_estime": "694.2855",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4412,
+ "dernier_battement": "2026-10-22T10:42:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5767157",
+   "issue": "No",
+   "parts": "54.09",
+   "cout": "26.57",
+   "prix_moyen": "0.4912",
+   "prix_de_marque": "0.99",
+   "latent": "26.98",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-17T19:19"
+  },
+  {
+   "marche": "5914218",
+   "issue": "No",
+   "parts": "56.70",
+   "cout": "22.68",
+   "prix_moyen": "0.4000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1215944",
+   "ouverte_le": "2026-10-19T17:03"
+  },
+  {
+   "marche": "5914058",
+   "issue": "No",
+   "parts": "28.45",
+   "cout": "16.50",
+   "prix_moyen": "0.5800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1215922",
+   "ouverte_le": "2026-10-19T19:03"
+  },
+  {
+   "marche": "5914043",
+   "issue": "No",
+   "parts": "41.18",
+   "cout": "23.06",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1215921",
+   "ouverte_le": "2026-10-19T22:03"
+  },
+  {
+   "marche": "5914097",
+   "issue": "No",
+   "parts": "32.13",
+   "cout": "11.25",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1215926",
+   "ouverte_le": "2026-10-19T22:03"
+  },
+  {
+   "marche": "5858689",
+   "issue": "No",
+   "parts": "58.09",
+   "cout": "20.91",
+   "prix_moyen": "0.3600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "groupe": "1209800",
+   "ouverte_le": "2026-10-19T22:13"
+  }
+ ],
+ "operations_cloturees": 80,
+ "dernieres_operations": [
+  {
+   "marche": "5795899",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "21.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T05:37"
+  },
+  {
+   "marche": "5795949",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "30.05",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T06:01"
+  },
+  {
+   "marche": "5863900",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-21.07",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T06:51"
+  },
+  {
+   "marche": "5862187",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-22.06",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T07:07"
+  },
+  {
+   "marche": "5863911",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-21.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T07:52"
+  },
+  {
+   "marche": "5869197",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-22.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T09:51"
+  },
+  {
+   "marche": "5855270",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "22.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:20"
+  },
+  {
+   "marche": "5855543",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-10.79",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:15"
+  },
+  {
+   "marche": "5855564",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-20.79",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:25"
+  },
+  {
+   "marche": "5878047",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-15.27",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:25"
+  },
+  {
+   "marche": "5855368",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-13.89",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:31"
+  },
+  {
+   "marche": "5855530",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-7.55",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:35"
+  },
+  {
+   "marche": "5855455",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-43.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:45"
+  },
+  {
+   "marche": "5855334",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-13.07",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T09:01"
+  },
+  {
+   "marche": "5855517",
+   "issue": "No",
+   "strategie": "meteo_prevision_patiente v1.0.0",
+   "resultat": "-21.77",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T10:40"
+  }
+ ],
+ "performances": {
+  "meteo_prevision_patiente v1.0.0": {
+   "operations": 80,
+   "evenements": 77,
+   "gagnantes": 32,
+   "taux_reussite": 0.4,
+   "profit_net": "-332.70",
+   "frais": "1.78",
+   "rendement_sur_mises": -0.1981,
+   "esperance_par_operation": "-4.16",
+   "ic90_rendement_par_euro": [
+    -0.3707,
+    -0.0141
+   ],
+   "brier": 0.3841,
+   "log_loss": 1.0084,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

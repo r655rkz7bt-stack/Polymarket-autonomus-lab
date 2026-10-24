@@ -1,0 +1,349 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "552.1266",
+  "capital_immobilise": "403.0371",
+  "gains_realises_nets": "-44.8363",
+  "gains_latents": "3.2161",
+  "frais_payes": "2.4239",
+  "capital_total_estime": "958.3798",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2506,
+ "dernier_battement": "2026-10-24T15:17:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "943539",
+   "issue": "No",
+   "parts": "43.48",
+   "cout": "37.60",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.84",
+   "latent": "-1.08",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:44"
+  },
+  {
+   "marche": "1280957",
+   "issue": "Yes",
+   "parts": "78.87",
+   "cout": "74.80",
+   "prix_moyen": "0.9483",
+   "prix_de_marque": "0.996",
+   "latent": "3.76",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "Yes",
+   "parts": "11.44",
+   "cout": "2.80",
+   "prix_moyen": "0.2445",
+   "prix_de_marque": "0.268",
+   "latent": "0.27",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T03:59"
+  },
+  {
+   "marche": "5767158",
+   "issue": "No",
+   "parts": "191.24",
+   "cout": "188.77",
+   "prix_moyen": "0.9871",
+   "prix_de_marque": "0.98",
+   "latent": "-1.35",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-18T09:19"
+  },
+  {
+   "marche": "5767157",
+   "issue": "No",
+   "parts": "13.66",
+   "cout": "13.49",
+   "prix_moyen": "0.9876",
+   "prix_de_marque": "0.99",
+   "latent": "0.03",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-18T09:24"
+  },
+  {
+   "marche": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+   "issue": "No",
+   "parts": "33.58",
+   "cout": "17.53",
+   "prix_moyen": "0.5220",
+   "prix_de_marque": "0.482",
+   "latent": "-1.34",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-18T16:44"
+  },
+  {
+   "marche": "5167210",
+   "issue": "Yes",
+   "parts": "27.16",
+   "cout": "18.20",
+   "prix_moyen": "0.6700",
+   "prix_de_marque": "0.58",
+   "latent": "-2.44",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1111240",
+   "ouverte_le": "2026-10-19T17:05"
+  },
+  {
+   "marche": "2941850",
+   "issue": "No",
+   "parts": "2.38",
+   "cout": "2.00",
+   "prix_moyen": "0.8409",
+   "prix_de_marque": "0.808",
+   "latent": "-0.08",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "708477",
+   "ouverte_le": "2026-10-19T22:49"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "18.10",
+   "cout": "16.76",
+   "prix_moyen": "0.9260",
+   "prix_de_marque": "0.991",
+   "latent": "1.18",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-20T00:30"
+  },
+  {
+   "marche": "4118937",
+   "issue": "Yes",
+   "parts": "1.48",
+   "cout": "0.37",
+   "prix_moyen": "0.2500",
+   "prix_de_marque": "0.048",
+   "latent": "-0.30",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-10-20T18:25"
+  },
+  {
+   "marche": "3741671",
+   "issue": "Yes",
+   "parts": "7.50",
+   "cout": "1.88",
+   "prix_moyen": "0.2500",
+   "prix_de_marque": "0.999",
+   "latent": "5.62",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "878226",
+   "ouverte_le": "2026-10-20T18:25"
+  },
+  {
+   "marche": "5167204",
+   "issue": "Yes",
+   "parts": "17.92",
+   "cout": "12.19",
+   "prix_moyen": "0.6800",
+   "prix_de_marque": "0.74",
+   "latent": "1.08",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1111240",
+   "ouverte_le": "2026-10-20T19:20"
+  },
+  {
+   "marche": "4487264",
+   "issue": "No",
+   "parts": "14.44",
+   "cout": "13.14",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.89",
+   "latent": "-0.29",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1007039",
+   "ouverte_le": "2026-10-21T10:58"
+  },
+  {
+   "marche": "5401795",
+   "issue": "Yes",
+   "parts": "13.05",
+   "cout": "3.52",
+   "prix_moyen": "0.2700",
+   "prix_de_marque": "0.13",
+   "latent": "-1.83",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "groupe": "1147445",
+   "ouverte_le": "2026-10-21T21:07"
+  }
+ ],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "5557834",
+   "issue": "Tampa Bay Rays",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "1.78",
+   "resolution": "résolu : Tampa Bay Rays",
+   "cloturee_le": "2026-10-19T00:27"
+  },
+  {
+   "marche": "5769295",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T06:42"
+  },
+  {
+   "marche": "5769318",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T08:42"
+  },
+  {
+   "marche": "5795992",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5795620",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T22:47"
+  },
+  {
+   "marche": "5795625",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T23:02"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "6.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:15"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "-14.25",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T18:12"
+  },
+  {
+   "marche": "5479392",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T18:12"
+  },
+  {
+   "marche": "5795758",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T05:13"
+  },
+  {
+   "marche": "5640317",
+   "issue": "Yes",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "-3.36",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T20:05"
+  },
+  {
+   "marche": "5855417",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:31"
+  },
+  {
+   "marche": "5855368",
+   "issue": "Yes",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.47",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T08:31"
+  },
+  {
+   "marche": "5855321",
+   "issue": "No",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "0.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T08:51"
+  },
+  {
+   "marche": "5878079",
+   "issue": "Yes",
+   "strategie": "nm_hors_crypto v1.0.0",
+   "resultat": "4.16",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T10:40"
+  }
+ ],
+ "performances": {
+  "nm_hors_crypto v1.0.0": {
+   "operations": 23,
+   "evenements": 20,
+   "gagnantes": 20,
+   "taux_reussite": 0.87,
+   "profit_net": "-44.84",
+   "frais": "1.84",
+   "rendement_sur_mises": -0.0663,
+   "esperance_par_operation": "-1.95",
+   "ic90_rendement_par_euro": [
+    -0.1751,
+    0.395
+   ],
+   "brier": 0.1056,
+   "log_loss": 0.3445,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

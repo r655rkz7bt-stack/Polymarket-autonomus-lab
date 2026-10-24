@@ -1,0 +1,162 @@
+{
+ "genere_le": "2026-10-24T15:37:55+00:00",
+ "capital": {
+  "solde_disponible": "504.1769",
+  "capital_immobilise": "496.9925",
+  "gains_realises_nets": "1.1694",
+  "gains_latents": "19.3216",
+  "frais_payes": "1.6452",
+  "capital_total_estime": "1020.4910",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0256,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the Tampa Bay Rays win the 2026 World Series?",
+   "issue": "No",
+   "parts": "113.45",
+   "cout": "96.76",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "0.721",
+   "latent": "-14.96",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "4375452",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "10.94",
+   "prix_moyen": "0.8755",
+   "prix_de_marque": "0.798",
+   "latent": "-0.97",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T18:35"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by November 2?",
+   "issue": "No",
+   "parts": "73.00",
+   "cout": "60.71",
+   "prix_moyen": "0.8317",
+   "prix_de_marque": "0.93",
+   "latent": "7.18",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-19T11:49"
+  },
+  {
+   "marche": "Will there be a Hormuz agreement and the Democrats win the Senate?",
+   "issue": "No",
+   "parts": "122.23",
+   "cout": "106.66",
+   "prix_moyen": "0.8726",
+   "prix_de_marque": "0.946",
+   "latent": "8.97",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-19T13:24"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through October 22?",
+   "issue": "Yes",
+   "parts": "97.23",
+   "cout": "80.09",
+   "prix_moyen": "0.8238",
+   "prix_de_marque": "0.991",
+   "latent": "16.26",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-19T17:54"
+  },
+  {
+   "marche": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+   "issue": "No",
+   "parts": "110.30",
+   "cout": "94.34",
+   "prix_moyen": "0.8553",
+   "prix_de_marque": "0.846",
+   "latent": "-1.03",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-20T05:13"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by October 31?",
+   "issue": "No",
+   "parts": "49.52",
+   "cout": "43.08",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.948",
+   "latent": "3.86",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-20T14:36"
+  },
+  {
+   "marche": "5640330",
+   "issue": "No",
+   "parts": "5.35",
+   "cout": "4.41",
+   "prix_moyen": "0.8240",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "1180837",
+   "ouverte_le": "2026-10-20T19:15"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nf_prix_bas v1.0.0",
+   "resultat": "1.17",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:14"
+  }
+ ],
+ "performances": {
+  "nf_prix_bas v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "1.17",
+   "frais": "0.03",
+   "rendement_sur_mises": 0.1712,
+   "esperance_par_operation": "1.17",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0101,
+   "log_loss": 0.1059,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

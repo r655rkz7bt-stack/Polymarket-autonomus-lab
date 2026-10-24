@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-24T15:38:00+00:00",
+ "capital": {
+  "solde_disponible": "850.6264",
+  "capital_immobilise": "86.9147",
+  "gains_realises_nets": "-62.4589",
+  "gains_latents": "-0.7037",
+  "frais_payes": "19.8346",
+  "capital_total_estime": "936.8375",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1394,
+ "dernier_battement": "2026-10-24T15:13:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "W50 Cherbourg-en-Cotentin: Mariam Bolkvadze vs Harmony Tan",
+   "issue": "Harmony Tan",
+   "parts": "20.47",
+   "cout": "16.34",
+   "prix_moyen": "0.7983",
+   "prix_de_marque": "0.999",
+   "latent": "4.11",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "groupe": "1242430",
+   "ouverte_le": "2026-10-24T13:03"
+  },
+  {
+   "marche": "Pan Pacific Open, Qualification: En-Shuo Liang vs Tereza Valentova",
+   "issue": "Tereza Valentova",
+   "parts": "44.72",
+   "cout": "40.79",
+   "prix_moyen": "0.9122",
+   "prix_de_marque": "0.999",
+   "latent": "3.88",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "groupe": "1244170",
+   "ouverte_le": "2026-10-24T13:56"
+  },
+  {
+   "marche": "European Open: Francisco Cerundolo vs Tallon Griekspoor",
+   "issue": "Francisco Cerundolo",
+   "parts": "34.01",
+   "cout": "29.78",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.62",
+   "latent": "-8.69",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "groupe": "1241427",
+   "ouverte_le": "2026-10-24T14:32"
+  }
+ ],
+ "operations_cloturees": 75,
+ "dernieres_operations": [
+  {
+   "marche": "6069390",
+   "issue": "Gustavo Heide",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "5.17",
+   "resolution": "résolu : Gustavo Heide",
+   "cloturee_le": "2026-10-23T22:50"
+  },
+  {
+   "marche": "6078343",
+   "issue": "Kamilla Rakhimova",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "8.17",
+   "resolution": "résolu : Kamilla Rakhimova",
+   "cloturee_le": "2026-10-24T03:40"
+  },
+  {
+   "marche": "6078339",
+   "issue": "Ena Shibahara",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "-32.70",
+   "resolution": "résolu : Alycia Parks",
+   "cloturee_le": "2026-10-24T06:25"
+  },
+  {
+   "marche": "6078353",
+   "issue": "Katerina Siniakova",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.62",
+   "resolution": "résolu : Katerina Siniakova",
+   "cloturee_le": "2026-10-24T09:51"
+  },
+  {
+   "marche": "6084819",
+   "issue": "Tatiana Prozorova",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.94",
+   "resolution": "résolu : Tatiana Prozorova",
+   "cloturee_le": "2026-10-24T09:55"
+  },
+  {
+   "marche": "6094809",
+   "issue": "Sonja Zhenikhova",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "3.98",
+   "resolution": "résolu : Sonja Zhenikhova",
+   "cloturee_le": "2026-10-24T10:46"
+  },
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "5.26",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "6094811",
+   "issue": "Tara Wuerth",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.72",
+   "resolution": "résolu : Tara Wuerth",
+   "cloturee_le": "2026-10-24T11:05"
+  },
+  {
+   "marche": "6078347",
+   "issue": "Yulia Putintseva",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "6.65",
+   "resolution": "résolu : Yulia Putintseva",
+   "cloturee_le": "2026-10-24T11:05"
+  },
+  {
+   "marche": "6078331",
+   "issue": "Shuai Zhang",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "3.95",
+   "resolution": "résolu : Shuai Zhang",
+   "cloturee_le": "2026-10-24T14:01"
+  },
+  {
+   "marche": "6099814",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.09",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-10-24T14:01"
+  },
+  {
+   "marche": "6105759",
+   "issue": "Linda Fruhvirtova",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "-91.92",
+   "resolution": "résolu : Mei Yamaguchi",
+   "cloturee_le": "2026-10-24T14:06"
+  },
+  {
+   "marche": "6099806",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "5.88",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-24T14:35"
+  },
+  {
+   "marche": "6099826",
+   "issue": "Giovanni Mpetshi Perricard",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.13",
+   "resolution": "résolu : Giovanni Mpetshi Perricard",
+   "cloturee_le": "2026-10-24T14:46"
+  },
+  {
+   "marche": "6099812",
+   "issue": "Alex Molcan",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "3.88",
+   "resolution": "résolu : Alex Molcan",
+   "cloturee_le": "2026-10-24T15:11"
+  }
+ ],
+ "performances": {
+  "nf_tennis_debut_match v1.0.0": {
+   "operations": 75,
+   "evenements": 75,
+   "gagnantes": 63,
+   "taux_reussite": 0.84,
+   "profit_net": "-62.46",
+   "frais": "19.29",
+   "rendement_sur_mises": -0.0184,
+   "esperance_par_operation": "-0.83",
+   "ic90_rendement_par_euro": [
+    -0.1159,
+    0.0431
+   ],
+   "brier": 0.1375,
+   "log_loss": 0.4665,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

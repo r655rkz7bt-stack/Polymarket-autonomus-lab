@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-24T15:38:01+00:00",
+ "capital": {
+  "solde_disponible": "1135.4551",
+  "capital_immobilise": "40.7552",
+  "gains_realises_nets": "176.2104",
+  "gains_latents": "0.0000",
+  "frais_payes": "30.8931",
+  "capital_total_estime": "1176.2104",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1138,
+ "dernier_battement": "2026-10-21T15:06:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5967423",
+   "issue": "Stefanos Tsitsipas",
+   "parts": "43.67",
+   "cout": "40.76",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_tennis v1.0.0",
+   "groupe": "1223269",
+   "ouverte_le": "2026-10-21T08:12"
+  }
+ ],
+ "operations_cloturees": 86,
+ "dernieres_operations": [
+  {
+   "marche": "5825781",
+   "issue": "Tomas Machac",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "11.00",
+   "resolution": "résolu : Tomas Machac",
+   "cloturee_le": "2026-10-21T10:21"
+  },
+  {
+   "marche": "5919253",
+   "issue": "Leylah Fernandez",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "9.98",
+   "resolution": "résolu : Leylah Fernandez",
+   "cloturee_le": "2026-10-21T11:02"
+  },
+  {
+   "marche": "5931589",
+   "issue": "Nikoloz Basilashvili",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "8.49",
+   "resolution": "résolu : Nikoloz Basilashvili",
+   "cloturee_le": "2026-10-21T11:11"
+  },
+  {
+   "marche": "5931591",
+   "issue": "Francisco Cerundolo",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "9.21",
+   "resolution": "résolu : Francisco Cerundolo",
+   "cloturee_le": "2026-10-21T11:51"
+  },
+  {
+   "marche": "5967413",
+   "issue": "Yi Zhou",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "9.03",
+   "resolution": "résolu : Yi Zhou",
+   "cloturee_le": "2026-10-21T11:51"
+  },
+  {
+   "marche": "5992255",
+   "issue": "Kayo Nishimura",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "2.67",
+   "resolution": "résolu : Kayo Nishimura",
+   "cloturee_le": "2026-10-21T12:02"
+  },
+  {
+   "marche": "5969748",
+   "issue": "Dalayna Hewitt",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "11.69",
+   "resolution": "résolu : Dalayna Hewitt",
+   "cloturee_le": "2026-10-21T12:31"
+  },
+  {
+   "marche": "5967417",
+   "issue": "Andre Ilagan",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "7.17",
+   "resolution": "résolu : Andre Ilagan",
+   "cloturee_le": "2026-10-21T13:16"
+  },
+  {
+   "marche": "5796206",
+   "issue": "Damir Dzumhur",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "9.52",
+   "resolution": "résolu : Damir Dzumhur",
+   "cloturee_le": "2026-10-21T13:16"
+  },
+  {
+   "marche": "5992277",
+   "issue": "Yelyzaveta Kotliar",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "9.71",
+   "resolution": "résolu : Yelyzaveta Kotliar",
+   "cloturee_le": "2026-10-21T13:32"
+  },
+  {
+   "marche": "5978933",
+   "issue": "Tallon Griekspoor",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "9.55",
+   "resolution": "résolu : Tallon Griekspoor",
+   "cloturee_le": "2026-10-21T13:56"
+  },
+  {
+   "marche": "5950855",
+   "issue": "Elmer Moeller",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "14.27",
+   "resolution": "résolu : Elmer Moeller",
+   "cloturee_le": "2026-10-21T14:14"
+  },
+  {
+   "marche": "5992276",
+   "issue": "Eleejah Inisan",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "-60.98",
+   "resolution": "résolu : Demi Tran",
+   "cloturee_le": "2026-10-21T14:36"
+  },
+  {
+   "marche": "5969754",
+   "issue": "Susan Bandecchi",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "3.27",
+   "resolution": "résolu : Susan Bandecchi",
+   "cloturee_le": "2026-10-21T14:36"
+  },
+  {
+   "marche": "5992261",
+   "issue": "Ilary Pistola",
+   "strategie": "nf_tennis v1.0.0",
+   "resultat": "8.78",
+   "resolution": "résolu : Ilary Pistola",
+   "cloturee_le": "2026-10-21T15:02"
+  }
+ ],
+ "performances": {
+  "nf_tennis v1.0.0": {
+   "operations": 86,
+   "evenements": 86,
+   "gagnantes": 77,
+   "taux_reussite": 0.895,
+   "profit_net": "176.21",
+   "frais": "30.75",
+   "rendement_sur_mises": 0.0363,
+   "esperance_par_operation": "2.05",
+   "ic90_rendement_par_euro": [
+    -0.0284,
+    0.0999
+   ],
+   "brier": 0.0929,
+   "log_loss": 0.3331,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,361 @@
+{
+ "genere_le": "2026-10-24T15:37:49+00:00",
+ "capital": {
+  "solde_disponible": "841.0523",
+  "capital_immobilise": "137.4302",
+  "gains_realises_nets": "-21.5175",
+  "gains_latents": "0.0000",
+  "frais_payes": "8.2549",
+  "capital_total_estime": "978.4825",
+  "positions_ouvertes": "15",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.072,
+ "dernier_battement": "2026-10-20T15:50:40+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5640330",
+   "issue": "No",
+   "parts": "29.63",
+   "cout": "22.75",
+   "prix_moyen": "0.7679",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1180837",
+   "ouverte_le": "2026-10-20T11:32"
+  },
+  {
+   "marche": "5640323",
+   "issue": "No",
+   "parts": "19.86",
+   "cout": "17.43",
+   "prix_moyen": "0.8776",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1180837",
+   "ouverte_le": "2026-10-20T11:32"
+  },
+  {
+   "marche": "5914381",
+   "issue": "No",
+   "parts": "10.02",
+   "cout": "7.90",
+   "prix_moyen": "0.7886",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1215959",
+   "ouverte_le": "2026-10-20T11:45"
+  },
+  {
+   "marche": "5916862",
+   "issue": "Yes",
+   "parts": "9.39",
+   "cout": "4.25",
+   "prix_moyen": "0.4523",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1216346",
+   "ouverte_le": "2026-10-20T11:54"
+  },
+  {
+   "marche": "5916863",
+   "issue": "No",
+   "parts": "7.18",
+   "cout": "4.18",
+   "prix_moyen": "0.5823",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1216346",
+   "ouverte_le": "2026-10-20T11:54"
+  },
+  {
+   "marche": "5929768",
+   "issue": "No",
+   "parts": "5.16",
+   "cout": "2.75",
+   "prix_moyen": "0.5325",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1218521",
+   "ouverte_le": "2026-10-20T12:16"
+  },
+  {
+   "marche": "5917552",
+   "issue": "No",
+   "parts": "6.25",
+   "cout": "4.56",
+   "prix_moyen": "0.7301",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1216552",
+   "ouverte_le": "2026-10-20T12:30"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 24, 2026?",
+   "issue": "No",
+   "parts": "11.39",
+   "cout": "4.67",
+   "prix_moyen": "0.4096",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "956789",
+   "ouverte_le": "2026-10-20T12:49"
+  },
+  {
+   "marche": "5950642",
+   "issue": "No",
+   "parts": "16.25",
+   "cout": "8.33",
+   "prix_moyen": "0.5125",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1185700",
+   "ouverte_le": "2026-10-20T12:59"
+  },
+  {
+   "marche": "5479391",
+   "issue": "Yes",
+   "parts": "8.44",
+   "cout": "4.93",
+   "prix_moyen": "0.5846",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1162658",
+   "ouverte_le": "2026-10-20T13:34"
+  },
+  {
+   "marche": "5653747",
+   "issue": "No",
+   "parts": "13.75",
+   "cout": "6.98",
+   "prix_moyen": "0.5075",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-20T13:39"
+  },
+  {
+   "marche": "5920678",
+   "issue": "Yes",
+   "parts": "27.86",
+   "cout": "20.14",
+   "prix_moyen": "0.7228",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1217450",
+   "ouverte_le": "2026-10-20T13:45"
+  },
+  {
+   "marche": "5914293",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.14",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1215951",
+   "ouverte_le": "2026-10-20T13:45"
+  },
+  {
+   "marche": "5920676",
+   "issue": "Yes",
+   "parts": "68.00",
+   "cout": "14.04",
+   "prix_moyen": "0.2064",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "1217450",
+   "ouverte_le": "2026-10-20T13:50"
+  },
+  {
+   "marche": "5957192",
+   "issue": "Yes",
+   "parts": "28.44",
+   "cout": "10.39",
+   "prix_moyen": "0.3655",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-20T13:50"
+  }
+ ],
+ "operations_cloturees": 21,
+ "dernieres_operations": [
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $105 in October?",
+   "issue": "No",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "0.43",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T12:30"
+  },
+  {
+   "marche": "Next Fable Model (5.2+) released by October 24, 2026?",
+   "issue": "No",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-1.10",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T12:45"
+  },
+  {
+   "marche": "5920676",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-0.38",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T12:49"
+  },
+  {
+   "marche": "5920677",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "0.98",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T12:49"
+  },
+  {
+   "marche": "5914328",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-0.35",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:19"
+  },
+  {
+   "marche": "5920676",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "0.08",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:24"
+  },
+  {
+   "marche": "5653747",
+   "issue": "No",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:24"
+  },
+  {
+   "marche": "5837094",
+   "issue": "No",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-5.12",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:34"
+  },
+  {
+   "marche": "2941849",
+   "issue": "No",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-0.60",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:34"
+  },
+  {
+   "marche": "5920677",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-1.32",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:34"
+  },
+  {
+   "marche": "5920674",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-0.22",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:34"
+  },
+  {
+   "marche": "5920676",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-2.98",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:45"
+  },
+  {
+   "marche": "5920675",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-4.07",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:50"
+  },
+  {
+   "marche": "Will WTI Crude Oil (WTI) hit (HIGH) $105 in October?",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-0.59",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:50"
+  },
+  {
+   "marche": "5920677",
+   "issue": "Yes",
+   "strategie": "choc_sans_nouvelle v1.0.0",
+   "resultat": "-3.76",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-20T13:50"
+  }
+ ],
+ "performances": {
+  "choc_sans_nouvelle v1.0.0": {
+   "operations": 21,
+   "evenements": 9,
+   "gagnantes": 5,
+   "taux_reussite": 0.238,
+   "profit_net": "-21.43",
+   "frais": "5.57",
+   "rendement_sur_mises": -0.1745,
+   "esperance_par_operation": "-1.02",
+   "ic90_rendement_par_euro": [
+    -0.2,
+    -0.0306
+   ],
+   "brier": null,
+   "log_loss": null,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 20575,
+  "rejetees": 6925,
+  "raisons_de_rejet": {
+   "carnet périmé": 3347,
+   "taille inférieure au minimum du marché": 2485,
+   "solde déjà réservé par les ordres posés": 1242,
+   "aucun vendeur dans le carnet": 10,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.84 à 0.76 pendant le cycle": 7,
+   "le prix a chuté de 0.82 à 0.78 pendant le cycle": 6,
+   "le prix a chuté de 0.813 à 0.733 pendant le cycle": 6
+  }
+ },
+ "erreurs_recentes": []
+}
