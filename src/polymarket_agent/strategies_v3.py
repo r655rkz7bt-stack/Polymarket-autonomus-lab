@@ -1270,8 +1270,9 @@ class BoxOfficeFavori(_Base):
     """« Box-office du premier week-end » (5 tranches de recettes par film) : on achète le OUI de la tranche
     favorite, entre `min_hours` et `max_hours` avant la fin du marché (vendredi et samedi déjà connus du public).
     Sur le passé (experiments/box_office.md, 24/10/2026), aux prix du dernier achat réel et frais 5 % : à 24 h de la fin,
-    110 films, la favorite gagne 100 fois pour 93,6 attendues, +7,5 % par pari (t par film 1,96) ; mais 24 réglages
-    regardés, 2e moitié meilleure que la 1re, découpe par jour de fin instable : indice faible, fantôme.
+    110 films, la favorite gagne 100 fois pour 93,6 attendues, +7,5 % par pari (t par film 1,96) ; ancrée sur le week-end
+    (dimanche 0 h → 16 h UTC) +6,6 % (142 films, t 1,56) mais −2 % si l'on commence dès le samedi 18 h : ~40 réglages
+    regardés, découpe par jour de fin instable, trois familles témoins (Netflix, vues, Rotten Tomatoes) sans effet : indice faible, fantôme.
     Pourquoi ça peut rater : sélection parmi beaucoup d'essais ; la fin du marché varie (dimanche midi ou lundi midi)."""
 
     strategy_id = "box_office_favori"
@@ -1305,6 +1306,10 @@ class BoxOfficeFavori(_Base):
             hours = (ms[0].end_date - now).total_seconds() / 3600
             if not float(p["min_hours"]) <= hours <= float(p["max_hours"]):
                 out.abstain("hors de la fenêtre avant la fin")
+                continue
+            wd = int(p.get("weekday", -1))  # fenêtre ancrée sur le week-end (la fin du marché varie : dimanche midi ou lundi midi)
+            if wd >= 0 and not (now.weekday() == wd and float(p.get("hour_from", 0)) <= now.hour + now.minute / 60 < float(p.get("hour_to", 24))):
+                out.abstain("hors de la fenêtre du week-end")
                 continue
             asks = []
             for m in ms:

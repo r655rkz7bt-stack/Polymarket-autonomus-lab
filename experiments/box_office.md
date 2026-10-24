@@ -53,8 +53,13 @@ Netflix : −7 % à +1 % selon l'horizon (z des prix −1,2 à +0,2) ; vues : �
 La favorite sous-cotée n'est donc pas une propriété générale des marchés à tranches : soit un trait du box-office (débutants qui sous-estiment le vendredi et le samedi), soit le hasard d'un meilleur de ~30 réglages.
 Ce contrôle PLAFONNE la confiance : indice faible, pas plus.
 
+## 7. Ancrer l'heure sur le week-end, pas sur la fin du marché (`scripts/ancre.py`, `scripts/fenetre.py`)
+La fin du marché varie (lundi 12 h ou dimanche midi UTC). Ancre = dimanche 00 h UTC (samedi soir à New York) : favorite achetée à l'ancre − 48 h : −0,7 %, − 36 h : +2,3 %, − 24 h : +0,2 %, − 12 h : +5,2 % (t 1,5), à l'ancre : **+7,6 %** (121 films, t 1,94, z des prix +2,0), + 12 h : +4,5 % (t 0,9) ;
+dimanche 12 h UTC +4,5 % (t 0,9) ; avant, rien. Règle « premier achat réel entre le samedi 18 h et le dimanche 16 h UTC » : **−2,0 %** (154 films, t −0,44) ; « dimanche 0 h → 16 h » : **+6,6 %** (142 films, t 1,56, 120 gagnés pour 112,5).
+Le signal n'existe qu'après les chiffres du samedi (mécanisme plausible : le marché sous-réagit au vendredi et au samedi) mais il disparaît si l'on commence trois heures trop tôt : fragile. La règle jouée par le fantôme est celle de dimanche 0 h → 16 h UTC (`weekday`, `hour_from`, `hour_to`).
+
 ## Verdict : **indice faible → fantôme** `box_office_favori`
 Positif à tous les horizons, significatif seulement à 24 h (t 1,96-2,2) après sélection parmi ~30 réglages (z attendu du meilleur de 30 ≈ 2) ; la favorite gagne 6 fois de plus que son prix
-sur 110 (z des prix ≈ +2). Fantôme en quart de Kelly, fenêtre 14-40 h avant la fin ; l'arène (carnets réels, 2-3 week-ends par mois) confirmera ou non.
+sur 110 (z des prix ≈ +2). Fantôme en quart de Kelly, fenêtre dimanche 0 h → 16 h UTC ; l'arène (carnets réels, 2-3 week-ends par mois) confirmera ou non.
 Prochain test honnête : les week-ends du 24-25/10, 30/10-1/11 et 7-8/11, tels que l'arène les joue (`box_office_favori`), puis `releve.py` + `favori.py` pour ajouter les films réglés depuis.
 Pistes voisines non faites : « 2nd Weekend Box Office » (nouvelle série depuis octobre), « total domestic gross by <date> » (seuils), Rotten Tomatoes (12-24 k$ de volume, aucune donnée de départ).
