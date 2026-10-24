@@ -65,6 +65,9 @@ Sur les 28 semaines ≥ 5,5, mon compte tombe dans la tranche gagnante 18 fois (
 de magnitude (5,4 / 5,45 / 5,5 / 5,55 : 15 / 18 / 18 / 9) n'explique les 10 écarts ; le marché compte toujours un séisme de PLUS. Les paris simulés ≥ 5,5 sont réglés sur le résultat officiel du marché, donc ce défaut est déjà payé
 dans le +24 % ; à titre d'illustration (sélection sur l'issue, à ne pas utiliser comme preuve) : semaines où mon compte = celui du marché +69 % (103 paris), semaines où il diffère −35 % (78 paris). Une stratégie qui parie sur le compte
 exact depuis le catalogue d'aujourd'hui joue donc contre un règlement dont la règle exacte est inconnue : raison de plus pour un quart de Kelly et un fantôme.
+**Hypothèse la plus probable (non vérifiable)** : le règlement a lieu 1 à 2 jours après la fin de la semaine, avec les séismes que l'USGS listait ALORS (provisoires) ; certains ont depuis été fusionnés, supprimés ou révisés sous 5,5, et le catalogue
+d'aujourd'hui (celui de mon relevé) ne les contient plus. Le sens des écarts (toujours un de PLUS chez le marché) et le fait que les séismes ≥ 6,5, mieux revus, ne bougent jamais vont dans ce sens. Si c'est vrai, le flux en direct que lit la stratégie
+voit les mêmes séismes provisoires que le résolveur : le décalage serait plus petit en direct que dans ce test.
 
 ## Ce qui a été regardé et écarté (24/10, suite)
 - **Après la fin du jour** (le maximum est connu, le marché reste ouvert jusqu'à 18 h UTC le lendemain) : le gagnant s'achète 0,97 en moyenne (9 jours, 1re heure et demie après minuit UTC), 0,977 à +2 h, 0,997 à +6 h ; or mon maximum redonne le bon

@@ -167,3 +167,20 @@ def test_tables_are_complete():
     assert set(t["jour"]) == {str(h) for h in range(25)} and set(t["semaine"]) == {"5.5", "6.5"}
     assert all(set(v) == {str(x) for x in sm.DAILY_THRESHOLDS} for v in t["jour"].values())
     assert t["jour"]["24"]["6.05"] == 1.0 and t["jour"]["12"]["5.25"] < t["jour"]["18"]["5.25"] < 1.0
+
+
+def test_strategy_takes_at_most_two_buckets_of_the_same_event_best_edge_first(tmp_path):
+    s = _s(SeismesMarche, min_net_edge=0.02, uncertainty=0.0, min_price=0.04, max_price=0.96, max_stale_hours=1,
+           max_extra_ticks=1, max_proposals_per_cycle=6, max_per_event=2, kelly_fraction=0.25)
+    now = datetime(2026, 10, 14, 12, 0, tzinfo=UTC)
+    ms, books = [], {}
+    for mid, p, yes in (("a", 0.95, 0.60), ("b", 0.80, 0.60), ("c", 0.70, 0.60)):    # écarts 0,35 / 0,20 / 0,10, même événement
+        m = _daily_market(mid, "Will the biggest earthquake on October 22, 2026 be 6.1 or more?")
+        m.references = {"seismes": {"p": p, "titre": "test", "vu_le": now.isoformat()}}
+        b = _books((f"{mid}Y", f"{yes - 0.01:.3f}", f"{yes + 0.01:.3f}"), (f"{mid}N", f"{1 - yes - 0.01:.3f}", f"{1 - yes + 0.01:.3f}"))
+        for book in b.values():
+            book.fetched_at = now
+        ms.append(m)
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert {p.market_id for p in out.proposals} == {"a", "b"} and "déjà deux tranches de cet événement" in str(out.abstentions)

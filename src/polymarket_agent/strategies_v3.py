@@ -1227,6 +1227,7 @@ class SeismesMarche(_Base):
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.sources._util import parse_date
         out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        scored = []
         for m in watchlist:
             ref = (getattr(m, "references", None) or {}).get("seismes")
             if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
@@ -1235,7 +1236,7 @@ class SeismesMarche(_Base):
             if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
                 out.abstain("catalogue USGS pas à jour")
                 continue
-            fair, unc = float(ref["p"]), float(p.get("uncertainty", 0))
+            fair = float(ref["p"])
             best = None
             for side, est in ((0, fair), (1, 1 - fair)):
                 book = books.get(m.token_ids[side])
@@ -1247,11 +1248,19 @@ class SeismesMarche(_Base):
             if best is None:
                 out.abstain("issue hors de la plage de prix ou carnet vide")
                 continue
-            side, est, _ = best
+            scored.append((best[2], m, best[0], best[1], ref))
+        # Les tranches d'un même événement gagnent ou perdent ensemble (même compte, même maximum) : au plus `max_per_event`, les meilleures d'abord.
+        per_event: dict = {}
+        unc = float(p.get("uncertainty", 0))
+        for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
+            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 2)):
+                out.abstain("déjà deux tranches de cet événement")
+                continue
             prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
                              f"seismes:{ref['titre']}", f"loi calculée {est:.3f} pour l'issue achetée",
                              "une réplique ou un séisme fort de dernière minute, ou une révision de magnitude par l'USGS")
             if prop is not None:
+                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
                 props.append(prop)
         return self._finish(out, props)
 
