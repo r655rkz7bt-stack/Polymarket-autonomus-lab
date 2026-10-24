@@ -210,8 +210,17 @@ sources:
   x_api: {enabled: false}      # payant : interdit n°2 de CLAUDE.md
   # Relevés officiels NOAA (METAR) des stations qui tranchent les marchés de température.
   meteo_metar: {enabled: true, every_minutes: 15, max_stations: 60}   # aviationweather.gov
+  # Observatoire de Hong Kong (arbitre des marchés de Hong Kong, tranches par TRONCATURE) : max et min depuis minuit
+  # + bulletin de la veille (`veille`) ; 2 appels par passage, sans clé.
+  meteo_hko: {enabled: true, every_minutes: 15, veille: true}       # data.weather.gov.hk
   # Prévisions GFS + ECMWF aux stations (stratégie meteo_prevision) ; débit limité par adresse.
   meteo_prevision: {enabled: true, every_minutes: 60}                 # api.open-meteo.com
+  # Ensembles GEFS (31 membres) + ECMWF (51) aux stations : probabilité par tranche relevée en base à côté des prix
+  # (weather_ensemble.py), aucun historique gratuit ailleurs. Coût : 8,2 appels Open-Meteo par station (chaque membre
+  # compte comme une variable) ; 50 stations toutes les 6 h ≈ 1 640 appels par jour sur 10 000 gratuits.
+  # `tous_les_marches` : relit sur Gamma TOUS les marchés de température ouverts (< `heures`), pas seulement les 150 surveillés.
+  meteo_ensemble: {enabled: true, every_minutes: 360, per_request: 10, timeout: 60, tous_les_marches: true, heures: 48,
+                   models: [gfs025, ecmwf_ifs025]}  # ensemble-api.open-meteo.com
   # Valeurs réelles (tranche gagnante des marchés météo résolus) : étalonnage par station.
   meteo_reel: {enabled: true, every_minutes: 180, days: 10}           # gamma-api.polymarket.com
   # Scores officiels des ligues (sources de résolution, chantier n°0), sans clé.

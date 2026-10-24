@@ -56,6 +56,13 @@ def parse_question(question: str) -> TempQuestion | None:
     return None
 
 
+def truncated(q: TempQuestion) -> TempQuestion:
+    """Tranche d'un marché réglé par TRONCATURE d'une valeur au dixième (Observatoire de Hong Kong) :
+    « 27°C » = [27,0 ; 28,0[ au lieu de [26,5 ; 27,5[ (vérifié sur 166 marchés réglés, 23/10/2026,
+    experiments/meteo_ensemble/hk_reglement.py)."""
+    return TempQuestion(q.kind, q.low + 0.5, q.high + 0.5, q.unit, q.month, q.day)
+
+
 def to_unit(celsius: float, unit: str) -> float:
     return celsius if unit == "C" else celsius * 9 / 5 + 32
 
@@ -137,17 +144,22 @@ def parse_bucket(question: str) -> Bucket | None:
     return Bucket(lo, hi, unit.upper(), month_n, int(day))
 
 
-def certain_side(bucket: Bucket, max_c: float, margin_c: float = 1.0, margin_f: float = 2.0) -> int | None:
+def certain_side(bucket: Bucket, max_c: float, margin_c: float = 1.0, margin_f: float = 2.0,
+                 truncation: bool = False) -> int | None:
     """0 = « Oui » certain, 1 = « Non » certain, None = rien de sûr.
 
     Marge : METAR en °C entiers, conversion °F arrondie, relevés intermédiaires absents : on exige
-    `margin` degrés d'avance (le maximum METAR est un minimum du maximum officiel : jamais trop haut)."""
+    `margin` degrés d'avance (le maximum METAR est un minimum du maximum officiel : jamais trop haut).
+    `truncation` (Observatoire de Hong Kong, 23/10/2026) : la tranche « N » contient [N ; N+1[ au lieu de
+    [N−0,5 ; N+0,5[ ; tous les bords sont décalés de +0,5 (sans cela, 31,6 °C « dépassait » la tranche 31 °C
+    avec une marge de 0,5 alors qu'il est dedans)."""
     if bucket.unit == "F":
         value, margin = max_c * 9 / 5 + 32, margin_f
     else:
         value, margin = max_c, margin_c
-    if bucket.high is not None and value >= bucket.high + margin:
+    shift = 0.5 if truncation else 0.0
+    if bucket.high is not None and value >= bucket.high + shift + margin:
         return 1  # le maximum a déjà dépassé le haut de la tranche
-    if bucket.high is None and bucket.low is not None and value >= bucket.low + margin:
+    if bucket.high is None and bucket.low is not None and value >= bucket.low + shift + margin:
         return 0  # « X ou plus » déjà atteint
     return None

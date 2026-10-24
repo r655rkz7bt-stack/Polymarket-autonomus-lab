@@ -575,7 +575,8 @@ class TemperatureFloor(_Base):
                 continue
             if any(t in state.positions for t in m.token_ids):
                 continue
-            side = certain_side(b, float(w["max_jour_c"]), float(p["margin_c"]), float(p["margin_f"]))
+            side = certain_side(b, float(w["max_jour_c"]), float(p["margin_c"]), float(p["margin_f"]),
+                                truncation=w.get("regle") == "troncature")  # Hong Kong (meteo_hko)
             if side is None:
                 continue
             c = float(p["certainty"])

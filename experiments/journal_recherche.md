@@ -3,6 +3,18 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-24 (session avec Etienne : météo par ensemble et Hong Kong)
+
+- **Enquête** : les marchés de température de Hong Kong se règlent par TRONCATURE du dixième (« 27°C » = 27,0 à 27,9), pas par arrondi :
+  166 règlements sur 166 (`experiments/meteo_ensemble/hk_reglement.py`). Notre modèle supposait l'arrondi (erreur d'un demi-degré) :
+  `weather_model.truncated`, `certain_side(..., truncation=True)`, testés.
+- **Recherche** (`experiments/meteo_ensemble.md`) : Open-Meteo ne garde pas les prévisions d'ensemble passées (3 jours recollés des derniers
+  passages : regard vers le futur) ; archives brutes NOAA GEFS / ECMWF sur AWS (GRIB2) possibles plus tard. Verdict : **pas testable aujourd'hui**.
+- **Sources** : `meteo_hko` (arbitre de Hong Kong, maximum et minimum depuis minuit) ; `meteo_ensemble` (82 membres) avec relevé des probabilités
+  par tranche ET des prix toutes les 6 h (tables `meteo_ensemble_releves` / `_membres`), vérifiés en vrai le 24/10.
+- **Arène** : rien (pas de stratégie sans test).
+- **Reste ouvert** : juger le relevé dans 5 à 7 jours (`experiments/meteo_ensemble/evaluer_releve.py --base …`, aux prix payés).
+
 ## 2026-10-24 (passage chercheur, matin : 04 h 55 UTC → voir fin de l'entrée)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-24_principal_contre_fantome_copie.md` ; famille du jour 1 « le principal ne joue pas ce que l'arène mesure », puis les trois obligations « chance »).

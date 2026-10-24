@@ -39,6 +39,13 @@ def station_of(resolution_source: str, description: str = "") -> str | None:
     return found.group(1).upper() if found else None
 
 
+def station_for_market(m) -> str | None:
+    """Station qui tranche un marché de température : METAR citée par Gamma, ou l'Observatoire de Hong Kong."""
+    from polymarket_agent.sources import hko
+    return station_of(getattr(m, "resolution_source", ""), getattr(m, "description", "")) or (
+        hko.STATION if hko.is_hko_market(m) else None)
+
+
 def stations_for(markets) -> dict[str, list[str]]:
     """Station → identifiants des marchés qu'elle tranche."""
     out: dict[str, list[str]] = {}
@@ -163,5 +170,81 @@ class ForecastSource:
                     text="", market_ids=list(markets_by_station[code]),
                     data={"station": code, "utc_offset": int(item.get("utc_offset_seconds") or 0),
                           "jours": days}).finalize())
+        return out
+
+
+ENSEMBLE_URL = "https://ensemble-api.open-meteo.com/v1/ensemble"
+# Paramètre `models` → (nom court, suffixe des séries renvoyées). Vérifié le 23/10/2026 : 31 membres GEFS
+# (témoin + 30) et 51 membres ECMWF (témoin + 50) ; autres ensembles proposés : icon_seamless/global/eu/d2,
+# gfs05, ecmwf_aifs025, gem_global, bom_access_global_ensemble, ukmo_global_ensemble_20km, ukmo_uk_ensemble_2km.
+ENSEMBLE_MODELS = {"gfs025": ("gefs", "ncep_gefs025"), "ecmwf_ifs025": ("ecmwf", "ecmwf_ifs025_ensemble")}
+_MEMBER = re.compile(r"^temperature_2m(?:_member\d+)?_(.+)$")
+
+
+class EnsembleSource:
+    """Prévisions d'ENSEMBLE Open-Meteo (gratuit, sans clé) aux stations qui tranchent les marchés de température :
+    pour chaque jour LOCAL, le maximum et le minimum de CHAQUE membre (31 GEFS + 51 ECMWF). La part des membres
+    dans une tranche donne une probabilité par tranche (weather_ensemble.py) au lieu d'une prévision unique.
+      GET https://ensemble-api.open-meteo.com/v1/ensemble?latitude=a,b&longitude=c,d&hourly=temperature_2m
+          &models=gfs025,ecmwf_ifs025&forecast_days=3&timezone=auto
+      → une réponse par lieu : {"utc_offset_seconds", "hourly": {"time", "temperature_2m_ncep_gefs025",
+        "temperature_2m_member01_ncep_gefs025", ..., "temperature_2m_member50_ecmwf_ifs025_ensemble"}}
+    COÛT (documentation d'Open-Meteo, relue le 23/10/2026) : chaque membre compte comme une variable, au-delà de
+    10 variables un appel en vaut plusieurs (40 membres = 4 appels). GEFS + ECMWF = 82 séries = 8,2 appels par lieu ;
+    50 stations toutes les 6 h ≈ 1 640 appels par jour (gratuit non commercial : < 10 000 par jour, 5 000 par heure,
+    600 par minute). PAS D'HISTORIQUE : l'API ne garde que 3 jours passés, recollés à partir des derniers passages
+    (experiments/meteo_ensemble.md) : le relevé en base (weather_ensemble.record) est le seul historique."""
+
+    name = "meteo_ensemble"
+
+    def __init__(self, http: HttpClient, per_request: int = 10, models: tuple[str, ...] = tuple(ENSEMBLE_MODELS)):
+        self.http, self.per_request = http, per_request
+        self.models = tuple(m for m in models if m in ENSEMBLE_MODELS)
+
+    def daily(self, hourly: dict, min_hours: int = 20) -> dict[str, dict[str, dict[str, list[float]]]]:
+        """{jour local : {"max": {"gefs": [un maximum par membre], "ecmwf": [...]}, "min": {...}}}."""
+        suffix = {ENSEMBLE_MODELS[m][1]: ENSEMBLE_MODELS[m][0] for m in self.models}
+        times = hourly.get("time") or []
+        out: dict[str, dict[str, dict[str, list[float]]]] = {}
+        for key, values in hourly.items():
+            found = _MEMBER.match(key)
+            group = suffix.get(found.group(1)) if found else None
+            if group is None or not isinstance(values, list):
+                continue
+            by_day: dict[str, list[float]] = {}
+            for t, v in zip(times, values):
+                if v is not None:
+                    by_day.setdefault(str(t)[:10], []).append(float(v))
+            for day, vals in by_day.items():
+                if len(vals) >= min_hours:
+                    d = out.setdefault(day, {"max": {}, "min": {}})
+                    d["max"].setdefault(group, []).append(round(max(vals), 2))
+                    d["min"].setdefault(group, []).append(round(min(vals), 2))
+        return out
+
+    def fetch(self, stations: dict[str, tuple[float, float]], markets_by_station: dict[str, list[str]],
+              now: datetime) -> list[Observation]:
+        codes = sorted(s for s in stations if s in markets_by_station)
+        out = []
+        for i in range(0, len(codes), self.per_request):
+            chunk = codes[i:i + self.per_request]
+            raw = self.http.get_json(ENSEMBLE_URL, params={
+                "latitude": ",".join(str(stations[c][0]) for c in chunk),
+                "longitude": ",".join(str(stations[c][1]) for c in chunk),
+                "hourly": "temperature_2m", "models": ",".join(self.models), "timezone": "auto", "forecast_days": 3})
+            raw = raw if isinstance(raw, list) else [raw]
+            for code, item in zip(chunk, raw):
+                if not isinstance(item, dict):
+                    continue
+                days = self.daily(item.get("hourly") or {})
+                if not days:
+                    continue
+                sizes = {g: len(v) for g, v in days[sorted(days)[0]]["max"].items()}
+                out.append(Observation(
+                    source=self.name, external_id=f"ensemble-{code}-{now:%Y%m%d%H}", published_at=now,
+                    collected_at=now, url="https://open-meteo.com/en/docs/ensemble-api", domain="open-meteo.com",
+                    title=f"Ensemble {code} : " + ", ".join(f"{g} {n} membres" for g, n in sorted(sizes.items())),
+                    text="", market_ids=list(markets_by_station[code]),
+                    data={"station": code, "utc_offset": int(item.get("utc_offset_seconds") or 0), "jours": days}).finalize())
         return out
 

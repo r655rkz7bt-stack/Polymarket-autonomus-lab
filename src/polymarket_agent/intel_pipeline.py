@@ -14,7 +14,7 @@ from polymarket_agent.models import MarketInfo
 from polymarket_agent.social_intelligence import summarize
 from polymarket_agent.sources.gemini import GeminiClassifier
 from polymarket_agent.sources.polymarket_gamma import GammaClient
-from polymarket_agent.sources.weather import station_of
+from polymarket_agent.sources.weather import station_for_market
 
 log = logging.getLogger(__name__)
 
@@ -36,12 +36,13 @@ def latest_quotes(observations) -> dict:
 
 def latest_weather(observations, now: datetime, max_age_hours: float = 8) -> dict[str, dict]:
     """Par station : dernier relevé meteo_metar (ses données au premier niveau, avec `published_at`,
-    format attendu par temperature_floor) et dernière prévision meteo_prevision (clé "prevision")."""
+    format attendu par temperature_floor ; meteo_hko pour l'Observatoire de Hong Kong, même format), dernière
+    prévision meteo_prevision (clé "prevision") et dernier ensemble meteo_ensemble (clé "ensemble")."""
     from datetime import timedelta
     out: dict[str, dict] = {}
     seen: dict[tuple[str, str], datetime] = {}
     for o in observations:
-        if o.source not in ("meteo_prevision", "meteo_metar") or o.published_at is None:
+        if o.source not in ("meteo_prevision", "meteo_metar", "meteo_hko", "meteo_ensemble") or o.published_at is None:
             continue
         if now - o.published_at > timedelta(hours=max_age_hours) or "station" not in o.data:
             continue
@@ -52,9 +53,16 @@ def latest_weather(observations, now: datetime, max_age_hours: float = 8) -> dic
         entry = out.setdefault(o.data["station"], {})
         if o.source == "meteo_prevision":
             entry["prevision"] = dict(o.data, published_at=o.published_at)
+        elif o.source == "meteo_ensemble":  # membres d'ensemble (weather_ensemble.py), clé "ensemble"
+            entry["ensemble"] = dict(o.data, published_at=o.published_at)
         else:
             entry.update(o.data, published_at=o.published_at)
     return out
+
+
+def weather_station(market) -> str | None:
+    """Station qui tranche un marché de température : METAR citée par Gamma, ou l'Observatoire de Hong Kong."""
+    return station_for_market(market)
 
 
 def make_collector(settings: dict, http: HttpClient, db, factories: dict | None = None):
@@ -140,7 +148,7 @@ def make_collector(settings: dict, http: HttpClient, db, factories: dict | None 
         for market in markets:
             market.intel = summarize(market.market_id, recent, now, down, stances.get(market.market_id, {}))
             # Météo de la station qui tranche le marché : relevé (temperature_floor) + prévision.
-            station = station_of(market.resolution_source, market.description)
+            station = weather_station(market)
             market.weather = weather.get(station) if station else None
             group = correlation_group(market)
             if group.startswith("crypto:"):

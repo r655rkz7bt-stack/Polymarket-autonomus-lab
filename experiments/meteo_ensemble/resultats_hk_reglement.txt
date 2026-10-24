@@ -1,0 +1,170 @@
+highest  08-01 HKO  28.9 gagnante « Will the highest temperature in Hong Kong be 28°C on August 1? » : arrondi NON, troncature oui
+highest  08-02 HKO  26.8 gagnante « Will the highest temperature in Hong Kong be 26°C on August 2? » : arrondi NON, troncature oui
+highest  08-03 HKO  28.4 gagnante « Will the highest temperature in Hong Kong be 28°C on August 3? » : arrondi oui, troncature oui
+highest  08-04 HKO  32.5 gagnante « Will the highest temperature in Hong Kong be 32°C on August 4? » : arrondi NON, troncature oui
+highest  08-05 HKO  33.1 gagnante « Will the highest temperature in Hong Kong be 33°C on August 5? » : arrondi oui, troncature oui
+highest  08-06 HKO  34.4 gagnante « Will the highest temperature in Hong Kong be 34°C on August 6? » : arrondi oui, troncature oui
+highest  08-07 HKO  33.8 gagnante « Will the highest temperature in Hong Kong be 33°C on August 7? » : arrondi NON, troncature oui
+highest  08-08 HKO  34.7 gagnante « Will the highest temperature in Hong Kong be 34°C on August 8? » : arrondi NON, troncature oui
+highest  08-09 HKO  36.9 gagnante « Will the highest temperature in Hong Kong be 36°C on August 9? » : arrondi NON, troncature oui
+highest  08-10 HKO  35.4 gagnante « Will the highest temperature in Hong Kong be 35°C on August 10? » : arrondi oui, troncature oui
+highest  08-11 HKO  35.1 gagnante « Will the highest temperature in Hong Kong be 35°C on August 11? » : arrondi oui, troncature oui
+highest  08-12 HKO  34.5 gagnante « Will the highest temperature in Hong Kong be 34°C on August 12? » : arrondi NON, troncature oui
+highest  08-13 HKO  33.8 gagnante « Will the highest temperature in Hong Kong be 33°C on August 13? » : arrondi NON, troncature oui
+highest  08-14 HKO  30.7 gagnante « Will the highest temperature in Hong Kong be 30°C on August 14? » : arrondi NON, troncature oui
+highest  08-15 HKO  31.8 gagnante « Will the highest temperature in Hong Kong be 31°C on August 15? » : arrondi NON, troncature oui
+highest  08-16 HKO  33.6 gagnante « Will the highest temperature in Hong Kong be 33°C on August 16? » : arrondi NON, troncature oui
+highest  08-17 HKO  32.3 gagnante « Will the highest temperature in Hong Kong be 32°C on August 17? » : arrondi oui, troncature oui
+highest  08-18 HKO  32.2 gagnante « Will the highest temperature in Hong Kong be 32°C on August 18? » : arrondi oui, troncature oui
+highest  08-19 HKO  32.8 gagnante « Will the highest temperature in Hong Kong be 32°C on August 19? » : arrondi NON, troncature oui
+highest  08-20 HKO  29.7 gagnante « Will the highest temperature in Hong Kong be 29°C on August 20? » : arrondi NON, troncature oui
+highest  08-21 HKO  31.5 gagnante « Will the highest temperature in Hong Kong be 31°C on August 21? » : arrondi NON, troncature oui
+highest  08-22 HKO  31.8 gagnante « Will the highest temperature in Hong Kong be 31°C on August 22? » : arrondi NON, troncature oui
+highest  08-23 HKO  32.0 gagnante « Will the highest temperature in Hong Kong be 32°C on August 23? » : arrondi oui, troncature oui
+highest  08-24 HKO  33.0 gagnante « Will the highest temperature in Hong Kong be 33°C on August 24? » : arrondi oui, troncature oui
+highest  08-25 HKO  31.1 gagnante « Will the highest temperature in Hong Kong be 31°C on August 25? » : arrondi oui, troncature oui
+highest  08-26 HKO  29.9 gagnante « Will the highest temperature in Hong Kong be 29°C on August 26? » : arrondi NON, troncature oui
+highest  08-27 HKO  29.6 gagnante « Will the highest temperature in Hong Kong be 29°C on August 27? » : arrondi NON, troncature oui
+highest  08-28 HKO  32.2 gagnante « Will the highest temperature in Hong Kong be 32°C on August 28? » : arrondi oui, troncature oui
+highest  08-29 HKO  32.8 gagnante « Will the highest temperature in Hong Kong be 32°C on August 29? » : arrondi NON, troncature oui
+highest  08-30 HKO  30.1 gagnante « Will the highest temperature in Hong Kong be 30°C on August 30? » : arrondi oui, troncature oui
+highest  08-31 HKO  29.5 gagnante « Will the highest temperature in Hong Kong be 29°C on August 31? » : arrondi NON, troncature oui
+highest  09-01 HKO  28.7 gagnante « Will the highest temperature in Hong Kong be 28°C on September 1? » : arrondi NON, troncature oui
+highest  09-02 HKO  31.8 gagnante « Will the highest temperature in Hong Kong be 31°C on September 2? » : arrondi NON, troncature oui
+highest  09-03 HKO  30.1 gagnante « Will the highest temperature in Hong Kong be 30°C on September 3? » : arrondi oui, troncature oui
+highest  09-04 HKO  31.0 gagnante « Will the highest temperature in Hong Kong be 31°C on September 4? » : arrondi oui, troncature oui
+highest  09-05 HKO  32.2 gagnante « Will the highest temperature in Hong Kong be 32°C on September 5? » : arrondi oui, troncature oui
+highest  09-06 HKO  30.7 gagnante « Will the highest temperature in Hong Kong be 30°C on September 6? » : arrondi NON, troncature oui
+highest  09-07 HKO  30.3 gagnante « Will the highest temperature in Hong Kong be 30°C on September 7? » : arrondi oui, troncature oui
+highest  09-08 HKO  32.7 gagnante « Will the highest temperature in Hong Kong be 32°C on September 8? » : arrondi NON, troncature oui
+highest  09-09 HKO  32.2 gagnante « Will the highest temperature in Hong Kong be 32°C on September 9? » : arrondi oui, troncature oui
+highest  09-10 HKO  31.9 gagnante « Will the highest temperature in Hong Kong be 31°C on September 10? » : arrondi NON, troncature oui
+highest  09-11 HKO  32.6 gagnante « Will the highest temperature in Hong Kong be 32°C on September 11? » : arrondi NON, troncature oui
+highest  09-12 HKO  33.1 gagnante « Will the highest temperature in Hong Kong be 33°C on September 12? » : arrondi oui, troncature oui
+highest  09-13 HKO  31.7 gagnante « Will the highest temperature in Hong Kong be 31°C on September 13? » : arrondi NON, troncature oui
+highest  09-14 HKO  28.7 gagnante « Will the highest temperature in Hong Kong be 28°C on September 14? » : arrondi NON, troncature oui
+highest  09-15 HKO  31.4 gagnante « Will the highest temperature in Hong Kong be 31°C on September 15? » : arrondi oui, troncature oui
+highest  09-16 HKO  31.5 gagnante « Will the highest temperature in Hong Kong be 31°C on September 16? » : arrondi NON, troncature oui
+highest  09-17 HKO  31.4 gagnante « Will the highest temperature in Hong Kong be 31°C on September 17? » : arrondi oui, troncature oui
+highest  09-18 HKO  31.7 gagnante « Will the highest temperature in Hong Kong be 31°C on September 18? » : arrondi NON, troncature oui
+highest  09-19 HKO  33.2 gagnante « Will the highest temperature in Hong Kong be 33°C on September 19? » : arrondi oui, troncature oui
+highest  09-20 HKO  33.1 gagnante « Will the highest temperature in Hong Kong be 33°C on September 20? » : arrondi oui, troncature oui
+highest  09-21 HKO  33.0 gagnante « Will the highest temperature in Hong Kong be 33°C on September 21? » : arrondi oui, troncature oui
+highest  09-22 HKO  30.2 gagnante « Will the highest temperature in Hong Kong be 30°C on September 22? » : arrondi oui, troncature oui
+highest  09-23 HKO  31.9 gagnante « Will the highest temperature in Hong Kong be 31°C on September 23? » : arrondi NON, troncature oui
+highest  09-24 HKO  32.2 gagnante « Will the highest temperature in Hong Kong be 32°C on September 24? » : arrondi oui, troncature oui
+highest  09-25 HKO  32.5 gagnante « Will the highest temperature in Hong Kong be 32°C on September 25? » : arrondi NON, troncature oui
+highest  09-26 HKO  32.1 gagnante « Will the highest temperature in Hong Kong be 32°C on September 26? » : arrondi oui, troncature oui
+highest  09-27 HKO  32.7 gagnante « Will the highest temperature in Hong Kong be 32°C on September 27? » : arrondi NON, troncature oui
+highest  09-28 HKO  32.5 gagnante « Will the highest temperature in Hong Kong be 32°C on September 28? » : arrondi NON, troncature oui
+highest  09-29 HKO  33.1 gagnante « Will the highest temperature in Hong Kong be 33°C on September 29? » : arrondi oui, troncature oui
+highest  09-30 HKO  34.2 gagnante « Will the highest temperature in Hong Kong be 34°C on September 30? » : arrondi oui, troncature oui
+lowest   08-01 HKO  25.2 gagnante « Will the lowest temperature in Hong Kong be 25°C on August 1? » : arrondi oui, troncature oui
+lowest   08-02 HKO  25.1 gagnante « Will the lowest temperature in Hong Kong be 25°C on August 2? » : arrondi oui, troncature oui
+lowest   08-03 HKO  25.0 gagnante « Will the lowest temperature in Hong Kong be 25°C on August 3? » : arrondi oui, troncature oui
+lowest   08-04 HKO  26.2 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 4? » : arrondi oui, troncature oui
+lowest   08-05 HKO  27.0 gagnante « Will the lowest temperature in Hong Kong be 27°C on August 5? » : arrondi oui, troncature oui
+lowest   08-06 HKO  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 6? » : arrondi NON, troncature oui
+lowest   08-07 HKO  27.4 gagnante « Will the lowest temperature in Hong Kong be 27°C on August 7? » : arrondi oui, troncature oui
+lowest   08-08 HKO  28.9 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 8? » : arrondi NON, troncature oui
+lowest   08-09 HKO  29.6 gagnante « Will the lowest temperature in Hong Kong be 29°C on August 9? » : arrondi NON, troncature oui
+lowest   08-10 HKO  30.1 gagnante « Will the lowest temperature in Hong Kong be 30°C on August 10? » : arrondi oui, troncature oui
+lowest   08-11 HKO  29.7 gagnante « Will the lowest temperature in Hong Kong be 29°C on August 11? » : arrondi NON, troncature oui
+lowest   08-12 HKO  30.2 gagnante « Will the lowest temperature in Hong Kong be 30°C on August 12? » : arrondi oui, troncature oui
+lowest   08-13 HKO  30.1 gagnante « Will the lowest temperature in Hong Kong be 30°C on August 13? » : arrondi oui, troncature oui
+lowest   08-14 HKO  26.6 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 14? » : arrondi NON, troncature oui
+lowest   08-15 HKO  26.8 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 15? » : arrondi NON, troncature oui
+lowest   08-16 HKO  28.3 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 16? » : arrondi oui, troncature oui
+lowest   08-17 HKO  28.9 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 17? » : arrondi NON, troncature oui
+lowest   08-18 HKO  28.2 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 18? » : arrondi oui, troncature oui
+lowest   08-19 HKO  28.1 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 19? » : arrondi oui, troncature oui
+lowest   08-20 HKO  26.7 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 20? » : arrondi NON, troncature oui
+lowest   08-21 HKO  25.7 gagnante « Will the lowest temperature in Hong Kong be 25°C on August 21? » : arrondi NON, troncature oui
+lowest   08-22 HKO  27.2 gagnante « Will the lowest temperature in Hong Kong be 27°C on August 22? » : arrondi oui, troncature oui
+lowest   08-23 HKO  28.6 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 23? » : arrondi NON, troncature oui
+lowest   08-24 HKO  28.7 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 24? » : arrondi NON, troncature oui
+lowest   08-25 HKO  27.7 gagnante « Will the lowest temperature in Hong Kong be 27°C on August 25? » : arrondi NON, troncature oui
+lowest   08-26 HKO  26.8 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 26? » : arrondi NON, troncature oui
+lowest   08-27 HKO  26.3 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 27? » : arrondi oui, troncature oui
+lowest   08-28 HKO  28.6 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 28? » : arrondi NON, troncature oui
+lowest   08-29 HKO  28.2 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 29? » : arrondi oui, troncature oui
+lowest   08-30 HKO  28.1 gagnante « Will the lowest temperature in Hong Kong be 28°C on August 30? » : arrondi oui, troncature oui
+lowest   08-31 HKO  26.2 gagnante « Will the lowest temperature in Hong Kong be 26°C on August 31? » : arrondi oui, troncature oui
+lowest   09-01 HKO  26.3 gagnante « Will the lowest temperature in Hong Kong be 26°C on September 1? » : arrondi oui, troncature oui
+lowest   09-02 HKO  25.7 gagnante « Will the lowest temperature in Hong Kong be 25°C on September 2? » : arrondi NON, troncature oui
+lowest   09-03 HKO  25.9 gagnante « Will the lowest temperature in Hong Kong be 25°C on September 3? » : arrondi NON, troncature oui
+lowest   09-04 HKO  26.4 gagnante « Will the lowest temperature in Hong Kong be 26°C on September 4? » : arrondi oui, troncature oui
+lowest   09-05 HKO  27.0 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 5? » : arrondi oui, troncature oui
+lowest   09-06 HKO  25.7 gagnante « Will the lowest temperature in Hong Kong be 25°C on September 6? » : arrondi NON, troncature oui
+lowest   09-07 HKO  27.0 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 7? » : arrondi oui, troncature oui
+lowest   09-08 HKO  27.5 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 8? » : arrondi NON, troncature oui
+lowest   09-09 HKO  27.5 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 9? » : arrondi NON, troncature oui
+lowest   09-10 HKO  26.2 gagnante « Will the lowest temperature in Hong Kong be 26°C on September 10? » : arrondi oui, troncature oui
+lowest   09-11 HKO  25.5 gagnante « Will the lowest temperature in Hong Kong be 25°C on September 11? » : arrondi NON, troncature oui
+lowest   09-12 HKO  27.1 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 12? » : arrondi oui, troncature oui
+lowest   09-13 HKO  27.7 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 13? » : arrondi NON, troncature oui
+lowest   09-14 HKO  26.1 gagnante « Will the lowest temperature in Hong Kong be 26°C on September 14? » : arrondi oui, troncature oui
+lowest   09-15 HKO  26.4 gagnante « Will the lowest temperature in Hong Kong be 26°C on September 15? » : arrondi oui, troncature oui
+lowest   09-16 HKO  27.4 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 16? » : arrondi oui, troncature oui
+lowest   09-17 HKO  27.0 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 17? » : arrondi oui, troncature oui
+lowest   09-18 HKO  27.1 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 18? » : arrondi oui, troncature oui
+lowest   09-19 HKO  27.1 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 19? » : arrondi oui, troncature oui
+lowest   09-20 HKO  27.6 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 20? » : arrondi NON, troncature oui
+lowest   09-21 HKO  27.8 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 21? » : arrondi NON, troncature oui
+lowest   09-22 HKO  28.0 gagnante « Will the lowest temperature in Hong Kong be 28°C on September 22? » : arrondi oui, troncature oui
+lowest   09-23 HKO  27.6 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 23? » : arrondi NON, troncature oui
+lowest   09-24 HKO  27.3 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 24? » : arrondi oui, troncature oui
+lowest   09-25 HKO  27.5 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 25? » : arrondi NON, troncature oui
+lowest   09-26 HKO  26.5 gagnante « Will the lowest temperature in Hong Kong be 26°C on September 26? » : arrondi NON, troncature oui
+lowest   09-27 HKO  27.1 gagnante « Will the lowest temperature in Hong Kong be 27°C on September 27? » : arrondi oui, troncature oui
+lowest   09-28 HKO  28.3 gagnante « Will the lowest temperature in Hong Kong be 28°C on September 28? » : arrondi oui, troncature oui
+lowest   09-29 HKO  28.7 gagnante « Will the lowest temperature in Hong Kong be 28°C on September 29? » : arrondi NON, troncature oui
+lowest   09-30 HKO  28.8 gagnante « Will the lowest temperature in Hong Kong be 28°C on September 30? » : arrondi NON, troncature oui
+
+122 marchés réglés relus : arrondi 61/122, troncature 122/122
+highest  10-01 RYES  33.6 gagnante « Will the highest temperature in Hong Kong be 33°C on October 1? » : troncature oui
+lowest   10-01 RYES  28.3 gagnante « Will the lowest temperature in Hong Kong be 28°C on October 1? » : troncature oui
+highest  10-02 RYES  31.7 gagnante « Will the highest temperature in Hong Kong be 31°C on October 2? » : troncature oui
+lowest   10-02 RYES  27.0 gagnante « Will the lowest temperature in Hong Kong be 27°C on October 2? » : troncature oui
+highest  10-03 RYES  29.6 gagnante « Will the highest temperature in Hong Kong be 29°C on October 3? » : troncature oui
+lowest   10-03 RYES  25.0 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 3? » : troncature oui
+highest  10-04 RYES  30.6 gagnante « Will the highest temperature in Hong Kong be 30°C on October 4? » : troncature oui
+lowest   10-04 RYES  25.6 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 4? » : troncature oui
+highest  10-05 RYES  31.2 gagnante « Will the highest temperature in Hong Kong be 31°C on October 5? » : troncature oui
+lowest   10-05 RYES  25.1 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 5? » : troncature oui
+highest  10-06 RYES  28.2 gagnante « Will the highest temperature in Hong Kong be 28°C on October 6? » : troncature oui
+lowest   10-06 RYES  23.3 gagnante « Will the lowest temperature in Hong Kong be 23°C on October 6? » : troncature oui
+highest  10-07 RYES  28.8 gagnante « Will the highest temperature in Hong Kong be 28°C on October 7? » : troncature oui
+lowest   10-07 RYES  23.5 gagnante « Will the lowest temperature in Hong Kong be 23°C on October 7? » : troncature oui
+highest  10-08 RYES  29.0 gagnante « Will the highest temperature in Hong Kong be 29°C on October 8? » : troncature oui
+lowest   10-08 RYES  25.6 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 8? » : troncature oui
+highest  10-09 RYES  30.6 gagnante « Will the highest temperature in Hong Kong be 30°C on October 9? » : troncature oui
+lowest   10-09 RYES  25.7 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 9? » : troncature oui
+highest  10-10 RYES  31.1 gagnante « Will the highest temperature in Hong Kong be 31°C on October 10? » : troncature oui
+lowest   10-10 RYES  25.9 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 10? » : troncature oui
+highest  10-11 RYES  31.0 gagnante « Will the highest temperature in Hong Kong be 31°C on October 11? » : troncature oui
+lowest   10-11 RYES  26.4 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 11? » : troncature oui
+highest  10-12 RYES  31.3 gagnante « Will the highest temperature in Hong Kong be 31°C on October 12? » : troncature oui
+lowest   10-12 RYES  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 12? » : troncature oui
+highest  10-13 RYES  31.0 gagnante « Will the highest temperature in Hong Kong be 31°C on October 13? » : troncature oui
+lowest   10-13 RYES  26.1 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 13? » : troncature oui
+highest  10-14 RYES  30.0 gagnante « Will the highest temperature in Hong Kong be 30°C on October 14? » : troncature oui
+lowest   10-14 RYES  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 14? » : troncature oui
+highest  10-15 RYES  29.7 gagnante « Will the highest temperature in Hong Kong be 29°C on October 15? » : troncature oui
+lowest   10-15 RYES  26.6 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 15? » : troncature oui
+highest  10-16 RYES  29.8 gagnante « Will the highest temperature in Hong Kong be 29°C on October 16? » : troncature oui
+lowest   10-16 RYES  26.2 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 16? » : troncature oui
+highest  10-17 RYES  29.2 gagnante « Will the highest temperature in Hong Kong be 29°C on October 17? » : troncature oui
+lowest   10-17 RYES  26.8 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 17? » : troncature oui
+highest  10-18 RYES  31.5 gagnante « Will the highest temperature in Hong Kong be 31°C on October 18? » : troncature oui
+lowest   10-18 RYES  27.4 gagnante « Will the lowest temperature in Hong Kong be 27°C on October 18? » : troncature oui
+highest  10-19 RYES  31.9 gagnante « Will the highest temperature in Hong Kong be 31°C on October 19? » : troncature oui
+lowest   10-19 RYES  26.5 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 19? » : troncature oui
+highest  10-20 RYES  31.8 gagnante « Will the highest temperature in Hong Kong be 31°C on October 20? » : troncature oui
+lowest   10-20 RYES  26.9 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 20? » : troncature oui
+highest  10-21 RYES  32.5 gagnante « Will the highest temperature in Hong Kong be 32°C on October 21? » : troncature oui
+lowest   10-21 RYES  26.8 gagnante « Will the lowest temperature in Hong Kong be 26°C on October 21? » : troncature oui
+highest  10-22 RYES  30.7 gagnante « Will the highest temperature in Hong Kong be 30°C on October 22? » : troncature oui
+lowest   10-22 RYES  25.9 gagnante « Will the lowest temperature in Hong Kong be 25°C on October 22? » : troncature oui
+
+Octobre (bulletin RYES du lendemain) : troncature 44/44
