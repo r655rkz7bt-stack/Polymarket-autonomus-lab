@@ -20,6 +20,10 @@ class ScanResult:
     excluded: dict[str, int] = field(default_factory=dict)
 
 
+# Exclusions qu'un seuil propre à une étiquette peut lever (liquidité, volume, écart, prix extrême) ; jamais un marché fermé ou incohérent.
+RELAXABLE = {"liquidité insuffisante", "volume insuffisant", "écart achat/vente trop large", "issue quasi certaine (match joué ou info déjà connue)"}
+
+
 def classify(market: MarketInfo, now: datetime, cfg: dict) -> str:
     """Retourne '' si le marché est exploitable, sinon la raison d'exclusion."""
     if market.issues:
@@ -113,6 +117,7 @@ def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanR
     `{étiquette: {pages, min_liquidity, ...}}` : filtres propres à l'étiquette (ces marchés ont
     rarement 1 000 $ de liquidité ; le carnet réel décide de toute façon de ce qui s'exécute). Une étiquette peut aussi
     fixer son propre `max_horizon_hours` (24/10/2026 : compteurs annuels de SpaceX, fin dans 68 jours)."""
+    by_id = {m.market_id: m for m in result.markets}
     for tag, spec in (cfg.get("tag_pages") or {}).items():
         spec = dict(spec) if isinstance(spec, dict) else {"pages": spec}
         pages = int(spec.pop("pages", 0) or 0)
@@ -128,8 +133,18 @@ def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanR
         for item in raw:
             market = parse_market(item)
             if market.market_id in seen:
+                # 24/10/2026 : un marché déjà lu dans les pages normales y a été jugé avec les seuils GÉNÉRAUX (liquidité 1 000 $, écart 0,05) ; les seuils propres
+                # à l'étiquette (séismes : 200 $, écart 0,15) ne s'appliquaient qu'aux marchés vus pour la première fois par l'étiquette.
+                known = by_id.get(market.market_id)
+                if known is not None and not known.eligible and known.exclusion in RELAXABLE and not classify(known, now, tag_cfg):
+                    left = result.excluded.get(known.exclusion, 0) - 1
+                    result.excluded[known.exclusion] = left
+                    if left <= 0:
+                        del result.excluded[known.exclusion]
+                    known.exclusion, known.eligible = "", True
                 continue
             seen.add(market.market_id)
+            by_id[market.market_id] = market
             market.exclusion = classify(market, now, tag_cfg)
             market.eligible = not market.exclusion
             if market.exclusion:

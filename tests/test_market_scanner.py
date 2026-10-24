@@ -180,6 +180,25 @@ def test_tag_pages_add_markets_of_a_tag_once():
     assert result.excluded == {"liquidité insuffisante": 1}
 
 
+def test_a_tag_market_already_read_in_the_normal_pages_gets_the_tag_thresholds():
+    """24/10/2026 : un marché lu dans les pages normales y était jugé avec les seuils GÉNÉRAUX, puis ignoré par l'étiquette (déjà vu) : 21 tranches de box-office
+    (liquidité 800-1 900 $, écart 0,06-0,10) restaient inexploitables alors que l'étiquette (51) les accepte ; box_office_favori voyait « moins de deux tranches »."""
+    class TagGamma(FakeGamma):
+        def list_markets(self, **kwargs):
+            if kwargs.get("tag_id") == 51:
+                return [raw_market("1", liquidityNum=300, spread=0.09), raw_market("2", liquidityNum=300, spread=0.09, active=False)]
+            return self.markets
+    tags = {51: {"pages": 1, "min_liquidity": 0, "min_volume_24h": 0, "max_spread": 0.60}}
+    normal = [raw_market("1", liquidityNum=300, spread=0.09), raw_market("2", liquidityNum=300, spread=0.09, active=False)]
+    result = scan(TagGamma(normal), NOW, dict(CFG, tag_pages=tags))
+    by_id = {m.market_id: m for m in result.markets}
+    assert by_id["1"].eligible and by_id["1"].exclusion == ""        # jugé avec le seuil de l'étiquette
+    assert not by_id["2"].eligible and by_id["2"].exclusion == "inactif ou fermé"  # jamais un marché fermé
+    assert result.excluded == {"inactif ou fermé": 1}               # le compteur d'exclusions suit
+    plain = scan(TagGamma(normal), NOW, dict(CFG))
+    assert not {m.market_id: m for m in plain.markets}["1"].eligible  # sans étiquette : seuils généraux
+
+
 def test_repository_config_lets_economic_data_markets_through_the_scanner():
     """21/10/2026 (soir) : emplois (étiquette nfp) et CPI (étiquette cpi) ont 400-2 000 $ de liquidité et ~0-700 $ de volume par jour ;
     `min_volume_24h: 1000` les écartait, donc `jobs_favori_non` et `cpi_tranches` ne voyaient aucun marché (0 achat, abstentions vides)."""
