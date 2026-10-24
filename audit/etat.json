@@ -53,7 +53,7 @@
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
   "fantome:nf_sport_prix_haut_v1.0.0": 1482,
-  "fantome:nf_sport_sans_fin_v1.0.0": 1288,
+  "fantome:nf_sport_sans_fin_v1.0.0": 1290,
   "fantome:nm_demi_mise_v1.0.0": 1338,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1263,
   "fantome:nf_sport_oui_v1.0.0": 1194,
@@ -139,7 +139,7 @@
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 197,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 66,
   "fantome:moins_de_cartes_v1.0.0": 128,
-  "fantome:non_aux_drames_v1.0.0": 109,
+  "fantome:non_aux_drames_v1.0.0": 111,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 145,
   "fantome:vague_volume_suivre_x5_v1.0.0": 122,
@@ -154,9 +154,9 @@
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 11,
   "fantome:nf_sport_non_900_925_v1.0.0": 1,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 1,
-  "fantome:seismes_marche_v1.0.0": 1
+  "fantome:seismes_marche_v1.0.0": 4
  },
- "verifiees": 7896,
+ "verifiees": 7900,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1320,9 +1320,9 @@
    "op_id": "settle-114081698631596248421794302013228554913764150099912630937614722705717513030823"
   }
  ],
- "derniere_execution": "2026-10-24T05:52:25+00:00",
+ "derniere_execution": "2026-10-24T05:57:56+00:00",
  "dernier_seq_reglements": {
-  "principal": 2978,
+  "principal": 2979,
   "fantome:calibration_patiente_v1.0.0": 1855,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1815,
