@@ -199,6 +199,46 @@ def jetons_sans_valeur(entries: dict[str, list[dict]], since: datetime | None = 
                      "dans la journée, match fini) et le modèle ne le voit pas. Relire le marché et la question.", lines)]
 
 
+def reglements_50_50(entries: dict[str, list[dict]], min_markets: int = 3) -> list[dict]:
+    """Marchés réglés à 50-50 (match annulé, abandonné, walkover) où des portefeuilles avaient acheté (24/10/2026). Une part payée 0,50 au lieu de 1 coûte
+    0,35 à 0,45 € par euro sur un favori à 0,85-0,90 ; les tests sur le passé (`history.parse_resolved`, `idea_test.parse_event_market`) écartent ces marchés
+    en silence. Taux Gamma sur les derniers matchs réglés (experiments/void_5050.md) : UFC et CS2 10 %, tennis en double 6-10 %, WTA 4,8 %, ATP 2,5 %. Dans l'arène
+    les achats se font surtout après le coup d'envoi (84 à 90 %) : peu de 50-50 (0,5 % des règlements). Un achat AVANT le coup d'envoi en porte le plein risque."""
+    markets: dict[str, dict] = {}
+    for name, rows in entries.items():
+        bought: dict[str, dict] = {}
+        for e in _buys(rows):
+            d, x = e["data"], e["data"].get("extra") or {}
+            b = bought.setdefault(d["token_id"], {"cost": 0.0, "shares": 0.0, "market": d["market_id"], "pre": False})
+            b["cost"] += _cost(d)
+            b["shares"] += float(d["shares"])
+            try:
+                b["pre"] = b["pre"] or float(x.get("depuis_coup_d_envoi_h")) < 0
+            except (TypeError, ValueError):
+                pass
+        for e in rows:
+            if e["type"] == "SETTLE" and e["data"].get("token_id") in bought:
+                try:
+                    if abs(float(e["data"]["payout_per_share"]) - 0.5) > 1e-9:
+                        continue
+                except (TypeError, ValueError):
+                    continue
+                b = bought[e["data"]["token_id"]]
+                m = markets.setdefault(b["market"], {"cost": 0.0, "loss": 0.0, "portfolios": 0, "pre": False, "date": e["ts"][:16]})
+                m["cost"] += b["cost"]
+                m["loss"] += b["cost"] - 0.5 * b["shares"]
+                m["portfolios"] += 1
+                m["pre"] = m["pre"] or b["pre"]
+    if len(markets) < min_markets:
+        return []
+    cost, loss = sum(m["cost"] for m in markets.values()), sum(m["loss"] for m in markets.values())
+    lines = [f"{m['date']} marché {k} : {m['portfolios']} portefeuille(s), {m['cost']:.0f} € misés, perte {m['loss']:.0f} €"
+             f"{' (acheté avant le coup d envoi)' if m['pre'] else ''}" for k, m in sorted(markets.items(), key=lambda kv: -kv[1]["loss"])]
+    return [_finding("reglements_50_50", A_REGARDER, f"{len(markets)} marché(s) réglés à 50-50 où l'arène avait acheté ({loss:.0f} € perdus sur {cost:.0f} € misés)",
+                     "Match annulé, abandonné ou walkover : chaque part vaut 0,50. Les tests sur le passé écartent ces marchés ; "
+                     "un achat avant le coup d'envoi (ou sur un sport à forts taux : UFC, CS2, doubles) paie ce risque sans l'avoir compté.", lines)]
+
+
 def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost: float = 0.25,
           since: datetime | None = None) -> list[dict]:
     """Mises rapportées au capital estimé (dernier battement avant l'achat). Principal : au-delà de son
@@ -860,7 +900,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + familles_vides(abstentions, entries) + sources_vides(sources)
-                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since)
+                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 

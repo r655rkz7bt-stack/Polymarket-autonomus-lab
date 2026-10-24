@@ -408,3 +408,17 @@ def test_tokens_sold_for_almost_nothing_but_estimated_high_are_flagged():
     assert "crypto_threshold_non" in found[0]["exemples"][0] and "0.001" in found[0]["exemples"][0]
     assert enquete.jetons_sans_valeur({"fantome:x": [_buy(NOW, "t4", "0.2", 10, est=0.5)]}) == []
     assert enquete.jetons_sans_valeur(entries, since=NOW + timedelta(hours=1)) == []           # achats plus anciens que la fenêtre : ignorés
+
+
+def test_fifty_fifty_settlements_are_counted_per_market_with_their_cost():
+    """24/10/2026 : 9INE Academy (CS2) et Australia Women (cricket) réglés à 50-50 ; 13 portefeuilles payés 0,50 au lieu de 1."""
+    rows = {}
+    for i, name in enumerate(["a", "b"]):
+        rows[name] = _ledger(*[_buy(NOW - timedelta(hours=9), t, 0.88, 100, strategy=name) for t in ("x", "y", "z")],
+                             *[_settle(NOW - timedelta(hours=1), t, 0.5) for t in ("x", "y", "z")])
+    found = enquete.reglements_50_50(rows)
+    assert len(found) == 1 and "3 marché(s) réglés à 50-50" in found[0]["titre"]
+    assert "2 portefeuille(s)" in found[0]["exemples"][0] and "perte 76 €" in found[0]["exemples"][0]
+    assert enquete.reglements_50_50(rows, min_markets=4) == []
+    normal = {"a": _ledger(_buy(NOW - timedelta(hours=9), "x", 0.88, 100), _settle(NOW, "x", 1))}
+    assert enquete.reglements_50_50(normal, min_markets=1) == []
