@@ -288,6 +288,21 @@ def _t_stat(values: list[float]) -> float:
     return mean / sd * math.sqrt(len(values)) if sd > 0 else 0.0
 
 
+def _halves(bets: list[dict], min_per_half: int = 10) -> dict | None:
+    """Rendement moyen de la première et de la seconde moitié des MOIS (au moins 4 mois, `min_per_half` paris dans chaque moitié), ou None.
+    Jugement hors échantillon dans le temps : un effet qui n'existe que dans la première moitié n'est pas une preuve."""
+    months = sorted({str(b.get("mois", "")) for b in bets if b.get("mois")})
+    if len(months) < 4:
+        return None
+    first = set(months[: len(months) // 2])
+    a = [b["gain"] for b in bets if str(b.get("mois", "")) in first]
+    c = [b["gain"] for b in bets if b.get("mois") and str(b["mois"]) not in first]
+    if len(a) < min_per_half or len(c) < min_per_half:
+        return None
+    return {"moitie_1": {"mois": sorted(first), "paris": len(a), "rendement": round(sum(a) / len(a), 4)},
+            "moitie_2": {"mois": [m for m in months if m not in first], "paris": len(c), "rendement": round(sum(c) / len(c), 4)}}
+
+
 def verdict(bets: list[dict], min_bets: int = 30) -> dict:
     """Jugement d'une piste à partir de paris simulés (protocole des vingt pistes, 20/10/2026).
 
@@ -322,8 +337,14 @@ def verdict(bets: list[dict], min_bets: int = 30) -> dict:
     costs = [min(0.999, max(0.001, float(b.get("cout", 0.5)))) for b in bets]
     variance = sum(c * (1 - c) for c in costs)
     z_prix = (sum(1 for g in gains if g > 0) - sum(costs)) / math.sqrt(variance) if variance > 0 else 0.0
+    halves = _halves(bets)
+    faded = halves is not None and halves["moitie_1"]["rendement"] > 0 and halves["moitie_2"]["rendement"] < 0.25 * halves["moitie_1"]["rendement"]
     if len(bets) < min_bets:
         label, why = "écartée", f"moins de {min_bets} paris"
+    elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months) and z_prix >= 1.5 and faded:
+        # 24/10/2026, barres touchées de l'or : « retenue » au total (t 2,35, z 1,96) mais +58 % d'avril à juillet puis +8 % d'août à octobre.
+        label, why = "indice", (f"positive au total mais effacée dans la seconde moitié des mois ({halves['moitie_2']['rendement']:+.0%} contre "
+                                f"{halves['moitie_1']['rendement']:+.0%}) : fantôme, l'arène tranchera")
     elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months) and z_prix >= 1.5:
         label, why = "retenue", "positive, régulière par événement et par mois"
     elif mean > 0 and t_event >= 1.5 and winning * 3 >= 2 * len(months):
@@ -336,4 +357,4 @@ def verdict(bets: list[dict], min_bets: int = 30) -> dict:
             "evenements": len(events), "confiance_evenements": round(t_event, 2), "z_prix": round(z_prix, 2),
             "mois": months, "mois_gagnants": f"{winning}/{len(months)}",
             "par_prix": {k: {"paris": len(v), "rendement": round(sum(v) / len(v), 4)} for k, v in sorted(by_price.items())},
-            "verdict": label, "raison": why}
+            **(halves or {}), "verdict": label, "raison": why}
