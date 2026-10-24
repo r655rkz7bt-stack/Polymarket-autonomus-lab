@@ -1266,9 +1266,79 @@ class SeismesMarche(_Base):
         return self._finish(out, props)
 
 
+class BoxOfficeFavori(_Base):
+    """« Box-office du premier week-end » (5 tranches de recettes par film) : on achète le OUI de la tranche
+    favorite, entre `min_hours` et `max_hours` avant la fin du marché (vendredi et samedi déjà connus du public).
+    Sur le passé (experiments/box_office.md, 24/10/2026), aux prix du dernier achat réel et frais 5 % : à 24 h de la fin,
+    110 films, la favorite gagne 100 fois pour 93,6 attendues, +7,5 % par pari (t par film 1,96) ; mais 24 réglages
+    regardés, 2e moitié meilleure que la 1re, découpe par jour de fin instable : indice faible, fantôme.
+    Pourquoi ça peut rater : sélection parmi beaucoup d'essais ; la fin du marché varie (dimanche midi ou lundi midi)."""
+
+    strategy_id = "box_office_favori"
+    required = ("min_hours", "max_hours", "price_min", "price_max", "shift", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+    FILM = re.compile(r"[\"“'](.+?)[\"”']\s+Opening Weekend Box Office", re.I)
+
+    def _film(self, m: MarketInfo) -> str | None:
+        t = m.event_title or m.question or ""
+        if "opening weekend box office" not in t.lower() or not _yes_no(m):
+            return None
+        found = self.FILM.search(t)
+        return (found.group(1) if found else t).strip().lower() + "|" + (m.end_date.date().isoformat() if m.end_date else "")
+
+    def candidates(self, markets):
+        out = [m for m in markets if self._film(m)]
+        out.sort(key=lambda m: m.end_date.timestamp() if m.end_date else 0)
+        return out[: int(self.params.get("max_candidates", 80))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        groups: dict = defaultdict(list)
+        for m in watchlist:
+            key = self._film(m)
+            if key and m.end_date is not None:
+                groups[key].append(m)
+        for key, ms in groups.items():
+            if now is None or len(ms) < 2:
+                out.abstain("moins de deux tranches visibles")
+                continue
+            hours = (ms[0].end_date - now).total_seconds() / 3600
+            if not float(p["min_hours"]) <= hours <= float(p["max_hours"]):
+                out.abstain("hors de la fenêtre avant la fin")
+                continue
+            asks = []
+            for m in ms:
+                book = books.get(m.token_ids[0])
+                asks.append((float(book.best_ask) if book is not None and book.best_ask is not None else None, m))
+            if any(a is None for a, _ in asks):
+                out.abstain("carnet indisponible")
+                continue
+            ask, fav = max(asks, key=lambda x: x[0])
+            # Le scanner écarte les tranches trop chères ou sans carnet : la favorite n'est sûre que si les tranches
+            # cachées (au plus 1 − somme des prix visibles) pèsent moins que la tranche choisie.
+            mids = [_book_mid(books, m.token_ids[0]) for m in ms]
+            if any(v is None for v in mids) or max(mids) < max(0.0, 1 - sum(mids)) + float(p.get("hidden_margin", 0.02)):
+                out.abstain("une tranche cachée pourrait être la favorite")
+                continue
+            if any(t in state.positions for mm in ms for t in mm.token_ids):
+                out.abstain("position déjà ouverte")
+                continue
+            if not float(p["price_min"]) <= ask <= float(p["price_max"]):
+                out.abstain("favorite hors de la plage de prix")
+                continue
+            est = min(ask + float(p["shift"]), 0.99)
+            prop = self._buy(fav, books, state, 0, est - float(p["uncertainty"]), est, min(est + float(p["uncertainty"]), 0.999),
+                             bucket, marks, out, f"box_office:{key.split('|')[0]}",
+                             "écart mesuré sur le passé (+7 % par pari, 110 films), trouvé parmi ~24 réglages",
+                             "une tranche voisine l'emporte (recettes du samedi et du dimanche)")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, BoxOfficeFavori)}

@@ -3190,3 +3190,27 @@ seismes_marche:
     max_proposals_per_cycle: {value: 4, min: 0, max: 20}
     max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
+
+box_office_favori:
+  explication: "Pour chaque film qui sort, les gens parient sur combien d'argent il gagnera le premier week-end ; le samedi, quand on sait déjà comment s'est passé le vendredi, on achète la case que tout le monde trouve la plus probable, parce qu'elle gagne un peu plus souvent que son prix."
+  class: box_office_favori
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  hypothesis: >
+    Test sur le passé (experiments/box_office.md, 24/10/2026), verdict INDICE FAIBLE : 240 événements « Opening Weekend Box Office » réglés (juillet 2022 → octobre 2026),
+    prix du dernier ACHAT réel avant l'heure, frais 5 %. À 24 h de la fin : 110 films, la tranche favorite (0,5-1,0) gagne 100 fois pour 93,6 attendues, +7,5 % par pari, t par film 1,96
+    (2e moitié +11,6 %, 1re +3,4 %) ; à 36/48/12 h +4 %/+6 %/+3 % (t 0,9-1,2). ~24 réglages regardés, découpage par jour de fin du marché instable (dimanche midi : -7 à +15 %) :
+    le gain n'est PAS prouvé. Quart de Kelly.
+  params:
+    min_hours:      {value: 14, min: 0, max: 200}
+    max_hours:      {value: 40, min: 1, max: 400}
+    price_min:      {value: 0.50, min: 0.05, max: 0.95}
+    price_max:      {value: 0.95, min: 0.50, max: 0.99}
+    shift:          {value: 0.05, min: 0.0, max: 0.20}    # écart mesuré : la favorite gagne ~6-7 points de plus que son prix à 24 h (100 gagnées pour 93,6 attendues)
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.30}
+    min_net_edge:   {value: 0.0, min: 0.0, max: 0.30}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 80, min: 0, max: 300}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
