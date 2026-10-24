@@ -3,6 +3,28 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-24 (passage chercheur, minuit : 23 h 55 UTC → voir fin de l'entrée)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-24_ecart_estimation_et_reference_arene.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations et contrôle `estimation_gonflee`).
+  - **Obligations** (`apres_echeance`, championne, `contrer_crypto_patiente`) : causes déjà écrites les 22 et 23/10, rien de neuf.
+  - **Défaut trouvé : `estimation_perimee` signalait des erreurs qui n'en sont pas.** Les 6 constats du rapport publié (compteur_tweets ×3, decroissance_temps, detroits_marche_log, mots_prononces) concernent des stratégies à modèle propre dont
+    l'écart « estimation − prix » varie par construction (écart interquartile 0,04 à 0,25 contre 0,00 à 0,02 pour les `nf_*`). Sur le passé des tweets, les achats à écart ≥ 0,20 sont les meilleurs (+25 à +29 %), ceux à écart < 0,10 perdent 4 %.
+    Correctif : seuil = écart habituel + max(8 points, 3 × écart interquartile) ; test ; rapport 6 → 2 constats (le CZ du 23/10, estimé 0,81 payé 0,10 à 33 minutes de la fin, reste signalé).
+  - **Référence** : l'arène entière (1 721 jetons, 59 509 € misés) perd 3,8 % par mise hors frais (−2 264 € pour un hasard de ±945 €) ; `estimation_gonflee` (z −10,9) vient surtout des estimations des `nf_*`/`naive_favorite` (biais fixe, déjà tracé le 22/10) et de `meteo_prevision`
+    (154 achats, tous avant le 19/10 : 0,81 annoncé, 54 % gagnés). Toute stratégie doit se comparer à −3,8 %, pas à 0.
+  - **Vérifié** : `loterie_meteo` voit bien les marchés de température (94 sur 94 classés `weather`, 30 candidats dans la fenêtre à 8 h UTC) ; les « 377 exclus par famille » du cycle de 23 h 45 sont les marchés non météo de la liste ; sources météo « ok (5 / 3 observations) » ;
+    12 achats tirés au hasard parmi 195 (stratégies hors `nf_`/`nm_`) relus sur Gamma : bons marchés, bons côtés.
+  - **Deuxième contrôle à la main (famille 4, filtres de prix)** : sur 2 013 achats des 3 derniers jours, 39 (1,9 %) sont 1 à 2 crans hors de la plage de leur stratégie (tennis à 0,78 pour 0,80-0,95) : filtre sur le prix du scan, sans effet mesurable, aucun correctif.
+- **Recherche** (`experiments/tweets_fin_periode.md`, scripts `experiments/tweets_fin_periode/`) : compteur de tweets, 189 périodes (juillet → 20/10), rejeu heure par heure jusqu'à 10 minutes de la fin, règlement relu 185/189, échanges réels des 189 événements.
+  - Dernières heures : **non démontré** (53 achats, 6 périodes, tous cz_binance, +17 à +38 % ; les 4 pertes en direct sont compatibles avec la malchance).
+  - Écart exigé entre le calcul et le prix : plus il est grand, plus le rendement monte (NON sans NYC : 0,03 +11 %, 0,12 +20 %, 0,18 +23 % par achat). Aux prix réellement payés : **+41 % (288 achats, 57 périodes, tranches toutes fraîches) à +14 % (1 631 achats, 133 périodes, toutes tranches, t +2,1)**,
+    « retenue » par `idea_test.verdict`, mais 13 % seulement des signaux ont un échange dans l'heure, le prix horaire d'une tranche peu échangée gonfle l'écart (21 % → 12 % au prix payé), WhiteHouse (−14,5 %) et Elon (−8,7 %) perdent, découpage issu d'une sélection (~60 coupes) : **indice fort → fantôme**. ~25 réglages regardés.
+  - Relevé d'ensembles météo n° 3 versionné (2 024 marchés) ; toujours 0 marché réglé à minuit (les premiers finissent le 24/10 à 12 h UTC) : évaluation le 24/10 au soir.
+  - `marge_coherente` (n° 3) : l'écart de +0,026 du 22/10 est refermé (−0,002 le 24/10 à 0 h) : **écartée**.
+- **Arène** : fille `compteur_tweets_non_ecart_large` (fantôme, mère `compteur_tweets_non`, écart calcul − prix ≥ 0,15, sans Elon ni Trump, pas dans `validated_strategies`) ; cycle local : 467 marchés, 2 propositions relues à la main (Elon, avant l'ajout du filtre Elon/Trump).
+- **Reste ouvert** : confirmer à 6-12 h UTC que `loterie_meteo` achète ; évaluer les relevés d'ensembles météo quand Gamma les aura clos (0 réglé à minuit) ; fille de `compteur_tweets_non_ecart_large` avec NON ≤ 0,60 et sans WhiteHouse seulement après 30 paris en direct ;
+  rejeu des tweets aux échanges (pas aux prix horaires) pour Elon et Trump ; ordres posés sur les 13 % de signaux échangés.
+
 ## 2026-10-23 (passage chercheur, soir : 19 h 55 → 20 h 33 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-23_soir_news_momentum_certitude.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations).

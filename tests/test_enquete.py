@@ -92,6 +92,21 @@ def test_estimate_far_above_the_usual_gap_is_flagged():
     assert len(found) == 1 and "1 achat" in found[0]["titre"] and "0.817" in found[0]["exemples"][0]
 
 
+def test_a_model_with_a_naturally_wide_gap_is_not_flagged_for_ordinary_spread():
+    """24/10 : compteur_tweets (écart médian 0,04, écarts de 0,3 à 0,7 qui gagnaient +25 % sur le passé) remplissait le rapport de
+    faux constats ; une stratégie à prix + biais fixe (écart toujours 0,05) reste surveillée de près."""
+    t = NOW - timedelta(hours=5)
+    spread = [0.01, 0.02, 0.04, 0.05, 0.08, 0.12, 0.15, 0.18, 0.2, 0.24]
+    model = [_buy(t + timedelta(minutes=i), f"m{i}", 0.5, 10, est=0.5 + g) for i, g in enumerate(spread)]
+    model.append(_buy(t + timedelta(hours=1), "wide", 0.5, 10, est=0.5 + 0.30))  # 0,30 : dans l'étendue de ce modèle
+    fixed = [_buy(t + timedelta(minutes=i), f"f{i}", 0.85, 10, est=0.90) for i in range(8)]
+    fixed.append(_buy(t + timedelta(hours=1), "odd", 0.85, 10, est=0.99))
+    found = enquete.estimation_perimee({"tweets_v1.0.0": _ledger(*model), "nf_v1.0.0": _ledger(*fixed)}, NOW - timedelta(days=3))
+    assert [f["titre"].split(" : ")[0] for f in found] == ["nf_v1.0.0"]
+    huge = model + [_buy(t + timedelta(hours=2), "huge", 0.10, 10, est=0.81)]  # CZ du 23/10 : écart 0,71
+    assert any(f["titre"].startswith("tweets_v1.0.0") for f in enquete.estimation_perimee({"tweets_v1.0.0": _ledger(*huge)}, NOW - timedelta(days=3)))
+
+
 def test_a_gain_made_in_one_day_is_grave_when_the_principal_copies_it():
     """20/10 : 95 % du gain de la championne vient du 18/10."""
     rows = []

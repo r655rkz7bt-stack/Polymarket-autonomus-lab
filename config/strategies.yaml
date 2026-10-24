@@ -2462,6 +2462,37 @@ compteur_tweets_non_hors_elon_trump:
     skip_nyc:       {value: 1, min: 0, max: 1}
     skip_elon_trump: {value: 1, min: 0, max: 1}
 
+compteur_tweets_non_ecart_large:
+  explication: "Le compteur de tweets, NON seulement, mais on n'achète que quand le calcul et le prix sont très loin l'un de l'autre (15 points au moins) : c'est là que le calcul gagnait."
+  # 24/10/2026 (experiments/tweets_fin_periode.md) : rejeu heure par heure de 189 périodes passées (juillet-octobre 2026), NON sans NYC Mayor. Plus l'écart exigé entre le
+  # calcul et le prix est grand, plus le rendement monte : 0,03 → +11 %, 0,08 → +16 %, 0,12 → +20 %, 0,18 → +23 % par achat (écart < 0,10 : -4 %). Aux prix réellement
+  # payés (premier échange de preneur sur NON dans l'heure) : +41 % par achat avec frais (288 achats, 57 périodes, tranches à prix tous frais) à +14 % (1 631 achats, 133 périodes, toutes tranches, t +2,1) : « retenue ». MAIS :
+  # le découpage « NON sans NYC » vient lui-même d'une sélection (~60 découpages), 13 % seulement des signaux ont un échange dans l'heure, octobre est faible (5 périodes,
+  # -14 % par période au prix du relevé) : fantôme, pas dans validated_strategies. Écart exigé = marge 0,03 + incertitude 0,01 + gain net 0,11 = 0,15.
+  # Sans Elon Musk ni Trump : le rejeu ne couvre presque pas Elon (carnets de 30 tranches, 0 achat) ni Trump (13 périodes, -9 %), et `tweets_filles.md` les donnait à ≈ 0 %.
+  mere: compteur_tweets_non
+  morceau: "sans Elon ni Trump, calcul et prix à 15 points ou plus"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.11, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_no:        {value: 1, min: 0, max: 1}
+    skip_nyc:       {value: 1, min: 0, max: 1}
+    skip_elon_trump: {value: 1, min: 0, max: 1}
+
 compteur_tweets_non_patiente:
   explication: "La même idée que « compteur de tweets, NON seulement », mais on pose l'achat et on attend un vendeur au lieu de payer son prix."
   # AMELIORATION n°6 du 21/10/2026 : tranches de tweets peu liquides ; seul l'acheteur pressé paie les frais.

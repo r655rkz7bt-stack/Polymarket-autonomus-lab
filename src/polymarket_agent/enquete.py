@@ -206,7 +206,10 @@ def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost
 
 def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = None, extra_gap: float = 0.08) -> list[dict]:
     """Achats immédiats dont l'écart estimation − prix payé dépasse de `extra_gap` l'écart habituel
-    de la stratégie (médiane de ses achats immédiats) : estimation calculée sur un autre carnet."""
+    de la stratégie (médiane de ses achats immédiats) : estimation calculée sur un autre carnet.
+    Seuil = écart habituel + max(`extra_gap`, 3 × écart interquartile) : une stratégie à modèle propre (tweets, mots, météo,
+    cotes) a un écart très variable par construction ; le 24/10, 8 de ses 16 constats étaient de ce genre (compteur_tweets :
+    écarts de 0,04 à 0,10 habituels, et ceux de 0,3 à 0,7 gagnaient +25 % sur le passé, `experiments/tweets_fin_periode.md`)."""
     out = []
     for name, rows in entries.items():
         gaps = []
@@ -217,11 +220,13 @@ def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = 
         if len(gaps) < 5:
             continue
         usual = statistics.median(g for g, _ in gaps)
-        odd = [(g, e) for g, e in gaps if g > usual + extra_gap and (since is None or _ts(e) >= since)]
+        quartiles = statistics.quantiles([g for g, _ in gaps], n=4)
+        threshold = usual + max(extra_gap, 3 * (quartiles[2] - quartiles[0]))
+        odd = [(g, e) for g, e in gaps if g > threshold and (since is None or _ts(e) >= since)]
         if odd:
             odd.sort(key=lambda r: -r[0])
             out.append(_finding("estimation_perimee", A_REGARDER,
-                                f"{name} : {len(odd)} achat(s) estimés {extra_gap:.0%} au-dessus de l'écart habituel ({usual:+.3f})",
+                                f"{name} : {len(odd)} achat(s) estimés {threshold - usual:.0%} au-dessus de l'écart habituel ({usual:+.3f})",
                                 "L'estimation ne correspond pas au prix payé : carnet périmé (le prix a bougé pendant "
                                 "le cycle), mauvais marché rattaché, ou modèle qui s'emballe. La mise, calculée sur "
                                 "cette estimation, est trop grosse.",
