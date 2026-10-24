@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3164,
+  "principal": 3165,
   "fantome:calibration_patiente_v1.0.0": 1901,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1845,
@@ -19,7 +19,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1530,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2176,
-  "fantome:market_maker_v1.0.0": 1758,
+  "fantome:market_maker_v1.0.0": 1761,
   "fantome:favori_politique_patiente_v1.0.0": 1447,
   "fantome:favori_politique_v1.0.0": 1447,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1447,
@@ -33,7 +33,7 @@
   "fantome:nf_court_v1.0.0": 1731,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 1473,
+  "fantome:nf_moyen_v1.0.0": 1475,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1433,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -159,7 +159,7 @@
   "fantome:spacex_cumul_v1.0.0": 9,
   "fantome:toucher_metaux_v1.0.0": 7
  },
- "verifiees": 8470,
+ "verifiees": 8473,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1475,9 +1475,9 @@
    "op_id": "7e9a9fee5a13acb6d010305b"
   }
  ],
- "derniere_execution": "2026-10-24T19:28:40+00:00",
+ "derniere_execution": "2026-10-24T19:33:09+00:00",
  "dernier_seq_reglements": {
-  "principal": 3164,
+  "principal": 3165,
   "fantome:calibration_patiente_v1.0.0": 1901,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1845,
@@ -1496,7 +1496,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1530,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2176,
-  "fantome:market_maker_v1.0.0": 1763,
+  "fantome:market_maker_v1.0.0": 1765,
   "fantome:favori_politique_patiente_v1.0.0": 1447,
   "fantome:favori_politique_v1.0.0": 1447,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1447,
@@ -1510,7 +1510,7 @@
   "fantome:nf_court_v1.0.0": 1731,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 1477,
+  "fantome:nf_moyen_v1.0.0": 1480,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1433,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -1541,7 +1541,7 @@
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1056,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
-  "fantome:nf_sport_6_24h_v1.0.0": 975,
+  "fantome:nf_sport_6_24h_v1.0.0": 977,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 701,
   "fantome:nf_sport_patiente_prix_moyen_v1.0.0": 737,
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
@@ -1612,7 +1612,7 @@
   "fantome:nf_sport_925_950_v1.0.0": 242,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 117,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 180,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 265,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 267,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 260,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 93,
   "fantome:moins_de_cartes_v1.0.0": 188,
