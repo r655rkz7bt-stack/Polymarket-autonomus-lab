@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3140,
+  "principal": 3141,
   "fantome:calibration_patiente_v1.0.0": 1890,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1841,
@@ -28,7 +28,7 @@
   "fantome:contrer_crypto_v1.0.0": 1684,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1445,
   "fantome:loterie_meteo_v1.0.0": 1551,
-  "fantome:suivre_politique_v1.0.0": 1496,
+  "fantome:suivre_politique_v1.0.0": 1497,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 1722,
   "fantome:nf_equipe_v1.0.0": 1286,
@@ -1475,9 +1475,9 @@
    "op_id": "7e9a9fee5a13acb6d010305b"
   }
  ],
- "derniere_execution": "2026-10-24T17:44:51+00:00",
+ "derniere_execution": "2026-10-24T17:47:44+00:00",
  "dernier_seq_reglements": {
-  "principal": 3140,
+  "principal": 3141,
   "fantome:calibration_patiente_v1.0.0": 1890,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1841,
@@ -1505,7 +1505,7 @@
   "fantome:contrer_crypto_v1.0.0": 1684,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1445,
   "fantome:loterie_meteo_v1.0.0": 1551,
-  "fantome:suivre_politique_v1.0.0": 1496,
+  "fantome:suivre_politique_v1.0.0": 1497,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 1722,
   "fantome:nf_equipe_v1.0.0": 1286,
@@ -1565,7 +1565,7 @@
   "fantome:decroissance_temps_v1.0.0": 428,
   "fantome:echelle_dates_v1.0.0": 397,
   "fantome:implication_politique_v1.0.0": 392,
-  "fantome:marche_neuf_v1.0.0": 597,
+  "fantome:marche_neuf_v1.0.0": 599,
   "fantome:marches_jumeaux_v1.0.0": 392,
   "fantome:outsiders_surcotes_v1.0.0": 432,
   "fantome:paire_oui_non_v1.0.0": 392,
@@ -1591,7 +1591,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 309,
   "fantome:nf_court_football_soir_v1.0.0": 315,
   "fantome:nf_court_soir_v1.0.0": 353,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 342,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 344,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 237,
