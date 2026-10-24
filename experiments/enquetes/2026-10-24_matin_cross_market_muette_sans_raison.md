@@ -27,3 +27,8 @@ Aucun défaut de code nouveau ; le principal (760 €) reste sous son capital de
 ## Dix paris au hasard (famille 3, relecture à la main)
 Tirés au sort (graine 2410) parmi 685 achats des fantômes hors `nf_*`/`nm_*`/crypto/politique depuis le 21/10, marché relu sur Gamma : `apres_echeance` « Will Ukraine target Moscow on October 21 » NON à 0,964 (estimé 0,985) — le marché n'est toujours pas réglé 3 jours après sa date et cote OUI 0,18 (NON vaut 0,82 : −15 % sur 12,7 €) ; la stratégie est coupée depuis le 23/10 (`enabled: false`, aucun achat depuis), donc rien à corriger ;
 `marche_neuf` « Trump dit "Drill Baby Drill" … (copy) » (marché dupliqué « (copy) » réglé NON gagné) et « Spread: Magic (−16.5) » Hawks ; `mots_prononces` « Iran 5+ fois » OUI gagné, « Russia ou Ukraine » NON perdu (0,408 pour 0,544 estimé) ; `vague_volume_*` (6 achats à 0,66-0,90, 4 marchés ouverts à échéance longue). Question, issue achetée et règle concordent dans les dix cas ; pas de mauvais rattachement.
+
+## Le principal, stratégie par stratégie (journal signé publié, 9 h 52 UTC ; jetons réglés, frais compris)
+`nf_court` −145 € (18 jetons, −22 %) ; `meteo_prevision` −58 € (39 jetons, −11 %, tous avant le 19/10) ; `nf_sport_patiente` −19,8 € sur 1 634 € misés (59 jetons, 51 gagnés, **−1,2 %**) ; `apres_echeance` −12 € ; `nf_sport_patiente_prix_850_875` −22 € (3 jetons) ;
+`nf_sport` +10,5 € (+2,9 %) ; `nf_tennis_prix_bas` +10,6 € (+18,9 %, 6 jetons) ; total −240 € = le solde de 760 €. La championne, qui pilote le principal, y fait −1,2 % pour +161 € chez son fantôme : le gain du fantôme (copiés −2,5 % contre non copiés +5,1 %, fiche du matin)
+n'est pas arrivé au principal ; aucune nouvelle erreur de copie (les écarts viennent des paris non copiés, plus petits, et du hasard).
