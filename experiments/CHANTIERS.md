@@ -64,7 +64,7 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 3 | Deribit : volatilité implicite BTC/ETH | `www.deribit.com` (API publique) | remplacer la volatilité historique de `crypto_threshold` | à faire |
 | 4 | Polymarket Data API : grosses transactions et détenteurs | `data-api.polymarket.com` | suivre l'argent informé (« baleines »), flux d'ordres anormaux | à faire |
 | 5 | Open-Meteo et NWS : prévisions météo | `api.open-meteo.com`, `api.weather.gov` | marchés de température / pluie / neige | en cours : relevés NOAA faits (`meteo_metar`, 15/10/2026) ; prévisions à faire |
-| 6 | USGS : séismes en direct (GeoJSON) | `earthquake.usgs.gov` | marchés « séisme de magnitude X avant… » | à faire |
+| 6 | USGS : séismes en direct (GeoJSON) | `earthquake.usgs.gov` | marchés « séisme de magnitude X avant… » | fait le 24/10/2026 (lecteur `sources/usgs.py`, `seismes.py`, fantôme `seismes_marche` ; `experiments/seismes.md`) |
 | 7 | Launch Library 2 : lancements spatiaux | `ll.thespacedevs.com` | marchés SpaceX / lancements | à faire |
 | 8 | Classement App Store d'Apple | `rss.marketingtools.apple.com` | marchés « appli n°1 » (ChatGPT, Threads…) | à faire |
 | 9 | Classement des modèles d'IA (LMArena, jeux de données publics) | `huggingface.co` (API publique des jeux de données) | marchés « meilleur modèle d'IA à la date X » | à faire |

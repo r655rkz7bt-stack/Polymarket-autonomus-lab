@@ -102,7 +102,9 @@ scanner:
               105617: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
               # 23/10/2026 : étiquette hormuz (104139) : tranches hebdomadaires et mensuelles d'Ormuz ET de Bab el-Mandeb (40 marchés
               # PortWatch sur 74 dans les 30 jours) ; sans elle, `detroits_marche_log` ne voyait aucun marché d'Ormuz.
-              104139: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10}}
+              104139: {pages: 1, min_liquidity: 300, min_volume_24h: 0, max_spread: 0.10},
+              # 24/10/2026 : étiquette earthquakes (103038) : « plus gros séisme du jour » et « combien de séismes cette semaine » (seismes_marche), 240-900 $ de liquidité
+              103038: {pages: 1, min_liquidity: 200, min_volume_24h: 0, max_spread: 0.15}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
@@ -236,6 +238,7 @@ sources:
   xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
+  usgs: {enabled: true, every_minutes: 10, days: 10}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 10 derniers jours ; gratuit, sans clé
   portwatch: {enabled: true, every_minutes: 120, days: 3000, ais: true, max_detroits: 6}   # FMI (arbitre) : passages dans les détroits cités par les marchés, mis à jour le mardi jusqu'au dimanche ; + AIS hormuz.data-tracking.net (appoint, 2 appels)
   odds_outrights:                                                # ODDS_API_KEY ; champions de saison, 1 crédit par jour et par championnat
     enabled: true

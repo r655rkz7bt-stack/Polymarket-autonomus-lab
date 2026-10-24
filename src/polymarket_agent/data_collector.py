@@ -32,6 +32,7 @@ from polymarket_agent.sources.polymarket_comments import CommentsSource
 from polymarket_agent.sources.portwatch import PortWatchSource
 from polymarket_agent.sources.rss import RssSource
 from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSource
+from polymarket_agent.sources.usgs import fetch_usgs
 from polymarket_agent.sources.weather import ForecastSource, MetarSource, stations_for
 
 log = logging.getLogger(__name__)
@@ -238,6 +239,8 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "ref:portwatch", source.rows, now)
         return obs
     run("portwatch", portwatch)
+    # Séismes (24/10/2026) : catalogue USGS des 10 derniers jours (M >= 5), pour les marchés « plus gros séisme du jour » et « nombre de séismes de la semaine ».
+    snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
     if db is not None:
         from polymarket_agent.strategy_engine import market_family
         found = []

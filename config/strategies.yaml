@@ -3122,3 +3122,71 @@ nf_sport_patiente_6_24h_autre:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_patiente_6_24h_6_12h:
+  explication: "Le favori de sport de la championne entre 6 et 24 heures avant la fin, mais seulement les paris qui se terminent dans 6 à 12 heures."
+  # Fille 80/20 (obligation du 24/10) : délai 6-12 h = 11 opérations, +164, +14,5 % par mise contre la mère. Onze paris : une piste, pas une preuve
+  # (la famille entière gagne autant que ses prix, enquête du 24/10) ; fantôme gratuit, jugée contre sa mère sur la même période.
+  mere: nf_sport_patiente_6_24h
+  morceau: "sport, patiente, 6 à 24 h, fin dans 6 à 12 h"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heures_min: 6, heures_max: 24, prix_min: 0.8, prix_final: true, echeance_min: 6, echeance_max: 12}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+nf_sport_non_900_925:
+  explication: "Le favori de sport quand c'est un « Non », mais seulement quand le prix payé est entre 0,90 et 0,925."
+  # Fille 80/20 (obligation du 24/10) : prix payé 0,900-0,925 = 12 opérations, +157, +9,3 % par mise contre la mère. Douze paris : une piste, pas une preuve
+  # (favoris de l'arène à 0,90-0,925 : 159 gagnés pour 157,3 attendus, enquête du 24/10) ; fantôme gratuit.
+  mere: nf_sport_non
+  morceau: "sport + favori NON, prix payé 0,900-0,925"
+  class: naive_favorite
+  filtres: {familles: [sports], issue: [non], prix_min: 0.9, prix_max: 0.925}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.02, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+seismes_marche:
+  explication: "Un site officiel américain liste chaque séisme du monde ; on voit déjà le plus fort de la journée (ou combien il y en a eu cette semaine) et on achète la tranche que le marché vend trop peu cher, ou on parie contre celle qu'il vend trop cher."
+  class: seismes_marche
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  hypothesis: >
+    Test sur le passé (experiments/seismes.md, 24/10/2026), verdict INDICE : 27 marchés « plus gros séisme du jour » (25/09 → 22/10) et
+    55 marchés « combien de séismes cette semaine » (décembre → octobre) réglés sur l'USGS, règlement relu 26/27 (jour) et 47/57 (semaine ;
+    les 10 écarts sont tous des marchés >= 5,5 où le marché a compté un séisme de plus que le catalogue d'aujourd'hui). Le modèle ne bat pas clairement le marché
+    (test apparié par événement : jour meilleur 31 fois sur 56, t −1,3 ; semaine ≥ 5,5 t +1,2 en sa défaveur) ; aux prix payés (premier achat dans les 2 h) : jour 27 paris +69 % (13 jours,
+    t 1,15), semaine >= 5,5 +24 % après frais (181 paris, 27 événements, t 2,05), semaine >= 6,5 +7 % (t 0,6). ~30 découpages regardés,
+    marchés minces (médiane 8 $ par échange) : le gain n'est PAS prouvé. Quart de Kelly.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance calculée − prix demandé − frais
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}
+    min_price:      {value: 0.04, min: 0.01, max: 0.50}
+    max_price:      {value: 0.96, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 0.25, min: 0.1, max: 24}   # catalogue relevé toutes les 10 min ; un séisme récent absent fausse la loi
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces

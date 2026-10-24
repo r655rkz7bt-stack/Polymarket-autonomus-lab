@@ -15,19 +15,18 @@ masquer: []
 # Blocs REPLIÉS au départ : seul leur titre et une ligne de résumé restent visibles ; un toucher sur
 # le titre les ouvre (le navigateur d'Etienne retient son choix). Le cœur, le résumé et le capital
 # ne se replient jamais.
-replier: [ordres-poses, journal, decisions-recentes, systeme]
+replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/10/2026 : l’entonnoir (150 fantômes) fait 8 900 px sur téléphone, près de la moitié de la page
 
 # « À la une » : au plus 5 points courts (280 caractères chacun), écrits par le chercheur, en tête
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-10-23"
+  date: "2026-10-24"
   points:
-    - "Capital principal : 763,7 € réalisés sur 1 000 de départ. Les pertes datent surtout d'avant la copie fidèle (18-19/10 : −200 €) ; depuis le 20/10 il perd environ 30 €, en copiant à un tiers de la mise des fantômes."
-    - "Défaut trouvé le 23/10 : « après la date » achetait des favoris pendant les matchs (huit paris sur un même match de NBA perdus : −475 € chez le fantôme, −16 € pour le principal). Testée sur 10 234 événements : aucun avantage, stratégie éteinte."
-    - "La championne nf_sport_patiente n'a pas d'avantage de prix prouvé : sans ses 3 meilleurs paris elle fait +2 € ; 459 favoris de sport gagnés pour 461 attendus par les prix (experiments/enquetes/2026-10-22_championne_biais_et_mises.md)."
-    - "Le tennis en direct ne confirme pas son « indice » de +3,1 % : −1,9 % sur 520 paris, puis −4,5 % sur 63 nouveaux (experiments/apres_fin_match.md). Pistes écartées le 23/10 : UFC (KO + soumission + décision), après la fin du match."
-    - "Brésil, 2e tour le 25/10 : les tranches « marge de victoire » de Flávio dépassent son prix « vainqueur » de 2,6 points (relevé experiments/marge_coherente/) ; gain sans risque d'environ 0,65 %, trop petit pour l'arène."
+    - "Capital principal : 772 € réalisés sur 1 000 de départ (−228 € de paris réglés, dont −145 € de nf_court et −58 € de la météo, presque tout avant le 20/10). Vérifié le 24/10 : le principal copie bien les paris de sa championne, l'écart avec son fantôme (+161 €) est du hasard."
+    - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +161 €, mais +38 € sans ses 3 meilleurs paris."
+    - "Nouvelle piste le 24/10 : les séismes (catalogue officiel USGS lisible en direct). Sur 27 jours et 57 semaines réglés, les achats simulés d'un modèle simple gagnent (+69 % et +24 %), mais il ne bat pas clairement le marché. Indice faible : fantôme seismes_marche."
+    - "Écartés ou bloqués le 24/10 : séismes après la fin du jour (marché à 0,97 pour 96 % de réussite), marché annuel des séismes ≥ 7 (calé) ; rougeole : historique du CDC introuvable ; TSA : tsa.gov interdit aux robots (403), pas de contournement."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses

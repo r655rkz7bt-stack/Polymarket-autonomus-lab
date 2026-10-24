@@ -3,6 +3,25 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-24 (passage chercheur, matin : 04 h 55 UTC → voir fin de l'entrée)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-24_principal_contre_fantome_copie.md` ; famille du jour 1 « le principal ne joue pas ce que l'arène mesure », puis les trois obligations « chance »).
+  - **Rien de faux trouvé dans la copie** : le principal (772 €, −228 € réglés) a bien joué 62 jetons de `nf_sport_patiente`, tous présents dans son fantôme (+161 € sur 13 585 €). Sur la même période, les paris copiés font −2,5 % (74 paris) et les non copiés +5,1 % (50) :
+    l'écart (tranche 0,90-0,95 : −15,6 % contre +8,0 %) ne vient ni de la taille de mise ni du prix (copiés par quartile de mise 13/34, 17/35, 28/34, 23/35, prix moyen 0,85-0,89) : hasard d'échantillon.
+  - **Constat de fond** : sur les 1 798 jetons réglés de toute l'arène (premier achat de chacun), les favoris gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8, z −2,2 ; 0,80-0,95 : z −1,4 à +0,6).
+    Les trois obligations « chance » ont la même cause qu'aux 22 et 23/10 (mises ∝ 1/(1 − prix) à biais fixe, rien derrière). Aucun correctif de code, pas de nouveau contrôle.
+- **Recherche** (`experiments/seismes.md`, scripts `experiments/seismes/scripts/`, chantier n°6 USGS) : marchés « plus gros séisme du jour » (27 jours réglés) et « combien de séismes cette semaine » (57 événements), règlement sur l'USGS.
+  Règlement relu : jour 26/27, semaine 47/57 (les 10 écarts : marchés ≥ 5,5 où Polymarket compte un séisme de plus que le catalogue d'aujourd'hui). Modèle du jour étalonné sur 660 jours (|z| ≤ 1,6 par tranche) ; modèle de la semaine Gamma-Poisson (variance 3 × la moyenne).
+  **Contre le marché** : jour, perte log 0,18-0,35 contre 0,29-0,50 au tableau brut, mais test apparié par événement non significatif (modèle meilleur 31 fois sur 56, t −1,3) ; semaine égalité (≥ 5,5 : t +1,2 en sa défaveur). **Aux prix payés** : jour 27 paris +69 % (13 jours, t 1,15), semaine ≥ 5,5 +24 % après frais (181 paris, 27 événements, t 2,05 ; sans les 3 meilleurs +8 %), ≥ 6,5 +7 % (t 0,6).
+  ~30 découpages regardés, marchés minces (échange médian 8 $) : **indice faible → fantôme**, pas « retenue ».
+- **Arène** : fantôme `seismes_marche` (quart de Kelly, `jamais_retirer`) avec lecteur `sources/usgs.py` (séismes M ≥ 5 des 10 derniers jours, toutes les 10 minutes), module `seismes.py` (lois du jour et de la semaine, tables `seismes_tables.json` à refaire chaque mois par `experiments/seismes/scripts/tables.py`),
+  étiquette `earthquakes` (103038) dans `tag_pages`, 16 tests. Cycle local : 1er cycle « seismes 0 » (le catalogue est lu pendant le cycle, rattaché au suivant), 2e cycle : 6 marchés rattachés, 3 achats relus à la main (« plus de 13 séismes ≥ 5,5 » OUI à 0,42 pour 0,68, 11 déjà vus dont une réplique de 7,0 ;
+  « 4 séismes ≥ 6,5 » OUI à 0,05 pour 0,27, 3 déjà vus ; « 12 séismes ≥ 5,5 » NON à 0,82 pour 0,89). Filles 80/20 de la feuille de mission : `nf_sport_patiente_6_24h_6_12h` et `nf_sport_non_900_925` (fantômes, 11-12 opérations : pistes, pas preuves) ;
+  pas de fille de `nf_tennis` 0,80-0,85 (doublon de `nf_tennis_12_18h_vainqueur_800_850`, déjà en arène).
+- **Tableau de bord** : « À la une » remis à jour ; bloc `entonnoir` replié au départ (8 900 px sur téléphone, près de la moitié de la page : la page passe de 18 400 à 9 600 px, aperçu `apercu_dashboard.py`, 20 tests du tableau verts).
+- **Reste ouvert** : refaire `releve.py` + `hebdo.py` + `jour.py` dans un mois (≈ 25 jours de plus) ; comprendre l'écart de comptage ≥ 5,5 (10 semaines sur 28 : +1) avant de se fier aux tranches ≥ 5,5 ; marchés mensuels de séismes non testés ;
+  évaluer les relevés d'ensembles météo quand Gamma les aura clos (aujourd'hui à 12 h UTC pour les premiers).
+
 ## 2026-10-24 (passage chercheur, minuit : 23 h 55 UTC → voir fin de l'entrée)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-24_ecart_estimation_et_reference_arene.md` ; famille du jour 6 « ce qui ne tourne plus », puis obligations et contrôle `estimation_gonflee`).
