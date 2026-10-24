@@ -108,7 +108,11 @@ scanner:
               # 24/10/2026 : étiquette box-office (51), tranches de recettes du premier week-end (`box_office_favori`)
               51: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
               # 24/10/2026 : étiquette spacex (63), compteurs « How many SpaceX launches in <mois / année> » (`spacex_cumul`) : 100-6 600 $ de liquidité par tranche, des tranches déjà cotées 0,99 (que la stratégie veut voir), l'année finit dans 68 jours
-              63: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60, max_favorite_price: 0.9999, max_horizon_hours: 2400}}
+              63: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60, max_favorite_price: 0.9999, max_horizon_hours: 2400},
+              # 24/10/2026 : étiquettes gold (101589) et silver (100733), échelles « What will Gold / Silver hit Week of … » (`toucher_metaux`), 100-3 000 $ de liquidité par barre
+              # (l'étiquette pyth-finance 104466 mêle 25 actifs : 300 marchés en 3 pages, un seul de l'or)
+              101589: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
+              100733: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
@@ -252,6 +256,7 @@ sources:
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
   usgs: {enabled: true, every_minutes: 10, days: 10}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 10 derniers jours ; gratuit, sans clé
+  goldapi: {enabled: true, every_minutes: 5, keep_days: 30}      # 24/10/2026 : prix au comptant de l'or et de l'argent (gold-api.com, sans clé), journal `prix_matieres` pour `toucher_metaux`
   ll2: {enabled: true, every_minutes: 120, days: 430}            # 24/10/2026 : lancements de SpaceX (Launch Library 2, sans clé, ~15 appels/h) pour les marchés « How many SpaceX launches in … »
   portwatch: {enabled: true, every_minutes: 120, days: 3000, ais: true, max_detroits: 6}   # FMI (arbitre) : passages dans les détroits cités par les marchés, mis à jour le mardi jusqu'au dimanche ; + AIS hormuz.data-tracking.net (appoint, 2 appels)
   odds_outrights:                                                # ODDS_API_KEY ; champions de saison, 1 crédit par jour et par championnat

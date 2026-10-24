@@ -3216,6 +3216,31 @@ spacex_cumul:
     max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur 9 événements
 
+toucher_metaux:
+  explication: "Chaque semaine, des gens parient que l'or ou l'argent va toucher un prix (plus haut ou plus bas) ; on note le prix toutes les 5 minutes, on calcule la chance de toucher chaque prix d'ici vendredi, et on achète les cases que le marché vend trop peu cher."
+  class: toucher_metaux
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-24"
+  hypothesis: >
+    Test sur le passé (experiments/commodites_toucher.md, 24/10/2026), verdict RETENUE au sens d'idea_test mais FRAGILE : 4 matières (pétrole, gaz naturel, or, argent),
+    112 échelles hebdomadaires (avril → octobre 2026), prix horaires de contrats à terme (Yahoo) pour le modèle et prix des vrais échanges pour les achats ;
+    328 paris sur 98 événements : +33,5 % (t par événement 2,35, z des prix 1,96, 5 mois sur 7 gagnants, +19 % sans les 3 meilleurs paris), concentré sur les barres cotées 0,10-0,45
+    (+61 %, z 2,9) ; barres à plus de 0,40 sans effet (prix demandé plafonné à 0,50 : choix après coup) ; septembre −17 %, octobre −18 % ; ~25 réglages regardés ; log-score du modèle un peu moins bon que celui du marché.
+    Fantôme sur l'or et l'argent seulement (le pétrole et le gaz n'ont pas de source de prix libre) : il ne joue que sur les marchés créés après le premier relevé du journal
+    des prix du cycle (premiers achats attendus pour la semaine du 02/11). Quart de Kelly.
+  params:
+    min_net_edge:   {value: 0.10, min: 0.0, max: 0.50}    # chance calculée − prix demandé
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}
+    min_price:      {value: 0.08, min: 0.01, max: 0.50}
+    max_price:      {value: 0.50, min: 0.20, max: 0.99}   # barres cotées 0,08-0,50 : au-delà de 0,40 le test n'a trouvé aucun effet (choix après coup)
+    max_stale_hours: {value: 0.5, min: 0.1, max: 24}      # le journal des prix est tenu toutes les 5 minutes
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 300}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 3, min: 1, max: 10}           # les barres d'une même semaine gagnent ou perdent ensemble
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice fragile
+
 box_office_favori:
   explication: "Pour chaque film qui sort, les gens parient sur combien d'argent il gagnera le premier week-end ; le samedi, quand on sait déjà comment s'est passé le vendredi, on achète la case que tout le monde trouve la plus probable, parce qu'elle gagne un peu plus souvent que son prix."
   class: box_office_favori
