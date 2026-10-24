@@ -34,6 +34,15 @@ Réglages regardés : 6 horizons × 4 plages de prix = 24 (+ 6 pour la robustess
 - Aucun prix « milieu » sans échange : tous les prix sont des achats réels (donc pas le piège des carnets vides).
 - Limite : marchés minces (médiane quelques dizaines de dollars par échange), pas de test de mise à l'échelle ; règlement non relu sur the-numbers.com.
 
+## 4. Le côté opposé : NON des tranches peu probables (`scripts/non_bas.py`)
+OUI à 0,05-0,15 (NON acheté au dernier achat réel, frais 5 %) : +2,5 % (96 h), −1,2 % (72 h), +3,6 % (48 h, t 2,5), +5,4 % (36 h, t 3,3), +4,0 % (24 h, t 1,9), −0,7 % (12 h) ; OUI à 0,15-0,30 : −8 % à +5 % sans régularité.
+Gagnés contre attendus par les prix : z +0,9 à +1,8 seulement. C'est l'image dans le miroir du même biais (la masse que les tranches basses surcotent, la favorite la sous-cote) : pas une deuxième preuve,
+et ce n'est pas rejoué dans l'arène (seule la favorite l'est). Écartée comme piste séparée.
+
+## 5. Deuxième week-end et suivants (65 événements « 2nd/3rd… Weekend », 2026) : **pas testé**
+Lien avec l'ouverture du même film (bracket gagnant) tenté : 27 films, libellés de tranches irréguliers (« 5-Day », tranches serrées/larges, doublons) et ratios incohérents (de 0,15 à 1,43) ;
+trop peu de films propres pour une loi de baisse. À reprendre quand la série « 2nd Weekend » aura 60+ films réglés avec des tranches comparables.
+
 ## Verdict : **indice faible → fantôme** `box_office_favori`
 Positif à tous les horizons, significatif seulement à 24 h (t 1,96-2,2) après sélection parmi ~30 réglages (z attendu du meilleur de 30 ≈ 2) ; la favorite gagne 6 fois de plus que son prix
 sur 110 (z des prix ≈ +2). Fantôme en quart de Kelly, fenêtre 14-40 h avant la fin ; l'arène (carnets réels, 2-3 week-ends par mois) confirmera ou non.
