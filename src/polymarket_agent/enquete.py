@@ -27,6 +27,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
     filles filtrées gardaient de quoi acheter : la fille « battait » sa mère faute d'argent, pas de règle) ;
   - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
     pour 461 attendus par les prix mais 489 annoncés : le biais fixe +0,05 n'existe pas) ;
+  - jetons_sans_valeur : achat à 0,001-0,03 d'une issue estimée à plus de 15 % (24/10 : crypto_threshold, NON de « plonge à 2 300 $ le 24/10 » déjà
+    touché le matin, 30 000 parts à 0,001, 7 achats sur 7 perdus) ;
   - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
   - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
@@ -171,6 +173,30 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
                             "qu'une part, a obtenu autant que lui : sur les marchés peu liquides la copie n'est plus "
                             "proportionnelle (le principal pèse plus lourd que prévu sur ces paris).", full))
     return out
+
+
+def jetons_sans_valeur(entries: dict[str, list[dict]], since: datetime | None = None, price_max: float = 0.03,
+                       est_min: float = 0.15) -> list[dict]:
+    """Achats à moins de `price_max` d'une issue que la stratégie estimait à plus de `est_min` (24/10/2026, audit « prix impossible » : crypto_threshold
+    achetait à 0,001 le NON de « plonge à 2 300 $ le 24/10 », barre déjà touchée le matin, 30 000 parts, estimé 0,35 ; 7 achats sur 7 perdus). Le marché
+    sait quelque chose que le modèle ignore (issue déjà jouée, source de règlement différente) : à lire, pas à acheter."""
+    found = []
+    for name, rows in entries.items():
+        for e in _buys(rows, since):
+            d, x = e["data"], e["data"].get("extra") or {}
+            try:
+                price, est = float(d["price"]), float(x.get("est_probability") or 0)
+            except (TypeError, ValueError):
+                continue
+            if price <= price_max and est >= est_min:
+                found.append((e["ts"][:16], name if name != "principal" else d["strategy_id"], d["outcome"], price, est, _cost(d), d["market_id"]))
+    if not found:
+        return []
+    cost = sum(f[5] for f in found)
+    lines = [f"{f[0]} {f[1]} « {f[2]} » à {f[3]:.3f} (estimé {f[4]:.2f}, {f[5]:.0f} €, marché {f[6]})" for f in sorted(found, key=lambda f: -f[5])]
+    return [_finding("jetons_sans_valeur", A_REGARDER, f"{len(found)} achat(s) à moins de {price_max} d'une issue estimée à plus de {est_min:.0%} ({cost:.0f} € misés)",
+                     "Le marché vend presque pour rien une issue que le modèle croit à plus de 15 % : en général l'issue est déjà jouée (barre « touche » franchie plus tôt "
+                     "dans la journée, match fini) et le modèle ne le voit pas. Relire le marché et la question.", lines)]
 
 
 def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost: float = 0.25,
@@ -834,7 +860,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + familles_vides(abstentions, entries) + sources_vides(sources)
-                + capital_bloque(entries, active, now)
+                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 

@@ -393,3 +393,18 @@ def test_sources_ok_without_any_data_are_reported():
     found = enquete.sources_vides(etat)
     assert len(found) == 1 and [e.split(" :")[0] for e in found[0]["exemples"]] == ["meteo_metar", "meteo_prevision", "kalshi"]
     assert not enquete.sources_vides(None)
+
+
+def test_tokens_sold_for_almost_nothing_but_estimated_high_are_flagged():
+    """24/10/2026 (audit « prix impossible ») : crypto_threshold achetait à 0,001 le NON de « plonge à 2 300 $ le 24/10 », barre déjà touchée le matin,
+    estimé 0,35 ; le marché savait, le modèle non. 7 achats sur 7 perdus."""
+    entries = {"fantome:crypto_threshold_non_v1.0.0": [
+        _buy(NOW, "t1", "0.001", 29894, strategy="crypto_threshold_non", est=0.349742),         # le cas réel
+        _buy(NOW, "t2", "0.20", 100, strategy="crypto_threshold_non", est=0.50),                # prix normal : rien
+        _buy(NOW, "t3", "0.001", 100, strategy="crypto_threshold_non", est=0.05),               # estimé 5 % : le marché et le modèle s'accordent
+    ]}
+    found = enquete.jetons_sans_valeur(entries)
+    assert len(found) == 1 and found[0]["controle"] == "jetons_sans_valeur" and "1 achat(s)" in found[0]["titre"]
+    assert "crypto_threshold_non" in found[0]["exemples"][0] and "0.001" in found[0]["exemples"][0]
+    assert enquete.jetons_sans_valeur({"fantome:x": [_buy(NOW, "t4", "0.2", 10, est=0.5)]}) == []
+    assert enquete.jetons_sans_valeur(entries, since=NOW + timedelta(hours=1)) == []           # achats plus anciens que la fenêtre : ignorés

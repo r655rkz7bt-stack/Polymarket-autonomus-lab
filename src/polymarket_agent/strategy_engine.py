@@ -426,6 +426,9 @@ class ReversionStrategy(CalibratedStrategy):
         return out
 
 
+TOUCH_MIN_ASK = Decimal("0.05")   # prix de vente minimal d'un jeton de marché « touche X » (voir CryptoThresholdStrategy.propose)
+
+
 class CryptoThresholdStrategy:
     """Marchés crypto à seuil : probabilité INDÉPENDANTE tirée du prix au comptant et de la
     volatilité réalisée (crypto_model.py), comparée au prix exécutable réel.
@@ -497,6 +500,13 @@ class CryptoThresholdStrategy:
                 out.abstain("avantage net insuffisant")
                 continue
             side, s_low, s_est, s_high, book, (max_price, cost_ps) = chosen
+            # Enquête du 24/10/2026 (audit « prix impossible ») : sur un marché « touche X » le calcul part du prix d'AUJOURD'HUI et des heures qui
+            # restent ; il ignore que la barre a pu être touchée plus tôt dans la fenêtre (« plonge à 2 300 $ le 24/10 » : touchée le matin, ETH remonté).
+            # Le marché le sait (l'autre issue vaut 0,999) et vend la nôtre 0,001 : le modèle y voit 35 % et achète 30 000 parts. 7 achats sur 7 perdus
+            # (crypto_threshold_non et _prix_bas, 21-24/10). Un jeton de marché « touche » vendu à moins de TOUCH_MIN_ASK n'est pas acheté sur le seul modèle.
+            if question.kind in ("touch_up", "touch_down") and book.best_ask is not None and book.best_ask < TOUCH_MIN_ASK:
+                out.abstain("jeton de marché « touche » quasi sans valeur : la barre est peut-être déjà touchée")
+                continue
             low_d = Decimal(str(round(s_low, 6)))
             shares = size_buy(state, prob_low=low_d, cost_per_share=cost_ps,
                               kelly_fraction=p.get("kelly_fraction", Decimal("1")), marks=marks)
