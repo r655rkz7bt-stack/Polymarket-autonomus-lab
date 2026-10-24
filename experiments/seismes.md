@@ -63,6 +63,14 @@ de magnitude (5,4 / 5,45 / 5,5 / 5,55 : 15 / 18 / 18 / 9) n'explique les 10 éca
 dans le +24 % ; à titre d'illustration (sélection sur l'issue, à ne pas utiliser comme preuve) : semaines où mon compte = celui du marché +69 % (103 paris), semaines où il diffère −35 % (78 paris). Une stratégie qui parie sur le compte
 exact depuis le catalogue d'aujourd'hui joue donc contre un règlement dont la règle exacte est inconnue : raison de plus pour un quart de Kelly et un fantôme.
 
+## Ce qui a été regardé et écarté (24/10, suite)
+- **Après la fin du jour** (le maximum est connu, le marché reste ouvert jusqu'à 18 h UTC le lendemain) : le gagnant s'achète 0,97 en moyenne (9 jours, 1re heure et demie après minuit UTC), 0,977 à +2 h, 0,997 à +6 h ; or mon maximum redonne le bon
+  résultat 26 fois sur 27 (96 %, une révision de magnitude). Rendement +3,4 % pour 3,7 % d'échecs : **rien à prendre**, la stratégie s'abstient après 23 h UTC.
+- **Étalonnage conditionnel du modèle du jour** (1 094 jours, 12 h UTC) : selon le maximum déjà vu (< 5,25, 5,25-5,65, 5,65-6,05) la chance qu'aucun séisme ≥ x n'arrive dans le reste de la journée est juste à ±3 % près (par ex. 214 observés pour 205 attendus,
+  96 pour 104) : pas de correction de répliques à ajouter.
+- **Marché annuel** « How many 7.0 or above earthquakes in 2026 ? » (13 séismes déjà vus, ≈ 2,6 de plus attendus, moyenne 2014-2025 : 13,75 par an) : loi de Poisson 14-16 : 0,66 (marché 0,665), 17-19 : 0,27 (0,305), 20 ou plus : ≈ 0,03 (0,0585), 11-13 : 0,075 (0,05).
+  Le marché est calé sauf peut-être la queue 20+ ; aucun prix passé, pas de stratégie (relevé du 24/10).
+
 ## Limites et suite
 - Plage horaire testée : jour entre 6 h et 23 h UTC ; semaine entre 0,5 et 6,6 jours avant la fin (pas de test avant 6 h : la stratégie s'abstient).
 - Le comptage ≥ 5,5 de Polymarket dépasse parfois le mien d'un séisme : si le fantôme perd sur les tranches ≥ 5,5, regarder ce décalage avant tout.
