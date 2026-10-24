@@ -31,4 +31,4 @@ Tirés au sort (graine 2410) parmi 685 achats des fantômes hors `nf_*`/`nm_*`/c
 ## Le principal, stratégie par stratégie (journal signé publié, 9 h 52 UTC ; jetons réglés, frais compris)
 `nf_court` −145 € (18 jetons, −22 %) ; `meteo_prevision` −58 € (39 jetons, −11 %, tous avant le 19/10) ; `nf_sport_patiente` −19,8 € sur 1 634 € misés (59 jetons, 51 gagnés, **−1,2 %**) ; `apres_echeance` −12 € ; `nf_sport_patiente_prix_850_875` −22 € (3 jetons) ;
 `nf_sport` +10,5 € (+2,9 %) ; `nf_tennis_prix_bas` +10,6 € (+18,9 %, 6 jetons) ; total −240 € = le solde de 760 €. La championne, qui pilote le principal, y fait −1,2 % pour +161 € chez son fantôme : le gain du fantôme (copiés −2,5 % contre non copiés +5,1 %, fiche du matin)
-n'est pas arrivé au principal ; aucune nouvelle erreur de copie (les écarts viennent des paris non copiés, plus petits, et du hasard).
+n'est pas arrivé au principal ; la fiche du matin a conclu à un hasard d'échantillon (copie fidèle jeton par jeton), je n'ai pas refait cette comparaison aujourd'hui.
