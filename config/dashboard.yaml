@@ -26,8 +26,8 @@ a_la_une:
     - "Capital principal : 772 € réalisés sur 1 000 de départ (−228 € de paris réglés, dont −145 € de nf_court et −58 € de la météo, presque tout avant le 20/10). Vérifié le 24/10 : le principal copie bien les paris de sa championne, l'écart avec son fantôme (+161 €) est du hasard."
     - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +161 €, mais +38 € sans ses 3 meilleurs paris."
     - "Nouvelle piste le 24/10 : l'or, l'argent, le pétrole ou le gaz vont-ils toucher tel prix cette semaine ? Sur 112 semaines, acheter les barres sous-cotées gagne +33 % : +58 % jusqu'en juillet, +8 % depuis août. Indice faible : fantôme toucher_metaux (or, argent)."
-    - "SpaceX : le nombre de lancements du mois ou de l'année se lit en direct (cumul + cadence ≈ 0,43 par jour). Test passé trop mince (9 compteurs), mais « 140-159 en 2026 » cotée 0,78 pour ~0,95 de chance : fantôme spacex_cumul. Séismes : un doublon USGS (pt + us) corrigé."
-    - "Écartés le 24/10 : détroits, course à la publication (le marché saute en 3 secondes), température mondiale (carnets vides), séismes après la fin du jour. Indices faibles gardés en fantôme : séismes, box-office. Rougeole : on attend les mercredis du CDC."
+    - "Primaires américaines 2026 (298 événements) : le marché est bien calibré. Le NON d'un candidat coté 10-30 % gagne un peu plus que son prix (+3 à +9 % aux vrais prix) : indice faible. Les élections générales ne montrent rien. Fantôme candidats_non, qui joue aussi le 3/11 (essai)."
+    - "Matchs annulés ou abandonnés (réglés 50-50) : 9 marchés de l'arène, 521 € perdus sur 1 252 € misés. Acheter le favori AVANT le match ne bat pas non plus son prix (−1 à −3 %, 50-50 compris). Écartés le 24/10 : détroits, température mondiale, outsiders des 50-50."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses
