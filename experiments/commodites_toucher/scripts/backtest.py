@@ -14,6 +14,7 @@ NORM = lambda x: 0.5 * math.erfc(-x / math.sqrt(2))
 EV = json.load(open(ROOT / "donnees/evenements.json"))
 tickers = sys.argv[1].split(",") if len(sys.argv) > 1 else ["WTI", "NG"]
 import os
+MOIS = os.environ.get("MOIS") == "1"        # échelles mensuelles « hit in <mois> » au lieu des hebdomadaires
 PREMIER = os.environ.get("PREMIER") == "1"      # seulement la première décision de chaque marché (rien à savoir du passé de la semaine)
 SIGMA_FIXE = os.environ.get("SIGMA_FIXE") == "1"    # volatilité horaire = médiane de la période, pas celle des 10 derniers jours
 
@@ -38,7 +39,7 @@ def main():
         _r = sorted(abs(math.log(bars[k][4] / bars[k - 1][4])) for k in range(1, len(bars)) if bars[k][4] and bars[k - 1][4] and bars[k][0] - bars[k - 1][0] <= 7200)
         SIG_MED.setdefault(tk, (sum(x * x for x in _r) / len(_r)) ** 0.5)
         import bisect
-        evs = [e for e in EV if e["closed"] and f"({tk})" in e["title"] and "Week of" in e["title"]]
+        evs = [e for e in EV if e["closed"] and f"({tk})" in e["title"] and (("hit in " in e["title"] and "Week of" not in e["title"]) if MOIS else "Week of" in e["title"])]
         with cf.ThreadPoolExecutor(4) as ex:
             trades = dict(ex.map(lambda e: (e["id"], it.fetch_event_trades(http, ROOT / "donnees/echanges", e["id"])), evs))
         for e in sorted(evs, key=lambda e: e["endDate"]):
@@ -46,6 +47,7 @@ def main():
             create = min(ts(m.get("startDate") or m.get("createdAt") or e.get("startDate")) for m in e["markets"])
             tr = trades[e["id"]]
             for m in e["markets"]:
+                if not m.get("outcomePrices") or not m.get("clobTokenIds") or m.get("closed") is False: continue
                 pq = parse_q(m["question"]); 
                 if not pq: continue
                 side, K = pq
@@ -59,6 +61,7 @@ def main():
                 T = dt.datetime.combine(create.date(), dt.time(14), tzinfo=UTC)
                 if T < create: T += dt.timedelta(days=1)
                 while T < end - dt.timedelta(hours=18):
+                    if MOIS and (T - create) > dt.timedelta(days=60): break
                     i = bisect.bisect_right(times, int(T.timestamp()) - 3600) - 1        # seulement les barres horaires FINIES avant T
                     if i < 240: break
                     S = bars[i][4]
