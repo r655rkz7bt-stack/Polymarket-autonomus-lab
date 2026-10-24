@@ -25,7 +25,7 @@ a_la_une:
   points:
     - "Capital principal : 772 € réalisés sur 1 000 de départ (−228 € de paris réglés, dont −145 € de nf_court et −58 € de la météo, presque tout avant le 20/10). Vérifié le 24/10 : le principal copie bien les paris de sa championne, l'écart avec son fantôme (+161 €) est du hasard."
     - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +161 €, mais +38 € sans ses 3 meilleurs paris."
-    - "Nouvelle piste le 24/10 : les séismes. Le catalogue USGS donne déjà le plus fort séisme du jour ou le nombre de la semaine ; sur 27 jours et 57 semaines réglés, un modèle simple bat le marché (+69 % et +24 % simulés). Indice, pas preuve : fantôme seismes_marche."
+    - "Nouvelle piste le 24/10 : les séismes (catalogue officiel USGS lisible en direct). Sur 27 jours et 57 semaines réglés, les achats simulés d'un modèle simple gagnent (+69 % et +24 %), mais il ne bat pas clairement le marché. Indice faible : fantôme seismes_marche."
     - "Écartés ou bloqués le 24/10 : séismes après la fin du jour (marché à 0,97 pour 96 % de réussite), marché annuel des séismes ≥ 7 (calé) ; rougeole : historique du CDC introuvable ; TSA : tsa.gov interdit aux robots (403), pas de contournement."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le

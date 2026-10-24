@@ -1214,9 +1214,9 @@ class SeismesMarche(_Base):
     que l'on lit en direct (sources/usgs.py). Chance calculée par seismes.py : maximum déjà vu et heures restantes (jour), compte déjà vu et
     binomiale négative des 156 dernières semaines (semaine). On achète le côté (OUI ou NON) dont la chance calculée dépasse le prix demandé
     + frais d'au moins `min_net_edge`, entre `min_price` et `max_price`.
-    Test sur le passé (experiments/seismes.md, 24/10/2026) : jour, 27 jours réglés : perte log du modèle 0,18-0,35 contre 0,29-0,50 pour le
-    dernier prix du marché, 27 paris aux prix payés +69 % (t par jour 1,15) ; semaine, 55 événements, séismes >= 5,5 +24 % après frais
-    (t par événement 2,05), >= 6,5 rien (+7 %, t 0,6) : indice, fantôme."""
+    Test sur le passé (experiments/seismes.md, 24/10/2026) : jour, 27 jours réglés : 27 paris aux prix payés +69 % (t par jour 1,15) ;
+    semaine, 55 événements, séismes >= 5,5 +24 % après frais (t par événement 2,05), >= 6,5 rien (+7 %, t 0,6) ; mais le modèle n'est pas démontré
+    meilleur que le marché en perte log (test apparié par événement, t -1,3 au mieux) : indice faible, fantôme."""
 
     strategy_id = "seismes_marche"
     required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")

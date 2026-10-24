@@ -3175,8 +3175,8 @@ seismes_marche:
   hypothesis: >
     Test sur le passé (experiments/seismes.md, 24/10/2026), verdict INDICE : 27 marchés « plus gros séisme du jour » (25/09 → 22/10) et
     55 marchés « combien de séismes cette semaine » (décembre → octobre) réglés sur l'USGS, règlement relu 26/27 (jour) et 47/57 (semaine ;
-    les 10 écarts sont tous des marchés >= 5,5 où le marché a compté un séisme de plus que le catalogue d'aujourd'hui). Le modèle bat le dernier
-    prix du marché (jour : perte log 0,18-0,35 contre 0,29-0,50) ; aux prix payés (premier achat dans les 2 h) : jour 27 paris +69 % (13 jours,
+    les 10 écarts sont tous des marchés >= 5,5 où le marché a compté un séisme de plus que le catalogue d'aujourd'hui). Le modèle ne bat pas clairement le marché
+    (test apparié par événement : jour meilleur 31 fois sur 56, t −1,3 ; semaine ≥ 5,5 t +1,2 en sa défaveur) ; aux prix payés (premier achat dans les 2 h) : jour 27 paris +69 % (13 jours,
     t 1,15), semaine >= 5,5 +24 % après frais (181 paris, 27 événements, t 2,05), semaine >= 6,5 +7 % (t 0,6). ~30 découpages regardés,
     marchés minces (médiane 8 $ par échange) : le gain n'est PAS prouvé. Quart de Kelly.
   params:

@@ -31,6 +31,9 @@ relevés versionnés dans `experiments/seismes/releves/` (catalogue USGS M ≥ 5
 | 12 h | 89 | 0,264 | 0,322 |
 | 18 h | 91 | 0,181 | 0,288 |
 
+**Test apparié par événement** (perte log moyenne du modèle moins celle du marché, par tranche, une valeur par événement et par heure de décision, probabilités bornées à 0,01-0,99) : jour −0,124 (56 couples, **modèle meilleur dans 31, t −1,3**) ;
+à 6 h −0,34 (16, t −1,3), à 12 h −0,02 (19, t −0,2), à 18 h −0,06 (21, t −0,5). Semaine ≥ 5,5 : +0,029 (160 couples, t +1,2, modèle meilleur 82 fois sur 160) ; ≥ 6,5 : +0,007 (t +0,8). **Le modèle n'est donc pas démontré meilleur que le
+marché** : l'écart du tableau vient de quelques événements (un dernier prix de 6 h sur un marché mince) ; seul le jour penche du bon côté, sans être significatif.
 Semaine ≥ 6,5 : modèle 0,13-0,36 contre marché 0,14-0,35 (égalité). Semaine ≥ 5,5 : égalité de J-6 à J-3, **le marché meilleur à J-2 et J-1** (0,31/0,33 contre 0,36/0,43) :
 il connaît le compte presque exact de la fin de semaine, y compris l'écart de comptage ci-dessus. Le dernier échange d'un marché mince peut dater de 6 heures : cette comparaison avantage le modèle.
 
@@ -49,11 +52,11 @@ Robustesse de la semaine ≥ 5,5 (écart ≥ 0,03, frais compris) : référence 
 1re moitié des semaines +37 %, 2e moitié +13 % ; mois : 5 gagnants sur 7. Le gain vient des queues (billets OUI à 0,05-0,30 sur des comptes bien plus hauts que la normale
 après un séisme majeur et ses répliques) : le marché les cote trop bas, mais ce sont peu de paris gagnants. Les OUI de tranche voisine du compte déjà vu perdent.
 
-## Verdict : indice, pas « retenue »
+## Verdict : indice faible, pas « retenue »
 - 27 jours seulement côté jour (13 avec un achat possible), ~30 découpages regardés (heures, côtés, seuils d'écart, 3 références, 2 magnitudes) : le t par événement reste sous 1,5
   (jour) ou 2,05 (semaine) avec une sélection de découpages ; sans les 3 meilleurs paris, la semaine tombe à +8 %.
 - Marchés minces : échange médian 8 $, carnets larges (OUI 0,15 / 0,75 vus le 24/10) ; ce que l'on peut vraiment acheter reste à mesurer dans l'arène.
-- Mais : modèle étalonné sur 660 jours, calibré, qui bat le dernier prix du marché de 0,05 à 0,11 de perte log côté jour, et une source officielle lisible en direct.
+- Mais : modèle étalonné sur 660 jours (et sur 1 094 jours selon le maximum déjà vu), une source officielle lisible en direct, et des paris simulés positifs aux prix payés ; en revanche l'avantage sur la **qualité** des prix du marché n'est pas démontré (test apparié ci-dessus, t −1,3 au mieux) : les gains simulés viennent de peu de paris de queue.
 → **fantôme `seismes_marche`** (quart de Kelly, `jamais_retirer` : des jours sans marché utile ne doivent pas le faire retirer), pas dans `validated_strategies`.
 Essai en direct le 24/10 à 05 h UTC : lecteur USGS (61 séismes en 10 jours), 16 tranches de la semaine rattachées (par exemple « plus de 13 séismes ≥ 5,5 » : modèle 0,68 contre prix 0,38-0,42).
 
