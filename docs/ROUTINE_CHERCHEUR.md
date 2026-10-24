@@ -184,3 +184,6 @@ passage s'arrête net, rien n'est perdu.
 - Ensembles Open-Meteo : **pas d'historique** des membres (3 jours passés, recollés des derniers passages : regard vers le futur).
   Le cycle les relève lui-même toutes les 6 h (tables `meteo_ensemble_releves` / `meteo_ensemble_membres` de la base, sauvegardées
   chaque jour) ; à juger avec `experiments/meteo_ensemble/evaluer_releve.py --base …`. Archives brutes : NOAA GEFS et ECMWF sur AWS (GRIB2).
+- Box-office (24/10/2026, `experiments/box_office.md`) : `public-search` de Gamma (`q=Opening Weekend Box Office`, `events_status=closed`, pages 1-11) retrouve 244 événements « Opening Weekend » réglés depuis 2022 ; la fin du marché varie (lundi 12 h UTC ou dimanche 12 h) : ancrer l'heure sur le week-end (dimanche 0 h UTC), pas sur `endDate`. Le règlement est le prix final Gamma (UMA), the-numbers.com n'a pas été relu.
+- Un test qui trouve « quelque chose » dans une famille doit être refait sur d'autres familles de même forme (Netflix, vues, Rotten Tomatoes, App Store : `experiments/familles_tranches.md`) : le box-office est resté un indice faible parce que les autres familles ne montraient rien.
+- Avec `.venv/bin/python` seulement (`requests` n'est pas dans le `python3` du système) ; `public-search` répond par pages de 50, ~1 000 événements en ≈ 3 minutes, 1 M d'échanges en ≈ 10 minutes avec 6 fils.
