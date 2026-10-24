@@ -47,6 +47,12 @@ Parmi les tranches à 0,10-0,85, celle dont les achats nets des 6/12/24 dernièr
 Lien avec l'ouverture du même film (bracket gagnant) tenté : 27 films, libellés de tranches irréguliers (« 5-Day », tranches serrées/larges, doublons) et ratios incohérents (de 0,15 à 1,43) ;
 trop peu de films propres pour une loi de baisse. À reprendre quand la série « 2nd Weekend » aura 60+ films réglés avec des tranches comparables.
 
+## 6. Contrôle : la même favorite dans d'autres familles de tranches (`experiments/familles_tranches/scripts/`)
+Netflix « top show de la semaine » (174 événements), vues (bandes-annonces, MrBeast : 241) et Rotten Tomatoes (51), mêmes règles (dernier achat réel, frais 5 %, favorite sûre) : **rien**.
+Netflix : −7 % à +1 % selon l'horizon (z des prix −1,2 à +0,2) ; vues : −21 % à +3 % (z −1,8 à +0,9) ; Rotten Tomatoes : −1 % à +4 % (n = 21-23).
+La favorite sous-cotée n'est donc pas une propriété générale des marchés à tranches : soit un trait du box-office (débutants qui sous-estiment le vendredi et le samedi), soit le hasard d'un meilleur de ~30 réglages.
+Ce contrôle PLAFONNE la confiance : indice faible, pas plus.
+
 ## Verdict : **indice faible → fantôme** `box_office_favori`
 Positif à tous les horizons, significatif seulement à 24 h (t 1,96-2,2) après sélection parmi ~30 réglages (z attendu du meilleur de 30 ≈ 2) ; la favorite gagne 6 fois de plus que son prix
 sur 110 (z des prix ≈ +2). Fantôme en quart de Kelly, fenêtre 14-40 h avant la fin ; l'arène (carnets réels, 2-3 week-ends par mois) confirmera ou non.
