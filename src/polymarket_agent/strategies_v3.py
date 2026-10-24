@@ -1236,6 +1236,11 @@ class SeismesMarche(_Base):
             if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
                 out.abstain("catalogue USGS pas à jour")
                 continue
+            # Doublon entre réseaux (24/10/2026 : 6,6 « pt » et 6,3 « us » du même séisme) : si le compte sans doublon change la chance de plus de
+            # `max_ecart_doublon`, on ne sait pas ce que le règlement comptera : pas d'achat.
+            if abs(float(ref.get("p_dedup", ref["p"])) - float(ref["p"])) > float(p.get("max_ecart_doublon", 0.15)):
+                out.abstain("doublon possible entre réseaux USGS (compte incertain)")
+                continue
             # Jamais de certitude : le catalogue du règlement peut différer du flux (révision, séisme encore absent), 1 fois sur 27 côté jour et 10 sur 57 côté semaine >= 5,5.
             fair = min(max(float(ref["p"]), 0.03), 0.97)
             best = None

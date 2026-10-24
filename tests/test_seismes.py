@@ -184,3 +184,37 @@ def test_strategy_takes_at_most_two_buckets_of_the_same_event_best_edge_first(tm
         books.update(b)
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert {p.market_id for p in out.proposals} == {"a", "b"} and "déjà deux tranches de cet événement" in str(out.abstentions)
+
+
+def test_dedup_rows_drops_the_other_network_copy_of_the_same_quake_only():
+    # Cas réel du 20/10/2026 (Vanuatu) : pt26293000 (6,6 Mi) et us6000u3jl (6,3 mww) à la même minute ; 7,0 de Chine et 6,9 de Vanuatu seuls.
+    t0 = datetime(2026, 10, 20, 4, 20, tzinfo=UTC)
+    rows = [{"id": "pt26293000", "t": int(t0.timestamp()), "mag": 6.6}, {"id": "us6000u3jl", "t": int(t0.timestamp()) + 20, "mag": 6.3},
+            {"id": "us6000u43g", "t": int((t0 + timedelta(days=2)).timestamp()), "mag": 7.0},
+            {"id": "us6000u4j2", "t": int((t0 + timedelta(days=4)).timestamp()), "mag": 6.9},
+            {"id": "pt99", "t": int((t0 + timedelta(days=3)).timestamp()), "mag": 6.7},                      # seul de son réseau, rien d'autre à côté : gardé
+            {"id": "us6000u4j3", "t": int((t0 + timedelta(days=4)).timestamp()) + 1000, "mag": 6.6}]       # même réseau, 1 000 s plus tard : gardé
+    kept = [r["id"] for r in sm.dedup_rows(rows)]
+    assert "pt26293000" not in kept and {"us6000u3jl", "us6000u43g", "us6000u4j2", "pt99", "us6000u4j3"} <= set(kept)
+    start, end = t0 - timedelta(hours=1), t0 + timedelta(days=5)
+    now = t0 + timedelta(days=4, hours=12)
+    p_all, n_all = sm.weekly_p(rows, 6.5, start, end, now, (4, 4))
+    p_dedup, n_dedup = sm.weekly_p(sm.dedup_rows(rows), 6.5, start, end, now, (4, 4))
+    assert (n_all, n_dedup) == (5, 4) and p_all == 0.0 and p_dedup > 0.2          # « exactement 4 » : perdue avec le doublon, probable sans
+
+
+def test_strategy_abstains_when_the_duplicate_changes_the_count(tmp_path):
+    s = _s(SeismesMarche, min_net_edge=0.05, uncertainty=0.0, min_price=0.04, max_price=0.96, max_stale_hours=1,
+           max_extra_ticks=1, max_proposals_per_cycle=4, kelly_fraction=0.25, max_ecart_doublon=0.15)
+    now = datetime(2026, 10, 14, 12, 0, tzinfo=UTC)
+    ms, books = [], {}
+    for mid, p, p_dedup in (("diverge", 0.0, 0.8), ("sur", 0.0, 0.0)):
+        m = _daily_market(mid, "Will the biggest earthquake on October 22, 2026 be 6.1 or more?")
+        m.references = {"seismes": {"p": p, "p_dedup": p_dedup, "titre": "test", "vu_le": now.isoformat()}}
+        b = _books((f"{mid}Y", "0.390", "0.410"), (f"{mid}N", "0.590", "0.610"))
+        for book in b.values():
+            book.fetched_at = now
+        ms.append(m)
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [p.market_id for p in out.proposals] == ["sur"] and "doublon possible entre réseaux USGS" in str(out.abstentions)

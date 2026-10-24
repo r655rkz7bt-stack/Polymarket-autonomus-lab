@@ -36,6 +36,16 @@ def tables() -> dict:
     return json.loads((Path(__file__).with_name("seismes_tables.json")).read_text())
 
 
+def dedup_rows(rows: list[dict], seconds: int = 120) -> list[dict]:
+    """Rows sans les doublons entre réseaux (24/10/2026) : un séisme est parfois listé deux fois, par le centre d'alerte du Pacifique (`pt…`,
+    6,6 « Mi ») et par le NEIC (`us…`, 6,3 « mww »), à la même minute ; le NEIC est l'événement de référence. On retire l'événement d'un autre
+    réseau qui a un événement `us…` à moins de `seconds` secondes. Le règlement (recherche USGS) peut compter l’un ou l’autre selon que
+    l'association a eu lieu : la stratégie compare les deux comptes (`p` et `p_dedup`)."""
+    neic = lambda r: str(r.get("id", "")).lower().startswith("us")      # us6000…, usb000…, usc000… : tous du NEIC
+    us_times = [float(r["t"]) for r in rows if neic(r)]
+    return [r for r in rows if neic(r) or not any(abs(float(r["t"]) - t) <= seconds for t in us_times)]
+
+
 def daily_target(event_title: str) -> datetime | None:
     """Début (UTC) du jour visé par « What will the biggest earthquake be on <date> ? »."""
     m = DAILY.search(event_title or "")
@@ -149,6 +159,7 @@ def attach_seismes(markets, db, now: datetime) -> int:
         if day is not None:
             br = daily_bracket(m.question)
             p = daily_p(rows, day, now, br) if br else None
+            p_dedup = daily_p(dedup_rows(rows), day, now, br) if br else None
             if p is not None:
                 label = f"plus gros séisme du {day:%d/%m} : loi calculée {p:.3f} pour cette tranche (maximum déjà vu et heures restantes)"
         else:
@@ -157,9 +168,10 @@ def attach_seismes(markets, db, now: datetime) -> int:
             res = weekly_p(rows, wk[0], wk[1], wk[2], now, br) if wk and br else None
             if res is not None:
                 p, seen_n = res
+                p_dedup = weekly_p(dedup_rows(rows), wk[0], wk[1], wk[2], now, br)[0]
                 label = f"séismes >= {wk[0]:g} du {wk[1]:%d/%m} au {wk[2] - timedelta(seconds=1):%d/%m} : {seen_n} déjà vus, loi calculée {p:.3f} pour cette tranche"
         if label is None:
             continue
-        m.references = dict(m.references or {}, seismes={"p": round(p, 4), "titre": label, "vu_le": seen.isoformat()})
+        m.references = dict(m.references or {}, seismes={"p": round(p, 4), "p_dedup": round(p_dedup, 4), "titre": label, "vu_le": seen.isoformat()})
         n += 1
     return n

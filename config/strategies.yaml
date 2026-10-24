@@ -3189,6 +3189,7 @@ seismes_marche:
     max_candidates: {value: 60, min: 0, max: 200}
     max_proposals_per_cycle: {value: 4, min: 0, max: 20}
     max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
+    max_ecart_doublon: {value: 0.15, min: 0.0, max: 1.0}  # 24/10/2026 : pas d'achat si le compte sans doublon entre réseaux USGS change la chance de plus de 0,15
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
 
 spacex_cumul:
