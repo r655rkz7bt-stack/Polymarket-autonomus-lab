@@ -37,7 +37,7 @@ def run(C, h, lo=0.5, hi=1.0, rate=0.05, win=2 * 3600):
         bets.append({"gain": (m["win"] - cost) / cost, "evenement": c["e"]["id"], "mois": datetime.fromtimestamp(c["end"], timezone.utc).strftime("%Y-%m"), "cout": px})
     return bets
 if __name__ == "__main__":
-    for fam in ("rotten", "netflix", "vues"):
+    for fam in (sys.argv[1:] or ["rotten", "netflix", "vues"]):
         C = cases(fam); print(fam, len(C), "événements utilisables")
         for h in (96, 48, 24, 12, 6):
             for lo, hi in ((0.5, 1.0), (0.5, 0.8), (0.8, 1.0)):
