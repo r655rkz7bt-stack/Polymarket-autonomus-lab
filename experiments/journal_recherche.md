@@ -18,7 +18,8 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Arène** : fantôme `box_office_favori` (nouvelle classe `BoxOfficeFavori`, quart de Kelly, dimanche 0 h → 16 h UTC, marché encore ouvert 1 h au moins, favorite sûre même si le scanner cache des tranches : masse cachée < favorite), étiquette `box-office` (51) dans `tag_pages` ;
   cycle local : voit 4 films (« une tranche cachée pourrait être la favorite » 1, « hors de la fenêtre » 2…) ; 2 tests. Pas de nouvelle fille de `nf_sport_patiente` (mère pleine : 10 filles vivantes). « À la une » : 5e point.
 - **Reste ouvert** : lire `box_office_favori` après le week-end du 24-25/10 puis après celui du 30/10 (achats sur les films « Clayface », « Wildwood », « Klara and the Sun »…) ; refaire `box_office/scripts/releve.py` + `favori.py`/`fenetre.py` pour les films réglés depuis (≈ 3 par week-end) ;
-  vérifier le règlement sur the-numbers.com (non lu aujourd'hui) ; séries « 2nd… weekend » (65 événements) quand les tranches seront comparables ; relevés essence/rougeole/ensembles météo (aucune échéance atteinte aujourd'hui).
+  vérifier le règlement sur the-numbers.com (non lu aujourd'hui) ; séries « 2nd… weekend » (65 événements) quand les tranches seront comparables ; relevés essence/rougeole/ensembles météo (aucune échéance atteinte aujourd'hui) ;
+  marchés de Hong Kong : sur 13 marchés scannés le 24/10, 1 seul éligible et aucun dans la liste de surveillance (6 « meilleur prix manquant » = tranches déjà jouées à 0,0005, 4 quasi certains, 2 sans liquidité) : le lecteur `meteo_hko` n'est appelé que s'il en voit un ; à surveiller avant de juger le relevé d'ensembles. La sauvegarde de la base du 24/10 (faite au premier cycle du jour) ne contient pas encore les tables `meteo_ensemble_*` : la première utilisable est celle du 25/10.
 
 ## 2026-10-24 (session avec Etienne : météo par ensemble et Hong Kong)
 
