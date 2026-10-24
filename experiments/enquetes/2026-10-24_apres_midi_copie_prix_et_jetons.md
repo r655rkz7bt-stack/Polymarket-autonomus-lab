@@ -14,8 +14,8 @@ Script : `experiments/enquetes/scripts/copie_prix_paye.py`.
 - Les pertes du principal viennent donc de ce que les fantômes copiés ont perdu (`nf_court` −147 €, `meteo_prevision` −61 €, `nf_sport_patiente` −15 €), pas de la copie.
 
 ## Cause, correctif, contrôle
-- Pas de défaut nouveau : rien à corriger. Le contrôle `copie_fidele` de `enquete.py` cherche déjà les jetons absents du fantôme et les mises à moins de la moitié ; il ne regardait pas le **prix** :
-  le script ci-dessus le fait à la main (à relancer ; si l'écart moyen dépasse 0,02 sur 30 jetons, c'est un défaut de relecture du carnet).
+- Pas de défaut nouveau : rien à corriger. Le contrôle `copie_fidele` de `enquete.py` regarde déjà les jetons absents du fantôme, les prix à plus de 2 centimes d'écart et les copies à 100 % d'une exécution partielle (rien de grave au rapport du 24/10) ;
+  le script ci-dessus ajoute la conséquence en euros (gain réalisé du principal au prix du fantôme) et l'écart moyen par stratégie, à relancer pour confirmer.
 - Obligations « champion_sans_avantage » (`nf_sport_patiente`, `nf_sport_patiente_biais_faible` : 25 gagnés pour 26,4 et 26 pour 27,5 sur les 30 dernières opérations) et « chance » (3 paris = 90 %
   du gain de `nf_sport_patiente_6_24h`, 213 % de `nf_sport_patiente`) : **même cause que les 22 et 24/10** (mises ∝ 1/(1 − prix) à biais fixe 0,05, favoris qui gagnent comme leurs prix ; `2026-10-22_championne_biais_et_mises.md`,
   `2026-10-24_principal_contre_fantome_copie.md`). Les 30 dernières opérations d'un favori à 0,85-0,95 donnent 1 à 2 victoires de moins que prévu à un rythme de ±1 écart-type : rien à corriger dans le code.
