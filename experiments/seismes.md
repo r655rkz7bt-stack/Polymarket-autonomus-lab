@@ -82,3 +82,9 @@ voit les mêmes séismes provisoires que le résolveur : le décalage serait plu
 - Le comptage ≥ 5,5 de Polymarket dépasse parfois le mien d'un séisme : si le fantôme perd sur les tranches ≥ 5,5, regarder ce décalage avant tout.
 - À refaire : `tables.py` chaque mois (tables du modèle) ; rejouer le test avec les ~25 jours de plus qui seront réglés d'ici un mois ; marchés mensuels
   (« How strong … by <mois> », « Where will a 6.0+ … ») et « Another 7.0+ earthquake by… » non testés (peu d'événements).
+
+## Comment juger le fantôme (à lire au prochain passage)
+- Rythme attendu : environ 1 pari par jour (marchés du jour, entre 6 h et 23 h UTC) et 5 à 6 par semaine (compte ≥ 5,5 / 6,5, au plus 2 tranches par événement). 30 paris réglés d'ici environ trois semaines (mi-novembre).
+- Regarder séparément : (1) jour, (2) semaine ≥ 6,5, (3) semaine ≥ 5,5 (règlement incertain, voir plus haut) ; chaque morceau contre ses prix (gagnés / attendus, `enquete.py` contrôle `chance`) et contre −3,8 % de l'arène.
+- Refaire `tables.py` (tables du modèle) et `releve.py` + `hebdo.py` + `jour.py` avec les 3-4 semaines de marchés réglés en plus ; si le test apparié par événement reste non significatif et que le fantôme perd, écarter la piste.
+- Risque connu : retard du catalogue USGS (10 à 20 minutes avant qu'un grand séisme apparaisse) : juste après un séisme, le marché a déjà bougé et le modèle, qui ne le voit pas, achète le mauvais côté (le contrôle `ordres_apres_choc` n'existe pas ; à regarder dans les achats du fantôme faits dans les 20 minutes d'un séisme ≥ 5,5).
