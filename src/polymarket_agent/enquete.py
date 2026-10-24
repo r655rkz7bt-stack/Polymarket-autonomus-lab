@@ -28,7 +28,7 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - estimation_gonflee : les probabilités annoncées se réalisent-elles ? (22/10 : 530 favoris de sport, 459 gagnés
     pour 461 attendus par les prix mais 489 annoncés : le biais fixe +0,05 n'existe pas) ;
   - jetons_sans_valeur : achat à 0,001-0,03 d'une issue estimée à plus de 15 % (24/10 : crypto_threshold, NON de « plonge à 2 300 $ le 24/10 » déjà
-    touché le matin, 30 000 parts à 0,001, 7 achats sur 7 perdus) ;
+    touché le matin, 30 000 parts à 0,001, 8 achats sur 8 perdus) ;
   - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
   - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
@@ -178,7 +178,7 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
 def jetons_sans_valeur(entries: dict[str, list[dict]], since: datetime | None = None, price_max: float = 0.03,
                        est_min: float = 0.15) -> list[dict]:
     """Achats à moins de `price_max` d'une issue que la stratégie estimait à plus de `est_min` (24/10/2026, audit « prix impossible » : crypto_threshold
-    achetait à 0,001 le NON de « plonge à 2 300 $ le 24/10 », barre déjà touchée le matin, 30 000 parts, estimé 0,35 ; 7 achats sur 7 perdus). Le marché
+    achetait à 0,001 le NON de « plonge à 2 300 $ le 24/10 », barre déjà touchée le matin, 30 000 parts, estimé 0,35 ; 8 achats sur 8 perdus). Le marché
     sait quelque chose que le modèle ignore (issue déjà jouée, source de règlement différente) : à lire, pas à acheter."""
     found = []
     for name, rows in entries.items():

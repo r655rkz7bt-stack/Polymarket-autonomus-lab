@@ -502,7 +502,7 @@ class CryptoThresholdStrategy:
             side, s_low, s_est, s_high, book, (max_price, cost_ps) = chosen
             # Enquête du 24/10/2026 (audit « prix impossible ») : sur un marché « touche X » le calcul part du prix d'AUJOURD'HUI et des heures qui
             # restent ; il ignore que la barre a pu être touchée plus tôt dans la fenêtre (« plonge à 2 300 $ le 24/10 » : touchée le matin, ETH remonté).
-            # Le marché le sait (l'autre issue vaut 0,999) et vend la nôtre 0,001 : le modèle y voit 35 % et achète 30 000 parts. 7 achats sur 7 perdus
+            # Le marché le sait (l'autre issue vaut 0,999) et vend la nôtre 0,001 : le modèle y voit 35 % et achète 30 000 parts. 8 achats sur 8 perdus
             # (crypto_threshold_non et _prix_bas, 21-24/10). Un jeton de marché « touche » vendu à moins de TOUCH_MIN_ASK n'est pas acheté sur le seul modèle.
             if question.kind in ("touch_up", "touch_down") and book.best_ask is not None and book.best_ask < TOUCH_MIN_ASK:
                 out.abstain("jeton de marché « touche » quasi sans valeur : la barre est peut-être déjà touchée")

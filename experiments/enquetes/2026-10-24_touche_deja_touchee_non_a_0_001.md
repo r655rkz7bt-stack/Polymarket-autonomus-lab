@@ -7,7 +7,7 @@ Obligation de la feuille de mission (publiée à 15 h 57 UTC) : « 2 anomalies d
 - Les deux écritures sont réelles, pas un défaut du simulateur : le marché était **déjà décidé** (réglé OUI depuis, `outcomePrices [1, 0]`) : ETH avait touché 2 300 $ plus tôt dans la journée, le OUI valait 0,999 et le NON 0,001 dans le carnet. L'historique public de prix (pas de 10 minutes) n'avait pas encore enregistré
   la chute du NON (plus bas 0,2695) : d'où « prix impossible ». Fausse alerte côté prix, **vrai défaut côté stratégie**.
 - Les achats : 29 895 parts (29,9 €) et 30 552 parts (30,8 €) à 0,001, chance estimée 0,35 ; réglés à 0 (−32 € et −33 €).
-- Même défaut avant : sur les 17 achats de la famille `crypto_threshold*` dans des marchés « touche » (reach / dip to), **7 achats du NON à 0,001-0,05 ont tous perdu** (−75 € ; 21/10 07:30 et 14:53, 22/10 16:52 ×2, 24/10 14:29, 15:17 ×2) : les marchés étaient déjà décidés.
+- Même défaut avant : sur les 18 achats de la famille `crypto_threshold*` dans des marchés « touche » (reach / dip to), **8 achats du NON à 0,001-0,05 ont tous perdu** (−102 € ; 21/10 07:30 ×2 et 14:53, 22/10 16:52 ×2, 24/10 14:29, 15:17 ×2) : les marchés étaient déjà décidés.
   Les achats du OUI (`crypto_threshold_prix_bas` : 9 réglés, +257 €) ne sont pas touchés par ce défaut.
 
 ## Cause
@@ -16,7 +16,7 @@ Obligation de la feuille de mission (publiée à 15 h 57 UTC) : « 2 anomalies d
 les barres de l'or (`matieres.py`, extrêmes relevés depuis la création du marché) : un modèle de barrière a besoin du maximum / minimum DÉJÀ atteints.
 
 ## Ampleur
-7 achats, 75 € de pertes sur 3 jours (petits montants : le prix est de 0,001-0,05) ; mais 30 000 parts à 0,001 montrent le danger : si le NON avait été gagnant (quasi impossible) le fantôme aurait empoché 30 000 €, et un prix de quelques millièmes fait exploser le nombre de parts.
+8 achats, 102 € de pertes sur 4 jours (petits montants : le prix est de 0,001-0,05) ; mais 30 000 parts à 0,001 montrent le danger : si le NON avait été gagnant (quasi impossible) le fantôme aurait empoché 30 000 €, et un prix de quelques millièmes fait exploser le nombre de parts.
 
 ## Correctif et contrôle
 - `strategy_engine.TOUCH_MIN_ASK = 0,05` : sur un marché « touche », un jeton vendu à moins de 0,05 n'est pas acheté sur le seul modèle (abstention « jeton de marché « touche » quasi sans valeur : la barre est peut-être déjà touchée »). Les achats du OUI à 0,11-0,55 (gagnants) ne bougent pas.

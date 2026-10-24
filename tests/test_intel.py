@@ -102,7 +102,7 @@ def test_crypto_threshold_strategy_uses_independent_probability(ledger, limits):
 
 def test_crypto_threshold_does_not_buy_the_worthless_side_of_a_touch_market_already_decided(ledger, limits):
     """Cas réel du 24/10/2026 (audit « prix impossible ») : « Will Ethereum dip to $2,300 on October 24? », barre touchée le matin, ETH remonté à 2 350 ;
-    le marché vend le NON 0,001 (OUI 0,999), le modèle (prix d'aujourd'hui, heures restantes) y voyait 35 % et achetait 30 000 parts. 7 achats sur 7 perdus."""
+    le marché vend le NON 0,001 (OUI 0,999), le modèle (prix d'aujourd'hui, heures restantes) y voyait 35 % et achetait 30 000 parts. 8 achats sur 8 perdus."""
     from polymarket_agent.strategy_engine import CryptoThresholdStrategy
     s = CryptoThresholdStrategy("1.0.0", "2026-10-15", {
         "min_net_edge": D("0.03"), "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3"),

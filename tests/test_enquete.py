@@ -397,7 +397,7 @@ def test_sources_ok_without_any_data_are_reported():
 
 def test_tokens_sold_for_almost_nothing_but_estimated_high_are_flagged():
     """24/10/2026 (audit « prix impossible ») : crypto_threshold achetait à 0,001 le NON de « plonge à 2 300 $ le 24/10 », barre déjà touchée le matin,
-    estimé 0,35 ; le marché savait, le modèle non. 7 achats sur 7 perdus."""
+    estimé 0,35 ; le marché savait, le modèle non. 8 achats sur 8 perdus."""
     entries = {"fantome:crypto_threshold_non_v1.0.0": [
         _buy(NOW, "t1", "0.001", 29894, strategy="crypto_threshold_non", est=0.349742),         # le cas réel
         _buy(NOW, "t2", "0.20", 100, strategy="crypto_threshold_non", est=0.50),                # prix normal : rien
