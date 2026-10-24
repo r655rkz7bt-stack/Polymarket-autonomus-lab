@@ -3,6 +3,32 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-24 (passage chercheur, après-midi : 14 h 54 UTC → FIN_HEURE)
+
+- **Enquête** (fiches : `experiments/enquetes/2026-10-24_apres_midi_copie_prix_et_jetons.md`, `2026-10-24_seismes_doublon_entre_reseaux.md` ; famille du jour n° 1, plus une 2e en famille 3).
+  - **Famille 1, copie du principal au prix près** (217 achats, 151 jetons réglés) : prix payé identique à celui du fantôme (−0,0007 en moyenne pour la championne), gain réalisé −244 € contre −257 € au prix du fantôme ; les 48 jetons sans fantôme datent tous d'avant le 18/10 22 h UTC (copie fidèle, PR #76) ; 0 sur 111 achats depuis.
+    Les cinq obligations « champion sans avantage / chance » : même cause que les 22 et 24/10 (mises ∝ 1/(1 − prix), favoris qui gagnent comme leurs prix) ; pas de défaut de code.
+  - **Défaut trouvé (donnée)** : le catalogue USGS liste parfois un séisme deux fois (réseau `pt` 6,6 « Mi » et réseau `us` 6,3 « mww », Vanuatu 20/10 04:20) ; `seismes_marche` comptait 3 séismes ≥ 6,5 au lieu de 2 et a acheté NON « exactement 2 » à 0,259 (106 parts, chance estimée 0,97) contre un marché qui cote le OUI 0,76 (« plus de 13 » ≥ 5,5 à 0,80 : même écart d'un).
+    Correctif : `seismes.dedup_rows`, `p_dedup`, abstention si l'écart dépasse 0,15 ; 2 tests. Exposition du fantôme : 27,5 € + 3 €. **À vérifier au prochain passage** : le règlement du marché 5775544 (compte avec ou sans le doublon ?).
+  - Positions bloquées : 812 € de capital de fantômes dans 20 positions sur 4 marchés non réglés depuis 4 à 6 jours (587 € sur « Cape Town 18 °C » en litige UMA, 3 fantômes `nm_*` à 188,6 €) : déjà documenté (23/10, `news_momentum`), pas de nouveau correctif.
+- **Recherche** (4 pistes, comptes rendus et scripts versionnés) :
+  - **Barres touchées de l'or, de l'argent, du pétrole et du gaz** (`experiments/commodites_toucher.md`) : 112 échelles hebdomadaires réglées sur Pyth (avril → octobre), prix horaires Yahoo pour le modèle, vrais échanges pour les achats, règlement relu 96 %. 328 paris, 98 événements, **+33,5 %, t par événement 2,35, z des prix 1,96**, 5 mois sur 7,
+    +19 % sans les 3 meilleurs ; gain seulement sur les barres cotées 0,10-0,45 (le marché sous-cote les touches : +61 %, z 2,9), rien au-dessus de 0,40 ; septembre −17 %, octobre −18 % ; échelles mensuelles : pas de répétition ; log-score du modèle moins bon que le marché ; ~25 regards. Verdict `idea_test` : retenue, **fragile** → fantôme. Première version : une barre horaire en cours = regard d'une heure vers le futur (corrigé).
+    CRYPTO_LIGNE
+  - **SpaceX** (`experiments/spacex_cadence.md`) : compteurs « How many SpaceX launches in <mois / année> », Launch Library 2 contre spacex.com : règlement 9/9 ; 9 événements seulement, modèle −17 % à +35 % selon le réglage, paris quasi sûrs 7/7 gagnés (+10 %) : **indice faible** → fantôme `spacex_cumul`. En direct : « 140-159 » de l'année cotée 0,78 pour 0,87-1,00 de chance.
+    Septembre 2026 n'a eu que 8 lancements : la loi des 120 jours est trop optimiste (0,945), la production prend la plus prudente de cinq lois.
+  - **Détroits, course à la publication** (`experiments/detroits.md`) : écartée. Le gain apparent (+11 à +28 % à +0/+1 h de 11 h UTC) était un regard vers le futur : le marché saute en 3 secondes à la vraie publication (10 h 48 le 20/10, 12 h 20-12 h 57 la plupart des semaines, 15 h 19 deux fois).
+  - **Température mondiale (NASA GISS)** : écartée sans test, volume tombé à 3-11 k$ et carnets vides (écart 0,07-0,28). Autres relevés (rougeole, essence) : aucune nouvelle donnée.
+- **Arène** : trois fantômes ou corrections, tous à quart de Kelly :
+  - `spacex_cumul` (nouvelle classe, source `ll2`, étiquette `spacex` 63 avec son propre horizon de 100 jours ; `market_scanner._add_tag_markets` accepte un `max_horizon_hours` par étiquette) ; cycle local : a acheté « 140-159 » à 0,78 (relu).
+  - `toucher_metaux` (nouvelle classe, source `goldapi` : prix de l'or et de l'argent toutes les 5 minutes dans la table `prix_matieres`, étiquettes `gold` 101589 et `silver` 100733) ; ne joue que les marchés couverts par le journal depuis leur création : **premiers achats attendus pour la semaine du 02/11**. Pétrole et gaz : pas de source de prix libre.
+  - `seismes_marche` : correctif du doublon (ci-dessus).
+  - Obligations de la feuille de mission : les 18 stratégies éliminées « à remplacer » ne sont pas recréées une à une (leurs familles ont été jugées sans avantage) ; remplacées par deux familles nouvelles (la feuille demande une idée radicalement différente : nouvelle source et nouveau type de marché pour SpaceX et pour les barres de matières).
+    Les trois filles 80/20 de `nf_sport_patiente` ne sont pas créées : 21 filles de `nf_sport_patiente` sont déjà configurées (l'arène en retire d'elle-même au-delà de 10 vivantes), la fille « 0,850-0,875 » existe sous une autre forme (`nf_sport_patiente_prix_850_875`), et l'enquête n'a trouvé aucun avantage derrière les chiffres de la mère (le z des favoris est celui de leurs prix) : ajouter des découpages de plus ne ferait que de la sélection.
+  - Tableau de bord : « À la une » mis à jour (3 points remplacés) ; aperçu vérifié (0 px de débordement, téléphone et ordinateur). 575 tests verts.
+- **Reste ouvert** : (1) règlement de 5775544 / « plus de 13 » ≥ 5,5 (doublon USGS) ; (2) relancer `commodites_toucher` quand octobre-novembre sont réglés (l'effet s'affaiblit-il ?) ; (3) pétrole et gaz : source libre de prix, ou clé Pyth gratuite (à demander à Etienne : `benchmarks.pyth.network` et `hermes.pyth.network/v2/updates/price/*` répondent 401) ;
+  (4) lire `spacex_cumul` (position « 140-159 » jusqu'au 31/12) et `toucher_metaux` (premiers achats vers le 02/11) ; (5) rougeole : une ligne par mercredi du CDC (prochain : 28/10) ; essence : à relancer ; (6) mensuels de matières à écarter ou confirmer avec plus de mois.
+
 ## 2026-10-24 (passage chercheur, matin : 09 h 54 UTC → voir fin de l'entrée)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-24_matin_cross_market_muette_sans_raison.md` ; famille 6 « ce qui ne tourne plus » + dix paris relus à la main, famille 3).

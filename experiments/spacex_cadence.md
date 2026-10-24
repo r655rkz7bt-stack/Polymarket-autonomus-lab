@@ -19,6 +19,11 @@ ne fait que monter et la source qui tranche se lit en direct.
   donne ≈ 29) ; le fantôme l'a achetée dans le premier cycle local (24,7 parts à 0,780, chance prudente 0,945, avantage net 0,163, relue à la main). « 120-139 » et « 160-179 »
   sont vendues 0,12 et 0,03 : pas d'avantage une fois le plafond de certitude (0,97) posé.
 
+## Production : cinq lois, dont deux sur la cadence des 45 derniers jours
+Le test sur le passé n'utilisait que la cadence des 120 derniers jours. En direct, septembre 2026 n'a eu que 8 lancements (octobre : 9 en 24 jours, 15 sur les 45 derniers jours contre 46 sur 120) : la loi des 120 jours
+donne 0,945 à « 140-159 » de l'année, celle des 45 jours 0,87. `spacex.py` prend donc la plus prudente de **cinq** lois (Poisson et loi régulière × 120 et 45 jours, fenêtres de 365 jours) : « 140-159 » 0,87 à 1,00 (le fantôme l'avait
+achetée à 0,78 avant ce changement : avantage net encore 0,09), « 120-139 » 0 à 0,13. Cette variante n'a pas été testée sur le passé (9 événements : trop peu).
+
 ## Pourquoi ça peut rater
 - spacex.com ne compte pas comme Launch Library 2 (le compteur du site peut oublier un vol d'essai) : 9/9 ne couvre pas un écart d'un lancement près d'une frontière de tranche.
 - Une pause de la flotte de plusieurs semaines (accident) : la loi des 120 derniers jours ne le voit pas. Les trois lois divergent alors peu : la stratégie prend la plus prudente.

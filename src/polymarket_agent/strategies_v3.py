@@ -1331,7 +1331,7 @@ class ToucherMetaux(_Base):
 class SpaceXCumul(_Base):
     """Marchés « How many SpaceX launches in <mois / année> ? » (tranches de nombre de lancements), réglés sur spacex.com/launches. Le compte ne fait que
     monter et se lit en direct (Launch Library 2, sources/ll2.py) : compte déjà fait + cadence des 120 derniers jours sous trois lois (spacex.py). On achète
-    seulement le côté (OUI ou NON) que les trois lois jugent probable (prix demandé entre `min_price` et `max_price`) quand la chance la PLUS PRUDENTE des
+    seulement le côté (OUI ou NON) que les cinq lois (spacex.py) jugent probable (prix demandé entre `min_price` et `max_price`) quand la chance la PLUS PRUDENTE des
     trois dépasse le prix + frais d'au moins `min_net_edge`.
     Test sur le passé (experiments/spacex_cadence.md, 24/10/2026) : règlement relu 9 fois sur 9 (compte LL2 dans la tranche gagnante) mais 9 événements
     seulement (1 466 à 6 886 échanges) : les paris à chance modeste (0,1 à 0,5) perdent (20 paris, −19 %), les quasi-certains gagnent (7 paris sur 7, +10 %,

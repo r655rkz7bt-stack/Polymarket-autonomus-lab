@@ -25,9 +25,9 @@ a_la_une:
   points:
     - "Capital principal : 772 € réalisés sur 1 000 de départ (−228 € de paris réglés, dont −145 € de nf_court et −58 € de la météo, presque tout avant le 20/10). Vérifié le 24/10 : le principal copie bien les paris de sa championne, l'écart avec son fantôme (+161 €) est du hasard."
     - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +161 €, mais +38 € sans ses 3 meilleurs paris."
-    - "Nouvelle piste le 24/10 : les séismes (catalogue officiel USGS lisible en direct). Sur 27 jours et 57 semaines réglés, les achats simulés d'un modèle simple gagnent (+69 % et +24 %), mais il ne bat pas clairement le marché. Indice faible : fantôme seismes_marche."
-    - "Écartés ou bloqués le 24/10 : séismes après la fin du jour (marché à 0,97 pour 96 % de réussite), marché annuel des séismes ≥ 7 (calé) ; rougeole : historique du CDC introuvable ; TSA : tsa.gov interdit aux robots (403), pas de contournement."
-    - "Autre piste du 24/10 : le box-office du premier week-end. Sur 240 films réglés, la tranche favorite gagne un peu plus que son prix à partir de dimanche (+7 %), mais rien dans 3 autres familles de marchés. Indice faible : fantôme box_office_favori, juge ce week-end."
+    - "Nouvelle piste le 24/10 : « l'or, l'argent, le pétrole ou le gaz vont-ils toucher tel prix cette semaine ? ». Sur 112 semaines réglées, acheter les barres sous-cotées (0,10-0,45) gagne +33 %, mais surtout avant septembre. Fragile : fantôme toucher_metaux (or, argent)."
+    - "SpaceX : le nombre de lancements du mois ou de l'année se lit en direct (cumul + cadence ≈ 0,43 par jour). Test passé trop mince (9 compteurs), mais « 140-159 en 2026 » cotée 0,78 pour ~0,95 de chance : fantôme spacex_cumul. Séismes : un doublon USGS (pt + us) corrigé."
+    - "Écartés le 24/10 : détroits, course à la publication (le marché saute en 3 secondes), température mondiale (carnets vides), séismes après la fin du jour. Indices faibles gardés en fantôme : séismes, box-office. Rougeole : on attend les mercredis du CDC."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses
