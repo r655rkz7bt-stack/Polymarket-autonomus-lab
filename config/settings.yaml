@@ -112,7 +112,10 @@ scanner:
               # 24/10/2026 : étiquettes gold (101589) et silver (100733), échelles « What will Gold / Silver hit Week of … » (`toucher_metaux`), 100-3 000 $ de liquidité par barre
               # (l'étiquette pyth-finance 104466 mêle 25 actifs : 300 marchés en 3 pages, un seul de l'or)
               101589: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
-              100733: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60}}
+              100733: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
+              # 24/10/2026 : étiquette midterms (102289), champs de candidats des élections du 03/11 (« Will X win the 2026 Alaska governor election? », 13 à 40 candidats,
+              # 17 000-130 000 $ de volume par candidat) pour `candidats_non` ; les gros marchés (parti qui gagne la Chambre…) étaient déjà vus, pas les candidats un par un.
+              102289: {pages: 12, min_liquidity: 1000, min_volume_24h: 0, max_spread: 0.10, max_horizon_hours: 480}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
