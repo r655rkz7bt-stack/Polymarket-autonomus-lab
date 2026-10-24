@@ -65,7 +65,7 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 4 | Polymarket Data API : grosses transactions et détenteurs | `data-api.polymarket.com` | suivre l'argent informé (« baleines »), flux d'ordres anormaux | à faire |
 | 5 | Open-Meteo et NWS : prévisions météo | `api.open-meteo.com`, `api.weather.gov` | marchés de température / pluie / neige | en cours : relevés NOAA faits (`meteo_metar`, 15/10/2026) ; prévisions à faire |
 | 6 | USGS : séismes en direct (GeoJSON) | `earthquake.usgs.gov` | marchés « séisme de magnitude X avant… » | fait le 24/10/2026 (lecteur `sources/usgs.py`, `seismes.py`, fantôme `seismes_marche` ; `experiments/seismes.md`) |
-| 7 | Launch Library 2 : lancements spatiaux | `ll.thespacedevs.com` | marchés SpaceX / lancements | à faire |
+| 7 | Launch Library 2 : lancements spatiaux | `ll.thespacedevs.com` | marchés SpaceX / lancements | fait le 24/10/2026 (lecteur `sources/ll2.py`, `spacex.py`, fantôme `spacex_cumul` ; `experiments/spacex_cadence.md`) ; reste : Starship (« flight test 15 by… »), compteur annuel en fin d'année |
 | 8 | Classement App Store d'Apple | `rss.marketingtools.apple.com` | marchés « appli n°1 » (ChatGPT, Threads…) | à faire |
 | 9 | Classement des modèles d'IA (LMArena, jeux de données publics) | `huggingface.co` (API publique des jeux de données) | marchés « meilleur modèle d'IA à la date X » | à faire |
 | 10 | Wikipédia : pages vues | `wikimedia.org` (API REST Wikimedia) | pics d'attention avant un mouvement de prix | à faire |
@@ -84,7 +84,7 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 33 | Strait of Hormuz Ship Monitor (AIS toutes les 30 min) | `hormuz.data-tracking.net` | tendance des 5 jours que PortWatch n'a pas encore publiés | relevé le 23/10 (`sources/portwatch.py`) ; couvre aussi Bab el-Mandeb depuis le 23/09 ; ne suit pas PortWatch sur 26 jours (corrélation 0,1 à 0,3) : pas utilisé pour prévoir |
 | 34 | Open-Meteo Ensemble (31 membres GFS vérifiés le 23/10 ; autres modèles proposés) | `ensemble-api.open-meteo.com` | probabilité par tranche de température (107 marchés le 23/10) | fait le 23/10 : lecteur `meteo_ensemble` (GEFS 31 + ECMWF 51 membres) et relevé des probabilités par tranche à côté des prix toutes les 6 h ; pas d'historique d'ensemble chez Open-Meteo : à juger dans 5 à 7 jours (`experiments/meteo_ensemble.md`) |
 | 35 | Hong Kong Observatory (arbitre des marchés de Hong Kong) | `data.weather.gov.hk` | températures de Hong Kong, lues comme les METAR | fait le 23/10 : lecteur `meteo_hko` ; tranches réglées par TRONCATURE (166/166), corrigé dans `weather_model` |
-| 36 | Pyth Hermes (arbitre des marchés « Pyth ») | `hermes.pyth.network` | prix exact de l'arbitre au lieu de Binance | à faire (23/10) |
+| 36 | Pyth Hermes (arbitre des marchés « Pyth ») | `hermes.pyth.network` | prix exact de l'arbitre au lieu de Binance | bloqué le 24/10 : `/v2/updates/price/*` et l'historique `benchmarks.pyth.network` répondent 401 (clé requise) ; seule la liste des flux (`/v2/price_feeds`) est libre. Prix de l'or et de l'argent : gold-api.com (`sources/goldapi.py`, `toucher_metaux`). À demander à Etienne : une clé Pyth gratuite existe-t-elle ? |
 | 37 | BLS (inflation, emploi : arbitre) | `api.bls.gov`, clé gratuite `BLS_API_KEY` (sans clé : quota partagé dépassé le 23/10) | marchés CPI et emploi | à faire (23/10) |
 
 À la place de X (payant ; Nitter, RSSHub et miroirs contournent ses conditions : interdits) :

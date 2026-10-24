@@ -37,7 +37,8 @@ Références : docs/ROUTINE_CHERCHEUR.md (partie B) et docs/METHODE.md. En cas d
 9. **Robustesse** avec `idea_test.verdict(bets)`. Chaque pari est
    `{"gain": résultat par euro misé frais compris, "evenement": regroupement des paris liés, "mois": "AAAA-MM", "cout": prix payé}`.
    Lis la confiance PAR ÉVÉNEMENT, les mois gagnants, les tranches de prix et `z_prix` (gagne-t-il plus
-   souvent que ses prix ?). Essaie au moins 3 réglages et **dis combien tu en as essayé** : un seul réglage
+   souvent que ses prix ?). Lis aussi `moitie_1` / `moitie_2` (rendement des premiers et des derniers mois) : un effet
+   qui s'efface dans les derniers mois est ramené à « indice » (barres touchées, 24/10/2026 : +58 % puis +8 %). Essaie au moins 3 réglages et **dis combien tu en as essayé** : un seul réglage
    gagnant sur dix ne prouve rien.
 10. **Essai en direct** sur les marchés ouverts : quels marchés la règle prendrait aujourd'hui, avec les
     rattachements relus à la main.

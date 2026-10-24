@@ -34,6 +34,8 @@ from polymarket_agent.sources.portwatch import PortWatchSource
 from polymarket_agent.sources.rss import RssSource
 from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSource
 from polymarket_agent.sources import hko
+from polymarket_agent.sources.goldapi import fetch_prices as fetch_metal_prices
+from polymarket_agent.sources.ll2 import fetch_ll2
 from polymarket_agent.sources.usgs import fetch_usgs
 from polymarket_agent.sources.weather import EnsembleSource, ForecastSource, MetarSource, stations_for
 
@@ -286,6 +288,15 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("portwatch", portwatch)
     # Séismes (24/10/2026) : catalogue USGS des 10 derniers jours (M >= 5), pour les marchés « plus gros séisme du jour » et « nombre de séismes de la semaine ».
     snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
+    # Lancements de SpaceX (24/10/2026) : Launch Library 2 (sans clé), pour les marchés « How many SpaceX launches in … » (`spacex_cumul`).
+    snapshot("ll2", lambda cfg: factories.get("ll2", lambda c: fetch_ll2(http, now, int(c.get("days", 430))))(cfg), "ref:ll2")
+    # Journal des prix de l'or et de l'argent (24/10/2026), pour les barres touchées des marchés « What will Gold hit Week of … » (`toucher_metaux`).
+    def metals(cfg):
+        from polymarket_agent import matieres
+        rows = factories.get("goldapi", lambda c: fetch_metal_prices(http, now))(cfg)
+        matieres.record_prices(db, rows, now, float(cfg.get("keep_days", 30)))
+        return []
+    run("goldapi", metals)
     if db is not None:
         from polymarket_agent.strategy_engine import market_family
         found = []

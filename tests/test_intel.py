@@ -98,3 +98,23 @@ def test_crypto_threshold_strategy_uses_independent_probability(ledger, limits):
     assert out.proposals and out.proposals[0].token_id == "tokA"
     m.crypto_quote = CryptoQuote("btc", 88000.0, 0.004, NOW - timedelta(hours=2), "coinbase")
     assert s.propose([m], books, ledger.state, limits, "B1").abstentions == {"prix crypto périmé": 1}
+
+
+def test_crypto_threshold_does_not_buy_the_worthless_side_of_a_touch_market_already_decided(ledger, limits):
+    """Cas réel du 24/10/2026 (audit « prix impossible ») : « Will Ethereum dip to $2,300 on October 24? », barre touchée le matin, ETH remonté à 2 350 ;
+    le marché vend le NON 0,001 (OUI 0,999), le modèle (prix d'aujourd'hui, heures restantes) y voyait 35 % et achetait 30 000 parts. 8 achats sur 8 perdus."""
+    from polymarket_agent.strategy_engine import CryptoThresholdStrategy
+    s = CryptoThresholdStrategy("1.0.0", "2026-10-15", {
+        "min_net_edge": D("0.03"), "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3"),
+        "max_quote_age_minutes": D("20"), "min_hours": D("0.5")})
+    m = market("Will Ethereum dip to $2,300 on October 24?")
+    m.crypto_quote = CryptoQuote("eth", 2350.0, 0.004, NOW, "coinbase")
+    books = {"tokA": make_book("tokA", bids=(("0.99", "500"),), asks=(("0.999", "500"),)),
+             "tokB": make_book("tokB", bids=(("0.001", "500"),), asks=(("0.002", "30000"),))}
+    out = s.propose([m], books, ledger.state, limits, "B1")
+    assert not out.proposals and "jeton de marché « touche » quasi sans valeur : la barre est peut-être déjà touchée" in out.abstentions
+    # Un marché « touche » encore ouvert (jeton NON à 0,15) reste jouable : le garde-fou ne vise que les jetons presque sans valeur.
+    books["tokB"] = make_book("tokB", bids=(("0.14", "500"),), asks=(("0.15", "500"),))
+    books["tokA"] = make_book("tokA", bids=(("0.84", "500"),), asks=(("0.85", "500"),))
+    m.crypto_quote = CryptoQuote("eth", 2600.0, 0.004, NOW, "coinbase")
+    assert "jeton de marché « touche » quasi sans valeur : la barre est peut-être déjà touchée" not in s.propose([m], books, ledger.state, limits, "B1").abstentions

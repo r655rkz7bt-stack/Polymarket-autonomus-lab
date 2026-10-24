@@ -26,6 +26,9 @@ vrais frais, contrôle du règlement, `idea_test.verdict`). Un passage sérieux 
 « passage court » n'excuse rien. Les défauts trouvés deviennent des tests et des contrôles de
 `enquete.py`, pour ne jamais revenir.
 
+**Hors échantillon dans le temps** (24/10/2026) : `idea_test.verdict` rend aussi le rendement de la première et de la seconde moitié des mois (`moitie_1`, `moitie_2`, au moins 4 mois) et ramène « retenue » à « indice » quand la seconde moitié rend moins du quart de la première. Les barres touchées
+de l'or, de l'argent, du pétrole et du gaz étaient « retenues » (t 2,35) avec +58 % d'avril à juillet et +8 % d'août à octobre (`experiments/commodites_toucher.md`). Quand un test est positif, regarde toujours si l'effet existe encore dans les derniers mois.
+
 **Entonnoir** (décision d'Etienne, 17/10/2026) : quand une stratégie gagne, découpe-la en
 « filles » (la mère sur un seul morceau : sujet, prix, délai, OUI/NON) avec `mere`, `morceau`,
 `filtres` dans `strategies.yaml`, et dissèque ses paris (`experiments/dissection/dissequer.py`).

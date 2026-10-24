@@ -130,8 +130,10 @@ disparaître si le marché apprend, ou si un changement de régime (Ormuz en mar
 1. **Seuils** (« on any day by », « returns to normal », « effectively closed », « 0 ships ») : 20 événements clos, dont
    les plus gros volumes (« returns to normal » : 6 à 44 M$). Ils ne sont pas testés : il faut une loi sur la trajectoire
    (maximum ou minimum d'une période), par exemple des blocs de jours tirés de l'historique.
-2. **Course à la publication** : le mardi vers 11 h UTC, la valeur hebdomadaire devient connue, mais les marchés ne se règlent
-   que vers 15 h. Il reste à mesurer, aux prix payés, si le marché tarde à s'ajuster entre ces deux heures.
+2. ~~**Course à la publication**~~ **testée le 24/10 : écartée** (`resultats_course_publication.txt`, scripts `course_publication.py`, `course_heure_saut.py`). En supposant la publication à 11 h UTC, le côté gagnant
+   des 40 événements semblait s'acheter +11 à +28 % dans l'heure. C'était un regard vers le futur : l'heure réelle varie (10 h 48 le 20/10, 12 h 20 à 12 h 57 la plupart des semaines, 15 h 19 deux fois)
+   et le marché réagit en 3 secondes (un robot lit PortWatch et balaie le carnet jusqu'à 0,95-0,99 : 20/10 à 10:48:47, 29/09 à 12:20:36, 15/09 à 12:26:03). Premier saut du marché : mardi 23 fois sur 31, mercredi 6.
+   Aucun retard exploitable pour un cycle de 5 minutes. (Ancien libellé : « le mardi vers 11 h UTC, la valeur hebdomadaire devient connue, mais les marchés ne se règlent que vers 15 h ».)
 3. **AIS** : refaire la corrélation avec PortWatch quand le recouvrement dépassera 60 jours.
 4. Juger `detroits_marche_log` contre `detroits_tranches` dans l'arène : elles achètent parfois le même côté (NON 25-29 au 31/10).
 

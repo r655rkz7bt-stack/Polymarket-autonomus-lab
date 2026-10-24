@@ -102,3 +102,21 @@ def test_verdict_does_not_retain_a_run_of_wins_the_prices_already_explain():
     bets = [{"gain": 1 / p - 1, "evenement": f"e{i}", "mois": f"2026-0{1 + i % 6}", "cout": p} for i, p in enumerate(prices)]
     v = it.verdict(bets, min_bets=10)
     assert v["z_prix"] < 1.5 and v["verdict"] == "indice"
+
+
+def test_verdict_downgrades_a_gain_that_fades_in_the_second_half_of_the_months():
+    """24/10/2026 (barres touchées de l'or, du pétrole, du gaz, de l'argent) : « retenue » sur l'ensemble (t 2,35) mais +58 % d'avril à juillet
+    puis +8 % d'août à octobre : l'effet de la seconde moitié n'est pas une preuve."""
+    months = ["2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"]
+    def bets(first, second):
+        out = []
+        for i in range(210):
+            m = months[i % 7]
+            out.append({"gain": (first if i % 7 < 3 else second) + (0.15 if i % 2 else -0.15), "evenement": f"e{i % 70}", "mois": m, "cout": 0.3})
+        return out
+    steady = it.verdict(bets(0.5, 0.45))
+    assert steady["verdict"] == "retenue" and steady["moitie_2"]["rendement"] > 0.4
+    faded = it.verdict(bets(0.6, 0.05))
+    assert faded["verdict"] == "indice" and "effacée" in faded["raison"]
+    assert faded["moitie_1"]["mois"] == months[:3] and faded["moitie_2"]["mois"] == months[3:]
+    assert "moitie_1" not in it.verdict([{"gain": 0.3, "evenement": f"e{i}", "mois": f"2026-0{7 + i % 3}", "cout": 0.5} for i in range(60)])   # 3 mois : pas de moitiés

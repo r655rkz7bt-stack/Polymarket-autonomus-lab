@@ -1,0 +1,80 @@
+--- seuil 0.05
+tous                           paris 763 évén. 177 rend -0.077 sans3meilleurs -0.135 par-évén -0.081 t -0.98 gagnés 359/378.8 z -1.75
+  BTC                          paris 318 évén. 65 rend -0.176 sans3meilleurs -0.235 par-évén -0.222 t -2.83 gagnés 137/149.9 z -1.78
+  ETH                          paris 318 évén. 66 rend -0.013 sans3meilleurs -0.152 par-évén +0.006 t +0.03 gagnés 151/158.1 z -0.97
+  SOL                          paris 127 évén. 46 rend +0.009 sans3meilleurs -0.070 par-évén -0.009 t -0.07 gagnés 71/70.8 z +0.05
+  OUI                          paris 347 évén. 114 rend -0.215 sans3meilleurs -0.343 par-évén -0.168 t -1.27 gagnés 85/98.5 z -1.78
+  NON                          paris 416 évén. 128 rend +0.038 sans3meilleurs -0.004 par-évén +0.048 t +0.63 gagnés 274/280.3 z -0.75
+  prix 0-0.15                  paris 116 évén. 73 rend -0.473 sans3meilleurs -0.871 par-évén -0.213 t -0.46 gagnés 5/10.4 z -1.76
+  prix 0.15-0.4                paris 200 évén. 109 rend +0.123 sans3meilleurs +0.041 par-évén +0.113 t +0.80 gagnés 60/53.7 z +1.02
+  prix 0.4-0.7                 paris 202 évén. 132 rend -0.087 sans3meilleurs -0.110 par-évén -0.066 t -0.91 gagnés 100/110.7 z -1.53
+  prix 0.7-1                   paris 245 évén. 109 rend -0.045 sans3meilleurs -0.051 par-évén -0.026 t -0.65 gagnés 194/204.1 z -1.76
+  mois 2025-07                 paris  22 évén.  5 rend +0.201 sans3meilleurs -0.148 par-évén +0.149 t +0.38 gagnés 15/12.5 z +1.26
+  mois 2025-08                 paris  57 évén. 12 rend -0.056 sans3meilleurs -0.237 par-évén -0.170 t -0.85 gagnés 29/30.4 z -0.44
+  mois 2025-09                 paris  89 évén. 14 rend -0.052 sans3meilleurs -0.120 par-évén -0.042 t -0.33 gagnés 58/55.9 z +0.53
+  mois 2025-10                 paris  66 évén. 12 rend -0.216 sans3meilleurs -0.422 par-évén -0.190 t -0.92 gagnés 21/26.8 z -1.71
+  mois 2025-11                 paris  70 évén. 12 rend +0.312 sans3meilleurs +0.084 par-évén +0.285 t +1.32 gagnés 39/33.5 z +1.52
+  mois 2025-12                 paris  78 évén. 15 rend -0.429 sans3meilleurs -0.543 par-évén -0.219 t -1.21 gagnés 22/24.4 z -0.68
+  mois 2026-01                 paris  45 évén. 12 rend +0.073 sans3meilleurs -0.153 par-évén +0.122 t +0.42 gagnés 29/27.9 z +0.40
+  mois 2026-02                 paris  55 évén. 12 rend -0.551 sans3meilleurs -0.757 par-évén -0.594 t -5.37 gagnés 13/27.0 z -5.02
+  mois 2026-03                 paris  42 évén. 14 rend -0.280 sans3meilleurs -0.505 par-évén -0.409 t -2.95 gagnés 18/21.3 z -1.28
+  mois 2026-04                 paris  24 évén.  9 rend -0.089 sans3meilleurs -0.368 par-évén -0.173 t -0.71 gagnés 13/11.8 z +0.64
+  mois 2026-05                 paris  29 évén. 10 rend -0.026 sans3meilleurs -0.157 par-évén -0.086 t -0.62 gagnés 20/19.0 z +0.43
+  mois 2026-06                 paris  47 évén. 12 rend -0.546 sans3meilleurs -0.725 par-évén -0.543 t -4.70 gagnés 11/19.3 z -3.02
+  mois 2026-07                 paris  25 évén.  9 rend +0.937 sans3meilleurs -0.616 par-évén +0.800 t +0.62 gagnés 8/8.0 z -0.00
+  mois 2026-08                 paris  50 évén. 13 rend +0.276 sans3meilleurs -0.081 par-évén +0.240 t +0.70 gagnés 24/24.1 z -0.03
+  mois 2026-09                 paris  36 évén.  9 rend +0.038 sans3meilleurs -0.153 par-évén +0.032 t +0.16 gagnés 23/21.0 z +0.80
+  mois 2026-10                 paris  28 évén.  7 rend -0.031 sans3meilleurs -0.332 par-évén -0.098 t -0.46 gagnés 16/15.9 z +0.03
+--- seuil 0.1
+tous                           paris 428 évén. 156 rend -0.044 sans3meilleurs -0.102 par-évén -0.069 t -0.76 gagnés 180/181.0 z -0.11
+  BTC                          paris 190 évén. 59 rend -0.031 sans3meilleurs -0.160 par-évén -0.062 t -0.43 gagnés 81/80.4 z +0.11
+  ETH                          paris 178 évén. 60 rend -0.018 sans3meilleurs -0.125 par-évén -0.002 t -0.01 gagnés 73/72.8 z +0.04
+  SOL                          paris  60 évén. 37 rend -0.160 sans3meilleurs -0.314 par-évén -0.190 t -1.19 gagnés 26/27.8 z -0.54
+  OUI                          paris 222 évén. 104 rend -0.223 sans3meilleurs -0.336 par-évén -0.241 t -2.00 gagnés 57/63.7 z -1.09
+  NON                          paris 206 évén. 90 rend +0.149 sans3meilleurs +0.065 par-évén +0.179 t +1.51 gagnés 123/117.3 z +0.89
+  prix 0-0.15                  paris  67 évén. 51 rend -0.375 sans3meilleurs -0.777 par-évén -0.179 t -0.49 gagnés 5/6.5 z -0.61
+  prix 0.15-0.4                paris 148 évén. 97 rend +0.044 sans3meilleurs -0.067 par-évén -0.062 t -0.42 gagnés 41/39.2 z +0.34
+  prix 0.4-0.7                 paris 129 évén. 91 rend +0.004 sans3meilleurs -0.031 par-évén +0.011 t +0.12 gagnés 69/70.2 z -0.22
+  prix 0.7-1                   paris  84 évén. 56 rend -0.006 sans3meilleurs -0.022 par-évén -0.019 t -0.27 gagnés 65/65.1 z -0.02
+  mois 2025-07                 paris  11 évén.  5 rend +0.289 sans3meilleurs -0.475 par-évén +0.474 t +0.66 gagnés 6/4.8 z +0.79
+  mois 2025-08                 paris  43 évén. 12 rend -0.166 sans3meilleurs -0.417 par-évén -0.249 t -1.11 gagnés 18/20.9 z -1.00
+  mois 2025-09                 paris  52 évén. 14 rend +0.069 sans3meilleurs -0.043 par-évén +0.022 t +0.11 gagnés 33/29.2 z +1.16
+  mois 2025-10                 paris  39 évén. 12 rend -0.167 sans3meilleurs -0.522 par-évén +0.033 t +0.08 gagnés 11/13.7 z -1.03
+  mois 2025-11                 paris  36 évén. 11 rend +0.176 sans3meilleurs -0.129 par-évén +0.136 t +0.50 gagnés 18/15.4 z +0.97
+  mois 2025-12                 paris  51 évén. 15 rend -0.402 sans3meilleurs -0.523 par-évén -0.333 t -2.07 gagnés 17/18.7 z -0.55
+  mois 2026-01                 paris  22 évén. 11 rend +0.062 sans3meilleurs -0.219 par-évén -0.090 t -0.29 gagnés 14/12.2 z +0.93
+  mois 2026-02                 paris  30 évén. 11 rend -0.047 sans3meilleurs -0.590 par-évén +0.143 t +0.22 gagnés 8/10.0 z -0.92
+  mois 2026-03                 paris  17 évén.  9 rend +0.345 sans3meilleurs -0.729 par-évén +0.181 t +0.42 gagnés 6/6.9 z -0.51
+  mois 2026-04                 paris   4 évén.  4 rend -0.528 sans3meilleurs -1.000 par-évén -0.528 t -1.12 gagnés 1/1.8 z -0.84
+  mois 2026-05                 paris  11 évén.  8 rend -0.104 sans3meilleurs -0.579 par-évén -0.190 t -0.55 gagnés 5/4.5 z +0.33
+  mois 2026-06                 paris  33 évén. 12 rend -0.743 sans3meilleurs -0.922 par-évén -0.673 t -5.10 gagnés 5/11.8 z -2.99
+  mois 2026-07                 paris  16 évén.  8 rend -0.015 sans3meilleurs -0.792 par-évén -0.343 t -0.90 gagnés 5/4.0 z +0.66
+  mois 2026-08                 paris  29 évén. 10 rend +0.834 sans3meilleurs +0.253 par-évén +0.695 t +1.52 gagnés 16/11.2 z +2.09
+  mois 2026-09                 paris  21 évén.  8 rend +0.140 sans3meilleurs -0.191 par-évén +0.052 t +0.15 gagnés 13/10.7 z +1.16
+  mois 2026-10                 paris  13 évén.  6 rend -0.196 sans3meilleurs -0.857 par-évén -0.419 t -1.01 gagnés 4/5.0 z -0.62
+--- seuil 0.2
+tous                           paris 136 évén. 68 rend +0.092 sans3meilleurs -0.038 par-évén +0.022 t +0.13 gagnés 55/52.4 z +0.50
+  BTC                          paris  70 évén. 30 rend -0.081 sans3meilleurs -0.284 par-évén -0.091 t -0.40 gagnés 29/29.9 z -0.25
+  ETH                          paris  52 évén. 29 rend +0.438 sans3meilleurs +0.105 par-évén +0.267 t +0.91 gagnés 22/16.5 z +1.76
+  SOL                          paris  14 évén.  9 rend -0.323 sans3meilleurs -0.843 par-évén -0.391 t -1.28 gagnés 4/6.0 z -1.12
+  OUI                          paris  59 évén. 37 rend -0.023 sans3meilleurs -0.258 par-évén -0.026 t -0.10 gagnés 16/14.2 z +0.58
+  NON                          paris  77 évén. 36 rend +0.181 sans3meilleurs -0.050 par-évén +0.147 t +0.60 gagnés 39/38.2 z +0.19
+  prix 0-0.15                  paris  14 évén. 14 rend -0.451 sans3meilleurs -1.000 par-évén -0.451 t -0.82 gagnés 1/1.3 z -0.31
+  prix 0.15-0.4                paris  62 évén. 46 rend +0.281 sans3meilleurs +0.021 par-évén +0.152 t +0.55 gagnés 18/15.8 z +0.66
+  prix 0.4-0.7                 paris  45 évén. 34 rend +0.039 sans3meilleurs -0.057 par-évén +0.082 t +0.52 gagnés 25/24.2 z +0.26
+  prix 0.7-1                   paris  15 évén. 12 rend -0.020 sans3meilleurs -0.131 par-évén -0.001 t -0.00 gagnés 11/11.2 z -0.09
+  mois 2025-07                 paris   6 évén.  3 rend -0.176 sans3meilleurs -1.000 par-évén +0.078 t +0.17 gagnés 3/3.3 z -0.28
+  mois 2025-08                 paris  24 évén.  8 rend -0.320 sans3meilleurs -0.734 par-évén -0.209 t -0.62 gagnés 7/11.6 z -2.04
+  mois 2025-09                 paris  20 évén.  8 rend +0.361 sans3meilleurs +0.117 par-évén +0.180 t +0.57 gagnés 15/10.7 z +2.04
+  mois 2025-10                 paris  13 évén.  7 rend -0.192 sans3meilleurs -0.853 par-évén -0.288 t -0.84 gagnés 4/4.9 z -0.58
+  mois 2025-11                 paris   5 évén.  3 rend -0.747 sans3meilleurs -1.000 par-évén -0.859 t -6.11 gagnés 1/2.4 z -1.43
+  mois 2025-12                 paris  21 évén. 10 rend -0.079 sans3meilleurs -0.616 par-évén +0.132 t +0.25 gagnés 7/6.4 z +0.31
+  mois 2026-01                 paris   5 évén.  3 rend +1.135 sans3meilleurs -0.242 par-évén +1.739 t +1.37 gagnés 4/2.3 z +1.57
+  mois 2026-02                 paris   5 évén.  2 rend -0.524 sans3meilleurs -1.000 par-évén -0.603 t -1.52 gagnés 1/1.0 z -0.02
+  mois 2026-03                 vide(2)
+  mois 2026-05                 vide(2)
+  mois 2026-06                 paris   7 évén.  6 rend -1.000 sans3meilleurs -1.000 par-évén -1.000 t +0.00 gagnés 0/1.6 z -1.45
+  mois 2026-07                 paris   7 évén.  3 rend +0.763 sans3meilleurs -1.000 par-évén +0.371 t +0.43 gagnés 3/1.5 z +1.47
+  mois 2026-08                 paris  12 évén.  6 rend +2.017 sans3meilleurs +0.733 par-évén +1.207 t +1.37 gagnés 7/3.1 z +2.86
+  mois 2026-09                 paris   6 évén.  6 rend +0.231 sans3meilleurs -1.000 par-évén +0.231 t +0.38 gagnés 3/2.1 z +0.79
+  mois 2026-10                 vide(1)
