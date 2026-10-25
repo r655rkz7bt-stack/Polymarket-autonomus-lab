@@ -17,10 +17,15 @@ Pour chaque fantôme de 25 paris réglés ou plus : gain, gain sans ses 3 meille
 - **Échantillon neuf** (1 804 matchs du nouveau tirage absents du tirage du 23/10, donc jamais vus par la découverte) : +8,3 % (522 paris, t +1,84, z +0,9), **LoL +15,1 % (255 paris, t +2,2, z +2,0)**, BO5 +23,1 % (t +1,9), CS2 +8,2 %, Dota 2 −5,4 %, Valorant +1,7 %. L'effet se retrouve, mais il est surtout LoL et BO5 ; les autres jeux sont à zéro dans les deux tirages.
 - Pas de contrôle automatique ajouté à `enquete.py` : le défaut est dans un script de recherche, pas dans l'arène ; la leçon est écrite dans les astuces de la routine (« un tirage qui exige un marché réglé net exclut les 50-50 »).
 
-- **Sept autres jeux** (HoK, MLBB, CoD, R6, RL, SC2, OW ; 2 220 matchs, aucun 50-50) : « Under » +2,1 % (t 0,69) : `moins_de_cartes` n'est pas un effet général d'e-sport, d'où une fille LoL et pas une extension.
+- **Sept autres jeux** (HoK, MLBB, CoD, R6, RL, SC2, OW ; 2 220 matchs, aucun 50-50) : « Under » +2,1 % (t 0,69) : MLBB (60 paris, t 1,84) a ensuite été refait avec tous ses matchs (lot 3 : 91 paris, +12,0 %, t 1,45) : il s'affaiblit, pas de fille. `moins_de_cartes` n'est pas un effet général d'e-sport, d'où une fille LoL et pas une extension.
+
+- **Découpe de LoL** (`bo3_coherence/lol_decoupe.py`, 441 paris) : **BO5 +23,4 % (190 paris, 118 matchs, t 2,15, z 2,8)**, BO3 +4,2 % (t 0,8) ; par mois 8 mois positifs sur 13 (juillet-août −5 %) ; prix payé < 0,45 : +46 % (73 paris), 0,55-0,70 : +0,4 %. L'effet est surtout la longue série (BO5, tous jeux : +20,1 %, 224 paris ; sept autres jeux en BO5 : +3,1 %). Au prix « avant » (connu à T0, sans dépendre d'un échange futur) : BO5 +18,6 % (178 paris, t 1,47, z 1,8), même sens ; autres jeux en BO5 −18 % (57 paris).
+
+## Famille 4 en plus : achats très tardifs
+12 achats `nf_*` faits plus de 24 h APRÈS le coup d'envoi (sur 2 376) : 3 événements, 594 € : un Test de cricket de 5 jours (Afrique du Sud – Australie, ouvert jusqu'au 22/10 : légitime), deux matchs ITF dont le marché est resté ouvert 27 h après le début (Blake Ellis à 0,93, gagné), un compteur de tweets. Pas un défaut ; le cas ITF est du type « après la fin du match » (`apres_fin_match.md`, écartée).
 
 ## Suite
-Fille `moins_de_cartes_lol` (fantôme, filtre `titre_contient`, test), cycle local : 0 proposition (les deux matchs LoL du jour sont à 7,5 h et 10,5 h, hors de la fenêtre 1-6 h : elle n'est pas sourde). À juger contre sa mère sur les mêmes marchés.
+Fille `moins_de_cartes_lol` (fantôme, filtre `titre_contient`, test), cycle local : 0 proposition (les deux matchs LoL du jour sont à 7,5 h et 10,5 h, hors de la fenêtre 1-6 h : elle n'est pas sourde). À juger contre sa mère sur les mêmes marchés. Fille `moins_de_cartes_bo5` aussi (titre « (BO5) », tous jeux : +20,1 %) ; silencieuse tant qu'aucun BO5 n'est à moins de 6 h (barrages et finales de Worlds : à partir du 29/10 environ). Mère à 2 filles sur 10 permises.
 
 ## Famille 5 en plus : les filles battent-elles le RESTE de leur mère ? (`scripts/filles_contre_mere_25_10.py`)
 30 filles de ≥ 10 paris réglés, comparées aux paris de leur mère achetés depuis le premier achat de la fille sur des jetons que la fille n'a pas joués (le « reste »).

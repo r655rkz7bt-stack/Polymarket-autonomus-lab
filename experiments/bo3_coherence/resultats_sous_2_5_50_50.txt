@@ -23,3 +23,7 @@
 | AVEC, h=3 fen=6h, bo = 5 (0 en 50-50) | 224 | 145 | +20.1 % | +2.15 | 8/11 | 140.0 / 122.0 (z +2.7) | retenue |
 tranches de prix : {"0,10-0,30": {"paris": 33, "rendement": 0.6005}, "0,30-0,70": {"paris": 656, "rendement": 0.0672}, "≥ 0,70": {"paris": 176, "rendement": 0.0162}}
 | PLUS (contre-épreuve), AVEC 50-50 | 1050 | 966 | -13.2 % | -3.45 | 2/12 | 437.0 / 498.1 (z -3.9) | écartée |
+| BO5 seulement, après, h=3 fen=6h | 224 | 145 | +20.1 % | +2.15 | 8/11 | 140.0 / 122.0 (z +2.7) | retenue |
+| BO5 LoL, après, h=3 fen=6h | 190 | 118 | +23.4 % | +2.15 | 8/11 | 123.0 / 105.4 (z +2.8) | retenue |
+| BO5 seulement, avant, h=3 fen=6h | 178 | 117 | +18.6 % | +1.47 | 7/12 | 108.0 / 95.8 (z +1.8) | indice |
+| BO5 LoL, avant, h=3 fen=6h | 162 | 103 | +17.4 % | +1.35 | 8/10 | 99.0 / 88.8 (z +1.6) | indice |

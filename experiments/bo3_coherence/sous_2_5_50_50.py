@@ -18,8 +18,8 @@ from echanges import cout_preneur  # noqa: E402
 from series import jour, resume, it  # noqa: E402
 
 D = HERE / "donnees"
-LOT = os.environ.get("LOT", "1")  # 1 : cs2 lol dota2 val (tirage du 25/10) ; 2 : autres jeux (hok mlbb codmw r6siege rl sc2 ow)
-NOMS = ["cs2", "lol", "dota2", "val"] if LOT == "1" else ["hok", "mlbb", "codmw", "r6siege", "rl", "sc2", "ow"]
+LOT = os.environ.get("LOT", "1")  # 1 : cs2 lol dota2 val (tirage du 25/10) ; 2 : autres jeux (hok mlbb codmw r6siege rl sc2 ow) ; 3 : hok mlbb codmw sc2 tirés plus largement (200 par mois)
+NOMS = {"1": ["cs2", "lol", "dota2", "val"], "2": ["hok", "mlbb", "codmw", "r6siege", "rl", "sc2", "ow"], "3": ["hok", "mlbb", "codmw", "sc2"]}[LOT]
 choisis = set(json.loads((D / f"echantillon_esport_lot{LOT}.json").read_text()))
 cas_list = []
 for nom in NOMS:
@@ -35,14 +35,14 @@ jours = sorted({jour(c["start"]) for c in cas_list})
 coupe = jours[len(jours) // 2]
 
 
-def paris(h, fen, issue=1, inclure=True):
+def paris(h, fen, issue=1, inclure=True, mode="après"):
     out = []
     for c in cas_list:
         t0 = c["start"] - h * 3600
         for li in c["lies"]:
             if li["kind"] != "total" or (li["won"] == -1 and not inclure):
                 continue
-            got = cout_preneur(c["rows"], li["toks"][issue], li["toks"][1 - issue], t0, fen * 3600, apres=True, fin_max=c["start"])
+            got = cout_preneur(c["rows"], li["toks"][issue], li["toks"][1 - issue], t0, fen * 3600, apres=(mode == "après"), fin_max=c["start"])
             if not got or not 0.01 <= got[1] <= 0.99:
                 continue
             paid = got[1] + it.fee(got[1], li["rate"])
@@ -73,3 +73,7 @@ for key in ("serie", "bo"):
         print(resume(v, f"AVEC, h=3 fen=6h, {key} = {k} ({n} en 50-50)"))
 print("tranches de prix :", json.dumps(it.verdict(b).get("par_prix"), ensure_ascii=False))
 print(resume(paris(3, 6, issue=0), "PLUS (contre-épreuve), AVEC 50-50"))
+for mode in ("après", "avant"):
+    b5 = [x for x in paris(3, 6, mode=mode) if x["bo"] == 5]
+    print(resume(b5, f"BO5 seulement, {mode}, h=3 fen=6h"))
+    print(resume([x for x in b5 if x["serie"] == "lol"], f"BO5 LoL, {mode}, h=3 fen=6h"))

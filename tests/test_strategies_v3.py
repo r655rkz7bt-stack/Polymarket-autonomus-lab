@@ -289,6 +289,11 @@ def test_title_filter_keeps_only_league_of_legends_for_the_maps_daughter(tmp_pat
     books = _books(("lO", "0.49", "0.50"), ("lU", "0.50", "0.51"), ("dO", "0.49", "0.50"), ("dU", "0.50", "0.51"))
     out = window.propose([lol, dota], books, _state(tmp_path), LIMITS, "b1")
     assert [p.outcome for p in out.proposals] == ["Under"] and len(out.proposals) == 1
+    # Fille BO5 : le titre « (BO5) » passe, un « (BO3) » non.
+    cfg5 = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml")}["moins_de_cartes_bo5"]
+    bo5, bo3 = _esport("f", 3, title="LoL: T1 vs Gen.G (BO5) - Worlds Finals"), _esport("g", 3)
+    w5 = Filtered(cfg5.inner, cfg5.filters)
+    assert [w5._market_ok(m, NOW) for m in (bo5, bo3)] == [True, False]
 
 
 def test_no_to_far_dramas_buys_no_with_a_small_stake_once_per_event(tmp_path):
