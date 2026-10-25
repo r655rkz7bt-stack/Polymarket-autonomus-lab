@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3452,
+  "principal": 3453,
   "fantome:calibration_patiente_v1.0.0": 1974,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1891,
@@ -110,7 +110,7 @@
   "fantome:outsider_itf_v1.0.0": 395,
   "fantome:nf_court_football_v1.0.0": 433,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 483,
-  "fantome:nf_tennis_12_18h_v1.0.0": 632,
+  "fantome:nf_tennis_12_18h_v1.0.0": 635,
   "fantome:compteur_tweets_non_v1.0.0": 365,
   "fantome:nf_court_football_soir_v1.0.0": 379,
   "fantome:nf_court_soir_v1.0.0": 444,
@@ -119,7 +119,7 @@
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 313,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 438,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 526,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 529,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 270,
   "fantome:mots_prononces_patiente_v1.0.0": 293,
   "fantome:cpi_tranches_v1.0.0": 204,
@@ -129,7 +129,7 @@
   "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 489,
   "fantome:statu_quo_ia_v1.0.0": 194,
   "fantome:jobs_favori_non_v1.0.0": 184,
-  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 442,
+  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 445,
   "fantome:nf_tennis_vainqueur_v1.0.0": 750,
   "fantome:nf_sport_18_24h_v1.0.0": 230,
   "fantome:nf_sport_925_950_v1.0.0": 306,
@@ -164,7 +164,7 @@
   "fantome:moins_de_cartes_lol_v1.0.0": 13,
   "fantome:detroits_non_normal_v1.0.0": 4
  },
- "verifiees": 9005,
+ "verifiees": 9011,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1600,10 +1600,10 @@
    "op_id": "settle-46772231165328420497475525040203501942707631707130243324479231872446014038049"
   }
  ],
- "derniere_execution": "2026-10-25T17:22:34+00:00",
+ "derniere_execution": "2026-10-25T17:28:22+00:00",
  "dernier_seq_reglements": {
-  "principal": 3452,
-  "fantome:calibration_patiente_v1.0.0": 1974,
+  "principal": 3453,
+  "fantome:calibration_patiente_v1.0.0": 1976,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1891,
   "fantome:crypto_threshold_v1.0.0": 1910,
