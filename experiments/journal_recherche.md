@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-25 (passage chercheur, soir : 15 h 55 → ~16 h 30 UTC)
+## 2026-10-25 (passage chercheur, soir : 15 h 55 → 16 h 07 UTC, 12 min)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-25_soir_tirage_et_fenetres.md`) : **rien trouvé**. Obligations = celles de midi (mêmes mécanismes, non refaites).
   Famille 3 : 30 paris réglés tirés au hasard (graine 25) relus sur Gamma, 30/30 conformes au journal. Famille 4 : 716 premiers achats de 19 stratégies à fenêtre,
@@ -14,7 +14,7 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
   de réouverture. « On any day by » : NON +7 à +11 % à J-14/J-7, 8 événements, même régime. **Verdict : écartée** comme avantage (4 réglages, aucun ajusté).
 - **Arène** : fantôme gratuit `detroits_non_normal` (quart de Kelly, NON de « traffic returns to normal », 0,80-0,95) pour voir si une prime revient ; test (échoue sans la config) ; cycle local : 1 proposition, 6,93 parts à 0,89. 587 tests verts.
 - **Reste ouvert** : loi sur le maximum d'une période pour les seuils « on any day by » (à refaire quand la fermeture finira) ; rougeole (CDC : pas de nouvelle ligne depuis le 22/10), essence (pas de nouveau jour depuis le 24/10) ;
-  durée visée 99 min non atteinte : pas de remplissage, pistes suivantes bloquées par l'attente de données (voir PISTES n° 8, 4) ou par une clé (Pinnacle).
+  durée visée 99 min non atteinte (12 min faites) : arrêt volontaire sans remplissage ; pistes suivantes bloquées par l'attente de données (voir PISTES n° 8, 4) ou par une clé (Pinnacle).
 
 ## 2026-10-25 (passage chercheur, midi : 10 h 54 → 11 h 51 UTC)
 
