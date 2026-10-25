@@ -1,7 +1,7 @@
 {
  "dernier_seq": {
-  "principal": 3394,
-  "fantome:calibration_patiente_v1.0.0": 1943,
+  "principal": 3395,
+  "fantome:calibration_patiente_v1.0.0": 1945,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1882,
   "fantome:crypto_threshold_v1.0.0": 1901,
@@ -18,7 +18,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1565,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2273,
+  "fantome:market_maker_serre_v1.0.0": 2275,
   "fantome:market_maker_v1.0.0": 1857,
   "fantome:favori_politique_patiente_v1.0.0": 1482,
   "fantome:favori_politique_v1.0.0": 1482,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 3,
   "fantome:moins_de_cartes_lol_v1.0.0": 3
  },
- "verifiees": 8866,
+ "verifiees": 8868,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1583,9 +1583,9 @@
    "op_id": "settle-114643612246915326776838362367139483981897763923273463058542744882156051213781"
   }
  ],
- "derniere_execution": "2026-10-25T12:58:49+00:00",
+ "derniere_execution": "2026-10-25T13:03:29+00:00",
  "dernier_seq_reglements": {
-  "principal": 3394,
+  "principal": 3395,
   "fantome:calibration_patiente_v1.0.0": 1945,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1882,
@@ -1603,7 +1603,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1565,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2275,
+  "fantome:market_maker_serre_v1.0.0": 2277,
   "fantome:market_maker_v1.0.0": 1857,
   "fantome:favori_politique_patiente_v1.0.0": 1482,
   "fantome:favori_politique_v1.0.0": 1482,
@@ -1723,7 +1723,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 356,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 303,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 128,
-  "fantome:moins_de_cartes_v1.0.0": 256,
+  "fantome:moins_de_cartes_v1.0.0": 258,
   "fantome:non_aux_drames_v1.0.0": 185,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 216,
@@ -1746,7 +1746,7 @@
   "fantome:candidats_non_v1.0.0": 33,
   "fantome:compteur_truth_v1.0.0": 27,
   "fantome:moins_de_cartes_bo5_v1.0.0": 3,
-  "fantome:moins_de_cartes_lol_v1.0.0": 3
+  "fantome:moins_de_cartes_lol_v1.0.0": 5
  },
  "reglements_verifies": 4729
 }
