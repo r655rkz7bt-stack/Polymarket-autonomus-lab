@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3347,
+  "principal": 3348,
   "fantome:calibration_patiente_v1.0.0": 1936,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1874,
@@ -135,7 +135,7 @@
   "fantome:nf_sport_925_950_v1.0.0": 287,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 144,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 213,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 325,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 328,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 292,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 120,
   "fantome:moins_de_cartes_v1.0.0": 233,
@@ -1557,9 +1557,9 @@
    "op_id": "settle-8684760736177043972063848296327797578077368965939221761107490789600594738916"
   }
  ],
- "derniere_execution": "2026-10-25T09:08:26+00:00",
+ "derniere_execution": "2026-10-25T09:12:46+00:00",
  "dernier_seq_reglements": {
-  "principal": 3347,
+  "principal": 3348,
   "fantome:calibration_patiente_v1.0.0": 1936,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1874,
@@ -1689,12 +1689,12 @@
   "fantome:statu_quo_ia_v1.0.0": 177,
   "fantome:jobs_favori_non_v1.0.0": 167,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 386,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 691,
+  "fantome:nf_tennis_vainqueur_v1.0.0": 693,
   "fantome:nf_sport_18_24h_v1.0.0": 212,
   "fantome:nf_sport_925_950_v1.0.0": 287,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 144,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 213,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 325,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 328,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 292,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 120,
   "fantome:moins_de_cartes_v1.0.0": 233,
@@ -1720,5 +1720,5 @@
   "fantome:candidats_non_v1.0.0": 25,
   "fantome:compteur_truth_v1.0.0": 19
  },
- "reglements_verifies": 4703
+ "reglements_verifies": 4705
 }
