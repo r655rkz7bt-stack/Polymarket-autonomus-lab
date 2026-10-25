@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-25 (passage chercheur, midi : 10 h 54 → FIN_HEURE UTC environ)
+## 2026-10-25 (passage chercheur, midi : 10 h 54 → 11 h 51 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-25_midi_tirage_sans_5050_et_chance.md`, scripts dans `experiments/enquetes/scripts/`).
   - **Obligations** : les cinq « champion sans avantage / chance » et l'« audit » : même mécanisme qu'aux passages précédents (mises ∝ 1/(1 − prix)), anomalies d'audit = achats à 0,001 déjà corrigés le 24/10 ; non refaites. Constat « estimation périmée » des tweets : un achat de 7,5 € (NON estimé 0,81, payé 0,10) perdu, rien à corriger.
