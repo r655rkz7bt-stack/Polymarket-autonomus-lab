@@ -34,6 +34,7 @@ def test_resolved_markets_are_parsed_filtered_and_cached(tmp_path):
                                             _event(status="disputed")]})
     rows = it.fetch_resolved(http, tmp_path, "2026-10-01", "2026-10-15", tag_id=84, slug_pattern=r"temperature")
     assert len(rows) == 1 and rows[0].won == 1 and rows[0].fee_rate == 0.05 and "lfpb" in rows[0].resolution_source
+    assert it.ECARTES_50_50["marches"] == 1  # le marché réglé à 0,5/0,5 est compté, pas ignoré en silence (24/10/2026)
     assert http.calls[0][1]["tag_id"] == 84
     again = it.fetch_resolved(FakeHttp({}), tmp_path, "2026-10-01", "2026-10-15", tag_id=84, slug_pattern=r"temperature")
     assert [r.market_id for r in again] == ["m1"]  # lu dans le cache, aucun appel

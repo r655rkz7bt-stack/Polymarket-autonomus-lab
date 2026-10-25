@@ -30,6 +30,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - jetons_sans_valeur : achat à 0,001-0,03 d'une issue estimée à plus de 15 % (24/10 : crypto_threshold, NON de « plonge à 2 300 $ le 24/10 » déjà
     touché le matin, 30 000 parts à 0,001, 8 achats sur 8 perdus) ;
   - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
+  - tresorerie_rejouee : la trésorerie rejouée depuis les achats et règlements du journal (1000 − achats + règlements) retombe-t-elle sur celle que le cycle a notée ?
+    (25/10/2026 : 159 journaux sur 159 au centime, aucun règlement double ; un écart dirait un règlement perdu, doublé ou une mise mal débitée) ;
   - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -237,6 +239,38 @@ def reglements_50_50(entries: dict[str, list[dict]], min_markets: int = 3) -> li
     return [_finding("reglements_50_50", A_REGARDER, f"{len(markets)} marché(s) réglés à 50-50 où l'arène avait acheté ({loss:.0f} € perdus sur {cost:.0f} € misés)",
                      "Match annulé, abandonné ou walkover : chaque part vaut 0,50. Les tests sur le passé écartent ces marchés ; "
                      "un achat avant le coup d'envoi (ou sur un sport à forts taux : UFC, CS2, doubles) paie ce risque sans l'avoir compté.", lines)]
+
+
+def tresorerie_rejouee(entries: dict[str, list[dict]], tol: float = 0.01) -> list[dict]:
+    """Rejoue chaque journal : trésorerie = capital initial − Σ(parts × prix + frais) + Σ(parts × paiement à la clôture), contre la dernière trésorerie
+    notée par le cycle (battement). Un écart (règlement perdu, compté deux fois, achat mal débité) fausse tous les chiffres de la stratégie sans que
+    rien ne le dise. 25/10/2026 : 159 journaux sur 159 au centime."""
+    out = []
+    for name, rows in sorted(entries.items()):
+        cash, held, settled, doubles, last = Decimal(0), defaultdict(Decimal), set(), 0, None
+        for e in rows:
+            d, kind = e["data"], e["type"]
+            if kind == "GENESIS":
+                cash = Decimal(d["initial_capital"])
+            elif kind == "BUY":
+                cash -= Decimal(d["shares"]) * Decimal(d["price"]) + Decimal(d["fee"])
+                held[d["token_id"]] += Decimal(d["shares"])
+            elif kind == "SELL":
+                cash += Decimal(d["shares"]) * Decimal(d["price"]) - Decimal(d.get("fee", 0))
+                held[d["token_id"]] -= Decimal(d["shares"])
+            elif kind == "SETTLE":
+                doubles += d["token_id"] in settled
+                settled.add(d["token_id"])
+                cash += held[d["token_id"]] * Decimal(d["payout_per_share"])
+                held[d["token_id"]] = Decimal(0)
+            elif kind == "HEARTBEAT" and d.get("cash") is not None:
+                last = (Decimal(d["cash"]), e["ts"])
+        if last is not None and (abs(cash - last[0]) > Decimal(str(tol)) or doubles):
+            out.append(f"{name} : trésorerie rejouée {float(cash):.2f} € contre {float(last[0]):.2f} € notés le {last[1][:16]}"
+                       + (f", {doubles} règlement(s) en double" if doubles else ""))
+    return [_finding("tresorerie_rejouee", GRAVE, f"{len(out)} journal(aux) dont la trésorerie rejouée ne retombe pas sur celle du cycle",
+                     "Un règlement perdu, compté deux fois ou une mise mal débitée fausse le capital et les rendements de cette stratégie : "
+                     "comparer le journal aux ordres du cycle concerné.", out)] if out else []
 
 
 def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost: float = 0.25,
@@ -923,7 +957,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
-                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries)
+                + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 

@@ -32,6 +32,9 @@ from typing import Callable
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 
 GAMMA = "https://gamma-api.polymarket.com"
+# Marchés réglés à 0,5/0,5 (match annulé, walkover) écartés par `parse_event_market` au dernier `fetch_resolved` (24/10/2026 : 2 à 8 % des « vainqueur » de CS2,
+# Dota 2 et tennis féminin ; un test d'achat qui les ignore en silence se croit meilleur). Remis à zéro à chaque relevé ; le relevé lu dans le cache ne les connaît pas.
+ECARTES_50_50 = {"marches": 0}
 CLOB = "https://clob.polymarket.com"
 TRADES = "https://data-api.polymarket.com/trades"
 
@@ -99,6 +102,7 @@ def fetch_resolved(http: HttpClient, cache_dir: Path, start: str, end: str, tag_
         return [Resolved(**r) for r in rows]
     pattern = re.compile(slug_pattern) if slug_pattern else None
     out: list[Resolved] = []
+    ECARTES_50_50["marches"] = 0
     for page in range(max_pages):
         params = {"closed": "true", "limit": 100, "offset": page * 100,
                   "end_date_min": f"{start}T00:00:00Z", "end_date_max": f"{end}T23:59:59Z"}
@@ -114,6 +118,8 @@ def fetch_resolved(http: HttpClient, cache_dir: Path, start: str, end: str, tag_
                 r = parse_event_market(ev, m)
                 if r:
                     out.append(r)
+                elif sorted(str(p) for p in _jl(m.get("outcomePrices"))) == ["0.5", "0.5"]:
+                    ECARTES_50_50["marches"] += 1
         if len(batch) < 100:
             break
     Path(cache_dir).mkdir(parents=True, exist_ok=True)
