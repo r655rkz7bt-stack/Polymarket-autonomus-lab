@@ -183,6 +183,15 @@ Dixon-Coles seulement à ρ = −0,1 ; pas de variante en jeu.
   en réalité les séries se finissent 2-0 plus souvent. Au tennis, l'effet de même sens existe pour les sets mais il est
   déjà dans les prix (z −1,1 « avant », rien « après »).
 
+## Addendum du 25/10/2026 : les règlements 50-50 et un tirage neuf
+
+Le tirage du 23/10 écartait les matchs réglés à 50-50 (voir `experiments/enquetes/2026-10-25_midi_tirage_sans_5050_et_chance.md`). Refait avec eux sur 2 755 matchs
+(`bo3_coherence/sous_2_5_50_50.py`) : « Under » à 3 h : **+7,7 %** (t 2,0, z 1,5, indice) au lieu de +13,5 % ; sur les 1 804 matchs jamais vus par la découverte :
++8,3 % (t 1,84) ; **LoL +15,1 % (t 2,2)**, BO5 +23 %, CS2 / Dota 2 / Valorant ≈ 0. En direct (42 paris) : 30 gagnés pour 23,9 attendus. L'indice survit, plus modeste, et se
+concentre sur LoL : fille `moins_de_cartes_lol`.
+Sur sept autres jeux (Honor of Kings, MLBB, Call of Duty, Rainbow Six, Rocket League, StarCraft 2, Overwatch : `releve_evenements.py` accepte leurs séries, `LOT=2 sous_2_5_50_50.py`,
+2 220 matchs, 3 227 totaux) : **+2,1 % (230 paris, t 0,69)**, « Over » −14,4 % : le mécanisme « les séries finissent plus vite que ne le dit la binomiale » n'est pas général ; MLBB seul +17,4 % (60 paris, t 1,84, sélection parmi 7 jeux).
+
 ## Reproduire
 
 ```

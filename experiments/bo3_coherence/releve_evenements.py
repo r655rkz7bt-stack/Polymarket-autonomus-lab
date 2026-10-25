@@ -16,7 +16,7 @@ import requests
 
 D = Path(__file__).resolve().parent / "donnees"
 D.mkdir(exist_ok=True)
-SERIES = {"cs2": 10310, "lol": 10311, "dota2": 10309, "val": 10369, "atp": 10365, "wta": 10366, "itf": 11634}
+SERIES = {"cs2": 10310, "lol": 10311, "dota2": 10309, "val": 10369, "atp": 10365, "wta": 10366, "itf": 11634, "hok": 10434, "mlbb": 10426, "codmw": 10427, "r6siege": 10432, "rl": 10433, "sc2": 10435, "ow": 10430, "wildrift": 10429}
 S = requests.Session()
 S.headers["User-Agent"] = "polymarket-autonomous-lab"
 CHAMPS = ("id", "conditionId", "question", "endDate", "gameStartTime", "closedTime", "outcomes", "outcomePrices",

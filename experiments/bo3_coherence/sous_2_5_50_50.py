@@ -2,7 +2,7 @@
 
 `series.regle` écartait les marchés réglés 0,5/0,5 (en silence). Le fantôme moins_de_cartes en a eu 4 sur 42 en direct
 (25/10, enquête famille 2). Ici ils comptent : l'« Under » acheté est payé 0,5. Même code que sous_2_5.py (esport).
-Usage : python experiments/bo3_coherence/sous_2_5_50_50.py"""
+Usage : [LOT=2] python experiments/bo3_coherence/sous_2_5_50_50.py"""
 import gzip
 import json
 import os
@@ -18,8 +18,9 @@ from echanges import cout_preneur  # noqa: E402
 from series import jour, resume, it  # noqa: E402
 
 D = HERE / "donnees"
-NOMS = ["cs2", "lol", "dota2", "val"]
-choisis = set(json.loads((D / "echantillon_esport.json").read_text()))
+LOT = os.environ.get("LOT", "1")  # 1 : cs2 lol dota2 val (tirage du 25/10) ; 2 : autres jeux (hok mlbb codmw r6siege rl sc2 ow)
+NOMS = ["cs2", "lol", "dota2", "val"] if LOT == "1" else ["hok", "mlbb", "codmw", "r6siege", "rl", "sc2", "ow"]
+choisis = set(json.loads((D / f"echantillon_esport_lot{LOT}.json").read_text()))
 cas_list = []
 for nom in NOMS:
     for ev in json.loads(gzip.decompress((D / f"evenements_{nom}.json.gz").read_bytes())):
