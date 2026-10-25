@@ -438,10 +438,10 @@ def now_utc() -> datetime:
 # ------------------------------------------------------------------ bookmakers : champions et football à 3 issues
 
 CHAMPION = {"basketball_nba_championship_winner": r"nba (?:finals|champion)",
-            "americanfootball_nfl_super_bowl_winner": r"super bowl",
+            "americanfootball_nfl_super_bowl_winner": r"super bowl|nfl league championship",
             "baseball_mlb_world_series_winner": r"world series",
-            "icehockey_nhl_championship_winner": r"stanley cup|nhl (?:champion|finals)"}
-WILL_WIN = re.compile(r"^will (?:the )?(.+?) win\b", re.IGNORECASE)
+            "icehockey_nhl_championship_winner": r"stanley cup|nhl (?:champion|finals)"}  # 25/10/2026 : Polymarket écrit « win the 2027 NFL league championship » et « be named the 2026-27 NHL Stanley Cup Champion »
+WILL_WIN = re.compile(r"^will (?:the )?(.+?) (?:win|be named)\b", re.IGNORECASE)
 WIN_ON = re.compile(r"^will (.+?) win on (\d{4}-\d{2}-\d{2})\??$", re.IGNORECASE)
 DRAW = re.compile(r"^will (.+?) vs\.? (.+?) end in a draw\??$", re.IGNORECASE)
 

@@ -132,6 +132,16 @@ def test_football_three_ways_and_champions_are_linked_to_bookmakers(tmp_path):
                                      "vu_le": NOW.isoformat()}], NOW)
     champ = parse_market(raw_market("c", question="Will the Oklahoma City Thunder win the 2027 NBA Finals?"))
     assert refs.attach_outrights([champ], db) == 1 and champ.references["outright"]["p"] == 0.31
+    # 25/10/2026 : Polymarket écrit « win the 2027 NFL league championship » et « be named the 2026-27 NHL Stanley Cup Champion » ; seule la NBA se rattachait (30 équipes sur 94)
+    refs._save(db, "ref:outrights", [{"sport": "americanfootball_nfl_super_bowl_winner", "titre": "NFL", "equipe": "Buffalo Bills", "p": 0.098,
+                                     "reference": "pinnacle", "vu_le": NOW.isoformat()},
+                                    {"sport": "icehockey_nhl_championship_winner", "titre": "NHL", "equipe": "Edmonton Oilers", "p": 0.082,
+                                     "reference": "pinnacle", "vu_le": NOW.isoformat()}], NOW)
+    nfl = parse_market(raw_market("n", question="Will the Buffalo Bills win the 2027 NFL league championship?"))
+    nhl = parse_market(raw_market("h", question="Will the Edmonton Oilers be named the 2026-27 NHL Stanley Cup Champion?"))
+    other = parse_market(raw_market("o", question="Will the Edmonton Oilers be the 2027 NHL Western Conference Champion?"))
+    assert refs.attach_outrights([nfl, nhl, other], db) == 2 and nfl.references["outright"]["p"] == 0.098 and nhl.references["outright"]["p"] == 0.082
+    assert not (other.references or {}).get("outright")                       # une finale de conférence n'est pas le titre
     db.close()
 
 

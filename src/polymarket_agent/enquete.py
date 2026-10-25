@@ -889,6 +889,45 @@ def achats_en_jeu(entries: dict[str, list[dict]], copied: set[str], since: datet
     return out
 
 
+def posees_en_jeu(entries: dict[str, list[dict]], min_posed: int = 40, z_max: float = -2.0) -> list[dict]:
+    """Ordres posés servis EN COURS de match, contre achats immédiats (25/10/2026, experiments/ordres_poses_en_jeu.md : 1 145 favoris de sport, un compte par
+    jeton ; posés −6,8 % et z des prix −2,8, immédiats −0,2 % ; en cours de match −9,2 %, depuis le 22/10 −12,7 % et z −3,5). Un ordre posé n'est servi que quand le
+    prix descend jusqu'à lui (but encaissé, blessure) : sélection adverse. Un jeton compte une fois (premier achat vu), au prix de cet achat."""
+    seen: dict[str, tuple[float, bool]] = {}
+    payout: dict[str, float] = {}
+    for rows in entries.values():
+        for e in rows:
+            d = e["data"]
+            if e["type"] == "SETTLE":
+                payout.setdefault(d["token_id"], float(d["payout_per_share"]))
+            elif e["type"] == "BUY" and d["token_id"] not in seen:
+                x = d.get("extra") or {}
+                try:
+                    live = float(x.get("depuis_coup_d_envoi_h")) >= 0
+                except (TypeError, ValueError):
+                    continue
+                if live:
+                    seen[d["token_id"]] = (float(d["price"]), _posted(x))
+    stats = {}
+    for posted in (True, False):
+        bets = [(price, payout[t]) for t, (price, p) in seen.items() if p == posted and t in payout and price > 0]
+        if bets:
+            won, expected = sum(b[1] for b in bets), sum(b[0] for b in bets)
+            var = sum(b[0] * (1 - b[0]) for b in bets)
+            stats[posted] = (len(bets), won, expected, (won - expected) / math.sqrt(var) if var > 0 else 0.0,
+                             statistics.mean(b[1] / b[0] - 1 for b in bets))
+    if True not in stats or stats[True][0] < min_posed or stats[True][3] > z_max:
+        return []
+    n, won, expected, z, unit = stats[True]
+    other = stats.get(False)
+    return [_finding("posees_en_jeu", A_REGARDER,
+                     f"{n} ordre(s) posé(s) servi(s) en cours de match : {won:.1f} gagnés pour {expected:.1f} attendus (z {z:.1f}, {unit:+.1%} par pari)",
+                     "Un ordre posé n'est servi que quand le prix baisse jusqu'à lui : en match, c'est un but ou une blessure (sélection adverse). Comparer aux achats immédiats "
+                     "(ligne suivante) ; si l'écart tient, interdire le mode patient une fois le match commencé (`heures_min: 0`, fantôme nf_sport_patiente_avant_match).",
+                     [f"achats immédiats en cours de match : {other[0]} paris, {other[1]:.1f} gagnés pour {other[2]:.1f} attendus (z {other[3]:.1f}, {other[4]:+.1%} par pari)"]
+                     if other else [])]
+
+
 def audit_anomalies(audit: dict | None) -> list[dict]:
     """Anomalies de l'audit indépendant (`audit/etat.json` de la branche data, scripts/audit_fills.py, protégé).
     Le 22/10/2026 : 62 anomalies, toutes « réglé alors que le marché n'est pas clos », mais chaque règlement
@@ -958,7 +997,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
-                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit))
+                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 
