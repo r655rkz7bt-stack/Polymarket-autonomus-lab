@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3496,
+  "principal": 3498,
   "fantome:calibration_patiente_v1.0.0": 1985,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1897,
@@ -100,7 +100,7 @@
   "fantome:manifold_reference_v1.0.0": 446,
   "fantome:predictit_reference_v1.0.0": 444,
   "fantome:fatigue_nhl_v1.0.0": 474,
-  "fantome:mots_nouveaux_v1.0.0": 501,
+  "fantome:mots_nouveaux_v1.0.0": 502,
   "fantome:mots_prononces_v1.0.0": 567,
   "fantome:crypto_threshold_24_72h_v1.0.0": 401,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 441,
@@ -1616,9 +1616,9 @@
    "op_id": "settle-36101791726304812405505102640420169757867545724388306849915590723112828769379"
   }
  ],
- "derniere_execution": "2026-10-25T20:42:56+00:00",
+ "derniere_execution": "2026-10-25T20:48:26+00:00",
  "dernier_seq_reglements": {
-  "principal": 3496,
+  "principal": 3498,
   "fantome:calibration_patiente_v1.0.0": 1985,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1897,
@@ -1718,7 +1718,7 @@
   "fantome:manifold_reference_v1.0.0": 446,
   "fantome:predictit_reference_v1.0.0": 444,
   "fantome:fatigue_nhl_v1.0.0": 474,
-  "fantome:mots_nouveaux_v1.0.0": 501,
+  "fantome:mots_nouveaux_v1.0.0": 502,
   "fantome:mots_prononces_v1.0.0": 567,
   "fantome:crypto_threshold_24_72h_v1.0.0": 401,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 441,
