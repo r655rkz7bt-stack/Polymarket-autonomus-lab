@@ -3,6 +3,19 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-25 (passage chercheur, soir : 15 h 55 → 16 h 07 UTC, 12 min)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-25_soir_tirage_et_fenetres.md`) : **rien trouvé**. Obligations = celles de midi (mêmes mécanismes, non refaites).
+  Famille 3 : 30 paris réglés tirés au hasard (graine 25) relus sur Gamma, 30/30 conformes au journal. Famille 4 : 716 premiers achats de 19 stratégies à fenêtre,
+  tous dans `echeance_min/max` ; 4 hors `heure_utc` = ordres posés servis plus tard (voulu). `cotes_bookmakers` : coupée depuis le 21/10, pas muette.
+  Suivi : `moins_de_cartes` 47 paris réglés, 33,5 gagnés pour 26,7 attendus (z 2,0, +19,7 %) ; encore un indice, pas une preuve.
+- **Recherche** (piste 0b suite, `experiments/detroits_seuils.md`) : seuils d'Ormuz. 59 marchés réglés (prix horaire). 12 « returns to normal » = 12 NON (un seul chemin : détroit fermé
+  depuis mars). Le NON à J-30 rendait +26 % (8 marchés), mais le OUI moyen est passé de 0,35 (mars-avril) à 0,01 (septembre) : **la prime a disparu**. Aujourd'hui OUI 0,055 (30/11) et 0,115 (31/12), de l'ordre du risque
+  de réouverture. « On any day by » : NON +7 à +11 % à J-14/J-7, 8 événements, même régime. **Verdict : écartée** comme avantage (4 réglages, aucun ajusté).
+- **Arène** : fantôme gratuit `detroits_non_normal` (quart de Kelly, NON de « traffic returns to normal », 0,80-0,95) pour voir si une prime revient ; test (échoue sans la config) ; cycle local : 1 proposition, 6,93 parts à 0,89. 587 tests verts.
+- **Reste ouvert** : loi sur le maximum d'une période pour les seuils « on any day by » (à refaire quand la fermeture finira) ; rougeole (CDC : pas de nouvelle ligne depuis le 22/10), essence (pas de nouveau jour depuis le 24/10) ;
+  durée visée 99 min non atteinte (12 min faites) : arrêt volontaire sans remplissage ; pistes suivantes bloquées par l'attente de données (voir PISTES n° 8, 4) ou par une clé (Pinnacle).
+
 ## 2026-10-25 (passage chercheur, midi : 10 h 54 → 11 h 51 UTC)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-25_midi_tirage_sans_5050_et_chance.md`, scripts dans `experiments/enquetes/scripts/`).
