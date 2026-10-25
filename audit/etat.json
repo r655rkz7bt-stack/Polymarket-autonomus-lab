@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3247,
+  "principal": 3248,
   "fantome:calibration_patiente_v1.0.0": 1915,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1856,
@@ -90,7 +90,7 @@
   "fantome:implication_politique_v1.0.0": 407,
   "fantome:marche_neuf_v1.0.0": 616,
   "fantome:marches_jumeaux_v1.0.0": 407,
-  "fantome:outsiders_surcotes_v1.0.0": 450,
+  "fantome:outsiders_surcotes_v1.0.0": 452,
   "fantome:paire_oui_non_v1.0.0": 407,
   "fantome:compteur_tweets_v1.0.0": 475,
   "fantome:cotes_tennis_v1.0.0": 399,
@@ -135,7 +135,7 @@
   "fantome:nf_sport_925_950_v1.0.0": 261,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 128,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 196,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 292,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 294,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 273,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 104,
   "fantome:moins_de_cartes_v1.0.0": 205,
@@ -161,7 +161,7 @@
   "fantome:candidats_non_v1.0.0": 9,
   "fantome:compteur_truth_v1.0.0": 3
  },
- "verifiees": 8621,
+ "verifiees": 8623,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1477,9 +1477,9 @@
    "op_id": "7e9a9fee5a13acb6d010305b"
   }
  ],
- "derniere_execution": "2026-10-25T01:07:15+00:00",
+ "derniere_execution": "2026-10-25T01:09:46+00:00",
  "dernier_seq_reglements": {
-  "principal": 3247,
+  "principal": 3248,
   "fantome:calibration_patiente_v1.0.0": 1915,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1856,
