@@ -334,3 +334,21 @@ def test_zero_fee_political_markets_are_politics_again(tmp_path):
     assert fam("largest-ipo-by-market-cap-in-2026-287", "f") == "zero"
     assert fam("white-house-posts-october-27-november-3-2026", "g") == "zero"
     assert fam("highest-temperature-in-paris-on-october-24-2026", "h") == "weather"
+
+
+def test_detroits_non_normal_buys_the_no_of_a_return_to_normal_market_only(tmp_path):
+    """25/10/2026 (experiments/detroits_seuils.md) : NON des marchés « Strait of Hormuz traffic returns to normal by … » à 0,80-0,97.
+    Refuse une autre question, le OUI, un NON hors plage de prix et une échéance trop proche."""
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["detroits_non_normal"]
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+
+    def proposals(tmp, hours=24 * 36, bid="0.10", ask="0.11", question="Strait of Hormuz traffic returns to normal by November 30?"):
+        m, books, ledger, _ = _setup(tmp, fee_type="zero_fees", enabled=False, end_hours=hours, bid=bid, ask=ask, question=question)
+        m.outcome_prices = [D("0.105"), D("0.895")]
+        return cfg.propose([m], books, ledger.state, limits, "b").proposals
+
+    out = proposals(tmp_path / "a")
+    assert len(out) == 1 and out[0].token_id == "N"                      # le NON, jamais le OUI
+    assert not proposals(tmp_path / "b", question="Will Bitcoin dip to $60k by November 30?")
+    assert not proposals(tmp_path / "c", bid="0.25", ask="0.26")         # NON à 0,75 : sous la plage
+    assert not proposals(tmp_path / "d", hours=24 * 5)                   # trop près de la fin
