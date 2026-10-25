@@ -12,7 +12,13 @@
 # 1 h 45 par passage) est un départ prudent ; recalibré chaque samedi d'après la consommation réelle.
 demarrage: "2026-10-24T00:00:00+00:00"    # avant : 45 à 90 minutes par passage, comme avant
 remise_a_zero: {jour: samedi, heure_utc: 0}   # limite de la semaine : remise à zéro le samedi 00:00 UTC (2 h à Paris)
-budget_semaine_minutes: 3600
+# Calibrage du 25/10/2026 (premier jour au budget, 24/10) : 5 passages, 282 min en tout (22 à 85 min chacun),
+# ≈ 0,12 $ par minute (6,1 $ / 65 min, 10,8 $ / 77 min, 8,1 $ / 85 min, 3,8 $ / 22 min) ; aucune alerte de limite
+# (« five_hour : allowed » partout). Au rythme réel ≈ 230 $ la semaine ; les 3 600 min pleines feraient ≈ 420 $, trop près
+# de l'avertissement du 21/10 (450-550 $) une fois ajoutées les conversations d'Etienne. 3 000 min ≈ 350 $ au plus :
+# ne freine pas le rythme actuel (≈ 2 000 min), garde la marge. Le passage du 25/10 à 05 h 54 UTC s'est arrêté
+# (panne du contrôle de sécurité de la plateforme, « Classifier unavailable »), sans rapport avec le budget.
+budget_semaine_minutes: 3000
 duree_min_minutes: 30
 duree_max_minutes: 135
 avant_demarrage_minutes: [45, 90]
