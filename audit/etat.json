@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3327,
+  "principal": 3328,
   "fantome:calibration_patiente_v1.0.0": 1933,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1871,
@@ -111,7 +111,7 @@
   "fantome:nf_court_football_v1.0.0": 413,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 461,
   "fantome:nf_tennis_12_18h_v1.0.0": 571,
-  "fantome:compteur_tweets_non_v1.0.0": 340,
+  "fantome:compteur_tweets_non_v1.0.0": 341,
   "fantome:nf_court_football_soir_v1.0.0": 358,
   "fantome:nf_court_soir_v1.0.0": 418,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 372,
@@ -135,7 +135,7 @@
   "fantome:nf_sport_925_950_v1.0.0": 284,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 141,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 210,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 316,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 317,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 286,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 117,
   "fantome:moins_de_cartes_v1.0.0": 225,
@@ -1557,9 +1557,9 @@
    "op_id": "settle-8684760736177043972063848296327797578077368965939221761107490789600594738916"
   }
  ],
- "derniere_execution": "2026-10-25T07:32:48+00:00",
+ "derniere_execution": "2026-10-25T07:37:31+00:00",
  "dernier_seq_reglements": {
-  "principal": 3327,
+  "principal": 3328,
   "fantome:calibration_patiente_v1.0.0": 1933,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1871,
@@ -1670,7 +1670,7 @@
   "fantome:nf_court_football_v1.0.0": 413,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 461,
   "fantome:nf_tennis_12_18h_v1.0.0": 571,
-  "fantome:compteur_tweets_non_v1.0.0": 340,
+  "fantome:compteur_tweets_non_v1.0.0": 341,
   "fantome:nf_court_football_soir_v1.0.0": 358,
   "fantome:nf_court_soir_v1.0.0": 418,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 372,
@@ -1694,7 +1694,7 @@
   "fantome:nf_sport_925_950_v1.0.0": 284,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 141,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 210,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 316,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 317,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 286,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 117,
   "fantome:moins_de_cartes_v1.0.0": 225,
