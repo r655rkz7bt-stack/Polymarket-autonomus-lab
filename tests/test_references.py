@@ -339,6 +339,20 @@ def test_tweet_strategy_can_skip_elon_and_trump(tmp_path):
     assert [p.outcome for p in _s(CompteurTweets, skip_elon_trump=1, **base).propose([m], books, _state(tmp_path, "c"), LIMITS, "b1").proposals] == ["Yes"]
 
 
+def test_tweet_strategy_can_play_only_trump_truth_social(tmp_path):
+    """25/10/2026 : fille « posts Truth Social de Trump seulement » (compteur_truth) : les autres comptes sont écartés avec une raison nommée."""
+    m = parse_market(raw_market("t", yes_token="tY", no_token="tN", groupItemTitle="200-219", end=NOW + timedelta(hours=24)))
+    m.tweets = {"compte": "elonmusk", "fin": (NOW + timedelta(hours=24)).isoformat(), "total": 180, "heures": [1] * 72, "vu_le": NOW.isoformat()}
+    books = {"tY": make_book("tY", bids=(("0.20", "1000"),), asks=(("0.21", "1000"),)),
+             "tN": make_book("tN", bids=(("0.79", "1000"),), asks=(("0.80", "1000"),))}
+    base = dict(dispersion=1000, recent_hours=72, max_stale_hours=6, margin=0.03, uncertainty=0.005,
+                min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    out = _s(CompteurTweets, only_trump=1, **base).propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert out.proposals == [] and any("Truth Social" in a for a in out.abstentions)
+    m.tweets["compte"] = "realDonaldTrump"
+    assert [p.outcome for p in _s(CompteurTweets, only_trump=1, **base).propose([m], books, _state(tmp_path, "b"), LIMITS, "b1").proposals] == ["Yes"]
+
+
 def test_wide_gap_tweet_daughter_buys_only_a_big_disagreement(tmp_path):
     """24/10/2026 : fille « calcul et prix à 15 points ou plus » (réglages du config) : le NON à 10 points d'écart que la mère achète est refusé,
     celui à 25 points est acheté (rejeu passé : écart < 0,10 perdait 4 %, écart ≥ 0,20 gagnait ≥ 25 %)."""

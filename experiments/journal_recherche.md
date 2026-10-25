@@ -3,6 +3,22 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-25 (passage chercheur, minuit : 23 h 54 → 00 h 16 UTC environ)
+
+- **Enquête** (fiche : `experiments/enquetes/2026-10-25_nuit_controles_famille_1_et_6.md`).
+  - **Obligations** : les trois « champion sans avantage », les trois « chance » et l'« audit » : même cause qu'aux passages précédents (mises ∝ 1/(1 − prix), favoris qui gagnent comme leur prix ; les 2 anomalies d'audit sont les achats à 0,001 déjà corrigés le 24/10) ; non refaites.
+  - **Famille 1** (jour 25 : n° 1, déjà faite deux fois le 24/10) refaite sur les journaux de 23 h 52 : prix payé du principal = celui du fantôme copié (−0,0007), 163 jetons réglés, gain −240 € contre −254 € au prix du fantôme.
+  - **Famille 6** : positions bloquées = litiges UMA (Cape Town 17/18 °C) et référendum de l'Alberta, pas de défaut ; le correctif `zero_fees` de la politique a rouvert `parking_politique` (2 achats le 24/10 à 21 h 27) ; la météo n'entre plus dans les 150 surveillés mais arrive par `candidates()` (rien à corriger).
+  - **Comptabilité** : trésorerie de 159 journaux rejouée au centime, 0 règlement en double → contrôle automatique `enquete.tresorerie_rejouee` + test. `idea_test.fetch_resolved` compte maintenant les marchés 50-50 écartés (`ECARTES_50_50`, reste ouvert n° 6 d'hier soir).
+  - **Aucun défaut de code trouvé** dans ce passage ; vérifié comme ci-dessus.
+- **Recherche** (3 comptes rendus, scripts et relevé de posts versionnés) :
+  - **Posts Truth Social de Trump** (`experiments/truth_social.md`) : 70 événements réglés, archive publique trumpstruth.org (6 046 posts, règlement retrouvé 48 fois sur 62), 60 semaines utilisables, vrais échanges. Profil par heure de la semaine : écartée (8 réglages, −6 à +13 %).
+    Formule de production de `compteur_tweets` : **+15,5 % par achat** (306 achats, t par événement +2,3, 6 mois sur 8, NON +21 %) mais **−5 % quand ≥ 100 parts s'échangent au prix** : l'effet vit dans les échanges minces. **Indice faible** → fantôme.
+  - **`compteur_tweets_non` aux prix des vrais échanges** (`experiments/tweets_prix_payes.md`) : quatre comptes, mars-octobre, 186 périodes : **+10,5 % par achat, t +1,4** (6 réglages : +8 à +11 %), OUI+NON +0,7 % ; WhiteHouse −7 %, tedcruz +27 %, cz_binance +45 % ; ≥ 100 parts : −10 %. « Retenue » du 21/10 ramenée à **indice** (déjà fantôme, hors `validated_strategies`).
+  - **Chômage hebdomadaire** : écartée sans test (4 événements à tranches, 195 à 16 700 $ ; 19 anciens seuils 2021-22). FRED (`fredgraph.csv?id=ICSA`) répond sans clé.
+- **Arène** : fantôme `compteur_truth` (fille de `compteur_tweets`, `only_trump: 1`, réglages de la mère) ; cycle local : 1 proposition, achat de « 200+ posts du 23 au 30/10 » à 0,476 (marché 5957193, relu sur Gamma). Test dans `tests/test_references.py`. Pas d'autre création : mères pleines ou familles jugées sans avantage (comme les 24/10).
+- **Reste ouvert** : (1) règlement de 5775544 (séismes, 26/10) ; (2) lire `compteur_truth` contre `compteur_tweets` après ~8 semaines ; (3) rapport `box_office_favori` du week-end 24-25/10 ; (4) `candidats_non` après le 3/11 ; (5) mesurer la profondeur réelle du carnet (pas seulement les échanges) pour les rejeux de comptage ; (6) fiche de méthode : tout test « retenu » sur prix CLOB horaires est à refaire aux échanges avec le volume au prix.
+
 ## 2026-10-24 (passage chercheur, soir : 19 h 54 → 21 h 30 UTC environ)
 
 - **Enquête** (fiches : `experiments/enquetes/2026-10-24_soir_reglements_50_50.md`, `2026-10-24_soir_politique_zero_fees.md`, `2026-10-24_soir_seuils_etiquette_ignores.md` ; famille du jour n° 1 déjà faite à 14 h 54, donc dix paris du principal relus à la main (graine 2419, famille 3), puis famille 6).

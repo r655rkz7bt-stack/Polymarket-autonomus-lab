@@ -2456,6 +2456,32 @@ compteur_tweets_non:
     only_no:        {value: 1, min: 0, max: 1}
     skip_nyc:       {value: 1, min: 0, max: 1}
 
+compteur_truth:
+  explication: "Combien de fois Trump publiera-t-il sur Truth Social cette semaine ? On compte ses posts déjà faits et son rythme, et on achète la tranche (ou son NON) que le marché vend moins cher que ce calcul."
+  # Piste du 25/10/2026 (experiments/truth_social.md) : 60 semaines réglées (mars-octobre 2026), posts relevés sur l'archive publique trumpstruth.org, vrais échanges.
+  # Formule de la mère (dispersion 12) : +15,5 % par achat (premier signal par tranche, t par événement +2,3, 6 mois sur 8), NON +21 % ; MAIS les achats que le carnet
+  # réel aurait servis à plus de 100 parts perdent 5 % : gain peut-être limité aux échanges minces. Contredit « Trump ≈ 0 » du 21/10 (autre source de prix). Indice : fantôme.
+  mere: compteur_tweets
+  morceau: "posts Truth Social de Trump seulement"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-25"
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+    only_trump:     {value: 1, min: 0, max: 1}
+
 compteur_tweets_non_hors_elon_trump:
   explication: "Le compteur de tweets, NON seulement, mais sans les deux comptes les plus suivis (Elon Musk et Trump), où on ne gagnait rien."
   # 23/10/2026 : découpage a posteriori de experiments/tweets_filles.md (NON sans NYC Mayor : Elon -1 %, Trump -2 %, tedcruz +22 %, Zelensky +23 %,

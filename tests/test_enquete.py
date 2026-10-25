@@ -434,3 +434,19 @@ def test_strategies_that_used_to_buy_and_stopped_are_listed_with_their_last_cycl
     found = enquete.acheteuses_arretees(rows, list(rows), NOW, abstentions=ab)
     assert len(found) == 1 and "1 stratégie(s)" in found[0]["titre"]
     assert "favori_politique_v1.0.0 : 4 achats" in found[0]["exemples"][0] and "famille de marchés exclue ×360" in found[0]["exemples"][0]
+
+
+def test_replayed_cash_matches_the_cycle_or_is_grave():
+    """25/10/2026 : trésorerie rejouée depuis les achats et règlements du journal contre la dernière trésorerie notée par le cycle."""
+    t = NOW - timedelta(hours=3)
+    hb = lambda cash: _e("HEARTBEAT", NOW, cash=str(cash), total_estimated="1000")
+    # 100 parts à 0,9 = 90 € ; réglées à 1 = +100 € ; trésorerie 1010
+    bon = _ledger(_buy(t, "a", 0.9, 100), _settle(t + timedelta(hours=1), "a", 1), hb(1010))
+    assert enquete.tresorerie_rejouee({"nf": bon}) == []
+    # règlement perdu : le cycle note 1010 mais le journal ne contient pas le règlement -> 910
+    perdu = _ledger(_buy(t, "a", 0.9, 100), hb(1010))
+    found = enquete.tresorerie_rejouee({"nf": perdu})
+    assert len(found) == 1 and found[0]["gravite"] == enquete.GRAVE and "910.00" in found[0]["exemples"][0]
+    # règlement compté deux fois
+    double = _ledger(_buy(t, "a", 0.9, 100), _settle(t, "a", 1), _settle(t, "a", 1), hb(1010))
+    assert "en double" in enquete.tresorerie_rejouee({"nf": double})[0]["exemples"][0]

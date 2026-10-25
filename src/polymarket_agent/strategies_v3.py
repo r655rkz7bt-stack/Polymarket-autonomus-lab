@@ -730,7 +730,8 @@ class CompteurTweets(_Base):
     cher que ce calcul, jamais un billet sous `min_price`. Réglages choisis sur le passé
     (experiments/vingt_pistes.md : 177 périodes de juillet à octobre 2026, +12 % par achat).
     Réglages optionnels (fille « NON sans NYC Mayor », 21/10/2026, experiments/tweets_filles.md) :
-    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor ; `skip_elon_trump` = 1 ignore Elon Musk et Trump."""
+    `only_no` = 1 n'achète que le NON ; `skip_nyc` = 1 ignore le compte NYC Mayor ; `skip_elon_trump` = 1 ignore Elon Musk et Trump ;
+    `only_trump` = 1 ne joue que les posts Truth Social de Trump (compte `realDonaldTrump` de XTracker, 25/10/2026, experiments/truth_social.md)."""
 
     strategy_id = "compteur_tweets"
     required = ("dispersion", "recent_hours", "max_stale_hours", "margin", "uncertainty", "min_net_edge",
@@ -762,6 +763,9 @@ class CompteurTweets(_Base):
                 continue
             if float(p.get("skip_elon_trump", 0)) and str(tr.get("compte", "")).lower() in ("elonmusk", "realdonaldtrump"):
                 out.abstain("compte écarté (Elon Musk et Trump : ≈ 0 % sur le passé, les plus suivis par les gros acheteurs)")
+                continue
+            if float(p.get("only_trump", 0)) and str(tr.get("compte", "")).lower() != "realdonaldtrump":
+                out.abstain("compte écarté (seulement les posts Truth Social de Trump)")
                 continue
             prob = tweet_bucket_probability(tr, rng, now, float(p["dispersion"]), int(p["recent_hours"]),
                                             int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5)))
