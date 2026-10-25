@@ -637,52 +637,57 @@ class Filtered:
         if hasattr(strategy, "exits"):
             self.exits = strategy.exits
 
-    def _market_ok(self, m: MarketInfo, now) -> bool:
+    def _reject(self, m: MarketInfo, now) -> str | None:
+        """Nom du premier filtre qui écarte ce marché, ou None s'il passe (25/10/2026 : sans cela une fille sourde, `candidats_non`,
+        n'avait AUCUNE raison d'abstention et paraissait seulement « muette »)."""
         f = self.filters
         if "familles" in f and market_family(m) not in f["familles"]:
-            return False
+            return "familles"
         if ("echeance_min" in f or "echeance_max" in f) and now is not None:
             if m.end_date is None:
-                return False
+                return "echeance"
             hours = (m.end_date - now).total_seconds() / 3600
             if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
-                return False
+                return "echeance"
         if "un_match" in f and bool(f["un_match"]) != bool(getattr(m, "sports_market_type", None)):
-            return False
+            return "un_match"
         if "candidats_min" in f and (not m.neg_risk or self._field.get(m.event_id, 0) < int(f["candidats_min"])):
-            return False
+            return "candidats_min"
         if "titre_contient" in f:
             titre = (m.event_title or "").lower()
             if not any(str(w).lower() in titre for w in f["titre_contient"]):
-                return False
+                return "titre_contient"
         question = (m.question or "").lower()
         if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):
-            return False
+            return "question_contient"
         if any(str(w).lower() in question for w in f.get("question_exclut", ())):
-            return False
+            return "question_exclut"
         if "ecart_max" in f and (m.spread is None or float(m.spread) > float(f["ecart_max"])):
-            return False
+            return "ecart_max"
         if "sources" in f or "sources_exclues" in f:
             from polymarket_agent.resolution_sources import domain_of
             domain = domain_of(m.resolution_source) if m.resolution_source else ""
             if "sources" in f and domain not in f["sources"]:
-                return False
+                return "sources"
             if domain and domain in f.get("sources_exclues", ()):
-                return False
+                return "sources_exclues"
         if "disciplines" in f or "types_pari" in f:
             from polymarket_agent.pareto import bet_type, discipline  # import tardif : évite une boucle
             if "disciplines" in f and discipline(m.question, m.resolution_source) not in f["disciplines"]:
-                return False
+                return "disciplines"
             if "types_pari" in f and bet_type(m.question, getattr(m, "sports_market_type", None)) not in f["types_pari"]:
-                return False
+                return "types_pari"
         if ("heures_min" in f or "heures_max" in f) and now is not None:
             ref = m.game_start or m.end_date
             if ref is None:
-                return False
+                return "heures"
             hours = (ref - now).total_seconds() / 3600
             if not float(f.get("heures_min", -1e9)) <= hours <= float(f.get("heures_max", 1e9)):
-                return False
-        return True
+                return "heures"
+        return None
+
+    def _market_ok(self, m: MarketInfo, now) -> bool:
+        return self._reject(m, now) is None
 
     def _order_ok(self, p) -> bool:
         if p.side != "BUY":
@@ -728,8 +733,17 @@ class Filtered:
             if not (start <= hour < end if start <= end else hour >= start or hour < end):
                 return StrategyOutput()  # hors de la plage horaire : aucune nouvelle position
         self._count_field(watchlist)
-        kept = [m for m in watchlist if self._market_ok(m, now)]
+        kept, dropped = [], {}
+        for m in watchlist:
+            why = self._reject(m, now)
+            if why is None:
+                kept.append(m)
+            else:
+                dropped[why] = dropped.get(why, 0) + 1
         out = self.inner.propose(kept, books, state, limits, bucket, marks)
+        for why, n in dropped.items():  # lisible dans les abstentions du cycle : « hors du filtre question_contient ×438 » = fille sourde
+            for _ in range(n):
+                out.abstain(f"hors du filtre {why}")
         out.proposals = [p for p in out.proposals if self._order_ok(p)]
         if getattr(out, "limit_orders", None):
             out.limit_orders = [p for p in out.limit_orders if self._order_ok(p)]

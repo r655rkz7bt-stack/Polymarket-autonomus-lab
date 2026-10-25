@@ -319,6 +319,23 @@ def test_candidates_no_buys_the_no_of_a_multi_candidate_election_market_inside_i
     assert not proposals(24 * 14, tmp_path / "f", question="Will the Democratic Party candidate win the 2026 Florida gubernatorial election by 0%-3%?")  # tranche de marge
     assert not proposals(24 * 14, tmp_path / "h", question="Will the Democratic Party candidate win the 2026 South Carolina Senate election?")  # parti, pas candidat (24/10, cycle local)
     assert not proposals(24 * 14, tmp_path / "g", field=1)          # un marché isolé : pas un champ de candidats
+    # 25/10/2026 : les vraies questions des élections du 03/11 ne contenaient pas « win the 2026 » ; la fille était sourde (0 achat, aucune raison d'abstention)
+    assert proposals(24 * 14, tmp_path / "i", question="Will Steve Hilton win the California Governor Election in 2026?")
+    assert proposals(24 * 14, tmp_path / "j", question="Will Dan Sullivan win the Alaska Senate race in 2026?")
+    assert not proposals(24 * 14, tmp_path / "k", question="Will the Democrats win the Texas Senate race in 2026?")        # un parti, pas un candidat
+    assert not proposals(24 * 14, tmp_path / "l", question="Will Democrats sweep the Alaska Senate and Governor elections?")
+    assert not proposals(24 * 14, tmp_path / "m", question="Will the Alaska 2026 Senate race be within 1%?")
+
+
+def test_filtered_strategy_says_which_filter_dropped_the_markets_it_never_saw(tmp_path):
+    """25/10/2026 : `candidats_non` voyait 438 marchés, 0 proposition et AUCUNE raison (le filtre `question_contient` écartait tout) : l'enquête la disait
+    « muette » sans pouvoir dire pourquoi. Les marchés écartés par un filtre sont maintenant comptés dans les abstentions."""
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["candidats_non"]
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+    m, books, ledger, _ = _setup(tmp_path, fee_type="zero_fees", end_hours=24 * 14, bid="0.15", ask="0.16", negRisk=True)
+    m.question = "Will the Fed cut rates in December?"
+    out = cfg.propose([m, copy.copy(m)], books, ledger.state, limits, "b")
+    assert not out.proposals and out.abstentions == {"hors du filtre question_contient": 2}
 
 
 def test_zero_fee_political_markets_are_politics_again(tmp_path):

@@ -294,9 +294,12 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     def metals(cfg):
         from polymarket_agent import matieres
         rows = factories.get("goldapi", lambda c: fetch_metal_prices(http, now))(cfg)
-        matieres.record_prices(db, rows, now, float(cfg.get("keep_days", 30)))
+        counted.append(matieres.record_prices(db, rows, now, float(cfg.get("keep_days", 30))))
         return []
+    counted: list[int] = []
     run("goldapi", metals)
+    if counted and result.status.get("goldapi", "").startswith("ok"):  # 25/10/2026 : « ok (0 observations) » alors que 166 prix étaient notés
+        result.status["goldapi"] = f"ok ({counted[0]} prix relevés)"
     if db is not None:
         from polymarket_agent.strategy_engine import market_family
         found = []

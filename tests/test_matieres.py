@@ -111,7 +111,8 @@ def test_collector_logs_prices_and_survives_an_outage(tmp_path):
     rows = [{"symbole": "XAUUSD", "t": int(NOW.timestamp()), "prix": 4000.0}]
     cfg = {"sources": {"goldapi": {"enabled": True, "every_minutes": 5, "keep_days": 30}}}
     result = collect(cfg, None, db, [], NOW, {"goldapi": lambda c: rows})
-    assert result.status["goldapi"].startswith("ok") and mt.history(db, "XAUUSD", 0) == [(int(NOW.timestamp()), 4000.0)]
+    assert result.status["goldapi"] == "ok (1 prix relevés)"   # 25/10/2026 : « ok (0 observations) » faisait croire à une source muette (contrôle sources_vides)
+    assert mt.history(db, "XAUUSD", 0) == [(int(NOW.timestamp()), 4000.0)]
     http = FakeHttp({}, down=("https://api.gold-api.com/price/",))
     down = collect(cfg, None, db, [], NOW + timedelta(minutes=6), {"goldapi": lambda c: goldapi.fetch_prices(http, NOW)})
     assert down.status["goldapi"].startswith("indisponible") and mt.history(db, "XAUUSD", 0) == [(int(NOW.timestamp()), 4000.0)]

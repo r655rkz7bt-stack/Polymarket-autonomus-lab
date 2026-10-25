@@ -780,7 +780,8 @@ candidats_non:
   # du 03/11 est un essai hors échantillon, pas une confirmation. VERDICT « indice faible » (≈ 60 réglages) : fantôme en quart de Kelly, biais 0,04, fenêtre 10-18 jours ; l'arène confirme ou non.
   class: naive_favorite
   filtres: {familles: [zero, sans_frais, politics], un_match: false, issue: [non], echeance_min: 240, echeance_max: 432, prix_min: 0.70, prix_max: 0.90,
-            question_contient: ["nominee", "primary", "next prime minister", "next president", "win the 2026"], question_exclut: ["margin", "party candidate", " by ", "%"], candidats_min: 2}
+            question_contient: ["nominee", "primary", "next prime minister", "next president", "win the 2026", "senate race in 2026", "governor election in 2026"],
+            question_exclut: ["margin", "party candidate", " by ", "%", "democrats", "republicans", "sweep"], candidats_min: 2}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-24"

@@ -31,7 +31,7 @@ Réserves honnêtes : (1) environ dix découpages regardés (mode, tranches de p
 
 ## Les autres familles de stratégies (même méthode, `enquetes/scripts/ordres_poses_toutes_25_10.py`)
 Un compte par jeton, ordres posés contre achats immédiats de la même famille : `contrer_crypto*` +14,2 % (88) contre +65 % (46) : rien de net ; `news_momentum*` −4,9 % (95) contre −17 % (19) ; `crypto_threshold*` 4 posés seulement ;
-**`meteo_prevision*` : posés −23,1 % (69 paris, t −1,9, z −1,7) contre −5,2 % (77) : même signe que le sport, indice faible, à surveiller** (météo en `zero_fees` : l'écart n'est pas un effet de frais). Hors favoris de sport : −8,4 % contre −2,0 % (t −1,0). L'effet fort est donc propre aux favoris de sport (235 posés, z −2,7).
+**`meteo_prevision*` : posés −23,1 % (69 paris, t −1,9, z −1,7) contre −5,2 % (77) : même signe que le sport, indice faible**, mais sans suite : `meteo_prevision*` n'achète plus depuis le 19/10 (retirées ; ses « Non » à 0,3-0,5 estimés 0,7-0,86 perdaient aussi en achat immédiat, −12 %, 61 gagnés pour 67,8 attendus : une estimation trop confiante avant tout) (météo en `zero_fees` : l'écart n'est pas un effet de frais). Hors favoris de sport : −8,4 % contre −2,0 % (t −1,0). L'effet fort est donc propre aux favoris de sport (235 posés, z −2,7).
 
 ## Verdict : **indice** (un coût, pas un avantage)
 - Pas de stratégie « contre » les ordres posés (on ne sait pas tester l'inverse).
