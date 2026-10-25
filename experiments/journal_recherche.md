@@ -3,6 +3,18 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-25 (passage chercheur, nuit : 20 h 55 → 21 h 25 UTC, 30 min)
+
+- **Enquête** (fiches : `enquetes/2026-10-25_nuit_audit_concentration_et_ordres_poses.md`, `..._filles_sourdes_et_filtres_silencieux.md`). Obligations : audit = les deux achats à 0,001 déjà corrigés le 24/10 (aucun nouvel achat de ce type) ; concentration des gains
+  (`nf_sport_patiente`, `nf_court_soir`) : pas d'avantage au-delà du prix (156,5 gagnés pour 151,1, −22 € sans les 3 plus gros). Famille 2 rejouée ; principal contre championne jeton par jeton : copie fidèle (32 jetons communs −13,8 % / −13,1 %).
+  **Défauts trouvés** : (1) `candidats_non` sourde aux élections du 03/11 (« win the 2026 » ne reconnaît ni « …Governor Election in 2026 » ni « …Senate race in 2026 ») : sa fenêtre s'est fermée le 25/10 à 5 h sans un achat ; (2) un filtre `Filtered` qui écarte tout n'écrivait
+  aucune abstention (« muette » sans cause) : `hors du filtre X ×N` ; (3) cotes de champion NFL/NHL jamais rattachées (30 marchés sur 94) : libellés « NFL league championship » et « be named the 2026-27 NHL Stanley Cup Champion » ; (4) statut `goldapi` « ok (0 observations) » alors que 166 prix sont notés. Tous corrigés avec tests.
+- **Recherche** : (a) `experiments/ordres_poses_en_jeu.md` : ordres posés contre achats immédiats sur 1 145 favoris de sport (un compte par jeton) : posés −6,8 % (239, z des prix −2,8), immédiats −0,2 % ; hors échantillon (22-25/10) −12,7 % (z −3,5) ; en cours de match −9,2 %, avant match 13 paris seulement.
+  **Indice de sélection adverse** (pas un avantage), ~10 découpages regardés. (b) `moins_de_cartes_direct.md` : 54 paris hors échantillon, +29,7 %, z 2,59, t par match 2,97, règlements 54/54 relus : l'indice se confirme (signe, pas l'ampleur). (c) piste 1 `futurs_pinnacle.md` : champions NBA/NFL/NHL contre Pinnacle : écart moyen 0,1-0,5 pt, 5-8 mois de capital bloqué : **écartée**.
+- **Arène** : sœur `nf_sport_patiente_avant_match` (championne sans ordre posé en cours de match, `heures_min: 0`) ; contrôle `posees_en_jeu` dans `enquete.py` (test) ; aucune stratégie retirée. 589 tests verts.
+- **Reste ouvert** : relire `nf_sport_patiente_avant_match` contre la championne dans quelques semaines (peu de paris avant match) ; `meteo_prevision*` : ordres posés −23 % (indice faible, stratégies retirées) ; contrôle automatique « sourde » (toutes les abstentions = filtres, plusieurs cycles) ;
+  `mots_prononces_nfl` : aucun marché « announcers » ouvert (derniers matchs : 11, 16, 19/10) ; rougeole (CDC : toujours 4 588 cas au 22/10, mercredi 28 prochain) et essence (une ligne ajoutée, 25/10) ; durée visée 102 min non atteinte (30 min faites) : arrêt volontaire sans remplissage.
+
 ## 2026-10-25 (passage chercheur, soir : 15 h 55 → 16 h 07 UTC, 12 min)
 
 - **Enquête** (fiche : `experiments/enquetes/2026-10-25_soir_tirage_et_fenetres.md`) : **rien trouvé**. Obligations = celles de midi (mêmes mécanismes, non refaites).
