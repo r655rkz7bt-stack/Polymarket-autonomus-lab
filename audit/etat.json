@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3398,
+  "principal": 3399,
   "fantome:calibration_patiente_v1.0.0": 1945,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1882,
@@ -18,13 +18,13 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1565,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2277,
+  "fantome:market_maker_serre_v1.0.0": 2279,
   "fantome:market_maker_v1.0.0": 1858,
   "fantome:favori_politique_patiente_v1.0.0": 1482,
   "fantome:favori_politique_v1.0.0": 1482,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1482,
   "fantome:outsider_sport_patiente_v1.0.0": 1537,
-  "fantome:contrer_crypto_patiente_v1.0.0": 1811,
+  "fantome:contrer_crypto_patiente_v1.0.0": 1813,
   "fantome:contrer_crypto_v1.0.0": 1724,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1484,
   "fantome:loterie_meteo_v1.0.0": 1612,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 3,
   "fantome:moins_de_cartes_lol_v1.0.0": 5
  },
- "verifiees": 8874,
+ "verifiees": 8876,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1583,9 +1583,9 @@
    "op_id": "settle-114643612246915326776838362367139483981897763923273463058542744882156051213781"
   }
  ],
- "derniere_execution": "2026-10-25T13:13:09+00:00",
+ "derniere_execution": "2026-10-25T13:18:45+00:00",
  "dernier_seq_reglements": {
-  "principal": 3398,
+  "principal": 3399,
   "fantome:calibration_patiente_v1.0.0": 1945,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1882,
@@ -1603,7 +1603,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1565,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2281,
+  "fantome:market_maker_serre_v1.0.0": 2283,
   "fantome:market_maker_v1.0.0": 1858,
   "fantome:favori_politique_patiente_v1.0.0": 1482,
   "fantome:favori_politique_v1.0.0": 1482,
@@ -1720,7 +1720,7 @@
   "fantome:nf_sport_925_950_v1.0.0": 295,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 152,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 221,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 356,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 358,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 304,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 128,
   "fantome:moins_de_cartes_v1.0.0": 258,
