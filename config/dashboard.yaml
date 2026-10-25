@@ -21,13 +21,13 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-10-24"
+  date: "2026-10-25"
   points:
-    - "Capital principal : 772 € réalisés sur 1 000 de départ (−228 € de paris réglés, dont −145 € de nf_court et −58 € de la météo, presque tout avant le 20/10). Vérifié le 24/10 : le principal copie bien les paris de sa championne, l'écart avec son fantôme (+161 €) est du hasard."
-    - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +161 €, mais +38 € sans ses 3 meilleurs paris."
+    - "Capital principal : 760 € réalisés sur 1 000 de départ (−240 € de paris réglés, presque tout avant le 20/10). Vérifié : le principal copie bien les paris de sa championne au prix près (163 paris réglés relus). Aucun nouveau palier depuis 10 jours."
+    - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +113 €, mais −22 € sans ses 3 meilleurs paris."
     - "Nouvelle piste le 24/10 : l'or, l'argent, le pétrole ou le gaz vont-ils toucher tel prix cette semaine ? Sur 112 semaines, acheter les barres sous-cotées gagne +33 % : +58 % jusqu'en juillet, +8 % depuis août. Indice faible : fantôme toucher_metaux (or, argent)."
     - "Primaires américaines 2026 (298 événements) : le marché est bien calibré. Le NON d'un candidat coté 10-30 % gagne un peu plus que son prix (+3 à +9 % aux vrais prix) : indice faible. Les élections générales ne montrent rien. Fantôme candidats_non, qui joue aussi le 3/11 (essai)."
-    - "Matchs annulés ou abandonnés (réglés 50-50) : 9 marchés de l'arène, 521 € perdus sur 1 252 € misés. Acheter le favori AVANT le match ne bat pas non plus son prix (−1 à −3 %, 50-50 compris). Écartés le 24/10 : détroits, température mondiale, outsiders des 50-50."
+    - "E-sport, le 25/10 : parier que la série se finit vite (« Under » des cartes) rapportait +13 % sur le passé, mais le test écartait les matchs annulés (50-50). Avec eux : +8 %, surtout League of Legends en longue série. Deux fantômes d'essai ; six autres jeux : rien."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses

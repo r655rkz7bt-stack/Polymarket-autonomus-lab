@@ -277,6 +277,25 @@ def test_fewer_maps_buys_under_a_few_hours_before_an_esport_series(tmp_path):
     assert not out.proposals and out.abstentions == {"« Under » hors de la plage de prix": 1}
 
 
+def test_title_filter_keeps_only_league_of_legends_for_the_maps_daughter(tmp_path):
+    """25/10/2026 : « Games Total » ne nomme pas le jeu, seul le titre de l'événement le fait (fille LoL de moins_de_cartes)."""
+    from polymarket_agent.strategy_engine import Filtered, load_strategies
+    cfg = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml")}["moins_de_cartes_lol"]
+    assert cfg.filters == {"titre_contient": ["lol:", "league of legends"]}
+    lol = _esport("l", 3, title="LoL: T1 vs Gen.G (BO3) - LCK Playoffs")
+    dota = _esport("d", 3)
+    window = Filtered(cfg.inner, cfg.filters)
+    assert [window._market_ok(m, NOW) for m in (lol, dota)] == [True, False]
+    books = _books(("lO", "0.49", "0.50"), ("lU", "0.50", "0.51"), ("dO", "0.49", "0.50"), ("dU", "0.50", "0.51"))
+    out = window.propose([lol, dota], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["Under"] and len(out.proposals) == 1
+    # Fille BO5 : le titre « (BO5) » passe, un « (BO3) » non.
+    cfg5 = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml")}["moins_de_cartes_bo5"]
+    bo5, bo3 = _esport("f", 3, title="LoL: T1 vs Gen.G (BO5) - Worlds Finals"), _esport("g", 3)
+    w5 = Filtered(cfg5.inner, cfg5.filters)
+    assert [w5._market_ok(m, NOW) for m in (bo5, bo3)] == [True, False]
+
+
 def test_no_to_far_dramas_buys_no_with_a_small_stake_once_per_event(tmp_path):
     from polymarket_agent.strategies_v3 import NonAuxDrames
     s = _s(NonAuxDrames, min_days=30, max_days=120, yes_min=0.02, yes_max=0.15, min_volume=5000, yes_factor=0.5,

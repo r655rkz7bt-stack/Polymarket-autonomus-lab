@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import re
 import statistics
 import sys
@@ -97,9 +98,14 @@ def _ts(s: str | None) -> int | None:
         return None
 
 
+INCLURE_50_50 = os.environ.get("INCLURE_50_50") == "1"
+
+
 def regle(m: dict) -> int | None:
     """Indice de l'issue gagnante (0 ou 1) ; None si non réglé net (50-50, litige)."""
     pr = [str(x) for x in _jl(m.get("outcomePrices"))]
+    if INCLURE_50_50 and sorted(pr) == ["0.5", "0.5"] and m.get("umaResolutionStatus") in (None, "", "resolved"):
+        return -1  # réglé 50-50 : l'acheteur reçoit 0,5 (opt-in, 25/10/2026)
     if sorted(pr) != ["0", "1"] or m.get("umaResolutionStatus") not in (None, "", "resolved"):
         return None
     return pr.index("1")

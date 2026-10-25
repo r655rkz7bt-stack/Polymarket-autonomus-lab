@@ -23,7 +23,7 @@ def charger(chemin):
     for t, p in paris.items():
         if t in reglé:
             pay, ts, res = reglé[t]
-            p['gain'] = p['sh'] * pay + p['vente'] - p['cout']; p['gagne'] = pay > 0; p['reglé_ts'] = ts
+            p['gain'] = p['sh'] * pay + p['vente'] - p['cout']; p['gagne'] = pay > 0; p['pay'] = pay; p['reglé_ts'] = ts
             p['prix'] = sum(a[1] * a[2] for a in p['achats']) / sum(a[2] for a in p['achats'])
             p['mise'] = p['cout']
             out.append(p)
