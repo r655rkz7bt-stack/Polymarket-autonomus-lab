@@ -1,7 +1,7 @@
 {
  "dernier_seq": {
-  "principal": 3432,
-  "fantome:calibration_patiente_v1.0.0": 1956,
+  "principal": 3433,
+  "fantome:calibration_patiente_v1.0.0": 1957,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1888,
   "fantome:crypto_threshold_v1.0.0": 1907,
@@ -27,7 +27,7 @@
   "fantome:contrer_crypto_patiente_v1.0.0": 1819,
   "fantome:contrer_crypto_v1.0.0": 1730,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1490,
-  "fantome:loterie_meteo_v1.0.0": 1619,
+  "fantome:loterie_meteo_v1.0.0": 1620,
   "fantome:suivre_politique_v1.0.0": 1553,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 1791,
@@ -132,10 +132,10 @@
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 430,
   "fantome:nf_tennis_vainqueur_v1.0.0": 743,
   "fantome:nf_sport_18_24h_v1.0.0": 227,
-  "fantome:nf_sport_925_950_v1.0.0": 303,
+  "fantome:nf_sport_925_950_v1.0.0": 304,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 158,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 228,
-  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 376,
+  "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 378,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 309,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 134,
   "fantome:moins_de_cartes_v1.0.0": 268,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 8,
   "fantome:moins_de_cartes_lol_v1.0.0": 10
  },
- "verifiees": 8937,
+ "verifiees": 8938,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1599,10 +1599,10 @@
    "op_id": "settle-46772231165328420497475525040203501942707631707130243324479231872446014038049"
   }
  ],
- "derniere_execution": "2026-10-25T15:52:27+00:00",
+ "derniere_execution": "2026-10-25T15:58:47+00:00",
  "dernier_seq_reglements": {
-  "principal": 3432,
-  "fantome:calibration_patiente_v1.0.0": 1956,
+  "principal": 3433,
+  "fantome:calibration_patiente_v1.0.0": 1957,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1888,
   "fantome:crypto_threshold_v1.0.0": 1907,
@@ -1628,7 +1628,7 @@
   "fantome:contrer_crypto_patiente_v1.0.0": 1819,
   "fantome:contrer_crypto_v1.0.0": 1730,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1490,
-  "fantome:loterie_meteo_v1.0.0": 1619,
+  "fantome:loterie_meteo_v1.0.0": 1620,
   "fantome:suivre_politique_v1.0.0": 1553,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 1791,
@@ -1733,7 +1733,7 @@
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 432,
   "fantome:nf_tennis_vainqueur_v1.0.0": 743,
   "fantome:nf_sport_18_24h_v1.0.0": 227,
-  "fantome:nf_sport_925_950_v1.0.0": 303,
+  "fantome:nf_sport_925_950_v1.0.0": 304,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 158,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 228,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 378,
