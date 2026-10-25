@@ -450,3 +450,26 @@ def test_replayed_cash_matches_the_cycle_or_is_grave():
     # règlement compté deux fois
     double = _ledger(_buy(t, "a", 0.9, 100), _settle(t, "a", 1), _settle(t, "a", 1), hb(1010))
     assert "en double" in enquete.tresorerie_rejouee({"nf": double})[0]["exemples"][0]
+
+
+def test_resting_orders_filled_during_the_match_are_flagged_against_immediate_buys():
+    """25/10/2026 : 111 ordres posés servis en cours de match depuis le 22/10, 85 gagnés pour 97 attendus (z −3,5) ; les achats immédiats 232 pour 231,3."""
+    def live(token, posted, win, price=0.9):
+        b = _buy(NOW - timedelta(hours=3), token, price, 10, posted=posted)
+        b["data"]["extra"]["depuis_coup_d_envoi_h"] = "0.8"
+        return [b, _settle(NOW, token, 1 if win else 0)]
+    rows = []
+    for i in range(60):  # posés : 48 gagnés sur 60 à 0,90 (54 attendus)
+        rows += live(f"p{i}", True, i % 5 != 0)
+    for i in range(60):  # immédiats : 54 gagnés sur 60 à 0,90
+        rows += live(f"i{i}", False, i % 10 != 0)
+    found = enquete.posees_en_jeu({"fantome:nf_v1.0.0": _ledger(*rows)})
+    assert len(found) == 1 and found[0]["controle"] == "posees_en_jeu" and "60 ordre(s)" in found[0]["titre"]
+    assert "achats immédiats en cours de match : 60 paris, 54.0 gagnés pour 54.0 attendus" in found[0]["exemples"][0]
+    assert enquete.posees_en_jeu({"fantome:nf_v1.0.0": _ledger(*rows)}, min_posed=61) == []
+    ok = [r for i in range(60) for r in live(f"q{i}", True, i % 10 != 0)]         # 54 gagnés pour 54 attendus : rien
+    assert enquete.posees_en_jeu({"fantome:nf_v1.0.0": _ledger(*ok)}) == []
+    before = [r for i in range(60) for r in live(f"r{i}", True, i % 5 != 0)]
+    for r in before:
+        r["data"].get("extra", {}).pop("depuis_coup_d_envoi_h", None)               # avant le match / sans champ : ignorés
+    assert enquete.posees_en_jeu({"fantome:nf_v1.0.0": _ledger(*before)}) == []

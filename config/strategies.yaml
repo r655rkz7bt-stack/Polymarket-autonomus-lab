@@ -705,6 +705,30 @@ nf_sport_patiente_biais_faible:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
+nf_sport_patiente_avant_match:
+  explication: "La championne (favori de sport, achat posé), mais seulement avant le coup d'envoi : on n'attend plus un vendeur pendant que le match se joue."
+  # 25/10/2026 (experiments/ordres_poses_en_jeu.md) : sur 1 145 favoris de sport (un seul compte par jeton, toutes stratégies et le principal), les achats
+  # POSÉS rendent −6,8 % (239 paris, t −2,4, z des prix −2,8) contre −0,2 % pour les achats immédiats ; depuis le 22/10 : −12,7 % par pari (117 paris,
+  # t −2,8, z −3,5) contre +0,1 % ; EN COURS de match −9,2 % (t −2,5), AVANT le match +3,9 % (13 paris seulement). Un ordre posé n'est servi que
+  # quand le prix baisse jusqu'à lui (but, blessure) : sélection adverse. Sœur (pas une fille : la mère en a déjà 10) à comparer à la
+  # championne sur la MÊME période ; mêmes paramètres, seul le filtre change (heures_min 0 = coup d'envoi pas encore passé).
+  morceau: "sport, patiente, avant le coup d'envoi seulement"
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], heures_min: 0, prix_min: 0.80, prix_final: true}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-25"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 nf_sport_patiente_matchs:
   explication: "La championne (favori de sport, achat posé), mais seulement les paris de match : jamais un marché de saison ou de prix (Ballon d'Or, Coupe, Série mondiale)."
   # 23/10/2026 (enquête 2026-10-23_marches_de_saison_dans_le_sport.md) : la championne a pris 15 paris sur des marchés sans type de
