@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3510,
+  "principal": 3511,
   "fantome:calibration_patiente_v1.0.0": 1990,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1899,
@@ -100,7 +100,7 @@
   "fantome:manifold_reference_v1.0.0": 448,
   "fantome:predictit_reference_v1.0.0": 446,
   "fantome:fatigue_nhl_v1.0.0": 476,
-  "fantome:mots_nouveaux_v1.0.0": 503,
+  "fantome:mots_nouveaux_v1.0.0": 504,
   "fantome:mots_prononces_v1.0.0": 569,
   "fantome:crypto_threshold_24_72h_v1.0.0": 403,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 443,
@@ -1641,9 +1641,9 @@
    "op_id": "settle-73415949747470036195515559782389870112572848140832447808459579987638979018429"
   }
  ],
- "derniere_execution": "2026-10-25T21:45:38+00:00",
+ "derniere_execution": "2026-10-25T21:47:49+00:00",
  "dernier_seq_reglements": {
-  "principal": 3510,
+  "principal": 3511,
   "fantome:calibration_patiente_v1.0.0": 1990,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1899,
@@ -1743,7 +1743,7 @@
   "fantome:manifold_reference_v1.0.0": 448,
   "fantome:predictit_reference_v1.0.0": 446,
   "fantome:fatigue_nhl_v1.0.0": 476,
-  "fantome:mots_nouveaux_v1.0.0": 503,
+  "fantome:mots_nouveaux_v1.0.0": 504,
   "fantome:mots_prononces_v1.0.0": 569,
   "fantome:crypto_threshold_24_72h_v1.0.0": 403,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 443,
@@ -1806,7 +1806,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 20,
   "fantome:moins_de_cartes_lol_v1.0.0": 23,
   "fantome:detroits_non_normal_v1.0.0": 13,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 2
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 4
  },
  "reglements_verifies": 4892
 }
