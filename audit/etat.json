@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3385,
+  "principal": 3386,
   "fantome:calibration_patiente_v1.0.0": 1942,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1880,
@@ -1567,9 +1567,9 @@
    "op_id": "settle-32662633991481301038550993236607962613286304789567352456012718630021573078441"
   }
  ],
- "derniere_execution": "2026-10-25T12:12:57+00:00",
+ "derniere_execution": "2026-10-25T12:18:33+00:00",
  "dernier_seq_reglements": {
-  "principal": 3385,
+  "principal": 3386,
   "fantome:calibration_patiente_v1.0.0": 1942,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1880,
@@ -1679,7 +1679,7 @@
   "fantome:outsider_itf_v1.0.0": 384,
   "fantome:nf_court_football_v1.0.0": 422,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 470,
-  "fantome:nf_tennis_12_18h_v1.0.0": 582,
+  "fantome:nf_tennis_12_18h_v1.0.0": 584,
   "fantome:compteur_tweets_non_v1.0.0": 354,
   "fantome:nf_court_football_soir_v1.0.0": 367,
   "fantome:nf_court_soir_v1.0.0": 429,
@@ -1698,7 +1698,7 @@
   "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 478,
   "fantome:statu_quo_ia_v1.0.0": 183,
   "fantome:jobs_favori_non_v1.0.0": 173,
-  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 394,
+  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 396,
   "fantome:nf_tennis_vainqueur_v1.0.0": 720,
   "fantome:nf_sport_18_24h_v1.0.0": 218,
   "fantome:nf_sport_925_950_v1.0.0": 293,
@@ -1707,7 +1707,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 353,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 302,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 126,
-  "fantome:moins_de_cartes_v1.0.0": 251,
+  "fantome:moins_de_cartes_v1.0.0": 253,
   "fantome:non_aux_drames_v1.0.0": 183,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 214,
@@ -1719,7 +1719,7 @@
   "fantome:mots_prononces_nfl_v1.1.0": 89,
   "fantome:detroits_marche_log_v1.0.0": 98,
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 98,
-  "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 137,
+  "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 139,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 71,
   "fantome:nf_sport_non_900_925_v1.0.0": 68,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 67,
