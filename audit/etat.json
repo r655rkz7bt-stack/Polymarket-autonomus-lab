@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3503,
+  "principal": 3504,
   "fantome:calibration_patiente_v1.0.0": 1986,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1898,
@@ -19,7 +19,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1581,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2324,
-  "fantome:market_maker_v1.0.0": 1903,
+  "fantome:market_maker_v1.0.0": 1905,
   "fantome:favori_politique_patiente_v1.0.0": 1498,
   "fantome:favori_politique_v1.0.0": 1498,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1498,
@@ -100,7 +100,7 @@
   "fantome:manifold_reference_v1.0.0": 447,
   "fantome:predictit_reference_v1.0.0": 445,
   "fantome:fatigue_nhl_v1.0.0": 475,
-  "fantome:mots_nouveaux_v1.0.0": 502,
+  "fantome:mots_nouveaux_v1.0.0": 503,
   "fantome:mots_prononces_v1.0.0": 568,
   "fantome:crypto_threshold_24_72h_v1.0.0": 402,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 442,
@@ -164,7 +164,7 @@
   "fantome:moins_de_cartes_lol_v1.0.0": 21,
   "fantome:detroits_non_normal_v1.0.0": 12
  },
- "verifiees": 9111,
+ "verifiees": 9112,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1640,9 +1640,9 @@
    "op_id": "settle-73415949747470036195515559782389870112572848140832447808459579987638979018429"
   }
  ],
- "derniere_execution": "2026-10-25T21:14:03+00:00",
+ "derniere_execution": "2026-10-25T21:17:36+00:00",
  "dernier_seq_reglements": {
-  "principal": 3503,
+  "principal": 3504,
   "fantome:calibration_patiente_v1.0.0": 1986,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1898,
@@ -1742,7 +1742,7 @@
   "fantome:manifold_reference_v1.0.0": 447,
   "fantome:predictit_reference_v1.0.0": 445,
   "fantome:fatigue_nhl_v1.0.0": 475,
-  "fantome:mots_nouveaux_v1.0.0": 502,
+  "fantome:mots_nouveaux_v1.0.0": 503,
   "fantome:mots_prononces_v1.0.0": 568,
   "fantome:crypto_threshold_24_72h_v1.0.0": 402,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 442,
