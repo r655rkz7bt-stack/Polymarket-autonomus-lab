@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3391,
+  "principal": 3392,
   "fantome:calibration_patiente_v1.0.0": 1943,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1881,
@@ -105,12 +105,12 @@
   "fantome:crypto_threshold_24_72h_v1.0.0": 385,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 421,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 551,
-  "fantome:nf_tennis_debut_match_v1.0.0": 620,
+  "fantome:nf_tennis_debut_match_v1.0.0": 622,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 566,
   "fantome:outsider_itf_v1.0.0": 385,
   "fantome:nf_court_football_v1.0.0": 423,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 471,
-  "fantome:nf_tennis_12_18h_v1.0.0": 586,
+  "fantome:nf_tennis_12_18h_v1.0.0": 588,
   "fantome:compteur_tweets_non_v1.0.0": 355,
   "fantome:nf_court_football_soir_v1.0.0": 368,
   "fantome:nf_court_soir_v1.0.0": 430,
@@ -129,8 +129,8 @@
   "fantome:nf_tennis_prix_bas_vainqueur_v1.0.0": 479,
   "fantome:statu_quo_ia_v1.0.0": 184,
   "fantome:jobs_favori_non_v1.0.0": 174,
-  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 398,
-  "fantome:nf_tennis_vainqueur_v1.0.0": 725,
+  "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 400,
+  "fantome:nf_tennis_vainqueur_v1.0.0": 727,
   "fantome:nf_sport_18_24h_v1.0.0": 219,
   "fantome:nf_sport_925_950_v1.0.0": 294,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 151,
@@ -150,7 +150,7 @@
   "fantome:mots_prononces_nfl_v1.1.0": 90,
   "fantome:detroits_marche_log_v1.0.0": 99,
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 99,
-  "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 139,
+  "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 141,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 72,
   "fantome:nf_sport_non_900_925_v1.0.0": 69,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 68,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 2,
   "fantome:moins_de_cartes_lol_v1.0.0": 2
  },
- "verifiees": 8853,
+ "verifiees": 8858,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1583,9 +1583,9 @@
    "op_id": "settle-114643612246915326776838362367139483981897763923273463058542744882156051213781"
   }
  ],
- "derniere_execution": "2026-10-25T12:42:44+00:00",
+ "derniere_execution": "2026-10-25T12:48:20+00:00",
  "dernier_seq_reglements": {
-  "principal": 3391,
+  "principal": 3392,
   "fantome:calibration_patiente_v1.0.0": 1943,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1881,
