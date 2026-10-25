@@ -590,7 +590,7 @@ class PatientOrders:
 
 FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
                "disciplines", "types_pari", "echeance_min", "echeance_max", "ecart_max", "sources",
-               "sources_exclues", "question_contient", "question_exclut", "prix_final", "un_match", "candidats_min")
+               "sources_exclues", "question_contient", "question_exclut", "prix_final", "un_match", "candidats_min", "titre_contient")
 
 
 class Filtered:
@@ -611,6 +611,8 @@ class Filtered:
       question_contient : le marché est gardé si sa question contient un de ces mots (sans tenir
       compte des majuscules) ; question_exclut : refusé s'il en contient un (21/10/2026 : annonceurs
       NFL gagnants, Coupe du monde perdante, experiments/mentions_annonceurs.md) ;
+      titre_contient : le marché est gardé si le TITRE de son événement contient un de ces mots (25/10/2026 : « Games Total »
+      ne nomme pas le jeu, le titre oui : « LoL: T1 vs Gen.G (BO3) ») ;
       un_match : true → seulement les paris sur UN match (Gamma donne un `sportsMarketType`) ; false → seulement les
       marchés de saison (gagnant du championnat…). Refuse, si true, les
       marchés de saison ou de prix (Ballon d'Or, Coupe, Série mondiale), que la famille « sports »
@@ -649,6 +651,10 @@ class Filtered:
             return False
         if "candidats_min" in f and (not m.neg_risk or self._field.get(m.event_id, 0) < int(f["candidats_min"])):
             return False
+        if "titre_contient" in f:
+            titre = (m.event_title or "").lower()
+            if not any(str(w).lower() in titre for w in f["titre_contient"]):
+                return False
         question = (m.question or "").lower()
         if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):
             return False

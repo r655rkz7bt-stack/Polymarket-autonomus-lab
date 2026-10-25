@@ -3058,6 +3058,32 @@ moins_de_cartes:
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
 
+moins_de_cartes_lol:
+  explication: "Comme moins_de_cartes, mais seulement League of Legends : c'est là que la série se finit 2-0 plus souvent que le prix ne le dit."
+  # Fille d'essai (25/10/2026, chercheur, experiments/bo3_coherence/resultats_sous_2_5_50_50.txt) : sur un nouveau tirage de
+  # 2 755 matchs AVEC les règlements 50-50, « Under » rend +7,7 % (t 2,0, z 1,5, indice) ; LoL +12,5 % (t 2,1), BO5 +20,1 %,
+  # CS2 +4,6 % et Dota 2 +0,3 % (rien), Valorant +3,6 %. En direct (23-25/10) la mère est à 30 gagnés pour 23,9 attendus (z 1,9, 42 paris,
+  # 4 règlements 50-50). Fantôme : on veut savoir si le morceau LoL tient mieux que la mère sur les mêmes marchés.
+  mere: moins_de_cartes
+  morceau: "LoL seulement"
+  class: moins_de_cartes
+  filtres: {titre_contient: ["lol:", "league of legends"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-25"
+  params:
+    min_hours:      {value: 1, min: 0, max: 48}
+    max_hours:      {value: 6, min: 1, max: 72}
+    price_min:      {value: 0.30, min: 0.05, max: 0.90}
+    price_max:      {value: 0.70, min: 0.10, max: 0.95}
+    shift:          {value: 0.05, min: 0.0, max: 0.2}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
+
 non_aux_drames:
   explication: "Les gens paient trop cher le frisson d'une catastrophe lointaine (une invasion, un président renversé) : on parie qu'elle n'arrivera pas, avec une petite mise."
   class: non_aux_drames
