@@ -82,6 +82,18 @@ def test_principal_stake_above_its_cap_is_grave_ghost_stake_is_a_lead():
     assert [f["gravite"] for f in found] == [enquete.GRAVE, enquete.A_REGARDER]
 
 
+def test_stake_measured_on_a_stale_heartbeat_is_not_a_breach():
+    """26/10 : nf_sport_prix_haut_3_6h « No » 355 € = 34 % du dernier battement (1 039 € à 13 h 18) mais 25 % du capital marqué au
+    cycle de 13 h 42 (1 415 €, positions de matchs finis passées à ~1) : le plafond de 25 % avait tenu."""
+    t = NOW - timedelta(hours=2)
+    stale = _ledger(_e("HEARTBEAT", t - timedelta(minutes=24), total_estimated="1039"), _buy(t, "b", 0.9, 394),
+                    _e("HEARTBEAT", t, total_estimated="1415"))
+    assert enquete.mises({"nf_v1.0.0": stale}, 0.10, 0.25, NOW - timedelta(days=3)) == []
+    real = _ledger(_e("HEARTBEAT", t - timedelta(minutes=24), total_estimated="1039"), _buy(t, "b", 0.9, 394),
+                   _e("HEARTBEAT", t, total_estimated="1040"))
+    assert len(enquete.mises({"nf_v1.0.0": real}, 0.10, 0.25, NOW - timedelta(days=3))) == 1
+
+
 def test_estimate_far_above_the_usual_gap_is_flagged():
     """20/10 : Moyuka Uchijima estimé 0,98 sur le carnet du début de cycle, payé 0,817."""
     t = NOW - timedelta(hours=5)
@@ -147,7 +159,7 @@ def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():
     configs = {"mere": {"version": "1.0.0", "class": "nf", "params": params},
                "fille": {"version": "1.0.0", "mere": "mere", "class": "nf", "params": params, "filtres": {"prix_min": 0.9}},
                "patiente": {"version": "1.0.0", "mere": "mere", "class": "nf", "params": params, "limit_ticks": 1}}
-    entries = {"mere_v1.0.0": _ledger(_buy(NOW - timedelta(days=4), "m", 0.9, 10, strategy="mere"), born=born),
+    entries = {"mere_v1.0.0": _ledger(_buy(NOW - timedelta(days=4), "m", 0.9, 10, strategy="mere"), _e("HEARTBEAT", NOW - timedelta(hours=1)), born=born),
                "fille_v1.0.0": _ledger(_buy(NOW - timedelta(hours=2), "f", 0.92, 10, strategy="fille"), born=born),
                "patiente_v1.0.0": _ledger(_buy(NOW - timedelta(hours=2), "p", 0.92, 10, strategy="patiente"), born=born)}
     found = enquete.mere_muette_fille_active(entries, configs, NOW)
@@ -155,6 +167,12 @@ def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():
     # Mère active (achat récent) : rien. Fille en ordre posé (autre mode) : jamais comparée à sa mère.
     entries["mere_v1.0.0"] = _ledger(_buy(NOW - timedelta(hours=5), "m", 0.9, 10, strategy="mere"), born=born)
     assert enquete.mere_muette_fille_active(entries, configs, NOW) == []
+    # Mère ÉLIMINÉE (son journal ne bat plus depuis 5 jours : nf_tennis, nf_sport_court, nf_sport_patiente_tennis le 26/10) : arrêtée, pas muette.
+    entries["mere_v1.0.0"] = _ledger(_buy(NOW - timedelta(days=4), "m", 0.9, 10, strategy="mere"), _e("HEARTBEAT", NOW - timedelta(days=4)), born=born)
+    assert enquete.mere_muette_fille_active(entries, configs, NOW) == []
+    # Mère suspendue mais vivante (elle bat encore) : toujours signalée.
+    entries["mere_v1.0.0"] = _ledger(_buy(NOW - timedelta(days=4), "m", 0.9, 10, strategy="mere"), _e("HEARTBEAT", NOW - timedelta(hours=1)), born=born)
+    assert len(enquete.mere_muette_fille_active(entries, configs, NOW)) == 1
 
 
 def test_silent_strategies_forgotten_positions_and_stopped_cycle():
@@ -240,12 +258,14 @@ def test_run_and_render_put_grave_findings_first():
     assert text.startswith("# Enquête automatique") and "[grave]" in text
 
 
-def _fav_ledger(wins, losses, strategy="champ", price=0.9, **kw):
-    """`wins` favoris gagnés, `losses` perdus, tous payés `price`."""
+def _fav_ledger(wins, losses, strategy="champ", price=0.9, per_event=1, **kw):
+    """`wins` favoris gagnés, `losses` perdus, tous payés `price` ; `per_event` paris par événement (échelle de tranches)."""
     rows = []
     for i in range(wins + losses):
         t = NOW - timedelta(hours=40 - i)
-        rows += [_buy(t, f"{strategy}{i}", price, 10, strategy=strategy, **kw), _settle(t + timedelta(hours=1), f"{strategy}{i}", 1 if i < wins else 0)]
+        buy = _buy(t, f"{strategy}{i}", price, 10, strategy=strategy, **kw)
+        buy["data"]["event_id"] = f"{strategy}-ev{i // per_event}"
+        rows += [buy, _settle(t + timedelta(hours=1), f"{strategy}{i}", 1 if i < wins else 0)]
     return _ledger(*rows)
 
 
@@ -261,6 +281,17 @@ def test_best_of_many_with_a_small_lead_is_not_proof():
     # Seule, la même stratégie chanceuse (z ≈ 1,9, p = 0,03) serait un signal.
     alone = enquete.selection_multiple({"chanceuse_v1.0.0": _fav_ledger(49, 1, strategy="chanceuse")}, {"chanceuse_v1.0.0"})
     assert alone == []
+
+
+def test_selection_z_counts_the_legs_of_one_event_once():
+    """26/10 : `compteur_tweets` = 28 paris sur 9 événements (échelles de tranches), z +2,56 pari par pari, t +1,0 par événement."""
+    entries = {"echelle_v1.0.0": _fav_ledger(28, 2, strategy="echelle", price=0.8, per_event=10)}
+    entries |= {f"autre{i}_v1.0.0": _fav_ledger(24, 6, strategy=f"autre{i}", price=0.8) for i in range(3)}
+    rows = [r for r in entries["echelle_v1.0.0"] if r["type"] == "BUY"]
+    trades = enquete.closed_trades(entries["echelle_v1.0.0"])
+    assert len(rows) == 30 and len({t["event_id"] for t in trades}) == 3
+    # 30 paris à 0,8, 28 gagnés pour 24 attendus : z indépendant ≈ +3,3 ; en 3 tirages, bien moins.
+    assert enquete._z_by_event(trades) < 1.6
 
 
 def test_both_sides_of_one_match_are_reported():
