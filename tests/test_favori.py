@@ -327,6 +327,29 @@ def test_candidates_no_buys_the_no_of_a_multi_candidate_election_market_inside_i
     assert not proposals(24 * 14, tmp_path / "m", question="Will the Alaska 2026 Senate race be within 1%?")
 
 
+def test_rallies_no_buys_the_no_of_a_trump_rally_word_market_inside_its_window(tmp_path):
+    """26/10/2026 (experiments/rallies_trump.md) : NON d'un « Trump dira-t-il X pendant son meeting ? » quand le OUI vaut 0,50-0,70 (NON outsider 0,30-0,50, `rallies_non`)
+    ou 0,40-0,50 (NON favori 0,50-0,60, `rallies_non_favori`), 3 à 20 h avant le meeting."""
+    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    cfg, fav = by["rallies_non"], by["rallies_non_favori"]
+    assert cfg.filters["issue"] == ["non"] and cfg.filters["echeance_min"] == 3 and cfg.filters["echeance_max"] == 20 and fav.filters["prix_min"] == 0.50
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+
+    def proposals(strategy, hours, tmp, bid, ask, question='Will Trump say "Hell" 15+ times during his Midterm Rally in Michigan?'):
+        m, books, ledger, _ = _setup(tmp, fee_type="zero_fees", end_hours=hours, bid=bid, ask=ask)
+        m.question = question
+        m.outcome_prices = [(D(bid) + D(ask)) / 2, 1 - (D(bid) + D(ask)) / 2]
+        return strategy.propose([m], books, ledger.state, limits, "b").proposals
+
+    assert proposals(cfg, 10, tmp_path / "a", "0.59", "0.60")                      # OUI 0,60 : NON outsider à 0,40
+    assert not proposals(cfg, 10, tmp_path / "a2", "0.44", "0.45")                 # OUI 0,45 : le NON est le favori, autre fille
+    assert proposals(fav, 10, tmp_path / "b", "0.44", "0.45")                      # OUI 0,45 : NON favori à 0,55
+    assert not proposals(cfg, 1, tmp_path / "c", "0.59", "0.60")                   # trop près du meeting
+    assert not proposals(cfg, 40, tmp_path / "d", "0.59", "0.60")                  # trop tôt
+    assert not proposals(cfg, 10, tmp_path / "e", "0.19", "0.20")                  # NON trop cher (0,80)
+    assert not proposals(cfg, 10, tmp_path / "f", "0.59", "0.60", question="Will Trump say Hell during his press conference?")  # pas un meeting
+
+
 def test_filtered_strategy_says_which_filter_dropped_the_markets_it_never_saw(tmp_path):
     """25/10/2026 : `candidats_non` voyait 438 marchés, 0 proposition et AUCUNE raison (le filtre `question_contient` écartait tout) : l'enquête la disait
     « muette » sans pouvoir dire pourquoi. Les marchés écartés par un filtre sont maintenant comptés dans les abstentions."""
