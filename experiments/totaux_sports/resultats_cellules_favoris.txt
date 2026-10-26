@@ -1,0 +1,3 @@
+576 cases ; 122 avec au moins 25 paris dans chaque fenêtre
+cases positives et significatives dans les deux fenêtres : 0
+cases « doubles » produites par le hasard (gains mélangés dans chaque case, 100 tirages) : moyenne 0.01 maximum 1

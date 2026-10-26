@@ -1,7 +1,7 @@
 """27/10/2026 : même méthode que analyse.py (ligne principale par événement, type et délai ; premier échange preneur dans les 30 minutes qui suivent la décision ;
 frais du marché ; règlements 0,5-0,5 comptés 0,5), sur le relevé COMPLET (releve_complet.py, releve_echanges_complet.py) et avec « Total Sets O/U 2.5 » du tennis
 (issues « Over 2.5 » / « Under 2.5 », ignorées avant). Lancer depuis la racine ; PERIODE = tout | decouverte (début à partir du 15/08) | avant (début avant le 15/08).
-Sortie : lignes de résultats et donnees/paris_complet.json."""
+TOTAUX / ECH / SORTIE : autres fichiers (saison 2025 : TOTAUX=totaux_2025.jsonl ECH=echanges_2025.jsonl SORTIE=2025). Sortie : lignes de résultats et donnees/paris_<SORTIE>.json."""
 import bisect, json, sys, datetime, collections, os
 sys.path.insert(0, "src")
 from polymarket_agent.idea_test import fee, verdict
@@ -9,14 +9,14 @@ D = "experiments/totaux_sports/donnees"
 jl = lambda x: json.loads(x) if isinstance(x, str) else x
 tr = {}
 import glob
-for f in glob.glob(f"{D}/echanges_complet_*.jsonl"):
+for f in glob.glob(f"{D}/" + os.environ.get("ECH", "echanges_complet_*.jsonl")):
     for l in open(f):
         o = json.loads(l); tr[o["m"]] = o["trades"]
 DELAYS = [int(x) for x in os.environ.get("DELAYS", "1,3,6,12,24").split(",")]
 PERIODE = os.environ.get("PERIODE", "tout")
 COUPE = datetime.datetime(2026, 8, 15, tzinfo=datetime.timezone.utc).timestamp()
 rows, nev = [], 0
-for l in open(f"{D}/totaux_complet.jsonl"):
+for l in open(f"{D}/" + os.environ.get("TOTAUX", "totaux_complet.jsonl")):
     e = json.loads(l)
     start = int(datetime.datetime.fromisoformat(e["start"]).timestamp())
     if PERIODE == "decouverte" and start < COUPE: continue
@@ -79,4 +79,4 @@ print("== tennis Total Sets 2.5, par délai ==")
 for d in DELAYS:
     for side in ("Over", "Under"):
         line(f"tennis_set_totals -{d} h {side}", [r for r in rows if r["d"] == d and r["ty"] == "tennis_set_totals" and r["side"] == side], 20)
-json.dump(rows, open(f"{D}/paris_complet_{PERIODE}.json", "w"))
+json.dump(rows, open(f"{D}/paris_{os.environ.get('SORTIE', 'complet_' + PERIODE)}.json", "w"))
