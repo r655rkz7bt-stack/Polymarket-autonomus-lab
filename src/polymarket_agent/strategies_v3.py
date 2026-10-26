@@ -1294,11 +1294,12 @@ class ToucherMetaux(_Base):
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.sources._util import parse_date
-        out, p, now, scored = StrategyOutput(), self.params, _now(books), []
+        out, p, now, scored, rattaches = StrategyOutput(), self.params, _now(books), [], 0
         for m in watchlist:
             ref = (getattr(m, "references", None) or {}).get("matieres")
             if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
                 continue
+            rattaches += 1
             seen = parse_date(ref.get("vu_le") or "")
             if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
                 out.abstain("journal des prix pas à jour")
@@ -1316,6 +1317,8 @@ class ToucherMetaux(_Base):
                 out.abstain("issue hors de la plage de prix ou carnet vide")
                 continue
             scored.append((best[2], m, best[0], best[1], ref))
+        if not rattaches:  # 27/10/2026 : « aucune raison notée » pendant 3 jours, alors qu'elle attendait une semaine née après le premier relevé
+            out.abstain("aucune barre d'or ou d'argent avec un prix rattaché (semaine née avant le journal des prix, ou barre à l'arrêt)")
         per_event: dict = {}
         props = []
         unc = float(p.get("uncertainty", 0))
