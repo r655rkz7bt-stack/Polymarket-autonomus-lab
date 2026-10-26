@@ -32,6 +32,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
   - tresorerie_rejouee : la trésorerie rejouée depuis les achats et règlements du journal (1000 − achats + règlements) retombe-t-elle sur celle que le cycle a notée ?
     (25/10/2026 : 159 journaux sur 159 au centime, aucun règlement double ; un écart dirait un règlement perdu, doublé ou une mise mal débitée) ;
+  - mere_muette_fille_active : une mère muette depuis 48 h alors que sa fille (mêmes réglages, filtre en plus) achète (26/10 : la prudence ¼ d'un fantôme
+    plafonnait aussi son total investi, 38 fantômes sur 163 bloqués sans raison notée, `nf_sport` muet 5 jours) ;
   - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -429,6 +431,37 @@ def filles_periode(entries: dict[str, list[dict]], configs: dict, min_trades: in
                      "Juger une fille contre sa mère ENTIÈRE mélange deux périodes : une fille née un mauvais jour "
                      "paraît mauvaise même si elle fait mieux que sa mère ce jour-là. Comparer ces chiffres-ci.",
                      [r[1] for r in rows])]
+
+
+def mere_muette_fille_active(entries: dict[str, list[dict]], configs: dict, now: datetime,
+                             silent_hours: float = 48, recent_hours: float = 24) -> list[dict]:
+    """Une fille à filtre seul (même classe et mêmes paramètres que sa mère) ne devrait pas acheter quand sa mère n'achète plus : tout pari
+    de la fille entre dans le champ de la mère. 26/10/2026 : `nf_sport` (prudence ¼, 310 € investis pour un plafond de 280 €) muette depuis le
+    21/10 pendant que `nf_sport_925_950` achetait 9 à 25 fois par jour : un plafond ou un état de santé cachait les achats de la mère."""
+    out = []
+    for key, cfg in configs.items():
+        if not isinstance(cfg, dict) or not cfg.get("mere"):
+            continue
+        mother = configs.get(str(cfg["mere"]))
+        if not isinstance(mother, dict) or cfg.get("class") != mother.get("class") or cfg.get("params") != mother.get("params"):
+            continue
+        if cfg.get("limit_ticks") or mother.get("limit_ticks"):
+            continue
+        name, mother_name = f"{key}_v{cfg.get('version', '1.0.0')}", f"{cfg['mere']}_v{mother.get('version', '1.0.0')}"
+        if name not in entries or mother_name not in entries:
+            continue
+        child = _buys(entries[name], now - timedelta(hours=recent_hours))
+        mother_buys = _buys(entries[mother_name])
+        last = max((_ts(e) for e in mother_buys), default=None)
+        born = _ts(entries[mother_name][0]) if entries[mother_name] else now
+        if child and (last is None or last < now - timedelta(hours=silent_hours)) and born < now - timedelta(hours=silent_hours):
+            out.append(f"{cfg['mere']} : dernier achat {last.strftime('%Y-%m-%dT%H:%M') if last else 'jamais'}, "
+                       f"sa fille {key} : {len(child)} achat(s) ces {recent_hours:g} dernières heures")
+    if not out:
+        return []
+    return [_finding("mere_muette_fille_active", A_REGARDER, f"{len(out)} mère(s) muette(s) alors que leur fille à filtre seul achète",
+                     "Tout pari de la fille est dans le champ de la mère : un plafond (budget, prudence, santé) ou un filtre cache les achats de la mère "
+                     "(26/10 : la prudence plafonnait le total investi). Lire les abstentions et `strategy_health`, rejouer un cycle local.", out)]
 
 
 def _price_range(cfg: dict) -> tuple[float, float] | None:
@@ -931,6 +964,14 @@ def posees_en_jeu(entries: dict[str, list[dict]], min_posed: int = 40, z_max: fl
                      if other else [])]
 
 
+# Anomalies d'audit déjà élucidées et corrigées : `op_id` -> fiche. Elles restent dans `audit/etat.json` pour toujours
+# (l'état est cumulatif) : sans cette liste, chaque passage rouvrirait la même obligation « grave ».
+AUDIT_EXPLIQUEES = {
+    "b6893855b250d944f713598a": "enquetes/2026-10-24_touche_deja_touchee_non_a_0_001.md",
+    "7e9a9fee5a13acb6d010305b": "enquetes/2026-10-24_touche_deja_touchee_non_a_0_001.md",
+}
+
+
 def audit_anomalies(audit: dict | None) -> list[dict]:
     """Anomalies de l'audit indépendant (`audit/etat.json` de la branche data, scripts/audit_fills.py, protégé).
     Le 22/10/2026 : 62 anomalies, toutes « réglé alors que le marché n'est pas clos », mais chaque règlement
@@ -939,7 +980,8 @@ def audit_anomalies(audit: dict | None) -> list[dict]:
     job d'audit, donc un e-mail à Etienne) ; les autres anomalies restent graves."""
     anomalies = (audit or {}).get("anomalies") or []
     early = [a for a in anomalies if "n'est pas clos" in str(a.get("detail", ""))]
-    other = [a for a in anomalies if a not in early]
+    explained = [a for a in anomalies if a.get("op_id") in AUDIT_EXPLIQUEES and a not in early]
+    other = [a for a in anomalies if a not in early and a not in explained]
     out = []
     if other:
         out.append(_finding("audit", GRAVE, f"{len(other)} anomalie(s) d'audit autres que « marché pas clos »",
@@ -952,6 +994,11 @@ def audit_anomalies(audit: dict | None) -> list[dict]:
                             "égal au prix final officiel, l'audit a lu le marché avant que Gamma n'affiche `closed` (voir "
                             "proposals/2026-10-22_audit_reglements_trop_tot.md).",
                             [f"{a.get('date')} {a.get('portefeuille')} : {a.get('detail')}" for a in early[:5]]))
+    if explained:
+        out.append(_finding("audit", A_REGARDER, f"{len(explained)} anomalie(s) d'audit déjà expliquée(s) et corrigée(s)",
+                            "Écritures signalées par l'audit puis élucidées par une enquête (liste `enquete.AUDIT_EXPLIQUEES`) : rien à refaire, "
+                            "sauf si l'une revient après la date de la fiche.",
+                            [f"{a.get('date')} {a.get('portefeuille')} : {a.get('detail')} -> {AUDIT_EXPLIQUEES[a['op_id']]}" for a in explained[:8]]))
     return out
 
 
@@ -995,7 +1042,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + chance(entries, copied=copied_by_principal(entries, now))
                 + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries) + certitude_promise(entries)
                 + deux_camps(entries, since) + jambes_meme_evenement(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
-                + filles_periode(entries, configs) + filtre_prix(entries, configs, since)
+                + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)

@@ -140,6 +140,23 @@ def test_daughter_is_compared_with_her_mother_on_the_same_period():
     assert "-11.1%" in found[0]["exemples"][0] and "-22.2%" in found[0]["exemples"][0]
 
 
+def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():
+    """26/10 : nf_sport muette depuis le 21/10 (plafond de prudence) pendant que sa fille nf_sport_925_950 achetait chaque jour."""
+    born = NOW - timedelta(days=6)
+    params = {"min_ask": {"value": 0.8}}
+    configs = {"mere": {"version": "1.0.0", "class": "nf", "params": params},
+               "fille": {"version": "1.0.0", "mere": "mere", "class": "nf", "params": params, "filtres": {"prix_min": 0.9}},
+               "patiente": {"version": "1.0.0", "mere": "mere", "class": "nf", "params": params, "limit_ticks": 1}}
+    entries = {"mere_v1.0.0": _ledger(_buy(NOW - timedelta(days=4), "m", 0.9, 10, strategy="mere"), born=born),
+               "fille_v1.0.0": _ledger(_buy(NOW - timedelta(hours=2), "f", 0.92, 10, strategy="fille"), born=born),
+               "patiente_v1.0.0": _ledger(_buy(NOW - timedelta(hours=2), "p", 0.92, 10, strategy="patiente"), born=born)}
+    found = enquete.mere_muette_fille_active(entries, configs, NOW)
+    assert len(found) == 1 and "1 mère(s) muette(s)" in found[0]["titre"] and "fille" in found[0]["exemples"][0]
+    # Mère active (achat récent) : rien. Fille en ordre posé (autre mode) : jamais comparée à sa mère.
+    entries["mere_v1.0.0"] = _ledger(_buy(NOW - timedelta(hours=5), "m", 0.9, 10, strategy="mere"), born=born)
+    assert enquete.mere_muette_fille_active(entries, configs, NOW) == []
+
+
 def test_silent_strategies_forgotten_positions_and_stopped_cycle():
     old = NOW - timedelta(days=4)
     entries = {"principal": _ledger(born=old), "muette_v1.0.0": _ledger(born=old),
@@ -359,6 +376,16 @@ def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_fi
             "detail": "achat à 0.5000, plus bas prix observé 0.7000"}
     found = enquete.audit_anomalies({"anomalies": [early, real]})
     assert [f["gravite"] for f in found] == [enquete.GRAVE, enquete.A_REGARDER] and not enquete.audit_anomalies(None)
+
+
+def test_audit_anomalies_already_explained_by_an_enquiry_are_not_grave_again():
+    """26/10 : les deux achats du NON à 0,001 du 24/10 (corrigés par TOUCH_MIN_ASK) rouvraient l'obligation « audit » à chaque passage."""
+    known = {"portefeuille": "fantome:crypto_threshold_non_v1.0.0", "seq": 420, "type": "BUY", "date": "2026-10-24T15:17:06",
+             "detail": "achat à 0.0010, plus bas prix observé 0.2695", "op_id": "b6893855b250d944f713598a"}
+    found = enquete.audit_anomalies({"anomalies": [known]})
+    assert [f["gravite"] for f in found] == [enquete.A_REGARDER] and "déjà expliquée" in found[0]["titre"]
+    new = dict(known, op_id="autre", date="2026-10-27T01:00:00")
+    assert [f["gravite"] for f in enquete.audit_anomalies({"anomalies": [known, new]})] == [enquete.GRAVE, enquete.A_REGARDER]
 
 
 def test_many_legs_of_one_event_in_an_hour_are_flagged():
