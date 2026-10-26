@@ -3413,3 +3413,26 @@ detroits_non_normal:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
+
+totaux_over:
+  explication: "Avant un match, on parie que le total de points ou de buts dépassera la ligne principale : sur le passé, le « Over » gagnait un peu plus souvent que son prix, surtout la veille."
+  class: totaux_over
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-26"
+  hypothesis: >
+    Piste « totaux de sport » (experiments/totaux_sports.md, 26/10/2026) : « Over » de la ligne principale des totaux NBA, NFL, NCAA, MLB, NHL, football,
+    8 à 26 h avant le coup d'envoi, vrais échanges : +10,1 % à 12 h (312 paris, t par match 1,64, 3 mois sur 3), +16,9 % à 24 h, mais +1 % à 1-6 h ;
+    « Under » perd partout. Meilleur de ~20 découpages, prix d'échanges minces : indice faible, fantôme seulement, quart de Kelly.
+  params:
+    min_hours:      {value: 8, min: 0, max: 48}
+    max_hours:      {value: 26, min: 1, max: 72}
+    price_min:      {value: 0.35, min: 0.05, max: 0.90}
+    price_max:      {value: 0.65, min: 0.10, max: 0.95}
+    shift:          {value: 0.05, min: 0.0, max: 0.2}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}

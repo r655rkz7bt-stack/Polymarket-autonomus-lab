@@ -277,6 +277,26 @@ def test_fewer_maps_buys_under_a_few_hours_before_an_esport_series(tmp_path):
     assert not out.proposals and out.abstentions == {"« Under » hors de la plage de prix": 1}
 
 
+def test_totals_over_buys_only_the_main_line_a_day_before_a_sport_match(tmp_path):
+    from polymarket_agent.strategies_v3 import TotauxOver
+    s = _s(TotauxOver, min_hours=8, max_hours=26, price_min=0.35, price_max=0.65, shift=0.05, uncertainty=0.01,
+           min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=3, kelly_fraction=0.25)
+
+    def total(mid, hours, line, event="g1", question=None):
+        return _m(mid, yes="O", no="U", question=question or f"Lakers vs. Jazz: O/U {line}", outcomes=json.dumps(["Over", "Under"]),
+                  sportsMarketType="totals", gameStartTime=(NOW + timedelta(hours=hours)).strftime("%Y-%m-%d %H:%M:%S+00"),
+                  events=[{"id": event, "title": "Lakers vs. Jazz"}])
+    main, far_line = total("a", 12, 237.5), total("b", 12, 251.5)
+    books = _books(("aO", "0.49", "0.50"), ("aU", "0.50", "0.51"), ("bO", "0.19", "0.20"), ("bU", "0.80", "0.81"))
+    out = s.propose([main, far_line], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.outcome for p in out.proposals] == ["Over"] and out.proposals[0].market_id == "a"  # la ligne lointaine n'est pas jouée
+    # Trop près du match (3 h), e-sport « Games Total », ligne seule hors plage : rien.
+    near, games = total("c", 3, 237.5, "g2"), total("d", 12, 2.5, "g3", question="Games Total: O/U 2.5")
+    books.update(_books(("cO", "0.49", "0.50"), ("cU", "0.50", "0.51"), ("dO", "0.49", "0.50"), ("dU", "0.50", "0.51")))
+    out = s.propose([near, games], books, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals
+
+
 def test_title_filter_keeps_only_league_of_legends_for_the_maps_daughter(tmp_path):
     """25/10/2026 : « Games Total » ne nomme pas le jeu, seul le titre de l'événement le fait (fille LoL de moins_de_cartes)."""
     from polymarket_agent.strategy_engine import Filtered, load_strategies

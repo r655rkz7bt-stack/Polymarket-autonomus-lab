@@ -42,8 +42,8 @@ for l in open("donnees/totaux.jsonl"):
                 srt = tr[m["conditionId"]]
                 px = []
                 for i in (0, 1):
-                    pts = sorted([(t[0], t[3]) for t in srt if lo_t <= t[0] <= hi_t and t[1] == toks[i] and t[2] == "BUY"]
-                                 + [(t[0], 1 - t[3]) for t in srt if lo_t <= t[0] <= hi_t and t[1] == toks[1 - i] and t[2] == "SELL"])
+                    pts = sorted([(t[0], t[3], t[4]) for t in srt if lo_t <= t[0] <= hi_t and t[1] == toks[i] and t[2] == "BUY"]
+                                 + [(t[0], 1 - t[3], t[4]) for t in srt if lo_t <= t[0] <= hi_t and t[1] == toks[1 - i] and t[2] == "SELL"])
                     px.append(pts[0] if pts else None)
                 if px[0] and px[1]:
                     cands.append((abs(px[0][1] - 0.5), m, px, pay))
@@ -52,9 +52,9 @@ for l in open("donnees/totaux.jsonl"):
             fs = m.get("feeSchedule") if isinstance(m.get("feeSchedule"), dict) else {}
             rate = float(fs.get("rate") or 0) if m.get("feesEnabled") else 0.0
             for i, side in ((0, "Over"), (1, "Under")):
-                ts_, p = px[i]
+                ts_, p, sz = px[i]
                 if not 0.05 <= p <= 0.95: continue
-                rows.append({"evenement": e["id"], "sport": e["sport"], "ty": ty, "d": d, "side": side, "cout": p, "won": pay[i], "void": pay[i] == 0.5, "ts": ts_,
+                rows.append({"evenement": e["id"], "sport": e["sport"], "ty": ty, "d": d, "side": side, "cout": p, "won": pay[i], "void": pay[i] == 0.5, "ts": ts_, "taille": sz,
                              "gain": (pay[i] - p - fee(p, rate)) / p, "mois": datetime.datetime.fromtimestamp(ts_, datetime.timezone.utc).strftime("%Y-%m")})
 print("événements avec totaux et échanges", nev, "paris", len(rows))
 def line(label, bets):
