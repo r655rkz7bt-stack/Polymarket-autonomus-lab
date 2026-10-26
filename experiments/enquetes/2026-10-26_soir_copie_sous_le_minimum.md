@@ -36,6 +36,11 @@ Tests : `test_a_copy_below_the_market_minimum_is_raised_to_the_minimum_within_bu
 des 3 derniers jours (au moins 10 jetons côté fantôme) est une obligation « grave » ; moins de 20 % de copie = « à regarder ». Il trouve aujourd'hui `moins_de_cartes` (0 sur 50) et `compteur_tweets` (1 sur 16).
 Test : `test_a_strategy_with_a_share_but_no_copy_is_grave`.
 
+## Diagnostic ajouté au tableau de bord
+`published/data.json` → `refus_principal` : refus du principal par stratégie et par raison sur 48 h (ordres préfixés « P » de la table `decisions`), pour que le prochain passage ne dépende plus des 25 dernières
+décisions. Test : `test_principal_refusals_are_counted_by_strategy_and_reason`. Premier usage : `favori_politique` (13,1 %) n'a pas été copié le 26/10 à 12 h 13 alors que 2 de ses 7 paris dépassaient 5 parts
+à l'échelle (9,2 et 10,3) ; la raison n'est pas dans les journaux publiés (soit un refus du principal, soit la part encore en essai).
+
 ## Reste ouvert
 - À relire demain : `bash scripts/fetch_data.sh` puis `scripts/enquete.py` : `copie_absente` doit se vider pour `moins_de_cartes` (premiers paris copiés dès le prochain cycle où le fantôme achète). Les achats
   copiés se retrouvent dans le journal du principal avec `strategy_id: moins_de_cartes`.

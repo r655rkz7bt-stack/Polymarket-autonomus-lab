@@ -448,6 +448,18 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                   "acceptee": bool(r[4]), "raisons": json.loads(r[5] or "[]"), "execution": r[6] or ""}
                  for r in db.conn.execute("SELECT decided_at, strategy_id, market_id, side, accepted, reasons, "
                                           "fill_status FROM decisions ORDER BY decided_at DESC LIMIT 25")]
+    # Refus du principal par stratégie et par raison, 48 dernières heures (26/10/2026 : « taille inférieure au minimum du marché (5) » cachait
+    # `moins_de_cartes` copiée 0 fois sur 70 ; les 25 décisions récentes ne montraient qu'un cas). Les ordres du principal portent le préfixe « P ».
+    refus_principal: dict[str, dict[str, int]] = {}
+    try:
+        since = (now - timedelta(hours=48)).isoformat()
+        for strat, reasons in db.conn.execute("SELECT strategy_id, reasons FROM decisions WHERE accepted=0 AND op_id LIKE 'P%' AND decided_at >= ?",
+                                              (since,)):
+            for reason in json.loads(reasons or "[]") or ["(sans raison notée)"]:
+                bucket = refus_principal.setdefault(strat, {})
+                bucket[reason] = bucket.get(reason, 0) + 1
+    except Exception:  # noqa: BLE001 - base sans table de décisions : le tableau de bord reste affiché
+        refus_principal = {}
     last_cycle = db.conn.execute("SELECT cycle_id FROM market_snapshots ORDER BY collected_at DESC LIMIT 1").fetchone()
     watched = []
     if last_cycle:
@@ -536,6 +548,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "positions": positions,
         "cloturees": closed[:20],
         "decisions": decisions,
+        "refus_principal": refus_principal,
         "surveilles": watched,
         "sante": {"dernier_battement": state.last_heartbeat_at.isoformat(timespec="seconds")
                   if state.last_heartbeat_at else None,

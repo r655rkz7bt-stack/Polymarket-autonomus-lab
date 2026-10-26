@@ -368,3 +368,28 @@ def test_strategy_sheet_matches_the_python_figures(tmp_path):
     assert js["conf"] == pytest.approx(confidence_percent(t_stat(trade_returns(trades))), abs=0.6)
     assert js["day"] == pytest.approx(100 * day_confidence(trades), abs=0.05)
     assert js["stake"] == pytest.approx(100 * stake, abs=0.05)
+
+
+def test_principal_refusals_are_counted_by_strategy_and_reason(tmp_path):
+    """26/10/2026 : « taille inférieure au minimum du marché (5) » cachait `moins_de_cartes` copiée 0 fois sur 70 ; on compte les refus du
+    principal (ordres préfixés « P ») des 48 dernières heures, pas les 25 dernières décisions."""
+    from types import SimpleNamespace
+    main, shadows, db = _setup(tmp_path)
+
+    def decide(op_id, strategy, accepted, reasons, when):
+        proposal = SimpleNamespace(op_id=op_id, strategy_id=strategy, strategy_version="1", market_id="m1", token_id="t1", side="BUY",
+                                   est_probability=Decimal("0.6"), prob_low=Decimal("0.5"), prob_high=Decimal("0.7"), max_price=Decimal("0.6"),
+                                   shares=Decimal("0.5"), net_edge=Decimal("0.05"))
+        db.save_decision("c1", when, proposal, SimpleNamespace(accepted=accepted, reasons=reasons, checks={}))
+
+    now = NOW + timedelta(minutes=10)
+    small = ["taille inférieure au minimum du marché (5)"]
+    decide("Pa1", "moins_de_cartes", False, small, now - timedelta(hours=1))
+    decide("Pa2", "moins_de_cartes", False, small, now - timedelta(hours=5))
+    decide("Pa3", "moins_de_cartes", True, [], now - timedelta(hours=5))               # accepté : pas un refus
+    decide("a4", "moins_de_cartes", False, small, now - timedelta(hours=1))            # fantôme : pas le principal
+    decide("Pa5", "moins_de_cartes", False, small, now - timedelta(hours=60))          # trop ancien
+    decide("Pa6", "compteur_tweets", False, [], now - timedelta(hours=2))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=now)
+    assert data["refus_principal"] == {"moins_de_cartes": {small[0]: 2}, "compteur_tweets": {"(sans raison notée)": 1}}
+    db.close()
