@@ -57,8 +57,9 @@ def main() -> int:
     except (OSError, ValueError):
         published = {}
     abstentions, sources = published.get("abstentions"), (published.get("sources") or {}).get("etat")
+    parts = {a["nom"]: float(a["part_principal"]) for a in published.get("arene") or [] if a.get("part_principal")}  # parts du capital principal
     findings = enquete.run(entries, configs, active, now, float((settings.get("principal") or {}).get("max_mise", 0.10)),
-                           days=args.jours, audit=audit, abstentions=abstentions, sources=sources)
+                           days=args.jours, audit=audit, abstentions=abstentions, sources=sources, parts=parts)
     out = ROOT / "reports" / "enquete.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(enquete.render(findings, now), encoding="utf-8")

@@ -5,7 +5,8 @@ ensemble du principal qui augmentait les mises ». Chaque contrôle vient d'un v
 la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - copie_fidele : le principal ne refaisait pas les paris de la stratégie copiée (18/10, PR #76 :
     Bitcoin misé 3 fois trop gros, anciens paris rattrapés) ;
-  - mises : un pari énorme par rapport au capital (Kelly complet allait jusqu'à 40 %) ;
+  - mises : un pari énorme par rapport au capital (Kelly complet allait jusqu'à 40 %) ; capital = le plus grand des deux battements autour de l'achat
+    (le plafond du cycle voit le capital marqué à ce cycle, le battement d'avant peut dater de 30 minutes) ;
   - estimation_perimee : estimation calculée sur le carnet du début de cycle, achat après une
     chute (20/10 : Moyuka Uchijima estimé 0,98, payé 0,817, 23 % du fantôme) ;
   - chance : gain en euros mais rendement par mise négatif, ou gain venu de 3 paris / d'un seul
@@ -17,7 +18,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - filtre_delai : achats au comptant hors des fenêtres `echeance_*`, `heures_*`, `heure_utc` d'une fille ;
   - meme_pari_prix_differents : deux stratégies, même pari, prix d'entrée très différents ;
   - selection_multiple : la championne est la meilleure de ~35 stratégies ; son avance sur les prix
-    dépasse-t-elle ce que le seul hasard donne au meilleur de 35 ? (20/10 : non, z = 1,86) ;
+    dépasse-t-elle ce que le seul hasard donne au meilleur de 35 ? (20/10 : non, z = 1,86) ; les paris d'un même événement (échelle de tranches)
+    comptent comme UN tirage (26/10 : `compteur_tweets` 28 paris sur 9 événements, z +2,56 par pari, +1,0 par événement) ;
   - deux_camps : une stratégie achète les deux camps d'un même match (20/10 : 2 matchs, −275 €) ;
   - achats_en_jeu : part des achats faits après le coup d'envoi (20/10 : 84 % pour la championne,
     alors que son « horizon » affiché est de 165 h : c'est la date de fin placeholder de Gamma) ;
@@ -32,8 +34,11 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
   - tresorerie_rejouee : la trésorerie rejouée depuis les achats et règlements du journal (1000 − achats + règlements) retombe-t-elle sur celle que le cycle a notée ?
     (25/10/2026 : 159 journaux sur 159 au centime, aucun règlement double ; un écart dirait un règlement perdu, doublé ou une mise mal débitée) ;
+  - copie_absente : une stratégie qui a une part du capital principal mais dont le principal ne copie aucun pari (26/10/2026 : `moins_de_cartes`, 14,6 %,
+    0 jeton sur 70 : copie sous le minimum du marché de 5 parts) ;
   - mere_muette_fille_active : une mère muette depuis 48 h alors que sa fille (mêmes réglages, filtre en plus) achète (26/10 : la prudence ¼ d'un fantôme
-    plafonnait aussi son total investi, 38 fantômes sur 163 bloqués sans raison notée, `nf_sport` muet 5 jours) ;
+    plafonnait aussi son total investi, 38 fantômes sur 163 bloqués sans raison notée, `nf_sport` muet 5 jours) ; une mère ÉLIMINÉE (journal sans battement
+    depuis 48 h) est arrêtée, pas muette (26/10, 2e passage : 3 des 4 mères signalées l'étaient) ;
   - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
@@ -281,15 +286,26 @@ def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost
     plafond `principal.max_mise` (grave). Fantômes : au-delà de `max_ghost`, regroupées."""
     big_main, big_ghosts = [], []
     for name, rows in entries.items():
-        limit = max_principal * 1.05 if name == "principal" else max_ghost
+        # Tolérance de 5 % (frais et arrondi des parts, comme le principal).
+        limit = (max_principal if name == "principal" else max_ghost) * 1.05
         capital = 1000.0
-        for e in rows:
+        # Le plafond du cycle voit le capital marqué À CE CYCLE ; le battement d'avant peut dater de 30 minutes (26/10 : 1 039 € à 13 h 18,
+        # 1 415 € à 13 h 42 sans aucun achat entre les deux, des positions de matchs finis passées à ~1) : on prend aussi le battement d'après.
+        after: dict[int, float] = {}
+        pending: list[int] = []
+        for i, e in enumerate(rows):
+            if e["type"] == "BUY":
+                pending.append(i)
+            elif e["type"] == "HEARTBEAT" and e["data"].get("total_estimated"):
+                after.update({j: float(e["data"]["total_estimated"]) for j in pending})
+                pending = []
+        for i, e in enumerate(rows):
             if e["type"] in ("GENESIS", "RESET"):
                 capital = float(e["data"].get("initial_capital") or capital)
             elif e["type"] == "HEARTBEAT" and e["data"].get("total_estimated"):
                 capital = float(e["data"]["total_estimated"])
             elif e["type"] == "BUY" and (since is None or _ts(e) >= since) and capital > 0:
-                share = _cost(e["data"]) / capital
+                share = _cost(e["data"]) / max(capital, after.get(i, 0.0))
                 if share > limit:
                     label = (f"{e['ts'][:16]} {name if name != 'principal' else e['data']['strategy_id']} "
                              f"« {e['data']['outcome']} » {_cost(e['data']):.0f} € = {share:.0%} du capital")
@@ -452,6 +468,8 @@ def mere_muette_fille_active(entries: dict[str, list[dict]], configs: dict, now:
             continue
         child = _buys(entries[name], now - timedelta(hours=recent_hours))
         mother_buys = _buys(entries[mother_name])
+        if entries[mother_name] and _ts(entries[mother_name][-1]) < now - timedelta(hours=silent_hours):
+            continue  # mère arrêtée (éliminée : plus de battement), pas muette : 26/10, 3 des 4 mères signalées l'étaient
         last = max((_ts(e) for e in mother_buys), default=None)
         born = _ts(entries[mother_name][0]) if entries[mother_name] else now
         if child and (last is None or last < now - timedelta(hours=silent_hours)) and born < now - timedelta(hours=silent_hours):
@@ -739,6 +757,19 @@ def _p_one_sided(z: float) -> float:
     return 0.5 * math.erfc(z / math.sqrt(2))
 
 
+def _z_by_event(trades: list[dict]) -> float:
+    """z qui compte un événement comme un seul tirage : somme par événement de (paiement − prix payé), divisée par la racine de
+    la somme de leurs carrés (sans hypothèse d'indépendance des paris d'un même événement)."""
+    by_event: dict[str, float] = {}
+    for t in trades:
+        if float(t["shares_bought"]) <= 0:
+            continue
+        pay = float(t["payout"]) if t.get("payout") is not None else (1.0 if float(t["pnl"]) > 0 else 0.0)
+        by_event[t["event_id"]] = by_event.get(t["event_id"], 0.0) + pay - float(t["cost"]) / float(t["shares_bought"])
+    sq = sum(v * v for v in by_event.values())
+    return sum(by_event.values()) / math.sqrt(sq) if sq > 0 else 0.0
+
+
 def selection_multiple(entries: dict[str, list[dict]], copied: set[str], min_trades: int = 15,
                        alpha: float = 0.05) -> list[dict]:
     """Une stratégie copiée gagne-t-elle plus souvent que ses prix, APRÈS correction du fait qu'on
@@ -755,7 +786,11 @@ def selection_multiple(entries: dict[str, list[dict]], copied: set[str], min_tra
         var = sum((float(t["cost"]) / float(t["shares_bought"])) * (1 - float(t["cost"]) / float(t["shares_bought"]))
                   for t in trades if float(t["shares_bought"]) > 0)
         if var > 0:
-            zs[name] = ((won - expected) / math.sqrt(var), len(trades), expected)
+            z = (won - expected) / math.sqrt(var)
+            # Paris d'un même événement = un seul tirage (échelle de tranches : exactement une gagne). 26/10 : `compteur_tweets`,
+            # 28 paris sur 9 événements, z = +2,56 pari par pari, t = +1,0 par événement : on garde le plus prudent des deux.
+            z = min(z, _z_by_event(trades))
+            zs[name] = (z, len(trades), expected)
     n = len(zs)
     out = []
     for name in sorted(copied & set(zs)):
@@ -1031,9 +1066,44 @@ def sport_hors_match(entries: dict[str, list[dict]], configs: dict, since: datet
     return out
 
 
+def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None, now: datetime, days: float = 3,
+                  min_tokens: int = 10, min_rate: float = 0.20) -> list[dict]:
+    """Une stratégie qui a une part du capital principal est-elle copiée ? Part des jetons achetés par le fantôme ces `days` derniers jours que le
+    principal a achetés aussi. 26/10/2026 : `moins_de_cartes` (14,6 % du capital), 0 jeton copié sur 70 : la copie à l'échelle de la part (0,5 part) était
+    sous le minimum du marché (5 parts) et rejetée ; l'argent de la part restait inutilisé pendant que la stratégie la mieux étayée de l'arène jouait seule."""
+    if not parts or "principal" not in entries:
+        return []
+    since = now - timedelta(days=days)
+    mine: dict[str, set] = defaultdict(set)
+    for e in _buys(entries["principal"], since):
+        mine[e["data"]["strategy_id"]].add(e["data"]["token_id"])
+    grave, lead = [], []
+    for name, share in sorted(parts.items(), key=lambda kv: -kv[1]):
+        if share <= 0 or name not in entries:
+            continue
+        ghost = {e["data"]["token_id"] for e in _buys(entries[name], since)}
+        if len(ghost) < min_tokens:
+            continue
+        copied = len(ghost & mine.get(name.rsplit("_v", 1)[0], set()))
+        label = f"{name} : part {share:.1%}, {copied} jeton(s) copié(s) sur {len(ghost)}"
+        if copied == 0:
+            grave.append(label)
+        elif copied / len(ghost) < min_rate:
+            lead.append(label)
+    out = []
+    if grave:
+        out.append(_finding("copie_absente", GRAVE, f"{len(grave)} stratégie(s) avec une part du capital principal et AUCUNE copie en {days:g} jours",
+                            "Le principal ne joue pas ce que l'arène mesure : chercher pourquoi chaque pari est rejeté (taille sous le minimum du marché, "
+                            "plafond, filtre) avant d'attribuer une part de plus à ces stratégies.", grave))
+    if lead:
+        out.append(_finding("copie_absente", A_REGARDER, f"{len(lead)} stratégie(s) copiée(s) à moins de {min_rate:.0%} par le principal",
+                            "Tout pari du fantôme devrait être refait à l'échelle de la part : regarder les raisons de rejet du principal.", lead))
+    return out
+
+
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
-        audit: dict | None = None, sources: dict | None = None) -> list[dict]:
+        audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -1047,7 +1117,8 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
-                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries))
+                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries)
+                + copie_absente(entries, parts, now, days=max(days, 3)))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 

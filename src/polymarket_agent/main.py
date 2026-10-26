@@ -183,8 +183,9 @@ class Weighted:
     sa fille 925-950, à prudence 1, achetait tous les jours) : mère et filles n'étaient plus comparables."""
 
     def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None, base: Decimal | None = None,
-                 cap_budget: bool = True):
+                 cap_budget: bool = True, floor: tuple[Decimal, Decimal] | None = None):
         self.inner, self.weight, self.source, self.cap_budget = strategy, weight, source, cap_budget
+        self.floor = floor if source is not None else None  # (parts minimales d'un ordre, coût maximal en part du capital)
         # Copie à la mise de BASE (21/10/2026, « grossir les gagnantes ») : la prudence du fantôme
         # (½ tant que rien n'est prouvé, entière, ¼, renfort) sert à l'arène ; le principal garde sa
         # propre mise, celle simulée avec Etienne (experiments/taille_des_mises.md) : il divise par la
@@ -212,9 +213,10 @@ class Weighted:
             invested = sum((pos.cost_basis for pos in state.positions.values() if pos.strategy_id == self.strategy_id),
                            Decimal("0"))
             budget = self.weight * state.total_estimated(marks) - invested
-        output.proposals, budget = self._scale(output.proposals, budget, factor)
+        floor_cost = self.floor[1] * state.total_estimated(marks) if self.floor and state is not None else None
+        output.proposals, budget = self._scale(output.proposals, budget, factor, floor_cost)
         if getattr(output, "limit_orders", None):
-            output.limit_orders, budget = self._scale(output.limit_orders, budget, factor)
+            output.limit_orders, budget = self._scale(output.limit_orders, budget, factor, floor_cost)
         return output
 
     def _copy(self, state, marks) -> tuple[StrategyOutput, Decimal]:
@@ -238,7 +240,7 @@ class Weighted:
         return out, factor
 
     def _scale(self, proposals: list, budget: Decimal | None = None,
-               factor: Decimal | None = None) -> tuple[list, Decimal | None]:
+               factor: Decimal | None = None, floor_cost: Decimal | None = None) -> tuple[list, Decimal | None]:
         factor = self.weight if factor is None else factor
         scaled = []
         for p in proposals:
@@ -246,10 +248,16 @@ class Weighted:
                 scaled.append(p)
                 continue
             shares = (p.shares * factor).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            floored = False
+            if self.floor and 0 < p.shares and shares < self.floor[0] and p.max_price > 0 and floor_cost is not None \
+                    and self.floor[0] * p.max_price <= floor_cost:
+                shares, floored = self.floor[0], True  # copie trop petite pour le minimum du marché : on achète le minimum
             if budget is not None:  # plafond du total engagé par cette stratégie
                 if budget <= 0 or p.max_price <= 0:
                     continue
                 shares = min(shares, (budget / p.max_price).quantize(Decimal("0.01"), rounding=ROUND_DOWN))
+                if floored and shares < self.floor[0]:
+                    continue  # pas assez de budget pour le minimum : comme avant, pas d'achat
             if shares > 0:
                 scaled.append(dataclasses.replace(p, shares=shares))
                 if budget is not None:
@@ -501,7 +509,9 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     shares = {n: w * min(1.0, engaged[n] / alloc[n]) if n in engaged and alloc.get(n) else w for n, w in shares.items()}
     shares = _steady_shares(deps, shares)
     base = Decimal(str(strategy_health.config(deps.settings)["base"]))
-    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p, base=base) for n, p in competitors.items()
+    floor_cfg = (deps.settings.get("principal") or {}).get("plancher_copie")
+    floor = (Decimal(str(floor_cfg["parts"])), Decimal(str(floor_cfg["part_du_capital"]))) if floor_cfg else None
+    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p, base=base, floor=floor) for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
     # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
     # nulle) garde la main sur SES sorties (prise de bénéfice, stop, durée maximale), sans racheter.
