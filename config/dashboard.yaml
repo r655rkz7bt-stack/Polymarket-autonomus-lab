@@ -21,13 +21,13 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-10-25"
+  date: "2026-10-26"
   points:
     - "Capital principal : 760 € réalisés sur 1 000 de départ (−240 € de paris réglés, presque tout avant le 20/10). Vérifié : le principal copie bien les paris de sa championne au prix près (163 paris réglés relus). Aucun nouveau palier depuis 10 jours."
     - "Aucun avantage prouvé chez les favoris de sport : sur 1 798 paris réglés de toute l'arène, ils gagnent autant que leurs prix à tous les prix (0,60-0,80 : 128 gagnés pour 142,8 attendus). La championne fait +113 €, mais −22 € sans ses 3 meilleurs paris."
-    - "Nouvelle piste le 24/10 : l'or, l'argent, le pétrole ou le gaz vont-ils toucher tel prix cette semaine ? Sur 112 semaines, acheter les barres sous-cotées gagne +33 % : +58 % jusqu'en juillet, +8 % depuis août. Indice faible : fantôme toucher_metaux (or, argent)."
+    - "Le 26/10 : trois pistes sportives testées sur 10 000 événements et leurs vrais échanges (totaux, handicaps, « les deux équipes marquent ») : rien. Un « Over » à +10 % trouvé en août-octobre disparaît sur février-août (−0,9 %) : on refait le test sur le passé d'avant."
     - "Primaires américaines 2026 (298 événements) : le marché est bien calibré. Le NON d'un candidat coté 10-30 % gagne un peu plus que son prix (+3 à +9 % aux vrais prix) : indice faible. Les élections générales ne montrent rien. Fantôme candidats_non, qui joue aussi le 3/11 (essai)."
-    - "E-sport, le 25/10 : parier que la série se finit vite (« Under » des cartes) rapportait +13 % sur le passé, mais le test écartait les matchs annulés (50-50). Avec eux : +8 %, surtout League of Legends en longue série. Deux fantômes d'essai ; six autres jeux : rien."
+    - "E-sport (« Under » des cartes) : 57 paris en direct, 41 gagnés pour 32,3 attendus (+27 %) ; même signe sur février-août (+4 à +13 %). Un indice, pas une preuve. Corrigé le 26/10 : un ordre posé du principal restait ouvert à un ancien prix (4,5 €)."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses

@@ -327,6 +327,15 @@ class Database:
         self.conn.commit()
         return cur.rowcount > 0
 
+    def cancel_open_orders(self, portfolio: str, token_id: str, side: str, now: datetime) -> int:
+        """Annule les ordres ouverts du portefeuille sur ce jeton et ce sens (copie dont la source a changé
+        d'avis : le principal ne garde pas un prix que le fantôme copié a abandonné)."""
+        cur = self.conn.execute("UPDATE pending_orders SET status='ANNULE', updated_at=? WHERE portfolio=? "
+                                "AND token_id=? AND side=? AND status='OUVERT'",
+                                (_iso(now), portfolio, token_id, side))
+        self.conn.commit()
+        return cur.rowcount
+
     def open_orders(self, portfolio: str | None = None) -> list[dict]:
         sql, args = "SELECT * FROM pending_orders WHERE status='OUVERT'", ()
         if portfolio is not None:

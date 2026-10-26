@@ -1,0 +1,69 @@
+événements avec totaux et échanges 5879 paris 16528
+-1 h Over tous                                  3550 paris    -3.3 %  t/év -1.42  z prix -1.58  gagnés 1718/1765
+-1 h Under tous                                 3549 paris    -0.2 %  t/év -0.71  z prix +0.35  gagnés 1830/1820
+-3 h Over tous                                  2021 paris    -2.8 %  t/év -1.07  z prix -1.01  gagnés 982/1004
+-3 h Under tous                                 2019 paris    -2.3 %  t/év -0.98  z prix -0.01  gagnés 1037/1037
+-6 h Over tous                                  1524 paris    -0.2 %  t/év -0.09  z prix +0.56  gagnés 776/764
+-6 h Under tous                                 1524 paris    -4.9 %  t/év -1.84  z prix -1.43  gagnés 748/775
+-12 h Over tous                                  906 paris    -0.9 %  t/év -0.24  z prix +0.01  gagnés 451/451
+-12 h Under tous                                 905 paris    -1.7 %  t/év -0.45  z prix -0.70  gagnés 454/464
+-24 h Over tous                                  265 paris    -5.3 %  t/év -0.68  z prix -0.49  gagnés 127/131
+-24 h Under tous                                 265 paris    -5.2 %  t/év -0.90  z prix -0.02  gagnés 138/138
+== par type de marché (-3 h) ==
+first_half_totals Over                            36 paris   -10.8 %  t/év -0.65  z prix -0.24  gagnés 17/18
+first_half_totals Under                           36 paris    -4.5 %  t/év -0.28  z prix +0.02  gagnés 19/19
+soccer_team_totals Over                            8 paris    +1.2 %  t/év +0.04  z prix +0.34  gagnés 5/5
+soccer_team_totals Under                           8 paris   -34.8 %  t/év -1.03  z prix -0.39  gagnés 3/4
+total_corners Over                                24 paris   -23.4 %  t/év -1.20  z prix -1.17  gagnés 10/13
+total_corners Under                               24 paris   +23.4 %  t/év +0.98  z prix +0.96  gagnés 14/12
+totals Over                                     1951 paris    -2.4 %  t/év -0.92  z prix -0.88  gagnés 949/968
+totals Under                                    1949 paris    -2.4 %  t/év -1.06  z prix -0.10  gagnés 1000/1002
+== par sport (type totals, -3 h) ==
+bra Over                                          40 paris   +15.3 %  t/év +0.58  z prix +0.45  gagnés 20/19
+bra Under                                         39 paris   -14.0 %  t/év -0.89  z prix -0.59  gagnés 19/21
+bun Over                                          68 paris    +7.8 %  t/év +0.66  z prix +0.89  gagnés 40/36
+bun Under                                         68 paris   -18.1 %  t/év -1.47  z prix -1.04  gagnés 28/32
+cbb Over                                         231 paris    -2.0 %  t/év -0.31  z prix -0.27  gagnés 115/117
+cbb Under                                        231 paris    -0.7 %  t/év -0.10  z prix -0.06  gagnés 116/116
+dota2 Over                                        10 paris   -59.7 %  t/év -2.12  z prix -1.48  gagnés 2/4
+dota2 Under                                       10 paris   +31.5 %  t/év +1.35  z prix +1.30  gagnés 8/6
+elc Over                                          51 paris    -0.7 %  t/év -0.05  z prix +0.24  gagnés 26/25
+elc Under                                         51 paris    -7.7 %  t/év -0.52  z prix -0.39  gagnés 25/26
+epl Over                                          95 paris   -11.5 %  t/év -1.18  z prix -0.68  gagnés 46/49
+epl Under                                         95 paris    +1.4 %  t/év +0.13  z prix +0.48  gagnés 49/47
+ere Over                                          35 paris   -21.4 %  t/év -0.99  z prix -1.99  gagnés 14/19
+ere Under                                         35 paris   +24.8 %  t/év +1.34  z prix +1.84  gagnés 21/16
+fl1 Over                                          51 paris   -22.6 %  t/év -1.69  z prix -1.41  gagnés 22/27
+fl1 Under                                         51 paris   +13.8 %  t/év +0.91  z prix +1.27  gagnés 29/25
+ja Over                                           38 paris    +7.2 %  t/év +0.37  z prix +0.71  gagnés 19/17
+ja Under                                          38 paris   -15.6 %  t/év -1.05  z prix -0.83  gagnés 19/21
+kor Over                                          37 paris   -35.3 %  t/év -2.25  z prix -1.50  gagnés 13/17
+kor Under                                         37 paris   +16.1 %  t/év +0.98  z prix +1.37  gagnés 24/20
+lal Over                                         105 paris    +9.9 %  t/év +0.55  z prix +0.07  gagnés 51/51
+lal Under                                        105 paris    -4.9 %  t/év -0.51  z prix -0.27  gagnés 54/55
+lib Over                                          36 paris    -3.8 %  t/év -0.19  z prix +0.07  gagnés 17/17
+lib Under                                         36 paris   -10.1 %  t/év -0.64  z prix -0.20  gagnés 19/20
+lol Over                                         129 paris   -21.8 %  t/év -2.24  z prix -1.97  gagnés 49/60
+lol Under                                        128 paris   +12.3 %  t/év +1.39  z prix +1.63  gagnés 79/70
+mex Over                                          43 paris   +26.0 %  t/év +1.02  z prix +1.24  gagnés 23/19
+mex Under                                         43 paris   -25.1 %  t/év -1.86  z prix -1.43  gagnés 20/24
+mls Over                                           7 paris   -25.9 %  t/év -0.71  z prix -0.64  gagnés 3/4
+mls Under                                          7 paris   +20.8 %  t/év +0.46  z prix +0.59  gagnés 4/3
+nba Over                                         391 paris    +4.3 %  t/év +0.86  z prix +1.00  gagnés 207/197
+nba Under                                        391 paris    -7.8 %  t/év -1.56  z prix -1.44  gagnés 184/198
+nhl Over                                         204 paris    -4.9 %  t/év -0.72  z prix -0.25  gagnés 102/104
+nhl Under                                        204 paris    -4.2 %  t/év -0.61  z prix -0.06  gagnés 102/102
+por Over                                          27 paris   -10.5 %  t/év -0.48  z prix -0.35  gagnés 12/13
+por Under                                         27 paris    +4.2 %  t/év +0.20  z prix +0.23  gagnés 15/14
+sea Over                                          83 paris    -9.2 %  t/év -0.58  z prix -1.35  gagnés 34/40
+sea Under                                         83 paris    +9.1 %  t/év +0.84  z prix +1.14  gagnés 49/44
+tur Over                                          23 paris   +26.3 %  t/év +0.66  z prix +0.37  gagnés 12/11
+tur Under                                         23 paris   -16.9 %  t/év -0.84  z prix -0.47  gagnés 11/12
+ucl Over                                          72 paris    -7.8 %  t/év -0.59  z prix -0.56  gagnés 33/35
+ucl Under                                         72 paris    +6.4 %  t/év +0.48  z prix +0.39  gagnés 39/37
+uel Over                                          50 paris   +10.8 %  t/év +0.62  z prix +0.40  gagnés 25/24
+uel Under                                         50 paris    -6.9 %  t/év -0.51  z prix -0.54  gagnés 25/27
+val Over                                          15 paris    -6.6 %  t/év -0.23  z prix -0.05  gagnés 7/7
+val Under                                         15 paris    -6.6 %  t/év -0.28  z prix -0.08  gagnés 8/8
+wnba Over                                        108 paris    +2.9 %  t/év +0.30  z prix +0.49  gagnés 57/54
+wnba Under                                       108 paris    -8.8 %  t/év -0.92  z prix -0.71  gagnés 51/55

@@ -1,0 +1,59 @@
+événements 3347 paris 5266
+-1 h favori                         1414 paris   -2.0 %  t/év -0.43  z prix -0.55  gagnés 577/585
+-1 h outsider                       1410 paris   -1.8 %  t/év -0.92  z prix -0.33  gagnés 833/835
+-3 h favori                          618 paris   -4.2 %  t/év -0.94  z prix +0.06  gagnés 269/269
+-3 h outsider                        618 paris   -3.3 %  t/év -0.75  z prix -0.53  gagnés 349/353
+-6 h favori                          346 paris   +0.7 %  t/év +0.03  z prix -0.02  gagnés 154/154
+-6 h outsider                        347 paris   -2.5 %  t/év -0.45  z prix -0.33  gagnés 192/195
+-12 h favori                         184 paris   -0.5 %  t/év -0.05  z prix +0.72  gagnés 89/84
+-12 h outsider                       184 paris   -8.8 %  t/év -1.26  z prix -0.90  gagnés 95/101
+-24 h favori                          73 paris   +0.8 %  t/év +0.15  z prix +0.37  gagnés 32/31
+-24 h outsider                        72 paris   -9.4 %  t/év -0.98  z prix -0.54  gagnés 40/42
+== par type (-3 h) ==
+first_half_spreads favori             10 paris  +35.2 %  t/év +1.17  z prix +1.48  gagnés 7/5
+first_half_spreads outsider           10 paris  -51.9 %  t/év -2.00  z prix -1.55  gagnés 3/5
+spreads favori                       590 paris   -5.5 %  t/év -1.10  z prix -0.21  gagnés 254/256
+spreads outsider                     590 paris   -2.6 %  t/év -0.71  z prix -0.18  gagnés 336/338
+tennis_set_handicap favori            18 paris  +16.5 %  t/év +0.51  z prix +0.44  gagnés 8/8
+tennis_set_handicap outsider          18 paris   +1.7 %  t/év +0.08  z prix -0.92  gagnés 10/10
+== par sport (spreads, -3 h) ==
+bun favori                            14 paris  +61.3 %  t/év +1.10  z prix +1.13  gagnés 8/6
+bun outsider                          14 paris  -27.7 %  t/év -1.14  z prix -1.20  gagnés 6/8
+cfb favori                            99 paris   -1.0 %  t/év -0.09  z prix -0.04  gagnés 49/49
+cfb outsider                          99 paris   -2.4 %  t/év -0.24  z prix -0.09  gagnés 50/50
+elc favori                             7 paris  +28.2 %  t/év +0.42  z prix +0.39  gagnés 3/3
+elc outsider                           7 paris  -12.2 %  t/év -0.38  z prix -0.41  gagnés 4/5
+epl favori                            32 paris  -53.1 %  t/év -3.06  z prix -1.50  gagnés 7/11
+epl outsider                          32 paris  +14.9 %  t/év +1.20  z prix +1.39  gagnés 25/21
+ere favori                            13 paris  -13.9 %  t/év -0.49  z prix -0.09  gagnés 6/6
+ere outsider                          13 paris   -5.7 %  t/év -0.21  z prix +0.02  gagnés 7/7
+fl1 favori                            12 paris  -12.6 %  t/év -0.32  z prix -0.57  gagnés 4/5
+fl1 outsider                          12 paris  +16.9 %  t/év +0.63  z prix +0.52  gagnés 8/7
+ja favori                              6 paris  -12.2 %  t/év -0.21  z prix +0.75  gagnés 2/1
+ja outsider                            6 paris  -24.6 %  t/év -1.00  z prix -0.85  gagnés 4/5
+lal favori                            36 paris   -2.8 %  t/év -0.12  z prix +0.24  gagnés 15/14
+lal outsider                          36 paris   -9.9 %  t/év -0.71  z prix -0.35  gagnés 21/22
+lib favori                             6 paris  +37.2 %  t/év +0.38  z prix +0.23  gagnés 2/2
+lib outsider                           6 paris   -3.8 %  t/év -0.11  z prix -0.28  gagnés 4/4
+mex favori                            11 paris  -56.7 %  t/év -1.81  z prix -1.15  gagnés 2/4
+mex outsider                          11 paris  +26.0 %  t/év +1.17  z prix +1.10  gagnés 9/7
+mlb favori                            42 paris  +28.4 %  t/év +1.46  z prix +1.83  gagnés 23/17
+mlb outsider                          42 paris  -28.0 %  t/év -2.17  z prix -1.94  gagnés 19/25
+mls favori                            12 paris  -40.0 %  t/év -1.18  z prix -0.53  gagnés 3/4
+mls outsider                          12 paris   +6.7 %  t/év +0.33  z prix +0.49  gagnés 9/8
+nba favori                            53 paris  -15.2 %  t/év -1.04  z prix -1.16  gagnés 22/26
+nba outsider                          53 paris  +12.9 %  t/év +0.97  z prix +1.04  gagnés 31/27
+nfl favori                            88 paris  -20.7 %  t/év -1.93  z prix -1.63  gagnés 35/43
+nfl outsider                          88 paris  +13.4 %  t/év +1.32  z prix +1.46  gagnés 53/46
+nhl favori                            30 paris  -11.5 %  t/év -0.47  z prix -0.28  gagnés 10/11
+nhl outsider                          30 paris   -0.0 %  t/év -0.00  z prix +0.18  gagnés 20/20
+sea favori                            19 paris  +13.0 %  t/év +0.44  z prix +1.22  gagnés 9/7
+sea outsider                          19 paris  -25.9 %  t/év -1.44  z prix -1.30  gagnés 10/13
+tur favori                             7 paris  -64.7 %  t/év -1.67  z prix -1.13  gagnés 1/2
+tur outsider                           7 paris  +30.5 %  t/év +1.25  z prix +1.11  gagnés 6/5
+ucl favori                            33 paris  +31.9 %  t/év +1.31  z prix +1.75  gagnés 18/13
+ucl outsider                          33 paris  -30.0 %  t/év -2.07  z prix -1.87  gagnés 15/20
+uel favori                            15 paris  -23.7 %  t/év -0.90  z prix -0.18  gagnés 6/6
+uel outsider                          15 paris   -4.0 %  t/év -0.17  z prix +0.10  gagnés 9/9
+wnba favori                           43 paris  +12.1 %  t/év +0.80  z prix +0.95  gagnés 25/22
+wnba outsider                         43 paris  -17.5 %  t/év -1.13  z prix -1.02  gagnés 18/21
