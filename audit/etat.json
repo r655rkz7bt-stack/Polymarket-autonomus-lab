@@ -1,7 +1,7 @@
 {
  "dernier_seq": {
-  "principal": 3577,
-  "fantome:calibration_patiente_v1.0.0": 2008,
+  "principal": 3578,
+  "fantome:calibration_patiente_v1.0.0": 2010,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1908,
   "fantome:crypto_threshold_v1.0.0": 1927,
@@ -1713,10 +1713,10 @@
    "op_id": "settle-77364324137255345604331420995513567086774095194364166143934058984043878909542"
   }
  ],
- "derniere_execution": "2026-10-26T01:58:09+00:00",
+ "derniere_execution": "2026-10-26T02:04:36+00:00",
  "dernier_seq_reglements": {
-  "principal": 3577,
-  "fantome:calibration_patiente_v1.0.0": 2008,
+  "principal": 3578,
+  "fantome:calibration_patiente_v1.0.0": 2010,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1908,
   "fantome:crypto_threshold_v1.0.0": 1927,
@@ -1762,7 +1762,7 @@
   "fantome:nm_prix_bas_v1.0.0": 1589,
   "fantome:nm_prix_haut_v1.0.0": 1535,
   "fantome:naive_favorite_large_v1.0.0": 1422,
-  "fantome:nf_sport_patiente_v1.0.0": 1832,
+  "fantome:nf_sport_patiente_v1.0.0": 1834,
   "fantome:favori_politique_nuit_v1.0.0": 1348,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
@@ -1779,7 +1779,7 @@
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1117,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
-  "fantome:nf_sport_6_24h_v1.0.0": 1071,
+  "fantome:nf_sport_6_24h_v1.0.0": 1073,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 701,
   "fantome:nf_sport_patiente_prix_moyen_v1.0.0": 737,
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
@@ -1851,9 +1851,9 @@
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 178,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 255,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 436,
-  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 336,
+  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 338,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 154,
-  "fantome:moins_de_cartes_v1.0.0": 302,
+  "fantome:moins_de_cartes_v1.0.0": 306,
   "fantome:non_aux_drames_v1.0.0": 216,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 243,
@@ -1878,7 +1878,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 28,
   "fantome:moins_de_cartes_lol_v1.0.0": 32,
   "fantome:detroits_non_normal_v1.0.0": 23,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 23
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 25
  },
- "reglements_verifies": 5009
+ "reglements_verifies": 5010
 }
