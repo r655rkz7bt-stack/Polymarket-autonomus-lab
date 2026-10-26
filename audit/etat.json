@@ -104,7 +104,7 @@
   "fantome:mots_prononces_v1.0.0": 632,
   "fantome:crypto_threshold_24_72h_v1.0.0": 449,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 492,
-  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 639,
+  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 641,
   "fantome:nf_tennis_debut_match_v1.0.0": 717,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 692,
   "fantome:outsider_itf_v1.0.0": 453,
@@ -170,7 +170,7 @@
   "fantome:rallies_non_v1.0.0": 19,
   "fantome:statu_quo_ia_v1.1.0": 10
  },
- "verifiees": 10360,
+ "verifiees": 10361,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1774,9 +1774,9 @@
    "op_id": "settle-69441598328310807342538245414823671917921618780168376459840669550637738908535"
   }
  ],
- "derniere_execution": "2026-10-26T21:28:36+00:00",
+ "derniere_execution": "2026-10-26T21:33:30+00:00",
  "dernier_seq_reglements": {
-  "principal": 3863,
+  "principal": 3864,
   "fantome:calibration_patiente_v1.0.0": 2069,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1945,
@@ -1795,7 +1795,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1628,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2498,
-  "fantome:market_maker_v1.0.0": 2058,
+  "fantome:market_maker_v1.0.0": 2060,
   "fantome:favori_politique_patiente_v1.0.0": 1552,
   "fantome:favori_politique_v1.0.0": 1559,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1554,
@@ -1864,7 +1864,7 @@
   "fantome:decroissance_temps_v1.0.0": 582,
   "fantome:echelle_dates_v1.0.0": 502,
   "fantome:implication_politique_v1.0.0": 494,
-  "fantome:marche_neuf_v1.0.0": 746,
+  "fantome:marche_neuf_v1.0.0": 748,
   "fantome:marches_jumeaux_v1.0.0": 494,
   "fantome:outsiders_surcotes_v1.0.0": 568,
   "fantome:paire_oui_non_v1.0.0": 494,
