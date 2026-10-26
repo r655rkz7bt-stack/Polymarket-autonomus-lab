@@ -61,6 +61,11 @@ au prix du CLOB + 0,02, l'ensemble des 2 594 candidats donne +12,0 % [+6,1 ; +17
 Fin − 3 h **+20,0 %** [+13,7 ; +25,7] (1 642 paris, 273 événements) ; 6 h +16,9 % [+11,9 ; +22,4] ; 12 h +16,3 % ; 24 h +16,7 % [+10,0 ; +22,9] ; 48 h +16,6 % [+8,1 ; +24,1] ; 96 h +13,5 % [+6,6 ; +20,6] ; **168 h +1,1 % [−7,3 ; +9,3]**.
 L'effet est donc concentré dans les 4 derniers jours avant la fin du marché : fenêtre des fantômes `mentions_non*` = 3 à 48 h (les meetings, plus courts : 3 à 20 h). La durée de vie des marchés est médiane 4 jours (déciles 9 h → 29 jours).
 
+## Hypothèse sur la cause (non testée directement)
+Un OUI encore à 0,30-0,60 à 3-96 h de la fin n'a, par définition, pas été dit plus tôt : la chance qu'il le soit dans le temps qui reste est plus basse que ne l'annonce un prix qui ne « s'use » pas assez vite avec les heures (le biais est nul à 168 h, quand toute la semaine reste à parler, et monte vers la fin : +20 % à 3 h).
+Les seuils « N+ times » font l'inverse (le compte avance au fil du discours et le prix le suit) : pas de biais exploitable. Si l'hypothèse est juste, le biais ne dépend pas de l'orateur mais du temps qui reste ; le test direct demande la transcription ou le compte à l'instant T (non gratuit pour Trump).
+Le règlement est celui de Gamma (UMA), non recoupé à une transcription : un règlement erroné serait lui aussi un biais (non vérifié).
+
 ## Limites
 - Prix du CLOB (pas de prix payés) : les marchés de 2026 sont minces (20-80 k$ par meeting, ≈ 2-4 k$ par mot) ; le NON à 0,30-0,60 s'achète-t-il vraiment à ce prix + 0,02 ? Les 28 NON de `mots_prononces` en direct (écart d'achat inclus) : −5,8 % (z −0,5, bruit).
 - Les mots d'un meeting sont liés (durée du discours) : l'IC par meeting en tient compte, pas les ±5 points de la loi binomiale.
