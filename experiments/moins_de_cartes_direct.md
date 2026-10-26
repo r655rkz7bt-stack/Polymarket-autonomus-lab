@@ -21,3 +21,11 @@ La mise est petite (7 € par pari en moyenne, 20 € au plus) : le gain en euro
 - Pas de changement de stratégie. Le principal la suit déjà (16 % du capital engagé, première des 5 championnes du 25/10 à 20 h 47 UTC), sans `validated_strategies`.
 - À surveiller : si les 50 prochains paris donnent z < 0, c'est que le signe de 23-25/10 était la chance. Le fantôme `moins_de_cartes_lol` (LoL seul, +15 % sur le passé) et `moins_de_cartes_bo5` n'ont encore aucun pari réglé.
 - Ne pas oublier : ce fantôme est l'un des ~60 de l'arène (contrôle `selection_multiple`) ; ce qui le distingue est qu'il a été choisi AVANT ces paris, sur un test du passé indépendant.
+
+## Mécanisme : les cartes d'un match sont corrélées (26/10/2026, `experiments/bo3_coherence/correlation_manches.py`)
+Question : pourquoi l'« Under 2,5 » gagne-t-il ? Si les cartes sont indépendantes (loi binomiale, modèle de `series.py`) un balayage 2-0 a la chance 1 − 2q(1 − q), où q est tiré du prix du vainqueur (q²(3 − 2q) = prix à T − 3 h).
+Sur **577 BO3** (CS2, LoL, Dota 2, Valorant, janvier-octobre 2026, tirage de 2 755 matchs, vrais échanges) avec un total « 2,5 » échangé :
+- balayages réels **63,6 %**, binomial **56,1 %** (+7,5 points, z ≈ +3,7), marché (prix payé de l'Under) **59,5 %** : le marché connaît à peu près la moitié de la corrélation ;
+- écart réel − binomial positif dans les **5 tranches de force du favori** (+4,2 à +14,3 points), les **4 jeux** (+6,3 à +8,9) et les **2 périodes** (+7,2 puis +8,7) ; réel − marché : +4,1 points (z +2,07), de +0,6 à +7,6 selon la tranche.
+- Lecture : un favori qui gagne la 1re carte en gagne plus souvent une 2e que ne le dit l'indépendance (équipe plus forte que son prix, même carte pool/forme du jour). L'Under vaut donc plus que sa valeur binomiale ; le marché en paie déjà une partie. Le décalage de 0,05 de la stratégie (`shift`) est du même ordre que l'écart réel − marché mesuré (+0,041).
+- **Limite** : c'est le même échantillon que l'indice du 25/10 (+7,7 %, t 2,0) : cela explique le résultat, ça ne le confirme pas de façon indépendante ; la confirmation reste les paris en direct (`moins_de_cartes` : 57 paris, +26,7 %, z +2,33, par jeu : CS2 +23,5 %, Dota 2 +25,4 %, 3 Valorant, 1 LoL).

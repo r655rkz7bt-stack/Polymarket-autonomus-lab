@@ -1,0 +1,13 @@
+577 matchs BO3 avec total 2,5, prix du vainqueur et prix de l'Under
+TOUS                     n= 577  réel 0.636  binomial 0.561  marché 0.595  réel−binomial +0.075  réel−marché +0.041 (z +2.07)
+favori 0.5-0.6           n= 144  réel 0.583  binomial 0.503  marché 0.521  réel−binomial +0.080  réel−marché +0.063 (z +1.51)
+favori 0.6-0.7           n= 158  réel 0.563  binomial 0.521  marché 0.558  réel−binomial +0.042  réel−marché +0.006 (z +0.14)
+favori 0.7-0.8           n= 123  réel 0.634  binomial 0.558  marché 0.589  réel−binomial +0.076  réel−marché +0.045 (z +1.01)
+favori 0.8-0.9           n= 105  réel 0.714  binomial 0.629  marché 0.667  réel−binomial +0.086  réel−marché +0.047 (z +1.03)
+favori 0.9-1.0           n=  47  réel 0.872  binomial 0.729  marché 0.796  réel−binomial +0.143  réel−marché +0.076 (z +1.32)
+série cs2                n=  98  réel 0.653  binomial 0.564  marché 0.616  réel−binomial +0.089  réel−marché +0.037 (z +0.76)
+série lol                n= 231  réel 0.645  binomial 0.569  marché 0.601  réel−binomial +0.076  réel−marché +0.044 (z +1.38)
+série dota2              n= 136  réel 0.625  binomial 0.562  marché 0.586  réel−binomial +0.063  réel−marché +0.039 (z +0.96)
+série val                n= 112  réel 0.616  binomial 0.540  marché 0.572  réel−binomial +0.076  réel−marché +0.044 (z +0.95)
+mois 2026-01..2026-06    n= 219  réel 0.635  binomial 0.562  marché 0.591  réel−binomial +0.072  réel−marché +0.043 (z +1.33)
+mois 2026-06..2026-11    n= 289  réel 0.647  binomial 0.560  marché 0.592  réel−binomial +0.087  réel−marché +0.055 (z +1.93)

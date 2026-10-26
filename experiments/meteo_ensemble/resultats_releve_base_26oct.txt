@@ -1,0 +1,22 @@
+10901 relevés (7 instants, 3102 marchés)
+2596 relevés de marchés réglés (924 marchés, 84 événements)
+contrôle du règlement : 236 événements sur 236 avec exactement une tranche gagnante relevée
+jours : ['2026-10-25'] ; jugés : TOUT (un seul jour : aucun réglage possible) ; biais appris pour 0 stations×type
+756 relevés jugés avec un vrai échange dans les 2 h avant T0 (sur 2596)
+
+σ 0.3 : log loss modèle 0.4879 contre marché 0.3208 (756 relevés ; plus bas = mieux)
+  écart ≥ 0.05 : 287 achats aux prix payés, rendement moyen -0.263, 54 événements, confiance par événement -2.71, z des prix -1.68 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.10 : 225 achats aux prix payés, rendement moyen -0.268, 53 événements, confiance par événement -1.99, z des prix -1.68 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.15 : 163 achats aux prix payés, rendement moyen -0.232, 47 événements, confiance par événement -1.40, z des prix -1.11 -> écartée (pas d'avantage régulier après frais)
+
+σ 0.6 : log loss modèle 0.4365 contre marché 0.3208 (756 relevés ; plus bas = mieux)
+  écart ≥ 0.05 : 275 achats aux prix payés, rendement moyen -0.218, 52 événements, confiance par événement -1.64, z des prix -0.88 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.10 : 210 achats aux prix payés, rendement moyen -0.298, 49 événements, confiance par événement -1.72, z des prix -1.70 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.15 : 154 achats aux prix payés, rendement moyen -0.337, 45 événements, confiance par événement -2.67, z des prix -1.48 -> écartée (pas d'avantage régulier après frais)
+
+σ 1.0 : log loss modèle 0.4105 contre marché 0.3208 (756 relevés ; plus bas = mieux)
+  écart ≥ 0.05 : 281 achats aux prix payés, rendement moyen -0.129, 54 événements, confiance par événement -0.02, z des prix -0.59 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.10 : 203 achats aux prix payés, rendement moyen -0.316, 51 événements, confiance par événement -3.07, z des prix -1.41 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.15 : 149 achats aux prix payés, rendement moyen -0.305, 45 événements, confiance par événement -3.30, z des prix -1.44 -> écartée (pas d'avantage régulier après frais)
+
+9 réglages essayés (σ × écart).
