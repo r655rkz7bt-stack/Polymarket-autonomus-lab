@@ -970,3 +970,9 @@ Deux indices de la 2e analyse des vingt-cinq pistes (vrais prix payés). (1) `ma
 seuls les « Games Total » des BO3/BO5 sont ajoutés, en `extra_only`. (2) `MoinsDeCartes` : « Under » 6 h à 1 h avant le
 match (experiments/pistes_sport_coherence.md). (3) `NonAuxDrames` : NON des drames à OUI 2-15 %, 30 à 120 jours avant
 l'échéance, 2 % du capital par événement (experiments/pistes_crypto_elections_drames.md).
+
+## 58. Mise copiée plafonnée (27/10/2026, demande d'Etienne)
+
+`main.Weighted(..., ghost_cap=)`, réglage `principal.mise_fantome_max` (0,05) : chaque pari d'un fantôme copié compte au plus pour
+5 % du capital de ce fantôme avant la mise à l'échelle du principal (achats et ordres posés). Rejeu du 15 au 26/10 : −262 € → −46 €,
+−2,6 % → −1,0 % par euro (`experiments/taille_des_mises.md`, `experiments/taille_des_mises/plafond_copie.py`).

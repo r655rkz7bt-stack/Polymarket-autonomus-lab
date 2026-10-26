@@ -183,9 +183,14 @@ class Weighted:
     sa fille 925-950, à prudence 1, achetait tous les jours) : mère et filles n'étaient plus comparables."""
 
     def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None, base: Decimal | None = None,
-                 cap_budget: bool = True, floor: tuple[Decimal, Decimal] | None = None):
+                 cap_budget: bool = True, floor: tuple[Decimal, Decimal] | None = None, ghost_cap: Decimal | None = None):
         self.inner, self.weight, self.source, self.cap_budget = strategy, weight, source, cap_budget
         self.floor = floor if source is not None else None  # (parts minimales d'un ordre, coût maximal en part du capital)
+        # Mise copiée plafonnée (27/10/2026, `principal.mise_fantome_max`) : chaque pari du fantôme compte au plus pour
+        # cette part de SON capital avant la mise à l'échelle. Rejeu du 15 au 26/10 (experiments/taille_des_mises.md) : les
+        # plus grosses mises des fantômes (favoris chers, Kelly sur un biais fixe) perdaient −11,5 % par euro ; à 5 % :
+        # −262 € → −46 €, et −2,6 % → −1,0 % par euro (meilleur par euro, pas seulement plus petit).
+        self.ghost_cap = ghost_cap if source is not None else None
         # Copie à la mise de BASE (21/10/2026, « grossir les gagnantes ») : la prudence du fantôme
         # (½ tant que rien n'est prouvé, entière, ¼, renfort) sert à l'arène ; le principal garde sa
         # propre mise, celle simulée avec Etienne (experiments/taille_des_mises.md) : il divise par la
@@ -227,17 +232,24 @@ class Weighted:
         if ghost_total <= 0:
             return out, Decimal("0")
         factor = self.weight * state.total_estimated(marks) / ghost_total * self.stake_adjust
-        out.proposals = [dataclasses.replace(p, shares=filled) for p, filled in seen["buys"]
-                         if p.token_id not in state.positions]
+        out.proposals = [dataclasses.replace(p, shares=self._ghost_capped(filled, p.max_price, ghost_total))
+                         for p, filled in seen["buys"] if p.token_id not in state.positions]
         for order in seen["orders"]:
             held = state.positions.get(order.token_id)
             if order.side == "BUY" and held is None:
-                out.limit_orders.append(order)
+                out.limit_orders.append(dataclasses.replace(
+                    order, shares=self._ghost_capped(order.shares, order.max_price, ghost_total)))
             elif order.side == "SELL" and held is not None:  # tenue de marché : revendre son stock
                 shares = min(held.shares, (order.shares * factor).quantize(Decimal("0.01"), rounding=ROUND_DOWN))
                 if shares > 0:
                     out.limit_orders.append(dataclasses.replace(order, shares=shares))
         return out, factor
+
+    def _ghost_capped(self, shares: Decimal, price: Decimal, ghost_total: Decimal) -> Decimal:
+        """Parts d'un pari du fantôme, plafonnées à `ghost_cap` × capital du fantôme (en coût)."""
+        if not self.ghost_cap or price <= 0:
+            return shares
+        return min(shares, (self.ghost_cap * ghost_total / price).quantize(Decimal("0.01"), rounding=ROUND_DOWN))
 
     def _scale(self, proposals: list, budget: Decimal | None = None,
                factor: Decimal | None = None, floor_cost: Decimal | None = None) -> tuple[list, Decimal | None]:
@@ -511,7 +523,10 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     base = Decimal(str(strategy_health.config(deps.settings)["base"]))
     floor_cfg = (deps.settings.get("principal") or {}).get("plancher_copie")
     floor = (Decimal(str(floor_cfg["parts"])), Decimal(str(floor_cfg["part_du_capital"]))) if floor_cfg else None
-    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p, base=base, floor=floor) for n, p in competitors.items()
+    ghost_cap = (deps.settings.get("principal") or {}).get("mise_fantome_max")
+    ghost_cap = Decimal(str(ghost_cap)) if ghost_cap else None
+    main.strategies = [Weighted(s, Decimal(str(round(w, 6))), source=p, base=base, floor=floor, ghost_cap=ghost_cap)
+                       for n, p in competitors.items()
                        if n in shares for w in [shares[n]] for s in p.strategies]
     # Positions orphelines : une stratégie retirée du capital principal (champion destitué, part
     # nulle) garde la main sur SES sorties (prise de bénéfice, stop, durée maximale), sans racheter.

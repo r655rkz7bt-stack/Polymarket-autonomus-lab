@@ -63,3 +63,36 @@ Question d'Etienne : « à quoi sont dues les pertes ? » (principal à 764 €,
 Constat commun : aucune tranche de prix ne bat ses prix dans l'arène. Le principal perd parce qu'il copie des
 stratégies sans avantage prouvé ; la règle actuelle (`part_min` 0) cesse de les copier dès que l'avantage mesuré
 tombe à zéro. La vraie piste est de trouver un avantage (sources « arbitres », `experiments/veille_api_publiques.md`).
+
+## 27/10/2026 : ce qui marchait quand on était en croissance → plafond des mises copiées
+
+Demande d'Etienne : « regarde ce qui marchait par le passé quand on était en croissance ».
+
+**Ce qu'on voit dans les journaux** (15 → 26/10) :
+- Le principal n'a jamais vraiment été en gain : son plus haut (1 022 € le 17/10) venait de paris météo pas encore réglés,
+  estimés au prix du moment ; réglés le 18/10, ils ont rapporté +27 € pendant que `nf_court` perdait −156 €.
+- La seule vraie période de croissance est celle de la championne `nf_sport_patiente` (+174 € dans le rejeu, du 15 au 21/10),
+  rendus et au-delà la semaine suivante (−435 €) : de la chance (z des prix ≈ 0, `experiments/enquetes/2026-10-22_championne_biais_et_mises.md`).
+- Dans l'arène, beaucoup de fantômes sont au-dessus de 1 000 € (le premier, `nf_sport_patiente_prix_850_875`, à 1 533 €) ; ceux qui
+  battent vraiment leurs prix sont rares : `compteur_tweets` (+47,5 % par mise, z des prix +2,2), `contrer_crypto_patiente` (+20,9 %,
+  z +1,9 sur 146 paris, mais −28 € : ses grosses mises perdent), `moins_de_cartes` (+17,4 %, les deux moitiés positives).
+
+**Rejeu de la règle d'entrée** (`experiments/regle_confiance/rejouer.py`, refait comme demandé le 21/10 avec 11 jours au lieu d'un) :
+règle en vigueur −262 € (le principal réel : −263 €) ; « gagnés contre attendus » sans scepticisme −300 € ; avec scepticisme 0,5
+−9 €, mais seulement 7 % du capital engagé (elle ne joue presque pas). **Aucune règle de choix ne gagne** sur la période.
+
+**La taille des mises, elle, change tout** (`experiments/taille_des_mises/plafond_copie.py`) : avec la règle en vigueur, les paris
+copiés à 0,90 ou plus, où le fantôme misait le plus (106 € en moyenne, Kelly sur un biais fixe), perdaient −11,5 % par euro ; à
+0,80-0,90 (81 € en moyenne) +4,1 %, sous 0,80 (32 €) +17,3 %. Plafond de chaque mise copiée (en part du capital du fantôme) :
+
+| plafond | misé | 1re moitié | 2e moitié | total | par euro |
+|---|---|---|---|---|---|
+| aucun (avant) | 9 938 € | +174 € | −435 € | −262 € | −2,6 % |
+| 10 % | 7 138 € | +151 € | −285 € | −133 € | −1,9 % |
+| **5 % (retenu)** | 4 662 € | +104 € | −150 € | **−46 €** | **−1,0 %** |
+| 3 % | 3 014 € | +65 € | −87 € | −22 € | −0,7 % |
+| 2 % | 2 095 € | +44 € | −61 € | −18 € | −0,9 % |
+
+Le rendement **par euro** s'améliore jusqu'à 3 % : ce n'est pas seulement « miser moins », les grosses mises étaient les
+mauvaises. Retenu : 5 % (`principal.mise_fantome_max`), pour garder assez d'argent engagé si une stratégie a un vrai avantage.
+5 réglages essayés. Limite : un seul rejeu de 11 jours, approché (sans frais ni carnet) ; à revoir dans une semaine.

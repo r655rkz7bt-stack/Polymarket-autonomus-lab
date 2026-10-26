@@ -3,6 +3,19 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-27 (session avec Etienne : ce qui marchait quand on était en croissance)
+
+- **Enquête** : le principal n'a jamais vraiment été en gain (plus haut du 17/10 = paris météo pas encore réglés) ; la seule vraie
+  croissance est celle de `nf_sport_patiente` du 15 au 21/10, rendue ensuite (chance). Les copies de `moins_de_cartes` refusées
+  (« taille inférieure au minimum ») étaient déjà corrigées par le passage du 26/10 au soir (`plancher_copie`).
+- **Recherche** : rejeu de la règle d'entrée sur 11 jours (refait comme prévu le 21/10) : aucune règle de choix ne gagne (en vigueur
+  −262 €, « gagnés contre attendus » −300 € ou −9 € sans presque jouer). La taille des mises explique l'essentiel : les grosses mises
+  copiées (favoris à 0,90 ou plus) perdaient −11,5 % par euro → **plafond des mises copiées à 5 % du capital du fantôme**
+  (`principal.mise_fantome_max`) : −262 € → −46 €, −2,6 % → −1,0 % par euro au rejeu (`experiments/taille_des_mises.md`).
+- **Arène** : rien de changé chez les fantômes.
+- **Reste ouvert** : refaire le rejeu dans une semaine ; `contrer_crypto_patiente` (z +1,9 par mise, −28 € en euros) à regarder avec
+  une mise fixe.
+
 ## 2026-10-26 (passage chercheur, soir : 15 h 55 → 16 h 30 UTC, 35 min, durée visée 110 min non atteinte : les pistes restantes attendent des matchs, des publications ou des jours de données ; arrêt sans remplissage)
 
 - **Enquête** (fiches : `enquetes/2026-10-26_soir_copie_sous_le_minimum.md`, `enquetes/2026-10-26_soir_paris_lies_et_faux_signaux.md`). Obligations : `copie_fidele` (Team Yandex, déjà corrigé), `champion_sans_avantage` et cinq « chance » = mécanisme connu (`nf_court_football_soir` 35 gagnés pour 34,6 attendus, `nf_sport_patiente_6_24h` 30 pour 29,4).

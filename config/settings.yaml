@@ -32,6 +32,10 @@ principal:
   # minimum du marché (5 parts), le pari était rejeté (« taille inférieure au minimum du marché (5) ») : `moins_de_cartes`, 14,6 % du
   # capital, 0 pari copié sur 70. Il achète alors le minimum (5 parts) si cela coûte au plus 1 % du capital et reste dans le budget de la part.
   plancher_copie: {parts: 5, part_du_capital: 0.01}
+  # Mise copiée plafonnée (27/10/2026, experiments/taille_des_mises.md, « ce qui marchait ») : chaque pari d'un fantôme compte au plus
+  # pour 5 % de SON capital avant la mise à l'échelle du principal. Rejeu du 15 au 26/10 : −262 € → −46 €, −2,6 % → −1,0 % par euro
+  # (les grosses mises, sur les favoris à 0,90 ou plus, perdaient −11,5 % par euro). Les fantômes, eux, misent toujours normalement.
+  mise_fantome_max: 0.05
 
 # Fantômes (23/10/2026, enquête « mises géantes ») : une mise ≤ 25 % du capital estimé du fantôme.
 # Mêmes paris, taille seulement : la confiance de l'arène se mesure sur le rendement par mise.
