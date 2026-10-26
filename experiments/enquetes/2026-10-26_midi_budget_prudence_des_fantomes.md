@@ -33,3 +33,11 @@ Test : `tests/test_principal.py::test_a_ghost_with_low_prudence_is_not_capped_at
 n'ont pas d'échange dans la fenêtre, 155 sur 252). Sur les 97 comparables : **3 seulement à un prix sous le plus bas échange réel** (0,761 contre 0,827 ; 0,83 contre 0,85 ; 0,864 contre 0,871, chaque fois 1 seul échange
 dans la fenêtre : marché mince, carnet non observé). Deux cas relus en détail (`MOUZ` 0,879 et `Brute` 0,9036 sur des cartes de CS2, prix qui sautent de 0,88 à 0,999 en 10 secondes) : le prix simulé est dans la fourchette réelle
 à la seconde près. Rien d'anormal ; les marchés « carte » d'e-sport bougent de 10 points en quelques secondes, ce qui rend la latence de l'achat décisive (voir `moins_de_cartes`).
+
+## Preuve par les filles (`scripts/filles_sans_mere_26_10.py`, `scripts/budget_prudence_fantomes_26_10.py`)
+Une fille à filtre seul (même classe, mêmes paramètres) ne devrait acheter que des jetons que sa mère achète aussi. Part des jetons de la fille absents du journal de la mère : `nf_tennis_vainqueur` 100 % (194 jetons),
+`nf_tennis_12_18h_vainqueur` 100 %, `nf_sport_925_950` 94 % (67/71), `nf_sport_18_24h` 89 %, `nf_sport_prix_haut_3_6h` 88 % (88/100), `nf_sport_football` 90 %. Mères muettes avec leur dernier achat : `nf_sport_court` 20/10,
+`nf_sport` et `nf_tennis` 21/10, `nf_sport_patiente_tennis` 24/10 (toutes à prudence ¼ ou ½ ; `nf_tennis_prix_bas` est suspendue : prudence 0, légitime).
+**Conséquence sur le jugement des filles** : « `nf_sport_prix_haut_3_6h` +4,9 % contre sa mère +0,3 % (99 et 26 opérations) » ou « `nf_court_soir` +2,2 % contre `nf_court` −1,7 % » comparent une fille qui joue tout à une mère qui ne joue plus :
+les « filles qui battent leur mère » de la feuille de mission depuis le 21/10 étaient en partie un artefact du plafond (le contrôle `filles_periode` ne le voyait pas ; il compare sur la même période mais pas sur les mêmes paris).
+Nouveau contrôle `enquete.mere_muette_fille_active` (test `test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged`) : 9 mères signalées sur le rapport de 11 h ; il doit tomber à 0 une fois les mères revenues.

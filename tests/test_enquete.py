@@ -140,6 +140,23 @@ def test_daughter_is_compared_with_her_mother_on_the_same_period():
     assert "-11.1%" in found[0]["exemples"][0] and "-22.2%" in found[0]["exemples"][0]
 
 
+def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():
+    """26/10 : nf_sport muette depuis le 21/10 (plafond de prudence) pendant que sa fille nf_sport_925_950 achetait chaque jour."""
+    born = NOW - timedelta(days=6)
+    params = {"min_ask": {"value": 0.8}}
+    configs = {"mere": {"version": "1.0.0", "class": "nf", "params": params},
+               "fille": {"version": "1.0.0", "mere": "mere", "class": "nf", "params": params, "filtres": {"prix_min": 0.9}},
+               "patiente": {"version": "1.0.0", "mere": "mere", "class": "nf", "params": params, "limit_ticks": 1}}
+    entries = {"mere_v1.0.0": _ledger(_buy(NOW - timedelta(days=4), "m", 0.9, 10, strategy="mere"), born=born),
+               "fille_v1.0.0": _ledger(_buy(NOW - timedelta(hours=2), "f", 0.92, 10, strategy="fille"), born=born),
+               "patiente_v1.0.0": _ledger(_buy(NOW - timedelta(hours=2), "p", 0.92, 10, strategy="patiente"), born=born)}
+    found = enquete.mere_muette_fille_active(entries, configs, NOW)
+    assert len(found) == 1 and "1 mère(s) muette(s)" in found[0]["titre"] and "fille" in found[0]["exemples"][0]
+    # Mère active (achat récent) : rien. Fille en ordre posé (autre mode) : jamais comparée à sa mère.
+    entries["mere_v1.0.0"] = _ledger(_buy(NOW - timedelta(hours=5), "m", 0.9, 10, strategy="mere"), born=born)
+    assert enquete.mere_muette_fille_active(entries, configs, NOW) == []
+
+
 def test_silent_strategies_forgotten_positions_and_stopped_cycle():
     old = NOW - timedelta(days=4)
     entries = {"principal": _ledger(born=old), "muette_v1.0.0": _ledger(born=old),
