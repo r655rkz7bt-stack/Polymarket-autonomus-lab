@@ -8,7 +8,8 @@ sys.path.insert(0, "../../src")
 from polymarket_agent.idea_test import fee, verdict
 jl = lambda x: json.loads(x) if isinstance(x, str) else x
 tr = {}
-for f in ("donnees/echanges.jsonl", "donnees/echanges_rev.jsonl"):
+AVANT = os.environ.get("AVANT")  # AVANT=1 : période du 01/02 au 15/08 (hors échantillon de la découverte)
+for f in (("donnees/echanges_avant.jsonl", "donnees/echanges_avant_rev.jsonl") if AVANT else ("donnees/echanges.jsonl", "donnees/echanges_rev.jsonl")):
     if os.path.exists(f):
         for l in open(f):
             o = json.loads(l); tr[o["m"]] = o["trades"]
@@ -18,7 +19,7 @@ GROUP = {"atp": "tennis", "wta": "tennis", "itf": "tennis", "cs2": "esport", "lo
          "mlb": "baseball", "npb": "baseball", "kbo": "baseball", "nhl": "hockey", "ahl": "hockey", "khl": "hockey"}
 rows = []
 nev = 0
-for l in open("donnees/totaux.jsonl"):
+for l in open("donnees/totaux_avant.jsonl" if AVANT else "donnees/totaux.jsonl"):
     e = json.loads(l)
     start = int(datetime.datetime.fromisoformat(e["start"]).timestamp())
     by_type = collections.defaultdict(list)
@@ -74,4 +75,4 @@ print("== par sport (type totals, -3 h) ==")
 for sp in sorted({r["sport"] for r in rows}):
     for side in ("Over", "Under"):
         line(f"{sp} {side}", [r for r in rows if r["d"] == 3 and r["ty"] == "totals" and r["sport"] == sp and r["side"] == side])
-json.dump(rows, open("donnees/paris.json", "w"))
+json.dump(rows, open("donnees/paris_avant.json" if AVANT else "donnees/paris.json", "w"))

@@ -1,0 +1,53 @@
+"""Piste « Under des totaux de sport » (26/10/2026), adapté de apres_fin_match/scripts/releve.py : événements réglés depuis le 15/08 ; seul events.jsonl est écrit ici (échanges : releve_echanges.py).
+(Origine : piste « après la fin du match » (23/10/2026) : combien d'heures après le coup d'envoi un favori à 0,94-0,985 est-il vraiment gagné ?
+Relève, pour les principales ligues, les événements réglés depuis le 30/09 (Gamma, series_id) puis leurs vrais échanges (data-api).
+Écrit donnees/events.jsonl et donnees/echanges.jsonl ; à lancer depuis experiments/apres_fin_match/. Reprend où il s'est arrêté."""
+import json, os, time, datetime, requests
+from concurrent.futures import ThreadPoolExecutor
+SERIES = {"nba": 10345, "nhl": 10346, "mlb": 3, "nfl": 12185, "ncaab": 39, "cfb": 12756, "epl": 10188, "ucl": 10204, "lal": 10193, "bun": 10194,
+          "fl1": 10195, "sea": 10203, "mls": 10189, "atp": 10365, "wta": 10366, "itf": 11634, "cs2": 10310, "lol": 10311, "dota2": 10309,
+          "val": 10369, "khl": 10700, "euroleague": 10371, "wnba": 10105, "uel": 10209, "cbb": 10470, "elc": 10355, "ere": 10286, "por": 10330,
+          "tur": 10292, "bra": 10359, "mex": 10290, "lib": 10289, "ja": 10360, "kor": 10444, "npb": 11968, "kbo": 10370, "ahl": 10699}
+TYPES = {"totals", "tennis_match_totals", "tennis_first_set_totals", "first_half_totals", "total_corners", "team_totals", "soccer_team_totals", "tennis_set_games_totals"}
+CUT = datetime.datetime(2026, 2, 1, tzinfo=datetime.timezone.utc)
+s = requests.Session(); s.headers["User-Agent"] = "curl/8"
+os.makedirs("donnees", exist_ok=True)
+def jget(url, params):
+    for k in range(5):
+        try:
+            return s.get(url, params=params, timeout=60).json()
+        except Exception:
+            time.sleep(2 ** k)
+    return None
+def start_of(e):
+    for m in e.get("markets") or []:
+        if m.get("gameStartTime"):
+            return datetime.datetime.fromisoformat(m["gameStartTime"].replace("+00", "+00:00").replace("Z", "+00:00"))
+    return None
+def pull(item):
+    name, sid = item
+    out, off, empty_pages = [], 0, 0
+    while off < 30000:
+        b = jget("https://gamma-api.polymarket.com/events", {"series_id": sid, "closed": "true", "order": "endDate", "ascending": "false", "limit": 100, "offset": off})
+        if not isinstance(b, list) or not b: break
+        keep = []
+        for e in b:
+            st = start_of(e)
+            if st and CUT <= st < datetime.datetime(2026, 8, 15, tzinfo=datetime.timezone.utc):
+                mk = [m for m in e.get("markets") or [] if m.get("sportsMarketType") in TYPES]
+                if not mk: continue
+                keep.append({"sport": name, "id": e["id"], "title": e.get("title"), "start": st.isoformat(), "markets": [
+                    {k: m.get(k) for k in ("id", "conditionId", "line", "question", "outcomes", "outcomePrices", "clobTokenIds", "sportsMarketType", "feeSchedule", "feesEnabled", "umaResolutionStatus", "volumeNum")}
+                    for m in mk]})
+        out += keep
+        empty_pages = empty_pages + 1 if not keep else 0
+        if empty_pages >= 300: break
+        off += 100
+        if len(b) < 100: break
+    return out
+if not os.path.exists("donnees/totaux_avant.jsonl"):
+    with ThreadPoolExecutor(6) as ex, open("donnees/totaux_avant.jsonl", "w") as f:
+        for res in ex.map(pull, SERIES.items()):
+            for e in res: f.write(json.dumps(e) + "\n")
+events = [json.loads(l) for l in open("donnees/totaux_avant.jsonl")]
+print("événements", len(events), flush=True)

@@ -26,6 +26,15 @@ Question : sur les marchés « Lakers vs. Jazz: O/U 237.5 », un des deux côté
 - Nombre de découpages regardés : environ 20 (5 délais × 2 côtés × types de marché), puis une trentaine de sports. Le meilleur de 20 découpages sans avantage atteint un t de 1,6 une fois sur deux : **le « Over » à 12-24 h n'est pas démontré**.
 - **Taille de l'échange qui donne le prix** (mesurée ensuite) : médiane 25 parts à 12 h (quartiles 7 et 128), 12 parts à 24 h. « Over » à 12-24 h par taille : moins de 10 parts +11,4 % (153 paris), 10-50 parts +19,4 % (128), 50 parts et plus +5,7 % (145) : l'effet ne vit pas que dans les échanges minuscules, et nos mises (7-20 €) tiennent dans l'échange médian ; il s'affaiblit quand le carnet est épais, comme pour les tweets.
 
-## Verdict : indice faible → fantôme `totaux_over`
-Le test d'`idea_test.verdict` dit « retenue » pour le « Over » à 12 h (t 1,64, 3 mois sur 3) mais la règle de sélection (meilleur de ~20) et les carnets minces l'écartent : **indice faible, pas de part du capital principal.**
-Fantôme `totaux_over` (quart de Kelly) : « Over » de la ligne principale, 8 à 26 h avant le coup d'envoi, prix 0,35-0,65. L'arène confirmera ou non avec de vrais carnets ; à relire après ~60 paris réglés, avec les paris joués à 12 h seulement.
+## Hors échantillon : février-août 2026 (même méthode, jamais regardé avant)
+11 024 événements du 01/02 au 15/08 (`scripts/releve_avant.py`, `releve_echanges_avant.py`), 18 099 marchés, 5 879 événements avec échanges, 16 528 paris. « Over » : −3,3 / −2,8 / −0,2 / **−0,9 % (906 paris, t −0,24) / −5,3 %** à 1/3/6/**12**/24 h ;
+« Under » −0,2 / −2,3 / −4,9 / −1,7 / −5,2 %. **Le +10 % de l'« Over » à 12 h disparaît** (−0,9 %), comme le −5 à −24 % de l'« Under » (−0,2 à −5 %, t jamais au-dessous de −1,8) : les deux écarts de la découverte étaient du bruit.
+
+## Au passage : l'e-sport (CS2, LoL, Dota 2, Valorant, « Games Total ») sur ces mêmes relevés
+Février-août (période jamais vue par `moins_de_cartes`) : « Under » **+4,2 / +11,7 / +12,9 %** à 1/3/6 h (329 / 153 / 99 paris, t par match 0,8 / 1,5 / 1,4), « Over » −10,6 / −22,8 / −23,9 % (t jusqu'à −2,6). Août-octobre (même filtre : ligne principale, plus de 1 000 $ de volume) : « Under » −0,5 / +0,8 / −7,5 % (220 / 104 / 66 paris).
+Le signe de l'« Under » d'e-sport se retrouve sur une période indépendante, moins fort que le +7,7 % du 25/10 et fragile sur août-octobre avec ce filtre : **l'indice de `moins_de_cartes` reste un indice** (plutôt un peu mieux étayé), jamais une preuve.
+
+## Verdict : écartée (les deux côtés)
+Sur la découverte (15/08-26/10) le meilleur découpage faisait +10,1 % (« Over », 12 h, t 1,64) ; sur février-août le même découpage fait −0,9 % (906 paris). Rien dans l'arène : le fantôme `totaux_over`, écrit puis testé en cycle local
+(3 propositions), a été **retiré avant la fusion** (classe, entrée de config et test supprimés). Le mécanisme de `moins_de_cartes` (Under des cartes d'e-sport) reste propre à l'e-sport.
+Méthode retenue pour la suite : tout « indice » trouvé sur un relevé récent se refait sur la période précédente AVANT d'écrire une stratégie (ici : une demi-heure de téléchargement évite un fantôme inutile).

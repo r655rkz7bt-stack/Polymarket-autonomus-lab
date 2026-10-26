@@ -1049,62 +1049,6 @@ class MoinsDeCartes(_Base):
         return self._finish(out, props)
 
 
-class TotauxOver(_Base):
-    """Totaux de points ou de buts des matchs de sport (« Lakers vs. Jazz: O/U 237.5 »), 8 à 26 h avant le coup d'envoi : on achète « Over » sur la
-    ligne principale (celle dont le « Over » est le plus proche de 0,5), une ligne par match. Test sur le passé (experiments/totaux_sports.md,
-    26/10/2026) : 4 614 matchs, vrais échanges, « Over » 12 h avant +10,1 % (312 paris, t par match 1,64, 3 mois sur 3) et 24 h avant +16,9 % (114 paris),
-    mais seulement +1 % de 1 h à 6 h avant ; « Under » perd partout (-5 à -24 %). Meilleur de ~20 découpages, prix de l'échange mince : indice faible, fantôme."""
-
-    strategy_id = "totaux_over"
-    required = ("min_hours", "max_hours", "price_min", "price_max", "shift", "uncertainty", "min_net_edge", "max_proposals_per_cycle")
-
-    def _ok(self, m: MarketInfo, now: datetime | None) -> bool:
-        if (m.sports_market_type not in ("totals", "soccer_team_totals", "first_half_totals", "total_corners")
-                or [str(o).lower() for o in m.outcomes] != ["over", "under"] or len(m.token_ids) != 2
-                or m.game_start is None or now is None or (m.question or "").startswith("Games Total")):
-            return False
-        hours = (m.game_start - now).total_seconds() / 3600
-        return float(self.params["min_hours"]) <= hours <= float(self.params["max_hours"])
-
-    def candidates(self, markets):
-        from datetime import timezone
-        now = datetime.now(timezone.utc)
-        out = [m for m in markets if self._ok(m, now)]
-        out.sort(key=lambda m: m.game_start)
-        return out[: int(self.params.get("max_candidates", 60))]
-
-    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
-        out, p, now, props = StrategyOutput(), self.params, _now(books), []
-        best: dict = {}
-        for m in watchlist:
-            if not self._ok(m, now):
-                continue
-            if any(t in state.positions for t in m.token_ids):
-                out.abstain("position déjà ouverte")
-                continue
-            book = books.get(m.token_ids[0])
-            if book is None or book.best_ask is None or book.mid is None:
-                out.abstain("carnet indisponible")
-                continue
-            gap = abs(float(book.mid) - 0.5)
-            key = (m.event_id, m.sports_market_type)
-            if key not in best or gap < best[key][0]:
-                best[key] = (gap, m, book)
-        # Ligne principale seulement : les autres lignes du même match gagnent ou perdent avec elle.
-        for gap, m, book in sorted(best.values(), key=lambda x: x[0]):
-            if not float(p["price_min"]) <= float(book.best_ask) <= float(p["price_max"]):
-                out.abstain("« Over » hors de la plage de prix")
-                continue
-            est = float(book.mid) + float(p["shift"])
-            prop = self._buy(m, books, state, 0, est - float(p["uncertainty"]), est, est + float(p["uncertainty"]),
-                             bucket, marks, out, f"totaux_over:{m.question[-12:].strip()}",
-                             "« Over » gagne plus souvent que son prix 12 à 24 h avant le match (+10 % sur le passé), indice faible",
-                             "le match finit sous la ligne")
-            if prop is not None:
-                props.append(prop)
-        return self._finish(out, props)
-
-
 DRAME = re.compile(
     r"\b(invade|invades|invasion|war\b|wars\b|military action|military clash|strikes? on|attacks?\b|airstrikes?|"
     r"missiles?|nuclear|bomb|troops|blockade|annex|annexes|annexation|ceasefire|cease-fire|truce|clash|"
@@ -1521,7 +1465,7 @@ class BoxOfficeFavori(_Base):
         return self._finish(out, props)
 
 
-CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, TotauxOver, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
