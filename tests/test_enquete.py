@@ -322,6 +322,20 @@ def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token
     assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []
 
 
+def test_fifty_fifty_settlements_count_half_a_win_in_the_arena_calibration():
+    """26/10 : `estimation_gonflee` comptait un règlement à 0,5 comme une défaite (payout > 0,5) : 11 marchés 50-50 de l'arène
+    faisaient baisser les « gagnés » de ~5 et le z. Le paiement réel par part compte."""
+    rows = []
+    for i in range(100):
+        t = NOW - timedelta(hours=40 - i)
+        payout = 1 if i < 80 else (0.5 if i < 90 else 0)
+        rows += [_buy(t, f"s{i}", 0.9, 10, strategy="s", est=0.95), _settle(t + timedelta(hours=1), f"s{i}", payout)]
+    found = enquete.estimation_gonflee({"s_v1.0.0": _ledger(*rows)})
+    assert len(found) == 1
+    assert "100 paris distincts, 85 gagnés pour 95.0 annoncés" in found[0]["titre"]
+    assert "90.0 par les prix payés, z des prix -1.7" in found[0]["titre"]
+
+
 def test_near_certain_promises_that_lose_money_are_flagged_per_strategy():
     """23/10 : `news_momentum` promet 0,999 pour un « Non » vendu 0,986 ; 16 paris à ce prix dont 2 perdus = −16 × 0,3 € de gain
     contre 2 mises entières."""

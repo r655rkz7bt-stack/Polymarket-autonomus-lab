@@ -744,15 +744,16 @@ def estimation_gonflee(entries: dict[str, list[dict]], min_trades: int = 100, z_
     sport, estimation moyenne 0,92 (prix + biais fixe de 0,05), gagnés 459 pour 461 attendus par les PRIX :
     le biais n'existe à aucun prix, et le Kelly complet mise d'autant plus que le prix est haut (écart
     annoncé fixe : mise ∝ 1/(1 − prix))."""
-    seen: dict[str, tuple[str, float, float, bool]] = {}
+    seen: dict[str, tuple[str, float, float, float]] = {}
     for name, rows in entries.items():
         if name == "principal":
             continue
         for t in closed_trades(rows):
             if t.get("payout") is None or t.get("est_probability") is None or float(t["shares_bought"]) <= 0:
                 continue
+            # Paiement réel par part (0 / 0,5 / 1) : un règlement 50-50 compte 0,5 gagné, pas une perte (26/10).
             row = (t["opened_at"], float(t["cost"]) / float(t["shares_bought"]), float(t["est_probability"]),
-                   float(t["payout"]) > 0.5)
+                   min(1.0, max(0.0, float(t["payout"]))))
             if t["token_id"] not in seen or row[0] < seen[t["token_id"]][0]:
                 seen[t["token_id"]] = row
     rows = [r for r in seen.values() if 0 < r[2] < 1]
@@ -765,9 +766,11 @@ def estimation_gonflee(entries: dict[str, list[dict]], min_trades: int = 100, z_
     z = (won - est) / math.sqrt(var) if var > 0 else 0.0
     if z > z_max:
         return []
+    var_price = sum(r[1] * (1 - r[1]) for r in rows)
+    z_price = (won - by_price) / math.sqrt(var_price) if var_price > 0 else 0.0
     return [_finding("estimation_gonflee", A_REGARDER,
-                     f"arène : {len(rows)} paris distincts, {won} gagnés pour {est:.1f} annoncés par les estimations "
-                     f"({by_price:.1f} par les prix payés), z = {z:+.1f}",
+                     f"arène : {len(rows)} paris distincts, {won:g} gagnés pour {est:.1f} annoncés par les estimations "
+                     f"({by_price:.1f} par les prix payés, z des prix {z_price:+.1f}), z = {z:+.1f}",
                      "Les probabilités des stratégies sont trop hautes : l'avantage annoncé n'existe pas et sert de base "
                      "à la mise (Kelly). Regarder le paramètre `bias`/`shrink` de la stratégie et la mise par tranche de prix.")]
 

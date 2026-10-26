@@ -49,6 +49,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
+| 1X2 du football (victoire A / nul / victoire B) et résultat à la mi-temps (26/10 : 17 ligues, 4 354 événements, 47 285 paris, vrais échanges, 50-50 comptés 0,5) | écartée | équipe Oui −2,9 à −5,4 % à tous les délais (coût), équipe Non −2,1 à +1,3 %, nul Oui +3,4 % à 1 h (t +0,9) mais **+6,5 % avant le 15/08, −1,2 % depuis** ; ~60 découpages | sous_marches_football.md |
 | totaux de points et de buts des sports (« O/U 237.5 » : NBA, NFL, NCAA, MLB, NHL, football ; 26/10 : 4 614 événements du 15/08 au 26/10 puis 5 879 événements du 01/02 au 15/08, vrais échanges, 50-50 comptés 0,5) | écartée (« Over » et « Under ») | découverte : « Over » à 12 h +10,1 % (312 paris, t 1,64), « Under » −5 à −24 % ; **hors échantillon février-août : « Over » 12 h −0,9 % (906 paris, t −0,24), « Under » −0,2 à −5 %** ; ~20 découpages ; fantôme `totaux_over` retiré | totaux_sports.md |
 | handicaps (« spreads ») des sports (26/10 : 3 347 événements, 13 334 marchés, vrais échanges, 50-50 comptés 0,5) | écartée | favori −4,2 / −0,5 / +0,8 % et outsider −3,3 / −8,8 / −9,4 % à 3/12/24 h (t par match de −1,3 à +0,2) ; par sport, signes opposés d'une ligue à l'autre | ecarts_sports.md |
 | « les deux équipes marquent » (BTTS, football : 1 327 événements, 1 948 marchés, vrais échanges ; 26/10) | écartée | OUI −2,5 à +0,3 % à tous les délais (t −0,7 à +0,1), NON −5 à −18 % ; 1re mi-temps OUI +47 % sur 48 paris (bruit) | btts.md |
