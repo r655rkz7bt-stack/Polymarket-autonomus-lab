@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3559,
+  "principal": 3560,
   "fantome:calibration_patiente_v1.0.0": 1999,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1905,
@@ -18,7 +18,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1588,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2367,
+  "fantome:market_maker_serre_v1.0.0": 2369,
   "fantome:market_maker_v1.0.0": 1931,
   "fantome:favori_politique_patiente_v1.0.0": 1505,
   "fantome:favori_politique_v1.0.0": 1505,
@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1644,
   "fantome:suivre_politique_v1.0.0": 1573,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 1825,
+  "fantome:nf_court_v1.0.0": 1826,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1542,
@@ -55,7 +55,7 @@
   "fantome:nf_sport_prix_haut_v1.0.0": 1599,
   "fantome:nf_sport_sans_fin_v1.0.0": 1384,
   "fantome:nm_demi_mise_v1.0.0": 1428,
-  "fantome:outsider_sport_apres_midi_v1.0.0": 1359,
+  "fantome:outsider_sport_apres_midi_v1.0.0": 1360,
   "fantome:nf_sport_oui_v1.0.0": 1280,
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
@@ -138,8 +138,8 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 431,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 331,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 151,
-  "fantome:moins_de_cartes_v1.0.0": 299,
-  "fantome:non_aux_drames_v1.0.0": 210,
+  "fantome:moins_de_cartes_v1.0.0": 300,
+  "fantome:non_aux_drames_v1.0.0": 211,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 239,
   "fantome:vague_volume_suivre_x5_v1.0.0": 237,
@@ -165,7 +165,7 @@
   "fantome:detroits_non_normal_v1.0.0": 20,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 9
  },
- "verifiees": 9225,
+ "verifiees": 9226,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1705,9 +1705,9 @@
    "op_id": "settle-30416083803704983362439109192786175466016437604840575139970974982436472267492"
   }
  ],
- "derniere_execution": "2026-10-26T00:38:38+00:00",
+ "derniere_execution": "2026-10-26T00:42:51+00:00",
  "dernier_seq_reglements": {
-  "principal": 3559,
+  "principal": 3560,
   "fantome:calibration_patiente_v1.0.0": 1999,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1905,
@@ -1737,7 +1737,7 @@
   "fantome:loterie_meteo_v1.0.0": 1644,
   "fantome:suivre_politique_v1.0.0": 1573,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 1825,
+  "fantome:nf_court_v1.0.0": 1826,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1542,
@@ -1747,14 +1747,14 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 1614,
-  "fantome:nm_court_v1.0.0": 1639,
+  "fantome:nm_court_v1.0.0": 1641,
   "fantome:nm_crypto_v1.0.0": 1500,
   "fantome:nm_hors_crypto_v1.0.0": 1540,
   "fantome:nm_long_v1.0.0": 1531,
   "fantome:nm_prix_bas_v1.0.0": 1585,
   "fantome:nm_prix_haut_v1.0.0": 1531,
   "fantome:naive_favorite_large_v1.0.0": 1419,
-  "fantome:nf_sport_patiente_v1.0.0": 1820,
+  "fantome:nf_sport_patiente_v1.0.0": 1822,
   "fantome:favori_politique_nuit_v1.0.0": 1345,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
@@ -1762,7 +1762,7 @@
   "fantome:nf_sport_prix_haut_v1.0.0": 1599,
   "fantome:nf_sport_sans_fin_v1.0.0": 1384,
   "fantome:nm_demi_mise_v1.0.0": 1428,
-  "fantome:outsider_sport_apres_midi_v1.0.0": 1359,
+  "fantome:outsider_sport_apres_midi_v1.0.0": 1360,
   "fantome:nf_sport_oui_v1.0.0": 1280,
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
@@ -1845,8 +1845,8 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 431,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 331,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 151,
-  "fantome:moins_de_cartes_v1.0.0": 299,
-  "fantome:non_aux_drames_v1.0.0": 210,
+  "fantome:moins_de_cartes_v1.0.0": 300,
+  "fantome:non_aux_drames_v1.0.0": 211,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 239,
   "fantome:vague_volume_suivre_x5_v1.0.0": 237,
@@ -1870,7 +1870,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 25,
   "fantome:moins_de_cartes_lol_v1.0.0": 29,
   "fantome:detroits_non_normal_v1.0.0": 20,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 11
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 13
  },
  "reglements_verifies": 4982
 }
