@@ -6,7 +6,9 @@ D = os.path.join(os.path.dirname(__file__), '..', 'donnees')
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 150
 DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 24
 random.seed(int(sys.argv[3]) if len(sys.argv) > 3 else 1)
-rows = [r for r in json.load(open(os.path.join(D, 'mentions.json'))) if len(r['hist']) >= 3]
+import re
+SIMPLE = os.environ.get('SIMPLE') == '1'   # SIMPLE=1 : sans les seuils « N+ times »
+rows = [r for r in json.load(open(os.path.join(D, 'mentions.json'))) if len(r['hist']) >= 3 and not (SIMPLE and re.search(r'\d+\+', r['q']))]
 S = requests.Session(); S.headers['User-Agent'] = 'curl/8'
 def get(url, **kw):
     for i in range(4):
@@ -52,6 +54,6 @@ with cf.ThreadPoolExecutor(6) as ex:
     for k, o in enumerate(ex.map(one, evs)):
         res += o
         if k % 25 == 0: print(k, len(res), flush=True)
-json.dump(res, open(os.path.join(D, f'prix_payes_{int(DELAY)}.json'), 'w'))
+json.dump(res, open(os.path.join(D, f'prix_payes_{int(DELAY)}{"_simple" if SIMPLE else ""}.json'), 'w'))
 ok = [x for x in res if x['fill'] is not None]
 print(len(res), 'paris candidats ;', len(ok), 'avec un échange réel du NON dans les 2 h')

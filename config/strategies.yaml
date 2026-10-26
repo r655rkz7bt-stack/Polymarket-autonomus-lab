@@ -803,7 +803,7 @@ rallies_non:
   # c'est le biais du OUI, pas un calcul. ~35 réglages regardés, aucun test aux vrais échanges (marchés minces) : VERDICT « indice faible », fantôme en quart de Kelly ; `mots_prononces` (même famille, modèle de taux)
   # perd −5,8 % sur ses 28 NON en direct. `naive_favorite` n'achète que le favori ou (underdog) l'outsider : OUI à 0,50-0,70 = NON outsider (cette fille, +6,6 % à 6 h, +13,7 % à 24 h) ; OUI à 0,40-0,50 = NON favori (`rallies_non_favori`).
   class: naive_favorite
-  filtres: {issue: [non], prix_min: 0.30, prix_max: 0.50, echeance_min: 3, echeance_max: 20, question_contient: ["rally"]}
+  filtres: {issue: [non], prix_min: 0.30, prix_max: 0.50, echeance_min: 3, echeance_max: 20, question_contient: ["rally"], question_exclut: ["+ times"]}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-26"
@@ -824,7 +824,7 @@ rallies_non_favori:
   mere: rallies_non
   morceau: "NON favori (OUI à 0,40-0,50)"
   class: naive_favorite
-  filtres: {issue: [non], prix_min: 0.50, prix_max: 0.60, echeance_min: 3, echeance_max: 20, question_contient: ["rally"]}
+  filtres: {issue: [non], prix_min: 0.50, prix_max: 0.60, echeance_min: 3, echeance_max: 20, question_contient: ["rally"], question_exclut: ["+ times"]}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-26"
@@ -844,8 +844,9 @@ mentions_non:
   # moyen de 0,502. NON quand le OUI vaut 0,30-0,45 : +8,9 % à 6 h [IC95 par événement +4,9 ; +12,6], +8,0 % à 24 h [+4,3 ; +11,3] ; 0,45-0,60 : +4,1 % [0,0 ; +8,2] et +7,4 % [+3,1 ; +11,7] (frais 0,04·p(1−p) et écart 0,02 comptés ;
   # les mentions sont sans frais chez Gamma : +1 à +2 points de mieux). Hors 0,50 exact et prix datés de moins de 3 h : inchangé. Vrais échanges (231 paris avec un achat réel du NON dans les 2 h) : +9,0 % [−2,8 ; +22,1], mais le prix payé
   # (0,556) est bien au-dessus du prix du CLOB (0,48) : indice, pas preuve. Par orateur : Trump +2 à +3 % (IC contient 0), Karoline Leavitt, NYT, MrBeast +12 à +32 % (peu de cas), commentateurs −1 à −5 % (exclus). VERDICT « indice » : fantôme en quart de Kelly.
+  # Raffinement après coup (2 découpages regardés, MÊME sens sur les deux échantillons) : les seuils « 15+ times » perdent (NON −7,7 % [−14,7 ; +0,3] sur 807 paris ici, −7 à −11 % sur 63-67 paris de meetings), les mots simples gagnent (+12,1 % [+8,7 ; +15,4] sur 5 007 paris sans frais, 702 événements ; première moitié +8,6 %, seconde +10,1 %, 2025 +8,1 %, 2026 +10,0 %) : `question_exclut: ["+ times"]`.
   class: naive_favorite
-  filtres: {issue: [non], prix_min: 0.50, prix_max: 0.70, echeance_min: 6, echeance_max: 30, question_contient: [" say ", "mention"], question_exclut: ["rally", "announcer", "commentator"]}
+  filtres: {issue: [non], prix_min: 0.50, prix_max: 0.70, echeance_min: 6, echeance_max: 30, question_contient: [" say ", "mention"], question_exclut: ["rally", "announcer", "commentator", "+ times"]}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-26"
@@ -864,7 +865,7 @@ mentions_non_outsider:
   mere: mentions_non
   morceau: "NON outsider (OUI à 0,50-0,60)"
   class: naive_favorite
-  filtres: {issue: [non], prix_min: 0.40, prix_max: 0.50, echeance_min: 6, echeance_max: 30, question_contient: [" say ", "mention"], question_exclut: ["rally", "announcer", "commentator"]}
+  filtres: {issue: [non], prix_min: 0.40, prix_max: 0.50, echeance_min: 6, echeance_max: 30, question_contient: [" say ", "mention"], question_exclut: ["rally", "announcer", "commentator", "+ times"]}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-26"

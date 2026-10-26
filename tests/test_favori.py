@@ -335,7 +335,7 @@ def test_rallies_no_buys_the_no_of_a_trump_rally_word_market_inside_its_window(t
     assert cfg.filters["issue"] == ["non"] and cfg.filters["echeance_min"] == 3 and cfg.filters["echeance_max"] == 20 and fav.filters["prix_min"] == 0.50
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 
-    def proposals(strategy, hours, tmp, bid, ask, question='Will Trump say "Hell" 15+ times during his Midterm Rally in Michigan?'):
+    def proposals(strategy, hours, tmp, bid, ask, question='Will Trump say "Hell" during his Midterm Rally in Michigan?'):
         m, books, ledger, _ = _setup(tmp, fee_type="zero_fees", end_hours=hours, bid=bid, ask=ask)
         m.question = question
         m.outcome_prices = [(D(bid) + D(ask)) / 2, 1 - (D(bid) + D(ask)) / 2]
@@ -348,6 +348,7 @@ def test_rallies_no_buys_the_no_of_a_trump_rally_word_market_inside_its_window(t
     assert not proposals(cfg, 40, tmp_path / "d", "0.59", "0.60")                  # trop tôt
     assert not proposals(cfg, 10, tmp_path / "e", "0.19", "0.20")                  # NON trop cher (0,80)
     assert not proposals(cfg, 10, tmp_path / "f", "0.59", "0.60", question="Will Trump say Hell during his press conference?")  # pas un meeting
+    assert not proposals(cfg, 10, tmp_path / "g", "0.59", "0.60", question='Will Trump say "Hell" 15+ times during his Midterm Rally in Michigan?')  # seuil « N+ times » : le NON y perd
 
 
 def test_mentions_no_buys_the_no_of_a_word_market_but_not_rallies_or_announcers(tmp_path):
@@ -371,6 +372,7 @@ def test_mentions_no_buys_the_no_of_a_word_market_but_not_rallies_or_announcers(
     assert not proposals(cfg, 12, tmp_path / "f", "0.39", "0.40", question='Will Trump say "Hell" during his Midterm Rally in Iowa?')           # meeting : rallies_non
     assert not proposals(cfg, 12, tmp_path / "g", "0.39", "0.40", question='Will the announcers say "Overtime" during the game?')              # commentateurs
     assert not proposals(cfg, 12, tmp_path / "h", "0.39", "0.40", question="Will the Fed cut rates in December?")                                # pas un mot dit
+    assert not proposals(cfg, 12, tmp_path / "i", "0.39", "0.40", question='Will Karoline Leavitt say "Iran" 5+ times during the briefing?')     # seuil « N+ times » : le NON y perd
 
 
 def test_filtered_strategy_says_which_filter_dropped_the_markets_it_never_saw(tmp_path):

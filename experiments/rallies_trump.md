@@ -40,6 +40,23 @@ Par orateur (OUI 0,40-0,70, 24 h) : Trump (2 720 paris) **+3,2 % [−2,6 ; +9,5]
 Le prix du CLOB sous-estime donc le coût du NON de 7 points dans le sous-échantillon qui s'échange, et le sous-échantillon est choisi par l'échange (un preneur qui achète le NON en sait peut-être plus : biais possible dans les deux sens) : **le gain n'est pas prouvé aux prix payés**, il est « indice ».
 Les 4 fantômes sont la manière de le vérifier en direct, aux prix et aux carnets réels.
 
+## Raffinement (après coup) : les seuils « N+ times » perdent, les mots simples gagnent
+Découpage regardé après les tables ci-dessus (2 découpages : seuil / mot simple, puis « or » / pas « or » ; `biais_oui_mentions.py` modifié en ligne de commande, résultats ici) : OUI 0,30-0,60 à 24 h, sans frais, écart 0,02, IC95 par événement.
+
+| | échantillon neuf (mentions) | meetings (échantillon d'origine) |
+|---|---|---|
+| tous | +9,4 % [+6,2 ; +12,8] (5 814 paris, 709 événements) | +5 à +11 % |
+| mot simple | **+12,1 % [+8,7 ; +15,4]** (5 007 paris, 702 événements) | +13,7 % à 6 h [+3,9 ; +23,0], +5,6 % à 24 h [−4,3 ; +15,3] |
+| seuil « N+ times » | **−7,7 % [−14,7 ; +0,3]** (807 paris) | −11,3 % à 6 h, −6,7 % à 24 h (63-67 paris, IC ±25) |
+| mot simple sans « or » | +12,5 % [+9,1 ; +16,1] | |
+| première moitié (avant le 12/03/2026) / seconde | +8,6 % [+3,9 ; +13,1] / +10,1 % [+5,3 ; +14,5] | |
+| 2024 / 2025 / 2026 | +8,9 % [−3,5 ; +20,7] / +8,1 % [+2,2 ; +13,8] / +10,0 % [+6,0 ; +14,1] | |
+
+Le signe des seuils est le même dans les deux échantillons (indépendants). Les quatre fantômes excluent donc `"+ times"`.
+Vrais échanges, mots simples seuls (`prix_payes_mentions.py`, `SIMPLE=1`, 375 événements tirés, 2 594 paris candidats à 24 h) : **517 (20 %)** ont un achat réel du NON dans les 2 h, payé 0,542 en moyenne :
+**+16,6 % [+7,1 ; +26,3]** (183 événements). Même biais que plus haut : le NON réalisé vaut 0,632 sur ces paris contre 0,55 sur l'ensemble des candidats (les preneurs achètent plus souvent le NON qui va gagner), donc ce +16,6 % est un maximum, pas une mesure ;
+au prix du CLOB + 0,02, l'ensemble des 2 594 candidats donne +12,0 % [+6,1 ; +17,9]. **Ce qu'on ne sait pas** : combien de ces NON s'achètent vraiment à 0,02 du CLOB (80 % n'ont aucun preneur dans les 2 h ; le carnet peut quand même offrir un vendeur).
+
 ## Limites
 - Prix du CLOB (pas de prix payés) : les marchés de 2026 sont minces (20-80 k$ par meeting, ≈ 2-4 k$ par mot) ; le NON à 0,30-0,60 s'achète-t-il vraiment à ce prix + 0,02 ? Les 28 NON de `mots_prononces` en direct (écart d'achat inclus) : −5,8 % (z −0,5, bruit).
 - Les mots d'un meeting sont liés (durée du discours) : l'IC par meeting en tient compte, pas les ±5 points de la loi binomiale.
