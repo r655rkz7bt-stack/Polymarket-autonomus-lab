@@ -752,7 +752,10 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
             output.proposals = _cap_main(deps, portfolio, output.proposals, by_market)
             limit_orders = _cap_main(deps, portfolio, limit_orders, by_market)
         proposals += output.proposals
-        proposals += _place_resting(deps, portfolio, limit_orders, by_market, report, fresh_books)
+        source = getattr(strategy, "source", None)
+        seen_by_source = source.copied.get(strategy.strategy_id) if source is not None else None
+        proposals += _place_resting(deps, portfolio, limit_orders, by_market, report, fresh_books,
+                                    source_orders=seen_by_source["orders"] if seen_by_source else None)
     accepted = fills = 0
 
     for proposal in proposals:
@@ -1075,16 +1078,21 @@ def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
 
 def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal],
                    by_market: dict[str, MarketInfo], report: CycleReport,
-                   fresh_books: dict | None = None) -> list[Proposal]:
+                   fresh_books: dict | None = None,
+                   source_orders: list[Proposal] | None = None) -> list[Proposal]:
     """Pose les ordres à cours limité (base de données, pas d'argent). Un ordre déjà exécutable
     (achat >= meilleur vendeur, vente <= meilleur acheteur) est renvoyé pour le circuit taker
-    habituel : il serait exécuté tout de suite sur le vrai marché."""
+    habituel : il serait exécuté tout de suite sur le vrai marché.
+
+    `source_orders` (copie du principal) : les ordres que le fantôme copié a posés ce cycle. Celui dont la copie
+    n'est pas posée (mise plafonnée, refus du contrôleur…) annule l'ancien ordre du principal sur ce jeton : le
+    fantôme l'a remplacé par un autre prix, le principal ne garde pas l'ancien (enquête du 26/10/2026)."""
     cfg = deps.settings.get("limit_orders", {})
     max_open = int(cfg.get("max_open_per_portfolio", 30))
     max_age = float(cfg.get("max_age_hours", 6))
     ledger, now = portfolio.ledger, deps.now()
     open_orders = deps.db.open_orders(portfolio.name)
-    marketable = []
+    marketable, placed = [], set()
     for order in orders:
         market = by_market.get(order.market_id)
         if market is None:
@@ -1118,12 +1126,19 @@ def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal]
             hours = min(max(float(order.horizon_hours), 0.0), max_age)
             if deps.db.add_pending_order(portfolio.name, order, now, now + timedelta(hours=hours)):
                 portfolio.counts["orders_placed"] = portfolio.counts.get("orders_placed", 0) + 1
+                placed.add((order.token_id, order.side))
                 if order.strategy_id in portfolio.copied:
                     portfolio.copied[order.strategy_id]["orders"].append(order)
                 open_orders = deps.db.open_orders(portfolio.name)
                 log.info("[%s] ordre posé %s : %s %s parts à %s", portfolio.name, order.op_id,
                          order.side, order.shares, order.max_price)
         deps.db.save_decision(report.cycle_id, now, order, verdict)
+    if source_orders:
+        for source in source_orders:
+            key = (source.token_id, source.side)
+            if key not in placed and deps.db.cancel_open_orders(portfolio.name, *key, now):
+                log.info("[%s] ordre posé annulé : la source a changé son ordre sur %s et sa copie n'est pas posée",
+                         portfolio.name, source.token_id)
     return marketable
 
 

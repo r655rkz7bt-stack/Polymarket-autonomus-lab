@@ -501,6 +501,33 @@ def test_resting_order_is_placed_then_filled_only_when_traded_through(env, paths
     assert buys[0]["data"]["extra"]["order_type"] == "limite"
 
 
+def test_principal_drops_its_resting_copy_when_the_ghost_replaces_it_and_the_copy_is_not_placed(env, paths):
+    """Enquête du 26/10/2026 : le fantôme remet son prix à jour (0,83 → 0,82) mais la copie du principal est
+    écartée (mise plafonnée) : l'ancien ordre du principal à 0,83 restait ouvert et était servi à un prix que
+    le fantôme n'acceptait plus (« Team Yandex », 22:35, achat sans jumeau)."""
+    make, db, clock = env
+    crown(paths)
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), strategies=[_patient()]))
+    old = {o["portfolio"]: json.loads(o["proposal"])["max_price"] for o in db.open_orders()}
+    assert old["principal"] == "0.89"
+    # Cycle 2 : le fantôme re-pose à 0,88 ; le plafond du principal écarte la copie.
+    clock["now"] = NOW + timedelta(minutes=5)
+    settings = load_settings()
+    settings["arena"] = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    settings["arena"].update(essai={}, part_max_par_strategie=None, garde_fou_jour=None, mise_avantage_mesure=None)
+    settings["fantomes"] = {}
+    settings["principal"] = {"max_mise": 0, "max_famille": 0}
+    touch = make_book("tokA", bids=(("0.88", "500"),), asks=(("0.89", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": touch}), settings, [_patient()]))
+    now_open = {o["portfolio"]: json.loads(o["proposal"])["max_price"] for o in db.open_orders()}
+    assert now_open == {"fantome:naive_favorite_v1.0.0": "0.88"}  # plus d'ordre périmé au principal
+    # Cycle 3 : le marché passe au travers de l'ancien prix du principal : rien n'est acheté pour lui.
+    clock["now"] = NOW + timedelta(minutes=10)
+    through = make_book("tokA", bids=(("0.86", "500"),), asks=(("0.87", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([raw_market()]), FakeClob({"tokA": through}), settings, [_patient()]))
+    assert "BUY" not in _ledger_types(paths[0])
+
+
 def test_resting_order_expires_and_never_fills_after(env, paths):
     make, db, clock = env
     crown(paths)
