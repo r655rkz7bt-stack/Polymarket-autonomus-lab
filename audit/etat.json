@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3642,
+  "principal": 3643,
   "fantome:calibration_patiente_v1.0.0": 2029,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1917,
@@ -18,7 +18,7 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1600,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2396,
+  "fantome:market_maker_serre_v1.0.0": 2398,
   "fantome:market_maker_v1.0.0": 1953,
   "fantome:favori_politique_patiente_v1.0.0": 1519,
   "fantome:favori_politique_v1.0.0": 1519,
@@ -165,7 +165,7 @@
   "fantome:detroits_non_normal_v1.0.0": 32,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 35
  },
- "verifiees": 9391,
+ "verifiees": 9392,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1769,9 +1769,9 @@
    "op_id": "settle-40220000390489237442666590685171156363211017606636287738930798027342360240862"
   }
  ],
- "derniere_execution": "2026-10-26T06:29:04+00:00",
+ "derniere_execution": "2026-10-26T06:33:09+00:00",
  "dernier_seq_reglements": {
-  "principal": 3642,
+  "principal": 3643,
   "fantome:calibration_patiente_v1.0.0": 2029,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1917,
@@ -1789,8 +1789,8 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1600,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2398,
-  "fantome:market_maker_v1.0.0": 1953,
+  "fantome:market_maker_serre_v1.0.0": 2400,
+  "fantome:market_maker_v1.0.0": 1956,
   "fantome:favori_politique_patiente_v1.0.0": 1519,
   "fantome:favori_politique_v1.0.0": 1519,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1519,
@@ -1798,7 +1798,7 @@
   "fantome:contrer_crypto_patiente_v1.0.0": 1887,
   "fantome:contrer_crypto_v1.0.0": 1772,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1520,
-  "fantome:loterie_meteo_v1.0.0": 1677,
+  "fantome:loterie_meteo_v1.0.0": 1681,
   "fantome:suivre_politique_v1.0.0": 1607,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 1853,
