@@ -1,0 +1,3 @@
+399 couples (Under 2,5, handicap −1,5 du favori) avec les prix des deux côtés dans la même fenêtre
+Under < handicap du favori : 14 fois (3.5 %) ; écart moyen Under − handicap +0.128 (médiane +0.130)
+Under + NON(handicap) : moyenne 1.145 ; < 1,00 : 7 fois ; < 0,97 : 0 fois
