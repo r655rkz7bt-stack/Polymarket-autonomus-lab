@@ -2902,7 +2902,7 @@ statu_quo_ia:
   class: naive_favorite
   filtres: {question_contient: ["best ai model"], issue: [oui], echeance_min: 288, echeance_max: 840}
   enabled: true
-  version: "1.0.0"
+  version: "1.1.0"   # 26/10/2026 : v1.0.0 retirée pour « inactivité » le 23/10 à 15 h 21, 17 minutes avant la protection jamais_retirer ; elle devait jouer « end of November » (fenêtre 12-35 jours dès le 27/10)
   created_at: "2026-10-21"
   params:
     min_ask:        {value: 0.70, min: 0.50, max: 0.97}
