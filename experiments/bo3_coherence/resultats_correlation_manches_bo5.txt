@@ -1,0 +1,13 @@
+122 matchs BO5 avec total 3.5, prix du vainqueur et prix de l'Under
+TOUS                     n= 122  réel 0.533  binomial 0.339  marché 0.389  réel−binomial +0.194  réel−marché +0.144 (z +3.40)
+favori 0.5-0.6           n=  27  réel 0.481  binomial 0.253  marché 0.283  réel−binomial +0.228  réel−marché +0.198 (z +2.30)
+favori 0.6-0.7           n=  26  réel 0.192  binomial 0.273  marché 0.291  réel−binomial -0.081  réel−marché -0.099 (z -1.11)
+favori 0.7-0.8           n=  24  réel 0.583  binomial 0.311  marché 0.341  réel−binomial +0.273  réel−marché +0.242 (z +2.51)
+favori 0.8-0.9           n=  24  réel 0.708  binomial 0.382  marché 0.464  réel−binomial +0.326  réel−marché +0.244 (z +2.43)
+favori 0.9-1.0           n=  21  réel 0.762  binomial 0.514  marché 0.616  réel−binomial +0.248  réel−marché +0.146 (z +1.41)
+série lol                n= 109  réel 0.560  binomial 0.347  marché 0.401  réel−binomial +0.213  réel−marché +0.158 (z +3.52)
+mois 2026-01..2026-06    n=  40  réel 0.525  binomial 0.327  marché 0.373  réel−binomial +0.198  réel−marché +0.152 (z +2.05)
+mois 2026-06..2026-11    n=  72  réel 0.583  binomial 0.350  marché 0.413  réel−binomial +0.233  réel−marché +0.170 (z +3.08)
+-- par prix payé de l'Under (la stratégie mère n'achète qu'entre 0,30 et 0,70)
+Under 0.0-0.3            n=  37  réel 0.378  binomial 0.263  marché 0.263  réel−binomial +0.116  réel−marché +0.115 (z +1.60)
+Under 0.3-0.5            n=  61  réel 0.541  binomial 0.326  marché 0.374  réel−binomial +0.215  réel−marché +0.167 (z +2.71)

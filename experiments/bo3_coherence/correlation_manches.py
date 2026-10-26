@@ -14,6 +14,7 @@ import series  # noqa: E402
 from echanges import cout_preneur  # noqa: E402
 
 D = HERE / "donnees"
+BO = int(os.environ.get("BO", "3"))  # BO=5 : Under 3,5 (balayage 3-0 en cinq manches)
 choisis = set(json.loads((D / "echantillon_esport.json").read_text()))
 rows_out = []
 for nom in ("cs2", "lol", "dota2", "val"):
@@ -23,7 +24,7 @@ for nom in ("cs2", "lol", "dota2", "val"):
         ev["serie"] = nom
         c = series.match_cas(ev, "esport")
         p = D / "echanges" / f"{ev['id']}.json.gz"
-        if not c or c["bo"] != 3 or not p.exists():
+        if not c or c["bo"] != BO or not p.exists():
             continue
         rows = json.loads(gzip.decompress(p.read_bytes()))
         t0 = c["start"] - 3 * 3600
@@ -33,15 +34,17 @@ for nom in ("cs2", "lol", "dota2", "val"):
         for li in c["lies"]:
             if li["kind"] != "total" or li["won"] == -1:
                 continue
+            if BO == 5 and round(min(li["f"](0.5), 1 - li["f"](0.5)), 3) != 0.25:
+                continue  # BO5 : seule la ligne 3,5 (la 4,5 a une autre loi)
             over_idx = 0 if li["f"](0.9) < 0.5 else 1  # f(0.9) = chance de l'issue 0 : 0,18 si Over, 0,82 si Under
             u = 1 - over_idx
             got = cout_preneur(rows, li["toks"][u], li["toks"][over_idx], t0, 6 * 3600, apres=True, fin_max=c["start"])
             if not got or not 0.01 <= got[1] <= 0.99:
                 continue
-            q = series.q_depuis_match(max(m, 1 - m), 3)
-            rows_out.append({"fav": max(m, 1 - m), "binom": 1 - 2 * q * (1 - q), "marche": got[1], "reel": float(li["won"] == u), "serie": nom,
+            q = series.q_depuis_match(max(m, 1 - m), BO)
+            rows_out.append({"fav": max(m, 1 - m), "binom": (1 - 2 * q * (1 - q)) if BO == 3 else (q ** 3 + (1 - q) ** 3), "marche": got[1], "reel": float(li["won"] == u), "serie": nom,
                              "event": c["event"], "mois": series.jour(c["start"])[:7]})
-print(len(rows_out), "matchs BO3 avec total 2,5, prix du vainqueur et prix de l'Under")
+print(len(rows_out), f"matchs BO{BO} avec total {2.5 if BO == 3 else 3.5}, prix du vainqueur et prix de l'Under")
 
 def ligne(nom, v):
     if len(v) < 20: return
@@ -56,3 +59,6 @@ for s in ("cs2", "lol", "dota2", "val"):
     ligne(f"série {s}", [x for x in rows_out if x["serie"] == s])
 for lo, hi in [("2026-01", "2026-06"), ("2026-06", "2026-11")]:
     ligne(f"mois {lo}..{hi}", [x for x in rows_out if lo <= x["mois"] < hi])
+print("-- par prix payé de l'Under (la stratégie mère n'achète qu'entre 0,30 et 0,70)")
+for lo, hi in [(0.0, 0.3), (0.3, 0.5), (0.5, 0.7), (0.7, 0.8), (0.8, 0.9), (0.9, 1.0)]:
+    ligne(f"Under {lo:.1f}-{hi:.1f}", [x for x in rows_out if lo <= x["marche"] < hi])
