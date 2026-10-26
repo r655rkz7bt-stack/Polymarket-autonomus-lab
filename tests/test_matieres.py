@@ -150,3 +150,13 @@ def test_strategy_takes_at_most_max_per_event_bars_best_edge_first(tmp_path):
         books.update(b)
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert {p.market_id for p in out.proposals} == {"a", "b"} and "déjà le maximum de barres de cet événement" in str(out.abstentions)
+
+
+def test_strategy_says_why_when_no_bar_is_attached(tmp_path):
+    """27/10/2026 : `toucher_metaux` restait « muette, aucune raison notée » tant qu'aucune barre n'avait de prix rattaché."""
+    s = _s(ToucherMetaux, min_net_edge=0.10, uncertainty=0.0, min_price=0.08, max_price=0.90, max_stale_hours=0.5,
+           max_extra_ticks=1, max_proposals_per_cycle=6, max_per_event=6, kelly_fraction=0.25)
+    m, b = _case("sans_prix", 0.60, 0.25)
+    m.references = {}
+    out = s.propose([m], b, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and "aucune barre d'or ou d'argent avec un prix rattaché" in str(out.abstentions)
