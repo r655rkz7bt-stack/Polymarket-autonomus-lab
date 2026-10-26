@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3689,
+  "principal": 3690,
   "fantome:calibration_patiente_v1.0.0": 2036,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1923,
@@ -19,13 +19,13 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1606,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2417,
-  "fantome:market_maker_v1.0.0": 1983,
+  "fantome:market_maker_v1.0.0": 1985,
   "fantome:favori_politique_patiente_v1.0.0": 1525,
   "fantome:favori_politique_v1.0.0": 1525,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1525,
   "fantome:outsider_sport_patiente_v1.0.0": 1578,
-  "fantome:contrer_crypto_patiente_v1.0.0": 1894,
-  "fantome:contrer_crypto_v1.0.0": 1784,
+  "fantome:contrer_crypto_patiente_v1.0.0": 1896,
+  "fantome:contrer_crypto_v1.0.0": 1786,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1527,
   "fantome:loterie_meteo_v1.0.0": 1701,
   "fantome:suivre_politique_v1.0.0": 1616,
@@ -165,7 +165,7 @@
   "fantome:detroits_non_normal_v1.0.0": 38,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 41
  },
- "verifiees": 9486,
+ "verifiees": 9489,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1769,9 +1769,9 @@
    "op_id": "settle-64889510070229223405682432763631707790898496179125246390991399690127168891386"
   }
  ],
- "derniere_execution": "2026-10-26T09:29:06+00:00",
+ "derniere_execution": "2026-10-26T09:32:58+00:00",
  "dernier_seq_reglements": {
-  "principal": 3689,
+  "principal": 3690,
   "fantome:calibration_patiente_v1.0.0": 2036,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1923,
@@ -1789,14 +1789,14 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1606,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2417,
+  "fantome:market_maker_serre_v1.0.0": 2420,
   "fantome:market_maker_v1.0.0": 1987,
   "fantome:favori_politique_patiente_v1.0.0": 1525,
   "fantome:favori_politique_v1.0.0": 1525,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1525,
   "fantome:outsider_sport_patiente_v1.0.0": 1578,
   "fantome:contrer_crypto_patiente_v1.0.0": 1896,
-  "fantome:contrer_crypto_v1.0.0": 1786,
+  "fantome:contrer_crypto_v1.0.0": 1788,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1527,
   "fantome:loterie_meteo_v1.0.0": 1701,
   "fantome:suivre_politique_v1.0.0": 1616,
