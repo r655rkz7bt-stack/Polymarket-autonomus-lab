@@ -18,8 +18,8 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1610,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2447,
-  "fantome:market_maker_v1.0.0": 1997,
+  "fantome:market_maker_serre_v1.0.0": 2449,
+  "fantome:market_maker_v1.0.0": 1999,
   "fantome:favori_politique_patiente_v1.0.0": 1529,
   "fantome:favori_politique_v1.0.0": 1529,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1529,
@@ -165,7 +165,7 @@
   "fantome:detroits_non_normal_v1.0.0": 42,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 45
  },
- "verifiees": 9544,
+ "verifiees": 9546,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1769,9 +1769,9 @@
    "op_id": "settle-6318563759062603530725272974809810105717300182844216425438762391660972289661"
   }
  ],
- "derniere_execution": "2026-10-26T11:28:02+00:00",
+ "derniere_execution": "2026-10-26T11:33:54+00:00",
  "dernier_seq_reglements": {
-  "principal": 3724,
+  "principal": 3725,
   "fantome:calibration_patiente_v1.0.0": 2041,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1927,
@@ -1789,8 +1789,8 @@
   "fantome:news_momentum_patiente_v1.0.0": 1264,
   "fantome:crypto_threshold_patiente_v1.0.0": 1610,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
-  "fantome:market_maker_serre_v1.0.0": 2451,
-  "fantome:market_maker_v1.0.0": 1999,
+  "fantome:market_maker_serre_v1.0.0": 2453,
+  "fantome:market_maker_v1.0.0": 2001,
   "fantome:favori_politique_patiente_v1.0.0": 1529,
   "fantome:favori_politique_v1.0.0": 1529,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1529,
