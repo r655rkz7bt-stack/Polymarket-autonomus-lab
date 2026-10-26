@@ -838,6 +838,47 @@ rallies_non_favori:
     max_proposals_per_cycle: {value: 6, min: 0, max: 50}
     kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
 
+mentions_non:
+  explication: "Dans les marchés « dira-t-il tel mot ? » (hors meetings et commentateurs), le OUI est vendu un peu trop cher : on achète le NON quand le OUI vaut entre 0,30 et 0,50, de 6 à 30 heures avant la fin."
+  # Contre-épreuve de `rallies_non` (26/10/2026, experiments/rallies_trump.md) sur un échantillon NEUF : 13 513 marchés « What will X say… » de 745 événements (hors meetings), prix horaires du CLOB. OUI réalisé 0,458 pour un prix
+  # moyen de 0,502. NON quand le OUI vaut 0,30-0,45 : +8,9 % à 6 h [IC95 par événement +4,9 ; +12,6], +8,0 % à 24 h [+4,3 ; +11,3] ; 0,45-0,60 : +4,1 % [0,0 ; +8,2] et +7,4 % [+3,1 ; +11,7] (frais 0,04·p(1−p) et écart 0,02 comptés ;
+  # les mentions sont sans frais chez Gamma : +1 à +2 points de mieux). Hors 0,50 exact et prix datés de moins de 3 h : inchangé. Vrais échanges (231 paris avec un achat réel du NON dans les 2 h) : +9,0 % [−2,8 ; +22,1], mais le prix payé
+  # (0,556) est bien au-dessus du prix du CLOB (0,48) : indice, pas preuve. Par orateur : Trump +2 à +3 % (IC contient 0), Karoline Leavitt, NYT, MrBeast +12 à +32 % (peu de cas), commentateurs −1 à −5 % (exclus). VERDICT « indice » : fantôme en quart de Kelly.
+  class: naive_favorite
+  filtres: {issue: [non], prix_min: 0.50, prix_max: 0.70, echeance_min: 6, echeance_max: 30, question_contient: [" say ", "mention"], question_exclut: ["rally", "announcer", "commentator"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-26"
+  params:
+    min_ask:        {value: 0.50, min: 0.10, max: 0.97}
+    max_ask:        {value: 0.70, min: 0.40, max: 0.98}
+    bias:           {value: 0.04, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 6, min: 0, max: 50}
+    kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
+
+mentions_non_outsider:
+  explication: "La même idée que mentions_non, quand le OUI vaut entre 0,50 et 0,60 (le NON est alors l'outsider)."
+  mere: mentions_non
+  morceau: "NON outsider (OUI à 0,50-0,60)"
+  class: naive_favorite
+  filtres: {issue: [non], prix_min: 0.40, prix_max: 0.50, echeance_min: 6, echeance_max: 30, question_contient: [" say ", "mention"], question_exclut: ["rally", "announcer", "commentator"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-26"
+  params:
+    min_ask:        {value: 0.40, min: 0.10, max: 0.97}
+    max_ask:        {value: 0.50, min: 0.40, max: 0.98}
+    underdog:       {value: 1, min: 0, max: 1}
+    bias:           {value: 0.04, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 6, min: 0, max: 50}
+    kelly_fraction:  {value: 0.25, min: 0.0, max: 5.0}
+
 nf_sport_patiente_tennis:
   explication: "La championne (favori de sport, achat posé), mais seulement le tennis : c'est là qu'elle gagne."
   # Entonnoir 80/20 (20/10/2026, reports/pareto.md) : sur 75 opérations de nf_sport_patiente, le

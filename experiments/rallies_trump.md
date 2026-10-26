@@ -1,6 +1,6 @@
-# Rallies de Trump : « dira-t-il tel mot pendant son meeting ? » (26/10/2026)
+# Rallies de Trump et marchés « dira-t-il tel mot ? » (26/10/2026)
 
-**Verdict : indice faible → fantômes `rallies_non` et `rallies_non_favori` (quart de Kelly).** Le modèle « même mot aux meetings précédents » est écarté (il fait moins bien que le marché).
+**Verdict : indice (biais du OUI, confirmé sur un échantillon neuf mais pas aux vrais prix) → fantômes `rallies_non`, `rallies_non_favori`, `mentions_non`, `mentions_non_outsider` (quart de Kelly).** Le modèle « même mot aux meetings précédents » est écarté (il fait moins bien que le marché).
 
 ## Pourquoi cette piste
 `mots_prononces` (retenue le 20/10 : +19 à +27 % par achat sur 3 000 marchés « mentions ») fait **+0,1 % sur 50 paris réglés en direct** (21 gagnés pour 23,4 attendus par les prix, z −0,7 ; 28 NON : −5,8 %), alors que
@@ -20,6 +20,25 @@ règlement lu sur Gamma (`outcomePrices` 0/1 : 1 371 sur 1 371 nets). Pas d'éch
    2024 +5 à +18 % par achat et 2026 +9 à +13 % par achat (mêmes signes), mais par meeting t +0,3 à +1,6. Sur les seuls meetings de 2026 en heures avant la fin (26 meetings) : +4 à +16 %, IC95 de ±20 points (tous contiennent 0).
    Découpage : OUI à 0,50-0,70 (NON outsider 0,30-0,50) +6,6 % à 6 h, +13,7 % à 24 h [+1,3 ; +26,6] ; OUI à 0,40-0,50 (NON favori) +13,0 % à 6 h [−1,5 ; +26,8], +7,3 % à 24 h.
 4. **Réglages regardés** : ≈ 35 (délais 2-48 h, bornes de prix, campagne, modèle k/marge) : le signe du NON est positif partout, la significativité nulle ou limite. **Aucun** ne dépasse t 2 par meeting.
+
+## Contre-épreuve sur un échantillon neuf : tous les marchés « What will X say … » (hors meetings)
+`scripts/releve_mentions.py` : 884 événements, **13 513 marchés de 745 événements** (Trump hebdomadaire et discours, Leavitt, Starmer, Powell, NYT, MrBeast, commentateurs…), prix horaires du CLOB à 6 et 24 h après l'ouverture ; `scripts/biais_oui_mentions.py`.
+OUI réalisé **0,458 pour un prix moyen de 0,502** (−4,4 points), 24 h : 0,457 pour 0,502. NON, frais 0,04·p(1−p) et écart 0,02 comptés, bootstrap par événement (IC95) :
+
+| OUI | 6 h | 24 h |
+|---|---|---|
+| 0,15-0,30 | +4,9 % [+1,9 ; +7,7] | +5,9 % [+3,4 ; +8,4] |
+| 0,30-0,45 | +8,9 % [+4,9 ; +12,6] | +8,0 % [+4,3 ; +11,3] |
+| 0,45-0,60 | +4,1 % [0,0 ; +8,2] | +7,4 % [+3,1 ; +11,7] |
+| 0,60-0,75 | −3,6 % [−11 ; +3] | −2,9 % [−10 ; +5] |
+| 0,75-0,97 | −18 % [−28 ; −7] | −13 % [−24 ; −3] |
+| 0,40-0,70 | +4,6 % [+1,0 ; +8,2] | +5,9 % [+2,0 ; +10,0] |
+
+Sans les prix à exactement 0,50 (12 % des cas à 6 h : carnet vide) et avec les prix datés de moins de 3 h : +4,0 à +6,4 %, IC95 qui ne contient pas 0 (sauf « prix stable + hors 0,50 » à 6 h : [0,0 ; +8,3]). Sans frais (les mentions sont `feesEnabled false` chez Gamma) : +1 à +2 points de mieux.
+Par orateur (OUI 0,40-0,70, 24 h) : Trump (2 720 paris) **+3,2 % [−2,6 ; +9,5]**, commentateurs −1,0 %, Starmer +0,1 %, Leavitt +12,5 %, NYT +27,6 %, MrBeast +23,1 % : l'effet est surtout hors Trump, donc hors du lot où les meetings pèsent le plus.
+**Aux prix réellement payés** (`scripts/prix_payes_mentions.py`, 150 événements tirés, 1 053 paris candidats à 24 h) : seulement **231 (22 %)** ont un achat réel du NON par un preneur dans les 2 h ; à ce prix payé (moyenne 0,556, contre 0,48 au CLOB) : **+9,0 % [−2,8 ; +22,1]** (78 événements).
+Le prix du CLOB sous-estime donc le coût du NON de 7 points dans le sous-échantillon qui s'échange, et le sous-échantillon est choisi par l'échange (un preneur qui achète le NON en sait peut-être plus : biais possible dans les deux sens) : **le gain n'est pas prouvé aux prix payés**, il est « indice ».
+Les 4 fantômes sont la manière de le vérifier en direct, aux prix et aux carnets réels.
 
 ## Limites
 - Prix du CLOB (pas de prix payés) : les marchés de 2026 sont minces (20-80 k$ par meeting, ≈ 2-4 k$ par mot) ; le NON à 0,30-0,60 s'achète-t-il vraiment à ce prix + 0,02 ? Les 28 NON de `mots_prononces` en direct (écart d'achat inclus) : −5,8 % (z −0,5, bruit).
