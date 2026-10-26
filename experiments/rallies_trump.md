@@ -57,6 +57,10 @@ Vrais échanges, mots simples seuls (`prix_payes_mentions.py`, `SIMPLE=1`, 375 �
 **+16,6 % [+7,1 ; +26,3]** (183 événements). Même biais que plus haut : le NON réalisé vaut 0,632 sur ces paris contre 0,55 sur l'ensemble des candidats (les preneurs achètent plus souvent le NON qui va gagner), donc ce +16,6 % est un maximum, pas une mesure ;
 au prix du CLOB + 0,02, l'ensemble des 2 594 candidats donne +12,0 % [+6,1 ; +17,9]. **Ce qu'on ne sait pas** : combien de ces NON s'achètent vraiment à 0,02 du CLOB (80 % n'ont aucun preneur dans les 2 h ; le carnet peut quand même offrir un vendeur).
 
+## Délai avant la fin (mots simples, hors commentateurs, OUI 0,30-0,60, sans frais, prix du CLOB daté de moins de 3 h)
+Fin − 3 h **+20,0 %** [+13,7 ; +25,7] (1 642 paris, 273 événements) ; 6 h +16,9 % [+11,9 ; +22,4] ; 12 h +16,3 % ; 24 h +16,7 % [+10,0 ; +22,9] ; 48 h +16,6 % [+8,1 ; +24,1] ; 96 h +13,5 % [+6,6 ; +20,6] ; **168 h +1,1 % [−7,3 ; +9,3]**.
+L'effet est donc concentré dans les 4 derniers jours avant la fin du marché : fenêtre des fantômes `mentions_non*` = 3 à 48 h (les meetings, plus courts : 3 à 20 h). La durée de vie des marchés est médiane 4 jours (déciles 9 h → 29 jours).
+
 ## Limites
 - Prix du CLOB (pas de prix payés) : les marchés de 2026 sont minces (20-80 k$ par meeting, ≈ 2-4 k$ par mot) ; le NON à 0,30-0,60 s'achète-t-il vraiment à ce prix + 0,02 ? Les 28 NON de `mots_prononces` en direct (écart d'achat inclus) : −5,8 % (z −0,5, bruit).
 - Les mots d'un meeting sont liés (durée du discours) : l'IC par meeting en tient compte, pas les ±5 points de la loi binomiale.
