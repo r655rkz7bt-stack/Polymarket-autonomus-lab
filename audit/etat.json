@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3831,
+  "principal": 3832,
   "fantome:calibration_patiente_v1.0.0": 2058,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1940,
@@ -19,7 +19,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1623,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2491,
-  "fantome:market_maker_v1.0.0": 2042,
+  "fantome:market_maker_v1.0.0": 2044,
   "fantome:favori_politique_patiente_v1.0.0": 1547,
   "fantome:favori_politique_v1.0.0": 1554,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1549,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 233,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 566,
   "fantome:nf_tennis_vainqueur_v1.0.0": 801,
-  "fantome:nf_sport_18_24h_v1.0.0": 329,
+  "fantome:nf_sport_18_24h_v1.0.0": 332,
   "fantome:nf_sport_925_950_v1.0.0": 422,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 222,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 314,
@@ -170,7 +170,7 @@
   "fantome:rallies_non_v1.0.0": 15,
   "fantome:statu_quo_ia_v1.1.0": 5
  },
- "verifiees": 10265,
+ "verifiees": 10268,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1774,9 +1774,9 @@
    "op_id": "settle-90946823809808479438745875648496807305781490803223690158908191713347807414617"
   }
  ],
- "derniere_execution": "2026-10-26T19:12:47+00:00",
+ "derniere_execution": "2026-10-26T19:14:58+00:00",
  "dernier_seq_reglements": {
-  "principal": 3831,
+  "principal": 3832,
   "fantome:calibration_patiente_v1.0.0": 2058,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1940,
@@ -1895,7 +1895,7 @@
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 404,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 488,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 637,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 639,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 337,
   "fantome:mots_prononces_patiente_v1.0.0": 358,
   "fantome:cpi_tranches_v1.0.0": 253,
@@ -1912,7 +1912,7 @@
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 222,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 316,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 505,
-  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 419,
+  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 421,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 186,
   "fantome:moins_de_cartes_v1.0.0": 364,
   "fantome:non_aux_drames_v1.0.0": 253,
