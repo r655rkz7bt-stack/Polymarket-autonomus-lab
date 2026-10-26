@@ -46,7 +46,7 @@ def from_base(path: str) -> list[dict]:
                         "meilleur_vendeur, dernier_prix, jeton_oui, avance_h FROM meteo_ensemble_releves"):
         mem = members.get((r[0], r[4], r[5], r[6]))
         if mem:
-            out.append({"pris_le": r[0], "id": r[1], "question": r[3], "station": r[4], "jour": r[5], "regle": r[7],
+            out.append({"pris_le": r[0], "id": r[1], "event": str(r[2]), "question": r[3], "station": r[4], "jour": r[5], "regle": r[7],
                         "bid": r[8], "ask": r[9], "last": r[10], "avance_h": r[12], "membres": mem})
     return out
 
@@ -82,7 +82,9 @@ def settle(http: HttpClient, mid: str) -> dict | None:
     if not m.get("closed") or sorted(prices) != [0.0, 1.0]:
         return None
     fs = m.get("feeSchedule") or {}
-    return {"won": int(prices[0] == 1.0), "event": str((m.get("events") or [{}])[0].get("id")), "yes": tokens[0], "no": tokens[1],
+    # 26/10 : Gamma ne rend plus `events` sur /markets/<id> (None) : tous les marchés tombaient dans un seul « événement ».
+    # L'événement vient de la base (colonne `evenement`) ; ici seulement un repli.
+    return {"won": int(prices[0] == 1.0), "event": str(((m.get("events") or [{}])[0]).get("id") or ""), "yes": tokens[0], "no": tokens[1],
             "fee": float(fs.get("rate") or 0) if m.get("feesEnabled") else 0.0}
 
 
@@ -121,7 +123,10 @@ def main():
     http = HttpClient(user_agent="curl/8", max_retries=2)
     with ThreadPoolExecutor(8) as ex:
         settled = dict(zip(sorted({r["id"] for r in rows}), ex.map(lambda i: settle(http, i), sorted({r["id"] for r in rows}))))
-    done = [dict(r, **settled[r["id"]]) for r in rows if settled.get(r["id"])]
+    done = [dict(settled[r["id"]], **{k: v for k, v in r.items() if v not in (None, "")}) for r in rows if settled.get(r["id"])]
+    if not all(r.get("event") for r in done):
+        print("ATTENTION : événement inconnu pour", sum(not r.get("event") for r in done), "relevés (anciens relevés sans événement) : écartés")
+        done = [r for r in done if r.get("event")]
     print(f"{len(done)} relevés de marchés réglés ({len({r['id'] for r in done})} marchés, {len({r['event'] for r in done})} événements)")
     if not done:
         return
@@ -150,8 +155,9 @@ def main():
     # Prix à T0 avec un vrai échange dans les 2 h avant.
     cache = D / "echanges"
     trades = {}
-    for ev in sorted({r["event"] for r in test}):
-        trades[ev] = idea_test.fetch_event_trades(http, cache, ev)
+    evs = sorted({r["event"] for r in test})
+    with ThreadPoolExecutor(8) as ex:  # 26/10 : séquentiel, 400 événements dépassaient 10 minutes
+        trades = dict(zip(evs, ex.map(lambda ev: idea_test.fetch_event_trades(http, cache, ev), evs)))
     kept = []
     for r in test:
         t0 = int(datetime.fromisoformat(r["pris_le"]).timestamp())
