@@ -361,6 +361,16 @@ def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_fi
     assert [f["gravite"] for f in found] == [enquete.GRAVE, enquete.A_REGARDER] and not enquete.audit_anomalies(None)
 
 
+def test_audit_anomalies_already_explained_by_an_enquiry_are_not_grave_again():
+    """26/10 : les deux achats du NON à 0,001 du 24/10 (corrigés par TOUCH_MIN_ASK) rouvraient l'obligation « audit » à chaque passage."""
+    known = {"portefeuille": "fantome:crypto_threshold_non_v1.0.0", "seq": 420, "type": "BUY", "date": "2026-10-24T15:17:06",
+             "detail": "achat à 0.0010, plus bas prix observé 0.2695", "op_id": "b6893855b250d944f713598a"}
+    found = enquete.audit_anomalies({"anomalies": [known]})
+    assert [f["gravite"] for f in found] == [enquete.A_REGARDER] and "déjà expliquée" in found[0]["titre"]
+    new = dict(known, op_id="autre", date="2026-10-27T01:00:00")
+    assert [f["gravite"] for f in enquete.audit_anomalies({"anomalies": [known, new]})] == [enquete.GRAVE, enquete.A_REGARDER]
+
+
 def test_many_legs_of_one_event_in_an_hour_are_flagged():
     """23/10 : apres_echeance joue vainqueur, 5 écarts et le total de Cavaliers-76ers en 50 minutes (-474 € d'un coup)."""
     t = NOW - timedelta(hours=3)

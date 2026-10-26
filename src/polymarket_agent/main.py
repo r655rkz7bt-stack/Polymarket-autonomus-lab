@@ -175,10 +175,16 @@ class Weighted:
     Budget (18/10/2026) : réduire chaque mise ne suffisait pas, pari après pari une stratégie
     pouvait engager presque tout le capital (nf_court : 630 sur ≈ 1 000 pour une part d'environ 50 %).
     Désormais, ce qu'elle a déjà investi dans le principal (coût de ses positions ouvertes) plus
-    ses nouveaux achats ne dépassent jamais part × capital total estimé ; le reste attend."""
+    ses nouveaux achats ne dépassent jamais part × capital total estimé ; le reste attend.
 
-    def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None, base: Decimal | None = None):
-        self.inner, self.weight, self.source = strategy, weight, source
+    Fantôme (`cap_budget=False`, 26/10/2026) : son poids est la PRUDENCE (¼, ½, 1 × renfort), qui réduit chaque mise ;
+    elle ne doit pas aussi plafonner le total investi à prudence × capital. Avant, 38 fantômes sur 163 avaient un budget
+    épuisé sans raison notée (`nf_sport` : 310 € investis pour un plafond de 280 € à ¼, muet depuis 5 jours pendant que
+    sa fille 925-950, à prudence 1, achetait tous les jours) : mère et filles n'étaient plus comparables."""
+
+    def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None, base: Decimal | None = None,
+                 cap_budget: bool = True):
+        self.inner, self.weight, self.source, self.cap_budget = strategy, weight, source, cap_budget
         # Copie à la mise de BASE (21/10/2026, « grossir les gagnantes ») : la prudence du fantôme
         # (½ tant que rien n'est prouvé, entière, ¼, renfort) sert à l'arène ; le principal garde sa
         # propre mise, celle simulée avec Etienne (experiments/taille_des_mises.md) : il divise par la
@@ -202,7 +208,7 @@ class Weighted:
         else:
             output, factor = self.inner.propose(*args, **kwargs), self.weight
         budget = None
-        if state is not None:
+        if state is not None and self.cap_budget:
             invested = sum((pos.cost_basis for pos in state.positions.values() if pos.strategy_id == self.strategy_id),
                            Decimal("0"))
             budget = self.weight * state.total_estimated(marks) - invested
@@ -372,7 +378,7 @@ def _apply_health(deps: CycleDeps, competitors: dict, report: CycleReport, elimi
                 factor = 0.0
                 log.info("SUSPENDUE %s : %s", name, reason)
             strategy_health.save(deps.db, name, dict(sc, prudence=factor, renfort=renfort, suspendue=reason))
-            portfolio.strategies = [Weighted(s, Decimal(str(factor))) for s in portfolio.strategies]
+            portfolio.strategies = [Weighted(s, Decimal(str(factor)), cap_budget=False) for s in portfolio.strategies]
         return suspended
     except Exception as exc:  # noqa: BLE001
         log.exception("santé des stratégies indisponible : %s", exc)

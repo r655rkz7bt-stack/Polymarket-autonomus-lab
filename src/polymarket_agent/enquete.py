@@ -931,6 +931,14 @@ def posees_en_jeu(entries: dict[str, list[dict]], min_posed: int = 40, z_max: fl
                      if other else [])]
 
 
+# Anomalies d'audit déjà élucidées et corrigées : `op_id` -> fiche. Elles restent dans `audit/etat.json` pour toujours
+# (l'état est cumulatif) : sans cette liste, chaque passage rouvrirait la même obligation « grave ».
+AUDIT_EXPLIQUEES = {
+    "b6893855b250d944f713598a": "enquetes/2026-10-24_touche_deja_touchee_non_a_0_001.md",
+    "7e9a9fee5a13acb6d010305b": "enquetes/2026-10-24_touche_deja_touchee_non_a_0_001.md",
+}
+
+
 def audit_anomalies(audit: dict | None) -> list[dict]:
     """Anomalies de l'audit indépendant (`audit/etat.json` de la branche data, scripts/audit_fills.py, protégé).
     Le 22/10/2026 : 62 anomalies, toutes « réglé alors que le marché n'est pas clos », mais chaque règlement
@@ -939,7 +947,8 @@ def audit_anomalies(audit: dict | None) -> list[dict]:
     job d'audit, donc un e-mail à Etienne) ; les autres anomalies restent graves."""
     anomalies = (audit or {}).get("anomalies") or []
     early = [a for a in anomalies if "n'est pas clos" in str(a.get("detail", ""))]
-    other = [a for a in anomalies if a not in early]
+    explained = [a for a in anomalies if a.get("op_id") in AUDIT_EXPLIQUEES and a not in early]
+    other = [a for a in anomalies if a not in early and a not in explained]
     out = []
     if other:
         out.append(_finding("audit", GRAVE, f"{len(other)} anomalie(s) d'audit autres que « marché pas clos »",
@@ -952,6 +961,11 @@ def audit_anomalies(audit: dict | None) -> list[dict]:
                             "égal au prix final officiel, l'audit a lu le marché avant que Gamma n'affiche `closed` (voir "
                             "proposals/2026-10-22_audit_reglements_trop_tot.md).",
                             [f"{a.get('date')} {a.get('portefeuille')} : {a.get('detail')}" for a in early[:5]]))
+    if explained:
+        out.append(_finding("audit", A_REGARDER, f"{len(explained)} anomalie(s) d'audit déjà expliquée(s) et corrigée(s)",
+                            "Écritures signalées par l'audit puis élucidées par une enquête (liste `enquete.AUDIT_EXPLIQUEES`) : rien à refaire, "
+                            "sauf si l'une revient après la date de la fiche.",
+                            [f"{a.get('date')} {a.get('portefeuille')} : {a.get('detail')} -> {AUDIT_EXPLIQUEES[a['op_id']]}" for a in explained[:8]]))
     return out
 
 

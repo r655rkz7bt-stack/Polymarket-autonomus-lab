@@ -95,6 +95,39 @@ def test_a_strategy_never_engages_more_than_its_share_in_total(tmp_path):
     assert [(p.op_id, p.shares) for p in out.proposals] == [("a", D("150")), ("b", D("50"))]
 
 
+def test_a_ghost_with_low_prudence_is_not_capped_at_prudence_times_capital(tmp_path):
+    """26/10/2026 : `nf_sport` (prudence ¼) avait 310 € investis pour un plafond de ¼ × 1 120 = 280 € : tous ses achats étaient
+    écartés sans raison notée, 5 jours de silence, alors que sa fille à prudence 1 achetait. La prudence réduit la mise de
+    chaque pari d'un fantôme ; seul le principal plafonne le total par part."""
+    import dataclasses
+    from decimal import Decimal as D
+    from types import SimpleNamespace
+    from conftest import KEY, NOW
+    from polymarket_agent.ledger import Ledger
+    from polymarket_agent.main import Weighted
+    ledger = Ledger.create(tmp_path / "g.jsonl", KEY, tmp_path / "g.lock", "1000", now=NOW)
+    for k in range(3):  # 3 × 100 déjà investis : 300 > ¼ × 1 000
+        ledger.record_buy(op_id=f"o{k}", token_id=f"t{k}", market_id=f"m{k}", event_id=f"e{k}", outcome="Yes",
+                          shares="200", price="0.5", fee="0", strategy_id="nf_sport", strategy_version="1", now=NOW)
+
+    @dataclasses.dataclass
+    class Prop:
+        side: str
+        shares: D
+        max_price: D
+        op_id: str
+
+    class Inner:
+        strategy_id, version = "nf_sport", "1"
+
+        def propose(self, watchlist, books, state, limits, bucket, marks=None):
+            return SimpleNamespace(proposals=[Prop("BUY", D("100"), D("0.5"), "a")], limit_orders=[])
+
+    ghost = Weighted(Inner(), D("0.25"), cap_budget=False).propose([], {}, ledger.state, None, "b1")
+    assert [(p.op_id, p.shares) for p in ghost.proposals] == [("a", D("25.00"))]
+    assert Weighted(Inner(), D("0.25")).propose([], {}, ledger.state, None, "b1").proposals == []  # le principal reste plafonné
+
+
 def test_principal_copies_the_ghost_bets_at_its_own_scale(tmp_path):
     """Copie fidèle (18/10/2026) : le principal refait les paris que le fantôme vient de faire, mêmes
     marchés, mise à l'échelle (part × capital du principal / capital du fantôme) ; il ne rachète pas
