@@ -205,3 +205,37 @@ def test_principal_copies_at_base_stake_whatever_the_ghost_prudence(tmp_path):
         assert [(p.op_id, p.shares) for p in out.proposals] == [("a", want)], prudence
     plain = Weighted(Weighted(Inner(), D("1")), D("0.5"), source=ghost).propose([], {}, main.state, None, "b1")
     assert [p.shares for p in plain.proposals] == [D("40")]  # sans `base` : copie à l'échelle, comme avant
+
+
+def test_a_copy_below_the_market_minimum_is_raised_to_the_minimum_within_budget(tmp_path):
+    """26/10/2026 : `moins_de_cartes` (14,6 % du capital principal) : 70 paris du fantôme, 0 copié. Mise du fantôme 15 parts × part 0,146 ×
+    capital 742 / 1 082 × base 0,5 / prudence 1,545 = 0,5 part, rejetée par « taille inférieure au minimum du marché (5) »."""
+    import dataclasses
+    from conftest import KEY, NOW
+    from polymarket_agent.main import Portfolio, Weighted
+
+    @dataclasses.dataclass
+    class Prop:
+        side: str
+        token_id: str
+        shares: D
+        max_price: D
+        op_id: str
+
+    class Inner:
+        strategy_id, version = "mdc", "1"
+
+    main = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW)
+    ghost = Portfolio("fantome:mdc_v1", None, [])
+    ghost.copied = {"mdc": {"total": D("1000"), "buys": [(Prop("BUY", "t1", D("16"), D("0.6"), "a"), D("16"))], "orders": []}}
+    scaled = lambda **kw: Weighted(Inner(), D("0.15"), source=ghost, **kw).propose([], {}, main.state, None, "b1")  # noqa: E731
+    assert [p.shares for p in scaled().proposals] == [D("2.40")]  # sans plancher : 2,4 parts, que le contrôle de sécurité rejette
+    assert [p.shares for p in scaled(floor=(D("5"), D("0.01"))).proposals] == [D("5")]  # 5 parts × 0,60 = 3 € ≤ 1 % de 1 000 € (10 €) : le minimum du marché
+    # Coût du minimum au-dessus de 1 % du capital : pas de plancher.
+    ghost.copied["mdc"]["buys"] = [(Prop("BUY", "t2", D("16"), D("0.99"), "b"), D("16"))]
+    assert [p.shares for p in scaled(floor=(D("5"), D("0.004"))).proposals] == [D("2.40")]
+    # Budget de la part (0,002 × 1 000 = 2 €) inférieur au coût du minimum (5 × 0,60 = 3 €) : pas d'achat, comme avant.
+    ghost.copied["mdc"]["buys"] = [(Prop("BUY", "t3", D("16"), D("0.6"), "c"), D("16"))]
+    assert Weighted(Inner(), D("0.002"), source=ghost, floor=(D("5"), D("0.01"))).propose([], {}, main.state, None, "b1").proposals == []
+    # Pas de plancher hors copie (fantôme).
+    assert Weighted(Inner(), D("0.5"), floor=(D("5"), D("0.01"))).floor is None

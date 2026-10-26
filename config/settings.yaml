@@ -28,6 +28,10 @@ references_historique: {toutes_les_minutes: 60, garder_jours: 45}
 principal:
   max_mise: 0.10      # un achat ≤ 10 % du capital estimé (Kelly complet allait jusqu'à 40 %)
   max_famille: 0.40   # ≤ 40 % du capital engagé dans une même famille (météo, sport…) : paris liés
+  # Plancher de copie (26/10/2026) : le principal copie les paris des fantômes à l'échelle de sa part ; quand la copie tombe sous le
+  # minimum du marché (5 parts), le pari était rejeté (« taille inférieure au minimum du marché (5) ») : `moins_de_cartes`, 14,6 % du
+  # capital, 0 pari copié sur 70. Il achète alors le minimum (5 parts) si cela coûte au plus 1 % du capital et reste dans le budget de la part.
+  plancher_copie: {parts: 5, part_du_capital: 0.01}
 
 # Fantômes (23/10/2026, enquête « mises géantes ») : une mise ≤ 25 % du capital estimé du fantôme.
 # Mêmes paris, taille seulement : la confiance de l'arène se mesure sur le rendement par mise.

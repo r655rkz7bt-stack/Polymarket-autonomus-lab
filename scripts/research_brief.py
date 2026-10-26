@@ -70,7 +70,11 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, 
         abstentions = json.loads(db.get_value("abstentions") or "null") if db is not None else None
     except (ValueError, TypeError):
         abstentions = None
-    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions)
+    try:  # parts du capital principal (clé « repartition_principal » de la base)
+        parts = {n: float(w) for n, w in (json.loads(db.get_value("repartition_principal") or "{}").get("parts") or {}).items()} if db is not None else None
+    except (ValueError, TypeError, AttributeError):
+        parts = None
+    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions, parts=parts)
 
 
 def _full_mothers(main_ledger, arena_cfg: dict) -> tuple[dict[str, int], int | None]:

@@ -545,3 +545,20 @@ def test_resting_orders_filled_during_the_match_are_flagged_against_immediate_bu
     for r in before:
         r["data"].get("extra", {}).pop("depuis_coup_d_envoi_h", None)               # avant le match / sans champ : ignorés
     assert enquete.posees_en_jeu({"fantome:nf_v1.0.0": _ledger(*before)}) == []
+
+
+def test_a_strategy_with_a_share_but_no_copy_is_grave():
+    """26/10 : `moins_de_cartes` (14,6 % du capital principal) : 0 jeton copié sur 70 (copie sous le minimum du marché)."""
+    t = NOW - timedelta(hours=30)
+    ghost = _ledger(*[_buy(t + timedelta(minutes=i), f"t{i}", 0.6, 15, strategy="mdc") for i in range(12)])
+    parts = {"mdc_v1.0.0": 0.146}
+    none = enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": _ledger()}, parts, NOW)
+    assert len(none) == 1 and none[0]["gravite"] == enquete.GRAVE and "0 jeton(s) copié(s) sur 12" in none[0]["exemples"][0]
+    assert enquete.obligations(none) and "copie_absente" in enquete.obligations(none)[0]
+    half = _ledger(*[_buy(t + timedelta(minutes=i), f"t{i}", 0.6, 5, strategy="mdc") for i in range(6)])
+    assert enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": half}, parts, NOW) == []
+    one = _ledger(_buy(t, "t0", 0.6, 5, strategy="mdc"))
+    assert enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": one}, parts, NOW)[0]["gravite"] == enquete.A_REGARDER
+    assert enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": _ledger()}, {}, NOW) == []  # sans part, rien à copier
+    few = _ledger(*[_buy(t + timedelta(minutes=i), f"t{i}", 0.6, 15, strategy="mdc") for i in range(4)])
+    assert enquete.copie_absente({"mdc_v1.0.0": few, "principal": _ledger()}, parts, NOW) == []  # trop peu de paris pour conclure

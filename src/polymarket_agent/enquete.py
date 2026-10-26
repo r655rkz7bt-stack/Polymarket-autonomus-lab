@@ -34,6 +34,8 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - certitude_promise : estimation plafonnée à 0,999 pour un favori à 0,97-0,99 (23/10 : `news_momentum`, mises de 20 % pour 1 point) ;
   - tresorerie_rejouee : la trésorerie rejouée depuis les achats et règlements du journal (1000 − achats + règlements) retombe-t-elle sur celle que le cycle a notée ?
     (25/10/2026 : 159 journaux sur 159 au centime, aucun règlement double ; un écart dirait un règlement perdu, doublé ou une mise mal débitée) ;
+  - copie_absente : une stratégie qui a une part du capital principal mais dont le principal ne copie aucun pari (26/10/2026 : `moins_de_cartes`, 14,6 %,
+    0 jeton sur 70 : copie sous le minimum du marché de 5 parts) ;
   - mere_muette_fille_active : une mère muette depuis 48 h alors que sa fille (mêmes réglages, filtre en plus) achète (26/10 : la prudence ¼ d'un fantôme
     plafonnait aussi son total investi, 38 fantômes sur 163 bloqués sans raison notée, `nf_sport` muet 5 jours) ; une mère ÉLIMINÉE (journal sans battement
     depuis 48 h) est arrêtée, pas muette (26/10, 2e passage : 3 des 4 mères signalées l'étaient) ;
@@ -1064,9 +1066,44 @@ def sport_hors_match(entries: dict[str, list[dict]], configs: dict, since: datet
     return out
 
 
+def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None, now: datetime, days: float = 3,
+                  min_tokens: int = 10, min_rate: float = 0.20) -> list[dict]:
+    """Une stratégie qui a une part du capital principal est-elle copiée ? Part des jetons achetés par le fantôme ces `days` derniers jours que le
+    principal a achetés aussi. 26/10/2026 : `moins_de_cartes` (14,6 % du capital), 0 jeton copié sur 70 : la copie à l'échelle de la part (0,5 part) était
+    sous le minimum du marché (5 parts) et rejetée ; l'argent de la part restait inutilisé pendant que la stratégie la mieux étayée de l'arène jouait seule."""
+    if not parts or "principal" not in entries:
+        return []
+    since = now - timedelta(days=days)
+    mine: dict[str, set] = defaultdict(set)
+    for e in _buys(entries["principal"], since):
+        mine[e["data"]["strategy_id"]].add(e["data"]["token_id"])
+    grave, lead = [], []
+    for name, share in sorted(parts.items(), key=lambda kv: -kv[1]):
+        if share <= 0 or name not in entries:
+            continue
+        ghost = {e["data"]["token_id"] for e in _buys(entries[name], since)}
+        if len(ghost) < min_tokens:
+            continue
+        copied = len(ghost & mine.get(name.rsplit("_v", 1)[0], set()))
+        label = f"{name} : part {share:.1%}, {copied} jeton(s) copié(s) sur {len(ghost)}"
+        if copied == 0:
+            grave.append(label)
+        elif copied / len(ghost) < min_rate:
+            lead.append(label)
+    out = []
+    if grave:
+        out.append(_finding("copie_absente", GRAVE, f"{len(grave)} stratégie(s) avec une part du capital principal et AUCUNE copie en {days:g} jours",
+                            "Le principal ne joue pas ce que l'arène mesure : chercher pourquoi chaque pari est rejeté (taille sous le minimum du marché, "
+                            "plafond, filtre) avant d'attribuer une part de plus à ces stratégies.", grave))
+    if lead:
+        out.append(_finding("copie_absente", A_REGARDER, f"{len(lead)} stratégie(s) copiée(s) à moins de {min_rate:.0%} par le principal",
+                            "Tout pari du fantôme devrait être refait à l'échelle de la part : regarder les raisons de rejet du principal.", lead))
+    return out
+
+
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
-        audit: dict | None = None, sources: dict | None = None) -> list[dict]:
+        audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -1080,7 +1117,8 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
-                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries))
+                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries)
+                + copie_absente(entries, parts, now, days=max(days, 3)))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 
