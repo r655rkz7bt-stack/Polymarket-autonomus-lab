@@ -1,0 +1,9 @@
+732 handicaps −1,5 du favori (BO3)
+TOUS                 n= 732 réel 0.474 binomial 0.421 marché 0.459 réel−binomial +0.053 réel−marché +0.015 (z +0.85) rendement +1.4 %
+favori 0.50-0.65     n= 276 réel 0.355 binomial 0.309 marché 0.340 réel−binomial +0.046 réel−marché +0.015 (z +0.55) rendement +2.6 %
+favori 0.65-0.80     n= 287 réel 0.467 binomial 0.423 marché 0.459 réel−binomial +0.044 réel−marché +0.008 (z +0.27) rendement -0.1 %
+favori 0.80-1.00     n= 169 réel 0.680 binomial 0.601 marché 0.654 réel−binomial +0.080 réel−marché +0.026 (z +0.74) rendement +2.2 %
+cs2                  n= 124 réel 0.500 binomial 0.419 marché 0.461 réel−binomial +0.081 réel−marché +0.039 (z +0.91) rendement +4.8 %
+lol                  n= 258 réel 0.496 binomial 0.447 marché 0.483 réel−binomial +0.049 réel−marché +0.013 (z +0.43) rendement +2.1 %
+dota2                n= 194 réel 0.469 binomial 0.405 marché 0.448 réel−binomial +0.064 réel−marché +0.021 (z +0.60) rendement +2.7 %
+val                  n= 156 réel 0.423 binomial 0.400 marché 0.431 réel−binomial +0.023 réel−marché -0.008 (z -0.21) rendement -4.0 %

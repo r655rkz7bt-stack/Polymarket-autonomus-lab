@@ -61,7 +61,7 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 |---|---|---|---|---|
 | 1 | Kalshi : prix des marchés équivalents | `api.elections.kalshi.com` (API publique de lecture) | comparer les probabilités avec Polymarket ; stratégie d'écart entre plateformes | à faire |
 | 2 | Manifold : prix des marchés équivalents | `api.manifold.markets` | même usage que Kalshi, plus de sujets couverts | à faire |
-| 3 | Deribit : volatilité implicite BTC/ETH | `www.deribit.com` (API publique) | remplacer la volatilité historique de `crypto_threshold` | à faire |
+| 3 | Deribit : volatilité implicite BTC/ETH | `www.deribit.com` (API publique) | remplacer la volatilité historique de `crypto_threshold` | testé sur le passé (16/10, `crypto_backtest.md`, modèle b : DVOL) : pas d'avantage aux prix payés ; l'API répond toujours (26/10, `get_volatility_index_data`, pas d'une heure) ; pas de lecteur en production |
 | 4 | Polymarket Data API : grosses transactions et détenteurs | `data-api.polymarket.com` | suivre l'argent informé (« baleines »), flux d'ordres anormaux | à faire |
 | 5 | Open-Meteo et NWS : prévisions météo | `api.open-meteo.com`, `api.weather.gov` | marchés de température / pluie / neige | en cours : relevés NOAA faits (`meteo_metar`, 15/10/2026) ; prévisions à faire |
 | 6 | USGS : séismes en direct (GeoJSON) | `earthquake.usgs.gov` | marchés « séisme de magnitude X avant… » | fait le 24/10/2026 (lecteur `sources/usgs.py`, `seismes.py`, fantôme `seismes_marche` ; `experiments/seismes.md`) |
