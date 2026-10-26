@@ -239,3 +239,40 @@ def test_a_copy_below_the_market_minimum_is_raised_to_the_minimum_within_budget(
     assert Weighted(Inner(), D("0.002"), source=ghost, floor=(D("5"), D("0.01"))).propose([], {}, main.state, None, "b1").proposals == []
     # Pas de plancher hors copie (fantôme).
     assert Weighted(Inner(), D("0.5"), floor=(D("5"), D("0.01"))).floor is None
+
+
+def test_principal_caps_each_copied_bet_at_a_share_of_the_ghost_capital(tmp_path):
+    """27/10/2026 (experiments/taille_des_mises.md, « ce qui marchait ») : rejeu du 15 au 26/10, les plus grosses mises
+    des fantômes copiés (favoris à 0,90 ou plus, 106 € en moyenne) perdaient −11,5 % par euro ; plafonner chaque mise
+    copiée à 5 % du capital du fantôme : −262 € → −46 €, −2,6 % → −1,0 % par euro. La part du principal s'applique après."""
+    import dataclasses
+    from decimal import Decimal as D
+    from conftest import KEY, NOW
+    from polymarket_agent.ledger import Ledger
+    from polymarket_agent.main import Portfolio, Weighted
+
+    @dataclasses.dataclass
+    class Prop:
+        side: str
+        token_id: str
+        shares: D
+        max_price: D
+        op_id: str
+
+    class Inner:
+        strategy_id, version = "nf_sport", "1"
+
+    main = Ledger.create(tmp_path / "p.jsonl", KEY, tmp_path / "p.lock", "1000", now=NOW)
+    ghost = Portfolio("fantome:nf_sport_v1", None, [])
+    # Fantôme de 1 000 € : 300 € à 0,93 (30 %) et 30 € à 0,60 (3 %) ; un ordre posé de 200 € à 0,80.
+    ghost.copied = {"nf_sport": {"total": D("1000"), "buys": [(Prop("BUY", "cher", D("322.58"), D("0.93"), "a"), D("322.58")),
+                                                              (Prop("BUY", "petit", D("50"), D("0.60"), "b"), D("50"))],
+                                 "orders": [Prop("BUY", "pose", D("250"), D("0.80"), "c")]}}
+    out = Weighted(Inner(), D("0.5"), source=ghost, ghost_cap=D("0.05")).propose([], {}, main.state, None, "b1")
+    shares = {p.op_id: p.shares for p in out.proposals + out.limit_orders}
+    # Plafond : 5 % × 1 000 = 50 € chez le fantôme, puis part 0,5 × 1 000 / 1 000 = 0,5.
+    assert shares["a"] == D("26.88")            # 50 € / 0,93 = 53,76 parts, × 0,5
+    assert shares["b"] == D("25.00")            # sous le plafond : inchangé (50 × 0,5)
+    assert shares["c"] == D("31.25")            # ordre posé : 62,5 parts plafonnées puis × 0,5
+    uncapped = Weighted(Inner(), D("0.5"), source=ghost).propose([], {}, main.state, None, "b1")
+    assert {p.op_id: p.shares for p in uncapped.proposals}["a"] == D("161.29")  # sans réglage : comme avant
