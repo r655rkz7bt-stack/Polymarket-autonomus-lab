@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3835,
+  "principal": 3836,
   "fantome:calibration_patiente_v1.0.0": 2058,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1941,
@@ -19,7 +19,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1624,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2493,
-  "fantome:market_maker_v1.0.0": 2049,
+  "fantome:market_maker_v1.0.0": 2051,
   "fantome:favori_politique_patiente_v1.0.0": 1548,
   "fantome:favori_politique_v1.0.0": 1555,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1550,
@@ -90,7 +90,7 @@
   "fantome:implication_politique_v1.0.0": 490,
   "fantome:marche_neuf_v1.0.0": 741,
   "fantome:marches_jumeaux_v1.0.0": 490,
-  "fantome:outsiders_surcotes_v1.0.0": 562,
+  "fantome:outsiders_surcotes_v1.0.0": 564,
   "fantome:paire_oui_non_v1.0.0": 490,
   "fantome:compteur_tweets_v1.0.0": 583,
   "fantome:cotes_tennis_v1.0.0": 482,
@@ -134,7 +134,7 @@
   "fantome:nf_sport_18_24h_v1.0.0": 337,
   "fantome:nf_sport_925_950_v1.0.0": 423,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 223,
-  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 316,
+  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 318,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 506,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 421,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 187,
@@ -170,7 +170,7 @@
   "fantome:rallies_non_v1.0.0": 15,
   "fantome:statu_quo_ia_v1.1.0": 6
  },
- "verifiees": 10283,
+ "verifiees": 10286,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1774,9 +1774,9 @@
    "op_id": "settle-90946823809808479438745875648496807305781490803223690158908191713347807414617"
   }
  ],
- "derniere_execution": "2026-10-26T19:27:39+00:00",
+ "derniere_execution": "2026-10-26T19:34:43+00:00",
  "dernier_seq_reglements": {
-  "principal": 3835,
+  "principal": 3836,
   "fantome:calibration_patiente_v1.0.0": 2058,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1941,
@@ -1876,7 +1876,7 @@
   "fantome:manifold_reference_v1.0.0": 491,
   "fantome:predictit_reference_v1.0.0": 490,
   "fantome:fatigue_nhl_v1.0.0": 524,
-  "fantome:mots_nouveaux_v1.0.0": 565,
+  "fantome:mots_nouveaux_v1.0.0": 567,
   "fantome:mots_prononces_v1.0.0": 628,
   "fantome:crypto_threshold_24_72h_v1.0.0": 445,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 488,
@@ -1910,9 +1910,9 @@
   "fantome:nf_sport_18_24h_v1.0.0": 337,
   "fantome:nf_sport_925_950_v1.0.0": 423,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 223,
-  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 322,
+  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 325,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 506,
-  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 421,
+  "fantome:nf_sport_patiente_biais_faible_v1.0.0": 423,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 187,
   "fantome:moins_de_cartes_v1.0.0": 365,
   "fantome:non_aux_drames_v1.0.0": 253,
