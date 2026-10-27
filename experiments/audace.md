@@ -120,3 +120,15 @@ Toute l'arène, par tranche du prix payé :
 ## 7. Passage du 27/10 au soir (28/10/2026)
 - **`tranche_centrale_non`** (nouvelle idée, `experiments/crypto_pourquoi.md` §4) : NON de la tranche centrale des échelles « <actif> price on <date> » 3 à 6 h avant le fix de 12 h (Est), demi-Kelly. 2026 : 585 paris, +44,5 % (z +4,7, gain croissant avec la profondeur) ; hold-out 2025 : +18,7 % (z +2,2). Une perte apprendrait que l'ouverture de Wall Street est déjà dans le prix ou que seuls les mois agités paient. À vérifier demain vers 10 h UTC : la stratégie voit-elle les marchés ?
 - **`moins_de_cartes_franche`** : les mêmes paris que `moins_de_cartes` (85 paris en direct, +12,4 % par mise, 56 gagnés pour 48,0) au demi-Kelly (≈ 5 % par pari, au lieu de 2,5 %), pour mesurer la croissance d'une mise franche là où l'avantage se mesure.
+
+## Refait le 28/10/2026 (AMELIORATION d'Etienne : « fais travailler l'argent qui dort », « suivre ce qui bat ses prix »)
+`rejeu_regles.py` sur les journaux du 15/10 12 h au 27/10 23 h 32 UTC (moitié au 21/10 17 h 54) :
+- **règle en vigueur** (prorata, plafond 5 %) : 543 paris, **−18 €** (−0,3 % par euro), +109 € puis −127 €, repli 17 % ;
+- miser plus, même règle à 10 € par pari : **−166 €** ; tout copier : −1 738 € ;
+- choisir les stratégies qui battent leurs prix (z ≥ 1 à 1,5, ≥ 15 ou 30 opérations) : **−64 € à 0 €** ; zp ≥ 2 : +62 à +71 €
+  sur 43-46 paris, presque tous `contrer_crypto_patiente` (écartée sur le passé le 27/10, −4,2 % sur 1 492 paris) ;
+- sans les « contrer » de la crypto : −114 à −127 €.
+**Décision** : ni « miser plus » ni « choisir sur z » ne battent la règle en vigueur : pas de changement du principal. L'argent
+qui dort n'est pas un défaut : les paris copiés n'ont pas d'avantage à grossir. Le levier est de trouver des stratégies qui
+battent leurs prix (expériences de l'arène), pas de miser plus sur celles d'aujourd'hui. À refaire quand `moins_de_cartes`,
+`moins_de_kills` ou `suivre_inities` auront 50 paris.

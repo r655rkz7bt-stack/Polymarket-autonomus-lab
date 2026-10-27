@@ -30,7 +30,6 @@ def test_repository_config_loads():
         "calibration_patiente", "contrer_crypto", "contrer_crypto_patiente", "cross_market",
         "crypto_threshold", "crypto_threshold_patiente",
         "favori_politique", "favori_politique_patiente", "favori_politique_quasi_certain", "favori_politique_nuit", "outsider_sport_apres_midi", "loterie_meteo",
-        "market_maker", "market_maker_serre",
         "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
         "nf_sport_prix_haut", "nf_sport_sans_fin",
         "nm_demi_mise", "nf_court", "nf_court_prix_haut", "nf_sport_6_24h", "nf_sport_patiente_6_24h", "nf_sport_patiente_72_168h", "nf_court_football", "nf_tennis_12_18h", "nf_sport_patiente_72_168h_12_18h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_moyen", "nf_oui", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
