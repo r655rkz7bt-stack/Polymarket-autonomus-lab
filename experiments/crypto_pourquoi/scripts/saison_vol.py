@@ -10,7 +10,7 @@ D = Path("experiments/contrer_crypto_passe/donnees"); SP = Path("experiments/cry
 ASSETS = {"bitcoin": "BTC", "ethereum": "ETH", "solana": "SOL", "xrp": "XRP"}
 spot, profil = {}, {}
 DEB2026 = dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc).timestamp()
-DEB2025 = dt.datetime(2025, 8, 1, tzinfo=dt.timezone.utc).timestamp()
+DEB2025 = dt.datetime(2025, 1, 1, tzinfo=dt.timezone.utc).timestamp()
 for a in set(ASSETS.values()):
     rows = json.load(open(SP / f"spot_{a}.json")); spot[a] = ([r[0] for r in rows], [r[4] for r in rows])
     by = [[] for _ in range(24)]

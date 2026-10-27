@@ -23,6 +23,9 @@ qui l'achète dans les 12 h après l'instant T, frais du marché (`feeSchedule`)
    mesure du FDV, quand le jeton cote depuis peu. Un déclencheur CAUSAL cherché dans les prix (`declencheur.py`) échoue : activité ≥ N échanges en 3 h (N = 20 à 150) ou saut d'un seuil ≥ 0,15-0,60 en 3 h déclenchent
    en médiane 39 à 495 h avant le règlement (les ladders s'agitent des semaines avant le lancement) et rendent −6,5 à +1,8 % (tous « écartée », 4 réglages × 3 côtés). Seule une source du lancement (annonce du TGE, première cotation,
    FDV en direct) donnerait l'heure.
+   **Déclencheur multi-seuils** (`MODE_DECLENCHEUR=multi DELAI_H=<h> python declencheur.py`, `resultats_declencheur_multi*.txt`) : un lancement déplace plusieurs seuils à la fois, une rumeur un seul. Premier instant où au moins K seuils ont bougé d'au moins J en 3 h
+   (K 3, J 0,2 : 27 jetons sur 77, déclenchement en médiane 36 h avant le règlement ; K 3, J 0,3 : 14 jetons, 29 h) puis attente de d heures : d = 18 h : **+7,1 %** (71 paris, 26 jetons, 68 gagnés pour 63,6, z +1,75, 10 mois sur 11) et +8,3 % (K 3, J 0,3 ; 37 paris, 14 jetons) ;
+   d = 6 / 12 / 24 h : +4,0 / +5,7 / −1,2 %. **Exécutable sans connaître l'heure du règlement, mais petit** (un jeton sur trois déclenche, 14 à 27 jetons, z +1,4 à +1,8, 12 réglages regardés) : indice faible, pas de fantôme (le cycle ne garde pas l'historique de prix de chaque seuil).
 4. Ce que cela dit du marché : près de la mesure, les seuils loin du niveau final restent cotés 0,90-0,95 alors qu'ils gagnent à 100 % (la prime est le coût de l'immobilisation et la peur d'un krach du jeton, jamais réalisé ici
    en 6 à 24 h sur 59 jetons) : même mécanisme que `apres_echeance` / `favori quasi certain`, mais ici l'écart tient sur toute la période.
 
