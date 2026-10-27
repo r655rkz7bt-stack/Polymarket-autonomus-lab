@@ -3876,3 +3876,36 @@ ia_oui_sorties:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+suivre_inities_seul:
+  explication: "Comme suivre_inities, mais sans attendre qu'on en parle : dès qu'un compte tout neuf met au moins 5 000 $ sur un même résultat payé 0,30 ou plus, on parie avec lui."
+  # AMELIORATION du 28/10/2026 (« plus de liberté et de créativité ») : expérience lancée sans attendre. Sur le passé
+  # (experiments/inities.md, test_gros_comptes.py), « un compte neuf ≥ 5 000 $, payé ≥ 0,30 » est le seul réglage « indice » :
+  # 33 paris, 22 gagnés pour 18,8 attendus, +8,7 %, t par événement +1,12 ; ses voisins sont plats (−6 % à +3 %) : c'est
+  # peut-être le hasard du meilleur de 48. La mère exige un soupçon public, presque jamais présent : celle-ci mesure en direct
+  # si l'argent neuf et gros suffit.
+  mere: suivre_inities
+  morceau: "sans soupçon public, un compte ≥ 5 000 $"
+  class: suivre_inities
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-28"
+  hypothesis: >
+    Expérience. Un compte neuf (≤ 7 jours) et concentré (≤ 15 marchés) qui met ≥ 5 000 $ sur un résultat payé ≥ 0,30 d'un
+    événement « à initiés » sait peut-être quelque chose : +8,7 % sur 33 paris du passé, mais choisi parmi 48 réglages. Une
+    perte apprendrait que cet « indice » était la chance du meilleur réglage (et qu'il faut le soupçon public de la mère) ;
+    un gain, qu'un gros compte neuf est un signal à lui seul.
+  params:
+    presse_requise: {value: 0, min: 0, max: 1}
+    min_comptes:    {value: 1, min: 1, max: 20}
+    min_dollars:    {value: 5000, min: 0, max: 1000000}
+    prix_min:       {value: 0.30, min: 0.0, max: 0.95}
+    max_age_hours:  {value: 72, min: 1, max: 720}
+    max_price:      {value: 0.90, min: 0.05, max: 0.99}
+    max_rattrapage: {value: 0.15, min: 0.0, max: 0.5}
+    edge_prior:     {value: 0.08, min: 0.0, max: 0.5}
+    uncertainty:    {value: 0.03, min: 0.0, max: 0.2}
+    stake_fraction: {value: 0.03, min: 0.0, max: 0.2}
+    min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}

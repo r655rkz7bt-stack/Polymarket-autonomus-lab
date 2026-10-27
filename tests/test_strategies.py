@@ -57,7 +57,7 @@ def test_repository_config_loads():
         # Expériences audacieuses (27/10/2026, « vois les pertes comme des expériences »).
         "contrer_crypto_audace", "contrer_crypto_patiente_audace", "crypto_non_bon_marche",
         # Comptes suspects (27/10/2026, affaire du Ballon d'Or).
-        "suivre_inities", "classement_appstore", "ia_oui_sorties",
+        "suivre_inities", "suivre_inities_seul", "classement_appstore", "ia_oui_sorties",
         # Mise franche d'une stratégie qui bat ses prix en direct (27/10/2026, passage du soir).
         "moins_de_cartes_franche", "tranche_centrale_non"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
