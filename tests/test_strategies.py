@@ -38,7 +38,7 @@ def test_repository_config_loads():
         "parking_politique", "nf_sport_patiente_tennis", "nf_tennis_prix_bas", "nf_tennis_prix_bas_vainqueur", "nf_tennis_prix_bas_800_850", "statu_quo_ia", "nf_tennis_debut_match",
         "crypto_threshold_prix_bas", "crypto_threshold_24_72h", "nf_sport_patiente_prix_850_875",
         # Vingt nouvelles pistes (20/10/2026), lot A.
-        "decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
+        "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
         "outsiders_surcotes", "marche_neuf", "marches_jumeaux",
         # Lot B.
         "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",

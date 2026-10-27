@@ -160,8 +160,9 @@ def test_new_gamma_fields_and_ended_markets_stay_away_from_other_strategies():
 def test_all_twenty_strategies_lot_a_load_from_the_repository_config():
     from polymarket_agent.strategy_engine import load_strategies
     ids = {s.strategy_id for s in load_strategies(ROOT / "config" / "strategies.yaml")}
-    assert {"decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
+    assert {"echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
             "outsiders_surcotes", "marche_neuf", "marches_jumeaux"} <= ids
+    assert "decroissance_temps" not in ids  # coupée le 27/10/2026 : −2,6 % sur 742 paris du passé (experiments/decroissance_passe.md)
     assert "choc_sans_nouvelle" not in ids  # éliminée par l'arène, coupée le 20/10/2026 (enabled: false)
 
 
