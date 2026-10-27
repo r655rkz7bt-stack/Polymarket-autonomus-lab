@@ -3776,7 +3776,7 @@ classement_appstore:
   hypothesis: >
     Le n°1 d'un classement qui se règle dans 1 à 6 heures est connu de tous mais peu de gens regardent le flux : marchés de 1 400 $ de liquidité, 5 000 $ de volume par jour, 0 frais (feesEnabled faux).
     Chance de rester n°1 supposée 0,95 (≤ 1 h), 0,90 (≤ 3 h), 0,85 (≤ 6 h), sans mesure. Une perte apprendrait que le classement bouge plus vite que ces valeurs (alors le journal `appstore:histo`,
-    relevé toutes les 30 minutes, les corrige) ou que le flux d'Apple retarde sur l'App Store. Mise : dixième de Kelly (environ 5 % du fantôme) tant que la chance de rester n°1 n'est pas étalonnée.
+    relevé toutes les 30 minutes, les corrige) ou que le flux d'Apple retarde sur l'App Store. Mise : dixième de Kelly (environ 5 % du fantôme) tant que la chance de rester n°1 n'est pas étalonnée. Test de substitution sur le passé (le favori du marché à la place du n°1, 125 événements hebdomadaires) : le marché est calibré sur son favori (gratuit −1,9 à +0,3 %, 41-45 paris) ; seul le payant à 6 h sort (+14,4 %, 27 paris, z +1,6) : l'avantage attendu est étroit et ne vient que des vendredis où le n°1 de l'App Store n'est pas le favori du marché.
   params:
     min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance supposée − prix demandé
     uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
