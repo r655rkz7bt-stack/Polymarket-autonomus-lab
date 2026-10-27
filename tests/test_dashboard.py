@@ -294,6 +294,9 @@ def test_situation_lists_several_champions_with_their_share():
     assert "50 %" in s["detail"]
     one = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.5})
     assert one["phrase"] == "Le capital principal suit a."
+    # Renfort (27/10/2026) : la somme des parts peut dépasser 100 % ; pas de « 130 % du capital engagé ».
+    boosted = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.9, "b_v1": 0.4})
+    assert "Tout le capital peut être engagé" in boosted["detail"] and "130" not in boosted["detail"]
 
 
 def test_arena_shows_why_a_qualified_twin_has_no_share(tmp_path):

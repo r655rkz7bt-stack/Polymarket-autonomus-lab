@@ -84,7 +84,10 @@ def bet_type(question: str, sports_market_type: str | None = None) -> str:
 
 
 # ------------------------------------------------------------------ opérations et tranches
-PRICE_BANDS = ((0.0, 0.80), (0.80, 0.85), (0.85, 0.875), (0.875, 0.90), (0.90, 0.925), (0.925, 0.95), (0.95, 1.0))
+# Prix bas découpés (27/10/2026) : une seule tranche 0-0,80 cachait que les billets sous 0,10 perdent (3 gagnés pour 10,8
+# attendus dans toute l'arène) quand la tranche 0,10-0,20 gagne (34 pour 25,3) ; le découpage ne voyait que les favoris.
+PRICE_BANDS = ((0.0, 0.10), (0.10, 0.20), (0.20, 0.30), (0.30, 0.45), (0.45, 0.60), (0.60, 0.80),
+               (0.80, 0.85), (0.85, 0.875), (0.875, 0.90), (0.90, 0.925), (0.925, 0.95), (0.95, 1.0))
 HOUR_BANDS = ((0, 3), (3, 6), (6, 12), (12, 24), (24, 72), (72, 168), (168, 1e6))
 UTC_BANDS = ((0, 6), (6, 12), (12, 18), (18, 24))
 FEATURES = ("prix", "delai", "issue", "heure_utc", "discipline", "type_pari", "mode", "source")
@@ -214,17 +217,21 @@ def to_filter(feature: str, value) -> dict | None:
     return {"types_pari": [value]}
 
 
-def proposals(name: str, bets: list[Bet], dissection: dict, min_n: int = 8) -> list[dict]:
+def proposals(name: str, bets: list[Bet], dissection: dict, min_n: int = 8, min_z: float | None = None) -> list[dict]:
     """Filles proposées : un morceau filtrable d'au moins `min_n` opérations, gagnant, dont le
     rendement par mise bat celui de la stratégie entière et qui gagne au moins autant que ses
-    prix l'annoncent (z ≥ 0). Classées par résultat ; plus la meilleure paire de morceaux."""
+    prix l'annoncent (z ≥ 0). Classées par résultat ; plus la meilleure paire de morceaux.
+    `min_z` (27/10/2026, promotion.yaml → entonnoir.z_morceau) : le morceau doit battre ses prix d'au moins ce z. Une
+    stratégie se découpe en ≈ 40 morceaux : avec z ≥ 0, la moitié des morceaux sans avantage passaient (les filles de
+    favoris : 58 stratégies sans aucun écart réel entre elles, experiments/audace.md)."""
     whole = _stats(bets)
+    floor_z = max(0.0, min_z) if min_z is not None else 0.0
     found = []
     for feature, d in dissection.items():
         for s in d["morceaux"]:
             filt = to_filter(feature, s["valeur"])
             if (filt and s["n"] >= min_n and s["pnl"] > 0 and s["rendement"] > whole["rendement"]
-                    and s["z"] >= 0 and s["n"] < whole["n"]):
+                    and s["z"] >= floor_z and s["n"] < whole["n"]):
                 found.append({"strategie": name, "morceau": f"{NAMES[feature]} {s['libelle']}", "filtres": filt,
                               "caracteristiques": [(feature, s["valeur"])], **{k: s[k] for k in (
                                   "n", "pnl", "rendement", "confiance", "gagnes", "attendus", "z")}})
@@ -237,7 +244,8 @@ def proposals(name: str, bets: list[Bet], dissection: dict, min_n: int = 8) -> l
                     continue
                 both = [x for x in bets if x.traits.get(fa[0]) == fa[1] and x.traits.get(fb[0]) == fb[1]]
                 st = _stats(both)
-                if st["n"] >= min_n and st["pnl"] > 0 and st["rendement"] > max(a["rendement"], b["rendement"]):
+                if (st["n"] >= min_n and st["pnl"] > 0 and st["rendement"] > max(a["rendement"], b["rendement"])
+                        and (min_z is None or st["z"] >= min_z)):
                     found.append({"strategie": name, "morceau": f"{a['morceau']} + {b['morceau']}",
                                   "filtres": {**a["filtres"], **b["filtres"]}, "caracteristiques": [fa, fb],
                                   **{k: st[k] for k in ("n", "pnl", "rendement", "confiance", "gagnes", "attendus", "z")}})
@@ -303,11 +311,17 @@ def summary(reports: list[dict], limit: int = 4) -> list[dict]:
 
 def analyse(entries: dict[str, list[dict]], growth: dict[str, float], mothers: dict[str, str],
             markets: dict[str, dict], configs: dict[str, dict], min_closed: int = 15,
-            min_growth: float = 0.05, min_n: int = 8) -> list[dict]:
+            min_growth: float = 0.05, min_n: int = 8, min_z: float | None = None,
+            z_strategy: float | None = None) -> list[dict]:
     """Entonnoir 80/20 de toutes les stratégies qui grandissent : croissance ≥ `min_growth` sur au
     moins `min_closed` opérations, ou croissance supérieure à celle de leur mère (le marqueur
     d'Etienne). `entries` / `growth` : par nom d'arène (« nf_sport_v1.0.0 ») ; `mothers` :
-    {stratégie: mère} ; `configs` : config/strategies.yaml (pour repérer les filles déjà créées)."""
+    {stratégie: mère} ; `configs` : config/strategies.yaml (pour repérer les filles déjà créées).
+    `z_strategy` (27/10/2026, promotion.yaml → entonnoir.z_strategie) : une stratégie qui gagne plus souvent que ses
+    prix (z ≥ `z_strategy`, `min_closed` opérations) est disséquée MÊME si elle perd en euros : ses euros mesurent aussi
+    la taille de ses mises. `contrer_crypto_patiente` (38 gagnés pour 29 attendus, −28 €) n'était jamais regardée ;
+    son morceau 0,10-0,45 bat ses prix (33 pour 21,6) quand ses billets sous 0,10 perdent tout (1 sur 45).
+    `min_z` : voir `proposals`."""
     out = []
     for name, rows in entries.items():
         base = name.rsplit("_v", 1)[0]
@@ -315,13 +329,15 @@ def analyse(entries: dict[str, list[dict]], growth: dict[str, float], mothers: d
         g = growth.get(name)
         if g is None or len(bets) < min(min_closed, 10):
             continue
+        whole = _stats(bets)
         mother = mothers.get(base)
         mother_growth = next((v for n, v in growth.items() if n.rsplit("_v", 1)[0] == mother), None) if mother else None
         beats_mother = mother_growth is not None and g > mother_growth
-        if not ((g >= min_growth and len(bets) >= min_closed) or beats_mother):
+        beats_prices = z_strategy is not None and len(bets) >= min_closed and whole["z"] >= z_strategy
+        if not ((g >= min_growth and len(bets) >= min_closed) or beats_mother or beats_prices):
             continue
         d = dissect(bets)
-        found = proposals(base, bets, d, min_n)
+        found = proposals(base, bets, d, min_n, min_z)
         mine = (configs.get(base) or {}).get("filtres") or {}
         for p in found:
             wanted = {**mine, **p["filtres"]}
@@ -329,7 +345,7 @@ def analyse(entries: dict[str, list[dict]], growth: dict[str, float], mothers: d
             p["existe"] = any((c or {}).get("mere") in (base, mother) and (c or {}).get("filtres") == wanted
                               for c in configs.values() if isinstance(c, dict))
         out.append({"strategie": name, "croissance": g, "mere": mother, "croissance_mere": mother_growth,
-                    "ensemble": _stats(bets), "dissection": d, "filles": found})
+                    "ensemble": whole, "dissection": d, "filles": found})
     out.sort(key=lambda r: -r["croissance"])
     return out
 

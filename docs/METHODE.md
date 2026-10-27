@@ -16,6 +16,28 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 ## Méthode de recherche (chaque session de recherche)
 
+**Cap sur l'objectif : les pertes sont des expériences** (décision d'Etienne, 27/10/2026 : « plus de liberté pour le tout ;
+fais ce qui te semble juste et le plus profitable ; ne sois pas paralysé par les pertes, vois-les comme des essais et des
+expériences pour améliorer et aller chercher de plus gros gains ; regarde l'objectif plutôt que la mort prochaine »).
+Chiffres et rejeux : `experiments/audace.md`.
+- **L'objectif est le palier suivant**, pas « perdre moins ». La règle n°1 est tenue par le code (journal signé, contrôleur,
+  réserve de liquidités du principal) : n'ajoute pas la peur par-dessus.
+- **Une perte de fantôme est une expérience payée** en argent fictif : elle doit rapporter une leçon chiffrée et, si possible,
+  l'expérience suivante (`experiments/carnet_experiences.md`, une ligne par stratégie éliminée ou retirée). Exemple : les
+  « contrer » de la crypto perdaient −94 €, mais leurs paris à 0,10-0,45 battaient leurs prix (58 gagnés pour 39,3 attendus) :
+  la perte venait des billets sous 0,10 et des mises → deux expériences « audace ».
+- **Une perte n'est jamais, à elle seule, une raison d'ajouter un frein.** Un frein se prouve comme une stratégie : un rejeu
+  doit montrer qu'il améliore le résultat ou le rendement par euro, pas seulement qu'il mise moins. Passe : le plafond de 5 %
+  des mises copiées (−2,6 % → −1,0 % par euro). Ne passe pas : écarter les favoris du principal (−54 € → −290 € au rejeu).
+- **Audace là où l'avantage se mesure** : une stratégie qui bat ses prix (gagnés contre attendus) mérite une variante qui
+  mise franchement (Kelly entier, 2 à 5 % du fantôme par pari) ; les paris à 0,10-0,45 paient ×2 à ×9 : c'est là que se font
+  les gros gains. Jamais de billets sous 0,10 sans source qui tranche (3 gagnés pour 10,8 attendus dans toute l'arène).
+- **Fin du bruit** : nos 58 stratégies de favoris ne diffèrent pas réellement entre elles (−1,6 point par pari, Q ≈ degrés de
+  liberté) ; ne découpe plus les favoris. L'entonnoir ne propose plus que des morceaux qui battent leurs prix.
+- **Une expérience audacieuse par passage**, neuve (pas une fille de favori), avec son hypothèse, sa mise et ce qu'une perte
+  apprendrait, écrits dans `hypothesis`. Un fantôme ne coûte rien au principal : une idée plausible peut entrer dans l'arène
+  pendant que son test sur le passé avance ; le test décide de sa place au capital principal, pas de son droit d'exister.
+
 **Enquête et recherche profonde d'abord** (décision d'Etienne, 20/10/2026 : « que le chercheur
 cherche les problèmes comme celui du principal qui augmentait les mises, et fasse de vraies
 recherches profondes ; pousse-le beaucoup plus ») : chaque passage commence par l'enquête
@@ -42,9 +64,11 @@ créent 80 % des résultats, et applique ça à tout ce qui fait une grosse croi
 qui grandit (≥ +5 % sur 15 opérations) ou qui bat sa mère (le marqueur d'Etienne), ses gains sont
 découpés par prix, délai jusqu'à la fin, issue, heure d'achat, discipline, type de pari, mode
 d'achat et source de résolution. Crée les filles proposées (obligations de la feuille de mission,
-filtres déjà prêts : `disciplines`, `types_pari`, `echeance_min/max`, `ecart_max`…). Tant que le
-vrai avantage n'est pas trouvé, continue à créer des filles ; une fille qui bat sa mère est
-disséquée à son tour. Un morceau qui n'est pas filtrable (mode d'achat, source) : ajoute le filtre
+filtres déjà prêts : `disciplines`, `types_pari`, `echeance_min/max`, `ecart_max`…). Depuis le 27/10/2026
+(`promotion.yaml` → `entonnoir`), seuls sont proposés les morceaux qui battent leurs prix (z ≥ 2 : une stratégie
+se découpe en ≈ 40 morceaux ; avec z ≥ 0, la moitié des morceaux sans avantage passaient, 61 filles de favoris le
+27/10), et une stratégie qui bat ses prix est disséquée même si elle perd en euros (ses euros mesurent aussi ses
+mises). Pas de fille « au cas où » ; une fille qui bat sa mère est disséquée à son tour. Un morceau qui n'est pas filtrable (mode d'achat, source) : ajoute le filtre
 dans `strategy_engine.Filtered` plutôt que de l'ignorer.
 
 **Ordres posés : seulement pour la tenue de marché** (17/10/2026). Une stratégie qui parie sur un
@@ -76,7 +100,8 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
 2. Remplis **toutes** les obligations de la feuille de mission (idées à ajouter, stratégies
    éliminées à remplacer, idée radicale si aucun palier depuis 7 jours).
 3. Mission : battre le record, atteindre le palier suivant le plus vite possible, sans jamais
-   atteindre 0. Prends des risques et essaie des idées neuves ; l'arène tranche en conditions réelles.
+   atteindre 0. Prends des risques et essaie des idées neuves ; l'arène tranche en conditions réelles
+   (« Cap sur l'objectif » ci-dessus : les pertes des fantômes sont des expériences).
 4. Une nouvelle stratégie = une classe dans `strategy_engine.py` ou `strategies_v2.py`, une entrée
    dans `strategies.yaml`, des tests. Elle entre dans l'arène dans son propre portefeuille fantôme.
    Variante sans nouveau code : une entrée `strategies.yaml` avec `class: <stratégie existante>`
@@ -99,7 +124,10 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
    note la raison dans le journal de recherche. Repasse à plus prudent si l'avantage s'efface.
    Renfort (« grossir les gagnantes », 21/10/2026) : `sante_strategies.renfort` (fantômes) et
    `mise_avantage_mesure.renfort` / `part_max` (principal) ; une stratégie qui prouve plus d'avantage
-   qu'elle n'en suppose mise jusqu'à 2 fois plus. Mêmes règles : rejeu d'abord, raison notée.
+   qu'elle n'en suppose mise jusqu'à 2 fois plus dans son fantôme, et jusqu'à 3 fois plus au principal
+   depuis le 27/10/2026, qui peut alors lui confier tout son capital (`part_max_par_strategie: 1.0`) ; la
+   réserve de liquidités (`principal.reserve_liquidites`, 3 %) empêche qu'une mise vide le solde disponible.
+   Mêmes règles : rejeu d'abord, raison notée.
    Simulation (noyau) : 25 % de la quantité au meilleur prix, 50 % aux niveaux suivants, liquidité
    partagée entre tes ordres d'un même cycle. Chaque exécution est auditée contre l'historique
    public des prix (job `audit`) : un prix impossible déclenche une alerte à Etienne.

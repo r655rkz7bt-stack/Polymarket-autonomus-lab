@@ -53,7 +53,9 @@ def test_repository_config_loads():
             "mots_prononces_patiente", "compteur_tweets_non_patiente",
             "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur", "nf_sport_patiente_biais_faible", "nf_sport_patiente_avant_match", "nf_court_prix_haut_biais_faible",
             "vague_volume_suivre", "vague_volume_suivre_x5", "moins_de_cartes", "moins_de_cartes_lol", "moins_de_cartes_bo5", "non_aux_drames", "nf_sport_patiente_matchs", "saison_non", "candidats_non", "rallies_non", "rallies_non_favori", "mentions_non", "mentions_non_outsider", "compteur_tweets_non_hors_elon_trump", "compteur_truth", "detroits_tranches", "detroits_marche_log", "detroits_non_normal", "seismes_marche", "box_office_favori", "spacex_cumul", "toucher_metaux",
-        "nf_tennis_12_18h_vainqueur_800_850", "nf_sport_patiente_6_24h_autre", "compteur_tweets_non_ecart_large", "nf_sport_patiente_6_24h_6_12h", "nf_sport_non_900_925"])
+        "nf_tennis_12_18h_vainqueur_800_850", "nf_sport_patiente_6_24h_autre", "compteur_tweets_non_ecart_large", "nf_sport_patiente_6_24h_6_12h", "nf_sport_non_900_925",
+        # Expériences audacieuses (27/10/2026, « vois les pertes comme des expériences »).
+        "contrer_crypto_audace", "contrer_crypto_patiente_audace"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",

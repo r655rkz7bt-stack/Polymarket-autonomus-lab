@@ -976,3 +976,17 @@ l'échéance, 2 % du capital par événement (experiments/pistes_crypto_election
 `main.Weighted(..., ghost_cap=)`, réglage `principal.mise_fantome_max` (0,05) : chaque pari d'un fantôme copié compte au plus pour
 5 % du capital de ce fantôme avant la mise à l'échelle du principal (achats et ordres posés). Rejeu du 15 au 26/10 : −262 € → −46 €,
 −2,6 % → −1,0 % par euro (`experiments/taille_des_mises.md`, `experiments/taille_des_mises/plafond_copie.py`).
+
+## 59. Cap sur l'objectif : pertes = expériences, audace où l'avantage se mesure (27/10/2026, demande d'Etienne)
+
+« Plus de liberté… ne sois pas paralysé par les pertes, vois-les comme des expériences pour aller chercher de plus gros gains ».
+Analyses et rejeux : `experiments/audace.md`, `experiments/audace/` ; leçons : `experiments/carnet_experiences.md`.
+- `pareto.analyse(..., min_z=, z_strategy=)`, réglage `promotion.yaml` → `entonnoir: {z_morceau: 2.0, z_strategie: 1.5}` : un
+  morceau proposé doit battre ses prix (z ≥ 2) ; une stratégie qui bat ses prix (z ≥ 1,5) est disséquée même si elle perd en
+  euros ; `PRICE_BANDS` découpe les prix bas (0-0,10, 0,10-0,20, 0,20-0,30, 0,30-0,45, 0,45-0,60, 0,60-0,80). 61 → 4 filles.
+- `enquete.chance` et `enquete.champion_sans_avantage` : « à regarder », plus « grave » (plus d'obligation).
+- Fantômes `contrer_crypto_audace` et `contrer_crypto_patiente_audace` (`price_move`, 0,10-0,45, Kelly entier, a priori 0,08).
+- Principal : `main._engaged_shares` applique enfin le renfort (un `min(1.0, …)` du 17/10 l'annulait depuis le 21/10),
+  `mise_avantage_mesure.part_max` 3,0 (renfort ×3), `part_max_par_strategie` 1,0, et `main._cash_room` /
+  `principal.reserve_liquidites` (0,03) : un achat (au comptant, posé ou servi) ne laisse jamais moins de 3 % du capital estimé
+  en solde disponible ; sinon il est réduit ou attend.

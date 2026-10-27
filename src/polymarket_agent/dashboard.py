@@ -195,10 +195,14 @@ def situation(capital: dict, arena: list[dict], history: list[dict], rules: dict
     if len(parts) > 1:  # plusieurs championnes (18/10/2026)
         listed = sorted(parts.items(), key=lambda kv: -kv[1])
         names = [f"{name(n)} ({_fr(w * 100, 0)} %)" for n, w in listed]
+        total = sum(parts.values())
         return {"phrase": f"Le capital principal suit {len(parts)} championnes : "
                           + ", ".join(names[:-1]) + f" et {names[-1]}.",
-                "detail": f"{_fr(sum(parts.values()) * 100, 0)} % du capital engagé au plus ; le reste attend "
-                          "(période d'essai et plafond de 50 % par stratégie)."}
+                "detail": (f"{_fr(total * 100, 0)} % du capital engagé au plus ; le reste attend : chaque stratégie mise "
+                           "à proportion de son avantage mesuré contre les prix (période d'essai, garde-fou par jour)."
+                           if total <= 1 else
+                           "Tout le capital peut être engagé : une gagnante prouvée mise davantage (renfort, 27/10/2026) ; "
+                           "une petite réserve reste toujours disponible.")}
     if champ:
         since = next((h["date"] for h in history if h["champion"] == champ), "")
         a = by_name.get(champ)
@@ -580,8 +584,10 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         configs = yaml.safe_load((Path(root) / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
         mothers = {k: str(v.get("mere")) for k, v in configs.items() if isinstance(v, dict) and v.get("mere")}
         growth = {a["nom"]: a["capital"] / float(state.initial_capital) - 1 for a in arena}
+        cut = arena_cfg(settings, root).get("entonnoir") or {}  # 27/10/2026 : morceaux qui battent leurs prix
         data["pareto"] = pareto.summary(pareto.analyse({n: e for n, e in entries.items() if n != "principal"},
-                                                       growth, mothers, pareto.market_labels(db), configs))
+                                                       growth, mothers, pareto.market_labels(db), configs,
+                                                       min_z=cut.get("z_morceau"), z_strategy=cut.get("z_strategie")))
     except Exception:  # noqa: BLE001 - l'affichage ne doit jamais bloquer
         data["pareto"] = []
     try:

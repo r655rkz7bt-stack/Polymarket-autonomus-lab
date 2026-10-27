@@ -12,11 +12,11 @@ from polymarket_agent.sources.polymarket_gamma import parse_market
 from polymarket_agent.strategy_engine import Filtered
 
 
-def _trade(k, price, won, question, hours, domain="", outcome="Player A", resting=False, hour=8):
+def _trade(k, price, won, question, hours, domain="", outcome="Player A", resting=False, hour=8, shares="100"):
     ts = (NOW.replace(hour=hour) + timedelta(minutes=k)).isoformat()
     extra = {"horizon_hours": str(hours)} | ({"resting_order": True} if resting else {})
     buy = {"type": "BUY", "ts": ts, "data": {"token_id": f"t{k}", "market_id": f"m{k}", "event_id": f"e{k}",
-                                             "outcome": outcome, "shares": "100", "price": str(price), "fee": "0",
+                                             "outcome": outcome, "shares": shares, "price": str(price), "fee": "0",
                                              "strategy_id": "s", "strategy_version": "1", "extra": extra}}
     settle = {"type": "SETTLE", "ts": ts, "data": {"token_id": f"t{k}", "payout_per_share": "1" if won else "0",
                                                   "resolution": "x"}}
@@ -67,6 +67,26 @@ def test_only_growing_strategies_are_dissected_and_existing_daughters_are_not_pr
     both = pareto.analyse({"m_v1": entries, "f_v1": entries}, {"m_v1": -0.1, "f_v1": 0.01}, {"f": "m"}, markets,
                           {}, min_closed=15)
     assert [r["strategie"] for r in both] == ["f_v1"]
+
+
+def test_funnel_looks_for_slices_that_beat_their_prices_not_for_lucky_euros():
+    """27/10/2026 (experiments/audace.md) : `contrer_crypto_patiente` battait ses prix (38 gagnés pour 29 attendus) mais
+    perdait en euros (ses grosses mises) : l'entonnoir ne la regardait jamais. Avec `z_strategy`, elle est disséquée, et
+    son morceau 0,10-0,20 (où était le gain) est proposé ; avec `min_z`, un morceau de favoris gagné par chance ne l'est plus."""
+    cheap = [(0.15, k % 5 < 2, "Will Bitcoin reach $120,000?", 48) for k in range(30)]  # 12 gagnés pour 4,5 attendus
+    big = [(0.40, False, "Will Bitcoin dip to $90,000?", 48, "", "Player A", False, 8, "2000")] * 2  # −1 600 €
+    entries, markets = _book(cheap + big)
+    args = ({"contre_v1": entries}, {"contre_v1": -0.85}, {}, markets, {})
+    assert pareto.analyse(*args, min_closed=15) == []  # perd en euros : jamais disséquée avant
+    reports = pareto.analyse(*args, min_closed=15, min_z=2.0, z_strategy=1.5)
+    assert [r["strategie"] for r in reports] == ["contre_v1"] and reports[0]["ensemble"]["z"] >= 1.5
+    assert [p["filtres"] for p in reports[0]["filles"]] == [{"prix_min": 0.1, "prix_max": 0.2}]
+    # Morceau de favoris gagné par chance (10 sur 10 à 0,85 : z 1,3) : proposé avec z ≥ 0, plus avec z ≥ 2.
+    fav, fav_markets = _book([(0.85, True, "Almaty Open: A vs B", 120, "atptour.com")] * 10
+                             + [(0.90, k % 3 != 0, "Cardinals vs. Rams", 2) for k in range(12)])
+    bets = pareto.bets_of(fav, fav_markets)
+    assert pareto.proposals("s", bets, pareto.dissect(bets))
+    assert pareto.proposals("s", bets, pareto.dissect(bets), min_z=2.0) == []
 
 
 def test_discipline_bet_type_and_new_daughter_filters():

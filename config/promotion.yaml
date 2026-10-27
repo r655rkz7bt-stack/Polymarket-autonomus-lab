@@ -55,10 +55,14 @@ garde_fou_jour: {confiance_min: 0.8, reduction: 0.5}
 # Renfort (« grossir les gagnantes », 21/10/2026) : au-delà de 1 (jusqu'à `part_max`) seulement si la
 # stratégie prouve PLUS d'avantage qu'elle n'en suppose, après `renfort.min_operations` opérations et
 # avec une confiance par jour d'au moins `renfort.confiance_jour_min`.
+# 27/10/2026 (demande d'Etienne : « plus de liberté… va chercher de plus gros gains ») : renfort jusqu'à ×3 au lieu de ×2,
+# et une stratégie peut porter tout le capital (`part_max_par_strategie: 1.0`). Seulement pour celles qui PROUVENT plus
+# d'avantage qu'elles n'en supposent (30 opérations, confiance par jour ≥ 80 %) ; la réserve de liquidités du principal
+# (settings.yaml → principal.reserve_liquidites) empêche qu'une mise plus grosse vide le solde disponible.
 mise_avantage_mesure:
   paris_fictifs: 30
   part_min: 0.0
-  part_max: 2.0
+  part_max: 3.0
   avantage_suppose_defaut: 0.035
   renfort: {min_operations: 30, confiance_jour_min: 0.8}
 # Modes de jugement (AMELIORATION n°3 et 4), par préfixe de nom, avec une part plafonnée :
@@ -93,9 +97,11 @@ repartition: {merite: 0.5, recalcul_minutes: 60}
 # Mesure du 18/10 : nf_sport a joué 79 % de ses matchs avec nf_court (doublon) ; nf_sport_patiente
 # 17 % seulement.
 chevauchement_max: 0.5
-# Au plus 70 % du capital principal sur une seule stratégie, même seule qualifiée (le reste attend).
-# 50 % jusqu'au 21/10/2026 ; 70 % sur demande d'Etienne (règle mélange).
-part_max_par_strategie: 0.7
+# Part du capital principal sur une seule stratégie (multiplicateurs compris). 50 % jusqu'au 21/10/2026 ; 70 % sur demande
+# d'Etienne (règle mélange) ; 100 % depuis le 27/10/2026 (« plus de liberté ») : une gagnante prouvée peut tout porter, le
+# coussin de liquidités (principal.reserve_liquidites) et les plafonds par pari et par famille (principal.max_mise, max_famille)
+# restent.
+part_max_par_strategie: 1.0
 elimination_every_days: 7        # la pire stratégie éligible est éliminée une fois par semaine
 min_days_before_elimination: 7
 min_strategies_in_test: 3        # innovation obligatoire
@@ -115,6 +121,12 @@ jamais_retirer: [market_maker, cpi_tranches, jobs_favori_non, statu_quo_ia, sais
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).
 # 21/10/2026 (AMELIORATION n°5) : aussi sous 750 € de capital réalisé après 20 opérations (−25 %).
 retirer_perdantes: {min_operations: 20, confiance_max: -1.5, capital_min: 750}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
+# Entonnoir 80/20 recentré (27/10/2026, experiments/audace.md) : une fille n'est proposée que pour un morceau qui bat ses
+# prix d'au moins `z_morceau` (une stratégie se découpe en ≈ 40 morceaux : avec z ≥ 0, la moitié des morceaux sans avantage
+# passaient ; 61 filles proposées le 27/10, presque toutes des favoris de sport) ; et une stratégie qui bat ses prix
+# (z ≥ `z_strategie`) est disséquée même si elle perd en euros (ses euros mesurent aussi la taille de ses mises). Effet
+# sur les journaux du 27/10 : 4 filles proposées au lieu de 61, dont le morceau 0,10-0,20 de contrer_crypto_patiente (z +3,2).
+entonnoir: {z_morceau: 2.0, z_strategie: 1.5}
 # Moins de filles (AMELIORATION n°5 du 21/10/2026, arena.retire_daughters). Plus on teste de
 # variantes, plus l'une gagne par chance, et plus le cycle ralentit (naive_favorite et
 # nf_sport_patiente avaient 21 filles vivantes chacune). Une fille est retirée si elle est :

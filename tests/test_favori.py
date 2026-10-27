@@ -122,6 +122,28 @@ def test_excluded_words_skip_markets():
     assert excluded(m, words) and not excluded(parse_market(raw_market("d", question="Will BTC hit $90k?")), words)
 
 
+def test_bold_crypto_daughters_play_only_the_cheap_contrarian_band_with_bigger_stakes(tmp_path):
+    """Expériences audacieuses (27/10/2026, experiments/audace.md) : les filles « audace » des deux fantômes « contrer » ne
+    prennent que le côté contraire coté 0,10-0,45 (sous 0,10 : 1 gagné sur 80 dans les journaux du 15 au 26/10), avec des
+    mises bien plus grosses que leur mère (Kelly entier et a priori 0,08, contre un quart de Kelly et 0,05)."""
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    bold, mother, posted = loaded["contrer_crypto_audace"], loaded["contrer_crypto"], loaded["contrer_crypto_patiente_audace"]
+    assert bold.families == ("crypto",) and bold.exclude_words == ("up or down",)
+    assert isinstance(posted, PatientOrders) and posted.inner.params["max_price"] == D("0.45")
+    question = "Will Bitcoin reach $120,000 by December 31?"
+    m, books, ledger, limits = _setup(tmp_path, fee_type="crypto_fees", bid="0.70", ask="0.71", question=question)
+    m.yes_price_6h_ago = 0.62  # le OUI a pris 0,085 en 6 h : contrer = acheter le NON à 0,30
+    big = bold.propose([m], books, ledger.state, limits, "b").proposals
+    small = mother.propose([m], books, ledger.state, limits, "b").proposals
+    assert [p.token_id for p in big] == ["N"] and [p.token_id for p in small] == ["N"]
+    assert big[0].shares >= 3 * small[0].shares
+    cheap, cb, cl, _ = _setup(tmp_path / "c", fee_type="crypto_fees", bid="0.93", ask="0.94", question=question)
+    cheap.yes_price_6h_ago = 0.85  # NON à 0,065 : billet sous 0,10, la mère l'achète, la fille non
+    assert mother.propose([cheap], cb, cl.state, limits, "b").proposals
+    out = bold.propose([cheap], cb, cl.state, limits, "b")
+    assert not out.proposals and out.abstentions.get("issue hors de la plage de prix")
+
+
 def test_child_strategy_plays_only_its_piece_of_the_markets(tmp_path):
     """Entonnoir (17/10/2026) : une fille = la mère sur un morceau ; les filtres de marché passent
     AVANT la mère (elle choisit ses meilleurs paris dans le morceau), prix et issue APRÈS."""
