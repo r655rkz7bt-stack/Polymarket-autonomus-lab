@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3925,
+  "principal": 3926,
   "fantome:calibration_patiente_v1.0.0": 2081,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1952,
@@ -19,7 +19,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1635,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2514,
-  "fantome:market_maker_v1.0.0": 2068,
+  "fantome:market_maker_v1.0.0": 2069,
   "fantome:favori_politique_patiente_v1.0.0": 1559,
   "fantome:favori_politique_v1.0.0": 1566,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1561,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 1762,
+  "fantome:nf_sport_v1.0.0": 1764,
   "fantome:nm_court_v1.0.0": 1722,
   "fantome:nm_crypto_v1.0.0": 1547,
   "fantome:nm_hors_crypto_v1.0.0": 1646,
@@ -70,7 +70,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 803,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 893,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 895,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
@@ -90,7 +90,7 @@
   "fantome:implication_politique_v1.0.0": 501,
   "fantome:marche_neuf_v1.0.0": 759,
   "fantome:marches_jumeaux_v1.0.0": 501,
-  "fantome:outsiders_surcotes_v1.0.0": 577,
+  "fantome:outsiders_surcotes_v1.0.0": 579,
   "fantome:paire_oui_non_v1.0.0": 501,
   "fantome:compteur_tweets_v1.0.0": 599,
   "fantome:cotes_tennis_v1.0.0": 493,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 73,
   "fantome:moins_de_cartes_lol_v1.0.0": 81,
   "fantome:detroits_non_normal_v1.0.0": 67,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 92,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 94,
   "fantome:mentions_non_outsider_v1.0.0": 30,
   "fantome:mentions_non_v1.0.0": 25,
   "fantome:rallies_non_favori_v1.0.0": 26,
@@ -172,7 +172,7 @@
   "fantome:contrer_crypto_audace_v1.0.0": 5,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 6
  },
- "verifiees": 10581,
+ "verifiees": 10584,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1776,9 +1776,9 @@
    "op_id": "settle-79989567119259607496152590074358896941739529472634441615193561623188504920837"
   }
  ],
- "derniere_execution": "2026-10-27T00:58:59+00:00",
+ "derniere_execution": "2026-10-27T01:04:10+00:00",
  "dernier_seq_reglements": {
-  "principal": 3925,
+  "principal": 3926,
   "fantome:calibration_patiente_v1.0.0": 2081,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1952,
@@ -1797,7 +1797,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1635,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2514,
-  "fantome:market_maker_v1.0.0": 2068,
+  "fantome:market_maker_v1.0.0": 2069,
   "fantome:favori_politique_patiente_v1.0.0": 1559,
   "fantome:favori_politique_v1.0.0": 1566,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1561,
@@ -1848,7 +1848,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 803,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 897,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 899,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
@@ -1868,7 +1868,7 @@
   "fantome:implication_politique_v1.0.0": 501,
   "fantome:marche_neuf_v1.0.0": 759,
   "fantome:marches_jumeaux_v1.0.0": 501,
-  "fantome:outsiders_surcotes_v1.0.0": 577,
+  "fantome:outsiders_surcotes_v1.0.0": 579,
   "fantome:paire_oui_non_v1.0.0": 501,
   "fantome:compteur_tweets_v1.0.0": 599,
   "fantome:cotes_tennis_v1.0.0": 493,
@@ -1950,5 +1950,5 @@
   "fantome:contrer_crypto_audace_v1.0.0": 5,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 6
  },
- "reglements_verifies": 5691
+ "reglements_verifies": 5692
 }
