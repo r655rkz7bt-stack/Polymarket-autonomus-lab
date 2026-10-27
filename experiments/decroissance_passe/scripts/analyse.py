@@ -12,10 +12,12 @@ def ts(s):
     s = s.replace(" ", "T").replace("Z", "+00:00")
     if s.endswith("+00"): s += ":00"
     return int(dt.datetime.fromisoformat(s).timestamp())
-def charge():
-    out = []
-    for l in open(D / "marches.jsonl"):
+def charge(fichiers=("marches.jsonl",)):
+    out, vus = [], set()
+    for l in (l for f in fichiers for l in open(D / f)):
         e = json.loads(l); p = D / "echanges" / f"echanges_{e['id']}.json.gz"
+        if e["id"] in vus: continue
+        vus.add(e["id"])
         if not p.exists(): continue
         tr = json.loads(gzip.decompress(p.read_bytes()))
         by = collections.defaultdict(list)

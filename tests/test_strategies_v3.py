@@ -462,3 +462,6 @@ def test_fewer_kills_buys_one_under_per_game_on_the_line_closest_to_even(tmp_pat
                         ("fO", "0.50", "0.51"), ("fU", "0.48", "0.49")))
     out = s.propose([low, mid, high, game2, wrong, early, started], books, _state(tmp_path), LIMITS, "b1")
     assert sorted(p.market_id for p in out.proposals) == ["b", "d"]
+    # Une abstention dit pourquoi (27/10/2026 : « abstentions {} » alors que des marchés de LoL passaient le filtre du titre).
+    reasons = out.abstentions if isinstance(out.abstentions, dict) else dict(out.abstentions)
+    assert reasons.get("pas un total de kills d'une partie") == 1 and reasons.get("hors de la fenêtre avant le match") == 2

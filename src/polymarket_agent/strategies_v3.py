@@ -1080,6 +1080,9 @@ class MoinsDeKills(_Base):
         games: dict[tuple, list[tuple[float, MarketInfo]]] = {}
         for m in watchlist:
             if not self._ok(m, now):
+                # 27/10/2026 : « abstentions {} » alors que 5 marchés de LoL passaient le filtre du titre : un marché qui n'est pas un total de kills ou qui est hors de la
+                # fenêtre avant le match ne laissait aucune trace ; la raison dit maintenant si la stratégie voit des totaux de kills (créés la veille) ou non.
+                out.abstain("pas un total de kills d'une partie" if m.sports_market_type != "kill_over_under_game" else "hors de la fenêtre avant le match")
                 continue
             g = self.GAME.search(m.question or "")
             book = books.get(m.token_ids[1])

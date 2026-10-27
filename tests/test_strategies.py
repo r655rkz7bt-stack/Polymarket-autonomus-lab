@@ -57,7 +57,7 @@ def test_repository_config_loads():
         # Expériences audacieuses (27/10/2026, « vois les pertes comme des expériences »).
         "contrer_crypto_audace", "contrer_crypto_patiente_audace", "crypto_non_bon_marche",
         # Comptes suspects (27/10/2026, affaire du Ballon d'Or).
-        "suivre_inities", "classement_appstore"])
+        "suivre_inities", "classement_appstore", "ia_oui_sorties"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
