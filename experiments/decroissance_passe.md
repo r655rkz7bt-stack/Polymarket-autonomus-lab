@@ -32,12 +32,12 @@ Ce n'est pas un carnet périmé : le prix payé est le vrai prix du carnet. C'es
 
 ## Suite : les catégories de ce relevé (27/10, 16 h-17 h UTC) — IA : indice faible → fantôme `ia_oui_sorties` ; pannes de ChatGPT : marché déjà aligné
 Contrôle par catégorie sur les mêmes marchés (6 catégories par mots du titre × 2 côtés, OUI et NON à 3-35 %, un pari par marché) puis relevé par étiquettes IA / tech / OpenAI / Claude depuis le 01/01/2025
-(`scripts/releve_tags.py` : 512 événements, 1 514 marchés de plus, 6 511 au total avec échanges, `resultats.txt`) :
+(`scripts/releve_tags.py` : 512 événements, 1 514 marchés de plus, 6 511 au total avec échanges ; `scripts/analyse3.py` → `resultats_categories.txt`) :
 - **Seule catégorie qui sort : l'IA** (marchés qui parlent de GPT, OpenAI, Anthropic, Gemini, Claude, Grok, DeepSeek, Qwen, « AI model »…). OUI à 0,10-0,40 : 105 paris, 41 gagnés pour 26,6, **+51,2 %** (z +3,36, t par événement +2,53) ;
   **hors pannes ChatGPT et classement de l'App Store : 91 paris, 33 gagnés pour 22,2, +45 %** (z +2,72, t +1,98), première moitié +20 % (z +0,8), seconde **+68 %** (z +3,0). Le NON des mêmes marchés : **−14,5 %** (143 paris, z −4,0, t −3,76).
   Autres catégories : géopolitique −0,4 % (NON) / −2,4 % (OUI) ; personnes qui partent −14 % (NON) ; politique américaine −5,8 % (NON) ; « autre » −2,2 % / −1,2 %.
 - **Fragile** : 12 comparaisons de catégories + 4 variantes regardées (le z +2,7 survit à peine à une correction) ; **échanges minces** : profondeur médiane 3,8 parts achetables à ≤ prix + 0,02 dans l'heure, ≥ 100 parts 26 paris +58 %,
-  ≥ 400 parts 9 paris **+7,6 %** ; sans ses 5 meilleurs événements +34 % ; par horizon : 30 jours −19 %, 14 jours −22 %, 1 à 7 jours +31 à +67 % (peu de paris). Les paris gagnants : sorties de modèles (Claude 5, Mythos, GPT-5.6, Gemini 3.2),
+  ≥ 400 parts 9 paris **+7,6 %** ; hors pannes, sans ses 5 meilleurs événements +24,5 % (t par événement +0,64) ; par horizon : 30 jours −12 %, 14 jours −22 %, 7 jours +51 %, 3 jours +64 %, 1 jour +77 % (5 à 15 paris chacun). Les paris gagnants : sorties de modèles (Claude 5, Mythos, GPT-5.6, Gemini 3.2),
   valorisations d'OpenAI et d'Anthropic. Aucun mécanisme vérifié (hypothèse : les labos livrent plus vite que les prix ne le disent en 2026).
 - **Verdict : indice** (`idea_test.verdict`) → expérience audacieuse `ia_oui_sorties` (config seule, filtres sur `naive_favorite` : OUI 0,10-0,40, échéance 1 à 30 jours, mots d'IA, hors pannes et classements, Kelly entier, biais 0,08) ; marchés vus par `tag_pages` 439.
   Cycle local : 1 achat à 0,21 (« GPT Astra 6.1+ released between October 26 and November 1 »). **Pas de capital principal** : la profondeur est celle d'un ticket de 5 à 20 parts. Une perte apprendrait que l'écart vient de quelques mois (2026-06, 2026-09) ou de modèles précis.
