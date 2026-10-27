@@ -2171,7 +2171,9 @@ outsiders_surcotes:
 
 marche_neuf:
   explication: "Un marché tout neuf hésite trop : si un camp est déjà favori, on parie qu'il l'est encore plus que son prix ne le dit."
-  enabled: true
+  # Coupée le 27/10/2026 (experiments/decroissance_passe.md, « marche_neuf ») : jamais testée sur le passé ; rejouée sur 862 à 993 favoris à 0,60-0,88 de marchés de moins de 24 h (hors sport, vrais échanges, frais payés),
+  # elle perd −2,3 à −4,5 % à 2, 6, 12 et 23 h après la création (z −1,1 à −2,2) : le favori d'un marché neuf n'est pas sous-coté. Ses 80 paris en direct (64,5 gagnés pour 63,5 attendus, +28 €) étaient de la chance de mise.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:

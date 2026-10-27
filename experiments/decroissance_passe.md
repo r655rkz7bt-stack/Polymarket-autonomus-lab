@@ -44,3 +44,18 @@ Contrôle par catégorie sur les mêmes marchés (6 catégories par mots du titr
 - **Pannes de ChatGPT** (« ChatGPT Outage by… », « # of ChatGPT Outage Days in … ») : le OUI a gagné 7 fois sur 8 dans le relevé (payé 0,18-0,44) mais ce sont **8 paris** : rien à conclure. Source qui tranche lue en direct : `status.openai.com/` (page HTML : `component_impacts` des 90 derniers jours avec
   `partial_outage` / `full_outage` par composant, groupe « ChatGPT » = 16 composants ; le JSON `api/v2/incidents.json` n'a pas les composants par niveau) : **5 jours de panne en octobre (1, 7, 9, 15, 20)**, 8 jours depuis fin août. **Le marché le sait déjà** :
   « 5 outages ou plus en octobre » coté 0,9875 ($ 13 555 de volume), « by October 31 » 0,345 contre 0,31 calculé (4 jours restants, 9 % de jours de panne), « by November 15 » 0,83 contre 0,83. Aucune stratégie : le lecteur n'apporterait rien aujourd'hui.
+
+## Suite : `marche_neuf` rejouée (27/10, 17 h UTC) — écartée, stratégie coupée
+`marche_neuf` (« un marché de moins de 24 h est trop prudent : renforcer le favori à 0,60-0,88 », extremize 1,15) n'avait, elle aussi, jamais été rejouée sur le passé (80 paris en direct : 64,5 gagnés pour 63,5, +28 € portés par la taille des mises ; non copiée par le principal).
+`scripts/marche_neuf.py` sur les marchés du relevé (hors sport, 6 511 marchés avec échanges) : à création + h, prix du favori (≥ 0,5) dans [0,60 ; 0,88], achat au premier échange réel de preneur dans les 6 h, frais payés, un pari par marché
+(`resultats_marche_neuf.txt`) :
+
+| h après la création | paris | gagnés / attendus | rendement | t par événement | favori OUI | favori NON |
+|---|---|---|---|---|---|---|
+| 2 h | 530 | 389 / 406,0 (z −1,8) | −4,5 % | −1,64 | −0,4 % | −6,6 % |
+| 6 h | 862 | 635 / 661,1 (z −2,2) | −4,3 % | −2,53 | −3,4 % | −4,8 % |
+| 12 h | 993 | 741 / 755,5 (z −1,1) | −2,3 % | −1,65 | −0,1 % | −3,4 % |
+| 23 h | 879 | 640 / 666,2 (z −2,1) | −4,3 % | −2,30 | +0,4 % | −7,1 % |
+
+Quatre réglages, tous négatifs : **le favori d'un marché neuf n'est pas sous-coté** (c'est plutôt l'inverse, surtout pour le NON), l'hypothèse de Princeton (pente de recalibrage 1,11) ne se vérifie pas sur ces marchés (le sport, où naissent la plupart des marchés neufs, est couvert par `favoris_avant_match.md` : −1 à −5 %).
+Limite : seulement les marchés « d'ici / avant » (mots du titre), pas les marchés neufs de politique ou de culture en général. **Verdict : écartée ; `marche_neuf` coupée** (`enabled: false`, tests mis à jour).
