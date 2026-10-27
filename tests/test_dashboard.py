@@ -395,4 +395,10 @@ def test_principal_refusals_are_counted_by_strategy_and_reason(tmp_path):
     decide("Pa6", "compteur_tweets", False, [], now - timedelta(hours=2))
     data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=now)
     assert data["refus_principal"] == {"moins_de_cartes": {small[0]: 2}, "compteur_tweets": {"(sans raison notée)": 1}}
+    # Écarts silencieux de la copie (27/10/2026, `main._remember_drops`) : ajoutés, ceux de plus de 48 h ignorés.
+    import json
+    db.set_value("ecartes_principal", json.dumps([[(now - timedelta(hours=3)).isoformat(), "favori_politique", "budget de la part épuisé", 2],
+                                                  [(now - timedelta(hours=60)).isoformat(), "favori_politique", "camp opposé", 1]]))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=now)
+    assert data["refus_principal"]["favori_politique"] == {"budget de la part épuisé": 2}
     db.close()
