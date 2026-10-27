@@ -1,0 +1,25 @@
+537 marchés avec échanges, 77 événements
+| N échanges / 3 h | jetons déclenchés (heures avant règlement : médiane, quartiles) | côté | paris | évén. | rendement | t | gagnés/attendus | mois | verdict |
+N=(2, 0.2): 55 jetons, écart déclenchement→règlement médiane 514.7 h, quartiles [77.6, 514.7, 1472.5]
+| N=(2, 0.2) tous côtés | 136 | 50 | +0.8% | t évén. -0.07 | gagnés 123 / attendus 121.7 (z +0.37) | 9/13 mois | écartée |
+| N=(2, 0.2) OUI | 47 | 31 | -11.7% | t évén. -1.49 | gagnés 37 / attendus 41.6 (z -2.18) | 7/12 mois | écartée |
+| N=(2, 0.2) NON | 89 | 43 | +7.4% | t évén. +0.76 | gagnés 86 / attendus 80.1 (z +2.15) | 10/12 mois | écartée |
+N=(3, 0.2): 27 jetons, écart déclenchement→règlement médiane 41.9 h, quartiles [31.8, 41.9, 464.5]
+| N=(3, 0.2) tous côtés | 78 | 26 | -2.3% | t évén. -0.48 | gagnés 68 / attendus 69.3 (z -0.47) | 7/11 mois | écartée |
+| N=(3, 0.2) OUI | 36 | 20 | -2.7% | t évén. -0.36 | gagnés 31 / attendus 31.8 (z -0.43) | 9/11 mois | écartée |
+| N=(3, 0.2) NON | 42 | 22 | -2.0% | t évén. -0.46 | gagnés 37 / attendus 37.5 (z -0.24) | 8/10 mois | écartée |
+N=(3, 0.3): 14 jetons, écart déclenchement→règlement médiane 34.9 h, quartiles [30.6, 34.9, 476.9]
+| N=(3, 0.3) tous côtés | 44 | 14 | -7.0% | t évén. -0.51 | gagnés 37 / attendus 39.3 (z -1.13) | 6/8 mois | écartée |
+| N=(3, 0.3) OUI | 25 | 11 | -21.1% | t évén. -1.41 | gagnés 18 / attendus 22.2 (z -2.73) | 5/7 mois | écartée |
+| N=(3, 0.3) NON | 19 | 11 | +11.5% | t évén. +4.70 | gagnés 19 / attendus 17.1 (z +1.51) | 8/8 mois | écartée |
+N=(4, 0.3): 8 jetons, écart déclenchement→règlement médiane 32.9 h, quartiles [29.4, 32.9, 123.1]
+| N=(4, 0.3) tous côtés | 30 | 8 | -9.0% | t évén. -0.59 | gagnés 24 / attendus 26.2 (z -1.24) | 5/7 mois | écartée |
+| N=(4, 0.3) OUI | 17 | 7 | -25.7% | t évén. -1.03 | gagnés 11 / attendus 14.6 (z -2.60) | 4/6 mois | écartée |
+| N=(4, 0.3) NON | 13 | 6 | +12.7% | t évén. +4.44 | gagnés 13 / attendus 11.6 (z +1.31) | 6/6 mois | écartée |
+Traceback (most recent call last):
+  File "/home/user/Polymarket-autonomus-lab/experiments/fdv_lancement/scripts/declencheur.py", line 73, in <module>
+    print(f"N={N}: {len(ec)} jetons, écart déclenchement→règlement médiane {statistics.median(ec):.1f} h, quartiles {[round(x, 1) for x in q]}")
+                                                                            ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/statistics.py", line 565, in median
+    raise StatisticsError("no median for empty data")
+statistics.StatisticsError: no median for empty data

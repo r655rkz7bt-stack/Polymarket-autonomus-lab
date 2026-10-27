@@ -57,7 +57,9 @@ def test_repository_config_loads():
         # Expériences audacieuses (27/10/2026, « vois les pertes comme des expériences »).
         "contrer_crypto_audace", "contrer_crypto_patiente_audace", "crypto_non_bon_marche",
         # Comptes suspects (27/10/2026, affaire du Ballon d'Or).
-        "suivre_inities", "classement_appstore", "ia_oui_sorties"])
+        "suivre_inities", "classement_appstore", "ia_oui_sorties",
+        # Mise franche d'une stratégie qui bat ses prix en direct (27/10/2026, passage du soir).
+        "moins_de_cartes_franche", "tranche_centrale_non"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
@@ -69,7 +71,7 @@ def test_repository_config_loads():
                                                                    "football_trois_issues", "compteur_tweets", "compteur_truth", "cotes_tennis",
                                                                    "mots_prononces", "mots_nouveaux", "fatigue_nhl",
                                                                    "outsider_itf", "cpi_tranches", "jobs_favori_non", "vague_volume", "moins_de_cartes", "moins_de_kills", "saison_non", "candidats_non", "rallies_non", "rallies_non_favori", "mentions_non", "mentions_non_outsider", "detroits_tranches", "detroits_marche_log", "detroits_non_normal", "seismes_marche", "box_office_favori", "spacex_cumul", "toucher_metaux",
-                                                                   "suivre_inities", "classement_appstore")))
+                                                                   "suivre_inities", "classement_appstore", "tranche_centrale_non")))
 
 
 def test_param_outside_bounds_is_refused():

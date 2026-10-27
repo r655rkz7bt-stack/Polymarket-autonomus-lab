@@ -296,6 +296,27 @@ def test_best_of_many_with_a_small_lead_is_not_proof():
     assert alone == []
 
 
+def test_selection_z_counts_a_day_of_common_shock_once():
+    """28/10 : le NON des marchés crypto à 0,10-0,45 est un pari à la baisse : ses gains d'un mois suivent le cours du Bitcoin (corrélation −0,82 sur 17 mois).
+    4 167 paris donnaient z +5,3 pari par pari, mais les paris d'un jour gagnent ou perdent ensemble. Ici 100 paris à 0,50 sur 10 jours, 7 jours gagnants
+    (tous les paris du jour gagnent) : z = +4,0 pari par pari, +1,3 en comptant un jour comme un tirage."""
+    rows = []
+    for d in range(10):
+        for i in range(10):
+            t = NOW - timedelta(days=12 - d, hours=i)
+            tok = f"d{d}x{i}"
+            buy = _buy(t, tok, 0.5, 10, strategy="crypto", est=0.6)
+            buy["data"]["event_id"] = f"ev{d}x{i}"
+            rows += [buy, _settle(t.replace(hour=23, minute=0) + timedelta(hours=1), tok, 1 if d < 7 else 0)]
+    entries = {"crypto_v1.0.0": _ledger(*rows, born=NOW - timedelta(days=20))}
+    trades = enquete.closed_trades(entries["crypto_v1.0.0"])
+    assert round(enquete._z_by_day(trades), 1) == 1.3 and enquete._z_by_event(trades) > 3.9
+    found = enquete.selection_multiple(entries, {"crypto_v1.0.0"})
+    assert len(found) == 1 and "z = +1.26" in found[0]["titre"]
+    # Moins de 8 jours distincts : le groupe ne juge rien (inf), le z par événement décide seul.
+    assert enquete._z_by_day(trades[:30]) == float("inf")
+
+
 def test_selection_z_counts_the_legs_of_one_event_once():
     """26/10 : `compteur_tweets` = 28 paris sur 9 événements (échelles de tranches), z +2,56 pari par pari, t +1,0 par événement."""
     entries = {"echelle_v1.0.0": _fav_ledger(28, 2, strategy="echelle", price=0.8, per_event=10)}
@@ -383,6 +404,17 @@ def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token
     assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []
 
 
+def test_won_versus_expected_counts_the_payout_of_a_fifty_fifty_settlement():
+    """27/10 : `_won_vs_expected` comptait `pnl > 0` : un règlement 50-50 d'un pari payé 0,48 passait pour une victoire entière et un pari payé 0,55 pour une perte
+    entière (e-sport : 6 règlements 50-50 sur 85 paris de `moins_de_cartes`, z +0,86 au lieu de +1,75). Le paiement par part compte : 1, 0,5, 0."""
+    rows = []
+    for i, (price, payout) in enumerate([(0.55, 0.5), (0.48, 0.5), (0.6, 1), (0.6, 0)]):
+        t = NOW - timedelta(hours=10 - i)
+        rows += [_buy(t, f"t{i}", price, 10), _settle(t + timedelta(hours=1), f"t{i}", payout)]
+    won, expected = enquete._won_vs_expected(enquete.closed_trades(_ledger(*rows)))
+    assert won == 2.0 and round(expected, 2) == 2.23
+
+
 def test_fifty_fifty_settlements_count_half_a_win_in_the_arena_calibration():
     """26/10 : `estimation_gonflee` comptait un règlement à 0,5 comme une défaite (payout > 0,5) : 11 marchés 50-50 de l'arène
     faisaient baisser les « gagnés » de ~5 et le z. Le paiement réel par part compte."""
@@ -402,12 +434,19 @@ def test_near_certain_promises_that_lose_money_are_flagged_per_strategy():
     contre 2 mises entières."""
     entries = {"nm_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999),
                "nm_fille_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999)}  # mêmes jetons : comptés une fois
-    found = enquete.certitude_promise(entries)
+    found = enquete.certitude_promise(entries, depuis="")
     assert len(found) == 1 and found[0]["controle"] == "certitude_promise" and "arène : 16 paris promis" in found[0]["titre"]
     # Estimation raisonnable, trop peu de paris, ou paris gagnants : rien.
     assert enquete.certitude_promise({"a_v1.0.0": _fav_ledger(14, 2, strategy="a", price=0.97, est=0.98)}) == []
     assert enquete.certitude_promise({"b_v1.0.0": _fav_ledger(5, 1, strategy="b", price=0.97, est=0.999)}) == []
     assert enquete.certitude_promise({"c_v1.0.0": _fav_ledger(16, 0, strategy="c", price=0.97, est=0.999)}) == []
+
+
+def test_near_certain_promises_before_the_fix_do_not_reopen_the_finding():
+    """27/10 : les 95 paris d'avant le correctif du 23/10 20 h 35 rouvraient le constat à chaque passage ; seuls les paris d'après comptent."""
+    old = {"nm_v1.0.0": _fav_ledger(14, 2, strategy="nm", price=0.97, est=0.999)}  # ouverts le 19-20/10
+    assert enquete.certitude_promise(old) == []
+    assert len(enquete.certitude_promise(old, depuis="2026-10-18T00:00")) == 1
 
 
 def test_audit_settled_before_gamma_shows_closed_is_a_false_alarm_not_a_grave_finding():

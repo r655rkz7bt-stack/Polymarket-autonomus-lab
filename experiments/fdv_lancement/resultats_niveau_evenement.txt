@@ -1,0 +1,25 @@
+537 marchés avec échanges, 77 événements
+| bande | H− | jetons | paris | jetons avec une perte | attendu (prix payés, emboîtement) | P(aucune perte) |
+| 0.7-0.97 | 30 | 66 | 180 | 6 | 13.0 | 0.0000 |
+| 0.7-0.97 | 24 | 63 | 157 | 3 | 10.9 | 0.0000 |
+| 0.7-0.97 | 18 | 59 | 130 | 0 | 8.7 | 0.0001 |
+| 0.7-0.97 | 12 | 55 | 103 | 1 | 8.5 | 0.0001 |
+| 0.7-0.97 | 6 | 40 | 61 | 1 | 5.4 | 0.0025 |
+| 0.8-0.97 | 30 | 65 | 148 | 3 | 8.4 | 0.0001 |
+| 0.8-0.97 | 24 | 62 | 135 | 0 | 7.6 | 0.0003 |
+| 0.8-0.97 | 18 | 58 | 116 | 0 | 6.4 | 0.0010 |
+| 0.8-0.97 | 12 | 49 | 89 | 1 | 5.5 | 0.0025 |
+| 0.8-0.97 | 6 | 33 | 52 | 0 | 3.3 | 0.0277 |
+| 0.9-0.97 | 30 | 59 | 95 | 2 | 3.9 | 0.0163 |
+| 0.9-0.97 | 24 | 54 | 94 | 0 | 3.5 | 0.0246 |
+| 0.9-0.97 | 18 | 49 | 78 | 0 | 2.8 | 0.0525 |
+| 0.9-0.97 | 12 | 37 | 55 | 0 | 2.0 | 0.1246 |
+| 0.9-0.97 | 6 | 27 | 34 | 0 | 1.4 | 0.2272 |
+
+== deux moitiés (jetons réglés avant / après le 01/04/2026), bande 0,70-0,97 ==
+H−24 moitié 1 : 31 jetons, 63 paris, 3 jetons avec une perte, attendu 5.1, P(aucune perte) 0.0029
+H−24 moitié 2 : 32 jetons, 94 paris, 0 jetons avec une perte, attendu 5.8, P(aucune perte) 0.0012
+H−18 moitié 1 : 27 jetons, 51 paris, 0 jetons avec une perte, attendu 4.2, P(aucune perte) 0.0086
+H−18 moitié 2 : 32 jetons, 79 paris, 0 jetons avec une perte, attendu 4.5, P(aucune perte) 0.0064
+H−12 moitié 1 : 23 jetons, 36 paris, 0 jetons avec une perte, attendu 3.7, P(aucune perte) 0.0149
+H−12 moitié 2 : 32 jetons, 67 paris, 1 jetons avec une perte, attendu 4.8, P(aucune perte) 0.0043

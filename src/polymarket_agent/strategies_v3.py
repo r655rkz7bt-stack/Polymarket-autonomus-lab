@@ -1028,6 +1028,11 @@ class MoinsDeCartes(_Base):
         out, p, now, props = StrategyOutput(), self.params, _now(books), []
         for m in watchlist:
             if not self._ok(m, now):
+                # 27/10/2026 (comme moins_de_kills) : « abstentions {} » ne disait pas si la stratégie voit des totaux de cartes ou non ; seuls les marchés
+                # « Games Total » d'un BO3/BO5 hors de la fenêtre laissent une trace (les centaines d'autres marchés surveillés n'ont rien à dire).
+                if ((m.question or "").startswith("Games Total") and any(w in (m.event_title or "") for w in self.WORDS)
+                        and m.sports_market_type == "totals"):
+                    out.abstain("hors de la fenêtre avant le match")
                 continue
             if any(t in state.positions for t in m.token_ids):
                 out.abstain("position déjà ouverte")
@@ -1637,9 +1642,68 @@ class SuivreInities(_Base):
         return self._finish(out, props)
 
 
+class TrancheCentraleNon(_Base):
+    """« <Bitcoin / Ethereum / Solana / XRP> price on <date> ? » : onze tranches (« less than », neuf « between », « greater than ») réglées sur le cours Binance de 12 h, heure de l'Est. Dans les
+    3 à 6 heures qui précèdent ce fix, les heures 13-16 h UTC ont ≈ 2× la variance horaire moyenne (ouverture de Wall Street) ; le prix de la tranche CENTRALE (OUI coté 0,55-0,97) est trop sûr de lui :
+    on achète son NON quand il coûte 0,03-0,45. Sur le passé (28/10/2026, `experiments/crypto_pourquoi.md`, 858 événements de janvier à octobre 2026, vrais échanges, frais payés, un pari par marché) :
+    585 paris, +44,5 %, 185 gagnés pour 138,9 attendus (z +4,7), t par événement +3,2, 9 mois sur 10, les deux moitiés positives (+26 % puis +71 %), sans ses 10 meilleurs événements +18 % ; le gain
+    GRANDIT avec la profondeur (≥ 400 parts achetables dans l'heure : +66 %). Hold-out août-décembre 2025 (jamais vu) : +18,7 % à H−3/6 (321 paris, z +2,2) mais −1,6 % sans ses 10 meilleurs événements ; règle du cycle rejouée toutes les 30 min : 2026 +32,5 % (590 paris, z +3,45), 2025 +10,2 % (360 paris, z +0,7) : INDICE (effet plus petit et non significatif en 2025). Direction neutre (rendement mensuel corrélé à +0,10 au cours du Bitcoin, +0,52 à sa valeur absolue : on parie sur l'amplitude du mouvement, pas son sens).
+    Pourquoi ça peut rater : sélection parmi une cinquantaine de découpages (un seul réglage a priori : « 3 à 6 h avant la fin ») ; le profil de volatilité de Wall Street peut être mieux anticipé par le marché ;
+    les frais crypto (0,07 · p · (1 − p)) mangent 1 à 2 points ; les jours calmes font perdre toute la mise (NON à 0,15 = 15 % de la mise par jour perdu)."""
+
+    strategy_id = "tranche_centrale_non"
+    required = ("min_hours", "max_hours", "price_min", "price_max", "shift", "uncertainty", "min_net_edge", "max_proposals_per_cycle")
+    ASSETS = ("bitcoin", "ethereum", "solana", "xrp")
+    BETWEEN = re.compile(r"price of (\w+) be between \$[\d,]+(?:\.\d+)? and \$[\d,]+(?:\.\d+)? on ", re.IGNORECASE)
+
+    def _kind(self, m: MarketInfo) -> bool:
+        g = self.BETWEEN.search(m.question or "")
+        return bool(g and g.group(1).lower() in self.ASSETS and _yes_no(m))
+
+    def _ok(self, m: MarketInfo, now: datetime | None) -> bool:
+        if not self._kind(m) or m.end_date is None or now is None:
+            return False
+        hours = (m.end_date - now).total_seconds() / 3600
+        return float(self.params["min_hours"]) <= hours <= float(self.params["max_hours"])
+
+    def candidates(self, markets):
+        from datetime import timezone
+        now = datetime.now(timezone.utc)
+        out = [m for m in markets if self._ok(m, now)]
+        out.sort(key=lambda m: m.end_date)
+        return out[: int(self.params.get("max_candidates", 60))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            if not self._kind(m):
+                continue
+            if not self._ok(m, now):
+                out.abstain("hors de la fenêtre avant le fix de 12 h (Est)")
+                continue
+            if any(t in state.positions for t in m.token_ids):
+                out.abstain("position déjà ouverte")
+                continue
+            book = books.get(m.token_ids[1])
+            if book is None or book.best_ask is None or book.mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            if not float(p["price_min"]) <= float(book.best_ask) <= float(p["price_max"]):
+                out.abstain("NON hors de la plage de prix (tranche pas centrale)")
+                continue
+            est = float(book.mid) + float(p["shift"])
+            prop = self._buy(m, books, state, 1, est - float(p["uncertainty"]), est, est + float(p["uncertainty"]), bucket, marks, out,
+                             f"tranche_centrale_non:{(m.question or '')[-24:].strip()}",
+                             "tranche centrale trop sûre d'elle avant l'ouverture de Wall Street (+44,5 % sur le passé, z +4,7), trouvé parmi une cinquantaine de découpages",
+                             "le cours reste dans la tranche jusqu'au fix")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 CLASSES = {c.strategy_id: c for c in (ClassementAppStore, SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, BoxOfficeFavori, SpaceXCumul, ToucherMetaux)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

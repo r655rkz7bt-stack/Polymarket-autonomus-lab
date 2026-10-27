@@ -1,0 +1,28 @@
+== délai 6 h
+N=(3, 0.2): 27 jetons, écart déclenchement→règlement médiane 35.9 h, quartiles [25.8, 35.9, 458.5]
+| N=(3, 0.2) tous côtés | 82 | 24 | +4.0% | t évén. +0.91 | gagnés 76 / attendus 73.3 (z +0.99) | 9/11 mois | indice |
+N=(3, 0.3): 14 jetons, écart déclenchement→règlement médiane 28.9 h, quartiles [24.6, 28.9, 470.9]
+| N=(3, 0.3) tous côtés | 40 | 12 | +7.0% | t évén. +0.99 | gagnés 38 / attendus 35.5 (z +1.30) | 7/8 mois | indice |
+N=(4, 0.3): 8 jetons, écart déclenchement→règlement médiane 26.9 h, quartiles [23.4, 26.9, 117.1]
+| N=(4, 0.3) tous côtés | 32 | 8 | +9.5% | t évén. +1.22 | gagnés 31 / attendus 28.4 (z +1.53) | 6/7 mois | indice |
+== délai 12 h
+N=(3, 0.2): 27 jetons, écart déclenchement→règlement médiane 29.9 h, quartiles [19.8, 29.9, 452.5]
+| N=(3, 0.2) tous côtés | 75 | 25 | +5.7% | t évén. +1.74 | gagnés 70 / attendus 66.2 (z +1.40) | 9/11 mois | indice |
+N=(3, 0.3): 14 jetons, écart déclenchement→règlement médiane 22.9 h, quartiles [18.6, 22.9, 464.9]
+| N=(3, 0.3) tous côtés | 39 | 13 | +5.2% | t évén. +0.63 | gagnés 37 / attendus 35.0 (z +1.07) | 6/7 mois | écartée |
+N=(4, 0.3): 8 jetons, écart déclenchement→règlement médiane 20.9 h, quartiles [17.4, 20.9, 111.1]
+| N=(4, 0.3) tous côtés | 27 | 8 | +5.6% | t évén. +1.61 | gagnés 26 / attendus 24.5 (z +1.00) | 6/7 mois | écartée |
+== délai 18 h
+N=(3, 0.2): 27 jetons, écart déclenchement→règlement médiane 23.9 h, quartiles [13.8, 23.9, 446.5]
+| N=(3, 0.2) tous côtés | 71 | 26 | +7.1% | t évén. +3.12 | gagnés 68 / attendus 63.6 (z +1.75) | 10/11 mois | retenue |
+N=(3, 0.3): 14 jetons, écart déclenchement→règlement médiane 16.9 h, quartiles [12.6, 16.9, 458.9]
+| N=(3, 0.3) tous côtés | 37 | 14 | +8.3% | t évén. +3.47 | gagnés 36 / attendus 33.2 (z +1.57) | 7/7 mois | retenue |
+N=(4, 0.3): 8 jetons, écart déclenchement→règlement médiane 14.9 h, quartiles [11.4, 14.9, 105.1]
+| N=(4, 0.3) tous côtés | 18 | 7 | +11.0% | t évén. +6.34 | gagnés 18 / attendus 16.3 (z +1.42) | 6/6 mois | écartée |
+== délai 24 h
+N=(3, 0.2): 27 jetons, écart déclenchement→règlement médiane 17.9 h, quartiles [7.8, 17.9, 440.5]
+| N=(3, 0.2) tous côtés | 55 | 23 | -1.2% | t évén. -0.48 | gagnés 49 / attendus 49.1 (z -0.04) | 7/11 mois | écartée |
+N=(3, 0.3): 14 jetons, écart déclenchement→règlement médiane 10.9 h, quartiles [6.6, 10.9, 452.9]
+| N=(3, 0.3) tous côtés | 30 | 13 | +6.8% | t évén. +3.09 | gagnés 29 / attendus 27.1 (z +1.24) | 6/6 mois | indice |
+N=(4, 0.3): 8 jetons, écart déclenchement→règlement médiane 8.9 h, quartiles [5.4, 8.9, 99.1]
+| N=(4, 0.3) tous côtés | 18 | 7 | +14.6% | t évén. +9.66 | gagnés 18 / attendus 15.8 (z +1.63) | 6/6 mois | écartée |

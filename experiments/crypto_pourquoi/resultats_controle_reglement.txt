@@ -1,0 +1,1 @@
+1277 événements ; 526 cohérents avec la barre Binance de l'heure du fix (tolérance 0,05 %), 0 écarts, 751 non évalués (tranche gagnante unique absente, < 8 marchés, ou heure hors barres)

@@ -276,7 +276,7 @@ def test_fewer_maps_buys_under_a_few_hours_before_an_esport_series(tmp_path):
     dear = _esport("f", 3)
     books.update(_books(*[(f"{x}{y}", "0.49", "0.50") for x in "bcde" for y in "OU"], ("fO", "0.19", "0.20"), ("fU", "0.80", "0.81")))
     out = s.propose([late, started, bo1, nba, dear], books, _state(tmp_path), LIMITS, "b1")
-    assert not out.proposals and out.abstentions == {"« Under » hors de la plage de prix": 1}
+    assert not out.proposals and out.abstentions == {"hors de la fenêtre avant le match": 2, "« Under » hors de la plage de prix": 1}  # 27/10 : les raisons sont notées
 
 
 def test_title_filter_keeps_only_league_of_legends_for_the_maps_daughter(tmp_path):
@@ -466,3 +466,40 @@ def test_fewer_kills_buys_one_under_per_game_on_the_line_closest_to_even(tmp_pat
     # Une abstention dit pourquoi (27/10/2026 : « abstentions {} » alors que des marchés de LoL passaient le filtre du titre).
     reasons = out.abstentions if isinstance(out.abstentions, dict) else dict(out.abstentions)
     assert reasons.get("pas un total de kills d'une partie") == 1 and reasons.get("hors de la fenêtre avant le match") == 2
+
+
+def test_fewer_cards_says_why_a_games_total_is_out_of_the_window(tmp_path):
+    """27/10/2026 : `moins_de_cartes` publiait « abstentions {} » (432 marchés, 0 raison) : on ne savait pas si elle voyait des « Games Total » ou rien."""
+    from polymarket_agent.strategies_v3 import MoinsDeCartes
+    s = _s(MoinsDeCartes, min_hours=1, max_hours=6, price_min=0.30, price_max=0.70, shift=0.05, uncertainty=0.01, min_net_edge=0.01,
+           max_extra_ticks=1, max_proposals_per_cycle=3, kelly_fraction=0.25)
+
+    def games_total(mid, start_h):
+        return _m(mid, yes="O", no="U", question="Games Total: O/U 2.5", outcomes=json.dumps(["Over", "Under"]), sportsMarketType="totals",
+                  gameStartTime=(NOW + timedelta(hours=start_h)).strftime("%Y-%m-%d %H:%M:%S+00"), events=[{"id": f"e{mid}", "title": "CS2: A vs B (BO3) - Cup"}])
+    inside, early, other = games_total("a", 3), games_total("b", 20), _m("c", yes="O", no="U", question="Lakers vs Jazz: O/U 237.5", sportsMarketType="totals")
+    books = _books(("aO", "0.52", "0.53"), ("aU", "0.46", "0.47"))
+    out = s.propose([inside, early, other], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.market_id for p in out.proposals] == ["a"]
+    reasons = out.abstentions if isinstance(out.abstentions, dict) else dict(out.abstentions)
+    assert reasons == {"hors de la fenêtre avant le match": 1}
+
+
+def test_central_range_no_buys_only_the_central_between_tranche_before_the_fix(tmp_path):
+    """28/10/2026 : « <actif> price on <date> ? », NON de la tranche centrale (OUI 0,55-0,97) 2 à 6,5 h avant le fix de 12 h (Est) : +44,5 % sur 585 paris (experiments/crypto_pourquoi.md)."""
+    from polymarket_agent.strategies_v3 import TrancheCentraleNon
+    s = _s(TrancheCentraleNon, min_hours=2, max_hours=6.5, price_min=0.03, price_max=0.45, shift=0.06, uncertainty=0.02, min_net_edge=0.01,
+           max_extra_ticks=1, max_proposals_per_cycle=4, kelly_fraction=0.5)
+    end = NOW + timedelta(hours=4)
+    q = "Will the price of Bitcoin be between $78,000 and $80,000 on October 28?"
+    centre = _m("c", question=q, end=end, event_id="e1")
+    tail = _m("t", question="Will the price of Bitcoin be between $90,000 and $92,000 on October 28?", end=end, event_id="e1")
+    early = _m("e", question="Will the price of Ethereum be between $2,000 and $2,100 on October 29?", end=NOW + timedelta(hours=20), event_id="e2")
+    above = _m("a", question="Will the price of Bitcoin be above $80,000 on October 28?", end=end, event_id="e1")
+    other = _m("o", question="Will the price of Bitcoin be between $78,000 and $80,000 in 2027?", end=end, event_id="e3")
+    books = _books(("cY", "0.79", "0.80"), ("cN", "0.19", "0.20"), ("tY", "0.02", "0.03"), ("tN", "0.96", "0.97"),
+                   ("eY", "0.79", "0.80"), ("eN", "0.19", "0.20"), ("aY", "0.79", "0.80"), ("aN", "0.19", "0.20"))
+    out = s.propose([centre, tail, early, above, other], books, _state(tmp_path), LIMITS, "b1")
+    assert [(p.market_id, p.outcome) for p in out.proposals] == [("c", "No")]
+    reasons = out.abstentions if isinstance(out.abstentions, dict) else dict(out.abstentions)
+    assert reasons == {"NON hors de la plage de prix (tranche pas centrale)": 1, "hors de la fenêtre avant le fix de 12 h (Est)": 1}  # queue ; ETH à 20 h (« above » et « in 2027 » : pas des tranches, sans trace)

@@ -116,3 +116,7 @@ Toute l'arène, par tranche du prix payé :
 - **Dans une semaine** (vers le 03/11) : relancer `experiments/audace/*.py` ; juger les deux filles « audace » sur leurs
   nouveaux paris (gagnés contre attendus, et par jour) ; si l'avantage tient, la règle d'entrée en vigueur les fera entrer
   au principal toute seule (12 opérations, croissance ≥ 0,02, t ≥ 1).
+
+## 7. Passage du 27/10 au soir (28/10/2026)
+- **`tranche_centrale_non`** (nouvelle idée, `experiments/crypto_pourquoi.md` §4) : NON de la tranche centrale des échelles « <actif> price on <date> » 3 à 6 h avant le fix de 12 h (Est), demi-Kelly. 2026 : 585 paris, +44,5 % (z +4,7, gain croissant avec la profondeur) ; hold-out 2025 : +18,7 % (z +2,2). Une perte apprendrait que l'ouverture de Wall Street est déjà dans le prix ou que seuls les mois agités paient. À vérifier demain vers 10 h UTC : la stratégie voit-elle les marchés ?
+- **`moins_de_cartes_franche`** : les mêmes paris que `moins_de_cartes` (85 paris en direct, +12,4 % par mise, 56 gagnés pour 48,0) au demi-Kelly (≈ 5 % par pari, au lieu de 2,5 %), pour mesurer la croissance d'une mise franche là où l'avantage se mesure.
