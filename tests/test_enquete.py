@@ -575,3 +575,23 @@ def test_a_strategy_with_a_share_but_no_copy_is_grave():
     assert enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": _ledger()}, {}, NOW) == []  # sans part, rien à copier
     few = _ledger(*[_buy(t + timedelta(minutes=i), f"t{i}", 0.6, 15, strategy="mdc") for i in range(4)])
     assert enquete.copie_absente({"mdc_v1.0.0": few, "principal": _ledger()}, parts, NOW) == []  # trop peu de paris pour conclure
+
+
+def test_partial_fill_at_the_copy_floor_is_not_a_full_copy():
+    """27/10 : `plancher_copie` achète au moins 5 parts ; fantôme servi pour 2,5 parts, principal servi pour 2,5 (même carnet) :
+    le plancher, pas une copie disproportionnée. Au-dessus du plancher, la même égalité reste signalée."""
+    t = NOW - timedelta(hours=3)
+    ghost = _ledger(_buy(t, "a", 0.53, 2.5, cycle="c1", status="PARTIAL"))
+    assert not enquete.copie_fidele({"principal": _ledger(_buy(t, "a", 0.53, 2.5, cycle="c1", status="PARTIAL")),
+                                     "nf_v1.0.0": ghost}, NOW - timedelta(days=3))
+    big = _ledger(_buy(t, "a", 0.53, 60, cycle="c1", status="PARTIAL"))
+    assert enquete.copie_fidele({"principal": big, "nf_v1.0.0": _ledger(_buy(t, "a", 0.53, 60, cycle="c1", status="PARTIAL"))},
+                                NOW - timedelta(days=3))
+
+
+def test_a_share_that_just_started_is_judged_from_its_first_copy():
+    """27/10 : `nf_moyen` entre au capital principal à 05 h 17 ; ses 12 paris d'avant n'avaient aucune part à copier : 1 copie sur 1, pas « 1 sur 13 »."""
+    t = NOW - timedelta(hours=30)
+    ghost = _ledger(*[_buy(t + timedelta(hours=i), f"t{i}", 0.9, 15, strategy="mdc") for i in range(13)])
+    entered = _ledger(_buy(t + timedelta(hours=12), "t12", 0.9, 5, strategy="mdc"))
+    assert enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": entered}, {"mdc_v1.0.0": 0.087}, NOW, min_tokens=2) == []

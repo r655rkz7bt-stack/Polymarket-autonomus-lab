@@ -1049,6 +1049,62 @@ class MoinsDeCartes(_Base):
         return self._finish(out, props)
 
 
+class MoinsDeKills(_Base):
+    """E-sport, totaux de kills d'une partie (« Total Kills Over/Under 30.5 in Game 1? », LoL) : le « Over » est trop cher, le « Under » un peu trop bon marché.
+    Chaque partie a 3 à 6 lignes qui se gagnent ou se perdent ensemble : on n'achète « Under » qu'UNE fois par partie, sur la ligne dont le prix est le plus
+    proche de 0,5, entre 12 h et 2 h avant le coup d'envoi. Sur le passé (27/10/2026, 4 jeux, vrais échanges, frais payés, un pari par partie, payé 0,35-0,65, 3 h avant) :
+    « Under » +9,5 % (588 paris, 330 gagnés pour 297,3, t par événement 2,75, 8 mois sur 9), « Over » −10,5 % (675 paris, t −3,6) (experiments/lol_kills.md).
+    Pourquoi ça peut rater : le gain s'efface quand on exige beaucoup de parts (≥ 400 parts : +4 %), et l'indice vient d'un seul jeu (LoL)."""
+
+    strategy_id = "moins_de_kills"
+    required = ("min_hours", "max_hours", "price_min", "price_max", "shift", "uncertainty", "min_net_edge",
+                "max_proposals_per_cycle")
+    GAME = re.compile(r"in Game (\d)")
+
+    def _ok(self, m: MarketInfo, now: datetime | None) -> bool:
+        if (m.sports_market_type != "kill_over_under_game" or [str(o).lower() for o in m.outcomes] != ["over", "under"]
+                or len(m.token_ids) != 2 or m.game_start is None or now is None):
+            return False
+        hours = (m.game_start - now).total_seconds() / 3600
+        return float(self.params["min_hours"]) <= hours <= float(self.params["max_hours"])
+
+    def candidates(self, markets):
+        from datetime import timezone
+        now = datetime.now(timezone.utc)
+        out = [m for m in markets if self._ok(m, now)]
+        out.sort(key=lambda m: m.game_start)
+        return out[: int(self.params.get("max_candidates", 60))]
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        games: dict[tuple, list[tuple[float, MarketInfo]]] = {}
+        for m in watchlist:
+            if not self._ok(m, now):
+                continue
+            g = self.GAME.search(m.question or "")
+            book = books.get(m.token_ids[1])
+            if g is None or book is None or book.best_ask is None or book.mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            if not float(p["price_min"]) <= float(book.best_ask) <= float(p["price_max"]):
+                out.abstain("« Under » hors de la plage de prix")
+                continue
+            games.setdefault((m.event_id, g.group(1)), []).append((abs(float(book.best_ask) - 0.5), m))
+        for lines in games.values():
+            if any(t in state.positions for _d, m in lines for t in m.token_ids):
+                out.abstain("partie déjà jouée")  # une seule ligne par partie : elles se gagnent ou se perdent ensemble
+                continue
+            m = min(lines, key=lambda x: x[0])[1]
+            est = float(books[m.token_ids[1]].mid) + float(p["shift"])
+            prop = self._buy(m, books, state, 1, est - float(p["uncertainty"]), est, est + float(p["uncertainty"]),
+                             bucket, marks, out, f"moins_de_kills:{m.question[-12:].strip()}",
+                             "« Over » trop cher sur le passé (−10,5 %), « Under » +9,5 % (t 2,75), un pari par partie",
+                             "la partie compte beaucoup de kills")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 DRAME = re.compile(
     r"\b(invade|invades|invasion|war\b|wars\b|military action|military clash|strikes? on|attacks?\b|airstrikes?|"
     r"missiles?|nuclear|bomb|troops|blockade|annex|annexes|annexation|ceasefire|cease-fire|truce|clash|"
@@ -1468,7 +1524,7 @@ class BoxOfficeFavori(_Base):
         return self._finish(out, props)
 
 
-CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,

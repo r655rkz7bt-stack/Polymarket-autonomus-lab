@@ -1,0 +1,68 @@
+h=1.0: 3304 paris (2312 marchés)
+Over: 1769 paris, rendement -12.2 %, gagné 819 pour 931.5 attendus (z -5.45), t par événement -1.27 (610 événements), mois 2/9, verdict écartée
+  Over payé 0.02-0.1 trop peu 1
+  Over payé 0.1-0.2 trop peu 1
+  Over payé 0.2-0.35 trop peu 19
+  Over payé 0.35-0.5: 640 paris, rendement -17.0 %, gagné 242 pour 283.9 attendus (z -3.38), t par événement -3.09 (400 événements), mois 1/9, verdict écartée
+  Over payé 0.5-0.65: 956 paris, rendement -13.0 %, gagné 474 pour 535.1 attendus (z -4.03), t par événement -3.61 (518 événements), mois 2/9, verdict écartée
+  Over payé 0.65-0.8: 137 paris, rendement -7.2 %, gagné 87 pour 92.7 attendus (z -1.04), t par événement -1.51 (113 événements), mois 3/8, verdict écartée
+  Over payé 0.8-0.98 trop peu 15
+Under: 1535 paris, rendement +5.1 %, gagné 838 pour 788.7 attendus (z +2.53), t par événement 1.13 (578 événements), mois 6/9, verdict indice
+  Under payé 0.02-0.1 trop peu 2
+  Under payé 0.1-0.2 trop peu 1
+  Under payé 0.2-0.35: 32 paris, rendement +52.7 %, gagné 16 pour 10.2 attendus (z +2.20), t par événement 1.67 (27 événements), mois 6/8, verdict indice
+  Under payé 0.35-0.5: 642 paris, rendement +0.7 %, gagné 295 pour 286.4 attendus (z +0.69), t par événement 0.06 (386 événements), mois 6/9, verdict écartée
+  Under payé 0.5-0.65: 773 paris, rendement +6.8 %, gagné 466 pour 429.7 attendus (z +2.68), t par événement 2.05 (441 événements), mois 7/9, verdict retenue
+  Under payé 0.65-0.8: 69 paris, rendement +0.8 %, gagné 48 pour 47.3 attendus (z +0.19), t par événement 0.1 (61 événements), mois 3/8, verdict écartée
+  Under payé 0.8-0.98 trop peu 16
+h=3.0: 1411 paris (1076 marchés)
+Over: 764 paris, rendement -8.1 %, gagné 366 pour 399.1 attendus (z -2.43), t par événement -1.14 (363 événements), mois 4/9, verdict écartée
+  Over payé 0.02-0.1 trop peu 1
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 4
+  Over payé 0.35-0.5: 280 paris, rendement -17.1 %, gagné 106 pour 124.4 attendus (z -2.22), t par événement -2.04 (184 événements), mois 2/9, verdict écartée
+  Over payé 0.5-0.65: 431 paris, rendement -8.0 %, gagné 226 pour 240.3 attendus (z -1.44), t par événement -2.02 (265 événements), mois 3/8, verdict écartée
+  Over payé 0.65-0.8: 46 paris, rendement -5.3 %, gagné 30 pour 31.3 attendus (z -0.41), t par événement -0.54 (33 événements), mois 3/7, verdict écartée
+  Over payé 0.8-0.98 trop peu 2
+Under: 647 paris, rendement +8.6 %, gagné 366 pour 332.8 attendus (z +2.65), t par événement 2.44 (346 événements), mois 8/9, verdict retenue
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 6
+  Under payé 0.35-0.5: 280 paris, rendement +11.2 %, gagné 142 pour 125.1 attendus (z +2.04), t par événement 1.83 (194 événements), mois 8/9, verdict retenue
+  Under payé 0.5-0.65: 327 paris, rendement +6.1 %, gagné 196 pour 181.8 attendus (z +1.64), t par événement 1.67 (218 événements), mois 6/8, verdict retenue
+  Under payé 0.65-0.8: 30 paris, rendement -2.1 %, gagné 20 pour 20.1 attendus (z -0.05), t par événement -0.73 (23 événements), mois 4/5, verdict écartée
+  Under payé 0.8-0.98 trop peu 4
+h=6.0: 791 paris (632 marchés)
+Over: 420 paris, rendement -17.6 %, gagné 184 pour 217.9 attendus (z -3.40), t par événement -2.8 (233 événements), mois 1/9, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 1
+  Over payé 0.35-0.5: 173 paris, rendement -24.7 %, gagné 59 pour 76.8 attendus (z -2.72), t par événement -2.48 (115 événements), mois 0/9, verdict écartée
+  Over payé 0.5-0.65: 220 paris, rendement -12.9 %, gagné 108 pour 122.7 attendus (z -1.93), t par événement -1.89 (148 événements), mois 2/9, verdict écartée
+  Over payé 0.65-0.8 trop peu 23
+  Over payé 0.8-0.98 trop peu 3
+Under: 371 paris, rendement +8.3 %, gagné 210 pour 191.6 attendus (z +1.94), t par événement 2.18 (209 événements), mois 6/9, verdict indice
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 2
+  Under payé 0.35-0.5: 160 paris, rendement +8.5 %, gagné 78 pour 71.1 attendus (z +1.10), t par événement 1.15 (112 événements), mois 6/9, verdict indice
+  Under payé 0.5-0.65: 191 paris, rendement +11.8 %, gagné 122 pour 106.6 attendus (z +2.18), t par événement 1.53 (126 événements), mois 6/8, verdict retenue
+  Under payé 0.65-0.8 trop peu 14
+  Under payé 0.8-0.98 trop peu 4
+h=12.0: 398 paris (301 marchés)
+Over: 196 paris, rendement -20.4 %, gagné 81 pour 100.3 attendus (z -2.81), t par événement -2.79 (127 événements), mois 2/9, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 3
+  Over payé 0.35-0.5: 83 paris, rendement -21.4 %, gagné 30 pour 37.1 attendus (z -1.57), t par événement -2.07 (58 événements), mois 2/8, verdict écartée
+  Over payé 0.5-0.65: 95 paris, rendement -16.5 %, gagné 44 pour 51.6 attendus (z -1.57), t par événement -1.4 (69 événements), mois 2/7, verdict écartée
+  Over payé 0.65-0.8 trop peu 13
+  Over payé 0.8-0.98 trop peu 2
+Under: 202 paris, rendement +12.1 %, gagné 113 pour 100.6 attendus (z +1.76), t par événement 1.37 (131 événements), mois 6/9, verdict indice
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 1
+  Under payé 0.35-0.5: 108 paris, rendement +24.3 %, gagné 62 pour 48.6 attendus (z +2.50), t par événement 1.92 (77 événements), mois 6/9, verdict retenue
+  Under payé 0.5-0.65: 89 paris, rendement -5.4 %, gagné 48 pour 48.8 attendus (z -0.27), t par événement -0.72 (71 événements), mois 4/7, verdict écartée
+  Under payé 0.65-0.8 trop peu 3
+  Under payé 0.8-0.98 trop peu 1
