@@ -3,6 +3,12 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-28 (AMELIORATION d'Etienne, ~23 h 30 UTC le 27/10 : première avec la règle « plus de liberté et de créativité »)
+
+- **Faits** (`published/data.json`, 23 h 18 UTC) : principal 751 € estimés (746,91 réalisés), 612,74 € disponibles, 134 € engagés (18 %) ; 12,5 jours sans palier. Championne `nf_sport_patiente_prix_850_875` 1 566 € en 7 jours (74 opérations), suivie à 29 %. 42 fantômes actifs à 0 opération. Refus du principal sur 48 h : « taille inférieure au minimum du marché (5) » ×14 sur `moins_de_cartes` (avantage mesuré) et ×9 sur `compteur_tweets`, malgré le plancher de copie.
+- **Lancé sans attendre** : fantôme `suivre_inities_seul` (le seul « indice » du test des comptes neufs, sans soupçon public : un compte neuf ≥ 5 000 $ à ≥ 0,30).
+- **Proposé à Etienne** (réponse AMELIORATION) : enquête sur les refus « taille minimum » malgré le plancher (cause probable : plafond de famille ou `max_mise` appliqué après le plancher), rejeu d'un principal qui engage plus de ses 612 € disponibles, Reddit ou Bluesky, retrait des fantômes de tenue de marché.
+
 ## 2026-10-27 (passage chercheur du soir, 20 h 55 → 22 h 02 UTC, 67 min, durée visée 129 min non atteinte : les pistes restantes attendent une donnée qui n'existe pas encore (date de lancement des jetons, mercredi du CDC, ensembles météo à 5 jours, premiers paris de `tranche_centrale_non` demain à 10 h UTC) ; arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-27_soir_non_crypto_pari_a_la_baisse.md`). Aucune obligation grave. Quatre résultats :
