@@ -44,3 +44,9 @@ Le gain tient en gros jusqu'à 100 parts, plus fragile au-delà : un fantôme à
 - Premier jugement du fantôme `moins_de_kills` : 30 paris réglés (gagnés contre attendus ; par partie). Pas de capital principal avant.
 - Si le fantôme confirme, tester la même règle sur les manches de CS2 (carte 1, `round_over_under_game_1`) en fantôme à part.
 - Contrôle à faire quand le fantôme a acheté : prix payé réel contre l'échange du test, et nombre de parties où il n'a pas trouvé de carnet.
+
+## Complément : hors échantillon dans le temps (LoL, 3 h, un pari par partie, payé 0,35-0,65)
+487 paris, +10,1 % ; première moitié des mois (fév.-mai) +13,7 % (177 paris), seconde (juin-oct.) **+8,1 %** (310) : l'effet existe encore dans les derniers mois. `idea_test.verdict` dit « retenue » ; je garde « indice » à cause de la profondeur (+4 % à ≥ 400 parts), des ~15 découpages regardés et du fait que 9 % seulement des marchés ont un carnet avant le match.
+
+## Complément : le biais existe au prix médian (pas seulement l'écart achat-vente)
+LoL, lignes payées 0,35-0,65, prix médian des échanges de la fenêtre exprimé en prix du « Over » : à 1 h 2 088 marchés, prix moyen 0,506, Over réalisé **0,458** ; à 3 h 998 marchés, 0,504 contre **0,462** ; à 6 h 597 marchés, 0,504 contre **0,434**. Le « Over » est surcoté de 4 à 7 points au milieu du prix (marchés d'une même partie corrélés : lecture par marché, pas par partie).

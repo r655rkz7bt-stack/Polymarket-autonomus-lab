@@ -23,11 +23,11 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 a_la_une:
   date: "2026-10-27"
   points:
-    - "Nouvelle règle d'Etienne (27/10) : plus de liberté, les pertes des fantômes sont des expériences. Chaque perte doit rapporter une leçon (carnet d'expériences) et on mise gros là où un avantage se mesure."
-    - "Ce que les pertes ont appris : nos 58 stratégies de favoris sont un seul et même tirage (−1,6 point par pari, frais compris) ; les billets sous 0,10 sont surcotés partout (3 gagnés pour 10,8 attendus)."
-    - "Le seul avantage net de l'arène : contrer les mouvements de la crypto quand le pari coûte 0,10-0,45 (58 gagnés pour 39,3 attendus sur 174 paris). Deux nouveaux fantômes « audace » y misent environ 9 fois plus que leur mère."
-    - "Miser plus partout aurait fait perdre plus (rejeu du 15 au 26/10). Le principal pourra miser jusqu'à 3 fois plus sur une stratégie qui PROUVE son avantage, et garde toujours 3 % de son argent disponible : aucune mise ne peut le faire tomber à 0 € par accident."
-    - "Capital principal : 747 € réalisés sur 1 000 de départ. Aucun nouveau palier depuis 11 jours."
+    - "Règle d'Etienne (27/10) : les pertes des fantômes sont des expériences ; chacune doit rapporter une leçon chiffrée et on mise gros là où un avantage se mesure. Nos 58 stratégies de favoris ne sont qu'un seul et même tirage (−1,6 point par pari)."
+    - "Contrer les mouvements de la crypto : écarté sur le passé (1 492 paris, −4 %). Reste le NON crypto à 0,10-0,45 (4 167 paris, +15,8 % depuis 2024), mais le gain fond quand on exige beaucoup de parts : deux fantômes pour le vérifier."
+    - "Nouveau (27/10) : totaux de kills de League of Legends. Sur le passé le « plus de kills » perd 10 à 12 % (z −5, quatre jeux), le « moins » gagne 5 à 10 % : fantôme moins_de_kills, demi-mise, dès que les marchés du lendemain existent."
+    - "Le principal pourra miser jusqu'à 3 fois plus sur une stratégie qui PROUVE son avantage, et garde toujours 3 % de son argent disponible : aucune mise ne peut le faire tomber à 0 € par accident."
+    - "Capital principal : 752 € réalisés sur 1 000 de départ. Aucun nouveau palier depuis 12 jours."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le
 # journal PUBLIC de la stratégie depuis cette adresse (branche « data » du dépôt) et calcule ses
