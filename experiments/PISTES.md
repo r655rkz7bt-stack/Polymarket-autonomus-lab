@@ -48,6 +48,11 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
    (source de prix libre ou clé Pyth), mensuels (pas de répétition au 24/10), actions (NVDA, TSLA… : 1 à 3 semaines réglées chacune, trop peu), cryptos hebdomadaires : testées le 24/10, aucun effet.
 10. **Compteurs de lancements SpaceX** (24/10/2026, `experiments/spacex_cadence.md`) : fantôme `spacex_cumul` ; à relire quand les octobre/novembre sont réglés (compteur du mois), puis le 31/12 pour l'année (position « 140-159 »). Starship (« flight test 15 by… », LL2 donne 31/12 « TBD » : sans information).
 
+11. **Marchés d'IA « d'ici <date> » (OUI à 0,10-0,40)** (27/10/2026, `experiments/decroissance_passe.md`, suite « IA ») : indice faible (91 paris, +45 %, z +2,7, 2e moitié +68 %, échanges minces), fantôme `ia_oui_sorties`.
+    À refaire quand il y a 30 paris en direct (regarder les parts réellement remplies, par modèle et par mois) et avec un relevé par étiquettes (`decroissance_passe/scripts/releve_tags.py`, 439 / 537 / 103303) rafraîchi chaque semaine : l'effet vient-il de 2026-06 et 2026-09 seulement ?
+12. **Classement de l'App Store en direct** (27/10/2026, `experiments/appstore_direct.md`) : fantôme `classement_appstore` (les vendredis, 10 h-15 h 45 UTC). À faire : étalonner `rester_n1` sur `appstore:histo` (≥ 10 jours), lire à midi ET le classement contre le règlement Gamma ; si le n°1 du classement est presque toujours le favori du marché (test de substitution : calibré), abandonner.
+13. **Pages de statut qui tranchent des marchés** (27/10/2026) : `status.openai.com` (`component_impacts` du HTML, 90 jours) pour « ChatGPT Outage by… » / « # of ChatGPT Outage Days » : le marché est déjà aligné (0,9875 pour « 5 ou plus en octobre » avec 5 jours vus) ; à regarder pour d'autres pages (Claude, X, Cloudflare) seulement si un marché cote loin de la source.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
