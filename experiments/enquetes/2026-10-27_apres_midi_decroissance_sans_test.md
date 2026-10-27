@@ -1,6 +1,6 @@
 # 27/10/2026 (16 h) : une stratégie à modèle propre jamais rejouée sur le passé (`decroissance_temps`) et une stratégie « muette » qui ne l'est pas
 
-Point de départ : aucune « Enquête obligatoire » grave dans la feuille de mission (seulement `cycle_arrete` après relecture d'un cycle vieux d'une heure : les journaux étaient lus à 15 h 56, pas de défaut).
+Point de départ : aucune « Enquête obligatoire » dans la feuille de mission de 15 h 48 (un `cycle_arrete` apparaît quand on relance `scripts/enquete.py` près d'une heure après `fetch_data.sh`, parce que la date « maintenant » avance et pas les journaux lus : pas un défaut).
 Les constats « à regarder » : `copie_fidele` (Team Yandex, déjà élucidé le 26/10), `champion_sans_avantage` / `chance` (pas des défauts, décision du 27/10), et **`estimation_perimee` : `decroissance_temps`, NON estimé 0,928 payé 0,708 (+0,21 d'écart net, 6 h)**.
 Famille du jour (27 mod 6 + 1 = 4, « le filtre ne filtre pas ») puis famille 6 (« ce qui ne tourne plus »).
 
