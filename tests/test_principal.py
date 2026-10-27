@@ -288,3 +288,56 @@ def test_principal_caps_each_copied_bet_at_a_share_of_the_ghost_capital(tmp_path
     assert shares["c"] == D("31.25")            # ordre posé : 62,5 parts plafonnées puis × 0,5
     uncapped = Weighted(Inner(), D("0.5"), source=ghost).propose([], {}, main.state, None, "b1")
     assert {p.op_id: p.shares for p in uncapped.proposals}["a"] == D("161.29")  # sans réglage : comme avant
+
+
+def test_silent_drops_of_the_copy_are_counted_and_remembered_for_48_hours():
+    """27/10/2026 : `favori_politique` (14,3 % du capital) a fait 7 paris le 26/10 à 12 h 13 sans un seul achat du principal et sans une ligne de refus :
+    budget de la part épuisé, plafond de famille et camp opposé n'écrivaient rien. Chaque écart a maintenant sa raison (abstentions du principal,
+    `refus_principal` du tableau de bord pendant 48 h)."""
+    import dataclasses
+    import json
+    from datetime import timedelta
+    from conftest import KEY, NOW
+    from polymarket_agent.main import CycleDeps, Portfolio, Weighted, _remember_drops
+
+    @dataclasses.dataclass
+    class Prop:
+        side: str
+        token_id: str
+        shares: D
+        max_price: D
+        op_id: str
+
+    class Inner:
+        strategy_id, version = "fp", "1"
+
+    import tempfile
+    from pathlib import Path
+    tmp = Path(tempfile.mkdtemp())
+    main = Ledger.create(tmp / "p.jsonl", KEY, tmp / "p.lock", "1000", now=NOW)
+    ghost = Portfolio("fantome:fp_v1", None, [])
+    ghost.copied = {"fp": {"total": D("1000"), "buys": [(Prop("BUY", "t1", D("100"), D("0.85"), "a"), D("100"))], "orders": []}}
+    tiny = Weighted(Inner(), D("0.00001"), source=ghost)  # 100 parts × 0,00001 = 0,001 part : arrondi à 0
+    assert tiny.propose([], {}, main.state, None, "b1").proposals == [] and tiny.drops == {"mise réduite à 0 part": 1}
+    spent = Weighted(Inner(), D("0.5"), source=ghost)  # budget de la part déjà investi (position du principal sur cette stratégie)
+    spent.propose([], {}, main.state, None, "b1")
+    assert spent.drops == {}  # budget disponible : rien d'écarté
+    floored = Weighted(Inner(), D("0.002"), source=ghost, floor=(D("5"), D("0.01")))  # budget 2 € < 5 parts × 0,85
+    assert floored.propose([], {}, main.state, None, "b1").proposals == [] and floored.drops == {"budget de la part trop juste pour le minimum du marché": 1}
+
+    class Db:
+        kv: dict = {}
+
+        def get_value(self, key):
+            return self.kv.get(key)
+
+        def set_value(self, key, value):
+            self.kv[key] = value
+
+    clock = [NOW]
+    deps = dataclasses.make_dataclass("D", [("db", object), ("now", object)])(Db(), lambda: clock[0])
+    _remember_drops(deps, "fp", {"budget de la part épuisé": 2})
+    clock[0] = NOW + timedelta(hours=49)
+    _remember_drops(deps, "fp", {"plafond de famille (politics) atteint": 1})
+    rows = json.loads(deps.db.kv["ecartes_principal"])
+    assert [(r[1], r[2], r[3]) for r in rows] == [("fp", "plafond de famille (politics) atteint", 1)]  # les écarts de plus de 48 h partent

@@ -464,6 +464,14 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                 bucket[reason] = bucket.get(reason, 0) + 1
     except Exception:  # noqa: BLE001 - base sans table de décisions : le tableau de bord reste affiché
         refus_principal = {}
+    # Écarts silencieux de la copie (budget de la part, plafond de famille, camp opposé : 27/10/2026), gardés 48 h par le cycle.
+    try:
+        for _when, strat, reason, n in _kv_json(db, "ecartes_principal") or []:
+            if _when >= (now - timedelta(hours=48)).isoformat():
+                bucket = refus_principal.setdefault(strat, {})
+                bucket[reason] = bucket.get(reason, 0) + int(n)
+    except Exception:  # noqa: BLE001
+        pass
     last_cycle = db.conn.execute("SELECT cycle_id FROM market_snapshots ORDER BY collected_at DESC LIMIT 1").fetchone()
     watched = []
     if last_cycle:

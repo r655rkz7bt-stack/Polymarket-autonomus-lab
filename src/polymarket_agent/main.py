@@ -185,6 +185,8 @@ class Weighted:
     def __init__(self, strategy, weight: Decimal, source: Portfolio | None = None, base: Decimal | None = None,
                  cap_budget: bool = True, floor: tuple[Decimal, Decimal] | None = None, ghost_cap: Decimal | None = None):
         self.inner, self.weight, self.source, self.cap_budget = strategy, weight, source, cap_budget
+        # Écarts silencieux de la copie (27/10/2026) : pourquoi un pari du fantôme n'a pas été proposé au principal (`_execute` les publie).
+        self.drops: dict[str, int] = {}
         self.floor = floor if source is not None else None  # (parts minimales d'un ordre, coût maximal en part du capital)
         # Mise copiée plafonnée (27/10/2026, `principal.mise_fantome_max`) : chaque pari du fantôme compte au plus pour
         # cette part de SON capital avant la mise à l'échelle. Rejeu du 15 au 26/10 (experiments/taille_des_mises.md) : les
@@ -266,15 +268,23 @@ class Weighted:
                 shares, floored = self.floor[0], True  # copie trop petite pour le minimum du marché : on achète le minimum
             if budget is not None:  # plafond du total engagé par cette stratégie
                 if budget <= 0 or p.max_price <= 0:
+                    self._drop("budget de la part épuisé")
                     continue
                 shares = min(shares, (budget / p.max_price).quantize(Decimal("0.01"), rounding=ROUND_DOWN))
                 if floored and shares < self.floor[0]:
+                    self._drop("budget de la part trop juste pour le minimum du marché")
                     continue  # pas assez de budget pour le minimum : comme avant, pas d'achat
             if shares > 0:
                 scaled.append(dataclasses.replace(p, shares=shares))
                 if budget is not None:
                     budget -= shares * p.max_price
+            else:
+                self._drop("mise réduite à 0 part")
         return scaled, budget
+
+    def _drop(self, reason: str) -> None:
+        if self.source is not None:
+            self.drops[reason] = self.drops.get(reason, 0) + 1
 
     def __getattr__(self, name):
         return getattr(self.inner, name)
@@ -754,6 +764,8 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
     held_now: dict[str, set[str]] = {}  # marché → jetons de favoris pris ou proposés dans ce cycle
     for strategy in portfolio.strategies:
         seen = _visible(strategy, watchlist)
+        if isinstance(strategy, Weighted):
+            strategy.drops = {}
         output = strategy.propose(seen, books, ledger.state, deps.limits, bucket, marks)
         # Sorties (ventes) : seulement sur les positions ouvertes par cette stratégie.
         if hasattr(strategy, "exits"):
@@ -779,18 +791,27 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if dropped:
             reasons = report.abstentions[portfolio.name][strategy.strategy_id]["raisons"]
             reasons["camp opposé d'une position déjà prise"] = dropped
+        drops = dict(getattr(strategy, "drops", None) or {}) if portfolio.name == "principal" else {}
+        if dropped and portfolio.name == "principal":
+            drops["camp opposé d'une position déjà prise"] = dropped
         if portfolio.name != "principal":
             output.proposals = _cap_ghost(deps, portfolio, output.proposals)
             limit_orders = _cap_ghost(deps, portfolio, limit_orders)
         if portfolio.name == "principal":
             # Plusieurs stratégies au principal (18/10/2026) : un marché déjà acheté dans ce cycle par
             # l'une n'est pas racheté par une autre (les stratégies sautent déjà les positions ouvertes).
+            n_before = len(output.proposals) + len(limit_orders)
             output.proposals = [p for p in output.proposals if p.side != "BUY" or p.market_id not in bought]
             limit_orders = [p for p in limit_orders if p.side != "BUY" or p.market_id not in bought]
+            if n_before - len(output.proposals) - len(limit_orders):
+                drops["marché déjà acheté dans ce cycle par une autre stratégie"] = n_before - len(output.proposals) - len(limit_orders)
             bought.update(p.market_id for p in output.proposals + limit_orders if p.side == "BUY")
             # Garde-fous du capital principal (settings.yaml → principal).
-            output.proposals = _cap_main(deps, portfolio, output.proposals, by_market)
-            limit_orders = _cap_main(deps, portfolio, limit_orders, by_market)
+            output.proposals = _cap_main(deps, portfolio, output.proposals, by_market, drops)
+            limit_orders = _cap_main(deps, portfolio, limit_orders, by_market, drops)
+            if drops:  # écarts silencieux (27/10/2026) : visibles dans les abstentions du principal et dans `refus_principal` (48 h)
+                report.abstentions[portfolio.name][strategy.strategy_id]["raisons"].update(drops)
+                _remember_drops(deps, strategy.strategy_id, drops)
         proposals += output.proposals
         source = getattr(strategy, "source", None)
         seen_by_source = source.copied.get(strategy.strategy_id) if source is not None else None
@@ -1090,8 +1111,22 @@ def _cap_ghost(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal])
     return out
 
 
+def _remember_drops(deps: CycleDeps, strategy_id: str, drops: dict[str, int]) -> None:
+    """Écarts silencieux de la copie du principal, gardés 48 h (clé `ecartes_principal`) : `favori_politique` (14,3 % du capital) a eu 7 paris de
+    fantôme le 26/10 sans un seul achat du principal ni une ligne de refus ; budget épuisé, plafond de famille et camp opposé n'écrivaient rien."""
+    now = deps.now()
+    try:
+        rows = json.loads(deps.db.get_value("ecartes_principal") or "[]")
+    except ValueError:
+        rows = []
+    horizon = (now - timedelta(hours=48)).isoformat()
+    rows = [r for r in rows if r[0] >= horizon]
+    rows += [[now.isoformat(), strategy_id, reason, n] for reason, n in drops.items()]
+    deps.db.set_value("ecartes_principal", json.dumps(rows))
+
+
 def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
-              by_market: dict[str, MarketInfo]) -> list[Proposal]:
+              by_market: dict[str, MarketInfo], drops: dict[str, int] | None = None) -> list[Proposal]:
     """Capital principal (17/10/2026, AMELIORATION n°6) : un achat ne dépasse pas `max_mise` du
     capital estimé, et l'argent engagé dans une même famille de marchés (météo, sport… : paris liés,
     une même vague de chaleur peut tous les faire perdre) ne dépasse pas `max_famille`. Les
@@ -1121,6 +1156,8 @@ def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
         if shares <= 0:
             log.info("[principal] %s écarté : famille %s déjà à %s (plafond %s)", p.op_id, fam,
                      exposure.get(fam), max_family.quantize(Decimal("0.01")))
+            if drops is not None:
+                drops[f"plafond de famille ({fam}) atteint"] = drops.get(f"plafond de famille ({fam}) atteint", 0) + 1
             continue
         if shares < p.shares:
             p = dataclasses.replace(p, shares=shares)
