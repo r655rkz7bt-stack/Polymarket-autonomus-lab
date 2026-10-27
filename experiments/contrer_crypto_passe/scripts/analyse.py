@@ -40,7 +40,7 @@ def last_before(d, t, maxage):
 def kind(q):
     q = q.lower()
     return "hit" if any(w in q for w in ("hit", "reach", "dip", "touch")) else "above"
-def bets_for(lo, hi, move, hours_min=2, horizon_max=None, step=1800, wait=3600):
+def bets_for(lo, hi, move, hours_min=2, horizon_max=None, step=1800, wait=3600, direction=-1, base_side=None):
     out = []
     for d in data:
         m = d["m"]; end = d["end"]
@@ -52,8 +52,8 @@ def bets_for(lo, hi, move, hours_min=2, horizon_max=None, step=1800, wait=3600):
         while t <= t_last:
             now = last_before(d, t, 3600)
             ago = last_before(d, t - 6 * 3600, 3 * 3600) if now is not None else None
-            if now is not None and ago is not None and abs(now - ago) >= move - 1e-9 and (horizon_max is None or end - t <= horizon_max * 3600):
-                side = 1 if now - ago > 0 else 0       # hausse du OUI -> on contre en achetant le NON
+            if now is not None and ago is not None and (base_side is not None or abs(now - ago) >= move - 1e-9) and (horizon_max is None or end - t <= horizon_max * 3600):
+                side = base_side if base_side is not None else (1 if now - ago > 0 else 0) if direction < 0 else (0 if now - ago > 0 else 1)  # contrer : hausse du OUI -> NON ; suivre : l'inverse ; base : un côté fixe, sans signal
                 price = (1 - now) if side == 1 else now
                 if lo <= price <= hi:
                     bt = d["bt"][side]; i = bisect.bisect_left(bt, t)
@@ -80,6 +80,13 @@ for lo, hi, mv in grid:
     b = bets_for(lo, hi, mv); res[(lo, hi, mv)] = b
     show(f"contrer {lo}-{hi} mvt {mv}", b)
 json.dump({str(k): v for k, v in res.items()}, open(D / "paris.json", "w"))
+print("\n## Références : mêmes marchés, mêmes plages de prix, sans le signal (premier instant où le côté est dans la plage)")
+for lo, hi in ((0.10, 0.45), (0.05, 0.10), (0.45, 0.90)):
+    for bs in (0, 1):
+        show(f"sans signal, côté {'OUI' if bs == 0 else 'NON'} {lo}-{hi}", bets_for(lo, hi, 0, base_side=bs))
+print("\n## Suivre le mouvement (l'inverse de contrer), mêmes plages")
+for lo, hi, mv in ((0.10, 0.45, 0.05), (0.45, 0.90, 0.05)):
+    show(f"suivre {lo}-{hi} mvt {mv}", bets_for(lo, hi, mv, direction=1))
 base = res[(0.10, 0.45, 0.05)]
 print("\n## réglage de la tranche 0,10-0,45 / mouvement 0,05 : détail")
 for k in ("above", "hit"): show(f"genre {k}", [b for b in base if b["kind"] == k])
