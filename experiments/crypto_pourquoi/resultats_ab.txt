@@ -1,0 +1,77 @@
+5645 instants, 2200 marchés, 384 événements
+
+== (1) log-score du modèle contre le prix (OUI), instants où le prix du OUI est entre 0,05 et 0,95 ==
+above  h= 3 vol×0.8  n=  176 modèle − prix = -0.2055 (t par événement -3.14)  OUI réel 0.494 prix moyen 0.510 modèle moyen 0.511
+above  h= 3 vol×1.0  n=  176 modèle − prix = -0.1270 (t par événement -2.41)  OUI réel 0.494 prix moyen 0.510 modèle moyen 0.511
+above  h= 3 vol×1.25 n=  176 modèle − prix = -0.0671 (t par événement -1.61)  OUI réel 0.494 prix moyen 0.510 modèle moyen 0.510
+above  h= 6 vol×0.8  n=  195 modèle − prix = -0.0928 (t par événement -2.23)  OUI réel 0.462 prix moyen 0.489 modèle moyen 0.486
+above  h= 6 vol×1.0  n=  195 modèle − prix = -0.0306 (t par événement -1.07)  OUI réel 0.462 prix moyen 0.489 modèle moyen 0.486
+above  h= 6 vol×1.25 n=  195 modèle − prix = +0.0075 (t par événement +0.39)  OUI réel 0.462 prix moyen 0.489 modèle moyen 0.487
+above  h=12 vol×0.8  n=  233 modèle − prix = -0.0421 (t par événement -2.14)  OUI réel 0.511 prix moyen 0.506 modèle moyen 0.498
+above  h=12 vol×1.0  n=  233 modèle − prix = -0.0142 (t par événement -1.06)  OUI réel 0.511 prix moyen 0.506 modèle moyen 0.498
+above  h=12 vol×1.25 n=  233 modèle − prix = -0.0070 (t par événement -0.68)  OUI réel 0.511 prix moyen 0.506 modèle moyen 0.498
+above  h=24 vol×0.8  n=  291 modèle − prix = -0.0129 (t par événement -0.37)  OUI réel 0.495 prix moyen 0.489 modèle moyen 0.492
+above  h=24 vol×1.0  n=  291 modèle − prix = -0.0047 (t par événement +0.04)  OUI réel 0.495 prix moyen 0.489 modèle moyen 0.493
+above  h=24 vol×1.25 n=  291 modèle − prix = -0.0133 (t par événement -0.59)  OUI réel 0.495 prix moyen 0.489 modèle moyen 0.494
+reach  h= 3 vol×0.8  n=   42 modèle − prix = -0.0010 (t par événement +0.61)  OUI réel 0.190 prix moyen 0.207 modèle moyen 0.170
+reach  h= 3 vol×1.0  n=   42 modèle − prix = +0.0120 (t par événement +0.46)  OUI réel 0.190 prix moyen 0.207 modèle moyen 0.234
+reach  h= 3 vol×1.25 n=   42 modèle − prix = -0.0208 (t par événement -0.37)  OUI réel 0.190 prix moyen 0.207 modèle moyen 0.309
+reach  h= 6 vol×0.8  n=   72 modèle − prix = -0.0259 (t par événement -0.72)  OUI réel 0.125 prix moyen 0.168 modèle moyen 0.130
+reach  h= 6 vol×1.0  n=   72 modèle − prix = -0.0233 (t par événement -0.84)  OUI réel 0.125 prix moyen 0.168 modèle moyen 0.196
+reach  h= 6 vol×1.25 n=   72 modèle − prix = -0.0704 (t par événement -1.68)  OUI réel 0.125 prix moyen 0.168 modèle moyen 0.277
+reach  h=12 vol×0.8  n=  160 modèle − prix = -0.0742 (t par événement -1.13)  OUI réel 0.225 prix moyen 0.226 modèle moyen 0.179
+reach  h=12 vol×1.0  n=  160 modèle − prix = -0.0444 (t par événement -1.08)  OUI réel 0.225 prix moyen 0.226 modèle moyen 0.243
+reach  h=12 vol×1.25 n=  160 modèle − prix = -0.0593 (t par événement -1.93)  OUI réel 0.225 prix moyen 0.226 modèle moyen 0.319
+dip    h= 6 vol×0.8  n=   63 modèle − prix = -0.0317 (t par événement -1.04)  OUI réel 0.175 prix moyen 0.143 modèle moyen 0.108
+dip    h= 6 vol×1.0  n=   63 modèle − prix = -0.0129 (t par événement -0.48)  OUI réel 0.175 prix moyen 0.143 modèle moyen 0.166
+dip    h= 6 vol×1.25 n=   63 modèle − prix = -0.0393 (t par événement -0.93)  OUI réel 0.175 prix moyen 0.143 modèle moyen 0.241
+dip    h=12 vol×0.8  n=  131 modèle − prix = -0.0048 (t par événement -0.43)  OUI réel 0.244 prix moyen 0.226 modèle moyen 0.170
+dip    h=12 vol×1.0  n=  131 modèle − prix = +0.0165 (t par événement -0.14)  OUI réel 0.244 prix moyen 0.226 modèle moyen 0.237
+dip    h=12 vol×1.25 n=  131 modèle − prix = -0.0077 (t par événement -1.23)  OUI réel 0.244 prix moyen 0.226 modèle moyen 0.316
+None   h= 3 vol×0.8  n=  246 modèle − prix = -0.1716 (t par événement -3.17)  OUI réel 0.415 prix moyen 0.422 modèle moyen 0.407
+None   h= 3 vol×1.0  n=  246 modèle − prix = -0.1057 (t par événement -2.41)  OUI réel 0.415 prix moyen 0.422 modèle moyen 0.423
+None   h= 3 vol×1.25 n=  246 modèle − prix = -0.0583 (t par événement -1.76)  OUI réel 0.415 prix moyen 0.422 modèle moyen 0.443
+None   h= 6 vol×0.8  n=  330 modèle − prix = -0.0666 (t par événement -2.51)  OUI réel 0.333 prix moyen 0.353 modèle moyen 0.336
+None   h= 6 vol×1.0  n=  330 modèle − prix = -0.0256 (t par événement -1.49)  OUI réel 0.333 prix moyen 0.353 modèle moyen 0.362
+None   h= 6 vol×1.25 n=  330 modèle − prix = -0.0185 (t par événement -1.12)  OUI réel 0.333 prix moyen 0.353 modèle moyen 0.394
+None   h=12 vol×0.8  n=  524 modèle − prix = -0.0426 (t par événement -2.14)  OUI réel 0.357 prix moyen 0.350 modèle moyen 0.319
+None   h=12 vol×1.0  n=  524 modèle − prix = -0.0158 (t par événement -1.47)  OUI réel 0.357 prix moyen 0.350 modèle moyen 0.355
+None   h=12 vol×1.25 n=  524 modèle − prix = -0.0232 (t par événement -1.88)  OUI réel 0.357 prix moyen 0.350 modèle moyen 0.398
+None   h=24 vol×0.8  n=  291 modèle − prix = -0.0129 (t par événement -0.37)  OUI réel 0.495 prix moyen 0.489 modèle moyen 0.492
+None   h=24 vol×1.0  n=  291 modèle − prix = -0.0047 (t par événement +0.04)  OUI réel 0.495 prix moyen 0.489 modèle moyen 0.493
+None   h=24 vol×1.25 n=  291 modèle − prix = -0.0133 (t par événement -0.59)  OUI réel 0.495 prix moyen 0.489 modèle moyen 0.494
+
+== (2) NON payé 0,10-0,45, un pari par marché, selon l'écart modèle − prix (vol ×1,0) ==
+| tous | 191 | 160 | +0.3% | t évén. -0.08 | gagnés 56 / attendus 52.3 (z +0.62) | modèle attend 54.0 | écartée |
+| vol ×0.8, écart modèle−prix du NON -9..0 | 127 | 103 | -3.3% | t évén. -0.34 | gagnés 35 / attendus 34.2 (z +0.16) | modèle attend 29.5 | écartée |
+| vol ×0.8, écart modèle−prix du NON 0..0.05 | 31 | 31 | -20.7% | t évén. -0.76 | gagnés 8 / attendus 8.7 (z -0.29) | modèle attend 10.0 | écartée |
+| vol ×0.8, écart modèle−prix du NON 0.05..0.1 | 14 | 14 | +15.6% | t évén. +0.27 | gagnés 4 / attendus 3.7 (z +0.19) | modèle attend 4.7 | écartée |
+| vol ×0.8, écart modèle−prix du NON 0.1..9 | 19 | 18 | +47.0% | t évén. +1.09 | gagnés 9 / attendus 5.7 (z +1.69) | modèle attend 9.7 | écartée |
+| vol ×1.0, écart modèle−prix du NON -9..0 | 92 | 80 | -25.2% | t évén. -1.41 | gagnés 20 / attendus 25.4 (z -1.31) | modèle attend 19.6 | écartée |
+| vol ×1.0, écart modèle−prix du NON 0..0.05 | 55 | 53 | +33.6% | t évén. +1.04 | gagnés 22 / attendus 16.0 (z +1.84) | modèle attend 17.3 | indice |
+| vol ×1.0, écart modèle−prix du NON 0.05..0.1 | 24 | 24 | -34.4% | t évén. -1.15 | gagnés 5 / attendus 5.7 (z -0.33) | modèle attend 7.4 | écartée |
+| vol ×1.0, écart modèle−prix du NON 0.1..9 | 20 | 20 | +67.4% | t évén. +1.35 | gagnés 9 / attendus 5.2 (z +1.96) | modèle attend 9.7 | écartée |
+| vol ×1.25, écart modèle−prix du NON -9..0 | 64 | 60 | -37.8% | t évén. -1.97 | gagnés 13 / attendus 19.2 (z -1.76) | modèle attend 14.3 | écartée |
+| vol ×1.25, écart modèle−prix du NON 0..0.05 | 50 | 48 | +30.7% | t évén. +1.14 | gagnés 21 / attendus 14.7 (z +2.03) | modèle attend 14.4 | indice |
+| vol ×1.25, écart modèle−prix du NON 0.05..0.1 | 43 | 42 | +23.6% | t évén. +0.69 | gagnés 13 / attendus 10.9 (z +0.76) | modèle attend 12.3 | écartée |
+| vol ×1.25, écart modèle−prix du NON 0.1..9 | 34 | 33 | -2.4% | t évén. -0.08 | gagnés 9 / attendus 7.5 (z +0.63) | modèle attend 13.0 | écartée |
+| genre above | 161 | 131 | +8.2% | t évén. +0.54 | gagnés 49 / attendus 42.1 (z +1.28) | modèle attend 43.2 | écartée |
+| genre below | 0 |
+| genre reach | 20 | 20 | -39.6% | t évén. -1.51 | gagnés 5 / attendus 7.0 (z -0.95) | modèle attend 7.1 | écartée |
+| genre dip | 10 | 10 | -47.8% | t évén. -1.22 | gagnés 2 / attendus 3.2 (z -0.85) | modèle attend 3.7 | écartée |
+| actif BTC | 104 | 82 | -21.3% | t évén. -1.53 | gagnés 28 / attendus 28.9 (z -0.20) | modèle attend 29.4 | écartée |
+| actif ETH | 77 | 69 | +24.0% | t évén. +0.82 | gagnés 25 / attendus 21.4 (z +0.94) | modèle attend 21.6 | indice |
+| actif SOL | 5 |
+| actif XRP | 5 |
+| actif DOGE | 0 |
+| actif BNB | 0 |
+| payé 0.1-0.2 | 58 | 56 | +9.6% | t évén. +0.20 | gagnés 10 / attendus 8.0 (z +0.77) | modèle attend 8.1 | écartée |
+| payé 0.2-0.3 | 49 | 48 | -20.1% | t évén. -0.96 | gagnés 11 / attendus 12.2 (z -0.39) | modèle attend 13.9 | écartée |
+| payé 0.3-0.45 | 83 | 80 | +7.1% | t évén. +0.54 | gagnés 35 / attendus 31.7 (z +0.75) | modèle attend 31.6 | écartée |
+| instant h=3 | 20 | 20 | +39.2% | t évén. +0.80 | gagnés 8 / attendus 5.2 (z +1.48) | modèle attend 4.7 | écartée |
+| instant h=6 | 30 | 30 | +9.9% | t évén. +0.31 | gagnés 10 / attendus 8.5 (z +0.61) | modèle attend 8.9 | écartée |
+| instant h=12 | 59 | 59 | +1.9% | t évén. +0.08 | gagnés 17 / attendus 18.5 (z -0.42) | modèle attend 20.1 | écartée |
+| instant h=24 | 82 | 80 | -13.9% | t évén. -0.73 | gagnés 21 / attendus 20.1 (z +0.23) | modèle attend 20.4 | écartée |
+| mois 2026-08 | 44 | 38 | -62.8% | t évén. -4.53 | gagnés 7 / attendus 12.8 (z -1.98) | modèle attend 13.8 | écartée |
+| mois 2026-09 | 77 | 60 | -5.2% | t évén. -0.04 | gagnés 21 / attendus 19.6 (z +0.38) | modèle attend 18.6 | écartée |
+| mois 2026-10 | 70 | 62 | +46.0% | t évén. +1.49 | gagnés 28 / attendus 20.0 (z +2.19) | modèle attend 21.6 | indice |

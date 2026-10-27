@@ -1,0 +1,18 @@
+537 marchés avec échanges, 77 événements
+| N échanges / 3 h | jetons déclenchés (heures avant règlement : médiane, quartiles) | côté | paris | évén. | rendement | t | gagnés/attendus | mois | verdict |
+N=0.15: 70 jetons, écart déclenchement→règlement médiane 494.5 h, quartiles [121.5, 494.5, 1555.5]
+| N=0.15 tous côtés | 163 | 66 | -5.1% | t évén. -1.78 | gagnés 137 / attendus 143.5 (z -1.61) | 5/14 mois | écartée |
+| N=0.15 OUI | 62 | 47 | -12.2% | t évén. -1.80 | gagnés 48 / attendus 54.1 (z -2.36) | 8/14 mois | écartée |
+| N=0.15 NON | 101 | 52 | -0.7% | t évén. -1.23 | gagnés 89 / attendus 89.4 (z -0.13) | 5/12 mois | écartée |
+N=0.25: 69 jetons, écart déclenchement→règlement médiane 216.6 h, quartiles [74.0, 216.6, 1452.8]
+| N=0.25 tous côtés | 158 | 63 | +0.9% | t évén. -0.64 | gagnés 141 / attendus 139.2 (z +0.44) | 8/14 mois | écartée |
+| N=0.25 OUI | 58 | 41 | -3.7% | t évén. -0.79 | gagnés 49 / attendus 50.7 (z -0.69) | 9/14 mois | écartée |
+| N=0.25 NON | 100 | 51 | +3.6% | t évén. -0.53 | gagnés 92 / attendus 88.5 (z +1.12) | 8/13 mois | écartée |
+N=0.4: 56 jetons, écart déclenchement→règlement médiane 168.3 h, quartiles [39.0, 168.3, 873.4]
+| N=0.4 tous côtés | 123 | 51 | -3.2% | t évén. -1.20 | gagnés 106 / attendus 109.1 (z -0.91) | 7/13 mois | écartée |
+| N=0.4 OUI | 54 | 36 | -7.1% | t évén. -1.54 | gagnés 45 / attendus 48.1 (z -1.39) | 8/12 mois | écartée |
+| N=0.4 NON | 69 | 40 | -0.1% | t évén. -1.00 | gagnés 61 / attendus 61.0 (z +0.00) | 8/12 mois | écartée |
+N=0.6: 34 jetons, écart déclenchement→règlement médiane 73.9 h, quartiles [18.8, 73.9, 686.5]
+| N=0.6 tous côtés | 90 | 31 | -6.5% | t évén. -1.56 | gagnés 75 / attendus 79.4 (z -1.48) | 3/9 mois | écartée |
+| N=0.6 OUI | 35 | 20 | -12.8% | t évén. -1.02 | gagnés 27 / attendus 30.5 (z -1.84) | 3/6 mois | écartée |
+| N=0.6 NON | 55 | 29 | -2.5% | t évén. -1.20 | gagnés 48 / attendus 48.9 (z -0.38) | 5/9 mois | écartée |

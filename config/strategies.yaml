@@ -654,7 +654,7 @@ crypto_non_bon_marche:
   # des marchés crypto à 0,10-0,45 gagne plus que son prix, sur DEUX périodes séparées aux vrais échanges (frais crypto 0,07 et écart payés) : juin-octobre 1 111 paris +14,4 % (398 gagnés pour 357,8, z +2,66),
   # janvier-mai 1 273 paris +22,1 % (496 pour 428,2, z +4,15, t par événement +3,17). Fragile : 6 mois sur 10 positifs (avril −23 %, août −31 %), sans ses 5 meilleurs jours +7,6 % (janvier-mai) et −0,7 % (juin-octobre) ;
   # la sous-tranche « touche » (+22,6 % en juin-octobre) NE se répète PAS en janvier-mai (−1,1 %) : ne pas la croire. Tranche choisie parmi ~30 découpages, billets sous 0,10 exclus. VERDICT « indice » : fantôme,
-  # Kelly entier, biais supposé 0,05 (le tiers du gain mesuré). Une perte apprendrait que le surprix du OUI crypto vient de la volatilité de certains mois (janvier, juin), pas d'une règle.
+  # Kelly entier, biais supposé 0,05 (le tiers du gain mesuré). Une perte apprendrait que le surprix du OUI crypto vient de la volatilité de certains mois (janvier, juin), pas d'une règle. Mise à jour 28/10/2026 (experiments/crypto_pourquoi.md) : le rendement mensuel suit le cours du mois (corrélation −0,82 avec le Bitcoin sur 17 mois, pente −1,8) : c'est un pari à la baisse ; une perte un mois de hausse du cours ne prouve rien.
   class: naive_favorite
   filtres: {familles: [crypto], issue: [non], prix_min: 0.10, prix_max: 0.45, echeance_min: 2, echeance_max: 720, question_exclut: ["up or down"]}
   enabled: true
@@ -3711,7 +3711,7 @@ crypto_non_10_20:
   # Les autres tranches de la mère ne tiennent pas : 0,20-0,30 passe de +40 % à −29 % dans la dernière période, « fin dans ≥ 96 h » de +31 % à −2 % (non retenue). Il reste ~30 découpages regardés ;
   # une tranche sur ~6 réglages × 3 périodes qui tient trois fois est la meilleure du labo, mais c'est du passé : l'arène tranche. Mise franche (Kelly entier, ≈ 6 % du fantôme par pari) car le gain
   # possible est ×5 à ×9. ATTENTION (profondeur, resultats_profondeur_non_10_20.txt) : le gain se concentre dans les échanges minces (+58 % tous, +41 % si ≥ 20 parts achetables, +21 % ≥ 100, +1 % ≥ 400) :
-  # les gros tickets du fantôme seront remplis en partie, au bas de la file ; juger en parts remplies. Une perte apprendrait que le OUI à 0,80-0,90 n'est surcoté que dans le passé (volatilité des mois de janvier, juin) ou que notre prix de départ est moins bon que le premier échange réel.
+  # les gros tickets du fantôme seront remplis en partie, au bas de la file ; juger en parts remplies. Une perte apprendrait que le OUI à 0,80-0,90 n'est surcoté que dans le passé (volatilité des mois de janvier, juin) ou que notre prix de départ est moins bon que le premier échange réel. Mise à jour 28/10/2026 : ses gains mensuels suivent aussi le cours (pari à la baisse, experiments/crypto_pourquoi.md) ; juger sur plusieurs mois.
   mere: crypto_non_bon_marche
   morceau: "NON payé 0,10-0,20"
   class: naive_favorite

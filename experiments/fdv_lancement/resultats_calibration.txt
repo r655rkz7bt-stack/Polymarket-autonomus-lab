@@ -1,0 +1,52 @@
+537 marchés avec échanges, 77 événements
+| réglage | paris | évén. | rendement | t | gagnés/attendus | mois | verdict |
+| OUI payé 0.02-0.1 à D−1 | 58 | 43 | +17.8% | t évén. -0.26 | gagnés 2 / attendus 3.1 (z -0.66) | 1/11 mois | écartée |
+| OUI payé 0.02-0.1 à D−3 | 60 | 39 | +18.6% | t évén. +0.08 | gagnés 3 / attendus 3.8 (z -0.40) | 1/10 mois | écartée |
+| OUI payé 0.02-0.1 à D−7 | 23 | 20 | +180.0% | t évén. +0.98 | gagnés 2 / attendus 1.3 (z +0.62) | 1/8 mois | écartée |
+| OUI payé 0.02-0.1 à D−14 | 19 | 14 | +326.9% | t évén. +1.18 | gagnés 2 / attendus 1.0 (z +0.99) | 1/7 mois | écartée |
+| OUI payé 0.02-0.1 à D−30 | 17 | 11 | +202.3% | t évén. +0.57 | gagnés 2 / attendus 1.0 (z +1.01) | 1/6 mois | écartée |
+| OUI payé 0.1-0.25 à D−1 | 13 | 13 | -102.2% | t évén. -124.47 | gagnés 0 / attendus 2.1 (z -1.61) | 0/9 mois | écartée |
+| OUI payé 0.1-0.25 à D−3 | 41 | 35 | -7.1% | t évén. +0.11 | gagnés 8 / attendus 7.3 (z +0.27) | 5/11 mois | écartée |
+| OUI payé 0.1-0.25 à D−7 | 21 | 21 | -18.3% | t évén. -0.40 | gagnés 3 / attendus 3.9 (z -0.52) | 2/8 mois | écartée |
+| OUI payé 0.1-0.25 à D−14 | 15 | 14 | -100.8% | t évén. -170.55 | gagnés 0 / attendus 2.4 (z -1.71) | 0/5 mois | écartée |
+| OUI payé 0.1-0.25 à D−30 | 11 | 9 | +7.8% | t évén. +0.33 | gagnés 2 / attendus 2.1 (z -0.04) | 1/5 mois | écartée |
+| OUI payé 0.25-0.45 à D−1 | 21 | 21 | -33.7% | t évén. -1.19 | gagnés 5 / attendus 7.6 (z -1.20) | 2/7 mois | écartée |
+| OUI payé 0.25-0.45 à D−3 | 37 | 33 | -15.0% | t évén. -0.55 | gagnés 11 / attendus 12.6 (z -0.57) | 3/10 mois | écartée |
+| OUI payé 0.25-0.45 à D−7 | 18 | 17 | -18.4% | t évén. -0.39 | gagnés 5 / attendus 6.2 (z -0.62) | 3/8 mois | écartée |
+| OUI payé 0.25-0.45 à D−14 | 11 | 11 | +45.9% | t évén. +0.88 | gagnés 5 / attendus 3.7 (z +0.87) | 4/6 mois | écartée |
+| OUI payé 0.25-0.45 à D−30 | 11 | 11 | -48.5% | t évén. -1.38 | gagnés 2 / attendus 3.9 (z -1.19) | 2/7 mois | écartée |
+| OUI payé 0.45-0.7 à D−1 | 22 | 21 | -9.0% | t évén. -0.24 | gagnés 12 / attendus 13.0 (z -0.46) | 4/10 mois | écartée |
+| OUI payé 0.45-0.7 à D−3 | 28 | 26 | -11.2% | t évén. -1.03 | gagnés 15 / attendus 16.4 (z -0.55) | 5/10 mois | écartée |
+| OUI payé 0.45-0.7 à D−7 | 28 | 25 | -10.1% | t évén. -0.60 | gagnés 16 / attendus 17.3 (z -0.53) | 4/9 mois | écartée |
+| OUI payé 0.45-0.7 à D−14 | 17 | 16 | -10.6% | t évén. -0.23 | gagnés 9 / attendus 9.9 (z -0.47) | 3/8 mois | écartée |
+| OUI payé 0.45-0.7 à D−30 | 8 |
+| OUI payé 0.7-0.95 à D−1 | 47 | 39 | +13.8% | t évén. +10.88 | gagnés 47 / attendus 41.4 (z +2.57) | 12/12 mois | retenue |
+| OUI payé 0.7-0.95 à D−3 | 55 | 41 | -4.3% | t évén. -0.83 | gagnés 45 / attendus 46.6 (z -0.59) | 8/13 mois | écartée |
+| OUI payé 0.7-0.95 à D−7 | 35 | 26 | -10.5% | t évén. -1.35 | gagnés 27 / attendus 30.0 (z -1.47) | 8/10 mois | écartée |
+| OUI payé 0.7-0.95 à D−14 | 20 | 18 | -3.2% | t évén. -0.49 | gagnés 17 / attendus 17.2 (z -0.16) | 8/10 mois | écartée |
+| OUI payé 0.7-0.95 à D−30 | 9 |
+| NON payé 0.02-0.1 à D−1 | 29 | 24 | -103.9% | t évén. -150.88 | gagnés 0 / attendus 1.7 (z -1.33) | 0/11 mois | écartée |
+| NON payé 0.02-0.1 à D−3 | 26 | 24 | -71.0% | t évén. -1.97 | gagnés 1 / attendus 1.7 (z -0.55) | 1/10 mois | écartée |
+| NON payé 0.02-0.1 à D−7 | 13 | 10 | -103.0% | t évén. -95.79 | gagnés 0 / attendus 0.9 (z -0.97) | 0/6 mois | écartée |
+| NON payé 0.02-0.1 à D−14 | 10 | 9 | +96.1% | t évén. +0.53 | gagnés 1 / attendus 0.6 (z +0.51) | 1/6 mois | écartée |
+| NON payé 0.02-0.1 à D−30 | 3 |
+| NON payé 0.1-0.25 à D−1 | 20 | 19 | -102.3% | t évén. -153.02 | gagnés 0 / attendus 3.3 (z -1.99) | 0/9 mois | écartée |
+| NON payé 0.1-0.25 à D−3 | 27 | 26 | +9.0% | t évén. +0.31 | gagnés 6 / attendus 4.7 (z +0.65) | 4/10 mois | écartée |
+| NON payé 0.1-0.25 à D−7 | 17 | 16 | +184.8% | t évén. +1.72 | gagnés 7 / attendus 3.0 (z +2.59) | 3/6 mois | écartée |
+| NON payé 0.1-0.25 à D−14 | 11 | 11 | +13.7% | t évén. +0.23 | gagnés 3 / attendus 2.0 (z +0.79) | 2/6 mois | écartée |
+| NON payé 0.1-0.25 à D−30 | 2 |
+| NON payé 0.25-0.45 à D−1 | 14 | 12 | -1.8% | t évén. -0.63 | gagnés 5 / attendus 4.8 (z +0.09) | 3/8 mois | écartée |
+| NON payé 0.25-0.45 à D−3 | 27 | 25 | -11.2% | t évén. -0.56 | gagnés 9 / attendus 9.7 (z -0.29) | 4/12 mois | écartée |
+| NON payé 0.25-0.45 à D−7 | 18 | 18 | -23.2% | t évén. -0.75 | gagnés 5 / attendus 6.3 (z -0.67) | 2/7 mois | écartée |
+| NON payé 0.25-0.45 à D−14 | 10 | 10 | +1.7% | t évén. +0.04 | gagnés 4 / attendus 3.9 (z +0.06) | 4/8 mois | écartée |
+| NON payé 0.25-0.45 à D−30 | 15 | 14 | +37.9% | t évén. +0.69 | gagnés 7 / attendus 5.2 (z +0.97) | 4/5 mois | écartée |
+| NON payé 0.45-0.7 à D−1 | 20 | 19 | +24.5% | t évén. +1.50 | gagnés 16 / attendus 12.7 (z +1.54) | 7/9 mois | écartée |
+| NON payé 0.45-0.7 à D−3 | 34 | 33 | +10.3% | t évén. +0.58 | gagnés 22 / attendus 20.4 (z +0.57) | 6/11 mois | écartée |
+| NON payé 0.45-0.7 à D−7 | 20 | 20 | +14.8% | t évén. +0.83 | gagnés 14 / attendus 12.3 (z +0.78) | 5/8 mois | écartée |
+| NON payé 0.45-0.7 à D−14 | 15 | 14 | -5.2% | t évén. +0.06 | gagnés 8 / attendus 8.9 (z -0.48) | 4/7 mois | écartée |
+| NON payé 0.45-0.7 à D−30 | 11 | 11 | +26.8% | t évén. +1.38 | gagnés 9 / attendus 7.2 (z +1.14) | 4/6 mois | écartée |
+| NON payé 0.7-0.95 à D−1 | 66 | 47 | +6.2% | t évén. +1.44 | gagnés 63 / attendus 59.0 (z +1.65) | 12/13 mois | indice |
+| NON payé 0.7-0.95 à D−3 | 99 | 55 | +0.0% | t évén. -0.19 | gagnés 87 / attendus 86.6 (z +0.12) | 8/13 mois | écartée |
+| NON payé 0.7-0.95 à D−7 | 56 | 33 | +2.8% | t évén. +0.22 | gagnés 50 / attendus 48.6 (z +0.55) | 6/10 mois | écartée |
+| NON payé 0.7-0.95 à D−14 | 34 | 22 | -5.3% | t évén. -0.23 | gagnés 28 / attendus 29.2 (z -0.62) | 6/8 mois | écartée |
+| NON payé 0.7-0.95 à D−30 | 26 | 17 | +8.1% | t évén. +1.24 | gagnés 24 / attendus 22.5 (z +0.90) | 5/6 mois | écartée |

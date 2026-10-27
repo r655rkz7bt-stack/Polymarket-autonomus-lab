@@ -778,17 +778,32 @@ def _p_one_sided(z: float) -> float:
     return 0.5 * math.erfc(z / math.sqrt(2))
 
 
-def _z_by_event(trades: list[dict]) -> float:
-    """z qui compte un événement comme un seul tirage : somme par événement de (paiement − prix payé), divisée par la racine de
-    la somme de leurs carrés (sans hypothèse d'indépendance des paris d'un même événement)."""
-    by_event: dict[str, float] = {}
+def _z_by_cluster(trades: list[dict], key, min_groups: int = 1) -> float:
+    """z qui compte un groupe de paris comme un seul tirage : somme par groupe de (paiement − prix payé), divisée par la racine de
+    la somme de leurs carrés (sans hypothèse d'indépendance des paris d'un même groupe)."""
+    by_group: dict[str, float] = {}
     for t in trades:
         if float(t["shares_bought"]) <= 0:
             continue
         pay = float(t["payout"]) if t.get("payout") is not None else (1.0 if float(t["pnl"]) > 0 else 0.0)
-        by_event[t["event_id"]] = by_event.get(t["event_id"], 0.0) + pay - float(t["cost"]) / float(t["shares_bought"])
-    sq = sum(v * v for v in by_event.values())
-    return sum(by_event.values()) / math.sqrt(sq) if sq > 0 else 0.0
+        k = key(t)
+        by_group[k] = by_group.get(k, 0.0) + pay - float(t["cost"]) / float(t["shares_bought"])
+    if len(by_group) < min_groups:
+        return math.inf  # trop peu de groupes pour juger : n'écarte rien dans un min()
+    sq = sum(v * v for v in by_group.values())
+    return sum(by_group.values()) / math.sqrt(sq) if sq > 0 else 0.0
+
+
+def _z_by_event(trades: list[dict]) -> float:
+    """Un événement = un seul tirage (échelle de tranches : exactement une gagne)."""
+    return _z_by_cluster(trades, lambda t: t["event_id"])
+
+
+def _z_by_day(trades: list[dict]) -> float:
+    """Un jour de règlement = un seul tirage (28/10/2026 : le NON des marchés crypto à 0,10-0,45 est un pari à la baisse, ses gains d'un mois
+    suivent le cours du Bitcoin (corrélation −0,82, 17 mois) : 4 167 paris donnaient z +5,3 pari par pari, mais ≈ 33 mois pour juger, t +1,8 à +2,4).
+    Au moins 8 jours distincts, sinon aucun jugement (inf)."""
+    return _z_by_cluster(trades, lambda t: (t.get("closed_at") or "")[:10], min_groups=8)
 
 
 def selection_multiple(entries: dict[str, list[dict]], copied: set[str], min_trades: int = 15,
@@ -810,7 +825,7 @@ def selection_multiple(entries: dict[str, list[dict]], copied: set[str], min_tra
             z = (won - expected) / math.sqrt(var)
             # Paris d'un même événement = un seul tirage (échelle de tranches : exactement une gagne). 26/10 : `compteur_tweets`,
             # 28 paris sur 9 événements, z = +2,56 pari par pari, t = +1,0 par événement : on garde le plus prudent des deux.
-            z = min(z, _z_by_event(trades))
+            z = min(z, _z_by_event(trades), _z_by_day(trades))
             zs[name] = (z, len(trades), expected)
     n = len(zs)
     out = []
@@ -864,12 +879,17 @@ def estimation_gonflee(entries: dict[str, list[dict]], min_trades: int = 100, z_
                      "à la mise (Kelly). Regarder le paramètre `bias`/`shrink` de la stratégie et la mise par tranche de prix.")]
 
 
+CERTITUDE_CORRIGEE_LE = "2026-10-23T20:35"  # `news_momentum` corrigé (plafond d'estimation) : aucun pari promis ≥ 0,995 depuis
+
+
 def certitude_promise(entries: dict[str, list[dict]], min_trades: int = 15, est_min: float = 0.995,
-                      price_max: float = 0.99) -> list[dict]:
+                      price_max: float = 0.99, depuis: str = CERTITUDE_CORRIGEE_LE) -> list[dict]:
     """Paris « quasi certains » promis (estimation ≥ `est_min`) pour un prix d'au plus `price_max`, toute l'arène (un jeton =
     un pari, le plus ancien) : combien, à quel prix moyen, avec quel résultat. 23/10 : `news_momentum` ajoutait +0,04 à un
     favori déjà à 0,986 (estimation plafonnée à 0,999) et misait 20 % du fantôme pour 1,3 point de gain possible ; sur les
-    27 paris réglés promis à 0,995 et plus : −154 € pour 1 747 € misés."""
+    27 paris réglés promis à 0,995 et plus : −154 € pour 1 747 € misés. Seuls les paris ouverts après `depuis` (la date du
+    correctif) comptent : 27/10, les 95 paris d'avant le correctif rouvraient le constat à chaque passage alors qu'aucun
+    nouveau n'avait eu lieu depuis le 23/10 16 h 32."""
     first: dict[str, tuple[str, str, float, float, float, float]] = {}
     for name, rows in entries.items():
         if name == "principal":
@@ -881,7 +901,7 @@ def certitude_promise(entries: dict[str, list[dict]], min_trades: int = 15, est_
             row = (t["opened_at"], t["strategy"], float(t["est_probability"]), price, float(t["cost"]), float(t["pnl"]))
             if t["token_id"] not in first or row[0] < first[t["token_id"]][0]:
                 first[t["token_id"]] = row
-    rows = [r for r in first.values() if r[2] >= est_min and r[3] <= price_max]
+    rows = [r for r in first.values() if r[2] >= est_min and r[3] <= price_max and r[0][:16] >= depuis]
     cost, pnl = sum(r[4] for r in rows), sum(r[5] for r in rows)
     if len(rows) < min_trades or pnl >= 0:
         return []
