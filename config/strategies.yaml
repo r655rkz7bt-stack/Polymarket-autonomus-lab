@@ -3726,3 +3726,36 @@ crypto_non_10_20:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
+suivre_inities:
+  explication: "Quand les journaux ou les réseaux parlent de paris suspects sur un prix ou un classement, et que des comptes tout neufs misent gros sur le même résultat, on parie avec eux."
+  # Demande d'Etienne (27/10/2026, affaire du Ballon d'Or : 12 comptes créés en octobre, 264 000 $ sur le classement exact, article
+  # d'Upside le 23/10, résultat le 26/10). Sources : polymarket_agent/inities.py (échanges publics, profils des comptes, commentaires
+  # Polymarket, Mastodon, Hacker News, Google Actualités). Test sur le passé : experiments/inities.md.
+  class: suivre_inities
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    Expérience. Sur 740 événements « à initiés » (prix, classements, émissions, nominations) de septembre 2025 à octobre 2026,
+    1,7 million de vrais échanges et 10 115 comptes profilés, suivre l'argent NEUF et CONCENTRÉ seul ne bat pas ses prix
+    (48 réglages essayés, aucun robuste ; le meilleur, « indice », est ce que le hasard donne au meilleur de 48) : ces comptes
+    sont surtout de nouveaux joueurs qui misent sur des outsiders (Fed : 5 paris perdus à 0,01-0,09). Les vrais cas d'initiés
+    sont visibles (Ballon d'Or 2026 : 5 sur 6 ; Nobel 2025 : Machado à 0,54) mais noyés. D'où le filtre de la demande :
+    jouer seulement quand la presse, les réseaux ou les commentaires parlent de paris suspects sur l'événement AVANT le résultat, et sur le
+    jeton où l'argent neuf se concentre, à 0,30 ou plus (pas les billets). Trop rare sur le passé pour un test (sur 428 articles
+    en 14 mois, presque tous après le résultat). Une perte apprendrait que même les soupçons publics sont déjà dans le prix.
+  params:
+    presse_requise: {value: 1, min: 0, max: 1}
+    min_comptes:    {value: 1, min: 1, max: 20}
+    min_dollars:    {value: 2000, min: 0, max: 1000000}
+    prix_min:       {value: 0.30, min: 0.0, max: 0.95}        # prix moyen des comptes suspects : pas les billets d'outsiders
+    max_age_hours:  {value: 72, min: 1, max: 720}
+    max_price:      {value: 0.90, min: 0.05, max: 0.99}
+    max_rattrapage: {value: 0.15, min: 0.0, max: 0.5}          # au plus 15 centimes au-dessus du prix moyen des comptes suspects
+    edge_prior:     {value: 0.10, min: 0.0, max: 0.5}
+    uncertainty:    {value: 0.03, min: 0.0, max: 0.2}
+    stake_fraction: {value: 0.03, min: 0.0, max: 0.2}          # 3 % du fantôme par pari : mise franche, perte bornée
+    min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}

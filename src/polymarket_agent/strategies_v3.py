@@ -1524,7 +1524,71 @@ class BoxOfficeFavori(_Base):
         return self._finish(out, props)
 
 
-CLASSES = {c.strategy_id: c for c in (MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+class SuivreInities(_Base):
+    """Suivre les comptes suspects quand on en parle (27/10/2026, demande d'Etienne après l'affaire du Ballon d'Or) : la
+    presse, les réseaux ou les commentaires Polymarket parlent de paris suspects sur un événement « à initiés » encore ouvert
+    (prix, classements d'entreprise, émissions enregistrées, choix d'une petite équipe), ET de l'argent NEUF et CONCENTRÉ
+    (comptes à première activité récente, peu de marchés : référence `inities`, polymarket_agent/inities.py) achète un même
+    jeton ; on achète avec eux tant que le prix n'a pas rattrapé leur prix moyen. Ballon d'Or 2026 : article d'Upside le 23/10,
+    bons résultats encore à 0,69-0,72, réponse le 26/10. Sur le passé (experiments/inities.md, 48 réglages) : l'argent neuf
+    SEUL ne bat pas ses prix (des joueurs qui débutent, pas des initiés) ; la presse avant le résultat est trop rare pour un
+    test : expérience. Pourquoi ça peut rater : de faux initiés qui se trompent ensemble, une rumeur fausse, une réponse déjà
+    dans le prix."""
+
+    strategy_id = "suivre_inities"
+    required = ("presse_requise", "min_comptes", "min_dollars", "prix_min", "max_age_hours", "max_price", "max_rattrapage",
+                "edge_prior", "uncertainty", "stake_fraction", "min_net_edge", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "inities", int(self.params.get("max_candidates", 40)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (m.references or {}).get("inities")
+            if not ref:
+                continue
+            side = int(ref.get("issue", 0))
+            if side >= len(m.token_ids) or any(t in state.positions for t in m.token_ids):
+                out.abstain("déjà en position")
+                continue
+            presse = bool(ref.get("presse") or ref.get("commentaires"))
+            if int(p["presse_requise"]) and not presse:
+                out.abstain("personne ne parle de paris suspects sur cet événement")
+                continue
+            comptes, dollars, moyen = int(ref.get("comptes") or 0), float(ref.get("dollars") or 0), float(ref.get("prix_moyen") or 0)
+            if comptes < int(p["min_comptes"]) or dollars < float(p["min_dollars"]):
+                out.abstain("grappe trop petite")
+                continue
+            if moyen < float(p["prix_min"]):
+                out.abstain("comptes suspects sur un outsider (joueurs, pas initiés)")
+                continue
+            if now is not None and ref.get("dernier") and now.timestamp() - float(ref["dernier"]) > float(p["max_age_hours"]) * 3600:
+                out.abstain("grappe trop ancienne")
+                continue
+            book = books.get(m.token_ids[side])
+            if book is None or book.best_ask is None:
+                out.abstain("carnet indisponible")
+                continue
+            ask = float(book.best_ask)
+            if ask > min(float(p["max_price"]), moyen + float(p["max_rattrapage"])):
+                out.abstain("le prix a déjà rattrapé les comptes suspects")
+                continue
+            est = min(0.99, ask + float(p["edge_prior"]))
+            u = float(p["uncertainty"])
+            budget = p["stake_fraction"] * state.total_estimated(marks)
+            shares = (min(budget, state.cash) / book.best_ask).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+            prop = self._buy(m, books, state, side, est - u, est, min(est + u, 0.999), bucket, marks, out,
+                             f"inities:{comptes}c:{dollars:.0f}$:{moyen:.2f}",
+                             f"{comptes} compte(s) neuf(s) et concentré(s), {dollars:.0f} $ à {moyen:.2f} en moyenne ; "
+                             + ("la presse, les réseaux ou les commentaires parlent de paris suspects" if presse else "sans soupçon public"),
+                             "les comptes se trompaient ensemble, ou la réponse était déjà dans le prix", shares=shares)
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
+CLASSES = {c.strategy_id: c for c in (SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
