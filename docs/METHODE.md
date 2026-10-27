@@ -211,8 +211,17 @@ portefeuille fantôme ne coûte rien ; la prudence statistique sert à juger, pa
      mesurables), exécution (ordres posés, frais, écart achat-vente), mise et répartition du
      capital, règles de l'arène, sources (gratuites, officielles, source de résolution), workflow
      et fiabilité, limites à assouplir, et ce qui ne marche pas (à couper) ;
-  3. pour chaque idée : pourquoi elle peut rapporter, comment la vérifier (test sur le passé ou
-     arène), coût et risque, en chiffrant quand c'est possible ; classer par gain attendu ;
-  4. finir par une courte liste de ce qu'il vaut mieux lancer d'abord et demander à Etienne
-     lesquelles lancer (ne rien construire sans son accord, sauf s'il l'a dit dans le message).
+  3. **liberté et créativité** (décision d'Etienne, 27/10/2026 : « plus de liberté et de créativité, moins de peur de la
+     perte du capital ») : au moins un tiers des idées sont **neuves et audacieuses** (une famille de marchés jamais jouée,
+     une source inattendue, un mécanisme de Polymarket détourné, une idée « folle » mais vérifiable), pas des réglages de
+     l'existant. Ne jamais écarter une idée parce qu'elle peut perdre : la règle n°1 est tenue par le code, un fantôme ne
+     coûte rien au principal, une perte est une expérience. Pas de frein proposé sans rejeu qui prouve qu'il rapporte.
+     Chercher le gros gain (paris à 0,10-0,45, mises franches là où l'avantage se mesure) plutôt que « perdre moins » ;
+  4. pour chaque idée : pourquoi elle peut rapporter, comment la vérifier (test sur le passé ou arène), ce qu'une perte
+     apprendrait, en chiffrant quand c'est possible ; classer par gain attendu (le gros gain possible compte, pas seulement
+     le plus sûr) ;
+  5. **lancer sans attendre** ce qui est réversible et ne touche que l'arène : 2 à 3 expériences en fantôme (hypothèse,
+     mise, leçon attendue), nouvelles sources gratuites, tests sur le passé ; pull request fusionnée automatiquement, puis
+     dire à Etienne ce qui a été lancé et pourquoi. Ne demander son accord que pour ce qui change le capital principal en
+     profondeur, ou pour le noyau protégé (proposition dans `proposals/`).
 
