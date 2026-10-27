@@ -1,0 +1,31 @@
+34340 instants, 6104 marchés, 967 événements
+
+== log-score (plus grand = meilleur) : prix, modèle plat, modèle saisonnier ; moyenne par instant, 2026 ==
+between  h= 2 n= 3967 prix -0.1577  plat -0.1876  saison -0.1684  | saison − prix -0.0107  variance horaire moyenne du créneau ×1.85
+between  h= 3 n= 3944 prix -0.1933  plat -0.2221  saison -0.1975  | saison − prix -0.0042  variance horaire moyenne du créneau ×1.77
+between  h= 4 n= 3856 prix -0.2053  plat -0.2317  saison -0.2128  | saison − prix -0.0075  variance horaire moyenne du créneau ×1.58
+between  h= 6 n= 3994 prix -0.2050  plat -0.2153  saison -0.2100  | saison − prix -0.0049  variance horaire moyenne du créneau ×1.27
+between  h= 9 n= 3986 prix -0.2178  plat -0.2249  saison -0.2234  | saison − prix -0.0056  variance horaire moyenne du créneau ×1.07
+between  h=12 n= 3898 prix -0.2184  plat -0.2243  saison -0.2248  | saison − prix -0.0064  variance horaire moyenne du créneau ×0.97
+between  h=24 n= 3762 prix -0.2523  plat -0.2550  saison -0.2550  | saison − prix -0.0027  variance horaire moyenne du créneau ×1.00
+less     h= 2 n=  256 prix -0.0828  plat -0.0840  saison -0.0726  | saison − prix +0.0102  variance horaire moyenne du créneau ×1.81
+less     h= 3 n=  236 prix -0.0978  plat -0.1051  saison -0.0895  | saison − prix +0.0083  variance horaire moyenne du créneau ×1.80
+less     h= 4 n=  232 prix -0.0791  plat -0.1107  saison -0.0991  | saison − prix -0.0200  variance horaire moyenne du créneau ×1.63
+less     h= 6 n=  263 prix -0.0707  plat -0.1016  saison -0.0961  | saison − prix -0.0254  variance horaire moyenne du créneau ×1.30
+less     h= 9 n=  230 prix -0.0912  plat -0.1231  saison -0.1208  | saison − prix -0.0297  variance horaire moyenne du créneau ×1.09
+less     h=12 n=  226 prix -0.1253  plat -0.1584  saison -0.1582  | saison − prix -0.0329  variance horaire moyenne du créneau ×0.98
+less     h=24 n=  251 prix -0.1232  plat -0.1643  saison -0.1643  | saison − prix -0.0411  variance horaire moyenne du créneau ×1.00
+greater  h= 2 n=  739 prix -0.1066  plat -0.1375  saison -0.1182  | saison − prix -0.0116  variance horaire moyenne du créneau ×2.01
+greater  h= 3 n=  740 prix -0.1172  plat -0.1433  saison -0.1203  | saison − prix -0.0030  variance horaire moyenne du créneau ×1.83
+greater  h= 4 n=  707 prix -0.1241  plat -0.1437  saison -0.1288  | saison − prix -0.0047  variance horaire moyenne du créneau ×1.58
+greater  h= 6 n=  737 prix -0.1185  plat -0.1196  saison -0.1156  | saison − prix +0.0029  variance horaire moyenne du créneau ×1.25
+greater  h= 9 n=  748 prix -0.1186  plat -0.1289  saison -0.1279  | saison − prix -0.0093  variance horaire moyenne du créneau ×1.06
+greater  h=12 n=  747 prix -0.1150  plat -0.1198  saison -0.1206  | saison − prix -0.0056  variance horaire moyenne du créneau ×0.95
+greater  h=24 n=  821 prix -0.1271  plat -0.1282  saison -0.1282  | saison − prix -0.0011  variance horaire moyenne du créneau ×1.00
+None     h= 2 n= 4962 prix -0.1462  plat -0.1748  saison -0.1560  | saison − prix -0.0098  variance horaire moyenne du créneau ×1.87
+None     h= 3 n= 4920 prix -0.1773  plat -0.2046  saison -0.1807  | saison − prix -0.0034  variance horaire moyenne du créneau ×1.78
+None     h= 4 n= 4795 prix -0.1872  plat -0.2129  saison -0.1949  | saison − prix -0.0077  variance horaire moyenne du créneau ×1.59
+None     h= 6 n= 4994 prix -0.1852  plat -0.1952  saison -0.1901  | saison − prix -0.0049  variance horaire moyenne du créneau ×1.27
+None     h= 9 n= 4964 prix -0.1970  plat -0.2057  saison -0.2043  | saison − prix -0.0073  variance horaire moyenne du créneau ×1.07
+None     h=12 n= 4871 prix -0.1982  plat -0.2052  saison -0.2057  | saison − prix -0.0075  variance horaire moyenne du créneau ×0.97
+None     h=24 n= 4834 prix -0.2244  plat -0.2288  saison -0.2288  | saison − prix -0.0044  variance horaire moyenne du créneau ×1.00

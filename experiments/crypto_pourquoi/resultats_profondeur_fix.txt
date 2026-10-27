@@ -1,0 +1,9 @@
+585 paris ; taille du premier échange : médiane 16.0 parts ; parts achetées par les preneurs à ≤ prix + 2 c dans l'heure : médiane 224.2 quartiles [44.3, 224.2, 1216.9]
+| profondeur dans l'heure | paris | évén. | rendement | t | gagnés/attendus |
+| ≥ 0 parts | 585 | 543 | +44.5% | t évén. +3.19 | 185 / 138.9 (z +4.67) |
+| ≥ 20 parts | 501 | 469 | +38.5% | t évén. +2.47 | 150 / 120.0 (z +3.27) |
+| ≥ 50 parts | 430 | 406 | +41.9% | t évén. +2.46 | 128 / 103.4 (z +2.89) |
+| ≥ 100 parts | 375 | 358 | +46.1% | t évén. +2.54 | 116 / 91.2 (z +3.11) |
+| ≥ 200 parts | 306 | 294 | +53.0% | t évén. +2.51 | 96 / 74.1 (z +3.05) |
+| ≥ 400 parts | 241 | 233 | +66.5% | t évén. +2.62 | 80 / 58.8 (z +3.31) |
+mise en euros achetable médiane (parts × prix) : 47.8 €

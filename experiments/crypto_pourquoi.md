@@ -37,3 +37,24 @@ du règlement sur 4 011 marchés réglés d'août à octobre 2026 (« above / le
    mois pour l'étiquette `crypto`, ≈ 30 min par mois lu : prévoir un relevé par fenêtre `end_date_min/max` avec `slug` « bitcoin-above-on-… » si on veut refaire 2024-2025 en échanges).
 Scripts : `experiments/crypto_pourquoi/scripts/` (`releve_spot.py` : Binance par le miroir public, Yahoo répond 429 depuis la routine et `api.binance.com` refuse la zone ; `filtre_marches.py`, `modele.py`,
 `analyse.py`, `analyse_couverture.py`, `mois_contre_spot.py`) ; sorties : `resultats_*.txt`.
+
+## 4. Suite du même soir : la tranche centrale des échelles « <actif> price on <date> » avant le fix de 12 h (Est) — INDICE, fantôme `tranche_centrale_non`
+Né de la section 2 : le modèle log-normal sans dérive, à volatilité plate, était trop sûr des tranches étroites proches du règlement (tranches cotées ≥ 0,55 : OUI réel 0,74 pour un prix moyen de 0,82 et un modèle de 0,86 à 3 h).
+**Cause trouvée** : le règlement est à 12 h heure de l'Est = 16 h UTC (17 h l'hiver) ; les 3 heures qui précèdent sont l'ouverture de Wall Street : variance horaire (barres Binance 2026) **×1,98 / 2,02 / 2,34 pour les barres de 13, 14, 15 h UTC** (BTC),
+×1,87 / 1,78 / 2,38 (ETH) : 1,45× en écart-type (`scripts/saison_vol.py`). Un modèle avec ce profil (estimé sur 2024-2025) fait mieux que le plat (log-score à 3 h −0,198 contre −0,222), **mais reste moins bon que le prix** (−0,193) :
+le marché anticipe l'ouverture de Wall Street. Il en garde pourtant moins que ce qu'il faudrait pour la tranche centrale.
+**Règle R1, prix seuls (sans modèle)** (`scripts/regle_fix.py`, relevé `releve_prix_du_jour.py` : 1 739 événements « price on » de janvier à septembre 2026 par la recherche publique de Gamma, 4 435 tranches « between » à plus de 5 000 $, plus
+septembre-octobre du relevé précédent ; 15 598 instants, 858 événements, vrais échanges, frais crypto payés) : **NON de la tranche centrale (OUI coté 0,55-0,97, NON payé 0,03-0,45) 3 à 6 h avant la fin, un pari par marché** :
+| période | paris | évén. | rendement | gagnés / attendus | mois | sans ses 10 meilleurs événements |
+|---|---|---|---|---|---|---|
+| **janvier-octobre 2026 (découverte)** | 585 | 543 | **+44,5 %** (t par événement +3,19) | 185 / 138,9 (z +4,67) | 9 / 10 | +18,3 % (z +3,78) |
+| janvier-mai / juin-octobre | 349 / 236 | | +26,3 % / +71,4 % | z +2,15 / +4,79 | 4/5 / 5/5 | |
+| **hold-out août-décembre 2025 (jamais vu)** | 321 | 310 | **+18,7 %** (t +1,62) | 112 / 94,4 (z +2,22) | 5 / 5 | **−1,6 %** |
+- NON payé 0,10-0,25 (OUI 0,75-0,90) : +78,6 % (199 paris, 10 mois sur 10, z +5,2) en 2026 ; +39,6 % en 2025 (82 paris, z +1,6).
+- **Profondeur : le gain croît avec la quantité achetable** (parts de NON achetées par des preneurs à ≤ prix + 2 centimes dans l'heure, `profondeur_fix.py`) : ≥ 20 parts +38,5 %, ≥ 100 +46,1 %, ≥ 200 +53,0 %, ≥ 400 +66,5 % (z +3,3) ; médiane 224 parts (≈ 48 €). Contrairement au NON crypto 0,10-0,20 (section 1), ce n'est pas un artefact d'échanges minces.
+- **Direction neutre** : corrélation du rendement mensuel avec le rendement du mois du Bitcoin +0,10, avec sa valeur absolue +0,52 (10 mois) : c'est un pari sur l'amplitude du mouvement avant le fix.
+- Écartée : **R2** (OUI des queues payé 0,02-0,25) : +22,4 % en 2026 mais −9,5 % sans ses 10 meilleurs événements, +10,8 % en 2025 (z +0,6) ; la sous-tranche payée 0,12-0,25 seule fait +64 % (z +4,3) en 2026 et +3,3 % en 2025.
+- Réglages regardés : 5 listes d'heures (3, 6, 3/6, 4, 2/3/4/6) × 2 règles, puis une trentaine de découpages (mois, actif, prix, moitié, profondeur) : ≈ 50 ; un seul réglage a priori (« 3 à 6 h avant la fin », fixé avant de voir 2025). H−4 seul fait −0,2 % en 2025 (+41 % en 2026) : la fenêtre n'est pas affinée.
+- **Verdict : indice** (même signe dans deux périodes indépendantes, effet 2,4× plus petit en 2025, fragile sans ses meilleurs événements en 2025). Fantôme `tranche_centrale_non` (demi-Kelly, avantage supposé 0,06 contre 0,08-0,14 mesuré) ; pas de capital principal avant 30 paris en direct.
+- Mise en œuvre : étiquette `crypto-prices` (1312) ajoutée à `scanner.tag_pages` avec un horizon de 8 h (sans elle la stratégie ne voyait aucun marché) ; **à vérifier demain vers 10 h UTC** (aujourd'hui l'échelle du 28/10 finit dans 18 h, hors horizon) : ligne `propositions … abstentions` du fantôme dans le cycle de production.
+Scripts : `releve_prix_du_jour.py` (événements), `saison_vol.py` (profil + log-scores, `HOLDOUT=1` pour 2025), `regle_fix.py`, `profondeur_fix.py`, `tranches.py` ; sorties `resultats_saison.txt`, `resultats_regle_fix.txt`, `resultats_regle_fix_2025.txt`, `resultats_profondeur_fix.txt`, `resultats_tranches.txt`.

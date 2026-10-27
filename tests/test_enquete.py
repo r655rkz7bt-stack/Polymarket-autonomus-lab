@@ -404,6 +404,17 @@ def test_declared_probabilities_far_above_the_results_are_flagged_once_per_token
     assert enquete.estimation_gonflee({"court_v1.0.0": _fav_ledger(9, 1, strategy="c", price=0.90, est=0.95)}) == []
 
 
+def test_won_versus_expected_counts_the_payout_of_a_fifty_fifty_settlement():
+    """27/10 : `_won_vs_expected` comptait `pnl > 0` : un règlement 50-50 d'un pari payé 0,48 passait pour une victoire entière et un pari payé 0,55 pour une perte
+    entière (e-sport : 6 règlements 50-50 sur 85 paris de `moins_de_cartes`, z +0,86 au lieu de +1,75). Le paiement par part compte : 1, 0,5, 0."""
+    rows = []
+    for i, (price, payout) in enumerate([(0.55, 0.5), (0.48, 0.5), (0.6, 1), (0.6, 0)]):
+        t = NOW - timedelta(hours=10 - i)
+        rows += [_buy(t, f"t{i}", price, 10), _settle(t + timedelta(hours=1), f"t{i}", payout)]
+    won, expected = enquete._won_vs_expected(enquete.closed_trades(_ledger(*rows)))
+    assert won == 2.0 and round(expected, 2) == 2.23
+
+
 def test_fifty_fifty_settlements_count_half_a_win_in_the_arena_calibration():
     """26/10 : `estimation_gonflee` comptait un règlement à 0,5 comme une défaite (payout > 0,5) : 11 marchés 50-50 de l'arène
     faisaient baisser les « gagnés » de ~5 et le z. Le paiement réel par part compte."""

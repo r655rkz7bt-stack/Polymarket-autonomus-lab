@@ -107,8 +107,10 @@ def _t(values: list[float]) -> float:
     return statistics.mean(values) / sd * math.sqrt(len(values)) if sd > 0 else 0.0
 
 
-def _won_vs_expected(trades: list[dict]) -> tuple[int, float]:
-    won = sum(1 for t in trades if float(t["pnl"]) > 0)
+def _won_vs_expected(trades: list[dict]) -> tuple[float, float]:
+    """Gagnés (paiement par part : 1, 0,5 pour un règlement 50-50, 0 ; une position vendue compte 1 si elle a gagné de l'argent) contre attendus par les prix payés.
+    27/10/2026 : `pnl > 0` comptait un 50-50 payé plus de 0,5 comme une perte entière (e-sport : 6 règlements 50-50 sur 85 paris de `moins_de_cartes`)."""
+    won = sum(float(t["payout"]) if t.get("payout") is not None else (1.0 if float(t["pnl"]) > 0 else 0.0) for t in trades if float(t["shares_bought"]) > 0)
     expected = sum(float(t["cost"]) / float(t["shares_bought"]) for t in trades if float(t["shares_bought"]) > 0)
     return won, expected
 
@@ -401,7 +403,7 @@ def chance(entries: dict[str, list[dict]], min_trades: int = 15, min_pnl: float 
         won, expected = _won_vs_expected(trades)
         if statistics.mean(r) < 0:
             out.append(_finding("chance", level, f"{name} : +{pnl:.0f} € mais rendement par mise {statistics.mean(r):+.1%}",
-                                f"Le gain vient de la taille des mises, pas d'un avantage ({won} gagnés pour {expected:.1f} "
+                                f"Le gain vient de la taille des mises, pas d'un avantage ({won:g} gagnés pour {expected:.1f} "
                                 "attendus par les prix).", []))
         top = sorted(trades, key=lambda t: -float(t["pnl"]))[:3]
         top_pnl = sum(float(t["pnl"]) for t in top)
@@ -433,7 +435,7 @@ def champion_sans_avantage(entries: dict[str, list[dict]], now: datetime, last: 
         r = _returns(trades)
         if won <= expected or statistics.mean(r) <= 0:
             out.append(_finding("champion_sans_avantage", A_REGARDER,
-                                f"{name} (copiée par le principal) : {won} gagnés pour {expected:.1f} attendus sur ses "
+                                f"{name} (copiée par le principal) : {won:g} gagnés pour {expected:.1f} attendus sur ses "
                                 f"{len(trades)} dernières opérations, rendement {statistics.mean(r):+.1%}",
                                 "Plus d'avantage mesurable récemment. Le principal réduit déjà sa mise à proportion de "
                                 "l'avantage mesuré (mise_avantage_mesure) : pas une obligation ; à creuser seulement si "

@@ -137,7 +137,10 @@ scanner:
               100733: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
               # 24/10/2026 : étiquette midterms (102289), champs de candidats des élections du 03/11 (« Will X win the 2026 Alaska governor election? », 13 à 40 candidats,
               # 17 000-130 000 $ de volume par candidat) pour `candidats_non` ; les gros marchés (parti qui gagne la Chambre…) étaient déjà vus, pas les candidats un par un.
-              102289: {pages: 12, min_liquidity: 1000, min_volume_24h: 0, max_spread: 0.10, max_horizon_hours: 480}}
+              102289: {pages: 12, min_liquidity: 1000, min_volume_24h: 0, max_spread: 0.10, max_horizon_hours: 480},
+              # 28/10/2026 : étiquette crypto-prices (1312), échelles du jour « <actif> price on <date> ? » (11 tranches, fix de 12 h heure de l'Est) pour `tranche_centrale_non` ; sans elle la
+              # stratégie voyait 0 marché (abstentions {}). Horizon de 8 h seulement (les « up or down » fournissent la moitié des 300 marchés des 3 pages triées par volume 24 h : à 26 h d'horizon, 26 tranches).
+              1312: {pages: 3, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.30, max_horizon_hours: 8}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
