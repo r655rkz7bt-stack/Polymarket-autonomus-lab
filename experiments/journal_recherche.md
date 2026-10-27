@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-27 (passage chercheur de 16 h, 15 h 56 → heure de fin dans `experiments/budget_chercheur.csv`)
+## 2026-10-27 (passage chercheur de 16 h, 15 h 56 → 17 h 31 UTC, 96 min, durée visée 127 min non atteinte : les pistes restantes attendent des données qui n'existent pas encore — premiers achats de `moins_de_kills` le 28/10, ensembles météo à 5 jours, vendredi 30/10 pour l'App Store, journal du classement à 10 jours — arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-27_apres_midi_decroissance_sans_test.md`). Aucune obligation grave. Constat `estimation_perimee` de `decroissance_temps` mené jusqu'au bout : **24 achats sur 76 (561 € sur 1 140 €) contre une montée du OUI de 1,5 fois en 6 h** ; la stratégie n'avait jamais été rejouée sur le passé → test (ci-dessous), stratégie coupée, contrôle `enquete.sans_test_passe` + tests.
   Famille 4 : `moins_de_kills` « abstentions {} » avec 5 marchés sans raison notée → raisons ajoutées ; les marchés de kills de la partie 1 sont créés vers 22 h la veille, ceux des parties 2-3 pendant la série (399 marchés relus) : premier achat attendu le 28/10 au matin.
