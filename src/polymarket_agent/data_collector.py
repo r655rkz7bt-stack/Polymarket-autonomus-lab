@@ -36,6 +36,7 @@ from polymarket_agent.sources.sports import FootballDataSource, MlbSource, NhlSo
 from polymarket_agent.sources import hko
 from polymarket_agent.sources.goldapi import fetch_prices as fetch_metal_prices
 from polymarket_agent.sources.ll2 import fetch_ll2
+from polymarket_agent.sources.appstore import fetch_appstore
 from polymarket_agent.sources.usgs import fetch_usgs
 from polymarket_agent.sources.weather import EnsembleSource, ForecastSource, MetarSource, stations_for
 
@@ -288,6 +289,8 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("portwatch", portwatch)
     # Séismes (24/10/2026) : catalogue USGS des 10 derniers jours (M >= 5), pour les marchés « plus gros séisme du jour » et « nombre de séismes de la semaine ».
     snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
+    # Classements de l'App Store américain (27/10/2026) : l'arbitre des marchés « #1 Free / Paid App … on <date> » (`classement_appstore`), top 10 gratuit et payant.
+    snapshot("appstore", lambda cfg: factories.get("appstore", lambda c: fetch_appstore(http, now, int(c.get("n", 10))))(cfg), "ref:appstore")
     # Lancements de SpaceX (24/10/2026) : Launch Library 2 (sans clé), pour les marchés « How many SpaceX launches in … » (`spacex_cumul`).
     snapshot("ll2", lambda cfg: factories.get("ll2", lambda c: fetch_ll2(http, now, int(c.get("days", 430))))(cfg), "ref:ll2")
     # Comptes suspects (27/10/2026, affaire du Ballon d'Or) : grappes de comptes neufs et concentrés sur les événements « à initiés »,

@@ -3761,3 +3761,28 @@ suivre_inities:
     min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+
+classement_appstore:
+  explication: "Apple publie le classement des applis les plus téléchargées, et le marché se règle sur ce classement à midi (heure de New York) : quelques heures avant, on regarde qui est n°1 et on achète son OUI s'il est moins cher que ses chances de le rester."
+  # Expérience audacieuse (27/10/2026, experiments/appstore_direct.md) : lire en direct la source qui tranche (chantier n°8 : « App Store en direct », laissé ouvert par familles_tranches.md).
+  # Sur le passé on ne peut rien tester en direct (Apple n'archive pas le classement) ; l'archive des marchés (182 événements réglés, familles_tranches.md) montre que le gagnant de la semaine
+  # précédente, coté 0,74-0,80, gagne 48 fois pour 59,3 attendues : le marché surcote la stabilité du classement SANS regarder le classement ; ici on ne joue que le n°1 du moment, dans les 6 h.
+  class: classement_appstore
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    Le n°1 d'un classement qui se règle dans 1 à 6 heures est connu de tous mais peu de gens regardent le flux : marchés de 1 400 $ de liquidité, 5 000 $ de volume par jour, 0 frais (feesEnabled faux).
+    Chance de rester n°1 supposée 0,95 (≤ 1 h), 0,90 (≤ 3 h), 0,85 (≤ 6 h), sans mesure. Une perte apprendrait que le classement bouge plus vite que ces valeurs (alors le journal `appstore:histo`,
+    relevé toutes les 30 minutes, les corrige) ou que le flux d'Apple retarde sur l'App Store. Mise franche (Kelly entier) : le carnet décide de la quantité.
+  params:
+    min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance supposée − prix demandé
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_price:      {value: 0.30, min: 0.05, max: 0.90}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 0.5, min: 0.1, max: 24}      # classement relevé toutes les 10 minutes
+    min_hours:      {value: 0.25, min: 0.0, max: 6}       # le classement de midi est presque fixé dans le dernier quart d'heure
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 1, min: 0.0, max: 2.0}

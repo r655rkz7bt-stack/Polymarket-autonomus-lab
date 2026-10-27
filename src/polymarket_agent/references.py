@@ -378,6 +378,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["matieres"] = attach_matieres(markets, db, now)
     from polymarket_agent.inities import attach_inities
     counts["inities"] = attach_inities(markets, db, now)
+    from polymarket_agent.appstore import attach_appstore
+    counts["appstore"] = attach_appstore(markets, db, now)
     return counts
 
 
