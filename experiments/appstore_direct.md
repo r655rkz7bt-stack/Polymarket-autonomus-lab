@@ -17,7 +17,7 @@ Quelques heures avant midi, le n°1 du moment le reste presque toujours : on ach
 ## Ce que fait la stratégie (`ClassementAppStore`, `appstore.py`, `sources/appstore.py`, tests `tests/test_appstore.py`)
 - Source `appstore` (10 minutes) : top 10 gratuit et payant ; mode dégradé si Apple ne répond pas (la stratégie s'abstient : « classement pas à jour » après 30 minutes).
 - Rattachement `references["appstore"]` : rang de l'application du marché, n°1 du moment, heures avant midi de l'Est (heure d'été ou d'hiver via `zoneinfo`), chance de rester n°1 : **0,95 dans l'heure, 0,90 à 3 h, 0,85 à 6 h, rien au-delà (hypothèses, aucune mesure)**.
-- Achat du OUI du n°1 si l'ask est entre 0,30 et 0,90 et au moins 0,04 sous la chance supposée (moins une marge de 0,02) ; jamais dans le dernier quart d'heure ; Kelly entier, le carnet limite la quantité.
+- Achat du OUI du n°1 si l'ask est entre 0,30 et 0,90 et au moins 0,04 sous la chance supposée (moins une marge de 0,02) ; jamais dans le dernier quart d'heure ; dixième de Kelly (≈ 5 % du fantôme : la chance de rester n°1 est une hypothèse).
 - Journal du classement `appstore:histo` dans la base (5 premiers gratuit et payant toutes les 30 minutes, 21 jours, sauvegardé avec `essentiel.sqlite.gz`) : c'est lui qui permettra d'**étalonner** les 0,95 / 0,90 / 0,85 (combien de fois le n°1 de 6 h / 3 h / 1 h avant midi l'était encore à midi) dès qu'il y aura une dizaine de jours.
 
 ## Ce qu'une perte apprendrait / suite

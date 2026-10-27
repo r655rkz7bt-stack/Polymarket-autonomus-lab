@@ -69,7 +69,7 @@ def test_repository_config_loads():
                                                                    "football_trois_issues", "compteur_tweets", "compteur_truth", "cotes_tennis",
                                                                    "mots_prononces", "mots_nouveaux", "fatigue_nhl",
                                                                    "outsider_itf", "cpi_tranches", "jobs_favori_non", "vague_volume", "moins_de_cartes", "moins_de_kills", "saison_non", "candidats_non", "rallies_non", "rallies_non_favori", "mentions_non", "mentions_non_outsider", "detroits_tranches", "detroits_marche_log", "detroits_non_normal", "seismes_marche", "box_office_favori", "spacex_cumul", "toucher_metaux",
-                                                                   "suivre_inities")))
+                                                                   "suivre_inities", "classement_appstore")))
 
 
 def test_param_outside_bounds_is_refused():

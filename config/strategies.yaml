@@ -3776,7 +3776,7 @@ classement_appstore:
   hypothesis: >
     Le n°1 d'un classement qui se règle dans 1 à 6 heures est connu de tous mais peu de gens regardent le flux : marchés de 1 400 $ de liquidité, 5 000 $ de volume par jour, 0 frais (feesEnabled faux).
     Chance de rester n°1 supposée 0,95 (≤ 1 h), 0,90 (≤ 3 h), 0,85 (≤ 6 h), sans mesure. Une perte apprendrait que le classement bouge plus vite que ces valeurs (alors le journal `appstore:histo`,
-    relevé toutes les 30 minutes, les corrige) ou que le flux d'Apple retarde sur l'App Store. Mise franche (Kelly entier) : le carnet décide de la quantité.
+    relevé toutes les 30 minutes, les corrige) ou que le flux d'Apple retarde sur l'App Store. Mise : dixième de Kelly (environ 5 % du fantôme) tant que la chance de rester n°1 n'est pas étalonnée.
   params:
     min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance supposée − prix demandé
     uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
@@ -3787,7 +3787,7 @@ classement_appstore:
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_candidates: {value: 60, min: 0, max: 200}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
-    kelly_fraction: {value: 1, min: 0.0, max: 2.0}
+    kelly_fraction: {value: 0.1, min: 0.0, max: 2.0}      # dixième de Kelly : la chance de rester n°1 est une hypothèse, pas une mesure (Kelly entier miserait 14 % du fantôme)
 
 ia_oui_sorties:
   explication: "Quand on demande « tel modèle d'IA sortira-t-il d'ici telle date ? », les gens sous-estiment la vitesse de l'IA : on achète le OUI quand il coûte entre 0,10 et 0,40."
