@@ -1,0 +1,56 @@
+Under h=1, un par partie, payé 0,35-0,65, 4 jeux: 1241 paris, rendement +2.5 %, gagné 657 pour 627.2 attendus (z +1.70), t par événement 0.85 (841 événements), mois 7/9, verdict indice
+   lol: 914 paris, rendement +3.0 %, gagné 482 pour 457.2 attendus (z +1.65), t par événement 0.92 (564 événements), mois 7/9, verdict indice
+   dota2 trop peu 27
+   cs2: 243 paris, rendement +3.9 %, gagné 135 pour 128.0 attendus (z +0.91), t par événement 0.57 (204 événements), mois 4/5, verdict écartée
+   val: 57 paris, rendement -3.1 %, gagné 28 pour 28.0 attendus (z -0.01), t par événement -0.51 (50 événements), mois 2/5, verdict écartée
+   mois 2026-02 trop peu 11
+   mois 2026-03: 34 paris, rendement +3.9 %, gagné 18 pour 16.9 attendus (z +0.39), t par événement -0.24 (20 événements), mois 1/1, verdict écartée
+   mois 2026-04: 149 paris, rendement -18.6 %, gagné 61 pour 73.0 attendus (z -1.98), t par événement -1.48 (108 événements), mois 0/1, verdict écartée
+   mois 2026-05: 162 paris, rendement +6.7 %, gagné 88 pour 81.7 attendus (z +1.00), t par événement 1.11 (108 événements), mois 1/1, verdict indice
+   mois 2026-06: 148 paris, rendement -1.0 %, gagné 76 pour 75.9 attendus (z +0.11), t par événement -0.26 (99 événements), mois 0/1, verdict écartée
+   mois 2026-07: 187 paris, rendement +3.8 %, gagné 100 pour 94.6 attendus (z +0.87), t par événement 0.09 (135 événements), mois 1/1, verdict écartée
+   mois 2026-08: 298 paris, rendement +3.5 %, gagné 162 pour 152.0 attendus (z +1.11), t par événement 0.98 (201 événements), mois 1/1, verdict indice
+   mois 2026-09: 130 paris, rendement +18.3 %, gagné 78 pour 64.5 attendus (z +2.47), t par événement 2.32 (69 événements), mois 1/1, verdict retenue
+   mois 2026-10: 122 paris, rendement +4.0 %, gagné 67 pour 63.3 attendus (z +0.66), t par événement -0.08 (92 événements), mois 1/1, verdict écartée
+Under h=3, un par partie, payé 0,35-0,65, 4 jeux: 588 paris, rendement +9.5 %, gagné 330 pour 297.3 attendus (z +2.72), t par événement 2.75 (427 événements), mois 8/9, verdict retenue
+   lol: 487 paris, rendement +10.1 %, gagné 274 pour 244.6 attendus (z +2.64), t par événement 2.66 (333 événements), mois 7/9, verdict retenue
+   dota2 trop peu 18
+   cs2: 62 paris, rendement +2.6 %, gagné 34 pour 32.8 attendus (z +0.30), t par événement 0.12 (58 événements), mois 4/5, verdict écartée
+   val trop peu 21
+   mois 2026-02 trop peu 5
+   mois 2026-03 trop peu 17
+   mois 2026-04: 70 paris, rendement +0.1 %, gagné 36 pour 34.3 attendus (z +0.42), t par événement 0.49 (56 événements), mois 1/1, verdict écartée
+   mois 2026-05: 86 paris, rendement +20.1 %, gagné 51 pour 42.3 attendus (z +1.89), t par événement 2.63 (67 événements), mois 1/1, verdict retenue
+   mois 2026-06: 46 paris, rendement +4.1 %, gagné 25 pour 23.9 attendus (z +0.31), t par événement -0.09 (32 événements), mois 1/1, verdict écartée
+   mois 2026-07: 106 paris, rendement +12.2 %, gagné 62 pour 54.8 attendus (z +1.31), t par événement 1.36 (76 événements), mois 1/1, verdict indice
+   mois 2026-08: 154 paris, rendement +4.5 %, gagné 85 pour 79.7 attendus (z +0.87), t par événement 0.51 (110 événements), mois 1/1, verdict écartée
+   mois 2026-09: 64 paris, rendement +16.6 %, gagné 38 pour 31.4 attendus (z +1.67), t par événement 1.2 (38 événements), mois 1/1, verdict indice
+   mois 2026-10: 40 paris, rendement -4.7 %, gagné 20 pour 20.5 attendus (z -0.31), t par événement 0.0 (32 événements), mois 0/1, verdict écartée
+Under h=6, un par partie, payé 0,35-0,65, 4 jeux: 322 paris, rendement +10.2 %, gagné 184 pour 164.0 attendus (z +2.31), t par événement 2.16 (239 événements), mois 7/9, verdict retenue
+   lol: 282 paris, rendement +10.6 %, gagné 162 pour 143.0 attendus (z +2.22), t par événement 2.27 (202 événements), mois 7/9, verdict retenue
+   dota2 trop peu 12
+   cs2 trop peu 20
+   val trop peu 8
+   mois 2026-02 trop peu 5
+   mois 2026-03 trop peu 18
+   mois 2026-04: 30 paris, rendement -1.5 %, gagné 16 pour 15.0 attendus (z +0.35), t par événement -0.09 (28 événements), mois 0/1, verdict écartée
+   mois 2026-05: 45 paris, rendement +17.0 %, gagné 26 pour 22.3 attendus (z +1.11), t par événement 1.37 (35 événements), mois 1/1, verdict indice
+   mois 2026-06 trop peu 29
+   mois 2026-07: 47 paris, rendement +7.6 %, gagné 26 pour 24.4 attendus (z +0.47), t par événement 0.28 (35 événements), mois 1/1, verdict écartée
+   mois 2026-08: 93 paris, rendement +11.0 %, gagné 55 pour 48.3 attendus (z +1.40), t par événement 1.08 (67 événements), mois 1/1, verdict indice
+   mois 2026-09 trop peu 27
+   mois 2026-10 trop peu 28
+Over h=3, un par partie, payé 0,35-0,65, 4 jeux: 675 paris, rendement -10.5 %, gagné 320 pour 346.7 attendus (z -2.11), t par événement -3.6 (454 événements), mois 2/9, verdict écartée
+   lol: 553 paris, rendement -10.9 %, gagné 262 pour 284.4 attendus (z -1.96), t par événement -3.19 (352 événements), mois 3/9, verdict écartée
+   dota2 trop peu 13
+   cs2: 83 paris, rendement -6.9 %, gagné 40 pour 41.7 attendus (z -0.49), t par événement -1.23 (66 événements), mois 1/5, verdict écartée
+   val trop peu 26
+   mois 2026-02 trop peu 4
+   mois 2026-03 trop peu 10
+   mois 2026-04: 59 paris, rendement -15.5 %, gagné 28 pour 30.8 attendus (z -0.73), t par événement -1.72 (49 événements), mois 0/1, verdict écartée
+   mois 2026-05: 98 paris, rendement -27.2 %, gagné 38 pour 51.4 attendus (z -2.73), t par événement -2.83 (69 événements), mois 0/1, verdict écartée
+   mois 2026-06: 62 paris, rendement +11.0 %, gagné 35 pour 31.4 attendus (z +0.93), t par événement 1.08 (40 événements), mois 1/1, verdict indice
+   mois 2026-07: 118 paris, rendement -2.5 %, gagné 60 pour 59.8 attendus (z +0.04), t par événement -0.59 (76 événements), mois 0/1, verdict écartée
+   mois 2026-08: 187 paris, rendement -4.2 %, gagné 94 pour 94.9 attendus (z -0.07), t par événement -1.6 (130 événements), mois 0/1, verdict écartée
+   mois 2026-09: 77 paris, rendement -29.2 %, gagné 29 pour 39.7 attendus (z -2.46), t par événement -2.73 (39 événements), mois 0/1, verdict écartée
+   mois 2026-10: 60 paris, rendement -10.2 %, gagné 29 pour 31.5 attendus (z -0.65), t par événement -1.06 (40 événements), mois 0/1, verdict écartée

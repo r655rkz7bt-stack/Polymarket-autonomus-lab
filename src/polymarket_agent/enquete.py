@@ -67,6 +67,10 @@ CHAMP_COUP_D_ENVOI = "2026-10-20T16:00"  # le journal note `depuis_coup_d_envoi_
 # principal rejouait lui-même les stratégies (aucun jumeau attendu).
 COPIE_FIDELE_DEPUIS = datetime.fromisoformat("2026-10-18T21:30:00+00:00")
 # Achats du principal sans jumeau déjà élucidés et corrigés (minute + stratégie -> fiche) : ils ne rouvrent plus l'obligation.
+# Minimum acheté par `principal.plancher_copie` (settings.yaml) : un fantôme servi pour moins que ce minimum donne un principal
+# servi pareil (même carnet) sans que la copie soit disproportionnée (27/10/2026 : 8 « copies à 100 % » de 1 à 4 € chacune).
+PLANCHER_COPIE_PARTS = 5.0
+
 COPIE_EXPLIQUEES = {
     "2026-10-25T22:35 nf_sport_patiente_6_24h": "enquetes/2026-10-26_ordre_pose_perime_du_principal.md",
 }
@@ -171,7 +175,7 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
         if abs(float(d["price"]) - float(g["price"])) > 0.02:
             prices.append(f"{label} ; fantôme à {float(g['price']):.3f}")
         if (g.get("extra") or {}).get("fill_status") == "PARTIAL" and float(d["shares"]) >= 0.95 * float(g["shares"]) \
-                and not _smaller_order(principal, entries[ghost], d, x):
+                and float(d["shares"]) > PLANCHER_COPIE_PARTS and not _smaller_order(principal, entries[ghost], d, x):
             full.append(f"{label} ; fantôme {g['shares']} parts (exécution partielle)")
     out = []
     if orphans:
@@ -1092,8 +1096,10 @@ def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None
         return []
     since = now - timedelta(days=days)
     mine: dict[str, set] = defaultdict(set)
+    first_copy: dict[str, datetime] = {}
     for e in _buys(entries["principal"], since):
         mine[e["data"]["strategy_id"]].add(e["data"]["token_id"])
+        first_copy.setdefault(e["data"]["strategy_id"], _ts(e))
     grave, lead = [], []
     for name, share in sorted(parts.items(), key=lambda kv: -kv[1]):
         if share <= 0 or name not in entries:
@@ -1101,7 +1107,11 @@ def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None
         ghost = {e["data"]["token_id"] for e in _buys(entries[name], since)}
         if len(ghost) < min_tokens:
             continue
-        copied = len(ghost & mine.get(name.rsplit("_v", 1)[0], set()))
+        sid = name.rsplit("_v", 1)[0]
+        copied = len(ghost & mine.get(sid, set()))
+        if copied and sid in first_copy:  # part toute neuve (27/10/2026, nf_moyen : 1 copie sur 1 depuis son entrée, « 1 sur 36 » sur 3 jours)
+            ghost = {e["data"]["token_id"] for e in _buys(entries[name], first_copy[sid] - timedelta(minutes=10))}
+            copied = len(ghost & mine[sid])
         label = f"{name} : part {share:.1%}, {copied} jeton(s) copié(s) sur {len(ghost)}"
         if copied == 0:
             grave.append(label)

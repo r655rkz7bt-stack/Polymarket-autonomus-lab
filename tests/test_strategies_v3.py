@@ -436,3 +436,28 @@ def test_box_office_favori_plays_only_on_sunday_morning_utc(tmp_path):
     for when in (datetime(2026, 10, 24, 20, 0, tzinfo=timezone.utc), datetime(2026, 10, 25, 17, 0, tzinfo=timezone.utc)):  # samedi soir, dimanche 17 h
         out = go(when)
         assert not out.proposals and "hors de la fenêtre du week-end" in out.abstentions
+
+
+def _kills(mid, line, game=1, start_h=3, event="e1", title="LoL: T1 vs Gen.G (BO3) - LCK Playoffs", stype="kill_over_under_game"):
+    return _m(mid, yes="O", no="U", question=f"Total Kills Over/Under {line} in Game {game}?", outcomes=json.dumps(["Over", "Under"]),
+              sportsMarketType=stype, gameStartTime=(NOW + timedelta(hours=start_h)).strftime("%Y-%m-%d %H:%M:%S+00"),
+              events=[{"id": event, "title": title}])
+
+
+def test_fewer_kills_buys_one_under_per_game_on_the_line_closest_to_even(tmp_path):
+    """27/10/2026 : « Under » des totaux de kills (+9,5 % sur le passé, « Over » −10,5 %). Les lignes d'une même partie se gagnent ensemble : une seule."""
+    from polymarket_agent.strategies_v3 import MoinsDeKills
+    s = _s(MoinsDeKills, min_hours=2, max_hours=12, price_min=0.35, price_max=0.65, shift=0.05, uncertainty=0.01,
+           min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=3, kelly_fraction=0.5)
+    low, mid, high = _kills("a", 26.5), _kills("b", 29.5), _kills("c", 32.5)
+    books = _books(("aO", "0.69", "0.70"), ("aU", "0.29", "0.30"), ("bO", "0.50", "0.51"), ("bU", "0.48", "0.49"), ("cO", "0.33", "0.34"), ("cU", "0.65", "0.66"))
+    out = s.propose([low, mid, high], books, _state(tmp_path), LIMITS, "b1")
+    assert [p.market_id for p in out.proposals] == ["b"] and out.proposals[0].outcome == "Under"
+    # Deuxième partie du même match = autre pari ; mauvais type, trop tôt, déjà commencée : rien.
+    game2 = _kills("d", 28.5, game=2)
+    wrong = _kills("e", 28.5, stype="totals")
+    early, started = _kills("f", 28.5, start_h=20, event="e2"), _kills("g", 28.5, start_h=-1, event="e3")
+    books.update(_books(*[(f"{x}{y}", "0.48", "0.49") for x in "dg" for y in "OU"], ("eO", "0.50", "0.51"), ("eU", "0.48", "0.49"),
+                        ("fO", "0.50", "0.51"), ("fU", "0.48", "0.49")))
+    out = s.propose([low, mid, high, game2, wrong, early, started], books, _state(tmp_path), LIMITS, "b1")
+    assert sorted(p.market_id for p in out.proposals) == ["b", "d"]

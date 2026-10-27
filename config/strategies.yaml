@@ -3312,6 +3312,34 @@ moins_de_cartes_bo5:
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
 
+moins_de_kills:
+  explication: "Dans un match de League of Legends, le prix du « plus de kills que la ligne » est trop cher et le « moins » un peu trop bon marché : on achète « moins », une seule fois par partie, quelques heures avant le match."
+  # Expérience audacieuse (27/10/2026, experiments/lol_kills.md). Type de marché que l'arène ne jouait pas : « Total Kills Over/Under X in Game N » (LoL : 25 659 marchés réglés depuis janvier 2026, 3 à 6 lignes par partie,
+  # 16 M$ de volume ; Dota 2 : kills, CS2 et Valorant : manches). Aux vrais échanges (frais payés, premier échange réel qui achète le côté dans l'heure après T0, un pari par partie, payé 0,35-0,65, 4 jeux) :
+  # « Under » à 3 h du coup d'envoi +9,5 % (588 paris, 330 gagnés pour 297,3, z +2,7, t par événement +2,75, 8 mois sur 9), à 6 h +10,2 % (322), à 1 h seulement +2,5 % (1 241) ; « Over » −10,5 % (675 paris, t −3,6).
+  # Fragile : l'avantage fond avec la profondeur (≥ 400 parts achetables : +4 %), 15 découpages regardés, LoL porte presque tout (CS2 : +3,9 % à 1 h, +2,6 % à 3 h ; Dota 2 et Valorant : trop peu).
+  class: moins_de_kills
+  filtres: {titre_contient: ["lol:"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    Les parieurs achètent trop le « Over » (plus de kills) des totaux de parties d'e-sport : sur le passé il perd 10 à 12 % (z −5 sur LoL), pendant que le « Under » gagne 5 à 10 % quand on
+    l'achète 3 à 12 h avant le coup d'envoi. Mise franche (demi-Kelly, environ 3 % du fantôme par pari) sur une ligne par partie. Une perte apprendrait que l'écart vient des échanges minces
+    (le simulateur ne donne que 25 % de la quantité au meilleur prix) ou d'un mois particulier (avril −19 %, septembre +18 %).
+  params:
+    min_hours:      {value: 2, min: 0, max: 48}
+    max_hours:      {value: 12, min: 1, max: 72}
+    price_min:      {value: 0.35, min: 0.05, max: 0.90}
+    price_max:      {value: 0.65, min: 0.10, max: 0.95}
+    shift:          {value: 0.05, min: 0.0, max: 0.2}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.2}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}
+
 non_aux_drames:
   explication: "Les gens paient trop cher le frisson d'une catastrophe lointaine (une invasion, un président renversé) : on parie qu'elle n'arrivera pas, avec une petite mise."
   class: non_aux_drames

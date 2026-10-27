@@ -1,0 +1,96 @@
+Under h=1.0 vol>=0.0: 1535 paris
+UN PAR PARTIE (ligne la plus proche de 0,5): 946 paris, rendement +3.2 %, gagné 500 pour 476.5 attendus (z +1.55), t par événement 1.0 (578 événements), mois 7/9, verdict indice
+TOUS: 1535 paris, rendement +5.1 %, gagné 838 pour 788.7 attendus (z +2.53), t par événement 1.13 (578 événements), mois 6/9, verdict indice
+  parts achetables >= 0: 1535 paris, rendement +5.1 %, gagné 838 pour 788.7 attendus (z +2.53), t par événement 1.13 (578 événements), mois 6/9, verdict indice
+  parts achetables >= 20: 1053 paris, rendement +6.2 %, gagné 578 pour 536.5 attendus (z +2.59), t par événement 1.61 (495 événements), mois 7/9, verdict retenue
+  parts achetables >= 100: 680 paris, rendement +6.6 %, gagné 374 pour 343.3 attendus (z +2.38), t par événement 1.95 (370 événements), mois 6/9, verdict retenue
+  parts achetables >= 400: 398 paris, rendement +4.2 %, gagné 211 pour 197.2 attendus (z +1.40), t par événement 0.83 (236 événements), mois 7/9, verdict indice
+  partie 1: 970 paris, rendement +5.2 %, gagné 541 pour 509.2 attendus (z +2.08), t par événement 0.52 (530 événements), mois 6/9, verdict écartée
+  partie 2: 459 paris, rendement +2.5 %, gagné 235 pour 227.1 attendus (z +0.75), t par événement 0.36 (331 événements), mois 5/9, verdict écartée
+  partie 3: 94 paris, rendement +20.6 %, gagné 57 pour 46.5 attendus (z +2.18), t par événement 1.68 (75 événements), mois 6/8, verdict retenue
+  ligne 0-22 trop peu 0
+  ligne 22-26: 208 paris, rendement +5.6 %, gagné 99 pour 92.1 attendus (z +0.97), t par événement 0.41 (131 événements), mois 5/8, verdict écartée
+  ligne 26-30: 812 paris, rendement +5.7 %, gagné 432 pour 405.8 attendus (z +1.90), t par événement 1.46 (429 événements), mois 7/9, verdict indice
+  ligne 30-34: 508 paris, rendement +3.9 %, gagné 301 pour 286.3 attendus (z +1.34), t par événement 0.23 (273 événements), mois 4/9, verdict écartée
+  ligne 34-60 trop peu 7
+  mois 2026-02 trop peu 14
+  mois 2026-03: 58 paris, rendement +23.5 %, gagné 31 pour 29.0 attendus (z +0.53), t par événement 0.68 (20 événements), mois 1/1, verdict écartée
+  mois 2026-04: 300 paris, rendement -17.2 %, gagné 130 pour 154.0 attendus (z -2.83), t par événement -1.24 (112 événements), mois 0/1, verdict écartée
+  mois 2026-05: 311 paris, rendement +14.3 %, gagné 182 pour 157.9 attendus (z +2.78), t par événement 1.21 (110 événements), mois 1/1, verdict indice
+  mois 2026-06: 76 paris, rendement -9.8 %, gagné 36 pour 39.0 attendus (z -0.57), t par événement -1.26 (26 événements), mois 0/1, verdict écartée
+  mois 2026-07: 152 paris, rendement +9.8 %, gagné 86 pour 77.8 attendus (z +1.26), t par événement 0.43 (62 événements), mois 1/1, verdict écartée
+  mois 2026-08: 346 paris, rendement +6.5 %, gagné 197 pour 179.5 attendus (z +1.90), t par événement 0.61 (137 événements), mois 1/1, verdict écartée
+  mois 2026-09: 141 paris, rendement +15.9 %, gagné 84 pour 70.9 attendus (z +2.32), t par événement 1.97 (48 événements), mois 1/1, verdict retenue
+  mois 2026-10: 137 paris, rendement +14.2 %, gagné 84 pour 72.9 attendus (z +1.94), t par événement 1.02 (52 événements), mois 1/1, verdict indice
+  ligue LPL: 332 paris, rendement -3.0 %, gagné 168 pour 169.0 attendus (z -0.11), t par événement -1.6 (138 événements), mois 3/8, verdict écartée
+  ligue LCK Rounds 1-2: 253 paris, rendement +7.9 %, gagné 140 pour 130.4 attendus (z +1.23), t par événement 0.43 (76 événements), mois 1/2, verdict écartée
+  ligue LEC: 220 paris, rendement +1.6 %, gagné 120 pour 115.3 attendus (z +0.58), t par événement 0.25 (83 événements), mois 5/7, verdict écartée
+  ligue LCS: 135 paris, rendement +15.9 %, gagné 84 pour 69.3 attendus (z +2.57), t par événement 2.15 (58 événements), mois 5/7, verdict retenue
+  ligue LCK: 121 paris, rendement +8.0 %, gagné 68 pour 61.1 attendus (z +1.18), t par événement 0.79 (39 événements), mois 2/3, verdict écartée
+  ligue CBLOL: 89 paris, rendement +1.2 %, gagné 48 pour 46.2 attendus (z +0.40), t par événement 1.29 (44 événements), mois 4/6, verdict indice
+  ligue Mid-: 73 paris, rendement +4.7 %, gagné 38 pour 37.0 attendus (z +0.35), t par événement -0.02 (20 événements), mois 1/2, verdict écartée
+  ligue Worlds: 51 paris, rendement +15.3 %, gagné 31 pour 26.2 attendus (z +1.36), t par événement 0.56 (22 événements), mois 1/1, verdict écartée
+Under h=3.0 vol>=0.0: 647 paris
+UN PAR PARTIE (ligne la plus proche de 0,5): 508 paris, rendement +10.4 %, gagné 288 pour 257.4 attendus (z +2.75), t par événement 2.83 (346 événements), mois 8/9, verdict retenue
+TOUS: 647 paris, rendement +8.6 %, gagné 366 pour 332.8 attendus (z +2.65), t par événement 2.44 (346 événements), mois 8/9, verdict retenue
+  parts achetables >= 0: 647 paris, rendement +8.6 %, gagné 366 pour 332.8 attendus (z +2.65), t par événement 2.44 (346 événements), mois 8/9, verdict retenue
+  parts achetables >= 20: 383 paris, rendement +5.7 %, gagné 207 pour 194.1 attendus (z +1.33), t par événement 1.34 (241 événements), mois 6/9, verdict indice
+  parts achetables >= 100: 246 paris, rendement +6.2 %, gagné 134 pour 124.0 attendus (z +1.29), t par événement 1.13 (176 événements), mois 7/9, verdict indice
+  parts achetables >= 400: 123 paris, rendement +4.0 %, gagné 64 pour 59.9 attendus (z +0.65), t par événement 0.36 (90 événements), mois 5/9, verdict écartée
+  partie 1: 342 paris, rendement +5.6 %, gagné 192 pour 179.6 attendus (z +1.36), t par événement 1.28 (265 événements), mois 5/8, verdict indice
+  partie 2: 248 paris, rendement +11.6 %, gagné 141 pour 124.8 attendus (z +2.10), t par événement 1.82 (192 événements), mois 7/9, verdict retenue
+  partie 3: 49 paris, rendement +15.2 %, gagné 29 pour 24.6 attendus (z +1.26), t par événement 0.83 (45 événements), mois 5/9, verdict indice
+  ligne 0-22 trop peu 0
+  ligne 22-26: 52 paris, rendement +19.1 %, gagné 28 pour 23.7 attendus (z +1.38), t par événement 0.86 (38 événements), mois 5/6, verdict indice
+  ligne 26-30: 350 paris, rendement +7.3 %, gagné 189 pour 173.2 attendus (z +1.71), t par événement 2.27 (230 événements), mois 6/9, verdict retenue
+  ligne 30-34: 245 paris, rendement +8.1 %, gagné 148 pour 135.9 attendus (z +1.63), t par événement 1.0 (142 événements), mois 7/8, verdict indice
+  ligne 34-60 trop peu 0
+  mois 2026-02 trop peu 5
+  mois 2026-03 trop peu 18
+  mois 2026-04: 97 paris, rendement -1.7 %, gagné 51 pour 50.0 attendus (z +0.21), t par événement 0.5 (59 événements), mois 0/1, verdict écartée
+  mois 2026-05: 138 paris, rendement +8.8 %, gagné 75 pour 68.6 attendus (z +1.10), t par événement 2.63 (71 événements), mois 1/1, verdict indice
+  mois 2026-06: 34 paris, rendement +4.6 %, gagné 19 pour 18.3 attendus (z +0.24), t par événement 0.02 (16 événements), mois 1/1, verdict écartée
+  mois 2026-07: 79 paris, rendement +15.0 %, gagné 47 pour 40.7 attendus (z +1.44), t par événement 0.75 (37 événements), mois 1/1, verdict écartée
+  mois 2026-08: 157 paris, rendement +4.7 %, gagné 89 pour 83.6 attendus (z +0.87), t par événement 0.03 (85 événements), mois 1/1, verdict écartée
+  mois 2026-09: 68 paris, rendement +20.2 %, gagné 42 pour 33.9 attendus (z +1.99), t par événement 1.29 (33 événements), mois 1/1, verdict indice
+  mois 2026-10: 51 paris, rendement +3.9 %, gagné 28 pour 26.7 attendus (z +0.37), t par événement -0.09 (29 événements), mois 1/1, verdict écartée
+  ligue LPL: 156 paris, rendement +6.7 %, gagné 84 pour 78.8 attendus (z +0.85), t par événement 0.78 (85 événements), mois 3/6, verdict écartée
+  ligue LCK Rounds 1-2: 87 paris, rendement -2.0 %, gagné 42 pour 42.5 attendus (z -0.11), t par événement 1.31 (46 événements), mois 1/2, verdict écartée
+  ligue LEC: 75 paris, rendement +17.0 %, gagné 49 pour 40.7 attendus (z +1.95), t par événement 1.73 (46 événements), mois 5/7, verdict retenue
+  ligue LCK: 67 paris, rendement +9.5 %, gagné 38 pour 34.5 attendus (z +0.86), t par événement 0.4 (30 événements), mois 2/3, verdict écartée
+  ligue LCS: 59 paris, rendement +7.7 %, gagné 37 pour 33.0 attendus (z +1.08), t par événement 0.99 (36 événements), mois 3/6, verdict indice
+  ligue Mid-: 44 paris, rendement +18.9 %, gagné 27 pour 22.5 attendus (z +1.37), t par événement 1.15 (16 événements), mois 1/2, verdict indice
+  ligue CBLOL trop peu 29
+  ligue Worlds trop peu 27
+Under h=6.0 vol>=0.0: 371 paris
+UN PAR PARTIE (ligne la plus proche de 0,5): 295 paris, rendement +8.8 %, gagné 168 pour 152.3 attendus (z +1.85), t par événement 2.13 (209 événements), mois 7/9, verdict retenue
+TOUS: 371 paris, rendement +8.3 %, gagné 210 pour 191.6 attendus (z +1.94), t par événement 2.18 (209 événements), mois 6/9, verdict indice
+  parts achetables >= 0: 371 paris, rendement +8.3 %, gagné 210 pour 191.6 attendus (z +1.94), t par événement 2.18 (209 événements), mois 6/9, verdict indice
+  parts achetables >= 20: 233 paris, rendement +7.4 %, gagné 127 pour 116.6 attendus (z +1.38), t par événement 1.97 (139 événements), mois 7/9, verdict indice
+  parts achetables >= 100: 126 paris, rendement -3.5 %, gagné 60 pour 61.5 attendus (z -0.28), t par événement 0.77 (82 événements), mois 5/9, verdict écartée
+  parts achetables >= 400: 65 paris, rendement -13.7 %, gagné 28 pour 31.7 attendus (z -0.94), t par événement -0.53 (48 événements), mois 4/9, verdict écartée
+  partie 1: 198 paris, rendement +9.4 %, gagné 117 pour 105.7 attendus (z +1.64), t par événement 0.94 (148 événements), mois 5/9, verdict indice
+  partie 2: 132 paris, rendement +4.7 %, gagné 68 pour 64.3 attendus (z +0.66), t par événement 1.09 (110 événements), mois 7/9, verdict indice
+  partie 3: 38 paris, rendement +14.7 %, gagné 23 pour 19.8 attendus (z +1.05), t par événement 0.6 (34 événements), mois 4/8, verdict écartée
+  ligne 0-22 trop peu 0
+  ligne 22-26: 36 paris, rendement -19.0 %, gagné 13 pour 15.8 attendus (z -0.93), t par événement -0.78 (24 événements), mois 2/6, verdict écartée
+  ligne 26-30: 188 paris, rendement +17.1 %, gagné 113 pour 94.8 attendus (z +2.68), t par événement 2.63 (127 événements), mois 8/9, verdict retenue
+  ligne 30-34: 146 paris, rendement +3.0 %, gagné 83 pour 80.5 attendus (z +0.42), t par événement -0.04 (84 événements), mois 6/9, verdict écartée
+  ligne 34-60 trop peu 1
+  mois 2026-02 trop peu 7
+  mois 2026-03 trop peu 20
+  mois 2026-04: 46 paris, rendement -6.0 %, gagné 23 pour 23.0 attendus (z +0.00), t par événement -0.27 (27 événements), mois 0/1, verdict écartée
+  mois 2026-05: 63 paris, rendement +29.1 %, gagné 42 pour 32.5 attendus (z +2.43), t par événement 1.97 (36 événements), mois 1/1, verdict retenue
+  mois 2026-06 trop peu 27
+  mois 2026-07: 48 paris, rendement -2.2 %, gagné 24 pour 24.9 attendus (z -0.27), t par événement -0.14 (27 événements), mois 0/1, verdict écartée
+  mois 2026-08: 100 paris, rendement +2.7 %, gagné 54 pour 51.6 attendus (z +0.38), t par événement 1.08 (54 événements), mois 1/1, verdict indice
+  mois 2026-09: 32 paris, rendement +18.8 %, gagné 20 pour 16.9 attendus (z +1.30), t par événement 1.61 (18 événements), mois 1/1, verdict indice
+  mois 2026-10 trop peu 28
+  ligue LPL: 88 paris, rendement -14.4 %, gagné 40 pour 47.0 attendus (z -1.53), t par événement -0.55 (48 événements), mois 3/8, verdict écartée
+  ligue LCS: 45 paris, rendement +12.5 %, gagné 27 pour 23.6 attendus (z +1.03), t par événement 0.73 (28 événements), mois 5/7, verdict écartée
+  ligue LCK: 45 paris, rendement +16.4 %, gagné 28 pour 23.8 attendus (z +1.27), t par événement 2.31 (20 événements), mois 2/3, verdict indice
+  ligue LCK Rounds 1-2: 34 paris, rendement +62.0 %, gagné 29 pour 18.1 attendus (z +3.81), t par événement 2.78 (18 événements), mois 2/2, verdict retenue
+  ligue LEC trop peu 29
+  ligue Mid- trop peu 27
+  ligue First Stand trop peu 17
+  ligue CBLOL trop peu 16

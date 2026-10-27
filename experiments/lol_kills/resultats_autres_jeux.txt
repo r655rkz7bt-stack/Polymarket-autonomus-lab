@@ -1,0 +1,153 @@
+h=1.0: 569 paris (398 marchés)
+Over: 314 paris, rendement -13.8 %, gagné 140 pour 160.0 attendus (z -2.27), t par événement -2.27 (254 événements), mois 0/5, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5: 95 paris, rendement +2.0 %, gagné 46 pour 44.1 attendus (z +0.39), t par événement -0.11 (83 événements), mois 3/5, verdict écartée
+  Over payé 0.5-0.65: 212 paris, rendement -21.2 %, gagné 89 pour 110.7 attendus (z -2.99), t par événement -2.57 (176 événements), mois 0/5, verdict écartée
+  Over payé 0.65-0.8 trop peu 6
+  Over payé 0.8-0.98 trop peu 1
+Under: 255 paris, rendement +3.7 %, gagné 140 pour 133.8 attendus (z +0.79), t par événement 0.57 (212 événements), mois 3/5, verdict écartée
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 7
+  Under payé 0.35-0.5: 33 paris, rendement +39.3 %, gagné 22 pour 15.4 attendus (z +2.31), t par événement 2.61 (28 événements), mois 5/5, verdict retenue
+  Under payé 0.5-0.65: 210 paris, rendement -2.3 %, gagné 112 pour 112.5 attendus (z -0.08), t par événement -0.43 (180 événements), mois 3/5, verdict écartée
+  Under payé 0.65-0.8 trop peu 4
+  Under payé 0.8-0.98 trop peu 1
+h=3.0: 152 paris (127 marchés)
+Over: 88 paris, rendement -7.0 %, gagné 43 pour 45.4 attendus (z -0.51), t par événement -1.35 (67 événements), mois 2/5, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 26
+  Over payé 0.5-0.65: 59 paris, rendement -12.0 %, gagné 28 pour 31.1 attendus (z -0.82), t par événement -1.34 (47 événements), mois 0/5, verdict écartée
+  Over payé 0.65-0.8 trop peu 2
+  Over payé 0.8-0.98 trop peu 1
+Under: 64 paris, rendement -0.6 %, gagné 34 pour 33.9 attendus (z +0.02), t par événement -0.02 (59 événements), mois 3/5, verdict écartée
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 1
+  Under payé 0.35-0.5 trop peu 6
+  Under payé 0.5-0.65: 55 paris, rendement +0.0 %, gagné 30 pour 29.3 attendus (z +0.06), t par événement 0.03 (52 événements), mois 3/5, verdict écartée
+  Under payé 0.65-0.8 trop peu 2
+  Under payé 0.8-0.98 trop peu 0
+h=6.0: 53 paris (47 marchés)
+Over: 33 paris, rendement -15.5 %, gagné 14 pour 16.7 attendus (z -0.76), t par événement -0.8 (24 événements), mois 1/4, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 12
+  Over payé 0.5-0.65 trop peu 20
+  Over payé 0.65-0.8 trop peu 1
+  Over payé 0.8-0.98 trop peu 0
+Under trop peu 20
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 0
+  Under payé 0.35-0.5 trop peu 3
+  Under payé 0.5-0.65 trop peu 17
+  Under payé 0.65-0.8 trop peu 0
+  Under payé 0.8-0.98 trop peu 0
+h=1.0: 133 paris (103 marchés)
+Over: 69 paris, rendement -17.2 %, gagné 31 pour 36.9 attendus (z -1.44), t par événement -1.8 (56 événements), mois 1/5, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 20
+  Over payé 0.5-0.65: 43 paris, rendement -25.5 %, gagné 18 pour 23.9 attendus (z -1.68), t par événement -2.03 (38 événements), mois 0/5, verdict écartée
+  Over payé 0.65-0.8 trop peu 6
+  Over payé 0.8-0.98 trop peu 0
+Under: 64 paris, rendement -2.1 %, gagné 32 pour 31.0 attendus (z +0.13), t par événement -0.38 (53 événements), mois 2/5, verdict écartée
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 4
+  Under payé 0.35-0.5 trop peu 22
+  Under payé 0.5-0.65: 36 paris, rendement -2.0 %, gagné 19 pour 19.2 attendus (z -0.06), t par événement -0.11 (34 événements), mois 3/5, verdict écartée
+  Under payé 0.65-0.8 trop peu 2
+  Under payé 0.8-0.98 trop peu 0
+h=3.0: 51 paris (44 marchés)
+Over trop peu 28
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 7
+  Over payé 0.5-0.65 trop peu 20
+  Over payé 0.65-0.8 trop peu 1
+  Over payé 0.8-0.98 trop peu 0
+Under trop peu 23
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 1
+  Under payé 0.35-0.5 trop peu 10
+  Under payé 0.5-0.65 trop peu 12
+  Under payé 0.65-0.8 trop peu 0
+  Under payé 0.8-0.98 trop peu 0
+h=6.0: 23 paris (21 marchés)
+Over trop peu 14
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 3
+  Over payé 0.5-0.65 trop peu 10
+  Over payé 0.65-0.8 trop peu 1
+  Over payé 0.8-0.98 trop peu 0
+Under trop peu 9
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 0
+  Under payé 0.35-0.5 trop peu 4
+  Under payé 0.5-0.65 trop peu 4
+  Under payé 0.65-0.8 trop peu 1
+  Under payé 0.8-0.98 trop peu 0
+h=1.0: 84 paris (62 marchés)
+Over: 49 paris, rendement -14.0 %, gagné 23 pour 26.6 attendus (z -1.07), t par événement -1.02 (43 événements), mois 3/7, verdict écartée
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 2
+  Over payé 0.35-0.5 trop peu 10
+  Over payé 0.5-0.65: 34 paris, rendement -6.2 %, gagné 18 pour 18.9 attendus (z -0.32), t par événement -0.51 (30 événements), mois 3/6, verdict écartée
+  Over payé 0.65-0.8 trop peu 1
+  Over payé 0.8-0.98 trop peu 2
+Under: 35 paris, rendement -2.6 %, gagné 17 pour 19.6 attendus (z -0.94), t par événement 0.41 (29 événements), mois 3/7, verdict écartée
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 2
+  Under payé 0.35-0.5 trop peu 8
+  Under payé 0.5-0.65 trop peu 20
+  Under payé 0.65-0.8 trop peu 1
+  Under payé 0.8-0.98 trop peu 4
+h=3.0: 40 paris (39 marchés)
+Over trop peu 20
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 6
+  Over payé 0.5-0.65 trop peu 7
+  Over payé 0.65-0.8 trop peu 0
+  Over payé 0.8-0.98 trop peu 7
+Under trop peu 20
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 0
+  Under payé 0.35-0.5 trop peu 6
+  Under payé 0.5-0.65 trop peu 13
+  Under payé 0.65-0.8 trop peu 0
+  Under payé 0.8-0.98 trop peu 1
+h=6.0: 23 paris (20 marchés)
+Over trop peu 11
+  Over payé 0.02-0.1 trop peu 0
+  Over payé 0.1-0.2 trop peu 0
+  Over payé 0.2-0.35 trop peu 0
+  Over payé 0.35-0.5 trop peu 5
+  Over payé 0.5-0.65 trop peu 5
+  Over payé 0.65-0.8 trop peu 1
+  Over payé 0.8-0.98 trop peu 0
+Under trop peu 12
+  Under payé 0.02-0.1 trop peu 0
+  Under payé 0.1-0.2 trop peu 0
+  Under payé 0.2-0.35 trop peu 0
+  Under payé 0.35-0.5 trop peu 2
+  Under payé 0.5-0.65 trop peu 9
+  Under payé 0.65-0.8 trop peu 1
+  Under payé 0.8-0.98 trop peu 0
