@@ -1,0 +1,46 @@
+8996 marchés réglés, 8974 avec échanges
+| réglage | paris | évén. | rendement | t | gagnés | mois | verdict |
+|---|---|---|---|---|---|---|---|
+| contrer 0.05-0.6 mvt 0.05 | 1828 | 819 | -7.7% | t paris -1.46 / évén. -1.18 | gagnés 466 / attendus 495.1 (z -1.66) | 4/13 mois | écartée |
+| contrer 0.1-0.45 mvt 0.05 | 1492 | 747 | -4.2% | t paris -0.86 / évén. -0.58 | gagnés 402 / attendus 405.1 (z -0.18) | 5/13 mois | écartée |
+| contrer 0.1-0.45 mvt 0.03 | 1491 | 753 | -2.2% | t paris -0.43 / évén. -0.38 | gagnés 394 / attendus 395.8 (z -0.11) | 6/13 mois | écartée |
+| contrer 0.1-0.45 mvt 0.1 | 1537 | 776 | -4.6% | t paris -0.98 / évén. +0.06 | gagnés 424 / attendus 431.0 (z -0.41) | 6/13 mois | écartée |
+| contrer 0.05-0.1 mvt 0.05 | 1898 | 852 | -11.4% | t paris -1.53 / évén. -1.12 | gagnés 159 / attendus 165.9 (z -0.56) | 5/13 mois | écartée |
+| contrer 0.45-0.9 mvt 0.05 | 1803 | 832 | -5.2% | t paris -3.48 / évén. -1.76 | gagnés 1300 / attendus 1353.5 (z -3.06) | 5/13 mois | écartée |
+| contrer 0.1-0.3 mvt 0.05 | 1526 | 769 | -3.1% | t paris -0.60 / évén. +0.50 | gagnés 342 / attendus 332.9 (z +0.57) | 7/14 mois | écartée |
+| contrer 0.3-0.45 mvt 0.05 | 920 | 572 | -5.9% | t paris -1.41 / évén. -0.48 | gagnés 348 / attendus 356.8 (z -0.60) | 7/13 mois | écartée |
+
+## Références : mêmes marchés, mêmes plages de prix, sans le signal (premier instant où le côté est dans la plage)
+| sans signal, côté OUI 0.1-0.45 | 1603 | 765 | +1.5% | t paris +0.29 / évén. -0.53 | gagnés 424 / attendus 418.7 (z +0.31) | 6/13 mois | écartée |
+| sans signal, côté NON 0.1-0.45 | 1111 | 645 | +14.4% | t paris +2.50 / évén. +1.70 | gagnés 398 / attendus 357.8 (z +2.66) | 9/14 mois | indice |
+| sans signal, côté OUI 0.05-0.1 | 1603 | 784 | +2.1% | t paris +0.23 / évén. +0.19 | gagnés 142 / attendus 137.0 (z +0.44) | 3/13 mois | écartée |
+| sans signal, côté NON 0.05-0.1 | 705 | 425 | +35.1% | t paris +2.37 / évén. +1.99 | gagnés 86 / attendus 62.6 (z +3.11) | 7/13 mois | indice |
+| sans signal, côté OUI 0.45-0.9 | 1233 | 713 | -5.0% | t paris -2.18 / évén. -1.66 | gagnés 769 / attendus 798.0 (z -1.82) | 3/13 mois | écartée |
+| sans signal, côté NON 0.45-0.9 | 1597 | 747 | -1.3% | t paris -0.82 / évén. -0.64 | gagnés 1178 / attendus 1187.1 (z -0.55) | 6/13 mois | écartée |
+
+## Suivre le mouvement (l'inverse de contrer), mêmes plages
+| suivre 0.1-0.45 mvt 0.05 | 1629 | 810 | +14.4% | t paris +2.64 / évén. +1.27 | gagnés 458 / attendus 407.6 (z +2.98) | 6/14 mois | indice |
+| suivre 0.45-0.9 mvt 0.05 | 1524 | 774 | -2.1% | t paris -1.22 / évén. -1.91 | gagnés 1096 / attendus 1107.0 (z -0.67) | 5/13 mois | écartée |
+
+## réglage de la tranche 0,10-0,45 / mouvement 0,05 : détail
+| genre above | 812 | 467 | -2.2% | t paris -0.34 / évén. -0.85 | gagnés 221 / attendus 224.2 (z -0.25) | 6/13 mois | écartée |
+| genre hit | 680 | 280 | -6.5% | t paris -0.90 / évén. +0.14 | gagnés 181 / attendus 180.9 (z +0.01) | 3/6 mois | écartée |
+| côté acheté OUI | 902 | 567 | -7.3% | t paris -1.12 / évén. -0.54 | gagnés 213 / attendus 225.4 (z -0.98) | 4/13 mois | écartée |
+| côté acheté NON | 590 | 409 | +0.7% | t paris +0.10 / évén. -0.08 | gagnés 189 / attendus 179.7 (z +0.86) | 9/13 mois | écartée |
+| heures avant fin 0-6 | 29 | 28 | +76.4% | t paris +1.61 / évén. +1.70 | gagnés 12 / attendus 7.5 (z +1.97) | 4/5 mois | écartée |
+| heures avant fin 6-24 | 561 | 341 | -1.6% | t paris -0.19 / évén. -0.05 | gagnés 152 / attendus 146.6 (z +0.53) | 2/6 mois | écartée |
+| heures avant fin 24-96 | 296 | 223 | -0.3% | t paris -0.03 / évén. -0.17 | gagnés 84 / attendus 80.5 (z +0.48) | 3/6 mois | écartée |
+| heures avant fin 96-9999 | 574 | 264 | -13.7% | t paris -1.88 / évén. -1.23 | gagnés 143 / attendus 161.3 (z -1.75) | 5/13 mois | écartée |
+| mois 2025-10 | 4 | 4 | -45.6% | t paris -0.84 / évén. -0.84 | gagnés 1 / attendus 1.6 (z -0.60) | 0/1 mois | écartée |
+| mois 2025-11 | 18 | 12 | -24.8% | t paris -0.84 / évén. -0.27 | gagnés 5 / attendus 5.9 (z -0.45) | 0/1 mois | écartée |
+| mois 2025-12 | 21 | 13 | -24.5% | t paris -0.79 / évén. -1.58 | gagnés 5 / attendus 6.8 (z -0.84) | 0/1 mois | écartée |
+| mois 2026-01 | 27 | 13 | +65.5% | t paris +1.45 / évén. +1.43 | gagnés 11 / attendus 6.9 (z +1.87) | 1/1 mois | écartée |
+| mois 2026-02 | 12 | 9 | +70.8% | t paris +0.83 / évén. +0.61 | gagnés 4 / attendus 2.8 (z +0.85) | 1/1 mois | écartée |
+| mois 2026-03 | 12 | 3 | -51.0% | t paris -1.37 / évén. -1.20 | gagnés 2 / attendus 3.4 (z -0.92) | 0/1 mois | écartée |
+| mois 2026-04 | 13 | 7 | +44.1% | t paris +0.76 / évén. -0.40 | gagnés 5 / attendus 3.4 (z +1.03) | 1/1 mois | écartée |
+| mois 2026-05 | 48 | 26 | -26.2% | t paris -1.09 / évén. -1.24 | gagnés 10 / attendus 13.9 (z -1.27) | 0/1 mois | écartée |
+| mois 2026-06 | 396 | 184 | +4.5% | t paris +0.45 / évén. +0.77 | gagnés 110 / attendus 106.5 (z +0.41) | 1/1 mois | écartée |
+| mois 2026-07 | 229 | 132 | -20.1% | t paris -1.88 / évén. -0.70 | gagnés 59 / attendus 63.2 (z -0.64) | 0/1 mois | écartée |
+| mois 2026-08 | 255 | 121 | -10.5% | t paris -0.88 / évén. -1.64 | gagnés 62 / attendus 68.7 (z -0.98) | 0/1 mois | écartée |
+| mois 2026-09 | 266 | 139 | -5.5% | t paris -0.49 / évén. -1.07 | gagnés 72 / attendus 72.2 (z -0.04) | 0/1 mois | écartée |
+| mois 2026-10 | 191 | 108 | +3.2% | t paris +0.24 / évén. +1.08 | gagnés 56 / attendus 49.8 (z +1.05) | 1/1 mois | indice |

@@ -439,3 +439,22 @@ def test_detroits_non_normal_buys_the_no_of_a_return_to_normal_market_only(tmp_p
     assert not proposals(tmp_path / "b", question="Will Bitcoin dip to $60k by November 30?")
     assert not proposals(tmp_path / "c", bid="0.25", ask="0.26")         # NON à 0,75 : sous la plage
     assert not proposals(tmp_path / "d", hours=24 * 5)                   # trop près de la fin
+
+
+def test_crypto_touch_no_buys_the_cheap_no_of_a_reach_or_dip_market_only(tmp_path):
+    """27/10/2026 (experiments/contrer_crypto_passe.md) : NON à 0,10-0,45 des marchés crypto « touche » (reach / dip to / hit), 386 paris passés, +22,6 %."""
+    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    cfg = by["toucher_non_crypto"]
+    limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
+
+    def proposals(hours, tmp, bid, ask, question="Will Bitcoin reach $90,000 on October 30?"):
+        m, books, ledger, _ = _setup(tmp, fee_type="crypto_fees_v2", end_hours=hours, bid=bid, ask=ask)
+        m.question = question
+        m.outcome_prices = [(D(bid) + D(ask)) / 2, 1 - (D(bid) + D(ask)) / 2]
+        return cfg.propose([m], books, ledger.state, limits, "b").proposals
+
+    assert proposals(30, tmp_path / "a", "0.59", "0.60")                                           # OUI 0,60 : NON à 0,40
+    assert not proposals(30, tmp_path / "b", "0.19", "0.20")                                       # NON à 0,80 : trop cher
+    assert not proposals(30, tmp_path / "c", "0.94", "0.95")                                       # NON à 0,05 : billet sous 0,10
+    assert not proposals(30, tmp_path / "d", "0.59", "0.60", question="Will Bitcoin be above $90,000 on October 30?")  # pas un marché « touche »
+    assert not proposals(1, tmp_path / "e", "0.59", "0.60")                                        # trop près de la fin
