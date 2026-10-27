@@ -330,7 +330,7 @@ market_maker:
   # marchés calmes récompensés ; le stock détenu est revendu au meilleur vendeur. Gains : écart
   # capturé (dans le capital) + récompenses de liquidité (ESTIMÉES à part, jamais dans le capital).
   # Risque principal : sélection adverse (mesurée par markout.py). L'arène juge.
-  enabled: true
+  enabled: false   # coupée le 28/10/2026 (AMELIORATION) : ~−45 % du fantôme, confiance −8 à −10 (sélection adverse, experiments/carnet_experiences.md)
   version: "1.0.0"
   created_at: "2026-10-16"
   # 17/10/2026 (AMELIORATION n°1) : 25 marchés au lieu de 12, 3 % du capital par marché et par côté
@@ -355,7 +355,7 @@ market_maker_serre:
   # Variante : 1 cran à l'intérieur de l'écart (servie plus souvent, plus de récompense car plus
   # près du milieu, mais plus de sélection adverse) ; marge de paire 0,01.
   class: market_maker
-  enabled: true
+  enabled: false   # coupée le 28/10/2026 (AMELIORATION) : ~−45 % du fantôme, confiance −8 à −10 (sélection adverse, experiments/carnet_experiences.md)
   version: "1.0.0"
   created_at: "2026-10-16"
   # 17/10/2026 (AMELIORATION n°1) : 25 marchés au lieu de 12, 3 % du capital par marché et par côté
