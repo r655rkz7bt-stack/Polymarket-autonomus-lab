@@ -6,7 +6,8 @@ import requests
 H = {"User-Agent": "curl/8"}; U = "https://data-api.polymarket.com/trades"
 D = Path("experiments/contrer_crypto_passe/donnees"); DIR = D / "echanges"; DIR.mkdir(exist_ok=True)
 VOL = float(sys.argv[1]) if len(sys.argv) > 1 else 5000
-ms = [json.loads(l) for l in open(D / "marches.jsonl")]
+import os
+ms = [json.loads(l) for l in open(D / os.environ.get("MARCHES", "marches.jsonl"))]
 ms = [m for m in ms if (m["vol"] or 0) >= VOL and "up or down" not in m["question"].lower()]
 if len(sys.argv) > 2: ms.reverse()
 loc = threading.local()

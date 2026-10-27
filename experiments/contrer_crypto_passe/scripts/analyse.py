@@ -15,7 +15,8 @@ def ts(s):
     if s.endswith("+00"): s += ":00"
     try: return int(dt.datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp())
     except ValueError: return None
-ms = [json.loads(l) for l in open(D / "marches.jsonl")]
+import os
+ms = [json.loads(l) for l in open(D / os.environ.get("MARCHES", "marches.jsonl"))]
 ms = [m for m in ms if (m["vol"] or 0) >= VOL and "up or down" not in m["question"].lower() and sorted(map(str, m["prices"])) == ["0", "1"]]
 data = []
 for m in ms:

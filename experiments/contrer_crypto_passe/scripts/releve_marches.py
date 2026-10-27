@@ -4,7 +4,7 @@ Usage : python releve_marches.py 2026-05-01   (date la plus ancienne de fin d'é
 import json, sys, time, datetime, requests
 S = requests.Session(); S.headers["User-Agent"] = "curl/8"
 CUT = datetime.datetime.fromisoformat(sys.argv[1]).replace(tzinfo=datetime.timezone.utc)
-OUT = "experiments/contrer_crypto_passe/donnees/marches.jsonl"
+OUT = sys.argv[2] if len(sys.argv) > 2 else "experiments/contrer_crypto_passe/donnees/marches.jsonl"
 def jget(p):
     for k in range(6):
         try:
@@ -18,10 +18,12 @@ def ts(s):
     if s.endswith("+00"): s += ":00"
     try: return datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
     except ValueError: return None
+HAUT = datetime.datetime.fromisoformat(sys.argv[3]).replace(tzinfo=datetime.timezone.utc) if len(sys.argv) > 3 else None
 cursor, n_ev, n_m, vieux = None, 0, 0, 0
 f = open(OUT, "w")
 while True:
     p = {"tag_slug": "crypto", "closed": "true", "limit": 100, "order": "endDate", "ascending": "false"}
+    if HAUT: p["end_date_max"] = HAUT.strftime("%Y-%m-%dT%H:%M:%SZ")
     if cursor: p["after_cursor"] = cursor
     d = jget(p)
     if not d or not d.get("events"): break
@@ -31,6 +33,7 @@ while True:
         if end and end < CUT: vieux += 1
         else: vieux = 0
         if end and end < CUT: continue
+        if HAUT and end and end >= HAUT: continue
         for m in e.get("markets") or []:
             try:
                 outs = json.loads(m["outcomes"]) if isinstance(m.get("outcomes"), str) else m.get("outcomes")
