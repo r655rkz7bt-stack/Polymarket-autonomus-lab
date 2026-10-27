@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 3918,
+  "principal": 3919,
   "fantome:calibration_patiente_v1.0.0": 2080,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1951,
@@ -169,10 +169,10 @@
   "fantome:rallies_non_favori_v1.0.0": 25,
   "fantome:rallies_non_v1.0.0": 25,
   "fantome:statu_quo_ia_v1.1.0": 16,
-  "fantome:contrer_crypto_audace_v1.0.0": 0,
-  "fantome:contrer_crypto_patiente_audace_v1.0.0": 0
+  "fantome:contrer_crypto_audace_v1.0.0": 2,
+  "fantome:contrer_crypto_patiente_audace_v1.0.0": 2
  },
- "verifiees": 10558,
+ "verifiees": 10560,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1776,9 +1776,9 @@
    "op_id": "settle-99189388955035620972602248983326391492067261217317262128028538588054132571737"
   }
  ],
- "derniere_execution": "2026-10-27T00:29:11+00:00",
+ "derniere_execution": "2026-10-27T00:33:41+00:00",
  "dernier_seq_reglements": {
-  "principal": 3918,
+  "principal": 3919,
   "fantome:calibration_patiente_v1.0.0": 2080,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1951,
@@ -1797,7 +1797,7 @@
   "fantome:crypto_threshold_patiente_v1.0.0": 1634,
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2513,
-  "fantome:market_maker_v1.0.0": 2065,
+  "fantome:market_maker_v1.0.0": 2068,
   "fantome:favori_politique_patiente_v1.0.0": 1558,
   "fantome:favori_politique_v1.0.0": 1565,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1560,
@@ -1948,7 +1948,7 @@
   "fantome:rallies_non_v1.0.0": 25,
   "fantome:statu_quo_ia_v1.1.0": 16,
   "fantome:contrer_crypto_audace_v1.0.0": 4,
-  "fantome:contrer_crypto_patiente_audace_v1.0.0": 2
+  "fantome:contrer_crypto_patiente_audace_v1.0.0": 4
  },
  "reglements_verifies": 5669
 }
