@@ -290,6 +290,11 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
     # Lancements de SpaceX (24/10/2026) : Launch Library 2 (sans clé), pour les marchés « How many SpaceX launches in … » (`spacex_cumul`).
     snapshot("ll2", lambda cfg: factories.get("ll2", lambda c: fetch_ll2(http, now, int(c.get("days", 430))))(cfg), "ref:ll2")
+    # Comptes suspects (27/10/2026, affaire du Ballon d'Or) : grappes de comptes neufs et concentrés sur les événements « à initiés »,
+    # et articles qui parlent de paris suspects sur Polymarket (inities.py, stratégie `suivre_inities`).
+    from polymarket_agent import inities
+    snapshot("inities", lambda cfg: factories.get("inities", lambda c: inities.fetch_inities(http, db, now, c))(cfg), "ref:inities")
+    snapshot("soupcons", lambda cfg: factories.get("soupcons", lambda c: inities.fetch_soupcons(None, now, c))(cfg), "ref:soupcons")
     # Journal des prix de l'or et de l'argent (24/10/2026), pour les barres touchées des marchés « What will Gold hit Week of … » (`toucher_metaux`).
     def metals(cfg):
         from polymarket_agent import matieres

@@ -990,3 +990,18 @@ Analyses et rejeux : `experiments/audace.md`, `experiments/audace/` ; leçons : 
   `mise_avantage_mesure.part_max` 3,0 (renfort ×3), `part_max_par_strategie` 1,0, et `main._cash_room` /
   `principal.reserve_liquidites` (0,03) : un achat (au comptant, posé ou servi) ne laisse jamais moins de 3 % du capital estimé
   en solde disponible ; sinon il est réduit ou attend.
+
+## 60. Comptes suspects : suivre l'argent neuf quand on parle de paris suspects (27/10/2026, demande d'Etienne)
+
+Affaire du Ballon d'Or 2026 et test sur le passé : `experiments/inities.md` (suivre l'argent neuf seul : écartée, 48 réglages).
+- `polymarket_agent/inities.py` : `famille` (prix, classements d'entreprise, émissions, choix d'une petite équipe ; pas les
+  compteurs en direct, les votes ni les paroles), `grappes` (comptes neufs ≤ 7 jours et concentrés ≤ 15 marchés, achats ≥ 100 $
+  dans les 72 h, par jeton), `_profil` (data-api `/activity` + `/traded`, gardé 12 h en base sous `inities:profil:<adresse>`).
+- Sources (`data_collector`) : `inities` (20 min ; `fetch_inities` : événements ouverts des étiquettes 18, 100339, 100, 53 réglés
+  dans 45 jours, 2 pages d'échanges, 60 profils nouveaux au plus, commentaires de moins de 7 jours qui parlent d'initiés) →
+  `ref:inities` ; `soupcons` (1 h ; `fetch_soupcons` : Google Actualités RSS, 5 recherches « 7 derniers jours », et `_reseaux` :
+  #polymarket sur Mastodon, Hacker News par Algolia, sans compte) → `ref:soupcons`.
+- `attach_inities` (`references.attach_all`) : la grappe va au marché de son jeton ; un article lui est lié s'il partage deux mots
+  porteurs de sens avec l'événement, et pas une autre année (`_meme_sujet`).
+- `SuivreInities` (`suivre_inities`) : soupçon public (article, publication ou commentaire) ET ≥ 2 000 $ neufs à ≥ 0,30 en moyenne, prix
+  ≤ 0,90 et ≤ prix moyen des suspects + 0,15, 3 % du fantôme ; `jamais_retirer`. Scanner : étiquettes 18, 100339 et 100.
