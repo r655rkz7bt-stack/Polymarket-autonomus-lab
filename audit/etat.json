@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4082,
+  "principal": 4083,
   "fantome:calibration_patiente_v1.0.0": 2114,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1972,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 1932,
+  "fantome:nf_sport_v1.0.0": 1934,
   "fantome:nm_court_v1.0.0": 1759,
   "fantome:nm_crypto_v1.0.0": 1567,
   "fantome:nm_hors_crypto_v1.0.0": 1689,
@@ -81,7 +81,7 @@
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 560,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 587,
-  "fantome:nf_sport_patiente_matin_v1.0.0": 676,
+  "fantome:nf_sport_patiente_matin_v1.0.0": 678,
   "fantome:apres_echeance_v1.0.0": 775,
   "fantome:choc_sans_nouvelle_v1.0.0": 112,
   "fantome:coherence_match_v1.0.0": 521,
@@ -119,7 +119,7 @@
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 462,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 521,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 696,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 700,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 372,
   "fantome:mots_prononces_patiente_v1.0.0": 390,
   "fantome:cpi_tranches_v1.0.0": 285,
@@ -169,15 +169,15 @@
   "fantome:rallies_non_favori_v1.0.0": 48,
   "fantome:rallies_non_v1.0.0": 52,
   "fantome:statu_quo_ia_v1.1.0": 37,
-  "fantome:contrer_crypto_audace_v1.0.0": 36,
-  "fantome:contrer_crypto_patiente_audace_v1.0.0": 43,
+  "fantome:contrer_crypto_audace_v1.0.0": 39,
+  "fantome:contrer_crypto_patiente_audace_v1.0.0": 45,
   "fantome:crypto_non_bon_marche_v1.0.0": 25,
   "fantome:compteur_tweets_12_18h_v1.0.0": 7,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 7,
   "fantome:compteur_tweets_72_168h_v1.0.0": 9,
   "fantome:crypto_non_10_20_v1.0.0": 11
  },
- "verifiees": 11048,
+ "verifiees": 11053,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1781,9 +1781,9 @@
    "op_id": "settle-83934789373561404560694921218449998142531382835686583949536596000059736455598"
   }
  ],
- "derniere_execution": "2026-10-27T10:54:08+00:00",
+ "derniere_execution": "2026-10-27T10:57:38+00:00",
  "dernier_seq_reglements": {
-  "principal": 4082,
+  "principal": 4083,
   "fantome:calibration_patiente_v1.0.0": 2114,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1972,
@@ -1822,7 +1822,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 1936,
+  "fantome:nf_sport_v1.0.0": 1938,
   "fantome:nm_court_v1.0.0": 1761,
   "fantome:nm_crypto_v1.0.0": 1567,
   "fantome:nm_hors_crypto_v1.0.0": 1691,
@@ -1864,7 +1864,7 @@
   "fantome:nf_tennis_v1.0.0": 466,
   "fantome:crypto_threshold_non_v1.0.0": 560,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 587,
-  "fantome:nf_sport_patiente_matin_v1.0.0": 676,
+  "fantome:nf_sport_patiente_matin_v1.0.0": 678,
   "fantome:apres_echeance_v1.0.0": 775,
   "fantome:choc_sans_nouvelle_v1.0.0": 112,
   "fantome:coherence_match_v1.0.0": 521,
@@ -1902,7 +1902,7 @@
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 462,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 521,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 698,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 700,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 372,
   "fantome:mots_prononces_patiente_v1.0.0": 390,
   "fantome:cpi_tranches_v1.0.0": 285,
@@ -1936,7 +1936,7 @@
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 240,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 163,
   "fantome:nf_sport_non_900_925_v1.0.0": 193,
-  "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 198,
+  "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 200,
   "fantome:seismes_marche_v1.0.0": 175,
   "fantome:box_office_favori_v1.0.0": 149,
   "fantome:spacex_cumul_v1.0.0": 134,
@@ -1960,5 +1960,5 @@
   "fantome:compteur_tweets_72_168h_v1.0.0": 9,
   "fantome:crypto_non_10_20_v1.0.0": 11
  },
- "reglements_verifies": 5907
+ "reglements_verifies": 5909
 }
