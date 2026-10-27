@@ -59,3 +59,8 @@ Contrôle par catégorie sur les mêmes marchés (6 catégories par mots du titr
 
 Quatre réglages, tous négatifs : **le favori d'un marché neuf n'est pas sous-coté** (c'est plutôt l'inverse, surtout pour le NON), l'hypothèse de Princeton (pente de recalibrage 1,11) ne se vérifie pas sur ces marchés (le sport, où naissent la plupart des marchés neufs, est couvert par `favoris_avant_match.md` : −1 à −5 %).
 Limite : seulement les marchés « d'ici / avant » (mots du titre), pas les marchés neufs de politique ou de culture en général. **Verdict : écartée ; `marche_neuf` coupée** (`enabled: false`, tests mis à jour).
+
+## Contrôle de cohérence avec l'étude des échelles de dates (`courbe_de_risque.md`, 22/10)
+Pour s'assurer que ce pipeline lit les mêmes choses : sur les 544 événements à ≥ 4 marchés de ce relevé (échelles), mêmes règles que `courbe_de_risque` (prix payé = premier échange de preneur dans les 6 h après fin − H, 0,03-0,97) :
+OUI à 7 / 14 / 30 jours **−11,6 % / −11,6 % / −6,9 %** (397 / 363 / 268 paris) contre −11,3 % / −13,1 % / −17,0 % (1 062 échelles) ; NON +0,3 % / +2,5 % / +4,1 % contre −0,3 % / +0,7 % / +8,1 %. Mêmes signes, mêmes ordres de grandeur : le pipeline est cohérent.
+Les deux relevés ne contredisent pas le résultat du jour : le OUI des **échelles** de dates se paie trop cher (−7 à −13 %), celui des marchés isolés à 3-35 % non (+4,0 %, z +0,9), et le NON ne bat pas ses prix.
