@@ -698,6 +698,32 @@ def test_principal_never_buys_the_same_market_twice_for_two_strategies(env, path
     assert [b["strategy_id"] for b in buys] == ["naive_favorite"]
 
 
+def test_principal_keeps_a_cash_reserve_so_no_bet_can_empty_it(env, tmp_path):
+    """27/10/2026 (« plus de liberté… regarde l'objectif plutôt que la mort prochaine ») : la faillite tombe à 0 € DISPONIBLE,
+    même avec des positions qui valent quelque chose. Le principal peut miser plus gros, mais un achat ne laisse jamais moins
+    de `principal.reserve_liquidites` du capital estimé : réduit à ce qui reste au-dessus, sinon abandonné."""
+    from polymarket_agent.main import CycleReport, Portfolio, Weighted, _execute
+    from polymarket_agent.sources.polymarket_gamma import parse_market
+    make, _, _ = env
+    deep = make_book("tokA", bids=(("0.89", "5000"),), asks=(("0.90", "5000"),))
+
+    def cash_after(reserve, folder):
+        settings = load_settings()
+        settings["principal"] = dict(settings["principal"], reserve_liquidites=reserve)
+        deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": deep}), settings=settings)
+        folder.mkdir()
+        ledger = Ledger.create(folder / "l.jsonl", KEY, folder / "l.lock", "1000", now=NOW)
+        ledger.record_buy(op_id="avant", token_id="autre", market_id="m-autre", event_id="e-autre", outcome="Yes",
+                          shares="1700", price="0.55", fee="0", strategy_id="s", strategy_version="1", now=NOW)  # 65 € disponibles
+        main = Portfolio("principal", ledger, [Weighted(pipeline_strategy(), D("1"))])
+        _execute(deps, main, [parse_market(raw_market())], {"tokA": deep}, CycleReport(cycle_id="c1"), "b1")
+        assert "tokA" in ledger.state.positions  # l'achat a bien lieu dans les deux cas
+        return ledger.state.cash
+
+    assert cash_after(None, tmp_path / "sans") < D("1")  # sans réserve : le pari vide presque tout le disponible
+    assert D("30") <= cash_after(0.03, tmp_path / "avec") < D("31")  # 3 % de 1 000 € restent disponibles
+
+
 def test_a_book_reread_by_one_portfolio_is_reused_by_the_next_within_seconds(env):
     """19/10/2026 : plusieurs fantômes visent le même marché ; un carnet relu il y a moins de
     20 s dans le même cycle n'est pas relu une deuxième fois."""

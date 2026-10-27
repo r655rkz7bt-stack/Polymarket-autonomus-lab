@@ -119,8 +119,9 @@ def test_a_model_with_a_naturally_wide_gap_is_not_flagged_for_ordinary_spread():
     assert any(f["titre"].startswith("tweets_v1.0.0") for f in enquete.estimation_perimee({"tweets_v1.0.0": _ledger(*huge)}, NOW - timedelta(days=3)))
 
 
-def test_a_gain_made_in_one_day_is_grave_when_the_principal_copies_it():
-    """20/10 : 95 % du gain de la championne vient du 18/10."""
+def test_a_gain_made_in_one_day_is_reported_but_no_longer_an_obligation():
+    """20/10 : 95 % du gain de la championne vient du 18/10. Depuis le 27/10 (« ne sois pas paralysé par les pertes ») :
+    « à regarder », même copiée par le principal, qui mise déjà sur l'avantage mesuré contre les prix."""
     rows = []
     start = NOW - timedelta(days=4)
     for day in range(4):
@@ -132,8 +133,9 @@ def test_a_gain_made_in_one_day_is_grave_when_the_principal_copies_it():
     ghost = _ledger(*rows)
     found = enquete.chance({"nf_v1.0.0": ghost}, copied={"nf_v1.0.0"})
     days = [f for f in found if "fait" in f["titre"] and "du gain" in f["titre"] and "le " in f["titre"]]
-    assert days and days[0]["gravite"] == enquete.GRAVE
+    assert days and days[0]["gravite"] == enquete.A_REGARDER
     assert all(f["gravite"] == enquete.A_REGARDER for f in enquete.chance({"nf_v1.0.0": ghost}, copied=set()))
+    assert enquete.obligations(found) == []
 
 
 def test_daughter_is_compared_with_her_mother_on_the_same_period():

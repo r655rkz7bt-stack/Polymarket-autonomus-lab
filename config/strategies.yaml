@@ -582,6 +582,72 @@ contrer_crypto_patiente:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 0.25, min: 0.0, max: 5.0}
 
+contrer_crypto_audace:
+  explication: "La même idée Bitcoin, mais seulement quand le pari coûte entre 0,10 et 0,45, et avec des mises bien plus grosses : c'est là qu'elle gagne vraiment."
+  # Expérience audacieuse (27/10/2026, demande d'Etienne : « plus de liberté, vois les pertes comme des expériences, va chercher
+  # de plus gros gains »). experiments/audace.md : sur les journaux du 15 au 26/10, les paris des deux fantômes « contrer » à
+  # 0,10-0,45 battent leurs prix (58 gagnés pour 39,3 attendus), leurs billets sous 0,10 perdent presque tout (1 sur 80).
+  class: price_move
+  mere: contrer_crypto
+  morceau: "prix 0,10-0,45 (billets sous 0,10 exclus), mises ×4 (Kelly entier, avantage supposé 0,08)"
+  familles: [crypto]
+  exclure_mots: ["up or down"]
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    Sur les marchés crypto à seuil, un mouvement de plus de 0,05 en 6 h est exagéré ; le côté contraire coté 0,10-0,45 est
+    sous-évalué (taker : 25 gagnés pour 17,7 attendus sur 82 paris), alors que les billets sous 0,10 sont surcotés comme
+    partout (biais favori-outsider : 3 gagnés pour 10,8 attendus dans toute l'arène). Tranche choisie APRÈS avoir regardé
+    les données (dans l'échantillon) : l'arène tranche. La mère misait 2 € par pari (quart de Kelly, a priori 0,05) ; ici
+    environ 3 % du capital par pari. Une perte apprendrait que le 0,10-0,45 était de la chance ou que l'effet a disparu.
+  params:
+    direction:      {value: -1, min: -1, max: 1}
+    min_move:       {value: 0.05, min: 0.01, max: 0.5}
+    min_price:      {value: 0.10, min: 0.01, max: 0.99}
+    max_price:      {value: 0.45, min: 0.01, max: 0.99}
+    edge_prior:     {value: 0.08, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.2}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.5}
+    min_hours:      {value: 2, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+
+contrer_crypto_patiente_audace:
+  explication: "La même idée Bitcoin en attendant dans la file, seulement entre 0,10 et 0,45, avec des mises bien plus grosses."
+  # Expérience audacieuse (27/10/2026), comme contrer_crypto_audace mais achats POSÉS (pas de frais à 0,07) : la mère posée
+  # bat ses prix à 0,10-0,45 (33 gagnés pour 21,6 attendus sur 92 paris ; 0,10-0,20 : 12 pour 5,9) et perd sous 0,10 (1 sur 45).
+  class: price_move
+  mere: contrer_crypto_patiente
+  morceau: "prix 0,10-0,45 (billets sous 0,10 exclus), mises ×4 (Kelly entier, avantage supposé 0,08)"
+  familles: [crypto]
+  exclure_mots: ["up or down"]
+  limit_ticks: 1
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    Même hypothèse que contrer_crypto_audace, en ordres posés un cran au-dessus du meilleur acheteur. Tranche choisie dans
+    l'échantillon (journaux du 15 au 26/10) : à confirmer par de nouveaux paris. Mises d'environ 3 % du capital par pari
+    au lieu de 2 € : si l'avantage est réel, la croissance se voit vite ; sinon la perte du fantôme est le prix de la leçon.
+  params:
+    direction:      {value: -1, min: -1, max: 1}
+    min_move:       {value: 0.05, min: 0.01, max: 0.5}
+    min_price:      {value: 0.10, min: 0.01, max: 0.99}
+    max_price:      {value: 0.45, min: 0.01, max: 0.99}
+    edge_prior:     {value: 0.08, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.2}
+    min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
+    min_hours:      {value: 2, min: 0, max: 720}
+    max_hours:      {value: 720, min: 1, max: 2000}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
+
 favori_politique_quasi_certain:
   explication: "En politique, on achète ce qui est presque sûr (97 %) pour gagner un tout petit peu, mais souvent."
   # Favori n°1 bis : politique et géopolitique 0,97-0,995 (« presque acquis », souvent un résultat

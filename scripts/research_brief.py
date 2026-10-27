@@ -35,7 +35,7 @@ def main() -> int:
     db = Database(resolve(ROOT, paths["database"]))
     try:
         learning = analyze(dict(competitors, principal=main_ledger), categories_from_db(db))
-        reports = _pareto(competitors, main_ledger, db)
+        reports = _pareto(competitors, main_ledger, db, settings["arena"].get("entonnoir") or {})
         findings = _enquete(competitors, main_ledger, active, settings, db)
     finally:
         db.close()
@@ -92,8 +92,9 @@ def _full_mothers(main_ledger, arena_cfg: dict) -> tuple[dict[str, int], int | N
     return {m: n for m, n in count.items() if n >= int(cap)}, int(cap)
 
 
-def _pareto(competitors: dict, main_ledger, db) -> list[dict]:
-    """Entonnoir 80/20 (pareto.py) de toutes les stratégies qui grandissent (20/10/2026)."""
+def _pareto(competitors: dict, main_ledger, db, funnel: dict | None = None) -> list[dict]:
+    """Entonnoir 80/20 (pareto.py) de toutes les stratégies qui grandissent (20/10/2026) ou qui battent leurs prix
+    (27/10/2026, `funnel` = promotion.yaml → entonnoir : z_morceau, z_strategie)."""
     import yaml
 
     from polymarket_agent import pareto
@@ -104,7 +105,9 @@ def _pareto(competitors: dict, main_ledger, db) -> list[dict]:
     growth = {n: standing(n, l, main_ledger.state.eliminated).log_growth for n, l in competitors.items()}
     growth = {n: math.exp(g) - 1 for n, g in growth.items() if g != float("-inf")}
     markets = pareto.market_labels(db)
-    return pareto.analyse({n: read_entries(l) for n, l in competitors.items()}, growth, mothers, markets, configs)
+    funnel = funnel or {}
+    return pareto.analyse({n: read_entries(l) for n, l in competitors.items()}, growth, mothers, markets, configs,
+                          min_z=funnel.get("z_morceau"), z_strategy=funnel.get("z_strategie"))
 
 
 if __name__ == "__main__":

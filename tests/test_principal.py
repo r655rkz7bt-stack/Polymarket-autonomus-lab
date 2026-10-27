@@ -40,6 +40,18 @@ def test_main_portfolio_bets_and_families_are_capped(tmp_path):
     assert _cap_main(SimpleNamespace(settings={}), portfolio, [_prop("s", "sn", "400")], by_market)[0].shares == D("400")
 
 
+def test_principal_weight_follows_the_renfort_above_its_share():
+    """27/10/2026 : le renfort du principal (« grossir les gagnantes », 21/10) était annulé par un `min(1.0, …)` dans
+    run_cycle ; une stratégie qui prouve plus d'avantage qu'elle n'en suppose est maintenant copiée au-delà de sa part."""
+    from polymarket_agent.main import _engaged_shares
+    alloc = {"essai_v1": 0.5, "prouvee_v1": 0.5}
+    engaged = {"essai_v1": 0.25, "prouvee_v1": 1.0}  # période d'essai (½) ; renfort ×2
+    assert _engaged_shares(dict(alloc), alloc, engaged) == {"essai_v1": 0.25, "prouvee_v1": 1.0}
+    # Champion sans part calculée (allocation vide) : sa part entière, multipliée par son engagement.
+    assert _engaged_shares({"c_v1": 1.0}, {"c_v1": 1.0}, {"c_v1": 0.6}) == {"c_v1": 0.6}
+    assert _engaged_shares({"seule_v1": 1.0}, {}, {}) == {"seule_v1": 1.0}
+
+
 def test_shares_are_recomputed_at_most_hourly_but_entries_apply_at_once(tmp_path):
     """18/10/2026 : pas de va-et-vient des parts toutes les 5 minutes ; une entrée ou une sortie
     change la répartition tout de suite."""

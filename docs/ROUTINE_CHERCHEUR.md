@@ -18,6 +18,16 @@ ordre réel, aucun secret affiché). Mission : faire grandir le capital le plus 
 jamais atteindre 0. Pour ça, deux choses comptent plus que tout le reste : **trouver ce qui fausse
 nos résultats** (partie A) et **trouver de vrais avantages, prouvés sur le passé** (partie B).
 
+**Posture : cap sur l'objectif (décision d'Etienne, 27/10/2026 : « ne sois pas paralysé par les pertes… vois-les comme des
+essais et des expériences pour aller chercher de plus gros gains ; regarde l'objectif plutôt que la mort prochaine »).**
+Règles complètes : docs/METHODE.md, « Cap sur l'objectif » ; chiffres : `experiments/audace.md`.
+- Un fantôme qui perd est une expérience payée en argent fictif : écris sa leçon chiffrée (`experiments/carnet_experiences.md`)
+  et lance l'expérience suivante, au lieu d'ajouter un frein. Un frein se prouve par un rejeu, comme une stratégie.
+- Va chercher les gros gains là où l'avantage se mesure (paris qui battent leurs prix, prix 0,10-0,45) avec des mises
+  franches ; pas de nouvelle fille de favori (les 58 stratégies de favoris sont un seul et même tirage).
+- La règle n°1 est tenue par le code (journal signé, contrôleur, réserve de liquidités du principal) : ce n'est pas à toi
+  de la défendre en misant moins.
+
 **Prends le temps (décision d'Etienne, 20/10/2026 : « pousse-le beaucoup plus »).** Du 15 au
 20/10, les passages duraient 1 à 2 minutes : une variante sans code, « passage court », rien
 trouvé. Les défauts qui ont coûté cher (le principal qui misait 3 fois trop gros, la confiance
@@ -56,8 +66,8 @@ limite d'usage : on te pilote en minutes de travail.
 ### 0. Préparer et lire
 1. `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` si besoin.
 2. Lis CLAUDE.md, docs/METHODE.md, `experiments/enquetes/README.md` (défauts déjà trouvés : ils
-   reviennent sous d'autres formes), `experiments/PISTES.md`, les 3 dernières entrées de
-   `experiments/journal_recherche.md`.
+   reviennent sous d'autres formes), `experiments/PISTES.md`, `experiments/carnet_experiences.md` (ce que nos pertes ont
+   appris), les 3 dernières entrées de `experiments/journal_recherche.md`.
    Fiches de méthode (skills, `.claude/skills/README.md`, chargées d'elles-mêmes) : `enqueter` (partie A),
    `tester-une-piste` (partie B), `nouvelle-strategie` (partie C), `evaluer-source-externe`,
    `verifier-tableau-de-bord`. Statistiques plus poussées (`statsmodels`, `pymc`) : environnement à part
@@ -69,7 +79,10 @@ limite d'usage : on te pilote en minutes de travail.
      fantômes, audit, sauvegarde de la base) puis `.venv/bin/python scripts/enquete.py`.
 
 ### A. Enquête : chercher ce qui fausse les résultats (toujours en premier)
-1. Traite **chaque** « Enquête obligatoire » de la feuille de mission.
+1. Traite **chaque** « Enquête obligatoire » de la feuille de mission. Depuis le 27/10/2026, « chance » et « championne sans
+   avantage » sont des constats « à regarder », plus des obligations : ce ne sont pas des défauts (le principal mise déjà à
+   proportion de l'avantage mesuré), et ils prenaient 7 obligations sur 9 à chaque passage. L'enquête sert aux vrais
+   défauts ; sans défaut réel, ne lui donne pas plus d'un quart du passage.
 2. Prends au moins un constat « à regarder » de l'enquête automatique et mène-le jusqu'au bout.
 3. Fais aussi un **contrôle à la main** dans une des six familles de défauts de
    `experiments/enquetes/README.md` (famille n° = jour du mois modulo 6, + 1), avec tes propres
@@ -113,8 +126,10 @@ limite d'usage : on te pilote en minutes de travail.
    **indice** → fantôme, en le disant ; **écartée** → rien dans l'arène, mais le chiffre dans
    `experiments/PISTES.md`. Compte rendu dans `experiments/<piste>.md`, scripts dans
    `experiments/<piste>/` (données téléchargées dans `donnees/`, ignoré par Git).
-4. Quand l'historique existe, ne lance pas une stratégie « pour voir » sans ce test : le test
-   d'abord, l'arène confirme ensuite.
+4. Le test décide de la place d'une stratégie au capital principal (`validated_strategies`), pas de son droit
+   d'exister (27/10/2026) : un fantôme ne coûte rien au principal, une idée neuve et plausible peut entrer dans
+   l'arène comme expérience pendant que son test avance (au plus trois par passage), avec dans `hypothesis` ce qu'une
+   perte apprendrait. Une piste **écartée** sur le passé n'entre pas.
 
 ### C. Arène et feuille de mission
 1. Remplis les autres obligations de la feuille de mission (filles de l'entonnoir 80/20,
@@ -125,7 +140,10 @@ limite d'usage : on te pilote en minutes de travail.
    le dit). Une stratégie n'entre dans `validated_strategies` (priorité au capital principal) qu'avec
    un test tenu **aux prix réellement payés** (exemple : `experiments/prix_payes.md`).
 2. Au moins une nouvelle stratégie ou variante dans l'arène à chaque passage (décision d'Etienne,
-   15/10/2026) : de préférence celle de la partie B.
+   15/10/2026) : de préférence celle de la partie B. Depuis le 27/10/2026, au moins une par passage est une
+   **expérience audacieuse** : une idée neuve (pas une fille de favori), une mise franche quand le gain possible est
+   grand (Kelly entier, 2 à 5 % du fantôme par pari, prix 0,10-0,45), et ce qu'une perte apprendrait. Exemples :
+   `contrer_crypto_audace`, `contrer_crypto_patiente_audace` (`experiments/audace.md`).
 3. Sans obligation, avance aussi un chantier de `experiments/CHANTIERS.md`.
 
 ### D. Tant qu'il reste du temps (durée visée de `budget_chercheur.py`)
@@ -147,9 +165,10 @@ passage s'arrête net, rien n'est perdu.
 2. Ne modifie jamais un fichier du noyau (`PROTECTED_PATHS.txt`) : écris une proposition dans
    `proposals/`. N'affiche jamais un secret.
 3. Entrée datée en haut de `experiments/journal_recherche.md`, dans la même pull request, en
-   quatre rubriques : **Enquête** (défauts trouvés et chiffrés, ou ce qui a été vérifié),
+   cinq rubriques : **Enquête** (défauts trouvés et chiffrés, ou ce qui a été vérifié),
    **Recherche** (piste, données, verdict, chiffre clé), **Arène** (stratégies ajoutées ou
-   retirées), **Reste ouvert**.
+   retirées), **Leçons** (ce que les pertes du jour ont appris ; une ligne dans
+   `experiments/carnet_experiences.md` pour chaque stratégie éliminée ou retirée), **Reste ouvert**.
 4. Réponds à la fin en quelques lignes simples, en français, pour Etienne : le défaut trouvé (ou
    « rien trouvé, j'ai vérifié… »), le verdict de la recherche, ce qui a changé.
 

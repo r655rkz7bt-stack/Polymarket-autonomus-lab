@@ -12,6 +12,10 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - chance : gain en euros mais rendement par mise négatif, ou gain venu de 3 paris / d'un seul
     jour (18/10, PR #77 : la confiance calculée en euros récompensait les grosses mises) ;
   - champion_sans_avantage : la championne gagne-t-elle encore plus souvent que ses prix ?
+    Ces deux-là sont « à regarder », plus des obligations (27/10/2026, demande d'Etienne : « ne sois pas paralysé par les
+    pertes ») : ce ne sont pas des défauts, et le principal mise déjà à proportion de l'avantage mesuré contre les prix
+    (`mise_avantage_mesure`). Le 27/10, sept obligations sur neuf de la feuille de mission venaient d'eux, chaque passage
+    (« mêmes mécanismes qu'avant ») : le temps du chercheur va aux vrais défauts et aux expériences ;
   - filles_periode : une fille est jugée sur une autre période que sa mère (20/10) ;
   - filtre_prix : achats hors de la plage de prix d'une stratégie (20/10 : « prix haut »
     0,875-0,95 achetée à 0,79 par un ordre posé dans un carnet très écarté) ;
@@ -364,8 +368,9 @@ def copied_by_principal(entries: dict[str, list[dict]], now: datetime, hours: fl
 
 def chance(entries: dict[str, list[dict]], min_trades: int = 15, min_pnl: float = 30,
            copied: set[str] | None = None) -> list[dict]:
-    """Gain en euros sans avantage par mise, ou gain concentré (3 paris, un seul jour). Grave pour
-    une stratégie que le principal copie : c'est son argent qui suit ce gain fragile."""
+    """Gain en euros sans avantage par mise, ou gain concentré (3 paris, un seul jour). Toujours « à regarder » depuis le
+    27/10/2026 (grave avant pour une stratégie copiée) : le principal mise déjà sur l'avantage mesuré contre les prix, pas
+    sur les euros. `copied` : gardé pour les appels existants, ne change plus la gravité."""
     out = []
     for name, rows in entries.items():
         if name == "principal":
@@ -377,7 +382,7 @@ def chance(entries: dict[str, list[dict]], min_trades: int = 15, min_pnl: float 
         r = _returns(trades)
         if pnl < min_pnl:
             continue
-        level = GRAVE if name in (copied or set()) else A_REGARDER
+        level = A_REGARDER
         won, expected = _won_vs_expected(trades)
         if statistics.mean(r) < 0:
             out.append(_finding("chance", level, f"{name} : +{pnl:.0f} € mais rendement par mise {statistics.mean(r):+.1%}",
@@ -412,11 +417,12 @@ def champion_sans_avantage(entries: dict[str, list[dict]], now: datetime, last: 
         won, expected = _won_vs_expected(trades)
         r = _returns(trades)
         if won <= expected or statistics.mean(r) <= 0:
-            out.append(_finding("champion_sans_avantage", GRAVE,
+            out.append(_finding("champion_sans_avantage", A_REGARDER,
                                 f"{name} (copiée par le principal) : {won} gagnés pour {expected:.1f} attendus sur ses "
                                 f"{len(trades)} dernières opérations, rendement {statistics.mean(r):+.1%}",
-                                "Plus d'avantage mesurable récemment : chercher d'où venait le gain (jour, sport, prix, "
-                                "mode d'achat) et si ses règles d'entrée au capital doivent changer.", []))
+                                "Plus d'avantage mesurable récemment. Le principal réduit déjà sa mise à proportion de "
+                                "l'avantage mesuré (mise_avantage_mesure) : pas une obligation ; à creuser seulement si "
+                                "un défaut (copie, prix payé, filtre) peut l'expliquer.", []))
     return out
 
 

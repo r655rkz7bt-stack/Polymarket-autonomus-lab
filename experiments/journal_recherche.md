@@ -3,6 +3,32 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-27 (session avec Etienne : « plus de liberté, les pertes sont des expériences »)
+
+- **Enquête** : le principal n'engage que 16 % de son argent (124 € sur 756 €) et ne bouge plus depuis le 23/10. Ce n'est pas un
+  défaut : ses stratégies n'ont pas d'avantage mesuré, il mise à proportion. Deux vrais freins sans raison trouvés : (a) l'enquête
+  automatique transformait « chance » et « championne sans avantage » en obligations (7 sur 9 à chaque passage, même réponse) →
+  « à regarder » ; (b) l'entonnoir 80/20 cherchait dans les euros (la chance des mises) et ne voyait qu'une tranche 0-0,80 →
+  61 filles proposées, presque toutes des favoris sans avantage. Risque trouvé : un pari du principal pouvait laisser 0,07 €
+  disponibles (faillite à 0 € disponible, même avec des positions) → réserve de liquidités de 3 % (test). **Défaut** : le renfort
+  du principal (21/10) n'a jamais joué, un `min(1.0, …)` du 17/10 le coupait → `main._engaged_shares` (test ; fiche
+  `enquetes/2026-10-27_renfort_annule_et_entonnoir.md`).
+- **Recherche** (`experiments/audace.md`, scripts `experiments/audace/`, 38 réglages de rejeu essayés) : miser plus ou copier plus
+  sur les stratégies d'aujourd'hui fait perdre plus (règle en vigueur −54 €, 10 € par pari −202 €, tout copier −1 382 €) ; tout
+  résultat positif vient des deux « contrer » de la crypto (sans eux −89 €) ; Kelly sur l'avantage rétréci : replis de 56 à
+  137 % ; écarter les favoris du principal : −290 € (leurs remplaçantes étaient pires ; les favoris copiés sont à l'équilibre,
+  +6 € sur 4 394 € : réponse à la question du passage de la nuit). Les 58 stratégies de favoris ne diffèrent pas réellement
+  (Q 58,7 pour 57, −1,6 point par pari). Prix payés : sous 0,10, 3 gagnés pour 10,8 attendus partout ; chez les « contrer »
+  crypto, 0,10-0,45 fait 58 gagnés pour 39,3 attendus (174 paris ; tranche choisie après avoir regardé : hypothèse).
+- **Arène** : + `contrer_crypto_audace` et `contrer_crypto_patiente_audace` (0,10-0,45, Kelly entier, a priori 0,08 : environ 9 fois
+  la mise de la mère). Principal : renfort jusqu'à ×3, une stratégie peut porter tout le capital, réserve de 3 %. Entonnoir :
+  morceaux à z ≥ 2, stratégies à z ≥ 1,5 disséquées même perdantes en euros, prix bas découpés (61 → 4 filles, dont 0,10-0,20
+  de `contrer_crypto_patiente`, z +3,19).
+- **Leçons** : nouveau `experiments/carnet_experiences.md` (11 expériences, ce qu'elles ont coûté, appris, et ce qu'on en fait) ;
+  posture « cap sur l'objectif » dans `docs/METHODE.md`, `docs/ROUTINE_CHERCHEUR.md` et les fiches de méthode.
+- **Reste ouvert** : vers le 03/11, relancer `experiments/audace/*.py` et juger les deux filles « audace » sur leurs nouveaux paris ;
+  les filles de `compteur_tweets` proposées par l'entonnoir sont à juger par événement (tranches d'un même compteur).
+
 ## 2026-10-27 (passage chercheur, nuit : 20 h 56 → 22 h 22 UTC, 86 min, durée visée 114 min non atteinte : les pistes restantes attendent des matchs ou des publications, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-27_releves_tronques_offset.md`). Obligations : `copie_fidele` (« Team Yandex », déjà corrigé le 26/10), `champion_sans_avantage`, cinq « chance » = mêmes mécanismes qu'avant ; `copie_absente` (`moins_de_cartes`, 0 sur 50) : le fantôme n'a pas acheté depuis le correctif du 26/10 à 16 h 34 (dernier pari 16 h 04), le plancher de copie n'a pas encore pu servir.

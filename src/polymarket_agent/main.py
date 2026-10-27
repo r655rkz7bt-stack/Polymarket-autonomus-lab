@@ -516,9 +516,9 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     champion = main.ledger.state.champion
     if not shares and champion and champion not in main.ledger.state.eliminated:
         shares = {champion: 1.0}  # champion en titre sans part calculée : il garde tout le capital
-    # Période d'essai et plafonds (arena.exposure) : seule une fraction de chaque part est engagée.
+    # Période d'essai, plafonds et renfort (arena.exposure) : une fraction de chaque part, ou plus pour une gagnante prouvée.
     alloc, engaged = report.arena.get("allocation", {}) or {champion: 1.0}, report.arena.get("engagement", {})
-    shares = {n: w * min(1.0, engaged[n] / alloc[n]) if n in engaged and alloc.get(n) else w for n, w in shares.items()}
+    shares = _engaged_shares(shares, alloc, engaged)
     shares = _steady_shares(deps, shares)
     base = Decimal(str(strategy_health.config(deps.settings)["base"]))
     floor_cfg = (deps.settings.get("principal") or {}).get("plancher_copie")
@@ -664,6 +664,15 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         except Exception as exc:  # noqa: BLE001 - une estimation ne doit jamais faire tomber le cycle
             log.warning("[%s] estimation des récompenses impossible : %s", portfolio.name, exc)
     report.status = "FAILLITE" if main.ledger.state.bankrupt else "OK"
+
+
+def _engaged_shares(shares: dict[str, float], alloc: dict[str, float], engaged: dict[str, float]) -> dict[str, float]:
+    """Part de chaque stratégie × (engagement / part calculée par l'arène). Le rapport descend sous 1 (période d'essai,
+    garde-fou par jour, avantage mesuré plus faible que supposé) ou monte au-dessus : renfort d'une stratégie qui prouve PLUS
+    d'avantage qu'elle n'en suppose (arena.measured_stake, jusqu'à `mise_avantage_mesure.part_max`). Plafonné à 1 jusqu'au
+    27/10/2026 (`min(1.0, …)`, écrit le 17/10 pour la seule période d'essai) : le renfort du principal ajouté le 21/10
+    (« grossir les gagnantes ») n'a jamais joué. Le plafond par stratégie reste celui de l'arène (`part_max_par_strategie`)."""
+    return {n: w * engaged[n] / alloc[n] if n in engaged and alloc.get(n) else w for n, w in shares.items()}
 
 
 def _steady_shares(deps: CycleDeps, shares: dict[str, float]) -> dict[str, float]:
@@ -846,6 +855,21 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
             log.info("rejet après relecture %s : %s", proposal.op_id, drop)
             continue
+        room = _cash_room(deps, portfolio)
+        if room is not None and Decimal(verdict.checks.get("cost_bound", "0")) > room:
+            # Réserve de liquidités (27/10/2026) : l'achat est réduit à ce qui reste au-dessus de la réserve, sinon abandonné.
+            per_share = Decimal(verdict.checks["cost_bound"]) / proposal.shares
+            shares = (room / per_share).quantize(Decimal("0.01"), rounding=ROUND_DOWN) if room > 0 else Decimal("0")
+            if shares > 0:
+                proposal = dataclasses.replace(proposal, shares=shares)
+                verdict = evaluate(proposal, ledger.state, market_context(market, fresh, proposal.token_id),
+                                   deps.limits, deps.now(), marks)
+            if shares <= 0 or not verdict.accepted:
+                verdict.accepted = False
+                verdict.reasons.append(f"réserve de liquidités : {max(room, Decimal('0')):.2f} disponibles au-dessus de la réserve")
+                deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
+                log.info("[%s] %s abandonné : réserve de liquidités", portfolio.name, proposal.op_id)
+                continue
         key = (proposal.token_id, "BUY")
         fill = simulate_buy(fresh, proposal.shares, proposal.max_price, market.fees,
                             portfolio.taken.get(key, Decimal("0")))
@@ -1105,6 +1129,19 @@ def _cap_main(deps: CycleDeps, portfolio: Portfolio, proposals: list[Proposal],
     return out
 
 
+def _cash_room(deps: CycleDeps, portfolio: Portfolio) -> Decimal | None:
+    """Argent disponible AU-DESSUS de la réserve de liquidités du principal (27/10/2026, `principal.reserve_liquidites`,
+    part du capital estimé), ou None sans réserve (fantômes, réglage absent). Règle n°1 : la faillite tombe dès que le SOLDE
+    DISPONIBLE touche 0, même si les positions valent quelque chose ; le contrôleur refuse un coût supérieur au solde, mais un
+    achat qui le vide exactement le tuerait. Demande d'Etienne du 27/10 (« plus de liberté, regarde l'objectif plutôt que la
+    mort prochaine ») : des mises plus grosses sur ce qui gagne, et ce coussin pour qu'aucune ne puisse le tuer par accident."""
+    share = (deps.settings.get("principal") or {}).get("reserve_liquidites")
+    if portfolio.name != "principal" or not share:
+        return None
+    state = portfolio.ledger.state
+    return state.cash - Decimal(str(share)) * state.total_estimated(portfolio.marks)
+
+
 # --------------------------------------------------------------------------- ordres posés
 
 def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal],
@@ -1149,9 +1186,11 @@ def _place_resting(deps: CycleDeps, portfolio: Portfolio, orders: list[Proposal]
             # Réservation : les achats posés ne peuvent pas promettre plus que le solde disponible.
             reserved = sum((Decimal(o["remaining"]) * Decimal(json.loads(o["proposal"])["max_price"])
                             for o in others if o["side"] == "BUY"), Decimal("0"))
-            if reserved + Decimal(verdict.checks.get("cost_bound", "0")) > ledger.state.cash:
+            room = _cash_room(deps, portfolio)
+            if reserved + Decimal(verdict.checks.get("cost_bound", "0")) > (ledger.state.cash if room is None else room):
                 verdict.accepted = False
-                verdict.reasons.append(f"solde déjà réservé par les ordres posés ({reserved:.2f})")
+                verdict.reasons.append(f"solde déjà réservé par les ordres posés ({reserved:.2f})"
+                                       + ("" if room is None else " ou réserve de liquidités"))
         verdict.checks["order_type"] = "limite"
         if verdict.accepted:
             hours = min(max(float(order.horizon_hours), 0.0), max_age)
@@ -1216,6 +1255,10 @@ def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, Ma
         verdict = evaluate(part, ledger.state, market_context(market, book, part.token_id),
                            deps.limits, now, portfolio.marks)
         verdict.checks["order_type"] = "limite"
+        room = _cash_room(deps, portfolio) if proposal.side == "BUY" else None
+        if verdict.accepted and room is not None and fill.filled_shares * proposal.max_price + fill.fee > room:
+            verdict.accepted = False  # l'ordre reste posé ; il sera servi quand l'argent sera revenu
+            verdict.reasons.append(f"réserve de liquidités : {max(room, Decimal('0')):.2f} disponibles au-dessus de la réserve")
         if not verdict.accepted:
             deps.db.save_decision(report.cycle_id, now, part, verdict, fill)
             log.info("[%s] exécution d'ordre posé refusée %s : %s", portfolio.name, part.op_id, verdict.reasons)

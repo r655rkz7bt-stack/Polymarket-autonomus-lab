@@ -9,8 +9,12 @@ Références : docs/METHODE.md (méthode de recherche, point 4) et ARCHITECTURE.
 désaccord. Exemple récent et complet : `VagueVolume` dans `src/polymarket_agent/strategies_v3.py`.
 
 ## Avant d'écrire du code
-- L'historique existe ? Le test sur le passé passe d'abord (skill `tester-une-piste`). Une stratégie non
-  testée entre comme fantôme en le disant dans `hypothesis`.
+- L'historique existe ? Le test sur le passé (skill `tester-une-piste`) décide de sa place au capital principal ;
+  une idée neuve et plausible peut entrer comme fantôme pendant que le test avance (docs/METHODE.md, « Cap sur
+  l'objectif »), en le disant dans `hypothesis` avec ce qu'une perte apprendrait. Une piste écartée n'entre pas.
+- Pas de nouvelle fille de favori : les 58 stratégies de favoris ne diffèrent pas réellement (`experiments/audace.md`).
+- Mise franche quand le gain possible est grand et l'avantage mesuré (prix 0,10-0,45) : `kelly_fraction` 1, 2 à 5 % du
+  fantôme par pari (exemple : `contrer_crypto_audace`). Jamais de billets sous 0,10 sans source qui tranche.
 - Une variante sans nouveau code suffit souvent : une entrée `strategies.yaml` avec `class: <stratégie
   existante>` et d'autres paramètres. Une fille d'une mère : `mere`, `morceau`, `filtres`
   (au plus 10 filles vivantes par mère, `config/promotion.yaml` → `filles`).
@@ -40,6 +44,7 @@ désaccord. Exemple récent et complet : `VagueVolume` dans `src/polymarket_agen
 
 ## Après
 - `.venv/bin/python -m pytest -q` vert (skill `verification-before-completion` : montre la sortie).
-- Raison de l'ajout dans `experiments/journal_recherche.md` (rubrique **Arène**).
+- Raison de l'ajout dans `experiments/journal_recherche.md` (rubrique **Arène**). Le jour où elle est éliminée ou
+  retirée : sa leçon chiffrée dans `experiments/carnet_experiences.md`.
 - L'arène juge sur le rendement par mise, aux carnets réels ; le principal ne la copie qu'une fois les
   seuils de `config/promotion.yaml` passés. Ne baisse jamais ces seuils pour « débloquer » une stratégie.

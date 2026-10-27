@@ -51,6 +51,9 @@ Références : docs/ROUTINE_CHERCHEUR.md (partie B) et docs/METHODE.md. En cas d
 | indice | fantôme dans l'arène, en le disant (« indice : l'arène tranchera ») |
 | écartée | rien dans l'arène ; le chiffre clé dans `experiments/PISTES.md` |
 
+Le test décide de la place d'une stratégie au capital principal, pas de son droit d'exister : une idée neuve et
+plausible peut entrer dans l'arène comme expérience pendant que son test avance (docs/METHODE.md, « Cap sur l'objectif »).
+
 Dans tous les cas : compte rendu `experiments/<piste>.md` (question, données, contrôle du règlement,
 réglages essayés, résultats aux prix historiques ET aux prix payés, verdict), scripts dans
 `experiments/<piste>/`, entrée dans `experiments/journal_recherche.md`.
@@ -59,6 +62,10 @@ réglages essayés, résultats aux prix historiques ET aux prix payés, verdict)
 - Gain « en euros » dû à quelques gros paris : retire les 3 meilleurs, le meilleur jour, le meilleur sport.
 - Statu quo à 0,9 : 12 gagnés sur 12 donnent t +6 alors que les prix seuls y arrivent 1 fois sur 4 (`z_prix`).
 - Paris liés comptés comme indépendants (26 tranches d'une même semaine) : moyenne par événement.
+- Une tranche choisie après avoir regardé les données (0,10-0,45 des « contrer » de la crypto, 27/10/2026) reste une
+  hypothèse : écris-le, et juge-la sur de nouveaux paris.
+- Avant de croire une fille, regarde sa famille entière : nos 58 stratégies de favoris ne diffèrent pas réellement entre
+  elles (`experiments/audace/heterogeneite.py`), la meilleure est la gagnante d'un tirage.
 - L'`endDate` d'un match est une date fictive (souvent +7 jours) ; l'heure réelle est `gameStartTime`.
 - Gamma refuse le User-Agent de `urllib` (403) et un décalage au-delà de 2 000 (422) : `HttpClient` du
   dépôt, et découpage par fenêtres de dates. L'API des échanges s'arrête à 10 000 lignes par événement.

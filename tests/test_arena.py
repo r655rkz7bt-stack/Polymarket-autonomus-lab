@@ -319,7 +319,7 @@ def test_several_champions_half_equal_half_merit_one_per_family_and_capped():
     assert real["nf_sport"] == "naive_favorite" and real["naive_favorite"] == "naive_favorite"
     # Seule qualifiée : au plus 50 % du capital principal.
     assert exposure([a], {"a_v1": 1.0}, {"part_max_par_strategie": 0.5}) == {"a_v1": 0.5}
-    assert RULES["part_max_par_strategie"] == 0.7 and RULES["repartition"]["merite"] == 0.5
+    assert RULES["part_max_par_strategie"] == 1.0 and RULES["repartition"]["merite"] == 0.5  # 1,0 depuis le 27/10/2026
 
 
 def test_measured_overlap_decides_who_shares_a_place():
@@ -540,7 +540,7 @@ def test_measured_stake_copies_bets_at_the_measured_edge_only():
     excess, assumed = edge_figures(trades)
     assert excess == pytest.approx(-0.7) and assumed == pytest.approx(0.05)
     rule = RULES["mise_avantage_mesure"]
-    assert rule == {"paris_fictifs": 30, "part_min": 0.0, "part_max": 2.0, "avantage_suppose_defaut": 0.035,
+    assert rule == {"paris_fictifs": 30, "part_min": 0.0, "part_max": 3.0, "avantage_suppose_defaut": 0.035,
                     "renfort": {"min_operations": 30, "confiance_jour_min": 0.8}}
     base = Standing("a_v1", 70, 1100.0, 1000.0, 0.1, NOW - timedelta(days=5), False, assumed_edge=0.05)
     assert measured_stake(dataclasses_replace(base, excess_wins=-2.0), rule) == 0.0
@@ -557,13 +557,14 @@ def test_measured_stake_copies_bets_at_the_measured_edge_only():
 
 def test_principal_stake_goes_above_one_only_for_proven_winners():
     """Renfort du principal (« grossir les gagnantes », 21/10/2026) : au-delà de la mise habituelle
-    seulement après 30 opérations et avec une confiance par jour d'au moins 80 %, plafonné à 2."""
+    seulement après 30 opérations et avec une confiance par jour d'au moins 80 %, plafonné à 3 depuis le 27/10/2026
+    (« plus de liberté, va chercher de plus gros gains » ; 2 avant)."""
     from polymarket_agent.arena import exposure, measured_stake
     rule = RULES["mise_avantage_mesure"]
     s = Standing("contrer_crypto_patiente_v1", 60, 1033.0, 1000.0, 0.032, NOW - timedelta(days=5), False,
                  excess_wins=6.8, assumed_edge=0.0509, day_confidence=0.95)
     assert measured_stake(s, rule) == pytest.approx(6.8 / 90 / 0.0509)  # ≈ 1,48
-    assert measured_stake(dataclasses_replace(s, excess_wins=40.0), rule) == 2.0
+    assert measured_stake(dataclasses_replace(s, excess_wins=40.0), rule) == 3.0
     assert measured_stake(dataclasses_replace(s, day_confidence=0.7), rule) == 1.0
     assert measured_stake(dataclasses_replace(s, closed_trades=20), rule) == pytest.approx(min(1.0, 6.8 / 50 / 0.0509))
     cfg = {"mise_avantage_mesure": rule, "part_max_par_strategie": 0.7}
