@@ -30,9 +30,10 @@ Par mois : 2026-06 +4,5 %, 07 −20,1 %, 08 −10,5 %, 09 −5,5 %, 10 +3,2 % (a
 - **Le NON crypto à 0,10-0,45, tous genres, tient sur les deux périodes séparées** : juin-octobre 1 111 paris +14,4 % (z +2,66) ; janvier-mai 1 273 paris +22,1 % (496 gagnés pour 428,2, z +4,15, t par événement +3,17).
   Total 2 384 paris, 894 gagnés pour 786 attendus. Fragile : 6 mois sur 10 positifs (jan +57 %, fév +18 %, mar −4 %, avr −23 %, mai +20 %, juin +44 %, juil −6 %, août −31 %, sept −8 %, oct +24 %),
   sans ses 5 meilleurs jours +7,6 % (janvier-mai) et −0,7 % (juin-octobre). Ethereum +35 % (janvier-mai) et +19 % (juin-octobre), Bitcoin +6 % et +8 %. Tranche de prix payé 0,10-0,20 : +66 % puis +70 %.
-  ~30 découpages regardés. **Verdict : indice** → fantôme `crypto_non_bon_marche` (Kelly entier, biais supposé 0,05), pas de capital principal avant 30 nouveaux paris ; les billets du NON sous 0,10 (+35 % puis +19 %) ne sont jamais joués.
+  **Troisième période, 2025** (14 443 marchés, `resultats_baseline_non_2025.txt`) : 1 709 paris +15,8 % (662 gagnés pour 599,6, z +3,25, t par événement +3,04), sans ses 5 meilleurs jours +9,1 %, « au-dessus de » +15,7 %, « touche » +16,1 % (z +1,35), Bitcoin +11,4 %, Ethereum +6,9 %, XRP +25,9 %.
+  Total sur trois périodes : 4 093 paris, 1 556 gagnés pour 1 386 attendus. ~30 découpages regardés. **Verdict : indice** → fantôme `crypto_non_bon_marche` (Kelly entier, biais supposé 0,05), pas de capital principal avant 30 nouveaux paris ; les billets du NON sous 0,10 (+35 % puis +19 %) ne sont jamais joués.
 
 ## Suite
 - Vers le 03/11 : juger `crypto_non_bon_marche` et les deux « audace » sur leurs nouveaux paris (gagnés contre attendus ; par événement).
-- Avant toute promotion : remonter à 2025 (`releve_marches.py 2025-01-01 … 2026-01-01`), et chercher pourquoi (volatilité sous-estimée par le OUI proche du prix ?) avec les prix Binance.
+- Fait : 2025 (voir plus haut). Avant toute promotion : chercher pourquoi (volatilité sous-estimée par le OUI proche du prix ?) avec les prix Binance.
 - Cette piste tient une leçon : un « avantage » trouvé dans 174 paris d'un fantôme et confirmé par un premier sous-échantillon (2 880 marchés, +8 %) a disparu à 8 974 marchés. Toujours refaire sur plus de données avant d'écrire « confirmé ».

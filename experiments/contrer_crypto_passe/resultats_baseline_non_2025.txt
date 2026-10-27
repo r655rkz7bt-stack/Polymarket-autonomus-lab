@@ -1,0 +1,37 @@
+14663 marchés réglés, 14443 avec échanges
+| réglage | paris | évén. | rendement | t | gagnés | mois | verdict |
+|---|---|---|---|---|---|---|---|
+| NON 0.1-0.45 tous | 1709 | 1138 | +15.8% | t paris +3.88 / évén. +3.04 | gagnés 662 / attendus 599.6 (z +3.25) | 9/16 mois | indice |
+| NON 0.05-0.1 tous | 1007 | 689 | +17.8% | t paris +1.67 / évén. +2.33 | gagnés 114 / attendus 93.2 (z +2.26) | 6/13 mois | indice |
+| NON 0.45-0.9 tous | 2396 | 1250 | +2.3% | t paris +1.72 / évén. +0.74 | gagnés 1786 / attendus 1744.8 (z +2.00) | 6/15 mois | écartée |
+| NON 0,10-0,45 genre above | 1361 | 1003 | +15.7% | t paris +3.42 / évén. +2.09 | gagnés 525 / attendus 474.4 (z +2.96) | 8/16 mois | indice |
+| NON 0,10-0,45 genre hit | 348 | 135 | +16.1% | t paris +1.82 / évén. +3.28 | gagnés 137 / attendus 125.2 (z +1.35) | 5/13 mois | indice |
+| NON 0,10-0,45 actif bitcoin | 675 | 436 | +11.4% | t paris +1.75 / évén. +1.12 | gagnés 251 / attendus 234.9 (z +1.34) | 8/14 mois | indice |
+| NON 0,10-0,45 actif ethereum | 532 | 330 | +6.9% | t paris +1.03 / évén. +0.20 | gagnés 199 / attendus 192.7 (z +0.58) | 7/13 mois | écartée |
+| NON 0,10-0,45 actif solana | 272 | 189 | +18.8% | t paris +1.92 / évén. +2.20 | gagnés 111 / attendus 97.3 (z +1.78) | 8/14 mois | indice |
+| NON 0,10-0,45 actif xrp | 123 | 98 | +25.9% | t paris +1.63 / évén. +1.34 | gagnés 49 / attendus 38.5 (z +2.12) | 6/11 mois | indice |
+| NON 0,10-0,45 actif autre | 107 | 85 | +67.8% | t paris +3.26 / évén. +2.62 | gagnés 52 / attendus 36.2 (z +3.31) | 8/13 mois | indice |
+| NON 0,10-0,45 heures avant fin 0-6 | 185 | 170 | +1.2% | t paris +0.12 / évén. +0.21 | gagnés 71 / attendus 68.3 (z +0.42) | 5/9 mois | écartée |
+| NON 0,10-0,45 heures avant fin 6-24 | 462 | 410 | +1.1% | t paris +0.17 / évén. -0.41 | gagnés 179 / attendus 177.3 (z +0.17) | 5/13 mois | écartée |
+| NON 0,10-0,45 heures avant fin 24-96 | 398 | 326 | +10.4% | t paris +1.29 / évén. +0.99 | gagnés 146 / attendus 133.7 (z +1.35) | 8/13 mois | indice |
+| NON 0,10-0,45 heures avant fin 96-9999 | 664 | 432 | +33.2% | t paris +4.38 / évén. +4.22 | gagnés 266 / attendus 220.4 (z +3.88) | 10/15 mois | retenue |
+| NON 0,10-0,45 mois 2024-09 | 1 | 1 | -100.0% | t paris +0.00 / évén. +0.00 | gagnés 0 / attendus 0.4 (z -0.83) | 0/1 mois | écartée |
+| NON 0,10-0,45 mois 2024-11 | 1 | 1 | -100.0% | t paris +0.00 / évén. +0.00 | gagnés 0 / attendus 0.4 (z -0.80) | 0/1 mois | écartée |
+| NON 0,10-0,45 mois 2024-12 | 12 | 12 | -33.8% | t paris -0.96 / évén. -0.96 | gagnés 3 / attendus 4.9 (z -1.13) | 0/1 mois | écartée |
+| NON 0,10-0,45 mois 2025-01 | 43 | 34 | +40.8% | t paris +1.43 / évén. +0.80 | gagnés 19 / attendus 14.1 (z +1.64) | 1/1 mois | indice |
+| NON 0,10-0,45 mois 2025-02 | 32 | 24 | +17.2% | t paris +0.62 / évén. +1.08 | gagnés 13 / attendus 11.8 (z +0.43) | 1/1 mois | indice |
+| NON 0,10-0,45 mois 2025-03 | 42 | 30 | +35.4% | t paris +1.41 / évén. +1.11 | gagnés 20 / attendus 14.5 (z +1.85) | 1/1 mois | indice |
+| NON 0,10-0,45 mois 2025-04 | 39 | 27 | -12.9% | t paris -0.67 / évén. -0.15 | gagnés 14 / attendus 15.6 (z -0.54) | 0/1 mois | écartée |
+| NON 0,10-0,45 mois 2025-05 | 69 | 52 | -18.4% | t paris -1.18 / évén. -1.19 | gagnés 21 / attendus 25.5 (z -1.15) | 0/1 mois | écartée |
+| NON 0,10-0,45 mois 2025-06 | 100 | 73 | +7.2% | t paris +0.62 / évén. -0.37 | gagnés 46 / attendus 39.6 (z +1.33) | 1/1 mois | écartée |
+| NON 0,10-0,45 mois 2025-07 | 158 | 126 | -8.5% | t paris -0.77 / évén. -0.78 | gagnés 55 / attendus 60.9 (z -0.97) | 0/1 mois | écartée |
+| NON 0,10-0,45 mois 2025-08 | 238 | 137 | +6.7% | t paris +0.64 / évén. +0.27 | gagnés 86 / attendus 81.8 (z +0.59) | 1/1 mois | écartée |
+| NON 0,10-0,45 mois 2025-09 | 178 | 123 | +36.7% | t paris +2.61 / évén. +2.48 | gagnés 76 / attendus 61.3 (z +2.38) | 1/1 mois | retenue |
+| NON 0,10-0,45 mois 2025-10 | 288 | 179 | +13.2% | t paris +1.23 / évén. +1.21 | gagnés 100 / attendus 95.2 (z +0.61) | 1/1 mois | indice |
+| NON 0,10-0,45 mois 2025-11 | 265 | 173 | +44.8% | t paris +3.53 / évén. +3.10 | gagnés 111 / attendus 88.3 (z +3.07) | 1/1 mois | retenue |
+| NON 0,10-0,45 mois 2025-12 | 242 | 164 | +10.1% | t paris +1.09 / évén. -0.03 | gagnés 98 / attendus 84.9 (z +1.81) | 1/1 mois | écartée |
+| NON 0,10-0,45 mois 2026-01 | 1 | 1 | -100.0% | t paris +0.00 / évén. +0.00 | gagnés 0 / attendus 0.4 (z -0.82) | 0/1 mois | écartée |
+| NON prix payé 0.1-0.2 | 246 | 216 | +54.2% | t paris +2.92 / évén. +2.61 | gagnés 56 / attendus 35.7 (z +3.69) | 7/12 mois | indice |
+| NON prix payé 0.2-0.3 | 235 | 212 | +29.0% | t paris +2.35 / évén. +2.53 | gagnés 76 / attendus 58.6 (z +2.62) | 7/12 mois | indice |
+| NON prix payé 0.3-0.45 | 927 | 719 | +7.8% | t paris +1.87 / évén. +2.09 | gagnés 393 / attendus 366.0 (z +1.82) | 8/16 mois | indice |
+| NON 0,10-0,45 sans ses 5 meilleurs jours | 1633 | 1104 | +9.1% | t paris +2.29 / évén. +1.82 | gagnés 611 / attendus 576.3 (z +1.85) | 7/16 mois | indice |
