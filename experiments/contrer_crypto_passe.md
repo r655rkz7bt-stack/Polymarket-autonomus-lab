@@ -36,3 +36,32 @@ Par mois : 2026-06 +4,5 %, 07 −20,1 %, 08 −10,5 %, 09 −5,5 %, 10 +3,2 % (a
 - Vers le 03/11 : juger `crypto_non_bon_marche` et les deux « audace » sur leurs nouveaux paris (gagnés contre attendus ; par événement).
 - Avant toute promotion : remonter à 2025 (`releve_marches.py 2025-01-01 … 2026-01-01`), et chercher pourquoi (volatilité sous-estimée par le OUI proche du prix ?) avec les prix Binance.
 - Cette piste tient une leçon : un « avantage » trouvé dans 174 paris d'un fantôme et confirmé par un premier sous-échantillon (2 880 marchés, +8 %) a disparu à 8 974 marchés. Toujours refaire sur plus de données avant d'écrire « confirmé ».
+
+## Suite du 27/10 (matin) : le NON crypto remonté à 2024-2025 — **indice solide**, tranche « payé 0,10-0,20 » qui se répète trois fois
+Relevés `releve_marches.py` (2024-01 → 2025-12, puis 2026-01 → 2026-10, `/events/keyset`) + `releve_echanges.py` : **35 884 marchés réglés nets, 35 631 avec vrais échanges** (volume ≥ 5 000 $).
+Mêmes règles que ci-dessus : NON, aucun signal, prix payé = premier échange réel qui achète le NON dans l'heure, frais crypto, un pari par marché, paris liés par événement (`resultats_baseline_non_2024_2026.txt`).
+- **2025 seul (hors des deux périodes déjà vues)** : 1 661 paris, **+13,1 %**, 636 gagnés pour 584,3 (z +2,73, t par événement +2,50) : le signe se répète (`resultats_baseline_non_2025.txt`).
+- **Tout (2024-2026)** : 4 167 paris, **+15,8 %**, 1 573 gagnés pour 1 414,8 (z +5,33, t par événement +4,39), 20 mois sur 33 positifs ; sans ses 5 meilleurs jours **+10,0 %** (z +4,17) ; NON 0,45-0,90 : +1,3 % (rien) ; billets 0,05-0,10 : +21,0 % (z +4,1, jamais joués).
+  Par actif : Bitcoin +8,0 %, Ethereum +18,4 %, Solana +24,0 %, autres +43,3 % ; par genre : « au-dessus de » +16,8 %, « touche » +13,1 % (cette fois les deux tiennent).
+- **Tranches, période par période** (`resultats_non_tranches_periodes.txt`, `scripts/non_tranches_periodes.py`) :
+
+| tranche | 2024-01 → 2025-12 | 2026-01 → 05 | 2026-06 → 10 |
+|---|---|---|---|
+| tous (0,10-0,45) | 1 896 paris, +17,4 % (z +3,8) | 1 290, +19,7 % (z +3,8) | 981, +7,7 % (z +1,4) |
+| **payé 0,10-0,20** | 270, **+54,4 %** (z +3,9) | 265, **+62,4 %** (z +4,3) | 195, **+57,6 %** (z +2,8) |
+| payé 0,20-0,30 | 264, +40,4 % (z +3,8) | 155, +23,8 % (z +1,8) | 172, **−29,1 %** (z −1,8) |
+| payé 0,30-0,45 | 1 362, +5,7 % | 870, +6,0 % | 614, +2,1 % |
+| fin dans ≥ 96 h | 814, +32,0 % (z +4,2) | 595, +30,2 % (z +3,4) | 365, **−2,2 %** |
+| fin dans < 96 h | 1 082, +6,5 % | 695, +10,7 % | 616, +13,6 % |
+
+- **Lecture** : l'effet est réel dans l'ensemble (z +5,3 sur 4 167 paris, trois périodes de même signe, ~30 découpages regardés : le z survit à une correction de ce nombre), mais il s'**affaiblit dans les 5 derniers mois** (+7,7 %) et les tranches « 0,20-0,30 » et « ≥ 96 h »
+  l'ont perdu : ne pas les jouer. Seule la tranche **payée 0,10-0,20 (le OUI à 0,80-0,90)** est positive dans les trois périodes (730 paris, **+58,1 %**, 167 gagnés pour 106,0 attendus, z +6,4). C'est l'expérience audacieuse du jour : fantôme **`crypto_non_10_20`** (Kelly entier).
+- **Pourquoi (non prouvé)** : le OUI à 0,80-0,90 d'une échelle « au-dessus de X » ou « touche X » est surcoté par rapport à la fréquence réelle (+6 à +9 points de gain pour le NON) ; piste d'explication : primes de volatilité payées pour l'« un jusqu'ici tout va bien » du OUI, ou prix de départ trop bas. Pas vérifié avec les prix Binance.
+- **Profondeur (`scripts/profondeur_non_10_20.py`, `resultats_profondeur_non_10_20.txt`) — le gain est concentré dans les échanges minces** : pour les 730 paris payés 0,10-0,20, taille médiane du premier échange payé 23 parts ; parts de NON
+  achetées par des preneurs à ≤ prix payé + 0,02 dans l'heure suivante : médiane 89. Rendement selon la quantité disponible : **tous +58,1 %** (z +6,4) → **≥ 20 parts +41,2 %** (536 paris, z +4,0) → **≥ 100 parts +21,0 %** (354, z +1,9) → **≥ 400 parts +1,0 %** (214, z +0,2).
+  Même piège que la météo du 16/10 et `compteur_truth` : là où il y a de la quantité à acheter, l'écart disparaît. (Réserve : « parts disponibles dans l'heure suivante » regarde un peu l'avenir, c'est une mesure de l'exécutable, pas une règle de décision.)
+  Conséquence : une mise de fantôme à Kelly entier (≈ 60 €, soit ≈ 400 parts à 0,15) ne sera servie qu'en partie par le carnet réel (25 % au meilleur prix, 50 % aux niveaux suivants) et verra surtout le prix du bas de la file ; les petits tickets du principal (5 à 20 parts) sont du bon côté.
+  L'arène le mesurera avec les vrais carnets : lire `crypto_non_10_20` en parts remplies, pas seulement en euros.
+- **Ce qui n'est pas vérifié** : le règlement des marchés « touche » (relu seulement par le prix final Gamma), l'absence de regard vers le futur est tenue (décision à T, prix des échanges après T).
+- **Verdict : indice, solide en nombre mais concentré dans les échanges minces** (`idea_test.verdict` « indice » : mois irréguliers, dernière période faible, gain qui s'efface à ≥ 400 parts disponibles). `crypto_non_bon_marche` reste fantôme ; pas de capital principal avant **30 nouveaux paris en direct** et un rendement par mise > 0 sur ces paris (règle du 27/10).
+- **Suite** : juger les deux fantômes vers le 03/11 ; chercher le pourquoi avec les prix Binance (volatilité réalisée contre prix du OUI) ; lire les parts réellement remplies des fantômes (la profondeur ci-dessus est un test sur les échanges, pas sur des carnets).

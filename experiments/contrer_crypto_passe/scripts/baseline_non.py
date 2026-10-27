@@ -16,7 +16,8 @@ def ts(s):
     try: return int(dt.datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp())
     except ValueError: return None
 import os
-ms = [json.loads(l) for l in open(D / os.environ.get("MARCHES", "marches.jsonl"))]
+ms = [json.loads(l) for nom in os.environ.get("MARCHES", "marches.jsonl").split(",") for l in open(D / nom)]  # plusieurs fichiers possibles (28/10 : 2024, 2025, 2026)
+seen = set(); ms = [m for m in ms if not (m["id"] in seen or seen.add(m["id"]))]
 ms = [m for m in ms if (m["vol"] or 0) >= VOL and "up or down" not in m["question"].lower() and sorted(map(str, m["prices"])) == ["0", "1"]]
 data = []
 for m in ms:
