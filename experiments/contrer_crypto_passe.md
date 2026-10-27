@@ -25,11 +25,14 @@ Par mois : 2026-06 +4,5 %, 07 −20,1 %, 08 −10,5 %, 09 −5,5 %, 10 +3,2 % (a
 - **Suivre** le mouvement (l'inverse) à 0,10-0,45 : +14,4 % (z +2,98) : le même effet que le NON bon marché ci-dessous, pas un signal de mouvement.
 - **NON à 0,10-0,45 sans aucun signal : +14,4 %** (1 111 paris, 398 gagnés pour 357,8, z +2,66, t par événement +1,70) mais **fragile** : sans ses 5 meilleurs jours −0,7 % ; juin +44 %, août −31 % ;
   tranche 0,20-0,30 −18,5 %. Le NON 0,05-0,10 fait +35 % (z +3,1) : billets, jamais joués.
-- **Dans les marchés « touche » (reach / dip to / hit), NON à 0,10-0,45 : 386 paris, 200 événements, +22,6 %, 163 gagnés pour 131,7 (z +3,44), t par événement +2,95, 6 mois sur 6.**
-  Dans les échelles « au-dessus de » : +10,0 % (t par événement +0,15). Bitcoin +8,4 %, Ethereum +19,0 %. Environ 30 découpages regardés.
-  **Verdict : indice** (6 mois seulement, découpage choisi après coup) → fantôme `toucher_non_crypto` (Kelly entier, biais supposé 0,05), pas de capital principal avant 30 nouveaux paris.
+- Dans les marchés « touche » (reach / dip to / hit), NON à 0,10-0,45 en juin-octobre : 386 paris, +22,6 % (z +3,44, 6 mois sur 6) ; dans les échelles « au-dessus de » : +10,0 %.
+  **Refait sur janvier-mai 2026** (12 150 marchés, `resultats_baseline_non_janv_mai.txt`, relevé `releve_marches.py 2026-01-01 … 2026-06-02`) : « touche » **−1,1 %** (306 paris, z −0,35) et « au-dessus de » **+29,4 %** (967 paris, z +4,99) : la sous-tranche s'inverse, pas de loi par genre.
+- **Le NON crypto à 0,10-0,45, tous genres, tient sur les deux périodes séparées** : juin-octobre 1 111 paris +14,4 % (z +2,66) ; janvier-mai 1 273 paris +22,1 % (496 gagnés pour 428,2, z +4,15, t par événement +3,17).
+  Total 2 384 paris, 894 gagnés pour 786 attendus. Fragile : 6 mois sur 10 positifs (jan +57 %, fév +18 %, mar −4 %, avr −23 %, mai +20 %, juin +44 %, juil −6 %, août −31 %, sept −8 %, oct +24 %),
+  sans ses 5 meilleurs jours +7,6 % (janvier-mai) et −0,7 % (juin-octobre). Ethereum +35 % (janvier-mai) et +19 % (juin-octobre), Bitcoin +6 % et +8 %. Tranche de prix payé 0,10-0,20 : +66 % puis +70 %.
+  ~30 découpages regardés. **Verdict : indice** → fantôme `crypto_non_bon_marche` (Kelly entier, biais supposé 0,05), pas de capital principal avant 30 nouveaux paris ; les billets du NON sous 0,10 (+35 % puis +19 %) ne sont jamais joués.
 
 ## Suite
-- Vers le 03/11 : juger `toucher_non_crypto` et les deux « audace » sur leurs nouveaux paris (gagnés contre attendus ; par événement).
-- Avant toute promotion : refaire le « touche NON » sur le premier semestre 2026 (le relevé démarre en juin ; `releve_marches.py 2026-01-01` et `releve_echanges.py`, environ 1 h) et sur Ethereum seul.
+- Vers le 03/11 : juger `crypto_non_bon_marche` et les deux « audace » sur leurs nouveaux paris (gagnés contre attendus ; par événement).
+- Avant toute promotion : remonter à 2025 (`releve_marches.py 2025-01-01 … 2026-01-01`), et chercher pourquoi (volatilité sous-estimée par le OUI proche du prix ?) avec les prix Binance.
 - Cette piste tient une leçon : un « avantage » trouvé dans 174 paris d'un fantôme et confirmé par un premier sous-échantillon (2 880 marchés, +8 %) a disparu à 8 974 marchés. Toujours refaire sur plus de données avant d'écrire « confirmé ».
