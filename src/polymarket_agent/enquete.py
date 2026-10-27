@@ -1128,9 +1128,52 @@ def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None
     return out
 
 
+def lire_experiences(racine) -> dict[str, str]:
+    """Comptes rendus de test sur le passé (experiments/**/*.md), SANS le journal, les listes de pistes, le carnet, les fiches d'enquête et les « vingt pistes »
+    (où une stratégie n'est que citée) : une stratégie qui n'apparaît dans aucun d'eux n'a pas de test sur le passé écrit (27/10/2026, decroissance_temps)."""
+    from pathlib import Path
+    out = {}
+    for chemin in sorted((Path(racine) / "experiments").rglob("*.md")):
+        nom = chemin.as_posix()
+        if any(x in nom for x in ("journal_recherche", "vingt_pistes.md", "carnet_experiences", "PISTES.md", "CHANTIERS.md", "/enquetes/")):
+            continue
+        try:
+            out[nom] = chemin.read_text(encoding="utf-8")
+        except OSError:
+            continue
+    return out
+
+
+def sans_test_passe(entries: dict[str, list[dict]], configs: dict, textes: dict[str, str] | None, min_buys: int = 20) -> list[dict]:
+    """Stratégies qui achètent (au moins `min_buys` achats) sans qu'aucun compte rendu d'experiments/ ne les nomme (nom ou classe) : leur thèse n'a jamais été rejouée
+    sur le passé. 27/10/2026 : `decroissance_temps` (76 achats, 49 % des mises contre une montée du prix, estimation du NON 0,874 pour 0,822 réalisé sur 742 paris du passé)
+    est restée sept jours dans l'arène sans test. Les filles (`mere`) héritent du test de leur mère. Constat « à regarder » : la parade est le skill `tester-une-piste`."""
+    if not textes:
+        return []
+    corpus = "\n".join(textes.values())
+    out = []
+    for name, rows in entries.items():
+        if name == "principal":
+            continue
+        strat = name.rsplit("_v", 1)[0]
+        cfg = (configs or {}).get(strat) or {}
+        if not isinstance(cfg, dict) or cfg.get("mere") or cfg.get("enabled") is False:
+            continue
+        buys = sum(1 for e in rows if e.get("type") == "BUY")
+        if buys < min_buys:
+            continue
+        mots = {strat, str(cfg.get("class") or strat)}
+        if not any(re.search(r"\b" + re.escape(m) + r"\b", corpus) for m in mots):
+            out.append(_finding("sans_test_passe", A_REGARDER, f"{name} : {buys} achats, aucun test sur le passé écrit dans experiments/",
+                                "La thèse de cette stratégie n'a jamais été rejouée sur des marchés réglés avec de vrais échanges (skill `tester-une-piste`). "
+                                "Rejouer sa règle sur le passé avant de juger ses paris en direct."))
+    return out
+
+
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
-        audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None) -> list[dict]:
+        audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None,
+        textes: dict[str, str] | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -1145,7 +1188,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries)
-                + copie_absente(entries, parts, now, days=max(days, 3)))
+                + copie_absente(entries, parts, now, days=max(days, 3)) + sans_test_passe(entries, configs, textes))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 
