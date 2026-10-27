@@ -64,3 +64,18 @@ Limite : seulement les marchés « d'ici / avant » (mots du titre), pas les mar
 Pour s'assurer que ce pipeline lit les mêmes choses : sur les 544 événements à ≥ 4 marchés de ce relevé (échelles), mêmes règles que `courbe_de_risque` (prix payé = premier échange de preneur dans les 6 h après fin − H, 0,03-0,97) :
 OUI à 7 / 14 / 30 jours **−11,6 % / −11,6 % / −6,9 %** (397 / 363 / 268 paris) contre −11,3 % / −13,1 % / −17,0 % (1 062 échelles) ; NON +0,3 % / +2,5 % / +4,1 % contre −0,3 % / +0,7 % / +8,1 %. Mêmes signes, mêmes ordres de grandeur : le pipeline est cohérent.
 Les deux relevés ne contredisent pas le résultat du jour : le OUI des **échelles** de dates se paie trop cher (−7 à −13 %), celui des marchés isolés à 3-35 % non (+4,0 %, z +0,9), et le NON ne bat pas ses prix.
+
+## Suite : `outsiders_surcotes` rejouée (27/10, 17 h 25 UTC) — écartée, stratégie coupée
+Troisième stratégie des « vingt pistes » du 20/10 jamais rejouée : « quand la somme des OUI d'un champ de candidats dépasse 1, les outsiders sont trop chers : acheter leur NON ». `experiments/outsiders_passe/` : 2 120 événements politiques réglés depuis le 01/01/2026
+(étiquette politics, `negRisk`, ≥ 5 marchés ; 39 161 marchés) avec tous leurs vrais échanges ; à fin − H, prix du OUI de chaque candidat (dernier échange dans les 12 h, ≥ 80 % des candidats cotés), somme ≥ 1 + surcote, NON des candidats à OUI 2-15 % au premier échange de preneur
+dans les 6 h, frais payés, règlement Gamma (`resultats.txt`) :
+
+| délai avant la fin | surcote ≥ 0,03 | surcote ≥ 0,10 | sans surcote exigée |
+|---|---|---|---|
+| 3 jours | +3,2 % (94 paris, 91 gagnés pour 88,0, t par événement +2,68) | +3,1 % (24) | +4,1 % (204) |
+| 7 jours | **−2,0 %** (124 paris, 113 pour 115,1, z −0,8) | −3,6 % (66) | −0,3 % (197) |
+| 14 jours | +4,9 % (4 paris) | — | +6,1 % (19) |
+| 30 jours | −5,5 % (20) | — | −5,5 % (20) |
+
+Par tranche d'OUI (7 jours, surcote ≥ 0,03) : 2-5 % −2,1 %, 5-10 % −2,5 %, 10-15 % −2,8 %. `idea_test.verdict` : **écartée** (z des prix −0,87). Le NON d'un outsider à 2-15 % vaut son prix : pas de biais des longs tirs payable après frais dans ces champs, avec ou sans excès de la somme.
+(Le rendement positif à 3 jours n'est pas robuste : 55 événements, un réglage sur douze, et le délai de 7 jours est négatif.) `outsiders_surcotes` coupée (`enabled: false`, tests mis à jour) ; ses 13 paris en direct (−2,6 %) disaient la même chose.

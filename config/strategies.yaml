@@ -2153,7 +2153,9 @@ paire_oui_non:
 
 outsiders_surcotes:
   explication: "Quand toutes les chances d'un « qui va gagner ? » font plus de 100 %, ce sont les outsiders qui sont trop chers : on parie qu'ils perdent."
-  enabled: true
+  # Coupée le 27/10/2026 (experiments/decroissance_passe.md, « outsiders_surcotes ») : jamais testée sur le passé ; rejouée sur 2 120 champs de candidats politiques réglés (39 161 marchés, vrais échanges, frais payés),
+  # NON des outsiders à 2-15 % quand la somme des OUI dépasse 1,03 : −2,0 % à 7 jours (124 paris, 113 gagnés pour 115,1, z −0,8), +3,2 % à 3 jours (94 paris, z +1,3), −5,5 % à 30 jours : pas d'avantage.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:

@@ -39,7 +39,7 @@ def test_repository_config_loads():
         "crypto_threshold_prix_bas", "crypto_threshold_24_72h", "nf_sport_patiente_prix_850_875",
         # Vingt nouvelles pistes (20/10/2026), lot A.
         "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
-        "outsiders_surcotes", "marches_jumeaux",
+        "marches_jumeaux",
         # Lot B.
         "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",
         "football_trois_issues", "compteur_tweets", "cotes_tennis",
