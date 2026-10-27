@@ -32,7 +32,7 @@ Ce n'est pas un carnet périmé : le prix payé est le vrai prix du carnet. C'es
 
 ## Suite : les catégories de ce relevé (27/10, 16 h-17 h UTC) — IA : indice faible → fantôme `ia_oui_sorties` ; pannes de ChatGPT : marché déjà aligné
 Contrôle par catégorie sur les mêmes marchés (6 catégories par mots du titre × 2 côtés, OUI et NON à 3-35 %, un pari par marché) puis relevé par étiquettes IA / tech / OpenAI / Claude depuis le 01/01/2025
-(`scripts/releve_tags.py` : 512 événements, 1 514 marchés de plus, 6 511 au total avec échanges ; `scripts/analyse3.py` → `resultats_categories.txt`) :
+(`scripts/releve_tags.py` : 512 événements et 1 514 marchés, en partie déjà dans le relevé général ; 2 084 événements et 6 511 marchés au total avec échanges ; `scripts/analyse3.py` → `resultats_categories.txt`) :
 - **Seule catégorie qui sort : l'IA** (marchés qui parlent de GPT, OpenAI, Anthropic, Gemini, Claude, Grok, DeepSeek, Qwen, « AI model »…). OUI à 0,10-0,40 : 105 paris, 41 gagnés pour 26,6, **+51,2 %** (z +3,36, t par événement +2,53) ;
   **hors pannes ChatGPT et classement de l'App Store : 91 paris, 33 gagnés pour 22,2, +45 %** (z +2,72, t +1,98), première moitié +20 % (z +0,8), seconde **+68 %** (z +3,0). Le NON des mêmes marchés : **−14,5 %** (143 paris, z −4,0, t −3,76).
   Autres catégories : géopolitique −0,4 % (NON) / −2,4 % (OUI) ; personnes qui partent −14 % (NON) ; politique américaine −5,8 % (NON) ; « autre » −2,2 % / −1,2 %.
