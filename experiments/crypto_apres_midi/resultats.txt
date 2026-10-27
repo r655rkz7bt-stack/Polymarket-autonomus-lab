@@ -1,0 +1,18 @@
+== fenêtre 5 min après midi+60 s : marchés non encore à 0,985 : 216, avec un achat du gagnant : 48
+   payé <= 0.99: 15 marchés, gain moyen +6847.2 %, parts du premier échange médiane 257
+   payé <= 0.97: 5 marchés, gain moyen +20539.3 %, parts du premier échange médiane 66
+   payé <= 0.95: 3 marchés, gain moyen +34230.0 %, parts du premier échange médiane 66
+   payé <= 0.9: 3 marchés, gain moyen +34230.0 %, parts du premier échange médiane 66
+   par événements: 5 | prix payé médian 0.999
+== fenêtre 15 min après midi+60 s : marchés non encore à 0,985 : 216, avec un achat du gagnant : 48
+   payé <= 0.99: 15 marchés, gain moyen +6847.2 %, parts du premier échange médiane 257
+   payé <= 0.97: 5 marchés, gain moyen +20539.3 %, parts du premier échange médiane 66
+   payé <= 0.95: 3 marchés, gain moyen +34230.0 %, parts du premier échange médiane 66
+   payé <= 0.9: 3 marchés, gain moyen +34230.0 %, parts du premier échange médiane 66
+   par événements: 5 | prix payé médian 0.999
+== fenêtre 60 min après midi+60 s : marchés non encore à 0,985 : 216, avec un achat du gagnant : 53
+   payé <= 0.99: 19 marchés, gain moyen +5409.4 %, parts du premier échange médiane 400
+   payé <= 0.97: 7 marchés, gain moyen +14680.7 %, parts du premier échange médiane 66
+   payé <= 0.95: 4 marchés, gain moyen +25688.8 %, parts du premier échange médiane 161
+   payé <= 0.9: 4 marchés, gain moyen +25688.8 %, parts du premier échange médiane 161
+   par événements: 7 | prix payé médian 0.999
