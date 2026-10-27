@@ -160,8 +160,10 @@ def test_new_gamma_fields_and_ended_markets_stay_away_from_other_strategies():
 def test_all_twenty_strategies_lot_a_load_from_the_repository_config():
     from polymarket_agent.strategy_engine import load_strategies
     ids = {s.strategy_id for s in load_strategies(ROOT / "config" / "strategies.yaml")}
-    assert {"decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
-            "outsiders_surcotes", "marche_neuf", "marches_jumeaux"} <= ids
+    assert {"echelle_dates", "coherence_match", "implication_politique", "paire_oui_non", "marches_jumeaux"} <= ids
+    assert "outsiders_surcotes" not in ids  # coupée le 27/10/2026 : −2,0 % sur 124 paris du passé (experiments/decroissance_passe.md)
+    assert "marche_neuf" not in ids  # coupée le 27/10/2026 : −2,3 à −4,5 % sur 862-993 favoris de marchés neufs (experiments/decroissance_passe.md)
+    assert "decroissance_temps" not in ids  # coupée le 27/10/2026 : −2,6 % sur 742 paris du passé (experiments/decroissance_passe.md)
     assert "choc_sans_nouvelle" not in ids  # éliminée par l'arène, coupée le 20/10/2026 (enabled: false)
 
 
@@ -461,3 +463,6 @@ def test_fewer_kills_buys_one_under_per_game_on_the_line_closest_to_even(tmp_pat
                         ("fO", "0.50", "0.51"), ("fU", "0.48", "0.49")))
     out = s.propose([low, mid, high, game2, wrong, early, started], books, _state(tmp_path), LIMITS, "b1")
     assert sorted(p.market_id for p in out.proposals) == ["b", "d"]
+    # Une abstention dit pourquoi (27/10/2026 : « abstentions {} » alors que des marchés de LoL passaient le filtre du titre).
+    reasons = out.abstentions if isinstance(out.abstentions, dict) else dict(out.abstentions)
+    assert reasons.get("pas un total de kills d'une partie") == 1 and reasons.get("hors de la fenêtre avant le match") == 2

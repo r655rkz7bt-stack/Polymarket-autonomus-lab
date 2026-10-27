@@ -1,0 +1,42 @@
+événements 1876 marchés 6080
+== règle de la stratégie (un pari par marché): n=  742 évts= 460 gagnés=  610 attendus=  624.7 z=-1.53 rendement=-2.6% t_évt=-2.60
+   ratio prix/p6 0-0.8: n=    2 évts=   2 gagnés=    2 attendus=    1.8 z=+0.50 rendement=+12.3% t_évt=+0.00
+   ratio prix/p6 0.8-1.0: n=   70 évts=  63 gagnés=   48 attendus=   56.4 z=-2.65 rendement=-15.4% t_évt=-2.54
+   ratio prix/p6 1.0-1.25: n=  356 évts= 270 gagnés=  287 attendus=  293.3 z=-0.90 rendement=-2.5% t_évt=-1.27
+   ratio prix/p6 1.25-2: n=  231 évts= 191 gagnés=  199 attendus=  199.2 z=-0.05 rendement=-0.3% t_évt=-0.46
+   ratio prix/p6 2-4: n=   61 évts=  58 gagnés=   54 attendus=   54.3 z=-0.11 rendement=-0.6% t_évt=-0.28
+   ratio prix/p6 4-1000000000.0: n=   22 évts=  17 gagnés=   20 attendus=   19.7 z=+0.20 rendement=+1.3% t_évt=-0.27
+   gap 0-0.02: n=  227 évts= 183 gagnés=  190 attendus=  198.8 z=-1.83 rendement=-4.6% t_évt=-1.87
+   gap 0.02-0.05: n=  296 évts= 233 gagnés=  249 attendus=  250.6 z=-0.27 rendement=-0.9% t_évt=-1.33
+   gap 0.05-0.1: n=  151 évts= 133 gagnés=  124 attendus=  122.9 z=+0.24 rendement=+0.6% t_évt=+0.40
+   gap 0.1-1: n=   68 évts=  62 gagnés=   47 attendus=   52.4 z=-1.61 rendement=-10.8% t_évt=-1.25
+   premier déclenchement à H=30 j: n=   49 évts=  46 gagnés=   41 attendus=   40.3 z=+0.27 rendement=+1.3% t_évt=+0.25
+   premier déclenchement à H=14 j: n=   67 évts=  63 gagnés=   58 attendus=   55.4 z=+0.85 rendement=+4.3% t_évt=+0.83
+   premier déclenchement à H=7 j: n=   76 évts=  63 gagnés=   61 attendus=   63.8 z=-0.90 rendement=-4.6% t_évt=-1.06
+   premier déclenchement à H=3 j: n=   77 évts=  69 gagnés=   65 attendus=   65.8 z=-0.27 rendement=-1.5% t_évt=-0.71
+   premier déclenchement à H=1 j: n=   91 évts=  70 gagnés=   76 attendus=   77.4 z=-0.43 rendement=-2.2% t_évt=-0.90
+{"paris": 742, "z_prix": -1.74, "mois_gagnants": "6/14", "moitie_1": {"mois": ["2025-09", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"], "paris": 321, "rendement": 0.0107}, "moitie_2": {"mois": ["2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10", "2026-11"], "paris": 421, "rendement": -0.0555}, "verdict": "écartée"}
+estimation moyenne du NON 0.874, gagnés réels 0.822, prix moyen payé 0.842
+NON, règle de la stratégie           n=  742 évts= 460 gagnés=  610 attendus=  624.7 z=-1.53 rendement=-2.6% t_évt=-2.60
+NON sans règle de gap (OUI 3-35 %)   n= 1255 évts= 694 gagnés= 1030 attendus= 1061.0 z=-2.52 rendement=-3.2% t_évt=-3.73
+NON gap >= 0,05                      n=  294 évts= 220 gagnés=  231 attendus=  235.8 z=-0.72 rendement=-2.4% t_évt=-0.61
+NON OUI 0,03-0,15                    n=  437 évts= 322 gagnés=  398 attendus=  401.4 z=-0.60 rendement=-1.0% t_évt=-0.99
+NON OUI 0,15-0,35                    n=  414 évts= 301 gagnés=  305 attendus=  320.2 z=-1.82 rendement=-5.2% t_évt=-2.09
+NON p6 sur 6 h                       n=  688 évts= 424 gagnés=  568 attendus=  579.1 z=-1.20 rendement=-2.2% t_évt=-2.41
+NON tous horizons (paris liés)       n= 1159 évts= 460 gagnés=  948 attendus=  979.6 z=-2.66 rendement=-3.5% t_évt=-3.12
+NON OUI 0,35-0,65                    n=  445 évts= 327 gagnés=  229 attendus=  239.0 z=-0.97 rendement=-5.0% t_évt=-1.00
+OUI 3-35 %                           n= 1174 évts= 656 gagnés=  217 attendus=  205.6 z=+0.92 rendement=+4.0% t_évt=+1.63
+OUI 3-15 %                           n=  851 évts= 534 gagnés=   81 attendus=   83.4 z=-0.28 rendement=-4.3% t_évt=+0.91
+OUI 15-35 %                          n=  635 évts= 439 gagnés=  173 attendus=  161.8 z=+1.05 rendement=+5.5% t_évt=+1.99
+OUI 20-35 %                          n=  468 évts= 349 gagnés=  146 attendus=  132.5 z=+1.40 rendement=+8.6% t_évt=+2.08
+OUI 15-45 %                          n=  744 évts= 478 gagnés=  226 attendus=  217.7 z=+0.69 rendement=+2.4% t_évt=+1.75
+OUI 10-30 %                          n=  729 évts= 472 gagnés=  158 attendus=  149.5 z=+0.80 rendement=+4.2% t_évt=+1.59
+sauts >= 1,5x : n=  184 évts= 153 gagnés=  159 attendus=  160.9 z=-0.44 rendement=-1.4% t_évt=-0.36
+sauts < 1,5x  : n=  558 évts= 381 gagnés=  451 attendus=  463.8 z=-1.50 rendement=-3.1% t_évt=-2.03
+OUI 15-35 % : moitié 1 -0.1198 ( 273 paris) moitié 2 0.1847 ( 362 )
+   OUI 15-35 %, premier déclenchement à 30 j : n=   68 évts=  62 gagnés=   15 attendus=   17.8 z=-0.79 rendement=-16.9% t_évt=-0.51
+   OUI 15-35 %, premier déclenchement à 14 j : n=   76 évts=  72 gagnés=   15 attendus=   18.8 z=-1.01 rendement=-21.1% t_évt=-1.40
+   OUI 15-35 %, premier déclenchement à 7 j : n=   72 évts=  69 gagnés=   18 attendus=   17.8 z=+0.05 rendement=-0.3% t_évt=-0.05
+   OUI 15-35 %, premier déclenchement à 3 j : n=   59 évts=  56 gagnés=   15 attendus=   14.5 z=+0.16 rendement=+1.9% t_évt=+0.42
+   OUI 15-35 %, premier déclenchement à 1 j : n=   61 évts=  58 gagnés=   21 attendus=   16.3 z=+1.41 rendement=+26.2% t_évt=+1.19
+   OUI 15-35 % sans ses 5 meilleurs événements : n=  625 évts= 434 gagnés=  163 attendus=  158.8 z=+0.39 rendement=+1.2% t_évt=+1.50

@@ -66,7 +66,7 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 5 | Open-Meteo et NWS : prévisions météo | `api.open-meteo.com`, `api.weather.gov` | marchés de température / pluie / neige | en cours : relevés NOAA faits (`meteo_metar`, 15/10/2026) ; prévisions à faire |
 | 6 | USGS : séismes en direct (GeoJSON) | `earthquake.usgs.gov` | marchés « séisme de magnitude X avant… » | fait le 24/10/2026 (lecteur `sources/usgs.py`, `seismes.py`, fantôme `seismes_marche` ; `experiments/seismes.md`) |
 | 7 | Launch Library 2 : lancements spatiaux | `ll.thespacedevs.com` | marchés SpaceX / lancements | fait le 24/10/2026 (lecteur `sources/ll2.py`, `spacex.py`, fantôme `spacex_cumul` ; `experiments/spacex_cadence.md`) ; reste : Starship (« flight test 15 by… »), compteur annuel en fin d'année |
-| 8 | Classement App Store d'Apple | `rss.marketingtools.apple.com` | marchés « appli n°1 » (ChatGPT, Threads…) | à faire |
+| 8 | Classement App Store d'Apple | `rss.applemarketingtools.com` (`rss.marketingtools.apple.com` expire depuis la routine) | marchés « appli n°1 » (ChatGPT, Threads…) | fait le 27/10/2026 : lecteur `sources/appstore.py`, `appstore.py`, fantôme `classement_appstore` (`experiments/appstore_direct.md`) ; à étalonner sur `appstore:histo` |
 | 9 | Classement des modèles d'IA (LMArena, jeux de données publics) | `huggingface.co` (API publique des jeux de données) | marchés « meilleur modèle d'IA à la date X » | à faire |
 | 10 | Wikipédia : pages vues | `wikimedia.org` (API REST Wikimedia) | pics d'attention avant un mouvement de prix | à faire |
 | 11 | Federal Register : décrets et textes officiels américains | `www.federalregister.gov` (API publique) | marchés sur décrets, droits de douane, nominations | à faire |

@@ -1,0 +1,17 @@
+événements avec échanges 2120
+H= 3 j surcote>=0.00 : n=  204 évts= 116 gagnés=  199 attendus=  190.8 z=+2.39 rendement=+4.1% t_évt=+3.27
+H= 3 j surcote>=0.03 : n=   94 évts=  55 gagnés=   91 attendus=   88.0 z=+1.30 rendement=+3.2% t_évt=+2.68
+H= 3 j surcote>=0.10 : n=   24 évts=  13 gagnés=   23 attendus=   22.3 z=+0.60 rendement=+3.1% t_évt=+0.80
+H= 7 j surcote>=0.00 : n=  197 évts=  76 gagnés=  183 attendus=  183.2 z=-0.06 rendement=-0.3% t_évt=+0.21
+H= 7 j surcote>=0.03 : n=  124 évts=  47 gagnés=  113 attendus=  115.1 z=-0.77 rendement=-2.0% t_évt=-0.21
+H= 7 j surcote>=0.10 : n=   66 évts=  21 gagnés=   59 attendus=   61.1 z=-1.04 rendement=-3.6% t_évt=+0.39
+H=14 j surcote>=0.00 : n=   19 évts=  12 gagnés=   19 attendus=   17.9 z=+1.10 rendement=+6.1% t_évt=+6.43
+H=14 j surcote>=0.03 : n=    4 évts=   3 gagnés=    4 attendus=    3.8 z=+0.45 rendement=+4.9% t_évt=+2.89
+H=14 j surcote>=0.10 : 0 cas
+H=30 j surcote>=0.00 : n=   20 évts=   5 gagnés=   18 attendus=   19.0 z=-1.10 rendement=-5.5% t_évt=-0.74
+H=30 j surcote>=0.03 : n=   20 évts=   5 gagnés=   18 attendus=   19.0 z=-1.10 rendement=-5.5% t_évt=-0.74
+H=30 j surcote>=0.10 : 0 cas
+   OUI 0.02-0.05 (H=7, surcote>=0,03) : n=   50 évts=  34 gagnés=   47 attendus=   47.9 z=-0.75 rendement=-2.1% t_évt=-0.02
+   OUI 0.05-0.1 (H=7, surcote>=0,03) : n=   39 évts=  30 gagnés=   35 attendus=   35.8 z=-0.50 rendement=-2.5% t_évt=-0.10
+   OUI 0.1-0.15 (H=7, surcote>=0,03) : n=   32 évts=  24 gagnés=   28 attendus=   28.7 z=-0.43 rendement=-2.8% t_évt=-0.55
+{'paris': 124, 'verdict': 'écartée', 'z_prix': -0.87, 'moitie_1': {'mois': ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05'], 'paris': 84, 'rendement': -0.0233}, 'moitie_2': {'mois': ['2026-06', '2026-07', '2026-08', '2026-09', '2026-10'], 'paris': 40, 'rendement': 0.016}}

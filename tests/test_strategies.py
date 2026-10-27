@@ -38,8 +38,8 @@ def test_repository_config_loads():
         "parking_politique", "nf_sport_patiente_tennis", "nf_tennis_prix_bas", "nf_tennis_prix_bas_vainqueur", "nf_tennis_prix_bas_800_850", "statu_quo_ia", "nf_tennis_debut_match",
         "crypto_threshold_prix_bas", "crypto_threshold_24_72h", "nf_sport_patiente_prix_850_875",
         # Vingt nouvelles pistes (20/10/2026), lot A.
-        "decroissance_temps", "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
-        "outsiders_surcotes", "marche_neuf", "marches_jumeaux",
+        "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
+        "marches_jumeaux",
         # Lot B.
         "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",
         "football_trois_issues", "compteur_tweets", "cotes_tennis",
@@ -57,7 +57,7 @@ def test_repository_config_loads():
         # Expériences audacieuses (27/10/2026, « vois les pertes comme des expériences »).
         "contrer_crypto_audace", "contrer_crypto_patiente_audace", "crypto_non_bon_marche",
         # Comptes suspects (27/10/2026, affaire du Ballon d'Or).
-        "suivre_inities"])
+        "suivre_inities", "classement_appstore", "ia_oui_sorties"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
@@ -69,7 +69,7 @@ def test_repository_config_loads():
                                                                    "football_trois_issues", "compteur_tweets", "compteur_truth", "cotes_tennis",
                                                                    "mots_prononces", "mots_nouveaux", "fatigue_nhl",
                                                                    "outsider_itf", "cpi_tranches", "jobs_favori_non", "vague_volume", "moins_de_cartes", "moins_de_kills", "saison_non", "candidats_non", "rallies_non", "rallies_non_favori", "mentions_non", "mentions_non_outsider", "detroits_tranches", "detroits_marche_log", "detroits_non_normal", "seismes_marche", "box_office_favori", "spacex_cumul", "toucher_metaux",
-                                                                   "suivre_inities")))
+                                                                   "suivre_inities", "classement_appstore")))
 
 
 def test_param_outside_bounds_is_refused():

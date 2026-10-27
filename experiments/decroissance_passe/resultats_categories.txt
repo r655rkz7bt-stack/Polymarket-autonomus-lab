@@ -1,0 +1,37 @@
+== catégories, marchés de février-octobre 2026 (relevé général)
+NON tous : n= 1255 évts= 694 gagnés= 1030 attendus= 1061.0 z=-2.52 rendement=-3.2% t_évt=-3.73
+   autre                    n=  528 évts= 291 gagnés=  437 attendus=  445.2 z=-1.03 rendement=-2.2% t_évt=-1.41
+   crypto                   n=    2 évts=   2 gagnés=    2 attendus=    1.6 z=+0.76 rendement=+24.9% t_évt=+0.00
+   geopolitique             n=  411 évts= 226 gagnés=  347 attendus=  348.3 z=-0.19 rendement=-0.4% t_évt=-2.24
+   ia_tech                  n=  153 évts=  88 gagnés=  117 attendus=  128.7 z=-2.68 rendement=-9.5% t_évt=-2.81
+   personnes_hors_fonction  n=   38 évts=  28 gagnés=   28 attendus=   32.5 z=-2.16 rendement=-14.1% t_évt=-0.99
+   trump_politique          n=  123 évts=  65 gagnés=   99 attendus=  104.7 z=-1.51 rendement=-5.8% t_évt=-1.07
+OUI tous : n= 1174 évts= 656 gagnés=  217 attendus=  205.6 z=+0.92 rendement=+4.0% t_évt=+1.63
+   autre                    n=  497 évts= 265 gagnés=   89 attendus=   88.4 z=+0.08 rendement=-1.2% t_évt=+0.93
+   crypto                   n=    2 évts=   2 gagnés=    0 attendus=    0.5 z=-0.83 rendement=-100.0% t_évt=+0.00
+   geopolitique             n=  374 évts= 213 gagnés=   64 attendus=   65.4 z=-0.20 rendement=-2.4% t_évt=+0.86
+   ia_tech                  n=  153 évts=  89 gagnés=   36 attendus=   26.5 z=+2.13 rendement=+32.7% t_évt=+1.80
+   personnes_hors_fonction  n=   39 évts=  31 gagnés=    9 attendus=    6.0 z=+1.42 rendement=+47.7% t_évt=+0.73
+   trump_politique          n=  109 évts=  62 gagnés=   19 attendus=   18.9 z=+0.03 rendement=-1.1% t_évt=-1.33
+== IA (relevé général + étiquettes IA / tech, depuis 2025) : 2084 événements
+IA (mot IA)                        oui 0.03 0.35 n=  144 évts=  93 gagnés=   38 attendus=   25.5 z=+2.86 rendement=+45.9% t_évt=+1.70
+IA (mot IA)                        non 0.03 0.35 n=  143 évts=  90 gagnés=  103 attendus=  120.1 z=-4.03 rendement=-14.5% t_évt=-3.76
+IA (mot IA)                        oui 0.1 0.4 n=  105 évts=  72 gagnés=   41 attendus=   26.6 z=+3.36 rendement=+51.2% t_évt=+2.53
+IA hors pannes et classement app   oui 0.03 0.35 n=  125 évts=  78 gagnés=   29 attendus=   20.6 z=+2.11 rendement=+38.0% t_évt=+1.04
+IA hors pannes et classement app   non 0.03 0.35 n=  121 évts=  73 gagnés=   92 attendus=  101.6 z=-2.46 rendement=-9.8% t_évt=-2.43
+IA hors pannes et classement app   oui 0.1 0.4 n=   91 évts=  59 gagnés=   33 attendus=   22.2 z=+2.72 rendement=+45.4% t_évt=+1.98
+hors pannes 0,10-0,40 : 1re moitié n=   45 évts=  36 gagnés=   13 attendus=   10.7 z=+0.84 rendement=+20.2% t_évt=+0.49 | 2e n=   46 évts=  26 gagnés=   20 attendus=   11.6 z=+2.98 rendement=+68.2% t_évt=+2.57
+sans les 5 meilleurs événements n=   83 évts=  54 gagnés=   26 attendus=   20.5 z=+1.46 rendement=+24.5% t_évt=+0.64
+  H 30 n=   15 évts=  13 gagnés=    3 attendus=    3.4 z=-0.23 rendement=-12.4% t_évt=-1.58
+  H 14 n=   10 évts=  10 gagnés=    2 attendus=    2.5 z=-0.39 rendement=-22.2% t_évt=-1.48
+  H 7 n=    9 évts=   9 gagnés=    4 attendus=    2.6 z=+1.09 rendement=+51.4% t_évt=+0.61
+  H 3 n=    7 évts=   6 gagnés=    3 attendus=    1.8 z=+1.11 rendement=+63.8% t_évt=+0.28
+  H 1 n=    5 évts=   4 gagnés=    2 attendus=    1.1 z=+1.02 rendement=+76.6% t_évt=+0.25
+IA 0,10-0,40 (avec pannes) : profondeur médiane 3.8
+  parts achetables >= 0 n=  105 évts=  72 gagnés=   41 attendus=   26.6 z=+3.36 rendement=+51.2% t_évt=+2.53
+  parts achetables >= 20 n=   41 évts=  30 gagnés=   13 attendus=    9.8 z=+1.22 rendement=+30.3% t_évt=+0.79
+  parts achetables >= 100 n=   26 évts=  20 gagnés=   10 attendus=    6.2 z=+1.80 rendement=+58.0% t_évt=+1.16
+  parts achetables >= 400 n=    9 évts=   9 gagnés=    3 attendus=    2.7 z=+0.19 rendement=+7.6% t_évt=-0.06
+== pannes ChatGPT
+oui n=    8 évts=   6 gagnés=    7 attendus=    2.7 z=+3.36 rendement=+157.2% t_évt=+4.38
+non n=   12 évts=  10 gagnés=    3 attendus=    8.9 z=-4.06 rendement=-66.3% t_évt=-3.79

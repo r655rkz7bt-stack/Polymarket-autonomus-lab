@@ -125,6 +125,10 @@ scanner:
               18: {pages: 2, min_liquidity: 200, min_volume_24h: 0, max_spread: 0.15},
               100339: {pages: 1, min_liquidity: 200, min_volume_24h: 0, max_spread: 0.15},
               100: {pages: 1, min_liquidity: 200, min_volume_24h: 0, max_spread: 0.15},
+              # 27/10/2026 : étiquette app-store (970), « #1 Free / Paid App in the US Apple App Store on <date> » (`classement_appstore`) : ~1 400 $ de liquidité par événement, 12-13 marchés
+              970: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
+              # 27/10/2026 : étiquette ai (439), « <modèle> released by <date> » (`ia_oui_sorties`) : ~460 marchés « by », 10-180 k$ de volume, 100-6 000 $ de liquidité chacun
+              439: {pages: 3, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.30},
               # 24/10/2026 : étiquette spacex (63), compteurs « How many SpaceX launches in <mois / année> » (`spacex_cumul`) : 100-6 600 $ de liquidité par tranche, des tranches déjà cotées 0,99 (que la stratégie veut voir), l'année finit dans 68 jours
               63: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60, max_favorite_price: 0.9999, max_horizon_hours: 2400},
               # 24/10/2026 : étiquettes gold (101589) et silver (100733), échelles « What will Gold / Silver hit Week of … » (`toucher_metaux`), 100-3 000 $ de liquidité par barre
@@ -277,6 +281,7 @@ sources:
   xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
+  appstore: {enabled: true, every_minutes: 10, n: 10}           # 27/10/2026 : classements de l'App Store américain (rss.applemarketingtools.com, arbitre des marchés « #1 Free / Paid App on <date> »), sans clé
   usgs: {enabled: true, every_minutes: 10, days: 10}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 10 derniers jours ; gratuit, sans clé
   goldapi: {enabled: true, every_minutes: 5, keep_days: 30}      # 24/10/2026 : prix au comptant de l'or et de l'argent (gold-api.com, sans clé), journal `prix_matieres` pour `toucher_metaux`
   ll2: {enabled: true, every_minutes: 120, days: 430}            # 24/10/2026 : lancements de SpaceX (Launch Library 2, sans clé, ~15 appels/h) pour les marchés « How many SpaceX launches in … »

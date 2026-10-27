@@ -595,3 +595,28 @@ def test_a_share_that_just_started_is_judged_from_its_first_copy():
     ghost = _ledger(*[_buy(t + timedelta(hours=i), f"t{i}", 0.9, 15, strategy="mdc") for i in range(13)])
     entered = _ledger(_buy(t + timedelta(hours=12), "t12", 0.9, 5, strategy="mdc"))
     assert enquete.copie_absente({"mdc_v1.0.0": ghost, "principal": entered}, {"mdc_v1.0.0": 0.087}, NOW, min_tokens=2) == []
+
+
+def test_a_strategy_with_buys_but_no_written_test_on_the_past_is_a_lead(tmp_path):
+    """27/10/2026 : `decroissance_temps` (76 achats en 7 jours) n'avait jamais été rejouée sur le passé ; −2,6 % sur 742 paris de marchés réglés."""
+    buys = [_buy(NOW - timedelta(hours=h), f"t{h}", 0.8, 10, strategy="decroissance_temps") for h in range(25)]
+    entries = {"decroissance_temps_v1.0.0": _ledger(*buys), "principal": _ledger(), "peu_v1.0.0": _ledger(*buys[:5])}
+    configs = {"decroissance_temps": {"class": "decroissance_temps", "enabled": True}, "peu": {"class": "peu", "enabled": True},
+               "fille": {"class": "decroissance_temps", "mere": "decroissance_temps"}}
+    assert enquete.sans_test_passe(entries, configs, None) == []                                      # pas de comptes rendus lus : rien
+    found = enquete.sans_test_passe(entries, configs, {"experiments/autre.md": "une autre stratégie : nf_sport"})
+    assert [f["controle"] for f in found] == ["sans_test_passe"] and found[0]["gravite"] == enquete.A_REGARDER
+    assert "decroissance_temps_v1.0.0" in found[0]["titre"] and "25 achats" in found[0]["titre"]       # `peu` n'a que 5 achats
+    assert enquete.sans_test_passe(entries, configs, {"experiments/decroissance_passe.md": "decroissance_temps rejouée : −2,6 %"}) == []
+    entries["fille_v1.0.0"] = _ledger(*buys)
+    assert not any("fille" in f["titre"] for f in enquete.sans_test_passe(entries, configs, {"experiments/x.md": "rien"}))   # une fille hérite du test de sa mère
+    configs["decroissance_temps"]["enabled"] = False
+    assert enquete.sans_test_passe(entries, configs, {"experiments/x.md": "rien"}) == []                # coupée : plus rien à tester
+
+
+def test_read_experiments_skips_the_journal_the_pistes_lists_and_the_enquiries(tmp_path):
+    exp = tmp_path / "experiments"
+    (exp / "enquetes").mkdir(parents=True)
+    for name, text in (("journal_recherche.md", "a"), ("vingt_pistes.md", "b"), ("PISTES.md", "c"), ("carnet_experiences.md", "d"), ("enquetes/x.md", "e"), ("test.md", "f")):
+        (exp / name).write_text(text, encoding="utf-8")
+    assert list(enquete.lire_experiences(tmp_path).values()) == ["f"]

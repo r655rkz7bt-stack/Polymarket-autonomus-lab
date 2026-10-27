@@ -74,7 +74,8 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, 
         parts = {n: float(w) for n, w in (json.loads(db.get_value("repartition_principal") or "{}").get("parts") or {}).items()} if db is not None else None
     except (ValueError, TypeError, AttributeError):
         parts = None
-    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions, parts=parts)
+    return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions, parts=parts,
+                         textes=enquete.lire_experiences(ROOT))
 
 
 def _full_mothers(main_ledger, arena_cfg: dict) -> tuple[dict[str, int], int | None]:

@@ -2092,7 +2092,9 @@ crypto_threshold_non:
 
 decroissance_temps:
   explication: "« Est-ce que ça arrivera d'ici le 31 ? » : si rien ne se passe, le OUI doit baisser chaque jour ; s'il ne baisse pas assez, on achète le NON."
-  enabled: true
+  # Coupée le 27/10/2026 (experiments/decroissance_passe.md) : jamais testée sur le passé jusqu'ici ; rejouée sur 6 080 marchés « d'ici / avant » réglés (février-octobre, vrais échanges, frais payés),
+  # la règle perd −2,6 % (742 paris, 610 gagnés pour 624,7, t par événement −2,60) et son estimation du NON (0,874) dépasse ce qui arrive (0,822). Ses positions ouvertes se règlent.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2151,7 +2153,9 @@ paire_oui_non:
 
 outsiders_surcotes:
   explication: "Quand toutes les chances d'un « qui va gagner ? » font plus de 100 %, ce sont les outsiders qui sont trop chers : on parie qu'ils perdent."
-  enabled: true
+  # Coupée le 27/10/2026 (experiments/decroissance_passe.md, « outsiders_surcotes ») : jamais testée sur le passé ; rejouée sur 2 120 champs de candidats politiques réglés (39 161 marchés, vrais échanges, frais payés),
+  # NON des outsiders à 2-15 % quand la somme des OUI dépasse 1,03 : −2,0 % à 7 jours (124 paris, 113 gagnés pour 115,1, z −0,8), +3,2 % à 3 jours (94 paris, z +1,3), −5,5 % à 30 jours : pas d'avantage.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2169,7 +2173,9 @@ outsiders_surcotes:
 
 marche_neuf:
   explication: "Un marché tout neuf hésite trop : si un camp est déjà favori, on parie qu'il l'est encore plus que son prix ne le dit."
-  enabled: true
+  # Coupée le 27/10/2026 (experiments/decroissance_passe.md, « marche_neuf ») : jamais testée sur le passé ; rejouée sur 862 à 993 favoris à 0,60-0,88 de marchés de moins de 24 h (hors sport, vrais échanges, frais payés),
+  # elle perd −2,3 à −4,5 % à 2, 6, 12 et 23 h après la création (z −1,1 à −2,2) : le favori d'un marché neuf n'est pas sous-coté. Ses 80 paris en direct (64,5 gagnés pour 63,5 attendus, +28 €) étaient de la chance de mise.
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -3759,3 +3765,57 @@ suivre_inities:
     min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+
+classement_appstore:
+  explication: "Apple publie le classement des applis les plus téléchargées, et le marché se règle sur ce classement à midi (heure de New York) : quelques heures avant, on regarde qui est n°1 et on achète son OUI s'il est moins cher que ses chances de le rester."
+  # Expérience audacieuse (27/10/2026, experiments/appstore_direct.md) : lire en direct la source qui tranche (chantier n°8 : « App Store en direct », laissé ouvert par familles_tranches.md).
+  # Sur le passé on ne peut rien tester en direct (Apple n'archive pas le classement) ; l'archive des marchés (182 événements réglés, familles_tranches.md) montre que le gagnant de la semaine
+  # précédente, coté 0,74-0,80, gagne 48 fois pour 59,3 attendues : le marché surcote la stabilité du classement SANS regarder le classement ; ici on ne joue que le n°1 du moment, dans les 6 h.
+  class: classement_appstore
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    Le n°1 d'un classement qui se règle dans 1 à 6 heures est connu de tous mais peu de gens regardent le flux : marchés de 1 400 $ de liquidité, 5 000 $ de volume par jour, 0 frais (feesEnabled faux).
+    Chance de rester n°1 supposée 0,95 (≤ 1 h), 0,90 (≤ 3 h), 0,85 (≤ 6 h), sans mesure. Une perte apprendrait que le classement bouge plus vite que ces valeurs (alors le journal `appstore:histo`,
+    relevé toutes les 30 minutes, les corrige) ou que le flux d'Apple retarde sur l'App Store. Mise : dixième de Kelly (environ 5 % du fantôme) tant que la chance de rester n°1 n'est pas étalonnée. Test de substitution sur le passé (le favori du marché à la place du n°1, 125 événements hebdomadaires) : le marché est calibré sur son favori (gratuit −1,9 à +0,3 %, 41-45 paris) ; seul le payant à 6 h sort (+14,4 %, 27 paris, z +1,6) : l'avantage attendu est étroit et ne vient que des vendredis où le n°1 de l'App Store n'est pas le favori du marché.
+  params:
+    min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance supposée − prix demandé
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}
+    min_price:      {value: 0.30, min: 0.05, max: 0.90}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 0.5, min: 0.1, max: 24}      # classement relevé toutes les 10 minutes
+    min_hours:      {value: 0.25, min: 0.0, max: 6}       # le classement de midi est presque fixé dans le dernier quart d'heure
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 0.1, min: 0.0, max: 2.0}      # dixième de Kelly : la chance de rester n°1 est une hypothèse, pas une mesure (Kelly entier miserait 14 % du fantôme)
+
+ia_oui_sorties:
+  explication: "Quand on demande « tel modèle d'IA sortira-t-il d'ici telle date ? », les gens sous-estiment la vitesse de l'IA : on achète le OUI quand il coûte entre 0,10 et 0,40."
+  # Expérience audacieuse (27/10/2026, experiments/decroissance_passe.md, « Suite : IA »). Né d'un contrôle de catégories, PAS d'une idée testée d'avance : dans 6 080 marchés « d'ici / avant <date> » réglés
+  # (puis 6 511 avec les étiquettes IA/tech depuis 2025), le OUI des marchés qui parlent d'IA (modèles, entreprises d'IA) payé 0,10-0,40 : 91 paris hors pannes ChatGPT, 33 gagnés pour 22,2 attendus (z +2,7),
+  # +45 % après frais, t par événement +2,0, première moitié +20 % (z +0,8), seconde +68 % (z +3,0). Le NON des mêmes marchés : −14,5 % (z −4,0). ~16 découpages regardés. FRAGILE : échanges minces (profondeur
+  # médiane 3,8 parts achetables dans l'heure ; ≥ 400 parts : 9 paris, +7,6 %), gain porté par 2026, aucun mécanisme prouvé (hypothèse : les labos sortent plus vite que les prix ne le disent).
+  # Filtres EXACTS de cette entrée rejoués sur le passé (1 à 30 jours, un pari par marché) : 82 paris, 28 gagnés pour 20,1, +36,4 % (z +2,1, t par événement +1,3) ; à 1-3-7 jours : 33 paris, +76 % (z +2,9).
+  class: naive_favorite
+  filtres: {issue: [oui], prix_min: 0.10, prix_max: 0.40, echeance_min: 24, echeance_max: 720,
+            question_contient: [" ai ", "gpt", "openai", "anthropic", "gemini", "claude", "grok", "llama", "deepseek", "mythos", "chatgpt", "qwen", "mistral", "muse spark", "glm", "xai"],
+            question_exclut: ["outage", "app store", "#1", "no next", "not be", "no new", "no ai"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    OUI des marchés d'IA « d'ici <date> » à 0,10-0,40 : 33 gagnés pour 22,2 attendus sur 91 paris passés (2025-2026), +45 %, mais échanges minces (3,8 parts de profondeur médiane) et catégorie trouvée après coup
+    parmi une douzaine. Mise franche (Kelly entier, biais supposé 0,08, un quart du gain mesuré) : le carnet limite la quantité. Une perte apprendrait que l'écart vient d'un mois (2026-06, 2026-09) ou de
+    quelques modèles précis, pas d'une règle sur les marchés d'IA.
+  params:
+    min_ask:        {value: 0.10, min: 0.05, max: 0.97}
+    max_ask:        {value: 0.40, min: 0.30, max: 0.98}
+    underdog:       {value: 1, min: 0, max: 1}
+    bias:           {value: 0.08, min: 0.00, max: 0.10}
+    uncertainty:    {value: 0.02, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}

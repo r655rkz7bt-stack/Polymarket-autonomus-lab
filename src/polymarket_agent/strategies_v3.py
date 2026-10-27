@@ -1080,6 +1080,9 @@ class MoinsDeKills(_Base):
         games: dict[tuple, list[tuple[float, MarketInfo]]] = {}
         for m in watchlist:
             if not self._ok(m, now):
+                # 27/10/2026 : « abstentions {} » alors que 5 marchés de LoL passaient le filtre du titre : un marché qui n'est pas un total de kills ou qui est hors de la
+                # fenêtre avant le match ne laissait aucune trace ; la raison dit maintenant si la stratégie voit des totaux de kills (créés la veille) ou non.
+                out.abstain("pas un total de kills d'une partie" if m.sports_market_type != "kill_over_under_game" else "hors de la fenêtre avant le match")
                 continue
             g = self.GAME.search(m.question or "")
             book = books.get(m.token_ids[1])
@@ -1100,6 +1103,52 @@ class MoinsDeKills(_Base):
                              bucket, marks, out, f"moins_de_kills:{m.question[-12:].strip()}",
                              "« Over » trop cher sur le passé (−10,5 %), « Under » +9,5 % (t 2,75), un pari par partie",
                              "la partie compte beaucoup de kills")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
+class ClassementAppStore(_Base):
+    """« #1 Free / Paid App in the US Apple App Store on <date> » : le marché se règle sur le classement Apple de midi (heure de l'Est), que l'on lit en direct
+    (sources/appstore.py, appstore.py). Dans les 6 dernières heures, l'application qui est n°1 au moment de la lecture le reste avec une chance `rester_n1(h)` (0,95 dans
+    l'heure, 0,90 à 3 h, 0,85 à 6 h : HYPOTHÈSES, aucune mesure, Apple n'archive pas le classement ; le journal `appstore:histo` servira à les étalonner). On achète son OUI
+    quand le marché le cote au moins `min_net_edge` plus bas que cette chance. Pourquoi ça peut rater : un lancement ou une promotion fait tomber le n°1 en quelques heures ;
+    le flux d'Apple peut avoir une heure de retard sur le classement de l'App Store ; marchés de 1 400 $ de liquidité (peu de parts à ce prix)."""
+
+    strategy_id = "classement_appstore"
+    required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "min_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "appstore", int(self.params.get("max_candidates", 60)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("appstore")
+            if not ref or not _yes_no(m) or now is None:
+                continue
+            if any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("classement App Store pas à jour")
+                continue
+            if ref.get("rang") != 1 or not ref.get("p"):
+                out.abstain("cette application n'est pas n°1 maintenant, ou midi (Est) est à plus de 6 h")
+                continue
+            if float(ref["h"]) < float(p["min_hours"]):
+                out.abstain("trop près de midi (Est) : le classement du règlement est déjà fixé")
+                continue
+            book = books.get(m.token_ids[0])
+            ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
+            if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
+                out.abstain("OUI hors de la plage de prix ou carnet vide")
+                continue
+            est, unc = float(ref["p"]), float(p.get("uncertainty", 0))
+            prop = self._buy(m, books, state, 0, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
+                             f"appstore:{ref['n1']}", f"n°1 à {ref['h']:.1f} h de midi (Est), chance de le rester supposée {est:.2f}",
+                             "un lancement ou une promotion fait passer une autre application devant avant midi")
             if prop is not None:
                 props.append(prop)
         return self._finish(out, props)
@@ -1588,7 +1637,7 @@ class SuivreInities(_Base):
         return self._finish(out, props)
 
 
-CLASSES = {c.strategy_id: c for c in (SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+CLASSES = {c.strategy_id: c for c in (ClassementAppStore, SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,

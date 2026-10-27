@@ -1,0 +1,8 @@
+h = 2 heures après la création : n=  530 évts= 424 gagnés=  389 attendus=  406.0 z=-1.79 rendement=-4.5% t_évt=-1.64
+     favori OUI : n=  184 évts= 159 gagnés=  138 attendus=  138.0 z=-0.01 rendement=-0.4% t_évt=-0.98 | favori NON : n=  346 évts= 296 gagnés=  251 attendus=  267.9 z=-2.23 rendement=-6.6% t_évt=-1.77
+h = 6 heures après la création : n=  862 évts= 631 gagnés=  635 attendus=  661.1 z=-2.16 rendement=-4.3% t_évt=-2.53
+     favori OUI : n=  300 évts= 235 gagnés=  222 attendus=  228.8 z=-0.95 rendement=-3.4% t_évt=-1.83 | favori NON : n=  562 évts= 464 gagnés=  413 attendus=  432.3 z=-1.98 rendement=-4.8% t_évt=-1.83
+h = 12 heures après la création : n=  993 évts= 687 gagnés=  741 attendus=  755.5 z=-1.11 rendement=-2.3% t_évt=-1.65
+     favori OUI : n=  327 évts= 255 gagnés=  247 attendus=  246.2 z=+0.11 rendement=-0.1% t_évt=-0.83 | favori NON : n=  666 évts= 513 gagnés=  494 attendus=  509.4 z=-1.43 rendement=-3.4% t_évt=-1.73
+h = 23 heures après la création : n=  879 évts= 656 gagnés=  640 attendus=  666.2 z=-2.11 rendement=-4.3% t_évt=-2.30
+     favori OUI : n=  328 évts= 265 gagnés=  249 attendus=  246.9 z=+0.27 rendement=+0.4% t_évt=-0.52 | favori NON : n=  551 évts= 458 gagnés=  391 attendus=  419.3 z=-2.88 rendement=-7.1% t_évt=-2.46
