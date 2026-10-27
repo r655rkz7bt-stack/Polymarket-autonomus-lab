@@ -66,6 +66,10 @@ CHAMP_COUP_D_ENVOI = "2026-10-20T16:00"  # le journal note `depuis_coup_d_envoi_
 # Copie fidèle en service depuis la promotion du 18/10/2026 à 21 h 38 (PR #76) : avant, le
 # principal rejouait lui-même les stratégies (aucun jumeau attendu).
 COPIE_FIDELE_DEPUIS = datetime.fromisoformat("2026-10-18T21:30:00+00:00")
+# Achats du principal sans jumeau déjà élucidés et corrigés (minute + stratégie -> fiche) : ils ne rouvrent plus l'obligation.
+COPIE_EXPLIQUEES = {
+    "2026-10-25T22:35 nf_sport_patiente_6_24h": "enquetes/2026-10-26_ordre_pose_perime_du_principal.md",
+}
 
 
 def _ts(entry: dict) -> datetime:
@@ -145,7 +149,7 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
             continue
         for e in _buys(rows):
             twins.setdefault((name, e["data"]["token_id"], (e["data"].get("extra") or {}).get("cycle_id")), e)
-    orphans, shifted, prices, full = [], [], [], []
+    orphans, shifted, prices, full, explained = [], [], [], [], []
     since = max(since or COPIE_FIDELE_DEPUIS, COPIE_FIDELE_DEPUIS)
     for e in _buys(principal, since):
         d, x = e["data"], e["data"].get("extra") or {}
@@ -154,9 +158,12 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
             continue  # stratégie disparue de l'arène : rien à comparer
         twin = twins.get((ghost, d["token_id"], x.get("cycle_id")))
         label = f"{e['ts'][:16]} {d['strategy_id']} « {d['outcome']} » {d['shares']} parts à {float(d['price']):.3f}"
+        key = f"{e['ts'][:16]} {d['strategy_id']}"
         if twin is None:
             if x.get("resting_order") and _ghost_buys_later(entries[ghost], d["token_id"], _ts(e)):
                 shifted.append(label)
+            elif key in COPIE_EXPLIQUEES:
+                explained.append(f"{label} -> {COPIE_EXPLIQUEES[key]}")
             else:
                 orphans.append(label)
             continue
@@ -171,6 +178,10 @@ def copie_fidele(entries: dict[str, list[dict]], since: datetime | None = None) 
         out.append(_finding("copie_fidele", GRAVE, f"{len(orphans)} achat(s) du principal sans jumeau dans le fantôme copié",
                             "Le principal doit refaire les paris du fantôme (copie fidèle) : un achat sans jumeau "
                             "veut dire qu'il joue une autre stratégie que celle que l'arène note.", orphans))
+    if explained:
+        out.append(_finding("copie_fidele", A_REGARDER, f"{len(explained)} achat(s) sans jumeau déjà expliqué(s) et corrigé(s)",
+                            "Achats élucidés par une enquête (liste `enquete.COPIE_EXPLIQUEES`) : rien à refaire, sauf si "
+                            "un autre revient après la date de la fiche.", explained))
     if shifted:
         out.append(_finding("copie_fidele", A_REGARDER, f"{len(shifted)} ordre(s) posé(s) copié(s) servi(s) au principal avant le fantôme",
                             "Le principal passe après les fantômes dans le cycle et relit le carnet : son exemplaire de "

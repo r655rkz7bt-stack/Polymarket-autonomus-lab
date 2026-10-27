@@ -1,0 +1,8 @@
+35884 marchés réglés, 35631 avec échanges
+730 paris payés 0,10-0,20 ; taille du premier échange payé : médiane 23.1 ; parts achetables à ≤ prix + 0,02 dans l'heure : médiane 89.1
+| parts disponibles ≥ | paris | rendement | gagnés / attendus | z |
+|---|---|---|---|---|
+| 0 | 730 | +58.1% | 167 / 106.0 | +6.42 |
+| 20 | 536 | +41.2% | 111 / 78.5 | +3.98 |
+| 100 | 354 | +21.0% | 65 / 52.4 | +1.90 |
+| 400 | 214 | +1.0% | 33 / 31.8 | +0.24 |

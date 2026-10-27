@@ -44,6 +44,17 @@ def test_principal_buy_without_ghost_twin_is_grave():
     assert enquete.obligations(found) and "copie_fidele" in enquete.obligations(found)[0]
 
 
+def test_orphan_already_explained_is_not_an_obligation(monkeypatch):
+    """26/10 : l'ordre posé périmé « Team Yandex » (corrigé) ne doit plus rouvrir l'obligation à chaque passage."""
+    t = NOW - timedelta(hours=3)
+    ghost = _ledger(_buy(t, "a", 0.9, 100, cycle="c1"))
+    principal = _ledger(_buy(t, "b", 0.5, 300, cycle="c1"))
+    strat = principal[-1]["data"]["strategy_id"]
+    monkeypatch.setitem(enquete.COPIE_EXPLIQUEES, f"{principal[-1]['ts'][:16]} {strat}", "fiche.md")
+    found = enquete.copie_fidele({"principal": principal, "nf_v1.0.0": ghost}, NOW - timedelta(days=3))
+    assert not enquete.obligations(found) and "déjà expliqué" in found[0]["titre"]
+
+
 def test_partial_fill_of_a_smaller_resting_order_is_not_a_full_copy():
     """21/10 (Lynn Vision) : un ordre posé du fantôme se remplit en 5 fois (119 parts), celui du principal, 3 fois plus petit,
     prend la première exécution (22,56) : même quantité, mais 31 % du total, donc copie proportionnelle."""
