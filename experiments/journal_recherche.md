@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-27 (passage chercheur, 00 h 55 → 01 h 3x UTC ; heure de fin à compléter par `budget_chercheur.py fin`)
+
+- **Enquête** (fiche : `enquetes/2026-10-27_passage_copie_ecarts_silencieux.md`). Obligations : `copie_fidele` (Team Yandex) déjà corrigée le 26/10 ; `copie_absente` (`moins_de_cartes`) = pas d'achat du fantôme depuis 16 h 04 (ses créneaux : 0 h-16 h UTC, aucun des 71 paris entre 17 h et minuit) ; le plancher de copie marche (16 copies, 74 € depuis 16 h 34).
+  Contrôle à la main, famille 4 : prix payés contre plages de prix de tous les fantômes : rien (ordres posés servis hors plage). **Défaut (famille 6)** : `favori_politique` (14,3 % du capital) a eu 7 paris de fantôme le 26/10 sans un achat du principal et sans ligne de refus ; budget de la part, plafond de famille et marché déjà pris écartaient des paris sans rien écrire. Correctif : `Weighted.drops` + `_remember_drops` (48 h) → abstentions du principal et `refus_principal` ; tests. Cause exacte du cas du 26/10 non établie (code d'avant le plancher).
+- **Recherche** (`experiments/contrer_crypto_passe.md`, 145 605 marchés relevés de juin à octobre, 8 974 avec vrais échanges, puis 12 150 de janvier à mai, 8 réglages de plage essayés + ~30 découpages de référence) : « contrer un mouvement de 0,05 en 6 h » à 0,10-0,45 **écartée** (1 492 paris, −4,2 %, 402 gagnés pour 405,1) ; un premier tirage à 2 880 marchés donnait +8 %. Sous-produit : NON des marchés crypto à 0,10-0,45 sans signal : juin-octobre +14,4 % (1 111 paris, z +2,7), refait sur janvier-mai +22,1 % (1 273 paris, z +4,2) ; la sous-tranche « touche » (+22,6 % d'abord) s'inverse (−1,1 %) : **indice** général, fragile (6 mois sur 10).
+- **Arène** : + `crypto_non_bon_marche` (expérience audacieuse, Kelly entier, biais 0,05 ; fantôme, a acheté dès le premier cycle local). Aucune retirée.
+- **Leçons** : un avantage vu sur 174 paris en direct et confirmé par un sous-échantillon (+8 %) a disparu à 8 974 marchés : refaire sur toutes les données avant d'écrire « confirmé ». Les deux « audace » `contrer_crypto*` restent en jeu pour trancher en direct.
+- **Reste ouvert** : remonter le NON crypto à 2025 et l'expliquer ; juger `crypto_non_bon_marche` et les deux « audace » vers le 03/11 ; lire `refus_principal.favori_politique` au prochain achat de `favori_politique`.
+
 ## 2026-10-27 (session avec Etienne : « plus de liberté, les pertes sont des expériences »)
 
 - **Enquête** : le principal n'engage que 16 % de son argent (124 € sur 756 €) et ne bouge plus depuis le 23/10. Ce n'est pas un

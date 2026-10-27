@@ -648,6 +648,32 @@ contrer_crypto_patiente_audace:
     max_proposals_per_cycle: {value: 3, min: 0, max: 50}
     kelly_fraction: {value: 1.0, min: 0.0, max: 5.0}
 
+crypto_non_bon_marche:
+  explication: "Dans les marchés du Bitcoin, de l'Ethereum et des autres cryptos (« sera-t-il au-dessus de tel prix ? », « va-t-il toucher tel prix ? »), on achète le NON quand il coûte entre 0,10 et 0,45 : sur le passé, le OUI de ces marchés est trop cher."
+  # Expérience audacieuse (27/10/2026, experiments/contrer_crypto_passe.md). Né d'un contrôle : le test « contrer un mouvement » est ÉCARTÉ (1 492 paris, −4,2 %), mais sa référence sans signal montre que le NON
+  # des marchés crypto à 0,10-0,45 gagne plus que son prix, sur DEUX périodes séparées aux vrais échanges (frais crypto 0,07 et écart payés) : juin-octobre 1 111 paris +14,4 % (398 gagnés pour 357,8, z +2,66),
+  # janvier-mai 1 273 paris +22,1 % (496 pour 428,2, z +4,15, t par événement +3,17). Fragile : 6 mois sur 10 positifs (avril −23 %, août −31 %), sans ses 5 meilleurs jours +7,6 % (janvier-mai) et −0,7 % (juin-octobre) ;
+  # la sous-tranche « touche » (+22,6 % en juin-octobre) NE se répète PAS en janvier-mai (−1,1 %) : ne pas la croire. Tranche choisie parmi ~30 découpages, billets sous 0,10 exclus. VERDICT « indice » : fantôme,
+  # Kelly entier, biais supposé 0,05 (le tiers du gain mesuré). Une perte apprendrait que le surprix du OUI crypto vient de la volatilité de certains mois (janvier, juin), pas d'une règle.
+  class: naive_favorite
+  filtres: {familles: [crypto], issue: [non], prix_min: 0.10, prix_max: 0.45, echeance_min: 2, echeance_max: 720, question_exclut: ["up or down"]}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-27"
+  hypothesis: >
+    NON des marchés crypto à 0,10-0,45 (prix payé) : 894 gagnés pour 786 attendus sur 2 384 paris passés (janvier-octobre 2026, deux périodes séparées de même signe, +14 % et +22 %). Indice choisi
+    parmi ~30 découpages, mois irréguliers : l'arène tranche. Une perte apprendrait que l'effet dépend de la volatilité de certains mois.
+  params:
+    min_ask:        {value: 0.10, min: 0.05, max: 0.97}
+    max_ask:        {value: 0.45, min: 0.30, max: 0.98}
+    underdog:       {value: 1, min: 0, max: 1}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.005, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
+
 favori_politique_quasi_certain:
   explication: "En politique, on achète ce qui est presque sûr (97 %) pour gagner un tout petit peu, mais souvent."
   # Favori n°1 bis : politique et géopolitique 0,97-0,995 (« presque acquis », souvent un résultat

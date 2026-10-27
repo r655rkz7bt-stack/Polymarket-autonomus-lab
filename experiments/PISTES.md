@@ -15,10 +15,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 0b. ~~Détroits (Ormuz, Bab el-Mandeb)~~ : testée le 23/10 (`experiments/detroits.md`) : tranches hebdomadaires et mensuelles réglées sur PortWatch,
    **retenue mais fragile** (40 événements, 150 paris, +24 % aux prix payés, t par événement 2,13, z des prix 2,83 ; choisie parmi 16 réglages) → fantôme
    `detroits_marche_log` en demi-Kelly. Seuils testés le 25/10 (`experiments/detroits_seuils.md`) : **écartée** (12 « returns to normal » = un seul chemin, tous NON ; la prime du OUI est passée de 0,35 à 0,01 de mars à septembre ; fantôme `detroits_non_normal` pour surveiller un retour de la prime). La course à la publication du mardi : écartée le 24/10.
-0c. **Contre-mouvement crypto à 0,10-0,45** (27/10/2026, `experiments/audace.md`) : chez les deux « contrer », 58 gagnés pour 39,3 attendus
-   sur 174 paris ; sous 0,10, 1 sur 80. Tranche choisie dans l'échantillon : **à tester sur le passé** (marchés crypto à seuil réglés,
-   mouvement de 0,05 en 6 h, vrais échanges, plusieurs mois) pendant que les fantômes `contrer_crypto_audace` et
-   `contrer_crypto_patiente_audace` jouent en direct. Si elle tient aux prix payés : `validated_strategies`.
+0c. ~~Contre-mouvement crypto à 0,10-0,45~~ : testée le 27/10 (`experiments/contrer_crypto_passe.md`), **écartée** (8 974 marchés réglés, 1 492 paris aux vrais échanges, −4,2 %, 402 gagnés pour 405,1 attendus ; le +8 % d'un premier tirage de 2 880 marchés a disparu).
+   Sous-produit : le NON des marchés crypto à 0,10-0,45 sans signal : juin-octobre +14,4 % (1 111 paris, z +2,7), janvier-mai +22,1 % (1 273 paris, z +4,2) ; la sous-tranche « touche » ne se répète pas (−1,1 %) → **indice** général, fantôme `crypto_non_bon_marche` ; à remonter à 2025 et à expliquer avant toute promotion.
 1. ~~Champions de saison contre Pinnacle~~ : NBA / NFL / NHL faits le 25/10 (`experiments/futurs_pinnacle.md`) : **écartée** (écart moyen 0,1-0,5 pt, au plus 3,7 pt sur 5-8 mois de capital bloqué ; libellés NFL/NHL corrigés). Reste golf, F1, football européen (mêmes économies : fins de saison lointaines).
 2. ~~Classements « status quo »~~ : testés le 21/10 (soir), voir « Testées » ; reste Spotify mensuel (6 mois seulement) et les classements LMArena eux-mêmes (historique des scores non testé).
 3. **Données économiques** : le CPI et l'emploi (NFP) sont testés (voir « Testées » : `cpi_tranches`, `jobs_favori_non`, `emploi_nfp.md`). Reste : le nowcast de Cleveland pour le CPI
