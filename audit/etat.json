@@ -170,14 +170,14 @@
   "fantome:rallies_non_v1.0.0": 51,
   "fantome:statu_quo_ia_v1.1.0": 36,
   "fantome:contrer_crypto_audace_v1.0.0": 35,
-  "fantome:contrer_crypto_patiente_audace_v1.0.0": 39,
+  "fantome:contrer_crypto_patiente_audace_v1.0.0": 41,
   "fantome:crypto_non_bon_marche_v1.0.0": 24,
   "fantome:compteur_tweets_12_18h_v1.0.0": 6,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 6,
   "fantome:compteur_tweets_72_168h_v1.0.0": 8,
   "fantome:crypto_non_10_20_v1.0.0": 10
  },
- "verifiees": 11018,
+ "verifiees": 11019,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1781,9 +1781,9 @@
    "op_id": "settle-112902079103520812453638866801330590433923784281115483257885564904214096160997"
   }
  ],
- "derniere_execution": "2026-10-27T10:22:46+00:00",
+ "derniere_execution": "2026-10-27T10:26:44+00:00",
  "dernier_seq_reglements": {
-  "principal": 4075,
+  "principal": 4076,
   "fantome:calibration_patiente_v1.0.0": 2113,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 1971,
@@ -1822,7 +1822,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 1922,
+  "fantome:nf_sport_v1.0.0": 1924,
   "fantome:nm_court_v1.0.0": 1754,
   "fantome:nm_crypto_v1.0.0": 1566,
   "fantome:nm_hors_crypto_v1.0.0": 1687,
