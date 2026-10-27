@@ -24,3 +24,16 @@ Quelques heures avant midi, le n°1 du moment le reste presque toujours : on ach
 - Une perte dirait que le classement bouge plus vite que les hypothèses (lancements, promotions comme « TikTok Pro - Events » qui n'est pas une vraie appli grand public) ou que le flux d'Apple retarde sur l'App Store ; le journal chiffrera lequel.
 - Premier jugement vers le 03/11 (les événements du 30, 31/10, 1-2/11), puis étalonnage de la chance de rester n°1 sur le journal, puis seulement une mise franche.
 - Vérification à faire au premier achat : le prix payé réel contre le carnet, et le classement lu à midi contre le règlement Gamma.
+
+## Test de substitution sur le passé : le favori du marché comme « n°1 du moment » (27/10, `scripts/favori_du_marche.py`, `resultats_favori_du_marche.txt`)
+Apple n'archive pas le classement, donc on ne peut pas rejouer la stratégie. Pour savoir au moins si le marché laisse quelque chose, on remplace le n°1 du classement par le **favori du marché** (le candidat le plus cher, dernier échange dans les 3 h avant midi − h)
+sur les 125 événements hebdomadaires réglés (61 à 75 avec un achat possible dans l'heure, prix du premier échange de preneur, 0 frais) :
+
+| h avant midi (Est) | tous : le favori gagne / attendu | prix payé moyen | rendement | gratuit | payant |
+|---|---|---|---|---|---|
+| 6 h | 52 / 49,7 (z +1,04), 61 paris | 0,814 | +4,7 % | −1,9 % (34) | **+14,4 %** (27, 23 gagnés pour 20,1, z +1,64) |
+| 3 h | 64 / 63,5 (z +0,23), 75 paris | 0,847 | +0,8 % | −0,9 % (41) | +2,9 % (34) |
+| 1 h | 70 / 69,2 (z +0,63), 75 paris | 0,923 | +1,1 % | +0,3 % (45) | +2,2 % (30) |
+
+**Le marché est bien calibré sur son propre favori** (gratuit : −1,9 à +0,3 %, rien d'exploitable). Seul trou : le classement **payant** 6 h avant midi (Shadowrocket gagne 11 vendredis sur 12 ; le favori du marché est payé 0,745 en moyenne : +14 %, 27 paris, z +1,6, un indice faible).
+Ce que le fantôme peut apporter de plus que le favori du marché est donc étroit : les vendredis où le n°1 de l'App Store n'est PAS le favori du marché (lancement ou promotion de dernière minute), et le payant à 6 h. Le journal du classement dira combien de fois cela arrive.

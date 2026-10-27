@@ -378,8 +378,11 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["matieres"] = attach_matieres(markets, db, now)
     from polymarket_agent.inities import attach_inities
     counts["inities"] = attach_inities(markets, db, now)
-    from polymarket_agent.appstore import attach_appstore
-    counts["appstore"] = attach_appstore(markets, db, now)
+    try:  # 27/10/2026 : un classement App Store mal formé ne doit pas faire perdre les rattachements des autres sources
+        from polymarket_agent.appstore import attach_appstore
+        counts["appstore"] = attach_appstore(markets, db, now)
+    except Exception:  # noqa: BLE001
+        counts["appstore"] = 0
     return counts
 
 
