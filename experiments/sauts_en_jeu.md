@@ -20,11 +20,11 @@ regard 5 min (délais 1 et 3 min) et 15 min (délai 1 min), deux sens : **48 ré
 | groupe | sens | rendement (24 réglages → 12 par sens) | meilleure confiance par événement | pire |
 |---|---|---|---|---|
 | tennis | contrarien | −2,7 % à −9,7 % (12 réglages sur 12 négatifs) | −1,05 | −2,86 |
-| tennis | suiveur | −2,5 % à +0,8 % (z des prix +0,5 à +1,6 : le marché ne se trompe pas) | +0,62 | −2,03 |
-| e-sport | contrarien | −13,6 % à +0,2 % (J = 0,30 : −13 %, t −2,9 à −3,0) | +0,08 | −2,99 |
-| e-sport | suiveur | −4,5 % à −0,4 % (11 réglages sur 12 négatifs) | +0,39 (z prix) | −2,72 |
+| tennis | suiveur | −2,5 % à +0,8 % (7 réglages sur 12 négatifs ; z des prix −0,2 à +1,6) | +0,62 | −2,03 |
+| e-sport | contrarien | −13,6 % à +0,2 % (11 réglages sur 12 négatifs ; J = 0,30 : −13 %, t −2,9 à −3,0) | +0,08 | −2,99 |
+| e-sport | suiveur | −4,5 % à −0,4 % (12 réglages sur 12 négatifs ; z des prix −1,6 à +0,5) | −0,13 | −2,72 |
 
-- Aucun des 48 réglages n'atteint « indice » (`idea_test.verdict` : tous « écartée » sauf un « indice » à t 1,1 sur le premier relevé partiel d'ATP, disparu avec WTA).
+- Aucun des 48 réglages n'atteint « indice » (`idea_test.verdict` : 48 « écartée » ; un « indice » à t 1,1 était apparu sur un premier relevé partiel d'ATP seul, disparu avec WTA).
 - Le contrarien perd : le saut de prix est de l'information (break, carte gagnée), pas un excès ; le suiveur n'a rien à gagner après frais et écart (le prix a déjà bougé).
 - Cohérent avec le football (22/10) : le marché de sport suit l'action sans la dépasser.
 
