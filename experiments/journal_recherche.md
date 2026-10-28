@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-28 (passage chercheur du soir, 15 h 55 → 16 h 05 UTC, ~10 min ; durée visée 135 min non atteinte : les pistes restantes attendent des données qui n'existent pas encore — CDC rougeole (toujours 4 588 au 22/10 à 16 h UTC un mercredi), essence (pas de nouveau jour réglé), NBA de janvier, date de lancement des jetons — ; arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-10-28_soir_compteur_tweets_calibration.md`, familles 2 et 4). Aucune obligation grave (celles de la feuille : stratégies éliminées déjà retirées de la config, fille « prix payé 0,10-0,20 » refusée le 28/10 nuit). Le constat « estimation très au-dessus du prix payé » de `compteur_tweets*` (0,75 contre 0,45) vérifié : 46 paris réglés = 12 événements, **33,0 gagnés pour 32,8 estimés** (28,4 par les prix) : le modèle est calibré, ce n'est pas un défaut de carnet. Mais à moins de 48 h de la fin : 22 paris, 12 gagnés pour 15,6 estimés, −29 % par mise ; à plus de 48 h : 24 paris, 21 gagnés pour 17,1, +22 %. Filtres de prix et fenêtres de temps rejoués (2 662 achats) : seuls des ordres posés servis hors plage (connu). Aucun défaut de code.
+- **Recherche** : pas de piste neuve menée ce passage ; relevés en cours rejoués (CDC rougeole, essence : rien de nouveau).
+- **Arène** : ajout de `compteur_tweets_48h_audace` (expérience audacieuse : `compteur_tweets` à plus de 48 h de la fin, Kelly entier ; cycle local : voit 193 marchés, aucun à plus de 48 h à cet instant). Test de liste mis à jour. Rien retiré.
+- **Leçons** : une estimation qui dépasse le prix de 30 points n'est pas un défaut si les gagnés suivent (ici oui) ; le découpage « plus de 48 h » vient de 46 paris, c'est un indice, pas une preuve.
+- **Reste ouvert** : (a) premier résultat de `tranche_centrale_non` ; (b) CDC rougeole à relancer ; (c) essence à 40 jours ; (d) NBA en janvier ; (e) piste 14 : date de lancement ; (f) refaire le tableau par délai de `compteur_tweets` à 30 événements.
+
 ## 2026-10-28 (passage chercheur de midi, 10 h 59 → 11 h 10 UTC, ~11 min ; durée visée 135 min non atteinte : une piste neuve menée jusqu'au verdict, le reste attend des données qui n'existent pas encore — premier résultat de `tranche_centrale_non` à 16 h UTC, CDC (toujours 4 588 au 22/10 à 11 h), essence à 40 jours, NBA de janvier — ou une source externe d'annonce de lancement ; arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-28_midi_moins_de_cartes_apres_la_confirmation.md`, famille 5). Aucune obligation grave. Trois résultats :

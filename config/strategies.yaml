@@ -3936,3 +3936,36 @@ compteur_tweets_oui:
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}
+
+compteur_tweets_48h_audace:
+  explication: "Le compteur de tweets, mais seulement quand la tranche se règle dans plus de 2 jours (tout près de la fin le rythme calculé se trompe), avec une grosse mise."
+  # 28/10/2026 (soir), expérience audacieuse : sur les 46 paris réglés des 9 fantômes `compteur_tweets*` (12 événements), l'estimation
+  # du modèle tient quand le délai dépasse 48 h (24 paris : 21 gagnés pour 17,1 estimés, 15,7 par les prix, +22 % par mise) et se trompe
+  # tout près de la fin (22 paris à moins de 48 h : 12 gagnés pour 15,6 estimés, −29 % par mise). Découpage a posteriori de 46 paris : un
+  # indice, pas une preuve. Mise franche (Kelly entier, plafonnée par `fantomes.max_mise`) pour que l'arène tranche vite. Une perte
+  # apprendrait que le modèle de rythme n'a pas d'avantage même loin de la fin (le gain venait de quelques événements), ou que les
+  # grosses mises sont mal fixées par l'écart estimation − prix (déjà signalé par `estimation_perimee`).
+  mere: compteur_tweets
+  morceau: "délai jusqu'à la fin de plus de 48 h, mise franche"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-28"
+  hypothesis: >
+    Le modèle de rythme (loi binomiale négative) est calibré à plus de 48 h de la fin (21 gagnés pour 17,1 estimés sur 24 paris) et trop
+    sûr de lui plus près (12 pour 15,6 sur 22 paris). Si l'avantage est réel, la mise franche le fait croître plus vite que le quart de Kelly de
+    la mère. Une perte apprendrait que ces 24 paris étaient de la chance de tirage.
+  filtres: {echeance_min: 48}
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}
