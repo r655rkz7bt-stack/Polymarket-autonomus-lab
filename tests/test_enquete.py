@@ -163,6 +163,8 @@ def test_daughter_is_compared_with_her_mother_on_the_same_period():
     assert found and "depuis le" in found[0]["exemples"][0]
     # Sur la même période, la mère perd (−22 %) ; la fille perd moins (−11 %).
     assert "-11.1%" in found[0]["exemples"][0] and "-22.2%" in found[0]["exemples"][0]
+    # Les 10 paris de la fille sont absents de la mère (jetons c*, la mère a n*) : la fille ne joue pas « la mère filtrée ».
+    assert "10 paris absents de la mère" in found[0]["exemples"][0]
 
 
 def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():

@@ -3,6 +3,20 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-28 (passage chercheur de nuit, 00 h 55 → 01 h 05 UTC, 10 min ; durée visée 134 min non atteinte : les pistes restantes attendent des données qui n'existent pas encore ou une source bloquée — arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-10-28_fille_contre_mere_paris_differents.md`, famille 5). Aucune obligation grave. La n° 1 de l'arène, `nf_sport_patiente_prix_850_875` (+565 €), n'est pas « sa mère filtrée » :
+  59 de ses 74 paris n'existent pas chez `nf_sport_patiente` (manque d'argent de la mère à Kelly entier pour 12 des 37 paris vérifiables, autre pari du cycle pour 11, 14 sans explication dans le journal seul) ;
+  z des prix de la fille +1,66, de la mère hors plage +0,14. Pas de défaut de code ; contrôle `filles_periode` complété (part de paris absents de la mère) + test. Constat « achats en jeu » (nf_sport_patiente : 35 achats sur 45 après le coup d'envoi) :
+  déjà connu (date placeholder de Gamma), rien de neuf. L'« estimation gonflée » de l'arène (1 953 gagnés pour 2 153 annoncés, 1 999 par les prix payés) reste le fait connu : les estimations sont trop hautes, les prix aussi (z des prix −2,4).
+- **Recherche** : piste n° 14 (FDV après lancement, trouver l'heure) : CoinGecko 429, DexScreener ne relie pas un événement à son jeton (homonymes) : **bloquée**, détails dans `PISTES.md`. Relevé du CDC (rougeole) fait : toujours 4 588 au 22/10, pas de nouveau mercredi publié.
+  Verdict : aucun (donnée manquante).
+- **Arène** : ajouté `compteur_tweets_oui` (obligation de l'entonnoir : fille « issue oui » de `compteur_tweets`, 12 opérations, +100 % par mise ; **expérience audacieuse** : Kelly entier). Voit 1 proposition au 2e cycle local.
+  Fille « prix payé 0,10-0,20 » de `contrer_crypto_patiente` **non créée** : le NON crypto à 0,10-0,20 passe de +58 % à +1 % avec la profondeur (≥ 400 parts) et le gain suit le cours du Bitcoin (corrélation −0,82) ; `crypto_non_10_20` la couvre déjà.
+  Liste des stratégies éliminées « encore configurées » : non traitée (aucune n'achète : éliminées).
+- **Leçons** : une fille classée devant sa mère peut jouer d'autres paris (cap, argent) : toujours compter les paris communs avant de comparer. Aucune stratégie retirée ce passage.
+- **Reste ouvert** : (a) rejouer la mère avec l'argent de la fille ; (b) piste 14 : adresse du contrat dans la description de chaque événement ?; (c) CDC mercredi prochain ; (d) `tranche_centrale_non` : voir si elle voit des tranches (entrée du 27/10).
+
 ## 2026-10-28 (AMELIORATION d'Etienne, ~23 h 30 UTC le 27/10 : première avec la règle « plus de liberté et de créativité »)
 
 - **Faits** (`published/data.json`, 23 h 18 UTC) : principal 751 € estimés (746,91 réalisés), 612,74 € disponibles, 134 € engagés (18 %) ; 12,5 jours sans palier. Championne `nf_sport_patiente_prix_850_875` 1 566 € en 7 jours (74 opérations), suivie à 29 %. 42 fantômes actifs à 0 opération. Refus du principal sur 48 h : « taille inférieure au minimum du marché (5) » ×14 sur `moins_de_cartes` (avantage mesuré) et ×9 sur `compteur_tweets`, malgré le plancher de copie.

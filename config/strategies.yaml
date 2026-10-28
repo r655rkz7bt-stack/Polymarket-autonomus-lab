@@ -3909,3 +3909,30 @@ suivre_inities_seul:
     min_net_edge:   {value: 0.0, min: 0.0, max: 0.5}
     max_extra_ticks: {value: 2, min: 0, max: 5}
     max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+
+compteur_tweets_oui:
+  explication: "Le compteur de tweets, mais seulement quand on achète le « OUI » d'une tranche (jamais le NON), avec une grosse mise."
+  # 28/10/2026, obligation de l'entonnoir 80/20 (12 opérations, +57 €, +100,2 % par mise contre la mère, reports/pareto.md) ET expérience audacieuse :
+  # 12 paris sont un découpage a posteriori, pas une preuve (même mère que `compteur_tweets_non`, dont les NON sont l'autre moitié des paris).
+  # Mise franche (Kelly entier) car un OUI de tranche à 0,10-0,45 paie ×2 à ×9. Une perte apprendrait que le gain du OUI était du bruit
+  # de tirage (12 paris = quelques événements) et que le rythme calculé ne bat pas les prix côté OUI : la mère resterait un NON-seul.
+  mere: compteur_tweets
+  morceau: "OUI seulement, mise franche"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-28"
+  filtres: {issue: [oui]}
+  params:
+    dispersion:     {value: 12, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 336, min: 24, max: 336}
+    recent_weight:  {value: 0.5, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}
