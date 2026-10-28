@@ -888,3 +888,33 @@ def test_strategie_muette_sans_raison_dit_pourquoi():
     vide = StrategyOutput()
     _raison_par_defaut(vide, 0)
     assert vide.abstentions == {}  # aucun marché vu : rien à dire
+
+
+def test_principal_cancels_resting_buy_when_the_match_starts_but_the_ghost_keeps_it(env, paths):
+    """Enquête du 28/10/2026 : 320 jetons d'ordres posés servis en match, −9,8 % par pari (z −2,8), contre −0,3 % pour les achats
+    immédiats. Le principal annule son ordre posé au coup d'envoi ; le fantôme, lui, est servi (c'est la mesure)."""
+    make, db, clock = env
+    crown(paths)
+    start = (NOW + timedelta(minutes=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    market = raw_market(gameStartTime=start)
+    run_cycle(make(FakeGamma([market]), FakeClob({"tokA": good_book()}), strategies=[_patient()]))
+    assert {o["portfolio"] for o in db.open_orders()} == {"principal", "fantome:naive_favorite_v1.0.0"}
+    clock["now"] = NOW + timedelta(minutes=10)  # le match a commencé
+    through = make_book("tokA", bids=(("0.86", "500"),), asks=(("0.87", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([market]), FakeClob({"tokA": through}), strategies=[_patient()]))
+    assert "BUY" not in _ledger_types(paths[0])  # rien pour le principal
+    statuses = {r["portfolio"]: r["status"] for r in db.conn.execute("SELECT portfolio, status FROM pending_orders WHERE status != 'REMPLACE'")}
+    assert statuses["principal"] == "ANNULE"
+    assert statuses["fantome:naive_favorite_v1.0.0"] in ("EXECUTE", "OUVERT")
+
+
+def test_principal_still_gets_its_resting_buy_before_the_match(env, paths):
+    make, db, clock = env
+    crown(paths)
+    start = (NOW + timedelta(hours=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    market = raw_market(gameStartTime=start)
+    run_cycle(make(FakeGamma([market]), FakeClob({"tokA": good_book()}), strategies=[_patient()]))
+    clock["now"] = NOW + timedelta(minutes=10)
+    through = make_book("tokA", bids=(("0.86", "500"),), asks=(("0.87", "500"),), ts=clock["now"])
+    run_cycle(make(FakeGamma([market]), FakeClob({"tokA": through}), strategies=[_patient()]))
+    assert "BUY" in _ledger_types(paths[0])

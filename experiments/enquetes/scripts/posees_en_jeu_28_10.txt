@@ -1,0 +1,29 @@
+en match, posés (tous fantômes, par fantôme)     n= 526 gagnés 419.0/446.9 attendus z -3.70  gain  -1821.7 € sur  30760.5 € (-5.9 %)
+en match, immédiats                              n=2248 gagnés 1942.5/1955.4 attendus z -0.84  gain  -2258.6 € sur 115998.8 € (-1.9 %)
+avant match, posés                               n= 165 gagnés 128.5/128.7 attendus z -0.05  gain   +137.7 € sur  11710.0 € (+1.2 %)
+avant match, immédiats                           n=1485 gagnés 1206.0/1219.2 attendus z -1.00  gain   -805.9 € sur  76798.4 € (-1.0 %)
+en match, posés avant 2026-10-22                 n= 140 gagnés 120.0/119.7 attendus z +0.08  gain   -134.4 € sur  10709.6 € (-1.3 %)
+en match, posés depuis 2026-10-22                n= 386 gagnés 299.0/327.2 attendus z -4.41  gain  -1687.3 € sur  20050.9 € (-8.4 %)
+en match, posés avant 2026-10-25                 n= 384 gagnés 309.0/327.1 attendus z -2.78  gain   -901.8 € sur  22354.2 € (-4.0 %)
+en match, posés depuis 2026-10-25                n= 142 gagnés 110.0/119.8 attendus z -2.58  gain   -919.8 € sur   8406.3 € (-10.9 %)
+
+nf_sport_patiente_v1.0.0 en match posés          n=  24 gagnés 20.0/21.2 attendus z -0.81  gain   -220.0 € sur   2235.1 € (-9.8 %)
+nf_sport_patiente_v1.0.0 le reste                n= 127 gagnés 111.5/111.3 attendus z +0.06  gain    -41.8 € sur  12746.6 € (-0.3 %)
+nf_sport_patiente_avant_match_v1.0.0 en match posés aucun
+nf_sport_patiente_avant_match_v1.0.0 le reste    n=  15 gagnés 10.5/13.0 attendus z -1.86  gain     -4.4 € sur    891.1 € (-0.5 %)
+nf_sport_patiente_prix_850_875_v1.0.0 en match posés n=  35 gagnés 30.5/29.8 attendus z +0.31  gain   -131.9 € sur   4503.7 € (-2.9 %)
+nf_sport_patiente_prix_850_875_v1.0.0 le reste   n=  45 gagnés 41.5/38.1 attendus z +1.40  gain   +459.1 € sur   5692.3 € (+8.1 %)
+nf_sport_18_24h_v1.0.0 en match posés aucun
+nf_sport_18_24h_v1.0.0 le reste                  n= 128 gagnés 115.5/113.8 attendus z +0.49  gain   +263.8 € sur   7252.2 € (+3.6 %)
+nf_sport_prix_haut_v1.0.0 en match posés aucun
+nf_sport_prix_haut_v1.0.0 le reste               n= 174 gagnés 158.0/158.1 attendus z -0.02  gain   +102.5 € sur   8678.8 € (+1.2 %)
+nf_sport_v1.0.0 en match posés aucun
+nf_sport_v1.0.0 le reste                         n= 320 gagnés 285.0/280.7 attendus z +0.75  gain    -70.2 € sur   7202.3 € (-1.0 %)
+
+--- dédoublonné par jeton (premier fantôme) et par événement ---
+match posés                              n= 320 jetons, 300 événements, gagnés 251.0/267.8, z -2.84, par pari -9.8 %, z par événement (somme/√n) -3.04
+match immédiats                          n= 907 jetons, 766 événements, gagnés 790.5/794.8, z -0.45, par pari -0.3 %, z par événement (somme/√n) +0.27
+match posés depuis 25/10                 n= 111 jetons, 105 événements, gagnés 85.5/92.4, z -2.08, par pari -12.7 %, z par événement (somme/√n) -2.44
+match posés avant 25/10                  n= 209 jetons, 195 événements, gagnés 165.5/175.4, z -2.02, par pari -8.2 %, z par événement (somme/√n) -1.98
+avant match posés                        n=  52 jetons,  44 événements, gagnés 29.5/30.3, z -0.27, par pari -11.7 %, z par événement (somme/√n) -0.37
+avant match immédiats                    n= 521 jetons, 368 événements, gagnés 378.0/376.8, z +0.14, par pari +0.2 %, z par événement (somme/√n) +0.33

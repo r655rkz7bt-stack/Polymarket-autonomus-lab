@@ -41,6 +41,11 @@ principal:
   # le capital), mais un achat ne laisse jamais moins de 3 % du capital estimé en argent disponible. La faillite tombe à 0 €
   # DISPONIBLE, même avec des positions qui valent quelque chose : ce coussin empêche qu'une mise la provoque par accident.
   reserve_liquidites: 0.03
+  # Ordres posés et coup d'envoi (28/10/2026, experiments/enquetes/2026-10-28_soir_posees_en_match.md) : un achat POSÉ n'est servi que quand le prix
+  # descend jusqu'à lui ; en match, c'est un but ou une blessure. 320 jetons (un par jeton, tous les fantômes) : −9,8 % par pari, z −2,8, z par
+  # événement −3,0 ; 209 avant le 25/10 : −8,2 % ; 111 depuis : −12,7 % ; achats immédiats en match −0,3 %. Le principal annule donc ses ordres
+  # posés quand le match commence (les fantômes continuent de les subir : c'est la mesure). À retirer par un rejeu si l'effet disparaît.
+  annuler_posees_au_coup_d_envoi: true
 
 # Fantômes (23/10/2026, enquête « mises géantes ») : une mise ≤ 25 % du capital estimé du fantôme.
 # Mêmes paris, taille seulement : la confiance de l'arène se mesure sur le rendement par mise.

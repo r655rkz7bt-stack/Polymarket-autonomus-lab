@@ -1283,6 +1283,11 @@ def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, Ma
         if market is not None and (market.closed or not market.active or not market.accepting_orders):
             close("ANNULE")
             continue
+        if (portfolio.name == "principal" and proposal.side == "BUY" and market is not None
+                and getattr(market, "game_start", None) is not None and now >= market.game_start
+                and (deps.settings.get("principal") or {}).get("annuler_posees_au_coup_d_envoi")):
+            close("ANNULE")  # enquête du 28/10/2026 : un ordre posé servi en match est une sélection adverse (but, blessure)
+            continue
         if market is None or book is None or book.fetched_at <= datetime.fromisoformat(order["created_at"]):
             continue  # pas de carnet relu après la pose : on attend
         shares = remaining
