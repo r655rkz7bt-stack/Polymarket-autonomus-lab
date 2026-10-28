@@ -1,0 +1,26 @@
+('atp', 'wta') 5785 matchs
+  T = coup d'envoi + 0.5 h, prix 0.65-0.80 n=1759 gagnés=1272.0 attendus=1269.5 z=+0.13 rendement=-1.2% t_event=-0.84 écartée
+  T = coup d'envoi + 0.5 h, prix 0.80-0.90 n=1170 gagnés= 985.0 attendus= 987.1 z=-0.17 rendement=-1.0% t_event=-0.76 écartée
+  T = coup d'envoi + 0.5 h, prix 0.90-0.97 n= 617 gagnés= 580.0 attendus= 574.6 z=+0.86 rendement=+0.6% t_event=+0.57 écartée
+  T = coup d'envoi + 1 h, prix 0.65-0.80 n=1403 gagnés=1025.0 attendus=1013.7 z=+0.68 rendement=-0.2% t_event=-0.13 écartée
+  T = coup d'envoi + 1 h, prix 0.80-0.90 n=1120 gagnés= 958.0 attendus= 948.9 z=+0.76 rendement=+0.2% t_event=+0.17 écartée
+  T = coup d'envoi + 1 h, prix 0.90-0.97 n= 894 gagnés= 837.0 attendus= 835.9 z=+0.16 rendement=-0.2% t_event=-0.22 écartée
+  T = coup d'envoi + 2 h, prix 0.65-0.80 n= 627 gagnés= 435.0 attendus= 451.0 z=-1.43 rendement=-5.0% t_event=-1.98 écartée
+  T = coup d'envoi + 2 h, prix 0.80-0.90 n= 386 gagnés= 335.0 attendus= 327.1 z=+1.12 rendement=+1.6% t_event=+0.77 écartée
+  T = coup d'envoi + 2 h, prix 0.90-0.97 n= 344 gagnés= 321.0 attendus= 321.2 z=-0.04 rendement=-0.4% t_event=-0.25 écartée
+  T = coup d'envoi + 3 h, prix 0.65-0.80 n= 182 gagnés= 125.0 attendus= 131.5 z=-1.08 rendement=-6.2% t_event=-1.30 écartée
+  T = coup d'envoi + 3 h, prix 0.80-0.90 n= 123 gagnés= 112.0 attendus= 104.0 z=+2.00 rendement=+6.8% t_event=+2.24 retenue
+  T = coup d'envoi + 3 h, prix 0.90-0.97 n= 123 gagnés= 118.0 attendus= 115.1 z=+1.08 rendement=+2.3% t_event=+1.18 indice
+('cs2', 'lol', 'dota2', 'val') 5352 matchs
+  T = coup d'envoi + 0.5 h, prix 0.65-0.80 n=1557 gagnés=1129.0 attendus=1123.1 z=+0.33 rendement=-0.8% t_event=-0.51 écartée
+  T = coup d'envoi + 0.5 h, prix 0.80-0.90 n= 962 gagnés= 813.0 attendus= 812.6 z=+0.04 rendement=-0.8% t_event=-0.60 écartée
+  T = coup d'envoi + 0.5 h, prix 0.90-0.97 n= 581 gagnés= 537.0 attendus= 541.8 z=-0.81 rendement=-1.2% t_event=-1.05 écartée
+  T = coup d'envoi + 1 h, prix 0.65-0.80 n=1313 gagnés= 979.0 attendus= 955.3 z=+1.47 rendement=+1.0% t_event=+0.63 écartée
+  T = coup d'envoi + 1 h, prix 0.80-0.90 n=1075 gagnés= 922.0 attendus= 911.7 z=+0.88 rendement=+0.4% t_event=+0.32 écartée
+  T = coup d'envoi + 1 h, prix 0.90-0.97 n= 772 gagnés= 720.0 attendus= 719.0 z=+0.14 rendement=-0.2% t_event=-0.22 écartée
+  T = coup d'envoi + 2 h, prix 0.65-0.80 n= 787 gagnés= 570.0 attendus= 565.1 z=+0.39 rendement=-0.5% t_event=-0.25 écartée
+  T = coup d'envoi + 2 h, prix 0.80-0.90 n= 427 gagnés= 366.0 attendus= 360.9 z=+0.69 rendement=+0.8% t_event=+0.39 écartée
+  T = coup d'envoi + 2 h, prix 0.90-0.97 n= 311 gagnés= 293.0 attendus= 290.8 z=+0.51 rendement=+0.4% t_event=+0.27 écartée
+  T = coup d'envoi + 3 h, prix 0.65-0.80 n= 286 gagnés= 207.0 attendus= 206.2 z=+0.10 rendement=-1.2% t_event=-0.33 écartée
+  T = coup d'envoi + 3 h, prix 0.80-0.90 n= 153 gagnés= 131.0 attendus= 129.3 z=+0.39 rendement=+0.7% t_event=+0.21 écartée
+  T = coup d'envoi + 3 h, prix 0.90-0.97 n= 127 gagnés= 122.0 attendus= 118.5 z=+1.25 rendement=+2.6% t_event=+1.42 indice

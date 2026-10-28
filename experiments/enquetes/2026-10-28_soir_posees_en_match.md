@@ -53,3 +53,10 @@ test `test_principal_posted_fill_in_play_after_the_brake_is_grave`.
 ## Sœur dans l'arène
 `nf_sport_patiente_prix_850_875_avant_match` (mêmes paramètres et filtre que la n° 1, plus `heures_min: 0` et `annuler_au_coup_d_envoi: true`, attribut de stratégie lu par `_fill_resting`) : à juger sur la
 MÊME période que la n° 1. Test `test_strategy_flagged_annuler_au_coup_d_envoi_loses_its_resting_order_at_kickoff_even_without_the_global_setting`.
+
+## À regarder (pas corrigé) : favoris achetés tard en match
+Achats IMMÉDIATS 2 h ou plus après le coup d'envoi (228 jetons, tous fantômes) : 181,5 gagnés pour 194,0 attendus (z −2,6, −4,6 %) ; payés 0,80-0,90 : 95 jetons, **−12,9 %** (z −3,05) ; 0,90-0,95 : +0,3 % ;
+0,65-0,80 : −32 % (16). Les plus nombreux : `nf_sport` (40), `apres_echeance` (26), `nf_tennis_vainqueur` (24), `nf_tennis_12_18h` (19). Ce n'est **pas le tennis ni l'e-sport** : rejeu sur 5 785 matchs de tennis et 5 352
+d'e-sport (achat de T = coup d'envoi + 1, 2, 3 h, favori à 0,65-0,97, vrais échanges, `scripts/favoris_en_jeu_tard.py`) : −1 % à +2 % aux trois tranches, un seul −5 % (tennis 0,65-0,80, +2 h, z −1,4). Le trou vient donc
+d'autres sports (football en seconde période, basket) ; 16 cases regardées, z −3,05 = p ≈ 0,04 après correction : à confirmer avant un filtre `heures_max`.
+
