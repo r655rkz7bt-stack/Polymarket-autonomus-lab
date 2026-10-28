@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4594,
+  "principal": 4595,
   "fantome:calibration_patiente_v1.0.0": 2259,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2030,
@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1841,
   "fantome:suivre_politique_v1.0.0": 1816,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2417,
+  "fantome:nf_court_v1.0.0": 2419,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1726,
@@ -47,12 +47,12 @@
   "fantome:nm_prix_bas_v1.0.0": 1859,
   "fantome:nm_prix_haut_v1.0.0": 1686,
   "fantome:naive_favorite_large_v1.0.0": 1564,
-  "fantome:nf_sport_patiente_v1.0.0": 2121,
+  "fantome:nf_sport_patiente_v1.0.0": 2123,
   "fantome:favori_politique_nuit_v1.0.0": 1488,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2131,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2133,
   "fantome:nf_sport_sans_fin_v1.0.0": 1549,
   "fantome:nm_demi_mise_v1.0.0": 1722,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1537,
@@ -109,12 +109,12 @@
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 907,
   "fantome:outsider_itf_v1.0.0": 573,
   "fantome:nf_court_football_v1.0.0": 702,
-  "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 792,
+  "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 795,
   "fantome:nf_tennis_12_18h_v1.0.0": 837,
   "fantome:compteur_tweets_non_v1.0.0": 555,
   "fantome:nf_court_football_soir_v1.0.0": 606,
   "fantome:nf_court_soir_v1.0.0": 634,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 690,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 692,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 586,
@@ -186,7 +186,7 @@
   "fantome:compteur_tweets_oui_v1.0.0": 45,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 12
  },
- "verifiees": 12957,
+ "verifiees": 12963,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1790,9 +1790,9 @@
    "op_id": "settle-76076098547816965256496603068513059888106778539777569036950965296761150999139"
   }
  ],
- "derniere_execution": "2026-10-28T17:35:04+00:00",
+ "derniere_execution": "2026-10-28T17:38:42+00:00",
  "dernier_seq_reglements": {
-  "principal": 4594,
+  "principal": 4595,
   "fantome:calibration_patiente_v1.0.0": 2261,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2030,
@@ -1976,7 +1976,7 @@
   "fantome:tranche_centrale_non_v1.0.0": 45,
   "fantome:suivre_inities_seul_v1.0.0": 35,
   "fantome:compteur_tweets_oui_v1.0.0": 45,
-  "fantome:compteur_tweets_48h_audace_v1.0.0": 12
+  "fantome:compteur_tweets_48h_audace_v1.0.0": 14
  },
  "reglements_verifies": 7138
 }
