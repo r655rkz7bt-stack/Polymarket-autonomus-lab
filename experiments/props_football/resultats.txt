@@ -1,0 +1,37 @@
+paris 3260 événements 1418
+== soccer_anytime_goalscorer
+No -1 h                                                141 paris   81 év   -6.3 %  t/év -0.05  z prix -0.61  gagnés 93/96
+No -3 h                                                 47 paris   32 év  -15.8 %  t/év -1.68  z prix -0.97  gagnés 30/33
+Yes -1 h                                               440 paris  186 év   +1.4 %  t/év +1.10  z prix +0.89  gagnés 171/162
+Yes -3 h                                               172 paris   88 év   -1.0 %  t/év +0.43  z prix +0.93  gagnés 73/67
+Yes -6 h                                               110 paris   59 év  +14.1 %  t/év +0.41  z prix +1.83  gagnés 54/45
+Yes -12 h                                               51 paris   37 év   +9.5 %  t/év +0.20  z prix +0.88  gagnés 25/22
+Yes tranche 0.15-0.3 (tous délais 3 h)                  43 paris   28 év  -28.5 %  t/év -0.43  z prix -0.93  gagnés 8/11
+Yes tranche 0.3-0.5 (tous délais 3 h)                   84 paris   56 év  +10.2 %  t/év +0.78  z prix +0.72  gagnés 37/34
+Yes tranche 0.5-0.7 (tous délais 3 h)                   35 paris   32 év  +22.9 %  t/év +1.45  z prix +1.65  gagnés 25/20
+== soccer_first_half_team_totals
+Over -1 h                                              183 paris  156 év   +1.2 %  t/év +0.24  z prix +0.45  gagnés 77/74
+Over -3 h                                               51 paris   45 év  +13.9 %  t/év +0.92  z prix +0.79  gagnés 24/21
+Over -12 h                                              31 paris   30 év  +14.2 %  t/év +0.65  z prix +0.80  gagnés 13/11
+Over -24 h                                              33 paris   32 év  -11.1 %  t/év -0.32  z prix -0.17  gagnés 10/10
+Under -1 h                                             122 paris  109 év   -7.6 %  t/év -1.10  z prix -0.50  gagnés 79/81
+== soccer_first_to_score
+No -1 h                                                421 paris  404 év   +3.3 %  t/év +1.15  z prix +0.74  gagnés 370/366
+No -3 h                                                 90 paris   86 év  -11.4 %  t/év -1.97  z prix -1.43  gagnés 70/74
+No -6 h                                                 65 paris   65 év   +0.2 %  t/év +0.04  z prix +0.31  gagnés 58/57
+No -12 h                                                57 paris   57 év   -4.7 %  t/év -0.96  z prix -0.53  gagnés 50/51
+No -24 h                                               214 paris  210 év   +0.7 %  t/év +0.50  z prix +0.77  gagnés 199/196
+No tranche 0.7-0.95 (tous délais 3 h)                   59 paris   59 év   -2.4 %  t/év -0.56  z prix -0.55  gagnés 53/54
+Yes -1 h                                               198 paris  171 év   -0.2 %  t/év +0.17  z prix +0.83  gagnés 87/82
+Yes -3 h                                                87 paris   75 év   -7.4 %  t/év -0.14  z prix +0.19  gagnés 40/39
+Yes -6 h                                                32 paris   31 év  +12.0 %  t/év +0.29  z prix -0.16  gagnés 13/13
+Yes tranche 0.5-0.7 (tous délais 3 h)                   38 paris   38 év   +5.9 %  t/év +0.43  z prix +0.53  gagnés 24/22
+== soccer_team_total_corners
+Over -1 h                                              143 paris  131 év   +2.1 %  t/év +0.36  z prix +0.27  gagnés 77/75
+Over -3 h                                               87 paris   80 év   -1.9 %  t/év -0.40  z prix -0.05  gagnés 45/45
+Over -6 h                                               59 paris   56 év   +2.3 %  t/év +0.44  z prix +0.11  gagnés 30/30
+Over -12 h                                              45 paris   42 év  +16.5 %  t/év +1.17  z prix +1.46  gagnés 30/25
+Over -24 h                                              48 paris   42 év  -20.0 %  t/év -1.50  z prix -0.99  gagnés 20/23
+Over tranche 0.3-0.5 (tous délais 3 h)                  31 paris   31 év  +12.8 %  t/év +0.62  z prix +0.76  gagnés 16/14
+Over tranche 0.5-0.7 (tous délais 3 h)                  53 paris   50 év   -9.8 %  t/év -0.75  z prix -0.57  gagnés 27/29
+Under -1 h                                              66 paris   62 év   -7.7 %  t/év -1.15  z prix -0.42  gagnés 32/34

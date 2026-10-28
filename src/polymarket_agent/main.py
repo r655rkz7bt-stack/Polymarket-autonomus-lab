@@ -752,6 +752,13 @@ def _estimate_rewards(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str
         portfolio.counts["recompenses_estimees"] = round(total, 4)
 
 
+def _raison_par_defaut(output, vus: int) -> None:
+    """Une stratégie qui ne propose rien ET ne note aucune raison dit pourquoi malgré elle (28/10/2026 : `mots_nouveaux`, `suivre_inities`
+    et `suivre_inities_seul` affichaient « abstentions {} » sur 427 marchés : impossible de distinguer une stratégie sourde d'une stratégie sans cas)."""
+    if vus and not output.proposals and not getattr(output, "limit_orders", None) and not output.abstentions:
+        output.abstentions["aucun marché vu n'a la référence ou la forme demandée (raison non notée par la stratégie)"] = vus
+
+
 def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
              books: dict[str, OrderBook], report: CycleReport, bucket: str,
              all_markets: list[MarketInfo] | None = None, fresh_books: dict | None = None) -> None:
@@ -767,6 +774,8 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if isinstance(strategy, Weighted):
             strategy.drops = {}
         output = strategy.propose(seen, books, ledger.state, deps.limits, bucket, marks)
+        if portfolio.name != "principal":  # le principal copie : rien à copier n'est pas une surdité
+            _raison_par_defaut(output, len(seen))
         # Sorties (ventes) : seulement sur les positions ouvertes par cette stratégie.
         if hasattr(strategy, "exits"):
             mine = {t: p for t, p in ledger.state.positions.items() if p.strategy_id == strategy.strategy_id}
