@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-10-28 (passage chercheur de nuit, 20 h 55 → ~22 h 35 UTC, ~100 min ; durée visée 135 min : le reste attendait des relevés qui n'existent pas encore — CDC rougeole toujours 4 588 au 22/10, essence, NBA de janvier, date de lancement des jetons, sources de comptage d'élection bloquées)
+## 2026-10-28 (passage chercheur de nuit, 20 h 55 → 22 h 37 UTC, 102 min ; durée visée 135 min : le reste attendait des relevés qui n'existent pas encore — CDC rougeole toujours 4 588 au 22/10, essence, NBA de janvier, date de lancement des jetons, sources de comptage d'élection bloquées)
 
 - **Enquête** (fiche : `enquetes/2026-10-28_soir_posees_en_match.md`, famille 5 + constat « à regarder » `posees_en_jeu`). Aucune obligation grave. **Défaut trouvé : les ordres posés servis EN MATCH perdent 9,8 % par pari** (320 jetons, un compte par jeton, 251,0 gagnés pour 267,8,
   z −2,84, z par événement −3,0 ; −8,2 % avant le 25/10 et −12,7 % depuis : hors échantillon) contre −0,3 % pour les achats immédiats (907 jetons) ; le principal en a subi 22 (−37,6 € sur 331 €, dont 13 de la n° 1 `nf_sport_patiente_prix_850_875`). Cause : un ordre posé n'est servi que quand le prix
