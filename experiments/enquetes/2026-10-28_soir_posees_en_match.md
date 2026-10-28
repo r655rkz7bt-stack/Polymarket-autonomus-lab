@@ -31,6 +31,14 @@ immédiats en match 71 jetons −3,4 % (z −0,8) ; **tennis : posés en match 2
 (43 paris, **−812 €, −25,6 %**, alors que sa partie tennis fait +679 €) et celle de la n° 1 (22 paris CS2, −325 €) viennent surtout de ces ordres posés en match : même mécanisme dans deux disciplines. Contrôle famille 2 (`scripts/meilleur_sport_28_10.py`) :
 sans son meilleur sport, la n° 1 fait +69 € (sans le tennis ATP/WTA, +338 €), `nf_sport_patiente` −574 € (sans son tennis), `nf_sport_18_24h` +192 € (sans le football) : le gain des fantômes du haut dépend d'un sport.
 
+**Rejeu sur l'historique (tennis et e-sport, 11 137 matchs, vrais échanges ; `experiments/sauts_en_jeu/scripts/ordres_poses_historique.py`)** : favori à 0,75-0,95 à T ; ordre posé 1 centime sous le dernier prix, valable 3 h, servi au premier échange de preneur
+qui vend à ce prix ou moins (règle prudente), contre achat immédiat sur les mêmes matchs. Même sens que le journal, en plus petit et mieux localisé :
+- ordre **posé pendant le match** (T = coup d'envoi + 0,75 h) : servi −2,3 % en tennis (1 994 matchs, z des prix −2,2) et −2,8 % en e-sport (1 713, z −2,5) ; à + 1,5 h tennis −3,2 % (z −2,6), e-sport −0,5 % ; à + 0,25 h −0,3 à +1,2 % ;
+- ordre **posé avant le match** et servi AVANT le coup d'envoi : tennis +0,7 à +1,4 %, e-sport +1,3 à +1,9 % (z ≤ +1,2) ;
+- ordre posé avant le match mais servi APRÈS le coup d'envoi (T = −1 h) : tennis −0,4 % (1 026), e-sport +0,1 % (1 006) : neutre, alors que l'achat immédiat des mêmes matchs fait −2,7 % / −2,3 %.
+Lecture : le mal vient surtout des ordres POSÉS en jeu ; annuler au coup d'envoi un ordre posé avant le match coûte peu (neutre sur l'historique) et supprime les ordres posés en jeu : le frein reste. La sœur `..._avant_match` (aucun nouvel ordre en jeu ET annulation) dira
+si l'écart du journal (−9,8 %, plus grand que l'historique) est durable.
+
 ## Le principal est touché aussi
 Journal du principal : 22 achats posés en match (13 de `nf_sport_patiente_prix_850_875`, 8 de `nf_sport_patiente`, 1 de `nf_sport_patiente_6_24h`) : **16 gagnés pour
 19,1 attendus, −37,6 € sur 331 €** (−11,4 %). Petit en euros (mises de 4-5 €), mais c'est exactement la partie du champion qui perd. Chez les fantômes :
