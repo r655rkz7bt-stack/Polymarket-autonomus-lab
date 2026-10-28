@@ -1,0 +1,22 @@
+23178 relevés (15 instants, 5170 marchés)
+17369 relevés de marchés réglés (3509 marchés, 319 événements)
+contrôle du règlement : 1579 événements sur 1579 avec exactement une tranche gagnante relevée
+jours : ['2026-10-25', '2026-10-26', '2026-10-27', '2026-10-28'] ; jugés : 2de moitié des jours ; biais appris pour 94 stations×type
+2187 relevés jugés avec un vrai échange dans les 2 h avant T0 (sur 8195)
+
+σ 0.3 : log loss modèle 0.4634 contre marché 0.3471 (2187 relevés ; plus bas = mieux)
+  écart ≥ 0.05 : 694 achats aux prix payés, rendement moyen -0.030, 85 événements, confiance par événement -1.61, z des prix -0.90 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.10 : 505 achats aux prix payés, rendement moyen +0.012, 83 événements, confiance par événement -1.11, z des prix -0.68 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.15 : 393 achats aux prix payés, rendement moyen +0.063, 77 événements, confiance par événement -1.38, z des prix -0.49 -> écartée (pas d'avantage régulier après frais)
+
+σ 0.6 : log loss modèle 0.4345 contre marché 0.3471 (2187 relevés ; plus bas = mieux)
+  écart ≥ 0.05 : 722 achats aux prix payés, rendement moyen +0.040, 84 événements, confiance par événement +0.48, z des prix -0.05 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.10 : 530 achats aux prix payés, rendement moyen +0.119, 82 événements, confiance par événement +0.03, z des prix +0.88 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.15 : 381 achats aux prix payés, rendement moyen +0.094, 79 événements, confiance par événement -0.88, z des prix +0.49 -> écartée (pas d'avantage régulier après frais)
+
+σ 1.0 : log loss modèle 0.4194 contre marché 0.3471 (2187 relevés ; plus bas = mieux)
+  écart ≥ 0.05 : 746 achats aux prix payés, rendement moyen +0.030, 84 événements, confiance par événement +0.63, z des prix +0.11 -> écartée (pas d'avantage régulier après frais)
+  écart ≥ 0.10 : 563 achats aux prix payés, rendement moyen +0.084, 84 événements, confiance par événement +0.96, z des prix +0.57 -> indice (positive mais encore fragile : fantôme, l'arène tranchera)
+  écart ≥ 0.15 : 408 achats aux prix payés, rendement moyen +0.074, 80 événements, confiance par événement -0.25, z des prix -0.33 -> écartée (pas d'avantage régulier après frais)
+
+9 réglages essayés (σ × écart).
