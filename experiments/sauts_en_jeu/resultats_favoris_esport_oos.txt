@@ -1,0 +1,60 @@
+('cs2', 'lol', 'dota2', 'val') 8549 matchs (février-juillet)
+=== H-1
+  0.55-0.65 n=2217 gagnés=1285.0 attendus=1330.8 z=-1.99 rendement=-4.5% t_event=-2.58 écartée
+  0.65-0.80 n=2484 gagnés=1790.0 attendus=1779.3 z=+0.48 rendement=-0.2% t_event=-0.15 écartée
+  0.80-0.90 n=1011 gagnés= 859.0 attendus= 850.0 z=+0.78 rendement=+0.7% t_event=+0.52 écartée
+     0,65-0,80 cs2 n=1133 gagnés= 825.0 attendus= 809.7 z=+1.01 rendement=+1.1% t_event=+0.58 écartée
+     0,65-0,80 lol n= 595 gagnés= 432.0 attendus= 428.8 z=+0.29 rendement=-0.1% t_event=-0.03 écartée
+     0,65-0,80 dota2 n= 353 gagnés= 257.0 attendus= 254.6 z=+0.28 rendement=+0.1% t_event=+0.04 écartée
+     0,65-0,80 val n= 403 gagnés= 276.0 attendus= 286.2 z=-1.13 rendement=-4.2% t_event=-1.28 écartée
+     0,65-0,80 mois 2026-02 n= 444 gagnés= 321.0 attendus= 317.4 z=+0.38 rendement=+0.9% t_event=+0.31 écartée
+     0,65-0,80 mois 2026-03 n= 172 gagnés= 119.0 attendus= 122.4 z=-0.58 rendement=-3.0% t_event=-0.61 écartée
+     0,65-0,80 mois 2026-04 n= 567 gagnés= 405.0 attendus= 407.2 z=-0.21 rendement=-1.4% t_event=-0.54 écartée
+     0,65-0,80 mois 2026-05 n= 547 gagnés= 385.0 attendus= 392.2 z=-0.69 rendement=-2.8% t_event=-1.05 écartée
+     0,65-0,80 mois 2026-06 n= 311 gagnés= 234.0 attendus= 223.1 z=+1.38 rendement=+4.4% t_event=+1.27 indice
+     0,65-0,80 mois 2026-07 n= 443 gagnés= 326.0 attendus= 317.0 z=+0.95 rendement=+1.4% t_event=+0.49 écartée
+=== H-3
+  0.55-0.65 n=1897 gagnés=1094.0 attendus=1137.0 z=-2.02 rendement=-4.8% t_event=-2.58 écartée
+  0.65-0.80 n=2019 gagnés=1462.0 attendus=1443.2 z=+0.93 rendement=+0.5% t_event=+0.38 écartée
+  0.80-0.90 n= 794 gagnés= 671.0 attendus= 667.0 z=+0.39 rendement=+0.2% t_event=+0.15 écartée
+     0,65-0,80 cs2 n= 859 gagnés= 627.0 attendus= 612.5 z=+1.10 rendement=+1.6% t_event=+0.74 écartée
+     0,65-0,80 lol n= 559 gagnés= 402.0 attendus= 402.0 z=-0.00 rendement=-0.8% t_event=-0.31 écartée
+     0,65-0,80 dota2 n= 269 gagnés= 201.0 attendus= 193.0 z=+1.09 rendement=+3.2% t_event=+0.86 indice
+     0,65-0,80 val n= 332 gagnés= 232.0 attendus= 235.7 z=-0.45 rendement=-2.1% t_event=-0.59 écartée
+     0,65-0,80 mois 2026-01 n=   2 gagnés=   2.0 attendus=   1.3 z=+0.98 rendement=+48.2% t_event=+0.00 écartée
+     0,65-0,80 mois 2026-02 n= 346 gagnés= 253.0 attendus= 247.7 z=+0.63 rendement=+2.2% t_event=+0.66 écartée
+     0,65-0,80 mois 2026-03 n= 129 gagnés=  86.0 attendus=  92.2 z=-1.21 rendement=-6.5% t_event=-1.11 écartée
+     0,65-0,80 mois 2026-04 n= 464 gagnés= 337.0 attendus= 332.4 z=+0.48 rendement=+0.5% t_event=+0.17 écartée
+     0,65-0,80 mois 2026-05 n= 461 gagnés= 327.0 attendus= 329.6 z=-0.27 rendement=-1.8% t_event=-0.60 écartée
+     0,65-0,80 mois 2026-06 n= 247 gagnés= 199.0 attendus= 176.3 z=+3.21 rendement=+12.2% t_event=+3.45 retenue
+     0,65-0,80 mois 2026-07 n= 370 gagnés= 258.0 attendus= 263.7 z=-0.65 rendement=-3.8% t_event=-1.13 écartée
+=== H-6
+  0.55-0.65 n=1500 gagnés= 879.0 attendus= 899.9 z=-1.10 rendement=-3.5% t_event=-1.64 écartée
+  0.65-0.80 n=1638 gagnés=1174.0 attendus=1170.6 z=+0.19 rendement=-0.5% t_event=-0.33 écartée
+  0.80-0.90 n= 599 gagnés= 508.0 attendus= 503.7 z=+0.48 rendement=+0.4% t_event=+0.25 écartée
+     0,65-0,80 cs2 n= 635 gagnés= 463.0 attendus= 452.1 z=+0.96 rendement=+1.6% t_event=+0.66 écartée
+     0,65-0,80 lol n= 504 gagnés= 356.0 attendus= 362.1 z=-0.61 rendement=-2.6% t_event=-0.92 écartée
+     0,65-0,80 dota2 n= 230 gagnés= 167.0 attendus= 165.3 z=+0.25 rendement=+0.3% t_event=+0.07 écartée
+     0,65-0,80 val n= 269 gagnés= 188.0 attendus= 191.0 z=-0.41 rendement=-2.4% t_event=-0.61 écartée
+     0,65-0,80 mois 2026-01 n=   2 gagnés=   2.0 attendus=   1.3 z=+1.02 rendement=+51.5% t_event=+0.00 écartée
+     0,65-0,80 mois 2026-02 n= 277 gagnés= 207.0 attendus= 198.2 z=+1.17 rendement=+4.5% t_event=+1.22 indice
+     0,65-0,80 mois 2026-03 n=  98 gagnés=  66.0 attendus=  70.2 z=-0.96 rendement=-5.7% t_event=-0.86 écartée
+     0,65-0,80 mois 2026-04 n= 379 gagnés= 263.0 attendus= 271.4 z=-0.96 rendement=-4.3% t_event=-1.31 écartée
+     0,65-0,80 mois 2026-05 n= 378 gagnés= 264.0 attendus= 270.3 z=-0.72 rendement=-3.2% t_event=-0.97 écartée
+     0,65-0,80 mois 2026-06 n= 198 gagnés= 151.0 attendus= 140.6 z=+1.63 rendement=+6.5% t_event=+1.53 retenue
+     0,65-0,80 mois 2026-07 n= 306 gagnés= 221.0 attendus= 218.4 z=+0.33 rendement=-0.3% t_event=-0.07 écartée
+=== H-12
+  0.55-0.65 n= 863 gagnés= 520.0 attendus= 516.4 z=+0.25 rendement=-0.5% t_event=-0.16 écartée
+  0.65-0.80 n=1003 gagnés= 711.0 attendus= 716.4 z=-0.38 rendement=-1.5% t_event=-0.75 écartée
+  0.80-0.90 n= 378 gagnés= 313.0 attendus= 318.2 z=-0.73 rendement=-2.1% t_event=-0.89 écartée
+     0,65-0,80 cs2 n= 362 gagnés= 266.0 attendus= 258.0 z=+0.93 rendement=+2.3% t_event=+0.70 écartée
+     0,65-0,80 lol n= 368 gagnés= 248.0 attendus= 263.1 z=-1.76 rendement=-6.6% t_event=-1.93 écartée
+     0,65-0,80 dota2 n= 133 gagnés=  97.0 attendus=  96.0 z=+0.20 rendement=+0.2% t_event=+0.03 écartée
+     0,65-0,80 val n= 140 gagnés= 100.0 attendus=  99.3 z=+0.14 rendement=+0.5% t_event=+0.09 écartée
+     0,65-0,80 mois 2026-01 n=   2 gagnés=   2.0 attendus=   1.5 z=+0.85 rendement=+36.1% t_event=+0.00 écartée
+     0,65-0,80 mois 2026-02 n= 151 gagnés= 117.0 attendus= 107.6 z=+1.69 rendement=+9.4% t_event=+1.94 retenue
+     0,65-0,80 mois 2026-03 n=  56 gagnés=  37.0 attendus=  40.1 z=-0.93 rendement=-7.2% t_event=-0.80 écartée
+     0,65-0,80 mois 2026-04 n= 227 gagnés= 162.0 attendus= 163.2 z=-0.18 rendement=-1.8% t_event=-0.44 écartée
+     0,65-0,80 mois 2026-05 n= 250 gagnés= 173.0 attendus= 178.7 z=-0.81 rendement=-4.4% t_event=-1.09 écartée
+     0,65-0,80 mois 2026-06 n= 139 gagnés=  98.0 attendus=  98.6 z=-0.11 rendement=-1.4% t_event=-0.26 écartée
+     0,65-0,80 mois 2026-07 n= 178 gagnés= 122.0 attendus= 126.6 z=-0.77 rendement=-5.0% t_event=-1.03 écartée

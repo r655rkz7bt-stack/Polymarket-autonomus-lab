@@ -50,3 +50,20 @@ Mêmes 11 158 matchs (août-octobre) et leurs échanges ; à T = coup d'envoi �
   Mais `volumeNum` compte aussi les échanges d'APRÈS T (un petit marché final = un match peu suivi après coup). Refait avec le notionnel échangé AVANT T (`favoris_esport_volume.txt`) : les trois tiers donnent
   +3,8 / +3,3 / +5,4 % (H-3) et +7,5 / +2,4 / +3,5 % (H-6) : **pas de concentration**. Leçon : jamais de coupe par un volume connu seulement à la fin.
 - **Rejeu sur la période d'avant** (`favoris_esport_oos.py`, `favoris_esport_total.py` ; relevé février-juillet, 8 683 matchs à plus de 2 000 $ des quatre jeux) : voir le tableau ci-dessous.
+
+## Rejeu sur la période d'avant (février-juillet, 8 549 matchs, jamais regardés) et relevé complet (13 901 matchs)
+Tranche payée 0,65-0,80, un pari par match, vrais échanges, frais payés (`resultats_favoris_esport_oos.txt`, `resultats_favoris_esport_total.txt`).
+
+| délai | août-octobre (découverte) | février-juillet (hors échantillon) | tout le relevé, 4 jeux | CS2 seul, février-juillet | CS2 seul, tout le relevé |
+|---|---|---|---|---|---|
+| H-1 | −0,8 % | −0,2 % (2 484 paris, z +0,5) | −0,4 % | +1,1 % (z +1,0) | +1,0 % |
+| **H-3** | **+4,2 %** (1 178, z +3,1) | **+0,5 %** (2 019, z +0,9) | +1,9 % (3 197, z +2,6, t +1,7) | +1,6 % (859, z +1,1) | +3,8 % (1 520, z +3,0, t +2,4) |
+| **H-6** | **+4,5 %** (902, z +2,8) | **−0,5 %** (1 638, z +0,2) | +1,3 % (2 540, z +1,8) | +1,6 % (635, z +1,0) | +4,1 % (1 136, z +2,8) |
+| H-12 | +0,1 % | −1,5 % (1 003) | −0,5 % | +2,3 % | +4,0 % (650, z +2,1) |
+
+- Par mois, février-juillet, H-3 : +2,2 / −6,5 / +0,5 / −1,8 / **+12,2 (juin)** / −3,8 % : un seul mois fort, les autres autour de zéro. Les jeux : CS2 +1,6 %, Dota 2 +3,2 %, LoL −0,8 %, Valorant −2,1 %.
+- Les favoris à 0,55-0,65 perdent partout (tout le relevé : −4,8 % à H-3, t −3,2 ; −4,1 % à H-1) : près de 50-50, les frais et l'écart suffisent.
+
+**Verdict : écartée pour les quatre jeux** (+4 % à la découverte, +0,5 % / −0,5 % hors échantillon aux deux délais gagnants ; ~40 cases regardées en tout). **Indice faible pour CS2 seul** (+1,6 %, z +1,1 hors
+échantillon : même signe, un tiers de l'effet ; sous-ensemble choisi après coup) : fantôme `favori_esport_milieu` (CS2 seul, H-3 à H-6), expérience audacieuse, **jamais « retenue »** sans 100 paris de plus en direct.
+Ce qui reste vrai : outsiders perdants partout ; favoris à 0,55-0,65 perdants ; tennis et e-sport après un saut de prix : le marché suit.

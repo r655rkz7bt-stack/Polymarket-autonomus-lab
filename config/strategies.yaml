@@ -2510,20 +2510,21 @@ nf_sport_patiente_prix_850_875_avant_match:
     kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}
 
 favori_esport_milieu:
-  explication: "En e-sport, le favori « vainqueur » à 0,65-0,80, acheté 3 à 6 heures avant le match : sur le passé il gagnait environ 3 points de plus que son prix."
-  # Expérience audacieuse (28/10/2026, experiments/sauts_en_jeu.md, « Outsiders et favoris avant le match »). Hors favoris à 0,80-0,95 (déjà jugés : −0,1 à +0,6 %) : la tranche du MILIEU, jamais isolée.
-  # CS2 / LoL / Dota 2 / Valorant, 5 352 matchs du 01/08 au 28/10, vrais échanges, frais payés, un pari par match : H-3 +4,2 % (1 178 paris, 891 gagnés pour 843,6, z +3,1, t par événement +2,4),
-  # H-6 +4,5 % (902 paris, z +2,8) ; H-1 −0,8 %, H-12 +1,3 % ; août −0,4 %, septembre +7,2 %, octobre +6,1 % ; la bande est sensible (0,60-0,75 : +0,6 %) ; tient avec la profondeur (≥ 400 parts
-  # achetables dans l'heure : +5,9 %) et si l'on compte les 50-50 à 0,5 (+3,3 %) ; le gain de « bas volume » vu au premier regard venait du volume FINAL (regard vers le futur) : au volume connu à T, trois
-  # tiers à +3,4 / +3,3 / +5,4 %. Une seule moitié de période regardée, une trentaine de cases (4 délais × 4 bandes × 2 groupes) : INDICE, pas retenue. Mise franche : Kelly entier sur un avantage supposé de 0,03.
+  explication: "Au Counter-Strike, le favori « vainqueur » à 0,65-0,80, acheté 3 à 6 heures avant le match : sur le passé il gagnait environ 2 à 4 points de plus que son prix (indice, pas confirmé hors échantillon)."
+  # Expérience audacieuse (28/10/2026, experiments/sauts_en_jeu.md, « Suite : outsiders et favoris avant le match »). Hors favoris à 0,80-0,95 (déjà jugés : −0,1 à +0,6 %) : la tranche du MILIEU.
+  # DÉCOUVERTE (août-octobre, 4 jeux, 5 352 matchs, vrais échanges, frais payés, un pari par match, 32 cases regardées) : H-3 +4,2 % (1 178 paris, z +3,1, t par événement +2,4), H-6 +4,5 %, CS2 +6,7 % (z +3,3).
+  # REJEU février-juillet (8 549 matchs, jamais vu) : les quatre jeux H-3 +0,5 % (2 019 paris, z +0,9), H-6 −0,5 % : EFFACÉ ; CS2 seul +1,6 % (859 paris, z +1,1, même signe, un tiers de l'effet) ; Valorant −2 %, LoL −1 %.
+  # TOUT le relevé, CS2 seul (7 600 matchs) : H-3 +3,8 % (1 520 paris, z +3,0, 7 mois sur 9 positifs), H-6 +4,1 %, H-12 +4,0 %, H-1 +1,0 %. Le sous-ensemble CS2 a été choisi APRÈS avoir vu la découverte : indice faible, jamais « retenue ».
+  # Tient avec la profondeur (≥ 400 parts achetables dans l'heure : +5,9 %) ; le gain « bas volume » vu d'abord venait du volume FINAL (regard vers le futur), pas du volume connu à T.
+  # Mise franche : Kelly entier sur un avantage supposé de 0,03. Un fantôme coûte zéro au principal ; la perte apprendrait que Counter-Strike août-octobre était une période, pas un avantage.
   class: naive_favorite
-  filtres: {familles: [sports], question_contient: ["counter-strike:", "lol:", "dota 2:", "valorant:"], types_pari: [vainqueur], un_match: true, heures_min: 3, heures_max: 6}
+  filtres: {familles: [sports], question_contient: ["counter-strike:"], types_pari: [vainqueur], un_match: true, heures_min: 3, heures_max: 6}
   enabled: true
   version: "1.0.0"
   created_at: "2026-10-28"
   hypothesis: >
-    Les favoris d'e-sport à 0,65-0,80 sont un peu sous-cotés 3 à 6 h avant le match (+4 % aux vrais prix sur 3 mois, z +3). Une perte apprendrait que l'effet vient d'une période (septembre-octobre), d'un jeu (CS2 porte
-    presque tout : +6,7 %, LoL +0,7 %, Valorant −6,4 %) ou d'une fenêtre étroite (H-1 et H-12 sont à l'équilibre), pas d'un avantage durable.
+    Les favoris de Counter-Strike à 0,65-0,80 sont un peu sous-cotés 3 à 6 h avant le match (+3,8 % aux vrais prix sur 9 mois, z +3,0 ; mais +1,6 % seulement, z +1,1, sur février-juillet pris à part).
+    Une perte apprendrait que l'effet vient d'août-octobre (+6,7 %) et d'un sous-ensemble choisi après coup, pas d'un avantage durable ; un gain confirmerait un indice faible.
   params:
     min_ask:        {value: 0.65, min: 0.50, max: 0.97}
     max_ask:        {value: 0.80, min: 0.60, max: 0.98}
