@@ -22,6 +22,10 @@ Les deux moitiés ont le même signe ; la seule chose qui change entre posé et 
 prix descend jusqu'à lui (but, blessure, break), donc quand le favori vient d'avoir de mauvaises nouvelles (sélection adverse, comme la tenue de marché : −800 €).
 Pas un défaut du simulateur (la règle prudente ne sert que si le marché traverse le prix).
 
+Par heure depuis le coup d'envoi (ordres posés, un compte par jeton) : 0-1 h −18,6 % (87 jetons, z −1,8), 1-2 h −7,0 % (114, z −1,6), 2 h et plus −7,6 % (110, z −2,0) ; les trois classes
+après le coup d'envoi sont négatives. Avant le coup d'envoi : 20 jetons à plus de 12 h −18,7 %, 18 à 6-12 h −10,0 %, 11 à 3-6 h +28,5 %, 21 à 1-3 h −4,5 %, **15 dans l'heure qui précède −35,3 %** (8,5 gagnés pour 9,6 :
+trop peu pour étendre l'annulation à l'heure d'avant ; à relire à ~50 jetons). Immédiats : −4,9 % à +9,2 % avant, +3,7 % (0-1 h), −0,9 % (1-2 h), −4,6 % (2 h et plus, z −2,6 : à regarder, pas lié au mode posé).
+
 ## Le principal est touché aussi
 Journal du principal : 22 achats posés en match (13 de `nf_sport_patiente_prix_850_875`, 8 de `nf_sport_patiente`, 1 de `nf_sport_patiente_6_24h`) : **16 gagnés pour
 19,1 attendus, −37,6 € sur 331 €** (−11,4 %). Petit en euros (mises de 4-5 €), mais c'est exactement la partie du champion qui perd. Chez les fantômes :

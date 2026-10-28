@@ -6,7 +6,8 @@ import json, gzip, sys, math, bisect, datetime as dt, collections
 from pathlib import Path
 sys.path.insert(0, "src")
 from polymarket_agent import idea_test as it
-D = Path("experiments/sauts_en_jeu/donnees")
+import os
+D = Path(os.environ.get("DONNEES", "experiments/sauts_en_jeu/donnees"))  # DONNEES=experiments/sauts_en_jeu/donnees/avant : relevé de février à juillet
 def parse(s):
     s = s.replace(" ", "T").replace("Z", "+00:00")
     if s.endswith("+00"): s += ":00"

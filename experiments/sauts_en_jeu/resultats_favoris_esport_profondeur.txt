@@ -1,0 +1,12 @@
+=== H-3 : 0,65-0,80, 1178 paris
+  parts achetables >=     0 n=1178 gagnés= 891.0 attendus= 843.6 z=+3.08 rendement=+4.2% t_event=+2.41 retenue
+  parts achetables >=    20 n= 938 gagnés= 714.0 attendus= 671.8 z=+3.07 rendement=+4.9% t_event=+2.53 retenue
+  parts achetables >=   100 n= 747 gagnés= 565.0 attendus= 535.2 z=+2.43 rendement=+4.1% t_event=+1.90 retenue
+  parts achetables >=   400 n= 541 gagnés= 416.0 attendus= 387.5 z=+2.73 rendement=+5.9% t_event=+2.33 retenue
+  parts achetables >=  1000 n= 387 gagnés= 294.0 attendus= 276.4 z=+1.98 rendement=+4.7% t_event=+1.56 retenue
+=== H-6 : 0,65-0,80, 902 paris
+  parts achetables >=     0 n= 902 gagnés= 683.0 attendus= 645.1 z=+2.81 rendement=+4.5% t_event=+2.26 retenue
+  parts achetables >=    20 n= 685 gagnés= 517.0 attendus= 488.7 z=+2.40 rendement=+4.4% t_event=+1.93 retenue
+  parts achetables >=   100 n= 504 gagnés= 372.0 attendus= 359.4 z=+1.24 rendement=+2.1% t_event=+0.77 écartée
+  parts achetables >=   400 n= 334 gagnés= 255.0 attendus= 237.9 z=+2.08 rendement=+5.7% t_event=+1.75 retenue
+  parts achetables >=  1000 n= 228 gagnés= 172.0 attendus= 162.3 z=+1.43 rendement=+4.4% t_event=+1.10 indice

@@ -1,0 +1,39 @@
+=== H-3
+0,65-0,80                                    n=1178 gagnés= 891.0 attendus= 843.6 z=+3.08 rendement=+4.2% t_event=+2.41 retenue
+  jeu cs2                                    n= 661 gagnés= 509.0 attendus= 471.0 z=+3.28 rendement=+6.7% t_event=+2.94 retenue
+  jeu lol                                    n= 269 gagnés= 199.0 attendus= 194.8 z=+0.57 rendement=+0.7% t_event=+0.18 écartée
+  jeu dota2                                  n= 139 gagnés= 109.0 attendus= 100.5 z=+1.63 rendement=+7.1% t_event=+1.48 indice
+  jeu val                                    n= 109 gagnés=  74.0 attendus=  77.4 z=-0.71 rendement=-6.4% t_event=-1.03 écartée
+  mois 2026-07                               n=   2 gagnés=   2.0 attendus=   1.5 z=+0.77 rendement=+28.5% t_event=+0.00 écartée
+  mois 2026-08                               n= 431 gagnés= 312.0 attendus= 308.5 z=+0.38 rendement=-0.4% t_event=-0.14 écartée
+  mois 2026-09                               n= 433 gagnés= 337.0 attendus= 310.2 z=+2.87 rendement=+7.2% t_event=+2.60 retenue
+  mois 2026-10                               n= 312 gagnés= 240.0 attendus= 223.3 z=+2.10 rendement=+6.1% t_event=+1.85 retenue
+  bande 0.60-0.75                            n=1351 gagnés= 926.0 attendus= 903.8 z=+1.29 rendement=+0.6% t_event=+0.31 écartée
+  bande 0.62-0.78                            n=1367 gagnés= 982.0 attendus= 948.2 z=+1.99 rendement=+1.9% t_event=+1.07 indice
+  bande 0.67-0.82                            n=1094 gagnés= 850.0 attendus= 807.5 z=+2.93 rendement=+4.0% t_event=+2.37 retenue
+  bande 0.70-0.85                            n= 988 gagnés= 786.0 attendus= 756.6 z=+2.22 rendement=+2.8% t_event=+1.68 retenue
+  bande 0.65-0.72                            n= 640 gagnés= 462.0 attendus= 437.2 z=+2.11 rendement=+4.0% t_event=+1.57 retenue
+  bande 0.72-0.80                            n= 538 gagnés= 429.0 attendus= 406.3 z=+2.28 rendement=+4.4% t_event=+1.91 retenue
+  1re moitié (dates)                         n= 589 gagnés= 439.0 attendus= 421.3 z=+1.63 rendement=+2.7% t_event=+1.09 indice
+  2e moitié (dates)                          n= 589 gagnés= 452.0 attendus= 422.3 z=+2.73 rendement=+5.6% t_event=+2.34 retenue
+=== H-6
+0,65-0,80                                    n= 902 gagnés= 683.0 attendus= 645.1 z=+2.81 rendement=+4.5% t_event=+2.26 retenue
+  jeu cs2                                    n= 501 gagnés= 387.0 attendus= 355.8 z=+3.08 rendement=+7.3% t_event=+2.79 retenue
+  jeu lol                                    n= 216 gagnés= 157.0 attendus= 156.4 z=+0.09 rendement=-1.0% t_event=-0.24 écartée
+  jeu dota2                                  n=  92 gagnés=  74.0 attendus=  66.7 z=+1.72 rendement=+9.8% t_event=+1.71 retenue
+  jeu val                                    n=  93 gagnés=  65.0 attendus=  66.1 z=-0.26 rendement=-3.4% t_event=-0.51 écartée
+  mois 2026-07                               n=   1 gagnés=   1.0 attendus=   0.8 z=+0.56 rendement=+30.0% t_event=+0.00 écartée
+  mois 2026-08                               n= 341 gagnés= 242.0 attendus= 243.9 z=-0.23 rendement=-2.3% t_event=-0.68 écartée
+  mois 2026-09                               n= 323 gagnés= 255.0 attendus= 231.1 z=+2.96 rendement=+9.0% t_event=+2.85 retenue
+  mois 2026-10                               n= 237 gagnés= 185.0 attendus= 169.3 z=+2.27 rendement=+8.0% t_event=+2.13 retenue
+  bande 0.60-0.75                            n=1069 gagnés= 741.0 attendus= 714.0 z=+1.76 rendement=+1.9% t_event=+0.91 indice
+  bande 0.62-0.78                            n=1062 gagnés= 767.0 attendus= 736.0 z=+2.07 rendement=+2.5% t_event=+1.28 indice
+  bande 0.67-0.82                            n= 839 gagnés= 642.0 attendus= 619.1 z=+1.80 rendement=+2.5% t_event=+1.29 indice
+  bande 0.70-0.85                            n= 750 gagnés= 592.0 attendus= 573.2 z=+1.62 rendement=+2.2% t_event=+1.13 indice
+  bande 0.65-0.72                            n= 491 gagnés= 359.0 attendus= 335.3 z=+2.30 rendement=+5.4% t_event=+1.87 retenue
+  bande 0.72-0.80                            n= 411 gagnés= 324.0 attendus= 309.7 z=+1.63 rendement=+3.4% t_event=+1.27 indice
+  1re moitié (dates)                         n= 451 gagnés= 327.0 attendus= 321.8 z=+0.54 rendement=+0.1% t_event=+0.04 écartée
+  2e moitié (dates)                          n= 451 gagnés= 356.0 attendus= 323.3 z=+3.43 rendement=+8.9% t_event=+3.32 retenue
+=== 50-50 comptés à 0,5
+H-3 0,65-0,80 (50-50 inclus)                 n=1211 gagnés= 907.5 attendus= 866.8 z=+2.60 rendement=+3.3% t_event=+1.92 retenue
+H-6 0,65-0,80 (50-50 inclus)                 n= 925 gagnés= 694.5 attendus= 661.4 z=+2.42 rendement=+3.6% t_event=+1.86 retenue

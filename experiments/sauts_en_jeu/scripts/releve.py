@@ -7,7 +7,10 @@ sys.path.insert(0, "src")
 SERIES = {"atp": 10365, "wta": 10366, "cs2": 10310, "lol": 10311, "dota2": 10309, "val": 10369}
 CUT = datetime.datetime.fromisoformat(sys.argv[1] if len(sys.argv) > 1 else "2026-08-01").replace(tzinfo=datetime.timezone.utc)
 VMIN = float(sys.argv[2]) if len(sys.argv) > 2 else 2000
-OUT = "experiments/sauts_en_jeu/donnees"
+OUT = os.environ.get("SORTIE", "experiments/sauts_en_jeu/donnees")
+FIN = datetime.datetime.fromisoformat(os.environ["FIN"]).replace(tzinfo=datetime.timezone.utc) if os.environ.get("FIN") else None  # borne haute (relevé « avant »)
+if os.environ.get("SERIES"): SERIES = {k: v for k, v in SERIES.items() if k in os.environ["SERIES"].split(",")}
+os.makedirs(OUT + "/echanges", exist_ok=True)
 CHAMPS = ("id", "conditionId", "question", "outcomes", "outcomePrices", "clobTokenIds", "sportsMarketType", "feeSchedule", "feesEnabled",
           "umaResolutionStatus", "volumeNum", "closedTime", "gameStartTime")
 s = requests.Session(); s.headers["User-Agent"] = "curl/8"
@@ -37,7 +40,7 @@ def pull(item):
             st = start_of(e)
             if st is None: continue
             vieux = vieux + 1 if st < CUT else 0
-            if st < CUT: continue
+            if st < CUT or (FIN and st >= FIN): continue
             mk = [m for m in e.get("markets") or [] if m.get("sportsMarketType") == "moneyline"]
             if len(mk) != 1 or float(mk[0].get("volumeNum") or 0) < VMIN: continue
             out.append({"sport": name, "id": e["id"], "title": e.get("title"), "start": st.isoformat(), "markets": [{k: m.get(k) for k in CHAMPS} for m in mk]})
