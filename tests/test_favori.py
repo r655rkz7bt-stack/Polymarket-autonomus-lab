@@ -191,6 +191,8 @@ def test_hour_of_day_filter(tmp_path):
     m, books, ledger, limits = _setup(tmp_path, end_hours=48)  # carnets à 12 h UTC (NOW)
     assert Filtered(_strategy(shrink=0.5), {"heure_utc": [12, 24]}).propose([m], books, ledger.state, limits, "b").proposals
     assert not Filtered(_strategy(shrink=0.5), {"heure_utc": [4, 12]}).propose([m], books, ledger.state, limits, "b").proposals
+    out = Filtered(_strategy(shrink=0.5), {"heure_utc": [4, 12]}).propose([m], books, ledger.state, limits, "b")
+    assert out.abstentions == {"hors de la plage horaire (heure_utc 4-12)": 1}  # 28/10/2026 : plus d'abstention vide hors de l'heure
     assert Filtered(_strategy(shrink=0.5), {"heure_utc": [20, 13]}).propose([m], books, ledger.state, limits, "b").proposals  # passe minuit
 
 

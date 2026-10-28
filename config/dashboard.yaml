@@ -21,12 +21,13 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-10-27"
+  date: "2026-10-28"
   points:
     - "28/10 : le gain apparent du NON crypto (fantômes crypto_non_*) était surtout un pari à la baisse : ses gains mensuels suivent le cours du Bitcoin (corrélation −0,82 sur 17 mois). Un mois de hausse du cours les fait perdre sans que cela prouve quelque chose."
     - "Coupées le 27/10 : decroissance_temps, marche_neuf et outsiders_surcotes, jamais testées sur le passé. Rejouées sur des milliers de marchés réglés elles perdent −2,6 %, −2 à −4 % et −2 % : aucune de ces trois idées ne bat les prix."
     - "Nouveau (27/10) : classement_appstore. Les marchés « n°1 de l'App Store » se règlent sur le classement Apple de midi à New York, le vendredi : on lit ce classement en direct et on achète le n°1 quelques heures avant. Chance de rester n°1 non mesurée : petite mise."
     - "Nouveau (28/10) : tranche_centrale_non. Avant le règlement de midi (New York) des échelles « Bitcoin price on… », le marché est trop sûr de la tranche du milieu. Rejouée sur le passé : 2026 +33 % (590 paris, z 3,5), 2025 +10 % (z 0,7). Une expérience, pas un avantage prouvé."
+    - "28/10 : deux idées neuves testées sur le passé et écartées. Les marchés « Bitcoin Up or Down » (5 et 15 minutes, 11 400 fenêtres) sont aussi bien calés que le cours Binance à la minute ; les Over/Under de sport (95 000 marchés) ne battent pas leurs prix. Billets sous 0,10 : −19 % à −40 % partout."
     - "Capital principal : 744 € réalisés sur 1 000 de départ. Aucun nouveau palier depuis 12 jours."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le

@@ -1,0 +1,107 @@
+94912 marchés, 18590 avec échanges
+24034 achats simulés
+
+=== 0.5 h avant le coup d'envoi
+tous, over                                       5955 paris /  1142 événements  gagnés   3019 pour   3105.9  rendement  -3.80%  t/événement -1.27
+tous, under                                      4917 paris /  1031 événements  gagnés   2491 pour   2488.1  rendement  -0.91%  t/événement -0.27
+cfb, over                                        1499 paris /   503 événements  gagnés    785 pour    776.1  rendement  +0.10%  t/événement +0.02
+cfb, under                                       1292 paris /   451 événements  gagnés    644 pour    651.4  rendement  -2.15%  t/événement -0.46
+nba, over                                        1411 paris /   120 événements  gagnés    655 pour    730.3  rendement -10.96%  t/événement -1.49
+nba, under                                       1344 paris /   120 événements  gagnés    713 pour    680.4  rendement  +4.16%  t/événement +0.52
+nfl, over                                        2267 paris /   197 événements  gagnés   1160 pour   1186.5  rendement  -3.05%  t/événement -0.56
+nfl, under                                       1543 paris /   156 événements  gagnés    778 pour    794.6  rendement  -2.85%  t/événement -0.42
+nhl, over                                         621 paris /   245 événements  gagnés    335 pour    331.6  rendement  -1.04%  t/événement -0.20
+nhl, under                                        583 paris /   232 événements  gagnés    279 pour    283.1  rendement  -3.75%  t/événement -0.64
+wnba, over                                        130 paris /    50 événements  gagnés     67 pour     66.8  rendement  -2.12%  t/événement -0.16
+wnba, under                                       132 paris /    49 événements  gagnés     67 pour     66.7  rendement  -1.95%  t/événement -0.14
+type first_half_team_totals, over                  84 paris /    60 événements  gagnés     39 pour     41.4  rendement  -6.61%  t/événement -0.63
+type first_half_totals, over                      349 paris /   189 événements  gagnés    151 pour    175.1  rendement -14.55%  t/événement -1.90
+type first_half_totals, under                     334 paris /   176 événements  gagnés    170 pour    172.8  rendement  -2.41%  t/événement -0.32
+type passing_touchdowns, over                      44 paris /    38 événements  gagnés     18 pour     23.1  rendement -23.14%  t/événement -1.52
+type passing_yards, over                           74 paris /    38 événements  gagnés     40 pour     35.5  rendement +11.77%  t/événement +0.62
+type q1_totals, over                              138 paris /   100 événements  gagnés     64 pour     73.9  rendement -14.04%  t/événement -1.69
+type q1_totals, under                              87 paris /    63 événements  gagnés     48 pour     44.0  rendement  +8.31%  t/événement +0.84
+type receiving_yards, over                        215 paris /    70 événements  gagnés     96 pour    109.8  rendement -13.59%  t/événement -1.68
+type receiving_yards, under                        43 paris /    28 événements  gagnés     23 pour     21.5  rendement  +5.71%  t/événement +0.32
+type receptions, over                             136 paris /    55 événements  gagnés     72 pour     71.2  rendement  +0.12%  t/événement +0.01
+type rushing_yards, over                          135 paris /    53 événements  gagnés     65 pour     70.9  rendement  -9.34%  t/événement -1.21
+type team_totals, over                            233 paris /   151 événements  gagnés    131 pour    131.6  rendement  -1.17%  t/événement -0.18
+type team_totals, under                           136 paris /   109 événements  gagnés     58 pour     65.6  rendement -12.47%  t/événement -1.37
+type totals, over                                4506 paris /  1042 événements  gagnés   2316 pour   2351.2  rendement  -2.55%  t/événement -0.77
+type totals, under                               4206 paris /   977 événements  gagnés   2130 pour   2128.0  rendement  -0.96%  t/événement -0.27
+
+=== 1 h avant le coup d'envoi
+tous, over                                       4593 paris /  1127 événements  gagnés   2350 pour   2398.8  rendement  -3.14%  t/événement -1.11
+tous, under                                      3202 paris /   991 événements  gagnés   1624 pour   1643.8  rendement  -2.32%  t/événement -0.69
+cfb, over                                        1248 paris /   499 événements  gagnés    655 pour    648.7  rendement  -0.12%  t/événement -0.03
+cfb, under                                        992 paris /   436 événements  gagnés    494 pour    509.8  rendement  -4.12%  t/événement -0.86
+nba, over                                         749 paris /   120 événements  gagnés    359 pour    397.5  rendement -10.57%  t/événement -1.37
+nba, under                                        629 paris /   117 événements  gagnés    354 pour    328.6  rendement  +6.94%  t/événement +0.84
+nfl, over                                        1968 paris /   210 événements  gagnés   1010 pour   1018.3  rendement  -1.67%  t/événement -0.34
+nfl, under                                       1060 paris /   166 événements  gagnés    513 pour    543.5  rendement  -6.45%  t/événement -0.91
+nhl, over                                         478 paris /   223 événements  gagnés    246 pour    257.4  rendement  -6.48%  t/événement -1.16
+nhl, under                                        397 paris /   205 événements  gagnés    200 pour    199.5  rendement  -1.96%  t/événement -0.31
+wnba, over                                        125 paris /    50 événements  gagnés     64 pour     63.3  rendement  -1.35%  t/événement -0.10
+wnba, under                                       106 paris /    49 événements  gagnés     56 pour     53.5  rendement  +2.27%  t/événement +0.16
+type first_half_team_totals, over                  60 paris /    46 événements  gagnés     29 pour     30.0  rendement  -4.62%  t/événement -0.37
+type first_half_totals, over                      210 paris /   138 événements  gagnés    101 pour    107.4  rendement  -6.88%  t/événement -0.80
+type first_half_totals, under                     171 paris /   119 événements  gagnés     92 pour     89.3  rendement  +2.06%  t/événement +0.23
+type passing_touchdowns, over                      58 paris /    45 événements  gagnés     28 pour     29.2  rendement  -5.10%  t/événement -0.39
+type passing_yards, over                           97 paris /    46 événements  gagnés     53 pour     47.4  rendement +10.87%  t/événement +0.73
+type q1_totals, over                               72 paris /    56 événements  gagnés     32 pour     34.9  rendement  -8.95%  t/événement -0.66
+type q1_totals, under                              36 paris /    32 événements  gagnés     23 pour     20.1  rendement +13.59%  t/événement +0.92
+type receiving_yards, over                        292 paris /    82 événements  gagnés    135 pour    149.9  rendement -10.95%  t/événement -1.58
+type receiving_yards, under                        58 paris /    29 événements  gagnés     32 pour     30.0  rendement  +5.49%  t/événement +0.34
+type receptions, over                             196 paris /    65 événements  gagnés     99 pour    101.2  rendement  -3.14%  t/événement -0.49
+type receptions, under                             30 paris /    27 événements  gagnés     17 pour     15.6  rendement  +8.50%  t/événement +0.45
+type rushing_yards, over                          181 paris /    62 événements  gagnés     87 pour     94.8  rendement  -9.22%  t/événement -1.31
+type rushing_yards, under                          31 paris /    27 événements  gagnés     17 pour     16.7  rendement  +0.80%  t/événement +0.05
+type team_totals, over                            224 paris /   160 événements  gagnés    128 pour    125.7  rendement  +0.96%  t/événement +0.15
+type team_totals, under                           122 paris /   104 événements  gagnés     54 pour     61.9  rendement -13.71%  t/événement -1.46
+type totals, over                                3153 paris /  1014 événements  gagnés   1628 pour   1652.3  rendement  -2.64%  t/événement -0.80
+type totals, under                               2702 paris /   927 événements  gagnés   1361 pour   1382.9  rendement  -2.73%  t/événement -0.77
+
+=== 3 h avant le coup d'envoi
+tous, over                                       1896 paris /   779 événements  gagnés    949 pour    981.9  rendement  -4.50%  t/événement -1.30
+tous, under                                      1428 paris /   678 événements  gagnés    747 pour    736.3  rendement  +0.36%  t/événement +0.09
+cfb, over                                         511 paris /   307 événements  gagnés    240 pour    262.6  rendement  -9.73%  t/événement -1.65
+cfb, under                                        429 paris /   286 événements  gagnés    230 pour    222.5  rendement  +2.36%  t/événement +0.38
+nba, over                                         314 paris /    98 événements  gagnés    167 pour    167.2  rendement  -0.95%  t/événement -0.10
+nba, under                                        312 paris /    98 événements  gagnés    162 pour    159.4  rendement  +0.91%  t/événement +0.09
+nfl, over                                         773 paris /   177 événements  gagnés    379 pour    390.1  rendement  -3.76%  t/événement -0.62
+nfl, under                                        456 paris /   129 événements  gagnés    233 pour    239.7  rendement  -3.58%  t/événement -0.44
+nhl, over                                         221 paris /   144 événements  gagnés    123 pour    122.0  rendement  -1.23%  t/événement -0.17
+nhl, under                                        162 paris /   114 événements  gagnés     85 pour     79.6  rendement  +4.55%  t/événement +0.50
+wnba, over                                         62 paris /    38 événements  gagnés     30 pour     31.9  rendement  -8.30%  t/événement -0.49
+wnba, under                                        61 paris /    43 événements  gagnés     36 pour     31.2  rendement +12.79%  t/événement +0.86
+type first_half_totals, over                       42 paris /    35 événements  gagnés     17 pour     21.1  rendement -19.86%  t/événement -1.21
+type first_half_totals, under                      56 paris /    47 événements  gagnés     38 pour     30.0  rendement +25.85%  t/événement +1.84
+type passing_yards, over                           34 paris /    23 événements  gagnés     21 pour     17.4  rendement +19.60%  t/événement +1.07
+type receiving_yards, over                        133 paris /    48 événements  gagnés     67 pour     70.9  rendement  -6.49%  t/événement -0.79
+type receptions, over                              83 paris /    43 événements  gagnés     42 pour     41.4  rendement  +0.58%  t/événement +0.06
+type rushing_yards, over                           77 paris /    47 événements  gagnés     34 pour     41.8  rendement -19.64%  t/événement -2.02
+type team_totals, over                             79 paris /    70 événements  gagnés     43 pour     42.8  rendement  -0.76%  t/événement -0.07
+type team_totals, under                            60 paris /    53 événements  gagnés     19 pour     29.5  rendement -36.81%  t/événement -2.87
+type totals, over                                1387 paris /   677 événements  gagnés    701 pour    719.6  rendement  -3.78%  t/événement -0.92
+type totals, under                               1225 paris /   625 événements  gagnés    640 pour    622.6  rendement  +1.65%  t/événement +0.37
+
+=== 6 h avant le coup d'envoi
+tous, over                                       1132 paris /   569 événements  gagnés    581 pour    583.6  rendement  -1.60%  t/événement -0.37
+tous, under                                       911 paris /   476 événements  gagnés    477 pour    472.0  rendement  +0.02%  t/événement +0.01
+cfb, over                                         256 paris /   176 événements  gagnés    140 pour    129.1  rendement  +7.31%  t/événement +0.97
+cfb, under                                        267 paris /   174 événements  gagnés    126 pour    137.4  rendement  -9.40%  t/événement -1.23
+nba, over                                         251 paris /    94 événements  gagnés    121 pour    130.8  rendement  -8.18%  t/événement -0.77
+nba, under                                        250 paris /    85 événements  gagnés    146 pour    129.7  rendement +12.12%  t/événement +1.06
+nfl, over                                         412 paris /   137 événements  gagnés    205 pour    208.4  rendement  -2.55%  t/événement -0.33
+nfl, under                                        253 paris /   102 événements  gagnés    137 pour    136.3  rendement  -0.30%  t/événement -0.03
+nhl, over                                         166 paris /   124 événements  gagnés     92 pour     91.2  rendement  -1.22%  t/événement -0.15
+nhl, under                                        103 paris /    83 événements  gagnés     49 pour     49.6  rendement  -3.63%  t/événement -0.34
+wnba, over                                         40 paris /    31 événements  gagnés     19 pour     20.3  rendement  -8.96%  t/événement -0.47
+wnba, under                                        33 paris /    27 événements  gagnés     17 pour     16.7  rendement  -0.49%  t/événement -0.02
+type receiving_yards, over                         54 paris /    29 événements  gagnés     28 pour     27.2  rendement  +1.56%  t/événement +0.12
+type receptions, over                              40 paris /    23 événements  gagnés     25 pour     21.4  rendement +15.86%  t/événement +1.14
+type rushing_yards, over                           45 paris /    27 événements  gagnés     19 pour     22.6  rendement -16.71%  t/événement -1.10
+type team_totals, over                             46 paris /    40 événements  gagnés     31 pour     25.1  rendement +22.45%  t/événement +1.87
+type team_totals, under                            33 paris /    27 événements  gagnés     14 pour     17.1  rendement -19.47%  t/événement -1.25
+type totals, over                                 878 paris /   493 événements  gagnés    451 pour    451.7  rendement  -1.36%  t/événement -0.28
+type totals, under                                813 paris /   443 événements  gagnés    420 pour    413.9  rendement  +0.39%  t/événement +0.07
