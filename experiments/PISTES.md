@@ -61,6 +61,11 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
     Metamask, Base, OpenSea, Variational… ; fin Gamma factice 2027-2028). Piste bloquée tant qu'on n'a pas l'adresse du contrat (à lire dans la description de chaque événement ?) ou une source d'annonces.
    28/10 (matin) : la description de l'événement relu (Predict.fun) ne contient aucune date (« 1 jour après le lancement = 16 h ET le lendemain du lancement » ; le lancement n'est pas daté) : l'adresse du contrat n'y est pas non plus (un seul événement lu : les 7 autres ouverts, non relus). Piste (b) du 28/10 nuit : probablement fermée, reste une source externe d'annonce de TGE.
 
+15. **Comptage officiel en direct (nuit d'élection) contre le prix** (28/10/2026, idée « radicalement différente » demandée par la feuille de mission : nouvelle source, nouveau mécanisme). Relevé des plus gros marchés ouverts du 28/10 (800 événements par `volume24hr`) : l'élection israélienne
+    du 27/10 (Likud « # of seats » 4,1 M$ de volume du jour, « Prime Minister » 10,4 M$, coalition, blocs ; le marché « Likud 25-29 » cotait déjà 0,979 le lendemain) et l'élection américaine du **03/11** (Chambre / Sénat / ~30 courses d'État, 12 à 18 M$ de liquidité) : les marchés se règlent sur des
+    comptages partiels publiés en direct par un organisme officiel, et se réajustent en minutes. Idée : lire le comptage officiel (JSON des États : Caroline du Nord, Géorgie, Pennsylvanie… ou AP) toutes les minutes la nuit du 03/11 et comparer le prix d'une course à sa probabilité projetée (votes restants par comté).
+    **Bloquée aujourd'hui** : le site de la commission électorale israélienne répond 403 (`votes25.bechirot.gov.il`, `gov.il`) ou n'existe pas (`votes.bechirot.gov.il`, 000) depuis la routine : pas de test rétrospectif possible (aucun instantané horodaté du comptage) ; à tester **en direct le 03/11** si une source d'État répond sans clé (à vérifier le 01-02/11 : `electionresults.ncsbe.gov`, `results.enr.clarityelections.com`, `elections.sos.ga.gov`). Si aucune ne répond : abandonner.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
