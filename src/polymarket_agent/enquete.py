@@ -461,8 +461,15 @@ def filles_periode(entries: dict[str, list[dict]], configs: dict, min_trades: in
         if len(child) < min_trades or len(same) < min_trades:
             continue
         rc, rm = statistics.mean(_returns(child)), statistics.mean(_returns(same))
+        # 28/10/2026 : 59 des 74 paris de nf_sport_patiente_prix_850_875 n'existaient pas chez sa mère (cap par cycle, argent
+        # disponible, choix du meilleur pari du cycle) : la fille n'est alors pas « la mère filtrée », elle joue d'autres paris.
+        mother_tokens = {t["token_id"] for t in closed_trades(entries[mother_name])}
+        alone = [t for t in child if t["token_id"] not in mother_tokens]
+        extra = ""
+        if len(alone) >= 5 and len(alone) > len(child) / 2:
+            extra = f", dont {len(alone)} paris absents de la mère ({statistics.mean(_returns(alone)):+.1%} à eux seuls)"
         rows.append((rc - rm, f"{key} {rc:+.1%} contre sa mère {cfg['mere']} {rm:+.1%} depuis le {born[:10]} "
-                              f"({len(child)} et {len(same)} opérations)"))
+                              f"({len(child)} et {len(same)} opérations{extra})"))
     if not rows:
         return []
     rows.sort(reverse=True)

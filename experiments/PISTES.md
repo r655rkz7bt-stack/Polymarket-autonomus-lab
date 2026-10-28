@@ -56,6 +56,9 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 14. **Échelles « FDV après lancement » : trouver l'heure du lancement** (28/10/2026, `experiments/fdv_lancement.md`) : dans les 6 à 24 dernières heures avant le règlement, le côté presque sûr (payé 0,70-0,97) gagne plus que son
     prix des deux côtés (H−18 : 130 paris sur 59 jetons, 0 jeton perdant pour 8,7 attendus, +9,3 %, deux moitiés dans le même sens) mais l'heure du règlement n'est pas observable par les prix (déclencheurs d'activité ou de saut : −6,5 à +1,8 %).
     Un déclencheur causal par les prix existe mais est petit (au moins 3 seuils qui bougent d'au moins 0,2 en 3 h, puis 18 h d'attente : +7,1 %, 71 paris sur 26 jetons, z +1,75). À faire : une source de date de lancement (CoinGecko `coins/list/new`, annonces TGE, DexScreener) ; tester d'abord en rétrospective avec la vraie date de lancement, puis la profondeur (parts achetables à ≤ prix + 2 centimes).
+    **Sources essayées le 28/10 (passage de 1 h)** : CoinGecko `coins/list/new` répond 429 sans clé ; DexScreener (`latest/dex/search?q=<nom>`, sans clé) répond mais la recherche par nom rend surtout des jetons homonymes sans rapport
+    (Ink, OpenSea, Extended, Base : FDV de 1 000 à 10 M$, créés en 2026 par n'importe qui) : impossible de relier un événement Polymarket à son vrai jeton sans l'adresse du contrat. 50 événements « FDV above » sont ouverts (Predict.fun, Extended,
+    Metamask, Base, OpenSea, Variational… ; fin Gamma factice 2027-2028). Piste bloquée tant qu'on n'a pas l'adresse du contrat (à lire dans la description de chaque événement ?) ou une source d'annonces.
 
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
