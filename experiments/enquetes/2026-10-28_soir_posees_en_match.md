@@ -46,4 +46,10 @@ Le classement ne compte que les règlements. Mise en jeu (positions ouvertes, au
 leur rang du jour dit ce qu'elles ont réglé, pas ce qu'elles valent. Pas un défaut de code (contrôle `capital_bloque` existant), à garder en tête en lisant le classement.
 
 ## Contrôle automatique
-`enquete.posees_en_jeu` existe déjà (z ≤ −2) ; il reste « à regarder » parce que les fantômes continuent d'en faire. Rien à ajouter.
+`enquete.posees_en_jeu` existe déjà (z ≤ −2) ; il reste « à regarder » parce que les fantômes continuent d'en faire. Ajouté : `enquete.principal_posee_en_match` (**grave**) : tout ordre posé du
+principal servi après le coup d'envoi à partir du 29/10 00 h UTC signale que le frein ne marche plus (réglage retiré, `game_start` absent, chemin d'exécution contournant `_fill_resting`) ;
+test `test_principal_posted_fill_in_play_after_the_brake_is_grave`.
+
+## Sœur dans l'arène
+`nf_sport_patiente_prix_850_875_avant_match` (mêmes paramètres et filtre que la n° 1, plus `heures_min: 0` et `annuler_au_coup_d_envoi: true`, attribut de stratégie lu par `_fill_resting`) : à juger sur la
+MÊME période que la n° 1. Test `test_strategy_flagged_annuler_au_coup_d_envoi_loses_its_resting_order_at_kickoff_even_without_the_global_setting`.

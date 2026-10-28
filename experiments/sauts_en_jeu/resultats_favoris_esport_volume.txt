@@ -1,0 +1,24 @@
+=== H-3 (1178 paris) ; terciles du volume avant T : 1314 $ / 11300 $
+  tercile bas  n= 392 gagnés= 296.0 attendus= 281.0 z=+1.69 rendement=+3.8% t_event=+1.27 indice
+  tercile mil. n= 393 gagnés= 294.0 attendus= 280.8 z=+1.48 rendement=+3.3% t_event=+1.09 indice
+  tercile haut n= 393 gagnés= 301.0 attendus= 281.8 z=+2.16 rendement=+5.4% t_event=+1.83 indice
+  volume avant T <   1000 $ n= 344 gagnés= 259.0 attendus= 246.6 z=+1.49 rendement=+3.4% t_event=+1.07 indice
+  volume avant T <   3000 $ n= 544 gagnés= 412.0 attendus= 389.6 z=+2.14 rendement=+4.2% t_event=+1.65 retenue
+  volume avant T <  10000 $ n= 764 gagnés= 576.0 attendus= 546.5 z=+2.38 rendement=+3.9% t_event=+1.81 retenue
+  volume avant T <  30000 $ n= 973 gagnés= 733.0 attendus= 697.1 z=+2.56 rendement=+3.7% t_event=+1.94 retenue
+  tercile bas, cs2 n= 278 gagnés= 202.0 attendus= 198.2 z=+0.50 rendement=+0.5% t_event=+0.15 écartée
+  tercile bas, lol n=  41 gagnés=  33.0 attendus=  29.8 z=+1.13 rendement=+9.0% t_event=+1.05 indice
+  tercile bas, dota2 n=  54 gagnés=  49.0 attendus=  39.3 z=+2.97 rendement=+23.1% t_event=+4.21 retenue
+  tercile bas, val n=  19 gagnés=  12.0 attendus=  13.6 z=-0.80 rendement=-14.2% t_event=-0.91 écartée
+=== H-6 (902 paris) ; terciles du volume avant T : 1060 $ / 9983 $
+  tercile bas  n= 300 gagnés= 234.0 attendus= 214.7 z=+2.48 rendement=+7.5% t_event=+2.24 retenue
+  tercile mil. n= 301 gagnés= 223.0 attendus= 214.6 z=+1.07 rendement=+2.4% t_event=+0.70 écartée
+  tercile haut n= 301 gagnés= 226.0 attendus= 215.7 z=+1.32 rendement=+3.5% t_event=+1.02 indice
+  volume avant T <   1000 $ n= 296 gagnés= 231.0 attendus= 212.0 z=+2.46 rendement=+7.4% t_event=+2.23 retenue
+  volume avant T <   3000 $ n= 432 gagnés= 330.0 attendus= 308.3 z=+2.32 rendement=+5.5% t_event=+1.93 retenue
+  volume avant T <  10000 $ n= 604 gagnés= 459.0 attendus= 431.6 z=+2.48 rendement=+4.9% t_event=+2.02 retenue
+  volume avant T <  30000 $ n= 766 gagnés= 586.0 attendus= 548.1 z=+3.05 rendement=+5.5% t_event=+2.58 retenue
+  tercile bas, cs2 n= 219 gagnés= 167.0 attendus= 155.7 z=+1.69 rendement=+5.7% t_event=+1.43 indice
+  tercile bas, lol n=  30 gagnés=  23.0 attendus=  21.9 z=+0.45 rendement=+3.6% t_event=+0.33 écartée
+  tercile bas, dota2 n=  39 gagnés=  35.0 attendus=  28.5 z=+2.36 rendement=+21.9% t_event=+3.23 retenue
+  tercile bas, val n=  12 gagnés=   9.0 attendus=   8.6 z=+0.25 rendement=+1.4% t_event=+0.08 écartée

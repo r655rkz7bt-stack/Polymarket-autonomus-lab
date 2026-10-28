@@ -661,3 +661,19 @@ def test_read_experiments_skips_the_journal_the_pistes_lists_and_the_enquiries(t
     for name, text in (("journal_recherche.md", "a"), ("vingt_pistes.md", "b"), ("PISTES.md", "c"), ("carnet_experiences.md", "d"), ("enquetes/x.md", "e"), ("test.md", "f")):
         (exp / name).write_text(text, encoding="utf-8")
     assert list(enquete.lire_experiences(tmp_path).values()) == ["f"]
+
+
+def test_principal_posted_fill_in_play_after_the_brake_is_grave():
+    """28/10 : le principal annule ses ordres posés au coup d'envoi ; un ordre posé servi en match après cette date, c'est le frein qui ne marche plus."""
+    t = datetime(2026, 10, 29, 3, 0, tzinfo=timezone.utc)
+
+    def buy(when, posted, hours):
+        b = _buy(when, "a", 0.86, 5, posted=posted)
+        b["data"]["extra"]["depuis_coup_d_envoi_h"] = str(hours)
+        return b
+    bad = enquete.principal_posee_en_match({"principal": _ledger(buy(t, True, 0.4))})
+    assert len(bad) == 1 and bad[0]["gravite"] == enquete.GRAVE and enquete.obligations(bad)
+    assert enquete.principal_posee_en_match({"principal": _ledger(buy(t, False, 0.4))}) == []   # achat immédiat : permis
+    assert enquete.principal_posee_en_match({"principal": _ledger(buy(t, True, -0.5))}) == []   # servi avant le match : permis
+    old = buy(datetime(2026, 10, 27, 3, 0, tzinfo=timezone.utc), True, 0.4)                      # avant le frein : historique
+    assert enquete.principal_posee_en_match({"principal": _ledger(old)}) == []
