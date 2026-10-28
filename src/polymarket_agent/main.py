@@ -1264,6 +1264,9 @@ def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, Ma
     Chaque exécution repasse par le contrôleur et le journal, comme un ordre taker."""
     ledger = portfolio.ledger
     consumed = portfolio.taken  # partagé avec les ordres taker du même portefeuille pendant le cycle
+    # Stratégies dont les ordres posés tombent au coup d'envoi (`annuler_au_coup_d_envoi` de config/strategies.yaml) ; le principal : `principal.annuler_posees_au_coup_d_envoi`.
+    cancel_ids = {s.strategy_id for s in deps.strategies if getattr(s, "annuler_au_coup_d_envoi", False)}
+    cancel_all = portfolio.name == "principal" and bool((deps.settings.get("principal") or {}).get("annuler_posees_au_coup_d_envoi"))
     for order in deps.db.open_orders(portfolio.name):
         proposal = Proposal.from_dict(json.loads(order["proposal"]))
         remaining, n = Decimal(order["remaining"]), int(order["fills"])
@@ -1283,9 +1286,8 @@ def _fill_resting(deps: CycleDeps, portfolio: Portfolio, by_market: dict[str, Ma
         if market is not None and (market.closed or not market.active or not market.accepting_orders):
             close("ANNULE")
             continue
-        if (portfolio.name == "principal" and proposal.side == "BUY" and market is not None
-                and getattr(market, "game_start", None) is not None and now >= market.game_start
-                and (deps.settings.get("principal") or {}).get("annuler_posees_au_coup_d_envoi")):
+        if ((cancel_all or proposal.strategy_id in cancel_ids) and proposal.side == "BUY" and market is not None
+                and getattr(market, "game_start", None) is not None and now >= market.game_start):
             close("ANNULE")  # enquête du 28/10/2026 : un ordre posé servi en match est une sélection adverse (but, blessure)
             continue
         if market is None or book is None or book.fetched_at <= datetime.fromisoformat(order["created_at"]):

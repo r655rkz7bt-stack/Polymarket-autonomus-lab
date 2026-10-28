@@ -60,7 +60,9 @@ def test_repository_config_loads():
         # Mise franche d'une stratégie qui bat ses prix en direct (27/10/2026, passage du soir).
         "moins_de_cartes_franche", "tranche_centrale_non",
         # Passage du 28/10/2026 : fille « OUI » de compteur_tweets, mise franche.
-        "compteur_tweets_oui", "compteur_tweets_48h_audace"])
+        "compteur_tweets_oui", "compteur_tweets_48h_audace",
+        # Passage du 28/10/2026 (soir) : sœur de la n° 1, ordres annulés au coup d'envoi.
+        "nf_sport_patiente_prix_850_875_avant_match"])
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
