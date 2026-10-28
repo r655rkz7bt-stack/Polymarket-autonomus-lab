@@ -56,7 +56,8 @@ MÊME période que la n° 1. Test `test_strategy_flagged_annuler_au_coup_d_envoi
 
 ## À regarder (pas corrigé) : favoris achetés tard en match
 Achats IMMÉDIATS 2 h ou plus après le coup d'envoi (228 jetons, tous fantômes) : 181,5 gagnés pour 194,0 attendus (z −2,6, −4,6 %) ; payés 0,80-0,90 : 95 jetons, **−12,9 %** (z −3,05) ; 0,90-0,95 : +0,3 % ;
-0,65-0,80 : −32 % (16). Les plus nombreux : `nf_sport` (40), `apres_echeance` (26), `nf_tennis_vainqueur` (24), `nf_tennis_12_18h` (19). Ce n'est **pas le tennis ni l'e-sport** : rejeu sur 5 785 matchs de tennis et 5 352
-d'e-sport (achat de T = coup d'envoi + 1, 2, 3 h, favori à 0,65-0,97, vrais échanges, `scripts/favoris_en_jeu_tard.py`) : −1 % à +2 % aux trois tranches, un seul −5 % (tennis 0,65-0,80, +2 h, z −1,4). Le trou vient donc
-d'autres sports (football en seconde période, basket) ; 16 cases regardées, z −3,05 = p ≈ 0,04 après correction : à confirmer avant un filtre `heures_max`.
-
+0,65-0,80 : −32 % (16). Par discipline (marchés relus sur Gamma) : **tennis 157 jetons, −10,2 %** (124 gagnés pour 137,7 : ITF 97 jetons −11,4 %, ATP 52 −10,0 %, WTA 8 +2,8 %), CS2 20 jetons −11,9 %, le reste (38 « autre », basket, hockey)
+à +0,5 % / +16,8 % sur de petits nombres. Les plus nombreux : `nf_sport` (40), `apres_echeance` (26), `nf_tennis_vainqueur` (24), `nf_tennis_12_18h` (19). **Le rejeu sur 5 785 matchs ATP/WTA et 5 352 d'e-sport** (achat à T = coup d'envoi + 1, 2, 3 h,
+favori à 0,65-0,97, vrais échanges, `scripts/favoris_en_jeu_tard.py`) **ne retrouve pas la perte** : −1 % à +2 % aux trois tranches (ATP/WTA, + 2 h, 0,80-0,90 : +1,6 %, 386 matchs ; seul −5 % : 0,65-0,80, +2 h, z −1,4). La perte du journal vient donc
+surtout de l'ITF (circuit déjà connu comme perdant : −13,9 % aux vrais prix, `achat_echelonne.md`, filtre `sources_exclues`) et de petits échantillons ATP (52 jetons, z ≈ −1,3). Pas de filtre `heures_max` à ajouter : à relire quand l'ITF
+sera exclue de toute stratégie qui achète en match.
