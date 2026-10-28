@@ -1049,6 +1049,29 @@ def posees_en_jeu(entries: dict[str, list[dict]], min_posed: int = 40, z_max: fl
                      if other else [])]
 
 
+# Date à partir de laquelle `principal.annuler_posees_au_coup_d_envoi` est en vigueur (28/10/2026, fiche 2026-10-28_soir_posees_en_match.md).
+FREIN_POSEES_DEPUIS = "2026-10-29T00:00"
+
+
+def principal_posee_en_match(entries: dict[str, list[dict]], depuis: str = FREIN_POSEES_DEPUIS) -> list[dict]:
+    """Le principal ne doit plus recevoir d'ordre POSÉ servi après le coup d'envoi (28/10/2026 : −9,8 % par pari sur 320 jetons, z −2,8 ; frein
+    `principal.annuler_posees_au_coup_d_envoi`). Un achat du principal à ordre posé avec `depuis_coup_d_envoi_h` ≥ 0 après `depuis` = le frein ne marche pas."""
+    found = []
+    for e in _buys(entries.get("principal") or []):
+        x = e["data"].get("extra") or {}
+        try:
+            live = float(x.get("depuis_coup_d_envoi_h")) >= 0
+        except (TypeError, ValueError):
+            continue
+        if live and _posted(x) and e["ts"] >= depuis:
+            found.append(f"{e['ts'][:16]} {e['data']['strategy_id']} « {e['data']['outcome']} » {e['data']['shares']} parts à {e['data']['price']} (match commencé depuis {float(x['depuis_coup_d_envoi_h']):.2f} h)")
+    if not found:
+        return []
+    return [_finding("principal_posee_en_match", GRAVE, f"{len(found)} ordre(s) posé(s) du principal servi(s) en match depuis le frein du 28/10",
+                     "`main._fill_resting` devrait annuler tout ordre posé du principal dont le match a commencé (`principal.annuler_posees_au_coup_d_envoi`) : "
+                     "réglage retiré, `game_start` absent du marché, ou chemin d'exécution qui contourne `_fill_resting`.", found[:8])]
+
+
 # Anomalies d'audit déjà élucidées et corrigées : `op_id` -> fiche. Elles restent dans `audit/etat.json` pour toujours
 # (l'état est cumulatif) : sans cette liste, chaque passage rouvrirait la même obligation « grave ».
 AUDIT_EXPLIQUEES = {
@@ -1216,7 +1239,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
-                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries)
+                + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)
                 + copie_absente(entries, parts, now, days=max(days, 3)) + sans_test_passe(entries, configs, textes))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 

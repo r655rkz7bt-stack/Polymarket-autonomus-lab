@@ -792,6 +792,9 @@ def load_strategies(path: Path) -> list:
                 strategy = Filtered(strategy, dict(spec["filtres"]))
             if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
                 strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
+        # Ordres posés annulés au coup d'envoi (28/10/2026, enquête « posées en match ») : la stratégie ne subit pas la sélection adverse du mode
+        # patient en jeu ; `main._fill_resting` lit cet attribut. Sert de sœur à une stratégie qui, elle, les subit (même période, mêmes paramètres).
+        strategy.annuler_au_coup_d_envoi = bool(spec.get("annuler_au_coup_d_envoi", False))
         mode = str(spec.get("mode", "principal"))
         if mode not in ("principal", "fantome"):
             raise StrategyConfigError(f"{strategy_id} : mode inconnu {mode!r}")

@@ -1,0 +1,25 @@
+['cs2', 'lol', 'dota2', 'val'] matchs chargés 5352
+contre J=0.1 regard=5min délai=1min n=3737 gagnés=1707 attendus=1675.7 z=+1.13 rendement=+0.2% t_event=+0.08 écartée
+contre J=0.1 regard=5min délai=3min n=3713 gagnés=1704 attendus=1680.3 z=+0.86 rendement=-0.4% t_event=-0.15 écartée
+contre J=0.1 regard=15min délai=1min n=3761 gagnés=1556 attendus=1558.2 z=-0.08 rendement=-4.7% t_event=-1.92 écartée
+contre J=0.15 regard=5min délai=1min n=3333 gagnés=1458 attendus=1432.8 z=+0.96 rendement=-2.5% t_event=-1.03 écartée
+contre J=0.15 regard=5min délai=3min n=3269 gagnés=1456 attendus=1425.8 z=+1.17 rendement=-1.8% t_event=-0.71 écartée
+contre J=0.15 regard=15min délai=1min n=3537 gagnés=1396 attendus=1437.1 z=-1.54 rendement=-6.5% t_event=-2.43 écartée
+contre J=0.2 regard=5min délai=1min n=2652 gagnés=1026 attendus=1042.6 z=-0.71 rendement=-5.2% t_event=-1.75 écartée
+contre J=0.2 regard=5min délai=3min n=2582 gagnés=1019 attendus=1031.9 z=-0.56 rendement=-4.5% t_event=-1.50 écartée
+contre J=0.2 regard=15min délai=1min n=3203 gagnés=1208 attendus=1233.1 z=-0.99 rendement=-6.5% t_event=-2.30 écartée
+contre J=0.3 regard=5min délai=1min n=1223 gagnés= 397 attendus= 407.7 z=-0.71 rendement=-13.3% t_event=-2.94 écartée
+contre J=0.3 regard=5min délai=3min n=1115 gagnés= 383 attendus= 395.4 z=-0.85 rendement=-13.6% t_event=-2.99 écartée
+contre J=0.3 regard=15min délai=1min n=2252 gagnés= 703 attendus= 725.1 z=-1.07 rendement=-5.4% t_event=-1.37 écartée
+suiveur J=0.1 regard=5min délai=1min n=3855 gagnés=2157 attendus=2202.4 z=-1.62 rendement=-4.3% t_event=-2.64 écartée
+suiveur J=0.1 regard=5min délai=3min n=3791 gagnés=2126 attendus=2159.2 z=-1.20 rendement=-3.9% t_event=-2.36 écartée
+suiveur J=0.1 regard=15min délai=1min n=3920 gagnés=2353 attendus=2392.6 z=-1.43 rendement=-4.0% t_event=-2.63 écartée
+suiveur J=0.15 regard=5min délai=1min n=3407 gagnés=1965 attendus=1997.2 z=-1.22 rendement=-4.5% t_event=-2.72 écartée
+suiveur J=0.15 regard=5min délai=3min n=3329 gagnés=1912 attendus=1939.7 z=-1.07 rendement=-4.2% t_event=-2.42 écartée
+suiveur J=0.15 regard=15min délai=1min n=3730 gagnés=2285 attendus=2290.0 z=-0.18 rendement=-1.9% t_event=-1.24 écartée
+suiveur J=0.2 regard=5min délai=1min n=2676 gagnés=1660 attendus=1662.9 z=-0.12 rendement=-1.4% t_event=-0.78 écartée
+suiveur J=0.2 regard=5min délai=3min n=2614 gagnés=1615 attendus=1615.1 z=-0.00 rendement=-1.4% t_event=-0.78 écartée
+suiveur J=0.2 regard=15min délai=1min n=3366 gagnés=2107 attendus=2131.2 z=-0.94 rendement=-2.9% t_event=-1.98 écartée
+suiveur J=0.3 regard=5min délai=1min n=1236 gagnés= 846 attendus= 843.3 z=+0.18 rendement=-2.0% t_event=-0.91 écartée
+suiveur J=0.3 regard=5min délai=3min n=1144 gagnés= 770 attendus= 764.4 z=+0.39 rendement=-0.4% t_event=-0.13 écartée
+suiveur J=0.3 regard=15min délai=1min n=2317 gagnés=1615 attendus=1603.7 z=+0.54 rendement=-1.1% t_event=-0.74 écartée

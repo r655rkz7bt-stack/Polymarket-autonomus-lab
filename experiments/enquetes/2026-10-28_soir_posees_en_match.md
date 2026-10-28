@@ -1,0 +1,76 @@
+# 2026-10-28 (soir) : les ordres posés servis en match perdent 10 % par pari, le principal les annule au coup d'envoi
+
+Famille du jour : 28 mod 6 + 1 = 5 (comparaisons faussées) pour le contrôle à la main, et le constat « à regarder » `posees_en_jeu` de l'enquête automatique
+(256 ordres posés servis en match, 196,5 gagnés pour 210,4 attendus, z −2,6). Données : journaux publiés du 28/10 à 20 h 48 UTC. Script :
+`scripts/posees_en_jeu_28_10.py` (résultat : `scripts/posees_en_jeu_28_10.txt`).
+
+## Constat (chiffré)
+Le contrôle comptait un jeton une fois par premier achat vu, mais le premier passage (25/10, `experiments/ordres_poses_en_jeu.md`) et ce contrôle sont restés
+au stade « à regarder » : personne n'avait demandé si le principal subit la même chose. Refait ici, **un compte par jeton** (premier fantôme qui l'a acheté),
+règlements nets 0 / 1, rendement par pari au prix payé :
+
+| groupe | jetons | événements | gagnés / attendus | z | par pari |
+|---|---|---|---|---|---|
+| en match, **posés** | 320 | 300 | 251,0 / 267,8 | −2,84 | **−9,8 %** (z par événement −3,0) |
+| en match, immédiats | 907 | 766 | 790,5 / 794,8 | −0,45 | −0,3 % |
+| avant le match, posés | 52 | 44 | 29,5 / 30,3 | −0,27 | −11,7 % (peu de paris) |
+| avant le match, immédiats | 521 | 368 | 378,0 / 376,8 | +0,14 | +0,2 % |
+| en match, posés **avant le 25/10** | 209 | 195 | 165,5 / 175,4 | −2,02 | −8,2 % |
+| en match, posés **depuis le 25/10** (hors échantillon) | 111 | 105 | 85,5 / 92,4 | −2,08 | −12,7 % |
+
+Les deux moitiés ont le même signe ; la seule chose qui change entre posé et immédiat en match est la manière d'être servi : l'ordre posé n'est servi que quand le
+prix descend jusqu'à lui (but, blessure, break), donc quand le favori vient d'avoir de mauvaises nouvelles (sélection adverse, comme la tenue de marché : −800 €).
+Pas un défaut du simulateur (la règle prudente ne sert que si le marché traverse le prix).
+
+Par heure depuis le coup d'envoi (ordres posés, un compte par jeton) : 0-1 h −18,6 % (87 jetons, z −1,8), 1-2 h −7,0 % (114, z −1,6), 2 h et plus −7,6 % (110, z −2,0) ; les trois classes
+après le coup d'envoi sont négatives. Avant le coup d'envoi : 20 jetons à plus de 12 h −18,7 %, 18 à 6-12 h −10,0 %, 11 à 3-6 h +28,5 %, 21 à 1-3 h −4,5 %, **15 dans l'heure qui précède −35,3 %** (8,5 gagnés pour 9,6 :
+trop peu pour étendre l'annulation à l'heure d'avant ; à relire à ~50 jetons). Immédiats : −4,9 % à +9,2 % avant, +3,7 % (0-1 h), −0,9 % (1-2 h), −4,6 % (2 h et plus, z −2,6 : à regarder, pas lié au mode posé).
+
+Par discipline (favoris « vainqueur » payés ≥ 0,78, un compte par jeton et par mode, marchés relus sur Gamma ; `scripts/cs2_favoris_28_10.py`) : **Counter-Strike : posés en match 32 jetons −16,4 % (23,5 gagnés pour 28,0, z −2,4)**,
+immédiats en match 71 jetons −3,4 % (z −0,8) ; **tennis : posés en match 208 jetons −5,4 % (z −2,1)**, immédiats en match 556 jetons −0,2 % (z −0,1) ; Dota 2 et LoL (≈ 30 jetons) sans effet. La perte de `nf_sport_patiente` sur Counter-Strike
+(43 paris, **−812 €, −25,6 %**, alors que sa partie tennis fait +679 €) et celle de la n° 1 (22 paris CS2, −325 €) viennent surtout de ces ordres posés en match : même mécanisme dans deux disciplines. Contrôle famille 2 (`scripts/meilleur_sport_28_10.py`) :
+sans son meilleur sport, la n° 1 fait +69 € (sans le tennis ATP/WTA, +338 €), `nf_sport_patiente` −574 € (sans son tennis), `nf_sport_18_24h` +192 € (sans le football) : le gain des fantômes du haut dépend d'un sport.
+
+**Rejeu sur l'historique (tennis et e-sport, 11 137 matchs, vrais échanges ; `experiments/sauts_en_jeu/scripts/ordres_poses_historique.py`)** : favori à 0,75-0,95 à T ; ordre posé 1 centime sous le dernier prix, valable 3 h, servi au premier échange de preneur
+qui vend à ce prix ou moins (règle prudente), contre achat immédiat sur les mêmes matchs. Même sens que le journal, en plus petit et mieux localisé :
+- ordre **posé pendant le match** (T = coup d'envoi + 0,75 h) : servi −2,3 % en tennis (1 994 matchs, z des prix −2,2) et −2,8 % en e-sport (1 713, z −2,5) ; à + 1,5 h tennis −3,2 % (z −2,6), e-sport −0,5 % ; à + 0,25 h −0,3 à +1,2 % ;
+- ordre **posé avant le match** et servi AVANT le coup d'envoi : tennis +0,7 à +1,4 %, e-sport +1,3 à +1,9 % (z ≤ +1,2) ;
+- ordre posé avant le match mais servi APRÈS le coup d'envoi (T = −1 h) : tennis −0,4 % (1 026), e-sport +0,1 % (1 006) : neutre, alors que l'achat immédiat des mêmes matchs fait −2,7 % / −2,3 %.
+Lecture : le mal vient surtout des ordres POSÉS en jeu ; annuler au coup d'envoi un ordre posé avant le match coûte peu (neutre sur l'historique) et supprime les ordres posés en jeu : le frein reste. La sœur `..._avant_match` (aucun nouvel ordre en jeu ET annulation) dira
+si l'écart du journal (−9,8 %, plus grand que l'historique) est durable.
+
+## Le principal est touché aussi
+Journal du principal : 22 achats posés en match (13 de `nf_sport_patiente_prix_850_875`, 8 de `nf_sport_patiente`, 1 de `nf_sport_patiente_6_24h`) : **16 gagnés pour
+19,1 attendus, −37,6 € sur 331 €** (−11,4 %). Petit en euros (mises de 4-5 €), mais c'est exactement la partie du champion qui perd. Chez les fantômes :
+`nf_sport_patiente` 24 paris posés en match −9,8 % (−220 €) contre −0,3 % pour le reste de ses paris ; `nf_sport_patiente_prix_850_875` (n° 1) −2,9 % en match posé contre
++8,1 % pour le reste (+459 €).
+
+## Correctif
+`main._fill_resting` : pour le **principal seulement** et pour un achat, un ordre posé dont le match a commencé (`market.game_start` passé) est annulé (statut `ANNULE`)
+au lieu d'être servi. Réglage `principal.annuler_posees_au_coup_d_envoi` (config/settings.yaml, `true`). Les fantômes continuent de subir l'effet : c'est la mesure, et
+elle permet de retirer le frein par un rejeu si l'effet disparaît. Les ordres posés AVANT le coup d'envoi et servis avant lui ne changent pas.
+Tests (`tests/test_cycle.py`) : `test_principal_cancels_resting_buy_when_the_match_starts_but_the_ghost_keeps_it` (échoue avec le réglage à `false`),
+`test_principal_still_gets_its_resting_buy_before_the_match`.
+
+## Contrôle à la main, famille 5 : classement « capital réalisé » et positions ouvertes (`scripts/ouvertes_classement_28_10.py`)
+Le classement ne compte que les règlements. Mise en jeu (positions ouvertes, au prix payé) des fantômes en tête : `nf_sport_18_24h` 1 281 € en 25 positions (la plus vieille 3,0 j),
+`nf_sport_prix_haut` 1 186 € (31), `nf_sport_v1` 1 066 € (47) ; `market_structure` 5 183 € et `market_maker_serre` 4 790 € (255 et 179 positions ouvertes, éliminées, jamais réglées : leur capital
+« réalisé » est donc sous-estimé, pas gonflé). Les stratégies à Kelly entier du haut du classement ont tout leur capital en jeu sur 25-30 positions de moins de 4 jours :
+leur rang du jour dit ce qu'elles ont réglé, pas ce qu'elles valent. Pas un défaut de code (contrôle `capital_bloque` existant), à garder en tête en lisant le classement.
+
+## Contrôle automatique
+`enquete.posees_en_jeu` existe déjà (z ≤ −2) ; il reste « à regarder » parce que les fantômes continuent d'en faire. Ajouté : `enquete.principal_posee_en_match` (**grave**) : tout ordre posé du
+principal servi après le coup d'envoi à partir du 29/10 00 h UTC signale que le frein ne marche plus (réglage retiré, `game_start` absent, chemin d'exécution contournant `_fill_resting`) ;
+test `test_principal_posted_fill_in_play_after_the_brake_is_grave`.
+
+## Sœur dans l'arène
+`nf_sport_patiente_prix_850_875_avant_match` (mêmes paramètres et filtre que la n° 1, plus `heures_min: 0` et `annuler_au_coup_d_envoi: true`, attribut de stratégie lu par `_fill_resting`) : à juger sur la
+MÊME période que la n° 1. Test `test_strategy_flagged_annuler_au_coup_d_envoi_loses_its_resting_order_at_kickoff_even_without_the_global_setting`.
+
+## À regarder (pas corrigé) : favoris achetés tard en match
+Achats IMMÉDIATS 2 h ou plus après le coup d'envoi (228 jetons, tous fantômes) : 181,5 gagnés pour 194,0 attendus (z −2,6, −4,6 %) ; payés 0,80-0,90 : 95 jetons, **−12,9 %** (z −3,05) ; 0,90-0,95 : +0,3 % ;
+0,65-0,80 : −32 % (16). Par discipline (marchés relus sur Gamma) : **tennis 157 jetons, −10,2 %** (124 gagnés pour 137,7 : ITF 97 jetons −11,4 %, ATP 52 −10,0 %, WTA 8 +2,8 %), CS2 20 jetons −11,9 %, le reste (38 « autre », basket, hockey)
+à +0,5 % / +16,8 % sur de petits nombres. Les plus nombreux : `nf_sport` (40), `apres_echeance` (26), `nf_tennis_vainqueur` (24), `nf_tennis_12_18h` (19). **Le rejeu sur 5 785 matchs ATP/WTA et 5 352 d'e-sport** (achat à T = coup d'envoi + 1, 2, 3 h,
+favori à 0,65-0,97, vrais échanges, `scripts/favoris_en_jeu_tard.py`) **ne retrouve pas la perte** : −1 % à +2 % aux trois tranches (ATP/WTA, + 2 h, 0,80-0,90 : +1,6 %, 386 matchs ; seul −5 % : 0,65-0,80, +2 h, z −1,4). La perte du journal vient donc
+surtout de l'ITF (circuit déjà connu comme perdant : −13,9 % aux vrais prix, `achat_echelonne.md`, filtre `sources_exclues`) et de petits échantillons ATP (52 jetons, z ≈ −1,3). Pas de filtre `heures_max` à ajouter : à relire quand l'ITF
+sera exclue de toute stratégie qui achète en match.

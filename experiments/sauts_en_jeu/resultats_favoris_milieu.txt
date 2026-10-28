@@ -1,0 +1,42 @@
+('atp', 'wta') 5785 matchs
+  H- 1 tous outsiders n=4915 gagnés=3299.0 attendus=3315.3 z=-0.51 rendement=-2.2% t_event=-2.13 écartée
+       prix 0.55-0.65 n=1768 gagnés=1051.0 attendus=1061.4 z=-0.51 rendement=-3.0% t_event=-1.56 écartée
+       prix 0.65-0.80 n=1652 gagnés=1168.0 attendus=1182.6 z=-0.80 rendement=-2.7% t_event=-1.77 écartée
+       prix 0.80-0.90 n= 555 gagnés= 466.0 attendus= 464.9 z=+0.13 rendement=-0.6% t_event=-0.35 écartée
+       prix 0.90-0.97 n= 272 gagnés= 256.0 attendus= 252.3 z=+0.86 rendement=+1.1% t_event=+0.71 écartée
+  H- 3 tous outsiders n=3483 gagnés=2361.0 attendus=2347.2 z=+0.51 rendement=-0.8% t_event=-0.66 écartée
+       prix 0.55-0.65 n=1212 gagnés= 746.0 attendus= 726.0 z=+1.17 rendement=+0.8% t_event=+0.37 écartée
+       prix 0.65-0.80 n=1205 gagnés= 847.0 attendus= 862.2 z=-0.98 rendement=-3.2% t_event=-1.77 écartée
+       prix 0.80-0.90 n= 412 gagnés= 344.0 attendus= 345.5 z=-0.20 rendement=-1.3% t_event=-0.61 écartée
+       prix 0.90-0.97 n= 170 gagnés= 160.0 attendus= 157.9 z=+0.64 rendement=+1.0% t_event=+0.50 écartée
+  H- 6 tous outsiders n=2649 gagnés=1779.0 attendus=1784.5 z=-0.24 rendement=-1.9% t_event=-1.34 écartée
+       prix 0.55-0.65 n= 924 gagnés= 550.0 attendus= 553.3 z=-0.22 rendement=-2.5% t_event=-0.95 écartée
+       prix 0.65-0.80 n= 909 gagnés= 650.0 attendus= 651.7 z=-0.12 rendement=-1.8% t_event=-0.85 écartée
+       prix 0.80-0.90 n= 305 gagnés= 250.0 attendus= 255.7 z=-0.89 rendement=-3.1% t_event=-1.18 écartée
+       prix 0.90-0.97 n= 136 gagnés= 127.0 attendus= 126.4 z=+0.21 rendement=+0.2% t_event=+0.07 écartée
+  H-12 tous outsiders n=1572 gagnés=1050.0 attendus=1056.1 z=-0.34 rendement=-2.2% t_event=-1.21 écartée
+       prix 0.55-0.65 n= 577 gagnés= 349.0 attendus= 346.5 z=+0.21 rendement=-1.3% t_event=-0.40 écartée
+       prix 0.65-0.80 n= 545 gagnés= 390.0 attendus= 391.6 z=-0.15 rendement=-1.8% t_event=-0.67 écartée
+       prix 0.80-0.90 n= 161 gagnés= 133.0 attendus= 135.1 z=-0.46 rendement=-2.4% t_event=-0.68 écartée
+       prix 0.90-0.97 n=  76 gagnés=  68.0 attendus=  70.3 z=-1.00 rendement=-3.6% t_event=-0.94 écartée
+('cs2', 'lol', 'dota2', 'val') 5352 matchs
+  H- 1 tous outsiders n=4292 gagnés=2936.0 attendus=2933.2 z=+0.09 rendement=-1.8% t_event=-1.68 écartée
+       prix 0.55-0.65 n=1327 gagnés= 784.0 attendus= 796.0 z=-0.67 rendement=-3.4% t_event=-1.54 écartée
+       prix 0.65-0.80 n=1450 gagnés=1045.0 attendus=1038.2 z=+0.40 rendement=-0.8% t_event=-0.46 écartée
+       prix 0.80-0.90 n= 649 gagnés= 559.0 attendus= 546.5 z=+1.35 rendement=+1.5% t_event=+0.95 indice
+       prix 0.90-0.97 n= 248 gagnés= 237.0 attendus= 229.8 z=+1.76 rendement=+2.7% t_event=+1.93 retenue
+  H- 3 tous outsiders n=3344 gagnés=2295.0 attendus=2271.7 z=+0.89 rendement=-0.9% t_event=-0.75 écartée
+       prix 0.55-0.65 n=1045 gagnés= 608.0 attendus= 626.1 z=-1.14 rendement=-4.7% t_event=-1.87 écartée
+       prix 0.65-0.80 n=1178 gagnés= 891.0 attendus= 843.6 z=+3.08 rendement=+4.2% t_event=+2.41 retenue
+       prix 0.80-0.90 n= 478 gagnés= 403.0 attendus= 402.6 z=+0.06 rendement=-0.6% t_event=-0.32 écartée
+       prix 0.90-0.97 n= 156 gagnés= 149.0 attendus= 144.3 z=+1.44 rendement=+2.9% t_event=+1.62 indice
+  H- 6 tous outsiders n=2564 gagnés=1756.0 attendus=1736.3 z=+0.86 rendement=-0.9% t_event=-0.66 écartée
+       prix 0.55-0.65 n= 831 gagnés= 491.0 attendus= 497.1 z=-0.43 rendement=-3.2% t_event=-1.14 écartée
+       prix 0.65-0.80 n= 902 gagnés= 683.0 attendus= 645.1 z=+2.81 rendement=+4.5% t_event=+2.26 retenue
+       prix 0.80-0.90 n= 341 gagnés= 287.0 attendus= 287.0 z=+0.01 rendement=-0.9% t_event=-0.38 écartée
+       prix 0.90-0.97 n= 126 gagnés= 119.0 attendus= 116.3 z=+0.89 rendement=+1.9% t_event=+0.85 indice
+  H-12 tous outsiders n=1742 gagnés=1204.0 attendus=1182.7 z=+1.13 rendement=+0.1% t_event=+0.07 écartée
+       prix 0.55-0.65 n= 565 gagnés= 348.0 attendus= 336.3 z=+1.00 rendement=+1.3% t_event=+0.37 écartée
+       prix 0.65-0.80 n= 562 gagnés= 412.0 attendus= 401.0 z=+1.03 rendement=+1.3% t_event=+0.49 écartée
+       prix 0.80-0.90 n= 288 gagnés= 243.0 attendus= 242.4 z=+0.09 rendement=-0.5% t_event=-0.21 écartée
+       prix 0.90-0.97 n=  80 gagnés=  76.0 attendus=  74.0 z=+0.84 rendement=+2.3% t_event=+0.87 indice

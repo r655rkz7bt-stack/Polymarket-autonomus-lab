@@ -1,0 +1,16 @@
+=== H-3 (1178 paris)
+  BO1 n= 132 gagnés= 100.0 attendus=  95.2 z=+0.94 rendement=+3.6% t_event=+0.69 écartée
+  BO3 n= 961 gagnés= 728.0 attendus= 686.8 z=+2.95 rendement=+4.6% t_event=+2.38 retenue
+  BO5 n=  85 gagnés=  63.0 attendus=  61.5 z=+0.35 rendement=+0.7% t_event=+0.11 écartée
+  BO? 0 cas
+  volume < 30606 $ n= 392 gagnés= 330.0 attendus= 281.4 z=+5.48 rendement=+15.6% t_event=+6.09 retenue
+  volume 30606-135314 $ n= 393 gagnés= 287.0 attendus= 281.3 z=+0.64 rendement=+0.9% t_event=+0.29 écartée
+  volume >= 135314 $ n= 393 gagnés= 274.0 attendus= 281.0 z=-0.78 rendement=-3.9% t_event=-1.23 écartée
+=== H-6 (902 paris)
+  BO1 n= 101 gagnés=  79.0 attendus=  72.6 z=+1.43 rendement=+7.2% t_event=+1.27 indice
+  BO3 n= 740 gagnés= 561.0 attendus= 528.5 z=+2.66 rendement=+4.8% t_event=+2.18 retenue
+  BO5 n=  61 gagnés=  43.0 attendus=  44.0 z=-0.30 rendement=-3.6% t_event=-0.44 écartée
+  BO? 0 cas
+  volume < 42542 $ n= 300 gagnés= 257.0 attendus= 214.8 z=+5.43 rendement=+17.9% t_event=+6.34 retenue
+  volume 42542-198637 $ n= 301 gagnés= 216.0 attendus= 215.3 z=+0.09 rendement=-1.0% t_event=-0.29 écartée
+  volume >= 198637 $ n= 301 gagnés= 210.0 attendus= 215.0 z=-0.64 rendement=-3.3% t_event=-0.90 écartée
