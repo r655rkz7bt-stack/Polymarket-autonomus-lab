@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4573,
+  "principal": 4574,
   "fantome:calibration_patiente_v1.0.0": 2255,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2028,
@@ -25,7 +25,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1637,
   "fantome:outsider_sport_patiente_v1.0.0": 1683,
   "fantome:contrer_crypto_patiente_v1.0.0": 2114,
-  "fantome:contrer_crypto_v1.0.0": 1969,
+  "fantome:contrer_crypto_v1.0.0": 1984,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1637,
   "fantome:loterie_meteo_v1.0.0": 1839,
   "fantome:suivre_politique_v1.0.0": 1814,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 2547,
+  "fantome:nf_sport_v1.0.0": 2551,
   "fantome:nm_court_v1.0.0": 1868,
   "fantome:nm_crypto_v1.0.0": 1623,
   "fantome:nm_hors_crypto_v1.0.0": 1837,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2117,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2121,
   "fantome:nf_sport_sans_fin_v1.0.0": 1547,
   "fantome:nm_demi_mise_v1.0.0": 1715,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1532,
@@ -108,7 +108,7 @@
   "fantome:nf_tennis_debut_match_v1.0.0": 812,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 905,
   "fantome:outsider_itf_v1.0.0": 569,
-  "fantome:nf_court_football_v1.0.0": 691,
+  "fantome:nf_court_football_v1.0.0": 693,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 785,
   "fantome:nf_tennis_12_18h_v1.0.0": 835,
   "fantome:compteur_tweets_non_v1.0.0": 552,
@@ -117,7 +117,7 @@
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 683,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
-  "fantome:nf_sport_football_v1.0.0": 575,
+  "fantome:nf_sport_football_v1.0.0": 577,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 577,
   "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 893,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 457,
@@ -186,7 +186,7 @@
   "fantome:compteur_tweets_oui_v1.0.0": 43,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 0
  },
- "verifiees": 12882,
+ "verifiees": 12889,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1790,9 +1790,9 @@
    "op_id": "settle-76076098547816965256496603068513059888106778539777569036950965296761150999139"
   }
  ],
- "derniere_execution": "2026-10-28T16:19:41+00:00",
+ "derniere_execution": "2026-10-28T16:23:05+00:00",
  "dernier_seq_reglements": {
-  "principal": 4573,
+  "principal": 4574,
   "fantome:calibration_patiente_v1.0.0": 2255,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2028,
@@ -1831,12 +1831,12 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 2551,
-  "fantome:nm_court_v1.0.0": 1868,
+  "fantome:nf_sport_v1.0.0": 2553,
+  "fantome:nm_court_v1.0.0": 1870,
   "fantome:nm_crypto_v1.0.0": 1623,
-  "fantome:nm_hors_crypto_v1.0.0": 1837,
+  "fantome:nm_hors_crypto_v1.0.0": 1839,
   "fantome:nm_long_v1.0.0": 1732,
-  "fantome:nm_prix_bas_v1.0.0": 1852,
+  "fantome:nm_prix_bas_v1.0.0": 1854,
   "fantome:nm_prix_haut_v1.0.0": 1684,
   "fantome:naive_favorite_large_v1.0.0": 1562,
   "fantome:nf_sport_patiente_v1.0.0": 2118,
@@ -1846,7 +1846,7 @@
   "fantome:nf_quart_mise_v1.0.0": 1213,
   "fantome:nf_sport_prix_haut_v1.0.0": 2121,
   "fantome:nf_sport_sans_fin_v1.0.0": 1547,
-  "fantome:nm_demi_mise_v1.0.0": 1715,
+  "fantome:nm_demi_mise_v1.0.0": 1717,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1532,
   "fantome:nf_sport_oui_v1.0.0": 1412,
   "fantome:cotes_bookmakers_v1.0.0": 1082,
@@ -1976,7 +1976,7 @@
   "fantome:tranche_centrale_non_v1.0.0": 43,
   "fantome:suivre_inities_seul_v1.0.0": 33,
   "fantome:compteur_tweets_oui_v1.0.0": 43,
-  "fantome:compteur_tweets_48h_audace_v1.0.0": 6
+  "fantome:compteur_tweets_48h_audace_v1.0.0": 9
  },
  "reglements_verifies": 7091
 }
