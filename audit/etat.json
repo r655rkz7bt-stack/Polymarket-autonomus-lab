@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4444,
+  "principal": 4445,
   "fantome:calibration_patiente_v1.0.0": 2231,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2013,
@@ -1789,9 +1789,9 @@
    "op_id": "settle-80207651566462153704656037585556650445966660977344155011806480920067781356797"
   }
  ],
- "derniere_execution": "2026-10-28T08:18:44+00:00",
+ "derniere_execution": "2026-10-28T08:20:57+00:00",
  "dernier_seq_reglements": {
-  "principal": 4444,
+  "principal": 4445,
   "fantome:calibration_patiente_v1.0.0": 2231,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2013,
@@ -1843,7 +1843,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2021,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2023,
   "fantome:nf_sport_sans_fin_v1.0.0": 1528,
   "fantome:nm_demi_mise_v1.0.0": 1684,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1513,
@@ -1962,7 +1962,7 @@
   "fantome:statu_quo_ia_v1.1.0": 81,
   "fantome:contrer_crypto_audace_v1.0.0": 110,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 131,
-  "fantome:crypto_non_bon_marche_v1.0.0": 91,
+  "fantome:crypto_non_bon_marche_v1.0.0": 93,
   "fantome:compteur_tweets_12_18h_v1.0.0": 78,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 59,
   "fantome:compteur_tweets_72_168h_v1.0.0": 65,
