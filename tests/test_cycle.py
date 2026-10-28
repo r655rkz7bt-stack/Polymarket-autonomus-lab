@@ -871,3 +871,20 @@ def test_settled_bets_are_judged_from_the_journal_and_proven_winners_bet_more(tm
     assert strategy_health.boost(row, strategy_health.config({})) == 1.0  # sans réglage : aucun renfort
     real = strategy_health.config(load_settings())
     assert real["renfort"]["max"] == 2.0 and real["renfort"]["min_operations"] == 30
+
+
+def test_strategie_muette_sans_raison_dit_pourquoi():
+    """28/10/2026 : `mots_nouveaux`, `suivre_inities` : « abstentions {} » sur 427 marchés vus (aucune référence rattachée)."""
+    from polymarket_agent.main import _raison_par_defaut
+    from polymarket_agent.strategy_engine import StrategyOutput
+    out = StrategyOutput()
+    _raison_par_defaut(out, 427)
+    assert list(out.abstentions.values()) == [427]
+    assert "raison non notée" in next(iter(out.abstentions))
+    notee = StrategyOutput()
+    notee.abstain("carnet trop écarté")
+    _raison_par_defaut(notee, 427)
+    assert list(notee.abstentions) == ["carnet trop écarté"]  # une raison déjà notée n'est pas écrasée
+    vide = StrategyOutput()
+    _raison_par_defaut(vide, 0)
+    assert vide.abstentions == {}  # aucun marché vu : rien à dire
