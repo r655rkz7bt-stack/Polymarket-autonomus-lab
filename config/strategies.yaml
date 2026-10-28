@@ -1,0 +1,29 @@
+# Laboratoire dédié à UNE stratégie : nf_sport_patiente_prix_850_875, exportée le 28/10/2026 du laboratoire
+# « Polymarket Autonomous Lab » (r655rkz7bt-stack/Polymarket-autonomus-lab), où elle était n° 1 de l'arène
+# (1 000 → 1 566 € fictifs en 7 jours, 74 opérations, confiance 98 %, verdict « prometteuse »).
+#
+# ARÈNE : chaque stratégie activée trade dans son propre portefeuille fantôme (1 000 virtuels, vrais carnets).
+# Le capital principal suit le champion choisi par src/polymarket_agent/arena.py (règles : config/promotion.yaml).
+# Pour tester une idée : ajouter une variante ci-dessous (même `class`, autre nom, autres réglages ou `filtres`) ;
+# elle aura son propre fantôme et sa propre confiance, à comparer à l'originale sur la même période.
+
+nf_sport_patiente_prix_850_875:
+  explication: "Le favori d'un match (sport ou e-sport), acheté en posant l'ordre 1 cran au-dessus du meilleur acheteur et en attendant un vendeur, seulement quand le prix payé est entre 0,85 et 0,875."
+  # Origine : favori naïf (« le favori gagne un peu plus souvent que son prix ») → sport → mode patient → morceau de prix
+  # 0,850-0,875 (entonnoir 80/20 du 20/10/2026). Attention : c'était la meilleure de plusieurs dizaines de stratégies de
+  # favoris ; une part de son avance peut venir de la chance. Ce laboratoire sert justement à la mettre à l'épreuve.
+  class: naive_favorite
+  limit_ticks: 1
+  filtres: {familles: [sports], prix_min: 0.85, prix_max: 0.875}
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-20"
+  params:
+    min_ask:        {value: 0.80, min: 0.50, max: 0.97}
+    max_ask:        {value: 0.95, min: 0.60, max: 0.98}
+    bias:           {value: 0.05, min: 0.00, max: 0.06}
+    uncertainty:    {value: 0.015, min: 0.01, max: 0.10}
+    min_net_edge:   {value: 0.01, min: 0.00, max: 0.50}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 50}
+    kelly_fraction:  {value: 1.0, min: 0.0, max: 5.0}

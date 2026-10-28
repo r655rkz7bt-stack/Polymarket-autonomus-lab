@@ -1,0 +1,4 @@
+# Dépendances du noyau (réinitialisation) : fichier protégé, jamais modifiable par l'IA.
+# Le workflow reset-capital n'installe que ceci, pour qu'aucun paquet ajouté ailleurs ne
+# s'exécute là où RESET_CODE est présent.
+PyYAML==6.0.3

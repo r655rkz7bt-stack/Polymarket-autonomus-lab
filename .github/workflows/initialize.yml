@@ -1,0 +1,57 @@
+# Création du journal de production (une seule fois) : écriture GENESIS signée avec LEDGER_KEY,
+# puis branche « data » qui le contiendra. Refuse si la branche « data » existe déjà :
+# on ne recrée jamais du capital en repartant de zéro (seul reset-capital le peut, avec le code).
+name: initialize
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Taper INITIALISER pour confirmer"
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: cycle
+  cancel-in-progress: false
+
+jobs:
+  initialize:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Dépendances épinglées
+        run: python -m pip install -r requirements.txt
+      - name: Confirmation et refus si le journal existe déjà
+        env:
+          CONFIRM: ${{ inputs.confirm }}
+        run: |
+          set -euo pipefail
+          if [ "$CONFIRM" != "INITIALISER" ]; then echo "REFUS : confirmation absente."; exit 1; fi
+          if git ls-remote --exit-code --heads origin data > /dev/null; then
+            echo "REFUS : la branche data existe déjà. Seul reset-capital peut repartir de zéro."
+            exit 1
+          fi
+      - name: Journal GENESIS (1 000 unités virtuelles)
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+        run: python scripts/initialize.py
+      - name: Branche data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --orphan data
+          git add -f ledger/ledger.jsonl
+          git commit -q -m "GENESIS : journal de production, capital virtuel initial 1000"
+          git push -q origin data

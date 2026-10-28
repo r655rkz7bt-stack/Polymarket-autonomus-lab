@@ -1,0 +1,521 @@
+"""Strategy Engine : les stratégies PROPOSENT, le contrôleur de sécurité décide.
+
+Chaque stratégie a un identifiant, une version, une date de création, des
+paramètres bornés (config/strategies.yaml) et un historique (base SQLite).
+Laboratoire dédié : la seule classe est « naive_favorite » (favori), jouée par nf_sport_patiente_prix_850_875.
+"""
+
+from __future__ import annotations
+
+import dataclasses
+import hashlib
+import logging
+from dataclasses import dataclass, field
+import re
+from datetime import datetime, timezone
+from decimal import Decimal
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+from polymarket_agent.fees import UnknownFees, taker_fee
+from polymarket_agent.ledger import LedgerState
+from polymarket_agent.models import MarketInfo, OrderBook
+from polymarket_agent.portfolio_manager import size_buy
+from polymarket_agent.safety_controller import Proposal, RiskLimits
+
+log = logging.getLogger(__name__)
+ONE = Decimal("1")
+
+
+class StrategyConfigError(Exception):
+    pass
+
+
+def make_op_id(bucket: str, strategy_id: str, version: str, token_id: str, side: str) -> str:
+    """Identifiant déterministe : relancer le même cycle redonne le même identifiant,
+    donc l'opération ne peut pas être comptabilisée deux fois."""
+    raw = f"{bucket}|{strategy_id}|{version}|{token_id}|{side}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def load_params(spec: dict) -> dict[str, Decimal]:
+    """Lit les paramètres et vérifie qu'ils restent dans leurs bornes."""
+    params: dict[str, Decimal] = {}
+    for name, item in (spec or {}).items():
+        try:
+            value, low, high = (Decimal(str(item[k])) for k in ("value", "min", "max"))
+        except (KeyError, TypeError, ArithmeticError) as exc:
+            raise StrategyConfigError(f"paramètre {name} mal formé") from exc
+        if not (low <= value <= high):
+            raise StrategyConfigError(f"paramètre {name}={value} hors des bornes [{low}, {high}]")
+        params[name] = value
+    return params
+
+
+@dataclass
+class StrategyOutput:
+    proposals: list[Proposal] = field(default_factory=list)
+    # Ordres à cours limité à POSER dans le carnet (max_price = prix limite). Exécutés plus tard,
+    # seulement si le marché passe au travers du prix (execution_simulator.simulate_resting_*).
+    limit_orders: list[Proposal] = field(default_factory=list)
+    abstentions: dict[str, int] = field(default_factory=dict)
+
+    def abstain(self, reason: str) -> None:
+        self.abstentions[reason] = self.abstentions.get(reason, 0) + 1
+
+
+class NaiveFavorite:
+    """Référence naïve : acheter le favori (prix 0,80–0,95) d'un marché qui se résout bientôt.
+
+    Probabilité estimée = milieu du carnet + biais a priori (NON calibré), avec un
+    intervalle ± incertitude. L'avantage est calculé sur la borne basse, après frais,
+    au prix exécutable (pas au dernier prix affiché).
+    """
+
+    strategy_id = "naive_favorite"
+    required = ("min_ask", "max_ask", "bias", "uncertainty", "min_net_edge",
+                "max_extra_ticks", "max_proposals_per_cycle")
+
+    def __init__(self, version: str, created_at: str, params: dict[str, Decimal]):
+        missing = [p for p in self.required if p not in params]
+        if missing:
+            raise StrategyConfigError(f"{self.strategy_id} : paramètres manquants {missing}")
+        self.version = version
+        self.created_at = created_at
+        self.params = params
+
+    # Options (16/10/2026, experiments/favori.md) — sans elles, comportement d'origine :
+    #   familles (YAML, liste) : familles de marchés acceptées (market_family) ;
+    #   min_hours / max_hours : fenêtre de temps avant l'échéance (avant le coup d'envoi en sport) ;
+    #   underdog = 1 : acheter l'OUTSIDER (l'issue la moins chère) au lieu du favori ;
+    #   shrink : estimation = milieu + shrink × (1 − milieu) au lieu de milieu + bias (le favori
+    #   perd « shrink » fois moins souvent que son prix ne l'annonce) ;
+    #   q_max (22/10/2026) : plafond de l'estimation (0,99 par défaut). Avec 0,99, un favori vendu 0,985 ou plus
+    #   ne peut jamais montrer d'avantage (borne basse 0,987) : `favori_politique_quasi_certain` restait muette ;
+    #   holding_only = 1 (19/10/2026) : seulement les marchés à récompense de détention (Gamma
+    #   holdingRewardsEnabled) ; leur avantage compte alors `holding_rate` × années jusqu'à la fin
+    #   (au plus `holding_years_max`), puisque Polymarket verse ce taux sur la valeur détenue.
+    families: tuple[str, ...] = ()
+    exclude_words: tuple[str, ...] = ()
+
+    def candidates(self, markets: list[MarketInfo]) -> list[MarketInfo]:
+        """Variante ciblée (familles + `max_candidates`) : demande ses propres marchés au scanner,
+        ceux dont l'issue visée (favori ou outsider) est dans la plage de prix."""
+        p = self.params
+        if not self.families or p.get("max_candidates", Decimal("0")) <= 0:
+            return []
+        out = []
+        for m in markets:
+            if len(m.outcome_prices) != 2 or market_family(m) not in self.families or excluded(m, self.exclude_words):
+                continue
+            if p.get("holding_only", Decimal("0")) > 0 and not m.holding_rewards:
+                continue
+            price = min(m.outcome_prices) if p.get("underdog", Decimal("0")) > 0 else max(m.outcome_prices)
+            if p["min_ask"] - Decimal("0.02") <= price <= p["max_ask"]:
+                out.append(m)
+        out.sort(key=lambda m: -m.volume_24h)
+        return out[: int(p["max_candidates"])]
+
+    def _window_ok(self, market: MarketInfo, now) -> bool:
+        p = self.params
+        ref = market.game_start or market.end_date
+        if ref is None or ("min_hours" not in p and "max_hours" not in p):
+            return "min_hours" not in p and "max_hours" not in p
+        hours = (ref - now).total_seconds() / 3600
+        return p.get("min_hours", Decimal("-1e9")) <= Decimal(str(hours)) <= p.get("max_hours", Decimal("1e9"))
+
+    def propose(self, watchlist: list[MarketInfo], books: dict[str, OrderBook],
+                state: LedgerState, limits: RiskLimits, bucket: str,
+                marks: dict[str, Decimal] | None = None) -> StrategyOutput:
+        out = StrategyOutput()
+        p = self.params
+        min_edge = p["min_net_edge"]  # liberté totale : plus de plancher imposé
+        candidates: list[tuple[Decimal, Proposal]] = []
+        for market in watchlist:
+            if not market.outcome_prices or len(market.token_ids) != 2:
+                out.abstain("marché non binaire")
+                continue
+            if (self.families and market_family(market) not in self.families) or excluded(market, self.exclude_words):
+                out.abstain("famille de marchés exclue")
+                continue
+            if p.get("holding_only", Decimal("0")) > 0 and not market.holding_rewards:
+                out.abstain("pas de récompense de détention")
+                continue
+            idx = 0 if market.outcome_prices[0] >= market.outcome_prices[1] else 1
+            if p.get("underdog", Decimal("0")) > 0:
+                idx = 1 - idx
+            token_id = market.token_ids[idx]
+            if token_id in state.positions:
+                out.abstain("position déjà ouverte")
+                continue
+            book = books.get(token_id)
+            if book is None or book.best_ask is None or book.mid is None:
+                out.abstain("carnet indisponible")
+                continue
+            ask = book.best_ask
+            if not (p["min_ask"] <= ask <= p["max_ask"]):
+                out.abstain("favori hors de la plage de prix")
+                continue
+            if not self._window_ok(market, book.fetched_at):
+                out.abstain("hors de la fenêtre de temps")
+                continue
+            q_cap = p.get("q_max", Decimal("0.99"))  # 22/10/2026 : plafond de l'estimation, 0,99 par défaut
+            if "shrink" in p:
+                q = min(book.mid + p["shrink"] * (ONE - book.mid), q_cap)
+            else:
+                q = min(book.mid + p["bias"], q_cap)
+            low = q - p["uncertainty"]
+            high = min(q + p["uncertainty"], max(Decimal("0.995"), q_cap))
+            # Récompense de détention attendue (par part, en fraction du prix) : elle s'ajoute à
+            # l'avantage et à la mise, pas aux probabilités déclarées (le contrôleur les vérifie).
+            bonus = Decimal("0")
+            if p.get("holding_only", Decimal("0")) > 0 and market.end_date is not None:
+                years = Decimal(str(max((market.end_date - book.fetched_at).total_seconds(), 0) / (365 * 86400)))
+                bonus = p.get("holding_rate", Decimal("0")) * min(years, p.get("holding_years_max", Decimal("1")))
+            best: tuple[Decimal, Decimal] | None = None  # (prix limite, coût par part)
+            tick = book.tick_size
+            try:
+                for k in range(int(p["max_extra_ticks"]) + 1):
+                    price = ask + tick * k
+                    if price >= ONE:
+                        break
+                    cost_ps = price + taker_fee(ONE, price, market.fees)
+                    if low + bonus - cost_ps >= min_edge:
+                        best = (price, cost_ps)
+            except UnknownFees:
+                out.abstain("frais inconnus")
+                continue
+            if best is None:
+                out.abstain("avantage net insuffisant")
+                continue
+            max_price, cost_ps = best
+            shares = size_buy(state, prob_low=min(low + bonus, Decimal("0.995")), cost_per_share=cost_ps,
+                              kelly_fraction=p.get("kelly_fraction", Decimal("1")), marks=marks)
+            if shares < max(market.min_order_size, book.min_order_size):
+                out.abstain("taille autorisée trop faible")
+                continue
+            edge = low + bonus - cost_ps
+            candidates.append((edge, Proposal(
+                op_id=make_op_id(bucket, self.strategy_id, self.version, token_id, "BUY"),
+                side="BUY", market_id=market.market_id, event_id=market.event_id,
+                token_id=token_id, outcome=market.outcomes[idx], est_probability=q,
+                prob_low=low, prob_high=high, max_price=max_price, shares=shares,
+                net_edge=edge, sources=("polymarket_gamma", "polymarket_clob"),
+                uncertainty=f"a priori non calibré ± {p['uncertainty']}",
+                invalidation="prix du favori < 0,70 ou règles de résolution ambiguës",
+                horizon_hours=Decimal(str(round(
+                    max((market.end_date - book.fetched_at).total_seconds(), 0) / 3600, 2))),
+                strategy_id=self.strategy_id, strategy_version=self.version,
+            )))
+        candidates.sort(key=lambda item: item[0], reverse=True)
+        out.proposals = [prop for _, prop in candidates[: int(p["max_proposals_per_cycle"])]]
+        return out
+
+
+def excluded(market: MarketInfo, words: tuple[str, ...]) -> bool:
+    q = (market.question or "").lower()
+    return any(w in q for w in words)
+
+
+WEATHER_SLUGS = ("highest-temperature", "lowest-temperature", "precipitation", "where-will-it-rain", "will-it-rain", "rain-in-", "snow-in-")
+# 24/10/2026 : Gamma a aussi passé la POLITIQUE en « zero_fees » (19-20/10) ; les stratégies `familles: [politics, sans_frais]` (favori_politique*, parking_politique…)
+# n'en voyaient plus que 94 marchés sur 393 (« famille de marchés exclue : 360 »), `favori_politique` n'a plus acheté depuis le 16/10. Comme la météo, la politique se
+# reconnaît à l'adresse de l'événement ; Fed, culture, tech restent « zero ». Relevé du 24/10 : 859 des 2 377 marchés « zero » du scan, relus à la main (échantillon de 12).
+POLITICS_SLUGS = re.compile(r"election|senate|governor|mayor|midterm|primary|nominee|prime-minister|presidential|president-of|parliament|balance-of-power|"
+                            r"win-the-house|house-election|control-the-house|house-margin|margin-of-victory|speaker|referendum|coalition")
+
+
+def market_family(market: MarketInfo) -> str:
+    """Famille d'un marché d'après son barème de frais (Gamma `feeType`, vérifié le 16/10/2026) :
+    « politics_fees » → politics, « sports_fees_v3 » → sports, « weather_fees » → weather… ;
+    marché SANS frais → sans_frais (surtout la géopolitique, mais aussi santé, séismes…) ;
+    barème inconnu → other."""
+    if market.fees.enabled is False:
+        return "sans_frais"
+    if market.fees.enabled and market.fees.fee_type:
+        family = market.fees.fee_type.split("_")[0]
+        # 19-20/10/2026 : Gamma passe la météo (et la politique, la finance…) en « zero_fees » : le barème ne dit plus la famille et
+        # loterie_meteo ne voyait plus rien (dernier achat le 20/10 à 16 h 27). La météo se reconnaît à l'adresse de l'événement.
+        if family == "zero" and (market.event_slug or market.slug or "").startswith(WEATHER_SLUGS):
+            return "weather"
+        if family == "zero" and POLITICS_SLUGS.search((market.event_slug or market.slug or "").lower()):
+            return "politics"
+        return family
+    return "other"
+
+
+def market_category(market: MarketInfo) -> str:
+    """Même règle que l'historique : la catégorie vient du barème de frais du marché."""
+    if market.fees.enabled and market.fees.fee_type:
+        return market.fees.fee_type.split("_")[0]
+    return "other"
+
+
+def best_limit_price(book: OrderBook, market: MarketInfo, prob_low: Decimal, min_edge: Decimal,
+                     max_extra_ticks: int) -> tuple[Decimal, Decimal] | None:
+    """Prix limite le plus haut (en ticks au-dessus du meilleur ask) qui garde l'avantage
+    net >= min_edge. Retourne (prix limite, coût par part frais compris) ou None."""
+    if book.best_ask is None:
+        return None
+    best = None
+    for k in range(max_extra_ticks + 1):
+        price = book.best_ask + book.tick_size * k
+        if price >= ONE:
+            break
+        cost_ps = price + taker_fee(ONE, price, market.fees)
+        if prob_low - cost_ps >= min_edge:
+            best = (price, cost_ps)
+    return best
+
+
+STRATEGY_CLASSES: dict[str, Any] = {NaiveFavorite.strategy_id: NaiveFavorite}
+
+
+class PatientOrders:
+    """Mode « patient » d'une stratégie : au lieu d'acheter tout de suite au vendeur (ask), elle
+    pose un ordre d'achat à cours limité `ticks` crans au-dessus du meilleur acheteur, sans
+    jamais toucher le vendeur. Elle paie moins cher (et souvent sans frais), mais n'est servie
+    que si le marché redescend au travers de son prix — souvent jamais. Ventes inchangées."""
+
+    def __init__(self, strategy, ticks: int):
+        if ticks < 0:
+            raise StrategyConfigError("limit_ticks doit être >= 0")
+        self.inner, self.ticks = strategy, ticks
+        self.strategy_id, self.version = strategy.strategy_id, strategy.version
+        self.needs_price_history = getattr(strategy, "needs_price_history", False)
+        if hasattr(strategy, "exits"):
+            self.exits = strategy.exits
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.execution_simulator import maker_fee  # import tardif
+
+        out = self.inner.propose(watchlist, books, state, limits, bucket, marks)
+        markets = {m.market_id: m for m in watchlist}
+        kept = []
+        for p in out.proposals:
+            book, market = books.get(p.token_id), markets.get(p.market_id)
+            if p.side != "BUY" or book is None or market is None or book.best_bid is None \
+                    or book.best_ask is None:
+                kept.append(p)
+                continue
+            limit = min(book.best_bid + book.tick_size * self.ticks, book.best_ask - book.tick_size)
+            if limit <= 0 or limit <= book.best_bid - book.tick_size:
+                out.abstain("écart trop serré pour poser un ordre")
+                continue
+            try:
+                edge = p.prob_low - limit - maker_fee(ONE, limit, market.fees)
+            except UnknownFees:
+                out.abstain("frais inconnus")
+                continue
+            out.limit_orders.append(dataclasses.replace(p, max_price=limit, net_edge=edge))
+        out.proposals = kept
+        return out
+
+    def __getattr__(self, name):
+        return getattr(self.inner, name)
+
+
+FILTER_KEYS = ("familles", "prix_min", "prix_max", "heures_min", "heures_max", "issue", "heure_utc",
+               "echeance_min", "echeance_max", "ecart_max", "sources",
+               "sources_exclues", "question_contient", "question_exclut", "prix_final", "un_match", "candidats_min", "titre_contient")
+
+
+class Filtered:
+    """« Fille » d'une stratégie (entonnoir, 17/10/2026) : la stratégie mère ne joue qu'UN MORCEAU
+    des marchés, défini par `filtres` (YAML). Comparer chaque fille à sa mère dans l'arène montre
+    quel morceau fait vraiment gagner (ou perdre). Filtres possibles :
+      familles : [sports, politics, …] (market_family) ; heures_min / heures_max : délai jusqu'à
+      l'échéance (au coup d'envoi en sport) ; prix_min / prix_max : prix payé ;
+      issue : [oui, non, autre] (autre = équipe, joueur…) ; heure_utc : [début, fin[ (heure de la
+      journée en temps universel, ex. [4, 12] ; [20, 4] passe minuit) ;
+      echeance_min / echeance_max : heures jusqu'à l'ÉCHÉANCE du marché (pas le coup d'envoi),
+      comme le délai noté à l'achat ; ecart_max : écart achat-vente maximal (marchés liquides) ;
+      sources : domaines de la source de résolution acceptés, ex. [itftennis.com] pour le seul
+      circuit ITF (20/10/2026 : outsiders ITF sous-cotés, ATP et WTA non) ; sources_exclues :
+      domaines refusés (favoris ITF : −13,9 % aux vrais prix, experiments/achat_echelonne.md) ;
+      question_contient : le marché est gardé si sa question contient un de ces mots (sans tenir
+      compte des majuscules) ; question_exclut : refusé s'il en contient un (21/10/2026 : annonceurs
+      NFL gagnants, Coupe du monde perdante, experiments/mentions_annonceurs.md) ;
+      titre_contient : le marché est gardé si le TITRE de son événement contient un de ces mots (25/10/2026 : « Games Total »
+      ne nomme pas le jeu, le titre oui : « LoL: T1 vs Gen.G (BO3) ») ;
+      un_match : true → seulement les paris sur UN match (Gamma donne un `sportsMarketType`) ; false → seulement les
+      marchés de saison (gagnant du championnat…). Refuse, si true, les
+      marchés de saison ou de prix (Ballon d'Or, Coupe, Série mondiale), que la famille « sports »
+      laisse passer (23/10/2026 : 359 € = 30 % du capital sur « Mbappé gagne le Ballon d'Or, NON » à 0,94,
+      experiments/enquetes/2026-10-23_marches_de_saison_dans_le_sport.md) ;
+      prix_final : true (avec `limit_ticks`) → prix_min / prix_max portent sur le prix de l'ORDRE POSÉ
+      et non sur le prix du vendeur (21/10/2026 : sinon une fille « prix payé 0,875-0,90 » achète à 0,84,
+      experiments/enquetes/2026-10-21_filtres_et_prix_executable.md) ;
+      candidats_min : au moins N marchés « candidat » (même événement, marchés liés `neg_risk`) parmi les marchés vus (24/10/2026,
+      experiments/primaires.md : le NON d'un candidat à 10-30 % rapporte surtout dans les champs de 5 candidats et plus).
+    Les filtres de marché s'appliquent AVANT la stratégie (elle choisit ses meilleurs paris dans le
+    morceau) ; ceux qui dépendent de l'issue choisie (prix, issue) APRÈS. Ventes jamais filtrées."""
+
+    def __init__(self, strategy, filters: dict):
+        unknown = set(filters) - set(FILTER_KEYS)
+        if unknown:
+            raise StrategyConfigError(f"filtres inconnus : {sorted(unknown)}")
+        self.inner, self.filters = strategy, dict(filters)
+        self._field: dict[str, int] = {}
+        self.strategy_id, self.version = strategy.strategy_id, strategy.version
+        self.needs_price_history = getattr(strategy, "needs_price_history", False)
+        if hasattr(strategy, "exits"):
+            self.exits = strategy.exits
+
+    def _reject(self, m: MarketInfo, now) -> str | None:
+        """Nom du premier filtre qui écarte ce marché, ou None s'il passe (25/10/2026 : sans cela une fille sourde, `candidats_non`,
+        n'avait AUCUNE raison d'abstention et paraissait seulement « muette »)."""
+        f = self.filters
+        if "familles" in f and market_family(m) not in f["familles"]:
+            return "familles"
+        if ("echeance_min" in f or "echeance_max" in f) and now is not None:
+            if m.end_date is None:
+                return "echeance"
+            hours = (m.end_date - now).total_seconds() / 3600
+            if not float(f.get("echeance_min", -1e9)) <= hours <= float(f.get("echeance_max", 1e9)):
+                return "echeance"
+        if "un_match" in f and bool(f["un_match"]) != bool(getattr(m, "sports_market_type", None)):
+            return "un_match"
+        if "candidats_min" in f and (not m.neg_risk or self._field.get(m.event_id, 0) < int(f["candidats_min"])):
+            return "candidats_min"
+        if "titre_contient" in f:
+            titre = (m.event_title or "").lower()
+            if not any(str(w).lower() in titre for w in f["titre_contient"]):
+                return "titre_contient"
+        question = (m.question or "").lower()
+        if "question_contient" in f and not any(str(w).lower() in question for w in f["question_contient"]):
+            return "question_contient"
+        if any(str(w).lower() in question for w in f.get("question_exclut", ())):
+            return "question_exclut"
+        if "ecart_max" in f and (m.spread is None or float(m.spread) > float(f["ecart_max"])):
+            return "ecart_max"
+        if "sources" in f or "sources_exclues" in f:
+            from polymarket_agent.resolution_sources import domain_of
+            domain = domain_of(m.resolution_source) if m.resolution_source else ""
+            if "sources" in f and domain not in f["sources"]:
+                return "sources"
+            if domain and domain in f.get("sources_exclues", ()):
+                return "sources_exclues"
+        if ("heures_min" in f or "heures_max" in f) and now is not None:
+            ref = m.game_start or m.end_date
+            if ref is None:
+                return "heures"
+            hours = (ref - now).total_seconds() / 3600
+            if not float(f.get("heures_min", -1e9)) <= hours <= float(f.get("heures_max", 1e9)):
+                return "heures"
+        return None
+
+    def _market_ok(self, m: MarketInfo, now) -> bool:
+        return self._reject(m, now) is None
+
+    def _order_ok(self, p) -> bool:
+        if p.side != "BUY":
+            return True
+        f = self.filters
+        if not float(f.get("prix_min", 0)) <= float(p.max_price) <= float(f.get("prix_max", 1)):
+            return False
+        if "issue" in f:
+            o = (p.outcome or "").lower()
+            kind = "oui" if o == "yes" else "non" if o == "no" else "autre"
+            return kind in f["issue"]
+        return True
+
+    # Filtres assez étroits pour qu'une fille demande ELLE-MÊME ses marchés au scanner (21/10/2026) :
+    # sans cela, statu_quo_ia (« best ai model ») et outsider_itf (source itftennis.com) ne voyaient
+    # que les 150 marchés les plus échangés, où leurs marchés n'entrent presque jamais.
+    OWN_MARKETS = ("question_contient", "sources")
+    OWN_MARKETS_MAX = 25
+
+    def _count_field(self, markets) -> None:
+        if "candidats_min" in self.filters:
+            self._field = {}
+            for m in markets:
+                if m.neg_risk:
+                    self._field[m.event_id] = self._field.get(m.event_id, 0) + 1
+
+    def candidates(self, markets):
+        self._count_field(markets)
+        inner = getattr(self.inner, "candidates", None)
+        out = [m for m in inner(markets) if self._market_ok(m, None)] if inner else []
+        if not out and any(k in self.filters for k in self.OWN_MARKETS):
+            # 24/10/2026 : la fenêtre d'échéance compte AVANT le plafond de 25 marchés (sinon les 25 plus échangés, hors fenêtre, chassent les bons)
+            now = datetime.now(timezone.utc) if ("echeance_min" in self.filters or "echeance_max" in self.filters) else None
+            out = sorted((m for m in markets if self._market_ok(m, now)), key=lambda m: -float(m.volume_24h or 0))
+            out = out[: self.OWN_MARKETS_MAX]
+        return out
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        now = max((b.fetched_at for b in books.values()), default=None)
+        if "heure_utc" in self.filters and now is not None:
+            start, end = (int(h) for h in self.filters["heure_utc"])
+            hour = now.astimezone(timezone.utc).hour
+            if not (start <= hour < end if start <= end else hour >= start or hour < end):
+                out = StrategyOutput()  # hors de la plage horaire : aucune nouvelle position
+                for _ in watchlist:  # 28/10/2026 : dit pourquoi (avant, 'abstentions {}' = impossible de distinguer une fille sourde d'une fille hors de son heure)
+                    out.abstain(f"hors de la plage horaire (heure_utc {start}-{end})")
+                return out
+        self._count_field(watchlist)
+        kept, dropped = [], {}
+        for m in watchlist:
+            why = self._reject(m, now)
+            if why is None:
+                kept.append(m)
+            else:
+                dropped[why] = dropped.get(why, 0) + 1
+        out = self.inner.propose(kept, books, state, limits, bucket, marks)
+        for why, n in dropped.items():  # lisible dans les abstentions du cycle : « hors du filtre question_contient ×438 » = fille sourde
+            for _ in range(n):
+                out.abstain(f"hors du filtre {why}")
+        out.proposals = [p for p in out.proposals if self._order_ok(p)]
+        if getattr(out, "limit_orders", None):
+            out.limit_orders = [p for p in out.limit_orders if self._order_ok(p)]
+        return out
+
+    def __getattr__(self, name):
+        return getattr(self.inner, name)
+
+
+def load_strategies(path: Path) -> list:
+    try:
+        raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError) as exc:
+        raise StrategyConfigError(f"impossible de lire {path}") from exc
+    classes = dict(STRATEGY_CLASSES)
+    strategies = []
+    for strategy_id, spec in raw.items():
+        if not isinstance(spec, dict) or not spec.get("enabled"):
+            continue
+        # « class: » : variante d'une stratégie existante sous un autre nom (son propre fantôme).
+        cls = classes.get(str(spec.get("class", strategy_id)))
+        if cls is None:
+            raise StrategyConfigError(f"stratégie inconnue : {spec.get('class', strategy_id)}")
+        args = [str(spec["version"]), str(spec["created_at"]), load_params(spec.get("params"))]
+        if "table" in spec:
+            args.append(Path(path).parent / str(spec["table"]))
+        strategy = cls(*args)
+        if "class" in spec:
+            strategy.strategy_id = strategy_id
+        if "familles" in spec:  # familles de marchés acceptées (ex. [politics, sans_frais])
+            strategy.families = tuple(str(f) for f in spec["familles"])
+        if "exclure_mots" in spec:  # marchés exclus si la question contient un de ces mots
+            strategy.exclude_words = tuple(str(w).lower() for w in spec["exclure_mots"])
+        filters = dict(spec.get("filtres") or {})
+        if filters.pop("prix_final", False) and "limit_ticks" in spec:
+            # Le filtre de prix se lit sur l'ordre posé : le mode patient passe DANS la fille.
+            strategy = Filtered(PatientOrders(strategy, int(spec["limit_ticks"])), filters)
+        else:
+            if "filtres" in spec:  # fille : la stratégie mère sur un morceau des marchés
+                strategy = Filtered(strategy, dict(spec["filtres"]))
+            if "limit_ticks" in spec:  # mode patient : ordres posés au lieu d'achats immédiats
+                strategy = PatientOrders(strategy, int(spec["limit_ticks"]))
+        # Ordres posés annulés au coup d'envoi (28/10/2026, enquête « posées en match ») : la stratégie ne subit pas la sélection adverse du mode
+        # patient en jeu ; `main._fill_resting` lit cet attribut. Sert de sœur à une stratégie qui, elle, les subit (même période, mêmes paramètres).
+        strategy.annuler_au_coup_d_envoi = bool(spec.get("annuler_au_coup_d_envoi", False))
+        mode = str(spec.get("mode", "principal"))
+        if mode not in ("principal", "fantome"):
+            raise StrategyConfigError(f"{strategy_id} : mode inconnu {mode!r}")
+        strategy.mode = mode  # « fantome » : journal séparé, ne touche jamais le capital principal
+        strategies.append(strategy)
+    return strategies

@@ -1,0 +1,83 @@
+"""Client HTTP poli et robuste : délais progressifs, limite de fréquence, erreurs explicites."""
+
+from __future__ import annotations
+
+import logging
+import threading
+import time
+from typing import Any
+
+import requests
+
+log = logging.getLogger(__name__)
+RETRY_STATUS = {429, 500, 502, 503, 504}
+
+
+class SourceUnavailable(Exception):
+    """La source n'a pas répondu correctement après plusieurs tentatives."""
+
+
+class HttpClient:
+    def __init__(self, timeout: float = 15, max_retries: int = 3, backoff: float = 1.0,
+                 min_interval: float = 0.2, user_agent: str = "polymarket-autonomous-lab",
+                 session: requests.Session | None = None, sleep=time.sleep):
+        self.timeout = timeout
+        self.max_retries = max_retries
+        self.backoff = backoff
+        self.min_interval = min_interval
+        self.session = session or requests.Session()
+        self.session.headers.update({"User-Agent": user_agent, "Accept": "application/json"})
+        self._sleep = sleep
+        self._last_call = 0.0
+        self._lock = threading.Lock()  # plusieurs pages lues en même temps (scanner) : intervalle respecté
+        self.last_headers: dict[str, str] = {}  # en-têtes de la dernière réponse réussie (quotas d'API)
+
+    def request_json(self, method: str, url: str, *, params: dict | None = None,
+                     json_body: Any = None, headers: dict | None = None, as_text: bool = False) -> Any:
+        """`headers` : en-têtes de CETTE requête seulement (une clé d'API ne doit jamais partir
+        vers un autre site : ne pas les mettre dans la session partagée). `as_text` : renvoie le
+        texte brut (fichiers CSV de l'Observatoire de Hong Kong, 23/10/2026)."""
+        last_error = "inconnue"
+        for attempt in range(self.max_retries + 1):
+            with self._lock:
+                wait = self.min_interval - (time.monotonic() - self._last_call)
+                if wait > 0:
+                    self._sleep(wait)
+                self._last_call = time.monotonic()
+            try:
+                response = self.session.request(method, url, params=params, json=json_body,
+                                                headers=headers, timeout=self.timeout)
+            except requests.RequestException as exc:
+                last_error = f"{type(exc).__name__}"
+            else:
+                if response.status_code == 200:
+                    self.last_headers = {k.lower(): v for k, v in (response.headers or {}).items()}
+                    if as_text:
+                        return response.text
+                    try:
+                        return response.json()
+                    except ValueError:
+                        last_error = "réponse non JSON"
+                elif response.status_code in RETRY_STATUS:
+                    last_error = f"HTTP {response.status_code}"
+                    retry_after = response.headers.get("Retry-After", "")
+                    if retry_after.isdigit() and attempt < self.max_retries:
+                        self._sleep(min(int(retry_after), 30))
+                        continue
+                else:
+                    raise SourceUnavailable(f"{method} {url} : HTTP {response.status_code}")
+            if attempt < self.max_retries:
+                delay = self.backoff * (2 ** attempt)
+                log.warning("%s %s : %s, nouvel essai dans %.1f s", method, url, last_error, delay)
+                self._sleep(delay)
+        raise SourceUnavailable(f"{method} {url} : échec après {self.max_retries + 1} essais ({last_error})")
+
+    def get_json(self, url: str, params: dict | None = None, headers: dict | None = None) -> Any:
+        return self.request_json("GET", url, params=params, headers=headers)
+
+    def get_text(self, url: str, params: dict | None = None, headers: dict | None = None) -> str:
+        return self.request_json("GET", url, params=params, headers=dict({"Accept": "*/*"}, **(headers or {})),
+                                 as_text=True)
+
+    def post_json(self, url: str, body: Any) -> Any:
+        return self.request_json("POST", url, json_body=body)

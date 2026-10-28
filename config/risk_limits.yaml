@@ -1,0 +1,9 @@
+# FICHIER PROTÉGÉ — règles du jeu. Modifiable uniquement par Etienne après le verrouillage.
+#
+# Décision d'Etienne (15/10/2026) : liberté de trading totale. Il n'y a plus aucune
+# limite de risque (taille, concentration, liquidités, pause, avantage minimal) : les
+# stratégies décident seules. Restent la règle n°1 (à 0 € tu meurs, codée dans
+# ledger.py et safety_controller.py) et les règles qui rendent la simulation honnête.
+
+initial_capital: 1000          # unités virtuelles (jamais de l'argent réel)
+max_book_age_seconds: 120      # un carnet plus vieux est périmé : on n'achète pas à un prix passé

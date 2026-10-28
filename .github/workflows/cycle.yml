@@ -1,0 +1,207 @@
+# Cycle de simulation : lancé toutes les 5 minutes par cron-job.org (workflow_dispatch),
+# avec un déclencheur horaire de secours si cron-job.org s'arrête.
+#
+# Où vivent les données :
+#   - journal signé : branche « data » (dossier ledger/), un commit par cycle, historique conservé
+#     (le ruleset de « data » interdit force push et suppression : toute réécriture se verrait) ;
+#   - base SQLite (analyse seulement, jamais le capital) : cache GitHub Actions, avec une
+#     sauvegarde quotidienne de l'essentiel (ordres posés, ancrage, avis Gemini, caches) dans la
+#     branche data (backup/), restaurée automatiquement si le cache a disparu ;
+#   - audit indépendant des exécutions : job « audit », sur une machine neuve où aucun code libre
+#     ne tourne (scripts/audit_fills.py, protégé), résultat dans la branche data (audit/) ;
+#   - tableau de bord et rapports : branche « gh-pages » (GitHub Pages), toutes les 30 minutes.
+# Aucune pull request ne peut déclencher ce workflow : les secrets ne servent qu'au code de main.
+name: cycle
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7 * * * *"
+
+permissions: {}
+
+# Un seul cycle à la fois (la réinitialisation partage ce groupe).
+concurrency:
+  group: cycle
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Dépendances épinglées
+        run: python -m pip install -r requirements.txt
+      - name: Journal signé (branche data)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: _data
+      - name: Base d'analyse (cache)
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: state/market.sqlite
+          key: db-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: db-
+      - name: Préparation
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p ../ledger ../state ../site
+          cp -a ledger/. ../ledger/
+          # Cache perdu : on repart de la sauvegarde quotidienne de l'essentiel (jamais du capital).
+          if [ ! -f ../state/market.sqlite ] && [ -f backup/essentiel.sqlite.gz ]; then
+            gunzip -c backup/essentiel.sqlite.gz > ../state/market.sqlite
+            echo "Base restaurée depuis la sauvegarde du $(cat backup/jour.txt 2>/dev/null || echo '?')."
+          fi
+          # Date de la dernière publication du tableau de bord (régénéré toutes les 30 min).
+          if git fetch --depth 1 origin gh-pages 2>/dev/null; then
+            git show FETCH_HEAD:data.json > ../site/data.json 2>/dev/null || rm -f ../site/data.json
+          fi
+          cp ../site/data.json "$RUNNER_TEMP/data.before" 2>/dev/null || : > "$RUNNER_TEMP/data.before"
+      - name: Cycle
+        id: run
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+        run: |
+          set +e
+          python scripts/run_simulation.py --once
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "Code de sortie du cycle : $code (0 OK, 1 erreur, 2 journal corrompu ou absent)"
+      - name: Enregistrement du journal (branche data)
+        if: steps.run.outputs.code != '2'
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          cp -a ../ledger/. ledger/
+          git add -A ledger
+          if git diff --cached --quiet; then echo "Journal inchangé."; exit 0; fi
+          git commit -q -m "cycle $(date -u +%Y-%m-%dT%H:%MZ) (code ${{ steps.run.outputs.code }})"
+          git push -q origin HEAD:data
+      - name: Sauvegarde de l'essentiel de la base (branche data, une fois par jour)
+        if: steps.run.outputs.code != '2'
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          today=$(date -u +%Y-%m-%d)
+          if [ -f backup/jour.txt ] && [ "$(cat backup/jour.txt)" = "$today" ]; then echo "Sauvegarde du jour déjà faite."; exit 0; fi
+          if [ ! -f ../state/market.sqlite ]; then echo "Pas de base à sauvegarder."; exit 0; fi
+          mkdir -p backup
+          # Bibliothèque standard seulement (-I -S : aucun module du dépôt ni de site-packages).
+          python -I -S - <<'PY'
+          import gzip, os, shutil, sqlite3
+          tmp = "backup/essentiel.sqlite"
+          if os.path.exists(tmp):
+              os.remove(tmp)
+          src = sqlite3.connect("file:../state/market.sqlite?mode=ro", uri=True)
+          src.execute("VACUUM INTO ?", (tmp,))
+          src.close()
+          db = sqlite3.connect(tmp)
+          for table in ("market_snapshots", "book_snapshots", "observations", "decisions", "cycles"):
+              try:
+                  db.execute(f"DELETE FROM {table}")
+              except sqlite3.Error:
+                  pass
+          db.commit()
+          db.execute("VACUUM")
+          db.close()
+          with open(tmp, "rb") as f, gzip.open("backup/essentiel.sqlite.gz", "wb", compresslevel=9) as g:
+              shutil.copyfileobj(f, g)
+          os.remove(tmp)
+          PY
+          echo "$today" > backup/jour.txt
+          git add -A backup
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -q -m "sauvegarde de la base du $today"
+          git push -q origin HEAD:data
+      - name: Rapport (si le tableau de bord a été régénéré)
+        id: reports
+        if: steps.run.outputs.code != '2'
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+        run: |
+          set -euo pipefail
+          if [ ! -f site/data.json ] || cmp -s site/data.json "$RUNNER_TEMP/data.before"; then
+            echo "publish=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          python scripts/generate_report.py > /dev/null
+          mkdir -p site/rapports
+          cp -a reports/. site/rapports/
+          touch site/.nojekyll
+          echo "publish=yes" >> "$GITHUB_OUTPUT"
+      - name: Publication du tableau de bord (branche gh-pages)
+        if: steps.reports.outputs.publish == 'yes'
+        working-directory: site
+        run: |
+          set -euo pipefail
+          # Un seul commit, remplacé à chaque publication : pas d'historique qui gonfle le dépôt.
+          export GIT_DIR="$GITHUB_WORKSPACE/_data/.git" GIT_WORK_TREE=. GIT_INDEX_FILE="$RUNNER_TEMP/site.index"
+          git add -A .
+          tree=$(git write-tree)
+          commit=$(git commit-tree "$tree" -m "Tableau de bord $(date -u +%Y-%m-%dT%H:%MZ)")
+          git push -q --force origin "$commit:refs/heads/gh-pages"
+      - name: Échec signalé par e-mail (GitHub) si le cycle a échoué
+        if: steps.run.outputs.code != '0'
+        run: exit 1
+
+  # Audit indépendant : une machine neuve, où aucun code libre n'a tourné ; seul du code protégé
+  # (scripts/audit_fills.py → ledger.py) s'exécute, avec python -I -S. Il compare chaque prix du
+  # journal à l'historique public de Polymarket. Nouvelle anomalie → échec → e-mail de GitHub.
+  audit:
+    needs: cycle
+    if: ${{ always() && github.ref == 'refs/heads/main' && needs.cycle.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+      - name: Journal signé (branche data)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: data
+          path: _data
+      - name: Audit des exécutions
+        id: audit
+        env:
+          LEDGER_KEY: ${{ secrets.LEDGER_KEY }}
+        run: |
+          set +e
+          python -I -S scripts/audit_fills.py --data _data
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+      - name: Enregistrement de l'audit (branche data)
+        working-directory: _data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A audit
+          if git diff --cached --quiet; then echo "Audit inchangé."; exit 0; fi
+          git commit -q -m "audit $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q origin HEAD:data
+      - name: Anomalie signalée par e-mail (GitHub)
+        if: steps.audit.outputs.code != '0'
+        run: exit 1

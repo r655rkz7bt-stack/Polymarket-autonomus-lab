@@ -1,0 +1,372 @@
+"""Tableau de bord : contenu, sécurité de l'affichage, fréquence de génération."""
+
+from __future__ import annotations
+
+import json
+import re
+from datetime import timedelta
+from decimal import Decimal
+
+import yaml
+
+from conftest import KEY, NOW, ROOT, buy, make_book
+from polymarket_agent import dashboard
+from polymarket_agent.ledger import Ledger
+from polymarket_agent.persistence import Database
+from polymarket_agent.reporting import read_entries
+
+EVIL = "</script><script>alert(1)</script><img src=x onerror=alert(2)>"
+SETTINGS = {"paths": {"ledger": "ledger/ledger.jsonl", "bankruptcy_lock": "ledger/BANKRUPT.lock",
+                      "shadow_dir": "ledger/fantome"},
+            "dashboard": {"output_dir": "site", "every_minutes": 30}, "llm": {"max_calls_per_day": 200}}
+
+
+def _setup(tmp_path):
+    main = Ledger.create(tmp_path / "ledger" / "ledger.jsonl", KEY, tmp_path / "ledger" / "BANKRUPT.lock",
+                         "1000", now=NOW)
+    shadow_path = tmp_path / "ledger" / "fantome" / "test_v0.jsonl"
+    shadow = Ledger.create(shadow_path, KEY, shadow_path.with_suffix(".BANKRUPT.lock"), "1000", now=NOW)
+    buy(main, "b1", token="tA", shares="10", price="0.5")
+    buy(shadow, "b2", token="tB", shares="100", price="0.8", event="ev2")
+    shadow.record_settlement(op_id="s2", token_id="tB", payout_per_share="1", resolution="Yes", now=NOW)
+    db = Database(tmp_path / "db.sqlite")
+    db.conn.execute("INSERT INTO market_snapshots (cycle_id, collected_at, market_id, question, eligible) "
+                    "VALUES ('c1', ?, 'm-tA', ?, 1)", (NOW.isoformat(), EVIL))
+    db.save_books("c1", [make_book("tA", bids=(("0.6", "100"),), asks=(("0.61", "100"),))])
+    for i, sources in enumerate([{"rss": "ok (3 observations)", "gdelt": "indisponible : 429"},
+                                 {"rss": "pas encore (fréquence)", "gdelt": "pas encore (fréquence)"}]):
+        db.start_cycle(f"c{i}", NOW + timedelta(minutes=5 * i))
+        db.finish_cycle(f"c{i}", NOW + timedelta(minutes=5 * i, seconds=30), "OK", summary={"sources": sources})
+    return main, {"test_v0": shadow}, db
+
+
+def test_collect_reads_ledgers_and_db(tmp_path):
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))
+    assert data["capital"]["palier_suivant"] == "1500.0"
+    assert data["capital"]["solde_disponible"] == "995.0000"
+    assert data["capital"]["gains_latents"] == "1.0000"  # 10 parts marquées au bid 0,6
+    assert [s["nom"] for s in data["arene"]] == ["test_v0"]
+    assert data["arene"][0]["operations"] == 1 and data["arene"][0]["capital"] == 1020.0
+    main_pos = [p for p in data["positions"] if p["portefeuille"] == "principal"]
+    assert main_pos[0]["marche"] == EVIL and main_pos[0]["latent"] == 1.0
+    assert data["cloturees"][0]["resultat"] == 20.0
+    assert data["surveilles"][0]["marche"] == EVIL
+    db.close()
+
+
+def test_regression_source_status_skips_not_due(tmp_path):
+    """Le dernier cycle ne fait souvent que « pas encore (fréquence) » : on affiche le
+    dernier résultat réel de chaque source, sinon la page ne dit jamais rien d'utile."""
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))
+    assert data["sources"]["etat"] == {"rss": "ok (3 observations)", "gdelt": "indisponible : 429"}
+    db.close()
+
+
+def test_untrusted_text_cannot_close_the_script_tag(tmp_path):
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    db.close()
+    page = dashboard.render(data)
+    blob = re.search(r'<script type="application/json" id="data">(.*?)</script>', page, re.S).group(1)
+    assert "</script" not in blob
+    assert json.loads(blob)["surveilles"][0]["marche"] == EVIL  # le texte reste intact une fois lu
+
+
+def test_template_never_injects_html():
+    """Les textes externes passent par textContent : aucune insertion de HTML brut."""
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    for forbidden in ("innerHTML", "outerHTML", "insertAdjacentHTML", "document.write", "eval("):
+        assert forbidden not in template
+    assert template.count("__DATA__") == 1
+    assert "<script src" not in template  # aucune dépendance externe
+
+
+def test_full_document_and_fragment(tmp_path):
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    db.close()
+    full, fragment = dashboard.render(data), dashboard.render(data, full_document=False)
+    assert full.startswith("<!doctype html>") and '<html lang="fr">' in full
+    assert "<html" not in fragment and "<!doctype" not in fragment
+    assert fragment.startswith("<title>")
+
+
+def test_build_writes_site_and_is_due(tmp_path):
+    main, shadows, db = _setup(tmp_path)
+    out = tmp_path / "site"
+    assert dashboard.is_due(out, NOW, 30)
+    page = dashboard.build(SETTINGS, tmp_path, KEY, db, now=NOW)
+    db.close()
+    assert page == out / "index.html" and page.exists()
+    assert json.loads((out / "data.json").read_text(encoding="utf-8"))["genere_le"] == NOW.isoformat()
+    assert not dashboard.is_due(out, NOW + timedelta(minutes=20), 30)
+    assert dashboard.is_due(out, NOW + timedelta(minutes=30), 30)
+
+
+def test_downsample_keeps_last_point():
+    curve = [(f"t{i}", Decimal(i)) for i in range(1000)]
+    out = dashboard._downsample(curve, 50)
+    assert len(out) == 50 and out[-1] == ["t999", 999.0] and out[0] == ["t0", 0.0]
+
+
+def test_page_refreshes_itself_from_its_own_data_file():
+    """Actualisation automatique : la page relit data.json (même site, sans cache) et se recharge
+    seulement si le cycle a publié de nouvelles données."""
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert 'fetch("data.json?t="' in template and 'cache: "no-store"' in template
+    assert "fresh.genere_le !== D.genere_le" in template and "document.hidden" in template
+    settings = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))
+    assert 6 <= settings["dashboard"]["every_minutes"] <= 30  # GitHub Pages : ~10 publications par heure au plus
+
+
+def test_pulse_and_system_vitals_feed_the_beating_heart(tmp_path):
+    """Organisme vivant : le pouls (derniers cycles, durée, erreurs) et les constantes du système
+    nourrissent le cœur et le journal vital de la page ; la règle n°1 l'arrête (aucun battement)."""
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))
+    db.close()
+    pulse = data["sante"]["pouls"]
+    assert [c["date"] for c in pulse] == sorted(c["date"] for c in pulse) and len(pulse) == 2
+    assert pulse[0]["duree"] == 30.0 and pulse[0]["statut"] == "OK" and pulse[0]["erreur"] is False
+    assert data["systeme"]["strategies_actives"] == 1 and data["systeme"]["ordres_poses"] == 0
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert 'id="heart"' in template and "C.faillite ? 0" in template  # faillite : le cœur s'arrête
+    assert "prefers-reduced-motion" in template
+    # Cœur anatomique : les constantes sont des légendes posées autour, hors de portée du battement.
+    for part in ("aorte", "veine cave", "nœud sinusal", "ventricule gauche", "ventricule droit", "apex"):
+        assert part in template
+    assert "placeLabels" in template and "jamais\n      // d'expansion" not in template
+
+
+def test_independent_audit_is_shown(tmp_path):
+    """Le résultat de l'audit indépendant (branche data, audit/etat.json) apparaît sur la page."""
+    main, shadows, db = _setup(tmp_path)
+    (tmp_path / "_data" / "audit").mkdir(parents=True)
+    (tmp_path / "_data" / "audit" / "etat.json").write_text(json.dumps(
+        {"verifiees": 80, "non_verifiables": 2, "anomalies": [{"portefeuille": "principal", "detail": "achat à 0.1"}],
+         "derniere_execution": "2026-10-15T19:30:00+00:00"}), encoding="utf-8")
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    db.close()
+    assert data["audit"]["verifiees"] == 80 and data["audit"]["anomalies"] == 1
+    assert data["audit"]["dernieres_anomalies"][0]["detail"] == "achat à 0.1"
+
+
+def test_today_tells_the_last_24_hours_in_plain_french(tmp_path):
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))
+    texts = {t["sujet"]: [] for t in data["aujourdhui"]}
+    for t in data["aujourdhui"]:
+        texts[t["sujet"]].append(t["texte"])
+    assert set(texts) == {"capital", "arene", "operations", "machine"}
+    assert any("Aucune stratégie n'a encore prouvé" in t for t in texts["arene"])
+    assert any(t.startswith("2 achats et 1 vente ou règlement") for t in texts["operations"])
+    assert any("1 opération clôturée : 1 gagnante(s), 0 perdante(s), résultat net +20,00 €" in t
+               for t in texts["operations"])
+    assert any("Meilleure stratégie qui a tradé : test_v0, 1 020,00 € réalisés (+20,00 €)" in t for t in texts["arene"])
+    assert "1 sur 1 stratégie(s) ayant tradé gagnent de l'argent." in texts["arene"]
+    assert any(t.startswith("2 cycles en 24 h") and "aucun en erreur" in t for t in texts["machine"])
+    assert any("en panne au dernier essai : gdelt" in t for t in texts["machine"])
+    # Le texte venu de l'extérieur (question du marché) reste une donnée : la page l'insère en texte.
+    assert "textContent" in (ROOT / "src/polymarket_agent/dashboard_template.html").read_text(encoding="utf-8")
+    db.close()
+
+
+def test_arena_ranking_history_one_photo_per_hour(tmp_path):
+    from polymarket_agent import arena_history
+    main, shadows, db = _setup(tmp_path)
+    dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(minutes=10))  # trop tôt
+    rows = [{"nom": "a", "capital": 1010, "operations": 3, "eliminee": False},
+            {"nom": "test_v0", "capital": 1000, "operations": 1, "eliminee": False}]
+    assert arena_history.record(db, rows, NOW + timedelta(hours=1))
+    assert not arena_history.record(db, rows, NOW + timedelta(hours=1, minutes=20))
+    h = arena_history.series(db, NOW + timedelta(hours=2))
+    assert len(h["dates"]) == 2 and h["strategies"]["test_v0"] == [1, 2] and h["strategies"]["a"] == [None, 1]
+    assert arena_history.rank_at(db, NOW + timedelta(minutes=30)) == {"test_v0": 1}
+    # « Aujourd'hui » compare à la photo d'il y a 24 h (a 1re, test_v0 2e) : test_v0 repasse devant.
+    from polymarket_agent import today
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(hours=25))
+    data["arene"] = [dict(r, sante=None) for r in reversed(rows)]
+    entries = {n: [] for n in ("principal",)}
+    texts = [t["texte"] for t in today.build(data, entries, {}, db, NOW + timedelta(hours=25))]
+    assert "Plus forte remontée : test_v0, +1 place depuis hier." in texts
+    assert "Plus forte chute : a, −1 place depuis hier." in texts
+    db.close()
+
+
+def test_layout_is_set_by_the_researcher_with_guardrails(tmp_path):
+    """17/10/2026 : le chercheur règle la mise en page (config/dashboard.yaml) ; le résumé et le
+    capital (règle n°1) ne peuvent jamais être cachés ; « À la une » est borné."""
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "dashboard.yaml").write_text(yaml.safe_dump({
+        "ordre": ["arene", "inconnu", "resume", "arene"], "masquer": ["capital", "resume", "systeme", "x"],
+        "replier": ["organisme", "journal", "capital", "journal", "y"],
+        "a_la_une": {"date": "2026-10-17", "points": [EVIL] + [f"point {i}" for i in range(9)] + ["y" * 400]}}),
+        encoding="utf-8")
+    lay = dashboard.layout(tmp_path)
+    assert lay["ordre"] == ["arene", "resume"] and lay["masquer"] == ["systeme"]
+    assert lay["replier"] == ["journal"]  # le cœur, le résumé et le capital ne se replient jamais
+    assert len(lay["a_la_une"]["points"]) == 5 and lay["a_la_une"]["points"][0] == EVIL
+    assert dashboard.layout(tmp_path / "absent") == {"ordre": [], "masquer": [], "replier": [],
+                                                      "a_la_une": {"date": "", "points": []}}
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    page = dashboard.render(data)
+    assert data["mise_en_page"] == lay and EVIL not in page  # texte du chercheur échappé comme le reste
+    repo = dashboard.layout(ROOT)  # la configuration du dépôt est valide
+    assert repo["ordre"][0] in ("organisme", "resume") and not set(repo["masquer"]) & {"organisme", "resume", "capital"}
+
+
+def test_situation_explains_why_there_is_no_champion():
+    """17/10/2026 : la ligne du haut dit qui pilote le capital principal, et sinon pourquoi personne."""
+    rules = {"operations": 20, "croissance": 0.02, "heures": 24}
+    arena = [{"nom": "meteo_v1", "capital": 999.55, "operations": 29},
+             {"nom": "favori_v1", "capital": 1093.0, "operations": 11}]
+    lost = [{"date": "2026-10-17T15:27", "champion": "", "ancien": "meteo_v1", "raison": "ne bat plus"},
+            {"date": "2026-10-17T08:32", "champion": "meteo_v1", "ancien": "", "raison": "promu"}]
+    s = dashboard.situation({"champion": ""}, arena, lost, rules, 1000.0)
+    assert s["phrase"].startswith("Plus de champion depuis le 17/10 15:27 UTC : meteo est retombé sous ses")
+    assert "favori" in s["detail"] and "11 opérations" in s["detail"] and "20 exigées" in s["detail"]
+    s = dashboard.situation({"champion": "meteo_v1"}, arena, lost[1:], rules, 1000.0)
+    assert s["phrase"] == "Le capital principal suit meteo depuis le 17/10 08:32 UTC."
+    assert dashboard.situation({"faillite": True, "raison_faillite": "solde 0"}, arena, [], rules, 1000.0)["detail"] == "solde 0"
+    assert dashboard.situation({"champion": ""}, [], [], rules, 1000.0)["detail"] == "Aucune stratégie en course."
+
+
+def test_principal_orders_are_listed_apart_from_the_arena(ledger):
+    """17/10/2026 : les ordres du capital principal ont leur propre bloc (le plus récent d'abord)."""
+    from conftest import buy
+    buy(ledger, "b1", token="tA", shares="10", price="0.5", fee="0.1")
+    ledger.record_sell(op_id="s1", token_id="tA", shares="4", price="0.6", fee="0.05", now=NOW + timedelta(minutes=5))
+    ledger.record_settlement(op_id="r1", token_id="tA", payout_per_share="1", resolution="Yes", now=NOW + timedelta(minutes=9))
+    import json as _json
+    opened = [{"created_at": "2026-10-14T12:30:00", "side": "BUY", "remaining": "5",
+               "proposal": _json.dumps({"market_id": "m-tB", "outcome": "No", "max_price": "0.42", "strategy_id": "mm"})}]
+    out = dashboard.principal_orders(read_entries(ledger), {"m-tA": "Question A ?", "m-tB": "Question B ?"}, opened)
+    assert [o["sens"] for o in out["executions"]] == ["règlement", "vente", "achat"]
+    assert out["executions"][2]["marche"] == "Question A ?" and out["executions"][2]["montant"] == 5.1
+    assert out["executions"][1]["montant"] == 2.35 and out["executions"][0]["marche"] == "Question A ?"
+    assert out["compte"] == {"achats": 1, "ventes": 1, "reglements": 1}
+    assert out["poses"] == [{"date": "2026-10-14T12:30", "sens": "achat", "marche": "Question B ?", "issue": "No",
+                             "prix": 0.42, "parts": 5.0, "strategie": "mm"}]
+
+
+def test_situation_lists_several_champions_with_their_share():
+    """18/10/2026 : plusieurs championnes à la fois, chacune avec sa part du capital principal."""
+    rules = {"operations": 20, "croissance": 0.02, "heures": 24, "confiance": 1.5}
+    arena = [{"nom": "a_v1", "capital": 1150.0, "operations": 40}, {"nom": "b_v1", "capital": 1030.0, "operations": 30}]
+    s = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.33, "b_v1": 0.17})
+    assert s["phrase"] == "Le capital principal suit 2 championnes : a (33 %) et b (17 %)."
+    assert "50 %" in s["detail"]
+    one = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.5})
+    assert one["phrase"] == "Le capital principal suit a."
+    # Renfort (27/10/2026) : la somme des parts peut dépasser 100 % ; pas de « 130 % du capital engagé ».
+    boosted = dashboard.situation({"champion": "a_v1"}, arena, [], rules, 1000.0, {"a_v1": 0.9, "b_v1": 0.4})
+    assert "Tout le capital peut être engagé" in boosted["detail"] and "130" not in boosted["detail"]
+
+
+def test_arena_shows_why_a_qualified_twin_has_no_share(tmp_path):
+    """Option B (18/10/2026) : une qualifiée écartée comme doublon est signalée, avec le chevauchement."""
+    main, shadows, db = _setup(tmp_path)
+    db.set_value("doublons_principal", json.dumps({"test_v0": {"comme": "nf_court_v1.0.0", "chevauchement": 0.79}}))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    assert data["arene"][0]["doublon"] == {"comme": "nf_court_v1.0.0", "chevauchement": 0.79}
+    db.set_value("repartition_principal", json.dumps({"date": NOW.isoformat(), "parts": {"test_v0": 0.5}}))
+    assert dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)["arene"][0]["doublon"] is None
+    db.close()
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert "s.doublon.chevauchement" in template
+
+
+def test_strategy_sheet_is_computed_on_click_from_the_public_journal(tmp_path):
+    """Demande d'Etienne (21/10/2026) : toucher une stratégie de l'arène affiche ses courbes, calculées
+    au moment du clic à partir de son journal public ; rien n'est précalculé par le cycle."""
+    root = tmp_path / "depot"
+    (root / "config").mkdir(parents=True)
+    (root / "config" / "dashboard.yaml").write_text('journaux_url: "https://exemple.org/x/"\n', encoding="utf-8")
+    assert dashboard.fiche(root, {"arena": {}})["journaux"] == ""  # seule une adresse raw.githubusercontent.com
+    real = dashboard.fiche(ROOT, {})
+    assert real["journaux"].startswith("https://raw.githubusercontent.com/") and real["journaux"].endswith("/fantome/")
+    assert real["mise"]["paris_fictifs"] == 30 and real["garde_fou"]["confiance_min"] == 0.8
+    main, shadows, db = _setup(tmp_path)
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
+    db.close()
+    assert set(data["fiche"]) == {"journaux", "mise", "garde_fou"}  # des réglages, aucune courbe
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    assert "openFiche(holder, s)" in template and "!holder._done" in template  # chargé au premier toucher seulement
+
+
+def test_strategy_sheet_matches_the_python_figures(tmp_path):
+    """Les chiffres de la fiche (JavaScript) sont ceux de l'arène (Python) : opérations, résultat,
+    paris gagnés en plus de l'attendu, confiance (t et par jour), mise sur l'avantage mesuré."""
+    import shutil
+    import subprocess
+
+    import pytest
+    from polymarket_agent.arena import (Standing, confidence_percent, day_confidence, edge_figures,
+                                        measured_stake, t_stat, trade_returns)
+    from polymarket_agent.reporting import closed_trades
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("Node absent : calcul JavaScript non vérifiable ici")
+    path = tmp_path / "f.jsonl"
+    ghost = Ledger.create(path, KEY, tmp_path / "f.lock", "1000", now=NOW)
+    for i, (price, won) in enumerate([("0.80", True), ("0.85", False), ("0.90", True), ("0.82", True), ("0.88", True)]):
+        ghost.record_buy(op_id=f"b{i}", token_id=f"t{i}", market_id=f"m{i}", event_id=f"e{i}", outcome="Yes",
+                         shares="50", price=price, fee="0.1", strategy_id="f", strategy_version="0",
+                         now=NOW + timedelta(hours=i), extra={"est_probability": str(float(price) + 0.05)})
+        ghost.record_settlement(op_id=f"s{i}", token_id=f"t{i}", payout_per_share="1" if won else "0",
+                                resolution="test", now=NOW + timedelta(hours=i, minutes=30) + timedelta(days=i // 3))
+    ghost.heartbeat("c1", "OK", NOW + timedelta(days=2), total_estimated="1040")
+    template = (ROOT / "src" / "polymarket_agent" / "dashboard_template.html").read_text(encoding="utf-8")
+    rule = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))["mise_avantage_mesure"]
+    code = (f"var FICHE = {{mise: {json.dumps(rule)}}};\n"
+            + template[template.index("  function readJournal("):template.index("  // Courbe générique de la fiche")]
+            + "var J = readJournal(require('fs').readFileSync(process.argv[2], 'utf8')), P = perTrade(J), l = P[P.length - 1];"
+              "console.log(JSON.stringify({n: J.trades.length, pnl: J.trades.reduce(function (a, t) { return a + t.pnl; }, 0),"
+              "excess: l.excess, conf: l.conf, day: l.confDay, stake: l.stake, beats: J.beats.length}));")
+    script = tmp_path / "fiche.js"
+    script.write_text(code, encoding="utf-8")
+    js = json.loads(subprocess.run([node, str(script), str(path)], capture_output=True, text=True, check=True).stdout)
+    trades = closed_trades(read_entries(ghost))
+    excess, assumed = edge_figures(trades)
+    stake = measured_stake(Standing("f", len(trades), 0, 1000, 0, None, False, excess_wins=excess, assumed_edge=assumed), rule)
+    assert js["n"] == len(trades) == 5 and js["beats"] >= 1
+    assert js["pnl"] == pytest.approx(sum(float(t["pnl"]) for t in trades))
+    assert js["excess"] == pytest.approx(excess, abs=1e-4)
+    assert js["conf"] == pytest.approx(confidence_percent(t_stat(trade_returns(trades))), abs=0.6)
+    assert js["day"] == pytest.approx(100 * day_confidence(trades), abs=0.05)
+    assert js["stake"] == pytest.approx(100 * stake, abs=0.05)
+
+
+def test_principal_refusals_are_counted_by_strategy_and_reason(tmp_path):
+    """26/10/2026 : « taille inférieure au minimum du marché (5) » cachait `moins_de_cartes` copiée 0 fois sur 70 ; on compte les refus du
+    principal (ordres préfixés « P ») des 48 dernières heures, pas les 25 dernières décisions."""
+    from types import SimpleNamespace
+    main, shadows, db = _setup(tmp_path)
+
+    def decide(op_id, strategy, accepted, reasons, when):
+        proposal = SimpleNamespace(op_id=op_id, strategy_id=strategy, strategy_version="1", market_id="m1", token_id="t1", side="BUY",
+                                   est_probability=Decimal("0.6"), prob_low=Decimal("0.5"), prob_high=Decimal("0.7"), max_price=Decimal("0.6"),
+                                   shares=Decimal("0.5"), net_edge=Decimal("0.05"))
+        db.save_decision("c1", when, proposal, SimpleNamespace(accepted=accepted, reasons=reasons, checks={}))
+
+    now = NOW + timedelta(minutes=10)
+    small = ["taille inférieure au minimum du marché (5)"]
+    decide("Pa1", "moins_de_cartes", False, small, now - timedelta(hours=1))
+    decide("Pa2", "moins_de_cartes", False, small, now - timedelta(hours=5))
+    decide("Pa3", "moins_de_cartes", True, [], now - timedelta(hours=5))               # accepté : pas un refus
+    decide("a4", "moins_de_cartes", False, small, now - timedelta(hours=1))            # fantôme : pas le principal
+    decide("Pa5", "moins_de_cartes", False, small, now - timedelta(hours=60))          # trop ancien
+    decide("Pa6", "compteur_tweets", False, [], now - timedelta(hours=2))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=now)
+    assert data["refus_principal"] == {"moins_de_cartes": {small[0]: 2}, "compteur_tweets": {"(sans raison notée)": 1}}
+    # Écarts silencieux de la copie (27/10/2026, `main._remember_drops`) : ajoutés, ceux de plus de 48 h ignorés.
+    import json
+    db.set_value("ecartes_principal", json.dumps([[(now - timedelta(hours=3)).isoformat(), "favori_politique", "budget de la part épuisé", 2],
+                                                  [(now - timedelta(hours=60)).isoformat(), "favori_politique", "camp opposé", 1]]))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=now)
+    assert data["refus_principal"]["favori_politique"] == {"budget de la part épuisé": 2}
+    db.close()

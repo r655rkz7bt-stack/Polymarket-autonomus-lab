@@ -1,0 +1,10 @@
+[project]
+name = "polymarket-autonomous-lab"
+version = "0.1.0"
+description = "Agent autonome de recherche et de trading SIMULÉ sur Polymarket (aucun ordre réel)."
+requires-python = ">=3.11"
+dependencies = ["requests==2.32.5", "PyYAML==6.0.3"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
