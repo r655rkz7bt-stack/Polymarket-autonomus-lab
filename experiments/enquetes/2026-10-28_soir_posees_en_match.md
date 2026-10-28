@@ -26,6 +26,11 @@ Par heure depuis le coup d'envoi (ordres posés, un compte par jeton) : 0-1 h �
 après le coup d'envoi sont négatives. Avant le coup d'envoi : 20 jetons à plus de 12 h −18,7 %, 18 à 6-12 h −10,0 %, 11 à 3-6 h +28,5 %, 21 à 1-3 h −4,5 %, **15 dans l'heure qui précède −35,3 %** (8,5 gagnés pour 9,6 :
 trop peu pour étendre l'annulation à l'heure d'avant ; à relire à ~50 jetons). Immédiats : −4,9 % à +9,2 % avant, +3,7 % (0-1 h), −0,9 % (1-2 h), −4,6 % (2 h et plus, z −2,6 : à regarder, pas lié au mode posé).
 
+Par discipline (favoris « vainqueur » payés ≥ 0,78, un compte par jeton et par mode, marchés relus sur Gamma ; `scripts/cs2_favoris_28_10.py`) : **Counter-Strike : posés en match 32 jetons −16,4 % (23,5 gagnés pour 28,0, z −2,4)**,
+immédiats en match 71 jetons −3,4 % (z −0,8) ; **tennis : posés en match 208 jetons −5,4 % (z −2,1)**, immédiats en match 556 jetons −0,2 % (z −0,1) ; Dota 2 et LoL (≈ 30 jetons) sans effet. La perte de `nf_sport_patiente` sur Counter-Strike
+(43 paris, **−812 €, −25,6 %**, alors que sa partie tennis fait +679 €) et celle de la n° 1 (22 paris CS2, −325 €) viennent surtout de ces ordres posés en match : même mécanisme dans deux disciplines. Contrôle famille 2 (`scripts/meilleur_sport_28_10.py`) :
+sans son meilleur sport, la n° 1 fait +69 € (sans le tennis ATP/WTA, +338 €), `nf_sport_patiente` −574 € (sans son tennis), `nf_sport_18_24h` +192 € (sans le football) : le gain des fantômes du haut dépend d'un sport.
+
 ## Le principal est touché aussi
 Journal du principal : 22 achats posés en match (13 de `nf_sport_patiente_prix_850_875`, 8 de `nf_sport_patiente`, 1 de `nf_sport_patiente_6_24h`) : **16 gagnés pour
 19,1 attendus, −37,6 € sur 331 €** (−11,4 %). Petit en euros (mises de 4-5 €), mais c'est exactement la partie du champion qui perd. Chez les fantômes :

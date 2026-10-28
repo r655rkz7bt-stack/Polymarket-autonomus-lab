@@ -1,0 +1,30 @@
+== counter-strike (vainqueur, prix ≥ 0,78) : 121 jetons-modes
+   posés    avant     n=  8 gagnés   8.0/  6.7 z +1.28 par pari +20.5 %
+   posés    en match  n= 32 gagnés  23.5/ 28.0 z -2.43 par pari -16.4 %
+   immédiats avant     n= 10 gagnés   9.0/  8.5 z +0.44 par pari +5.5 %
+   immédiats en match  n= 71 gagnés  60.5/ 62.6 z -0.76 par pari -3.4 %
+== tennis (vainqueur, prix ≥ 0,78) : 813 jetons-modes
+   posés    avant     n=  5 gagnés   5.0/  4.5 z +0.78 par pari +12.1 %
+   posés    en match  n=208 gagnés 173.5/183.3 z -2.12 par pari -5.4 %
+   immédiats avant     n= 44 gagnés  39.0/ 37.8 z +0.51 par pari +2.9 %
+   immédiats en match  n=556 gagnés 483.0/483.7 z -0.09 par pari -0.2 %
+== dota (vainqueur, prix ≥ 0,78) : 31 jetons-modes
+   posés    avant     n=  1 gagnés   1.0/  0.9 z +0.29 par pari +8.7 %
+   posés    en match  n=  6 gagnés   6.0/  5.3 z +0.87 par pari +12.6 %
+   immédiats avant     n=  7 gagnés   6.0/  6.0 z +0.05 par pari +0.4 %
+   immédiats en match  n= 17 gagnés  16.0/ 15.4 z +0.48 par pari +3.7 %
+== lol (vainqueur, prix ≥ 0,78) : 19 jetons-modes
+   posés    avant     n=  1 gagnés   1.0/  0.8 z +0.47 par pari +22.0 %
+   posés    en match  n=  5 gagnés   5.0/  4.4 z +0.82 par pari +13.5 %
+   immédiats avant     n=  5 gagnés   4.0/  4.3 z -0.45 par pari -9.0 %
+   immédiats en match  n=  8 gagnés   8.0/  7.2 z +0.95 par pari +11.3 %
+== football (vainqueur, prix ≥ 0,78) : 133 jetons-modes
+   posés    avant     n= 12 gagnés   8.0/ 10.6 z -2.28 par pari -24.3 %
+   posés    en match  n=  1 gagnés   1.0/  0.8 z +0.44 par pari +19.0 %
+   immédiats avant     n= 59 gagnés  47.0/ 51.5 z -1.79 par pari -8.9 %
+   immédiats en match  n= 61 gagnés  60.0/ 58.4 z +1.03 par pari +2.8 %
+== autre (vainqueur, prix ≥ 0,78) : 54 jetons-modes
+   posés    avant     n=  4 gagnés   3.5/  3.5 z -0.00 par pari -0.1 %
+   posés    en match  n= 14 gagnés  10.0/ 12.3 z -1.93 par pari -18.6 %
+   immédiats avant     n= 16 gagnés  12.5/ 14.0 z -1.18 par pari -11.5 %
+   immédiats en match  n= 20 gagnés  18.0/ 17.9 z +0.05 par pari +0.6 %
