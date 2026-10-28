@@ -731,7 +731,10 @@ class Filtered:
             start, end = (int(h) for h in self.filters["heure_utc"])
             hour = now.astimezone(timezone.utc).hour
             if not (start <= hour < end if start <= end else hour >= start or hour < end):
-                return StrategyOutput()  # hors de la plage horaire : aucune nouvelle position
+                out = StrategyOutput()  # hors de la plage horaire : aucune nouvelle position
+                for _ in watchlist:  # 28/10/2026 : dit pourquoi (avant, 'abstentions {}' = impossible de distinguer une fille sourde d'une fille hors de son heure)
+                    out.abstain(f"hors de la plage horaire (heure_utc {start}-{end})")
+                return out
         self._count_field(watchlist)
         kept, dropped = [], {}
         for m in watchlist:
