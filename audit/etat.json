@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4621,
+  "principal": 4622,
   "fantome:calibration_patiente_v1.0.0": 2267,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2034,
@@ -169,7 +169,7 @@
   "fantome:rallies_non_favori_v1.0.0": 118,
   "fantome:rallies_non_v1.0.0": 130,
   "fantome:statu_quo_ia_v1.1.0": 104,
-  "fantome:contrer_crypto_audace_v1.0.0": 162,
+  "fantome:contrer_crypto_audace_v1.0.0": 164,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 197,
   "fantome:crypto_non_bon_marche_v1.0.0": 128,
   "fantome:compteur_tweets_12_18h_v1.0.0": 113,
@@ -186,7 +186,7 @@
   "fantome:compteur_tweets_oui_v1.0.0": 51,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 17
  },
- "verifiees": 13058,
+ "verifiees": 13059,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1790,9 +1790,9 @@
    "op_id": "settle-110240831742504611759845582001923606622298418654416991572620891299197772950323"
   }
  ],
- "derniere_execution": "2026-10-28T19:19:52+00:00",
+ "derniere_execution": "2026-10-28T19:23:10+00:00",
  "dernier_seq_reglements": {
-  "principal": 4621,
+  "principal": 4622,
   "fantome:calibration_patiente_v1.0.0": 2267,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2034,
@@ -1822,7 +1822,7 @@
   "fantome:loterie_meteo_v1.0.0": 1845,
   "fantome:suivre_politique_v1.0.0": 1821,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2435,
+  "fantome:nf_court_v1.0.0": 2438,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1731,
@@ -1839,7 +1839,7 @@
   "fantome:nm_prix_bas_v1.0.0": 1874,
   "fantome:nm_prix_haut_v1.0.0": 1690,
   "fantome:naive_favorite_large_v1.0.0": 1568,
-  "fantome:nf_sport_patiente_v1.0.0": 2139,
+  "fantome:nf_sport_patiente_v1.0.0": 2141,
   "fantome:favori_politique_nuit_v1.0.0": 1492,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
@@ -1941,7 +1941,7 @@
   "fantome:detroits_tranches_v1.0.0": 246,
   "fantome:mots_prononces_nfl_v1.1.0": 243,
   "fantome:detroits_marche_log_v1.0.0": 254,
-  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 295,
+  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 297,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 302,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 225,
   "fantome:nf_sport_non_900_925_v1.0.0": 264,
