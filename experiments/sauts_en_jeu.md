@@ -41,7 +41,7 @@ Mêmes 11 158 matchs (août-octobre) et leurs échanges ; à T = coup d'envoi �
 
 - **Outsiders** : perdent partout. Tennis −1,6 % à −7,0 % (H-1 à H-12), e-sport −10,4 % à −13,8 % (t par événement −3,6 à −4,6) ; sous 0,10 : −17 % à −68 %. Le biais favori-outsider est le même qu'ailleurs : jamais d'outsider sans source.
 - **Favoris du milieu en e-sport** : tennis rien (−3,2 % à +0,8 %). E-sport, tranche payée **0,65-0,80** : **H-3 +4,2 %** (1 178 paris, 891 gagnés pour 843,6, z +3,1, t par événement +2,4, « retenue » par `idea_test.verdict`),
-  **H-6 +4,5 %** (902 paris, z +2,8, t +2,3), H-1 −0,8 %, H-12 +0,1 % : seuls deux délais voisins, sur un seul relevé de trois mois. Les favoris à 0,55-0,65 perdent (−3 % à −4,7 %).
+  **H-6 +4,5 %** (902 paris, z +2,8, t +2,3), H-1 −0,8 %, H-12 +1,3 % : seuls deux délais voisins, sur un seul relevé de trois mois. Les favoris à 0,55-0,65 perdent (−3 % à −4,7 %).
 - **Robustesse** (`favoris_esport_robustesse.txt`) : CS2 porte l'essentiel (+6,7 %, z +3,3), Dota 2 +7,1 % (139 paris), LoL +0,7 %, Valorant −6,4 % ; août −0,4 %, septembre +7,2 %, octobre +6,1 % ; deuxième moitié des dates
   +5,6 % contre +2,7 % ; **sensible à la bande** (0,60-0,75 : +0,6 % ; 0,62-0,78 : +1,9 % ; 0,67-0,82 : +4,0 %) ; 50-50 comptés à 0,5 : +3,3 % / +3,6 % (z +2,6 / +2,4).
 - **Profondeur** (`favoris_esport_profondeur.txt`) : parts achetées par des preneurs à ≤ prix + 2 centimes dans l'heure : le gain tient avec la quantité (≥ 20 parts +4,9 %, ≥ 400 parts +5,9 %, ≥ 1 000 parts +4,7 % à H-3) :
@@ -59,7 +59,7 @@ Tranche payée 0,65-0,80, un pari par match, vrais échanges, frais payés (`res
 | H-1 | −0,8 % | −0,2 % (2 484 paris, z +0,5) | −0,4 % | +1,1 % (z +1,0) | +1,0 % |
 | **H-3** | **+4,2 %** (1 178, z +3,1) | **+0,5 %** (2 019, z +0,9) | +1,9 % (3 197, z +2,6, t +1,7) | +1,6 % (859, z +1,1) | +3,8 % (1 520, z +3,0, t +2,4) |
 | **H-6** | **+4,5 %** (902, z +2,8) | **−0,5 %** (1 638, z +0,2) | +1,3 % (2 540, z +1,8) | +1,6 % (635, z +1,0) | +4,1 % (1 136, z +2,8) |
-| H-12 | +0,1 % | −1,5 % (1 003) | −0,5 % | +2,3 % | +4,0 % (650, z +2,1) |
+| H-12 | +1,3 % | −1,5 % (1 003) | −0,5 % | +2,3 % | +4,0 % (650, z +2,1) |
 
 - Par mois, février-juillet, H-3 : +2,2 / −6,5 / +0,5 / −1,8 / **+12,2 (juin)** / −3,8 % : un seul mois fort, les autres autour de zéro. Les jeux : CS2 +1,6 %, Dota 2 +3,2 %, LoL −0,8 %, Valorant −2,1 %.
 - Les favoris à 0,55-0,65 perdent partout (tout le relevé : −4,8 % à H-3, t −3,2 ; −4,1 % à H-1) : près de 50-50, les frais et l'écart suffisent.
