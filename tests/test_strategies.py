@@ -28,11 +28,13 @@ def test_repository_config_loads():
     """Laboratoire dédié : une seule stratégie, le favori de sport payé 0,85-0,875 en mode patient (ordre posé)."""
     from polymarket_agent.strategy_engine import Filtered, PatientOrders
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert [s.strategy_id for s in loaded] == ["nf_sport_patiente_prix_850_875"]
+    assert [s.strategy_id for s in loaded] == ["nf_sport_patiente_prix_850_875", "nf_sport_patiente_prix_850_875_avant_match"]
     s = loaded[0]
     assert isinstance(s, PatientOrders) and isinstance(s.inner, Filtered)
     assert s.inner.filters == {"familles": ["sports"], "prix_min": 0.85, "prix_max": 0.875}
     assert s.params["kelly_fraction"] == 1
+    sister = loaded[1]  # sœur : ordres annulés au coup d'envoi, plus aucun nouvel ordre une fois le match commencé
+    assert sister.annuler_au_coup_d_envoi and sister.inner.filters["heures_min"] == 0
 
 
 def test_param_outside_bounds_is_refused():

@@ -1,6 +1,7 @@
 # CLAUDE.md — Laboratoire « favori de sport » (nf_sport_patiente_prix_850_875)
 
-Instructions permanentes. Lis-les au début de chaque session.
+Instructions permanentes. Lis-les au début de chaque session, puis `docs/CONTEXTE.md` (origine, chiffres, mises en
+garde, mise en service, prochaines étapes).
 Détails techniques et décisions : `ARCHITECTURE.md`.
 Cahier des charges complet : `docs/CAHIER_DES_CHARGES.md`.
 

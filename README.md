@@ -2,7 +2,8 @@
 
 Trading **simulé** sur Polymarket (1 000 € virtuels, jamais d'argent réel), centré sur une seule stratégie, exportée le
 28/10/2026 du laboratoire [Polymarket Autonomous Lab](https://github.com/r655rkz7bt-stack/Polymarket-autonomus-lab), où elle était
-n° 1 de l'arène (1 000 → 1 566 € fictifs en 7 jours, 74 opérations, confiance 98 %).
+n° 1 de l'arène (1 000 → 1 484 € fictifs en 8,3 jours, 85 opérations, confiance 90 %, au 28/10 23 h 48 UTC).
+**Tout le contexte (origine, chiffres, mises en garde, mise en service, prochaines étapes) : `docs/CONTEXTE.md`.**
 
 **La stratégie** : sur un match de sport ou d'e-sport, acheter le favori en posant un ordre 1 cran au-dessus du meilleur
 acheteur (on attend un vendeur, on paie moins cher, souvent sans frais), seulement quand le prix payé est entre 0,85 et 0,875.

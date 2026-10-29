@@ -62,4 +62,4 @@ def test_initialize_refuses_an_existing_journal():
 def test_secrets_only_where_needed():
     text, _, _, job = _load("cycle.yml")
     with_secrets = [s.get("name") for s in job["steps"] if "secrets." in str(s.get("env", {}))]
-    assert with_secrets == ["Cycle", "Rapports et feuille de mission (si le tableau de bord a été régénéré)"]
+    assert with_secrets == ["Cycle", "Rapport (si le tableau de bord a été régénéré)"]

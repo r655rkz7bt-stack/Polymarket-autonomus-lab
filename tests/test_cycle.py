@@ -325,7 +325,7 @@ def test_milestone_is_recorded_in_the_cycle(env, paths):
 
 def test_repository_config_competitors():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert [s.strategy_id for s in loaded] == ["nf_sport_patiente_prix_850_875"]  # laboratoire dédié
+    assert [s.strategy_id for s in loaded] == ["nf_sport_patiente_prix_850_875", "nf_sport_patiente_prix_850_875_avant_match"]  # laboratoire dédié
 
 
 def test_collector_crash_never_stops_the_cycle(env, paths):
