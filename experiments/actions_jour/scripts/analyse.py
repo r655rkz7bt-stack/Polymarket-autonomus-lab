@@ -25,7 +25,7 @@ def prep(sym):
         if 13 * 3600 + 1800 <= t - sod < 20 * 3600:        # séance régulière (EDT jusqu'au 1er novembre)
             days.setdefault(d, []).append((t, c))
     return days
-P = {s: prep(v) for s, v in SYM.items()}
+P = {v: prep(v) for v in SYM.values()}
 
 def etat(sym, d, T):
     """(cours au dernier bar fini avant T, clôture de la veille, σ restant) ou None."""
