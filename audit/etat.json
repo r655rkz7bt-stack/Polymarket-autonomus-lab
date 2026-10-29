@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4860,
+  "principal": 4861,
   "fantome:calibration_patiente_v1.0.0": 2306,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2066,
@@ -24,13 +24,13 @@
   "fantome:favori_politique_v1.0.0": 1685,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1678,
   "fantome:outsider_sport_patiente_v1.0.0": 1721,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2207,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2209,
   "fantome:contrer_crypto_v1.0.0": 2058,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1675,
   "fantome:loterie_meteo_v1.0.0": 1877,
   "fantome:suivre_politique_v1.0.0": 1855,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2560,
+  "fantome:nf_court_v1.0.0": 2562,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1780,
@@ -169,7 +169,7 @@
   "fantome:rallies_non_favori_v1.0.0": 155,
   "fantome:rallies_non_v1.0.0": 169,
   "fantome:statu_quo_ia_v1.1.0": 137,
-  "fantome:contrer_crypto_audace_v1.0.0": 240,
+  "fantome:contrer_crypto_audace_v1.0.0": 241,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 270,
   "fantome:crypto_non_bon_marche_v1.0.0": 182,
   "fantome:compteur_tweets_12_18h_v1.0.0": 145,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 26,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 38
  },
- "verifiees": 13674,
+ "verifiees": 13676,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-24829896469508704496618614046232932202835648253037794749363354100245359610047"
   }
  ],
- "derniere_execution": "2026-10-29T11:44:23+00:00",
+ "derniere_execution": "2026-10-29T11:49:17+00:00",
  "dernier_seq_reglements": {
-  "principal": 4860,
+  "principal": 4861,
   "fantome:calibration_patiente_v1.0.0": 2306,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2066,
@@ -1963,7 +1963,7 @@
   "fantome:rallies_non_favori_v1.0.0": 155,
   "fantome:rallies_non_v1.0.0": 169,
   "fantome:statu_quo_ia_v1.1.0": 137,
-  "fantome:contrer_crypto_audace_v1.0.0": 240,
+  "fantome:contrer_crypto_audace_v1.0.0": 241,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 270,
   "fantome:crypto_non_bon_marche_v1.0.0": 182,
   "fantome:compteur_tweets_12_18h_v1.0.0": 145,
