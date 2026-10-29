@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4726,
+  "principal": 4727,
   "fantome:calibration_patiente_v1.0.0": 2285,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2047,
@@ -42,9 +42,9 @@
   "fantome:nf_sport_v1.0.0": 2729,
   "fantome:nm_court_v1.0.0": 1918,
   "fantome:nm_crypto_v1.0.0": 1642,
-  "fantome:nm_hors_crypto_v1.0.0": 1898,
+  "fantome:nm_hors_crypto_v1.0.0": 1907,
   "fantome:nm_long_v1.0.0": 1767,
-  "fantome:nm_prix_bas_v1.0.0": 1911,
+  "fantome:nm_prix_bas_v1.0.0": 1920,
   "fantome:nm_prix_haut_v1.0.0": 1705,
   "fantome:naive_favorite_large_v1.0.0": 1584,
   "fantome:nf_sport_patiente_v1.0.0": 2217,
@@ -169,8 +169,8 @@
   "fantome:rallies_non_favori_v1.0.0": 131,
   "fantome:rallies_non_v1.0.0": 147,
   "fantome:statu_quo_ia_v1.1.0": 118,
-  "fantome:contrer_crypto_audace_v1.0.0": 196,
-  "fantome:contrer_crypto_patiente_audace_v1.0.0": 244,
+  "fantome:contrer_crypto_audace_v1.0.0": 201,
+  "fantome:contrer_crypto_patiente_audace_v1.0.0": 249,
   "fantome:crypto_non_bon_marche_v1.0.0": 156,
   "fantome:compteur_tweets_12_18h_v1.0.0": 126,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 95,
@@ -179,7 +179,7 @@
   "fantome:moins_de_kills_v1.0.0": 82,
   "fantome:suivre_inities_v1.0.0": 69,
   "fantome:classement_appstore_v1.0.0": 63,
-  "fantome:ia_oui_sorties_v1.0.0": 85,
+  "fantome:ia_oui_sorties_v1.0.0": 87,
   "fantome:moins_de_cartes_franche_v1.0.0": 92,
   "fantome:tranche_centrale_non_v1.0.0": 62,
   "fantome:suivre_inities_seul_v1.0.0": 52,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 8,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 8
  },
- "verifiees": 13346,
+ "verifiees": 13351,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-45934373132097099322690340393763550996850995087704237156765754433974481020836"
   }
  ],
- "derniere_execution": "2026-10-29T02:17:51+00:00",
+ "derniere_execution": "2026-10-29T02:24:14+00:00",
  "dernier_seq_reglements": {
-  "principal": 4726,
+  "principal": 4727,
   "fantome:calibration_patiente_v1.0.0": 2285,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2047,
