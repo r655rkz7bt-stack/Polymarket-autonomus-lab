@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4843,
+  "principal": 4844,
   "fantome:calibration_patiente_v1.0.0": 2303,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2063,
@@ -1792,9 +1792,9 @@
    "op_id": "settle-24829896469508704496618614046232932202835648253037794749363354100245359610047"
   }
  ],
- "derniere_execution": "2026-10-29T10:22:48+00:00",
+ "derniere_execution": "2026-10-29T10:27:42+00:00",
  "dernier_seq_reglements": {
-  "principal": 4843,
+  "principal": 4844,
   "fantome:calibration_patiente_v1.0.0": 2303,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2063,
@@ -1833,7 +1833,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 2821,
+  "fantome:nf_sport_v1.0.0": 2823,
   "fantome:nm_court_v1.0.0": 1946,
   "fantome:nm_crypto_v1.0.0": 1658,
   "fantome:nm_hors_crypto_v1.0.0": 1942,
@@ -1913,7 +1913,7 @@
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 636,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 613,
-  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 977,
+  "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 979,
   "fantome:compteur_tweets_non_patiente_v1.0.0": 503,
   "fantome:mots_prononces_patiente_v1.0.0": 481,
   "fantome:cpi_tranches_v1.0.0": 376,
@@ -1932,7 +1932,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 634,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 575,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 309,
-  "fantome:moins_de_cartes_v1.0.0": 606,
+  "fantome:moins_de_cartes_v1.0.0": 608,
   "fantome:non_aux_drames_v1.0.0": 392,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 526,
@@ -1974,7 +1974,7 @@
   "fantome:suivre_inities_v1.0.0": 85,
   "fantome:classement_appstore_v1.0.0": 79,
   "fantome:ia_oui_sorties_v1.0.0": 110,
-  "fantome:moins_de_cartes_franche_v1.0.0": 128,
+  "fantome:moins_de_cartes_franche_v1.0.0": 130,
   "fantome:tranche_centrale_non_v1.0.0": 81,
   "fantome:suivre_inities_seul_v1.0.0": 68,
   "fantome:compteur_tweets_oui_v1.0.0": 81,
