@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-29 (passage chercheur du matin, 05 h 55 → 06 h 06 UTC (heures de la machine), durée visée 135 min non atteinte : le temps réel mesuré est de 11 min ; pistes restantes en attente de données)
+
+- **Enquête** (fiche : `enquetes/2026-10-29_matin_ce_qui_ne_tourne_plus.md`, famille 6). Aucun défaut : 537 marchés de positions ouvertes relus sur Gamma, les 215 positions sur marchés clos sont dans des portefeuilles éteints ; 53 stratégies muettes = filtres en attente ; `moins_de_cartes` +26,7 % avant le 25/10, −10,1 % depuis (47 paris).
+- **Recherche** (fiche : `actions_jour.md`) : « Up or Down » du jour des actions/indices, 1 516 marchés, 484 769 échanges, 18 réglages : **écartée** (signe qui change d'une heure à l'autre).
+- **Arène** : rien ajouté ni retiré (piste écartée, pas d'idée plausible neuve de ce passage).
+- **Leçons** : un effet à +25 % sur un réglage entouré de −40 % et +15 % est du bruit ; compter les réglages essayés.
+- **Reste ouvert** : SPX/SPY seuls (liquides) à regarder ; CDC rougeole toujours 4 588 (22/10) ; élection du 03/11 (sources de comptage).
+
 ## 2026-10-28 (passage chercheur de nuit, 20 h 55 → 22 h 37 UTC, 102 min ; durée visée 135 min : le reste attendait des relevés qui n'existent pas encore — CDC rougeole toujours 4 588 au 22/10, essence, NBA de janvier, date de lancement des jetons, sources de comptage d'élection bloquées)
 
 - **Enquête** (fiche : `enquetes/2026-10-28_soir_posees_en_match.md`, famille 5 + constat « à regarder » `posees_en_jeu`). Aucune obligation grave. **Défaut trouvé : les ordres posés servis EN MATCH perdent 9,8 % par pari** (320 jetons, un compte par jeton, 251,0 gagnés pour 267,8,
