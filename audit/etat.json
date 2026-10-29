@@ -179,7 +179,7 @@
   "fantome:moins_de_kills_v1.0.0": 119,
   "fantome:suivre_inities_v1.0.0": 102,
   "fantome:classement_appstore_v1.0.0": 96,
-  "fantome:ia_oui_sorties_v1.0.0": 128,
+  "fantome:ia_oui_sorties_v1.0.0": 129,
   "fantome:moins_de_cartes_franche_v1.0.0": 183,
   "fantome:tranche_centrale_non_v1.0.0": 100,
   "fantome:suivre_inities_seul_v1.0.0": 85,
@@ -1792,9 +1792,9 @@
    "op_id": "settle-58136261951862175445102504706114328750592831258270726886149303130354737708456"
   }
  ],
- "derniere_execution": "2026-10-29T19:03:50+00:00",
+ "derniere_execution": "2026-10-29T19:09:51+00:00",
  "dernier_seq_reglements": {
-  "principal": 4962,
+  "principal": 4963,
   "fantome:calibration_patiente_v1.0.0": 2320,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2080,
@@ -1833,7 +1833,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3002,
+  "fantome:nf_sport_v1.0.0": 3004,
   "fantome:nm_court_v1.0.0": 1969,
   "fantome:nm_crypto_v1.0.0": 1676,
   "fantome:nm_hors_crypto_v1.0.0": 1966,
@@ -1895,7 +1895,7 @@
   "fantome:predictit_reference_v1.0.0": 629,
   "fantome:fatigue_nhl_v1.0.0": 677,
   "fantome:mots_nouveaux_v1.0.0": 763,
-  "fantome:mots_prononces_v1.0.0": 826,
+  "fantome:mots_prononces_v1.0.0": 828,
   "fantome:crypto_threshold_24_72h_v1.0.0": 584,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 632,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 949,
@@ -1973,7 +1973,7 @@
   "fantome:moins_de_kills_v1.0.0": 119,
   "fantome:suivre_inities_v1.0.0": 102,
   "fantome:classement_appstore_v1.0.0": 96,
-  "fantome:ia_oui_sorties_v1.0.0": 128,
+  "fantome:ia_oui_sorties_v1.0.0": 129,
   "fantome:moins_de_cartes_franche_v1.0.0": 183,
   "fantome:tranche_centrale_non_v1.0.0": 100,
   "fantome:suivre_inities_seul_v1.0.0": 85,
@@ -1982,5 +1982,5 @@
   "fantome:favori_esport_milieu_v1.0.0": 42,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 56
  },
- "reglements_verifies": 8095
+ "reglements_verifies": 8096
 }
