@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 4740,
+  "principal": 4741,
   "fantome:calibration_patiente_v1.0.0": 2288,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2049,
@@ -25,7 +25,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1658,
   "fantome:outsider_sport_patiente_v1.0.0": 1704,
   "fantome:contrer_crypto_patiente_v1.0.0": 2164,
-  "fantome:contrer_crypto_v1.0.0": 2026,
+  "fantome:contrer_crypto_v1.0.0": 2028,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1658,
   "fantome:loterie_meteo_v1.0.0": 1860,
   "fantome:suivre_politique_v1.0.0": 1837,
@@ -169,13 +169,13 @@
   "fantome:rallies_non_favori_v1.0.0": 135,
   "fantome:rallies_non_v1.0.0": 152,
   "fantome:statu_quo_ia_v1.1.0": 120,
-  "fantome:contrer_crypto_audace_v1.0.0": 202,
+  "fantome:contrer_crypto_audace_v1.0.0": 204,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 251,
   "fantome:crypto_non_bon_marche_v1.0.0": 162,
   "fantome:compteur_tweets_12_18h_v1.0.0": 128,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 97,
   "fantome:compteur_tweets_72_168h_v1.0.0": 101,
-  "fantome:crypto_non_10_20_v1.0.0": 136,
+  "fantome:crypto_non_10_20_v1.0.0": 138,
   "fantome:moins_de_kills_v1.0.0": 85,
   "fantome:suivre_inities_v1.0.0": 71,
   "fantome:classement_appstore_v1.0.0": 65,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 10,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 10
  },
- "verifiees": 13378,
+ "verifiees": 13381,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-78093855470488135545682540499663554295842338442537936367660278267717628278304"
   }
  ],
- "derniere_execution": "2026-10-29T03:19:11+00:00",
+ "derniere_execution": "2026-10-29T03:23:25+00:00",
  "dernier_seq_reglements": {
-  "principal": 4740,
+  "principal": 4741,
   "fantome:calibration_patiente_v1.0.0": 2288,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2049,
