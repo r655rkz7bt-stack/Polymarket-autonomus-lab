@@ -1,13 +1,13 @@
 {
  "dernier_seq": {
-  "principal": 4785,
+  "principal": 4786,
   "fantome:calibration_patiente_v1.0.0": 2295,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2055,
   "fantome:crypto_threshold_v1.0.0": 2074,
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2138,
+  "fantome:naive_favorite_v1.0.0": 2140,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
@@ -33,7 +33,7 @@
   "fantome:nf_court_v1.0.0": 2543,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 1764,
+  "fantome:nf_moyen_v1.0.0": 1766,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1659,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 16,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 17
  },
- "verifiees": 13481,
+ "verifiees": 13483,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-19812110576863506579424552629536431517575661043014918191073262551463949089841"
   }
  ],
- "derniere_execution": "2026-10-29T06:29:09+00:00",
+ "derniere_execution": "2026-10-29T06:32:59+00:00",
  "dernier_seq_reglements": {
-  "principal": 4785,
+  "principal": 4786,
   "fantome:calibration_patiente_v1.0.0": 2295,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2055,
@@ -1827,13 +1827,13 @@
   "fantome:nf_court_v1.0.0": 2543,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 1768,
+  "fantome:nf_moyen_v1.0.0": 1770,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1659,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 2785,
+  "fantome:nf_sport_v1.0.0": 2787,
   "fantome:nm_court_v1.0.0": 1938,
   "fantome:nm_crypto_v1.0.0": 1650,
   "fantome:nm_hors_crypto_v1.0.0": 1933,
