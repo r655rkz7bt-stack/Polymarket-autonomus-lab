@@ -1792,9 +1792,9 @@
    "op_id": "settle-91406975897424350064278820159648953789502517228063527529232368352020640125764"
   }
  ],
- "derniere_execution": "2026-10-30T13:54:08+00:00",
+ "derniere_execution": "2026-10-30T13:57:57+00:00",
  "dernier_seq_reglements": {
-  "principal": 5267,
+  "principal": 5268,
   "fantome:calibration_patiente_v1.0.0": 2356,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2118,
@@ -1914,7 +1914,7 @@
   "fantome:nf_sport_football_v1.0.0": 699,
   "fantome:nf_sport_patiente_72_168h_850_875_v1.0.0": 666,
   "fantome:nf_sport_patiente_tennis_875_900_v1.0.0": 1081,
-  "fantome:compteur_tweets_non_patiente_v1.0.0": 577,
+  "fantome:compteur_tweets_non_patiente_v1.0.0": 580,
   "fantome:mots_prononces_patiente_v1.0.0": 534,
   "fantome:cpi_tranches_v1.0.0": 429,
   "fantome:nf_sport_patiente_tennis_850_875_v1.0.0": 517,
