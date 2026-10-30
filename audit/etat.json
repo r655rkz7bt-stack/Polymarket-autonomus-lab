@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5234,
+  "principal": 5235,
   "fantome:calibration_patiente_v1.0.0": 2351,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2113,
@@ -25,7 +25,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1723,
   "fantome:outsider_sport_patiente_v1.0.0": 1766,
   "fantome:contrer_crypto_patiente_v1.0.0": 2376,
-  "fantome:contrer_crypto_v1.0.0": 2191,
+  "fantome:contrer_crypto_v1.0.0": 2193,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1720,
   "fantome:loterie_meteo_v1.0.0": 1922,
   "fantome:suivre_politique_v1.0.0": 1907,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 75,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 92
  },
- "verifiees": 14621,
+ "verifiees": 14622,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-77336557951645707816139083483066157388625078847727324120568203821147449184703"
   }
  ],
- "derniere_execution": "2026-10-30T11:19:05+00:00",
+ "derniere_execution": "2026-10-30T11:22:40+00:00",
  "dernier_seq_reglements": {
-  "principal": 5234,
+  "principal": 5235,
   "fantome:calibration_patiente_v1.0.0": 2351,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2113,
