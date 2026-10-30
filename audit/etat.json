@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5123,
+  "principal": 5124,
   "fantome:calibration_patiente_v1.0.0": 2338,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2100,
@@ -47,7 +47,7 @@
   "fantome:nm_prix_bas_v1.0.0": 2026,
   "fantome:nm_prix_haut_v1.0.0": 1766,
   "fantome:naive_favorite_large_v1.0.0": 1638,
-  "fantome:nf_sport_patiente_v1.0.0": 2485,
+  "fantome:nf_sport_patiente_v1.0.0": 2486,
   "fantome:favori_politique_nuit_v1.0.0": 1556,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
@@ -141,7 +141,7 @@
   "fantome:moins_de_cartes_v1.0.0": 695,
   "fantome:non_aux_drames_v1.0.0": 439,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 578,
+  "fantome:vague_volume_suivre_v1.0.0": 579,
   "fantome:vague_volume_suivre_x5_v1.0.0": 555,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 482,
   "fantome:saison_non_v1.0.0": 337,
@@ -1792,9 +1792,9 @@
    "op_id": "settle-80852652194954814107864467478408108378107116496314730033344542917939410417386"
   }
  ],
- "derniere_execution": "2026-10-30T04:38:37+00:00",
+ "derniere_execution": "2026-10-30T04:43:01+00:00",
  "dernier_seq_reglements": {
-  "principal": 5123,
+  "principal": 5124,
   "fantome:calibration_patiente_v1.0.0": 2338,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2100,
@@ -1841,7 +1841,7 @@
   "fantome:nm_prix_bas_v1.0.0": 2026,
   "fantome:nm_prix_haut_v1.0.0": 1766,
   "fantome:naive_favorite_large_v1.0.0": 1638,
-  "fantome:nf_sport_patiente_v1.0.0": 2485,
+  "fantome:nf_sport_patiente_v1.0.0": 2486,
   "fantome:favori_politique_nuit_v1.0.0": 1556,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
@@ -1935,7 +1935,7 @@
   "fantome:moins_de_cartes_v1.0.0": 695,
   "fantome:non_aux_drames_v1.0.0": 439,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 578,
+  "fantome:vague_volume_suivre_v1.0.0": 579,
   "fantome:vague_volume_suivre_x5_v1.0.0": 555,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 482,
   "fantome:saison_non_v1.0.0": 337,
