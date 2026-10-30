@@ -1792,9 +1792,9 @@
    "op_id": "settle-91406975897424350064278820159648953789502517228063527529232368352020640125764"
   }
  ],
- "derniere_execution": "2026-10-30T13:34:12+00:00",
+ "derniere_execution": "2026-10-30T13:37:40+00:00",
  "dernier_seq_reglements": {
-  "principal": 5262,
+  "principal": 5264,
   "fantome:calibration_patiente_v1.0.0": 2355,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2117,
@@ -1886,7 +1886,7 @@
   "fantome:marches_jumeaux_v1.0.0": 664,
   "fantome:outsiders_surcotes_v1.0.0": 621,
   "fantome:paire_oui_non_v1.0.0": 664,
-  "fantome:compteur_tweets_v1.0.0": 816,
+  "fantome:compteur_tweets_v1.0.0": 818,
   "fantome:cotes_tennis_v1.0.0": 656,
   "fantome:football_trois_issues_v1.0.0": 656,
   "fantome:futurs_bookmakers_v1.0.0": 656,
@@ -1966,7 +1966,7 @@
   "fantome:contrer_crypto_audace_v1.0.0": 315,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 329,
   "fantome:crypto_non_bon_marche_v1.0.0": 286,
-  "fantome:compteur_tweets_12_18h_v1.0.0": 208,
+  "fantome:compteur_tweets_12_18h_v1.0.0": 210,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 170,
   "fantome:compteur_tweets_72_168h_v1.0.0": 176,
   "fantome:crypto_non_10_20_v1.0.0": 259,
