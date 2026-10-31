@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5530,
+  "principal": 5531,
   "fantome:calibration_patiente_v1.0.0": 2391,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2153,
@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1962,
   "fantome:suivre_politique_v1.0.0": 1951,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2883,
+  "fantome:nf_court_v1.0.0": 2885,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1892,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3436,
+  "fantome:nf_sport_v1.0.0": 3438,
   "fantome:nm_court_v1.0.0": 2074,
   "fantome:nm_crypto_v1.0.0": 1752,
   "fantome:nm_hors_crypto_v1.0.0": 2113,
@@ -103,7 +103,7 @@
   "fantome:mots_nouveaux_v1.0.0": 840,
   "fantome:mots_prononces_v1.0.0": 923,
   "fantome:crypto_threshold_24_72h_v1.0.0": 655,
-  "fantome:crypto_threshold_prix_bas_v1.0.0": 731,
+  "fantome:crypto_threshold_prix_bas_v1.0.0": 734,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1105,
   "fantome:nf_tennis_debut_match_v1.0.0": 935,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1284,
@@ -157,7 +157,7 @@
   "fantome:seismes_marche_v1.0.0": 392,
   "fantome:box_office_favori_v1.0.0": 329,
   "fantome:spacex_cumul_v1.0.0": 315,
-  "fantome:toucher_metaux_v1.0.0": 324,
+  "fantome:toucher_metaux_v1.0.0": 325,
   "fantome:candidats_non_v1.0.0": 302,
   "fantome:compteur_truth_v1.0.0": 320,
   "fantome:moins_de_cartes_bo5_v1.0.0": 281,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 115,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 138
  },
- "verifiees": 15124,
+ "verifiees": 15128,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-24966329966464850231269012030690277622788792723728924314884010836163170521547"
   }
  ],
- "derniere_execution": "2026-10-31T08:33:52+00:00",
+ "derniere_execution": "2026-10-31T08:37:48+00:00",
  "dernier_seq_reglements": {
-  "principal": 5530,
+  "principal": 5531,
   "fantome:calibration_patiente_v1.0.0": 2391,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2153,
@@ -1951,7 +1951,7 @@
   "fantome:seismes_marche_v1.0.0": 392,
   "fantome:box_office_favori_v1.0.0": 329,
   "fantome:spacex_cumul_v1.0.0": 315,
-  "fantome:toucher_metaux_v1.0.0": 324,
+  "fantome:toucher_metaux_v1.0.0": 325,
   "fantome:candidats_non_v1.0.0": 302,
   "fantome:compteur_truth_v1.0.0": 320,
   "fantome:moins_de_cartes_bo5_v1.0.0": 281,
