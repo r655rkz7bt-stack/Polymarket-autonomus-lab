@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5575,
+  "principal": 5576,
   "fantome:calibration_patiente_v1.0.0": 2398,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2160,
@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 729,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 673,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 404,
-  "fantome:moins_de_cartes_v1.0.0": 814,
+  "fantome:moins_de_cartes_v1.0.0": 815,
   "fantome:non_aux_drames_v1.0.0": 509,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 656,
@@ -161,7 +161,7 @@
   "fantome:candidats_non_v1.0.0": 309,
   "fantome:compteur_truth_v1.0.0": 327,
   "fantome:moins_de_cartes_bo5_v1.0.0": 288,
-  "fantome:moins_de_cartes_lol_v1.0.0": 308,
+  "fantome:moins_de_cartes_lol_v1.0.0": 309,
   "fantome:detroits_non_normal_v1.0.0": 273,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 454,
   "fantome:mentions_non_outsider_v1.0.0": 252,
@@ -1793,9 +1793,9 @@
    "op_id": "settle-19483937434467479220108169182510129197311028067786468507884499961811444121492"
   }
  ],
- "derniere_execution": "2026-10-31T11:58:45+00:00",
+ "derniere_execution": "2026-10-31T12:06:01+00:00",
  "dernier_seq_reglements": {
-  "principal": 5575,
+  "principal": 5576,
   "fantome:calibration_patiente_v1.0.0": 2398,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2160,
@@ -1933,7 +1933,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 729,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 673,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 404,
-  "fantome:moins_de_cartes_v1.0.0": 814,
+  "fantome:moins_de_cartes_v1.0.0": 815,
   "fantome:non_aux_drames_v1.0.0": 509,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 656,
@@ -1956,7 +1956,7 @@
   "fantome:candidats_non_v1.0.0": 309,
   "fantome:compteur_truth_v1.0.0": 327,
   "fantome:moins_de_cartes_bo5_v1.0.0": 288,
-  "fantome:moins_de_cartes_lol_v1.0.0": 308,
+  "fantome:moins_de_cartes_lol_v1.0.0": 309,
   "fantome:detroits_non_normal_v1.0.0": 273,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 454,
   "fantome:mentions_non_outsider_v1.0.0": 252,
