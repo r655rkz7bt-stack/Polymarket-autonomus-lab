@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5582,
+  "principal": 5583,
   "fantome:calibration_patiente_v1.0.0": 2399,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2161,
@@ -1793,9 +1793,9 @@
    "op_id": "settle-28778220448378360839965929550394772902442977379662097175726829629085476874546"
   }
  ],
- "derniere_execution": "2026-10-31T12:27:44+00:00",
+ "derniere_execution": "2026-10-31T12:34:16+00:00",
  "dernier_seq_reglements": {
-  "principal": 5582,
+  "principal": 5583,
   "fantome:calibration_patiente_v1.0.0": 2399,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2161,
@@ -1834,7 +1834,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3482,
+  "fantome:nf_sport_v1.0.0": 3484,
   "fantome:nm_court_v1.0.0": 2083,
   "fantome:nm_crypto_v1.0.0": 1760,
   "fantome:nm_hors_crypto_v1.0.0": 2128,
@@ -1909,7 +1909,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 702,
   "fantome:nf_court_football_soir_v1.0.0": 755,
   "fantome:nf_court_soir_v1.0.0": 764,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 982,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 984,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 749,
@@ -1958,7 +1958,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 289,
   "fantome:moins_de_cartes_lol_v1.0.0": 309,
   "fantome:detroits_non_normal_v1.0.0": 274,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 455,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 457,
   "fantome:mentions_non_outsider_v1.0.0": 253,
   "fantome:mentions_non_v1.0.0": 251,
   "fantome:rallies_non_favori_v1.0.0": 258,
@@ -1981,8 +1981,8 @@
   "fantome:compteur_tweets_oui_v1.0.0": 197,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 157,
   "fantome:favori_esport_milieu_v1.0.0": 124,
-  "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 147,
+  "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 149,
   "fantome:sieges_coherence_v1.0.0": 9
  },
- "reglements_verifies": 9131
+ "reglements_verifies": 9132
 }
