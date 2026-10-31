@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5678,
+  "principal": 5679,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2173,
@@ -131,10 +131,10 @@
   "fantome:jobs_favori_non_v1.0.0": 464,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 961,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1074,
+  "fantome:nf_sport_18_24h_v1.0.0": 1076,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 463,
-  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 838,
+  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 840,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
@@ -189,7 +189,7 @@
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 163,
   "fantome:sieges_coherence_v1.0.0": 21
  },
- "verifiees": 15387,
+ "verifiees": 15389,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1793,9 +1793,9 @@
    "op_id": "settle-75875866541154566753242167377031356026051546728654392074453620408413457198095"
   }
  ],
- "derniere_execution": "2026-10-31T18:27:44+00:00",
+ "derniere_execution": "2026-10-31T18:33:58+00:00",
  "dernier_seq_reglements": {
-  "principal": 5678,
+  "principal": 5679,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2173,
