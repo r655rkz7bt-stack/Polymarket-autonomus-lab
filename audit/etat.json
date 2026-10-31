@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5740,
+  "principal": 5741,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2180,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2735,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2737,
   "fantome:nf_sport_sans_fin_v1.0.0": 1730,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 859,
+  "fantome:moins_de_cartes_v1.0.0": 861,
   "fantome:non_aux_drames_v1.0.0": 531,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 682,
@@ -189,7 +189,7 @@
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 173,
   "fantome:sieges_coherence_v1.0.0": 29
  },
- "verifiees": 15492,
+ "verifiees": 15493,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1793,9 +1793,9 @@
    "op_id": "settle-66093947480123855992630867316516038882946511472511026727970771245105804671513"
   }
  ],
- "derniere_execution": "2026-10-31T22:28:14+00:00",
+ "derniere_execution": "2026-10-31T22:33:14+00:00",
  "dernier_seq_reglements": {
-  "principal": 5740,
+  "principal": 5743,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2180,
@@ -1825,7 +1825,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2993,
+  "fantome:nf_court_v1.0.0": 2995,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1938,
@@ -1834,7 +1834,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3660,
+  "fantome:nf_sport_v1.0.0": 3663,
   "fantome:nm_court_v1.0.0": 2112,
   "fantome:nm_crypto_v1.0.0": 1779,
   "fantome:nm_hors_crypto_v1.0.0": 2168,
@@ -1847,7 +1847,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2737,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2739,
   "fantome:nf_sport_sans_fin_v1.0.0": 1730,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1887,7 +1887,7 @@
   "fantome:marches_jumeaux_v1.0.0": 715,
   "fantome:outsiders_surcotes_v1.0.0": 621,
   "fantome:paire_oui_non_v1.0.0": 715,
-  "fantome:compteur_tweets_v1.0.0": 918,
+  "fantome:compteur_tweets_v1.0.0": 920,
   "fantome:cotes_tennis_v1.0.0": 707,
   "fantome:football_trois_issues_v1.0.0": 707,
   "fantome:futurs_bookmakers_v1.0.0": 707,
@@ -1926,14 +1926,14 @@
   "fantome:jobs_favori_non_v1.0.0": 471,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 968,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1129,
+  "fantome:nf_sport_18_24h_v1.0.0": 1132,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 470,
-  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 867,
+  "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 870,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 859,
+  "fantome:moins_de_cartes_v1.0.0": 861,
   "fantome:non_aux_drames_v1.0.0": 531,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 682,
@@ -1984,5 +1984,5 @@
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 173,
   "fantome:sieges_coherence_v1.0.0": 29
  },
- "reglements_verifies": 9531
+ "reglements_verifies": 9533
 }
