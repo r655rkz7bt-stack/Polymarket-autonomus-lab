@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5465,
+  "principal": 5466,
   "fantome:calibration_patiente_v1.0.0": 2382,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2144,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3406,
+  "fantome:nf_sport_v1.0.0": 3408,
   "fantome:nm_court_v1.0.0": 2065,
   "fantome:nm_crypto_v1.0.0": 1743,
   "fantome:nm_hors_crypto_v1.0.0": 2102,
@@ -79,7 +79,7 @@
   "fantome:nf_sport_patiente_tennis_v1.0.0": 1204,
   "fantome:nf_tennis_prix_bas_v1.0.0": 965,
   "fantome:nf_tennis_v1.0.0": 466,
-  "fantome:crypto_threshold_non_v1.0.0": 748,
+  "fantome:crypto_threshold_non_v1.0.0": 750,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 757,
   "fantome:nf_sport_patiente_matin_v1.0.0": 916,
   "fantome:apres_echeance_v1.0.0": 775,
@@ -103,7 +103,7 @@
   "fantome:mots_nouveaux_v1.0.0": 831,
   "fantome:mots_prononces_v1.0.0": 913,
   "fantome:crypto_threshold_24_72h_v1.0.0": 646,
-  "fantome:crypto_threshold_prix_bas_v1.0.0": 718,
+  "fantome:crypto_threshold_prix_bas_v1.0.0": 720,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1094,
   "fantome:nf_tennis_debut_match_v1.0.0": 926,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1275,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 106,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 129
  },
- "verifiees": 15068,
+ "verifiees": 15071,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-110979371434007916288891970235810401490866182787366672179101294970261387370644"
   }
  ],
- "derniere_execution": "2026-10-31T03:57:31+00:00",
+ "derniere_execution": "2026-10-31T04:06:40+00:00",
  "dernier_seq_reglements": {
-  "principal": 5465,
+  "principal": 5466,
   "fantome:calibration_patiente_v1.0.0": 2382,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2144,
@@ -1824,7 +1824,7 @@
   "fantome:loterie_meteo_v1.0.0": 1953,
   "fantome:suivre_politique_v1.0.0": 1942,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2860,
+  "fantome:nf_court_v1.0.0": 2863,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1883,
@@ -1973,7 +1973,7 @@
   "fantome:moins_de_kills_v1.0.0": 199,
   "fantome:suivre_inities_v1.0.0": 164,
   "fantome:classement_appstore_v1.0.0": 158,
-  "fantome:ia_oui_sorties_v1.0.0": 200,
+  "fantome:ia_oui_sorties_v1.0.0": 202,
   "fantome:moins_de_cartes_franche_v1.0.0": 304,
   "fantome:tranche_centrale_non_v1.0.0": 173,
   "fantome:suivre_inities_seul_v1.0.0": 147,
