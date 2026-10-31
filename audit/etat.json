@@ -161,7 +161,7 @@
   "fantome:candidats_non_v1.0.0": 308,
   "fantome:compteur_truth_v1.0.0": 326,
   "fantome:moins_de_cartes_bo5_v1.0.0": 287,
-  "fantome:moins_de_cartes_lol_v1.0.0": 307,
+  "fantome:moins_de_cartes_lol_v1.0.0": 308,
   "fantome:detroits_non_normal_v1.0.0": 272,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 453,
   "fantome:mentions_non_outsider_v1.0.0": 251,
@@ -1793,9 +1793,9 @@
    "op_id": "settle-19483937434467479220108169182510129197311028067786468507884499961811444121492"
   }
  ],
- "derniere_execution": "2026-10-31T11:29:07+00:00",
+ "derniere_execution": "2026-10-31T11:33:26+00:00",
  "dernier_seq_reglements": {
-  "principal": 5568,
+  "principal": 5570,
   "fantome:calibration_patiente_v1.0.0": 2397,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2159,
@@ -1933,7 +1933,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 728,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 672,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 403,
-  "fantome:moins_de_cartes_v1.0.0": 812,
+  "fantome:moins_de_cartes_v1.0.0": 814,
   "fantome:non_aux_drames_v1.0.0": 508,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 655,
@@ -1956,7 +1956,7 @@
   "fantome:candidats_non_v1.0.0": 308,
   "fantome:compteur_truth_v1.0.0": 326,
   "fantome:moins_de_cartes_bo5_v1.0.0": 287,
-  "fantome:moins_de_cartes_lol_v1.0.0": 307,
+  "fantome:moins_de_cartes_lol_v1.0.0": 308,
   "fantome:detroits_non_normal_v1.0.0": 272,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 453,
   "fantome:mentions_non_outsider_v1.0.0": 251,
