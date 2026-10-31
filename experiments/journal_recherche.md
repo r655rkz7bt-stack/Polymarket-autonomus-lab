@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-31 (passage chercheur de nuit, 00 h 55 → ~01 h 15 UTC, ~20 min ; durée visée 86 min non atteinte : pas de piste testable avec les données d'aujourd'hui, arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-10-31_nuit_concentration_des_gains.md`, famille 2). Aucun défaut de code. Gain des 10 premiers sans leurs 3 plus gros paris / sans leur meilleur jour : seule `compteur_tweets` bat ses prix (z +3,17 sur 14 événements, mais 1re parmi ~40) ; `nf_sport_non` (−29 € sans le 24/10), `seismes_marche` (−12 sans ses 3 plus gros) et `crypto_threshold_prix_bas` (−215) ne tiennent pas ; les favoris gagnent exactement leurs prix. Obligation « 40 éliminées encore configurées » : essai de les couper, 5 tests dépendent d'elles, annulé.
+- **Recherche** : pas de piste menée jusqu'au verdict. CDC rougeole : 2e mercredi relevé (4 852), marchés alignés. Piste 15 : la Géorgie publie un JSON de comptage sans clé (`results.sos.ga.gov/cdn/...`) : test en direct possible la nuit du 03/11 (passage de ~01 h UTC le 04/11).
+- **Arène** : rien ajouté ni retiré (aucune idée neuve plausible hors des pistes bloquées ; pas de fille de favori).
+- **Leçons** : un classement en euros mélange chance et rendement ; le test « sans son meilleur jour » sépare vite les deux.
+- **Reste ouvert** : (a) adapter `test_favori` / `test_strategies` / `test_strategies_v3` pour pouvoir couper les 40 éliminées ; (b) comptage de la Géorgie en direct le 03-04/11 ; (c) rougeole à 8 mercredis ; (d) essence à 40 jours.
+
 ## 2026-10-29 (passage chercheur du matin, 05 h 55 → 06 h 06 UTC (heures de la machine), durée visée 135 min non atteinte : le temps réel mesuré est de 11 min ; pistes restantes en attente de données)
 
 - **Enquête** (fiche : `enquetes/2026-10-29_matin_ce_qui_ne_tourne_plus.md`, famille 6). Aucun défaut : 537 marchés de positions ouvertes relus sur Gamma, les 215 positions sur marchés clos sont dans des portefeuilles éteints ; 53 stratégies muettes = filtres en attente ; `moins_de_cartes` +26,7 % avant le 25/10, −10,1 % depuis (47 paris).
