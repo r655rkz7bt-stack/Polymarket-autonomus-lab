@@ -290,6 +290,7 @@ sources:
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
   appstore: {enabled: true, every_minutes: 10, n: 10}           # 27/10/2026 : classements de l'App Store américain (rss.applemarketingtools.com, arbitre des marchés « #1 Free / Paid App on <date> »), sans clé
+  sieges: {enabled: true, every_minutes: 15}                    # 31/10/2026 : prix démocrates des districts (Gamma, sans clé) pour `sieges_coherence`, jusqu'au 04/11
   usgs: {enabled: true, every_minutes: 10, days: 10}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 10 derniers jours ; gratuit, sans clé
   goldapi: {enabled: true, every_minutes: 5, keep_days: 30}      # 24/10/2026 : prix au comptant de l'or et de l'argent (gold-api.com, sans clé), journal `prix_matieres` pour `toucher_metaux`
   ll2: {enabled: true, every_minutes: 120, days: 430}            # 24/10/2026 : lancements de SpaceX (Launch Library 2, sans clé, ~15 appels/h) pour les marchés « How many SpaceX launches in … »

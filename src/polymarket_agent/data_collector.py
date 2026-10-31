@@ -289,6 +289,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     run("portwatch", portwatch)
     # Séismes (24/10/2026) : catalogue USGS des 10 derniers jours (M >= 5), pour les marchés « plus gros séisme du jour » et « nombre de séismes de la semaine ».
     snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
+    # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).
+    from polymarket_agent.sieges import fetch_sieges
+    snapshot("sieges", lambda cfg: factories.get("sieges", lambda c: fetch_sieges(http, now))(cfg), "ref:sieges")
     # Classements de l'App Store américain (27/10/2026) : l'arbitre des marchés « #1 Free / Paid App … on <date> » (`classement_appstore`), top 10 gratuit et payant.
     snapshot("appstore", lambda cfg: factories.get("appstore", lambda c: fetch_appstore(http, now, int(c.get("n", 10))))(cfg), "ref:appstore")
     # Lancements de SpaceX (24/10/2026) : Launch Library 2 (sans clé), pour les marchés « How many SpaceX launches in … » (`spacex_cumul`).

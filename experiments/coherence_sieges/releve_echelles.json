@@ -1,0 +1,2556 @@
+{
+ "North Carolina": {
+  "ladder_event": "833436",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 3 House seats in North Carolina in the 2026 midterm elections?",
+    0.0135,
+    2986.935874,
+    22604.3314
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in North Carolina in the 2026 midterm elections?",
+    0.046,
+    5855.041209,
+    39357.28653
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in North Carolina in the 2026 midterm elections?",
+    0.145,
+    6727.083865,
+    37318.3145
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in North Carolina in the 2026 midterm elections?",
+    0.385,
+    14337.77612,
+    37282.7777
+   ],
+   [
+    "Will Democrats win 6 or more House seats in North Carolina in the 2026 midterm elections?",
+    0.376,
+    5748.455188,
+    31448.08468
+   ]
+  ],
+  "districts": {
+   "NC-01": [
+    0.855,
+    44258.109169999996,
+    54280.9213,
+    "Will the Democratic Party win the NC-01 House seat?"
+   ],
+   "NC-02": [
+    0.9925,
+    18043.527373999998,
+    38139.68925,
+    "Will the Democratic Party win the NC-02 House seat?"
+   ],
+   "NC-03": [
+    0.445,
+    73655.69650699999,
+    59074.0778,
+    "Will the Democratic Party win the NC-03 House seat?"
+   ],
+   "NC-04": [
+    0.9745,
+    17394.73599,
+    33494.38444,
+    "Will the Democratic Party win the NC-04 House seat?"
+   ],
+   "NC-05": [
+    0.1755,
+    18924.903151,
+    44625.90166,
+    "Will the Democratic Party win the NC-05 House seat?"
+   ],
+   "NC-06": [
+    0.12,
+    36137.386821,
+    45220.3686,
+    "Will the Democratic Party win the NC-06 House seat?"
+   ],
+   "NC-07": [
+    0.245,
+    22663.986728999997,
+    43218.1592,
+    "Will the Democratic Party win the NC-07 House seat?"
+   ],
+   "NC-08": [
+    0.059,
+    24634.086656000003,
+    58404.9625,
+    "Will the Democratic Party win the NC-08 House seat?"
+   ],
+   "NC-09": [
+    0.38,
+    196133.22408900002,
+    66650.9322,
+    "Will the Democratic Party win the NC-09 House seat?"
+   ],
+   "NC-10": [
+    0.0545,
+    6228.338717,
+    48426.91853,
+    "Will the Democratic Party win the NC-10 House seat?"
+   ],
+   "NC-11": [
+    0.84,
+    122724.513328,
+    64383.4983,
+    "Will the Democratic Party win the NC-11 House seat?"
+   ],
+   "NC-12": [
+    0.9665,
+    17245.84741,
+    28310.19046,
+    "Will the Democratic Party win the NC-12 House seat?"
+   ],
+   "NC-13": [
+    0.405,
+    294480.97914,
+    167251.1858,
+    "Will the Democratic Party win the NC-13 House seat?"
+   ],
+   "NC-14": [
+    0.26,
+    29729.717127000004,
+    45595.4237,
+    "Will the Democratic Party win the NC-14 House seat?"
+   ]
+  }
+ },
+ "Florida": {
+  "ladder_event": "833462",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 4 House seats in Florida in the 2026 midterm elections?",
+    0.006,
+    423.037208,
+    15757.78345
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Florida in the 2026 midterm elections?",
+    0.1345,
+    2480.1323780000002,
+    13180.48994
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Florida in the 2026 midterm elections?",
+    0.117,
+    1171.3927979999999,
+    12800.19776
+   ],
+   [
+    "Will Democrats win exactly 6 House seats in Florida in the 2026 midterm elections?",
+    0.135,
+    999.078358,
+    13643.3003
+   ],
+   [
+    "Will Democrats win exactly 7 House seats in Florida in the 2026 midterm elections?",
+    0.2,
+    1493.1328090000002,
+    18974.2786
+   ],
+   [
+    "Will Democrats win exactly 8 House seats in Florida in the 2026 midterm elections?",
+    0.136,
+    1247.1576630000002,
+    18753.47968
+   ],
+   [
+    "Will Democrats win exactly 9 House seats in Florida in the 2026 midterm elections?",
+    0.091,
+    1450.6154060000001,
+    14856.25197
+   ],
+   [
+    "Will Democrats win exactly 10 House seats in Florida in the 2026 midterm elections?",
+    0.0585,
+    1981.838775,
+    2516.37179
+   ],
+   [
+    "Will Democrats win exactly 11 House seats in Florida in the 2026 midterm elections?",
+    0.062,
+    1871.458279,
+    1932.03942
+   ],
+   [
+    "Will Democrats win 12 or more House seats in Florida in the 2026 midterm elections?",
+    0.125,
+    3686.989423,
+    14029.9073
+   ]
+  ],
+  "districts": {
+   "FL-01": [
+    0.03,
+    29222.905641999998,
+    51609.13945,
+    "Will the Democratic Party win the FL-01 House seat?"
+   ],
+   "FL-02": [
+    0.08,
+    7950.35722,
+    47622.6005,
+    "Will the Democratic Party win the FL-02 House seat?"
+   ],
+   "FL-03": [
+    0.0435,
+    46505.896178,
+    53602.73686,
+    "Will the Democratic Party win the FL-03 House seat?"
+   ],
+   "FL-04": [
+    0.205,
+    17735.819759,
+    42383.7588,
+    "Will the Democratic Party win the FL-04 House seat?"
+   ],
+   "FL-05": [
+    0.055,
+    15109.948956,
+    57943.0978,
+    "Will the Democratic Party win the FL-05 House seat?"
+   ],
+   "FL-06": [
+    0.038,
+    31469.158795000007,
+    38094.0634,
+    "Will the Democratic Party win the FL-06 House seat?"
+   ],
+   "FL-07": [
+    0.335,
+    50020.041252999996,
+    72911.771,
+    "Will the Democratic Party win the FL-07 House seat?"
+   ],
+   "FL-08": [
+    0.045,
+    34415.76423,
+    53972.11671,
+    "Will the Democratic Party win the FL-08 House seat?"
+   ],
+   "FL-09": [
+    0.56,
+    32285.893764000004,
+    59597.3981,
+    "Will the Democratic Party win the FL-09 House seat?"
+   ],
+   "FL-10": [
+    0.9775,
+    17196.744107000002,
+    16814.84491,
+    "Will the Democratic Party win the FL-10 House seat?"
+   ],
+   "FL-11": [
+    0.12,
+    29139.530565,
+    43575.5747,
+    "Will the Democratic Party win the FL-11 House seat?"
+   ],
+   "FL-12": [
+    0.155,
+    59037.496951,
+    43945.9277,
+    "Will the Democratic Party win the FL-12 House seat?"
+   ],
+   "FL-13": [
+    0.375,
+    32672.376639000002,
+    60874.1646,
+    "Will the Democratic Party win the FL-13 House seat?"
+   ],
+   "FL-14": [
+    0.78,
+    79400.808121,
+    74619.9259,
+    "Will the Democratic Party win the FL-14 House seat?"
+   ],
+   "FL-15": [
+    0.0555,
+    15639.585416999998,
+    55585.80674,
+    "Will the Democratic Party win the FL-15 House seat?"
+   ],
+   "FL-16": [
+    0.225,
+    18635.138292,
+    37062.1922,
+    "Will the Democratic Party win the FL-16 House seat?"
+   ],
+   "FL-17": [
+    0.0305,
+    23068.725,
+    49798.89581,
+    "Will the Democratic Party win the FL-17 House seat?"
+   ],
+   "FL-18": [
+    0.075,
+    42209.757277000004,
+    50664.9183,
+    "Will the Democratic Party win the FL-18 House seat?"
+   ],
+   "FL-19": [
+    0.029,
+    28993.847172000005,
+    52607.21415,
+    "Will the Democratic Party win the FL-19 House seat?"
+   ],
+   "FL-20": [
+    0.9735,
+    28053.323659,
+    55559.36344,
+    "Will the Democratic Party win the FL-20 House seat?"
+   ],
+   "FL-21": [
+    0.119,
+    21456.418517,
+    55404.06152,
+    "Will the Democratic Party win the FL-21 House seat?"
+   ],
+   "FL-22": [
+    0.725,
+    35126.906392000004,
+    78848.3702,
+    "Will the Democratic Party win the FL-22 House seat?"
+   ],
+   "FL-23": [
+    0.9745,
+    13856.744033,
+    40976.3134,
+    "Will the Democratic Party win the FL-23 House seat?"
+   ],
+   "FL-24": [
+    0.977,
+    18388.000674,
+    48339.29487,
+    "Will the Democratic Party win the FL-24 House seat?"
+   ],
+   "FL-25": [
+    0.8,
+    39849.099495999995,
+    66797.4646,
+    "Will the Democratic Party win the FL-25 House seat?"
+   ],
+   "FL-26": [
+    0.135,
+    48226.013484999996,
+    47365.6421,
+    "Will the Democratic Party win the FL-26 House seat?"
+   ],
+   "FL-27": [
+    0.365,
+    33199.131667999995,
+    62715.5006,
+    "Will the Democratic Party win the FL-27 House seat?"
+   ],
+   "FL-28": [
+    0.06,
+    38417.885422,
+    54376.0127,
+    "Will the Democratic Party win the FL-28 House seat?"
+   ]
+  }
+ },
+ "Wisconsin": {
+  "ladder_event": "833417",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 2 House seats in Wisconsin in the 2026 midterm elections?",
+    0.1425,
+    1205.8511039999999,
+    2865.88788
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in Wisconsin in the 2026 midterm elections?",
+    0.175,
+    3396.3856099999994,
+    38306.2595
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Wisconsin in the 2026 midterm elections?",
+    0.275,
+    3150.483172,
+    1848.0507
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Wisconsin in the 2026 midterm elections?",
+    0.265,
+    6412.771132,
+    33840.6947
+   ],
+   [
+    "Will Democrats win 5 or more House seats in Wisconsin in the 2026 midterm elections?",
+    0.1805,
+    1662.5271799999998,
+    2628.07346
+   ]
+  ],
+  "districts": {
+   "WI-01": [
+    0.5,
+    15550.508242000002,
+    66733.4765,
+    "Will the Democratic Party win the WI-01 House seat?"
+   ],
+   "WI-02": [
+    0.98,
+    63419.327341000004,
+    35779.17847,
+    "Will the Democratic Party win the WI-02 House seat?"
+   ],
+   "WI-03": [
+    0.88,
+    11442.381047,
+    56381.2531,
+    "Will the Democratic Party win the WI-03 House seat?"
+   ],
+   "WI-04": [
+    0.9635,
+    14768.039012,
+    41140.45806,
+    "Will the Democratic Party win the WI-04 House seat?"
+   ],
+   "WI-05": [
+    0.025,
+    45630.657547999996,
+    47936.52018,
+    "Will the Democratic Party win the WI-05 House seat?"
+   ],
+   "WI-06": [
+    0.084,
+    22884.857290999997,
+    55804.3161,
+    "Will the Democratic Party win the WI-06 House seat?"
+   ],
+   "WI-07": [
+    0.0585,
+    51487.134826999994,
+    56474.8218,
+    "Will the Democratic Party win the WI-07 House seat?"
+   ],
+   "WI-08": [
+    0.105,
+    10471.703556000002,
+    45741.2254,
+    "Will the Democratic Party win the WI-08 House seat?"
+   ]
+  }
+ },
+ "Texas": {
+  "ladder_event": "833452",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 8 House seats in Texas in the 2026 midterm elections?",
+    0.0205,
+    792.591,
+    12701.8799
+   ],
+   [
+    "Will Democrats win exactly 8 House seats in Texas in the 2026 midterm elections?",
+    0.0055,
+    5397.026726,
+    24126.76929
+   ],
+   [
+    "Will Democrats win exactly 9 House seats in Texas in the 2026 midterm elections?",
+    0.0115,
+    3459.1064380000003,
+    19408.97032
+   ],
+   [
+    "Will Democrats win exactly 10 House seats in Texas in the 2026 midterm elections?",
+    0.079,
+    3067.1027879999997,
+    16112.85211
+   ],
+   [
+    "Will Democrats win exactly 11 House seats in Texas in the 2026 midterm elections?",
+    0.16,
+    2541.538938,
+    12244.554
+   ],
+   [
+    "Will Democrats win exactly 12 House seats in Texas in the 2026 midterm elections?",
+    0.24,
+    2515.542998,
+    15806.8871
+   ],
+   [
+    "Will Democrats win exactly 13 House seats in Texas in the 2026 midterm elections?",
+    0.31,
+    4776.630792000001,
+    26707.8976
+   ],
+   [
+    "Will Democrats win 14 or more House seats in Texas in the 2026 midterm elections?",
+    0.16,
+    7693.3926,
+    7481.7085
+   ]
+  ],
+  "districts": {
+   "TX-01": [
+    0.0205,
+    54884.276247999995,
+    40627.34656,
+    "Will the Democratic Party win the TX-01 House seat?"
+   ],
+   "TX-02": [
+    0.065,
+    16882.634723999996,
+    55875.3258,
+    "Will the Democratic Party win the TX-02 House seat?"
+   ],
+   "TX-03": [
+    0.049,
+    30111.076918,
+    52085.88369,
+    "Will the Democratic Party win the TX-03 House seat?"
+   ],
+   "TX-04": [
+    0.026,
+    58201.55308900001,
+    45581.15798,
+    "Will the Democratic Party win the TX-04 House seat?"
+   ],
+   "TX-05": [
+    0.0395,
+    47913.590809,
+    48774.09541,
+    "Will the Democratic Party win the TX-05 House seat?"
+   ],
+   "TX-06": [
+    0.0175,
+    46865.13905800001,
+    50022.4601,
+    "Will the Democratic Party win the TX-06 House seat?"
+   ],
+   "TX-07": [
+    0.972,
+    15157.098746,
+    45682.51904,
+    "Will the Democratic Party win the TX-07 House seat?"
+   ],
+   "TX-08": [
+    0.032,
+    48838.988353,
+    51099.76184,
+    "Will the Democratic Party win the TX-08 House seat?"
+   ],
+   "TX-09": [
+    0.245,
+    18392.5132,
+    59486.15,
+    "Will the Democratic Party win the TX-09 House seat?"
+   ],
+   "TX-10": [
+    0.085,
+    22148.374647999994,
+    50360.9357,
+    "Will the Democratic Party win the TX-10 House seat?"
+   ],
+   "TX-11": [
+    0.033,
+    25828.436398,
+    42827.12691,
+    "Will the Democratic Party win the TX-11 House seat?"
+   ],
+   "TX-12": [
+    0.0325,
+    48705.377097000004,
+    42235.48296,
+    "Will the Democratic Party win the TX-12 House seat?"
+   ],
+   "TX-13": [
+    0.0205,
+    15713.748543000002,
+    47297.00403,
+    "Will the Democratic Party win the TX-13 House seat?"
+   ],
+   "TX-14": [
+    0.0325,
+    22445.158985,
+    47199.67458,
+    "Will the Democratic Party win the TX-14 House seat?"
+   ],
+   "TX-15": [
+    0.885,
+    53138.972670999996,
+    78540.0942,
+    "Will the Democratic Party win the TX-15 House seat?"
+   ],
+   "TX-16": [
+    0.9675,
+    14858.353484,
+    32458.33777,
+    "Will the Democratic Party win the TX-16 House seat?"
+   ],
+   "TX-17": [
+    0.0225,
+    41206.35963100001,
+    51091.6577,
+    "Will the Democratic Party win the TX-17 House seat?"
+   ],
+   "TX-18": [
+    0.9765,
+    15521.297099000001,
+    32332.73797,
+    "Will the Democratic Party win the TX-18 House seat?"
+   ],
+   "TX-19": [
+    0.035,
+    24351.447465999998,
+    49293.09031,
+    "Will the Democratic Party win the TX-19 House seat?"
+   ],
+   "TX-20": [
+    0.9715,
+    13336.619836,
+    35585.19781,
+    "Will the Democratic Party win the TX-20 House seat?"
+   ],
+   "TX-21": [
+    0.013,
+    44982.759829999995,
+    44837.99378,
+    "Will the Democratic Party win the TX-21 House seat?"
+   ],
+   "TX-22": [
+    0.0435,
+    23776.812653000005,
+    34383.52857,
+    "Will the Democratic Party win the TX-22 House seat?"
+   ],
+   "TX-23": [
+    0.46,
+    62097.71332299999,
+    83599.3274,
+    "Will the Democratic Party win the TX-23 House seat?"
+   ],
+   "TX-24": [
+    0.055,
+    40169.17676799999,
+    55577.5875,
+    "Will the Democratic Party win the TX-24 House seat?"
+   ],
+   "TX-25": [
+    0.0345,
+    32827.151869999994,
+    53523.89482,
+    "Will the Democratic Party win the TX-25 House seat?"
+   ],
+   "TX-26": [
+    0.013,
+    24761.609019000003,
+    42072.39356,
+    "Will the Democratic Party win the TX-26 House seat?"
+   ],
+   "TX-27": [
+    0.0125,
+    41071.043822,
+    46538.12018,
+    "Will the Democratic Party win the TX-27 House seat?"
+   ],
+   "TX-28": [
+    0.92,
+    9655.472129000002,
+    57772.6189,
+    "Will the Democratic Party win the TX-28 House seat?"
+   ],
+   "TX-29": [
+    0.9645,
+    6834.696786000001,
+    36714.56565,
+    "Will the Democratic Party win the TX-29 House seat?"
+   ],
+   "TX-30": [
+    0.976,
+    5711.860067000001,
+    44411.92753,
+    "Will the Democratic Party win the TX-30 House seat?"
+   ],
+   "TX-31": [
+    0.0495,
+    37138.901659,
+    35283.13165,
+    "Will the Democratic Party win the TX-31 House seat?"
+   ],
+   "TX-32": [
+    0.127,
+    12360.550405000004,
+    39017.26814,
+    "Will the Democratic Party win the TX-32 House seat?"
+   ],
+   "TX-33": [
+    0.9735,
+    3767.2940789999993,
+    45197.69013,
+    "Will the Democratic Party win the TX-33 House seat?"
+   ],
+   "TX-34": [
+    0.89,
+    20233.204373000004,
+    59187.8698,
+    "Will the Democratic Party win the TX-34 House seat?"
+   ],
+   "TX-35": [
+    0.745,
+    47411.251788,
+    60983.1803,
+    "Will the Democratic Party win the TX-35 House seat?"
+   ],
+   "TX-36": [
+    0.044,
+    56599.072432999994,
+    51833.68709,
+    "Will the Democratic Party win the TX-36 House seat?"
+   ],
+   "TX-37": [
+    0.9765,
+    27143.254372000003,
+    27857.95648,
+    "Will the Democratic Party win the TX-37 House seat?"
+   ],
+   "TX-38": [
+    0.0535,
+    11107.760427,
+    52640.43472,
+    "Will the Democratic Party win the TX-38 House seat?"
+   ]
+  }
+ },
+ "Michigan": {
+  "ladder_event": "833441",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 5 House seats in Michigan in the 2026 midterm elections?",
+    0.0065,
+    968.9244429999999,
+    21535.3204
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Michigan in the 2026 midterm elections?",
+    0.0025,
+    1193.3799999999999,
+    20704.27682
+   ],
+   [
+    "Will Democrats win exactly 6 House seats in Michigan in the 2026 midterm elections?",
+    0.09,
+    10199.918745999998,
+    4985.4205
+   ],
+   [
+    "Will Democrats win exactly 7 House seats in Michigan in the 2026 midterm elections?",
+    0.21,
+    4783.101125,
+    17600.1557
+   ],
+   [
+    "Will Democrats win exactly 8 House seats in Michigan in the 2026 midterm elections?",
+    0.235,
+    8797.502336000001,
+    15889.8791
+   ],
+   [
+    "Will Democrats win exactly 9 House seats in Michigan in the 2026 midterm elections?",
+    0.365,
+    10875.193376000001,
+    26159.6367
+   ],
+   [
+    "Will Democrats win 10 or more House seats in Michigan in the 2026 midterm elections?",
+    0.074,
+    1385.992612,
+    2360.241
+   ]
+  ],
+  "districts": {
+   "MI-01": [
+    0.143,
+    14699.297627,
+    65300.38545,
+    "Will the Democratic Party win the MI-01 House seat?"
+   ],
+   "MI-02": [
+    0.0185,
+    32084.420000000002,
+    34252.00829,
+    "Will the Democratic Party win the MI-02 House seat?"
+   ],
+   "MI-03": [
+    0.957,
+    44306.530708,
+    52516.88967,
+    "Will the Democratic Party win the MI-03 House seat?"
+   ],
+   "MI-04": [
+    0.61,
+    21968.960272,
+    72400.4271,
+    "Will the Democratic Party win the MI-04 House seat?"
+   ],
+   "MI-05": [
+    0.048,
+    21910.600304,
+    51578.36174,
+    "Will the Democratic Party win the MI-05 House seat?"
+   ],
+   "MI-06": [
+    0.969,
+    26352.149397000005,
+    32262.36279,
+    "Will the Democratic Party win the MI-06 House seat?"
+   ],
+   "MI-07": [
+    0.78,
+    42700.82010600001,
+    63597.6307,
+    "Will the Democratic Party win the MI-07 House seat?"
+   ],
+   "MI-08": [
+    0.955,
+    9828.121567,
+    36735.2998,
+    "Will the Democratic Party win the MI-08 House seat?"
+   ],
+   "MI-09": [
+    0.027,
+    10913.875738,
+    35666.23237,
+    "Will the Democratic Party win the MI-09 House seat?"
+   ],
+   "MI-10": [
+    0.76,
+    14299.971696,
+    46498.8828,
+    "Will the Democratic Party win the MI-10 House seat?"
+   ],
+   "MI-11": [
+    0.9665,
+    59640.872733,
+    37664.89837,
+    "Will the Democratic Party win the MI-11 House seat?"
+   ],
+   "MI-12": [
+    0.9795,
+    22131.115954999994,
+    27278.76837,
+    "Will the Democratic Party win the MI-12 House seat?"
+   ],
+   "MI-13": [
+    0.981,
+    29516.656587999994,
+    22129.49474,
+    "Will the Democratic Party win the MI-13 House seat?"
+   ]
+  }
+ },
+ "New Jersey": {
+  "ladder_event": "833418",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 8 House seats in New Jersey in the 2026 midterm elections?",
+    0.016,
+    750.289928,
+    29192.24792
+   ],
+   [
+    "Will Democrats win exactly 8 House seats in New Jersey in the 2026 midterm elections?",
+    0.0385,
+    815.2268879999999,
+    26970.27563
+   ],
+   [
+    "Will Democrats win exactly 9 House seats in New Jersey in the 2026 midterm elections?",
+    0.075,
+    2672.6941420000007,
+    11254.5127
+   ],
+   [
+    "Will Democrats win exactly 10 House seats in New Jersey in the 2026 midterm elections?",
+    0.59,
+    9771.236946000003,
+    30802.2308
+   ],
+   [
+    "Will Democrats win 11 or more House seats in New Jersey in the 2026 midterm elections?",
+    0.305,
+    4621.1879389999995,
+    27281.8655
+   ]
+  ],
+  "districts": {
+   "NJ-01": [
+    0.9625,
+    27586.517121999997,
+    33095.26246,
+    "Will the Democratic Party win the NJ-01 House seat?"
+   ],
+   "NJ-02": [
+    0.315,
+    138037.853819,
+    153414.9353,
+    "Will the Democratic Party win the NJ-02 House seat?"
+   ],
+   "NJ-03": [
+    0.979,
+    17983.927533,
+    15263.60124,
+    "Will the Democratic Party win the NJ-03 House seat?"
+   ],
+   "NJ-04": [
+    0.056,
+    19694.148331999997,
+    56839.40497,
+    "Will the Democratic Party win the NJ-04 House seat?"
+   ],
+   "NJ-05": [
+    0.9665,
+    22097.964352000003,
+    30708.06052,
+    "Will the Democratic Party win the NJ-05 House seat?"
+   ],
+   "NJ-06": [
+    0.9715,
+    14623.771498,
+    28910.70364,
+    "Will the Democratic Party win the NJ-06 House seat?"
+   ],
+   "NJ-07": [
+    0.93,
+    27529.554821000005,
+    69397.6025,
+    "Will the Democratic Party win the NJ-07 House seat?"
+   ],
+   "NJ-08": [
+    0.967,
+    10251.241066999999,
+    37507.92746,
+    "Will the Democratic Party win the NJ-08 House seat?"
+   ],
+   "NJ-09": [
+    0.965,
+    26712.385430000002,
+    41060.66086,
+    "Will the Democratic Party win the NJ-09 House seat?"
+   ],
+   "NJ-10": [
+    0.9825,
+    20219.563872000002,
+    43825.93283,
+    "Will the Democratic Party win the NJ-10 House seat?"
+   ],
+   "NJ-11": [
+    0.955,
+    23654.796348,
+    32915.3104,
+    "Will the Democratic Party win the NJ-11 House seat?"
+   ],
+   "NJ-12": [
+    0.9785,
+    21096.301573999997,
+    36838.98391,
+    "Will the Democratic Party win the NJ-12 House seat?"
+   ]
+  }
+ },
+ "Colorado": {
+  "ladder_event": "833419",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 4 House seats in Colorado in the 2026 midterm elections?",
+    0.0015,
+    607.765,
+    15033.53971
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Colorado in the 2026 midterm elections?",
+    0.048,
+    1805.0242349999999,
+    2418.46357
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Colorado in the 2026 midterm elections?",
+    0.255,
+    2415.1782620000004,
+    17066.4931
+   ],
+   [
+    "Will Democrats win exactly 6 House seats in Colorado in the 2026 midterm elections?",
+    0.38,
+    2445.7926180000004,
+    23238.2976
+   ],
+   [
+    "Will Democrats win 7 or more House seats in Colorado in the 2026 midterm elections?",
+    0.32,
+    2328.6881869999997,
+    27831.7569
+   ]
+  ],
+  "districts": {
+   "CO-01": [
+    0.987,
+    16972.779497,
+    27880.44593,
+    "Will the Democratic Party win the CO-01 House seat?"
+   ],
+   "CO-02": [
+    0.97,
+    21264.861114999992,
+    25324.40929,
+    "Will the Democratic Party win the CO-02 House seat?"
+   ],
+   "CO-03": [
+    0.38,
+    21797.519909,
+    76407.2395,
+    "Will the Democratic Party win the CO-03 House seat?"
+   ],
+   "CO-04": [
+    0.405,
+    43225.420996,
+    60059.4499,
+    "Will the Democratic Party win the CO-04 House seat?"
+   ],
+   "CO-05": [
+    0.435,
+    31185.096468000003,
+    64901.0006,
+    "Will the Democratic Party win the CO-05 House seat?"
+   ],
+   "CO-06": [
+    0.963,
+    15681.502917000002,
+    33947.26853,
+    "Will the Democratic Party win the CO-06 House seat?"
+   ],
+   "CO-07": [
+    0.977,
+    20094.763316999997,
+    42326.41378,
+    "Will the Democratic Party win the CO-07 House seat?"
+   ],
+   "CO-08": [
+    0.87,
+    19100.286314,
+    57983.6958,
+    "Will the Democratic Party win the CO-08 House seat?"
+   ]
+  }
+ },
+ "Tennessee": {
+  "ladder_event": "1179411",
+  "ladder": [
+   [
+    "Will Democrats win exactly 0 House seats in Tennessee in the 2026 midterm elections?",
+    0.775,
+    4013.473624,
+    13538.2439
+   ],
+   [
+    "Will Democrats win exactly 1 House seat in Tennessee in the 2026 midterm elections?",
+    0.12,
+    1651.0087910000002,
+    514.3361
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in Tennessee in the 2026 midterm elections?",
+    0.113,
+    513.659788,
+    561.23894
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Tennessee in the 2026 midterm elections?",
+    0.005,
+    372.2801,
+    10764.03553
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Tennessee in the 2026 midterm elections?",
+    0.0005,
+    361.991,
+    10818.22728
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Tennessee in the 2026 midterm elections?",
+    0.0025,
+    389.13,
+    10773.01423
+   ],
+   [
+    "Will Democrats win 6 or more House seats in Tennessee in the 2026 midterm elections?",
+    0.0055,
+    368.801,
+    10782.05172
+   ]
+  ],
+  "districts": {
+   "TN-01": [
+    0.0245,
+    5838.26491,
+    32177.96183,
+    "Will the Democratic Party win the TN-01 House seat?"
+   ],
+   "TN-02": [
+    0.0395,
+    14858.985128999999,
+    37004.45237,
+    "Will the Democratic Party win the TN-02 House seat?"
+   ],
+   "TN-03": [
+    0.0145,
+    24401.106165999998,
+    44246.94917,
+    "Will the Democratic Party win the TN-03 House seat?"
+   ],
+   "TN-04": [
+    0.018,
+    47558.791478,
+    37277.92742,
+    "Will the Democratic Party win the TN-04 House seat?"
+   ],
+   "TN-05": [
+    0.0975,
+    40404.18305,
+    44620.33449,
+    "Will the Democratic Party win the TN-05 House seat?"
+   ],
+   "TN-06": [
+    0.0365,
+    15480.960040999998,
+    48421.19455,
+    "Will the Democratic Party win the TN-06 House seat?"
+   ],
+   "TN-07": [
+    0.036,
+    17210.701052,
+    49090.39255,
+    "Will the Democratic Party win the TN-07 House seat?"
+   ],
+   "TN-08": [
+    0.03,
+    21312.000351,
+    17495.05643,
+    "Will the Democratic Party win the TN-08 House seat?"
+   ],
+   "TN-09": [
+    0.16,
+    32529.219972,
+    69717.6123,
+    "Will the Democratic Party win the TN-09 House seat?"
+   ]
+  }
+ },
+ "Arizona": {
+  "ladder_event": "833440",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 3 House seats in Arizona in the 2026 midterm elections?",
+    0.0005,
+    1464.472943,
+    23015.01348
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Arizona in the 2026 midterm elections?",
+    0.0225,
+    8363.752041999998,
+    38047.10574
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Arizona in the 2026 midterm elections?",
+    0.1145,
+    6557.543798000001,
+    26378.19131
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Arizona in the 2026 midterm elections?",
+    0.52,
+    9623.541043000001,
+    30698.1355
+   ],
+   [
+    "Will Democrats win exactly 6 House seats in Arizona in the 2026 midterm elections?",
+    0.28,
+    3260.33215,
+    29313.355
+   ],
+   [
+    "Will Democrats win 7 or more House seats in Arizona in the 2026 midterm elections?",
+    0.047,
+    1825.232041,
+    10286.54648
+   ]
+  ],
+  "districts": {
+   "AZ-01": [
+    0.805,
+    112163.95066699997,
+    56648.7303,
+    "Will the Democratic Party win the AZ-01 House seat?"
+   ],
+   "AZ-02": [
+    0.4,
+    18248.114003,
+    34783.2689,
+    "Will the Democratic Party win the AZ-02 House seat?"
+   ],
+   "AZ-03": [
+    0.988,
+    33213.17233100001,
+    23575.43811,
+    "Will the Democratic Party win the AZ-03 House seat?"
+   ],
+   "AZ-04": [
+    0.963,
+    25940.905972999997,
+    40030.01284,
+    "Will the Democratic Party win the AZ-04 House seat?"
+   ],
+   "AZ-05": [
+    0.13,
+    21300.083487,
+    40089.4575,
+    "Will the Democratic Party win the AZ-05 House seat?"
+   ],
+   "AZ-06": [
+    0.89,
+    13871.063922,
+    53526.4708,
+    "Will the Democratic Party win the AZ-06 House seat?"
+   ],
+   "AZ-07": [
+    0.9815,
+    6217.909949000001,
+    35108.93909,
+    "Will the Democratic Party win the AZ-07 House seat?"
+   ],
+   "AZ-08": [
+    0.145,
+    12567.827802000002,
+    40470.7997,
+    "Will the Democratic Party win the AZ-08 House seat?"
+   ],
+   "AZ-09": [
+    0.0235,
+    17894.110963,
+    42867.01629,
+    "Will the Democratic Party win the AZ-09 House seat?"
+   ]
+  }
+ },
+ "South Carolina": {
+  "ladder_event": "833406",
+  "ladder": [
+   [
+    "Will Democrats win exactly 0 House seats in South Carolina in the 2026 midterm elections?",
+    0.005,
+    1682.027887,
+    21862.65255
+   ],
+   [
+    "Will Democrats win exactly 1 House seats in South Carolina in the 2026 midterm elections?",
+    0.595,
+    6349.881808,
+    26251.294
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in South Carolina in the 2026 midterm elections?",
+    0.34,
+    4760.266303,
+    35283.7525
+   ],
+   [
+    "Will Democrats win 3 or more House seats in South Carolina in the 2026 midterm elections?",
+    0.078,
+    1814.107382,
+    18439.33208
+   ]
+  ],
+  "districts": {
+   "SC-01": [
+    0.49,
+    89676.23130399999,
+    71403.979,
+    "Will the Democratic Party win the SC-01 House seat?"
+   ],
+   "SC-02": [
+    0.1265,
+    33564.285317,
+    51345.76122,
+    "Will the Democratic Party win the SC-02 House seat?"
+   ],
+   "SC-03": [
+    0.0165,
+    25748.080658000006,
+    51266.02798,
+    "Will the Democratic Party win the SC-03 House seat?"
+   ],
+   "SC-04": [
+    0.0315,
+    25668.297607,
+    45349.70176,
+    "Will the Democratic Party win the SC-04 House seat?"
+   ],
+   "SC-05": [
+    0.06,
+    7211.410642000001,
+    47143.9317,
+    "Will the Democratic Party win the SC-05 House seat?"
+   ],
+   "SC-06": [
+    0.981,
+    19866.584505999996,
+    44128.23835,
+    "Will the Democratic Party win the SC-06 House seat?"
+   ],
+   "SC-07": [
+    0.0305,
+    37316.621447,
+    48946.45934,
+    "Will the Democratic Party win the SC-07 House seat?"
+   ]
+  }
+ },
+ "Minnesota": {
+  "ladder_event": "833416",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 3 House seats in Minnesota in the 2026 midterm elections?",
+    0.0255,
+    715.0260870000001,
+    21083.77064
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Minnesota in the 2026 midterm elections?",
+    0.0405,
+    635.071593,
+    10845.18066
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Minnesota in the 2026 midterm elections?",
+    0.595,
+    15199.597636999999,
+    33290.7259
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Minnesota in the 2026 midterm elections?",
+    0.27,
+    2842.1911149999996,
+    17354.4219
+   ],
+   [
+    "Will Democrats win 6 or more House seats in Minnesota in the 2026 midterm elections?",
+    0.0675,
+    1005.3194470000001,
+    11628.8199
+   ]
+  ],
+  "districts": {
+   "MN-01": [
+    0.4,
+    59218.623253,
+    67119.5168,
+    "Will the Democratic Party win the MN-01 House seat?"
+   ],
+   "MN-02": [
+    0.943,
+    33073.171334,
+    60890.05386,
+    "Will the Democratic Party win the MN-02 House seat?"
+   ],
+   "MN-03": [
+    0.9775,
+    16783.984046,
+    36927.09975,
+    "Will the Democratic Party win the MN-03 House seat?"
+   ],
+   "MN-04": [
+    0.981,
+    9055.822644,
+    33123.8126,
+    "Will the Democratic Party win the MN-04 House seat?"
+   ],
+   "MN-05": [
+    0.9775,
+    42347.775555,
+    48509.29601,
+    "Will the Democratic Party win the MN-05 House seat?"
+   ],
+   "MN-06": [
+    0.052,
+    67417.745515,
+    46944.09938,
+    "Will the Democratic Party win the MN-06 House seat?"
+   ],
+   "MN-07": [
+    0.036,
+    27575.66547,
+    44861.73118,
+    "Will the Democratic Party win the MN-07 House seat?"
+   ],
+   "MN-08": [
+    0.15,
+    12284.418196000004,
+    47549.4357,
+    "Will the Democratic Party win the MN-08 House seat?"
+   ]
+  }
+ },
+ "Virginia": {
+  "ladder_event": "833439",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 5 House seats in Virginia in the 2026 midterm elections?",
+    0.002,
+    607.19,
+    16095.39049
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Virginia in the 2026 midterm elections?",
+    0.003,
+    593.6099999999999,
+    16057.70056
+   ],
+   [
+    "Will Democrats win exactly 6 House seats in Virginia in the 2026 midterm elections?",
+    0.045,
+    4251.23303,
+    21262.2388
+   ],
+   [
+    "Will Democrats win exactly 7 House seats in Virginia in the 2026 midterm elections?",
+    0.195,
+    3886.699365,
+    20489.8762
+   ],
+   [
+    "Will Democrats win exactly 8 House seats in Virginia in the 2026 midterm elections?",
+    0.4,
+    3330.4100909999997,
+    6031.0323
+   ],
+   [
+    "Will Democrats win 9 or more House seats in Virginia in the 2026 midterm elections?",
+    0.345,
+    4239.089662,
+    6054.3287
+   ]
+  ],
+  "districts": {
+   "VA-01": [
+    0.64,
+    90233.74790599999,
+    98295.3221,
+    "Will the Democratic Party win the VA-01 House seat?"
+   ],
+   "VA-02": [
+    0.91,
+    25604.886927000003,
+    75263.0928,
+    "Will the Democratic Party win the VA-02 House seat?"
+   ],
+   "VA-03": [
+    0.9735,
+    22372.661440000003,
+    26246.15857,
+    "Will the Democratic Party win the VA-03 House seat?"
+   ],
+   "VA-04": [
+    0.9805,
+    12796.199438999998,
+    31105.33667,
+    "Will the Democratic Party win the VA-04 House seat?"
+   ],
+   "VA-05": [
+    0.41,
+    157083.693968,
+    88156.2118,
+    "Will the Democratic Party win the VA-05 House seat?"
+   ],
+   "VA-06": [
+    0.065,
+    80684.73682,
+    91192.5252,
+    "Will the Democratic Party win the VA-06 House seat?"
+   ],
+   "VA-07": [
+    0.964,
+    7001.694200000001,
+    46676.45328,
+    "Will the Democratic Party win the VA-07 House seat?"
+   ],
+   "VA-08": [
+    0.9755,
+    12724.283155000003,
+    46584.62268,
+    "Will the Democratic Party win the VA-08 House seat?"
+   ],
+   "VA-09": [
+    0.033,
+    21792.285921,
+    46050.24284,
+    "Will the Democratic Party win the VA-09 House seat?"
+   ],
+   "VA-10": [
+    0.9665,
+    2359.7807719999996,
+    42936.25899,
+    "Will the Democratic Party win the VA-10 House seat?"
+   ],
+   "VA-11": [
+    0.9795,
+    17383.254882999998,
+    32410.38889,
+    "Will the Democratic Party win the VA-11 House seat?"
+   ]
+  }
+ },
+ "Alabama": {
+  "ladder_event": "833407",
+  "ladder": [
+   [
+    "Will Democrats win exactly 0 House seats in Alabama in the 2026 midterm elections?",
+    0.012,
+    1306.2058200000001,
+    15308.18947
+   ],
+   [
+    "Will Democrats win exactly 1 House seats in Alabama in the 2026 midterm elections?",
+    0.605,
+    4602.4383100000005,
+    28190.4533
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in Alabama in the 2026 midterm elections?",
+    0.38,
+    6486.293761999999,
+    28128.7148
+   ],
+   [
+    "Will Democrats win 3 or more House seats in Alabama in the 2026 midterm elections?",
+    0.015,
+    1366.850746,
+    17931.87061
+   ]
+  ],
+  "districts": {
+   "AL-01": [
+    0.0275,
+    27709.074061,
+    30409.93924,
+    "Will the Democratic Party win the AL-01 House seat?"
+   ],
+   "AL-02": [
+    0.44,
+    135644.168205,
+    78050.1227,
+    "Will the Democratic Party win the AL-02 House seat?"
+   ],
+   "AL-03": [
+    0.0055,
+    20623.749319,
+    43960.27206,
+    "Will the Democratic Party win the AL-03 House seat?"
+   ],
+   "AL-04": [
+    0.0005,
+    18852.793842,
+    44370.34066,
+    "Will the Democratic Party win the AL-04 House seat?"
+   ],
+   "AL-05": [
+    0.0305,
+    35301.872067000004,
+    49510.84823,
+    "Will the Democratic Party win the AL-05 House seat?"
+   ],
+   "AL-06": [
+    0.0225,
+    16665.768428,
+    43687.54404,
+    "Will the Democratic Party win the AL-06 House seat?"
+   ],
+   "AL-07": [
+    0.979,
+    34183.322326,
+    49921.38772,
+    "Will the Democratic Party win the AL-07 House seat?"
+   ]
+  }
+ },
+ "California": {
+  "ladder_event": "833461",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 43 House seats in California in the 2026 midterm elections?",
+    0.0315,
+    1183.51,
+    2065.06931
+   ],
+   [
+    "Will Democrats win exactly 43 House seats in California in the 2026 midterm elections?",
+    0.008,
+    713.5,
+    16892.93138
+   ],
+   [
+    "Will Democrats win exactly 44 House seats in California in the 2026 midterm elections?",
+    0.012,
+    1562.1386410000002,
+    12923.01789
+   ],
+   [
+    "Will Democrats win exactly 45 House seats in California in the 2026 midterm elections?",
+    0.04,
+    1646.5386250000001,
+    12262.49227
+   ],
+   [
+    "Will Democrats win exactly 46 House seats in California in the 2026 midterm elections?",
+    0.0385,
+    1763.5244939999998,
+    23785.0529
+   ],
+   [
+    "Will Democrats win exactly 47 House seats in California in the 2026 midterm elections?",
+    0.115,
+    7122.327683000001,
+    21446.2332
+   ],
+   [
+    "Will Democrats win exactly 48 House seats in California in the 2026 midterm elections?",
+    0.785,
+    15128.381865,
+    16891.1066
+   ],
+   [
+    "Will Democrats win 49 or more House seats in California in the 2026 midterm elections?",
+    0.056,
+    1482.008719,
+    12115.55297
+   ]
+  ],
+  "districts": {
+   "CA-01": [
+    0.9615,
+    38644.200328,
+    48886.47396,
+    "Will the Democratic Party win the CA-01 House seat?"
+   ],
+   "CA-02": [
+    0.9755,
+    6496.791121,
+    20804.48749,
+    "Will the Democratic Party win the CA-02 House seat?"
+   ],
+   "CA-03": [
+    0.957,
+    26541.163004,
+    44548.78585,
+    "Will the Democratic Party win the CA-03 House seat?"
+   ],
+   "CA-04": [
+    0.9765,
+    39164.42075,
+    18166.75474,
+    "Will the Democratic Party win the CA-04 House seat?"
+   ],
+   "CA-05": [
+    0.0655,
+    20201.134783999998,
+    54123.98809,
+    "Will the Democratic Party win the CA-05 House seat?"
+   ],
+   "CA-06": [
+    0.96,
+    66056.764395,
+    52117.64959,
+    "Will the Democratic Party win the CA-06 House seat?"
+   ],
+   "CA-07": [
+    0.968,
+    8303.906765000002,
+    12761.77824,
+    "Will the Democratic Party win the CA-07 House seat?"
+   ],
+   "CA-08": [
+    0.983,
+    14955.426658999997,
+    36826.56535,
+    "Will the Democratic Party win the CA-08 House seat?"
+   ],
+   "CA-09": [
+    0.988,
+    20155.099144,
+    17268.00153,
+    "Will the Democratic Party win the CA-09 House seat?"
+   ],
+   "CA-10": [
+    0.9725,
+    14507.540137,
+    37710.35942,
+    "Will the Democratic Party win the CA-10 House seat?"
+   ],
+   "CA-11": [
+    0.9845,
+    14979.7741,
+    12069.13961,
+    "Will the Democratic Party win the CA-11 House seat?"
+   ],
+   "CA-12": [
+    0.974,
+    27818.989663,
+    12734.11939,
+    "Will the Democratic Party win the CA-12 House seat?"
+   ],
+   "CA-13": [
+    0.9525,
+    31005.619165,
+    46948.52233,
+    "Will the Democratic Party win the CA-13 House seat?"
+   ],
+   "CA-14": [
+    0.994,
+    21141.176389,
+    13615.37608,
+    "Will the Democratic Party win the CA-14 House seat?"
+   ],
+   "CA-15": [
+    0.982,
+    94734.60830999997,
+    29908.15002,
+    "Will the Democratic Party win the CA-15 House seat?"
+   ],
+   "CA-16": [
+    0.9735,
+    54176.323988,
+    33372.45308,
+    "Will the Democratic Party win the CA-16 House seat?"
+   ],
+   "CA-17": [
+    0.9745,
+    14051.871011999998,
+    42026.91185,
+    "Will the Democratic Party win the CA-17 House seat?"
+   ],
+   "CA-18": [
+    0.986,
+    30786.325749000003,
+    15768.52833,
+    "Will the Democratic Party win the CA-18 House seat?"
+   ],
+   "CA-19": [
+    0.985,
+    31809.782750000002,
+    38105.78635,
+    "Will the Democratic Party win the CA-19 House seat?"
+   ],
+   "CA-20": [
+    0.03,
+    21268.824487,
+    48091.34929,
+    "Will the Democratic Party win the CA-20 House seat?"
+   ],
+   "CA-21": [
+    0.959,
+    20171.075549999998,
+    33527.8546,
+    "Will the Democratic Party win the CA-21 House seat?"
+   ],
+   "CA-22": null,
+   "CA-23": [
+    0.0275,
+    70424.69976300001,
+    39977.56966,
+    "Will the Democratic Party win the CA-23 House seat?"
+   ],
+   "CA-24": [
+    0.9805,
+    34146.413639,
+    27064.65034,
+    "Will the Democratic Party win the CA-24 House seat?"
+   ],
+   "CA-25": [
+    0.9675,
+    14824.304724999998,
+    24325.47491,
+    "Will the Democratic Party win the CA-25 House seat?"
+   ],
+   "CA-26": [
+    0.956,
+    16840.537303,
+    23237.28028,
+    "Will the Democratic Party win the CA-26 House seat?"
+   ],
+   "CA-27": null,
+   "CA-28": [
+    0.974,
+    58929.072712999994,
+    36820.25559,
+    "Will the Democratic Party win the CA-28 House seat?"
+   ],
+   "CA-29": [
+    0.969,
+    13251.478650999998,
+    12710.13659,
+    "Will the Democratic Party win the CA-29 House seat?"
+   ],
+   "CA-30": [
+    0.9725,
+    20066.220126999997,
+    33876.46483,
+    "Will the Democratic Party win the CA-30 House seat?"
+   ],
+   "CA-31": [
+    0.9585,
+    8258.913629,
+    43889.9113,
+    "Will the Democratic Party win the CA-31 House seat?"
+   ],
+   "CA-32": [
+    0.9915,
+    13261.427843000001,
+    45423.9207,
+    "Will the Democratic Party win the CA-32 House seat?"
+   ],
+   "CA-33": [
+    0.968,
+    7508.205521,
+    38242.97058,
+    "Will the Democratic Party win the CA-33 House seat?"
+   ],
+   "CA-34": [
+    0.9815,
+    20516.156777999997,
+    13601.15577,
+    "Will the Democratic Party win the CA-34 House seat?"
+   ],
+   "CA-35": [
+    0.98,
+    24540.811031999998,
+    20617.91331,
+    "Will the Democratic Party win the CA-35 House seat?"
+   ],
+   "CA-36": [
+    0.9755,
+    6344.012651,
+    43491.31814,
+    "Will the Democratic Party win the CA-36 House seat?"
+   ],
+   "CA-37": [
+    0.965,
+    2093.235451,
+    13862.96302,
+    "Will the Democratic Party win the CA-37 House seat?"
+   ],
+   "CA-38": [
+    0.9795,
+    33743.798799,
+    41604.94381,
+    "Will the Democratic Party win the CA-38 House seat?"
+   ],
+   "CA-39": [
+    0.9655,
+    41775.96596899999,
+    24987.72405,
+    "Will the Democratic Party win the CA-39 House seat?"
+   ],
+   "CA-40": null,
+   "CA-41": [
+    0.958,
+    10774.572068999998,
+    37405.61333,
+    "Will the Democratic Party win the CA-41 House seat?"
+   ],
+   "CA-42": [
+    0.9645,
+    17001.818838,
+    42581.893,
+    "Will the Democratic Party win the CA-42 House seat?"
+   ],
+   "CA-43": [
+    0.9775,
+    11698.933482,
+    32808.8177,
+    "Will the Democratic Party win the CA-43 House seat?"
+   ],
+   "CA-44": [
+    0.972,
+    22082.614986000008,
+    39512.95699,
+    "Will the Democratic Party win the CA-44 House seat?"
+   ],
+   "CA-45": [
+    0.94,
+    21688.089931999995,
+    54707.0401,
+    "Will the Democratic Party win the CA-45 House seat?"
+   ],
+   "CA-46": [
+    0.961,
+    5171.709573000001,
+    23445.19135,
+    "Will the Democratic Party win the CA-46 House seat?"
+   ],
+   "CA-47": [
+    0.962,
+    15651.320608,
+    44244.83203,
+    "Will the Democratic Party win the CA-47 House seat?"
+   ],
+   "CA-48": [
+    0.95,
+    28393.911559,
+    42370.4974,
+    "Will the Democratic Party win the CA-48 House seat?"
+   ],
+   "CA-49": [
+    0.9735,
+    19948.666171,
+    20731.68554,
+    "Will the Democratic Party win the CA-49 House seat?"
+   ],
+   "CA-50": [
+    0.963,
+    39234.246762999996,
+    34943.87544,
+    "Will the Democratic Party win the CA-50 House seat?"
+   ],
+   "CA-51": [
+    0.9715,
+    18857.815424,
+    21207.63214,
+    "Will the Democratic Party win the CA-51 House seat?"
+   ],
+   "CA-52": [
+    0.9715,
+    33285.449052,
+    43788.11292,
+    "Will the Democratic Party win the CA-52 House seat?"
+   ]
+  }
+ },
+ "Pennsylvania": {
+  "ladder_event": "833450",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 7 House seats in Pennsylvania in the 2026 midterm elections?",
+    0.0065,
+    877.9419,
+    18510.45491
+   ],
+   [
+    "Will Democrats win exactly 7 House seats in Pennsylvania in the 2026 midterm elections?",
+    0.0245,
+    4983.705334,
+    20995.89744
+   ],
+   [
+    "Will Democrats win exactly 8 House seats in Pennsylvania in the 2026 midterm elections?",
+    0.046,
+    2269.625231,
+    7872.50066
+   ],
+   [
+    "Will Democrats win exactly 9 House seats in Pennsylvania in the 2026 midterm elections?",
+    0.145,
+    4140.114829,
+    18967.7226
+   ],
+   [
+    "Will Democrats win exactly 10 House seats in Pennsylvania in the 2026 midterm elections?",
+    0.335,
+    5512.525556000001,
+    30319.4575
+   ],
+   [
+    "Will Democrats win exactly 11 House seats in Pennsylvania in the 2026 midterm elections?",
+    0.335,
+    8057.761728000001,
+    35657.1847
+   ],
+   [
+    "Will Democrats win 12 or more House seats in Pennsylvania in the 2026 midterm elections?",
+    0.075,
+    1215.742418,
+    2037.67589
+   ]
+  ],
+  "districts": {
+   "PA-01": [
+    0.56,
+    72146.374696,
+    68001.7486,
+    "Will the Democratic Party win the PA-01 House seat?"
+   ],
+   "PA-02": [
+    0.9745,
+    7511.490116,
+    25369.33289,
+    "Will the Democratic Party win the PA-02 House seat?"
+   ],
+   "PA-03": [
+    0.9775,
+    19928.453631999993,
+    37229.25511,
+    "Will the Democratic Party win the PA-03 House seat?"
+   ],
+   "PA-04": [
+    0.9715,
+    6758.613562999999,
+    46001.46234,
+    "Will the Democratic Party win the PA-04 House seat?"
+   ],
+   "PA-05": [
+    0.973,
+    14305.434247999998,
+    43376.94771,
+    "Will the Democratic Party win the PA-05 House seat?"
+   ],
+   "PA-06": [
+    0.9915,
+    14915.238340999998,
+    13347.73058,
+    "Will the Democratic Party win the PA-06 House seat?"
+   ],
+   "PA-07": [
+    0.86,
+    30704.027666000005,
+    61717.7905,
+    "Will the Democratic Party win the PA-07 House seat?"
+   ],
+   "PA-08": [
+    0.895,
+    22413.249753999997,
+    85666.1509,
+    "Will the Democratic Party win the PA-08 House seat?"
+   ],
+   "PA-09": [
+    0.0385,
+    9120.007410000002,
+    49484.67624,
+    "Will the Democratic Party win the PA-09 House seat?"
+   ],
+   "PA-10": [
+    0.81,
+    13262.217438,
+    53012.4612,
+    "Will the Democratic Party win the PA-10 House seat?"
+   ],
+   "PA-11": [
+    0.047,
+    19971.017786999997,
+    52648.70712,
+    "Will the Democratic Party win the PA-11 House seat?"
+   ],
+   "PA-12": [
+    0.9855,
+    19310.347801,
+    41122.90378,
+    "Will the Democratic Party win the PA-12 House seat?"
+   ],
+   "PA-13": [
+    0.02,
+    8118.18842,
+    45116.03758,
+    "Will the Democratic Party win the PA-13 House seat?"
+   ],
+   "PA-14": [
+    0.0325,
+    15230.216626,
+    46940.78102,
+    "Will the Democratic Party win the PA-14 House seat?"
+   ],
+   "PA-15": [
+    0.038,
+    20850.507493999998,
+    42559.22308,
+    "Will the Democratic Party win the PA-15 House seat?"
+   ],
+   "PA-16": [
+    0.047,
+    33834.947347,
+    50780.34057,
+    "Will the Democratic Party win the PA-16 House seat?"
+   ],
+   "PA-17": [
+    0.959,
+    15230.529033000003,
+    46117.86086,
+    "Will the Democratic Party win the PA-17 House seat?"
+   ]
+  }
+ },
+ "Iowa": {
+  "ladder_event": "833438",
+  "ladder": [
+   [
+    "Will Democrats win exactly 0 House seats in Iowa in the 2026 midterm elections?",
+    0.0845,
+    4410.104413000001,
+    20249.3237
+   ],
+   [
+    "Will Democrats win exactly 1 House seat in Iowa in the 2026 midterm elections?",
+    0.0695,
+    5800.2405370000015,
+    20125.07234
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in Iowa in the 2026 midterm elections?",
+    0.235,
+    6649.736653999999,
+    17773.769
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Iowa in the 2026 midterm elections?",
+    0.605,
+    9834.427611000001,
+    24816.588
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Iowa in the 2026 midterm elections?",
+    0.008,
+    1770.4316039999999,
+    15069.15195
+   ]
+  ],
+  "districts": {
+   "IA-01": [
+    0.93,
+    43466.481851000004,
+    60670.814,
+    "Will the Democratic Party win the IA-01 House seat?"
+   ],
+   "IA-02": [
+    0.705,
+    24527.492036,
+    71381.9703,
+    "Will the Democratic Party win the IA-02 House seat?"
+   ],
+   "IA-03": [
+    0.85,
+    11848.869331,
+    56045.2741,
+    "Will the Democratic Party win the IA-03 House seat?"
+   ],
+   "IA-04": [
+    0.0235,
+    43286.224394000004,
+    43007.16433,
+    "Will the Democratic Party win the IA-04 House seat?"
+   ]
+  }
+ },
+ "Nevada": {
+  "ladder_event": "833437",
+  "ladder": [
+   [
+    "Will Democrats win exactly 0 House seats in Nevada in the 2026 midterm elections?",
+    0.0065,
+    1402.9496659999998,
+    17000.67555
+   ],
+   [
+    "Will Democrats win exactly 1 House seats in Nevada in the 2026 midterm elections?",
+    0.0315,
+    1601.585666,
+    14999.88781
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in Nevada in the 2026 midterm elections?",
+    0.0305,
+    4258.586515999999,
+    18448.57754
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Nevada in the 2026 midterm elections?",
+    0.64,
+    11908.826091999998,
+    26237.2496
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Nevada in the 2026 midterm elections?",
+    0.305,
+    3860.19152,
+    35849.9294
+   ]
+  ],
+  "districts": {
+   "NV-01": [
+    0.96,
+    19568.781922000002,
+    38313.95179,
+    "Will the Democratic Party win the NV-01 House seat?"
+   ],
+   "NV-02": [
+    0.39,
+    39784.041255000004,
+    62088.2354,
+    "Will the Democratic Party win the NV-02 House seat?"
+   ],
+   "NV-03": [
+    0.945,
+    8976.77772,
+    45578.4581,
+    "Will the Democratic Party win the NV-03 House seat?"
+   ],
+   "NV-04": [
+    0.9625,
+    20830.871836000006,
+    24112.35419,
+    "Will the Democratic Party win the NV-04 House seat?"
+   ]
+  }
+ },
+ "New York": {
+  "ladder_event": "833451",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 16 House seats in New York in the 2026 midterm elections?",
+    0.0015,
+    662.996013,
+    20324.47972
+   ],
+   [
+    "Will Democrats win exactly 16 House seats in New York in the 2026 midterm elections?",
+    0.0115,
+    374.17528500000003,
+    27712.24295
+   ],
+   [
+    "Will Democrats win exactly 17 House seats in New York in the 2026 midterm elections?",
+    0.0105,
+    792.3080000000001,
+    21228.44254
+   ],
+   [
+    "Will Democrats win exactly 18 House seats in New York in the 2026 midterm elections?",
+    0.046,
+    1023.5956180000001,
+    12500.02362
+   ],
+   [
+    "Will Democrats win exactly 19 House seats in New York in the 2026 midterm elections?",
+    0.29,
+    5118.161084,
+    41089.5983
+   ],
+   [
+    "Will Democrats win exactly 20 House seats in New York in the 2026 midterm elections?",
+    0.355,
+    3665.116381,
+    29816.7226
+   ],
+   [
+    "Will Democrats win 21 or more House seats in New York in the 2026 midterm elections?",
+    0.24,
+    1418.464544,
+    5468.5218
+   ]
+  ],
+  "districts": {
+   "NY-01": [
+    0.21,
+    53281.260599,
+    75058.5291,
+    "Will the Democratic Party win the NY-01 House seat?"
+   ],
+   "NY-02": [
+    0.195,
+    13751.007256999997,
+    39076.0837,
+    "Will the Democratic Party win the NY-02 House seat?"
+   ],
+   "NY-03": [
+    0.88,
+    24974.233906999994,
+    45143.5765,
+    "Will the Democratic Party win the NY-03 House seat?"
+   ],
+   "NY-04": [
+    0.93,
+    9150.141997,
+    22593.1265,
+    "Will the Democratic Party win the NY-04 House seat?"
+   ],
+   "NY-05": [
+    0.9805,
+    21536.289019000003,
+    23227.71974,
+    "Will the Democratic Party win the NY-05 House seat?"
+   ],
+   "NY-06": [
+    0.9815,
+    10654.415637,
+    29819.49028,
+    "Will the Democratic Party win the NY-06 House seat?"
+   ],
+   "NY-07": [
+    0.9745,
+    15916.414168,
+    32947.29302,
+    "Will the Democratic Party win the NY-07 House seat?"
+   ],
+   "NY-08": [
+    0.9785,
+    14265.113192,
+    44305.79691,
+    "Will the Democratic Party win the NY-08 House seat?"
+   ],
+   "NY-09": [
+    0.9755,
+    20273.629442999998,
+    39995.88535,
+    "Will the Democratic Party win the NY-09 House seat?"
+   ],
+   "NY-10": [
+    0.9725,
+    17534.641278000006,
+    42642.73464,
+    "Will the Democratic Party win the NY-10 House seat?"
+   ],
+   "NY-11": [
+    0.07,
+    30871.088308000002,
+    52094.9538,
+    "Will the Democratic Party win the NY-11 House seat?"
+   ],
+   "NY-12": [
+    0.978,
+    17690.828141,
+    38701.34371,
+    "Will the Democratic Party win the NY-12 House seat?"
+   ],
+   "NY-13": [
+    0.987,
+    27893.697951000006,
+    39268.36313,
+    "Will the Democratic Party win the NY-13 House seat?"
+   ],
+   "NY-14": [
+    0.9835,
+    33184.19156299999,
+    44949.09618,
+    "Will the Democratic Party win the NY-14 House seat?"
+   ],
+   "NY-15": [
+    0.972,
+    27846.701798,
+    36233.84666,
+    "Will the Democratic Party win the NY-15 House seat?"
+   ],
+   "NY-16": [
+    0.9685,
+    31156.889163000003,
+    26756.47889,
+    "Will the Democratic Party win the NY-16 House seat?"
+   ],
+   "NY-17": [
+    0.64,
+    58644.18326500001,
+    69914.7646,
+    "Will the Democratic Party win the NY-17 House seat?"
+   ],
+   "NY-18": [
+    0.961,
+    35281.54080800002,
+    42734.4773,
+    "Will the Democratic Party win the NY-18 House seat?"
+   ],
+   "NY-19": [
+    0.9585,
+    16713.015122999997,
+    36440.41305,
+    "Will the Democratic Party win the NY-19 House seat?"
+   ],
+   "NY-20": [
+    0.974,
+    21720.438999,
+    45463.39689,
+    "Will the Democratic Party win the NY-20 House seat?"
+   ],
+   "NY-21": [
+    0.345,
+    55334.37813800002,
+    71618.0214,
+    "Will the Democratic Party win the NY-21 House seat?"
+   ],
+   "NY-22": [
+    0.968,
+    12858.114667999998,
+    42213.55808,
+    "Will the Democratic Party win the NY-22 House seat?"
+   ],
+   "NY-23": [
+    0.0295,
+    33502.965024000005,
+    25684.38156,
+    "Will the Democratic Party win the NY-23 House seat?"
+   ],
+   "NY-24": [
+    0.046,
+    27198.768618000002,
+    50906.30048,
+    "Will the Democratic Party win the NY-24 House seat?"
+   ],
+   "NY-25": [
+    0.9815,
+    31155.899099,
+    41550.38228,
+    "Will the Democratic Party win the NY-25 House seat?"
+   ],
+   "NY-26": [
+    0.971,
+    22649.732408999997,
+    16044.6974,
+    "Will the Democratic Party win the NY-26 House seat?"
+   ]
+  }
+ },
+ "Ohio": {
+  "ladder_event": "833463",
+  "ladder": [
+   [
+    "Will Democrats win fewer than 2 House seats in Ohio in the 2026 midterm elections?",
+    0.0015,
+    1354.3149999999998,
+    18096.07713
+   ],
+   [
+    "Will Democrats win exactly 2 House seats in Ohio in the 2026 midterm elections?",
+    0.006,
+    2636.5325000000003,
+    15186.43642
+   ],
+   [
+    "Will Democrats win exactly 3 House seats in Ohio in the 2026 midterm elections?",
+    0.0025,
+    3147.4893690000004,
+    18354.92158
+   ],
+   [
+    "Will Democrats win exactly 4 House seats in Ohio in the 2026 midterm elections?",
+    0.05,
+    8382.993892,
+    35994.2916
+   ],
+   [
+    "Will Democrats win exactly 5 House seats in Ohio in the 2026 midterm elections?",
+    0.11,
+    5513.886538000001,
+    18012.5074
+   ],
+   [
+    "Will Democrats win exactly 6 House seats in Ohio in the 2026 midterm elections?",
+    0.36,
+    8081.982934000001,
+    31976.2911
+   ],
+   [
+    "Will Democrats win 7 or more House seats in Ohio in the 2026 midterm elections?",
+    0.47,
+    9096.745568,
+    26345.3058
+   ]
+  ],
+  "districts": {
+   "OH-01": [
+    0.962,
+    38618.658736000005,
+    45772.4167,
+    "Will the Democratic Party win the OH-01 House seat?"
+   ],
+   "OH-02": [
+    0.017,
+    41068.526110000006,
+    21310.16425,
+    "Will the Democratic Party win the OH-02 House seat?"
+   ],
+   "OH-03": [
+    0.971,
+    30001.429889000003,
+    36531.29829,
+    "Will the Democratic Party win the OH-03 House seat?"
+   ],
+   "OH-04": [
+    0.036,
+    13980.026293,
+    43352.3195,
+    "Will the Democratic Party win the OH-04 House seat?"
+   ],
+   "OH-05": [
+    0.0335,
+    23101.118186,
+    48705.03326,
+    "Will the Democratic Party win the OH-05 House seat?"
+   ],
+   "OH-06": [
+    0.025,
+    56878.706014,
+    39373.70848,
+    "Will the Democratic Party win the OH-06 House seat?"
+   ],
+   "OH-07": [
+    0.855,
+    91173.77205899998,
+    60809.6724,
+    "Will the Democratic Party win the OH-07 House seat?"
+   ],
+   "OH-08": [
+    0.07,
+    10279.974597999997,
+    36505.1604,
+    "Will the Democratic Party win the OH-08 House seat?"
+   ],
+   "OH-09": [
+    0.8,
+    22261.503814000003,
+    68052.9767,
+    "Will the Democratic Party win the OH-09 House seat?"
+   ],
+   "OH-10": [
+    0.28,
+    32976.45592,
+    55636.7295,
+    "Will the Democratic Party win the OH-10 House seat?"
+   ],
+   "OH-11": [
+    0.983,
+    15742.772428999999,
+    30958.1391,
+    "Will the Democratic Party win the OH-11 House seat?"
+   ],
+   "OH-12": [
+    0.042,
+    15281.206837,
+    54118.59566,
+    "Will the Democratic Party win the OH-12 House seat?"
+   ],
+   "OH-13": [
+    0.9605,
+    12580.808046999997,
+    30871.45069,
+    "Will the Democratic Party win the OH-13 House seat?"
+   ],
+   "OH-14": [
+    0.027,
+    56300.338498,
+    49395.84409,
+    "Will the Democratic Party win the OH-14 House seat?"
+   ],
+   "OH-15": [
+    0.375,
+    30093.881188000003,
+    70906.902,
+    "Will the Democratic Party win the OH-15 House seat?"
+   ]
+  }
+ }
+}
