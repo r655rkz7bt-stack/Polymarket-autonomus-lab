@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5481,
+  "principal": 5486,
   "fantome:calibration_patiente_v1.0.0": 2385,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2147,
@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 716,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 660,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 391,
-  "fantome:moins_de_cartes_v1.0.0": 788,
+  "fantome:moins_de_cartes_v1.0.0": 790,
   "fantome:non_aux_drames_v1.0.0": 493,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 642,
@@ -160,7 +160,7 @@
   "fantome:toucher_metaux_v1.0.0": 317,
   "fantome:candidats_non_v1.0.0": 296,
   "fantome:compteur_truth_v1.0.0": 314,
-  "fantome:moins_de_cartes_bo5_v1.0.0": 273,
+  "fantome:moins_de_cartes_bo5_v1.0.0": 275,
   "fantome:moins_de_cartes_lol_v1.0.0": 294,
   "fantome:detroits_non_normal_v1.0.0": 260,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 438,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 109,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 132
  },
- "verifiees": 15084,
+ "verifiees": 15087,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-24966329966464850231269012030690277622788792723728924314884010836163170521547"
   }
  ],
- "derniere_execution": "2026-10-31T05:23:09+00:00",
+ "derniere_execution": "2026-10-31T05:26:05+00:00",
  "dernier_seq_reglements": {
-  "principal": 5485,
+  "principal": 5486,
   "fantome:calibration_patiente_v1.0.0": 2385,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2147,
@@ -1824,7 +1824,7 @@
   "fantome:loterie_meteo_v1.0.0": 1956,
   "fantome:suivre_politique_v1.0.0": 1944,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 2871,
+  "fantome:nf_court_v1.0.0": 2873,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1886,
@@ -1833,7 +1833,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3414,
+  "fantome:nf_sport_v1.0.0": 3416,
   "fantome:nm_court_v1.0.0": 2068,
   "fantome:nm_crypto_v1.0.0": 1746,
   "fantome:nm_hors_crypto_v1.0.0": 2105,
