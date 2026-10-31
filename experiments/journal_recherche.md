@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-31 (passage chercheur du matin, 05 h 55 → ~06 h 10 UTC ; durée visée 88 min non atteinte : pistes restantes en attente de données ou d'événements futurs, arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-10-31_matin_arene_contre_prix.md`). Aucun défaut de code, aucune obligation grave. Constat `estimation_gonflee` relancé sur 3 666 jetons : 2 518,5 gagnés pour 2 580,4 attendus par les prix (−1,7 pt) ; bande 0,60-0,80 −5,5 pts (1 bande sur 7, hasard plausible) ; `moins_de_cartes` +15,2 → +5,5 pts.
+- **Recherche** : pas de verdict. Rougeole CDC : 3e relevé (4 852 au 29/10, pas de nouveau mercredi). Essence : 15 jours réglés (4,32 → 4,21), trop tôt. Piste 15 : outil de relevé prêt (`election_direct/releve_nuit.py`, Géorgie + prix Polymarket gouverneur/Sénat), testé sur le fichier 2024 ; fichier 2026 en 404 aujourd'hui, à lancer le 04/11 vers 1 h UTC.
+- **Arène** : rien ajouté ni retiré (pas d'idée neuve plausible ; les filles « 80/20 » demandées reposent sur 9 à 56 paris de crypto, déjà jugés bruit).
+- **Leçons** : une bande de prix à z −2,3 parmi 7 n'est pas un frein à écrire.
+- **Reste ouvert** : (a) relevé de la nuit du 03/11 (nom exact du fichier 2026 de la Géorgie) ; (b) rougeole à 8 mercredis ; (c) essence à 40 jours ; (d) couper les 40 éliminées (tests à adapter).
+
 ## 2026-10-31 (passage chercheur de nuit, 00 h 55 → 01 h 00 UTC, ~5 min ; durée visée 86 min non atteinte : pas de piste testable avec les données d'aujourd'hui, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-31_nuit_concentration_des_gains.md`, famille 2). Aucun défaut de code. Gain des 10 premiers sans leurs 3 plus gros paris / sans leur meilleur jour : seule `compteur_tweets` bat ses prix (z +3,17 sur 14 événements, mais 1re parmi ~40) ; `nf_sport_non` (−29 € sans le 24/10), `seismes_marche` (−12 sans ses 3 plus gros) et `crypto_threshold_prix_bas` (−215) ne tiennent pas ; les favoris gagnent exactement leurs prix. Obligation « 40 éliminées encore configurées » : essai de les couper, 5 tests dépendent d'elles, annulé.
