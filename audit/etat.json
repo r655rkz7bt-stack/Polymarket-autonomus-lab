@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5473,
+  "principal": 5474,
   "fantome:calibration_patiente_v1.0.0": 2383,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2145,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3410,
+  "fantome:nf_sport_v1.0.0": 3412,
   "fantome:nm_court_v1.0.0": 2066,
   "fantome:nm_crypto_v1.0.0": 1744,
   "fantome:nm_hors_crypto_v1.0.0": 2103,
@@ -179,7 +179,7 @@
   "fantome:moins_de_kills_v1.0.0": 200,
   "fantome:suivre_inities_v1.0.0": 165,
   "fantome:classement_appstore_v1.0.0": 159,
-  "fantome:ia_oui_sorties_v1.0.0": 202,
+  "fantome:ia_oui_sorties_v1.0.0": 203,
   "fantome:moins_de_cartes_franche_v1.0.0": 305,
   "fantome:tranche_centrale_non_v1.0.0": 174,
   "fantome:suivre_inities_seul_v1.0.0": 148,
@@ -191,14 +191,6 @@
  "verifiees": 15077,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:nf_sport_v1.0.0",
-   "seq": 1797,
-   "type": "SETTLE",
-   "date": "2026-10-27T03:41:06",
-   "detail": "réglé à 1 alors que le marché 6176451 n'est pas clos",
-   "op_id": "settle-99283008780034211854349423346468956597025296037150385753840610635577256234177"
-  },
   {
    "portefeuille": "fantome:nf_sport_v1.0.0",
    "seq": 1805,
@@ -1790,11 +1782,19 @@
    "date": "2026-10-31T01:41:04",
    "detail": "réglé à 1 alors que le marché 6403032 n'est pas clos",
    "op_id": "settle-110979371434007916288891970235810401490866182787366672179101294970261387370644"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_v1.0.0",
+   "seq": 3411,
+   "type": "SETTLE",
+   "date": "2026-10-31T04:35:52",
+   "detail": "réglé à 1 alors que le marché 6424225 n'est pas clos",
+   "op_id": "settle-24966329966464850231269012030690277622788792723728924314884010836163170521547"
   }
  ],
- "derniere_execution": "2026-10-31T04:34:47+00:00",
+ "derniere_execution": "2026-10-31T04:37:33+00:00",
  "dernier_seq_reglements": {
-  "principal": 5473,
+  "principal": 5474,
   "fantome:calibration_patiente_v1.0.0": 2383,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2145,
@@ -1833,7 +1833,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3410,
+  "fantome:nf_sport_v1.0.0": 3412,
   "fantome:nm_court_v1.0.0": 2066,
   "fantome:nm_crypto_v1.0.0": 1744,
   "fantome:nm_hors_crypto_v1.0.0": 2103,
@@ -1973,7 +1973,7 @@
   "fantome:moins_de_kills_v1.0.0": 200,
   "fantome:suivre_inities_v1.0.0": 165,
   "fantome:classement_appstore_v1.0.0": 159,
-  "fantome:ia_oui_sorties_v1.0.0": 202,
+  "fantome:ia_oui_sorties_v1.0.0": 203,
   "fantome:moins_de_cartes_franche_v1.0.0": 305,
   "fantome:tranche_centrale_non_v1.0.0": 174,
   "fantome:suivre_inities_seul_v1.0.0": 148,
