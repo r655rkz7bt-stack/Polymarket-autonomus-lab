@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1783,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1768,
   "fantome:outsider_sport_patiente_v1.0.0": 1811,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2484,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2486,
   "fantome:contrer_crypto_v1.0.0": 2290,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1765,
   "fantome:loterie_meteo_v1.0.0": 1967,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 121,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 144
  },
- "verifiees": 15165,
+ "verifiees": 15166,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-19483937434467479220108169182510129197311028067786468507884499961811444121492"
   }
  ],
- "derniere_execution": "2026-10-31T10:58:19+00:00",
+ "derniere_execution": "2026-10-31T11:04:41+00:00",
  "dernier_seq_reglements": {
-  "principal": 5561,
+  "principal": 5563,
   "fantome:calibration_patiente_v1.0.0": 2396,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2158,
@@ -1932,7 +1932,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 727,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 671,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 402,
-  "fantome:moins_de_cartes_v1.0.0": 810,
+  "fantome:moins_de_cartes_v1.0.0": 812,
   "fantome:non_aux_drames_v1.0.0": 507,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 653,
@@ -1955,7 +1955,7 @@
   "fantome:candidats_non_v1.0.0": 307,
   "fantome:compteur_truth_v1.0.0": 325,
   "fantome:moins_de_cartes_bo5_v1.0.0": 286,
-  "fantome:moins_de_cartes_lol_v1.0.0": 305,
+  "fantome:moins_de_cartes_lol_v1.0.0": 307,
   "fantome:detroits_non_normal_v1.0.0": 271,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 452,
   "fantome:mentions_non_outsider_v1.0.0": 250,
@@ -1970,7 +1970,7 @@
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 218,
   "fantome:compteur_tweets_72_168h_v1.0.0": 226,
   "fantome:crypto_non_10_20_v1.0.0": 317,
-  "fantome:moins_de_kills_v1.0.0": 219,
+  "fantome:moins_de_kills_v1.0.0": 221,
   "fantome:suivre_inities_v1.0.0": 178,
   "fantome:classement_appstore_v1.0.0": 172,
   "fantome:ia_oui_sorties_v1.0.0": 218,
