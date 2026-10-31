@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5726,
+  "principal": 5727,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2178,
@@ -104,7 +104,7 @@
   "fantome:mots_prononces_v1.0.0": 950,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 771,
-  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1158,
+  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1160,
   "fantome:nf_tennis_debut_match_v1.0.0": 960,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 309,
   "fantome:moins_de_cartes_lol_v1.0.0": 330,
   "fantome:detroits_non_normal_v1.0.0": 291,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 494,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 496,
   "fantome:mentions_non_outsider_v1.0.0": 270,
   "fantome:mentions_non_v1.0.0": 268,
   "fantome:rallies_non_favori_v1.0.0": 276,
@@ -189,7 +189,7 @@
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 171,
   "fantome:sieges_coherence_v1.0.0": 27
  },
- "verifiees": 15481,
+ "verifiees": 15483,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1793,9 +1793,9 @@
    "op_id": "settle-75875866541154566753242167377031356026051546728654392074453620408413457198095"
   }
  ],
- "derniere_execution": "2026-10-31T21:30:39+00:00",
+ "derniere_execution": "2026-10-31T21:33:54+00:00",
  "dernier_seq_reglements": {
-  "principal": 5726,
+  "principal": 5727,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2178,
