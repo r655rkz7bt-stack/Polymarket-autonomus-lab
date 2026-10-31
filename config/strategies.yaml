@@ -91,7 +91,7 @@ crypto_threshold:
   explication: "On calcule avec des maths la chance que le Bitcoin dépasse un prix et on achète si le marché se trompe (en pause : ça ne marchait pas)."
   # Étape 5 : probabilité indépendante pour les marchés crypto à seuil (prix au comptant +
   # volatilité réalisée, modèle log-normal ; crypto_model.py). Jugée par l'arène en réel.
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-15"
   params:
@@ -146,7 +146,7 @@ calibration_patiente:
   # « limit_ticks » : active le mode patient (0 = rejoindre le meilleur acheteur).
   class: calibration
   limit_ticks: 1
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-15"
   table: calibration_v2.json
@@ -205,7 +205,7 @@ nf_court_prix_haut:
   morceau: "moins de 24 h, prix >= 0,90"
   class: naive_favorite
   filtres: {heures_min: 0, heures_max: 24}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-18"
   params:
@@ -226,7 +226,7 @@ nf_court_prix_haut_biais_faible:
   morceau: "moins de 24 h, prix >= 0,90, biais 0,02"
   class: naive_favorite
   filtres: {heures_min: 0, heures_max: 24}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-22"
   params:
@@ -488,7 +488,7 @@ outsider_sport_patiente:
   class: naive_favorite
   familles: [sports]
   limit_ticks: 1
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-16"
   params:
@@ -512,7 +512,7 @@ suivre_politique:
   # de la période, 17 jours gagnants sur 26 (103 paris : échantillon petit).
   class: price_move
   familles: [politics, sans_frais]
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-16"
   params:
@@ -592,7 +592,7 @@ contrer_crypto_audace:
   morceau: "prix 0,10-0,45 (billets sous 0,10 exclus), mises ×4 (Kelly entier, avantage supposé 0,08)"
   familles: [crypto]
   exclure_mots: ["up or down"]
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-27"
   hypothesis: >
@@ -626,7 +626,7 @@ contrer_crypto_patiente_audace:
   familles: [crypto]
   exclure_mots: ["up or down"]
   limit_ticks: 1
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-27"
   hypothesis: >
@@ -657,7 +657,7 @@ crypto_non_bon_marche:
   # Kelly entier, biais supposé 0,05 (le tiers du gain mesuré). Une perte apprendrait que le surprix du OUI crypto vient de la volatilité de certains mois (janvier, juin), pas d'une règle. Mise à jour 28/10/2026 (experiments/crypto_pourquoi.md) : le rendement mensuel suit le cours du mois (corrélation −0,82 avec le Bitcoin sur 17 mois, pente −1,8) : c'est un pari à la baisse ; une perte un mois de hausse du cours ne prouve rien.
   class: naive_favorite
   filtres: {familles: [crypto], issue: [non], prix_min: 0.10, prix_max: 0.45, echeance_min: 2, echeance_max: 720, question_exclut: ["up or down"]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-27"
   hypothesis: >
@@ -706,7 +706,7 @@ loterie_meteo:
   # ≈ 0,005, a gagné 4,5 % du temps. 11 cas seulement : très irrégulier, mises minuscules.
   class: naive_favorite
   familles: [weather]
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-16"
   params:
@@ -784,7 +784,7 @@ nf_sport_patiente_biais_faible:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-22"
   params:
@@ -830,7 +830,7 @@ nf_sport_patiente_matchs:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], un_match: true, prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-23"
   params:
@@ -986,7 +986,7 @@ nf_sport_patiente_tennis:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -1011,7 +1011,7 @@ nf_sport_patiente_sans_itf:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], sources_exclues: [itftennis.com], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -1035,7 +1035,7 @@ outsider_itf:
   class: naive_favorite
   familles: [sports]
   filtres: {sources: [itftennis.com], ecart_max: 0.05}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -1765,7 +1765,7 @@ nm_demi_mise:
   mere: news_momentum
   morceau: "demi-mise (Kelly 0,5)"
   class: news_momentum
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -1813,7 +1813,7 @@ outsider_sport_apres_midi:
   familles: [sports]
   filtres: {heure_utc: [12, 24]}
   limit_ticks: 1
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-17"
   params:
@@ -2053,7 +2053,7 @@ nf_sport_patiente_matin:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], heure_utc: [6, 12], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2123,7 +2123,7 @@ echelle_dates:
 
 coherence_match:
   explication: "Gagner de plus de 7 points, c'est d'abord gagner : si le handicap coûte plus cher que la victoire, on achète la paire qui gagne à coup sûr."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2133,7 +2133,7 @@ coherence_match:
 
 implication_politique:
   explication: "Pour être élu président il faut être le candidat de son parti : si « président » coûte plus que « candidat », on achète la paire gagnante."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2143,7 +2143,7 @@ implication_politique:
 
 paire_oui_non:
   explication: "Le OUI ou le NON gagne toujours : si les deux ensemble coûtent moins de 1 €, on achète les deux."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2211,7 +2211,7 @@ apres_echeance:
 
 marches_jumeaux:
   explication: "La même question posée deux fois à deux prix différents : on achète le OUI le moins cher et le NON de l'autre, ça gagne à coup sûr."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2241,7 +2241,7 @@ choc_sans_nouvelle:
 # Lot B (strategies_v3.py + references.py) : le prix de la même question ailleurs.
 kalshi_reference:
   explication: "On regarde la même question sur Kalshi, une autre plateforme ; si Polymarket la vend nettement moins cher, on achète."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params: &reference
@@ -2275,7 +2275,7 @@ manifold_reference:
 
 futurs_bookmakers:
   explication: "Qui sera champion de la saison (NBA, NFL…) ? On compare Polymarket à la cote du meilleur bookmaker, Pinnacle."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2285,7 +2285,7 @@ futurs_bookmakers:
 
 football_trois_issues:
   explication: "En football il y a trois issues (victoire, nul, victoire) : on compare chacune aux cotes des bookmakers."
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2335,7 +2335,7 @@ mots_prononces_patiente:
   morceau: "patiente (ordre posé)"
   class: mots_prononces
   limit_ticks: 1
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2408,7 +2408,7 @@ cotes_tennis:
   morceau: "tennis"
   class: cotes_bookmakers
   filtres: {disciplines: [tennis]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2450,7 +2450,7 @@ crypto_threshold_24_72h:
   morceau: "délai jusqu'à la fin 24-72 h"
   class: crypto_threshold
   filtres: {echeance_min: 24, echeance_max: 72}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2564,7 +2564,7 @@ nf_tennis_12_18h:
   morceau: "tennis, achat 12-18 h UTC"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis], heure_utc: [12, 18]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-20"
   params:
@@ -2698,7 +2698,7 @@ compteur_tweets_non:
   mere: compteur_tweets
   morceau: "NON seulement, sans NYC Mayor"
   class: compteur_tweets
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2782,7 +2782,7 @@ compteur_tweets_non_ecart_large:
   mere: compteur_tweets_non
   morceau: "sans Elon ni Trump, calcul et prix à 15 points ou plus"
   class: compteur_tweets
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-24"
   params:
@@ -2839,7 +2839,7 @@ nf_sport_patiente_tennis_875_900:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.875, prix_max: 0.90, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2861,7 +2861,7 @@ nf_sport_patiente_72_168h_850_875:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], echeance_min: 72, echeance_max: 168, prix_min: 0.85, prix_max: 0.875, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2902,7 +2902,7 @@ nf_sport_vainqueur:
   morceau: "type de pari vainqueur"
   class: naive_favorite
   filtres: {familles: [sports], types_pari: [vainqueur]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2924,7 +2924,7 @@ nf_sport_patiente_tennis_850_875:
   class: naive_favorite
   limit_ticks: 1
   filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.85, prix_max: 0.875, prix_final: true}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2965,7 +2965,7 @@ nf_tennis_prix_bas_vainqueur:
   morceau: "tennis, prix 0,80-0,875, type vainqueur"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis], prix_max: 0.875, types_pari: [vainqueur]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -2986,7 +2986,7 @@ nf_tennis_prix_bas_800_850:
   morceau: "tennis, prix payé 0,800-0,850"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis], prix_min: 0.80, prix_max: 0.85}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -3029,7 +3029,7 @@ nf_sport_925_950:
   morceau: "sport, prix payé 0,925-0,950"
   class: naive_favorite
   filtres: {familles: [sports], prix_min: 0.925, prix_max: 0.95}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-22"
   params:
@@ -3094,7 +3094,7 @@ nf_tennis_vainqueur:
   morceau: "tennis, type vainqueur"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis], types_pari: [vainqueur]}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
@@ -3159,7 +3159,7 @@ nf_sport_prix_haut_3_6h:
   morceau: "sport, prix 0,875-0,95, fin dans 3-6 h"
   class: naive_favorite
   filtres: {familles: [sports], prix_min: 0.875, prix_max: 0.95, echeance_min: 3, echeance_max: 6}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-22"
   params:
@@ -3378,7 +3378,7 @@ moins_de_cartes_franche:
   mere: moins_de_cartes
   morceau: "mêmes paris, mises ×2 (demi-Kelly)"
   class: moins_de_cartes
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-27"
   hypothesis: >
@@ -3534,7 +3534,7 @@ nf_tennis_12_18h_vainqueur_800_850:
   morceau: "tennis, vainqueur, 12-18 h UTC, prix payé 0,800-0,850"
   class: naive_favorite
   filtres: {familles: [sports], disciplines: [tennis], heure_utc: [12, 18], types_pari: [vainqueur], prix_min: 0.8, prix_max: 0.85}
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-23"
   params:
@@ -3910,7 +3910,7 @@ classement_appstore:
   # Sur le passé on ne peut rien tester en direct (Apple n'archive pas le classement) ; l'archive des marchés (182 événements réglés, familles_tranches.md) montre que le gagnant de la semaine
   # précédente, coté 0,74-0,80, gagne 48 fois pour 59,3 attendues : le marché surcote la stabilité du classement SANS regarder le classement ; ici on ne joue que le n°1 du moment, dans les 6 h.
   class: classement_appstore
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-27"
   hypothesis: >

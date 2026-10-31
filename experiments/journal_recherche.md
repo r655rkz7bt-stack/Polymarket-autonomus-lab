@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-31 (passage chercheur de l'après-midi, 15 h 55 → ~16 h 15 UTC ; durée visée 93 min non atteinte : les pistes restantes attendent des données futures (Géorgie 04/11, rougeole, essence, sièges 04/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-10-31_apres_midi_eliminees_et_mots.md`). Obligation tenue : les 43 éliminées encore configurées sont coupées (`enabled: false`), `load_strategies(..., include_disabled=True)` pour les tests de config ; 652 tests verts. Constat `estimation_perimee` de `mots_prononces` : 84 paris / 14 événements, estimé 7,7 contre 6,5 attendus par les prix et 6,0 gagnés, gain +0,6 % : pas d'avantage, modèle trop confiant de ~12 points, trop mince pour agir.
+- **Recherche** : pas de verdict. Essence +1 jour réglé (31/10). Les filles « 80/20 » (contrer_crypto, nm_long) refusées : 9 à 56 paris, mère crypto écartée.
+- **Arène** : rien ajouté (aucune idée neuve plausible ; pas de fille de favori). 43 stratégies éliminées coupées de la config.
+- **Leçons** : une obligation qui revient à chaque passage se règle par la cause (ici : les tests dépendant de la config), pas en la contournant.
+- **Reste ouvert** : (a) `sieges_coherence`, Géorgie le 04/11 ; (b) `mots_prononces` à 30 événements ; (c) rougeole à 8 mercredis, essence à 40 jours.
+
 ## 2026-10-31 (passage chercheur de midi, 10 h 55 → ~11 h 15 UTC (premier jet poussé, suite ci-dessous si présente) ; durée visée 91 min : les autres pistes attendent des données futures (rougeole, essence : relevés inchangés ; Géorgie le 04/11))
 
 - **Enquête** (fiche : `enquetes/2026-10-31_midi_copie_et_seuil_d_entree.md`, famille 2). Aucune obligation grave. Copie du principal jeton par jeton pour `moins_de_cartes` : 19 copiés sur 53 ; 10 manques = budget de la part épuisé (14-18 €), **24 = stratégie absente du principal le 29/10 de 02 h à 17 h** (t = 0,99 sous le seuil d'entrée 1,0 ; `arena.allocation` ne réserve le seuil de maintien qu'au champion). +12,5 € manqués. Pas de défaut de code, pas d'assouplissement sans rejeu.

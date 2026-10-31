@@ -756,7 +756,7 @@ class Filtered:
         return getattr(self.inner, name)
 
 
-def load_strategies(path: Path) -> list:
+def load_strategies(path: Path, include_disabled: bool = False) -> list:
     try:
         raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     except (OSError, yaml.YAMLError) as exc:
@@ -767,7 +767,7 @@ def load_strategies(path: Path) -> list:
     classes = dict(STRATEGY_CLASSES, **V2, **V3)
     strategies = []
     for strategy_id, spec in raw.items():
-        if not isinstance(spec, dict) or not spec.get("enabled"):
+        if not isinstance(spec, dict) or not (spec.get("enabled") or (include_disabled and "version" in spec)):
             continue
         # « class: » : variante d'une stratégie existante sous un autre nom (son propre fantôme).
         cls = classes.get(str(spec.get("class", strategy_id)))

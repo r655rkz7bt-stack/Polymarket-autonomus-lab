@@ -159,8 +159,10 @@ def test_new_gamma_fields_and_ended_markets_stay_away_from_other_strategies():
 
 def test_all_twenty_strategies_lot_a_load_from_the_repository_config():
     from polymarket_agent.strategy_engine import load_strategies
+    every = {s.strategy_id for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     ids = {s.strategy_id for s in load_strategies(ROOT / "config" / "strategies.yaml")}
-    assert {"echelle_dates", "coherence_match", "implication_politique", "paire_oui_non", "marches_jumeaux"} <= ids
+    # coherence_match, implication_politique, paire_oui_non, marches_jumeaux : éliminées, coupées le 31/10/2026 (enabled: false)
+    assert {"echelle_dates", "coherence_match", "implication_politique", "paire_oui_non", "marches_jumeaux"} <= every
     assert "outsiders_surcotes" not in ids  # coupée le 27/10/2026 : −2,0 % sur 124 paris du passé (experiments/decroissance_passe.md)
     assert "marche_neuf" not in ids  # coupée le 27/10/2026 : −2,3 à −4,5 % sur 862-993 favoris de marchés neufs (experiments/decroissance_passe.md)
     assert "decroissance_temps" not in ids  # coupée le 27/10/2026 : −2,6 % sur 742 paris du passé (experiments/decroissance_passe.md)
@@ -282,7 +284,7 @@ def test_fewer_maps_buys_under_a_few_hours_before_an_esport_series(tmp_path):
 def test_title_filter_keeps_only_league_of_legends_for_the_maps_daughter(tmp_path):
     """25/10/2026 : « Games Total » ne nomme pas le jeu, seul le titre de l'événement le fait (fille LoL de moins_de_cartes)."""
     from polymarket_agent.strategy_engine import Filtered, load_strategies
-    cfg = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml")}["moins_de_cartes_lol"]
+    cfg = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["moins_de_cartes_lol"]
     assert cfg.filters == {"titre_contient": ["lol:", "league of legends"]}
     lol = _esport("l", 3, title="LoL: T1 vs Gen.G (BO3) - LCK Playoffs")
     dota = _esport("d", 3)
@@ -292,7 +294,7 @@ def test_title_filter_keeps_only_league_of_legends_for_the_maps_daughter(tmp_pat
     out = window.propose([lol, dota], books, _state(tmp_path), LIMITS, "b1")
     assert [p.outcome for p in out.proposals] == ["Under"] and len(out.proposals) == 1
     # Fille BO5 : le titre « (BO5) » passe, un « (BO3) » non.
-    cfg5 = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml")}["moins_de_cartes_bo5"]
+    cfg5 = {c.strategy_id: c for c in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["moins_de_cartes_bo5"]
     bo5, bo3 = _esport("f", 3, title="LoL: T1 vs Gen.G (BO5) - Worlds Finals"), _esport("g", 3)
     w5 = Filtered(cfg5.inner, cfg5.filters)
     assert [w5._market_ok(m, NOW) for m in (bo5, bo3)] == [True, False]
