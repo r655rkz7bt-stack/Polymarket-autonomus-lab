@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5541,
+  "principal": 5542,
   "fantome:calibration_patiente_v1.0.0": 2393,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2155,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1780,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1765,
   "fantome:outsider_sport_patiente_v1.0.0": 1808,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2480,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2482,
   "fantome:contrer_crypto_v1.0.0": 2286,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1762,
   "fantome:loterie_meteo_v1.0.0": 1964,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 118,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 141
  },
- "verifiees": 15143,
+ "verifiees": 15144,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-24966329966464850231269012030690277622788792723728924314884010836163170521547"
   }
  ],
- "derniere_execution": "2026-10-31T09:29:43+00:00",
+ "derniere_execution": "2026-10-31T09:32:57+00:00",
  "dernier_seq_reglements": {
-  "principal": 5541,
+  "principal": 5542,
   "fantome:calibration_patiente_v1.0.0": 2393,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2155,
@@ -1819,7 +1819,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1765,
   "fantome:outsider_sport_patiente_v1.0.0": 1808,
   "fantome:contrer_crypto_patiente_v1.0.0": 2482,
-  "fantome:contrer_crypto_v1.0.0": 2286,
+  "fantome:contrer_crypto_v1.0.0": 2288,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1762,
   "fantome:loterie_meteo_v1.0.0": 1964,
   "fantome:suivre_politique_v1.0.0": 1953,
@@ -1833,7 +1833,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3448,
+  "fantome:nf_sport_v1.0.0": 3450,
   "fantome:nm_court_v1.0.0": 2076,
   "fantome:nm_crypto_v1.0.0": 1754,
   "fantome:nm_hors_crypto_v1.0.0": 2118,
@@ -1975,7 +1975,7 @@
   "fantome:classement_appstore_v1.0.0": 169,
   "fantome:ia_oui_sorties_v1.0.0": 212,
   "fantome:moins_de_cartes_franche_v1.0.0": 315,
-  "fantome:tranche_centrale_non_v1.0.0": 184,
+  "fantome:tranche_centrale_non_v1.0.0": 188,
   "fantome:suivre_inities_seul_v1.0.0": 158,
   "fantome:compteur_tweets_oui_v1.0.0": 191,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 151,
