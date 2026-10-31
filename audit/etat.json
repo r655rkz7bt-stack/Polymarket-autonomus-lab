@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5438,
+  "principal": 5439,
   "fantome:calibration_patiente_v1.0.0": 2378,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2140,
@@ -1792,9 +1792,9 @@
    "op_id": "settle-110979371434007916288891970235810401490866182787366672179101294970261387370644"
   }
  ],
- "derniere_execution": "2026-10-31T01:53:12+00:00",
+ "derniere_execution": "2026-10-31T01:57:22+00:00",
  "dernier_seq_reglements": {
-  "principal": 5438,
+  "principal": 5439,
   "fantome:calibration_patiente_v1.0.0": 2378,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2140,
