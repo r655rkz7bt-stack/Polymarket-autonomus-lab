@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5437,
+  "principal": 5438,
   "fantome:calibration_patiente_v1.0.0": 2378,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2140,
@@ -25,7 +25,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1750,
   "fantome:outsider_sport_patiente_v1.0.0": 1793,
   "fantome:contrer_crypto_patiente_v1.0.0": 2455,
-  "fantome:contrer_crypto_v1.0.0": 2262,
+  "fantome:contrer_crypto_v1.0.0": 2263,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1747,
   "fantome:loterie_meteo_v1.0.0": 1949,
   "fantome:suivre_politique_v1.0.0": 1938,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3390,
+  "fantome:nf_sport_v1.0.0": 3393,
   "fantome:nm_court_v1.0.0": 2054,
   "fantome:nm_crypto_v1.0.0": 1739,
   "fantome:nm_hors_crypto_v1.0.0": 2087,
@@ -101,7 +101,7 @@
   "fantome:predictit_reference_v1.0.0": 687,
   "fantome:fatigue_nhl_v1.0.0": 737,
   "fantome:mots_nouveaux_v1.0.0": 823,
-  "fantome:mots_prononces_v1.0.0": 901,
+  "fantome:mots_prononces_v1.0.0": 902,
   "fantome:crypto_threshold_24_72h_v1.0.0": 642,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 715,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1088,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 431,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 928,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1000,
-  "fantome:nf_sport_18_24h_v1.0.0": 1025,
+  "fantome:nf_sport_18_24h_v1.0.0": 1027,
   "fantome:nf_sport_925_950_v1.0.0": 737,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 430,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 797,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 102,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 125
  },
- "verifiees": 15047,
+ "verifiees": 15048,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-110979371434007916288891970235810401490866182787366672179101294970261387370644"
   }
  ],
- "derniere_execution": "2026-10-31T01:49:27+00:00",
+ "derniere_execution": "2026-10-31T01:53:12+00:00",
  "dernier_seq_reglements": {
-  "principal": 5437,
+  "principal": 5438,
   "fantome:calibration_patiente_v1.0.0": 2378,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2140,
@@ -1819,7 +1819,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1750,
   "fantome:outsider_sport_patiente_v1.0.0": 1793,
   "fantome:contrer_crypto_patiente_v1.0.0": 2455,
-  "fantome:contrer_crypto_v1.0.0": 2262,
+  "fantome:contrer_crypto_v1.0.0": 2263,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1747,
   "fantome:loterie_meteo_v1.0.0": 1949,
   "fantome:suivre_politique_v1.0.0": 1938,
@@ -1833,7 +1833,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3395,
+  "fantome:nf_sport_v1.0.0": 3397,
   "fantome:nm_court_v1.0.0": 2054,
   "fantome:nm_crypto_v1.0.0": 1739,
   "fantome:nm_hors_crypto_v1.0.0": 2087,
@@ -1895,7 +1895,7 @@
   "fantome:predictit_reference_v1.0.0": 687,
   "fantome:fatigue_nhl_v1.0.0": 737,
   "fantome:mots_nouveaux_v1.0.0": 823,
-  "fantome:mots_prononces_v1.0.0": 901,
+  "fantome:mots_prononces_v1.0.0": 902,
   "fantome:crypto_threshold_24_72h_v1.0.0": 642,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 715,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1088,
@@ -1925,7 +1925,7 @@
   "fantome:jobs_favori_non_v1.0.0": 431,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 928,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1000,
-  "fantome:nf_sport_18_24h_v1.0.0": 1025,
+  "fantome:nf_sport_18_24h_v1.0.0": 1027,
   "fantome:nf_sport_925_950_v1.0.0": 737,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 430,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 797,
@@ -1982,5 +1982,5 @@
   "fantome:favori_esport_milieu_v1.0.0": 102,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 125
  },
- "reglements_verifies": 9034
+ "reglements_verifies": 9035
 }
