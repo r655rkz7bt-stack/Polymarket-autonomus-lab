@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-31 (passage chercheur de midi, 10 h 55 → ~11 h 15 UTC (premier jet poussé, suite ci-dessous si présente) ; durée visée 91 min : les autres pistes attendent des données futures (rougeole, essence : relevés inchangés ; Géorgie le 04/11))
+
+- **Enquête** (fiche : `enquetes/2026-10-31_midi_copie_et_seuil_d_entree.md`, famille 2). Aucune obligation grave. Copie du principal jeton par jeton pour `moins_de_cartes` : 19 copiés sur 53 ; 10 manques = budget de la part épuisé (14-18 €), **24 = stratégie absente du principal le 29/10 de 02 h à 17 h** (t = 0,99 sous le seuil d'entrée 1,0 ; `arena.allocation` ne réserve le seuil de maintien qu'au champion). +12,5 € manqués. Pas de défaut de code, pas d'assouplissement sans rejeu.
+- **Recherche** : relevés rougeole (4 852 au 29/10, pas de nouveau mercredi) et essence (inchangé : 0 jour ajouté) sans suite. **Piste 16 neuve** (`coherence_sieges.md`) : 19 échelles « How many House seats will the Democrats win in <État> ? » contre 287 marchés de district ; la somme des districts diffère de la moyenne de l'échelle jusqu'à 1,85 siège (Caroline du Nord « 6 ou plus » 0,376 contre 0,73-0,83 calculé ; Floride −1,3 ; New York −1,05 ; Texas −0,9 ; Colorado, Virginie, Nevada, Ohio d'accord). Pas de test sur le passé possible (aucune échelle d'État réglée) : verdict **expérience en fantôme**.
+- **Arène** : ajout de `sieges_coherence` (expérience audacieuse, demi-Kelly, au plus 2 tranches par État ; source `sieges` toutes les 15 min, `sieges.py`, 7 tests, 652 tests verts ; cycle local : 16 tranches rattachées, 4 achats). Rien retiré.
+- **Leçons** : un manque de copie sans refus noté peut venir de la composition du principal (seuil d'entrée), pas du budget ; vérifier le t rejoué de la stratégie à l'heure du trou.
+- **Reste ouvert** : (a) lire `sieges_coherence` le 04/11 (gagnés contre attendus, somme réelle des sièges contre districts) ; extension gouverneurs (event 101856) et Sénat + Chambre (633839) ; (b) Géorgie en direct le 04/11 vers 1 h UTC ; (c) rougeole à 8 mercredis, essence à 40 jours ; (d) va-et-vient au seuil d'entrée : rejeu avant un seuil de maintien pour les non-champions.
+
 ## 2026-10-31 (passage chercheur du matin, 05 h 55 → ~06 h 10 UTC ; durée visée 88 min non atteinte : pistes restantes en attente de données ou d'événements futurs, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-31_matin_arene_contre_prix.md`). Aucun défaut de code, aucune obligation grave. Constat `estimation_gonflee` relancé sur 3 666 jetons : 2 518,5 gagnés pour 2 580,4 attendus par les prix (−1,7 pt) ; bande 0,60-0,80 −5,5 pts (1 bande sur 7, hasard plausible) ; `moins_de_cartes` +15,2 → +5,5 pts.

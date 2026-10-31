@@ -3637,6 +3637,35 @@ seismes_marche:
     max_ecart_doublon: {value: 0.15, min: 0.0, max: 1.0}  # 24/10/2026 : pas d'achat si le compte sans doublon entre réseaux USGS change la chance de plus de 0,15
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
 
+sieges_coherence:
+  explication: "Les petits marchés « combien de sièges la Chambre donnera aux démocrates dans tel État » ne sont pas d'accord avec les gros marchés des districts du même État ; on achète la tranche que les districts disent sous-cotée, ou on parie contre celle qu'ils disent surcotée."
+  # Expérience audacieuse (31/10/2026, experiments/coherence_sieges.md). IDÉE NEUVE : mécanisme de cohérence entre deux familles de marchés (aucune fille de favori).
+  # RELEVÉ du 31/10 (prix en direct, 18 États avec les 4 à 52 districts) : la somme des prix démocrates des districts donne le nombre moyen de sièges sans dépendre de la corrélation ;
+  # l'échelle de la Caroline du Nord vaut ≈ 5,2 sièges contre 6,77 pour ses 14 districts (« 6 ou plus » à 0,376 pour 0,73-0,83 calculé, « exactement 5 » à 0,385 pour 0,14-0,15), Floride −1,3,
+  # New York −1,05, Texas −0,9 ; Colorado, Virginie, Nevada, Ohio sont d'accord (±0,2). Les échelles sont minces (0,4-38 k$) ; les districts valent 20 à 300 k$ chacun.
+  # AUCUN test sur le passé possible (aucune échelle d'État réglée sur Polymarket) : un seul tirage national le 03/11, tranches liées entre États. Résultat connu le 04/11.
+  # Mise franche : Kelly à la moitié sur une chance calculée ramenée de 30 % vers le milieu du marché. Une perte apprendrait que l'échelle contient une information que les districts
+  # ignorent (carte électorale contestée, recomptage) ou que le choc commun entre districts est plus fort que ±0,7 en logit ; un gain, que les échelles minces sont mal arbitrées par rapport aux districts.
+  class: sieges_coherence
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-10-31"
+  hypothesis: >
+    Les prix des districts (très échangés) disent plus juste que ceux des échelles d'État (minces) : l'échelle de la Caroline du Nord cote 0,376 « 6 sièges ou plus » quand ses 14
+    districts en promettent 6,77 en moyenne. Mesure : gagnés contre attendus des tranches achetées après le 03/11. Une perte apprendrait que les échelles intègrent une information
+    que les districts ignorent, ou que le lien entre districts est plus fort que supposé ; un seul tirage, donc jamais « retenue » avant d'autres élections.
+  params:
+    min_net_edge:   {value: 0.10, min: 0.0, max: 0.40}    # chance calculée − prix demandé
+    retrait:        {value: 0.30, min: 0.0, max: 1.0}     # part du chemin laissée au marché : chance = milieu + 0,7 × (loi calculée − milieu)
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.92, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 0.5, min: 0.1, max: 24}      # prix des districts relevés toutes les 15 minutes
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 200, min: 0, max: 400}
+    max_proposals_per_cycle: {value: 6, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même État gagnent ou perdent ensemble
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}
+
 spacex_cumul:
   explication: "SpaceX tire une fusée presque tous les deux jours et un site officiel les compte ; on regarde combien il y en a déjà eu dans le mois ou l'année, et on achète la case que tout le monde sous-estime ou on parie contre celle qui est devenue impossible."
   class: spacex_cumul

@@ -1385,6 +1385,63 @@ class SeismesMarche(_Base):
         return self._finish(out, props)
 
 
+class SiegesCoherence(_Base):
+    """Échelles « How many House seats will the Democrats win in <État> ? » contre les marchés de district du même État (sieges.py, expérience audacieuse du
+    31/10/2026, experiments/coherence_sieges.md). La somme des prix démocrates des districts (marchés 10 à 50 fois plus échangés) donne le nombre moyen de
+    sièges sans dépendre de la corrélation ; la loi complète vient d'un choc commun entre districts. On achète le côté (OUI ou NON) de la tranche dont la
+    chance calculée dépasse le prix demandé d'au moins `min_net_edge`, après avoir ramené la chance calculée vers le milieu du marché de `retrait`.
+    Aucun test sur le passé (aucune échelle d'État réglée sur Polymarket) : expérience en fantôme, un seul tirage (le 03/11), résultat connu le 04/11."""
+
+    strategy_id = "sieges_coherence"
+    required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "sieges", int(self.params.get("max_candidates", 200)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props, scored = StrategyOutput(), self.params, _now(books), [], []
+        retrait = float(p.get("retrait", 0.0))
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("sieges")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("prix des districts pas à jour")
+                continue
+            yes = books.get(m.token_ids[0])
+            if yes is None or yes.best_bid is None or yes.best_ask is None:
+                out.abstain("carnet vide")
+                continue
+            mid = (float(yes.best_bid) + float(yes.best_ask)) / 2
+            fair = min(max(mid + (1 - retrait) * (float(ref["p"]) - mid), 0.03), 0.97)
+            best = None
+            for side, est in ((0, fair), (1, 1 - fair)):
+                book = books.get(m.token_ids[side])
+                ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
+                if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
+                    continue
+                if best is None or est - ask > best[2]:
+                    best = (side, est, est - ask)
+            if best is None:
+                out.abstain("issue hors de la plage de prix ou carnet vide")
+                continue
+            scored.append((best[2], m, best[0], best[1], ref))
+        per_event: dict = {}
+        for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
+            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 2)):
+                out.abstain("déjà deux tranches de cet État")
+                continue
+            prop = self._buy(m, books, state, side, est, est, est, bucket, marks, out,
+                             f"sieges:{ref['titre']}", f"loi calculée {est:.3f} pour l'issue achetée",
+                             "l'échelle sait quelque chose que les districts ignorent (carte électorale, recomptage), ou les districts sont mal cotés ensemble")
+            if prop is not None:
+                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
+                props.append(prop)
+        return self._finish(out, props)
+
+
 class ToucherMetaux(_Base):
     """Marchés « What will Gold (XAUUSD) / Silver (XAGUSD) hit Week of … » (échelle de barres HIGH et LOW, réglée sur les bougies d'1 minute de Pyth). Chance de
     toucher la barre d'ici la fin de la semaine : barrière d'un mouvement brownien sans dérive, volatilité fixe, maximum et minimum déjà relevés depuis la création
@@ -1706,4 +1763,4 @@ CLASSES = {c.strategy_id: c for c in (ClassementAppStore, SuivreInities, MoinsDe
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
