@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5559,
+  "principal": 5560,
   "fantome:calibration_patiente_v1.0.0": 2395,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2157,
@@ -42,9 +42,9 @@
   "fantome:nf_sport_v1.0.0": 3463,
   "fantome:nm_court_v1.0.0": 2080,
   "fantome:nm_crypto_v1.0.0": 1756,
-  "fantome:nm_hors_crypto_v1.0.0": 2123,
+  "fantome:nm_hors_crypto_v1.0.0": 2125,
   "fantome:nm_long_v1.0.0": 1930,
-  "fantome:nm_prix_bas_v1.0.0": 2141,
+  "fantome:nm_prix_bas_v1.0.0": 2143,
   "fantome:nm_prix_haut_v1.0.0": 1828,
   "fantome:naive_favorite_large_v1.0.0": 1705,
   "fantome:nf_sport_patiente_v1.0.0": 2548,
@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 726,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 670,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 401,
-  "fantome:moins_de_cartes_v1.0.0": 809,
+  "fantome:moins_de_cartes_v1.0.0": 810,
   "fantome:non_aux_drames_v1.0.0": 505,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 653,
@@ -188,7 +188,7 @@
   "fantome:favori_esport_milieu_v1.0.0": 121,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 144
  },
- "verifiees": 15163,
+ "verifiees": 15165,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1792,9 +1792,9 @@
    "op_id": "settle-19483937434467479220108169182510129197311028067786468507884499961811444121492"
   }
  ],
- "derniere_execution": "2026-10-31T10:48:02+00:00",
+ "derniere_execution": "2026-10-31T10:53:42+00:00",
  "dernier_seq_reglements": {
-  "principal": 5559,
+  "principal": 5560,
   "fantome:calibration_patiente_v1.0.0": 2395,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2157,
@@ -1818,7 +1818,7 @@
   "fantome:favori_politique_v1.0.0": 1782,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1767,
   "fantome:outsider_sport_patiente_v1.0.0": 1810,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2484,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2486,
   "fantome:contrer_crypto_v1.0.0": 2290,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1764,
   "fantome:loterie_meteo_v1.0.0": 1966,
@@ -1932,7 +1932,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 726,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 670,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 401,
-  "fantome:moins_de_cartes_v1.0.0": 809,
+  "fantome:moins_de_cartes_v1.0.0": 810,
   "fantome:non_aux_drames_v1.0.0": 505,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 653,
