@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5623,
+  "principal": 5624,
   "fantome:calibration_patiente_v1.0.0": 2405,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2167,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3534,
+  "fantome:nf_sport_v1.0.0": 3540,
   "fantome:nm_court_v1.0.0": 2091,
   "fantome:nm_crypto_v1.0.0": 1766,
   "fantome:nm_hors_crypto_v1.0.0": 2139,
@@ -114,7 +114,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 708,
   "fantome:nf_court_football_soir_v1.0.0": 761,
   "fantome:nf_court_soir_v1.0.0": 770,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1017,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1019,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 759,
@@ -189,7 +189,7 @@
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 155,
   "fantome:sieges_coherence_v1.0.0": 15
  },
- "verifiees": 15264,
+ "verifiees": 15267,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1793,9 +1793,9 @@
    "op_id": "settle-28778220448378360839965929550394772902442977379662097175726829629085476874546"
   }
  ],
- "derniere_execution": "2026-10-31T15:38:52+00:00",
+ "derniere_execution": "2026-10-31T15:42:59+00:00",
  "dernier_seq_reglements": {
-  "principal": 5623,
+  "principal": 5624,
   "fantome:calibration_patiente_v1.0.0": 2405,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2167,
@@ -1820,7 +1820,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1777,
   "fantome:outsider_sport_patiente_v1.0.0": 1820,
   "fantome:contrer_crypto_patiente_v1.0.0": 2498,
-  "fantome:contrer_crypto_v1.0.0": 2304,
+  "fantome:contrer_crypto_v1.0.0": 2306,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1774,
   "fantome:loterie_meteo_v1.0.0": 1976,
   "fantome:suivre_politique_v1.0.0": 1965,
@@ -1904,12 +1904,12 @@
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1298,
   "fantome:outsider_itf_v1.0.0": 720,
   "fantome:nf_court_football_v1.0.0": 878,
-  "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1083,
+  "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1085,
   "fantome:nf_tennis_12_18h_v1.0.0": 972,
   "fantome:compteur_tweets_non_v1.0.0": 708,
   "fantome:nf_court_football_soir_v1.0.0": 761,
   "fantome:nf_court_soir_v1.0.0": 770,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1019,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1021,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 759,
