@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-10-31 (passage chercheur de nuit, 20 h 55 → ~21 h 05 UTC ; durée visée 96 min non atteinte : toutes les pistes restantes attendent des données futures (Géorgie 04/11, sièges 04/11, rougeole, essence), arrêt sans remplissage)
+
+- **Enquête**. Obligation tenue : `compteur_tweets_non_patiente` (éliminée, −24 %, surconfiance) coupée de la config (`enabled: false`), test de config mis à jour ; 652 tests verts. Aucun constat grave ; les constats « à regarder » (chance sur `contrer_crypto_patiente`, `crypto_threshold_prix_bas`, `compteur_tweets_12_18h` : 3 paris = plus de 100 % du gain, une journée = 200-300 %) sont des gains concentrés sur peu de jours, déjà jugés bruit. Pas de contrôle à la main poussé ce passage (pas de nouvelle donnée depuis le passage de 16 h).
+- **Recherche** : pas de verdict, rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les 3 filles « 80/20 » (crypto, 9 à 83 paris) refusées : mères crypto écartées sur le passé (`contrer_crypto_passe.md`), z non significatifs.
+- **Leçons** : rien de nouveau.
+- **Reste ouvert** : inchangé (Géorgie 04/11 ~1 h UTC ; `sieges_coherence` le 04/11 ; rougeole 8 mercredis ; essence 40 jours).
+
 ## 2026-10-31 (passage chercheur de l'après-midi, 15 h 55 → ~16 h 15 UTC ; durée visée 93 min non atteinte : les pistes restantes attendent des données futures (Géorgie 04/11, rougeole, essence, sièges 04/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-10-31_apres_midi_eliminees_et_mots.md`). Obligation tenue : les 43 éliminées encore configurées sont coupées (`enabled: false`), `load_strategies(..., include_disabled=True)` pour les tests de config ; 652 tests verts. Constat `estimation_perimee` de `mots_prononces` : 84 paris / 14 événements, estimé 7,7 contre 6,5 attendus par les prix et 6,0 gagnés, gain +0,6 % : pas d'avantage, modèle trop confiant de ~12 points, trop mince pour agir.

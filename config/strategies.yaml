@@ -2810,7 +2810,7 @@ compteur_tweets_non_patiente:
   morceau: "patiente (ordre posé)"
   class: compteur_tweets
   limit_ticks: 1
-  enabled: true
+  enabled: false  # éliminée (31/10/2026 soir : -24 %, surconfiance) ; ne revient pas sous ce nom
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
