@@ -82,7 +82,7 @@ def test_underdog_option_buys_the_cheaper_side_before_the_game(tmp_path):
 
 
 def test_repository_variants_carry_their_families():
-    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     assert loaded["favori_politique"].families == ("politics", "sans_frais")
     assert loaded["favori_politique_patiente"].inner.families == ("politics", "sans_frais")
     assert loaded["outsider_sport_patiente"].inner.families == ("sports",)
@@ -115,7 +115,7 @@ def test_price_move_follows_or_fades_a_six_hour_move(tmp_path):
 
 def test_excluded_words_skip_markets():
     from polymarket_agent.strategy_engine import excluded
-    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     words = loaded["contrer_crypto"].exclude_words
     assert words == ("up or down",) and loaded["contrer_crypto_patiente"].inner.exclude_words == words
     m = parse_market(raw_market("c", question="Bitcoin Up or Down on October 17?"))
@@ -126,7 +126,7 @@ def test_bold_crypto_daughters_play_only_the_cheap_contrarian_band_with_bigger_s
     """Expériences audacieuses (27/10/2026, experiments/audace.md) : les filles « audace » des deux fantômes « contrer » ne
     prennent que le côté contraire coté 0,10-0,45 (sous 0,10 : 1 gagné sur 80 dans les journaux du 15 au 26/10), avec des
     mises bien plus grosses que leur mère (Kelly entier et a priori 0,08, contre un quart de Kelly et 0,05)."""
-    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     bold, mother, posted = loaded["contrer_crypto_audace"], loaded["contrer_crypto"], loaded["contrer_crypto_patiente_audace"]
     assert bold.families == ("crypto",) and bold.exclude_words == ("up or down",)
     assert isinstance(posted, PatientOrders) and posted.inner.params["max_price"] == D("0.45")
@@ -200,7 +200,7 @@ def test_tennis_debut_match_only_buys_in_the_first_36_minutes_after_kickoff(tmp_
     """Piste tennis (20/10/2026) : le favori à 0,80-0,95 gagnait un peu plus souvent que son prix 15 à 30 minutes
     après le coup d'envoi (+3,1 % aux prix payés, 1 096 matchs) ; avant le match et plus tard, rien."""
     from polymarket_agent.strategy_engine import Filtered
-    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["nf_tennis_debut_match"]
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["nf_tennis_debut_match"]
     assert cfg.filters == {"familles": ["sports"], "disciplines": ["tennis"], "types_pari": ["vainqueur"],
                            "heures_min": -0.6, "heures_max": 0}
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
@@ -251,7 +251,7 @@ def test_price_filter_of_a_patient_daughter_reads_the_posted_order_price(tmp_pat
     assert not new.propose([m], books, ledger.state, limits, "b").limit_orders
     tight, tb, tl, _ = _setup(tmp_path / "t", fee_type="sports_fees_v3", end_hours=24, bid="0.88", ask="0.89")
     assert [o.max_price for o in new.propose([tight], tb, tl.state, limits, "b").limit_orders] == [D("0.88")]  # dans la plage
-    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     daughter = loaded["nf_sport_patiente_tennis_875_900"]
     assert isinstance(daughter, Filtered) and isinstance(daughter.inner, PatientOrders)
     assert "prix_final" not in daughter.filters and daughter.filters["prix_min"] == 0.875
@@ -261,7 +261,7 @@ def test_price_filter_of_a_patient_daughter_reads_the_posted_order_price(tmp_pat
 def test_championne_family_never_posts_below_080(tmp_path):
     """AMELIORATION n°2 (21/10/2026, décision d'Etienne) : les ordres posés servis sous 0,80 perdaient −11,9 %
     (44 paris) ; la championne et ses filles sans plage de prix ont désormais `prix_min: 0.80` sur l'ordre posé."""
-    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    loaded = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     champ = loaded["nf_sport_patiente"]
     wide, books, ledger, limits = _setup(tmp_path, fee_type="sports_fees_v3", end_hours=24, bid="0.78", ask="0.82")
     assert not champ.propose([wide], books, ledger.state, limits, "b").limit_orders  # aurait posé à 0,79
@@ -300,7 +300,7 @@ def test_match_only_filter_refuses_season_and_award_markets(tmp_path):
 def test_season_no_buys_the_no_of_a_season_candidate_inside_its_window(tmp_path):
     """23/10/2026 (experiments/saison_sport.md) : NON d'un candidat à 10-30 % dans un marché de saison, 10 à 18 jours avant la fin.
     Refuse un pari de match, une échéance hors fenêtre et le OUI."""
-    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["saison_non"]
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["saison_non"]
     assert cfg.filters == {"familles": ["sports"], "un_match": False, "issue": ["non"], "echeance_min": 240, "echeance_max": 432,
                            "prix_min": 0.70, "prix_max": 0.90}
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
@@ -320,7 +320,7 @@ def test_season_no_buys_the_no_of_a_season_candidate_inside_its_window(tmp_path)
 def test_candidates_no_buys_the_no_of_a_multi_candidate_election_market_inside_its_window(tmp_path):
     """24/10/2026 (experiments/primaires.md) : NON d'un candidat à 10-30 % d'une élection ou d'une nomination dont au moins 2 candidats sont visibles (le scanner écarte ceux à moins de 1 %), 10 à 18 jours
     avant la fin. Refuse une question sans « nominee / primary… », une échéance hors fenêtre, un pari de match, une tranche de marge et un champ de 2 candidats."""
-    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["candidats_non"]
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["candidats_non"]
     assert cfg.filters["issue"] == ["non"] and cfg.filters["echeance_min"] == 240 and cfg.filters["echeance_max"] == 432 and cfg.filters["candidats_min"] == 2
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 
@@ -354,7 +354,7 @@ def test_candidates_no_buys_the_no_of_a_multi_candidate_election_market_inside_i
 def test_rallies_no_buys_the_no_of_a_trump_rally_word_market_inside_its_window(tmp_path):
     """26/10/2026 (experiments/rallies_trump.md) : NON d'un « Trump dira-t-il X pendant son meeting ? » quand le OUI vaut 0,50-0,70 (NON outsider 0,30-0,50, `rallies_non`)
     ou 0,40-0,50 (NON favori 0,50-0,60, `rallies_non_favori`), 3 à 20 h avant le meeting."""
-    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     cfg, fav = by["rallies_non"], by["rallies_non_favori"]
     assert cfg.filters["issue"] == ["non"] and cfg.filters["echeance_min"] == 3 and cfg.filters["echeance_max"] == 20 and fav.filters["prix_min"] == 0.50
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
@@ -378,7 +378,7 @@ def test_rallies_no_buys_the_no_of_a_trump_rally_word_market_inside_its_window(t
 def test_mentions_no_buys_the_no_of_a_word_market_but_not_rallies_or_announcers(tmp_path):
     """26/10/2026 (experiments/rallies_trump.md, contre-épreuve sur 745 événements) : NON d'un « dira-t-il X ? » quand le OUI vaut 0,30-0,50 (`mentions_non`) ou 0,50-0,60 (`mentions_non_outsider`),
     6 à 30 h avant la fin ; les meetings (déjà `rallies_non`) et les commentateurs sportifs (−1 à −5 %) sont exclus."""
-    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     cfg, out = by["mentions_non"], by["mentions_non_outsider"]
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 
@@ -402,7 +402,7 @@ def test_mentions_no_buys_the_no_of_a_word_market_but_not_rallies_or_announcers(
 def test_filtered_strategy_says_which_filter_dropped_the_markets_it_never_saw(tmp_path):
     """25/10/2026 : `candidats_non` voyait 438 marchés, 0 proposition et AUCUNE raison (le filtre `question_contient` écartait tout) : l'enquête la disait
     « muette » sans pouvoir dire pourquoi. Les marchés écartés par un filtre sont maintenant comptés dans les abstentions."""
-    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["candidats_non"]
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["candidats_non"]
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
     m, books, ledger, _ = _setup(tmp_path, fee_type="zero_fees", end_hours=24 * 14, bid="0.15", ask="0.16", negRisk=True)
     m.question = "Will the Fed cut rates in December?"
@@ -428,7 +428,7 @@ def test_zero_fee_political_markets_are_politics_again(tmp_path):
 def test_detroits_non_normal_buys_the_no_of_a_return_to_normal_market_only(tmp_path):
     """25/10/2026 (experiments/detroits_seuils.md) : NON des marchés « Strait of Hormuz traffic returns to normal by … » à 0,80-0,97.
     Refuse une autre question, le OUI, un NON hors plage de prix et une échéance trop proche."""
-    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["detroits_non_normal"]
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}["detroits_non_normal"]
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 
     def proposals(tmp, hours=24 * 36, bid="0.10", ask="0.11", question="Strait of Hormuz traffic returns to normal by November 30?"):
@@ -445,7 +445,7 @@ def test_detroits_non_normal_buys_the_no_of_a_return_to_normal_market_only(tmp_p
 
 def test_crypto_cheap_no_buys_the_no_of_any_crypto_market_but_not_up_or_down_or_cheap_tickets(tmp_path):
     """27/10/2026 (experiments/contrer_crypto_passe.md) : NON à 0,10-0,45 des marchés crypto, 2 384 paris passés sur deux périodes (+14 % et +22 %)."""
-    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}
+    by = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml", include_disabled=True)}
     cfg = by["crypto_non_bon_marche"]
     limits = RiskLimits.from_file(ROOT / "config" / "risk_limits.yaml")
 

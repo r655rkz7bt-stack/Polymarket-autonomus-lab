@@ -26,7 +26,9 @@ def strategy(**overrides):
 
 def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    assert sorted(s.strategy_id for s in loaded) == sorted([
+    # Éliminées par l'arène, coupées de la config le 31/10/2026 (enabled: false) : la liste ci-dessous les nomme encore.
+    coupees = {'kalshi_reference', 'nf_tennis_prix_bas_vainqueur', 'outsider_sport_apres_midi', 'loterie_meteo', 'nf_sport_patiente_biais_faible', 'nf_sport_patiente_tennis_875_900', 'football_trois_issues', 'nf_tennis_prix_bas_800_850', 'futurs_bookmakers', 'paire_oui_non', 'nf_sport_patiente_tennis', 'nf_sport_patiente_sans_itf', 'suivre_politique', 'nf_tennis_12_18h', 'marches_jumeaux', 'moins_de_cartes_franche', 'classement_appstore', 'outsider_sport_patiente', 'nf_sport_patiente_matchs', 'contrer_crypto_patiente_audace', 'nf_sport_vainqueur', 'crypto_threshold', 'nf_court_prix_haut', 'outsider_itf', 'nf_sport_prix_haut_3_6h', 'nf_sport_925_950', 'nf_tennis_vainqueur', 'crypto_threshold_24_72h', 'calibration_patiente', 'cotes_tennis', 'nf_court_prix_haut_biais_faible', 'implication_politique', 'nf_sport_patiente_tennis_850_875', 'compteur_tweets_non', 'nf_sport_patiente_matin', 'compteur_tweets_non_ecart_large', 'nf_tennis_12_18h_vainqueur_800_850', 'coherence_match', 'nm_demi_mise', 'mots_prononces_patiente', 'nf_sport_patiente_72_168h_850_875', 'contrer_crypto_audace', 'crypto_non_bon_marche'}
+    assert sorted(s.strategy_id for s in loaded) == sorted(n for n in [
         "calibration_patiente", "contrer_crypto", "contrer_crypto_patiente", "cross_market",
         "crypto_threshold", "crypto_threshold_patiente",
         "favori_politique", "favori_politique_patiente", "favori_politique_quasi_certain", "favori_politique_nuit", "outsider_sport_apres_midi", "loterie_meteo",
@@ -62,7 +64,7 @@ def test_repository_config_loads():
         # Passage du 28/10/2026 : fille « OUI » de compteur_tweets, mise franche.
         "compteur_tweets_oui", "compteur_tweets_48h_audace",
         # Passage du 28/10/2026 (soir) : sœur de la n° 1, ordres annulés au coup d'envoi.
-        "nf_sport_patiente_prix_850_875_avant_match", "favori_esport_milieu"])
+        "nf_sport_patiente_prix_850_875_avant_match", "favori_esport_milieu"] if n not in coupees)
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
                if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
                                                                    "favori_politique", "contrer_crypto", "suivre_politique",
