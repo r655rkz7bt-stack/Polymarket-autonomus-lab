@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5523,
+  "principal": 5524,
   "fantome:calibration_patiente_v1.0.0": 2390,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2152,
@@ -157,7 +157,7 @@
   "fantome:seismes_marche_v1.0.0": 391,
   "fantome:box_office_favori_v1.0.0": 328,
   "fantome:spacex_cumul_v1.0.0": 314,
-  "fantome:toucher_metaux_v1.0.0": 323,
+  "fantome:toucher_metaux_v1.0.0": 324,
   "fantome:candidats_non_v1.0.0": 301,
   "fantome:compteur_truth_v1.0.0": 319,
   "fantome:moins_de_cartes_bo5_v1.0.0": 280,
@@ -1792,9 +1792,9 @@
    "op_id": "settle-24966329966464850231269012030690277622788792723728924314884010836163170521547"
   }
  ],
- "derniere_execution": "2026-10-31T07:58:38+00:00",
+ "derniere_execution": "2026-10-31T08:05:20+00:00",
  "dernier_seq_reglements": {
-  "principal": 5523,
+  "principal": 5524,
   "fantome:calibration_patiente_v1.0.0": 2390,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2152,
@@ -1951,7 +1951,7 @@
   "fantome:seismes_marche_v1.0.0": 391,
   "fantome:box_office_favori_v1.0.0": 328,
   "fantome:spacex_cumul_v1.0.0": 314,
-  "fantome:toucher_metaux_v1.0.0": 323,
+  "fantome:toucher_metaux_v1.0.0": 324,
   "fantome:candidats_non_v1.0.0": 301,
   "fantome:compteur_truth_v1.0.0": 319,
   "fantome:moins_de_cartes_bo5_v1.0.0": 280,
@@ -1970,7 +1970,7 @@
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 212,
   "fantome:compteur_tweets_72_168h_v1.0.0": 220,
   "fantome:crypto_non_10_20_v1.0.0": 311,
-  "fantome:moins_de_kills_v1.0.0": 210,
+  "fantome:moins_de_kills_v1.0.0": 212,
   "fantome:suivre_inities_v1.0.0": 172,
   "fantome:classement_appstore_v1.0.0": 166,
   "fantome:ia_oui_sorties_v1.0.0": 209,
