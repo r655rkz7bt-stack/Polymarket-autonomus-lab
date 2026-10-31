@@ -1,0 +1,241 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "730.9716",
+  "capital_immobilise": "206.7957",
+  "gains_realises_nets": "-62.2327",
+  "gains_latents": "-6.3268",
+  "frais_payes": "24.9431",
+  "capital_total_estime": "931.4404",
+  "positions_ouvertes": "5",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2074,
+ "dernier_battement": "2026-10-31T21:27:06+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "74.00",
+   "cout": "66.93",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.76",
+   "latent": "-10.69",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "61.83",
+   "cout": "55.33",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "6.44",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-30T20:06"
+  },
+  {
+   "marche": "Flames vs. Avalanche",
+   "issue": "Avalanche",
+   "parts": "32.46",
+   "cout": "26.23",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.78",
+   "latent": "-0.91",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1131403",
+   "ouverte_le": "2026-10-31T14:07"
+  },
+  {
+   "marche": "Spread: Bills (-13.5)",
+   "issue": "Ravens",
+   "parts": "38.83",
+   "cout": "31.63",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-0.57",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1176722",
+   "ouverte_le": "2026-10-31T19:32"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "33.01",
+   "cout": "26.67",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.79",
+   "latent": "-0.59",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-31T21:27"
+  }
+ ],
+ "operations_cloturees": 102,
+ "dernieres_operations": [
+  {
+   "marche": "6313354",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "3.53",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-28T17:18"
+  },
+  {
+   "marche": "5713138",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "7.17",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T19:41"
+  },
+  {
+   "marche": "6313374",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-31.87",
+   "resolution": "résolu : OG",
+   "cloturee_le": "2026-10-28T20:51"
+  },
+  {
+   "marche": "6344595",
+   "issue": "100 Thieves",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "5.37",
+   "resolution": "résolu : 100 Thieves",
+   "cloturee_le": "2026-10-29T15:15"
+  },
+  {
+   "marche": "6352146",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.48",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-29T15:46"
+  },
+  {
+   "marche": "6280238",
+   "issue": "Karmine Corp",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.46",
+   "resolution": "résolu : Karmine Corp",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-12.63",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6386944",
+   "issue": "Vitality",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-36.43",
+   "resolution": "résolu : Nemiga",
+   "cloturee_le": "2026-10-30T14:31"
+  },
+  {
+   "marche": "6399769",
+   "issue": "Fiona Crawley",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "1.34",
+   "resolution": "résolu : Fiona Crawley",
+   "cloturee_le": "2026-10-30T15:41"
+  },
+  {
+   "marche": "6280258",
+   "issue": "Team Liquid",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-27.48",
+   "resolution": "résolu : LOS",
+   "cloturee_le": "2026-10-30T23:39"
+  },
+  {
+   "marche": "5828021",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.42",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "2.36",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "1.18",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "5856647",
+   "issue": "Manchester City FC",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.60",
+   "resolution": "résolu : Manchester City FC",
+   "cloturee_le": "2026-10-31T17:11"
+  }
+ ],
+ "performances": {
+  "nf_sport_6_24h v1.0.0": {
+   "operations": 102,
+   "evenements": 90,
+   "gagnantes": 87,
+   "taux_reussite": 0.853,
+   "profit_net": "-62.23",
+   "frais": "23.60",
+   "rendement_sur_mises": -0.0138,
+   "esperance_par_operation": "-0.61",
+   "ic90_rendement_par_euro": [
+    -0.107,
+    0.0298
+   ],
+   "brier": 0.1152,
+   "log_loss": 0.383,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

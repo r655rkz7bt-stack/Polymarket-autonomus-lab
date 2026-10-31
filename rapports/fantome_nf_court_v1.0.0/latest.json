@@ -1,0 +1,721 @@
+{
+ "genere_le": "2026-10-31T21:30:12+00:00",
+ "capital": {
+  "solde_disponible": "148.3260",
+  "capital_immobilise": "914.5585",
+  "gains_realises_nets": "62.8845",
+  "gains_latents": "1.8928",
+  "frais_payes": "54.4578",
+  "capital_total_estime": "1064.7774",
+  "positions_ouvertes": "45",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2708,
+ "dernier_battement": "2026-10-31T21:29:06+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6104807",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "22.18",
+   "prix_moyen": "0.8870",
+   "prix_de_marque": "0.994",
+   "latent": "2.68",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-26T16:22"
+  },
+  {
+   "marche": "6104802",
+   "issue": "No",
+   "parts": "18.52",
+   "cout": "16.11",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.999",
+   "latent": "2.39",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-26T16:25"
+  },
+  {
+   "marche": "6104805",
+   "issue": "No",
+   "parts": "14.19",
+   "cout": "12.49",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.998",
+   "latent": "1.67",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-26T16:47"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "62.75",
+   "cout": "56.98",
+   "prix_moyen": "0.9080",
+   "prix_de_marque": "0.996",
+   "latent": "5.52",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T04:03"
+  },
+  {
+   "marche": "5332539",
+   "issue": "Yes",
+   "parts": "52.64",
+   "cout": "44.22",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.983",
+   "latent": "7.53",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1138216",
+   "ouverte_le": "2026-10-27T04:03"
+  },
+  {
+   "marche": "682706",
+   "issue": "No",
+   "parts": "91.84",
+   "cout": "87.25",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.952",
+   "latent": "0.18",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T04:12"
+  },
+  {
+   "marche": "2110578",
+   "issue": "No",
+   "parts": "36.71",
+   "cout": "29.69",
+   "prix_moyen": "0.8086",
+   "prix_de_marque": "0.001",
+   "latent": "-29.65",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T04:12"
+  },
+  {
+   "marche": "5332543",
+   "issue": "No",
+   "parts": "10.45",
+   "cout": "9.83",
+   "prix_moyen": "0.9410",
+   "prix_de_marque": "0.999",
+   "latent": "0.61",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1138216",
+   "ouverte_le": "2026-10-27T10:36"
+  },
+  {
+   "marche": "682705",
+   "issue": "No",
+   "parts": "5.04",
+   "cout": "4.08",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.57",
+   "latent": "-1.21",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T13:13"
+  },
+  {
+   "marche": "5685262",
+   "issue": "Yes",
+   "parts": "2.32",
+   "cout": "2.21",
+   "prix_moyen": "0.9520",
+   "prix_de_marque": "0.989",
+   "latent": "0.09",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1188125",
+   "ouverte_le": "2026-10-27T16:33"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "5.69",
+   "cout": "5.15",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.76",
+   "latent": "-0.82",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "2110577",
+   "issue": "No",
+   "parts": "18.59",
+   "cout": "16.17",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.999",
+   "latent": "2.40",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T22:42"
+  },
+  {
+   "marche": "5475249",
+   "issue": "Bibi",
+   "parts": "39.15",
+   "cout": "32.89",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.999",
+   "latent": "6.22",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1161446",
+   "ouverte_le": "2026-10-27T23:17"
+  },
+  {
+   "marche": "682708",
+   "issue": "No",
+   "parts": "42.30",
+   "cout": "33.83",
+   "prix_moyen": "0.7997",
+   "prix_de_marque": "0.663",
+   "latent": "-5.78",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-28T02:17"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "22.52",
+   "cout": "20.15",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "2.34",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-30T20:06"
+  },
+  {
+   "marche": "5401795",
+   "issue": "No",
+   "parts": "5.48",
+   "cout": "5.15",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.971",
+   "latent": "0.17",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1147445",
+   "ouverte_le": "2026-10-30T21:42"
+  },
+  {
+   "marche": "Kings vs. Grizzlies",
+   "issue": "Grizzlies",
+   "parts": "34.53",
+   "cout": "27.97",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.75",
+   "latent": "-2.07",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1249500",
+   "ouverte_le": "2026-10-31T02:32"
+  },
+  {
+   "marche": "Will Bitcoin dip to $75,000 in October?",
+   "issue": "No",
+   "parts": "25.50",
+   "cout": "23.83",
+   "prix_moyen": "0.9346",
+   "prix_de_marque": "0.984",
+   "latent": "1.26",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T04:05"
+  },
+  {
+   "marche": "5571194",
+   "issue": "No",
+   "parts": "25.42",
+   "cout": "23.97",
+   "prix_moyen": "0.9429",
+   "prix_de_marque": "0.92",
+   "latent": "-0.58",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-31T04:05"
+  },
+  {
+   "marche": "6443525",
+   "issue": "No",
+   "parts": "22.24",
+   "cout": "21.10",
+   "prix_moyen": "0.9485",
+   "prix_de_marque": "0.99",
+   "latent": "0.92",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T04:33"
+  },
+  {
+   "marche": "Timberwolves vs. Spurs",
+   "issue": "Spurs",
+   "parts": "18.65",
+   "cout": "15.67",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.82",
+   "latent": "-0.37",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1249502",
+   "ouverte_le": "2026-10-31T05:25"
+  },
+  {
+   "marche": "6424277",
+   "issue": "No",
+   "parts": "16.50",
+   "cout": "15.42",
+   "prix_moyen": "0.9346",
+   "prix_de_marque": "0.96",
+   "latent": "0.42",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T07:12"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,200 in October?",
+   "issue": "No",
+   "parts": "7.58",
+   "cout": "6.37",
+   "prix_moyen": "0.8399",
+   "prix_de_marque": "0.944",
+   "latent": "0.79",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T08:12"
+  },
+  {
+   "marche": "Will Bitcoin dip to $76,000 on October 31?",
+   "issue": "No",
+   "parts": "6.75",
+   "cout": "6.18",
+   "prix_moyen": "0.9157",
+   "prix_de_marque": "0.982",
+   "latent": "0.45",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T08:26"
+  },
+  {
+   "marche": "5166953",
+   "issue": "Yes",
+   "parts": "6.69",
+   "cout": "6.36",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.94",
+   "latent": "-0.07",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1111220",
+   "ouverte_le": "2026-10-31T12:37"
+  },
+  {
+   "marche": "Flames vs. Avalanche",
+   "issue": "Avalanche",
+   "parts": "17.36",
+   "cout": "14.03",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.78",
+   "latent": "-0.49",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1131403",
+   "ouverte_le": "2026-10-31T15:37"
+  },
+  {
+   "marche": "5918690",
+   "issue": "Under",
+   "parts": "63.84",
+   "cout": "56.52",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.95",
+   "latent": "4.13",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1216845",
+   "ouverte_le": "2026-10-31T16:27"
+  },
+  {
+   "marche": "5987188",
+   "issue": "Yes",
+   "parts": "21.27",
+   "cout": "19.26",
+   "prix_moyen": "0.9054",
+   "prix_de_marque": "0.986",
+   "latent": "1.72",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1224973",
+   "ouverte_le": "2026-10-31T16:47"
+  },
+  {
+   "marche": "6205303",
+   "issue": "Yes",
+   "parts": "28.78",
+   "cout": "26.94",
+   "prix_moyen": "0.9361",
+   "prix_de_marque": "0.936",
+   "latent": "-0.00",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T17:03"
+  },
+  {
+   "marche": "5882360",
+   "issue": "Yes",
+   "parts": "24.74",
+   "cout": "23.09",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "1.63",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1212015",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5833018",
+   "issue": "No",
+   "parts": "24.74",
+   "cout": "23.09",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "1.63",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1206699",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "6205305",
+   "issue": "No",
+   "parts": "24.22",
+   "cout": "22.86",
+   "prix_moyen": "0.9439",
+   "prix_de_marque": "0.95",
+   "latent": "0.15",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5843103",
+   "issue": "No",
+   "parts": "15.24",
+   "cout": "14.22",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "1.00",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1208038",
+   "ouverte_le": "2026-10-31T17:41"
+  },
+  {
+   "marche": "Will Bitcoin dip to $77,000 on October 31?",
+   "issue": "No",
+   "parts": "4.00",
+   "cout": "3.44",
+   "prix_moyen": "0.8589",
+   "prix_de_marque": "0.78",
+   "latent": "-0.32",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T17:47"
+  },
+  {
+   "marche": "6443563",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.18",
+   "prix_moyen": "0.9440",
+   "prix_de_marque": "0.94",
+   "latent": "-0.00",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T18:04"
+  },
+  {
+   "marche": "6377793",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.30",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.57",
+   "latent": "-3.60",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1275608",
+   "ouverte_le": "2026-10-31T19:03"
+  },
+  {
+   "marche": "6377789",
+   "issue": "No",
+   "parts": "22.50",
+   "cout": "20.02",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.91",
+   "latent": "0.45",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1275608",
+   "ouverte_le": "2026-10-31T19:03"
+  },
+  {
+   "marche": "6377790",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.20",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.91",
+   "latent": "-0.10",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1275608",
+   "ouverte_le": "2026-10-31T19:03"
+  },
+  {
+   "marche": "6377791",
+   "issue": "No",
+   "parts": "15.00",
+   "cout": "14.10",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.89",
+   "latent": "-0.75",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1275608",
+   "ouverte_le": "2026-10-31T19:08"
+  },
+  {
+   "marche": "Will Vivek Ramaswamy pull the Amy Acton mother ad?",
+   "issue": "Yes",
+   "parts": "15.29",
+   "cout": "12.51",
+   "prix_moyen": "0.8180",
+   "prix_de_marque": "0.785",
+   "latent": "-0.50",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1230390",
+   "ouverte_le": "2026-10-31T19:17"
+  },
+  {
+   "marche": "Counter-Strike: BESTIA vs Procyon Gaming (BO3) - FiReSPORTS Last Chance Playoffs",
+   "issue": "BESTIA",
+   "parts": "11.37",
+   "cout": "9.41",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.72",
+   "latent": "-1.22",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1289397",
+   "ouverte_le": "2026-10-31T19:22"
+  },
+  {
+   "marche": "Spread: Bills (-13.5)",
+   "issue": "Ravens",
+   "parts": "14.90",
+   "cout": "12.14",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-0.22",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1176722",
+   "ouverte_le": "2026-10-31T19:32"
+  },
+  {
+   "marche": "6205330",
+   "issue": "Yes",
+   "parts": "21.14",
+   "cout": "19.16",
+   "prix_moyen": "0.9063",
+   "prix_de_marque": "0.9",
+   "latent": "-0.13",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T20:04"
+  },
+  {
+   "marche": "UFC Fight Night: Tainara Lisboa vs. Lucia Szabová (Women's Flyweight, Prelims)",
+   "issue": "Lucia Szabová",
+   "parts": "38.42",
+   "cout": "33.64",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.98",
+   "latent": "4.01",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1207817",
+   "ouverte_le": "2026-10-31T20:42"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "31.24",
+   "cout": "25.24",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.79",
+   "latent": "-0.56",
+   "strategie": "nf_court v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-31T21:27"
+  }
+ ],
+ "operations_cloturees": 474,
+ "dernieres_operations": [
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "1.87",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "5856647",
+   "issue": "Manchester City FC",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "0.74",
+   "resolution": "résolu : Manchester City FC",
+   "cloturee_le": "2026-10-31T17:11"
+  },
+  {
+   "marche": "2100981",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "-9.06",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T17:20"
+  },
+  {
+   "marche": "2100984",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "5.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T17:35"
+  },
+  {
+   "marche": "6256027",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "0.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6256029",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "3.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6256026",
+   "issue": "Yes",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "3.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "5401781",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "2.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:31"
+  },
+  {
+   "marche": "5852481",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "-14.03",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "5852484",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "4.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "6331186",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "2.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T20:06"
+  },
+  {
+   "marche": "6331187",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "0.73",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T20:06"
+  },
+  {
+   "marche": "6474882",
+   "issue": "Team Spirit",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "7.17",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-31T20:25"
+  },
+  {
+   "marche": "5332466",
+   "issue": "Yes",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "6.41",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T21:28"
+  },
+  {
+   "marche": "5332463",
+   "issue": "No",
+   "strategie": "nf_court v1.0.0",
+   "resultat": "3.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T21:28"
+  }
+ ],
+ "performances": {
+  "nf_court v1.0.0": {
+   "operations": 474,
+   "evenements": 340,
+   "gagnantes": 414,
+   "taux_reussite": 0.873,
+   "profit_net": "62.88",
+   "frais": "52.10",
+   "rendement_sur_mises": 0.0053,
+   "esperance_par_operation": "0.13",
+   "ic90_rendement_par_euro": [
+    -0.0465,
+    0.0147
+   ],
+   "brier": 0.1079,
+   "log_loss": 0.3865,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

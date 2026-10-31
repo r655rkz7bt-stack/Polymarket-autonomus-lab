@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "720.3690",
+  "capital_immobilise": "380.3784",
+  "gains_realises_nets": "100.7474",
+  "gains_latents": "7.6550",
+  "frais_payes": "10.5413",
+  "capital_total_estime": "1108.4023",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0952,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "parts": "5.57",
+   "cout": "5.09",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.9",
+   "latent": "-0.08",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "1230766",
+   "ouverte_le": "2026-10-26T22:52"
+  },
+  {
+   "marche": "5859305",
+   "issue": "No",
+   "parts": "187.36",
+   "cout": "173.06",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "14.11",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-28T14:09"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "195.22",
+   "cout": "180.32",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.89",
+   "latent": "-6.58",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "4397050",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.931",
+   "latent": "0.20",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  }
+ ],
+ "operations_cloturees": 22,
+ "dernieres_operations": [
+  {
+   "marche": "5644255",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "4.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:40"
+  },
+  {
+   "marche": "608540",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "4.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T01:55"
+  },
+  {
+   "marche": "608545",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "16.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "6173146",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "1.91",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T03:31"
+  },
+  {
+   "marche": "5674371",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "5674382",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "1.43",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "5713138",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.25",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T19:41"
+  },
+  {
+   "marche": "5713158",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.36",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T19:41"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "0.04",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "5928353",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "1.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:31"
+  },
+  {
+   "marche": "5928346",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "8.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T19:55"
+  },
+  {
+   "marche": "5794335",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.65",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "5828021",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "2.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  }
+ ],
+ "performances": {
+  "nf_sport_non_900_925 v1.0.0": {
+   "operations": 22,
+   "evenements": 17,
+   "gagnantes": 21,
+   "taux_reussite": 0.955,
+   "profit_net": "100.75",
+   "frais": "9.02",
+   "rendement_sur_mises": 0.0464,
+   "esperance_par_operation": "4.58",
+   "ic90_rendement_par_euro": [
+    -0.0311,
+    0.0964
+   ],
+   "brier": 0.0425,
+   "log_loss": 0.175,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

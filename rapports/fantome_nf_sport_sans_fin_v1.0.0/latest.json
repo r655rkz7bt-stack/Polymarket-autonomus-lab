@@ -1,0 +1,397 @@
+{
+ "genere_le": "2026-10-31T21:30:16+00:00",
+ "capital": {
+  "solde_disponible": "337.4441",
+  "capital_immobilise": "701.7270",
+  "gains_realises_nets": "39.1710",
+  "gains_latents": "-8.7200",
+  "frais_payes": "12.6628",
+  "capital_total_estime": "1030.4510",
+  "positions_ouvertes": "18",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1232,
+ "dernier_battement": "2026-10-31T21:03:49+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "parts": "11.67",
+   "cout": "9.88",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.83",
+   "latent": "-0.20",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1224771",
+   "ouverte_le": "2026-10-26T18:27"
+  },
+  {
+   "marche": "5603304",
+   "issue": "Bengals",
+   "parts": "37.96",
+   "cout": "31.67",
+   "prix_moyen": "0.8342",
+   "prix_de_marque": "0.86",
+   "latent": "0.98",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1176724",
+   "ouverte_le": "2026-10-26T22:33"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "parts": "5.57",
+   "cout": "5.09",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.9",
+   "latent": "-0.08",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1230766",
+   "ouverte_le": "2026-10-26T22:52"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "64.23",
+   "cout": "56.86",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.999",
+   "latent": "7.30",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-27T04:27"
+  },
+  {
+   "marche": "UFC Fight Night: Tainara Lisboa vs. Lucia Szabová (Women's Flyweight, Prelims)",
+   "issue": "Lucia Szabová",
+   "parts": "54.57",
+   "cout": "47.26",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.98",
+   "latent": "6.22",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1207817",
+   "ouverte_le": "2026-10-27T17:08"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "39.60",
+   "cout": "32.38",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-1.10",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-27T19:42"
+  },
+  {
+   "marche": "5944743",
+   "issue": "Indiana",
+   "parts": "81.47",
+   "cout": "75.93",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.71",
+   "latent": "-18.08",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1220335",
+   "ouverte_le": "2026-10-28T02:42"
+  },
+  {
+   "marche": "6281070",
+   "issue": "Jacksonville Dolphins",
+   "parts": "0.06",
+   "cout": "0.06",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.517",
+   "latent": "-0.02",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1262742",
+   "ouverte_le": "2026-10-28T09:07"
+  },
+  {
+   "marche": "5859305",
+   "issue": "No",
+   "parts": "46.30",
+   "cout": "42.77",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "3.49",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-28T14:09"
+  },
+  {
+   "marche": "5947054",
+   "issue": "Miami (FL)",
+   "parts": "38.01",
+   "cout": "32.08",
+   "prix_moyen": "0.8440",
+   "prix_de_marque": "0.83",
+   "latent": "-0.53",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1220377",
+   "ouverte_le": "2026-10-28T14:18"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "68.19",
+   "cout": "60.30",
+   "prix_moyen": "0.8843",
+   "prix_de_marque": "0.876",
+   "latent": "-0.57",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "94.19",
+   "cout": "87.00",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.89",
+   "latent": "-3.17",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "45.25",
+   "cout": "38.31",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.81",
+   "latent": "-1.66",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "4397050",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.931",
+   "latent": "0.20",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "79.72",
+   "cout": "75.92",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.95",
+   "latent": "-0.19",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "4397575",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "8.37",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.88",
+   "latent": "0.43",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991832",
+   "ouverte_le": "2026-10-30T09:27"
+  },
+  {
+   "marche": "Spread: Jets (-9.5)",
+   "issue": "Raiders",
+   "parts": "41.27",
+   "cout": "33.21",
+   "prix_moyen": "0.8048",
+   "prix_de_marque": "0.78",
+   "latent": "-1.02",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1176730",
+   "ouverte_le": "2026-10-31T03:42"
+  },
+  {
+   "marche": "Spread: Commanders (-17.5)",
+   "issue": "Eagles",
+   "parts": "50.62",
+   "cout": "42.72",
+   "prix_moyen": "0.8440",
+   "prix_de_marque": "0.83",
+   "latent": "-0.71",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1176742",
+   "ouverte_le": "2026-10-31T21:03"
+  }
+ ],
+ "operations_cloturees": 41,
+ "dernieres_operations": [
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-68.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "5928344",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "6.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T20:41"
+  },
+  {
+   "marche": "6280218",
+   "issue": "T1",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.06",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-28T22:41"
+  },
+  {
+   "marche": "5139901",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T05:46"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "16.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "1235568",
+   "issue": "Yes",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.21",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "5928352",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "4.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T15:07"
+  },
+  {
+   "marche": "5928353",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:31"
+  },
+  {
+   "marche": "6280238",
+   "issue": "Karmine Corp",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.40",
+   "resolution": "résolu : Karmine Corp",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "5928346",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T19:55"
+  },
+  {
+   "marche": "5794335",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "6111998",
+   "issue": "Fraport Skyliners",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "5.90",
+   "resolution": "résolu : Fraport Skyliners",
+   "cloturee_le": "2026-10-30T22:11"
+  },
+  {
+   "marche": "6280258",
+   "issue": "Team Liquid",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-11.53",
+   "resolution": "résolu : LOS",
+   "cloturee_le": "2026-10-30T23:39"
+  },
+  {
+   "marche": "6280278",
+   "issue": "Hanwha Life Esports",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.03",
+   "resolution": "résolu : Hanwha Life Esports",
+   "cloturee_le": "2026-10-31T01:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_sans_fin v1.0.0": {
+   "operations": 41,
+   "evenements": 29,
+   "gagnantes": 34,
+   "taux_reussite": 0.829,
+   "profit_net": "39.17",
+   "frais": "9.18",
+   "rendement_sur_mises": 0.0194,
+   "esperance_par_operation": "0.96",
+   "ic90_rendement_par_euro": [
+    -0.2023,
+    0.034
+   ],
+   "brier": 0.1406,
+   "log_loss": 0.4561,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

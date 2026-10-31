@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "992.3245",
+  "capital_immobilise": "10.6210",
+  "gains_realises_nets": "2.9455",
+  "gains_latents": "-4.3137",
+  "frais_payes": "0.9960",
+  "capital_total_estime": "998.6318",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1016,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6095891",
+   "issue": "No",
+   "parts": "8.64",
+   "cout": "7.78",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.46",
+   "latent": "-3.80",
+   "strategie": "mots_prononces v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T19:08"
+  },
+  {
+   "marche": "6477404",
+   "issue": "No",
+   "parts": "5.69",
+   "cout": "2.84",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "0.41",
+   "latent": "-0.51",
+   "strategie": "mots_prononces v1.0.0",
+   "groupe": "1289330",
+   "ouverte_le": "2026-10-31T19:12"
+  }
+ ],
+ "operations_cloturees": 84,
+ "dernieres_operations": [
+  {
+   "marche": "6299849",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-2.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T03:06"
+  },
+  {
+   "marche": "6326804",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-6.12",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T21:01"
+  },
+  {
+   "marche": "6326816",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-9.87",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:49"
+  },
+  {
+   "marche": "6326817",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "18.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:11"
+  },
+  {
+   "marche": "6326811",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "1.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:11"
+  },
+  {
+   "marche": "6326805",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-8.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:16"
+  },
+  {
+   "marche": "6326801",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "6.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:16"
+  },
+  {
+   "marche": "6326802",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-1.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:51"
+  },
+  {
+   "marche": "6366923",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-10.21",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T02:45"
+  },
+  {
+   "marche": "6366921",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "7.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T03:01"
+  },
+  {
+   "marche": "6366904",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "6.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "6366911",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-0.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "6366908",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-2.96",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "6366915",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-10.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:50"
+  },
+  {
+   "marche": "6366920",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "16.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T05:41"
+  }
+ ],
+ "performances": {
+  "mots_prononces v1.0.0": {
+   "operations": 84,
+   "evenements": 14,
+   "gagnantes": 34,
+   "taux_reussite": 0.405,
+   "profit_net": "2.95",
+   "frais": "1.00",
+   "rendement_sur_mises": 0.0045,
+   "esperance_par_operation": "0.04",
+   "ic90_rendement_par_euro": [
+    -0.2266,
+    0.0105
+   ],
+   "brier": 0.2541,
+   "log_loss": 0.7015,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

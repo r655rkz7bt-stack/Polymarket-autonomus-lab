@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:18+00:00",
+ "capital": {
+  "solde_disponible": "927.1690",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-72.8310",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.8794",
+  "capital_total_estime": "927.1690",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0902,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 26,
+ "dernieres_operations": [
+  {
+   "marche": "5481971",
+   "issue": "Golden State Valkyries",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-1.95",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-22T02:55"
+  },
+  {
+   "marche": "5520534",
+   "issue": "Fluminense FC",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.11",
+   "resolution": "résolu : SE Palmeiras",
+   "cloturee_le": "2026-10-22T04:50"
+  },
+  {
+   "marche": "5433448",
+   "issue": "Yes",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-5.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T05:05"
+  },
+  {
+   "marche": "5798570",
+   "issue": "GamerLegion",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.35",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-22T10:45"
+  },
+  {
+   "marche": "5798593",
+   "issue": "LEGION",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.36",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-22T13:31"
+  },
+  {
+   "marche": "5967419",
+   "issue": "Sho Shimabukuro",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.36",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-22T14:12"
+  },
+  {
+   "marche": "5769514",
+   "issue": "Shenzhen Leopards",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-1.97",
+   "resolution": "résolu : Beijing Ducks",
+   "cloturee_le": "2026-10-22T15:21"
+  },
+  {
+   "marche": "5769515",
+   "issue": "Ningbo Rockets",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.60",
+   "resolution": "résolu : Fujian Sturgeons",
+   "cloturee_le": "2026-10-22T15:41"
+  },
+  {
+   "marche": "6029905",
+   "issue": "WW Team",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-1.38",
+   "resolution": "résolu : Team Nemesis",
+   "cloturee_le": "2026-10-22T16:22"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Pierre-Hugues Herbert",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-1.22",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "5439915",
+   "issue": "No",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "6.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5438912",
+   "issue": "Under",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.44",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5438175",
+   "issue": "No",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-1.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5458294",
+   "issue": "Yes",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-2.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5458322",
+   "issue": "Yes",
+   "strategie": "outsider_sport_patiente v1.0.0",
+   "resultat": "-1.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  }
+ ],
+ "performances": {
+  "outsider_sport_patiente v1.0.0": {
+   "operations": 26,
+   "evenements": 26,
+   "gagnantes": 1,
+   "taux_reussite": 0.038,
+   "profit_net": "-72.83",
+   "frais": "0.88",
+   "rendement_sur_mises": -0.9004,
+   "esperance_par_operation": "-2.80",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.3213
+   ],
+   "brier": 0.0437,
+   "log_loss": 0.2045,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

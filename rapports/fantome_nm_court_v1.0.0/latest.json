@@ -1,0 +1,325 @@
+{
+ "genere_le": "2026-10-31T21:30:17+00:00",
+ "capital": {
+  "solde_disponible": "743.6532",
+  "capital_immobilise": "79.7664",
+  "gains_realises_nets": "-176.5805",
+  "gains_latents": "-8.7437",
+  "frais_payes": "3.5909",
+  "capital_total_estime": "814.6758",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2331,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Iliana Iotova win the next Bulgarian presidential election?",
+   "issue": "No",
+   "parts": "10.29",
+   "cout": "3.60",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "0.33",
+   "latent": "-0.21",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "166780",
+   "ouverte_le": "2026-10-25T21:27"
+  },
+  {
+   "marche": "Will Аndrey Gyurov win the next Bulgarian presidential election?",
+   "issue": "Yes",
+   "parts": "10.76",
+   "cout": "3.55",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.32",
+   "latent": "-0.11",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "166780",
+   "ouverte_le": "2026-10-25T23:27"
+  },
+  {
+   "marche": "2110577",
+   "issue": "Yes",
+   "parts": "8.78",
+   "cout": "4.13",
+   "prix_moyen": "0.4700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T08:57"
+  },
+  {
+   "marche": "682708",
+   "issue": "Yes",
+   "parts": "9.71",
+   "cout": "5.89",
+   "prix_moyen": "0.6070",
+   "prix_de_marque": "0.332",
+   "latent": "-2.67",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T10:42"
+  },
+  {
+   "marche": "2110576",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "4.21",
+   "prix_moyen": "0.3370",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T10:52"
+  },
+  {
+   "marche": "682705",
+   "issue": "No",
+   "parts": "21.30",
+   "cout": "17.25",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.57",
+   "latent": "-5.11",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T13:22"
+  },
+  {
+   "marche": "2110578",
+   "issue": "Yes",
+   "parts": "2.50",
+   "cout": "1.35",
+   "prix_moyen": "0.5400",
+   "prix_de_marque": "0.997",
+   "latent": "1.14",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T20:27"
+  },
+  {
+   "marche": "2109956",
+   "issue": "Yes",
+   "parts": "8.81",
+   "cout": "5.29",
+   "prix_moyen": "0.6000",
+   "prix_de_marque": "0.52",
+   "latent": "-0.70",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "428537",
+   "ouverte_le": "2026-10-27T20:47"
+  },
+  {
+   "marche": "5939176",
+   "issue": "Yes",
+   "parts": "9.54",
+   "cout": "3.15",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.34",
+   "latent": "0.10",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1219790",
+   "ouverte_le": "2026-10-27T21:32"
+  },
+  {
+   "marche": "2110579",
+   "issue": "Yes",
+   "parts": "1.91",
+   "cout": "0.23",
+   "prix_moyen": "0.1210",
+   "prix_de_marque": "0.002",
+   "latent": "-0.23",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T22:12"
+  },
+  {
+   "marche": "5939179",
+   "issue": "No",
+   "parts": "9.37",
+   "cout": "6.18",
+   "prix_moyen": "0.6600",
+   "prix_de_marque": "0.34",
+   "latent": "-3.00",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1219790",
+   "ouverte_le": "2026-10-28T00:37"
+  },
+  {
+   "marche": "5475249",
+   "issue": "Bibi",
+   "parts": "27.00",
+   "cout": "24.93",
+   "prix_moyen": "0.9233",
+   "prix_de_marque": "0.999",
+   "latent": "2.04",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1161446",
+   "ouverte_le": "2026-10-28T01:08"
+  }
+ ],
+ "operations_cloturees": 137,
+ "dernieres_operations": [
+  {
+   "marche": "6043819",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T21:55"
+  },
+  {
+   "marche": "6101711",
+   "issue": "Knicks",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-7.69",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6389806",
+   "issue": "Knicks",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-7.33",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6389811",
+   "issue": "Knicks",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-6.69",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6389848",
+   "issue": "Under",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "5.47",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6366923",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "3.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T02:45"
+  },
+  {
+   "marche": "6366919",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.49",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "6256025",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-0.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "2100981",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "3.66",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T17:20"
+  },
+  {
+   "marche": "2100984",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "3.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T17:35"
+  },
+  {
+   "marche": "6256029",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-0.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6256027",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-3.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6256026",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "9.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "5401781",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.07",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:31"
+  },
+  {
+   "marche": "6104772",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-8.21",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T20:01"
+  }
+ ],
+ "performances": {
+  "nm_court v1.0.0": {
+   "operations": 137,
+   "evenements": 72,
+   "gagnantes": 79,
+   "taux_reussite": 0.577,
+   "profit_net": "-176.58",
+   "frais": "3.59",
+   "rendement_sur_mises": -0.0845,
+   "esperance_par_operation": "-1.29",
+   "ic90_rendement_par_euro": [
+    -0.1953,
+    0.0828
+   ],
+   "brier": 0.1897,
+   "log_loss": 0.5696,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

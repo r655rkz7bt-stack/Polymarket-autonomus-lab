@@ -1,0 +1,108 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "994.6320",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-5.3680",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "994.6320",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0127,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 6,
+ "dernieres_operations": [
+  {
+   "marche": "6096281",
+   "issue": "No",
+   "strategie": "mentions_non v1.0.0",
+   "resultat": "2.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T00:35"
+  },
+  {
+   "marche": "6030822",
+   "issue": "No",
+   "strategie": "mentions_non v1.0.0",
+   "resultat": "-3.32",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T14:26"
+  },
+  {
+   "marche": "5713534",
+   "issue": "No",
+   "strategie": "mentions_non v1.0.0",
+   "resultat": "-2.59",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T20:35"
+  },
+  {
+   "marche": "5713527",
+   "issue": "No",
+   "strategie": "mentions_non v1.0.0",
+   "resultat": "-0.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T21:00"
+  },
+  {
+   "marche": "6253961",
+   "issue": "No",
+   "strategie": "mentions_non v1.0.0",
+   "resultat": "1.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:41"
+  },
+  {
+   "marche": "6279836",
+   "issue": "No",
+   "strategie": "mentions_non v1.0.0",
+   "resultat": "-3.14",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:51"
+  }
+ ],
+ "performances": {
+  "mentions_non v1.0.0": {
+   "operations": 6,
+   "evenements": 5,
+   "gagnantes": 2,
+   "taux_reussite": 0.333,
+   "profit_net": "-5.37",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.3387,
+   "esperance_par_operation": "-0.89",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.3152
+   ],
+   "brier": 0.2954,
+   "log_loss": 0.7859,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-31T21:30:12+00:00",
+ "capital": {
+  "solde_disponible": "271.9608",
+  "capital_immobilise": "459.6578",
+  "gains_realises_nets": "-268.3814",
+  "gains_latents": "16.8467",
+  "frais_payes": "29.6707",
+  "capital_total_estime": "748.4653",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4265,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "102.50",
+   "cout": "93.13",
+   "prix_moyen": "0.9086",
+   "prix_de_marque": "0.996",
+   "latent": "8.96",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T04:03"
+  },
+  {
+   "marche": "682706",
+   "issue": "No",
+   "parts": "180.42",
+   "cout": "171.40",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.952",
+   "latent": "0.36",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T04:12"
+  },
+  {
+   "marche": "5332539",
+   "issue": "Yes",
+   "parts": "102.05",
+   "cout": "92.87",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.983",
+   "latent": "7.45",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "1138216",
+   "ouverte_le": "2026-10-27T18:22"
+  },
+  {
+   "marche": "2100984",
+   "issue": "No",
+   "parts": "34.83",
+   "cout": "32.74",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "425728",
+   "ouverte_le": "2026-10-27T23:12"
+  },
+  {
+   "marche": "2100981",
+   "issue": "Yes",
+   "parts": "51.64",
+   "cout": "48.54",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "425728",
+   "ouverte_le": "2026-10-27T23:17"
+  },
+  {
+   "marche": "2110577",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.17",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.999",
+   "latent": "0.08",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-28T00:22"
+  },
+  {
+   "marche": "5401781",
+   "issue": "No",
+   "parts": "22.01",
+   "cout": "19.81",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "1147434",
+   "ouverte_le": "2026-10-28T00:27"
+  }
+ ],
+ "operations_cloturees": 119,
+ "dernieres_operations": [
+  {
+   "marche": "6096278",
+   "issue": "Yes",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "1.25",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T00:11"
+  },
+  {
+   "marche": "5699026",
+   "issue": "Over",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.77",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-28T00:25"
+  },
+  {
+   "marche": "6096284",
+   "issue": "Yes",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "-4.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T00:35"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "-175.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "6279824",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.49",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:31"
+  },
+  {
+   "marche": "6000460",
+   "issue": "Spurs",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "3.83",
+   "resolution": "résolu : Spurs",
+   "cloturee_le": "2026-10-28T02:46"
+  },
+  {
+   "marche": "6288480",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "7.03",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T04:16"
+  },
+  {
+   "marche": "6288522",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "1.17",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T04:16"
+  },
+  {
+   "marche": "6180619",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.12",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T06:16"
+  },
+  {
+   "marche": "6180616",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.78",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T06:16"
+  },
+  {
+   "marche": "6313354",
+   "issue": "Team Yandex",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "1.68",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-28T17:18"
+  },
+  {
+   "marche": "6138702",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T18:11"
+  },
+  {
+   "marche": "6172772",
+   "issue": "Yes",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "4.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T20:06"
+  },
+  {
+   "marche": "5713528",
+   "issue": "Yes",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T20:35"
+  },
+  {
+   "marche": "5713536",
+   "issue": "No",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "resultat": "1.65",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T21:41"
+  }
+ ],
+ "performances": {
+  "nf_court_prix_haut v1.0.0": {
+   "operations": 119,
+   "evenements": 91,
+   "gagnantes": 113,
+   "taux_reussite": 0.95,
+   "profit_net": "-268.38",
+   "frais": "29.67",
+   "rendement_sur_mises": -0.0314,
+   "esperance_par_operation": "-2.26",
+   "ic90_rendement_par_euro": [
+    -0.0148,
+    0.0515
+   ],
+   "brier": 0.0482,
+   "log_loss": 0.2085,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

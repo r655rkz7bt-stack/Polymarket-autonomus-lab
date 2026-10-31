@@ -1,0 +1,101 @@
+{
+ "genere_le": "2026-10-31T21:30:18+00:00",
+ "capital": {
+  "solde_disponible": "932.6991",
+  "capital_immobilise": "3.2720",
+  "gains_realises_nets": "-64.0289",
+  "gains_latents": "-0.1200",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "935.8512",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0669,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "635012",
+   "issue": "Yes",
+   "parts": "10.37",
+   "cout": "1.35",
+   "prix_moyen": "0.1300",
+   "prix_de_marque": "0.11",
+   "latent": "-0.21",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-22T12:06"
+  },
+  {
+   "marche": "635016",
+   "issue": "No",
+   "parts": "17.49",
+   "cout": "1.92",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.115",
+   "latent": "0.09",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-23T03:26"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "601819",
+   "issue": "No",
+   "strategie": "predictit_reference v1.0.0",
+   "resultat": "-27.96",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T03:16"
+  },
+  {
+   "marche": "601826",
+   "issue": "Yes",
+   "strategie": "predictit_reference v1.0.0",
+   "resultat": "-36.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T03:21"
+  }
+ ],
+ "performances": {
+  "predictit_reference v1.0.0": {
+   "operations": 2,
+   "evenements": 1,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-64.03",
+   "frais": "0.00",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-32.01",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.5853,
+   "log_loss": 1.4491,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

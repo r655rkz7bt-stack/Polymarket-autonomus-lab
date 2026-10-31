@@ -1,0 +1,282 @@
+{
+ "genere_le": "2026-10-31T21:30:18+00:00",
+ "capital": {
+  "solde_disponible": "1.6552",
+  "capital_immobilise": "998.3448",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-1.5613",
+  "frais_payes": "0.4864",
+  "capital_total_estime": "998.4387",
+  "positions_ouvertes": "20",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0023,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "74.04",
+   "cout": "69.12",
+   "prix_moyen": "0.9336",
+   "prix_de_marque": "0.94",
+   "latent": "0.48",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:28"
+  },
+  {
+   "marche": "559654",
+   "issue": "No",
+   "parts": "69.79",
+   "cout": "66.57",
+   "prix_moyen": "0.9538",
+   "prix_de_marque": "0.948",
+   "latent": "-0.41",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:28"
+  },
+  {
+   "marche": "Will Ron DeSantis win the 2028 Republican presidential nomination?",
+   "issue": "No",
+   "parts": "22.50",
+   "cout": "21.86",
+   "prix_moyen": "0.9716",
+   "prix_de_marque": "0.961",
+   "latent": "-0.24",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-19T20:34"
+  },
+  {
+   "marche": "559695",
+   "issue": "No",
+   "parts": "60.75",
+   "cout": "59.23",
+   "prix_moyen": "0.9750",
+   "prix_de_marque": "0.974",
+   "latent": "-0.06",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:34"
+  },
+  {
+   "marche": "559664",
+   "issue": "No",
+   "parts": "55.36",
+   "cout": "54.30",
+   "prix_moyen": "0.9808",
+   "prix_de_marque": "0.979",
+   "latent": "-0.10",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:40"
+  },
+  {
+   "marche": "559663",
+   "issue": "No",
+   "parts": "36.21",
+   "cout": "35.83",
+   "prix_moyen": "0.9894",
+   "prix_de_marque": "0.985",
+   "latent": "-0.16",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-19T20:44"
+  },
+  {
+   "marche": "561243",
+   "issue": "No",
+   "parts": "42.87",
+   "cout": "42.33",
+   "prix_moyen": "0.9875",
+   "prix_de_marque": "0.983",
+   "latent": "-0.19",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-20T17:20"
+  },
+  {
+   "marche": "567689",
+   "issue": "No",
+   "parts": "24.13",
+   "cout": "22.68",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.93",
+   "latent": "-0.24",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "34052",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "559655",
+   "issue": "No",
+   "parts": "70.89",
+   "cout": "67.27",
+   "prix_moyen": "0.9490",
+   "prix_de_marque": "0.949",
+   "latent": "0.00",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-24T21:27"
+  },
+  {
+   "marche": "Will Kamala Harris win the 2028 US Presidential Election?",
+   "issue": "No",
+   "parts": "62.53",
+   "cout": "60.09",
+   "prix_moyen": "0.9610",
+   "prix_de_marque": "0.959",
+   "latent": "-0.13",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-24T21:27"
+  },
+  {
+   "marche": "559660",
+   "issue": "No",
+   "parts": "65.22",
+   "cout": "63.10",
+   "prix_moyen": "0.9676",
+   "prix_de_marque": "0.964",
+   "latent": "-0.23",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "561996",
+   "issue": "No",
+   "parts": "63.23",
+   "cout": "61.40",
+   "prix_moyen": "0.9710",
+   "prix_de_marque": "0.97",
+   "latent": "-0.06",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "561989",
+   "issue": "No",
+   "parts": "59.92",
+   "cout": "58.48",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.974",
+   "latent": "-0.12",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-26T12:17"
+  },
+  {
+   "marche": "561232",
+   "issue": "No",
+   "parts": "59.92",
+   "cout": "58.48",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.974",
+   "latent": "-0.12",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-26T12:17"
+  },
+  {
+   "marche": "561246",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.22",
+   "prix_moyen": "0.9740",
+   "prix_de_marque": "0.969",
+   "latent": "-0.01",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "561237",
+   "issue": "No",
+   "parts": "56.18",
+   "cout": "55.08",
+   "prix_moyen": "0.9803",
+   "prix_de_marque": "0.979",
+   "latent": "-0.07",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "561262",
+   "issue": "No",
+   "parts": "55.00",
+   "cout": "53.96",
+   "prix_moyen": "0.9810",
+   "prix_de_marque": "0.981",
+   "latent": "0.00",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-26T12:32"
+  },
+  {
+   "marche": "559668",
+   "issue": "No",
+   "parts": "55.00",
+   "cout": "53.96",
+   "prix_moyen": "0.9810",
+   "prix_de_marque": "0.982",
+   "latent": "0.06",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-26T12:32"
+  },
+  {
+   "marche": "561973",
+   "issue": "No",
+   "parts": "48.34",
+   "cout": "47.42",
+   "prix_moyen": "0.9810",
+   "prix_de_marque": "0.983",
+   "latent": "0.10",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-26T12:35"
+  },
+  {
+   "marche": "561998",
+   "issue": "No",
+   "parts": "46.62",
+   "cout": "45.97",
+   "prix_moyen": "0.9860",
+   "prix_de_marque": "0.985",
+   "latent": "-0.05",
+   "strategie": "parking_politique v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-26T12:35"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

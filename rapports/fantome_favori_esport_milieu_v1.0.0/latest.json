@@ -1,0 +1,76 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "990.6137",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-9.3863",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0950",
+  "capital_total_estime": "990.6137",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0097,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "favori_esport_milieu v1.0.0",
+   "resultat": "-4.21",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6439052",
+   "issue": "Nuclear TigeRES",
+   "strategie": "favori_esport_milieu v1.0.0",
+   "resultat": "-5.18",
+   "resolution": "résolu : WRAITH PCIFIC",
+   "cloturee_le": "2026-10-31T17:25"
+  }
+ ],
+ "performances": {
+  "favori_esport_milieu v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-9.39",
+   "frais": "0.10",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-4.69",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.6724,
+   "log_loss": 1.7152,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

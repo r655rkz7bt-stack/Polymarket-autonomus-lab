@@ -1,0 +1,589 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "389.6765",
+  "capital_immobilise": "434.5223",
+  "gains_realises_nets": "-175.8012",
+  "gains_latents": "0.0000",
+  "frais_payes": "42.5639",
+  "capital_total_estime": "824.1988",
+  "positions_ouvertes": "34",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2402,
+ "dernier_battement": "2026-10-19T15:03:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5767157",
+   "issue": "No",
+   "parts": "24.16",
+   "cout": "13.35",
+   "prix_moyen": "0.5524",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-17T12:13"
+  },
+  {
+   "marche": "5795815",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "15.13",
+   "prix_moyen": "0.6375",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203420",
+   "ouverte_le": "2026-10-17T19:23"
+  },
+  {
+   "marche": "5795808",
+   "issue": "No",
+   "parts": "25.33",
+   "cout": "15.00",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203419",
+   "ouverte_le": "2026-10-17T19:23"
+  },
+  {
+   "marche": "5795838",
+   "issue": "No",
+   "parts": "25.33",
+   "cout": "15.25",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203422",
+   "ouverte_le": "2026-10-17T19:23"
+  },
+  {
+   "marche": "5795686",
+   "issue": "No",
+   "parts": "46.59",
+   "cout": "15.78",
+   "prix_moyen": "0.3386",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203401",
+   "ouverte_le": "2026-10-17T22:13"
+  },
+  {
+   "marche": "5798084",
+   "issue": "No",
+   "parts": "32.63",
+   "cout": "15.68",
+   "prix_moyen": "0.4805",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203798",
+   "ouverte_le": "2026-10-17T22:13"
+  },
+  {
+   "marche": "5795665",
+   "issue": "No",
+   "parts": "38.36",
+   "cout": "15.43",
+   "prix_moyen": "0.4023",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203399",
+   "ouverte_le": "2026-10-17T22:13"
+  },
+  {
+   "marche": "5795721",
+   "issue": "No",
+   "parts": "22.40",
+   "cout": "15.26",
+   "prix_moyen": "0.6811",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203404",
+   "ouverte_le": "2026-10-17T22:18"
+  },
+  {
+   "marche": "5798061",
+   "issue": "No",
+   "parts": "27.62",
+   "cout": "15.26",
+   "prix_moyen": "0.5524",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203796",
+   "ouverte_le": "2026-10-17T22:18"
+  },
+  {
+   "marche": "5795766",
+   "issue": "No",
+   "parts": "25.76",
+   "cout": "15.25",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203408",
+   "ouverte_le": "2026-10-17T22:18"
+  },
+  {
+   "marche": "5809286",
+   "issue": "No",
+   "parts": "24.93",
+   "cout": "15.49",
+   "prix_moyen": "0.6214",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1205032",
+   "ouverte_le": "2026-10-17T22:18"
+  },
+  {
+   "marche": "5795646",
+   "issue": "No",
+   "parts": "20.52",
+   "cout": "13.17",
+   "prix_moyen": "0.6417",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203397",
+   "ouverte_le": "2026-10-17T22:24"
+  },
+  {
+   "marche": "5795899",
+   "issue": "No",
+   "parts": "26.84",
+   "cout": "15.36",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203430",
+   "ouverte_le": "2026-10-17T23:13"
+  },
+  {
+   "marche": "5795192",
+   "issue": "No",
+   "parts": "23.75",
+   "cout": "13.58",
+   "prix_moyen": "0.5718",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203300",
+   "ouverte_le": "2026-10-17T23:13"
+  },
+  {
+   "marche": "5795734",
+   "issue": "No",
+   "parts": "7.39",
+   "cout": "3.57",
+   "prix_moyen": "0.4825",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203405",
+   "ouverte_le": "2026-10-17T23:18"
+  },
+  {
+   "marche": "5795622",
+   "issue": "No",
+   "parts": "22.86",
+   "cout": "15.34",
+   "prix_moyen": "0.6712",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203395",
+   "ouverte_le": "2026-10-18T01:18"
+  },
+  {
+   "marche": "5798041",
+   "issue": "No",
+   "parts": "10.97",
+   "cout": "6.28",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203794",
+   "ouverte_le": "2026-10-18T04:18"
+  },
+  {
+   "marche": "5795645",
+   "issue": "No",
+   "parts": "7.32",
+   "cout": "3.59",
+   "prix_moyen": "0.4899",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203397",
+   "ouverte_le": "2026-10-18T04:23"
+  },
+  {
+   "marche": "5799239",
+   "issue": "No",
+   "parts": "12.84",
+   "cout": "6.92",
+   "prix_moyen": "0.5390",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1204033",
+   "ouverte_le": "2026-10-18T05:24"
+  },
+  {
+   "marche": "5795949",
+   "issue": "No",
+   "parts": "6.86",
+   "cout": "3.38",
+   "prix_moyen": "0.4925",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203437",
+   "ouverte_le": "2026-10-18T05:28"
+  },
+  {
+   "marche": "5795816",
+   "issue": "No",
+   "parts": "33.45",
+   "cout": "15.13",
+   "prix_moyen": "0.4523",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203420",
+   "ouverte_le": "2026-10-18T06:24"
+  },
+  {
+   "marche": "5798105",
+   "issue": "No",
+   "parts": "30.72",
+   "cout": "15.13",
+   "prix_moyen": "0.4925",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203800",
+   "ouverte_le": "2026-10-18T06:24"
+  },
+  {
+   "marche": "5795961",
+   "issue": "No",
+   "parts": "32.03",
+   "cout": "15.15",
+   "prix_moyen": "0.4731",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203438",
+   "ouverte_le": "2026-10-18T06:24"
+  },
+  {
+   "marche": "5795839",
+   "issue": "No",
+   "parts": "32.72",
+   "cout": "15.16",
+   "prix_moyen": "0.4632",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203422",
+   "ouverte_le": "2026-10-18T06:24"
+  },
+  {
+   "marche": "5809287",
+   "issue": "No",
+   "parts": "22.62",
+   "cout": "14.96",
+   "prix_moyen": "0.6614",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1205032",
+   "ouverte_le": "2026-10-18T06:28"
+  },
+  {
+   "marche": "5798073",
+   "issue": "No",
+   "parts": "6.68",
+   "cout": "3.29",
+   "prix_moyen": "0.4925",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203797",
+   "ouverte_le": "2026-10-18T06:38"
+  },
+  {
+   "marche": "5795722",
+   "issue": "No",
+   "parts": "23.50",
+   "cout": "13.88",
+   "prix_moyen": "0.5905",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203404",
+   "ouverte_le": "2026-10-18T07:34"
+  },
+  {
+   "marche": "5795809",
+   "issue": "No",
+   "parts": "20.69",
+   "cout": "13.68",
+   "prix_moyen": "0.6614",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203419",
+   "ouverte_le": "2026-10-18T07:34"
+  },
+  {
+   "marche": "5798050",
+   "issue": "No",
+   "parts": "13.64",
+   "cout": "7.76",
+   "prix_moyen": "0.5688",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203795",
+   "ouverte_le": "2026-10-18T08:19"
+  },
+  {
+   "marche": "5795633",
+   "issue": "No",
+   "parts": "23.68",
+   "cout": "13.32",
+   "prix_moyen": "0.5624",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203396",
+   "ouverte_le": "2026-10-18T08:24"
+  },
+  {
+   "marche": "5795938",
+   "issue": "No",
+   "parts": "25.01",
+   "cout": "13.53",
+   "prix_moyen": "0.5411",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203436",
+   "ouverte_le": "2026-10-18T08:24"
+  },
+  {
+   "marche": "5798085",
+   "issue": "No",
+   "parts": "27.84",
+   "cout": "15.23",
+   "prix_moyen": "0.5471",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203798",
+   "ouverte_le": "2026-10-18T11:19"
+  },
+  {
+   "marche": "5809299",
+   "issue": "No",
+   "parts": "31.96",
+   "cout": "15.14",
+   "prix_moyen": "0.4739",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1205033",
+   "ouverte_le": "2026-10-18T11:19"
+  },
+  {
+   "marche": "5795937",
+   "issue": "No",
+   "parts": "25.50",
+   "cout": "15.10",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "meteo_prevision v1.0.0",
+   "groupe": "1203436",
+   "ouverte_le": "2026-10-18T11:19"
+  }
+ ],
+ "operations_cloturees": 120,
+ "dernieres_operations": [
+  {
+   "marche": "5774595",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T06:14"
+  },
+  {
+   "marche": "5769250",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.70",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T06:36"
+  },
+  {
+   "marche": "5769272",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.26",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T06:46"
+  },
+  {
+   "marche": "5774605",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "8.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T07:21"
+  },
+  {
+   "marche": "5774604",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "2.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T07:26"
+  },
+  {
+   "marche": "5769261",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-11.95",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:41"
+  },
+  {
+   "marche": "5769293",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.72",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:41"
+  },
+  {
+   "marche": "5769680",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.66",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:46"
+  },
+  {
+   "marche": "5769305",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-13.92",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T07:46"
+  },
+  {
+   "marche": "5772126",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "4.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T08:21"
+  },
+  {
+   "marche": "5769317",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "12.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T08:26"
+  },
+  {
+   "marche": "5772115",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.13",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T10:01"
+  },
+  {
+   "marche": "5769316",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T10:16"
+  },
+  {
+   "marche": "5772104",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "-15.29",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T10:26"
+  },
+  {
+   "marche": "5795656",
+   "issue": "No",
+   "strategie": "meteo_prevision v1.0.0",
+   "resultat": "10.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T11:25"
+  }
+ ],
+ "performances": {
+  "meteo_prevision v1.0.0": {
+   "operations": 120,
+   "evenements": 83,
+   "gagnantes": 63,
+   "taux_reussite": 0.525,
+   "profit_net": "-175.80",
+   "frais": "32.82",
+   "rendement_sur_mises": -0.1126,
+   "esperance_par_operation": "-1.47",
+   "ic90_rendement_par_euro": [
+    -0.2276,
+    -0.0108
+   ],
+   "brier": 0.3312,
+   "log_loss": 0.9106,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

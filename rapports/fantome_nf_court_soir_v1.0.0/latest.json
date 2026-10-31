@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-31T21:30:12+00:00",
+ "capital": {
+  "solde_disponible": "983.0636",
+  "capital_immobilise": "2.4600",
+  "gains_realises_nets": "-14.4764",
+  "gains_latents": "0.1500",
+  "frais_payes": "26.2934",
+  "capital_total_estime": "985.6736",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2581,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "2757900",
+   "issue": "No",
+   "parts": "3.00",
+   "cout": "2.46",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.87",
+   "latent": "0.15",
+   "strategie": "nf_court_soir v1.0.0",
+   "groupe": "655483",
+   "ouverte_le": "2026-10-25T22:37"
+  }
+ ],
+ "operations_cloturees": 71,
+ "dernieres_operations": [
+  {
+   "marche": "5598539",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "16.77",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T22:25"
+  },
+  {
+   "marche": "6168136",
+   "issue": "Gen.G",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "24.13",
+   "resolution": "résolu : Gen.G",
+   "cloturee_le": "2026-10-26T00:01"
+  },
+  {
+   "marche": "601826",
+   "issue": "Yes",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "-196.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T03:21"
+  },
+  {
+   "marche": "4587350",
+   "issue": "Seahawks",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "4.76",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "4587349",
+   "issue": "Seahawks",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "1.87",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "4587348",
+   "issue": "Seahawks",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "1.07",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "4587347",
+   "issue": "Seahawks",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "1.82",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "4587346",
+   "issue": "Seahawks",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "20.79",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "6085943",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T04:16"
+  },
+  {
+   "marche": "6171157",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "4.08",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T04:16"
+  },
+  {
+   "marche": "6171151",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "1.47",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T04:16"
+  },
+  {
+   "marche": "6173067",
+   "issue": "Elise Mertens",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "4.27",
+   "resolution": "résolu : Elise Mertens",
+   "cloturee_le": "2026-10-26T07:11"
+  },
+  {
+   "marche": "6048452",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "0.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T18:08"
+  },
+  {
+   "marche": "6168180",
+   "issue": "T1",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "17.09",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-26T18:41"
+  },
+  {
+   "marche": "6138701",
+   "issue": "No",
+   "strategie": "nf_court_soir v1.0.0",
+   "resultat": "-9.84",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T18:11"
+  }
+ ],
+ "performances": {
+  "nf_court_soir v1.0.0": {
+   "operations": 71,
+   "evenements": 57,
+   "gagnantes": 65,
+   "taux_reussite": 0.915,
+   "profit_net": "-14.48",
+   "frais": "26.29",
+   "rendement_sur_mises": -0.0022,
+   "esperance_par_operation": "-0.20",
+   "ic90_rendement_par_euro": [
+    -0.0565,
+    0.0706
+   ],
+   "brier": 0.0713,
+   "log_loss": 0.2441,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

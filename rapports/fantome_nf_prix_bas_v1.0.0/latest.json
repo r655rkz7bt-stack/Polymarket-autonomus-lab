@@ -1,0 +1,162 @@
+{
+ "genere_le": "2026-10-31T21:30:12+00:00",
+ "capital": {
+  "solde_disponible": "504.1769",
+  "capital_immobilise": "496.9925",
+  "gains_realises_nets": "1.1694",
+  "gains_latents": "15.3194",
+  "frais_payes": "1.6452",
+  "capital_total_estime": "1016.4888",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0256,
+ "dernier_battement": "2026-10-21T09:57:59+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "parts": "113.45",
+   "cout": "96.76",
+   "prix_moyen": "0.8528",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "4375452",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "10.94",
+   "prix_moyen": "0.8755",
+   "prix_de_marque": "0.986",
+   "latent": "1.38",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "989696",
+   "ouverte_le": "2026-10-17T18:35"
+  },
+  {
+   "marche": "5571194",
+   "issue": "No",
+   "parts": "73.00",
+   "cout": "60.71",
+   "prix_moyen": "0.8317",
+   "prix_de_marque": "0.92",
+   "latent": "6.45",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-19T11:49"
+  },
+  {
+   "marche": "5572738",
+   "issue": "No",
+   "parts": "122.23",
+   "cout": "106.66",
+   "prix_moyen": "0.8726",
+   "prix_de_marque": "0.944",
+   "latent": "8.73",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-19T13:24"
+  },
+  {
+   "marche": "5686979",
+   "issue": "Yes",
+   "parts": "97.23",
+   "cout": "80.09",
+   "prix_moyen": "0.8238",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-19T17:54"
+  },
+  {
+   "marche": "561975",
+   "issue": "No",
+   "parts": "110.30",
+   "cout": "94.34",
+   "prix_moyen": "0.8553",
+   "prix_de_marque": "0.792",
+   "latent": "-6.98",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-20T05:13"
+  },
+  {
+   "marche": "5074920",
+   "issue": "No",
+   "parts": "49.52",
+   "cout": "43.08",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.986",
+   "latent": "5.74",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-20T14:36"
+  },
+  {
+   "marche": "5640330",
+   "issue": "No",
+   "parts": "5.35",
+   "cout": "4.41",
+   "prix_moyen": "0.8240",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_prix_bas v1.0.0",
+   "groupe": "1180837",
+   "ouverte_le": "2026-10-20T19:15"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "nf_prix_bas v1.0.0",
+   "resultat": "1.17",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:14"
+  }
+ ],
+ "performances": {
+  "nf_prix_bas v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "1.17",
+   "frais": "0.03",
+   "rendement_sur_mises": 0.1712,
+   "esperance_par_operation": "1.17",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0101,
+   "log_loss": 0.1059,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

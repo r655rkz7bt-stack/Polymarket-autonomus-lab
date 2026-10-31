@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-10-31T21:30:17+00:00",
+ "capital": {
+  "solde_disponible": "738.3770",
+  "capital_immobilise": "52.2003",
+  "gains_realises_nets": "-209.4227",
+  "gains_latents": "0.0064",
+  "frais_payes": "5.3986",
+  "capital_total_estime": "790.5837",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2263,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5170741",
+   "issue": "Yes",
+   "parts": "32.18",
+   "cout": "4.55",
+   "prix_moyen": "0.1414",
+   "prix_de_marque": "0.005",
+   "latent": "-4.39",
+   "strategie": "nm_crypto v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T23:52"
+  },
+  {
+   "marche": "5170791",
+   "issue": "No",
+   "parts": "52.36",
+   "cout": "47.65",
+   "prix_moyen": "0.9101",
+   "prix_de_marque": "0.994",
+   "latent": "4.40",
+   "strategie": "nm_crypto v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T11:48"
+  }
+ ],
+ "operations_cloturees": 15,
+ "dernieres_operations": [
+  {
+   "marche": "5564855",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "5.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:20"
+  },
+  {
+   "marche": "5610602",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "8.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5610574",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-78.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:43"
+  },
+  {
+   "marche": "5912696",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "1.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T04:17"
+  },
+  {
+   "marche": "5653750",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "3.87",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T16:25"
+  },
+  {
+   "marche": "5957192",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "0.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:13"
+  },
+  {
+   "marche": "5690022",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "6002422",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:15"
+  },
+  {
+   "marche": "6002421",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:20"
+  },
+  {
+   "marche": "5739674",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "7.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "6072729",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "5822953",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-2.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T17:01"
+  },
+  {
+   "marche": "5822993",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-102.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T17:01"
+  },
+  {
+   "marche": "6104765",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-5.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T04:16"
+  },
+  {
+   "marche": "5170739",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-67.27",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:31"
+  }
+ ],
+ "performances": {
+  "nm_crypto v1.0.0": {
+   "operations": 15,
+   "evenements": 14,
+   "gagnantes": 10,
+   "taux_reussite": 0.667,
+   "profit_net": "-209.42",
+   "frais": "4.82",
+   "rendement_sur_mises": -0.1407,
+   "esperance_par_operation": "-13.96",
+   "ic90_rendement_par_euro": [
+    -0.5504,
+    -0.0902
+   ],
+   "brier": 0.1935,
+   "log_loss": 0.8351,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,117 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "718.5266",
+  "capital_immobilise": "132.5604",
+  "gains_realises_nets": "-148.9131",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0418",
+  "capital_total_estime": "851.0869",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2162,
+ "dernier_battement": "2026-10-22T05:46:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5541301",
+   "issue": "No",
+   "parts": "81.70",
+   "cout": "69.44",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_non v1.0.0",
+   "groupe": "1169569",
+   "ouverte_le": "2026-10-20T08:43"
+  },
+  {
+   "marche": "608545",
+   "issue": "No",
+   "parts": "77.57",
+   "cout": "63.12",
+   "prix_moyen": "0.8137",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_non v1.0.0",
+   "groupe": "48361",
+   "ouverte_le": "2026-10-21T14:41"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "5409221",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_non v1.0.0",
+   "resultat": "16.65",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "5409705",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_non v1.0.0",
+   "resultat": "4.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T22:13"
+  },
+  {
+   "marche": "5436700",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_non v1.0.0",
+   "resultat": "-182.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T21:41"
+  },
+  {
+   "marche": "5436699",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_non v1.0.0",
+   "resultat": "12.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T21:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_non v1.0.0": {
+   "operations": 4,
+   "evenements": 3,
+   "gagnantes": 3,
+   "taux_reussite": 0.75,
+   "profit_net": "-148.91",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.2694,
+   "esperance_par_operation": "-37.23",
+   "ic90_rendement_par_euro": [
+    -0.3235,
+    0.0715
+   ],
+   "brier": 0.2447,
+   "log_loss": 1.0818,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

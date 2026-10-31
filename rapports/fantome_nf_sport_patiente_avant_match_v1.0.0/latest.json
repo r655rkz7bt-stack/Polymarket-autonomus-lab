@@ -1,0 +1,277 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "667.9889",
+  "capital_immobilise": "473.0868",
+  "gains_realises_nets": "141.0757",
+  "gains_latents": "-45.6990",
+  "frais_payes": "7.9830",
+  "capital_total_estime": "1095.3766",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.194,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "parts": "76.06",
+   "cout": "63.13",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.83",
+   "latent": "0.00",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1224771",
+   "ouverte_le": "2026-10-27T12:41"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "107.78",
+   "cout": "95.92",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.76",
+   "latent": "-14.01",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T20:11"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "69.64",
+   "cout": "56.94",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-1.93",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-28T00:37"
+  },
+  {
+   "marche": "6281070",
+   "issue": "Jacksonville Dolphins",
+   "parts": "74.80",
+   "cout": "67.92",
+   "prix_moyen": "0.9080",
+   "prix_de_marque": "0.517",
+   "latent": "-29.25",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1262742",
+   "ouverte_le": "2026-10-30T08:56"
+  },
+  {
+   "marche": "Counter-Strike: BESTIA vs Procyon Gaming (BO3) - FiReSPORTS Last Chance Playoffs",
+   "issue": "BESTIA",
+   "parts": "44.61",
+   "cout": "37.92",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.72",
+   "latent": "-5.80",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1289397",
+   "ouverte_le": "2026-10-31T19:21"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "86.13",
+   "cout": "79.33",
+   "prix_moyen": "0.9211",
+   "prix_de_marque": "0.89",
+   "latent": "-2.67",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T19:37"
+  },
+  {
+   "marche": "5918690",
+   "issue": "Under",
+   "parts": "43.34",
+   "cout": "37.95",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.95",
+   "latent": "3.22",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1216845",
+   "ouverte_le": "2026-10-31T19:47"
+  },
+  {
+   "marche": "UFC Fight Night: Tainara Lisboa vs. Lucia Szabová (Women's Flyweight, Prelims)",
+   "issue": "Lucia Szabová",
+   "parts": "39.50",
+   "cout": "33.97",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.98",
+   "latent": "4.74",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1207817",
+   "ouverte_le": "2026-10-31T21:21"
+  }
+ ],
+ "operations_cloturees": 55,
+ "dernieres_operations": [
+  {
+   "marche": "6345446",
+   "issue": "UNiTY esports",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "6.62",
+   "resolution": "résolu : UNiTY esports",
+   "cloturee_le": "2026-10-30T15:27"
+  },
+  {
+   "marche": "6399769",
+   "issue": "Fiona Crawley",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "12.22",
+   "resolution": "résolu : Fiona Crawley",
+   "cloturee_le": "2026-10-30T15:41"
+  },
+  {
+   "marche": "5928345",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "6.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:01"
+  },
+  {
+   "marche": "6369797",
+   "issue": "FOKUS",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "1.12",
+   "resolution": "résolu : FOKUS",
+   "cloturee_le": "2026-10-30T16:56"
+  },
+  {
+   "marche": "6111998",
+   "issue": "Fraport Skyliners",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "12.12",
+   "resolution": "résolu : Fraport Skyliners",
+   "cloturee_le": "2026-10-30T22:11"
+  },
+  {
+   "marche": "6280258",
+   "issue": "Team Liquid",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "-19.58",
+   "resolution": "résolu : LOS",
+   "cloturee_le": "2026-10-30T23:39"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "10.63",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6411869",
+   "issue": "Katie Swan",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "5.04",
+   "resolution": "résolu : Katie Swan",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6408767",
+   "issue": "NEXVOID",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "6.77",
+   "resolution": "résolu : NEXVOID",
+   "cloturee_le": "2026-10-31T05:45"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "7.02",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "6438835",
+   "issue": "paiN",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "-22.40",
+   "resolution": "résolu : naocopulas",
+   "cloturee_le": "2026-10-31T15:55"
+  },
+  {
+   "marche": "6401335",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "10.78",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-31T16:01"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "7.05",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "6439052",
+   "issue": "Nuclear TigeRES",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "-28.00",
+   "resolution": "résolu : WRAITH PCIFIC",
+   "cloturee_le": "2026-10-31T17:25"
+  },
+  {
+   "marche": "6474882",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "6.53",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-31T20:25"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_avant_match v1.0.0": {
+   "operations": 55,
+   "evenements": 50,
+   "gagnantes": 44,
+   "taux_reussite": 0.8,
+   "profit_net": "141.08",
+   "frais": "7.11",
+   "rendement_sur_mises": 0.0469,
+   "esperance_par_operation": "2.57",
+   "ic90_rendement_par_euro": [
+    -0.1814,
+    0.0319
+   ],
+   "brier": 0.1506,
+   "log_loss": 0.4867,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

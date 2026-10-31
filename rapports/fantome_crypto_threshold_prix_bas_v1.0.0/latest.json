@@ -1,0 +1,325 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "888.9479",
+  "capital_immobilise": "170.8196",
+  "gains_realises_nets": "59.7675",
+  "gains_latents": "-105.1058",
+  "frais_payes": "34.6724",
+  "capital_total_estime": "954.6617",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3114,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6205305",
+   "issue": "Yes",
+   "parts": "57.04",
+   "cout": "12.05",
+   "prix_moyen": "0.2112",
+   "prix_de_marque": "0.04",
+   "latent": "-9.77",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T15:13"
+  },
+  {
+   "marche": "6205325",
+   "issue": "Yes",
+   "parts": "55.91",
+   "cout": "11.88",
+   "prix_moyen": "0.2124",
+   "prix_de_marque": "0.275",
+   "latent": "3.50",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T21:07"
+  },
+  {
+   "marche": "Will Bitcoin dip to $76,000 October 26-November 1?",
+   "issue": "Yes",
+   "parts": "39.79",
+   "cout": "20.47",
+   "prix_moyen": "0.5145",
+   "prix_de_marque": "0.231",
+   "latent": "-11.28",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T23:08"
+  },
+  {
+   "marche": "6424277",
+   "issue": "Yes",
+   "parts": "134.77",
+   "cout": "15.47",
+   "prix_moyen": "0.1148",
+   "prix_de_marque": "0.021",
+   "latent": "-12.64",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T06:42"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,200 in October?",
+   "issue": "Yes",
+   "parts": "51.24",
+   "cout": "11.08",
+   "prix_moyen": "0.2162",
+   "prix_de_marque": "0.041",
+   "latent": "-8.98",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T07:57"
+  },
+  {
+   "marche": "Will Bitcoin dip to $76,000 on October 31?",
+   "issue": "Yes",
+   "parts": "107.79",
+   "cout": "11.46",
+   "prix_moyen": "0.1063",
+   "prix_de_marque": "0.017",
+   "latent": "-9.63",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T08:26"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $76,000 on November 1?",
+   "issue": "No",
+   "parts": "26.25",
+   "cout": "2.75",
+   "prix_moyen": "0.1046",
+   "prix_de_marque": "0.04",
+   "latent": "-1.70",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T08:26"
+  },
+  {
+   "marche": "6205303",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "0.37",
+   "prix_moyen": "0.1484",
+   "prix_de_marque": "0.045",
+   "latent": "-0.26",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-31T09:42"
+  },
+  {
+   "marche": "6443496",
+   "issue": "Yes",
+   "parts": "350.52",
+   "cout": "19.25",
+   "prix_moyen": "0.0549",
+   "prix_de_marque": "0.009",
+   "latent": "-16.10",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T09:57"
+  },
+  {
+   "marche": "6426345",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "0.80",
+   "prix_moyen": "0.0639",
+   "prix_de_marque": "0.04",
+   "latent": "-0.30",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T11:27"
+  },
+  {
+   "marche": "Will Bitcoin dip to $77,000 on October 31?",
+   "issue": "Yes",
+   "parts": "132.42",
+   "cout": "60.55",
+   "prix_moyen": "0.4572",
+   "prix_de_marque": "0.19",
+   "latent": "-35.39",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T13:12"
+  },
+  {
+   "marche": "6443506",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "4.70",
+   "prix_moyen": "0.3761",
+   "prix_de_marque": "0.17",
+   "latent": "-2.58",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T15:27"
+  }
+ ],
+ "operations_cloturees": 27,
+ "dernieres_operations": [
+  {
+   "marche": "5889110",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-16.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-25T16:41"
+  },
+  {
+   "marche": "5889111",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-3.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T16:41"
+  },
+  {
+   "marche": "5889090",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-2.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T16:41"
+  },
+  {
+   "marche": "6171157",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "39.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T04:16"
+  },
+  {
+   "marche": "5972417",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-63.14",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T16:13"
+  },
+  {
+   "marche": "6044808",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "15.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "6377727",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-48.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:01"
+  },
+  {
+   "marche": "6377728",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-15.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:35"
+  },
+  {
+   "marche": "6377730",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "11.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T04:16"
+  },
+  {
+   "marche": "6377747",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "34.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T04:16"
+  },
+  {
+   "marche": "6084522",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-70.75",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084543",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-7.12",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6137717",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-8.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137715",
+   "issue": "No",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-6.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137758",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_prix_bas v1.0.0",
+   "resultat": "-11.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T16:21"
+  }
+ ],
+ "performances": {
+  "crypto_threshold_prix_bas v1.0.0": {
+   "operations": 27,
+   "evenements": 21,
+   "gagnantes": 9,
+   "taux_reussite": 0.333,
+   "profit_net": "59.77",
+   "frais": "26.62",
+   "rendement_sur_mises": 0.0711,
+   "esperance_par_operation": "2.21",
+   "ic90_rendement_par_euro": [
+    -0.6385,
+    0.1178
+   ],
+   "brier": 0.1898,
+   "log_loss": 0.5843,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

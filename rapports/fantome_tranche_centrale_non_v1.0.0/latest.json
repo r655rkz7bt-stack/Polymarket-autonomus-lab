@@ -1,0 +1,156 @@
+{
+ "genere_le": "2026-10-31T21:30:19+00:00",
+ "capital": {
+  "solde_disponible": "943.8182",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-56.1818",
+  "gains_latents": "0.0000",
+  "frais_payes": "2.9250",
+  "capital_total_estime": "943.8182",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0562,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 12,
+ "dernieres_operations": [
+  {
+   "marche": "6015150",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-5.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T16:17"
+  },
+  {
+   "marche": "6015124",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-5.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T16:17"
+  },
+  {
+   "marche": "6015209",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-3.28",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T16:17"
+  },
+  {
+   "marche": "6044831",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-4.03",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T16:19"
+  },
+  {
+   "marche": "6044806",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-7.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T16:19"
+  },
+  {
+   "marche": "6084524",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-3.75",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084579",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-3.61",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084495",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-5.25",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084554",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-5.15",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6137713",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-3.11",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137762",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-2.46",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6137863",
+   "issue": "No",
+   "strategie": "tranche_centrale_non v1.0.0",
+   "resultat": "-6.51",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:21"
+  }
+ ],
+ "performances": {
+  "tranche_centrale_non v1.0.0": {
+   "operations": 12,
+   "evenements": 12,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-56.18",
+   "frais": "2.92",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-4.68",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.0752,
+   "log_loss": 0.294,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

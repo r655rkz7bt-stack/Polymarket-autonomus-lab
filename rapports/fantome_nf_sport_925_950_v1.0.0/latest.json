@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "620.0851",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-379.9149",
+  "gains_latents": "0.0000",
+  "frais_payes": "46.2474",
+  "capital_total_estime": "620.0851",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.5525,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 117,
+ "dernieres_operations": [
+  {
+   "marche": "6227392",
+   "issue": "Susan Bandecchi",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "2.88",
+   "resolution": "résolu : Susan Bandecchi",
+   "cloturee_le": "2026-10-27T18:31"
+  },
+  {
+   "marche": "6265995",
+   "issue": "Vitality",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "1.16",
+   "resolution": "résolu : Vitality",
+   "cloturee_le": "2026-10-27T19:07"
+  },
+  {
+   "marche": "5679327",
+   "issue": "Under",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "-221.52",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-27T19:46"
+  },
+  {
+   "marche": "5674341",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "2.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T19:46"
+  },
+  {
+   "marche": "6037118",
+   "issue": "GamerLegion",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "1.39",
+   "resolution": "résolu : GamerLegion",
+   "cloturee_le": "2026-10-27T20:01"
+  },
+  {
+   "marche": "6263443",
+   "issue": "Luca Castagnola",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "7.08",
+   "resolution": "résolu : Luca Castagnola",
+   "cloturee_le": "2026-10-27T20:06"
+  },
+  {
+   "marche": "6176485",
+   "issue": "Moise Kouame",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "7.20",
+   "resolution": "résolu : Moise Kouame",
+   "cloturee_le": "2026-10-27T20:31"
+  },
+  {
+   "marche": "5662634",
+   "issue": "RB Leipzig",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "3.60",
+   "resolution": "résolu : RB Leipzig",
+   "cloturee_le": "2026-10-27T21:16"
+  },
+  {
+   "marche": "5674371",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "2.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "5679192",
+   "issue": "Como 1907",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "0.45",
+   "resolution": "résolu : Como 1907",
+   "cloturee_le": "2026-10-27T22:21"
+  },
+  {
+   "marche": "6036989",
+   "issue": "Vitality Rising Bees",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "0.08",
+   "resolution": "résolu : Vitality Rising Bees",
+   "cloturee_le": "2026-10-27T23:21"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "-25.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "5678023",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "-49.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T01:35"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "17.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "5928353",
+   "issue": "No",
+   "strategie": "nf_sport_925_950 v1.0.0",
+   "resultat": "0.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:31"
+  }
+ ],
+ "performances": {
+  "nf_sport_925_950 v1.0.0": {
+   "operations": 117,
+   "evenements": 101,
+   "gagnantes": 110,
+   "taux_reussite": 0.94,
+   "profit_net": "-379.91",
+   "frais": "46.25",
+   "rendement_sur_mises": -0.0276,
+   "esperance_par_operation": "-3.25",
+   "ic90_rendement_par_euro": [
+    -0.0385,
+    0.0432
+   ],
+   "brier": 0.0578,
+   "log_loss": 0.2522,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

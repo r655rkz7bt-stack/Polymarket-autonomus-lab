@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:15+00:00",
+ "capital": {
+  "solde_disponible": "804.7008",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-195.2992",
+  "gains_latents": "0.0000",
+  "frais_payes": "51.1655",
+  "capital_total_estime": "804.7008",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.5806,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 108,
+ "dernieres_operations": [
+  {
+   "marche": "4587349",
+   "issue": "Seahawks",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "20.91",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "4587348",
+   "issue": "Seahawks",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "1.00",
+   "resolution": "résolu : Seahawks",
+   "cloturee_le": "2026-10-26T03:35"
+  },
+  {
+   "marche": "6066508",
+   "issue": "Off Chops",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "3.72",
+   "resolution": "résolu : Off Chops",
+   "cloturee_le": "2026-10-26T06:11"
+  },
+  {
+   "marche": "6240326",
+   "issue": "Alter Ego",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "1.83",
+   "resolution": "résolu : Alter Ego",
+   "cloturee_le": "2026-10-26T09:05"
+  },
+  {
+   "marche": "6215978",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "39.61",
+   "resolution": "résolu : MOUZ",
+   "cloturee_le": "2026-10-26T09:25"
+  },
+  {
+   "marche": "6215980",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "35.77",
+   "resolution": "résolu : MOUZ",
+   "cloturee_le": "2026-10-26T10:41"
+  },
+  {
+   "marche": "6215984",
+   "issue": "Aurora Gaming",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "35.79",
+   "resolution": "résolu : Aurora Gaming",
+   "cloturee_le": "2026-10-26T11:11"
+  },
+  {
+   "marche": "6166407",
+   "issue": "GamerLegion",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "17.17",
+   "resolution": "résolu : GamerLegion",
+   "cloturee_le": "2026-10-26T12:05"
+  },
+  {
+   "marche": "6215990",
+   "issue": "9z",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "45.00",
+   "resolution": "résolu : 9z",
+   "cloturee_le": "2026-10-26T12:30"
+  },
+  {
+   "marche": "6215988",
+   "issue": "Vitality",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "-342.87",
+   "resolution": "résolu : FUT Esports",
+   "cloturee_le": "2026-10-26T14:01"
+  },
+  {
+   "marche": "6215992",
+   "issue": "9z",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "-339.78",
+   "resolution": "résolu : TYLOO",
+   "cloturee_le": "2026-10-26T14:19"
+  },
+  {
+   "marche": "6234440",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "0.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T20:05"
+  },
+  {
+   "marche": "5594305",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "37.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T21:41"
+  },
+  {
+   "marche": "5663532",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "29.74",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T22:46"
+  },
+  {
+   "marche": "5644257",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut_3_6h v1.0.0",
+   "resultat": "3.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:40"
+  }
+ ],
+ "performances": {
+  "nf_sport_prix_haut_3_6h v1.0.0": {
+   "operations": 108,
+   "evenements": 81,
+   "gagnantes": 102,
+   "taux_reussite": 0.944,
+   "profit_net": "-195.30",
+   "frais": "51.17",
+   "rendement_sur_mises": -0.0172,
+   "esperance_par_operation": "-1.81",
+   "ic90_rendement_par_euro": [
+    -0.0122,
+    0.0678
+   ],
+   "brier": 0.053,
+   "log_loss": 0.2251,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

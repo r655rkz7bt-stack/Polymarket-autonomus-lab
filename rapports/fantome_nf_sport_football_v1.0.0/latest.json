@@ -1,0 +1,289 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "400.6445",
+  "capital_immobilise": "482.6578",
+  "gains_realises_nets": "-116.6977",
+  "gains_latents": "20.7437",
+  "frais_payes": "24.5818",
+  "capital_total_estime": "904.0460",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2571,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "parts": "5.57",
+   "cout": "5.09",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.9",
+   "latent": "-0.08",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1230766",
+   "ouverte_le": "2026-10-26T22:52"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "50.84",
+   "cout": "45.01",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.999",
+   "latent": "5.78",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-27T04:27"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "32.18",
+   "cout": "26.31",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-0.89",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-27T19:42"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "63.21",
+   "cout": "57.17",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.76",
+   "latent": "-9.13",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "5859305",
+   "issue": "No",
+   "parts": "33.87",
+   "cout": "31.29",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "2.55",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-28T14:09"
+  },
+  {
+   "marche": "5918690",
+   "issue": "Under",
+   "parts": "54.19",
+   "cout": "47.97",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.95",
+   "latent": "3.51",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1216845",
+   "ouverte_le": "2026-10-31T16:27"
+  },
+  {
+   "marche": "5882360",
+   "issue": "Yes",
+   "parts": "96.51",
+   "cout": "90.07",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.35",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1212015",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5833018",
+   "issue": "No",
+   "parts": "96.51",
+   "cout": "90.07",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.35",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1206699",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5843103",
+   "issue": "No",
+   "parts": "96.09",
+   "cout": "89.68",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.32",
+   "strategie": "nf_sport_football v1.0.0",
+   "groupe": "1208038",
+   "ouverte_le": "2026-10-31T17:41"
+  }
+ ],
+ "operations_cloturees": 91,
+ "dernieres_operations": [
+  {
+   "marche": "5746068",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "1.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:51"
+  },
+  {
+   "marche": "5746067",
+   "issue": "Yes",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.87",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:51"
+  },
+  {
+   "marche": "5719575",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "-14.02",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "5701249",
+   "issue": "Yes",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "0.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "5763515",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "5.74",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:46"
+  },
+  {
+   "marche": "5758030",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "6.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "5758028",
+   "issue": "Yes",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "5.72",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "5794335",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "5.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "6111998",
+   "issue": "Fraport Skyliners",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "5.49",
+   "resolution": "résolu : Fraport Skyliners",
+   "cloturee_le": "2026-10-30T22:11"
+  },
+  {
+   "marche": "5828021",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "6.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "5828023",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "5.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "2.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "5856647",
+   "issue": "Manchester City FC",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "6.34",
+   "resolution": "résolu : Manchester City FC",
+   "cloturee_le": "2026-10-31T17:11"
+  },
+  {
+   "marche": "5852481",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "-36.76",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "5852484",
+   "issue": "No",
+   "strategie": "nf_sport_football v1.0.0",
+   "resultat": "6.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  }
+ ],
+ "performances": {
+  "nf_sport_football v1.0.0": {
+   "operations": 91,
+   "evenements": 64,
+   "gagnantes": 81,
+   "taux_reussite": 0.89,
+   "profit_net": "-116.70",
+   "frais": "22.41",
+   "rendement_sur_mises": -0.0236,
+   "esperance_par_operation": "-1.28",
+   "ic90_rendement_par_euro": [
+    -0.0764,
+    0.0562
+   ],
+   "brier": 0.1,
+   "log_loss": 0.3871,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

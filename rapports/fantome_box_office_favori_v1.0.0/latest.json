@@ -1,0 +1,84 @@
+{
+ "genere_le": "2026-10-31T21:30:07+00:00",
+ "capital": {
+  "solde_disponible": "982.4665",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-17.5335",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "982.4665",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0227,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "5713519",
+   "issue": "Yes",
+   "strategie": "box_office_favori v1.0.0",
+   "resultat": "-10.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T18:55"
+  },
+  {
+   "marche": "5951057",
+   "issue": "Yes",
+   "strategie": "box_office_favori v1.0.0",
+   "resultat": "3.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T23:51"
+  },
+  {
+   "marche": "6043823",
+   "issue": "Yes",
+   "strategie": "box_office_favori v1.0.0",
+   "resultat": "-10.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:55"
+  }
+ ],
+ "performances": {
+  "box_office_favori v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 1,
+   "taux_reussite": 0.333,
+   "profit_net": "-17.53",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.3651,
+   "esperance_par_operation": "-5.84",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.2525
+   ],
+   "brier": 0.4226,
+   "log_loss": 1.0773,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

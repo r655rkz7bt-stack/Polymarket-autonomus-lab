@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:18+00:00",
+ "capital": {
+  "solde_disponible": "953.5228",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-46.4772",
+  "gains_latents": "0.0000",
+  "frais_payes": "1.0531",
+  "capital_total_estime": "953.5228",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0801,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 30,
+ "dernieres_operations": [
+  {
+   "marche": "6168180",
+   "issue": "CTBC Flying Oyster",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.25",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-10-26T18:41"
+  },
+  {
+   "marche": "5663532",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.63",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T22:46"
+  },
+  {
+   "marche": "608540",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-5.65",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T01:55"
+  },
+  {
+   "marche": "608545",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-11.91",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "6246666",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-1.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T16:21"
+  },
+  {
+   "marche": "6265984",
+   "issue": "TYLOO",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.46",
+   "resolution": "résolu : FURIA",
+   "cloturee_le": "2026-10-27T18:21"
+  },
+  {
+   "marche": "6176393",
+   "issue": "Martin Landaluce",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.57",
+   "resolution": "résolu : Alexander Zverev",
+   "cloturee_le": "2026-10-27T20:41"
+  },
+  {
+   "marche": "5674371",
+   "issue": "Yes",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-2.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "6176463",
+   "issue": "Stan Wawrinka",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-0.82",
+   "resolution": "résolu : Jiri Lehecka",
+   "cloturee_le": "2026-10-27T22:51"
+  },
+  {
+   "marche": "6227369",
+   "issue": "Katrina Scott",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-1.08",
+   "resolution": "résolu : Tamara Zidansek",
+   "cloturee_le": "2026-10-27T23:16"
+  },
+  {
+   "marche": "6011577",
+   "issue": "Olimpia Milano",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-1.89",
+   "resolution": "résolu : Panathinaikos",
+   "cloturee_le": "2026-10-27T23:35"
+  },
+  {
+   "marche": "5678025",
+   "issue": "No",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "24.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "6313354",
+   "issue": "Astra Invicta",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-1.16",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-28T17:18"
+  },
+  {
+   "marche": "6323059",
+   "issue": "Camila Eluney Kilapi",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "-1.11",
+   "resolution": "résolu : Alisa Danilova",
+   "cloturee_le": "2026-10-28T19:46"
+  },
+  {
+   "marche": "5694633",
+   "issue": "Under",
+   "strategie": "outsider_sport_apres_midi v1.0.0",
+   "resultat": "14.15",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-28T21:06"
+  }
+ ],
+ "performances": {
+  "outsider_sport_apres_midi v1.0.0": {
+   "operations": 30,
+   "evenements": 28,
+   "gagnantes": 2,
+   "taux_reussite": 0.067,
+   "profit_net": "-46.48",
+   "frais": "1.05",
+   "rendement_sur_mises": -0.5169,
+   "esperance_par_operation": "-1.55",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.4082
+   ],
+   "brier": 0.0703,
+   "log_loss": 0.2796,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

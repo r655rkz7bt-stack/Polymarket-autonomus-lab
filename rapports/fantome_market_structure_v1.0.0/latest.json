@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "508.8666",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-491.1334",
+  "gains_latents": "0.0000",
+  "frais_payes": "215.9445",
+  "capital_total_estime": "508.8666",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4911,
+ "dernier_battement": "2026-10-19T15:03:57+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 452,
+ "dernieres_operations": [
+  {
+   "marche": "5745691",
+   "issue": "Alejandro Davidovich Fokina",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-1.26",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T19:07"
+  },
+  {
+   "marche": "Will the Republicans win the Ohio Senate race in 2026?",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.53",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T19:42"
+  },
+  {
+   "marche": "5336146",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.70",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T19:55"
+  },
+  {
+   "marche": "2100981",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.18",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:02"
+  },
+  {
+   "marche": "5263907",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.83",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:22"
+  },
+  {
+   "marche": "5340069",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.16",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:27"
+  },
+  {
+   "marche": "2757891",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.06",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T20:42"
+  },
+  {
+   "marche": "5611880",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-2.18",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "5349499",
+   "issue": "Indiana",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.23",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:02"
+  },
+  {
+   "marche": "5409680",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.55",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:06"
+  },
+  {
+   "marche": "2026 Balance of Power: R Senate, D House",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.60",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:17"
+  },
+  {
+   "marche": "682708",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "0.26",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "Will the Republicans win the Michigan Senate race in 2026?",
+   "issue": "No",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.07",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T22:22"
+  },
+  {
+   "marche": "5680548",
+   "issue": "Yes",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "0.74",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T05:25"
+  },
+  {
+   "marche": "5355360",
+   "issue": "Under",
+   "strategie": "market_structure v1.0.0",
+   "resultat": "-0.75",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T05:53"
+  }
+ ],
+ "performances": {
+  "market_structure v1.0.0": {
+   "operations": 452,
+   "evenements": 151,
+   "gagnantes": 109,
+   "taux_reussite": 0.241,
+   "profit_net": "-491.13",
+   "frais": "215.94",
+   "rendement_sur_mises": -0.0912,
+   "esperance_par_operation": "-1.09",
+   "ic90_rendement_par_euro": [
+    -0.1084,
+    -0.0735
+   ],
+   "brier": 0.1725,
+   "log_loss": 0.5725,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

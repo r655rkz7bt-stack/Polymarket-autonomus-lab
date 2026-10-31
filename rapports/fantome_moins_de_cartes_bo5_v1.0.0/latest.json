@@ -1,0 +1,92 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "994.2939",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-5.7061",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.2828",
+  "capital_total_estime": "994.2939",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0091,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "6036990",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "0.85",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:25"
+  },
+  {
+   "marche": "6036991",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.55",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:46"
+  },
+  {
+   "marche": "6430629",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "-2.57",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6430630",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "-6.53",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T16:15"
+  }
+ ],
+ "performances": {
+  "moins_de_cartes_bo5 v1.0.0": {
+   "operations": 4,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 0.5,
+   "profit_net": "-5.71",
+   "frais": "0.28",
+   "rendement_sur_mises": -0.3753,
+   "esperance_par_operation": "-1.43",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    1.2828
+   ],
+   "brier": 0.2996,
+   "log_loss": 0.8051,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

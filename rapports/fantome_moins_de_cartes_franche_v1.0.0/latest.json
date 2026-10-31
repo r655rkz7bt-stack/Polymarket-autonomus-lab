@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "995.6028",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-4.3972",
+  "gains_latents": "0.0000",
+  "frais_payes": "6.0349",
+  "capital_total_estime": "995.6028",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0346,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 55,
+ "dernieres_operations": [
+  {
+   "marche": "6396977",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "-3.24",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T14:00"
+  },
+  {
+   "marche": "6386945",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "2.62",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T14:31"
+  },
+  {
+   "marche": "6402065",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "2.83",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T15:24"
+  },
+  {
+   "marche": "6401235",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "3.60",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T16:01"
+  },
+  {
+   "marche": "6344986",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "2.61",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T16:06"
+  },
+  {
+   "marche": "6401316",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "2.87",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T18:06"
+  },
+  {
+   "marche": "6394906",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "-3.40",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T18:25"
+  },
+  {
+   "marche": "6366902",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "-0.72",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T19:55"
+  },
+  {
+   "marche": "6327421",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "-3.38",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T21:46"
+  },
+  {
+   "marche": "6401247",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T21:55"
+  },
+  {
+   "marche": "6397592",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "3.71",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T22:31"
+  },
+  {
+   "marche": "6280259",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "-4.32",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T23:39"
+  },
+  {
+   "marche": "6373675",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "1.22",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T00:06"
+  },
+  {
+   "marche": "6404734",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "2.54",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6280279",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_franche v1.0.0",
+   "resultat": "2.68",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T01:41"
+  }
+ ],
+ "performances": {
+  "moins_de_cartes_franche v1.0.0": {
+   "operations": 55,
+   "evenements": 55,
+   "gagnantes": 29,
+   "taux_reussite": 0.527,
+   "profit_net": "-4.40",
+   "frais": "6.03",
+   "rendement_sur_mises": -0.0156,
+   "esperance_par_operation": "-0.08",
+   "ic90_rendement_par_euro": [
+    -0.2188,
+    0.1639
+   ],
+   "brier": 0.2339,
+   "log_loss": 0.6882,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,409 @@
+{
+ "genere_le": "2026-10-31T21:30:16+00:00",
+ "capital": {
+  "solde_disponible": "75.7550",
+  "capital_immobilise": "952.2668",
+  "gains_realises_nets": "28.0218",
+  "gains_latents": "-44.5026",
+  "frais_payes": "89.1836",
+  "capital_total_estime": "983.5192",
+  "positions_ouvertes": "19",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3189,
+ "dernier_battement": "2026-10-31T21:17:40+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "parts": "5.57",
+   "cout": "5.09",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.9",
+   "latent": "-0.08",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1230766",
+   "ouverte_le": "2026-10-26T22:52"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "61.06",
+   "cout": "54.06",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.999",
+   "latent": "6.94",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-27T18:28"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "46.37",
+   "cout": "41.94",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.76",
+   "latent": "-6.70",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "5944743",
+   "issue": "Indiana",
+   "parts": "103.05",
+   "cout": "96.04",
+   "prix_moyen": "0.9320",
+   "prix_de_marque": "0.71",
+   "latent": "-22.87",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1220335",
+   "ouverte_le": "2026-10-28T02:42"
+  },
+  {
+   "marche": "5859305",
+   "issue": "No",
+   "parts": "54.72",
+   "cout": "50.54",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "4.12",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-28T14:09"
+  },
+  {
+   "marche": "6281070",
+   "issue": "Jacksonville Dolphins",
+   "parts": "108.60",
+   "cout": "101.19",
+   "prix_moyen": "0.9318",
+   "prix_de_marque": "0.517",
+   "latent": "-45.05",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1262742",
+   "ouverte_le": "2026-10-30T03:22"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "68.33",
+   "cout": "60.43",
+   "prix_moyen": "0.8843",
+   "prix_de_marque": "0.876",
+   "latent": "-0.57",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "86.11",
+   "cout": "79.54",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.89",
+   "latent": "-2.90",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "4397050",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.931",
+   "latent": "0.20",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "41.07",
+   "cout": "39.11",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.95",
+   "latent": "-0.10",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:14"
+  },
+  {
+   "marche": "5882360",
+   "issue": "Yes",
+   "parts": "101.66",
+   "cout": "94.87",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.68",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1212015",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5833018",
+   "issue": "No",
+   "parts": "101.66",
+   "cout": "94.87",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.68",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1206699",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5918690",
+   "issue": "Under",
+   "parts": "48.72",
+   "cout": "43.13",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.95",
+   "latent": "3.15",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1216845",
+   "ouverte_le": "2026-10-31T17:18"
+  },
+  {
+   "marche": "5843103",
+   "issue": "No",
+   "parts": "34.68",
+   "cout": "32.37",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "2.28",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1208038",
+   "ouverte_le": "2026-10-31T17:41"
+  },
+  {
+   "marche": "6415392",
+   "issue": "Acend",
+   "parts": "49.40",
+   "cout": "42.78",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.999",
+   "latent": "6.57",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1282507",
+   "ouverte_le": "2026-10-31T19:17"
+  },
+  {
+   "marche": "6445949",
+   "issue": "Iberian Soul",
+   "parts": "33.28",
+   "cout": "30.10",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "3.14",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1286976",
+   "ouverte_le": "2026-10-31T20:22"
+  },
+  {
+   "marche": "LoL: LOS vs LYON (BO3) - Worlds Group Stage",
+   "issue": "LOS",
+   "parts": "34.01",
+   "cout": "29.78",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.73",
+   "latent": "-4.95",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T20:22"
+  },
+  {
+   "marche": "Guayaquil: Valerio Aboian vs Hugo Dellien",
+   "issue": "Hugo Dellien",
+   "parts": "21.57",
+   "cout": "19.72",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.999",
+   "latent": "1.83",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1286916",
+   "ouverte_le": "2026-10-31T20:26"
+  },
+  {
+   "marche": "Counter-Strike: BESTIA vs Procyon Gaming (BO3) - FiReSPORTS Last Chance Playoffs",
+   "issue": "BESTIA",
+   "parts": "16.53",
+   "cout": "14.79",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.72",
+   "latent": "-2.89",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1289397",
+   "ouverte_le": "2026-10-31T20:47"
+  }
+ ],
+ "operations_cloturees": 406,
+ "dernieres_operations": [
+  {
+   "marche": "6280278",
+   "issue": "Hanwha Life Esports",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.42",
+   "resolution": "résolu : Hanwha Life Esports",
+   "cloturee_le": "2026-10-31T01:41"
+  },
+  {
+   "marche": "6411869",
+   "issue": "Katie Swan",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : Katie Swan",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6405499",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.90",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-31T04:31"
+  },
+  {
+   "marche": "6408767",
+   "issue": "NEXVOID",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.40",
+   "resolution": "résolu : NEXVOID",
+   "cloturee_le": "2026-10-31T05:45"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "5.51",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "0.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.18",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "5856647",
+   "issue": "Manchester City FC",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "6.78",
+   "resolution": "résolu : Manchester City FC",
+   "cloturee_le": "2026-10-31T17:11"
+  },
+  {
+   "marche": "6438055",
+   "issue": "Nuno Borges",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "8.73",
+   "resolution": "résolu : Nuno Borges",
+   "cloturee_le": "2026-10-31T18:51"
+  },
+  {
+   "marche": "6438033",
+   "issue": "Jiri Lehecka",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.35",
+   "resolution": "résolu : Jiri Lehecka",
+   "cloturee_le": "2026-10-31T19:16"
+  },
+  {
+   "marche": "6438040",
+   "issue": "Alex de Minaur",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.17",
+   "resolution": "résolu : Alex de Minaur",
+   "cloturee_le": "2026-10-31T19:16"
+  },
+  {
+   "marche": "6440386",
+   "issue": "Low Cortisol",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "0.98",
+   "resolution": "résolu : Low Cortisol",
+   "cloturee_le": "2026-10-31T20:06"
+  },
+  {
+   "marche": "6438063",
+   "issue": "Adolfo Vallejo",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "2.73",
+   "resolution": "résolu : Adolfo Vallejo",
+   "cloturee_le": "2026-10-31T20:11"
+  },
+  {
+   "marche": "6474882",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.92",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-31T20:25"
+  },
+  {
+   "marche": "6438036",
+   "issue": "Dylan Dietrich",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.89",
+   "resolution": "résolu : Dylan Dietrich",
+   "cloturee_le": "2026-10-31T21:16"
+  }
+ ],
+ "performances": {
+  "nf_sport_prix_haut v1.0.0": {
+   "operations": 406,
+   "evenements": 365,
+   "gagnantes": 371,
+   "taux_reussite": 0.914,
+   "profit_net": "28.02",
+   "frais": "85.16",
+   "rendement_sur_mises": 0.0014,
+   "esperance_par_operation": "0.07",
+   "ic90_rendement_par_euro": [
+    -0.028,
+    0.0243
+   ],
+   "brier": 0.08,
+   "log_loss": 0.3093,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

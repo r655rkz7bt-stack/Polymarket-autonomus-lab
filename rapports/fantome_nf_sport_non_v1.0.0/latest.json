@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "65.7804",
+  "capital_immobilise": "937.0589",
+  "gains_realises_nets": "2.8393",
+  "gains_latents": "2.8506",
+  "frais_payes": "41.0566",
+  "capital_total_estime": "1005.6899",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2895,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "parts": "5.57",
+   "cout": "5.09",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.9",
+   "latent": "-0.08",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1230766",
+   "ouverte_le": "2026-10-26T23:32"
+  },
+  {
+   "marche": "5859305",
+   "issue": "No",
+   "parts": "202.36",
+   "cout": "186.92",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "15.24",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-28T14:09"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "293.01",
+   "cout": "259.11",
+   "prix_moyen": "0.8843",
+   "prix_de_marque": "0.876",
+   "latent": "-2.44",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "294.86",
+   "cout": "272.36",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.89",
+   "latent": "-9.93",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "4397050",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.931",
+   "latent": "0.20",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "37.08",
+   "cout": "31.40",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.81",
+   "latent": "-1.36",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:14"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "170.00",
+   "cout": "160.28",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.95",
+   "latent": "1.22",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T20:21"
+  }
+ ],
+ "operations_cloturees": 85,
+ "dernieres_operations": [
+  {
+   "marche": "5674341",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "15.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T19:46"
+  },
+  {
+   "marche": "5674371",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "16.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "5674382",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "1.43",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "5678023",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "-49.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T01:35"
+  },
+  {
+   "marche": "5713138",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "29.87",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T19:41"
+  },
+  {
+   "marche": "5713158",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "19.63",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T19:41"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "1.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.04",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "5928353",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:31"
+  },
+  {
+   "marche": "5758030",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "19.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "5928346",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.08",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T19:55"
+  },
+  {
+   "marche": "5794335",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "18.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "5.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "5852481",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "-120.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "5852484",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "6.91",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  }
+ ],
+ "performances": {
+  "nf_sport_non v1.0.0": {
+   "operations": 85,
+   "evenements": 65,
+   "gagnantes": 80,
+   "taux_reussite": 0.941,
+   "profit_net": "2.84",
+   "frais": "36.83",
+   "rendement_sur_mises": 0.0003,
+   "esperance_par_operation": "0.03",
+   "ic90_rendement_par_euro": [
+    -0.0223,
+    0.0676
+   ],
+   "brier": 0.0548,
+   "log_loss": 0.223,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

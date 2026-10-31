@@ -1,0 +1,289 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "473.2025",
+  "capital_immobilise": "518.6551",
+  "gains_realises_nets": "-8.1424",
+  "gains_latents": "-0.8782",
+  "frais_payes": "5.4033",
+  "capital_total_estime": "990.9794",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0593,
+ "dernier_battement": "2026-10-19T15:03:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5610596",
+   "issue": "Yes",
+   "parts": "261.43",
+   "cout": "249.23",
+   "prix_moyen": "0.9533",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-15T16:16"
+  },
+  {
+   "marche": "5653786",
+   "issue": "Yes",
+   "parts": "169.57",
+   "cout": "158.47",
+   "prix_moyen": "0.9346",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-15T16:21"
+  },
+  {
+   "marche": "4641065",
+   "issue": "No",
+   "parts": "25.25",
+   "cout": "6.82",
+   "prix_moyen": "0.2700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T19:22"
+  },
+  {
+   "marche": "Will the Republican Party win the NC-11 House seat?",
+   "issue": "No",
+   "parts": "44.06",
+   "cout": "38.10",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.84",
+   "latent": "-1.09",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-17T16:43"
+  },
+  {
+   "marche": "1280957",
+   "issue": "Yes",
+   "parts": "22.50",
+   "cout": "21.36",
+   "prix_moyen": "0.9494",
+   "prix_de_marque": "0.959",
+   "latent": "0.22",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "parts": "11.44",
+   "cout": "9.77",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T02:48"
+  },
+  {
+   "marche": "1235549",
+   "issue": "Yes",
+   "parts": "11.44",
+   "cout": "2.80",
+   "prix_moyen": "0.2445",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-18T03:58"
+  },
+  {
+   "marche": "5767158",
+   "issue": "No",
+   "parts": "21.68",
+   "cout": "21.37",
+   "prix_moyen": "0.9857",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-18T09:19"
+  },
+  {
+   "marche": "5767157",
+   "issue": "No",
+   "parts": "10.87",
+   "cout": "10.74",
+   "prix_moyen": "0.9876",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "news_momentum v1.0.0",
+   "groupe": "1198099",
+   "ouverte_le": "2026-10-18T09:24"
+  }
+ ],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "5611004",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T05:21"
+  },
+  {
+   "marche": "5680557",
+   "issue": "Yes",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "1.31",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T07:41"
+  },
+  {
+   "marche": "5506689",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "-5.70",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:31"
+  },
+  {
+   "marche": "5611007",
+   "issue": "Yes",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "-6.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T18:06"
+  },
+  {
+   "marche": "5787757",
+   "issue": "Team Falcons",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "3.56",
+   "resolution": "résolu : Team Falcons",
+   "cloturee_le": "2026-10-17T18:24"
+  },
+  {
+   "marche": "5787759",
+   "issue": "Team Falcons",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "-29.04",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-17T21:01"
+  },
+  {
+   "marche": "1929323",
+   "issue": "Under",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "4.21",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-18T03:46"
+  },
+  {
+   "marche": "5724254",
+   "issue": "Yes",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T05:41"
+  },
+  {
+   "marche": "5557832",
+   "issue": "Tampa Bay Rays",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "1.19",
+   "resolution": "résolu : Tampa Bay Rays",
+   "cloturee_le": "2026-10-18T06:01"
+  },
+  {
+   "marche": "5564852",
+   "issue": "Yes",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "11.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T16:22"
+  },
+  {
+   "marche": "5766907",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T22:46"
+  },
+  {
+   "marche": "5766903",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T22:46"
+  },
+  {
+   "marche": "5767111",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.07",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T22:56"
+  },
+  {
+   "marche": "5769295",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T06:41"
+  },
+  {
+   "marche": "5769318",
+   "issue": "No",
+   "strategie": "news_momentum v1.0.0",
+   "resultat": "0.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T08:41"
+  }
+ ],
+ "performances": {
+  "news_momentum v1.0.0": {
+   "operations": 23,
+   "evenements": 18,
+   "gagnantes": 19,
+   "taux_reussite": 0.826,
+   "profit_net": "-8.14",
+   "frais": "3.38",
+   "rendement_sur_mises": -0.0068,
+   "esperance_par_operation": "-0.35",
+   "ic90_rendement_par_euro": [
+    -0.267,
+    -0.0118
+   ],
+   "brier": 0.042,
+   "log_loss": 0.1566,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

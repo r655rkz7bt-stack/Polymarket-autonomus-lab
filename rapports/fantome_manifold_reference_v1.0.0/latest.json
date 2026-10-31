@@ -1,0 +1,138 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "945.6126",
+  "capital_immobilise": "39.4384",
+  "gains_realises_nets": "-14.9490",
+  "gains_latents": "16.8228",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1001.8738",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0158,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6026468",
+   "issue": "No",
+   "parts": "21.53",
+   "cout": "13.35",
+   "prix_moyen": "0.6200",
+   "prix_de_marque": "0.81",
+   "latent": "4.09",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "1231809",
+   "ouverte_le": "2026-10-22T17:27"
+  },
+  {
+   "marche": "4620900",
+   "issue": "Yes",
+   "parts": "6.67",
+   "cout": "4.94",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.7",
+   "latent": "-0.27",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "1034268",
+   "ouverte_le": "2026-10-24T02:17"
+  },
+  {
+   "marche": "Will Vivek Ramaswamy pull the Amy Acton mother ad?",
+   "issue": "Yes",
+   "parts": "17.13",
+   "cout": "1.04",
+   "prix_moyen": "0.0609",
+   "prix_de_marque": "0.785",
+   "latent": "12.40",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "1230390",
+   "ouverte_le": "2026-10-25T04:32"
+  },
+  {
+   "marche": "Will Marine Le Pen win the 2027 French presidential election?",
+   "issue": "Yes",
+   "parts": "5.43",
+   "cout": "2.39",
+   "prix_moyen": "0.4410",
+   "prix_de_marque": "0.408",
+   "latent": "-0.18",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "79987",
+   "ouverte_le": "2026-10-25T14:17"
+  },
+  {
+   "marche": "Israel x Turkey military clash before 2027?",
+   "issue": "No",
+   "parts": "14.62",
+   "cout": "12.87",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.92",
+   "latent": "0.58",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "73200",
+   "ouverte_le": "2026-10-29T19:03"
+  },
+  {
+   "marche": "1060714",
+   "issue": "Yes",
+   "parts": "6.30",
+   "cout": "4.85",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "0.8",
+   "latent": "0.19",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "131764",
+   "ouverte_le": "2026-10-29T19:03"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "601819",
+   "issue": "No",
+   "strategie": "manifold_reference v1.0.0",
+   "resultat": "-14.95",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T03:16"
+  }
+ ],
+ "performances": {
+  "manifold_reference v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-14.95",
+   "frais": "0.00",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-14.95",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.5184,
+   "log_loss": 1.273,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

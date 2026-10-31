@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "773.6015",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-226.3985",
+  "gains_latents": "0.0000",
+  "frais_payes": "10.0628",
+  "capital_total_estime": "773.6015",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3556,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 84,
+ "dernieres_operations": [
+  {
+   "marche": "6166448",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.81",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-26T20:21"
+  },
+  {
+   "marche": "6227337",
+   "issue": "Gabriela Knutson",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "3.29",
+   "resolution": "résolu : Gabriela Knutson",
+   "cloturee_le": "2026-10-26T20:46"
+  },
+  {
+   "marche": "6231315",
+   "issue": "Spencer Johnson",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "-22.46",
+   "resolution": "résolu : Tomasz Berkieta",
+   "cloturee_le": "2026-10-26T20:55"
+  },
+  {
+   "marche": "6176403",
+   "issue": "Learner Tien",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.84",
+   "resolution": "résolu : Learner Tien",
+   "cloturee_le": "2026-10-26T21:16"
+  },
+  {
+   "marche": "6219235",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.57",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-26T21:21"
+  },
+  {
+   "marche": "6168189",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.23",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-26T21:41"
+  },
+  {
+   "marche": "6168188",
+   "issue": "LOS",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.53",
+   "resolution": "résolu : LOS",
+   "cloturee_le": "2026-10-26T21:41"
+  },
+  {
+   "marche": "5663532",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.37",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T22:46"
+  },
+  {
+   "marche": "5964851",
+   "issue": "Wuerzburg",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.84",
+   "resolution": "résolu : Wuerzburg",
+   "cloturee_le": "2026-10-26T23:25"
+  },
+  {
+   "marche": "608540",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "6.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T01:55"
+  },
+  {
+   "marche": "608545",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "10.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "1.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "1235568",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "2.16",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "0.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "5928353",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_biais_faible v1.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:31"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_biais_faible v1.0.0": {
+   "operations": 84,
+   "evenements": 77,
+   "gagnantes": 74,
+   "taux_reussite": 0.881,
+   "profit_net": "-226.40",
+   "frais": "10.06",
+   "rendement_sur_mises": -0.0531,
+   "esperance_par_operation": "-2.70",
+   "ic90_rendement_par_euro": [
+    -0.1003,
+    0.026
+   ],
+   "brier": 0.1117,
+   "log_loss": 0.4287,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

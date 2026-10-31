@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "902.4378",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-97.5622",
+  "gains_latents": "0.0000",
+  "frais_payes": "6.1408",
+  "capital_total_estime": "902.4378",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2174,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 48,
+ "dernieres_operations": [
+  {
+   "marche": "5969232",
+   "issue": "Milwaukee Brewers",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "4.56",
+   "resolution": "résolu : Milwaukee Brewers",
+   "cloturee_le": "2026-10-24T04:01"
+  },
+  {
+   "marche": "6078339",
+   "issue": "Ena Shibahara",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-21.09",
+   "resolution": "résolu : Alycia Parks",
+   "cloturee_le": "2026-10-24T06:25"
+  },
+  {
+   "marche": "5509281",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "1.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T07:05"
+  },
+  {
+   "marche": "5799001",
+   "issue": "Brisbane Bullets",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "5.96",
+   "resolution": "résolu : Brisbane Bullets",
+   "cloturee_le": "2026-10-24T10:31"
+  },
+  {
+   "marche": "6099838",
+   "issue": "Yannick Hanfmann",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "4.78",
+   "resolution": "résolu : Yannick Hanfmann",
+   "cloturee_le": "2026-10-24T11:41"
+  },
+  {
+   "marche": "6065034",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T13:01"
+  },
+  {
+   "marche": "5774511",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-33.69",
+   "resolution": "résolu : Liquid",
+   "cloturee_le": "2026-10-24T13:05"
+  },
+  {
+   "marche": "6086038",
+   "issue": "Sandro Kopp",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-6.89",
+   "resolution": "résolu : Filippo Romano",
+   "cloturee_le": "2026-10-24T13:55"
+  },
+  {
+   "marche": "6065038",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "5.18",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-24T14:46"
+  },
+  {
+   "marche": "5774533",
+   "issue": "Vitality",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "5.87",
+   "resolution": "résolu : Vitality",
+   "cloturee_le": "2026-10-24T17:11"
+  },
+  {
+   "marche": "6013437",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "2.87",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T18:20"
+  },
+  {
+   "marche": "6078341",
+   "issue": "Aliaksandra Sasnovich",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "5.89",
+   "resolution": "résolu : Aliaksandra Sasnovich",
+   "cloturee_le": "2026-10-24T20:01"
+  },
+  {
+   "marche": "5229654",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "1.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T02:20"
+  },
+  {
+   "marche": "5229652",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "4.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T02:20"
+  },
+  {
+   "marche": "5229655",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matchs v1.0.0",
+   "resultat": "-24.09",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T02:31"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_matchs v1.0.0": {
+   "operations": 48,
+   "evenements": 44,
+   "gagnantes": 38,
+   "taux_reussite": 0.792,
+   "profit_net": "-97.56",
+   "frais": "6.14",
+   "rendement_sur_mises": -0.0438,
+   "esperance_par_operation": "-2.03",
+   "ic90_rendement_par_euro": [
+    -0.2087,
+    -0.002
+   ],
+   "brier": 0.1663,
+   "log_loss": 0.4962,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

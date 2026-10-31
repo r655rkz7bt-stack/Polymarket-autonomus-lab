@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:16+00:00",
+ "capital": {
+  "solde_disponible": "917.2180",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-82.7820",
+  "gains_latents": "0.0000",
+  "frais_payes": "46.4163",
+  "capital_total_estime": "917.2180",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2823,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 119,
+ "dernieres_operations": [
+  {
+   "marche": "6231297",
+   "issue": "Calvin Hemery",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "-26.62",
+   "resolution": "résolu : Robin Catry",
+   "cloturee_le": "2026-10-26T14:38"
+  },
+  {
+   "marche": "6176401",
+   "issue": "Matteo Berrettini",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "4.99",
+   "resolution": "résolu : Matteo Berrettini",
+   "cloturee_le": "2026-10-26T14:38"
+  },
+  {
+   "marche": "6176473",
+   "issue": "Valentin Vacherot",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "4.49",
+   "resolution": "résolu : Valentin Vacherot",
+   "cloturee_le": "2026-10-26T15:13"
+  },
+  {
+   "marche": "6222635",
+   "issue": "Romane Longueville",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "1.04",
+   "resolution": "résolu : Romane Longueville",
+   "cloturee_le": "2026-10-26T15:23"
+  },
+  {
+   "marche": "6222633",
+   "issue": "Sachia Vickery",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "-10.18",
+   "resolution": "résolu : Georgina Hays",
+   "cloturee_le": "2026-10-26T15:50"
+  },
+  {
+   "marche": "6227349",
+   "issue": "Antonia Vergara",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "4.55",
+   "resolution": "résolu : Antonia Vergara",
+   "cloturee_le": "2026-10-26T16:19"
+  },
+  {
+   "marche": "6231272",
+   "issue": "Tomas Machac",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "-74.09",
+   "resolution": "résolu : Alex de Minaur",
+   "cloturee_le": "2026-10-26T17:01"
+  },
+  {
+   "marche": "6231277",
+   "issue": "Daniel Altmaier",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "6.87",
+   "resolution": "résolu : Daniel Altmaier",
+   "cloturee_le": "2026-10-26T17:21"
+  },
+  {
+   "marche": "6227353",
+   "issue": "Gabriela Ce",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "5.30",
+   "resolution": "résolu : Gabriela Ce",
+   "cloturee_le": "2026-10-26T17:51"
+  },
+  {
+   "marche": "6231274",
+   "issue": "Jakub Mensik",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "4.62",
+   "resolution": "résolu : Jakub Mensik",
+   "cloturee_le": "2026-10-26T18:25"
+  },
+  {
+   "marche": "6221466",
+   "issue": "Flynn Thomas",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "-22.71",
+   "resolution": "résolu : Andrea Colombo",
+   "cloturee_le": "2026-10-26T19:35"
+  },
+  {
+   "marche": "6222670",
+   "issue": "Angelina Wirges",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "-21.56",
+   "resolution": "résolu : Emma Slavikova",
+   "cloturee_le": "2026-10-26T19:51"
+  },
+  {
+   "marche": "6247336",
+   "issue": "Coleman Wong",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "-7.19",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-27T07:35"
+  },
+  {
+   "marche": "6173065",
+   "issue": "Leylah Fernandez",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "4.04",
+   "resolution": "résolu : Leylah Fernandez",
+   "cloturee_le": "2026-10-27T08:21"
+  },
+  {
+   "marche": "6176393",
+   "issue": "Alexander Zverev",
+   "strategie": "nf_tennis_12_18h v1.0.0",
+   "resultat": "0.63",
+   "resolution": "résolu : Alexander Zverev",
+   "cloturee_le": "2026-10-27T20:41"
+  }
+ ],
+ "performances": {
+  "nf_tennis_12_18h v1.0.0": {
+   "operations": 119,
+   "evenements": 119,
+   "gagnantes": 100,
+   "taux_reussite": 0.84,
+   "profit_net": "-82.78",
+   "frais": "46.42",
+   "rendement_sur_mises": -0.0106,
+   "esperance_par_operation": "-0.70",
+   "ic90_rendement_par_euro": [
+    -0.1066,
+    0.0208
+   ],
+   "brier": 0.1279,
+   "log_loss": 0.4227,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

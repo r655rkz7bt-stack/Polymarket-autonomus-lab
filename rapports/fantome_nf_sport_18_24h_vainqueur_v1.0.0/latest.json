@@ -1,0 +1,349 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "78.8144",
+  "capital_immobilise": "844.3530",
+  "gains_realises_nets": "-76.8326",
+  "gains_latents": "-10.1960",
+  "frais_payes": "51.2151",
+  "capital_total_estime": "912.9714",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2468,
+ "dernier_battement": "2026-10-31T21:27:06+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "parts": "8.54",
+   "cout": "7.23",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.83",
+   "latent": "-0.14",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1224771",
+   "ouverte_le": "2026-10-26T18:37"
+  },
+  {
+   "marche": "5603304",
+   "issue": "Bengals",
+   "parts": "37.35",
+   "cout": "31.16",
+   "prix_moyen": "0.8342",
+   "prix_de_marque": "0.86",
+   "latent": "0.96",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1176724",
+   "ouverte_le": "2026-10-26T22:33"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "parts": "5.57",
+   "cout": "5.09",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.9",
+   "latent": "-0.08",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1230766",
+   "ouverte_le": "2026-10-26T22:52"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "53.98",
+   "cout": "47.79",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.999",
+   "latent": "6.14",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-27T18:12"
+  },
+  {
+   "marche": "UFC Fight Night: Tainara Lisboa vs. Lucia Szabová (Women's Flyweight, Prelims)",
+   "issue": "Lucia Szabová",
+   "parts": "57.14",
+   "cout": "49.48",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.98",
+   "latent": "6.51",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1207817",
+   "ouverte_le": "2026-10-27T18:28"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "166.20",
+   "cout": "135.90",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-4.60",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-27T20:33"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "52.35",
+   "cout": "46.34",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.76",
+   "latent": "-6.56",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T23:42"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "125.32",
+   "cout": "118.15",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.95",
+   "latent": "0.90",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T20:21"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "252.18",
+   "cout": "230.52",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.89",
+   "latent": "-6.08",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T23:48"
+  },
+  {
+   "marche": "Flames vs. Avalanche",
+   "issue": "Avalanche",
+   "parts": "147.09",
+   "cout": "118.85",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.78",
+   "latent": "-4.12",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1131403",
+   "ouverte_le": "2026-10-31T18:08"
+  },
+  {
+   "marche": "Guayaquil: Valerio Aboian vs Hugo Dellien",
+   "issue": "Hugo Dellien",
+   "parts": "10.52",
+   "cout": "9.62",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.999",
+   "latent": "0.89",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1286916",
+   "ouverte_le": "2026-10-31T20:26"
+  },
+  {
+   "marche": "LoL: LOS vs LYON (BO3) - Worlds Group Stage",
+   "issue": "LOS",
+   "parts": "10.86",
+   "cout": "9.51",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.73",
+   "latent": "-1.58",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T20:26"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "11.63",
+   "cout": "9.62",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.81",
+   "latent": "-0.20",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T20:26"
+  },
+  {
+   "marche": "Counter-Strike: BESTIA vs Procyon Gaming (BO3) - FiReSPORTS Last Chance Playoffs",
+   "issue": "BESTIA",
+   "parts": "31.73",
+   "cout": "25.09",
+   "prix_moyen": "0.7906",
+   "prix_de_marque": "0.72",
+   "latent": "-2.24",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1289397",
+   "ouverte_le": "2026-10-31T21:27"
+  }
+ ],
+ "operations_cloturees": 142,
+ "dernieres_operations": [
+  {
+   "marche": "6435634",
+   "issue": "Hacha Esports",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "3.42",
+   "resolution": "résolu : Hacha Esports",
+   "cloturee_le": "2026-10-31T00:06"
+  },
+  {
+   "marche": "6403025",
+   "issue": "Sebastian Dominko",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "6.02",
+   "resolution": "résolu : Sebastian Dominko",
+   "cloturee_le": "2026-10-31T00:25"
+  },
+  {
+   "marche": "6402192",
+   "issue": "Nadia Podoroska",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-32.78",
+   "resolution": "résolu : Carole Monnet",
+   "cloturee_le": "2026-10-31T01:01"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "6.29",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6411867",
+   "issue": "Anastasia Tikhonova",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "7.87",
+   "resolution": "résolu : Anastasia Tikhonova",
+   "cloturee_le": "2026-10-31T01:25"
+  },
+  {
+   "marche": "6280278",
+   "issue": "Hanwha Life Esports",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "8.43",
+   "resolution": "résolu : Hanwha Life Esports",
+   "cloturee_le": "2026-10-31T01:41"
+  },
+  {
+   "marche": "6405771",
+   "issue": "TTG Esports",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "7.04",
+   "resolution": "résolu : TTG Esports",
+   "cloturee_le": "2026-10-31T01:46"
+  },
+  {
+   "marche": "6411869",
+   "issue": "Katie Swan",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : Katie Swan",
+   "cloturee_le": "2026-10-31T02:26"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "2.36",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "0.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "1.18",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "6440386",
+   "issue": "Low Cortisol",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "5.26",
+   "resolution": "résolu : Low Cortisol",
+   "cloturee_le": "2026-10-31T20:06"
+  },
+  {
+   "marche": "6433775",
+   "issue": "ShindeN",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-145.31",
+   "resolution": "résolu : Isurus",
+   "cloturee_le": "2026-10-31T20:16"
+  },
+  {
+   "marche": "6474882",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "3.89",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-31T20:25"
+  },
+  {
+   "marche": "6438036",
+   "issue": "Dylan Dietrich",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "11.28",
+   "resolution": "résolu : Dylan Dietrich",
+   "cloturee_le": "2026-10-31T21:16"
+  }
+ ],
+ "performances": {
+  "nf_sport_18_24h_vainqueur v1.0.0": {
+   "operations": 142,
+   "evenements": 135,
+   "gagnantes": 126,
+   "taux_reussite": 0.887,
+   "profit_net": "-76.83",
+   "frais": "45.77",
+   "rendement_sur_mises": -0.0102,
+   "esperance_par_operation": "-0.54",
+   "ic90_rendement_par_euro": [
+    -0.0388,
+    0.0554
+   ],
+   "brier": 0.093,
+   "log_loss": 0.333,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

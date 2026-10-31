@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:16+00:00",
+ "capital": {
+  "solde_disponible": "956.7879",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-43.2121",
+  "gains_latents": "0.0000",
+  "frais_payes": "7.9318",
+  "capital_total_estime": "956.7879",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1378,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "6099812",
+   "issue": "Alex Molcan",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "7.81",
+   "resolution": "résolu : Alex Molcan",
+   "cloturee_le": "2026-10-24T15:11"
+  },
+  {
+   "marche": "6116708",
+   "issue": "Michele Ribecai",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "7.96",
+   "resolution": "résolu : Michele Ribecai",
+   "cloturee_le": "2026-10-24T15:46"
+  },
+  {
+   "marche": "6099832",
+   "issue": "Daniel Altmaier",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "11.05",
+   "resolution": "résolu : Daniel Altmaier",
+   "cloturee_le": "2026-10-24T16:23"
+  },
+  {
+   "marche": "6094819",
+   "issue": "Harmony Tan",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "7.81",
+   "resolution": "résolu : Harmony Tan",
+   "cloturee_le": "2026-10-24T16:36"
+  },
+  {
+   "marche": "6094535",
+   "issue": "Philip Henning",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "11.38",
+   "resolution": "résolu : Philip Henning",
+   "cloturee_le": "2026-10-24T17:05"
+  },
+  {
+   "marche": "6086042",
+   "issue": "Francisco Cerundolo",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "-40.51",
+   "resolution": "résolu : Tallon Griekspoor",
+   "cloturee_le": "2026-10-24T17:25"
+  },
+  {
+   "marche": "6099842",
+   "issue": "Felipe Meligeni Alves",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "-1.25",
+   "resolution": "résolu : Valerio Aboian",
+   "cloturee_le": "2026-10-24T19:51"
+  },
+  {
+   "marche": "6103102",
+   "issue": "Reese Brantmeier",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "8.43",
+   "resolution": "résolu : Reese Brantmeier",
+   "cloturee_le": "2026-10-24T20:01"
+  },
+  {
+   "marche": "6099840",
+   "issue": "Arthur Fils",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "-38.69",
+   "resolution": "résolu : Jan-Lennard Struff",
+   "cloturee_le": "2026-10-24T20:06"
+  },
+  {
+   "marche": "6103100",
+   "issue": "Ella McDonald",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "5.06",
+   "resolution": "résolu : Ella McDonald",
+   "cloturee_le": "2026-10-24T20:11"
+  },
+  {
+   "marche": "6099808",
+   "issue": "Elmer Moeller",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "-44.37",
+   "resolution": "résolu : Svyatoslav Gulin",
+   "cloturee_le": "2026-10-24T20:45"
+  },
+  {
+   "marche": "6141025",
+   "issue": "Jacob Fearnley",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "8.00",
+   "resolution": "résolu : Jacob Fearnley",
+   "cloturee_le": "2026-10-25T15:11"
+  },
+  {
+   "marche": "6154743",
+   "issue": "Laetitia Sarrazin",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "-31.13",
+   "resolution": "résolu : Hanna Bougouffa",
+   "cloturee_le": "2026-10-25T16:01"
+  },
+  {
+   "marche": "6154734",
+   "issue": "Lois Newberry",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "11.34",
+   "resolution": "résolu : Lois Newberry",
+   "cloturee_le": "2026-10-25T16:41"
+  },
+  {
+   "marche": "6173065",
+   "issue": "Leylah Fernandez",
+   "strategie": "nf_tennis_12_18h_vainqueur_800_850 v1.0.0",
+   "resultat": "7.60",
+   "resolution": "résolu : Leylah Fernandez",
+   "cloturee_le": "2026-10-27T08:21"
+  }
+ ],
+ "performances": {
+  "nf_tennis_12_18h_vainqueur_800_850 v1.0.0": {
+   "operations": 23,
+   "evenements": 23,
+   "gagnantes": 17,
+   "taux_reussite": 0.739,
+   "profit_net": "-43.21",
+   "frais": "7.93",
+   "rendement_sur_mises": -0.0509,
+   "esperance_par_operation": "-1.88",
+   "ic90_rendement_par_euro": [
+    -0.305,
+    0.0696
+   ],
+   "brier": 0.2084,
+   "log_loss": 0.6289,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

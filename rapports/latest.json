@@ -1,0 +1,1290 @@
+{
+ "genere_le": "2026-10-31T21:30:07+00:00",
+ "capital": {
+  "solde_disponible": "500.9425",
+  "capital_immobilise": "202.5405",
+  "gains_realises_nets": "-296.5170",
+  "gains_latents": "2.3691",
+  "frais_payes": "32.9313",
+  "capital_total_estime": "705.8522",
+  "positions_ouvertes": "62",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3473,
+ "dernier_battement": "2026-10-31T21:29:06+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6104887",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.55",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.961",
+   "latent": "0.26",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244070",
+   "ouverte_le": "2026-10-26T23:12"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.54",
+   "prix_moyen": "0.9080",
+   "prix_de_marque": "0.996",
+   "latent": "0.44",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T04:03"
+  },
+  {
+   "marche": "682706",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.75",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.952",
+   "latent": "0.01",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T04:12"
+  },
+  {
+   "marche": "5765881",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.72",
+   "prix_moyen": "0.9440",
+   "prix_de_marque": "0.982",
+   "latent": "0.19",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1197688",
+   "ouverte_le": "2026-10-27T05:17"
+  },
+  {
+   "marche": "6104807",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.24",
+   "prix_moyen": "0.8490",
+   "prix_de_marque": "0.994",
+   "latent": "0.72",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-27T10:17"
+  },
+  {
+   "marche": "6288574",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.30",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.92",
+   "latent": "0.30",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263843",
+   "ouverte_le": "2026-10-27T14:11"
+  },
+  {
+   "marche": "4640288",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.68",
+   "prix_moyen": "0.9370",
+   "prix_de_marque": "0.923",
+   "latent": "-0.07",
+   "strategie": "nf_moyen v1.0.0",
+   "groupe": "1038537",
+   "ouverte_le": "2026-10-27T16:14"
+  },
+  {
+   "marche": "6104805",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.30",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.998",
+   "latent": "0.69",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-27T17:37"
+  },
+  {
+   "marche": "5332539",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.55",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.983",
+   "latent": "0.36",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "1138216",
+   "ouverte_le": "2026-10-27T18:22"
+  },
+  {
+   "marche": "6288524",
+   "issue": "No",
+   "parts": "5.33",
+   "cout": "1.28",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.08",
+   "latent": "-0.85",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263839",
+   "ouverte_le": "2026-10-27T20:03"
+  },
+  {
+   "marche": "6104763",
+   "issue": "No",
+   "parts": "21.20",
+   "cout": "2.33",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.004",
+   "latent": "-2.25",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244060",
+   "ouverte_le": "2026-10-27T21:42"
+  },
+  {
+   "marche": "6017460",
+   "issue": "No",
+   "parts": "5.74",
+   "cout": "4.88",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.83",
+   "latent": "-0.11",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-27T23:07"
+  },
+  {
+   "marche": "5166820",
+   "issue": "No",
+   "parts": "5.61",
+   "cout": "4.88",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.62",
+   "latent": "-1.40",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-27T23:07"
+  },
+  {
+   "marche": "6288512",
+   "issue": "Yes",
+   "parts": "11.14",
+   "cout": "6.24",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.997",
+   "latent": "4.87",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263836",
+   "ouverte_le": "2026-10-27T23:32"
+  },
+  {
+   "marche": "6301107",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.25",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.33",
+   "latent": "-2.60",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-28T04:03"
+  },
+  {
+   "marche": "5166818",
+   "issue": "No",
+   "parts": "4.35",
+   "cout": "3.90",
+   "prix_moyen": "0.8960",
+   "prix_de_marque": "0.971",
+   "latent": "0.33",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-28T04:03"
+  },
+  {
+   "marche": "943942",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.30",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.89",
+   "latent": "0.15",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "106211",
+   "ouverte_le": "2026-10-28T04:07"
+  },
+  {
+   "marche": "631018",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.35",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.88",
+   "latent": "0.05",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "57678",
+   "ouverte_le": "2026-10-28T04:07"
+  },
+  {
+   "marche": "6288500",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.20",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.998",
+   "latent": "0.79",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263836",
+   "ouverte_le": "2026-10-28T14:15"
+  },
+  {
+   "marche": "6288570",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.30",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.93",
+   "latent": "0.35",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263843",
+   "ouverte_le": "2026-10-28T15:15"
+  },
+  {
+   "marche": "6288491",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.35",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.999",
+   "latent": "0.64",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263836",
+   "ouverte_le": "2026-10-28T21:48"
+  },
+  {
+   "marche": "6090728",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.40",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.79",
+   "latent": "-0.45",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-28T22:27"
+  },
+  {
+   "marche": "6090730",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.55",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.678",
+   "latent": "-1.16",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-29T03:53"
+  },
+  {
+   "marche": "6104809",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.23",
+   "prix_moyen": "0.8460",
+   "prix_de_marque": "0.98",
+   "latent": "0.67",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-29T08:37"
+  },
+  {
+   "marche": "6288566",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.30",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.962",
+   "latent": "0.51",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263843",
+   "ouverte_le": "2026-10-29T12:26"
+  },
+  {
+   "marche": "6268103",
+   "issue": "No",
+   "parts": "6.03",
+   "cout": "5.13",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.76",
+   "latent": "-0.54",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1262075",
+   "ouverte_le": "2026-10-29T13:27"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.42",
+   "prix_moyen": "0.8843",
+   "prix_de_marque": "0.876",
+   "latent": "-0.04",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.62",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.89",
+   "latent": "-0.17",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "4397050",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.61",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.931",
+   "latent": "0.04",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.23",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.81",
+   "latent": "-0.18",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:14"
+  },
+  {
+   "marche": "6236258",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.73",
+   "prix_moyen": "0.1460",
+   "prix_de_marque": "0.031",
+   "latent": "-0.58",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T06:56"
+  },
+  {
+   "marche": "6390072",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.10",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.994",
+   "latent": "0.87",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1278386",
+   "ouverte_le": "2026-10-30T08:07"
+  },
+  {
+   "marche": "6236265",
+   "issue": "Yes",
+   "parts": "10.25",
+   "cout": "0.57",
+   "prix_moyen": "0.0558",
+   "prix_de_marque": "0.011",
+   "latent": "-0.46",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T08:12"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $76,000 on November 1?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "0.68",
+   "prix_moyen": "0.1370",
+   "prix_de_marque": "0.04",
+   "latent": "-0.48",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T08:16"
+  },
+  {
+   "marche": "5170791",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.71",
+   "prix_moyen": "0.1420",
+   "prix_de_marque": "0.005",
+   "latent": "-0.68",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T08:21"
+  },
+  {
+   "marche": "6301350",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.22",
+   "prix_moyen": "0.0450",
+   "prix_de_marque": "0.013",
+   "latent": "-0.16",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T08:36"
+  },
+  {
+   "marche": "6236222",
+   "issue": "Yes",
+   "parts": "10.12",
+   "cout": "0.57",
+   "prix_moyen": "0.0563",
+   "prix_de_marque": "0.007",
+   "latent": "-0.50",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T10:13"
+  },
+  {
+   "marche": "6205300",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "0.27",
+   "prix_moyen": "0.0540",
+   "prix_de_marque": "0.004",
+   "latent": "-0.25",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T10:36"
+  },
+  {
+   "marche": "5170806",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.55",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.004",
+   "latent": "-0.53",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:sol",
+   "ouverte_le": "2026-10-30T10:56"
+  },
+  {
+   "marche": "6205321",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "0.22",
+   "prix_moyen": "0.0450",
+   "prix_de_marque": "0.005",
+   "latent": "-0.20",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T11:01"
+  },
+  {
+   "marche": "6301335",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "0.53",
+   "prix_moyen": "0.1060",
+   "prix_de_marque": "0.091",
+   "latent": "-0.08",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T11:01"
+  },
+  {
+   "marche": "6346570",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "1.80",
+   "prix_moyen": "0.3600",
+   "prix_de_marque": "0.3",
+   "latent": "-0.30",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T11:01"
+  },
+  {
+   "marche": "6255267",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "1.16",
+   "prix_moyen": "0.2310",
+   "prix_de_marque": "0.173",
+   "latent": "-0.29",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T11:01"
+  },
+  {
+   "marche": "6288579",
+   "issue": "No",
+   "parts": "1.75",
+   "cout": "1.50",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.88",
+   "latent": "0.04",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1263843",
+   "ouverte_le": "2026-10-30T11:03"
+  },
+  {
+   "marche": "6390073",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "3.25",
+   "prix_moyen": "0.6500",
+   "prix_de_marque": "0.93",
+   "latent": "1.40",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1278386",
+   "ouverte_le": "2026-10-30T14:13"
+  },
+  {
+   "marche": "Will Elon Musk post 360-379 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "1.26",
+   "cout": "1.02",
+   "prix_moyen": "0.8110",
+   "prix_de_marque": "0.961",
+   "latent": "0.19",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-30T15:33"
+  },
+  {
+   "marche": "6253456",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.36",
+   "prix_moyen": "0.8730",
+   "prix_de_marque": "0.758",
+   "latent": "-0.58",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-30T18:09"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through November 4?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.25",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.84",
+   "latent": "-0.05",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-30T18:09"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.95",
+   "latent": "0.04",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T20:21"
+  },
+  {
+   "marche": "6377788",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.20",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.52",
+   "latent": "1.40",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1275608",
+   "ouverte_le": "2026-10-31T07:04"
+  },
+  {
+   "marche": "6377793",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "3.90",
+   "prix_moyen": "0.7800",
+   "prix_de_marque": "0.57",
+   "latent": "-1.05",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1275608",
+   "ouverte_le": "2026-10-31T07:17"
+  },
+  {
+   "marche": "6445950",
+   "issue": "Under",
+   "parts": "5.00",
+   "cout": "2.81",
+   "prix_moyen": "0.5624",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1286976",
+   "ouverte_le": "2026-10-31T11:33"
+  },
+  {
+   "marche": "6440404",
+   "issue": "Under",
+   "parts": "5.00",
+   "cout": "3.01",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T14:04"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "1.25",
+   "cout": "0.70",
+   "prix_moyen": "0.5624",
+   "prix_de_marque": "0.99",
+   "latent": "0.53",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1289398",
+   "ouverte_le": "2026-10-31T16:52"
+  },
+  {
+   "marche": "6440442",
+   "issue": "Under",
+   "parts": "5.00",
+   "cout": "2.61",
+   "prix_moyen": "0.5225",
+   "prix_de_marque": "0.5",
+   "latent": "-0.11",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1286064",
+   "ouverte_le": "2026-10-31T17:03"
+  },
+  {
+   "marche": "6390075",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.80",
+   "prix_moyen": "0.1600",
+   "prix_de_marque": "0.29",
+   "latent": "0.65",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1278386",
+   "ouverte_le": "2026-10-31T17:07"
+  },
+  {
+   "marche": "6443506",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "2.30",
+   "prix_moyen": "0.4600",
+   "prix_de_marque": "0.8",
+   "latent": "1.70",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-31T17:55"
+  },
+  {
+   "marche": "6390074",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "3.10",
+   "prix_moyen": "0.6200",
+   "prix_de_marque": "0.69",
+   "latent": "0.35",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1278386",
+   "ouverte_le": "2026-10-31T18:08"
+  },
+  {
+   "marche": "6104813",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.06",
+   "prix_moyen": "0.8130",
+   "prix_de_marque": "0.916",
+   "latent": "0.52",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-31T18:08"
+  },
+  {
+   "marche": "6443511",
+   "issue": "Yes",
+   "parts": "15.43",
+   "cout": "11.27",
+   "prix_moyen": "0.7303",
+   "prix_de_marque": "0.7",
+   "latent": "-0.47",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-10-31T19:42"
+  },
+  {
+   "marche": "6443503",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.45",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.88",
+   "latent": "-0.05",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-10-31T19:47"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "1.25",
+   "cout": "0.70",
+   "prix_moyen": "0.5624",
+   "prix_de_marque": "0.53",
+   "latent": "-0.04",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1290081",
+   "ouverte_le": "2026-10-31T19:47"
+  }
+ ],
+ "operations_cloturees": 427,
+ "dernieres_operations": [
+  {
+   "marche": "6430630",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-3.55",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137755",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente v1.0.0",
+   "resultat": "-0.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6408773",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-3.01",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T17:11"
+  },
+  {
+   "marche": "6439053",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T17:25"
+  },
+  {
+   "marche": "6256026",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-9.33",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6256027",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6256029",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6104760",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:41"
+  },
+  {
+   "marche": "6440423",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "2.19",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T19:41"
+  },
+  {
+   "marche": "6104744",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "1.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "5852481",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "-4.28",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "5852484",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "6104772",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "9.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T20:01"
+  },
+  {
+   "marche": "6331186",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "0.90",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T20:06"
+  },
+  {
+   "marche": "6474883",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "0.39",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T20:31"
+  }
+ ],
+ "performances": {
+  "apres_echeance v1.0.0": {
+   "operations": 17,
+   "evenements": 14,
+   "gagnantes": 14,
+   "taux_reussite": 0.824,
+   "profit_net": "-12.38",
+   "frais": "0.19",
+   "rendement_sur_mises": -0.1262,
+   "esperance_par_operation": "-0.73",
+   "ic90_rendement_par_euro": [
+    -0.3807,
+    0.0516
+   ],
+   "brier": 0.1714,
+   "log_loss": 0.7536,
+   "assez_de_donnees": false
+  },
+  "compteur_tweets v1.0.0": {
+   "operations": 16,
+   "evenements": 6,
+   "gagnantes": 12,
+   "taux_reussite": 0.75,
+   "profit_net": "9.82",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.152,
+   "esperance_par_operation": "0.61",
+   "ic90_rendement_par_euro": [
+    -0.2116,
+    0.2716
+   ],
+   "brier": 0.0872,
+   "log_loss": 0.3333,
+   "assez_de_donnees": false
+  },
+  "contrer_crypto_patiente v1.0.0": {
+   "operations": 8,
+   "evenements": 8,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-3.77",
+   "frais": "0.08",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-0.47",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.0236,
+   "log_loss": 0.1586,
+   "assez_de_donnees": false
+  },
+  "favori_politique v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.65",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.1236,
+   "esperance_par_operation": "0.65",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0037,
+   "log_loss": 0.0624,
+   "assez_de_donnees": false
+  },
+  "market_structure v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-5.94",
+   "frais": "3.25",
+   "rendement_sur_mises": -0.0824,
+   "esperance_par_operation": "-1.98",
+   "ic90_rendement_par_euro": [
+    -0.6972,
+    -0.0815
+   ],
+   "brier": 0.014,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "meteo_prevision v1.0.0": {
+   "operations": 41,
+   "evenements": 32,
+   "gagnantes": 24,
+   "taux_reussite": 0.585,
+   "profit_net": "-51.72",
+   "frais": "11.58",
+   "rendement_sur_mises": -0.0955,
+   "esperance_par_operation": "-1.26",
+   "ic90_rendement_par_euro": [
+    -0.2452,
+    0.1257
+   ],
+   "brier": 0.2849,
+   "log_loss": 0.7913,
+   "assez_de_donnees": true
+  },
+  "moins_de_cartes v1.0.0": {
+   "operations": 43,
+   "evenements": 42,
+   "gagnantes": 21,
+   "taux_reussite": 0.488,
+   "profit_net": "-16.28",
+   "frais": "2.24",
+   "rendement_sur_mises": -0.1512,
+   "esperance_par_operation": "-0.38",
+   "ic90_rendement_par_euro": [
+    -0.3881,
+    0.0462
+   ],
+   "brier": 0.2539,
+   "log_loss": 0.701,
+   "assez_de_donnees": true
+  },
+  "nf_court v1.0.0": {
+   "operations": 18,
+   "evenements": 17,
+   "gagnantes": 14,
+   "taux_reussite": 0.778,
+   "profit_net": "-144.96",
+   "frais": "2.73",
+   "rendement_sur_mises": -0.2199,
+   "esperance_par_operation": "-8.05",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.059
+   ],
+   "brier": 0.1973,
+   "log_loss": 0.6683,
+   "assez_de_donnees": false
+  },
+  "nf_court_football_soir v1.0.0": {
+   "operations": 5,
+   "evenements": 3,
+   "gagnantes": 4,
+   "taux_reussite": 0.8,
+   "profit_net": "-5.23",
+   "frais": "0.17",
+   "rendement_sur_mises": -0.1195,
+   "esperance_par_operation": "-1.05",
+   "ic90_rendement_par_euro": [
+    -0.2365,
+    0.1383
+   ],
+   "brier": 0.1985,
+   "log_loss": 0.9573,
+   "assez_de_donnees": false
+  },
+  "nf_court_prix_haut v1.0.0": {
+   "operations": 24,
+   "evenements": 18,
+   "gagnantes": 23,
+   "taux_reussite": 0.958,
+   "profit_net": "4.58",
+   "frais": "0.33",
+   "rendement_sur_mises": 0.039,
+   "esperance_par_operation": "0.19",
+   "ic90_rendement_par_euro": [
+    -0.0218,
+    0.0797
+   ],
+   "brier": 0.0392,
+   "log_loss": 0.1601,
+   "assez_de_donnees": false
+  },
+  "nf_court_soir v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.87",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.1987,
+   "esperance_par_operation": "0.87",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0156,
+   "log_loss": 0.1335,
+   "assez_de_donnees": false
+  },
+  "nf_sport v1.0.0": {
+   "operations": 52,
+   "evenements": 44,
+   "gagnantes": 46,
+   "taux_reussite": 0.885,
+   "profit_net": "11.73",
+   "frais": "2.27",
+   "rendement_sur_mises": 0.0287,
+   "esperance_par_operation": "0.23",
+   "ic90_rendement_par_euro": [
+    -0.0769,
+    0.086
+   ],
+   "brier": 0.0998,
+   "log_loss": 0.3416,
+   "assez_de_donnees": true
+  },
+  "nf_sport_18_24h v1.0.0": {
+   "operations": 21,
+   "evenements": 20,
+   "gagnantes": 14,
+   "taux_reussite": 0.667,
+   "profit_net": "-22.16",
+   "frais": "0.57",
+   "rendement_sur_mises": -0.2437,
+   "esperance_par_operation": "-1.06",
+   "ic90_rendement_par_euro": [
+    -0.4557,
+    -0.0419
+   ],
+   "brier": 0.2638,
+   "log_loss": 0.7699,
+   "assez_de_donnees": false
+  },
+  "nf_sport_925_950 v1.0.0": {
+   "operations": 22,
+   "evenements": 22,
+   "gagnantes": 19,
+   "taux_reussite": 0.864,
+   "profit_net": "-14.08",
+   "frais": "0.76",
+   "rendement_sur_mises": -0.064,
+   "esperance_par_operation": "-0.64",
+   "ic90_rendement_par_euro": [
+    -0.2201,
+    0.025
+   ],
+   "brier": 0.1308,
+   "log_loss": 0.5424,
+   "assez_de_donnees": false
+  },
+  "nf_sport_non v1.0.0": {
+   "operations": 6,
+   "evenements": 5,
+   "gagnantes": 5,
+   "taux_reussite": 0.833,
+   "profit_net": "-1.19",
+   "frais": "0.18",
+   "rendement_sur_mises": -0.0302,
+   "esperance_par_operation": "-0.20",
+   "ic90_rendement_par_euro": [
+    -0.2215,
+    0.0989
+   ],
+   "brier": 0.1355,
+   "log_loss": 0.4141,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente v1.0.0": {
+   "operations": 65,
+   "evenements": 61,
+   "gagnantes": 55,
+   "taux_reussite": 0.846,
+   "profit_net": "-15.01",
+   "frais": "5.05",
+   "rendement_sur_mises": -0.0088,
+   "esperance_par_operation": "-0.23",
+   "ic90_rendement_par_euro": [
+    -0.1058,
+    0.061
+   ],
+   "brier": 0.1319,
+   "log_loss": 0.5347,
+   "assez_de_donnees": true
+  },
+  "nf_sport_patiente_6_24h v1.0.0": {
+   "operations": 7,
+   "evenements": 7,
+   "gagnantes": 6,
+   "taux_reussite": 0.857,
+   "profit_net": "1.29",
+   "frais": "0.07",
+   "rendement_sur_mises": 0.0277,
+   "esperance_par_operation": "0.18",
+   "ic90_rendement_par_euro": [
+    -0.327,
+    0.1711
+   ],
+   "brier": 0.1187,
+   "log_loss": 0.3791,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_biais_faible v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.47",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.0894,
+   "esperance_par_operation": "0.47",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0027,
+   "log_loss": 0.0534,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 43,
+   "evenements": 43,
+   "gagnantes": 32,
+   "taux_reussite": 0.744,
+   "profit_net": "-27.59",
+   "frais": "0.99",
+   "rendement_sur_mises": -0.1165,
+   "esperance_par_operation": "-0.64",
+   "ic90_rendement_par_euro": [
+    -0.2341,
+    -0.0011
+   ],
+   "brier": 0.1984,
+   "log_loss": 0.6361,
+   "assez_de_donnees": true
+  },
+  "nf_sport_prix_haut_3_6h v1.0.0": {
+   "operations": 11,
+   "evenements": 8,
+   "gagnantes": 9,
+   "taux_reussite": 0.818,
+   "profit_net": "-17.99",
+   "frais": "0.81",
+   "rendement_sur_mises": -0.1077,
+   "esperance_par_operation": "-1.64",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.1029
+   ],
+   "brier": 0.1702,
+   "log_loss": 0.6306,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_12_18h_vainqueur v1.0.0": {
+   "operations": 12,
+   "evenements": 12,
+   "gagnantes": 10,
+   "taux_reussite": 0.833,
+   "profit_net": "3.14",
+   "frais": "0.80",
+   "rendement_sur_mises": 0.0256,
+   "esperance_par_operation": "0.26",
+   "ic90_rendement_par_euro": [
+    -0.2477,
+    0.144
+   ],
+   "brier": 0.1268,
+   "log_loss": 0.3837,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_prix_bas v1.0.0": {
+   "operations": 6,
+   "evenements": 6,
+   "gagnantes": 6,
+   "taux_reussite": 1.0,
+   "profit_net": "10.61",
+   "frais": "0.46",
+   "rendement_sur_mises": 0.1888,
+   "esperance_par_operation": "1.77",
+   "ic90_rendement_par_euro": [
+    0.1658,
+    0.2089
+   ],
+   "brier": 0.0143,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "seismes_marche v1.0.0": {
+   "operations": 4,
+   "evenements": 3,
+   "gagnantes": 3,
+   "taux_reussite": 0.75,
+   "profit_net": "-1.40",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.0854,
+   "esperance_par_operation": "-0.35",
+   "ic90_rendement_par_euro": [
+    -0.5935,
+    0.1845
+   ],
+   "brier": 0.1754,
+   "log_loss": 0.4931,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

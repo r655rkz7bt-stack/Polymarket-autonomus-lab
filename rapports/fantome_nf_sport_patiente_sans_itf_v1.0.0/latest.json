@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-10-31T21:30:15+00:00",
+ "capital": {
+  "solde_disponible": "665.9841",
+  "capital_immobilise": "87.9113",
+  "gains_realises_nets": "-246.1046",
+  "gains_latents": "-27.2789",
+  "frais_payes": "28.5238",
+  "capital_total_estime": "726.6165",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3979,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1892491",
+   "issue": "No",
+   "parts": "75.88",
+   "cout": "62.15",
+   "prix_moyen": "0.8190",
+   "prix_de_marque": "0.471",
+   "latent": "-26.41",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "groupe": "350828",
+   "ouverte_le": "2026-10-22T03:11"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "31.51",
+   "cout": "25.77",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-0.87",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-28T00:37"
+  }
+ ],
+ "operations_cloturees": 207,
+ "dernieres_operations": [
+  {
+   "marche": "6373552",
+   "issue": "GamerLegion",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "3.94",
+   "resolution": "résolu : GamerLegion",
+   "cloturee_le": "2026-10-29T21:46"
+  },
+  {
+   "marche": "6389353",
+   "issue": "Iberian Soul",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "3.99",
+   "resolution": "résolu : Iberian Soul",
+   "cloturee_le": "2026-10-29T21:55"
+  },
+  {
+   "marche": "5758028",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "4.77",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "6331271",
+   "issue": "Valeriya Strakhova",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "4.50",
+   "resolution": "résolu : Valeriya Strakhova",
+   "cloturee_le": "2026-10-29T22:46"
+  },
+  {
+   "marche": "6280238",
+   "issue": "Karmine Corp",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "8.99",
+   "resolution": "résolu : Karmine Corp",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "-17.98",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6326878",
+   "issue": "Ben Shelton",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "-14.39",
+   "resolution": "résolu : Jerome Kym",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6336528",
+   "issue": "Turma do Pagode",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "4.65",
+   "resolution": "résolu : Turma do Pagode",
+   "cloturee_le": "2026-10-30T01:46"
+  },
+  {
+   "marche": "6280179",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "-18.79",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6280178",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "-72.45",
+   "resolution": "résolu : Top Esports",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6332792",
+   "issue": "Mitchell Krueger",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "-21.66",
+   "resolution": "résolu : Darwin Blanch",
+   "cloturee_le": "2026-10-30T02:31"
+  },
+  {
+   "marche": "6065439",
+   "issue": "Afghanistan",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "4.78",
+   "resolution": "résolu : Afghanistan",
+   "cloturee_le": "2026-10-30T04:01"
+  },
+  {
+   "marche": "5928345",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "3.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:01"
+  },
+  {
+   "marche": "6369770",
+   "issue": "Joao Lucas Da Silva",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "13.11",
+   "resolution": "résolu : Joao Lucas Da Silva",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "6280278",
+   "issue": "Hanwha Life Esports",
+   "strategie": "nf_sport_patiente_sans_itf v1.0.0",
+   "resultat": "5.59",
+   "resolution": "résolu : Hanwha Life Esports",
+   "cloturee_le": "2026-10-31T01:41"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_sans_itf v1.0.0": {
+   "operations": 207,
+   "evenements": 186,
+   "gagnantes": 173,
+   "taux_reussite": 0.836,
+   "profit_net": "-246.10",
+   "frais": "28.28",
+   "rendement_sur_mises": -0.0255,
+   "esperance_par_operation": "-1.19",
+   "ic90_rendement_par_euro": [
+    -0.0961,
+    0.0034
+   ],
+   "brier": 0.1343,
+   "log_loss": 0.4704,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

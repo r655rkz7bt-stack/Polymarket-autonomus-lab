@@ -1,0 +1,137 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "979.2796",
+  "capital_immobilise": "73.0830",
+  "gains_realises_nets": "52.3626",
+  "gains_latents": "-11.1774",
+  "frais_payes": "0.6238",
+  "capital_total_estime": "1041.1852",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0336,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Counter-Strike: BESTIA vs Procyon Gaming (BO3) - FiReSPORTS Last Chance Playoffs",
+   "issue": "BESTIA",
+   "parts": "85.98",
+   "cout": "73.08",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.72",
+   "latent": "-11.18",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "groupe": "1289397",
+   "ouverte_le": "2026-10-31T19:21"
+  }
+ ],
+ "operations_cloturees": 8,
+ "dernieres_operations": [
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "13.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "6361724",
+   "issue": "Oliver Tarvet",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "9.62",
+   "resolution": "résolu : Oliver Tarvet",
+   "cloturee_le": "2026-10-29T14:01"
+  },
+  {
+   "marche": "5758028",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "9.62",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "6387879",
+   "issue": "Violet Apisah",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "9.69",
+   "resolution": "résolu : Violet Apisah",
+   "cloturee_le": "2026-10-30T05:31"
+  },
+  {
+   "marche": "6369797",
+   "issue": "FOKUS",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "12.61",
+   "resolution": "résolu : FOKUS",
+   "cloturee_le": "2026-10-30T16:56"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "9.75",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6438835",
+   "issue": "paiN",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "-22.40",
+   "resolution": "résolu : naocopulas",
+   "cloturee_le": "2026-10-31T15:55"
+  },
+  {
+   "marche": "6401335",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_prix_850_875_avant_match v1.0.0",
+   "resultat": "10.05",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-31T16:01"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_prix_850_875_avant_match v1.0.0": {
+   "operations": 8,
+   "evenements": 8,
+   "gagnantes": 7,
+   "taux_reussite": 0.875,
+   "profit_net": "52.36",
+   "frais": "0.62",
+   "rendement_sur_mises": 0.1254,
+   "esperance_par_operation": "6.55",
+   "ic90_rendement_par_euro": [
+    -0.2541,
+    0.1952
+   ],
+   "brier": 0.1089,
+   "log_loss": 0.3741,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

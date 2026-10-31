@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "983.2793",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-16.7207",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "983.2793",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1231,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 23,
+ "dernieres_operations": [
+  {
+   "marche": "6043856",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-2.17",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:40"
+  },
+  {
+   "marche": "6043855",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-32.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T21:46"
+  },
+  {
+   "marche": "6043851",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-39.68",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T22:31"
+  },
+  {
+   "marche": "6083619",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-8.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-25T02:31"
+  },
+  {
+   "marche": "6083634",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-9.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-25T02:45"
+  },
+  {
+   "marche": "6083633",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "58.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T03:01"
+  },
+  {
+   "marche": "6083630",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-3.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T03:11"
+  },
+  {
+   "marche": "6097952",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-5.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-25T23:40"
+  },
+  {
+   "marche": "6097949",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-37.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T23:50"
+  },
+  {
+   "marche": "6097954",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-14.24",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T07:16"
+  },
+  {
+   "marche": "6097945",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "7.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T07:16"
+  },
+  {
+   "marche": "6097940",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "10.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T07:16"
+  },
+  {
+   "marche": "6097946",
+   "issue": "Yes",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-5.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T07:16"
+  },
+  {
+   "marche": "6097939",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "21.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T07:16"
+  },
+  {
+   "marche": "6097955",
+   "issue": "No",
+   "strategie": "mots_prononces_patiente v1.0.0",
+   "resultat": "-3.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T07:46"
+  }
+ ],
+ "performances": {
+  "mots_prononces_patiente v1.0.0": {
+   "operations": 23,
+   "evenements": 5,
+   "gagnantes": 8,
+   "taux_reussite": 0.348,
+   "profit_net": "-16.72",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.0407,
+   "esperance_par_operation": "-0.73",
+   "ic90_rendement_par_euro": [
+    -0.3968,
+    0.1262
+   ],
+   "brier": 0.2479,
+   "log_loss": 0.6884,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

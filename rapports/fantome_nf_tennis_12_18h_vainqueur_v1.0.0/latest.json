@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:16+00:00",
+ "capital": {
+  "solde_disponible": "971.6752",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-28.3248",
+  "gains_latents": "0.0000",
+  "frais_payes": "63.3187",
+  "capital_total_estime": "971.6752",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3203,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 169,
+ "dernieres_operations": [
+  {
+   "marche": "6227392",
+   "issue": "Susan Bandecchi",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : Susan Bandecchi",
+   "cloturee_le": "2026-10-27T18:31"
+  },
+  {
+   "marche": "6227367",
+   "issue": "Elizabeth Mandlik",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "3.87",
+   "resolution": "résolu : Elizabeth Mandlik",
+   "cloturee_le": "2026-10-27T18:41"
+  },
+  {
+   "marche": "6264215",
+   "issue": "Ana Victoria Gobbi Monllau",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "0.65",
+   "resolution": "résolu : Ana Victoria Gobbi Monllau",
+   "cloturee_le": "2026-10-27T19:16"
+  },
+  {
+   "marche": "6231303",
+   "issue": "Lucio Ratti",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "-71.61",
+   "resolution": "résolu : Mateo Del Pino",
+   "cloturee_le": "2026-10-27T19:55"
+  },
+  {
+   "marche": "6263453",
+   "issue": "Alex Kobelt",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "3.92",
+   "resolution": "résolu : Alex Kobelt",
+   "cloturee_le": "2026-10-27T20:01"
+  },
+  {
+   "marche": "6263443",
+   "issue": "Luca Castagnola",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "4.73",
+   "resolution": "résolu : Luca Castagnola",
+   "cloturee_le": "2026-10-27T20:06"
+  },
+  {
+   "marche": "6263454",
+   "issue": "Giovanni Oradini",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "-18.07",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-27T20:16"
+  },
+  {
+   "marche": "6231283",
+   "issue": "Ben Shelton",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "4.42",
+   "resolution": "résolu : Ben Shelton",
+   "cloturee_le": "2026-10-27T20:21"
+  },
+  {
+   "marche": "6176348",
+   "issue": "Camilo Ugo Carabelli",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "4.18",
+   "resolution": "résolu : Camilo Ugo Carabelli",
+   "cloturee_le": "2026-10-27T20:31"
+  },
+  {
+   "marche": "6263449",
+   "issue": "Alexis Canter",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "4.11",
+   "resolution": "résolu : Alexis Canter",
+   "cloturee_le": "2026-10-27T20:31"
+  },
+  {
+   "marche": "6176393",
+   "issue": "Alexander Zverev",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "0.70",
+   "resolution": "résolu : Alexander Zverev",
+   "cloturee_le": "2026-10-27T20:41"
+  },
+  {
+   "marche": "6176463",
+   "issue": "Jiri Lehecka",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "4.66",
+   "resolution": "résolu : Jiri Lehecka",
+   "cloturee_le": "2026-10-27T22:51"
+  },
+  {
+   "marche": "6299744",
+   "issue": "Saily Prashantkumar Thakkar",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "4.01",
+   "resolution": "résolu : Saily Prashantkumar Thakkar",
+   "cloturee_le": "2026-10-28T05:21"
+  },
+  {
+   "marche": "6294346",
+   "issue": "Mio Mushika",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "-4.04",
+   "resolution": "résolu : Monique Barry",
+   "cloturee_le": "2026-10-28T05:41"
+  },
+  {
+   "marche": "6294350",
+   "issue": "Tahlia Kokkinis",
+   "strategie": "nf_tennis_12_18h_vainqueur v1.0.0",
+   "resultat": "0.33",
+   "resolution": "résolu : Tahlia Kokkinis",
+   "cloturee_le": "2026-10-28T07:16"
+  }
+ ],
+ "performances": {
+  "nf_tennis_12_18h_vainqueur v1.0.0": {
+   "operations": 169,
+   "evenements": 169,
+   "gagnantes": 142,
+   "taux_reussite": 0.84,
+   "profit_net": "-28.32",
+   "frais": "63.32",
+   "rendement_sur_mises": -0.0026,
+   "esperance_par_operation": "-0.17",
+   "ic90_rendement_par_euro": [
+    -0.0851,
+    0.0156
+   ],
+   "brier": 0.1265,
+   "log_loss": 0.4334,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

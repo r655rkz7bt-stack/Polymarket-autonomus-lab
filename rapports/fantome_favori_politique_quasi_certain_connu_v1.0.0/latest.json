@@ -1,0 +1,281 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "0.2412",
+  "capital_immobilise": "1005.0475",
+  "gains_realises_nets": "5.2887",
+  "gains_latents": "6.8957",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1012.1844",
+  "positions_ouvertes": "17",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0176,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "682710",
+   "issue": "No",
+   "parts": "140.74",
+   "cout": "137.32",
+   "prix_moyen": "0.9757",
+   "prix_de_marque": "0.954",
+   "latent": "-3.06",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-22T10:46"
+  },
+  {
+   "marche": "3399450",
+   "issue": "No",
+   "parts": "139.14",
+   "cout": "135.66",
+   "prix_moyen": "0.9750",
+   "prix_de_marque": "0.998",
+   "latent": "3.20",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "255195",
+   "ouverte_le": "2026-10-22T10:46"
+  },
+  {
+   "marche": "3764664",
+   "issue": "No",
+   "parts": "123.90",
+   "cout": "121.17",
+   "prix_moyen": "0.9780",
+   "prix_de_marque": "0.993",
+   "latent": "1.86",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "257462",
+   "ouverte_le": "2026-10-22T10:46"
+  },
+  {
+   "marche": "2243896",
+   "issue": "No",
+   "parts": "106.87",
+   "cout": "104.85",
+   "prix_moyen": "0.9811",
+   "prix_de_marque": "0.998",
+   "latent": "1.80",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "478472",
+   "ouverte_le": "2026-10-22T10:52"
+  },
+  {
+   "marche": "5476380",
+   "issue": "No",
+   "parts": "141.13",
+   "cout": "137.74",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.997",
+   "latent": "2.97",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "24.50",
+   "prix_moyen": "0.9800",
+   "prix_de_marque": "0.981",
+   "latent": "0.02",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "5166817",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "19.57",
+   "prix_moyen": "0.9785",
+   "prix_de_marque": "0.995",
+   "latent": "0.33",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-26T12:17"
+  },
+  {
+   "marche": "3365563",
+   "issue": "No",
+   "parts": "25.03",
+   "cout": "24.60",
+   "prix_moyen": "0.9829",
+   "prix_de_marque": "0.963",
+   "latent": "-0.50",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "802307",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "5164765",
+   "issue": "No",
+   "parts": "48.42",
+   "cout": "47.68",
+   "prix_moyen": "0.9848",
+   "prix_de_marque": "0.987",
+   "latent": "0.11",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1110635",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "5611043",
+   "issue": "No",
+   "parts": "11.74",
+   "cout": "11.58",
+   "prix_moyen": "0.9860",
+   "prix_de_marque": "0.989",
+   "latent": "0.04",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1177812",
+   "ouverte_le": "2026-10-26T12:32"
+  },
+  {
+   "marche": "5611042",
+   "issue": "No",
+   "parts": "11.74",
+   "cout": "11.58",
+   "prix_moyen": "0.9860",
+   "prix_de_marque": "0.986",
+   "latent": "0.00",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1177812",
+   "ouverte_le": "2026-10-26T12:32"
+  },
+  {
+   "marche": "4118937",
+   "issue": "No",
+   "parts": "39.08",
+   "cout": "38.10",
+   "prix_moyen": "0.9750",
+   "prix_de_marque": "0.997",
+   "latent": "0.86",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-10-27T07:42"
+  },
+  {
+   "marche": "3343535",
+   "issue": "No",
+   "parts": "54.58",
+   "cout": "53.38",
+   "prix_moyen": "0.9780",
+   "prix_de_marque": "0.947",
+   "latent": "-1.69",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "797234",
+   "ouverte_le": "2026-10-27T07:42"
+  },
+  {
+   "marche": "5611879",
+   "issue": "No",
+   "parts": "10.17",
+   "cout": "9.99",
+   "prix_moyen": "0.9820",
+   "prix_de_marque": "0.989",
+   "latent": "0.07",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-27T07:47"
+  },
+  {
+   "marche": "2110580",
+   "issue": "No",
+   "parts": "10.16",
+   "cout": "9.99",
+   "prix_moyen": "0.9830",
+   "prix_de_marque": "0.999",
+   "latent": "0.16",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T07:47"
+  },
+  {
+   "marche": "Will Xavier Becerra win the California Governor Election in 2026?",
+   "issue": "Yes",
+   "parts": "60.11",
+   "cout": "58.67",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.982",
+   "latent": "0.36",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "57096",
+   "ouverte_le": "2026-10-30T22:36"
+  },
+  {
+   "marche": "Will Steve Hilton win the California Governor Election in 2026?",
+   "issue": "No",
+   "parts": "60.11",
+   "cout": "58.67",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.982",
+   "latent": "0.36",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "57096",
+   "ouverte_le": "2026-10-30T22:36"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "3008329",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "2.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T07:41"
+  },
+  {
+   "marche": "6027089",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "2.94",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T22:35"
+  }
+ ],
+ "performances": {
+  "favori_politique_quasi_certain_connu v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 1.0,
+   "profit_net": "5.29",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0236,
+   "esperance_par_operation": "2.64",
+   "ic90_rendement_par_euro": [
+    0.0215,
+    0.0256
+   ],
+   "brier": 0.0001,
+   "log_loss": 0.009,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

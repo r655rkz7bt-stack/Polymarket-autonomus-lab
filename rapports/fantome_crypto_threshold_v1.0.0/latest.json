@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "1100.8127",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "100.8127",
+  "gains_latents": "0.0000",
+  "frais_payes": "22.3781",
+  "capital_total_estime": "1100.8127",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3279,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 18,
+ "dernieres_operations": [
+  {
+   "marche": "5719562",
+   "issue": "Yes",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-21.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-16T04:15"
+  },
+  {
+   "marche": "5459795",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "67.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-16T16:15"
+  },
+  {
+   "marche": "5506689",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-44.55",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:31"
+  },
+  {
+   "marche": "5506691",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "67.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:31"
+  },
+  {
+   "marche": "5506671",
+   "issue": "Yes",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-16.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:46"
+  },
+  {
+   "marche": "5506667",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-16.33",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:46"
+  },
+  {
+   "marche": "5564834",
+   "issue": "Yes",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-17.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:13"
+  },
+  {
+   "marche": "5564855",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "77.03",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5564853",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-14.49",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5564857",
+   "issue": "Yes",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-0.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5564832",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "90.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5610574",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "74.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-19T16:41"
+  },
+  {
+   "marche": "5610598",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-12.15",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T16:41"
+  },
+  {
+   "marche": "5690022",
+   "issue": "No",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "-18.45",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "5742250",
+   "issue": "Yes",
+   "strategie": "crypto_threshold v1.0.0",
+   "resultat": "13.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T14:41"
+  }
+ ],
+ "performances": {
+  "crypto_threshold v1.0.0": {
+   "operations": 18,
+   "evenements": 12,
+   "gagnantes": 7,
+   "taux_reussite": 0.389,
+   "profit_net": "100.81",
+   "frais": "22.38",
+   "rendement_sur_mises": 0.0818,
+   "esperance_par_operation": "5.60",
+   "ic90_rendement_par_euro": [
+    -0.3427,
+    1.8556
+   ],
+   "brier": 0.2786,
+   "log_loss": 1.1684,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

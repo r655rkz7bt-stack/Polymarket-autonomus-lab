@@ -1,0 +1,297 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "0.2368",
+  "capital_immobilise": "1074.3963",
+  "gains_realises_nets": "74.6331",
+  "gains_latents": "12.1274",
+  "frais_payes": "2.6351",
+  "capital_total_estime": "1086.7605",
+  "positions_ouvertes": "15",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0194,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "93.04",
+   "cout": "83.62",
+   "prix_moyen": "0.8988",
+   "prix_de_marque": "0.981",
+   "latent": "7.65",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-16T21:32"
+  },
+  {
+   "marche": "1283041",
+   "issue": "No",
+   "parts": "10.25",
+   "cout": "9.66",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.84",
+   "latent": "-1.05",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "191410",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "107.67",
+   "cout": "101.45",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.91",
+   "latent": "-3.47",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "5611880",
+   "issue": "No",
+   "parts": "145.79",
+   "cout": "130.27",
+   "prix_moyen": "0.8935",
+   "prix_de_marque": "0.986",
+   "latent": "13.48",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-16T21:42"
+  },
+  {
+   "marche": "Will the Republican Party win the WA-03 House seat?",
+   "issue": "No",
+   "parts": "52.20",
+   "cout": "48.18",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.9",
+   "latent": "-1.20",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "106236",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "29.01",
+   "cout": "26.77",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.996",
+   "latent": "2.12",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "630832",
+   "issue": "Yes",
+   "parts": "11.63",
+   "cout": "10.73",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.9",
+   "latent": "-0.27",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "57660",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "561975",
+   "issue": "No",
+   "parts": "24.92",
+   "cout": "20.53",
+   "prix_moyen": "0.8240",
+   "prix_de_marque": "0.792",
+   "latent": "-0.80",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-26T05:32"
+  },
+  {
+   "marche": "561231",
+   "issue": "No",
+   "parts": "154.02",
+   "cout": "134.00",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.872",
+   "latent": "0.31",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "5571194",
+   "issue": "No",
+   "parts": "246.22",
+   "cout": "229.21",
+   "prix_moyen": "0.9309",
+   "prix_de_marque": "0.92",
+   "latent": "-2.69",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "5074920",
+   "issue": "No",
+   "parts": "82.84",
+   "cout": "78.28",
+   "prix_moyen": "0.9449",
+   "prix_de_marque": "0.986",
+   "latent": "3.40",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-26T12:17"
+  },
+  {
+   "marche": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "61.40",
+   "cout": "57.74",
+   "prix_moyen": "0.9404",
+   "prix_de_marque": "0.94",
+   "latent": "-0.02",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-29T06:17"
+  },
+  {
+   "marche": "561234",
+   "issue": "No",
+   "parts": "63.01",
+   "cout": "57.65",
+   "prix_moyen": "0.9150",
+   "prix_de_marque": "0.902",
+   "latent": "-0.82",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-29T06:17"
+  },
+  {
+   "marche": "6104819",
+   "issue": "No",
+   "parts": "47.44",
+   "cout": "43.12",
+   "prix_moyen": "0.9090",
+   "prix_de_marque": "0.835",
+   "latent": "-3.51",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-31T18:08"
+  },
+  {
+   "marche": "6288595",
+   "issue": "No",
+   "parts": "45.93",
+   "cout": "43.17",
+   "prix_moyen": "0.9399",
+   "prix_de_marque": "0.918",
+   "latent": "-1.01",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1263843",
+   "ouverte_le": "2026-10-31T18:08"
+  }
+ ],
+ "operations_cloturees": 7,
+ "dernieres_operations": [
+  {
+   "marche": "5315589",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "0.77",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T21:32"
+  },
+  {
+   "marche": "5697537",
+   "issue": "Yes",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "15.12",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:41"
+  },
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "0.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:41"
+  },
+  {
+   "marche": "1235552",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "17.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T06:14"
+  },
+  {
+   "marche": "5340069",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "16.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T05:31"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "16.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "3554657",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "7.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  }
+ ],
+ "performances": {
+  "naive_favorite_sans_fin v1.0.0": {
+   "operations": 7,
+   "evenements": 6,
+   "gagnantes": 7,
+   "taux_reussite": 1.0,
+   "profit_net": "74.63",
+   "frais": "1.52",
+   "rendement_sur_mises": 0.1118,
+   "esperance_par_operation": "10.66",
+   "ic90_rendement_par_euro": [
+    0.075,
+    0.1513
+   ],
+   "brier": 0.0053,
+   "log_loss": 0.0605,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

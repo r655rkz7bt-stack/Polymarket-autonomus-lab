@@ -1,0 +1,421 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "284.0145",
+  "capital_immobilise": "292.9186",
+  "gains_realises_nets": "-423.0668",
+  "gains_latents": "15.6645",
+  "frais_payes": "7.8884",
+  "capital_total_estime": "592.5976",
+  "positions_ouvertes": "20",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4282,
+ "dernier_battement": "2026-10-27T23:22:36+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5784290",
+   "issue": "No",
+   "parts": "36.51",
+   "cout": "29.94",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1201095",
+   "ouverte_le": "2026-10-17T13:12"
+  },
+  {
+   "marche": "Will the Democratic Party win the NC-11 House seat?",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "16.80",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.83",
+   "latent": "-0.20",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "106177",
+   "ouverte_le": "2026-10-18T04:13"
+  },
+  {
+   "marche": "4713483",
+   "issue": "Yes",
+   "parts": "70.54",
+   "cout": "25.57",
+   "prix_moyen": "0.3625",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-22T12:06"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through November 15?",
+   "issue": "Yes",
+   "parts": "43.01",
+   "cout": "20.96",
+   "prix_moyen": "0.4873",
+   "prix_de_marque": "0.47",
+   "latent": "-0.75",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-22T15:04"
+  },
+  {
+   "marche": "2677115",
+   "issue": "Yes",
+   "parts": "7.50",
+   "cout": "2.02",
+   "prix_moyen": "0.2700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "201493",
+   "ouverte_le": "2026-10-22T15:17"
+  },
+  {
+   "marche": "6066051",
+   "issue": "No",
+   "parts": "53.88",
+   "cout": "9.46",
+   "prix_moyen": "0.1756",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1237266",
+   "ouverte_le": "2026-10-22T22:16"
+  },
+  {
+   "marche": "5087226",
+   "issue": "Yes",
+   "parts": "100.00",
+   "cout": "24.00",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.25",
+   "latent": "1.00",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-23T16:41"
+  },
+  {
+   "marche": "5191218",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "16.00",
+   "prix_moyen": "0.6400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "841086",
+   "ouverte_le": "2026-10-23T17:17"
+  },
+  {
+   "marche": "4641065",
+   "issue": "Yes",
+   "parts": "33.41",
+   "cout": "24.72",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.986",
+   "latent": "8.22",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-24T00:16"
+  },
+  {
+   "marche": "5087228",
+   "issue": "No",
+   "parts": "33.06",
+   "cout": "23.14",
+   "prix_moyen": "0.7000",
+   "prix_de_marque": "0.6",
+   "latent": "-3.31",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-24T19:21"
+  },
+  {
+   "marche": "4743423",
+   "issue": "Yes",
+   "parts": "26.40",
+   "cout": "6.07",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1051045",
+   "ouverte_le": "2026-10-25T12:40"
+  },
+  {
+   "marche": "6071558",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "9.50",
+   "prix_moyen": "0.3800",
+   "prix_de_marque": "0.67",
+   "latent": "7.25",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "956931",
+   "ouverte_le": "2026-10-25T23:22"
+  },
+  {
+   "marche": "1059066",
+   "issue": "No",
+   "parts": "50.00",
+   "cout": "12.00",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "131447",
+   "ouverte_le": "2026-10-26T05:31"
+  },
+  {
+   "marche": "5926149",
+   "issue": "No",
+   "parts": "50.00",
+   "cout": "7.00",
+   "prix_moyen": "0.1400",
+   "prix_de_marque": "0.37",
+   "latent": "11.50",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-26T15:36"
+  },
+  {
+   "marche": "6268049",
+   "issue": "No",
+   "parts": "50.00",
+   "cout": "17.00",
+   "prix_moyen": "0.3400",
+   "prix_de_marque": "0.32",
+   "latent": "-1.00",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-27T07:31"
+  },
+  {
+   "marche": "6015290",
+   "issue": "Yes",
+   "parts": "27.00",
+   "cout": "8.91",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1230247",
+   "ouverte_le": "2026-10-27T09:31"
+  },
+  {
+   "marche": "6052687",
+   "issue": "No",
+   "parts": "7.50",
+   "cout": "2.55",
+   "prix_moyen": "0.3400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1236132",
+   "ouverte_le": "2026-10-27T11:17"
+  },
+  {
+   "marche": "6065170",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "2.60",
+   "prix_moyen": "0.1300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1236985",
+   "ouverte_le": "2026-10-27T18:31"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through November 8?",
+   "issue": "Yes",
+   "parts": "24.55",
+   "cout": "17.43",
+   "prix_moyen": "0.7100",
+   "prix_de_marque": "0.71",
+   "latent": "0.00",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-27T21:07"
+  },
+  {
+   "marche": "6104431",
+   "issue": "Yes",
+   "parts": "26.12",
+   "cout": "17.24",
+   "prix_moyen": "0.6600",
+   "prix_de_marque": "0.39",
+   "latent": "-7.05",
+   "strategie": "market_maker v1.0.0",
+   "groupe": "1243958",
+   "ouverte_le": "2026-10-27T22:51"
+  }
+ ],
+ "operations_cloturees": 114,
+ "dernieres_operations": [
+  {
+   "marche": "6052687",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-1.99",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T00:33"
+  },
+  {
+   "marche": "5997211",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-1.85",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T03:47"
+  },
+  {
+   "marche": "5997211",
+   "issue": "No",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-0.94",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T07:47"
+  },
+  {
+   "marche": "6096385",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-2.30",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T08:32"
+  },
+  {
+   "marche": "5401795",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-8.63",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T09:17"
+  },
+  {
+   "marche": "5997211",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-4.24",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T09:17"
+  },
+  {
+   "marche": "US-Iran ceasefire continues through the midterms?",
+   "issue": "No",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-9.85",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T12:09"
+  },
+  {
+   "marche": "6031320",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-4.08",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T14:52"
+  },
+  {
+   "marche": "6017630",
+   "issue": "No",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-8.58",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T16:27"
+  },
+  {
+   "marche": "6066053",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-8.81",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T17:59"
+  },
+  {
+   "marche": "6026468",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-6.95",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T18:22"
+  },
+  {
+   "marche": "682705",
+   "issue": "No",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-1.81",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T20:03"
+  },
+  {
+   "marche": "5998476",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-0.72",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T21:52"
+  },
+  {
+   "marche": "6065166",
+   "issue": "No",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-4.20",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T22:07"
+  },
+  {
+   "marche": "6317343",
+   "issue": "Yes",
+   "strategie": "market_maker v1.0.0",
+   "resultat": "-2.38",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-27T22:12"
+  }
+ ],
+ "performances": {
+  "market_maker v1.0.0": {
+   "operations": 114,
+   "evenements": 57,
+   "gagnantes": 14,
+   "taux_reussite": 0.123,
+   "profit_net": "-418.66",
+   "frais": "7.89",
+   "rendement_sur_mises": -0.2008,
+   "esperance_par_operation": "-3.67",
+   "ic90_rendement_par_euro": [
+    -0.2827,
+    -0.2049
+   ],
+   "brier": null,
+   "log_loss": null,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

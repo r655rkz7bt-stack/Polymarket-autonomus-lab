@@ -1,0 +1,161 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "617.9937",
+  "capital_immobilise": "332.4999",
+  "gains_realises_nets": "-49.5064",
+  "gains_latents": "25.5083",
+  "frais_payes": "5.4714",
+  "capital_total_estime": "976.0019",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.143,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "140.61",
+   "cout": "125.83",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "14.64",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-27T10:22"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "19.66",
+   "cout": "17.40",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.76",
+   "latent": "-2.46",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T20:12"
+  },
+  {
+   "marche": "5882360",
+   "issue": "Yes",
+   "parts": "202.80",
+   "cout": "189.26",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "13.33",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1212015",
+   "ouverte_le": "2026-10-31T17:12"
+  }
+ ],
+ "operations_cloturees": 8,
+ "dernieres_operations": [
+  {
+   "marche": "5339871",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "10.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T22:07"
+  },
+  {
+   "marche": "5409194",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "14.05",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "0.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T00:40"
+  },
+  {
+   "marche": "608547",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "18.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "-136.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "5746067",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "12.98",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:51"
+  },
+  {
+   "marche": "5701249",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "12.92",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "1235568",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "16.85",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T06:16"
+  }
+ ],
+ "performances": {
+  "nf_sport_oui v1.0.0": {
+   "operations": 8,
+   "evenements": 8,
+   "gagnantes": 7,
+   "taux_reussite": 0.875,
+   "profit_net": "-49.51",
+   "frais": "4.02",
+   "rendement_sur_mises": -0.0547,
+   "esperance_par_operation": "-6.19",
+   "ic90_rendement_par_euro": [
+    -0.2872,
+    0.1467
+   ],
+   "brier": 0.1168,
+   "log_loss": 0.4188,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

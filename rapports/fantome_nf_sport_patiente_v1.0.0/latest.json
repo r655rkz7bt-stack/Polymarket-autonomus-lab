@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-31T21:30:15+00:00",
+ "capital": {
+  "solde_disponible": "903.0053",
+  "capital_immobilise": "64.7696",
+  "gains_realises_nets": "-32.2250",
+  "gains_latents": "-2.1937",
+  "frais_payes": "108.1976",
+  "capital_total_estime": "965.5812",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4382,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "79.21",
+   "cout": "64.77",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-2.19",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-28T00:37"
+  }
+ ],
+ "operations_cloturees": 332,
+ "dernieres_operations": [
+  {
+   "marche": "6280238",
+   "issue": "Karmine Corp",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "11.33",
+   "resolution": "résolu : Karmine Corp",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "6376481",
+   "issue": "Connie Ma",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "7.45",
+   "resolution": "résolu : Connie Ma",
+   "cloturee_le": "2026-10-29T23:36"
+  },
+  {
+   "marche": "6376503",
+   "issue": "Ipek Oz",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "6.20",
+   "resolution": "résolu : Ipek Oz",
+   "cloturee_le": "2026-10-29T23:41"
+  },
+  {
+   "marche": "6376489",
+   "issue": "Caroline Dolehide",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "6.15",
+   "resolution": "résolu : Caroline Dolehide",
+   "cloturee_le": "2026-10-30T00:05"
+  },
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-37.17",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6326878",
+   "issue": "Ben Shelton",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-18.19",
+   "resolution": "résolu : Jerome Kym",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6336528",
+   "issue": "Turma do Pagode",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "6.02",
+   "resolution": "résolu : Turma do Pagode",
+   "cloturee_le": "2026-10-30T01:46"
+  },
+  {
+   "marche": "6280179",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-24.30",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6280178",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-93.72",
+   "resolution": "résolu : Top Esports",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6381838",
+   "issue": "Blake Ellis",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.68",
+   "resolution": "résolu : Blake Ellis",
+   "cloturee_le": "2026-10-30T03:11"
+  },
+  {
+   "marche": "6381944",
+   "issue": "Katie Swan",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.49",
+   "resolution": "résolu : Katie Swan",
+   "cloturee_le": "2026-10-30T04:11"
+  },
+  {
+   "marche": "6387879",
+   "issue": "Violet Apisah",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.98",
+   "resolution": "résolu : Violet Apisah",
+   "cloturee_le": "2026-10-30T05:31"
+  },
+  {
+   "marche": "6345236",
+   "issue": "Alter Ego",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.74",
+   "resolution": "résolu : Alter Ego",
+   "cloturee_le": "2026-10-30T05:51"
+  },
+  {
+   "marche": "6369770",
+   "issue": "Joao Lucas Da Silva",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "8.66",
+   "resolution": "résolu : Joao Lucas Da Silva",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "6111998",
+   "issue": "Fraport Skyliners",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "13.38",
+   "resolution": "résolu : Fraport Skyliners",
+   "cloturee_le": "2026-10-30T22:11"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente v1.0.0": {
+   "operations": 332,
+   "evenements": 307,
+   "gagnantes": 288,
+   "taux_reussite": 0.867,
+   "profit_net": "-32.23",
+   "frais": "107.59",
+   "rendement_sur_mises": -0.0012,
+   "esperance_par_operation": "-0.10",
+   "ic90_rendement_par_euro": [
+    -0.0435,
+    0.0307
+   ],
+   "brier": 0.116,
+   "log_loss": 0.4235,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

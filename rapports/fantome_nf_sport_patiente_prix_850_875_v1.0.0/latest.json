@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "951.7157",
+  "capital_immobilise": "102.4740",
+  "gains_realises_nets": "54.1897",
+  "gains_latents": "-3.5724",
+  "frais_payes": "43.9020",
+  "capital_total_estime": "1050.6173",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4142,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Counter-Strike: BESTIA vs Procyon Gaming (BO3) - FiReSPORTS Last Chance Playoffs",
+   "issue": "BESTIA",
+   "parts": "43.06",
+   "cout": "36.60",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.72",
+   "latent": "-5.60",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1289397",
+   "ouverte_le": "2026-10-31T19:21"
+  },
+  {
+   "marche": "LoL: LOS vs LYON (BO3) - Worlds Group Stage",
+   "issue": "LOS",
+   "parts": "31.54",
+   "cout": "26.49",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.73",
+   "latent": "-3.47",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T20:31"
+  },
+  {
+   "marche": "UFC Fight Night: Tainara Lisboa vs. Lucia Szabová (Women's Flyweight, Prelims)",
+   "issue": "Lucia Szabová",
+   "parts": "45.79",
+   "cout": "39.38",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.98",
+   "latent": "5.49",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "1207817",
+   "ouverte_le": "2026-10-31T21:21"
+  }
+ ],
+ "operations_cloturees": 138,
+ "dernieres_operations": [
+  {
+   "marche": "6422797",
+   "issue": "fnatic",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "-39.65",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-30T21:16"
+  },
+  {
+   "marche": "6435634",
+   "issue": "Hacha Esports",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.18",
+   "resolution": "résolu : Hacha Esports",
+   "cloturee_le": "2026-10-31T00:06"
+  },
+  {
+   "marche": "6435616",
+   "issue": "OG",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.50",
+   "resolution": "résolu : OG",
+   "cloturee_le": "2026-10-31T01:01"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.15",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6280278",
+   "issue": "Hanwha Life Esports",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.36",
+   "resolution": "résolu : Hanwha Life Esports",
+   "cloturee_le": "2026-10-31T01:41"
+  },
+  {
+   "marche": "6408767",
+   "issue": "NEXVOID",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.24",
+   "resolution": "résolu : NEXVOID",
+   "cloturee_le": "2026-10-31T05:45"
+  },
+  {
+   "marche": "6424247",
+   "issue": "Weronika Falkowska",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "8.47",
+   "resolution": "résolu : Weronika Falkowska",
+   "cloturee_le": "2026-10-31T14:25"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "0.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "6438835",
+   "issue": "paiN",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "-22.40",
+   "resolution": "résolu : naocopulas",
+   "cloturee_le": "2026-10-31T15:55"
+  },
+  {
+   "marche": "6401335",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "5.11",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-31T16:01"
+  },
+  {
+   "marche": "6426440",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "4.94",
+   "resolution": "résolu : Carlos Alcaraz",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6397599",
+   "issue": "BARCA",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.03",
+   "resolution": "résolu : BARCA",
+   "cloturee_le": "2026-10-31T16:31"
+  },
+  {
+   "marche": "6438065",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.46",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6343697",
+   "issue": "Pakistan",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : Pakistan",
+   "cloturee_le": "2026-10-31T18:25"
+  },
+  {
+   "marche": "6474880",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "7.58",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-31T19:11"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 138,
+   "evenements": 133,
+   "gagnantes": 117,
+   "taux_reussite": 0.848,
+   "profit_net": "54.19",
+   "frais": "43.90",
+   "rendement_sur_mises": 0.0038,
+   "esperance_par_operation": "0.39",
+   "ic90_rendement_par_euro": [
+    -0.0549,
+    0.0633
+   ],
+   "brier": 0.1217,
+   "log_loss": 0.4203,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

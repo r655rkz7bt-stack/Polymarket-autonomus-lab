@@ -1,0 +1,132 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "939.3533",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-60.6467",
+  "gains_latents": "0.0000",
+  "frais_payes": "1.7407",
+  "capital_total_estime": "939.3533",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1116,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 9,
+ "dernieres_operations": [
+  {
+   "marche": "5506691",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-38.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:32"
+  },
+  {
+   "marche": "5506689",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-7.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:32"
+  },
+  {
+   "marche": "5506667",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-6.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-17T16:41"
+  },
+  {
+   "marche": "5506671",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-11.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-17T16:46"
+  },
+  {
+   "marche": "5564834",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-13.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:14"
+  },
+  {
+   "marche": "5564853",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-12.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5564832",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "41.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5564857",
+   "issue": "Yes",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-6.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T16:18"
+  },
+  {
+   "marche": "5610598",
+   "issue": "No",
+   "strategie": "crypto_threshold_patiente v1.0.0",
+   "resultat": "-5.95",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T16:42"
+  }
+ ],
+ "performances": {
+  "crypto_threshold_patiente v1.0.0": {
+   "operations": 9,
+   "evenements": 5,
+   "gagnantes": 1,
+   "taux_reussite": 0.111,
+   "profit_net": "-60.65",
+   "frais": "1.74",
+   "rendement_sur_mises": -0.5403,
+   "esperance_par_operation": "-6.74",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.5464
+   ],
+   "brier": 0.1212,
+   "log_loss": 0.4068,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

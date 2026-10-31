@@ -1,0 +1,66 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "981.4807",
+  "capital_immobilise": "18.5193",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-0.2007",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "999.7993",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0003,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "2176270",
+   "issue": "No",
+   "parts": "6.93",
+   "cout": "6.17",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.88",
+   "latent": "-0.07",
+   "strategie": "detroits_non_normal v1.0.0",
+   "groupe": "455875",
+   "ouverte_le": "2026-10-25T16:12"
+  },
+  {
+   "marche": "3501951",
+   "issue": "No",
+   "parts": "13.14",
+   "cout": "12.35",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.93",
+   "latent": "-0.13",
+   "strategie": "detroits_non_normal v1.0.0",
+   "groupe": "830254",
+   "ouverte_le": "2026-10-25T22:52"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

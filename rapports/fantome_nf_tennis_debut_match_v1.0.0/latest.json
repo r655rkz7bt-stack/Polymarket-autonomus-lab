@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:17+00:00",
+ "capital": {
+  "solde_disponible": "977.2700",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-22.7300",
+  "gains_latents": "0.0000",
+  "frais_payes": "24.3304",
+  "capital_total_estime": "977.2700",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1581,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 102,
+ "dernieres_operations": [
+  {
+   "marche": "6163609",
+   "issue": "Alex Molcan",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "-15.17",
+   "resolution": "résolu : Adrian Mannarino",
+   "cloturee_le": "2026-10-25T16:25"
+  },
+  {
+   "marche": "6182130",
+   "issue": "Yuhan Wang",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "5.10",
+   "resolution": "résolu : Yuhan Wang",
+   "cloturee_le": "2026-10-26T05:46"
+  },
+  {
+   "marche": "6173067",
+   "issue": "Elise Mertens",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.06",
+   "resolution": "résolu : Elise Mertens",
+   "cloturee_le": "2026-10-26T07:11"
+  },
+  {
+   "marche": "6183318",
+   "issue": "Han Shi",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.21",
+   "resolution": "résolu : Han Shi",
+   "cloturee_le": "2026-10-26T08:46"
+  },
+  {
+   "marche": "6176457",
+   "issue": "Lloyd Harris",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.53",
+   "resolution": "résolu : Lloyd Harris",
+   "cloturee_le": "2026-10-26T08:51"
+  },
+  {
+   "marche": "6173073",
+   "issue": "Alexandra Eala",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.35",
+   "resolution": "résolu : Alexandra Eala",
+   "cloturee_le": "2026-10-26T09:55"
+  },
+  {
+   "marche": "6183322",
+   "issue": "Paula Badosa",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "3.83",
+   "resolution": "résolu : Paula Badosa",
+   "cloturee_le": "2026-10-26T10:31"
+  },
+  {
+   "marche": "6176401",
+   "issue": "Matteo Berrettini",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.57",
+   "resolution": "résolu : Matteo Berrettini",
+   "cloturee_le": "2026-10-26T14:38"
+  },
+  {
+   "marche": "6227349",
+   "issue": "Antonia Vergara",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.11",
+   "resolution": "résolu : Antonia Vergara",
+   "cloturee_le": "2026-10-26T16:19"
+  },
+  {
+   "marche": "6231274",
+   "issue": "Jakub Mensik",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.11",
+   "resolution": "résolu : Jakub Mensik",
+   "cloturee_le": "2026-10-26T18:25"
+  },
+  {
+   "marche": "6227345",
+   "issue": "Jazmin Ortenzi",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.13",
+   "resolution": "résolu : Jazmin Ortenzi",
+   "cloturee_le": "2026-10-26T18:55"
+  },
+  {
+   "marche": "6176453",
+   "issue": "Jay Dylan Friend",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.12",
+   "resolution": "résolu : Jay Dylan Friend",
+   "cloturee_le": "2026-10-27T03:46"
+  },
+  {
+   "marche": "6176373",
+   "issue": "Dylan Dietrich",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.06",
+   "resolution": "résolu : Dylan Dietrich",
+   "cloturee_le": "2026-10-27T03:51"
+  },
+  {
+   "marche": "6176427",
+   "issue": "Charles Broom",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "4.74",
+   "resolution": "résolu : Charles Broom",
+   "cloturee_le": "2026-10-27T04:40"
+  },
+  {
+   "marche": "6247329",
+   "issue": "Aleksandar Vukic",
+   "strategie": "nf_tennis_debut_match v1.0.0",
+   "resultat": "5.16",
+   "resolution": "résolu : Aleksandar Vukic",
+   "cloturee_le": "2026-10-27T05:10"
+  }
+ ],
+ "performances": {
+  "nf_tennis_debut_match v1.0.0": {
+   "operations": 102,
+   "evenements": 102,
+   "gagnantes": 87,
+   "taux_reussite": 0.853,
+   "profit_net": "-22.73",
+   "frais": "24.33",
+   "rendement_sur_mises": -0.0053,
+   "esperance_par_operation": "-0.22",
+   "ic90_rendement_par_euro": [
+    -0.0833,
+    0.0484
+   ],
+   "brier": 0.1256,
+   "log_loss": 0.4257,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

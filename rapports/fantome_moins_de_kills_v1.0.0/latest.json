@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "1025.4373",
+  "capital_immobilise": "29.2545",
+  "gains_realises_nets": "54.6918",
+  "gains_latents": "13.4847",
+  "frais_payes": "3.0277",
+  "capital_total_estime": "1068.1765",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.011,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6441394",
+   "issue": "Under",
+   "parts": "13.40",
+   "cout": "5.79",
+   "prix_moyen": "0.4322",
+   "prix_de_marque": "0.999",
+   "latent": "7.60",
+   "strategie": "moins_de_kills v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T05:05"
+  },
+  {
+   "marche": "6441393",
+   "issue": "Under",
+   "parts": "13.09",
+   "cout": "6.18",
+   "prix_moyen": "0.4724",
+   "prix_de_marque": "0.999",
+   "latent": "6.89",
+   "strategie": "moins_de_kills v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T05:56"
+  },
+  {
+   "marche": "6441389",
+   "issue": "Under",
+   "parts": "18.21",
+   "cout": "8.79",
+   "prix_moyen": "0.4825",
+   "prix_de_marque": "0.46",
+   "latent": "-0.41",
+   "strategie": "moins_de_kills v1.0.0",
+   "groupe": "1286064",
+   "ouverte_le": "2026-10-31T11:03"
+  },
+  {
+   "marche": "6441390",
+   "issue": "Under",
+   "parts": "18.37",
+   "cout": "8.49",
+   "prix_moyen": "0.4624",
+   "prix_de_marque": "0.43",
+   "latent": "-0.59",
+   "strategie": "moins_de_kills v1.0.0",
+   "groupe": "1286064",
+   "ouverte_le": "2026-10-31T11:07"
+  }
+ ],
+ "operations_cloturees": 12,
+ "dernieres_operations": [
+  {
+   "marche": "6326890",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "5.99",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-29T03:01"
+  },
+  {
+   "marche": "6326891",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "8.88",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-29T04:01"
+  },
+  {
+   "marche": "6377572",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "9.89",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-29T23:01"
+  },
+  {
+   "marche": "6361906",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-8.19",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "6322933",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "6.47",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T01:35"
+  },
+  {
+   "marche": "6322932",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "6.21",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T01:41"
+  },
+  {
+   "marche": "6398568",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "6.86",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T23:25"
+  },
+  {
+   "marche": "6398571",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "6.81",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-30T23:35"
+  },
+  {
+   "marche": "6403031",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-10.09",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T01:21"
+  },
+  {
+   "marche": "6403032",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "6.06",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T01:41"
+  },
+  {
+   "marche": "6444139",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "8.00",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T19:21"
+  },
+  {
+   "marche": "6444138",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "7.80",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T19:41"
+  }
+ ],
+ "performances": {
+  "moins_de_kills v1.0.0": {
+   "operations": 12,
+   "evenements": 6,
+   "gagnantes": 10,
+   "taux_reussite": 0.833,
+   "profit_net": "54.69",
+   "frais": "2.25",
+   "rendement_sur_mises": 0.5752,
+   "esperance_par_operation": "4.56",
+   "ic90_rendement_par_euro": [
+    0.3455,
+    0.9496
+   ],
+   "brier": 0.2392,
+   "log_loss": 0.6717,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

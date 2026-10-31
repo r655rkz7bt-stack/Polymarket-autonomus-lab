@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "808.4474",
+  "capital_immobilise": "27.5062",
+  "gains_realises_nets": "-164.0464",
+  "gains_latents": "0.0000",
+  "frais_payes": "5.6586",
+  "capital_total_estime": "835.9536",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.323,
+ "dernier_battement": "2026-10-31T15:47:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "parts": "33.14",
+   "cout": "27.51",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.83",
+   "latent": "0.00",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "groupe": "1224771",
+   "ouverte_le": "2026-10-27T12:41"
+  }
+ ],
+ "operations_cloturees": 67,
+ "dernieres_operations": [
+  {
+   "marche": "6294168",
+   "issue": "Zane Stevens",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "6.13",
+   "resolution": "résolu : Zane Stevens",
+   "cloturee_le": "2026-10-28T08:25"
+  },
+  {
+   "marche": "6246425",
+   "issue": "Paula Badosa",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.45",
+   "resolution": "résolu : Paula Badosa",
+   "cloturee_le": "2026-10-28T09:01"
+  },
+  {
+   "marche": "6295168",
+   "issue": "Diana Shnaider",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.42",
+   "resolution": "résolu : Diana Shnaider",
+   "cloturee_le": "2026-10-28T10:01"
+  },
+  {
+   "marche": "6299374",
+   "issue": "Akhmadjon Toshmukhamedov",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.46",
+   "resolution": "résolu : Akhmadjon Toshmukhamedov",
+   "cloturee_le": "2026-10-28T12:16"
+  },
+  {
+   "marche": "6322623",
+   "issue": "Gilberto Ravasio",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "2.49",
+   "resolution": "résolu : Gilberto Ravasio",
+   "cloturee_le": "2026-10-28T12:55"
+  },
+  {
+   "marche": "6197870",
+   "issue": "Qatar",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "-77.21",
+   "resolution": "résolu : Denmark",
+   "cloturee_le": "2026-10-28T13:35"
+  },
+  {
+   "marche": "6037539",
+   "issue": "Shanxi Loongs",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "-25.35",
+   "resolution": "résolu : Shenzhen Leopards",
+   "cloturee_le": "2026-10-28T15:41"
+  },
+  {
+   "marche": "6313354",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.04",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-28T17:18"
+  },
+  {
+   "marche": "6326070",
+   "issue": "Eternal Fire",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "10.10",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-28T17:26"
+  },
+  {
+   "marche": "5928344",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "4.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T20:41"
+  },
+  {
+   "marche": "5767895",
+   "issue": "PAOK",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "10.29",
+   "resolution": "résolu : PAOK",
+   "cloturee_le": "2026-10-28T22:35"
+  },
+  {
+   "marche": "1235568",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "7.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "7.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "4.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "6111998",
+   "issue": "Fraport Skyliners",
+   "strategie": "nf_sport_patiente_matin v1.0.0",
+   "resultat": "5.41",
+   "resolution": "résolu : Fraport Skyliners",
+   "cloturee_le": "2026-10-30T22:11"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_matin v1.0.0": {
+   "operations": 67,
+   "evenements": 64,
+   "gagnantes": 55,
+   "taux_reussite": 0.821,
+   "profit_net": "-164.05",
+   "frais": "5.66",
+   "rendement_sur_mises": -0.0396,
+   "esperance_par_operation": "-2.45",
+   "ic90_rendement_par_euro": [
+    -0.1623,
+    0.0147
+   ],
+   "brier": 0.1421,
+   "log_loss": 0.5027,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

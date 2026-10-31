@@ -1,0 +1,621 @@
+{
+ "genere_le": "2026-10-31T21:30:18+00:00",
+ "capital": {
+  "solde_disponible": "706.1667",
+  "capital_immobilise": "291.2109",
+  "gains_realises_nets": "-2.6224",
+  "gains_latents": "0.9184",
+  "frais_payes": "0.5184",
+  "capital_total_estime": "998.2960",
+  "positions_ouvertes": "38",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0313,
+ "dernier_battement": "2026-10-27T17:20:11+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4890263",
+   "issue": "No",
+   "parts": "6.80",
+   "cout": "5.96",
+   "prix_moyen": "0.8765",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1071009",
+   "ouverte_le": "2026-10-20T16:45"
+  },
+  {
+   "marche": "5691230",
+   "issue": "No",
+   "parts": "6.28",
+   "cout": "5.46",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.88",
+   "latent": "0.06",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-10-21T21:11"
+  },
+  {
+   "marche": "3343532",
+   "issue": "No",
+   "parts": "13.18",
+   "cout": "11.53",
+   "prix_moyen": "0.8750",
+   "prix_de_marque": "0.843",
+   "latent": "-0.42",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "797234",
+   "ouverte_le": "2026-10-22T03:56"
+  },
+  {
+   "marche": "5691223",
+   "issue": "No",
+   "parts": "14.68",
+   "cout": "12.62",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.9",
+   "latent": "0.59",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-10-22T07:26"
+  },
+  {
+   "marche": "5211627",
+   "issue": "No",
+   "parts": "13.97",
+   "cout": "12.29",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.84",
+   "latent": "-0.56",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1120074",
+   "ouverte_le": "2026-10-22T17:16"
+  },
+  {
+   "marche": "2412749",
+   "issue": "No",
+   "parts": "9.22",
+   "cout": "8.11",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "548858",
+   "ouverte_le": "2026-10-22T19:32"
+  },
+  {
+   "marche": "5794293",
+   "issue": "No",
+   "parts": "7.73",
+   "cout": "6.88",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-23T04:11"
+  },
+  {
+   "marche": "5794294",
+   "issue": "No",
+   "parts": "3.11",
+   "cout": "2.90",
+   "prix_moyen": "0.9330",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1203169",
+   "ouverte_le": "2026-10-23T04:11"
+  },
+  {
+   "marche": "2412745",
+   "issue": "No",
+   "parts": "11.45",
+   "cout": "10.75",
+   "prix_moyen": "0.9390",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "548858",
+   "ouverte_le": "2026-10-23T15:42"
+  },
+  {
+   "marche": "5699273",
+   "issue": "No",
+   "parts": "6.42",
+   "cout": "5.65",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.94",
+   "latent": "0.39",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1189688",
+   "ouverte_le": "2026-10-23T17:22"
+  },
+  {
+   "marche": "4961855",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.18",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1082240",
+   "ouverte_le": "2026-10-23T19:09"
+  },
+  {
+   "marche": "4397033",
+   "issue": "No",
+   "parts": "11.32",
+   "cout": "9.80",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.95",
+   "latent": "0.95",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-23T21:32"
+  },
+  {
+   "marche": "6065117",
+   "issue": "No",
+   "parts": "7.16",
+   "cout": "6.23",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1236947",
+   "ouverte_le": "2026-10-23T23:32"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "7.75",
+   "cout": "7.02",
+   "prix_moyen": "0.9059",
+   "prix_de_marque": "0.876",
+   "latent": "-0.23",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-24T02:37"
+  },
+  {
+   "marche": "4961852",
+   "issue": "No",
+   "parts": "6.33",
+   "cout": "5.57",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1082240",
+   "ouverte_le": "2026-10-24T11:42"
+  },
+  {
+   "marche": "5713554",
+   "issue": "No",
+   "parts": "9.83",
+   "cout": "8.45",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.976",
+   "latent": "1.14",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1191150",
+   "ouverte_le": "2026-10-24T22:32"
+  },
+  {
+   "marche": "5713555",
+   "issue": "No",
+   "parts": "6.00",
+   "cout": "5.52",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.89",
+   "latent": "-0.18",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1191150",
+   "ouverte_le": "2026-10-25T00:57"
+  },
+  {
+   "marche": "3697778",
+   "issue": "No",
+   "parts": "16.12",
+   "cout": "14.30",
+   "prix_moyen": "0.8870",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "870918",
+   "ouverte_le": "2026-10-25T01:36"
+  },
+  {
+   "marche": "6105187",
+   "issue": "No",
+   "parts": "11.47",
+   "cout": "9.86",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-26T06:04"
+  },
+  {
+   "marche": "6105190",
+   "issue": "No",
+   "parts": "7.51",
+   "cout": "6.68",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-26T06:04"
+  },
+  {
+   "marche": "6105189",
+   "issue": "No",
+   "parts": "8.99",
+   "cout": "7.91",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1244119",
+   "ouverte_le": "2026-10-26T06:43"
+  },
+  {
+   "marche": "3343132",
+   "issue": "No",
+   "parts": "9.25",
+   "cout": "8.32",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "797154",
+   "ouverte_le": "2026-10-26T09:03"
+  },
+  {
+   "marche": "3343133",
+   "issue": "No",
+   "parts": "6.76",
+   "cout": "6.00",
+   "prix_moyen": "0.8880",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "797154",
+   "ouverte_le": "2026-10-26T09:27"
+  },
+  {
+   "marche": "6090724",
+   "issue": "No",
+   "parts": "8.45",
+   "cout": "7.44",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.991",
+   "latent": "0.94",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-26T09:42"
+  },
+  {
+   "marche": "6090725",
+   "issue": "No",
+   "parts": "8.99",
+   "cout": "8.18",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.99",
+   "latent": "0.72",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-26T10:22"
+  },
+  {
+   "marche": "6090723",
+   "issue": "No",
+   "parts": "12.80",
+   "cout": "11.26",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-26T10:27"
+  },
+  {
+   "marche": "6090721",
+   "issue": "No",
+   "parts": "7.07",
+   "cout": "6.08",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-26T12:42"
+  },
+  {
+   "marche": "5928346",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.24",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1218363",
+   "ouverte_le": "2026-10-26T13:52"
+  },
+  {
+   "marche": "6090731",
+   "issue": "No",
+   "parts": "5.93",
+   "cout": "5.16",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.939",
+   "latent": "0.41",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1241662",
+   "ouverte_le": "2026-10-26T16:22"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "7.35",
+   "cout": "6.65",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.89",
+   "latent": "-0.11",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-26T18:10"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "parts": "6.14",
+   "cout": "5.39",
+   "prix_moyen": "0.8785",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1218363",
+   "ouverte_le": "2026-10-26T19:17"
+  },
+  {
+   "marche": "6090732",
+   "issue": "No",
+   "parts": "6.95",
+   "cout": "6.05",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.44",
+   "latent": "-2.99",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "1241661",
+   "ouverte_le": "2026-10-26T21:57"
+  },
+  {
+   "marche": "919493",
+   "issue": "No",
+   "parts": "20.37",
+   "cout": "17.93",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "103166",
+   "ouverte_le": "2026-10-27T04:42"
+  },
+  {
+   "marche": "Will the Republican Party hold between 190 and 194 House seats after the 2026 midterm elections?",
+   "issue": "No",
+   "parts": "14.74",
+   "cout": "13.27",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "103166",
+   "ouverte_le": "2026-10-27T04:42"
+  },
+  {
+   "marche": "Will the Republican Party hold between 200 and 204 House seats after the 2026 midterm elections?",
+   "issue": "No",
+   "parts": "11.22",
+   "cout": "9.82",
+   "prix_moyen": "0.8750",
+   "prix_de_marque": "0.894",
+   "latent": "0.21",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "103166",
+   "ouverte_le": "2026-10-27T04:42"
+  },
+  {
+   "marche": "Will the Republican Party hold between 215 and 219 House seats after the 2026 midterm elections?",
+   "issue": "No",
+   "parts": "0.02",
+   "cout": "0.02",
+   "prix_moyen": "0.8870",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "103166",
+   "ouverte_le": "2026-10-27T04:47"
+  },
+  {
+   "marche": "Will the Republican Party hold between 195 and 199 House seats after the 2026 midterm elections?",
+   "issue": "No",
+   "parts": "7.35",
+   "cout": "6.54",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "103166",
+   "ouverte_le": "2026-10-27T04:52"
+  },
+  {
+   "marche": "3343529",
+   "issue": "No",
+   "parts": "5.94",
+   "cout": "5.17",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "groupe": "797234",
+   "ouverte_le": "2026-10-27T11:27"
+  }
+ ],
+ "operations_cloturees": 13,
+ "dernieres_operations": [
+  {
+   "marche": "5640323",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T17:20"
+  },
+  {
+   "marche": "5640344",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640340",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "-4.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "5640349",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6003514",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "5794289",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T21:05"
+  },
+  {
+   "marche": "5229652",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T02:20"
+  },
+  {
+   "marche": "5229661",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T02:20"
+  },
+  {
+   "marche": "5229655",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "-9.29",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T02:31"
+  },
+  {
+   "marche": "5951575",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.63",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T08:11"
+  },
+  {
+   "marche": "5713522",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T18:55"
+  },
+  {
+   "marche": "5926151",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "0.77",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T01:01"
+  },
+  {
+   "marche": "4890262",
+   "issue": "No",
+   "strategie": "outsiders_surcotes v1.0.0",
+   "resultat": "1.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T04:25"
+  }
+ ],
+ "performances": {
+  "outsiders_surcotes v1.0.0": {
+   "operations": 13,
+   "evenements": 8,
+   "gagnantes": 11,
+   "taux_reussite": 0.846,
+   "profit_net": "-2.62",
+   "frais": "0.31",
+   "rendement_sur_mises": -0.0274,
+   "esperance_par_operation": "-0.20",
+   "ic90_rendement_par_euro": [
+    -0.1217,
+    0.1296
+   ],
+   "brier": 0.129,
+   "log_loss": 0.4216,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

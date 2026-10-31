@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "1168.9317",
+  "capital_immobilise": "62.5680",
+  "gains_realises_nets": "231.4997",
+  "gains_latents": "-8.5320",
+  "frais_payes": "3.9072",
+  "capital_total_estime": "1222.9677",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0568,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "71.10",
+   "cout": "62.57",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.76",
+   "latent": "-8.53",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-28T10:26"
+  }
+ ],
+ "operations_cloturees": 17,
+ "dernieres_operations": [
+  {
+   "marche": "5598529",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "0.04",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T22:21"
+  },
+  {
+   "marche": "5598539",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "16.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T22:25"
+  },
+  {
+   "marche": "5598522",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "-9.48",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-25T22:31"
+  },
+  {
+   "marche": "5596127",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "24.66",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-26T21:41"
+  },
+  {
+   "marche": "5663532",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "11.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T22:46"
+  },
+  {
+   "marche": "608540",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "17.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T01:55"
+  },
+  {
+   "marche": "608545",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "38.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "6247448",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "13.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T14:08"
+  },
+  {
+   "marche": "6246666",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "11.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T16:21"
+  },
+  {
+   "marche": "5674371",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "13.74",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T21:55"
+  },
+  {
+   "marche": "6011577",
+   "issue": "Panathinaikos",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "11.78",
+   "resolution": "résolu : Panathinaikos",
+   "cloturee_le": "2026-10-27T23:35"
+  },
+  {
+   "marche": "5767895",
+   "issue": "PAOK",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "23.62",
+   "resolution": "résolu : PAOK",
+   "cloturee_le": "2026-10-28T22:35"
+  },
+  {
+   "marche": "5767714",
+   "issue": "Atlanta Dream",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "8.62",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-29T19:25"
+  },
+  {
+   "marche": "6288016",
+   "issue": "Atlanta Dream",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "13.66",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-29T19:25"
+  },
+  {
+   "marche": "5828021",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h_6_12h v1.0.0",
+   "resultat": "14.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_6_24h_6_12h v1.0.0": {
+   "operations": 17,
+   "evenements": 13,
+   "gagnantes": 16,
+   "taux_reussite": 0.941,
+   "profit_net": "231.50",
+   "frais": "3.91",
+   "rendement_sur_mises": 0.1107,
+   "esperance_par_operation": "13.62",
+   "ic90_rendement_par_euro": [
+    -0.0481,
+    0.1515
+   ],
+   "brier": 0.0628,
+   "log_loss": 0.3332,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "901.5227",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-98.4773",
+  "gains_latents": "0.0000",
+  "frais_payes": "2.5975",
+  "capital_total_estime": "901.5227",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1654,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 27,
+ "dernieres_operations": [
+  {
+   "marche": "6326070",
+   "issue": "Eternal Fire",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "11.85",
+   "resolution": "résolu : Eternal Fire",
+   "cloturee_le": "2026-10-28T17:26"
+  },
+  {
+   "marche": "6323059",
+   "issue": "Alisa Danilova",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "12.18",
+   "resolution": "résolu : Alisa Danilova",
+   "cloturee_le": "2026-10-28T19:46"
+  },
+  {
+   "marche": "6313374",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "-80.72",
+   "resolution": "résolu : OG",
+   "cloturee_le": "2026-10-28T20:51"
+  },
+  {
+   "marche": "5767895",
+   "issue": "PAOK",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "22.02",
+   "resolution": "résolu : PAOK",
+   "cloturee_le": "2026-10-28T22:35"
+  },
+  {
+   "marche": "6295178",
+   "issue": "Elena Rybakina",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "7.03",
+   "resolution": "résolu : Elena Rybakina",
+   "cloturee_le": "2026-10-29T10:06"
+  },
+  {
+   "marche": "6361724",
+   "issue": "Oliver Tarvet",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "8.50",
+   "resolution": "résolu : Oliver Tarvet",
+   "cloturee_le": "2026-10-29T14:01"
+  },
+  {
+   "marche": "6344595",
+   "issue": "100 Thieves",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "4.95",
+   "resolution": "résolu : 100 Thieves",
+   "cloturee_le": "2026-10-29T15:15"
+  },
+  {
+   "marche": "6352146",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "7.95",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-29T15:46"
+  },
+  {
+   "marche": "5767714",
+   "issue": "Atlanta Dream",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.32",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-29T19:25"
+  },
+  {
+   "marche": "6288016",
+   "issue": "Atlanta Dream",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "5.26",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-29T19:25"
+  },
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "-31.40",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6345236",
+   "issue": "Alter Ego",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "0.53",
+   "resolution": "résolu : Alter Ego",
+   "cloturee_le": "2026-10-30T05:51"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "4.39",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.77",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.59",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_6_24h_autre v1.0.0": {
+   "operations": 27,
+   "evenements": 25,
+   "gagnantes": 23,
+   "taux_reussite": 0.852,
+   "profit_net": "-98.48",
+   "frais": "2.60",
+   "rendement_sur_mises": -0.0607,
+   "esperance_par_operation": "-3.65",
+   "ic90_rendement_par_euro": [
+    -0.1671,
+    0.1077
+   ],
+   "brier": 0.1231,
+   "log_loss": 0.4027,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

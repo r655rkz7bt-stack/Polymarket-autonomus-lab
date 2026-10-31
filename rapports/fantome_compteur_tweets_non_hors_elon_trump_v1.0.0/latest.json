@@ -1,0 +1,101 @@
+{
+ "genere_le": "2026-10-31T21:30:08+00:00",
+ "capital": {
+  "solde_disponible": "978.6988",
+  "capital_immobilise": "21.7392",
+  "gains_realises_nets": "0.4380",
+  "gains_latents": "-17.7922",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "982.6458",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0347,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6288524",
+   "issue": "No",
+   "parts": "44.39",
+   "cout": "10.65",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.08",
+   "latent": "-7.10",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "groupe": "1263839",
+   "ouverte_le": "2026-10-27T20:03"
+  },
+  {
+   "marche": "6104763",
+   "issue": "No",
+   "parts": "98.96",
+   "cout": "11.09",
+   "prix_moyen": "0.1120",
+   "prix_de_marque": "0.004",
+   "latent": "-10.69",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "groupe": "1244060",
+   "ouverte_le": "2026-10-27T21:42"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "5640220",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "-7.50",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6104744",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "7.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  }
+ ],
+ "performances": {
+  "compteur_tweets_non_hors_elon_trump v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 1,
+   "taux_reussite": 0.5,
+   "profit_net": "0.44",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0151,
+   "esperance_par_operation": "0.22",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.3699
+   ],
+   "brier": 0.348,
+   "log_loss": 0.9417,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

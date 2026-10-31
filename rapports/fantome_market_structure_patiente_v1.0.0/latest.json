@@ -1,0 +1,289 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "661.3954",
+  "capital_immobilise": "149.6693",
+  "gains_realises_nets": "-188.9353",
+  "gains_latents": "-18.2972",
+  "frais_payes": "13.8828",
+  "capital_total_estime": "792.7675",
+  "positions_ouvertes": "9",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2344,
+ "dernier_battement": "2026-10-17T10:48:20+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4641065",
+   "issue": "No",
+   "parts": "175.19",
+   "cout": "40.29",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "4936102",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.00",
+   "prix_moyen": "0.2000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1078055",
+   "ouverte_le": "2026-10-16T23:42"
+  },
+  {
+   "marche": "5611880",
+   "issue": "Yes",
+   "parts": "181.16",
+   "cout": "19.20",
+   "prix_moyen": "0.1060",
+   "prix_de_marque": "0.005",
+   "latent": "-18.30",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T00:12"
+  },
+  {
+   "marche": "1235552",
+   "issue": "Yes",
+   "parts": "42.14",
+   "cout": "8.22",
+   "prix_moyen": "0.1950",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T01:42"
+  },
+  {
+   "marche": "5180413",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "3.66",
+   "prix_moyen": "0.1830",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1114519",
+   "ouverte_le": "2026-10-17T02:27"
+  },
+  {
+   "marche": "5612095",
+   "issue": "No",
+   "parts": "49.58",
+   "cout": "19.73",
+   "prix_moyen": "0.3980",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1177906",
+   "ouverte_le": "2026-10-17T04:17"
+  },
+  {
+   "marche": "5686977",
+   "issue": "No",
+   "parts": "125.56",
+   "cout": "18.83",
+   "prix_moyen": "0.1500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-17T06:37"
+  },
+  {
+   "marche": "5732710",
+   "issue": "No",
+   "parts": "23.80",
+   "cout": "19.71",
+   "prix_moyen": "0.8280",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "1194438",
+   "ouverte_le": "2026-10-17T08:57"
+  },
+  {
+   "marche": "1235549",
+   "issue": "Yes",
+   "parts": "121.16",
+   "cout": "19.02",
+   "prix_moyen": "0.1570",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "market_structure_patiente v1.0.0",
+   "groupe": "179312",
+   "ouverte_le": "2026-10-17T09:17"
+  }
+ ],
+ "operations_cloturees": 45,
+ "dernieres_operations": [
+  {
+   "marche": "682708",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "1.59",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T21:57"
+  },
+  {
+   "marche": "5697539",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-7.45",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T22:42"
+  },
+  {
+   "marche": "4936102",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:17"
+  },
+  {
+   "marche": "4936102",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:22"
+  },
+  {
+   "marche": "4936102",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:27"
+  },
+  {
+   "marche": "4936102",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.68",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-16T23:33"
+  },
+  {
+   "marche": "5766837",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-1.56",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T00:33"
+  },
+  {
+   "marche": "5775016",
+   "issue": "FlyQuest",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-1.33",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T01:27"
+  },
+  {
+   "marche": "4936103",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-9.89",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T01:37"
+  },
+  {
+   "marche": "5506667",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-7.67",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T03:37"
+  },
+  {
+   "marche": "5611007",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-5.82",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T03:47"
+  },
+  {
+   "marche": "5779502",
+   "issue": "Amir Omarkhanov",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-14.36",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T06:18"
+  },
+  {
+   "marche": "5720832",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-1.91",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T06:33"
+  },
+  {
+   "marche": "5686982",
+   "issue": "No",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "-0.59",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T07:37"
+  },
+  {
+   "marche": "5611006",
+   "issue": "Yes",
+   "strategie": "market_structure_patiente v1.0.0",
+   "resultat": "26.82",
+   "resolution": "vendu",
+   "cloturee_le": "2026-10-17T07:53"
+  }
+ ],
+ "performances": {
+  "market_structure_patiente v1.0.0": {
+   "operations": 45,
+   "evenements": 26,
+   "gagnantes": 6,
+   "taux_reussite": 0.133,
+   "profit_net": "-188.94",
+   "frais": "13.88",
+   "rendement_sur_mises": -0.2336,
+   "esperance_par_operation": "-4.20",
+   "ic90_rendement_par_euro": [
+    -0.312,
+    -0.1283
+   ],
+   "brier": null,
+   "log_loss": null,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

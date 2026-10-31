@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-31T21:30:13+00:00",
+ "capital": {
+  "solde_disponible": "670.9797",
+  "capital_immobilise": "139.9998",
+  "gains_realises_nets": "-189.0205",
+  "gains_latents": "-24.1439",
+  "frais_payes": "22.8658",
+  "capital_total_estime": "786.8356",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2739,
+ "dernier_battement": "2026-10-31T21:27:06+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1892491",
+   "issue": "No",
+   "parts": "67.61",
+   "cout": "54.09",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.471",
+   "latent": "-22.24",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "350828",
+   "ouverte_le": "2026-10-22T16:55"
+  },
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "parts": "33.30",
+   "cout": "27.64",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.83",
+   "latent": "0.00",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "1224771",
+   "ouverte_le": "2026-10-27T12:41"
+  },
+  {
+   "marche": "Will Hanwha Life Esports win Worlds 2026?",
+   "issue": "No",
+   "parts": "63.34",
+   "cout": "58.27",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.89",
+   "latent": "-1.90",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T19:41"
+  }
+ ],
+ "operations_cloturees": 148,
+ "dernieres_operations": [
+  {
+   "marche": "6401334",
+   "issue": "Team Yandex",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.90",
+   "resolution": "résolu : Team Yandex",
+   "cloturee_le": "2026-10-31T16:01"
+  },
+  {
+   "marche": "6438046",
+   "issue": "Benjamin Bonzi",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.36",
+   "resolution": "résolu : Benjamin Bonzi",
+   "cloturee_le": "2026-10-31T16:05"
+  },
+  {
+   "marche": "6430628",
+   "issue": "FURIA",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.76",
+   "resolution": "résolu : FURIA",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6426440",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.60",
+   "resolution": "résolu : Carlos Alcaraz",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6397599",
+   "issue": "BARCA",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.45",
+   "resolution": "résolu : BARCA",
+   "cloturee_le": "2026-10-31T16:31"
+  },
+  {
+   "marche": "6438042",
+   "issue": "Sebastian Baez",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.33",
+   "resolution": "résolu : Sebastian Baez",
+   "cloturee_le": "2026-10-31T16:31"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "8.73",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "6439052",
+   "issue": "Nuclear TigeRES",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-20.46",
+   "resolution": "résolu : WRAITH PCIFIC",
+   "cloturee_le": "2026-10-31T17:25"
+  },
+  {
+   "marche": "6438065",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.05",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6433784",
+   "issue": "FOKUS",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.41",
+   "resolution": "résolu : FOKUS",
+   "cloturee_le": "2026-10-31T18:11"
+  },
+  {
+   "marche": "6343697",
+   "issue": "Sri Lanka",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-17.74",
+   "resolution": "résolu : Pakistan",
+   "cloturee_le": "2026-10-31T18:25"
+  },
+  {
+   "marche": "6426442",
+   "issue": "Martin Damm",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.62",
+   "resolution": "résolu : Martin Damm",
+   "cloturee_le": "2026-10-31T18:25"
+  },
+  {
+   "marche": "6438055",
+   "issue": "Nuno Borges",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.51",
+   "resolution": "résolu : Nuno Borges",
+   "cloturee_le": "2026-10-31T18:51"
+  },
+  {
+   "marche": "6438033",
+   "issue": "Jiri Lehecka",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.07",
+   "resolution": "résolu : Jiri Lehecka",
+   "cloturee_le": "2026-10-31T19:16"
+  },
+  {
+   "marche": "6474882",
+   "issue": "Team Spirit",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.78",
+   "resolution": "résolu : Team Spirit",
+   "cloturee_le": "2026-10-31T20:25"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_12_18h v1.0.0": {
+   "operations": 148,
+   "evenements": 136,
+   "gagnantes": 126,
+   "taux_reussite": 0.851,
+   "profit_net": "-189.02",
+   "frais": "22.87",
+   "rendement_sur_mises": -0.0235,
+   "esperance_par_operation": "-1.28",
+   "ic90_rendement_par_euro": [
+    -0.0882,
+    0.0254
+   ],
+   "brier": 0.1253,
+   "log_loss": 0.4589,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

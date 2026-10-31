@@ -1,0 +1,234 @@
+{
+ "genere_le": "2026-10-31T21:30:08+00:00",
+ "capital": {
+  "solde_disponible": "780.2627",
+  "capital_immobilise": "219.7373",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-21.6464",
+  "frais_payes": "2.5227",
+  "capital_total_estime": "978.3536",
+  "positions_ouvertes": "16",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0365,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5611880",
+   "issue": "No",
+   "parts": "58.38",
+   "cout": "51.85",
+   "prix_moyen": "0.8881",
+   "prix_de_marque": "0.986",
+   "latent": "5.72",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-15T15:57"
+  },
+  {
+   "marche": "5611879",
+   "issue": "Yes",
+   "parts": "58.38",
+   "cout": "4.96",
+   "prix_moyen": "0.0850",
+   "prix_de_marque": "0.005",
+   "latent": "-4.67",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-15T15:57"
+  },
+  {
+   "marche": "5611043",
+   "issue": "No",
+   "parts": "50.00",
+   "cout": "47.40",
+   "prix_moyen": "0.9480",
+   "prix_de_marque": "0.989",
+   "latent": "2.05",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1177812",
+   "ouverte_le": "2026-10-16T03:41"
+  },
+  {
+   "marche": "5611042",
+   "issue": "Yes",
+   "parts": "100.00",
+   "cout": "3.95",
+   "prix_moyen": "0.0395",
+   "prix_de_marque": "0.006",
+   "latent": "-3.35",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1177812",
+   "ouverte_le": "2026-10-16T03:41"
+  },
+  {
+   "marche": "5628380",
+   "issue": "No",
+   "parts": "2.62",
+   "cout": "2.56",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.999",
+   "latent": "0.06",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1178893",
+   "ouverte_le": "2026-10-19T05:28"
+  },
+  {
+   "marche": "5628379",
+   "issue": "Yes",
+   "parts": "5.24",
+   "cout": "0.09",
+   "prix_moyen": "0.0166",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1178893",
+   "ouverte_le": "2026-10-19T05:28"
+  },
+  {
+   "marche": "1393325",
+   "issue": "Yes",
+   "parts": "88.60",
+   "cout": "38.27",
+   "prix_moyen": "0.4320",
+   "prix_de_marque": "0.239",
+   "latent": "-17.10",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "1393316",
+   "issue": "No",
+   "parts": "67.25",
+   "cout": "1.44",
+   "prix_moyen": "0.0214",
+   "prix_de_marque": "0.002",
+   "latent": "-1.30",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "6019022",
+   "issue": "Yes",
+   "parts": "13.25",
+   "cout": "1.69",
+   "prix_moyen": "0.1274",
+   "prix_de_marque": "0.07",
+   "latent": "-0.76",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T23:41"
+  },
+  {
+   "marche": "1393317",
+   "issue": "No",
+   "parts": "26.50",
+   "cout": "0.85",
+   "prix_moyen": "0.0320",
+   "prix_de_marque": "0.007",
+   "latent": "-0.66",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T23:41"
+  },
+  {
+   "marche": "1287616",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.78",
+   "prix_moyen": "0.9776",
+   "prix_de_marque": "0.964",
+   "latent": "-0.14",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "192000",
+   "ouverte_le": "2026-10-22T05:56"
+  },
+  {
+   "marche": "5611879",
+   "issue": "No",
+   "parts": "48.75",
+   "cout": "46.65",
+   "prix_moyen": "0.9570",
+   "prix_de_marque": "0.989",
+   "latent": "1.56",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-24T08:56"
+  },
+  {
+   "marche": "5611880",
+   "issue": "Yes",
+   "parts": "97.50",
+   "cout": "3.22",
+   "prix_moyen": "0.0330",
+   "prix_de_marque": "0.005",
+   "latent": "-2.73",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-24T08:56"
+  },
+  {
+   "marche": "1535124",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "0.64",
+   "prix_moyen": "0.0639",
+   "prix_de_marque": "0.04",
+   "latent": "-0.24",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "52130",
+   "ouverte_le": "2026-10-25T07:22"
+  },
+  {
+   "marche": "618454",
+   "issue": "No",
+   "parts": "6.63",
+   "cout": "6.16",
+   "prix_moyen": "0.9289",
+   "prix_de_marque": "0.923",
+   "latent": "-0.04",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "52130",
+   "ouverte_le": "2026-10-25T07:22"
+  },
+  {
+   "marche": "1393321",
+   "issue": "No",
+   "parts": "3.81",
+   "cout": "0.24",
+   "prix_moyen": "0.0629",
+   "prix_de_marque": "0.052",
+   "latent": "-0.04",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-30T00:17"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

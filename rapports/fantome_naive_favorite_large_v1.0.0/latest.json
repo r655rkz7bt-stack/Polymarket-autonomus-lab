@@ -1,0 +1,481 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "0.0366",
+  "capital_immobilise": "1012.0433",
+  "gains_realises_nets": "12.0800",
+  "gains_latents": "29.1870",
+  "frais_payes": "2.7989",
+  "capital_total_estime": "1041.2670",
+  "positions_ouvertes": "25",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0678,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5611880",
+   "issue": "No",
+   "parts": "251.76",
+   "cout": "235.52",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.986",
+   "latent": "12.71",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1177878",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "4640848",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.50",
+   "prix_moyen": "0.9010",
+   "prix_de_marque": "0.981",
+   "latent": "0.40",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1038588",
+   "ouverte_le": "2026-10-17T05:03"
+  },
+  {
+   "marche": "5476380",
+   "issue": "No",
+   "parts": "46.47",
+   "cout": "43.92",
+   "prix_moyen": "0.9452",
+   "prix_de_marque": "0.997",
+   "latent": "2.41",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-17T05:18"
+  },
+  {
+   "marche": "5572739",
+   "issue": "Yes",
+   "parts": "28.77",
+   "cout": "26.78",
+   "prix_moyen": "0.9307",
+   "prix_de_marque": "0.916",
+   "latent": "-0.42",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  },
+  {
+   "marche": "629464",
+   "issue": "Yes",
+   "parts": "102.97",
+   "cout": "96.43",
+   "prix_moyen": "0.9365",
+   "prix_de_marque": "0.936",
+   "latent": "-0.05",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "57176",
+   "ouverte_le": "2026-10-18T02:48"
+  },
+  {
+   "marche": "5074920",
+   "issue": "No",
+   "parts": "11.72",
+   "cout": "10.82",
+   "prix_moyen": "0.9230",
+   "prix_de_marque": "0.986",
+   "latent": "0.74",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-18T02:48"
+  },
+  {
+   "marche": "629183",
+   "issue": "Yes",
+   "parts": "28.36",
+   "cout": "26.45",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.93",
+   "latent": "-0.07",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-18T06:15"
+  },
+  {
+   "marche": "561975",
+   "issue": "No",
+   "parts": "29.43",
+   "cout": "24.25",
+   "prix_moyen": "0.8240",
+   "prix_de_marque": "0.792",
+   "latent": "-0.94",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-10-26T05:32"
+  },
+  {
+   "marche": "561231",
+   "issue": "No",
+   "parts": "147.20",
+   "cout": "128.06",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.872",
+   "latent": "0.29",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "2110579",
+   "issue": "No",
+   "parts": "218.87",
+   "cout": "201.32",
+   "prix_moyen": "0.9198",
+   "prix_de_marque": "0.996",
+   "latent": "16.67",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-26T12:13"
+  },
+  {
+   "marche": "5571194",
+   "issue": "No",
+   "parts": "48.48",
+   "cout": "45.09",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.92",
+   "latent": "-0.48",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-10-26T12:17"
+  },
+  {
+   "marche": "629667",
+   "issue": "Yes",
+   "parts": "10.29",
+   "cout": "9.62",
+   "prix_moyen": "0.9350",
+   "prix_de_marque": "0.932",
+   "latent": "-0.03",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "57210",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "6104809",
+   "issue": "No",
+   "parts": "21.84",
+   "cout": "19.73",
+   "prix_moyen": "0.9034",
+   "prix_de_marque": "0.98",
+   "latent": "1.67",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-27T00:42"
+  },
+  {
+   "marche": "Will Elon Musk post 360-379 tweets from October 27 to November 3, 2026?",
+   "issue": "No",
+   "parts": "14.02",
+   "cout": "13.12",
+   "prix_moyen": "0.9360",
+   "prix_de_marque": "0.961",
+   "latent": "0.35",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-28T20:08"
+  },
+  {
+   "marche": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+   "issue": "No",
+   "parts": "7.68",
+   "cout": "7.22",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.94",
+   "latent": "0.00",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-10-29T06:17"
+  },
+  {
+   "marche": "561234",
+   "issue": "No",
+   "parts": "7.88",
+   "cout": "7.21",
+   "prix_moyen": "0.9150",
+   "prix_de_marque": "0.902",
+   "latent": "-0.10",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-10-29T06:17"
+  },
+  {
+   "marche": "6253456",
+   "issue": "Yes",
+   "parts": "28.55",
+   "cout": "24.98",
+   "prix_moyen": "0.8750",
+   "prix_de_marque": "0.758",
+   "latent": "-3.34",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-30T15:53"
+  },
+  {
+   "marche": "6104813",
+   "issue": "No",
+   "parts": "7.91",
+   "cout": "6.75",
+   "prix_moyen": "0.8529",
+   "prix_de_marque": "0.916",
+   "latent": "0.50",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-30T15:53"
+  },
+  {
+   "marche": "5699281",
+   "issue": "No",
+   "parts": "10.94",
+   "cout": "9.17",
+   "prix_moyen": "0.8380",
+   "prix_de_marque": "0.924",
+   "latent": "0.94",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1189689",
+   "ouverte_le": "2026-10-30T15:57"
+  },
+  {
+   "marche": "6104815",
+   "issue": "No",
+   "parts": "1.96",
+   "cout": "1.71",
+   "prix_moyen": "0.8710",
+   "prix_de_marque": "0.895",
+   "latent": "0.05",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-30T15:57"
+  },
+  {
+   "marche": "Will Vivek Ramaswamy pull the Amy Acton mother ad?",
+   "issue": "Yes",
+   "parts": "5.33",
+   "cout": "3.75",
+   "prix_moyen": "0.7030",
+   "prix_de_marque": "0.785",
+   "latent": "0.44",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1230390",
+   "ouverte_le": "2026-10-30T16:37"
+  },
+  {
+   "marche": "5211626",
+   "issue": "No",
+   "parts": "30.60",
+   "cout": "27.46",
+   "prix_moyen": "0.8975",
+   "prix_de_marque": "0.796",
+   "latent": "-3.11",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1120074",
+   "ouverte_le": "2026-10-30T17:07"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through November 2?",
+   "issue": "Yes",
+   "parts": "31.05",
+   "cout": "27.48",
+   "prix_moyen": "0.8850",
+   "prix_de_marque": "0.921",
+   "latent": "1.12",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-30T17:07"
+  },
+  {
+   "marche": "6104819",
+   "issue": "No",
+   "parts": "5.89",
+   "cout": "5.35",
+   "prix_moyen": "0.9090",
+   "prix_de_marque": "0.835",
+   "latent": "-0.44",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1244069",
+   "ouverte_le": "2026-10-31T18:08"
+  },
+  {
+   "marche": "6288595",
+   "issue": "No",
+   "parts": "5.70",
+   "cout": "5.35",
+   "prix_moyen": "0.9393",
+   "prix_de_marque": "0.918",
+   "latent": "-0.12",
+   "strategie": "naive_favorite_large v1.0.0",
+   "groupe": "1263843",
+   "ouverte_le": "2026-10-31T18:08"
+  }
+ ],
+ "operations_cloturees": 16,
+ "dernieres_operations": [
+  {
+   "marche": "5351896",
+   "issue": "Georgia",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "-26.94",
+   "resolution": "résolu : Auburn",
+   "cloturee_le": "2026-10-17T23:20"
+  },
+  {
+   "marche": "5353969",
+   "issue": "South Florida",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "15.03",
+   "resolution": "résolu : South Florida",
+   "cloturee_le": "2026-10-18T02:46"
+  },
+  {
+   "marche": "5557832",
+   "issue": "Tampa Bay Rays",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "3.68",
+   "resolution": "résolu : Tampa Bay Rays",
+   "cloturee_le": "2026-10-18T06:01"
+  },
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "8.91",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:46"
+  },
+  {
+   "marche": "5697537",
+   "issue": "Yes",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "11.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:46"
+  },
+  {
+   "marche": "5479390",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "-26.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T18:10"
+  },
+  {
+   "marche": "5340069",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "15.77",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T05:31"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "2.59",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T00:40"
+  },
+  {
+   "marche": "5794294",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "11.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T18:07"
+  },
+  {
+   "marche": "2589812",
+   "issue": "Yes",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "1.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T20:06"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "1.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5957234",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "9.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T15:51"
+  },
+  {
+   "marche": "5957239",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "5.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T17:05"
+  },
+  {
+   "marche": "5180417",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "-26.07",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T11:05"
+  },
+  {
+   "marche": "3554657",
+   "issue": "No",
+   "strategie": "naive_favorite_large v1.0.0",
+   "resultat": "0.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  }
+ ],
+ "performances": {
+  "naive_favorite_large v1.0.0": {
+   "operations": 16,
+   "evenements": 15,
+   "gagnantes": 13,
+   "taux_reussite": 0.812,
+   "profit_net": "12.08",
+   "frais": "1.76",
+   "rendement_sur_mises": 0.0112,
+   "esperance_par_operation": "0.75",
+   "ic90_rendement_par_euro": [
+    -0.302,
+    0.0573
+   ],
+   "brier": 0.1587,
+   "log_loss": 0.5239,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,265 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "428.7079",
+  "capital_immobilise": "453.6894",
+  "gains_realises_nets": "-117.6027",
+  "gains_latents": "18.6461",
+  "frais_payes": "25.8080",
+  "capital_total_estime": "901.0433",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2308,
+ "dernier_battement": "2026-10-31T21:27:06+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "64.52",
+   "cout": "58.36",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.76",
+   "latent": "-9.32",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "parts": "58.06",
+   "cout": "51.96",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.999",
+   "latent": "6.04",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1209868",
+   "ouverte_le": "2026-10-30T20:06"
+  },
+  {
+   "marche": "5918690",
+   "issue": "Under",
+   "parts": "54.15",
+   "cout": "47.94",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.95",
+   "latent": "3.50",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1216845",
+   "ouverte_le": "2026-10-31T16:27"
+  },
+  {
+   "marche": "5882360",
+   "issue": "Yes",
+   "parts": "96.45",
+   "cout": "90.01",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.34",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1212015",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5833018",
+   "issue": "No",
+   "parts": "96.45",
+   "cout": "90.01",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.34",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1206699",
+   "ouverte_le": "2026-10-31T17:12"
+  },
+  {
+   "marche": "5843103",
+   "issue": "No",
+   "parts": "96.02",
+   "cout": "89.61",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "6.31",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1208038",
+   "ouverte_le": "2026-10-31T17:41"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-01?",
+   "issue": "Yes",
+   "parts": "31.93",
+   "cout": "25.80",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.79",
+   "latent": "-0.57",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1216157",
+   "ouverte_le": "2026-10-31T21:27"
+  }
+ ],
+ "operations_cloturees": 96,
+ "dernieres_operations": [
+  {
+   "marche": "5719576",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "5.77",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:41"
+  },
+  {
+   "marche": "5746068",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:51"
+  },
+  {
+   "marche": "5746067",
+   "issue": "Yes",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "5.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:51"
+  },
+  {
+   "marche": "5719575",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "-25.77",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "5701249",
+   "issue": "Yes",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "4.75",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "5763515",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "5.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:46"
+  },
+  {
+   "marche": "5758030",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.07",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "5758028",
+   "issue": "Yes",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "5.78",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T22:01"
+  },
+  {
+   "marche": "5794335",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "5828021",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "5828023",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "5.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "5.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "5856647",
+   "issue": "Manchester City FC",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.29",
+   "resolution": "résolu : Manchester City FC",
+   "cloturee_le": "2026-10-31T17:11"
+  },
+  {
+   "marche": "5852481",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "-36.73",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "5852484",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  }
+ ],
+ "performances": {
+  "nf_court_football v1.0.0": {
+   "operations": 96,
+   "evenements": 63,
+   "gagnantes": 85,
+   "taux_reussite": 0.885,
+   "profit_net": "-117.60",
+   "frais": "23.75",
+   "rendement_sur_mises": -0.0233,
+   "esperance_par_operation": "-1.23",
+   "ic90_rendement_par_euro": [
+    -0.078,
+    0.0479
+   ],
+   "brier": 0.1039,
+   "log_loss": 0.3891,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

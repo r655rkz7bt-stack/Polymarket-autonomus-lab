@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:14+00:00",
+ "capital": {
+  "solde_disponible": "833.0981",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-166.9019",
+  "gains_latents": "0.0000",
+  "frais_payes": "7.5692",
+  "capital_total_estime": "833.0981",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2804,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 65,
+ "dernieres_operations": [
+  {
+   "marche": "6078341",
+   "issue": "Aliaksandra Sasnovich",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "4.87",
+   "resolution": "résolu : Aliaksandra Sasnovich",
+   "cloturee_le": "2026-10-24T20:01"
+  },
+  {
+   "marche": "6103102",
+   "issue": "Reese Brantmeier",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "3.15",
+   "resolution": "résolu : Reese Brantmeier",
+   "cloturee_le": "2026-10-24T20:01"
+  },
+  {
+   "marche": "6099840",
+   "issue": "Arthur Fils",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "-31.90",
+   "resolution": "résolu : Jan-Lennard Struff",
+   "cloturee_le": "2026-10-24T20:06"
+  },
+  {
+   "marche": "6102978",
+   "issue": "Jack Anthrop",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "3.19",
+   "resolution": "résolu : Jack Anthrop",
+   "cloturee_le": "2026-10-24T23:21"
+  },
+  {
+   "marche": "6113022",
+   "issue": "Hikaru Sato",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "5.40",
+   "resolution": "résolu : Hikaru Sato",
+   "cloturee_le": "2026-10-25T03:35"
+  },
+  {
+   "marche": "5969237",
+   "issue": "Milwaukee Brewers",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "4.29",
+   "resolution": "résolu : Milwaukee Brewers",
+   "cloturee_le": "2026-10-25T04:05"
+  },
+  {
+   "marche": "6114535",
+   "issue": "Maya Joint",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "4.46",
+   "resolution": "résolu : Maya Joint",
+   "cloturee_le": "2026-10-25T04:11"
+  },
+  {
+   "marche": "6116710",
+   "issue": "Coleman Wong",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "-29.25",
+   "resolution": "résolu : Tristan Schoolkate",
+   "cloturee_le": "2026-10-25T06:01"
+  },
+  {
+   "marche": "6141073",
+   "issue": "Evan Zhu",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "-21.83",
+   "resolution": "résolu : Yeonsu Jeong",
+   "cloturee_le": "2026-10-25T06:04"
+  },
+  {
+   "marche": "6132745",
+   "issue": "Violet Apisah",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "-30.16",
+   "resolution": "résolu : Alexandra Malova",
+   "cloturee_le": "2026-10-25T07:11"
+  },
+  {
+   "marche": "6116722",
+   "issue": "Yusuke Takahashi",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "-11.70",
+   "resolution": "résolu : Christian Langmo",
+   "cloturee_le": "2026-10-25T08:51"
+  },
+  {
+   "marche": "6132226",
+   "issue": "Eric Ahren Moonga",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "9.44",
+   "resolution": "résolu : Eric Ahren Moonga",
+   "cloturee_le": "2026-10-25T09:31"
+  },
+  {
+   "marche": "5863534",
+   "issue": "Melbourne United",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "0.36",
+   "resolution": "résolu : Melbourne United",
+   "cloturee_le": "2026-10-25T09:55"
+  },
+  {
+   "marche": "608545",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "18.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_72_168h_850_875 v1.0.0",
+   "resultat": "4.47",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_72_168h_850_875 v1.0.0": {
+   "operations": 65,
+   "evenements": 65,
+   "gagnantes": 51,
+   "taux_reussite": 0.785,
+   "profit_net": "-166.90",
+   "frais": "7.57",
+   "rendement_sur_mises": -0.0578,
+   "esperance_par_operation": "-2.57",
+   "ic90_rendement_par_euro": [
+    -0.1934,
+    0.0028
+   ],
+   "brier": 0.1872,
+   "log_loss": 0.6092,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:10+00:00",
+ "capital": {
+  "solde_disponible": "962.6767",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-37.3233",
+  "gains_latents": "0.0000",
+  "frais_payes": "1.1329",
+  "capital_total_estime": "962.6767",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0383,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 96,
+ "dernieres_operations": [
+  {
+   "marche": "6107389",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T21:21"
+  },
+  {
+   "marche": "6107393",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.17",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T21:21"
+  },
+  {
+   "marche": "6107097",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:21"
+  },
+  {
+   "marche": "6107236",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:21"
+  },
+  {
+   "marche": "6107225",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:25"
+  },
+  {
+   "marche": "6107229",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:25"
+  },
+  {
+   "marche": "6107152",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T23:40"
+  },
+  {
+   "marche": "6111389",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T00:40"
+  },
+  {
+   "marche": "6107184",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:50"
+  },
+  {
+   "marche": "6107183",
+   "issue": "No",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.28",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T02:50"
+  },
+  {
+   "marche": "6123772",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T03:26"
+  },
+  {
+   "marche": "6111400",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T05:10"
+  },
+  {
+   "marche": "6112495",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T06:11"
+  },
+  {
+   "marche": "6116621",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T08:16"
+  },
+  {
+   "marche": "6116617",
+   "issue": "Yes",
+   "strategie": "loterie_meteo v1.0.0",
+   "resultat": "-0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T08:16"
+  }
+ ],
+ "performances": {
+  "loterie_meteo v1.0.0": {
+   "operations": 96,
+   "evenements": 76,
+   "gagnantes": 1,
+   "taux_reussite": 0.01,
+   "profit_net": "-37.32",
+   "frais": "1.13",
+   "rendement_sur_mises": -0.9034,
+   "esperance_par_operation": "-0.39",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.0168
+   ],
+   "brier": 0.0118,
+   "log_loss": 0.0807,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

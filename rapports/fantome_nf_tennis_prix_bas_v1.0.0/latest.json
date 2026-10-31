@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:17+00:00",
+ "capital": {
+  "solde_disponible": "987.3894",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-12.6106",
+  "gains_latents": "0.0000",
+  "frais_payes": "41.4603",
+  "capital_total_estime": "987.3894",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2491,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 98,
+ "dernieres_operations": [
+  {
+   "marche": "5966837",
+   "issue": "Moyuka Uchijima",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "-120.45",
+   "resolution": "résolu : Mary Stoiana",
+   "cloturee_le": "2026-10-22T06:55"
+  },
+  {
+   "marche": "5966843",
+   "issue": "Katerina Siniakova",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "20.44",
+   "resolution": "résolu : Katerina Siniakova",
+   "cloturee_le": "2026-10-22T08:41"
+  },
+  {
+   "marche": "5977671",
+   "issue": "Belinda Bencic",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "-134.10",
+   "resolution": "résolu : Katarzyna Kawa",
+   "cloturee_le": "2026-10-22T09:05"
+  },
+  {
+   "marche": "6008349",
+   "issue": "Mattia Bellucci",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "-78.51",
+   "resolution": "résolu : Terence Atmane",
+   "cloturee_le": "2026-10-22T10:01"
+  },
+  {
+   "marche": "5978938",
+   "issue": "Oriol Roca Batalla",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "4.43",
+   "resolution": "résolu : Oriol Roca Batalla",
+   "cloturee_le": "2026-10-22T11:11"
+  },
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "9.81",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "5997763",
+   "issue": "Aidan Mayo",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "4.31",
+   "resolution": "résolu : Aidan Mayo",
+   "cloturee_le": "2026-10-22T19:01"
+  },
+  {
+   "marche": "6037983",
+   "issue": "Yuki Naito",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "6.34",
+   "resolution": "résolu : Yuki Naito",
+   "cloturee_le": "2026-10-22T19:55"
+  },
+  {
+   "marche": "5997777",
+   "issue": "Brandon Nakashima",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "4.46",
+   "resolution": "résolu : Brandon Nakashima",
+   "cloturee_le": "2026-10-22T20:55"
+  },
+  {
+   "marche": "6033224",
+   "issue": "Madison Brengle",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "4.01",
+   "resolution": "résolu : Madison Brengle",
+   "cloturee_le": "2026-10-22T23:05"
+  },
+  {
+   "marche": "6003904",
+   "issue": "J.J. Wolf",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "-26.27",
+   "resolution": "résolu : Alexander Maarten Jong",
+   "cloturee_le": "2026-10-23T01:20"
+  },
+  {
+   "marche": "6033226",
+   "issue": "Hanna Chang",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "4.21",
+   "resolution": "résolu : Hanna Chang",
+   "cloturee_le": "2026-10-23T01:46"
+  },
+  {
+   "marche": "6003908",
+   "issue": "Nicolas Mejia",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "-20.10",
+   "resolution": "résolu : Miguel Tobon",
+   "cloturee_le": "2026-10-23T02:11"
+  },
+  {
+   "marche": "6037987",
+   "issue": "I Wen Wan",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "4.72",
+   "resolution": "résolu : I Wen Wan",
+   "cloturee_le": "2026-10-23T03:05"
+  },
+  {
+   "marche": "6005229",
+   "issue": "Enzo Aguiard",
+   "strategie": "nf_tennis_prix_bas v1.0.0",
+   "resultat": "3.96",
+   "resolution": "résolu : Enzo Aguiard",
+   "cloturee_le": "2026-10-23T04:35"
+  }
+ ],
+ "performances": {
+  "nf_tennis_prix_bas v1.0.0": {
+   "operations": 98,
+   "evenements": 96,
+   "gagnantes": 82,
+   "taux_reussite": 0.837,
+   "profit_net": "-12.61",
+   "frais": "41.46",
+   "rendement_sur_mises": -0.0026,
+   "esperance_par_operation": "-0.13",
+   "ic90_rendement_par_euro": [
+    -0.0616,
+    0.0803
+   ],
+   "brier": 0.1382,
+   "log_loss": 0.4518,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

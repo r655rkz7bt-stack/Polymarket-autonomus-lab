@@ -1,0 +1,349 @@
+{
+ "genere_le": "2026-10-31T21:30:12+00:00",
+ "capital": {
+  "solde_disponible": "42.7394",
+  "capital_immobilise": "994.6856",
+  "gains_realises_nets": "37.4250",
+  "gains_latents": "0.3751",
+  "frais_payes": "2.5860",
+  "capital_total_estime": "1037.8001",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0841,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1283080",
+   "issue": "Yes",
+   "parts": "128.81",
+   "cout": "121.37",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.91",
+   "latent": "-4.15",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "191415",
+   "ouverte_le": "2026-10-17T01:03"
+  },
+  {
+   "marche": "5572739",
+   "issue": "Yes",
+   "parts": "242.68",
+   "cout": "225.85",
+   "prix_moyen": "0.9306",
+   "prix_de_marque": "0.916",
+   "latent": "-3.55",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1172100",
+   "ouverte_le": "2026-10-17T06:43"
+  },
+  {
+   "marche": "629464",
+   "issue": "Yes",
+   "parts": "52.94",
+   "cout": "49.78",
+   "prix_moyen": "0.9403",
+   "prix_de_marque": "0.936",
+   "latent": "-0.23",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "57176",
+   "ouverte_le": "2026-10-17T21:54"
+  },
+  {
+   "marche": "629183",
+   "issue": "Yes",
+   "parts": "43.48",
+   "cout": "40.55",
+   "prix_moyen": "0.9326",
+   "prix_de_marque": "0.93",
+   "latent": "-0.11",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "57141",
+   "ouverte_le": "2026-10-18T03:29"
+  },
+  {
+   "marche": "629641",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "9.42",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.934",
+   "latent": "-0.08",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "57208",
+   "ouverte_le": "2026-10-18T03:54"
+  },
+  {
+   "marche": "635016",
+   "issue": "Yes",
+   "parts": "7.10",
+   "cout": "5.79",
+   "prix_moyen": "0.8160",
+   "prix_de_marque": "0.884",
+   "latent": "0.48",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-22T04:57"
+  },
+  {
+   "marche": "629667",
+   "issue": "Yes",
+   "parts": "272.65",
+   "cout": "255.21",
+   "prix_moyen": "0.9360",
+   "prix_de_marque": "0.932",
+   "latent": "-1.10",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "57210",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "5332539",
+   "issue": "Yes",
+   "parts": "27.75",
+   "cout": "25.78",
+   "prix_moyen": "0.9290",
+   "prix_de_marque": "0.983",
+   "latent": "1.50",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1138216",
+   "ouverte_le": "2026-10-27T22:03"
+  },
+  {
+   "marche": "US x Iran ceasefire continues through November 2?",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "11.79",
+   "prix_moyen": "0.9430",
+   "prix_de_marque": "0.921",
+   "latent": "-0.28",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-29T19:42"
+  },
+  {
+   "marche": "4641065",
+   "issue": "Yes",
+   "parts": "142.48",
+   "cout": "130.08",
+   "prix_moyen": "0.9130",
+   "prix_de_marque": "0.986",
+   "latent": "10.40",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1038648",
+   "ouverte_le": "2026-10-29T20:47"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 3?",
+   "issue": "Yes",
+   "parts": "43.23",
+   "cout": "38.99",
+   "prix_moyen": "0.9020",
+   "prix_de_marque": "0.957",
+   "latent": "2.38",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-30T10:32"
+  },
+  {
+   "marche": "6253456",
+   "issue": "Yes",
+   "parts": "52.14",
+   "cout": "45.67",
+   "prix_moyen": "0.8760",
+   "prix_de_marque": "0.758",
+   "latent": "-6.15",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-30T15:17"
+  },
+  {
+   "marche": "6367376",
+   "issue": "Yes",
+   "parts": "24.43",
+   "cout": "22.92",
+   "prix_moyen": "0.9380",
+   "prix_de_marque": "0.975",
+   "latent": "0.90",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-30T15:33"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 2?",
+   "issue": "Yes",
+   "parts": "12.25",
+   "cout": "11.47",
+   "prix_moyen": "0.9364",
+   "prix_de_marque": "0.967",
+   "latent": "0.37",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-30T15:38"
+  }
+ ],
+ "operations_cloturees": 16,
+ "dernieres_operations": [
+  {
+   "marche": "5697537",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.59",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:42"
+  },
+  {
+   "marche": "5715908",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "16.24",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T22:42"
+  },
+  {
+   "marche": "4936103",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "4.49",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T10:57"
+  },
+  {
+   "marche": "5653786",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "6.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T16:25"
+  },
+  {
+   "marche": "5951651",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.31",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-22T00:05"
+  },
+  {
+   "marche": "5167158",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "-7.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T00:46"
+  },
+  {
+   "marche": "5686979",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "2.41",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T02:46"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T00:40"
+  },
+  {
+   "marche": "2589812",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "10.20",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T20:06"
+  },
+  {
+   "marche": "1235568",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "5.84",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "6044826",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "1.79",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "5180413",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "-14.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "5180417",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.45",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T11:05"
+  },
+  {
+   "marche": "3554659",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "1.74",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "3554475",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "1.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T18:55"
+  }
+ ],
+ "performances": {
+  "nf_oui v1.0.0": {
+   "operations": 16,
+   "evenements": 14,
+   "gagnantes": 14,
+   "taux_reussite": 0.875,
+   "profit_net": "37.42",
+   "frais": "1.39",
+   "rendement_sur_mises": 0.044,
+   "esperance_par_operation": "2.34",
+   "ic90_rendement_par_euro": [
+    -0.1982,
+    0.0775
+   ],
+   "brier": 0.1133,
+   "log_loss": 0.3933,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

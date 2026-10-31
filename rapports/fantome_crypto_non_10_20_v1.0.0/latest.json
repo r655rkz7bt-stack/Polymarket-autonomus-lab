@@ -1,0 +1,457 @@
+{
+ "genere_le": "2026-10-31T21:30:08+00:00",
+ "capital": {
+  "solde_disponible": "805.4169",
+  "capital_immobilise": "171.2254",
+  "gains_realises_nets": "-23.3577",
+  "gains_latents": "91.0180",
+  "frais_payes": "24.8297",
+  "capital_total_estime": "1067.6603",
+  "positions_ouvertes": "23",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2403,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6205303",
+   "issue": "No",
+   "parts": "47.32",
+   "cout": "9.01",
+   "prix_moyen": "0.1903",
+   "prix_de_marque": "0.045",
+   "latent": "-6.88",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-27T09:32"
+  },
+  {
+   "marche": "6255210",
+   "issue": "No",
+   "parts": "36.44",
+   "cout": "6.15",
+   "prix_moyen": "0.1687",
+   "prix_de_marque": "0.19",
+   "latent": "0.78",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-27T20:12"
+  },
+  {
+   "marche": "6205325",
+   "issue": "No",
+   "parts": "46.01",
+   "cout": "8.76",
+   "prix_moyen": "0.1903",
+   "prix_de_marque": "0.723",
+   "latent": "24.51",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-27T23:37"
+  },
+  {
+   "marche": "6139608",
+   "issue": "No",
+   "parts": "35.25",
+   "cout": "6.71",
+   "prix_moyen": "0.1903",
+   "prix_de_marque": "0.998",
+   "latent": "28.47",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-28T08:42"
+  },
+  {
+   "marche": "5407574",
+   "issue": "No",
+   "parts": "40.21",
+   "cout": "8.49",
+   "prix_moyen": "0.2112",
+   "prix_de_marque": "0.995",
+   "latent": "31.52",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-28T15:53"
+  },
+  {
+   "marche": "6255270",
+   "issue": "No",
+   "parts": "46.06",
+   "cout": "5.87",
+   "prix_moyen": "0.1274",
+   "prix_de_marque": "0.6",
+   "latent": "21.77",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-28T23:03"
+  },
+  {
+   "marche": "6301341",
+   "issue": "No",
+   "parts": "42.89",
+   "cout": "8.16",
+   "prix_moyen": "0.1903",
+   "prix_de_marque": "0.55",
+   "latent": "15.43",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-28T23:07"
+  },
+  {
+   "marche": "6255267",
+   "issue": "No",
+   "parts": "58.20",
+   "cout": "6.19",
+   "prix_moyen": "0.1063",
+   "prix_de_marque": "0.173",
+   "latent": "3.88",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T03:12"
+  },
+  {
+   "marche": "6301274",
+   "issue": "No",
+   "parts": "54.88",
+   "cout": "6.41",
+   "prix_moyen": "0.1169",
+   "prix_de_marque": "0.26",
+   "latent": "7.86",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-29T14:52"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $76,000 on November 1?",
+   "issue": "No",
+   "parts": "4.30",
+   "cout": "0.48",
+   "prix_moyen": "0.1116",
+   "prix_de_marque": "0.04",
+   "latent": "-0.31",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T21:22"
+  },
+  {
+   "marche": "6346612",
+   "issue": "No",
+   "parts": "2.13",
+   "cout": "0.26",
+   "prix_moyen": "0.1200",
+   "prix_de_marque": "0.126",
+   "latent": "0.01",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T21:57"
+  },
+  {
+   "marche": "6301335",
+   "issue": "No",
+   "parts": "54.78",
+   "cout": "7.79",
+   "prix_moyen": "0.1421",
+   "prix_de_marque": "0.091",
+   "latent": "-2.80",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T22:47"
+  },
+  {
+   "marche": "6301268",
+   "issue": "No",
+   "parts": "6.25",
+   "cout": "0.97",
+   "prix_moyen": "0.1560",
+   "prix_de_marque": "0.067",
+   "latent": "-0.56",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-29T23:22"
+  },
+  {
+   "marche": "6301262",
+   "issue": "No",
+   "parts": "11.00",
+   "cout": "1.40",
+   "prix_moyen": "0.1274",
+   "prix_de_marque": "0.015",
+   "latent": "-1.24",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T00:37"
+  },
+  {
+   "marche": "6346611",
+   "issue": "No",
+   "parts": "77.20",
+   "cout": "11.60",
+   "prix_moyen": "0.1502",
+   "prix_de_marque": "0.05",
+   "latent": "-7.74",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T01:12"
+  },
+  {
+   "marche": "6255261",
+   "issue": "No",
+   "parts": "87.51",
+   "cout": "8.84",
+   "prix_moyen": "0.1010",
+   "prix_de_marque": "0.005",
+   "latent": "-8.40",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T01:37"
+  },
+  {
+   "marche": "Will Bitcoin dip to $76,000 October 26-November 1?",
+   "issue": "No",
+   "parts": "56.83",
+   "cout": "8.74",
+   "prix_moyen": "0.1538",
+   "prix_de_marque": "0.763",
+   "latent": "34.62",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T02:07"
+  },
+  {
+   "marche": "6205321",
+   "issue": "No",
+   "parts": "112.48",
+   "cout": "11.96",
+   "prix_moyen": "0.1063",
+   "prix_de_marque": "0.005",
+   "latent": "-11.39",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T02:42"
+  },
+  {
+   "marche": "6205300",
+   "issue": "No",
+   "parts": "78.83",
+   "cout": "11.53",
+   "prix_moyen": "0.1463",
+   "prix_de_marque": "0.004",
+   "latent": "-11.22",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T02:47"
+  },
+  {
+   "marche": "6255204",
+   "issue": "No",
+   "parts": "61.18",
+   "cout": "11.90",
+   "prix_moyen": "0.1945",
+   "prix_de_marque": "0.026",
+   "latent": "-10.31",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T02:53"
+  },
+  {
+   "marche": "6255264",
+   "issue": "No",
+   "parts": "57.50",
+   "cout": "9.44",
+   "prix_moyen": "0.1643",
+   "prix_de_marque": "0.033",
+   "latent": "-7.55",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-30T02:57"
+  },
+  {
+   "marche": "6346559",
+   "issue": "No",
+   "parts": "83.31",
+   "cout": "9.82",
+   "prix_moyen": "0.1179",
+   "prix_de_marque": "0.041",
+   "latent": "-6.41",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T03:12"
+  },
+  {
+   "marche": "6346564",
+   "issue": "No",
+   "parts": "65.46",
+   "cout": "10.75",
+   "prix_moyen": "0.1642",
+   "prix_de_marque": "0.118",
+   "latent": "-3.02",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-30T11:28"
+  }
+ ],
+ "operations_cloturees": 38,
+ "dernieres_operations": [
+  {
+   "marche": "6084517",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-11.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084492",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-4.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084543",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "4.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084524",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-10.14",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "5786295",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-8.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:31"
+  },
+  {
+   "marche": "5786297",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-6.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T17:57"
+  },
+  {
+   "marche": "6137715",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-7.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137717",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "27.77",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137710",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-11.47",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137713",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-4.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6137758",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "46.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6137761",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "28.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6137755",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-12.67",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6137752",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-15.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6137762",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-4.09",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:21"
+  }
+ ],
+ "performances": {
+  "crypto_non_10_20 v1.0.0": {
+   "operations": 38,
+   "evenements": 21,
+   "gagnantes": 8,
+   "taux_reussite": 0.211,
+   "profit_net": "-23.36",
+   "frais": "15.17",
+   "rendement_sur_mises": -0.0871,
+   "esperance_par_operation": "-0.61",
+   "ic90_rendement_par_euro": [
+    -0.463,
+    1.0219
+   ],
+   "brier": 0.1623,
+   "log_loss": 0.5022,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

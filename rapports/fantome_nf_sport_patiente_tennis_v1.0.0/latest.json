@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:15+00:00",
+ "capital": {
+  "solde_disponible": "773.3135",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-226.6865",
+  "gains_latents": "0.0000",
+  "frais_payes": "28.2514",
+  "capital_total_estime": "773.3135",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4631,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 166,
+ "dernieres_operations": [
+  {
+   "marche": "6028860",
+   "issue": "Jenson Brooksby",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "4.83",
+   "resolution": "résolu : Jenson Brooksby",
+   "cloturee_le": "2026-10-23T23:45"
+  },
+  {
+   "marche": "6094808",
+   "issue": "Connie Ma",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.36",
+   "resolution": "résolu : Connie Ma",
+   "cloturee_le": "2026-10-24T01:41"
+  },
+  {
+   "marche": "6082329",
+   "issue": "Blake Ellis",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.77",
+   "resolution": "résolu : Blake Ellis",
+   "cloturee_le": "2026-10-24T02:31"
+  },
+  {
+   "marche": "6076717",
+   "issue": "I Wen Wan",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "4.01",
+   "resolution": "résolu : I Wen Wan",
+   "cloturee_le": "2026-10-24T02:31"
+  },
+  {
+   "marche": "6076718",
+   "issue": "Hikaru Sato",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.38",
+   "resolution": "résolu : Hikaru Sato",
+   "cloturee_le": "2026-10-24T02:50"
+  },
+  {
+   "marche": "6082331",
+   "issue": "Matthew Dellavedova",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "-38.83",
+   "resolution": "résolu : Stefan Vujic",
+   "cloturee_le": "2026-10-24T03:25"
+  },
+  {
+   "marche": "6078343",
+   "issue": "Kamilla Rakhimova",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.18",
+   "resolution": "résolu : Kamilla Rakhimova",
+   "cloturee_le": "2026-10-24T03:40"
+  },
+  {
+   "marche": "6078339",
+   "issue": "Ena Shibahara",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "-26.38",
+   "resolution": "résolu : Alycia Parks",
+   "cloturee_le": "2026-10-24T06:25"
+  },
+  {
+   "marche": "6078337",
+   "issue": "Liudmila Samsonova",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "-23.42",
+   "resolution": "résolu : Heather Watson",
+   "cloturee_le": "2026-10-24T07:01"
+  },
+  {
+   "marche": "6082332",
+   "issue": "Casey Hoole",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "-24.24",
+   "resolution": "résolu : Isaac Becroft",
+   "cloturee_le": "2026-10-24T07:20"
+  },
+  {
+   "marche": "6084825",
+   "issue": "Elena Pridankina",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.93",
+   "resolution": "résolu : Elena Pridankina",
+   "cloturee_le": "2026-10-24T07:31"
+  },
+  {
+   "marche": "6078349",
+   "issue": "Mai Hontama",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.73",
+   "resolution": "résolu : Mai Hontama",
+   "cloturee_le": "2026-10-24T07:50"
+  },
+  {
+   "marche": "6078335",
+   "issue": "Daria Kasatkina",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "3.55",
+   "resolution": "résolu : Daria Kasatkina",
+   "cloturee_le": "2026-10-24T11:01"
+  },
+  {
+   "marche": "6039160",
+   "issue": "Oriol Roca Batalla",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "4.03",
+   "resolution": "résolu : Oriol Roca Batalla",
+   "cloturee_le": "2026-10-24T11:05"
+  },
+  {
+   "marche": "6078341",
+   "issue": "Aliaksandra Sasnovich",
+   "strategie": "nf_sport_patiente_tennis v1.0.0",
+   "resultat": "8.23",
+   "resolution": "résolu : Aliaksandra Sasnovich",
+   "cloturee_le": "2026-10-24T20:01"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_tennis v1.0.0": {
+   "operations": 166,
+   "evenements": 166,
+   "gagnantes": 142,
+   "taux_reussite": 0.855,
+   "profit_net": "-226.69",
+   "frais": "28.25",
+   "rendement_sur_mises": -0.0213,
+   "esperance_par_operation": "-1.37",
+   "ic90_rendement_par_euro": [
+    -0.071,
+    0.0319
+   ],
+   "brier": 0.1237,
+   "log_loss": 0.4191,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

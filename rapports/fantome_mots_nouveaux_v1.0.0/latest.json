@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "996.0030",
+  "capital_immobilise": "6.9266",
+  "gains_realises_nets": "2.9296",
+  "gains_latents": "1.4088",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1004.3384",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0585,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Trump say \"Tax\" 32+ times during his Midterm Rally in Iowa?",
+   "issue": "No",
+   "parts": "11.74",
+   "cout": "6.93",
+   "prix_moyen": "0.5900",
+   "prix_de_marque": "0.71",
+   "latent": "1.41",
+   "strategie": "mots_nouveaux v1.0.0",
+   "groupe": "1289331",
+   "ouverte_le": "2026-10-31T18:37"
+  }
+ ],
+ "operations_cloturees": 54,
+ "dernieres_operations": [
+  {
+   "marche": "5713537",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "4.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T21:46"
+  },
+  {
+   "marche": "5713539",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T22:35"
+  },
+  {
+   "marche": "6253955",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-1.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T22:41"
+  },
+  {
+   "marche": "6253954",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-2.93",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T22:55"
+  },
+  {
+   "marche": "6253956",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-1.48",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:01"
+  },
+  {
+   "marche": "6253951",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-3.52",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:16"
+  },
+  {
+   "marche": "5713532",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "5.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:35"
+  },
+  {
+   "marche": "6253961",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "3.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:41"
+  },
+  {
+   "marche": "6253960",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "3.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T23:41"
+  },
+  {
+   "marche": "6299854",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-4.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T02:11"
+  },
+  {
+   "marche": "6299846",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T03:06"
+  },
+  {
+   "marche": "6326803",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:21"
+  },
+  {
+   "marche": "6366910",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-4.94",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T02:16"
+  },
+  {
+   "marche": "6366909",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-2.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T03:07"
+  },
+  {
+   "marche": "6366907",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  }
+ ],
+ "performances": {
+  "mots_nouveaux v1.0.0": {
+   "operations": 54,
+   "evenements": 18,
+   "gagnantes": 25,
+   "taux_reussite": 0.463,
+   "profit_net": "2.93",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0107,
+   "esperance_par_operation": "0.05",
+   "ic90_rendement_par_euro": [
+    -0.3009,
+    0.3189
+   ],
+   "brier": 0.2,
+   "log_loss": 0.589,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

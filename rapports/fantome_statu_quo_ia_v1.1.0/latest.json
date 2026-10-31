@@ -1,0 +1,102 @@
+{
+ "genere_le": "2026-10-31T21:30:19+00:00",
+ "capital": {
+  "solde_disponible": "885.7380",
+  "capital_immobilise": "114.2620",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-48.0551",
+  "frais_payes": "0.1379",
+  "capital_total_estime": "951.9449",
+  "positions_ouvertes": "5",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0631,
+ "dernier_battement": "2026-10-31T21:06:56+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5167028",
+   "issue": "Yes",
+   "parts": "50.90",
+   "cout": "46.45",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.007",
+   "latent": "-46.09",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1111225",
+   "ouverte_le": "2026-10-27T19:42"
+  },
+  {
+   "marche": "6279693",
+   "issue": "Yes",
+   "parts": "4.75",
+   "cout": "3.32",
+   "prix_moyen": "0.7000",
+   "prix_de_marque": "0.006",
+   "latent": "-3.30",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1262359",
+   "ouverte_le": "2026-10-28T00:03"
+  },
+  {
+   "marche": "6279754",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "8.00",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.941",
+   "latent": "1.41",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1262359",
+   "ouverte_le": "2026-10-28T17:24"
+  },
+  {
+   "marche": "4664662",
+   "issue": "Yes",
+   "parts": "18.43",
+   "cout": "13.27",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.68",
+   "latent": "-0.74",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1040632",
+   "ouverte_le": "2026-10-28T17:49"
+  },
+  {
+   "marche": "5167059",
+   "issue": "Yes",
+   "parts": "46.83",
+   "cout": "43.22",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.937",
+   "latent": "0.66",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1111225",
+   "ouverte_le": "2026-10-30T00:32"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

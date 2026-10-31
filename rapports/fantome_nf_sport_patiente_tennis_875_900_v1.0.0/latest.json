@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:15+00:00",
+ "capital": {
+  "solde_disponible": "739.1787",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-260.8213",
+  "gains_latents": "0.0000",
+  "frais_payes": "20.3181",
+  "capital_total_estime": "739.1787",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3294,
+ "dernier_battement": "2026-10-31T15:47:20+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 212,
+ "dernieres_operations": [
+  {
+   "marche": "6331275",
+   "issue": "Tamara Zidansek",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "-85.90",
+   "resolution": "résolu : Alicia Herrero Linana",
+   "cloturee_le": "2026-10-30T05:16"
+  },
+  {
+   "marche": "6383564",
+   "issue": "Terence Atmane",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "8.57",
+   "resolution": "résolu : Terence Atmane",
+   "cloturee_le": "2026-10-30T07:46"
+  },
+  {
+   "marche": "6347272",
+   "issue": "Harriet Dart",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "0.78",
+   "resolution": "résolu : Harriet Dart",
+   "cloturee_le": "2026-10-30T08:06"
+  },
+  {
+   "marche": "6387340",
+   "issue": "Digvijay Pratap Singh",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.77",
+   "resolution": "résolu : Digvijay Pratap Singh",
+   "cloturee_le": "2026-10-30T09:51"
+  },
+  {
+   "marche": "6347274",
+   "issue": "Diana Shnaider",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.72",
+   "resolution": "résolu : Diana Shnaider",
+   "cloturee_le": "2026-10-30T11:35"
+  },
+  {
+   "marche": "6392948",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.22",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-30T14:52"
+  },
+  {
+   "marche": "6390152",
+   "issue": "Lilli Tagger",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.23",
+   "resolution": "résolu : Lilli Tagger",
+   "cloturee_le": "2026-10-30T15:31"
+  },
+  {
+   "marche": "6399769",
+   "issue": "Fiona Crawley",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.57",
+   "resolution": "résolu : Fiona Crawley",
+   "cloturee_le": "2026-10-30T15:41"
+  },
+  {
+   "marche": "6402964",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.45",
+   "resolution": "résolu : Carlos Alcaraz",
+   "cloturee_le": "2026-10-30T17:01"
+  },
+  {
+   "marche": "6398377",
+   "issue": "Dmitry Popko",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "-54.73",
+   "resolution": "résolu : James MacKinlay",
+   "cloturee_le": "2026-10-30T17:57"
+  },
+  {
+   "marche": "6402184",
+   "issue": "Elizara Yaneva",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "-22.33",
+   "resolution": "résolu : Elsa Jacquemot",
+   "cloturee_le": "2026-10-30T18:21"
+  },
+  {
+   "marche": "6405492",
+   "issue": "Tyler Zink",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "3.49",
+   "resolution": "résolu : Tyler Zink",
+   "cloturee_le": "2026-10-30T19:05"
+  },
+  {
+   "marche": "6402182",
+   "issue": "Julia Riera",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.18",
+   "resolution": "résolu : Julia Riera",
+   "cloturee_le": "2026-10-30T19:10"
+  },
+  {
+   "marche": "6402192",
+   "issue": "Nadia Podoroska",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "-34.60",
+   "resolution": "résolu : Carole Monnet",
+   "cloturee_le": "2026-10-31T01:01"
+  },
+  {
+   "marche": "6405499",
+   "issue": "Philip Sekulic",
+   "strategie": "nf_sport_patiente_tennis_875_900 v1.0.0",
+   "resultat": "4.83",
+   "resolution": "résolu : Philip Sekulic",
+   "cloturee_le": "2026-10-31T04:31"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_tennis_875_900 v1.0.0": {
+   "operations": 212,
+   "evenements": 211,
+   "gagnantes": 183,
+   "taux_reussite": 0.863,
+   "profit_net": "-260.82",
+   "frais": "20.32",
+   "rendement_sur_mises": -0.0285,
+   "esperance_par_operation": "-1.23",
+   "ic90_rendement_par_euro": [
+    -0.0728,
+    0.0147
+   ],
+   "brier": 0.1211,
+   "log_loss": 0.4361,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

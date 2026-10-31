@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-10-31T21:30:07+00:00",
+ "capital": {
+  "solde_disponible": "473.1324",
+  "capital_immobilise": "139.1351",
+  "gains_realises_nets": "-387.7326",
+  "gains_latents": "0.0000",
+  "frais_payes": "23.3354",
+  "capital_total_estime": "612.2674",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3957,
+ "dernier_battement": "2026-10-20T15:50:40+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5792257",
+   "issue": "Under",
+   "parts": "55.26",
+   "cout": "34.02",
+   "prix_moyen": "0.6156",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1170777",
+   "ouverte_le": "2026-10-18T01:53"
+  },
+  {
+   "marche": "5410011",
+   "issue": "Under",
+   "parts": "17.68",
+   "cout": "10.12",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1149450",
+   "ouverte_le": "2026-10-18T23:54"
+  },
+  {
+   "marche": "5409680",
+   "issue": "No",
+   "parts": "18.88",
+   "cout": "11.55",
+   "prix_moyen": "0.6120",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1149399",
+   "ouverte_le": "2026-10-19T03:38"
+  },
+  {
+   "marche": "4882628",
+   "issue": "Blue Jackets",
+   "parts": "18.18",
+   "cout": "10.95",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1069612",
+   "ouverte_le": "2026-10-19T23:48"
+  },
+  {
+   "marche": "5676046",
+   "issue": "Under",
+   "parts": "17.57",
+   "cout": "10.13",
+   "prix_moyen": "0.5767",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1185700",
+   "ouverte_le": "2026-10-19T23:48"
+  },
+  {
+   "marche": "4882663",
+   "issue": "Oilers",
+   "parts": "17.55",
+   "cout": "10.04",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1069619",
+   "ouverte_le": "2026-10-20T03:23"
+  },
+  {
+   "marche": "4882633",
+   "issue": "Capitals",
+   "parts": "17.77",
+   "cout": "10.88",
+   "prix_moyen": "0.6120",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1069613",
+   "ouverte_le": "2026-10-20T04:09"
+  },
+  {
+   "marche": "5409532",
+   "issue": "Yes",
+   "parts": "17.29",
+   "cout": "10.24",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1149383",
+   "ouverte_le": "2026-10-20T04:23"
+  },
+  {
+   "marche": "5716444",
+   "issue": "Nets",
+   "parts": "16.82",
+   "cout": "9.63",
+   "prix_moyen": "0.5723",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1191464",
+   "ouverte_le": "2026-10-20T09:43"
+  },
+  {
+   "marche": "5716447",
+   "issue": "Nets",
+   "parts": "17.76",
+   "cout": "11.03",
+   "prix_moyen": "0.6212",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1191464",
+   "ouverte_le": "2026-10-20T11:27"
+  },
+  {
+   "marche": "5723141",
+   "issue": "Warriors",
+   "parts": "17.52",
+   "cout": "10.55",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration v2.0.0",
+   "groupe": "1192657",
+   "ouverte_le": "2026-10-20T11:27"
+  }
+ ],
+ "operations_cloturees": 46,
+ "dernieres_operations": [
+  {
+   "marche": "5308198",
+   "issue": "Yes",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-33.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-18T21:09"
+  },
+  {
+   "marche": "5837625",
+   "issue": "FURIA",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-29.77",
+   "resolution": "résolu : BetBoom Team",
+   "cloturee_le": "2026-10-18T22:09"
+  },
+  {
+   "marche": "5672898",
+   "issue": "No",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-74.49",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-18T23:13"
+  },
+  {
+   "marche": "4329890",
+   "issue": "Rams",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-89.35",
+   "resolution": "résolu : Cardinals",
+   "cloturee_le": "2026-10-18T23:21"
+  },
+  {
+   "marche": "5129897",
+   "issue": "Chiefs",
+   "strategie": "calibration v2.0.0",
+   "resultat": "17.74",
+   "resolution": "résolu : Chiefs",
+   "cloturee_le": "2026-10-18T23:46"
+  },
+  {
+   "marche": "5792256",
+   "issue": "Cleveland Guardians",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-34.99",
+   "resolution": "résolu : Tampa Bay Rays",
+   "cloturee_le": "2026-10-19T00:25"
+  },
+  {
+   "marche": "5850538",
+   "issue": "GenOne",
+   "strategie": "calibration v2.0.0",
+   "resultat": "1.89",
+   "resolution": "résolu : GenOne",
+   "cloturee_le": "2026-10-19T15:59"
+  },
+  {
+   "marche": "5611334",
+   "issue": "Liquid",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-11.23",
+   "resolution": "résolu : fnatic",
+   "cloturee_le": "2026-10-19T17:11"
+  },
+  {
+   "marche": "5611345",
+   "issue": "PARIVISION",
+   "strategie": "calibration v2.0.0",
+   "resultat": "7.31",
+   "resolution": "résolu : PARIVISION",
+   "cloturee_le": "2026-10-19T19:23"
+  },
+  {
+   "marche": "5850547",
+   "issue": "Phantom",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-11.76",
+   "resolution": "résolu : Brute",
+   "cloturee_le": "2026-10-19T20:01"
+  },
+  {
+   "marche": "4841694",
+   "issue": "Maple Leafs",
+   "strategie": "calibration v2.0.0",
+   "resultat": "7.51",
+   "resolution": "résolu : Maple Leafs",
+   "cloturee_le": "2026-10-20T02:35"
+  },
+  {
+   "marche": "5481970",
+   "issue": "Golden State Valkyries",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-10.30",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-20T03:01"
+  },
+  {
+   "marche": "5130620",
+   "issue": "Over",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-24.14",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-20T03:46"
+  },
+  {
+   "marche": "5930965",
+   "issue": "Alliance",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-11.50",
+   "resolution": "résolu : PRIVATE",
+   "cloturee_le": "2026-10-20T11:33"
+  },
+  {
+   "marche": "5939747",
+   "issue": "Liquid",
+   "strategie": "calibration v2.0.0",
+   "resultat": "-10.96",
+   "resolution": "résolu : magic",
+   "cloturee_le": "2026-10-20T14:11"
+  }
+ ],
+ "performances": {
+  "calibration v2.0.0": {
+   "operations": 46,
+   "evenements": 39,
+   "gagnantes": 22,
+   "taux_reussite": 0.478,
+   "profit_net": "-387.73",
+   "frais": "20.52",
+   "rendement_sur_mises": -0.2645,
+   "esperance_par_operation": "-8.43",
+   "ic90_rendement_par_euro": [
+    -0.4208,
+    0.0268
+   ],
+   "brier": 0.3067,
+   "log_loss": 0.8431,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

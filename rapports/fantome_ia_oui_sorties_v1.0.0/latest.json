@@ -1,0 +1,413 @@
+{
+ "genere_le": "2026-10-31T21:30:09+00:00",
+ "capital": {
+  "solde_disponible": "572.5987",
+  "capital_immobilise": "339.9727",
+  "gains_realises_nets": "-87.4286",
+  "gains_latents": "-59.0310",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "853.5404",
+  "positions_ouvertes": "26",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1594,
+ "dernier_battement": "2026-10-31T21:22:14+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6282800",
+   "issue": "Yes",
+   "parts": "75.00",
+   "cout": "26.25",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "0.65",
+   "latent": "22.50",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-27T17:37"
+  },
+  {
+   "marche": "6268103",
+   "issue": "Yes",
+   "parts": "90.79",
+   "cout": "22.50",
+   "prix_moyen": "0.2478",
+   "prix_de_marque": "0.23",
+   "latent": "-1.62",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1262075",
+   "ouverte_le": "2026-10-27T17:43"
+  },
+  {
+   "marche": "6279754",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "6.30",
+   "prix_moyen": "0.2520",
+   "prix_de_marque": "0.941",
+   "latent": "17.22",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1262359",
+   "ouverte_le": "2026-10-27T18:09"
+  },
+  {
+   "marche": "6268102",
+   "issue": "Yes",
+   "parts": "79.89",
+   "cout": "23.97",
+   "prix_moyen": "0.3000",
+   "prix_de_marque": "0.2",
+   "latent": "-7.99",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1262075",
+   "ouverte_le": "2026-10-27T18:33"
+  },
+  {
+   "marche": "6268048",
+   "issue": "Yes",
+   "parts": "42.50",
+   "cout": "8.08",
+   "prix_moyen": "0.1900",
+   "prix_de_marque": "0.08",
+   "latent": "-4.68",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-27T19:12"
+  },
+  {
+   "marche": "6282799",
+   "issue": "Yes",
+   "parts": "37.50",
+   "cout": "5.16",
+   "prix_moyen": "0.1377",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-27T21:42"
+  },
+  {
+   "marche": "6017460",
+   "issue": "Yes",
+   "parts": "41.00",
+   "cout": "6.85",
+   "prix_moyen": "0.1670",
+   "prix_de_marque": "0.14",
+   "latent": "-1.11",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-27T21:57"
+  },
+  {
+   "marche": "6268050",
+   "issue": "Yes",
+   "parts": "82.88",
+   "cout": "22.53",
+   "prix_moyen": "0.2718",
+   "prix_de_marque": "0.22",
+   "latent": "-4.29",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-28T01:08"
+  },
+  {
+   "marche": "6017456",
+   "issue": "Yes",
+   "parts": "125.34",
+   "cout": "18.48",
+   "prix_moyen": "0.1475",
+   "prix_de_marque": "0.14",
+   "latent": "-0.94",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-28T02:12"
+  },
+  {
+   "marche": "6017447",
+   "issue": "Yes",
+   "parts": "106.58",
+   "cout": "15.68",
+   "prix_moyen": "0.1471",
+   "prix_de_marque": "0.001",
+   "latent": "-15.57",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-28T02:37"
+  },
+  {
+   "marche": "6268101",
+   "issue": "Yes",
+   "parts": "122.92",
+   "cout": "18.80",
+   "prix_moyen": "0.1530",
+   "prix_de_marque": "0.16",
+   "latent": "0.87",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1262075",
+   "ouverte_le": "2026-10-28T15:15"
+  },
+  {
+   "marche": "6328806",
+   "issue": "Yes",
+   "parts": "20.00",
+   "cout": "6.30",
+   "prix_moyen": "0.3150",
+   "prix_de_marque": "0.03",
+   "latent": "-5.70",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "850742",
+   "ouverte_le": "2026-10-28T15:58"
+  },
+  {
+   "marche": "5166926",
+   "issue": "Yes",
+   "parts": "35.34",
+   "cout": "5.63",
+   "prix_moyen": "0.1593",
+   "prix_de_marque": "0.001",
+   "latent": "-5.59",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1111195",
+   "ouverte_le": "2026-10-29T02:09"
+  },
+  {
+   "marche": "6366413",
+   "issue": "Yes",
+   "parts": "102.75",
+   "cout": "18.69",
+   "prix_moyen": "0.1819",
+   "prix_de_marque": "0.014",
+   "latent": "-17.25",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-29T03:37"
+  },
+  {
+   "marche": "6366416",
+   "issue": "Yes",
+   "parts": "67.91",
+   "cout": "25.81",
+   "prix_moyen": "0.3800",
+   "prix_de_marque": "0.12",
+   "latent": "-17.66",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-29T03:49"
+  },
+  {
+   "marche": "6366412",
+   "issue": "Yes",
+   "parts": "81.42",
+   "cout": "16.94",
+   "prix_moyen": "0.2080",
+   "prix_de_marque": "0.07",
+   "latent": "-11.24",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-29T04:12"
+  },
+  {
+   "marche": "6366414",
+   "issue": "Yes",
+   "parts": "57.74",
+   "cout": "19.41",
+   "prix_moyen": "0.3362",
+   "prix_de_marque": "0.51",
+   "latent": "10.04",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-29T08:30"
+  },
+  {
+   "marche": "6365377",
+   "issue": "Yes",
+   "parts": "11.25",
+   "cout": "1.17",
+   "prix_moyen": "0.1040",
+   "prix_de_marque": "0.152",
+   "latent": "0.54",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274180",
+   "ouverte_le": "2026-10-29T18:37"
+  },
+  {
+   "marche": "6365348",
+   "issue": "Yes",
+   "parts": "126.96",
+   "cout": "15.99",
+   "prix_moyen": "0.1259",
+   "prix_de_marque": "0.1",
+   "latent": "-3.29",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274180",
+   "ouverte_le": "2026-10-29T20:12"
+  },
+  {
+   "marche": "6366829",
+   "issue": "Yes",
+   "parts": "36.75",
+   "cout": "4.04",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.012",
+   "latent": "-3.60",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274293",
+   "ouverte_le": "2026-10-30T05:57"
+  },
+  {
+   "marche": "6366832",
+   "issue": "Yes",
+   "parts": "135.44",
+   "cout": "15.36",
+   "prix_moyen": "0.1134",
+   "prix_de_marque": "0.06",
+   "latent": "-7.23",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274293",
+   "ouverte_le": "2026-10-30T08:37"
+  },
+  {
+   "marche": "6366825",
+   "issue": "Yes",
+   "parts": "99.75",
+   "cout": "12.16",
+   "prix_moyen": "0.1219",
+   "prix_de_marque": "0.151",
+   "latent": "2.90",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274293",
+   "ouverte_le": "2026-10-30T11:57"
+  },
+  {
+   "marche": "6366826",
+   "issue": "Yes",
+   "parts": "36.32",
+   "cout": "12.63",
+   "prix_moyen": "0.3476",
+   "prix_de_marque": "0.216",
+   "latent": "-4.78",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274293",
+   "ouverte_le": "2026-10-30T21:12"
+  },
+  {
+   "marche": "6017452",
+   "issue": "Yes",
+   "parts": "56.75",
+   "cout": "7.99",
+   "prix_moyen": "0.1407",
+   "prix_de_marque": "0.179",
+   "latent": "2.17",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-31T04:05"
+  },
+  {
+   "marche": "6364931",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.75",
+   "prix_moyen": "0.1500",
+   "prix_de_marque": "0.096",
+   "latent": "-0.27",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274169",
+   "ouverte_le": "2026-10-31T09:57"
+  },
+  {
+   "marche": "6364898",
+   "issue": "Yes",
+   "parts": "20.24",
+   "cout": "2.53",
+   "prix_moyen": "0.1249",
+   "prix_de_marque": "0.003",
+   "latent": "-2.47",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "groupe": "1274168",
+   "ouverte_le": "2026-10-31T10:12"
+  }
+ ],
+ "operations_cloturees": 5,
+ "dernieres_operations": [
+  {
+   "marche": "3554795",
+   "issue": "Yes",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "resultat": "-24.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "3554404",
+   "issue": "Yes",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "resultat": "-8.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "3572142",
+   "issue": "Yes",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "resultat": "-14.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "3554472",
+   "issue": "Yes",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "resultat": "-17.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:11"
+  },
+  {
+   "marche": "3554522",
+   "issue": "Yes",
+   "strategie": "ia_oui_sorties v1.0.0",
+   "resultat": "-22.49",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T18:16"
+  }
+ ],
+ "performances": {
+  "ia_oui_sorties v1.0.0": {
+   "operations": 5,
+   "evenements": 5,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-87.43",
+   "frais": "0.00",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-17.49",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.0653,
+   "log_loss": 0.2838,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

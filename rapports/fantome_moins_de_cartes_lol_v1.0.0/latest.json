@@ -1,0 +1,173 @@
+{
+ "genere_le": "2026-10-31T21:30:11+00:00",
+ "capital": {
+  "solde_disponible": "1001.1137",
+  "capital_immobilise": "7.4334",
+  "gains_realises_nets": "8.5471",
+  "gains_latents": "-0.1420",
+  "frais_payes": "1.0425",
+  "capital_total_estime": "1008.4051",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0107,
+ "dernier_battement": "2026-10-31T21:12:07+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6440404",
+   "issue": "Under",
+   "parts": "6.87",
+   "cout": "4.14",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "groupe": "1286062",
+   "ouverte_le": "2026-10-31T14:04"
+  },
+  {
+   "marche": "6440442",
+   "issue": "Under",
+   "parts": "6.31",
+   "cout": "3.30",
+   "prix_moyen": "0.5225",
+   "prix_de_marque": "0.5",
+   "latent": "-0.14",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "groupe": "1286064",
+   "ouverte_le": "2026-10-31T17:03"
+  }
+ ],
+ "operations_cloturees": 11,
+ "dernieres_operations": [
+  {
+   "marche": "6168156",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "3.57",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-25T21:20"
+  },
+  {
+   "marche": "6168189",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.81",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-26T21:41"
+  },
+  {
+   "marche": "6168208",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.78",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-26T23:40"
+  },
+  {
+   "marche": "6036990",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "0.85",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:25"
+  },
+  {
+   "marche": "6036991",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.57",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:46"
+  },
+  {
+   "marche": "6280199",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-3.58",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-29T02:46"
+  },
+  {
+   "marche": "6280239",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "6280179",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-4.29",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6280259",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-4.44",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T23:39"
+  },
+  {
+   "marche": "6280279",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T01:41"
+  },
+  {
+   "marche": "6440423",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.84",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T19:41"
+  }
+ ],
+ "performances": {
+  "moins_de_cartes_lol v1.0.0": {
+   "operations": 11,
+   "evenements": 10,
+   "gagnantes": 8,
+   "taux_reussite": 0.727,
+   "profit_net": "8.55",
+   "frais": "0.88",
+   "rendement_sur_mises": 0.1912,
+   "esperance_par_operation": "0.78",
+   "ic90_rendement_par_euro": [
+    -0.1566,
+    0.7596
+   ],
+   "brier": 0.2297,
+   "log_loss": 0.6513,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

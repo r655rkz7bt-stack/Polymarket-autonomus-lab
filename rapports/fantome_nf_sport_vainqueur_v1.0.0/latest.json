@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:16+00:00",
+ "capital": {
+  "solde_disponible": "842.6984",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-157.3016",
+  "gains_latents": "0.0000",
+  "frais_payes": "6.4952",
+  "capital_total_estime": "842.6984",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1955,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 32,
+ "dernieres_operations": [
+  {
+   "marche": "5978950",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "3.24",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-10-22T16:47"
+  },
+  {
+   "marche": "5724493",
+   "issue": "England",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-6.75",
+   "resolution": "résolu : Sri Lanka",
+   "cloturee_le": "2026-10-22T18:20"
+  },
+  {
+   "marche": "5439913",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "14.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5439915",
+   "issue": "Yes",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-5.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5438173",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "3.75",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T20:45"
+  },
+  {
+   "marche": "5470652",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "2.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T22:50"
+  },
+  {
+   "marche": "5470407",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "1.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T23:11"
+  },
+  {
+   "marche": "5614642",
+   "issue": "James Madison",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-5.14",
+   "resolution": "résolu : Appalachian State",
+   "cloturee_le": "2026-10-23T03:21"
+  },
+  {
+   "marche": "5458294",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "2.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-23T04:46"
+  },
+  {
+   "marche": "5906238",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-4.59",
+   "resolution": "résolu : Movistar KOI",
+   "cloturee_le": "2026-10-23T20:41"
+  },
+  {
+   "marche": "4551277",
+   "issue": "Texans",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-70.94",
+   "resolution": "résolu : Giants",
+   "cloturee_le": "2026-10-25T20:40"
+  },
+  {
+   "marche": "608540",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "0.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T01:55"
+  },
+  {
+   "marche": "608545",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "0.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "-6.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "5139901",
+   "issue": "No",
+   "strategie": "nf_sport_vainqueur v1.0.0",
+   "resultat": "0.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T05:46"
+  }
+ ],
+ "performances": {
+  "nf_sport_vainqueur v1.0.0": {
+   "operations": 32,
+   "evenements": 30,
+   "gagnantes": 22,
+   "taux_reussite": 0.688,
+   "profit_net": "-157.30",
+   "frais": "6.50",
+   "rendement_sur_mises": -0.1,
+   "esperance_par_operation": "-4.92",
+   "ic90_rendement_par_euro": [
+    -0.3696,
+    -0.0916
+   ],
+   "brier": 0.2427,
+   "log_loss": 0.8389,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-10-31T21:30:07+00:00",
+ "capital": {
+  "solde_disponible": "504.0155",
+  "capital_immobilise": "227.0770",
+  "gains_realises_nets": "-268.9075",
+  "gains_latents": "-5.0412",
+  "frais_payes": "19.0554",
+  "capital_total_estime": "726.0513",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4439,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "2757891",
+   "issue": "No",
+   "parts": "52.40",
+   "cout": "26.30",
+   "prix_moyen": "0.5020",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "655483",
+   "ouverte_le": "2026-10-25T17:01"
+  },
+  {
+   "marche": "682708",
+   "issue": "Yes",
+   "parts": "65.51",
+   "cout": "38.06",
+   "prix_moyen": "0.5810",
+   "prix_de_marque": "0.332",
+   "latent": "-16.31",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-26T13:01"
+  },
+  {
+   "marche": "2110577",
+   "issue": "No",
+   "parts": "47.87",
+   "cout": "26.33",
+   "prix_moyen": "0.5500",
+   "prix_de_marque": "0.999",
+   "latent": "21.49",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T13:46"
+  },
+  {
+   "marche": "2100984",
+   "issue": "Yes",
+   "parts": "33.51",
+   "cout": "24.80",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "425728",
+   "ouverte_le": "2026-10-27T16:14"
+  },
+  {
+   "marche": "5475249",
+   "issue": "Opp.",
+   "parts": "14.63",
+   "cout": "10.39",
+   "prix_moyen": "0.7100",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1161446",
+   "ouverte_le": "2026-10-27T18:26"
+  },
+  {
+   "marche": "2100981",
+   "issue": "No",
+   "parts": "30.64",
+   "cout": "22.37",
+   "prix_moyen": "0.7300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "425728",
+   "ouverte_le": "2026-10-27T18:32"
+  },
+  {
+   "marche": "2110576",
+   "issue": "No",
+   "parts": "17.50",
+   "cout": "12.24",
+   "prix_moyen": "0.6996",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T19:04"
+  },
+  {
+   "marche": "682705",
+   "issue": "No",
+   "parts": "15.87",
+   "cout": "11.74",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.57",
+   "latent": "-2.70",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T20:01"
+  },
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "38.10",
+   "cout": "33.91",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.76",
+   "latent": "-4.95",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T20:11"
+  },
+  {
+   "marche": "2110578",
+   "issue": "Yes",
+   "parts": "12.72",
+   "cout": "8.90",
+   "prix_moyen": "0.7000",
+   "prix_de_marque": "0.997",
+   "latent": "3.78",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "428819",
+   "ouverte_le": "2026-10-27T23:51"
+  },
+  {
+   "marche": "5939176",
+   "issue": "Yes",
+   "parts": "16.71",
+   "cout": "12.03",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.34",
+   "latent": "-6.35",
+   "strategie": "calibration_patiente v1.0.0",
+   "groupe": "1219790",
+   "ouverte_le": "2026-10-28T02:26"
+  }
+ ],
+ "operations_cloturees": 97,
+ "dernieres_operations": [
+  {
+   "marche": "6265606",
+   "issue": "Under",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-22.10",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-28T02:11"
+  },
+  {
+   "marche": "6265617",
+   "issue": "Nets",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "20.95",
+   "resolution": "résolu : Nets",
+   "cloturee_le": "2026-10-28T02:46"
+  },
+  {
+   "marche": "6265618",
+   "issue": "Nets",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "19.81",
+   "resolution": "résolu : Nets",
+   "cloturee_le": "2026-10-28T02:46"
+  },
+  {
+   "marche": "5156478",
+   "issue": "Blues",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-30.32",
+   "resolution": "résolu : Canadiens",
+   "cloturee_le": "2026-10-28T03:01"
+  },
+  {
+   "marche": "6004693",
+   "issue": "Lakers",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-28.39",
+   "resolution": "résolu : Trail Blazers",
+   "cloturee_le": "2026-10-28T06:16"
+  },
+  {
+   "marche": "6323716",
+   "issue": "TheMongolz",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-36.56",
+   "resolution": "résolu : Nemiga",
+   "cloturee_le": "2026-10-28T13:51"
+  },
+  {
+   "marche": "6030822",
+   "issue": "No",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-26.55",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T14:26"
+  },
+  {
+   "marche": "6326072",
+   "issue": "Eternal Fire",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-38.48",
+   "resolution": "résolu : Team Nemesis",
+   "cloturee_le": "2026-10-28T17:26"
+  },
+  {
+   "marche": "6138701",
+   "issue": "No",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-25.43",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T18:11"
+  },
+  {
+   "marche": "6323738",
+   "issue": "Spirit",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-10.96",
+   "resolution": "résolu : Natus Vincere",
+   "cloturee_le": "2026-10-28T19:11"
+  },
+  {
+   "marche": "5713238",
+   "issue": "Yes",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-16.57",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T22:01"
+  },
+  {
+   "marche": "5719573",
+   "issue": "Yes",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-17.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "6032755",
+   "issue": "76ers",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "9.71",
+   "resolution": "résolu : 76ers",
+   "cloturee_le": "2026-10-29T02:16"
+  },
+  {
+   "marche": "6322350",
+   "issue": "Bucks",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "-4.31",
+   "resolution": "résolu : Rockets",
+   "cloturee_le": "2026-10-29T02:41"
+  },
+  {
+   "marche": "5179046",
+   "issue": "Avalanche",
+   "strategie": "calibration_patiente v1.0.0",
+   "resultat": "12.17",
+   "resolution": "résolu : Avalanche",
+   "cloturee_le": "2026-10-29T04:01"
+  }
+ ],
+ "performances": {
+  "calibration_patiente v1.0.0": {
+   "operations": 97,
+   "evenements": 85,
+   "gagnantes": 55,
+   "taux_reussite": 0.567,
+   "profit_net": "-268.91",
+   "frais": "19.06",
+   "rendement_sur_mises": -0.0701,
+   "esperance_par_operation": "-2.77",
+   "ic90_rendement_par_euro": [
+    -0.2161,
+    0.0576
+   ],
+   "brier": 0.2258,
+   "log_loss": 0.6353,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

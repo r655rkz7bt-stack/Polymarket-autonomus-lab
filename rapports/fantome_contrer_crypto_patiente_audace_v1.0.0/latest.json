@@ -1,0 +1,373 @@
+{
+ "genere_le": "2026-10-31T21:30:08+00:00",
+ "capital": {
+  "solde_disponible": "593.1409",
+  "capital_immobilise": "273.1995",
+  "gains_realises_nets": "-133.6596",
+  "gains_latents": "43.3884",
+  "frais_payes": "19.3134",
+  "capital_total_estime": "909.7287",
+  "positions_ouvertes": "16",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.5437,
+ "dernier_battement": "2026-10-31T15:57:18+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6051332",
+   "issue": "Yes",
+   "parts": "46.79",
+   "cout": "20.45",
+   "prix_moyen": "0.4371",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-27T03:03"
+  },
+  {
+   "marche": "6051342",
+   "issue": "Yes",
+   "parts": "109.75",
+   "cout": "13.18",
+   "prix_moyen": "0.1201",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-27T09:52"
+  },
+  {
+   "marche": "6139608",
+   "issue": "Yes",
+   "parts": "113.57",
+   "cout": "50.37",
+   "prix_moyen": "0.4436",
+   "prix_de_marque": "0.001",
+   "latent": "-50.26",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-27T10:03"
+  },
+  {
+   "marche": "5407574",
+   "issue": "Yes",
+   "parts": "148.63",
+   "cout": "33.52",
+   "prix_moyen": "0.2255",
+   "prix_de_marque": "0.002",
+   "latent": "-33.22",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-27T13:06"
+  },
+  {
+   "marche": "Will Bitcoin dip to $75,000 in October?",
+   "issue": "Yes",
+   "parts": "164.86",
+   "cout": "16.49",
+   "prix_moyen": "0.1000",
+   "prix_de_marque": "0.015",
+   "latent": "-14.01",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-27T15:01"
+  },
+  {
+   "marche": "6205303",
+   "issue": "No",
+   "parts": "89.55",
+   "cout": "9.85",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.045",
+   "latent": "-5.82",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-27T21:36"
+  },
+  {
+   "marche": "6205325",
+   "issue": "No",
+   "parts": "169.40",
+   "cout": "20.07",
+   "prix_moyen": "0.1184",
+   "prix_de_marque": "0.723",
+   "latent": "102.41",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-28T08:32"
+  },
+  {
+   "marche": "5407561",
+   "issue": "Yes",
+   "parts": "96.72",
+   "cout": "11.61",
+   "prix_moyen": "0.1200",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-28T13:51"
+  },
+  {
+   "marche": "6301279",
+   "issue": "No",
+   "parts": "46.22",
+   "cout": "15.49",
+   "prix_moyen": "0.3352",
+   "prix_de_marque": "0.68",
+   "latent": "15.94",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-28T19:33"
+  },
+  {
+   "marche": "6137717",
+   "issue": "No",
+   "parts": "106.48",
+   "cout": "27.28",
+   "prix_moyen": "0.2562",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-10-28T20:32"
+  },
+  {
+   "marche": "6236213",
+   "issue": "No",
+   "parts": "55.44",
+   "cout": "12.75",
+   "prix_moyen": "0.2300",
+   "prix_de_marque": "0.992",
+   "latent": "42.25",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-28T22:46"
+  },
+  {
+   "marche": "6301344",
+   "issue": "No",
+   "parts": "1.75",
+   "cout": "0.64",
+   "prix_moyen": "0.3659",
+   "prix_de_marque": "0.82",
+   "latent": "0.79",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T00:27"
+  },
+  {
+   "marche": "6137767",
+   "issue": "Yes",
+   "parts": "105.32",
+   "cout": "10.53",
+   "prix_moyen": "0.1000",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T00:36"
+  },
+  {
+   "marche": "6236211",
+   "issue": "Yes",
+   "parts": "114.50",
+   "cout": "14.59",
+   "prix_moyen": "0.1274",
+   "prix_de_marque": "0.003",
+   "latent": "-14.24",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T02:05"
+  },
+  {
+   "marche": "6346620",
+   "issue": "Yes",
+   "parts": "1.78",
+   "cout": "0.56",
+   "prix_moyen": "0.3147",
+   "prix_de_marque": "0.07",
+   "latent": "-0.44",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T02:09"
+  },
+  {
+   "marche": "6137764",
+   "issue": "Yes",
+   "parts": "99.56",
+   "cout": "15.82",
+   "prix_moyen": "0.1589",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-10-29T04:08"
+  }
+ ],
+ "operations_cloturees": 34,
+ "dernieres_operations": [
+  {
+   "marche": "6331122",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-22.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T04:16"
+  },
+  {
+   "marche": "6044826",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-13.17",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "6044828",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-17.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "6044830",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-19.02",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "6044808",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-12.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "6044805",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-12.25",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T16:13"
+  },
+  {
+   "marche": "6236215",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "106.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:01"
+  },
+  {
+   "marche": "5170739",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "70.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:31"
+  },
+  {
+   "marche": "5170789",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "35.79",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:35"
+  },
+  {
+   "marche": "5786294",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-1.99",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T14:07"
+  },
+  {
+   "marche": "6084525",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-25.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084546",
+   "issue": "Yes",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-12.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084522",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "41.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6084544",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "21.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "5786295",
+   "issue": "No",
+   "strategie": "contrer_crypto_patiente_audace v1.0.0",
+   "resultat": "-9.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T16:31"
+  }
+ ],
+ "performances": {
+  "contrer_crypto_patiente_audace v1.0.0": {
+   "operations": 34,
+   "evenements": 19,
+   "gagnantes": 6,
+   "taux_reussite": 0.176,
+   "profit_net": "-133.66",
+   "frais": "12.95",
+   "rendement_sur_mises": -0.2145,
+   "esperance_par_operation": "-3.93",
+   "ic90_rendement_par_euro": [
+    -0.6721,
+    0.349
+   ],
+   "brier": 0.1579,
+   "log_loss": 0.4923,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}

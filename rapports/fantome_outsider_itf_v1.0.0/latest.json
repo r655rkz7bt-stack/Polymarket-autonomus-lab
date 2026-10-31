@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-10-31T21:30:18+00:00",
+ "capital": {
+  "solde_disponible": "989.8507",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-10.1493",
+  "gains_latents": "0.0000",
+  "frais_payes": "1.1690",
+  "capital_total_estime": "989.8507",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0141,
+ "dernier_battement": "2026-10-31T15:47:20+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 25,
+ "dernieres_operations": [
+  {
+   "marche": "6264207",
+   "issue": "Arina Kostina",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "5.03",
+   "resolution": "résolu : Arina Kostina",
+   "cloturee_le": "2026-10-27T17:25"
+  },
+  {
+   "marche": "6263426",
+   "issue": "Jan Sadzik",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "5.46",
+   "resolution": "résolu : Jan Sadzik",
+   "cloturee_le": "2026-10-27T17:46"
+  },
+  {
+   "marche": "6263443",
+   "issue": "Patric Prinoth",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.61",
+   "resolution": "résolu : Luca Castagnola",
+   "cloturee_le": "2026-10-27T20:06"
+  },
+  {
+   "marche": "6263454",
+   "issue": "Matteo Fondriest",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "4.10",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-10-27T20:16"
+  },
+  {
+   "marche": "6299741",
+   "issue": "Na Hyun Kang",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.69",
+   "resolution": "résolu : Anchisa Chanta",
+   "cloturee_le": "2026-10-28T05:11"
+  },
+  {
+   "marche": "6299744",
+   "issue": "Hannah Giam",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-1.31",
+   "resolution": "résolu : Saily Prashantkumar Thakkar",
+   "cloturee_le": "2026-10-28T05:21"
+  },
+  {
+   "marche": "6294350",
+   "issue": "Ava Beck",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-1.25",
+   "resolution": "résolu : Tahlia Kokkinis",
+   "cloturee_le": "2026-10-28T07:16"
+  },
+  {
+   "marche": "6299747",
+   "issue": "Ekaterina Khodzhaeva",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-1.13",
+   "resolution": "résolu : Thasaporn Naklo",
+   "cloturee_le": "2026-10-28T07:31"
+  },
+  {
+   "marche": "6323061",
+   "issue": "Louanne Djafari",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.25",
+   "resolution": "résolu : Iveta Dapkute",
+   "cloturee_le": "2026-10-28T14:56"
+  },
+  {
+   "marche": "6329067",
+   "issue": "Daniel Aleksandar Amarandei",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-1.10",
+   "resolution": "résolu : Manuel Plunger",
+   "cloturee_le": "2026-10-28T16:46"
+  },
+  {
+   "marche": "6323059",
+   "issue": "Camila Eluney Kilapi",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-1.90",
+   "resolution": "résolu : Alisa Danilova",
+   "cloturee_le": "2026-10-28T19:46"
+  },
+  {
+   "marche": "6362221",
+   "issue": "Angela Morena Medinaceli Lobos",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.96",
+   "resolution": "résolu : Valentina Abril Bruno",
+   "cloturee_le": "2026-10-29T16:19"
+  },
+  {
+   "marche": "6362222",
+   "issue": "Ana Julieta Lopez Ocampos",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.64",
+   "resolution": "résolu : Sofia Meabe",
+   "cloturee_le": "2026-10-29T16:25"
+  },
+  {
+   "marche": "6376492",
+   "issue": "Teah Chavez",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.67",
+   "resolution": "résolu : Lea Ma",
+   "cloturee_le": "2026-10-29T21:36"
+  },
+  {
+   "marche": "6411869",
+   "issue": "Funa Kozaki",
+   "strategie": "outsider_itf v1.0.0",
+   "resultat": "-0.72",
+   "resolution": "résolu : Katie Swan",
+   "cloturee_le": "2026-10-31T02:26"
+  }
+ ],
+ "performances": {
+  "outsider_itf v1.0.0": {
+   "operations": 25,
+   "evenements": 25,
+   "gagnantes": 3,
+   "taux_reussite": 0.12,
+   "profit_net": "-10.15",
+   "frais": "1.17",
+   "rendement_sur_mises": -0.3496,
+   "esperance_par_operation": "-0.41",
+   "ic90_rendement_par_euro": [
+    -0.8404,
+    0.071
+   ],
+   "brier": 0.0815,
+   "log_loss": 0.3257,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 293
+ },
+ "decisions_24h": {
+  "acceptees": 2519,
+  "rejetees": 3917,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3712,
+   "carnet périmé": 414,
+   "solde déjà réservé par les ordres posés": 79,
+   "données de marché non fiables": 11,
+   "coût supérieur au solde disponible": 9,
+   "le prix a chuté de 0.91 à 0.85 pendant le cycle": 3,
+   "le prix a chuté de 0.9 à 0.86 pendant le cycle": 3,
+   "le prix a chuté de 0.88 à 0.831 pendant le cycle": 3
+  }
+ },
+ "erreurs_recentes": []
+}
