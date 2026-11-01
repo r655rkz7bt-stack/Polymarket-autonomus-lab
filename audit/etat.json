@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5862,
+  "principal": 5863,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2197,
@@ -179,7 +179,7 @@
   "fantome:moins_de_kills_v1.0.0": 269,
   "fantome:suivre_inities_v1.0.0": 217,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 273,
+  "fantome:ia_oui_sorties_v1.0.0": 274,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 233,
   "fantome:suivre_inities_seul_v1.0.0": 200,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-1932063535021225749539198519347996103340056389540156181152000091470021360743"
   }
  ],
- "derniere_execution": "2026-11-01T06:42:45+00:00",
+ "derniere_execution": "2026-11-01T06:47:52+00:00",
  "dernier_seq_reglements": {
-  "principal": 5862,
+  "principal": 5863,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2197,
@@ -1835,7 +1835,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3737,
+  "fantome:nf_sport_v1.0.0": 3739,
   "fantome:nm_court_v1.0.0": 2136,
   "fantome:nm_crypto_v1.0.0": 1798,
   "fantome:nm_hors_crypto_v1.0.0": 2194,
@@ -1848,7 +1848,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2788,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2790,
   "fantome:nf_sport_sans_fin_v1.0.0": 1751,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1975,7 +1975,7 @@
   "fantome:moins_de_kills_v1.0.0": 269,
   "fantome:suivre_inities_v1.0.0": 217,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 273,
+  "fantome:ia_oui_sorties_v1.0.0": 274,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 233,
   "fantome:suivre_inities_seul_v1.0.0": 200,
