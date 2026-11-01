@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-01 (passage chercheur de 21 h, 20 h 55 → ~21 h 05 UTC ; durée visée 113 min non atteinte : toutes les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-01_soir_positions_serbie.md`). Aucune obligation grave. Les 3 « positions oubliées » de `vague_volume_suivre` (Serbie) sont des marchés encore ouverts à échéance placeholder, pas des règlements manqués. 200 « pas clos » : fausses alertes connues. Posés en match : −10,9 % (z −3,2), déjà traité.
+- **Recherche** : pas de verdict, rien de nouveau à tester.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : rien de nouveau.
+- **Reste ouvert** : inchangé.
+
 ## 2026-11-01 (passage chercheur de 16 h, 15 h 55 → 15 h 57 UTC, 2 min ; durée visée 109 min non atteinte : les pistes restantes attendent des données futures (élection du 03/11, Géorgie et sièges le 04/11, rougeole mercredi, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-01_soir_filles_80_20_12_18h_et_crypto_24_72h.md`, familles 2 et 5). Aucune « Enquête obligatoire » grave. Les trois filles 80/20 rejouées sur les prix : `nf_sport` 12-18 h = 607 paris, 535,0 gagnés pour 532,8 attendus (z +0,27, −0,7 %) ; `crypto_non_10_20` 24-72 h = 16 paris / 8 événements / 4 jours de règlement (z +3,35, tranche choisie parmi 3 après coup, passé : « fin < 96 h » +6 à +14 %, pas +170 %) ; `contrer_crypto_audace` éteinte. Les trois refusées. Pas de défaut de code.
