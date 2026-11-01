@@ -69,7 +69,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 16. **Échelles de sièges de la Chambre contre les marchés de district** (31/10/2026, `experiments/coherence_sieges.md`, idée neuve : cohérence entre deux familles de marchés). 19 États, 287 districts : la somme des prix
     démocrates des districts diffère de la moyenne de l'échelle jusqu'à 1,85 siège (Caroline du Nord « 6 ou plus » à 0,376 pour 0,73-0,83 calculé). Aucun test possible sur le passé (aucune échelle d'État réglée) : fantôme
-    `sieges_coherence`, un seul tirage le 03/11. **À lire le 04/11** (gagnés contre attendus, somme réelle des sièges). Extension : gouverneurs (event 101856) et Sénat + Chambre (event 633839).
+    `sieges_coherence`, un seul tirage le 03/11. **01/11 : Sénat refait (échelle « Republican Senate seats » contre 35 courses, `senat_coherence.md`) : écartée, une corrélation ρ = 0,3 retrouve les 11 tranches à ±1,7 point ; l'incohérence de la Chambre vient donc plutôt de marchés d'échelle minces.** **À lire le 04/11** (gagnés contre attendus, somme réelle des sièges). Extension : gouverneurs (event 101856) et Sénat + Chambre (event 633839).
 
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |

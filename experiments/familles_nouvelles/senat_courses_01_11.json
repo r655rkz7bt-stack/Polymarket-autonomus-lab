@@ -1,0 +1,389 @@
+{
+ "Alabama Senate Election Winner": {
+  "Everett Wess (D)": [
+   0.0145,
+   47272.78296
+  ],
+  "Barry Moore (R)": [
+   0.9875,
+   53221.88675
+  ]
+ },
+ "arch Alaska Senate Election Winner": {},
+ "Arkansas Senate Election Winner": {
+  "Hallie Shoffner (D)": [
+   0.043,
+   63055.39856
+  ],
+  "Tom Cotton (R) ": [
+   0.9565,
+   60957.49865
+  ]
+ },
+ "Colorado Senate Election Winner": {
+  "John Hickenlooper (D)": [
+   0.992,
+   75126.71596
+  ],
+  "Mark Baisley (R)": [
+   0.008,
+   76383.0439
+  ]
+ },
+ "Delaware Senate Election Winner": {
+  "Democrat": [
+   0.9865,
+   68558.97173
+  ],
+  "Republican": [
+   0.015,
+   67098.94343
+  ]
+ },
+ "Georgia Senate Election Winner": {
+  "Jon Ossoff (D) ": [
+   0.9745,
+   113028.00203
+  ],
+  "Mike Collins (R)": [
+   0.025,
+   173886.36973
+  ]
+ },
+ "Idaho Senate Election Winner": {
+  "Democrat": [
+   0.0005,
+   69027.63708
+  ],
+  "Jim Risch (R)": [
+   0.9635,
+   87986.59758
+  ],
+  "Todd Achilles (I)": [
+   0.0335,
+   118666.02622
+  ]
+ },
+ "Illinois Senate Election Winner": {
+  "Juliana Stratton (D)": [
+   0.9895,
+   59850.54374
+  ],
+  "Don Tracy (R)": [
+   0.0115,
+   67260.11542
+  ]
+ },
+ "Iowa Senate Election Winner": {
+  "Josh Turek (D)": [
+   0.415,
+   372245.9463
+  ],
+  "Ashley Hinson (R)": [
+   0.575,
+   387942.5043
+  ]
+ },
+ "Kansas Senate Election Winner": {
+  "Adam Hamilton (D)": [
+   0.515,
+   473841.8897
+  ],
+  "Roger Marshall (R)": [
+   0.485,
+   448623.3036
+  ]
+ },
+ "Kentucky Senate Election Winner": {
+  "Charles Booker (D)": [
+   0.024,
+   60354.2324
+  ],
+  "Andy Barr (R)": [
+   0.977,
+   58765.3103
+  ]
+ },
+ "Maine Senate Election Winner": {
+  "Troy Jackson (D)": [
+   0.695,
+   772560.6816
+  ],
+  "Susan Collins (R)": [
+   0.315,
+   847893.063
+  ]
+ },
+ "Massachusetts Senate Election Winner": {
+  "Ed Markey (D)": [
+   0.9935,
+   80821.07551
+  ],
+  "John Deaton (R)": [
+   0.008,
+   71083.40129
+  ]
+ },
+ "Michigan Senate Election Winner": {
+  "Abdul El-Sayed (D)": [
+   0.785,
+   637064.5278
+  ],
+  "Mike Rogers (R)": [
+   0.205,
+   664286.8221
+  ]
+ },
+ "Minnesota Senate Election Winner": {
+  "Peggy Flanagan (D)": [
+   0.925,
+   163593.0963
+  ],
+  "Michele Tafoya (R)": [
+   0.07,
+   170943.3692
+  ]
+ },
+ "Montana Senate Election Winner": {
+  "Alani Bankhead (D)": [
+   0.0005,
+   59676.55785
+  ],
+  "Kurt Alme (R) ": [
+   0.905,
+   134216.7235
+  ],
+  "Independent": [
+   0.093,
+   147074.12685
+  ]
+ },
+ "New Hampshire Senate Election Winner": {
+  "Chris Pappas (D)": [
+   0.935,
+   202364.6192
+  ],
+  "John E. Sununu (R)": [
+   0.065,
+   238871.0028
+  ]
+ },
+ "New Jersey Senate Election Winner": {
+  "Cory Booker (D)": [
+   0.9875,
+   91074.16498
+  ],
+  "Justin Murphy (R)": [
+   0.0125,
+   110914.54924
+  ]
+ },
+ "New Mexico Senate Election Winner": {
+  "Ben Ray Luj\u00e1n (D)": [
+   0.988,
+   52096.8852
+  ],
+  "Larry Marker (R)": [
+   0.013,
+   49234.39516
+  ]
+ },
+ "North Carolina Senate Election Winner": {
+  "Roy Cooper (D)": [
+   0.979,
+   116261.57659
+  ],
+  "Michael Whatley (R)": [
+   0.0215,
+   282238.03846
+  ]
+ },
+ "Oregon Senate Election Winner": {
+  "Jeff Merkley (D)": [
+   0.988,
+   56292.40523
+  ],
+  "David Brock Smith (R)": [
+   0.0115,
+   57806.15198
+  ]
+ },
+ "Rhode Island Senate Election Winner": {
+  "Jack Reed (D)": [
+   0.989,
+   52364.33414
+  ],
+  "Raymond McKay (R)": [
+   0.0125,
+   49518.782
+  ]
+ },
+ "South Carolina Senate Election Winner": {
+  "Annie Andrews (D)": [
+   0.255,
+   420988.9641
+  ],
+  "Darline Graham Nordone (R)": [
+   0.745,
+   414601.4321
+  ]
+ },
+ "South Dakota Senate Election Winner": {
+  "Democrat": [
+   0.001,
+   57914.73751
+  ],
+  "Mike Rounds (R)": [
+   0.9355,
+   79033.68215
+  ],
+  "Brian Bengs (I)": [
+   0.066,
+   99920.47697
+  ]
+ },
+ "Tennessee Senate Election Winner": {
+  "Marquita Bradshaw (D)": [
+   0.0215,
+   51531.56827
+  ],
+  "Bill Hagerty (R)": [
+   0.9805,
+   48326.80091
+  ]
+ },
+ "Texas Senate Election Winner": {
+  "James Talarico (D)": [
+   0.705,
+   1159071.2449
+  ],
+  "Ken Paxton (R)": [
+   0.295,
+   1235392.494
+  ]
+ },
+ "Virginia Senate Election Winner": {
+  "Mark Warner (D)": [
+   0.9875,
+   58210.29158
+  ],
+  "Bert Mizusawa (R)": [
+   0.0105,
+   60235.95595
+  ]
+ },
+ "West Virginia Senate Election Winner": {
+  "Rachel Fetty Anderson (D)": [
+   0.014,
+   48864.76129
+  ],
+  "Shelley Moore Capito (R)": [
+   0.9865,
+   47726.02964
+  ]
+ },
+ "Wyoming Senate Election Winner": {
+  "James W. Byrd (D)": [
+   0.013,
+   69172.86714
+  ],
+  "Harriet Hageman (R) ": [
+   0.9865,
+   76449.06671
+  ]
+ },
+ "Mississippi Senate Election Winner": {
+  "Scott Colom (D)": [
+   0.115,
+   141863.1146
+  ],
+  "Cindy Hyde-Smith (R)": [
+   0.885,
+   128298.4591
+  ]
+ },
+ "Oklahoma Senate Election Winner": {
+  "N\u2019Kiyla \u201cJasmine\u201d Thomas (D)": [
+   0.0155,
+   55569.50548
+  ],
+  "Kevin Hern (R)": [
+   0.984,
+   58474.31477
+  ]
+ },
+ "Florida Senate Election Winner": {
+  "Angie Nixon (D)": [
+   0.085,
+   218428.4967
+  ],
+  "Ashley Moody (R)": [
+   0.91,
+   186627.7435
+  ]
+ },
+ "Ohio Senate Election Winner": {
+  "Sherrod Brown (D)": [
+   0.735,
+   420484.1788
+  ],
+  "Jon Husted (R)": [
+   0.265,
+   451842.9278
+  ]
+ },
+ "Louisiana Senate Election Winner": {
+  "Jamie Davis (D)": [
+   0.085,
+   85336.3571
+  ],
+  "Julia Letlow (R)": [
+   0.92,
+   84001.1759
+  ]
+ },
+ "Nebraska Senate Election Winner  ": {
+  "Democrat": [
+   0.0005,
+   110743.20526
+  ],
+  "Pete Ricketts (R)": [
+   0.735,
+   250144.0655
+  ],
+  "Independent": [
+   0.26,
+   304864.6986
+  ]
+ },
+ "Alaska Senate Election Winner": {
+  "Sen. Dan Sullivan": [
+   0.285,
+   511354.2015
+  ],
+  "Ann Diener": [
+   0.0005,
+   84807.84825
+  ],
+  "Mary Peltola": [
+   0.725,
+   524314.1039
+  ],
+  "Dustin Darden": [
+   0.0005,
+   72674.23598
+  ],
+  "Richard Grayson": [
+   0.0005,
+   85527.2413
+  ],
+  "Daniel J. Sullivan Jr.": [
+   0.0005,
+   93713.63274
+  ],
+  "David Leslie": [
+   0.0005,
+   81671.18055
+  ]
+ }
+}
