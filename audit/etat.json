@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5984,
+  "principal": 5985,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2216,
@@ -20,7 +20,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 1882,
+  "fantome:favori_politique_patiente_v1.0.0": 1884,
   "fantome:favori_politique_v1.0.0": 1851,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1840,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3855,
+  "fantome:nf_sport_v1.0.0": 3857,
   "fantome:nm_court_v1.0.0": 2156,
   "fantome:nm_crypto_v1.0.0": 1817,
   "fantome:nm_hors_crypto_v1.0.0": 2217,
@@ -60,7 +60,7 @@
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
   "fantome:nf_tres_court_v1.0.0": 1177,
-  "fantome:nf_sport_non_v1.0.0": 1643,
+  "fantome:nf_sport_non_v1.0.0": 1645,
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1550,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 67,
   "fantome:classement_appstore_v1.1.0": 31
  },
- "verifiees": 15913,
+ "verifiees": 15915,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-90227247887598257118912884872810330090020282209481533447759142359719068134023"
   }
  ],
- "derniere_execution": "2026-11-01T16:27:35+00:00",
+ "derniere_execution": "2026-11-01T16:34:15+00:00",
  "dernier_seq_reglements": {
-  "principal": 5984,
+  "principal": 5985,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2216,
@@ -1835,7 +1835,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3855,
+  "fantome:nf_sport_v1.0.0": 3857,
   "fantome:nm_court_v1.0.0": 2156,
   "fantome:nm_crypto_v1.0.0": 1817,
   "fantome:nm_hors_crypto_v1.0.0": 2217,
@@ -1986,5 +1986,5 @@
   "fantome:sieges_coherence_v1.0.0": 67,
   "fantome:classement_appstore_v1.1.0": 31
  },
- "reglements_verifies": 9852
+ "reglements_verifies": 9853
 }
