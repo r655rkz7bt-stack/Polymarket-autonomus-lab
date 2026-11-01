@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-01 (passage chercheur de 16 h, 15 h 55 → 15 h 57 UTC, 2 min ; durée visée 109 min non atteinte : les pistes restantes attendent des données futures (élection du 03/11, Géorgie et sièges le 04/11, rougeole mercredi, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-01_soir_filles_80_20_12_18h_et_crypto_24_72h.md`, familles 2 et 5). Aucune « Enquête obligatoire » grave. Les trois filles 80/20 rejouées sur les prix : `nf_sport` 12-18 h = 607 paris, 535,0 gagnés pour 532,8 attendus (z +0,27, −0,7 %) ; `crypto_non_10_20` 24-72 h = 16 paris / 8 événements / 4 jours de règlement (z +3,35, tranche choisie parmi 3 après coup, passé : « fin < 96 h » +6 à +14 %, pas +170 %) ; `contrer_crypto_audace` éteinte. Les trois refusées. Pas de défaut de code.
+- **Recherche** : pas de verdict, rien de nouveau à tester avec les données d'aujourd'hui (principal 701 €, perte max depuis un sommet 34,7 %, 61 positions ouvertes).
+- **Arène** : rien ajouté (aucune idée neuve plausible hors des pistes qui attendent).
+- **Leçons** : une tranche à +170 % sur 16 paris de 4 jours crypto est un tirage ; le rendement « 80/20 » en euros d'une mère ne dit rien du z de la tranche.
+- **Reste ouvert** : inchangé (Géorgie 04/11 ~1 h UTC ; `sieges_coherence` 04/11 ; rougeole 8 mercredis ; essence 40 jours ; App Store 06/11). Idée : n'émettre une obligation 80/20 que si le z des prix de la tranche dépasse 2 et que la mère est vivante.
+
 ## 2026-11-01 (session avec Etienne : stop-loss « intelligents »)
 
 - **Recherche** (`stop_loss.md`) : 9 879 positions réglées de l'arène, prix du CLOB à 5 minutes, 21 règles de stop-loss (fixes, relatives, borne basse, volatilité, suiveurs, avant/pendant le match). **Toutes perdent** contre « garder jusqu'au règlement » (−1 705 à −11 224 € avec une vente à −0,015 ; même à vente gratuite, sauf deux réglages proches de zéro). Raison : après une chute, les positions gagnent 2,3 à 2,9 points de plus que le prix du moment (le marché sur-réagit).
