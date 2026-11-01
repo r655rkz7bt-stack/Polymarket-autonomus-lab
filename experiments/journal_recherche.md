@@ -3,6 +3,11 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-01 (session avec Etienne : stop-loss « intelligents »)
+
+- **Recherche** (`stop_loss.md`) : 9 879 positions réglées de l'arène, prix du CLOB à 5 minutes, 21 règles de stop-loss (fixes, relatives, borne basse, volatilité, suiveurs, avant/pendant le match). **Toutes perdent** contre « garder jusqu'au règlement » (−1 705 à −11 224 € avec une vente à −0,015 ; même à vente gratuite, sauf deux réglages proches de zéro). Raison : après une chute, les positions gagnent 2,3 à 2,9 points de plus que le prix du moment (le marché sur-réagit).
+- **Arène** : rien à changer (aucune stratégie active n'a de stop-loss). Piste ouverte : racheter après une chute, à tester par famille.
+
 ## 2026-11-01 (passage chercheur de midi, 10 h 55 → 10 h 59 UTC, 4 min ; durée visée 105 min non atteinte : toutes les pistes restantes attendent des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-01_midi_n1_fille_6_12h.md`, familles 2 et 5). Aucune « Enquête obligatoire » dans la feuille de mission. La n° 1 de l'arène (17 paris, +231 €) gagne 16 paris pour 15,1 attendus (z +0,71) ; sa mère, sur la même plage, perd −98 € avec d'autres paris. Pas un avantage, pas de défaut de code.

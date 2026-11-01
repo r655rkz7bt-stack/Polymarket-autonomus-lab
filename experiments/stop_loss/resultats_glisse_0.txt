@@ -1,0 +1,38 @@
+9879 positions avec historique, glissement à la vente 0.0
+
+Garder jusqu'au règlement : -8095 € sur 415452 € misés
+
+
+Après une chute : chance réelle de gagner contre le prix du moment (si gagnés < prix, couper aide)
+  prix tombé de 0.05 sous le prix payé :  6512 positions, gagnées 0.642 pour un prix moyen 0.618 (écart +0.024, ±0.012)
+  prix tombé de 0.10 sous le prix payé :  5208 positions, gagnées 0.587 pour un prix moyen 0.558 (écart +0.029, ±0.013)
+  prix tombé de 0.20 sous le prix payé :  3577 positions, gagnées 0.488 pour un prix moyen 0.464 (écart +0.024, ±0.016)
+  prix tombé de 0.30 sous le prix payé :  2758 positions, gagnées 0.401 pour un prix moyen 0.378 (écart +0.023, ±0.018)
+
+stop fixe −0.05                                      sorties  6512 (65.9%), dont gagnantes au règlement 4162 | écart au « garder »    -6018 € (-1.45% par euro misé), moitiés  -3518 /  -2501
+stop fixe −0.10                                      sorties  5208 (52.7%), dont gagnantes au règlement 3041 | écart au « garder »    -6575 € (-1.58% par euro misé), moitiés  -3998 /  -2577
+stop fixe −0.15                                      sorties  4293 (43.5%), dont gagnantes au règlement 2310 | écart au « garder »    -4553 € (-1.10% par euro misé), moitiés  -2637 /  -1915
+stop fixe −0.20                                      sorties  3577 (36.2%), dont gagnantes au règlement 1731 | écart au « garder »    -1755 € (-0.42% par euro misé), moitiés   -302 /  -1453
+stop fixe −0.30                                      sorties  2758 (27.9%), dont gagnantes au règlement 1091 | écart au « garder »    -3279 € (-0.79% par euro misé), moitiés   -416 /  -2863
+stop relatif −20%                                    sorties  4719 (47.8%), dont gagnantes au règlement 2246 | écart au « garder »    -3737 € (-0.90% par euro misé), moitiés  -1464 /  -2273
+stop relatif −35%                                    sorties  3797 (38.4%), dont gagnantes au règlement 1328 | écart au « garder »    -3598 € (-0.87% par euro misé), moitiés   -735 /  -2863
+stop relatif −50%                                    sorties  3127 (31.7%), dont gagnantes au règlement  690 | écart au « garder »     +122 € (+0.03% par euro misé), moitiés    +62 /    +60
+sous la borne basse de la stratégie −0.05            sorties  7711 (78.1%), dont gagnantes au règlement 5333 | écart au « garder »    -5327 € (-1.28% par euro misé), moitiés  -3120 /  -2207
+sous la borne basse de la stratégie −0.10            sorties  5938 (60.1%), dont gagnantes au règlement 3675 | écart au « garder »    -6879 € (-1.66% par euro misé), moitiés  -4680 /  -2200
+sous la borne basse de la stratégie −0.20            sorties  4085 (41.4%), dont gagnantes au règlement 2174 | écart au « garder »    -4981 € (-1.20% par euro misé), moitiés  -2488 /  -2493
+volatilité : −2×écart-type des 24 h d'avant          sorties  5837 (59.1%), dont gagnantes au règlement 3691 | écart au « garder »    -6246 € (-1.50% par euro misé), moitiés  -3677 /  -2570
+volatilité : −3×écart-type des 24 h d'avant          sorties  5142 (52.0%), dont gagnantes au règlement 3179 | écart au « garder »    -5385 € (-1.30% par euro misé), moitiés  -2776 /  -2609
+volatilité : −4×écart-type des 24 h d'avant          sorties  4637 (46.9%), dont gagnantes au règlement 2793 | écart au « garder »    -4903 € (-1.18% par euro misé), moitiés  -2202 /  -2701
+suiveur −0.10 depuis le plus haut                    sorties  6002 (60.8%), dont gagnantes au règlement 3725 | écart au « garder »    -6658 € (-1.60% par euro misé), moitiés  -4040 /  -2618
+suiveur −0.20 depuis le plus haut                    sorties  4333 (43.9%), dont gagnantes au règlement 2242 | écart au « garder »    -3386 € (-0.82% par euro misé), moitiés  -1980 /  -1407
+stop −0.10 AVANT le coup d'envoi seulement           sorties   133 ( 1.3%), dont gagnantes au règlement   72 | écart au « garder »     -458 € (-0.11% par euro misé), moitiés    +77 /   -535
+stop −0.10 PENDANT le match seulement                sorties  2842 (28.8%), dont gagnantes au règlement 1846 | écart au « garder »    -2396 € (-0.58% par euro misé), moitiés  -1935 /   -461
+stop −0.20 AVANT le coup d'envoi seulement           sorties    56 ( 0.6%), dont gagnantes au règlement   18 | écart au « garder »     -211 € (-0.05% par euro misé), moitiés    +32 /   -243
+stop −0.20 PENDANT le match seulement                sorties  2029 (20.5%), dont gagnantes au règlement 1077 | écart au « garder »     +307 € (+0.07% par euro misé), moitiés   +467 /   -160
+
+Par tranche de prix payé (stop fixe −0,10)
+  payé 0.0-0.3 (918 positions)                       sorties   534 (58.2%), dont gagnantes au règlement   59 | écart au « garder »     -456 € (-10.88% par euro misé), moitiés   -139 /   -317
+  payé 0.3-0.6 (1082 positions)                      sorties   897 (82.9%), dont gagnantes au règlement  320 | écart au « garder »     -488 € (-3.70% par euro misé), moitiés   -282 /   -206
+  payé 0.6-0.8 (658 positions)                       sorties   497 (75.5%), dont gagnantes au règlement  274 | écart au « garder »     -288 € (-2.45% par euro misé), moitiés   -209 /    -79
+  payé 0.8-0.9 (3745 positions)                      sorties  2011 (53.7%), dont gagnantes au règlement 1379 | écart au « garder »    -1481 € (-0.91% par euro misé), moitiés   -715 /   -766
+  payé 0.9-1.0 (3476 positions)                      sorties  1269 (36.5%), dont gagnantes au règlement 1009 | écart au « garder »    -3862 € (-1.73% par euro misé), moitiés  -2586 /  -1276
