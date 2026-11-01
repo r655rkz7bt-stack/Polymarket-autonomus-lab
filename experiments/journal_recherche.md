@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-01 (passage chercheur de midi, 10 h 55 → ~11 h 15 UTC ; durée visée 105 min non atteinte : toutes les pistes restantes attendent des données futures, arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-01_midi_n1_fille_6_12h.md`, familles 2 et 5). Aucune « Enquête obligatoire » dans la feuille de mission. La n° 1 de l'arène (17 paris, +231 €) gagne 16 paris pour 15,1 attendus (z +0,71) ; sa mère, sur la même plage, perd −98 € avec d'autres paris. Pas un avantage, pas de défaut de code.
+- **Recherche** : relevés à jour (rougeole CDC : 2 mercredis, 4 588 → 4 852, pas de nouveau mercredi ; essence AAA : 0 jour ajouté, 16 jours réglés sur ~40). Fichier 2026 de la Géorgie toujours absent (404) : outil `election_direct` inchangé pour le 04/11. Aucun verdict nouveau.
+- **Arène** : rien ajouté (pas d'idée neuve plausible hors des pistes qui attendent) ; les 3 filles 80/20 de crypto refusées (mères écartées).
+- **Leçons** : un rang n° 1 à 17 opérations est un tirage ; comparer une fille et sa mère paris par paris avant de parler de « morceau gagnant ».
+- **Reste ouvert** : sièges et Géorgie le 04/11 ; rougeole mercredi 04/11 ; essence à 40 jours ; App Store 06/11.
+
 ## 2026-11-01 (passage chercheur du matin, 05 h 55 → ~06 h 15 UTC ; durée visée 102 min non atteinte : les pistes restantes attendent des données futures (élection du 03/11, Géorgie 04/11, sièges 04/11, rougeole mercredi, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-01_matin_compteur_truth_et_gains_concentres.md`, familles 2 et 3). Obligation tenue : `crypto_threshold_prix_bas` (éliminée) coupée de la config (`enabled: false`), test de config mis à jour. 11 paris de `compteur_truth` relus sur Gamma : règlement 11/11 conforme ; 3 clôtures avant la fin de fenêtre sont normales (compteur qui ne décroît pas) ; les 11 paris ne sont que 3 événements (fenêtres chevauchées), z +1,83. Gains sans les 3 plus gros paris : seule `compteur_tweets` bat ses prix (z +3,32, 18 événements) ; `compteur_tweets_oui` (−48 €) et `seismes_marche` (−10 €) ne tiennent pas.
