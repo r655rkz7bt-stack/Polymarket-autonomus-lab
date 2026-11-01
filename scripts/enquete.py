@@ -58,9 +58,10 @@ def main() -> int:
         published = {}
     abstentions, sources = published.get("abstentions"), (published.get("sources") or {}).get("etat")
     parts = {a["nom"]: float(a["part_principal"]) for a in published.get("arene") or [] if a.get("part_principal")}  # parts du capital principal
+    depuis = {a["nom"]: a["part_depuis"] for a in published.get("arene") or [] if a.get("part_depuis")}  # date d'entrée de chaque part
     findings = enquete.run(entries, configs, active, now, float((settings.get("principal") or {}).get("max_mise", 0.10)),
                            days=args.jours, audit=audit, abstentions=abstentions, sources=sources, parts=parts,
-                           textes=enquete.lire_experiences(ROOT))
+                           textes=enquete.lire_experiences(ROOT), depuis=depuis)
     out = ROOT / "reports" / "enquete.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(enquete.render(findings, now), encoding="utf-8")

@@ -69,6 +69,14 @@ def test_shares_are_recomputed_at_most_hourly_but_entries_apply_at_once(tmp_path
     assert _steady_shares(deps, {"a": 0.3, "b": 0.2, "c": 0.1}) == {"a": 0.3, "b": 0.2, "c": 0.1}  # entrée
     clock["t"] = NOW + timedelta(minutes=70)
     assert _steady_shares(deps, {"a": 0.25, "b": 0.25, "c": 0.1}) == {"a": 0.25, "b": 0.25, "c": 0.1}  # 1 h passée
+    import json
+    depuis = json.loads(deps.db.get_value("repartition_principal"))["depuis"]                          # date d'entrée de chaque part (1/11)
+    assert depuis["a"] == depuis["b"] == NOW.isoformat(timespec="seconds")                            # inchangée tant que la part dure
+    assert depuis["c"] == (NOW + timedelta(minutes=5)).isoformat(timespec="seconds")                  # née au 2e appel
+    clock["t"] = NOW + timedelta(minutes=140)
+    _steady_shares(deps, {"a": 0.5, "b": 0.5})                                                         # c sort, puis revient : nouvelle date
+    _steady_shares(deps, {"a": 0.4, "b": 0.4, "c": 0.2})
+    assert json.loads(deps.db.get_value("repartition_principal"))["depuis"]["c"] == (NOW + timedelta(minutes=140)).isoformat(timespec="seconds")
 
 
 def test_a_strategy_never_engages_more_than_its_share_in_total(tmp_path):

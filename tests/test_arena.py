@@ -584,3 +584,15 @@ def test_calendar_strategies_are_never_retired_for_inactivity(tmp_path):
     ghosts = {n: Ledger.create(tmp_path / f"{n}.jsonl", KEY, tmp_path / f"{n}.lock", "1000", now=NOW) for n in names}
     standings = [st(n, 0, 0.0, days=5) for n in names]
     assert retire_inactive(main, ghosts, standings, cfg, NOW) == ["paire_oui_non_v1.0.0"]
+
+
+def test_weekly_experiment_is_protected_from_the_inactivity_cleanup():
+    """30/10 : `classement_appstore` (marchés du vendredi seulement) a été retirée pour « inactivité » à 3 jours, juste après son seul vendredi ;
+    1/11 : elle est protégée par `jamais_retirer` comme les autres stratégies à fenêtre hebdomadaire."""
+    from pathlib import Path
+    import yaml
+    ROOT = Path(__file__).resolve().parents[1]
+    promo = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
+    assert "classement_appstore" in promo["jamais_retirer"]
+    configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8"))
+    assert configs["classement_appstore"]["enabled"] and configs["classement_appstore"]["version"] == "1.1.0"
