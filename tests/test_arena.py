@@ -398,7 +398,7 @@ def test_champion_betting_worse_than_its_prices_loses_its_place():
     gates = {"now": NOW, "min_age_hours": 24.0, "min_growth": 0.02, "min_t": 1.5}
     court = Standing("nf_court_v1", 65, 1116.0, 1000.0, 0.11, NOW - timedelta(days=2), False, t_stat=-0.7)
     patient = Standing("nf_sport_patiente_v1", 42, 1144.0, 1000.0, 0.13, NOW - timedelta(days=2), False, t_stat=2.75)
-    assert RULES["keep_t_stat"] == 0.0
+    assert RULES.get("keep_t_stat") is None  # 01/11/2026 (« trust the process ») : réglage coupé, le mécanisme reste disponible
     assert choose_champion([court, patient], "nf_court_v1", 20, None, keep_t=0.0, **gates)[0] == "nf_sport_patiente_v1"
     assert choose_champion([court], "nf_court_v1", 20, None, keep_t=0.0, **gates)[0] == ""
     assert set(allocation([court, patient], 20, 5, champion="nf_court_v1", keep_t=0.0, **gates)) == {
@@ -422,15 +422,18 @@ def test_clearly_losing_strategies_are_retired_at_once(tmp_path):
     standings = [bad, replace(st("champ_v1", 50, -0.1), t_stat=-2.0), replace(st("jeune_v1", 12, -0.1), t_stat=-3.0),
                  replace(st("market_maker_v1", 30, -0.1), t_stat=-2.0, mode="recompenses"),
                  replace(st("moyenne_v1", 40, 0.0), t_stat=-1.0)]
-    assert retire_hopeless(main, standings, RULES, NOW) == ["news_momentum_v1"]
+    old = dict(RULES, retirer_perdantes={"min_operations": 20, "confiance_max": -1.5, "capital_min": 750})  # règle du 19 au 31/10
+    assert retire_hopeless(main, standings, old, NOW) == ["news_momentum_v1"]
     assert "news_momentum_v1" in main.state.eliminated and last_weekly_elimination(main) is None
-    assert RULES["retirer_perdantes"] == {"min_operations": 20, "confiance_max": -1.5, "capital_min": 750}
+    # 01/11/2026 (« trust the process ») : plus de temps pour se rattraper.
+    assert RULES["retirer_perdantes"] == {"min_operations": 40, "confiance_max": -2.0, "capital_min": 600}
+    assert retire_hopeless(main, [replace(st("lente_v1", 39, -0.3), t_stat=-2.5)], RULES, NOW) == []
     assert retire_hopeless(main, standings, {}, NOW) == []
     # 21/10/2026 (AMELIORATION n°5) : sous 750 € de capital après 20 opérations, même avec une confiance
     # de −0,8 (cotes_bookmakers : 625 €) ; pas avant 20 opérations.
     poor = replace(st("cotes_bookmakers_v1", 20, -0.47), realized_capital=624.6, t_stat=-0.8)
     young = replace(st("jeune_pauvre_v1", 12, -0.5), realized_capital=600.0, t_stat=-0.5)
-    assert retire_hopeless(main, [poor, young], RULES, NOW) == ["cotes_bookmakers_v1"]
+    assert retire_hopeless(main, [poor, young], old, NOW) == ["cotes_bookmakers_v1"]
     assert "capital 625 sous 750" in [e for e in read_entries(main) if e["type"] == "ELIMINATION"][-1]["data"]["reason"]
 
 
@@ -539,9 +542,11 @@ def test_measured_stake_copies_bets_at_the_measured_edge_only():
               {"cost": 8.5, "shares_bought": 10, "pnl": -8.5, "est_probability": 0.9, "closed_at": "2026-10-20"}]
     excess, assumed = edge_figures(trades)
     assert excess == pytest.approx(-0.7) and assumed == pytest.approx(0.05)
-    rule = RULES["mise_avantage_mesure"]
-    assert rule == {"paris_fictifs": 30, "part_min": 0.0, "part_max": 3.0, "avantage_suppose_defaut": 0.035,
-                    "renfort": {"min_operations": 30, "confiance_jour_min": 0.8}}
+    assert RULES["mise_avantage_mesure"] == {"paris_fictifs": 30, "part_min": 0.25, "part_max": 3.0, "avantage_suppose_defaut": 0.035,
+                                             "renfort": {"min_operations": 30, "confiance_jour_min": 0.8}}  # plancher 0,25 depuis le 01/11/2026
+    assert measured_stake(Standing("b_v1", 70, 900.0, 1000.0, -0.1, NOW, False, assumed_edge=0.05, excess_wins=-2.0),
+                          RULES["mise_avantage_mesure"]) == 0.25  # dans un creux : le quart de la mise, pas zéro
+    rule = dict(RULES["mise_avantage_mesure"], part_min=0.0)  # la règle d'avant, pour le reste du test
     base = Standing("a_v1", 70, 1100.0, 1000.0, 0.1, NOW - timedelta(days=5), False, assumed_edge=0.05)
     assert measured_stake(dataclasses_replace(base, excess_wins=-2.0), rule) == 0.0
     assert measured_stake(dataclasses_replace(base, excess_wins=2.5), rule) == pytest.approx(0.5)  # 2,5/100 = 2,5 pts
@@ -596,3 +601,24 @@ def test_weekly_experiment_is_protected_from_the_inactivity_cleanup():
     assert "classement_appstore" in promo["jamais_retirer"]
     configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8"))
     assert configs["classement_appstore"]["enabled"] and configs["classement_appstore"]["version"] == "1.1.0"
+
+
+def test_trust_the_process_every_holder_stays_until_it_loses_ten_percent():
+    """« Trust the process » (Etienne, 01/11/2026, experiments/confiance_processus.md) : avant, seule la championne avait un seuil
+    de maintien ; les autres stratégies suivies devaient repasser l'ENTRÉE (+2 %, t ≥ 1) à chaque recalcul et sortaient au premier
+    creux. Rejeu du 15/10 au 01/11 : −172 € ; en les gardant tant qu'elles ne perdent pas plus de 10 % : −17 €."""
+    from polymarket_agent.arena import allocation
+    gates = {"now": NOW, "min_age_hours": 12.0, "min_growth": 0.02, "min_t": 1.0}
+    entering = Standing("forte_v1", 40, 1200.0, 1000.0, 0.18, NOW - timedelta(days=5), False, t_stat=2.0)
+    dipping = Standing("creux_v1", 40, 950.0, 1000.0, -0.05, NOW - timedelta(days=5), False, t_stat=-0.4)
+    sinking = Standing("coule_v1", 40, 850.0, 1000.0, -0.16, NOW - timedelta(days=5), False, t_stat=-1.2)
+    kw = dict(keep_growth=-0.10, keep_t=None, merit=0.5, **gates)
+    # Sans détenteurs : une stratégie dans le creux n'entre pas.
+    assert set(allocation([entering, dipping], 12, 5, **kw)) == {"forte_v1"}
+    # Déjà suivie : elle reste (part égale, pas de part « au mérite » négative) ; sous −10 %, elle sort.
+    shares = allocation([entering, dipping, sinking], 12, 5, holders={"creux_v1", "coule_v1"}, **kw)
+    assert set(shares) == {"forte_v1", "creux_v1"} and abs(sum(shares.values()) - 1.0) < 1e-9
+    assert shares["creux_v1"] == 0.25 and shares["forte_v1"] == 0.75
+    # Seule et dans le creux : elle garde tout (avant : {} = plus rien de suivi).
+    assert allocation([dipping], 12, 5, holders={"creux_v1"}, **kw) == {"creux_v1": 1.0}
+    assert RULES["keep_log_growth"] == -0.10 and RULES.get("keep_t_stat") is None
