@@ -61,7 +61,10 @@ garde_fou_jour: {confiance_min: 0.8, reduction: 0.5}
 # (settings.yaml → principal.reserve_liquidites) empêche qu'une mise plus grosse vide le solde disponible.
 mise_avantage_mesure:
   paris_fictifs: 30
-  part_min: 0.0
+  # 01/11/2026 (« trust the process ») : une stratégie suivie mise au moins le quart de sa mise habituelle, même dans un creux
+  # (avant : 0, elle était gardée sans parier). Rejeu avec la sortie sous −10 % : plancher 0 → +28 €, 0,25 → +32 €, 0,5 → +19 €,
+  # 1 → −17 € (experiments/confiance_processus.md).
+  part_min: 0.25
   part_max: 3.0
   avantage_suppose_defaut: 0.035
   renfort: {min_operations: 30, confiance_jour_min: 0.8}
@@ -75,12 +78,13 @@ juger_sur_recompenses:
 juger_sur_valeur:
   favori_politique: {min_age_hours: 72, part_max: 0.2}
   parking_politique: {min_age_hours: 72, part_max: 0.3}   # 19/10/2026 : marchés à récompense de détention
-# Seuil de MAINTIEN (plus bas : pas de va-et-vient) : le champion reste tant qu'il fait mieux
-# que « ne rien faire » au-delà de cette valeur ; en dessous, il est destitué.
-keep_log_growth: 0.0
-# … et tant que son score de confiance (rendement par mise) reste positif : un champion qui gagne de
-# l'argent en pariant moins bien que ses prix (nf_court, −0,7 le 18/10) est destitué (18/10/2026).
-keep_t_stat: 0.0
+# Seuil de MAINTIEN (« trust the process », demande d'Etienne du 01/11/2026, experiments/confiance_processus.md) : une stratégie
+# suivie par le principal (championne OU autre part) reste tant que sa croissance ne passe pas sous −0,10 (≈ −10 %), sans
+# condition de confiance. Avant : croissance ≥ 0 et t ≥ 0 pour la seule championne ; les autres devaient repasser l'entrée à
+# chaque recalcul. Rejeu du 15/10 au 01/11 (768 → 1 096 paris) : −172 € → −17 € ; tout seuil de −5 % à −15 % donne −23 à −2 €,
+# mieux dans les deux moitiés ; −20 % : −122 €. L'ENTRÉE reste exigeante (12 opérations, +2 %, t ≥ 1).
+keep_log_growth: -0.10
+keep_t_stat: null
 # Plusieurs championnes (décision d'Etienne, 18/10/2026) : plus de marge de +1 % ; toute stratégie
 # qualifiée reçoit sa part. Le titre de « champion » du journal signé reste à la doyenne tant
 # qu'elle est qualifiée (aucun va-et-vient).
@@ -121,7 +125,9 @@ jamais_retirer: [market_maker, cpi_tranches, jobs_favori_non, statu_quo_ia, sais
 # confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).
 # 21/10/2026 (AMELIORATION n°5) : aussi sous 750 € de capital réalisé après 20 opérations (−25 %).
-retirer_perdantes: {min_operations: 20, confiance_max: -1.5, capital_min: 750}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
+# 01/11/2026 (« trust the process ») : 40 opérations au lieu de 20, confiance ≤ −2 au lieu de −1,5, capital sous 600 € au lieu de
+# 750 : un fantôme ne coûte rien au principal, on lui laisse le temps de se rattraper (le principal, lui, ne suit que les qualifiées).
+retirer_perdantes: {min_operations: 40, confiance_max: -2.0, capital_min: 600}   # la tenue de marché peut rester longtemps sans exécution (récompenses)
 # Entonnoir 80/20 recentré (27/10/2026, experiments/audace.md) : une fille n'est proposée que pour un morceau qui bat ses
 # prix d'au moins `z_morceau` (une stratégie se découpe en ≈ 40 morceaux : avec z ≥ 0, la moitié des morceaux sans avantage
 # passaient ; 61 filles proposées le 27/10, presque toutes des favoris de sport) ; et une stratégie qui bat ses prix
