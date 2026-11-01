@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5953,
+  "principal": 5954,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2211,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-90227247887598257118912884872810330090020282209481533447759142359719068134023"
   }
  ],
- "derniere_execution": "2026-11-01T13:57:45+00:00",
+ "derniere_execution": "2026-11-01T14:04:54+00:00",
  "dernier_seq_reglements": {
-  "principal": 5953,
+  "principal": 5954,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2211,
@@ -1835,7 +1835,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3810,
+  "fantome:nf_sport_v1.0.0": 3813,
   "fantome:nm_court_v1.0.0": 2151,
   "fantome:nm_crypto_v1.0.0": 1812,
   "fantome:nm_hors_crypto_v1.0.0": 2211,
@@ -1934,7 +1934,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 906,
+  "fantome:moins_de_cartes_v1.0.0": 908,
   "fantome:non_aux_drames_v1.0.0": 566,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 726,
@@ -1956,7 +1956,7 @@
   "fantome:toucher_metaux_v1.0.0": 382,
   "fantome:candidats_non_v1.0.0": 360,
   "fantome:compteur_truth_v1.0.0": 388,
-  "fantome:moins_de_cartes_bo5_v1.0.0": 342,
+  "fantome:moins_de_cartes_bo5_v1.0.0": 344,
   "fantome:moins_de_cartes_lol_v1.0.0": 365,
   "fantome:detroits_non_normal_v1.0.0": 324,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 558,
