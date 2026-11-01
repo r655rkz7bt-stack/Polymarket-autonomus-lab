@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5939,
+  "principal": 5940,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2209,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3796,
+  "fantome:nf_sport_v1.0.0": 3798,
   "fantome:nm_court_v1.0.0": 2149,
   "fantome:nm_crypto_v1.0.0": 1810,
   "fantome:nm_hors_crypto_v1.0.0": 2209,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2816,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2818,
   "fantome:nf_sport_sans_fin_v1.0.0": 1763,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -109,12 +109,12 @@
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
   "fantome:nf_court_football_v1.0.0": 945,
-  "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1151,
+  "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1153,
   "fantome:nf_tennis_12_18h_v1.0.0": 973,
   "fantome:compteur_tweets_non_v1.0.0": 709,
   "fantome:nf_court_football_soir_v1.0.0": 813,
   "fantome:nf_court_soir_v1.0.0": 812,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1098,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1100,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 825,
@@ -148,7 +148,7 @@
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 438,
   "fantome:detroits_tranches_v1.0.0": 419,
   "fantome:mots_prononces_nfl_v1.1.0": 416,
-  "fantome:detroits_marche_log_v1.0.0": 440,
+  "fantome:detroits_marche_log_v1.0.0": 443,
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 513,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
@@ -172,16 +172,16 @@
   "fantome:contrer_crypto_audace_v1.0.0": 378,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
-  "fantome:compteur_tweets_12_18h_v1.0.0": 341,
+  "fantome:compteur_tweets_12_18h_v1.0.0": 343,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 278,
   "fantome:compteur_tweets_72_168h_v1.0.0": 286,
   "fantome:crypto_non_10_20_v1.0.0": 388,
   "fantome:moins_de_kills_v1.0.0": 281,
   "fantome:suivre_inities_v1.0.0": 229,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 285,
+  "fantome:ia_oui_sorties_v1.0.0": 287,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
-  "fantome:tranche_centrale_non_v1.0.0": 250,
+  "fantome:tranche_centrale_non_v1.0.0": 252,
   "fantome:suivre_inities_seul_v1.0.0": 212,
   "fantome:compteur_tweets_oui_v1.0.0": 259,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 221,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 59,
   "fantome:classement_appstore_v1.1.0": 24
  },
- "verifiees": 15829,
+ "verifiees": 15836,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-53170795543501429050073790095562436141024095668635928876950931044134936373338"
   }
  ],
- "derniere_execution": "2026-11-01T12:57:35+00:00",
+ "derniere_execution": "2026-11-01T13:05:10+00:00",
  "dernier_seq_reglements": {
-  "principal": 5939,
+  "principal": 5940,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2209,
@@ -1944,7 +1944,7 @@
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 438,
   "fantome:detroits_tranches_v1.0.0": 419,
   "fantome:mots_prononces_nfl_v1.1.0": 416,
-  "fantome:detroits_marche_log_v1.0.0": 440,
+  "fantome:detroits_marche_log_v1.0.0": 443,
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 513,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
@@ -1986,5 +1986,5 @@
   "fantome:sieges_coherence_v1.0.0": 59,
   "fantome:classement_appstore_v1.1.0": 24
  },
- "reglements_verifies": 9815
+ "reglements_verifies": 9817
 }
