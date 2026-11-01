@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5887,
+  "principal": 5888,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2201,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-1932063535021225749539198519347996103340056389540156181152000091470021360743"
   }
  ],
- "derniere_execution": "2026-11-01T08:44:03+00:00",
+ "derniere_execution": "2026-11-01T08:48:44+00:00",
  "dernier_seq_reglements": {
-  "principal": 5887,
+  "principal": 5888,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2201,
@@ -1875,7 +1875,7 @@
   "fantome:nf_sport_patiente_tennis_v1.0.0": 1228,
   "fantome:nf_tennis_prix_bas_v1.0.0": 1022,
   "fantome:nf_tennis_v1.0.0": 466,
-  "fantome:crypto_threshold_non_v1.0.0": 811,
+  "fantome:crypto_threshold_non_v1.0.0": 813,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 814,
   "fantome:nf_sport_patiente_matin_v1.0.0": 939,
   "fantome:apres_echeance_v1.0.0": 775,
