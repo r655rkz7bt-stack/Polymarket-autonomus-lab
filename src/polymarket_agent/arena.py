@@ -361,16 +361,19 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
                validated: dict | None = None, min_t: float | None = None,
                modes: dict | None = None, merit: float = 1.0, families: dict | None = None,
                max_overlap: float | None = None, twins: dict | None = None,
-               keep_t: float | None = None, others_share: float | None = None) -> dict[str, float]:
+               keep_t: float | None = None, others_share: float | None = None,
+               holders: set[str] | frozenset[str] = frozenset()) -> dict[str, float]:
     """{stratégie: part du capital principal}. Vide = ne rien faire (aucune stratégie ne passe
-    le seuil d'entrée). Le champion garde sa place tant qu'il reste au-dessus de `keep_growth`.
+    le seuil d'entrée). Le champion ET chaque stratégie déjà suivie (`holders`, parts du recalcul précédent) gardent leur place
+    tant qu'elles restent au-dessus de `keep_growth`, qui peut être négatif (« trust the process », 01/11/2026 : avant, seules
+    les championnes avaient un maintien ; les autres sortaient au premier creux, experiments/confiance_processus.md).
     `twins` (facultatif) reçoit les qualifiées écartées comme doublons : {nom: {comme, chevauchement}}.
     `others_share` (option B d'Etienne, 21/10/2026) : dès qu'une stratégie VALIDÉE sur le passé est
     qualifiée, les validées passent d'abord (places, doublons) et les autres se partagent au plus
     `others_share` du capital ; sans validée qualifiée, rien ne change."""
     def kept(s: Standing) -> bool:
-        return (s.name == champion and (s.closed_trades >= min_trades or bool(s.mode))
-                and _stays(s, min_trades, max(keep_growth, 0.0), keep_t))
+        return ((s.name == champion or s.name in holders) and (s.closed_trades >= min_trades or bool(s.mode))
+                and _stays(s, min_trades, keep_growth, keep_t))
 
     def proven(s: Standing) -> bool:
         return others_share is not None and validated_gates(s.name, validated) is not None
@@ -396,12 +399,16 @@ def allocation(standings: list[Standing], min_trades: int, max_strategies: int, 
 
 
 def _split(group: list[Standing], merit: float) -> dict[str, float]:
-    """Moitié à égalité, moitié au mérite (merit = 1 : proportionnel pur à la croissance)."""
-    total = sum(s.log_growth for s in group)
-    if total <= 0:
+    """Moitié à égalité, moitié au mérite (merit = 1 : proportionnel pur à la croissance). Une stratégie gardée dans un
+    creux (croissance négative, au-dessus du seuil de maintien) n'a pas de mérite, seulement sa part égale ; si aucune n'a de
+    croissance positive, parts égales (01/11/2026 : avant, plus rien n'était suivi)."""
+    if not group:
         return {}
     k = len(group)
-    return {s.name: (1 - merit) / k + merit * s.log_growth / total for s in group}
+    total = sum(max(s.log_growth, 0.0) for s in group)
+    if total <= 0:
+        return {s.name: 1.0 / k for s in group}
+    return {s.name: (1 - merit) / k + merit * max(s.log_growth, 0.0) / total for s in group}
 
 
 def exposure(standings: list[Standing], shares: dict[str, float], cfg: dict) -> dict[str, float]:
@@ -608,7 +615,7 @@ def retire_daughters(main: Ledger, competitors: dict[str, Ledger], standings: li
 def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
               now: datetime | None = None, rewards: dict[str, float] | None = None,
               reward_days: dict[str, int] | None = None, families: dict[str, str] | None = None,
-              mothers: dict[str, str] | None = None) -> dict:
+              mothers: dict[str, str] | None = None, holders: set[str] | frozenset[str] = frozenset()) -> dict:
     """Met à jour champion et éliminations dans le journal principal. Retourne un résumé.
     `rewards` : {nom: récompenses estimées comptées pour le classement} (option A) ;
     `reward_days` : {nom: journées de récompenses versables} (mode « recompenses »)."""
@@ -655,7 +662,7 @@ def run_arena(main: Ledger, competitors: dict[str, Ledger], cfg: dict,
                         champion=main.state.champion, keep_growth=keep,
                         merit=float((cfg.get("repartition") or {}).get("merite", 1.0)), families=families,
                         max_overlap=None if max_overlap is None else float(max_overlap), twins=twins,
-                        keep_t=keep_t, others_share=_others_share(cfg), **gates)
+                        keep_t=keep_t, others_share=_others_share(cfg), holders=holders, **gates)
     engaged = exposure(final, shares, cfg)
     if not shares and main.state.champion:
         engaged = exposure(final, {main.state.champion: 1.0}, cfg)

@@ -26,6 +26,9 @@ Chiffres et rejeux : `experiments/audace.md`.
   l'expérience suivante (`experiments/carnet_experiences.md`, une ligne par stratégie éliminée ou retirée). Exemple : les
   « contrer » de la crypto perdaient −94 €, mais leurs paris à 0,10-0,45 battaient leurs prix (58 gagnés pour 39,3 attendus) :
   la perte venait des billets sous 0,10 et des mises → deux expériences « audace ».
+- **Trust the process** (décision d'Etienne, 01/11/2026, `experiments/confiance_processus.md`) : une stratégie qui ENTRE au
+  capital principal y reste pendant ses creux (jusqu'à −10 % de croissance) et continue de miser (au moins le quart de sa mise) ;
+  on ne la lâche pas au premier jour rouge. Changer sans cesse de stratégie coûtait cher (rejeu : −51 € → +32 €).
 - **Une perte n'est jamais, à elle seule, une raison d'ajouter un frein.** Un frein se prouve comme une stratégie : un rejeu
   doit montrer qu'il améliore le résultat ou le rendement par euro, pas seulement qu'il mise moins. Passe : le plafond de 5 %
   des mises copiées (−2,6 % → −1,0 % par euro). Ne passe pas : écarter les favoris du principal (−54 € → −290 € au rejeu).

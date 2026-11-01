@@ -511,9 +511,13 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # 3 bis. Arène : classement, promotion du champion, élimination hebdomadaire.
     competitors = {p.name.removeprefix("fantome:"): p for p in portfolios[1:]}
     rewards, reward_days = _ranking_rewards(deps, competitors)
+    try:  # stratégies suivies au recalcul précédent : elles gardent leur place tant qu'elles tiennent le seuil de maintien
+        holders = set((json.loads(deps.db.get_value("repartition_principal") or "{}").get("parts") or {}))
+    except (ValueError, TypeError, AttributeError):
+        holders = set()
     report.arena = run_arena(main.ledger, {n: p.ledger for n, p in competitors.items()},
                              deps.settings["arena"], deps.now(), rewards=rewards, reward_days=reward_days,
-                             families=family_map(), mothers=mother_map())
+                             families=family_map(), mothers=mother_map(), holders=holders)
     deps.db.set_value("doublons_principal", json.dumps(report.arena.get("doublons") or {}))  # tableau de bord
     for name, portfolio in competitors.items():
         if name in main.ledger.state.eliminated:

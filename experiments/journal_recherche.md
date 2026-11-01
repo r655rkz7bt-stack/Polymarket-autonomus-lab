@@ -3,6 +3,13 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-01 (session avec Etienne : « trust the process »)
+
+- **Question d'Etienne** : le principal coupe-t-il une stratégie dès qu'elle perd, sans lui laisser le temps de se rattraper ?
+- **Oui, en partie** (`confiance_processus.md`) : seule la championne avait un seuil de maintien ; les autres suivies devaient repasser l'entrée chaque heure ; la mise mesurée tombait à 0 dans un creux ; les fantômes étaient retirés dès 20 opérations.
+- **Rejeu** (15/10 → 01/11, ~25 réglages) : avec la mise mesurée, règle en vigueur −51 € ; garder chaque stratégie suivie jusqu'à −10 % et miser au moins 0,25 : **+32 €**, mieux dans les deux moitiés, plateau de −5 à −15 % (+25 à +31 €), −20 % : −46 €.
+- **Appliqué** : `keep_log_growth −0,10`, `keep_t_stat null`, maintien pour toutes les stratégies suivies (`allocation(holders=)`), `part_min 0,25`, retrait des fantômes à 40 opérations / confiance −2 / 600 €. Tests verts. À rejouer vers le 08/11.
+
 ## 2026-11-01 (passage chercheur de midi, 10 h 55 → 10 h 59 UTC, 4 min ; durée visée 105 min non atteinte : toutes les pistes restantes attendent des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-01_midi_n1_fille_6_12h.md`, familles 2 et 5). Aucune « Enquête obligatoire » dans la feuille de mission. La n° 1 de l'arène (17 paris, +231 €) gagne 16 paris pour 15,1 attendus (z +0,71) ; sa mère, sur la même plage, perd −98 € avec d'autres paris. Pas un avantage, pas de défaut de code.
