@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5810,
+  "principal": 5811,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2190,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3709,
+  "fantome:nf_sport_v1.0.0": 3713,
   "fantome:nm_court_v1.0.0": 2129,
   "fantome:nm_crypto_v1.0.0": 1789,
   "fantome:nm_hors_crypto_v1.0.0": 2186,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 320,
   "fantome:moins_de_cartes_lol_v1.0.0": 344,
   "fantome:detroits_non_normal_v1.0.0": 303,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 518,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 520,
   "fantome:mentions_non_outsider_v1.0.0": 282,
   "fantome:mentions_non_v1.0.0": 280,
   "fantome:rallies_non_favori_v1.0.0": 287,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 40,
   "fantome:classement_appstore_v1.1.0": 5
  },
- "verifiees": 15593,
+ "verifiees": 15595,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-64203092246322316787007665121547450705898232552040654577461521739960541135681"
   }
  ],
- "derniere_execution": "2026-11-01T03:18:57+00:00",
+ "derniere_execution": "2026-11-01T03:22:55+00:00",
  "dernier_seq_reglements": {
-  "principal": 5810,
+  "principal": 5811,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2190,
