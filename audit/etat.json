@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5871,
+  "principal": 5872,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2198,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-1932063535021225749539198519347996103340056389540156181152000091470021360743"
   }
  ],
- "derniere_execution": "2026-11-01T07:26:50+00:00",
+ "derniere_execution": "2026-11-01T07:30:37+00:00",
  "dernier_seq_reglements": {
-  "principal": 5871,
+  "principal": 5872,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2198,
@@ -1959,7 +1959,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 329,
   "fantome:moins_de_cartes_lol_v1.0.0": 352,
   "fantome:detroits_non_normal_v1.0.0": 311,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 541,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 543,
   "fantome:mentions_non_outsider_v1.0.0": 290,
   "fantome:mentions_non_v1.0.0": 288,
   "fantome:rallies_non_favori_v1.0.0": 297,
