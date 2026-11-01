@@ -383,9 +383,11 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     acfg = arena_cfg(settings, root)
     # Répartition du capital principal (main._steady_shares) : toutes les championnes et leur part.
     try:
-        parts = {n: float(w) for n, w in (json.loads(db.get_value("repartition_principal") or "{}").get("parts") or {}).items()}
+        repartition = json.loads(db.get_value("repartition_principal") or "{}")
+        parts = {n: float(w) for n, w in (repartition.get("parts") or {}).items()}
+        parts_depuis = repartition.get("depuis") or {}
     except (ValueError, TypeError, AttributeError):
-        parts = {}
+        parts, parts_depuis = {}, {}
     # Qualifiées écartées parce qu'elles font les mêmes paris qu'une autre (arena.allocation, doublons).
     try:
         twins = json.loads(db.get_value("doublons_principal") or "{}")
@@ -410,6 +412,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                       "jours": round(s.days(now), 1), "eliminee": s.eliminated,
                       "champion": s.name == state.champion or s.name in parts, "verdict": verdict,
                       "part_principal": round(parts.get(s.name, 0.0), 4),
+                      "part_depuis": parts_depuis.get(s.name),
                       "doublon": twins.get(s.name) if s.name not in parts else None,
                       "courbe": _downsample(equity_curve(read_entries(shadows[s.name])), 60),
                       "positions": len(shadows[s.name].state.positions),

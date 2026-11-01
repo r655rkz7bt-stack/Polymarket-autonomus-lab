@@ -677,3 +677,17 @@ def test_principal_posted_fill_in_play_after_the_brake_is_grave():
     assert enquete.principal_posee_en_match({"principal": _ledger(buy(t, True, -0.5))}) == []   # servi avant le match : permis
     old = buy(datetime(2026, 10, 27, 3, 0, tzinfo=timezone.utc), True, 0.4)                      # avant le frein : historique
     assert enquete.principal_posee_en_match({"principal": _ledger(old)}) == []
+
+
+def test_a_share_born_after_the_ghost_bets_is_not_a_missing_copy():
+    """1/11 : `moins_de_kills` a eu sa part le 31/10 à 19 h 41 ; ses 12 achats datent d'avant (jusqu'à 11 h 07) : le principal ne pouvait pas les copier."""
+    t = NOW - timedelta(hours=30)
+    ghost = _ledger(*[_buy(t + timedelta(minutes=i), f"t{i}", 0.6, 15, strategy="mdc") for i in range(12)])
+    parts = {"mdc_v1.0.0": 0.09}
+    entries = {"mdc_v1.0.0": ghost, "principal": _ledger()}
+    born_late = {"mdc_v1.0.0": (NOW - timedelta(hours=5)).isoformat()}
+    assert enquete.copie_absente(entries, parts, NOW, depuis=born_late) == []                    # part née après les paris
+    assert enquete.copie_absente(entries, parts, NOW) != []                                      # sans date : comme avant
+    born_early = {"mdc_v1.0.0": (NOW - timedelta(hours=40)).isoformat()}
+    assert enquete.copie_absente(entries, parts, NOW, depuis=born_early)[0]["gravite"] == enquete.GRAVE  # part ancienne : toujours grave
+    assert enquete.copie_absente(entries, parts, NOW, depuis={"mdc_v1.0.0": "pas une date"}) != []        # date illisible : on ne cache rien

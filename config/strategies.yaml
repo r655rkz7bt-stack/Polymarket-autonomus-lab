@@ -3910,9 +3910,9 @@ classement_appstore:
   # Sur le passé on ne peut rien tester en direct (Apple n'archive pas le classement) ; l'archive des marchés (182 événements réglés, familles_tranches.md) montre que le gagnant de la semaine
   # précédente, coté 0,74-0,80, gagne 48 fois pour 59,3 attendues : le marché surcote la stabilité du classement SANS regarder le classement ; ici on ne joue que le n°1 du moment, dans les 6 h.
   class: classement_appstore
-  enabled: false
-  version: "1.0.0"
-  created_at: "2026-10-27"
+  enabled: true
+  version: "1.1.0"   # 1/11/2026 : v1.0.0 retirée pour « inactivité » le 30/10 à 17 h 57 (un seul vendredi de jeu, aucun achat), puis coupée par erreur avec les éliminées ; nouvelle version = nouveau départ, protégée par jamais_retirer
+  created_at: "2026-11-01"
   hypothesis: >
     Le n°1 d'un classement qui se règle dans 1 à 6 heures est connu de tous mais peu de gens regardent le flux : marchés de 1 400 $ de liquidité, 5 000 $ de volume par jour, 0 frais (feesEnabled faux).
     Chance de rester n°1 supposée 0,95 (≤ 1 h), 0,90 (≤ 3 h), 0,85 (≤ 6 h), sans mesure. Une perte apprendrait que le classement bouge plus vite que ces valeurs (alors le journal `appstore:histo`,

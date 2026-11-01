@@ -699,8 +699,14 @@ def _steady_shares(deps: CycleDeps, shares: dict[str, float]) -> dict[str, float
     old = prev.get("parts") or {}
     if age is not None and age < minutes and set(old) == set(shares):
         return {n: float(old[n]) for n in shares}
+    # Date d'entrée de chaque part (1/11/2026) : l'enquête `copie_absente` ne compte que les paris du fantôme faits APRÈS son entrée
+    # (moins_de_kills : part née le 31/10 à 19 h 41, derniers achats à 11 h 07, « 0 copié sur 12 » à tort).
+    since = {n: d for n, d in (prev.get("depuis") or {}).items() if n in shares}
+    for n in shares:
+        since.setdefault(n, now.isoformat(timespec="seconds"))
     deps.db.set_value("repartition_principal", json.dumps({"date": now.isoformat(timespec="seconds"),
-                                                           "parts": {n: round(w, 6) for n, w in shares.items()}}))
+                                                           "parts": {n: round(w, 6) for n, w in shares.items()},
+                                                           "depuis": since}))
     return shares
 
 

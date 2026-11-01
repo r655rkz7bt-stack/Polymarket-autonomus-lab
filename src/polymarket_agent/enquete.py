@@ -1140,10 +1140,12 @@ def sport_hors_match(entries: dict[str, list[dict]], configs: dict, since: datet
 
 
 def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None, now: datetime, days: float = 3,
-                  min_tokens: int = 10, min_rate: float = 0.20) -> list[dict]:
+                  min_tokens: int = 10, min_rate: float = 0.20, depuis: dict[str, str] | None = None) -> list[dict]:
     """Une stratégie qui a une part du capital principal est-elle copiée ? Part des jetons achetés par le fantôme ces `days` derniers jours que le
     principal a achetés aussi. 26/10/2026 : `moins_de_cartes` (14,6 % du capital), 0 jeton copié sur 70 : la copie à l'échelle de la part (0,5 part) était
-    sous le minimum du marché (5 parts) et rejetée ; l'argent de la part restait inutilisé pendant que la stratégie la mieux étayée de l'arène jouait seule."""
+    sous le minimum du marché (5 parts) et rejetée ; l'argent de la part restait inutilisé pendant que la stratégie la mieux étayée de l'arène jouait seule.
+    `depuis` : date d'entrée de chaque part (1/11/2026) ; les paris du fantôme d'AVANT cette date ne comptent pas (le principal n'avait pas encore la
+    stratégie : `moins_de_kills`, part née le 31/10 à 19 h 41, derniers achats du fantôme à 11 h 07, « 0 copié sur 12 » à tort)."""
     if not parts or "principal" not in entries:
         return []
     since = now - timedelta(days=days)
@@ -1156,7 +1158,13 @@ def copie_absente(entries: dict[str, list[dict]], parts: dict[str, float] | None
     for name, share in sorted(parts.items(), key=lambda kv: -kv[1]):
         if share <= 0 or name not in entries:
             continue
-        ghost = {e["data"]["token_id"] for e in _buys(entries[name], since)}
+        start = since
+        try:
+            if depuis and depuis.get(name):
+                start = max(since, datetime.fromisoformat(depuis[name]))
+        except (ValueError, TypeError):
+            pass
+        ghost = {e["data"]["token_id"] for e in _buys(entries[name], start)}
         if len(ghost) < min_tokens:
             continue
         sid = name.rsplit("_v", 1)[0]
@@ -1225,7 +1233,7 @@ def sans_test_passe(entries: dict[str, list[dict]], configs: dict, textes: dict[
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
         audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None,
-        textes: dict[str, str] | None = None) -> list[dict]:
+        textes: dict[str, str] | None = None, depuis: dict[str, str] | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -1240,7 +1248,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)
-                + copie_absente(entries, parts, now, days=max(days, 3)) + sans_test_passe(entries, configs, textes))
+                + copie_absente(entries, parts, now, days=max(days, 3), depuis=depuis) + sans_test_passe(entries, configs, textes))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 
