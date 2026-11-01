@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 3092,
+  "fantome:nf_court_v1.0.0": 3094,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1997,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-1932063535021225749539198519347996103340056389540156181152000091470021360743"
   }
  ],
- "derniere_execution": "2026-11-01T11:28:44+00:00",
+ "derniere_execution": "2026-11-01T11:32:48+00:00",
  "dernier_seq_reglements": {
-  "principal": 5919,
+  "principal": 5922,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2206,
@@ -1826,7 +1826,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 3092,
+  "fantome:nf_court_v1.0.0": 3094,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1997,
@@ -1835,7 +1835,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3776,
+  "fantome:nf_sport_v1.0.0": 3779,
   "fantome:nm_court_v1.0.0": 2146,
   "fantome:nm_crypto_v1.0.0": 1807,
   "fantome:nm_hors_crypto_v1.0.0": 2204,
@@ -1888,7 +1888,7 @@
   "fantome:marches_jumeaux_v1.0.0": 715,
   "fantome:outsiders_surcotes_v1.0.0": 621,
   "fantome:paire_oui_non_v1.0.0": 715,
-  "fantome:compteur_tweets_v1.0.0": 952,
+  "fantome:compteur_tweets_v1.0.0": 955,
   "fantome:cotes_tennis_v1.0.0": 707,
   "fantome:football_trois_issues_v1.0.0": 707,
   "fantome:futurs_bookmakers_v1.0.0": 707,
@@ -1941,7 +1941,7 @@
   "fantome:vague_volume_suivre_x5_v1.0.0": 695,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 443,
-  "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 434,
+  "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 436,
   "fantome:detroits_tranches_v1.0.0": 416,
   "fantome:mots_prononces_nfl_v1.1.0": 413,
   "fantome:detroits_marche_log_v1.0.0": 437,
@@ -1979,12 +1979,12 @@
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 248,
   "fantome:suivre_inities_seul_v1.0.0": 209,
-  "fantome:compteur_tweets_oui_v1.0.0": 255,
-  "fantome:compteur_tweets_48h_audace_v1.0.0": 216,
+  "fantome:compteur_tweets_oui_v1.0.0": 257,
+  "fantome:compteur_tweets_48h_audace_v1.0.0": 219,
   "fantome:favori_esport_milieu_v1.0.0": 172,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 203,
   "fantome:sieges_coherence_v1.0.0": 56,
   "fantome:classement_appstore_v1.1.0": 21
  },
- "reglements_verifies": 9808
+ "reglements_verifies": 9811
 }
