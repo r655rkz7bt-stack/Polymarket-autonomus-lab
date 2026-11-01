@@ -3,6 +3,11 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-01 (session avec Etienne : stop-loss « intelligents »)
+
+- **Recherche** (`stop_loss.md`) : 9 879 positions réglées de l'arène, prix du CLOB à 5 minutes, 21 règles de stop-loss (fixes, relatives, borne basse, volatilité, suiveurs, avant/pendant le match). **Toutes perdent** contre « garder jusqu'au règlement » (−1 705 à −11 224 € avec une vente à −0,015 ; même à vente gratuite, sauf deux réglages proches de zéro). Raison : après une chute, les positions gagnent 2,3 à 2,9 points de plus que le prix du moment (le marché sur-réagit).
+- **Arène** : rien à changer (aucune stratégie active n'a de stop-loss). Piste ouverte : racheter après une chute, à tester par famille.
+
 ## 2026-11-01 (session avec Etienne : « trust the process »)
 
 - **Question d'Etienne** : le principal coupe-t-il une stratégie dès qu'elle perd, sans lui laisser le temps de se rattraper ?
