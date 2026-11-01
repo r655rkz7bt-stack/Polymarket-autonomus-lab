@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6025,
+  "principal": 6026,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2221,
@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 3143,
+  "fantome:nf_court_v1.0.0": 3145,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2017,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 512,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1009,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1215,
+  "fantome:nf_sport_18_24h_v1.0.0": 1218,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 533,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 931,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 355,
   "fantome:moins_de_cartes_lol_v1.0.0": 375,
   "fantome:detroits_non_normal_v1.0.0": 334,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 571,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 573,
   "fantome:mentions_non_outsider_v1.0.0": 313,
   "fantome:mentions_non_v1.0.0": 311,
   "fantome:rallies_non_favori_v1.0.0": 320,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 73,
   "fantome:classement_appstore_v1.1.0": 36
  },
- "verifiees": 15970,
+ "verifiees": 15974,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-74807896398462992352864811178466846356049454681625812242275587097690081037375"
   }
  ],
- "derniere_execution": "2026-11-01T19:17:55+00:00",
+ "derniere_execution": "2026-11-01T19:23:14+00:00",
  "dernier_seq_reglements": {
-  "principal": 6025,
+  "principal": 6026,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2221,
@@ -1826,7 +1826,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 3145,
+  "fantome:nf_court_v1.0.0": 3147,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2017,
