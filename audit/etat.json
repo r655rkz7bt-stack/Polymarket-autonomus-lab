@@ -99,7 +99,7 @@
   "fantome:kalshi_reference_v1.0.0": 707,
   "fantome:manifold_reference_v1.0.0": 780,
   "fantome:predictit_reference_v1.0.0": 775,
-  "fantome:fatigue_nhl_v1.0.0": 825,
+  "fantome:fatigue_nhl_v1.0.0": 827,
   "fantome:mots_nouveaux_v1.0.0": 920,
   "fantome:mots_prononces_v1.0.0": 1005,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 79,
   "fantome:classement_appstore_v1.1.0": 43
  },
- "verifiees": 16023,
+ "verifiees": 16024,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-74807896398462992352864811178466846356049454681625812242275587097690081037375"
   }
  ],
- "derniere_execution": "2026-11-01T22:34:37+00:00",
+ "derniere_execution": "2026-11-01T22:37:20+00:00",
  "dernier_seq_reglements": {
-  "principal": 6076,
+  "principal": 6077,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2228,
@@ -1848,7 +1848,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2894,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2896,
   "fantome:nf_sport_sans_fin_v1.0.0": 1789,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
