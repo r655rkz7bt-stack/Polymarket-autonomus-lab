@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5775,
+  "principal": 5776,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2185,
@@ -141,8 +141,8 @@
   "fantome:moins_de_cartes_v1.0.0": 870,
   "fantome:non_aux_drames_v1.0.0": 535,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 692,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 665,
+  "fantome:vague_volume_suivre_v1.0.0": 693,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 666,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 422,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 411,
@@ -1793,9 +1793,9 @@
    "op_id": "settle-66093947480123855992630867316516038882946511472511026727970771245105804671513"
   }
  ],
- "derniere_execution": "2026-11-01T00:42:33+00:00",
+ "derniere_execution": "2026-11-01T00:48:42+00:00",
  "dernier_seq_reglements": {
-  "principal": 5775,
+  "principal": 5776,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2185,
@@ -1830,7 +1830,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 1948,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1803,
+  "fantome:nf_oui_v1.0.0": 1805,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
@@ -1936,8 +1936,8 @@
   "fantome:moins_de_cartes_v1.0.0": 870,
   "fantome:non_aux_drames_v1.0.0": 535,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 692,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 665,
+  "fantome:vague_volume_suivre_v1.0.0": 695,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 668,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 422,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 411,
@@ -1984,5 +1984,5 @@
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 180,
   "fantome:sieges_coherence_v1.0.0": 35
  },
- "reglements_verifies": 9630
+ "reglements_verifies": 9632
 }
