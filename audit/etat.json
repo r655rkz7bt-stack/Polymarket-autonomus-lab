@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5806,
+  "principal": 5807,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2189,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-64203092246322316787007665121547450705898232552040654577461521739960541135681"
   }
  ],
- "derniere_execution": "2026-11-01T02:58:42+00:00",
+ "derniere_execution": "2026-11-01T03:04:50+00:00",
  "dernier_seq_reglements": {
-  "principal": 5806,
+  "principal": 5807,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2189,
@@ -1835,7 +1835,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3707,
+  "fantome:nf_sport_v1.0.0": 3709,
   "fantome:nm_court_v1.0.0": 2128,
   "fantome:nm_crypto_v1.0.0": 1788,
   "fantome:nm_hors_crypto_v1.0.0": 2185,
@@ -1986,5 +1986,5 @@
   "fantome:sieges_coherence_v1.0.0": 40,
   "fantome:classement_appstore_v1.1.0": 4
  },
- "reglements_verifies": 9652
+ "reglements_verifies": 9653
 }
