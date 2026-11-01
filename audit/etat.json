@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6070,
+  "principal": 6071,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2227,
@@ -60,7 +60,7 @@
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
   "fantome:nf_tres_court_v1.0.0": 1177,
-  "fantome:nf_sport_non_v1.0.0": 1660,
+  "fantome:nf_sport_non_v1.0.0": 1661,
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1550,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
@@ -104,7 +104,7 @@
   "fantome:mots_prononces_v1.0.0": 1005,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 795,
-  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1224,
+  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1225,
   "fantome:nf_tennis_debut_match_v1.0.0": 1009,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
@@ -1794,9 +1794,9 @@
    "op_id": "settle-74807896398462992352864811178466846356049454681625812242275587097690081037375"
   }
  ],
- "derniere_execution": "2026-11-01T22:18:29+00:00",
+ "derniere_execution": "2026-11-01T22:23:45+00:00",
  "dernier_seq_reglements": {
-  "principal": 6070,
+  "principal": 6071,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2227,
@@ -1856,7 +1856,7 @@
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
   "fantome:nf_tres_court_v1.0.0": 1177,
-  "fantome:nf_sport_non_v1.0.0": 1660,
+  "fantome:nf_sport_non_v1.0.0": 1661,
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1550,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
@@ -1900,7 +1900,7 @@
   "fantome:mots_prononces_v1.0.0": 1005,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 795,
-  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1224,
+  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1225,
   "fantome:nf_tennis_debut_match_v1.0.0": 1009,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
