@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6089,
+  "principal": 6090,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2230,
@@ -157,7 +157,7 @@
   "fantome:seismes_marche_v1.0.0": 473,
   "fantome:box_office_favori_v1.0.0": 406,
   "fantome:spacex_cumul_v1.0.0": 392,
-  "fantome:toucher_metaux_v1.0.0": 400,
+  "fantome:toucher_metaux_v1.0.0": 404,
   "fantome:candidats_non_v1.0.0": 379,
   "fantome:compteur_truth_v1.0.0": 407,
   "fantome:moins_de_cartes_bo5_v1.0.0": 363,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 81,
   "fantome:classement_appstore_v1.1.0": 45
  },
- "verifiees": 16047,
+ "verifiees": 16050,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-74807896398462992352864811178466846356049454681625812242275587097690081037375"
   }
  ],
- "derniere_execution": "2026-11-01T23:35:46+00:00",
+ "derniere_execution": "2026-11-01T23:38:06+00:00",
  "dernier_seq_reglements": {
-  "principal": 6089,
+  "principal": 6090,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2230,
