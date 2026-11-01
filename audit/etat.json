@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 5972,
+  "principal": 5973,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2214,
@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 3105,
+  "fantome:nf_court_v1.0.0": 3107,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2005,
@@ -70,7 +70,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 1063,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1249,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1250,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
@@ -190,7 +190,7 @@
   "fantome:sieges_coherence_v1.0.0": 65,
   "fantome:classement_appstore_v1.1.0": 29
  },
- "verifiees": 15893,
+ "verifiees": 15894,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1794,9 +1794,9 @@
    "op_id": "settle-90227247887598257118912884872810330090020282209481533447759142359719068134023"
   }
  ],
- "derniere_execution": "2026-11-01T15:28:46+00:00",
+ "derniere_execution": "2026-11-01T15:32:54+00:00",
  "dernier_seq_reglements": {
-  "principal": 5972,
+  "principal": 5973,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2214,
@@ -1835,7 +1835,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 3842,
+  "fantome:nf_sport_v1.0.0": 3845,
   "fantome:nm_court_v1.0.0": 2154,
   "fantome:nm_crypto_v1.0.0": 1815,
   "fantome:nm_hors_crypto_v1.0.0": 2215,
@@ -1866,7 +1866,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 1063,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1249,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1250,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
