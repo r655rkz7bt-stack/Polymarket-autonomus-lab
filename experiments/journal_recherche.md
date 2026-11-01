@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-11-01 (passage chercheur de midi, 10 h 55 → ~11 h 15 UTC ; durée visée 105 min non atteinte : toutes les pistes restantes attendent des données futures, arrêt sans remplissage)
+## 2026-11-01 (passage chercheur de midi, 10 h 55 → 10 h 59 UTC, 4 min ; durée visée 105 min non atteinte : toutes les pistes restantes attendent des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-01_midi_n1_fille_6_12h.md`, familles 2 et 5). Aucune « Enquête obligatoire » dans la feuille de mission. La n° 1 de l'arène (17 paris, +231 €) gagne 16 paris pour 15,1 attendus (z +0,71) ; sa mère, sur la même plage, perd −98 € avec d'autres paris. Pas un avantage, pas de défaut de code.
 - **Recherche** : relevés à jour (rougeole CDC : 2 mercredis, 4 588 → 4 852, pas de nouveau mercredi ; essence AAA : 0 jour ajouté, 16 jours réglés sur ~40). Fichier 2026 de la Géorgie toujours absent (404) : outil `election_direct` inchangé pour le 04/11. Aucun verdict nouveau.
@@ -43,7 +43,7 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Leçons** : une obligation qui revient à chaque passage se règle par la cause (ici : les tests dépendant de la config), pas en la contournant.
 - **Reste ouvert** : (a) `sieges_coherence`, Géorgie le 04/11 ; (b) `mots_prononces` à 30 événements ; (c) rougeole à 8 mercredis, essence à 40 jours.
 
-## 2026-10-31 (passage chercheur de midi, 10 h 55 → ~11 h 15 UTC (premier jet poussé, suite ci-dessous si présente) ; durée visée 91 min : les autres pistes attendent des données futures (rougeole, essence : relevés inchangés ; Géorgie le 04/11))
+## 2026-10-31 (passage chercheur de midi, 10 h 55 → 10 h 59 UTC, 4 min (premier jet poussé, suite ci-dessous si présente) ; durée visée 91 min : les autres pistes attendent des données futures (rougeole, essence : relevés inchangés ; Géorgie le 04/11))
 
 - **Enquête** (fiche : `enquetes/2026-10-31_midi_copie_et_seuil_d_entree.md`, famille 2). Aucune obligation grave. Copie du principal jeton par jeton pour `moins_de_cartes` : 19 copiés sur 53 ; 10 manques = budget de la part épuisé (14-18 €), **24 = stratégie absente du principal le 29/10 de 02 h à 17 h** (t = 0,99 sous le seuil d'entrée 1,0 ; `arena.allocation` ne réserve le seuil de maintien qu'au champion). +12,5 € manqués. Pas de défaut de code, pas d'assouplissement sans rejeu.
 - **Recherche** : relevés rougeole (4 852 au 29/10, pas de nouveau mercredi) et essence (inchangé : 0 jour ajouté) sans suite. **Piste 16 neuve** (`coherence_sieges.md`) : 19 échelles « How many House seats will the Democrats win in <État> ? » contre 287 marchés de district ; la somme des districts diffère de la moyenne de l'échelle jusqu'à 1,85 siège (Caroline du Nord « 6 ou plus » 0,376 contre 0,73-0,83 calculé ; Floride −1,3 ; New York −1,05 ; Texas −0,9 ; Colorado, Virginie, Nevada, Ohio d'accord). Pas de test sur le passé possible (aucune échelle d'État réglée) : verdict **expérience en fantôme**.
