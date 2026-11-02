@@ -63,6 +63,8 @@ def test_repository_config_loads():
         "moins_de_cartes_franche", "tranche_centrale_non",
         # Passage du 28/10/2026 : fille « OUI » de compteur_tweets, mise franche.
         "compteur_tweets_oui", "compteur_tweets_48h_audace",
+        # Passage du 02/11/2026 : Trump, dispersion plus large, mise franche.
+        "compteur_truth_dispersion_6_audace",
         # Passage du 28/10/2026 (soir) : sœur de la n° 1, ordres annulés au coup d'envoi.
         "nf_sport_patiente_prix_850_875_avant_match", "favori_esport_milieu"] if n not in coupees)
     assert all(s.params["kelly_fraction"] == 1 for s in loaded
