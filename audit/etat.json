@@ -1795,9 +1795,9 @@
    "op_id": "settle-85290255974072297586290274758910674617115386431737610991020441397763762695922"
   }
  ],
- "derniere_execution": "2026-11-02T15:42:42+00:00",
+ "derniere_execution": "2026-11-02T15:49:26+00:00",
  "dernier_seq_reglements": {
-  "principal": 6313,
+  "principal": 6315,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2261,
@@ -1951,7 +1951,7 @@
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 516,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 511,
-  "fantome:seismes_marche_v1.0.0": 505,
+  "fantome:seismes_marche_v1.0.0": 507,
   "fantome:box_office_favori_v1.0.0": 437,
   "fantome:spacex_cumul_v1.0.0": 423,
   "fantome:toucher_metaux_v1.0.0": 445,
