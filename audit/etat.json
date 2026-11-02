@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6303,
+  "principal": 6304,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2260,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1899,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1885,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2702,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2703,
   "fantome:contrer_crypto_v1.0.0": 2494,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1893,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -139,7 +139,7 @@
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
   "fantome:moins_de_cartes_v1.0.0": 1003,
-  "fantome:non_aux_drames_v1.0.0": 623,
+  "fantome:non_aux_drames_v1.0.0": 624,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 776,
   "fantome:vague_volume_suivre_x5_v1.0.0": 751,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-85290255974072297586290274758910674617115386431737610991020441397763762695922"
   }
  ],
- "derniere_execution": "2026-11-02T15:05:13+00:00",
+ "derniere_execution": "2026-11-02T15:08:11+00:00",
  "dernier_seq_reglements": {
-  "principal": 6303,
+  "principal": 6304,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2260,
@@ -1821,7 +1821,7 @@
   "fantome:favori_politique_v1.0.0": 1899,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1885,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2702,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2703,
   "fantome:contrer_crypto_v1.0.0": 2494,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1893,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -1936,7 +1936,7 @@
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
   "fantome:moins_de_cartes_v1.0.0": 1003,
-  "fantome:non_aux_drames_v1.0.0": 623,
+  "fantome:non_aux_drames_v1.0.0": 624,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 776,
   "fantome:vague_volume_suivre_x5_v1.0.0": 751,
