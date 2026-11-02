@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6324,
+  "principal": 6325,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2263,
@@ -20,7 +20,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 1940,
+  "fantome:favori_politique_patiente_v1.0.0": 1942,
   "fantome:favori_politique_v1.0.0": 1901,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1887,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -104,7 +104,7 @@
   "fantome:mots_prononces_v1.0.0": 1050,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 795,
-  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1273,
+  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1274,
   "fantome:nf_tennis_debut_match_v1.0.0": 1045,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
@@ -114,7 +114,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 709,
   "fantome:nf_court_football_soir_v1.0.0": 868,
   "fantome:nf_court_soir_v1.0.0": 866,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1202,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1204,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 893,
@@ -191,17 +191,9 @@
   "fantome:classement_appstore_v1.1.0": 78,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 31
  },
- "verifiees": 16272,
+ "verifiees": 16273,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "principal",
-   "seq": 4270,
-   "type": "SETTLE",
-   "date": "2026-10-27T21:14:13",
-   "detail": "réglé à 0 alors que le marché 6037121 n'est pas clos",
-   "op_id": "settle-67438737699802641031530214083344251482783254683257291602800020456022386401038"
-  },
   {
    "portefeuille": "fantome:calibration_patiente_v1.0.0",
    "seq": 2187,
@@ -1793,11 +1785,19 @@
    "date": "2026-11-02T12:16:01",
    "detail": "réglé à 1 alors que le marché 5977789 n'est pas clos",
    "op_id": "settle-85290255974072297586290274758910674617115386431737610991020441397763762695922"
+  },
+  {
+   "portefeuille": "fantome:favori_politique_patiente_v1.0.0",
+   "seq": 1941,
+   "type": "SETTLE",
+   "date": "2026-11-02T16:25:57",
+   "detail": "réglé à 1 alors que le marché 4375452 n'est pas clos",
+   "op_id": "settle-102118785762083092798131745531026782450484540815240224564918892117656672701358"
   }
  ],
- "derniere_execution": "2026-11-02T16:23:40+00:00",
+ "derniere_execution": "2026-11-02T16:27:31+00:00",
  "dernier_seq_reglements": {
-  "principal": 6324,
+  "principal": 6325,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2263,
@@ -1817,7 +1817,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 1940,
+  "fantome:favori_politique_patiente_v1.0.0": 1942,
   "fantome:favori_politique_v1.0.0": 1901,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1887,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -1901,7 +1901,7 @@
   "fantome:mots_prononces_v1.0.0": 1050,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 795,
-  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1273,
+  "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1274,
   "fantome:nf_tennis_debut_match_v1.0.0": 1045,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
