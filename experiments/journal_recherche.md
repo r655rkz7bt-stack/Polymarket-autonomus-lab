@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-02 (passage chercheur de 11 h, 10 h 55 → ~11 h 05 UTC ; durée visée 127 min non atteinte : mêmes pistes qu'à 6 h, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (famille 3, déjà traitée à 6 h, pas de nouvelle donnée de règlement). Aucune « Enquête obligatoire » grave ; les constats « à regarder » sont ceux de 6 h (estimations de `compteur_tweets_12_18h` / `compteur_tweets_48h_audace` : réglage de dispersion déjà documenté le 02/11 à 1 h ; `moins_de_cartes` : un jour fait 91 % du gain). Pas de défaut de code.
+- **Recherche** : rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les trois filles 80/20 refusées une fois de plus : `contrer_crypto_audace` 72-168 h (mère éteinte), `crypto_non_10_20` 24-72 h (46 paris à 0,10-0,20, z +1,8 ; tranche choisie après coup), `compteur_tweets_12_18h` 0,6-0,8 (11 paris, z +2,2 sur une tranche parmi ~7 : tirage de sélection, 3 paris font 92 % du gain).
+- **Leçons** : aucune stratégie éliminée aujourd'hui.
+- **Reste ouvert** : inchangé (élection 03/11, Géorgie 04/11 ~1 h UTC, `sieges_coherence`, rougeole 04/11, essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11).
+
 ## 2026-11-02 (passage chercheur de 6 h, 05 h 54 → ~06 h 05 UTC ; durée visée 122 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-02_matin_positions_ouvertes_apres_echeance.md`, famille 3). `positions_oubliees` (Israël, Serbie, « échéance dépassée de 122-174 h ») : marchés encore ouverts sur Gamma, dates de fin placeholders. 434 marchés de stratégies actives relus : 0 fermé non réglé. Les 528 « fermés non réglés » (19 178 €) viennent de stratégies retirées. Pas de défaut.
