@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6305,
+  "principal": 6306,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2260,
@@ -175,7 +175,7 @@
   "fantome:compteur_tweets_12_18h_v1.0.0": 410,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 336,
   "fantome:compteur_tweets_72_168h_v1.0.0": 345,
-  "fantome:crypto_non_10_20_v1.0.0": 456,
+  "fantome:crypto_non_10_20_v1.0.0": 458,
   "fantome:moins_de_kills_v1.0.0": 332,
   "fantome:suivre_inities_v1.0.0": 280,
   "fantome:classement_appstore_v1.0.0": 182,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 75,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 29
  },
- "verifiees": 16254,
+ "verifiees": 16255,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-85290255974072297586290274758910674617115386431737610991020441397763762695922"
   }
  ],
- "derniere_execution": "2026-11-02T15:12:42+00:00",
+ "derniere_execution": "2026-11-02T15:19:17+00:00",
  "dernier_seq_reglements": {
-  "principal": 6305,
+  "principal": 6306,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2260,
@@ -1849,7 +1849,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3013,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3015,
   "fantome:nf_sport_sans_fin_v1.0.0": 1827,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
