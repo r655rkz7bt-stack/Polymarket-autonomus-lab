@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6260,
+  "principal": 6262,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2254,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1892,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1878,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2690,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2692,
   "fantome:contrer_crypto_v1.0.0": 2486,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1886,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -39,12 +39,12 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4049,
+  "fantome:nf_sport_v1.0.0": 4052,
   "fantome:nm_court_v1.0.0": 2198,
   "fantome:nm_crypto_v1.0.0": 1855,
-  "fantome:nm_hors_crypto_v1.0.0": 2263,
-  "fantome:nm_long_v1.0.0": 2049,
-  "fantome:nm_prix_bas_v1.0.0": 2279,
+  "fantome:nm_hors_crypto_v1.0.0": 2264,
+  "fantome:nm_long_v1.0.0": 2050,
+  "fantome:nm_prix_bas_v1.0.0": 2280,
   "fantome:nm_prix_haut_v1.0.0": 1935,
   "fantome:naive_favorite_large_v1.0.0": 1818,
   "fantome:nf_sport_patiente_v1.0.0": 2645,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2985,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2988,
   "fantome:nf_sport_sans_fin_v1.0.0": 1820,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 992,
+  "fantome:moins_de_cartes_v1.0.0": 994,
   "fantome:non_aux_drames_v1.0.0": 614,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 770,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 69,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 22
  },
- "verifiees": 16211,
+ "verifiees": 16212,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-23143802963033619885223728697414774404484954074315252396326888290119234073735"
   }
  ],
- "derniere_execution": "2026-11-02T11:44:03+00:00",
+ "derniere_execution": "2026-11-02T11:48:08+00:00",
  "dernier_seq_reglements": {
-  "principal": 6260,
+  "principal": 6262,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2254,
@@ -1836,12 +1836,12 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4049,
+  "fantome:nf_sport_v1.0.0": 4052,
   "fantome:nm_court_v1.0.0": 2198,
   "fantome:nm_crypto_v1.0.0": 1855,
-  "fantome:nm_hors_crypto_v1.0.0": 2263,
-  "fantome:nm_long_v1.0.0": 2049,
-  "fantome:nm_prix_bas_v1.0.0": 2279,
+  "fantome:nm_hors_crypto_v1.0.0": 2264,
+  "fantome:nm_long_v1.0.0": 2050,
+  "fantome:nm_prix_bas_v1.0.0": 2280,
   "fantome:nm_prix_haut_v1.0.0": 1935,
   "fantome:naive_favorite_large_v1.0.0": 1818,
   "fantome:nf_sport_patiente_v1.0.0": 2645,
@@ -1849,7 +1849,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 2985,
+  "fantome:nf_sport_prix_haut_v1.0.0": 2988,
   "fantome:nf_sport_sans_fin_v1.0.0": 1820,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1935,7 +1935,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 992,
+  "fantome:moins_de_cartes_v1.0.0": 994,
   "fantome:non_aux_drames_v1.0.0": 614,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 770,
@@ -1988,5 +1988,5 @@
   "fantome:classement_appstore_v1.1.0": 69,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 22
  },
- "reglements_verifies": 10206
+ "reglements_verifies": 10212
 }
