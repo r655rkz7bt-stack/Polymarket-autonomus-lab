@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-02 (passage chercheur de 6 h, 05 h 54 → ~06 h 05 UTC ; durée visée 122 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-02_matin_positions_ouvertes_apres_echeance.md`, famille 3). `positions_oubliees` (Israël, Serbie, « échéance dépassée de 122-174 h ») : marchés encore ouverts sur Gamma, dates de fin placeholders. 434 marchés de stratégies actives relus : 0 fermé non réglé. Les 528 « fermés non réglés » (19 178 €) viennent de stratégies retirées. Pas de défaut.
+- **Recherche** : rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les trois filles 80/20 refusées : `crypto_non_10_20` 24-72 h déjà refusée le 01/11 (tranche choisie après coup, 4 jours de règlement), `contrer_crypto_audace` éteinte (mère éliminée), `compteur_tweets_12_18h` 0,6-0,8 : 11 paris dont 3 font 92 % du gain.
+- **Leçons** : aucune stratégie éliminée aujourd'hui.
+- **Reste ouvert** : inchangé (Géorgie 04/11 ~1 h UTC, `sieges_coherence`, `compteur_truth_dispersion_6_audace` après le 10/11, rougeole, essence, App Store 06/11).
+
 ## 2026-11-02 (passage chercheur de 1 h, 00 h 54 → 01 h 08 UTC, 14 min ; durée visée 117 min non atteinte : les autres pistes (Géorgie et sièges 04/11, rougeole mercredi 04/11, essence à 17 jours sur ~40, App Store 06/11) attendent des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-02_nuit_compteur_truth_dispersion.md`, familles 3 et 2). 10 paris de `compteur_tweets` relus sur Gamma : 10/10 conformes. Le constat `estimation_perimee` de `compteur_tweets_12_18h` (« 200+ » Trump estimé 0,929, payé 0,697, 195 €) n'est pas un carnet périmé : la **dispersion 12** de la formule est trop étroite pour les semaines de Trump. Sur 38 semaines (archive trumpstruth.org) : prévision 0,6-0,85 pour « 200+ » → réel 0,20 (41 départs) ; log-score meilleur à dispersion 5-8 à toutes les heures de la fenêtre. Contre-épreuve XTracker (7 comptes, la série qui tranche) : 39 % des totaux de Trump dans les queues de la loi au lieu de 20 % (19 % à dispersion 5) ; Elon Musk et Ted Cruz sont bien à 12, la Maison-Blanche et NYC Mayor voudraient plus large. Pas de défaut de code (réglage global). Principal : 11 € sur ce marché.
