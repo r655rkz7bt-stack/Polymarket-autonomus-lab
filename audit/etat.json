@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6373,
+  "principal": 6374,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2269,
@@ -20,7 +20,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 1950,
+  "fantome:favori_politique_patiente_v1.0.0": 1951,
   "fantome:favori_politique_v1.0.0": 1910,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1896,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-102118785762083092798131745531026782450484540815240224564918892117656672701358"
   }
  ],
- "derniere_execution": "2026-11-02T19:33:20+00:00",
+ "derniere_execution": "2026-11-02T19:39:17+00:00",
  "dernier_seq_reglements": {
-  "principal": 6373,
+  "principal": 6374,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2269,
@@ -1817,11 +1817,11 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 1950,
+  "fantome:favori_politique_patiente_v1.0.0": 1951,
   "fantome:favori_politique_v1.0.0": 1910,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1896,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2735,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2737,
   "fantome:contrer_crypto_v1.0.0": 2528,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1904,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -1849,7 +1849,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3045,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3047,
   "fantome:nf_sport_sans_fin_v1.0.0": 1835,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
