@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-02 (passage chercheur de 21 h, 20 h 55 → 20 h 58 UTC ; durée visée 135 min non atteinte : mêmes pistes qu'aux passages de 1 h, 6 h, 11 h et 16 h, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (famille 3). Aucune « Enquête obligatoire » grave. Constat « à regarder » nouveau : `compteur_tweets_72_168h` « No » du 02/11 11 h 57 sur « Maison-Blanche 200+ posts du 30/10 au 06/11 » (marché 6288524), estimé 0,265, payé 0,118 (niveaux du carnet 0,11 / 0,12, remplissage partiel 111 parts, mise 14 €). Relu sur Gamma : bon marché, bon type (`culture_fees`, source x.com/WhiteHouse), prix payé = carnet, donc pas un carnet périmé. Le marché cote maintenant « Yes » 0,945 (le « No » vaut 0,055) : c'est l'écart modèle-marché déjà noté le 02/11 à 1 h (dispersion de la formule non adaptée à la Maison-Blanche). À lire au règlement le 06/11. Pas de défaut de code.
+- **Recherche** : rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les trois filles 80/20 de la feuille de mission restent refusées pour les raisons des passages précédents.
+- **Leçons** : aucune stratégie éliminée aujourd'hui.
+- **Reste ouvert** : inchangé, plus `compteur_tweets_72_168h` Maison-Blanche au 06/11.
+
 ## 2026-11-02 (passage chercheur de 16 h, 16 h 07 → ~16 h 20 UTC ; durée visée 132 min non atteinte : mêmes pistes qu'à 11 h, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (famille 3). Aucune « Enquête obligatoire » grave. Constat « à regarder » nouveau : `seismes_marche` « Yes » du 02/11 15 h 47 (≤ 6 séismes ≥ 5,5 du 02 au 08/11), estimé 0,553, payé 0,348, 40 €. Relu sur Gamma : bon marché, règlement USGS, fenêtre à l'heure de l'Est ; le prix payé suit le carnet (niveaux 0,34 / 0,35), donc pas un carnet périmé, c'est un écart modèle-marché (avantage net 0,18). À lire au règlement le 09/11. Les autres constats (`compteur_tweets_*`, `mots_prononces`, `sieges_coherence`) sont ceux déjà documentés. Pas de défaut de code.
