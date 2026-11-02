@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-02 (passage chercheur de 16 h, 16 h 07 → ~16 h 20 UTC ; durée visée 132 min non atteinte : mêmes pistes qu'à 11 h, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (famille 3). Aucune « Enquête obligatoire » grave. Constat « à regarder » nouveau : `seismes_marche` « Yes » du 02/11 15 h 47 (≤ 6 séismes ≥ 5,5 du 02 au 08/11), estimé 0,553, payé 0,348, 40 €. Relu sur Gamma : bon marché, règlement USGS, fenêtre à l'heure de l'Est ; le prix payé suit le carnet (niveaux 0,34 / 0,35), donc pas un carnet périmé, c'est un écart modèle-marché (avantage net 0,18). À lire au règlement le 09/11. Les autres constats (`compteur_tweets_*`, `mots_prononces`, `sieges_coherence`) sont ceux déjà documentés. Pas de défaut de code.
+- **Recherche** : rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les trois filles 80/20 (`contrer_crypto_audace` 72-168 h, `crypto_non_10_20` 24-72 h, `compteur_tweets_12_18h` 0,6-0,8) refusées pour les raisons du 01 et 02/11.
+- **Leçons** : aucune stratégie éliminée aujourd'hui.
+- **Reste ouvert** : inchangé (élection 03/11, Géorgie 04/11, `sieges_coherence`, rougeole 04/11, essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11, `seismes_marche` ≤ 6 au 09/11).
+
 ## 2026-11-02 (passage chercheur de 11 h, 10 h 55 → ~11 h 05 UTC ; durée visée 127 min non atteinte : mêmes pistes qu'à 6 h, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (famille 3, déjà traitée à 6 h, pas de nouvelle donnée de règlement). Aucune « Enquête obligatoire » grave ; les constats « à regarder » sont ceux de 6 h (estimations de `compteur_tweets_12_18h` / `compteur_tweets_48h_audace` : réglage de dispersion déjà documenté le 02/11 à 1 h ; `moins_de_cartes` : un jour fait 91 % du gain). Pas de défaut de code.
