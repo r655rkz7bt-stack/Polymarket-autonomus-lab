@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6633,
+  "principal": 6634,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2304,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1947,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1940,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2786,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2788,
   "fantome:contrer_crypto_v1.0.0": 2583,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1951,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -114,7 +114,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 709,
   "fantome:nf_court_football_soir_v1.0.0": 909,
   "fantome:nf_court_soir_v1.0.0": 907,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1260,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1263,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 943,
@@ -191,33 +191,9 @@
   "fantome:classement_appstore_v1.1.0": 119,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 72
  },
- "verifiees": 16692,
+ "verifiees": 16694,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:nf_sport_patiente_tennis_875_900_v1.0.0",
-   "seq": 784,
-   "type": "SETTLE",
-   "date": "2026-10-27T21:55:55",
-   "detail": "réglé à 1 alors que le marché 6290582 n'est pas clos",
-   "op_id": "settle-12319471399602425998106548065343277128747823187913838326705311943515628901802"
-  },
-  {
-   "portefeuille": "fantome:nf_sport_patiente_v1.0.0",
-   "seq": 2018,
-   "type": "SETTLE",
-   "date": "2026-10-27T21:55:55",
-   "detail": "réglé à 1 alors que le marché 5674371 n'est pas clos",
-   "op_id": "settle-21771262256290228669867766318311520090530757065475960632898274511884313598255"
-  },
-  {
-   "portefeuille": "fantome:nf_sport_prix_haut_v1.0.0",
-   "seq": 1909,
-   "type": "SETTLE",
-   "date": "2026-10-27T21:55:55",
-   "detail": "réglé à 1 alors que le marché 5674371 n'est pas clos",
-   "op_id": "settle-21771262256290228669867766318311520090530757065475960632898274511884313598255"
-  },
   {
    "portefeuille": "fantome:nf_sport_prix_haut_v1.0.0",
    "seq": 1911,
@@ -1793,11 +1769,35 @@
    "date": "2026-11-03T08:31:26",
    "detail": "réglé à 0 alors que le marché 5572739 n'est pas clos",
    "op_id": "settle-23555815623327700904964387009646058734624133921351110016839668068424150592814"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_patiente_12_18h_v1.0.0",
+   "seq": 1263,
+   "type": "SETTLE",
+   "date": "2026-11-03T13:41:06",
+   "detail": "réglé à 1 alors que le marché 6631712 n'est pas clos",
+   "op_id": "settle-185250532878586011273022985463967593960026742276801504700268998547264596993"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_prix_haut_v1.0.0",
+   "seq": 3177,
+   "type": "SETTLE",
+   "date": "2026-11-03T13:41:06",
+   "detail": "réglé à 1 alors que le marché 6631712 n'est pas clos",
+   "op_id": "settle-185250532878586011273022985463967593960026742276801504700268998547264596993"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_v1.0.0",
+   "seq": 4300,
+   "type": "SETTLE",
+   "date": "2026-11-03T13:41:06",
+   "detail": "réglé à 1 alors que le marché 6631712 n'est pas clos",
+   "op_id": "settle-185250532878586011273022985463967593960026742276801504700268998547264596993"
   }
  ],
- "derniere_execution": "2026-11-03T13:38:58+00:00",
+ "derniere_execution": "2026-11-03T13:43:09+00:00",
  "dernier_seq_reglements": {
-  "principal": 6633,
+  "principal": 6634,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2304,
@@ -1836,7 +1836,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4299,
+  "fantome:nf_sport_v1.0.0": 4301,
   "fantome:nm_court_v1.0.0": 2254,
   "fantome:nm_crypto_v1.0.0": 1906,
   "fantome:nm_hors_crypto_v1.0.0": 2324,
@@ -1849,7 +1849,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3176,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3178,
   "fantome:nf_sport_sans_fin_v1.0.0": 1882,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1911,7 +1911,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 709,
   "fantome:nf_court_football_soir_v1.0.0": 909,
   "fantome:nf_court_soir_v1.0.0": 907,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1262,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1265,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 943,
