@@ -1795,9 +1795,9 @@
    "op_id": "settle-23555815623327700904964387009646058734624133921351110016839668068424150592814"
   }
  ],
- "derniere_execution": "2026-11-03T11:48:54+00:00",
+ "derniere_execution": "2026-11-03T11:52:56+00:00",
  "dernier_seq_reglements": {
-  "principal": 6606,
+  "principal": 6607,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2300,
@@ -1960,7 +1960,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 435,
   "fantome:moins_de_cartes_lol_v1.0.0": 454,
   "fantome:detroits_non_normal_v1.0.0": 413,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 661,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 663,
   "fantome:mentions_non_outsider_v1.0.0": 394,
   "fantome:mentions_non_v1.0.0": 394,
   "fantome:rallies_non_favori_v1.0.0": 400,
