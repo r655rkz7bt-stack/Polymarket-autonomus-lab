@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6657,
+  "principal": 6658,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2307,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1950,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1943,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2797,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2799,
   "fantome:contrer_crypto_v1.0.0": 2589,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1954,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 122,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 75
  },
- "verifiees": 16722,
+ "verifiees": 16723,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-83691651207372406248228337453925335879382795448926968160801988094857511331522"
   }
  ],
- "derniere_execution": "2026-11-03T15:17:27+00:00",
+ "derniere_execution": "2026-11-03T15:20:46+00:00",
  "dernier_seq_reglements": {
-  "principal": 6657,
+  "principal": 6658,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2307,
@@ -1827,10 +1827,10 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 3401,
+  "fantome:nf_court_v1.0.0": 3405,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2157,
+  "fantome:nf_moyen_v1.0.0": 2160,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1938,
   "fantome:nf_politique_v1.0.0": 1260,
