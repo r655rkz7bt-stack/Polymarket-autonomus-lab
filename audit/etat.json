@@ -157,7 +157,7 @@
   "fantome:seismes_marche_v1.0.0": 551,
   "fantome:box_office_favori_v1.0.0": 474,
   "fantome:spacex_cumul_v1.0.0": 460,
-  "fantome:toucher_metaux_v1.0.0": 484,
+  "fantome:toucher_metaux_v1.0.0": 485,
   "fantome:candidats_non_v1.0.0": 448,
   "fantome:compteur_truth_v1.0.0": 475,
   "fantome:moins_de_cartes_bo5_v1.0.0": 433,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-23555815623327700904964387009646058734624133921351110016839668068424150592814"
   }
  ],
- "derniere_execution": "2026-11-03T10:21:27+00:00",
+ "derniere_execution": "2026-11-03T10:23:32+00:00",
  "dernier_seq_reglements": {
-  "principal": 6585,
+  "principal": 6586,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2298,
@@ -1945,7 +1945,7 @@
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 532,
   "fantome:detroits_tranches_v1.0.0": 508,
   "fantome:mots_prononces_nfl_v1.1.0": 505,
-  "fantome:detroits_marche_log_v1.0.0": 535,
+  "fantome:detroits_marche_log_v1.0.0": 537,
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 605,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
@@ -1954,7 +1954,7 @@
   "fantome:seismes_marche_v1.0.0": 551,
   "fantome:box_office_favori_v1.0.0": 474,
   "fantome:spacex_cumul_v1.0.0": 460,
-  "fantome:toucher_metaux_v1.0.0": 484,
+  "fantome:toucher_metaux_v1.0.0": 485,
   "fantome:candidats_non_v1.0.0": 448,
   "fantome:compteur_truth_v1.0.0": 475,
   "fantome:moins_de_cartes_bo5_v1.0.0": 433,
