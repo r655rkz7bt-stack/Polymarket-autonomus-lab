@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4381,
+  "fantome:nf_sport_v1.0.0": 4385,
   "fantome:nm_court_v1.0.0": 2270,
   "fantome:nm_crypto_v1.0.0": 1920,
   "fantome:nm_hors_crypto_v1.0.0": 2340,
@@ -99,7 +99,7 @@
   "fantome:kalshi_reference_v1.0.0": 707,
   "fantome:manifold_reference_v1.0.0": 868,
   "fantome:predictit_reference_v1.0.0": 865,
-  "fantome:fatigue_nhl_v1.0.0": 916,
+  "fantome:fatigue_nhl_v1.0.0": 918,
   "fantome:mots_nouveaux_v1.0.0": 1025,
   "fantome:mots_prononces_v1.0.0": 1105,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 607,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1104,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1427,
+  "fantome:nf_sport_18_24h_v1.0.0": 1429,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 630,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1027,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 131,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 84
  },
- "verifiees": 16895,
+ "verifiees": 16898,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-47041107597536607056634380243531769029207818271657460044751504000424165588415"
   }
  ],
- "derniere_execution": "2026-11-03T20:04:21+00:00",
+ "derniere_execution": "2026-11-03T20:10:08+00:00",
  "dernier_seq_reglements": {
-  "principal": 6727,
+  "principal": 6728,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2316,
@@ -1817,7 +1817,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2011,
+  "fantome:favori_politique_patiente_v1.0.0": 2013,
   "fantome:favori_politique_v1.0.0": 1959,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1959,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
