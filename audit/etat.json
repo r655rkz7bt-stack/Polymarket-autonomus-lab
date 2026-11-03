@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6569,
+  "principal": 6570,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2296,
@@ -157,7 +157,7 @@
   "fantome:seismes_marche_v1.0.0": 548,
   "fantome:box_office_favori_v1.0.0": 472,
   "fantome:spacex_cumul_v1.0.0": 458,
-  "fantome:toucher_metaux_v1.0.0": 482,
+  "fantome:toucher_metaux_v1.0.0": 483,
   "fantome:candidats_non_v1.0.0": 446,
   "fantome:compteur_truth_v1.0.0": 473,
   "fantome:moins_de_cartes_bo5_v1.0.0": 431,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-23555815623327700904964387009646058734624133921351110016839668068424150592814"
   }
  ],
- "derniere_execution": "2026-11-03T09:19:28+00:00",
+ "derniere_execution": "2026-11-03T09:22:47+00:00",
  "dernier_seq_reglements": {
-  "principal": 6569,
+  "principal": 6570,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2296,
@@ -1954,7 +1954,7 @@
   "fantome:seismes_marche_v1.0.0": 548,
   "fantome:box_office_favori_v1.0.0": 472,
   "fantome:spacex_cumul_v1.0.0": 458,
-  "fantome:toucher_metaux_v1.0.0": 482,
+  "fantome:toucher_metaux_v1.0.0": 483,
   "fantome:candidats_non_v1.0.0": 446,
   "fantome:compteur_truth_v1.0.0": 473,
   "fantome:moins_de_cartes_bo5_v1.0.0": 431,
