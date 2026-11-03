@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6739,
+  "principal": 6740,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2318,
@@ -35,7 +35,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2196,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1953,
+  "fantome:nf_oui_v1.0.0": 1954,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
@@ -175,7 +175,7 @@
   "fantome:compteur_tweets_12_18h_v1.0.0": 488,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 402,
   "fantome:compteur_tweets_72_168h_v1.0.0": 416,
-  "fantome:crypto_non_10_20_v1.0.0": 538,
+  "fantome:crypto_non_10_20_v1.0.0": 539,
   "fantome:moins_de_kills_v1.0.0": 394,
   "fantome:suivre_inities_v1.0.0": 338,
   "fantome:classement_appstore_v1.0.0": 182,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-47041107597536607056634380243531769029207818271657460044751504000424165588415"
   }
  ],
- "derniere_execution": "2026-11-03T21:12:47+00:00",
+ "derniere_execution": "2026-11-03T21:17:11+00:00",
  "dernier_seq_reglements": {
-  "principal": 6739,
+  "principal": 6740,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2318,
@@ -1832,7 +1832,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2196,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1953,
+  "fantome:nf_oui_v1.0.0": 1954,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
@@ -1972,7 +1972,7 @@
   "fantome:compteur_tweets_12_18h_v1.0.0": 488,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 402,
   "fantome:compteur_tweets_72_168h_v1.0.0": 416,
-  "fantome:crypto_non_10_20_v1.0.0": 538,
+  "fantome:crypto_non_10_20_v1.0.0": 539,
   "fantome:moins_de_kills_v1.0.0": 394,
   "fantome:suivre_inities_v1.0.0": 338,
   "fantome:classement_appstore_v1.0.0": 182,
