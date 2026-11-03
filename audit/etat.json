@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6778,
+  "principal": 6779,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2324,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4436,
+  "fantome:nf_sport_v1.0.0": 4438,
   "fantome:nm_court_v1.0.0": 2278,
   "fantome:nm_crypto_v1.0.0": 1927,
   "fantome:nm_hors_crypto_v1.0.0": 2348,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3270,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3272,
   "fantome:nf_sport_sans_fin_v1.0.0": 1905,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 615,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1112,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1483,
+  "fantome:nf_sport_18_24h_v1.0.0": 1485,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 638,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1036,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 460,
   "fantome:moins_de_cartes_lol_v1.0.0": 479,
   "fantome:detroits_non_normal_v1.0.0": 437,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 699,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 700,
   "fantome:mentions_non_outsider_v1.0.0": 420,
   "fantome:mentions_non_v1.0.0": 418,
   "fantome:rallies_non_favori_v1.0.0": 423,
@@ -194,30 +194,6 @@
  "verifiees": 16979,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:nm_demi_mise_v1.0.0",
-   "seq": 1667,
-   "type": "SETTLE",
-   "date": "2026-10-28T04:11:04",
-   "detail": "réglé à 1 alors que le marché 6279810 n'est pas clos",
-   "op_id": "settle-69644415519608139542691892401524501899377856725431069033513247495070649052904"
-  },
-  {
-   "portefeuille": "fantome:nm_hors_crypto_v1.0.0",
-   "seq": 1784,
-   "type": "SETTLE",
-   "date": "2026-10-28T04:11:04",
-   "detail": "réglé à 1 alors que le marché 6279810 n'est pas clos",
-   "op_id": "settle-69644415519608139542691892401524501899377856725431069033513247495070649052904"
-  },
-  {
-   "portefeuille": "fantome:nm_prix_bas_v1.0.0",
-   "seq": 1803,
-   "type": "SETTLE",
-   "date": "2026-10-28T04:11:04",
-   "detail": "réglé à 1 alors que le marché 6279810 n'est pas clos",
-   "op_id": "settle-69644415519608139542691892401524501899377856725431069033513247495070649052904"
-  },
   {
    "portefeuille": "fantome:nf_sport_prix_haut_v1.0.0",
    "seq": 2000,
@@ -1793,11 +1769,35 @@
    "date": "2026-11-03T21:57:56",
    "detail": "réglé à 0 alors que le marché 6589377 n'est pas clos",
    "op_id": "settle-100781453759594731291697224169235801991709479370415947672762046997232352785998"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_18_24h_v1.0.0",
+   "seq": 1484,
+   "type": "SETTLE",
+   "date": "2026-11-03T23:55:51",
+   "detail": "réglé à 0 alors que le marché 6507340 n'est pas clos",
+   "op_id": "settle-106395736368123876217232522790962866300715519762010719139927930624457281560305"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_prix_haut_v1.0.0",
+   "seq": 3271,
+   "type": "SETTLE",
+   "date": "2026-11-03T23:55:51",
+   "detail": "réglé à 0 alors que le marché 6507340 n'est pas clos",
+   "op_id": "settle-106395736368123876217232522790962866300715519762010719139927930624457281560305"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_v1.0.0",
+   "seq": 4437,
+   "type": "SETTLE",
+   "date": "2026-11-03T23:55:51",
+   "detail": "réglé à 0 alors que le marché 6507340 n'est pas clos",
+   "op_id": "settle-106395736368123876217232522790962866300715519762010719139927930624457281560305"
   }
  ],
- "derniere_execution": "2026-11-03T23:53:28+00:00",
+ "derniere_execution": "2026-11-03T23:58:45+00:00",
  "dernier_seq_reglements": {
-  "principal": 6778,
+  "principal": 6779,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2324,
@@ -1836,7 +1836,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4436,
+  "fantome:nf_sport_v1.0.0": 4438,
   "fantome:nm_court_v1.0.0": 2278,
   "fantome:nm_crypto_v1.0.0": 1927,
   "fantome:nm_hors_crypto_v1.0.0": 2348,
@@ -1849,7 +1849,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3270,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3272,
   "fantome:nf_sport_sans_fin_v1.0.0": 1905,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1928,7 +1928,7 @@
   "fantome:jobs_favori_non_v1.0.0": 615,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1112,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1483,
+  "fantome:nf_sport_18_24h_v1.0.0": 1485,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 638,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1036,
@@ -1960,7 +1960,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 460,
   "fantome:moins_de_cartes_lol_v1.0.0": 479,
   "fantome:detroits_non_normal_v1.0.0": 437,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 699,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 700,
   "fantome:mentions_non_outsider_v1.0.0": 420,
   "fantome:mentions_non_v1.0.0": 418,
   "fantome:rallies_non_favori_v1.0.0": 423,
@@ -1982,7 +1982,7 @@
   "fantome:suivre_inities_seul_v1.0.0": 327,
   "fantome:compteur_tweets_oui_v1.0.0": 397,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 365,
-  "fantome:favori_esport_milieu_v1.0.0": 291,
+  "fantome:favori_esport_milieu_v1.0.0": 293,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 326,
   "fantome:sieges_coherence_v1.0.0": 175,
   "fantome:classement_appstore_v1.1.0": 139,
