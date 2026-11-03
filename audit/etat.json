@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6675,
+  "principal": 6676,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2310,
@@ -33,13 +33,13 @@
   "fantome:nf_court_v1.0.0": 3409,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2162,
+  "fantome:nf_moyen_v1.0.0": 2164,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1942,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4332,
+  "fantome:nf_sport_v1.0.0": 4337,
   "fantome:nm_court_v1.0.0": 2260,
   "fantome:nm_crypto_v1.0.0": 1912,
   "fantome:nm_hors_crypto_v1.0.0": 2331,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3197,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3202,
   "fantome:nf_sport_sans_fin_v1.0.0": 1888,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -191,25 +191,9 @@
   "fantome:classement_appstore_v1.1.0": 125,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 78
  },
- "verifiees": 16767,
+ "verifiees": 16770,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:nf_sport_v1.0.0",
-   "seq": 2264,
-   "type": "SETTLE",
-   "date": "2026-10-27T21:55:55",
-   "detail": "réglé à 1 alors que le marché 6290582 n'est pas clos",
-   "op_id": "settle-12319471399602425998106548065343277128747823187913838326705311943515628901802"
-  },
-  {
-   "portefeuille": "fantome:outsider_sport_apres_midi_v1.0.0",
-   "seq": 1487,
-   "type": "SETTLE",
-   "date": "2026-10-27T21:55:55",
-   "detail": "réglé à 0 alors que le marché 5674371 n'est pas clos",
-   "op_id": "settle-36786430638059922226584797473411586422909911031917216560979859957515768665973"
-  },
   {
    "portefeuille": "fantome:calibration_patiente_v1.0.0",
    "seq": 2195,
@@ -1793,11 +1777,27 @@
    "date": "2026-11-03T14:51:15",
    "detail": "réglé à 0 alors que le marché 6496876 n'est pas clos",
    "op_id": "settle-83691651207372406248228337453925335879382795448926968160801988094857511331522"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_prix_haut_v1.0.0",
+   "seq": 3201,
+   "type": "SETTLE",
+   "date": "2026-11-03T16:41:36",
+   "detail": "réglé à 1 alors que le marché 6454139 n'est pas clos",
+   "op_id": "settle-47041107597536607056634380243531769029207818271657460044751504000424165588415"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_v1.0.0",
+   "seq": 4336,
+   "type": "SETTLE",
+   "date": "2026-11-03T16:41:36",
+   "detail": "réglé à 1 alors que le marché 6454139 n'est pas clos",
+   "op_id": "settle-47041107597536607056634380243531769029207818271657460044751504000424165588415"
   }
  ],
- "derniere_execution": "2026-11-03T16:38:17+00:00",
+ "derniere_execution": "2026-11-03T16:45:12+00:00",
  "dernier_seq_reglements": {
-  "principal": 6675,
+  "principal": 6676,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2310,
@@ -1836,7 +1836,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4334,
+  "fantome:nf_sport_v1.0.0": 4337,
   "fantome:nm_court_v1.0.0": 2260,
   "fantome:nm_crypto_v1.0.0": 1912,
   "fantome:nm_hors_crypto_v1.0.0": 2331,
@@ -1849,7 +1849,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3199,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3202,
   "fantome:nf_sport_sans_fin_v1.0.0": 1888,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1988,5 +1988,5 @@
   "fantome:classement_appstore_v1.1.0": 125,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 78
  },
- "reglements_verifies": 10580
+ "reglements_verifies": 10582
 }
