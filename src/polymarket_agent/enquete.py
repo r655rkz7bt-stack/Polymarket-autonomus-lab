@@ -43,7 +43,7 @@ la main ; il le retrouve automatiquement s'il revient, ou trouve ses cousins :
   - mere_muette_fille_active : une mère muette depuis 48 h alors que sa fille (mêmes réglages, filtre en plus) achète (26/10 : la prudence ¼ d'un fantôme
     plafonnait aussi son total investi, 38 fantômes sur 163 bloqués sans raison notée, `nf_sport` muet 5 jours) ; une mère ÉLIMINÉE (journal sans battement
     depuis 48 h) est arrêtée, pas muette (26/10, 2e passage : 3 des 4 mères signalées l'étaient) ;
-  - muettes, retraits_inactifs, familles_vides, sources_vides, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
+  - muettes, retraits_inactifs, familles_vides, sources_vides, sources_retirees, positions_oubliees, cycle_arrete : ce qui ne tourne plus.
 Les journaux sont lus tels que publiés (données vérifiées par le cycle) ; rien n'est modifié.
 Résultat : `reports/enquete.md` ; chaque constat « grave » devient une obligation de la feuille de
 mission (enquêter, corriger ou proposer, test de non-régression, compte rendu dans
@@ -687,6 +687,16 @@ def sources_vides(etat: dict | None) -> list[dict]:
                      "un fonctionnement.", out)] if out else []
 
 
+def sources_retirees(etat: dict | None) -> list[dict]:
+    """Sources « indisponible : … HTTP 404/410 » : une API retirée ou déplacée, pas une panne passagère (03/11/2026 : la Data API v1
+    répond 410 « retired » ; `inities` en dépendait et `suivre_inities*` sont restées muettes une semaine sans que rien ne le dise)."""
+    out = [f"{name} : {status[:160]}" for name, status in (etat or {}).items()
+           if isinstance(status, str) and status.startswith("indisponible") and re.search(r"HTTP (404|410)\b", status)]
+    return [_finding("sources_retirees", GRAVE, f"{len(out)} source(s) dont l'API répond 404/410 (retirée ou déplacée)",
+                     "Lire la réponse brute (`curl` : le corps donne souvent l'adresse de migration), adapter le collecteur et ajouter un test "
+                     "sur le nouveau format. Les stratégies qui en dépendent sont muettes tant que ce n'est pas fait.", out)] if out else []
+
+
 def retirees(entries: dict[str, list[dict]]) -> dict[str, dict]:
     """Stratégies retirées de l'arène (journal du principal, événements ELIMINATION) : nom -> {ts, reason}."""
     return {e["data"]["strategy"]: {"ts": e["ts"], "reason": str(e["data"].get("reason", ""))}
@@ -1245,7 +1255,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
-                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources)
+                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources) + sources_retirees(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)
                 + copie_absente(entries, parts, now, days=max(days, 3), depuis=depuis) + sans_test_passe(entries, configs, textes))

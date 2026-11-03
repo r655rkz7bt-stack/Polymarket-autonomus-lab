@@ -691,3 +691,12 @@ def test_a_share_born_after_the_ghost_bets_is_not_a_missing_copy():
     born_early = {"mdc_v1.0.0": (NOW - timedelta(hours=40)).isoformat()}
     assert enquete.copie_absente(entries, parts, NOW, depuis=born_early)[0]["gravite"] == enquete.GRAVE  # part ancienne : toujours grave
     assert enquete.copie_absente(entries, parts, NOW, depuis={"mdc_v1.0.0": "pas une date"}) != []        # date illisible : on ne cache rien
+
+
+def test_a_retired_api_is_a_grave_finding_03_11():
+    """03/11/2026 : `inities : indisponible : GET data-api/trades : HTTP 410` (Data API v1 retirée) : stratégies muettes une semaine."""
+    etat = {"inities": "indisponible : GET https://data-api.polymarket.com/trades : HTTP 410", "gdelt": "indisponible : ReadTimeout",
+            "bluesky": "indisponible : compte requis (403)", "rss": "ok (1148 observations)"}
+    found = enquete.sources_retirees(etat)
+    assert len(found) == 1 and found[0]["gravite"] == enquete.GRAVE and [e.split(" :")[0] for e in found[0]["exemples"]] == ["inities"]
+    assert not enquete.sources_retirees(None)

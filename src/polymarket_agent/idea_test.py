@@ -29,6 +29,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
+from polymarket_agent import data_api
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 
 GAMMA = "https://gamma-api.polymarket.com"
@@ -36,7 +37,7 @@ GAMMA = "https://gamma-api.polymarket.com"
 # Dota 2 et tennis féminin ; un test d'achat qui les ignore en silence se croit meilleur). Remis à zéro à chaque relevé ; le relevé lu dans le cache ne les connaît pas.
 ECARTES_50_50 = {"marches": 0}
 CLOB = "https://clob.polymarket.com"
-TRADES = "https://data-api.polymarket.com/trades"
+TRADES = data_api.TRADES  # v2 : la v1 répond 410 depuis le 03/11/2026
 
 
 def _jl(value) -> list:
@@ -155,23 +156,17 @@ class PriceCache:
 
 def fetch_event_trades(http: HttpClient, cache_dir: Path, event_id: str, max_pages: int = 11) -> list[list]:
     """Échanges des preneurs d'un événement : [[heure, jeton, côté, prix, parts], ...] (cache gzip).
-      GET https://data-api.polymarket.com/trades?eventId=<id>&limit=1000&offset=..  (public)
-    L'API refuse un décalage au-delà de 10 000 : au plus 11 pages (les plus anciens manquent alors)."""
+      GET https://data-api.polymarket.com/v2/trades?event_id=<id>&limit=1000&cursor=..  (public, pages par curseur ; la v1 est retirée)
+    `max_pages` pages de 1 000 échanges, les plus récents d'abord."""
     path = Path(cache_dir) / f"echanges_{event_id}.json.gz"
     if path.exists():
         return json.loads(gzip.decompress(path.read_bytes()))
-    rows: list[list] = []
-    for page in range(max_pages):
-        try:
-            batch = http.get_json(TRADES, params={"eventId": event_id, "limit": 1000, "offset": page * 1000})
-        except SourceUnavailable:
-            break
-        if not isinstance(batch, list) or not batch:
-            break
-        rows += [[int(t["timestamp"]), str(t["asset"]), str(t["side"]), float(t["price"]), float(t["size"])]
-                 for t in batch if t.get("timestamp") and t.get("price") is not None]
-        if len(batch) < 1000:
-            break
+    try:
+        batch = data_api.echanges_evenement(http, event_id, max_pages)
+    except SourceUnavailable:
+        return []  # source en panne : ne rien mettre en cache (un cache vide ferait croire à un marché sans échange)
+    rows: list[list] = [[int(t["timestamp"]), str(t["asset"]), str(t["side"]), float(t["price"]), float(t["size"])]
+                        for t in batch if t.get("timestamp") and t.get("price") is not None]
     Path(cache_dir).mkdir(parents=True, exist_ok=True)
     path.write_bytes(gzip.compress(json.dumps(rows).encode()))
     return rows
