@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-03 (passage chercheur de 16 h, 15 h 55 → ~16 h 00 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-03_apres_midi_portwatch_token.md`, familles 3/4). Aucune « Enquête obligatoire » grave. **Constat** : PortWatch répond maintenant « Token Required » (HTTP 200 + code 499) à chaque appel : la série quotidienne des détroits n'est plus publique (le « Invalid URL » d'une fois sur deux de 11 h en était le début). Aucune autre couche publique ne contient les détroits ; pas de contournement (interdit n° 7). `detroits_*` ne peuvent plus rien voir. Source `inities` « 0 prix » vérifiée en direct (v2) : saine, 19 événements, aucune grappe de comptes neufs.
+- **Recherche** : rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les trois filles 80/20 refusées pour les raisons du 01-03/11 (mère éteinte, tranche choisie après coup, 3 paris = 92 % du gain).
+- **Leçons** : une source peut disparaître en deux temps (erreurs intermittentes, puis accès fermé) ; aucune stratégie éliminée.
+- **Reste ouvert** : trouver une autre source des passages dans les détroits si le FMI n'en rouvre pas ; le reste inchangé (élection 03/11, Géorgie et sièges 04/11, rougeole, essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11).
+
 ## 2026-11-03 (passage chercheur de midi, 10 h 54 → ~11 h 20 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-03_midi_portwatch_invalid_url.md`, famille 3). Aucune « Enquête obligatoire » grave. **Défaut trouvé** : la source PortWatch était « indisponible (série trop courte) » parce qu'ArcGIS répond environ une fois sur deux HTTP 200 + `{"error": "Invalid URL"}`, lu comme 0 ligne. Corrigé (`_page` réessaie), test qui échoue sans le correctif, nouveau contrôle `sources_indisponibles`. Constats « à regarder » d'estimation : ceux déjà documentés.
