@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6440,
+  "principal": 6441,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2278,
@@ -25,7 +25,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1906,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2747,
-  "fantome:contrer_crypto_v1.0.0": 2540,
+  "fantome:contrer_crypto_v1.0.0": 2541,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1914,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
@@ -35,7 +35,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2094,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1906,
+  "fantome:nf_oui_v1.0.0": 1907,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-109985806308320747730817287203863707524287463399488142039141222570179664766194"
   }
  ],
- "derniere_execution": "2026-11-03T00:23:08+00:00",
+ "derniere_execution": "2026-11-03T00:27:19+00:00",
  "dernier_seq_reglements": {
-  "principal": 6440,
+  "principal": 6441,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2278,
@@ -1821,8 +1821,8 @@
   "fantome:favori_politique_v1.0.0": 1920,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1906,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2747,
-  "fantome:contrer_crypto_v1.0.0": 2540,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2750,
+  "fantome:contrer_crypto_v1.0.0": 2541,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1914,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
@@ -1832,7 +1832,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2094,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 1906,
+  "fantome:nf_oui_v1.0.0": 1907,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
