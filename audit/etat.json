@@ -1,13 +1,13 @@
 {
  "dernier_seq": {
-  "principal": 6561,
+  "principal": 6562,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2294,
   "fantome:crypto_threshold_v1.0.0": 2185,
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2425,
+  "fantome:naive_favorite_v1.0.0": 2427,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
@@ -26,14 +26,14 @@
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2770,
   "fantome:contrer_crypto_v1.0.0": 2564,
-  "fantome:favori_politique_quasi_certain_v1.0.0": 1939,
+  "fantome:favori_politique_quasi_certain_v1.0.0": 1942,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 3382,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2131,
+  "fantome:nf_moyen_v1.0.0": 2135,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 1924,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -46,9 +46,9 @@
   "fantome:nm_long_v1.0.0": 2100,
   "fantome:nm_prix_bas_v1.0.0": 2333,
   "fantome:nm_prix_haut_v1.0.0": 1977,
-  "fantome:naive_favorite_large_v1.0.0": 1868,
+  "fantome:naive_favorite_large_v1.0.0": 1872,
   "fantome:nf_sport_patiente_v1.0.0": 2686,
-  "fantome:favori_politique_nuit_v1.0.0": 1782,
+  "fantome:favori_politique_nuit_v1.0.0": 1785,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 109,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 63
  },
- "verifiees": 16537,
+ "verifiees": 16548,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-23555815623327700904964387009646058734624133921351110016839668068424150592814"
   }
  ],
- "derniere_execution": "2026-11-03T08:39:07+00:00",
+ "derniere_execution": "2026-11-03T08:42:48+00:00",
  "dernier_seq_reglements": {
-  "principal": 6561,
+  "principal": 6562,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2294,
