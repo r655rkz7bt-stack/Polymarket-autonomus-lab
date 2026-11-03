@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6489,
+  "principal": 6490,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2285,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 1928,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1913,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2759,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2760,
   "fantome:contrer_crypto_v1.0.0": 2551,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1921,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -168,7 +168,7 @@
   "fantome:mentions_non_v1.0.0": 378,
   "fantome:rallies_non_favori_v1.0.0": 385,
   "fantome:rallies_non_v1.0.0": 396,
-  "fantome:statu_quo_ia_v1.1.0": 357,
+  "fantome:statu_quo_ia_v1.1.0": 358,
   "fantome:contrer_crypto_audace_v1.0.0": 378,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-11308864288973006753199540704778798414330563151778440954216228592301141985802"
   }
  ],
- "derniere_execution": "2026-11-03T04:06:20+00:00",
+ "derniere_execution": "2026-11-03T04:10:16+00:00",
  "dernier_seq_reglements": {
-  "principal": 6489,
+  "principal": 6490,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2285,
@@ -1821,7 +1821,7 @@
   "fantome:favori_politique_v1.0.0": 1928,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1913,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2759,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2760,
   "fantome:contrer_crypto_v1.0.0": 2553,
   "fantome:favori_politique_quasi_certain_v1.0.0": 1921,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -1965,7 +1965,7 @@
   "fantome:mentions_non_v1.0.0": 378,
   "fantome:rallies_non_favori_v1.0.0": 385,
   "fantome:rallies_non_v1.0.0": 396,
-  "fantome:statu_quo_ia_v1.1.0": 357,
+  "fantome:statu_quo_ia_v1.1.0": 358,
   "fantome:contrer_crypto_audace_v1.0.0": 378,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
