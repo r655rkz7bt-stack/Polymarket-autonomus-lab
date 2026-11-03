@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-03 (passage chercheur de 21 h, 20 h 56 → ~21 h 05 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (famille 4, déjà traitée à 1 h ; pas de nouvelle donnée de règlement). Aucune « Enquête obligatoire » grave. Constat « à regarder » relu en direct : `vague_volume_suivre*` (3 positions « échéance dépassée de 213 h », marchés 2757891, 2757900, 4961853) = Serbie, marchés encore ouverts sur Gamma (`closed: false`, prix 0,03 / 0,135 / 0,006 côté OUI), date de fin placeholder du 25/10 : même cas que le 02/11, pas de règlement manqué. Les autres constats sont ceux déjà documentés. Pas de défaut de code.
+- **Recherche** : rien de nouveau à tester avec les données d'aujourd'hui.
+- **Arène** : rien ajouté. Les trois filles 80/20 (`compteur_tweets_48h_audace` 12-18 h, `contrer_crypto_audace` 72-168 h, `crypto_non_10_20` 24-72 h) refusées pour les raisons du 01-03/11 (mère éteinte, tranche choisie après coup, 3 paris = 92 % du gain).
+- **Leçons** : aucune stratégie éliminée aujourd'hui.
+- **Reste ouvert** : inchangé (élection 03/11, Géorgie et sièges 04/11, rougeole, essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11).
+
 ## 2026-11-03 (passage chercheur de 16 h, 15 h 55 → ~16 h 00 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-03_apres_midi_portwatch_token.md`, familles 3/4). Aucune « Enquête obligatoire » grave. **Constat** : PortWatch répond maintenant « Token Required » (HTTP 200 + code 499) à chaque appel : la série quotidienne des détroits n'est plus publique (le « Invalid URL » d'une fois sur deux de 11 h en était le début). Aucune autre couche publique ne contient les détroits ; pas de contournement (interdit n° 7). `detroits_*` ne peuvent plus rien voir. Source `inities` « 0 prix » vérifiée en direct (v2) : saine, 19 événements, aucune grappe de comptes neufs.
