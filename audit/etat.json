@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6531,
+  "principal": 6532,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2291,
@@ -64,7 +64,7 @@
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1550,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
-  "fantome:nf_sport_6_24h_v1.0.0": 1620,
+  "fantome:nf_sport_6_24h_v1.0.0": 1621,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 701,
   "fantome:nf_sport_patiente_prix_moyen_v1.0.0": 737,
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
@@ -108,7 +108,7 @@
   "fantome:nf_tennis_debut_match_v1.0.0": 1073,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
-  "fantome:nf_court_football_v1.0.0": 1041,
+  "fantome:nf_court_football_v1.0.0": 1042,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1246,
   "fantome:nf_tennis_12_18h_v1.0.0": 973,
   "fantome:compteur_tweets_non_v1.0.0": 709,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-11308864288973006753199540704778798414330563151778440954216228592301141985802"
   }
  ],
- "derniere_execution": "2026-11-03T06:57:55+00:00",
+ "derniere_execution": "2026-11-03T07:05:51+00:00",
  "dernier_seq_reglements": {
-  "principal": 6531,
+  "principal": 6532,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2291,
@@ -1861,7 +1861,7 @@
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1550,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
-  "fantome:nf_sport_6_24h_v1.0.0": 1620,
+  "fantome:nf_sport_6_24h_v1.0.0": 1621,
   "fantome:nf_sport_patiente_prix_haut_v1.0.0": 701,
   "fantome:nf_sport_patiente_prix_moyen_v1.0.0": 737,
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
@@ -1905,7 +1905,7 @@
   "fantome:nf_tennis_debut_match_v1.0.0": 1073,
   "fantome:nf_sport_patiente_sans_itf_v1.0.0": 1299,
   "fantome:outsider_itf_v1.0.0": 721,
-  "fantome:nf_court_football_v1.0.0": 1041,
+  "fantome:nf_court_football_v1.0.0": 1042,
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1246,
   "fantome:nf_tennis_12_18h_v1.0.0": 973,
   "fantome:compteur_tweets_non_v1.0.0": 709,
