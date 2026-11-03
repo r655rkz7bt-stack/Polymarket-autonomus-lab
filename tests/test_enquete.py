@@ -700,3 +700,12 @@ def test_a_retired_api_is_a_grave_finding_03_11():
     found = enquete.sources_retirees(etat)
     assert len(found) == 1 and found[0]["gravite"] == enquete.GRAVE and [e.split(" :")[0] for e in found[0]["exemples"]] == ["inities"]
     assert not enquete.sources_retirees(None)
+
+
+def test_sources_indisponibles_lists_down_sources_but_not_missing_accounts():
+    etat = {"portwatch": "indisponible : PortWatch : aucune série reçue (Strait of Hormuz : série trop courte)",
+            "bluesky": "indisponible : compte Bluesky requis (BLUESKY_HANDLE)", "kalshi": "ok (3 prix relevés)",
+            "inities": "indisponible : GET x : HTTP 410"}
+    found = enquete.sources_indisponibles(etat)
+    assert len(found) == 1 and "portwatch" in str(found[0]) and "bluesky" not in str(found[0]) and "inities" not in str(found[0])
+    assert not enquete.sources_indisponibles(None)

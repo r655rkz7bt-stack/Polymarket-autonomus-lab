@@ -35,6 +35,7 @@ AIS = "https://hormuz.data-tracking.net"
 AIS_DAILY = {"Strait of Hormuz": "/api/crossings/daily", "Bab el-Mandeb Strait": "/api/bab/daily"}
 PAGE = "https://portwatch.imf.org"
 PAGE_SIZE = 1000
+ERROR_RETRIES = 5  # ArcGIS « Invalid URL » passager : voir `_page`
 # Nom PortWatch → mots qui le désignent dans un marché (minuscules). Seuls les passages cités par des marchés sont relevés.
 CHOKEPOINTS = {
     "Strait of Hormuz": ("hormuz",),
@@ -126,13 +127,26 @@ class PortWatchSource:
             self.failures[f"AIS {name}"] = str(exc)[:120]
             return []
 
+    def _page(self, name: str, offset: int):
+        """Une page. ArcGIS répond parfois HTTP 200 avec `{"error": {"code": 400, "message": "Invalid URL"}}` (vu le 03/11/2026 :
+        environ un appel sur deux, la même requête réussit juste après) : c'est une panne passagère, pas une page vide
+        (sinon la série paraît « trop courte » et la source reste muette). On réessaie, puis on déclare la source indisponible."""
+        params = {"where": f"portname='{name}'", "outFields": "date,n_total", "orderByFields": "date DESC",
+                  "resultOffset": offset, "resultRecordCount": min(PAGE_SIZE, self.days - offset), "f": "json"}
+        last = ""
+        for _ in range(ERROR_RETRIES):
+            data = self.http.get_json(URL, params=params)
+            err = data.get("error") if isinstance(data, dict) else None
+            if not err:
+                return data
+            last = str(err.get("message") if isinstance(err, dict) else err)[:80]
+        raise SourceUnavailable(f"PortWatch : erreur ArcGIS répétée ({last})")
+
     def _series(self, name: str) -> list[tuple[str, int]]:
         """Les `days` derniers jours, par pages de 1 000 lignes (plafond du service ArcGIS, `maxRecordCount`)."""
         got: dict[str, int] = {}
         for offset in range(0, self.days, PAGE_SIZE):
-            data = self.http.get_json(URL, params={
-                "where": f"portname='{name}'", "outFields": "date,n_total", "orderByFields": "date DESC",
-                "resultOffset": offset, "resultRecordCount": min(PAGE_SIZE, self.days - offset), "f": "json"})
+            data = self._page(name, offset)
             page = parse_portwatch(data)
             got.update(page)
             if len(page) < min(PAGE_SIZE, self.days - offset) and not (data or {}).get("exceededTransferLimit"):

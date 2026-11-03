@@ -122,3 +122,24 @@ def test_collector_saves_the_series_for_attach_detroits_and_survives_a_failure(t
     assert down.status["portwatch"].startswith("indisponible")
     assert refs._load(db, "ref:portwatch")[1] == rows
     assert collect(_settings(False), None, db, markets, later, {}).status["portwatch"] == "désactivée"
+
+
+def test_arcgis_invalid_url_error_with_http_200_is_retried_not_read_as_an_empty_series():
+    """03/11/2026 : ArcGIS répond ~1 fois sur 2 HTTP 200 + {"error": {"code": 400, "message": "Invalid URL"}} ; la source lisait
+    « 0 ligne » donc « série trop courte » et restait indisponible."""
+    good = _routes()[pw.URL]
+    calls = {"n": 0}
+
+    def flaky(params):
+        calls["n"] += 1
+        return {"error": {"code": 400, "message": "Invalid URL", "details": ["Invalid URL"]}} if calls["n"] % 2 else good(params)
+    routes = _routes()
+    routes[pw.URL] = flaky
+    source = pw.PortWatchSource(FakeHttp(routes))
+    obs = source.fetch(_markets(), NOW)
+    assert {o.data["detroit"] for o in obs} >= {"Bab el-Mandeb Strait", "Strait of Hormuz"}
+    assert not source.failures.get("Strait of Hormuz")
+    always_bad = _routes()
+    always_bad[pw.URL] = lambda params: {"error": {"code": 400, "message": "Invalid URL"}}
+    with pytest.raises(SourceUnavailable):
+        pw.PortWatchSource(FakeHttp(always_bad)).fetch(_markets(), NOW)

@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-03 (passage chercheur de midi, 10 h 54 → ~11 h 20 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-03_midi_portwatch_invalid_url.md`, famille 3). Aucune « Enquête obligatoire » grave. **Défaut trouvé** : la source PortWatch était « indisponible (série trop courte) » parce qu'ArcGIS répond environ une fois sur deux HTTP 200 + `{"error": "Invalid URL"}`, lu comme 0 ligne. Corrigé (`_page` réessaie), test qui échoue sans le correctif, nouveau contrôle `sources_indisponibles`. Constats « à regarder » d'estimation : ceux déjà documentés.
+- **Recherche** : rien de nouveau à tester ; les détroits retrouvent leur série (dernier jour PortWatch 25/10).
+- **Arène** : rien ajouté. Les trois filles 80/20 refusées pour les raisons du 01-03/11 (mère éteinte, tranche choisie après coup, 3 paris = 92 % du gain).
+- **Leçons** : un HTTP 200 n'est pas un succès ; chercher `error` dans le corps. Aucune stratégie éliminée.
+- **Reste ouvert** : voir si `detroits_*` achètent désormais ; le reste inchangé (élection 03/11, Géorgie et sièges 04/11, rougeole, essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11).
+
 ## 2026-11-03 (passage chercheur de 6 h, 05 h 55 → 06 h 00 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-03_data_api_v1_retiree.md`, famille 6). **Défaut trouvé** : la Data API v1 de Polymarket (`/trades`, `/activity`, `/positions`, `/traded`) répond HTTP 410 « retired ». La source `inities` était « indisponible » et `suivre_inities` / `suivre_inities_seul` n'ont rien pu voir depuis leur naissance (27/10) ; ~50 scripts de relevé d'`experiments/` sont cassés. Corrigé : `data_api.py` (v2, pages par curseur, champs renommés, `/user-stats` à la place de `/traded`), branché sur `inities.py` et `idea_test.fetch_event_trades`, essai en direct réussi (événements Spotify/Billboard, profils lus). Piège noté : la v2 IGNORE les paramètres inconnus (`market=`, `event=` rendent tout Polymarket). Nouveau contrôle GRAVE `sources_retirees` (404/410). Le nombre de marchés d'un compte devient son nombre d'échanges (filtre plus strict, jamais plus large).
