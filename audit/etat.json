@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6737,
+  "principal": 6738,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2318,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4394,
+  "fantome:nf_sport_v1.0.0": 4398,
   "fantome:nm_court_v1.0.0": 2272,
   "fantome:nm_crypto_v1.0.0": 1921,
   "fantome:nm_hors_crypto_v1.0.0": 2342,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3243,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3245,
   "fantome:nf_sport_sans_fin_v1.0.0": 1896,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 609,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1106,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1438,
+  "fantome:nf_sport_18_24h_v1.0.0": 1442,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 632,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1029,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 133,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 86
  },
- "verifiees": 16912,
+ "verifiees": 16919,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-47041107597536607056634380243531769029207818271657460044751504000424165588415"
   }
  ],
- "derniere_execution": "2026-11-03T20:56:52+00:00",
+ "derniere_execution": "2026-11-03T21:02:11+00:00",
  "dernier_seq_reglements": {
-  "principal": 6737,
+  "principal": 6738,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2318,
