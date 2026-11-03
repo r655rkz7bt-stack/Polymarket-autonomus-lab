@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-03 (passage chercheur de 1 h, 00 h 55 → ~01 h 10 UTC ; durée visée 135 min non atteinte : mêmes pistes qu'hier, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence 18 jours sur ~40, App Store 06/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-03_nuit_famille4_fenetres_et_prix.md`, famille 4). Aucune « Enquête obligatoire » grave ; les constats « à regarder » sont ceux déjà documentés (estimations des `compteur_tweets_*`, `seismes_marche`, `sieges_coherence`). Fenêtres de temps (1 997 achats) et plages de prix (1 119 achats depuis le 31/10) rejouées : seuls écarts, des ordres posés servis un cran sous la plage ou des heures plus tard. Pas de défaut de code.
+- **Recherche** : rien de nouveau à tester ; relevé de l'essence rafraîchi (18 jours réglés).
+- **Arène** : rien ajouté (aucune idée neuve plausible hors des pistes qui attendent) ; les trois filles 80/20 de la feuille de mission restent refusées (mère éteinte, tranche choisie après coup, 3 paris font 92 % du gain).
+- **Leçons** : aucune stratégie éliminée aujourd'hui.
+- **Reste ouvert** : inchangé (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11).
+
 ## 2026-11-02 (passage chercheur de 21 h, 20 h 55 → 20 h 58 UTC ; durée visée 135 min non atteinte : mêmes pistes qu'aux passages de 1 h, 6 h, 11 h et 16 h, elles attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (famille 3). Aucune « Enquête obligatoire » grave. Constat « à regarder » nouveau : `compteur_tweets_72_168h` « No » du 02/11 11 h 57 sur « Maison-Blanche 200+ posts du 30/10 au 06/11 » (marché 6288524), estimé 0,265, payé 0,118 (niveaux du carnet 0,11 / 0,12, remplissage partiel 111 parts, mise 14 €). Relu sur Gamma : bon marché, bon type (`culture_fees`, source x.com/WhiteHouse), prix payé = carnet, donc pas un carnet périmé. Le marché cote maintenant « Yes » 0,945 (le « No » vaut 0,055) : c'est l'écart modèle-marché déjà noté le 02/11 à 1 h (dispersion de la formule non adaptée à la Maison-Blanche). À lire au règlement le 06/11. Pas de défaut de code.
