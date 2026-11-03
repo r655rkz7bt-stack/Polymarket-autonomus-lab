@@ -79,7 +79,7 @@
   "fantome:nf_sport_patiente_tennis_v1.0.0": 1228,
   "fantome:nf_tennis_prix_bas_v1.0.0": 1123,
   "fantome:nf_tennis_v1.0.0": 466,
-  "fantome:crypto_threshold_non_v1.0.0": 919,
+  "fantome:crypto_threshold_non_v1.0.0": 920,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 915,
   "fantome:nf_sport_patiente_matin_v1.0.0": 939,
   "fantome:apres_echeance_v1.0.0": 775,
@@ -114,7 +114,7 @@
   "fantome:compteur_tweets_non_v1.0.0": 709,
   "fantome:nf_court_football_soir_v1.0.0": 908,
   "fantome:nf_court_soir_v1.0.0": 905,
-  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1255,
+  "fantome:nf_sport_patiente_12_18h_v1.0.0": 1257,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
   "fantome:mots_prononces_nfl_v1.0.0": 141,
   "fantome:nf_sport_football_v1.0.0": 938,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 117,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 71
  },
- "verifiees": 16655,
+ "verifiees": 16656,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-23555815623327700904964387009646058734624133921351110016839668068424150592814"
   }
  ],
- "derniere_execution": "2026-11-03T12:48:41+00:00",
+ "derniere_execution": "2026-11-03T12:52:57+00:00",
  "dernier_seq_reglements": {
-  "principal": 6620,
+  "principal": 6621,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2302,
@@ -1876,7 +1876,7 @@
   "fantome:nf_sport_patiente_tennis_v1.0.0": 1228,
   "fantome:nf_tennis_prix_bas_v1.0.0": 1123,
   "fantome:nf_tennis_v1.0.0": 466,
-  "fantome:crypto_threshold_non_v1.0.0": 919,
+  "fantome:crypto_threshold_non_v1.0.0": 920,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 915,
   "fantome:nf_sport_patiente_matin_v1.0.0": 939,
   "fantome:apres_echeance_v1.0.0": 775,
@@ -1969,8 +1969,8 @@
   "fantome:contrer_crypto_audace_v1.0.0": 378,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
-  "fantome:compteur_tweets_12_18h_v1.0.0": 460,
-  "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 380,
+  "fantome:compteur_tweets_12_18h_v1.0.0": 462,
+  "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 382,
   "fantome:compteur_tweets_72_168h_v1.0.0": 395,
   "fantome:crypto_non_10_20_v1.0.0": 511,
   "fantome:moins_de_kills_v1.0.0": 377,
