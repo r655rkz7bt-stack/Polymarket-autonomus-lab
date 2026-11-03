@@ -12,7 +12,8 @@ import pytest
 from conftest import NOW, raw_market
 from test_sources import FakeHttp
 from test_strategies_v3 import LIMITS, _books, _s, _state
-from polymarket_agent import inities
+from polymarket_agent import data_api, inities
+from polymarket_agent.http_client import SourceUnavailable
 from polymarket_agent import references as refs
 from polymarket_agent.data_collector import collect
 from polymarket_agent.http_client import SourceUnavailable
@@ -25,8 +26,9 @@ FRESH, OLD = {"premiere": T - 86400, "marches": 3}, {"premiere": T - 200 * 86400
 
 
 def _trade(wallet, token, usd, price=0.70, hours_ago=2, side="BUY", name=""):
-    return {"proxyWallet": wallet, "asset": token, "conditionId": "c" + token, "side": side, "price": price,
-            "size": usd / price, "timestamp": T - int(hours_ago * 3600), "name": name}
+    """Ligne au format de la Data API v2 (snake_case, 03/11/2026) : `data_api.au_format_v1` y ajoute les noms de la v1."""
+    return data_api.au_format_v1({"proxy_wallet": wallet, "token_id": token, "condition_id": "c" + token, "side": side,
+                                  "price": price, "size": usd / price, "timestamp": T - int(hours_ago * 3600), "name": name})
 
 
 def test_insider_families_are_recognised_and_live_counters_are_not():
@@ -90,9 +92,9 @@ def test_fetch_inities_reads_trades_profiles_and_comments_and_keeps_profiles_in_
     db = Database(tmp_path / "db.sqlite")
     event = {"id": "e1", "title": "Ballon d'Or 2026: 3rd Place", "volume24hr": 5000}
     http = FakeHttp({inities.GAMMA + "/events": [event, {"id": "e2", "title": "# of views of next MrBeast video?"}],
-                     inities.DATA + "/trades": [_trade("A", "m3Y", 6000), _trade("B", "m3N", 400)],
-                     inities.DATA + "/activity": [{"timestamp": T - 3600}],
-                     inities.DATA + "/traded": {"traded": 2},
+                     inities.DATA + "/trades": {"data": [_trade("A", "m3Y", 6000), _trade("B", "m3N", 400)],
+                                                "pagination": {"has_more": False, "next_cursor": None}},
+                     inities.DATA + "/user-stats": {"data": {"join_date": T - 3600, "trades": 2}},
                      inities.GAMMA + "/comments": [{"body": "someone has inside info, Yamal 3rd", "createdAt": "2026-10-14T10:00:00Z"},
                                                    {"body": "insider? no, old news", "createdAt": "2026-09-01T10:00:00Z"},
                                                    {"body": "go Mbappé", "createdAt": "2026-10-14T11:00:00Z"}]})
@@ -101,9 +103,9 @@ def test_fetch_inities_reads_trades_profiles_and_comments_and_keeps_profiles_in_
     assert [r["jeton"] for r in rows] == ["m3Y", "m3N"] and rows[0]["evenement"] == "e1"
     assert rows[0]["commentaires"] == ["someone has inside info, Yamal 3rd"]
     assert json.loads(db.get_value("inities:profil:A"))["marches"] == 2
-    asked = sum(1 for url, *_ in http.calls if url.endswith("/activity"))
+    asked = sum(1 for url, *_ in http.calls if url.endswith("/user-stats"))
     inities.fetch_inities(http, db, NOW + timedelta(hours=1), cfg)
-    assert sum(1 for url, *_ in http.calls if url.endswith("/activity")) == asked  # profils gardés 12 h : pas redemandés
+    assert sum(1 for url, *_ in http.calls if url.endswith("/user-stats")) == asked  # profils gardés 12 h : pas redemandés
 
 
 def test_fetch_soupcons_keeps_only_titles_about_suspicious_bets():
@@ -196,3 +198,23 @@ def test_follow_insiders_buys_with_public_suspicion_before_the_price_catches_up(
     talk = s.propose([_with_ref(presse=[], commentaires=["insider bought Yamal 3rd"])], books, state, LIMITS, "b")
     assert [p.token_id for p in talk.proposals] == ["m3Y"]
     assert s.candidates([_with_ref(), _ballon("m8")])[0].market_id == "m3"
+
+
+def test_data_api_v2_pages_by_cursor_and_filters_by_event_03_11():
+    """03/11/2026 : la v1 répond 410 « retired » ; la v2 pagine par curseur, renomme les champs et IGNORE les paramètres inconnus."""
+    pages = {None: {"data": [{"proxy_wallet": "0xA", "token_id": "t1", "condition_id": "c1", "side": "BUY", "price": 0.5,
+                              "size": 4, "timestamp": 10}], "pagination": {"has_more": True, "next_cursor": "K"}},
+             "K": {"data": [{"proxy_wallet": "0xB", "token_id": "t2", "condition_id": "c2", "side": "SELL", "price": 0.4,
+                             "size": 2, "timestamp": 9}], "pagination": {"has_more": False, "next_cursor": None}}}
+    http = FakeHttp({data_api.TRADES: lambda p: pages[p.get("cursor")]})
+    rows = data_api.echanges_evenement(http, "42", pages=5)
+    assert [(r["proxyWallet"], r["asset"], r["conditionId"]) for r in rows] == [("0xA", "t1", "c1"), ("0xB", "t2", "c2")]
+    assert rows[0]["proxy_wallet"] == "0xA"  # les deux écritures restent
+    # `event_id` (ou `eventId`) filtre ; `event` / `market` seraient ignorés et rendraient tout Polymarket
+    assert all(p["event_id"] == "42" and "market" not in p and "offset" not in p for _, p, _ in http.calls)
+    assert len(http.calls) == 2
+    # une première page qui échoue lève l'erreur de la source (la source est « indisponible », pas « vide »)
+    with pytest.raises(SourceUnavailable):
+        data_api.echanges_evenement(FakeHttp({}), "42")
+    assert data_api.profil(FakeHttp({data_api.USER_STATS: {"data": {"join_date": 5, "trades": 7}}}), "0xA") == {"premiere": 5, "marches": 7}
+    assert data_api.DATA.endswith("/v2") and inities.DATA == data_api.DATA

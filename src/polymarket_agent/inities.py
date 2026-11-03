@@ -25,7 +25,9 @@ from datetime import datetime, timedelta
 
 from polymarket_agent.http_client import SourceUnavailable
 
-DATA = "https://data-api.polymarket.com"
+from polymarket_agent import data_api  # noqa: E402
+
+DATA = data_api.DATA  # v2 (la v1 répond 410 depuis le 03/11/2026)
 GAMMA = "https://gamma-api.polymarket.com"
 NEWS = "https://news.google.com/rss/search"
 MASTODON = "https://mastodon.social/api/v1/timelines/tag/polymarket"
@@ -151,11 +153,7 @@ def _profil(http, db, adresse: str, now: datetime, max_age_heures: float = 12) -
                 return connu, False
         except ValueError:
             pass
-    a = http.get_json(f"{DATA}/activity", params={"user": adresse, "limit": 1, "sortBy": "TIMESTAMP", "sortDirection": "ASC"})
-    r = http.get_json(f"{DATA}/traded", params={"user": adresse})
-    profil = {"premiere": int(a[0]["timestamp"]) if isinstance(a, list) and a and a[0].get("timestamp") else None,
-              "marches": int(r["traded"]) if isinstance(r, dict) and r.get("traded") is not None else None,
-              "vu_le": now.isoformat(timespec="seconds")}
+    profil = dict(data_api.profil(http, adresse), vu_le=now.isoformat(timespec="seconds"))
     if db is not None:
         db.set_value(cle, json.dumps(profil))
     return profil, True
@@ -187,14 +185,7 @@ def fetch_inities(http, db, now: datetime, cfg: dict) -> list[dict]:
     evenements = evenements_ouverts(http, now, list(cfg.get("etiquettes") or [18, 100339, 100, 53]),
                                     float(cfg.get("horizon_jours", 45)), int(cfg.get("max_evenements", 30)))
     for e in evenements:
-        echanges = []
-        for page in range(int(cfg.get("pages", 2))):
-            lot = http.get_json(f"{DATA}/trades", params={"eventId": e["id"], "limit": 1000, "offset": page * 1000})
-            if not isinstance(lot, list) or not lot:
-                break
-            echanges += lot
-            if len(lot) < 1000:
-                break
+        echanges = data_api.echanges_evenement(http, e["id"], int(cfg.get("pages", 2)))
         profils = {}
         for w in gros_acheteurs(echanges, now, fenetre, float(cfg.get("seuil_profil", 300))):
             try:
