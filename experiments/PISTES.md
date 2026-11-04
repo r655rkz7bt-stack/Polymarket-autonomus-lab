@@ -73,6 +73,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 17. **Échelle mince contre composants liquides, hors élections** (04/11/2026, suite de n° 16) : « How many Fed rate cuts in 2026 » (13 tranches, 55 M$) contre les marchés de chaque réunion, « How many countries will Israel strike in 2026 » (16) contre un marché par pays, « How many SpaceX launches » contre le rythme. Même mécanisme que `sieges_coherence`. Condition : comparer aux prix du CARNET (achat réel), pas à `outcomePrices` (milieu d'un carnet vide : « governors < 22 » 0,73 affiché, 0,98 à l'achat). Relevé du 04/11 (`echelles_minces_hors_election.md`) : Fed **écartée** (« 0 baisse » 0,977 contre ≈ 0,7 % de baisse en décembre : +1,6 % brut en 58 jours, un favori ordinaire) ; Israël **non testable** (tranches 0-3 réglées, 4 pays acquis, pas de marché par pays) ; SpaceX non relevé.
 
+18. ~~Rythme long pour Elon Musk~~ (04/11/2026 soir, `experiments/elon_rythme_long.md`) : **écartée** (556 départs, 64 réglages, +0,06 de log-score au mieux contre +0,2 pour Trump ; la formule de production suffit).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|

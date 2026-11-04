@@ -1,0 +1,8 @@
+# Elon Musk : le rythme long n'apporte rien (04/11/2026, soir)
+
+**Verdict : écartée.** Suite de `truth_rythme_long.md` (Trump : retour à la moyenne après un record). Question : le même défaut existe-t-il pour les semaines d'Elon Musk (posts X comptés par XTracker) ?
+
+- **Données.** XTracker `/api/users/elonmusk/posts` : 14 466 posts du 31/10/2025 au 04/11/2026 (53 semaines ; l'historique plus ancien n'est pas servi), `releves/posts_elon.csv`. 40 semaines complètes avec 12 semaines de recul : moyenne 248 posts, de 152 à 401.
+- **Protocole.** Log-score de la tranche de 20 posts qui contient le total réel de la semaine, 556 départs (toutes les 12 h) communs à toutes les lignes, décision 54, 120 et 220 h avant le début, rythme calculé avec les seuls posts antérieurs, loi binomiale négative du code de production (`negbin_interval`). 64 réglages (poids récent 0 à 0,5, rythme long 14 à 84 jours, dispersion 5 à 20).
+- **Résultat.** Production (7 j / 14 j, poids 0,5, dispersion 12) : −2,677 (54 h), −2,683 (120 h), −2,709 (220 h). Meilleur des 64 réglages (poids 0,2, rythme de 28 jours, dispersion 12) : −2,614, −2,627, −2,654 : **+0,06 point de log-score**, 2 %, choisi parmi 64 (contre +0,2 pour Trump). La dispersion 12 reste la meilleure partout. Pas de record suivi d'un retour à la moyenne comparable.
+- **Conséquence.** Aucun fantôme `elon` à rythme long ; `LONG_RATE_DAYS` reste réservé à Trump. Le script est réutilisable pour un autre compte (`scripts/calibration.py`, `scripts/releve.py`). Non testé : contre le prix du marché (le gain en calibration est trop petit pour mériter des achats simulés).
