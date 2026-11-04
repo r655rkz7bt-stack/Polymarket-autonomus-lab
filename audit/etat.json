@@ -1,13 +1,13 @@
 {
  "dernier_seq": {
-  "principal": 6955,
+  "principal": 6956,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2351,
   "fantome:crypto_threshold_v1.0.0": 2185,
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2555,
+  "fantome:naive_favorite_v1.0.0": 2559,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 123,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 7
  },
- "verifiees": 17453,
+ "verifiees": 17456,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
   }
  ],
- "derniere_execution": "2026-11-04T13:29:00+00:00",
+ "derniere_execution": "2026-11-04T13:33:59+00:00",
  "dernier_seq_reglements": {
-  "principal": 6955,
+  "principal": 6956,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2351,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4613,
+  "fantome:nf_sport_v1.0.0": 4615,
   "fantome:nm_court_v1.0.0": 2345,
   "fantome:nm_crypto_v1.0.0": 1953,
   "fantome:nm_hors_crypto_v1.0.0": 2430,
@@ -1850,7 +1850,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3401,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3403,
   "fantome:nf_sport_sans_fin_v1.0.0": 1939,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1970,7 +1970,7 @@
   "fantome:contrer_crypto_audace_v1.0.0": 378,
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
-  "fantome:compteur_tweets_12_18h_v1.0.0": 528,
+  "fantome:compteur_tweets_12_18h_v1.0.0": 530,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 439,
   "fantome:compteur_tweets_72_168h_v1.0.0": 452,
   "fantome:crypto_non_10_20_v1.0.0": 573,
