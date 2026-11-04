@@ -105,9 +105,15 @@ def fetch_predictit(http: HttpClient) -> list[dict]:
     return rows
 
 
+# Comptes dont on relève aussi le rythme des 12 dernières semaines (04/11/2026, experiments/truth_rythme_long.md) : un seul chiffre
+# (posts, heures), pas l'heure par heure. Les autres comptes gardent 14 jours.
+LONG_RATE_DAYS = {"realdonaldtrump": 84}
+
+
 def fetch_tweet_trackings(http: HttpClient, handles=None, now: datetime | None = None) -> list[dict]:
     """Périodes suivies par XTracker : messages déjà comptés, et les 14 derniers jours heure par heure
-    (heures complètes seulement, la plus récente en dernier) pour le rythme. Un appel par compte."""
+    (heures complètes seulement, la plus récente en dernier) pour le rythme. Un appel par compte.
+    Pour les comptes de `LONG_RATE_DAYS`, `posts_long` / `heures_long` : posts des 84 derniers jours (heures complètes)."""
     now = (now or now_utc()).astimezone(timezone.utc)
     hour = now.replace(minute=0, second=0, microsecond=0)
     rows = []
@@ -115,7 +121,8 @@ def fetch_tweet_trackings(http: HttpClient, handles=None, now: datetime | None =
         active = [t for t in user.get("trackings") or [] if t.get("isActive") and parse_date(t.get("startDate") or "")]
         if (handles and user.get("handle") not in handles) or not active:
             continue
-        since = min([hour - timedelta(days=14)] + [parse_date(t["startDate"]) for t in active])
+        long_days = LONG_RATE_DAYS.get(str(user.get("handle") or "").lower(), 0)
+        since = min([hour - timedelta(days=max(14, long_days))] + [parse_date(t["startDate"]) for t in active])
         posts = (http.get_json(f"https://xtracker.polymarket.com/api/users/{user['handle']}/posts",
                                params={"startDate": since.isoformat().replace("+00:00", "Z"),
                                        "endDate": now.isoformat().replace("+00:00", "Z")}) or {}).get("data") or []
@@ -125,9 +132,13 @@ def fetch_tweet_trackings(http: HttpClient, handles=None, now: datetime | None =
             k = int((hour - t).total_seconds() // 3600)  # 0 = heure qui vient de finir
             if 0 <= k < len(hourly) and t < hour:
                 hourly[-1 - k] += 1
+        long_info = {}
+        if long_days:
+            long_info = {"posts_long": sum(1 for t in times if hour - timedelta(days=long_days) <= t < hour),
+                         "heures_long": long_days * 24}
         for t in active:
             start, end = parse_date(t["startDate"]), parse_date(t.get("endDate") or "")
-            rows.append({"compte": user.get("handle"), "titre": t.get("title"),
+            rows.append({**long_info, "compte": user.get("handle"), "titre": t.get("title"),
                          "slug": str(t.get("marketLink") or "").rstrip("/").rsplit("/", 1)[-1],
                          "debut": t.get("startDate"), "fin": t.get("endDate"),
                          "total": sum(1 for x in times if start <= x and (end is None or x <= end)),
@@ -435,6 +446,9 @@ def tweet_bucket_probability(tracking: dict, bucket: tuple[int, int], now: datet
     remaining = max((end - max(seen, start or seen)).total_seconds() / 3600, 0)
     recent = sum(hourly[-recent_hours:]) / max(len(hourly[-recent_hours:]), 1)
     long = sum(hourly[-long_hours:]) / max(len(hourly[-long_hours:]), 1)
+    if long_hours > len(hourly) and tracking.get("posts_long") is not None and tracking.get("heures_long"):
+        # rythme long relevé séparément (12 semaines) : l'heure par heure ne garde que 14 jours
+        long = float(tracking["posts_long"]) / float(tracking["heures_long"])
     rate = recent_weight * recent + (1 - recent_weight) * long
     lo, hi = bucket
     return negbin_interval(lo - int(count), hi - int(count), rate * remaining, dispersion)

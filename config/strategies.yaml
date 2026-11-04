@@ -2778,6 +2778,39 @@ compteur_truth_dispersion_6_audace:
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}
     only_trump:     {value: 1, min: 0, max: 1}
 
+compteur_truth_rythme_long_audace:
+  explication: "Le compteur de posts de Trump, mais en se méfiant d'une semaine record : le rythme des trois derniers mois compte beaucoup plus que celui des sept derniers jours, avec une grosse mise."
+  # 04/11/2026 (expérience audacieuse, experiments/truth_rythme_long.md) : après une semaine de 676 posts (record des 39 semaines d'archive : 292), la formule de
+  # production (rythme 7 j / 14 j) a acheté « 200+ du 6 au 13/11 » à 0,724 sur une estimation de 0,968 (91 € du champion `compteur_tweets`) ; le marché est tombé à
+  # 0,59. Le défaut n'est pas seulement la dispersion (02/11) : le rythme récent ne revient pas vers la moyenne. Log-score par tranche sur 30 semaines (mêmes départs),
+  # décision 220 h avant le début : production −2,222, dispersion 6 −2,151, rythme long 12 semaines (poids du récent 0,2, dispersion 12) −2,023 ; à 54 h : −2,103,
+  # −2,076, −1,972. Contre le marché (vrais échanges, frais 5 %, 28 jours de profil, 6 réglages essayés, 72 événements) : rythme long R 8 : +30 % (264 paris, t par
+  # événement 1,78, z des prix 4,5, 7 mois sur 8, « retenue ») mais R 12 : +20 % (t 0,82, « indice ») et poids 0,35 : « écartée » : indice, pas preuve.
+  mere: compteur_truth
+  morceau: "rythme des 12 dernières semaines (poids 0,8), dispersion 8, mise franche"
+  class: compteur_tweets
+  enabled: true
+  version: "1.0.0"
+  created_at: "2026-11-04"
+  hypothesis: >
+    Un rythme de posts record revient vers la moyenne ; en pesant 80 % de la moyenne des 12 dernières semaines (et 20 % de la dernière), la formule cesse de payer
+    0,72 des quasi-certitudes (0,97) après une semaine d'élection et bat `compteur_truth` et `compteur_truth_dispersion_6_audace` sur la même période.
+    Une perte apprendrait que la semaine record est un nouveau régime (elle reste haute) et que le marché, qui la ramène à 0,59, se trompait.
+  params:
+    dispersion:     {value: 8, min: 0.5, max: 1000}
+    min_price:      {value: 0.10, min: 0.0, max: 0.5}
+    recent_hours:   {value: 168, min: 6, max: 336}
+    long_hours:     {value: 2016, min: 24, max: 2016}
+    recent_weight:  {value: 0.2, min: 0.0, max: 1.0}
+    max_stale_hours: {value: 1, min: 0.25, max: 12}
+    margin:         {value: 0.03, min: 0.0, max: 0.3}
+    uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
+    min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}
+    only_trump:     {value: 1, min: 0, max: 1}
+
 compteur_tweets_non_hors_elon_trump:
   explication: "Le compteur de tweets, NON seulement, mais sans les deux comptes les plus suivis (Elon Musk et Trump), où on ne gagnait rien."
   # 23/10/2026 : découpage a posteriori de experiments/tweets_filles.md (NON sans NYC Mayor : Elon -1 %, Trump -2 %, tedcruz +22 %, Zelensky +23 %,
