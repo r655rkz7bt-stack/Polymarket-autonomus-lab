@@ -43,13 +43,15 @@ def restant(T, E):
 
 
 from polymarket_agent.references import tweet_bucket_probability
+LH = int(os.environ.get("LH", 336))      # heures du rythme long (12 semaines = 2016, 04/11/2026)
+RW = float(os.environ.get("RW", 0.5))    # poids du rythme des 168 dernières heures
 PROD = os.environ.get("PROD") == "1"   # formule de production (compteur_tweets : 168 h / 336 h, dispersion R) au lieu du profil par heure de la semaine
 
 def proba_prod(lo, hi, c, T, S0, E):
     h = T.replace(minute=0, second=0, microsecond=0)
-    hourly = [compte((h - timedelta(hours=k + 1)).timestamp(), (h - timedelta(hours=k)).timestamp()) for k in range(335, -1, -1)]
+    hourly = [compte((h - timedelta(hours=k + 1)).timestamp(), (h - timedelta(hours=k)).timestamp()) for k in range(LH - 1, -1, -1)]
     tr = {"debut": S0.isoformat(), "fin": E.isoformat(), "vu_le": T.isoformat(), "total": c, "heures": hourly}
-    return tweet_bucket_probability(tr, (lo, hi), T, R, 168, 336, 0.5) or 0.0
+    return tweet_bucket_probability(tr, (lo, hi), T, R, 168, LH, RW) or 0.0
 
 def proba(lo, hi, c, rest):
     """P(c + X dans [lo, hi]) avec X ~ NB(rest, R)."""
@@ -63,7 +65,7 @@ bets = []
 for e in ev:
     S0, E = rg.fenetre(e)
     now = datetime.now(timezone.utc)
-    if not e.get("closed") or E > now or S0 - timedelta(days=HIST) < posts[0]: continue
+    if not e.get("closed") or E > now or S0 - timedelta(days=max(HIST, int(os.environ.get("MINJ", LH // 24 + 1)))) < posts[0]: continue
     win = rg.gagnante(e)
     if win is None or rg.bornes(win) is None: continue
     path = cache / f"echanges_{e['id']}.json.gz"
@@ -117,7 +119,7 @@ for side in (0, 1):
 for off in OFFS:
     g = [b["gain"] for b in bets if b["off"] == off]
     if g: print(f"  T=S{off:+d}: {len(g)} paris {st.mean(g):+.3f}")
-json.dump(bets, open("/tmp/claude-0/-home-user-Polymarket-autonomus-lab/2ec880dc-6036-5e41-8825-688b33fe4647/scratchpad/bets_ts.json", "w"))
+json.dump(bets, open(os.environ.get("SORTIE", "/dev/null"), "w"))
 sans = [b for b in bets if b["cout"] >= 0.10]
 v2 = it.verdict(sans)
 print(f"RÉSUMÉ HIST {HIST} R {R} marge {MARGE} échelle {SCALE} : tout {len(bets)} paris {st.mean([b['gain'] for b in bets]) if bets else 0:+.3f} | sans billets < 0,10 : {v2['paris']} paris {v2.get('rendement_moyen')} t_évén {v2.get('confiance_evenements')} z_prix {v2.get('z_prix')} mois+ {v2.get('mois_gagnants')} -> {v2['verdict']}")

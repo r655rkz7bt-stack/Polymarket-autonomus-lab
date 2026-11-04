@@ -115,6 +115,35 @@ def test_xtracker_counts_the_period_and_keeps_fourteen_days_hour_by_hour():
     assert len(hourly) == 336 and sum(hourly) == 5 and hourly[-2] == 1 and hourly[-3] == 2
 
 
+def test_trump_long_rate_is_read_over_twelve_weeks_and_pulls_a_burst_back():
+    """04/11/2026 : après une semaine de 676 posts (record 292 en 39 semaines), la formule de production (7 j / 14 j) criait « 200+ à 97-99 % ».
+    Un rythme long de 12 semaines (`long_hours` > 336 + `posts_long`) la ramène ; les autres comptes ne changent pas."""
+    start = NOW + timedelta(days=2)
+
+    class Http:
+        calls = []
+
+        def get_json(self, url, params=None, headers=None):
+            if url.endswith("/api/users"):
+                return {"data": [{"handle": h, "trackings": [{"isActive": True, "title": h, "startDate": start.isoformat(),
+                                                              "endDate": (start + timedelta(days=7)).isoformat(),
+                                                              "marketLink": f"https://polymarket.com/event/{h}"}]}
+                                 for h in ("realDonaldTrump", "elonmusk")]}
+            self.calls.append((url, params["startDate"]))
+            # 100 posts par jour sur les 3 derniers jours, 10 par jour avant (jusqu'à 80 jours)
+            hours = [h + 0.5 for h in range(72)] * 1 + [72 + i * 2.4 + 0.5 for i in range(80 * 10)]
+            return {"data": [{"createdAt": (NOW.replace(minute=0) - timedelta(hours=h)).isoformat()} for h in hours for _ in range(1 if h >= 72 else 100 // 24 + 1)]}
+    rows = refs.fetch_tweet_trackings(Http(), now=NOW)
+    trump = next(r for r in rows if r["compte"] == "realDonaldTrump")
+    elon = next(r for r in rows if r["compte"] == "elonmusk")
+    assert trump["heures_long"] == 2016 and trump["posts_long"] > sum(trump["heures"]) and "posts_long" not in elon
+    assert Http.calls[0][1] < Http.calls[1][1]  # 84 jours demandés pour Trump, 14 pour Elon
+    tr = dict(trump, fin=(start + timedelta(days=7)).isoformat(), debut=start.isoformat(), total=0, vu_le=NOW.isoformat())
+    prod = refs.tweet_bucket_probability(tr, (200, 10 ** 9), NOW, 12, 168, 336, 0.5)
+    long = refs.tweet_bucket_probability(tr, (200, 10 ** 9), NOW, 12, 168, 2016, 0.2)
+    assert long < prod and refs.tweet_bucket_probability(elon, (200, 10 ** 9), NOW, 12, 168, 2016, 0.2) is not None
+
+
 def test_football_three_ways_and_champions_are_linked_to_bookmakers(tmp_path):
     start = NOW + timedelta(hours=5)
     obs = Observation(source="odds_api", external_id="o1", published_at=NOW, collected_at=NOW, url="", title="Cotes EPL",
