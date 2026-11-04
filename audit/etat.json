@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6866,
+  "principal": 6868,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2337,
@@ -48,7 +48,7 @@
   "fantome:nm_prix_haut_v1.0.0": 2034,
   "fantome:naive_favorite_large_v1.0.0": 1936,
   "fantome:nf_sport_patiente_v1.0.0": 2728,
-  "fantome:favori_politique_nuit_v1.0.0": 1843,
+  "fantome:favori_politique_nuit_v1.0.0": 1845,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
@@ -141,8 +141,8 @@
   "fantome:moins_de_cartes_v1.0.0": 1154,
   "fantome:non_aux_drames_v1.0.0": 705,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 867,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 836,
+  "fantome:vague_volume_suivre_v1.0.0": 868,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 838,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 574,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 573,
@@ -163,7 +163,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 475,
   "fantome:moins_de_cartes_lol_v1.0.0": 494,
   "fantome:detroits_non_normal_v1.0.0": 450,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 723,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 724,
   "fantome:mentions_non_outsider_v1.0.0": 435,
   "fantome:mentions_non_v1.0.0": 431,
   "fantome:rallies_non_favori_v1.0.0": 436,
@@ -1795,9 +1795,9 @@
    "op_id": "settle-98106353072583827634897477210038167474293958631400304652046899792569822166408"
   }
  ],
- "derniere_execution": "2026-11-04T06:48:52+00:00",
+ "derniere_execution": "2026-11-04T06:53:02+00:00",
  "dernier_seq_reglements": {
-  "principal": 6866,
+  "principal": 6868,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2337,
@@ -1817,7 +1817,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2038,
+  "fantome:favori_politique_patiente_v1.0.0": 2040,
   "fantome:favori_politique_v1.0.0": 1980,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1993,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -1845,7 +1845,7 @@
   "fantome:nm_prix_haut_v1.0.0": 2034,
   "fantome:naive_favorite_large_v1.0.0": 1936,
   "fantome:nf_sport_patiente_v1.0.0": 2728,
-  "fantome:favori_politique_nuit_v1.0.0": 1843,
+  "fantome:favori_politique_nuit_v1.0.0": 1845,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
@@ -1938,8 +1938,8 @@
   "fantome:moins_de_cartes_v1.0.0": 1154,
   "fantome:non_aux_drames_v1.0.0": 705,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 867,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 836,
+  "fantome:vague_volume_suivre_v1.0.0": 870,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 838,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 574,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 573,
@@ -1960,7 +1960,7 @@
   "fantome:moins_de_cartes_bo5_v1.0.0": 475,
   "fantome:moins_de_cartes_lol_v1.0.0": 494,
   "fantome:detroits_non_normal_v1.0.0": 450,
-  "fantome:nf_sport_patiente_avant_match_v1.0.0": 723,
+  "fantome:nf_sport_patiente_avant_match_v1.0.0": 724,
   "fantome:mentions_non_outsider_v1.0.0": 435,
   "fantome:mentions_non_v1.0.0": 431,
   "fantome:rallies_non_favori_v1.0.0": 436,
@@ -1988,5 +1988,5 @@
   "fantome:classement_appstore_v1.1.0": 152,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 110
  },
- "reglements_verifies": 10927
+ "reglements_verifies": 10931
 }
