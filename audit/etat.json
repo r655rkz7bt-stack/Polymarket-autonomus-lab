@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7065,
+  "principal": 7066,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2373,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-109981431081940331239658998996433477787643318650810824199814356032622555810052"
   }
  ],
- "derniere_execution": "2026-11-04T22:09:25+00:00",
+ "derniere_execution": "2026-11-04T22:12:49+00:00",
  "dernier_seq_reglements": {
-  "principal": 7065,
+  "principal": 7066,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2373,
@@ -1823,7 +1823,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 2031,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2940,
-  "fantome:contrer_crypto_v1.0.0": 2738,
+  "fantome:contrer_crypto_v1.0.0": 2740,
   "fantome:favori_politique_quasi_certain_v1.0.0": 2050,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
@@ -1962,7 +1962,7 @@
   "fantome:moins_de_cartes_lol_v1.0.0": 523,
   "fantome:detroits_non_normal_v1.0.0": 478,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 767,
-  "fantome:mentions_non_outsider_v1.0.0": 464,
+  "fantome:mentions_non_outsider_v1.0.0": 466,
   "fantome:mentions_non_v1.0.0": 461,
   "fantome:rallies_non_favori_v1.0.0": 464,
   "fantome:rallies_non_v1.0.0": 476,
