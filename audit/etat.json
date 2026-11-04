@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6985,
+  "principal": 6986,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2358,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-42431410208825956966973379840879971500392276583214298087883411649393811707938"
   }
  ],
- "derniere_execution": "2026-11-04T16:42:37+00:00",
+ "derniere_execution": "2026-11-04T16:46:05+00:00",
  "dernier_seq_reglements": {
-  "principal": 6985,
+  "principal": 6986,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2358,
@@ -1833,7 +1833,7 @@
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2285,
   "fantome:nf_non_v1.0.0": 1270,
-  "fantome:nf_oui_v1.0.0": 2005,
+  "fantome:nf_oui_v1.0.0": 2007,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
@@ -1939,7 +1939,7 @@
   "fantome:moins_de_cartes_v1.0.0": 1196,
   "fantome:non_aux_drames_v1.0.0": 728,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 929,
+  "fantome:vague_volume_suivre_v1.0.0": 931,
   "fantome:vague_volume_suivre_x5_v1.0.0": 890,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 592,
