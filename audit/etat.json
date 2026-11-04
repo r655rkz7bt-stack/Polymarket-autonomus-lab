@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7060,
+  "principal": 7061,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2372,
@@ -22,7 +22,7 @@
   "fantome:market_maker_v1.0.0": 2179,
   "fantome:favori_politique_patiente_v1.0.0": 2081,
   "fantome:favori_politique_v1.0.0": 2033,
-  "fantome:naive_favorite_sans_fin_v1.0.0": 2030,
+  "fantome:naive_favorite_sans_fin_v1.0.0": 2031,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2940,
   "fantome:contrer_crypto_v1.0.0": 2737,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 660,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1153,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1567,
+  "fantome:nf_sport_18_24h_v1.0.0": 1570,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 702,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1077,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 138,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 22
  },
- "verifiees": 17728,
+ "verifiees": 17730,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-109981431081940331239658998996433477787643318650810824199814356032622555810052"
   }
  ],
- "derniere_execution": "2026-11-04T21:44:59+00:00",
+ "derniere_execution": "2026-11-04T21:47:21+00:00",
  "dernier_seq_reglements": {
-  "principal": 7060,
+  "principal": 7061,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2372,
@@ -1820,7 +1820,7 @@
   "fantome:market_maker_v1.0.0": 2179,
   "fantome:favori_politique_patiente_v1.0.0": 2081,
   "fantome:favori_politique_v1.0.0": 2033,
-  "fantome:naive_favorite_sans_fin_v1.0.0": 2030,
+  "fantome:naive_favorite_sans_fin_v1.0.0": 2031,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2940,
   "fantome:contrer_crypto_v1.0.0": 2737,
