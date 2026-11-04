@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-04 (passage chercheur de 16 h, 15 h 55 → ~16 h 05 UTC ; durée visée 135 min non atteinte : il ne reste que des pistes qui attendent des données futures (CDC rougeole mercredi 17 h UTC, sièges et Géorgie non réglés, App Store 06/11, règlement Trump 13/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-04_apres_midi_paris_lies_et_nouveau_fantome.md`, famille 5). Aucune « Enquête obligatoire » grave. Constats `estimation_perimee` relus : mêmes achats Trump déjà documentés. Sept fantômes `compteur_*` tiennent le même jeton « 200+ du 6 au 13/11 » (606 €) ; le nouveau fantôme rythme long l'a pris à la même heure et au même prix mais sur 0,814 (mère 0,968) : le correctif de 11 h fonctionne. Principal : 4 € sur cet événement, 20-28 € sur les autres événements de posts, pas de surexposition. Aucun défaut.
+- **Recherche** (piste 17, `echelles_minces_hors_election.md`). Fed : « 0 baisse » 0,977 à l'achat contre ≈ 0,7 % de baisse décembre, +1,6 % brut en 58 jours, un favori ordinaire : **écartée**. Israël : tranches 0-3 réglées, 4 pays acquis, aucun marché par pays : **non testable**. Rougeole : le CDC n'a pas encore publié la ligne du 04/11 (publication ~17 h UTC).
+- **Arène** : rien ajouté, faute d'idée neuve plausible (les trois filles 80/20 restent refusées : mère éteinte, tranche choisie après coup, 3 paris = 92 % du gain).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : CDC rougeole du 04/11 (relancer `cdc_historique.py` après 17 h UTC), sièges et Géorgie, App Store 06/11, règlement Trump du 13/11 (trois formules sur la même période), Israël si un 5e pays apparaît.
+
 ## 2026-11-04 (passage chercheur de 11 h, 10 h 55 → ~11 h 15 UTC ; durée visée 135 min non atteinte : le reste attend des données futures (règlement du 13/11 pour le nouveau fantôme, sièges et Géorgie, rougeole, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `truth_rythme_long.md`, famille 2 + constat `estimation_perimee`). Aucune « Enquête obligatoire ». **Défaut trouvé** : le 04/11 à 01 h 03, le champion `compteur_tweets` (et `compteur_truth`, `compteur_tweets_48h_audace`) a acheté « 200+ posts de Trump du 6 au 13/11 » à 0,724 sur une estimation de 0,968 (91 € ; le principal a copié 4 €) ; le marché est à 0,59 à 11 h. Cause : la formule prolonge le rythme des 7-14 derniers jours (676 posts en 7 jours, record de l'archive 292) sans retour à la moyenne ; la dispersion 6 du 02/11 ne règle pas le cas (0,949). Mesuré : log-score à 220 h avant le début, production −2,222, dispersion 6 −2,151, rythme des 12 semaines −2,023 (mêmes 30 semaines). Contrôle à la main : 60 règlements au hasard relus sur Gamma, 60 conformes. Le reste des constats « à regarder » est celui déjà documenté.
