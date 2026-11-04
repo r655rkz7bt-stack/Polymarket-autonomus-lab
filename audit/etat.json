@@ -179,7 +179,7 @@
   "fantome:moins_de_kills_v1.0.0": 447,
   "fantome:suivre_inities_v1.0.0": 382,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 465,
+  "fantome:ia_oui_sorties_v1.0.0": 467,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 441,
   "fantome:suivre_inities_seul_v1.0.0": 365,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 135,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 19
  },
- "verifiees": 17686,
+ "verifiees": 17687,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-109981431081940331239658998996433477787643318650810824199814356032622555810052"
   }
  ],
- "derniere_execution": "2026-11-04T20:24:11+00:00",
+ "derniere_execution": "2026-11-04T20:28:25+00:00",
  "dernier_seq_reglements": {
-  "principal": 7038,
+  "principal": 7040,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2370,
@@ -1890,7 +1890,7 @@
   "fantome:marches_jumeaux_v1.0.0": 715,
   "fantome:outsiders_surcotes_v1.0.0": 621,
   "fantome:paire_oui_non_v1.0.0": 715,
-  "fantome:compteur_tweets_v1.0.0": 1180,
+  "fantome:compteur_tweets_v1.0.0": 1182,
   "fantome:cotes_tennis_v1.0.0": 707,
   "fantome:football_trois_issues_v1.0.0": 707,
   "fantome:futurs_bookmakers_v1.0.0": 707,
@@ -1982,7 +1982,7 @@
   "fantome:tranche_centrale_non_v1.0.0": 441,
   "fantome:suivre_inities_seul_v1.0.0": 365,
   "fantome:compteur_tweets_oui_v1.0.0": 442,
-  "fantome:compteur_tweets_48h_audace_v1.0.0": 416,
+  "fantome:compteur_tweets_48h_audace_v1.0.0": 418,
   "fantome:favori_esport_milieu_v1.0.0": 333,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 368,
   "fantome:sieges_coherence_v1.0.0": 213,
