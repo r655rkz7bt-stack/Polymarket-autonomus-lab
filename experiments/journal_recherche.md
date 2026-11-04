@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-04 (passage chercheur de 1 h, 00 h 54 → ~02 h 00 UTC ; durée visée 135 min non atteinte : le redémarrage du worker a arrêté les relevés de la nuit d'élection à ~01 h 55 UTC)
+
+- **Enquête** (fiche : `enquetes/2026-11-04_nuit_copie_et_muettes.md`, familles 5 et 6). Aucune « Enquête obligatoire ». Copie du principal vérifiée jeton par jeton (233 paris depuis le 28/10 : 233 copiés, écart de prix ≤ 0,01) ; 15 stratégies à 0 opération expliquées (PortWatch fermé, `inities` sans grappe). Aucun défaut.
+- **Recherche** (piste 15, nuit d'élection du 03/11). Outils versionnés dans `experiments/election_direct/` : `bande_prix_nuit.py` (40 événements `midterms`, toutes les 2 min), `releve_nc.py` (comptage officiel de la Caroline du Nord, `dl.ncsbe.gov/ENRS/2026_11_03/results_pct_20261103.zip`, sans clé, publié à partir de 01 h 19 UTC ; Sénat + 14 circonscriptions), `releve_nuit.py` (Géorgie : le JSON `export-2026NovGen.json` répondait encore 404 à 01 h 50 UTC). Constat : les prix bougent avant tout comptage lisible (gouverneur du Texas Hinojosa 0,42 → 0,78 en 15 min) ; NC-13 : Barringer 56 % des 51 premiers précincts sur 170 mais prix du démocrate 0,79 → 0,65 (le marché pondère les comtés restants). Texas (`results.texas-election.com`) répond 403 aux robots : pas de contournement. Pas de verdict : 2 courses serrées en Caroline du Nord, pas de série d'événements ; à rejouer avec les règlements.
+- **Arène** : rien ajouté. Les trois filles 80/20 restent refusées pour les raisons du 01-03/11.
+- **Leçons** : aucune stratégie éliminée. `pgrep -f motif` dans une commande qui contient le motif tue sa propre commande (sortie 144) ; un worker redémarré tue les relevés en arrière-plan : les versionner souvent.
+- **Reste ouvert** : évaluer la bande de prix contre les règlements (04/11) ; Géorgie ; rougeole (CDC mercredi), essence, App Store 06/11, `compteur_truth_dispersion_6_audace` après le 10/11.
+
 ## 2026-11-03 (passage chercheur de 21 h, 20 h 56 → ~21 h 05 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (élection 03/11, Géorgie et sièges 04/11, rougeole 04/11, essence, App Store 06/11), arrêt sans remplissage)
 
 - **Enquête** (famille 4, déjà traitée à 1 h ; pas de nouvelle donnée de règlement). Aucune « Enquête obligatoire » grave. Constat « à regarder » relu en direct : `vague_volume_suivre*` (3 positions « échéance dépassée de 213 h », marchés 2757891, 2757900, 4961853) = Serbie, marchés encore ouverts sur Gamma (`closed: false`, prix 0,03 / 0,135 / 0,006 côté OUI), date de fin placeholder du 25/10 : même cas que le 02/11, pas de règlement manqué. Les autres constats sont ceux déjà documentés. Pas de défaut de code.
