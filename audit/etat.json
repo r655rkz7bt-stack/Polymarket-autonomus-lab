@@ -20,7 +20,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2038,
+  "fantome:favori_politique_patiente_v1.0.0": 2041,
   "fantome:favori_politique_v1.0.0": 1981,
   "fantome:naive_favorite_sans_fin_v1.0.0": 1994,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -141,7 +141,7 @@
   "fantome:moins_de_cartes_v1.0.0": 1154,
   "fantome:non_aux_drames_v1.0.0": 705,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 868,
+  "fantome:vague_volume_suivre_v1.0.0": 872,
   "fantome:vague_volume_suivre_x5_v1.0.0": 840,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 575,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 153,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 110
  },
- "verifiees": 17186,
+ "verifiees": 17188,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-98106353072583827634897477210038167474293958631400304652046899792569822166408"
   }
  ],
- "derniere_execution": "2026-11-04T06:59:04+00:00",
+ "derniere_execution": "2026-11-04T07:03:42+00:00",
  "dernier_seq_reglements": {
-  "principal": 6869,
+  "principal": 6873,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2338,
@@ -1822,7 +1822,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 1994,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2880,
-  "fantome:contrer_crypto_v1.0.0": 2662,
+  "fantome:contrer_crypto_v1.0.0": 2664,
   "fantome:favori_politique_quasi_certain_v1.0.0": 2003,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
@@ -1935,7 +1935,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 1154,
+  "fantome:moins_de_cartes_v1.0.0": 1158,
   "fantome:non_aux_drames_v1.0.0": 705,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 872,
