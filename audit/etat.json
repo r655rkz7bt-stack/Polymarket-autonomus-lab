@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7057,
+  "principal": 7058,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2372,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4713,
+  "fantome:nf_sport_v1.0.0": 4715,
   "fantome:nm_court_v1.0.0": 2365,
   "fantome:nm_crypto_v1.0.0": 1967,
   "fantome:nm_hors_crypto_v1.0.0": 2454,
@@ -133,7 +133,7 @@
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
   "fantome:nf_sport_18_24h_v1.0.0": 1566,
   "fantome:nf_sport_925_950_v1.0.0": 765,
-  "fantome:favori_politique_quasi_certain_connu_v1.0.0": 700,
+  "fantome:favori_politique_quasi_certain_connu_v1.0.0": 702,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1076,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 137,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 21
  },
- "verifiees": 17722,
+ "verifiees": 17723,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-109981431081940331239658998996433477787643318650810824199814356032622555810052"
   }
  ],
- "derniere_execution": "2026-11-04T21:29:35+00:00",
+ "derniere_execution": "2026-11-04T21:33:16+00:00",
  "dernier_seq_reglements": {
-  "principal": 7057,
+  "principal": 7058,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2372,
@@ -1931,7 +1931,7 @@
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
   "fantome:nf_sport_18_24h_v1.0.0": 1566,
   "fantome:nf_sport_925_950_v1.0.0": 765,
-  "fantome:favori_politique_quasi_certain_connu_v1.0.0": 700,
+  "fantome:favori_politique_quasi_certain_connu_v1.0.0": 702,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1076,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 137,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 21
  },
- "reglements_verifies": 11419
+ "reglements_verifies": 11420
 }
