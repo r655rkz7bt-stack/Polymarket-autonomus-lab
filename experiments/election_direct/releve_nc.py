@@ -8,7 +8,7 @@ import requests
 H = {'User-Agent': 'curl/8'}
 URL = 'https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/results_pct_20261103.zip'
 SORTIE = os.path.join(os.path.dirname(__file__), 'releve_nc.jsonl')
-COURSES = ('US SENATE',)
+COURSES = ('US SENATE',)  # + toutes les circonscriptions « US HOUSE OF REPRESENTATIVES DISTRICT nn »
 
 
 def lire(contenu):
@@ -21,7 +21,7 @@ def lire(contenu):
     tous = collections.defaultdict(set)
     for l in texte[1:]:
         c = l.split('\t')
-        if len(c) < len(en) or c[i['Contest Name']] not in COURSES:
+        if len(c) < len(en) or not (c[i['Contest Name']] in COURSES or c[i['Contest Name']].startswith('US HOUSE')):
             continue
         nom = c[i['Contest Name']]; v = int(c[i['Total Votes']] or 0)
         votes[nom][c[i['Choice']] + ' ' + c[i['Choice Party']]] += v
