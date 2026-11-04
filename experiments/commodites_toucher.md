@@ -29,6 +29,25 @@ beyond the listed price », après la création du marché, séances de la semai
   Le gain global vient donc surtout de la première moitié ; sur les trois derniers mois il est positif mais indiscernable de zéro.
 - **Verdict : INDICE FAIBLE** (`idea_test.verdict` global : « retenue », t 2,35, z 1,96, 5/7 mois ; mais ~25 regards, effet qui s'efface depuis août, pas de répétition sur les échelles mensuelles, modèle moins bon que le marché en log-score) → fantôme `toucher_metaux` (quart de Kelly), or et argent seulement : l'arène dira si l'effet existe encore.
 
+## Mise à jour du 04/11/2026 (soir) : octobre réglé, l'effet s'est éteint en septembre-octobre
+
+Relevé refait (`releve_evenements.py`, `prix_yahoo.py`, `backtest.py WTI,NG,XAUUSD,XAGUSD` ; Data API v2 déjà migrée dans `idea_test`), 436 couples, règlement relu : 425/442 (WTI), 449/477 (gaz), 438/493 (or), 463/520 (argent) conformes aux barres horaires.
+Détail : `resultats_04_11_octobre_inclus.txt` (découpages `analyse.py`). Toutes matières, seuil 0,05 : 343 paris, +32,5 %, t par événement +2,36, z des prix +2,16 (rien de neuf : le total reste « retenu » grâce à avril-août).
+
+| période (seuil 0,05) | paris | rendement | t par événement | gagnés / attendus (z) |
+|---|---|---|---|---|
+| avril → août | 219 | +58,9 % | +3,07 | 134 / 110,7 (+3,76) |
+| **septembre → octobre** | 124 | **−14,2 %** | −0,80 | 53 / 59,6 (−1,43) |
+| avril → août, barres 0,10-0,45 | 82 | +104 % | +3,50 | 39 / 21,1 (+4,66) |
+| **septembre → octobre, barres 0,10-0,45** | 57 | **−18,3 %** | −0,02 | 10 / 13,9 (−1,23) |
+| or seul, sept → oct (0,05 / 0,10) | 38 / 26 | −42,8 % / −59,4 % | −2,52 / −3,08 | 15 / 19,5 ; 6 / 11,5 (z −2,4) |
+| argent seul, sept → oct | 38 / 25 | −0,9 % / +22,0 % | −0,2 / +0,75 | 15 / 15,9 ; 10 / 9,0 |
+
+Lecture : les deux mois qui suivent la découverte sont **hors échantillon pour la conclusion du 24/10** et ne la confirment pas : l'or (la seule matière qui portait le gain) perd même nettement
+(0 gagné pour 3,5 attendus sur les barres 0,10-0,45), l'argent est à zéro. C'est la forme d'un effet qui s'est résorbé (plus de monde sur les marchés, volumes en hausse) ou d'un tirage chanceux d'avril-juin
+(une trentaine de découpages regardés au total). **Verdict : indice affaibli, pas de capital** ; `toucher_metaux` reste fantôme (c'est maintenant LE test hors échantillon, ses achats datent du 02/11) ; pas de fille, pas de passage au principal.
+Prochaine lecture utile : quand ses 30 premiers paris sont réglés (semaines des 02/11 et 09/11).
+
 ## Production (fantôme `toucher_metaux`)
 - **Source des prix** : l'historique de Pyth (arbitre) demande désormais une clé (`benchmarks.pyth.network` : 401, `hermes.pyth.network/v2/updates/price/*` : 401 ; seule la liste des flux répond), Yahoo n'a pas d'API documentée (interdit par `CHANTIERS.md`),
   Stooq ne répond pas. **gold-api.com** (sans clé) donne l'or (XAU) et l'argent (XAG) au comptant : `sources/goldapi.py`, relevé à chaque cycle dans la table `prix_matieres` (`matieres.record_prices`). Pas de pétrole ni de gaz (aucune source libre).
