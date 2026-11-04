@@ -1796,9 +1796,9 @@
    "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
   }
  ],
- "derniere_execution": "2026-11-04T12:55:00+00:00",
+ "derniere_execution": "2026-11-04T12:57:50+00:00",
  "dernier_seq_reglements": {
-  "principal": 6948,
+  "principal": 6949,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2350,
