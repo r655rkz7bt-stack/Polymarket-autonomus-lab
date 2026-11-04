@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7075,
+  "principal": 7076,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2376,
@@ -24,7 +24,7 @@
   "fantome:favori_politique_v1.0.0": 2036,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2035,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 2943,
+  "fantome:contrer_crypto_patiente_v1.0.0": 2945,
   "fantome:contrer_crypto_v1.0.0": 2742,
   "fantome:favori_politique_quasi_certain_v1.0.0": 2051,
   "fantome:loterie_meteo_v1.0.0": 1977,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3489,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3493,
   "fantome:nf_sport_sans_fin_v1.0.0": 1956,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -164,7 +164,7 @@
   "fantome:moins_de_cartes_lol_v1.0.0": 524,
   "fantome:detroits_non_normal_v1.0.0": 479,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 771,
-  "fantome:mentions_non_outsider_v1.0.0": 466,
+  "fantome:mentions_non_outsider_v1.0.0": 467,
   "fantome:mentions_non_v1.0.0": 462,
   "fantome:rallies_non_favori_v1.0.0": 465,
   "fantome:rallies_non_v1.0.0": 477,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 139,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 23
  },
- "verifiees": 17769,
+ "verifiees": 17771,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-109981431081940331239658998996433477787643318650810824199814356032622555810052"
   }
  ],
- "derniere_execution": "2026-11-04T22:40:28+00:00",
+ "derniere_execution": "2026-11-04T22:43:18+00:00",
  "dernier_seq_reglements": {
-  "principal": 7075,
+  "principal": 7076,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2376,
@@ -1962,7 +1962,7 @@
   "fantome:moins_de_cartes_lol_v1.0.0": 524,
   "fantome:detroits_non_normal_v1.0.0": 479,
   "fantome:nf_sport_patiente_avant_match_v1.0.0": 771,
-  "fantome:mentions_non_outsider_v1.0.0": 466,
+  "fantome:mentions_non_outsider_v1.0.0": 467,
   "fantome:mentions_non_v1.0.0": 462,
   "fantome:rallies_non_favori_v1.0.0": 465,
   "fantome:rallies_non_v1.0.0": 477,
