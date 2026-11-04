@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6930,
+  "principal": 6931,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2348,
@@ -40,7 +40,7 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 4572,
-  "fantome:nm_court_v1.0.0": 2340,
+  "fantome:nm_court_v1.0.0": 2342,
   "fantome:nm_crypto_v1.0.0": 1949,
   "fantome:nm_hors_crypto_v1.0.0": 2418,
   "fantome:nm_long_v1.0.0": 2170,
@@ -141,8 +141,8 @@
   "fantome:moins_de_cartes_v1.0.0": 1177,
   "fantome:non_aux_drames_v1.0.0": 717,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 908,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 871,
+  "fantome:vague_volume_suivre_v1.0.0": 910,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 873,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 583,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 583,
@@ -195,46 +195,6 @@
  "verifiees": 17375,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:crypto_non_bon_marche_v1.0.0",
-   "seq": 114,
-   "type": "SETTLE",
-   "date": "2026-10-28T16:13:09",
-   "detail": "réglé à 0 alors que le marché 6015123 n'est pas clos",
-   "op_id": "settle-69069025555488161576972034868757503353817725877971677662103029702958034335116"
-  },
-  {
-   "portefeuille": "fantome:nf_court_v1.0.0",
-   "seq": 2398,
-   "type": "SETTLE",
-   "date": "2026-10-28T16:13:09",
-   "detail": "réglé à 1 alors que le marché 6015123 n'est pas clos",
-   "op_id": "settle-26564350134259169229453598307266611186318521072230018593894595544526830619010"
-  },
-  {
-   "portefeuille": "fantome:nf_court_v1.0.0",
-   "seq": 2399,
-   "type": "SETTLE",
-   "date": "2026-10-28T16:13:09",
-   "detail": "réglé à 0 alors que le marché 6256020 n'est pas clos",
-   "op_id": "settle-76076098547816965256496603068513059888106778539777569036950965296761150999139"
-  },
-  {
-   "portefeuille": "fantome:nf_sport_patiente_tennis_875_900_v1.0.0",
-   "seq": 899,
-   "type": "SETTLE",
-   "date": "2026-10-28T17:51:47",
-   "detail": "réglé à 1 alors que le marché 6323037 n'est pas clos",
-   "op_id": "settle-110240831742504611759845582001923606622298418654416991572620891299197772950323"
-  },
-  {
-   "portefeuille": "fantome:nf_court_v1.0.0",
-   "seq": 2463,
-   "type": "SETTLE",
-   "date": "2026-10-28T20:31:20",
-   "detail": "réglé à 1 alors que le marché 6231289 n'est pas clos",
-   "op_id": "settle-97434865560941027767741146271957956084699906700263911268227791081980729439384"
-  },
   {
    "portefeuille": "fantome:nf_sport_18_24h_v1.0.0",
    "seq": 696,
@@ -1794,11 +1754,51 @@
    "date": "2026-11-04T08:41:03",
    "detail": "réglé à 1 alors que le marché 629640 n'est pas clos",
    "op_id": "settle-60881151017130321740345136601526104676952077782755755891584789189096989545525"
+  },
+  {
+   "portefeuille": "fantome:nm_court_v1.0.0",
+   "seq": 2341,
+   "type": "SETTLE",
+   "date": "2026-11-04T11:35:55",
+   "detail": "réglé à 1 alors que le marché 634892 n'est pas clos",
+   "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
+  },
+  {
+   "portefeuille": "fantome:nm_hors_crypto_v1.0.0",
+   "seq": 2421,
+   "type": "SETTLE",
+   "date": "2026-11-04T11:35:55",
+   "detail": "réglé à 1 alors que le marché 634892 n'est pas clos",
+   "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
+  },
+  {
+   "portefeuille": "fantome:nm_prix_bas_v1.0.0",
+   "seq": 2435,
+   "type": "SETTLE",
+   "date": "2026-11-04T11:35:55",
+   "detail": "réglé à 1 alors que le marché 634892 n'est pas clos",
+   "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
+  },
+  {
+   "portefeuille": "fantome:vague_volume_suivre_v1.0.0",
+   "seq": 909,
+   "type": "SETTLE",
+   "date": "2026-11-04T11:35:55",
+   "detail": "réglé à 1 alors que le marché 634892 n'est pas clos",
+   "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
+  },
+  {
+   "portefeuille": "fantome:vague_volume_suivre_x5_v1.0.0",
+   "seq": 872,
+   "type": "SETTLE",
+   "date": "2026-11-04T11:35:55",
+   "detail": "réglé à 1 alors que le marché 634892 n'est pas clos",
+   "op_id": "settle-92576281548134350814800877416860562553699794074017301653635964206220838638047"
   }
  ],
- "derniere_execution": "2026-11-04T11:33:16+00:00",
+ "derniere_execution": "2026-11-04T11:38:03+00:00",
  "dernier_seq_reglements": {
-  "principal": 6930,
+  "principal": 6931,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2348,
@@ -1838,19 +1838,19 @@
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
   "fantome:nf_sport_v1.0.0": 4574,
-  "fantome:nm_court_v1.0.0": 2340,
+  "fantome:nm_court_v1.0.0": 2342,
   "fantome:nm_crypto_v1.0.0": 1949,
-  "fantome:nm_hors_crypto_v1.0.0": 2420,
+  "fantome:nm_hors_crypto_v1.0.0": 2422,
   "fantome:nm_long_v1.0.0": 2170,
-  "fantome:nm_prix_bas_v1.0.0": 2434,
+  "fantome:nm_prix_bas_v1.0.0": 2436,
   "fantome:nm_prix_haut_v1.0.0": 2059,
   "fantome:naive_favorite_large_v1.0.0": 1967,
   "fantome:nf_sport_patiente_v1.0.0": 2737,
-  "fantome:favori_politique_nuit_v1.0.0": 1863,
+  "fantome:favori_politique_nuit_v1.0.0": 1865,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3368,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3370,
   "fantome:nf_sport_sans_fin_v1.0.0": 1936,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1939,8 +1939,8 @@
   "fantome:moins_de_cartes_v1.0.0": 1177,
   "fantome:non_aux_drames_v1.0.0": 717,
   "fantome:vague_volume_contrer_v1.0.0": 3,
-  "fantome:vague_volume_suivre_v1.0.0": 908,
-  "fantome:vague_volume_suivre_x5_v1.0.0": 871,
+  "fantome:vague_volume_suivre_v1.0.0": 910,
+  "fantome:vague_volume_suivre_x5_v1.0.0": 873,
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 583,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 583,
