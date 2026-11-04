@@ -4068,7 +4068,7 @@ compteur_tweets_oui:
   mere: compteur_tweets
   morceau: "OUI seulement, mise franche"
   class: compteur_tweets
-  enabled: true
+  enabled: false
   version: "1.0.0"
   created_at: "2026-10-28"
   filtres: {issue: [oui]}

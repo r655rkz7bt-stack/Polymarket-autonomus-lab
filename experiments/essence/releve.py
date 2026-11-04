@@ -4,7 +4,8 @@ américain publié par AAA ; AAA lui-même est inaccessible depuis la routine, 4
 import csv, json, re, os, bisect, datetime as dt, requests
 H = {'User-Agent': 'curl/8'}
 OUT = 'experiments/essence/releve.csv'
-done = {r['date'] for r in csv.DictReader(open(OUT))} if os.path.exists(OUT) else set()
+REDO = os.environ.get('REDO') == '1'  # REDO=1 : tout relire et réécrire (corrigé le 04/11 : les prix 12 h / 24 h étaient vides)
+done = set() if REDO or not os.path.exists(OUT) else {r['date'] for r in csv.DictReader(open(OUT))}
 seen = {}
 for q in ['Gas prices on October', 'Gas prices on September', 'Gas prices on November', 'Average US gas prices', 'Gas prices on']:
     for pg in (1, 2, 3):
@@ -22,7 +23,7 @@ for eid, e in sorted(seen.items(), key=lambda x: x[1].get('endDate') or ''):
     for m in full['markets']:
         try: toks = json.loads(m['clobTokenIds']); yes = float(json.loads(m['outcomePrices'])[0])
         except Exception: continue
-        h = requests.get('https://clob.polymarket.com/prices-history', params={'market': toks[0], 'interval': 'max', 'fidelity': 60}, headers=H, timeout=30).json().get('history', [])
+        h = requests.get('https://clob.polymarket.com/prices-history', params={'market': toks[0], 'startTs': end - 60 * 3600, 'endTs': end + 3600, 'fidelity': 60}, headers=H, timeout=30).json().get('history', [])
         ts = [x['t'] for x in h]
         def at(hours):
             i = bisect.bisect_right(ts, end - hours * 3600) - 1
@@ -31,8 +32,11 @@ for eid, e in sorted(seen.items(), key=lambda x: x[1].get('endDate') or ''):
     win = [c[0] for c in cells if c[1] > .5]
     if not win: continue  # pas encore réglé
     rows.append({'date': d, 'event': eid, 'gagnante': win[0] if win else '', 'tranches': json.dumps([[c[0], c[2], c[3]] for c in cells], ensure_ascii=False), 'volume': round(sum(c[4] for c in cells))})
-new = not os.path.exists(OUT)
-with open(OUT, 'a', newline='') as f:
+new = REDO or not os.path.exists(OUT)
+if REDO and os.path.exists(OUT):
+    anc = [r for r in csv.DictReader(open(OUT)) if r['date'] not in {x['date'] for x in rows}]
+    rows = sorted(anc + rows, key=lambda r: r['date'])
+with open(OUT, 'w' if new else 'a', newline='') as f:
     w = csv.DictWriter(f, fieldnames=['date', 'event', 'gagnante', 'tranches', 'volume']); 
     if new: w.writeheader()
     w.writerows(rows)
