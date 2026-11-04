@@ -43,3 +43,16 @@ Probabilité de chaque tranche calculée avec un choc commun entre districts (lo
 Gagnés contre attendus (prix payés) des tranches achetées, État par État ; la somme réelle des sièges de chaque État contre la somme des districts (si les districts sont justes, l'écart de moyenne se referme sur
 leur côté) ; carte électorale de la Floride et de la Caroline du Nord en cas d'écart. Extension non faite : « How many Republican Governors after the 2026 midterm » (event 101856) contre les 36 courses de gouverneur, « Senate and House seats »
 (event 633839) contre les 435 districts.
+
+## Lecture du 04/11/2026 (lendemain de l'élection, `scripts/lecture_04_11.py`, `lecture_04_11.json`)
+
+Aucune échelle d'État n'est encore réglée sur Polymarket (0 sur 108 tranches `closed`) ; les prix du 04/11 sont donc des **marques**, pas des règlements. Quand une tranche cote ≥ 0,95
+ou ≤ 0,05, l'issue est connue du marché (63 tranches sur 108).
+
+- **Le modèle des districts bat le prix de l'échelle du 31/10** : Brier (écart quadratique à l'issue) 0,0266 contre 0,0386 sur les 63 tranches à issue connue. L'échelle s'est rapprochée de la somme des districts, pas l'inverse.
+- **Tranches à écart modèle − prix ≥ 0,10 (19)** : le sens du modèle est juste pour 15, faux pour 4 (Iowa « exactement 2 », Floride « exactement 10 », New Jersey « exactement 9 », Wisconsin « exactement 3 »). Valeur au 04/11 de l'achat du côté du modèle au prix du 31/10 : +86,6 % en moyenne, +59,3 % en médiane (marques au milieu du carnet, donc flatteuses).
+  Les plus gros : Caroline du Nord « 6 ou plus » 0,376 → 0,981 ; « exactement 5 » NON 0,615 → 0,986 ; Caroline du Sud « exactement 1 » NON 0,405 → 0,958.
+- **Le fantôme `sieges_coherence`** (7 achats, 290 € misés) : valeur **à la vente au carnet réel** (meilleurs acheteurs, profondeur comprise) 352 €, soit +62 € (+21 %) ; au milieu du carnet ce serait +134 € : l'écart est le piège ci-dessous. Deux paris perdent : Pennsylvanie « exactement 11 » NON à 0,59, acheteur à 0,034 (−63 €), et Virginie « 9 ou plus » NON (2 parts, −0,7 €) ; 5 gagnent (Tennessee « exactement 0 » NON 0,24 → 0,67 acheteur).
+- **Piège de lecture** : le prix `outcomePrices` de Gamma d'une tranche mince est le milieu du carnet, même quand le carnet est vide d'un côté. Exemple du jour : « Republican governors < 22 » affiche 0,73 alors que l'acheteur le plus haut est à 0,48 et le vendeur le moins cher à 0,98 : la « bonne affaire » à 0,73 n'existait pas (le vrai prix d'achat est 0,98). Toute écart mesuré sur des prix Gamma de marchés minces doit être refait aux prix du carnet.
+- **Ce que ça prouve** : une dizaine d'États indépendants, un seul soir, tous sous la même vague (les démocrates gagnent partout : Chambre « moins de 190 républicains » à 0,989, Sénat « ≤ 47 » à 0,996). Direction juste, mais c'est un tirage corrélé : **indice**, à confirmer par les règlements (UMA, quelques jours). Le principal ne copie pas.
+- **Suite** : relire les 7 positions à leur règlement (`sieges_coherence`, journal du fantôme). Aucune nouvelle élection avant 2027-2028 : la stratégie n'a plus de marché à voir ; l'idée générale (une échelle mince et ses composants liquides) reste à chercher ailleurs (« How many Fed rate cuts in 2026 » contre chaque réunion, « How many countries will Israel strike » contre chaque pays) : piste n° 17 de `PISTES.md`.
