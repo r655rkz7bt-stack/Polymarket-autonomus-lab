@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 6788,
+  "principal": 6789,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2325,
@@ -42,9 +42,9 @@
   "fantome:nf_sport_v1.0.0": 4442,
   "fantome:nm_court_v1.0.0": 2279,
   "fantome:nm_crypto_v1.0.0": 1928,
-  "fantome:nm_hors_crypto_v1.0.0": 2349,
-  "fantome:nm_long_v1.0.0": 2131,
-  "fantome:nm_prix_bas_v1.0.0": 2371,
+  "fantome:nm_hors_crypto_v1.0.0": 2351,
+  "fantome:nm_long_v1.0.0": 2133,
+  "fantome:nm_prix_bas_v1.0.0": 2373,
   "fantome:nm_prix_haut_v1.0.0": 2010,
   "fantome:naive_favorite_large_v1.0.0": 1919,
   "fantome:nf_sport_patiente_v1.0.0": 2716,
@@ -191,7 +191,7 @@
   "fantome:classement_appstore_v1.1.0": 140,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 95
  },
- "verifiees": 16986,
+ "verifiees": 16989,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1795,9 +1795,9 @@
    "op_id": "settle-106395736368123876217232522790962866300715519762010719139927930624457281560305"
   }
  ],
- "derniere_execution": "2026-11-04T00:42:44+00:00",
+ "derniere_execution": "2026-11-04T00:48:31+00:00",
  "dernier_seq_reglements": {
-  "principal": 6788,
+  "principal": 6789,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2325,
@@ -1836,8 +1836,8 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4442,
-  "fantome:nm_court_v1.0.0": 2279,
+  "fantome:nf_sport_v1.0.0": 4445,
+  "fantome:nm_court_v1.0.0": 2281,
   "fantome:nm_crypto_v1.0.0": 1928,
   "fantome:nm_hors_crypto_v1.0.0": 2351,
   "fantome:nm_long_v1.0.0": 2133,
@@ -1849,8 +1849,8 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3276,
-  "fantome:nf_sport_sans_fin_v1.0.0": 1908,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3279,
+  "fantome:nf_sport_sans_fin_v1.0.0": 1910,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
   "fantome:nf_sport_oui_v1.0.0": 1724,
