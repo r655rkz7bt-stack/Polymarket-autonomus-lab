@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-05 (passage chercheur de 11 h, 10 h 54 → ~11 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole toujours sans ligne du 04/11, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-05_midi_positions_oubliees.md`, famille 6). Aucune « Enquête obligatoire ». Constat `positions_oubliees` : les 33 marchés cités relus sur Gamma sont tous encore non clos (règlement UMA en attente) : pas de règlement manqué, aucun défaut.
+- **Recherche** : aucune piste avancée ; `cdc_historique.py` relancé, pas de nouvelle ligne du CDC.
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 de la feuille restent refusées (mère éteinte, tranche choisie après coup, 3 paris = 92 % du gain).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 6 h (05/11).
+
 ## 2026-11-05 (passage chercheur de 6 h, 05 h 54 → ~06 h 15 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-05_matin_famille3_reglements_principal.md`, famille 3). Aucune « Enquête obligatoire ». 25 règlements du principal tirés parmi 129 (depuis le 31/10) relus sur Gamma : 25/25 conformes ; 75,5 gagnés pour 74,9 attendus, −3,1 € sur 368 € misés. Aucun défaut.
