@@ -1796,9 +1796,9 @@
    "op_id": "settle-101037153970836417853441537575834987518372649654083630280758214509849397238640"
   }
  ],
- "derniere_execution": "2026-11-05T08:28:01+00:00",
+ "derniere_execution": "2026-11-05T08:34:00+00:00",
  "dernier_seq_reglements": {
-  "principal": 7205,
+  "principal": 7207,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2396,
@@ -1890,7 +1890,7 @@
   "fantome:marches_jumeaux_v1.0.0": 715,
   "fantome:outsiders_surcotes_v1.0.0": 621,
   "fantome:paire_oui_non_v1.0.0": 715,
-  "fantome:compteur_tweets_v1.0.0": 1215,
+  "fantome:compteur_tweets_v1.0.0": 1217,
   "fantome:cotes_tennis_v1.0.0": 707,
   "fantome:football_trois_issues_v1.0.0": 707,
   "fantome:futurs_bookmakers_v1.0.0": 707,
@@ -1972,7 +1972,7 @@
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
   "fantome:compteur_tweets_12_18h_v1.0.0": 577,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 479,
-  "fantome:compteur_tweets_72_168h_v1.0.0": 500,
+  "fantome:compteur_tweets_72_168h_v1.0.0": 502,
   "fantome:crypto_non_10_20_v1.0.0": 620,
   "fantome:moins_de_kills_v1.0.0": 476,
   "fantome:suivre_inities_v1.0.0": 406,
@@ -1982,7 +1982,7 @@
   "fantome:tranche_centrale_non_v1.0.0": 465,
   "fantome:suivre_inities_seul_v1.0.0": 389,
   "fantome:compteur_tweets_oui_v1.0.0": 444,
-  "fantome:compteur_tweets_48h_audace_v1.0.0": 452,
+  "fantome:compteur_tweets_48h_audace_v1.0.0": 454,
   "fantome:favori_esport_milieu_v1.0.0": 357,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 398,
   "fantome:sieges_coherence_v1.0.0": 238,
