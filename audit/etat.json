@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7257,
+  "principal": 7258,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2404,
@@ -20,7 +20,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2121,
+  "fantome:favori_politique_patiente_v1.0.0": 2123,
   "fantome:favori_politique_v1.0.0": 2066,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2064,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -173,7 +173,7 @@
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
   "fantome:compteur_tweets_12_18h_v1.0.0": 588,
-  "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 492,
+  "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 493,
   "fantome:compteur_tweets_72_168h_v1.0.0": 509,
   "fantome:crypto_non_10_20_v1.0.0": 628,
   "fantome:moins_de_kills_v1.0.0": 489,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-11738903232253398606430093789095837398871983828727320471830445921359424901076"
   }
  ],
- "derniere_execution": "2026-11-05T12:33:09+00:00",
+ "derniere_execution": "2026-11-05T12:39:14+00:00",
  "dernier_seq_reglements": {
-  "principal": 7257,
+  "principal": 7258,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2404,
@@ -1818,7 +1818,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2121,
+  "fantome:favori_politique_patiente_v1.0.0": 2123,
   "fantome:favori_politique_v1.0.0": 2066,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2064,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -1971,7 +1971,7 @@
   "fantome:contrer_crypto_patiente_audace_v1.0.0": 388,
   "fantome:crypto_non_bon_marche_v1.0.0": 352,
   "fantome:compteur_tweets_12_18h_v1.0.0": 588,
-  "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 492,
+  "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 493,
   "fantome:compteur_tweets_72_168h_v1.0.0": 509,
   "fantome:crypto_non_10_20_v1.0.0": 628,
   "fantome:moins_de_kills_v1.0.0": 489,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 168,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 52
  },
- "reglements_verifies": 11676
+ "reglements_verifies": 11677
 }
