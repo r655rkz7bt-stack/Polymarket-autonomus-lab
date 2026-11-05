@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-05 (passage chercheur de 16 h, 15 h 55 → ~16 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : encore le relevé du 29/10, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête**. Seule obligation : stratégie éliminée encore configurée, `nf_sport_patiente_12_18h` (187 opérations, −297 €, −35 %) : coupée (`enabled: false`), test mis à jour. Constats « à regarder » : mêmes que les passages précédents (Trump, positions UMA en attente, audits « pas clos », ordres posés en match −10,7 % déjà annulés au principal). Aucun nouveau défaut.
+- **Recherche** : aucune piste avancée ; `cdc_historique.py` relancé, toujours pas de ligne après le 29/10.
+- **Arène** : `nf_sport_patiente_12_18h` retirée ; rien ajouté, faute d'idée neuve plausible. Les trois filles 80/20 de la feuille restent refusées (mères éteintes ou tranche choisie après coup).
+- **Leçons** : une ligne dans `carnet_experiences.md` (fille d'ordres posés sans avantage).
+- **Reste ouvert** : identique au passage de 11 h (05/11).
+
 ## 2026-11-05 (passage chercheur de 11 h, 10 h 54 → ~11 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole toujours sans ligne du 04/11, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-05_midi_positions_oubliees.md`, famille 6). Aucune « Enquête obligatoire ». Constat `positions_oubliees` : les 33 marchés cités relus sur Gamma sont tous encore non clos (règlement UMA en attente) : pas de règlement manqué, aucun défaut.
