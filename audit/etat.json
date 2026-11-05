@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7167,
+  "principal": 7168,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2390,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-101037153970836417853441537575834987518372649654083630280758214509849397238640"
   }
  ],
- "derniere_execution": "2026-11-05T05:23:03+00:00",
+ "derniere_execution": "2026-11-05T05:29:10+00:00",
  "dernier_seq_reglements": {
-  "principal": 7167,
+  "principal": 7168,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2390,
@@ -1846,7 +1846,7 @@
   "fantome:nm_prix_haut_v1.0.0": 2103,
   "fantome:naive_favorite_large_v1.0.0": 2038,
   "fantome:nf_sport_patiente_v1.0.0": 2771,
-  "fantome:favori_politique_nuit_v1.0.0": 1907,
+  "fantome:favori_politique_nuit_v1.0.0": 1909,
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
