@@ -2652,7 +2652,7 @@ nf_sport_patiente_12_18h:
   # 21/10/2026 (AMELIORATION n°2, décision d'Etienne) : jamais d'ordre posé servi sous 0,80 (−11,9 % sur 44 paris,
   # experiments/enquetes/2026-10-21_posees_sous_la_plage.md) : `prix_final` = la plage porte sur le prix de l'ordre posé.
   filtres: {familles: [sports], heure_utc: [12, 18], prix_min: 0.80, prix_final: true}
-  enabled: true
+  enabled: false   # éliminée par l'arène (−297 € en 187 opérations, −35 %) ; coupée le 05/11/2026 (chercheur)
   version: "1.0.0"
   created_at: "2026-10-21"
   params:
