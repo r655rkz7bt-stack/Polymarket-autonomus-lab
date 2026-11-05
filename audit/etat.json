@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7396,
+  "principal": 7397,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2425,
@@ -195,22 +195,6 @@
  "verifiees": 18294,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:nf_court_v1.0.0",
-   "seq": 2512,
-   "type": "SETTLE",
-   "date": "2026-10-29T02:11:57",
-   "detail": "réglé à 0 alors que le marché 6331125 n'est pas clos",
-   "op_id": "settle-45934373132097099322690340393763550996850995087704237156765754433974481020836"
-  },
-  {
-   "portefeuille": "fantome:calibration_patiente_v1.0.0",
-   "seq": 2286,
-   "type": "SETTLE",
-   "date": "2026-10-29T02:41:08",
-   "detail": "réglé à 0 alors que le marché 6322350 n'est pas clos",
-   "op_id": "settle-78093855470488135545682540499663554295842338442537936367660278267717628278304"
-  },
   {
    "portefeuille": "fantome:nm_court_v1.0.0",
    "seq": 1930,
@@ -1794,11 +1778,27 @@
    "date": "2026-11-05T22:36:00",
    "detail": "réglé à 1 alors que le marché 6702070 n'est pas clos",
    "op_id": "settle-98197752248937666058793368279602693167607315731820661160556121078935011790022"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_18_24h_v1.0.0",
+   "seq": 1734,
+   "type": "SETTLE",
+   "date": "2026-11-05T23:36:01",
+   "detail": "réglé à 1 alors que le marché 6701970 n'est pas clos",
+   "op_id": "settle-111942205349040408381575432117164862605974275213877438852815432489473786740789"
+  },
+  {
+   "portefeuille": "fantome:nf_sport_v1.0.0",
+   "seq": 4984,
+   "type": "SETTLE",
+   "date": "2026-11-05T23:36:01",
+   "detail": "réglé à 1 alors que le marché 6701970 n'est pas clos",
+   "op_id": "settle-111942205349040408381575432117164862605974275213877438852815432489473786740789"
   }
  ],
- "derniere_execution": "2026-11-05T23:35:21+00:00",
+ "derniere_execution": "2026-11-05T23:37:27+00:00",
  "dernier_seq_reglements": {
-  "principal": 7396,
+  "principal": 7397,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2425,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4983,
+  "fantome:nf_sport_v1.0.0": 4986,
   "fantome:nm_court_v1.0.0": 2418,
   "fantome:nm_crypto_v1.0.0": 2018,
   "fantome:nm_hors_crypto_v1.0.0": 2525,
@@ -1929,7 +1929,7 @@
   "fantome:jobs_favori_non_v1.0.0": 710,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1203,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1733,
+  "fantome:nf_sport_18_24h_v1.0.0": 1736,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 767,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1127,
