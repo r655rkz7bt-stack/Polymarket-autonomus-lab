@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7383,
+  "principal": 7384,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2423,
@@ -24,8 +24,8 @@
   "fantome:favori_politique_v1.0.0": 2087,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2085,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 3054,
-  "fantome:contrer_crypto_v1.0.0": 2843,
+  "fantome:contrer_crypto_patiente_v1.0.0": 3056,
+  "fantome:contrer_crypto_v1.0.0": 2845,
   "fantome:favori_politique_quasi_certain_v1.0.0": 2111,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
@@ -112,7 +112,7 @@
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1367,
   "fantome:nf_tennis_12_18h_v1.0.0": 973,
   "fantome:compteur_tweets_non_v1.0.0": 709,
-  "fantome:nf_court_football_soir_v1.0.0": 1053,
+  "fantome:nf_court_football_soir_v1.0.0": 1054,
   "fantome:nf_court_soir_v1.0.0": 1016,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 1411,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
@@ -176,7 +176,7 @@
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 513,
   "fantome:compteur_tweets_72_168h_v1.0.0": 529,
   "fantome:crypto_non_10_20_v1.0.0": 673,
-  "fantome:moins_de_kills_v1.0.0": 507,
+  "fantome:moins_de_kills_v1.0.0": 508,
   "fantome:suivre_inities_v1.0.0": 433,
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 524,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 187,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 71
  },
- "verifiees": 18261,
+ "verifiees": 18263,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-69297482862814728076916145033911073522671885529540528408882762961411587442784"
   }
  ],
- "derniere_execution": "2026-11-05T22:20:07+00:00",
+ "derniere_execution": "2026-11-05T22:23:12+00:00",
  "dernier_seq_reglements": {
-  "principal": 7383,
+  "principal": 7384,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2423,
@@ -1910,7 +1910,7 @@
   "fantome:nf_sport_patiente_72_168h_12_18h_v1.0.0": 1367,
   "fantome:nf_tennis_12_18h_v1.0.0": 973,
   "fantome:compteur_tweets_non_v1.0.0": 709,
-  "fantome:nf_court_football_soir_v1.0.0": 1053,
+  "fantome:nf_court_football_soir_v1.0.0": 1054,
   "fantome:nf_court_soir_v1.0.0": 1016,
   "fantome:nf_sport_patiente_12_18h_v1.0.0": 1411,
   "fantome:nf_sport_patiente_vainqueur_v1.0.0": 222,
@@ -1974,7 +1974,7 @@
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 513,
   "fantome:compteur_tweets_72_168h_v1.0.0": 529,
   "fantome:crypto_non_10_20_v1.0.0": 673,
-  "fantome:moins_de_kills_v1.0.0": 507,
+  "fantome:moins_de_kills_v1.0.0": 508,
   "fantome:suivre_inities_v1.0.0": 433,
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 524,
