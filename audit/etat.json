@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7139,
+  "principal": 7141,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2385,
@@ -22,18 +22,18 @@
   "fantome:market_maker_v1.0.0": 2179,
   "fantome:favori_politique_patiente_v1.0.0": 2100,
   "fantome:favori_politique_v1.0.0": 2048,
-  "fantome:naive_favorite_sans_fin_v1.0.0": 2044,
+  "fantome:naive_favorite_sans_fin_v1.0.0": 2046,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2956,
   "fantome:contrer_crypto_v1.0.0": 2758,
-  "fantome:favori_politique_quasi_certain_v1.0.0": 2071,
+  "fantome:favori_politique_quasi_certain_v1.0.0": 2072,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 3718,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2333,
+  "fantome:nf_moyen_v1.0.0": 2335,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 2031,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-101037153970836417853441537575834987518372649654083630280758214509849397238640"
   }
  ],
- "derniere_execution": "2026-11-05T03:15:50+00:00",
+ "derniere_execution": "2026-11-05T03:19:02+00:00",
  "dernier_seq_reglements": {
-  "principal": 7139,
+  "principal": 7141,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2385,
@@ -1820,18 +1820,18 @@
   "fantome:market_maker_v1.0.0": 2179,
   "fantome:favori_politique_patiente_v1.0.0": 2100,
   "fantome:favori_politique_v1.0.0": 2048,
-  "fantome:naive_favorite_sans_fin_v1.0.0": 2044,
+  "fantome:naive_favorite_sans_fin_v1.0.0": 2046,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 2956,
   "fantome:contrer_crypto_v1.0.0": 2760,
-  "fantome:favori_politique_quasi_certain_v1.0.0": 2071,
+  "fantome:favori_politique_quasi_certain_v1.0.0": 2072,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
   "fantome:nf_court_v1.0.0": 3718,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2333,
+  "fantome:nf_moyen_v1.0.0": 2335,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 2031,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 150,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 32
  },
- "reglements_verifies": 11617
+ "reglements_verifies": 11620
 }
