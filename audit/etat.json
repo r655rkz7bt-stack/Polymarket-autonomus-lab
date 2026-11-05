@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7350,
+  "principal": 7351,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2418,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4948,
+  "fantome:nf_sport_v1.0.0": 4950,
   "fantome:nm_court_v1.0.0": 2410,
   "fantome:nm_crypto_v1.0.0": 2011,
   "fantome:nm_hors_crypto_v1.0.0": 2509,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3631,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3633,
   "fantome:nf_sport_sans_fin_v1.0.0": 2007,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 703,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1196,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1682,
+  "fantome:nf_sport_18_24h_v1.0.0": 1686,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 758,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1120,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 182,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 66
  },
- "verifiees": 18198,
+ "verifiees": 18202,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-65646400369966634247246653268515432192370031906425007248949369792827308291678"
   }
  ],
- "derniere_execution": "2026-11-05T19:57:35+00:00",
+ "derniere_execution": "2026-11-05T20:06:07+00:00",
  "dernier_seq_reglements": {
-  "principal": 7350,
+  "principal": 7351,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2418,
@@ -1823,7 +1823,7 @@
   "fantome:naive_favorite_sans_fin_v1.0.0": 2081,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 3040,
-  "fantome:contrer_crypto_v1.0.0": 2837,
+  "fantome:contrer_crypto_v1.0.0": 2839,
   "fantome:favori_politique_quasi_certain_v1.0.0": 2106,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
