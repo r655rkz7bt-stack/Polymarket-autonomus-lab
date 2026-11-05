@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7308,
+  "principal": 7309,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2413,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-65646400369966634247246653268515432192370031906425007248949369792827308291678"
   }
  ],
- "derniere_execution": "2026-11-05T16:54:41+00:00",
+ "derniere_execution": "2026-11-05T16:59:01+00:00",
  "dernier_seq_reglements": {
-  "principal": 7308,
+  "principal": 7309,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2413,
@@ -1937,7 +1937,7 @@
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
   "fantome:moins_de_cartes_v1.0.0": 1273,
-  "fantome:non_aux_drames_v1.0.0": 777,
+  "fantome:non_aux_drames_v1.0.0": 779,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 995,
   "fantome:vague_volume_suivre_x5_v1.0.0": 949,
@@ -1973,7 +1973,7 @@
   "fantome:compteur_tweets_12_18h_v1.0.0": 598,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 503,
   "fantome:compteur_tweets_72_168h_v1.0.0": 518,
-  "fantome:crypto_non_10_20_v1.0.0": 651,
+  "fantome:crypto_non_10_20_v1.0.0": 653,
   "fantome:moins_de_kills_v1.0.0": 497,
   "fantome:suivre_inities_v1.0.0": 423,
   "fantome:classement_appstore_v1.0.0": 182,
