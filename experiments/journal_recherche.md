@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-05 (passage chercheur de 6 h, 05 h 54 → ~06 h 15 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-05_matin_famille3_reglements_principal.md`, famille 3). Aucune « Enquête obligatoire ». 25 règlements du principal tirés parmi 129 (depuis le 31/10) relus sur Gamma : 25/25 conformes ; 75,5 gagnés pour 74,9 attendus, −3,1 € sur 368 € misés. Aucun défaut.
+- **Recherche** : aucune piste avancée (rien à tester sur le passé avant les données futures listées ci-dessus).
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 de la feuille restent refusées (mère éteinte, tranche choisie après coup, 3 paris = 92 % du gain).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 1 h (05/11).
+
 ## 2026-11-05 (passage chercheur de 1 h, 00 h 55 → 00 h 57 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-05_nuit_famille6_sources_et_positions.md`, famille 6). Aucune « Enquête obligatoire » grave ; constats `estimation_perimee` = achats Trump du 04/11 déjà documentés (11 h, 16 h). Contrôle à la main : 264 cycles OK sur 24 h, sources à « 0 observation » toutes déjà expliquées, 71 positions du principal sans position oubliée. Aucun défaut ; 660 tests verts.
