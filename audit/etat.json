@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7229,
+  "principal": 7230,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2400,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 4828,
+  "fantome:nf_sport_v1.0.0": 4830,
   "fantome:nm_court_v1.0.0": 2392,
   "fantome:nm_crypto_v1.0.0": 1993,
   "fantome:nm_hors_crypto_v1.0.0": 2487,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3551,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3553,
   "fantome:nf_sport_sans_fin_v1.0.0": 1987,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 164,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 48
  },
- "verifiees": 17960,
+ "verifiees": 17962,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-101037153970836417853441537575834987518372649654083630280758214509849397238640"
   }
  ],
- "derniere_execution": "2026-11-05T10:27:54+00:00",
+ "derniere_execution": "2026-11-05T10:34:39+00:00",
  "dernier_seq_reglements": {
-  "principal": 7229,
+  "principal": 7230,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2400,
@@ -1818,7 +1818,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2114,
+  "fantome:favori_politique_patiente_v1.0.0": 2116,
   "fantome:favori_politique_v1.0.0": 2062,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2060,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -1979,7 +1979,7 @@
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 497,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
-  "fantome:tranche_centrale_non_v1.0.0": 469,
+  "fantome:tranche_centrale_non_v1.0.0": 471,
   "fantome:suivre_inities_seul_v1.0.0": 393,
   "fantome:compteur_tweets_oui_v1.0.0": 444,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 457,
