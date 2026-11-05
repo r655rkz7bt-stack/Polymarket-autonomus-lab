@@ -138,7 +138,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 1257,
+  "fantome:moins_de_cartes_v1.0.0": 1258,
   "fantome:non_aux_drames_v1.0.0": 768,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 987,
@@ -181,7 +181,7 @@
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 502,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
-  "fantome:tranche_centrale_non_v1.0.0": 478,
+  "fantome:tranche_centrale_non_v1.0.0": 480,
   "fantome:suivre_inities_seul_v1.0.0": 398,
   "fantome:compteur_tweets_oui_v1.0.0": 444,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 463,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 169,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 53
  },
- "verifiees": 18010,
+ "verifiees": 18011,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-11738903232253398606430093789095837398871983828727320471830445921359424901076"
   }
  ],
- "derniere_execution": "2026-11-05T12:59:34+00:00",
+ "derniere_execution": "2026-11-05T13:03:45+00:00",
  "dernier_seq_reglements": {
-  "principal": 7263,
+  "principal": 7264,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2405,
@@ -1936,7 +1936,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 1257,
+  "fantome:moins_de_cartes_v1.0.0": 1258,
   "fantome:non_aux_drames_v1.0.0": 768,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 987,
@@ -1977,7 +1977,7 @@
   "fantome:moins_de_kills_v1.0.0": 490,
   "fantome:suivre_inities_v1.0.0": 415,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 502,
+  "fantome:ia_oui_sorties_v1.0.0": 504,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 480,
   "fantome:suivre_inities_seul_v1.0.0": 398,
