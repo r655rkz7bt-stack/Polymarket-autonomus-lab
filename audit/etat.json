@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7231,
+  "principal": 7232,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2400,
@@ -20,7 +20,7 @@
   "fantome:naive_favorite_patiente_v1.0.0": 196,
   "fantome:market_maker_serre_v1.0.0": 2666,
   "fantome:market_maker_v1.0.0": 2179,
-  "fantome:favori_politique_patiente_v1.0.0": 2114,
+  "fantome:favori_politique_patiente_v1.0.0": 2116,
   "fantome:favori_politique_v1.0.0": 2062,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2060,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
@@ -176,12 +176,12 @@
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 483,
   "fantome:compteur_tweets_72_168h_v1.0.0": 505,
   "fantome:crypto_non_10_20_v1.0.0": 624,
-  "fantome:moins_de_kills_v1.0.0": 485,
+  "fantome:moins_de_kills_v1.0.0": 486,
   "fantome:suivre_inities_v1.0.0": 410,
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 497,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
-  "fantome:tranche_centrale_non_v1.0.0": 469,
+  "fantome:tranche_centrale_non_v1.0.0": 471,
   "fantome:suivre_inities_seul_v1.0.0": 393,
   "fantome:compteur_tweets_oui_v1.0.0": 444,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 457,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 164,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 48
  },
- "verifiees": 17966,
+ "verifiees": 17968,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-101037153970836417853441537575834987518372649654083630280758214509849397238640"
   }
  ],
- "derniere_execution": "2026-11-05T10:37:30+00:00",
+ "derniere_execution": "2026-11-05T10:44:26+00:00",
  "dernier_seq_reglements": {
-  "principal": 7231,
+  "principal": 7232,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2400,
@@ -1974,7 +1974,7 @@
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 483,
   "fantome:compteur_tweets_72_168h_v1.0.0": 505,
   "fantome:crypto_non_10_20_v1.0.0": 624,
-  "fantome:moins_de_kills_v1.0.0": 485,
+  "fantome:moins_de_kills_v1.0.0": 486,
   "fantome:suivre_inities_v1.0.0": 410,
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 497,
