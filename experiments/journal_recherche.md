@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-05 (passage chercheur de 21 h, 20 h 54 → ~21 h 05 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : encore le relevé du 29/10, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-05_soir_famille6_muettes_et_nfl.md`, famille 6). Aucune « Enquête obligatoire ». Constat `muettes` relu : `mots_prononces_nfl` est muette faute de marché de mentions NFL à venir (les derniers datent du 11-19/10), pas à cause d'un filtre. Aucun défaut.
+- **Recherche** : aucune piste avancée ; `cdc_historique.py` relancé, toujours pas de ligne après le 29/10.
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 de la feuille restent refusées (mères éteintes, tranche choisie après coup).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 16 h (05/11).
+
 ## 2026-11-05 (passage chercheur de 16 h, 15 h 55 → ~16 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : encore le relevé du 29/10, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête**. Seule obligation : stratégie éliminée encore configurée, `nf_sport_patiente_12_18h` (187 opérations, −297 €, −35 %) : coupée (`enabled: false`), test mis à jour. Constats « à regarder » : mêmes que les passages précédents (Trump, positions UMA en attente, audits « pas clos », ordres posés en match −10,7 % déjà annulés au principal). Aucun nouveau défaut.
