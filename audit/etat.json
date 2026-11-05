@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7318,
+  "principal": 7319,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2414,
@@ -179,7 +179,7 @@
   "fantome:moins_de_kills_v1.0.0": 499,
   "fantome:suivre_inities_v1.0.0": 424,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 513,
+  "fantome:ia_oui_sorties_v1.0.0": 514,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 498,
   "fantome:suivre_inities_seul_v1.0.0": 407,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-65646400369966634247246653268515432192370031906425007248949369792827308291678"
   }
  ],
- "derniere_execution": "2026-11-05T17:39:15+00:00",
+ "derniere_execution": "2026-11-05T17:43:07+00:00",
  "dernier_seq_reglements": {
-  "principal": 7318,
+  "principal": 7319,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2414,
@@ -1822,8 +1822,8 @@
   "fantome:favori_politique_v1.0.0": 2076,
   "fantome:naive_favorite_sans_fin_v1.0.0": 2076,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
-  "fantome:contrer_crypto_patiente_v1.0.0": 3024,
-  "fantome:contrer_crypto_v1.0.0": 2830,
+  "fantome:contrer_crypto_patiente_v1.0.0": 3029,
+  "fantome:contrer_crypto_v1.0.0": 2832,
   "fantome:favori_politique_quasi_certain_v1.0.0": 2102,
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
@@ -1899,7 +1899,7 @@
   "fantome:predictit_reference_v1.0.0": 962,
   "fantome:fatigue_nhl_v1.0.0": 1007,
   "fantome:mots_nouveaux_v1.0.0": 1124,
-  "fantome:mots_prononces_v1.0.0": 1204,
+  "fantome:mots_prononces_v1.0.0": 1206,
   "fantome:crypto_threshold_24_72h_v1.0.0": 670,
   "fantome:crypto_threshold_prix_bas_v1.0.0": 795,
   "fantome:nf_sport_patiente_prix_850_875_v1.0.0": 1446,
@@ -1977,7 +1977,7 @@
   "fantome:moins_de_kills_v1.0.0": 499,
   "fantome:suivre_inities_v1.0.0": 424,
   "fantome:classement_appstore_v1.0.0": 182,
-  "fantome:ia_oui_sorties_v1.0.0": 513,
+  "fantome:ia_oui_sorties_v1.0.0": 514,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
   "fantome:tranche_centrale_non_v1.0.0": 498,
   "fantome:suivre_inities_seul_v1.0.0": 407,
