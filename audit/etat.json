@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7437,
+  "principal": 7438,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2431,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5023,
+  "fantome:nf_sport_v1.0.0": 5025,
   "fantome:nm_court_v1.0.0": 2426,
   "fantome:nm_crypto_v1.0.0": 2024,
   "fantome:nm_hors_crypto_v1.0.0": 2533,
@@ -52,7 +52,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3686,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3688,
   "fantome:nf_sport_sans_fin_v1.0.0": 2021,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-111942205349040408381575432117164862605974275213877438852815432489473786740789"
   }
  ],
- "derniere_execution": "2026-11-06T02:29:41+00:00",
+ "derniere_execution": "2026-11-06T02:32:45+00:00",
  "dernier_seq_reglements": {
-  "principal": 7437,
+  "principal": 7438,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2431,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5023,
+  "fantome:nf_sport_v1.0.0": 5025,
   "fantome:nm_court_v1.0.0": 2426,
   "fantome:nm_crypto_v1.0.0": 2024,
   "fantome:nm_hors_crypto_v1.0.0": 2533,
@@ -1850,7 +1850,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3686,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3688,
   "fantome:nf_sport_sans_fin_v1.0.0": 2021,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 195,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 79
  },
- "reglements_verifies": 11960
+ "reglements_verifies": 11962
 }
