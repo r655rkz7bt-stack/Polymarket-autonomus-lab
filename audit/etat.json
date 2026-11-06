@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7692,
+  "principal": 7693,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2469,
@@ -154,7 +154,7 @@
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 720,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 723,
-  "fantome:seismes_marche_v1.0.0": 724,
+  "fantome:seismes_marche_v1.0.0": 726,
   "fantome:box_office_favori_v1.0.0": 633,
   "fantome:spacex_cumul_v1.0.0": 619,
   "fantome:toucher_metaux_v1.0.0": 657,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-68664092028730691691877184532638420617937439178258237875737295373639784856682"
   }
  ],
- "derniere_execution": "2026-11-06T21:04:49+00:00",
+ "derniere_execution": "2026-11-06T21:11:26+00:00",
  "dernier_seq_reglements": {
-  "principal": 7692,
+  "principal": 7693,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2469,
@@ -1952,7 +1952,7 @@
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 720,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 723,
-  "fantome:seismes_marche_v1.0.0": 724,
+  "fantome:seismes_marche_v1.0.0": 726,
   "fantome:box_office_favori_v1.0.0": 633,
   "fantome:spacex_cumul_v1.0.0": 619,
   "fantome:toucher_metaux_v1.0.0": 657,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 234,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 118
  },
- "reglements_verifies": 12275
+ "reglements_verifies": 12276
 }
