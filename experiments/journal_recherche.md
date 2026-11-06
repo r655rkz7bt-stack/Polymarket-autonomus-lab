@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-06 (passage chercheur de 21 h, 20 h 55 → 21 h 02 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-06_soir_silence_apres_rafale_trump.md`, familles 1 puis 4). Obligation tenue : `compteur_tweets_12_18h` (éliminée, surconfiance) coupée (`enabled: false`), test mis à jour. Constat `estimation_perimee` neuf : « 200+ posts de Trump 6-13/11 » acheté 0,279 sur 0,966 par les deux fantômes 72-168 h ; le marché a perdu 0,72 → 0,26 en 3 jours. Cause : moyenne de 14 jours portée par la rafale du 03/11 (167 posts en 2 h), Trump a posté 34 fois depuis (3 posts depuis le début de la fenêtre). Le rythme court ne prévoit pas mieux (log-vraisemblance −7,6 contre −6,2 pour 7 j + 84 j, 38 semaines) ; fréquence de base de « ≥ 200 » : 10 semaines sur 42. Modèle de production à 50-90 % : réel 39 % pour 62 % dit. Pas de défaut de code ; **10 fantômes, 796 € sur ce seul billet** (un tirage). Recouvrement des jetons : 21 paires, toutes mère-fille.
+- **Recherche** : aucune piste avancée (données futures attendues) ; relevé XTracker de Trump (6 762 posts depuis le 15/01) et scripts dans `experiments/silence_trump/`.
+- **Arène** : `compteur_tweets_12_18h` retirée ; rien ajouté, faute d'idée neuve plausible (les trois filles 80/20 de la feuille restent refusées : mères éteintes, tranche choisie après coup).
+- **Leçons** : une ligne dans `carnet_experiences.md` (fille d'heure d'achat de `compteur_tweets`).
+- **Reste ouvert** : règlement du 13/11 du billet « 200+ du 6 au 13/11 » (si perdu : proposer la mère `compteur_tweets` en 7 j + 84 j, config seulement) ; sinon identique au passage de 16 h.
+
 ## 2026-11-06 (passage chercheur de 16 h, 15 h 55 → ~16 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : 3 mercredis sur ~8, sièges et Géorgie 404, App Store 06/11 à 17 h UTC, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-06_apres_midi_championne_du_classement.md`, famille 2). Aucune « Enquête obligatoire ». La n° 1 du classement `nf_sport_prix_haut` : 670 paris, +347 € (+0,95 % par mise), +268 € sans ses 3 plus gros paris, mais 612,5 gagnés pour 609,0 attendus par ses prix : variance, pas d'avantage. Aucun défaut.

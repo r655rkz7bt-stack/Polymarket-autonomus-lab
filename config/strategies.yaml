@@ -3866,7 +3866,7 @@ compteur_tweets_12_18h:
   mere: compteur_tweets
   morceau: "heure d'achat 12-18 h UTC"
   class: compteur_tweets
-  enabled: true
+  enabled: false   # éliminée par l'arène (surconfiance, 55 opérations) ; coupée le 06/11/2026 (chercheur)
   version: "1.0.0"
   created_at: "2026-10-27"
   filtres: {heure_utc: [12, 18]}
