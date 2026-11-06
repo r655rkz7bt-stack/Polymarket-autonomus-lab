@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-06 (passage chercheur de 11 h, 10 h 54 → 10 h 56 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-06_midi_principal_par_strategie.md`, famille 1). Aucune « Enquête obligatoire » ; constats « à regarder » = mêmes que les passages précédents. Résultat du principal par stratégie copiée : −310 € sur 539 paris, dont −145 € `nf_court` et −58 € `meteo_prevision` (octobre, déjà coupées) ; `moins_de_cartes` −26 € sur 87 paris, dans le bruit. Aucun défaut actif.
+- **Recherche** : aucune piste avancée (données futures attendues).
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 de la feuille restent refusées (mères éteintes, tranche choisie après coup).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 6 h.
+
 ## 2026-11-06 (passage chercheur de 6 h, 05 h 54 → 05 h 57 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-06_matin_estimation_ecart_compteur_tweets.md`). Aucune « Enquête obligatoire ». Constat `estimation_perimee` (estimé 0,968, payé 0,72, marché Trump 200+ posts) relu : carnet du journal à jour, bon marché ; 96 paris réglés de `compteur_tweets` par tranche d'écart modèle-prix, 10 gros écarts (≥ 0,15) seulement, 5 gagnés pour 4,2 attendus par les prix : pas de sur-confiance démontrée. Aucun défaut.
@@ -35,7 +43,7 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Leçons** : une ligne dans `carnet_experiences.md` (fille d'ordres posés sans avantage).
 - **Reste ouvert** : identique au passage de 11 h (05/11).
 
-## 2026-11-05 (passage chercheur de 11 h, 10 h 54 → ~11 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole toujours sans ligne du 04/11, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+## 2026-11-05 (passage chercheur de 11 h, 10 h 54 → 10 h 56 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole toujours sans ligne du 04/11, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-05_midi_positions_oubliees.md`, famille 6). Aucune « Enquête obligatoire ». Constat `positions_oubliees` : les 33 marchés cités relus sur Gamma sont tous encore non clos (règlement UMA en attente) : pas de règlement manqué, aucun défaut.
 - **Recherche** : aucune piste avancée ; `cdc_historique.py` relancé, pas de nouvelle ligne du CDC.
