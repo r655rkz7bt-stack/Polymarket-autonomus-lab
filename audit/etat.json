@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7497,
+  "principal": 7498,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2439,
@@ -187,7 +187,7 @@
   "fantome:compteur_tweets_48h_audace_v1.0.0": 500,
   "fantome:favori_esport_milieu_v1.0.0": 400,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 444,
-  "fantome:sieges_coherence_v1.0.0": 285,
+  "fantome:sieges_coherence_v1.0.0": 286,
   "fantome:classement_appstore_v1.1.0": 244,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 203,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 87
@@ -1796,9 +1796,9 @@
    "op_id": "settle-106321904011141120286469207995805275978977204556483905903452161304048552011252"
   }
  ],
- "derniere_execution": "2026-11-06T06:39:16+00:00",
+ "derniere_execution": "2026-11-06T06:43:04+00:00",
  "dernier_seq_reglements": {
-  "principal": 7497,
+  "principal": 7498,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2439,
@@ -1831,13 +1831,13 @@
   "fantome:nf_court_v1.0.0": 3897,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2423,
+  "fantome:nf_moyen_v1.0.0": 2425,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 2089,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5052,
+  "fantome:nf_sport_v1.0.0": 5054,
   "fantome:nm_court_v1.0.0": 2434,
   "fantome:nm_crypto_v1.0.0": 2032,
   "fantome:nm_hors_crypto_v1.0.0": 2543,
@@ -1985,7 +1985,7 @@
   "fantome:compteur_tweets_48h_audace_v1.0.0": 500,
   "fantome:favori_esport_milieu_v1.0.0": 400,
   "fantome:nf_sport_patiente_prix_850_875_avant_match_v1.0.0": 444,
-  "fantome:sieges_coherence_v1.0.0": 285,
+  "fantome:sieges_coherence_v1.0.0": 286,
   "fantome:classement_appstore_v1.1.0": 244,
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 203,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 87
