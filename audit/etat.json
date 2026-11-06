@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7673,
+  "principal": 7674,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2466,
@@ -22,7 +22,7 @@
   "fantome:market_maker_v1.0.0": 2179,
   "fantome:favori_politique_patiente_v1.0.0": 2198,
   "fantome:favori_politique_v1.0.0": 2131,
-  "fantome:naive_favorite_sans_fin_v1.0.0": 2148,
+  "fantome:naive_favorite_sans_fin_v1.0.0": 2150,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 3155,
   "fantome:contrer_crypto_v1.0.0": 2937,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5173,
+  "fantome:nf_sport_v1.0.0": 5176,
   "fantome:nm_court_v1.0.0": 2464,
   "fantome:nm_crypto_v1.0.0": 2057,
   "fantome:nm_hors_crypto_v1.0.0": 2577,
@@ -70,7 +70,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 1303,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1514,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1516,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 751,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1242,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1819,
+  "fantome:nf_sport_18_24h_v1.0.0": 1822,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 806,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1167,
@@ -149,7 +149,7 @@
   "fantome:detroits_tranches_v1.0.0": 664,
   "fantome:mots_prononces_nfl_v1.1.0": 661,
   "fantome:detroits_marche_log_v1.0.0": 696,
-  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 773,
+  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 775,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 717,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 231,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 115
  },
- "verifiees": 18688,
+ "verifiees": 18695,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-68664092028730691691877184532638420617937439178258237875737295373639784856682"
   }
  ],
- "derniere_execution": "2026-11-06T19:28:21+00:00",
+ "derniere_execution": "2026-11-06T19:34:39+00:00",
  "dernier_seq_reglements": {
-  "principal": 7673,
+  "principal": 7674,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2466,
@@ -1820,7 +1820,7 @@
   "fantome:market_maker_v1.0.0": 2179,
   "fantome:favori_politique_patiente_v1.0.0": 2198,
   "fantome:favori_politique_v1.0.0": 2131,
-  "fantome:naive_favorite_sans_fin_v1.0.0": 2152,
+  "fantome:naive_favorite_sans_fin_v1.0.0": 2154,
   "fantome:outsider_sport_patiente_v1.0.0": 1821,
   "fantome:contrer_crypto_patiente_v1.0.0": 3155,
   "fantome:contrer_crypto_v1.0.0": 2937,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5179,
+  "fantome:nf_sport_v1.0.0": 5181,
   "fantome:nm_court_v1.0.0": 2464,
   "fantome:nm_crypto_v1.0.0": 2057,
   "fantome:nm_hors_crypto_v1.0.0": 2577,
@@ -1929,7 +1929,7 @@
   "fantome:jobs_favori_non_v1.0.0": 751,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1242,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1825,
+  "fantome:nf_sport_18_24h_v1.0.0": 1827,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 806,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1167,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 231,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 115
  },
- "reglements_verifies": 12271
+ "reglements_verifies": 12273
 }
