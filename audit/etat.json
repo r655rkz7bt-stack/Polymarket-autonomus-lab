@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7452,
+  "principal": 7453,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2433,
@@ -42,9 +42,9 @@
   "fantome:nf_sport_v1.0.0": 5031,
   "fantome:nm_court_v1.0.0": 2428,
   "fantome:nm_crypto_v1.0.0": 2026,
-  "fantome:nm_hors_crypto_v1.0.0": 2535,
+  "fantome:nm_hors_crypto_v1.0.0": 2537,
   "fantome:nm_long_v1.0.0": 2266,
-  "fantome:nm_prix_bas_v1.0.0": 2543,
+  "fantome:nm_prix_bas_v1.0.0": 2545,
   "fantome:nm_prix_haut_v1.0.0": 2148,
   "fantome:naive_favorite_large_v1.0.0": 2092,
   "fantome:nf_sport_patiente_v1.0.0": 2814,
@@ -195,22 +195,6 @@
  "verifiees": 18349,
  "non_verifiables": 14,
  "anomalies": [
-  {
-   "portefeuille": "fantome:nm_court_v1.0.0",
-   "seq": 1930,
-   "type": "SETTLE",
-   "date": "2026-10-29T05:21:11",
-   "detail": "réglé à 0 alors que le marché 6322580 n'est pas clos",
-   "op_id": "settle-77576910167474481555945129102529577699425559678922719674196145799738329786496"
-  },
-  {
-   "portefeuille": "fantome:nm_court_v1.0.0",
-   "seq": 1931,
-   "type": "SETTLE",
-   "date": "2026-10-29T05:21:11",
-   "detail": "réglé à 0 alors que le marché 6322551 n'est pas clos",
-   "op_id": "settle-73071453696795944693458856161007036442591995489292525070622649697214741649333"
-  },
   {
    "portefeuille": "fantome:nm_court_v1.0.0",
    "seq": 1933,
@@ -1794,11 +1778,27 @@
    "date": "2026-11-05T23:36:01",
    "detail": "réglé à 1 alors que le marché 6701970 n'est pas clos",
    "op_id": "settle-111942205349040408381575432117164862605974275213877438852815432489473786740789"
+  },
+  {
+   "portefeuille": "fantome:nm_hors_crypto_v1.0.0",
+   "seq": 2536,
+   "type": "SETTLE",
+   "date": "2026-11-06T03:31:13",
+   "detail": "réglé à 1 alors que le marché 919489 n'est pas clos",
+   "op_id": "settle-106321904011141120286469207995805275978977204556483905903452161304048552011252"
+  },
+  {
+   "portefeuille": "fantome:nm_prix_bas_v1.0.0",
+   "seq": 2544,
+   "type": "SETTLE",
+   "date": "2026-11-06T03:31:13",
+   "detail": "réglé à 1 alors que le marché 919489 n'est pas clos",
+   "op_id": "settle-106321904011141120286469207995805275978977204556483905903452161304048552011252"
   }
  ],
- "derniere_execution": "2026-11-06T03:28:48+00:00",
+ "derniere_execution": "2026-11-06T03:32:57+00:00",
  "dernier_seq_reglements": {
-  "principal": 7452,
+  "principal": 7453,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2433,
@@ -1840,9 +1840,9 @@
   "fantome:nf_sport_v1.0.0": 5031,
   "fantome:nm_court_v1.0.0": 2428,
   "fantome:nm_crypto_v1.0.0": 2026,
-  "fantome:nm_hors_crypto_v1.0.0": 2535,
+  "fantome:nm_hors_crypto_v1.0.0": 2537,
   "fantome:nm_long_v1.0.0": 2266,
-  "fantome:nm_prix_bas_v1.0.0": 2543,
+  "fantome:nm_prix_bas_v1.0.0": 2545,
   "fantome:nm_prix_haut_v1.0.0": 2148,
   "fantome:naive_favorite_large_v1.0.0": 2092,
   "fantome:nf_sport_patiente_v1.0.0": 2814,
