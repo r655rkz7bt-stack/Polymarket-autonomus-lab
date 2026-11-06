@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-06 (passage chercheur de 16 h, 15 h 55 → ~16 h 10 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : 3 mercredis sur ~8, sièges et Géorgie 404, App Store 06/11 à 17 h UTC, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-06_apres_midi_championne_du_classement.md`, famille 2). Aucune « Enquête obligatoire ». La n° 1 du classement `nf_sport_prix_haut` : 670 paris, +347 € (+0,95 % par mise), +268 € sans ses 3 plus gros paris, mais 612,5 gagnés pour 609,0 attendus par ses prix : variance, pas d'avantage. Aucun défaut.
+- **Recherche** : `cdc_historique.py` ajoute la ligne du 05/11 (5 182 cas, 3 points sur ~8 requis) ; fichier Géorgie 2026 toujours 404.
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 restent refusées (mères éteintes, tranche choisie après coup).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 11 h.
+
 ## 2026-11-06 (passage chercheur de 11 h, 10 h 54 → 10 h 56 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-06_midi_principal_par_strategie.md`, famille 1). Aucune « Enquête obligatoire » ; constats « à regarder » = mêmes que les passages précédents. Résultat du principal par stratégie copiée : −310 € sur 539 paris, dont −145 € `nf_court` et −58 € `meteo_prevision` (octobre, déjà coupées) ; `moins_de_cartes` −26 € sur 87 paris, dans le bruit. Aucun défaut actif.
