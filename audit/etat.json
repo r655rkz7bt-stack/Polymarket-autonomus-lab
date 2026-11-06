@@ -1,13 +1,13 @@
 {
  "dernier_seq": {
-  "principal": 7470,
+  "principal": 7471,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2435,
   "fantome:crypto_threshold_v1.0.0": 2185,
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2716,
+  "fantome:naive_favorite_v1.0.0": 2720,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
@@ -175,7 +175,7 @@
   "fantome:compteur_tweets_12_18h_v1.0.0": 621,
   "fantome:compteur_tweets_72_168h_12_18h_v1.0.0": 525,
   "fantome:compteur_tweets_72_168h_v1.0.0": 543,
-  "fantome:crypto_non_10_20_v1.0.0": 691,
+  "fantome:crypto_non_10_20_v1.0.0": 693,
   "fantome:moins_de_kills_v1.0.0": 527,
   "fantome:suivre_inities_v1.0.0": 445,
   "fantome:classement_appstore_v1.0.0": 182,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 199,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 83
  },
- "verifiees": 18366,
+ "verifiees": 18370,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-106321904011141120286469207995805275978977204556483905903452161304048552011252"
   }
  ],
- "derniere_execution": "2026-11-06T04:37:55+00:00",
+ "derniere_execution": "2026-11-06T04:44:27+00:00",
  "dernier_seq_reglements": {
-  "principal": 7470,
+  "principal": 7471,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2435,
