@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7411,
+  "principal": 7412,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2427,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5000,
+  "fantome:nf_sport_v1.0.0": 5002,
   "fantome:nm_court_v1.0.0": 2420,
   "fantome:nm_crypto_v1.0.0": 2020,
   "fantome:nm_hors_crypto_v1.0.0": 2527,
@@ -131,7 +131,7 @@
   "fantome:jobs_favori_non_v1.0.0": 712,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1205,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1748,
+  "fantome:nf_sport_18_24h_v1.0.0": 1750,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 769,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1129,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-111942205349040408381575432117164862605974275213877438852815432489473786740789"
   }
  ],
- "derniere_execution": "2026-11-06T00:28:43+00:00",
+ "derniere_execution": "2026-11-06T00:34:02+00:00",
  "dernier_seq_reglements": {
-  "principal": 7411,
+  "principal": 7412,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2427,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5000,
+  "fantome:nf_sport_v1.0.0": 5002,
   "fantome:nm_court_v1.0.0": 2420,
   "fantome:nm_crypto_v1.0.0": 2020,
   "fantome:nm_hors_crypto_v1.0.0": 2527,
@@ -1929,14 +1929,14 @@
   "fantome:jobs_favori_non_v1.0.0": 712,
   "fantome:nf_tennis_12_18h_vainqueur_v1.0.0": 1205,
   "fantome:nf_tennis_vainqueur_v1.0.0": 1028,
-  "fantome:nf_sport_18_24h_v1.0.0": 1748,
+  "fantome:nf_sport_18_24h_v1.0.0": 1750,
   "fantome:nf_sport_925_950_v1.0.0": 765,
   "fantome:favori_politique_quasi_certain_connu_v1.0.0": 769,
   "fantome:nf_sport_18_24h_vainqueur_v1.0.0": 1129,
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 1293,
+  "fantome:moins_de_cartes_v1.0.0": 1295,
   "fantome:non_aux_drames_v1.0.0": 794,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 1020,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 191,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 75
  },
- "reglements_verifies": 11912
+ "reglements_verifies": 11914
 }
