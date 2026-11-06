@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-06 (passage chercheur de 1 h, 00 h 54 → ~01 h 00 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : toujours le relevé du 29/10, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-06_nuit_famille1_copie_du_principal.md`, famille 1). Aucune « Enquête obligatoire ». 272 paris du principal depuis le 28/10 comparés jeton par jeton aux fantômes copiés : 0 sans fantôme, écart de prix ≤ 0,01. Aucun défaut.
+- **Recherche** : aucune piste avancée ; `cdc_historique.py` relancé, toujours pas de ligne après le 29/10.
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 de la feuille restent refusées (mères éteintes, tranche choisie après coup).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 21 h (05/11).
+
 ## 2026-11-05 (passage chercheur de 21 h, 20 h 54 → ~21 h 05 UTC ; durée visée 135 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole : encore le relevé du 29/10, sièges et Géorgie, App Store 06/11, règlement Trump 13/11, premiers paris réglés de `toucher_metaux`), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-05_soir_famille6_muettes_et_nfl.md`, famille 6). Aucune « Enquête obligatoire ». Constat `muettes` relu : `mots_prononces_nfl` est muette faute de marché de mentions NFL à venir (les derniers datent du 11-19/10), pas à cause d'un filtre. Aucun défaut.
