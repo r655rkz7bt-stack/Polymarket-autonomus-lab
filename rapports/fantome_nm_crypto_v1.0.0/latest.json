@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:26+00:00",
+ "capital": {
+  "solde_disponible": "791.3852",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-208.6148",
+  "gains_latents": "0.0000",
+  "frais_payes": "5.4409",
+  "capital_total_estime": "791.3852",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2263,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 18,
+ "dernieres_operations": [
+  {
+   "marche": "5912696",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "1.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T04:17"
+  },
+  {
+   "marche": "5653750",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "3.87",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-20T16:25"
+  },
+  {
+   "marche": "5957192",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "0.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-21T04:13"
+  },
+  {
+   "marche": "5690022",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-21T16:15"
+  },
+  {
+   "marche": "6002422",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:15"
+  },
+  {
+   "marche": "6002421",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "6.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T04:20"
+  },
+  {
+   "marche": "5739674",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "7.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-22T16:15"
+  },
+  {
+   "marche": "6072729",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T04:16"
+  },
+  {
+   "marche": "5822953",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-2.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-24T17:01"
+  },
+  {
+   "marche": "5822993",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-102.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-24T17:01"
+  },
+  {
+   "marche": "6104765",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-5.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-25T04:16"
+  },
+  {
+   "marche": "5170739",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-67.27",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:31"
+  },
+  {
+   "marche": "5170741",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "-4.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T04:20"
+  },
+  {
+   "marche": "5170791",
+   "issue": "No",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "4.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T04:20"
+  },
+  {
+   "marche": "6301338",
+   "issue": "Yes",
+   "strategie": "nm_crypto v1.0.0",
+   "resultat": "0.65",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T17:18"
+  }
+ ],
+ "performances": {
+  "nm_crypto v1.0.0": {
+   "operations": 18,
+   "evenements": 16,
+   "gagnantes": 12,
+   "taux_reussite": 0.667,
+   "profit_net": "-208.61",
+   "frais": "5.44",
+   "rendement_sur_mises": -0.135,
+   "esperance_par_operation": "-11.59",
+   "ic90_rendement_par_euro": [
+    -0.5245,
+    -0.0712
+   ],
+   "brier": 0.1636,
+   "log_loss": 0.715,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

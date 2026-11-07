@@ -1,0 +1,245 @@
+{
+ "genere_le": "2026-11-07T15:34:13+00:00",
+ "capital": {
+  "solde_disponible": "930.5346",
+  "capital_immobilise": "68.5412",
+  "gains_realises_nets": "-0.9242",
+  "gains_latents": "-18.8907",
+  "frais_payes": "2.7609",
+  "capital_total_estime": "980.1851",
+  "positions_ouvertes": "10",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0365,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Predict.fun FDV above $1.5B one day after launch?",
+   "issue": "Yes",
+   "parts": "88.60",
+   "cout": "38.27",
+   "prix_moyen": "0.4320",
+   "prix_de_marque": "0.248",
+   "latent": "-16.30",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "1393316",
+   "issue": "No",
+   "parts": "67.25",
+   "cout": "1.44",
+   "prix_moyen": "0.0214",
+   "prix_de_marque": "0.009",
+   "latent": "-0.83",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T21:22"
+  },
+  {
+   "marche": "6019022",
+   "issue": "Yes",
+   "parts": "13.25",
+   "cout": "1.69",
+   "prix_moyen": "0.1274",
+   "prix_de_marque": "0.07",
+   "latent": "-0.76",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T23:41"
+  },
+  {
+   "marche": "1393317",
+   "issue": "No",
+   "parts": "26.50",
+   "cout": "0.85",
+   "prix_moyen": "0.0320",
+   "prix_de_marque": "0.011",
+   "latent": "-0.56",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-21T23:41"
+  },
+  {
+   "marche": "1287616",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.78",
+   "prix_moyen": "0.9776",
+   "prix_de_marque": "0.964",
+   "latent": "-0.14",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "192000",
+   "ouverte_le": "2026-10-22T05:56"
+  },
+  {
+   "marche": "1535124",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "0.64",
+   "prix_moyen": "0.0639",
+   "prix_de_marque": "0.04",
+   "latent": "-0.24",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "52130",
+   "ouverte_le": "2026-10-25T07:22"
+  },
+  {
+   "marche": "Opensea FDV above $500M one day after launch?",
+   "issue": "No",
+   "parts": "6.63",
+   "cout": "6.16",
+   "prix_moyen": "0.9289",
+   "prix_de_marque": "0.935",
+   "latent": "0.04",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "52130",
+   "ouverte_le": "2026-10-25T07:22"
+  },
+  {
+   "marche": "Predict.fun FDV above $500M one day after launch?",
+   "issue": "No",
+   "parts": "3.81",
+   "cout": "0.24",
+   "prix_moyen": "0.0629",
+   "prix_de_marque": "0.062",
+   "latent": "-0.00",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "214405",
+   "ouverte_le": "2026-10-30T00:17"
+  },
+  {
+   "marche": "Anthropic IPO closing market cap above $1.75T?",
+   "issue": "Yes",
+   "parts": "12.00",
+   "cout": "4.53",
+   "prix_moyen": "0.3777",
+   "prix_de_marque": "0.29",
+   "latent": "-1.05",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "912410",
+   "ouverte_le": "2026-11-06T07:37"
+  },
+  {
+   "marche": "Anthropic IPO closing market cap above $1.5T?",
+   "issue": "No",
+   "parts": "14.01",
+   "cout": "4.95",
+   "prix_moyen": "0.3530",
+   "prix_de_marque": "0.421",
+   "latent": "0.95",
+   "strategie": "cross_market v1.0.0",
+   "groupe": "912410",
+   "ouverte_le": "2026-11-06T07:37"
+  }
+ ],
+ "operations_cloturees": 8,
+ "dernieres_operations": [
+  {
+   "marche": "5611042",
+   "issue": "Yes",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "-3.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T11:31"
+  },
+  {
+   "marche": "5611879",
+   "issue": "Yes",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "-4.96",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T13:41"
+  },
+  {
+   "marche": "5611879",
+   "issue": "No",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "2.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T13:41"
+  },
+  {
+   "marche": "5628380",
+   "issue": "No",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "0.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "5628379",
+   "issue": "Yes",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "-0.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "5611043",
+   "issue": "No",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "2.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:15"
+  },
+  {
+   "marche": "5611880",
+   "issue": "No",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "6.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T22:16"
+  },
+  {
+   "marche": "5611880",
+   "issue": "Yes",
+   "strategie": "cross_market v1.0.0",
+   "resultat": "-3.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T22:16"
+  }
+ ],
+ "performances": {
+  "cross_market v1.0.0": {
+   "operations": 8,
+   "evenements": 3,
+   "gagnantes": 4,
+   "taux_reussite": 0.5,
+   "profit_net": "-0.92",
+   "frais": "0.67",
+   "rendement_sur_mises": -0.0058,
+   "esperance_par_operation": "-0.12",
+   "ic90_rendement_par_euro": [
+    -0.4827,
+    -0.4603
+   ],
+   "brier": 0.0036,
+   "log_loss": 0.0527,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

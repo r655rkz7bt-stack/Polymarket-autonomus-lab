@@ -1,0 +1,433 @@
+{
+ "genere_le": "2026-11-07T15:34:14+00:00",
+ "capital": {
+  "solde_disponible": "44.2826",
+  "capital_immobilise": "999.2204",
+  "gains_realises_nets": "43.5030",
+  "gains_latents": "-98.5878",
+  "frais_payes": "1.1565",
+  "capital_total_estime": "944.9152",
+  "positions_ouvertes": "21",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1467,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "682710",
+   "issue": "No",
+   "parts": "89.65",
+   "cout": "87.32",
+   "prix_moyen": "0.9740",
+   "prix_de_marque": "0.909",
+   "latent": "-5.83",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-16T21:47"
+  },
+  {
+   "marche": "1284759",
+   "issue": "Yes",
+   "parts": "83.35",
+   "cout": "81.14",
+   "prix_moyen": "0.9735",
+   "prix_de_marque": "0.033",
+   "latent": "-78.39",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "191628",
+   "ouverte_le": "2026-10-16T21:52"
+  },
+  {
+   "marche": "5371681",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.21",
+   "prix_moyen": "0.9712",
+   "prix_de_marque": "0.912",
+   "latent": "-0.07",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1142254",
+   "ouverte_le": "2026-10-17T01:38"
+  },
+  {
+   "marche": "6361203",
+   "issue": "No",
+   "parts": "19.74",
+   "cout": "19.27",
+   "prix_moyen": "0.9760",
+   "prix_de_marque": "0.994",
+   "latent": "0.36",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1273375",
+   "ouverte_le": "2026-11-01T06:12"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be at least 43m?",
+   "issue": "No",
+   "parts": "21.69",
+   "cout": "21.10",
+   "prix_moyen": "0.9730",
+   "prix_de_marque": "0.996",
+   "latent": "0.50",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-11-01T06:32"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be between 40m and 43m?",
+   "issue": "No",
+   "parts": "10.28",
+   "cout": "9.97",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.997",
+   "latent": "0.28",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-11-01T09:26"
+  },
+  {
+   "marche": "NATO x Russia military clash by November 15, 2026?",
+   "issue": "No",
+   "parts": "5.15",
+   "cout": "5.00",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.982",
+   "latent": "0.06",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-11-01T10:42"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 4?",
+   "issue": "Yes",
+   "parts": "64.90",
+   "cout": "63.53",
+   "prix_moyen": "0.9789",
+   "prix_de_marque": "0.998",
+   "latent": "1.24",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T04:47"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 5?",
+   "issue": "Yes",
+   "parts": "16.36",
+   "cout": "15.87",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.997",
+   "latent": "0.44",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T04:53"
+  },
+  {
+   "marche": "4927095",
+   "issue": "No",
+   "parts": "13.75",
+   "cout": "13.35",
+   "prix_moyen": "0.9712",
+   "prix_de_marque": "0.002",
+   "latent": "-13.33",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1076462",
+   "ouverte_le": "2026-11-04T05:07"
+  },
+  {
+   "marche": "4927096",
+   "issue": "Yes",
+   "parts": "43.12",
+   "cout": "41.81",
+   "prix_moyen": "0.9697",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1076462",
+   "ouverte_le": "2026-11-04T05:12"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 6?",
+   "issue": "Yes",
+   "parts": "44.19",
+   "cout": "42.86",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.997",
+   "latent": "1.19",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T07:17"
+  },
+  {
+   "marche": "6044504",
+   "issue": "No",
+   "parts": "45.69",
+   "cout": "44.32",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.96",
+   "latent": "-0.46",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-11-04T14:13"
+  },
+  {
+   "marche": "Iran leadership change by November 30?",
+   "issue": "No",
+   "parts": "51.44",
+   "cout": "49.90",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.962",
+   "latent": "-0.41",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "255195",
+   "ouverte_le": "2026-11-04T14:16"
+  },
+  {
+   "marche": "US-Iran Final Nuclear Deal by November 30, 2026?",
+   "issue": "No",
+   "parts": "26.53",
+   "cout": "25.73",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.965",
+   "latent": "-0.13",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "620025",
+   "ouverte_le": "2026-11-04T19:08"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 15, 2026?",
+   "issue": "Yes",
+   "parts": "134.02",
+   "cout": "130.00",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.947",
+   "latent": "-3.08",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-04T19:32"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "137.21",
+   "cout": "133.64",
+   "prix_moyen": "0.9740",
+   "prix_de_marque": "0.957",
+   "latent": "-2.33",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-04T23:07"
+  },
+  {
+   "marche": "Will there be fewer than 20 average daily transits of the Bab el-Mandeb Strait on November 30?",
+   "issue": "No",
+   "parts": "6.54",
+   "cout": "6.34",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.81",
+   "latent": "-1.05",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1305031",
+   "ouverte_le": "2026-11-05T01:03"
+  },
+  {
+   "marche": "National Guard deployed to election sites by November 15, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.87",
+   "prix_moyen": "0.9731",
+   "prix_de_marque": "0.981",
+   "latent": "0.04",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1317199",
+   "ouverte_le": "2026-11-05T01:47"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 5, 2026?",
+   "issue": "Yes",
+   "parts": "124.12",
+   "cout": "121.49",
+   "prix_moyen": "0.9788",
+   "prix_de_marque": "0.992",
+   "latent": "1.64",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-05T06:52"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 7?",
+   "issue": "Yes",
+   "parts": "82.22",
+   "cout": "80.49",
+   "prix_moyen": "0.9790",
+   "prix_de_marque": "0.988",
+   "latent": "0.74",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-06T23:22"
+  }
+ ],
+ "operations_cloturees": 41,
+ "dernieres_operations": [
+  {
+   "marche": "630707",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "2.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "630706",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.21",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "942902",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.11",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T12:01"
+  },
+  {
+   "marche": "5612092",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "1.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:01"
+  },
+  {
+   "marche": "5628380",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "2.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "5628379",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "1.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "6273809",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "1.02",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T22:51"
+  },
+  {
+   "marche": "6273594",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "1.05",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:06"
+  },
+  {
+   "marche": "6274198",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6274030",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6274191",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "1.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6600083",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.41",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T13:25"
+  },
+  {
+   "marche": "6367379",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.12",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T22:36"
+  },
+  {
+   "marche": "6367370",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "1.76",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T22:40"
+  },
+  {
+   "marche": "6612044",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v1.0.0",
+   "resultat": "0.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T07:31"
+  }
+ ],
+ "performances": {
+  "favori_politique_quasi_certain v1.0.0": {
+   "operations": 41,
+   "evenements": 28,
+   "gagnantes": 41,
+   "taux_reussite": 1.0,
+   "profit_net": "43.50",
+   "frais": "0.99",
+   "rendement_sur_mises": 0.0251,
+   "esperance_par_operation": "1.06",
+   "ic90_rendement_par_euro": [
+    0.0237,
+    0.0256
+   ],
+   "brier": 0.0002,
+   "log_loss": 0.0143,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

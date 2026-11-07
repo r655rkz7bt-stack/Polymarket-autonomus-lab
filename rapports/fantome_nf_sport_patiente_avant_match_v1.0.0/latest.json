@@ -1,0 +1,277 @@
+{
+ "genere_le": "2026-11-07T15:34:22+00:00",
+ "capital": {
+  "solde_disponible": "267.5749",
+  "capital_immobilise": "726.2724",
+  "gains_realises_nets": "-6.1526",
+  "gains_latents": "-12.2015",
+  "frais_payes": "10.8828",
+  "capital_total_estime": "981.6459",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.194,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "107.78",
+   "cout": "95.92",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.87",
+   "latent": "-2.16",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T20:11"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "116.92",
+   "cout": "107.45",
+   "prix_moyen": "0.9190",
+   "prix_de_marque": "0.749",
+   "latent": "-19.88",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T23:01"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "28.48",
+   "cout": "23.35",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.83",
+   "latent": "0.28",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T23:51"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "280.74",
+   "cout": "262.10",
+   "prix_moyen": "0.9336",
+   "prix_de_marque": "0.92",
+   "latent": "-3.82",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T23:53"
+  },
+  {
+   "marche": "Will Al Nassr Saudi Club win on 2026-11-06?",
+   "issue": "No",
+   "parts": "75.00",
+   "cout": "69.99",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.995",
+   "latent": "4.63",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-03T12:57"
+  },
+  {
+   "marche": "6490620",
+   "issue": "Yes",
+   "parts": "92.03",
+   "cout": "86.60",
+   "prix_moyen": "0.9410",
+   "prix_de_marque": "0.991",
+   "latent": "4.60",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-04T04:36"
+  },
+  {
+   "marche": "Will Al Qadisiyah Saudi Club vs. Al Fayha Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.72",
+   "prix_moyen": "0.9438",
+   "prix_de_marque": "0.994",
+   "latent": "0.25",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T07:07"
+  },
+  {
+   "marche": "6490415",
+   "issue": "No",
+   "parts": "80.74",
+   "cout": "76.14",
+   "prix_moyen": "0.9430",
+   "prix_de_marque": "0.991",
+   "latent": "3.88",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T07:23"
+  }
+ ],
+ "operations_cloturees": 84,
+ "dernieres_operations": [
+  {
+   "marche": "6268378",
+   "issue": "Ohio",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "6.00",
+   "resolution": "résolu : Ohio",
+   "cloturee_le": "2026-11-04T03:51"
+  },
+  {
+   "marche": "6018963",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "3.22",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T20:01"
+  },
+  {
+   "marche": "6053765",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "5.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T22:16"
+  },
+  {
+   "marche": "6501465",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "11.14",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6501463",
+   "issue": "Gen.G",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "2.23",
+   "resolution": "résolu : Gen.G",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6575091",
+   "issue": "Isurus",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "5.31",
+   "resolution": "résolu : Isurus",
+   "cloturee_le": "2026-11-05T02:51"
+  },
+  {
+   "marche": "6281070",
+   "issue": "Jacksonville Dolphins",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "-30.52",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T09:51"
+  },
+  {
+   "marche": "6701966",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "-19.74",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T12:20"
+  },
+  {
+   "marche": "6568280",
+   "issue": "BakS eSports",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "6.52",
+   "resolution": "résolu : BakS eSports",
+   "cloturee_le": "2026-11-05T14:01"
+  },
+  {
+   "marche": "6060395",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "-111.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T21:46"
+  },
+  {
+   "marche": "6090906",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "5.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "6092911",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "7.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "6090909",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "0.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "10.05",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T02:35"
+  },
+  {
+   "marche": "5772981",
+   "issue": "Jaguars",
+   "strategie": "nf_sport_patiente_avant_match v1.0.0",
+   "resultat": "2.22",
+   "resolution": "résolu : Jaguars",
+   "cloturee_le": "2026-11-06T04:25"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_avant_match v1.0.0": {
+   "operations": 84,
+   "evenements": 74,
+   "gagnantes": 68,
+   "taux_reussite": 0.81,
+   "profit_net": "-6.15",
+   "frais": "10.14",
+   "rendement_sur_mises": -0.0014,
+   "esperance_par_operation": "-0.07",
+   "ic90_rendement_par_euro": [
+    -0.1224,
+    0.0308
+   ],
+   "brier": 0.1367,
+   "log_loss": 0.4777,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

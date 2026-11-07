@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:16+00:00",
+ "capital": {
+  "solde_disponible": "993.7138",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-6.2862",
+  "gains_latents": "0.0000",
+  "frais_payes": "7.4101",
+  "capital_total_estime": "993.7138",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0791,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 32,
+ "dernieres_operations": [
+  {
+   "marche": "6599576",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "6.43",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-04T03:11"
+  },
+  {
+   "marche": "6599579",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-6.86",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-04T03:21"
+  },
+  {
+   "marche": "6658216",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-7.74",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-05T01:15"
+  },
+  {
+   "marche": "6658218",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-0.80",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6658220",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-7.98",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6658219",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-7.76",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6699049",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-11.75",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-06T01:11"
+  },
+  {
+   "marche": "6699048",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "11.42",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-06T01:20"
+  },
+  {
+   "marche": "6699053",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-16.59",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-06T01:25"
+  },
+  {
+   "marche": "6699047",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "1.77",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-06T04:31"
+  },
+  {
+   "marche": "6734829",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-11.60",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-07T01:51"
+  },
+  {
+   "marche": "6734830",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "19.54",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6734833",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-11.60",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6734827",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-12.36",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6734828",
+   "issue": "Under",
+   "strategie": "moins_de_kills v1.0.0",
+   "resultat": "-16.84",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-07T02:40"
+  }
+ ],
+ "performances": {
+  "moins_de_kills v1.0.0": {
+   "operations": 32,
+   "evenements": 12,
+   "gagnantes": 17,
+   "taux_reussite": 0.531,
+   "profit_net": "-6.29",
+   "frais": "7.41",
+   "rendement_sur_mises": -0.0205,
+   "esperance_par_operation": "-0.20",
+   "ic90_rendement_par_euro": [
+    -0.2157,
+    0.4703
+   ],
+   "brier": 0.2498,
+   "log_loss": 0.7248,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

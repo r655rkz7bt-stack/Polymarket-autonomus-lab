@@ -1,0 +1,433 @@
+{
+ "genere_le": "2026-11-07T15:34:14+00:00",
+ "capital": {
+  "solde_disponible": "1.9409",
+  "capital_immobilise": "1029.8776",
+  "gains_realises_nets": "31.8185",
+  "gains_latents": "-29.7841",
+  "frais_payes": "0.3582",
+  "capital_total_estime": "1002.0345",
+  "positions_ouvertes": "21",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0424,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "682710",
+   "issue": "No",
+   "parts": "140.74",
+   "cout": "137.32",
+   "prix_moyen": "0.9757",
+   "prix_de_marque": "0.909",
+   "latent": "-9.39",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-22T10:46"
+  },
+  {
+   "marche": "5166817",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "19.57",
+   "prix_moyen": "0.9785",
+   "prix_de_marque": "0.995",
+   "latent": "0.33",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-26T12:17"
+  },
+  {
+   "marche": "3365563",
+   "issue": "No",
+   "parts": "25.03",
+   "cout": "24.60",
+   "prix_moyen": "0.9829",
+   "prix_de_marque": "0.995",
+   "latent": "0.30",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "802307",
+   "ouverte_le": "2026-10-26T12:22"
+  },
+  {
+   "marche": "3343535",
+   "issue": "No",
+   "parts": "54.58",
+   "cout": "53.38",
+   "prix_moyen": "0.9780",
+   "prix_de_marque": "0.506",
+   "latent": "-25.76",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "797234",
+   "ouverte_le": "2026-10-27T07:42"
+  },
+  {
+   "marche": "6361203",
+   "issue": "No",
+   "parts": "125.78",
+   "cout": "122.81",
+   "prix_moyen": "0.9764",
+   "prix_de_marque": "0.994",
+   "latent": "2.21",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1273375",
+   "ouverte_le": "2026-11-01T06:08"
+  },
+  {
+   "marche": "6274177",
+   "issue": "No",
+   "parts": "12.72",
+   "cout": "12.57",
+   "prix_moyen": "0.9885",
+   "prix_de_marque": "0.989",
+   "latent": "0.01",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1262243",
+   "ouverte_le": "2026-11-01T06:22"
+  },
+  {
+   "marche": "NATO x Russia military clash by November 15, 2026?",
+   "issue": "No",
+   "parts": "10.20",
+   "cout": "10.02",
+   "prix_moyen": "0.9820",
+   "prix_de_marque": "0.982",
+   "latent": "0.00",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-11-04T04:03"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 5?",
+   "issue": "Yes",
+   "parts": "57.65",
+   "cout": "56.95",
+   "prix_moyen": "0.9879",
+   "prix_de_marque": "0.997",
+   "latent": "0.53",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T07:12"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 4?",
+   "issue": "Yes",
+   "parts": "34.61",
+   "cout": "34.23",
+   "prix_moyen": "0.9890",
+   "prix_de_marque": "0.998",
+   "latent": "0.31",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T07:17"
+  },
+  {
+   "marche": "Will there be fewer than 20 average daily transits of the Bab el-Mandeb Strait on November 30?",
+   "issue": "No",
+   "parts": "8.13",
+   "cout": "7.97",
+   "prix_moyen": "0.9800",
+   "prix_de_marque": "0.81",
+   "latent": "-1.38",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1305031",
+   "ouverte_le": "2026-11-04T14:33"
+  },
+  {
+   "marche": "6044504",
+   "issue": "No",
+   "parts": "7.16",
+   "cout": "6.95",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.96",
+   "latent": "-0.07",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-11-04T17:05"
+  },
+  {
+   "marche": "US-Iran Final Nuclear Deal by November 30, 2026?",
+   "issue": "No",
+   "parts": "9.61",
+   "cout": "9.41",
+   "prix_moyen": "0.9790",
+   "prix_de_marque": "0.965",
+   "latent": "-0.13",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "620025",
+   "ouverte_le": "2026-11-04T19:43"
+  },
+  {
+   "marche": "National Guard deployed to election sites by November 7, 2026?",
+   "issue": "No",
+   "parts": "15.00",
+   "cout": "14.78",
+   "prix_moyen": "0.9856",
+   "prix_de_marque": "0.982",
+   "latent": "-0.05",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1317199",
+   "ouverte_le": "2026-11-05T01:37"
+  },
+  {
+   "marche": "National Guard deployed to election sites by November 15, 2026?",
+   "issue": "No",
+   "parts": "15.00",
+   "cout": "14.78",
+   "prix_moyen": "0.9856",
+   "prix_de_marque": "0.981",
+   "latent": "-0.07",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1317199",
+   "ouverte_le": "2026-11-05T01:37"
+  },
+  {
+   "marche": "Will Trump meet with Xi Jinping by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "46.16",
+   "cout": "45.36",
+   "prix_moyen": "0.9826",
+   "prix_de_marque": "0.943",
+   "latent": "-1.83",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1285994",
+   "ouverte_le": "2026-11-05T01:43"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 6?",
+   "issue": "Yes",
+   "parts": "186.45",
+   "cout": "182.16",
+   "prix_moyen": "0.9770",
+   "prix_de_marque": "0.997",
+   "latent": "3.73",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-05T02:07"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 5, 2026?",
+   "issue": "Yes",
+   "parts": "35.76",
+   "cout": "35.17",
+   "prix_moyen": "0.9835",
+   "prix_de_marque": "0.992",
+   "latent": "0.30",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-05T13:27"
+  },
+  {
+   "marche": "Marco Rubio out as Secretary of State by November 8, 2026?",
+   "issue": "No",
+   "parts": "89.57",
+   "cout": "87.68",
+   "prix_moyen": "0.9789",
+   "prix_de_marque": "0.997",
+   "latent": "1.62",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1320942",
+   "ouverte_le": "2026-11-05T22:37"
+  },
+  {
+   "marche": "Marco Rubio out as Secretary of State by November 15, 2026?",
+   "issue": "No",
+   "parts": "128.42",
+   "cout": "125.75",
+   "prix_moyen": "0.9792",
+   "prix_de_marque": "0.975",
+   "latent": "-0.54",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1320942",
+   "ouverte_le": "2026-11-06T22:41"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 6, 2026?",
+   "issue": "Yes",
+   "parts": "20.56",
+   "cout": "20.11",
+   "prix_moyen": "0.9780",
+   "prix_de_marque": "0.98",
+   "latent": "0.04",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-07T00:47"
+  },
+  {
+   "marche": "Will Green Party win the third-most seats in the New Zealand House of Representatives in the 2026 New Zealand legislative election?",
+   "issue": "Yes",
+   "parts": "8.47",
+   "cout": "8.31",
+   "prix_moyen": "0.9808",
+   "prix_de_marque": "0.988",
+   "latent": "0.06",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "431793",
+   "ouverte_le": "2026-11-07T07:32"
+  }
+ ],
+ "operations_cloturees": 28,
+ "dernieres_operations": [
+  {
+   "marche": "628940",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "1.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T07:11"
+  },
+  {
+   "marche": "5611042",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T11:31"
+  },
+  {
+   "marche": "5611879",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T13:41"
+  },
+  {
+   "marche": "5611043",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:15"
+  },
+  {
+   "marche": "3515246",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T21:31"
+  },
+  {
+   "marche": "6273895",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T22:45"
+  },
+  {
+   "marche": "6274198",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6274030",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "1.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6274108",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6274213",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6600083",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.78",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T13:25"
+  },
+  {
+   "marche": "6367379",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "1.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T22:36"
+  },
+  {
+   "marche": "6367370",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "2.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T22:40"
+  },
+  {
+   "marche": "6369333",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T00:46"
+  },
+  {
+   "marche": "6612044",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "resultat": "0.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T07:31"
+  }
+ ],
+ "performances": {
+  "favori_politique_quasi_certain_connu v1.0.0": {
+   "operations": 28,
+   "evenements": 20,
+   "gagnantes": 28,
+   "taux_reussite": 1.0,
+   "profit_net": "31.82",
+   "frais": "0.14",
+   "rendement_sur_mises": 0.0207,
+   "esperance_par_operation": "1.14",
+   "ic90_rendement_par_euro": [
+    0.0171,
+    0.0214
+   ],
+   "brier": 0.0,
+   "log_loss": 0.0066,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

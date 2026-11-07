@@ -1,0 +1,140 @@
+{
+ "genere_le": "2026-11-07T15:34:28+00:00",
+ "capital": {
+  "solde_disponible": "1016.9920",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "16.9920",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1016.9920",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0055,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 10,
+ "dernieres_operations": [
+  {
+   "marche": "6253729",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T02:41"
+  },
+  {
+   "marche": "6279792",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T23:01"
+  },
+  {
+   "marche": "6279813",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.08",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T05:51"
+  },
+  {
+   "marche": "6299857",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T03:06"
+  },
+  {
+   "marche": "6299851",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T03:06"
+  },
+  {
+   "marche": "6326817",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:11"
+  },
+  {
+   "marche": "6326808",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T01:51"
+  },
+  {
+   "marche": "6366914",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "-2.88",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T02:51"
+  },
+  {
+   "marche": "6366920",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T05:41"
+  },
+  {
+   "marche": "6477433",
+   "issue": "No",
+   "strategie": "rallies_non_favori v1.0.0",
+   "resultat": "2.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T01:46"
+  }
+ ],
+ "performances": {
+  "rallies_non_favori v1.0.0": {
+   "operations": 10,
+   "evenements": 7,
+   "gagnantes": 9,
+   "taux_reussite": 0.9,
+   "profit_net": "16.99",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.5784,
+   "esperance_par_operation": "1.70",
+   "ic90_rendement_par_euro": [
+    0.2944,
+    0.7782
+   ],
+   "brier": 0.1799,
+   "log_loss": 0.5509,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

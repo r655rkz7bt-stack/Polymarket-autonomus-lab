@@ -1,0 +1,138 @@
+{
+ "genere_le": "2026-11-07T15:34:11+00:00",
+ "capital": {
+  "solde_disponible": "469.7232",
+  "capital_immobilise": "530.2768",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-276.3180",
+  "frais_payes": "4.5498",
+  "capital_total_estime": "723.6820",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2842,
+ "dernier_battement": "2026-11-07T15:12:53+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "Yes",
+   "parts": "270.87",
+   "cout": "208.71",
+   "prix_moyen": "0.7705",
+   "prix_de_marque": "0.04",
+   "latent": "-197.87",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-02T01:17"
+  },
+  {
+   "marche": "6443503",
+   "issue": "No",
+   "parts": "88.32",
+   "cout": "83.27",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.25",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-04T00:12"
+  },
+  {
+   "marche": "6625358",
+   "issue": "Yes",
+   "parts": "124.29",
+   "cout": "91.23",
+   "prix_moyen": "0.7340",
+   "prix_de_marque": "0.21",
+   "latent": "-65.13",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1305849",
+   "ouverte_le": "2026-11-04T01:03"
+  },
+  {
+   "marche": "Will Donald Trump post 160-179 Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "12.75",
+   "cout": "12.02",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.91",
+   "latent": "-0.42",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-04T05:17"
+  },
+  {
+   "marche": "6443484",
+   "issue": "No",
+   "parts": "33.50",
+   "cout": "30.79",
+   "prix_moyen": "0.9191",
+   "prix_de_marque": "0.842",
+   "latent": "-2.58",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-05T01:37"
+  },
+  {
+   "marche": "Will Donald Trump post 80-99 Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "75.84",
+   "cout": "69.88",
+   "prix_moyen": "0.9214",
+   "prix_de_marque": "0.811",
+   "latent": "-8.38",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-06T16:57"
+  },
+  {
+   "marche": "6443475",
+   "issue": "No",
+   "parts": "3.03",
+   "cout": "2.50",
+   "prix_moyen": "0.8254",
+   "prix_de_marque": "0.808",
+   "latent": "-0.05",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-06T18:42"
+  },
+  {
+   "marche": "Will Donald Trump post 60-79 Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "34.44",
+   "cout": "31.87",
+   "prix_moyen": "0.9255",
+   "prix_de_marque": "0.878",
+   "latent": "-1.64",
+   "strategie": "compteur_truth_dispersion_6_audace v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-07T11:32"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-11-07T15:34:17+00:00",
+ "capital": {
+  "solde_disponible": "915.9974",
+  "capital_immobilise": "18.2336",
+  "gains_realises_nets": "-65.7689",
+  "gains_latents": "-7.1632",
+  "frais_payes": "2.4724",
+  "capital_total_estime": "927.0678",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1126,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Andy Burnham say \"NHS\" during the next PMQ?",
+   "issue": "No",
+   "parts": "10.29",
+   "cout": "7.79",
+   "prix_moyen": "0.7575",
+   "prix_de_marque": "0.78",
+   "latent": "0.23",
+   "strategie": "mots_prononces v1.0.0",
+   "groupe": "1274159",
+   "ouverte_le": "2026-11-02T22:42"
+  },
+  {
+   "marche": "Will Andy Burnham say \"Immigration\" during the next PMQ?",
+   "issue": "No",
+   "parts": "12.75",
+   "cout": "5.86",
+   "prix_moyen": "0.4599",
+   "prix_de_marque": "0.23",
+   "latent": "-2.93",
+   "strategie": "mots_prononces v1.0.0",
+   "groupe": "1274159",
+   "ouverte_le": "2026-11-03T21:28"
+  },
+  {
+   "marche": "Will Andy Burnham say \"Wales\" during the next PMQ?",
+   "issue": "No",
+   "parts": "11.17",
+   "cout": "4.58",
+   "prix_moyen": "0.4096",
+   "prix_de_marque": "0.01",
+   "latent": "-4.46",
+   "strategie": "mots_prononces v1.0.0",
+   "groupe": "1274159",
+   "ouverte_le": "2026-11-03T21:38"
+  }
+ ],
+ "operations_cloturees": 96,
+ "dernieres_operations": [
+  {
+   "marche": "6366908",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-2.96",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "6366915",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-10.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:50"
+  },
+  {
+   "marche": "6366920",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "16.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T05:41"
+  },
+  {
+   "marche": "6477435",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-15.18",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T00:25"
+  },
+  {
+   "marche": "6477437",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-5.14",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T01:11"
+  },
+  {
+   "marche": "6477430",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "1.25",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T03:16"
+  },
+  {
+   "marche": "6477419",
+   "issue": "Yes",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T05:11"
+  },
+  {
+   "marche": "6477404",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "2.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T05:53"
+  },
+  {
+   "marche": "6095891",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "0.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T07:11"
+  },
+  {
+   "marche": "6703753",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-4.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:21"
+  },
+  {
+   "marche": "6703754",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-33.62",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:25"
+  },
+  {
+   "marche": "6703752",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-2.49",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:25"
+  },
+  {
+   "marche": "6703757",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-11.43",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:25"
+  },
+  {
+   "marche": "6703761",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "-2.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:31"
+  },
+  {
+   "marche": "6703749",
+   "issue": "No",
+   "strategie": "mots_prononces v1.0.0",
+   "resultat": "0.73",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T01:40"
+  }
+ ],
+ "performances": {
+  "mots_prononces v1.0.0": {
+   "operations": 96,
+   "evenements": 18,
+   "gagnantes": 39,
+   "taux_reussite": 0.406,
+   "profit_net": "-65.77",
+   "frais": "2.16",
+   "rendement_sur_mises": -0.0885,
+   "esperance_par_operation": "-0.69",
+   "ic90_rendement_par_euro": [
+    -0.2665,
+    -0.0062
+   ],
+   "brier": 0.2489,
+   "log_loss": 0.689,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

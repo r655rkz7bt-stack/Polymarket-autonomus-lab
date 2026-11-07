@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-11-07T15:34:19+00:00",
+ "capital": {
+  "solde_disponible": "723.0721",
+  "capital_immobilise": "393.0349",
+  "gains_realises_nets": "116.1070",
+  "gains_latents": "-26.7192",
+  "frais_payes": "4.2496",
+  "capital_total_estime": "1089.3878",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1104,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "635016",
+   "issue": "Yes",
+   "parts": "7.10",
+   "cout": "5.79",
+   "prix_moyen": "0.8160",
+   "prix_de_marque": "0.995",
+   "latent": "1.27",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-22T04:57"
+  },
+  {
+   "marche": "Will Predict.fun launch a token by November 15, 2026?",
+   "issue": "Yes",
+   "parts": "52.14",
+   "cout": "45.67",
+   "prix_moyen": "0.8760",
+   "prix_de_marque": "0.151",
+   "latent": "-37.80",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-30T15:17"
+  },
+  {
+   "marche": "6257128",
+   "issue": "Yes",
+   "parts": "5.70",
+   "cout": "5.37",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.98",
+   "latent": "0.22",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-11-02T23:57"
+  },
+  {
+   "marche": "Will Al Kholood Saudi Club vs. Al Khaleej Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "30.72",
+   "cout": "28.67",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.993",
+   "latent": "1.84",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1290026",
+   "ouverte_le": "2026-11-04T02:03"
+  },
+  {
+   "marche": "Will Al Qadisiyah Saudi Club vs. Al Fayha Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "46.93",
+   "cout": "44.31",
+   "prix_moyen": "0.9441",
+   "prix_de_marque": "0.994",
+   "latent": "2.34",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T07:12"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 5, 2026?",
+   "issue": "Yes",
+   "parts": "2.50",
+   "cout": "2.32",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.992",
+   "latent": "0.16",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-04T16:45"
+  },
+  {
+   "marche": "Next Astra Model (6.1+) released by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "17.93",
+   "cout": "16.89",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.836",
+   "latent": "-1.91",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "965173",
+   "ouverte_le": "2026-11-04T22:17"
+  },
+  {
+   "marche": "4664935",
+   "issue": "Yes",
+   "parts": "66.01",
+   "cout": "60.90",
+   "prix_moyen": "0.9225",
+   "prix_de_marque": "0.918",
+   "latent": "-0.30",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1040647",
+   "ouverte_le": "2026-11-05T13:42"
+  },
+  {
+   "marche": "6683300",
+   "issue": "Yes",
+   "parts": "35.50",
+   "cout": "33.54",
+   "prix_moyen": "0.9449",
+   "prix_de_marque": "0.954",
+   "latent": "0.32",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-06T00:09"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 7?",
+   "issue": "Yes",
+   "parts": "157.18",
+   "cout": "148.22",
+   "prix_moyen": "0.9430",
+   "prix_de_marque": "0.988",
+   "latent": "7.07",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-06T18:32"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 6, 2026?",
+   "issue": "Yes",
+   "parts": "1.44",
+   "cout": "1.34",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.98",
+   "latent": "0.07",
+   "strategie": "nf_oui v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-06T21:52"
+  }
+ ],
+ "operations_cloturees": 37,
+ "dernieres_operations": [
+  {
+   "marche": "630818",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T08:16"
+  },
+  {
+   "marche": "629641",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.58",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T08:46"
+  },
+  {
+   "marche": "630772",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.97",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:06"
+  },
+  {
+   "marche": "629464",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "3.16",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "629667",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "17.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "629183",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "2.93",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T11:26"
+  },
+  {
+   "marche": "6346612",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "7.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T17:16"
+  },
+  {
+   "marche": "6367376",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "1.51",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T22:38"
+  },
+  {
+   "marche": "6016014",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "3.83",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T01:05"
+  },
+  {
+   "marche": "6389955",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "2.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T17:16"
+  },
+  {
+   "marche": "6367379",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.78",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T22:36"
+  },
+  {
+   "marche": "6423885",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "1.75",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6367370",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "4.24",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T22:40"
+  },
+  {
+   "marche": "6369333",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "0.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T00:46"
+  },
+  {
+   "marche": "4641065",
+   "issue": "Yes",
+   "strategie": "nf_oui v1.0.0",
+   "resultat": "12.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T00:46"
+  }
+ ],
+ "performances": {
+  "nf_oui v1.0.0": {
+   "operations": 37,
+   "evenements": 29,
+   "gagnantes": 34,
+   "taux_reussite": 0.919,
+   "profit_net": "116.11",
+   "frais": "3.63",
+   "rendement_sur_mises": 0.0562,
+   "esperance_par_operation": "3.14",
+   "ic90_rendement_par_euro": [
+    -0.0843,
+    0.0555
+   ],
+   "brier": 0.0735,
+   "log_loss": 0.2584,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-11-07T15:34:22+00:00",
+ "capital": {
+  "solde_disponible": "946.5899",
+  "capital_immobilise": "47.3837",
+  "gains_realises_nets": "-6.0264",
+  "gains_latents": "-5.6794",
+  "frais_payes": "45.4100",
+  "capital_total_estime": "988.2943",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4142,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "55.68",
+   "cout": "47.38",
+   "prix_moyen": "0.8510",
+   "prix_de_marque": "0.749",
+   "latent": "-5.68",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T23:55"
+  }
+ ],
+ "operations_cloturees": 161,
+ "dernieres_operations": [
+  {
+   "marche": "5229904",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T04:01"
+  },
+  {
+   "marche": "6453325",
+   "issue": "Melbourne Stars",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "-33.02",
+   "resolution": "résolu : Perth Scorchers",
+   "cloturee_le": "2026-11-02T13:31"
+  },
+  {
+   "marche": "5977786",
+   "issue": "Natus Vincere",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.37",
+   "resolution": "résolu : Natus Vincere",
+   "cloturee_le": "2026-11-02T13:55"
+  },
+  {
+   "marche": "6576396",
+   "issue": "Daniel Merida Aguilar",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.46",
+   "resolution": "résolu : Daniel Merida Aguilar",
+   "cloturee_le": "2026-11-02T15:25"
+  },
+  {
+   "marche": "6573517",
+   "issue": "PARIVISION",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "4.79",
+   "resolution": "résolu : PARIVISION",
+   "cloturee_le": "2026-11-03T03:11"
+  },
+  {
+   "marche": "6573528",
+   "issue": "Aurora Gaming",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "5.05",
+   "resolution": "résolu : Aurora Gaming",
+   "cloturee_le": "2026-11-03T03:31"
+  },
+  {
+   "marche": "6573519",
+   "issue": "PARIVISION",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "5.08",
+   "resolution": "résolu : PARIVISION",
+   "cloturee_le": "2026-11-03T04:31"
+  },
+  {
+   "marche": "6576392",
+   "issue": "Jake Delaney",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "5.05",
+   "resolution": "résolu : Jake Delaney",
+   "cloturee_le": "2026-11-03T04:35"
+  },
+  {
+   "marche": "6576382",
+   "issue": "Omar Jasika",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "4.89",
+   "resolution": "résolu : Omar Jasika",
+   "cloturee_le": "2026-11-03T06:34"
+  },
+  {
+   "marche": "6576448",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "5.15",
+   "resolution": "résolu : MOUZ",
+   "cloturee_le": "2026-11-03T06:55"
+  },
+  {
+   "marche": "6576450",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "7.49",
+   "resolution": "résolu : MOUZ",
+   "cloturee_le": "2026-11-03T08:11"
+  },
+  {
+   "marche": "6496878",
+   "issue": "Sofya Lansere",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "6.74",
+   "resolution": "résolu : Sofya Lansere",
+   "cloturee_le": "2026-11-03T11:21"
+  },
+  {
+   "marche": "6454137",
+   "issue": "Francisco Cerundolo",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "-45.40",
+   "resolution": "résolu : Arthur Rinderknech",
+   "cloturee_le": "2026-11-03T12:25"
+  },
+  {
+   "marche": "6537722",
+   "issue": "Polina Kudermetova",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "8.68",
+   "resolution": "résolu : Polina Kudermetova",
+   "cloturee_le": "2026-11-03T13:16"
+  },
+  {
+   "marche": "6580606",
+   "issue": "Raffael Gasanov",
+   "strategie": "nf_sport_patiente_prix_850_875 v1.0.0",
+   "resultat": "-33.57",
+   "resolution": "résolu : Daniele Augenti",
+   "cloturee_le": "2026-11-03T14:01"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 161,
+   "evenements": 152,
+   "gagnantes": 135,
+   "taux_reussite": 0.839,
+   "profit_net": "-6.03",
+   "frais": "45.41",
+   "rendement_sur_mises": -0.0004,
+   "esperance_par_operation": "-0.04",
+   "ic90_rendement_par_euro": [
+    -0.0663,
+    0.0459
+   ],
+   "brier": 0.1303,
+   "log_loss": 0.4422,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

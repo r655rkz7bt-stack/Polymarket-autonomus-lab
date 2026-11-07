@@ -1,0 +1,373 @@
+{
+ "genere_le": "2026-11-07T15:34:20+00:00",
+ "capital": {
+  "solde_disponible": "579.9285",
+  "capital_immobilise": "501.4847",
+  "gains_realises_nets": "81.4131",
+  "gains_latents": "-31.1988",
+  "frais_payes": "111.5834",
+  "capital_total_estime": "1050.2143",
+  "positions_ouvertes": "16",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4423,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "22.50",
+   "cout": "20.35",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.87",
+   "latent": "-0.78",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "117.68",
+   "cout": "110.95",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.749",
+   "latent": "-22.81",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T18:09"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "42.94",
+   "cout": "35.53",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.83",
+   "latent": "0.11",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T19:42"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "49.44",
+   "cout": "46.32",
+   "prix_moyen": "0.9369",
+   "prix_de_marque": "0.92",
+   "latent": "-0.84",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T23:47"
+  },
+  {
+   "marche": "6490620",
+   "issue": "Yes",
+   "parts": "21.56",
+   "cout": "20.51",
+   "prix_moyen": "0.9514",
+   "prix_de_marque": "0.991",
+   "latent": "0.85",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-03T20:55"
+  },
+  {
+   "marche": "6490331",
+   "issue": "Yes",
+   "parts": "17.10",
+   "cout": "15.73",
+   "prix_moyen": "0.9198",
+   "prix_de_marque": "0.992",
+   "latent": "1.23",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1290031",
+   "ouverte_le": "2026-11-03T21:53"
+  },
+  {
+   "marche": "Jets vs. Chiefs",
+   "issue": "Chiefs",
+   "parts": "43.53",
+   "cout": "35.46",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-0.64",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1217415",
+   "ouverte_le": "2026-11-05T18:05"
+  },
+  {
+   "marche": "LoL: Invictus Gaming vs Gen.G (BO5) - Worlds Playoffs",
+   "issue": "Gen.G",
+   "parts": "38.72",
+   "cout": "31.66",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.8",
+   "latent": "-0.69",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1317036",
+   "ouverte_le": "2026-11-05T18:10"
+  },
+  {
+   "marche": "Will Paris Saint-Germain FC win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "30.38",
+   "cout": "27.48",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.83",
+   "latent": "-2.26",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-05T19:33"
+  },
+  {
+   "marche": "West Virginia vs. Texas Tech",
+   "issue": "Texas Tech",
+   "parts": "56.33",
+   "cout": "48.65",
+   "prix_moyen": "0.8636",
+   "prix_de_marque": "0.85",
+   "latent": "-0.77",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1262207",
+   "ouverte_le": "2026-11-06T18:04"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "34.66",
+   "cout": "28.01",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.77",
+   "latent": "-1.32",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1250955",
+   "ouverte_le": "2026-11-06T19:57"
+  },
+  {
+   "marche": "Cali: Alice Tubello vs Bianca Andreescu",
+   "issue": "Bianca Andreescu",
+   "parts": "8.97",
+   "cout": "8.29",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "0.68",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1323440",
+   "ouverte_le": "2026-11-06T20:42"
+  },
+  {
+   "marche": "Will Lewis Hamilton win the 2026 F1 Brazilian Grand Prix?",
+   "issue": "No",
+   "parts": "6.60",
+   "cout": "6.22",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.02",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1164155",
+   "ouverte_le": "2026-11-06T21:13"
+  },
+  {
+   "marche": "Cincinnati vs. Houston",
+   "issue": "Houston",
+   "parts": "28.96",
+   "cout": "23.31",
+   "prix_moyen": "0.8048",
+   "prix_de_marque": "0.78",
+   "latent": "-0.72",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1262181",
+   "ouverte_le": "2026-11-06T22:12"
+  },
+  {
+   "marche": "4397299",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.21",
+   "prix_moyen": "0.8834",
+   "prix_de_marque": "0.85",
+   "latent": "-0.08",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "991821",
+   "ouverte_le": "2026-11-06T22:12"
+  },
+  {
+   "marche": "Will Afghanistan win?",
+   "issue": "No",
+   "parts": "47.66",
+   "cout": "40.81",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.79",
+   "latent": "-3.16",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "groupe": "1276500",
+   "ouverte_le": "2026-11-06T23:05"
+  }
+ ],
+ "operations_cloturees": 401,
+ "dernieres_operations": [
+  {
+   "marche": "6736347",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "6.85",
+   "resolution": "résolu : Carlos Alcaraz",
+   "cloturee_le": "2026-11-06T22:21"
+  },
+  {
+   "marche": "6741060",
+   "issue": "Maks Kasnikowski",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "-15.48",
+   "resolution": "résolu : Andres Andrade",
+   "cloturee_le": "2026-11-06T22:40"
+  },
+  {
+   "marche": "6706718",
+   "issue": "SINNERS Legacy",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "4.39",
+   "resolution": "résolu : SINNERS Legacy",
+   "cloturee_le": "2026-11-06T23:51"
+  },
+  {
+   "marche": "6741058",
+   "issue": "Thiago Seyboth Wild",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "7.12",
+   "resolution": "résolu : Thiago Seyboth Wild",
+   "cloturee_le": "2026-11-07T00:21"
+  },
+  {
+   "marche": "6736353",
+   "issue": "Casper Ruud",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "7.13",
+   "resolution": "résolu : Casper Ruud",
+   "cloturee_le": "2026-11-07T00:21"
+  },
+  {
+   "marche": "6736588",
+   "issue": "RED Canids Academy",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "2.24",
+   "resolution": "résolu : RED Canids Academy",
+   "cloturee_le": "2026-11-07T01:05"
+  },
+  {
+   "marche": "6707684",
+   "issue": "Dynamo Eclot Phoenix",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.49",
+   "resolution": "résolu : Dynamo Eclot Phoenix",
+   "cloturee_le": "2026-11-07T01:31"
+  },
+  {
+   "marche": "6705462",
+   "issue": "Rush",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Rush",
+   "cloturee_le": "2026-11-07T01:55"
+  },
+  {
+   "marche": "6501428",
+   "issue": "T1",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "7.01",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6501431",
+   "issue": "T1",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "1.11",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6715149",
+   "issue": "Sabres",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "5.54",
+   "resolution": "résolu : Sabres",
+   "cloturee_le": "2026-11-07T03:05"
+  },
+  {
+   "marche": "6736254",
+   "issue": "Grêmio Esports",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "6.93",
+   "resolution": "résolu : Grêmio Esports",
+   "cloturee_le": "2026-11-07T03:55"
+  },
+  {
+   "marche": "6269751",
+   "issue": "New Mexico",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "7.65",
+   "resolution": "résolu : New Mexico",
+   "cloturee_le": "2026-11-07T05:31"
+  },
+  {
+   "marche": "6428605",
+   "issue": "Spurs",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "7.09",
+   "resolution": "résolu : Spurs",
+   "cloturee_le": "2026-11-07T06:08"
+  },
+  {
+   "marche": "6721547",
+   "issue": "Anna Blinkova",
+   "strategie": "nf_sport_18_24h v1.0.0",
+   "resultat": "6.06",
+   "resolution": "résolu : Anna Blinkova",
+   "cloturee_le": "2026-11-07T12:50"
+  }
+ ],
+ "performances": {
+  "nf_sport_18_24h v1.0.0": {
+   "operations": 401,
+   "evenements": 336,
+   "gagnantes": 352,
+   "taux_reussite": 0.878,
+   "profit_net": "81.41",
+   "frais": "108.94",
+   "rendement_sur_mises": 0.004,
+   "esperance_par_operation": "0.20",
+   "ic90_rendement_par_euro": [
+    -0.0344,
+    0.0269
+   ],
+   "brier": 0.1047,
+   "log_loss": 0.3647,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,165 @@
+{
+ "genere_le": "2026-11-07T15:34:28+00:00",
+ "capital": {
+  "solde_disponible": "887.3235",
+  "capital_immobilise": "41.9374",
+  "gains_realises_nets": "-70.7391",
+  "gains_latents": "0.0816",
+  "frais_payes": "0.6852",
+  "capital_total_estime": "929.3425",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0778,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "635012",
+   "issue": "Yes",
+   "parts": "10.37",
+   "cout": "1.35",
+   "prix_moyen": "0.1300",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-22T12:06"
+  },
+  {
+   "marche": "635016",
+   "issue": "No",
+   "parts": "17.49",
+   "cout": "1.92",
+   "prix_moyen": "0.1100",
+   "prix_de_marque": "0.004",
+   "latent": "-1.85",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-23T03:26"
+  },
+  {
+   "marche": "5378955",
+   "issue": "Yes",
+   "parts": "7.18",
+   "cout": "1.95",
+   "prix_moyen": "0.2721",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "1143586",
+   "ouverte_le": "2026-11-03T17:15"
+  },
+  {
+   "marche": "Will JD Vance win the 2028 US Presidential Election?",
+   "issue": "Yes",
+   "parts": "30.17",
+   "cout": "3.90",
+   "prix_moyen": "0.1294",
+   "prix_de_marque": "0.185",
+   "latent": "1.68",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-11-04T02:47"
+  },
+  {
+   "marche": "Will Ron DeSantis win the 2028 Republican presidential nomination?",
+   "issue": "No",
+   "parts": "35.67",
+   "cout": "30.10",
+   "prix_moyen": "0.8437",
+   "prix_de_marque": "0.857",
+   "latent": "0.47",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-11-04T03:42"
+  },
+  {
+   "marche": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+   "issue": "Yes",
+   "parts": "13.21",
+   "cout": "2.71",
+   "prix_moyen": "0.2054",
+   "prix_de_marque": "0.189",
+   "latent": "-0.22",
+   "strategie": "predictit_reference v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-11-04T08:37"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "601819",
+   "issue": "No",
+   "strategie": "predictit_reference v1.0.0",
+   "resultat": "-27.96",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T03:16"
+  },
+  {
+   "marche": "601826",
+   "issue": "Yes",
+   "strategie": "predictit_reference v1.0.0",
+   "resultat": "-36.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-26T03:21"
+  },
+  {
+   "marche": "562794",
+   "issue": "Yes",
+   "strategie": "predictit_reference v1.0.0",
+   "resultat": "-2.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T07:51"
+  },
+  {
+   "marche": "562793",
+   "issue": "No",
+   "strategie": "predictit_reference v1.0.0",
+   "resultat": "-4.13",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T10:55"
+  }
+ ],
+ "performances": {
+  "predictit_reference v1.0.0": {
+   "operations": 4,
+   "evenements": 2,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-70.74",
+   "frais": "0.22",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-17.68",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.3127,
+   "log_loss": 0.8361,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-11-07T15:34:14+00:00",
+ "capital": {
+  "solde_disponible": "992.8469",
+  "capital_immobilise": "3.8156",
+  "gains_realises_nets": "-3.3376",
+  "gains_latents": "-0.0999",
+  "frais_payes": "2.2951",
+  "capital_total_estime": "996.5626",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0328,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Sharks vs. Stars",
+   "issue": "Stars",
+   "parts": "5.09",
+   "cout": "3.82",
+   "prix_moyen": "0.7496",
+   "prix_de_marque": "0.73",
+   "latent": "-0.10",
+   "strategie": "fatigue_nhl v1.0.0",
+   "groupe": "1171319",
+   "ouverte_le": "2026-11-07T08:42"
+  }
+ ],
+ "operations_cloturees": 30,
+ "dernieres_operations": [
+  {
+   "marche": "5080590",
+   "issue": "Avalanche",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-5.46",
+   "resolution": "résolu : Predators",
+   "cloturee_le": "2026-10-26T03:01"
+  },
+  {
+   "marche": "6133397",
+   "issue": "Avalanche",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-3.08",
+   "resolution": "résolu : Predators",
+   "cloturee_le": "2026-10-26T03:01"
+  },
+  {
+   "marche": "5080600",
+   "issue": "Canucks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-2.70",
+   "resolution": "résolu : Wild",
+   "cloturee_le": "2026-10-26T04:51"
+  },
+  {
+   "marche": "6133396",
+   "issue": "Canucks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-4.05",
+   "resolution": "résolu : Wild",
+   "cloturee_le": "2026-10-26T04:51"
+  },
+  {
+   "marche": "5156493",
+   "issue": "Blackhawks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "3.06",
+   "resolution": "résolu : Blackhawks",
+   "cloturee_le": "2026-10-28T02:55"
+  },
+  {
+   "marche": "6255051",
+   "issue": "Blackhawks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-2.59",
+   "resolution": "résolu : Kings",
+   "cloturee_le": "2026-10-28T02:55"
+  },
+  {
+   "marche": "6252903",
+   "issue": "Blackhawks",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "2.52",
+   "resolution": "résolu : Blackhawks",
+   "cloturee_le": "2026-10-28T02:55"
+  },
+  {
+   "marche": "6301195",
+   "issue": "Capitals",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "0.89",
+   "resolution": "résolu : Capitals",
+   "cloturee_le": "2026-10-29T02:26"
+  },
+  {
+   "marche": "6301174",
+   "issue": "Avalanche",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "1.29",
+   "resolution": "résolu : Avalanche",
+   "cloturee_le": "2026-10-29T04:01"
+  },
+  {
+   "marche": "5285957",
+   "issue": "Avalanche",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "1.27",
+   "resolution": "résolu : Avalanche",
+   "cloturee_le": "2026-11-01T04:55"
+  },
+  {
+   "marche": "6474982",
+   "issue": "Rangers",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-4.02",
+   "resolution": "résolu : Oilers",
+   "cloturee_le": "2026-11-02T01:55"
+  },
+  {
+   "marche": "6586617",
+   "issue": "Blue Jackets",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "6.25",
+   "resolution": "résolu : Blue Jackets",
+   "cloturee_le": "2026-11-04T02:55"
+  },
+  {
+   "marche": "5458640",
+   "issue": "Lightning",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "1.30",
+   "resolution": "résolu : Lightning",
+   "cloturee_le": "2026-11-06T03:11"
+  },
+  {
+   "marche": "6715149",
+   "issue": "Sabres",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "1.31",
+   "resolution": "résolu : Sabres",
+   "cloturee_le": "2026-11-07T03:05"
+  },
+  {
+   "marche": "6715128",
+   "issue": "Flames",
+   "strategie": "fatigue_nhl v1.0.0",
+   "resultat": "-1.32",
+   "resolution": "résolu : Ducks",
+   "cloturee_le": "2026-11-07T04:06"
+  }
+ ],
+ "performances": {
+  "fatigue_nhl v1.0.0": {
+   "operations": 30,
+   "evenements": 18,
+   "gagnantes": 16,
+   "taux_reussite": 0.533,
+   "profit_net": "-3.34",
+   "frais": "2.25",
+   "rendement_sur_mises": -0.0277,
+   "esperance_par_operation": "-0.11",
+   "ic90_rendement_par_euro": [
+    -0.3635,
+    0.431
+   ],
+   "brier": 0.2149,
+   "log_loss": 0.6163,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

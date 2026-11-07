@@ -1,0 +1,409 @@
+{
+ "genere_le": "2026-11-07T15:34:13+00:00",
+ "capital": {
+  "solde_disponible": "864.3984",
+  "capital_immobilise": "170.7103",
+  "gains_realises_nets": "35.1087",
+  "gains_latents": "95.2864",
+  "frais_payes": "52.9980",
+  "capital_total_estime": "1130.3951",
+  "positions_ouvertes": "19",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3639,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Predict.fun launch a token by November 30, 2026?",
+   "issue": "No",
+   "parts": "92.95",
+   "cout": "11.64",
+   "prix_moyen": "0.1252",
+   "prix_de_marque": "0.316",
+   "latent": "17.73",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-11-01T05:02"
+  },
+  {
+   "marche": "6507414",
+   "issue": "No",
+   "parts": "76.21",
+   "cout": "16.10",
+   "prix_moyen": "0.2112",
+   "prix_de_marque": "0.61",
+   "latent": "30.39",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-05T02:13"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $78,000 on November 7?",
+   "issue": "No",
+   "parts": "99.28",
+   "cout": "12.65",
+   "prix_moyen": "0.1274",
+   "prix_de_marque": "0.999",
+   "latent": "86.53",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T07:09"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $76,000 on November 7?",
+   "issue": "No",
+   "parts": "1.64",
+   "cout": "0.17",
+   "prix_moyen": "0.1063",
+   "prix_de_marque": "0.835",
+   "latent": "1.20",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T14:52"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,200 on November 7?",
+   "issue": "No",
+   "parts": "42.50",
+   "cout": "4.55",
+   "prix_moyen": "0.1070",
+   "prix_de_marque": "0.008",
+   "latent": "-4.21",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-05T15:07"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $74,000 on November 7?",
+   "issue": "No",
+   "parts": "110.00",
+   "cout": "19.56",
+   "prix_moyen": "0.1778",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T15:42"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,200 in November?",
+   "issue": "No",
+   "parts": "106.05",
+   "cout": "20.18",
+   "prix_moyen": "0.1903",
+   "prix_de_marque": "0.15",
+   "latent": "-4.28",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-05T15:52"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $74,000 on November 9?",
+   "issue": "No",
+   "parts": "7.75",
+   "cout": "1.56",
+   "prix_moyen": "0.2008",
+   "prix_de_marque": "0.13",
+   "latent": "-0.55",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T16:43"
+  },
+  {
+   "marche": "6587449",
+   "issue": "No",
+   "parts": "7.50",
+   "cout": "0.88",
+   "prix_moyen": "0.1169",
+   "prix_de_marque": "0.035",
+   "latent": "-0.61",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-05T16:57"
+  },
+  {
+   "marche": "6683301",
+   "issue": "No",
+   "parts": "3.00",
+   "cout": "0.43",
+   "prix_moyen": "0.1421",
+   "prix_de_marque": "0.091",
+   "latent": "-0.15",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T17:17"
+  },
+  {
+   "marche": "6639396",
+   "issue": "No",
+   "parts": "7.50",
+   "cout": "1.18",
+   "prix_moyen": "0.1579",
+   "prix_de_marque": "0.072",
+   "latent": "-0.64",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-05T17:27"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $72,000 on November 7?",
+   "issue": "No",
+   "parts": "157.83",
+   "cout": "14.44",
+   "prix_moyen": "0.0915",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T23:04"
+  },
+  {
+   "marche": "6683242",
+   "issue": "No",
+   "parts": "144.42",
+   "cout": "16.62",
+   "prix_moyen": "0.1151",
+   "prix_de_marque": "0.036",
+   "latent": "-11.42",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-05T23:04"
+  },
+  {
+   "marche": "6683300",
+   "issue": "No",
+   "parts": "1.50",
+   "cout": "0.17",
+   "prix_moyen": "0.1147",
+   "prix_de_marque": "0.036",
+   "latent": "-0.12",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-05T23:11"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $74,000 on November 8?",
+   "issue": "No",
+   "parts": "122.64",
+   "cout": "25.00",
+   "prix_moyen": "0.2038",
+   "prix_de_marque": "0.029",
+   "latent": "-21.44",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-06T00:09"
+  },
+  {
+   "marche": "Will Bitcoin reach $77,500 in November?",
+   "issue": "No",
+   "parts": "100.55",
+   "cout": "18.38",
+   "prix_moyen": "0.1828",
+   "prix_de_marque": "0.18",
+   "latent": "-0.28",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-06T01:27"
+  },
+  {
+   "marche": "6639466",
+   "issue": "No",
+   "parts": "1.50",
+   "cout": "0.21",
+   "prix_moyen": "0.1379",
+   "prix_de_marque": "0.059",
+   "latent": "-0.12",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-06T04:28"
+  },
+  {
+   "marche": "Will Ethereum dip to $2,200 November 2-8?",
+   "issue": "No",
+   "parts": "14.37",
+   "cout": "2.87",
+   "prix_moyen": "0.1999",
+   "prix_de_marque": "0.55",
+   "latent": "5.03",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-06T07:07"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,200 on November 8?",
+   "issue": "No",
+   "parts": "22.63",
+   "cout": "4.14",
+   "prix_moyen": "0.1827",
+   "prix_de_marque": "0.104",
+   "latent": "-1.78",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-06T22:22"
+  }
+ ],
+ "operations_cloturees": 86,
+ "dernieres_operations": [
+  {
+   "marche": "6389911",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-21.56",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T17:16"
+  },
+  {
+   "marche": "6389905",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-20.34",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T17:16"
+  },
+  {
+   "marche": "6389915",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "19.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T17:16"
+  },
+  {
+   "marche": "6507380",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-22.67",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T15:25"
+  },
+  {
+   "marche": "6423910",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-0.27",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423842",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-19.77",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423885",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-2.87",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423888",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "68.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423851",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "105.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423911",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-3.17",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423887",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-15.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423886",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-11.23",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423846",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-26.99",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423935",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "101.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T17:16"
+  },
+  {
+   "marche": "6423900",
+   "issue": "No",
+   "strategie": "crypto_non_10_20 v1.0.0",
+   "resultat": "-6.90",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  }
+ ],
+ "performances": {
+  "crypto_non_10_20 v1.0.0": {
+   "operations": 86,
+   "evenements": 44,
+   "gagnantes": 17,
+   "taux_reussite": 0.198,
+   "profit_net": "35.11",
+   "frais": "43.47",
+   "rendement_sur_mises": 0.0454,
+   "esperance_par_operation": "0.41",
+   "ic90_rendement_par_euro": [
+    -0.193,
+    0.6745
+   ],
+   "brier": 0.155,
+   "log_loss": 0.4851,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

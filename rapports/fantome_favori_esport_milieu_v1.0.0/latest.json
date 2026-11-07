@@ -1,0 +1,92 @@
+{
+ "genere_le": "2026-11-07T15:34:14+00:00",
+ "capital": {
+  "solde_disponible": "993.0617",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-6.9383",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.1970",
+  "capital_total_estime": "993.0617",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0099,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "favori_esport_milieu v1.0.0",
+   "resultat": "-4.21",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6439052",
+   "issue": "Nuclear TigeRES",
+   "strategie": "favori_esport_milieu v1.0.0",
+   "resultat": "-5.18",
+   "resolution": "résolu : WRAITH PCIFIC",
+   "cloturee_le": "2026-10-31T17:25"
+  },
+  {
+   "marche": "6502532",
+   "issue": "100 Thieves",
+   "strategie": "favori_esport_milieu v1.0.0",
+   "resultat": "1.22",
+   "resolution": "résolu : 100 Thieves",
+   "cloturee_le": "2026-11-01T17:07"
+  },
+  {
+   "marche": "6635146",
+   "issue": "Natus Vincere",
+   "strategie": "favori_esport_milieu v1.0.0",
+   "resultat": "1.22",
+   "resolution": "résolu : Natus Vincere",
+   "cloturee_le": "2026-11-04T06:46"
+  }
+ ],
+ "performances": {
+  "favori_esport_milieu v1.0.0": {
+   "operations": 4,
+   "evenements": 4,
+   "gagnantes": 2,
+   "taux_reussite": 0.5,
+   "profit_net": "-6.94",
+   "frais": "0.20",
+   "rendement_sur_mises": -0.3524,
+   "esperance_par_operation": "-1.73",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.0718
+   ],
+   "brier": 0.3515,
+   "log_loss": 0.9538,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:23+00:00",
+ "capital": {
+  "solde_disponible": "982.2153",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-17.7847",
+  "gains_latents": "0.0000",
+  "frais_payes": "108.1976",
+  "capital_total_estime": "982.2153",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.4382,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 333,
+ "dernieres_operations": [
+  {
+   "marche": "6376481",
+   "issue": "Connie Ma",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "7.45",
+   "resolution": "résolu : Connie Ma",
+   "cloturee_le": "2026-10-29T23:36"
+  },
+  {
+   "marche": "6376503",
+   "issue": "Ipek Oz",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "6.20",
+   "resolution": "résolu : Ipek Oz",
+   "cloturee_le": "2026-10-29T23:41"
+  },
+  {
+   "marche": "6376489",
+   "issue": "Caroline Dolehide",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "6.15",
+   "resolution": "résolu : Caroline Dolehide",
+   "cloturee_le": "2026-10-30T00:05"
+  },
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-37.17",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6326878",
+   "issue": "Ben Shelton",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-18.19",
+   "resolution": "résolu : Jerome Kym",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6336528",
+   "issue": "Turma do Pagode",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "6.02",
+   "resolution": "résolu : Turma do Pagode",
+   "cloturee_le": "2026-10-30T01:46"
+  },
+  {
+   "marche": "6280179",
+   "issue": "Under",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-24.30",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6280178",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "-93.72",
+   "resolution": "résolu : Top Esports",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6381838",
+   "issue": "Blake Ellis",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.68",
+   "resolution": "résolu : Blake Ellis",
+   "cloturee_le": "2026-10-30T03:11"
+  },
+  {
+   "marche": "6381944",
+   "issue": "Katie Swan",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.49",
+   "resolution": "résolu : Katie Swan",
+   "cloturee_le": "2026-10-30T04:11"
+  },
+  {
+   "marche": "6387879",
+   "issue": "Violet Apisah",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.98",
+   "resolution": "résolu : Violet Apisah",
+   "cloturee_le": "2026-10-30T05:31"
+  },
+  {
+   "marche": "6345236",
+   "issue": "Alter Ego",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "5.74",
+   "resolution": "résolu : Alter Ego",
+   "cloturee_le": "2026-10-30T05:51"
+  },
+  {
+   "marche": "6369770",
+   "issue": "Joao Lucas Da Silva",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "8.66",
+   "resolution": "résolu : Joao Lucas Da Silva",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "6111998",
+   "issue": "Fraport Skyliners",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "13.38",
+   "resolution": "résolu : Fraport Skyliners",
+   "cloturee_le": "2026-10-30T22:11"
+  },
+  {
+   "marche": "5915704",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente v1.0.0",
+   "resultat": "14.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:46"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente v1.0.0": {
+   "operations": 333,
+   "evenements": 308,
+   "gagnantes": 289,
+   "taux_reussite": 0.868,
+   "profit_net": "-17.78",
+   "frais": "108.20",
+   "rendement_sur_mises": -0.0007,
+   "esperance_par_operation": "-0.05",
+   "ic90_rendement_par_euro": [
+    -0.0404,
+    0.0319
+   ],
+   "brier": 0.1157,
+   "log_loss": 0.4227,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

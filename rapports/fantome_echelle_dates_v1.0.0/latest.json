@@ -1,0 +1,210 @@
+{
+ "genere_le": "2026-11-07T15:34:14+00:00",
+ "capital": {
+  "solde_disponible": "818.5591",
+  "capital_immobilise": "186.6409",
+  "gains_realises_nets": "5.2000",
+  "gains_latents": "-1.5007",
+  "frais_payes": "1.1360",
+  "capital_total_estime": "1003.6993",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0458,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1294367",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "0.75",
+   "prix_moyen": "0.0300",
+   "prix_de_marque": "0.013",
+   "latent": "-0.42",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "192787",
+   "ouverte_le": "2026-10-21T22:05"
+  },
+  {
+   "marche": "3392719",
+   "issue": "Yes",
+   "parts": "64.92",
+   "cout": "21.42",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.52",
+   "latent": "12.33",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "808659",
+   "ouverte_le": "2026-10-23T00:42"
+  },
+  {
+   "marche": "3392721",
+   "issue": "No",
+   "parts": "64.92",
+   "cout": "28.56",
+   "prix_moyen": "0.4400",
+   "prix_de_marque": "0.68",
+   "latent": "15.58",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "808659",
+   "ouverte_le": "2026-10-23T00:42"
+  },
+  {
+   "marche": "6071559",
+   "issue": "Yes",
+   "parts": "51.76",
+   "cout": "24.84",
+   "prix_moyen": "0.4800",
+   "prix_de_marque": "0.14",
+   "latent": "-17.60",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "956931",
+   "ouverte_le": "2026-10-25T16:37"
+  },
+  {
+   "marche": "4178748",
+   "issue": "No",
+   "parts": "45.02",
+   "cout": "22.33",
+   "prix_moyen": "0.4960",
+   "prix_de_marque": "0.803",
+   "latent": "13.82",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "956931",
+   "ouverte_le": "2026-10-25T16:37"
+  },
+  {
+   "marche": "Next Israeli government formed by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "4.50",
+   "prix_moyen": "0.1800",
+   "prix_de_marque": "0.145",
+   "latent": "-0.88",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "1266253",
+   "ouverte_le": "2026-10-28T02:52"
+  },
+  {
+   "marche": "Next Israeli government formed by February 28, 2027?",
+   "issue": "No",
+   "parts": "12.50",
+   "cout": "7.00",
+   "prix_moyen": "0.5600",
+   "prix_de_marque": "0.28",
+   "latent": "-3.50",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "1266253",
+   "ouverte_le": "2026-10-28T02:52"
+  },
+  {
+   "marche": "US imports Russian diesel by January 31?",
+   "issue": "Yes",
+   "parts": "50.80",
+   "cout": "26.92",
+   "prix_moyen": "0.5300",
+   "prix_de_marque": "0.17",
+   "latent": "-18.29",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-11-03T09:28"
+  },
+  {
+   "marche": "Will Jon Ossoff announce a Presidential run before 2028?",
+   "issue": "Yes",
+   "parts": "2.75",
+   "cout": "1.37",
+   "prix_moyen": "0.5000",
+   "prix_de_marque": "0.58",
+   "latent": "0.22",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "798125",
+   "ouverte_le": "2026-11-05T23:08"
+  },
+  {
+   "marche": "Will Alexandria Ocasio-Cortez announce a Presidential run before 2028?",
+   "issue": "No",
+   "parts": "5.50",
+   "cout": "2.47",
+   "prix_moyen": "0.4499",
+   "prix_de_marque": "0.39",
+   "latent": "-0.33",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "798125",
+   "ouverte_le": "2026-11-05T23:08"
+  },
+  {
+   "marche": "3347366",
+   "issue": "Yes",
+   "parts": "51.18",
+   "cout": "5.30",
+   "prix_moyen": "0.1036",
+   "prix_de_marque": "0.09",
+   "latent": "-0.70",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "798125",
+   "ouverte_le": "2026-11-07T03:12"
+  },
+  {
+   "marche": "Will Marco Rubio announce a presidential run before 2028?",
+   "issue": "No",
+   "parts": "87.57",
+   "cout": "41.15",
+   "prix_moyen": "0.4699",
+   "prix_de_marque": "0.45",
+   "latent": "-1.75",
+   "strategie": "echelle_dates v1.0.0",
+   "groupe": "798125",
+   "ouverte_le": "2026-11-07T03:12"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "3120760",
+   "issue": "No",
+   "strategie": "echelle_dates v1.0.0",
+   "resultat": "5.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T11:01"
+  }
+ ],
+ "performances": {
+  "echelle_dates v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "5.20",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.3514,
+   "esperance_par_operation": "5.20",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0702,
+   "log_loss": 0.3079,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

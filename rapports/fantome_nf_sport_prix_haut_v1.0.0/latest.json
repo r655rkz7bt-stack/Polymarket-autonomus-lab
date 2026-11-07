@@ -1,0 +1,541 @@
+{
+ "genere_le": "2026-11-07T15:34:24+00:00",
+ "capital": {
+  "solde_disponible": "85.8816",
+  "capital_immobilise": "1098.2241",
+  "gains_realises_nets": "184.1057",
+  "gains_latents": "21.3202",
+  "frais_payes": "168.7336",
+  "capital_total_estime": "1205.4259",
+  "positions_ouvertes": "30",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3189,
+ "dernier_battement": "2026-11-07T15:17:11+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "46.37",
+   "cout": "41.94",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.87",
+   "latent": "-1.60",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.92",
+   "latent": "-0.06",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "41.07",
+   "cout": "39.11",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.749",
+   "latent": "-8.35",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:14"
+  },
+  {
+   "marche": "6490331",
+   "issue": "Yes",
+   "parts": "42.16",
+   "cout": "38.54",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.992",
+   "latent": "3.28",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290031",
+   "ouverte_le": "2026-11-03T11:12"
+  },
+  {
+   "marche": "Will Al Kholood Saudi Club vs. Al Khaleej Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "22.37",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.993",
+   "latent": "2.45",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290026",
+   "ouverte_le": "2026-11-03T11:12"
+  },
+  {
+   "marche": "6490519",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "11.79",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.992",
+   "latent": "0.61",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290043",
+   "ouverte_le": "2026-11-03T12:05"
+  },
+  {
+   "marche": "Will Al Nassr Saudi Club win on 2026-11-06?",
+   "issue": "No",
+   "parts": "46.88",
+   "cout": "43.75",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.995",
+   "latent": "2.89",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-03T12:57"
+  },
+  {
+   "marche": "Will Al Ahli Saudi Club vs. Al Taawoun Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "0.11",
+   "cout": "0.10",
+   "prix_moyen": "0.9429",
+   "prix_de_marque": "0.988",
+   "latent": "0.00",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290067",
+   "ouverte_le": "2026-11-03T13:07"
+  },
+  {
+   "marche": "6490282",
+   "issue": "Yes",
+   "parts": "1.90",
+   "cout": "1.81",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.967",
+   "latent": "0.03",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290028",
+   "ouverte_le": "2026-11-03T14:04"
+  },
+  {
+   "marche": "6490708",
+   "issue": "Yes",
+   "parts": "135.42",
+   "cout": "126.50",
+   "prix_moyen": "0.9341",
+   "prix_de_marque": "0.989",
+   "latent": "7.43",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290053",
+   "ouverte_le": "2026-11-04T00:27"
+  },
+  {
+   "marche": "Will Al Qadisiyah Saudi Club vs. Al Fayha Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "12.08",
+   "cout": "11.32",
+   "prix_moyen": "0.9369",
+   "prix_de_marque": "0.994",
+   "latent": "0.69",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T00:47"
+  },
+  {
+   "marche": "6490620",
+   "issue": "Yes",
+   "parts": "27.50",
+   "cout": "25.92",
+   "prix_moyen": "0.9426",
+   "prix_de_marque": "0.991",
+   "latent": "1.33",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-04T05:42"
+  },
+  {
+   "marche": "6490415",
+   "issue": "No",
+   "parts": "74.22",
+   "cout": "70.65",
+   "prix_moyen": "0.9519",
+   "prix_de_marque": "0.991",
+   "latent": "2.90",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T07:12"
+  },
+  {
+   "marche": "Will Paris Saint-Germain FC win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "88.98",
+   "cout": "80.48",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.83",
+   "latent": "-6.63",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-05T06:27"
+  },
+  {
+   "marche": "Cali: Alice Tubello vs Bianca Andreescu",
+   "issue": "Bianca Andreescu",
+   "parts": "86.47",
+   "cout": "79.87",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "6.51",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1323440",
+   "ouverte_le": "2026-11-06T20:42"
+  },
+  {
+   "marche": "Will Lewis Hamilton win the 2026 F1 Brazilian Grand Prix?",
+   "issue": "No",
+   "parts": "22.55",
+   "cout": "21.26",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.06",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1164155",
+   "ouverte_le": "2026-11-06T21:13"
+  },
+  {
+   "marche": "Manchester City punishment announced by November 20?",
+   "issue": "No",
+   "parts": "20.91",
+   "cout": "19.31",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-0.29",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1083788",
+   "ouverte_le": "2026-11-07T07:57"
+  },
+  {
+   "marche": "Will Valencia CF win on 2026-11-07?",
+   "issue": "No",
+   "parts": "34.12",
+   "cout": "31.52",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.92",
+   "latent": "-0.13",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1250955",
+   "ouverte_le": "2026-11-07T11:27"
+  },
+  {
+   "marche": "Counter-Strike: Lunacy Team vs maybe (BO3) - European Pro League Group D",
+   "issue": "Lunacy Team",
+   "parts": "42.79",
+   "cout": "39.93",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.999",
+   "latent": "2.81",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1312054",
+   "ouverte_le": "2026-11-07T12:32"
+  },
+  {
+   "marche": "Will ES Troyes AC win on 2026-11-07?",
+   "issue": "No",
+   "parts": "72.53",
+   "cout": "68.66",
+   "prix_moyen": "0.9466",
+   "prix_de_marque": "0.944",
+   "latent": "-0.19",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-07T12:52"
+  },
+  {
+   "marche": "Counter-Strike: Teletubisie vs XI Esport (BO3) - United21 Group A",
+   "issue": "Teletubisie",
+   "parts": "57.11",
+   "cout": "51.61",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.999",
+   "latent": "5.45",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1312633",
+   "ouverte_le": "2026-11-07T13:03"
+  },
+  {
+   "marche": "Counter-Strike: Acend vs Ryvex (BO3) - ESL Challenger League Europe Cup #11 Group D",
+   "issue": "Acend",
+   "parts": "37.88",
+   "cout": "34.63",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.999",
+   "latent": "3.22",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1329315",
+   "ouverte_le": "2026-11-07T13:09"
+  },
+  {
+   "marche": "6171515",
+   "issue": "No",
+   "parts": "48.26",
+   "cout": "43.19",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.82",
+   "latent": "-3.61",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1250193",
+   "ouverte_le": "2026-11-07T13:42"
+  },
+  {
+   "marche": "Will 1. FSV Mainz 05 win on 2026-11-07?",
+   "issue": "No",
+   "parts": "35.08",
+   "cout": "32.40",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.97",
+   "latent": "1.62",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1250183",
+   "ouverte_le": "2026-11-07T13:57"
+  },
+  {
+   "marche": "Counter-Strike: Alliance vs maybe (BO3) - ESL Challenger League Europe Cup #11 Group C",
+   "issue": "Alliance",
+   "parts": "40.68",
+   "cout": "37.58",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.96",
+   "latent": "1.48",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1329308",
+   "ouverte_le": "2026-11-07T14:22"
+  },
+  {
+   "marche": "Counter-Strike: OG vs G2 Ares (BO3) - ESL Challenger League Europe Cup #11 Group A",
+   "issue": "OG",
+   "parts": "22.25",
+   "cout": "19.70",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.999",
+   "latent": "2.53",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1326673",
+   "ouverte_le": "2026-11-07T14:37"
+  },
+  {
+   "marche": "Taranto: Carlo Alberto Caniato vs Kilian Feldbausch",
+   "issue": "Kilian Feldbausch",
+   "parts": "25.20",
+   "cout": "23.28",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.999",
+   "latent": "1.90",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1328296",
+   "ouverte_le": "2026-11-07T14:42"
+  },
+  {
+   "marche": "Counter-Strike: LPH Gaming vs aimclub (BO3) - ESL Challenger League Europe Cup #11 Group D",
+   "issue": "aimclub",
+   "parts": "19.30",
+   "cout": "17.46",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.999",
+   "latent": "1.82",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1326687",
+   "ouverte_le": "2026-11-07T14:52"
+  },
+  {
+   "marche": "Counter-Strike: 6yuBoJlbl vs 9INE (BO3) - ESL Challenger League Europe Cup #11 Group C",
+   "issue": "9INE",
+   "parts": "14.33",
+   "cout": "13.10",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.33",
+   "latent": "-8.37",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1326684",
+   "ouverte_le": "2026-11-07T14:57"
+  },
+  {
+   "marche": "Counter-Strike: Balkan Outlaws vs The Last Resort (BO3) - ESL Challenger League Europe Cup #11 Group B",
+   "issue": "Balkan Outlaws",
+   "parts": "30.22",
+   "cout": "28.55",
+   "prix_moyen": "0.9447",
+   "prix_de_marque": "0.999",
+   "latent": "1.64",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "groupe": "1326681",
+   "ouverte_le": "2026-11-07T15:17"
+  }
+ ],
+ "operations_cloturees": 696,
+ "dernieres_operations": [
+  {
+   "marche": "6428605",
+   "issue": "Spurs",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "6.69",
+   "resolution": "résolu : Spurs",
+   "cloturee_le": "2026-11-07T06:08"
+  },
+  {
+   "marche": "6749862",
+   "issue": "MOUZ",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.42",
+   "resolution": "résolu : MOUZ",
+   "cloturee_le": "2026-11-07T11:55"
+  },
+  {
+   "marche": "6769459",
+   "issue": "Butterfly",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "1.18",
+   "resolution": "résolu : Butterfly",
+   "cloturee_le": "2026-11-07T12:01"
+  },
+  {
+   "marche": "6765275",
+   "issue": "Nikoloz Basilashvili",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "4.61",
+   "resolution": "résolu : Nikoloz Basilashvili",
+   "cloturee_le": "2026-11-07T12:01"
+  },
+  {
+   "marche": "6441595",
+   "issue": "India",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "7.42",
+   "resolution": "résolu : India",
+   "cloturee_le": "2026-11-07T12:07"
+  },
+  {
+   "marche": "6753730",
+   "issue": "MASONIC",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "5.61",
+   "resolution": "résolu : MASONIC",
+   "cloturee_le": "2026-11-07T12:31"
+  },
+  {
+   "marche": "6721547",
+   "issue": "Anna Blinkova",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "6.06",
+   "resolution": "résolu : Anna Blinkova",
+   "cloturee_le": "2026-11-07T12:50"
+  },
+  {
+   "marche": "6749920",
+   "issue": "Ioannis Xilas",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "-114.67",
+   "resolution": "résolu : Gilles Arnaud Bailly",
+   "cloturee_le": "2026-11-07T13:06"
+  },
+  {
+   "marche": "6765277",
+   "issue": "Mika Brunold",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "-77.59",
+   "resolution": "résolu : Borna Gojo",
+   "cloturee_le": "2026-11-07T13:16"
+  },
+  {
+   "marche": "6705880",
+   "issue": "Brisbane Heat",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.35",
+   "resolution": "résolu : Brisbane Heat",
+   "cloturee_le": "2026-11-07T13:25"
+  },
+  {
+   "marche": "6758961",
+   "issue": "Xipto Esports",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "5.13",
+   "resolution": "résolu : Xipto Esports",
+   "cloturee_le": "2026-11-07T13:31"
+  },
+  {
+   "marche": "6765288",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "3.42",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-11-07T14:01"
+  },
+  {
+   "marche": "6754158",
+   "issue": "Matteo Martineau",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "4.12",
+   "resolution": "résolu : Matteo Martineau",
+   "cloturee_le": "2026-11-07T14:16"
+  },
+  {
+   "marche": "6753554",
+   "issue": "Sofya Lansere",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "4.56",
+   "resolution": "résolu : Sofya Lansere",
+   "cloturee_le": "2026-11-07T15:01"
+  },
+  {
+   "marche": "6765285",
+   "issue": "Inaki Montes",
+   "strategie": "nf_sport_prix_haut v1.0.0",
+   "resultat": "2.11",
+   "resolution": "résolu : Inaki Montes",
+   "cloturee_le": "2026-11-07T15:06"
+  }
+ ],
+ "performances": {
+  "nf_sport_prix_haut v1.0.0": {
+   "operations": 696,
+   "evenements": 624,
+   "gagnantes": 634,
+   "taux_reussite": 0.911,
+   "profit_net": "184.11",
+   "frais": "164.44",
+   "rendement_sur_mises": 0.0048,
+   "esperance_par_operation": "0.26",
+   "ic90_rendement_par_euro": [
+    -0.0223,
+    0.0169
+   ],
+   "brier": 0.0811,
+   "log_loss": 0.3108,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

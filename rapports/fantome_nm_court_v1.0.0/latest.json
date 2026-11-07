@@ -1,0 +1,349 @@
+{
+ "genere_le": "2026-11-07T15:34:26+00:00",
+ "capital": {
+  "solde_disponible": "649.0627",
+  "capital_immobilise": "184.0128",
+  "gains_realises_nets": "-166.9245",
+  "gains_latents": "-0.4969",
+  "frais_payes": "6.0622",
+  "capital_total_estime": "832.5786",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2432,
+ "dernier_battement": "2026-11-07T15:12:53+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "682708",
+   "issue": "Yes",
+   "parts": "9.71",
+   "cout": "5.89",
+   "prix_moyen": "0.6070",
+   "prix_de_marque": "0.628",
+   "latent": "0.20",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T10:42"
+  },
+  {
+   "marche": "682705",
+   "issue": "No",
+   "parts": "21.30",
+   "cout": "17.25",
+   "prix_moyen": "0.8100",
+   "prix_de_marque": "0.787",
+   "latent": "-0.49",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T13:22"
+  },
+  {
+   "marche": "2109956",
+   "issue": "Yes",
+   "parts": "8.81",
+   "cout": "5.29",
+   "prix_moyen": "0.6000",
+   "prix_de_marque": "0.34",
+   "latent": "-2.29",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "428537",
+   "ouverte_le": "2026-10-27T20:47"
+  },
+  {
+   "marche": "5939176",
+   "issue": "Yes",
+   "parts": "9.54",
+   "cout": "3.15",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.008",
+   "latent": "-3.07",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1219790",
+   "ouverte_le": "2026-10-27T21:32"
+  },
+  {
+   "marche": "5939179",
+   "issue": "No",
+   "parts": "9.37",
+   "cout": "6.18",
+   "prix_moyen": "0.6600",
+   "prix_de_marque": "0.011",
+   "latent": "-6.08",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1219790",
+   "ouverte_le": "2026-10-28T00:37"
+  },
+  {
+   "marche": "1284010",
+   "issue": "Yes",
+   "parts": "16.80",
+   "cout": "14.19",
+   "prix_moyen": "0.8447",
+   "prix_de_marque": "0.804",
+   "latent": "-0.68",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "191531",
+   "ouverte_le": "2026-11-04T01:14"
+  },
+  {
+   "marche": "1284009",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "8.45",
+   "prix_moyen": "0.8454",
+   "prix_de_marque": "0.803",
+   "latent": "-0.42",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "191531",
+   "ouverte_le": "2026-11-04T01:14"
+  },
+  {
+   "marche": "634976",
+   "issue": "Yes",
+   "parts": "20.74",
+   "cout": "18.34",
+   "prix_moyen": "0.8842",
+   "prix_de_marque": "0.981",
+   "latent": "2.01",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "59233",
+   "ouverte_le": "2026-11-04T01:37"
+  },
+  {
+   "marche": "634974",
+   "issue": "No",
+   "parts": "20.74",
+   "cout": "18.34",
+   "prix_moyen": "0.8842",
+   "prix_de_marque": "0.981",
+   "latent": "2.01",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "59233",
+   "ouverte_le": "2026-11-04T01:37"
+  },
+  {
+   "marche": "629412",
+   "issue": "Yes",
+   "parts": "25.47",
+   "cout": "23.01",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.99",
+   "latent": "2.20",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "57172",
+   "ouverte_le": "2026-11-04T03:38"
+  },
+  {
+   "marche": "Will National Party win the most seats in the New Zealand House of Representatives in the 2026 New Zealand legislative election?",
+   "issue": "Yes",
+   "parts": "19.68",
+   "cout": "17.21",
+   "prix_moyen": "0.8745",
+   "prix_de_marque": "0.985",
+   "latent": "2.17",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-07T06:27"
+  },
+  {
+   "marche": "Will Labour Party win the most seats in the New Zealand House of Representatives in the 2026 New Zealand legislative election?",
+   "issue": "No",
+   "parts": "17.95",
+   "cout": "15.52",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.984",
+   "latent": "2.14",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-07T06:33"
+  },
+  {
+   "marche": "Will Elon Musk post 115-139 tweets from November 5 to November 7, 2026?",
+   "issue": "No",
+   "parts": "13.94",
+   "cout": "11.24",
+   "prix_moyen": "0.8061",
+   "prix_de_marque": "0.963",
+   "latent": "2.19",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "1302191",
+   "ouverte_le": "2026-11-07T09:17"
+  },
+  {
+   "marche": "Will the next governing coalition of New Zealand include Labour + Green?",
+   "issue": "No",
+   "parts": "22.41",
+   "cout": "19.94",
+   "prix_moyen": "0.8898",
+   "prix_de_marque": "0.873",
+   "latent": "-0.38",
+   "strategie": "nm_court v1.0.0",
+   "groupe": "435884",
+   "ouverte_le": "2026-11-07T12:09"
+  }
+ ],
+ "operations_cloturees": 166,
+ "dernieres_operations": [
+  {
+   "marche": "6027759",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.55",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T08:51"
+  },
+  {
+   "marche": "630772",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:06"
+  },
+  {
+   "marche": "630773",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:06"
+  },
+  {
+   "marche": "1284959",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "1.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:16"
+  },
+  {
+   "marche": "629518",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "630806",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T10:41"
+  },
+  {
+   "marche": "634892",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.66",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T11:35"
+  },
+  {
+   "marche": "6476067",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.34",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "6476066",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.41",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "3515263",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-2.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T21:55"
+  },
+  {
+   "marche": "1285080",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T20:06"
+  },
+  {
+   "marche": "1284129",
+   "issue": "No",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:41"
+  },
+  {
+   "marche": "1284130",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.34",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:41"
+  },
+  {
+   "marche": "6288574",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "-0.78",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288570",
+   "issue": "Yes",
+   "strategie": "nm_court v1.0.0",
+   "resultat": "2.32",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  }
+ ],
+ "performances": {
+  "nm_court v1.0.0": {
+   "operations": 166,
+   "evenements": 91,
+   "gagnantes": 99,
+   "taux_reussite": 0.596,
+   "profit_net": "-166.92",
+   "frais": "5.27",
+   "rendement_sur_mises": -0.0672,
+   "esperance_par_operation": "-1.01",
+   "ic90_rendement_par_euro": [
+    -0.2014,
+    0.0423
+   ],
+   "brier": 0.1709,
+   "log_loss": 0.5202,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

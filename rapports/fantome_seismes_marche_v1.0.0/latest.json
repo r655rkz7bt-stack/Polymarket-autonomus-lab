@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-11-07T15:34:28+00:00",
+ "capital": {
+  "solde_disponible": "946.3593",
+  "capital_immobilise": "168.7357",
+  "gains_realises_nets": "115.0950",
+  "gains_latents": "76.5339",
+  "frais_payes": "3.4583",
+  "capital_total_estime": "1191.6289",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0943,
+ "dernier_battement": "2026-11-07T15:27:31+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6090727",
+   "issue": "Yes",
+   "parts": "30.80",
+   "cout": "15.09",
+   "prix_moyen": "0.4900",
+   "prix_de_marque": "0.99",
+   "latent": "15.40",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1241662",
+   "ouverte_le": "2026-10-26T14:50"
+  },
+  {
+   "marche": "6090731",
+   "issue": "No",
+   "parts": "15.00",
+   "cout": "12.40",
+   "prix_moyen": "0.8267",
+   "prix_de_marque": "0.98",
+   "latent": "2.30",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1241662",
+   "ouverte_le": "2026-10-26T21:07"
+  },
+  {
+   "marche": "6090729",
+   "issue": "No",
+   "parts": "32.52",
+   "cout": "22.44",
+   "prix_moyen": "0.6900",
+   "prix_de_marque": "0.971",
+   "latent": "9.14",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1241662",
+   "ouverte_le": "2026-10-27T17:43"
+  },
+  {
+   "marche": "Will there be ≤6 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "111.62",
+   "cout": "40.08",
+   "prix_moyen": "0.3591",
+   "prix_de_marque": "0.72",
+   "latent": "40.28",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-02T15:47"
+  },
+  {
+   "marche": "Will there be 0 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "27.50",
+   "cout": "13.47",
+   "prix_moyen": "0.4897",
+   "prix_de_marque": "0.79",
+   "latent": "8.26",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301712",
+   "ouverte_le": "2026-11-02T16:09"
+  },
+  {
+   "marche": "Will there be 1 earthquake of 6.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "0.85",
+   "cout": "0.55",
+   "prix_moyen": "0.6515",
+   "prix_de_marque": "0.84",
+   "latent": "0.16",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301712",
+   "ouverte_le": "2026-11-02T16:32"
+  },
+  {
+   "marche": "Will there be 9 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.11",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.921",
+   "latent": "0.04",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-02T16:47"
+  },
+  {
+   "marche": "Will there be 7 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "3.50",
+   "cout": "3.03",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.91",
+   "latent": "0.15",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-02T16:47"
+  },
+  {
+   "marche": "Will there be 8 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "17.71",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.911",
+   "latent": "0.51",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-03T05:47"
+  },
+  {
+   "marche": "Will there be 2 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "29.71",
+   "cout": "25.73",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.9",
+   "latent": "1.01",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301712",
+   "ouverte_le": "2026-11-03T21:33"
+  },
+  {
+   "marche": "Will the biggest earthquake on November 7, 2026 be 6.1 or more?",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "17.13",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.82",
+   "latent": "-0.73",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1318024",
+   "ouverte_le": "2026-11-07T14:57"
+  }
+ ],
+ "operations_cloturees": 29,
+ "dernieres_operations": [
+  {
+   "marche": "6237172",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "11.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T20:06"
+  },
+  {
+   "marche": "6288969",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "-46.18",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "6331186",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "1.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T20:06"
+  },
+  {
+   "marche": "6377788",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "-2.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T21:05"
+  },
+  {
+   "marche": "6377793",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "3.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T21:05"
+  },
+  {
+   "marche": "6090721",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "-12.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T09:46"
+  },
+  {
+   "marche": "6090724",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "2.60",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T15:00"
+  },
+  {
+   "marche": "6090725",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "1.12",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T11:46"
+  },
+  {
+   "marche": "6505217",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "9.94",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T21:05"
+  },
+  {
+   "marche": "6090726",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "8.90",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T13:35"
+  },
+  {
+   "marche": "6090732",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "10.99",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T19:55"
+  },
+  {
+   "marche": "6564001",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "5.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T21:07"
+  },
+  {
+   "marche": "6090730",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "8.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T22:16"
+  },
+  {
+   "marche": "6090728",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "8.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T10:31"
+  },
+  {
+   "marche": "6625782",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "-22.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T21:05"
+  }
+ ],
+ "performances": {
+  "seismes_marche v1.0.0": {
+   "operations": 29,
+   "evenements": 12,
+   "gagnantes": 22,
+   "taux_reussite": 0.759,
+   "profit_net": "115.09",
+   "frais": "1.40",
+   "rendement_sur_mises": 0.1603,
+   "esperance_par_operation": "3.97",
+   "ic90_rendement_par_euro": [
+    -0.0752,
+    0.7785
+   ],
+   "brier": 0.0812,
+   "log_loss": 0.2902,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

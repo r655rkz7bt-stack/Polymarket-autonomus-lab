@@ -1,0 +1,661 @@
+{
+ "genere_le": "2026-11-07T15:34:14+00:00",
+ "capital": {
+  "solde_disponible": "7.7851",
+  "capital_immobilise": "1031.7405",
+  "gains_realises_nets": "39.5256",
+  "gains_latents": "-100.3425",
+  "frais_payes": "1.3122",
+  "capital_total_estime": "939.1831",
+  "positions_ouvertes": "40",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1613,
+ "dernier_battement": "2026-11-07T15:12:53+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "682706",
+   "issue": "No",
+   "parts": "68.00",
+   "cout": "59.84",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.98",
+   "latent": "6.80",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-17T18:43"
+  },
+  {
+   "marche": "3343193",
+   "issue": "No",
+   "parts": "13.85",
+   "cout": "12.13",
+   "prix_moyen": "0.8760",
+   "prix_de_marque": "0.999",
+   "latent": "1.70",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "797178",
+   "ouverte_le": "2026-10-27T03:57"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ be released between November 16 and November 22, 2026?",
+   "issue": "No",
+   "parts": "87.92",
+   "cout": "73.85",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.848",
+   "latent": "0.70",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-28T01:41"
+  },
+  {
+   "marche": "5336164",
+   "issue": "No",
+   "parts": "96.42",
+   "cout": "79.64",
+   "prix_moyen": "0.8260",
+   "prix_de_marque": "0.374",
+   "latent": "-43.58",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1138395",
+   "ouverte_le": "2026-10-28T15:26"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be between 34m and 37m?",
+   "issue": "No",
+   "parts": "49.58",
+   "cout": "41.65",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.972",
+   "latent": "6.54",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-10-28T16:07"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 24, 2026?",
+   "issue": "Yes",
+   "parts": "3.87",
+   "cout": "3.17",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.64",
+   "latent": "-0.70",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-28T23:48"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be between 37m and 40m?",
+   "issue": "No",
+   "parts": "23.58",
+   "cout": "20.04",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.996",
+   "latent": "3.44",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-10-29T05:56"
+  },
+  {
+   "marche": "635016",
+   "issue": "Yes",
+   "parts": "12.00",
+   "cout": "10.67",
+   "prix_moyen": "0.8890",
+   "prix_de_marque": "0.995",
+   "latent": "1.27",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-29T15:31"
+  },
+  {
+   "marche": "Will Gemini Carbon be released between November 16 and November 22, 2026?",
+   "issue": "No",
+   "parts": "6.75",
+   "cout": "5.90",
+   "prix_moyen": "0.8740",
+   "prix_de_marque": "0.833",
+   "latent": "-0.28",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1274180",
+   "ouverte_le": "2026-11-01T09:46"
+  },
+  {
+   "marche": "1285152",
+   "issue": "No",
+   "parts": "49.90",
+   "cout": "42.81",
+   "prix_moyen": "0.8580",
+   "prix_de_marque": "0.984",
+   "latent": "6.29",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "191677",
+   "ouverte_le": "2026-11-01T15:51"
+  },
+  {
+   "marche": "US announces end of Iranian blockade by November 15, 2026?",
+   "issue": "No",
+   "parts": "1.27",
+   "cout": "1.08",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.93",
+   "latent": "0.10",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "699735",
+   "ouverte_le": "2026-11-01T17:05"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 6?",
+   "issue": "Yes",
+   "parts": "12.47",
+   "cout": "10.47",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.997",
+   "latent": "1.96",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-01T18:03"
+  },
+  {
+   "marche": "Will Anthropic not IPO by November 30, 2026?",
+   "issue": "No",
+   "parts": "21.20",
+   "cout": "17.81",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.77",
+   "latent": "-1.48",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1262075",
+   "ouverte_le": "2026-11-02T06:16"
+  },
+  {
+   "marche": "Houthis capture Taiz city by November 30?",
+   "issue": "No",
+   "parts": "10.98",
+   "cout": "9.11",
+   "prix_moyen": "0.8300",
+   "prix_de_marque": "0.88",
+   "latent": "0.55",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1230652",
+   "ouverte_le": "2026-11-02T07:06"
+  },
+  {
+   "marche": "631018",
+   "issue": "Yes",
+   "parts": "59.44",
+   "cout": "51.40",
+   "prix_moyen": "0.8648",
+   "prix_de_marque": "0.006",
+   "latent": "-51.05",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "57678",
+   "ouverte_le": "2026-11-02T16:39"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 7?",
+   "issue": "Yes",
+   "parts": "30.51",
+   "cout": "26.54",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.988",
+   "latent": "3.60",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-02T19:05"
+  },
+  {
+   "marche": "631017",
+   "issue": "No",
+   "parts": "50.82",
+   "cout": "45.43",
+   "prix_moyen": "0.8939",
+   "prix_de_marque": "0.006",
+   "latent": "-45.12",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "57678",
+   "ouverte_le": "2026-11-03T18:18"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "44.50",
+   "cout": "38.27",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.957",
+   "latent": "4.32",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-04T06:51"
+  },
+  {
+   "marche": "5636167",
+   "issue": "No",
+   "parts": "20.00",
+   "cout": "17.80",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.91",
+   "latent": "0.40",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1179552",
+   "ouverte_le": "2026-11-04T16:15"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 15, 2026?",
+   "issue": "Yes",
+   "parts": "28.58",
+   "cout": "25.44",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.947",
+   "latent": "1.63",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-04T16:56"
+  },
+  {
+   "marche": "US imports Russian diesel by November 15?",
+   "issue": "No",
+   "parts": "41.15",
+   "cout": "36.46",
+   "prix_moyen": "0.8860",
+   "prix_de_marque": "0.93",
+   "latent": "1.81",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-11-04T17:54"
+  },
+  {
+   "marche": "Israeli airspace closed by November 30, 2026?",
+   "issue": "No",
+   "parts": "31.65",
+   "cout": "26.59",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.79",
+   "latent": "-1.58",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1030155",
+   "ouverte_le": "2026-11-04T20:07"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 6, 2026?",
+   "issue": "Yes",
+   "parts": "9.99",
+   "cout": "8.59",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.98",
+   "latent": "1.20",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-04T20:07"
+  },
+  {
+   "marche": "4927096",
+   "issue": "Yes",
+   "parts": "44.41",
+   "cout": "37.08",
+   "prix_moyen": "0.8350",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1076462",
+   "ouverte_le": "2026-11-04T23:31"
+  },
+  {
+   "marche": "Iran full airspace closure by November 30, 2026?",
+   "issue": "No",
+   "parts": "71.44",
+   "cout": "61.44",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.8",
+   "latent": "-4.29",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "634802",
+   "ouverte_le": "2026-11-05T01:37"
+  },
+  {
+   "marche": "US imports Russian diesel by November 30?",
+   "issue": "No",
+   "parts": "38.82",
+   "cout": "33.00",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.87",
+   "latent": "0.78",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-11-05T10:31"
+  },
+  {
+   "marche": "Will there be between 20 and 24 average daily transits of the Bab el-Mandeb Strait on November 30?",
+   "issue": "No",
+   "parts": "18.62",
+   "cout": "17.32",
+   "prix_moyen": "0.9300",
+   "prix_de_marque": "0.94",
+   "latent": "0.19",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1305031",
+   "ouverte_le": "2026-11-05T15:11"
+  },
+  {
+   "marche": "Iran leadership change by November 30?",
+   "issue": "No",
+   "parts": "20.31",
+   "cout": "19.60",
+   "prix_moyen": "0.9650",
+   "prix_de_marque": "0.962",
+   "latent": "-0.06",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "255195",
+   "ouverte_le": "2026-11-05T15:29"
+  },
+  {
+   "marche": "Will there be 35 or more average daily transits of the Bab el-Mandeb Strait on November 30?",
+   "issue": "No",
+   "parts": "19.81",
+   "cout": "17.43",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.73",
+   "latent": "-2.97",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1305031",
+   "ouverte_le": "2026-11-05T18:46"
+  },
+  {
+   "marche": "Strait of Hormuz traffic returns to normal by November 30?",
+   "issue": "No",
+   "parts": "18.78",
+   "cout": "18.10",
+   "prix_moyen": "0.9640",
+   "prix_de_marque": "0.966",
+   "latent": "0.04",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "830254",
+   "ouverte_le": "2026-11-05T20:26"
+  },
+  {
+   "marche": "Russia x Ukraine ceasefire agreement by November 30, 2026?",
+   "issue": "No",
+   "parts": "22.09",
+   "cout": "20.99",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.95",
+   "latent": "0.00",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "478472",
+   "ouverte_le": "2026-11-05T21:41"
+  },
+  {
+   "marche": "Will fewer than 150 ships transit the Bab el-Mandeb Strait between November 9-November 15?",
+   "issue": "No",
+   "parts": "41.24",
+   "cout": "34.64",
+   "prix_moyen": "0.8400",
+   "prix_de_marque": "0.996",
+   "latent": "6.43",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1308519",
+   "ouverte_le": "2026-11-06T03:01"
+  },
+  {
+   "marche": "5238397",
+   "issue": "No",
+   "parts": "48.34",
+   "cout": "45.44",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.941",
+   "latent": "0.05",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1124934",
+   "ouverte_le": "2026-11-06T06:17"
+  },
+  {
+   "marche": "Will Pedro Sánchez be the next Prime Minister of Spain?",
+   "issue": "No",
+   "parts": "17.13",
+   "cout": "15.78",
+   "prix_moyen": "0.9210",
+   "prix_de_marque": "0.895",
+   "latent": "-0.45",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "637442",
+   "ouverte_le": "2026-11-06T15:41"
+  },
+  {
+   "marche": "Iran-Oman Hormuz Agreement by November 30?",
+   "issue": "No",
+   "parts": "15.15",
+   "cout": "13.03",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.84",
+   "latent": "-0.30",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "798490",
+   "ouverte_le": "2026-11-07T02:35"
+  },
+  {
+   "marche": "Will National Party win the most seats in the New Zealand House of Representatives in the 2026 New Zealand legislative election?",
+   "issue": "Yes",
+   "parts": "11.44",
+   "cout": "9.84",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.985",
+   "latent": "1.43",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-07T06:46"
+  },
+  {
+   "marche": "Will Labour Party win the most seats in the New Zealand House of Representatives in the 2026 New Zealand legislative election?",
+   "issue": "No",
+   "parts": "8.89",
+   "cout": "7.43",
+   "prix_moyen": "0.8356",
+   "prix_de_marque": "0.984",
+   "latent": "1.32",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-07T06:47"
+  },
+  {
+   "marche": "Will Alberto Núñez Feijóo be the next Prime Minister of Spain?",
+   "issue": "Yes",
+   "parts": "6.48",
+   "cout": "5.73",
+   "prix_moyen": "0.8842",
+   "prix_de_marque": "0.87",
+   "latent": "-0.09",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "637442",
+   "ouverte_le": "2026-11-07T07:26"
+  },
+  {
+   "marche": "Will Christopher Luxon be the next Prime Minister of New Zealand after the 2026 elections?",
+   "issue": "Yes",
+   "parts": "5.07",
+   "cout": "4.34",
+   "prix_moyen": "0.8551",
+   "prix_de_marque": "0.83",
+   "latent": "-0.13",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "431465",
+   "ouverte_le": "2026-11-07T09:42"
+  },
+  {
+   "marche": "Will there be fewer than 20 average daily transits of the Bab el-Mandeb Strait on November 30?",
+   "issue": "No",
+   "parts": "6.23",
+   "cout": "5.86",
+   "prix_moyen": "0.9400",
+   "prix_de_marque": "0.81",
+   "latent": "-0.81",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "groupe": "1305031",
+   "ouverte_le": "2026-11-07T12:07"
+  }
+ ],
+ "operations_cloturees": 25,
+ "dernieres_operations": [
+  {
+   "marche": "5190747",
+   "issue": "No",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "0.45",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T03:41"
+  },
+  {
+   "marche": "6369331",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "-11.04",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T03:46"
+  },
+  {
+   "marche": "5572739",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "16.21",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T08:31"
+  },
+  {
+   "marche": "6588210",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "-13.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T15:56"
+  },
+  {
+   "marche": "5163168",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "0.98",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T04:21"
+  },
+  {
+   "marche": "631045",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "0.84",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T04:41"
+  },
+  {
+   "marche": "943539",
+   "issue": "No",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "11.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T05:01"
+  },
+  {
+   "marche": "943542",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "12.89",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T05:01"
+  },
+  {
+   "marche": "629558",
+   "issue": "No",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "13.75",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T06:55"
+  },
+  {
+   "marche": "634878",
+   "issue": "No",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "6.91",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "629583",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "0.91",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T11:55"
+  },
+  {
+   "marche": "6274182",
+   "issue": "No",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "11.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "919492",
+   "issue": "No",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "13.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T12:35"
+  },
+  {
+   "marche": "4641065",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "0.85",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T00:46"
+  },
+  {
+   "marche": "6667467",
+   "issue": "Yes",
+   "strategie": "favori_politique_patiente v1.0.0",
+   "resultat": "-37.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T03:21"
+  }
+ ],
+ "performances": {
+  "favori_politique_patiente v1.0.0": {
+   "operations": 25,
+   "evenements": 19,
+   "gagnantes": 21,
+   "taux_reussite": 0.84,
+   "profit_net": "39.53",
+   "frais": "0.72",
+   "rendement_sur_mises": 0.0311,
+   "esperance_par_operation": "1.58",
+   "ic90_rendement_par_euro": [
+    -0.1369,
+    0.1166
+   ],
+   "brier": 0.143,
+   "log_loss": 0.4912,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

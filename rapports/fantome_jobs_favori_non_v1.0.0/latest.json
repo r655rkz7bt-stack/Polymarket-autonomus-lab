@@ -1,0 +1,76 @@
+{
+ "genere_le": "2026-11-07T15:34:15+00:00",
+ "capital": {
+  "solde_disponible": "988.7639",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-11.2361",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.4812",
+  "capital_total_estime": "988.7639",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0182,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "5211628",
+   "issue": "No",
+   "strategie": "jobs_favori_non v1.0.0",
+   "resultat": "7.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T15:35"
+  },
+  {
+   "marche": "5211630",
+   "issue": "No",
+   "strategie": "jobs_favori_non v1.0.0",
+   "resultat": "-18.32",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T15:35"
+  }
+ ],
+ "performances": {
+  "jobs_favori_non v1.0.0": {
+   "operations": 2,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 0.5,
+   "profit_net": "-11.24",
+   "frais": "0.48",
+   "rendement_sur_mises": -0.2762,
+   "esperance_par_operation": "-5.62",
+   "ic90_rendement_par_euro": [
+    -0.3416,
+    -0.3416
+   ],
+   "brier": 0.3739,
+   "log_loss": 1.0351,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

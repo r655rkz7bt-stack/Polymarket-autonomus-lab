@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:16+00:00",
+ "capital": {
+  "solde_disponible": "992.3964",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-7.6036",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.8480",
+  "capital_total_estime": "992.3964",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0585,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 68,
+ "dernieres_operations": [
+  {
+   "marche": "6366907",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T03:35"
+  },
+  {
+   "marche": "6477422",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "4.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T01:46"
+  },
+  {
+   "marche": "6477433",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T01:46"
+  },
+  {
+   "marche": "6477413",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.10",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T05:53"
+  },
+  {
+   "marche": "6547087",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-8.62",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T00:21"
+  },
+  {
+   "marche": "6547076",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-1.56",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T00:35"
+  },
+  {
+   "marche": "6547071",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-18.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T00:31"
+  },
+  {
+   "marche": "6547066",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "3.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T01:01"
+  },
+  {
+   "marche": "6596348",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-6.38",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T16:15"
+  },
+  {
+   "marche": "6596354",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "4.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T16:36"
+  },
+  {
+   "marche": "6596350",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "9.47",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T16:36"
+  },
+  {
+   "marche": "6679708",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-3.04",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:20"
+  },
+  {
+   "marche": "6679709",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "-3.11",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:35"
+  },
+  {
+   "marche": "6679711",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "1.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T01:01"
+  },
+  {
+   "marche": "6679710",
+   "issue": "No",
+   "strategie": "mots_nouveaux v1.0.0",
+   "resultat": "2.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T01:01"
+  }
+ ],
+ "performances": {
+  "mots_nouveaux v1.0.0": {
+   "operations": 68,
+   "evenements": 24,
+   "gagnantes": 33,
+   "taux_reussite": 0.485,
+   "profit_net": "-7.60",
+   "frais": "0.85",
+   "rendement_sur_mises": -0.0205,
+   "esperance_par_operation": "-0.11",
+   "ic90_rendement_par_euro": [
+    -0.2788,
+    0.2394
+   ],
+   "brier": 0.1943,
+   "log_loss": 0.5767,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

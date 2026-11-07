@@ -1,0 +1,205 @@
+{
+ "genere_le": "2026-11-07T15:34:21+00:00",
+ "capital": {
+  "solde_disponible": "828.8632",
+  "capital_immobilise": "47.1664",
+  "gains_realises_nets": "-123.9704",
+  "gains_latents": "-2.3004",
+  "frais_payes": "3.0064",
+  "capital_total_estime": "873.7292",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1909,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Rolex Paris Masters: Casper Ruud vs Carlos Alcaraz",
+   "issue": "Carlos Alcaraz",
+   "parts": "28.77",
+   "cout": "23.59",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.8",
+   "latent": "-0.58",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "groupe": "1328301",
+   "ouverte_le": "2026-11-07T08:21"
+  },
+  {
+   "marche": "Bursaspor vs. Fenerbahce",
+   "issue": "Fenerbahce",
+   "parts": "28.75",
+   "cout": "23.58",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.76",
+   "latent": "-1.72",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "groupe": "1293603",
+   "ouverte_le": "2026-11-07T11:41"
+  }
+ ],
+ "operations_cloturees": 34,
+ "dernieres_operations": [
+  {
+   "marche": "6352146",
+   "issue": "Daniil Medvedev",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "7.95",
+   "resolution": "résolu : Daniil Medvedev",
+   "cloturee_le": "2026-10-29T15:46"
+  },
+  {
+   "marche": "5767714",
+   "issue": "Atlanta Dream",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.32",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-29T19:25"
+  },
+  {
+   "marche": "6288016",
+   "issue": "Atlanta Dream",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "5.26",
+   "resolution": "résolu : Atlanta Dream",
+   "cloturee_le": "2026-10-29T19:25"
+  },
+  {
+   "marche": "6344968",
+   "issue": "Galorys",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "-31.40",
+   "resolution": "résolu : Procyon Gaming",
+   "cloturee_le": "2026-10-30T00:16"
+  },
+  {
+   "marche": "6345236",
+   "issue": "Alter Ego",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "0.53",
+   "resolution": "résolu : Alter Ego",
+   "cloturee_le": "2026-10-30T05:51"
+  },
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "4.39",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.77",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "3.59",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "5657252",
+   "issue": "Chargers",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "4.96",
+   "resolution": "résolu : Chargers",
+   "cloturee_le": "2026-11-02T00:11"
+  },
+  {
+   "marche": "6575075",
+   "issue": "BESTIA Academy",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "-28.22",
+   "resolution": "résolu : Zetta Games",
+   "cloturee_le": "2026-11-04T03:11"
+  },
+  {
+   "marche": "6374095",
+   "issue": "Celtics",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "4.13",
+   "resolution": "résolu : Celtics",
+   "cloturee_le": "2026-11-05T03:09"
+  },
+  {
+   "marche": "6701966",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "-16.28",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T12:20"
+  },
+  {
+   "marche": "5772981",
+   "issue": "Jaguars",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "4.65",
+   "resolution": "résolu : Jaguars",
+   "cloturee_le": "2026-11-06T04:25"
+  },
+  {
+   "marche": "6705444",
+   "issue": "tao toma",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "5.17",
+   "resolution": "résolu : tao toma",
+   "cloturee_le": "2026-11-06T21:41"
+  },
+  {
+   "marche": "6721547",
+   "issue": "Anna Blinkova",
+   "strategie": "nf_sport_patiente_6_24h_autre v1.0.0",
+   "resultat": "0.09",
+   "resolution": "résolu : Anna Blinkova",
+   "cloturee_le": "2026-11-07T12:50"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_6_24h_autre v1.0.0": {
+   "operations": 34,
+   "evenements": 32,
+   "gagnantes": 28,
+   "taux_reussite": 0.824,
+   "profit_net": "-123.97",
+   "frais": "3.01",
+   "rendement_sur_mises": -0.0692,
+   "esperance_par_operation": "-3.65",
+   "ic90_rendement_par_euro": [
+    -0.1577,
+    0.0841
+   ],
+   "brier": 0.1283,
+   "log_loss": 0.441,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

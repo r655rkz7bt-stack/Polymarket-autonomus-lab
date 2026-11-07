@@ -1,0 +1,169 @@
+{
+ "genere_le": "2026-11-07T15:34:16+00:00",
+ "capital": {
+  "solde_disponible": "993.6286",
+  "capital_immobilise": "2.2826",
+  "gains_realises_nets": "-4.0888",
+  "gains_latents": "-0.5180",
+  "frais_payes": "0.2764",
+  "capital_total_estime": "995.3932",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0115,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Andy Burnham say \"Reform\" during the next PMQ?",
+   "issue": "No",
+   "parts": "5.19",
+   "cout": "2.28",
+   "prix_moyen": "0.4398",
+   "prix_de_marque": "0.34",
+   "latent": "-0.52",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "groupe": "1274159",
+   "ouverte_le": "2026-11-03T22:09"
+  }
+ ],
+ "operations_cloturees": 12,
+ "dernieres_operations": [
+  {
+   "marche": "6096269",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-2.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T14:41"
+  },
+  {
+   "marche": "6096272",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "2.71",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-27T15:36"
+  },
+  {
+   "marche": "6096290",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "2.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T00:35"
+  },
+  {
+   "marche": "6030827",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-1.80",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T14:26"
+  },
+  {
+   "marche": "5713534",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-0.62",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T20:35"
+  },
+  {
+   "marche": "5713538",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "2.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T21:23"
+  },
+  {
+   "marche": "5713537",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "2.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T21:46"
+  },
+  {
+   "marche": "6547071",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-2.38",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T00:31"
+  },
+  {
+   "marche": "6596348",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-2.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T16:15"
+  },
+  {
+   "marche": "6679708",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-1.13",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:20"
+  },
+  {
+   "marche": "6703757",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-2.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:25"
+  },
+  {
+   "marche": "6703761",
+   "issue": "No",
+   "strategie": "mentions_non_outsider v1.0.0",
+   "resultat": "-2.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T01:31"
+  }
+ ],
+ "performances": {
+  "mentions_non_outsider v1.0.0": {
+   "operations": 12,
+   "evenements": 8,
+   "gagnantes": 4,
+   "taux_reussite": 0.333,
+   "profit_net": "-4.09",
+   "frais": "0.23",
+   "rendement_sur_mises": -0.1685,
+   "esperance_par_operation": "-0.34",
+   "ic90_rendement_par_euro": [
+    -0.7826,
+    0.1748
+   ],
+   "brier": 0.2414,
+   "log_loss": 0.6759,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

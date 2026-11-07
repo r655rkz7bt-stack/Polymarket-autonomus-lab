@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-11-07T15:34:21+00:00",
+ "capital": {
+  "solde_disponible": "484.1703",
+  "capital_immobilise": "218.5808",
+  "gains_realises_nets": "-297.2489",
+  "gains_latents": "-6.4504",
+  "frais_payes": "28.0869",
+  "capital_total_estime": "696.3007",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3286,
+ "dernier_battement": "2026-11-05T15:57:48+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "41.27",
+   "cout": "35.04",
+   "prix_moyen": "0.8490",
+   "prix_de_marque": "0.749",
+   "latent": "-4.13",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-11-01T17:21"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "parts": "86.15",
+   "cout": "79.43",
+   "prix_moyen": "0.9220",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-11-01T18:21"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "110.64",
+   "cout": "104.11",
+   "prix_moyen": "0.9410",
+   "prix_de_marque": "0.92",
+   "latent": "-2.32",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-11-01T18:26"
+  }
+ ],
+ "operations_cloturees": 187,
+ "dernieres_operations": [
+  {
+   "marche": "6597386",
+   "issue": "BakS eSports",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "8.90",
+   "resolution": "résolu : BakS eSports",
+   "cloturee_le": "2026-11-03T16:56"
+  },
+  {
+   "marche": "6454091",
+   "issue": "Novak Djokovic",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "6.52",
+   "resolution": "résolu : Novak Djokovic",
+   "cloturee_le": "2026-11-03T16:56"
+  },
+  {
+   "marche": "6537716",
+   "issue": "Magda Linette",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.63",
+   "resolution": "résolu : Magda Linette",
+   "cloturee_le": "2026-11-03T18:02"
+  },
+  {
+   "marche": "6539724",
+   "issue": "Taylor Fritz",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.86",
+   "resolution": "résolu : Taylor Fritz",
+   "cloturee_le": "2026-11-03T18:47"
+  },
+  {
+   "marche": "6553833",
+   "issue": "Irene Burillo Escorihuela",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.70",
+   "resolution": "résolu : Irene Burillo Escorihuela",
+   "cloturee_le": "2026-11-03T18:47"
+  },
+  {
+   "marche": "6577423",
+   "issue": "Falcons Force",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-17.35",
+   "resolution": "résolu : maybe",
+   "cloturee_le": "2026-11-03T19:43"
+  },
+  {
+   "marche": "6575075",
+   "issue": "BESTIA Academy",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-59.86",
+   "resolution": "résolu : Zetta Games",
+   "cloturee_le": "2026-11-04T03:11"
+  },
+  {
+   "marche": "6659699",
+   "issue": "Natus Vincere",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.48",
+   "resolution": "résolu : Natus Vincere",
+   "cloturee_le": "2026-11-04T14:14"
+  },
+  {
+   "marche": "6635841",
+   "issue": "Artur Kukasian",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.36",
+   "resolution": "résolu : Artur Kukasian",
+   "cloturee_le": "2026-11-04T15:22"
+  },
+  {
+   "marche": "6645970",
+   "issue": "Novak Djokovic",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "-53.02",
+   "resolution": "résolu : Rinky Hijikata",
+   "cloturee_le": "2026-11-04T17:52"
+  },
+  {
+   "marche": "6659718",
+   "issue": "GamerLegion",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.31",
+   "resolution": "résolu : GamerLegion",
+   "cloturee_le": "2026-11-04T17:52"
+  },
+  {
+   "marche": "6664037",
+   "issue": "Felix Corwin",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "5.55",
+   "resolution": "résolu : Felix Corwin",
+   "cloturee_le": "2026-11-04T19:01"
+  },
+  {
+   "marche": "6018963",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "4.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T20:01"
+  },
+  {
+   "marche": "6659474",
+   "issue": "Mai Hontama",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.82",
+   "resolution": "résolu : Mai Hontama",
+   "cloturee_le": "2026-11-05T13:35"
+  },
+  {
+   "marche": "6659476",
+   "issue": "Lucrezia Stefanini",
+   "strategie": "nf_sport_patiente_12_18h v1.0.0",
+   "resultat": "3.27",
+   "resolution": "résolu : Lucrezia Stefanini",
+   "cloturee_le": "2026-11-05T13:46"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_12_18h v1.0.0": {
+   "operations": 187,
+   "evenements": 175,
+   "gagnantes": 157,
+   "taux_reussite": 0.84,
+   "profit_net": "-297.25",
+   "frais": "28.09",
+   "rendement_sur_mises": -0.0301,
+   "esperance_par_operation": "-1.59",
+   "ic90_rendement_par_euro": [
+    -0.0897,
+    0.0109
+   ],
+   "brier": 0.1316,
+   "log_loss": 0.4774,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

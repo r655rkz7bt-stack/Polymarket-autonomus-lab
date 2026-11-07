@@ -1,0 +1,1444 @@
+{
+ "genere_le": "2026-11-07T15:34:10+00:00",
+ "capital": {
+  "solde_disponible": "416.5289",
+  "capital_immobilise": "262.6003",
+  "gains_realises_nets": "-320.8707",
+  "gains_latents": "-25.6968",
+  "frais_payes": "37.4861",
+  "capital_total_estime": "653.4324",
+  "positions_ouvertes": "68",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.39,
+ "dernier_battement": "2026-11-07T15:32:47+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Elon Musk post 960-999 tweets in November 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.55",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.94",
+   "latent": "0.15",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1244070",
+   "ouverte_le": "2026-10-26T23:12"
+  },
+  {
+   "marche": "682706",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.75",
+   "prix_moyen": "0.9500",
+   "prix_de_marque": "0.98",
+   "latent": "0.15",
+   "strategie": "nf_court_prix_haut v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-27T04:12"
+  },
+  {
+   "marche": "Will GPT Astra 6.1+ be released between November 16 and November 22, 2026?",
+   "issue": "No",
+   "parts": "5.74",
+   "cout": "4.88",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.848",
+   "latent": "-0.01",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1230571",
+   "ouverte_le": "2026-10-27T23:07"
+  },
+  {
+   "marche": "5166820",
+   "issue": "No",
+   "parts": "5.61",
+   "cout": "4.88",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.971",
+   "latent": "0.57",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-27T23:07"
+  },
+  {
+   "marche": "US imports Russian diesel by November 15?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.25",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.06",
+   "latent": "-3.95",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-10-28T04:03"
+  },
+  {
+   "marche": "5166818",
+   "issue": "No",
+   "parts": "4.35",
+   "cout": "3.90",
+   "prix_moyen": "0.8960",
+   "prix_de_marque": "0.971",
+   "latent": "0.33",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "1111175",
+   "ouverte_le": "2026-10-28T04:03"
+  },
+  {
+   "marche": "631018",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.35",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.006",
+   "latent": "-4.32",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "groupe": "57678",
+   "ouverte_le": "2026-10-28T04:07"
+  },
+  {
+   "marche": "6268103",
+   "issue": "No",
+   "parts": "6.03",
+   "cout": "5.13",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.78",
+   "latent": "-0.42",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1262075",
+   "ouverte_le": "2026-10-29T13:27"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.61",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.92",
+   "latent": "-0.01",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.23",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.83",
+   "latent": "-0.08",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:14"
+  },
+  {
+   "marche": "Will Predict.fun launch a token by November 15, 2026?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.36",
+   "prix_moyen": "0.8730",
+   "prix_de_marque": "0.151",
+   "latent": "-3.61",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "264031",
+   "ouverte_le": "2026-10-30T18:09"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.749",
+   "latent": "-0.97",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T20:21"
+  },
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "Yes",
+   "parts": "15.43",
+   "cout": "11.27",
+   "prix_moyen": "0.7303",
+   "prix_de_marque": "0.04",
+   "latent": "-10.65",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-10-31T19:42"
+  },
+  {
+   "marche": "6443503",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.45",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.94",
+   "latent": "0.25",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-10-31T19:47"
+  },
+  {
+   "marche": "Will Gemini Carbon be released between November 16 and November 22, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.40",
+   "prix_moyen": "0.8790",
+   "prix_de_marque": "0.833",
+   "latent": "-0.23",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "1274180",
+   "ouverte_le": "2026-10-31T23:42"
+  },
+  {
+   "marche": "6443439",
+   "issue": "No",
+   "parts": "7.82",
+   "cout": "4.69",
+   "prix_moyen": "0.6000",
+   "prix_de_marque": "0.57",
+   "latent": "-0.23",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286704",
+   "ouverte_le": "2026-11-01T03:32"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 7?",
+   "issue": "Yes",
+   "parts": "6.00",
+   "cout": "5.16",
+   "prix_moyen": "0.8600",
+   "prix_de_marque": "0.988",
+   "latent": "0.77",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-01T06:27"
+  },
+  {
+   "marche": "Will Elon Musk post 320-339 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.38",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.884",
+   "latent": "0.04",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-01T13:37"
+  },
+  {
+   "marche": "6443513",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.86",
+   "prix_moyen": "0.3715",
+   "prix_de_marque": "0.003",
+   "latent": "-1.84",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286702",
+   "ouverte_le": "2026-11-01T18:03"
+  },
+  {
+   "marche": "6443486",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.09",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.91",
+   "latent": "0.46",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286702",
+   "ouverte_le": "2026-11-01T21:27"
+  },
+  {
+   "marche": "Will Elon Musk post 340-359 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.38",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.936",
+   "latent": "0.30",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-02T01:27"
+  },
+  {
+   "marche": "Will there be ≤6 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.76",
+   "prix_moyen": "0.3512",
+   "prix_de_marque": "0.72",
+   "latent": "1.84",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-02T15:47"
+  },
+  {
+   "marche": "Will there be 0 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "2.41",
+   "prix_moyen": "0.4825",
+   "prix_de_marque": "0.79",
+   "latent": "1.54",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301712",
+   "ouverte_le": "2026-11-02T16:09"
+  },
+  {
+   "marche": "Will there be 1 earthquake of 6.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "0.85",
+   "cout": "0.55",
+   "prix_moyen": "0.6515",
+   "prix_de_marque": "0.84",
+   "latent": "0.16",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301712",
+   "ouverte_le": "2026-11-02T16:32"
+  },
+  {
+   "marche": "Will there be 9 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.11",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.921",
+   "latent": "0.04",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-02T16:47"
+  },
+  {
+   "marche": "Will there be 7 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "3.50",
+   "cout": "3.03",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.91",
+   "latent": "0.15",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-02T16:47"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 6?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.35",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.997",
+   "latent": "0.64",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-02T17:07"
+  },
+  {
+   "marche": "631017",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.37",
+   "prix_moyen": "0.8745",
+   "prix_de_marque": "0.006",
+   "latent": "-4.34",
+   "strategie": "favori_politique v1.0.0",
+   "groupe": "57678",
+   "ouverte_le": "2026-11-02T17:07"
+  },
+  {
+   "marche": "Will there be 8 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.43",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.911",
+   "latent": "0.13",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301713",
+   "ouverte_le": "2026-11-03T05:47"
+  },
+  {
+   "marche": "Will Gemini Carbon be released between November 2 and November 8, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.61",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.982",
+   "latent": "0.30",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1274180",
+   "ouverte_le": "2026-11-03T08:27"
+  },
+  {
+   "marche": "Next Astra Model (6.1+) released by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.52",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.836",
+   "latent": "-0.34",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "965173",
+   "ouverte_le": "2026-11-03T08:27"
+  },
+  {
+   "marche": "Will Elon Musk post 115-139 tweets from November 5 to November 7, 2026?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.56",
+   "prix_moyen": "0.1128",
+   "prix_de_marque": "0.03",
+   "latent": "-0.41",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1302191",
+   "ouverte_le": "2026-11-03T11:43"
+  },
+  {
+   "marche": "Will Jon Ossoff win the 2028 US Presidential Election?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.35",
+   "prix_moyen": "0.8706",
+   "prix_de_marque": "0.823",
+   "latent": "-0.24",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-11-03T19:12"
+  },
+  {
+   "marche": "Will there be 2 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.33",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.9",
+   "latent": "0.17",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1301712",
+   "ouverte_le": "2026-11-03T21:33"
+  },
+  {
+   "marche": "6625359",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "0.73",
+   "prix_moyen": "0.1460",
+   "prix_de_marque": "0.45",
+   "latent": "1.52",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1305846",
+   "ouverte_le": "2026-11-03T23:32"
+  },
+  {
+   "marche": "6625358",
+   "issue": "Yes",
+   "parts": "5.40",
+   "cout": "3.94",
+   "prix_moyen": "0.7301",
+   "prix_de_marque": "0.21",
+   "latent": "-2.81",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1305849",
+   "ouverte_le": "2026-11-04T01:03"
+  },
+  {
+   "marche": "Will Donald Trump post 160-179 Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.91",
+   "latent": "-0.16",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-04T05:17"
+  },
+  {
+   "marche": "Will Elon Musk post 65-89 tweets from November 5 to November 7, 2026?",
+   "issue": "No",
+   "parts": "5.92",
+   "cout": "3.92",
+   "prix_moyen": "0.6614",
+   "prix_de_marque": "0.999",
+   "latent": "2.00",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1302191",
+   "ouverte_le": "2026-11-04T07:07"
+  },
+  {
+   "marche": "Will Ron DeSantis win the 2028 Republican presidential nomination?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.48",
+   "prix_moyen": "0.8959",
+   "prix_de_marque": "0.857",
+   "latent": "-0.19",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "31875",
+   "ouverte_le": "2026-11-04T11:13"
+  },
+  {
+   "marche": "6443434",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.54",
+   "prix_moyen": "0.1076",
+   "prix_de_marque": "0.002",
+   "latent": "-0.53",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286706",
+   "ouverte_le": "2026-11-04T12:53"
+  },
+  {
+   "marche": "Will Elon Musk post 90-114 tweets from November 5 to November 7, 2026?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.04",
+   "prix_moyen": "0.2080",
+   "prix_de_marque": "0.96",
+   "latent": "3.76",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1302191",
+   "ouverte_le": "2026-11-04T14:27"
+  },
+  {
+   "marche": "6625252",
+   "issue": "No",
+   "parts": "5.93",
+   "cout": "1.17",
+   "prix_moyen": "0.1977",
+   "prix_de_marque": "0.11",
+   "latent": "-0.52",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1305843",
+   "ouverte_le": "2026-11-04T20:27"
+  },
+  {
+   "marche": "Will Elon Musk post 220-239 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "3.40",
+   "cout": "3.09",
+   "prix_moyen": "0.9074",
+   "prix_de_marque": "0.947",
+   "latent": "0.13",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-04T20:37"
+  },
+  {
+   "marche": "Will there be no GPT Astra 6.1+ release by November 30, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.71",
+   "prix_moyen": "0.9423",
+   "prix_de_marque": "0.849",
+   "latent": "-0.47",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "1305832",
+   "ouverte_le": "2026-11-04T21:12"
+  },
+  {
+   "marche": "Will Bitcoin reach $95,000 in November?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.58",
+   "prix_moyen": "0.9167",
+   "prix_de_marque": "0.97",
+   "latent": "0.27",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-04T22:17"
+  },
+  {
+   "marche": "Will Elon Musk post 280-299 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.33",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.77",
+   "latent": "-0.48",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-04T22:22"
+  },
+  {
+   "marche": "Will Elon Musk post 260-279 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.40",
+   "prix_moyen": "0.8809",
+   "prix_de_marque": "0.776",
+   "latent": "-0.52",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-04T22:57"
+  },
+  {
+   "marche": "1107307",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.45",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.83",
+   "latent": "-0.30",
+   "strategie": "vague_volume_suivre v1.0.0",
+   "groupe": "143633",
+   "ouverte_le": "2026-11-04T23:43"
+  },
+  {
+   "marche": "6443484",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.59",
+   "prix_moyen": "0.9189",
+   "prix_de_marque": "0.842",
+   "latent": "-0.38",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-05T01:37"
+  },
+  {
+   "marche": "Will Elon Musk post 240-259 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.45",
+   "prix_moyen": "0.8903",
+   "prix_de_marque": "0.891",
+   "latent": "0.00",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-05T01:37"
+  },
+  {
+   "marche": "Will Elon Musk post 200-219 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.62",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.981",
+   "latent": "0.29",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-05T02:05"
+  },
+  {
+   "marche": "Will Elon Musk post 280-299 tweets from November 6 to November 13, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.38",
+   "prix_moyen": "0.8757",
+   "prix_de_marque": "0.85",
+   "latent": "-0.13",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1305851",
+   "ouverte_le": "2026-11-05T08:17"
+  },
+  {
+   "marche": "Will Elon Musk post 180-199 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.65",
+   "prix_moyen": "0.9294",
+   "prix_de_marque": "0.992",
+   "latent": "0.31",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-05T08:32"
+  },
+  {
+   "marche": "6254930",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "2.95",
+   "prix_moyen": "0.5900",
+   "prix_de_marque": "0.69",
+   "latent": "0.50",
+   "strategie": "vague_volume_suivre_x5 v1.0.0",
+   "groupe": "34051",
+   "ouverte_le": "2026-11-05T22:04"
+  },
+  {
+   "marche": "Will White House post 200+ posts from November 3 to November 10, 2026?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "2.96",
+   "prix_moyen": "0.5922",
+   "prix_de_marque": "0.27",
+   "latent": "-1.61",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286701",
+   "ouverte_le": "2026-11-06T01:22"
+  },
+  {
+   "marche": "Games Total: O/U 2.5",
+   "issue": "Under",
+   "parts": "3.96",
+   "cout": "2.19",
+   "prix_moyen": "0.5524",
+   "prix_de_marque": "0.04",
+   "latent": "-2.03",
+   "strategie": "moins_de_cartes v1.0.0",
+   "groupe": "1316498",
+   "ouverte_le": "2026-11-06T04:03"
+  },
+  {
+   "marche": "Will Elon Musk post 220-239 tweets from November 6 to November 13, 2026?",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.12",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.92",
+   "latent": "0.03",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1305851",
+   "ouverte_le": "2026-11-06T04:52"
+  },
+  {
+   "marche": "6719491",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.99",
+   "prix_moyen": "0.1977",
+   "prix_de_marque": "0.24",
+   "latent": "0.21",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1320648",
+   "ouverte_le": "2026-11-06T04:57"
+  },
+  {
+   "marche": "Will Elon Musk post 160-179 tweets from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.65",
+   "prix_moyen": "0.9297",
+   "prix_de_marque": "0.999",
+   "latent": "0.35",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286709",
+   "ouverte_le": "2026-11-06T05:52"
+  },
+  {
+   "marche": "Will Elon Musk post 40-64 tweets from November 7 to November 9, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "3.94",
+   "prix_moyen": "0.7886",
+   "prix_de_marque": "0.78",
+   "latent": "-0.04",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1320648",
+   "ouverte_le": "2026-11-06T16:27"
+  },
+  {
+   "marche": "Will Donald Trump post 80-99 Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.60",
+   "prix_moyen": "0.9208",
+   "prix_de_marque": "0.811",
+   "latent": "-0.55",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-06T16:57"
+  },
+  {
+   "marche": "6443475",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.14",
+   "prix_moyen": "0.8283",
+   "prix_de_marque": "0.808",
+   "latent": "-0.10",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-06T19:12"
+  },
+  {
+   "marche": "Marco Rubio out as Secretary of State by November 15, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.89",
+   "prix_moyen": "0.9789",
+   "prix_de_marque": "0.975",
+   "latent": "-0.02",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1320942",
+   "ouverte_le": "2026-11-06T22:41"
+  },
+  {
+   "marche": "US x Iran effective ceasefire continues through November 6, 2026?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.89",
+   "prix_moyen": "0.9780",
+   "prix_de_marque": "0.98",
+   "latent": "0.01",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "1312156",
+   "ouverte_le": "2026-11-07T00:47"
+  },
+  {
+   "marche": "Will Green Party win the third-most seats in the New Zealand House of Representatives in the 2026 New Zealand legislative election?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "4.90",
+   "prix_moyen": "0.9808",
+   "prix_de_marque": "0.988",
+   "latent": "0.04",
+   "strategie": "favori_politique_quasi_certain_connu v1.0.0",
+   "groupe": "431793",
+   "ouverte_le": "2026-11-07T07:32"
+  },
+  {
+   "marche": "Will Donald Trump post 60-79 Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.63",
+   "prix_moyen": "0.9250",
+   "prix_de_marque": "0.878",
+   "latent": "-0.24",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-07T11:32"
+  },
+  {
+   "marche": "Will the biggest earthquake on November 7, 2026 be 6.1 or more?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.28",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.82",
+   "latent": "-0.18",
+   "strategie": "seismes_marche v1.0.0",
+   "groupe": "1318024",
+   "ouverte_le": "2026-11-07T14:57"
+  },
+  {
+   "marche": "Will Elon Musk post 65-89 tweets from November 7 to November 9, 2026?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "3.01",
+   "prix_moyen": "0.6021",
+   "prix_de_marque": "0.57",
+   "latent": "-0.16",
+   "strategie": "compteur_tweets v1.0.0",
+   "groupe": "1320648",
+   "ouverte_le": "2026-11-07T15:17"
+  }
+ ],
+ "operations_cloturees": 559,
+ "dernieres_operations": [
+  {
+   "marche": "6587952",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T11:40"
+  },
+  {
+   "marche": "6629673",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-2.96",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-06T13:50"
+  },
+  {
+   "marche": "6666606",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-3.03",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-06T14:05"
+  },
+  {
+   "marche": "6675993",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "-2.80",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-06T14:46"
+  },
+  {
+   "marche": "6288574",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.70",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288570",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-4.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288579",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288591",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288587",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "0.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288449",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "2.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288439",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.89",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288583",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-0.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288583",
+   "issue": "No",
+   "strategie": "naive_favorite_sans_fin v1.0.0",
+   "resultat": "0.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288511",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-4.70",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6587953",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T23:11"
+  }
+ ],
+ "performances": {
+  "apres_echeance v1.0.0": {
+   "operations": 17,
+   "evenements": 14,
+   "gagnantes": 14,
+   "taux_reussite": 0.824,
+   "profit_net": "-12.38",
+   "frais": "0.19",
+   "rendement_sur_mises": -0.1262,
+   "esperance_par_operation": "-0.73",
+   "ic90_rendement_par_euro": [
+    -0.3807,
+    0.0516
+   ],
+   "brier": 0.1714,
+   "log_loss": 0.7536,
+   "assez_de_donnees": false
+  },
+  "compteur_tweets v1.0.0": {
+   "operations": 55,
+   "evenements": 18,
+   "gagnantes": 37,
+   "taux_reussite": 0.673,
+   "profit_net": "5.52",
+   "frais": "0.61",
+   "rendement_sur_mises": 0.029,
+   "esperance_par_operation": "0.10",
+   "ic90_rendement_par_euro": [
+    -0.2475,
+    0.1509
+   ],
+   "brier": 0.1179,
+   "log_loss": 0.4074,
+   "assez_de_donnees": false
+  },
+  "contrer_crypto_patiente v1.0.0": {
+   "operations": 21,
+   "evenements": 18,
+   "gagnantes": 1,
+   "taux_reussite": 0.048,
+   "profit_net": "-9.09",
+   "frais": "0.11",
+   "rendement_sur_mises": -0.6452,
+   "esperance_par_operation": "-0.43",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.6894
+   ],
+   "brier": 0.0431,
+   "log_loss": 0.2087,
+   "assez_de_donnees": false
+  },
+  "favori_politique v1.0.0": {
+   "operations": 8,
+   "evenements": 8,
+   "gagnantes": 7,
+   "taux_reussite": 0.875,
+   "profit_net": "0.58",
+   "frais": "0.10",
+   "rendement_sur_mises": 0.0156,
+   "esperance_par_operation": "0.07",
+   "ic90_rendement_par_euro": [
+    -0.2802,
+    0.1551
+   ],
+   "brier": 0.1106,
+   "log_loss": 0.3824,
+   "assez_de_donnees": false
+  },
+  "favori_politique_nuit v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.70",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.1628,
+   "esperance_par_operation": "0.70",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0053,
+   "log_loss": 0.0753,
+   "assez_de_donnees": false
+  },
+  "market_structure v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-5.94",
+   "frais": "3.25",
+   "rendement_sur_mises": -0.0824,
+   "esperance_par_operation": "-1.98",
+   "ic90_rendement_par_euro": [
+    -0.6972,
+    -0.0815
+   ],
+   "brier": 0.014,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "meteo_prevision v1.0.0": {
+   "operations": 41,
+   "evenements": 32,
+   "gagnantes": 24,
+   "taux_reussite": 0.585,
+   "profit_net": "-51.72",
+   "frais": "11.58",
+   "rendement_sur_mises": -0.0955,
+   "esperance_par_operation": "-1.26",
+   "ic90_rendement_par_euro": [
+    -0.2452,
+    0.1257
+   ],
+   "brier": 0.2849,
+   "log_loss": 0.7913,
+   "assez_de_donnees": true
+  },
+  "moins_de_cartes v1.0.0": {
+   "operations": 90,
+   "evenements": 89,
+   "gagnantes": 43,
+   "taux_reussite": 0.478,
+   "profit_net": "-34.94",
+   "frais": "4.64",
+   "rendement_sur_mises": -0.1585,
+   "esperance_par_operation": "-0.39",
+   "ic90_rendement_par_euro": [
+    -0.2971,
+    0.001
+   ],
+   "brier": 0.2469,
+   "log_loss": 0.7032,
+   "assez_de_donnees": true
+  },
+  "naive_favorite_sans_fin v1.0.0": {
+   "operations": 6,
+   "evenements": 3,
+   "gagnantes": 5,
+   "taux_reussite": 0.833,
+   "profit_net": "-2.87",
+   "frais": "0.11",
+   "rendement_sur_mises": -0.103,
+   "esperance_par_operation": "-0.48",
+   "ic90_rendement_par_euro": [
+    -0.6412,
+    0.0736
+   ],
+   "brier": 0.1526,
+   "log_loss": 0.5371,
+   "assez_de_donnees": false
+  },
+  "nf_court v1.0.0": {
+   "operations": 18,
+   "evenements": 17,
+   "gagnantes": 14,
+   "taux_reussite": 0.778,
+   "profit_net": "-144.96",
+   "frais": "2.73",
+   "rendement_sur_mises": -0.2199,
+   "esperance_par_operation": "-8.05",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.059
+   ],
+   "brier": 0.1973,
+   "log_loss": 0.6683,
+   "assez_de_donnees": false
+  },
+  "nf_court_football_soir v1.0.0": {
+   "operations": 5,
+   "evenements": 3,
+   "gagnantes": 4,
+   "taux_reussite": 0.8,
+   "profit_net": "-5.23",
+   "frais": "0.17",
+   "rendement_sur_mises": -0.1195,
+   "esperance_par_operation": "-1.05",
+   "ic90_rendement_par_euro": [
+    -0.2365,
+    0.1383
+   ],
+   "brier": 0.1985,
+   "log_loss": 0.9573,
+   "assez_de_donnees": false
+  },
+  "nf_court_prix_haut v1.0.0": {
+   "operations": 26,
+   "evenements": 20,
+   "gagnantes": 25,
+   "taux_reussite": 0.962,
+   "profit_net": "5.49",
+   "frais": "0.33",
+   "rendement_sur_mises": 0.0434,
+   "esperance_par_operation": "0.21",
+   "ic90_rendement_par_euro": [
+    -0.0155,
+    0.0821
+   ],
+   "brier": 0.0364,
+   "log_loss": 0.1516,
+   "assez_de_donnees": false
+  },
+  "nf_court_soir v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.87",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.1987,
+   "esperance_par_operation": "0.87",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0156,
+   "log_loss": 0.1335,
+   "assez_de_donnees": false
+  },
+  "nf_moyen v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 1.0,
+   "profit_net": "0.60",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0633,
+   "esperance_par_operation": "0.30",
+   "ic90_rendement_par_euro": [
+    0.0593,
+    0.0672
+   ],
+   "brier": 0.0002,
+   "log_loss": 0.0154,
+   "assez_de_donnees": false
+  },
+  "nf_sport v1.0.0": {
+   "operations": 52,
+   "evenements": 44,
+   "gagnantes": 46,
+   "taux_reussite": 0.885,
+   "profit_net": "11.73",
+   "frais": "2.27",
+   "rendement_sur_mises": 0.0287,
+   "esperance_par_operation": "0.23",
+   "ic90_rendement_par_euro": [
+    -0.0769,
+    0.086
+   ],
+   "brier": 0.0998,
+   "log_loss": 0.3416,
+   "assez_de_donnees": true
+  },
+  "nf_sport_18_24h v1.0.0": {
+   "operations": 21,
+   "evenements": 20,
+   "gagnantes": 14,
+   "taux_reussite": 0.667,
+   "profit_net": "-22.16",
+   "frais": "0.57",
+   "rendement_sur_mises": -0.2437,
+   "esperance_par_operation": "-1.06",
+   "ic90_rendement_par_euro": [
+    -0.4557,
+    -0.0419
+   ],
+   "brier": 0.2638,
+   "log_loss": 0.7699,
+   "assez_de_donnees": false
+  },
+  "nf_sport_925_950 v1.0.0": {
+   "operations": 22,
+   "evenements": 22,
+   "gagnantes": 19,
+   "taux_reussite": 0.864,
+   "profit_net": "-14.08",
+   "frais": "0.76",
+   "rendement_sur_mises": -0.064,
+   "esperance_par_operation": "-0.64",
+   "ic90_rendement_par_euro": [
+    -0.2201,
+    0.025
+   ],
+   "brier": 0.1308,
+   "log_loss": 0.5424,
+   "assez_de_donnees": false
+  },
+  "nf_sport_non v1.0.0": {
+   "operations": 11,
+   "evenements": 9,
+   "gagnantes": 9,
+   "taux_reussite": 0.818,
+   "profit_net": "-3.70",
+   "frais": "0.30",
+   "rendement_sur_mises": -0.0598,
+   "esperance_par_operation": "-0.34",
+   "ic90_rendement_par_euro": [
+    -0.2994,
+    0.1032
+   ],
+   "brier": 0.1565,
+   "log_loss": 0.5109,
+   "assez_de_donnees": false
+  },
+  "nf_sport_non_900_925 v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.43",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.094,
+   "esperance_par_operation": "0.43",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.002,
+   "log_loss": 0.046,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente v1.0.0": {
+   "operations": 65,
+   "evenements": 61,
+   "gagnantes": 55,
+   "taux_reussite": 0.846,
+   "profit_net": "-15.01",
+   "frais": "5.05",
+   "rendement_sur_mises": -0.0088,
+   "esperance_par_operation": "-0.23",
+   "ic90_rendement_par_euro": [
+    -0.1058,
+    0.061
+   ],
+   "brier": 0.1319,
+   "log_loss": 0.5347,
+   "assez_de_donnees": true
+  },
+  "nf_sport_patiente_6_24h v1.0.0": {
+   "operations": 7,
+   "evenements": 7,
+   "gagnantes": 6,
+   "taux_reussite": 0.857,
+   "profit_net": "1.29",
+   "frais": "0.07",
+   "rendement_sur_mises": 0.0277,
+   "esperance_par_operation": "0.18",
+   "ic90_rendement_par_euro": [
+    -0.327,
+    0.1711
+   ],
+   "brier": 0.1187,
+   "log_loss": 0.3791,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_6_24h_6_12h v1.0.0": {
+   "operations": 4,
+   "evenements": 4,
+   "gagnantes": 4,
+   "taux_reussite": 1.0,
+   "profit_net": "4.41",
+   "frais": "0.04",
+   "rendement_sur_mises": 0.2143,
+   "esperance_par_operation": "1.10",
+   "ic90_rendement_par_euro": [
+    0.1838,
+    0.2387
+   ],
+   "brier": 0.0149,
+   "log_loss": 0.1282,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_biais_faible v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.47",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.0894,
+   "esperance_par_operation": "0.47",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0027,
+   "log_loss": 0.0534,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 43,
+   "evenements": 43,
+   "gagnantes": 32,
+   "taux_reussite": 0.744,
+   "profit_net": "-27.59",
+   "frais": "0.99",
+   "rendement_sur_mises": -0.1165,
+   "esperance_par_operation": "-0.64",
+   "ic90_rendement_par_euro": [
+    -0.2341,
+    -0.0011
+   ],
+   "brier": 0.1984,
+   "log_loss": 0.6361,
+   "assez_de_donnees": true
+  },
+  "nf_sport_prix_haut_3_6h v1.0.0": {
+   "operations": 11,
+   "evenements": 8,
+   "gagnantes": 9,
+   "taux_reussite": 0.818,
+   "profit_net": "-17.99",
+   "frais": "0.81",
+   "rendement_sur_mises": -0.1077,
+   "esperance_par_operation": "-1.64",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.1029
+   ],
+   "brier": 0.1702,
+   "log_loss": 0.6306,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_12_18h_vainqueur v1.0.0": {
+   "operations": 12,
+   "evenements": 12,
+   "gagnantes": 10,
+   "taux_reussite": 0.833,
+   "profit_net": "3.14",
+   "frais": "0.80",
+   "rendement_sur_mises": 0.0256,
+   "esperance_par_operation": "0.26",
+   "ic90_rendement_par_euro": [
+    -0.2477,
+    0.144
+   ],
+   "brier": 0.1268,
+   "log_loss": 0.3837,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_prix_bas v1.0.0": {
+   "operations": 6,
+   "evenements": 6,
+   "gagnantes": 6,
+   "taux_reussite": 1.0,
+   "profit_net": "10.61",
+   "frais": "0.46",
+   "rendement_sur_mises": 0.1888,
+   "esperance_par_operation": "1.77",
+   "ic90_rendement_par_euro": [
+    0.1658,
+    0.2089
+   ],
+   "brier": 0.0143,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "seismes_marche v1.0.0": {
+   "operations": 9,
+   "evenements": 6,
+   "gagnantes": 7,
+   "taux_reussite": 0.778,
+   "profit_net": "0.93",
+   "frais": "0.05",
+   "rendement_sur_mises": 0.0274,
+   "esperance_par_operation": "0.10",
+   "ic90_rendement_par_euro": [
+    -0.3242,
+    0.167
+   ],
+   "brier": 0.0965,
+   "log_loss": 0.3156,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

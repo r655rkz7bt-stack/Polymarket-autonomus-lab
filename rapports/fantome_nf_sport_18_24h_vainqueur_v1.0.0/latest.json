@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-11-07T15:34:20+00:00",
+ "capital": {
+  "solde_disponible": "774.9846",
+  "capital_immobilise": "200.4922",
+  "gains_realises_nets": "-24.5231",
+  "gains_latents": "-25.5322",
+  "frais_payes": "52.3784",
+  "capital_total_estime": "949.9447",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2636,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "52.35",
+   "cout": "46.34",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.80",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T23:42"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "125.32",
+   "cout": "118.15",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.749",
+   "latent": "-24.29",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T20:21"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "11.63",
+   "cout": "9.62",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.83",
+   "latent": "0.03",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T20:26"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "28.15",
+   "cout": "26.37",
+   "prix_moyen": "0.9368",
+   "prix_de_marque": "0.92",
+   "latent": "-0.47",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T23:47"
+  }
+ ],
+ "operations_cloturees": 159,
+ "dernieres_operations": [
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "6.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T22:21"
+  },
+  {
+   "marche": "6440403",
+   "issue": "LOS",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-9.51",
+   "resolution": "résolu : LYON",
+   "cloturee_le": "2026-10-31T22:41"
+  },
+  {
+   "marche": "6478619",
+   "issue": "BESTIA",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "6.64",
+   "resolution": "résolu : BESTIA",
+   "cloturee_le": "2026-10-31T22:55"
+  },
+  {
+   "marche": "6444689",
+   "issue": "Joaquin Aguilar",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "6.29",
+   "resolution": "résolu : Joaquin Aguilar",
+   "cloturee_le": "2026-10-31T23:41"
+  },
+  {
+   "marche": "6444694",
+   "issue": "Sebastian Dominko",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-36.58",
+   "resolution": "résolu : Liam Draxl",
+   "cloturee_le": "2026-11-01T00:16"
+  },
+  {
+   "marche": "6159662",
+   "issue": "Francis Marshall",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "-26.40",
+   "resolution": "résolu : Dakota Hope",
+   "cloturee_le": "2026-11-01T00:21"
+  },
+  {
+   "marche": "6440441",
+   "issue": "Bilibili Gaming",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "1.92",
+   "resolution": "résolu : Bilibili Gaming",
+   "cloturee_le": "2026-11-01T00:41"
+  },
+  {
+   "marche": "4397027",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "21.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T01:41"
+  },
+  {
+   "marche": "5947158",
+   "issue": "Texas",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "3.93",
+   "resolution": "résolu : Texas",
+   "cloturee_le": "2026-11-01T03:16"
+  },
+  {
+   "marche": "5285957",
+   "issue": "Avalanche",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "28.24",
+   "resolution": "résolu : Avalanche",
+   "cloturee_le": "2026-11-01T04:55"
+  },
+  {
+   "marche": "5915704",
+   "issue": "Yes",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "30.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:46"
+  },
+  {
+   "marche": "5603304",
+   "issue": "Bengals",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "6.19",
+   "resolution": "résolu : Bengals",
+   "cloturee_le": "2026-11-01T22:13"
+  },
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "1.31",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T00:16"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "strategie": "nf_sport_18_24h_vainqueur v1.0.0",
+   "resultat": "3.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T02:35"
+  }
+ ],
+ "performances": {
+  "nf_sport_18_24h_vainqueur v1.0.0": {
+   "operations": 159,
+   "evenements": 151,
+   "gagnantes": 140,
+   "taux_reussite": 0.881,
+   "profit_net": "-24.52",
+   "frais": "51.58",
+   "rendement_sur_mises": -0.0029,
+   "esperance_par_operation": "-0.15",
+   "ic90_rendement_par_euro": [
+    -0.044,
+    0.0505
+   ],
+   "brier": 0.0995,
+   "log_loss": 0.3506,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:21+00:00",
+ "capital": {
+  "solde_disponible": "995.5790",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-4.4210",
+  "gains_latents": "0.0000",
+  "frais_payes": "33.6298",
+  "capital_total_estime": "995.5790",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.303,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 158,
+ "dernieres_operations": [
+  {
+   "marche": "6438048",
+   "issue": "Yannick Hanfmann",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "3.97",
+   "resolution": "résolu : Yannick Hanfmann",
+   "cloturee_le": "2026-10-31T15:46"
+  },
+  {
+   "marche": "6438046",
+   "issue": "Benjamin Bonzi",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "6.37",
+   "resolution": "résolu : Benjamin Bonzi",
+   "cloturee_le": "2026-10-31T16:05"
+  },
+  {
+   "marche": "6426440",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.41",
+   "resolution": "résolu : Carlos Alcaraz",
+   "cloturee_le": "2026-10-31T16:21"
+  },
+  {
+   "marche": "6438042",
+   "issue": "Sebastian Baez",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "6.33",
+   "resolution": "résolu : Sebastian Baez",
+   "cloturee_le": "2026-10-31T16:31"
+  },
+  {
+   "marche": "6438065",
+   "issue": "Lorenzo Sonego",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "6.04",
+   "resolution": "résolu : Lorenzo Sonego",
+   "cloturee_le": "2026-10-31T18:05"
+  },
+  {
+   "marche": "6437433",
+   "issue": "Alina Charaeva",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.58",
+   "resolution": "résolu : Alina Charaeva",
+   "cloturee_le": "2026-10-31T18:11"
+  },
+  {
+   "marche": "6343697",
+   "issue": "Sri Lanka",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "-21.43",
+   "resolution": "résolu : Pakistan",
+   "cloturee_le": "2026-10-31T18:25"
+  },
+  {
+   "marche": "6426442",
+   "issue": "Martin Damm",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.47",
+   "resolution": "résolu : Martin Damm",
+   "cloturee_le": "2026-10-31T18:25"
+  },
+  {
+   "marche": "6438055",
+   "issue": "Nuno Borges",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.95",
+   "resolution": "résolu : Nuno Borges",
+   "cloturee_le": "2026-10-31T18:51"
+  },
+  {
+   "marche": "6438033",
+   "issue": "Jiri Lehecka",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "6.23",
+   "resolution": "résolu : Jiri Lehecka",
+   "cloturee_le": "2026-10-31T19:16"
+  },
+  {
+   "marche": "6480446",
+   "issue": "Tomas Machac",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "14.28",
+   "resolution": "résolu : Tomas Machac",
+   "cloturee_le": "2026-11-01T13:51"
+  },
+  {
+   "marche": "6480442",
+   "issue": "Juan Manuel Cerundolo",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.48",
+   "resolution": "résolu : Juan Manuel Cerundolo",
+   "cloturee_le": "2026-11-01T14:16"
+  },
+  {
+   "marche": "6480444",
+   "issue": "Benjamin Bonzi",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.21",
+   "resolution": "résolu : Benjamin Bonzi",
+   "cloturee_le": "2026-11-01T14:21"
+  },
+  {
+   "marche": "6499353",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "4.69",
+   "resolution": "résolu : Carlos Alcaraz",
+   "cloturee_le": "2026-11-01T15:16"
+  },
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_72_168h_12_18h v1.0.0",
+   "resultat": "6.45",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T00:16"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_72_168h_12_18h v1.0.0": {
+   "operations": 158,
+   "evenements": 154,
+   "gagnantes": 140,
+   "taux_reussite": 0.886,
+   "profit_net": "-4.42",
+   "frais": "33.63",
+   "rendement_sur_mises": -0.0004,
+   "esperance_par_operation": "-0.03",
+   "ic90_rendement_par_euro": [
+    -0.0366,
+    0.0606
+   ],
+   "brier": 0.0963,
+   "log_loss": 0.3649,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

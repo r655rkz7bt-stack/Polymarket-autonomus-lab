@@ -1,0 +1,313 @@
+{
+ "genere_le": "2026-11-07T15:34:21+00:00",
+ "capital": {
+  "solde_disponible": "0.2186",
+  "capital_immobilise": "1135.4701",
+  "gains_realises_nets": "135.6887",
+  "gains_latents": "-49.5838",
+  "frais_payes": "55.2772",
+  "capital_total_estime": "1086.1049",
+  "positions_ouvertes": "11",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2895,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.92",
+   "latent": "-0.06",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "37.08",
+   "cout": "31.40",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.83",
+   "latent": "-0.62",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:14"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "170.00",
+   "cout": "160.28",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.749",
+   "latent": "-32.95",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T20:21"
+  },
+  {
+   "marche": "Will Al Nassr Saudi Club win on 2026-11-06?",
+   "issue": "No",
+   "parts": "85.00",
+   "cout": "79.52",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.995",
+   "latent": "5.06",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-03T12:57"
+  },
+  {
+   "marche": "6490415",
+   "issue": "No",
+   "parts": "30.00",
+   "cout": "28.28",
+   "prix_moyen": "0.9427",
+   "prix_de_marque": "0.991",
+   "latent": "1.45",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T07:27"
+  },
+  {
+   "marche": "4397299",
+   "issue": "No",
+   "parts": "3.81",
+   "cout": "3.33",
+   "prix_moyen": "0.8747",
+   "prix_de_marque": "0.85",
+   "latent": "-0.09",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "991821",
+   "ouverte_le": "2026-11-06T09:03"
+  },
+  {
+   "marche": "Will Lewis Hamilton win the 2026 F1 Brazilian Grand Prix?",
+   "issue": "No",
+   "parts": "22.55",
+   "cout": "21.26",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.06",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1164155",
+   "ouverte_le": "2026-11-06T21:13"
+  },
+  {
+   "marche": "Manchester City punishment announced by November 20?",
+   "issue": "No",
+   "parts": "20.90",
+   "cout": "19.30",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-0.29",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1083788",
+   "ouverte_le": "2026-11-07T08:06"
+  },
+  {
+   "marche": "Will Valencia CF win on 2026-11-07?",
+   "issue": "No",
+   "parts": "301.29",
+   "cout": "278.30",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.92",
+   "latent": "-1.11",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1250955",
+   "ouverte_le": "2026-11-07T11:27"
+  },
+  {
+   "marche": "Will ES Troyes AC win on 2026-11-07?",
+   "issue": "No",
+   "parts": "291.97",
+   "cout": "276.39",
+   "prix_moyen": "0.9466",
+   "prix_de_marque": "0.944",
+   "latent": "-0.77",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-07T12:52"
+  },
+  {
+   "marche": "6171515",
+   "issue": "No",
+   "parts": "238.26",
+   "cout": "215.51",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.82",
+   "latent": "-20.13",
+   "strategie": "nf_sport_non v1.0.0",
+   "groupe": "1250193",
+   "ouverte_le": "2026-11-07T13:52"
+  }
+ ],
+ "operations_cloturees": 104,
+ "dernieres_operations": [
+  {
+   "marche": "5229898",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T04:01"
+  },
+  {
+   "marche": "5229907",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.02",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T04:01"
+  },
+  {
+   "marche": "5229904",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "1.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T04:01"
+  },
+  {
+   "marche": "5229899",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "-1.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T04:21"
+  },
+  {
+   "marche": "6018620",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "29.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:11"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6018866",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "29.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6018963",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "4.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T20:01"
+  },
+  {
+   "marche": "6018964",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "29.37",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T20:01"
+  },
+  {
+   "marche": "6053755",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "17.25",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T22:16"
+  },
+  {
+   "marche": "6060395",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "-153.81",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T21:46"
+  },
+  {
+   "marche": "6092911",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "32.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "6090909",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "20.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "33.90",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T02:35"
+  },
+  {
+   "marche": "6503212",
+   "issue": "No",
+   "strategie": "nf_sport_non v1.0.0",
+   "resultat": "7.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T22:31"
+  }
+ ],
+ "performances": {
+  "nf_sport_non v1.0.0": {
+   "operations": 104,
+   "evenements": 78,
+   "gagnantes": 97,
+   "taux_reussite": 0.933,
+   "profit_net": "135.69",
+   "frais": "50.99",
+   "rendement_sur_mises": 0.0114,
+   "esperance_par_operation": "1.30",
+   "ic90_rendement_par_euro": [
+    -0.0268,
+    0.0613
+   ],
+   "brier": 0.0622,
+   "log_loss": 0.2438,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

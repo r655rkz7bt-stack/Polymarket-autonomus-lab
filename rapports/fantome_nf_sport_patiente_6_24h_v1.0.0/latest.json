@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-11-07T15:34:21+00:00",
+ "capital": {
+  "solde_disponible": "514.6817",
+  "capital_immobilise": "463.9553",
+  "gains_realises_nets": "-21.3631",
+  "gains_latents": "-3.8930",
+  "frais_payes": "10.2334",
+  "capital_total_estime": "974.7439",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2524,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "162.19",
+   "cout": "144.35",
+   "prix_moyen": "0.8900",
+   "prix_de_marque": "0.87",
+   "latent": "-3.24",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T20:11"
+  },
+  {
+   "marche": "Will Paris Saint-Germain FC win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "77.94",
+   "cout": "68.03",
+   "prix_moyen": "0.8728",
+   "prix_de_marque": "0.83",
+   "latent": "-3.34",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-07T05:04"
+  },
+  {
+   "marche": "Cali: Alice Tubello vs Bianca Andreescu",
+   "issue": "Bianca Andreescu",
+   "parts": "96.63",
+   "cout": "91.08",
+   "prix_moyen": "0.9425",
+   "prix_de_marque": "0.999",
+   "latent": "5.46",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1323440",
+   "ouverte_le": "2026-11-07T05:09"
+  },
+  {
+   "marche": "Rolex Paris Masters: Casper Ruud vs Carlos Alcaraz",
+   "issue": "Carlos Alcaraz",
+   "parts": "24.79",
+   "cout": "20.33",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.8",
+   "latent": "-0.50",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1328301",
+   "ouverte_le": "2026-11-07T08:21"
+  },
+  {
+   "marche": "Bursaspor vs. Fenerbahce",
+   "issue": "Fenerbahce",
+   "parts": "31.85",
+   "cout": "26.12",
+   "prix_moyen": "0.8200",
+   "prix_de_marque": "0.76",
+   "latent": "-1.91",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1293603",
+   "ouverte_le": "2026-11-07T11:41"
+  },
+  {
+   "marche": "Will ES Troyes AC win on 2026-11-07?",
+   "issue": "No",
+   "parts": "120.44",
+   "cout": "114.06",
+   "prix_moyen": "0.9470",
+   "prix_de_marque": "0.944",
+   "latent": "-0.36",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-07T12:01"
+  }
+ ],
+ "operations_cloturees": 70,
+ "dernieres_operations": [
+  {
+   "marche": "6404733",
+   "issue": "DENDELE CS",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "5.16",
+   "resolution": "résolu : DENDELE CS",
+   "cloturee_le": "2026-10-31T01:06"
+  },
+  {
+   "marche": "6085308",
+   "issue": "HOTU",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "4.45",
+   "resolution": "résolu : HOTU",
+   "cloturee_le": "2026-10-31T12:35"
+  },
+  {
+   "marche": "6147278",
+   "issue": "1WIN",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "4.24",
+   "resolution": "résolu : 1WIN",
+   "cloturee_le": "2026-10-31T16:51"
+  },
+  {
+   "marche": "5657252",
+   "issue": "Chargers",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "5.87",
+   "resolution": "résolu : Chargers",
+   "cloturee_le": "2026-11-02T00:11"
+  },
+  {
+   "marche": "5229898",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "1.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T04:01"
+  },
+  {
+   "marche": "5229899",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-40.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T04:21"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "6.03",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6575075",
+   "issue": "BESTIA Academy",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-32.45",
+   "resolution": "résolu : Zetta Games",
+   "cloturee_le": "2026-11-04T03:11"
+  },
+  {
+   "marche": "6374095",
+   "issue": "Celtics",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "4.72",
+   "resolution": "résolu : Celtics",
+   "cloturee_le": "2026-11-05T03:09"
+  },
+  {
+   "marche": "6701966",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-18.78",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T12:20"
+  },
+  {
+   "marche": "6060395",
+   "issue": "No",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "-52.05",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T21:46"
+  },
+  {
+   "marche": "6090906",
+   "issue": "Yes",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "5.08",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "5772981",
+   "issue": "Jaguars",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "5.11",
+   "resolution": "résolu : Jaguars",
+   "cloturee_le": "2026-11-06T04:25"
+  },
+  {
+   "marche": "6705444",
+   "issue": "tao toma",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "5.46",
+   "resolution": "résolu : tao toma",
+   "cloturee_le": "2026-11-06T21:41"
+  },
+  {
+   "marche": "6721547",
+   "issue": "Anna Blinkova",
+   "strategie": "nf_sport_patiente_6_24h v1.0.0",
+   "resultat": "0.09",
+   "resolution": "résolu : Anna Blinkova",
+   "cloturee_le": "2026-11-07T12:50"
+  }
+ ],
+ "performances": {
+  "nf_sport_patiente_6_24h v1.0.0": {
+   "operations": 70,
+   "evenements": 61,
+   "gagnantes": 59,
+   "taux_reussite": 0.843,
+   "profit_net": "-21.36",
+   "frais": "9.77",
+   "rendement_sur_mises": -0.004,
+   "esperance_par_operation": "-0.31",
+   "ic90_rendement_par_euro": [
+    -0.0991,
+    0.0517
+   ],
+   "brier": 0.1269,
+   "log_loss": 0.4553,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

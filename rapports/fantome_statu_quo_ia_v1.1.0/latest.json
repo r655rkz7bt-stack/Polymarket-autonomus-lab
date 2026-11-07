@@ -1,0 +1,126 @@
+{
+ "genere_le": "2026-11-07T15:34:29+00:00",
+ "capital": {
+  "solde_disponible": "869.1898",
+  "capital_immobilise": "130.8102",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-47.2347",
+  "frais_payes": "0.3341",
+  "capital_total_estime": "952.7653",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0631,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Anthropic have the best AI model on LiveBench (Mathematics) at the end of November 2026?",
+   "issue": "Yes",
+   "parts": "50.90",
+   "cout": "46.45",
+   "prix_moyen": "0.9125",
+   "prix_de_marque": "0.002",
+   "latent": "-46.34",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1111225",
+   "ouverte_le": "2026-10-27T19:42"
+  },
+  {
+   "marche": "6279693",
+   "issue": "Yes",
+   "parts": "4.75",
+   "cout": "3.32",
+   "prix_moyen": "0.7000",
+   "prix_de_marque": "0.006",
+   "latent": "-3.30",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1262359",
+   "ouverte_le": "2026-10-28T00:03"
+  },
+  {
+   "marche": "6279754",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "8.00",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.965",
+   "latent": "1.65",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1262359",
+   "ouverte_le": "2026-10-28T17:24"
+  },
+  {
+   "marche": "Will Google have the best AI model at the end of November 2026?",
+   "issue": "Yes",
+   "parts": "18.43",
+   "cout": "13.27",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.75",
+   "latent": "0.55",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1040632",
+   "ouverte_le": "2026-10-28T17:49"
+  },
+  {
+   "marche": "5167059",
+   "issue": "Yes",
+   "parts": "46.83",
+   "cout": "43.22",
+   "prix_moyen": "0.9229",
+   "prix_de_marque": "0.93",
+   "latent": "0.33",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1111225",
+   "ouverte_le": "2026-10-30T00:32"
+  },
+  {
+   "marche": "5167060",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "7.08",
+   "prix_moyen": "0.7084",
+   "prix_de_marque": "0.6",
+   "latent": "-1.08",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1111226",
+   "ouverte_le": "2026-11-03T02:37"
+  },
+  {
+   "marche": "6665168",
+   "issue": "Yes",
+   "parts": "13.36",
+   "cout": "9.46",
+   "prix_moyen": "0.7084",
+   "prix_de_marque": "0.78",
+   "latent": "0.96",
+   "strategie": "statu_quo_ia v1.1.0",
+   "groupe": "1311705",
+   "ouverte_le": "2026-11-04T10:03"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

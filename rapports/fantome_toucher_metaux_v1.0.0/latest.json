@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:29+00:00",
+ "capital": {
+  "solde_disponible": "905.7246",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-94.2754",
+  "gains_latents": "0.0000",
+  "frais_payes": "3.2719",
+  "capital_total_estime": "905.7246",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1351,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 22,
+ "dernieres_operations": [
+  {
+   "marche": "6436882",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "18.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T03:55"
+  },
+  {
+   "marche": "6685127",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "13.07",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T05:15"
+  },
+  {
+   "marche": "6436881",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-0.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436880",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-1.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436889",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-13.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436888",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-12.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436879",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-4.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436887",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-6.00",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436872",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-26.96",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436890",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-0.73",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436866",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-0.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6436865",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-4.25",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6685138",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-6.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6685145",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-3.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  },
+  {
+   "marche": "6685141",
+   "issue": "Yes",
+   "strategie": "toucher_metaux v1.0.0",
+   "resultat": "-11.36",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-07T00:06"
+  }
+ ],
+ "performances": {
+  "toucher_metaux v1.0.0": {
+   "operations": 22,
+   "evenements": 4,
+   "gagnantes": 6,
+   "taux_reussite": 0.273,
+   "profit_net": "-94.28",
+   "frais": "3.27",
+   "rendement_sur_mises": -0.3915,
+   "esperance_par_operation": "-4.29",
+   "ic90_rendement_par_euro": [
+    -0.5459,
+    -0.0219
+   ],
+   "brier": 0.2051,
+   "log_loss": 0.5982,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

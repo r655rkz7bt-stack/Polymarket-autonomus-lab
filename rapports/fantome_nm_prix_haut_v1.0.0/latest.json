@@ -1,0 +1,325 @@
+{
+ "genere_le": "2026-11-07T15:34:27+00:00",
+ "capital": {
+  "solde_disponible": "556.8500",
+  "capital_immobilise": "380.8519",
+  "gains_realises_nets": "-62.2981",
+  "gains_latents": "-0.6170",
+  "frais_payes": "6.0314",
+  "capital_total_estime": "937.0849",
+  "positions_ouvertes": "12",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2471,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1280957",
+   "issue": "Yes",
+   "parts": "78.87",
+   "cout": "74.80",
+   "prix_moyen": "0.9483",
+   "prix_de_marque": "0.995",
+   "latent": "3.68",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "3697490",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.50",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.24",
+   "latent": "-3.30",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "870865",
+   "ouverte_le": "2026-10-26T01:57"
+  },
+  {
+   "marche": "3697494",
+   "issue": "No",
+   "parts": "30.33",
+   "cout": "27.75",
+   "prix_moyen": "0.9150",
+   "prix_de_marque": "0.951",
+   "latent": "1.09",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "870865",
+   "ouverte_le": "2026-10-26T05:03"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 17, 2026?",
+   "issue": "No",
+   "parts": "26.26",
+   "cout": "23.63",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.926",
+   "latent": "0.68",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-27T14:23"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 25, 2026?",
+   "issue": "Yes",
+   "parts": "23.72",
+   "cout": "21.35",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.72",
+   "latent": "-4.27",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-28T06:52"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be between 31m and 34m?",
+   "issue": "No",
+   "parts": "47.11",
+   "cout": "43.34",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.8",
+   "latent": "-5.65",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-11-01T22:47"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "27.84",
+   "cout": "25.33",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.957",
+   "latent": "1.31",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-03T00:37"
+  },
+  {
+   "marche": "629412",
+   "issue": "Yes",
+   "parts": "30.03",
+   "cout": "27.14",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.99",
+   "latent": "2.59",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "57172",
+   "ouverte_le": "2026-11-04T03:38"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 15, 2026?",
+   "issue": "Yes",
+   "parts": "39.80",
+   "cout": "35.82",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.947",
+   "latent": "1.87",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-04T12:22"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 7?",
+   "issue": "Yes",
+   "parts": "42.23",
+   "cout": "38.43",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.988",
+   "latent": "3.29",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T18:15"
+  },
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "No",
+   "parts": "27.60",
+   "cout": "24.96",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.95",
+   "latent": "1.26",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-11-06T13:32"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be less than 28m?",
+   "issue": "No",
+   "parts": "36.59",
+   "cout": "33.80",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.837",
+   "latent": "-3.17",
+   "strategie": "nm_prix_haut v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-11-06T17:37"
+  }
+ ],
+ "operations_cloturees": 64,
+ "dernieres_operations": [
+  {
+   "marche": "630819",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.57",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T08:16"
+  },
+  {
+   "marche": "630818",
+   "issue": "Yes",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "3.85",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T08:16"
+  },
+  {
+   "marche": "6027759",
+   "issue": "Yes",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.92",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T08:51"
+  },
+  {
+   "marche": "6629337",
+   "issue": "MOUZ",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : MOUZ",
+   "cloturee_le": "2026-11-04T09:04"
+  },
+  {
+   "marche": "630772",
+   "issue": "Yes",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.88",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:06"
+  },
+  {
+   "marche": "630773",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:06"
+  },
+  {
+   "marche": "629518",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.62",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T09:51"
+  },
+  {
+   "marche": "630806",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "3.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T10:41"
+  },
+  {
+   "marche": "6633044",
+   "issue": "Frances Tiafoe",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "-35.01",
+   "resolution": "résolu : Quentin Halys",
+   "cloturee_le": "2026-11-04T12:46"
+  },
+  {
+   "marche": "6476067",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "6476066",
+   "issue": "Yes",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.74",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T19:05"
+  },
+  {
+   "marche": "1285080",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T20:06"
+  },
+  {
+   "marche": "6288579",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288574",
+   "issue": "No",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "2.68",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288570",
+   "issue": "Yes",
+   "strategie": "nm_prix_haut v1.0.0",
+   "resultat": "0.81",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  }
+ ],
+ "performances": {
+  "nm_prix_haut v1.0.0": {
+   "operations": 64,
+   "evenements": 54,
+   "gagnantes": 59,
+   "taux_reussite": 0.922,
+   "profit_net": "-62.30",
+   "frais": "5.50",
+   "rendement_sur_mises": -0.0274,
+   "esperance_par_operation": "-0.97",
+   "ic90_rendement_par_euro": [
+    -0.0811,
+    0.0376
+   ],
+   "brier": 0.0732,
+   "log_loss": 0.2788,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

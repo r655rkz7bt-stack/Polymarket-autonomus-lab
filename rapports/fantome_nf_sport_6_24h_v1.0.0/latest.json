@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-11-07T15:34:20+00:00",
+ "capital": {
+  "solde_disponible": "923.4414",
+  "capital_immobilise": "66.9330",
+  "gains_realises_nets": "-9.6256",
+  "gains_latents": "-2.5530",
+  "frais_payes": "34.8538",
+  "capital_total_estime": "987.8214",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2259,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "74.00",
+   "cout": "66.93",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.87",
+   "latent": "-2.55",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  }
+ ],
+ "operations_cloturees": 147,
+ "dernieres_operations": [
+  {
+   "marche": "6501463",
+   "issue": "Gen.G",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.88",
+   "resolution": "résolu : Gen.G",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6374095",
+   "issue": "Celtics",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.28",
+   "resolution": "résolu : Celtics",
+   "cloturee_le": "2026-11-05T03:09"
+  },
+  {
+   "marche": "6374101",
+   "issue": "Knicks",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.26",
+   "resolution": "résolu : Knicks",
+   "cloturee_le": "2026-11-05T03:20"
+  },
+  {
+   "marche": "6268995",
+   "issue": "Toledo",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "2.36",
+   "resolution": "résolu : Toledo",
+   "cloturee_le": "2026-11-05T03:40"
+  },
+  {
+   "marche": "6380795",
+   "issue": "Spurs",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.22",
+   "resolution": "résolu : Spurs",
+   "cloturee_le": "2026-11-05T05:46"
+  },
+  {
+   "marche": "6701966",
+   "issue": "Carlos Alcaraz",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-10.90",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T12:20"
+  },
+  {
+   "marche": "6060395",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "-66.66",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T21:46"
+  },
+  {
+   "marche": "6090906",
+   "issue": "Yes",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.85",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "6092911",
+   "issue": "No",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "5458640",
+   "issue": "Lightning",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.82",
+   "resolution": "résolu : Lightning",
+   "cloturee_le": "2026-11-06T03:11"
+  },
+  {
+   "marche": "5772981",
+   "issue": "Jaguars",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "7.74",
+   "resolution": "résolu : Jaguars",
+   "cloturee_le": "2026-11-06T04:25"
+  },
+  {
+   "marche": "6705444",
+   "issue": "tao toma",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "5.87",
+   "resolution": "résolu : tao toma",
+   "cloturee_le": "2026-11-06T21:41"
+  },
+  {
+   "marche": "6501428",
+   "issue": "T1",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.43",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6428605",
+   "issue": "Spurs",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.60",
+   "resolution": "résolu : Spurs",
+   "cloturee_le": "2026-11-07T06:08"
+  },
+  {
+   "marche": "6721547",
+   "issue": "Anna Blinkova",
+   "strategie": "nf_sport_6_24h v1.0.0",
+   "resultat": "6.06",
+   "resolution": "résolu : Anna Blinkova",
+   "cloturee_le": "2026-11-07T12:50"
+  }
+ ],
+ "performances": {
+  "nf_sport_6_24h v1.0.0": {
+   "operations": 147,
+   "evenements": 128,
+   "gagnantes": 126,
+   "taux_reussite": 0.857,
+   "profit_net": "-9.63",
+   "frais": "34.52",
+   "rendement_sur_mises": -0.0015,
+   "esperance_par_operation": "-0.07",
+   "ic90_rendement_par_euro": [
+    -0.0727,
+    0.0354
+   ],
+   "brier": 0.111,
+   "log_loss": 0.378,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

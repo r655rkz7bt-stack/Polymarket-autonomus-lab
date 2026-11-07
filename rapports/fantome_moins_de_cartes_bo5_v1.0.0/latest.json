@@ -1,0 +1,140 @@
+{
+ "genere_le": "2026-11-07T15:34:16+00:00",
+ "capital": {
+  "solde_disponible": "1005.0237",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "5.0237",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.7983",
+  "capital_total_estime": "1005.0237",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0103,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 10,
+ "dernieres_operations": [
+  {
+   "marche": "6036990",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "0.85",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:25"
+  },
+  {
+   "marche": "6036991",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.55",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:46"
+  },
+  {
+   "marche": "6430629",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "-2.57",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6430630",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "-6.53",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6493793",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.62",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-01T17:31"
+  },
+  {
+   "marche": "6504971",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.59",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-02T00:25"
+  },
+  {
+   "marche": "6501499",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.64",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-04T05:11"
+  },
+  {
+   "marche": "6501464",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.91",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6501396",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "2.65",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-06T01:25"
+  },
+  {
+   "marche": "6501429",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_bo5 v1.0.0",
+   "resultat": "-2.68",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-07T02:40"
+  }
+ ],
+ "performances": {
+  "moins_de_cartes_bo5 v1.0.0": {
+   "operations": 10,
+   "evenements": 8,
+   "gagnantes": 7,
+   "taux_reussite": 0.7,
+   "profit_net": "5.02",
+   "frais": "0.80",
+   "rendement_sur_mises": 0.1187,
+   "esperance_par_operation": "0.50",
+   "ic90_rendement_par_euro": [
+    -0.3899,
+    0.8116
+   ],
+   "brier": 0.1923,
+   "log_loss": 0.5761,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

@@ -1,0 +1,649 @@
+{
+ "genere_le": "2026-11-07T15:34:27+00:00",
+ "capital": {
+  "solde_disponible": "432.2547",
+  "capital_immobilise": "591.0634",
+  "gains_realises_nets": "23.3181",
+  "gains_latents": "-50.8670",
+  "frais_payes": "2.6929",
+  "capital_total_estime": "972.4511",
+  "positions_ouvertes": "39",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1678,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "1280957",
+   "issue": "Yes",
+   "parts": "78.87",
+   "cout": "74.80",
+   "prix_moyen": "0.9483",
+   "prix_de_marque": "0.995",
+   "latent": "3.68",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "190895",
+   "ouverte_le": "2026-10-17T16:58"
+  },
+  {
+   "marche": "682708",
+   "issue": "No",
+   "parts": "35.01",
+   "cout": "18.28",
+   "prix_moyen": "0.5220",
+   "prix_de_marque": "0.37",
+   "latent": "-5.32",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "81557",
+   "ouverte_le": "2026-10-18T16:44"
+  },
+  {
+   "marche": "635016",
+   "issue": "No",
+   "parts": "9.93",
+   "cout": "1.71",
+   "prix_moyen": "0.1720",
+   "prix_de_marque": "0.004",
+   "latent": "-1.67",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "59234",
+   "ouverte_le": "2026-10-23T17:27"
+  },
+  {
+   "marche": "6027032",
+   "issue": "No",
+   "parts": "1.85",
+   "cout": "1.61",
+   "prix_moyen": "0.8700",
+   "prix_de_marque": "0.963",
+   "latent": "0.17",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1231873",
+   "ouverte_le": "2026-10-24T08:41"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 20, 2026?",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "0.30",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.5",
+   "latent": "0.32",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-24T15:22"
+  },
+  {
+   "marche": "3697490",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.50",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.24",
+   "latent": "-3.30",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "870865",
+   "ouverte_le": "2026-10-26T01:57"
+  },
+  {
+   "marche": "Will \"The Hunger Games: Sunrise on the Reaping\" Opening Weekend Box Office be less than 65m?",
+   "issue": "Yes",
+   "parts": "24.07",
+   "cout": "7.46",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.008",
+   "latent": "-7.27",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1191150",
+   "ouverte_le": "2026-10-26T04:52"
+  },
+  {
+   "marche": "3697494",
+   "issue": "No",
+   "parts": "30.50",
+   "cout": "27.91",
+   "prix_moyen": "0.9150",
+   "prix_de_marque": "0.951",
+   "latent": "1.10",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "870865",
+   "ouverte_le": "2026-10-26T04:57"
+  },
+  {
+   "marche": "3344035",
+   "issue": "Yes",
+   "parts": "23.84",
+   "cout": "3.58",
+   "prix_moyen": "0.1500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "797298",
+   "ouverte_le": "2026-10-26T11:36"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 15?",
+   "issue": "Yes",
+   "parts": "6.56",
+   "cout": "4.13",
+   "prix_moyen": "0.6300",
+   "prix_de_marque": "0.84",
+   "latent": "1.38",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-10-26T11:59"
+  },
+  {
+   "marche": "3489840",
+   "issue": "Yes",
+   "parts": "26.72",
+   "cout": "8.71",
+   "prix_moyen": "0.3261",
+   "prix_de_marque": "0.011",
+   "latent": "-8.42",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "828241",
+   "ouverte_le": "2026-10-26T14:45"
+  },
+  {
+   "marche": "3344048",
+   "issue": "Yes",
+   "parts": "34.71",
+   "cout": "11.45",
+   "prix_moyen": "0.3300",
+   "prix_de_marque": "0.946",
+   "latent": "21.38",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "797299",
+   "ouverte_le": "2026-10-26T14:57"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 18, 2026?",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "18.00",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.87",
+   "latent": "3.75",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-27T09:12"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 17, 2026?",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "21.25",
+   "prix_moyen": "0.8500",
+   "prix_de_marque": "0.926",
+   "latent": "1.90",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-27T10:17"
+  },
+  {
+   "marche": "3344142",
+   "issue": "Yes",
+   "parts": "33.30",
+   "cout": "11.66",
+   "prix_moyen": "0.3500",
+   "prix_de_marque": "inconnu",
+   "latent": "?",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "797327",
+   "ouverte_le": "2026-10-27T15:47"
+  },
+  {
+   "marche": "3523738",
+   "issue": "No",
+   "parts": "0.20",
+   "cout": "0.15",
+   "prix_moyen": "0.7720",
+   "prix_de_marque": "0.971",
+   "latent": "0.04",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "834875",
+   "ouverte_le": "2026-10-27T17:33"
+  },
+  {
+   "marche": "5401795",
+   "issue": "No",
+   "parts": "5.25",
+   "cout": "4.78",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.976",
+   "latent": "0.35",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1147445",
+   "ouverte_le": "2026-10-27T19:47"
+  },
+  {
+   "marche": "Netanyahu out by end of 2026?",
+   "issue": "No",
+   "parts": "19.33",
+   "cout": "12.37",
+   "prix_moyen": "0.6400",
+   "prix_de_marque": "0.56",
+   "latent": "-1.55",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "34051",
+   "ouverte_le": "2026-10-27T20:33"
+  },
+  {
+   "marche": "1284009",
+   "issue": "No",
+   "parts": "3.00",
+   "cout": "1.35",
+   "prix_moyen": "0.4500",
+   "prix_de_marque": "0.803",
+   "latent": "1.06",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "191531",
+   "ouverte_le": "2026-10-27T21:19"
+  },
+  {
+   "marche": "1284010",
+   "issue": "Yes",
+   "parts": "20.35",
+   "cout": "8.75",
+   "prix_moyen": "0.4300",
+   "prix_de_marque": "0.804",
+   "latent": "7.61",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "191531",
+   "ouverte_le": "2026-10-28T03:22"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 25, 2026?",
+   "issue": "Yes",
+   "parts": "23.72",
+   "cout": "21.35",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.72",
+   "latent": "-4.27",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-10-28T06:52"
+  },
+  {
+   "marche": "634976",
+   "issue": "No",
+   "parts": "5.28",
+   "cout": "1.64",
+   "prix_moyen": "0.3100",
+   "prix_de_marque": "0.017",
+   "latent": "-1.55",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "59233",
+   "ouverte_le": "2026-10-28T22:33"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be between 37m and 40m?",
+   "issue": "Yes",
+   "parts": "33.00",
+   "cout": "7.92",
+   "prix_moyen": "0.2400",
+   "prix_de_marque": "0.003",
+   "latent": "-7.82",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-10-29T09:48"
+  },
+  {
+   "marche": "Gemini Carbon released by November 11, 2026?",
+   "issue": "No",
+   "parts": "30.00",
+   "cout": "20.40",
+   "prix_moyen": "0.6800",
+   "prix_de_marque": "0.33",
+   "latent": "-10.50",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1260044",
+   "ouverte_le": "2026-10-29T13:27"
+  },
+  {
+   "marche": "3344141",
+   "issue": "No",
+   "parts": "20.44",
+   "cout": "15.13",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.999",
+   "latent": "5.29",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "797327",
+   "ouverte_le": "2026-10-29T15:37"
+  },
+  {
+   "marche": "6274257",
+   "issue": "Yes",
+   "parts": "13.50",
+   "cout": "3.51",
+   "prix_moyen": "0.2600",
+   "prix_de_marque": "0.983",
+   "latent": "9.76",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1262243",
+   "ouverte_le": "2026-10-29T19:12"
+  },
+  {
+   "marche": "648383",
+   "issue": "Yes",
+   "parts": "72.51",
+   "cout": "20.30",
+   "prix_moyen": "0.2800",
+   "prix_de_marque": "0.003",
+   "latent": "-20.09",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "64731",
+   "ouverte_le": "2026-10-29T22:12"
+  },
+  {
+   "marche": "Will Puma Shen win the next Taipei Mayor election?",
+   "issue": "No",
+   "parts": "58.11",
+   "cout": "44.98",
+   "prix_moyen": "0.7740",
+   "prix_de_marque": "0.677",
+   "latent": "-5.64",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "848341",
+   "ouverte_le": "2026-10-31T13:32"
+  },
+  {
+   "marche": "Will Donald Trump post 200+ Truth Social posts from November 3 to November 10, 2026?",
+   "issue": "Yes",
+   "parts": "12.29",
+   "cout": "8.85",
+   "prix_moyen": "0.7200",
+   "prix_de_marque": "0.04",
+   "latent": "-8.36",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1286700",
+   "ouverte_le": "2026-10-31T20:17"
+  },
+  {
+   "marche": "5635146",
+   "issue": "Yes",
+   "parts": "23.15",
+   "cout": "18.52",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.008",
+   "latent": "-18.33",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1179411",
+   "ouverte_le": "2026-10-31T23:07"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be between 31m and 34m?",
+   "issue": "No",
+   "parts": "32.38",
+   "cout": "29.79",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.8",
+   "latent": "-3.89",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-11-01T22:47"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 30, 2026?",
+   "issue": "Yes",
+   "parts": "30.23",
+   "cout": "27.51",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.957",
+   "latent": "1.42",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-03T00:37"
+  },
+  {
+   "marche": "5401796",
+   "issue": "No",
+   "parts": "11.57",
+   "cout": "8.56",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.75",
+   "latent": "0.12",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1147445",
+   "ouverte_le": "2026-11-04T00:37"
+  },
+  {
+   "marche": "Russia-Ukraine peace talks by November 15, 2026?",
+   "issue": "Yes",
+   "parts": "41.07",
+   "cout": "36.96",
+   "prix_moyen": "0.9000",
+   "prix_de_marque": "0.947",
+   "latent": "1.93",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "606856",
+   "ouverte_le": "2026-11-04T12:22"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 7?",
+   "issue": "Yes",
+   "parts": "45.50",
+   "cout": "41.40",
+   "prix_moyen": "0.9100",
+   "prix_de_marque": "0.988",
+   "latent": "3.55",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-04T18:15"
+  },
+  {
+   "marche": "Will Anthropic IPO by November 16, 2026?",
+   "issue": "Yes",
+   "parts": "28.82",
+   "cout": "2.99",
+   "prix_moyen": "0.1036",
+   "prix_de_marque": "0.023",
+   "latent": "-2.32",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "549019",
+   "ouverte_le": "2026-11-05T23:17"
+  },
+  {
+   "marche": "Will the Democratic Progressive Party (DPP) win the most head of local government elections in the 2026 Taiwan local elections?",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "0.36",
+   "prix_moyen": "0.2901",
+   "prix_de_marque": "0.221",
+   "latent": "-0.09",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "96786",
+   "ouverte_le": "2026-11-06T08:27"
+  },
+  {
+   "marche": "Will Elon Musk post 115-139 tweets from November 5 to November 7, 2026?",
+   "issue": "Yes",
+   "parts": "24.70",
+   "cout": "2.72",
+   "prix_moyen": "0.1102",
+   "prix_de_marque": "0.03",
+   "latent": "-1.98",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1302191",
+   "ouverte_le": "2026-11-06T10:13"
+  },
+  {
+   "marche": "Will \"Godzilla Minus Zero\" Opening Weekend Box Office be less than 28m?",
+   "issue": "No",
+   "parts": "38.36",
+   "cout": "35.43",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.837",
+   "latent": "-3.33",
+   "strategie": "nm_long v1.0.0",
+   "groupe": "1268803",
+   "ouverte_le": "2026-11-06T17:37"
+  }
+ ],
+ "operations_cloturees": 91,
+ "dernieres_operations": [
+  {
+   "marche": "4222441",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "-8.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T10:11"
+  },
+  {
+   "marche": "634893",
+   "issue": "No",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "19.19",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T11:41"
+  },
+  {
+   "marche": "942776",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "13.04",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T20:36"
+  },
+  {
+   "marche": "942709",
+   "issue": "No",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "3.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T21:20"
+  },
+  {
+   "marche": "6274077",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "-4.32",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "6274182",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "-3.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "3515293",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "2.95",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "942082",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "-5.85",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T20:06"
+  },
+  {
+   "marche": "3388092",
+   "issue": "No",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "-8.53",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T21:07"
+  },
+  {
+   "marche": "1284058",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "1.52",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T22:55"
+  },
+  {
+   "marche": "6288566",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "-3.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T11:14"
+  },
+  {
+   "marche": "6288579",
+   "issue": "No",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "2.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "6288574",
+   "issue": "No",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "2.82",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T19:05"
+  },
+  {
+   "marche": "4641065",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "9.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T00:46"
+  },
+  {
+   "marche": "1284672",
+   "issue": "Yes",
+   "strategie": "nm_long v1.0.0",
+   "resultat": "0.74",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-07T03:01"
+  }
+ ],
+ "performances": {
+  "nm_long v1.0.0": {
+   "operations": 91,
+   "evenements": 67,
+   "gagnantes": 55,
+   "taux_reussite": 0.604,
+   "profit_net": "23.32",
+   "frais": "2.16",
+   "rendement_sur_mises": 0.016,
+   "esperance_par_operation": "0.26",
+   "ic90_rendement_par_euro": [
+    -0.2126,
+    0.1791
+   ],
+   "brier": 0.1658,
+   "log_loss": 0.5056,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

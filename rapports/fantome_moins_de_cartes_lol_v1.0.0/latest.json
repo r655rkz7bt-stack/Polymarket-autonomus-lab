@@ -1,0 +1,180 @@
+{
+ "genere_le": "2026-11-07T15:34:16+00:00",
+ "capital": {
+  "solde_disponible": "1012.9793",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "12.9793",
+  "gains_latents": "0.0000",
+  "frais_payes": "1.3828",
+  "capital_total_estime": "1012.9793",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0107,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 17,
+ "dernieres_operations": [
+  {
+   "marche": "6168208",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.78",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-26T23:40"
+  },
+  {
+   "marche": "6036990",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "0.85",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:25"
+  },
+  {
+   "marche": "6036991",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.57",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-27T23:46"
+  },
+  {
+   "marche": "6280199",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-3.58",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-29T02:46"
+  },
+  {
+   "marche": "6280239",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-29T23:21"
+  },
+  {
+   "marche": "6280179",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-4.29",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T02:01"
+  },
+  {
+   "marche": "6280259",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-4.44",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-30T23:39"
+  },
+  {
+   "marche": "6280279",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T01:41"
+  },
+  {
+   "marche": "6440423",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.84",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-10-31T19:41"
+  },
+  {
+   "marche": "6440404",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-4.14",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-10-31T22:41"
+  },
+  {
+   "marche": "6440442",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "3.01",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-01T00:41"
+  },
+  {
+   "marche": "6501499",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.66",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-04T05:11"
+  },
+  {
+   "marche": "6501464",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.93",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6501396",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "2.67",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-06T01:25"
+  },
+  {
+   "marche": "6501429",
+   "issue": "Under",
+   "strategie": "moins_de_cartes_lol v1.0.0",
+   "resultat": "-2.71",
+   "resolution": "résolu : Over",
+   "cloturee_le": "2026-11-07T02:40"
+  }
+ ],
+ "performances": {
+  "moins_de_cartes_lol v1.0.0": {
+   "operations": 17,
+   "evenements": 16,
+   "gagnantes": 12,
+   "taux_reussite": 0.706,
+   "profit_net": "12.98",
+   "frais": "1.38",
+   "rendement_sur_mises": 0.1888,
+   "esperance_par_operation": "0.76",
+   "ic90_rendement_par_euro": [
+    -0.1592,
+    0.5879
+   ],
+   "brier": 0.2162,
+   "log_loss": 0.6233,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

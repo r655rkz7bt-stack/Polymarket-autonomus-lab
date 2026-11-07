@@ -1,0 +1,193 @@
+{
+ "genere_le": "2026-11-07T15:34:18+00:00",
+ "capital": {
+  "solde_disponible": "919.6057",
+  "capital_immobilise": "58.3583",
+  "gains_realises_nets": "-22.0360",
+  "gains_latents": "-2.2259",
+  "frais_payes": "28.4261",
+  "capital_total_estime": "975.7381",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2308,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "64.52",
+   "cout": "58.36",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.87",
+   "latent": "-2.23",
+   "strategie": "nf_court_football v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T19:57"
+  }
+ ],
+ "operations_cloturees": 112,
+ "dernieres_operations": [
+  {
+   "marche": "5843103",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T22:01"
+  },
+  {
+   "marche": "5833018",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.44",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T22:07"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.10",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T22:21"
+  },
+  {
+   "marche": "5918690",
+   "issue": "Under",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.21",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-01T00:31"
+  },
+  {
+   "marche": "5909414",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T13:45"
+  },
+  {
+   "marche": "5909512",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.31",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T16:21"
+  },
+  {
+   "marche": "5915698",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.33",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T17:35"
+  },
+  {
+   "marche": "5915692",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.47",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T17:41"
+  },
+  {
+   "marche": "5915704",
+   "issue": "Yes",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.13",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:46"
+  },
+  {
+   "marche": "5914414",
+   "issue": "Arsenal FC",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "0.09",
+   "resolution": "résolu : Arsenal FC",
+   "cloturee_le": "2026-11-01T18:46"
+  },
+  {
+   "marche": "5914411",
+   "issue": "Liverpool FC",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.20",
+   "resolution": "résolu : Liverpool FC",
+   "cloturee_le": "2026-11-01T18:46"
+  },
+  {
+   "marche": "6018620",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.43",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:11"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6021785",
+   "issue": "Aston Villa FC",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.44",
+   "resolution": "résolu : Aston Villa FC",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6018866",
+   "issue": "No",
+   "strategie": "nf_court_football v1.0.0",
+   "resultat": "6.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  }
+ ],
+ "performances": {
+  "nf_court_football v1.0.0": {
+   "operations": 112,
+   "evenements": 75,
+   "gagnantes": 101,
+   "taux_reussite": 0.902,
+   "profit_net": "-22.04",
+   "frais": "28.14",
+   "rendement_sur_mises": -0.0037,
+   "esperance_par_operation": "-0.20",
+   "ic90_rendement_par_euro": [
+    -0.0397,
+    0.0612
+   ],
+   "brier": 0.0902,
+   "log_loss": 0.3447,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

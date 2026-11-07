@@ -1,0 +1,541 @@
+{
+ "genere_le": "2026-11-07T15:34:24+00:00",
+ "capital": {
+  "solde_disponible": "181.7916",
+  "capital_immobilise": "944.4085",
+  "gains_realises_nets": "126.2001",
+  "gains_latents": "-14.9559",
+  "frais_payes": "18.8824",
+  "capital_total_estime": "1111.2442",
+  "positions_ouvertes": "30",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1232,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will T1 win Worlds 2026?",
+   "issue": "No",
+   "parts": "45.25",
+   "cout": "38.31",
+   "prix_moyen": "0.8467",
+   "prix_de_marque": "0.83",
+   "latent": "-0.76",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:03"
+  },
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.92",
+   "latent": "-0.06",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "79.72",
+   "cout": "75.92",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.749",
+   "latent": "-16.21",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will Bilibili Gaming Make the Worlds 2026 Grand Final?",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "8.37",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.43",
+   "latent": "-4.07",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991832",
+   "ouverte_le": "2026-10-30T09:27"
+  },
+  {
+   "marche": "6490331",
+   "issue": "Yes",
+   "parts": "42.16",
+   "cout": "38.54",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.992",
+   "latent": "3.28",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290031",
+   "ouverte_le": "2026-11-03T11:12"
+  },
+  {
+   "marche": "Will Al Kholood Saudi Club vs. Al Khaleej Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "22.37",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.993",
+   "latent": "2.45",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290026",
+   "ouverte_le": "2026-11-03T11:12"
+  },
+  {
+   "marche": "6490519",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "9.52",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.992",
+   "latent": "0.40",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290043",
+   "ouverte_le": "2026-11-03T11:57"
+  },
+  {
+   "marche": "6490795",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "1.19",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.983",
+   "latent": "0.04",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290058",
+   "ouverte_le": "2026-11-03T11:57"
+  },
+  {
+   "marche": "6490620",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "1.18",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.991",
+   "latent": "0.06",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-03T11:57"
+  },
+  {
+   "marche": "Will Al Nassr Saudi Club win on 2026-11-06?",
+   "issue": "No",
+   "parts": "85.00",
+   "cout": "79.52",
+   "prix_moyen": "0.9355",
+   "prix_de_marque": "0.995",
+   "latent": "5.06",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290048",
+   "ouverte_le": "2026-11-03T12:57"
+  },
+  {
+   "marche": "Will Al Ahli Saudi Club vs. Al Taawoun Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "0.11",
+   "cout": "0.10",
+   "prix_moyen": "0.9429",
+   "prix_de_marque": "0.988",
+   "latent": "0.00",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290067",
+   "ouverte_le": "2026-11-03T13:07"
+  },
+  {
+   "marche": "6490282",
+   "issue": "Yes",
+   "parts": "1.90",
+   "cout": "1.81",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.967",
+   "latent": "0.03",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290028",
+   "ouverte_le": "2026-11-03T14:04"
+  },
+  {
+   "marche": "6490708",
+   "issue": "Yes",
+   "parts": "122.77",
+   "cout": "114.68",
+   "prix_moyen": "0.9341",
+   "prix_de_marque": "0.989",
+   "latent": "6.74",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290053",
+   "ouverte_le": "2026-11-04T00:27"
+  },
+  {
+   "marche": "Will Al Qadisiyah Saudi Club vs. Al Fayha Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "12.08",
+   "cout": "11.32",
+   "prix_moyen": "0.9369",
+   "prix_de_marque": "0.994",
+   "latent": "0.69",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T00:47"
+  },
+  {
+   "marche": "6490415",
+   "issue": "No",
+   "parts": "57.44",
+   "cout": "51.34",
+   "prix_moyen": "0.8939",
+   "prix_de_marque": "0.991",
+   "latent": "5.58",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T01:33"
+  },
+  {
+   "marche": "6490276",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "23.81",
+   "prix_moyen": "0.9524",
+   "prix_de_marque": "0.993",
+   "latent": "1.02",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1290026",
+   "ouverte_le": "2026-11-04T02:37"
+  },
+  {
+   "marche": "Cardinals vs. Seahawks",
+   "issue": "Seahawks",
+   "parts": "4.46",
+   "cout": "3.76",
+   "prix_moyen": "0.8440",
+   "prix_de_marque": "0.78",
+   "latent": "-0.29",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1217429",
+   "ouverte_le": "2026-11-04T04:32"
+  },
+  {
+   "marche": "LoL: Invictus Gaming vs Gen.G (BO5) - Worlds Playoffs",
+   "issue": "Gen.G",
+   "parts": "41.25",
+   "cout": "33.73",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.8",
+   "latent": "-0.73",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1317036",
+   "ouverte_le": "2026-11-05T04:52"
+  },
+  {
+   "marche": "Will Paris Saint-Germain FC win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "81.42",
+   "cout": "73.64",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.83",
+   "latent": "-6.07",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-05T06:27"
+  },
+  {
+   "marche": "Jets vs. Chiefs",
+   "issue": "Chiefs",
+   "parts": "46.45",
+   "cout": "37.84",
+   "prix_moyen": "0.8146",
+   "prix_de_marque": "0.8",
+   "latent": "-0.68",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1217415",
+   "ouverte_le": "2026-11-05T17:17"
+  },
+  {
+   "marche": "Will Nottingham Forest FC win on 2026-11-07?",
+   "issue": "No",
+   "parts": "41.18",
+   "cout": "33.67",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.8",
+   "latent": "-0.73",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1250242",
+   "ouverte_le": "2026-11-06T01:31"
+  },
+  {
+   "marche": "4397299",
+   "issue": "No",
+   "parts": "9.67",
+   "cout": "8.48",
+   "prix_moyen": "0.8766",
+   "prix_de_marque": "0.85",
+   "latent": "-0.26",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "991821",
+   "ouverte_le": "2026-11-06T03:47"
+  },
+  {
+   "marche": "West Virginia vs. Texas Tech",
+   "issue": "Texas Tech",
+   "parts": "61.99",
+   "cout": "53.54",
+   "prix_moyen": "0.8636",
+   "prix_de_marque": "0.85",
+   "latent": "-0.84",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1262207",
+   "ouverte_le": "2026-11-06T15:42"
+  },
+  {
+   "marche": "Will Real Madrid CF win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "39.20",
+   "cout": "31.67",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.77",
+   "latent": "-1.49",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1250955",
+   "ouverte_le": "2026-11-06T19:57"
+  },
+  {
+   "marche": "Will Lewis Hamilton win the 2026 F1 Brazilian Grand Prix?",
+   "issue": "No",
+   "parts": "22.55",
+   "cout": "21.26",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.94",
+   "latent": "-0.06",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1164155",
+   "ouverte_le": "2026-11-06T21:13"
+  },
+  {
+   "marche": "Spread: Colts (-3.5)",
+   "issue": "Cowboys",
+   "parts": "58.01",
+   "cout": "49.53",
+   "prix_moyen": "0.8538",
+   "prix_de_marque": "0.8",
+   "latent": "-3.12",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1217413",
+   "ouverte_le": "2026-11-07T01:27"
+  },
+  {
+   "marche": "Manchester City punishment announced by November 20?",
+   "issue": "No",
+   "parts": "20.91",
+   "cout": "19.31",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-0.29",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1083788",
+   "ouverte_le": "2026-11-07T07:57"
+  },
+  {
+   "marche": "Manchester City punishment announced by December 4?",
+   "issue": "No",
+   "parts": "37.50",
+   "cout": "32.11",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.84",
+   "latent": "-0.61",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1083788",
+   "ouverte_le": "2026-11-07T07:57"
+  },
+  {
+   "marche": "Will Lando Norris win the 2026 F1 Brazilian Grand Prix?",
+   "issue": "No",
+   "parts": "43.16",
+   "cout": "36.96",
+   "prix_moyen": "0.8564",
+   "prix_de_marque": "0.77",
+   "latent": "-3.73",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1164155",
+   "ouverte_le": "2026-11-07T12:22"
+  },
+  {
+   "marche": "Will MOUZ Win the IEM Beijing 2026?",
+   "issue": "Yes",
+   "parts": "11.00",
+   "cout": "8.99",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.79",
+   "latent": "-0.30",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "groupe": "1301918",
+   "ouverte_le": "2026-11-07T13:57"
+  }
+ ],
+ "operations_cloturees": 62,
+ "dernieres_operations": [
+  {
+   "marche": "5915704",
+   "issue": "Yes",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.22",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:46"
+  },
+  {
+   "marche": "5655196",
+   "issue": "Raiders",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "8.06",
+   "resolution": "résolu : Raiders",
+   "cloturee_le": "2026-11-01T21:25"
+  },
+  {
+   "marche": "5603304",
+   "issue": "Bengals",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "6.29",
+   "resolution": "résolu : Bengals",
+   "cloturee_le": "2026-11-01T22:13"
+  },
+  {
+   "marche": "5658089",
+   "issue": "Eagles",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.90",
+   "resolution": "résolu : Eagles",
+   "cloturee_le": "2026-11-02T04:46"
+  },
+  {
+   "marche": "5980848",
+   "issue": "Yes",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "1.79",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-03T00:16"
+  },
+  {
+   "marche": "6293050",
+   "issue": "Mavericks",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-30.94",
+   "resolution": "résolu : Kings",
+   "cloturee_le": "2026-11-03T04:01"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6018963",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "4.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T20:01"
+  },
+  {
+   "marche": "6501463",
+   "issue": "Gen.G",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.61",
+   "resolution": "résolu : Gen.G",
+   "cloturee_le": "2026-11-05T01:20"
+  },
+  {
+   "marche": "6374095",
+   "issue": "Celtics",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.26",
+   "resolution": "résolu : Celtics",
+   "cloturee_le": "2026-11-05T03:09"
+  },
+  {
+   "marche": "6281070",
+   "issue": "Jacksonville Dolphins",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "-0.03",
+   "resolution": "résolu : 50-50",
+   "cloturee_le": "2026-11-05T09:51"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T02:35"
+  },
+  {
+   "marche": "5772981",
+   "issue": "Jaguars",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "6.81",
+   "resolution": "résolu : Jaguars",
+   "cloturee_le": "2026-11-06T04:25"
+  },
+  {
+   "marche": "6501428",
+   "issue": "T1",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.28",
+   "resolution": "résolu : T1",
+   "cloturee_le": "2026-11-07T02:40"
+  },
+  {
+   "marche": "6428605",
+   "issue": "Spurs",
+   "strategie": "nf_sport_sans_fin v1.0.0",
+   "resultat": "7.72",
+   "resolution": "résolu : Spurs",
+   "cloturee_le": "2026-11-07T06:08"
+  }
+ ],
+ "performances": {
+  "nf_sport_sans_fin v1.0.0": {
+   "operations": 62,
+   "evenements": 48,
+   "gagnantes": 53,
+   "taux_reussite": 0.855,
+   "profit_net": "126.20",
+   "frais": "14.07",
+   "rendement_sur_mises": 0.0431,
+   "esperance_par_operation": "2.04",
+   "ic90_rendement_par_euro": [
+    -0.111,
+    0.0492
+   ],
+   "brier": 0.1111,
+   "log_loss": 0.3896,
+   "assez_de_donnees": true
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

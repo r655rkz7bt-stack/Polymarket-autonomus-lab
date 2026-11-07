@@ -1,0 +1,114 @@
+{
+ "genere_le": "2026-11-07T15:34:13+00:00",
+ "capital": {
+  "solde_disponible": "945.2930",
+  "capital_immobilise": "54.7070",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-3.6557",
+  "frais_payes": "0.4394",
+  "capital_total_estime": "996.3443",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0043,
+ "dernier_battement": "2026-11-07T15:22:09+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will annual inflation be 3.8% in October?",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "2.31",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.932",
+   "latent": "0.02",
+   "strategie": "cpi_tranches v1.0.0",
+   "groupe": "1189074",
+   "ouverte_le": "2026-11-04T10:32"
+  },
+  {
+   "marche": "Will monthly inflation increase by 0.2% in October?",
+   "issue": "No",
+   "parts": "22.46",
+   "cout": "16.37",
+   "prix_moyen": "0.7290",
+   "prix_de_marque": "0.63",
+   "latent": "-2.22",
+   "strategie": "cpi_tranches v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-11-04T11:08"
+  },
+  {
+   "marche": "Will monthly inflation increase by 0.1% or less in October?",
+   "issue": "No",
+   "parts": "13.71",
+   "cout": "12.40",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.92",
+   "latent": "0.21",
+   "strategie": "cpi_tranches v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-11-04T11:42"
+  },
+  {
+   "marche": "Will Core CPI MoM be 0.1% in October?",
+   "issue": "No",
+   "parts": "9.37",
+   "cout": "8.46",
+   "prix_moyen": "0.9030",
+   "prix_de_marque": "0.85",
+   "latent": "-0.50",
+   "strategie": "cpi_tranches v1.0.0",
+   "groupe": "1189688",
+   "ouverte_le": "2026-11-04T23:07"
+  },
+  {
+   "marche": "Will monthly inflation increase by 0.4% in October?",
+   "issue": "No",
+   "parts": "9.40",
+   "cout": "8.68",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.9",
+   "latent": "-0.22",
+   "strategie": "cpi_tranches v1.0.0",
+   "groupe": "1189083",
+   "ouverte_le": "2026-11-05T00:06"
+  },
+  {
+   "marche": "Will Core CPI MoM be 0.3% in October?",
+   "issue": "No",
+   "parts": "8.02",
+   "cout": "6.48",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.69",
+   "latent": "-0.95",
+   "strategie": "cpi_tranches v1.0.0",
+   "groupe": "1189688",
+   "ouverte_le": "2026-11-07T10:47"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

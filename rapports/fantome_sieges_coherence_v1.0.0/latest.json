@@ -1,0 +1,129 @@
+{
+ "genere_le": "2026-11-07T15:34:29+00:00",
+ "capital": {
+  "solde_disponible": "881.7346",
+  "capital_immobilise": "120.7243",
+  "gains_realises_nets": "2.4589",
+  "gains_latents": "108.4204",
+  "frais_payes": "1.0738",
+  "capital_total_estime": "1110.8793",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.124,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5635146",
+   "issue": "No",
+   "parts": "136.21",
+   "cout": "32.80",
+   "prix_moyen": "0.2408",
+   "prix_de_marque": "0.943",
+   "latent": "95.65",
+   "strategie": "sieges_coherence v1.0.0",
+   "groupe": "1179411",
+   "ouverte_le": "2026-10-31T11:27"
+  },
+  {
+   "marche": "3515212",
+   "issue": "No",
+   "parts": "102.96",
+   "cout": "42.88",
+   "prix_moyen": "0.4165",
+   "prix_de_marque": "0.92",
+   "latent": "51.84",
+   "strategie": "sieges_coherence v1.0.0",
+   "groupe": "833416",
+   "ouverte_le": "2026-10-31T11:27"
+  },
+  {
+   "marche": "3515270",
+   "issue": "No",
+   "parts": "91.93",
+   "cout": "45.05",
+   "prix_moyen": "0.4900",
+   "prix_de_marque": "0.065",
+   "latent": "-39.07",
+   "strategie": "sieges_coherence v1.0.0",
+   "groupe": "833440",
+   "ouverte_le": "2026-10-31T11:42"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "3515293",
+   "issue": "No",
+   "strategie": "sieges_coherence v1.0.0",
+   "resultat": "-66.55",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T23:10"
+  },
+  {
+   "marche": "3515266",
+   "issue": "No",
+   "strategie": "sieges_coherence v1.0.0",
+   "resultat": "1.05",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T20:51"
+  },
+  {
+   "marche": "3515249",
+   "issue": "No",
+   "strategie": "sieges_coherence v1.0.0",
+   "resultat": "51.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T05:05"
+  },
+  {
+   "marche": "3515250",
+   "issue": "Yes",
+   "strategie": "sieges_coherence v1.0.0",
+   "resultat": "16.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T05:10"
+  }
+ ],
+ "performances": {
+  "sieges_coherence v1.0.0": {
+   "operations": 4,
+   "evenements": 3,
+   "gagnantes": 3,
+   "taux_reussite": 0.75,
+   "profit_net": "2.46",
+   "frais": "1.07",
+   "rendement_sur_mises": 0.0144,
+   "esperance_par_operation": "0.61",
+   "ic90_rendement_par_euro": [
+    -0.4253,
+    0.996
+   ],
+   "brier": 0.196,
+   "log_loss": 0.5797,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

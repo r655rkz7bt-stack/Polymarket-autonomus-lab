@@ -1,0 +1,229 @@
+{
+ "genere_le": "2026-11-07T15:34:13+00:00",
+ "capital": {
+  "solde_disponible": "817.7658",
+  "capital_immobilise": "36.8463",
+  "gains_realises_nets": "-145.3878",
+  "gains_latents": "20.9052",
+  "frais_payes": "28.0900",
+  "capital_total_estime": "875.5173",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.2892,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the price of Ethereum be above $2,200 on November 8?",
+   "issue": "No",
+   "parts": "14.34",
+   "cout": "4.68",
+   "prix_moyen": "0.3263",
+   "prix_de_marque": "0.104",
+   "latent": "-3.19",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-06T17:42"
+  },
+  {
+   "marche": "Will the price of Ethereum be above $2,200 on November 7?",
+   "issue": "No",
+   "parts": "8.75",
+   "cout": "1.72",
+   "prix_moyen": "0.1966",
+   "prix_de_marque": "0.008",
+   "latent": "-1.65",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "groupe": "crypto:eth",
+   "ouverte_le": "2026-11-06T18:52"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $74,000 on November 8?",
+   "issue": "No",
+   "parts": "76.98",
+   "cout": "7.61",
+   "prix_moyen": "0.0989",
+   "prix_de_marque": "0.029",
+   "latent": "-5.38",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-06T19:17"
+  },
+  {
+   "marche": "Will the price of Bitcoin be above $76,000 on November 7?",
+   "issue": "No",
+   "parts": "64.62",
+   "cout": "22.83",
+   "prix_moyen": "0.3533",
+   "prix_de_marque": "0.835",
+   "latent": "31.12",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "groupe": "crypto:btc",
+   "ouverte_le": "2026-11-07T08:17"
+  }
+ ],
+ "operations_cloturees": 25,
+ "dernieres_operations": [
+  {
+   "marche": "6377727",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-48.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:01"
+  },
+  {
+   "marche": "6377728",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-15.39",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-30T00:35"
+  },
+  {
+   "marche": "6377730",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "11.99",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T04:16"
+  },
+  {
+   "marche": "6377747",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "44.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T04:16"
+  },
+  {
+   "marche": "6084543",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "30.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T16:16"
+  },
+  {
+   "marche": "6137715",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-6.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T16:15"
+  },
+  {
+   "marche": "6205323",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-17.10",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:16"
+  },
+  {
+   "marche": "6205303",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-9.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:16"
+  },
+  {
+   "marche": "6205325",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-11.82",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-01T17:16"
+  },
+  {
+   "marche": "6301433",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "18.43",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T17:18"
+  },
+  {
+   "marche": "6301341",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "20.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T17:18"
+  },
+  {
+   "marche": "6389959",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "9.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-05T17:16"
+  },
+  {
+   "marche": "6705225",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "28.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T05:15"
+  },
+  {
+   "marche": "6705226",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "12.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T05:15"
+  },
+  {
+   "marche": "6423887",
+   "issue": "No",
+   "strategie": "crypto_threshold_non v1.0.0",
+   "resultat": "-0.86",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T17:16"
+  }
+ ],
+ "performances": {
+  "crypto_threshold_non v1.0.0": {
+   "operations": 25,
+   "evenements": 21,
+   "gagnantes": 10,
+   "taux_reussite": 0.4,
+   "profit_net": "-145.39",
+   "frais": "26.32",
+   "rendement_sur_mises": -0.1492,
+   "esperance_par_operation": "-5.82",
+   "ic90_rendement_par_euro": [
+    -0.6673,
+    -0.071
+   ],
+   "brier": 0.1627,
+   "log_loss": 0.5178,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

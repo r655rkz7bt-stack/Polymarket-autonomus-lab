@@ -1,0 +1,181 @@
+{
+ "genere_le": "2026-11-07T15:34:15+00:00",
+ "capital": {
+  "solde_disponible": "955.0083",
+  "capital_immobilise": "43.6898",
+  "gains_realises_nets": "-1.3019",
+  "gains_latents": "6.8387",
+  "frais_payes": "0.2484",
+  "capital_total_estime": "1005.5368",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0158,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6026468",
+   "issue": "No",
+   "parts": "21.53",
+   "cout": "13.35",
+   "prix_moyen": "0.6200",
+   "prix_de_marque": "0.84",
+   "latent": "4.74",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "1231809",
+   "ouverte_le": "2026-10-22T17:27"
+  },
+  {
+   "marche": "Another Fed rate hike in 2026?",
+   "issue": "Yes",
+   "parts": "6.67",
+   "cout": "4.94",
+   "prix_moyen": "0.7400",
+   "prix_de_marque": "0.75",
+   "latent": "0.07",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "1034268",
+   "ouverte_le": "2026-10-24T02:17"
+  },
+  {
+   "marche": "Will Marine Le Pen win the 2027 French presidential election?",
+   "issue": "Yes",
+   "parts": "5.43",
+   "cout": "2.39",
+   "prix_moyen": "0.4410",
+   "prix_de_marque": "0.451",
+   "latent": "0.05",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "79987",
+   "ouverte_le": "2026-10-25T14:17"
+  },
+  {
+   "marche": "Israel x Turkey military clash before 2027?",
+   "issue": "No",
+   "parts": "14.62",
+   "cout": "12.87",
+   "prix_moyen": "0.8800",
+   "prix_de_marque": "0.969",
+   "latent": "1.30",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "73200",
+   "ouverte_le": "2026-10-29T19:03"
+  },
+  {
+   "marche": "1060714",
+   "issue": "Yes",
+   "parts": "6.30",
+   "cout": "4.85",
+   "prix_moyen": "0.7700",
+   "prix_de_marque": "0.87",
+   "latent": "0.63",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "131764",
+   "ouverte_le": "2026-10-29T19:03"
+  },
+  {
+   "marche": "Will JD Vance win the 2028 US Presidential Election?",
+   "issue": "Yes",
+   "parts": "11.15",
+   "cout": "1.44",
+   "prix_moyen": "0.1294",
+   "prix_de_marque": "0.185",
+   "latent": "0.62",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "31552",
+   "ouverte_le": "2026-11-04T02:47"
+  },
+  {
+   "marche": "AI data center in space by December 31, 2027?",
+   "issue": "Yes",
+   "parts": "9.39",
+   "cout": "2.03",
+   "prix_moyen": "0.2166",
+   "prix_de_marque": "0.16",
+   "latent": "-0.53",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "482789",
+   "ouverte_le": "2026-11-04T16:41"
+  },
+  {
+   "marche": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+   "issue": "Yes",
+   "parts": "6.54",
+   "cout": "1.82",
+   "prix_moyen": "0.2779",
+   "prix_de_marque": "0.272",
+   "latent": "-0.04",
+   "strategie": "manifold_reference v1.0.0",
+   "groupe": "30829",
+   "ouverte_le": "2026-11-07T05:13"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "601819",
+   "issue": "No",
+   "strategie": "manifold_reference v1.0.0",
+   "resultat": "-14.95",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-26T03:16"
+  },
+  {
+   "marche": "919484",
+   "issue": "No",
+   "strategie": "manifold_reference v1.0.0",
+   "resultat": "-2.44",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-04T09:11"
+  },
+  {
+   "marche": "6016014",
+   "issue": "Yes",
+   "strategie": "manifold_reference v1.0.0",
+   "resultat": "16.09",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T01:05"
+  }
+ ],
+ "performances": {
+  "manifold_reference v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 1,
+   "taux_reussite": 0.333,
+   "profit_net": "-1.30",
+   "frais": "0.09",
+   "rendement_sur_mises": -0.0706,
+   "esperance_par_operation": "-0.43",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    9.9513
+   ],
+   "brier": 0.4231,
+   "log_loss": 1.1179,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

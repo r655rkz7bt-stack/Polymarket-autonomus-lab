@@ -1,0 +1,145 @@
+{
+ "genere_le": "2026-11-07T15:34:11+00:00",
+ "capital": {
+  "solde_disponible": "923.6620",
+  "capital_immobilise": "29.5429",
+  "gains_realises_nets": "-46.7951",
+  "gains_latents": "6.0785",
+  "frais_payes": "0.4281",
+  "capital_total_estime": "959.2834",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0434,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6443439",
+   "issue": "No",
+   "parts": "32.31",
+   "cout": "19.39",
+   "prix_moyen": "0.6000",
+   "prix_de_marque": "0.57",
+   "latent": "-0.97",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "groupe": "1286704",
+   "ouverte_le": "2026-11-01T03:32"
+  },
+  {
+   "marche": "6443486",
+   "issue": "No",
+   "parts": "8.67",
+   "cout": "7.09",
+   "prix_moyen": "0.8177",
+   "prix_de_marque": "0.91",
+   "latent": "0.80",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "groupe": "1286702",
+   "ouverte_le": "2026-11-01T21:27"
+  },
+  {
+   "marche": "6625359",
+   "issue": "No",
+   "parts": "20.70",
+   "cout": "3.07",
+   "prix_moyen": "0.1482",
+   "prix_de_marque": "0.45",
+   "latent": "6.25",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "groupe": "1305846",
+   "ouverte_le": "2026-11-03T23:32"
+  }
+ ],
+ "operations_cloturees": 6,
+ "dernieres_operations": [
+  {
+   "marche": "5640220",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "-7.50",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-23T18:15"
+  },
+  {
+   "marche": "6104744",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "7.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T19:51"
+  },
+  {
+   "marche": "6104763",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "-11.09",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-02T17:16"
+  },
+  {
+   "marche": "6104766",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "3.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-02T20:31"
+  },
+  {
+   "marche": "6288524",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "-10.65",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T18:16"
+  },
+  {
+   "marche": "6288511",
+   "issue": "No",
+   "strategie": "compteur_tweets_non_hors_elon_trump v1.0.0",
+   "resultat": "-28.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-06T19:05"
+  }
+ ],
+ "performances": {
+  "compteur_tweets_non_hors_elon_trump v1.0.0": {
+   "operations": 6,
+   "evenements": 5,
+   "gagnantes": 2,
+   "taux_reussite": 0.333,
+   "profit_net": "-46.80",
+   "frais": "0.24",
+   "rendement_sur_mises": -0.4635,
+   "esperance_par_operation": "-7.80",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.0554
+   ],
+   "brier": 0.3026,
+   "log_loss": 1.0017,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

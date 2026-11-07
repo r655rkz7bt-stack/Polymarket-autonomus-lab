@@ -1,0 +1,253 @@
+{
+ "genere_le": "2026-11-07T15:34:20+00:00",
+ "capital": {
+  "solde_disponible": "578.5890",
+  "capital_immobilise": "423.8083",
+  "gains_realises_nets": "2.3973",
+  "gains_latents": "-30.9688",
+  "frais_payes": "14.2102",
+  "capital_total_estime": "971.4285",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1495,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Invictus Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "23.74",
+   "cout": "21.91",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.92",
+   "latent": "-0.06",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-30T05:10"
+  },
+  {
+   "marche": "Will Bilibili Gaming win Worlds 2026?",
+   "issue": "No",
+   "parts": "162.50",
+   "cout": "150.13",
+   "prix_moyen": "0.9239",
+   "prix_de_marque": "0.749",
+   "latent": "-28.42",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "991810",
+   "ouverte_le": "2026-10-31T22:57"
+  },
+  {
+   "marche": "Manchester City punishment announced by November 20?",
+   "issue": "No",
+   "parts": "20.90",
+   "cout": "19.30",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.91",
+   "latent": "-0.29",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "1083788",
+   "ouverte_le": "2026-11-07T08:06"
+  },
+  {
+   "marche": "Will Valencia CF win on 2026-11-07?",
+   "issue": "No",
+   "parts": "90.92",
+   "cout": "83.98",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.92",
+   "latent": "-0.33",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "1250955",
+   "ouverte_le": "2026-11-07T11:32"
+  },
+  {
+   "marche": "6171515",
+   "issue": "No",
+   "parts": "71.68",
+   "cout": "64.83",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.82",
+   "latent": "-6.06",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "1250193",
+   "ouverte_le": "2026-11-07T13:52"
+  },
+  {
+   "marche": "Will 1. FSV Mainz 05 win on 2026-11-07?",
+   "issue": "No",
+   "parts": "90.56",
+   "cout": "83.65",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.97",
+   "latent": "4.19",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "groupe": "1250183",
+   "ouverte_le": "2026-11-07T13:57"
+  }
+ ],
+ "operations_cloturees": 29,
+ "dernieres_operations": [
+  {
+   "marche": "5713158",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.36",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T19:41"
+  },
+  {
+   "marche": "1235549",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5928351",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "0.04",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T12:07"
+  },
+  {
+   "marche": "5928353",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "1.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-29T19:31"
+  },
+  {
+   "marche": "5928346",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "8.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T19:55"
+  },
+  {
+   "marche": "5794335",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.65",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-30T20:18"
+  },
+  {
+   "marche": "5828021",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T00:16"
+  },
+  {
+   "marche": "5965401",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "2.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T15:35"
+  },
+  {
+   "marche": "5859305",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-31T22:21"
+  },
+  {
+   "marche": "4397027",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "14.90",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-01T01:41"
+  },
+  {
+   "marche": "6018867",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "0.48",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-03T22:16"
+  },
+  {
+   "marche": "6018963",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "4.83",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-04T20:01"
+  },
+  {
+   "marche": "6060395",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "-153.81",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-05T21:46"
+  },
+  {
+   "marche": "6090909",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "20.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T00:01"
+  },
+  {
+   "marche": "4397030",
+   "issue": "No",
+   "strategie": "nf_sport_non_900_925 v1.0.0",
+   "resultat": "0.08",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-06T02:35"
+  }
+ ],
+ "performances": {
+  "nf_sport_non_900_925 v1.0.0": {
+   "operations": 29,
+   "evenements": 23,
+   "gagnantes": 27,
+   "taux_reussite": 0.931,
+   "profit_net": "2.40",
+   "frais": "12.46",
+   "rendement_sur_mises": 0.0008,
+   "esperance_par_operation": "0.08",
+   "ic90_rendement_par_euro": [
+    -0.063,
+    0.0926
+   ],
+   "brier": 0.0634,
+   "log_loss": 0.241,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}

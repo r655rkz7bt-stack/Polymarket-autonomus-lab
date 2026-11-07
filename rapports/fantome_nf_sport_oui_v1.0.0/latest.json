@@ -1,0 +1,237 @@
+{
+ "genere_le": "2026-11-07T15:34:21+00:00",
+ "capital": {
+  "solde_disponible": "417.3718",
+  "capital_immobilise": "561.4366",
+  "gains_realises_nets": "-21.1917",
+  "gains_latents": "13.0247",
+  "frais_payes": "7.5066",
+  "capital_total_estime": "991.8330",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.143,
+ "dernier_battement": "2026-11-07T15:05:21+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "5743718",
+   "issue": "Yes",
+   "parts": "19.66",
+   "cout": "17.40",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.30",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1195123",
+   "ouverte_le": "2026-10-27T20:12"
+  },
+  {
+   "marche": "6490331",
+   "issue": "Yes",
+   "parts": "42.16",
+   "cout": "38.54",
+   "prix_moyen": "0.9141",
+   "prix_de_marque": "0.992",
+   "latent": "3.28",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1290031",
+   "ouverte_le": "2026-11-03T11:12"
+  },
+  {
+   "marche": "Will Al Kholood Saudi Club vs. Al Khaleej Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "7.50",
+   "cout": "6.78",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.993",
+   "latent": "0.66",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1290026",
+   "ouverte_le": "2026-11-03T11:32"
+  },
+  {
+   "marche": "6490519",
+   "issue": "Yes",
+   "parts": "45.00",
+   "cout": "42.43",
+   "prix_moyen": "0.9428",
+   "prix_de_marque": "0.992",
+   "latent": "2.21",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1290043",
+   "ouverte_le": "2026-11-03T12:07"
+  },
+  {
+   "marche": "Will Al Ahli Saudi Club vs. Al Taawoun Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "0.11",
+   "cout": "0.10",
+   "prix_moyen": "0.9429",
+   "prix_de_marque": "0.988",
+   "latent": "0.00",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1290067",
+   "ouverte_le": "2026-11-03T13:07"
+  },
+  {
+   "marche": "6490708",
+   "issue": "Yes",
+   "parts": "227.06",
+   "cout": "212.11",
+   "prix_moyen": "0.9342",
+   "prix_de_marque": "0.989",
+   "latent": "12.45",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1290053",
+   "ouverte_le": "2026-11-04T00:27"
+  },
+  {
+   "marche": "Will Al Qadisiyah Saudi Club vs. Al Fayha Saudi Club end in a draw?",
+   "issue": "Yes",
+   "parts": "117.98",
+   "cout": "111.66",
+   "prix_moyen": "0.9464",
+   "prix_de_marque": "0.994",
+   "latent": "5.61",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1290036",
+   "ouverte_le": "2026-11-04T07:07"
+  },
+  {
+   "marche": "Will Paris Saint-Germain FC win on 2026-11-07?",
+   "issue": "Yes",
+   "parts": "146.39",
+   "cout": "132.41",
+   "prix_moyen": "0.9045",
+   "prix_de_marque": "0.83",
+   "latent": "-10.91",
+   "strategie": "nf_sport_oui v1.0.0",
+   "groupe": "1250198",
+   "ouverte_le": "2026-11-05T06:27"
+  }
+ ],
+ "operations_cloturees": 10,
+ "dernieres_operations": [
+  {
+   "marche": "5339871",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "10.42",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-19T22:07"
+  },
+  {
+   "marche": "5409194",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "14.05",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-20T21:58"
+  },
+  {
+   "marche": "4411997",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "0.68",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T00:40"
+  },
+  {
+   "marche": "608547",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "18.71",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-27T02:01"
+  },
+  {
+   "marche": "5678025",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "-136.11",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-10-28T01:01"
+  },
+  {
+   "marche": "5746067",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "12.98",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-28T23:51"
+  },
+  {
+   "marche": "5701249",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "12.92",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T00:01"
+  },
+  {
+   "marche": "1235568",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "16.85",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-29T06:16"
+  },
+  {
+   "marche": "5882360",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "13.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T21:41"
+  },
+  {
+   "marche": "5859302",
+   "issue": "Yes",
+   "strategie": "nf_sport_oui v1.0.0",
+   "resultat": "14.78",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-10-31T22:21"
+  }
+ ],
+ "performances": {
+  "nf_sport_oui v1.0.0": {
+   "operations": 10,
+   "evenements": 10,
+   "gagnantes": 9,
+   "taux_reussite": 0.9,
+   "profit_net": "-21.19",
+   "frais": "5.37",
+   "rendement_sur_mises": -0.0174,
+   "esperance_par_operation": "-2.12",
+   "ic90_rendement_par_euro": [
+    -0.2145,
+    0.1364
+   ],
+   "brier": 0.0939,
+   "log_loss": 0.3443,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 2468,
+  "rejetees": 4495,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 3385,
+   "coût supérieur au solde disponible": 866,
+   "carnet périmé": 466,
+   "solde déjà réservé par les ordres posés": 155,
+   "données de marché non fiables": 4,
+   "le prix a chuté de 0.91 à 0.78 pendant le cycle": 2,
+   "le prix a chuté de 0.81 à 0.66 pendant le cycle": 2,
+   "le prix a chuté de 0.87 à 0.82 pendant le cycle": 2
+  }
+ },
+ "erreurs_recentes": []
+}
