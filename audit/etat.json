@@ -1,13 +1,13 @@
 {
  "dernier_seq": {
-  "principal": 7765,
+  "principal": 7766,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2480,
   "fantome:crypto_threshold_v1.0.0": 2185,
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2829,
+  "fantome:naive_favorite_v1.0.0": 2833,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
@@ -30,16 +30,16 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 4041,
+  "fantome:nf_court_v1.0.0": 4043,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2544,
+  "fantome:nf_moyen_v1.0.0": 2546,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 2137,
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5250,
+  "fantome:nf_sport_v1.0.0": 5254,
   "fantome:nm_court_v1.0.0": 2478,
   "fantome:nm_crypto_v1.0.0": 2071,
   "fantome:nm_hors_crypto_v1.0.0": 2591,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 245,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 129
  },
- "verifiees": 18817,
+ "verifiees": 18823,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-92024653438465621066464123239246297329810664900524013046946499171435935172009"
   }
  ],
- "derniere_execution": "2026-11-07T02:49:25+00:00",
+ "derniere_execution": "2026-11-07T02:52:40+00:00",
  "dernier_seq_reglements": {
-  "principal": 7765,
+  "principal": 7766,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2480,
