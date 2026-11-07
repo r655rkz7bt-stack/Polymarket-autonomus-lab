@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-07 (passage chercheur de 6 h, 05 h 54 → ~06 h 05 UTC ; durée visée 88 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, XTracker en 403), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-07_matin_famille2_concentration_du_haut.md`, famille 2). Aucune « Enquête obligatoire ». 5 stratégies du haut du classement relues (sans les 3 plus gros paris, sans le meilleur jour, gagnés contre attendus par événement) : tous les z < 2, `nf_sport` perd 79 € sans le 2 novembre, `compteur_tweets_48h_audace` +1 € sans ses 3 plus gros paris. Aucun défaut de code. XTracker toujours en 403 (avec un User-Agent honnête) ; pas de contournement.
+- **Recherche** : aucune piste avancée (données futures attendues).
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; les trois filles 80/20 de la feuille restent refusées (mères éteintes ou tranche choisie après coup).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 1 h ; XTracker 403 à relire à chaque passage.
+
 ## 2026-11-07 (passage chercheur de 1 h, 00 h 54 → ~01 h 30 UTC ; durée visée 86 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole prochain mercredi, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, App Store 07/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-07_nuit_reglements_toucher_sieges_mississippi.md`, famille 2). Aucune « Enquête obligatoire ». Règlements arrivés depuis hier : `toucher_metaux` 22 paris −94 € (6 gagnés pour 7,2 attendus par les prix, 10,2 par le modèle ; ≈ 4 tirages indépendants) ; `sieges_coherence` 4 règlements sur 7, +2,5 € ; principal : Mississippi OUI Républicains + NON Démocrates = même pari deux fois (−8,7 €, surprise réelle du 04/11, doublon miroir rare : 1 cas sur 72 événements). Aucun défaut de code. **Source en panne** : XTracker répond 403 (cycle de 00 h 47 et appel à la main), dernier achat de `compteur_tweets` (champion) et `compteur_truth` le 06/11 à 19 h UTC, abstentions « compteur pas à jour » (garde-fou en place) ; pas de contournement.
