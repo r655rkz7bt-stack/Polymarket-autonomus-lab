@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7883,
+  "principal": 7884,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2499,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5323,
+  "fantome:nf_sport_v1.0.0": 5327,
   "fantome:nm_court_v1.0.0": 2503,
   "fantome:nm_crypto_v1.0.0": 2090,
   "fantome:nm_hors_crypto_v1.0.0": 2614,
@@ -52,8 +52,8 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3846,
-  "fantome:nf_sport_sans_fin_v1.0.0": 2101,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3849,
+  "fantome:nf_sport_sans_fin_v1.0.0": 2103,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
   "fantome:nf_sport_oui_v1.0.0": 1890,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 265,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 149
  },
- "verifiees": 18948,
+ "verifiees": 18952,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T12:28:16+00:00",
+ "derniere_execution": "2026-11-07T12:34:31+00:00",
  "dernier_seq_reglements": {
-  "principal": 7883,
+  "principal": 7884,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2499,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5329,
+  "fantome:nf_sport_v1.0.0": 5331,
   "fantome:nm_court_v1.0.0": 2503,
   "fantome:nm_crypto_v1.0.0": 2090,
   "fantome:nm_hors_crypto_v1.0.0": 2614,
@@ -1850,7 +1850,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3848,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3851,
   "fantome:nf_sport_sans_fin_v1.0.0": 2103,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 265,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 149
  },
- "reglements_verifies": 12470
+ "reglements_verifies": 12472
 }
