@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7831,
+  "principal": 7832,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2491,
@@ -60,7 +60,7 @@
   "fantome:cotes_bookmakers_v1.0.0": 1082,
   "fantome:nf_sport_court_v1.0.0": 1105,
   "fantome:nf_tres_court_v1.0.0": 1177,
-  "fantome:nf_sport_non_v1.0.0": 1946,
+  "fantome:nf_sport_non_v1.0.0": 1948,
   "fantome:nf_court_hors_sport_v1.0.0": 940,
   "fantome:nf_court_prix_haut_v1.0.0": 1550,
   "fantome:nf_sport_tres_court_v1.0.0": 957,
@@ -152,7 +152,7 @@
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 801,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
-  "fantome:nf_sport_non_900_925_v1.0.0": 741,
+  "fantome:nf_sport_non_900_925_v1.0.0": 743,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 745,
   "fantome:seismes_marche_v1.0.0": 747,
   "fantome:box_office_favori_v1.0.0": 655,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 256,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 140
  },
- "verifiees": 18870,
+ "verifiees": 18872,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T08:14:26+00:00",
+ "derniere_execution": "2026-11-07T08:20:02+00:00",
  "dernier_seq_reglements": {
-  "principal": 7831,
+  "principal": 7832,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2491,
@@ -1828,10 +1828,10 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 4073,
+  "fantome:nf_court_v1.0.0": 4075,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
-  "fantome:nf_moyen_v1.0.0": 2569,
+  "fantome:nf_moyen_v1.0.0": 2571,
   "fantome:nf_non_v1.0.0": 1270,
   "fantome:nf_oui_v1.0.0": 2147,
   "fantome:nf_politique_v1.0.0": 1260,
@@ -1877,7 +1877,7 @@
   "fantome:nf_sport_patiente_tennis_v1.0.0": 1228,
   "fantome:nf_tennis_prix_bas_v1.0.0": 1300,
   "fantome:nf_tennis_v1.0.0": 466,
-  "fantome:crypto_threshold_non_v1.0.0": 1113,
+  "fantome:crypto_threshold_non_v1.0.0": 1115,
   "fantome:nf_sport_patiente_72_168h_v1.0.0": 1092,
   "fantome:nf_sport_patiente_matin_v1.0.0": 939,
   "fantome:apres_echeance_v1.0.0": 775,
