@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7801,
+  "principal": 7802,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2486,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T05:47:56+00:00",
+ "derniere_execution": "2026-11-07T05:53:26+00:00",
  "dernier_seq_reglements": {
-  "principal": 7801,
+  "principal": 7802,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2486,
@@ -1850,7 +1850,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3811,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3813,
   "fantome:nf_sport_sans_fin_v1.0.0": 2085,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
