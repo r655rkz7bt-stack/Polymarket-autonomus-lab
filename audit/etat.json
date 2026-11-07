@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7856,
+  "principal": 7857,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2495,
@@ -39,7 +39,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5297,
+  "fantome:nf_sport_v1.0.0": 5299,
   "fantome:nm_court_v1.0.0": 2498,
   "fantome:nm_crypto_v1.0.0": 2086,
   "fantome:nm_hors_crypto_v1.0.0": 2609,
@@ -149,7 +149,7 @@
   "fantome:detroits_tranches_v1.0.0": 693,
   "fantome:mots_prononces_nfl_v1.1.0": 690,
   "fantome:detroits_marche_log_v1.0.0": 725,
-  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 806,
+  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 807,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 747,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T10:19:30+00:00",
+ "derniere_execution": "2026-11-07T10:22:45+00:00",
  "dernier_seq_reglements": {
-  "principal": 7856,
+  "principal": 7857,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2495,
@@ -1837,7 +1837,7 @@
   "fantome:nf_politique_v1.0.0": 1260,
   "fantome:nf_prix_bas_v1.0.0": 1258,
   "fantome:nf_prix_haut_v1.0.0": 1280,
-  "fantome:nf_sport_v1.0.0": 5297,
+  "fantome:nf_sport_v1.0.0": 5299,
   "fantome:nm_court_v1.0.0": 2498,
   "fantome:nm_crypto_v1.0.0": 2086,
   "fantome:nm_hors_crypto_v1.0.0": 2609,
@@ -1947,7 +1947,7 @@
   "fantome:detroits_tranches_v1.0.0": 693,
   "fantome:mots_prononces_nfl_v1.1.0": 690,
   "fantome:detroits_marche_log_v1.0.0": 725,
-  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 806,
+  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 807,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 747,
@@ -1990,5 +1990,5 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 260,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 144
  },
- "reglements_verifies": 12458
+ "reglements_verifies": 12459
 }
