@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7948,
+  "principal": 7949,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2508,
@@ -154,7 +154,7 @@
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 768,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 767,
-  "fantome:seismes_marche_v1.0.0": 766,
+  "fantome:seismes_marche_v1.0.0": 767,
   "fantome:box_office_favori_v1.0.0": 672,
   "fantome:spacex_cumul_v1.0.0": 658,
   "fantome:toucher_metaux_v1.0.0": 710,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T17:34:35+00:00",
+ "derniere_execution": "2026-11-07T17:37:31+00:00",
  "dernier_seq_reglements": {
-  "principal": 7948,
+  "principal": 7949,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2508,
@@ -1850,7 +1850,7 @@
   "fantome:nf_demi_mise_v1.0.0": 1148,
   "fantome:nf_prix_haut_sans_fin_v1.0.0": 1116,
   "fantome:nf_quart_mise_v1.0.0": 1213,
-  "fantome:nf_sport_prix_haut_v1.0.0": 3920,
+  "fantome:nf_sport_prix_haut_v1.0.0": 3922,
   "fantome:nf_sport_sans_fin_v1.0.0": 2114,
   "fantome:nm_demi_mise_v1.0.0": 1931,
   "fantome:outsider_sport_apres_midi_v1.0.0": 1675,
@@ -1952,7 +1952,7 @@
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 768,
   "fantome:nf_sport_patiente_6_24h_6_12h_v1.0.0": 767,
-  "fantome:seismes_marche_v1.0.0": 766,
+  "fantome:seismes_marche_v1.0.0": 767,
   "fantome:box_office_favori_v1.0.0": 672,
   "fantome:spacex_cumul_v1.0.0": 658,
   "fantome:toucher_metaux_v1.0.0": 710,
