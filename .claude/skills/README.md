@@ -14,6 +14,7 @@ Installés le 22/10/2026 à la demande d'Etienne.
 | `nouvelle-strategie` | ajouter une stratégie, une variante ou une fille dans l'arène |
 | `verifier-tableau-de-bord` | avant de pousser un changement du tableau de bord ; revue quotidienne |
 | `evaluer-source-externe` | une idée, un bot, un dépôt ou un skill venu d'un tiers |
+| `prevoir-un-marche` | écrire une conviction de Claude (labo v2, 07/11/2026) ; relire les convictions réglées |
 
 Ces fiches résument et renvoient aux documents de référence ; quand un document change, mets la fiche à jour.
 

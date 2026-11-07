@@ -26,7 +26,7 @@ Cette section prime sur tout ce qui suit quand ils se contredisent.
   marché (données officielles publiées à heure fixe, compteurs, classements, observations). (2) Lire les règles mieux que la
   foule (cas limites, dates, fuseaux, définitions, « by » contre « on »). (3) Marchés lents et peu suivis où une recherche de
   2 heures vaut plus que le prix. (4) Cohérence entre marchés liés. (5) Toute idée jamais essayée ici, même « folle ».
-- **Convictions de Claude** (`config/convictions.yaml`, stratégie `convictions_claude`) : à chaque passage, étudie à fond 1 à 3
+- **Convictions de Claude** (`config/convictions.yaml`, stratégie `convictions_claude`, méthode : skill `prevoir-un-marche`) : à chaque passage, étudie à fond 1 à 3
   marchés (règles, source, données, actualité, prix des autres plateformes) et, si ta probabilité s'écarte nettement du prix,
   écris une conviction (probabilité, borne basse prudente, date limite, mise maximale, raison, sources). Jamais de retouche
   après coup : une nouvelle conviction et `abandon: true` sur l'ancienne. Relis les convictions réglées : gagnées contre
