@@ -1,0 +1,18 @@
+# 07/11 nuit : trois séries de règlements arrivées depuis hier (famille 2)
+
+**Question** : les paris réglés cette nuit (UMA du 3/11, semaine du 2/11 des métaux) montrent-ils un défaut de code ou seulement du tirage ?
+Aucune « Enquête obligatoire » dans la feuille de mission ; constats « à regarder » identiques aux passages précédents (tweets, `chance`, `copie_absente`).
+
+**1. `toucher_metaux` (fantôme, 22 paris réglés, −94 € sur 241 € misés, −39 %)**
+- 6 gagnés pour 7,2 attendus par les prix payés, mais 10,2 attendus par la probabilité du modèle : le modèle surestime la chance de toucher de ≈ 0,14 par pari ; la réalité suit le marché, pas le modèle.
+- Les 22 paris sont 2 semaines (26/10 : 5 paris, 2 gagnés ; 2/11 : 17 paris, 4 gagnés) et 2 métaux : ≈ 4 tirages indépendants, pas 22. 12 paris se règlent d'un coup le 07/11 à 00:06 (semaine du 2/11, seuils non touchés).
+- Cohérent avec « indice affaibli » du 04/11 (`commodites_toucher.md`) : fantôme seulement, rien au principal. Je n'ai pas relu les règlements contre une source de prix : seulement les 22 questions (« hit (HIGH/LOW) », semaine) et les paiements 0/1 du journal.
+- Leçon (carnet) : l'écart modèle − prix de 0,14 sur des échelles de « touche » n'est pas un avantage ; la mise franche (Kelly) a transformé un tirage de 2 semaines en −39 %.
+
+**2. `sieges_coherence` (fantôme, 4 règlements sur 7 paris)** : 3 gagnés (+69 €) et 1 perdu (Pennsylvanie « exactement 11 » NON, −65,5 €), net +2,5 € (capital 1 002,5 €). 3 gagnés pour ≈ 2,2 attendus, 4 paris d'une même vague : rien à conclure ; les 3 autres attendent l'UMA. Le piège du prix médian (« Piège de lecture » du 04/11) est ce qui a coûté la perte de Pennsylvanie (acheteur à 0,034 pour un marqueur à 0,59).
+
+**3. Mississippi (principal, −8,7 €)** : « Républicains gagnent le Sénat du Mississippi » OUI à 0,87 (`favori_politique_nuit`, 28/10) et « Démocrates gagnent » NON à 0,87 (`favori_politique`, 02/11) sont le **même pari deux fois** (marchés miroirs d'un même événement 57678). Le favori à 0,885 s'est effondré le 04/11 (0,805 → 0,345 → 0,02) : surprise réelle (les prix ont suivi, pas de donnée périmée). Perte 8,7 € = 1,3 % du capital. Sur 72 événements du journal du principal avec plusieurs marchés, 1 seul cas de miroir sur course à deux (+ `1111175`, `711714` : deux NON/OUI de candidats différents, non miroirs). Pas de correctif : les doublons miroirs sont rares et petits (5 parts minimum), et un garde-fou « un seul côté par course à deux candidats » se prouverait par un rejeu avant d'être ajouté.
+
+**4. Source en panne : XTracker (403)** — `published/data.json` → `sources.etat.xtracker` : « HTTP 403 » sur `xtracker.polymarket.com/api/users` (cycle de 00 h 47 UTC, et un appel à la main depuis la routine : 403 aussi). Dernier achat de `compteur_tweets` (champion) et de `compteur_truth` : 06/11 19 h UTC ; depuis, leurs abstentions disent « compteur pas à jour » (15 et 31 marchés) : le garde-fou marche, ils ne parient pas à l'aveugle, mais le champion est muet tant que la source ne répond pas. Je n'ai pas cherché à contourner le 403 (changer d'en-tête = contournement d'une protection d'accès, interdit n° 7). Aussi en panne : PortWatch (« Too many requests »), GDELT (délai dépassé) ; Bluesky et X restent hors service (compte requis, payant). À relire au prochain passage : si le 403 dure, option légitime = compter les posts depuis une autre source ouverte (flux officiel Truth Social, à évaluer avec `evaluer-source-externe`) ou demander à Etienne si XTracker a changé ses conditions.
+
+**Verdict** : aucun défaut de code. Les trois séries sont des tirages corrélés (une semaine de métaux, une soirée d'élection) que l'arène lit comme 22, 4 et 2 paris.
