@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7875,
+  "principal": 7876,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2497,
@@ -30,7 +30,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 4087,
+  "fantome:nf_court_v1.0.0": 4089,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2579,
@@ -70,7 +70,7 @@
   "fantome:nf_sport_patiente_2crans_v1.0.0": 657,
   "fantome:nf_sport_patiente_oui_v1.0.0": 542,
   "fantome:parking_politique_v1.0.0": 1334,
-  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1556,
+  "fantome:nf_sport_patiente_6_24h_v1.0.0": 1558,
   "fantome:nf_sport_patiente_demi_mise_v1.0.0": 613,
   "fantome:nf_sport_patiente_large_v1.0.0": 592,
   "fantome:nf_sport_patiente_non_v1.0.0": 482,
@@ -149,7 +149,7 @@
   "fantome:detroits_tranches_v1.0.0": 697,
   "fantome:mots_prononces_nfl_v1.1.0": 692,
   "fantome:detroits_marche_log_v1.0.0": 727,
-  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 809,
+  "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 811,
   "fantome:nf_tennis_12_18h_vainqueur_800_850_v1.0.0": 434,
   "fantome:compteur_tweets_non_ecart_large_v1.0.0": 357,
   "fantome:nf_sport_non_900_925_v1.0.0": 751,
@@ -192,7 +192,7 @@
   "fantome:compteur_truth_dispersion_6_audace_v1.0.0": 264,
   "fantome:compteur_truth_rythme_long_audace_v1.0.0": 148
  },
- "verifiees": 18930,
+ "verifiees": 18933,
  "non_verifiables": 14,
  "anomalies": [
   {
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T11:49:24+00:00",
+ "derniere_execution": "2026-11-07T11:53:02+00:00",
  "dernier_seq_reglements": {
-  "principal": 7875,
+  "principal": 7876,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2497,
@@ -1828,7 +1828,7 @@
   "fantome:loterie_meteo_v1.0.0": 1977,
   "fantome:suivre_politique_v1.0.0": 1966,
   "fantome:nf_autres_sujets_v1.0.0": 1296,
-  "fantome:nf_court_v1.0.0": 4089,
+  "fantome:nf_court_v1.0.0": 4091,
   "fantome:nf_equipe_v1.0.0": 1286,
   "fantome:nf_long_v1.0.0": 1281,
   "fantome:nf_moyen_v1.0.0": 2579,
