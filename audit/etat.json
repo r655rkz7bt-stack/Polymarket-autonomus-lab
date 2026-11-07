@@ -1,13 +1,13 @@
 {
  "dernier_seq": {
-  "principal": 7729,
+  "principal": 7730,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2475,
   "fantome:crypto_threshold_v1.0.0": 2185,
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2816,
+  "fantome:naive_favorite_v1.0.0": 2817,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-68664092028730691691877184532638420617937439178258237875737295373639784856682"
   }
  ],
- "derniere_execution": "2026-11-06T23:57:41+00:00",
+ "derniere_execution": "2026-11-07T00:06:04+00:00",
  "dernier_seq_reglements": {
-  "principal": 7729,
+  "principal": 7730,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2475,
@@ -1806,7 +1806,7 @@
   "fantome:information_advantage_v1.0.0": 907,
   "fantome:market_structure_patiente_v1.0.0": 716,
   "fantome:market_structure_v1.0.0": 2267,
-  "fantome:naive_favorite_v1.0.0": 2816,
+  "fantome:naive_favorite_v1.0.0": 2817,
   "fantome:news_momentum_v1.0.0": 1255,
   "fantome:reversion_v1.0.0": 582,
   "fantome:social_sentiment_v1.0.0": 907,
