@@ -14,7 +14,7 @@ from lab import in_bounds, set_param  # noqa: E402
 
 
 def test_set_param_changes_only_the_target_and_keeps_comments():
-    text = (ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8")
+    text = (ROOT / "config" / "strategies_v1.yaml").read_text(encoding="utf-8")
     new = set_param(text, "reversion", "min_net_edge", 0.05)
     cfg_old, cfg_new = yaml.safe_load(text), yaml.safe_load(new)
     assert cfg_new["reversion"]["params"]["min_net_edge"]["value"] == 0.05
@@ -27,7 +27,7 @@ def test_set_param_changes_only_the_target_and_keeps_comments():
 
 
 def test_grid_respects_bounds():
-    cfg = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8"))
+    cfg = yaml.safe_load((ROOT / "config" / "strategies_v1.yaml").read_text(encoding="utf-8"))
     assert in_bounds(cfg, "reversion", "kelly_fraction", 1.0)
     assert not in_bounds(cfg, "reversion", "kelly_fraction", 9.0)
     assert not in_bounds(cfg, "reversion", "inconnu", 1.0)

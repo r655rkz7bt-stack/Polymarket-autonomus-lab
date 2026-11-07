@@ -25,62 +25,13 @@ def strategy(**overrides):
 
 
 def test_repository_config_loads():
+    """Labo v2 (07/11/2026, experiments/BILAN_V1.md) : 7 stratégies à indice mesuré + les convictions de Claude."""
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
-    # Éliminées par l'arène, coupées de la config le 31/10/2026 (enabled: false) : la liste ci-dessous les nomme encore.
-    coupees = {'kalshi_reference', 'nf_tennis_prix_bas_vainqueur', 'outsider_sport_apres_midi', 'loterie_meteo', 'nf_sport_patiente_biais_faible', 'nf_sport_patiente_tennis_875_900', 'football_trois_issues', 'nf_tennis_prix_bas_800_850', 'futurs_bookmakers', 'paire_oui_non', 'nf_sport_patiente_tennis', 'nf_sport_patiente_sans_itf', 'suivre_politique', 'nf_tennis_12_18h', 'marches_jumeaux', 'moins_de_cartes_franche', 'outsider_sport_patiente', 'nf_sport_patiente_matchs', 'contrer_crypto_patiente_audace', 'nf_sport_vainqueur', 'crypto_threshold', 'nf_court_prix_haut', 'outsider_itf', 'nf_sport_prix_haut_3_6h', 'nf_sport_925_950', 'nf_tennis_vainqueur', 'crypto_threshold_24_72h', 'calibration_patiente', 'cotes_tennis', 'nf_court_prix_haut_biais_faible', 'implication_politique', 'nf_sport_patiente_tennis_850_875', 'compteur_tweets_non', 'nf_sport_patiente_matin', 'compteur_tweets_non_ecart_large', 'nf_tennis_12_18h_vainqueur_800_850', 'coherence_match', 'nm_demi_mise', 'mots_prononces_patiente', 'nf_sport_patiente_72_168h_850_875', 'contrer_crypto_audace', 'crypto_non_bon_marche', 'compteur_tweets_non_patiente', 'crypto_threshold_prix_bas', 'compteur_tweets_oui', 'nf_sport_patiente_12_18h', 'compteur_tweets_12_18h'}
-    assert sorted(s.strategy_id for s in loaded) == sorted(n for n in [
-        "calibration_patiente", "contrer_crypto", "contrer_crypto_patiente", "cross_market",
-        "crypto_threshold", "crypto_threshold_patiente",
-        "favori_politique", "favori_politique_patiente", "favori_politique_quasi_certain", "favori_politique_nuit", "outsider_sport_apres_midi", "loterie_meteo",
-        "naive_favorite", "naive_favorite_large", "naive_favorite_sans_fin",
-        "nf_sport_prix_haut", "nf_sport_sans_fin",
-        "nm_demi_mise", "nf_court", "nf_court_prix_haut", "nf_sport_6_24h", "nf_sport_patiente_6_24h", "nf_sport_patiente_72_168h", "nf_court_football", "nf_tennis_12_18h", "nf_sport_patiente_72_168h_12_18h", "nf_sport_patiente_matin", "crypto_threshold_non", "nf_moyen", "nf_oui", "nf_sport", "nf_sport_patiente", "nf_sport_oui", "nf_sport_non", "nm_court", "nm_crypto", "nm_hors_crypto", "nm_long", "nm_prix_bas",
-        "nm_prix_haut", "outsider_sport_patiente", "suivre_politique",
-        "parking_politique", "nf_sport_patiente_tennis", "nf_tennis_prix_bas", "nf_tennis_prix_bas_vainqueur", "nf_tennis_prix_bas_800_850", "statu_quo_ia", "nf_tennis_debut_match",
-        "crypto_threshold_prix_bas", "crypto_threshold_24_72h", "nf_sport_patiente_prix_850_875",
-        # Vingt nouvelles pistes (20/10/2026), lot A.
-        "echelle_dates", "coherence_match", "implication_politique", "paire_oui_non",
-        "marches_jumeaux",
-        # Lot B.
-        "kalshi_reference", "predictit_reference", "manifold_reference", "futurs_bookmakers",
-        "football_trois_issues", "compteur_tweets", "cotes_tennis",
-        # Lot C.
-        "mots_prononces", "mots_nouveaux", "fatigue_nhl",
-        # Achat échelonné et outsiders (20/10/2026).
-        "nf_sport_patiente_sans_itf", "outsider_itf",
-            # Filles 80/20 du 21/10/2026.
-            "nf_court_soir", "nf_court_football_soir", "nf_sport_18_24h", "nf_sport_925_950", "nf_sport_18_24h_vainqueur", "nf_sport_prix_haut_3_6h", "favori_politique_quasi_certain_connu", "nf_sport_patiente_12_18h",
-            "compteur_tweets_non", "mots_prononces_nfl",
-            "mots_prononces_patiente", "compteur_tweets_non_patiente",
-            "nf_sport_patiente_tennis_875_900", "nf_sport_patiente_72_168h_850_875", "nf_sport_football", "cpi_tranches", "nf_sport_vainqueur", "nf_sport_patiente_tennis_850_875", "jobs_favori_non", "nf_tennis_vainqueur", "nf_tennis_12_18h_vainqueur", "nf_sport_patiente_biais_faible", "nf_sport_patiente_avant_match", "nf_court_prix_haut_biais_faible",
-            "vague_volume_suivre", "vague_volume_suivre_x5", "moins_de_cartes", "moins_de_cartes_lol", "moins_de_cartes_bo5", "moins_de_kills", "non_aux_drames", "nf_sport_patiente_matchs", "saison_non", "candidats_non", "rallies_non", "rallies_non_favori", "mentions_non", "mentions_non_outsider", "compteur_tweets_non_hors_elon_trump", "compteur_truth", "crypto_non_10_20", "compteur_tweets_72_168h", "compteur_tweets_12_18h", "compteur_tweets_72_168h_12_18h", "detroits_tranches", "detroits_marche_log", "detroits_non_normal", "seismes_marche", "sieges_coherence", "box_office_favori", "spacex_cumul", "toucher_metaux",
-        "nf_tennis_12_18h_vainqueur_800_850", "nf_sport_patiente_6_24h_autre", "compteur_tweets_non_ecart_large", "nf_sport_patiente_6_24h_6_12h", "nf_sport_non_900_925",
-        # Expériences audacieuses (27/10/2026, « vois les pertes comme des expériences »).
-        "contrer_crypto_audace", "contrer_crypto_patiente_audace", "crypto_non_bon_marche",
-        # Comptes suspects (27/10/2026, affaire du Ballon d'Or).
-        "suivre_inities", "suivre_inities_seul", "classement_appstore", "ia_oui_sorties",
-        # Mise franche d'une stratégie qui bat ses prix en direct (27/10/2026, passage du soir).
-        "moins_de_cartes_franche", "tranche_centrale_non",
-        # Passage du 28/10/2026 : fille « OUI » de compteur_tweets, mise franche.
-        "compteur_tweets_oui", "compteur_tweets_48h_audace",
-        # Passage du 02/11/2026 : Trump, dispersion plus large, mise franche.
-        "compteur_truth_dispersion_6_audace",
-        # Passage du 04/11/2026 : Trump, rythme des 12 dernières semaines, mise franche.
-        "compteur_truth_rythme_long_audace",
-        # Passage du 28/10/2026 (soir) : sœur de la n° 1, ordres annulés au coup d'envoi.
-        "nf_sport_patiente_prix_850_875_avant_match", "favori_esport_milieu"] if n not in coupees)
-    assert all(s.params["kelly_fraction"] == 1 for s in loaded
-               if "kelly_fraction" in s.params and not s.strategy_id.startswith(("meteo_prevision", "crypto_threshold_patiente", "naive_favorite_patiente",
-                                                                   "favori_politique", "contrer_crypto", "suivre_politique",
-                                                                   "loterie_meteo", "naive_favorite_large", "nf_demi_mise",
-                                                                   "nf_quart_mise", "nm_demi_mise", "nf_sport_patiente_demi_mise", "cotes_bookmakers",
-                                                                   "parking_politique", "statu_quo_ia", "decroissance_temps", "outsiders_surcotes",
-                                                                   "marche_neuf", "apres_echeance", "choc_sans_nouvelle", "kalshi_reference",
-                                                                   "predictit_reference", "manifold_reference", "futurs_bookmakers",
-                                                                   "football_trois_issues", "compteur_tweets", "compteur_truth", "cotes_tennis",
-                                                                   "mots_prononces", "mots_nouveaux", "fatigue_nhl",
-                                                                   "outsider_itf", "cpi_tranches", "jobs_favori_non", "vague_volume", "moins_de_cartes", "moins_de_kills", "saison_non", "candidats_non", "rallies_non", "rallies_non_favori", "mentions_non", "mentions_non_outsider", "detroits_tranches", "detroits_marche_log", "detroits_non_normal", "seismes_marche", "sieges_coherence", "box_office_favori", "spacex_cumul", "toucher_metaux",
-                                                                   "suivre_inities", "classement_appstore", "tranche_centrale_non")))
+    assert [s.strategy_id for s in loaded] == [
+        "convictions_claude", "compteur_tweets", "compteur_tweets_72_168h", "compteur_truth", "favori_politique_quasi_certain",
+        "seismes_marche", "non_aux_drames", "suivre_inities"]
+    assert all(s.version == "2.0.0" for s in loaded)
+    assert len(load_strategies(ROOT / "config" / "strategies_v1.yaml", include_disabled=True)) > 150  # archive de la v1
 
 
 def test_param_outside_bounds_is_refused():

@@ -289,7 +289,7 @@ def test_announcers_of_football_and_of_the_rest_have_separate_histories():
 
 def test_question_filters_split_nfl_announcers_from_the_world_cup(tmp_path):
     from polymarket_agent.strategy_engine import Filtered
-    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies.yaml")}["mots_prononces_nfl"]
+    cfg = {s.strategy_id: s for s in load_strategies(ROOT / "config" / "strategies_v1.yaml")}["mots_prononces_nfl"]
     assert cfg.filters == {"question_contient": ["game?"], "question_exclut": ["world cup", "ufc"]}
     nfl = parse_market(raw_market("a", question='Will the announcers say "Flag" during the 49ers vs Rams game?'))
     wc = parse_market(raw_market("b", question='Will the announcers say "Goal" during Norway vs Senegal World Cup Match?'))
@@ -398,7 +398,7 @@ def test_wide_gap_tweet_daughter_buys_only_a_big_disagreement(tmp_path):
     import yaml
     from pathlib import Path
     from polymarket_agent.references import tweet_bucket_probability
-    cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "strategies.yaml").read_text(encoding="utf-8"))
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "strategies_v1.yaml").read_text(encoding="utf-8"))
     p = {k: v["value"] for k, v in cfg["compteur_tweets_non_ecart_large"]["params"].items()}
     mother = {k: v["value"] for k, v in cfg["compteur_tweets_non"]["params"].items()}
     m = parse_market(raw_market("t", yes_token="tY", no_token="tN", groupItemTitle="200-219", end=NOW + timedelta(hours=24)))

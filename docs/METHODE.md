@@ -16,6 +16,27 @@ Fichier libre : le chercheur peut l'améliorer. Les règles permanentes sont dan
 
 ## Méthode de recherche (chaque session de recherche)
 
+**LABO V2 (depuis le 07/11/2026, décision d'Etienne : « tout reset, liberté quasi totale pour Claude et le chercheur »).**
+Bilan de la v1 : `experiments/BILAN_V1.md` (−35 %, 190 stratégies, presque toutes des variantes du favori sans avantage).
+Cette section prime sur tout ce qui suit quand ils se contredisent.
+- **Liberté quasi totale** : tu peux changer tout ce qui n'est pas dans `PROTECTED_PATHS.txt` (stratégies, arène et ses règles,
+  principal, mises, scanner, sources, tableau de bord, cette routine, la méthode), créer des stratégies, en couper, sans demander.
+  Seules limites : la règle n°1, la simulation honnête (vrais prix, vrais carnets, frais, journal signé, aucune prévision écrite
+  après coup), aucun ordre réel, aucune API payante, aucun secret affiché, pas de scraping qui contourne une protection.
+- **Ce qu'on ne refait pas** : variantes de favoris, découpages a posteriori, momentum, stop-loss, tenue de marché, vitesse
+  (cycle de 5 min), copie de portefeuilles. Les 64 pistes écartées de `experiments/PISTES.md` restent écartées sauf fait nouveau.
+- **Où chercher** : un avantage d'INFORMATION ou de RÈGLE, pas un biais de prix. (1) Lire la source de résolution avant le
+  marché (données officielles publiées à heure fixe, compteurs, classements, observations). (2) Lire les règles mieux que la
+  foule (cas limites, dates, fuseaux, définitions, « by » contre « on »). (3) Marchés lents et peu suivis où une recherche de
+  2 heures vaut plus que le prix. (4) Cohérence entre marchés liés. (5) Toute idée jamais essayée ici, même « folle ».
+- **Convictions de Claude** (`config/convictions.yaml`, stratégie `convictions_claude`) : à chaque passage, étudie à fond 1 à 3
+  marchés (règles, source, données, actualité, prix des autres plateformes) et, si ta probabilité s'écarte nettement du prix,
+  écris une conviction (probabilité, borne basse prudente, date limite, mise maximale, raison, sources). Jamais de retouche
+  après coup : une nouvelle conviction et `abandon: true` sur l'ancienne. Relis les convictions réglées : gagnées contre
+  attendues, et ce que tu as mal lu.
+- **Arène plus petite** : au plus ~20 stratégies vivantes ; chacune doit porter une idée neuve et son hypothèse. Tu peux
+  changer les règles de l'arène et du principal si un rejeu montre que c'est mieux.
+
 **Cap sur l'objectif : les pertes sont des expériences** (décision d'Etienne, 27/10/2026 : « plus de liberté pour le tout ;
 fais ce qui te semble juste et le plus profitable ; ne sois pas paralysé par les pertes, vois-les comme des essais et des
 expériences pour améliorer et aller chercher de plus gros gains ; regarde l'objectif plutôt que la mort prochaine »).
