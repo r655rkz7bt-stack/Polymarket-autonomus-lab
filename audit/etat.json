@@ -1,6 +1,6 @@
 {
  "dernier_seq": {
-  "principal": 7858,
+  "principal": 7859,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2495,
@@ -1796,9 +1796,9 @@
    "op_id": "settle-87249160725268576761318544637015834078260647399120993899333685851926400469347"
   }
  ],
- "derniere_execution": "2026-11-07T10:29:08+00:00",
+ "derniere_execution": "2026-11-07T10:33:19+00:00",
  "dernier_seq_reglements": {
-  "principal": 7858,
+  "principal": 7859,
   "fantome:calibration_patiente_v1.0.0": 2406,
   "fantome:calibration_v2.0.0": 1581,
   "fantome:cross_market_v1.0.0": 2495,
@@ -1936,7 +1936,7 @@
   "fantome:nf_sport_prix_haut_3_6h_v1.0.0": 737,
   "fantome:nf_sport_patiente_biais_faible_v1.0.0": 681,
   "fantome:nf_court_prix_haut_biais_faible_v1.0.0": 412,
-  "fantome:moins_de_cartes_v1.0.0": 1409,
+  "fantome:moins_de_cartes_v1.0.0": 1411,
   "fantome:non_aux_drames_v1.0.0": 861,
   "fantome:vague_volume_contrer_v1.0.0": 3,
   "fantome:vague_volume_suivre_v1.0.0": 1095,
@@ -1944,7 +1944,7 @@
   "fantome:nf_sport_patiente_matchs_v1.0.0": 550,
   "fantome:saison_non_v1.0.0": 720,
   "fantome:compteur_tweets_non_hors_elon_trump_v1.0.0": 723,
-  "fantome:detroits_tranches_v1.0.0": 693,
+  "fantome:detroits_tranches_v1.0.0": 695,
   "fantome:mots_prononces_nfl_v1.1.0": 690,
   "fantome:detroits_marche_log_v1.0.0": 725,
   "fantome:nf_sport_patiente_6_24h_autre_v1.0.0": 807,
@@ -1979,7 +1979,7 @@
   "fantome:classement_appstore_v1.0.0": 182,
   "fantome:ia_oui_sorties_v1.0.0": 603,
   "fantome:moins_de_cartes_franche_v1.0.0": 328,
-  "fantome:tranche_centrale_non_v1.0.0": 584,
+  "fantome:tranche_centrale_non_v1.0.0": 586,
   "fantome:suivre_inities_seul_v1.0.0": 486,
   "fantome:compteur_tweets_oui_v1.0.0": 444,
   "fantome:compteur_tweets_48h_audace_v1.0.0": 568,
