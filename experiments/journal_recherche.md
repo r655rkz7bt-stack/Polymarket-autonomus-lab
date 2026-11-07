@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-07 (passage chercheur de 16 h, 15 h 54 → ~16 h 05 UTC ; durée visée 93 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-07_apres_midi_tranches_80_20_et_retour_xtracker.md`, famille 2). Aucune « Enquête obligatoire ». Les trois filles 80/20 de la feuille relues sur le journal de la mère : tranches choisies après coup (délai 24-72 h de `crypto_non_10_20` : z +2,74 mais −48 € sans ses 3 plus gros paris ; 72-168 h de `contrer_crypto_audace` : 9 paris, 5 événements, 2 jours ; prix 0,45-0,60 de `compteur_tweets` : −1 € sans les 3 plus gros). Refusées. Script `experiments/enquetes/scripts/tranches_filles_80_20.py` avec date de coupure pour le test hors échantillon. XTracker répond de nouveau ; `compteur_tweets` a repris (refus « avantage net insuffisant », plus « compteur pas à jour »). `copie_absente` de `naive_favorite_sans_fin` : part du principal épuisée, pas un défaut.
+- **Recherche** : aucune piste avancée (données futures attendues).
+- **Arène** : rien ajouté, faute d'idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : relancer `tranches_filles_80_20.py 2026-11-08` d'ici une semaine (≥ 30 paris et 15 événements dans la tranche avant toute fille) ; règlement Trump 13/11 ; 3 règlements de `sieges_coherence` ; CDC mercredi.
+
 ## 2026-11-07 (passage chercheur de 11 h, 10 h 54 → 11 h 06 UTC ; durée visée 91 min non atteinte : le reste attend des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, premières lignes `cnn_archive` du cycle de production), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-07_midi_xtracker_403_secours_cnn.md`, famille 6 puis 3). **Défaut trouvé : source unique du compteur.** XTracker répond 403 depuis le 06/11 ≈ 19 h UTC : le champion `compteur_tweets` et `compteur_truth` s'abstenaient depuis ≈ 16 h (signalé six passages de suite sans solution). Source de secours trouvée : l'archive publique CNN des posts de Trump (`ix.cnn.io/data/truth-social/truth_archive.json`), identique à XTracker sur 332 heures sur 336, sous-compte de ~25 % dans les heures de rafale (≥ 20 posts/h : période marquée `incertain`, abstention). Corrigé : `references.fetch_trump_from_archive` branché dans `data_collector` seulement si XTracker échoue, 2 tests, cycle local vérifié. Autres comptes (Elon…) : toujours sans compteur. Contrôles à la main : 12 règlements du principal relus sur Gamma (12/12), 65 positions ouvertes dont aucune sur un marché déjà fermé.
