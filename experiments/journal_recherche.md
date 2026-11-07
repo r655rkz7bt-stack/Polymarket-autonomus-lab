@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-11-07 (passage chercheur de 21 h, 20 h 55 → ~21 h 15 UTC ; durée visée 96 min non atteinte : aucun avantage d'information vérifiable trouvé sur les marchés étudiés, arrêt sans remplissage)
+## 2026-11-07 (passage chercheur de 21 h, 20 h 55 → 20 h 57 UTC ; durée visée 96 min non atteinte : aucun avantage d'information vérifiable trouvé sur les marchés étudiés, arrêt sans remplissage)
 
 - **Enquête** : labo v2 vieux de quelques heures (8 stratégies à 1 000 €, 0 opération clôturée, aucune « Enquête obligatoire ») : rien à relire. Pas de contrôle de famille mené.
 - **Recherche / convictions** : 2 marchés étudiés, **aucune conviction écrite**. (1) Marathon GTA de Kai Cenat (début 05/11) : l'échelle « terminé avant le 10/11 » 0,15 → 11/11 0,60 → 12/11 0,75 → 13/11 0,95 est cohérente avec un marathon de 6 à 8 jours ; la recherche web ne donne aucune avancée du direct (jeux finis, heures) : pas de source qui tranche, et le direct n'est pas lisible depuis la routine. (2) « Anthropic IPO avant le 30/11 » (0,765, 714 k$ de volume, marché liquide) : presse contradictoire (S-1 public du 26/10 selon IPO Scoop, cotation attendue 3-26/11, roadshow pas avant le 10/11, non vérifié sur SEC EDGAR) ; le prix contient déjà ces infos, aucun écart à défendre.
