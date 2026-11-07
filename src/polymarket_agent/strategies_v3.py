@@ -758,6 +758,9 @@ class CompteurTweets(_Base):
             if last is None or (now - last).total_seconds() > float(p["max_stale_hours"]) * 3600:
                 out.abstain("compteur pas à jour")
                 continue
+            if tr.get("incertain"):
+                out.abstain("compteur de secours incertain (heure de rafale : l'archive CNN en rate 25 %)")
+                continue
             if float(p.get("skip_nyc", 0)) and str(tr.get("compte", "")).lower() == "nycmayor":
                 out.abstain("compte écarté (NYC Mayor : perdant à tous les réglages sur le passé)")
                 continue
