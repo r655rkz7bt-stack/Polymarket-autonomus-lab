@@ -10,3 +10,8 @@
   période marquée `incertain` et abstention dans ce cas). Test : `tests/test_references.py` (deux tests). Cycle local : XTracker 403 → secours → 2 périodes de Trump rattachées (`source: cnn_archive`).
 - **Chiffre** : −12 % sur la période de la rafale (530 contre 605), 0 sur les périodes calmes (3/3, 34/34).
 - **Contrôle automatique** : `sources_vides` et `retraits_inactifs` disaient déjà la panne ; rien à ajouter.
+
+## Contrôles à la main faits au même passage (aucun défaut)
+- **Règlement (famille 3)** : 12 paris du principal réglés depuis le 25/10 (sur 346, −79 €) tirés au hasard (graine 7), marché relu sur Gamma `/markets/<id>` : le paiement par part du journal
+  égale le prix final du jeton dans 12 cas sur 12 (tennis, e-sport, NBA, totaux, séismes, score exact, Elon Musk).
+- **Positions jamais réglées (famille 6)** : 65 positions ouvertes du principal (249 € de coût), aucune sur un marché que Gamma dit déjà fermé.
