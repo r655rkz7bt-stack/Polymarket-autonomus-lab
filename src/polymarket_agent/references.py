@@ -146,6 +146,88 @@ def fetch_tweet_trackings(http: HttpClient, handles=None, now: datetime | None =
     return rows
 
 
+# ---- Secours quand XTracker répond 403 (07/11/2026, experiments/truth_cnn.md) ----
+# L'archive publique de CNN (ix.cnn.io/data/truth-social/truth_archive.json, tous les posts de @realDonaldTrump, réécrite toutes
+# les ~5 minutes) redonne heure par heure les mêmes nombres que XTracker sur 332 heures sur 336 ; elle ne compte que ~75 % des posts
+# des heures de rafale (plus de 20 posts dans l'heure : le relevé de CNN en rate). Une période qui contient une telle heure est
+# marquée `incertain` et les stratégies de compteur s'abstiennent.
+TRUMP_ARCHIVE_URL = "https://ix.cnn.io/data/truth-social/truth_archive.json"
+RAFALE_PAR_HEURE = 20
+_MOIS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+
+
+def _trump_windows(now: datetime, previous: list[dict]) -> list[dict]:
+    """Périodes des marchés « Truth Social posts » : celles déjà connues (dernier relevé XTracker) et les périodes régulières
+    (mardi et vendredi, 12 h heure de l'Est, 7 jours) qui courent ou démarrent dans la journée. Le rattachement se fait au
+    `slug` : une période sans marché ne rattache rien."""
+    from zoneinfo import ZoneInfo
+    eastern = ZoneInfo("America/New_York")
+    out: dict[str, dict] = {}
+    for r in previous:
+        if str(r.get("compte", "")).lower() == "realdonaldtrump" and r.get("slug"):
+            end = parse_date(r.get("fin") or "")
+            if end is None or end > now - timedelta(hours=6):
+                out[r["slug"]] = {k: r.get(k) for k in ("compte", "titre", "slug", "debut", "fin")}
+    today = now.astimezone(eastern).date()
+    for back in range(-1, 9):
+        day = today - timedelta(days=back)
+        if day.weekday() not in (1, 4):
+            continue
+        start = datetime(day.year, day.month, day.day, 12, tzinfo=eastern).astimezone(timezone.utc)
+        end_day = day + timedelta(days=7)
+        if start > now + timedelta(days=1) or start + timedelta(days=7) < now:
+            continue
+        a, b = _MOIS[day.month - 1], _MOIS[end_day.month - 1]
+        slug = f"donald-trump-of-truth-social-posts-{a}-{day.day}-{b}-{end_day.day}-{end_day.year}"
+        out.setdefault(slug, {
+            "compte": "realDonaldTrump", "slug": slug,
+            "titre": f"Donald Trump # Truth Social posts {a.title()} {day.day} - {b.title()} {end_day.day}, {end_day.year}?",
+            "debut": start.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+            "fin": (start + timedelta(days=7, seconds=-1)).strftime("%Y-%m-%dT%H:%M:%S.000Z")})
+    return list(out.values())
+
+
+def fetch_trump_from_archive(http: HttpClient, now: datetime, previous: list[dict]) -> list[dict]:
+    """Lignes « Trump » au même format que `fetch_tweet_trackings`, comptées sur l'archive CNN. `vu_le` = date de réécriture
+    du fichier (en-tête Last-Modified), donc un fichier figé fait s'abstenir les stratégies comme un XTracker en panne."""
+    now = now.astimezone(timezone.utc)
+    data = http.get_json(TRUMP_ARCHIVE_URL)
+    if not isinstance(data, list) or not data:
+        raise SourceUnavailable("archive CNN vide")
+    modified = None
+    try:
+        from email.utils import parsedate_to_datetime
+        modified = parsedate_to_datetime(http.last_headers.get("last-modified", "")).astimezone(timezone.utc)
+    except (TypeError, ValueError, AttributeError):
+        pass
+    if modified is None:
+        raise SourceUnavailable("archive CNN sans date de réécriture")
+    seen = min(modified, now)
+    times = [t for t in (parse_date(str(p.get("created_at") or "")) for p in data if isinstance(p, dict)) if t is not None]
+    hour = now.replace(minute=0, second=0, microsecond=0)
+    hourly = [0] * (24 * 14)
+    for t in times:
+        k = int((hour - t).total_seconds() // 3600)
+        if 0 <= k < len(hourly) and t < hour:
+            hourly[-1 - k] += 1
+    long_days = LONG_RATE_DAYS["realdonaldtrump"]
+    long_info = {"posts_long": sum(1 for t in times if hour - timedelta(days=long_days) <= t < hour),
+                 "heures_long": long_days * 24}
+    rows = []
+    for w in _trump_windows(now, previous):
+        start, end = parse_date(w["debut"]), parse_date(w.get("fin") or "")
+        if start is None:
+            continue
+        inside = [t for t in times if start <= t <= now and (end is None or t <= end)]
+        per_hour: dict[datetime, int] = {}
+        for t in inside:
+            key = t.replace(minute=0, second=0, microsecond=0)
+            per_hour[key] = per_hour.get(key, 0) + 1
+        rows.append({**long_info, **w, "total": len(inside), "vu_le": seen.isoformat(timespec="seconds"), "heures": hourly,
+                     "source": "cnn_archive", "incertain": any(n >= RAFALE_PAR_HEURE for n in per_hour.values())})
+    return rows
+
+
 class ManifoldMatcher:
     """Recherche la question Polymarket sur Manifold (une recherche par marché, gardée 24 h)."""
 

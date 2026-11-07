@@ -270,8 +270,19 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     snapshot("kalshi", lambda cfg: factories.get("kalshi", lambda c: refs.fetch_kalshi(http, int(c.get("pages", 5))))(cfg),
              "ref:kalshi")
     snapshot("predictit", lambda cfg: factories.get("predictit", lambda c: refs.fetch_predictit(http))(cfg), "ref:predictit")
-    snapshot("xtracker", lambda cfg: factories.get("xtracker", lambda c: refs.fetch_tweet_trackings(
-        http, c.get("comptes") or None, now))(cfg), "ref:tweets")
+    def tweets_with_backup(cfg):
+        """XTracker d'abord ; s'il est en panne (403 depuis le 06/11/2026), les posts de Trump sont comptés sur l'archive CNN
+        (references.fetch_trump_from_archive) et les autres comptes gardent leur dernier relevé (périmé : les stratégies s'abstiennent)."""
+        if "xtracker" in factories:
+            return factories["xtracker"](cfg)
+        try:
+            return refs.fetch_tweet_trackings(http, cfg.get("comptes") or None, now)
+        except SourceUnavailable as exc:
+            log.warning("XTracker en panne (%s) : secours par l'archive CNN pour Trump", exc)
+            old = refs._load(db, "ref:tweets")[1] if db is not None else []
+            trump = refs.fetch_trump_from_archive(http, now, old)
+            return trump + [r for r in old if str(r.get("compte", "")).lower() != "realdonaldtrump"]
+    snapshot("xtracker", tweets_with_backup, "ref:tweets")
     # Lot C : qui a joué la veille en NHL, et ce que chaque orateur a déjà dit (marchés « mentions »).
     snapshot("nhl_repos", lambda cfg: factories.get("nhl_repos", lambda c: refs.fetch_nhl_rest(http, now))(cfg),
              "ref:nhl_repos")

@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-07 (passage chercheur de 11 h, 10 h 54 → 11 h 06 UTC ; durée visée 91 min non atteinte : le reste attend des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, premières lignes `cnn_archive` du cycle de production), arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-07_midi_xtracker_403_secours_cnn.md`, famille 6 puis 3). **Défaut trouvé : source unique du compteur.** XTracker répond 403 depuis le 06/11 ≈ 19 h UTC : le champion `compteur_tweets` et `compteur_truth` s'abstenaient depuis ≈ 16 h (signalé six passages de suite sans solution). Source de secours trouvée : l'archive publique CNN des posts de Trump (`ix.cnn.io/data/truth-social/truth_archive.json`), identique à XTracker sur 332 heures sur 336, sous-compte de ~25 % dans les heures de rafale (≥ 20 posts/h : période marquée `incertain`, abstention). Corrigé : `references.fetch_trump_from_archive` branché dans `data_collector` seulement si XTracker échoue, 2 tests, cycle local vérifié. Autres comptes (Elon…) : toujours sans compteur. Contrôles à la main : 12 règlements du principal relus sur Gamma (12/12), 65 positions ouvertes dont aucune sur un marché déjà fermé.
+- **Recherche** : `experiments/truth_cnn.md` (comparaison heure par heure). `cdc_historique.py` relancé : pas de ligne neuve (dernière 05/11, 5 182).
+- **Arène** : rien ajouté, faute d'idée neuve plausible (les trois filles 80/20 de la feuille restent refusées : mères éteintes ou tranche choisie après coup).
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : vérifier au prochain passage que le cycle de production atteint `ix.cnn.io` (source `xtracker` du battement : lignes `source: cnn_archive` dans `ref:tweets`, achats de `compteur_tweets` repris) ; Elon Musk et les autres comptes sans source de secours ; si XTracker revient, il reprend la main tout seul.
+
 ## 2026-11-07 (passage chercheur de 6 h, 05 h 54 → ~06 h 05 UTC ; durée visée 88 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, XTracker en 403), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-07_matin_famille2_concentration_du_haut.md`, famille 2). Aucune « Enquête obligatoire ». 5 stratégies du haut du classement relues (sans les 3 plus gros paris, sans le meilleur jour, gagnés contre attendus par événement) : tous les z < 2, `nf_sport` perd 79 € sans le 2 novembre, `compteur_tweets_48h_audace` +1 € sans ses 3 plus gros paris. Aucun défaut de code. XTracker toujours en 403 (avec un User-Agent honnête) ; pas de contournement.

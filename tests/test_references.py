@@ -530,3 +530,50 @@ def test_attach_detroits_log_covers_weekly_and_monthly_buckets(tmp_path):
     assert p["a"]["horizon"] == 14 and p["m1"]["horizon"] == 13 and p["m1"]["tranche"] == [25, 30]
     assert 150 < p["b"]["mediane"] < 230 and 20 < p["m1"]["mediane"] < 33  # somme sur 7 jours contre moyenne
     assert "detroit_log" not in (no_pw.references or {})  # ne cite pas PortWatch
+
+
+def test_trump_backup_counts_on_the_cnn_archive_when_xtracker_is_down_and_flags_bursts():
+    """07/11/2026 : XTracker répond 403 depuis le 06/11 19 h UTC et le champion compteur_tweets ne voyait plus rien.
+    L'archive CNN redonne les mêmes nombres heure par heure, sauf dans les heures de rafale (relevé réel : 332 heures sur 336)."""
+    from datetime import datetime, timezone
+    now = datetime(2026, 11, 7, 11, 30, tzinfo=timezone.utc)
+    previous = [{"compte": "realDonaldTrump", "slug": "donald-trump-of-truth-social-posts-november-6-november-13-2026",
+                 "titre": "t", "debut": "2026-11-06T17:00:00.000Z", "fin": "2026-11-13T16:59:59.000Z"},
+                {"compte": "elonmusk", "slug": "elon", "debut": "2026-11-06T17:00:00.000Z"}]
+
+    class Http:
+        last_headers = {"last-modified": "Sat, 07 Nov 2026 11:25:00 GMT"}
+
+        def __init__(self, burst):
+            self.burst = burst
+
+        def get_json(self, url, params=None, headers=None):
+            assert url == refs.TRUMP_ARCHIVE_URL
+            posts = [{"created_at": "2026-11-06T17:30:00.000Z"}, {"created_at": "2026-11-07T03:12:47.550Z"},
+                     {"created_at": "2026-11-05T10:00:00.000Z"}]  # le dernier : avant la période
+            if self.burst:
+                posts += [{"created_at": "2026-11-07T09:%02d:00.000Z" % m} for m in range(25)]
+            return posts
+
+    calm = {r["slug"]: r for r in refs.fetch_trump_from_archive(Http(False), now, previous)}
+    cur = calm["donald-trump-of-truth-social-posts-november-6-november-13-2026"]
+    assert cur["total"] == 2 and cur["incertain"] is False and cur["vu_le"].startswith("2026-11-07T11:25")
+    assert len(cur["heures"]) == 336 and cur["posts_long"] == 3 and cur["heures_long"] == 2016
+    assert "elonmusk" not in {r["compte"] for r in calm.values()}  # les autres comptes restent à la charge de la fusion du cycle
+    # fenêtres régulières (mardi / vendredi, 12 h heure de l'Est = 17 h UTC depuis le 1er novembre) : celle du 3 et celle du 6
+    assert "donald-trump-of-truth-social-posts-november-3-november-10-2026" in calm
+    assert calm["donald-trump-of-truth-social-posts-november-3-november-10-2026"]["debut"] == "2026-11-03T17:00:00.000Z"
+    hot = {r["slug"]: r for r in refs.fetch_trump_from_archive(Http(True), now, previous)}
+    assert hot["donald-trump-of-truth-social-posts-november-6-november-13-2026"]["incertain"] is True
+
+
+def test_tweet_strategy_abstains_on_a_burst_flagged_backup_counter(tmp_path):
+    m = parse_market(raw_market("t", yes_token="tY", no_token="tN", groupItemTitle="200-219", end=NOW + timedelta(hours=24)))
+    m.tweets = {"compte": "realDonaldTrump", "fin": (NOW + timedelta(hours=24)).isoformat(), "total": 180,
+                "heures": [1] * 72, "vu_le": NOW.isoformat(), "incertain": True}
+    books = {"tY": make_book("tY", bids=(("0.20", "1000"),), asks=(("0.21", "1000"),)),
+             "tN": make_book("tN", bids=(("0.79", "1000"),), asks=(("0.80", "1000"),))}
+    s = _s(CompteurTweets, dispersion=1000, recent_hours=72, max_stale_hours=6, margin=0.03, uncertainty=0.005,
+           min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
+    out = s.propose([m], books, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and any("incertain" in a for a in out.abstentions)
