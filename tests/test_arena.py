@@ -315,8 +315,8 @@ def test_several_champions_half_equal_half_merit_one_per_family_and_capped():
     fams = {"naive_favorite": "naive_favorite", "nf_sport": "naive_favorite"}
     assert set(allocation([mom, kid, b], 20, 5, merit=0.5, families=fams, **gates)) == {"nf_sport_v1.0.0", "b_v1"}
     # Le dépôt : les filles remontent bien à leur mère.
-    real = family_map()
-    assert real["nf_sport"] == "naive_favorite" and real["naive_favorite"] == "naive_favorite"
+    real = family_map()  # labo v2 (07/11/2026) : la fille de compteur_tweets remonte à sa mère
+    assert real["compteur_tweets_72_168h"] == "compteur_tweets" and real["compteur_tweets"] == "compteur_tweets"
     # Seule qualifiée : au plus 50 % du capital principal.
     assert exposure([a], {"a_v1": 1.0}, {"part_max_par_strategie": 0.5}) == {"a_v1": 0.5}
     assert RULES["part_max_par_strategie"] == 1.0 and RULES["repartition"]["merite"] == 0.5  # 1,0 depuis le 27/10/2026
@@ -584,8 +584,8 @@ def test_calendar_strategies_are_never_retired_for_inactivity(tmp_path):
     from polymarket_agent.arena import retire_inactive
     cfg = dict(RULES)  # config/promotion.yaml réel
     main = Ledger.create(tmp_path / "m.jsonl", KEY, tmp_path / "m.lock", "1000", now=NOW)
-    names = ["cpi_tranches_v1.0.0", "jobs_favori_non_v1.0.0", "statu_quo_ia_v1.0.0", "saison_non_v1.0.0", "non_aux_drames_v1.0.0",
-             "detroits_tranches_v1.0.0", "mots_prononces_nfl_v1.1.0", "paire_oui_non_v1.0.0"]
+    names = ["convictions_claude_v2.0.0", "compteur_truth_v2.0.0", "non_aux_drames_v2.0.0", "seismes_marche_v2.0.0",
+             "suivre_inities_v2.0.0", "paire_oui_non_v1.0.0"]  # labo v2 (07/11/2026)
     ghosts = {n: Ledger.create(tmp_path / f"{n}.jsonl", KEY, tmp_path / f"{n}.lock", "1000", now=NOW) for n in names}
     standings = [st(n, 0, 0.0, days=5) for n in names]
     assert retire_inactive(main, ghosts, standings, cfg, NOW) == ["paire_oui_non_v1.0.0"]
@@ -598,9 +598,9 @@ def test_weekly_experiment_is_protected_from_the_inactivity_cleanup():
     import yaml
     ROOT = Path(__file__).resolve().parents[1]
     promo = yaml.safe_load((ROOT / "config" / "promotion.yaml").read_text(encoding="utf-8"))
-    assert "classement_appstore" in promo["jamais_retirer"]
+    assert "convictions_claude" in promo["jamais_retirer"]  # labo v2 : attend que Claude écrive ses convictions
     configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8"))
-    assert configs["classement_appstore"]["enabled"] and configs["classement_appstore"]["version"] == "1.1.0"
+    assert configs["convictions_claude"]["enabled"] and configs["convictions_claude"]["version"] == "2.0.0"
 
 
 def test_trust_the_process_every_holder_stays_until_it_loses_ten_percent():

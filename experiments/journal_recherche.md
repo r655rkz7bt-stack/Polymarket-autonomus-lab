@@ -3,6 +3,11 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-07 (session avec Etienne : fin du labo v1, départ du labo v2)
+
+- **Bilan v1** (`BILAN_V1.md`) : principal 1 000 → 651 € (−35 %), 190 stratégies (−9 793 € cumulés), 96 pistes testées (64 écartées, 24 indices, 4 retenues). Diagnostic : variantes de favoris sans avantage, chance prise pour du talent, aucun avantage de vitesse, recherche tournée vers les biais de prix.
+- **Labo v2, même dépôt** (même cron, mêmes clés, même tableau de bord) : 7 stratégies à indice mesuré repartent en 2.0.0 dans `ledger/fantome_v2` ; configuration v1 archivée (`config/strategies_v1.yaml`, tests des classes) ; nouvelle stratégie `convictions_claude` (prévisions écrites par Claude, `config/convictions.yaml`) ; méthode et routine : liberté quasi totale, avantage d'information ou de règle. Etienne lance `reset-capital` après la fusion.
+
 ## 2026-11-07 (passage chercheur de 16 h, 15 h 54 → ~16 h 05 UTC ; durée visée 93 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-07_apres_midi_tranches_80_20_et_retour_xtracker.md`, famille 2). Aucune « Enquête obligatoire ». Les trois filles 80/20 de la feuille relues sur le journal de la mère : tranches choisies après coup (délai 24-72 h de `crypto_non_10_20` : z +2,74 mais −48 € sans ses 3 plus gros paris ; 72-168 h de `contrer_crypto_audace` : 9 paris, 5 événements, 2 jours ; prix 0,45-0,60 de `compteur_tweets` : −1 € sans les 3 plus gros). Refusées. Script `experiments/enquetes/scripts/tranches_filles_80_20.py` avec date de coupure pour le test hors échantillon. XTracker répond de nouveau ; `compteur_tweets` a repris (refus « avantage net insuffisant », plus « compteur pas à jour »). `copie_absente` de `naive_favorite_sans_fin` : part du principal épuisée, pas un défaut.

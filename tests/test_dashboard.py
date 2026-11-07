@@ -320,7 +320,7 @@ def test_strategy_sheet_is_computed_on_click_from_the_public_journal(tmp_path):
     (root / "config" / "dashboard.yaml").write_text('journaux_url: "https://exemple.org/x/"\n', encoding="utf-8")
     assert dashboard.fiche(root, {"arena": {}})["journaux"] == ""  # seule une adresse raw.githubusercontent.com
     real = dashboard.fiche(ROOT, {})
-    assert real["journaux"].startswith("https://raw.githubusercontent.com/") and real["journaux"].endswith("/fantome/")
+    assert real["journaux"].startswith("https://raw.githubusercontent.com/") and real["journaux"].endswith("/fantome_v2/")
     assert real["mise"]["paris_fictifs"] == 30 and real["garde_fou"]["confiance_min"] == 0.8
     main, shadows, db = _setup(tmp_path)
     data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)

@@ -1761,7 +1761,9 @@ class TrancheCentraleNon(_Base):
         return self._finish(out, props)
 
 
-CLASSES = {c.strategy_id: c for c in (ClassementAppStore, SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+from polymarket_agent.convictions import ConvictionsClaude  # noqa: E402 (labo v2, 07/11/2026)
+
+CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,

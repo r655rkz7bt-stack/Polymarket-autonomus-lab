@@ -1,0 +1,17 @@
+# Convictions de Claude (labo v2, 07/11/2026) : prévisions écrites APRÈS recherche, AVANT que le marché tranche.
+# Lues à chaque cycle par la stratégie `convictions_claude` (src/polymarket_agent/convictions.py). Format :
+#   - id: fed-dec-2026            # identifiant court
+#     marche: "123456"            # id Gamma du marché (gamma-api.polymarket.com/markets/<id>)
+#     question: "Will the Fed"    # début de la question : contrôle que l'id est le bon
+#     issue: "No"                 # issue achetée, comme écrite dans le marché
+#     probabilite: 0.82           # estimation de Claude
+#     probabilite_basse: 0.75     # borne prudente : on n'achète que sous elle − min_net_edge
+#     expire: "2026-12-10"        # plus d'achat après cette date
+#     mise_max: 0.05              # part du capital du fantôme au plus
+#     raison: "…"                 # en une ou deux phrases
+#     sources: ["https://…"]
+#     ecrit_le: "2026-11-07"
+#     abandon: false              # true : revendre (Claude a changé d'avis)
+# Ne jamais modifier une conviction après coup pour la faire paraître juste : en ajouter une nouvelle (autre id) et
+# abandonner l'ancienne. Le journal Git garde l'historique de chaque prévision.
+convictions: []
