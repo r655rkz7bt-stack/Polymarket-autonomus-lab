@@ -3,6 +3,16 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-08 (passage chercheur de 6 h, 05 h 55 → ~06 h 20 UTC ; durée visée 103 min non atteinte : pas de défaut à chasser ni de donnée neuve, arrêt sans remplissage)
+
+- **Enquête** : aucune « Enquête obligatoire ». Les 3 constats « à regarder » sont connus : Trump « 200+ » (déjà corrigé par `desaccord_max` à 1 h), achat du principal estimé 0,968 payé 0,821 (4 €, négligeable), cinq 50-50 déjà listés (17 €). Contrôle à la main de la famille 3 non mené en profondeur ce passage : à faire au prochain.
+- **Recherche / convictions** (méthode `prevoir-un-marche`) : deux marchés étudiés à fond, **aucune conviction écrite**, faute d'avantage honnête.
+  - *Predict.fun token avant le 30/11* (0,63 ; avant le 15/11 : 0,24 ; avant le 31/12 : 0,92). Règle : jeton transférable et échangeable, une annonce ne suffit pas. Faits lus : vente Binance Wallet prévue le 29/10, puis TGE et réclamation de l'airdrop reportés (une seule source secondaire, liée à une pause de Binance après un piratage), aucune nouvelle date. Les trois prix sont cohérents avec « fin novembre ou décembre » : pas d'écart de 5 points.
+  - *Eurovision Asia, gagnant (Malaisie 0,57, finale le 14/11)* : aucun bookmaker ne cote ; les seules sources sont Polymarket et Kalshi, la Malaisie est montée de 0,385 à 0,55 entre le 04 et le 07/11 sans fait public trouvé, les sites d'experts (escpredictions) donnent la Corée en tête. Pas de source indépendante à opposer au prix : s'abstenir (notre recherche n'a pas d'information que le marché n'a pas).
+- **Arène** : rien ajouté ; `convictions_claude` reste sans conviction.
+- **Leçons** : aucune stratégie éliminée. Enseignement de méthode : la recherche web seule ne bat pas un marché dont la seule source est le marché lui-même ; viser des marchés dont la source de résolution est lisible (compteurs, publications officielles).
+- **Reste ouvert** : relire Eurovision Asia après la finale (la Malaisie à 0,57 est-elle un excès de confiance ?) ; Predict.fun : annonce officielle de la nouvelle date de TGE ; règlement Trump 13/11 ; contrôle à la main famille 3 (prix payé contre prix cru).
+
 ## 2026-11-08 (passage chercheur de 1 h, 00 h 54 → ~01 h 15 UTC ; durée visée 99 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-08_nuit_rythme_porte_par_la_rafale.md`, famille 3). Constat `estimation_perimee` : `compteur_tweets` achète « 200+ posts de Trump 6-13/11 » estimé 0,95 pour 0,32 payé (60 €). Cause : rythme de 2,24 posts/h (record de 3,5 ans) porté par la rafale du 28/10-03/11 ; Trump posté 0,5-1/h depuis, marché à 0,30. Rejeu sur l'archive CNN (130 périodes) : modèle calibré en moyenne mais 0,275 dit pour 0,175 réalisé quand son rythme dépasse 1,6 × la médiane de cinq rythmes. Corrigé : abstention `desaccord_max` (test + vérifié sur le cas réel). Le rythme observé dans la période n'aide pas (9 réglages, pires).
