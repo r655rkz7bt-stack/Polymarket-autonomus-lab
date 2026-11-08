@@ -3,6 +3,14 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-08 (passage chercheur de 1 h, 00 h 54 → ~01 h 15 UTC ; durée visée 99 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-08_nuit_rythme_porte_par_la_rafale.md`, famille 3). Constat `estimation_perimee` : `compteur_tweets` achète « 200+ posts de Trump 6-13/11 » estimé 0,95 pour 0,32 payé (60 €). Cause : rythme de 2,24 posts/h (record de 3,5 ans) porté par la rafale du 28/10-03/11 ; Trump posté 0,5-1/h depuis, marché à 0,30. Rejeu sur l'archive CNN (130 périodes) : modèle calibré en moyenne mais 0,275 dit pour 0,175 réalisé quand son rythme dépasse 1,6 × la médiane de cinq rythmes. Corrigé : abstention `desaccord_max` (test + vérifié sur le cas réel). Le rythme observé dans la période n'aide pas (9 réglages, pires).
+- **Recherche** : `experiments/regime_rafale/` (backtest, calib, fenetre, desaccord) ; 17 variantes de rythme essayées, une retenue. Les 50-50 listés par l'enquête automatique : 5 marchés, 17 € perdus, tous déjà connus (aucun nouveau défaut).
+- **Arène** : rien ajouté, faute d'idée neuve plausible ; `compteur_tweets` et ses deux filles s'abstiennent désormais en cas de désaccord de rythmes.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : règlement du 13/11 du billet Trump « 200+ » (vrai 0,95 ou 0,3 ?) ; relire `desaccord_max` après 30 abstentions ; « 7 j + 84 j » (−0,005 de log-perte) à proposer si le règlement confirme ; aucune conviction écrite ce passage (pas de marché étudié à fond).
+
 ## 2026-11-07 (session avec Etienne : fin du labo v1, départ du labo v2)
 
 - **Bilan v1** (`BILAN_V1.md`) : principal 1 000 → 651 € (−35 %), 190 stratégies (−9 793 € cumulés), 96 pistes testées (64 écartées, 24 indices, 4 retenues). Diagnostic : variantes de favoris sans avantage, chance prise pour du talent, aucun avantage de vitesse, recherche tournée vers les biais de prix.
