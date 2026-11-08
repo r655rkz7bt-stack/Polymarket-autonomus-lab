@@ -3,7 +3,7 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
-## 2026-11-08 (passage chercheur de 6 h, 05 h 55 → ~06 h 20 UTC ; durée visée 103 min non atteinte : pas de défaut à chasser ni de donnée neuve, arrêt sans remplissage)
+## 2026-11-08 (passage chercheur de 6 h, 05 h 55 → 05 h 57 UTC selon l horloge ; durée visée 103 min non atteinte : pas de défaut à chasser ni de donnée neuve, arrêt sans remplissage)
 
 - **Enquête** : aucune « Enquête obligatoire ». Les 3 constats « à regarder » sont connus : Trump « 200+ » (déjà corrigé par `desaccord_max` à 1 h), achat du principal estimé 0,968 payé 0,821 (4 €, négligeable), cinq 50-50 déjà listés (17 €). Contrôle à la main de la famille 3 non mené en profondeur ce passage : à faire au prochain.
 - **Recherche / convictions** (méthode `prevoir-un-marche`) : deux marchés étudiés à fond, **aucune conviction écrite**, faute d'avantage honnête.
