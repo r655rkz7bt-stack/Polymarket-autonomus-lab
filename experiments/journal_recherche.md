@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-08 (passage chercheur de 21 h, 20 h 54 → ~21 h 05 UTC ; durée visée 114 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 24,4 jours sans palier). Enquête automatique : mêmes constats « à regarder » que depuis 24 h (Trump « 200+ » du 06/11 déjà traité par la fiche du 08/11 1 h ; `compteur_tweets_*` v1 : stratégies éteintes). Rien de nouveau.
+- **Recherche** : pas de piste menée (attente : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune écrite. Relevé des 60 marchés les plus échangés du jour : sport du dimanche (NFL, football, Worlds LoL), Israël/Iran, Hegseth, présidentielle française : tous très suivis, aucune source de résolution lue avant la foule, aucune information propre. Rien étudié à fond ce passage.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : identique au passage de 16 h (Gemini Carbon après le 10/11, Predict.fun, Kai Cenat, Trump 13/11).
+
 ## 2026-11-08 (passage chercheur de 16 h, 15 h 54 → 15 h 58 UTC ; durée visée 110 min non atteinte : rien à tester sans données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente »). Constats « à regarder » : Trump « 200+ » et achat du principal du 06/11 déjà traités, 5 marchés 50-50 déjà connus, `nf_tres_court` v1 : stratégie éteinte. Rien de nouveau.
