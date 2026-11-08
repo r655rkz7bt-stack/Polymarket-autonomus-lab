@@ -3,6 +3,17 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-08 (passage chercheur de 11 h, 10 h 54 → ~11 h 15 UTC ; durée visée 106 min non atteinte : seule pause utile = données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire ». Les deux constats « à regarder » de l'enquête automatique sont déjà traités (Trump « 200+ » : fiche du 08/11 1 h ; achat du principal du 06/11 : stratégie v1 éteinte) ; les 5 marchés à 50-50 sont les mêmes qu'au passage précédent. Rien de nouveau, pas de contrôle à la main refait (famille 3 vue il y a 10 h).
+- **Recherche** : pas de piste menée ce passage (les pistes restantes attendent des règlements : Trump 13/11, CDC, UMA).
+- **Convictions** (marchés étudiés, aucune conviction écrite, seuil non atteint) :
+  - « Gemini Carbon released by 10/11 » (id 6753604, OUI 0,47, vendeur NON ≈ 0,55). Carbon annoncé le 28/10, accès par étapes (défenseurs cyber → partenaires Fairwind → public), absent de l'API et de l'application au 04/11, aucune date donnée. Ma médiane NON ≈ 0,75 ; rapprochée du prix 0,64, borne basse ≈ 0,58 < 0,55 + 0,05. Passé.
+  - « Predict.fun token by 15/11 » (6253456, OUI 0,26) et « by 30/11 » (5407575, OUI 0,63) : TGE et airdrop reportés le 30/10 avec le listing Binance, sans nouvelle date ; une seule source parle d'un incident chez Binance. Pas d'information qui départage le prix. Passé.
+- **Arène** : rien ajouté, aucune idée neuve plausible à tester ce passage.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : relire Gemini Carbon après le 10/11 (statut réel de « public ») ; Predict.fun : nouvelle date de TGE ; Trump 13/11.
+
 ## 2026-11-08 (passage chercheur de 1 h, 00 h 54 → ~01 h 15 UTC ; durée visée 99 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-08_nuit_rythme_porte_par_la_rafale.md`, famille 3). Constat `estimation_perimee` : `compteur_tweets` achète « 200+ posts de Trump 6-13/11 » estimé 0,95 pour 0,32 payé (60 €). Cause : rythme de 2,24 posts/h (record de 3,5 ans) porté par la rafale du 28/10-03/11 ; Trump posté 0,5-1/h depuis, marché à 0,30. Rejeu sur l'archive CNN (130 périodes) : modèle calibré en moyenne mais 0,275 dit pour 0,175 réalisé quand son rythme dépasse 1,6 × la médiane de cinq rythmes. Corrigé : abstention `desaccord_max` (test + vérifié sur le cas réel). Le rythme observé dans la période n'aide pas (9 réglages, pires).
