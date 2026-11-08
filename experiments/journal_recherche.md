@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-08 (passage chercheur de 16 h, 15 h 54 → 15 h 58 UTC ; durée visée 110 min non atteinte : rien à tester sans données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente »). Constats « à regarder » : Trump « 200+ » et achat du principal du 06/11 déjà traités, 5 marchés 50-50 déjà connus, `nf_tres_court` v1 : stratégie éteinte. Rien de nouveau.
+- **Recherche** : pas de piste menée (les pistes restantes attendent des règlements : Trump 13/11, CDC, UMA).
+- **Convictions** (aucune écrite, seuil non atteint) : relevé des marchés ouverts à volume modéré (2 à 45 jours). « Kai Cenat finit son marathon GTA by 10/11 » (0,21) / « by 11/11 » (0,76) / « by 12/11 » (0,90) : saut de prix très net entre le 10 et le 11, mais je n'ai pas accès à l'avancement réel du direct (Twitch/YouTube non lus, la presse ne donne que l'annonce du 03/11) : aucune information qui départage le prix. Marchés « Anthropic IPO » écartés volontairement (conflit d'intérêt évident, aucune information propre).
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : trouver un accès libre à l'avancement du direct de Kai Cenat (sinon abandonner ce type de marché) ; Gemini Carbon après le 10/11 ; Trump 13/11.
+
 ## 2026-11-08 (passage chercheur de 11 h, 10 h 54 → ~11 h 15 UTC ; durée visée 106 min non atteinte : seule pause utile = données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire ». Les deux constats « à regarder » de l'enquête automatique sont déjà traités (Trump « 200+ » : fiche du 08/11 1 h ; achat du principal du 06/11 : stratégie v1 éteinte) ; les 5 marchés à 50-50 sont les mêmes qu'au passage précédent. Rien de nouveau, pas de contrôle à la main refait (famille 3 vue il y a 10 h).
