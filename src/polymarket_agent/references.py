@@ -536,6 +536,28 @@ def tweet_bucket_probability(tracking: dict, bucket: tuple[int, int], now: datet
     return negbin_interval(lo - int(count), hi - int(count), rate * remaining, dispersion)
 
 
+def tweet_rates_disagree(tracking: dict, factor: float, recent_hours: int = 168, long_hours: int = 336,
+                         recent_weight: float = 0.5) -> bool:
+    """Vrai si le rythme du mélange (celui du modèle) dépasse `factor` fois la médiane de cinq rythmes (24 h, 72 h, 168 h, 336 h,
+    84 jours quand il est relevé). 08/11/2026 : « 200+ posts de Trump » estimé à 0,95 avec un rythme de 2,24 posts/h (record de
+    3 ans et demi, deux semaines portées par la rafale du 28/10-03/11) alors que Trump postait 0,5 à 1 par heure depuis ; sur le
+    passé (experiments/regime_rafale.md, 57 seuils) le modèle disait 0,275 pour 0,175 réalisé quand il dépasse 1,6 fois la médiane
+    (la médiane : 0,172). `factor` <= 0 : contrôle éteint."""
+    hourly = tracking.get("heures") or []
+    if factor <= 0 or len(hourly) < 72:
+        return False
+
+    def rate(h: int) -> float:
+        part = hourly[-h:]
+        return sum(part) / max(len(part), 1)
+    rates = [rate(24), rate(72), rate(168), rate(336)]
+    if tracking.get("posts_long") is not None and tracking.get("heures_long"):
+        rates.append(float(tracking["posts_long"]) / float(tracking["heures_long"]))
+    median = sorted(rates)[len(rates) // 2]
+    blend = recent_weight * rate(recent_hours) + (1 - recent_weight) * rate(long_hours)
+    return median > 0 and blend > factor * median
+
+
 def now_utc() -> datetime:
     return datetime.now(timezone.utc)
 

@@ -743,7 +743,7 @@ class CompteurTweets(_Base):
         return out[: int(self.params.get("max_candidates", 60))]
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
-        from polymarket_agent.references import bucket_of, tweet_bucket_probability
+        from polymarket_agent.references import bucket_of, tweet_bucket_probability, tweet_rates_disagree
         from polymarket_agent.sources._util import parse_date
         out, p, now, props = StrategyOutput(), self.params, _now(books), []
         for m in watchlist:
@@ -769,6 +769,10 @@ class CompteurTweets(_Base):
                 continue
             if float(p.get("only_trump", 0)) and str(tr.get("compte", "")).lower() != "realdonaldtrump":
                 out.abstain("compte écarté (seulement les posts Truth Social de Trump)")
+                continue
+            if tweet_rates_disagree(tr, float(p.get("desaccord_max", 0)), int(p["recent_hours"]),
+                                    int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5))):
+                out.abstain("rythmes en désaccord (le mélange dépasse 1,6 fois la médiane : rafale récente, régime changé)")
                 continue
             prob = tweet_bucket_probability(tr, rng, now, float(p["dispersion"]), int(p["recent_hours"]),
                                             int(p.get("long_hours", 336)), float(p.get("recent_weight", 0.5)))

@@ -577,3 +577,14 @@ def test_tweet_strategy_abstains_on_a_burst_flagged_backup_counter(tmp_path):
            min_net_edge=0.01, max_extra_ticks=1, max_proposals_per_cycle=2, kelly_fraction=0.25)
     out = s.propose([m], books, _state(tmp_path), LIMITS, "b1")
     assert not out.proposals and any("incertain" in a for a in out.abstentions)
+
+
+def test_rate_disagreement_after_a_burst_abstains(tmp_path):
+    """08/11/2026 : « 200+ posts de Trump 6-13/11 » estimé 0,95 (payé 0,32, 60 €) : 14 jours portés par la rafale du 28/10-03/11
+    (mélange 2,24/h) alors que Trump postait ~0,5-1/h depuis. Le contrôle compare le mélange à la médiane de cinq rythmes."""
+    hourly = [round(x) for x in [0.4] * 100 + [8.0] * 164 + [0.5] * 72]  # 336 h : 164 h de rafale à 8/h puis 72 h calmes
+    tr = {"heures": hourly, "posts_long": 2400, "heures_long": 2016}
+    assert refs.tweet_rates_disagree(tr, 1.6)
+    assert not refs.tweet_rates_disagree(tr, 0)  # contrôle éteint
+    calm = {"heures": [1] * 336, "posts_long": 2016, "heures_long": 2016}
+    assert not refs.tweet_rates_disagree(calm, 1.6)
