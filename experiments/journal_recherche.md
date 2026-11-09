@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-09 (passage chercheur de 21 h, 20 h 54 → ~21 h 02 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,4 jours sans palier). Constats « à regarder » : faux 0,95 de la rafale de `compteur_tweets` v2 (traité le 08/11), 5 marchés 50-50 connus, `sans_test_passe` (stratégies v1 éteintes), et « muettes » : `convictions_claude` (aucune conviction écrite, voulu) et `suivre_inities` (aucun groupe de comptes suspects, voulu, voir 01 h). Aucun nouveau défaut.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune écrite, aucune source lue avant la foule ce soir.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : Trump 13/11 ; Gemini Carbon (après le 10/11) ; premiers règlements des fantômes v2.
+
 ## 2026-11-09 (passage chercheur de 16 h, 15 h 54 → ~16 h 05 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,1 jours sans palier). Enquête automatique identique à celle de 11 h (faux 0,95 de la rafale déjà traité, achat du principal du 06/11 v1 éteinte, 5 marchés 50-50 connus). Aucun nouveau défaut, pas de contrôle à la main refait.
