@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-09 (passage chercheur de 11 h, 10 h 55 → ~11 h 10 UTC ; durée visée 129 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 24,9 jours sans palier). Constats « à regarder » : `compteur_tweets` v2 achat estimé +33 % au-dessus de l'écart habituel (faux 0,95 de la rafale, déjà traité le 08/11), achat du principal du 06/11 (v1, éteinte), 5 marchés 50-50 déjà connus, `sans_test_passe` (stratégies v1 éteintes). Aucun nouveau défaut ; pas de contrôle à la main refait (famille 4 vue au passage de 6 h).
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune écrite. Relevé de 600 marchés à échéance < 20 jours triés par volume du jour : sport, « Exact Score », Bitcoin/Ethereum du jour, météo, compteurs d'Elon Musk, Kai Cenat (0,907 pour « by 12/11 », déjà étudié le 08/11, toujours pas d'accès au direct). Aucune source de résolution lue avant la foule.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : Trump 13/11 ; Gemini Carbon (après le 10/11) ; premiers règlements des fantômes v2.
+
 ## 2026-11-09 (passage chercheur de 6 h, 05 h 54 → 05 h 56 UTC (2 min : budget de 124 min non utilisé) ; durée visée 124 min non atteinte : le v2 n'a que 1,5 jour de paris, le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** (famille 4, prix payés contre estimations, 74 achats des 8 fantômes v2 relus dans les journaux signés). Aucune « Enquête obligatoire ». Constats « à regarder » : `compteur_tweets` « Yes » estimé 0,95 payé 0,32 (07/11 22 h) = le faux 0,95 de la rafale, déjà traité le 08/11 (`desaccord_max` 1,6 présent sur les trois fantômes compteur) ; achat du principal estimé 0,968 payé 0,821 (06/11) : écart de 8 %, hors v2, rien de nouveau ; 5 marchés 50-50 connus. Aucun nouveau défaut. Les `sans_test_passe` ne concernent que des stratégies v1 éteintes.
