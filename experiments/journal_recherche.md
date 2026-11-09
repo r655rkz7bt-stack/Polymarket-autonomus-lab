@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-09 (passage chercheur de 1 h, 00 h 54 → ~01 h 05 UTC ; durée visée 119 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** (fiche : `enquetes/2026-11-09_nuit_seismes_perte_et_inities_muette.md`, famille 4 puis 6). Aucune « Enquête obligatoire ». Seule perte du v2, `seismes_marche` (−27 €) : séisme de 5,8 arrivé à 23 h 17 UTC, 26 min après un achat « 5,5-5,6 » à 0,91 (estimé 0,9655) ; règlement conforme, filtre de temps bon, malchance ~1,5 %, une seule opération : pas de défaut. `suivre_inities` : 0 achat parce qu'aucun groupe de comptes suspects n'existe (voulu). Constats automatiques (Trump « 200+ », 50-50 connus, `nf_tres_court` v1 éteinte) déjà traités.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune écrite. « Bitcoin dip to 72 500 en novembre » (id 6507381, 0,665) : cours 75 170, vol 38 %/an, probabilité de toucher ≈ 0,69 (mouvement brownien, 21 jours) : le marché a le même prix que le modèle. Marchés à fort volume du jour (LoL Worlds, NBA, Iran, Hegseth) : aucune source lue avant la foule.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : si `seismes_marche` perd encore sur des achats de fin de journée (< 3 h restantes), relever `min_net_edge` à ces heures-là ; Gemini Carbon (après le 10/11) ; Trump 13/11.
+
 ## 2026-11-08 (passage chercheur de 21 h, 20 h 54 → ~21 h 05 UTC ; durée visée 114 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 24,4 jours sans palier). Enquête automatique : mêmes constats « à regarder » que depuis 24 h (Trump « 200+ » du 06/11 déjà traité par la fiche du 08/11 1 h ; `compteur_tweets_*` v1 : stratégies éteintes). Rien de nouveau.
