@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-09 (passage chercheur de 6 h, 05 h 54 → 05 h 56 UTC (2 min : budget de 124 min non utilisé) ; durée visée 124 min non atteinte : le v2 n'a que 1,5 jour de paris, le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** (famille 4, prix payés contre estimations, 74 achats des 8 fantômes v2 relus dans les journaux signés). Aucune « Enquête obligatoire ». Constats « à regarder » : `compteur_tweets` « Yes » estimé 0,95 payé 0,32 (07/11 22 h) = le faux 0,95 de la rafale, déjà traité le 08/11 (`desaccord_max` 1,6 présent sur les trois fantômes compteur) ; achat du principal estimé 0,968 payé 0,821 (06/11) : écart de 8 %, hors v2, rien de nouveau ; 5 marchés 50-50 connus. Aucun nouveau défaut. Les `sans_test_passe` ne concernent que des stratégies v1 éteintes.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune écrite. Relevé des marchés non sportifs à échéance < 9 jours : Iran/cessez-le-feu (0,915 et 0,405), Kai Cenat (étudié le 08/11), Bitcoin/Ethereum « above » du jour, météo, compteurs d'Elon Musk : aucune source lue avant la foule, aucune probabilité qui s'écarte nettement du prix.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : Trump 13/11 ; Gemini Carbon (après le 10/11) ; premiers règlements des 8 fantômes v2 pour juger gagnés contre attendus.
+
 ## 2026-11-09 (passage chercheur de 1 h, 00 h 54 → ~01 h 05 UTC ; durée visée 119 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-09_nuit_seismes_perte_et_inities_muette.md`, famille 4 puis 6). Aucune « Enquête obligatoire ». Seule perte du v2, `seismes_marche` (−27 €) : séisme de 5,8 arrivé à 23 h 17 UTC, 26 min après un achat « 5,5-5,6 » à 0,91 (estimé 0,9655) ; règlement conforme, filtre de temps bon, malchance ~1,5 %, une seule opération : pas de défaut. `suivre_inities` : 0 achat parce qu'aucun groupe de comptes suspects n'existe (voulu). Constats automatiques (Trump « 200+ », 50-50 connus, `nf_tres_court` v1 éteinte) déjà traités.
@@ -70,7 +79,7 @@ ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en h
 - **Leçons** : aucune stratégie éliminée.
 - **Reste ouvert** : vérifier au prochain passage que le cycle de production atteint `ix.cnn.io` (source `xtracker` du battement : lignes `source: cnn_archive` dans `ref:tweets`, achats de `compteur_tweets` repris) ; Elon Musk et les autres comptes sans source de secours ; si XTracker revient, il reprend la main tout seul.
 
-## 2026-11-07 (passage chercheur de 6 h, 05 h 54 → ~06 h 05 UTC ; durée visée 88 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, XTracker en 403), arrêt sans remplissage)
+## 2026-11-07 (passage chercheur de 6 h, 05 h 54 → 05 h 56 UTC (2 min : budget de 124 min non utilisé) ; durée visée 88 min non atteinte : les pistes restantes attendent des données futures (CDC rougeole, 3 règlements UMA de `sieges_coherence`, règlement Trump 13/11, XTracker en 403), arrêt sans remplissage)
 
 - **Enquête** (fiche : `enquetes/2026-11-07_matin_famille2_concentration_du_haut.md`, famille 2). Aucune « Enquête obligatoire ». 5 stratégies du haut du classement relues (sans les 3 plus gros paris, sans le meilleur jour, gagnés contre attendus par événement) : tous les z < 2, `nf_sport` perd 79 € sans le 2 novembre, `compteur_tweets_48h_audace` +1 € sans ses 3 plus gros paris. Aucun défaut de code. XTracker toujours en 403 (avec un User-Agent honnête) ; pas de contournement.
 - **Recherche** : aucune piste avancée (données futures attendues).
