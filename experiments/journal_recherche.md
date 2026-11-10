@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-10 (passage chercheur de 6 h, 05 h 54 → 05 h 56 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,7 jours sans palier). Constats « à regarder » identiques à ceux de 1 h (faux 0,95 de la rafale du 07/11 déjà traité, 5 marchés 50-50 connus, `suivre_inities` muette voulue, `sans_test_passe` sur des stratégies v1 éteintes). Aucun nouveau défaut.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune nouvelle. Suivi de `gemini-carbon-public-10-11` (NON) : le OUI du marché 6753604 est passé de 0,57 (09/11 18 h) à 0,70 (10/11 0 h) puis 0,855 (10/11 5 h) ; dernier échange 0,84, carnet mince (acheteur 0,77, vendeur 0,94). Presse relue (Google Actualités, `-L`) : rien de plus récent que le 03/11 (« access is limited », « you can't try it yet »), donc la hausse n'est pas expliquée par une source que j'ai lue. Conviction **gardée telle quelle** (pas de retouche après coup, pas d'abandon sans fait nouveau) ; mise plafonnée à 3 % (≈ 15 € engagés). Si Carbon s'ouvre au public avant la fin du 10/11 (heure de l'Est), c'est une perte à relire : j'aurai mal lu la porte « accès public » (possible ouverture via API/AI Studio non vue dans la presse).
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée. Un saut du prix de +28 points en 12 h contre une conviction est un signal à documenter, même si le carnet est mince.
+- **Reste ouvert** : règlement Carbon (11/11) à relire ; Trump 13/11. Note technique : Google Actualités demande `curl -L` (redirection 302) ; un en-tête de navigateur imité est refusé par le garde-fou de la session, ne pas en utiliser.
+
 ## 2026-11-10 (passage chercheur de 1 h, 00 h 55 → ~01 h 10 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,5 jours sans palier). Constats « à regarder » identiques à ceux du 09/11 (faux 0,95 de la rafale déjà traité, 50-50 connus, `muettes` voulues, `sans_test_passe` v1 éteintes). Aucun nouveau défaut.
