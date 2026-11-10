@@ -1166,6 +1166,58 @@ class ClassementAppStore(_Base):
         return self._finish(out, props)
 
 
+class LidAgenda(_Base):
+    """« Will the White House call a full lid by 6:30 PM on <date>? » : réglé sur l'heure du premier lid de fin de journée notée par Roll Call Factbase,
+    dont on lit en direct le calendrier (agenda du Président publié la veille, annonces du service de presse ; lid.py). Deux cases de l'agenda tranchent
+    sur 607 jours : sans voyage et dernier rendez-vous avant 17 h, lid avant 18 h 30 86 % du temps (le marché cotait 0,73 à 12 h de l'échéance) ;
+    voyage et dernier rendez-vous à 17 h ou après, 14 % (marché 0,22). On achète le côté (OUI ou NON) dont la chance dépasse le prix demandé + frais
+    d'au moins `min_net_edge`. Pourquoi ça peut rater : l'agenda archivé est l'agenda final (des rendez-vous ajoutés en cours de journée rendent la case
+    plus nette après coup qu'au moment du pari) ; marchés minces (prix horaires sans échange réel le plus souvent) ; experiments/lid_agenda.md."""
+
+    strategy_id = "lid_agenda"
+    required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "min_hours", "max_proposals_per_cycle")
+
+    def candidates(self, markets):
+        return _with_reference(markets, "lid", int(self.params.get("max_candidates", 10)))
+
+    def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
+        from polymarket_agent.sources._util import parse_date
+        out, p, now, props = StrategyOutput(), self.params, _now(books), []
+        for m in watchlist:
+            ref = (getattr(m, "references", None) or {}).get("lid")
+            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+                continue
+            seen = parse_date(ref.get("vu_le") or "")
+            if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
+                out.abstain("calendrier Factbase pas à jour")
+                continue
+            if ref.get("p") is None:
+                out.abstain(f"pas d'avis : {ref.get('cas', '')}"[:80])
+                continue
+            if float(ref["h"]) < float(p["min_hours"]) or float(ref["h"]) > float(p.get("max_hours", 48)):
+                out.abstain("hors de la fenêtre avant l'heure limite")
+                continue
+            fair, unc = float(ref["p"]), float(p.get("uncertainty", 0))
+            best = None
+            for side, est in ((0, fair), (1, 1 - fair)):
+                book = books.get(m.token_ids[side])
+                ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
+                if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
+                    continue
+                if best is None or est - ask > best[2]:
+                    best = (side, est, est - ask)
+            if best is None:
+                out.abstain("issue hors de la plage de prix ou carnet vide")
+                continue
+            side, est, _ = best
+            prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
+                             f"lid:{ref['cas']}", f"chance d'un lid avant l'heure limite {fair:.2f} ({ref['cas']})",
+                             "un rendez-vous ajouté en cours de journée, un déplacement imprévu, ou un lid noté autrement par Roll Call")
+            if prop is not None:
+                props.append(prop)
+        return self._finish(out, props)
+
+
 DRAME = re.compile(
     r"\b(invade|invades|invasion|war\b|wars\b|military action|military clash|strikes? on|attacks?\b|airstrikes?|"
     r"missiles?|nuclear|bomb|troops|blockade|annex|annexes|annexation|ceasefire|cease-fire|truce|clash|"
@@ -1767,7 +1819,7 @@ class TrancheCentraleNon(_Base):
 
 from polymarket_agent.convictions import ConvictionsClaude  # noqa: E402 (labo v2, 07/11/2026)
 
-CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
+CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, LidAgenda, SuivreInities, MoinsDeCartes, MoinsDeKills, NonAuxDrames, DecroissanceTemps, EchelleDates, CoherenceMatch, ImplicationPolitique,
                                       PaireOuiNon, OutsidersSurcotes, MarcheNeuf, ApresEcheance, MarchesJumeaux,
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,

@@ -149,6 +149,32 @@ seismes_marche:
     max_ecart_doublon: {value: 0.15, min: 0.0, max: 1.0}  # 24/10/2026 : pas d'achat si le compte sans doublon entre réseaux USGS change la chance de plus de 0,15
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
 
+lid_agenda:
+  explication: "Chaque jour, un marché demande si la Maison-Blanche annoncera la fin de journée du Président (le « lid ») avant 18 h 30. On lit son agenda publié la veille : journée calme sans voyage, le lid tombe tôt presque toujours ; journée de voyage qui finit tard, presque jamais. On parie quand le marché ne l'a pas vu."
+  class: lid_agenda
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-10"
+  hypothesis: >
+    Expérience audacieuse, lire la source de résolution (experiments/lid_agenda.md, 10/11/2026). 210 marchés réglés (février → novembre 2026) ;
+    règlement = premier « Travel/Photo lid called » de Roll Call Factbase (199/210). Agenda (607 jours) : sans voyage et dernier rendez-vous avant
+    17 h → 86 % (84 % puis 89 %) ; voyage et dernier rendez-vous ≥ 17 h → 14 % (14 % puis 14 %) ; le marché cotait ces cases 0,73 et 0,22 à 12 h.
+    MAIS l'agenda archivé est l'agenda final (regard vers le futur possible) et les prix horaires sont rarement des prix exécutés (19 vrais
+    achats au mieux) : indice, pas preuve. Une perte apprendrait que l'agenda de la veille ne vaut pas l'agenda final, ou que les carnets
+    n'offrent pas ces prix.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance − prix demandé − frais
+    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}    # borne basse = chance − 0,04
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.92, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 1, min: 0.1, max: 24}
+    min_hours:      {value: 0.5, min: 0.0, max: 24}       # avant l'heure limite
+    max_hours:      {value: 30, min: 1, max: 96}          # l'agenda du jour sort la veille au soir
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 10, min: 0, max: 50}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 10}
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse : expérience franche, un pari par jour
+
 non_aux_drames:
   explication: "Les gens paient trop cher le frisson d'une catastrophe lointaine (une invasion, un président renversé) : on parie qu'elle n'arrivera pas, avec une petite mise."
   class: non_aux_drames

@@ -478,6 +478,11 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
         counts["appstore"] = attach_appstore(markets, db, now)
     except Exception:  # noqa: BLE001
         counts["appstore"] = 0
+    try:  # 10/11/2026 : agenda Factbase pour les marchés de lid (`lid_agenda`)
+        from polymarket_agent.lid import attach_lid
+        counts["lid"] = attach_lid(markets, db, now)
+    except Exception:  # noqa: BLE001
+        counts["lid"] = 0
     return counts
 
 
