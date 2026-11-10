@@ -117,3 +117,17 @@ def test_strategy_buys_the_side_the_agenda_favours_and_abstains_otherwise(tmp_pa
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert sorted((p.market_id, p.outcome) for p in out.proposals) == [("calme", "Yes"), ("charge", "No")]
     assert out.proposals[0].strategy_id == "lid_agenda" and out.abstentions
+
+
+def test_history_keeps_the_first_case_seen_and_the_last(tmp_path):
+    import json
+    db = Database(tmp_path / "db.sqlite")
+    evening = [_row("2026-11-12", "10:00:00", "President Schedule", "The President receives his Intelligence Briefing", "Oval Office")]
+    lid.record_history(db, evening, NOW)
+    final = evening + [_row("2026-11-12", "19:00:00", "President Schedule", "The President departs the White House en route to Joint Base Andrews")]
+    lid.record_history(db, final, NOW + timedelta(hours=20))
+    h = json.loads(db.get_value(lid.HISTORY_KEY))["2026-11-12"]
+    assert h["p_premiere"] == lid.P_CALME and h["vu_le"] == "2026-11-10T14:00+00:00"
+    assert h["p_derniere"] == lid.P_CHARGE and h["derniere"].startswith("voyage")
+    lid.record_history(db, REAL, NOW + timedelta(days=70))                       # 60 jours : le 12/11 est oublié
+    assert "2026-11-12" not in json.loads(db.get_value(lid.HISTORY_KEY))

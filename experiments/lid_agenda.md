@@ -65,4 +65,6 @@ une lecture en direct le dira. Le 10/11 à 21 h UTC, l'agenda du 10/11 était pu
   (− 0,04) dépasse le prix demandé + frais de 0,05 ; jusqu'à 30 h avant 18 h 30 ; demi-Kelly. Aussi : un lid déjà noté avant l'heure limite
   → 0,97 (si le marché traîne).
 - Une perte apprendrait que l'agenda de la veille ne vaut pas l'agenda final, ou que les carnets n'offrent pas ces prix.
+- Mesure du regard vers le futur : `lid.record_history` note dans la base (`lid:histo`, 60 jours) la PREMIÈRE case d'agenda vue pour chaque jour
+  et la dernière ; dans 2-3 semaines, comparer la case de la veille au soir à la case finale (et le taux de lid de chaque case vue la veille).
 - Non fait ici : un fantôme « OUI à 0,4-0,6 sans agenda » (biais de prix d'un marché neuf, la v2 n'en veut pas sans fait nouveau).

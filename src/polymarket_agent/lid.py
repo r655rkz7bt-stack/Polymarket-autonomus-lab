@@ -106,6 +106,29 @@ def assess(rows: list[dict], day: str, cutoff: str) -> tuple[float | None, str]:
     return None, f"case instable ({'voyage' if travel else 'sans voyage'}, dernier rendez-vous {last[:5]})"
 
 
+HISTORY_KEY = "lid:histo"
+HISTORY_DAYS = 60
+
+
+def record_history(db, rows: list[dict], now: datetime) -> None:
+    """Journal `lid:histo` : pour chaque jour, la PREMIÈRE case d'agenda vue (et quand) et la dernière, gardé 60 jours (sauvegardé avec la base).
+    Sert à mesurer le regard vers le futur du test (experiments/lid_agenda.md) : la case vue la veille au soir est-elle celle de l'agenda final ?"""
+    import json
+    try:
+        histo = json.loads(db.get_value(HISTORY_KEY) or "{}")
+    except (ValueError, TypeError):
+        histo = {}
+    t = now.isoformat(timespec="minutes")
+    for day in sorted({r["date"] for r in rows}):
+        p, case = assess(rows, day, "18:30:00")
+        if case == "agenda du jour pas encore publié":
+            continue
+        entry = histo.setdefault(day, {"premiere": case, "p_premiere": p, "vu_le": t})
+        entry.update({"derniere": case, "p_derniere": p, "maj": t})
+    horizon = (now.date() - timedelta(days=HISTORY_DAYS)).isoformat()
+    db.set_value(HISTORY_KEY, json.dumps({d: v for d, v in histo.items() if d >= horizon}, ensure_ascii=False))
+
+
 def attach_lid(markets, db, now: datetime) -> int:
     """Rattache la chance d'un lid avant l'heure limite aux marchés de lid (références `ref:lid`)."""
     if db is None:
@@ -114,6 +137,7 @@ def attach_lid(markets, db, now: datetime) -> int:
     seen, rows = _load(db, "ref:lid")
     if seen is None or not rows:
         return 0
+    record_history(db, rows, now)
     n = 0
     for m in markets:
         parsed = parse_question(m.question)
