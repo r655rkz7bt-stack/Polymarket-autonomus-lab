@@ -3,6 +3,16 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-10 (passage chercheur de 16 h, 15 h 54 → ~16 h 10 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 26,15 jours sans palier). Seul constat « à regarder » : `nf_tres_court` v1 (éteinte). Aucun nouveau défaut.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : **la conviction Carbon (NON, p 0,88) est très probablement perdue.** Le OUI de « Gemini Carbon released by November 10 » (marché 6753604) vaut 0,9935 à 15 h 56 UTC (0,58 le 09/11 à 0 h, 0,805 le 10/11 à 6 h, 0,885 à 10 h, saut à 0,995 vers 15 h 50) ; le NON se négocie à 0,005. Fantôme : 29,4 parts achetées à 0,48-0,49 (≈ 14 € misés) ; pas de revente (bid 0,001-0,004), on laisse régler. Source du saut non confirmée (pas d'annonce officielle dans la presse indexée à cette heure ; indices du jour : « Google lists Gemini 4 Carbon at $4/$20 in its Cloud catalog » 09 h 54 UTC, « leaks in the Antigravity build » 15 h 35). La conviction n'est pas modifiée (règle : jamais après coup).
+  Ce que j'ai mal lu : (1) estimation écrite à 0 h UTC sur la presse du 05-08/11, pas refaite pendant que le prix du OUI montait de 0,58 à 0,885 ; la relecture de 10 h 57 a pris cette hausse pour du bruit : un prix qui monte de 30 points en 24 h est une information ; (2) la règle « accès public ou liste d'attente ouverte » se franchit très facilement par une annonce avec liste d'attente : je l'avais notée comme « risque » sans la chiffrer ; (3) 0,88 contre un NON à 0,49 = 39 points d'écart sur une seule lecture de la presse : trop grand pour ne pas être la marque d'une information manquante. Règle ajoutée dans le skill `prevoir-un-marche`.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : une conviction réglée (probablement perdue) ; aucune stratégie éliminée.
+- **Reste ouvert** : règlement Carbon (11/11) à relire ; Trump 13/11 ; premiers règlements des fantômes v2.
+
 ## 2026-11-10 (passage chercheur de 11 h, 10 h 57 → ~11 h 10 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,9 jours sans palier). Constat « à regarder » : `nf_tres_court` v1 (stratégie éteinte, sans test passé). Aucun nouveau défaut.

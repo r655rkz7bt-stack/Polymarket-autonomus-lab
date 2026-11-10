@@ -46,6 +46,9 @@ Models » (Halawi et al., NeurIPS 2024) et les règles de mise de `agiprolabs/cl
     une ligne au carnet d'expériences.
 
 ## Ce qu'il ne faut pas faire
+- Écrire une conviction qui s'écarte de plus de 30 points du prix sans avoir trouvé ce que le prix sait (leçon Carbon, 10/11/2026 :
+  NON à 0,88 contre 0,49, le OUI est passé de 0,58 à 0,995 dans la journée). Relire chaque conviction ouverte à chaque passage
+  AVEC son prix ; un prix qui bouge de 20 points en 24 h est une information, pas du bruit.
 - Écrire une conviction après avoir vu le résultat, ou la modifier pour qu'elle paraisse juste.
 - Parier sur un marché qu'on n'a pas lu en entier (règles, source).
 - Plus de 3 nouvelles convictions par passage : la qualité de la recherche compte plus que le nombre.
