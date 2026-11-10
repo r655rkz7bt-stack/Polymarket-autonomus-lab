@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-10 (passage chercheur de 1 h, 00 h 55 → ~01 h 10 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,5 jours sans palier). Constats « à regarder » identiques à ceux du 09/11 (faux 0,95 de la rafale déjà traité, 50-50 connus, `muettes` voulues, `sans_test_passe` v1 éteintes). Aucun nouveau défaut.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : **première conviction écrite** (`gemini-carbon-public-10-11`, marché 6753604, NON, p 0,88, borne basse 0,80, mise max 3 %). Raison : Carbon annoncé le 03/11 mais réservé (presse du 05-08/11 : « locked », « can't use it yet »), aucune annonce d'accès public au 10/11 0 h UTC, la règle exige un accès public ou une liste d'attente ouverte. Limite : le carnet du NON n'a que 44 parts à 0,66 puis 0,91 (le milieu Gamma 0,74 pour le OUI est trompeur) ; la mise sera petite. Risque : Google ouvre l'accès avant la fin du 10/11 (heure de l'Est).
+- **Arène** : rien ajouté.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : règlement de la conviction Carbon (11/11) à relire (gagnée contre attendue, ce que j'ai mal lu) ; Trump 13/11.
+
 ## 2026-11-09 (passage chercheur de 21 h, 20 h 54 → ~21 h 02 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,4 jours sans palier). Constats « à regarder » : faux 0,95 de la rafale de `compteur_tweets` v2 (traité le 08/11), 5 marchés 50-50 connus, `sans_test_passe` (stratégies v1 éteintes), et « muettes » : `convictions_claude` (aucune conviction écrite, voulu) et `suivre_inities` (aucun groupe de comptes suspects, voulu, voir 01 h). Aucun nouveau défaut.

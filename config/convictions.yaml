@@ -14,4 +14,16 @@
 #     abandon: false              # true : revendre (Claude a changé d'avis)
 # Ne jamais modifier une conviction après coup pour la faire paraître juste : en ajouter une nouvelle (autre id) et
 # abandonner l'ancienne. Le journal Git garde l'historique de chaque prévision.
-convictions: []
+convictions:
+  - id: gemini-carbon-public-10-11
+    marche: "6753604"
+    question: "Gemini Carbon released by November 10"
+    issue: "No"
+    probabilite: 0.88
+    probabilite_basse: 0.80
+    expire: "2026-11-11"
+    mise_max: 0.03
+    raison: "Carbon (Gemini 4) annoncé le 03/11 mais réservé (défenseurs cyber, partenaires) ; presse du 05-08/11 : « locked », « you can't use it yet » ; aucune annonce d'accès public au 10/11 0 h UTC. Règle : accès public ou liste d'attente ouverte exigé, accès privé ne compte pas. Carnet du NON : 44 parts à 0,66, le reste à 0,91+."
+    sources: ["https://news.google.com/rss/search?q=Gemini+Carbon", "https://gamma-api.polymarket.com/markets/6753604"]
+    ecrit_le: "2026-11-10"
+    abandon: false
