@@ -145,7 +145,9 @@ scanner:
               102289: {pages: 12, min_liquidity: 1000, min_volume_24h: 0, max_spread: 0.10, max_horizon_hours: 480},
               # 28/10/2026 : étiquette crypto-prices (1312), échelles du jour « <actif> price on <date> ? » (11 tranches, fix de 12 h heure de l'Est) pour `tranche_centrale_non` ; sans elle la
               # stratégie voyait 0 marché (abstentions {}). Horizon de 8 h seulement (les « up or down » fournissent la moitié des 300 marchés des 3 pages triées par volume 24 h : à 26 h d'horizon, 26 tranches).
-              1312: {pages: 3, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.30, max_horizon_hours: 8}}
+              1312: {pages: 3, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.30, max_horizon_hours: 8},
+              # 10/11/2026 : étiquette lid (103988), « Will the White House call a full lid by 6:30 PM on <date>? » (`lid_agenda`) : un marché par jour, 300-4 000 $ de liquidité
+              103988: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60, max_horizon_hours: 96}}
   # Séries de sport (23/10/2026, piste « moins de cartes », experiments/pistes_sport_coherence.md) : matchs
   # d'e-sport en 2 ou 3 manches gagnantes ; seuls les marchés « Games Total » (type totals), vus par qui les demande.
   series_pages:
@@ -289,6 +291,7 @@ sources:
   xtracker: {enabled: true, every_minutes: 15}                  # compteur de tweets de Polymarket
   nhl_repos: {enabled: true, every_minutes: 60}                 # calendrier NHL : qui a joué la veille
   mentions: {enabled: true, every_minutes: 720, pages: 20}      # marchés « mentions » réglés (taux par mot)
+  factbase: {enabled: true, every_minutes: 15}                  # 10/11/2026 : calendrier Roll Call Factbase (agenda du Président, lids ; arbitre des marchés « full lid by 6:30 PM »), JSON public sans clé, 3 Mo
   appstore: {enabled: true, every_minutes: 10, n: 10}           # 27/10/2026 : classements de l'App Store américain (rss.applemarketingtools.com, arbitre des marchés « #1 Free / Paid App on <date> »), sans clé
   sieges: {enabled: true, every_minutes: 15}                    # 31/10/2026 : prix démocrates des districts (Gamma, sans clé) pour `sieges_coherence`, jusqu'au 04/11
   usgs: {enabled: true, every_minutes: 10, days: 10}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 10 derniers jours ; gratuit, sans clé

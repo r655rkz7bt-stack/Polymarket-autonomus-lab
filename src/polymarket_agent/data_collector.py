@@ -305,6 +305,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     snapshot("sieges", lambda cfg: factories.get("sieges", lambda c: fetch_sieges(http, now))(cfg), "ref:sieges")
     # Classements de l'App Store américain (27/10/2026) : l'arbitre des marchés « #1 Free / Paid App … on <date> » (`classement_appstore`), top 10 gratuit et payant.
     snapshot("appstore", lambda cfg: factories.get("appstore", lambda c: fetch_appstore(http, now, int(c.get("n", 10))))(cfg), "ref:appstore")
+    # Agenda du Président et lids de la Maison-Blanche (10/11/2026) : calendrier Roll Call Factbase, l'arbitre des marchés « full lid by 6:30 PM on <date> » (`lid_agenda`).
+    from polymarket_agent.lid import fetch_lid
+    snapshot("factbase", lambda cfg: factories.get("factbase", lambda c: fetch_lid(http, now))(cfg), "ref:lid")
     # Lancements de SpaceX (24/10/2026) : Launch Library 2 (sans clé), pour les marchés « How many SpaceX launches in … » (`spacex_cumul`).
     snapshot("ll2", lambda cfg: factories.get("ll2", lambda c: fetch_ll2(http, now, int(c.get("days", 430))))(cfg), "ref:ll2")
     # Comptes suspects (27/10/2026, affaire du Ballon d'Or) : grappes de comptes neufs et concentrés sur les événements « à initiés »,
