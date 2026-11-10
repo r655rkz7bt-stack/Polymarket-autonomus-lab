@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-10 (passage chercheur de 11 h, 10 h 57 → ~11 h 10 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
+
+- **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,9 jours sans palier). Constat « à regarder » : `nf_tres_court` v1 (stratégie éteinte, sans test passé). Aucun nouveau défaut.
+- **Recherche** : pas de piste menée (règlements futurs : Trump 13/11, CDC, UMA).
+- **Convictions** : aucune nouvelle. Carbon relue à 10 h 57 UTC : toujours réservé aux défenseurs cyber, absent de la liste de l'API (recherche du jour), NON à 0,905 au milieu ; conviction du 10/11 inchangée.
+- **Arène** : rien ajouté, aucune idée neuve plausible.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : règlement Carbon (11/11) à relire ; Trump 13/11 ; premiers règlements des fantômes v2.
+
 ## 2026-11-10 (passage chercheur de 1 h, 00 h 55 → ~01 h 10 UTC ; durée visée 135 min non atteinte : le reste attend des données futures, arrêt sans remplissage)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire » (seule ligne : « idée radicalement différente », 25,5 jours sans palier). Constats « à regarder » identiques à ceux du 09/11 (faux 0,95 de la rafale déjà traité, 50-50 connus, `muettes` voulues, `sans_test_passe` v1 éteintes). Aucun nouveau défaut.
