@@ -102,6 +102,23 @@ def fetch_fleuves(http: HttpClient, now: datetime) -> list[dict]:
     return rows
 
 
+def keep_history(old: list[dict], rows: list[dict], now: datetime, days: int = 400) -> list[dict]:
+    """Journal `fleuves:histo` (11/11/2026) : `ref:fleuves` est remplacé à chaque relevé ; le test à venir (prévision contre niveau
+    réel, prix des tranches contre chance calculée) a besoin de CHAQUE prévision émise et des lectures. Une ligne par prévision
+    (`prev:<station>:<émise>`, gardée telle qu'elle a été lue la première fois, avec `vu`) et une par lecture
+    (`obs:<station>:<heure>`), `days` jours au plus."""
+    stamp = now.astimezone(timezone.utc).isoformat(timespec="seconds")
+    out = {str(r.get("id")): r for r in old or []}
+    for r in rows:
+        key = f"prev:{r['station']}:{r['emis']}"
+        if key not in out:
+            out[key] = {"id": key, "station": r["station"], "emis": r["emis"], "vu": stamp, "points": r["points"]}
+        key = f"obs:{r['station']}:{r['obs_t']}"
+        out.setdefault(key, {"id": key, "station": r["station"], "t": r["obs_t"], "cm": r["obs"]})
+    cutoff = (now.astimezone(timezone.utc) - timedelta(days=days)).isoformat()
+    return sorted((r for r in out.values() if str(r.get("emis") or r.get("t") or "") >= cutoff), key=lambda r: r["id"])
+
+
 def market_window(question: str, description: str) -> tuple[str, datetime, datetime, float] | None:
     """(station, début, fin, seuil cm) d'une tranche « before <date> » ou « between <date> and <date> » ; None sinon."""
     q = (question or "").lower()

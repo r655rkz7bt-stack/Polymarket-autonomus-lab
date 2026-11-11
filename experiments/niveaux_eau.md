@@ -58,7 +58,7 @@ Réglages regardés : 4 (pointe 0 ou 2 cm, retard 0 / 0,15 / 0,30) ; non étalon
 1. **Deux convictions** (`config/convictions.yaml`, méthode `prevoir-un-marche`, date limite le jour même) : Rhin NON (0,52, borne
    0,45, vendeur 0,37) et Danube OUI (0,455, borne 0,40, vendeur 0,292), après rapprochement de moitié vers le prix.
 2. **Fantôme `fleuves_prevision`** (expérience audacieuse, demi-Kelly sur chance − 0,10) et **source `fleuves`** (toutes les heures) :
-   le journal `ref:fleuves` de la base garde chaque prévision émise ; dans 1-2 mois, comparer prévision et niveau réel (marge
+   le journal `fleuves:histo` de la base (sauvegardée chaque jour) garde chaque prévision émise et chaque lecture (`ref:fleuves`, lui, est remplacé à chaque relevé : corrigé au même passage) ; dans 1-2 mois, comparer prévision et niveau réel (marge
    tenue ?) et le prix de chaque tranche à la chance calculée, avant d'élargir.
 Résultat des deux tranches « avant le 15/11 » : connu le 15/11 (Kaub à minuit à Berlin, Budapest à 06 h).
 
@@ -67,3 +67,30 @@ Résultat des deux tranches « avant le 15/11 » : connu le 15/11 (Kaub à minui
 - Lac Mead / Powell : le « 24-Month Study » de l'USBR (projection officielle mensuelle) contre « 1 028-1 033 ft » à 0,47 ; San Diego :
   la marée astronomique prévue de l'hiver (NOAA) contre les seuils 8,1-8,3 ft.
 - Si la prévision OVF se révèle bonne : d'autres stations (Mohács, Baja) n'ont pas de marché ; rester sur les marchés existants.
+
+## Autres marchés de la même famille, étudiés le 11/11 (16 h 15-16 h 40 UTC) : aucune conviction
+
+Méthode `prevoir-un-marche` (cinq estimations, rapprochement de moitié vers le prix, seuil de 5 points sur la borne basse).
+
+- **Lac Mead** (« How low will Lake Mead drop? », minimum quotidien USBR depuis le 17/08 jusqu'au 31/03/2027) : minimum déjà lu
+  **1 037,16 ft le 22/10** (RISE, `data.usbr.gov/rise/api/result/download?type=json&itemId=6123`), 1 040,21 le 10/11 et en hausse
+  (pluies d'octobre-novembre). Le 24-Month Study d'octobre 2026 n'est publié qu'en scénarios minimum et maximum
+  (`usbr.gov/lc/region/g4000/24mo/2026/OCT26_MIN.pdf`, `OCT26_MAX.pdf` ; « Most Probable » d'octobre absent, juillet seulement) :
+  lâchers de Glen Canyon ~400 kaf par mois tout l'hiver, puis baisse de mars (−5 à −7 ft de fin novembre à fin mars). Décalé de
+  l'avance actuelle (+5 à +6 ft sur les deux scénarios), fin mars ≈ 1 032-1 036 ft : la tranche « 1 033-1 038 » (prix 0,23, vendeur
+  0,315) vaut ≈ 0,55 selon moi, « sous 1 028 » (0,315) ≈ 0,08. Rapprochées du prix : 0,39 et 0,20, sous le seuil (écarts
+  achat-vente de 0,18-0,27). Sur 26 hivers (2000-2025), la plus forte baisse entre le 10/11 et le 31/03 est −6,1 ft (2001).
+  À relire début mars : le « Most Probable » de février-mars et le niveau réel.
+- **Lac Powell** (« Above 3 510 ft » à 0,963) : minimum depuis le 17/08 3 516,62 (15/09), 3 539,3 le 10/11 : juste, rien à gagner.
+- **Mer à San Diego / La Jolla** (« Highest sea level this winter », valeurs VÉRIFIÉES au-dessus du MLLW 1983-2001 = 4,37 ft au-dessus
+  du zéro de la station) : 7,98 ft déjà lu le 27/10 (provisoire), alors qu'aucun hiver 1982-2025 n'a dépassé 7,81 (2015). Le niveau
+  observé dépasse la marée prévue de **+1,27 à +1,40 ft en moyenne** depuis octobre sur La Jolla, San Diego et Los Angeles (+0,07 en
+  octobre 2024, +0,55 en novembre 2015) : anomalie réelle et régionale. Marées hautes prévues : 6,96 ft le 25/11, 7,10 le 24/12,
+  6,95 le 22/01 → « 8,10 ft » ≈ 0,85-0,9 (marché 0,78, vendeur 0,94), « 8,30 » ≈ 0,6 (0,535, vendeur 0,74) : écarts trop larges.
+- **Mississippi à Baton Rouge** (« Lowest … by November 30 », moyenne quotidienne USGS 07374000) : minimum depuis la création (22/09)
+  **6,38 ft le 09/11** ; la crue d'amont arrive (Vicksburg, Natchez, Red River Landing en hausse ; prévision NWS : 8,5 ft le 22/11, 7,0 le
+  30/11). « 6,00 ft ou plus » ≈ 0,93 selon moi contre 0,761 (vendeur 0,793) ; rapprochée du prix : 0,845, sous le seuil. À Saint-Louis,
+  prévision 3,5 ft le 25/11 et −0,4 ft/jour : « 1,00-2,99 » à 0,80 et « −1,00-0,99 » à 0,165 sont proches de mon calcul.
+
+Leçon : la famille « source officielle lente » n'est pas toujours mal cotée ; ce qui distingue le Danube et le Rhin, c'est une
+PRÉVISION publiée (pas seulement la lecture du jour) et une échéance de quelques jours.

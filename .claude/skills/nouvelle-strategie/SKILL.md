@@ -34,6 +34,9 @@ désaccord. Exemple récent et complet : `VagueVolume` dans `src/polymarket_agen
    une liste d'exceptions : ajoute-y le préfixe si tu choisis une autre fraction.
 4. Une donnée de marché manquante (comme `volume_1wk`) : champ dans `models.Market`, lecture dans
    `sources/polymarket_gamma.parse_market`.
+5. Une nouvelle source lue par `snapshot(…, "ref:<nom>")` est REMPLACÉE à chaque relevé. Si un test futur en a besoin
+   (prévision contre réalité, première lecture contre lecture finale), écris aussi un journal `<nom>:histo` qui garde
+   chaque version telle que lue la première fois (`lid:histo`, `appstore:histo`, `fleuves:histo` ; défaut du 11/11/2026).
 
 ## Vérifier qu'elle voit des marchés (21/10/2026 : `cpi_tranches` et `jobs_favori_non` sont restées sourdes)
 - `.venv/bin/python scripts/run_simulation.py --once --dev-key`, puis lis sa ligne
