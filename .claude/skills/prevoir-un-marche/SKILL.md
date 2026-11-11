@@ -49,6 +49,9 @@ Models » (Halawi et al., NeurIPS 2024) et les règles de mise de `agiprolabs/cl
 - Écrire une conviction qui s'écarte de plus de 30 points du prix sans avoir trouvé ce que le prix sait (leçon Carbon, 10/11/2026 :
   NON à 0,88 contre 0,49, le OUI est passé de 0,58 à 0,995 dans la journée). Relire chaque conviction ouverte à chaque passage
   AVEC son prix ; un prix qui bouge de 20 points en 24 h est une information, pas du bruit.
+- Écrire une conviction contre un marché RÉCURRENT très sûr de lui (0,8-0,99, gros échanges confiants) sans avoir d'abord comparé
+  ton calcul au prix sur les événements réglés de la même famille (leçon GISTEMP, 11/11/2026 : « 1,45-1,49 °C » à 0,036 jugé 0,30 ;
+  sur 27 mois réglés le marché battait le calcul ERA5, log-score −0,57 contre −1,67 ; conviction abandonnée avant fusion).
 - Écrire une conviction après avoir vu le résultat, ou la modifier pour qu'elle paraisse juste.
 - Parier sur un marché qu'on n'a pas lu en entier (règles, source).
 - Plus de 3 nouvelles convictions par passage : la qualité de la recherche compte plus que le nombre.

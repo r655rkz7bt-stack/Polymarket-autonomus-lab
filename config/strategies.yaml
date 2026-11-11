@@ -216,7 +216,7 @@ fleuves_prevision:
     niveau (WSV/BfG par PegelOnline pour Kaub, OVF hongrois pour Budapest) n'est pas lue par le marché. Le 11/11 : Rhin « avant le
     15/11 » à 0,66 pour une prévision culminant à 69 cm (seuil 77, chance calculée 0,39) ; Danube « avant le 15/11 » à 0,26 pour une
     prévision de 124 ± 17 cm le 15/11 à 7 h (seuil 93, chance 0,76). Aucun test sur le passé possible (prévisions non archivées, 3
-    événements réglés) : le journal `ref:fleuves` garde chaque prévision pour le test à venir. Une perte apprendrait que les
+    événements réglés) : le journal `fleuves:histo` garde chaque prévision pour le test à venir. Une perte apprendrait que les
     prévisions à 3-4 jours se trompent plus que leur marge (retard de la vague, pluie annoncée qui ne tombe pas), ou que le marché
     lit des prévisions plus récentes que les nôtres.
   params:

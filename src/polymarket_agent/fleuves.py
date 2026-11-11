@@ -30,6 +30,9 @@ KAUB_W = "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W
 KAUB_WV = "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json"
 OVF = "https://www.hydroinfo.hu/tables/ENG/dunelotH.html"
 BUDAPEST = ZoneInfo("Europe/Budapest")
+# Marge « ± » de l'OVF trop étroite (11/11/2026, 15 montées de Budapest en 2025, experiments/niveaux_eau.md) : écart-type de l'erreur
+# lu − prévu ≈ 15 cm à 3 jours et ≈ 30 cm à 4 jours, pour une marge publiée de 13-17 cm : on la multiplie par 1,8.
+FACTEUR_MARGE = 1.8
 MONTHS = {m: i + 1 for i, m in enumerate(("january", "february", "march", "april", "may", "june", "july", "august",
                                          "september", "october", "november", "december"))}
 # Fleuve du marché → station de la prévision (et mot-clé de la description qui le confirme).
@@ -102,6 +105,23 @@ def fetch_fleuves(http: HttpClient, now: datetime) -> list[dict]:
     return rows
 
 
+def keep_history(old: list[dict], rows: list[dict], now: datetime, days: int = 400) -> list[dict]:
+    """Journal `fleuves:histo` (11/11/2026) : `ref:fleuves` est remplacé à chaque relevé ; le test à venir (prévision contre niveau
+    réel, prix des tranches contre chance calculée) a besoin de CHAQUE prévision émise et des lectures. Une ligne par prévision
+    (`prev:<station>:<émise>`, gardée telle qu'elle a été lue la première fois, avec `vu`) et une par lecture
+    (`obs:<station>:<heure>`), `days` jours au plus."""
+    stamp = now.astimezone(timezone.utc).isoformat(timespec="seconds")
+    out = {str(r.get("id")): r for r in old or []}
+    for r in rows:
+        key = f"prev:{r['station']}:{r['emis']}"
+        if key not in out:
+            out[key] = {"id": key, "station": r["station"], "emis": r["emis"], "vu": stamp, "points": r["points"]}
+        key = f"obs:{r['station']}:{r['obs_t']}"
+        out.setdefault(key, {"id": key, "station": r["station"], "t": r["obs_t"], "cm": r["obs"]})
+    cutoff = (now.astimezone(timezone.utc) - timedelta(days=days)).isoformat()
+    return sorted((r for r in out.values() if str(r.get("emis") or r.get("t") or "") >= cutoff), key=lambda r: r["id"])
+
+
 def market_window(question: str, description: str) -> tuple[str, datetime, datetime, float] | None:
     """(station, début, fin, seuil cm) d'une tranche « before <date> » ou « between <date> and <date> » ; None sinon."""
     q = (question or "").lower()
@@ -153,7 +173,7 @@ def p_first_crossing(row: dict, now: datetime, start: datetime, end: datetime, s
     if end > last + timedelta(hours=1) or end <= now:
         return None
     hours = lambda t: (t - emis).total_seconds() / 3600  # noqa: E731
-    pts = sorted((hours(t), v, float(s) if s is not None else 3.0 + 0.25 * max(hours(t), 0.0)) for t, v, s in pts_raw)
+    pts = sorted((hours(t), v, FACTEUR_MARGE * float(s) if s is not None else 3.0 + 0.25 * max(hours(t), 0.0)) for t, v, s in pts_raw)
     h0, h_start, h_end = hours(now), hours(max(start, now)), hours(end)
     grid = [h0 + k for k in range(int(h_end - h0) + 2) if h0 + k <= h_end] or [h_end]
     rng, hit = random.Random(seed), 0

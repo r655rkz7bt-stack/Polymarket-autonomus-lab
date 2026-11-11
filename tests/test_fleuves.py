@@ -120,3 +120,22 @@ def test_old_forecast_or_threshold_already_reached_gives_no_reference(tmp_path):
     collect({"sources": {"fleuves": {"enabled": True, "every_minutes": 60}}}, _http(), db, [], NOW)
     danube = _market("d15", "Will the Danube River return to normal levels before November 15, 2026?", DANUBE)
     assert refs.attach_all([danube], db, datetime(2026, 11, 13, 0, tzinfo=UTC))["fleuves"] == 0    # prévision vieille de 40 h
+
+
+def test_history_keeps_every_issued_forecast_while_the_reference_is_replaced(tmp_path):
+    """11/11/2026 : `ref:fleuves` est remplacé à chaque relevé ; sans `fleuves:histo`, le test « prévision contre niveau réel »
+    prévu dans 1-2 mois aurait été impossible (même défaut que `lid:histo` le 11/11 à 1 h)."""
+    db = Database(tmp_path / "db.sqlite")
+    cfg = {"sources": {"fleuves": {"enabled": True, "every_minutes": 60}}}
+    collect(cfg, _http(), db, [], NOW)
+    later = [dict(e, initialized="2026-11-12T07:00:00+01:00") for e in KAUB_WV]          # prévision du lendemain
+    w2 = KAUB_W + [{"timestamp": "2026-11-12T08:00:00+01:00", "value": 30.0}]
+    collect(cfg, Http({fl.KAUB_WV: later, fl.KAUB_W: w2, fl.OVF: OVF}), db, [], datetime(2026, 11, 12, 7, 5, tzinfo=UTC))
+    _, ref = refs._load(db, "ref:fleuves")
+    _, histo = refs._load(db, "fleuves:histo")
+    assert [r["emis"] for r in ref if r["station"] == "KAUB"] == ["2026-11-12T06:00:00+00:00"]
+    kaub = [r for r in histo if r["id"].startswith("prev:KAUB")]
+    assert [r["emis"] for r in kaub] == ["2026-11-11T06:00:00+00:00", "2026-11-12T06:00:00+00:00"]
+    assert kaub[0]["vu"] == "2026-11-11T16:00:00+00:00" and kaub[0]["points"][-1][1] == 69.0
+    assert len([r for r in histo if r["id"].startswith("prev:BUDAPEST")]) == 1       # même prévision OVF relue : une seule ligne
+    assert {r["cm"] for r in histo if r["id"].startswith("obs:KAUB")} == {17.0, 30.0}
