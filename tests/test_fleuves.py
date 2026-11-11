@@ -139,3 +139,21 @@ def test_history_keeps_every_issued_forecast_while_the_reference_is_replaced(tmp
     assert kaub[0]["vu"] == "2026-11-11T16:00:00+00:00" and kaub[0]["points"][-1][1] == 69.0
     assert len([r for r in histo if r["id"].startswith("prev:BUDAPEST")]) == 1       # même prévision OVF relue : une seule ligne
     assert {r["cm"] for r in histo if r["id"].startswith("obs:KAUB")} == {17.0, 30.0}
+
+
+def test_market_already_held_is_noted_as_such_not_as_deaf(tmp_path):
+    """11/11/2026 (21 h) : en production, `fleuves_prevision` affichait « aucun marché vu n'a la référence » ×224 alors que ses
+    deux seuls marchés chiffrables (Rhin et Danube « avant le 15/11 ») étaient déjà achetés : en attente, pas sourde."""
+    db = Database(tmp_path / "db.sqlite")
+    collect({"sources": {"fleuves": {"enabled": True, "every_minutes": 60}}}, _http(), db, [], NOW)
+    danube = _market("d15", "Will the Danube River return to normal levels before November 15, 2026?", DANUBE)
+    assert refs.attach_all([danube], db, NOW)["fleuves"] == 1
+    s = _s(FleuvesPrevision, min_net_edge=0.05, uncertainty=0.10, min_price=0.10, max_price=0.90, max_stale_hours=2,
+           max_extra_ticks=1, max_proposals_per_cycle=4, max_per_event=1, kelly_fraction=0.5)
+    books = _books(("d15Y", "0.23", "0.29"), ("d15N", "0.71", "0.77"))
+    for b in books.values():
+        b.fetched_at = NOW
+    state = _state(tmp_path)
+    state.positions["d15Y"] = object()
+    out = s.propose([danube], books, state, LIMITS, "b1")
+    assert out.proposals == [] and out.abstentions == {"déjà en position": 1}

@@ -330,6 +330,15 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "fleuves:histo", keep_history(refs._load(db, "fleuves:histo")[1], rows, now), now)
         return rows
     snapshot("fleuves", fleuves, "ref:fleuves")
+    # Auditeurs mensuels Spotify (11/11/2026, piste n° 28) : 40 premiers artistes de kworb.net (copie du profil Spotify, arbitre des
+    # marchés « Top / #2 Spotify Artist in <mois> »), pour `auditeurs_spotify` ; `spotify:histo` garde chaque valeur lue (dérive, étalonnage).
+    from polymarket_agent.spotify_auditeurs import fetch_auditeurs, keep_history as keep_spotify
+    def spotify(cfg):
+        rows = factories.get("spotify", lambda c: fetch_auditeurs(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "spotify:histo", keep_spotify(refs._load(db, "spotify:histo")[1], rows, now), now)
+        return rows
+    snapshot("spotify", spotify, "ref:spotify")
     snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
              "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).

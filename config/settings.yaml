@@ -133,6 +133,9 @@ scanner:
               # 11/11/2026 : étiquette global-temp (832), « <mois> Temperature Increase (ºC) » et « 1st, 2nd, or 3rd hottest » (NASA GISTEMP),
               # pour les convictions de Claude (experiments/temperature_mondiale.md) : 900-10 000 $ de liquidité, tranches à 0,004/0,068
               832: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1500},
+              # 11/11/2026 : étiquette spotify (102851) : « Top / #2 Spotify Artist in <mois> » (`auditeurs_spotify`, convictions), 18-65 k$ ;
+              # horizon 40 jours : les classements de l'année (réglés en février) restent dehors
+              102851: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 960},
               # 24/10/2026 : étiquette box-office (51), tranches de recettes du premier week-end (`box_office_favori`)
               51: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
               # 27/10/2026 : événements « à initiés » (suivre_inities) : prix (Awards 18), émissions (Reality TV 100339), classements
@@ -307,6 +310,7 @@ sources:
   usgs: {enabled: true, every_minutes: 10, days: 35}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 35 derniers jours (11/11 : mois entier pour seismes_pays) ; gratuit, sans clé
   emsc: {enabled: true, every_minutes: 10, days: 3}             # 11/11/2026 : catalogue EMSC (témoin plus rapide que l'USGS), abstention de seismes_marche si un séisme manque à l'USGS ; gratuit, sans clé
   fleuves: {enabled: true, every_minutes: 60}                # 11/11/2026 : prévisions officielles du Rhin à Kaub (PegelOnline WSV/BfG) et du Danube à Budapest (OVF) pour fleuves_prevision ; gratuit, sans clé
+  spotify: {enabled: true, every_minutes: 180}               # 11/11/2026 : auditeurs mensuels Spotify (kworb.net, copie du profil, une valeur par jour) pour auditeurs_spotify et les convictions ; gratuit, sans clé
   usdm: {enabled: true, every_minutes: 60, days: 21}         # 11/11/2026 : US Drought Monitor (48 États), arbitre des marchés « D4 by state » (secheresse_d4) ; gratuit, sans clé
   tornades: {enabled: true, every_minutes: 180}               # 11/11/2026 : rapports filtrés du SPC (jour par jour) et décompte NCEI, pour tornades_mois ; ≈ 40 petits fichiers, gratuit, sans clé
   goldapi: {enabled: true, every_minutes: 5, keep_days: 30}      # 24/10/2026 : prix au comptant de l'or et de l'argent (gold-api.com, sans clé), journal `prix_matieres` pour `toucher_metaux`

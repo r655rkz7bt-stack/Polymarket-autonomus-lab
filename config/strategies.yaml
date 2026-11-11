@@ -231,6 +231,32 @@ fleuves_prevision:
     max_per_event:  {value: 1, min: 1, max: 10}           # tranches d'un même fleuve : un seul tirage
     kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse : erreur de prévision non mesurée
 
+auditeurs_spotify:
+  explication: "Polymarket demande quel artiste aura le plus (ou le deuxième plus) d'auditeurs par mois sur Spotify le dernier jour du mois. Spotify affiche ce nombre chaque jour ; quand deux artistes sont presque à égalité, le marché croit souvent que celui qui mène aujourd'hui gagnera. On calcule la chance de chacun avec le nombre du jour et sa tendance, et on achète quand le marché est trop sûr."
+  class: auditeurs_spotify
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-11"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION et de BASE (experiments/spotify_auditeurs.md, 11/11/2026, piste n° 28) : le
+    nombre d'auditeurs mensuels est public chaque jour (profil Spotify, kworb.net) ; les places 2-3 sont serrées (The Weeknd
+    116 993 416 contre Rihanna 116 778 078 le 11/11, écart 0,18 %, Rihanna qui gagne 26 000 par jour) et le marché paie le meneur
+    du jour 0,81. Sur 5 mois réglés de « #2 Spotify Artist », le favori à 19 jours de la fin n'a gagné qu'une fois (octobre :
+    The Weeknd 0,70-0,80, battu par Rihanna). Aucun test sur le passé possible (pas d'historique gratuit des auditeurs) : le
+    journal `spotify:histo` étalonne la volatilité `vol` (0,003 par racine de jour, choisie à l'œil). Une perte apprendrait que
+    le meneur du jour garde sa place plus souvent que notre bruit le dit (dérive persistante, sorties d'album connues du marché).
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.10, min: 0.0, max: 0.30}    # volatilité non étalonnée : borne basse = chance − 0,10
+    min_price:      {value: 0.10, min: 0.01, max: 0.50}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 6, min: 0.1, max: 30}         # source relue toutes les 3 h
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 1, min: 1, max: 10}           # artistes d'une même place : un seul tirage
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse
+
 tornades_mois:
   explication: "Polymarket demande combien de tornades il y aura aux États-Unis ce mois-ci. Le service météo américain publie chaque jour la liste des tornades, et c'est elle qui décide : on compte celles déjà passées, on ajoute ce qui arrive d'habitude le reste du mois, et on parie sur la tranche que le marché cote mal."
   class: tornades_mois
