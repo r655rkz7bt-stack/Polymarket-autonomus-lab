@@ -811,15 +811,19 @@ def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hour
 
 
 def catalogue_en_retard(entries: dict[str, list[dict]], rows: list[dict] | None, since: datetime | None = None,
-                        prefix: str = "seismes_marche", min_mag: float = 5.25) -> list[dict]:
+                        prefix: str = "seismes_marche", min_mag: float = 5.25, max_retard_h: float = 6) -> list[dict]:
     """Achats « séismes » faits pendant qu'un séisme déjà arrivé manquait encore à notre catalogue USGS (11/11/2026) : heure
     d'origine `t` avant l'achat, première lecture `vu` après. Le marché le savait souvent déjà (07/11 23 h 36 : NON du « 7 »
-    estimé 0,931 sans le 5,8 de 23 h 17, chance réelle 0,801, −65 €). `rows` : clé `ref:usgs` de la base (champ `vu`)."""
+    estimé 0,931 sans le 5,8 de 23 h 17, chance réelle 0,801, −65 €). `rows` : clé `ref:usgs` de la base (champ `vu`).
+    Un `vu` plus de `max_retard_h` heures après l'heure d'origine est une reprise du relevé (premier relevé avec `vu` le 11/11 à
+    06 h 45 : séismes d'octobre « lus à 06 h 45 »), pas un retard de publication (10 à 30 minutes) : ignoré."""
     seen = []
     for r in rows or []:
         try:
             if r.get("vu") and float(r.get("mag") or 0) >= min_mag:
-                seen.append((float(r["t"]), datetime.fromisoformat(str(r["vu"])).timestamp(), r))
+                t, vu = float(r["t"]), datetime.fromisoformat(str(r["vu"])).timestamp()
+                if vu - t <= max_retard_h * 3600:
+                    seen.append((t, vu, r))
         except (TypeError, ValueError, KeyError):
             continue
     out = []

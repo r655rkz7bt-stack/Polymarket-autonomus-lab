@@ -1480,6 +1480,19 @@ class TornadesMois(SeismesMarche):
     ref_key = "tornades"
 
 
+class SecheresseD4(SeismesMarche):
+    """« Exceptional drought (D4) by state — week of <mardi> » : un marché OUI/NON par État, réglé sur la carte US Drought Monitor du
+    mardi (D4 >= 0,05 % de la surface), publiée le jeudi. La carte de la semaine d'avant est déjà publique quand le marché s'ouvre et
+    la sécheresse bouge lentement : chance du OUI = loi de transition des 48 États 2000-2025 (secheresse.py) ; carte de la semaine
+    publiée → 0 ou 1 (borné à 0,03-0,97). Test sur le passé (experiments/secheresse.md, 11/11/2026, 12 semaines, règlement 433/433,
+    vrais échanges avant publication) : un achat par marché bon d'au moins 0,05 après frais : 84 paris, 79 gagnés pour 80,4 attendus
+    (loi) et 49,6 (prix payés), +113 % par mise hors billets < 0,10, z des prix +7 ; 16 réglages tous « retenue ». MAIS plus aucun
+    échange avant publication depuis mi-octobre (carnets 0,01/0,99) : fantôme qui attend qu'un vendeur se trompe."""
+
+    strategy_id = "secheresse_d4"
+    ref_key = "secheresse"
+
+
 class SiegesCoherence(_Base):
     """Échelles « How many House seats will the Democrats win in <État> ? » contre les marchés de district du même État (sieges.py, expérience audacieuse du
     31/10/2026, experiments/coherence_sieges.md). La somme des prix démocrates des districts (marchés 10 à 50 fois plus échangés) donne le nombre moyen de
@@ -1860,4 +1873,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
