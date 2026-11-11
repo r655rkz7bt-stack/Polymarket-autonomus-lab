@@ -32,3 +32,9 @@
 ## Le reste
 - Enquête automatique : constats v1 connus (`sans_test_passe`, concentrations, arène z −13 : stratégies v1 éteintes) ; `gdelt` en panne
   (ReadTimeout, aucune stratégie v2 ne la lit) ; sources à « 0 observation » = météo, MLB, football hors saison/hors surveillance, déjà expliquées le 05/11.
+
+## Deuxième contrôle à la main (famille 3) : règlements des fantômes v2
+Les 22 règlements (`SETTLE`) des 9 journaux signés v2 relus sur Gamma (`/markets/<id>`, issue achetée lue dans le `BUY` du même jeton) :
+**22 sur 22 conformes** (paiement du journal = `outcomePrices` Gamma, tous `closed` et `resolved`) : Carbon NON 0 (perdue, déjà écrite),
+séisme du 07/11 OUI 0, 4 tranches Trump de `compteur_truth`, 14 tranches de `compteur_tweets` (Elon, Trump, CZ, Zelensky), 2 « peace talks »
+de `favori_politique_quasi_certain`. Aucun défaut.
