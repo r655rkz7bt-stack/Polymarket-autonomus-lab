@@ -15,6 +15,10 @@ Mexique 3,2, Pérou 2,2 (`src/polymarket_agent/seismes_pays.json`, 45 pays). Cha
 Contrôle sur 26 ans (11 au 30 novembre) : fréquence observée Indonésie 0,62, Japon 0,50, Chili 0,31, Mexique 0,15, Philippines 0,23,
 Pérou 0,08, États-Unis 0,31 ; la loi dit 0,53 / 0,41 / 0,27 / 0,16 / 0,24 / 0,11 / 0,29 : bon accord.
 
+**Grappes (répliques) ?** Sur 2000-2025, la chance d'un jour à séisme ≥ 6 dans les 20 jours suivants change peu après un séisme ≥ 6 dans le
+même pays les 30 jours d'avant : Indonésie 0,48 contre 0,50, Japon 0,38/0,36, Chili 0,24/0,20, Mexique 0,18/0,15, Philippines 0,23/0,25,
+Pérou 0,13/0,10, États-Unis 0,29/0,31 : pas de correction de grappe.
+
 **Marchés réglés.** Seulement deux mois existent (septembre 944677, octobre 1108757) ; novembre (1283623) est ouvert.
 Issues : 3 OUI sur 14 (Indonésie septembre, États-Unis septembre, Japon octobre) ; la base en attendait 5,4 au 1er du mois, les prix horaires 7,2.
 Règlement retrouvé 14/14 par notre lecture du catalogue (premier séisme qualifiant : Indonésie 11/09, États-Unis 03/09, Japon 25/10).
