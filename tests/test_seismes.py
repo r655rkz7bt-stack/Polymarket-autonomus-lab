@@ -125,7 +125,7 @@ def test_collector_saves_the_catalog_and_survives_an_outage(tmp_path):
     result = collect(cfg, None, db, [], now, {"usgs": lambda c: usgs.parse_usgs(feed)})
     assert result.status["usgs"] == "ok (1 prix relevés)"
     seen, rows = refs._load(db, "ref:usgs")
-    assert seen is not None and rows == [{"id": "u1", "t": 1_792_000_000, "mag": 5.6}]
+    assert seen is not None and rows == [{"id": "u1", "t": 1_792_000_000, "mag": 5.6, "vu": "2026-10-22T18:00:00+00:00"}]   # vu : première lecture (11/11)
     http = FakeHttp({}, down=(usgs.URL,))
     down = collect(cfg, None, db, [], now + timedelta(minutes=11), {"usgs": lambda c: usgs.fetch_usgs(http, now)})
     assert down.status["usgs"].startswith("indisponible") and refs._load(db, "ref:usgs")[1] == rows
@@ -218,3 +218,168 @@ def test_strategy_abstains_when_the_duplicate_changes_the_count(tmp_path):
         books.update(b)
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert [p.market_id for p in out.proposals] == ["sur"] and "doublon possible entre réseaux USGS" in str(out.abstentions)
+
+
+# ---------------------------------------------------------------- 11/11/2026 : catalogue USGS en retard, témoin EMSC
+
+def test_parse_emsc_reads_iso_origin_time_and_unid():
+    from polymarket_agent.sources import emsc
+    data = {"features": [{"id": "20261107_0000285", "properties": {"time": "2026-11-07T23:17:05.0Z", "mag": 5.8, "unid": "20261107_0000285"}},
+                         {"id": "z", "properties": {"time": None, "mag": 5.2}}, {"id": "y", "properties": {"time": "2026-11-07T20:00:00Z", "mag": None}}]}
+    assert emsc.parse_emsc(data) == [{"id": "20261107_0000285", "t": int(datetime(2026, 11, 7, 23, 17, 5, tzinfo=UTC).timestamp()), "mag": 5.8}]
+    assert emsc.parse_emsc(None) == []
+
+
+def _weekly_market(mid, question, end):
+    return parse_market(raw_market(mid, yes_token=f"{mid}Y", no_token=f"{mid}N", question=question, end=end,
+                                   events=[{"id": "w1", "title": "How many 5.5 or above earthquakes worldwide November 2 - November 8?"}]))
+
+
+def test_real_case_of_7_november_a_quake_missing_from_usgs_makes_the_strategy_abstain(tmp_path):
+    """07/11/2026 23 h 36 : le 5,8 de 23 h 17 (ride médio-atlantique) n'était pas dans notre relevé USGS de 23 h 25 ; « 4 déjà vus »,
+    NON du « 7 » estimé 0,931 et acheté 0,79 (−65 €). Avec le 5e séisme, la chance du NON tombe à 0,80 : aucun avantage."""
+    db = Database(tmp_path / "db.sqlite")
+    end = datetime(2026, 11, 9, 4, 59, tzinfo=UTC)
+    usgs_rows = [_row(datetime(2026, 11, 5, 17, 21, tzinfo=UTC), 6.1), _row(datetime(2026, 11, 6, 10, 39, tzinfo=UTC), 6.1),
+                 _row(datetime(2026, 11, 7, 11, 7, tzinfo=UTC), 5.5), _row(datetime(2026, 11, 7, 16, 4, tzinfo=UTC), 5.5)]
+    now = datetime(2026, 11, 7, 23, 36, tzinfo=UTC)
+    refs._save(db, "ref:usgs", usgs_rows, now - timedelta(minutes=10))
+    emsc_rows = [dict(r, id=f"e{i}", t=r["t"] + 20) for i, r in enumerate(usgs_rows)]  # mêmes séismes, heure à 20 s près
+    refs._save(db, "ref:emsc", emsc_rows + [_row(datetime(2026, 11, 7, 23, 17, 5, tzinfo=UTC), 5.8, "e")], now - timedelta(minutes=5))
+    market = _weekly_market("sept", "Will there be 7 earthquakes of 5.5 or above magnitude worldwide?", end)
+    assert sm.attach_seismes([market], db, now) == 1
+    ref = market.references["seismes"]
+    assert 1 - ref["p"] == pytest.approx(0.931, abs=0.002)          # ce que le cycle a cru
+    assert 1 - ref["p_rapide"] == pytest.approx(0.80, abs=0.01)      # avec le séisme déjà vu par l'EMSC
+    assert "pas encore par l'USGS" in ref["titre"]
+
+
+def test_strategy_abstains_when_the_fast_catalog_sees_a_missing_quake(tmp_path):
+    s = _s(SeismesMarche, min_net_edge=0.05, uncertainty=0.0, min_price=0.04, max_price=0.96, max_stale_hours=1,
+           max_extra_ticks=1, max_proposals_per_cycle=4, kelly_fraction=0.25, max_ecart_rapide=0.03)
+    now = datetime(2026, 10, 14, 12, 0, tzinfo=UTC)
+    ms, books = [], {}
+    for mid, p, p_fast in (("retard", 0.069, 0.199), ("sur", 0.069, 0.069)):   # chances du OUI « 7 » du 07/11 23 h 36
+        m = _daily_market(mid, "Will the biggest earthquake on October 22, 2026 be 6.1 or more?")
+        m.references = {"seismes": {"p": p, "p_dedup": p, "p_rapide": p_fast, "titre": "test", "vu_le": now.isoformat()}}
+        b = _books((f"{mid}Y", "0.200", "0.210"), (f"{mid}N", "0.780", "0.790"))
+        for book in b.values():
+            book.fetched_at = now
+        ms.append(m)
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [p.market_id for p in out.proposals] == ["sur"] and "séisme vu par l'EMSC, pas encore par l'USGS" in str(out.abstentions)
+
+
+def test_emsc_without_new_quake_or_stale_changes_nothing(tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    end = datetime(2026, 11, 9, 4, 59, tzinfo=UTC)
+    now = datetime(2026, 11, 7, 23, 36, tzinfo=UTC)
+    rows = [_row(datetime(2026, 11, 5, 17, 21, tzinfo=UTC), 6.1)]
+    refs._save(db, "ref:usgs", rows, now)
+    refs._save(db, "ref:emsc", [_row(datetime(2026, 11, 7, 23, 17, tzinfo=UTC), 5.8, "e")], now - timedelta(minutes=45))  # relevé trop vieux
+    market = _weekly_market("sept", "Will there be 7 earthquakes of 5.5 or above magnitude worldwide?", end)
+    sm.attach_seismes([market], db, now)
+    assert market.references["seismes"]["p_rapide"] == market.references["seismes"]["p"]
+
+
+def test_first_seen_keeps_the_first_sighting_of_each_quake():
+    t0 = datetime(2026, 11, 7, 23, 25, tzinfo=UTC)
+    a = sm.first_seen([], [{"id": "u1", "t": 1, "mag": 5.8}], t0)
+    b = sm.first_seen(a, [{"id": "u1", "t": 1, "mag": 5.9}, {"id": "u2", "t": 2, "mag": 5.5}], t0 + timedelta(minutes=10))
+    assert b == [{"id": "u1", "t": 1, "mag": 5.9, "vu": "2026-11-07T23:25:00+00:00"}, {"id": "u2", "t": 2, "mag": 5.5, "vu": "2026-11-07T23:35:00+00:00"}]
+
+
+# ---------------------------------------------------------------- 11/11/2026 : seismes_pays (un marché par pays et par mois)
+
+def _country_market(mid, country, month="November", end=datetime(2026, 12, 4, 4, 59, tzinfo=UTC)):
+    return parse_market(raw_market(mid, yes_token=f"{mid}Y", no_token=f"{mid}N", end=end,
+                                   question=f"Will a 6.0+ magnitude earthquake occur in {country} this month?",
+                                   events=[{"id": "p1", "title": f"Where will a 6.0+ magnitude earthquake occur by end of {month}?"}]))
+
+
+def test_country_of_reads_the_usgs_place_like_the_market_rules():
+    assert sm.country_of("92 km SSW of Nikolski, Alaska") == "United States"     # septembre 2026 : réglé OUI pour les États-Unis
+    assert sm.country_of("144 km SE of Hasaki, Japan") == "Japan"
+    assert sm.country_of("Izu Islands, Japan region") == "Japan"
+    assert sm.country_of("10 km NW of The Geysers, CA") == "United States"
+    assert sm.country_of("south of the Fiji Islands") is None and sm.country_of("") is None
+
+
+def test_country_target_is_the_eastern_time_month():
+    mag, c, a, b = sm.country_target("Where will a 6.0+ magnitude earthquake occur by end of November?",
+                                     "Will a 6.0+ magnitude earthquake occur in United States this month?", datetime(2026, 12, 4, 4, 59, tzinfo=UTC))
+    assert (mag, c, a, b) == (6.0, "United States", datetime(2026, 11, 1, 4, tzinfo=UTC), datetime(2026, 12, 1, 5, tzinfo=UTC))
+
+
+def test_country_p_is_certain_after_a_qualifying_quake_and_a_base_rate_otherwise():
+    a, b = datetime(2026, 11, 1, 4, tzinfo=UTC), datetime(2026, 12, 1, 5, tzinfo=UTC)
+    now = datetime(2026, 11, 11, 6, tzinfo=UTC)
+    japan = [{"id": "us7000twg9", "t": int(datetime(2026, 11, 6, 10, 39, tzinfo=UTC).timestamp()), "mag": 6.1, "lieu": "144 km SE of Hasaki, Japan"}]
+    assert sm.country_p(japan, 6.0, "Japan", a, b, now) == 0.97
+    peru = sm.country_p(japan, 6.0, "Peru", a, b, now)
+    assert 0.05 < peru < 0.2                                     # ≈ 2,2 jours à séisme par an, 20 jours restants
+    assert sm.country_p(japan, 6.0, "Atlantis", a, b, now) is None
+    assert sm.country_p([{"id": "x", "t": 1, "mag": 6.1}], 6.0, "Peru", a, b, now) is None   # relevé sans lieu (avant le 11/11) : pas d'avis
+
+
+def test_attach_and_strategy_buy_the_overpriced_no_and_skip_unknown_quakes(tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    now = datetime(2026, 11, 11, 6, tzinfo=UTC)
+    rows = [{"id": "us7000twg9", "t": int(datetime(2026, 11, 6, 10, 39, tzinfo=UTC).timestamp()), "mag": 6.1, "lieu": "144 km SE of Hasaki, Japan"}]
+    refs._save(db, "ref:usgs", rows, now)
+    peru, japan = _country_market("peru", "Peru"), _country_market("japon", "Japan")
+    assert sm.attach_seismes([peru, japan], db, now) == 2
+    assert japan.references["seismes_pays"]["p"] == 0.97 and peru.references["seismes_pays"]["p"] < 0.2
+    assert "seismes" not in peru.references                     # pas de mélange avec seismes_marche
+    # un 6,3 vu par l'EMSC il y a 10 minutes, absent de l'USGS : pays inconnu → abstention
+    refs._save(db, "ref:emsc", [{"id": "e1", "t": int((now - timedelta(minutes=10)).timestamp()), "mag": 6.3}], now)
+    late = _country_market("peru2", "Peru")
+    sm.attach_seismes([late], db, now)
+    assert late.references["seismes_pays"]["p_rapide"] == 0.5
+    from polymarket_agent.strategies_v3 import SeismesPays
+    s = _s(SeismesPays, min_net_edge=0.05, uncertainty=0.03, min_price=0.05, max_price=0.93, max_stale_hours=1, max_extra_ticks=1,
+           max_proposals_per_cycle=4, max_per_event=7, kelly_fraction=0.5, max_ecart_rapide=0.03)
+    t = datetime(2026, 10, 14, 12, 0, tzinfo=UTC)
+    ms, books = [], {}
+    for m in (peru, late):
+        m.references["seismes_pays"]["vu_le"] = t.isoformat()
+        b = _books((f"{m.market_id}Y", "0.23", "0.25"), (f"{m.market_id}N", "0.75", "0.77"))   # NON vendu 0,77, chance ≈ 0,89
+        for book in b.values():
+            book.fetched_at = t
+        ms.append(m)
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [(p.market_id, p.token_id) for p in out.proposals] == [("peru", "peruN")]
+    assert "séisme vu par l'EMSC, pas encore par l'USGS" in str(out.abstentions)
+
+
+def test_seismes_marche_keeps_its_old_spread_filter_after_the_scanner_tag_was_widened(tmp_path):
+    s = _s(SeismesMarche, min_net_edge=0.05, uncertainty=0.0, min_price=0.04, max_price=0.96, max_stale_hours=1,
+           max_extra_ticks=1, max_proposals_per_cycle=4, kelly_fraction=0.25, max_spread=0.15)
+    now = datetime(2026, 10, 14, 12, 0, tzinfo=UTC)
+    ms, books = [], {}
+    for mid, bid, ask in (("serre", "0.59", "0.61"), ("large", "0.30", "0.61")):
+        m = _daily_market(mid, "Will the biggest earthquake on October 22, 2026 be 6.1 or more?")
+        m.references = {"seismes": {"p": 1.0, "titre": "test", "vu_le": now.isoformat()}}
+        b = _books((f"{mid}Y", bid, ask), (f"{mid}N", f"{1 - float(ask):.2f}", f"{1 - float(bid):.2f}"))
+        for book in b.values():
+            book.fetched_at = now
+        ms.append(m)
+        books.update(b)
+    out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
+    assert [p.market_id for p in out.proposals] == ["serre"] and "écart achat-vente trop large" in str(out.abstentions)
+
+
+def test_controller_refusals_show_up_in_the_published_abstentions():
+    """11/11/2026 : « rejet après relecture … carnet périmé (25790 s > 120 s) » (seismes_pays, cycle local) n'était que dans le journal."""
+    from types import SimpleNamespace
+    from polymarket_agent.main import _note_refus
+    report = SimpleNamespace(abstentions={"fantome:seismes_pays_v2.0.0": {"seismes_pays": {"marches": 186, "propositions": 1, "ordres": 0,
+                                                                                           "raisons": {"avantage net insuffisant": 5}}}})
+    _note_refus(report, "fantome:seismes_pays_v2.0.0", "seismes_pays", ["carnet périmé (25790 s > 120 s)"])
+    _note_refus(report, "fantome:seismes_pays_v2.0.0", "seismes_pays", ["carnet périmé (24996 s > 120 s)"])
+    _note_refus(report, "principal", "seismes_pays", ["prix en baisse"])
+    raisons = report.abstentions["fantome:seismes_pays_v2.0.0"]["seismes_pays"]["raisons"]
+    assert raisons == {"avantage net insuffisant": 5, "refusé par le contrôleur : carnet périmé": 2}
+    assert report.abstentions["principal"]["seismes_pays"]["raisons"] == {"refusé par le contrôleur : prix en baisse": 1}

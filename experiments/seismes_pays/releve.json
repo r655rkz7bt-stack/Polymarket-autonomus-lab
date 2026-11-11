@@ -1,0 +1,562 @@
+[
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 1,
+"prix": 0.545,
+"base": 0.68,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 5,
+"prix": 0.43,
+"base": 0.627,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 10,
+"prix": 0.53,
+"base": 0.55,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 15,
+"prix": 0.61,
+"base": 0.456,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 20,
+"prix": 0.29,
+"base": 0.342,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 1,
+"prix": 0.51,
+"base": 0.545,
+"issue": 1.0
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 5,
+"prix": 0.285,
+"base": 0.495,
+"issue": 1.0
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 10,
+"prix": 0.41,
+"base": 0.424,
+"issue": 1.0
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 15,
+"prix": 0.43,
+"base": 0.343,
+"issue": 1.0
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 20,
+"prix": 0.42,
+"base": 0.251,
+"issue": 1.0
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 1,
+"prix": 0.505,
+"base": 0.38,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 5,
+"prix": 0.27,
+"base": 0.339,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 10,
+"prix": 0.36,
+"base": 0.284,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 15,
+"prix": 0.525,
+"base": 0.225,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 20,
+"prix": 0.22,
+"base": 0.161,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 1,
+"prix": 0.38,
+"base": 0.233,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 5,
+"prix": 0.36,
+"base": 0.206,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 10,
+"prix": 0.28,
+"base": 0.17,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 15,
+"prix": 0.235,
+"base": 0.132,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 20,
+"prix": 0.24,
+"base": 0.093,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 1,
+"prix": 0.505,
+"base": 0.386,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 5,
+"prix": 0.24,
+"base": 0.344,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 10,
+"prix": 0.3,
+"base": 0.289,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 15,
+"prix": 0.25,
+"base": 0.229,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 20,
+"prix": 0.245,
+"base": 0.164,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 1,
+"prix": 0.505,
+"base": 0.337,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 5,
+"prix": 0.295,
+"base": 0.3,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 10,
+"prix": 0.31,
+"base": 0.25,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 15,
+"prix": 0.575,
+"base": 0.197,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 20,
+"prix": 0.465,
+"base": 0.14,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 1,
+"prix": 0.38,
+"base": 0.168,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 5,
+"prix": 0.225,
+"base": 0.147,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 10,
+"prix": 0.29,
+"base": 0.121,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 15,
+"prix": 0.24,
+"base": 0.093,
+"issue": 0.0
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 20,
+"prix": 0.15,
+"base": 0.065,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Indonesia",
+"jour": 1,
+"prix": 0.55,
+"base": 0.667,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "Indonesia",
+"jour": 5,
+"prix": 0.495,
+"base": 0.613,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "Indonesia",
+"jour": 10,
+"prix": 0.48,
+"base": 0.532,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "Indonesia",
+"jour": 15,
+"prix": 0.9995,
+"base": 0.435,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "Indonesia",
+"jour": 20,
+"prix": 0.9995,
+"base": 0.317,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 1,
+"prix": 0.55,
+"base": 0.533,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 5,
+"prix": 0.525,
+"base": 0.481,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 10,
+"prix": 0.475,
+"base": 0.409,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 15,
+"prix": 0.475,
+"base": 0.326,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 20,
+"prix": 0.285,
+"base": 0.231,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 1,
+"prix": 0.545,
+"base": 0.37,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 5,
+"prix": 0.495,
+"base": 0.328,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 10,
+"prix": 0.345,
+"base": 0.273,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 15,
+"prix": 0.285,
+"base": 0.213,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 20,
+"prix": 0.23,
+"base": 0.148,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 1,
+"prix": 0.545,
+"base": 0.227,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 5,
+"prix": 0.505,
+"base": 0.199,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 10,
+"prix": 0.525,
+"base": 0.162,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 15,
+"prix": 0.28,
+"base": 0.125,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 20,
+"prix": 0.095,
+"base": 0.085,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 1,
+"prix": 0.405,
+"base": 0.376,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 5,
+"prix": 0.555,
+"base": 0.334,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 10,
+"prix": 0.68,
+"base": 0.277,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 15,
+"prix": 0.995,
+"base": 0.216,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 20,
+"prix": 0.995,
+"base": 0.15,
+"issue": 1.0
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 1,
+"prix": 0.55,
+"base": 0.328,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 5,
+"prix": 0.46,
+"base": 0.29,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 10,
+"prix": 0.5,
+"base": 0.24,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 15,
+"prix": 0.255,
+"base": 0.186,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 20,
+"prix": 0.255,
+"base": 0.128,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 1,
+"prix": 0.545,
+"base": 0.163,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 5,
+"prix": 0.515,
+"base": 0.142,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 10,
+"prix": 0.48,
+"base": 0.115,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 15,
+"prix": 0.355,
+"base": 0.088,
+"issue": 0.0
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 20,
+"prix": 0.28,
+"base": 0.059,
+"issue": 0.0
+}
+]

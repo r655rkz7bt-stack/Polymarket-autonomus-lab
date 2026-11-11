@@ -299,7 +299,26 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         return obs
     run("portwatch", portwatch)
     # Séismes (24/10/2026) : catalogue USGS des 10 derniers jours (M >= 5), pour les marchés « plus gros séisme du jour » et « nombre de séismes de la semaine ».
-    snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
+    # `vu` (11/11/2026) : première fois que chaque séisme apparaît dans notre relevé, pour mesurer le retard de publication de chaque
+    # catalogue. L'EMSC (témoin plus rapide, pas l'arbitre) fait s'abstenir `seismes_marche` quand il voit un séisme absent de l'USGS.
+    from polymarket_agent.seismes import first_seen
+    from polymarket_agent.sources.emsc import fetch_emsc
+    def with_first_seen(key, fetch):
+        def call(cfg):
+            old = refs._load(db, key)[1] if db is not None else []
+            return first_seen(old, fetch(cfg), now)
+        return call
+    snapshot("usgs", with_first_seen("ref:usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg)),
+             "ref:usgs")
+    # Tornades du mois (11/11/2026) : rapports filtrés du SPC jour par jour et décompte NCEI publié (règlement), pour `tornades_mois` ;
+    # `keep_first` garde le premier compte lu de chaque jour (journal sans regard vers le futur, experiments/tornades.md).
+    from polymarket_agent.sources.tornades import fetch_tornades, keep_first
+    def tornades(cfg):
+        old = refs._load(db, "ref:tornades")[1] if db is not None else []
+        return keep_first(old, factories.get("tornades", lambda c: fetch_tornades(http, now))(cfg), now)
+    snapshot("tornades", tornades, "ref:tornades")
+    snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
+             "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).
     from polymarket_agent.sieges import fetch_sieges
     snapshot("sieges", lambda cfg: factories.get("sieges", lambda c: fetch_sieges(http, now))(cfg), "ref:sieges")

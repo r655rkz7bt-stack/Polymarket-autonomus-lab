@@ -76,8 +76,12 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, 
         depuis = repartition.get("depuis") or {}
     except (ValueError, TypeError, AttributeError):
         parts, depuis = None, {}
+    try:  # catalogue USGS avec la première lecture de chaque séisme (11/11/2026, contrôle `catalogue_en_retard`)
+        seismes_rows = list((json.loads(db.get_value("ref:usgs") or "{}") or {}).get("rows") or []) if db is not None else None
+    except (ValueError, TypeError, AttributeError):
+        seismes_rows = None
     return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions, parts=parts,
-                         textes=enquete.lire_experiences(ROOT), depuis=depuis)
+                         textes=enquete.lire_experiences(ROOT), depuis=depuis, seismes_rows=seismes_rows)
 
 
 def _full_mothers(main_ledger, arena_cfg: dict) -> tuple[dict[str, int], int | None]:

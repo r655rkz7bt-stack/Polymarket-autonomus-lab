@@ -1,0 +1,3278 @@
+[
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 40.55,
+"no_px": 0.999,
+"parts": 728.86,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 40.55,
+"no_px": 0.999,
+"parts": 599.95,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 40.55,
+"no_px": 0.999,
+"parts": 611.64,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 40.55,
+"no_px": 0.999,
+"parts": 55.95,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 40.55,
+"no_px": 0.999,
+"parts": 31.52,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 39.55,
+"no_px": 0.999,
+"parts": 50.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 39.55,
+"no_px": 0.999,
+"parts": 89.16,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 39.55,
+"no_px": 0.999,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 37.87,
+"no_px": 0.999,
+"parts": 20.01,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 37.87,
+"no_px": 0.999,
+"parts": 5.01,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 37.71,
+"no_px": 0.999,
+"parts": 9.77,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 37.23,
+"no_px": 0.9989999342,
+"parts": 10.320321,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 37.23,
+"no_px": 0.999,
+"parts": 337.33,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 36.29,
+"no_px": 0.999,
+"parts": 3.73,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 35.18,
+"no_px": 0.9989997567,
+"parts": 2.412413,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 35.18,
+"no_px": 0.999,
+"parts": 83.89,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 35.18,
+"no_px": 0.999,
+"parts": 54.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 34.84,
+"no_px": 0.998,
+"parts": 5.21,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 34.84,
+"no_px": 0.9989996916,
+"parts": 2.292293,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 34.84,
+"no_px": 0.998,
+"parts": 80.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 34.6,
+"no_px": 0.998,
+"parts": 90.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 34.38,
+"no_px": 0.999,
+"parts": 15.52,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 34.38,
+"no_px": 0.9989999765,
+"parts": 14.654655,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 34.38,
+"no_px": 0.999,
+"parts": 510.16,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 34.38,
+"no_px": 0.999,
+"parts": 82.44,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 33.98,
+"no_px": 0.02,
+"parts": 50.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 33.5,
+"no_px": 0.998,
+"parts": 55.76,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 33.5,
+"no_px": 0.999,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 33.5,
+"no_px": 0.998,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 33.27,
+"no_px": 0.999,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 33.23,
+"no_px": 0.999,
+"parts": 6.396,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 33.23,
+"no_px": 0.999,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 33.23,
+"no_px": 0.998,
+"parts": 210.01,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 33.23,
+"no_px": 0.999,
+"parts": 2.732,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 33.23,
+"no_px": 0.998,
+"parts": 89.99,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 33.23,
+"no_px": 0.999,
+"parts": 4.554,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 33.23,
+"no_px": 0.998,
+"parts": 150.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 33.07,
+"no_px": 0.999,
+"parts": 2.56,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 32.42,
+"no_px": 0.996,
+"parts": 80.01,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 32.42,
+"no_px": 0.997,
+"parts": 20.84,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 32.42,
+"no_px": 0.997,
+"parts": 10.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 31.28,
+"no_px": 0.99,
+"parts": 161.61,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 31.27,
+"no_px": 0.99,
+"parts": 10.0909,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 31.19,
+"no_px": 0.99,
+"parts": 16.7777,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.19,
+"no_px": 0.99,
+"parts": 320.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.15,
+"no_px": 0.99,
+"parts": 350.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.15,
+"no_px": 0.99,
+"parts": 50.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.14,
+"no_px": 0.99,
+"parts": 160.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.12,
+"no_px": 0.99,
+"parts": 336.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 31.12,
+"no_px": 0.99,
+"parts": 42.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 31.11,
+"no_px": 0.99,
+"parts": 80.606,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.1,
+"no_px": 0.99,
+"parts": 50.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.1,
+"no_px": 0.99,
+"parts": 118.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.08,
+"no_px": 0.99,
+"parts": 84.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.08,
+"no_px": 0.99,
+"parts": 27.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.08,
+"no_px": 0.99,
+"parts": 25.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.08,
+"no_px": 0.99,
+"parts": 50.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.06,
+"no_px": 0.99,
+"parts": 42.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.05,
+"no_px": 0.99,
+"parts": 100.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.04,
+"no_px": 0.99,
+"parts": 129.76,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.04,
+"no_px": 0.9776843771,
+"parts": 909.82,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 31.04,
+"no_px": 0.985,
+"parts": 100.0,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.04,
+"no_px": 0.9738829013,
+"parts": 34.33,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.02,
+"no_px": 0.97,
+"parts": 188.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.02,
+"no_px": 0.96,
+"parts": 156.25,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.02,
+"no_px": 0.96,
+"parts": 139.75,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.01,
+"no_px": 0.96,
+"parts": 48.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.01,
+"no_px": 0.98,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 31.01,
+"no_px": 0.97,
+"parts": 36.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.01,
+"no_px": 0.96,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 31.01,
+"no_px": 0.96,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.01,
+"no_px": 0.9533333333,
+"parts": 60.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.0,
+"no_px": 0.95,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.0,
+"no_px": 0.95,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 31.0,
+"no_px": 0.95,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 30.99,
+"no_px": 0.95,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 30.99,
+"no_px": 0.95,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 30.99,
+"no_px": 0.95,
+"parts": 172.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 30.54,
+"no_px": 0.95,
+"parts": 20.1,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 30.5,
+"no_px": 0.97,
+"parts": 28.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 30.47,
+"no_px": 0.97,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 29.57,
+"no_px": 0.895,
+"parts": 42.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 29.45,
+"no_px": 0.89,
+"parts": 21.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 29.37,
+"no_px": 0.85,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 29.35,
+"no_px": 0.05,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 29.27,
+"no_px": 0.97,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 29.27,
+"no_px": 0.97,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 29.25,
+"no_px": 0.94,
+"parts": 128.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 29.25,
+"no_px": 0.89,
+"parts": 21.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 28.83,
+"no_px": 0.97,
+"parts": 33.33,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 28.83,
+"no_px": 0.99,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 28.83,
+"no_px": 0.895,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 28.79,
+"no_px": 0.94,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 28.79,
+"no_px": 0.89,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 28.79,
+"no_px": 0.89,
+"parts": 21.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 28.09,
+"no_px": 0.9299999999999999,
+"parts": 4.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 28.09,
+"no_px": 0.92,
+"parts": 4.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 27.91,
+"no_px": 0.93,
+"parts": 56.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 27.35,
+"no_px": 0.9299999999999999,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.99,
+"no_px": 0.9199999979,
+"parts": 19.413037,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.99,
+"no_px": 0.91,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.79,
+"no_px": 0.92,
+"parts": 41.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.79,
+"no_px": 0.9,
+"parts": 17.62,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 26.79,
+"no_px": 0.8037037037,
+"parts": 54.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 26.79,
+"no_px": 0.85,
+"parts": 19.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 26.79,
+"no_px": 0.82,
+"parts": 80.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.76,
+"no_px": 0.831957672,
+"parts": 236.25,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 26.76,
+"no_px": 0.79,
+"parts": 25.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.76,
+"no_px": 0.81,
+"parts": 25.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.76,
+"no_px": 0.82,
+"parts": 24.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 26.76,
+"no_px": 0.82,
+"parts": 25.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 26.45,
+"no_px": 0.1005714286,
+"parts": 70.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 26.45,
+"no_px": 0.1,
+"parts": 30.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 26.45,
+"no_px": 0.1,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 26.41,
+"no_px": 0.86,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 26.32,
+"no_px": 0.85,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 25.6,
+"no_px": 0.052661,
+"parts": 80.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 25.35,
+"no_px": 0.0066375,
+"parts": 80.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 25.29,
+"no_px": 0.004,
+"parts": 80.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 25.12,
+"no_px": 0.3446051376,
+"parts": 290.1872,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 25.08,
+"no_px": 0.5,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 25.06,
+"no_px": 0.688440367,
+"parts": 109.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 24.62,
+"no_px": 0.74,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 24.62,
+"no_px": 0.53,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 24.62,
+"no_px": 0.66,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 24.44,
+"no_px": 0.6799999999999999,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 24.41,
+"no_px": 0.0549999988,
+"parts": 20.545455,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 24.41,
+"no_px": 0.02,
+"parts": 25.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 24.35,
+"no_px": 0.64,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 24.31,
+"no_px": 0.64,
+"parts": 16.52,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 24.16,
+"no_px": 0.73,
+"parts": 8.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 24.15,
+"no_px": 0.01,
+"parts": 12.79,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 24.01,
+"no_px": 0.78,
+"parts": 100.56,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 23.93,
+"no_px": 0.04,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 23.81,
+"no_px": 0.819999993,
+"parts": 17.207316,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 23.81,
+"no_px": 0.83,
+"parts": 17.2,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 23.81,
+"no_px": 0.8,
+"parts": 17.5,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 23.8,
+"no_px": 0.8,
+"parts": 16.5,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 23.76,
+"no_px": 0.57,
+"parts": 8.0,
+"issue_no": 0.0,
+"base_no": 0.749
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 23.37,
+"no_px": 0.76,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 23.28,
+"no_px": 0.69,
+"parts": 46.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 23.11,
+"no_px": 0.74,
+"parts": 10.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 22.38,
+"no_px": 0.79,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 22.31,
+"no_px": 0.87,
+"parts": 3.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 22.25,
+"no_px": 0.69,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 22.25,
+"no_px": 0.68,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 22.24,
+"no_px": 0.69,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 22.24,
+"no_px": 0.68,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 22.04,
+"no_px": 0.66,
+"parts": 0.48,
+"issue_no": 1.0,
+"base_no": 0.86
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 21.55,
+"no_px": 0.69,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 21.55,
+"no_px": 0.7,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 21.47,
+"no_px": 0.84,
+"parts": 11.99,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 21.3,
+"no_px": 0.7,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 21.28,
+"no_px": 0.82,
+"parts": 11.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 20.98,
+"no_px": 0.55,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 20.53,
+"no_px": 0.83,
+"parts": 17.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 20.43,
+"no_px": 0.8,
+"parts": 19.55,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 20.0,
+"no_px": 0.46,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 20.0,
+"no_px": 0.47,
+"parts": 0.45,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 20.0,
+"no_px": 0.47,
+"parts": 6.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 19.56,
+"no_px": 0.81,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 19.37,
+"no_px": 0.84,
+"parts": 11.25,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 19.37,
+"no_px": 0.74,
+"parts": 14.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 19.37,
+"no_px": 0.8315747183,
+"parts": 23.738093,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 19.37,
+"no_px": 0.76,
+"parts": 26.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 19.37,
+"no_px": 0.86,
+"parts": 23.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 19.31,
+"no_px": 0.58,
+"parts": 6.4,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 19.28,
+"no_px": 0.602,
+"parts": 25.0,
+"issue_no": 1.0,
+"base_no": 0.839
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 19.02,
+"no_px": 0.76,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 19.02,
+"no_px": 0.81,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.935
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 18.89,
+"no_px": 0.75,
+"parts": 12.31,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 18.84,
+"no_px": 0.75,
+"parts": 12.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 18.84,
+"no_px": 0.75,
+"parts": 12.0,
+"issue_no": 1.0,
+"base_no": 0.836
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 18.56,
+"no_px": 0.56,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 18.38,
+"no_px": 0.7299999007,
+"parts": 6.849316,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 17.86,
+"no_px": 0.73,
+"parts": 12.32,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 17.54,
+"no_px": 0.46,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.658
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 17.49,
+"no_px": 0.5,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 17.49,
+"no_px": 0.5,
+"parts": 16.0,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 17.0,
+"no_px": 0.6899997731,
+"parts": 2.159421,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 17.0,
+"no_px": 0.45,
+"parts": 12.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 16.97,
+"no_px": 0.65,
+"parts": 17.4,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 16.84,
+"no_px": 0.73,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.868
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 16.59,
+"no_px": 0.5,
+"parts": 8.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 16.51,
+"no_px": 0.83,
+"parts": 1.23,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 16.5,
+"no_px": 0.81,
+"parts": 1.23,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 16.43,
+"no_px": 0.6899999491,
+"parts": 2.159419,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 16.43,
+"no_px": 0.45,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 16.41,
+"no_px": 0.68,
+"parts": 2.191175,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 16.41,
+"no_px": 0.45,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 16.21,
+"no_px": 0.8,
+"parts": 18.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 16.21,
+"no_px": 0.66,
+"parts": 18.0,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 16.12,
+"no_px": 0.6599997888,
+"parts": 1.515152,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 16.12,
+"no_px": 0.8099999352,
+"parts": 1.234568,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 15.94,
+"no_px": 0.7,
+"parts": 2.12857,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 15.94,
+"no_px": 0.43,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 15.56,
+"no_px": 0.5116196698,
+"parts": 122.727885,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 15.56,
+"no_px": 0.54982,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 15.28,
+"no_px": 0.45,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 15.28,
+"no_px": 0.26,
+"parts": 80.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 15.28,
+"no_px": 0.7099998475,
+"parts": 2.098592,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 14.85,
+"no_px": 0.4362377728,
+"parts": 26.58,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 14.85,
+"no_px": 0.22,
+"parts": 17.41,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 14.85,
+"no_px": 0.21999999999999997,
+"parts": 2.59,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 14.67,
+"no_px": 0.51,
+"parts": 60.0,
+"issue_no": 1.0,
+"base_no": 0.775
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 14.55,
+"no_px": 0.44,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 14.54,
+"no_px": 0.39,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 14.43,
+"no_px": 0.38,
+"parts": 12.06,
+"issue_no": 1.0,
+"base_no": 0.803
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 14.32,
+"no_px": 0.8,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 14.29,
+"no_px": 0.5299999538,
+"parts": 2.811321,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 14.29,
+"no_px": 0.35,
+"parts": 15.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 13.87,
+"no_px": 0.39,
+"parts": 5.0,
+"issue_no": 0.0,
+"base_no": 0.657
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 13.84,
+"no_px": 0.4,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 13.69,
+"no_px": 0.4,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 13.43,
+"no_px": 0.8599999885,
+"parts": 1.732557,
+"issue_no": 1.0,
+"base_no": 0.775
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 13.43,
+"no_px": 0.5,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.775
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 13.4,
+"no_px": 0.39,
+"parts": 51.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 13.08,
+"no_px": 0.78,
+"parts": 38.46,
+"issue_no": 1.0,
+"base_no": 0.907
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 12.83,
+"no_px": 0.39,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 12.72,
+"no_px": 0.53,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.775
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 12.53,
+"no_px": 0.39,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.544
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.4,
+"no_px": 0.6496389064,
+"parts": 9.651514,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.4,
+"no_px": 0.66,
+"parts": 0.34,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.39,
+"no_px": 0.69,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.39,
+"no_px": 0.62,
+"parts": 0.25,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.39,
+"no_px": 0.62,
+"parts": 34.0,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.39,
+"no_px": 0.7199998067,
+"parts": 2.069445,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.39,
+"no_px": 0.5,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 12.36,
+"no_px": 0.53,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.716
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 12.31,
+"no_px": 0.66,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 11.98,
+"no_px": 0.44,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 11.82,
+"no_px": 0.39,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 11.72,
+"no_px": 0.53,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.716
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 11.5,
+"no_px": 0.579999891,
+"parts": 2.568966,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 11.5,
+"no_px": 0.37,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 11.35,
+"no_px": 0.53,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.716
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 11.26,
+"no_px": 0.73,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.75
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 11.17,
+"no_px": 0.68,
+"parts": 120.6,
+"issue_no": 1.0,
+"base_no": 0.75
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 10.11,
+"no_px": 0.37,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 9.96,
+"no_px": 0.72,
+"parts": 23.0,
+"issue_no": 1.0,
+"base_no": 0.711
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 9.94,
+"no_px": 0.56,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 9.93,
+"no_px": 0.58,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 9.43,
+"no_px": 0.38,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 9.12,
+"no_px": 0.37,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.45
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 8.78,
+"no_px": 0.8,
+"parts": 6.25,
+"issue_no": 1.0,
+"base_no": 0.716
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 8.59,
+"no_px": 0.6,
+"parts": 6.05,
+"issue_no": 0.0,
+"base_no": 0.576
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 8.38,
+"no_px": 0.79,
+"parts": 14.78,
+"issue_no": 1.0,
+"base_no": 0.879
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 8.38,
+"no_px": 0.8,
+"parts": 74.5625,
+"issue_no": 1.0,
+"base_no": 0.879
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 8.38,
+"no_px": 0.8,
+"parts": 14.56,
+"issue_no": 1.0,
+"base_no": 0.879
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 7.92,
+"no_px": 0.7,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.83
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 7.43,
+"no_px": 0.12,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.661
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 7.36,
+"no_px": 0.34,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 7.32,
+"no_px": 0.73,
+"parts": 0.25,
+"issue_no": 1.0,
+"base_no": 0.661
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 7.32,
+"no_px": 0.73,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.661
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 7.26,
+"no_px": 0.4,
+"parts": 2.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 7.1,
+"no_px": 0.5800000000000001,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 7.09,
+"no_px": 0.61,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.84,
+"no_px": 0.6,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.84,
+"no_px": 0.6099999932,
+"parts": 32.245902,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.74,
+"no_px": 0.54,
+"parts": 40.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.78,
+"parts": 68.94,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.52,
+"no_px": 0.69,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.77,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.77,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.77,
+"parts": 41.05,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.761895,
+"parts": 100.0,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.77,
+"parts": 8.94,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Peru",
+"jour": 6.52,
+"no_px": 0.7599999988,
+"parts": 128.947366,
+"issue_no": 1.0,
+"base_no": 0.853
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 6.45,
+"no_px": 0.419999966,
+"parts": 6.476191,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.45,
+"no_px": 0.8399998695,
+"parts": 3.678572,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.43,
+"no_px": 0.85,
+"parts": 3.68,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.43,
+"no_px": 0.8499999864,
+"parts": 3.682353,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 6.42,
+"no_px": 0.65,
+"parts": 3.0,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 6.42,
+"no_px": 0.5199999406,
+"parts": 3.365385,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 6.42,
+"no_px": 0.65,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 6.42,
+"no_px": 0.65,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 6.42,
+"no_px": 0.65,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 6.42,
+"no_px": 0.65,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.42,
+"no_px": 0.74,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 6.42,
+"no_px": 0.6361829026,
+"parts": 157.1875,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.42,
+"no_px": 0.7401315776,
+"parts": 20.266664,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 6.42,
+"no_px": 0.7399999988,
+"parts": 135.135134,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 6.41,
+"no_px": 0.509999933,
+"parts": 3.431373,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Philippines",
+"jour": 6.4,
+"no_px": 0.48,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.7
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.36,
+"no_px": 0.63,
+"parts": 24.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.36,
+"no_px": 0.63,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 6.31,
+"no_px": 0.29,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.3,
+"no_px": 0.61,
+"parts": 40.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.2,
+"no_px": 0.66,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 6.2,
+"no_px": 0.63,
+"parts": 50.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 6.19,
+"no_px": 0.26,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 6.17,
+"no_px": 0.24,
+"parts": 6.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 5.54,
+"no_px": 0.47,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.661
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 5.31,
+"no_px": 0.59,
+"parts": 7.0,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 5.23,
+"no_px": 0.59,
+"parts": 33.0,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Chile",
+"jour": 5.08,
+"no_px": 0.47,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.661
+},
+{
+"evt": "1108757",
+"pays": "Japan",
+"jour": 5.03,
+"no_px": 0.52,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.505
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 5.02,
+"no_px": 0.56,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Mexico",
+"jour": 4.97,
+"no_px": 0.52,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.794
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 4.87,
+"no_px": 0.89,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 4.86,
+"no_px": 0.27,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 4.86,
+"no_px": 0.29,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 4.86,
+"no_px": 0.25,
+"parts": 82.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 4.86,
+"no_px": 0.27,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "Indonesia",
+"jour": 4.75,
+"no_px": 0.1,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.373
+},
+{
+"evt": "1108757",
+"pays": "United States",
+"jour": 4.57,
+"no_px": 0.41,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.656
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 32.14,
+"no_px": 0.999,
+"parts": 44.1,
+"issue_no": 1.0,
+"base_no": 0.941
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 32.14,
+"no_px": 0.9985192308,
+"parts": 312.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 32.14,
+"no_px": 0.998375,
+"parts": 240.0,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 30.93,
+"no_px": 0.9983617021,
+"parts": 235.0,
+"issue_no": 1.0,
+"base_no": 0.941
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 30.93,
+"no_px": 0.998375,
+"parts": 240.0,
+"issue_no": 1.0,
+"base_no": 0.872
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 30.93,
+"no_px": 0.9983617021,
+"parts": 235.0,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 30.11,
+"no_px": 0.99,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 30.08,
+"no_px": 0.9890808816,
+"parts": 98.91,
+"issue_no": 1.0,
+"base_no": 0.941
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 30.08,
+"no_px": 0.9813793103,
+"parts": 58.0,
+"issue_no": 1.0,
+"base_no": 0.872
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 30.08,
+"no_px": 0.981025641,
+"parts": 78.0,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 30.08,
+"no_px": 0.9804589788,
+"parts": 174.3,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 30.08,
+"no_px": 0.9803960396,
+"parts": 202.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 29.83,
+"no_px": 0.97,
+"parts": 9.3608,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 29.82,
+"no_px": 0.98,
+"parts": 109.37,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 29.26,
+"no_px": 0.95,
+"parts": 92.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 29.13,
+"no_px": 0.97,
+"parts": 30.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 28.9,
+"no_px": 0.9454291624,
+"parts": 38.68,
+"issue_no": 1.0,
+"base_no": 0.941
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 27.16,
+"no_px": 0.92,
+"parts": 12.5,
+"issue_no": 1.0,
+"base_no": 0.872
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 27.15,
+"no_px": 0.92,
+"parts": 21.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 27.15,
+"no_px": 0.91,
+"parts": 40.0,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 25.34,
+"no_px": 0.9199999963,
+"parts": 10.869562,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Chile",
+"jour": 23.49,
+"no_px": 0.8964734895,
+"parts": 32.44,
+"issue_no": 1.0,
+"base_no": 0.852
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 20.01,
+"no_px": 0.96,
+"parts": 4.0,
+"issue_no": 1.0,
+"base_no": 0.941
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 19.96,
+"no_px": 0.76,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.872
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 19.96,
+"no_px": 0.75,
+"parts": 80.0,
+"issue_no": 1.0,
+"base_no": 0.872
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 19.87,
+"no_px": 0.96,
+"parts": 162.01,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 19.87,
+"no_px": 0.95,
+"parts": 12.5,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 19.87,
+"no_px": 0.94,
+"parts": 27.49,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 19.87,
+"no_px": 0.9299999999999999,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 19.87,
+"no_px": 0.92,
+"parts": 21.0,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 19.75,
+"no_px": 0.85,
+"parts": 5.0,
+"issue_no": 1.0,
+"base_no": 0.915
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 19.06,
+"no_px": 0.7,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 19.06,
+"no_px": 0.6416532895,
+"parts": 47.923077,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 17.73,
+"no_px": 0.51,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.769
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 17.2,
+"no_px": 0.8,
+"parts": 463.0,
+"issue_no": 1.0,
+"base_no": 0.875
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 17.2,
+"no_px": 0.81,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.875
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 17.2,
+"no_px": 0.81,
+"parts": 155.0,
+"issue_no": 1.0,
+"base_no": 0.875
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 16.88,
+"no_px": 0.8,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.875
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 16.55,
+"no_px": 0.75,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.814
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 16.55,
+"no_px": 0.75,
+"parts": 20.12,
+"issue_no": 1.0,
+"base_no": 0.814
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 13.7,
+"no_px": 0.53,
+"parts": 23.0,
+"issue_no": 1.0,
+"base_no": 0.674
+},
+{
+"evt": "944677",
+"pays": "Japan",
+"jour": 13.67,
+"no_px": 0.41,
+"parts": 23.0,
+"issue_no": 1.0,
+"base_no": 0.674
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 13.25,
+"no_px": 0.6,
+"parts": 20.1,
+"issue_no": 1.0,
+"base_no": 0.912
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 13.14,
+"no_px": 0.58,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.912
+},
+{
+"evt": "944677",
+"pays": "Philippines",
+"jour": 12.46,
+"no_px": 0.7699999977,
+"parts": 8.571426,
+"issue_no": 1.0,
+"base_no": 0.76
+},
+{
+"evt": "944677",
+"pays": "Peru",
+"jour": 12.4,
+"no_px": 0.55,
+"parts": 20.0,
+"issue_no": 1.0,
+"base_no": 0.885
+},
+{
+"evt": "944677",
+"pays": "Mexico",
+"jour": 11.9,
+"no_px": 0.8199999836,
+"parts": 1.219511,
+"issue_no": 1.0,
+"base_no": 0.838
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 11.19,
+"no_px": 0.015000000000000013,
+"parts": 1.94,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 11.18,
+"no_px": 0.015000000000000013,
+"parts": 1.49,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 10.93,
+"no_px": 0.12,
+"parts": 17.0,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 10.91,
+"no_px": 0.13,
+"parts": 71.0,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 10.28,
+"no_px": 0.4989998795,
+"parts": 4.008017,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 9.11,
+"no_px": 0.21499999999999997,
+"parts": 26.42,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 9.09,
+"no_px": 0.20499999999999996,
+"parts": 10.6,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 9.05,
+"no_px": 0.20399999999999996,
+"parts": 44.46,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 8.89,
+"no_px": 0.0522549704,
+"parts": 485.886793,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 8.89,
+"no_px": 0.06,
+"parts": 50.0,
+"issue_no": 0.0,
+"base_no": 0.723
+},
+{
+"evt": "944677",
+"pays": "United States",
+"jour": 8.67,
+"no_px": 0.05,
+"parts": 20.0,
+"issue_no": 0.0,
+"base_no": 0.723
+}
+]

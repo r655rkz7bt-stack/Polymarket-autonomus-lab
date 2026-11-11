@@ -850,6 +850,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if not verdict.accepted and not all(r.startswith("carnet périmé") for r in verdict.reasons):
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
             log.info("rejet %s : %s", proposal.op_id, verdict.reasons)
+            _note_refus(report, portfolio.name, proposal.strategy_id, verdict.reasons)
             continue
 
         # Relecture du carnet juste avant l'exécution, puis nouveau contrôle.
@@ -865,6 +866,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
         if not verdict.accepted:
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
             log.info("rejet après relecture %s : %s", proposal.op_id, verdict.reasons)
+            _note_refus(report, portfolio.name, proposal.strategy_id, verdict.reasons)
             continue
         accepted += 1
         if proposal.side == "SELL":
@@ -894,6 +896,7 @@ def _execute(deps: CycleDeps, portfolio: Portfolio, watchlist: list[MarketInfo],
             verdict.reasons.append(drop)
             deps.db.save_decision(report.cycle_id, deps.now(), proposal, verdict)
             log.info("rejet après relecture %s : %s", proposal.op_id, drop)
+            _note_refus(report, portfolio.name, proposal.strategy_id, [drop])
             continue
         room = _cash_room(deps, portfolio)
         if room is not None and Decimal(verdict.checks.get("cost_bound", "0")) > room:
@@ -1056,6 +1059,18 @@ def _round_robin(lists: list[list]) -> list:
     for i in range(depth):
         out += [x[i] for x in lists if i < len(x)]
     return out
+
+
+def _note_refus(report, portfolio: str, strategy_id: str, reasons) -> None:
+    """Refus du contrôleur (avant ou après relecture du carnet) ajoutés aux raisons d'abstention publiées (11/11/2026) : une stratégie
+    qui propose sans jamais acheter (« carnet périmé » d'un marché calme, proposals/2026-11-11_carnet_calme_juge_perime.md) n'était
+    visible que dans le journal du cycle, pas dans `abstentions` ni dans l'enquête automatique."""
+    import re
+    raisons = report.abstentions.setdefault(portfolio, {}).setdefault(strategy_id, {"marches": 0, "propositions": 0, "ordres": 0,
+                                                                                     "raisons": {}})["raisons"]
+    for r in list(reasons or [])[:1]:
+        key = "refusé par le contrôleur : " + re.sub(r"\s*\(.*\)\s*$", "", str(r)).strip()
+        raisons[key] = raisons.get(key, 0) + 1
 
 
 def _price_drop(deps: CycleDeps, proposal: Proposal, before: OrderBook | None, fresh: OrderBook | None) -> str | None:

@@ -465,6 +465,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["detroits_log"] = attach_detroits_log(markets, db)
     from polymarket_agent.seismes import attach_seismes
     counts["seismes"] = attach_seismes(markets, db, now)
+    from polymarket_agent.tornades import attach_tornades   # 11/11/2026 : tornades du mois (tornades_mois)
+    counts["tornades"] = attach_tornades(markets, db, now)
     from polymarket_agent.sieges import attach_sieges
     counts["sieges"] = attach_sieges(markets, db, now)
     from polymarket_agent.spacex import attach_spacex

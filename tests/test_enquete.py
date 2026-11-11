@@ -709,3 +709,39 @@ def test_sources_indisponibles_lists_down_sources_but_not_missing_accounts():
     found = enquete.sources_indisponibles(etat)
     assert len(found) == 1 and "portwatch" in str(found[0]) and "bluesky" not in str(found[0]) and "inities" not in str(found[0])
     assert not enquete.sources_indisponibles(None)
+
+
+def test_earthquake_buy_made_while_usgs_had_not_yet_published_a_quake_is_flagged():
+    """11/11/2026, cas réel : 5,8 de 23 h 17 le 07/11, absent du relevé de 23 h 25 ; NON du « 7 » acheté à 23 h 36 (−65 €)."""
+    quake = datetime(2026, 11, 7, 23, 17, tzinfo=timezone.utc)
+    rows = [{"id": "us7000twun", "t": quake.timestamp(), "mag": 5.8, "vu": "2026-11-07T23:45:00+00:00"},
+            {"id": "ancien", "t": (quake - timedelta(hours=7)).timestamp(), "mag": 5.5, "vu": "2026-11-07T16:30:00+00:00"},
+            {"id": "petit", "t": quake.timestamp(), "mag": 5.0, "vu": "2026-11-08T00:00:00+00:00"}]
+    late = _buy(datetime(2026, 11, 7, 23, 36, tzinfo=timezone.utc), "sept", 0.79, 91, strategy="seismes_marche")
+    early = _buy(datetime(2026, 11, 7, 22, 51, tzinfo=timezone.utc), "jour", 0.91, 30, strategy="seismes_marche")
+    other = _buy(datetime(2026, 11, 7, 23, 36, tzinfo=timezone.utc), "x", 0.5, 10, strategy="compteur_tweets")
+    entries = {"seismes_marche_v2.0.0": _ledger(early, late), "compteur_tweets_v2.0.0": _ledger(other)}
+    found = enquete.catalogue_en_retard(entries, rows)
+    assert len(found) == 1 and found[0]["controle"] == "catalogue_en_retard" and len(found[0]["exemples"]) == 1
+    assert "séisme 5.8 de 07/11 23:17 lu seulement à 23:45" in found[0]["exemples"][0]
+    assert enquete.catalogue_en_retard(entries, None) == [] and enquete.catalogue_en_retard(entries, [dict(rows[0], vu=None)]) == []
+
+
+def test_local_investigation_reads_the_v2_ghost_ledgers(tmp_path):
+    """11/11/2026 : scripts/enquete.py ne lisait que ledger/fantome (v1 éteinte) depuis le labo v2 du 07/11."""
+    import json
+    import sys
+    sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1] / "scripts"))
+    import enquete as script
+    for sub, name in (("fantome", "vieille_v1.0.0"), ("fantome_v2", "vivante_v2.0.0")):
+        (tmp_path / "ledger" / sub).mkdir(parents=True)
+        (tmp_path / "ledger" / sub / f"{name}.jsonl").write_text(json.dumps({"type": "GENESIS", "ts": NOW.isoformat(), "data": {}}) + "\n")
+    assert set(script.load_published(tmp_path)) == {"vivante_v2.0.0"}
+
+
+def test_controller_refusals_published_in_abstentions_are_a_lead():
+    abst = {"portefeuilles": {"fantome:seismes_pays_v2.0.0": {"seismes_pays": {"marches": 186, "propositions": 1, "ordres": 0,
+            "raisons": {"avantage net insuffisant": 5, "refusé par le contrôleur : carnet périmé": 1}}}}}
+    found = enquete.refus_controleur(abst)
+    assert len(found) == 1 and "seismes_pays_v2.0.0 : refusé par le contrôleur : carnet périmé ×1" in found[0]["exemples"]
+    assert enquete.refus_controleur(None) == [] and enquete.refus_controleur({"portefeuilles": {}}) == []

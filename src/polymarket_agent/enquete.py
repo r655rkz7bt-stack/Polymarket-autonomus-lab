@@ -56,7 +56,7 @@ import math
 import re
 import statistics
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
 from polymarket_agent.reporting import closed_trades
@@ -676,6 +676,20 @@ def familles_vides(abstentions: dict | None, entries: dict[str, list[dict]] | No
                      "zero_fees le 19-20/10/2026). Vérifier le feeType des marchés visés et corriger market_family ou la liste `familles`.", out)] if out else []
 
 
+def refus_controleur(abstentions: dict | None) -> list[dict]:
+    """Propositions refusées par le contrôleur au dernier cycle (raisons « refusé par le contrôleur : … », publiées depuis le 11/11/2026).
+    Cas réel : `seismes_pays` proposait le NON d'un marché calme, refusé « carnet périmé » (horodatage = dernière modification du carnet)."""
+    out = []
+    for pf, per in ((abstentions or {}).get("portefeuilles") or {}).items():
+        for sid, info in per.items():
+            for k, v in (info.get("raisons") or {}).items():
+                if str(k).startswith("refusé par le contrôleur"):
+                    out.append(f"{pf.split(':', 1)[-1]} : {k} ×{v}")
+    return [_finding("refus_controleur", A_REGARDER, f"{len(out)} refus du contrôleur au dernier cycle",
+                     "Une stratégie qui propose sans acheter ne teste rien. « carnet périmé » sur un marché calme : "
+                     "proposals/2026-11-11_carnet_calme_juge_perime.md ; autre motif : lire le journal du cycle.", out)] if out else []
+
+
 def sources_vides(etat: dict | None) -> list[dict]:
     """Sources dont le statut du dernier cycle est « ok (0 observations) » : un « ok » qui ne rapporte rien peut cacher une panne totale
     (23/10/2026 : `meteo_metar` et `meteo_prevision` à 0 depuis que Gamma cite `aviationweather.gov/api/data/metar?ids=…` au lieu de
@@ -793,6 +807,37 @@ def positions_oubliees(entries: dict[str, list[dict]], now: datetime, grace_hour
         if late:
             out.append(_finding("positions_oubliees", A_REGARDER, f"{name} : {len(late)} position(s) ouverte(s) bien après l'échéance",
                                 "Marché contesté, règlement manqué ou mauvaise échéance : l'argent reste bloqué.", late))
+    return out
+
+
+def catalogue_en_retard(entries: dict[str, list[dict]], rows: list[dict] | None, since: datetime | None = None,
+                        prefix: str = "seismes_marche", min_mag: float = 5.25) -> list[dict]:
+    """Achats « séismes » faits pendant qu'un séisme déjà arrivé manquait encore à notre catalogue USGS (11/11/2026) : heure
+    d'origine `t` avant l'achat, première lecture `vu` après. Le marché le savait souvent déjà (07/11 23 h 36 : NON du « 7 »
+    estimé 0,931 sans le 5,8 de 23 h 17, chance réelle 0,801, −65 €). `rows` : clé `ref:usgs` de la base (champ `vu`)."""
+    seen = []
+    for r in rows or []:
+        try:
+            if r.get("vu") and float(r.get("mag") or 0) >= min_mag:
+                seen.append((float(r["t"]), datetime.fromisoformat(str(r["vu"])).timestamp(), r))
+        except (TypeError, ValueError, KeyError):
+            continue
+    out = []
+    for name, log in entries.items():
+        if not name.startswith(prefix):
+            continue
+        late = []
+        for e in _buys(log, since):
+            b = _ts(e).timestamp()
+            missing = [r for t, vu, r in seen if t < b < vu]
+            if missing:
+                r = missing[0]
+                late.append(f"{e['ts'][:16]} « {e['data']['outcome']} » marché {e['data']['market_id']} : séisme {r['mag']} de "
+                            f"{datetime.fromtimestamp(float(r['t']), timezone.utc):%d/%m %H:%M} lu seulement à {str(r['vu'])[11:16]}")
+        if late:
+            out.append(_finding("catalogue_en_retard", A_REGARDER, f"{name} : {len(late)} achat(s) faits avant que notre catalogue USGS ne voie un séisme déjà arrivé",
+                                "Le marché le savait peut-être déjà : la chance calculée était fausse. L'abstention `max_ecart_rapide` (témoin EMSC) "
+                                "aurait-elle dû jouer ? (enquetes/2026-11-11_matin_seismes_catalogue_en_retard.md)", late))
     return out
 
 
@@ -1255,7 +1300,8 @@ def sans_test_passe(entries: dict[str, list[dict]], configs: dict, textes: dict[
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
         audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None,
-        textes: dict[str, str] | None = None, depuis: dict[str, str] | None = None) -> list[dict]:
+        textes: dict[str, str] | None = None, depuis: dict[str, str] | None = None,
+        seismes_rows: list[dict] | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -1267,10 +1313,11 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
-                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources) + sources_retirees(sources) + sources_indisponibles(sources)
+                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + refus_controleur(abstentions) + sources_vides(sources) + sources_retirees(sources) + sources_indisponibles(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)
-                + copie_absente(entries, parts, now, days=max(days, 3), depuis=depuis) + sans_test_passe(entries, configs, textes))
+                + copie_absente(entries, parts, now, days=max(days, 3), depuis=depuis) + sans_test_passe(entries, configs, textes)
+                + catalogue_en_retard(entries, seismes_rows, since))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 
