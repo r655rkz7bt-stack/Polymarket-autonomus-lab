@@ -299,7 +299,19 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         return obs
     run("portwatch", portwatch)
     # Séismes (24/10/2026) : catalogue USGS des 10 derniers jours (M >= 5), pour les marchés « plus gros séisme du jour » et « nombre de séismes de la semaine ».
-    snapshot("usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg), "ref:usgs")
+    # `vu` (11/11/2026) : première fois que chaque séisme apparaît dans notre relevé, pour mesurer le retard de publication de chaque
+    # catalogue. L'EMSC (témoin plus rapide, pas l'arbitre) fait s'abstenir `seismes_marche` quand il voit un séisme absent de l'USGS.
+    from polymarket_agent.seismes import first_seen
+    from polymarket_agent.sources.emsc import fetch_emsc
+    def with_first_seen(key, fetch):
+        def call(cfg):
+            old = refs._load(db, key)[1] if db is not None else []
+            return first_seen(old, fetch(cfg), now)
+        return call
+    snapshot("usgs", with_first_seen("ref:usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg)),
+             "ref:usgs")
+    snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
+             "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).
     from polymarket_agent.sieges import fetch_sieges
     snapshot("sieges", lambda cfg: factories.get("sieges", lambda c: fetch_sieges(http, now))(cfg), "ref:sieges")

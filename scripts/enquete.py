@@ -27,11 +27,36 @@ from polymarket_agent.strategy_engine import load_strategies
 def load_published(folder) -> dict[str, list[dict]]:
     def read(path):
         return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    entries = {path.stem: read(path) for path in sorted((folder / "ledger" / "fantome").glob("*.jsonl"))}
+    # Labo v2 (07/11/2026) : les fantômes vivants écrivent dans ledger/fantome_v2 ; ledger/fantome ne garde que la v1 éteinte.
+    # Jusqu'au 11/11/2026 ce script ne lisait que la v1 : l'enquête locale ne voyait aucune stratégie vivante.
+    v2 = folder / "ledger" / "fantome_v2"
+    ghosts = v2 if v2.is_dir() and any(v2.glob("*.jsonl")) else folder / "ledger" / "fantome"
+    entries = {path.stem: read(path) for path in sorted(ghosts.glob("*.jsonl"))}
     main = folder / "ledger" / "ledger.jsonl"
     if main.exists():
         entries["principal"] = read(main)
     return entries
+
+
+def catalogue_usgs(folder) -> list[dict]:
+    """Catalogue USGS de la sauvegarde de la base (clé `ref:usgs`, champ `vu` depuis le 11/11/2026), pour `catalogue_en_retard`."""
+    import gzip
+    import sqlite3
+    import tempfile
+    path = folder / "backup" / "essentiel.sqlite.gz"
+    if not path.exists():
+        return []
+    with tempfile.TemporaryDirectory() as tmp:
+        db = f"{tmp}/e.sqlite"
+        with gzip.open(path) as src, open(db, "wb") as dst:
+            dst.write(src.read())
+        try:
+            con = sqlite3.connect(db)
+            raw = con.execute("select value from kv where key = 'ref:usgs'").fetchone()
+            con.close()
+            return list((json.loads(raw[0]) if raw else {}).get("rows") or [])
+        except (sqlite3.Error, ValueError):
+            return []
 
 
 def main() -> int:
@@ -61,7 +86,7 @@ def main() -> int:
     depuis = {a["nom"]: a["part_depuis"] for a in published.get("arene") or [] if a.get("part_depuis")}  # date d'entrée de chaque part
     findings = enquete.run(entries, configs, active, now, float((settings.get("principal") or {}).get("max_mise", 0.10)),
                            days=args.jours, audit=audit, abstentions=abstentions, sources=sources, parts=parts,
-                           textes=enquete.lire_experiences(ROOT), depuis=depuis)
+                           textes=enquete.lire_experiences(ROOT), depuis=depuis, seismes_rows=catalogue_usgs(Path(args.data)))
     out = ROOT / "reports" / "enquete.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(enquete.render(findings, now), encoding="utf-8")

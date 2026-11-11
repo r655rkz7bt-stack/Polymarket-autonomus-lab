@@ -147,7 +147,36 @@ seismes_marche:
     max_proposals_per_cycle: {value: 4, min: 0, max: 20}
     max_per_event:  {value: 2, min: 1, max: 10}           # les tranches d'un même événement gagnent ou perdent ensemble
     max_ecart_doublon: {value: 0.15, min: 0.0, max: 1.0}  # 24/10/2026 : pas d'achat si le compte sans doublon entre réseaux USGS change la chance de plus de 0,15
+    max_spread:     {value: 0.15, min: 0.0, max: 1.0}     # 11/11/2026 : ancien filtre du scanner (étiquette 103038 élargie pour seismes_pays)
+    max_ecart_rapide: {value: 0.03, min: 0.0, max: 1.0}   # 11/11/2026 : pas d'achat si un séisme vu par l'EMSC et absent de l'USGS change la chance de plus de 0,03 (enquetes/2026-11-11_matin_seismes_catalogue_en_retard.md)
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
+
+seismes_pays:
+  explication: "Chaque mois, Polymarket demande si un gros séisme (6 ou plus) frappera le Japon, le Pérou, le Mexique… On sait, grâce au catalogue officiel américain, combien de jours par an chaque pays en a un ; le marché, peu suivi, cote souvent ces séismes 2 fois trop probables. On parie que le séisme n'arrivera pas (ou qu'il arrivera, quand c'est le marché qui le sous-estime)."
+  class: seismes_pays
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-11"
+  hypothesis: >
+    Expérience audacieuse, fréquence de base de la source de résolution (experiments/seismes_pays.md, 11/11/2026). Marchés « Where will a 6.0+
+    magnitude earthquake occur by end of <mois> ? » (7 pays, réglés sur la description de lieu de l'USGS ; Alaska = États-Unis). Septembre et octobre
+    2026 aux vrais échanges, avant tout séisme qualifiant : premier achat par marché sous la base − 0,05 → 10 NON gagnés sur 11 pour 7,96 attendus
+    (prix payés 5,66), +77 % par mise ; seuils 0 / 0,05 / 0,10 essayés (+67 % / +77 % / +86 %). MAIS 2 mois seulement, ~20 parts par échange,
+    carnets très minces (vendeurs du NON à 0,63-0,93 aujourd'hui). Une perte apprendrait que la fréquence 2000-2025 sous-estime l'activité récente
+    (séquences de répliques, années actives) ou que les prix bas n'étaient que des échanges isolés.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.03, min: 0.0, max: 0.30}    # rythme estimé sur 26 ans : ± quelques points
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.93, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 0.25, min: 0.1, max: 24}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    max_per_event:  {value: 7, min: 1, max: 10}           # pays d'un même mois : séismes presque indépendants
+    max_ecart_doublon: {value: 0.15, min: 0.0, max: 1.0}
+    max_ecart_rapide: {value: 0.03, min: 0.0, max: 1.0}   # séisme >= 5,8 vu par l'EMSC, pas encore décrit par l'USGS : pays inconnu, pas d'achat
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse : expérience franche
 
 lid_agenda:
   explication: "Chaque jour, un marché demande si la Maison-Blanche annoncera la fin de journée du Président (le « lid ») avant 18 h 30. On lit son agenda publié la veille : journée calme sans voyage, le lid tombe tôt presque toujours ; journée de voyage qui finit tard, presque jamais. On parie quand le marché ne l'a pas vu."

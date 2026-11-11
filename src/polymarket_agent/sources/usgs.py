@@ -23,7 +23,10 @@ def parse_usgs(data) -> list[dict]:
         p = f.get("properties") if isinstance(f, dict) else None
         if not isinstance(p, dict) or p.get("time") is None or p.get("mag") is None:
             continue
-        rows[str(f.get("id"))] = {"id": str(f.get("id")), "t": int(p["time"]) // 1000, "mag": float(p["mag"])}
+        row = {"id": str(f.get("id")), "t": int(p["time"]) // 1000, "mag": float(p["mag"])}
+        if p.get("place"):  # 11/11/2026 : pays des marchés « Where will a 6.0+ earthquake occur » (seismes.country_of)
+            row["lieu"] = str(p["place"])[:120]
+        rows[str(f.get("id"))] = row
     return sorted(rows.values(), key=lambda r: r["t"])
 
 

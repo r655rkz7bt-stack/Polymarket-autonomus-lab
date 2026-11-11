@@ -29,7 +29,7 @@ def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
     assert [s.strategy_id for s in loaded] == [
         "convictions_claude", "compteur_tweets", "compteur_tweets_72_168h", "compteur_truth", "favori_politique_quasi_certain",
-        "seismes_marche", "lid_agenda", "non_aux_drames", "suivre_inities"]
+        "seismes_marche", "seismes_pays", "lid_agenda", "non_aux_drames", "suivre_inities"]
     assert all(s.version == "2.0.0" for s in loaded)
     assert len(load_strategies(ROOT / "config" / "strategies_v1.yaml", include_disabled=True)) > 150  # archive de la v1
 

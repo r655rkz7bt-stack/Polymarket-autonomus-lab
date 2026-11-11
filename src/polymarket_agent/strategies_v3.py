@@ -1392,17 +1392,18 @@ class SeismesMarche(_Base):
     meilleur que le marché en perte log (test apparié par événement, t -1,3 au mieux) : indice faible, fantôme."""
 
     strategy_id = "seismes_marche"
+    ref_key = "seismes"
     required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
 
     def candidates(self, markets):
-        return _with_reference(markets, "seismes", int(self.params.get("max_candidates", 60)))
+        return _with_reference(markets, self.ref_key, int(self.params.get("max_candidates", 60)))
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.sources._util import parse_date
         out, p, now, props = StrategyOutput(), self.params, _now(books), []
         scored = []
         for m in watchlist:
-            ref = (getattr(m, "references", None) or {}).get("seismes")
+            ref = (getattr(m, "references", None) or {}).get(self.ref_key)
             if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
                 continue
             seen = parse_date(ref.get("vu_le") or "")
@@ -1414,6 +1415,19 @@ class SeismesMarche(_Base):
             if abs(float(ref.get("p_dedup", ref["p"])) - float(ref["p"])) > float(p.get("max_ecart_doublon", 0.15)):
                 out.abstain("doublon possible entre réseaux USGS (compte incertain)")
                 continue
+            # Catalogue en retard (11/11/2026) : un séisme que l'EMSC a déjà vu et pas encore l'USGS ; le marché le sait déjà (07/11 23 h 36 :
+            # chance notée 0,931, réelle 0,801, −65 €). Pas d'achat tant que les deux catalogues ne disent pas la même chose.
+            if abs(float(ref.get("p_rapide", ref["p"])) - float(ref["p"])) > float(p.get("max_ecart_rapide", 0.03)):
+                out.abstain("séisme vu par l'EMSC, pas encore par l'USGS")
+                continue
+            # Écart achat-vente (11/11/2026) : l'étiquette séismes du scanner est élargie pour `seismes_pays` ; `seismes_marche` garde
+            # son ancien filtre (0,15) pour que son expérience ne change pas.
+            if p.get("max_spread") is not None:
+                yes_book = books.get(m.token_ids[0])
+                if (yes_book is None or yes_book.best_bid is None or yes_book.best_ask is None
+                        or float(yes_book.best_ask) - float(yes_book.best_bid) > float(p["max_spread"]) + 1e-9):
+                    out.abstain("écart achat-vente trop large")
+                    continue
             # Jamais de certitude : le catalogue du règlement peut différer du flux (révision, séisme encore absent), 1 fois sur 27 côté jour et 10 sur 57 côté semaine >= 5,5.
             fair = min(max(float(ref["p"]), 0.03), 0.97)
             best = None
@@ -1442,6 +1456,18 @@ class SeismesMarche(_Base):
                 per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
                 props.append(prop)
         return self._finish(out, props)
+
+
+class SeismesPays(SeismesMarche):
+    """« Where will a 6.0+ magnitude earthquake occur by end of <mois> ? » (un marché par pays, réglé sur la description de lieu de
+    l'USGS). Chance du OUI = 0,97 si un séisme qualifiant est déjà au catalogue, sinon fréquence de base des jours restants
+    (seismes.country_p, jours à séisme >= 6,0 par pays 2000-2025). Marchés minces et lents : les prix restent vers 0,3-0,5 quand la
+    fréquence de base dit 0,1-0,3. Test sur le passé (experiments/seismes_pays.md, 11/11/2026, septembre et octobre 2026, vrais
+    échanges avant tout séisme qualifiant) : premier achat par marché sous la base − 0,05 : 10 NON gagnés sur 11 pour 7,96 attendus,
+    +77 % par mise ; 2 mois seulement, échanges de ~20 parts : INDICE, fantôme."""
+
+    strategy_id = "seismes_pays"
+    ref_key = "seismes_pays"
 
 
 class SiegesCoherence(_Base):
@@ -1824,4 +1850,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
