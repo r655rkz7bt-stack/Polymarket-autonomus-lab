@@ -93,6 +93,11 @@ def assess(rows: list[dict], day: str, cutoff: str) -> tuple[float | None, str]:
         return P_DEJA_APPELE, f"lid déjà noté à {lid[:5]}"
     if lid is not None:
         return 1 - P_DEJA_APPELE, f"premier lid noté à {lid[:5]}, après l'heure limite"
+    return agenda_case(rows, day)
+
+
+def agenda_case(rows: list[dict], day: str) -> tuple[float | None, str]:
+    """(chance d'un lid avant 18 h 30, case) d'après les seules lignes « President Schedule » du jour, sans regarder les lids notés."""
     schedule = [r for r in rows if r["date"] == day and r["type"] == "President Schedule"]
     if not schedule:
         return None, "agenda du jour pas encore publié"
@@ -120,11 +125,16 @@ def record_history(db, rows: list[dict], now: datetime) -> None:
         histo = {}
     t = now.isoformat(timespec="minutes")
     for day in sorted({r["date"] for r in rows}):
-        p, case = assess(rows, day, "18:30:00")
+        # Case de l'AGENDA seule (sans le lid noté) : sinon la « dernière » case devient « lid déjà noté » dès le soir
+        # et la case finale de l'agenda, celle du test sur le passé, n'est jamais gardée (défaut du 11/11/2026).
+        p, case = agenda_case(rows, day)
+        lid = first_lid(rows, day)
         if case == "agenda du jour pas encore publié":
-            continue
+            if lid is None:
+                continue
+            case = "aucun agenda vu avant le lid"
         entry = histo.setdefault(day, {"premiere": case, "p_premiere": p, "vu_le": t})
-        entry.update({"derniere": case, "p_derniere": p, "maj": t})
+        entry.update({"derniere": case, "p_derniere": p, "maj": t, "lid": lid})
     horizon = (now.date() - timedelta(days=HISTORY_DAYS)).isoformat()
     db.set_value(HISTORY_KEY, json.dumps({d: v for d, v in histo.items() if d >= horizon}, ensure_ascii=False))
 

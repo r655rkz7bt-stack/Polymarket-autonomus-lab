@@ -131,3 +131,20 @@ def test_history_keeps_the_first_case_seen_and_the_last(tmp_path):
     assert h["p_derniere"] == lid.P_CHARGE and h["derniere"].startswith("voyage")
     lid.record_history(db, REAL, NOW + timedelta(days=70))                       # 60 jours : le 12/11 est oublié
     assert "2026-11-12" not in json.loads(db.get_value(lid.HISTORY_KEY))
+
+
+def test_history_keeps_the_final_agenda_case_after_the_lid_is_called(tmp_path):
+    """Cas réel du 10/11/2026 : `lid:histo` gardait « lid déjà noté à 18:00 » comme dernière case ; la case finale de l'agenda était perdue."""
+    import json
+    db = Database(tmp_path / "db.sqlite")
+    day = [r for r in REAL if r["date"] == "2026-11-10"]
+    lid.record_history(db, day, NOW)
+    called = day + [_row("2026-11-10", "18:00:00", "Pool Report Schedule", "White House Press Office: Travel/Photo lid called")]
+    lid.record_history(db, called, NOW + timedelta(hours=10))
+    h = json.loads(db.get_value(lid.HISTORY_KEY))["2026-11-10"]
+    assert h["premiere"].startswith("case instable") and h["derniere"].startswith("case instable")
+    assert h["lid"] == "18:00:00"
+    assert lid.assess(called, "2026-11-10", "18:30:00")[0] == lid.P_DEJA_APPELE      # la stratégie, elle, voit toujours le lid
+    only_lid = [_row("2026-11-09", "18:00:00", "Pool Report Schedule", "White House Press Office: Travel/Photo lid called")]
+    lid.record_history(db, only_lid, NOW)
+    assert json.loads(db.get_value(lid.HISTORY_KEY))["2026-11-09"]["premiere"] == "aucun agenda vu avant le lid"

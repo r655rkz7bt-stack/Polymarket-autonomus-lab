@@ -3,6 +3,15 @@
 Une entrée datée par session de recherche (routine « chercheur » ou session manuelle) :
 ce qui a été lu, fait, testé, et ce qui reste ouvert. Les plus récentes en haut.
 
+## 2026-11-11 (passage chercheur de 1 h, 00 h 55 → 01 h 02 UTC ; durée visée 135 min non atteinte : défaut corrigé, piste neuve notée sans avantage suffisant, le reste attend des données futures)
+
+- **Enquête** (fiche : `enquetes/2026-11-11_nuit_lid_histo_case_finale.md`, famille 6 puis 3). Aucune « Enquête obligatoire ». `lid_agenda` : l'abstention de 00 h 45 était juste (agenda du 11/11 publié vers 00 h 50 UTC : Veterans Day, Arlington, dernier rendez-vous 11 h 30 → case calme 0,86 ; vendeur 0,94 : pas d'achat). **Défaut d'instrument** : `lid:histo` remplaçait la case finale de l'agenda par « lid déjà noté » (09 et 10/11), la mesure du regard vers le futur prévue dans 2-3 semaines aurait été impossible ; corrigé (`lid.agenda_case`, heure du lid gardée à part, test sur les lignes réelles du 10/11). Lieu hors Maison-Blanche sans ligne de voyage (cas d'Arlington) : 60 lids sur 72 jours calmes (0,83) contre 144/166 (0,87) : pas un défaut. Famille 3 : 22 règlements v2 relus sur Gamma, 22/22 conformes.
+- **Recherche** : nouvelle piste n° 19 (`PISTES.md`), **visites de Trump** (« Which states will Trump visit in 2026? » : 19 États ouverts, somme des milieux 2,07 ; hiver 2025 sur Factbase : ≈ 0-1 nouvel État, tous sur la côte Est). Avantage ≈ +3 points par NON, corrélé, sous le seuil ; pas de test possible sur le passé (aucun marché 2025). Verdict : notée, pas de fantôme. Lids : vendredis 2025/2026 0,35/0,40 contre 0,28 pour le 13/11 (écart 0,19-0,37) : rien de plus que le prix.
+- **Convictions** : aucune. Étudiés : États (Wyoming, Colorado : après rapprochement vers le milieu 0,93 < vendeur 0,95-0,96), pays (Portugal 0,114 sur 123 $ : simple allusion de juillet ; voyage ASEAN/APEC 16-19/11 sans itinéraire officiel), lid du 13/11. Carbon déjà relue (perdue).
+- **Arène** : rien ajouté (l'idée du jour ne passe pas le seuil) ; `lid_agenda` corrigé côté mesure seulement.
+- **Leçons** : aucune stratégie éliminée.
+- **Reste ouvert** : premiers achats de `lid_agenda` ; `lid:histo` à lire vers le 01/12 (case de la veille contre case finale) ; voyage d'Asie (escale Hawaï, Japon, Corée ?) à suivre pour la piste n° 19 ; Trump 13/11.
+
 ## 2026-11-10 (passage chercheur de 21 h, 20 h 54 → 21 h 14 UTC ; durée visée 135 min non atteinte : piste menée à son verdict et fantôme en place, le reste attend des données futures)
 
 - **Enquête** : feuille de mission sans « Enquête obligatoire ». Constats « à regarder » déjà connus (faux 0,95 de la rafale du 07/11, `suivre_inities` muette voulue, 5 marchés 50-50). Contrôle à la main famille 5 (comparaisons) : gagnés contre attendus des 8 fantômes v2 sur leurs 22 paris réglés (`compteur_tweets` 8,0 pour 8,61, `compteur_truth` 3,0 pour 3,31, `seismes_marche` 0 pour 0,91, `convictions_claude` 0 pour 0,49, `favori_politique_quasi_certain` 2,0 pour 1,96) ; les 4 paris de `compteur_truth` sont aussi chez `compteur_tweets` (fille = morceau de la mère, voulu : un seul tirage, pas deux preuves). Aucun défaut.
