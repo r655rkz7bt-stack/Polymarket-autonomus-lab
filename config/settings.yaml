@@ -128,6 +128,8 @@ scanner:
               # 11/11/2026 : étiquettes tornado (106163) et tornadoes (104826) : « tornades du mois » (`tornades_mois`), 90-560 $ par tranche, écarts 0,06-0,48
               106163: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
               104826: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
+              # 11/11/2026 : étiquette drought (105721) : « Exceptional drought (D4) by state — week of … » (`secheresse_d4`), carnets souvent 0,01/0,99
+              105721: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999},
               # 24/10/2026 : étiquette box-office (51), tranches de recettes du premier week-end (`box_office_favori`)
               51: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.60},
               # 27/10/2026 : événements « à initiés » (suivre_inities) : prix (Awards 18), émissions (Reality TV 100339), classements
@@ -301,6 +303,7 @@ sources:
   sieges: {enabled: true, every_minutes: 15}                    # 31/10/2026 : prix démocrates des districts (Gamma, sans clé) pour `sieges_coherence`, jusqu'au 04/11
   usgs: {enabled: true, every_minutes: 10, days: 35}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 35 derniers jours (11/11 : mois entier pour seismes_pays) ; gratuit, sans clé
   emsc: {enabled: true, every_minutes: 10, days: 3}             # 11/11/2026 : catalogue EMSC (témoin plus rapide que l'USGS), abstention de seismes_marche si un séisme manque à l'USGS ; gratuit, sans clé
+  usdm: {enabled: true, every_minutes: 60, days: 21}         # 11/11/2026 : US Drought Monitor (48 États), arbitre des marchés « D4 by state » (secheresse_d4) ; gratuit, sans clé
   tornades: {enabled: true, every_minutes: 180}               # 11/11/2026 : rapports filtrés du SPC (jour par jour) et décompte NCEI, pour tornades_mois ; ≈ 40 petits fichiers, gratuit, sans clé
   goldapi: {enabled: true, every_minutes: 5, keep_days: 30}      # 24/10/2026 : prix au comptant de l'or et de l'argent (gold-api.com, sans clé), journal `prix_matieres` pour `toucher_metaux`
   ll2: {enabled: true, every_minutes: 120, days: 430}            # 24/10/2026 : lancements de SpaceX (Launch Library 2, sans clé, ~15 appels/h) pour les marchés « How many SpaceX launches in … »

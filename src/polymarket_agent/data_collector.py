@@ -317,6 +317,10 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         old = refs._load(db, "ref:tornades")[1] if db is not None else []
         return keep_first(old, factories.get("tornades", lambda c: fetch_tornades(http, now))(cfg), now)
     snapshot("tornades", tornades, "ref:tornades")
+    # Sécheresse (11/11/2026) : cartes US Drought Monitor des 48 États (3 dernières semaines), arbitre des marchés « D4 by state »
+    # (`secheresse_d4`, experiments/secheresse.md). Une carte n'apparaît qu'une fois publiée (jeudi 8 h 30, heure de l'Est).
+    from polymarket_agent.sources.usdm import fetch_usdm
+    snapshot("usdm", lambda cfg: factories.get("usdm", lambda c: fetch_usdm(http, now, int(c.get("days", 21))))(cfg), "ref:usdm")
     snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
              "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).

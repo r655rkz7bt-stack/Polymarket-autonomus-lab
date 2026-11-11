@@ -125,9 +125,13 @@ def test_collector_saves_the_catalog_and_survives_an_outage(tmp_path):
     result = collect(cfg, None, db, [], now, {"usgs": lambda c: usgs.parse_usgs(feed)})
     assert result.status["usgs"] == "ok (1 prix relevés)"
     seen, rows = refs._load(db, "ref:usgs")
-    assert seen is not None and rows == [{"id": "u1", "t": 1_792_000_000, "mag": 5.6, "vu": "2026-10-22T18:00:00+00:00"}]   # vu : première lecture (11/11)
+    assert seen is not None and rows == [{"id": "u1", "t": 1_792_000_000, "mag": 5.6}]   # premier relevé : première lecture inconnue
+    feed["features"].append({"id": "u2", "properties": {"time": 1_792_001_000_000, "mag": 5.5}})
+    collect(cfg, None, db, [], now + timedelta(minutes=10), {"usgs": lambda c: usgs.parse_usgs(feed)})
+    rows = refs._load(db, "ref:usgs")[1]
+    assert rows[1]["vu"] == "2026-10-22T18:10:00+00:00" and "vu" not in rows[0]   # vu : première lecture (11/11)
     http = FakeHttp({}, down=(usgs.URL,))
-    down = collect(cfg, None, db, [], now + timedelta(minutes=11), {"usgs": lambda c: usgs.fetch_usgs(http, now)})
+    down = collect(cfg, None, db, [], now + timedelta(minutes=21), {"usgs": lambda c: usgs.fetch_usgs(http, now)})
     assert down.status["usgs"].startswith("indisponible") and refs._load(db, "ref:usgs")[1] == rows
 
 
@@ -285,9 +289,21 @@ def test_emsc_without_new_quake_or_stale_changes_nothing(tmp_path):
 
 def test_first_seen_keeps_the_first_sighting_of_each_quake():
     t0 = datetime(2026, 11, 7, 23, 25, tzinfo=UTC)
-    a = sm.first_seen([], [{"id": "u1", "t": 1, "mag": 5.8}], t0)
+    a = sm.first_seen([{"id": "u0", "t": 0, "mag": 5.1, "vu": "2026-11-07T23:00:00+00:00"}], [{"id": "u1", "t": 1, "mag": 5.8}], t0)
     b = sm.first_seen(a, [{"id": "u1", "t": 1, "mag": 5.9}, {"id": "u2", "t": 2, "mag": 5.5}], t0 + timedelta(minutes=10))
     assert b == [{"id": "u1", "t": 1, "mag": 5.9, "vu": "2026-11-07T23:25:00+00:00"}, {"id": "u2", "t": 2, "mag": 5.5, "vu": "2026-11-07T23:35:00+00:00"}]
+
+
+def test_first_seen_does_not_date_quakes_known_before_the_field_existed():
+    """11/11/2026, cas réel : premier relevé avec `vu` à 06 h 45, séisme 5,5 du 08/10 06 h 46 daté « vu 06 h 45 » ; 4 achats de
+    `seismes_marche` des 9-10/11 signalés « avant que notre catalogue ne le voie » par `catalogue_en_retard`."""
+    t0 = datetime(2026, 11, 11, 6, 45, tzinfo=UTC)
+    old = [{"id": "us_oct", "t": 1791442000, "mag": 5.5}]
+    a = sm.first_seen(old, [{"id": "us_oct", "t": 1791442000, "mag": 5.5}, {"id": "neuf", "t": 1794300000, "mag": 5.6}], t0)
+    assert "vu" not in a[0] and a[1]["vu"] == "2026-11-11T06:45:00+00:00"
+    b = sm.first_seen(a, [{"id": "us_oct", "t": 1791442000, "mag": 5.5}, {"id": "neuf", "t": 1794300000, "mag": 5.6}], t0 + timedelta(hours=1))
+    assert "vu" not in b[0] and b[1]["vu"] == "2026-11-11T06:45:00+00:00"
+    assert all("vu" not in r for r in sm.first_seen([], [{"id": "x", "t": 1, "mag": 5.0}], t0))  # aucun ancien relevé : rien de daté
 
 
 # ---------------------------------------------------------------- 11/11/2026 : seismes_pays (un marché par pays et par mois)

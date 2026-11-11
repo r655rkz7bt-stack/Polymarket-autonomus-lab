@@ -213,10 +213,22 @@ def unmatched(fast_rows: list[dict], rows: list[dict], seconds: int = 120) -> li
 
 def first_seen(old_rows: list[dict], rows: list[dict], now: datetime) -> list[dict]:
     """Rows avec `vu` = première fois que notre relevé a vu ce séisme (11/11/2026) : retard de publication de chaque source
-    (`vu` − `t`), à comparer entre l'USGS et l'EMSC."""
-    seen = {str(r.get("id")): r.get("vu") for r in old_rows or [] if r.get("vu")}
+    (`vu` − `t`), à comparer entre l'USGS et l'EMSC.
+    Reprise (11/11/2026, 11 h) : un séisme déjà présent dans l'ancien relevé SANS `vu` (relevé d'avant ce champ), ou tout le relevé
+    quand il n'y a pas d'ancien relevé, n'a pas de première lecture connue : pas de `vu` (sinon le 1er relevé du 11/11 à 06 h 45
+    datait de « 06 h 45 » des séismes vieux d'un mois, et `catalogue_en_retard` signalait tous les achats des 3 jours)."""
+    old_rows = old_rows or []
+    seen = {str(r.get("id")): r.get("vu") for r in old_rows}
     stamp = now.astimezone(timezone.utc).isoformat(timespec="seconds")
-    return [dict(r, vu=seen.get(str(r.get("id")), stamp)) for r in rows]
+    out = []
+    for r in rows:
+        r = {k: v for k, v in r.items() if k != "vu"}
+        key = str(r.get("id"))
+        if not old_rows or (key in seen and not seen[key]):
+            out.append(r)
+        else:
+            out.append(dict(r, vu=seen.get(key) or stamp))
+    return out
 
 
 def _p_for(m, rows, now):

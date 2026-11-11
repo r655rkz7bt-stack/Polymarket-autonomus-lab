@@ -1,0 +1,54 @@
+Loi de transition 2000-2025 (une et deux semaines) :
+  D4>=5      P1 0.9802 (3046/3107)   P2 0.9580
+  D4 0,05-5  P1 0.9196 (1802/1959)   P2 0.8521
+  D4 <0,05   P1 0.1420 (11/80)   P2 0.1914
+  D3>=10     P1 0.0439 (143/3271)   P2 0.0814
+  D3 1-10    P1 0.0151 (62/4137)   P2 0.0307
+  D3 <1      P1 0.0035 (4/1268)   P2 0.0114
+  D2 seul    P1 0.0000 (0/10721)   P2 0.0002
+  rien       P1 0.0000 (0/40641)   P2 0.0000
+Règlement : 433 conformes, 0 différents, 0 sans carte
+
+== après publication : 1022 échanges, 396 marchés
+  achats que la carte dit bons : 16 échanges, 10 marchés, gagnés 16 pour 16.0 attendus (carte) et 11.7 payés ; 300 parts, mise 235 $, résultat +63 $ (+26.8%)
+  échanges contre la carte : 4 échanges, 4 marchés, gagnés 0 pour 0.0 attendus (carte) et 2.9 payés ; 120 parts, mise 77 $, résultat -78 $ (-101.4%)
+
+== avant (carte de 1 sem.) : 1275 échanges, 191 marchés
+  achats que la carte dit bons : 223 échanges, 84 marchés, gagnés 213 pour 211.0 attendus (carte) et 150.1 payés ; 10266 parts, mise 6974 $, résultat +2910 $ (+41.7%)
+  échanges contre la carte : 304 échanges, 101 marchés, gagnés 30 pour 32.8 attendus (carte) et 69.7 payés ; 9585 parts, mise 2163 $, résultat -1204 $ (-55.6%)
+seuil 0.02 prix ≥ 0.00 parts ≥   0: 141 paris, gagnés 133 pour 134.2 (carte) / 102.1 (prix) ; rendement +118.0% t/sem None z 7.91 mois {'2026-08': 0.524, '2026-09': 1.4607, '2026-10': 0.1164} → retenue
+seuil 0.02 prix ≥ 0.00 parts ≥  20: 126 paris, gagnés 119 pour 119.7 (carte) / 89.9 (prix) ; rendement +129.9% t/sem None z 7.92 mois {'2026-08': 0.6531, '2026-09': 1.586, '2026-10': 0.1196} → retenue
+seuil 0.02 prix ≥ 0.10 parts ≥   0: 138 paris, gagnés 133 pour 133.9 (carte) / 105.1 (prix) ; rendement +68.5% t/sem None z 7.03 mois {'2026-08': 0.524, '2026-09': 0.8119, '2026-10': 0.1164} → retenue
+seuil 0.02 prix ≥ 0.10 parts ≥  20: 123 paris, gagnés 119 pour 119.4 (carte) / 92.9 (prix) ; rendement +74.8% t/sem None z 6.98 mois {'2026-08': 0.6531, '2026-09': 0.873, '2026-10': 0.1196} → retenue
+seuil 0.05 prix ≥ 0.00 parts ≥   0:  84 paris, gagnés 79 pour 80.4 (carte) / 49.6 (prix) ; rendement +200.7% t/sem None z 8.08 mois {'2026-08': 0.5586, '2026-09': 2.5885, '2026-10': 0.3149} → retenue
+seuil 0.05 prix ≥ 0.00 parts ≥  20:  71 paris, gagnés 67 pour 67.8 (carte) / 39.7 (prix) ; rendement +232.5% t/sem None z 8.08 mois {'2026-08': 0.6531, '2026-09': 3.0481, '2026-10': 0.2221} → retenue
+seuil 0.05 prix ≥ 0.10 parts ≥   0:  83 paris, gagnés 78 pour 79.4 (carte) / 51.8 (prix) ; rendement +112.6% t/sem None z 7.05 mois {'2026-08': 0.5586, '2026-09': 1.3797, '2026-10': 0.3149} → retenue
+seuil 0.05 prix ≥ 0.10 parts ≥  20:  70 paris, gagnés 66 pour 66.8 (carte) / 41.9 (prix) ; rendement +128.6% t/sem None z 6.96 mois {'2026-08': 0.6531, '2026-09': 1.6084, '2026-10': 0.2221} → retenue
+seuil 0.10 prix ≥ 0.00 parts ≥   0:  65 paris, gagnés 61 pour 61.7 (carte) / 32.1 (prix) ; rendement +258.7% t/sem None z 8.4 mois {'2026-08': 0.5586, '2026-09': 3.5071, '2026-10': 0.415} → retenue
+seuil 0.10 prix ≥ 0.00 parts ≥  20:  60 paris, gagnés 57 pour 57.1 (carte) / 29.6 (prix) ; rendement +275.5% t/sem None z 8.43 mois {'2026-08': 0.6531, '2026-09': 3.628, '2026-10': 0.2865} → retenue
+seuil 0.10 prix ≥ 0.10 parts ≥   0:  64 paris, gagnés 60 pour 60.8 (carte) / 34.2 (prix) ; rendement +145.8% t/sem None z 7.32 mois {'2026-08': 0.5586, '2026-09': 1.8862, '2026-10': 0.415} → retenue
+seuil 0.10 prix ≥ 0.10 parts ≥  20:  59 paris, gagnés 56 pour 56.1 (carte) / 31.6 (prix) ; rendement +153.4% t/sem None z 7.28 mois {'2026-08': 0.6531, '2026-09': 1.9349, '2026-10': 0.2865} → retenue
+seuil 0.20 prix ≥ 0.00 parts ≥   0:  49 paris, gagnés 47 pour 46.5 (carte) / 18.9 (prix) ; rendement +342.7% t/sem None z 9.15 mois {'2026-08': 0.6796, '2026-09': 4.6342, '2026-10': 0.7667} → retenue
+seuil 0.20 prix ≥ 0.00 parts ≥  20:  44 paris, gagnés 43 pour 41.8 (carte) / 16.4 (prix) ; rendement +375.2% t/sem None z 9.31 mois {'2026-08': 0.8047, '2026-09': 4.8671, '2026-10': 0.476} → retenue
+seuil 0.20 prix ≥ 0.10 parts ≥   0:  48 paris, gagnés 46 pour 45.5 (carte) / 20.9 (prix) ; rendement +194.0% t/sem None z 7.89 mois {'2026-08': 0.6796, '2026-09': 2.5072, '2026-10': 0.7667} → retenue
+seuil 0.20 prix ≥ 0.10 parts ≥  20:  43 paris, gagnés 42 pour 40.8 (carte) / 18.4 (prix) ; rendement +210.1% t/sem None z 7.94 mois {'2026-08': 0.8047, '2026-09': 2.6132, '2026-10': 0.476} → retenue
+seuil 0.02 prix ≥ 0.00 parts ≥   0: 141 paris, gagnés 133 pour 134.2 (carte) / 102.1 (prix) ; rendement +118.0% t/sem None z 7.91 mois {'2026-08': 0.524, '2026-09': 1.4607, '2026-10': 0.1164} → retenue
+seuil 0.02 prix ≥ 0.00 parts ≥  20: 126 paris, gagnés 119 pour 119.7 (carte) / 89.9 (prix) ; rendement +129.9% t/sem None z 7.92 mois {'2026-08': 0.6531, '2026-09': 1.586, '2026-10': 0.1196} → retenue
+seuil 0.02 prix ≥ 0.10 parts ≥   0: 138 paris, gagnés 133 pour 133.9 (carte) / 105.1 (prix) ; rendement +68.5% t/sem None z 7.03 mois {'2026-08': 0.524, '2026-09': 0.8119, '2026-10': 0.1164} → retenue
+seuil 0.02 prix ≥ 0.10 parts ≥  20: 123 paris, gagnés 119 pour 119.4 (carte) / 92.9 (prix) ; rendement +74.8% t/sem None z 6.98 mois {'2026-08': 0.6531, '2026-09': 0.873, '2026-10': 0.1196} → retenue
+seuil 0.05 prix ≥ 0.00 parts ≥   0:  84 paris, gagnés 79 pour 80.4 (carte) / 49.6 (prix) ; rendement +200.7% t/sem None z 8.08 mois {'2026-08': 0.5586, '2026-09': 2.5885, '2026-10': 0.3149} → retenue
+seuil 0.05 prix ≥ 0.00 parts ≥  20:  71 paris, gagnés 67 pour 67.8 (carte) / 39.7 (prix) ; rendement +232.5% t/sem None z 8.08 mois {'2026-08': 0.6531, '2026-09': 3.0481, '2026-10': 0.2221} → retenue
+seuil 0.05 prix ≥ 0.10 parts ≥   0:  83 paris, gagnés 78 pour 79.4 (carte) / 51.8 (prix) ; rendement +112.6% t/sem None z 7.05 mois {'2026-08': 0.5586, '2026-09': 1.3797, '2026-10': 0.3149} → retenue
+seuil 0.05 prix ≥ 0.10 parts ≥  20:  70 paris, gagnés 66 pour 66.8 (carte) / 41.9 (prix) ; rendement +128.6% t/sem None z 6.96 mois {'2026-08': 0.6531, '2026-09': 1.6084, '2026-10': 0.2221} → retenue
+seuil 0.10 prix ≥ 0.00 parts ≥   0:  65 paris, gagnés 61 pour 61.7 (carte) / 32.1 (prix) ; rendement +258.7% t/sem None z 8.4 mois {'2026-08': 0.5586, '2026-09': 3.5071, '2026-10': 0.415} → retenue
+seuil 0.10 prix ≥ 0.00 parts ≥  20:  60 paris, gagnés 57 pour 57.1 (carte) / 29.6 (prix) ; rendement +275.5% t/sem None z 8.43 mois {'2026-08': 0.6531, '2026-09': 3.628, '2026-10': 0.2865} → retenue
+seuil 0.10 prix ≥ 0.10 parts ≥   0:  64 paris, gagnés 60 pour 60.8 (carte) / 34.2 (prix) ; rendement +145.8% t/sem None z 7.32 mois {'2026-08': 0.5586, '2026-09': 1.8862, '2026-10': 0.415} → retenue
+seuil 0.10 prix ≥ 0.10 parts ≥  20:  59 paris, gagnés 56 pour 56.1 (carte) / 31.6 (prix) ; rendement +153.4% t/sem None z 7.28 mois {'2026-08': 0.6531, '2026-09': 1.9349, '2026-10': 0.2865} → retenue
+seuil 0.20 prix ≥ 0.00 parts ≥   0:  49 paris, gagnés 47 pour 46.5 (carte) / 18.9 (prix) ; rendement +342.7% t/sem None z 9.15 mois {'2026-08': 0.6796, '2026-09': 4.6342, '2026-10': 0.7667} → retenue
+seuil 0.20 prix ≥ 0.00 parts ≥  20:  44 paris, gagnés 43 pour 41.8 (carte) / 16.4 (prix) ; rendement +375.2% t/sem None z 9.31 mois {'2026-08': 0.8047, '2026-09': 4.8671, '2026-10': 0.476} → retenue
+seuil 0.20 prix ≥ 0.10 parts ≥   0:  48 paris, gagnés 46 pour 45.5 (carte) / 20.9 (prix) ; rendement +194.0% t/sem None z 7.89 mois {'2026-08': 0.6796, '2026-09': 2.5072, '2026-10': 0.7667} → retenue
+seuil 0.20 prix ≥ 0.10 parts ≥  20:  43 paris, gagnés 42 pour 40.8 (carte) / 18.4 (prix) ; rendement +210.1% t/sem None z 7.94 mois {'2026-08': 0.8047, '2026-09': 2.6132, '2026-10': 0.476} → retenue
+
+Réglage de référence (seuil 0,05, prix >= 0,10) : {'paris': 83, 'rendement_moyen': 1.1257, 'evenements': 8, 'confiance_evenements': 3.12, 'z_prix': 7.05, 'mois': {'2026-08': 0.5586, '2026-09': 1.3797, '2026-10': 0.3149}, 'verdict': 'retenue'}
+par prix {'0,10-0,30': {'paris': 17, 'rendement': 4.2499}, '0,30-0,70': {'paris': 23, 'rendement': 0.7409}, '≥ 0,70': {'paris': 43, 'rendement': 0.0964}}
+sans la meilleure semaine 2026-09-15 : 68 paris 0.94

@@ -727,6 +727,14 @@ def test_earthquake_buy_made_while_usgs_had_not_yet_published_a_quake_is_flagged
     assert enquete.catalogue_en_retard(entries, None) == [] and enquete.catalogue_en_retard(entries, [dict(rows[0], vu=None)]) == []
 
 
+def test_catalogue_en_retard_ignores_quakes_dated_by_the_first_sighting_run():
+    """11/11/2026, cas réel du rapport publié : « séisme 5.5 de 08/10 06:46 lu seulement à 06:45 » (le 11/11) pour 4 achats des
+    9-10/11 : reprise du premier relevé avec `vu`, pas un retard du catalogue."""
+    rows = [{"id": "us_oct", "t": datetime(2026, 10, 8, 6, 46, tzinfo=timezone.utc).timestamp(), "mag": 5.5, "vu": "2026-11-11T06:45:00+00:00"}]
+    buy = _buy(datetime(2026, 11, 9, 14, 41, tzinfo=timezone.utc), "6760890", 0.5, 20, strategy="seismes_marche")
+    assert enquete.catalogue_en_retard({"seismes_marche_v2.0.0": _ledger(buy)}, rows) == []
+
+
 def test_local_investigation_reads_the_v2_ghost_ledgers(tmp_path):
     """11/11/2026 : scripts/enquete.py ne lisait que ledger/fantome (v1 éteinte) depuis le labo v2 du 07/11."""
     import json

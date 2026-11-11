@@ -1,0 +1,12 @@
+ek of September 22, 2026? vrai 12 loi : moyenne 11.57 échanges 12
+ek of September 29, 2026? vrai 10 loi : moyenne 11.62 échanges 13
+ week of October 6, 2026? vrai 11 loi : moyenne 9.8 échanges 30
+week of October 13, 2026? vrai 12 loi : moyenne 10.67 échanges 8
+ week of August 25, 2026? vrai 12 loi : moyenne 10.63 échanges 31
+eek of September 1, 2026? vrai 12 loi : moyenne 11.53 échanges 41
+eek of September 8, 2026? vrai 12 loi : moyenne 11.51 échanges 18
+ek of September 15, 2026? vrai 12 loi : moyenne 11.55 échanges 33
+règlement 48 conformes, 0 différents
+seuil 0.02: 9 paris, 5 semaines, gagnés 8 pour 8.0 (loi) / 6.4 (prix), rendement +33.3%
+seuil 0.05: 7 paris, 4 semaines, gagnés 6 pour 6.0 (loi) / 4.4 (prix), rendement +42.0%
+seuil 0.1: 4 paris, 2 semaines, gagnés 4 pour 3.6 (loi) / 2.3 (prix), rendement +95.7%
