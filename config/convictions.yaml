@@ -63,3 +63,15 @@ convictions:
     sources: ["https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt", "https://sites.ecmwf.int/data/climatepulse/data/series/era5_daily_series_2t_global.csv", "https://gamma-api.polymarket.com/events/1108696", "experiments/temperature_mondiale.md"]
     ecrit_le: "2026-11-11"
     abandon: true   # 11/11 16 h 35 UTC, même passage : le test sur 27 mois réglés (experiments/temperature_mondiale.md) montre que le marché prévoit la NASA bien mieux que ce calcul (log-score −0,57 contre −1,67 au 5 du mois suivant) ; il lit sans doute GHCN/ERSST, publiés avant la NASA.
+  - id: spotify-n2-novembre-rihanna
+    marche: "6367323"
+    question: "Will Rihanna have the second-greatest number of monthly Spotify listeners this month"
+    issue: "Yes"
+    probabilite: 0.29
+    probabilite_basse: 0.25
+    expire: "2026-11-25"
+    mise_max: 0.03
+    raison: "Réglé sur les auditeurs mensuels du profil Spotify le 30/11 à 12 h (heure de l'Est). Le 11/11 vers 21 h UTC (profil Spotify = kworb) : Bruno Mars 124,62 M (hors d'atteinte), The Weeknd 116 993 416 (−176 227 sur le jour), Rihanna 116 778 078 (−149 631), Justin Bieber 111,0 M : écart 215 338 (0,18 %), Rihanna reprend 26 600 par jour, 19 jours restants. Marché 0,81 / 0,17 (acheteur 0,16, vendeur 0,19). Même duo en octobre : The Weeknd 0,70-0,81 du 10 au 14/10, Rihanna a gagné ; sur 5 mois réglés de « #2 », le favori à J-19 n'a gagné qu'une fois. Cinq estimations : base 0,40, modèle (spotify_auditeurs.p_rang, 3 volatilités × 3 dérives) 0,45-0,50, avocat du OUI 0,55, avocat du NON 0,25 (le prix est passé de 0,18 à 0,91 du 02 au 10/11 : une tendance de The Weeknd que je ne vois pas sans historique), vue d'ensemble 0,38 ; médiane 0,40, rapprochée de moitié du milieu 0,175 → 0,29."
+    sources: ["https://kworb.net/spotify/listeners.html", "https://open.spotify.com/artist/5pKCCKE2ajJHZ9KAiaK11H", "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ", "https://gamma-api.polymarket.com/events/1274351", "https://gamma-api.polymarket.com/events/1121432", "experiments/spotify_auditeurs.md"]
+    ecrit_le: "2026-11-11"
+    abandon: false

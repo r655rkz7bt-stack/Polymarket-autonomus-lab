@@ -93,6 +93,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 27. **Première neige par ville** (11/11/2026, passage de 16 h, `experiments/premiere_neige.md`) : rapport climatologique NWS (trace comprise) ; fréquence de base ACIS 1991-2025 sachant « pas de neige au 11/11 » et prévision NWS à 7 jours. Prix serrés justes, prix larges sans vendeur à prix faux : notée, pas de conviction.
 
+28. **Auditeurs mensuels Spotify : le meneur du jour payé comme sûr** (11/11/2026, passage de 21 h, `experiments/spotify_auditeurs.md`, idée neuve : source = profil Spotify recopié par kworb.net, une valeur par jour). « #2 Spotify Artist in <mois> » : sur 5 mois réglés, le favori à J-19 n'a gagné qu'une fois (attendu ≈ 3,4 par les prix) ; octobre : The Weeknd 0,70-0,81, battu par Rihanna. Le 11/11 : The Weeknd 116 993 416, Rihanna 116 778 078 (0,18 %), marché 0,81/0,17, modèle 0,45-0,50 pour Rihanna. **Indice** (5 mois) → fantôme `auditeurs_spotify` et conviction `spotify-n2-novembre-rihanna`. Pas d'historique gratuit des auditeurs : le journal `spotify:histo` (depuis le 11/11) servira au test ; reste les classements de l'année (Wrapped, début décembre).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|

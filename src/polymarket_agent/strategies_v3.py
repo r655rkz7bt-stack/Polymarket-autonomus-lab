@@ -1404,7 +1404,12 @@ class SeismesMarche(_Base):
         scored = []
         for m in watchlist:
             ref = (getattr(m, "references", None) or {}).get(self.ref_key)
-            if not ref or not _yes_no(m) or now is None or any(t in state.positions for t in m.token_ids):
+            if not ref or not _yes_no(m) or now is None:
+                continue
+            if any(t in state.positions for t in m.token_ids):
+                # 11/11/2026 (21 h) : `fleuves_prevision` affichait « aucun marché vu n'a la référence » alors que ses deux
+                # seuls marchés chiffrables étaient déjà achetés (stratégie en attente, pas sourde).
+                out.abstain("déjà en position")
                 continue
             seen = parse_date(ref.get("vu_le") or "")
             if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
@@ -1503,6 +1508,18 @@ class FleuvesPrevision(SeismesMarche):
 
     strategy_id = "fleuves_prevision"
     ref_key = "fleuves"
+
+
+class AuditeursSpotify(SeismesMarche):
+    """« Will <artiste> have the (second-)greatest number of monthly Spotify listeners this month? » : places 1 et 2 du nombre
+    d'auditeurs mensuels du profil Spotify le dernier jour du mois à 12 h (heure de l'Est). Chance de chaque place : simulation des
+    15 premiers artistes (nombre lu sur kworb.net, dérive du journal `spotify:histo`, bruit `vol` × racine(jours), spotify_auditeurs.py).
+    Expérience audacieuse du 11/11/2026 (experiments/spotify_auditeurs.md, piste n° 28) : pas de test possible sur le passé (aucun
+    historique gratuit des auditeurs) ; sur 5 mois réglés de « #2 », le favori à J-19 n'a gagné qu'une fois. Le 11/11 : The Weeknd
+    116 993 416, Rihanna 116 778 078 (écart 0,18 %), marché 0,81 / 0,17."""
+
+    strategy_id = "auditeurs_spotify"
+    ref_key = "spotify"
 
 
 class SiegesCoherence(_Base):
@@ -1885,4 +1902,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

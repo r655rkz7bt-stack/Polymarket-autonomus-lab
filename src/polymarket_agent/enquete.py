@@ -850,7 +850,9 @@ def cycle_arrete(entries: dict[str, list[dict]], now: datetime, minutes: float =
     if beats and _ts(beats[-1]) < now - timedelta(minutes=minutes):
         return [_finding("cycle_arrete", GRAVE, f"dernier cycle du principal le {beats[-1]['ts'][:16]}",
                          "Le cycle de production ne tourne plus (ou n'écrit plus) : voir les exécutions du workflow "
-                         "cycle et l'alerte labo-alerte.", [])]
+                         "cycle et l'alerte labo-alerte. Exécutions en « startup_failure » ou « queued » sans changement de "
+                         "code (même commit qui marchait avant) : regarder d'abord www.githubstatus.com (11/11/2026 : panne "
+                         "d'Actions de 20 h 17 UTC, rien à corriger chez nous).", [])]
     return []
 
 
