@@ -66,3 +66,37 @@ Bruno Mars n° 1 : 0,92-1,00 (marché 0,94/0,993 : rien).
 - 30/11 : règlement ; décembre : 6e mois réglé pour le tableau ci-dessus.
 - Classements de l'année : relever chaque semaine le classement hebdomadaire mondial de kworb (36 semaines gardées) pour
   « #2 Spotify Song 2026 » / « #2 US Spotify Song » (Babydoll 0,73, Man I Need 0,84) avant le Wrapped (début décembre).
+
+## Classements de l'année (premier regard, 11/11 21 h 15)
+
+Pages de titre de kworb (`spotify/track/<id>.html`, tableau hebdomadaire, colonnes Global et US), semaines communes du 05/03 au
+05/11 : Babydoll (Dominic Fike) 976 M d'écoutes mondiales, End of Beginning (Djo) 722 M, Man I Need 724 M, Earrings 700 M,
+Choosin' Texas 644 M ; aux États-Unis Choosin' Texas 373 M, Earrings 248 M, Babydoll 225 M, Man I Need 203 M. Le marché met
+pourtant Djo n° 1 mondial à 0,76 et Babydoll à 0,16. **Les tableaux de kworb sont incomplets** : Djo a 35 jours à la 1re place
+du classement quotidien et 2,95 milliards d'écoutes au classement, mais son tableau hebdomadaire saute de 2024/08 à 2026/03 ;
+ses semaines de janvier-février 2026 manquent sans doute. Rien à conclure sans les semaines manquantes : **pas de conviction**.
+Il faudrait les classements hebdomadaires complets (charts.spotify.com demande un compte).
+
+## Cycle local (11/11 21 h 10)
+
+Premier cycle : la conviction achète 46,39 parts à 0,19. Second cycle : `spotify` rattache 7 marchés ; `auditeurs_spotify` propose
+un achat, refusé « carnet périmé (1 584 s > 120 s) » par le contrôleur (même cas que `proposals/2026-11-11_carnet_calme_juge_perime.md` :
+carnet calme jugé périmé). Le fantôme achètera quand quelqu'un touchera au carnet.
+
+## Piste n° 29 : classements hebdomadaires = somme des jours (11/11, 21 h 20)
+
+« #1 / #2 Spotify song (in the US) this week? (<vendredi>) » (123 événements réglés depuis le printemps, 2-10 k$ chacun, carnets
+de quelques dizaines de parts). Règle : semaine du vendredi au jeudi, playlist du vendredi. **Vérifié** : l'hebdomadaire US de
+kworb = somme exacte des 7 jours quotidiens (Housewife et Choosin' Texas, semaines du 22/10, 29/10, 05/11 : 6 sur 6). Le mardi
+soir, 4 jours sur 7 sont publics.
+
+- Semaine du 13/11 (US n° 1) : vendredi-lundi Choosin' Texas 4 254 474, Housewife 4 223 820 (+30 654 pour Texas). Mardi-jeudi
+  tirés des 2-3 semaines précédentes (Housewife en déclin : 2,72-2,94 × le lundi ; Texas : 3,01-3,38 × le lundi) : Texas
+  7,19-7,54 M, Housewife 7,08-7,31 M, Texas gagne dans 4 combinaisons sur 6 (≈ 0,65-0,70). Marché : Texas 0,06/0,44 (2,6 parts
+  à 0,44, puis 0,54), derniers prix 0,25-0,35 ; Housewife 0,47/0,92. Après rapprochement de moitié vers le prix (≈ 0,30) :
+  0,485, borne 0,435 sous le vendeur 0,44 + frais : **pas de conviction** ; carnet trop mince de toute façon.
+- Semaines réglées testables (kworb ne garde que 31 jours) : `experiments/spotify_auditeurs/hebdo_somme_des_jours.py`, meneur de
+  la somme ven.-lun. au mardi 22 h UTC, 9 événements rattachés : 6 meneurs gagnent, déjà payés 0,96-0,99 ; 1 piège (US,
+  semaine du 06/11 : « Thriller » en tête des 4 jours d'Halloween, battu par Housewife, prix 0,0025 : le marché avait raison) ;
+  2 « #2 US » sans gagnant rattaché. **Écartée en l'état** : quand la somme partielle est nette, le marché le sait ; l'information
+  ne sert que dans les duels serrés, aux carnets vides.

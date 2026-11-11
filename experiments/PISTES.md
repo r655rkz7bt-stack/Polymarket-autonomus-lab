@@ -95,6 +95,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 28. **Auditeurs mensuels Spotify : le meneur du jour payé comme sûr** (11/11/2026, passage de 21 h, `experiments/spotify_auditeurs.md`, idée neuve : source = profil Spotify recopié par kworb.net, une valeur par jour). « #2 Spotify Artist in <mois> » : sur 5 mois réglés, le favori à J-19 n'a gagné qu'une fois (attendu ≈ 3,4 par les prix) ; octobre : The Weeknd 0,70-0,81, battu par Rihanna. Le 11/11 : The Weeknd 116 993 416, Rihanna 116 778 078 (0,18 %), marché 0,81/0,17, modèle 0,45-0,50 pour Rihanna. **Indice** (5 mois) → fantôme `auditeurs_spotify` et conviction `spotify-n2-novembre-rihanna`. Pas d'historique gratuit des auditeurs : le journal `spotify:histo` (depuis le 11/11) servira au test ; reste les classements de l'année (Wrapped, début décembre).
 
+29. ~~Classements hebdomadaires Spotify : la somme des jours~~ (11/11/2026, passage de 21 h, `experiments/spotify_auditeurs.md`) : l'hebdomadaire = somme exacte des 7 jours (6/6) ; au mardi soir, le meneur des 4 jours connus est déjà payé 0,96-0,99 (6 sur 9 semaines réglées testables, 1 piège d'Halloween où le marché avait raison) : **écartée en l'état** ; seuls les duels serrés laissent un écart (US du 13/11 : Texas ≈ 0,65-0,70 contre 0,25-0,35), carnets de quelques parts.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
