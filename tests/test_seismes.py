@@ -369,3 +369,17 @@ def test_seismes_marche_keeps_its_old_spread_filter_after_the_scanner_tag_was_wi
         books.update(b)
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     assert [p.market_id for p in out.proposals] == ["serre"] and "écart achat-vente trop large" in str(out.abstentions)
+
+
+def test_controller_refusals_show_up_in_the_published_abstentions():
+    """11/11/2026 : « rejet après relecture … carnet périmé (25790 s > 120 s) » (seismes_pays, cycle local) n'était que dans le journal."""
+    from types import SimpleNamespace
+    from polymarket_agent.main import _note_refus
+    report = SimpleNamespace(abstentions={"fantome:seismes_pays_v2.0.0": {"seismes_pays": {"marches": 186, "propositions": 1, "ordres": 0,
+                                                                                           "raisons": {"avantage net insuffisant": 5}}}})
+    _note_refus(report, "fantome:seismes_pays_v2.0.0", "seismes_pays", ["carnet périmé (25790 s > 120 s)"])
+    _note_refus(report, "fantome:seismes_pays_v2.0.0", "seismes_pays", ["carnet périmé (24996 s > 120 s)"])
+    _note_refus(report, "principal", "seismes_pays", ["prix en baisse"])
+    raisons = report.abstentions["fantome:seismes_pays_v2.0.0"]["seismes_pays"]["raisons"]
+    assert raisons == {"avantage net insuffisant": 5, "refusé par le contrôleur : carnet périmé": 2}
+    assert report.abstentions["principal"]["seismes_pays"]["raisons"] == {"refusé par le contrôleur : prix en baisse": 1}

@@ -737,3 +737,11 @@ def test_local_investigation_reads_the_v2_ghost_ledgers(tmp_path):
         (tmp_path / "ledger" / sub).mkdir(parents=True)
         (tmp_path / "ledger" / sub / f"{name}.jsonl").write_text(json.dumps({"type": "GENESIS", "ts": NOW.isoformat(), "data": {}}) + "\n")
     assert set(script.load_published(tmp_path)) == {"vivante_v2.0.0"}
+
+
+def test_controller_refusals_published_in_abstentions_are_a_lead():
+    abst = {"portefeuilles": {"fantome:seismes_pays_v2.0.0": {"seismes_pays": {"marches": 186, "propositions": 1, "ordres": 0,
+            "raisons": {"avantage net insuffisant": 5, "refusé par le contrôleur : carnet périmé": 1}}}}}
+    found = enquete.refus_controleur(abst)
+    assert len(found) == 1 and "seismes_pays_v2.0.0 : refusé par le contrôleur : carnet périmé ×1" in found[0]["exemples"]
+    assert enquete.refus_controleur(None) == [] and enquete.refus_controleur({"portefeuilles": {}}) == []

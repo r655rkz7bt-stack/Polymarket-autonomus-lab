@@ -676,6 +676,20 @@ def familles_vides(abstentions: dict | None, entries: dict[str, list[dict]] | No
                      "zero_fees le 19-20/10/2026). Vérifier le feeType des marchés visés et corriger market_family ou la liste `familles`.", out)] if out else []
 
 
+def refus_controleur(abstentions: dict | None) -> list[dict]:
+    """Propositions refusées par le contrôleur au dernier cycle (raisons « refusé par le contrôleur : … », publiées depuis le 11/11/2026).
+    Cas réel : `seismes_pays` proposait le NON d'un marché calme, refusé « carnet périmé » (horodatage = dernière modification du carnet)."""
+    out = []
+    for pf, per in ((abstentions or {}).get("portefeuilles") or {}).items():
+        for sid, info in per.items():
+            for k, v in (info.get("raisons") or {}).items():
+                if str(k).startswith("refusé par le contrôleur"):
+                    out.append(f"{pf.split(':', 1)[-1]} : {k} ×{v}")
+    return [_finding("refus_controleur", A_REGARDER, f"{len(out)} refus du contrôleur au dernier cycle",
+                     "Une stratégie qui propose sans acheter ne teste rien. « carnet périmé » sur un marché calme : "
+                     "proposals/2026-11-11_carnet_calme_juge_perime.md ; autre motif : lire le journal du cycle.", out)] if out else []
+
+
 def sources_vides(etat: dict | None) -> list[dict]:
     """Sources dont le statut du dernier cycle est « ok (0 observations) » : un « ok » qui ne rapporte rien peut cacher une panne totale
     (23/10/2026 : `meteo_metar` et `meteo_prevision` à 0 depuis que Gamma cite `aviationweather.gov/api/data/metar?ids=…` au lieu de
@@ -1299,7 +1313,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
-                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + sources_vides(sources) + sources_retirees(sources) + sources_indisponibles(sources)
+                + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + refus_controleur(abstentions) + sources_vides(sources) + sources_retirees(sources) + sources_indisponibles(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)
                 + copie_absente(entries, parts, now, days=max(days, 3), depuis=depuis) + sans_test_passe(entries, configs, textes)

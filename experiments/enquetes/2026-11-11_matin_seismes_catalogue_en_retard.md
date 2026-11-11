@@ -69,3 +69,12 @@ de la routine) rendait 60+ constats sur les stratégies v1 et aucun sur les 9 st
 - `positions_oubliees` (5 positions de `favori_politique_quasi_certain`) : élection néo-zélandaise du 07/11, réglée sur les
   résultats OFFICIELS de la Commission électorale, attendus le 27/11 (≈ 400 000 votes spéciaux) : attente normale, pas un défaut.
 - `estimation_perimee` de `compteur_tweets` (« 200+ » de Trump, 08/11) : le faux 0,95 de la rafale, traité le 08/11 (`desaccord_max`).
+
+## Constat 3 (famille 6) : des refus du contrôleur invisibles
+
+Au cycle local, `seismes_pays` a proposé le NON « États-Unis » et le contrôleur l'a refusé « carnet périmé (25 790 s > 120 s) » :
+l'horodatage d'un carnet de la CLOB est celui de sa dernière modification, et ce marché calme n'avait pas bougé depuis 7 h
+(`proposals/2026-11-11_carnet_calme_juge_perime.md`, décision d'Etienne : c'est l'entrée d'un contrôle du noyau). Ce refus n'apparaissait
+que dans le journal du cycle : ni dans `abstentions` publiées, ni dans l'enquête. Correctif : `main._note_refus` ajoute « refusé par le
+contrôleur : <motif> » aux raisons d'abstention (avant et après relecture), contrôle `enquete.refus_controleur` ; tests
+`test_controller_refusals_show_up_in_the_published_abstentions`, `test_controller_refusals_published_in_abstentions_are_a_lead`.
