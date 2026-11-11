@@ -89,6 +89,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 25. **Niveaux des fleuves : la prévision officielle contre le prix** (11/11/2026, passage de 16 h, `experiments/niveaux_eau.md`, idée neuve : la prévision publiée par le service qui mesure). « When will the Rhine / Danube River return to normal levels? » (tranches de dates, premier passage de Kaub ≥ 77 cm ou de Budapest ≥ 93 cm) : prévisions WSV/BfG (PegelOnline `KAUB/WV`, sans clé) et OVF (hydroinfo.hu, 6 jours avec marge). Le 11/11 : Rhin « avant le 15/11 » 0,66 pour un pic prévu de 69 cm (chance calculée 0,39) ; Danube 0,26 pour 124 ± 17 cm prévus le 15/11 (0,76). **Pas de test sur le passé** (prévisions non archivées, 3 événements réglés) → 2 convictions (Rhin NON, Danube OUI) et fantôme `fleuves_prevision` ; le journal `fleuves:histo` garde chaque prévision et chaque lecture. À relire le 15/11. Même famille à étudier : lacs Mead / Powell (24-Month Study de l'USBR), marée de San Diego (marée astronomique NOAA).
 
+26. ~~Température mondiale du mois : la NASA prévue par ERA5~~ (11/11/2026, passage de 16 h, `experiments/temperature_mondiale.md`) : **écartée** le jour même. GISTEMP (base 1951-1980) prévu par ERA5 + écart des 3 mois d'avant : 27 mois réglés, log-score −1,67 contre −0,57 pour le marché au 5 du mois suivant (−0,80 au 2) ; achats simulés −3 % et −18 % ; le marché lit sans doute GHCN/ERSST. Conviction d'octobre abandonnée avant fusion.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|

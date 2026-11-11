@@ -51,3 +51,15 @@ convictions:
     sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://www.danubehis.org/results/HU442027_HYDRO", "https://gamma-api.polymarket.com/events/1301594", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-11"
     abandon: false
+  - id: giss-octobre-2026-145-149
+    marche: "5154903"
+    question: "Will global temperature increase by between 1.45ºC and 1.49ºC in October 2026"
+    issue: "Yes"
+    probabilite: 0.168
+    probabilite_basse: 0.12
+    expire: "2026-11-12"
+    mise_max: 0.02
+    raison: "Réglé sur la NASA GISTEMP (base 1951-1980), pas encore publiée pour octobre. ERA5 (Copernicus Climate Pulse) d'octobre 2026 : +0,904 °C sur 1991-2020 (« 1,75 °C au-dessus du préindustriel » dans la presse). Écart GISS − ERA5 : 0,56-0,57 de juillet à septembre 2026, octobre − moyenne JAS +0,046 ± 0,066 (1980-2025) ou +0,001 ± 0,048 (depuis 2010) → GISS d'octobre ≈ 1,47-1,52, tranche 1,45-1,49 ≈ 0,23-0,39 (médiane de cinq estimations 0,30). Le marché la cote 0,036 et met 0,82 sur « > 1,49 » (lecture probable de la base préindustrielle). Rapprochée de moitié du prix : 0,168."
+    sources: ["https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt", "https://sites.ecmwf.int/data/climatepulse/data/series/era5_daily_series_2t_global.csv", "https://gamma-api.polymarket.com/events/1108696", "experiments/temperature_mondiale.md"]
+    ecrit_le: "2026-11-11"
+    abandon: true   # 11/11 16 h 35 UTC, même passage : le test sur 27 mois réglés (experiments/temperature_mondiale.md) montre que le marché prévoit la NASA bien mieux que ce calcul (log-score −0,57 contre −1,67 au 5 du mois suivant) ; il lit sans doute GHCN/ERSST, publiés avant la NASA.
