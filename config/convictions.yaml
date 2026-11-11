@@ -27,3 +27,27 @@ convictions:
     sources: ["https://news.google.com/rss/search?q=Gemini+Carbon", "https://gamma-api.polymarket.com/markets/6753604"]
     ecrit_le: "2026-11-10"
     abandon: false
+  - id: rhin-kaub-avant-15-11
+    marche: "6433563"
+    question: "Will the Rhine River return to normal levels before November 15"
+    issue: "No"
+    probabilite: 0.52
+    probabilite_basse: 0.45
+    expire: "2026-11-11"
+    mise_max: 0.03
+    raison: "Kaub à 16-17 cm le 11/11 16 h UTC, seuil 77 cm avant le 15/11 (heure de Berlin). Une vague monte en amont (Maxau +80 cm, Mannheim +45, Worms +36, Mainz +16), c'est ce que le prix a vu (0,42 → 0,66 en 4 h, petits échanges). Mais la prévision officielle WSV/BfG de 07 h (pegelonline, série WV) culmine à 69 cm le 14/11 ; la vague analogue du 25-28/10 (Maxau 355, Mannheim 121) a donné 60 cm à Kaub ; Bâle reste plat (~500). Cinq estimations du OUI 0,15-0,50, médiane 0,30, rapprochée du prix 0,655 → OUI 0,48."
+    sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P31D", "https://gamma-api.polymarket.com/events/1284739", "experiments/niveaux_eau.md"]
+    ecrit_le: "2026-11-11"
+    abandon: false
+  - id: danube-budapest-avant-15-11
+    marche: "6581026"
+    question: "Will the Danube River return to normal levels before November 15"
+    issue: "Yes"
+    probabilite: 0.455
+    probabilite_basse: 0.40
+    expire: "2026-11-11"
+    mise_max: 0.04
+    raison: "Budapest (HU442027) à 35 cm, seuil 93 cm avant le 15/11 00 h (heure de l'Est = 06 h à Budapest). La prévision officielle hongroise OVF (hydroinfo.hu, émise le 11/11 à 08 h 28) donne Budapest 64 ± 13 le 14/11 à 7 h et 124 ± 17 le 15/11 à 7 h (crue venue de l'Ipoly, du Váh et de l'amont) : passage de 93 cm vers le 14/11 au soir, ~11 h avant la limite. Le marché (0,26 ; 0,65 pour « 15-30/11 ») parie sur un passage après la limite. Risque : retard de la vague > 12 h ou pluie plus faible que prévue. Cinq estimations 0,40-0,80, médiane 0,65, rapprochée du prix 0,26 → 0,455."
+    sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://www.danubehis.org/results/HU442027_HYDRO", "https://gamma-api.polymarket.com/events/1301594", "experiments/niveaux_eau.md"]
+    ecrit_le: "2026-11-11"
+    abandon: false
