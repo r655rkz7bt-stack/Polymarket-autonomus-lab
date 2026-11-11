@@ -30,6 +30,9 @@ KAUB_W = "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W
 KAUB_WV = "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json"
 OVF = "https://www.hydroinfo.hu/tables/ENG/dunelotH.html"
 BUDAPEST = ZoneInfo("Europe/Budapest")
+# Marge « ± » de l'OVF trop étroite (11/11/2026, 15 montées de Budapest en 2025, experiments/niveaux_eau.md) : écart-type de l'erreur
+# lu − prévu ≈ 15 cm à 3 jours et ≈ 30 cm à 4 jours, pour une marge publiée de 13-17 cm : on la multiplie par 1,8.
+FACTEUR_MARGE = 1.8
 MONTHS = {m: i + 1 for i, m in enumerate(("january", "february", "march", "april", "may", "june", "july", "august",
                                          "september", "october", "november", "december"))}
 # Fleuve du marché → station de la prévision (et mot-clé de la description qui le confirme).
@@ -170,7 +173,7 @@ def p_first_crossing(row: dict, now: datetime, start: datetime, end: datetime, s
     if end > last + timedelta(hours=1) or end <= now:
         return None
     hours = lambda t: (t - emis).total_seconds() / 3600  # noqa: E731
-    pts = sorted((hours(t), v, float(s) if s is not None else 3.0 + 0.25 * max(hours(t), 0.0)) for t, v, s in pts_raw)
+    pts = sorted((hours(t), v, FACTEUR_MARGE * float(s) if s is not None else 3.0 + 0.25 * max(hours(t), 0.0)) for t, v, s in pts_raw)
     h0, h_start, h_end = hours(now), hours(max(start, now)), hours(end)
     grid = [h0 + k for k in range(int(h_end - h0) + 2) if h0 + k <= h_end] or [h_end]
     rng, hit = random.Random(seed), 0

@@ -71,6 +71,22 @@ En régime calme, erreur de 1 à 3 cm à 1-3 jours. La crue n'apparaît qu'à 4-
 Un test complet sur le passé (épisodes de crue 2004-2026, prévision à 4 jours contre niveau lu) est possible en lisant les pages 4
 de ces rapports, mais elles sont en image (pas d'OCR dans la routine) : à faire si la piste se confirme le 15/11.
 
+## La prévision OVF dans les crues de 2025 (16 h 45 UTC)
+
+`scripts/budapest_horaire.py` (DanubeHIS, 7 875 lectures horaires de 2025-2026, pages de 25 heures) puis `scripts/crues_et_rapports.py` :
+15 montées de Budapest d'au moins 40 cm en 3 jours (janvier-octobre 2025 ; aucune en 2026, année basse) ; pour chacune, la page 4 du
+rapport OVF émis la veille (prévision à 7 h pour J à J+3), lue à la main (`donnees/ovf/pile*.png`).
+
+| Échéance | Erreur lu − prévu (cm), 15 crues | Moyenne | Écart-type |
+|---|---|---|---|
+| 3 jours | −1, −1, +2, +3, +30, +1, −20, −21, −4, −32, −2, +7, −14, −23, −10 | −6 | 15 |
+| 4 jours | −6, +22, +2, +55, +50, +2, −11, −13, +20, −6, +23, +91, −12, +2, −22 | +13 | 30 |
+
+Échantillon choisi sur des crues réelles (les crues manquées par la prévision y sont, les fausses alertes non) : la prévision sous-estime
+souvent les grosses montées à 4 jours (+50 à +91) et se trompe parfois d'une demi-journée (07/07 et 06/10/2025 : la montée arrive un jour
+plus tard, −23 à −32 cm à 3 jours). La marge publiée (13-17 cm) est trop étroite : `fleuves.FACTEUR_MARGE` = 1,8. Chance du Danube
+« avant le 15/11 » : 0,774 (marge ×1), 0,75 (×1,5), 0,73 (×1,8), 0,72 (×2) : la conclusion tient.
+
 ## Verdict
 
 **Pas de test sur le passé possible** : les prévisions ne sont pas archivées (PegelOnline ne garde que la dernière, l'OVF aussi) et
