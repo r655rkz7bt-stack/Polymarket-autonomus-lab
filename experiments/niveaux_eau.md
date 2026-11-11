@@ -51,6 +51,26 @@ Chance de la tranche = part des tirages dont le PREMIER passage tombe dans la tr
 de la prévision sont chiffrées. Pas de référence si la prévision a plus de 36 h ou si le seuil est déjà atteint.
 Réglages regardés : 4 (pointe 0 ou 2 cm, retard 0 / 0,15 / 0,30) ; non étalonné (aucune prévision archivée).
 
+## La prévision OVF est-elle stable ? (rapports quotidiens archivés, 16 h 40 UTC)
+
+L'OVF archive chaque jour depuis 2004 son « Napi hidrológiai jelentés » (`hydroinfo.hu/vt/vt<AAMMJJ>.pdf`, pages en images ; page 4 :
+prévision à 4 jours, à 7 h, pour 9 stations du Danube). Lu à la main pour les rapports des 1er, 3, 5, 7, 8, 9 et 10/11 (Budapest, cm) :
+
+| Émis le | 09/11 | 10/11 | 11/11 | 12/11 | 13/11 | 14/11 | 15/11 |
+|---|---|---|---|---|---|---|---|
+| 07/11 | 41 | 37 | 35 | | | | |
+| 08/11 | 44 | 38 | 35 | 36 | | | |
+| 09/11 | | 37 | 33 | 34 | 44 | | |
+| 10/11 | | | 34 | 31 | 47 | 72 | |
+| 11/11 (tableau web, ± ) | | | (36 lu) | 36 ± 2 | 42 ± 7 | 64 ± 13 | 124 ± 17 |
+| Lu (DanubeHIS / OVF 7 h) | | ~38 | 36 | | | | |
+
+En régime calme, erreur de 1 à 3 cm à 1-3 jours. La crue n'apparaît qu'à 4-5 jours et bouge d'un jour à l'autre : Budapest le 14/11
+72 → 64 cm, mais Komárom (amont, ~1 jour avant Budapest) le 14/11 53 → 89 cm : vague plus forte, à peine plus tardive. Le passage de
+93 cm prévu le 14/11 au soir reste à ~11 h de la limite (15/11 06 h à Budapest) : le risque principal est un retard de la vague.
+Un test complet sur le passé (épisodes de crue 2004-2026, prévision à 4 jours contre niveau lu) est possible en lisant les pages 4
+de ces rapports, mais elles sont en image (pas d'OCR dans la routine) : à faire si la piste se confirme le 15/11.
+
 ## Verdict
 
 **Pas de test sur le passé possible** : les prévisions ne sont pas archivées (PegelOnline ne garde que la dernière, l'OVF aussi) et

@@ -91,6 +91,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 26. ~~Température mondiale du mois : la NASA prévue par ERA5~~ (11/11/2026, passage de 16 h, `experiments/temperature_mondiale.md`) : **écartée** le jour même. GISTEMP (base 1951-1980) prévu par ERA5 + écart des 3 mois d'avant : 27 mois réglés, log-score −1,67 contre −0,57 pour le marché au 5 du mois suivant (−0,80 au 2) ; achats simulés −3 % et −18 % ; le marché lit sans doute GHCN/ERSST. Conviction d'octobre abandonnée avant fusion.
 
+27. **Première neige par ville** (11/11/2026, passage de 16 h, `experiments/premiere_neige.md`) : rapport climatologique NWS (trace comprise) ; fréquence de base ACIS 1991-2025 sachant « pas de neige au 11/11 » et prévision NWS à 7 jours. Prix serrés justes, prix larges sans vendeur à prix faux : notée, pas de conviction.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
