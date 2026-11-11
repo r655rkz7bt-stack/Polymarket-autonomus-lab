@@ -1408,7 +1408,7 @@ class SeismesMarche(_Base):
                 continue
             seen = parse_date(ref.get("vu_le") or "")
             if seen is None or (now - seen).total_seconds() > float(p["max_stale_hours"]) * 3600:
-                out.abstain("catalogue USGS pas à jour")
+                out.abstain("catalogue USGS pas à jour" if self.ref_key.startswith("seismes") else "relevé de la source pas à jour")
                 continue
             # Doublon entre réseaux (24/10/2026 : 6,6 « pt » et 6,3 « us » du même séisme) : si le compte sans doublon change la chance de plus de
             # `max_ecart_doublon`, on ne sait pas ce que le règlement comptera : pas d'achat.
@@ -1468,6 +1468,16 @@ class SeismesPays(SeismesMarche):
 
     strategy_id = "seismes_pays"
     ref_key = "seismes_pays"
+
+
+class TornadesMois(SeismesMarche):
+    """« How many Tornadoes in the US in <mois> ? » : compte du mois lu au SPC (rapports filtrés = valeur NCEI du règlement) + reste du
+    mois tiré de la base finale 1995-2024 (tornades.py). Test sur le passé (experiments/tornades.md, 11/11/2026, 10 mois, 65 tranches) :
+    log-loss 0,33 contre 0,42 pour le marché au jour 5 ; aux vrais prix (seuil 0,05) 11-14 paris, +7 à +27 % selon la correction des
+    rapports tardifs, t par mois 0,5-0,6 : INDICE FAIBLE, fantôme d'expérience."""
+
+    strategy_id = "tornades_mois"
+    ref_key = "tornades"
 
 
 class SiegesCoherence(_Base):
@@ -1850,4 +1860,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

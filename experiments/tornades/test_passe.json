@@ -1,0 +1,4592 @@
+[
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "<20",
+"jour": 5,
+"deja": 0,
+"p": 0.2308,
+"prix": null,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "<20",
+"jour": 10,
+"deja": 0,
+"p": 0.3846,
+"prix": null,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "<20",
+"jour": 15,
+"deja": 1,
+"p": 0.5385,
+"prix": null,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "<20",
+"jour": 20,
+"deja": 3,
+"p": 0.7231,
+"prix": null,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "<20",
+"jour": 25,
+"deja": 6,
+"p": 0.7231,
+"prix": null,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "20\u201339",
+"jour": 5,
+"deja": 0,
+"p": 0.1692,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "20\u201339",
+"jour": 10,
+"deja": 0,
+"p": 0.2615,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "20\u201339",
+"jour": 15,
+"deja": 1,
+"p": 0.1385,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "20\u201339",
+"jour": 20,
+"deja": 3,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "20\u201339",
+"jour": 25,
+"deja": 6,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "40\u201359",
+"jour": 5,
+"deja": 0,
+"p": 0.3231,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "40\u201359",
+"jour": 10,
+"deja": 0,
+"p": 0.1385,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "40\u201359",
+"jour": 15,
+"deja": 1,
+"p": 0.1385,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "40\u201359",
+"jour": 20,
+"deja": 3,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "40\u201359",
+"jour": 25,
+"deja": 6,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "60\u201379",
+"jour": 5,
+"deja": 0,
+"p": 0.1077,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "60\u201379",
+"jour": 10,
+"deja": 0,
+"p": 0.0462,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "60\u201379",
+"jour": 15,
+"deja": 1,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "60\u201379",
+"jour": 20,
+"deja": 3,
+"p": 0.0462,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "60\u201379",
+"jour": 25,
+"deja": 6,
+"p": 0.0462,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "80+",
+"jour": 5,
+"deja": 0,
+"p": 0.1692,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "80+",
+"jour": 10,
+"deja": 0,
+"p": 0.1692,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "80+",
+"jour": 15,
+"deja": 1,
+"p": 0.1077,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "80+",
+"jour": 20,
+"deja": 3,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96596",
+"mois": "2025-11",
+"tranche": "80+",
+"jour": 25,
+"deja": 6,
+"p": 0.0769,
+"prix": null,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "<30",
+"jour": 5,
+"deja": 0,
+"p": 0.6,
+"prix": 0.44,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": [
+0.7114230809,
+140.563331
+]
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "<30",
+"jour": 10,
+"deja": 0,
+"p": 0.6,
+"prix": 0.585,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "<30",
+"jour": 15,
+"deja": 0,
+"p": 0.6615,
+"prix": 0.915,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "<30",
+"jour": 20,
+"deja": 1,
+"p": 0.7231,
+"prix": 0.9755,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "<30",
+"jour": 25,
+"deja": 1,
+"p": 0.7538,
+"prix": 0.9755,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "30\u201359",
+"jour": 5,
+"deja": 0,
+"p": 0.2308,
+"prix": 0.325,
+"gagne": 0.0,
+"achat_oui": [
+0.4203416149,
+19.32
+],
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "30\u201359",
+"jour": 10,
+"deja": 0,
+"p": 0.2308,
+"prix": 0.385,
+"gagne": 0.0,
+"achat_oui": [
+0.3843477933,
+8.846152
+],
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "30\u201359",
+"jour": 15,
+"deja": 0,
+"p": 0.1692,
+"prix": 0.05,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "30\u201359",
+"jour": 20,
+"deja": 1,
+"p": 0.1692,
+"prix": 0.0235,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "30\u201359",
+"jour": 25,
+"deja": 1,
+"p": 0.1692,
+"prix": 0.0135,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "60\u201389",
+"jour": 5,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.0675,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.976,
+62.0
+]
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "60\u201389",
+"jour": 10,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.03,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "60\u201389",
+"jour": 15,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.005,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "60\u201389",
+"jour": 20,
+"deja": 1,
+"p": 0.0462,
+"prix": 0.002,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "60\u201389",
+"jour": 25,
+"deja": 1,
+"p": 0.0154,
+"prix": 0.0025,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "90\u2013119",
+"jour": 5,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.0355,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.986,
+73.0
+]
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "90\u2013119",
+"jour": 10,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.029,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "90\u2013119",
+"jour": 15,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.0035,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "90\u2013119",
+"jour": 20,
+"deja": 1,
+"p": 0.0154,
+"prix": 0.002,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "90\u2013119",
+"jour": 25,
+"deja": 1,
+"p": 0.0154,
+"prix": 0.0025,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "120+",
+"jour": 5,
+"deja": 0,
+"p": 0.0769,
+"prix": 0.055,
+"gagne": 0.0,
+"achat_oui": [
+0.08,
+5.0
+],
+"achat_non": [
+0.93,
+281.0
+]
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "120+",
+"jour": 10,
+"deja": 0,
+"p": 0.0769,
+"prix": 0.015,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "120+",
+"jour": 15,
+"deja": 0,
+"p": 0.0769,
+"prix": 0.014,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "120+",
+"jour": 20,
+"deja": 1,
+"p": 0.0462,
+"prix": 0.005,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "96598",
+"mois": "2025-12",
+"tranche": "120+",
+"jour": 25,
+"deja": 1,
+"p": 0.0462,
+"prix": 0.005,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "<30",
+"jour": 5,
+"deja": 1,
+"p": 0.5077,
+"prix": 0.495,
+"gagne": 1.0,
+"achat_oui": [
+0.52,
+1.923075
+],
+"achat_non": [
+0.49,
+3.27
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "<30",
+"jour": 10,
+"deja": 6,
+"p": 0.5077,
+"prix": 0.745,
+"gagne": 1.0,
+"achat_oui": [
+0.74,
+7.0
+],
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "<30",
+"jour": 15,
+"deja": 18,
+"p": 0.5385,
+"prix": 0.76,
+"gagne": 1.0,
+"achat_oui": [
+0.7699999877,
+6.493504
+],
+"achat_non": [
+0.24,
+19.0
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "<30",
+"jour": 20,
+"deja": 18,
+"p": 0.6308,
+"prix": 0.865,
+"gagne": 1.0,
+"achat_oui": [
+0.9,
+11.11111
+],
+"achat_non": [
+0.12,
+3.35
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "<30",
+"jour": 25,
+"deja": 18,
+"p": 0.8154,
+"prix": 0.9655,
+"gagne": 1.0,
+"achat_oui": [
+0.9683739535,
+16.037161
+],
+"achat_non": [
+0.0384856,
+25.0
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "30\u201359",
+"jour": 5,
+"deja": 1,
+"p": 0.2308,
+"prix": 0.435,
+"gagne": 0.0,
+"achat_oui": [
+0.4399997993,
+2.590908
+],
+"achat_non": [
+0.57,
+3.27
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "30\u201359",
+"jour": 10,
+"deja": 6,
+"p": 0.2615,
+"prix": 0.17,
+"gagne": 0.0,
+"achat_oui": [
+0.1699999422,
+11.764704
+],
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "30\u201359",
+"jour": 15,
+"deja": 18,
+"p": 0.2923,
+"prix": 0.215,
+"gagne": 0.0,
+"achat_oui": [
+0.2199999727,
+22.727271
+],
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "30\u201359",
+"jour": 20,
+"deja": 18,
+"p": 0.2,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.89,
+11.11
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "30\u201359",
+"jour": 25,
+"deja": 18,
+"p": 0.1077,
+"prix": 0.0285,
+"gagne": 0.0,
+"achat_oui": [
+0.0328495997,
+60.883512
+],
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "60\u201389",
+"jour": 5,
+"deja": 1,
+"p": 0.1385,
+"prix": 0.045,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.96,
+3.27
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "60\u201389",
+"jour": 10,
+"deja": 6,
+"p": 0.1077,
+"prix": 0.0655,
+"gagne": 0.0,
+"achat_oui": [
+0.0701767947,
+28.499435
+],
+"achat_non": [
+0.9459998475,
+5.285411
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "60\u201389",
+"jour": 15,
+"deja": 18,
+"p": 0.0769,
+"prix": 0.019,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "60\u201389",
+"jour": 20,
+"deja": 18,
+"p": 0.0769,
+"prix": 0.0065,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.995,
+11.11
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "60\u201389",
+"jour": 25,
+"deja": 18,
+"p": 0.0462,
+"prix": 0.004,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.998,
+24.0
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "90\u2013119",
+"jour": 5,
+"deja": 1,
+"p": 0.0769,
+"prix": 0.029,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.98,
+3.27
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "90\u2013119",
+"jour": 10,
+"deja": 6,
+"p": 0.0769,
+"prix": 0.018,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "90\u2013119",
+"jour": 15,
+"deja": 18,
+"p": 0.0462,
+"prix": 0.015,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "90\u2013119",
+"jour": 20,
+"deja": 18,
+"p": 0.0462,
+"prix": 0.007,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.994,
+11.11
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "90\u2013119",
+"jour": 25,
+"deja": 18,
+"p": 0.0154,
+"prix": 0.004,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.998,
+24.0
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "120+",
+"jour": 5,
+"deja": 1,
+"p": 0.0462,
+"prix": 0.003,
+"gagne": 0.0,
+"achat_oui": [
+0.0095762509,
+104.425
+],
+"achat_non": [
+0.998,
+2.004
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "120+",
+"jour": 10,
+"deja": 6,
+"p": 0.0462,
+"prix": 0.0145,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9889999991,
+10.111181
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "120+",
+"jour": 15,
+"deja": 18,
+"p": 0.0462,
+"prix": 0.0165,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "120+",
+"jour": 20,
+"deja": 18,
+"p": 0.0462,
+"prix": 0.003,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.998,
+11.11
+]
+},
+{
+"evt": "131185",
+"mois": "2026-01",
+"tranche": "120+",
+"jour": 25,
+"deja": 18,
+"p": 0.0154,
+"prix": 0.002,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.999,
+5.935
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "<30",
+"jour": 5,
+"deja": 0,
+"p": 0.4769,
+"prix": 0.71,
+"gagne": 0.0,
+"achat_oui": [
+0.6199998512,
+1.612902
+],
+"achat_non": [
+0.3,
+5.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "<30",
+"jour": 10,
+"deja": 0,
+"p": 0.5077,
+"prix": 0.725,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "<30",
+"jour": 15,
+"deja": 0,
+"p": 0.6,
+"prix": 0.68,
+"gagne": 0.0,
+"achat_oui": [
+0.71,
+5.0
+],
+"achat_non": [
+0.3203882531,
+6.242423
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "<30",
+"jour": 20,
+"deja": 37,
+"p": 0.0154,
+"prix": 0.0335,
+"gagne": 0.0,
+"achat_oui": [
+0.038,
+100.0
+],
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "<30",
+"jour": 25,
+"deja": 54,
+"p": 0.0154,
+"prix": 0.0025,
+"gagne": 0.0,
+"achat_oui": [
+0.003,
+5.0
+],
+"achat_non": [
+0.998,
+50.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "30\u201359",
+"jour": 5,
+"deja": 0,
+"p": 0.3231,
+"prix": 0.225,
+"gagne": 1.0,
+"achat_oui": [
+0.23,
+5.0
+],
+"achat_non": [
+0.78,
+5.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "30\u201359",
+"jour": 10,
+"deja": 0,
+"p": 0.3538,
+"prix": 0.18,
+"gagne": 1.0,
+"achat_oui": [
+0.21,
+20.0
+],
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "30\u201359",
+"jour": 15,
+"deja": 0,
+"p": 0.3231,
+"prix": 0.205,
+"gagne": 1.0,
+"achat_oui": [
+0.23,
+5.0
+],
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "30\u201359",
+"jour": 20,
+"deja": 37,
+"p": 0.6308,
+"prix": 0.865,
+"gagne": 1.0,
+"achat_oui": [
+0.87,
+200.0
+],
+"achat_non": [
+0.1399998824,
+7.142856
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "30\u201359",
+"jour": 25,
+"deja": 54,
+"p": 0.5077,
+"prix": 0.885,
+"gagne": 1.0,
+"achat_oui": [
+0.96,
+6.0
+],
+"achat_non": [
+0.06,
+30.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "60\u201389",
+"jour": 5,
+"deja": 0,
+"p": 0.1385,
+"prix": 0.0685,
+"gagne": 0.0,
+"achat_oui": [
+0.086,
+10.0
+],
+"achat_non": [
+0.959,
+5.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "60\u201389",
+"jour": 10,
+"deja": 0,
+"p": 0.1077,
+"prix": 0.025,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "60\u201389",
+"jour": 15,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.0035,
+"gagne": 0.0,
+"achat_oui": [
+0.004,
+5.0
+],
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "60\u201389",
+"jour": 20,
+"deja": 37,
+"p": 0.2615,
+"prix": 0.091,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "60\u201389",
+"jour": 25,
+"deja": 54,
+"p": 0.4154,
+"prix": 0.081,
+"gagne": 0.0,
+"achat_oui": [
+0.028,
+50.0
+],
+"achat_non": [
+0.958031,
+30.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "90\u2013119",
+"jour": 5,
+"deja": 0,
+"p": 0.0154,
+"prix": 0.02,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.989,
+5.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "90\u2013119",
+"jour": 10,
+"deja": 0,
+"p": 0.0154,
+"prix": 0.0265,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "90\u2013119",
+"jour": 15,
+"deja": 0,
+"p": 0.0154,
+"prix": 0.0035,
+"gagne": 0.0,
+"achat_oui": [
+0.006,
+5.0
+],
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "90\u2013119",
+"jour": 20,
+"deja": 37,
+"p": 0.0769,
+"prix": 0.0165,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9929999998,
+12.084571
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "90\u2013119",
+"jour": 25,
+"deja": 54,
+"p": 0.0462,
+"prix": 0.0285,
+"gagne": 0.0,
+"achat_oui": [
+0.02,
+5.0
+],
+"achat_non": [
+0.985,
+50.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "120+",
+"jour": 5,
+"deja": 0,
+"p": 0.0462,
+"prix": 0.025,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.99,
+5.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "120+",
+"jour": 10,
+"deja": 0,
+"p": 0.0154,
+"prix": 0.0385,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "120+",
+"jour": 15,
+"deja": 0,
+"p": 0.0154,
+"prix": 0.099,
+"gagne": 0.0,
+"achat_oui": [
+0.037,
+5.0
+],
+"achat_non": [
+0.963,
+5.0
+]
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "120+",
+"jour": 20,
+"deja": 37,
+"p": 0.0154,
+"prix": 0.0025,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "193610",
+"mois": "2026-02",
+"tranche": "120+",
+"jour": 25,
+"deja": 54,
+"p": 0.0154,
+"prix": 0.0025,
+"gagne": 0.0,
+"achat_oui": [
+0.004,
+5.0
+],
+"achat_non": [
+0.999,
+50.0
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "<70",
+"jour": 5,
+"deja": 0,
+"p": 0.5077,
+"prix": 0.155,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.89,
+14.28
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "<70",
+"jour": 10,
+"deja": 38,
+"p": 0.2615,
+"prix": 0.075,
+"gagne": 0.0,
+"achat_oui": [
+0.1000373174,
+199.925383
+],
+"achat_non": [
+0.9399999937,
+6.382966
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "<70",
+"jour": 15,
+"deja": 140,
+"p": 0.0154,
+"prix": 0.018,
+"gagne": 0.0,
+"achat_oui": [
+0.0235239319,
+77.793075
+],
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "<70",
+"jour": 20,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.002,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.999,
+20.02
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "<70",
+"jour": 25,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.0015,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "70\u201399",
+"jour": 5,
+"deja": 0,
+"p": 0.1692,
+"prix": 0.235,
+"gagne": 0.0,
+"achat_oui": [
+0.28,
+13.08
+],
+"achat_non": [
+0.72,
+5.09
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "70\u201399",
+"jour": 10,
+"deja": 38,
+"p": 0.3231,
+"prix": 0.23,
+"gagne": 0.0,
+"achat_oui": [
+0.25,
+8.64
+],
+"achat_non": [
+0.78,
+5.01
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "70\u201399",
+"jour": 15,
+"deja": 140,
+"p": 0.0154,
+"prix": 0.014,
+"gagne": 0.0,
+"achat_oui": [
+0.019088523,
+52.3875
+],
+"achat_non": [
+0.9949999648,
+25.005024
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "70\u201399",
+"jour": 20,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.002,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "70\u201399",
+"jour": 25,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.001,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "100\u2013129",
+"jour": 5,
+"deja": 0,
+"p": 0.1385,
+"prix": 0.085,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.94,
+14.28
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "100\u2013129",
+"jour": 10,
+"deja": 38,
+"p": 0.2,
+"prix": 0.21,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.83172,
+5.0
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "100\u2013129",
+"jour": 15,
+"deja": 140,
+"p": 0.0154,
+"prix": 0.013,
+"gagne": 0.0,
+"achat_oui": [
+0.015,
+5.0
+],
+"achat_non": [
+0.984,
+6.01625
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "100\u2013129",
+"jour": 20,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.0025,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "100\u2013129",
+"jour": 25,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.002,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "130\u2013149",
+"jour": 5,
+"deja": 0,
+"p": 0.0769,
+"prix": 0.065,
+"gagne": 0.0,
+"achat_oui": [
+0.0699999363,
+14.285713
+],
+"achat_non": [
+0.96,
+3.125
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "130\u2013149",
+"jour": 10,
+"deja": 38,
+"p": 0.0462,
+"prix": 0.075,
+"gagne": 0.0,
+"achat_oui": [
+0.09,
+2.78
+],
+"achat_non": [
+0.91,
+5.0
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "130\u2013149",
+"jour": 15,
+"deja": 140,
+"p": 0.0462,
+"prix": 0.0335,
+"gagne": 0.0,
+"achat_oui": [
+0.0470064956,
+42.54729
+],
+"achat_non": [
+0.975,
+6.02048
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "130\u2013149",
+"jour": 20,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.0035,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "130\u2013149",
+"jour": 25,
+"deja": 202,
+"p": 0.0154,
+"prix": 0.003,
+"gagne": 0.0,
+"achat_oui": [
+0.0053300513,
+696.053333
+],
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "150+",
+"jour": 5,
+"deja": 0,
+"p": 0.1077,
+"prix": 0.53,
+"gagne": 1.0,
+"achat_oui": [
+0.52,
+1.923075
+],
+"achat_non": [
+0.49,
+14.28
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "150+",
+"jour": 10,
+"deja": 38,
+"p": 0.1692,
+"prix": 0.455,
+"gagne": 1.0,
+"achat_oui": [
+0.47,
+6.5
+],
+"achat_non": [
+0.57813014,
+69.31
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "150+",
+"jour": 15,
+"deja": 140,
+"p": 0.9077,
+"prix": 0.94,
+"gagne": 1.0,
+"achat_oui": [
+0.9399999221,
+7.446807
+],
+"achat_non": [
+0.07,
+25.0
+]
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "150+",
+"jour": 20,
+"deja": 202,
+"p": 0.9385,
+"prix": 0.9925,
+"gagne": 1.0,
+"achat_oui": [
+0.993,
+20.140857
+],
+"achat_non": null
+},
+{
+"evt": "232628",
+"mois": "2026-03",
+"tranche": "150+",
+"jour": 25,
+"deja": 202,
+"p": 0.9385,
+"prix": 0.9855,
+"gagne": 1.0,
+"achat_oui": [
+0.99,
+1.0101
+],
+"achat_non": [
+0.0171945535,
+58.157893
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "<140",
+"jour": 5,
+"deja": 20,
+"p": 0.2464,
+"prix": 0.245,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "<140",
+"jour": 10,
+"deja": 25,
+"p": 0.4203,
+"prix": 0.17,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "<140",
+"jour": 15,
+"deja": 50,
+"p": 0.3333,
+"prix": 0.115,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.8799999859,
+5.681816
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "<140",
+"jour": 20,
+"deja": 190,
+"p": 0.0145,
+"prix": 0.0135,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "<140",
+"jour": 25,
+"deja": 219,
+"p": 0.0145,
+"prix": 0.019,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9901198322,
+33.38
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "140\u2013169",
+"jour": 5,
+"deja": 20,
+"p": 0.1884,
+"prix": 0.165,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "140\u2013169",
+"jour": 10,
+"deja": 25,
+"p": 0.2174,
+"prix": 0.145,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "140\u2013169",
+"jour": 15,
+"deja": 50,
+"p": 0.3623,
+"prix": 0.19,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "140\u2013169",
+"jour": 20,
+"deja": 190,
+"p": 0.0145,
+"prix": 0.035,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9866089441,
+111.493
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "140\u2013169",
+"jour": 25,
+"deja": 219,
+"p": 0.0145,
+"prix": 0.0165,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "170\u2013199",
+"jour": 5,
+"deja": 20,
+"p": 0.2754,
+"prix": 0.16,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "170\u2013199",
+"jour": 10,
+"deja": 25,
+"p": 0.1304,
+"prix": 0.225,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.8,
+10.0
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "170\u2013199",
+"jour": 15,
+"deja": 50,
+"p": 0.0725,
+"prix": 0.365,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "170\u2013199",
+"jour": 20,
+"deja": 190,
+"p": 0.0145,
+"prix": 0.3,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.81,
+50.0
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "170\u2013199",
+"jour": 25,
+"deja": 219,
+"p": 0.0145,
+"prix": 0.219,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "200\u2013229",
+"jour": 5,
+"deja": 20,
+"p": 0.0435,
+"prix": 0.15,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "200\u2013229",
+"jour": 10,
+"deja": 25,
+"p": 0.0435,
+"prix": 0.205,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "200\u2013229",
+"jour": 15,
+"deja": 50,
+"p": 0.0725,
+"prix": 0.1,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "200\u2013229",
+"jour": 20,
+"deja": 190,
+"p": 0.1304,
+"prix": 0.295,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "200\u2013229",
+"jour": 25,
+"deja": 219,
+"p": 0.1014,
+"prix": 0.105,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "230\u2013259",
+"jour": 5,
+"deja": 20,
+"p": 0.0725,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "230\u2013259",
+"jour": 10,
+"deja": 25,
+"p": 0.0435,
+"prix": 0.11,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "230\u2013259",
+"jour": 15,
+"deja": 50,
+"p": 0.0145,
+"prix": 0.045,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "230\u2013259",
+"jour": 20,
+"deja": 190,
+"p": 0.2754,
+"prix": 0.315,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "230\u2013259",
+"jour": 25,
+"deja": 219,
+"p": 0.4493,
+"prix": 0.1,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "260\u2013289",
+"jour": 5,
+"deja": 20,
+"p": 0.0435,
+"prix": 0.13,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "260\u2013289",
+"jour": 10,
+"deja": 25,
+"p": 0.0435,
+"prix": 0.175,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "260\u2013289",
+"jour": 15,
+"deja": 50,
+"p": 0.0725,
+"prix": 0.18,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "260\u2013289",
+"jour": 20,
+"deja": 190,
+"p": 0.3623,
+"prix": 0.185,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "260\u2013289",
+"jour": 25,
+"deja": 219,
+"p": 0.1304,
+"prix": 0.34,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "290\u2013319",
+"jour": 5,
+"deja": 20,
+"p": 0.0725,
+"prix": 0.12,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "290\u2013319",
+"jour": 10,
+"deja": 25,
+"p": 0.0435,
+"prix": 0.175,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "290\u2013319",
+"jour": 15,
+"deja": 50,
+"p": 0.0145,
+"prix": 0.125,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "290\u2013319",
+"jour": 20,
+"deja": 190,
+"p": 0.0725,
+"prix": 0.146,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "290\u2013319",
+"jour": 25,
+"deja": 219,
+"p": 0.1884,
+"prix": 0.162,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "320\u2013350",
+"jour": 5,
+"deja": 20,
+"p": 0.0145,
+"prix": 0.063,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "320\u2013350",
+"jour": 10,
+"deja": 25,
+"p": 0.0145,
+"prix": 0.182,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "320\u2013350",
+"jour": 15,
+"deja": 50,
+"p": 0.0145,
+"prix": 0.1775,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "320\u2013350",
+"jour": 20,
+"deja": 190,
+"p": 0.0435,
+"prix": 0.2275,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "320\u2013350",
+"jour": 25,
+"deja": 219,
+"p": 0.0145,
+"prix": 0.19,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "350+",
+"jour": 5,
+"deja": 20,
+"p": 0.0435,
+"prix": 0.155,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "350+",
+"jour": 10,
+"deja": 25,
+"p": 0.0435,
+"prix": 0.14,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.87,
+2325.0
+]
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "350+",
+"jour": 15,
+"deja": 50,
+"p": 0.0435,
+"prix": 0.06,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "350+",
+"jour": 20,
+"deja": 190,
+"p": 0.0725,
+"prix": 0.104,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "304644",
+"mois": "2026-04",
+"tranche": "350+",
+"jour": 25,
+"deja": 219,
+"p": 0.0725,
+"prix": 0.3865,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "<200",
+"jour": 5,
+"deja": 2,
+"p": 0.2754,
+"prix": 0.28,
+"gagne": 1.0,
+"achat_oui": [
+0.5,
+2.0
+],
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "<200",
+"jour": 10,
+"deja": 30,
+"p": 0.3623,
+"prix": 0.34,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "<200",
+"jour": 15,
+"deja": 38,
+"p": 0.4493,
+"prix": 0.34,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "<200",
+"jour": 20,
+"deja": 112,
+"p": 0.3623,
+"prix": 0.38,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "<200",
+"jour": 25,
+"deja": 146,
+"p": 0.3043,
+"prix": 0.485,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "200\u2013229",
+"jour": 5,
+"deja": 2,
+"p": 0.2174,
+"prix": 0.46,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "200\u2013229",
+"jour": 10,
+"deja": 30,
+"p": 0.1304,
+"prix": 0.375,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "200\u2013229",
+"jour": 15,
+"deja": 38,
+"p": 0.1884,
+"prix": 0.46,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "200\u2013229",
+"jour": 20,
+"deja": 112,
+"p": 0.1304,
+"prix": 0.37,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "200\u2013229",
+"jour": 25,
+"deja": 146,
+"p": 0.2464,
+"prix": 0.38,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "230\u2013259",
+"jour": 5,
+"deja": 2,
+"p": 0.0725,
+"prix": 0.455,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "230\u2013259",
+"jour": 10,
+"deja": 30,
+"p": 0.1014,
+"prix": 0.38,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "230\u2013259",
+"jour": 15,
+"deja": 38,
+"p": 0.0435,
+"prix": 0.385,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "230\u2013259",
+"jour": 20,
+"deja": 112,
+"p": 0.1014,
+"prix": 0.355,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "230\u2013259",
+"jour": 25,
+"deja": 146,
+"p": 0.1014,
+"prix": 0.36,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "260\u2013289",
+"jour": 5,
+"deja": 2,
+"p": 0.1014,
+"prix": 0.46,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "260\u2013289",
+"jour": 10,
+"deja": 30,
+"p": 0.1014,
+"prix": 0.37,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "260\u2013289",
+"jour": 15,
+"deja": 38,
+"p": 0.1014,
+"prix": 0.405,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "260\u2013289",
+"jour": 20,
+"deja": 112,
+"p": 0.1594,
+"prix": 0.395,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "260\u2013289",
+"jour": 25,
+"deja": 146,
+"p": 0.1594,
+"prix": 0.435,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "290\u2013319",
+"jour": 5,
+"deja": 2,
+"p": 0.0435,
+"prix": 0.47,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "290\u2013319",
+"jour": 10,
+"deja": 30,
+"p": 0.0435,
+"prix": 0.38,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "290\u2013319",
+"jour": 15,
+"deja": 38,
+"p": 0.0435,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "290\u2013319",
+"jour": 20,
+"deja": 112,
+"p": 0.0435,
+"prix": 0.145,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "290\u2013319",
+"jour": 25,
+"deja": 146,
+"p": 0.0435,
+"prix": 0.415,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "320\u2013349",
+"jour": 5,
+"deja": 2,
+"p": 0.0435,
+"prix": 0.455,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "320\u2013349",
+"jour": 10,
+"deja": 30,
+"p": 0.0435,
+"prix": 0.38,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "320\u2013349",
+"jour": 15,
+"deja": 38,
+"p": 0.0725,
+"prix": 0.115,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "320\u2013349",
+"jour": 20,
+"deja": 112,
+"p": 0.0145,
+"prix": 0.11,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "320\u2013349",
+"jour": 25,
+"deja": 146,
+"p": 0.0725,
+"prix": 0.22,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "350\u2013379",
+"jour": 5,
+"deja": 2,
+"p": 0.0145,
+"prix": 0.455,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "350\u2013379",
+"jour": 10,
+"deja": 30,
+"p": 0.1014,
+"prix": 0.4,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "350\u2013379",
+"jour": 15,
+"deja": 38,
+"p": 0.0145,
+"prix": 0.1,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "350\u2013379",
+"jour": 20,
+"deja": 112,
+"p": 0.0435,
+"prix": 0.095,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "350\u2013379",
+"jour": 25,
+"deja": 146,
+"p": 0.0145,
+"prix": 0.405,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "380\u2013410",
+"jour": 5,
+"deja": 2,
+"p": 0.1014,
+"prix": 0.465,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "380\u2013410",
+"jour": 10,
+"deja": 30,
+"p": 0.0435,
+"prix": 0.39,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "380\u2013410",
+"jour": 15,
+"deja": 38,
+"p": 0.0145,
+"prix": 0.105,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "380\u2013410",
+"jour": 20,
+"deja": 112,
+"p": 0.0725,
+"prix": 0.36,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "380\u2013410",
+"jour": 25,
+"deja": 146,
+"p": 0.0145,
+"prix": 0.41,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "410+",
+"jour": 5,
+"deja": 2,
+"p": 0.1304,
+"prix": 0.43,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "410+",
+"jour": 10,
+"deja": 30,
+"p": 0.0725,
+"prix": 0.385,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "410+",
+"jour": 15,
+"deja": 38,
+"p": 0.0725,
+"prix": 0.09,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "410+",
+"jour": 20,
+"deja": 112,
+"p": 0.0725,
+"prix": 0.395,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "424754",
+"mois": "2026-05",
+"tranche": "410+",
+"jour": 25,
+"deja": 146,
+"p": 0.0435,
+"prix": 0.4,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9530072934,
+70.618533
+]
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "<100",
+"jour": 5,
+"deja": 6,
+"p": 0.1304,
+"prix": 0.0695,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "<100",
+"jour": 10,
+"deja": 29,
+"p": 0.0725,
+"prix": 0.187,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "<100",
+"jour": 15,
+"deja": 153,
+"p": 0.0145,
+"prix": 0.0085,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.997,
+22.0
+]
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "<100",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.0615,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "<100",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.0095,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "100\u2013129",
+"jour": 5,
+"deja": 6,
+"p": 0.2174,
+"prix": 0.1,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "100\u2013129",
+"jour": 10,
+"deja": 29,
+"p": 0.2464,
+"prix": 0.305,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "100\u2013129",
+"jour": 15,
+"deja": 153,
+"p": 0.0145,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": [
+0.06,
+30.0
+],
+"achat_non": [
+0.93,
+22.0
+]
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "100\u2013129",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.0925,
+"gagne": 0.0,
+"achat_oui": [
+0.0859999286,
+11.627905
+],
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "100\u2013129",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.0125,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "130\u2013159",
+"jour": 5,
+"deja": 6,
+"p": 0.1304,
+"prix": 0.42,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "130\u2013159",
+"jour": 10,
+"deja": 29,
+"p": 0.1884,
+"prix": 0.24,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "130\u2013159",
+"jour": 15,
+"deja": 153,
+"p": 0.0145,
+"prix": 0.355,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "130\u2013159",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.045,
+"gagne": 0.0,
+"achat_oui": [
+0.059999946,
+16.666665
+],
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "130\u2013159",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.032,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "160\u2013189",
+"jour": 5,
+"deja": 6,
+"p": 0.1014,
+"prix": 0.15,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "160\u2013189",
+"jour": 10,
+"deja": 29,
+"p": 0.1304,
+"prix": 0.35,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "160\u2013189",
+"jour": 15,
+"deja": 153,
+"p": 0.0145,
+"prix": 0.455,
+"gagne": 0.0,
+"achat_oui": [
+0.18,
+26.0
+],
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "160\u2013189",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.425,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "160\u2013189",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.04,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "190\u2013219",
+"jour": 5,
+"deja": 6,
+"p": 0.0725,
+"prix": 0.385,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "190\u2013219",
+"jour": 10,
+"deja": 29,
+"p": 0.0725,
+"prix": 0.38,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "190\u2013219",
+"jour": 15,
+"deja": 153,
+"p": 0.3043,
+"prix": 0.155,
+"gagne": 0.0,
+"achat_oui": [
+0.1360490183,
+92.466665
+],
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "190\u2013219",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.0255,
+"gagne": 0.0,
+"achat_oui": [
+0.0911886963,
+21.932532
+],
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "190\u2013219",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.032,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "220\u2013249",
+"jour": 5,
+"deja": 6,
+"p": 0.0725,
+"prix": 0.095,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "220\u2013249",
+"jour": 10,
+"deja": 29,
+"p": 0.1014,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "220\u2013249",
+"jour": 15,
+"deja": 153,
+"p": 0.2464,
+"prix": 0.15,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "220\u2013249",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.375,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "220\u2013249",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.078,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "250\u2013279",
+"jour": 5,
+"deja": 6,
+"p": 0.1304,
+"prix": 0.045,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "250\u2013279",
+"jour": 10,
+"deja": 29,
+"p": 0.1304,
+"prix": 0.055,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "250\u2013279",
+"jour": 15,
+"deja": 153,
+"p": 0.1884,
+"prix": 0.045,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "250\u2013279",
+"jour": 20,
+"deja": 252,
+"p": 0.0145,
+"prix": 0.37,
+"gagne": 0.0,
+"achat_oui": [
+0.2,
+10.0
+],
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "250\u2013279",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.044,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "280\u2013310",
+"jour": 5,
+"deja": 6,
+"p": 0.0725,
+"prix": 0.095,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "280\u2013310",
+"jour": 10,
+"deja": 29,
+"p": 0.0145,
+"prix": 0.095,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "280\u2013310",
+"jour": 15,
+"deja": 153,
+"p": 0.0145,
+"prix": 0.095,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "280\u2013310",
+"jour": 20,
+"deja": 252,
+"p": 0.4203,
+"prix": 0.355,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "280\u2013310",
+"jour": 25,
+"deja": 359,
+"p": 0.0145,
+"prix": 0.089,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "310+",
+"jour": 5,
+"deja": 6,
+"p": 0.0725,
+"prix": 0.0425,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "310+",
+"jour": 10,
+"deja": 29,
+"p": 0.0435,
+"prix": 0.0395,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "310+",
+"jour": 15,
+"deja": 153,
+"p": 0.1884,
+"prix": 0.0755,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "310+",
+"jour": 20,
+"deja": 252,
+"p": 0.4783,
+"prix": 0.0185,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "528237",
+"mois": "2026-06",
+"tranche": "310+",
+"jour": 25,
+"deja": 359,
+"p": 0.8841,
+"prix": 0.846,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "<100",
+"jour": 5,
+"deja": 10,
+"p": 0.3623,
+"prix": 0.365,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "<100",
+"jour": 10,
+"deja": 24,
+"p": 0.5072,
+"prix": 0.39,
+"gagne": 0.0,
+"achat_oui": [
+0.45,
+10.0
+],
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "<100",
+"jour": 15,
+"deja": 35,
+"p": 0.5652,
+"prix": 0.5,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "<100",
+"jour": 20,
+"deja": 55,
+"p": 0.6232,
+"prix": 0.55,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.3901791639,
+15.07
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "<100",
+"jour": 25,
+"deja": 109,
+"p": 0.0145,
+"prix": 0.42,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "100\u2013129",
+"jour": 5,
+"deja": 10,
+"p": 0.3333,
+"prix": 0.3,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "100\u2013129",
+"jour": 10,
+"deja": 24,
+"p": 0.1884,
+"prix": 0.305,
+"gagne": 1.0,
+"achat_oui": [
+0.51,
+10.0
+],
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "100\u2013129",
+"jour": 15,
+"deja": 35,
+"p": 0.2464,
+"prix": 0.34,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "100\u2013129",
+"jour": 20,
+"deja": 55,
+"p": 0.2174,
+"prix": 0.365,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": [
+0.77,
+25.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "100\u2013129",
+"jour": 25,
+"deja": 109,
+"p": 0.4493,
+"prix": 0.46,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "130\u2013159",
+"jour": 5,
+"deja": 10,
+"p": 0.1594,
+"prix": 0.305,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "130\u2013159",
+"jour": 10,
+"deja": 24,
+"p": 0.1594,
+"prix": 0.285,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "130\u2013159",
+"jour": 15,
+"deja": 35,
+"p": 0.0725,
+"prix": 0.038,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "130\u2013159",
+"jour": 20,
+"deja": 55,
+"p": 0.0725,
+"prix": 0.0355,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9885999185,
+24.994909
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "130\u2013159",
+"jour": 25,
+"deja": 109,
+"p": 0.3623,
+"prix": 0.3685,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "160\u2013189",
+"jour": 5,
+"deja": 10,
+"p": 0.0145,
+"prix": 0.255,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "160\u2013189",
+"jour": 10,
+"deja": 24,
+"p": 0.0435,
+"prix": 0.28,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "160\u2013189",
+"jour": 15,
+"deja": 35,
+"p": 0.0435,
+"prix": 0.255,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "160\u2013189",
+"jour": 20,
+"deja": 55,
+"p": 0.0145,
+"prix": 0.195,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.97,
+25.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "160\u2013189",
+"jour": 25,
+"deja": 109,
+"p": 0.1014,
+"prix": 0.46,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "190\u2013219",
+"jour": 5,
+"deja": 10,
+"p": 0.0725,
+"prix": 0.24,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "190\u2013219",
+"jour": 10,
+"deja": 24,
+"p": 0.0435,
+"prix": 0.245,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "190\u2013219",
+"jour": 15,
+"deja": 35,
+"p": 0.0145,
+"prix": 0.04,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "190\u2013219",
+"jour": 20,
+"deja": 55,
+"p": 0.0145,
+"prix": 0.04,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.98,
+25.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "190\u2013219",
+"jour": 25,
+"deja": 109,
+"p": 0.0145,
+"prix": 0.0105,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "220\u2013249",
+"jour": 5,
+"deja": 10,
+"p": 0.0145,
+"prix": 0.11,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "220\u2013249",
+"jour": 10,
+"deja": 24,
+"p": 0.0145,
+"prix": 0.26,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9474592593,
+27.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "220\u2013249",
+"jour": 15,
+"deja": 35,
+"p": 0.0145,
+"prix": 0.0495,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "220\u2013249",
+"jour": 20,
+"deja": 55,
+"p": 0.0145,
+"prix": 0.0195,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.99,
+25.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "220\u2013249",
+"jour": 25,
+"deja": 109,
+"p": 0.0145,
+"prix": 0.049,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "250\u2013279",
+"jour": 5,
+"deja": 10,
+"p": 0.0145,
+"prix": 0.046,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "250\u2013279",
+"jour": 10,
+"deja": 24,
+"p": 0.0145,
+"prix": 0.0305,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "250\u2013279",
+"jour": 15,
+"deja": 35,
+"p": 0.0145,
+"prix": 0.04,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.9885678542,
+70.809454
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "250\u2013279",
+"jour": 20,
+"deja": 55,
+"p": 0.0145,
+"prix": 0.0635,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.982,
+25.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "250\u2013279",
+"jour": 25,
+"deja": 109,
+"p": 0.0145,
+"prix": 0.02,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "280\u2013310",
+"jour": 5,
+"deja": 10,
+"p": 0.0145,
+"prix": 0.029,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "280\u2013310",
+"jour": 10,
+"deja": 24,
+"p": 0.0145,
+"prix": 0.048,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "280\u2013310",
+"jour": 15,
+"deja": 35,
+"p": 0.0145,
+"prix": 0.029,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.99,
+20.202
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "280\u2013310",
+"jour": 20,
+"deja": 55,
+"p": 0.0145,
+"prix": 0.0295,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.99,
+25.0
+]
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "280\u2013310",
+"jour": 25,
+"deja": 109,
+"p": 0.0145,
+"prix": 0.029,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "310+",
+"jour": 5,
+"deja": 10,
+"p": 0.0145,
+"prix": 0.034,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "310+",
+"jour": 10,
+"deja": 24,
+"p": 0.0145,
+"prix": 0.03,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "310+",
+"jour": 15,
+"deja": 35,
+"p": 0.0145,
+"prix": 0.0245,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "310+",
+"jour": 20,
+"deja": 55,
+"p": 0.0145,
+"prix": 0.012,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "577021",
+"mois": "2026-07",
+"tranche": "310+",
+"jour": 25,
+"deja": 109,
+"p": 0.0145,
+"prix": 0.0545,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "<40",
+"jour": 5,
+"deja": 10,
+"p": 0.0435,
+"prix": 0.33,
+"gagne": 0.0,
+"achat_oui": [
+0.49,
+5.0
+],
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "<40",
+"jour": 10,
+"deja": 15,
+"p": 0.1014,
+"prix": 0.23,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "<40",
+"jour": 15,
+"deja": 61,
+"p": 0.0145,
+"prix": 0.0315,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "<40",
+"jour": 20,
+"deja": 68,
+"p": 0.0145,
+"prix": 0.018,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "<40",
+"jour": 25,
+"deja": 95,
+"p": 0.0145,
+"prix": 0.015,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "40\u201359",
+"jour": 5,
+"deja": 10,
+"p": 0.2464,
+"prix": 0.13,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "40\u201359",
+"jour": 10,
+"deja": 15,
+"p": 0.2754,
+"prix": 0.165,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "40\u201359",
+"jour": 15,
+"deja": 61,
+"p": 0.0145,
+"prix": 0.145,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "40\u201359",
+"jour": 20,
+"deja": 68,
+"p": 0.0145,
+"prix": 0.045,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": [
+0.98,
+50.0
+]
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "40\u201359",
+"jour": 25,
+"deja": 95,
+"p": 0.0145,
+"prix": 0.033,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "60-79",
+"jour": 5,
+"deja": 10,
+"p": 0.1884,
+"prix": 0.36,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "60-79",
+"jour": 10,
+"deja": 15,
+"p": 0.1884,
+"prix": 0.205,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "60-79",
+"jour": 15,
+"deja": 61,
+"p": 0.1304,
+"prix": 0.225,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "60-79",
+"jour": 20,
+"deja": 68,
+"p": 0.1014,
+"prix": 0.295,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "60-79",
+"jour": 25,
+"deja": 95,
+"p": 0.0145,
+"prix": 0.0235,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "80-99",
+"jour": 5,
+"deja": 10,
+"p": 0.2464,
+"prix": 0.345,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "80-99",
+"jour": 10,
+"deja": 15,
+"p": 0.1884,
+"prix": 0.255,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "80-99",
+"jour": 15,
+"deja": 61,
+"p": 0.3043,
+"prix": 0.22,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "80-99",
+"jour": 20,
+"deja": 68,
+"p": 0.3623,
+"prix": 0.56,
+"gagne": 1.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "80-99",
+"jour": 25,
+"deja": 95,
+"p": 0.0725,
+"prix": 0.48,
+"gagne": 1.0,
+"achat_oui": [
+0.5101854248,
+46.38
+],
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "100\u2013119",
+"jour": 5,
+"deja": 10,
+"p": 0.0435,
+"prix": 0.36,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "100\u2013119",
+"jour": 10,
+"deja": 15,
+"p": 0.0725,
+"prix": 0.25,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "100\u2013119",
+"jour": 15,
+"deja": 61,
+"p": 0.2174,
+"prix": 0.175,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "100\u2013119",
+"jour": 20,
+"deja": 68,
+"p": 0.2754,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "100\u2013119",
+"jour": 25,
+"deja": 95,
+"p": 0.4783,
+"prix": 0.25,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "120\u2013139",
+"jour": 5,
+"deja": 10,
+"p": 0.0725,
+"prix": 0.325,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "120\u2013139",
+"jour": 10,
+"deja": 15,
+"p": 0.0435,
+"prix": 0.12,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "120\u2013139",
+"jour": 15,
+"deja": 61,
+"p": 0.1304,
+"prix": 0.22,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "120\u2013139",
+"jour": 20,
+"deja": 68,
+"p": 0.1594,
+"prix": 0.057,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "120\u2013139",
+"jour": 25,
+"deja": 95,
+"p": 0.2464,
+"prix": 0.1985,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "140-169",
+"jour": 5,
+"deja": 10,
+"p": 0.0725,
+"prix": 0.115,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "140-169",
+"jour": 10,
+"deja": 15,
+"p": 0.1014,
+"prix": 0.05,
+"gagne": 0.0,
+"achat_oui": [
+0.082203327,
+43.428887
+],
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "140-169",
+"jour": 15,
+"deja": 61,
+"p": 0.1594,
+"prix": 0.09,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "140-169",
+"jour": 20,
+"deja": 68,
+"p": 0.0435,
+"prix": 0.0425,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "140-169",
+"jour": 25,
+"deja": 95,
+"p": 0.1304,
+"prix": 0.038,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "170\u2013199",
+"jour": 5,
+"deja": 10,
+"p": 0.0725,
+"prix": 0.353,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "170\u2013199",
+"jour": 10,
+"deja": 15,
+"p": 0.0145,
+"prix": 0.2135,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "170\u2013199",
+"jour": 15,
+"deja": 61,
+"p": 0.0145,
+"prix": 0.047,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "170\u2013199",
+"jour": 20,
+"deja": 68,
+"p": 0.0145,
+"prix": 0.0165,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "170\u2013199",
+"jour": 25,
+"deja": 95,
+"p": 0.0145,
+"prix": 0.01,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "200+",
+"jour": 5,
+"deja": 10,
+"p": 0.0145,
+"prix": 0.04,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "200+",
+"jour": 10,
+"deja": 15,
+"p": 0.0145,
+"prix": 0.1785,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "200+",
+"jour": 15,
+"deja": 61,
+"p": 0.0145,
+"prix": 0.04,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "200+",
+"jour": 20,
+"deja": 68,
+"p": 0.0145,
+"prix": 0.0385,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+},
+{
+"evt": "762873",
+"mois": "2026-08",
+"tranche": "200+",
+"jour": 25,
+"deja": 95,
+"p": 0.0145,
+"prix": 0.1205,
+"gagne": 0.0,
+"achat_oui": null,
+"achat_non": null
+}
+]

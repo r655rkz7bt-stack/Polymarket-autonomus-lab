@@ -310,6 +310,13 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
         return call
     snapshot("usgs", with_first_seen("ref:usgs", lambda cfg: factories.get("usgs", lambda c: fetch_usgs(http, now, int(c.get("days", 10))))(cfg)),
              "ref:usgs")
+    # Tornades du mois (11/11/2026) : rapports filtrés du SPC jour par jour et décompte NCEI publié (règlement), pour `tornades_mois` ;
+    # `keep_first` garde le premier compte lu de chaque jour (journal sans regard vers le futur, experiments/tornades.md).
+    from polymarket_agent.sources.tornades import fetch_tornades, keep_first
+    def tornades(cfg):
+        old = refs._load(db, "ref:tornades")[1] if db is not None else []
+        return keep_first(old, factories.get("tornades", lambda c: fetch_tornades(http, now))(cfg), now)
+    snapshot("tornades", tornades, "ref:tornades")
     snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
              "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).

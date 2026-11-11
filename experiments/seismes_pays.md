@@ -45,6 +45,10 @@ Indonésie 166 à 0,67 (base 0,47 : NON trop cher) ; Philippines 50 à 0,93 (bas
 n'est pas encore décrit par l'USGS). Pas de conviction : après rapprochement vers le milieu du marché (skill `prevoir-un-marche`),
 aucun écart ne dépasse 5 points au prix vendeur.
 
+**Limite connue (cycle local du 11/11).** La première proposition (NON « États-Unis ») a été refusée « carnet périmé » : l'horodatage
+d'un carnet calme est celui de sa dernière modification (`proposals/2026-11-11_carnet_calme_juge_perime.md`). Tant qu'Etienne n'a pas
+tranché, le fantôme n'achète que juste après un mouvement du carnet.
+
 **À reprendre.** Novembre (réglé vers le 01/12) et décembre ; « How strong of an earthquake will occur worldwide by <date> »
 (regardé ce jour pour novembre : 6,5+ 0,84-0,90 pour 0,88 calculé, 7,0+ 0,50-0,55 pour 0,52, 7,5+ 0,20-0,25 pour 0,24, 8,0+ 0,04-0,10 pour 0,055 : bien coté, rien) ; « How many 7.0 or above earthquakes in
 2026 » : regardé ce jour, rien (46 ans de catalogue : P(0/1-3/4-6/7+ de plus d'ici le 31/12) = 0,09/0,70/0,20/0,02, années déjà
