@@ -303,6 +303,7 @@ sources:
   sieges: {enabled: true, every_minutes: 15}                    # 31/10/2026 : prix démocrates des districts (Gamma, sans clé) pour `sieges_coherence`, jusqu'au 04/11
   usgs: {enabled: true, every_minutes: 10, days: 35}            # 24/10/2026 : catalogue USGS (arbitre des marchés séismes), séismes >= 5 des 35 derniers jours (11/11 : mois entier pour seismes_pays) ; gratuit, sans clé
   emsc: {enabled: true, every_minutes: 10, days: 3}             # 11/11/2026 : catalogue EMSC (témoin plus rapide que l'USGS), abstention de seismes_marche si un séisme manque à l'USGS ; gratuit, sans clé
+  fleuves: {enabled: true, every_minutes: 60}                # 11/11/2026 : prévisions officielles du Rhin à Kaub (PegelOnline WSV/BfG) et du Danube à Budapest (OVF) pour fleuves_prevision ; gratuit, sans clé
   usdm: {enabled: true, every_minutes: 60, days: 21}         # 11/11/2026 : US Drought Monitor (48 États), arbitre des marchés « D4 by state » (secheresse_d4) ; gratuit, sans clé
   tornades: {enabled: true, every_minutes: 180}               # 11/11/2026 : rapports filtrés du SPC (jour par jour) et décompte NCEI, pour tornades_mois ; ≈ 40 petits fichiers, gratuit, sans clé
   goldapi: {enabled: true, every_minutes: 5, keep_days: 30}      # 24/10/2026 : prix au comptant de l'or et de l'argent (gold-api.com, sans clé), journal `prix_matieres` pour `toucher_metaux`

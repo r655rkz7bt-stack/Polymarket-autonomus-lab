@@ -469,6 +469,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["tornades"] = attach_tornades(markets, db, now)
     from polymarket_agent.secheresse import attach_secheresse   # 11/11/2026 : sécheresse D4 par État (secheresse_d4)
     counts["secheresse"] = attach_secheresse(markets, db, now)
+    from polymarket_agent.fleuves import attach_fleuves   # 11/11/2026 : niveaux du Rhin et du Danube (fleuves_prevision)
+    counts["fleuves"] = attach_fleuves(markets, db, now)
     from polymarket_agent.sieges import attach_sieges
     counts["sieges"] = attach_sieges(markets, db, now)
     from polymarket_agent.spacex import attach_spacex

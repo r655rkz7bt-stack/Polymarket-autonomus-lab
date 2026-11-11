@@ -1493,6 +1493,18 @@ class SecheresseD4(SeismesMarche):
     ref_key = "secheresse"
 
 
+class FleuvesPrevision(SeismesMarche):
+    """« When will the Rhine / Danube River return to normal levels? » (tranches de dates, premier passage du limnimètre au-dessus de
+    77 cm à Kaub ou 93 cm à Budapest) contre la PRÉVISION OFFICIELLE du niveau (WSV/BfG par PegelOnline pour Kaub, OVF hongrois pour
+    Budapest ; fleuves.py). Chance de chaque tranche = simulation de la prévision avec un retard et une erreur communs ; seules les
+    tranches qui finissent avant la fin de la prévision (4 à 6 jours) sont chiffrées. Expérience audacieuse du 11/11/2026
+    (experiments/niveaux_eau.md, piste n° 25) : aucun test sur le passé possible (prévisions non archivées, 3 événements réglés) ;
+    le 11/11 le Rhin « avant le 15/11 » était à 0,66 pour 0,39 calculé, le Danube à 0,26 pour 0,76."""
+
+    strategy_id = "fleuves_prevision"
+    ref_key = "fleuves"
+
+
 class SiegesCoherence(_Base):
     """Échelles « How many House seats will the Democrats win in <État> ? » contre les marchés de district du même État (sieges.py, expérience audacieuse du
     31/10/2026, experiments/coherence_sieges.md). La somme des prix démocrates des districts (marchés 10 à 50 fois plus échangés) donne le nombre moyen de
@@ -1873,4 +1885,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

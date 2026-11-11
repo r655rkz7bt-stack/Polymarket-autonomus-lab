@@ -205,6 +205,32 @@ secheresse_d4:
     max_per_event:  {value: 10, min: 1, max: 40}          # États d'une même semaine : liés par la météo, d'où un plafond
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse : avantage mesuré, expérience franche
 
+fleuves_prevision:
+  explication: "Polymarket demande quand le Rhin (à Kaub) et le Danube (à Budapest) retrouveront un niveau normal, par tranches de dates. Les services officiels allemand et hongrois publient chaque jour une prévision du niveau pour les jours suivants ; on calcule la chance de chaque tranche à partir de cette prévision et on achète quand le marché est loin."
+  class: fleuves_prevision
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-11"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION (experiments/niveaux_eau.md, 11/11/2026, piste n° 25) : la prévision officielle du
+    niveau (WSV/BfG par PegelOnline pour Kaub, OVF hongrois pour Budapest) n'est pas lue par le marché. Le 11/11 : Rhin « avant le
+    15/11 » à 0,66 pour une prévision culminant à 69 cm (seuil 77, chance calculée 0,39) ; Danube « avant le 15/11 » à 0,26 pour une
+    prévision de 124 ± 17 cm le 15/11 à 7 h (seuil 93, chance 0,76). Aucun test sur le passé possible (prévisions non archivées, 3
+    événements réglés) : le journal `ref:fleuves` garde chaque prévision pour le test à venir. Une perte apprendrait que les
+    prévisions à 3-4 jours se trompent plus que leur marge (retard de la vague, pluie annoncée qui ne tombe pas), ou que le marché
+    lit des prévisions plus récentes que les nôtres.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.10, min: 0.0, max: 0.30}    # modèle d'erreur non étalonné : borne basse = chance − 0,10
+    min_price:      {value: 0.10, min: 0.01, max: 0.50}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 24}        # source relue toutes les heures
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    max_per_event:  {value: 1, min: 1, max: 10}           # tranches d'un même fleuve : un seul tirage
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse : erreur de prévision non mesurée
+
 tornades_mois:
   explication: "Polymarket demande combien de tornades il y aura aux États-Unis ce mois-ci. Le service météo américain publie chaque jour la liste des tornades, et c'est elle qui décide : on compte celles déjà passées, on ajoute ce qui arrive d'habitude le reste du mois, et on parie sur la tranche que le marché cote mal."
   class: tornades_mois

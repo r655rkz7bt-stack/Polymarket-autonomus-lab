@@ -321,6 +321,10 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # (`secheresse_d4`, experiments/secheresse.md). Une carte n'apparaît qu'une fois publiée (jeudi 8 h 30, heure de l'Est).
     from polymarket_agent.sources.usdm import fetch_usdm
     snapshot("usdm", lambda cfg: factories.get("usdm", lambda c: fetch_usdm(http, now, int(c.get("days", 21))))(cfg), "ref:usdm")
+    # Niveaux du Rhin et du Danube (11/11/2026) : dernière lecture et prévision officielle de Kaub (PegelOnline, WSV/BfG) et de Budapest
+    # (OVF, hydroinfo.hu), pour `fleuves_prevision` (fleuves.py, experiments/niveaux_eau.md). Le journal garde chaque prévision émise.
+    from polymarket_agent.fleuves import fetch_fleuves
+    snapshot("fleuves", lambda cfg: factories.get("fleuves", lambda c: fetch_fleuves(http, now))(cfg), "ref:fleuves")
     snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
              "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).
