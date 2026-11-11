@@ -52,8 +52,16 @@ personne n'achète). Le volume de l'événement est passé de 25 k$ (01/09) à 4
 fantôme `secheresse_d4` (Kelly entier sur la borne basse, `strategies_v3.SecheresseD4`, source `usdm`, étiquette 105721) qui n'achète
 que si un vendeur revient à un prix faux. Pas d'entrée au principal (`validated_strategies`) tant qu'il n'a pas de paris réels.
 
-**À reprendre.** Les autres marchés de la même source : « How many states will be in D4 » (6 tranches, somme des États ; loi par
-État → loi du nombre), « Percent of Corn / Cattle / Hay … in drought » (statistiques agricoles du même USDM : 8 marchés à 6 tranches
+**Suite du même passage : « How many states will be in D4 — week of … »** (`secheresse/nombre_etats.py`, 8 semaines, 48 tranches).
+Loi du nombre = somme de Bernoulli indépendantes (loi par État, carte de la semaine d'avant) : moyenne 9,8-11,6 pour 10-12 réalisés ;
+règlement 48/48. Un achat par tranche (prix >= 0,10) : seuil 0,02 → 9 paris, 8 gagnés pour 8,0 (loi) et 6,4 (prix), +33 % ; 0,05 → 7
+paris, +42 % ; 0,10 → 4 paris, +96 %. **Trop peu de paris (4-9, 30 échanges par semaine au plus) : non concluant, pas de stratégie.**
+
+**Cycle local (11/11, 2 cycles).** Source `usdm` « ok (144 prix relevés) » ; référence `secheresse` rattachée à 31 marchés ;
+`secheresse_d4` : 0 proposition, abstentions « issue hors de la plage de prix ou carnet vide » 28 (cotes de façade 0,99) et « avantage net
+insuffisant » 3 (OUI vendus 0,25-0,28 pour des États sans D3 : le bon côté serait le NON, que personne ne vend) : conforme.
+
+**À reprendre.** Les autres marchés de la même source : « Percent of Corn / Cattle / Hay … in drought » (statistiques agricoles du même USDM : 8 marchés à 6 tranches
 par semaine en octobre, quelques centaines de $ chacun), « Peak Severe Drought in Minas Gerais » (Brésil, autre source).
 Scripts : `secheresse/releve.py` (relevé), `analyse.py` (loi, règlement, échanges), `verdict.py` (16 réglages) ; résultats :
 `secheresse/resultats_11_11.txt`.
