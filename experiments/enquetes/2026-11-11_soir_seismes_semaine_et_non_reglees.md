@@ -20,6 +20,12 @@ Achats par fantôme v2 depuis le 07/11 (journaux signés publiés) : `lid_agenda
 abstentions expliquées les 10-11/11) ; `non_aux_drames` 43 achats, 0 réglé : horizons de 1 219 à 1 975 h (51 à 82 jours) voulus,
 406 € engagés sur 1 000 ; `favori_politique_quasi_certain` : 5 positions ouvertes (Nouvelle-Zélande, résultats officiels le 27/11).
 
+## Famille 2 (à la main) : les fantômes v2 contre leurs prix
+24 paris réglés depuis le 07/11 (`charge_fantome.charger`, paiement réel) : 13 gagnés pour 16,8 attendus par les prix payés (z −2,06),
+−195 €. `seismes_marche` 0 sur 2,4 (3 paris, 2 événements : z −3,7 par pari, à lire comme 2 tirages liés) ; `compteur_tweets` 8 sur 8,6
+(14 paris, 5 événements) ; `compteur_truth` 3 sur 3,3 ; `favori_politique_quasi_certain` 2 sur 2,0 ; conviction Carbon 0 sur 0,5. Aucune
+stratégie ne gagne « par chance » : rien à démonter ; les pertes viennent du catalogue en retard (corrigé) et de la loi des séismes.
+
 ## Défaut trouvé dans le travail du même passage : `ref:fleuves` sans journal
 La nouvelle source `fleuves` (prévisions officielles du Rhin et du Danube, PR #226) écrivait son relevé dans `ref:fleuves`, qui est
 REMPLACÉ à chaque relevé (`references._save`) : le compte rendu disait pourtant que « le journal garde chaque prévision ». Le test
