@@ -578,6 +578,20 @@ def test_replayed_cash_matches_the_cycle_or_is_grave():
     assert "en double" in enquete.tresorerie_rejouee({"nf": double})[0]["exemples"][0]
 
 
+def test_replayed_cash_restarts_at_a_reset():
+    """12/11/2026 : le RESET d'Etienne (13 h 54) remettait le principal à 1 000 € ; le rejeu ignorait RESET et trouvait 582,87 € (obligation fausse)."""
+    t = NOW - timedelta(hours=3)
+    hb = lambda cash: _e("HEARTBEAT", NOW, cash=str(cash), total_estimated="1000")
+    reset = _e("RESET", t + timedelta(hours=1), initial_capital="1000", reason="Départ du labo v2")
+    # avant la remise à zéro : 100 parts achetées 90 €, jamais réglées ; après : 1000 € tout ronds
+    rows = _ledger(_buy(t, "a", 0.9, 100), reset, hb(1000))
+    assert enquete.tresorerie_rejouee({"principal": rows}) == []
+    # un jeton réglé avant ET après la remise à zéro n'est pas un « règlement en double »
+    rows = _ledger(_buy(t, "a", 0.9, 100), _settle(t, "a", 1), reset, _buy(t + timedelta(hours=2), "a", 0.5, 10),
+                   _settle(t + timedelta(hours=2), "a", 1), hb(1005))
+    assert enquete.tresorerie_rejouee({"principal": rows}) == []
+
+
 def test_resting_orders_filled_during_the_match_are_flagged_against_immediate_buys():
     """25/10/2026 : 111 ordres posés servis en cours de match depuis le 22/10, 85 gagnés pour 97 attendus (z −3,5) ; les achats immédiats 232 pour 231,3."""
     def live(token, posted, win, price=0.9):

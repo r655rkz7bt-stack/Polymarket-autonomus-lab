@@ -278,8 +278,10 @@ def tresorerie_rejouee(entries: dict[str, list[dict]], tol: float = 0.01) -> lis
         cash, held, settled, doubles, last = Decimal(0), defaultdict(Decimal), set(), 0, None
         for e in rows:
             d, kind = e["data"], e["type"]
-            if kind == "GENESIS":
-                cash = Decimal(d["initial_capital"])
+            if kind in ("GENESIS", "RESET"):
+                # 12/11/2026 : RESET (workflow reset-capital) repart du capital donné, positions effacées et règlements oubliés,
+                # comme ledger.py ; sans cela, la remise à zéro d'Etienne passait pour un écart de 417 € (obligation fausse).
+                cash, held, settled = Decimal(d["initial_capital"]), defaultdict(Decimal), set()
             elif kind == "BUY":
                 cash -= Decimal(d["shares"]) * Decimal(d["price"]) + Decimal(d["fee"])
                 held[d["token_id"]] += Decimal(d["shares"])
