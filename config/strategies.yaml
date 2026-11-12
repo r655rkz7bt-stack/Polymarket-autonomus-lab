@@ -332,6 +332,33 @@ el_nino_cpc:
     max_candidates: {value: 10, min: 0, max: 200}
     max_proposals_per_cycle: {value: 2, min: 0, max: 20}
     max_per_event:  {value: 2, min: 1, max: 10}           # tranches d'un même hiver : un seul tirage
+    mise_max_pari:  {value: 0.05, min: 0.01, max: 0.25}    # au plus 5 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
+seismes_annee:
+  explication: "Polymarket demande combien de gros séismes (7 ou plus) il y aura dans le monde en 2026, quel sera le plus fort, et si la Californie en aura un. Le service géologique américain compte ceux déjà arrivés, et on sait depuis 76 ans à quel rythme ils arrivent : on calcule la chance de chaque réponse pour les jours qui restent et on achète quand le marché se trompe nettement."
+  class: seismes_annee
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION (fréquence de base lue à la source du règlement ; experiments/seismes_annee.md,
+    12/11/2026, piste n° 40). Même mécanique que `seismes_marche` (semaines, testée : experiments/seismes.md), appliquée aux marchés
+    annuels peu suivis : le 12/11, 13 séismes >= 7,0 au catalogue et 49 jours restants (Poisson 2,0) : « 17-19 » à 0,25 pour 0,14,
+    « 11-13 » à 0,046 pour 0,13 ; « Californie >= 7,0 en 2026 » à 0,093 pour 0,014 (0,105 par an, 1950-2025, large mer comprise).
+    Aucun test sur le passé (un seul marché annuel par an). Une perte apprendrait que ces marchés savent quelque chose de plus (essaim
+    en cours, magnitude révisée par l'USGS, règle lue autrement) ou qu'un billet de loterie bien payé finit par tomber.
+  params:
+    min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # borne basse − prix demandé − frais
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}    # fréquences sur 26 à 76 ans : borne basse = chance − 0,02
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 2, min: 0.1, max: 24}        # source relue toutes les 30 min
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # tranches d'une même année : un seul tirage
+    mise_max_pari:  {value: 0.05, min: 0.01, max: 0.25}    # au plus 5 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
 pib_canada_anticipe:

@@ -479,6 +479,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["michigan"] = attach_michigan(markets, db, now)
     from polymarket_agent.enso import attach_enso   # 12/11/2026 : chances du CPC contre les marchés « peak RONI » (el_nino_cpc)
     counts["enso"] = attach_enso(markets, db, now)
+    from polymarket_agent.seismes_annee import attach_seismes_annee   # 12/11/2026 : marchés annuels de séismes (seismes_annee)
+    counts["seismes_annee"] = attach_seismes_annee(markets, db, now)
     from polymarket_agent.pib_canada import attach_pib_canada   # 12/11/2026 : PIB canadien anticipé (pib_canada_anticipe)
     counts["pib_canada"] = attach_pib_canada(markets, db, now)
     from polymarket_agent.box_office import attach_box_office   # 12/11/2026 : film le plus rentable de l'année (box_office_annee)

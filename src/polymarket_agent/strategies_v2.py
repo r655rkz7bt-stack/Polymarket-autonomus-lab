@@ -73,6 +73,13 @@ class _Base:
         if shares is None:
             shares = size_buy(state, prob_low=_d(low), cost_per_share=cost_ps,
                               kelly_fraction=self.params.get("kelly_fraction", Decimal("1")), marks=marks)
+            # `mise_max_pari` (12/11/2026) : plafond d'un pari en part du capital du portefeuille. Kelly entier sur une issue presque
+            # sûre mal payée (NON « Californie >= 7,0 » : 0,966 contre 0,919) demandait 25 % du fantôme sur un seul pari ; la règle
+            # « audace » (docs/METHODE.md) dit 2 à 5 %. Absent : rien ne change pour les autres stratégies.
+            cap = self.params.get("mise_max_pari")
+            if cap is not None and cost_ps > 0:
+                plafond = (_d(cap) * state.total_estimated(marks) / cost_ps).quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+                shares = min(shares, plafond)
         if shares < max(market.min_order_size, book.min_order_size):
             out.abstain("taille autorisée trop faible")
             return None

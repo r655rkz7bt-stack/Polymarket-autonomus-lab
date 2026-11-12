@@ -1527,6 +1527,18 @@ class ElNinoCpc(SeismesMarche):
     ref_key = "enso"
 
 
+class SeismesAnnee(SeismesMarche):
+    """Marchés annuels réglés sur l'USGS (seismes_annee.py) : « How many 7.0 or above earthquakes in <année>? » (compte au catalogue
+    + Poisson du reste, 14,88 par an), « Highest earthquake magnitude in <année>? » (maximum vu + fréquences 1950-2025) et « Will
+    California experience a 7.0 or above … ? » (0,105 par an). Même mécanique que `seismes_marche` (testée sur les semaines :
+    experiments/seismes.md) ; expérience audacieuse du 12/11/2026 (experiments/seismes_annee.md, piste n° 40) : le 12/11, « 17-19 »
+    à 0,25 pour 0,14 calculé, « Californie » à 0,093 pour 0,014."""
+
+    strategy_id = "seismes_annee"
+    ref_key = "seismes_annee"
+    borne = 0.01   # la fréquence de base est longue (76 ans) ; pas de certitude pour autant
+
+
 class AuditeursSpotify(SeismesMarche):
     """« Will <artiste> have the (second-)greatest number of monthly Spotify listeners this month? » : places 1 et 2 du nombre
     d'auditeurs mensuels du profil Spotify le dernier jour du mois à 12 h (heure de l'Est). Chance de chaque place : simulation des
@@ -1970,4 +1982,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
