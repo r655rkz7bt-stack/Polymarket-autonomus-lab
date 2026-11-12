@@ -42,3 +42,11 @@ compté ; `seismes_marche` s'abstient dans ce cas) ; une magnitude « 7,0 » ré
 (124 s > 120 s) » (carnet calme : `proposals/2026-11-11_carnet_calme_juge_perime.md`, en attente chez Etienne). Elle visait
 271 parts ≈ 250 € (Kelly entier sur 0,966 contre 0,919, coupé par le plafond général de 25 %) : paramètre **`mise_max_pari`**
 ajouté à `_buy` (facultatif, sans effet ailleurs), 5 % pour `seismes_annee` et `el_nino_cpc` (règle « audace » : 2 à 5 % par pari).
+
+**Contrôle du règlement** : « How many 7.0 or above earthquakes by June 30? » (04/12/2025 12 h ET → 30/06/2026, événements 97361 et
+336042) réglé « 8+ » et « 10 » ; le catalogue USGS d'aujourd'hui compte **10** séismes de magnitude arrondie ≥ 7,0 dans la fenêtre
+(dont le 7,0 de Hubbard Glacier du 06/12/2025) : même règle de compte que `seismes_annee` (`round(mag, 1) >= 7,0`).
+
+**Prudence** : sur les semaines, le test de `seismes_marche` ne trouvait rien pour les séismes ≥ 6,5 (+7 %, t 0,6 ; seul le ≥ 5,5
+tenait). Le marché annuel le plus suivi (« 14-16 » 0,68 pour 0,72) est juste ; l'expérience porte surtout sur les tranches minces
+et sur la Californie.
