@@ -309,18 +309,18 @@ michigan_preliminaire:
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
 encheres_estimation:
-  explication: "Polymarket demande à quel prix se vendront quelques grands tableaux aux enchères (Klimt, Kandinsky, Picasso, Basquiat), par tranches. La maison de vente publie une estimation ; d'habitude le tableau se vend un peu au-dessus de l'estimation basse, frais compris. Sur les 41 plus gros lots de Christie's depuis 2020, la tranche « juste au-dessus de l'estimation basse » a gagné 6 à 7 fois sur 10 ; le marché la paie 25 à 35 centimes. On l'achète."
+  explication: "Polymarket demande à quel prix se vendront quelques grands tableaux aux enchères (Klimt, Kandinsky, Picasso, Basquiat), par tranches. La maison de vente publie une estimation ; d'habitude le tableau se vend un peu au-dessus de l'estimation basse, frais compris. Sur les 70 plus gros lots de Christie's depuis 2020, la tranche « juste au-dessus de l'estimation basse » a gagné un peu plus d'une fois sur deux ; le marché la paie 25 à 35 centimes. On l'achète."
   class: encheres_estimation
   enabled: true
   version: "2.0.0"
   created_at: "2026-11-12"
   hypothesis: >
     Expérience audacieuse, avantage de RÈGLE et de fréquence de base (experiments/encheres.md, 12/11/2026, piste n° 45) : le prix final
-    (frais compris) d'un gros lot des ventes du soir de Christie's à New York vaut 1,16 fois l'estimation basse en médiane (41 lots
-    d'estimation >= 10 M$, octobre 2020 - mai 2026, 80 % entre 1,04 et 1,53, 3 invendus non garantis) ; le 12/11 le marché payait la
-    tranche « estimation basse à +25 % » 0,25 (Klimt), 0,35 (Kandinsky), 0,33 (Picasso) pour 0,62-0,71 sur le passé, et mettait
-    0,17-0,29 sur des prix au-dessus de 1,5 fois l'estimation (5 lots sur 38). Aucun test aux vrais prix (pas de marché de tableaux
-    réglé sur Polymarket). Une perte apprendrait que la saison est chaude (novembre 2025 : 8 lots sur 12 hors de la tranche, Klimt de
+    (frais compris) d'un gros lot des ventes du soir de Christie's à New York vaut 1,17 fois l'estimation basse en médiane (70 lots
+    d'estimation >= 10 M$, 2020-2026, 4 invendus non garantis) ; 36 sur 66 entre 1 et 1,25 fois (0,62 sur les 41 premiers lots, 0,43
+    sur les 29 de 2022-2023 gardés pour le contrôle : la saison compte) ; le 12/11 le marché payait cette tranche 0,25 (Klimt), 0,35
+    (Kandinsky), 0,33 (Picasso) et mettait 0,27-0,39 au-dessus de 1,5 fois l'estimation (11 lots sur 66). Aucun test aux vrais prix
+    (pas de marché de tableaux réglé sur Polymarket). Une perte apprendrait que la saison est chaude (novembre 2025 : 8 lots sur 12 hors de la tranche, Klimt de
     Lauder à 1,57 fois chez Sotheby's) ou que la foule sait quelque chose des enchérisseurs (garanties, offres irrévocables).
   params:
     min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais

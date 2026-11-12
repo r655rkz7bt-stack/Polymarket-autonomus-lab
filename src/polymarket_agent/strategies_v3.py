@@ -1471,8 +1471,9 @@ class SeismesMarche(_Base):
 class EncheresEstimation(SeismesMarche):
     """« <artiste>'s “<œuvre>” Sale Price » (5 tranches, réglées sur le prix final de la maison, frais compris ; retiré ou invendu =
     tranche la plus basse) contre l'estimation basse publiée par la maison (encheres.py, lots dans config/encheres.yaml). Sur 41 gros
-    lots de Christie's (ventes du soir de New York, 2020-2026), le prix final vaut 1,16 fois l'estimation basse en médiane : la tranche
-    « estimation basse à +25 % » gagne 6 à 7 fois sur 10 ; le 12/11/2026 le marché la payait 0,25-0,35 (Klimt, Kandinsky, Picasso).
+    lots de Christie's (ventes du soir de New York, 2020-2026 : 70 lots), le prix final vaut 1,17 fois l'estimation basse en médiane : la
+    tranche « estimation basse à +25 % » gagne 36 fois sur 66 (0,43 sur les 29 lots du contrôle hors échantillon, saison chaude 2022) ;
+    le 12/11/2026 le marché la payait 0,25-0,35 (Klimt, Kandinsky, Picasso).
     Expérience audacieuse : aucun marché d'enchères de tableaux réglé sur Polymarket pour un test aux vrais prix (4 ventes, autres objets)."""
 
     strategy_id = "encheres_estimation"

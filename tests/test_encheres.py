@@ -48,16 +48,16 @@ def test_bracket_chances_sum_to_one_and_follow_the_past_ratios(garanti):
     bornes = [(0, 60), (60, 75), (75, 90), (90, 105), (105, float("inf"))]
     p = [en.p_tranche(60, lo, hi, garanti, lo == 0) for lo, hi in bornes]
     assert sum(p) == pytest.approx(1.0)
-    # 1,0-1,25 fois l'estimation basse : 24 rapports sur 38 (garanti : pas d'invendu)
-    assert p[1] == pytest.approx(24 / 38 * 0.98 if garanti else 24 / 41 * 0.98)
-    assert p[0] > (0.07 if garanti else 0.14)   # 3 rapports sous 1 + retrait (+ invendus)
+    # 1,0-1,25 fois l'estimation basse : 36 rapports sur 66 (garanti : pas d'invendu ; sinon 4 invendus en plus)
+    assert p[1] == pytest.approx(36 / 66 * 0.98 if garanti else 36 / 70 * 0.98)
+    assert p[0] > (0.07 if garanti else 0.12)   # 4 rapports sous 1 + retrait (+ invendus)
 
 
 def test_attach_stops_on_the_day_of_the_sale_and_the_strategy_buys_the_underpriced_bracket(tmp_path):
     table = _table(tmp_path)
     ms = _markets()
     assert en.attach_encheres(ms, None, NOW, table) == 5
-    assert ms[1].references["encheres"]["p"] == pytest.approx(0.619, abs=0.002)
+    assert ms[1].references["encheres"]["p"] == pytest.approx(0.535, abs=0.002)
     late = _markets()
     assert en.attach_encheres(late, None, datetime(2026, 11, 17, 0, 1, tzinfo=UTC), table) == 0   # jour de la vente : rien
     s = _s(EncheresEstimation, min_net_edge=0.05, uncertainty=0.10, min_price=0.05, max_price=0.90, max_stale_hours=2,
@@ -71,7 +71,7 @@ def test_attach_stops_on_the_day_of_the_sale_and_the_strategy_buys_the_underpric
         b.fetched_at = NOW
     out = s.propose(ms, books, _state(tmp_path), LIMITS, "b1")
     toks = [p.token_id for p in out.proposals]
-    # « $60m-$75m » à 0,25 pour 0,62 ; le NON de « $90m-$105m » (0,97 − 0,10 contre 0,82 + frais) et de « $75m-$90m » restent sous le seuil
+    # « $60m-$75m » à 0,25 pour 0,53 ; le NON de « $90m-$105m » (0,97 − 0,10 contre 0,82 + frais) et de « $75m-$90m » restent sous le seuil
     assert toks == ["6766299Y"]
 
 

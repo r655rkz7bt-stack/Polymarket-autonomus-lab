@@ -50,3 +50,15 @@ d'abord ses ventes passées (pages autorisées) avant de l'ajouter.
 Picasso « 40-50 » 117 parts à 0,334, Kandinsky « 60-75 » 290 parts à 0,35 (≈ 102 €, 10 % du fantôme : plafond `mise_max_pari`
 0,05 ajouté), Basquiat « 30-40 » 130 parts à 0,476. Sotheby's : les pages de ventes passées affichent `"sold":{"__typename":
 "ResultHidden"}` aux visiteurs non connectés : pas de prix réalisés lisibles, Sotheby's reste hors du test (pas de contournement).
+
+## Contrôle hors échantillon (même passage) : 29 lots de 2022-2023
+Ventes trouvées ensuite par les pages « résultats » de Christie's : 20th et 21st Century de mai et novembre 2022, collections Bass
+et Ammann (mai 2022), 21st de mai 2023, 20th de novembre 2023. 29 gros lots (aucun dans le premier échantillon) : 28 vendus,
+1 invendu (Signac) ; **12 sur 28 entre 1 et 1,25 fois l'estimation basse (0,43, contre 0,62 sur le premier échantillon)**, 1 sous 1,
+**8 au-dessus de 1,5** (Leutze 3,00, Renoir 2,44, Twombly 2,10, Degas 2,08, Monet 1,90 et 1,61, Picasso 1,72, Twombly 1,70) :
+mai 2022 était une saison très chaude (Marilyn de Warhol). La règle tient en tendance mais dépend de la saison.
+
+**Recalibré sur les 70 lots** (66 vendus, 4 invendus ; médiane 1,17 ; déciles 1,04 / 1,10 / 1,13 / 1,15 / 1,17 / 1,25 / 1,37 /
+1,45 / 2,05) : tranche « estimation basse à +25 % » 0,53 (garanti) contre 0,25 (Klimt), 0,35 (Kandinsky), 0,33 (Picasso) ; Basquiat
+0,58 contre 0,52 : plus d'achat (borne basse 0,48). Au-dessus de 1,5 fois : 0,16 contre 0,27-0,39 au marché. Le fantôme utilise
+les 70 rapports (`encheres.RATIOS`, `INVENDUS = 4`).

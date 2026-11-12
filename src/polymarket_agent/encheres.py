@@ -1,9 +1,9 @@
 """Ventes aux enchères : « <artiste>'s “<œuvre>” Sale Price » (tranches de prix, Polymarket) contre l'estimation de la maison (12/11/2026).
 
 Les marchés se règlent sur le prix final affiché par la maison (frais d'acheteur compris) ; un lot retiré ou invendu tombe dans la
-tranche la plus basse. Sur 41 gros lots (estimation basse >= 10 M$) des ventes du soir de Christie's à New York, octobre 2020 -
-mai 2026 (experiments/encheres.md), le prix final vaut 1,16 fois l'estimation basse en médiane, 80 % entre 1,04 et 1,53 ;
-3 invendus (aucun garanti). Chance d'une tranche = part des rapports passés qui y tombent ; lot garanti : pas d'invendu, mais un
+tranche la plus basse. Sur 70 gros lots (estimation basse >= 10 M$) des ventes du soir de Christie's à New York, octobre 2020 -
+mai 2026 (experiments/encheres.md), le prix final tombe entre 1 et 1,25 fois l'estimation basse 36 fois sur 66 vendus ;
+4 invendus (aucun garanti). Chance d'une tranche = part des rapports passés qui y tombent ; lot garanti : pas d'invendu, mais un
 risque de retrait `P_RETRAIT` compté dans la tranche la plus basse. Les lots suivis et leur estimation sont écrits par le chercheur
 dans `config/encheres.yaml` (estimation lue sur la page du lot de la maison) ; aucun achat le jour de la vente (après le marteau,
 le marché connaît le résultat).
@@ -22,11 +22,13 @@ log = logging.getLogger(__name__)
 
 TABLE = Path(__file__).resolve().parents[2] / "config" / "encheres.yaml"
 P_RETRAIT = 0.02
-# Prix final / estimation basse des 38 gros lots vendus (Christie's, ventes du soir de New York, 2020-2026 ; experiments/encheres/analyse.py)
-RATIOS = (0.801, 0.962, 0.992, 1.042, 1.054, 1.083, 1.083, 1.087, 1.105, 1.109, 1.113, 1.129, 1.136, 1.137, 1.137, 1.139, 1.147,
-          1.151, 1.153, 1.158, 1.163, 1.165, 1.171, 1.177, 1.191, 1.214, 1.214, 1.278, 1.307, 1.331, 1.361, 1.395, 1.432, 1.442,
-          1.478, 2.034, 2.151, 2.177)
-INVENDUS = 3   # sur 41 lots (aucun garanti)
+# Prix final / estimation basse des 66 gros lots vendus (Christie's, ventes du soir de New York, mai 2022 - mai 2026 et octobre 2020 ;
+# experiments/encheres/analyse.py ; 41 lots d'abord, 29 de 2022-2023 ajoutés comme contrôle hors échantillon le 12/11)
+RATIOS = (0.801, 0.953, 0.962, 0.992, 1.023, 1.038, 1.042, 1.054, 1.056, 1.083, 1.083, 1.087, 1.103, 1.105, 1.109, 1.112, 1.113,
+          1.113, 1.129, 1.133, 1.136, 1.137, 1.137, 1.139, 1.147, 1.151, 1.153, 1.158, 1.163, 1.165, 1.166, 1.171, 1.171, 1.177,
+          1.177, 1.191, 1.214, 1.214, 1.215, 1.241, 1.278, 1.307, 1.331, 1.343, 1.361, 1.363, 1.367, 1.395, 1.396, 1.413, 1.421,
+          1.432, 1.442, 1.464, 1.478, 1.614, 1.699, 1.718, 1.899, 2.034, 2.08, 2.1, 2.151, 2.177, 2.443, 3.003)
+INVENDUS = 4   # sur 70 lots (aucun garanti)
 
 _MONTANT = r"\$?\s*([0-9]+(?:\.[0-9]+)?)\s*([mk]?)"
 
