@@ -97,6 +97,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 29. ~~Classements hebdomadaires Spotify : la somme des jours~~ (11/11/2026, passage de 21 h, `experiments/spotify_auditeurs.md`) : l'hebdomadaire = somme exacte des 7 jours (6/6) ; au mardi soir, le meneur des 4 jours connus est déjà payé 0,96-0,99 (6 sur 9 semaines réglées testables, 1 piège d'Halloween où le marché avait raison) : **écartée en l'état** ; seuls les duels serrés laissent un écart (US du 13/11 : Texas ≈ 0,65-0,70 contre 0,25-0,35), carnets de quelques parts.
 
+30. **« Year in Search » de Google : la personne n° 1 de 2026** (12/11/2026, passage de 1 h, `experiments/annee_recherche.md`, idée neuve demandée par la feuille de mission : marché annuel très liquide, 1,2 M$ pour le n° 1 monde). Réglé sur la liste « Trending → People » (hausse sur l'année d'avant, pas volume). Relevé : listes 2010-2025, marchés 2025 réglés (favoris des « n° 1 » tous perdants, d4vd gagnant à 0,01 grâce à une fuite interne, inculpation de mai 2026), presse GDELT de 9 personnes (Clancy 2026 +8 700 articles contre +18 000 à +58 000 pour les n° 1 de 2021-2025 ; Maduro 2026 +38 900 mais coté 0,05-0,13). **En cours** : Google Trends, Wikimédia et GDELT répondent 429 depuis la routine (adresse partagée) ; reprendre `presse_lent.py` puis `analyse.py` (la hausse de presse classe-t-elle le vrai n° 1 en tête sur 2017-2025 ?). Pas de conviction (sous le seuil), pas de fantôme (un tirage, aucune règle mesurée).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
