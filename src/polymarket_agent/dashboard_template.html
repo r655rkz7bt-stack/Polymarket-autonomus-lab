@@ -1323,6 +1323,11 @@ footer { color: var(--muted); font: 0.76rem/1.6 var(--mono); text-align: center;
         (s.confiance_pct !== undefined ? " · confiance " + fmt(s.confiance_pct, 0) + " %"
           : s.confiance !== undefined ? " · confiance " + fmt(s.confiance, 1) : "") +
         (s.mode === "recompenses" ? " · jugée sur ses récompenses" : s.mode === "valeur" ? " · jugée sur la valeur de ses positions" : "")));
+      // « Bat-elle ses prix ? » (12/11/2026) : paris gagnés contre ceux que le prix payé annonçait ; ne dépend pas de la taille des mises.
+      var B = s.bat_ses_prix;
+      if (B && B.attendus > 0) info.appendChild(el("span", "sub", "bat ses prix ? " + B.gagnes + " gagnés pour " + fmt(B.attendus, 1) +
+        " attendus d'après les prix payés (z " + fmt(B.z, 1) + (B.z >= 2 ? " : nettement mieux que le marché" : B.z >= 1 ? " : un peu mieux, à confirmer" :
+        B.z <= -2 ? " : nettement moins bien que le marché" : " : comme le marché") + ")"));
       // Doublon (18/10/2026) : qualifiée, mais elle fait surtout les mêmes paris qu'une autre déjà au principal.
       if (s.doublon && s.doublon.comme) info.appendChild(el("span", "sub", "qualifiée, mais " +
         (s.doublon.chevauchement != null ? fmt(s.doublon.chevauchement * 100, 0) + " % de ses paris sont" : "elle fait") +

@@ -73,6 +73,7 @@ class Standing:
     day_confidence: float | None = None  # confiance par jour, 0 à 1 (voir day_confidence) ; None = inconnue
     excess_wins: float | None = None  # Σ (gagné − prix payé) sur les opérations clôturées ; None = inconnu
     assumed_edge: float | None = None  # avantage supposé moyen à l'achat (estimation − prix payé)
+    beat: dict | None = None  # « bat-elle ses prix ? » (12/11/2026) : {gagnes, attendus, z} (voir price_beat)
 
     def report(self) -> dict:
         """Version lisible (JSON) : sans la liste des événements."""
@@ -137,6 +138,26 @@ def edge_figures(trades: list[dict]) -> tuple[float, float | None]:
         if t.get("est_probability") not in (None, ""):
             assumed.append(float(t["est_probability"]) - p)
     return round(excess, 4), (round(sum(assumed) / len(assumed), 4) if assumed else None)
+
+
+def price_beat(trades: list[dict]) -> dict | None:
+    """« Bat-elle ses prix ? » (demande d'Etienne, 12/11/2026, experiments/principal_libre.md) : paris gagnés contre paris
+    attendus d'après le prix payé (frais compris), et z = (gagnés − attendus) / √Σ p(1−p). Indépendant de la taille des mises,
+    contrairement aux euros. Affiché dans l'arène ; ne décide pas (le rejeu du 12/11 l'a montré moins bon pour choisir)."""
+    gagnes = attendus = var = 0.0
+    n = 0
+    for t in trades:
+        cost, bought = float(t.get("cost") or 0), float(t.get("shares_bought") or 0)
+        if cost <= 0 or bought <= 0:
+            continue
+        p = min(cost / bought, 0.999)
+        gagnes += float(t["pnl"]) > 0
+        attendus += p
+        var += p * (1 - p)
+        n += 1
+    if not n:
+        return None
+    return {"gagnes": int(gagnes), "attendus": round(attendus, 1), "z": round((gagnes - attendus) / math.sqrt(var), 2) if var > 0 else 0.0}
 
 
 def measured_stake(s: Standing, rule: dict | None) -> float:
@@ -224,7 +245,7 @@ def standing(name: str, ledger: Ledger, eliminated: set[str], rewards: float = 0
     excess, assumed = edge_figures(trades)
     return Standing(name, len(trades), realized, initial, growth, state.epoch_started_at, name in eliminated,
                     round(max(0.0, rewards), 4), t_stat(trade_returns(trades)), int(reward_days), mode,
-                    bought_events(entries), day_confidence(trades), excess, assumed)
+                    bought_events(entries), day_confidence(trades), excess, assumed, price_beat(trades))
 
 
 def ranking(standings: list[Standing]) -> list[Standing]:

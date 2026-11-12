@@ -622,3 +622,13 @@ def test_trust_the_process_every_holder_stays_until_it_loses_ten_percent():
     # Seule et dans le creux : elle garde tout (avant : {} = plus rien de suivi).
     assert allocation([dipping], 12, 5, holders={"creux_v1"}, **kw) == {"creux_v1": 1.0}
     assert RULES["keep_log_growth"] == -0.10 and RULES.get("keep_t_stat") is None
+
+
+def test_beats_its_prices_counts_wins_against_the_paid_prices():
+    """12/11/2026 (experiments/principal_libre.md) : « bat-elle ses prix ? » affiché dans l'arène, indépendant de la taille des mises."""
+    from polymarket_agent.arena import price_beat
+    trades = [{"cost": 8.0, "shares_bought": 10, "pnl": 2.0}, {"cost": 80.0, "shares_bought": 100, "pnl": 20.0},
+              {"cost": 6.0, "shares_bought": 10, "pnl": -6.0}, {"cost": 0, "shares_bought": 0, "pnl": 0}]
+    b = price_beat(trades)
+    assert b["gagnes"] == 2 and b["attendus"] == 2.2 and b["z"] == round((2 - 2.2) / (0.16 + 0.16 + 0.24) ** 0.5, 2)
+    assert price_beat([]) is None

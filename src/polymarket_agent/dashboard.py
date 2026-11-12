@@ -414,6 +414,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
                       "operations": s.closed_trades, "capital": round(s.realized_capital, 2),
                       "recompenses_classement": s.rewards, "confiance": s.t_stat,
                       "confiance_pct": confidence_percent(s.t_stat), "mode": s.mode,
+                      "bat_ses_prix": s.beat,  # 12/11/2026 : gagnés contre attendus d'après le prix payé
                       # sans config/strategies.yaml (tests, copie partielle), personne n'est « retirée »
                       "retiree": bool(info) and not s.eliminated
                       and not info.get(s.name.rsplit("_v", 1)[0], {}).get("active", False),
