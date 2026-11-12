@@ -135,3 +135,15 @@ convictions:
     sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://www.danubehis.org/results/HU442027_HYDRO", "https://gamma-api.polymarket.com/markets/6581026", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-12"
     abandon: false
+  - id: dette-us-41000-avant-2027
+    marche: "665519"
+    question: "Will the U.S. national debt hit $41 trillion before 2027"
+    issue: "No"
+    probabilite: 0.70
+    probabilite_basse: 0.62
+    expire: "2026-11-30"
+    mise_max: 0.04
+    raison: "Réglé sur totalDebt de TreasuryDirect (debt/current), seuil 41 000 Md$ d'ici le 31/12. 40 560 le 09/11. Le Trésor (02/11) prévoit 618 Md$ d'emprunt de marché pour octobre-décembre ; la hausse de la dette du public a collé à son chiffre (T3 2026 +744 pour 742, T4 2025 +569 pour 569) ; déjà +339 au 09/11 → dette du public ≈ 33 043 le 31/12. Intragouvernementale 7 796, hausse du 09/11 au 31/12 de +13 à +162 Md$ (médiane ≈ 42, 2015-2025 hors 2021) → ≈ 40 880-40 900 : il manque ≈ 100-160 Md$. Plafond légal 41 100 atteint au plus tôt fin d'hiver 2027 (Bipartisan Policy Center). Cinq estimations du OUI 0,05/0,06/0,10/0,15/0,25, médiane 0,10. Marché presque sans échanges (688 $ en un an, derniers échanges de 5 parts) : son 0,66 est le milieu d'un carnet 0,46/0,86, le rapprochement se fait vers 0,5 (ignorance) et non vers ce milieu → OUI 0,30. Relire la dette chaque passage ; abandonner si elle dépasse 40 800 avant le 01/12."
+    sources: ["https://www.treasurydirect.gov/NP_WS/debt/search?startdate=2015-01-01&enddate=2026-11-12&format=json", "https://home.treasury.gov/news/press-releases/sb0675/", "https://gamma-api.polymarket.com/events/73226", "experiments/dette_us.md"]
+    ecrit_le: "2026-11-12"
+    abandon: false

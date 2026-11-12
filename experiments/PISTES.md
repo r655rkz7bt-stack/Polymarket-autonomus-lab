@@ -123,6 +123,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 43. **Taux du Trésor : barrière sur les clôtures quotidiennes** (12/11/2026, passage de 16 h, `experiments/taux_tresor.md`, avantage de règle : clôtures publiées, pas cours en séance) : septembre-octobre 2026, 133 marchés, règlement relu 126/128 ; marche aléatoire (σ 60 jours × 1,2) log-score −0,475 contre −0,525 au prix, achats simulés positifs les deux mois à K 1,2-1,4 ; deux trajectoires seulement : **indice faible** → fantôme `taux_tresor_barriere`. À refaire fin novembre et aux vrais échanges.
 
+44. **Dette fédérale américaine : estimation d'emprunt du Trésor contre « Peak US National Debt »** (12/11/2026, passage de 21 h, `experiments/dette_us.md`, dernière source de l'inventaire n° 32). Un seul marché vivant (41 000 Md$ d'ici le 31/12, carnet 0,46/0,86 sans échanges) ; la hausse trimestrielle de la dette du public colle à l'estimation du Trésor (T3 2026 +744 pour 742, T4 2025 +569 pour 569) : total attendu ≈ 40 880 le 31/12, OUI ≈ 0,05-0,15 ; fréquence de base sur 2015-2025 ≈ 0,25. Pas de test multi-événements possible : **conviction** NON (0,70, borne 0,62), pas de stratégie. Bloquée en cycle local par le carnet calme (`proposals/2026-11-11_carnet_calme_juge_perime.md`). À reprendre avec les marchés de 2027 (plafond 41 100 Md$, mesures extraordinaires).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
