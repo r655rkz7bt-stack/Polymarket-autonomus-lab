@@ -292,10 +292,10 @@ michigan_preliminaire:
     Expérience audacieuse, avantage d'INFORMATION et de RÈGLE (experiments/michigan_preliminaire.md, 12/11/2026, piste n° 35) : le
     marché se règle sur le FINAL, mais la source du règlement publie le PRÉLIMINAIRE deux semaines avant ; les tranches éloignées
     restent chères (novembre 2026 : préliminaire 51,0, « 55.0+ » encore à 0,10-0,13). Sur juin, juillet, septembre et octobre 2026
-    aux vrais échanges (≥ 10 parts, après le préliminaire, un pari par tranche) : 18 paris, 12 gagnés pour 8,9 attendus, +33 % par
-    mise, 4 mois sur 4 positifs ; 5 réglages (écart de révision 1,4-2,5, seuil 0,05-0,10, ≥ 10 ou 50 parts) entre +31 et +51 %.
-    Indice : 4 mois, paris d'un même mois liés. Une perte apprendrait que les révisions sont plus larges que 1,8 point (une
-    révision de −3,4 en mai 2026 est possible, non vérifiée) ou que les carnets minces ne servent pas nos quantités.
+    aux vrais échanges (≥ 10 parts, après le préliminaire, un pari par tranche) : 18 paris, 13 gagnés pour 9,6 attendus, +35 % par
+    mise, 4 mois sur 4 positifs ; 6 réglages (écart de révision 1,4-2,5, seuil 0,05-0,10, ≥ 10 ou 50 parts) entre +31 et +65 %.
+    Indice : 4 mois, paris d'un même mois liés. Une perte apprendrait que les révisions sont plus larges que 1,8 point (mai 2026 :
+    révision de −3,4, relue chez Kitco) ou que les carnets minces ne servent pas nos quantités.
   params:
     min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
     uncertainty:    {value: 0.02, min: 0.0, max: 0.30}    # borne basse = chance − 0,02 (la queue de la révision est déjà dans SD 1,8)

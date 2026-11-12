@@ -13,7 +13,7 @@ SEUIL = float(sys.argv[2]) if len(sys.argv) > 2 else 0.05
 MIN = float(sys.argv[3]) if len(sys.argv) > 3 else 10
 N = NormalDist(0, SD)
 # préliminaires lus dans la presse (releves/preliminaires.json, titres relus à la main) ; finales : tbmics.csv
-PRE = {"June": (48.9, "2026-06-12"), "July": (54.4, "2026-07-10"), "September": (47.8, "2026-09-11"), "October": (46.3, "2026-10-09")}
+PRE = {"June": (48.9, "2026-06-12"), "July": (54.4, "2026-07-17"), "September": (47.8, "2026-09-11"), "October": (46.3, "2026-10-09")}
 FIN = {"June": 49.5, "July": 55.2, "September": 48.1, "October": 48.0}
 
 

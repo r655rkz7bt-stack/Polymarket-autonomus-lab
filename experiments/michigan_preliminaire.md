@@ -13,9 +13,8 @@ vendredi 20/11 à 10 h, heure de l'Est). Frais : barème `economics_fees`.
 ## Données (`michigan/scripts/`, relevés dans `michigan/releves/`)
 
 - Finales : fichier officiel `www.sca.isr.umich.edu/files/tbmics.csv` (1952 → octobre 2026).
-- Préliminaires : titres de presse (Google Actualités, `preliminaires.py`) relus à la main ; 2026 : juin 48,9 → final 49,5 (+0,6),
-  juillet 54,4 → 55,2 (+0,8), septembre 47,8 → 48,1 (+0,3), octobre 46,3 → 48,0 (+1,7) ; mai (48,2 → 44,8 ?) et août non
-  retrouvés de façon sûre ; les mois d'avant 2026 ne sortent pas de la recherche datée. De mémoire (non relu), 2024-2025 : révisions
+- Préliminaires : titres de presse (Google Actualités, `preliminaires.py`) relus à la main ; 2026 : mai 48,2 → final 44,8 (−3,4), juin 48,9 → final 49,5 (+0,6),
+  juillet 54,4 → 55,2 (+0,8), septembre 47,8 → 48,1 (+0,3), octobre 46,3 → 48,0 (+1,7) ; août non retrouvé ; les mois d'avant 2026 ne sortent pas de la recherche datée. De mémoire (non relu), 2024-2025 : révisions
   de −3,1 (février 2025) à +2,9 (mars 2024), une sur quatre au-delà de 2 points en valeur absolue → SD ≈ 1,8.
 - Page d'accueil `www.sca.isr.umich.edu` (sans clé, pas de `robots.txt`) : « Preliminary Results for November 2026 … Index of
   Consumer Sentiment 51.0 » (même chiffre que la presse) ; elle devient « Final Results » au final.
@@ -36,16 +35,24 @@ juillet, septembre, octobre (préliminaire sûr).
 
 | réglage (SD, seuil, parts) | paris | gagnés | attendus (prix) | attendus (modèle) | rendement par mise |
 |---|---|---|---|---|---|
-| 1,8 ; 0,05 ; 10 | 24 | 16 | 11,79 | 15,55 | +34,3 % |
-| 1,4 ; 0,05 ; 10 | 24 | 17 | 12,75 | 16,55 | +32,0 % |
-| 2,5 ; 0,05 ; 10 | 29 | 17 | 12,86 | 16,90 | +30,7 % |
-| 1,8 ; 0,10 ; 10 | 19 | 12 | 7,83 | 11,47 | +51,4 % |
-| 1,8 ; 0,05 ; 50 | 19 | 14 | 10,36 | 13,48 | +33,6 % |
+| 1,8 ; 0,05 ; 10 | 23 | 16 | 11,68 | 15,47 | +35,6 % |
+| 1,4 ; 0,05 ; 10 | 24 | 17 | 12,67 | 16,55 | +32,9 % |
+| 2,5 ; 0,05 ; 10 | 28 | 16 | 12,03 | 16,05 | +31,5 % |
+| 1,8 ; 0,10 ; 10 | 17 | 10 | 6,00 | 9,55 | +64,7 % |
+| 1,8 ; 0,05 ; 50 | 16 | 12 | 9,03 | 10,95 | +31,4 % |
+| 2,5 ; 0,10 ; 10 | 17 | 9 | 5,58 | 9,16 | +59,0 % |
 
-Un seul pari par tranche (le premier, OUI ou NON) avec le réglage de départ : **18 paris, 12 gagnés pour 8,91 attendus (z des prix
-+2,13), +33,5 % par mise ; juin +27 %, juillet +33 %, septembre +36 %, octobre +58 % (t par mois 5,7 sur 4 mois)**. Les gains
-viennent surtout des NON de tranches que le préliminaire exclut, achetés 0,84-0,93 (6 sur 6), et de quelques OUI de la tranche du
-préliminaire achetés trop bas. Cinq réglages, tous positifs.
+Un seul pari par tranche (le premier, OUI ou NON) avec le réglage de départ : **18 paris, 13 gagnés pour 9,56 attendus (z des prix
++2,43), +34,9 % par mise ; juin +27 %, juillet +37 %, septembre +36 %, octobre +58 %**. Les gains viennent surtout des NON de
+tranches que le préliminaire exclut, achetés 0,84-0,93, et de quelques OUI de la tranche du préliminaire achetés trop bas. Six
+réglages, tous positifs.
+
+**Correction du même passage (07 h 10 UTC)** : la première version datait le préliminaire de juillet du 10/07 ; il est sorti le
+**17/07** (Kitco, et saut des prix des tranches ce jour-là) : le premier calcul (+34,3 %, 12 gagnés pour 8,9) achetait donc
+juillet une semaine avant la publication (regard vers le futur). Refait avec les dates de publication relues (08/05, 12/06,
+17/07, 11/09, 09/10, 06/11) : le résultat tient (tableau ci-dessus). **Mai 2026 : préliminaire 48,2 → final 44,8, révision −3,4**
+(Kitco, 08/05 et 22/05 ; pas d'événement Polymarket ce mois-là) : la queue des révisions est épaisse ; avec SD 2,5 le test reste
+à +31 %.
 
 **Verdict : indice** (4 mois seulement, paris d'un même mois liés par une seule révision, préliminaires d'avant 2026 introuvables).
 Assez pour un fantôme audacieux et une conviction quand l'écart est énorme ; pas pour le capital principal.

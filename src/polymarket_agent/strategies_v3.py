@@ -1528,7 +1528,7 @@ class MichiganPreliminaire(SeismesMarche):
     est publié deux semaines avant (page d'accueil des Surveys of Consumers, michigan.py). Chance d'une tranche = P(préliminaire +
     révision dans la tranche), révision ~ N(0 ; 1,8). Test sur le passé (experiments/michigan_preliminaire.md, 12/11/2026, juin,
     juillet, septembre, octobre 2026, vrais échanges d'au moins 10 parts après le préliminaire) : un pari par tranche, 18 paris,
-    12 gagnés pour 8,9 attendus (z des prix 2,1), +33 % par mise, 4 mois sur 4 positifs ; 5 réglages entre +31 et +51 % : INDICE
+    13 gagnés pour 9,6 attendus (z des prix 2,4), +35 % par mise, 4 mois sur 4 positifs ; 6 réglages entre +31 et +65 % : INDICE
     (4 mois seulement)."""
 
     strategy_id = "michigan_preliminaire"
