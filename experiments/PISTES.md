@@ -109,6 +109,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 35. **Sentiment du Michigan : le préliminaire contre les tranches du final** (12/11/2026, passage de 6 h, `experiments/michigan_preliminaire.md`, avantage de règle : réglé sur le FINAL, le préliminaire de la même source sort deux semaines avant). Juin, juillet, septembre, octobre 2026 aux vrais échanges (≥ 10 parts) : un pari par tranche, 18 paris, 12 gagnés pour 8,9 attendus (z +2,1), +33 % par mise, 4 mois sur 4 ; 5 réglages +31 à +51 % : **indice** → fantôme `michigan_preliminaire` et conviction `michigan-novembre-pas-55` (NON « 55+ » à 0,897, préliminaire 51,0). À étendre : autres chiffres « préliminaire puis final » (PIB, PMI flash, inflation flash).
 
+36. **PIB mensuel canadien : estimation anticipée contre tranches de l'officiel** (12/11/2026, passage de 6 h, `experiments/pib_canada.md`, même famille que n° 35). 33 paires 2022-2026 : révision de −0,3 à +0,2 point, la tranche de l'estimation juste ≈ 4 fois sur 10 alors que le marché la paie ≈ 0,5 ; juin-août 2026 aux vrais échanges : un pari par tranche, 18 paris, 12 gagnés pour 9,3 attendus, +27 % ; 4 réglages +20 à +28 % : **indice** → fantôme `pib_canada_anticipe`.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
@@ -181,6 +183,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 | vague d'opinion (presse) | écartée | −9,1 % | vague_opinion/ |
 | vague de volume (skills Polymarket, 23/10) : suivre / contrer | indice / écartée | +1,4 à +2,2 % / −9 à −23 % | vague_volume_backtest.md |
 | copier les portefeuilles gagnants | écartée | −9,7 % ensuite | smart_money.md |
+| PIB mensuel canadien : estimation anticipée contre tranches de l'officiel (12/11, 33 paires de révisions, 3 mois Polymarket aux vrais échanges) | indice → fantôme `pib_canada_anticipe` | 18 paris (un par tranche), 12 gagnés pour 9,3 attendus, +27 % ; 4 réglages +20 à +28 % | pib_canada.md |
 | sentiment du Michigan : préliminaire contre tranches du final (12/11, 4 mois réglés, vrais échanges ≥ 10 parts) | indice → fantôme `michigan_preliminaire`, conviction | 18 paris (un par tranche), 12 gagnés pour 8,9 attendus, z +2,1, +33 % ; 5 réglages +31 à +51 % ; 4 mois sur 4 | michigan_preliminaire.md |
 | prises de villes en Ukraine : DeepStateMap en avance sur la carte de l'ISW (12/11, 312 marchés réglés, 181 cartes DSM, 49 communes) | écartée | DSM touche la commune après le règlement ISW presque toujours ; 8 paris au signal DSM, 2 gagnés pour 3,15 attendus, −37 % | prises_ukraine.md |
 | Kalshi contre Polymarket en sport | écartée | prix identiques à 0,4 point | sport_kalshi.md |

@@ -354,6 +354,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # avant le final (michigan.py, `michigan_preliminaire`).
     from polymarket_agent.michigan import fetch_michigan
     snapshot("michigan", lambda cfg: factories.get("michigan", lambda c: fetch_michigan(http, now))(cfg), "ref:michigan")
+    # PIB mensuel canadien (12/11/2026, piste n° 36) : estimation anticipée de Statistique Canada (pib_canada.py, `pib_canada_anticipe`).
+    from polymarket_agent.pib_canada import fetch_pib_canada
+    snapshot("pib_canada", lambda cfg: factories.get("pib_canada", lambda c: fetch_pib_canada(http, now))(cfg), "ref:pib_canada")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")

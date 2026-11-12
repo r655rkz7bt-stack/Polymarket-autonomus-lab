@@ -1536,6 +1536,18 @@ class MichiganPreliminaire(SeismesMarche):
     borne = 0.01   # la source du règlement a déjà publié le préliminaire : la queue de la révision est dans la loi (SD 1,8)
 
 
+class PibCanadaAnticipe(SeismesMarche):
+    """« Will Canada's GDP growth rate MoM in <mois> be between <a>% and <b>%? » : réglé sur le communiqué officiel du mois ; le
+    communiqué du mois d'avant publie déjà l'estimation ANTICIPÉE (pib_canada.py). Chance d'une tranche = fréquences des révisions
+    (officiel − anticipé) de 33 paires 2022-2026, lissées : la tranche de l'estimation n'est juste que ≈ 4 fois sur 10, le marché la
+    paie ≈ 0,5. Test sur le passé (experiments/pib_canada.md, 12/11/2026, juin-août 2026, vrais échanges ≥ 10 parts) : un pari
+    par tranche, 18 paris, 12 gagnés pour 9,3 attendus, +27 % par mise ; 4 réglages +20 à +28 % : INDICE (3 mois)."""
+
+    strategy_id = "pib_canada_anticipe"
+    ref_key = "pib_canada"
+    borne = 0.02   # fréquences lissées : jamais en dessous de 0,02
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -1942,4 +1954,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

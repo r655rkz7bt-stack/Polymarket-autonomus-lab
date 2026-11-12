@@ -308,6 +308,31 @@ michigan_preliminaire:
     max_per_event:  {value: 3, min: 1, max: 10}           # tranches d'un même mois : une seule révision
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+pib_canada_anticipe:
+  explication: "Polymarket demande de combien le PIB du Canada a bougé en un mois, par tranches. Statistique Canada publie une première estimation un mois avant le chiffre officiel, mais le chiffre officiel s'en écarte souvent de 0,1 à 0,3 point. Le marché croit trop à la première estimation : on achète les tranches voisines quand elles sont trop bon marché."
+  class: pib_canada_anticipe
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION et de RÈGLE (experiments/pib_canada.md, 12/11/2026, piste n° 36, même famille
+    que michigan_preliminaire) : le marché se règle sur le chiffre officiel, l'estimation anticipée sort un mois avant ; sur 33 paires
+    2022-2026, la révision va de −0,3 à +0,2 point et la tranche de l'estimation n'est juste que 13 fois sur 33 (septembre 2026 :
+    estimation −0,1, tranche « −0,2 à −0,1 » à 0,485 pour 0,39 ; « 0,0 à 0,1 » à 0,245 pour 0,36). Juin-août 2026 aux vrais échanges
+    (≥ 10 parts, un pari par tranche) : 18 paris, 12 gagnés pour 9,3 attendus, +27 % ; 4 réglages +20 à +28 %. Indice : 3 mois,
+    tranches d'un mois liées. Une perte apprendrait que les révisions récentes sont plus étroites que celles de 2023-2025.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.05, min: 0.0, max: 0.30}    # 33 paires : ±0,05 sur une fréquence
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 8, min: 0.1, max: 24}        # source relue toutes les 3 h
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 3, min: 1, max: 10}           # tranches d'un même mois : une seule révision
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee
