@@ -70,7 +70,8 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 9 | Classement des modèles d'IA (LMArena, jeux de données publics) | `huggingface.co` (API publique des jeux de données) | marchés « meilleur modèle d'IA à la date X » | à faire |
 | 10 | Wikipédia : pages vues | `wikimedia.org` (API REST Wikimedia) | pics d'attention avant un mouvement de prix | à faire |
 | 11 | Federal Register : décrets et textes officiels américains | `www.federalregister.gov` (API publique) | marchés sur décrets, droits de douane, nominations | à faire |
-| 12 | Trésor américain (Fiscal Data) | `api.fiscaldata.treasury.gov` | dette, taux, adjudications | à faire |
+| 12 | Trésor américain (Fiscal Data) | `api.fiscaldata.treasury.gov` (répond 200 mais corps non JSON depuis la routine) ; `www.treasurydirect.gov/NP_WS/debt/search?…&format=json` (dette quotidienne, sans clé) | dette, taux, adjudications | dette lue le 12/11 (`experiments/dette_us.md`, conviction) ; estimations d'emprunt trimestrielles : communiqués du Trésor (début février, mai, août, novembre) |
+| 46 | Christie's : estimations et prix réalisés des lots | pages de vente et de lot de `www.christies.com` (JSON embarqué, robots.txt relu le 12/11) ; Sotheby's masque les prix réalisés (« ResultHidden »), Phillips 403 | marchés « <œuvre> Sale Price » | fait le 12/11 (`experiments/encheres.md`, 70 lots, fantôme `encheres_estimation`, table manuelle `config/encheres.yaml`) |
 | 13 | BCE et Eurostat (données statistiques) | `data-api.ecb.europa.eu`, `ec.europa.eu/eurostat` | inflation, taux en zone euro | à faire |
 | 14 | MLB StatsAPI, NHL, Jolpica (F1) | `statsapi.mlb.com`, `api-web.nhle.com`, `api.jolpi.ca` | calendriers, blessures, résultats en direct | en cours : MLB et NHL faits (15/10/2026), F1 à faire |
 | 15 | OpenDota : statistiques Dota 2 | `api.opendota.com` | marchés esport | à faire |

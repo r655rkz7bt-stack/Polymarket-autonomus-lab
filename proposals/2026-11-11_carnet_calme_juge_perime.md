@@ -26,3 +26,9 @@ aucun cas : l'horodatage avance bien dès qu'un ordre change (marché de la sema
 
 **Ta décision** : oui / non. Rien d'autre à faire de ton côté ; si oui, dis-le dans une conversation et le chercheur fera le
 changement avec son test.
+
+**Nouveau cas (12/11/2026, 21 h UTC).** La conviction `dette-us-41000-avant-2027` (NON à 0,54 pour une chance de 0,70, 4 % du
+fantôme, `experiments/dette_us.md`) est refusée à chaque cycle local : « carnet périmé (1 369 s > 120 s) », puis « 6 125 s ». Ce
+marché n'a presque aucun échange : son carnet ne bouge pas pendant des heures, donc ce genre de conviction (là où une recherche vaut
+le plus) ne peut jamais être jouée tant que la règle reste telle quelle. Même cycle : 3 autres refus « carnet périmé » (248 à 511 s)
+sur des marchés minces d'autres fantômes.

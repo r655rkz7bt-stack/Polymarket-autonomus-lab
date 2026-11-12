@@ -44,3 +44,11 @@ dans le journal du cycle.
 - Les 11 autres ont des raisons chiffrées (avantage insuffisant, déjà en position, carnet vide) : rien de muet sans cause.
 - Positions de `favori_politique_quasi_certain` « 112 h après l'échéance » : élections néo-zélandaises, marchés relus
   (`closed: false`, résultats officiels le 27/11), déjà connues.
+
+## 3. Famille 4 (deuxième contrôle) : plages de prix des 157 achats des fantômes v2
+Journaux signés publiés (`published_data/ledger/fantome_v2`, 13 stratégies ayant acheté) : prix payé de chaque achat contre
+`min_price`/`max_price` (ou `min_ask`/`max_ask`) de sa stratégie. **3 hors plage sur 157**, tous de `favori_politique_quasi_certain`
+(08/11 03 h 32, 10/11 20 h 09 et 23 h 22) : payés 0,969 pour une plage 0,97-0,995. Cause : la plage est vérifiée sur le meilleur
+vendeur au moment de la proposition (`NaiveFavorite.propose`, `strategy_engine.py`), et le carnet relu juste avant l'exécution
+offrait 0,969 : même pari, un dixième de centime moins cher. Pas un défaut (le cas « ordre posé servi un cran sous la plage » du
+21/10 allait dans le même sens). Aucun correctif.

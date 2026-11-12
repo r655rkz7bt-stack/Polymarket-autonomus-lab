@@ -62,3 +62,14 @@ mai 2022 était une saison très chaude (Marilyn de Warhol). La règle tient en 
 1,45 / 2,05) : tranche « estimation basse à +25 % » 0,53 (garanti) contre 0,25 (Klimt), 0,35 (Kandinsky), 0,33 (Picasso) ; Basquiat
 0,58 contre 0,52 : plus d'achat (borne basse 0,48). Au-dessus de 1,5 fois : 0,16 contre 0,27-0,39 au marché. Le fantôme utilise
 les 70 rapports (`encheres.RATIOS`, `INVENDUS = 4`).
+
+## Réglages essayés (3 seuils, 10 saisons)
+| estimation basse | lots | invendus | entre 1 et 1,25 fois | au moins 1,5 fois |
+|---|---|---|---|---|
+| ≥ 10 M$ (fantôme) | 70 | 4 | 36/66 = 0,55 | 11/66 |
+| ≥ 20 M$ | 31 | 1 | 20/30 = 0,67 | 5/30 |
+| ≥ 30 M$ (taille des 4 lots suivis) | 12 | 0 | 9/12 = 0,75 | 2/12 |
+
+Par saison (≥ 10 M$, part des vendus entre 1 et 1,25) : 10/2020 0,80 ; 11/2021 0,67 ; 05/2022 0,38 ; 11/2022 0,60 ; 05/2023 0,33 ;
+11/2023 0,56 ; 11/2024 0,67 ; 05/2025 0,67 ; 11/2025 0,36 ; 05/2026 1,00. Les saisons sont liées : les 4 lots d'une semaine forment
+presque un seul tirage (d'où le plafond de 5 % par pari). Le fantôme garde le seuil le plus prudent (≥ 10 M$).
