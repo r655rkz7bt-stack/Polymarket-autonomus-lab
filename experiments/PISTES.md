@@ -117,6 +117,12 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 39. **El Niño : chances chiffrées du CPC contre « peak RONI »** (12/11/2026, passage de 11 h, `experiments/el_nino.md`, idée neuve : le prévisionniste officiel de la source du règlement publie ses chances chaque mois). Borne basse prouvée P(pic ≥ 2,5) ≥ 0,83 (discussion du 08/10, périmée) contre 0,61 au marché ; analogues et indice relatif : ≈ 0,35 ; fantôme `el_nino_cpc` (discussion de moins de 7 jours seulement). À relire après la discussion du 12/11 (14 h UTC).
 40. **Séismes de l'année : compte, maximum, Californie** (12/11/2026, passage de 11 h, `experiments/seismes_annee.md`, même mécanique que `seismes_marche` sur les marchés annuels) : 13 séismes ≥ 7,0 au 12/11, Poisson du reste (14,88 par an) ; « 17-19 » 0,25 pour 0,14, « Californie ≥ 7,0 » 0,093 pour 0,014 ; fantôme `seismes_annee`. Réglés début janvier.
 
+41. ~~PIB brésilien du trimestre contre l'IBC-Br~~ (12/11/2026, passage de 16 h, `experiments/pib_bresil.md`) : **écartée**. IBC-Br (Banque centrale, sans clé) contre PIB t/t : écart-type 0,5 point ; sur le seul trimestre comparable réglé (T2 2026), le marché mettait 0,56 sur la bonne tranche à J-10, le modèle 0,22.
+
+42. **Valeur médiane des logements au 31/12 (Parcl Labs)** (12/11/2026, passage de 16 h) : 10 villes, ≈ 450 k$ de volume, ≈ 50 événements réglés depuis février 2026 (1er février, 1er mars, 1er/30 avril, 31 mai, 30 juin, 30 septembre) ; réglé sur l'indice quotidien Parcl Labs × 2 000 pieds carrés. **Bloquée** : l'indice ne se lit que par l'API Parcl Labs (clé gratuite à créer par Etienne) ; la page de règlement est une application JavaScript (lecture de son code refusée par le garde-fou de la session : on n'insiste pas). Si Etienne crée une clé : historique quotidien + marchés réglés = test possible tout de suite.
+
+43. **Taux du Trésor : barrière sur les clôtures quotidiennes** (12/11/2026, passage de 16 h, `experiments/taux_tresor.md`, avantage de règle : clôtures publiées, pas cours en séance) : septembre-octobre 2026, 133 marchés, règlement relu 126/128 ; marche aléatoire (σ 60 jours × 1,2) log-score −0,475 contre −0,525 au prix, achats simulés positifs les deux mois à K 1,2-1,4 ; deux trajectoires seulement : **indice faible** → fantôme `taux_tresor_barriere`. À refaire fin novembre et aux vrais échanges.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|

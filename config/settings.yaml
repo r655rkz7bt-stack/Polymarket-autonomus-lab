@@ -147,6 +147,9 @@ scanner:
               105176: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1100},
               # 12/11/2026 : étiquette weather-science (104180) : « peak RONI for the 2026–27 El Niño » (179 k$) et « strongest on record »
               # (`el_nino_cpc`), réglés en mars-avril 2027
+              # 12/11/2026 : étiquette treasuries (102028) : « How high / low will <N>-year Treasury yield go in <mois> / before 2027 »
+              # (`taux_tresor_barriere`), 16 événements, 400-1 900 $ de liquidité par seuil ; horizon : fin d'année
+              102028: {pages: 2, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1300},
               104180: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 4000},
               # 12/11/2026 : étiquette spider-man (1493) : « Highest grossing movie in 2026? » (`box_office_annee`), 2,8 M$ de liquidité ;
               # horizon 60 jours (réglé début janvier)
@@ -329,6 +332,7 @@ sources:
   pib_canada: {enabled: true, every_minutes: 180}            # 12/11/2026 (piste n° 36) : dernier communiqué « GDP by industry » du Quotidien de Statistique Canada (estimation anticipée du mois suivant) pour pib_canada_anticipe ; robots.txt : permis (délai 2 s), 2 pages par relevé
   michigan: {enabled: true, every_minutes: 60}               # 12/11/2026 (piste n° 35) : page d'accueil des Surveys of Consumers (préliminaire puis final du sentiment des consommateurs) pour michigan_preliminaire ; gratuit, sans clé
   enso: {enabled: true, every_minutes: 180}                  # 12/11/2026 (piste n° 39) : discussion ENSO mensuelle du CPC (chances « +2.5°C or more » par saison) et RONI.ascii.txt pour el_nino_cpc ; robots.txt : permis ; gratuit, sans clé
+  taux_tresor: {enabled: true, every_minutes: 60}            # 12/11/2026 (piste n° 43) : CSV « Daily Treasury Par Yield Curve Rates » de l'année (home.treasury.gov, arbitre des marchés « Treasury yield hit / dip below ») pour taux_tresor_barriere ; robots.txt : tout permis ; gratuit, sans clé
   usgs_annee: {enabled: true, every_minutes: 30}             # 12/11/2026 (piste n° 40) : séismes >= 6,8 depuis le 1er janvier (USGS, arbitre des marchés annuels) pour seismes_annee ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma
   # seulement). `meneur` = recette domestique 2026 de Spider-Man: Brand New Day au 08/11 (959,0 M$, en salle sur 190 écrans) ;

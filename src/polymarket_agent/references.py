@@ -483,6 +483,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["seismes_annee"] = attach_seismes_annee(markets, db, now)
     from polymarket_agent.pib_canada import attach_pib_canada   # 12/11/2026 : PIB canadien anticipé (pib_canada_anticipe)
     counts["pib_canada"] = attach_pib_canada(markets, db, now)
+    from polymarket_agent.taux_tresor import attach_taux   # 12/11/2026 : taux du Trésor, barrière sur clôtures (taux_tresor_barriere)
+    counts["taux_tresor"] = attach_taux(markets, db, now)
     from polymarket_agent.box_office import attach_box_office   # 12/11/2026 : film le plus rentable de l'année (box_office_annee)
     counts["box_office"] = attach_box_office(markets, db, now)
     from polymarket_agent.sieges import attach_sieges

@@ -386,6 +386,31 @@ pib_canada_anticipe:
     max_per_event:  {value: 3, min: 1, max: 10}           # tranches d'un même mois : une seule révision
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+taux_tresor_barriere:
+  explication: "Polymarket demande si le taux d'intérêt de l'État américain à 2, 5, 10 ou 30 ans montera (ou descendra) jusqu'à un certain niveau ce mois-ci. Le règlement ne regarde que le taux de fin de journée publié par le Trésor, pas les mouvements pendant la journée. On calcule chaque nuit la chance que l'un des taux de fin de journée restants touche le niveau, en supposant des mouvements un peu plus grands que ceux des deux derniers mois, et on achète quand le prix s'en écarte."
+  class: taux_tresor_barriere
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, avantage de RÈGLE et de modèle (experiments/taux_tresor.md, 12/11/2026, piste n° 43) : les marchés
+    « hit / dip below » se règlent sur les clôtures quotidiennes du Trésor ; une marche aléatoire sans dérive, écart-type des 60 jours
+    × 1,2-1,4, battait le prix sur septembre-octobre 2026 (133 marchés, log-score −0,475 contre −0,525 ; achats simulés positifs les
+    deux mois, hausse puis baisse des taux). Deux trajectoires seulement, prix horaires (pas de vrais échanges), carnets de 400-1 900 $ :
+    une perte apprendrait que le gain venait des deux tendances de septembre-octobre et pas d'une volatilité sous-estimée par le marché.
+  params:
+    min_net_edge:   {value: 0.08, min: 0.0, max: 0.30}    # chance − prix demandé − frais (economics_fees)
+    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}    # K incertain (1,0 à 1,4 : ±0,04 sur une chance de 0,3)
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 24}        # source relue chaque heure, chance donnée la nuit seulement
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 120, min: 0, max: 400}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # seuils d'un même événement : une seule trajectoire
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee
