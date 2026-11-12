@@ -365,6 +365,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
                 refs._save(db, "enso:histo", (old + rows)[-60:], now)
         return rows
     snapshot("enso", enso, "ref:enso")
+    # Séismes de l'année (12/11/2026, piste n° 40) : séismes >= 6,8 depuis le 1er janvier (heure de l'Est), pour `seismes_annee`.
+    from polymarket_agent.seismes_annee import fetch_usgs_annee
+    snapshot("usgs_annee", lambda cfg: factories.get("usgs_annee", lambda c: fetch_usgs_annee(http, now))(cfg), "ref:usgs_annee")
     # PIB mensuel canadien (12/11/2026, piste n° 36) : estimation anticipée de Statistique Canada (pib_canada.py, `pib_canada_anticipe`).
     from polymarket_agent.pib_canada import fetch_pib_canada
     snapshot("pib_canada", lambda cfg: factories.get("pib_canada", lambda c: fetch_pib_canada(http, now))(cfg), "ref:pib_canada")

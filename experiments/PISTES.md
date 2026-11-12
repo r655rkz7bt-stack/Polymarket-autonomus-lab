@@ -115,6 +115,7 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 38. **Prévision d'inflation de la Fed de Cleveland contre les marchés CPI / PCE** (12/11/2026, passage de 11 h, `experiments/nowcast_cleveland.md`) : historique en temps réel de la prévision (2013-2026, sans clé) ; 64 événements réglés, règlement retrouvé 61/61 ; log-score de la prévision −1,32 contre −1,05 pour le marché à 1 jour (4 réglages, 4 délais), mélange sans gain : **écartée**, le marché contient déjà la prévision publique.
 39. **El Niño : chances chiffrées du CPC contre « peak RONI »** (12/11/2026, passage de 11 h, `experiments/el_nino.md`, idée neuve : le prévisionniste officiel de la source du règlement publie ses chances chaque mois). Borne basse prouvée P(pic ≥ 2,5) ≥ 0,83 (discussion du 08/10, périmée) contre 0,61 au marché ; analogues et indice relatif : ≈ 0,35 ; fantôme `el_nino_cpc` (discussion de moins de 7 jours seulement). À relire après la discussion du 12/11 (14 h UTC).
+40. **Séismes de l'année : compte, maximum, Californie** (12/11/2026, passage de 11 h, `experiments/seismes_annee.md`, même mécanique que `seismes_marche` sur les marchés annuels) : 13 séismes ≥ 7,0 au 12/11, Poisson du reste (14,88 par an) ; « 17-19 » 0,25 pour 0,14, « Californie ≥ 7,0 » 0,093 pour 0,014 ; fantôme `seismes_annee`. Réglés début janvier.
 
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |

@@ -124,7 +124,8 @@ scanner:
               # 24/10/2026 : étiquette earthquakes (103038) : « plus gros séisme du jour » et « combien de séismes cette semaine » (seismes_marche), 240-900 $ de liquidité
               # 11/11/2026 : élargi (liquidité 50 $, écart 0,80) pour les marchés par pays de `seismes_pays` (écarts 0,2-0,6, 96-1 500 $) ;
               # `seismes_marche` garde l'ancien filtre d'écart 0,15 dans ses propres paramètres (`max_spread`).
-              103038: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
+              # 12/11/2026 : horizon 1 500 h pour les marchés annuels réglés début janvier (`seismes_annee`) ; 2 pages (jour, semaine, pays, année)
+              103038: {pages: 2, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80, max_favorite_price: 0.9999, max_horizon_hours: 1500},
               # 11/11/2026 : étiquettes tornado (106163) et tornadoes (104826) : « tornades du mois » (`tornades_mois`), 90-560 $ par tranche, écarts 0,06-0,48
               106163: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
               104826: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
@@ -328,6 +329,7 @@ sources:
   pib_canada: {enabled: true, every_minutes: 180}            # 12/11/2026 (piste n° 36) : dernier communiqué « GDP by industry » du Quotidien de Statistique Canada (estimation anticipée du mois suivant) pour pib_canada_anticipe ; robots.txt : permis (délai 2 s), 2 pages par relevé
   michigan: {enabled: true, every_minutes: 60}               # 12/11/2026 (piste n° 35) : page d'accueil des Surveys of Consumers (préliminaire puis final du sentiment des consommateurs) pour michigan_preliminaire ; gratuit, sans clé
   enso: {enabled: true, every_minutes: 180}                  # 12/11/2026 (piste n° 39) : discussion ENSO mensuelle du CPC (chances « +2.5°C or more » par saison) et RONI.ascii.txt pour el_nino_cpc ; robots.txt : permis ; gratuit, sans clé
+  usgs_annee: {enabled: true, every_minutes: 30}             # 12/11/2026 (piste n° 40) : séismes >= 6,8 depuis le 1er janvier (USGS, arbitre des marchés annuels) pour seismes_annee ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma
   # seulement). `meneur` = recette domestique 2026 de Spider-Man: Brand New Day au 08/11 (959,0 M$, en salle sur 190 écrans) ;
   # `jusqu_au` : après le 22/12, les recettes réelles des jours de semaine comptent plus que le modèle du week-end (arrêt).
