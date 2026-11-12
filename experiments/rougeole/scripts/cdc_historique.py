@@ -18,3 +18,17 @@ with open(OUT, "w", newline="") as f:
     w = csv.writer(f); w.writerow(["date", "total"])
     for k in sorted(have): w.writerow([k, have[k]])
 print(sorted(have.items())[-3:])
+
+# 12/11/2026 : la page du CDC lit aussi la courbe hebdomadaire des cas par date d'éruption depuis 2022
+# (`/wcms/vizdata/measles/MeaslesCasesWeekly.json`, champ `lastUpdated`). Une copie datée par mise à jour est gardée
+# (releves/courbe_hebdo/AAAA-MM-JJ.json.gz) : les semaines récentes sont révisées d'une mise à jour à l'autre,
+# ce qui permet d'apprendre le lien « courbe → compteur » sans regarder vers le futur.
+import gzip, json
+w = requests.get("https://www.cdc.gov/wcms/vizdata/measles/MeaslesCasesWeekly.json", headers=H, timeout=60).json()
+maj = dt.datetime.strptime(w["lastUpdated"], "%B %d, %Y").date().isoformat()
+os.makedirs("experiments/rougeole/releves/courbe_hebdo", exist_ok=True)
+dest = f"experiments/rougeole/releves/courbe_hebdo/{maj}.json.gz"
+if not os.path.exists(dest):
+    with gzip.open(dest, "wt") as f:
+        json.dump(w, f)
+print("courbe hebdomadaire", maj, sum(int(r["cases"]) for r in w["data"] if r["week_start"] >= "2026-01-01"), "cas 2026 par éruption")

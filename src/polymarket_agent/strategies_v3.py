@@ -1522,6 +1522,17 @@ class AuditeursSpotify(SeismesMarche):
     ref_key = "spotify"
 
 
+class RougeoleCompteur(SeismesMarche):
+    """« Will there be at least <N> measles cases in the U.S. by <date>? » : compteur du CDC lu en direct (mis à jour chaque semaine),
+    nombre de mises à jour restantes avant l'échéance, hausse par mise à jour tirée du journal `rougeole:histo` (rougeole.py) ; une
+    mise à jour de jour férié (Thanksgiving, Noël) peut sauter et retirer une semaine. Expérience audacieuse du 12/11/2026
+    (experiments/rougeole_compteur.md, piste n° 8) : pas de test sur le passé (compteur hebdomadaire non archivé, seulement les
+    échelles mensuelles réglées et la courbe par date d'éruption) ; le 12/11 « 6 000+ au 30/11 » cotait 0,15/0,57."""
+
+    strategy_id = "rougeole_compteur"
+    ref_key = "rougeole"
+
+
 class SiegesCoherence(_Base):
     """Échelles « How many House seats will the Democrats win in <État> ? » contre les marchés de district du même État (sieges.py, expérience audacieuse du
     31/10/2026, experiments/coherence_sieges.md). La somme des prix démocrates des districts (marchés 10 à 50 fois plus échangés) donne le nombre moyen de
@@ -1902,4 +1913,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

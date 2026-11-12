@@ -257,6 +257,31 @@ auditeurs_spotify:
     max_per_event:  {value: 1, min: 1, max: 10}           # artistes d'une même place : un seul tirage
     kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse
 
+rougeole_compteur:
+  explication: "Polymarket demande si le compteur officiel de la rougeole aux États-Unis (page du CDC) dépassera un nombre de cas à une date donnée. Le CDC publie ce compteur chaque semaine et il ne reste que quelques mises à jour avant la date : on calcule la chance de chaque seuil avec le compteur du jour et la hausse habituelle par semaine (et le risque qu'une mise à jour saute un jour férié), et on achète quand le marché s'en écarte nettement."
+  class: rougeole_compteur
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION (experiments/rougeole_compteur.md, 12/11/2026, piste n° 8, compteurs officiels
+    à lecture directe) : le compteur qui règle est public chaque semaine (5 182 au 05/11) ; il reste 3 mises à jour avant le 30/11,
+    chacune ajoute 165 à 330 cas (septembre-novembre 2026), et celle du 26/11 tombe à Thanksgiving. Le 12/11 « 6 000+ au 30/11 »
+    cotait 0,15/0,57 (carnets minces, ~400-2 500 $ par seuil). Aucun test sur le passé possible (compteur hebdomadaire non archivé :
+    seulement les échelles mensuelles réglées et la courbe par date d'éruption, gardée à chaque passage). Une perte apprendrait que le
+    rythme hebdomadaire bouge plus que notre choc commun (60 cas) ou que le CDC décale ses mises à jour autrement qu'on le croit.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.10, min: 0.0, max: 0.30}    # rythme non étalonné (3 mises à jour connues) : borne basse = chance − 0,10
+    min_price:      {value: 0.10, min: 0.01, max: 0.50}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 6, min: 0.1, max: 30}         # source relue toutes les 2 h
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 1, min: 1, max: 10}           # seuils d'une même échelle : un seul tirage
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 tornades_mois:
   explication: "Polymarket demande combien de tornades il y aura aux États-Unis ce mois-ci. Le service météo américain publie chaque jour la liste des tornades, et c'est elle qui décide : on compte celles déjà passées, on ajoute ce qui arrive d'habitude le reste du mois, et on parie sur la tranche que le marché cote mal."
   class: tornades_mois
