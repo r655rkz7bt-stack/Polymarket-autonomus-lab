@@ -1,0 +1,81 @@
+## 1328429 Wassily Kandinsky's “Betonte Ecken” Sale Price | 2026-11-18T04:59:00Z
+   Wassily Kandinsky's “Betonte Ecken” (Lot 12A) is expected to be sold at Christie's 20th Century Evening Sale on November 17, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$60m".
+   source: The market will resolve according to the final listed “Price Realised” on Christie's (https://www.christies.com/en/lot/lot-6614733).
+    6766293 <$60m          0.12 0.13 6894
+    6766294 $60m-$75m      0.34 0.35 6603
+    6766295 $75m-$90m      0.26 0.29 6820
+    6766296 $90m-$105m     0.16 0.18 6870
+    6766297 $105m+         0.03 0.108 5696
+## 1328430 Gustav Klimt's “Litzlbergkeller” Sale Price | 2026-11-18T04:59:00Z
+   Gustav Klimt's “Litzlbergkeller” (Lot 20A) is expected to be sold at Christie's 20th Century Evening Sale on November 17, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$60m".
+   source: The market will resolve according to the final listed “Price Realised” on Christie's (https://www.christies.com/en/lot/lot-6614741).
+    6766298 <$60m          0.01 0.2 2883
+    6766299 $60m-$75m      0.23 0.25 2617
+    6766300 $75m-$90m      0.35 0.36 3110
+    6766301 $90m-$105m     0.18 0.29 2813
+    6766302 $105m+         0.004 0.102 2723
+## 1328431 Pablo Picasso's “Le Baiser” Sale Price | 2026-11-18T04:59:00Z
+   Pablo Picasso's “Le Baiser” (Lot 26A) is expected to be sold at Christie's 20th Century Evening Sale on November 17, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$40m".
+   source: The market will resolve according to the final listed “Price Realised” on Christie's (https://www.christies.com/en/lot/lot-6614747).
+    6766303 <$40m          0.021 0.101 3624
+    6766304 $40m-$50m      0.313 0.334 3315
+    6766305 $50m-$60m      0.26 0.37 3261
+    6766306 $60m-$70m      0.18 0.19 3062
+    6766307 $70m+          0.133 0.164 4133
+## 1328432 Jean-Michel Basquiat's “Untitled (Leonardo and His Five Grotesque Heads)” Sale Price | 2026-11-20T04:59:00Z
+   Jean-Michel Basquiat's “Untitled (Leonardo and His Five Grotesque Heads)” (Lot 34B) is expected to be sold at Christie's 21st Century Evening Sale on November 19, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$30m".
+   source: The market will resolve according to the final listed “Price Realised” on Christie's (https://www.christies.com/en/lot/lot-6614158).
+    6766308 <$30m          0.011 0.059 3089
+    6766309 $30m-$40m      0.49 0.52 3136
+    6766310 $40m-$50m      0.25 0.29 3340
+    6766311 $50m-$60m      0.13 0.18 4173
+    6766312 $60m+          0.06 0.1 3794
+## 1328433 Amedeo Modigliani's “Tête” Sale Price | 2026-11-18T04:59:00Z
+   Amedeo Modigliani's “Tête” (Lot 9) is expected to be sold at Phillips' Modern & Contemporary Art Evening Sale on November 17, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$28m".
+   source: The market will resolve according to the final listed “Sold For” price on Phillips (https://www.phillips.com/detail/amedeo-modigliani/241743).
+    6766313 <$28m          0.04 0.05 3846
+    6766316 $28m-$33m      0.25 0.26 5053
+    6766322 $33m-$38m      0.21 0.24 5838
+    6766324 $38m-$43m      0.23 0.25 4876
+    6766325 $43m+          0.28 0.29 4595
+## 1328442 Roy Lichtenstein's “Reflections on ‘Painter and Model’” Sale Price | 2026-11-17T04:59:00Z
+   Roy Lichtenstein's “Reflections on ‘Painter and Model’” (Lot 4A) is expected to be sold at Sotheby's The Now and Contemporary Evening Auction on November 16, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$20m".
+   source:  “Lot Sold” price on Sotheby's (https://www.sothebys.com/en/buy/auction/2026/the-now-contemporary-evening-auction-2/reflections-on-painter-and-model).
+    6766326 <$20m          0.006 0.107 4838
+    6766327 $20m-$25m      0.28 0.31 5270
+    6766328 $25m-$30m      0.34 0.35 5115
+    6766329 $30m-$35m      0.18 0.21 5367
+    6766330 $35m+          0.11 0.13 4419
+## 1328443 Claude Monet's “Le Jardin des Tuileries” Sale Price | 2026-11-19T04:59:00Z
+   Claude Monet's “Le Jardin des Tuileries” (Lot 4) is expected to be sold at Sotheby's Legendary: The Blaquier-Arrieta Collection Evening Auction on November 18, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$15m".
+   source: theby's (https://www.sothebys.com/en/buy/auction/2026/legendary-the-blaquier-arrieta-collection-evening-auction/claude-monet-le-jardin-des-tuileries).
+    6766331 <$15m          0.051 0.079 4756
+    6766332 $15m-$18m      0.23 0.24 4180
+    6766333 $18m-$21m      0.19 0.21 5172
+    6766334 $21m-$24m      0.22 0.23 5069
+    6766335 $24m+          0.24 0.25 5331
+## 1328444 Vincent van Gogh's “Châtaigniers en fleurs” Sale Price | 2026-11-19T04:59:00Z
+   Vincent van Gogh's “Châtaigniers en fleurs” (Lot 5) is expected to be sold at Sotheby's Legendary: The Blaquier-Arrieta Collection Evening Auction on November 18, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$150m".
+   source: ttps://www.sothebys.com/en/buy/auction/2026/legendary-the-blaquier-arrieta-collection-evening-auction/vincent-van-gogh-chataigner-en-fleurs-roses-et).
+    6766336 <$150m         0.033 0.069 4730
+    6766337 $150m-$175m    0.072 0.081 7560
+    6766338 $175m-$200m    0.17 0.18 6325
+    6766339 $200m-$225m    0.36 0.38 5590
+    6766340 $225m+         0.35 0.36 4809
+## 1367559 Mark Rothko's “Untitled” Sale Price | 2026-11-18T04:59:00Z
+   Mark Rothko's “Untitled” (Lot 324) is expected to be sold at Sotheby's Contemporary Day Auction on November 17, 2026.
+   règle invendu: If no sale is completed, or the sale price is not known definitively, by November 30, 2026, 11:59 PM ET this market will resolve to "<$3.5m".
+   source: lve according to the final listed “Lot Sold” price on Sotheby's (https://www.sothebys.com/en/buy/auction/2026/contemporary-day-auction-8/untitled-16).
+    6976578 <$3.5m         0.02 0.07 1990
+    6976579 $3.5m-$4.5m    0.26 0.28 2076
+    6976580 $4.5m-$5.5m    0.37 0.38 2125
+    6976581 $5.5m-$6.5m    0.26 0.29 2308
+    6976582 $6.5m+         0.05 0.1 2259

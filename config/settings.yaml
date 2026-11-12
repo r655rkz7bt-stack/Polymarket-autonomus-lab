@@ -134,6 +134,8 @@ scanner:
               104826: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
               # 11/11/2026 : étiquette drought (105721) : « Exceptional drought (D4) by state — week of … » (`secheresse_d4`), carnets souvent 0,01/0,99
               105721: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999},
+              # 12/11/2026 : étiquette art-auction (1305) : « <artiste>'s “<œuvre>” Sale Price » (`encheres_estimation`), 2-7 k$ par tranche, peu de volume du jour
+              1305: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.50, max_favorite_price: 0.9999},
               # 11/11/2026 : étiquette global-temp (832), « <mois> Temperature Increase (ºC) » et « 1st, 2nd, or 3rd hottest » (NASA GISTEMP),
               # pour les convictions de Claude (experiments/temperature_mondiale.md) : 900-10 000 $ de liquidité, tranches à 0,004/0,068
               832: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1500},

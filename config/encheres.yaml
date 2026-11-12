@@ -1,0 +1,29 @@
+# Lots suivis par `encheres_estimation` (src/polymarket_agent/encheres.py, experiments/encheres.md). Écrits par le chercheur :
+# estimation basse (en M$, SANS frais d'acheteur) lue sur la page du lot de la maison, garantie (tiers ou maison), date de la vente
+# (heure de New York ; plus aucun achat à partir de 00 h UTC ce jour-là). Seulement Christie's : le test passé ne porte que sur ses
+# ventes du soir de New York (Phillips répond 403 aux robots, Sotheby's non testé).
+lots:
+  - evenement: "1328429"
+    nom: "Kandinsky, Betonte Ecken"
+    estimation_basse: 60
+    garanti: true            # « Third party guarantee »
+    vente: "2026-11-17"
+    source: "https://www.christies.com/en/lot/lot-6614733"
+  - evenement: "1328430"
+    nom: "Klimt, Litzlbergkeller"
+    estimation_basse: 60
+    garanti: true            # « Third party guarantee »
+    vente: "2026-11-17"
+    source: "https://www.christies.com/en/lot/lot-6614741"
+  - evenement: "1328431"
+    nom: "Picasso, Le Baiser"
+    estimation_basse: 40
+    garanti: true            # garantie de Christie's
+    vente: "2026-11-17"
+    source: "https://www.christies.com/en/lot/lot-6614747"
+  - evenement: "1328432"
+    nom: "Basquiat, Untitled (Leonardo and His Five Grotesque Heads)"
+    estimation_basse: 30
+    garanti: true            # « Third party guarantee »
+    vente: "2026-11-19"
+    source: "https://www.christies.com/en/lot/lot-6614158"

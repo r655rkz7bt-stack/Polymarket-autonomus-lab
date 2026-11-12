@@ -125,6 +125,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 44. **Dette fédérale américaine : estimation d'emprunt du Trésor contre « Peak US National Debt »** (12/11/2026, passage de 21 h, `experiments/dette_us.md`, dernière source de l'inventaire n° 32). Un seul marché vivant (41 000 Md$ d'ici le 31/12, carnet 0,46/0,86 sans échanges) ; la hausse trimestrielle de la dette du public colle à l'estimation du Trésor (T3 2026 +744 pour 742, T4 2025 +569 pour 569) : total attendu ≈ 40 880 le 31/12, OUI ≈ 0,05-0,15 ; fréquence de base sur 2015-2025 ≈ 0,25. Pas de test multi-événements possible : **conviction** NON (0,70, borne 0,62), pas de stratégie. Bloquée en cycle local par le carnet calme (`proposals/2026-11-11_carnet_calme_juge_perime.md`). À reprendre avec les marchés de 2027 (plafond 41 100 Md$, mesures extraordinaires).
 
+45. **Ventes aux enchères : prix final contre l'estimation basse de la maison** (12/11/2026, passage de 21 h, `experiments/encheres.md`, idée neuve). 41 gros lots (estimation basse ≥ 10 M$) des ventes du soir de Christie's à New York 2020-2026 (pages de vente, JSON embarqué, robots.txt relu) : prix final frais compris = 1,16 fois l'estimation basse en médiane, 80 % entre 1,04 et 1,53, 3 invendus non garantis. La tranche « estimation basse à +25 % » gagne 0,62-0,70 sur le passé ; le marché la paie 0,25-0,52 (Klimt, Kandinsky, Picasso, Basquiat, vente du 17-19/11). Pas de marché de tableaux réglé pour un test aux vrais prix : **expérience** → fantôme `encheres_estimation`. À relire après le 20/11 ; Sotheby's à relever avant de l'ajouter ; Phillips 403.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
