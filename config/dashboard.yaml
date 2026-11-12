@@ -21,11 +21,12 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-11-11"
+  date: "2026-11-12"
   points:
-    - "Labo v2 depuis le 07/11 : 10 stratégies dans l'arène, chacune avec 1 000 € fictifs. Le capital principal reste à 652 € et n'en suit aucune tant qu'aucune n'a prouvé un avantage."
-    - "Défaut corrigé (11/11) : les séismes étaient parfois achetés pendant que le catalogue américain n'avait pas encore publié un séisme déjà arrivé (−65 € sur un pari). Un 2e catalogue (européen) sert maintenant de témoin."
-    - "Nouvelle expérience (11/11) : seismes_pays. Les marchés « séisme ≥ 6 au Pérou, au Mexique… ce mois-ci » sont cotés bien au-dessus de leur fréquence réelle ; sur septembre-octobre, 10 NON gagnés sur 11 aux prix payés."
+    - "Labo v2 depuis le 07/11 : 16 stratégies dans l'arène, chacune avec 1 000 € fictifs. Le capital principal reste à 653 € et n'en suit aucune tant qu'aucune n'a prouvé un avantage."
+    - "Nouvelle piste (12/11) : le moral des consommateurs du Michigan se règle sur le chiffre FINAL, mais l'université publie un chiffre provisoire 2 semaines avant. Sur 4 mois passés, acheter les tranches que le provisoire rend impossibles : 13 gagnés pour 9,6 attendus (+35 %)."
+    - "Conviction de Claude (12/11) : novembre ne finira pas à 55 ou plus (provisoire 51,0 ; il faudrait +4 points, jamais vu). Le NON se vendait 0,897."
+    - "Expérience (12/11) : box_office_annee. Le marché du premier week-end d'Avengers (sortie le 18/12) et celui du film le plus rentable de l'année ne disent pas la même chose ; on regardera le 20/12."
     - "Une décision t'attend : proposals/2026-11-11_carnet_calme_juge_perime.md (les petits marchés calmes sont refusés comme « carnet périmé »)."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le

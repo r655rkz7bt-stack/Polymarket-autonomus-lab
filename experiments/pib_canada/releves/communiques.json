@@ -1,0 +1,282 @@
+{
+"2022-11": {
+"officiel_mois": "November",
+"officiel": 0.1,
+"anticipe_mois": "December",
+"anticipe": 0.0,
+"date": "230131"
+},
+"2022-12": {
+"officiel_mois": "December",
+"officiel": -0.1,
+"anticipe_mois": "January",
+"anticipe": 0.3,
+"date": "230228"
+},
+"2023-01": {
+"officiel_mois": "January",
+"officiel": 0.5,
+"anticipe_mois": "February",
+"anticipe": 0.3,
+"date": "230331"
+},
+"2023-02": {
+"officiel_mois": "February",
+"officiel": 0.1,
+"anticipe_mois": "March",
+"anticipe": -0.1,
+"date": "230428"
+},
+"2023-03": {
+"officiel_mois": "March",
+"officiel": 0.0,
+"anticipe_mois": "April",
+"anticipe": 0.2,
+"date": "230531"
+},
+"2023-04": {
+"officiel_mois": "April",
+"officiel": 0.0,
+"anticipe_mois": "May",
+"anticipe": 0.4,
+"date": "230630"
+},
+"2023-05": {
+"officiel_mois": "May",
+"officiel": 0.3,
+"anticipe_mois": "June",
+"anticipe": -0.2,
+"date": "230728"
+},
+"2023-06": {
+"officiel_mois": "June",
+"officiel": -0.2,
+"anticipe_mois": "July",
+"anticipe": 0.0,
+"date": "230901"
+},
+"2023-07": {
+"officiel_mois": "July",
+"officiel": 0.0,
+"anticipe_mois": "August",
+"anticipe": 0.1,
+"date": "230929"
+},
+"2023-09": {
+"officiel_mois": "September",
+"officiel": 0.1,
+"anticipe_mois": "October",
+"anticipe": 0.2,
+"date": "231130"
+},
+"2023-11": {
+"officiel_mois": "November",
+"officiel": 0.2,
+"anticipe_mois": "December",
+"anticipe": 0.3,
+"date": "240131"
+},
+"2023-12": {
+"officiel_mois": "December",
+"officiel": 0.0,
+"anticipe_mois": "January",
+"anticipe": 0.4,
+"date": "240229"
+},
+"2024-01": {
+"officiel_mois": "January",
+"officiel": 0.6,
+"anticipe_mois": "February",
+"anticipe": 0.4,
+"date": "240328"
+},
+"2024-02": {
+"officiel_mois": "February",
+"officiel": 0.2,
+"anticipe_mois": "March",
+"anticipe": 0.0,
+"date": "240430"
+},
+"2024-03": {
+"officiel_mois": "March",
+"officiel": 0.0,
+"anticipe_mois": "April",
+"anticipe": 0.3,
+"date": "240531"
+},
+"2024-04": {
+"officiel_mois": "April",
+"officiel": 0.3,
+"anticipe_mois": "May",
+"anticipe": 0.1,
+"date": "240628"
+},
+"2024-05": {
+"officiel_mois": "May",
+"officiel": 0.2,
+"anticipe_mois": "June",
+"anticipe": 0.1,
+"date": "240731"
+},
+"2024-06": {
+"officiel_mois": "June",
+"officiel": 0.0,
+"anticipe_mois": "July",
+"anticipe": 0.0,
+"date": "240830"
+},
+"2024-08": {
+"officiel_mois": "August",
+"officiel": 0.0,
+"anticipe_mois": "September",
+"anticipe": 0.3,
+"date": "241031"
+},
+"2024-09": {
+"officiel_mois": "September",
+"officiel": 0.1,
+"anticipe_mois": "October",
+"anticipe": 0.1,
+"date": "241129"
+},
+"2024-10": {
+"officiel_mois": "October",
+"officiel": 0.3,
+"anticipe_mois": "November",
+"anticipe": -0.1,
+"date": "241223"
+},
+"2024-11": {
+"officiel_mois": "November",
+"officiel": -0.2,
+"anticipe_mois": "December",
+"anticipe": 0.2,
+"date": "250131"
+},
+"2024-12": {
+"officiel_mois": "December",
+"officiel": 0.2,
+"anticipe_mois": "January",
+"anticipe": 0.3,
+"date": "250228"
+},
+"2025-01": {
+"officiel_mois": "January",
+"officiel": 0.4,
+"anticipe_mois": "February",
+"anticipe": 0.0,
+"date": "250328"
+},
+"2025-03": {
+"officiel_mois": "March",
+"officiel": 0.1,
+"anticipe_mois": "April",
+"anticipe": 0.1,
+"date": "250530"
+},
+"2025-04": {
+"officiel_mois": "April",
+"officiel": -0.1,
+"anticipe_mois": "May",
+"anticipe": -0.1,
+"date": "250627"
+},
+"2025-05": {
+"officiel_mois": "May",
+"officiel": -0.1,
+"anticipe_mois": "June",
+"anticipe": 0.1,
+"date": "250731"
+},
+"2025-07": {
+"officiel_mois": "July",
+"officiel": 0.2,
+"anticipe_mois": "August",
+"anticipe": 0.0,
+"date": "250926"
+},
+"2025-08": {
+"officiel_mois": "August",
+"officiel": -0.3,
+"anticipe_mois": "September",
+"anticipe": 0.1,
+"date": "251031"
+},
+"2025-09": {
+"officiel_mois": "September",
+"officiel": 0.2,
+"anticipe_mois": "October",
+"anticipe": -0.3,
+"date": "251128"
+},
+"2025-10": {
+"officiel_mois": "October",
+"officiel": -0.3,
+"anticipe_mois": "November",
+"anticipe": 0.1,
+"date": "251223"
+},
+"2025-11": {
+"officiel_mois": "November",
+"officiel": 0.0,
+"anticipe_mois": "December",
+"anticipe": 0.1,
+"date": "260130"
+},
+"2025-12": {
+"officiel_mois": "December",
+"officiel": 0.2,
+"anticipe_mois": "January",
+"anticipe": 0.0,
+"date": "260227"
+},
+"2026-01": {
+"officiel_mois": "January",
+"officiel": 0.1,
+"anticipe_mois": "February",
+"anticipe": 0.2,
+"date": "260331"
+},
+"2026-03": {
+"officiel_mois": "March",
+"officiel": -0.1,
+"anticipe_mois": "April",
+"anticipe": 0.4,
+"date": "260529"
+},
+"2026-04": {
+"officiel_mois": "April",
+"officiel": 0.5,
+"anticipe_mois": "May",
+"anticipe": 0.1,
+"date": "260630"
+},
+"2026-05": {
+"officiel_mois": "May",
+"officiel": 0.3,
+"anticipe_mois": "June",
+"anticipe": 0.2,
+"date": "260731"
+},
+"2026-06": {
+"officiel_mois": "June",
+"officiel": 0.3,
+"anticipe_mois": "July",
+"anticipe": 0.0,
+"date": "260828"
+},
+"2026-07": {
+"officiel_mois": "July",
+"officiel": 0.0,
+"anticipe_mois": "August",
+"anticipe": 0.2,
+"date": "260929"
+},
+"2026-08": {
+"officiel_mois": "August",
+"officiel": 0.0,
+"anticipe_mois": "September",
+"anticipe": -0.1,
+"date": "261030"
+}
+}

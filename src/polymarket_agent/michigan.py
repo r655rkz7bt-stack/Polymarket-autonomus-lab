@@ -5,7 +5,7 @@ experiments/michigan_preliminaire.md).
 (publié deux semaines après le préliminaire). La page d'accueil des Surveys of Consumers (sca.isr.umich.edu, sans clé, pas de
 robots.txt) affiche « Preliminary Results for <Mois> <Année> … Index of Consumer Sentiment <x> ». Final = préliminaire + révision ;
 révision ~ N(0 ; SD), SD = 1,8 par défaut (2026 : +0,6, +0,8, +0,3, +1,7 ; 2024-2025 de mémoire : −3,1 à +2,9). Sur 4 mois réglés
-aux vrais échanges : 18 paris, 12 gagnés pour 8,9 attendus, +33 % par mise (4 mois sur 4 positifs).
+aux vrais échanges : 18 paris, 13 gagnés pour 9,6 attendus, +35 % par mise (4 mois sur 4 positifs).
 """
 from __future__ import annotations
 
