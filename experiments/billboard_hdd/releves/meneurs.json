@@ -1,0 +1,2338 @@
+[
+{
+"titre": "Billboard 200 #1 Album Week of November 21",
+"samedi": "2026-11-21",
+"gagnant": [
+"FRESH - Lil Baby"
+],
+"prix": {
+"FRESH - Lil Baby": {
+"mar": 0.9625,
+"jeu": 0.9585,
+"sam": 0.9585
+},
+"you seem pretty sad for a girl so in love - Olivia Rodrigo": {
+"mar": 0.0375,
+"jeu": 0.0335,
+"sam": 0.0335
+},
+"The Black Parade - My Chemical Romance": {
+"mar": 0.005,
+"jeu": 0.005,
+"sam": 0.005
+},
+"Sweet Action II - Jack Harlow": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.0055
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.0055
+},
+"Perfecth - Queens of the Stone Age": {
+"mar": 0.005,
+"jeu": 0.005,
+"sam": 0.005
+},
+"O My Beloved - Kings of Leon": {
+"mar": 0.005,
+"jeu": 0.005,
+"sam": 0.005
+}
+},
+"meneur_mar": [
+"FRESH - Lil Baby",
+0.9625,
+true
+],
+"meneur_jeu": [
+"FRESH - Lil Baby",
+0.9585,
+true
+],
+"meneur_sam": [
+"FRESH - Lil Baby",
+0.9585,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of January 17",
+"samedi": "2026-01-17",
+"gagnant": [
+"I'm The Problem - Morgan Wallen"
+],
+"prix": {
+"The Life Of A Showgirl - Taylor Swift": {
+"mar": null,
+"jeu": 0.535,
+"sam": 0.061
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.375,
+"sam": 0.915
+},
+"KPop Demon Hunters - KPop Demon Hunters Cast (Soundtrack)": {
+"mar": null,
+"jeu": 0.345,
+"sam": 0.0115
+},
+"The Art Of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.345,
+"sam": 0.0015
+},
+"Man's Best Friend - Sabrina Carpenter": {
+"mar": null,
+"jeu": 0.345,
+"sam": 0.011
+},
+"DINASTIA - Peso Pluma & Tito Double P": {
+"mar": null,
+"jeu": 0.255,
+"sam": 0.0005
+},
+"SOS - SZA": {
+"mar": null,
+"jeu": 0.255,
+"sam": 0.0005
+},
+"So Close To What - Tate McRae": {
+"mar": null,
+"jeu": 0.345,
+"sam": 0.0035
+},
+"One Thing At A Time - Morgan Wallen": {
+"mar": null,
+"jeu": 0.23,
+"sam": 0.0005
+},
+"Short n' Sweet - Sabrina Carpenter": {
+"mar": null,
+"jeu": 0.215,
+"sam": 0.0005
+},
+"The Leaks - Lil Baby": {
+"mar": null,
+"jeu": 0.215,
+"sam": 0.0005
+}
+},
+"meneur_jeu": [
+"The Life Of A Showgirl - Taylor Swift",
+0.535,
+false
+],
+"meneur_sam": [
+"I'm The Problem - Morgan Wallen",
+0.915,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of April 11",
+"samedi": "2026-04-11",
+"gagnant": [
+"Arirang - BTS"
+],
+"prix": {
+"Arirang - BTS": {
+"mar": 0.605,
+"jeu": 0.85,
+"sam": 0.915
+},
+"The Way I Am - Luke Combs": {
+"mar": 0.0755,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Kiss All The Time. Disco, Occasionally - Harry Styles": {
+"mar": 0.0265,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Octane - Don Toliver": {
+"mar": 0.009,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.0155,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Debí Tirar Más Fotos - Bad Bunny": {
+"mar": 0.0045,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"The Romantic - Bruno Mars": {
+"mar": 0.024,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"One Thing at a Time - Morgan Wallen": {
+"mar": 0.0055,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Bully - Kanye West": {
+"mar": 0.355,
+"jeu": 0.145,
+"sam": 0.08
+}
+},
+"meneur_mar": [
+"Arirang - BTS",
+0.605,
+true
+],
+"meneur_jeu": [
+"Arirang - BTS",
+0.85,
+true
+],
+"meneur_sam": [
+"Arirang - BTS",
+0.915,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of April 4",
+"samedi": "2026-04-04",
+"gagnant": [
+"Arirang - BTS"
+],
+"prix": {
+"Kiss All The Time. Disco, Occasionally. - Harry Styles": {
+"mar": 0.0095,
+"jeu": 0.002,
+"sam": 0.0005
+},
+"I'm the Problem - Morgan Wallen": {
+"mar": 0.0065,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"Mutiny After Midnight - Johnny Blue Skies & The Dark Clouds": {
+"mar": 0.0065,
+"jeu": 0.003,
+"sam": 0.001
+},
+"Unique - P1Harmony": {
+"mar": 0.0245,
+"jeu": 0.002,
+"sam": 0.0025
+},
+"Debí Tirar Más Fotos - Bad Bunny": {
+"mar": 0.005,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Octane - Don Toliver": {
+"mar": 0.007,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.006,
+"jeu": 0.003,
+"sam": 0.001
+},
+"The Romantic - Bruno Mars": {
+"mar": 0.007,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"So Close to What - Tate McRae": {
+"mar": 0.0065,
+"jeu": 0.0025,
+"sam": 0.0005
+},
+"KPop Demon Hunters - Soundtrack": {
+"mar": 0.016,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Arirang - BTS": {
+"mar": null,
+"jeu": 0.991,
+"sam": 0.9965
+}
+},
+"meneur_mar": [
+"Unique - P1Harmony",
+0.0245,
+false
+],
+"meneur_jeu": [
+"Arirang - BTS",
+0.991,
+true
+],
+"meneur_sam": [
+"Arirang - BTS",
+0.9965,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of March 7",
+"samedi": "2026-03-07",
+"gagnant": [],
+"prix": {
+"Octane - Don Toliver": {
+"mar": null,
+"jeu": 0.0065,
+"sam": 0.0105
+},
+"Debi Tirar Mas Fotos - Bad Bunny": {
+"mar": null,
+"jeu": 0.0225,
+"sam": 0.021
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.3515,
+"sam": 0.0105
+},
+"The Art Of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.04,
+"sam": 0.0395
+},
+"The Life Of A Showgirl - Taylor Swift": {
+"mar": null,
+"jeu": 0.012,
+"sam": 0.0095
+},
+"Piss in the Wind - Joji": {
+"mar": null,
+"jeu": 0.009,
+"sam": 0.0585
+},
+"Golden Hour: Part 4 - ATEEZ": {
+"mar": null,
+"jeu": 0.01,
+"sam": 0.0105
+},
+"The Fall-Off - J. Cole": {
+"mar": null,
+"jeu": 0.006,
+"sam": 0.0185
+},
+"Wuthering Heights - Charli XCX": {
+"mar": null,
+"jeu": 0.006,
+"sam": 0.0155
+},
+"Un Verano Sin Ti - Bad Bunny": {
+"mar": null,
+"jeu": 0.026,
+"sam": 0.0145
+}
+},
+"meneur_jeu": [
+"I'm The Problem - Morgan Wallen",
+0.3515,
+false
+],
+"meneur_sam": [
+"Piss in the Wind - Joji",
+0.0585,
+false
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of February 21",
+"samedi": "2026-02-21",
+"gagnant": [
+"The Fall-Off - J. Cole"
+],
+"prix": {
+"Octane - Don Toliver": {
+"mar": null,
+"jeu": 0.0025,
+"sam": 0.0025
+},
+"Debi Tirar Mas Fotos - Bad Bunny": {
+"mar": null,
+"jeu": 0.065,
+"sam": 0.012
+},
+"I’m The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0055
+},
+"The Art Of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.003
+},
+"The Life Of A Showgirl - Taylor Swift": {
+"mar": null,
+"jeu": 0.0025,
+"sam": 0.003
+},
+"With Heaven on Top - Zach Bryan": {
+"mar": null,
+"jeu": 0.011,
+"sam": 0.003
+},
+"The Fall-Off - J. Cole": {
+"mar": null,
+"jeu": 0.895,
+"sam": 0.977
+}
+},
+"meneur_jeu": [
+"The Fall-Off - J. Cole",
+0.895,
+true
+],
+"meneur_sam": [
+"The Fall-Off - J. Cole",
+0.977,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of January 24",
+"samedi": "2026-01-24",
+"gagnant": [
+"With Heaven on Top - Zach Bryan"
+],
+"prix": {
+"The Life Of A Showgirl - Taylor Swift": {
+"mar": null,
+"jeu": 0.0065,
+"sam": 0.0025
+},
+"I’m The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"KPop Demon Hunters - KPop Demon Hunters Cast (Soundtrack)": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"The Art Of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"Man’s Best Friend - Sabrina Carpenter": {
+"mar": null,
+"jeu": 0.0035,
+"sam": 0.003
+},
+"DINASTIA - Peso Pluma & Tito Double P": {
+"mar": null,
+"jeu": 0.005,
+"sam": 0.0025
+},
+"Before I Forget - The Kid LAROI": {
+"mar": null,
+"jeu": 0.009,
+"sam": 0.0025
+},
+"So Close To What - Tate McRae": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"One Thing At A Time - Morgan Wallen": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"Short n’ Sweet - Sabrina Carpenter": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"With Heaven on Top - Zach Bryan": {
+"mar": null,
+"jeu": 0.981,
+"sam": 0.9915
+}
+},
+"meneur_jeu": [
+"With Heaven on Top - Zach Bryan",
+0.981,
+true
+],
+"meneur_sam": [
+"With Heaven on Top - Zach Bryan",
+0.9915,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of November 7",
+"samedi": "2026-11-07",
+"gagnant": [],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.052,
+"jeu": 0.0455,
+"sam": 0.044
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.625,
+"jeu": 0.205,
+"sam": 0.0175
+},
+"The Life of a Showgirl: The Encore": {
+"mar": 0.035,
+"jeu": 0.054,
+"sam": 0.051
+},
+"Drake - HABIBTI (FOMO)": {
+"mar": 0.0265,
+"jeu": 0.016,
+"sam": 0.0165
+},
+"Zach Bryan - Young Manhood & Other Donatable Organs": {
+"mar": 0.005,
+"jeu": 0.0055,
+"sam": 0.0055
+},
+"LISA - Press Play": {
+"mar": 0.005,
+"jeu": 0.0205,
+"sam": 0.0265
+}
+},
+"meneur_mar": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.625,
+false
+],
+"meneur_jeu": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.205,
+false
+],
+"meneur_sam": [
+"The Life of a Showgirl: The Encore",
+0.051,
+false
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of August 8",
+"samedi": "2026-08-08",
+"gagnant": [
+"I'm The Problem - Morgan Wallen"
+],
+"prix": {
+"Charli xcx - Music, Fashion, Film": {
+"mar": 0.25,
+"jeu": 0.505,
+"sam": 0.15
+},
+"Dandelion - Ella Langley": {
+"mar": 0.3035,
+"jeu": 0.0275,
+"sam": 0.0015
+},
+"Future - The Real Me": {
+"mar": 0.0055,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"Iceman - Drake": {
+"mar": 0.0055,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.6205,
+"jeu": 0.3155,
+"sam": 0.104
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.0055,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.255,
+"jeu": 0.195,
+"sam": 0.635
+},
+"Daughter from Hell - Gracie Abrams": {
+"mar": 0.3065,
+"jeu": 0.012,
+"sam": 0.0005
+}
+},
+"meneur_mar": [
+"I'm The Problem - Morgan Wallen",
+0.6205,
+true
+],
+"meneur_jeu": [
+"Charli xcx - Music, Fashion, Film",
+0.505,
+false
+],
+"meneur_sam": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.635,
+false
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of November 14",
+"samedi": "2026-11-14",
+"gagnant": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.027,
+"jeu": 0.027,
+"sam": 0.027
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.38,
+"jeu": 0.635,
+"sam": 0.68
+},
+"The Life of a Showgirl: The Encore - Taylor Swift": {
+"mar": 0.0265,
+"jeu": 0.027,
+"sam": 0.027
+},
+"HABIBTI (FOMO) - Drake": {
+"mar": 0.0155,
+"jeu": 0.009,
+"sam": 0.0085
+},
+"Young Manhood & Other Donatable Organs - Zach Bryan": {
+"mar": 0.0265,
+"jeu": 0.027,
+"sam": 0.027
+},
+"Press Play - LISA": {
+"mar": 0.0265,
+"jeu": 0.027,
+"sam": 0.027
+},
+"Perfecth - Queens of the Stone Age": {
+"mar": 0.446,
+"jeu": 0.027,
+"sam": 0.027
+}
+},
+"meneur_mar": [
+"Perfecth - Queens of the Stone Age",
+0.446,
+false
+],
+"meneur_jeu": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.635,
+true
+],
+"meneur_sam": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.68,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of October 31",
+"samedi": "2026-10-31",
+"gagnant": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.002,
+"jeu": 0.002,
+"sam": 0.0005
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.975,
+"jeu": 0.9955,
+"sam": 0.9945
+},
+"The Life of a Showgirl: The Encore": {
+"mar": 0.005,
+"jeu": 0.0045,
+"sam": 0.005
+},
+"Drake - HABIBTI (FOMO)": {
+"mar": 0.0015,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Zach Bryan - Young Manhood & Other Donatable Organs": {
+"mar": 0.0205,
+"jeu": 0.0055,
+"sam": 0.005
+},
+"Other": {
+"mar": 0.0015,
+"jeu": 0.0005,
+"sam": 0.0005
+}
+},
+"meneur_mar": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.975,
+true
+],
+"meneur_jeu": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.9955,
+true
+],
+"meneur_sam": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.9945,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of October 24",
+"samedi": "2026-10-24",
+"gagnant": [
+"The Life of a Showgirl: The Encore"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.0025,
+"jeu": 0.0025,
+"sam": 0.0015
+},
+"Dandelion - Ella Langley": {
+"mar": 0.0025,
+"jeu": 0.002,
+"sam": 0.0005
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.022,
+"jeu": 0.0105,
+"sam": 0.0015
+},
+"The Life of a Showgirl: The Encore": {
+"mar": 0.9505,
+"jeu": 0.991,
+"sam": 0.9965
+},
+"Drake - HABIBTI (FOMO)": {
+"mar": 0.002,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Bass Persuades - Miley Cyrus": {
+"mar": 0.0015,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Troye Sivan - She's the Best": {
+"mar": 0.0025,
+"jeu": 0.002,
+"sam": 0.0005
+}
+},
+"meneur_mar": [
+"The Life of a Showgirl: The Encore",
+0.9505,
+true
+],
+"meneur_jeu": [
+"The Life of a Showgirl: The Encore",
+0.991,
+true
+],
+"meneur_sam": [
+"The Life of a Showgirl: The Encore",
+0.9965,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of September 19",
+"samedi": "2026-09-19",
+"gagnant": [
+"Dandelion - Ella Langley"
+],
+"prix": {
+"THE SIN : BLISS - ENHYPEN": {
+"mar": 0.016,
+"jeu": 0.0055,
+"sam": 0.003
+},
+"Dandelion - Ella Langley": {
+"mar": 0.935,
+"jeu": 0.745,
+"sam": 0.963
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.035,
+"jeu": 0.072,
+"sam": 0.031
+},
+"Don't Look Down - Rod Wave": {
+"mar": 0.0195,
+"jeu": 0.011,
+"sam": 0.005
+},
+"Ultimate Dolly Parton - Dolly Parton": {
+"mar": 0.0085,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Wildchild - Alex Warren": {
+"mar": 0.0155,
+"jeu": 0.0105,
+"sam": 0.005
+}
+},
+"meneur_mar": [
+"Dandelion - Ella Langley",
+0.935,
+true
+],
+"meneur_jeu": [
+"Dandelion - Ella Langley",
+0.745,
+true
+],
+"meneur_sam": [
+"Dandelion - Ella Langley",
+0.963,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of February 28",
+"samedi": "2026-02-28",
+"gagnant": [
+"Debi Tirar Mas Fotos - Bad Bunny"
+],
+"prix": {
+"Octane - Don Toliver": {
+"mar": null,
+"jeu": 0.0025,
+"sam": 0.002
+},
+"Debi Tirar Mas Fotos - Bad Bunny": {
+"mar": null,
+"jeu": 0.9795,
+"sam": 0.9935
+},
+"I’m The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.012,
+"sam": 0.0045
+},
+"The Art Of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.002,
+"sam": 0.0005
+},
+"The Life Of A Showgirl - Taylor Swift": {
+"mar": null,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Piss in the Wind - Joji": {
+"mar": null,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Golden Hour: Part 4 - ATEEZ": {
+"mar": null,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"The Fall-Off - J. Cole": {
+"mar": null,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Wuthering Heights - Charli XCX": {
+"mar": null,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Un Verano Sin Ti - Bad Bunny": {
+"mar": null,
+"jeu": 0.012,
+"sam": 0.003
+}
+},
+"meneur_jeu": [
+"Debi Tirar Mas Fotos - Bad Bunny",
+0.9795,
+true
+],
+"meneur_sam": [
+"Debi Tirar Mas Fotos - Bad Bunny",
+0.9935,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of September 26",
+"samedi": "2026-09-26",
+"gagnant": [
+"Westside Whimsy - Jhené Aiko"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.0025,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"Dandelion - Ella Langley": {
+"mar": 0.046,
+"jeu": 0.009,
+"sam": 0.001
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.029,
+"jeu": 0.0065,
+"sam": 0.004
+},
+"Don't Look Down - Rod Wave": {
+"mar": 0.003,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"Ultimate Dolly Parton - Dolly Parton": {
+"mar": 0.0025,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Wildchild - Alex Warren": {
+"mar": 0.003,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Westside Whimsy - Jhené Aiko": {
+"mar": 0.9195,
+"jeu": 0.99,
+"sam": 0.99
+}
+},
+"meneur_mar": [
+"Westside Whimsy - Jhené Aiko",
+0.9195,
+true
+],
+"meneur_jeu": [
+"Westside Whimsy - Jhené Aiko",
+0.99,
+true
+],
+"meneur_sam": [
+"Westside Whimsy - Jhené Aiko",
+0.99,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of September 5",
+"samedi": "2026-09-05",
+"gagnant": [
+"THE SIN : BLISS - ENHYPEN"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.005,
+"jeu": 0.0025,
+"sam": 0.0015
+},
+"Petal - Ariana Grande": {
+"mar": 0.014,
+"jeu": 0.0025,
+"sam": 0.0025
+},
+"THE SIN : BLISS - ENHYPEN": {
+"mar": 0.9595,
+"jeu": 0.9395,
+"sam": 0.989
+},
+"Dandelion - Ella Langley": {
+"mar": 0.026,
+"jeu": 0.0155,
+"sam": 0.0055
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.026,
+"jeu": 0.016,
+"sam": 0.0045
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.026,
+"jeu": 0.0055,
+"sam": 0.003
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.005,
+"jeu": 0.0025,
+"sam": 0.0025
+}
+},
+"meneur_mar": [
+"THE SIN : BLISS - ENHYPEN",
+0.9595,
+true
+],
+"meneur_jeu": [
+"THE SIN : BLISS - ENHYPEN",
+0.9395,
+true
+],
+"meneur_sam": [
+"THE SIN : BLISS - ENHYPEN",
+0.989,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of July 18",
+"samedi": "2026-07-18",
+"gagnant": [
+"CONFESSIONS II - Madonna"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.01,
+"jeu": 0.0045,
+"sam": 0.0025
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.0135,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Iceman - Drake": {
+"mar": 0.0155,
+"jeu": 0.002,
+"sam": 0.0015
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0465,
+"jeu": 0.005,
+"sam": 0.002
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.0035,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.13,
+"jeu": 0.068,
+"sam": 0.0135
+},
+"GOLDEN HOUR: Part.5 - ATEEZ": {
+"mar": 0.01,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"The Wow! Signal - Muse": {
+"mar": 0.006,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"CONFESSIONS II - Madonna": {
+"mar": 0.845,
+"jeu": 0.925,
+"sam": 0.984
+}
+},
+"meneur_mar": [
+"CONFESSIONS II - Madonna",
+0.845,
+true
+],
+"meneur_jeu": [
+"CONFESSIONS II - Madonna",
+0.925,
+true
+],
+"meneur_sam": [
+"CONFESSIONS II - Madonna",
+0.984,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of August 22",
+"samedi": "2026-08-22",
+"gagnant": [
+"THIS & THAT - Stray Kids"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.978,
+"jeu": 0.9945,
+"sam": 0.996
+},
+"Petal - Ariana Grande": {
+"mar": 0.0135,
+"jeu": 0.003,
+"sam": 0.003
+},
+"Charli xcx - Music, Fashion, Film": {
+"mar": 0.002,
+"jeu": 0.002,
+"sam": 0.002
+},
+"Dandelion - Ella Langley": {
+"mar": 0.002,
+"jeu": 0.002,
+"sam": 0.002
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.002,
+"jeu": 0.002,
+"sam": 0.002
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.002,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.002,
+"jeu": 0.002,
+"sam": 0.0015
+}
+},
+"meneur_mar": [
+"THIS & THAT - Stray Kids",
+0.978,
+true
+],
+"meneur_jeu": [
+"THIS & THAT - Stray Kids",
+0.9945,
+true
+],
+"meneur_sam": [
+"THIS & THAT - Stray Kids",
+0.996,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of June 6",
+"samedi": "2026-06-06",
+"gagnant": [
+"Iceman - Drake"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.0035,
+"jeu": 0.0035,
+"sam": 0.0035
+},
+"Maid of Honor - Drake": {
+"mar": 0.004,
+"jeu": 0.0025,
+"sam": 0.0025
+},
+"Iceman - Drake": {
+"mar": 0.977,
+"jeu": 0.9805,
+"sam": 0.994
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0025,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"GREEN GREEN (EP) - CORTIS": {
+"mar": 0.005,
+"jeu": 0.004,
+"sam": 0.0035
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.0025,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"Habibti - Drake": {
+"mar": 0.003,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.007,
+"jeu": 0.0035,
+"sam": 0.0035
+},
+"BROWN - Chris Brown": {
+"mar": 0.0025,
+"jeu": 0.001,
+"sam": 0.0005
+}
+},
+"meneur_mar": [
+"Iceman - Drake",
+0.977,
+true
+],
+"meneur_jeu": [
+"Iceman - Drake",
+0.9805,
+true
+],
+"meneur_sam": [
+"Iceman - Drake",
+0.994,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of August 1",
+"samedi": "2026-08-01",
+"gagnant": [
+"Daughter from Hell - Gracie Abrams"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.0295,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Future - The Real Me": {
+"mar": 0.0275,
+"jeu": 0.0055,
+"sam": 0.0005
+},
+"Iceman - Drake": {
+"mar": 0.0295,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0295,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.0295,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.031,
+"jeu": 0.005,
+"sam": 0.0015
+},
+"Daughter from Hell - Gracie Abrams": {
+"mar": 0.945,
+"jeu": 0.9605,
+"sam": 0.992
+},
+"The Wow! Signal - Muse": {
+"mar": 0.0275,
+"jeu": 0.0105,
+"sam": 0.0005
+},
+"CONFESSIONS II - Madonna": {
+"mar": 0.0275,
+"jeu": 0.0105,
+"sam": 0.0015
+}
+},
+"meneur_mar": [
+"Daughter from Hell - Gracie Abrams",
+0.945,
+true
+],
+"meneur_jeu": [
+"Daughter from Hell - Gracie Abrams",
+0.9605,
+true
+],
+"meneur_sam": [
+"Daughter from Hell - Gracie Abrams",
+0.992,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of August 15",
+"samedi": "2026-08-15",
+"gagnant": [
+"Petal - Ariana Grande"
+],
+"prix": {
+"Petal - Ariana Grande": {
+"mar": 0.9785,
+"jeu": 0.99,
+"sam": 0.9945
+},
+"Charli xcx - Music, Fashion, Film": {
+"mar": 0.006,
+"jeu": 0.0055,
+"sam": 0.002
+},
+"Dandelion - Ella Langley": {
+"mar": 0.007,
+"jeu": 0.0045,
+"sam": 0.0015
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.014,
+"jeu": 0.0045,
+"sam": 0.0015
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.008,
+"jeu": 0.002,
+"sam": 0.0005
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.01,
+"jeu": 0.0045,
+"sam": 0.0015
+},
+"Daughter from Hell - Gracie Abrams": {
+"mar": 0.01,
+"jeu": 0.0045,
+"sam": 0.0015
+}
+},
+"meneur_mar": [
+"Petal - Ariana Grande",
+0.9785,
+true
+],
+"meneur_jeu": [
+"Petal - Ariana Grande",
+0.99,
+true
+],
+"meneur_sam": [
+"Petal - Ariana Grande",
+0.9945,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of June 13",
+"samedi": "2026-06-13",
+"gagnant": [
+"Iceman - Drake"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.008,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Maid of Honor - Drake": {
+"mar": 0.0025,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Iceman - Drake": {
+"mar": 0.983,
+"jeu": 0.9865,
+"sam": 0.992
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0035,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"GREEN GREEN (EP) - CORTIS": {
+"mar": 0.0025,
+"jeu": 0.0065,
+"sam": 0.005
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.003,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Habibti - Drake": {
+"mar": 0.005,
+"jeu": 0.0025,
+"sam": 0.0015
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.0015,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"BROWN - Chris Brown": {
+"mar": 0.005,
+"jeu": 0.0025,
+"sam": 0.0015
+}
+},
+"meneur_mar": [
+"Iceman - Drake",
+0.983,
+true
+],
+"meneur_jeu": [
+"Iceman - Drake",
+0.9865,
+true
+],
+"meneur_sam": [
+"Iceman - Drake",
+0.992,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of July 25",
+"samedi": "2026-07-25",
+"gagnant": [
+"Future - The Real Me"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.003,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Future - The Real Me": {
+"mar": 0.968,
+"jeu": 0.978,
+"sam": 0.9895
+},
+"Iceman - Drake": {
+"mar": 0.0025,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.017,
+"jeu": 0.007,
+"sam": 0.004
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.01,
+"jeu": 0.01,
+"sam": 0.0055
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.0145,
+"jeu": 0.0065,
+"sam": 0.0035
+},
+"GOLDEN HOUR: Part.5 - ATEEZ": {
+"mar": 0.0125,
+"jeu": 0.008,
+"sam": 0.004
+},
+"The Wow! Signal - Muse": {
+"mar": 0.0075,
+"jeu": 0.0035,
+"sam": 0.003
+},
+"CONFESSIONS II - Madonna": {
+"mar": 0.0335,
+"jeu": 0.011,
+"sam": 0.01
+}
+},
+"meneur_mar": [
+"Future - The Real Me",
+0.968,
+true
+],
+"meneur_jeu": [
+"Future - The Real Me",
+0.978,
+true
+],
+"meneur_sam": [
+"Future - The Real Me",
+0.9895,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of June 20",
+"samedi": "2026-06-20",
+"gagnant": [
+"Iceman - Drake"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.0045,
+"jeu": 0.0015,
+"sam": 0.0005
+},
+"Maid of Honor - Drake": {
+"mar": 0.0035,
+"jeu": 0.003,
+"sam": 0.0005
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.0025,
+"jeu": 0.003,
+"sam": 0.0025
+},
+"Iceman - Drake": {
+"mar": 0.9705,
+"jeu": 0.981,
+"sam": 0.9915
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0025,
+"jeu": 0.002,
+"sam": 0.0015
+},
+"GREENGREEN - CORTIS": {
+"mar": 0.0035,
+"jeu": 0.003,
+"sam": 0.0005
+},
+"Habibti - Drake": {
+"mar": 0.0015,
+"jeu": 0.002,
+"sam": 0.0015
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.0085,
+"jeu": 0.0125,
+"sam": 0.0035
+},
+"BROWN - Chris Brown": {
+"mar": 0.0065,
+"jeu": 0.0035,
+"sam": 0.0015
+}
+},
+"meneur_mar": [
+"Iceman - Drake",
+0.9705,
+true
+],
+"meneur_jeu": [
+"Iceman - Drake",
+0.981,
+true
+],
+"meneur_sam": [
+"Iceman - Drake",
+0.9915,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of April 18",
+"samedi": "2026-04-18",
+"gagnant": [
+"Arirang - BTS"
+],
+"prix": {
+"Arirang - BTS": {
+"mar": null,
+"jeu": 0.975,
+"sam": 0.9925
+},
+"The Way I Am - Luke Combs": {
+"mar": null,
+"jeu": 0.005,
+"sam": 0.0005
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.006,
+"sam": 0.0035
+},
+"Octane - Don Toliver": {
+"mar": null,
+"jeu": 0.0035,
+"sam": 0.0005
+},
+"The Art of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.004,
+"sam": 0.0005
+},
+"Debí Tirar Más Fotos - Bad Bunny": {
+"mar": null,
+"jeu": 0.016,
+"sam": 0.0035
+},
+"Hades - Melanie Martinez": {
+"mar": null,
+"jeu": 0.0035,
+"sam": 0.0015
+},
+"ADL - Yeat": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0005
+},
+"Bully - Kanye West": {
+"mar": null,
+"jeu": 0.0045,
+"sam": 0.0015
+}
+},
+"meneur_jeu": [
+"Arirang - BTS",
+0.975,
+true
+],
+"meneur_sam": [
+"Arirang - BTS",
+0.9925,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of September 12",
+"samedi": "2026-09-12",
+"gagnant": [
+"Don't Look Down - Rod Wave"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.0005
+},
+"Petal - Ariana Grande": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.0005
+},
+"THE SIN : BLISS - ENHYPEN": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.0005
+},
+"Dandelion - Ella Langley": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.0005
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.004,
+"jeu": 0.0055,
+"sam": 0.0005
+},
+"Don't Look Down - Rod Wave": {
+"mar": 0.9725,
+"jeu": 0.977,
+"sam": 0.996
+},
+"Ultimate Dolly Parton - Dolly Parton": {
+"mar": 0.023,
+"jeu": 0.0185,
+"sam": 0.003
+},
+"Wildchild - Alex Warren": {
+"mar": 0.0055,
+"jeu": 0.0055,
+"sam": 0.003
+}
+},
+"meneur_mar": [
+"Don't Look Down - Rod Wave",
+0.9725,
+true
+],
+"meneur_jeu": [
+"Don't Look Down - Rod Wave",
+0.977,
+true
+],
+"meneur_sam": [
+"Don't Look Down - Rod Wave",
+0.996,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of October 10",
+"samedi": "2026-10-10",
+"gagnant": [
+"The Life of a Showgirl: The Encore"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.0045,
+"jeu": 0.001,
+"sam": 0.0045
+},
+"Dandelion - Ella Langley": {
+"mar": 0.0045,
+"jeu": 0.0005,
+"sam": 0.0045
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.005,
+"jeu": 0.0005,
+"sam": 0.0045
+},
+"Don't Look Down - Rod Wave": {
+"mar": 0.0045,
+"jeu": 0.0005,
+"sam": 0.0045
+},
+"Ultimate Dolly Parton - Dolly Parton": {
+"mar": 0.005,
+"jeu": 0.001,
+"sam": 0.0045
+},
+"Wildchild - Alex Warren": {
+"mar": 0.005,
+"jeu": 0.0005,
+"sam": 0.0045
+},
+"Westside Whimsy - Jhené Aiko": {
+"mar": 0.002,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"The Life of a Showgirl: The Encore": {
+"mar": 0.9895,
+"jeu": 0.9995,
+"sam": 0.9915
+}
+},
+"meneur_mar": [
+"The Life of a Showgirl: The Encore",
+0.9895,
+true
+],
+"meneur_jeu": [
+"The Life of a Showgirl: The Encore",
+0.9995,
+true
+],
+"meneur_sam": [
+"The Life of a Showgirl: The Encore",
+0.9915,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of October 17",
+"samedi": "2026-10-17",
+"gagnant": [
+"The Life of a Showgirl: The Encore"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.021,
+"jeu": 0.0025,
+"sam": 0.0075
+},
+"Dandelion - Ella Langley": {
+"mar": 0.0225,
+"jeu": 0.002,
+"sam": 0.0015
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.03,
+"jeu": 0.0175,
+"sam": 0.018
+},
+"The Life of a Showgirl: The Encore": {
+"mar": 0.9555,
+"jeu": 0.976,
+"sam": 0.98
+},
+"Drake - HABIBTI (FOMO)": {
+"mar": 0.027,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Bass Persuades - Miley Cyrus": {
+"mar": 0.021,
+"jeu": 0.0025,
+"sam": 0.0075
+}
+},
+"meneur_mar": [
+"The Life of a Showgirl: The Encore",
+0.9555,
+true
+],
+"meneur_jeu": [
+"The Life of a Showgirl: The Encore",
+0.976,
+true
+],
+"meneur_sam": [
+"The Life of a Showgirl: The Encore",
+0.98,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of August 29",
+"samedi": "2026-08-29",
+"gagnant": [
+"WILD - KATSEYE"
+],
+"prix": {
+"THIS & THAT - Stray Kids": {
+"mar": 0.0165,
+"jeu": 0.0035,
+"sam": 0.0005
+},
+"Petal - Ariana Grande": {
+"mar": 0.005,
+"jeu": 0.0025,
+"sam": 0.0015
+},
+"Music, Fashion, Film - Charli xcx": {
+"mar": 0.005,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Dandelion - Ella Langley": {
+"mar": 0.0055,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.0055,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.003,
+"jeu": 0.002,
+"sam": 0.0015
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.0075,
+"jeu": 0.0025,
+"sam": 0.0025
+},
+"Lost Weekend - Phoebe Bridgers": {
+"mar": 0.002,
+"jeu": 0.0005,
+"sam": 0.0005
+},
+"WILD - KATSEYE": {
+"mar": 0.9785,
+"jeu": 0.9745,
+"sam": 0.9925
+}
+},
+"meneur_mar": [
+"WILD - KATSEYE",
+0.9785,
+true
+],
+"meneur_jeu": [
+"WILD - KATSEYE",
+0.9745,
+true
+],
+"meneur_sam": [
+"WILD - KATSEYE",
+0.9925,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of July 11",
+"samedi": "2026-07-11",
+"gagnant": [
+"GOLDEN HOUR: Part.5 - ATEEZ"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.0025,
+"jeu": 0.002,
+"sam": 0.002
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.0025,
+"jeu": 0.0055,
+"sam": 0.0055
+},
+"Iceman - Drake": {
+"mar": 0.0035,
+"jeu": 0.005,
+"sam": 0.005
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.002,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"Habibti - Drake": {
+"mar": 0.0015,
+"jeu": 0.001,
+"sam": 0.001
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.003,
+"jeu": 0.0035,
+"sam": 0.001
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": 0.014,
+"jeu": 0.004,
+"sam": 0.002
+},
+"GOLDEN HOUR: Part.5 - ATEEZ": {
+"mar": 0.9845,
+"jeu": 0.9905,
+"sam": 0.9955
+},
+"The Wow! Signal - Muse": {
+"mar": 0.002,
+"jeu": 0.002,
+"sam": 0.002
+}
+},
+"meneur_mar": [
+"GOLDEN HOUR: Part.5 - ATEEZ",
+0.9845,
+true
+],
+"meneur_jeu": [
+"GOLDEN HOUR: Part.5 - ATEEZ",
+0.9905,
+true
+],
+"meneur_sam": [
+"GOLDEN HOUR: Part.5 - ATEEZ",
+0.9955,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of July 4",
+"samedi": "2026-07-04",
+"gagnant": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": null,
+"jeu": 0.007,
+"sam": 0.0155
+},
+"The Art of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0095
+},
+"Iceman - Drake": {
+"mar": null,
+"jeu": 0.0035,
+"sam": 0.345
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.003
+},
+"Habibti - Drake": {
+"mar": null,
+"jeu": 0.0125,
+"sam": 0.021
+},
+"The Great Divide - Noah Kahan": {
+"mar": null,
+"jeu": 0.013,
+"sam": 0.0235
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": null,
+"jeu": 0.973,
+"sam": 0.975
+}
+},
+"meneur_jeu": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.973,
+true
+],
+"meneur_sam": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.975,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of June 27",
+"samedi": "2026-06-27",
+"gagnant": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": null,
+"jeu": null,
+"sam": 0.0075
+},
+"The Art of Loving - Olivia Dean": {
+"mar": null,
+"jeu": null,
+"sam": 0.0135
+},
+"Iceman - Drake": {
+"mar": null,
+"jeu": null,
+"sam": 0.004
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": null,
+"sam": 0.009
+},
+"Habibti - Drake": {
+"mar": null,
+"jeu": null,
+"sam": 0.0095
+},
+"The Great Divide - Noah Kahan": {
+"mar": null,
+"jeu": null,
+"sam": 0.0085
+},
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo": {
+"mar": null,
+"jeu": null,
+"sam": 0.9795
+}
+},
+"meneur_sam": [
+"You Seem Pretty Sad for a Girl So in Love - Olivia Rodrigo",
+0.9795,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of March 28",
+"samedi": "2026-03-28",
+"gagnant": [],
+"prix": {}
+},
+{
+"titre": "Billboard 200 #1 Album Week of March 21",
+"samedi": "2026-03-21",
+"gagnant": [],
+"prix": {}
+},
+{
+"titre": "Billboard 200 #1 Album Week of May 23",
+"samedi": "2026-05-23",
+"gagnant": [
+"The Great Divide - Noah Kahan"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": null,
+"jeu": 0.0115,
+"sam": 0.007
+},
+"Arirang - BTS": {
+"mar": null,
+"jeu": 0.0065,
+"sam": 0.005
+},
+"Bully - Ye": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0035
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0035
+},
+"SWAG - Justin Bieber": {
+"mar": null,
+"jeu": 0.003,
+"sam": 0.0035
+},
+"The Art of Loving - Olivia Dean": {
+"mar": null,
+"jeu": 0.0235,
+"sam": 0.0025
+},
+"Octane - Don Toliver": {
+"mar": null,
+"jeu": 0.0065,
+"sam": 0.003
+},
+"The Great Divide - Noah Kahan": {
+"mar": null,
+"jeu": 0.935,
+"sam": 0.99
+},
+"BROWN - Chris Brown": {
+"mar": null,
+"jeu": 0.0065,
+"sam": 0.0035
+}
+},
+"meneur_jeu": [
+"The Great Divide - Noah Kahan",
+0.935,
+true
+],
+"meneur_sam": [
+"The Great Divide - Noah Kahan",
+0.99,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of May 9",
+"samedi": "2026-05-09",
+"gagnant": [
+"The Great Divide - Noah Kahan"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.004,
+"jeu": 0.0015,
+"sam": 0.003
+},
+"Arirang - BTS": {
+"mar": 0.0035,
+"jeu": 0.0015,
+"sam": 0.003
+},
+"Bully - Ye": {
+"mar": 0.003,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.004,
+"jeu": 0.0055,
+"sam": 0.0055
+},
+"SWAG - Justin Bieber": {
+"mar": 0.003,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.0065,
+"jeu": 0.0015,
+"sam": 0.003
+},
+"Octane - Don Toliver": {
+"mar": 0.0035,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.9805,
+"jeu": 0.992,
+"sam": 0.9915
+}
+},
+"meneur_mar": [
+"The Great Divide - Noah Kahan",
+0.9805,
+true
+],
+"meneur_jeu": [
+"The Great Divide - Noah Kahan",
+0.992,
+true
+],
+"meneur_sam": [
+"The Great Divide - Noah Kahan",
+0.9915,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of May 30",
+"samedi": "2026-05-30",
+"gagnant": [
+"Iceman - Drake"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.43,
+"jeu": 0.004,
+"sam": 0.0025
+},
+"Maid of Honor - Drake": {
+"mar": 0.5,
+"jeu": 0.005,
+"sam": 0.005
+},
+"Iceman - Drake": {
+"mar": 0.43,
+"jeu": 0.9775,
+"sam": 0.99
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.43,
+"jeu": 0.004,
+"sam": 0.002
+},
+"GREEN GREEN (EP) - CORTIS": {
+"mar": 0.5,
+"jeu": 0.0035,
+"sam": 0.0035
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.365,
+"jeu": 0.004,
+"sam": 0.004
+},
+"Habibti - Drake": {
+"mar": 0.43,
+"jeu": 0.0025,
+"sam": 0.0025
+},
+"The Great Divide - Noah Kahan": {
+"mar": 0.47,
+"jeu": 0.0015,
+"sam": 0.0015
+},
+"BROWN - Chris Brown": {
+"mar": 0.43,
+"jeu": 0.003,
+"sam": 0.0025
+}
+},
+"meneur_mar": [
+"Maid of Honor - Drake",
+0.5,
+false
+],
+"meneur_jeu": [
+"Iceman - Drake",
+0.9775,
+true
+],
+"meneur_sam": [
+"Iceman - Drake",
+0.99,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of May 2",
+"samedi": "2026-05-02",
+"gagnant": [
+"Dandelion - Ella Langley"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.9,
+"jeu": 0.9595,
+"sam": 0.9845
+},
+"Arirang - BTS": {
+"mar": 0.0335,
+"jeu": 0.0375,
+"sam": 0.0095
+},
+"Bully - Ye": {
+"mar": 0.002,
+"jeu": 0.0035,
+"sam": 0.0005
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.06,
+"jeu": 0.054,
+"sam": 0.0095
+},
+"SWAG - Justin Bieber": {
+"mar": 0.0045,
+"jeu": 0.0175,
+"sam": 0.0055
+},
+"The Art of Loving - Olivia Dean": {
+"mar": 0.003,
+"jeu": 0.003,
+"sam": 0.0015
+},
+"Octane - Don Toliver": {
+"mar": 0.003,
+"jeu": 0.005,
+"sam": 0.0025
+}
+},
+"meneur_mar": [
+"Dandelion - Ella Langley",
+0.9,
+true
+],
+"meneur_jeu": [
+"Dandelion - Ella Langley",
+0.9595,
+true
+],
+"meneur_sam": [
+"Dandelion - Ella Langley",
+0.9845,
+true
+]
+},
+{
+"titre": "Billboard 200 #1 Album Week of April 25",
+"samedi": "2026-04-25",
+"gagnant": [
+"Dandelion - Ella Langley"
+],
+"prix": {
+"Dandelion - Ella Langley": {
+"mar": 0.9785,
+"jeu": 0.9935,
+"sam": 0.997
+},
+"Arirang - BTS": {
+"mar": 0.0195,
+"jeu": 0.0105,
+"sam": 0.003
+},
+"Bully - Ye": {
+"mar": 0.006,
+"jeu": 0.002,
+"sam": 0.001
+},
+"I'm The Problem - Morgan Wallen": {
+"mar": 0.003,
+"jeu": 0.0015,
+"sam": 0.0015
+}
+},
+"meneur_mar": [
+"Dandelion - Ella Langley",
+0.9785,
+true
+],
+"meneur_jeu": [
+"Dandelion - Ella Langley",
+0.9935,
+true
+],
+"meneur_sam": [
+"Dandelion - Ella Langley",
+0.997,
+true
+]
+}
+]
