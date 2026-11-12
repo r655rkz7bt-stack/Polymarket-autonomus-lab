@@ -111,6 +111,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 36. **PIB mensuel canadien : estimation anticipée contre tranches de l'officiel** (12/11/2026, passage de 6 h, `experiments/pib_canada.md`, même famille que n° 35). 33 paires 2022-2026 : révision de −0,3 à +0,2 point, la tranche de l'estimation juste ≈ 4 fois sur 10 alors que le marché la paie ≈ 0,5 ; juin-août 2026 aux vrais échanges : un pari par tranche, 18 paris, 12 gagnés pour 9,3 attendus, +27 % ; 4 réglages +20 à +28 % : **indice** → fantôme `pib_canada_anticipe`.
 
+37. **PCE de base (« Core PCE MoM / YoY - <mois> ») après le CPI et le PPI** (12/11/2026, passage de 6 h, notée, rien de testé ; même famille « chiffre déjà presque connu »). Le PCE de base se calcule en grande partie à partir des composantes du CPI et du PPI publiées 2 semaines avant ; les économistes publient alors une estimation au centième (« core PCE tracking 0.2x % »). Marchés : « Core PCE MoM - October 2026 » (19 k$), « Core PCE YoY » (17 k$), réglés le 25/11. À tester : sur les mois réglés, la tranche des estimations publiées après le PPI gagne-t-elle plus souvent que son prix aux vrais échanges ? Source des estimations : presse (Google Actualités), pas de service payant.
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|
