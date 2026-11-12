@@ -753,3 +753,21 @@ def test_controller_refusals_published_in_abstentions_are_a_lead():
     found = enquete.refus_controleur(abst)
     assert len(found) == 1 and "seismes_pays_v2.0.0 : refusé par le contrôleur : carnet périmé ×1" in found[0]["exemples"]
     assert enquete.refus_controleur(None) == [] and enquete.refus_controleur({"portefeuilles": {}}) == []
+
+
+def test_convictions_perimees_cas_du_danube_12_11():
+    """12/11/2026 : la position Danube (OUI 0,292) était revendue selon une conviction expirée la veille (p = 0,455) alors que la
+    prévision du jour donnait ≈ 0,6 ; le contrôle le dit, et se tait dès qu'une conviction du jour (plus bas, même marché) existe."""
+    from datetime import date
+    t0 = datetime(2026, 11, 11, 16, 17, tzinfo=timezone.utc)
+    rows = [_e("BUY", t0, token_id="danY", market_id="6581026", shares="67.03", price="0.292", outcome="Yes"),
+            _e("SELL", t0 + timedelta(hours=17), token_id="danY", shares="3.36", price="0.807")]
+    old = {"id": "danube-budapest-avant-15-11", "marche": "6581026", "probabilite": 0.455, "expire": date(2026, 11, 11)}
+    now = datetime(2026, 11, 12, 9, 30, tzinfo=timezone.utc)
+    f = enquete.convictions_perimees({"convictions_claude_v2.0.0": rows}, [old], now)
+    assert f and f[0]["controle"] == "convictions_perimees" and "63.67 parts" in f[0]["exemples"][0]
+    assert enquete.convictions_perimees({"convictions_claude_v2.0.0": rows}, [old], datetime(2026, 11, 12, 3, tzinfo=timezone.utc)) == []
+    new = dict(old, id="danube-budapest-avant-15-11-v2", probabilite=0.57, expire=date(2026, 11, 12))
+    assert enquete.convictions_perimees({"convictions_claude_v2.0.0": rows}, [dict(old, abandon=True), new], now) == []
+    settled = rows + [_e("SETTLE", now, token_id="danY")]
+    assert enquete.convictions_perimees({"convictions_claude_v2.0.0": settled}, [old], now) == []

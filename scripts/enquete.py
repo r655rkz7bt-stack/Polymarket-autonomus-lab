@@ -20,6 +20,7 @@ import yaml
 from _common import ROOT
 
 from polymarket_agent import enquete
+from polymarket_agent.convictions import charger
 from polymarket_agent.main import competitor_name
 from polymarket_agent.strategy_engine import load_strategies
 
@@ -86,7 +87,8 @@ def main() -> int:
     depuis = {a["nom"]: a["part_depuis"] for a in published.get("arene") or [] if a.get("part_depuis")}  # date d'entrée de chaque part
     findings = enquete.run(entries, configs, active, now, float((settings.get("principal") or {}).get("max_mise", 0.10)),
                            days=args.jours, audit=audit, abstentions=abstentions, sources=sources, parts=parts,
-                           textes=enquete.lire_experiences(ROOT), depuis=depuis, seismes_rows=catalogue_usgs(Path(args.data)))
+                           textes=enquete.lire_experiences(ROOT), depuis=depuis, seismes_rows=catalogue_usgs(Path(args.data)),
+                           convictions=charger(ROOT / "config" / "convictions.yaml"))
     out = ROOT / "reports" / "enquete.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(enquete.render(findings, now), encoding="utf-8")

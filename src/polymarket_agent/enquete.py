@@ -1303,11 +1303,59 @@ def sans_test_passe(entries: dict[str, list[dict]], configs: dict, textes: dict[
     return out
 
 
+def convictions_perimees(entries: dict[str, list[dict]], convictions: list[dict] | None, now: datetime,
+                         hours: float = 6) -> list[dict]:
+    """Positions de `convictions_claude` encore ouvertes alors que la conviction qui décide de leur revente (la dernière du fichier
+    pour ce marché) a expiré depuis plus de `hours` heures. La revente se fait quand l'acheteur paie plus que cette probabilité : une
+    probabilité d'hier décide alors sur une information périmée (12/11/2026 : Danube « avant le 15/11 », 3,36 parts revendues à
+    0,807 par une conviction à 0,455 écrite la veille, alors que la prévision du jour donnait ≈ 0,6 ; Rhin : conviction NON 0,52 de la
+    veille, prévision du jour ≈ 0,40). À faire : relire le marché et écrire une conviction du jour (ou `abandon: true`)."""
+    if convictions is None:
+        return []
+    last = {}
+    for c in convictions:
+        last[str(c["marche"])] = c
+    late = []
+    for name, rows in entries.items():
+        if not name.startswith("convictions_claude"):
+            continue
+        shares: dict[str, Decimal] = defaultdict(Decimal)
+        market: dict[str, str] = {}
+        for e in rows:
+            d = e.get("data") if isinstance(e.get("data"), dict) else {}
+            token = d.get("token_id")
+            if e["type"] == "RESET":
+                shares.clear()
+            elif e["type"] == "BUY":
+                shares[token] += Decimal(d["shares"])
+                market[token] = str(d.get("market_id"))
+            elif e["type"] == "SELL":
+                shares[token] -= Decimal(d["shares"])
+            elif e["type"] == "SETTLE":
+                shares.pop(token, None)
+        for token, q in shares.items():
+            if q <= 0:
+                continue
+            c = last.get(market.get(token, ""))
+            exp = c.get("expire") if c else None
+            if c is None:
+                late.append(f"{name} : marché {market.get(token)} ({q} parts) sans conviction dans le fichier")
+            elif not c.get("abandon") and exp is not None and datetime(exp.year, exp.month, exp.day, tzinfo=timezone.utc) \
+                    + timedelta(days=1, hours=hours) < now:
+                late.append(f"{name} : « {c.get('id')} » (marché {c['marche']}, {q} parts) expirée le {exp.isoformat()}, "
+                            f"revente décidée sur p = {c['probabilite']:.2f}")
+    if not late:
+        return []
+    return [_finding("convictions_perimees", A_REGARDER, f"{len(late)} position(s) de conviction gouvernée(s) par une conviction expirée",
+                     "La revente se décide sur une probabilité d'un autre jour : relire le marché, écrire une conviction du jour "
+                     "(même marché, plus bas dans config/convictions.yaml) ou `abandon: true`.", late)]
+
+
 def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: datetime,
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
         audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None,
         textes: dict[str, str] | None = None, depuis: dict[str, str] | None = None,
-        seismes_rows: list[dict] | None = None) -> list[dict]:
+        seismes_rows: list[dict] | None = None, convictions: list[dict] | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
@@ -1323,7 +1371,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)
                 + copie_absente(entries, parts, now, days=max(days, 3), depuis=depuis) + sans_test_passe(entries, configs, textes)
-                + catalogue_en_retard(entries, seismes_rows, since))
+                + catalogue_en_retard(entries, seismes_rows, since) + convictions_perimees(entries, convictions, now))
     return sorted(findings, key=lambda f: f["gravite"] != GRAVE)
 
 

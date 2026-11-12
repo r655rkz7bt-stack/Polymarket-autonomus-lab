@@ -62,6 +62,7 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, 
     import yaml
 
     from polymarket_agent import enquete
+    from polymarket_agent.convictions import charger
     from polymarket_agent.reporting import read_entries
     configs = yaml.safe_load((ROOT / "config" / "strategies.yaml").read_text(encoding="utf-8")) or {}
     entries = {n: read_entries(l) for n, l in competitors.items()} | {"principal": read_entries(main_ledger)}
@@ -81,7 +82,8 @@ def _enquete(competitors: dict, main_ledger, active: list[str], settings: dict, 
     except (ValueError, TypeError, AttributeError):
         seismes_rows = None
     return enquete.run(entries, configs, active, datetime.now(timezone.utc), max_principal=cap, abstentions=abstentions, parts=parts,
-                         textes=enquete.lire_experiences(ROOT), depuis=depuis, seismes_rows=seismes_rows)
+                         textes=enquete.lire_experiences(ROOT), depuis=depuis, seismes_rows=seismes_rows,
+                       convictions=charger(ROOT / "config" / "convictions.yaml"))
 
 
 def _full_mothers(main_ledger, arena_cfg: dict) -> tuple[dict[str, int], int | None]:

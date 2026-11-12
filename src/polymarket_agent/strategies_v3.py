@@ -1437,7 +1437,11 @@ class SeismesMarche(_Base):
             # Jamais de certitude : le catalogue du règlement peut différer du flux (révision, séisme encore absent), 1 fois sur 27 côté jour et 10 sur 57 côté semaine >= 5,5.
             fair = min(max(float(ref["p"]), self.borne), 1 - self.borne)
             best = None
+            # `cotes` (12/11/2026, el_nino_cpc) : la référence ne borne qu'un côté (borne basse prouvée, pas une chance juste).
+            cotes = set(ref.get("cotes") or (0, 1))
             for side, est in ((0, fair), (1, 1 - fair)):
+                if side not in cotes:
+                    continue
                 book = books.get(m.token_ids[side])
                 ask = float(book.best_ask) if book is not None and book.best_ask is not None else None
                 if ask is None or not float(p["min_price"]) <= ask <= float(p["max_price"]):
@@ -1509,6 +1513,18 @@ class FleuvesPrevision(SeismesMarche):
 
     strategy_id = "fleuves_prevision"
     ref_key = "fleuves"
+
+
+class ElNinoCpc(SeismesMarche):
+    """« What will the peak RONI be for the 2026–27 El Niño? » et « strongest on record? » contre les chances chiffrées du CPC de la
+    NOAA (la source du règlement), lues dans sa discussion ENSO mensuelle (enso.py). P(pic >= T) >= max des saisons de P(saison >= T) :
+    on n'achète que le côté que cette borne prouve (OUI des tranches hautes, NON des tranches sous T), quand le prix demandé est sous
+    la borne − `uncertainty` − frais. Discussion de plus de 7 jours ignorée. Expérience audacieuse du 12/11/2026
+    (experiments/el_nino.md, piste n° 39) : aucun test sur le passé possible (une seule saison de marchés RONI) ; le 12/11 au matin la
+    discussion du 08/10 (83 % pour OND >= 2,5) était périmée et le marché payait 0,61-0,63."""
+
+    strategy_id = "el_nino_cpc"
+    ref_key = "enso"
 
 
 class AuditeursSpotify(SeismesMarche):
@@ -1954,4 +1970,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
