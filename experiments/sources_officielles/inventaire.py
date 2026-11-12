@@ -34,7 +34,9 @@ while True:
         break
     time.sleep(0.2)
 jour = dt.date.today().isoformat()
-(OUT / f"inventaire_{jour}.json").write_text(json.dumps(rows, ensure_ascii=False, indent=0))
+import gzip
+with gzip.open(OUT / f"inventaire_{jour}.json.gz", "wt") as fh:
+    json.dump(rows, fh, ensure_ascii=False)
 agg = collections.defaultdict(lambda: [0, 0.0, []])
 for r in rows:
     for x in r["domaines"]:

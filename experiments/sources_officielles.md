@@ -1,7 +1,7 @@
 # Inventaire des sources officielles citées par les marchés ouverts (12/11/2026, piste n° 32)
 
 Script : `experiments/sources_officielles/inventaire.py` (Gamma `/events/keyset`, 19 256 événements ouverts lus en ≈ 3 min ;
-10 553 citent un domaine dans leur règle). Relevé : `sources_officielles/releves/inventaire_2026-11-12.json`. But : trouver
+10 553 citent un domaine dans leur règle). Relevé : `sources_officielles/releves/inventaire_2026-11-12.json.gz`. But : trouver
 d'autres « compteurs officiels à lecture directe » (comme la rougeole, les séismes, la sécheresse, les tornades), que le
 marché ne lit peut-être pas.
 
