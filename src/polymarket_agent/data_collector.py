@@ -339,6 +339,15 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "spotify:histo", keep_spotify(refs._load(db, "spotify:histo")[1], rows, now), now)
         return rows
     snapshot("spotify", spotify, "ref:spotify")
+    # Compteur de la rougeole du CDC (12/11/2026, piste n° 8) : « As of <date>, N confirmed measles cases », arbitre des marchés
+    # « … measles cases in the U.S. by <date> », pour `rougeole_compteur` ; `rougeole:histo` garde une ligne par mise à jour (rythme).
+    from polymarket_agent.rougeole import fetch_compteur, keep_history as keep_rougeole
+    def rougeole(cfg):
+        rows = factories.get("rougeole", lambda c: fetch_compteur(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "rougeole:histo", keep_rougeole(refs._load(db, "rougeole:histo")[1], rows, now), now)
+        return rows
+    snapshot("rougeole", rougeole, "ref:rougeole")
     snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
              "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).
