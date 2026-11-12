@@ -1522,6 +1522,19 @@ class AuditeursSpotify(SeismesMarche):
     ref_key = "spotify"
 
 
+class BoxOfficeAnnee(SeismesMarche):
+    """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
+    que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
+    Polymarket des tranches du premier week-end, puis sur la tranche réglée) × multiplicateur de Noël des grosses sorties de
+    décembre (2,1-2,6, médiane 2,35 ; box_office.py). Expérience du 12/11/2026 (experiments/box_office_annee.md, piste n° 33,
+    cohérence entre marchés liés) : le marché du premier week-end d'Avengers: Doomsday met sa médiane vers 399 M$ (« 400m+ » 0,475)
+    pendant que celui de l'année cote Doomsday 0,077 contre 959 M$ pour Spider-Man ; le calcul donne 0,09 à 0,44 selon le
+    multiplicateur. Aucun test sur le passé possible (un seul cas comparable : Star Wars VII contre Jurassic World en 2015)."""
+
+    strategy_id = "box_office_annee"
+    ref_key = "box_office"
+
+
 class RougeoleCompteur(SeismesMarche):
     """« Will there be at least <N> measles cases in the U.S. by <date>? » : compteur du CDC lu en direct (mis à jour chaque semaine),
     nombre de mises à jour restantes avant l'échéance, hausse par mise à jour tirée du journal `rougeole:histo` (rougeole.py) ; une
@@ -1806,6 +1819,8 @@ class SuivreInities(_Base):
         for m in watchlist:
             ref = (m.references or {}).get("inities")
             if not ref:
+                # 12/11/2026 : « raison non notée » ×229 au tableau de bord ; le cas normal est l'absence de grappe suspecte.
+                out.abstain("aucune grappe de comptes neufs et concentrés relevée sur ce marché")
                 continue
             side = int(ref.get("issue", 0))
             if side >= len(m.token_ids) or any(t in state.positions for t in m.token_ids):
@@ -1913,4 +1928,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, BoxOfficeAnnee, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

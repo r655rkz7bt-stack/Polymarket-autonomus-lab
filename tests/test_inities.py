@@ -198,6 +198,9 @@ def test_follow_insiders_buys_with_public_suspicion_before_the_price_catches_up(
     talk = s.propose([_with_ref(presse=[], commentaires=["insider bought Yamal 3rd"])], books, state, LIMITS, "b")
     assert [p.token_id for p in talk.proposals] == ["m3Y"]
     assert s.candidates([_with_ref(), _ballon("m8")])[0].market_id == "m3"
+    # 12/11/2026 : un marché sans grappe suspecte est une abstention nommée, pas « raison non notée ».
+    quiet = s.propose([_ballon("m8")], books, state, LIMITS, "b")
+    assert quiet.abstentions == {"aucune grappe de comptes neufs et concentrés relevée sur ce marché": 1}
 
 
 def test_data_api_v2_pages_by_cursor_and_filters_by_event_03_11():

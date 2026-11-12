@@ -348,6 +348,11 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "rougeole:histo", keep_rougeole(refs._load(db, "rougeole:histo")[1], rows, now), now)
         return rows
     snapshot("rougeole", rougeole, "ref:rougeole")
+    # Film le plus rentable de l'année (12/11/2026, piste n° 33) : loi du premier week-end lue sur le marché Polymarket de ses
+    # tranches, × multiplicateur de Noël, contre la recette du meneur (box_office.py, `box_office_annee`). Gamma seulement.
+    from polymarket_agent.box_office import fetch_box_office
+    snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
+             "ref:box_office")
     snapshot("emsc", with_first_seen("ref:emsc", lambda cfg: factories.get("emsc", lambda c: fetch_emsc(http, now, int(c.get("days", 3))))(cfg)),
              "ref:emsc")
     # Sièges de la Chambre (31/10/2026) : prix démocrates des ~300 districts des 19 États à échelle, pour `sieges_coherence` (sieges.py).
