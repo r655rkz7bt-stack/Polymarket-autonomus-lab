@@ -56,9 +56,9 @@ def test_history_and_rhythm_from_the_three_known_updates():
 def test_threshold_chances_are_ordered_and_the_holiday_matters():
     p = {s: rg.p_seuil(5182, date(2026, 11, 5), s, date(2026, 11, 30)) for s in (5600, 5800, 6000, 6200)}
     assert p[5600] > 0.85 and p[5600] > p[5800] > p[6000] > p[6200]
-    assert 0.15 < p[6000] < 0.45
-    sans_ferie = rg.p_seuil(5182, date(2026, 11, 5), 6000, date(2026, 11, 30), q_ferie=0.97)
-    assert sans_ferie > p[6000] + 0.08                                     # Thanksgiving retire une semaine une fois sur deux
+    assert 0.3 < p[6000] < 0.55                                             # marché du 12/11 : 0,36 au milieu
+    ferie_saute = rg.p_seuil(5182, date(2026, 11, 5), 6000, date(2026, 11, 30), q_ferie=0.3)
+    assert ferie_saute < p[6000] - 0.08                                     # une mise à jour de Thanksgiving sautée retire une semaine
     assert rg.p_seuil(6100, date(2026, 11, 5), 6000, date(2026, 11, 30)) == 1.0
     assert rg.p_seuil(5182, date(2026, 11, 26), 6000, date(2026, 11, 30)) == 0.0   # plus aucune mise à jour
 

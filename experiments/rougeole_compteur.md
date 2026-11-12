@@ -26,20 +26,22 @@ l'Est). Le compteur affiché = la dernière mise à jour publiée. Les dates « 
 
 Semaines restantes avant l'échéance (jeudis : 12, 19, 26/11 pour le 30/11) ; hausse par semaine N(mu + choc commun, sd) avec
 mu = 270, sd = 60, choc commun 60 (remplacés par le journal `rougeole:histo` dès 3 hausses) ; chaque mise à jour publiée avec la
-chance 0,97, **0,6 la semaine d'un jour férié** (Thanksgiving le 26/11, Noël, Nouvel An). Les cas d'une mise à jour sautée
+chance 0,97, 0,9 la semaine d'un jour férié (Thanksgiving le 26/11, Noël, Nouvel An ; d'abord 0,6 par prudence, puis 0,9 après
+vérification sur 2025, ci-dessous). Les cas d'une mise à jour sautée
 arrivent à la suivante : seule une mise à jour sautée EN FIN de période retire une semaine.
 
-| seuil au 30/11 | modèle (Thanksgiving 0,6) | modèle (aucun saut) | marché 12/11 01 h (milieu ; acheteur/vendeur) |
+| seuil au 30/11 | modèle (férié 0,6, abandonné) | modèle (aucun saut) | marché 12/11 01 h (milieu ; acheteur/vendeur) |
 |---|---|---|---|
 | 5 600+ | 0,889 | 0,964 | 0,9645 (0,945/0,984) |
 | 5 800+ | 0,609 | 0,814 | 0,785 (0,66/0,91) |
 | 6 000+ | 0,300 | 0,466 | 0,36 (0,15/0,57) |
 | 6 200+ | 0,098 | 0,149 | — |
 
-**Le marché cote exactement le modèle sans risque de jour férié.** Tout l'écart tient à une seule question : le CDC publie-t-il
-la semaine de Thanksgiving (mercredi 25/11 au lieu du jeudi, ou rien) ? Je ne l'ai pas vérifié (aucun historique des dates de
-mise à jour de 2025) : `q_ferie` = 0,6 est une estimation, pas une mesure. Aucun écart achetable au carnet du 12/11 (écarts de
-0,2 à 0,4 sur les seuils utiles).
+**Le marché cote exactement le modèle sans risque de jour férié.** Tout l'écart tenait à une seule question : le CDC publie-t-il
+la semaine de Thanksgiving ? **Vérifié le même passage (CIDRAP, Google Actualités)** : en 2025 le CDC a publié le mercredi 26/11
+(veille de Thanksgiving, 1 798 cas), la semaine de Noël (2 012) et le 31/12 (2 065). Les jours fériés ne font pas sauter de mise
+à jour → `q_ferie` = 0,9. Modèle corrigé : 5 600+ 0,949, 5 800+ 0,775, 6 000+ 0,434, 6 200+ 0,140 : **le marché avait raison**
+(écart ≤ 0,07 au milieu, carnets de 0,04 à 0,42 d'écart) ; aucun achat ni conviction.
 
 Année entière (« in 2026 », événement 91942) : 8 mises à jour (12/11 → 31/12, trois autour de jours fériés) ; « 7 000+ » 0,785,
 « 7 500+ » 0,315, proches de mon calcul (5 182 + 8 × 200-300). **Écartée de la stratégie** : la règle ne dit pas si un rattrapage
@@ -51,12 +53,11 @@ Pas de test sur le passé possible (compteur hebdomadaire non archivé, dates de
 audacieuse** → fantôme `rougeole_compteur` (Kelly entier sur la borne basse = chance − 0,10, un seuil par échelle, source
 `rougeole` toutes les 2 h, étiquette `measles` 101906 au scanner). Cycle local (deux cycles, 12/11 01 h 52) : 3 marchés rattachés,
 0 proposition (« avantage net insuffisant » ×2, « hors plage » ×1). Une perte apprendrait que le rythme bouge plus que le choc
-commun de 60 cas, ou que le CDC ne saute jamais Thanksgiving (le marché aurait raison).
+commun de 60 cas. Avec `q_ferie` 0,9 le fantôme n'achètera que si un carnet s'écarte de ≥ 0,15 du modèle (borne − 0,10, seuil 0,05).
 
 ## À faire
 
-- Le 26/11 au soir (ou le 25/11) : relire la page du CDC. Si la mise à jour est publiée, `q_ferie` doit monter (et le marché
-  avait raison) ; si elle saute, noter la date réelle de la suivante.
+- Le 25-26/11 : relire la page du CDC (date « As of » de la semaine de Thanksgiving) pour confirmer `q_ferie`.
 - Dès 3 hausses au journal `rougeole:histo`, le rythme vient du journal (vérifier sur `published/data.json`).
 - Test possible plus tard : la courbe par éruption d'une mise à jour prévoit-elle la hausse du compteur à la suivante ?
   (`releves/courbe_hebdo/`, une copie par semaine).

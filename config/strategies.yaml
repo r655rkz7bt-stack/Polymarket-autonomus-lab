@@ -266,10 +266,10 @@ rougeole_compteur:
   hypothesis: >
     Expérience audacieuse, avantage d'INFORMATION (experiments/rougeole_compteur.md, 12/11/2026, piste n° 8, compteurs officiels
     à lecture directe) : le compteur qui règle est public chaque semaine (5 182 au 05/11) ; il reste 3 mises à jour avant le 30/11,
-    chacune ajoute 165 à 330 cas (septembre-novembre 2026), et celle du 26/11 tombe à Thanksgiving. Le 12/11 « 6 000+ au 30/11 »
+    chacune ajoute 165 à 330 cas (septembre-novembre 2026), et celle du 26/11 tombe à Thanksgiving (en 2025 le CDC a publié quand même : `q_ferie` 0,9). Le 12/11 « 6 000+ au 30/11 »
     cotait 0,15/0,57 (carnets minces, ~400-2 500 $ par seuil). Aucun test sur le passé possible (compteur hebdomadaire non archivé :
     seulement les échelles mensuelles réglées et la courbe par date d'éruption, gardée à chaque passage). Une perte apprendrait que le
-    rythme hebdomadaire bouge plus que notre choc commun (60 cas) ou que le CDC décale ses mises à jour autrement qu'on le croit.
+    rythme hebdomadaire bouge plus que notre choc commun (60 cas) ou que le CDC décale ses mises à jour autrement qu'en 2025.
   params:
     min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
     uncertainty:    {value: 0.10, min: 0.0, max: 0.30}    # rythme non étalonné (3 mises à jour connues) : borne basse = chance − 0,10
