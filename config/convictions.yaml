@@ -38,7 +38,7 @@ convictions:
     raison: "Kaub à 16-17 cm le 11/11 16 h UTC, seuil 77 cm avant le 15/11 (heure de Berlin). Une vague monte en amont (Maxau +80 cm, Mannheim +45, Worms +36, Mainz +16), c'est ce que le prix a vu (0,42 → 0,66 en 4 h, petits échanges). Mais la prévision officielle WSV/BfG de 07 h (pegelonline, série WV) culmine à 69 cm le 14/11 ; la vague analogue du 25-28/10 (Maxau 355, Mannheim 121) a donné 60 cm à Kaub ; Bâle reste plat (~500). Cinq estimations du OUI 0,15-0,50, médiane 0,30, rapprochée du prix 0,655 → OUI 0,48."
     sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P31D", "https://gamma-api.polymarket.com/events/1284739", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-11"
-    abandon: false
+    abandon: true   # 12/11 11 h UTC : nouvelle prévision WSV/BfG (78-80 cm dès le 14/11, seuil 77), remplacée par rhin-kaub-avant-15-11-v2 (même marché, plus bas : c'est elle qui décide de la revente).
   - id: danube-budapest-avant-15-11
     marche: "6581026"
     question: "Will the Danube River return to normal levels before November 15"
@@ -50,7 +50,7 @@ convictions:
     raison: "Budapest (HU442027) à 35 cm, seuil 93 cm avant le 15/11 00 h (heure de l'Est = 06 h à Budapest). La prévision officielle hongroise OVF (hydroinfo.hu, émise le 11/11 à 08 h 28) donne Budapest 64 ± 13 le 14/11 à 7 h et 124 ± 17 le 15/11 à 7 h (crue venue de l'Ipoly, du Váh et de l'amont) : passage de 93 cm vers le 14/11 au soir, ~11 h avant la limite. Le marché (0,26 ; 0,65 pour « 15-30/11 ») parie sur un passage après la limite. Risque : retard de la vague > 12 h ou pluie plus faible que prévue. Cinq estimations 0,40-0,80, médiane 0,65, rapprochée du prix 0,26 → 0,455."
     sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://www.danubehis.org/results/HU442027_HYDRO", "https://gamma-api.polymarket.com/events/1301594", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-11"
-    abandon: false
+    abandon: true   # 12/11 11 h UTC : nouvelle prévision OVF (105 ± 13 le 15/11 à 7 h au lieu de 124), remplacée par danube-budapest-avant-15-11-v2 (même marché, plus bas : c'est elle qui décide de la revente).
   - id: giss-octobre-2026-145-149
     marche: "5154903"
     question: "Will global temperature increase by between 1.45ºC and 1.49ºC in October 2026"
@@ -85,5 +85,29 @@ convictions:
     mise_max: 0.04
     raison: "Réglé sur le chiffre FINAL de novembre (20/11, 10 h heure de l'Est), tranche « 55.0+ ». Le PRÉLIMINAIRE de la même source (Surveys of Consumers, 06/11) vaut 51,0 (Reuters, WSJ, Kitco, MarketScreener) : il faudrait une révision de +3,95 points au moins. Révisions préliminaire → final relues en 2026 : +0,6 (juin), +0,8 (juillet), +0,3 (septembre), +1,7 (octobre) ; de mémoire en 2024-2025, la plus forte hausse +2,9 (mars 2024), baisses jusqu'à −3,1. Révision ~ N(0 ; 1,8) : P(≥ +3,95) ≈ 0,014. Test sur 4 mois réglés aux vrais échanges (experiments/michigan_preliminaire.md) : les tranches que le préliminaire exclut se vendent encore 0,05-0,16 trop cher, 18 paris, 12 gagnés pour 8,9 attendus. Le préliminaire de la source qui règle tranche presque la question : médiane des cinq estimations (0,985 base, 0,98 données, 0,97 queue épaisse, 0,99, 0,98) sans rapprochement. Carnet : 92 parts du NON à 0,897, puis 0,994."
     sources: ["https://www.sca.isr.umich.edu/files/tbmics.csv", "https://news.google.com/rss/search?q=University+of+Michigan+consumer+sentiment+preliminary+November", "https://gamma-api.polymarket.com/events/1242771", "experiments/michigan_preliminaire.md"]
+    ecrit_le: "2026-11-12"
+    abandon: false
+  - id: rhin-kaub-avant-15-11-v2
+    marche: "6433563"
+    question: "Will the Rhine River return to normal levels before November 15"
+    issue: "No"
+    probabilite: 0.40
+    probabilite_basse: 0.35
+    expire: "2026-11-12"
+    mise_max: 0.03
+    raison: "Déjà en position (NON à 0,362) ; cette conviction ne sert qu'à décider de la revente. Prévision WSV/BfG du 12/11 07 h (pegelonline, série WV) : Kaub 63 cm le 13/11 7 h, 73 à 19 h, 78 le 14/11 7 h, 80 ensuite (estimation) ; seuil 77 avant le 15/11 00 h à Berlin. Lecture de 11 h 45 : 37 cm, ≈ 2 cm SOUS la prévision (la veille : 4-6 cm au-dessus). Cinq estimations du NON : modèle fleuves.p_first_crossing (marge ×1,8) 0,38 ; pic 80 contre 77 avec ≈ 10 cm d'erreur à 2 jours 0,38 ; lecture sous la prévision 0,45 ; vague du 25-28/10 (Maxau 355 → Kaub 60) 0,50 ; marché 0,38 ; médiane 0,40. Revendre si l'acheteur paie plus de 0,40 (aujourd'hui 0,31)."
+    sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P2D", "https://gamma-api.polymarket.com/markets/6433563", "experiments/niveaux_eau.md"]
+    ecrit_le: "2026-11-12"
+    abandon: false
+  - id: danube-budapest-avant-15-11-v2
+    marche: "6581026"
+    question: "Will the Danube River return to normal levels before November 15"
+    issue: "Yes"
+    probabilite: 0.57
+    probabilite_basse: 0.50
+    expire: "2026-11-12"
+    mise_max: 0.04
+    raison: "Déjà en position (OUI à 0,292, 3,36 parts revendues à 0,807 le 12/11 09 h 30 par l'ancienne conviction à 0,455) ; cette conviction ne sert qu'à décider de la revente. Prévision OVF émise le 12/11 08 h 42 (hydroinfo.hu) : Budapest 53 ± 2 le 13/11 7 h, 66 ± 7 le 14/11, 105 ± 13 le 15/11 7 h (la veille : 64 et 124), pic 137 le 16/11 ; seuil 93 avant le 15/11 06 h à Budapest : passage vers le 14/11 23 h 30 en ligne droite, ≈ 6 h de marge (11 h la veille). Cinq estimations : modèle fleuves.p_first_crossing 0,64 (marge ×1,8 ; 0,70 à ×1) ; biais des 15 crues de 2025 à 3 jours (−6 ± 15 cm) 0,55 ; retard d'une demi-journée (07/07 et 06/10/2025) 0,45 ; sous-estimation des grosses montées (+13 à 4 jours) 0,72 ; ligne droite 0,61 ; médiane 0,61, rapprochée de moitié du milieu 0,53 → 0,57. Carnet 0,16 / 0,90."
+    sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://www.danubehis.org/results/HU442027_HYDRO", "https://gamma-api.polymarket.com/events/1301594", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-12"
     abandon: false
