@@ -138,6 +138,9 @@ scanner:
               102851: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 960},
               # 12/11/2026 : étiquette measles (101906) : « Measles cases in U.S. by <date> » (`rougeole_compteur`), 400-2 500 $ par seuil ; écarts jusqu'à 0,4
               101906: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1100},
+              # 12/11/2026 : étiquette umich (105176) : « Will UMich Consumer Sentiment be between … in <mois>? » (`michigan_preliminaire`),
+              # 2-4,5 k$ par tranche ; écarts jusqu'à 0,4
+              105176: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1100},
               # 12/11/2026 : étiquette spider-man (1493) : « Highest grossing movie in 2026? » (`box_office_annee`), 2,8 M$ de liquidité ;
               # horizon 60 jours (réglé début janvier)
               1493: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1500},
@@ -316,6 +319,7 @@ sources:
   emsc: {enabled: true, every_minutes: 10, days: 3}             # 11/11/2026 : catalogue EMSC (témoin plus rapide que l'USGS), abstention de seismes_marche si un séisme manque à l'USGS ; gratuit, sans clé
   fleuves: {enabled: true, every_minutes: 60}                # 11/11/2026 : prévisions officielles du Rhin à Kaub (PegelOnline WSV/BfG) et du Danube à Budapest (OVF) pour fleuves_prevision ; gratuit, sans clé
   spotify: {enabled: true, every_minutes: 180}               # 11/11/2026 : auditeurs mensuels Spotify (kworb.net, copie du profil, une valeur par jour) pour auditeurs_spotify et les convictions ; gratuit, sans clé
+  michigan: {enabled: true, every_minutes: 60}               # 12/11/2026 (piste n° 35) : page d'accueil des Surveys of Consumers (préliminaire puis final du sentiment des consommateurs) pour michigan_preliminaire ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma
   # seulement). `meneur` = recette domestique 2026 de Spider-Man: Brand New Day au 08/11 (959,0 M$, en salle sur 190 écrans) ;
   # `jusqu_au` : après le 22/12, les recettes réelles des jours de semaine comptent plus que le modèle du week-end (arrêt).

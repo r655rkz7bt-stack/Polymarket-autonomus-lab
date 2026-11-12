@@ -1393,6 +1393,7 @@ class SeismesMarche(_Base):
 
     strategy_id = "seismes_marche"
     ref_key = "seismes"
+    borne = 0.03   # chance bornée à [borne ; 1 − borne] (12/11/2026 : réglable par classe ; michigan_preliminaire 0,01)
     required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
 
     def candidates(self, markets):
@@ -1434,7 +1435,7 @@ class SeismesMarche(_Base):
                     out.abstain("écart achat-vente trop large")
                     continue
             # Jamais de certitude : le catalogue du règlement peut différer du flux (révision, séisme encore absent), 1 fois sur 27 côté jour et 10 sur 57 côté semaine >= 5,5.
-            fair = min(max(float(ref["p"]), 0.03), 0.97)
+            fair = min(max(float(ref["p"]), self.borne), 1 - self.borne)
             best = None
             for side, est in ((0, fair), (1, 1 - fair)):
                 book = books.get(m.token_ids[side])
@@ -1520,6 +1521,19 @@ class AuditeursSpotify(SeismesMarche):
 
     strategy_id = "auditeurs_spotify"
     ref_key = "spotify"
+
+
+class MichiganPreliminaire(SeismesMarche):
+    """« Will UMich Consumer Sentiment be between <a> and <b> in <mois>? » : réglé sur le FINAL ; le PRÉLIMINAIRE de la même source
+    est publié deux semaines avant (page d'accueil des Surveys of Consumers, michigan.py). Chance d'une tranche = P(préliminaire +
+    révision dans la tranche), révision ~ N(0 ; 1,8). Test sur le passé (experiments/michigan_preliminaire.md, 12/11/2026, juin,
+    juillet, septembre, octobre 2026, vrais échanges d'au moins 10 parts après le préliminaire) : un pari par tranche, 18 paris,
+    12 gagnés pour 8,9 attendus (z des prix 2,1), +33 % par mise, 4 mois sur 4 positifs ; 5 réglages entre +31 et +51 % : INDICE
+    (4 mois seulement)."""
+
+    strategy_id = "michigan_preliminaire"
+    ref_key = "michigan"
+    borne = 0.01   # la source du règlement a déjà publié le préliminaire : la queue de la révision est dans la loi (SD 1,8)
 
 
 class BoxOfficeAnnee(SeismesMarche):
@@ -1928,4 +1942,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, BoxOfficeAnnee, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
