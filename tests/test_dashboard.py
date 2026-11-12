@@ -409,3 +409,24 @@ def test_principal_refusals_are_counted_by_strategy_and_reason(tmp_path):
     data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=now)
     assert data["refus_principal"]["favori_politique"] == {"budget de la part épuisé": 2}
     db.close()
+
+
+def test_dashboard_starts_over_after_a_capital_reset(tmp_path):
+    """12/11/2026 : après la remise à zéro du labo v2, la courbe sautait de 651 à 1 000 €, « +340 € en 24 h » et le repli maximal
+    de la v1 restaient affichés. Tout ce qui est calculé sur le journal principal repart de la dernière réinitialisation."""
+    from polymarket_agent import arena_history
+    main, shadows, db = _setup(tmp_path)
+    main.heartbeat("c0", "OK", now=NOW + timedelta(hours=1), total_estimated="650")
+    main.reset(provided_code="codesecret1", expected_code="codesecret1", reason="Départ du labo v2", initial_capital="1000",
+               now=NOW + timedelta(hours=2))
+    main.heartbeat("c1", "OK", now=NOW + timedelta(hours=3), total_estimated="1010")
+    db.conn.executescript(arena_history.SCHEMA)
+    db.conn.execute("INSERT INTO arena_history (taken_at, name, rank, capital, operations, eliminated) VALUES (?, 'v1_v1.0.0', 1, 900, 5, 0)",
+                    ((NOW + timedelta(hours=1)).isoformat(),))
+    data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW + timedelta(hours=4))
+    assert [round(v) for _, v in data["courbe"]] == [1000, 1010]  # ni le 650 d'avant, ni le saut
+    assert data["capital"]["drawdown_max"] == 0.0
+    assert not [c for c in data["cloturees"] if c["portefeuille"] == "principal"]
+    capital_line = next(x["texte"] for x in data["aujourdhui"] if x["sujet"] == "capital")
+    assert "1 000,00 € il y a 24 h" in capital_line and "+340" not in capital_line
+    assert "v1_v1.0.0" not in data["historique_arene"]["strategies"]

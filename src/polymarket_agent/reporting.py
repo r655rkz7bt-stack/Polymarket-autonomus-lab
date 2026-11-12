@@ -24,6 +24,14 @@ def read_entries(ledger: Ledger) -> list[dict]:
     return [json.loads(line) for line in ledger.path.read_text(encoding="utf-8").splitlines() if line]
 
 
+def since_last_reset(entries: list[dict]) -> list[dict]:
+    """Lignes depuis la dernière réinitialisation (RESET comprise), sinon tout le journal. Le tableau de bord ne mélange
+    jamais deux époques (12/11/2026 : après la remise à zéro du labo v2, la courbe sautait de 651 à 1 000 €, « +340 € en
+    24 h », repli maximal de la v1)."""
+    last = max((i for i, e in enumerate(entries) if e.get("type") == "RESET"), default=None)
+    return entries if last is None else entries[last:]
+
+
 def closed_trades(entries: list[dict]) -> list[dict]:
     """Reconstitue les opérations clôturées (règlement ou vente totale), gagnantes ET perdantes."""
     open_: dict[str, dict] = {}

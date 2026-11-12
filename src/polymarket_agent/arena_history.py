@@ -41,11 +41,15 @@ def record(db, rows: list[dict], now: datetime, every_minutes: float = 60) -> bo
     return True
 
 
-def series(db, now: datetime, days: float = 7) -> dict:
-    """{"dates": [...], "strategies": {nom: [rang ou None, ...]}, "capital": {nom: [...]}}."""
+def series(db, now: datetime, days: float = 7, since: datetime | None = None) -> dict:
+    """{"dates": [...], "strategies": {nom: [rang ou None, ...]}, "capital": {nom: [...]}}. `since` : pas avant la dernière
+    réinitialisation du capital principal (12/11/2026 : l'historique ne mélange pas la v1 et la v2)."""
     db.conn.executescript(SCHEMA)
+    start = now - timedelta(days=days)
+    if since is not None and since > start:
+        start = since
     rows = db.conn.execute("SELECT taken_at, name, rank, capital FROM arena_history WHERE taken_at >= ? "
-                           "ORDER BY taken_at", (_iso(now - timedelta(days=days)),)).fetchall()
+                           "ORDER BY taken_at", (_iso(start),)).fetchall()
     dates = sorted({r[0] for r in rows})
     index = {d: i for i, d in enumerate(dates)}
     ranks: dict[str, list] = {}
