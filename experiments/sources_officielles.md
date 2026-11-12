@@ -52,3 +52,23 @@ puis révisions jusqu'au 31/03/2027. Marché : « 35-49 » 0,892 (vendeur 0,902)
 PILE sur la borne : une seule requalification à la baisse le ferait passer à « 20-34 » ; d'habitude les comptes montent avec les
 déclarations tardives. Ma chance pour « 35-49 » ≈ 0,96, rapprochée → 0,93, borne basse ≈ 0,90 pour un vendeur à 0,902 : sous le
 seuil, pas de conviction. À relire en janvier (révisions) ; historique des révisions des années passées à chercher.
+
+## Bolides (CNEOS) : « 5kt / 10kt+ / 100kt / 1 megaton meteor strike in 2026? » (même passage)
+
+API publique `ssd-api.jpl.nasa.gov/fireball.api` (sans clé, 1 074 bolides depuis 1988). 2005-2025 : **18 bolides ≥ 5 kt (13 années
+sur 21 en ont au moins un), 9 ≥ 10 kt** (aucun depuis 2020), 1 ≥ 100 kt (Tcheliabinsk 2013). 2026 : 24 bolides, le plus fort 1,1 kt
+(30/05) ; **dernier ajout daté du 04/10** (le catalogue arrive avec des semaines de retard : un bolide du 05/10 au 11/11 peut encore
+y entrer, la règle attend jusqu'au 28/02/2027). Fenêtre encore ouverte ≈ 50 jours à venir + 38 jours non publiés (pondérés 0,7).
+- « 5 kt » : 0,87 par an → ≈ 0,15-0,17 ; marché 0,075 (vendeur 0,10, 716 $). Rapproché de moitié 0,11, borne basse ≈ 0,08 < 0,10.
+- « 10 kt+ » : 0,43 par an (0,27 depuis 2011) → ≈ 0,055-0,09 ; marché 0,03 (vendeur 0,033, 13,8 k$). Rapproché ≈ 0,05 : +2 points.
+Le marché cote ces seuils à environ la moitié de la fréquence de base, mais l'écart reste sous le seuil d'une conviction :
+**noté, pas de conviction**. À revoir en décembre si le catalogue n'a toujours rien publié après le 04/10 (marchés de 2027 :
+la même fréquence de base sur une année entière).
+
+## « Peak US National Debt before 2027? » (même passage)
+
+Debt to the Penny (`api.fiscaldata.treasury.gov/.../debt_to_penny`, sans clé) : 40,560 T$ le 09/11/2026 ; « 41 T$ » demande
++0,44 T$ (+1,08 %) d'ici le 31/12. Même période (09/11 → 31/12) les années sans plafond de la dette ni choc : 2016 +0,92 %, 2018
++1,11 %, 2019 +0,85 %, 2022 +0,56 %, 2023 +0,89 %, 2024 +0,76 %, 2025 +1,04 % (1 sur 7 au-dessus de 1,08 %) ; mais le rythme
+d'août-novembre 2026 (8,5 Md$ par jour ouvré, ≈ +0,44 T$ en 52 jours) tombe pile sur le seuil. Plafond légal de 2025 : 41,1 T$.
+Ma chance ≈ 0,35 contre 0,64 au milieu (carnet 0,45/0,83, 883 $) ; rapprochée de moitié → 0,50, NON vendu 0,55 : pas de conviction.
