@@ -46,6 +46,9 @@ def test_discussion_and_roni_are_read():
     libre = "<p>8 October 2026</p><p>Text. There is a 75-85% chance of a historic event (+2.5°C or more for a 3-month RONI value) for the November-January season. Next.</p>"
     assert enso.parse_discussion(libre)["seuils"] == {"2.5": {"Nov-Jan": 0.75}}
     assert enso.parse_discussion(libre.replace("3-month RONI value", "Niño-3.4 seasonal average"))["seuils"] == {}
+    # 12/11/2026 : « … are now ~60% for the October-December and November-January periods » (lu {} : fantôme aveugle)
+    nov = (DATA / "cpc_ensodisc_2026-11-12.html").read_text(encoding="utf-8", errors="replace")
+    assert enso.parse_discussion(nov) == {"emis": "2026-11-12", "seuils": {"2.5": {"Oct-Dec": 0.60, "Nov-Jan": 0.60}}}
 
 
 def test_bounds_follow_the_inequality_only():

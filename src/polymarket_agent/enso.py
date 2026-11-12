@@ -29,7 +29,9 @@ _PHRASE = re.compile(r"(?<=[.)])\s+(?=[A-Z])")
 _SAISON = "(" + "|".join(MOIS) + r")-(" + "|".join(MOIS) + ")"
 # Deux tournures relevées : « …(+2.5°C or more …): the chance is 54% for September-November, 83% for October-December… » (08/10/2026)
 # et « During the October-December 2026 season, there is a 69% chance of a historic event … (+2.5°C or more …) » (13/08, 10/09/2026).
-_CHANCE_POUR = re.compile(r"(\d{1,3})\s?%\s+for\s+" + _SAISON)
+# Troisième (12/11/2026) : « … (+2.5°C or more for a 3-month RONI value ) are now ~60% for the October-December and November-January
+# periods » : « the », et une seule chance pour deux saisons.
+_CHANCE_POUR = re.compile(r"(\d{1,3})\s?%\s+for\s+(?:the\s+)?" + _SAISON + r"(?:\s+and\s+(?:the\s+)?" + _SAISON + ")?")
 _DURANT = re.compile(r"During the " + _SAISON + r"(?: \d{4}(?:-\d{2,4})?)? season, there is an? (\d{1,3})\s?% chance")
 
 
@@ -53,7 +55,11 @@ def parse_discussion(page: str) -> dict | None:
         t = _SEUIL.search(phrase)
         if not t or "RONI" not in phrase:
             continue  # les marchés se règlent sur la RONI : une chance sur le Niño-3.4 classique (discussions de 2023) ne borne rien
-        ch = {f"{a[:3]}-{b[:3]}": int(p) / 100 for p, a, b in _CHANCE_POUR.findall(phrase)}
+        ch = {}
+        for p, a, b, c, d in _CHANCE_POUR.findall(phrase):
+            ch[f"{a[:3]}-{b[:3]}"] = int(p) / 100
+            if c:
+                ch[f"{c[:3]}-{d[:3]}"] = int(p) / 100
         ch.update({f"{a[:3]}-{b[:3]}": int(p) / 100 for a, b, p in _DURANT.findall(phrase)})
         if not ch:  # tournure libre : une seule chance et une seule saison dans la phrase (« 35% chance … (≥ 2.0°C) for the November-January season »)
             ps, ss = re.findall(r"(?<![\d-])(\d{1,3})(?:-\d{1,3})?\s?% chance", phrase), re.findall(_SAISON, phrase)  # « 75-85% » : 75
