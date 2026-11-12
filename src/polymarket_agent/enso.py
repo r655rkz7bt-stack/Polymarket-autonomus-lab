@@ -24,8 +24,13 @@ PAGE = "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory
 RONI = "https://www.cpc.ncep.noaa.gov/data/indices/RONI.ascii.txt"
 MOIS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 _DATE = re.compile(r"\b(\d{1,2}) (" + "|".join(MOIS) + r") (\d{4})\b")
-_SEUIL = re.compile(r"\+(\d\.\d)\s*°C or more[^:]{0,80}:\s*the chance is (.{0,200}?)\.(?:\s|$)")
-_CHANCE = re.compile(r"(\d{1,3})%\s+for\s+(" + "|".join(MOIS) + r")-(" + "|".join(MOIS) + r")")
+_SEUIL = re.compile(r"(?:\+|≥\s?\+?)(\d\.\d)\s*°C(?: or (?:more|greater|higher|above))?(?=[\s),;])")
+_PHRASE = re.compile(r"(?<=[.)])\s+(?=[A-Z])")
+_SAISON = "(" + "|".join(MOIS) + r")-(" + "|".join(MOIS) + ")"
+# Deux tournures relevées : « …(+2.5°C or more …): the chance is 54% for September-November, 83% for October-December… » (08/10/2026)
+# et « During the October-December 2026 season, there is a 69% chance of a historic event … (+2.5°C or more …) » (13/08, 10/09/2026).
+_CHANCE_POUR = re.compile(r"(\d{1,3})\s?%\s+for\s+" + _SAISON)
+_DURANT = re.compile(r"During the " + _SAISON + r"(?: \d{4}(?:-\d{2,4})?)? season, there is an? (\d{1,3})\s?% chance")
 
 
 def _texte(page: str) -> str:
@@ -44,10 +49,18 @@ def parse_discussion(page: str) -> dict | None:
     if emis is None:
         return None
     seuils: dict[str, dict[str, float]] = {}
-    for s in _SEUIL.finditer(x):
-        ch = {f"{a[:3]}-{b[:3]}": int(p) / 100 for p, a, b in _CHANCE.findall(s.group(2))}
+    for phrase in _PHRASE.split(x):
+        t = _SEUIL.search(phrase)
+        if not t or "RONI" not in phrase:
+            continue  # les marchés se règlent sur la RONI : une chance sur le Niño-3.4 classique (discussions de 2023) ne borne rien
+        ch = {f"{a[:3]}-{b[:3]}": int(p) / 100 for p, a, b in _CHANCE_POUR.findall(phrase)}
+        ch.update({f"{a[:3]}-{b[:3]}": int(p) / 100 for a, b, p in _DURANT.findall(phrase)})
+        if not ch:  # tournure libre : une seule chance et une seule saison dans la phrase (« 35% chance … (≥ 2.0°C) for the November-January season »)
+            ps, ss = re.findall(r"(?<![\d-])(\d{1,3})(?:-\d{1,3})?\s?% chance", phrase), re.findall(_SAISON, phrase)  # « 75-85% » : 75
+            if len(ps) == 1 and len(set(ss)) == 1:
+                ch = {f"{ss[0][0][:3]}-{ss[0][1][:3]}": int(ps[0]) / 100}
         if ch:
-            seuils[s.group(1)] = ch
+            seuils.setdefault(t.group(1), {}).update(ch)
     return {"emis": emis.date().isoformat(), "seuils": seuils}
 
 

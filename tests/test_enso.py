@@ -39,6 +39,13 @@ def test_discussion_and_roni_are_read():
     assert d == {"emis": "2026-10-08", "seuils": {"2.5": {"Sep-Nov": 0.54, "Oct-Dec": 0.83, "Nov-Jan": 0.70}}}
     assert enso.parse_discussion("<html>maintenance</html>") is None
     assert enso.parse_roni(RONI)[-1] == ("ASO", 2026, 1.97)
+    # autre tournure (13/08/2026) : « During the October-December 2026 season, there is a 69% chance of a historic event … (+2.5°C … »
+    aout = (DATA / "cpc_ensodisc_2026-08-13.html").read_text(encoding="utf-8", errors="replace")
+    assert enso.parse_discussion(aout) == {"emis": "2026-08-13", "seuils": {"2.5": {"Oct-Dec": 0.69}}}
+    # tournure libre, fourchette « 75-85% » : la borne basse ; une chance sur le Niño-3.4 classique (2023) ne compte pas
+    libre = "<p>8 October 2026</p><p>Text. There is a 75-85% chance of a historic event (+2.5°C or more for a 3-month RONI value) for the November-January season. Next.</p>"
+    assert enso.parse_discussion(libre)["seuils"] == {"2.5": {"Nov-Jan": 0.75}}
+    assert enso.parse_discussion(libre.replace("3-month RONI value", "Niño-3.4 seasonal average"))["seuils"] == {}
 
 
 def test_bounds_follow_the_inequality_only():
