@@ -1576,6 +1576,18 @@ class PibCanadaAnticipe(SeismesMarche):
     borne = 0.02   # fréquences lissées : jamais en dessous de 0,02
 
 
+class TauxTresorBarriere(SeismesMarche):
+    """« Will the <N>-year Treasury yield hit <x>% / dip below <x>% in <mois> / before <année>? » : réglés sur les CLÔTURES quotidiennes
+    du Trésor (Daily Treasury Par Yield Curve Rates), pas sur les cours en séance. Chance = marche aléatoire des clôtures restantes,
+    écart-type des 60 derniers jours × 1,3 (taux_tresor.py), donnée la nuit seulement (00-12 h UTC). Test sur le passé
+    (experiments/taux_tresor.md, 12/11/2026, septembre-octobre 2026, 133 marchés, prix horaires + 0,02) : log-score −0,475 (K 1,2)
+    contre −0,525 au prix ; achats simulés +2 à +47 % en septembre (taux en hausse) et +62 à +105 % en octobre (en baisse) pour
+    K 1,2-1,4 ; 9 réglages. INDICE FAIBLE : deux trajectoires seulement (toutes les durées bougent ensemble), pas de vrais échanges."""
+
+    strategy_id = "taux_tresor_barriere"
+    ref_key = "taux_tresor"
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -1982,4 +1994,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
