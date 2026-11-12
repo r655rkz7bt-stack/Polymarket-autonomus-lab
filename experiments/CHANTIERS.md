@@ -92,6 +92,8 @@ relevé du jour ne rapporte rien (le marché la cote déjà 0,001).
 | 41 | CPC de la NOAA : discussion ENSO mensuelle et RONI (arbitre) | `www.cpc.ncep.noaa.gov` (`enso_advisory/ensodisc.shtml`, archives `enso_disc_<mois><année>`, `data/indices/RONI.ascii.txt`, `wksst9120.for`) | marchés « peak RONI », « strongest El Niño on record » | fait le 12/11 : lecteur `enso.py` (chances « +2.5°C or more », deux tournures, RONI seulement), journal `enso:histo`, fantôme `el_nino_cpc` (`experiments/el_nino.md`) |
 | 42 | Fed de Cleveland : prévision d'inflation jour par jour (« nowcast ») | `www.clevelandfed.org/-/media/files/webcharts/inflationnowcasting/nowcast_{month,quarter,year}.json` | marchés CPI / PCE | testé le 12/11 (`experiments/nowcast_cleveland.md`) : le marché la contient déjà (log-score −1,05 contre −1,32) ; écarté |
 | 43 | USGS : séismes de l'année (arbitre des marchés annuels) | `earthquake.usgs.gov` (≥ 6,8 depuis le 1er janvier) | « How many 7.0+ earthquakes in <année> », « Highest magnitude », « California 7.0+ » | fait le 12/11 : `seismes_annee.py`, source `usgs_annee`, fantôme `seismes_annee` (`experiments/seismes_annee.md`) |
+| 44 | Trésor américain : « Daily Treasury Par Yield Curve Rates » (arbitre) | `home.treasury.gov` (CSV de l'année, `robots.txt` : tout permis) | marchés « How high / low will <N>-year Treasury yield go » | fait le 12/11 : `taux_tresor.py`, source `taux_tresor`, fantôme `taux_tresor_barriere` (`experiments/taux_tresor.md`) |
+| 45 | Banque centrale du Brésil (SGS) et IBGE (SIDRA) | `api.bcb.gov.br`, `apisidra.ibge.gov.br` (sans clé) | PIB brésilien du trimestre | testé le 12/11 (`experiments/pib_bresil.md`) : l'IBC-Br est plus flou que le marché, écarté |
 
 À la place de X (payant ; Nitter, RSSHub et miroirs contournent ses conditions : interdits) :
 reprises des tweets par la presse (Google Actualités, déjà en place), Truth Social, Mastodon,
@@ -123,6 +125,7 @@ et prévient Etienne, dans son journal, de la clé à créer.
 | 29 | TMDB (films et séries) | `TMDB_API_KEY` | sorties, popularité, box-office | à faire |
 | 30 | CoinGecko (offre gratuite « Demo ») | `COINGECKO_API_KEY` | prix et volumes de toutes les cryptos | à faire |
 | 31 | Etherscan | `ETHERSCAN_API_KEY` | activité Ethereum, mouvements de gros portefeuilles | à faire |
+| 32 | Parcl Labs (indice quotidien des prix immobiliers : arbitre des marchés « median home value on <date> ») | `PARCL_API_KEY` | 10 villes, ≈ 450 k$ de volume, ≈ 50 événements réglés depuis février 2026 (piste n° 42) | à faire : clé gratuite à créer par Etienne |
 
 ## Avec un compte d'Etienne (à lui proposer, pas à faire seul)
 

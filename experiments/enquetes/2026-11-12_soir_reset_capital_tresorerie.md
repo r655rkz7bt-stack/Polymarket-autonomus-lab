@@ -20,3 +20,12 @@ Obligation `tresorerie_rejouee` (GRAVE) au passage de 16 h : « principal : tré
 ## Contrôle à la main (famille 1 : le principal fait-il ce qu'il doit ?)
 Champion « aucun » depuis le 07/11 : 5 achats le 07/11 (avant la promotion à « aucun »), puis seulement des règlements d'anciennes positions v1 (47) jusqu'au RESET, 0 achat depuis. Conforme.
 `positions_oubliees` (5 positions Nouvelle-Zélande de `favori_politique_quasi_certain`) : déjà connu, résultats officiels le 27/11 (Gamma : `closed: false`, prix 0,96-0,99).
+
+## Deuxième contrôle à la main (famille 3 : relire des paris au hasard)
+10 achats des fantômes v2 tirés au hasard (graine 1112, hors convictions) relus sur Gamma (question, issue achetée contre jeton,
+échéance, règlement) : `compteur_truth` (60-79 posts, NON 0,886, réglé NON), `non_aux_drames` ×4 (Deri, Tusk, Polanski, « fewer
+than 215 House members vote to impeach Hegseth »), `seismes_marche` (« ≤ 6 séismes ≥ 5,5 », OUI 0,332), `favori_politique_quasi_certain`
+×2 (pourparlers Russie-Ukraine réglé OUI en avance ; Hegseth parti d'ici le 30/11, NON 0,969), `compteur_tweets` ×2. **0 écart** :
+chaque jeton est bien l'issue notée, chaque règlement relu est juste. Point relu de près : « fewer than 215 … vote to impeach » a
+une tranche « no House floor vote » à part (0,967) ; le NON acheté à 0,96 couvre donc « pas de vote » ET « ≥ 215 », comme le prix.
+Le « drame » n'est pas toujours le OUI : à surveiller si `non_aux_drames` élargit ses mots-clés.

@@ -34,6 +34,13 @@ Achats simulés (`achats.py` : premier jour où la chance dépasse le prix + 0,0
 K 1,4 +52 à +69 % (septembre +20 à +47 %, octobre +62 à +105 %). Positif les deux mois à K 1,2-1,4 (hausse puis baisse) : le modèle
 ne gagne pas seulement en devinant la direction, il paie les seuils éloignés plus cher que le marché.
 
+**Aux vrais échanges** (`echanges.py`, data-api v2, 159 marchés : premier achat PRENEUR du côté voulu à ≤ prix visé après 02 h UTC,
+≥ 10 ou ≥ 50 parts) : avec une fenêtre de 24 h, 8 à 31 paris « exécutables » et +74 à +413 % — **faux** : la fenêtre compte des
+achats faits après un mouvement des taux en séance, aux vendeurs restés en retard (regard vers le futur). Avec la fenêtre honnête de
+3 h (02-05 h UTC, marché américain fermé) : **2 à 4 paris par réglage** (K 1,0-1,4, seuils 0,05-0,15), de −100 % à +279 % : trop peu
+pour juger ; 6 h : 4 à 9 paris. La nuit, presque personne n'achète ces marchés : le test de l'exécution reste à faire en direct
+(le fantôme achète au vendeur affiché, que les échanges passés ne montrent pas).
+
 **Limites** : deux trajectoires ; prix horaires (milieu ou dernier échange), pas de vrais échanges ni de test de profondeur
 (carnets de 400-1 900 $) ; les fériés (Veterans Day, Thanksgiving) comptés à part dans le module, pas dans le test.
 
@@ -43,5 +50,5 @@ pari, deux seuils par événement au plus. Le 12/11 à 16 h, avec la clôture du
 « 5,38 » 0,06 contre 0,047, « dip below 4,82 » 0,37 contre 0,12 : le marché a déjà la séance du jour (le 10 ans a monté le 10/11).
 
 ## Reste ouvert
-- Vrais échanges des marchés réglés (data-api v2) et profondeur au prix avant d'y croire ; refaire le test fin novembre (3e mois).
+- Exécution : regarder les achats du fantôme (vendeurs de nuit) ; refaire le test fin novembre (3e mois), aux prix horaires et aux échanges.
 - Les annuels « before 2027 » (fenêtre septembre-décembre) : même module, horizon long (la marche aléatoire y est plus fragile).
