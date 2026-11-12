@@ -75,3 +75,15 @@ convictions:
     sources: ["https://kworb.net/spotify/listeners.html", "https://open.spotify.com/artist/5pKCCKE2ajJHZ9KAiaK11H", "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ", "https://gamma-api.polymarket.com/events/1274351", "https://gamma-api.polymarket.com/events/1121432", "experiments/spotify_auditeurs.md"]
     ecrit_le: "2026-11-11"
     abandon: false
+  - id: michigan-novembre-pas-55
+    marche: "6096682"
+    question: "Will UMich Consumer Sentiment be at least 55.0 in November"
+    issue: "No"
+    probabilite: 0.98
+    probabilite_basse: 0.96
+    expire: "2026-11-19"
+    mise_max: 0.04
+    raison: "Réglé sur le chiffre FINAL de novembre (20/11, 10 h heure de l'Est), tranche « 55.0+ ». Le PRÉLIMINAIRE de la même source (Surveys of Consumers, 06/11) vaut 51,0 (Reuters, WSJ, Kitco, MarketScreener) : il faudrait une révision de +3,95 points au moins. Révisions préliminaire → final relues en 2026 : +0,6 (juin), +0,8 (juillet), +0,3 (septembre), +1,7 (octobre) ; de mémoire en 2024-2025, la plus forte hausse +2,9 (mars 2024), baisses jusqu'à −3,1. Révision ~ N(0 ; 1,8) : P(≥ +3,95) ≈ 0,014. Test sur 4 mois réglés aux vrais échanges (experiments/michigan_preliminaire.md) : les tranches que le préliminaire exclut se vendent encore 0,05-0,16 trop cher, 18 paris, 12 gagnés pour 8,9 attendus. Le préliminaire de la source qui règle tranche presque la question : médiane des cinq estimations (0,985 base, 0,98 données, 0,97 queue épaisse, 0,99, 0,98) sans rapprochement. Carnet : 92 parts du NON à 0,897, puis 0,994."
+    sources: ["https://www.sca.isr.umich.edu/files/tbmics.csv", "https://news.google.com/rss/search?q=University+of+Michigan+consumer+sentiment+preliminary+November", "https://gamma-api.polymarket.com/events/1242771", "experiments/michigan_preliminaire.md"]
+    ecrit_le: "2026-11-12"
+    abandon: false

@@ -282,6 +282,61 @@ rougeole_compteur:
     max_per_event:  {value: 1, min: 1, max: 10}           # seuils d'une même échelle : un seul tirage
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+michigan_preliminaire:
+  explication: "Polymarket demande dans quelle tranche tombera le chiffre FINAL du moral des consommateurs américains (université du Michigan). L'université publie d'abord un chiffre provisoire, deux semaines avant le final, et le final bouge rarement de plus de 2 ou 3 points. On calcule la chance de chaque tranche à partir du chiffre provisoire et on achète quand le marché croit encore possibles des tranches trop loin."
+  class: michigan_preliminaire
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION et de RÈGLE (experiments/michigan_preliminaire.md, 12/11/2026, piste n° 35) : le
+    marché se règle sur le FINAL, mais la source du règlement publie le PRÉLIMINAIRE deux semaines avant ; les tranches éloignées
+    restent chères (novembre 2026 : préliminaire 51,0, « 55.0+ » encore à 0,10-0,13). Sur juin, juillet, septembre et octobre 2026
+    aux vrais échanges (≥ 10 parts, après le préliminaire, un pari par tranche) : 18 paris, 12 gagnés pour 8,9 attendus, +33 % par
+    mise, 4 mois sur 4 positifs ; 5 réglages (écart de révision 1,4-2,5, seuil 0,05-0,10, ≥ 10 ou 50 parts) entre +31 et +51 %.
+    Indice : 4 mois, paris d'un même mois liés. Une perte apprendrait que les révisions sont plus larges que 1,8 point (une
+    révision de −3,4 en mai 2026 est possible, non vérifiée) ou que les carnets minces ne servent pas nos quantités.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}    # borne basse = chance − 0,02 (la queue de la révision est déjà dans SD 1,8)
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.97, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 24}        # source relue toutes les heures
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 3, min: 1, max: 10}           # tranches d'un même mois : une seule révision
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
+box_office_annee:
+  explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
+  class: box_office_annee
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, COHÉRENCE ENTRE MARCHÉS LIÉS et lecture de la règle (« calendar gross » : seules les dates de 2026 comptent),
+    experiments/box_office_annee.md, piste n° 33. Le 12/11 : « "Avengers: Doomsday" Opening Weekend » met sa médiane vers 399 M$
+    (400m+ 0,475, 360-400 0,265) et « biggest opening weekend 2026 » le cote 0,715, mais « Highest grossing movie in 2026? » ne lui
+    donne que 0,077 contre 959 M$ pour Spider-Man: Brand New Day. Recette au 31/12 / premier week-end des grosses sorties de
+    décembre : Star Wars VII 2,63 (même calendrier), Rogue One 2,42, Rise of Skywalker 2,35, The Last Jedi 2,11-2,35, Spider-Man
+    NWH 2,14-2,20 → chance 0,09 (week-end 360 M$, ×2,15) à 0,44 (prix du week-end, ×2,35). Aucun test sur le passé (un seul cas
+    comparable, 2015, sans marché). Billets sous 0,10 exclus : elle n'achète que si le prix de l'année monte à 0,10 ou plus, ou
+    après le premier week-end (tranche réglée le 20-21/12, loi bien plus serrée). Une perte apprendrait qu'un record d'ouverture
+    est plus concentré sur ses premiers jours que les sorties de Noël passées (multiplicateur < 2,2), ou que le marché du
+    premier week-end surestimait.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # chance (borne basse) − prix demandé − frais
+    uncertainty:    {value: 0.15, min: 0.0, max: 0.30}    # multiplicateur 2,1-2,6 : borne basse = chance − 0,15
+    min_price:      {value: 0.10, min: 0.01, max: 0.50}   # pas de billets sous 0,10 (règle « audace »)
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 24}        # source relue toutes les heures
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 10, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 1, min: 0, max: 20}
+    max_per_event:  {value: 1, min: 1, max: 10}           # un seul tirage : Doomsday dépasse ou non
+    kelly_fraction: {value: 0.5, min: 0.0, max: 2.0}      # demi-Kelly sur la borne basse : un seul événement
+
 tornades_mois:
   explication: "Polymarket demande combien de tornades il y aura aux États-Unis ce mois-ci. Le service météo américain publie chaque jour la liste des tornades, et c'est elle qui décide : on compte celles déjà passées, on ajoute ce qui arrive d'habitude le reste du mois, et on parie sur la tranche que le marché cote mal."
   class: tornades_mois

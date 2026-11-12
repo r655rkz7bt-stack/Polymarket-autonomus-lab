@@ -475,6 +475,10 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["spotify"] = attach_spotify(markets, db, now)
     from polymarket_agent.rougeole import attach_rougeole   # 12/11/2026 : compteur de la rougeole du CDC (rougeole_compteur)
     counts["rougeole"] = attach_rougeole(markets, db, now)
+    from polymarket_agent.michigan import attach_michigan   # 12/11/2026 : préliminaire du Michigan (michigan_preliminaire)
+    counts["michigan"] = attach_michigan(markets, db, now)
+    from polymarket_agent.box_office import attach_box_office   # 12/11/2026 : film le plus rentable de l'année (box_office_annee)
+    counts["box_office"] = attach_box_office(markets, db, now)
     from polymarket_agent.sieges import attach_sieges
     counts["sieges"] = attach_sieges(markets, db, now)
     from polymarket_agent.spacex import attach_spacex
