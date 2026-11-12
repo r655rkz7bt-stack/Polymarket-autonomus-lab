@@ -354,6 +354,17 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # avant le final (michigan.py, `michigan_preliminaire`).
     from polymarket_agent.michigan import fetch_michigan
     snapshot("michigan", lambda cfg: factories.get("michigan", lambda c: fetch_michigan(http, now))(cfg), "ref:michigan")
+    # El Niño (12/11/2026, piste n° 39) : chances chiffrées de la discussion ENSO mensuelle du CPC (source du règlement des marchés
+    # « peak RONI ») et dernière RONI publiée (enso.py, `el_nino_cpc`). `enso:histo` garde chaque discussion telle que lue la première fois.
+    from polymarket_agent.enso import fetch_enso
+    def enso(cfg):
+        rows = factories.get("enso", lambda c: fetch_enso(http, now))(cfg)
+        if db is not None and rows:
+            old = refs._load(db, "enso:histo")[1] or []
+            if not any(o.get("emis") == rows[0].get("emis") for o in old):
+                refs._save(db, "enso:histo", (old + rows)[-60:], now)
+        return rows
+    snapshot("enso", enso, "ref:enso")
     # PIB mensuel canadien (12/11/2026, piste n° 36) : estimation anticipée de Statistique Canada (pib_canada.py, `pib_canada_anticipe`).
     from polymarket_agent.pib_canada import fetch_pib_canada
     snapshot("pib_canada", lambda cfg: factories.get("pib_canada", lambda c: fetch_pib_canada(http, now))(cfg), "ref:pib_canada")

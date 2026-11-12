@@ -308,6 +308,32 @@ michigan_preliminaire:
     max_per_event:  {value: 3, min: 1, max: 10}           # tranches d'un même mois : une seule révision
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+el_nino_cpc:
+  explication: "Polymarket demande jusqu'où montera l'indice El Niño de cet hiver. Le service météo américain qui publie cet indice donne aussi, chaque mois, ses propres chances (« 83 % que l'hiver dépasse +2,5 »). Ses chances fixent un minimum : si le marché paie nettement moins que ce minimum, on achète ; si sa prévision a plus d'une semaine, on ne fait rien."
+  class: el_nino_cpc
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-12"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION (experiments/el_nino.md, 12/11/2026, piste n° 39) : la source du règlement (CPC de
+    la NOAA) publie le 2e jeudi de chaque mois la chance qu'une saison de 3 mois atteigne +2,5 de RONI ; le pic de l'hiver est au moins
+    aussi probable que la meilleure de ces saisons (borne basse prouvée, sans modèle à nous). Le 12/11 au matin : discussion du 08/10
+    (83 % pour OND), marché « 2.5 or above » 0,61-0,64 et « strongest on record » 0,63 ; mais la RONI d'ASO (2,0) est sortie sous la
+    trajectoire supposée et mes analogues (1957-2023) ne donnent que 0,25-0,35 : d'où la règle « discussion de moins de 7 jours ».
+    Aucun test sur le passé (une seule saison de marchés RONI). Une perte apprendrait que les chances du CPC sur la force d'El Niño sont
+    trop hautes (le marché les escompte avec raison), ou qu'une discussion vieillit en moins d'une semaine.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}    # borne basse − incertitude − prix demandé − frais
+    uncertainty:    {value: 0.05, min: 0.0, max: 0.30}    # chances du CPC arrondies et non étalonnées : borne − 0,05
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 8, min: 0.1, max: 48}        # source relue toutes les 3 h
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 10, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # tranches d'un même hiver : un seul tirage
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 pib_canada_anticipe:
   explication: "Polymarket demande de combien le PIB du Canada a bougé en un mois, par tranches. Statistique Canada publie une première estimation un mois avant le chiffre officiel, mais le chiffre officiel s'en écarte souvent de 0,1 à 0,3 point. Le marché croit trop à la première estimation : on achète les tranches voisines quand elles sont trop bon marché."
   class: pib_canada_anticipe

@@ -222,6 +222,13 @@ def test_last_research_actions_are_read_from_the_journal(tmp_path):
     assert log[0]["fait"] == "deux variantes « patientes » meteo_prevision_patiente et news_momentum_patiente dans l'arène."
     assert log[0]["details"] == [{"titre": "Pas fait", "texte": "chantier sport."}]
     assert dashboard.research_log(tmp_path / "absent") == []
+    # journal v2 (12/11/2026) : plus de rubrique « Fait », le résumé est dans le titre (avant : « aucune action notée »)
+    v2 = tmp_path / "v2" / "experiments" / "journal_recherche.md"
+    v2.parent.mkdir(parents=True)
+    v2.write_text("## 2026-11-11 (passage chercheur de 21 h, 20 h 55 → 21 h 16 UTC ; durée visée 135 min non atteinte : "
+                       "obligation élucidée (panne externe), un fantôme ; arrêt sans remplissage)\n\n- **Enquête** : rien.\n",
+                       encoding="utf-8")
+    assert dashboard.research_log(tmp_path / "v2")[0]["fait"] == "arrêt sans remplissage ; obligation élucidée (panne externe), un fantôme"
     main, shadows, db = _setup(tmp_path)
     data = dashboard.collect(main, shadows, db, SETTINGS, tmp_path, now=NOW)
     assert data["chercheur"][0]["date"] == "2026-10-16"
