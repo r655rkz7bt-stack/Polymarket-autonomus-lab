@@ -325,6 +325,15 @@ def research_log(root: Path, limit: int = 3) -> list[dict]:
             elif current is not None and line.startswith("  ") and line.strip():
                 current["texte"] = clean(current["texte"] + " " + line)
         fait = next((i["texte"] for i in items if i["titre"].lower() == "fait"), "")
+        if not fait:
+            # Journal v2 (depuis le 07/11/2026) : plus de rubrique « Fait » ; le résumé est dans le titre, après l'horaire et la
+            # durée visée (« (passage chercheur de 6 h, 05 h 55 → 07 h 44 UTC ; durée visée … ; enquête : … ; quatre pistes …) »).
+            # Sans ce repli, chaque passage s'affichait « aucune action notée » sur le tableau de bord (12/11/2026).
+            inner = title[title.find("(") + 1:title.rfind(")")] if "(" in title else ""
+            parts = [x.strip() for x in re.split(r" ; |; ", inner)]
+            duree = [x.split(" : ", 1)[1] for x in parts[1:] if x.lower().startswith("durée visée") and " : " in x]
+            keep = [x for x in parts[1:] if x and not x.lower().startswith(("durée visée", "passage "))] + duree  # le travail d'abord
+            fait = clean(" ; ".join(keep))
         out.append({"date": m.group(1) if m else title[:10],
                     "quand": (m.group(2) or "").replace("passage chercheur, ", "") if m else "",
                     "fait": fait[:600],
