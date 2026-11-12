@@ -46,7 +46,16 @@ année d'élection présidentielle.
 | Lindsay Clancy | 2026 | 8 692 | **+8 670** | marché : 0,225 monde, 0,375 US |
 | Erling Haaland | 2026 | 7 190 | +4 500 | marché : 0,11 monde, 0,68 top 5 US |
 | Bad Bunny | 2026 | 18 878 | +3 200 | marché : 0,055 monde |
+| Nancy Guthrie | 2026 | 30 858 | **+30 850** | marché : 0,088 US |
+| Alysa Liu | 2026 | 3 602 | +3 350 | marché : 0,044 monde |
+| Tyler Robinson | 2025 | 16 772 | +16 670 | n° 2 US, n° 4 monde |
+| Jimmy Kimmel | 2025 | 29 589 | +9 800 | n° 3 monde, n° 10 US |
+| Erika Kirk | 2025 | 6 350 | +6 350 | n° 4 US |
 
+  **2025, États-Unis** : parmi les quatre noms relevés, la hausse de presse remet le vrai n° 1 en tête (Mamdani +23 300 >
+  Robinson +16 700 > Kimmel +9 800 > Erika Kirk +6 300) — mais d4vd, Pope Leo et le n° 1 monde manquent (429). **2026** : Nancy
+  Guthrie (+30 850) et Maduro (+38 900) dépassent largement Lindsay Clancy (+8 700), cotée 4 fois plus. Si le test sur 2017-2025
+  confirme, c'est le meilleur candidat de conviction du labo pour décembre (Guthrie OUI aux États-Unis, vendeur ≈ 0,094).
   La presse et le marché ne disent pas la même chose (Haaland, Clancy très cotés pour une hausse de presse modeste ; Maduro peu
   coté pour la plus forte hausse). Les acheteurs regardent sans doute Google Trends (qui est la source), que nous ne pouvons pas lire.
 
