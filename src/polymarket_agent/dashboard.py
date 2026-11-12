@@ -20,7 +20,7 @@ from polymarket_agent.arena import confidence_percent, days_since_record, rankin
 from polymarket_agent.config import resolve
 from polymarket_agent.learning_engine import analyze, categories_from_db
 from polymarket_agent.ledger import Ledger
-from polymarket_agent.reporting import closed_trades, equity_curve, max_drawdown, read_entries
+from polymarket_agent.reporting import closed_trades, equity_curve, max_drawdown, read_entries, since_last_reset
 
 MAX_POINTS = 300
 
@@ -358,7 +358,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     marks = _marks(db, state.positions)
 
     # --- capital principal et cliquet
-    curve = equity_curve(read_entries(main))
+    curve = equity_curve(since_last_reset(read_entries(main)))
     capital = {k: str(v) for k, v in state.summary(marks).items()}
     capital.update({"capital_realise": str(state.realized_capital().quantize(Decimal("0.01"))),
                     "palier_suivant": str(state.next_target), "champion": state.champion or "",
@@ -432,7 +432,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     # --- positions ouvertes (tous portefeuilles), avec prévision et incertitude
     buys = {}
     for name, ledger in dict(shadows, principal=main).items():
-        for e in read_entries(ledger):
+        for e in since_last_reset(read_entries(ledger)):
             if e["type"] == "BUY":
                 buys[(name, e["data"]["token_id"])] = e["data"].get("extra") or {}
     positions = []
@@ -453,7 +453,7 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
     # --- opérations clôturées récentes
     closed = []
     for name, ledger in dict(shadows, principal=main).items():
-        for t in closed_trades(read_entries(ledger)):
+        for t in closed_trades(since_last_reset(read_entries(ledger))):
             closed.append({"portefeuille": name, "marche": questions.get(t["market_id"], t["market_id"]),
                            "issue": t["outcome"], "strategie": t["strategy"],
                            "resultat": round(float(t["pnl"]), 2), "resolution": t.get("resolution", ""),
@@ -591,13 +591,13 @@ def collect(main: Ledger, shadows: dict[str, Ledger], db, settings: dict, root: 
         "tests": tests,
         "couts": {"services_payants_eur": 0, "appels_ia_aujourdhui": db.llm_calls(now.date().isoformat()),
                   "plafond_ia": llm.get("max_calls_per_day", 0)},
-        "historique_arene": arena_history.series(db, now),
+        "historique_arene": arena_history.series(db, now, since=state.epoch_started_at),
         "chercheur": research_log(root),
         "mise_en_page": layout(root),
         "entonnoir": funnel(arena, info),
         "fiche": fiche(root, settings),
     }
-    entries = {name: read_entries(ledger) for name, ledger in dict(shadows, principal=main).items()}
+    entries = {name: since_last_reset(read_entries(ledger)) for name, ledger in dict(shadows, principal=main).items()}
     data["aujourdhui"] = today.build(data, entries, questions, db, now)
     try:  # entonnoir 80/20 (pareto.py, 20/10/2026) : ce qui fait les gains des stratégies qui grandissent
         from polymarket_agent import pareto
