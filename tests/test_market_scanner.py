@@ -277,3 +277,43 @@ def test_series_pages_add_esport_totals_seen_only_by_who_asks():
     assert len(result.markets) == 2 and added[0].eligible and added[0].extra_only
     assert added[0].event_title.startswith("Dota 2: 1win vs OG (BO3)") and added[0].event_id == "e1"
     assert [m.market_id for m in result.watchlist] == ["1"]
+
+
+def test_conviction_markets_are_read_by_id_and_shown_only_to_the_strategy_that_asks(tmp_path):
+    """12/11/2026 (nuit) : la conviction « dette américaine à 41 000 Md$ » visait un marché lent (631e sur 639 de l'étiquette
+    economy triée par volume du jour, échéance dans 49 jours, écart 0,40, 884 $ de liquidité) : aucune page ne l'amenait,
+    `convictions_claude` ne pouvait jamais l'acheter. Le scanner lit maintenant les marchés des convictions actives par identifiant."""
+    table = tmp_path / "convictions.yaml"
+    table.write_text("""convictions:
+  - {id: a, marche: "665519", issue: "No", probabilite: 0.7, probabilite_basse: 0.62, expire: "2026-12-31"}
+  - {id: b, marche: "42", issue: "No", probabilite: 0.7, probabilite_basse: 0.62, expire: "2020-01-01"}
+  - {id: c, marche: "1", issue: "No", probabilite: 0.7, probabilite_basse: 0.62, expire: "2026-12-31"}
+""", encoding="utf-8")
+
+    class IdGamma(FakeGamma):
+        asked = None
+
+        def markets_by_ids(self, ids, *, closed):
+            IdGamma.asked = (list(ids), closed)
+            return [raw_market("665519", end=NOW + timedelta(days=49), spread=0.40, liquidityNum=884, volume24hr=0),
+                    raw_market("1", end=NOW + timedelta(days=40), spread=0.30, liquidityNum=50)]
+
+    spec = {"fichier": str(table), "max_horizon_hours": 4400, "min_liquidity": 0, "min_volume_24h": 0, "max_spread": 1.0}
+    normal = [raw_market("1", end=NOW + timedelta(days=40), spread=0.30, liquidityNum=50)]  # vu, mais exclu par les seuils généraux
+    result = scan(IdGamma(normal), NOW, dict(CFG, conviction_markets=spec))
+    assert IdGamma.asked == (["1", "665519"], False)                     # la conviction expirée n'est plus lue
+    by_id = {m.market_id: m for m in result.markets}
+    assert by_id["665519"].eligible and by_id["665519"].extra_only       # vu seulement par qui le demande
+    assert by_id["1"].eligible and by_id["1"].extra_only                 # déjà lu : seuils des convictions pour elle seule, pas de doublon
+    assert {"665519", "1"}.isdisjoint(m.market_id for m in result.watchlist)  # jamais montrés aux autres stratégies
+    assert len(result.markets) == 2
+    plain = scan(IdGamma(normal), NOW, dict(CFG))
+    assert "665519" not in {m.market_id for m in plain.markets}          # sans le réglage : invisible (le défaut)
+
+
+def test_repository_config_reads_the_conviction_markets():
+    import yaml
+    from conftest import ROOT
+    cfg = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["scanner"]
+    assert cfg["conviction_markets"]["fichier"] == "config/convictions.yaml"
+    assert (ROOT / cfg["conviction_markets"]["fichier"]).exists()

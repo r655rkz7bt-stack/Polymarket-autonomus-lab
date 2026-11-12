@@ -487,6 +487,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["taux_tresor"] = attach_taux(markets, db, now)
     from polymarket_agent.box_office import attach_box_office   # 12/11/2026 : film le plus rentable de l'année (box_office_annee)
     counts["box_office"] = attach_box_office(markets, db, now)
+    from polymarket_agent.encheres import attach_encheres   # 12/11/2026 : prix de vente aux enchères contre l'estimation (encheres_estimation)
+    counts["encheres"] = attach_encheres(markets, db, now)
     from polymarket_agent.sieges import attach_sieges
     counts["sieges"] = attach_sieges(markets, db, now)
     from polymarket_agent.spacex import attach_spacex

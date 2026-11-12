@@ -33,7 +33,10 @@ Models » (Halawi et al., NeurIPS 2024) et les règles de mise de `agiprolabs/cl
 5. **Cinq estimations indépendantes** : refaire l'étape 4 cinq fois sous des angles différents (fréquence de base, données,
    avocat du OUI, avocat du NON, vue d'ensemble) et garder la **médiane**, bornée à [0,01 ; 0,99].
 6. **Rapprocher du marché** : estimation finale = prix + 0,5 × (médiane − prix), sauf si une source de résolution lue
-   tranche presque la question (alors la médiane seule). La **borne basse** = estimation finale − l'incertitude honnête.
+   tranche presque la question (alors la médiane seule).
+   Exception (12/11/2026, dette américaine) : sur un marché presque sans échanges (quelques parts par mois, carnet très écarté),
+   le « prix » n'est que le milieu du carnet et ne contient aucune information : rapprocher de 0,5 (ignorance), pas de ce milieu,
+   et le dire dans la raison. La **borne basse** = estimation finale − l'incertitude honnête.
 7. **Seuil** : n'écrire une conviction que si la borne basse dépasse le prix vendeur d'au moins 5 points (frais compris) ;
    sinon, noter le marché étudié dans le journal de recherche et passer.
 8. **Mise** : `mise_max` 0,03 à 0,05 par conviction, au plus 0,10 par événement ; la stratégie mise un demi-Kelly sur la

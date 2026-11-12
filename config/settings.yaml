@@ -98,6 +98,9 @@ scanner:
   max_favorite_price: 0.99     # au-delà, l'issue est pratiquement connue : rien à gagner
   watchlist_size: 150          # marchés suivis en détail (carnets, actualités) à chaque cycle
   full_snapshot_every_minutes: 30   # archiver tout le scan seulement toutes les 30 min
+  # 12/11/2026 : marchés des convictions de Claude lus par leur identifiant (un marché lent n'entrait par aucune page) ;
+  # vus seulement par `convictions_claude` (experiments/enquetes/2026-11-12_nuit_conviction_hors_scan.md)
+  conviction_markets: {fichier: config/convictions.yaml, max_horizon_hours: 4400, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999}
   holding_pages: 1             # 19/10/2026 : 100 marchés longs de plus (récompense de détention, parking_politique)
   holding_max_horizon_days: 900
   # 21/10/2026 (« réveiller les muettes », experiments/muettes.md) : 1 000 marchés longs de toutes sortes
@@ -131,6 +134,8 @@ scanner:
               104826: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
               # 11/11/2026 : étiquette drought (105721) : « Exceptional drought (D4) by state — week of … » (`secheresse_d4`), carnets souvent 0,01/0,99
               105721: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999},
+              # 12/11/2026 : étiquette art-auction (1305) : « <artiste>'s “<œuvre>” Sale Price » (`encheres_estimation`), 2-7 k$ par tranche, peu de volume du jour
+              1305: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.50, max_favorite_price: 0.9999},
               # 11/11/2026 : étiquette global-temp (832), « <mois> Temperature Increase (ºC) » et « 1st, 2nd, or 3rd hottest » (NASA GISTEMP),
               # pour les convictions de Claude (experiments/temperature_mondiale.md) : 900-10 000 $ de liquidité, tranches à 0,004/0,068
               832: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 1500},

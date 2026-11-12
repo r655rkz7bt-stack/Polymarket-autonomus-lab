@@ -1468,6 +1468,17 @@ class SeismesMarche(_Base):
         return self._finish(out, props)
 
 
+class EncheresEstimation(SeismesMarche):
+    """« <artiste>'s “<œuvre>” Sale Price » (5 tranches, réglées sur le prix final de la maison, frais compris ; retiré ou invendu =
+    tranche la plus basse) contre l'estimation basse publiée par la maison (encheres.py, lots dans config/encheres.yaml). Sur 41 gros
+    lots de Christie's (ventes du soir de New York, 2020-2026 : 70 lots), le prix final vaut 1,17 fois l'estimation basse en médiane : la
+    tranche « estimation basse à +25 % » gagne 36 fois sur 66 (0,43 sur les 29 lots du contrôle hors échantillon, saison chaude 2022) ;
+    le 12/11/2026 le marché la payait 0,25-0,35 (Klimt, Kandinsky, Picasso).
+    Expérience audacieuse : aucun marché d'enchères de tableaux réglé sur Polymarket pour un test aux vrais prix (4 ventes, autres objets)."""
+
+    strategy_id = "encheres_estimation"
+    ref_key = "encheres"
+
 class SeismesPays(SeismesMarche):
     """« Where will a 6.0+ magnitude earthquake occur by end of <mois> ? » (un marché par pays, réglé sur la description de lieu de
     l'USGS). Chance du OUI = 0,97 si un séisme qualifiant est déjà au catalogue, sinon fréquence de base des jours restants
@@ -1994,4 +2005,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

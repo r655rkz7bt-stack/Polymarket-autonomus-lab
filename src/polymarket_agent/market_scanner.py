@@ -6,6 +6,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from decimal import Decimal
+from pathlib import Path
 
 from polymarket_agent.models import MarketInfo
 from polymarket_agent.sources.polymarket_gamma import GammaClient, parse_market
@@ -152,6 +153,60 @@ def _add_tag_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanR
             result.markets.append(market)
 
 
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def conviction_ids(path: Path, today) -> list[str]:
+    """Marchés des convictions encore jouables (ni abandonnées ni expirées) ; une conviction abandonnée reste lue tant
+    qu'elle peut avoir une position à revendre (jusqu'à son expiration)."""
+    from polymarket_agent.convictions import charger
+    return sorted({c["marche"] for c in charger(path) if c["expire"] is None or c["expire"] >= today})
+
+
+def _add_conviction_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
+    """Marchés des convictions de Claude, lus par leur identifiant (12/11/2026, `experiments/enquetes/2026-11-12_nuit_conviction_hors_scan.md`).
+    Avant : `convictions_claude` ne voyait un marché que si une page triée par volume du jour ou une étiquette l'amenait ;
+    un marché lent (« dette américaine à 41 000 Md$ », 631e sur 639 de l'étiquette economy, échéance dans 49 jours, écart 0,40)
+    restait invisible et la conviction ne pouvait jamais être jouée. `conviction_markets: {fichier, filtres…}` ; marchés
+    `extra_only` : seule la stratégie qui les demande (candidates) les voit."""
+    spec = dict(cfg.get("conviction_markets") or {})
+    fichier = spec.pop("fichier", None)
+    if not fichier:
+        return
+    path = Path(fichier) if Path(fichier).is_absolute() else ROOT / fichier
+    ids = conviction_ids(path, now.date())
+    if not ids:
+        return
+    sub_cfg = dict(cfg, **spec)
+    try:
+        raw = gamma.markets_by_ids(ids, closed=False)
+    except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
+        log.warning("scanner : marchés des convictions indisponibles (%s)", exc)
+        return
+    by_id = {m.market_id: m for m in result.markets}
+    for item in raw:
+        if item.get("spread") is None and item.get("bestAsk") is not None and item.get("bestBid") is not None:
+            item = dict(item, spread=float(item["bestAsk"]) - float(item["bestBid"]))
+        market = parse_market(item)
+        if market.market_id in seen:
+            known = by_id.get(market.market_id)
+            if known is not None and not known.eligible and known.exclusion in RELAXABLE | {"hors horizon"} \
+                    and not classify(known, now, sub_cfg):
+                left = result.excluded.get(known.exclusion, 0) - 1
+                result.excluded[known.exclusion] = left
+                if left <= 0:
+                    del result.excluded[known.exclusion]
+                known.exclusion, known.eligible, known.extra_only = "", True, True  # relâché pour la conviction seulement
+            continue
+        seen.add(market.market_id)
+        market.exclusion = classify(market, now, sub_cfg)
+        market.eligible = not market.exclusion
+        market.extra_only = True
+        if market.exclusion:
+            result.excluded[market.exclusion] = result.excluded.get(market.exclusion, 0) + 1
+        result.markets.append(market)
+
+
 def _add_series_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
     """Marchés d'une SÉRIE de sport (23/10/2026, piste « moins de cartes » en e-sport,
     experiments/pistes_sport_coherence.md) : `series_pages: {série: {types, titre_contient, ...}}`.
@@ -241,6 +296,7 @@ def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
     _add_long_markets(gamma, now, cfg, result, seen)
     _add_tag_markets(gamma, now, cfg, result, seen)
     _add_series_markets(gamma, now, cfg, result, seen)
+    _add_conviction_markets(gamma, now, cfg, result, seen)
     _add_ended_markets(gamma, now, cfg, result, seen)
     eligible = sorted((m for m in result.markets if m.eligible and not m.ended and not m.extra_only),
                       key=lambda m: m.volume_24h, reverse=True)
