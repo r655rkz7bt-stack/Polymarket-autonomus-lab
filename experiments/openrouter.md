@@ -46,3 +46,19 @@ vendeur à 0,39 + frais). Une perte apprendrait que la fin de semaine ne copie p
 À relire : le total final de la semaine du 9/11 (affiché lundi 16/11) contre 209,75 ; la forme vendredi-dimanche semaine après
 semaine dans `openrouter:histo` ; les marchés « Which company has the highest OpenRouter market share » (même API :
 `rankings/author-market-share`).
+
+## Relecture du 13/11 (passage de 11 h)
+
+- **Le graphique de la semaine en cours n'est pas « jours finis » au sens strict** : 134,43 T lu à 06 h 00 UTC, **141,16 T** de
+  10 h 53 à au moins 11 h 18 (relevés toutes les 5 minutes : `openrouter/graphique_en_direct_2026-11-13.txt`), alors que les vues
+  « jour » (12/11 : 32,63) et « 7 jours » (209,67) n'ont pas bougé. Lecture la plus simple : à 06 h, le jeudi n'était pas encore
+  complet dans le graphique (≈ 6,7 T manquants), il l'est depuis la mise à jour du matin. **Effet sur la projection : nul** —
+  total = P × semaine précédente / (semaine précédente − 7 jours + P) ≈ 209,75 avec P = 134,43 comme avec P = 141,16, parce que les
+  deux semaines se ressemblent. Les composantes écrites plus haut (fin 75,24, début 134,28) deviennent 68,51 et 141,01 ; jeudi
+  complet : lundi-jeudi +0,1 % sur la semaine précédente. Le marché, lui, paie « 210-220 » 0,535 (« 200-210 » 0,07 / 0,36).
+- **Marchés « #1 / #2 / #3 AI lab by OpenRouter market share »** : l'API `rankings/author-market-share` (et `market-share`) donne
+  pour la semaine du 9/11 DeepSeek 38,0 %, « Others » 14,2, Tencent 10,6, OpenAI 8,8, Z.ai 8,6, Anthropic 7,2… Google 3,2 (8e) ; le
+  marché paie OpenAI n° 2 à 0,985 et Google n° 3 à 0,987. Les **10 semaines réglées** (31/08 → 02/11) ont toutes donné DeepSeek ou
+  OpenAI n° 1 et OpenAI / Google en n° 2-3, ce que cette API ne reproduit pas (semaine du 26/10 : Google 9e dans l'API, réglé 3e).
+  Le graphique « Market Share » du règlement n'est donc pas cette série (autre mesure, peut-être en dépenses) : **le prix sait, pas
+  d'avantage** ; ne jamais rattacher ces marchés à `author-market-share` sans avoir retrouvé les semaines réglées.

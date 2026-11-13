@@ -1635,6 +1635,19 @@ class OpenrouterSemaine(SeismesMarche):
     borne = 0.02
 
 
+class MississippiPlusBas(SeismesMarche):
+    """« Will the lowest St. Louis / Baton Rouge river level be <tranche> by <date>? » : plus bas relevé quotidien USGS de la fenêtre.
+    Chance = plus bas déjà publié + relevés à venir simulés autour de la prévision officielle du NWS (API NWPS : elle route l'onde déjà
+    dans le fleuve), à plat au-delà de son horizon, erreur en marche aléatoire non étalonnée (mississippi.py). Expérience audacieuse
+    du 13/11/2026 (experiments/mississippi.md, piste n° 52) : deux événements seulement, aucun réglé, prévisions passées non archivées
+    (le journal `mississippi:histo` les garde) ; le 13/11 le modèle redonne Saint-Louis (0,81 pour « 1-2,99 ft » à 0,812) et met
+    Baton Rouge « 6 ft ou plus » à 0,90 contre 0,834, sous la marge d'incertitude : pas d'achat ce jour-là."""
+
+    strategy_id = "mississippi_plus_bas"
+    ref_key = "mississippi"
+    borne = 0.02
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -2041,4 +2054,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
