@@ -146,6 +146,18 @@ convictions:
     raison: "Déjà en position (NON à 0,362) ; ne décide que de la revente. Relue le 13/11 à 01 h UTC : Kaub 60 cm à 02 h (heure de Berlin), +1,5 cm/h, soit 3 cm AU-DESSUS de la prévision WSV/BfG du 12/11 (≈ 57 à cette heure ; 63 le 13/11 7 h, 73 à 19 h, 78 le 14/11 7 h, 80 à 19 h) ; seuil 77 avant le 15/11 00 h à Berlin (14/11 23 h UTC). Cinq estimations du NON : fleuves.p_first_crossing sur la prévision brute 0,37-0,47 (retard 0-0,30, pic 0-2) ; prévision décalée de +3 cm (écart observé) 0,35-0,40 ; décalée de +5 cm 0,31-0,36 ; montée actuelle prolongée en ralentissant comme la prévision : passage le 14/11 tôt, NON ≈ 0,3 ; vague du 25-28/10 (Kaub resté sous la prévision) 0,45 ; médiane 0,36, rapprochée de moitié du milieu du marché (NON 0,55, carnet du OUI 0,27/0,63) → 0,45. Revendre si l'acheteur du NON paie plus de 0,45 (aujourd'hui 0,37 : on garde). Prochaine prévision WSV vers 06 h UTC."
     sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=PT12H", "https://gamma-api.polymarket.com/markets/6433563", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-13"
+    abandon: true            # 13/11 06 h UTC : remplacée par la v5 (onde amont retombée, marché à 0,05)
+  - id: rhin-kaub-avant-15-11-v5
+    marche: "6433563"
+    question: "Will the Rhine River return to normal levels before November 15"
+    issue: "No"
+    probabilite: 0.95
+    probabilite_basse: 0.90
+    expire: "2026-11-14"
+    mise_max: 0.03
+    raison: "AUCUNE position (la v4 disait à tort « déjà en position » : les 39,94 parts avaient été revendues à 0,49 le 12/11 vers 12 h). Relue le 13/11 à 06 h UTC : Kaub 64-65 cm (+1 cm/h, ralentit) ; l'onde amont est passée : Maxau 378 → 352, Worms 59 → 56, Mannheim 149 → 144, Mainz plafonne à 165-166 depuis 18 h ; relation Kaub ≈ Mainz − 97 (demi-journée) → pic ≈ 68-72 cm, il faudrait Mainz ≈ 174. Prévision WSV du 12/11 (78 le 14/11) dépassée par les lectures amont. Pluie Open-Meteo nulle les 13 et 14/11 sur le bassin (2-4 mm le 15/11, trop tard : seuil avant le 15/11 00 h à Berlin). Cinq estimations du OUI : Mainz − 97 avec pic +3 cm 0,03 ; erreur de la relation ±5 cm 0,06 ; Nahe en hausse non mesurée 0,08 ; prévision WSV brute 0,55 (périmée, poids nul) ; marché 0,05 ; médiane hors WSV ≈ 0,05 → NON 0,95. Rien à acheter au vendeur du NON (0,988)."
+    sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=PT8H", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ/W/measurements.json?start=PT30H", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAXAU/W/measurements.json?start=PT30H", "https://api.open-meteo.com/v1/forecast?latitude=50.0&longitude=8.27&daily=precipitation_sum", "https://gamma-api.polymarket.com/markets/6433563"]
+    ecrit_le: "2026-11-13"
     abandon: false
   - id: danube-budapest-avant-15-11-v4
     marche: "6581026"
