@@ -39,3 +39,12 @@ Fantôme « meneur du classement » sur toutes les arènes (text, math, webdev, 
 lire `datasets-server.huggingface.co/rows?dataset=lmarena-ai/leaderboard-dataset&config=text&split=latest` (JSON ; le 13/11 à
 06 h 30 : « Job has been terminated due to a temporary spike », à réessayer) ou ajouter pyarrow aux dépendances. Refaire le test sur
 les autres arènes (math, webdev) avant.
+
+## Autres arènes (même passage, `releve_math_webdev.py`, `analyse_arenes.py`)
+
+205 marchés réglés « best (Text Arena) Math / Code Arena WebDev AI model end of <mois> » (avril-octobre 2026). Le classement
+(`text` catégorie « math », `webdev` « overall ») redonne le gagnant **11 fois sur 11**. Mais le meneur à J-14 : **8 gagnés pour 8,62
+attendus** (J-7 : 9 pour 8,21 ; J-3 : 11 pour 9,71) ; des marchés où les meneurs sont serrés (3-7 points, payés 0,49-0,63) et deux
+rattachements de nom de société douteux (Moonshot, OpenAI en WebDev) que je n'ai pas relus. Ensemble des trois arènes à J-14 :
+21 gagnés pour 20,1 attendus. **L'indice du classement général ne se répète pas ailleurs** : rester à « indice faible », pas de
+fantôme avant d'avoir relu ces rattachements ; la conviction Google (achat seulement vers 0,80) reste, mais sa base est mince.
