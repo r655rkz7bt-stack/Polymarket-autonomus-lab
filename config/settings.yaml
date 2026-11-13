@@ -128,6 +128,8 @@ scanner:
               # 11/11/2026 : élargi (liquidité 50 $, écart 0,80) pour les marchés par pays de `seismes_pays` (écarts 0,2-0,6, 96-1 500 $) ;
               # `seismes_marche` garde l'ancien filtre d'écart 0,15 dans ses propres paramètres (`max_spread`).
               # 12/11/2026 : horizon 1 500 h pour les marchés annuels réglés début janvier (`seismes_annee`) ; 2 pages (jour, semaine, pays, année)
+              # 13/11/2026 : étiquette rain (105879) : « Where will it rain on <date>? » (10-15 villes, `pluie_vue`), 100-1 500 $ par ville, OUI déjà à 0,9+
+              105879: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 72},
               103038: {pages: 2, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80, max_favorite_price: 0.9999, max_horizon_hours: 1500},
               # 11/11/2026 : étiquettes tornado (106163) et tornadoes (104826) : « tornades du mois » (`tornades_mois`), 90-560 $ par tranche, écarts 0,06-0,48
               106163: {pages: 1, min_liquidity: 50, min_volume_24h: 0, max_spread: 0.80},
@@ -344,6 +346,7 @@ sources:
   taux_immobilier: {enabled: true, every_minutes: 60}        # 13/11/2026 (piste n° 46) : PMMS_history.csv de Freddie Mac (arbitre des marchés « 30-year Mortgage Rate hit »), pour taux_immobilier_barriere ; robots.txt : /pmms/docs/ permis ; gratuit, sans clé
   openrouter: {enabled: true, every_minutes: 60}             # 13/11/2026 (piste n° 50) : api/frontend/v1/rankings (graphique hebdomadaire, 7 jours, dernier jour) d'OpenRouter, arbitre des marchés « token usage week of », pour openrouter_semaine ; robots.txt « Allow: / » ; gratuit, sans clé
   mississippi: {enabled: true, every_minutes: 60}           # 13/11/2026 (piste n° 52) : relevés USGS (07010000, 07374000) et prévisions NWPS (EADM7, BTRL1) du Mississippi, arbitre des marchés « Lowest Mississippi level » ; gratuit, sans clé
+  pluie: {enabled: true, every_minutes: 5}                  # 13/11/2026 (piste n° 55) : METAR (groupe P, champ precip) de aviationweather.gov des stations des rapports CLI, arbitre des marchés « Will it rain in <ville> on <date>? », pour pluie_vue ; gratuit, sans clé, un seul appel
   usgs_annee: {enabled: true, every_minutes: 30}             # 12/11/2026 (piste n° 40) : séismes >= 6,8 depuis le 1er janvier (USGS, arbitre des marchés annuels) pour seismes_annee ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma
   # seulement). `meneur` = recette domestique 2026 de Spider-Man: Brand New Day au 08/11 (959,0 M$, en salle sur 190 écrans) ;

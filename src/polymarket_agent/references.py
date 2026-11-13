@@ -491,6 +491,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["openrouter"] = attach_openrouter(markets, db, now)
     from polymarket_agent.mississippi import attach_mississippi   # 13/11/2026 : plus bas niveau du Mississippi (mississippi_plus_bas)
     counts["mississippi"] = attach_mississippi(markets, db, now)
+    from polymarket_agent.pluie import attach_pluie   # 13/11/2026 : pluie du jour déjà vue au METAR (pluie_vue)
+    counts["pluie"] = attach_pluie(markets, db, now)
     from polymarket_agent.box_office import attach_box_office   # 12/11/2026 : film le plus rentable de l'année (box_office_annee)
     counts["box_office"] = attach_box_office(markets, db, now)
     from polymarket_agent.encheres import attach_encheres   # 12/11/2026 : prix de vente aux enchères contre l'estimation (encheres_estimation)

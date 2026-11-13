@@ -145,6 +145,8 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 
 54. ~~Parts de marché des labos sur OpenRouter (« #1 / #2 / #3 AI lab »)~~ (13/11/2026, passage de 11 h, `experiments/openrouter.md`, « Relecture du 13/11 ») : l'API `author-market-share` ne reproduit pas les 10 semaines réglées (Google 8e-9e dans l'API, réglé 2e-3e) : le graphique du règlement mesure autre chose ; le marché paie les bons labos à 0,98 : **écartée**.
 
+55. **Pluie du jour : la pluie déjà vue au METAR contre le prix** (13/11/2026, passage de 16 h, `experiments/pluie_du_jour.md`, idée neuve : lire la source avant le règlement). « Where will it rain on <date>? » (10-15 villes américaines par jour depuis le 19/08, réglé sur le rapport CLI du NWS du lendemain, journée en heure locale STANDARD) : le METAR horaire de la même station publie la pluie de l'heure (groupe P) quelques minutes après. 85 jours, 1 189 marchés, règlement redonné 1 178/1 189 (2 faux OUI à Phoenix) ; premier vrai échange du OUI après la pluie vue (+10 à +60 min, ≥ 10 parts) : 42-67 paris, 1 perdu, +12 à +16 % par mise, z +2,7 à +3,5, t par jour 1,6-2,1 ; ≥ 50 parts : +6 à +10 % ; 12 réglages : **indice** → fantôme `pluie_vue` (expérience audacieuse, Kelly entier, 5 %). Côté NON (aucune pluie vue 8 h avant la fin) : 214 paris +9 %, t par jour 2,7, mais peut-être un simple biais de prix : à reprendre avec une chance calculée (fréquence horaire, prévision NWS).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|

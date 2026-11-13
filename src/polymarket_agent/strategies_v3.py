@@ -1648,6 +1648,19 @@ class MississippiPlusBas(SeismesMarche):
     borne = 0.02
 
 
+class PluieVue(SeismesMarche):
+    """« Will it rain in <ville> on <date>? » (rapport CLI du NWS, journée en heure locale standard) : dès qu'un METAR horaire de la
+    station a publié au moins 0,01 pouce dans la journée, le OUI est presque acquis ; on l'achète s'il est encore vendu nettement
+    moins cher (pluie.py). Sans pluie vue : aucune chance donnée, aucun achat. Test sur le passé (13/11/2026,
+    experiments/pluie_du_jour.md, piste n° 55) : 85 jours d'août à novembre, règlement redonné 1 178 fois sur 1 189 ; premier vrai
+    échange après la pluie vue (+10 à +60 min, au moins 10 parts) : 48-67 paris, 1 perdu (Phoenix), +12 à +16 % par mise, z +3,4,
+    t par jour 1,6-2,1 ; au moins 50 parts : +6 à +11 % (z +1,4 à +1,9) : indice, fantôme."""
+
+    strategy_id = "pluie_vue"
+    ref_key = "pluie"
+    borne = 0.03
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -2054,4 +2067,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, PluieVue, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

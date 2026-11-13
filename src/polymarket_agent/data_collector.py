@@ -397,6 +397,10 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "mississippi:histo", mi_journal(refs._load(db, "mississippi:histo")[1] or [], rows), now)
         return rows
     snapshot("mississippi", mississippi, "ref:mississippi")
+    # Pluie du jour (13/11/2026, piste n° 55) : METAR horaires (groupe P) des stations des rapports CLI du NWS, arbitre des marchés
+    # « Will it rain in <ville> on <date>? », `pluie_vue` (la pluie déjà tombée se lit des heures avant le rapport du lendemain).
+    from polymarket_agent.pluie import fetch_pluie
+    snapshot("pluie", lambda cfg: factories.get("pluie", lambda c: fetch_pluie(http, now))(cfg), "ref:pluie")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")
