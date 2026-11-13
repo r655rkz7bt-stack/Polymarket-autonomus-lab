@@ -1622,6 +1622,19 @@ class TauxImmobilierBarriere(SeismesMarche):
     ref_key = "taux_immobilier"
 
 
+class OpenrouterSemaine(SeismesMarche):
+    """« Will OpenRouter process between <a>T and <b>T tokens the week of <lundi>? » : total hebdomadaire du graphique « Top Models »
+    d'openrouter.ai/rankings, lu à la source (openrouter.py) : jours finis de la semaine + fin de semaine projetée comme celle de la
+    semaine précédente (vue des 7 derniers jours). Expérience audacieuse du 13/11/2026 (experiments/openrouter.md, piste n° 50) :
+    aucun historique quotidien public, donc pas de test aux prix passés ; sur les 5 semaines réglées, le marché s'est trompé deux fois
+    sur la fin de semaine (semaine du 26/10 : « 195-205 » payé 0,90 le dimanche matin, réglée 193,6). Le 13/11 : projection 209,75 T
+    pour 200-210 à 0,33 et 210-220 à 0,59."""
+
+    strategy_id = "openrouter_semaine"
+    ref_key = "openrouter"
+    borne = 0.02
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -2028,4 +2041,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

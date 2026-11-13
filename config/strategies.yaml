@@ -464,6 +464,32 @@ taux_immobilier_barriere:
     mise_max_pari:  {value: 0.05, min: 0.01, max: 0.25}   # au plus 5 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+openrouter_semaine:
+  explication: "Polymarket demande combien de milliards de milliards de mots (jetons) le site OpenRouter traitera cette semaine. Le site publie lui-même le total de chaque jour fini. On additionne les jours déjà finis, on ajoute la fin de semaine comme elle s'est passée la semaine d'avant, et on achète la tranche que le prix sous-estime."
+  class: openrouter_semaine
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-13"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION (lire la source du règlement avant la fin, experiments/openrouter.md, 13/11/2026,
+    piste n° 50) : le graphique qui règle « OpenRouter token usage week of » est servi en direct (jours finis) avec la vue des 7
+    derniers jours, qui donne la forme de la fin de semaine précédente (vendredi-dimanche ≈ 0,56 fois lundi-jeudi la semaine du 2/11).
+    Sur 5 semaines réglées, le marché s'est trompé deux fois sur le week-end. Pas de test aux prix passés (aucun historique quotidien
+    public) : le journal `openrouter:histo` le construit. Une perte apprendrait que la fin de semaine ne ressemble pas à la précédente
+    (croissance de 4-8 % par semaine, lancements de modèles gratuits) ou que le graphique est révisé après coup.
+  params:
+    min_net_edge:   {value: 0.06, min: 0.0, max: 0.30}    # chance − prix demandé − frais (tech_fees, 4 % × p(1−p))
+    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}    # une seule semaine de forme : la projection peut se tromper de 2-3 %
+    min_price:      {value: 0.08, min: 0.01, max: 0.50}
+    max_price:      {value: 0.92, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 200}       # source relue chaque heure
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # tranches d'une même semaine : un seul total
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee
