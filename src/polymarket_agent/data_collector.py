@@ -387,6 +387,16 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "openrouter:histo", or_journal(refs._load(db, "openrouter:histo")[1] or [], rows), now)
         return rows
     snapshot("openrouter", openrouter, "ref:openrouter")
+    # Plus bas niveau du Mississippi (13/11/2026, piste n° 52) : relevés USGS (arbitre des marchés « Lowest Mississippi level at … by »)
+    # et prévisions officielles NWPS, `mississippi_plus_bas` ; journal `mississippi:histo` (prévisions non archivées ailleurs).
+    from polymarket_agent.mississippi import fetch_mississippi, journal as mi_journal
+
+    def mississippi(cfg):
+        rows = factories.get("mississippi", lambda c: fetch_mississippi(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "mississippi:histo", mi_journal(refs._load(db, "mississippi:histo")[1] or [], rows), now)
+        return rows
+    snapshot("mississippi", mississippi, "ref:mississippi")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")

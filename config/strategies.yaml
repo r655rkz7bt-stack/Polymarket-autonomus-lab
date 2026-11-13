@@ -490,6 +490,32 @@ openrouter_semaine:
     mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+mississippi_plus_bas:
+  explication: "Polymarket demande quel sera le niveau le plus bas du Mississippi à Saint-Louis et à Baton Rouge d'ici le 30 novembre, par tranches de hauteur. Le service météo américain publie chaque jour une prévision du niveau qui tient compte de l'eau déjà en route depuis l'amont. On part du plus bas déjà mesuré, on simule les jours restants autour de cette prévision, et on achète la tranche que le prix sous-estime nettement."
+  class: mississippi_plus_bas
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-13"
+  hypothesis: >
+    Expérience audacieuse, avantage d'INFORMATION (prévision officielle routée contre niveau du jour, experiments/mississippi.md,
+    13/11/2026, piste n° 52) : le marché « Baton Rouge 6 ft ou plus » est monté de 0,64 à 0,83 au fil des jours où l'onde partie de
+    Saint-Louis (2,77 → 12,7 ft du 01 au 09/11) arrivait, alors que la prévision du NWS la montrait dès le départ (au plus bas 7,1 ft
+    d'ici le 30/11). Erreur de prévision non étalonnée (aucune archive) : marge d'incertitude 0,06 et journal `mississippi:histo`.
+    Une perte apprendrait que les prévisions à 2-3 semaines se trompent plus que la marche aléatoire supposée (pluie, lâchers du
+    Missouri, bruit des relevés de 8 h), ou que le marché lit déjà ces prévisions.
+  params:
+    min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance − incertitude − prix demandé − frais (weather_fees 5 % × p(1−p))
+    uncertainty:    {value: 0.06, min: 0.0, max: 0.30}    # dérive et bruit non étalonnés
+    min_price:      {value: 0.08, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 200}       # source relue chaque heure
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 1, min: 1, max: 10}           # tranches d'une même jauge : un seul plus bas
+    mise_max_pari:  {value: 0.05, min: 0.01, max: 0.25}   # au plus 5 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee
