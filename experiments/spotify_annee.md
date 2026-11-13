@@ -44,7 +44,13 @@ contre **0,8445** au marché (« Earrings » 0,161). Rapprochée de moitié : 0,
 février que les nouvelles données ne lèveront pas ; seul un relevé des classements hebdomadaires US de janvier (charts.spotify.com
 demande un compte) trancherait.
 
-## Verdict : le prix sait (mondial), écart non prouvé (US) ; rien dans l'arène
+**Affinage (même passage)** : forme décembre-mars de 3 titres dont toutes les semaines US sont connues, rapportée aux 4 points connus
+de « Man I Need » : janvier ≈ 1,0 fois le niveau de référence, février ≈ 1,12 (creux de Noël 0,8) → **X ≈ 57,5 M (54,7-59,9)** ; et
+la contrainte des 160,7 M donne alors décembre 2025 trop haut, ou X encore plus grand (≈ 60-67 M) si décembre a eu son creux. Avance
+de « Man I Need » à la mi-novembre ≈ +4 à +16 M : **P ≈ 0,8, le marché (0,845) a raison** ; la médiane de 0,65 venait d'un janvier
+supposé trop faible. Leçon : avant de croire un écart, reconstruire les semaines manquantes avec la forme de titres complets.
+
+## Verdict : le prix sait (mondial et US) ; rien dans l'arène
 
 Méthode réutilisable : total des semaines classées (`*_weekly_totals.html`) − semaines connues = contrainte sur les semaines
-manquantes. À relire le 03/12 (Wrapped) : « Man I Need » contre « Earrings » (ma médiane 0,65, marché 0,845).
+manquantes. À relire le 03/12 (Wrapped) : « Man I Need » contre « Earrings » (≈ 0,8 après affinage, marché 0,845).
