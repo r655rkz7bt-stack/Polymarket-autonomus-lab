@@ -785,3 +785,24 @@ def test_convictions_perimees_cas_du_danube_12_11():
     assert enquete.convictions_perimees({"convictions_claude_v2.0.0": rows}, [dict(old, abandon=True), new], now) == []
     settled = rows + [_e("SETTLE", now, token_id="danY")]
     assert enquete.convictions_perimees({"convictions_claude_v2.0.0": settled}, [old], now) == []
+
+
+def test_more_markets_held_in_one_event_than_max_per_event_is_grave():
+    """13/11/2026 : `taux_tresor_barriere` (max_per_event 2) a acheté 3 seuils de l'événement 1310160 en trois cycles (00 h 08, 00 h 12,
+    00 h 16) ; le plafond ne comptait que les achats du cycle. Un seuil réglé ou revendu libère sa place."""
+    t = datetime(2026, 11, 13, 4, 0, tzinfo=timezone.utc)
+    cfg = {"taux_tresor_barriere": {"version": "2.0.0", "params": {"max_per_event": {"value": 2}}}}
+
+    def leg(i, minutes, ev="1310160"):
+        return _e("BUY", t + timedelta(minutes=minutes), token_id=f"t{i}", market_id=f"m{i}", event_id=ev, outcome="Yes", price="0.2",
+                  shares="10", fee="0", strategy_id="taux_tresor_barriere", strategy_version="2.0.0", extra={})
+    rows = [leg(1, 0), leg(2, 4), leg(3, 8)]
+    found = enquete.plafond_par_evenement({"taux_tresor_barriere_v2.0.0": _ledger(*rows)}, cfg, t - timedelta(days=3))
+    assert [f["gravite"] for f in found] == [enquete.GRAVE] and "3 marchés tenus (plafond 2)" in found[0]["exemples"][0]
+    # le premier seuil revendu (ou réglé) avant le troisième achat : deux marchés tenus, rien
+    sold = _e("SELL", t + timedelta(minutes=6), token_id="t1", price="0.3", shares="10", fee="0", extra={})
+    assert not enquete.plafond_par_evenement({"taux_tresor_barriere_v2.0.0": _ledger(rows[0], rows[1], sold, rows[2])}, cfg, t - timedelta(days=3))
+    # autre événement, ou achats d'avant le correctif : rien
+    assert not enquete.plafond_par_evenement({"taux_tresor_barriere_v2.0.0": _ledger(rows[0], rows[1], leg(3, 8, "autre"))}, cfg, t - timedelta(days=3))
+    old = [leg(i, m - 240) for i, m in ((1, 0), (2, 4), (3, 8))]
+    assert not enquete.plafond_par_evenement({"taux_tresor_barriere_v2.0.0": _ledger(*old)}, cfg, t - timedelta(days=3))

@@ -52,3 +52,22 @@ pari, deux seuils par événement au plus. Le 12/11 à 16 h, avec la clôture du
 ## Reste ouvert
 - Exécution : regarder les achats du fantôme (vendeurs de nuit) ; refaire le test fin novembre (3e mois), aux prix horaires et aux échanges.
 - Les annuels « before 2027 » (fenêtre septembre-décembre) : même module, horizon long (la marche aléatoire y est plus fragile).
+
+## Rejeu du 13/11/2026 (passage de 1 h) : trajectoires réelles contre marche aléatoire (`scripts/trajectoires.py`)
+Leçon de Freddie Mac (`taux_immobilier.md` : la marche aléatoire sous-estime les tendances des taux immobiliers) rejouée ici. Mêmes
+observations (marché × jour ouvré, décision à 02 h UTC, 1 941 observations sur 169 marchés relevés de nouveau), clôtures du Trésor
+1990 → 31/07/2026 (aucune fenêtre d'après la coupure) ; marche aléatoire en formule fermée (barrière discrète, correction de
+Broadie-Glasserman) au lieu de la simulation.
+
+| modèle | log-score |
+|---|---|
+| prix du marché | −0,530 |
+| marche aléatoire × 1,0 | −0,526 |
+| **marche aléatoire × 1,3 (en production)** | **−0,468** |
+| trajectoires réelles, en points | −0,488 |
+| trajectoires réelles mises à l'échelle de l'écart-type des 60 jours | −0,523 |
+
+Par mois et sens, × 1,3 gagne en septembre « high » (−1,11 contre −1,15 et −1,36 au prix) et en octobre « low » (−0,63 contre −0,73 et
+−0,75) ; les trajectoires en points gagnent octobre « high » (−0,214 contre −0,292). Par durée, × 1,3 est devant pour les 2, 5, 10 et
+30 ans. **Le modèle en production reste** : sur les taux quotidiens, les trajectoires réelles n'apportent rien de plus que l'écart-type
+gonflé de 30 %. (Les 75 observations de « November high » ne portent que sur des seuils déjà réglés, donc touchés : biaisées, non comptées.)

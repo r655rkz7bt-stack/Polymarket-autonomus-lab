@@ -48,6 +48,15 @@ def _book_mid(books: dict, token: str) -> float | None:
     return float(b.mid) if b is not None and b.mid is not None else None
 
 
+def _held_per_event(state) -> dict:
+    """{événement: nombre de marchés distincts déjà tenus} (13/11/2026 : `max_per_event` vaut d'un cycle à l'autre, pas par cycle)."""
+    seen: dict = {}
+    for pos in (getattr(state, "positions", None) or {}).values():
+        if getattr(pos, "event_id", None) and pos.shares > 0:
+            seen.setdefault(str(pos.event_id), set()).add(str(pos.market_id))
+    return {k: len(v) for k, v in seen.items()}
+
+
 def _with_reference(markets, key: str, limit: int) -> list[MarketInfo]:
     """Marchés scannés qui portent la référence `key` (rattachée en amont à tous les marchés,
     21/10/2026), les plus actifs d'abord : la stratégie les demande au scanner (`candidates`)."""
@@ -1453,17 +1462,19 @@ class SeismesMarche(_Base):
                 continue
             scored.append((best[2], m, best[0], best[1], ref))
         # Les tranches d'un même événement gagnent ou perdent ensemble (même compte, même maximum) : au plus `max_per_event`, les meilleures d'abord.
-        per_event: dict = {}
+        # 13/11/2026 : en comptant les marchés DÉJÀ tenus dans l'événement (avant, seulement les achats du cycle : `taux_tresor_barriere`
+        # a pris 3 seuils de 3 événements d'un cycle à l'autre, `seismes_marche` 3 tranches de 2 semaines).
+        per_event = _held_per_event(state)
         unc = float(p.get("uncertainty", 0))
         for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
-            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 2)):
+            if per_event.get(str(m.event_id), 0) >= int(p.get("max_per_event", 2)):
                 out.abstain("déjà deux tranches de cet événement")
                 continue
             prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
                              f"seismes:{ref['titre']}", f"loi calculée {est:.3f} pour l'issue achetée",
                              "une réplique ou un séisme fort de dernière minute, ou une révision de magnitude par l'USGS")
             if prop is not None:
-                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
+                per_event[str(m.event_id)] = per_event.get(str(m.event_id), 0) + 1
                 props.append(prop)
         return self._finish(out, props)
 
@@ -1599,6 +1610,18 @@ class TauxTresorBarriere(SeismesMarche):
     ref_key = "taux_tresor"
 
 
+class TauxImmobilierBarriere(SeismesMarche):
+    """« Will the U.S. 30-year Fixed-Rate Mortgage hit <x>% (HIGH / LOW) by December 31, 2026? » : réglé sur les relevés HEBDOMADAIRES de
+    Freddie Mac (PMMS du jeudi), semaines finies après la création du marché. Chance = part des vraies fenêtres de n relevés (1990-2026 et
+    2019-2026) qui touchent le niveau depuis le relevé d'aujourd'hui, avancé de 0,7 × la variation du 10 ans depuis la semaine du dernier
+    relevé (taux_immobilier.py). Expérience du 13/11/2026 (experiments/taux_immobilier.md, piste n° 46) : pas de test aux prix passés
+    (seuils lointains restés à des milieux de carnet vide pendant des mois) ; le 13/11, « 8,00 % » 0,016-0,042 contre un acheteur du OUI à
+    0,10, « 6,25 % LOW » 0,000-0,005 contre 0,045. Une seule échelle (un tirage) : expérience, pas preuve."""
+
+    strategy_id = "taux_immobilier_barriere"
+    ref_key = "taux_immobilier"
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -1666,16 +1689,16 @@ class SiegesCoherence(_Base):
                 out.abstain("issue hors de la plage de prix ou carnet vide")
                 continue
             scored.append((best[2], m, best[0], best[1], ref))
-        per_event: dict = {}
+        per_event = _held_per_event(state)
         for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
-            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 2)):
+            if per_event.get(str(m.event_id), 0) >= int(p.get("max_per_event", 2)):
                 out.abstain("déjà deux tranches de cet État")
                 continue
             prop = self._buy(m, books, state, side, est, est, est, bucket, marks, out,
                              f"sieges:{ref['titre']}", f"loi calculée {est:.3f} pour l'issue achetée",
                              "l'échelle sait quelque chose que les districts ignorent (carte électorale, recomptage), ou les districts sont mal cotés ensemble")
             if prop is not None:
-                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
+                per_event[str(m.event_id)] = per_event.get(str(m.event_id), 0) + 1
                 props.append(prop)
         return self._finish(out, props)
 
@@ -1724,18 +1747,18 @@ class ToucherMetaux(_Base):
             scored.append((best[2], m, best[0], best[1], ref))
         if not rattaches:  # 27/10/2026 : « aucune raison notée » pendant 3 jours, alors qu'elle attendait une semaine née après le premier relevé
             out.abstain("aucune barre d'or ou d'argent avec un prix rattaché (semaine née avant le journal des prix, ou barre à l'arrêt)")
-        per_event: dict = {}
+        per_event = _held_per_event(state)
         props = []
         unc = float(p.get("uncertainty", 0))
         for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
-            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 3)):
+            if per_event.get(str(m.event_id), 0) >= int(p.get("max_per_event", 3)):
                 out.abstain("déjà le maximum de barres de cet événement")
                 continue
             prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
                              f"matieres:{ref['titre']}", f"chance calculée {est:.3f} pour l'issue achetée",
                              "volatilité plus forte ou plus faible que la médiane d'un an, ou bougie de Pyth plus extrême que nos relevés")
             if prop is not None:
-                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
+                per_event[str(m.event_id)] = per_event.get(str(m.event_id), 0) + 1
                 props.append(prop)
         return self._finish(out, props)
 
@@ -1782,18 +1805,18 @@ class SpaceXCumul(_Base):
                 out.abstain("issue hors de la plage de prix ou carnet vide")
                 continue
             scored.append((best[2], m, best[0], best[1], ref))
-        per_event: dict = {}
+        per_event = _held_per_event(state)
         props = []
         unc = float(p.get("uncertainty", 0))
         for _, m, side, est, ref in sorted(scored, key=lambda x: -x[0]):
-            if per_event.get(m.event_id, 0) >= int(p.get("max_per_event", 2)):
+            if per_event.get(str(m.event_id), 0) >= int(p.get("max_per_event", 2)):
                 out.abstain("déjà deux tranches de cet événement")
                 continue
             prop = self._buy(m, books, state, side, est - unc, est, min(est + unc, 0.999), bucket, marks, out,
                              f"spacex:{ref['titre']}", f"chance prudente {est:.3f} pour l'issue achetée",
                              "pause de la flotte de plusieurs semaines, ou spacex.com compte autrement que Launch Library 2")
             if prop is not None:
-                per_event[m.event_id] = per_event.get(m.event_id, 0) + 1
+                per_event[str(m.event_id)] = per_event.get(str(m.event_id), 0) + 1
                 props.append(prop)
         return self._finish(out, props)
 
@@ -2005,4 +2028,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
