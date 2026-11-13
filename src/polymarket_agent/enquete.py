@@ -1038,6 +1038,47 @@ def jambes_meme_evenement(entries: dict[str, list[dict]], since: datetime | None
     return out
 
 
+PLAFOND_EVENEMENT_DEPUIS = "2026-11-13T03:00"   # correctif de `max_per_event` (achats d'avant : déjà comptés dans la fiche)
+
+
+def plafond_par_evenement(entries: dict[str, list[dict]], configs: dict, since: datetime | None = None,
+                          depuis: str = PLAFOND_EVENEMENT_DEPUIS) -> list[dict]:
+    """Un achat qui porte à plus de `max_per_event` le nombre de marchés TENUS en même temps dans un événement (13/11/2026 :
+    le plafond ne comptait que les achats du cycle ; `taux_tresor_barriere` a pris 3 seuils de 3 événements d'un cycle à l'autre)."""
+    out = []
+    start = max([x for x in (since, datetime.fromisoformat(depuis).replace(tzinfo=timezone.utc)) if x is not None])
+    for key, cfg in configs.items():
+        if not isinstance(cfg, dict):
+            continue
+        raw = (cfg.get("params") or {}).get("max_per_event")
+        cap = raw.get("value") if isinstance(raw, dict) else raw
+        name = f"{key}_v{cfg.get('version', '1.0.0')}"
+        if cap is None or name not in entries:
+            continue
+        held: dict[str, list] = {}   # jeton -> [événement, marché, parts]
+        bad = []
+        for e in sorted(entries[name], key=_ts):
+            d = e.get("data") or {}
+            tok = d.get("token_id")
+            if e.get("type") == "BUY" and d.get("event_id"):
+                prev = held.get(tok, [None, None, 0.0])[2]
+                held[tok] = [str(d["event_id"]), str(d["market_id"]), prev + float(d.get("shares") or 0)]
+                n = len({m for ev, m, _ in held.values() if ev == str(d["event_id"])})
+                if n > int(cap) and _ts(e) >= start:
+                    bad.append(f"{e['ts'][:16]} événement {d['event_id']} : {n} marchés tenus (plafond {int(cap)})")
+            elif e.get("type") == "SETTLE" and tok in held:
+                held.pop(tok)
+            elif e.get("type") == "SELL" and tok in held:
+                held[tok][2] -= float(d.get("shares") or 0)
+                if held[tok][2] <= 1e-9:
+                    held.pop(tok)
+        if bad:
+            out.append(_finding("plafond_par_evenement", GRAVE, f"{key} : {len(bad)} achat(s) au-delà de max_per_event",
+                                "Les marchés d'un même événement gagnent ou perdent ensemble : le plafond doit compter les positions déjà "
+                                "tenues, pas seulement les achats du cycle (strategies_v3._held_per_event).", bad))
+    return out
+
+
 def deux_camps(entries: dict[str, list[dict]], since: datetime | None = None, min_price: float = 0.7) -> list[dict]:
     """Même stratégie, même marché, les deux camps achetés CHERS (prix ≥ 0,70 : un favori puis le camp opposé
     devenu favori ; les jambes à 0,50 des teneurs de marché et paires sont voulues) : le deuxième achat
@@ -1365,7 +1406,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
                 + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries) + certitude_promise(entries)
-                + deux_camps(entries, since) + jambes_meme_evenement(entries, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
+                + deux_camps(entries, since) + jambes_meme_evenement(entries, since) + plafond_par_evenement(entries, configs, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)

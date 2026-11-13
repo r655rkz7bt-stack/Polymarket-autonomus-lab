@@ -79,3 +79,27 @@ def test_collect_attach_at_night_and_buy(tmp_path):
     # 5,38 cotée au-dessus de sa chance : achat du NON
     out = s.propose([near, far], books(round(p_far + 0.25, 2)), _state(tmp_path), LIMITS, "b1")
     assert [p.token_id for p in out.proposals] == ["2N"]
+
+
+def test_max_per_event_counts_positions_already_held(tmp_path):
+    """13/11/2026 (00 h 05 → 00 h 16 UTC) : `max_per_event` 2 ne comptait que les achats du cycle ; d'un cycle à l'autre, le fantôme a
+    acheté 3 seuils du même événement « 10-year yield November » (6656076, 6656075, 6656072 : une seule trajectoire), et de même
+    pour les 5 et 30 ans (enquetes/2026-11-13_nuit_max_par_evenement_entre_cycles.md)."""
+    from decimal import Decimal
+    from polymarket_agent.ledger import Position
+    db = Database(tmp_path / "db.sqlite")
+    collect({"sources": {"taux_tresor": {"enabled": True, "every_minutes": 60}}}, Http({tt.CSV.format(y=2026): CSV}), db, [], NUIT)
+    far = _market("2", "Will the 10-year Treasury yield hit 5.38% in November?", HAUT)
+    refs.attach_all([far], db, NUIT)
+    p_far = far.references["taux_tresor"]["p"]
+    b = _books(("2Y", str(round(p_far + 0.24, 2)), str(round(p_far + 0.25, 2))), ("2N", str(round(0.75 - p_far, 2)), str(round(0.76 - p_far, 2))))
+    for x in b.values():
+        x.fetched_at = NUIT
+    s = _s(TauxTresorBarriere, min_net_edge=0.08, uncertainty=0.04, min_price=0.05, max_price=0.90, max_stale_hours=3,
+           max_extra_ticks=1, max_proposals_per_cycle=3, max_per_event=2, kelly_fraction=1.0, max_candidates=120)
+    st = _state(tmp_path)
+    assert [p.token_id for p in s.propose([far], b, st, LIMITS, "b1").proposals] == ["2N"]   # événement vide : achat
+    for tok, mid in (("6656076Y", "6656076"), ("6656075Y", "6656075")):   # deux seuils déjà tenus, achetés aux cycles d'avant
+        st.positions[tok] = Position(tok, mid, "1310160", "Yes", Decimal("10"), Decimal("1"), NUIT.isoformat(), "taux_tresor_barriere", "2.0.0")
+    out = s.propose([far], b, st, LIMITS, "b1")
+    assert out.proposals == [] and out.abstentions.get("déjà deux tranches de cet événement") == 1
