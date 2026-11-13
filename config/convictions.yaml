@@ -183,3 +183,15 @@ convictions:
     sources: ["https://www.treasurydirect.gov/NP_WS/debt/search?startdate=2015-01-01&enddate=2026-11-12&format=json", "https://home.treasury.gov/news/press-releases/sb0675/", "https://gamma-api.polymarket.com/events/73226", "experiments/dette_us.md"]
     ecrit_le: "2026-11-12"
     abandon: false
+  - id: google-meilleur-modele-fin-novembre
+    marche: "4664662"
+    question: "Will Google have the best AI model at the end of November 2026"
+    issue: "Yes"
+    probabilite: 0.87
+    probabilite_basse: 0.84
+    expire: "2026-11-28"
+    mise_max: 0.04
+    raison: "Classement officiel Text Arena sans contrôle de style (jeu lmarena-ai/leaderboard-dataset sur Hugging Face, publié le 11/11) : Gemini 4 Carbon 1538,4 et Gemini 4 Argon 1529,5 contre Claude Opus 5.5 1513,7 (24,7 points ; Argon seul garde 15,8 points si Carbon baisse avec ses 4 273 votes). Piste n° 51 : sur les 13 mois réglés avec cette règle (juillet 2025 → octobre 2026), le meneur à J-14 a gardé la tête 13 fois sur 13, payé 0,881 en moyenne (0,63-0,98). Cinq estimations : Laplace 14/15 = 0,93 ; écart ≥ 15 points 0,92 ; deux changements de meneur en 15 mois (février, octobre 2026) → risque d'un lancement qui passe devant en 17 jours ≈ 0,08 → 0,90 ; prix moyen payé pour ces meneurs 0,88 ; avance doublée par Argon 0,92 ; médiane 0,92, rapprochée de moitié du milieu du marché (0,82) → 0,87. N'achète que si un vendeur descend à ≈ 0,80."
+    sources: ["https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset", "https://gamma-api.polymarket.com/markets/4664662", "experiments/meilleur_modele.md"]
+    ecrit_le: "2026-11-13"
+    abandon: false
