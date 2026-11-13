@@ -46,6 +46,16 @@ médiane 0,94 ; marché 0,834 (vendeur 0,837, 240 parts, puis 506 à 0,838) ; ra
 vendeur + frais, **sous le seuil de 5 points : pas de conviction**. Le prix monte depuis le 04/11 (0,30 → 0,83) à mesure que l'onde
 se voit dans les relevés : le marché suit le niveau du jour plus que la prévision.
 
+## Contrôle sur 1997-2025 : une décrue de Baton Rouge repasse-t-elle vite sous le plus bas d'avant l'onde ?
+
+`mississippi/ondes_baton_rouge.py` (moyennes du jour 1997-2026) : 79 ondes sur des basses eaux (plus bas ≤ 12 ft, montée ≥ 1 ft en
+20 jours). Jours entre la crête et le premier jour sous (plus bas d'avant l'onde − 0,38 ft) : **≤ 8 jours 5 fois sur 79**, ≤ 10 jours
+8 fois, ≤ 14 jours 12 fois ; pour les ondes de +1,5 à +3 ft (comme celle annoncée, +2 ft) : **2 sur 22 en ≤ 8 jours**, 3 en ≤ 10.
+Ici la crête est prévue les 22-23/11 et la fenêtre finit le 30/11 (7-8 jours) : P(« 6 ft ou plus ») ≈ 0,90, comme le modèle. Cinq
+estimations (ondes 0,90 ; modèle 0,90 ; prévision et Cairo 0,95 ; pluie à venir 0,95 ; analogues sans l'onde 0,70) : médiane 0,90,
+rapprochée de moitié du prix 0,867, borne ≈ 0,84 pour un vendeur à 0,837 + 0,007 de frais : **toujours sous le seuil d'une
+conviction** ; le fantôme achètera seul si le prix redescend.
+
 ## Verdict : expérience (fantôme `mississippi_plus_bas`)
 
 Source `mississippi` (relevés USGS + prévisions NWPS, relue chaque heure) et journal `mississippi:histo` (chaque prévision émise, une
