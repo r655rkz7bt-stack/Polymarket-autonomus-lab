@@ -438,6 +438,32 @@ taux_tresor_barriere:
     mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+taux_immobilier_barriere:
+  explication: "Polymarket demande si le taux des prêts immobiliers à 30 ans aux États-Unis montera jusqu'à 8 % (ou descendra jusqu'à 6,25 %) avant la fin de l'année. Le règlement ne regarde que le chiffre publié chaque jeudi par Freddie Mac. On regarde, dans 36 ans d'historique, combien de fois le taux a vraiment bougé autant en autant de semaines, et on achète quand le prix dit que c'est bien plus probable que ça."
+  class: taux_immobilier_barriere
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-13"
+  hypothesis: >
+    Expérience audacieuse, avantage de RÈGLE et de fréquence de base (experiments/taux_immobilier.md, 13/11/2026, piste n° 46) : l'échelle
+    « 30-year Mortgage Rate hit __ in 2026 » se règle sur le relevé HEBDOMADAIRE de Freddie Mac (7 relevés d'ici le 31/12) ; ses seuils
+    lointains sont des carnets minces qui restent des mois à des prix de façade (5,50 % LOW coté ≈ 0,47 quand le taux était à 6,5). Les
+    vraies trajectoires de 1990-2026 donnent « 8,00 % » 0,016-0,042 (acheteur du OUI à 0,10) et « 6,25 % LOW » ≈ 0,003 (0,045). Une perte
+    apprendrait que le régime de 2026 (10 ans à 5,10, 30 ans à 5,43 après +0,3 en trois séances) est plus violent que les 36 ans d'historique,
+    ou que les prix de façade cachent une information (révision de méthode de Freddie Mac, règle mal lue).
+  params:
+    min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance − prix demandé − frais (finance_prices_fees, 4 % × p(1−p))
+    uncertainty:    {value: 0.02, min: 0.0, max: 0.30}    # 1990 contre 2019 : ±0,01-0,03 sur les seuils lointains
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 30, min: 0.1, max: 200}      # relevé hebdomadaire, source relue chaque heure
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # seuils d'une même échelle : une seule trajectoire (deux côtés opposés au plus)
+    mise_max_pari:  {value: 0.05, min: 0.01, max: 0.25}   # au plus 5 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee

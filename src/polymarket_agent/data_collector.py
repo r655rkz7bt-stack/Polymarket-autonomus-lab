@@ -374,6 +374,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # Taux du Trésor (12/11/2026, piste n° 43) : clôtures quotidiennes publiées (arbitre des marchés « hit / dip below »), `taux_tresor_barriere`.
     from polymarket_agent.taux_tresor import fetch_taux
     snapshot("taux_tresor", lambda cfg: factories.get("taux_tresor", lambda c: fetch_taux(http, now))(cfg), "ref:taux_tresor")
+    # Taux immobilier de Freddie Mac (13/11/2026, piste n° 46) : relevés hebdomadaires (arbitre des marchés « 30-year Mortgage Rate hit »), `taux_immobilier_barriere`.
+    from polymarket_agent.taux_immobilier import fetch_pmms
+    snapshot("taux_immobilier", lambda cfg: factories.get("taux_immobilier", lambda c: fetch_pmms(http, now))(cfg), "ref:taux_immobilier")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")

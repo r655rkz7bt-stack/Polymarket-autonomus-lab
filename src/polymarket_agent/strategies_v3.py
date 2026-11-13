@@ -1610,6 +1610,18 @@ class TauxTresorBarriere(SeismesMarche):
     ref_key = "taux_tresor"
 
 
+class TauxImmobilierBarriere(SeismesMarche):
+    """« Will the U.S. 30-year Fixed-Rate Mortgage hit <x>% (HIGH / LOW) by December 31, 2026? » : réglé sur les relevés HEBDOMADAIRES de
+    Freddie Mac (PMMS du jeudi), semaines finies après la création du marché. Chance = part des vraies fenêtres de n relevés (1990-2026 et
+    2019-2026) qui touchent le niveau depuis le relevé d'aujourd'hui, avancé de 0,7 × la variation du 10 ans depuis la semaine du dernier
+    relevé (taux_immobilier.py). Expérience du 13/11/2026 (experiments/taux_immobilier.md, piste n° 46) : pas de test aux prix passés
+    (seuils lointains restés à des milieux de carnet vide pendant des mois) ; le 13/11, « 8,00 % » 0,016-0,042 contre un acheteur du OUI à
+    0,10, « 6,25 % LOW » 0,000-0,005 contre 0,045. Une seule échelle (un tirage) : expérience, pas preuve."""
+
+    strategy_id = "taux_immobilier_barriere"
+    ref_key = "taux_immobilier"
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -2016,4 +2028,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

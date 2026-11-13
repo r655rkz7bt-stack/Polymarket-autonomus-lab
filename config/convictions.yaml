@@ -122,7 +122,7 @@ convictions:
     raison: "Déjà en position (NON à 0,362) ; ne décide que de la revente. Kaub 44 cm le 12/11 à 16 h 45 (heure de Berlin), la prévision WSV/BfG du 12/11 (06 h UTC) donnait ≈ 44 : la montée suit la prévision au centimètre. Prévision : 75 le 13/11 23 h, 78 le 14/11 7 h, 81 le 14/11 23 h ; seuil 77 avant le 15/11 00 h à Berlin (14/11 23 h UTC). Cinq estimations du NON : fleuves.p_first_crossing 0,38-0,46 selon le retard (0,15-0,30) et le pic (0-2 cm) ; pic 81 contre 77 avec ≈ 8-10 cm d'erreur à 2 jours 0,33 ; montée au centimètre de la prévision 0,38 ; vague du 25-28/10 (Kaub resté sous la prévision) 0,45 ; prévision relevée de 69 à 80 en un jour (tendance à la hausse) 0,33 ; médiane 0,38, rapprochée de moitié du milieu du marché (NON 0,585, carnet 0,49/0,68) → 0,45 (arrondi prudent). Revendre si l'acheteur du NON paie plus de 0,45."
     sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P1D", "https://gamma-api.polymarket.com/markets/6433563", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-12"
-    abandon: false
+    abandon: true
   - id: danube-budapest-avant-15-11-v3
     marche: "6581026"
     question: "Will the Danube River return to normal levels before November 15"
@@ -134,6 +134,30 @@ convictions:
     raison: "Déjà en position (OUI à 0,292) ; ne décide que de la revente. Relue le 12/11 à 16 h UTC : Budapest 38 cm ; prévision OVF du 12/11 (07 h 42 UTC) inchangée : 53 ± 2 le 13/11 7 h, 105 ± 13 le 15/11 7 h, 137 ± 17 le 16/11 ; seuil 93 avant le 15/11 06 h à Budapest. fleuves.p_first_crossing 0,55-0,64 (retard 0,15-0,30, pic 0-2 cm) : même lecture que la v2 (médiane 0,61 rapprochée de moitié → 0,57) ; prochaine prévision OVF le 13/11 vers 08 h 30. Carnet 0,40 / 0,93 : pas de revente sous 0,57."
     sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://www.danubehis.org/results/HU442027_HYDRO", "https://gamma-api.polymarket.com/markets/6581026", "experiments/niveaux_eau.md"]
     ecrit_le: "2026-11-12"
+    abandon: true
+  - id: rhin-kaub-avant-15-11-v4
+    marche: "6433563"
+    question: "Will the Rhine River return to normal levels before November 15"
+    issue: "No"
+    probabilite: 0.45
+    probabilite_basse: 0.38
+    expire: "2026-11-14"
+    mise_max: 0.03
+    raison: "Déjà en position (NON à 0,362) ; ne décide que de la revente. Relue le 13/11 à 01 h UTC : Kaub 60 cm à 02 h (heure de Berlin), +1,5 cm/h, soit 3 cm AU-DESSUS de la prévision WSV/BfG du 12/11 (≈ 57 à cette heure ; 63 le 13/11 7 h, 73 à 19 h, 78 le 14/11 7 h, 80 à 19 h) ; seuil 77 avant le 15/11 00 h à Berlin (14/11 23 h UTC). Cinq estimations du NON : fleuves.p_first_crossing sur la prévision brute 0,37-0,47 (retard 0-0,30, pic 0-2) ; prévision décalée de +3 cm (écart observé) 0,35-0,40 ; décalée de +5 cm 0,31-0,36 ; montée actuelle prolongée en ralentissant comme la prévision : passage le 14/11 tôt, NON ≈ 0,3 ; vague du 25-28/10 (Kaub resté sous la prévision) 0,45 ; médiane 0,36, rapprochée de moitié du milieu du marché (NON 0,55, carnet du OUI 0,27/0,63) → 0,45. Revendre si l'acheteur du NON paie plus de 0,45 (aujourd'hui 0,37 : on garde). Prochaine prévision WSV vers 06 h UTC."
+    sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=PT12H", "https://gamma-api.polymarket.com/markets/6433563", "experiments/niveaux_eau.md"]
+    ecrit_le: "2026-11-13"
+    abandon: false
+  - id: danube-budapest-avant-15-11-v4
+    marche: "6581026"
+    question: "Will the Danube River return to normal levels before November 15"
+    issue: "Yes"
+    probabilite: 0.59
+    probabilite_basse: 0.50
+    expire: "2026-11-14"
+    mise_max: 0.04
+    raison: "Déjà en position (OUI à 0,292) ; ne décide que de la revente. Relue le 13/11 à 01 h UTC : pas de nouvelle prévision OVF depuis le 12/11 07 h 42 (53 ± 2 le 13/11 7 h, 105 ± 13 le 15/11 7 h, 137 ± 17 le 16/11 ; seuil 93 avant le 15/11 06 h à Budapest). fleuves.p_first_crossing 0,54-0,69 selon le retard (0-0,30) et le pic (0-2 cm), médiane 0,61 ; Kaub, à l'amont du même front pluvieux, monte 3 cm plus vite que sa prévision (indice faible, autre bassin) ; rapprochée de moitié du milieu du marché (0,58, carnet 0,35/0,81) → 0,59. Pas de revente sous 0,59 (acheteur 0,35). Prochaine prévision OVF vers 08 h 30 UTC."
+    sources: ["https://www.hydroinfo.hu/tables/ENG/dunelotH.html", "https://gamma-api.polymarket.com/markets/6581026", "experiments/niveaux_eau.md"]
+    ecrit_le: "2026-11-13"
     abandon: false
   - id: dette-us-41000-avant-2027
     marche: "665519"
