@@ -377,6 +377,16 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # Taux immobilier de Freddie Mac (13/11/2026, piste n° 46) : relevés hebdomadaires (arbitre des marchés « 30-year Mortgage Rate hit »), `taux_immobilier_barriere`.
     from polymarket_agent.taux_immobilier import fetch_pmms
     snapshot("taux_immobilier", lambda cfg: factories.get("taux_immobilier", lambda c: fetch_pmms(http, now))(cfg), "ref:taux_immobilier")
+    # Jetons d'OpenRouter (13/11/2026, piste n° 50) : graphique hebdomadaire + 7 jours + dernier jour (arbitre des marchés
+    # « OpenRouter token usage week of »), `openrouter_semaine` ; journal `openrouter:histo` (aucun historique quotidien public).
+    from polymarket_agent.openrouter import fetch_openrouter, journal as or_journal
+
+    def openrouter(cfg):
+        rows = factories.get("openrouter", lambda c: fetch_openrouter(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "openrouter:histo", or_journal(refs._load(db, "openrouter:histo")[1] or [], rows), now)
+        return rows
+    snapshot("openrouter", openrouter, "ref:openrouter")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")

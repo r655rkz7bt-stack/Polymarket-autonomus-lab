@@ -342,6 +342,7 @@ sources:
   enso: {enabled: true, every_minutes: 180}                  # 12/11/2026 (piste n° 39) : discussion ENSO mensuelle du CPC (chances « +2.5°C or more » par saison) et RONI.ascii.txt pour el_nino_cpc ; robots.txt : permis ; gratuit, sans clé
   taux_tresor: {enabled: true, every_minutes: 60}            # 12/11/2026 (piste n° 43) : CSV « Daily Treasury Par Yield Curve Rates » de l'année (home.treasury.gov, arbitre des marchés « Treasury yield hit / dip below ») pour taux_tresor_barriere ; robots.txt : tout permis ; gratuit, sans clé
   taux_immobilier: {enabled: true, every_minutes: 60}        # 13/11/2026 (piste n° 46) : PMMS_history.csv de Freddie Mac (arbitre des marchés « 30-year Mortgage Rate hit »), pour taux_immobilier_barriere ; robots.txt : /pmms/docs/ permis ; gratuit, sans clé
+  openrouter: {enabled: true, every_minutes: 60}             # 13/11/2026 (piste n° 50) : api/frontend/v1/rankings (graphique hebdomadaire, 7 jours, dernier jour) d'OpenRouter, arbitre des marchés « token usage week of », pour openrouter_semaine ; robots.txt « Allow: / » ; gratuit, sans clé
   usgs_annee: {enabled: true, every_minutes: 30}             # 12/11/2026 (piste n° 40) : séismes >= 6,8 depuis le 1er janvier (USGS, arbitre des marchés annuels) pour seismes_annee ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma
   # seulement). `meneur` = recette domestique 2026 de Spider-Man: Brand New Day au 08/11 (959,0 M$, en salle sur 190 écrans) ;
