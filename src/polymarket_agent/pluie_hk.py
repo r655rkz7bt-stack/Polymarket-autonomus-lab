@@ -3,8 +3,8 @@
 « Total Rainfall (mm) » du Daily Extract de l'Observatoire (valeur pile sur une borne → tranche du dessus ; règlement retrouvé 8 mois
 sur 8 de mars à octobre 2026).
 
-Ce qui est connu avant la fin du mois : la pluie des jours finis (Daily Extract, publié avec 1 à 2 jours de retard ; bulletin RYES de
-la veille vers 00 h 15 heure de Hong Kong), la pluie de l'heure passée à la station de l'Observatoire (RF023, `hourlyRainfall`, à
+Ce qui est connu avant la fin du mois : la pluie des jours finis (bulletins RYES du portail de données ouvertes, un par jour, vers
+00 h 15 heure de Hong Kong ; le Daily Extract est interdit aux robots), la pluie de l'heure passée à la station de l'Observatoire (RF023, `hourlyRainfall`, à
 additionner heure par heure pour le jour en cours : journal `pluie_hk:heures`). Le reste du mois = moitié ensemble ECMWF (51 membres,
 Open-Meteo, sans clé), moitié climatologie de l'Observatoire 1947-2025 aux mêmes dates (`pluie_hk_climato.json`).
 
@@ -22,11 +22,11 @@ from datetime import date, datetime, timedelta, timezone
 from functools import lru_cache
 from pathlib import Path
 
-from polymarket_agent.http_client import HttpClient
+from polymarket_agent.http_client import HttpClient, SourceUnavailable
 from polymarket_agent.sources._util import parse_date
 
 HKT = timezone(timedelta(hours=8))
-EXTRACT = "https://www.weather.gov.hk/cis/dailyExtract/dailyExtract_{:04d}{:02d}.xml"
+# Daily Extract (`www.weather.gov.hk/cis/dailyExtract/…`) : arbitre du marché, mais `/cis/` est interdit aux robots : jamais lu ici.
 OPENDATA = "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php"
 HORAIRE = "https://data.weather.gov.hk/weatherAPI/opendata/hourlyRainfall.php"
 ENSEMBLE = "https://ensemble-api.open-meteo.com/v1/ensemble"
@@ -45,7 +45,7 @@ def climato() -> dict:
 
 def _mm(v) -> float | None:
     s = str(v).strip()
-    if s in ("Trace", "微量", ""):
+    if s.lower() in ("trace", "微量", ""):   # « Trace » au Daily Extract, « trace » au bulletin RYES (6/11/2026)
         return 0.0
     try:
         return float(s)
@@ -64,20 +64,6 @@ def question(q: str) -> tuple[float, float, int] | None:
     if g.group(2):
         return float(g.group(2)), float(g.group(3)), mois
     return float(g.group(4)), float("inf"), mois
-
-
-def _extract_days(payload) -> dict[int, float]:
-    try:
-        rows = payload["stn"]["data"][0]["dayData"]
-    except (KeyError, IndexError, TypeError):
-        return {}
-    out = {}
-    for r in rows:
-        if r and str(r[0]).strip().isdigit():
-            v = _mm(r[-1])
-            if v is not None:
-                out[int(r[0])] = v
-    return out
 
 
 def _horaire(payload) -> tuple[str, float] | None:
@@ -99,15 +85,30 @@ def _ensemble(payload) -> dict | None:
     return {"dates": list(d["time"]), "membres": [[float(x or 0) for x in d[k]] for k in keys]}
 
 
-def fetch_pluie_hk(http: HttpClient, now: datetime) -> list[dict]:
+def _ryes(http: HttpClient, jour: date) -> float | None:
+    """Pluie d'un jour fini à l'Observatoire (bulletin RYES du portail de données ouvertes, publié vers 00 h 15 HKT le lendemain)."""
+    try:
+        ryes = http.get_json(OPENDATA, params={"dataType": "RYES", "date": jour.strftime("%Y%m%d"), "lang": "en", "rformat": "json"})
+    except SourceUnavailable:
+        return None   # bulletin pas encore publié (avant 00 h 15 HKT) : réponse texte « Please include valid parameters »
+    if not isinstance(ryes, dict) or ryes.get("HKOReadingsRainfall") in (None, ""):
+        return None
+    return _mm(ryes["HKOReadingsRainfall"])
+
+
+def fetch_pluie_hk(http: HttpClient, now: datetime, connus: dict | None = None) -> list[dict]:
+    """`connus` : {jour: mm} déjà lus ce mois-ci (relevé précédent) ; seuls les jours manquants sont demandés.
+
+    14/11/2026 (enquête robots.txt) : la page du Daily Extract (dossier `/cis/` du site de l'Observatoire, arbitre cité par le marché) est interdite
+    aux robots (`Disallow: /cis/`) ; les jours finis viennent du bulletin RYES du portail de données ouvertes, un appel par jour
+    manquant (le 1er relevé du mois en fait au plus 30, ensuite un par jour)."""
     jour = now.astimezone(HKT).date()
-    jours = _extract_days(http.get_json(EXTRACT.format(jour.year, jour.month)))
-    veille = jour - timedelta(days=1)
-    if veille.month == jour.month and veille.day not in jours:
-        ryes = http.get_json(OPENDATA, params={"dataType": "RYES", "date": veille.strftime("%Y%m%d"), "lang": "en", "rformat": "json"})
-        v = _mm((ryes or {}).get("HKOReadingsRainfall", "")) if isinstance(ryes, dict) else None
-        if v is not None and (ryes or {}).get("HKOReadingsRainfall") not in (None, ""):
-            jours[veille.day] = v
+    jours = {int(k): float(v) for k, v in (connus or {}).items() if str(k).isdigit() and int(k) < jour.day}
+    for d in range(1, jour.day):
+        if d not in jours:
+            v = _ryes(http, date(jour.year, jour.month, d))
+            if v is not None:
+                jours[d] = v
     heure = _horaire(http.get_json(HORAIRE, params={"lang": "en"}))
     ens = _ensemble(http.get_json(ENSEMBLE, params={"latitude": LAT, "longitude": LON, "daily": "precipitation_sum",
                                                     "forecast_days": 16, "timezone": "Asia/Hong_Kong", "models": "ecmwf_ifs025"}))
