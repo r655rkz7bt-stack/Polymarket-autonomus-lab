@@ -1,4 +1,4 @@
-# Précipitations du mois : cumul observé + climatologie contre le prix (12/11/2026, piste n° 32 : NYC ÉCARTÉE aux vrais échanges, autres villes à faire)
+# Précipitations du mois : cumul observé + climatologie contre le prix (12/11/2026, piste n° 32 : NYC ÉCARTÉE aux vrais échanges ; 14/11 : Hong Kong, climatologie seule non concluante, fantôme `pluie_hk` avec ensemble ECMWF)
 
 Passage du chercheur de 1 h (12/11/2026), issu de l'inventaire des sources officielles (`sources_officielles.md`).
 Marchés « Precipitation in <ville> in <mois>? » (NYC Central Park, Seattle, Londres Heathrow, Hong Kong, Séoul ; 6-7 tranches,
@@ -51,3 +51,50 @@ seuil 0,08, jour 11).
    il faut un relevé quotidien, à chercher), Hong Kong (HKO, quotidien), Séoul (KMA).
 3. Plusieurs jours de décision (5, 11, 18, 25) et seuils (0,05-0,15) ; t par mois ; `idea_test.verdict`.
 4. Si l'indice tient : fantôme (source ACIS quotidienne, étiquette Gamma des précipitations).
+
+## Hong Kong (14/11/2026, passage de 6 h, `precipitations/hk/`)
+
+**Pourquoi Hong Kong** : l'événement le plus liquide de la famille (« Precipitation in Hong Kong in November? », 8,5 k$ de liquidité,
+195 échanges en 3 jours, 7 tranches de « < 5 mm » à « 95 mm+ »). Règle : « Total Rainfall (mm) » du Daily Extract de l'Observatoire
+(`www.weather.gov.hk/cis/dailyExtract/dailyExtract_AAAAMM.xml`, JSON, sans clé), valeur pile sur une borne → tranche du dessus.
+
+**Données** : série quotidienne complète de l'Observatoire depuis 1884 (`data.weather.gov.hk/weatherAPI/cis/csvfile/HKO/ALL/daily_HKO_RF_ALL.csv`,
+« *** » = manquant) ; bulletin de la veille (`opendata.php?dataType=RYES&date=AAAAMMJJ&lang=en&rformat=json`, champ
+`HKOReadingsRainfall`, publié vers 00 h 15 HKT) ; pluie de l'heure passée par station (`hourlyRainfall.php`, station RF023 « Hong Kong
+Observatory », observation à hh:45) ; prévision à 9 jours (`weather.php?dataType=fnd`, PSR) ; ensemble ECMWF 51 membres (Open-Meteo).
+
+**Contrôle du règlement : 8 mois sur 8** (mars 154,4 « 150-160 » ; avril 160,4 « 160-170 » ; mai 227,2
+« 220-230 » ; juin 600,5 « 500+ » ; juillet 790,3 « 600+ » ; août 380,0 « < 425 » ; septembre 94,3 « < 275 » ; octobre 81,0 « 70-120 ») ;
+le script `test_hk_echanges.py` le revérifie tranche par tranche (`assert`).
+
+**Le piège du jour (enquête, `enquetes/2026-11-14_matin_secheresse_disparue_et_pluie_du_jour.md`)** : au 14/11 06 h UTC, le Daily
+Extract s'arrêtait au 12/11 (3,2 mm) ; « < 5 mm » et « 5-10 mm » se vendaient 0,02-0,05 et la climatologie leur donnait 0,37-0,84.
+En réalité 7,9 mm le 13/11 (RYES) et une nuit d'averses fortes (METAR VHHH, +SHRA de 01 h à 06 h HKT ; ECMWF et GFS annonçaient
+87-103 mm sur la grille) : le marché le savait (OUI « 95 mm+ » acheté 0,66 pour 151 parts à 00 h 20 UTC). Pas de conviction : la
+pluie du 14/11 à la station n'est pas connue avant le bulletin du 15/11.
+
+**Test sur le passé, climatologie seule, aux VRAIS échanges** (`test_hk_echanges.py <seuil> <jour> <parts>`) : cumul des jours 1 à
+J − 1 + reste du mois tiré des mêmes dates 1947-2025 ; premier achat réel (côté preneur) dans les 72 h à ≤ chance − seuil :
+
+| réglage | paris | gagnés | attendus (prix) | attendus (modèle) | rendement | t par mois |
+|---|---|---|---|---|---|---|
+| seuil 0,08, jour 11, tous | 17 | 9 | 6,4 | 9,9 | +121 % | 1,18 |
+| seuil 0,08, jour 11, ≥ 10 parts | 14 | 7 | 4,3 | 7,5 | +151 % | 1,23 |
+| seuil 0,12, jour 11, ≥ 10 parts | 12 | 6 | 3,5 | 6,4 | +183 % | 1,31 |
+| seuil 0,05, jour 11, ≥ 10 parts | 14 | 7 | 4,3 | 7,5 | +151 % | 1,23 |
+| seuil 0,08, jour 11, ≥ 50 parts | 9 | 3 | 2,6 | 4,4 | −22 % | −0,37 |
+| seuil 0,08, jour 5, ≥ 10 parts | 9 | 5 | 4,1 | 5,3 | +7 % | 0,17 |
+| seuil 0,08, jour 18, ≥ 10 parts | 14 | 7 | 6,6 | 9,0 | −26 % | −1,42 |
+| seuil 0,08, jour 25, ≥ 10 parts | 12 | 6 | 5,0 | 8,0 | −31 % | −1,20 |
+
+8 réglages. Le jour 11 gagne grâce à deux billets (OUI « 600 mm+ » à 0,06 en juillet, OUI « 500 mm+ » à 0,13 en juin) ; plus tard dans
+le mois et en grosses quantités, rien. Le modèle annonce toujours plus de gains qu'il n'en fait (7,5-9,9 attendus par lui pour 6-9) :
+la climatologie seule est trop sûre d'elle. **Verdict climatologie seule : écartée** (pas d'avantage robuste ; même conclusion que NYC).
+
+**Fantôme `pluie_hk` (expérience audacieuse, `src/polymarket_agent/pluie_hk.py`)** : ce que le test ne contient pas, c'est
+l'information du jour : pluie des jours finis (Daily Extract + RYES), pluie du jour additionnée heure par heure (journal
+`pluie_hk:heures`, source relue toutes les 20 min), reste du mois moitié ensemble ECMWF 51 membres (la valeur du jour en cours est
+remplacée par la climatologie : l'ensemble y met la pluie déjà tombée), moitié climatologie. Aucune chance sans toutes les heures du
+jour. Écart minimal 0,08 + incertitude 0,05 (le modèle est trop sûr de lui au test), Kelly entier, 4 % du fantôme au plus par pari.
+Cycle local : 7 tranches rattachées (dès que le journal des heures est complet). L'ensemble n'a pas d'archive : c'est lui qu'on teste
+en direct. Prochain contrôle : le bulletin RYES du 14/11 (pluie de la nuit à la station) contre la prévision de la grille (87-103 mm).

@@ -181,7 +181,7 @@ seismes_pays:
 secheresse_d4:
   explication: "Chaque semaine, Polymarket demande si chaque État américain aura une « sécheresse exceptionnelle » sur la carte officielle du jeudi. La sécheresse change très lentement : en regardant la carte de la semaine d'avant, déjà publiée, on sait presque toujours la réponse. Quand quelqu'un vend la réponse presque sûre à un prix bas, on l'achète."
   class: secheresse_d4
-  enabled: true
+  enabled: false   # 14/11/2026 : Polymarket ne crée plus les événements hebdomadaires « D4 by state » (dernier : semaine du 10/11, clos le 12/11 ; celui du 17/11 n'existe pas le 14/11), aucun marché vu en 3 jours. Rallumer en v2.1.0 s'ils reviennent (étiquette 105721).
   version: "2.0.0"
   created_at: "2026-11-11"
   hypothesis: >
@@ -516,6 +516,36 @@ mississippi_plus_bas:
     mise_max_pari:  {value: 0.05, min: 0.01, max: 0.25}   # au plus 5 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+pluie_hk:
+  explication: "Polymarket demande combien il pleuvra à Hong Kong ce mois-ci, par tranches de millimètres. L'Observatoire publie la pluie de chaque jour et même de chaque heure : on additionne ce qui est déjà tombé, on ajoute ce que prévoient 51 prévisions météo et ce qui tombe d'habitude le reste du mois, et on parie sur la tranche que le prix sous-estime nettement."
+  class: pluie_hk
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-14"
+  hypothesis: >
+    Expérience audacieuse, lire la source de règlement avant la fin du mois (experiments/precipitations.md, 14/11/2026, piste n° 32 suite).
+    Règlement retrouvé 8 mois sur 8 (mars-octobre 2026) sur le Daily Extract ; NYC écartée (carnets de 1-5 parts) mais Hong Kong est le
+    plus liquide de la famille (8,5 k$, 195 échanges en 3 jours). Le 14/11 le Daily Extract avait 2 jours de retard (3,2 mm au 12/11)
+    et une averse nocturne n'était connue que par les METAR : d'où la pluie du jour additionnée heure par heure (station RF023) et aucune
+    chance sans toutes les heures. Climatologie SEULE testée aux vrais échanges sur Hong Kong (mars-octobre 2026, règlement 8/8,
+    8 réglages, experiments/precipitations/hk/test_hk_echanges.py) : jour 11 +151 % (14 paris, 7 gagnés pour 4,3 attendus, t par mois
+    1,2) porté par deux billets ; jours 18 et 25 −26 à −31 %, ≥ 50 parts −22 % : le modèle surestime ses gains (7,5-9 attendus par lui
+    pour 6-7) → écart minimal 0,08. L'ensemble ECMWF (sans archive) n'est pas testé : c'est lui l'expérience. Une perte apprendrait que
+    l'ensemble ECMWF au point de grille ne vaut pas la station, que la climatologie ne vaut pas les prévisions du marché, ou que les
+    carnets n'offrent ces prix que quand nous avons tort.
+  params:
+    min_net_edge:   {value: 0.08, min: 0.0, max: 0.30}    # chance − incertitude − prix demandé − frais (weather_fees) ; modèle trop sûr de lui au test
+    uncertainty:    {value: 0.05, min: 0.0, max: 0.30}    # ensemble au point de grille, non étalonné sur la station
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 1.5, min: 0.1, max: 24}      # relevé toutes les 20 min ; la pluie du jour change vite
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 20, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # tranches d'un même mois : exclusives
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee
@@ -572,7 +602,7 @@ tornades_mois:
 lid_agenda:
   explication: "Chaque jour, un marché demande si la Maison-Blanche annoncera la fin de journée du Président (le « lid ») avant 18 h 30. On lit son agenda publié la veille : journée calme sans voyage, le lid tombe tôt presque toujours ; journée de voyage qui finit tard, presque jamais. On parie quand le marché ne l'a pas vu."
   class: lid_agenda
-  enabled: true
+  enabled: false   # 14/11/2026 : retirée par l'arène le 13/11 21 h 15 (aucun achat en 3 jours : le marché cotait déjà l'agenda, 0,84 pour 0,86 le 12/11) ; jamais retestée sans regard vers le futur (agenda final). Source `factbase` gardée.
   version: "2.0.0"
   created_at: "2026-11-10"
   hypothesis: >

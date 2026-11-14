@@ -397,6 +397,17 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "mississippi:histo", mi_journal(refs._load(db, "mississippi:histo")[1] or [], rows), now)
         return rows
     snapshot("mississippi", mississippi, "ref:mississippi")
+    # Pluie du mois à Hong Kong (14/11/2026, piste n° 32 suite) : Daily Extract + bulletin de la veille + pluie de l'heure à la station de
+    # l'Observatoire + ensemble ECMWF (arbitre des marchés « Precipitation in Hong Kong in <mois> »), `pluie_hk` ; journal `pluie_hk:heures`
+    # (la pluie du jour en cours n'est publiée qu'heure par heure).
+    from polymarket_agent.pluie_hk import fetch_pluie_hk, journal as hk_journal
+
+    def pluie_hk(cfg):
+        rows = factories.get("pluie_hk", lambda c: fetch_pluie_hk(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "pluie_hk:heures", hk_journal(refs._load(db, "pluie_hk:heures")[1] or [], rows), now)
+        return rows
+    snapshot("pluie_hk", pluie_hk, "ref:pluie_hk")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")
