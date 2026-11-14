@@ -195,3 +195,15 @@ convictions:
     sources: ["https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset", "https://gamma-api.polymarket.com/markets/4664662", "experiments/meilleur_modele.md"]
     ecrit_le: "2026-11-13"
     abandon: false
+  - id: rhin-kaub-avant-15-11-v6
+    marche: "6433563"
+    question: "Will the Rhine River return to normal levels before November 15"
+    issue: "No"
+    probabilite: 0.96
+    probabilite_basse: 0.92
+    expire: "2026-11-15"
+    mise_max: 0.03
+    raison: "Remplace la v5 (qui expirait le 14/11) pour la dernière journée ; EN POSITION : 12,93 parts NON achetées 0,862 le 13/11 à 17 h 22. Relue le 14/11 à 06 h 45 UTC : Kaub 73 cm de 02 h à 05 h (heure de Berlin), 72 à 06 h 45 ; Mainz a culminé à 174 le 13/11 à 17 h et redescend (167) ; prévision WSV du 13/11 07 h juste à ±1 cm depuis (73 prévu pour 07 h) : plafond 74 du 14/11 11 h au 14/11 23 h, puis 73 → 69 ; seuil 77 avant le 15/11 00 h (Berlin). La nouvelle onde de Maxau (340 → 376 depuis le 13/11 14 h) met environ 40 h à rejoindre Kaub (après l'échéance) ; Worms baisse (58 → 44). Cinq estimations du OUI : prévision WSV +3 cm d'erreur 0,02 ; relation Mainz − 97 0,01 ; onde de Maxau en avance de 12 h 0,06 ; pluie locale Open-Meteo (nulle le 14/11) 0,02 ; marché (milieu 0,139, carnet 0,029/0,249) ; médiane hors marché 0,02, rapprochée du marché → NON 0,96. Garder ; rien à acheter au vendeur du NON (0,971)."
+    sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P2D", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ/W/measurements.json?start=PT20H", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAXAU/W/measurements.json?start=PT20H", "https://gamma-api.polymarket.com/markets/6433563"]
+    ecrit_le: "2026-11-14"
+    abandon: false
