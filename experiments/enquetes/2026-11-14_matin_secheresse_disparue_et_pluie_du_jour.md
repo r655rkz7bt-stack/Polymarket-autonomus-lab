@@ -37,3 +37,9 @@ sans toutes les heures (test `test_no_chance_without_every_hour_of_the_day`).
 
 **Règle** : une source « quotidienne » a un retard ; avant de croire un écart, lire la donnée la plus fraîche (bulletin de la veille,
 relevé horaire, METAR) jusqu'à l'heure présente.
+
+## Contrôle préventif (famille 6) : `pluie_hk` verra-t-elle toutes les heures ?
+La pluie de l'heure (observation hh:45) reste affichée environ une heure ; la source est relue toutes les 20 minutes. Battements du
+principal depuis le 07/11 : 2 096 cycles, écart médian 4,96 min, 3 écarts > 20 min, 1 > 40 min (50 min au plus), aucun > 60 min :
+chaque heure sera relevée au moins une fois. Si `pluie_hk` reste muette (« aucun marché vu n'a la référence »), chercher d'abord une
+heure manquante dans le journal `pluie_hk:heures`.
