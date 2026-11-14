@@ -53,3 +53,11 @@ Cause : rythme a priori par l'âge du film (0,03 critique/h à 8 jours), aveugle
 « Release Date (Theaters) …, Limited / Wide » ; aucune chance pour une sortie limitée ; glissement de −5 points de la part positive
 des critiques à venir. Test du cas réel : `tests/test_rotten_tomatoes.py::test_collect_attach_and_buy_only_a_cheap_side` (Rocky
 sans référence). Coût : 0 € (cycle local, journal ignoré par Git).
+
+## 5. Famille 2 (deuxième contrôle) : `convictions_claude`, première de l'arène (+38,04 € sur 4 opérations, Brier 0,7744)
+Journal signé relu jeton par jeton : Gemini Carbon −14,63 € (réglé, NON acheté 0,487 pour 0,88) ; Danube +44,08 € (OUI acheté 0,292,
+revendu 0,807 puis 0,97) ; Rhin, première jambe +4,5 € (NON acheté 0,362, revendu 0,49 ; la v6 a racheté 12,93 parts à 0,862, encore
+ouvertes) ; Rihanna n° 2 +4,43 € (0,19 → 0,305). **Sans le Danube : −6 €.** Le Brier de 0,7744 n'est calculé que sur la SEULE opération
+réglée (Carbon, (0,88 − 0)²) : `reporting.closed_trades` met `payout = None` pour une vente, que `learning_engine` écarte — calcul juste,
+mais un chiffre d'une seule observation. Le moteur dit déjà « données insuffisantes » : pas un défaut, aucune conclusion à tirer de
+la première place (3 ventes et 1 règlement, dont un pari qui fait tout le gain).
