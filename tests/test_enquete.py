@@ -167,6 +167,27 @@ def test_daughter_is_compared_with_her_mother_on_the_same_period():
     assert "10 paris absents de la mère" in found[0]["exemples"][0]
 
 
+def test_daughter_mean_return_inflated_by_one_tiny_lottery_bet_is_put_in_perspective():
+    """14/11/2026 (soir) : « compteur_tweets_72_168h +30,4 % contre sa mère −6,5 % » : la fille avait fait exactement 10 paris
+    de sa mère ; la moyenne non pondérée venait d'un pari de 3 € à 0,18 gagné (+367 %), pondérée elle perdait −15,5 %."""
+    born = NOW - timedelta(days=2)
+    def bets(prefix):
+        rows = [_buy(born + timedelta(minutes=1), f"{prefix}0", 0.18, 16.67), _settle(born + timedelta(hours=1), f"{prefix}0", 1)]
+        for i in range(1, 10):
+            rows += [_buy(born + timedelta(minutes=1 + i), f"{prefix}{i}", 0.85, 60),
+                     _settle(born + timedelta(hours=1), f"{prefix}{i}", 0 if i < 3 else 1)]
+        return rows
+    dropped = [r for i in range(5) for r in (_buy(born + timedelta(minutes=30 + i), f"d{i}", 0.5, 10),
+                                             _settle(born + timedelta(hours=1), f"d{i}", 0))]
+    configs = {"mere": {"version": "1.0.0"}, "fille": {"version": "1.0.0", "mere": "mere"}}
+    entries = {"mere_v1.0.0": _ledger(*bets("k"), *dropped), "fille_v1.0.0": _ledger(*bets("k"), born=born)}
+    line = enquete.filles_periode(entries, configs)[0]["exemples"][0]
+    assert "fille +37.9%" in line                      # moyenne non pondérée, trompeuse
+    assert "pondéré par la mise -5.5% contre -10.3%" in line
+    assert "jetons gardés par la fille -5.5% (10) contre écartés -100.0% (5)" in line
+    assert "absents de la mère" not in line
+
+
 def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():
     """26/10 : nf_sport muette depuis le 21/10 (plafond de prudence) pendant que sa fille nf_sport_925_950 achetait chaque jour."""
     born = NOW - timedelta(days=6)

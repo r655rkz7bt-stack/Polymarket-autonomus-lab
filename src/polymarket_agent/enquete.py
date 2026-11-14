@@ -100,6 +100,12 @@ def _returns(trades: list[dict]) -> list[float]:
     return [float(t["pnl"]) / float(t["cost"]) for t in trades if float(t["cost"]) > 0]
 
 
+def _weighted(trades: list[dict]) -> float:
+    """Rendement pondéré par la mise (gain total / mise totale) : un pari de 3 € ne pèse pas autant qu'un de 90 €."""
+    cost = sum(float(t["cost"]) for t in trades)
+    return sum(float(t["pnl"]) for t in trades) / cost if cost > 0 else 0.0
+
+
 def _t(values: list[float]) -> float:
     if len(values) < 3:
         return 0.0
@@ -470,6 +476,18 @@ def filles_periode(entries: dict[str, list[dict]], configs: dict, min_trades: in
         extra = ""
         if len(alone) >= 5 and len(alone) > len(child) / 2:
             extra = f", dont {len(alone)} paris absents de la mère ({statistics.mean(_returns(alone)):+.1%} à eux seuls)"
+        # 14/11/2026 (soir) : « compteur_tweets_72_168h +30,4 % contre sa mère −6,5 % » : moyenne de 10 rendements dont un
+        # pari de 3 € à 0,18 gagné (+367 %) ; pondérée par la mise, la fille perdait −15,5 % et la mère, sur ces MÊMES 10
+        # jetons, −15,7 %. Dire aussi le rendement pondéré, et, quand la fille joue les paris de sa mère, ce que le filtre
+        # a gardé contre ce qu'il a écarté (seule comparaison qui juge le filtre).
+        extra += f" ; pondéré par la mise {_weighted(child):+.1%} contre {_weighted(same):+.1%}"
+        child_tokens = {t["token_id"] for t in child}
+        if len(alone) <= len(child) / 2:
+            kept = [t for t in same if t["token_id"] in child_tokens]
+            dropped = [t for t in same if t["token_id"] not in child_tokens]
+            if kept and dropped:
+                extra += (f" ; chez la mère, jetons gardés par la fille {_weighted(kept):+.1%} ({len(kept)}) contre "
+                          f"écartés {_weighted(dropped):+.1%} ({len(dropped)})")
         rows.append((rc - rm, f"{key} {rc:+.1%} contre sa mère {cfg['mere']} {rm:+.1%} depuis le {born[:10]} "
                               f"({len(child)} et {len(same)} opérations{extra})"))
     if not rows:

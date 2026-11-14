@@ -1,0 +1,1081 @@
+date,couleur,p,m,evenements
+2023-12-01,#76ad2a,0,0,
+2023-12-02,#76ad2a,0,0,
+2023-12-03,#76ad2a,0,0,
+2023-12-04,#76ad2a,0,0,
+2023-12-05,#76ad2a,0,0,
+2023-12-06,#76ad2a,0,0,
+2023-12-07,#76ad2a,0,0,
+2023-12-08,#76ad2a,0,0,
+2023-12-09,#76ad2a,0,0,
+2023-12-10,#76ad2a,0,0,
+2023-12-11,#76ad2a,0,0,
+2023-12-12,#76ad2a,0,0,
+2023-12-13,#76ad2a,0,0,
+2023-12-14,#76ad2a,0,0,
+2023-12-15,#76ad2a,0,0,
+2023-12-16,#76ad2a,0,0,
+2023-12-17,#76ad2a,0,0,
+2023-12-18,#76ad2a,0,0,
+2023-12-19,#76ad2a,0,0,
+2023-12-20,#76ad2a,0,0,
+2023-12-21,#76ad2a,0,0,
+2023-12-22,#76ad2a,0,0,
+2023-12-23,#76ad2a,0,0,
+2023-12-24,#76ad2a,0,0,
+2023-12-25,#76ad2a,0,0,
+2023-12-26,#76ad2a,0,0,
+2023-12-27,#76ad2a,0,0,
+2023-12-28,#76ad2a,0,0,
+2023-12-29,#76ad2a,0,0,
+2023-12-30,#76ad2a,0,0,
+2023-12-31,#76ad2a,0,0,
+2024-01-01,#76ad2a,0,0,
+2024-01-02,#76ad2a,0,0,
+2024-01-03,#76ad2a,0,0,
+2024-01-04,#76ad2a,0,0,
+2024-01-05,#76ad2a,0,0,
+2024-01-06,#76ad2a,0,0,
+2024-01-07,#76ad2a,0,0,
+2024-01-08,#76ad2a,0,0,
+2024-01-09,#76ad2a,0,0,
+2024-01-10,#76ad2a,0,0,
+2024-01-11,#76ad2a,0,0,
+2024-01-12,#76ad2a,0,0,
+2024-01-13,#76ad2a,0,0,
+2024-01-14,#76ad2a,0,0,
+2024-01-15,#76ad2a,0,0,
+2024-01-16,#76ad2a,0,0,
+2024-01-17,#76ad2a,0,0,
+2024-01-18,#76ad2a,0,0,
+2024-01-19,#76ad2a,0,0,
+2024-01-20,#76ad2a,0,0,
+2024-01-21,#76ad2a,0,0,
+2024-01-22,#beaa2a,361,0,claude.ai chat not operational
+2024-01-23,#76ad2a,0,0,
+2024-01-24,#76ad2a,0,0,
+2024-01-25,#76ad2a,0,0,Elevated error rates on a subset of models
+2024-01-26,#76ad2a,0,0,
+2024-01-27,#76ad2a,0,0,
+2024-01-28,#76ad2a,0,0,
+2024-01-29,#76ad2a,0,0,Elevated API error rate across all models | elevated error rate on some models
+2024-01-30,#76ad2a,0,0,
+2024-01-31,#76ad2a,0,0,Claude.ai Experienced a Temporary Outage | elevated error rate on claude-2.1 | elevated error rates on some models
+2024-02-01,#76ad2a,0,0,
+2024-02-02,#76ad2a,0,0,
+2024-02-03,#76ad2a,0,0,Elevated error rate on claude.ai
+2024-02-04,#76ad2a,0,0,
+2024-02-05,#76ad2a,0,0,elevated error rates on claude-instant-1.2
+2024-02-06,#76ad2a,0,0,elevated error rates on claude-instant-1.2
+2024-02-07,#76ad2a,0,0,
+2024-02-08,#76ad2a,0,0,
+2024-02-09,#76ad2a,0,0,
+2024-02-10,#76ad2a,0,0,
+2024-02-11,#76ad2a,0,0,
+2024-02-12,#76ad2a,0,0,
+2024-02-13,#76ad2a,0,0,"Elevated error rate on Claude-2.0, Claude-2.1 | Elevated error rate on Claude-2.0, Claude-2.1"
+2024-02-14,#76ad2a,0,0,
+2024-02-15,#76ad2a,0,0,
+2024-02-16,#76ad2a,0,0,
+2024-02-17,#76ad2a,0,0,
+2024-02-18,#76ad2a,0,0,
+2024-02-19,#76ad2a,0,0,
+2024-02-20,#76ad2a,0,0,
+2024-02-21,#76ad2a,0,0,
+2024-02-22,#76ad2a,0,0,
+2024-02-23,#76ad2a,0,0,
+2024-02-24,#76ad2a,0,0,
+2024-02-25,#76ad2a,0,0,
+2024-02-26,#76ad2a,0,0,Elevated Errors
+2024-02-27,#76ad2a,0,0,
+2024-02-28,#76ad2a,0,0,
+2024-02-29,#76ad2a,0,0,
+2024-03-01,#76ad2a,0,0,
+2024-03-02,#76ad2a,0,0,Elevated error rates for some models
+2024-03-03,#76ad2a,0,0,Elevated error rates for some models
+2024-03-04,#e34e3e,10133,0,Elevated Error Rate
+2024-03-05,#76ad2a,0,0,Elevated error rates for Claude 3 Opus | Google Auth degraded performance | claude.ai and Console temporarily degraded
+2024-03-06,#76ad2a,0,0,
+2024-03-07,#76ad2a,0,0,Claude 3 Opus elevated error rates
+2024-03-08,#76ad2a,0,0,
+2024-03-09,#76ad2a,0,0,
+2024-03-10,#76ad2a,0,0,
+2024-03-11,#76ad2a,0,0,Elevated error rate
+2024-03-12,#76ad2a,0,0,
+2024-03-13,#76ad2a,0,0,
+2024-03-14,#76ad2a,0,0,elevated error rates on claude-2.0
+2024-03-15,#76ad2a,0,0,
+2024-03-16,#76ad2a,0,0,
+2024-03-17,#76ad2a,0,0,
+2024-03-18,#76ad2a,0,0,
+2024-03-19,#76ad2a,0,0,
+2024-03-20,#76ad2a,0,0,
+2024-03-21,#76ad2a,0,0,Elevated errors on Claude 3 Opus | Elevated error rates on Claude 3 Haiku
+2024-03-22,#76ad2a,0,0,
+2024-03-23,#76ad2a,0,0,Elevated API Error Rates
+2024-03-24,#76ad2a,0,0,
+2024-03-25,#f1862f,5227,0,Elevate Opus Error Rates | Partial Outage for v1.3
+2024-03-26,#c9a92a,1013,0,Degraded performance for haiku
+2024-03-27,#76ad2a,0,0,
+2024-03-28,#76ad2a,0,0,Elevated rate of errors on Claude 3 Opus
+2024-03-29,#76ad2a,0,0,
+2024-03-30,#76ad2a,0,0,
+2024-03-31,#76ad2a,0,0,
+2024-04-01,#76ad2a,0,0,
+2024-04-02,#e04343,25042,0,Partial login failure on claude.ai | Partial outage on claude.ai and console.anthropic.com
+2024-04-03,#e04343,41687,0,Opus partially down
+2024-04-04,#76ad2a,0,0,
+2024-04-05,#f5962d,4627,0,High Opus Error Rates
+2024-04-06,#76ad2a,0,0,
+2024-04-07,#76ad2a,0,0,
+2024-04-08,#76ad2a,0,0,
+2024-04-09,#76ad2a,0,0,
+2024-04-10,#76ad2a,0,0,
+2024-04-11,#76ad2a,0,0,
+2024-04-12,#76ad2a,0,0,
+2024-04-13,#76ad2a,0,0,
+2024-04-14,#76ad2a,0,0,
+2024-04-15,#76ad2a,0,0,
+2024-04-16,#76ad2a,0,0,
+2024-04-17,#c9a92a,1026,0,Opus elevated error rate
+2024-04-18,#f6992c,4488,0,Haiku outage | Haiku down again | Sonnet outage | Haiku Partial Outage
+2024-04-19,#76ad2a,0,0,
+2024-04-20,#76ad2a,0,0,
+2024-04-21,#76ad2a,0,0,
+2024-04-22,#76ad2a,0,0,Elevated error rate on Claude 3 Opus
+2024-04-23,#76ad2a,0,0,
+2024-04-24,#76ad2a,0,0,
+2024-04-25,#76ad2a,0,0,
+2024-04-26,#76ad2a,0,0,
+2024-04-27,#76ad2a,0,0,
+2024-04-28,#76ad2a,0,0,
+2024-04-29,#76ad2a,0,0,
+2024-04-30,#e4a82a,2644,0,Opus Partial Outage | Opus Partially Down
+2024-05-01,#76ad2a,0,0,
+2024-05-02,#76ad2a,0,0,
+2024-05-03,#76ad2a,0,0,
+2024-05-04,#76ad2a,0,0,
+2024-05-05,#76ad2a,0,0,
+2024-05-06,#c2aa2a,610,0,Haiku Partial Outage
+2024-05-07,#76ad2a,0,0,
+2024-05-08,#76ad2a,0,0,
+2024-05-09,#76ad2a,0,0,
+2024-05-10,#76ad2a,0,0,
+2024-05-11,#76ad2a,0,0,
+2024-05-12,#76ad2a,0,0,
+2024-05-13,#76ad2a,0,0,
+2024-05-14,#76ad2a,0,0,Delays delivering emails
+2024-05-15,#76ad2a,0,0,Delays delivering emails
+2024-05-16,#beaa2a,378,0,Claude Instant 1.2 Elevated Error Rates
+2024-05-17,#76ad2a,0,0,
+2024-05-18,#76ad2a,0,0,
+2024-05-19,#76ad2a,0,0,
+2024-05-20,#d3a92a,1637,0,Claude 3 Haiku Outage
+2024-05-21,#76ad2a,0,0,
+2024-05-22,#c6a92a,852,0,Opus Partial Outage
+2024-05-23,#76ad2a,0,0,
+2024-05-24,#76ad2a,0,0,
+2024-05-25,#76ad2a,0,0,
+2024-05-26,#76ad2a,0,0,
+2024-05-27,#76ad2a,0,0,
+2024-05-28,#76ad2a,0,0,
+2024-05-29,#76ad2a,0,0,
+2024-05-30,#76ad2a,0,0,
+2024-05-31,#76ad2a,0,0,
+2024-06-01,#76ad2a,0,0,
+2024-06-02,#76ad2a,0,0,
+2024-06-03,#f3a72a,3549,0,Elevated error rate on Claude 3 Opus | Haiku Partial Outage
+2024-06-04,#e86135,6719,0,Partial Outage on claude.ai and console.anthropic.com
+2024-06-05,#76ad2a,0,0,
+2024-06-06,#76ad2a,0,0,
+2024-06-07,#76ad2a,0,0,
+2024-06-08,#76ad2a,0,0,
+2024-06-09,#76ad2a,0,0,
+2024-06-10,#76ad2a,0,0,
+2024-06-11,#76ad2a,0,0,
+2024-06-12,#76ad2a,0,0,Elevated error rates on Claude 3 Haiku
+2024-06-13,#c7a92a,895,0,Elevated errors on Haiku
+2024-06-14,#76ad2a,0,0,
+2024-06-15,#76ad2a,0,0,
+2024-06-16,#76ad2a,0,0,
+2024-06-17,#76ad2a,0,0,
+2024-06-18,#76ad2a,0,0,Partial disruption for text attachments
+2024-06-19,#76ad2a,0,0,
+2024-06-20,#76ad2a,0,0,
+2024-06-21,#e04343,0,4556,Degraded performance on Haiku and Sonnet | Elevated error rates in Claude.ai and Console | Degraded claude-3-5-sonnet latency | Claude.ai and Console Outage
+2024-06-22,#76ad2a,0,0,
+2024-06-23,#76ad2a,0,0,
+2024-06-24,#76ad2a,0,0,
+2024-06-25,#76ad2a,0,0,
+2024-06-26,#76ad2a,0,0,
+2024-06-27,#76ad2a,0,0,
+2024-06-28,#76ad2a,0,0,Claude.ai iOS logins unavailable
+2024-06-29,#76ad2a,0,0,
+2024-06-30,#76ad2a,0,0,
+2024-07-01,#76ad2a,0,0,Elevated errors on Claude.ai | Elevated errors on Claude.ai
+2024-07-02,#e2a82a,2505,0,3.5 Sonnet Partially Down | Elevated error rates in the API
+2024-07-03,#76ad2a,0,0,Elevated errors on Claude.ai and Console
+2024-07-04,#76ad2a,0,0,
+2024-07-05,#76ad2a,0,0,
+2024-07-06,#76ad2a,0,0,
+2024-07-07,#76ad2a,0,0,Elevated Errors on Claude 3.5 Sonnet
+2024-07-08,#76ad2a,0,0,
+2024-07-09,#76ad2a,0,0,
+2024-07-10,#76ad2a,0,0,
+2024-07-11,#ec7133,6011,0,Claude 3 Haiku Elevated Error Rates | Elevated errors on Claude.ai and Console
+2024-07-12,#c3a92a,699,0,Partial unavailability for Claude 3 Haiku and Claude 3.5 Sonnet | Haiku and 3.5 Sonnet Partial Outage
+2024-07-13,#76ad2a,0,0,
+2024-07-14,#76ad2a,0,0,
+2024-07-15,#76ad2a,0,0,
+2024-07-16,#76ad2a,0,0,
+2024-07-17,#76ad2a,0,0,
+2024-07-18,#76ad2a,0,0,
+2024-07-19,#d0a92a,1426,0,Partial outage of Claude-2.0 and Claude-2.1
+2024-07-20,#76ad2a,0,0,
+2024-07-21,#76ad2a,0,0,
+2024-07-22,#76ad2a,0,0,
+2024-07-23,#76ad2a,0,0,
+2024-07-24,#76ad2a,0,0,
+2024-07-25,#76ad2a,0,0,
+2024-07-26,#76ad2a,0,0,
+2024-07-27,#76ad2a,0,0,
+2024-07-28,#76ad2a,0,0,
+2024-07-29,#76ad2a,0,0,
+2024-07-30,#76ad2a,0,0,
+2024-07-31,#76ad2a,0,0,
+2024-08-01,#c7a92a,900,0,
+2024-08-02,#76ad2a,0,0,Elevated rate limiting errors on the API
+2024-08-03,#76ad2a,0,0,
+2024-08-04,#76ad2a,0,0,
+2024-08-05,#76ad2a,0,0,
+2024-08-06,#d7a92a,1852,0,"Elevated error rates on API, Claude, and Console | Errors when signing up for Claude Pro or Claude Team plans | High error rates affecting inference"
+2024-08-07,#76ad2a,0,0,
+2024-08-08,#e04343,44611,2198,Elevated error rates on 3.5 Sonnet and 3 Opus
+2024-08-09,#76ad2a,0,0,Elevated error rates on 3.5 Sonnet and 3 Opus
+2024-08-10,#76ad2a,0,0,
+2024-08-11,#76ad2a,0,0,
+2024-08-12,#76ad2a,0,0,
+2024-08-13,#76ad2a,0,0,
+2024-08-14,#76ad2a,0,0,
+2024-08-15,#f38c2e,5010,0,Elevated errors for some 3.5 Sonnet users | Elevated errors for requests with images
+2024-08-16,#76ad2a,0,0,
+2024-08-17,#76ad2a,0,0,
+2024-08-18,#76ad2a,0,0,
+2024-08-19,#76ad2a,0,0,Elevated errors for some free Claude.ai users
+2024-08-20,#76ad2a,0,0,Elevated errors on Claude.ai for free usage
+2024-08-21,#76ad2a,0,0,Elevated errors on Claude.ai for free usage | Elevated errors on Claude.ai for free usage
+2024-08-22,#76ad2a,0,0,Elevated errors on Claude.ai for free usage
+2024-08-23,#76ad2a,0,0,
+2024-08-24,#76ad2a,0,0,
+2024-08-25,#76ad2a,0,0,
+2024-08-26,#76ad2a,0,0,
+2024-08-27,#76ad2a,0,0,
+2024-08-28,#76ad2a,0,0,Elevated error rates on Claude 3.5 Sonnet | Bug affecting responses in claude.ai
+2024-08-29,#76ad2a,0,0,Bug affecting responses in claude.ai
+2024-08-30,#76ad2a,0,0,
+2024-08-31,#76ad2a,0,0,
+2024-09-01,#f38b2e,5017,0,Elevated API errors on Claude 3.5 Sonnet and 3 Opus | Elevated API errors on Claude 3.5 Sonnet and 3 Opus
+2024-09-02,#e04343,44900,0,Elevated API errors on Claude 3.5 Sonnet and 3 Opus | Elevated errors on Claude 3.5 Sonnet and 3 Opus
+2024-09-03,#76ad2a,0,0,
+2024-09-04,#e4523c,9412,0,Elevated errors on Claude 3.5 Sonnet | Elevated API errors on Claude 3.5 Sonnet
+2024-09-05,#c5a92a,326,137,High number of errors for API and Claude.ai
+2024-09-06,#76ad2a,0,0,
+2024-09-07,#76ad2a,0,0,
+2024-09-08,#76ad2a,0,0,
+2024-09-09,#76ad2a,0,0,
+2024-09-10,#bfaa2a,435,0,Elevated errors on the API and other surfaces
+2024-09-11,#cfa92a,0,420,Elevated errors across Claude models
+2024-09-12,#eba82a,703,704,"Elevated errors on Claude.ai, Console, and the Anthropic API | Internal server error on Claude.ai"
+2024-09-13,#76ad2a,0,0,
+2024-09-14,#76ad2a,0,0,
+2024-09-15,#76ad2a,0,0,
+2024-09-16,#76ad2a,0,0,
+2024-09-17,#76ad2a,0,0,
+2024-09-18,#76ad2a,0,0,
+2024-09-19,#76ad2a,0,0,Login issues with magic links
+2024-09-20,#c7a92a,930,0,Claude 3 Opus elevated errors
+2024-09-21,#76ad2a,0,0,
+2024-09-22,#76ad2a,0,0,
+2024-09-23,#76ad2a,0,0,Elevated Errors on Claude 3.5 Sonnet
+2024-09-24,#d8a92a,1904,0,Partial Outage on 3.5 Sonnet
+2024-09-25,#76ad2a,0,0,Elevated Errors on Claude 3.5 Sonnet
+2024-09-26,#76ad2a,0,0,
+2024-09-27,#76ad2a,0,0,
+2024-09-28,#76ad2a,0,0,
+2024-09-29,#76ad2a,0,0,
+2024-09-30,#76ad2a,0,0,
+2024-10-01,#76ad2a,0,0,Elevated latency on some requests to Claude 3.5 Sonnet
+2024-10-02,#76ad2a,0,0,
+2024-10-03,#76ad2a,0,0,
+2024-10-04,#76ad2a,0,0,
+2024-10-05,#76ad2a,0,0,
+2024-10-06,#76ad2a,0,0,
+2024-10-07,#76ad2a,0,0,
+2024-10-08,#76ad2a,0,0,
+2024-10-09,#76ad2a,0,0,
+2024-10-10,#76ad2a,0,0,
+2024-10-11,#76ad2a,0,0,
+2024-10-12,#76ad2a,0,0,
+2024-10-13,#76ad2a,0,0,
+2024-10-14,#76ad2a,0,0,
+2024-10-15,#76ad2a,0,0,
+2024-10-16,#76ad2a,0,0,
+2024-10-17,#dba82a,2100,0,Elevated API errors on Claude 3.5 Sonnet
+2024-10-18,#76ad2a,0,0,
+2024-10-19,#76ad2a,0,0,
+2024-10-20,#76ad2a,0,0,
+2024-10-21,#76ad2a,0,0,Elevated Sonnet 3.5 and Haiku error rate
+2024-10-22,#f5a72a,3643,0,Elevated errors for requests to the Anthropic API
+2024-10-23,#c3aa2a,659,0,Claude.ai Project Knowledge file visibility
+2024-10-24,#e04343,19722,0,Claude 3.5 Sonnet elevated error rate
+2024-10-25,#cda92a,1293,0,Elevated errors for requests to Claude 3.5 Sonnet
+2024-10-26,#76ad2a,0,0,
+2024-10-27,#76ad2a,0,0,
+2024-10-28,#c5a92a,816,0,Errors logging into Claude.ai
+2024-10-29,#ec7233,6001,0,Claude Instant 1.2 Outage | Analysis tool prevents viewing of Artifacts on Claude.ai | Elevated errors on Claude 3.5 Sonnet | Elevated errors for requests to Claude 3.5 Sonnet
+2024-10-30,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2024-10-31,#76ad2a,0,0,
+2024-11-01,#f1852f,5247,0,Elevated errors on Anthropic API
+2024-11-02,#76ad2a,0,0,
+2024-11-03,#76ad2a,0,0,
+2024-11-04,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet and Claude 3 Haiku
+2024-11-05,#e96734,6396,0,Elevated errors for requests to Claude 3.5 Sonnet | Invalid responses to some prompts on Sonnet 3.5
+2024-11-06,#76ad2a,0,0,Invalid responses to some prompts on Sonnet 3.5 | Elevated errors for requests to Claude 3.5 Sonnet
+2024-11-07,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet | Claude.ai and console.anthropic.com login issues
+2024-11-08,#76ad2a,0,0,Claude.ai and console.anthropic.com login issues
+2024-11-09,#76ad2a,0,0,
+2024-11-10,#76ad2a,0,0,
+2024-11-11,#76ad2a,0,0,
+2024-11-12,#76ad2a,0,0,
+2024-11-13,#e65c38,7720,0,"Elevated error rate on Haiku, Sonnet, and Opus"
+2024-11-14,#f79b2c,4424,0,Claude.ai PDF upload issues
+2024-11-15,#c6a92a,0,255,Errors on Claude.ai and Console for logins and requests
+2024-11-16,#76ad2a,0,0,
+2024-11-17,#76ad2a,0,0,
+2024-11-18,#76ad2a,0,0,
+2024-11-19,#f4a72a,3578,0,Elevated error rate on Claude 3 Haiku and Claude 3.5 Sonnet (old)
+2024-11-20,#76ad2a,0,0,
+2024-11-21,#76ad2a,0,0,
+2024-11-22,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2024-11-23,#76ad2a,0,0,
+2024-11-24,#76ad2a,0,0,
+2024-11-25,#d0a92a,1459,0,Elevated errors on Claude 3.5 Haiku
+2024-11-26,#e4543b,9018,0,Elevated errors on Claude 3.5 Sonnet
+2024-11-27,#e24a40,10748,0,Elevated errors for requests to Claude 3.5 Sonnet | Elevated errors for requests to Anthropic API
+2024-11-28,#76ad2a,0,0,
+2024-11-29,#76ad2a,0,0,
+2024-11-30,#76ad2a,0,0,
+2024-12-01,#76ad2a,0,0,
+2024-12-02,#76ad2a,0,0,
+2024-12-03,#beaa2a,364,0,Claude.ai and Console experiencing increased latency and intermittent unavailability
+2024-12-04,#76ad2a,0,0,Claude.ai and Console experiencing increased latency and intermittent unavailability
+2024-12-05,#76ad2a,0,0,
+2024-12-06,#76ad2a,0,0,
+2024-12-07,#76ad2a,0,0,
+2024-12-08,#76ad2a,0,0,
+2024-12-09,#76ad2a,0,0,
+2024-12-10,#76ad2a,0,0,
+2024-12-11,#76ad2a,0,0,
+2024-12-12,#76ad2a,0,0,
+2024-12-13,#76ad2a,0,0,
+2024-12-14,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet | Claude 3 Opus experience degraded
+2024-12-15,#76ad2a,0,0,Scheduled maintenance for Claude.ai and Anthropic Console
+2024-12-16,#76ad2a,0,0,
+2024-12-17,#76ad2a,0,0,
+2024-12-18,#76ad2a,0,0,
+2024-12-19,#76ad2a,0,0,
+2024-12-20,#e04343,12985,0,Elevated errors for requests to Claude 3.0 Opus and Claude 3.5 Sonnet
+2024-12-21,#76ad2a,0,0,
+2024-12-22,#76ad2a,0,0,
+2024-12-23,#76ad2a,0,0,
+2024-12-24,#76ad2a,0,0,
+2024-12-25,#76ad2a,0,0,
+2024-12-26,#76ad2a,0,0,
+2024-12-27,#76ad2a,0,0,
+2024-12-28,#76ad2a,0,0,
+2024-12-29,#76ad2a,0,0,
+2024-12-30,#e2a82a,2525,0,Elevated error rate on Claude 3 Opus
+2024-12-31,#76ad2a,0,0,
+2025-01-01,#f9a22b,4143,0,Elevated error rate on Claude 3 Opus
+2025-01-02,#76ad2a,0,0,
+2025-01-03,#76ad2a,0,0,
+2025-01-04,#e04343,14306,0,Elevated errors for requests to Claude 3.5 Sonnet | Elevated errors for requests to Claude 3.5 Sonnet | Elevated errors for requests to Claude 3.5 Sonnet
+2025-01-05,#76ad2a,0,0,
+2025-01-06,#76ad2a,0,0,
+2025-01-07,#76ad2a,0,0,
+2025-01-08,#76ad2a,0,0,
+2025-01-09,#76ad2a,0,0,
+2025-01-10,#bfaa2a,0,130,Issues reaching Claude.ai
+2025-01-11,#76ad2a,0,0,
+2025-01-12,#76ad2a,0,0,
+2025-01-13,#76ad2a,0,0,
+2025-01-14,#e04343,0,11501,Elevated errors for requests to Claude 3.5 Sonnet
+2025-01-15,#76ad2a,0,0,
+2025-01-16,#76ad2a,0,0,
+2025-01-17,#76ad2a,0,0,
+2025-01-18,#76ad2a,0,0,
+2025-01-19,#76ad2a,0,0,
+2025-01-20,#76ad2a,0,0,
+2025-01-21,#76ad2a,0,0,Some functionality was temporarily unavailable on Claude.ai for Android
+2025-01-22,#76ad2a,0,0,
+2025-01-23,#76ad2a,0,0,
+2025-01-24,#76ad2a,0,0,
+2025-01-25,#76ad2a,0,0,
+2025-01-26,#e4a82a,2637,0,Elevated error rate on Claude 3 Opus
+2025-01-27,#76ad2a,0,0,
+2025-01-28,#76ad2a,0,0,
+2025-01-29,#76ad2a,0,0,
+2025-01-30,#ef7d31,0,1669,Errors when logging into Claude.ai and Console.anthropic.com
+2025-01-31,#c2aa2a,582,0,Elevated errors for requests to Claude 3.5 Sonnet | Elevated errors for requests to Claude 3.5 Sonnet
+2025-02-01,#76ad2a,0,0,
+2025-02-02,#76ad2a,0,0,
+2025-02-03,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2025-02-04,#d7a92a,1846,0,Elevated Error Rates on Claude.ai
+2025-02-05,#76ad2a,0,0,
+2025-02-06,#e86036,6904,0,Elevated errors for requests to Claude 3 Opus and Claude 3.5 Sonnet
+2025-02-07,#76ad2a,0,0,
+2025-02-08,#76ad2a,0,0,
+2025-02-09,#76ad2a,0,0,
+2025-02-10,#76ad2a,0,0,
+2025-02-11,#76ad2a,0,0,
+2025-02-12,#f5952d,4647,0,Elevated error rates on Claude 3 Sonnet
+2025-02-13,#76ad2a,0,0,
+2025-02-14,#76ad2a,0,0,
+2025-02-15,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2025-02-16,#76ad2a,0,0,
+2025-02-17,#76ad2a,0,0,
+2025-02-18,#76ad2a,0,0,
+2025-02-19,#76ad2a,0,0,
+2025-02-20,#f38c2e,4982,0,Elevated errors for requests to Claude 3.5 Sonnet
+2025-02-21,#76ad2a,0,0,
+2025-02-22,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet | Elevated errors for requests to Claude 3.5 Sonnet
+2025-02-23,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet and Haiku 3 | Elevated errors for requests to Claude 3.5 Sonnet
+2025-02-24,#76ad2a,0,0,Elevated errors for requests to Claude 3 Sonnet
+2025-02-25,#eda82a,0,946,Elevated errors for requests to Claude 3 Opus | Elevated errors for requests to Claude 3.5 June Sonnet
+2025-02-26,#e5553b,8838,0,Elevated errors for requests to Claude 3.7 Sonnet
+2025-02-27,#d7a92a,1847,0,Elevated errors for requests to Claude 3.5 Sonnet 0620 | Claude.ai chats appearing out of chronological order
+2025-02-28,#bdaa2a,333,0,Errors while attempting to log into Claude.ai and the Anthropic Console
+2025-03-01,#76ad2a,0,0,Errors when loading or publishing artifacts on Claude.ai
+2025-03-02,#76ad2a,0,0,
+2025-03-03,#76ad2a,0,0,
+2025-03-04,#e04343,0,6023,Elevated errors on on requests
+2025-03-05,#76ad2a,0,0,Elevated errors on requests to Claude Sonnet 3.7 and June Sonnet 3.5 | Elevated errors on requests
+2025-03-06,#76ad2a,0,0,
+2025-03-07,#76ad2a,0,0,
+2025-03-08,#76ad2a,0,0,
+2025-03-09,#76ad2a,0,0,
+2025-03-10,#76ad2a,0,0,
+2025-03-11,#76ad2a,0,0,
+2025-03-12,#76ad2a,0,0,Deleted Artifacts are sometimes accessible by Claude for Work teammates
+2025-03-13,#c4a92a,717,0,Deleted Artifacts are sometimes accessible by Claude for Work teammates | Elevated latency and errors on Claude.ai and the Anthropic Console
+2025-03-14,#cfa92a,0,423,Deleted Artifacts are sometimes accessible by Claude for Work teammates | Elevated errors for requests to Claude 3.7 Sonnet
+2025-03-15,#76ad2a,0,0,
+2025-03-16,#76ad2a,0,0,
+2025-03-17,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2025-03-18,#e04343,0,3600,"Claude.ai, Console, and API not available | Claude.ai, Console, and API not available"
+2025-03-19,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2025-03-20,#76ad2a,0,0,Errors for users on Claude.ai with a connected Github account
+2025-03-21,#76ad2a,0,0,Errors for users on Claude.ai with a connected Github account
+2025-03-22,#76ad2a,0,0,
+2025-03-23,#76ad2a,0,0,
+2025-03-24,#e04343,8657,1122,"Elevated errors for Claude.ai, Console, and the Anthropic API | Invalid responses on Claude.ai chats"
+2025-03-25,#e96734,5400,300,"Elevated errors for Claude.ai, Console, and the Anthropic API | Elevated errors on Claude.ai and Console"
+2025-03-26,#e96734,6413,0,Elevated errors on requests to some models | Elevated errors on requests to models
+2025-03-27,#76ad2a,0,0,
+2025-03-28,#76ad2a,0,0,
+2025-03-29,#e14741,0,3369,Claude.ai projects not loading | Errors loading Claude.ai and Console | Elevated errors for requests to all models
+2025-03-30,#c8a92a,963,0,Elevated errors for requests to all models
+2025-03-31,#c3aa2a,653,0,Elevated errors on Claude.ai and the Anthropic Console
+2025-04-01,#76ad2a,0,0,
+2025-04-02,#76ad2a,0,0,
+2025-04-03,#beaa2a,372,0,Elevated Errors On API And Claude.ai
+2025-04-04,#76ad2a,0,0,Elevated errors on long context requests to Claude 3.7 Sonnet
+2025-04-05,#76ad2a,0,0,
+2025-04-06,#76ad2a,0,0,
+2025-04-07,#76ad2a,0,0,
+2025-04-08,#76ad2a,0,0,Claude Performance Is Degraded
+2025-04-09,#e5573a,8571,0,Elevated errors on requests to Claude 3.5 and 3.7 Sonnet
+2025-04-10,#e9a82a,2953,0,Errors when logging into Claude.ai | Issues when using Claude 3.5 Haiku with vision | Elevated errors on Claude 3.7 Sonnet | Elevated errors on Claude 3.7 Sonnet
+2025-04-11,#76ad2a,0,0,
+2025-04-12,#76ad2a,0,0,
+2025-04-13,#76ad2a,0,0,
+2025-04-14,#d9a92a,1962,0,Elevated errors on Claude 3.7 Sonnet | Claude 3.7 Sonnet partially degraded
+2025-04-15,#dfa82a,2352,0,Claude 3.7 Sonnet partially degraded | Issues logging into Claude.ai | Elevated errors on Sonnet 3.5 (new) | Elevated errors on June Sonnet 3.5 | Elevated errors on request to models
+2025-04-16,#e04343,13994,0,Elevated errors on Claude 3 Haiku | Elevated errors on request to models | Elevated errors on requests to Claude 3.7 and 3.5 Sonnet
+2025-04-17,#cca92a,1183,0,Elevated errors on Claude 3.7 Sonnet | Elevated errors on Claude 3.7 Sonnet
+2025-04-18,#76ad2a,0,0,
+2025-04-19,#76ad2a,0,0,
+2025-04-20,#76ad2a,0,0,
+2025-04-21,#76ad2a,0,0,Errors when uploading some filetypes on Claude.ai with analysis tool enabled
+2025-04-22,#e0a82a,2434,0,Elevated errors on Claude 3.7 Sonnet | Elevated errors on October Claude 3.5 Sonnet
+2025-04-23,#76ad2a,0,0,Issues with receiving magic links when logging into Claude.ai or the Anthropic Console
+2025-04-24,#76ad2a,0,0,Errors with MCP tool calls on the Claude.ai desktop application
+2025-04-25,#e6a82a,2780,0,Elevated errors on request to models
+2025-04-26,#c6a92a,820,0,Elevated errors on request to models
+2025-04-27,#76ad2a,0,0,
+2025-04-28,#76ad2a,0,0,
+2025-04-29,#e04343,12867,0,Elevated errors on requests to October Claude 3.5 Sonnet and 3.7 Sonnet | Elevated errors on Claude 3.7 Sonnet | Elevated errors on Claude 3.7 Sonnet
+2025-04-30,#76ad2a,0,0,Elevated errors for Claude.ai free users using 3.7 Sonnet
+2025-05-01,#76ad2a,0,0,SSO Sign-In Issues
+2025-05-02,#dfa82a,2365,0,Elevated errors on Claude 3 Opus
+2025-05-03,#76ad2a,0,0,Elevated Errors on Haiku 3.5
+2025-05-04,#76ad2a,0,0,
+2025-05-05,#76ad2a,0,0,
+2025-05-06,#76ad2a,0,0,Elevated errors on Claude 3.7 Sonnet
+2025-05-07,#76ad2a,0,0,Elevated errors on Claude 3.7 Sonnet | Elevated errors for requests to Claude 3 Sonnet
+2025-05-08,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Haiku | Elevated errors for requests to Claude 3.5 Haiku | Elevated errors for requests to Claude 3.5 Sonnet
+2025-05-09,#caa92a,1079,0,Elevated errors for requests to Claude 3.5 Haiku | Elevated errors on Research
+2025-05-10,#76ad2a,0,0,
+2025-05-11,#76ad2a,0,0,
+2025-05-12,#f2892f,0,1531,Elevated errors for requests to Claude 3.7 Sonnet | Elevated 500 Internal Server Errors for API and Claude.ai | Elevated errors on Claude.ai and the Anthropic Console
+2025-05-13,#eaa82a,3026,0,Errors when logging into Claude.ai
+2025-05-14,#76ad2a,0,0,
+2025-05-15,#76ad2a,0,0,Elevated errors on long context requests with Claude for Enterprise
+2025-05-16,#76ad2a,0,0,Elevated errors on long context requests with Claude for Enterprise
+2025-05-17,#76ad2a,0,0,
+2025-05-18,#76ad2a,0,0,
+2025-05-19,#76ad2a,0,0,
+2025-05-20,#76ad2a,0,0,
+2025-05-21,#f8a12b,4203,0,Elevated errors across many models | MCP tool calling issues for Advanced Research queries in Claude.ai | Elevated errors on requests to some models | Elevated errors on requests to some models
+2025-05-22,#76ad2a,0,0,Errors with images on Claude.ai conversations with Claude Sonnet 4
+2025-05-23,#76ad2a,0,0,Elevated errors on Claude Sonnet 4
+2025-05-24,#76ad2a,0,0,Incorrect display of 'Legacy Model' on Claude.ai for conversations with Opus 4
+2025-05-25,#76ad2a,0,0,
+2025-05-26,#76ad2a,0,0,Elevated errors for requests to Claude 4 Opus | Elevated errors for requests to Claude 4 Opus
+2025-05-27,#e04343,0,5672,Claude.ai and console.anthropic.com down | Elevated errors for requests to Claude 4 Opus
+2025-05-28,#ee7832,0,1733,Claude.ai and console.anthropic.com down
+2025-05-29,#76ad2a,0,0,Elevated errors on Claude Sonnet 4 for Claude.ai
+2025-05-30,#76ad2a,0,0,
+2025-05-31,#76ad2a,0,0,
+2025-06-01,#76ad2a,0,0,
+2025-06-02,#76ad2a,0,0,Elevated errors on requests to Claude Sonnet 3.7 and 4
+2025-06-03,#76ad2a,0,0,
+2025-06-04,#76ad2a,0,0,Request duration regression for Claude Sonnet 3.7 and 4 and Claude Opus 4 | Errors on tool use calls on Claude.ai and the Anthropic Console
+2025-06-05,#76ad2a,0,0,Request duration regression for Claude Sonnet 3.7 and 4 and Claude Opus 4
+2025-06-06,#d3a92a,1618,0,Request duration regression for Claude Sonnet 3.7 and 4 and Claude Opus 4 | High rate of errors across models
+2025-06-07,#76ad2a,0,0,Request duration regression for Claude Sonnet 3.7 and 4 and Claude Opus 4
+2025-06-08,#eda82a,3212,0,Claude Opus 4 elevated error rate
+2025-06-09,#76ad2a,0,0,Elevated errors on Claude Opus 4
+2025-06-10,#76ad2a,0,0,
+2025-06-11,#76ad2a,0,0,
+2025-06-12,#e04343,0,8440,"Elevated errors on the API, Console and Claude.ai"
+2025-06-13,#76ad2a,0,0,
+2025-06-14,#76ad2a,0,0,
+2025-06-15,#76ad2a,0,0,
+2025-06-16,#76ad2a,0,0,
+2025-06-17,#76ad2a,0,0,Elevated errors for the Claude 4 Sonnet model | Elevated errors across many models
+2025-06-18,#76ad2a,0,0,Elevated errors on Claude.ai | Elevated errors on Claude 4 Sonnet
+2025-06-19,#76ad2a,0,0,
+2025-06-20,#76ad2a,0,0,
+2025-06-21,#76ad2a,0,0,
+2025-06-22,#76ad2a,0,0,Elevated errors on Claude 3.7 Sonnet
+2025-06-23,#76ad2a,0,0,Elevated errors on claude.ai
+2025-06-24,#76ad2a,0,0,Elevated errors on Claude Opus 4 | Elevated errors on Claude Opus 4 and Claude Sonnet 3.7
+2025-06-25,#76ad2a,0,0,Elevated errors across the Haiku family of models | Elevated errors on Claude 4 Opus
+2025-06-26,#76ad2a,0,0,
+2025-06-27,#76ad2a,0,0,
+2025-06-28,#76ad2a,0,0,
+2025-06-29,#76ad2a,0,0,
+2025-06-30,#76ad2a,0,0,
+2025-07-01,#f7a72a,3770,0,Elevated errors across models | Elevated errors on request to Claude Sonnet and Opus 4
+2025-07-02,#76ad2a,0,0,
+2025-07-03,#76ad2a,0,0,Elevated errors on Claude 4 Sonnet | Elevated errors across models | Elevated errors for Claude 4 Opus
+2025-07-04,#76ad2a,0,0,
+2025-07-05,#76ad2a,0,0,
+2025-07-06,#76ad2a,0,0,
+2025-07-07,#76ad2a,0,0,Elevated errors across Claude 3.5 Haiku
+2025-07-08,#76ad2a,0,0,Elevated errors on requests to multiple models
+2025-07-09,#e04343,80595,1155,Elevated errors on Claude Opus 4 | Elevated errors on Claude Opus 4 | Elevated errors on Claude.ai
+2025-07-10,#eda82a,3174,0,Issues with accessing claude.ai | Elevated errors on Claude 4 Sonnet | Elevated errors on Claude 4 Sonnet | Elevated errors on Claude 3.5 Haiku | Elevated errors for requests to Claude 3.5 Sonnet
+2025-07-11,#76ad2a,0,0,
+2025-07-12,#76ad2a,0,0,Elevated errors for requests to Claude 3.5 Sonnet
+2025-07-13,#76ad2a,0,0,Elevated errors for requests to Claude 4 Sonnet
+2025-07-14,#76ad2a,0,0,Elevated errors for requests to Claude 4 Sonnet
+2025-07-15,#76ad2a,0,0,Elevated errors for requests to Claude 4 Sonnet | Elevated errors for requests to Claude 4 Opus | Elevated errors for requests to Claude 4 Sonnet
+2025-07-16,#76ad2a,0,0,Elevated errors for requests to Sonnet models | Elevated errors for requests to Claude 4 Opus
+2025-07-17,#f89e2b,0,1289,Elevated errors for requests to Claude Sonnet and Opus models | Intermittent errors connecting to Claude.ai Connectors
+2025-07-18,#bbaa2a,213,0,Intermittent errors connecting to Claude.ai Connectors | Elevated errors for requests to Claude 4 Opus via Claude Code
+2025-07-19,#76ad2a,0,0,
+2025-07-20,#76ad2a,0,0,
+2025-07-21,#e04343,0,5608,Elevated errors for requests to Claude 4 Sonnet | Elevated errors on Claude 4 Sonnet
+2025-07-22,#f9a52a,4043,0,Elevated errors on Claude Sonnet 4 | Elevated errors on claude.ai
+2025-07-23,#e34f3e,9901,0,Elevated errors on Claude 4 Sonnet | Elevated errors on Claude 4 Sonnet | Elevated errors on Claude 4 Sonnet | MCP tool errors | Elevated errors on Claude 4 Sonnet | Errors on multiple Claude models
+2025-07-24,#76ad2a,0,0,Degraded Google Drive Connector Experience
+2025-07-25,#e04343,41701,0,Elevated 529 errors on Sonnet 4 | Elevated Errors on Sonnet and Opus 4 | Elevated errors on Claude 4 Sonnet | Elevated errors on Claude 4 Opus (affecting Claude Code)
+2025-07-26,#76ad2a,0,0,
+2025-07-27,#76ad2a,0,0,
+2025-07-28,#76ad2a,0,0,
+2025-07-29,#e1a82a,2468,0,Elevated errors on Claude 4 Sonnet | SSO login issue affecting the Claude desktop app | Elevated errors for requests to Claude 4 Sonnet
+2025-07-30,#b8aa2a,27,0,Elevated errors on Claude 4 Sonnet | Elevated errors for requests to Claude 4 Sonnet | Claude.ai chats appearing out of chronological order
+2025-07-31,#76ad2a,0,0,
+2025-08-01,#76ad2a,0,0,
+2025-08-02,#76ad2a,0,0,
+2025-08-03,#76ad2a,0,0,
+2025-08-04,#76ad2a,0,0,Elevated errors on Claude 4 Sonnet | Elevated errors on Claude 4 Sonnet
+2025-08-05,#76ad2a,0,0,Elevated errors for requests to Claude 4 Sonnet
+2025-08-06,#76ad2a,0,0,
+2025-08-07,#76ad2a,0,0,Potential Errors with Claude.ai Connectors
+2025-08-08,#76ad2a,0,0,
+2025-08-09,#76ad2a,0,0,
+2025-08-10,#76ad2a,0,0,
+2025-08-11,#76ad2a,0,0,
+2025-08-12,#76ad2a,0,0,Elevated errors on Claude Sonnet 3.7 | Elevated errors on Claude Sonnet 3.7
+2025-08-13,#76ad2a,0,0,Elevated errors on Claude Sonnet 3.6
+2025-08-14,#76ad2a,0,0,Elevated errors across models
+2025-08-15,#76ad2a,0,0,
+2025-08-16,#76ad2a,0,0,
+2025-08-17,#76ad2a,0,0,
+2025-08-18,#76ad2a,0,0,Elevated errors on Claude Opus 4.1 | Elevated errors on Claude Sonnet 4 | Claude.ai chats not saved | Subscription Upgrade Broken
+2025-08-19,#76ad2a,0,0,Subscription Upgrade Broken | Team plan organizations unable to add more members | Elevated errors on Claude Opus 4.1
+2025-08-20,#e5a82a,2711,0,Elevated errors on Claude Sonnet 4
+2025-08-21,#e04343,12859,0,Elevated errors on Claude Opus 4.1 | Elevated errors on Claude Sonnet 4
+2025-08-22,#d1a92a,1489,0,Intermittent visibility issues with Google Docs in project knowledge base | Elevated errors on Claude Opus 4 | Errors starting new Claude.ai chats | Elevated errors on Claude Opus 4 and 4.1
+2025-08-23,#c9a92a,1030,0,Intermittent visibility issues with Google Docs in project knowledge base | Elevated errors on Claude Opus 4 and 4.1 | Errors creating chats on Claude.ai
+2025-08-24,#76ad2a,0,0,Intermittent visibility issues with Google Docs in project knowledge base | Elevated errors on Claude Sonnet 4
+2025-08-25,#76ad2a,0,0,Claude.ai failing to connect to certain MCP servers | Intermittent visibility issues with Google Docs in project knowledge base
+2025-08-26,#76ad2a,0,0,Elevated errors on Claude Opus 4.0
+2025-08-27,#76ad2a,0,0,Elevated errors on Claude Opus 4.1 | Elevated errors on Claude Opus 4.1
+2025-08-28,#76ad2a,0,0,Elevated errors on Claude Opus 4.1 | Conversations stalling after Claude.ai messages | MCP tool calls failing on desktop | Elevated errors on Claude Opus 4.1
+2025-08-29,#76ad2a,0,0,Upgrades to Connector Auth Storage | Elevated errors on Claude Sonnet 4.0 | Claude Opus 4.1 and Opus 4 degraded quality
+2025-08-30,#76ad2a,0,0,Elevated errors on Claude Sonnet 4.0 | Claude Opus 4.1 and Opus 4 degraded quality
+2025-08-31,#76ad2a,0,0,Elevated errors on Claude Sonnet 4.0 | Claude.ai Research Failing to Start
+2025-09-01,#76ad2a,0,0,Elevated errors on Claude 3.5 Sonnet (Oct 2024)
+2025-09-02,#76ad2a,0,0,
+2025-09-03,#d3a92a,1622,0,Elevated error rates on API and claude.ai | Elevated errors on Claude Opus 4.1
+2025-09-04,#76ad2a,0,0,"Elevated errors on Claude Sonnet 4.0 | Elevated errors on Claude Haiku 3.5 | Elevated errors on Claude 4.1 Opus | Unable to connect to MCP (Connectors), API Tools"
+2025-09-05,#76ad2a,0,0,Certain Claude.ai Orgs Unable to Submit Messages | Unable to send messages to Opus 4.1
+2025-09-06,#76ad2a,0,0,
+2025-09-07,#76ad2a,0,0,
+2025-09-08,#76ad2a,0,0,
+2025-09-09,#76ad2a,0,0,Elevated latency for some Sonnet 4 requests
+2025-09-10,#e7a82a,1075,532,"API, Claude.ai, and Console services impacted | Elevated errors on Claude Sonnet 4.0"
+2025-09-11,#76ad2a,0,0,Elevated errors on Claude Opus 4.1
+2025-09-12,#76ad2a,0,0,Model output quality
+2025-09-13,#76ad2a,0,0,Model output quality
+2025-09-14,#76ad2a,0,0,Model output quality
+2025-09-15,#76ad2a,0,0,Elevated errors on Claude Opus 4.1 | Elevated errors on Claude Haiku 3.5 | Elevated errors on Claude Opus 4.1 | Model output quality
+2025-09-16,#76ad2a,0,0,Elevated errors on Claude 4 Sonnet | Problems loading Claude.ai Artifacts | Model output quality
+2025-09-17,#76ad2a,0,0,Model output quality
+2025-09-18,#f2a72a,3479,0,Elevated errors across many models
+2025-09-19,#76ad2a,0,0,
+2025-09-20,#76ad2a,0,0,[retroactive] Elevated errors on Claude Haiku 3.5 and Claude Haiku 3
+2025-09-21,#76ad2a,0,0,
+2025-09-22,#c3a92a,220,139,Elevated error rates on API and claude.ai | Claude App and API connectivity errors
+2025-09-23,#76ad2a,0,0,
+2025-09-24,#76ad2a,0,0,Elevated error rates on API and claude.ai | Elevated errors on Claude Opus 4 and Opus 4.1
+2025-09-25,#76ad2a,0,0,Elevated errors on Claude Sonnet 3.5 and 3.7
+2025-09-26,#76ad2a,0,0,
+2025-09-27,#76ad2a,0,0,
+2025-09-28,#76ad2a,0,0,
+2025-09-29,#76ad2a,0,0,
+2025-09-30,#76ad2a,0,0,Elevated errors | Elevated errors on Claude Sonnet 4 | Elevated errors on Claude Sonnet 4
+2025-10-01,#76ad2a,0,0,Elevated errors
+2025-10-02,#e4a82a,2654,0,Claude.ai Connectors are Unhealthy
+2025-10-03,#e4543b,9000,0,"Claude.ai, Claude Code, API, and console are experiencing degraded service"
+2025-10-04,#76ad2a,0,0,
+2025-10-05,#76ad2a,0,0,
+2025-10-06,#76ad2a,0,0,Elevated errors on Claude Opus 4
+2025-10-07,#76ad2a,0,0,
+2025-10-08,#76ad2a,0,0,Elevated errors on Claude Sonnet 4.5
+2025-10-09,#e65939,8087,43,Elevated errors on claude.ai
+2025-10-10,#dba82a,2082,0,Elevated errors on claude.ai
+2025-10-11,#76ad2a,0,0,
+2025-10-12,#76ad2a,0,0,
+2025-10-13,#76ad2a,0,0,
+2025-10-14,#76ad2a,0,0,
+2025-10-15,#76ad2a,0,0,
+2025-10-16,#76ad2a,0,0,
+2025-10-17,#cea92a,1328,0,Claude Desktop is unavailable
+2025-10-18,#76ad2a,0,0,
+2025-10-19,#76ad2a,0,0,
+2025-10-20,#d0a92a,0,438,Claude.ai is unavailable
+2025-10-21,#76ad2a,0,0,Elevated errors on Claude Opus 4.1
+2025-10-22,#e75e37,7328,0,"Elevated errors using Claude.ai connectors, API server tools, and API MCP Connectors | Elevated errors on Research on claude.ai | Elevated errors on Claude Opus 4.1 and Sonnet 4.5"
+2025-10-23,#76ad2a,0,0,file upload broken on /new
+2025-10-24,#76ad2a,0,0,
+2025-10-25,#76ad2a,0,0,
+2025-10-26,#76ad2a,0,0,
+2025-10-27,#eaa82a,3008,0,Elevated errors for requests to Claude 4.5 Sonnet
+2025-10-28,#f1a72a,3451,0,Elevated errors with uploading files to claude.ai | Elevated errors for requests to Claude 4.5 Haiku
+2025-10-29,#76ad2a,0,0,Increased latency on claude.ai
+2025-10-30,#76ad2a,0,0,
+2025-10-31,#e75d37,0,2246,Elevated errors for requests to Claude 4 Sonnet | Elevated errors on claude.ai
+2025-11-01,#76ad2a,0,0,Elevated errors for requests to Claude 4 Sonnet
+2025-11-02,#76ad2a,0,0,
+2025-11-03,#76ad2a,0,0,
+2025-11-04,#76ad2a,0,0,Degraded outputs quality from Haiku 4.5
+2025-11-05,#76ad2a,0,0,Degraded outputs quality from Haiku 4.5
+2025-11-06,#76ad2a,0,0,
+2025-11-07,#76ad2a,0,0,"Elevated errors for requests to Claude 4, 4.5 Sonnet and 4.5 Haiku | Elevated errors for requests to Claude Sonnet 4.5"
+2025-11-08,#76ad2a,0,0,
+2025-11-09,#76ad2a,0,0,
+2025-11-10,#76ad2a,0,0,
+2025-11-11,#76ad2a,0,0,Elevated errors on Claude.ai | Elevated errors on Claude.ai
+2025-11-12,#76ad2a,0,0,
+2025-11-13,#76ad2a,0,0,
+2025-11-14,#76ad2a,0,0,Elevated error rates with Sonnet 4.5 and Opus 4.1 | Elevated errors for requests to Claude 4.1 Opus
+2025-11-15,#76ad2a,0,0,
+2025-11-16,#76ad2a,0,0,
+2025-11-17,#e04343,13069,0,issues with Claude Code remote and claude.ai file creation | Issues with Claude.ai Research
+2025-11-18,#e04343,0,11799,Elevated errors on claude.ai
+2025-11-19,#76ad2a,0,0,Increased error rate on Claude 4 Sonnet
+2025-11-20,#e04343,13364,0,"Elevated errors on Sonnet 4, Sonnet 4.5 and Haiku 4.5"
+2025-11-21,#76ad2a,0,0,
+2025-11-22,#76ad2a,0,0,
+2025-11-23,#76ad2a,0,0,
+2025-11-24,#76ad2a,0,0,Model usage attribution issues
+2025-11-25,#76ad2a,0,0,Elevated errors for requests to Claude Opus 4.5
+2025-11-26,#76ad2a,0,0,
+2025-11-27,#76ad2a,0,0,
+2025-11-28,#76ad2a,0,0,
+2025-11-29,#76ad2a,0,0,
+2025-11-30,#d5a92a,1745,0,Elevated errors for requests to Claude Haiku 4.5 | Elevated errors on Sonnet 4.5 | Unable to enable extended thinking on first message
+2025-12-01,#76ad2a,0,0,Investigating reports of increased latency
+2025-12-02,#e5a82a,2714,0,Investigating reports of increased latency | Elevated errors on claude.ai
+2025-12-03,#c1aa2a,524,0,Elevated errors on Claude Haiku 4.5 and Opus 4.5
+2025-12-04,#76ad2a,0,0,
+2025-12-05,#e65939,1830,1907,iOS Subscription Access Issues | Elevated Error Rates on Claude API Code Execution and Advanced File Analysis Tools | Claude.ai is unavailable | Claude.ai is unavailable
+2025-12-06,#76ad2a,0,0,iOS Subscription Access Issues
+2025-12-07,#76ad2a,0,0,iOS Subscription Access Issues
+2025-12-08,#76ad2a,0,0,iOS Subscription Access Issues
+2025-12-09,#76ad2a,0,0,iOS Subscription Access Issues
+2025-12-10,#76ad2a,0,0,iOS Subscription Access Issues | Research on claude.ai down
+2025-12-11,#76ad2a,0,0,iOS Subscription Access Issues
+2025-12-12,#76ad2a,0,0,iOS Subscription Access Issues
+2025-12-13,#76ad2a,0,0,
+2025-12-14,#e04343,0,4806,Elevated errors across many models
+2025-12-15,#76ad2a,0,0,Unable to view shared chats on claude.ai
+2025-12-16,#e75f36,4438,798,Cannot create new conversations on Claude.ai | New chats defaulting to Claude Opus
+2025-12-17,#76ad2a,0,0,Elevated error rates on Sonnet 4
+2025-12-18,#76ad2a,0,0,
+2025-12-19,#76ad2a,0,0,Elevated error rates on Sonnet 4.5
+2025-12-20,#76ad2a,0,0,Research unavailable for some teams orgs
+2025-12-21,#76ad2a,0,0,Elevated error rates on Opus 4.5
+2025-12-22,#76ad2a,0,0,Elevated error rates on Opus 4.5
+2025-12-23,#76ad2a,0,0,Elevated error rates on Opus 4.5
+2025-12-24,#76ad2a,0,0,
+2025-12-25,#76ad2a,0,0,
+2025-12-26,#76ad2a,0,0,
+2025-12-27,#76ad2a,0,0,
+2025-12-28,#76ad2a,0,0,
+2025-12-29,#76ad2a,0,0,
+2025-12-30,#76ad2a,0,0,
+2025-12-31,#76ad2a,0,0,
+2026-01-01,#76ad2a,0,0,
+2026-01-02,#76ad2a,0,0,
+2026-01-03,#76ad2a,0,0,
+2026-01-04,#76ad2a,0,0,
+2026-01-05,#76ad2a,0,0,
+2026-01-06,#76ad2a,0,0,
+2026-01-07,#76ad2a,0,0,Claude subscription usage limits not visible in Claude.ai and Claude Code | Elevated error rates on Opus 4.5
+2026-01-08,#76ad2a,0,0,Claude subscription usage limits not visible in Claude.ai and Claude Code | Increased latency on Sonnet 4.5
+2026-01-09,#76ad2a,0,0,New Subscription Activation & Payment Issues
+2026-01-10,#76ad2a,0,0,New Subscription Activation & Payment Issues | Elevated error rates on Sonnet 4.5 1M context
+2026-01-11,#76ad2a,0,0,
+2026-01-12,#76ad2a,0,0,Elevated rate of errors for multiple models | Increased rate of errors for Opus 4.5
+2026-01-13,#76ad2a,0,0,Increased rate of errors for Opus 4.5
+2026-01-14,#e04343,1300,11972,Elevated error rates on Opus 4.5 and Sonnet 4.5
+2026-01-15,#76ad2a,0,0,Compaction is having issues
+2026-01-16,#76ad2a,0,0,
+2026-01-17,#76ad2a,0,0,
+2026-01-18,#76ad2a,0,0,
+2026-01-19,#76ad2a,0,0,
+2026-01-20,#76ad2a,0,0,Elevated errors on Claude Opus 4.5 and Sonnet 4.5
+2026-01-21,#76ad2a,0,0,Elevated errors on Claude Sonnet 4.5
+2026-01-22,#e6a82a,2776,0,Elevated errors on claude.ai | Elevated error rates on claude.ai and API
+2026-01-23,#76ad2a,0,0,
+2026-01-24,#76ad2a,0,0,
+2026-01-25,#76ad2a,0,0,Increased rate of errors for Opus 4.5
+2026-01-26,#76ad2a,0,0,Increased rate of errors for Opus 4.5
+2026-01-27,#76ad2a,0,0,Elevated errors on Claude Haiku 3.5
+2026-01-28,#76ad2a,0,0,Elevated errors on Claude Sonnet 3.7 | Elevated errors on Claude Opus 4.5 | Elevated errors on Claude Opus 4.5
+2026-01-29,#76ad2a,0,0,
+2026-01-30,#76ad2a,0,0,
+2026-01-31,#76ad2a,0,0,
+2026-02-01,#e96634,6444,0,Credit purchase issues & delays | Elevated errors on Claude Opus 4.5 | Elevated errors on Claude Sonnet 4.5
+2026-02-02,#76ad2a,0,0,Credit purchase issues & delays | Elevated errors on Claude Opus 4.5
+2026-02-03,#f5952d,0,1392,Elevated error rate on API across all Claude models | Elevated error rate on API across all Claude models | Elevated error rate establishing new connections to Claude.ai connectors | Elevated errors on Claude Opus 4.5
+2026-02-04,#f2892f,5091,0,Elevated errors on Claude models | Elevated errors on Claude Opus 4.5 and Sonnet 4.5
+2026-02-05,#76ad2a,0,0,Conversation compaction temporarily disabled on claude.ai
+2026-02-06,#76ad2a,0,0,
+2026-02-07,#76ad2a,0,0,Elevated errors on Claude models
+2026-02-08,#76ad2a,0,0,
+2026-02-09,#76ad2a,0,0,
+2026-02-10,#76ad2a,0,0,Opus 4.6 Fast Mode small amount of errors
+2026-02-11,#76ad2a,0,0,Elevated errors on Claude Sonnet 4.5 | Elevated errors on Opus 4.6 | Elevated errors on Claude Haiku 4.5
+2026-02-12,#76ad2a,0,0,Elevated errors on Opus 4.6
+2026-02-13,#76ad2a,0,0,Elevated errors on Opus 4.6 Fast Mode | MCP not working in Research in claude.ai
+2026-02-14,#f6972d,4583,0,Elevated errors on Claude models
+2026-02-15,#76ad2a,0,0,
+2026-02-16,#76ad2a,0,0,Elevated errors on Claude Opus 4.6 | Elevated errors on Opus 4.6
+2026-02-17,#76ad2a,0,0,Elevated errors on Claude Opus 4.6 | Intermittent errors in skills-related functionality | CSS errors on Claude.ai | Elevated errors on Claude Sonnet 4.5 | New user-created skills are not working in Claude.ai
+2026-02-18,#c3a92a,695,0,Elevated errors on Claude Opus 4.5 | Elevated error rates across multiple models | Elevated errors on Claude Sonnet 4.6 | Intermittent errors in skills-related functionality | CSS errors on Claude.ai
+2026-02-19,#76ad2a,0,0,Intermittent errors in skills-related functionality
+2026-02-20,#76ad2a,0,0,Intermittent errors in skills-related functionality | Elevated errors on Claude Sonnet 4.5
+2026-02-21,#76ad2a,0,0,Intermittent errors in skills-related functionality | Opus 4.6 elevated error rates
+2026-02-22,#76ad2a,0,0,Intermittent errors in skills-related functionality
+2026-02-23,#eaa82a,2997,0,Intermittent errors in skills-related functionality | Elevated errors on Claude Sonnet 4.5 | Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Haiku 4.5
+2026-02-24,#76ad2a,0,0,Intermittent errors in skills-related functionality | Elevated errors on Claude Sonnet 4.6 | Elevated errors on Claude Sonnet 4.6
+2026-02-25,#e04542,11665,0,Claude Desktop failing to open for some users | Elevated errors on Claude Sonnet 4.6 and Opus 4.6 | Elevated errors on Claude Opus 4.6
+2026-02-26,#e04343,23748,0,Outage in usage reporting
+2026-02-27,#e04343,16039,0,Claude Desktop login issues | Elevated errors on claude.ai | Outage in usage reporting | Elevated errors on claude.ai | Sonnet 4.6 elevated error rate
+2026-02-28,#e24c3f,10369,0,Elevated errors on claude.ai | Elevated errors on Claude Opus 4.6
+2026-03-01,#76ad2a,0,0,
+2026-03-02,#e34f3e,9959,0,"Elevated errors on claude.ai, console, and claude code | Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Opus 4.6 | Elevated errors in claude.ai | Elevated errors on Claude Haiku 4.5"
+2026-03-03,#e9a82a,2914,0,"Elevated errors in claude.ai, cowork, platform, claude code | Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Haiku 4.5 | Elevated errors on Claude Sonnet 4.6"
+2026-03-04,#76ad2a,0,0,Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Haiku 4.5 | Elevated errors on Claude Haiku 4.5
+2026-03-05,#76ad2a,0,0,
+2026-03-06,#76ad2a,0,0,Elevated TCP three-way handshake failures on api.anthropic.com | Filesystem connector missing from Claude Desktop
+2026-03-07,#76ad2a,0,0,Filesystem connector missing from Claude Desktop | Elevated errors on Claude Haiku 4.5
+2026-03-08,#76ad2a,0,0,Filesystem connector missing from Claude Desktop
+2026-03-09,#76ad2a,0,0,
+2026-03-10,#76ad2a,0,0,
+2026-03-11,#76ad2a,0,0,Elevated errors on Claude.ai (including login issues for Claude Code)
+2026-03-12,#f2882f,5160,0,Elevated errors on Sonnet 4.6 | Elevated errors on Claude Sonnet 4.6 | Elevated errors on Claude Sonnet 4.6 and on Claude.ai
+2026-03-13,#e34d3e,10218,0,Elevated errors on Claude Opus 4.6 and Sonnet 4.6
+2026-03-14,#76ad2a,0,0,
+2026-03-15,#76ad2a,0,0,
+2026-03-16,#76ad2a,0,0,Elevated errors on Claude.ai | Elevated errors on Claude.ai | Elevated errors on Claude Sonnet 4.6
+2026-03-17,#e04343,14940,0,Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Sonnet 4.6 | Elevated errors on Claude Sonnet 4.6
+2026-03-18,#ed7632,5851,0,Elevated errors on Claude.ai | Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Opus 4.6 | Increased errors on Opus 4.6
+2026-03-19,#e65c38,4310,1008,Elevated errors on Claude Opus 4.6 | Elevated errors on Claude Sonnet 4.6 | Elevated errors across surfaces
+2026-03-20,#76ad2a,0,0,
+2026-03-21,#ee7931,5714,0,Elevated error rates on Claude Opus and Sonnet 4.6
+2026-03-22,#76ad2a,0,0,Claude.ai and Claude login down | Delayed response completion on Claude.ai
+2026-03-23,#c8a92a,960,0,Elevated errors on Claude.ai [retroactive]
+2026-03-24,#76ad2a,0,0,
+2026-03-25,#e04343,31930,4506,Elevated errors on Claude Opus 4.6 | Elevated Errors on claude.ai | Elevated errors on Claude Opus 4.6
+2026-03-26,#f2892f,5095,0,Elevated errors on Claude Opus 4.6 and Sonnet 4.6 | Elevated errors for MCP calls | Elevated errors on Claude Opus 4.6
+2026-03-27,#e04343,16920,2820,Elevated errors on Claude Opus 4.6 and Sonnet 4.6 | Elevated error rates on Opus 4.6
+2026-03-28,#76ad2a,0,0,
+2026-03-29,#e04343,13885,0,Dispatch sessions not responding in Claude Desktop
+2026-03-30,#76ad2a,0,0,
+2026-03-31,#f9a42a,4060,0,Elevated errors on Claude Opus 4.6 | Opus 4.6 and Sonnet 4.6 error rate elevated | Unavailable connectors in Claude.ai desktop applications
+2026-04-01,#ee7831,5740,0,Elevated timeouts on requests to Claude Opus 4.6 and Sonnet 4.6 | Elevated errors on requests to Claude Opus 4.6 | Errors on the Claude.ai desktop application | Elevated errors and latency on Claude Haiku 4.5
+2026-04-02,#76ad2a,0,0,
+2026-04-03,#f9a32b,4103,0,Elevated errors on requests to Claude Sonnet 4.6
+2026-04-04,#76ad2a,0,0,
+2026-04-05,#76ad2a,0,0,
+2026-04-06,#f08030,5465,0,Elevated errors on Claude.ai | Sonnet 4.6 elevated rate of errors
+2026-04-07,#e04343,0,3846,Elevated errors on Claude.ai
+2026-04-08,#e4523c,9460,0,"Sonnet 4.6 elevated rate of errors | Elevated errors on Claude.ai, API, Claude Code"
+2026-04-09,#76ad2a,0,0,Sonnet 4.6 elevated rate of errors | Elevated Connector Error Rates
+2026-04-10,#cda92a,1266,0,Elevated errors on requests to Claude models
+2026-04-11,#76ad2a,0,0,
+2026-04-12,#76ad2a,0,0,
+2026-04-13,#e14841,0,3315,Claude.ai down
+2026-04-14,#76ad2a,0,0,Degraded service on usage and analytics admin API endpoints
+2026-04-15,#e04343,4392,2427,"Elevated errors on Claude.ai, API, Claude Code"
+2026-04-16,#76ad2a,0,0,Opus 4.6 elevated rate of errors
+2026-04-17,#76ad2a,0,0,Errors uploading documents to Google Drive in Claude.ai
+2026-04-18,#76ad2a,0,0,
+2026-04-19,#76ad2a,0,0,Elevated errors on Opus 4.6
+2026-04-20,#d0a92a,1454,0,Elevated errors for uploading files | Elevated errors on Opus 4.6 | Claude Sonnet 4.5 error spike
+2026-04-21,#76ad2a,0,0,
+2026-04-22,#76ad2a,0,0,
+2026-04-23,#c8a92a,976,0,MCP apps unavailable on Claude.ai | Elevated errors on Claude Opus 4.7
+2026-04-24,#e65c38,0,2309,Elevated errors on Claude Opus 4.7 | Elevated errors on Sonnet 4.6
+2026-04-25,#f4a72a,3595,0,Investigated elevated errors and slower responses on claude.ai | Elevated error rates on Claude Opus 4.7 | Claude Code v2.1.120 Crashes on Startup | Elevated errors on Claude Opus 4.7 | Elevated errors on Claude Opus 4.7
+2026-04-26,#76ad2a,0,0,
+2026-04-27,#76ad2a,0,0,Elevated billing related errors on Claude.ai
+2026-04-28,#e04343,0,4671,Claude.ai unavailable and elevated errors on the API | Elevated errors on Claude Opus 4.7 | Elevated errors on Claude Haiku 4.5
+2026-04-29,#76ad2a,0,0,Elevated errors on Claude Opus 4.7
+2026-04-30,#eb6d33,0,1850,claude.ai and API unavailable | Elevated errors on Claude Haiku 4.5
+2026-05-01,#76ad2a,0,0,
+2026-05-02,#76ad2a,0,0,
+2026-05-03,#76ad2a,0,0,
+2026-05-04,#76ad2a,0,0,Elevated errors on Claude Opus 4.5 and Sonnet 4.5 | Elevated errors on Claude Opus 4.7 | Elevated errors on Claude Opus 4.5
+2026-05-05,#76ad2a,0,0,
+2026-05-06,#e4543b,9039,0,Elevated errors across multiple models | Connection failures for organizations restricting GitHub access by IP address
+2026-05-07,#76ad2a,0,0,Elevated errors on Claude Opus 4.7 | Connection failures for organizations restricting GitHub access by IP address
+2026-05-08,#eb6c33,6213,0,Elevated errors on Claude Sonnet 4.6 | Elevated errors across Claude Models | Elevated Errors on File Operations | Elevated errors on Claude Opus 4.7
+2026-05-09,#76ad2a,0,0,Elevated errors on Claude Opus 4.1
+2026-05-10,#76ad2a,0,0,
+2026-05-11,#76ad2a,0,0,
+2026-05-12,#f0a72a,3332,0,Elevated errors on Claude Opus 4.7 | Elevated errors for Claude Sonnet 4.6 and Haiku 4.5
+2026-05-13,#f5a72a,3666,0,Claude.ai is experiencing elevated error rates | Claude.ai is experiencing elevated error rates
+2026-05-14,#76ad2a,0,0,Elevated errors on Claude Opus 4.7
+2026-05-15,#76ad2a,0,0,
+2026-05-16,#c8a92a,957,0,Elevated error rates on requests to multiple models
+2026-05-17,#76ad2a,0,0,
+2026-05-18,#c1aa2a,525,0,Elevated errors for Claude Opus 4.7 | Elevated errors on Claude Haiku 4.5
+2026-05-19,#f5942d,4681,0,Elevated errors on Claude Opus 4.7 | Elevated errors on Claude.ai and Claude Code login | Elevated errors on Claude Haiku 4.5 | Elevated errors on Claude Opus 4.7
+2026-05-20,#76ad2a,0,0,Elevated errors on Claude Haiku 4.5 | Elevated errors on Claude Opus 4.7
+2026-05-21,#76ad2a,0,0,
+2026-05-22,#e86135,6733,0,Elevated errors on Claude Opus 4.7 | Elevated error rate on multiple models
+2026-05-23,#76ad2a,0,0,
+2026-05-24,#76ad2a,0,0,
+2026-05-25,#76ad2a,0,0,Elevated error rates on Opus 4.7
+2026-05-26,#76ad2a,0,0,
+2026-05-27,#f2872f,5182,0,Elevated errors on Claude Opus 4.7 | Elevated errors on Claude Opus 4.7
+2026-05-28,#eda82a,3153,0,Elevated errors on Claude Opus 4.7
+2026-05-29,#cca92a,1183,0,Elevated errors on Claude Opus 4.8
+2026-05-30,#76ad2a,0,0,opus 4.7 elevated errors
+2026-05-31,#76ad2a,0,0,opus 4.7 elevated errors
+2026-06-01,#76ad2a,0,0,Sonnet 4.5 elevated errors | Opus 4.7 elevated errors | Elevated errors on Claude Sonnet 4.6 | Degraded performance for Claude Sonnet 4.6 | Elevated errors for Claude Opus 4.7
+2026-06-02,#e04343,14595,0,Elevated errors on multiple models
+2026-06-03,#76ad2a,0,0,Elevated errors on Opus 4.7
+2026-06-04,#76ad2a,0,0,
+2026-06-05,#e86136,6846,0,
+2026-06-06,#76ad2a,0,0,Opus 4.8 degraded service | Elevated errors on Claude Opus 4.8
+2026-06-07,#76ad2a,0,0,Elevated errors on Claude Opus 4.7 | Degraded performance for multiple models
+2026-06-08,#76ad2a,0,0,Elevated errors on Claude Opus 4.7 | Elevated errors on Claude Haiku 4.5 | Elevated errors on Claude Opus 4.7 | Elevated errors on Claude Opus 4.8
+2026-06-09,#76ad2a,0,0,Elevated errors on Claude Opus 4.8 (Fast Mode) | Elevated errors on Claude Opus 4.6
+2026-06-10,#76ad2a,0,0,Elevated errors on Claude Haiku 4.5
+2026-06-11,#d9a92a,1957,0,Elevated errors on Claude Opus 4.6
+2026-06-12,#76ad2a,0,0,
+2026-06-13,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated errors on Claude Opus 4.8
+2026-06-14,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-15,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated errors on Claude Opus 4.8
+2026-06-16,#e6a82a,2750,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated errors across many models | Opus 4.8 errors | Elevated errors for Claude Opus 4.8
+2026-06-17,#76ad2a,0,0,Elevated errors on Claude Sonnet 4.6 and Opus 4.8 | Elevated errors for Claude Opus 4.8 | We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated errors for Claude Opus 4.8 | Elevated errors for Claude Opus 4.8
+2026-06-18,#eca82a,3120,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Service disruption on Claude services
+2026-06-19,#76ad2a,0,0,Elevated errors for Claude Opus 4.8 | Elevated error rates on the Claude API | We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-20,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Opus 4.8 errors
+2026-06-21,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-22,#f08230,5358,0,"Elevated Error Rates for Opus 4.8, Opus 4.7, Opus 4.6, Sonnet 4.6, and Haiku 4.5 | Elevated errors across many models | We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated errors for Claude Opus 4.8"
+2026-06-23,#f2892f,5100,0,Elevated error rate across multiple models | We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Claude.ai is experiencing elevated error rates | Elevated errors for Claude Opus 4.8
+2026-06-24,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated error rate on Claude Opus 4.8
+2026-06-25,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-26,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-27,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-28,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-29,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-06-30,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5 | Elevated error rates on Opus 4.8
+2026-07-01,#76ad2a,0,0,We’ve suspended access to Claude Mythos 5 and Claude Fable 5
+2026-07-02,#76ad2a,0,0,Elevated errors on Claude Opus 4.8
+2026-07-03,#76ad2a,0,0,Elevated errors on Claude Fable 5 and Claude Mythos 5 | Elevated errors across many models
+2026-07-04,#76ad2a,0,0,Elevated errors across many models
+2026-07-05,#76ad2a,0,0,
+2026-07-06,#f08030,0,1633,Elevated errors on several models
+2026-07-07,#e75f36,7082,0,Elevated errors on Claude Sonnet 5 | Elevated errors for some models
+2026-07-08,#76ad2a,0,0,Elevated errors on Claude Sonnet 5 | Elevated errors on multiple models
+2026-07-09,#cea92a,1335,0,Elevated errors for Claude Opus 4.8
+2026-07-10,#76ad2a,0,0,Elevated errors for Claude Opus 4.8
+2026-07-11,#76ad2a,0,0,
+2026-07-12,#76ad2a,0,0,
+2026-07-13,#76ad2a,0,0,Elevated errors on Claude Haiku 4.5
+2026-07-14,#e5a82a,2720,0,Partial outage of claude.ai: container creation
+2026-07-15,#76ad2a,0,0,Elevated errors on multiple models
+2026-07-16,#e04343,16107,0,Elevated errors on Claude Sonnet 5 | Elevated errors for Claude Opus 4.7 | Enterprise SSO sign-in failures
+2026-07-17,#d1a92a,1510,0,Elevated error rates for Sonnet 5 | Elevated errors across Fable 5 | Elevated errors on Sonnet 5 and Haiku 4.5 | Elevated errors for Claude Opus 4.8
+2026-07-18,#76ad2a,0,0,
+2026-07-19,#76ad2a,0,0,
+2026-07-20,#76ad2a,0,0,Elevated errors on Haiku 4.5 | Elevated errors for Claude Opus 4.8
+2026-07-21,#e5553b,4537,1295,Elevated errors across models | Elevated errors on several models | Elevated errors across Fable 5 | Elevated errors on Haiku 4.5 | Elevated errors on Haiku 4.5
+2026-07-22,#76ad2a,0,0,Service disruption on Claude Services | Elevated errors on Opus 4.8 and Haiku 4.5 | Elevated error rates for Sonnet 5 | Elevated errors on Haiku 4.5
+2026-07-23,#76ad2a,0,0,Elevated errors on Haiku 4.5
+2026-07-24,#76ad2a,0,0,Elevated error rate on Opus 4.8
+2026-07-25,#ed7532,5871,0,"Elevated errors for Mythos 5, Fable 5, Opus 5 and Claude Haiku 4.5 | Elevated errors for Claude Fable 5, Claude Sonnet 5, Claude Haiku 4.5, and other models"
+2026-07-26,#beaa2a,343,0,Elevated errors for Opus 5
+2026-07-27,#b9aa2a,69,0,Elevated errors on Claude Opus 5 | Elevated errors on Claude Opus 5 | Elevated errors on Claude Opus 5 and Haiku 4.5
+2026-07-28,#76ad2a,0,0,
+2026-07-29,#e04343,2502,6529,
+2026-07-30,#e04343,14762,0,Elevated errors across many models | Degraded performance on Claude Opus 4.8
+2026-07-31,#76ad2a,0,0,Degraded performance on Claude Sonnet 5
+2026-08-01,#76ad2a,0,0,
+2026-08-02,#76ad2a,0,0,
+2026-08-03,#76ad2a,0,0,Error rates across multiple models | Degraded performance on Claude Sonnet 5
+2026-08-04,#c8a92a,997,0,Elevated errors on Claude Sonnet 5 | Elevated errors on Claude Sonnet 5
+2026-08-05,#76ad2a,0,0,Degraded performance of multiple models | Degraded performance for Claude Opus 5
+2026-08-06,#76ad2a,0,0,
+2026-08-07,#76ad2a,0,0,
+2026-08-08,#76ad2a,0,0,
+2026-08-09,#76ad2a,0,0,
+2026-08-10,#76ad2a,0,0,
+2026-08-11,#76ad2a,0,0,
+2026-08-12,#76ad2a,0,0,Degraded performance for multiple models
+2026-08-13,#e04343,12315,0,"Elevated errors for Claude Mythos 5, Claude Fable 5, and Claude Sonnet 5"
+2026-08-14,#bbaa2a,164,0,Elevated errors for Claude Fable 5
+2026-08-15,#cda92a,1280,0,Elevated errors for Claude Fable 5
+2026-08-16,#e75f36,0,2141,Service disruption on Claude services
+2026-08-17,#76ad2a,0,0,"Degraded performance for Claude Opus 5, Claude Sonnet 5"
+2026-08-18,#76ad2a,0,0,Degraded performance for multiple models
+2026-08-19,#76ad2a,0,0,Degraded performance for Claude Opus 5 and Claude Haiku 4.5
+2026-08-20,#d2a92a,1574,0,Elevated errors on Google connectors | Elevated errors on requests to multiple models
+2026-08-21,#76ad2a,0,0,
+2026-08-22,#76ad2a,0,0,
+2026-08-23,#76ad2a,0,0,
+2026-08-24,#e04343,12248,0,Issues logging into Claude.ai | Errors logging into Claude.ai | Elevated errors for multiple models
+2026-08-25,#76ad2a,0,0,
+2026-08-26,#76ad2a,0,0,
+2026-08-27,#76ad2a,0,0,
+2026-08-28,#76ad2a,0,0,
+2026-08-29,#76ad2a,0,0,
+2026-08-30,#76ad2a,0,0,
+2026-08-31,#76ad2a,0,0,Degraded performance on claude.ai | Degraded performance on claude.ai and Claude Code
+2026-09-01,#76ad2a,0,0,Degraded performance on Claude for Microsoft Office 365 | Degraded performance on platform.claude.com and Claude for Microsoft Office 365
+2026-09-02,#d2a92a,1590,0,Elevated errors for Claude Sonnet 5
+2026-09-03,#e14841,11211,0,Elevated errors for Claude Sonnet 5 | Elevated errors for multiple models
+2026-09-04,#76ad2a,0,0,
+2026-09-05,#76ad2a,0,0,
+2026-09-06,#76ad2a,0,0,
+2026-09-07,#76ad2a,0,0,
+2026-09-08,#76ad2a,0,0,
+2026-09-09,#76ad2a,0,0,
+2026-09-10,#76ad2a,0,0,
+2026-09-11,#c0aa2a,516,0,Elevated errors for Claude Mythos 5.1 and Claude Fable 5.1
+2026-09-12,#76ad2a,0,0,
+2026-09-13,#76ad2a,0,0,
+2026-09-14,#76ad2a,0,0,
+2026-09-15,#f2872f,5181,0,Intermittent error spikes for Claude Mythos 5.1 and Claude Fable 5.1
+2026-09-16,#76ad2a,0,0,
+2026-09-17,#76ad2a,0,0,
+2026-09-18,#76ad2a,0,0,
+2026-09-19,#76ad2a,0,0,
+2026-09-20,#76ad2a,0,0,
+2026-09-21,#76ad2a,0,0,
+2026-09-22,#f79a2c,4457,0,Elevated errors for multiple models
+2026-09-23,#76ad2a,0,0,
+2026-09-24,#76ad2a,0,0,
+2026-09-25,#76ad2a,0,0,
+2026-09-26,#76ad2a,0,0,
+2026-09-27,#76ad2a,0,0,
+2026-09-28,#76ad2a,0,0,
+2026-09-29,#eaa82a,2990,0,"Elevated errors on claude.ai, Claude Code, Claude Cowork and the Claude API"
+2026-09-30,#76ad2a,0,0,
+2026-10-01,#76ad2a,0,0,
+2026-10-02,#76ad2a,0,0,
+2026-10-03,#76ad2a,0,0,
+2026-10-04,#76ad2a,0,0,
+2026-10-05,#c8a92a,953,0,Elevated errors for Claude Mythos 5.1 and Claude Fable 5.1
+2026-10-06,#caa92a,1110,0,Elevated errors for Claude Opus 5.5
+2026-10-07,#76ad2a,0,0,
+2026-10-08,#76ad2a,0,0,
+2026-10-09,#76ad2a,0,0,
+2026-10-10,#76ad2a,0,0,
+2026-10-11,#76ad2a,0,0,
+2026-10-12,#76ad2a,0,0,
+2026-10-13,#76ad2a,0,0,
+2026-10-14,#76ad2a,0,0,
+2026-10-15,#76ad2a,0,0,
+2026-10-16,#76ad2a,0,0,
+2026-10-17,#76ad2a,0,0,
+2026-10-18,#76ad2a,0,0,
+2026-10-19,#76ad2a,0,0,
+2026-10-20,#76ad2a,0,0,
+2026-10-21,#76ad2a,0,0,Degraded performance for Claude Fable 5
+2026-10-22,#76ad2a,0,0,Elevated errors affecting Connectors
+2026-10-23,#efa72a,0,992,"Elevated errors for Claude Fable 5.1, Sonnet 5.5, and Haiku 5.5"
+2026-10-24,#d6a92a,1807,0,"Elevated errors for Claude Fable 5 and Claude Fable 5.1 | Elevated errors for Claude Fable 5.1, Sonnet 5.5, and Haiku 5.5 | Elevated errors for Claude Opus 5.5"
+2026-10-25,#dba82a,2119,0,Elevated errors for Claude Sonnet 5.5 and other models | Elevated errors for Claude Fable 5.1
+2026-10-26,#76ad2a,0,0,
+2026-10-27,#f9a72a,3884,0,Elevated errors for Claude Sonnet 5.5 | Elevated errors for Claude Sonnet 5.5
+2026-10-28,#76ad2a,0,0,Elevated errors affecting the Gmail connector | Elevated errors affecting the Google Calendar connector
+2026-10-29,#76ad2a,0,0,
+2026-10-30,#76ad2a,0,0,
+2026-10-31,#76ad2a,0,0,
+2026-11-01,#76ad2a,0,0,
+2026-11-02,#76ad2a,0,0,
+2026-11-03,#76ad2a,0,0,
+2026-11-04,#76ad2a,0,0,
+2026-11-05,#76ad2a,0,0,
+2026-11-06,#76ad2a,0,0,
+2026-11-07,#76ad2a,0,0,
+2026-11-08,#76ad2a,0,0,Degraded performance for Claude Fable 5.1
+2026-11-09,#76ad2a,0,0,
+2026-11-10,#76ad2a,0,0,
+2026-11-11,#76ad2a,0,0,
+2026-11-12,#76ad2a,0,0,Elevated errors affecting the Microsoft 365 connector
+2026-11-13,#e04343,3421,16635,"Elevated errors affecting the Microsoft 365 connector | Elevated errors on claude.ai, Claude Code, and platform.claude.com | Elevated errors on claude.ai, the Claude API, and Claude Code"
+2026-11-14,#76ad2a,0,0,Elevated purchasing errors on claude.ai | Some users unable to sign up with Apple on the Claude iOS app
