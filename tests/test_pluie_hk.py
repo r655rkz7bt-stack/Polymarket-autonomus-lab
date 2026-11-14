@@ -24,12 +24,24 @@ RAW = json.loads((Path(__file__).parent / "data" / "pluie_hk_2026-11-14.json").r
 BINS = [(0, 5), (5, 10), (10, 25), (25, 35), (35, 60), (60, 95), (95, float("inf"))]
 
 
+def _extract_days(payload) -> dict[int, str]:
+    """Jours du Daily Extract enregistré le 14/11 (jour → mm affichés) : sert à rejouer les bulletins RYES des mêmes jours."""
+    return {int(r[0]): str(r[-1]) for r in payload["stn"]["data"][0]["dayData"] if r and str(r[0]).strip().isdigit()}
+
+
 class _Http(Http):
+    appels: list
+
     def get_json(self, url, params=None, headers=None):
-        if url.startswith("https://www.weather.gov.hk/cis/dailyExtract/"):
-            return RAW["extract"]
+        self.appels = getattr(self, "appels", []) + [(url, dict(params or {}))]
+        assert "/cis/" not in url, "page interdite aux robots (www.weather.gov.hk/robots.txt : Disallow: /cis/)"
         if url == ph.OPENDATA:
-            return RAW["ryes"]
+            d = int(params["date"][-2:])
+            if d == 13 and getattr(self, "pas_encore", False):
+                from polymarket_agent.http_client import SourceUnavailable
+                raise SourceUnavailable("réponse non JSON")   # bulletin de la veille pas encore publié
+            jours = _extract_days(RAW["extract"])
+            return RAW["ryes"] if d == 13 else ({"HKOReadingsRainfall": jours[d]} if d in jours else {})
         if url == ph.HORAIRE:
             return RAW["heure"]
         return RAW["ens"]
@@ -54,11 +66,32 @@ def test_question_brackets():
     assert ph.question("Will NYC have between 2-3 inches of precipitation in November?") is None
 
 
-def test_real_14_11_extract_lags_and_ryes_fills_the_13th():
-    """Le Daily Extract du 14/11 s'arrête au 12/11 (3,2 mm) ; le bulletin RYES donne 7,9 mm pour le 13/11."""
-    r = ph.fetch_pluie_hk(_Http({}), NOW)[0]
+def test_real_14_11_days_from_ryes_bulletins_only():
+    """Jours finis lus jour par jour au bulletin RYES (portail de données ouvertes) : 3,2 mm du 1er au 12/11, 7,9 mm le 13/11 ;
+    jamais la page `/cis/` interdite aux robots (enquête du 14/11 après-midi)."""
+    http = _Http({})
+    r = ph.fetch_pluie_hk(http, NOW)[0]
     assert r["mois"] == "2026-11" and abs(sum(r["jours"][str(d)] for d in range(1, 13)) - 3.2) < 1e-9 and r["jours"]["13"] == 7.9
     assert r["heure"] == ["2026-11-14T13:45:00+08:00", 0.0] and len(r["ens"]["membres"]) == 51
+    assert sum(u == ph.OPENDATA for u, _ in http.appels) == 13
+
+
+def test_yesterday_bulletin_not_yet_published_does_not_break_the_source():
+    http = _Http({})
+    http.pas_encore = True
+    r = ph.fetch_pluie_hk(http, NOW)[0]
+    assert "13" not in r["jours"] and len(r["jours"]) == 12
+
+
+def test_trace_in_lower_case_from_ryes():
+    assert ph._mm("trace") == 0.0 and ph._mm("Trace") == 0.0 and ph._mm("7.9") == 7.9
+
+
+def test_known_days_are_not_asked_again():
+    http = _Http({})
+    connus = {str(d): 0.0 for d in range(1, 13)}
+    r = ph.fetch_pluie_hk(http, NOW, connus)[0]
+    assert [p["date"] for u, p in http.appels if u == ph.OPENDATA] == ["20261113"] and r["jours"]["13"] == 7.9
 
 
 def test_no_chance_without_every_hour_of_the_day():

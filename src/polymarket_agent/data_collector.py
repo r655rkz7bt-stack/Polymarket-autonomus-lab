@@ -400,10 +400,13 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # Pluie du mois à Hong Kong (14/11/2026, piste n° 32 suite) : Daily Extract + bulletin de la veille + pluie de l'heure à la station de
     # l'Observatoire + ensemble ECMWF (arbitre des marchés « Precipitation in Hong Kong in <mois> »), `pluie_hk` ; journal `pluie_hk:heures`
     # (la pluie du jour en cours n'est publiée qu'heure par heure).
-    from polymarket_agent.pluie_hk import fetch_pluie_hk, journal as hk_journal
+    from polymarket_agent.pluie_hk import HKT as HKT_PLUIE, fetch_pluie_hk, journal as hk_journal
 
     def pluie_hk(cfg):
-        rows = factories.get("pluie_hk", lambda c: fetch_pluie_hk(http, now))(cfg)
+        prec = (refs._load(db, "ref:pluie_hk")[1] or [{}])[0] if db is not None else {}
+        mois = now.astimezone(HKT_PLUIE).strftime("%Y-%m")
+        connus = (prec or {}).get("jours") if (prec or {}).get("mois") == mois else None
+        rows = factories.get("pluie_hk", lambda c: fetch_pluie_hk(http, now, connus))(cfg)
         if db is not None and rows:
             refs._save(db, "pluie_hk:heures", hk_journal(refs._load(db, "pluie_hk:heures")[1] or [], rows), now)
         return rows
