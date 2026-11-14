@@ -1,0 +1,63 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "964.6982",
+  "capital_immobilise": "35.3018",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "44.9062",
+  "frais_payes": "1.1553",
+  "capital_total_estime": "1044.9062",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0628,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6581026",
+   "issue": "Yes",
+   "parts": "65.00",
+   "cout": "19.65",
+   "prix_moyen": "0.3023",
+   "prix_de_marque": "0.603",
+   "latent": "19.54",
+   "strategie": "fleuves_prevision v2.0.0",
+   "groupe": "1301594",
+   "ouverte_le": "2026-11-11T16:22"
+  },
+  {
+   "marche": "6433563",
+   "issue": "No",
+   "parts": "41.85",
+   "cout": "15.65",
+   "prix_moyen": "0.3740",
+   "prix_de_marque": "0.98",
+   "latent": "25.36",
+   "strategie": "fleuves_prevision v2.0.0",
+   "groupe": "1284739",
+   "ouverte_le": "2026-11-11T16:22"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

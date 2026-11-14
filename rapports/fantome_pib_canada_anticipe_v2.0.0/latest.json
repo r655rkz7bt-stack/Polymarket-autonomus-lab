@@ -1,0 +1,75 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "990.0670",
+  "capital_immobilise": "9.9330",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-1.4966",
+  "frais_payes": "0.3708",
+  "capital_total_estime": "998.5034",
+  "positions_ouvertes": "3",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0076,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6657875",
+   "issue": "Yes",
+   "parts": "27.52",
+   "cout": "4.02",
+   "prix_moyen": "0.1460",
+   "prix_de_marque": "0.1",
+   "latent": "-1.27",
+   "strategie": "pib_canada_anticipe v2.0.0",
+   "groupe": "1310284",
+   "ouverte_le": "2026-11-12T07:56"
+  },
+  {
+   "marche": "6657876",
+   "issue": "No",
+   "parts": "2.50",
+   "cout": "1.28",
+   "prix_moyen": "0.5125",
+   "prix_de_marque": "0.49",
+   "latent": "-0.06",
+   "strategie": "pib_canada_anticipe v2.0.0",
+   "groupe": "1310284",
+   "ouverte_le": "2026-11-12T10:47"
+  },
+  {
+   "marche": "6657877",
+   "issue": "Yes",
+   "parts": "20.27",
+   "cout": "4.63",
+   "prix_moyen": "0.2286",
+   "prix_de_marque": "0.22",
+   "latent": "-0.17",
+   "strategie": "pib_canada_anticipe v2.0.0",
+   "groupe": "1310284",
+   "ouverte_le": "2026-11-12T11:32"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

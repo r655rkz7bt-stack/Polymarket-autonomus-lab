@@ -1,0 +1,641 @@
+{
+ "genere_le": "2026-11-14T13:19:08+00:00",
+ "capital": {
+  "solde_disponible": "1000.0000",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.0000",
+  "capital_total_estime": "1000.0000",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.3963,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 606,
+ "dernieres_operations": [
+  {
+   "marche": "6443537",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-4.40",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T19:05"
+  },
+  {
+   "marche": "6443484",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.41",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:05"
+  },
+  {
+   "marche": "6443515",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-2.96",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:05"
+  },
+  {
+   "marche": "6443475",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "0.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:05"
+  },
+  {
+   "marche": "6443459",
+   "issue": "No",
+   "strategie": "compteur_tweets v1.0.0",
+   "resultat": "-4.60",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T19:11"
+  },
+  {
+   "marche": "6367378",
+   "issue": "Yes",
+   "strategie": "favori_politique v1.0.0",
+   "resultat": "0.84",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T22:35"
+  },
+  {
+   "marche": "6581730",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "2.59",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-11T12:01"
+  },
+  {
+   "marche": "6581731",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-11T12:01"
+  },
+  {
+   "marche": "6581737",
+   "issue": "Yes",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "-1.76",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-11T14:10"
+  },
+  {
+   "marche": "6581740",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "0.14",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-11T15:45"
+  },
+  {
+   "marche": "6581738",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "-3.03",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-11T15:45"
+  },
+  {
+   "marche": "6581739",
+   "issue": "No",
+   "strategie": "seismes_marche v1.0.0",
+   "resultat": "0.57",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-11T15:45"
+  },
+  {
+   "marche": "6699153",
+   "issue": "Under",
+   "strategie": "moins_de_cartes v1.0.0",
+   "resultat": "1.77",
+   "resolution": "résolu : Under",
+   "cloturee_le": "2026-11-11T21:03"
+  },
+  {
+   "marche": "631018",
+   "issue": "Yes",
+   "strategie": "favori_politique_nuit v1.0.0",
+   "resultat": "-4.35",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-12T02:10"
+  },
+  {
+   "marche": "631017",
+   "issue": "No",
+   "strategie": "favori_politique v1.0.0",
+   "resultat": "-4.37",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-12T02:10"
+  }
+ ],
+ "performances": {
+  "apres_echeance v1.0.0": {
+   "operations": 17,
+   "evenements": 14,
+   "gagnantes": 14,
+   "taux_reussite": 0.824,
+   "profit_net": "-12.38",
+   "frais": "0.19",
+   "rendement_sur_mises": -0.1262,
+   "esperance_par_operation": "-0.73",
+   "ic90_rendement_par_euro": [
+    -0.3807,
+    0.0516
+   ],
+   "brier": 0.1714,
+   "log_loss": 0.7536,
+   "assez_de_donnees": false
+  },
+  "compteur_tweets v1.0.0": {
+   "operations": 82,
+   "evenements": 25,
+   "gagnantes": 56,
+   "taux_reussite": 0.683,
+   "profit_net": "-5.09",
+   "frais": "1.37",
+   "rendement_sur_mises": -0.0173,
+   "esperance_par_operation": "-0.06",
+   "ic90_rendement_par_euro": [
+    -0.1782,
+    0.1856
+   ],
+   "brier": 0.1394,
+   "log_loss": 0.4608,
+   "assez_de_donnees": false
+  },
+  "contrer_crypto_patiente v1.0.0": {
+   "operations": 21,
+   "evenements": 18,
+   "gagnantes": 1,
+   "taux_reussite": 0.048,
+   "profit_net": "-9.09",
+   "frais": "0.11",
+   "rendement_sur_mises": -0.6452,
+   "esperance_par_operation": "-0.43",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -0.6894
+   ],
+   "brier": 0.0431,
+   "log_loss": 0.2087,
+   "assez_de_donnees": false
+  },
+  "favori_politique v1.0.0": {
+   "operations": 13,
+   "evenements": 12,
+   "gagnantes": 11,
+   "taux_reussite": 0.846,
+   "profit_net": "-0.97",
+   "frais": "0.12",
+   "rendement_sur_mises": -0.0161,
+   "esperance_par_operation": "-0.07",
+   "ic90_rendement_par_euro": [
+    -0.2376,
+    0.1501
+   ],
+   "brier": 0.1364,
+   "log_loss": 0.4643,
+   "assez_de_donnees": false
+  },
+  "favori_politique_nuit v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "-3.20",
+   "frais": "0.00",
+   "rendement_sur_mises": -0.2548,
+   "esperance_par_operation": "-1.07",
+   "ic90_rendement_par_euro": [
+    -0.628,
+    0.1472
+   ],
+   "brier": 0.2926,
+   "log_loss": 0.9422,
+   "assez_de_donnees": false
+  },
+  "favori_politique_quasi_certain_connu v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.11",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0225,
+   "esperance_par_operation": "0.11",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0001,
+   "log_loss": 0.0096,
+   "assez_de_donnees": false
+  },
+  "market_structure v1.0.0": {
+   "operations": 3,
+   "evenements": 3,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-5.94",
+   "frais": "3.25",
+   "rendement_sur_mises": -0.0824,
+   "esperance_par_operation": "-1.98",
+   "ic90_rendement_par_euro": [
+    -0.6972,
+    -0.0815
+   ],
+   "brier": 0.014,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "meteo_prevision v1.0.0": {
+   "operations": 41,
+   "evenements": 32,
+   "gagnantes": 24,
+   "taux_reussite": 0.585,
+   "profit_net": "-51.72",
+   "frais": "11.58",
+   "rendement_sur_mises": -0.0955,
+   "esperance_par_operation": "-1.26",
+   "ic90_rendement_par_euro": [
+    -0.2452,
+    0.1257
+   ],
+   "brier": 0.2849,
+   "log_loss": 0.7913,
+   "assez_de_donnees": true
+  },
+  "moins_de_cartes v1.0.0": {
+   "operations": 91,
+   "evenements": 90,
+   "gagnantes": 44,
+   "taux_reussite": 0.484,
+   "profit_net": "-33.16",
+   "frais": "4.69",
+   "rendement_sur_mises": -0.149,
+   "esperance_par_operation": "-0.36",
+   "ic90_rendement_par_euro": [
+    -0.2805,
+    0.0087
+   ],
+   "brier": 0.2461,
+   "log_loss": 0.7014,
+   "assez_de_donnees": true
+  },
+  "naive_favorite_sans_fin v1.0.0": {
+   "operations": 7,
+   "evenements": 4,
+   "gagnantes": 6,
+   "taux_reussite": 0.857,
+   "profit_net": "-2.48",
+   "frais": "0.12",
+   "rendement_sur_mises": -0.0765,
+   "esperance_par_operation": "-0.35",
+   "ic90_rendement_par_euro": [
+    -0.4617,
+    0.077
+   ],
+   "brier": 0.131,
+   "log_loss": 0.4655,
+   "assez_de_donnees": false
+  },
+  "nf_court v1.0.0": {
+   "operations": 18,
+   "evenements": 17,
+   "gagnantes": 14,
+   "taux_reussite": 0.778,
+   "profit_net": "-144.96",
+   "frais": "2.73",
+   "rendement_sur_mises": -0.2199,
+   "esperance_par_operation": "-8.05",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.059
+   ],
+   "brier": 0.1973,
+   "log_loss": 0.6683,
+   "assez_de_donnees": false
+  },
+  "nf_court_football_soir v1.0.0": {
+   "operations": 5,
+   "evenements": 3,
+   "gagnantes": 4,
+   "taux_reussite": 0.8,
+   "profit_net": "-5.23",
+   "frais": "0.17",
+   "rendement_sur_mises": -0.1195,
+   "esperance_par_operation": "-1.05",
+   "ic90_rendement_par_euro": [
+    -0.2365,
+    0.1383
+   ],
+   "brier": 0.1985,
+   "log_loss": 0.9573,
+   "assez_de_donnees": false
+  },
+  "nf_court_prix_haut v1.0.0": {
+   "operations": 26,
+   "evenements": 20,
+   "gagnantes": 25,
+   "taux_reussite": 0.962,
+   "profit_net": "5.49",
+   "frais": "0.33",
+   "rendement_sur_mises": 0.0434,
+   "esperance_par_operation": "0.21",
+   "ic90_rendement_par_euro": [
+    -0.0155,
+    0.0821
+   ],
+   "brier": 0.0364,
+   "log_loss": 0.1516,
+   "assez_de_donnees": false
+  },
+  "nf_court_soir v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.87",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.1987,
+   "esperance_par_operation": "0.87",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0156,
+   "log_loss": 0.1335,
+   "assez_de_donnees": false
+  },
+  "nf_moyen v1.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 1.0,
+   "profit_net": "0.60",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0633,
+   "esperance_par_operation": "0.30",
+   "ic90_rendement_par_euro": [
+    0.0593,
+    0.0672
+   ],
+   "brier": 0.0002,
+   "log_loss": 0.0154,
+   "assez_de_donnees": false
+  },
+  "nf_sport v1.0.0": {
+   "operations": 52,
+   "evenements": 44,
+   "gagnantes": 46,
+   "taux_reussite": 0.885,
+   "profit_net": "11.73",
+   "frais": "2.27",
+   "rendement_sur_mises": 0.0287,
+   "esperance_par_operation": "0.23",
+   "ic90_rendement_par_euro": [
+    -0.0769,
+    0.086
+   ],
+   "brier": 0.0998,
+   "log_loss": 0.3416,
+   "assez_de_donnees": true
+  },
+  "nf_sport_18_24h v1.0.0": {
+   "operations": 21,
+   "evenements": 20,
+   "gagnantes": 14,
+   "taux_reussite": 0.667,
+   "profit_net": "-22.16",
+   "frais": "0.57",
+   "rendement_sur_mises": -0.2437,
+   "esperance_par_operation": "-1.06",
+   "ic90_rendement_par_euro": [
+    -0.4557,
+    -0.0419
+   ],
+   "brier": 0.2638,
+   "log_loss": 0.7699,
+   "assez_de_donnees": false
+  },
+  "nf_sport_925_950 v1.0.0": {
+   "operations": 22,
+   "evenements": 22,
+   "gagnantes": 19,
+   "taux_reussite": 0.864,
+   "profit_net": "-14.08",
+   "frais": "0.76",
+   "rendement_sur_mises": -0.064,
+   "esperance_par_operation": "-0.64",
+   "ic90_rendement_par_euro": [
+    -0.2201,
+    0.025
+   ],
+   "brier": 0.1308,
+   "log_loss": 0.5424,
+   "assez_de_donnees": false
+  },
+  "nf_sport_non v1.0.0": {
+   "operations": 13,
+   "evenements": 9,
+   "gagnantes": 11,
+   "taux_reussite": 0.846,
+   "profit_net": "-2.55",
+   "frais": "0.35",
+   "rendement_sur_mises": -0.036,
+   "esperance_par_operation": "-0.20",
+   "ic90_rendement_par_euro": [
+    -0.2714,
+    0.1089
+   ],
+   "brier": 0.1336,
+   "log_loss": 0.4445,
+   "assez_de_donnees": false
+  },
+  "nf_sport_non_900_925 v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.43",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.094,
+   "esperance_par_operation": "0.43",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.002,
+   "log_loss": 0.046,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente v1.0.0": {
+   "operations": 65,
+   "evenements": 61,
+   "gagnantes": 55,
+   "taux_reussite": 0.846,
+   "profit_net": "-15.01",
+   "frais": "5.05",
+   "rendement_sur_mises": -0.0088,
+   "esperance_par_operation": "-0.23",
+   "ic90_rendement_par_euro": [
+    -0.1058,
+    0.061
+   ],
+   "brier": 0.1319,
+   "log_loss": 0.5347,
+   "assez_de_donnees": true
+  },
+  "nf_sport_patiente_6_24h v1.0.0": {
+   "operations": 7,
+   "evenements": 7,
+   "gagnantes": 6,
+   "taux_reussite": 0.857,
+   "profit_net": "1.29",
+   "frais": "0.07",
+   "rendement_sur_mises": 0.0277,
+   "esperance_par_operation": "0.18",
+   "ic90_rendement_par_euro": [
+    -0.327,
+    0.1711
+   ],
+   "brier": 0.1187,
+   "log_loss": 0.3791,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_6_24h_6_12h v1.0.0": {
+   "operations": 4,
+   "evenements": 4,
+   "gagnantes": 4,
+   "taux_reussite": 1.0,
+   "profit_net": "4.41",
+   "frais": "0.04",
+   "rendement_sur_mises": 0.2143,
+   "esperance_par_operation": "1.10",
+   "ic90_rendement_par_euro": [
+    0.1838,
+    0.2387
+   ],
+   "brier": 0.0149,
+   "log_loss": 0.1282,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_biais_faible v1.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 1.0,
+   "profit_net": "0.47",
+   "frais": "0.02",
+   "rendement_sur_mises": 0.0894,
+   "esperance_par_operation": "0.47",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.0027,
+   "log_loss": 0.0534,
+   "assez_de_donnees": false
+  },
+  "nf_sport_patiente_prix_850_875 v1.0.0": {
+   "operations": 43,
+   "evenements": 43,
+   "gagnantes": 32,
+   "taux_reussite": 0.744,
+   "profit_net": "-27.59",
+   "frais": "0.99",
+   "rendement_sur_mises": -0.1165,
+   "esperance_par_operation": "-0.64",
+   "ic90_rendement_par_euro": [
+    -0.2341,
+    -0.0011
+   ],
+   "brier": 0.1984,
+   "log_loss": 0.6361,
+   "assez_de_donnees": true
+  },
+  "nf_sport_prix_haut_3_6h v1.0.0": {
+   "operations": 11,
+   "evenements": 8,
+   "gagnantes": 9,
+   "taux_reussite": 0.818,
+   "profit_net": "-17.99",
+   "frais": "0.81",
+   "rendement_sur_mises": -0.1077,
+   "esperance_par_operation": "-1.64",
+   "ic90_rendement_par_euro": [
+    -0.3268,
+    0.1029
+   ],
+   "brier": 0.1702,
+   "log_loss": 0.6306,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_12_18h_vainqueur v1.0.0": {
+   "operations": 12,
+   "evenements": 12,
+   "gagnantes": 10,
+   "taux_reussite": 0.833,
+   "profit_net": "3.14",
+   "frais": "0.80",
+   "rendement_sur_mises": 0.0256,
+   "esperance_par_operation": "0.26",
+   "ic90_rendement_par_euro": [
+    -0.2477,
+    0.144
+   ],
+   "brier": 0.1268,
+   "log_loss": 0.3837,
+   "assez_de_donnees": false
+  },
+  "nf_tennis_prix_bas v1.0.0": {
+   "operations": 6,
+   "evenements": 6,
+   "gagnantes": 6,
+   "taux_reussite": 1.0,
+   "profit_net": "10.61",
+   "frais": "0.46",
+   "rendement_sur_mises": 0.1888,
+   "esperance_par_operation": "1.77",
+   "ic90_rendement_par_euro": [
+    0.1658,
+    0.2089
+   ],
+   "brier": 0.0143,
+   "log_loss": 0.1261,
+   "assez_de_donnees": false
+  },
+  "seismes_marche v1.0.0": {
+   "operations": 17,
+   "evenements": 9,
+   "gagnantes": 13,
+   "taux_reussite": 0.765,
+   "profit_net": "1.14",
+   "frais": "0.30",
+   "rendement_sur_mises": 0.0203,
+   "esperance_par_operation": "0.07",
+   "ic90_rendement_par_euro": [
+    -0.2849,
+    0.2587
+   ],
+   "brier": 0.1369,
+   "log_loss": 0.4365,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

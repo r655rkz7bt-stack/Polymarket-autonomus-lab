@@ -1,0 +1,122 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "999.9507",
+  "capital_immobilise": "39.4483",
+  "gains_realises_nets": "39.3990",
+  "gains_latents": "-13.1535",
+  "frais_payes": "3.5428",
+  "capital_total_estime": "1026.2455",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0402,
+ "dernier_battement": "2026-11-14T13:04:37+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6096682",
+   "issue": "No",
+   "parts": "21.63",
+   "cout": "19.50",
+   "prix_moyen": "0.9016",
+   "prix_de_marque": "0.915",
+   "latent": "0.29",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "1242771",
+   "ouverte_le": "2026-11-12T06:37"
+  },
+  {
+   "marche": "665519",
+   "issue": "No",
+   "parts": "36.13",
+   "cout": "19.95",
+   "prix_moyen": "0.5521",
+   "prix_de_marque": "0.18",
+   "latent": "-13.44",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "73226",
+   "ouverte_le": "2026-11-12T22:16"
+  }
+ ],
+ "operations_cloturees": 5,
+ "dernieres_operations": [
+  {
+   "marche": "6753604",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "-14.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T18:05"
+  },
+  {
+   "marche": "6433563",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "4.15",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-12T12:07"
+  },
+  {
+   "marche": "6581026",
+   "issue": "Yes",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "44.08",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-13T08:32"
+  },
+  {
+   "marche": "6367323",
+   "issue": "Yes",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "4.43",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-14T03:52"
+  },
+  {
+   "marche": "6433563",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "1.36",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-14T13:04"
+  }
+ ],
+ "performances": {
+  "convictions_claude v2.0.0": {
+   "operations": 5,
+   "evenements": 4,
+   "gagnantes": 4,
+   "taux_reussite": 0.8,
+   "profit_net": "39.40",
+   "frais": "2.99",
+   "rendement_sur_mises": 0.5623,
+   "esperance_par_operation": "7.88",
+   "ic90_rendement_par_euro": [
+    -0.2542,
+    1.3333
+   ],
+   "brier": 0.7744,
+   "log_loss": 2.1203,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "923.5648",
+  "capital_immobilise": "76.4352",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "3.7608",
+  "frais_payes": "2.9347",
+  "capital_total_estime": "1003.7608",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0376,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6367316",
+   "issue": "No",
+   "parts": "117.50",
+   "cout": "25.78",
+   "prix_moyen": "0.2194",
+   "prix_de_marque": "0.26",
+   "latent": "4.77",
+   "strategie": "auditeurs_spotify v2.0.0",
+   "groupe": "1274351",
+   "ouverte_le": "2026-11-11T21:37"
+  },
+  {
+   "marche": "6367323",
+   "issue": "Yes",
+   "parts": "248.23",
+   "cout": "50.66",
+   "prix_moyen": "0.2041",
+   "prix_de_marque": "0.2",
+   "latent": "-1.01",
+   "strategie": "auditeurs_spotify v2.0.0",
+   "groupe": "1274351",
+   "ouverte_le": "2026-11-11T21:41"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

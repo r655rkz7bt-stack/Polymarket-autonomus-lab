@@ -1,0 +1,178 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "889.7111",
+  "capital_immobilise": "48.4925",
+  "gains_realises_nets": "-61.7964",
+  "gains_latents": "-0.1290",
+  "frais_payes": "4.6166",
+  "capital_total_estime": "938.0746",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1054,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Elon Musk post 90-114 tweets from November 12 to November 14, 2026?",
+   "issue": "Yes",
+   "parts": "13.37",
+   "cout": "2.51",
+   "prix_moyen": "0.1874",
+   "prix_de_marque": "0.104",
+   "latent": "-1.11",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "groupe": "1350270",
+   "ouverte_le": "2026-11-11T11:11"
+  },
+  {
+   "marche": "Will Elon Musk post 40-64 tweets from November 14 to November 16, 2026?",
+   "issue": "No",
+   "parts": "9.58",
+   "cout": "5.86",
+   "prix_moyen": "0.6120",
+   "prix_de_marque": "0.65",
+   "latent": "0.36",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "groupe": "1372776",
+   "ouverte_le": "2026-11-13T13:21"
+  },
+  {
+   "marche": "Will Elon Musk post <40 tweets from November 14 to November 16, 2026?",
+   "issue": "No",
+   "parts": "16.06",
+   "cout": "14.37",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.94",
+   "latent": "0.72",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "groupe": "1372776",
+   "ouverte_le": "2026-11-13T14:32"
+  },
+  {
+   "marche": "Will Khamenei post 0-4 posts from November 13 to November 20, 2026?",
+   "issue": "Yes",
+   "parts": "27.88",
+   "cout": "25.75",
+   "prix_moyen": "0.9237",
+   "prix_de_marque": "0.92",
+   "latent": "-0.10",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "groupe": "1354152",
+   "ouverte_le": "2026-11-13T17:05"
+  }
+ ],
+ "operations_cloturees": 9,
+ "dernieres_operations": [
+  {
+   "marche": "6625273",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "3.02",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-12T21:11"
+  },
+  {
+   "marche": "6625389",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "2.63",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625318",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "18.21",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625358",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-60.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625381",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "1.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625276",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "10.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625266",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-46.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625330",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-1.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625288",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "10.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  }
+ ],
+ "performances": {
+  "compteur_tweets_72_168h v2.0.0": {
+   "operations": 9,
+   "evenements": 3,
+   "gagnantes": 6,
+   "taux_reussite": 0.667,
+   "profit_net": "-61.80",
+   "frais": "4.22",
+   "rendement_sur_mises": -0.1893,
+   "esperance_par_operation": "-6.87",
+   "ic90_rendement_par_euro": [
+    -0.3164,
+    0.4487
+   ],
+   "brier": 0.2281,
+   "log_loss": 0.8421,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

@@ -1,0 +1,154 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "716.0157",
+  "capital_immobilise": "139.4759",
+  "gains_realises_nets": "-144.5084",
+  "gains_latents": "33.7561",
+  "frais_payes": "3.4990",
+  "capital_total_estime": "889.2477",
+  "positions_ouvertes": "6",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1856,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6760890",
+   "issue": "Yes",
+   "parts": "91.52",
+   "cout": "31.38",
+   "prix_moyen": "0.3429",
+   "prix_de_marque": "0.63",
+   "latent": "26.28",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1326719",
+   "ouverte_le": "2026-11-09T14:41"
+  },
+  {
+   "marche": "6760883",
+   "issue": "Yes",
+   "parts": "23.78",
+   "cout": "11.95",
+   "prix_moyen": "0.5025",
+   "prix_de_marque": "0.78",
+   "latent": "6.60",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1326718",
+   "ouverte_le": "2026-11-09T20:07"
+  },
+  {
+   "marche": "6760891",
+   "issue": "No",
+   "parts": "31.00",
+   "cout": "27.44",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.83",
+   "latent": "-1.71",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1326719",
+   "ouverte_le": "2026-11-10T12:07"
+  },
+  {
+   "marche": "6760884",
+   "issue": "No",
+   "parts": "25.00",
+   "cout": "17.27",
+   "prix_moyen": "0.6909",
+   "prix_de_marque": "0.82",
+   "latent": "3.23",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1326718",
+   "ouverte_le": "2026-11-10T19:32"
+  },
+  {
+   "marche": "6760892",
+   "issue": "No",
+   "parts": "53.02",
+   "cout": "46.94",
+   "prix_moyen": "0.8853",
+   "prix_de_marque": "0.87",
+   "latent": "-0.81",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1326719",
+   "ouverte_le": "2026-11-11T07:17"
+  },
+  {
+   "marche": "6760885",
+   "issue": "No",
+   "parts": "5.02",
+   "cout": "4.49",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.93",
+   "latent": "0.18",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1326718",
+   "ouverte_le": "2026-11-12T08:26"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "6705285",
+   "issue": "Yes",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "-27.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-08T21:05"
+  },
+  {
+   "marche": "6581737",
+   "issue": "Yes",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "-44.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-11T14:10"
+  },
+  {
+   "marche": "6581738",
+   "issue": "No",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "-72.82",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-11T15:45"
+  }
+ ],
+ "performances": {
+  "seismes_marche v2.0.0": {
+   "operations": 3,
+   "evenements": 2,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-144.51",
+   "frais": "1.45",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-48.17",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.8421,
+   "log_loss": 2.6519,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

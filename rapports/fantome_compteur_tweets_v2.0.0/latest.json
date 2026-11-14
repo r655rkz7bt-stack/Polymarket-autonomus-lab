@@ -1,0 +1,274 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "781.7526",
+  "capital_immobilise": "120.3908",
+  "gains_realises_nets": "-97.8566",
+  "gains_latents": "-13.6754",
+  "frais_payes": "9.1487",
+  "capital_total_estime": "888.4680",
+  "positions_ouvertes": "8",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1595,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6104893",
+   "issue": "No",
+   "parts": "19.92",
+   "cout": "2.50",
+   "prix_moyen": "0.1253",
+   "prix_de_marque": "0.24",
+   "latent": "2.29",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1244070",
+   "ouverte_le": "2026-11-08T21:16"
+  },
+  {
+   "marche": "Will Elon Musk post 90-114 tweets from November 12 to November 14, 2026?",
+   "issue": "Yes",
+   "parts": "12.97",
+   "cout": "2.43",
+   "prix_moyen": "0.1874",
+   "prix_de_marque": "0.104",
+   "latent": "-1.08",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1350270",
+   "ouverte_le": "2026-11-11T11:11"
+  },
+  {
+   "marche": "6104887",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.11",
+   "prix_moyen": "0.8891",
+   "prix_de_marque": "0.884",
+   "latent": "-0.01",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1244070",
+   "ouverte_le": "2026-11-11T14:16"
+  },
+  {
+   "marche": "6921765",
+   "issue": "No",
+   "parts": "84.43",
+   "cout": "67.82",
+   "prix_moyen": "0.8033",
+   "prix_de_marque": "0.8",
+   "latent": "-0.28",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1354151",
+   "ouverte_le": "2026-11-12T00:26"
+  },
+  {
+   "marche": "Will Elon Musk post 65-89 tweets from November 12 to November 14, 2026?",
+   "issue": "Yes",
+   "parts": "8.40",
+   "cout": "2.86",
+   "prix_moyen": "0.3411",
+   "prix_de_marque": "0.88",
+   "latent": "4.53",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1350270",
+   "ouverte_le": "2026-11-12T19:17"
+  },
+  {
+   "marche": "Will White House post 200+ posts from November 13 to November 20, 2026?",
+   "issue": "No",
+   "parts": "93.35",
+   "cout": "25.84",
+   "prix_moyen": "0.2768",
+   "prix_de_marque": "0.07",
+   "latent": "-19.31",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1354150",
+   "ouverte_le": "2026-11-13T00:32"
+  },
+  {
+   "marche": "Will Khamenei post 0-4 posts from November 13 to November 20, 2026?",
+   "issue": "Yes",
+   "parts": "11.76",
+   "cout": "10.98",
+   "prix_moyen": "0.9333",
+   "prix_de_marque": "0.92",
+   "latent": "-0.16",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1354152",
+   "ouverte_le": "2026-11-13T05:26"
+  },
+  {
+   "marche": "Will Elon Musk post <40 tweets from November 14 to November 16, 2026?",
+   "issue": "No",
+   "parts": "7.65",
+   "cout": "6.85",
+   "prix_moyen": "0.8949",
+   "prix_de_marque": "0.94",
+   "latent": "0.35",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1372776",
+   "ouverte_le": "2026-11-13T14:32"
+  }
+ ],
+ "operations_cloturees": 33,
+ "dernieres_operations": [
+  {
+   "marche": "6625273",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "2.97",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-12T21:11"
+  },
+  {
+   "marche": "6625241",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "8.88",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T05:16"
+  },
+  {
+   "marche": "6625367",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "1.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T16:16"
+  },
+  {
+   "marche": "6625389",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "2.63",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625318",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "18.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625358",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-60.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625381",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "1.51",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625276",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "10.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625266",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-46.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625330",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625288",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "10.01",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625371",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-6.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625377",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-1.95",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6909742",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "0.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T23:16"
+  },
+  {
+   "marche": "6909743",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "2.18",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-14T09:01"
+  }
+ ],
+ "performances": {
+  "compteur_tweets v2.0.0": {
+   "operations": 33,
+   "evenements": 11,
+   "gagnantes": 20,
+   "taux_reussite": 0.606,
+   "profit_net": "-97.86",
+   "frais": "7.17",
+   "rendement_sur_mises": -0.1632,
+   "esperance_par_operation": "-2.97",
+   "ic90_rendement_par_euro": [
+    -0.3604,
+    0.0475
+   ],
+   "brier": 0.2115,
+   "log_loss": 0.7162,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

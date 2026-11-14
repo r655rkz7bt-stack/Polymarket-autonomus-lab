@@ -1,0 +1,243 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "863.6155",
+  "capital_immobilise": "136.3845",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-18.0731",
+  "frais_payes": "4.9244",
+  "capital_total_estime": "981.9269",
+  "positions_ouvertes": "17",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0458,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6594273",
+   "issue": "Yes",
+   "parts": "78.50",
+   "cout": "7.21",
+   "prix_moyen": "0.0918",
+   "prix_de_marque": "0.081",
+   "latent": "-0.85",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1302869",
+   "ouverte_le": "2026-11-13T00:05"
+  },
+  {
+   "marche": "6655999",
+   "issue": "Yes",
+   "parts": "92.25",
+   "cout": "5.80",
+   "prix_moyen": "0.0628",
+   "prix_de_marque": "0.03",
+   "latent": "-3.03",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310114",
+   "ouverte_le": "2026-11-13T00:05"
+  },
+  {
+   "marche": "4178749",
+   "issue": "Yes",
+   "parts": "135.80",
+   "cout": "18.42",
+   "prix_moyen": "0.1357",
+   "prix_de_marque": "0.14",
+   "latent": "0.59",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "956931",
+   "ouverte_le": "2026-11-13T00:08"
+  },
+  {
+   "marche": "6656076",
+   "issue": "Yes",
+   "parts": "41.00",
+   "cout": "3.78",
+   "prix_moyen": "0.0923",
+   "prix_de_marque": "0.128",
+   "latent": "1.47",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310160",
+   "ouverte_le": "2026-11-13T00:08"
+  },
+  {
+   "marche": "677026",
+   "issue": "Yes",
+   "parts": "148.43",
+   "cout": "19.82",
+   "prix_moyen": "0.1335",
+   "prix_de_marque": "0.116",
+   "latent": "-2.60",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "79104",
+   "ouverte_le": "2026-11-13T00:08"
+  },
+  {
+   "marche": "4178730",
+   "issue": "Yes",
+   "parts": "90.82",
+   "cout": "9.68",
+   "prix_moyen": "0.1066",
+   "prix_de_marque": "0.1",
+   "latent": "-0.60",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "956929",
+   "ouverte_le": "2026-11-13T00:10"
+  },
+  {
+   "marche": "4178748",
+   "issue": "Yes",
+   "parts": "37.94",
+   "cout": "19.62",
+   "prix_moyen": "0.5170",
+   "prix_de_marque": "0.445",
+   "latent": "-2.73",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "956931",
+   "ouverte_le": "2026-11-13T00:10"
+  },
+  {
+   "marche": "4178729",
+   "issue": "Yes",
+   "parts": "15.25",
+   "cout": "3.64",
+   "prix_moyen": "0.2389",
+   "prix_de_marque": "0.26",
+   "latent": "0.32",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "956929",
+   "ouverte_le": "2026-11-13T00:10"
+  },
+  {
+   "marche": "6656075",
+   "issue": "Yes",
+   "parts": "13.90",
+   "cout": "2.96",
+   "prix_moyen": "0.2131",
+   "prix_de_marque": "0.209",
+   "latent": "-0.06",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310160",
+   "ouverte_le": "2026-11-13T00:12"
+  },
+  {
+   "marche": "6656058",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "3.37",
+   "prix_moyen": "0.2696",
+   "prix_de_marque": "0.36",
+   "latent": "1.13",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310158",
+   "ouverte_le": "2026-11-13T00:12"
+  },
+  {
+   "marche": "6656057",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "5.05",
+   "prix_moyen": "0.4039",
+   "prix_de_marque": "0.56",
+   "latent": "1.95",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310158",
+   "ouverte_le": "2026-11-13T00:12"
+  },
+  {
+   "marche": "6594272",
+   "issue": "Yes",
+   "parts": "3.75",
+   "cout": "1.54",
+   "prix_moyen": "0.4120",
+   "prix_de_marque": "0.28",
+   "latent": "-0.50",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1302869",
+   "ouverte_le": "2026-11-13T00:16"
+  },
+  {
+   "marche": "6656072",
+   "issue": "Yes",
+   "parts": "6.52",
+   "cout": "2.75",
+   "prix_moyen": "0.4211",
+   "prix_de_marque": "0.549",
+   "latent": "0.83",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310160",
+   "ouverte_le": "2026-11-13T00:16"
+  },
+  {
+   "marche": "6656064",
+   "issue": "Yes",
+   "parts": "20.01",
+   "cout": "1.84",
+   "prix_moyen": "0.0920",
+   "prix_de_marque": "0.093",
+   "latent": "0.02",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310158",
+   "ouverte_le": "2026-11-13T00:16"
+  },
+  {
+   "marche": "6655998",
+   "issue": "Yes",
+   "parts": "40.00",
+   "cout": "11.14",
+   "prix_moyen": "0.2786",
+   "prix_de_marque": "0.09",
+   "latent": "-7.54",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310114",
+   "ouverte_le": "2026-11-13T00:21"
+  },
+  {
+   "marche": "6655997",
+   "issue": "Yes",
+   "parts": "46.84",
+   "cout": "19.27",
+   "prix_moyen": "0.4113",
+   "prix_de_marque": "0.28",
+   "latent": "-6.15",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310114",
+   "ouverte_le": "2026-11-13T00:27"
+  },
+  {
+   "marche": "6656042",
+   "issue": "Yes",
+   "parts": "7.93",
+   "cout": "0.50",
+   "prix_moyen": "0.0626",
+   "prix_de_marque": "0.021",
+   "latent": "-0.33",
+   "strategie": "taux_tresor_barriere v2.0.0",
+   "groupe": "1310157",
+   "ouverte_le": "2026-11-13T06:12"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

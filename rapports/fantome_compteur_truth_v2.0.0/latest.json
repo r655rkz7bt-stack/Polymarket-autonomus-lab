@@ -1,0 +1,137 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "919.3365",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-80.6635",
+  "gains_latents": "0.0000",
+  "frais_payes": "4.7139",
+  "capital_total_estime": "919.3365",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1234,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 10,
+ "dernieres_operations": [
+  {
+   "marche": "6443452",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:01"
+  },
+  {
+   "marche": "6443484",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "1.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:05"
+  },
+  {
+   "marche": "6443459",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-25.02",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T19:11"
+  },
+  {
+   "marche": "6443467",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "9.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:11"
+  },
+  {
+   "marche": "6625318",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "18.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625358",
+   "issue": "Yes",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-60.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625276",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "10.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625266",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-46.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625330",
+   "issue": "Yes",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625288",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "10.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  }
+ ],
+ "performances": {
+  "compteur_truth v2.0.0": {
+   "operations": 10,
+   "evenements": 2,
+   "gagnantes": 6,
+   "taux_reussite": 0.6,
+   "profit_net": "-80.66",
+   "frais": "4.71",
+   "rendement_sur_mises": -0.2087,
+   "esperance_par_operation": "-8.07",
+   "ic90_rendement_par_euro": [
+    -0.4001,
+    -0.0984
+   ],
+   "brier": 0.2821,
+   "log_loss": 1.0445,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "972.8956",
+  "capital_immobilise": "27.1044",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-5.3599",
+  "frais_payes": "0.3345",
+  "capital_total_estime": "994.6401",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0171,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6422862",
+   "issue": "No",
+   "parts": "35.57",
+   "cout": "27.01",
+   "prix_moyen": "0.7594",
+   "prix_de_marque": "0.61",
+   "latent": "-5.31",
+   "strategie": "seismes_pays v2.0.0",
+   "groupe": "1283623",
+   "ouverte_le": "2026-11-11T13:26"
+  },
+  {
+   "marche": "6422865",
+   "issue": "No",
+   "parts": "0.12",
+   "cout": "0.09",
+   "prix_moyen": "0.7789",
+   "prix_de_marque": "0.39",
+   "latent": "-0.05",
+   "strategie": "seismes_pays v2.0.0",
+   "groupe": "1283623",
+   "ouverte_le": "2026-11-12T08:56"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

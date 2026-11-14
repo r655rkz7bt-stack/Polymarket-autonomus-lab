@@ -1,0 +1,51 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "988.2750",
+  "capital_immobilise": "11.7250",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-2.3660",
+  "frais_payes": "0.4942",
+  "capital_total_estime": "997.6340",
+  "positions_ouvertes": "1",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0024,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "4852048",
+   "issue": "Yes",
+   "parts": "93.59",
+   "cout": "11.72",
+   "prix_moyen": "0.1253",
+   "prix_de_marque": "0.1",
+   "latent": "-2.37",
+   "strategie": "mississippi_plus_bas v2.0.0",
+   "groupe": "1065587",
+   "ouverte_le": "2026-11-13T16:42"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}

@@ -1,0 +1,358 @@
+{
+ "genere_le": "2026-11-14T13:19:09+00:00",
+ "capital": {
+  "solde_disponible": "0.0589",
+  "capital_immobilise": "1001.2127",
+  "gains_realises_nets": "1.2716",
+  "gains_latents": "3.2878",
+  "frais_payes": "0.2765",
+  "capital_total_estime": "1004.5594",
+  "positions_ouvertes": "23",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0135,
+ "dernier_battement": "2026-11-14T13:18:55+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "3501951",
+   "issue": "No",
+   "parts": "93.12",
+   "cout": "90.33",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.987",
+   "latent": "1.58",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "830254",
+   "ouverte_le": "2026-11-07T18:21"
+  },
+  {
+   "marche": "6723099",
+   "issue": "No",
+   "parts": "74.01",
+   "cout": "72.43",
+   "prix_moyen": "0.9787",
+   "prix_de_marque": "0.996",
+   "latent": "1.28",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1320942",
+   "ouverte_le": "2026-11-07T18:21"
+  },
+  {
+   "marche": "6044505",
+   "issue": "No",
+   "parts": "77.01",
+   "cout": "75.47",
+   "prix_moyen": "0.9800",
+   "prix_de_marque": "0.996",
+   "latent": "1.23",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-11-07T18:36"
+  },
+  {
+   "marche": "3491438",
+   "issue": "No",
+   "parts": "29.48",
+   "cout": "28.65",
+   "prix_moyen": "0.9720",
+   "prix_de_marque": "0.987",
+   "latent": "0.44",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "620025",
+   "ouverte_le": "2026-11-07T21:41"
+  },
+  {
+   "marche": "2118145",
+   "issue": "Yes",
+   "parts": "63.01",
+   "cout": "61.86",
+   "prix_moyen": "0.9817",
+   "prix_de_marque": "0.984",
+   "latent": "0.14",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431847",
+   "ouverte_le": "2026-11-07T22:51"
+  },
+  {
+   "marche": "Iran leadership change by November 30?",
+   "issue": "No",
+   "parts": "66.49",
+   "cout": "64.63",
+   "prix_moyen": "0.9720",
+   "prix_de_marque": "0.978",
+   "latent": "0.40",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "255195",
+   "ouverte_le": "2026-11-07T23:36"
+  },
+  {
+   "marche": "2116493",
+   "issue": "Yes",
+   "parts": "17.50",
+   "cout": "17.16",
+   "prix_moyen": "0.9804",
+   "prix_de_marque": "0.99",
+   "latent": "0.17",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-08T00:41"
+  },
+  {
+   "marche": "2116494",
+   "issue": "No",
+   "parts": "7.50",
+   "cout": "7.36",
+   "prix_moyen": "0.9808",
+   "prix_de_marque": "0.994",
+   "latent": "0.10",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-08T00:41"
+  },
+  {
+   "marche": "2117123",
+   "issue": "Yes",
+   "parts": "3.47",
+   "cout": "3.37",
+   "prix_moyen": "0.9721",
+   "prix_de_marque": "0.933",
+   "latent": "-0.14",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431707",
+   "ouverte_le": "2026-11-08T01:21"
+  },
+  {
+   "marche": "2117124",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.86",
+   "prix_moyen": "0.9721",
+   "prix_de_marque": "0.942",
+   "latent": "-0.15",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431707",
+   "ouverte_le": "2026-11-08T01:52"
+  },
+  {
+   "marche": "6282802",
+   "issue": "No",
+   "parts": "81.43",
+   "cout": "78.93",
+   "prix_moyen": "0.9693",
+   "prix_de_marque": "0.988",
+   "latent": "1.52",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "699735",
+   "ouverte_le": "2026-11-08T03:32"
+  },
+  {
+   "marche": "6027286",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.71",
+   "prix_moyen": "0.9712",
+   "prix_de_marque": "0.75",
+   "latent": "-2.21",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1231988",
+   "ouverte_le": "2026-11-08T05:37"
+  },
+  {
+   "marche": "5652759",
+   "issue": "No",
+   "parts": "93.14",
+   "cout": "90.35",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.972",
+   "latent": "0.19",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "276527",
+   "ouverte_le": "2026-11-09T05:04"
+  },
+  {
+   "marche": "6301107",
+   "issue": "No",
+   "parts": "41.07",
+   "cout": "40.21",
+   "prix_moyen": "0.9790",
+   "prix_de_marque": "0.985",
+   "latent": "0.25",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-11-09T21:26"
+  },
+  {
+   "marche": "4338145",
+   "issue": "No",
+   "parts": "59.75",
+   "cout": "57.96",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.96",
+   "latent": "-0.60",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "478472",
+   "ouverte_le": "2026-11-09T22:46"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 15?",
+   "issue": "Yes",
+   "parts": "66.10",
+   "cout": "64.32",
+   "prix_moyen": "0.9730",
+   "prix_de_marque": "0.982",
+   "latent": "0.59",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-10T02:56"
+  },
+  {
+   "marche": "5714365",
+   "issue": "No",
+   "parts": "85.98",
+   "cout": "83.40",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.939",
+   "latent": "-2.67",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-11-10T16:42"
+  },
+  {
+   "marche": "6880638",
+   "issue": "No",
+   "parts": "53.29",
+   "cout": "51.70",
+   "prix_moyen": "0.9702",
+   "prix_de_marque": "0.997",
+   "latent": "1.43",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1120129",
+   "ouverte_le": "2026-11-10T20:09"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 18?",
+   "issue": "Yes",
+   "parts": "33.45",
+   "cout": "32.45",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.966",
+   "latent": "-0.13",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-10T22:57"
+  },
+  {
+   "marche": "Pete Hegseth out as Secretary of Defense by November 30?",
+   "issue": "No",
+   "parts": "16.70",
+   "cout": "16.20",
+   "prix_moyen": "0.9702",
+   "prix_de_marque": "0.944",
+   "latent": "-0.44",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1120129",
+   "ouverte_le": "2026-11-10T23:22"
+  },
+  {
+   "marche": "6880640",
+   "issue": "No",
+   "parts": "16.51",
+   "cout": "16.24",
+   "prix_moyen": "0.9837",
+   "prix_de_marque": "0.979",
+   "latent": "-0.08",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1120129",
+   "ouverte_le": "2026-11-10T23:22"
+  },
+  {
+   "marche": "2695687",
+   "issue": "No",
+   "parts": "17.14",
+   "cout": "16.82",
+   "prix_moyen": "0.9815",
+   "prix_de_marque": "0.988",
+   "latent": "0.11",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "637442",
+   "ouverte_le": "2026-11-13T10:14"
+  },
+  {
+   "marche": "Will Jensen Huang be arrested by November 30, 2026?",
+   "issue": "No",
+   "parts": "17.21",
+   "cout": "16.81",
+   "prix_moyen": "0.9769",
+   "prix_de_marque": "0.992",
+   "latent": "0.26",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1367767",
+   "ouverte_le": "2026-11-13T10:14"
+  }
+ ],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "4118938",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.23",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T11:01"
+  },
+  {
+   "marche": "6638516",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.50",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T11:01"
+  },
+  {
+   "marche": "6908165",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T10:10"
+  }
+ ],
+ "performances": {
+  "favori_politique_quasi_certain v2.0.0": {
+   "operations": 3,
+   "evenements": 2,
+   "gagnantes": 3,
+   "taux_reussite": 1.0,
+   "profit_net": "1.27",
+   "frais": "0.00",
+   "rendement_sur_mises": 0.0167,
+   "esperance_par_operation": "0.42",
+   "ic90_rendement_par_euro": [
+    0.0163,
+    0.0194
+   ],
+   "brier": 0.0002,
+   "log_loss": 0.0125,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "DEGRADE": 1,
+  "OK": 290
+ },
+ "decisions_24h": {
+  "acceptees": 14,
+  "rejetees": 9,
+  "raisons_de_rejet": {
+   "taille inférieure au minimum du marché": 9,
+   "carnet périmé": 1
+  }
+ },
+ "erreurs_recentes": [
+  "scanner indisponible : GET https://gamma-api.polymarket.com/markets : échec après 4 essais (HTTP 500)"
+ ]
+}
