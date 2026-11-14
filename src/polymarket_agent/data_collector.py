@@ -408,6 +408,16 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "pluie_hk:heures", hk_journal(refs._load(db, "pluie_hk:heures")[1] or [], rows), now)
         return rows
     snapshot("pluie_hk", pluie_hk, "ref:pluie_hk")
+    # Scores Rotten Tomatoes (14/11/2026, piste n° 56) : compte exact des critiques de la page de chaque film d'un marché ouvert
+    # « "<film>" Rotten Tomatoes Score? » (arbitre du règlement), pour `rt_compte_critiques` ; journal `rt:histo` (rythme des critiques).
+    from polymarket_agent.rotten_tomatoes import fetch_rt, keep_history as keep_rt
+
+    def rotten_tomatoes(cfg):
+        rows = factories.get("rotten_tomatoes", lambda c: fetch_rt(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "rt:histo", keep_rt(refs._load(db, "rt:histo")[1], rows, now), now)
+        return rows
+    snapshot("rotten_tomatoes", rotten_tomatoes, "ref:rt")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")
