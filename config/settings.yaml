@@ -135,6 +135,9 @@ scanner:
               # 11/11/2026 : étiquette drought (105721) : « Exceptional drought (D4) by state — week of … » (`secheresse_d4`), carnets souvent 0,01/0,99
               # 14/11/2026 : étiquette precipitation (103041) : « Precipitation in Hong Kong / NYC / Seattle / London / Seoul in <mois> » (`pluie_hk`),
               # 0,4-2 k$ par tranche ; date de fin Gamma placeholder (+3 mois après le mois) : horizon 2 500 h
+              # 14/11/2026 : étiquette rotten-tomatoes (101453) : « Will "<film>" score at least <N> on the Rotten Tomatoes Tomatometer? »
+              # (`rt_compte_critiques`), 50-2 000 $ par seuil, carnets souvent très larges ; horizon 21 jours (films pas encore sortis dehors)
+              101453: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 504},
               103041: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.80, max_favorite_price: 0.9999, max_horizon_hours: 2500},
               105721: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999},
               # 12/11/2026 : étiquette art-auction (1305) : « <artiste>'s “<œuvre>” Sale Price » (`encheres_estimation`), 2-7 k$ par tranche, peu de volume du jour
@@ -348,6 +351,7 @@ sources:
   openrouter: {enabled: true, every_minutes: 60}             # 13/11/2026 (piste n° 50) : api/frontend/v1/rankings (graphique hebdomadaire, 7 jours, dernier jour) d'OpenRouter, arbitre des marchés « token usage week of », pour openrouter_semaine ; robots.txt « Allow: / » ; gratuit, sans clé
   mississippi: {enabled: true, every_minutes: 60}           # 13/11/2026 (piste n° 52) : relevés USGS (07010000, 07374000) et prévisions NWPS (EADM7, BTRL1) du Mississippi, arbitre des marchés « Lowest Mississippi level » ; gratuit, sans clé
   pluie_hk: {enabled: true, every_minutes: 20}             # 14/11/2026 (piste n° 32) : pluie du mois à l'Observatoire de Hong Kong (Daily Extract, RYES, pluie de l'heure RF023 relevée toutes les 20 min pour additionner le jour en cours) + ensemble ECMWF Open-Meteo ; gratuit, sans clé
+  rotten_tomatoes: {enabled: true, every_minutes: 60}      # 14/11/2026 (piste n° 56) : page Rotten Tomatoes (/m/<film>, permis par robots.txt ; jamais /napi/) de chaque film d'un marché « Rotten Tomatoes Score » ouvert : compte exact des critiques, pour rt_compte_critiques ; gratuit, sans clé
   usgs_annee: {enabled: true, every_minutes: 30}             # 12/11/2026 (piste n° 40) : séismes >= 6,8 depuis le 1er janvier (USGS, arbitre des marchés annuels) pour seismes_annee ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma
   # seulement). `meneur` = recette domestique 2026 de Spider-Man: Brand New Day au 08/11 (959,0 M$, en salle sur 190 écrans) ;

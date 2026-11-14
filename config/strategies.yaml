@@ -546,6 +546,36 @@ pluie_hk:
     mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+rt_compte_critiques:
+  explication: "Polymarket demande si un film aura au moins tel score sur Rotten Tomatoes dimanche à 10 h. La page du film donne le nombre exact de critiques positives et négatives, pas seulement le pourcentage arrondi : à 62 sur 83, le film affiche 75 % mais une seule critique négative de plus le fait tomber à 74 %. On simule les critiques qui arriveront d'ici là et on parie sur le seuil que le prix sous-estime nettement."
+  class: rt_compte_critiques
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-14"
+  hypothesis: >
+    Expérience audacieuse, lire la RÈGLE (score AFFICHÉ, donc arrondi) et la source mieux que le pourcentage, experiments/rotten_tomatoes.md,
+    piste n° 56. Pas de test aux prix passés possible : les comptes de critiques ne sont pas archivés (API interne refusée), seuls les
+    pourcentages finaux le sont. Le 14/11 : « Victorian Psycho » 62/83 (74,70 %, affiché 75 %), « 75+ » coté 0,40 pour 0,42-0,48 calculé
+    (le prix sait sur le seuil liquide) ; « Ghost Soldier » 5/14 avec des carnets 0,07/0,78 et 0,01/0,82 (seuils 40+ et 50+). La
+    stratégie n'achète que quand le vendeur demande nettement moins que la simulation : elle vit des carnets larges et des vendeurs
+    pressés. Garde-fous ajoutés après le premier cycle local (achat de « I Play Rocky 83+ » à 0,80 pour 0,973 : sortie LIMITÉE, réglé
+    après la sortie large) : aucune chance pour un film en sortie limitée ; critiques à venir 5 points plus froides que la part
+    actuelle (Victorian Psycho : 78 % sur 50, puis 70 % sur 33). Le rythme des critiques (a priori 0,4 / 0,12 / 0,03 par heure selon l'âge du film) n'est pas étalonné : le journal
+    `rt:histo` le mesurera. Une perte apprendrait que le rythme ou la part des critiques tardives (souvent plus froides) est mal estimé,
+    ou que les vendeurs qui nous servent savent quelque chose (critiques sous embargo, agrégation en retard).
+  params:
+    min_net_edge:   {value: 0.06, min: 0.0, max: 0.30}    # chance − incertitude − prix demandé − frais (culture_fees)
+    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}    # rythme a priori non étalonné
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.95, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 2, min: 0.1, max: 24}        # relevé toutes les heures
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 40, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # seuils d'un même film : liés
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 box_office_annee:
   explication: "Polymarket demande quel film rapportera le plus d'argent aux États-Unis en 2026. Spider-Man a déjà 959 millions de dollars ; Avengers sort le 18 décembre et n'a que 14 jours avant la fin de l'année. Un autre marché Polymarket dit combien Avengers fera son premier week-end ; à Noël, les grands films font environ 2,35 fois leur premier week-end en 14 jours. On calcule la chance qu'Avengers dépasse Spider-Man et on achète quand le marché de l'année n'est pas d'accord avec celui du week-end."
   class: box_office_annee

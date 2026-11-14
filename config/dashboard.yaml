@@ -23,9 +23,9 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 a_la_une:
   date: "2026-11-14"
   points:
-    - "Capital principal : 1 000 € (remis à zéro le 12/11). Il ne suit encore aucune stratégie : aucune n'a assez de paris réglés pour prouver un avantage. 23 expériences tournent dans l'arène avec 1 000 € fictifs chacune."
+    - "Capital principal : 1 000 € (remis à zéro le 12/11). Il ne suit encore aucune stratégie : aucune n'a assez de paris réglés pour prouver un avantage. 24 expériences tournent dans l'arène avec 1 000 € fictifs chacune."
     - "Nouvelle expérience (14/11) : pluie_hk. Polymarket demande combien il pleuvra à Hong Kong ce mois-ci ; on additionne la pluie déjà mesurée heure par heure par l'Observatoire et on ajoute 51 prévisions météo. La climatologie seule ne battait pas le prix sur 8 mois passés."
-    - "Deux stratégies éteintes (14/11) : secheresse_d4 (Polymarket ne crée plus ses marchés) et lid_agenda (le marché lisait déjà l'agenda de la Maison-Blanche)."
+    - "Nouvelle expérience (14/11 midi) : rt_compte_critiques. Les marchés Rotten Tomatoes se règlent sur le score AFFICHÉ (arrondi) ; la page du film donne le compte exact des critiques (62 sur 83 = 74,7 %, affiché 75 %). On simule les critiques à venir ; pas de test passé possible."
     - "Rhin (conviction de Claude) : Kaub plafonne à 73 cm pour un seuil de 77 avant le 15/11 ; la prévision officielle dit 74 au plus. Notre pari NON (12,9 parts à 0,862) se règle demain."
     - "Une décision t'attend : proposals/2026-11-11_carnet_calme_juge_perime.md (les petits marchés calmes sont refusés comme « carnet périmé »)."
 

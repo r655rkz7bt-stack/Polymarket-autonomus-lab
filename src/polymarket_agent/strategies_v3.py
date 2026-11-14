@@ -1661,6 +1661,21 @@ class PluieHk(SeismesMarche):
     borne = 0.02
 
 
+class RtCompteCritiques(SeismesMarche):
+    """« Will "<film>" score at least <N> on the Rotten Tomatoes Tomatometer? » : Tomatometer AFFICHÉ (arrondi) à 10 h (heure de l'Est)
+    le jour du règlement. Chance = compte exact des critiques lu sur la page du film (positives / total, pas le pourcentage arrondi) +
+    critiques à venir simulées (rythme du journal `rt:histo` ou a priori selon l'âge du film, part positive récente ; rotten_tomatoes.py).
+    Expérience audacieuse du 14/11/2026 (experiments/rotten_tomatoes.md, piste n° 56) : aucun historique gratuit des comptes (l'API
+    interne est refusée) donc pas de test aux prix passés ; le 14/11 « Victorian Psycho » 62/83 = 74,70 % affiché 75 %, seuil 75 coté
+    0,40 pour 0,42-0,48 calculé (le prix sait), mais des carnets larges (« Ghost Soldier 40+ » 0,07/0,78) où un vendeur pressé peut
+    se tromper. Aucune chance pour un film en sortie LIMITÉE (« I Play Rocky » : 0,973 calculé pour un marché à ≈ 0,65, réglé après la
+    sortie large). Une perte apprendrait que le rythme a priori est faux, ou que la part des critiques tardives dérive plus que prévu."""
+
+    strategy_id = "rt_compte_critiques"
+    ref_key = "rt"
+    borne = 0.02
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -2067,4 +2082,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, PluieHk, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, PluieHk, RtCompteCritiques, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
