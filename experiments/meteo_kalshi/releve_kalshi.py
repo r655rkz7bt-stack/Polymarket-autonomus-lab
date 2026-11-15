@@ -11,7 +11,7 @@ def get(path, **params):
         r.raise_for_status(); time.sleep(1.0); return r.json()
     raise RuntimeError(path)
 out = json.load(open(P)) if os.path.exists(P) else {}
-for s in ("KXHIGHAUS", "KXHIGHMIA", "KXHIGHDEN", "KXHIGHLAX"):
+for s in ("KXHIGHAUS", "KXHIGHMIA", "KXHIGHDEN", "KXHIGHLAX", "KXHIGHTHOU", "KXHIGHTSEA", "KXHIGHTATL", "KXHIGHTSFO"):
     ms, cur = [], None
     while True:
         d = get("/markets", series_ticker=s, status="settled", limit=1000, **({"cursor": cur} if cur else {}))

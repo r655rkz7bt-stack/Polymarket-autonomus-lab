@@ -1,4 +1,4 @@
-# Températures maximales du jour : Kalshi (rapport climatologique) contre Polymarket (METAR) — piste n° 62 (15/11/2026 ; règle générale écartée, tranche sous la médiane CLI : indice faible → fantôme `meteo_sous_cli`)
+# Températures maximales du jour : Kalshi (rapport climatologique) contre Polymarket (METAR) — piste n° 62 (15/11/2026 : **écartée** ; la tranche sous la médiane CLI, indice sur 4 villes, s'inverse sur 4 autres → fantôme `meteo_sous_cli` éteint le jour même)
 
 Passage du chercheur de 6 h. Idée neuve (point 4 de la consigne, « cohérence entre marchés liés », et point 2, « lire les règles ») :
 Kalshi (`KXHIGHAUS`, `KXHIGHMIA`, `KXHIGHDEN`, `KXHIGHLAX`, marchés très échangés) et Polymarket (« Highest temperature in
@@ -59,3 +59,20 @@ OUI seulement, avantage net ≥ 0,03 sur la borne basse (chance − 0,03), prix 
 Kelly entier. Cycle local du 15/11 06 h 26 : 3 tranches rattachées, 1 achat (Los Angeles 15/11, « 70-71 °F » à 0,127 pour
 0,247 ; Kalshi : médiane CLI 73 °F ; Polymarket met 0,72 sur « 72-73 »). À juger sur ≥ 40 jours réglés (fin décembre) avant
 toute place au capital principal.
+
+## Hors échantillon, même passage : 4 villes de plus → **écartée**, fantôme éteint
+Kalshi a aussi des séries aux mêmes stations CLI pour Houston (`KXHIGHTHOU`, CLIHOU = Hobby, Polymarket KHOU), Seattle
+(`KXHIGHTSEA`), Atlanta (`KXHIGHTATL`) et San Francisco (`KXHIGHTSFO`) ; Dallas non (CLIDFW contre Love Field). Relevés refaits
+sur les 8 villes : 2 190 événements Polymarket, 552 événements Kalshi, 735 616 vrais échanges, 567 jours appariés.
+- L'écart de mesure est du même côté partout (règle METAR, CLI − tranche gagnante) : Houston 0 °F 21 fois, +2 une fois ;
+  Seattle 0 : 20, +1 : 2 ; Atlanta 0 : 16, +1 : 6 ; San Francisco 0 : 11, +1 : 9, +3 : 2.
+- Mais la tranche k = −1 **s'inverse** : 8 villes, règle METAR, fenêtre de production (J−1 12 h → J 12 h UTC), queues ≤ 0,15,
+  frais compris : ≥ 20 parts 42 gagnés pour 49,0 payés (−14 %), ≥ 100 parts 32 pour 38,9 (−18 %) ; les 4 nouvelles villes seules
+  ≈ 15 pour 25,8. Et k = +1 passe à +41/+49 %. Les 4 premières villes étaient du bruit (≈ 8 cellules regardées, z 1,4).
+- Règle générale « Kalshi décalé contre prix » sur les 8 villes : prix horaire 0,181 contre 0,195 (log-perte), +31 % ; vrais
+  échanges ≥ 20 parts +1,0 % (J−1 20 h) et +2,2 % (J 14 h), t par événement ≤ +0,3, frais d'après le 20/10 non comptés.
+- **Verdict : écartée.** `meteo_sous_cli` et la source `meteo_kalshi` sont éteints avant toute mise en service (code et tests
+  gardés : `meteo_kalshi.py`, `tests/test_meteo_kalshi.py`) ; les étiquettes de ville retirées du scanner.
+- Leçon : un indice trouvé sur un sous-ensemble doit être refait sur un AUTRE sous-ensemble disponible le jour même (ici, les
+  villes que je n'avais pas relevées) avant d'écrire une stratégie ; le mécanisme physique (écart CLI − METAR) est réel, mais la
+  foule le prix déjà.

@@ -14,7 +14,8 @@ SEUIL = float(sys.argv[2]) if len(sys.argv) > 2 else 0.08
 ECART = float(sys.argv[3]) if len(sys.argv) > 3 else 0.02
 MOIS = {m: i + 1 for i, m in enumerate("JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split())}
 K = json.load(open("donnees/kalshi.json")); PE = json.load(open("donnees/poly_events.json")); PX = json.load(open("donnees/poly_prix.json"))
-SER = {"Austin": "KXHIGHAUS", "Miami": "KXHIGHMIA", "Denver": "KXHIGHDEN", "Los Angeles": "KXHIGHLAX"}
+SER = {"Austin": "KXHIGHAUS", "Miami": "KXHIGHMIA", "Denver": "KXHIGHDEN", "Los Angeles": "KXHIGHLAX",
+       "Houston": "KXHIGHTHOU", "Seattle": "KXHIGHTSEA", "Atlanta": "KXHIGHTATL", "San Francisco": "KXHIGHTSFO"}
 MN = {m: i + 1 for i, m in enumerate("January February March April May June July August September October November December".split())}
 
 def kdate(e):

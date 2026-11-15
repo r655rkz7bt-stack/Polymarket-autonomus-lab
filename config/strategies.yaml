@@ -285,7 +285,9 @@ rougeole_compteur:
 meteo_sous_cli:
   explication: "Polymarket demande dans quelle tranche de 2 °F tombera la température maximale du jour à Austin, Miami, Denver ou Los Angeles. Il règle sur les relevés d'aéroport HEURE PAR HEURE ; Kalshi, sur la même station, règle sur le maximum du jour entier, qui est souvent 1 °F plus haut. On lit les prix de Kalshi, on les décale de cet écart, et on achète la tranche Polymarket juste en dessous de la médiane de Kalshi quand elle est moins chère que ce calcul."
   class: meteo_sous_cli
-  enabled: true
+  enabled: false   # 15/11/2026, même passage : ÉTEINTE avant toute mise en service ; sur 4 villes de plus (Houston, Seattle, Atlanta,
+                   # San Francisco, mêmes stations CLI), la tranche k = −1 perd (15 gagnés pour 25,8 payés à ≥ 20 parts) : hors échantillon,
+                   # l'indice des 4 premières villes était du bruit (experiments/meteo_kalshi.md, « Hors échantillon »)
   version: "2.0.0"
   created_at: "2026-11-15"
   hypothesis: >

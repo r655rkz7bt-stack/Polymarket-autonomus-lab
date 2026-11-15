@@ -3,7 +3,8 @@ Kalshi a la même station (KAUS, KMIA, KDEN, KLAX). public-search par pages de 5
 donnees/poly_events.json (événement, ville, date, tranches, jetons, prix finaux, règle)."""
 import json, re, sys, requests
 S = requests.Session(); S.headers["User-Agent"] = "curl/8"
-VILLES = {"Austin": "KAUS", "Miami": "KMIA", "Denver": "KDEN", "Los Angeles": "KLAX"}
+VILLES = {"Austin": "KAUS", "Miami": "KMIA", "Denver": "KDEN", "Los Angeles": "KLAX",
+          "Houston": "KHOU", "Seattle": "KSEA", "Atlanta": "KATL", "San Francisco": "KSFO"}   # 15/11 : 4 villes de plus (mêmes stations CLI)
 out = {}
 for ville in VILLES:
     for page in range(1, 40):

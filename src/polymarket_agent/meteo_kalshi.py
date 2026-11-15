@@ -1,4 +1,7 @@
-"""Températures maximales du jour : loi de Kalshi (maximum CLI du NWS) décalée vers la valeur des marchés Polymarket (maximum
+"""ÉTEINT le 15/11/2026 (même passage) : l'indice des 4 villes s'inverse sur Houston, Seattle, Atlanta et San Francisco
+(experiments/meteo_kalshi.md, « Hors échantillon ») ; gardé pour un éventuel rejeu.
+
+Températures maximales du jour : loi de Kalshi (maximum CLI du NWS) décalée vers la valeur des marchés Polymarket (maximum
 des METAR horaires), pour le fantôme `meteo_sous_cli` (15/11/2026, experiments/meteo_kalshi.md, piste n° 62).
 
 Mêmes stations (KAUS, KMIA, KDEN, KLAX), valeur différente : le maximum horaire manque les pointes entre deux relevés.

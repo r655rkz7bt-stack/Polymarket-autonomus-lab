@@ -1696,7 +1696,7 @@ class MeteoSousCli(SeismesMarche):
     la chance décalée − frais − `min_net_edge`. Expérience audacieuse du 15/11/2026 (experiments/meteo_kalshi.md, piste n° 62) : aux vrais
     échanges, frais compris, queues Kalshi ≤ 0,15, règle METAR : cette tranche gagne 28 fois pour 24,0 payés (≥ 20 parts), 23 pour 19,5
     (≥ 100) ; la tranche du dessus perd 33 à 36 % ; weather.gov ≈ 0 : indice faible (z ≈ 1,4) ; une règle générale « Kalshi décalé
-    contre prix » ne gagne rien aux vrais échanges."""
+    contre prix » ne gagne rien aux vrais échanges. ÉTEINTE le même jour : sur 4 villes de plus, cette tranche perd (−14 % sur 8 villes)."""
 
     strategy_id = "meteo_sous_cli"
     ref_key = "meteo_kalshi"

@@ -8,7 +8,8 @@ from collections import defaultdict
 MIN = float(sys.argv[1]) if len(sys.argv) > 1 else 20
 MOIS = list("JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split())
 MN = {m: i + 1 for i, m in enumerate("January February March April May June July August September October November December".split())}
-SER = {"Austin": "KXHIGHAUS", "Miami": "KXHIGHMIA", "Denver": "KXHIGHDEN", "Los Angeles": "KXHIGHLAX"}
+SER = {"Austin": "KXHIGHAUS", "Miami": "KXHIGHMIA", "Denver": "KXHIGHDEN", "Los Angeles": "KXHIGHLAX",
+       "Houston": "KXHIGHTHOU", "Seattle": "KXHIGHTSEA", "Atlanta": "KXHIGHTATL", "San Francisco": "KXHIGHTSFO"}
 K = json.load(open("donnees/kalshi.json")); PE = json.load(open("donnees/poly_events.json")); TR = json.load(open("donnees/echanges.json"))
 def poly_bin(t):
     t = (t or "").replace("°F", "").strip()
@@ -16,6 +17,7 @@ def poly_bin(t):
     if m := re.match(r"^(-?\d+) or below$", t): return -999, int(m.group(1))
     if m := re.match(r"^(-?\d+) or higher$", t): return int(m.group(1)), 999
 QUEUE_MAX = float(sys.argv[2]) if len(sys.argv) > 2 else 0.3
+FIN_H = float(sys.argv[3]) if len(sys.argv) > 3 else 20   # 12 = ce que voit la production (endDate Gamma = J 12 h UTC)
 def law(ev, T):
     out, tot, queue = defaultdict(float), 0.0, 0.0
     for m in ev["marches"]:
@@ -44,7 +46,7 @@ for e in PE:
     ke = f"{SER[mt.group(1)]}-{d.strftime('%y')}{MOIS[d.month-1]}{d.day:02d}"
     if ke not in K: continue
     regle = "metar" if "hourly temperature remark" in e["desc"] else "weather.gov"
-    t0 = dt.datetime(d.year, d.month, d.day, tzinfo=dt.timezone.utc).timestamp(); a, b = t0 - 12 * 3600, t0 + 20 * 3600
+    t0 = dt.datetime(d.year, d.month, d.day, tzinfo=dt.timezone.utc).timestamp(); a, b = t0 - 12 * 3600, t0 + FIN_H * 3600
     bins = [(poly_bin(m["tranche"]), m) for m in e["marches"]]
     win = next((bb for bb, m in bins if bb and m["prix"] and float(json.loads(json.dumps(m["prix"]))[0]) > .99), None)
     if win is None: continue
