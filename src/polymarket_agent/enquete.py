@@ -1028,12 +1028,16 @@ _JAMBES_VOULUES = ("market_maker", "cross_market", "paire_oui_non", "echelle_dat
 
 
 def jambes_meme_evenement(entries: dict[str, list[dict]], since: datetime | None = None, min_markets: int = 3,
-                          min_cost: float = 100.0, window_hours: float = 2.0) -> list[dict]:
+                          min_cost: float = 100.0, window_hours: float = 2.0, configs: dict | None = None) -> list[dict]:
     """Au moins `min_markets` marchés différents du MÊME événement achetés par un même fantôme dans `window_hours` heures,
-    pour plus de `min_cost` € : vainqueur, écarts et total d'un match sont un seul pari compté plusieurs fois."""
+    pour plus de `min_cost` € : vainqueur, écarts et total d'un match sont un seul pari compté plusieurs fois.
+    L'exemption `_JAMBES_VOULUES` vaut pour le nom du portefeuille ET pour la classe de sa stratégie (`configs`, 15/11/2026 :
+    `compteur_truth`, classe `compteur_tweets`, signalé pour 4 NON de tranches disjointes, dont au plus un peut perdre)."""
     out = []
+    classes = {f"{k}_v{c.get('version', '1.0.0')}": str(c.get("class") or "")
+               for k, c in (configs or {}).items() if isinstance(c, dict)}
     for name, rows in entries.items():
-        if name == "principal" or name.startswith(_JAMBES_VOULUES):
+        if name == "principal" or name.startswith(_JAMBES_VOULUES) or (classes.get(name) or "\0").startswith(_JAMBES_VOULUES):
             continue
         by_event: dict[str, list[dict]] = defaultdict(list)
         for e in _buys(rows, since):
@@ -1424,7 +1428,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
                 + selection_multiple(entries, copied_by_principal(entries, now)) + estimation_gonflee(entries) + certitude_promise(entries)
-                + deux_camps(entries, since) + jambes_meme_evenement(entries, since) + plafond_par_evenement(entries, configs, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
+                + deux_camps(entries, since) + jambes_meme_evenement(entries, since, configs=configs) + plafond_par_evenement(entries, configs, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
                 + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)

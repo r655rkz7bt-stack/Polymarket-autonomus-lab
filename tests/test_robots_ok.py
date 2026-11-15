@@ -45,6 +45,7 @@ INTERDITS_CONNUS = [
     "api.db.nomics.world",                     # DBnomics : Disallow: / (14/11/2026)
     "boxofficemojo.com",                       # IMDb : collecte automatisée interdite (12/11/2026)
     "www.githubstatus.com/api/",               # GitHub status : /api/ interdit, /history.json permis (14/11/2026)
+    "treasurydirect.gov/NP_WS/",               # TreasuryDirect : /NP_WS/ interdit (15/11/2026) : Fiscal Data « debt_to_penny »
 ]
 
 

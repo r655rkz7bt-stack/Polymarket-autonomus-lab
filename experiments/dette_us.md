@@ -47,3 +47,12 @@ l'étiquette economy triée par volume du jour) → `conviction_markets` (fiche
 - Début février 2027 : le Trésor publie l'emprunt réalisé d'octobre-décembre ; comparer à 618.
 - Les marchés de 2027 (« Peak US National Debt in 2027 ») quand ils seront créés : même méthode avec les estimations
   trimestrielles et le plafond de 41 100 (mesures extraordinaires : la dette soumise au plafond ne peut plus monter).
+
+## Relecture du 15/11/2026 (règle n° 7)
+- `www.treasurydirect.gov/NP_WS/` est **interdit** par le `robots.txt` de TreasuryDirect (`scripts/robots_ok.py`, 15/11) :
+  le relevé du 12/11 (`dette_us/analyse.py`) l'a lu sans vérifier. Ne plus l'appeler (ajouté à `INTERDITS_CONNUS`).
+- Même série, permise et en JSON : Fiscal Data « Debt to the Penny »
+  (`api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date`).
+- Lu le 15/11 : **40 608,5 Md$ au 12/11** (public 32 824,4 ; intragouvernementale 7 784,1), +48,7 depuis le 09/11
+  (40 559,8). Seuil d'abandon de la conviction (40 800 avant le 01/12) loin ; le marché affiche 0,655 pour le OUI (milieu
+  d'un carnet mince), la conviction NON tient.
