@@ -368,7 +368,7 @@ el_nino_cpc:
   explication: "Polymarket demande jusqu'où montera l'indice El Niño de cet hiver. Le service météo américain qui publie cet indice donne aussi, chaque mois, ses propres chances (« 83 % que l'hiver dépasse +2,5 »). Ses chances fixent un minimum : si le marché paie nettement moins que ce minimum, on achète ; si sa prévision a plus d'une semaine, on ne fait rien."
   class: el_nino_cpc
   enabled: true
-  version: "2.0.0"
+  version: "2.1.0"   # 15/11/2026 : la v2.0.0 a été retirée par le ménage (3 jours sans achat) alors qu'elle attend la discussion mensuelle du CPC (2e jeudi) ; protégée par `jamais_retirer` (experiments/enquetes/2026-11-15_soir_el_nino_retiree_par_le_menage.md)
   created_at: "2026-11-12"
   hypothesis: >
     Expérience audacieuse, avantage d'INFORMATION (experiments/el_nino.md, 12/11/2026, piste n° 39) : la source du règlement (CPC de
