@@ -118,7 +118,7 @@ retirer_inactives_apres_jours: 3
 # (emploi le 6/11), statu_quo_ia (classements d'IA, ≥ 12 jours), saison_non (fenêtre de 10 à 18 jours avant la fin d'un
 # marché de saison), non_aux_drames et detroits_tranches (une tranche, le 31/10) allaient l'être avant leur premier jour utile :
 # elles ne sont jamais retirées pour inactivité (elles restent soumises à « perdante » et à l'élimination hebdomadaire).
-jamais_retirer: [convictions_claude, compteur_truth, non_aux_drames, seismes_marche, suivre_inities, el_nino_cpc]   # labo v2 (07/11/2026) : stratégies qui attendent leurs marchés (convictions écrites par Claude, compteurs mensuels, drames, séismes, affaires d'initiés) ; el_nino_cpc (15/11/2026) : discussion du CPC le 2e jeudi du mois, active 7 jours sur 30
+jamais_retirer: [convictions_claude, compteur_truth, non_aux_drames, seismes_marche, suivre_inities, el_nino_cpc, indice_cotes]   # labo v2 (07/11/2026) : stratégies qui attendent leurs marchés (convictions écrites par Claude, compteurs mensuels, drames, séismes, affaires d'initiés) ; el_nino_cpc (15/11/2026) : discussion du CPC le 2e jeudi du mois, active 7 jours sur 30 ; indice_cotes (15/11/2026) : tranches de l'indice PredictionMarketOdds, quelques dates par mois
 # Ménage (19/10/2026) : retrait immédiat d'une stratégie clairement pire que le hasard (score de
 # confiance sur le rendement ≤ −1,5 après 20 opérations), sans attendre l'élimination hebdomadaire.
 # Le 19/10 : news_momentum (−1,7), news_momentum_patiente (−1,6), meteo_prevision (−1,6).

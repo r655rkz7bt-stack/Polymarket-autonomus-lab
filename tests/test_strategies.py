@@ -29,7 +29,7 @@ def test_repository_config_loads():
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
     assert [s.strategy_id for s in loaded] == [
         "convictions_claude", "compteur_tweets", "compteur_tweets_72_168h", "compteur_truth", "favori_politique_quasi_certain",
-        "seismes_marche", "seismes_pays", "fleuves_prevision", "auditeurs_spotify", "rougeole_compteur", "michigan_preliminaire", "encheres_estimation", "el_nino_cpc", "seismes_annee", "pib_canada_anticipe", "taux_tresor_barriere", "taux_immobilier_barriere", "openrouter_semaine", "mississippi_plus_bas", "pluie_hk", "rt_compte_critiques", "box_office_annee", "non_aux_drames", "suivre_inities"]   # tornades_mois : éteinte (11/11) ; lid_agenda, secheresse_d4 : éteintes (14/11) ; meteo_sous_cli : éteinte (15/11)
+        "seismes_marche", "seismes_pays", "fleuves_prevision", "auditeurs_spotify", "rougeole_compteur", "michigan_preliminaire", "encheres_estimation", "el_nino_cpc", "seismes_annee", "pib_canada_anticipe", "taux_tresor_barriere", "taux_immobilier_barriere", "openrouter_semaine", "indice_cotes", "mississippi_plus_bas", "pluie_hk", "rt_compte_critiques", "box_office_annee", "non_aux_drames", "suivre_inities"]   # tornades_mois : éteinte (11/11) ; lid_agenda, secheresse_d4 : éteintes (14/11) ; meteo_sous_cli : éteinte (15/11)
     relancees = {"el_nino_cpc": "2.1.0"}   # 15/11/2026 : v2.0.0 retirée par le ménage (calendrier mensuel), relancée et protégée
     assert all(s.version == relancees.get(s.strategy_id, "2.0.0") for s in loaded)
     assert len(load_strategies(ROOT / "config" / "strategies_v1.yaml", include_disabled=True)) > 150  # archive de la v1

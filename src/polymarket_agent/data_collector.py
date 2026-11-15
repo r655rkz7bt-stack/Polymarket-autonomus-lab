@@ -401,6 +401,9 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "mississippi:histo", mi_journal(refs._load(db, "mississippi:histo")[1] or [], rows), now)
         return rows
     snapshot("mississippi", mississippi, "ref:mississippi")
+    # Indice PredictionMarketOdds (15/11/2026, piste n° 65) : valeurs horaires (arbitre des tranches « <X> odds <a>-<b>% on <date> »), `indice_cotes`.
+    from polymarket_agent.indice_cotes import fetch_indice
+    snapshot("indice_cotes", lambda cfg: factories.get("indice_cotes", lambda c: fetch_indice(http, now))(cfg), "ref:indice_cotes")
     # Pluie du mois à Hong Kong (14/11/2026, piste n° 32 suite) : Daily Extract + bulletin de la veille + pluie de l'heure à la station de
     # l'Observatoire + ensemble ECMWF (arbitre des marchés « Precipitation in Hong Kong in <mois> »), `pluie_hk` ; journal `pluie_hk:heures`
     # (la pluie du jour en cours n'est publiée qu'heure par heure).

@@ -1635,6 +1635,19 @@ class OpenrouterSemaine(SeismesMarche):
     borne = 0.02
 
 
+class IndiceCotes(SeismesMarche):
+    """« Democratic 2028 presidential odds 66-68% on November 20? » (étiquette `derivatives`) : tranches réglées sur la valeur horaire de
+    l'indice PredictionMarketOdds.com (moyenne pondérée des marchés de prédiction) à 12 h, heure de l'Est. Chance = marche aléatoire
+    depuis la valeur brute du moment, écart-type mesuré sur 180 jours du sous-jacent Polymarket, queue épaisse (indice_cotes.py).
+    Expérience du 15/11/2026 (experiments/indice_cotes.md, piste n° 65) : 11 événements réglés (Sénat 2026, présidentielle 2028) ;
+    log-score modèle −1,30 contre prix −1,63 à J-1 ; vrais échanges +7 à +29 % sur 9 à 18 paris (6-9 événements, 27 cellules) mais
+    profondeur faible (≥ 200 parts : 2 à 5 paris). INDICE FAIBLE : une seule série, tirages liés."""
+
+    strategy_id = "indice_cotes"
+    ref_key = "indice_cotes"
+    borne = 0.02
+
+
 class MississippiPlusBas(SeismesMarche):
     """« Will the lowest St. Louis / Baton Rouge river level be <tranche> by <date>? » : plus bas relevé quotidien USGS de la fenêtre.
     Chance = plus bas déjà publié + relevés à venir simulés autour de la prévision officielle du NWS (API NWPS : elle route l'onde déjà
@@ -2095,4 +2108,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, MeteoSousCli, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, PluieHk, RtCompteCritiques, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, MeteoSousCli, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, IndiceCotes, MississippiPlusBas, PluieHk, RtCompteCritiques, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
