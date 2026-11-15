@@ -3,6 +3,9 @@
 Pour chaque année passée : gain maximal du 09/11 au 31/12 divisé par le rythme connu au 09/11
 (pente des N jours précédents × 52 jours). Données : donnees/dette.json
 (www.treasurydirect.gov/NP_WS/debt/search?startdate=2015-01-01&enddate=...&format=json, sans clé).
+15/11/2026 : `/NP_WS/` est INTERDIT par robots.txt de TreasuryDirect (relevé du 12/11 fait sans le lire) : ne pas relancer ce
+relevé ; même série, permise : api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny
+(champs record_date, tot_pub_debt_out_amt, debt_held_public_amt, intragov_hold_amt).
 """
 import bisect
 import datetime as dt

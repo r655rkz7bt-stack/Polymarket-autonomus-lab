@@ -506,6 +506,21 @@ def test_many_legs_of_one_event_in_an_hour_are_flagged():
     assert not enquete.jambes_meme_evenement({"market_maker_v1.0.0": _ledger(*legs)}, NOW - timedelta(days=3))
 
 
+def test_legs_wanted_by_the_class_not_only_by_the_portfolio_name():
+    """15/11/2026 : compteur_truth (classe compteur_tweets) achète le NON de 4 tranches disjointes de la semaine de Trump
+    (20-39, 40-59, 60-79, 80-99 : au plus une perd) ; le contrôle ne regardait que le nom du portefeuille."""
+    t = NOW - timedelta(hours=3)
+    legs = [_e("BUY", t + timedelta(minutes=i), token_id=f"t{i}", market_id=f"m{i}", event_id="1354153", outcome="No", price="0.83",
+               shares="80", fee="0", strategy_id="compteur_truth", strategy_version="2.0.0", extra={}) for i in range(4)]
+    entries = {"compteur_truth_v2.0.0": _ledger(*legs)}
+    assert enquete.jambes_meme_evenement(entries, NOW - timedelta(days=3))  # sans la config : signalé (nom seul)
+    configs = {"compteur_truth": {"class": "compteur_tweets", "version": "2.0.0"}}
+    assert not enquete.jambes_meme_evenement(entries, NOW - timedelta(days=3), configs=configs)
+    # Une stratégie de match garde son signalement même avec la config.
+    other = {"apres_echeance_v1.0.0": _ledger(*legs)}
+    assert enquete.jambes_meme_evenement(other, NOW - timedelta(days=3), configs={"apres_echeance": {"class": "apres_echeance"}})
+
+
 def test_strategies_retired_for_inactivity_are_reported_once_and_not_called_silent():
     """23/10/2026 : paire_oui_non, coherence_match… retirées après 3 jours sans écart, mots_prononces_nfl après 2 jours sans match :
     le retrait est définitif, il doit sortir comme tel (et pas comme dix « muettes » sans fin)."""
