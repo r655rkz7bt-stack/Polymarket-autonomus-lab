@@ -519,6 +519,32 @@ openrouter_semaine:
     mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
+indice_cotes:
+  explication: "Polymarket demande où sera, à midi un jour donné, la moyenne des cotes de tous les sites de paris (par exemple la chance des démocrates de gagner la présidentielle de 2028), par tranches de 2 points. Cette moyenne bouge très lentement. On part de sa valeur de maintenant, on regarde de combien elle bouge d'habitude en quelques jours, et on achète la tranche que le prix sous-estime nettement."
+  class: indice_cotes
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-15"
+  hypothesis: >
+    Expérience audacieuse, avantage de RÈGLE et de cohérence entre marchés liés (experiments/indice_cotes.md, 15/11/2026, piste n° 65) :
+    la tranche est un dérivé d'un prix coté toute la journée, dont la variation sur quelques jours est mesurable (écart-type ≈ 1,2 point
+    sur 5 jours) ; les petits marchés de tranches (2-5 k$) se trompent sur les queues. Rejeu sur 11 événements réglés (Sénat 2026,
+    présidentielle 2028) : log-score −1,30 contre −1,63 au prix à J-1, vrais échanges +7 à +29 % (9-18 paris, 27 cellules), profondeur
+    faible. Une perte apprendrait que le sous-jacent saute plus que sa variance passée (nouvelles politiques) ou que la foule de ces
+    tranches lit déjà l'indice.
+  params:
+    min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance − incertitude − prix demandé − frais (politics_fees) : écart brut ≥ 0,08 comme au rejeu
+    uncertainty:    {value: 0.04, min: 0.0, max: 0.30}    # écart-type mesuré sur une seule série
+    min_price:      {value: 0.08, min: 0.01, max: 0.50}
+    max_price:      {value: 0.92, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 200}       # indice publié chaque heure, source relue chaque heure
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 30, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}           # tranches d'une même date : une seule valeur
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
 mississippi_plus_bas:
   explication: "Polymarket demande quel sera le niveau le plus bas du Mississippi à Saint-Louis et à Baton Rouge d'ici le 30 novembre, par tranches de hauteur. Le service météo américain publie chaque jour une prévision du niveau qui tient compte de l'eau déjà en route depuis l'amont. On part du plus bas déjà mesuré, on simule les jours restants autour de cette prévision, et on achète la tranche que le prix sous-estime nettement."
   class: mississippi_plus_bas

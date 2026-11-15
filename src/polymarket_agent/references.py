@@ -491,6 +491,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["taux_immobilier"] = attach_immobilier(markets, db, now)
     from polymarket_agent.openrouter import attach_openrouter   # 13/11/2026 : jetons d'OpenRouter de la semaine (openrouter_semaine)
     counts["openrouter"] = attach_openrouter(markets, db, now)
+    from polymarket_agent.indice_cotes import attach_indice   # 15/11/2026 : tranches de l'indice PredictionMarketOdds (indice_cotes)
+    counts["indice_cotes"] = attach_indice(markets, db, now)
     from polymarket_agent.mississippi import attach_mississippi   # 13/11/2026 : plus bas niveau du Mississippi (mississippi_plus_bas)
     counts["mississippi"] = attach_mississippi(markets, db, now)
     from polymarket_agent.pluie_hk import attach_pluie_hk   # 14/11/2026 : pluie du mois à Hong Kong (pluie_hk)

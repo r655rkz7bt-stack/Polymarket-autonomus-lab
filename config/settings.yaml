@@ -138,6 +138,9 @@ scanner:
               # 14/11/2026 : étiquette rotten-tomatoes (101453) : « Will "<film>" score at least <N> on the Rotten Tomatoes Tomatometer? »
               # (`rt_compte_critiques`), 50-2 000 $ par seuil, carnets souvent très larges ; horizon 21 jours (films pas encore sortis dehors)
               101453: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999, max_horizon_hours: 504},
+              # 15/11/2026 : étiquette derivatives (100418) : tranches « <X> odds <a>-<b>% on <date> » sur l'indice PredictionMarketOdds
+              # (`indice_cotes`), 2-5 k$ par tranche ; aussi les barrières « odds hit __ by December 31 » (non jouées)
+              100418: {pages: 1, min_liquidity: 100, min_volume_24h: 0, max_spread: 0.30, max_favorite_price: 0.9999, max_horizon_hours: 504},
               103041: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 0.80, max_favorite_price: 0.9999, max_horizon_hours: 2500},
               105721: {pages: 1, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999},
               # 12/11/2026 : étiquette art-auction (1305) : « <artiste>'s “<œuvre>” Sale Price » (`encheres_estimation`), 2-7 k$ par tranche, peu de volume du jour
@@ -352,6 +355,7 @@ sources:
   taux_tresor: {enabled: true, every_minutes: 60}            # 12/11/2026 (piste n° 43) : CSV « Daily Treasury Par Yield Curve Rates » de l'année (home.treasury.gov, arbitre des marchés « Treasury yield hit / dip below ») pour taux_tresor_barriere ; robots.txt : tout permis ; gratuit, sans clé
   taux_immobilier: {enabled: true, every_minutes: 60}        # 13/11/2026 (piste n° 46) : PMMS_history.csv de Freddie Mac (arbitre des marchés « 30-year Mortgage Rate hit »), pour taux_immobilier_barriere ; robots.txt : /pmms/docs/ permis ; gratuit, sans clé
   openrouter: {enabled: true, every_minutes: 60}             # 13/11/2026 (piste n° 50) : api/frontend/v1/rankings (graphique hebdomadaire, 7 jours, dernier jour) d'OpenRouter, arbitre des marchés « token usage week of », pour openrouter_semaine ; robots.txt « Allow: / » ; gratuit, sans clé
+  indice_cotes: {enabled: true, every_minutes: 60}           # 15/11/2026 (piste n° 65) : latest.json de PredictionMarketOdds.com (valeurs horaires de l'indice), arbitre des tranches « <X> odds <a>-<b>% on <date> », pour indice_cotes ; pas de robots.txt (404) ; gratuit, sans clé
   mississippi: {enabled: true, every_minutes: 60}           # 13/11/2026 (piste n° 52) : relevés USGS (07010000, 07374000) et prévisions NWPS (EADM7, BTRL1) du Mississippi, arbitre des marchés « Lowest Mississippi level » ; gratuit, sans clé
   pluie_hk: {enabled: true, every_minutes: 20}             # 14/11/2026 (piste n° 32) : pluie du mois à l'Observatoire de Hong Kong (Daily Extract, RYES, pluie de l'heure RF023 relevée toutes les 20 min pour additionner le jour en cours) + ensemble ECMWF Open-Meteo ; gratuit, sans clé
   rotten_tomatoes: {enabled: true, every_minutes: 60}      # 14/11/2026 (piste n° 56) : page Rotten Tomatoes (/m/<film>, permis par robots.txt ; jamais /napi/) de chaque film d'un marché « Rotten Tomatoes Score » ouvert : compte exact des critiques, pour rt_compte_critiques ; gratuit, sans clé
