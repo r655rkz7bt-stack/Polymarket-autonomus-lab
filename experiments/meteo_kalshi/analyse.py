@@ -62,7 +62,7 @@ for e in PE:
         pr = [float(x) for x in m["prix"]] if m["prix"] else []
         bins.append((b, m["jetons"][0]))
         if pr and pr[0] > 0.99: win = b
-    cli = next((float(m["expiration_value"]) for m in K[ke]["marches"] if m.get("expiration_value")), None)
+    cli = next((float(m["expiration_value"]) for m in K[ke]["marches"] if re.fullmatch(r"-?\d+(\.\d+)?", str(m.get("expiration_value") or ""))), None)
     if win is None or cli is None: continue
     regle = "metar" if "hourly temperature remark" in e["desc"] else ("wunderground" if "wunderground" in e["desc"].lower() else "weather.gov")
     T = int(dt.datetime(d.year, d.month, d.day, tzinfo=dt.timezone.utc).timestamp() + H_DEC * 3600)
