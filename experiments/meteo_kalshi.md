@@ -1,4 +1,4 @@
-# Températures maximales du jour : Kalshi (rapport climatologique) contre Polymarket (METAR) — piste n° 62 (15/11/2026)
+# Températures maximales du jour : Kalshi (rapport climatologique) contre Polymarket (METAR) — piste n° 62 (15/11/2026 ; règle générale écartée, tranche sous la médiane CLI : indice faible → fantôme `meteo_sous_cli`)
 
 Passage du chercheur de 6 h. Idée neuve (point 4 de la consigne, « cohérence entre marchés liés », et point 2, « lire les règles ») :
 Kalshi (`KXHIGHAUS`, `KXHIGHMIA`, `KXHIGHDEN`, `KXHIGHLAX`, marchés très échangés) et Polymarket (« Highest temperature in
@@ -33,6 +33,29 @@ Loi Kalshi à l'instant T (milieu de la dernière bougie finie, normalisé), dé
 - Lecture : le « prix » horaire des tranches de température est un milieu de carnet (le défaut du 22/10 et du 04/11) ; quand un
   vrai vendeur est là, il vend au prix que Kalshi donne déjà (les échanges réels gagnent comme leur prix).
 
-## Verdict : **écartée** (aux vrais échanges, Kalshi n'apprend rien au preneur Polymarket)
+## Verdict de la règle générale : **écartée** (aux vrais échanges, « Kalshi décalé contre prix » n'apprend rien au preneur Polymarket ; voir la suite)
 Ce qui reste utile : l'écart de mesure (≈ 1/3 des jours, le maximum METAR horaire est 1 °F sous le maximum CLI), à tout modèle
 météo qui prévoit la valeur NWS d'un jour pour un marché Polymarket. Ne pas relancer sans un test de profondeur d'emblée.
+
+## Suite du même passage : la foule retire-t-elle l'écart ? (`position_tranche.py <parts> <queue max>`)
+Hypothèse posée AVANT le calcul : si la foule de Polymarket lit les prévisions NWS (maximum CLI) sans retirer l'écart METAR, la
+tranche qui contient la médiane CLI de Kalshi (k = 0) est trop chère et celle du dessous (k = −1) trop bon marché. Vrais achats
+preneurs du OUI de J−1 12 h à J 20 h UTC (premier échange qualifiant par jeton), loi Kalshi NON décalée à l'heure de l'échange,
+frais `weather_fees` (5 % × p × (1 − p), les marchés de température sont de nouveau payants le 15/11) comptés partout.
+- Premier passage : une queue Kalshi (« < 61 ») qui porte presque toute la loi était posée sur deux degrés : « médiane » fausse.
+  Corrigé (loi refusée si une queue dépasse 0,30 ou 0,15).
+- Règle **METAR** (la règle actuelle), queues ≤ 0,15 : **k = −1 : 28 gagnés pour 24,0 payés (≥ 20 parts, 75 paris, +16,5 %),
+  23 pour 19,5 (≥ 100, 61 paris, +17,9 %)** ; k = 0 : +0,3 % / −4,9 % ; k = +1 : **−36 % / −33 %** ; k = −2 : −60 % / −49 %.
+  Avec queues ≤ 0,30 : k = −1 +23 % / +18 %.
+- Règle weather.gov (août → 20/10) : k = −1 −4,6 % / +4,3 % ; rien.
+- Lecture : sous la règle METAR, la foule paie la tranche du dessus et néglige celle du dessous, comme si elle lisait le maximum
+  du jour entier. z ≈ 1,4 (81 paris au plus, 104 jours, ≈ 8 réglages regardés) : **indice faible, sur la seule règle en cours**.
+- Écart CLI − METAR appris (EM, 104 jours METAR) : 0 °F 0,36 ; 1 °F 0,565 ; 2 °F 0,075 (weather.gov : 0,364 / 0,53 / 0,086 / 0,02).
+
+## Fantôme `meteo_sous_cli` (expérience audacieuse, même passage)
+Source `meteo_kalshi` (4 appels publics à Kalshi toutes les 30 min, `meteo_kalshi.py`), étiquettes de ville du scanner (austin
+104277, miami 100937, denver 102930, los-angeles 100743, horizon 60 h). Seule la tranche k = −1 reçoit une chance (Kalshi décalé),
+OUI seulement, avantage net ≥ 0,03 sur la borne basse (chance − 0,03), prix 0,10-0,60, une tranche par ville et par jour,
+Kelly entier. Cycle local du 15/11 06 h 26 : 3 tranches rattachées, 1 achat (Los Angeles 15/11, « 70-71 °F » à 0,127 pour
+0,247 ; Kalshi : médiane CLI 73 °F ; Polymarket met 0,72 sur « 72-73 »). À juger sur ≥ 40 jours réglés (fin décembre) avant
+toute place au capital principal.

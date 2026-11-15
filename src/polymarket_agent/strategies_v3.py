@@ -1689,6 +1689,19 @@ class BoxOfficeAnnee(SeismesMarche):
     ref_key = "box_office"
 
 
+class MeteoSousCli(SeismesMarche):
+    """« Highest temperature in <ville> on <date>? » (Austin, Miami, Denver, Los Angeles) : Polymarket règle sur le plus haut relevé METAR
+    HORAIRE, Kalshi (mêmes stations) sur le maximum CLI du jour entier ; le maximum horaire est 1 °F plus bas plus d'une fois sur deux
+    (meteo_kalshi.py). On n'achète que le OUI de la tranche Polymarket juste sous la médiane CLI de Kalshi, quand le prix demandé est sous
+    la chance décalée − frais − `min_net_edge`. Expérience audacieuse du 15/11/2026 (experiments/meteo_kalshi.md, piste n° 62) : aux vrais
+    échanges, frais compris, queues Kalshi ≤ 0,15, règle METAR : cette tranche gagne 28 fois pour 24,0 payés (≥ 20 parts), 23 pour 19,5
+    (≥ 100) ; la tranche du dessus perd 33 à 36 % ; weather.gov ≈ 0 : indice faible (z ≈ 1,4) ; une règle générale « Kalshi décalé
+    contre prix » ne gagne rien aux vrais échanges."""
+
+    strategy_id = "meteo_sous_cli"
+    ref_key = "meteo_kalshi"
+
+
 class RougeoleCompteur(SeismesMarche):
     """« Will there be at least <N> measles cases in the U.S. by <date>? » : compteur du CDC lu en direct (mis à jour chaque semaine),
     nombre de mises à jour restantes avant l'échéance, hausse par mise à jour tirée du journal `rougeole:histo` (rougeole.py) ; une
@@ -2082,4 +2095,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, PluieHk, RtCompteCritiques, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, MeteoSousCli, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, MississippiPlusBas, PluieHk, RtCompteCritiques, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

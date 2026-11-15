@@ -477,6 +477,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["rougeole"] = attach_rougeole(markets, db, now)
     from polymarket_agent.michigan import attach_michigan   # 12/11/2026 : préliminaire du Michigan (michigan_preliminaire)
     counts["michigan"] = attach_michigan(markets, db, now)
+    from polymarket_agent.meteo_kalshi import attach_meteo_kalshi   # 15/11/2026 : Kalshi décalé de l'écart METAR (meteo_sous_cli)
+    counts["meteo_kalshi"] = attach_meteo_kalshi(markets, db, now)
     from polymarket_agent.enso import attach_enso   # 12/11/2026 : chances du CPC contre les marchés « peak RONI » (el_nino_cpc)
     counts["enso"] = attach_enso(markets, db, now)
     from polymarket_agent.seismes_annee import attach_seismes_annee   # 12/11/2026 : marchés annuels de séismes (seismes_annee)

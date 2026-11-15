@@ -354,6 +354,10 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
     # avant le final (michigan.py, `michigan_preliminaire`).
     from polymarket_agent.michigan import fetch_michigan
     snapshot("michigan", lambda cfg: factories.get("michigan", lambda c: fetch_michigan(http, now))(cfg), "ref:michigan")
+    # Températures maximales du jour (15/11/2026, piste n° 62) : loi de Kalshi (maximum CLI) aux stations des marchés Polymarket
+    # (meteo_kalshi.py, `meteo_sous_cli`).
+    from polymarket_agent.meteo_kalshi import fetch_kalshi_meteo
+    snapshot("meteo_kalshi", lambda cfg: factories.get("meteo_kalshi", lambda c: fetch_kalshi_meteo(http, now))(cfg), "ref:meteo_kalshi")
     # El Niño (12/11/2026, piste n° 39) : chances chiffrées de la discussion ENSO mensuelle du CPC (source du règlement des marchés
     # « peak RONI ») et dernière RONI publiée (enso.py, `el_nino_cpc`). `enso:histo` garde chaque discussion telle que lue la première fois.
     from polymarket_agent.enso import fetch_enso
