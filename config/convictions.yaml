@@ -207,3 +207,15 @@ convictions:
     sources: ["https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/W/measurements.json?start=P2D", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/KAUB/WV/measurements.json", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ/W/measurements.json?start=PT20H", "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAXAU/W/measurements.json?start=PT20H", "https://gamma-api.polymarket.com/markets/6433563"]
     ecrit_le: "2026-11-14"
     abandon: false
+  - id: dota2-steam-novembre-pas-plus-que-octobre
+    marche: "5996367"
+    question: "Will Dota 2 average more Steam players in November"
+    issue: "No"
+    probabilite: 0.96
+    probabilite_basse: 0.92
+    expire: "2026-11-30"
+    mise_max: 0.03
+    raison: "Réglé sur la colonne « Avg. Players » de SteamCharts (app 570) : octobre 2026 = 648 200 (table lue le 15/11 11 h UTC). Novembre, moyenne horaire du 1er au 15/11 (chart-data.json de la même source) ≈ 523 000, jours entre 450 000 et 642 000 ; pour dépasser octobre, les 15,5 derniers jours devraient tenir ≈ 765 000 en moyenne, au-dessus de tout mois depuis 15 mois (maximum 648 200) et même de la seconde moitié d'octobre (≈ 669 000, avec 4 jours d'événement à 750-840 000). Cinq estimations du OUI 0,01/0,02/0,02/0,03/0,05, médiane 0,02 ; la source tranche à moitié, marché presque sans échanges (84 $ de liquidité, carnet 0,14/0,36) : pas de rapprochement vers son milieu, incertitude large (patch géant, panne de SteamCharts → 50-50). Relire la moyenne de novembre à chaque passage ; abandonner si la moyenne glissante du mois dépasse 600 000."
+    sources: ["https://steamcharts.com/app/570", "https://steamcharts.com/app/570/chart-data.json", "https://gamma-api.polymarket.com/markets/5996367"]
+    ecrit_le: "2026-11-15"
+    abandon: false

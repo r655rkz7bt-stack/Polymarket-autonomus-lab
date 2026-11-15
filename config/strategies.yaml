@@ -100,10 +100,12 @@ compteur_truth:
     only_trump:     {value: 1, min: 0, max: 1}
 
 favori_politique_quasi_certain:
-  explication: "En politique, on achète ce qui est presque sûr (97 %) pour gagner un tout petit peu, mais souvent."
-  # Favori n°1 bis : politique et géopolitique 0,97-0,995 (« presque acquis », souvent un résultat
-  # connu en attente de règlement) : 99,6 % gagnés pour 98,8 % de prix (+0,8 % après frais) ;
-  # 0,95-0,98 : +2,8 %. Petit gain par pari, mais argent rendu vite. Une seule perte coûte cher.
+  explication: "En politique, on achète ce que le marché croit presque sûr (97 %) pour gagner un tout petit peu, mais souvent ; l'argent reste souvent bloqué deux semaines."
+  # Favori n°1 bis : politique et géopolitique 0,97-0,995 : 99,6 % gagnés pour 98,8 % de prix (+0,8 % après frais) ;
+  # 0,95-0,98 : +2,8 %. Petit gain par pari, une seule perte coûte cher. 15/11/2026 (enquête
+  # 2026-11-15_midi_capital_bloque_quasi_certain.md) : 5 achats sur 27 seulement étaient un résultat connu en attente de
+  # règlement ; 765 € sur 1 082 € portent sur des événements À VENIR à plus de 7 jours (horizon moyen 14 j, fantôme sans
+  # argent en 3 jours). Réglages inchangés faute de rejeu.
   class: naive_favorite
   familles: [politics, sans_frais]
   enabled: true
