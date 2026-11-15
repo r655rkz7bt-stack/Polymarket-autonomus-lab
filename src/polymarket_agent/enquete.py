@@ -634,10 +634,35 @@ def meme_pari_prix_differents(entries: dict[str, list[dict]], min_common: int = 
                      [r[1] for r in rows])]
 
 
+def regles_arene(root=None) -> dict:
+    """Règles de l'arène (config/promotion.yaml) ; {} si le fichier manque (journaux relus hors du dépôt)."""
+    from pathlib import Path
+    try:
+        import yaml
+        base = Path(root) if root else Path(__file__).resolve().parents[2]
+        return yaml.safe_load((base / "config" / "promotion.yaml").read_text(encoding="utf-8")) or {}
+    except (OSError, ValueError, ImportError):
+        return {}
+
+
+def _retrait_annonce(name: str, born: datetime, regles: dict | None) -> str:
+    """15/11/2026 (experiments/enquetes/2026-11-15_soir_el_nino_retiree_par_le_menage.md) : `el_nino_cpc` (discussion du CPC
+    le 2e jeudi du mois) a été signalée « muette » le 15/11 à 1 h, jugée « voulue », puis RETIRÉE DÉFINITIVEMENT à 11 h 31 par le
+    ménage (aucune opération ni position en 3 jours) : même défaut que `classement_appstore` le 30/10. Une muette non protégée
+    dit maintenant l'heure de son retrait, pour qu'une stratégie de calendrier soit mise dans `jamais_retirer` avant."""
+    days = (regles or {}).get("retirer_inactives_apres_jours")
+    keep = tuple(str(k) for k in (regles or {}).get("jamais_retirer") or ())
+    if not days or (keep and name.startswith(keep)):
+        return ""
+    return (f" — RETRAIT DÉFINITIF pour inactivité le {(born + timedelta(days=float(days))).isoformat(timespec='minutes')[:16]}"
+            " si elle n'achète rien : si elle attend une date (publication mensuelle, fenêtre hebdomadaire), l'ajouter à `jamais_retirer`")
+
+
 def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, hours: float = 48,
-            abstentions: dict | None = None) -> list[dict]:
+            abstentions: dict | None = None, regles: dict | None = None) -> list[dict]:
     """Stratégies sans aucun achat. `abstentions` (21/10/2026, clé « abstentions » de la base, écrite
-    à chaque cycle) : marchés vus et raisons les plus fréquentes du dernier cycle, ajoutées au constat."""
+    à chaque cycle) : marchés vus et raisons les plus fréquentes du dernier cycle, ajoutées au constat.
+    `regles` (config/promotion.yaml, 15/11/2026) : annonce du retrait pour inactivité d'une muette non protégée."""
     silent = []
     seen = (abstentions or {}).get("portefeuilles") or {}
     gone = retirees(entries)  # déjà retirées par l'arène : plus jouées, donc « muettes » à vie (voir retraits_inactifs)
@@ -648,7 +673,7 @@ def muettes(entries: dict[str, list[dict]], active: list[str], now: datetime, ho
             for info in (seen.get(f"fantome:{name}") or {}).values():
                 reasons = ", ".join(f"{k} ×{v}" for k, v in (info.get("raisons") or {}).items()) or "aucune raison notée"
                 why = f" — dernier cycle : {info.get('marches', 0)} marchés vus, {info.get('propositions', 0)} propositions ; {reasons}"
-            silent.append(f"{name} (née le {rows[0]['ts'][:10]}){why}")
+            silent.append(f"{name} (née le {rows[0]['ts'][:10]}){why}{_retrait_annonce(name, _ts(rows[0]), regles)}")
     return [_finding("muettes", A_REGARDER, f"{len(silent)} stratégie(s) sans aucun achat depuis plus de {hours:.0f} h",
                      "Une stratégie muette ne teste rien : lire ses abstentions (journal du cycle, tableau de bord) "
                      "et corriger le filtre ou la source qui la bloque.", silent)] if silent else []
@@ -1420,10 +1445,12 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
         max_principal: float = 0.10, days: float = 3, abstentions: dict | None = None,
         audit: dict | None = None, sources: dict | None = None, parts: dict[str, float] | None = None,
         textes: dict[str, str] | None = None, depuis: dict[str, str] | None = None,
-        seismes_rows: list[dict] | None = None, convictions: list[dict] | None = None) -> list[dict]:
+        seismes_rows: list[dict] | None = None, convictions: list[dict] | None = None,
+        regles: dict | None = None) -> list[dict]:
     """Tous les contrôles ; les achats sont regardés sur les `days` derniers jours (les défauts déjà
     corrigés ne reviennent pas à chaque passage), les résultats sur toute la vie des stratégies."""
     since = now - timedelta(days=days)
+    regles = regles_arene() if regles is None else regles
     findings = (cycle_arrete(entries, now) + copie_fidele(entries, since) + mises(entries, max_principal, since=since)
                 + champion_sans_avantage(entries, now) + estimation_perimee(entries, since)
                 + chance(entries, copied=copied_by_principal(entries, now))
@@ -1431,7 +1458,7 @@ def run(entries: dict[str, list[dict]], configs: dict, active: list[str], now: d
                 + deux_camps(entries, since) + jambes_meme_evenement(entries, since, configs=configs) + plafond_par_evenement(entries, configs, since) + achats_en_jeu(entries, copied_by_principal(entries, now), since)
                 + filles_periode(entries, configs) + mere_muette_fille_active(entries, configs, now) + filtre_prix(entries, configs, since)
                 + filtre_delai(entries, configs, since) + sport_hors_match(entries, configs, since)
-                + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions)
+                + meme_pari_prix_differents(entries) + muettes(entries, active, now, abstentions=abstentions, regles=regles)
                 + retraits_inactifs(entries, now) + acheteuses_arretees(entries, active, now, abstentions=abstentions) + familles_vides(abstentions, entries) + refus_controleur(abstentions) + sources_vides(sources) + sources_retirees(sources) + sources_indisponibles(sources)
                 + capital_bloque(entries, active, now) + jetons_sans_valeur(entries, since) + reglements_50_50(entries) + tresorerie_rejouee(entries)
                 + positions_oubliees(entries, now, active=active) + audit_anomalies(audit) + posees_en_jeu(entries) + principal_posee_en_match(entries)

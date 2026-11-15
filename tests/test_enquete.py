@@ -842,3 +842,27 @@ def test_more_markets_held_in_one_event_than_max_per_event_is_grave():
     assert not enquete.plafond_par_evenement({"taux_tresor_barriere_v2.0.0": _ledger(rows[0], rows[1], leg(3, 8, "autre"))}, cfg, t - timedelta(days=3))
     old = [leg(i, m - 240) for i, m in ((1, 0), (2, 4), (3, 8))]
     assert not enquete.plafond_par_evenement({"taux_tresor_barriere_v2.0.0": _ledger(*old)}, cfg, t - timedelta(days=3))
+
+
+def test_silent_unprotected_strategy_announces_its_definitive_retirement():
+    """15/11/2026 (experiments/enquetes/2026-11-15_soir_el_nino_retiree_par_le_menage.md) : `el_nino_cpc_v2.0.0`, née le 12/11 vers
+    11 h 31, signalée « muette » le 15/11 à 1 h (jugée voulue : elle attend la discussion mensuelle du CPC), puis retirée
+    définitivement à 11 h 31 par le ménage (aucune opération ni position en 3 jours). Le constat dit maintenant l'heure du retrait
+    d'une muette non protégée, et rien pour une stratégie de `jamais_retirer`."""
+    born = datetime(2026, 11, 12, 11, 31, tzinfo=timezone.utc)
+    now = datetime(2026, 11, 15, 1, 0, tzinfo=timezone.utc)
+    entries = {"principal": _ledger(born=born), "el_nino_cpc_v2.0.0": _ledger(born=born),
+               "suivre_inities_v2.0.0": _ledger(born=born)}
+    regles = {"retirer_inactives_apres_jours": 3, "jamais_retirer": ["suivre_inities"]}
+    found = enquete.muettes(entries, ["el_nino_cpc_v2.0.0", "suivre_inities_v2.0.0"], now, regles=regles)[0]["exemples"]
+    assert "RETRAIT DÉFINITIF pour inactivité le 2026-11-15T11:31" in found[0] and found[0].startswith("el_nino_cpc_v2.0.0")
+    assert found[1] == "suivre_inities_v2.0.0 (née le 2026-11-12)"
+    # Sans règles (journaux relus hors du dépôt) : constat inchangé.
+    assert enquete.muettes(entries, ["el_nino_cpc_v2.0.0"], now)[0]["exemples"] == ["el_nino_cpc_v2.0.0 (née le 2026-11-12)"]
+    # Les vraies règles : el_nino_cpc relancée en 2.1.0 et protégée (2e jeudi du mois seulement).
+    regles = enquete.regles_arene()
+    assert "el_nino_cpc" in regles["jamais_retirer"] and regles["retirer_inactives_apres_jours"]
+    import yaml
+    from pathlib import Path
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "strategies.yaml").read_text(encoding="utf-8"))
+    assert cfg["el_nino_cpc"]["enabled"] and cfg["el_nino_cpc"]["version"] != "2.0.0"
