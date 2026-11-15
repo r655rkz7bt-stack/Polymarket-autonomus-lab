@@ -33,5 +33,9 @@ Jour 15 → famille 4 (faite à 1 h) ; ici le constat nouveau de l'enquête auto
   le modèle sur-estime (+2,8 gagnés) : pas de défaut de code, indice faible d'optimisme, à relire au 20/11.
 
 ## Vérifié sans défaut
+Famille 1 : principal, 291 battements du 14/11 06 h au 15/11 06 h, plus grand trou 11 min, aucun ordre (aucun champion), 1 000 €
+disponibles : conforme.
+Ma propre construction (piste n° 62) : une queue Kalshi (« < 61 » à 0,94) posée sur deux degrés faussait la « médiane » ; corrigé
+(loi refusée si une queue dépasse 0,15) avant le test, puis le fantôme tiré de ce test a été éteint hors échantillon.
 Convictions ouvertes relues avec leurs prix (Google 0,855, Rihanna 0,24, Michigan « pas 55 » NON 0,9625, Rhin NON 0,985, dette
 milieu 0,655 sur carnet mince) : rien ne bouge contre elles.
