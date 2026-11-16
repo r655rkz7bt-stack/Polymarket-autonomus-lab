@@ -478,6 +478,10 @@ pib_canada_anticipe:
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
 taux_tresor_barriere:
+  # 16/11/2026 (21 h, experiments/enquetes/2026-11-16_soir_taux_tresor_k_trop_haut.md) : son K = 1,3 SURESTIMAIT la chance de toucher
+  # (36 ans de clôtures : 0,34 prévu pour 0,24 observé à z = 1). Elle n'achète plus (`max_proposals_per_cycle` 0) mais reste chargée
+  # jusqu'au règlement de ses 17 positions (novembre le 01/12, « before 2027 » le 31/12) : elles jugent l'ancienne hypothèse.
+  # Le module calcule maintenant avec la loi empirique : la suite est `taux_tresor_empirique`.
   explication: "Polymarket demande si le taux d'intérêt de l'État américain à 2, 5, 10 ou 30 ans montera (ou descendra) jusqu'à un certain niveau ce mois-ci. Le règlement ne regarde que le taux de fin de journée publié par le Trésor, pas les mouvements pendant la journée. On calcule chaque nuit la chance que l'un des taux de fin de journée restants touche le niveau, en supposant des mouvements un peu plus grands que ceux des deux derniers mois, et on achète quand le prix s'en écarte."
   class: taux_tresor_barriere
   enabled: true
@@ -497,10 +501,37 @@ taux_tresor_barriere:
     max_stale_hours: {value: 3, min: 0.1, max: 24}        # source relue chaque heure, chance donnée la nuit seulement
     max_extra_ticks: {value: 1, min: 0, max: 5}
     max_candidates: {value: 120, min: 0, max: 400}
-    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_proposals_per_cycle: {value: 0, min: 0, max: 20}   # 16/11/2026 : n'achète plus (voir plus haut)
     max_per_event:  {value: 2, min: 1, max: 10}           # seuils d'un même événement : une seule trajectoire
     mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
+
+taux_tresor_empirique:
+  explication: "Polymarket demande si le taux d'intérêt de l'État américain à 2, 5, 10 ou 30 ans montera (ou descendra) jusqu'à un certain niveau d'ici la fin du mois ou de l'année. Seul compte le taux de fin de journée publié par le Trésor. On regarde, dans 36 ans de taux de fin de journée, combien de fois le taux a vraiment bougé autant en autant de jours (à agitation égale), et on achète quand le prix dit que c'est bien moins probable que ça."
+  class: taux_tresor_barriere
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-16"
+  hypothesis: >
+    Expérience audacieuse, suite de taux_tresor_barriere (experiments/taux_tresor.md, « Étalonnage sur 36 ans », 16/11/2026) : chance =
+    loi EMPIRIQUE des excursions maximales des clôtures (1990 → 07/2026, divisées par l'écart-type des 60 jours), apprise sur 1990-2015 et
+    meilleure que toute gaussienne sur 2016-2026 (log-score −0,3761 contre −0,3788 pour K 1,0 et −0,3918 pour K 1,3, 70 000 barrières).
+    Le 16/11, même avec ce modèle étalonné, le marché paie les seuils hauts moins cher que l'histoire (5 ans « 5,25 % avant 2027 » 0,29 contre
+    un vendeur à 0,19 ; 10 ans « 5,5 % » 0,185 contre 0,10) : après une hausse de 60 points en 60 jours, il parie sur un retour en arrière.
+    Une perte apprendrait que ce retour est réel (les tendances fortes des taux s'essoufflent plus que l'histoire moyenne ne le dit) ;
+    un gain, que le marché sous-paie les queues après une tendance. Pas de vrais échanges dans le test (achats de nuit) : c'est une expérience.
+  params:
+    min_net_edge:   {value: 0.06, min: 0.0, max: 0.30}    # modèle étalonné : seuil plus bas que les 0,08 de K 1,3
+    uncertainty:    {value: 0.03, min: 0.0, max: 0.30}    # écart hors échantillon de la loi empirique : ≤ 0,02 en moyenne par case z × n
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.90, min: 0.50, max: 0.99}
+    max_stale_hours: {value: 3, min: 0.1, max: 24}
+    max_extra_ticks: {value: 1, min: 0, max: 5}
+    max_candidates: {value: 120, min: 0, max: 400}
+    max_proposals_per_cycle: {value: 3, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}
 
 taux_immobilier_barriere:
   explication: "Polymarket demande si le taux des prêts immobiliers à 30 ans aux États-Unis montera jusqu'à 8 % (ou descendra jusqu'à 6,25 %) avant la fin de l'année. Le règlement ne regarde que le chiffre publié chaque jeudi par Freddie Mac. On regarde, dans 36 ans d'historique, combien de fois le taux a vraiment bougé autant en autant de semaines, et on achète quand le prix dit que c'est bien plus probable que ça."

@@ -4,7 +4,10 @@
 la colonne de la durée dans « Daily Treasury Par Yield Curve Rates » (home.treasury.gov, une valeur par jour ouvré, au centième) :
 « hit » = une clôture ≥ niveau, « dip below » = une clôture < niveau, entre deux dates écrites dans la description. Chance = marche
 aléatoire sans dérive des clôtures restantes, écart-type = variations quotidiennes des 60 derniers jours ouvrés × K (K = 1,3 : sur
-septembre-octobre 2026, K 1,2-1,4 bat le prix, K 1,0 l'égale). Le marché connaît les cours en séance : la chance n'est donnée que
+septembre-octobre 2026, K 1,2-1,4 bat le prix, K 1,0 l'égale). 16/11/2026 (21 h, experiments/enquetes/2026-11-16_soir_taux_tresor_k_trop_haut.md) :
+sur 36 ans de clôtures (284 360 barrières), K 1,3 SURESTIME la chance de toucher (z = 1, 10 jours : 0,34 prévu, 0,24 observé) ; K 1,3
+venait de deux mois de tendance. En production : loi EMPIRIQUE des excursions maximales divisées par σ60 (`taux_tresor_excursions.json`,
+1990 → 07/2026 ; apprise sur 1990-2015, meilleure que toute gaussienne sur 2016-2026). Le marché connaît les cours en séance : la chance n'est donnée que
 la nuit (00-12 h UTC, marché américain fermé), comme dans le test (décision à 02 h UTC). Source : CSV de l'année (robots.txt :
 tout permis), 1 appel par heure.
 """
@@ -12,10 +15,13 @@ from __future__ import annotations
 
 import csv
 import io
+import json
 import math
 import random
 import re
 from datetime import date, datetime, timedelta
+from functools import lru_cache
+from pathlib import Path
 
 from polymarket_agent.http_client import HttpClient
 
@@ -93,7 +99,43 @@ def p_barriere(x0: float, sd: float, niveau: float, hausse: bool, n_jours: int, 
     return (hit + 0.5) / (n + 1)
 
 
-def chance(closes: list[list], niveau: float, hausse: bool, a: date, b: date, now: datetime, k: float = 1.3) -> float | None:
+@lru_cache(maxsize=1)
+def _table() -> dict:
+    return json.loads((Path(__file__).with_name("taux_tresor_excursions.json")).read_text())
+
+
+def survie(z: float, n: int) -> float:
+    """Part des excursions passées (en σ60) d'au moins z en n jours ouvrés. Au-delà de la table (n > 90 ou z > 8), mise à l'échelle
+    en √n d'une marche aléatoire : S_n(z) ≈ S_m(z √(m / n)) avec m ≤ 90 choisi pour rester dans la table."""
+    t = _table()
+    pas, zmax, nmax = t["pas_z"], (len(t["survie"]["1"]) - 1) * t["pas_z"], t["n_max"]
+    if n <= 0:
+        return 0.0
+    z = max(z, 0.0)
+    if n > nmax or z > zmax:
+        m = min(nmax, int(n * (0.95 * zmax / z) ** 2)) if z > 0 else nmax
+        if m < 1:
+            return t["survie"]["1"][-1]
+        z, n = z * math.sqrt(m / n), m
+    s = t["survie"][str(n)]
+    i = min(int(z / pas), len(s) - 2)
+    w = z / pas - i
+    return s[i] * (1 - w) + s[i + 1] * w
+
+
+def p_barriere_empirique(x0: float, sd: float, niveau: float, hausse: bool, n_jours: int) -> float:
+    """Chance qu'une clôture des n jours touche le niveau (au centième), loi empirique des excursions."""
+    if n_jours <= 0 or sd <= 0:
+        return 0.0
+    ecart = (niveau - x0) if hausse else (x0 - niveau)
+    if touche(x0, niveau, hausse):
+        return 1.0
+    # « dip below » = strictement sous le niveau : il faut descendre d'au moins écart + 0,01 au centième
+    besoin = ecart if hausse else ecart + 0.01
+    return survie((besoin - 0.005) / sd, n_jours)
+
+
+def chance(closes: list[list], niveau: float, hausse: bool, a: date, b: date, now: datetime, k: float | None = None) -> float | None:
     """Chance qu'une clôture de [a, b] touche le niveau, d'après les clôtures publiées AVANT aujourd'hui."""
     today = now.date()
     pts = [(date.fromisoformat(d), float(v)) for d, v in closes if date.fromisoformat(d) < today]
@@ -102,11 +144,14 @@ def chance(closes: list[list], niveau: float, hausse: bool, a: date, b: date, no
     if any(touche(v, niveau, hausse) for d, v in pts if a <= d <= b):
         return 1.0   # déjà touché : le marché se règle (rien à acheter)
     ch = [pts[i][1] - pts[i - 1][1] for i in range(len(pts) - 60, len(pts))]
-    sd = k * math.sqrt(sum(c * c for c in ch) / len(ch))
-    return p_barriere(pts[-1][1], sd, niveau, hausse, len(jours_restants(max(a, today), b)))
+    sd = math.sqrt(sum(c * c for c in ch) / len(ch))
+    n = len(jours_restants(max(a, today), b))
+    if k is None:
+        return p_barriere_empirique(pts[-1][1], sd, niveau, hausse, n)
+    return p_barriere(pts[-1][1], k * sd, niveau, hausse, n)
 
 
-def attach_taux(markets, db, now: datetime, k: float = 1.3, heures: tuple[int, int] = (0, 12), max_age_hours: float = 3.0) -> int:
+def attach_taux(markets, db, now: datetime, k: float | None = None, heures: tuple[int, int] = (0, 12), max_age_hours: float = 3.0) -> int:
     if db is None or not heures[0] <= now.hour < heures[1]:
         return 0   # en séance américaine, le marché voit le cours du jour, pas nous
     from polymarket_agent.references import _load

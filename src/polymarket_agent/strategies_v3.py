@@ -1415,6 +1415,13 @@ class SeismesMarche(_Base):
             have = {m.market_id for m in out}
             out += [m for m in markets if m.market_id not in have and not (getattr(m, "references", None) or {}).get(self.ref_key)
                     and (sm.weekly_target(m.event_title or "", m.end_date) or sm.daily_target(m.event_title or ""))]
+        elif self.ref_key == "taux_tresor":
+            # 16/11/2026 (21 h, experiments/enquetes/2026-11-16_soir_taux_tresor_raison.md) : même constat pour les taux du Trésor, chance
+            # donnée de 00 à 12 h UTC seulement (le marché voit la séance américaine) : « aucun marché vu n'a la référence » ×294 le soir.
+            from polymarket_agent import taux_tresor as tt
+            have = {m.market_id for m in out}
+            out += [m for m in markets if m.market_id not in have and not (getattr(m, "references", None) or {}).get(self.ref_key)
+                    and tt.question(m.question or "", getattr(m, "description", "") or "")]
         return out
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
@@ -1425,6 +1432,10 @@ class SeismesMarche(_Base):
             ref = (getattr(m, "references", None) or {}).get(self.ref_key)
             if not ref and self.ref_key == "seismes" and _yes_no(m):
                 out.abstain("semaine ou jour hors de la fenêtre testée (semaine : 0,5 à 6,6 jours avant la fin), ou catalogue absent")
+                continue
+            if not ref and self.ref_key == "taux_tresor" and _yes_no(m):
+                out.abstain("taux du Trésor : chance donnée de 00 à 12 h UTC seulement (séance américaine), barrière déjà touchée, "
+                            "ou relevé du Trésor trop vieux")
                 continue
             if not ref or not _yes_no(m) or now is None:
                 continue
