@@ -25,6 +25,9 @@ convictions_claude:
     max_proposals_per_cycle: {value: 5, min: 0, max: 50}
 
 compteur_tweets:
+  # 16/11/2026 01 h : ÉLIMINÉE par l'arène (pire croissance, −9,5 %, 37 opérations) ; elle ne trade plus mais GARDE `enabled: true`
+  # tant que ses 20 positions ouvertes ne sont pas réglées (une stratégie éteinte n'est plus chargée, donc plus réglée :
+  # enquetes/2026-11-16_matin_eliminee_a_positions_ouvertes.md). À éteindre une fois la feuille de mission « Remplacer… » revenue.
   explication: "Combien de messages Elon Musk (ou Trump, la Maison-Blanche...) publiera-t-il cette semaine ? On compte ceux déjà publiés et son rythme, et on achète la tranche (ou son NON) la moins chère par rapport au calcul."
   enabled: true
   version: "2.0.0"

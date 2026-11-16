@@ -651,3 +651,23 @@ def test_beats_its_prices_counts_wins_against_the_paid_prices():
     b = price_beat(trades)
     assert b["gagnes"] == 2 and b["attendus"] == 2.2 and b["z"] == round((2 - 2.2) / (0.16 + 0.16 + 0.24) ** 0.5, 2)
     assert price_beat([]) is None
+
+
+def test_brief_keeps_eliminated_strategy_with_open_positions(ledger, tmp_path):
+    """Cas réel du 16/11/2026 : `compteur_tweets_v2.0.0` éliminée à 01 h avec 20 positions ouvertes ; la feuille de
+    mission exigeait de la « remplacer » (l'éteindre), ce qui aurait gelé ses positions (une stratégie éteinte n'est
+    plus chargée, donc plus réglée). L'obligation n'apparaît qu'une fois ses positions réglées."""
+    from polymarket_agent.brief import build_brief, render_brief
+    ghost = Ledger.create(tmp_path / "g.jsonl", KEY, tmp_path / "g.lock", "1000", now=NOW)
+    buy(ghost, op_id="g1", token="tokG", shares="10", price="0.4")
+    ledger.record_elimination("compteur_tweets_v2.0.0", "pire croissance de l'arène", now=NOW)
+    active = ["compteur_tweets_v2.0.0", "b_v1", "c_v1"]
+    brief = build_brief(ledger, {"compteur_tweets_v2.0.0": ghost}, active, RULES, now=NOW + timedelta(days=1))
+    assert not any("Remplacer" in o for o in brief["obligations"])
+    assert brief["eliminees_en_reglement"] == {"compteur_tweets_v2.0.0": 1}
+    assert "jusqu'au règlement" in render_brief(brief)
+    ghost.record_settlement(op_id="s1", token_id="tokG", payout_per_share="1", resolution="Yes",
+                            now=NOW + timedelta(hours=2))
+    brief = build_brief(ledger, {"compteur_tweets_v2.0.0": ghost}, active, RULES, now=NOW + timedelta(days=1))
+    assert any("Remplacer" in o and "compteur_tweets_v2.0.0" in o for o in brief["obligations"])
+    assert brief["eliminees_en_reglement"] == {}
