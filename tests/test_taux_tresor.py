@@ -103,3 +103,39 @@ def test_max_per_event_counts_positions_already_held(tmp_path):
         st.positions[tok] = Position(tok, mid, "1310160", "Yes", Decimal("10"), Decimal("1"), NUIT.isoformat(), "taux_tresor_barriere", "2.0.0")
     out = s.propose([far], b, st, LIMITS, "b1")
     assert out.proposals == [] and out.abstentions.get("déjà deux tranches de cet événement") == 1
+
+
+def test_real_case_of_16_november_evening_says_why_it_waits(tmp_path):
+    """16/11/2026 20 h 51 : « aucun marché vu n'a la référence ou la forme demandée (raison non notée) » ×294 (constat
+    `acheteuses_arretees`, dernier achat le 13/11). La chance n'est donnée que de 00 à 12 h UTC : le soir, la stratégie doit voir ses
+    marchés et dire pourquoi elle attend, sans rien acheter ; un marché étranger reste invisible."""
+    db = Database(tmp_path / "db.sqlite")
+    soir = datetime(2026, 11, 16, 20, 51, tzinfo=UTC)
+    collect({"sources": {"taux_tresor": {"enabled": True, "every_minutes": 60}}}, Http({tt.CSV.format(y=2026): CSV}), db, [], soir)
+    m = _market("6656077", "Will the 10-year Treasury yield hit 5.38% in November?", HAUT)
+    autre = _market("9", "Will it rain?", "")
+    assert refs.attach_all([m, autre], db, soir)["taux_tresor"] == 0
+    s = _s(TauxTresorBarriere, min_net_edge=0.08, uncertainty=0.04, min_price=0.05, max_price=0.90, max_stale_hours=3,
+           max_extra_ticks=1, max_proposals_per_cycle=3, max_per_event=2, kelly_fraction=1.0, max_candidates=120)
+    assert [x.market_id for x in s.candidates([m, autre])] == ["6656077"]
+    out = s.propose([m], {}, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and any("00 à 12 h UTC" in r for r in out.abstentions)
+
+
+def test_real_case_of_16_november_k_1_3_overstated_the_hits():
+    """16/11/2026 (experiments/enquetes/2026-11-16_soir_taux_tresor_k_trop_haut.md) : sur 36 ans de clôtures, la marche × 1,3 prévoyait
+    0,34 pour une barrière à 1 σ60 × √10 en 10 jours, observé 0,24. La production lit maintenant la loi empirique des excursions :
+    même calcul, chance plus basse que K 1,3 et proche de K 1,0 au cœur, plus haute dans les queues (z ≥ 2 : queues épaisses)."""
+    # table : 10 jours, excursion ≥ 1 σ60 ≈ 0,61 (gaussienne discrète 0,617) ; monotone en z et en n
+    assert 0.55 < tt.survie(1.0, 10) < 0.66
+    assert tt.survie(2.0, 10) < tt.survie(1.0, 10) and tt.survie(2.0, 30) > tt.survie(2.0, 10)
+    # hors de la table (n > 90 ou z > 8) : mise à l'échelle, continue et monotone
+    assert abs(tt.survie(7.99, 90) - tt.survie(8.01, 90)) < 0.02 and tt.survie(12.0, 120) < tt.survie(8.0, 120)
+    c = [list(x) for x in tt.parse_csv(CSV)[10]]
+    p_emp = tt.chance(c, 5.38, True, date(2026, 11, 3), date(2026, 11, 30), NUIT)
+    p_13 = tt.chance(c, 5.38, True, date(2026, 11, 3), date(2026, 11, 30), NUIT, k=1.3)
+    p_10 = tt.chance(c, 5.38, True, date(2026, 11, 3), date(2026, 11, 30), NUIT, k=1.0)
+    assert p_emp < p_13 and abs(p_emp - p_10) < 0.06
+    # « dip below » strictement sous le niveau, déjà touché = 1
+    assert tt.p_barriere_empirique(4.84, 0.05, 4.85, False, 5) == 1.0
+    assert tt.p_barriere_empirique(4.86, 0.05, 4.85, False, 5) < tt.p_barriere_empirique(4.86, 0.05, 4.85, True, 5) == 1.0
