@@ -92,3 +92,24 @@ voit les mêmes séismes provisoires que le résolveur : le décalage serait plu
 ## Relecture indépendante du code (24/10) : suites
 Aucun bug de calcul (sommes à 1, bornes, heure d'hiver, OUI/NON). Deux risques corrigés : probabilité bornée à 0,03-0,97 dans la stratégie (une « certitude » fausse aurait misé ~25 % du capital) et fraîcheur du catalogue ramenée à 15 minutes.
 Restent : le biais de comptage ≥ 5,5 ; `eventtype=earthquake` non filtré dans la requête USGS (explosions de carrière ≥ 5 : rare, non vérifié).
+
+## Avant le début de la semaine (16/11/2026, passage de 11 h, piste n° 67)
+
+Les événements « How many 5.5 / 6.5 or above earthquakes worldwide <lundi> - <dimanche> » ouvrent ≈ 3 jours AVANT la semaine
+(16-22/11 : créé le 13/11 21 h 22) ; `seismes_marche` ne joue qu'entre 6,6 et 0,5 jour avant la fin. Question : avant le lundi 0 h
+(heure de l'Est) et dans les 6 premières heures, la loi a priori (binomiale négative des 156 semaines d'avant, rien d'observé) bat-elle
+le prix ? Script `seismes/scripts/pre_semaine.py` (relevés du 24/10 : 41 événements avec échanges, avril → octobre 2026) ; instants
+−60, −48, −36, −24, −12, 0, +6 h ; prix payé = premier vrai achat dans les 2 h ; un pari par (événement, tranche, côté).
+
+| Mesure | Résultat |
+|---|---|
+| Log-score modèle contre dernier prix, ≥ 5,5, −24 h / −12 h | −0,38 / −0,40 contre −0,46 / −0,46 (60 et 78 tranches) |
+| Idem au lundi 0 h et +6 h | −0,33 / −0,36 contre −0,32 / −0,33 (le prix rattrape) |
+| ≥ 6,5, tous instants | égalité (−0,26 à −0,40 des deux côtés) |
+| Achats, frais 5 % × p(1−p), seuil 0,05, ≥ 5,5 et 6,5, jusqu'au lundi 0 h | 67 paris, 41 événements, 40 gagnés pour 33,0 attendus, +18,6 %, z des prix +1,98, **confiance par événement −0,11** |
+| Sans les 3 meilleurs paris | +12,5 % |
+| Seuil 0,10 | ≥ 5,5 : −7,5 à −27 % (19-34 paris) ; ≥ 6,5 : +18 à +36 % (6-16 paris) |
+
+36 réglages (frais 0 / 5 %, seuils 0,03 / 0,05 / 0,10, magnitudes, jusqu'à 0 h ou −12 h) : **tous « écartée »** par `idea_test.verdict`
+(gain porté par quelques semaines ; par événement, rien). La loi a priori lit un peu mieux les tranches ≥ 5,5 la veille que le prix
+(marché encore vide), mais l'avantage n'est pas exécutable de façon régulière. **Verdict : écartée** ; la fenêtre 6,6 jours reste.

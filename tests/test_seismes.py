@@ -399,3 +399,22 @@ def test_controller_refusals_show_up_in_the_published_abstentions():
     raisons = report.abstentions["fantome:seismes_pays_v2.0.0"]["seismes_pays"]["raisons"]
     assert raisons == {"avantage net insuffisant": 5, "refusé par le contrôleur : carnet périmé": 2}
     assert report.abstentions["principal"]["seismes_pays"]["raisons"] == {"refusé par le contrôleur : prix en baisse": 1}
+
+
+def test_real_case_of_16_november_week_outside_the_tested_window_is_said_not_silent(tmp_path):
+    """16/11/2026 10 h 48 : la semaine du 16 au 22/11 finit dans 6,76 jours (> 6,6, fenêtre testée) : `attach_seismes` ne rattache rien
+    et la stratégie affichait « aucun marché vu n'a la référence (raison non notée) » ×357 (constat `acheteuses_arretees`). Elle doit
+    voir ces marchés et dire pourquoi elle s'abstient, sans jamais rien acheter."""
+    db = Database(tmp_path / "db.sqlite")
+    now = datetime(2026, 11, 16, 10, 48, tzinfo=UTC)
+    refs._save(db, "ref:usgs", [_row(datetime(2026, 11, 16, 6, 0, tzinfo=UTC), 5.6)], now - timedelta(minutes=5))
+    market = parse_market(raw_market("7023052", yes_token="WY", no_token="WN", end=datetime(2026, 11, 23, 4, 59, tzinfo=UTC),
+                                     question="Will there be 7 earthquakes of 5.5 or above magnitude worldwide?",
+                                     events=[{"id": "1382192", "title": "How many 5.5 or above earthquakes worldwide November 16 - November 22?"}]))
+    other = parse_market(raw_market("autre", yes_token="AY", no_token="AN", question="Will it rain?", end=datetime(2026, 11, 23, tzinfo=UTC)))
+    assert sm.attach_seismes([market, other], db, now) == 0
+    s = _s(SeismesMarche, min_net_edge=0.05, uncertainty=0.0, min_price=0.04, max_price=0.96, max_stale_hours=1,
+           max_extra_ticks=1, max_proposals_per_cycle=4, kelly_fraction=0.25)
+    assert [m.market_id for m in s.candidates([market, other])] == ["7023052"]
+    out = s.propose([market], {}, _state(tmp_path), LIMITS, "b1")
+    assert not out.proposals and any("hors de la fenêtre testée" in r for r in out.abstentions)

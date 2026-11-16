@@ -1406,7 +1406,16 @@ class SeismesMarche(_Base):
     required = ("min_net_edge", "min_price", "max_price", "max_stale_hours", "max_proposals_per_cycle")
 
     def candidates(self, markets):
-        return _with_reference(markets, self.ref_key, int(self.params.get("max_candidates", 60)))
+        out = _with_reference(markets, self.ref_key, int(self.params.get("max_candidates", 60)))
+        if self.ref_key == "seismes":
+            # 16/11/2026 (11 h, experiments/enquetes/2026-11-16_midi_seismes_hors_fenetre.md) : hors de la fenêtre testée (semaine : 0,5 à
+            # 6,6 jours avant la fin), `attach_seismes` ne rattache rien et la stratégie affichait « aucun marché vu n'a la référence (raison
+            # non notée) » ×357 : constat `acheteuses_arretees` sans défaut. Les marchés séismes sans référence passent pour qu'elle le DISE.
+            from polymarket_agent import seismes as sm
+            have = {m.market_id for m in out}
+            out += [m for m in markets if m.market_id not in have and not (getattr(m, "references", None) or {}).get(self.ref_key)
+                    and (sm.weekly_target(m.event_title or "", m.end_date) or sm.daily_target(m.event_title or ""))]
+        return out
 
     def propose(self, watchlist, books, state, limits, bucket, marks=None) -> StrategyOutput:
         from polymarket_agent.sources._util import parse_date
@@ -1414,6 +1423,9 @@ class SeismesMarche(_Base):
         scored = []
         for m in watchlist:
             ref = (getattr(m, "references", None) or {}).get(self.ref_key)
+            if not ref and self.ref_key == "seismes" and _yes_no(m):
+                out.abstain("semaine ou jour hors de la fenêtre testée (semaine : 0,5 à 6,6 jours avant la fin), ou catalogue absent")
+                continue
             if not ref or not _yes_no(m) or now is None:
                 continue
             if any(t in state.positions for t in m.token_ids):
