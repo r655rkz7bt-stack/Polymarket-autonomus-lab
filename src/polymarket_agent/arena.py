@@ -544,10 +544,17 @@ def retire_hopeless(main: Ledger, standings: list[Standing], cfg: dict, now: dat
     return out
 
 
-def _mean_return_since(trades: list[dict], since: datetime | None) -> tuple[float, int]:
-    """(rendement moyen par opération, nombre) des opérations clôturées ouvertes depuis `since`."""
-    values = trade_returns([t for t in trades if since is None or (parse_ts(t["opened_at"]) or since) >= since])
-    return (sum(values) / len(values) if values else 0.0), len(values)
+def _weighted_return_since(trades: list[dict], since: datetime | None) -> tuple[float, int]:
+    """(rendement pondéré par la mise = résultat total / mise totale, nombre) des opérations clôturées ouvertes depuis `since`.
+
+    16/11/2026 (`experiments/enquetes/2026-11-16_nuit_doublon_moyenne_non_ponderee.md`) : le test « doublon » des filles comparait
+    la moyenne NON pondérée des rendements par opération ; un billet de 3 € à 0,18 gagné (+455 %) suffisait à faire « mieux » que
+    la mère à une fille qui refait ses paris aux mêmes prix (`compteur_tweets_72_168h` +28,7 % contre −6,0 % en moyenne simple,
+    −14,3 % contre −14,6 % pondéré). Même défaut que `filles_periode` le 14/11."""
+    kept = [t for t in trades if since is None or (parse_ts(t["opened_at"]) or since) >= since]
+    kept = [t for t in kept if float(t.get("cost") or 0) > 0]
+    cost = sum(float(t["cost"]) for t in kept)
+    return (sum(float(t["pnl"]) for t in kept) / cost if cost > 0 else 0.0), len(kept)
 
 
 def retire_daughters(main: Ledger, competitors: dict[str, Ledger], standings: list[Standing], cfg: dict,
@@ -559,7 +566,7 @@ def retire_daughters(main: Ledger, competitors: dict[str, Ledger], standings: li
     1. muette : aucune opération ni position après `inactives_apres_jours` jours ;
     2. doublon : ses paris recoupent ceux de sa mère ou d'une sœur à `doublon_chevauchement` au moins,
        et sur la période commune (au moins `doublon_min_operations` opérations chacune) son rendement
-       moyen par opération ne fait pas mieux : son filtre n'apporte rien ;
+       pondéré par la mise (16/11/2026 ; avant : moyenne simple par opération) ne fait pas mieux : son filtre n'apporte rien ;
     3. en trop : au-delà de `max_par_mere` filles vivantes pour une même mère, les plus faibles
        (croissance) parmi celles qui ont au moins `age_min_jours` jours et une croissance sous
        `garder_croissance` (une fille qui gagne vraiment n'est pas retirée pour faire de la place à
@@ -610,11 +617,11 @@ def retire_daughters(main: Ledger, competitors: dict[str, Ledger], standings: li
             for name in (s.name, r.name):
                 if name not in trades:
                     trades[name] = closed_trades(read_entries(competitors[name]))
-            (mine, n_mine), (theirs, n_theirs) = (_mean_return_since(trades[s.name], since),
-                                                  _mean_return_since(trades[r.name], since))
+            (mine, n_mine), (theirs, n_theirs) = (_weighted_return_since(trades[s.name], since),
+                                                  _weighted_return_since(trades[r.name], since))
             if n_mine >= n_min and n_theirs >= n_min and mine <= theirs:
                 retire(s, f"{DUPLICATE} de {r.name} : {shared:.0%} de paris communs, rendement {mine:+.1%} "
-                          f"contre {theirs:+.1%} par opération", {"comme": r.name, "chevauchement": round(shared, 3)})
+                          f"contre {theirs:+.1%} pondéré par la mise", {"comme": r.name, "chevauchement": round(shared, 3)})
                 break
     cap, age = rule.get("max_par_mere"), float(rule.get("age_min_jours", 2))
     good = float(rule.get("garder_croissance", float("inf")))

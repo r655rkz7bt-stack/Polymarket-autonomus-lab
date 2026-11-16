@@ -186,6 +186,10 @@ def test_daughter_mean_return_inflated_by_one_tiny_lottery_bet_is_put_in_perspec
     assert "pondéré par la mise -5.5% contre -10.3%" in line
     assert "jetons gardés par la fille -5.5% (10) contre écartés -100.0% (5)" in line
     assert "absents de la mère" not in line
+    assert "COPIE CONFORME : 10 de ses 10 jetons chez la mère" in line   # 16/11/2026 : un seul tirage compté deux fois
+    other = _ledger(*[r for i in range(10) for r in (_buy(born + timedelta(minutes=2 + i), f"z{i}", 0.5, 10),
+                                                     _settle(born + timedelta(hours=1), f"z{i}", 1))], born=born)
+    assert "COPIE CONFORME" not in enquete.filles_periode(dict(entries, **{"fille_v1.0.0": other}), configs)[0]["exemples"][0]
 
 
 def test_a_silent_mother_whose_filter_daughter_keeps_buying_is_flagged():

@@ -488,6 +488,13 @@ def filles_periode(entries: dict[str, list[dict]], configs: dict, min_trades: in
             if kept and dropped:
                 extra += (f" ; chez la mère, jetons gardés par la fille {_weighted(kept):+.1%} ({len(kept)}) contre "
                           f"écartés {_weighted(dropped):+.1%} ({len(dropped)})")
+            # 16/11/2026 : `compteur_truth` (15 jetons sur 15 chez la mère) et `compteur_tweets_72_168h` (18 sur 19), mêmes prix,
+            # mêmes parts : trois portefeuilles pour un seul tirage, et le retrait « doublon » de l'arène attend 20 opérations.
+            shared = [t for t in child if t["token_id"] in mother_tokens]
+            if kept and len(shared) >= 0.9 * len(child) and abs(_weighted(shared) - _weighted(kept)) <= 0.02:
+                extra += (f" ; COPIE CONFORME : {len(shared)} de ses {len(child)} jetons chez la mère, même rendement pondéré "
+                          f"sur ces jetons ({_weighted(shared):+.1%} contre {_weighted(kept):+.1%}) : un seul tirage compté deux fois, "
+                          f"la couper si son filtre est un découpage a posteriori")
         rows.append((rc - rm, f"{key} {rc:+.1%} contre sa mère {cfg['mere']} {rm:+.1%} depuis le {born[:10]} "
                               f"({len(child)} et {len(same)} opérations{extra})"))
     if not rows:
