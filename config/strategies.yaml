@@ -153,6 +153,38 @@ seismes_marche:
     max_ecart_rapide: {value: 0.03, min: 0.0, max: 1.0}   # 11/11/2026 : pas d'achat si un séisme vu par l'EMSC et absent de l'USGS change la chance de plus de 0,03 (enquetes/2026-11-11_matin_seismes_catalogue_en_retard.md)
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}     # quart de Kelly : indice sur peu de jours, marchés minces
 
+seismes_queues_audace:
+  explication: "Après un gros séisme viennent souvent des répliques : la semaine compte alors bien plus de séismes que d'habitude. Le marché vend trop peu cher ces semaines « chargées ». On n'achète que ces billets bon marché (OUI à 5-30 centimes), avec des mises franches."
+  # 16/11/2026 (passage de 1 h) : expérience audacieuse, fille de seismes_marche (même loi, même source USGS en direct).
+  mere: seismes_marche
+  morceau: "OUI à 0,05-0,30 (queues de la loi du compte de la semaine)"
+  class: seismes_marche
+  enabled: true
+  version: "2.0.0"
+  created_at: "2026-11-16"
+  filtres: {issue: [oui]}
+  hypothesis: >
+    Expérience audacieuse sur un mécanisme mesuré (experiments/seismes.md, 24/10/2026) : le compte hebdomadaire des séismes >= 5,5 a une
+    variance ≈ 4 fois sa moyenne (répliques), que le marché sous-estime : sur 3 ans, OUI seulement +51 % aux prix payés (79 paris, 25 événements,
+    t 1,79, z des prix 2,5), gain venu des billets à 0,05-0,30 sur des comptes bien plus hauts que la normale. C'est un découpage (OUI) d'un test
+    regardé sous ~30 angles : indice, pas preuve. Mise franche (Kelly entier, au plus 4 % par pari). Une perte apprendrait que la queue des
+    répliques est déjà dans le prix depuis 2026 (le marché était meilleur à J-1/J-2) ou que ces billets ne s'achètent qu'en très petites quantités.
+  params:
+    min_net_edge:   {value: 0.05, min: 0.0, max: 0.30}
+    uncertainty:    {value: 0.0, min: 0.0, max: 0.30}
+    min_price:      {value: 0.05, min: 0.01, max: 0.50}
+    max_price:      {value: 0.30, min: 0.05, max: 0.99}
+    max_stale_hours: {value: 0.25, min: 0.1, max: 24}
+    max_extra_ticks: {value: 2, min: 0, max: 5}
+    max_candidates: {value: 60, min: 0, max: 200}
+    max_proposals_per_cycle: {value: 4, min: 0, max: 20}
+    max_per_event:  {value: 2, min: 1, max: 10}
+    max_ecart_doublon: {value: 0.15, min: 0.0, max: 1.0}
+    max_spread:     {value: 0.15, min: 0.0, max: 1.0}
+    max_ecart_rapide: {value: 0.03, min: 0.0, max: 1.0}
+    mise_max_pari:  {value: 0.04, min: 0.01, max: 0.25}   # au plus 4 % du fantôme par pari (règle « audace »)
+    kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier
+
 seismes_pays:
   explication: "Chaque mois, Polymarket demande si un gros séisme (6 ou plus) frappera le Japon, le Pérou, le Mexique… On sait, grâce au catalogue officiel américain, combien de jours par an chaque pays en a un ; le marché, peu suivi, cote souvent ces séismes 2 fois trop probables. On parie que le séisme n'arrivera pas (ou qu'il arrivera, quand c'est le marché qui le sous-estime)."
   class: seismes_pays

@@ -86,3 +86,10 @@ seuil de 5 points). Pas de fantôme : un seul tirage (début décembre), aucune 
    Google a gagné ≈ 1,2 M$ sur ces marchés avec l'information interne (inculpé en mai 2026 : Reuters, CNBC, NBC, 27/05/2026 ;
    ABC 10/11/2026) : un saut de prix juste avant la publication est une information, et le n° 1 inattendu de 2025 (d4vd à 0,01)
    n'était connu que de l'intérieur.
+
+## 16/11/2026 (passage de 1 h) : reprise, toujours bloquée
+- `presse_lent.py` lancé sur les 26 noms manquants (n° 1 à 4 « People » des listes 2018-2025, monde et États-Unis) : GDELT répond 429 ou coupe
+  la connexion presque à chaque essai (une requête toutes les 30 s) ; un seul nom obtenu (Sylvester Stallone). Wikimédia : 429 dès la 1re requête.
+- Le test décisif (rang du n° 1 selon la hausse de presse sur 2018-2025) reste impossible ; pas de conviction, pas de fantôme.
+- Il reste ≈ 17 jours avant la publication (vers le 03-04/12). Si GDELT reste fermé au prochain passage de nuit, écarter la presse et ne garder
+  que la relecture des prix avant le 01/12.
