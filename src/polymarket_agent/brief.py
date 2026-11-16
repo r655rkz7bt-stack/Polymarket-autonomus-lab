@@ -30,9 +30,16 @@ def build_brief(main: Ledger, competitors: dict[str, Ledger], active: list[str],
     if missing > 0:
         obligations.append(f"Ajouter {missing} nouvelle(s) stratégie(s) : il faut au moins "
                            f"{cfg['min_strategies_in_test']} idées en test.")
-    replace = [n for n in state.eliminated if n in active]
+    # 16/11/2026 (enquetes/2026-11-16_matin_eliminee_a_positions_ouvertes.md) : une éliminée ne trade plus mais ses
+    # positions ne se règlent que si elle reste configurée (main._open_shadows ne charge que les stratégies actives).
+    # L'éteindre avant le règlement gèlerait ses positions (22/10 : 105 positions sur 121 non réglées étaient celles de
+    # fantômes éteints). Elle ne devient une obligation qu'une fois toutes ses positions réglées.
+    eliminated_active = [n for n in state.eliminated if n in active]
+    open_positions = {n: len(competitors[n].state.positions) for n in eliminated_active if n in competitors}
+    replace = [n for n in eliminated_active if not open_positions.get(n)]
     if replace:
         obligations.append(f"Remplacer les stratégies éliminées encore configurées : {', '.join(replace)}.")
+    settling = {n: k for n, k in open_positions.items() if k}
     if days >= float(cfg["radical_idea_after_days_without_record"]):
         obligations.append(f"Aucun nouveau palier depuis {days:.1f} jours : la prochaine idée doit être "
                            "RADICALEMENT différente (nouvelle source, nouveau type de marché, "
@@ -52,6 +59,8 @@ def build_brief(main: Ledger, competitors: dict[str, Ledger], active: list[str],
                         "eliminee": s.eliminated, "champion": s.name == state.champion}
                        for s in standings],
         "obligations": obligations,
+        # Éliminées gardées configurées le temps que leurs positions se règlent (à éteindre ensuite).
+        "eliminees_en_reglement": settling,
         # Verdicts du moteur d'apprentissage, par portefeuille fantôme.
         "verdicts": {name: {s: {k: r[k] for k in ("verdict", "operations", "profit_net", "brier",
                                                     "probabilite_hasard", "lecons_frequentes")}
@@ -89,4 +98,7 @@ def render_brief(brief: dict) -> str:
                              f"{r['brier']} | {r['probabilite_hasard']} | {lessons} |")
     lines += ["", "## Obligations de cette session", ""]
     lines += [f"- {o}" for o in brief["obligations"]] or ["- Aucune obligation : améliorer le champion ou tenter une idée neuve."]
+    if brief.get("eliminees_en_reglement"):
+        lines += ["", "Éliminées gardées configurées jusqu'au règlement de leurs positions (ne plus trader, les éteindre ensuite) : "
+                  + ", ".join(f"{n} ({k} position(s))" for n, k in brief["eliminees_en_reglement"].items()) + "."]
     return "\n".join(lines) + "\n"
