@@ -69,7 +69,7 @@ compteur_tweets_72_168h:
     uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
     min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
     max_extra_ticks: {value: 1, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_proposals_per_cycle: {value: 0, min: 0, max: 20}   # 16/11/2026 : COUPÉE (plus d'achat, ses positions se règlent) : 18 de ses 19 jetons sont ceux de sa mère, au même prix (±0,01), mêmes parts ; « +28,7 % contre −6,0 % » = moyenne simple, −14,3 % contre −14,6 % pondéré ; découpage a posteriori, un tirage compté deux fois (enquetes/2026-11-16_nuit_doublon_moyenne_non_ponderee.md)
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
 
 compteur_truth:
@@ -95,7 +95,7 @@ compteur_truth:
     uncertainty:    {value: 0.01, min: 0.0, max: 0.1}
     min_net_edge:   {value: 0.01, min: 0.0, max: 0.3}
     max_extra_ticks: {value: 1, min: 0, max: 5}
-    max_proposals_per_cycle: {value: 2, min: 0, max: 20}
+    max_proposals_per_cycle: {value: 0, min: 0, max: 20}   # 16/11/2026 : COUPÉE (plus d'achat, ses positions se règlent) : ses 15 jetons sont tous chez sa mère, au même prix (±0,003) ; les deux perdent ensemble sur les mêmes semaines de Trump (enquetes/2026-11-16_nuit_doublon_moyenne_non_ponderee.md)
     kelly_fraction: {value: 0.25, min: 0.0, max: 2.0}
     only_trump:     {value: 1, min: 0, max: 1}
 

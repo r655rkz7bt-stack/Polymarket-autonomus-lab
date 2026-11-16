@@ -458,15 +458,17 @@ def test_proven_strategies_come_first_and_the_others_keep_a_small_share():
     assert _others_share(RULES) == pytest.approx(float(RULES["priorite_validees"]["part_des_autres"]))
 
 
-def _fake_ghost(tmp_path, name, results, events, start=NOW - timedelta(days=5)):
-    """Journal fantôme brut : une opération réglée par résultat (True = gagnée), mise 50 à 0,5."""
+def _fake_ghost(tmp_path, name, results, events, start=NOW - timedelta(days=5), sizes=None):
+    """Journal fantôme brut : une opération réglée par résultat (True = gagnée), mise 50 à 0,5
+    (ou `sizes[i]` = (prix, parts))."""
     from types import SimpleNamespace
     rows = [{"type": "GENESIS", "ts": start.isoformat(), "data": {"initial_capital": "1000"}}]
     for i, (won, ev) in enumerate(zip(results, events)):
         ts = (start + timedelta(hours=i + 1)).isoformat()
+        price, shares = (sizes[i] if sizes else ("0.5", "100"))
         rows.append({"type": "BUY", "ts": ts, "data": {
-            "token_id": f"t{i}", "market_id": f"m{i}", "event_id": ev, "outcome": "Yes", "shares": "100",
-            "price": "0.5", "fee": "0", "strategy_id": name, "strategy_version": "1", "extra": {}}})
+            "token_id": f"t{i}", "market_id": f"m{i}", "event_id": ev, "outcome": "Yes", "shares": shares,
+            "price": price, "fee": "0", "strategy_id": name, "strategy_version": "1", "extra": {}}})
         rows.append({"type": "SETTLE", "ts": ts, "data": {"token_id": f"t{i}", "payout_per_share": "1" if won else "0"}})
     path = tmp_path / f"{name}.jsonl"
     path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
@@ -503,6 +505,23 @@ def test_daughters_are_capped_and_duplicate_or_mute_daughters_retired(ledger, tm
     assert out == ["muette_v1", "copie_v1", "a_v1", "b_v1"]
     assert ledger.state.eliminated >= set(out) and last_weekly_elimination(ledger) is None
     assert retire_daughters(ledger, competitors, standings, {}, NOW, mothers) == []
+
+
+def test_duplicate_daughter_is_judged_on_stake_weighted_return(ledger, tmp_path):
+    """16/11/2026 (cas réel `compteur_tweets_72_168h` contre `compteur_tweets`) : la fille refait les paris de sa mère aux mêmes
+    prix ; un billet de 0,9 € à 0,18 gagné (+455 %) lui donnait une meilleure moyenne SIMPLE par opération (+12 % contre 0 %)
+    alors que, pondérée par la mise, elle fait moins bien (−9,6 % contre 0 %) : c'est un doublon, elle part."""
+    from polymarket_agent.arena import retire_daughters
+    cfg = {"filles": {"doublon_chevauchement": 0.9, "doublon_min_operations": 20}}
+    evs = [f"e{i}" for i in range(22)]
+    mother = _fake_ghost(tmp_path, "mere", [True, False] * 11, evs)
+    kid_results = [True] * 9 + [False] * 11 + [True]
+    kid = _fake_ghost(tmp_path, "fille", kid_results, evs[:21], sizes=[("0.5", "100")] * 20 + [("0.18", "5")])
+    competitors = {"mere_v1": mother, "fille_v1": kid}
+    standings = [Standing("mere_v1", 22, 1000.0, 1000.0, 0.0, NOW - timedelta(days=9), False, events=frozenset(evs)),
+                 Standing("fille_v1", 21, 1000.0, 1000.0, 0.0, NOW - timedelta(days=5), False, events=frozenset(evs[:21]))]
+    out = retire_daughters(ledger, competitors, standings, cfg, NOW, {"mere": "", "fille": "mere"})
+    assert out == ["fille_v1"]
 
 
 def test_confidence_is_shown_as_a_percentage():
@@ -584,7 +603,7 @@ def test_calendar_strategies_are_never_retired_for_inactivity(tmp_path):
     from polymarket_agent.arena import retire_inactive
     cfg = dict(RULES)  # config/promotion.yaml réel
     main = Ledger.create(tmp_path / "m.jsonl", KEY, tmp_path / "m.lock", "1000", now=NOW)
-    names = ["convictions_claude_v2.0.0", "compteur_truth_v2.0.0", "non_aux_drames_v2.0.0", "seismes_marche_v2.0.0",
+    names = ["convictions_claude_v2.0.0", "indice_cotes_v2.0.0", "non_aux_drames_v2.0.0", "seismes_marche_v2.0.0",
              "suivre_inities_v2.0.0", "paire_oui_non_v1.0.0"]  # labo v2 (07/11/2026)
     ghosts = {n: Ledger.create(tmp_path / f"{n}.jsonl", KEY, tmp_path / f"{n}.lock", "1000", now=NOW) for n in names}
     standings = [st(n, 0, 0.0, days=5) for n in names]
