@@ -1627,7 +1627,10 @@ class TauxTresorBarriere(SeismesMarche):
     écart-type des 60 derniers jours × 1,3 (taux_tresor.py), donnée la nuit seulement (00-12 h UTC). Test sur le passé
     (experiments/taux_tresor.md, 12/11/2026, septembre-octobre 2026, 133 marchés, prix horaires + 0,02) : log-score −0,475 (K 1,2)
     contre −0,525 au prix ; achats simulés +2 à +47 % en septembre (taux en hausse) et +62 à +105 % en octobre (en baisse) pour
-    K 1,2-1,4 ; 9 réglages. INDICE FAIBLE : deux trajectoires seulement (toutes les durées bougent ensemble), pas de vrais échanges."""
+    K 1,2-1,4 ; 9 réglages. INDICE FAIBLE : deux trajectoires seulement (toutes les durées bougent ensemble), pas de vrais échanges.
+    16/11/2026 (21 h) : K 1,3 surestimait la chance de toucher sur 36 ans (z = 1 en 10 jours : 0,34 prévu, 0,24 observé) ; le module
+    calcule maintenant avec la loi empirique des excursions (taux_tresor.survie). Le portefeuille `taux_tresor_barriere` n'achète plus,
+    `taux_tresor_empirique` (même classe) porte la suite."""
 
     strategy_id = "taux_tresor_barriere"
     ref_key = "taux_tresor"
