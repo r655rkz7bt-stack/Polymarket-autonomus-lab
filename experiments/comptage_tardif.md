@@ -62,8 +62,38 @@ de `prices-history` avant l'instant peut dater de plusieurs heures, le marché a
 venait d'un prix d'historique périmé. Reste ouvert : la DIRECTION connue des derniers bulletins (Californie, votes spéciaux),
 qui demande la source du nombre de bulletins restants.
 
+## Californie (passage de 11 h, 16/11/2026) : étape 1, la source
+
+- `www.sos.ca.gov` et `electionresults.sos.ca.gov` : robots.txt permis, mais la page « Unprocessed Ballots Status » est servie
+  derrière Incapsula (page vide + script de défi) : **jamais lue, pas de contournement**. `calvoter.org` (projet « Close Count ») :
+  403. Le nombre de bulletins restants n'a donc **pas** de source lisible pour l'instant.
+- **`api.sos.ca.gov/returns/<course>`** (pas de robots.txt, sans clé, JSON) donne le décompte officiel courant : `governor`,
+  `lieutenant-governor`, `ballot-measures`, `us-rep/district/<n>` (« ReportingTime » : 14/11 17 h 16 lu le 16/11). `returns/status`
+  rend un fichier de test de 2024 (inutile).
+- Gouverneur au 14/11 : Becerra 8 550 463, Hilton 4 485 454 (13 035 917 voix, marge 31,18 points).
+- Relevé daté : `comptage_tardif/releves/californie_20261116T1101.jsonl.gz` (`californie_marges.py` : 43 districts « CA-n House Election
+  Margin of Victory », 515 tranches, marge courante de l'API et carnet de chaque tranche). Au prochain « ReportingTime », la différence
+  entre deux relevés donne la marge des bulletins comptés ENTRE les deux : c'est la direction des derniers bulletins, district par district.
+
+Marchés regardés :
+- **Districts** : carnets de façade (vendeur 0,75-0,97 sur presque toutes les tranches, acheteur 0,01-0,06) ; la tranche de la marge
+  courante n'est jamais vendue sous 0,84 ; seuls les bords lointains sont bon marché. Cas à suivre : CA-23 (Obernolte R +1,63 point sur
+  214 578 voix ; « Democrat Wins » vendu 0,034) ; CA-13 (24,77 pour la borne 25) ; CA-15 (59,89 / 60) ; CA-32 (34,59 / 35) ; CA-30
+  (55,25 pour la borne basse 55 ; « 50-55 » vendu 0,49).
+- **Gouverneur, marge** (« Becerra 30-35 % » acheteur 0,711, vendeur 0,926 pour 20 parts puis 0,927 pour 314) : règle lue (différence des
+  pourcentages des deux premiers sur les voix valides). Pour tomber sous 30 il faudrait que les bulletins restants (≤ 10 % du total)
+  donnent à Becerra moins de ≈ 19 points de marge, contre 31 jusqu'ici et des bulletins tardifs plus démocrates en 2022 et 2024 ; au-dessus
+  de 35 : impossible. Ma chance ≈ 0,985, borne basse ≈ 0,97 : 4,3 points au-dessus du vendeur avant frais, **sous le seuil de 5 : pas de
+  conviction**.
+- **Gouverneur, participation** (« 13M-13,5M » et « 13,5M-14M » à 0,03 / 0,87 chacun) : 13,04 M déjà comptés ; tout dépend des
+  bulletins restants (≈ 0,46 M de plus fait passer la borne), sans source lisible : rien.
+
+État : **en cours** ; prochaine étape = second relevé de l'API après une nouvelle « ReportingTime », puis direction par district.
+
 ## À faire (prochain passage)
-1. Source des bulletins restant à compter par État (secrétaires d'État ; `api.ap.org` 403) : `robots_ok.py` d'abord.
+1. Source des bulletins restant à compter par État (secrétaires d'État ; `api.ap.org` 403) : `robots_ok.py` d'abord (SEUL).
+   16/11 : Californie = décompte courant lisible (`api.sos.ca.gov`), bulletins restants illisibles ; relancer `californie_marges.py`
+   quand « ReportingTime » change et comparer au relevé du 16/11.
 2. Test sur le passé : les 26 événements réglés du 03/11 et les 17 élections étrangères réglées : prix à J+1, J+3, J+7
    contre le résultat officiel (log-score contre le prix, puis achats aux vrais échanges).
 3. Juger le relevé du 16/11 quand les résultats seront certifiés (décembre).
