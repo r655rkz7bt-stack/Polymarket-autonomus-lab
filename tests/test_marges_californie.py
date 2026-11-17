@@ -59,7 +59,8 @@ def test_questions_of_the_three_shapes():
 
 def test_read_the_official_count_and_the_margin_of_the_late_ballots():
     a, b = mc.lire(AVANT), mc.lire(APRES)
-    assert b == {"heure": "November 16, 2026, 4:34 p.m.", "d": 178_048, "r": 102_533, "total": 280_581, "meme_parti": False}
+    assert b == {"heure": "November 16, 2026, 4:34 p.m.", "d": 178_048, "r": 102_533, "total": 280_581, "meme_parti": False,
+                 "autre_en_tete": False, "ecart_api": 27.0}
     h = mc.journal([], [dict(a, district=26, lu="2026-11-16T11:01:00+00:00")])
     h = mc.journal(h, [dict(b, district=26, lu="2026-11-17T00:57:00+00:00")])
     assert mc.journal(h, [dict(b, district=26, lu="2026-11-17T01:57:00+00:00")]) == h   # même heure officielle : pas de nouvelle ligne
@@ -67,6 +68,29 @@ def test_read_the_official_count_and_the_margin_of_the_late_ballots():
     assert ajout == 19_219 and abs(m - 41.68) < 0.01   # les tardifs penchent D +41,7 contre 25,8 cumulés
     same = dict(APRES, candidates=[dict(c, Party="Dem") for c in APRES["candidates"]])
     assert mc.lire(same)["meme_parti"]
+
+
+CA06 = {"raceTitle": "U.S. House of Representatives District 6 - Districtwide Results",   # vraie réponse du 17/11 (7 h 12 p.m.)
+        "Reporting": "100% (309 of 309) precincts reporting", "ReportingTime": "November 16, 2026, 7:12 p.m.",
+        "candidates": [{"Name": "Richard Pan", "Party": "Dem", "Votes": "158,804", "Percent": "58.9", "incumbent": False},
+                       {"Name": "Kevin Kiley", "Party": "NPP", "Votes": "110,899", "Percent": "41.1", "incumbent": False}]}
+
+
+def test_margin_is_against_the_second_candidate_even_without_party_17_11():
+    """Enquête du 17/11 (6 h) : CA-06 oppose un démocrate à un candidat sans parti (NPP). `lire` prenait les voix du premier républicain
+    (0) : marge 58,9 points au lieu de 17,76, et le fantôme a acheté « Democrat 25%+ » à 0,91 estimé 0,99 (marché 4166518)."""
+    x = mc.lire(CA06)
+    s0 = 100.0 * (x["d"] - x["r"]) / x["total"]
+    assert abs(s0 - 17.76) < 0.01 and not x["meme_parti"]
+    assert mc.chance(s0, s0, 25, math.inf) < 0.001       # « Democrat 25%+ » : presque impossible
+    assert mc.chance(s0, s0, 15, 20) > 0.97              # la tranche courante est « Democrat 15-20% »
+    # un sans-parti EN TÊTE : ni les tranches démocrates ni les républicaines ne peuvent gagner, pas de chance donnée
+    tete = dict(CA06, candidates=[dict(CA06["candidates"][1], Votes="160,000"), CA06["candidates"][0]])
+    assert mc.lire(tete)["autre_en_tete"]
+    # journal de production écrit avec l'ancien calcul (r = 0) puis le nouveau : pas de « marge tardive » de −40 000 points
+    vieux = {"district": 6, "heure": "November 16, 2026, 4:34 p.m.", "d": 158_100, "r": 0, "total": 269_703, "lu": "2026-11-17T00:57:00+00:00"}
+    neuf = dict({k: x[k] for k in ("heure", "d", "r", "total")}, district=6, total=269_703 + 1_000, lu="2026-11-17T06:57:00+00:00")
+    assert mc.marge_tardive([vieux, neuf], 6) is None
 
 
 def test_law_of_the_final_margin_on_the_real_cases_of_17_11():
@@ -137,3 +161,24 @@ def test_repository_list_and_source_are_configured():
     ids = yaml.safe_load((ROOT / spec["fichier"]).read_text(encoding="utf-8"))["marches"]
     assert len(ids) == 386 and "4166861" in ids and spec["min_horizon_minutes"] < 0
     assert settings["sources"]["marges_ca"]["enabled"]
+
+
+def test_ca06_no_longer_gets_a_chance_for_democrat_25_plus(tmp_path):
+    """Cas réel du 17/11 : avec la vraie réponse de CA-06, « Democrat 25%+ » reçoit ≈ 0 et « Democrat 15-20% » la tranche courante ;
+    une ligne qui ne redonne pas l'écart des pourcentages officiels (ancien calcul) ne reçoit aucune chance."""
+    class Http(_Http):
+        def get_json(self, url, params=None, headers=None):
+            if url == mc.API.format(n=6):
+                return self.page
+            raise SourceUnavailable(f"{url} : HTTP 404")
+    db = Database(tmp_path / "db.sqlite")
+    cfg = {"sources": {"marges_ca": {"enabled": True, "every_minutes": 60}}}
+    collect(cfg, Http(CA06), db, [], NOW)
+    plus = _market("4166518", "Will a Democratic Party candidate win the 2026 CA-06 House election by 25% or more?", "ev6")
+    cour = _market("4166517", "Will a Democratic Party candidate win the 2026 CA-06 House election by 15%-20%?", "ev6")
+    assert refs.attach_all([plus, cour], db, NOW)["marges_ca"] == 2
+    assert plus.references["marges_ca"]["p"] < 0.001 and cour.references["marges_ca"]["p"] > 0.97
+    faux = [dict(mc.lire(CA06), d=158_804, r=0, district=6, lu=NOW.isoformat())]   # ce que lisait l'ancien code
+    db2 = Database(tmp_path / "db2.sqlite")
+    refs._save(db2, "ref:marges_ca", faux, NOW)
+    assert mc.attach_marges([_market("1", plus.question, "ev6")], db2, NOW) == 0

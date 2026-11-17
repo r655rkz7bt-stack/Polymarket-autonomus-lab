@@ -123,6 +123,28 @@ différente des précédents, ou que la règle du marché ne lit pas le décompt
 `sortie_tranche.py`) ; juger les 43 districts à la certification (toutes les tranches « courantes » du 17/11, pas seulement les trois achetées :
 c'est le vrai test de la règle « sortie > 8 % = presque sûr »).
 
+## Californie (passage de 6 h, 17/11/2026) : étape 3, troisième relevé
+
+- Nouveau « ReportingTime » : **16/11 19 h 12** (heure du Pacifique, 03 h 12 UTC). Relevé `releves/californie_20261117T0555.jsonl.gz`.
+  Le comptage ralentit encore : 21 districts sans bulletin ajouté ; les ajouts viennent surtout de San Diego (CA-48 à 52 : +1,8 à
+  +3,5 %, tardifs D +43 à +57, toujours plus démocrates que le cumul) et de CA-21 (+4,5 %, D +40,9 contre 28,9).
+- Exceptions dans l'autre sens : CA-2 (+1,4 %, tardifs **R +42** contre D +33,9 cumulés : marge 33,93 → 32,87, s'éloigne de la borne 35),
+  CA-5 (R +2,2 contre R +11,5, comme au relevé d'avant), CA-20 (D +9,4 contre R +22,6).
+- **CA-13 passe la borne** : 24,93 → 25,09 (603 bulletins, D +70) ; la tranche « 25%+ » devient la courante. `marges_californie` a
+  acheté 12,5 parts à 0,70 à 05 h 27 (le vendeur suivant est à 0,90) : c'est le cas que la stratégie cherche (source officielle lue
+  avant la foule). Fragile : 0,09 point au-dessus de la borne.
+- Les carnets se sont resserrés depuis 1 h : la tranche courante est vendue 0,97-0,99 dans 33 districts sur 43 (0,84-0,92 à 1 h) ;
+  restent sous 0,92 : CA-3 « D 15-20 % » (0,90, déjà tenue), CA-13 « D 25 %+ » (0,90, tenue). L'écart de façade s'est refermé en
+  quelques heures, en partie par nos propres achats de fantôme (aucun effet réel : simulation) et par d'autres acheteurs.
+- **Défaut de production trouvé en relisant les achats** (fiche `enquetes/2026-11-17_matin_ca06_second_sans_parti.md`) : CA-06 oppose
+  un démocrate à un sans-parti ; le module de production mesurait la marge contre 0 voix républicaine (58,9 au lieu de 17,76) et a acheté
+  « Democrat 25%+ » à 0,91 (19 €). Corrigé ; les scripts de recherche n'étaient pas touchés.
+- San Diego : la page des bulletins restants (`livevoterturnout.com/ENR/sandiegocaenr/`) répond 403 sur le répertoire (robots.txt
+  permis) ; l'adresse exacte de la page du 12/11 n'est pas notée : à retrouver, sans deviner d'adresses à la chaîne.
+
+État : **en cours** (jugement à la certification). Bilan provisoire de la « règle sortie > 8 % » : 0 tranche sortie sur les 4 retenues
+au 17/11 1 h (CA-26, CA-1, CA-3, CA-20 : marges 26,91 / 17,42 / 17,56 / −22,52, inchangées ou plus loin des bornes).
+
 ## À faire (prochain passage)
 1. Source des bulletins restant à compter par État (secrétaires d'État ; `api.ap.org` 403) : `robots_ok.py` d'abord (SEUL).
    16/11 : Californie = décompte courant lisible (`api.sos.ca.gov`), bulletins restants illisibles ; relancer `californie_marges.py`
