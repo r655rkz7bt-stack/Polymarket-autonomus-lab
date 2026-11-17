@@ -870,3 +870,13 @@ def test_silent_unprotected_strategy_announces_its_definitive_retirement():
     from pathlib import Path
     cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "strategies.yaml").read_text(encoding="utf-8"))
     assert cfg["el_nino_cpc"]["enabled"] and cfg["el_nino_cpc"]["version"] != "2.0.0"
+
+
+def test_new_strategy_with_a_huge_gap_is_flagged():
+    """17/11 (16 h) : `openrouter_semaine` (4 achats) a payé 0,42 un NON estimé 0,973 (graphique lu avec le jour en cours) ; sous
+    5 achats la stratégie n'était jamais regardée. Un écart ordinaire (0,10) d'une stratégie neuve reste silencieux."""
+    t = NOW - timedelta(hours=5)
+    rows = [_buy(t, "a", 0.30, 5, est=0.40), _buy(t + timedelta(hours=1), "b", 0.42465746, 44.17, est=0.9733)]
+    found = enquete.estimation_perimee({"openrouter_semaine_v2.0.0": _ledger(*rows)}, NOW - timedelta(days=3))
+    assert len(found) == 1 and "stratégie neuve" in found[0]["titre"] and "0.973" in found[0]["exemples"][0]
+    assert enquete.estimation_perimee({"x_v2.0.0": _ledger(rows[0])}, NOW - timedelta(days=3)) == []

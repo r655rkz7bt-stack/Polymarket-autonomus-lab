@@ -945,3 +945,43 @@ def test_strategy_flagged_annuler_au_coup_d_envoi_loses_its_resting_order_at_kic
     rows = [(r["portfolio"], r["status"]) for r in db.conn.execute("SELECT portfolio, status FROM pending_orders")]
     assert ("fantome:naive_favorite_v1.0.0", "ANNULE") in rows  # l'ordre posé avant le match tombe au coup d'envoi
     assert ("principal", "ANNULE") in rows  # la copie du principal porte le même identifiant de stratégie : elle tombe aussi (copie fidèle)
+
+
+def test_references_are_attached_again_after_the_collection(env, paths, monkeypatch):
+    """17/11/2026 (16 h, enquetes/2026-11-17_soir_references_avant_collecte.md) : les références étaient rattachées AVANT la collecte
+    des sources ; le 16/11 à 21 h 27, `seismes_pays` a acheté le NON « séisme 6,0+ en Indonésie » à 0,20 avec le catalogue d'avant,
+    alors que la collecte du même cycle venait de lire le 6,6 de Tual. Les stratégies voient maintenant la lecture du cycle même, et
+    une référence qui disparaît à la seconde lecture ne reste pas."""
+    from polymarket_agent import references
+    make, db, _ = env
+    crown(paths)
+    db.set_value("lecture_test", "ancienne")
+
+    def attach(markets, database, now):
+        for m in markets:
+            if database.get_value("lecture_test") == "ancienne":
+                m.references = dict(m.references or {}, test={"lu": "ancienne"}, perime={"p": 0.5})
+            else:
+                m.references = dict(m.references or {}, test={"lu": database.get_value("lecture_test")})
+        return {"test": len(markets)}
+    monkeypatch.setattr(references, "attach_all", attach)
+    vu = []
+
+    class Espion(NaiveFavorite):
+        def propose(self, watchlist, books, state, limits, bucket, marks=None):
+            vu.extend(dict(m.references or {}) for m in watchlist)
+            return super().propose(watchlist, books, state, limits, bucket, marks)
+    s = Espion("1.0.0", "2026-10-14", {
+        "min_ask": D("0.80"), "max_ask": D("0.95"), "bias": D("0.05"), "uncertainty": D("0.015"),
+        "min_net_edge": D("0.02"), "max_extra_ticks": D("2"), "max_proposals_per_cycle": D("3")})
+    s.mode = "principal"
+    deps = make(FakeGamma([raw_market()]), FakeClob({"tokA": good_book()}), strategies=[s])
+
+    def collector(watchlist, now):
+        db.set_value("lecture_test", "neuve")
+        return {"usgs": "ok (1 observations)"}
+    deps.collector = collector
+    report = run_cycle(deps)
+    assert report.status == "OK", report.messages
+    assert vu and all(r.get("test") == {"lu": "neuve"} and "perime" not in r for r in vu)
+    assert "references_apres_collecte" in report.timings

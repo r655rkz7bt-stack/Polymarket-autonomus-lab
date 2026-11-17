@@ -1439,6 +1439,10 @@ class SeismesMarche(_Base):
                 continue
             if not ref or not _yes_no(m) or now is None:
                 continue
+            if ref.get("refus"):
+                # 17/11/2026 (16 h) : la source dit pourquoi elle ne donne pas de chance (OpenRouter : jour en cours hors de la forme habituelle)
+                out.abstain(str(ref["refus"]))
+                continue
             if any(t in state.positions for t in m.token_ids):
                 # 11/11/2026 (21 h) : `fleuves_prevision` affichait « aucun marché vu n'a la référence » alors que ses deux
                 # seuls marchés chiffrables étaient déjà achetés (stratégie en attente, pas sourde).

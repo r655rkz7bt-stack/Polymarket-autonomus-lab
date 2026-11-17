@@ -351,7 +351,8 @@ def mises(entries: dict[str, list[dict]], max_principal: float = 0.10, max_ghost
     return out
 
 
-def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = None, extra_gap: float = 0.08) -> list[dict]:
+def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = None, extra_gap: float = 0.08,
+                       big_gap: float = 0.30) -> list[dict]:
     """Achats immédiats dont l'écart estimation − prix payé dépasse de `extra_gap` l'écart habituel
     de la stratégie (médiane de ses achats immédiats) : estimation calculée sur un autre carnet.
     Seuil = écart habituel + max(`extra_gap`, 3 × écart interquartile) : une stratégie à modèle propre (tweets, mots, météo,
@@ -365,6 +366,17 @@ def estimation_perimee(entries: dict[str, list[dict]], since: datetime | None = 
             if x.get("est_probability") and not _posted(x):
                 gaps.append((float(x["est_probability"]) - float(e["data"]["price"]), e))
         if len(gaps) < 5:
+            # 17/11/2026 (16 h, enquetes/2026-11-17_soir_openrouter_jour_en_cours.md) : une stratégie neuve (moins de 5 achats) n'était
+            # jamais regardée ; `openrouter_semaine` a payé 0,42 un NON estimé 0,973 (graphique lu avec le jour en cours) sans constat.
+            odd = [(g, e) for g, e in gaps if g >= big_gap and (since is None or _ts(e) >= since)]
+            if odd:
+                out.append(_finding("estimation_perimee", A_REGARDER,
+                                    f"{name} : {len(odd)} achat(s) estimés {big_gap:.0%} ou plus au-dessus du prix payé (stratégie neuve, "
+                                    f"moins de 5 achats)",
+                                    "Un écart aussi grand avec le marché vient plus souvent d'une source mal lue que d'un avantage : "
+                                    "relire la source et le marché avant de croire l'estimation.",
+                                    [f"{e['ts'][:16]} « {e['data']['outcome']} » estimé {float(e['data']['extra']['est_probability']):.3f}, "
+                                     f"payé {float(e['data']['price']):.3f}, mise {_cost(e['data']):.0f} €" for _, e in odd]))
             continue
         usual = statistics.median(g for g, _ in gaps)
         quartiles = statistics.quantiles([g for g, _ in gaps], n=4)
