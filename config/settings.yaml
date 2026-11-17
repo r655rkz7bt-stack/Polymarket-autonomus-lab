@@ -104,6 +104,10 @@ scanner:
   # attendant le résultat officiel (marges des districts californiens : fin le 03/11, certification mi-décembre) ; avant, « hors horizon »
   # (experiments/enquetes/2026-11-17_nuit_conviction_marche_echu.md). 60 jours.
   conviction_markets: {fichier: config/convictions.yaml, min_horizon_minutes: -86400, max_horizon_hours: 4400, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999}
+  # 17/11/2026 : listes fixes de marchés lus par identifiant (marges californiennes, date de fin Gamma passée, carnets de façade à 0,30-0,50
+  # d'écart) ; vus seulement par la stratégie qui les demande.
+  listes_marches:
+    marges_californie: {fichier: config/marches_californie.yaml, min_horizon_minutes: -86400, max_horizon_hours: 4400, min_liquidity: 0, min_volume_24h: 0, max_spread: 1.0, max_favorite_price: 0.9999}
   holding_pages: 1             # 19/10/2026 : 100 marchés longs de plus (récompense de détention, parking_politique)
   holding_max_horizon_days: 900
   # 21/10/2026 (« réveiller les muettes », experiments/muettes.md) : 1 000 marchés longs de toutes sortes
@@ -361,6 +365,7 @@ sources:
   indice_cotes: {enabled: true, every_minutes: 60}           # 15/11/2026 (piste n° 65) : latest.json de PredictionMarketOdds.com (valeurs horaires de l'indice), arbitre des tranches « <X> odds <a>-<b>% on <date> », pour indice_cotes ; pas de robots.txt (404) ; gratuit, sans clé
   mississippi: {enabled: true, every_minutes: 60}           # 13/11/2026 (piste n° 52) : relevés USGS (07010000, 07374000) et prévisions NWPS (EADM7, BTRL1) du Mississippi, arbitre des marchés « Lowest Mississippi level » ; gratuit, sans clé
   pluie_hk: {enabled: true, every_minutes: 20}             # 14/11/2026 (piste n° 32) : pluie du mois à l'Observatoire de Hong Kong (Daily Extract, RYES, pluie de l'heure RF023 relevée toutes les 20 min pour additionner le jour en cours) + ensemble ECMWF Open-Meteo ; gratuit, sans clé
+  marges_ca: {enabled: true, every_minutes: 60}           # 17/11/2026 (piste n° 66) : décompte officiel courant des 52 districts californiens (api.sos.ca.gov/returns/us-rep/district/<n>, sans clé, pas de robots.txt ; jamais la page Incapsula des bulletins restants), pour marges_californie ; journal `marges_ca:histo`
   rotten_tomatoes: {enabled: true, every_minutes: 60}      # 14/11/2026 (piste n° 56) : page Rotten Tomatoes (/m/<film>, permis par robots.txt ; jamais /napi/) de chaque film d'un marché « Rotten Tomatoes Score » ouvert : compte exact des critiques, pour rt_compte_critiques ; gratuit, sans clé
   usgs_annee: {enabled: true, every_minutes: 30}             # 12/11/2026 (piste n° 40) : séismes >= 6,8 depuis le 1er janvier (USGS, arbitre des marchés annuels) pour seismes_annee ; gratuit, sans clé
   # 12/11/2026 (piste n° 33) : « Highest grossing movie in 2026? » contre le marché du premier week-end d'Avengers: Doomsday (Gamma

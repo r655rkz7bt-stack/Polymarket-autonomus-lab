@@ -21,12 +21,11 @@ replier: [entonnoir, ordres-poses, journal, decisions-recentes, systeme]   # 24/
 # du résumé : ce qu'il juge le plus important pour Etienne en ce moment. Des faits, avec leur source
 # (arène, test sur le passé…), jamais une promesse de gain. Vide = pas d'encadré.
 a_la_une:
-  date: "2026-11-14"
+  date: "2026-11-17"
   points:
-    - "Capital principal : 1 000 € (remis à zéro le 12/11). Il ne suit encore aucune stratégie : aucune n'a assez de paris réglés pour prouver un avantage. 24 expériences tournent dans l'arène avec 1 000 € fictifs chacune."
-    - "Nouvelle expérience (14/11) : pluie_hk. Polymarket demande combien il pleuvra à Hong Kong ce mois-ci ; on additionne la pluie déjà mesurée heure par heure par l'Observatoire et on ajoute 51 prévisions météo. La climatologie seule ne battait pas le prix sur 8 mois passés."
-    - "Nouvelle expérience (14/11 midi) : rt_compte_critiques. Les marchés Rotten Tomatoes se règlent sur le score AFFICHÉ (arrondi) ; la page du film donne le compte exact des critiques (62 sur 83 = 74,7 %, affiché 75 %). On simule les critiques à venir ; pas de test passé possible."
-    - "Rhin (conviction de Claude) : Kaub plafonne à 73 cm pour un seuil de 77 avant le 15/11 ; la prévision officielle dit 74 au plus. Notre pari NON (12,9 parts à 0,862) se règle demain."
+    - "Capital principal : 1 000 € (remis à zéro le 12/11). Il ne suit encore aucune stratégie : aucune n'a assez de paris réglés pour prouver un avantage. 28 expériences tournent dans l'arène."
+    - "Nouvelle expérience (17/11) : marges_californie. La Californie compte encore ses bulletins ; l'État publie chaque jour le décompte officiel. Quand il ne reste que quelques % de bulletins, la marge d'un district ne peut presque plus changer de tranche : on achète cette tranche, vendue 0,84-0,91. Réglé mi-décembre."
+    - "Trois convictions de Claude sur le même mécanisme (CA-26, CA-1, CA-3). Défaut corrigé au passage : un marché dont la date de fin Gamma est passée mais qui s'échange encore était invisible pour les convictions."
     - "Une décision t'attend : proposals/2026-11-11_carnet_calme_juge_perime.md (les petits marchés calmes sont refusés comme « carnet périmé »)."
 
 # Fiche d'une stratégie (demande d'Etienne, 21/10/2026) : toucher une ligne de l'arène charge le

@@ -428,6 +428,16 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "rt:histo", keep_rt(refs._load(db, "rt:histo")[1], rows, now), now)
         return rows
     snapshot("rotten_tomatoes", rotten_tomatoes, "ref:rt")
+    # Marges des districts californiens (17/11/2026, piste n° 66) : décompte officiel courant (arbitre des marchés « CA-<n> House Election Margin
+    # of Victory »), `marges_californie` ; journal `marges_ca:histo` (marge des bulletins comptés entre deux « ReportingTime »).
+    from polymarket_agent.marges_californie import fetch_californie, journal as ca_journal
+
+    def marges_ca(cfg):
+        rows = factories.get("marges_ca", lambda c: fetch_californie(http, now))(cfg)
+        if db is not None and rows:
+            refs._save(db, "marges_ca:histo", ca_journal(refs._load(db, "marges_ca:histo")[1] or [], rows), now)
+        return rows
+    snapshot("marges_ca", marges_ca, "ref:marges_ca")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")
