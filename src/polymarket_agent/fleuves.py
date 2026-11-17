@@ -97,7 +97,7 @@ def fetch_fleuves(http: HttpClient, now: datetime) -> list[dict]:
     except Exception:  # noqa: BLE001 — mode dégradé : la station manque ce cycle-ci
         pass
     try:
-        b = parse_ovf(http.get_text(OVF, headers={"User-Agent": "Mozilla/5.0"}))
+        b = parse_ovf(http.get_text(OVF))
         if b:
             rows.append(b)
     except Exception:  # noqa: BLE001

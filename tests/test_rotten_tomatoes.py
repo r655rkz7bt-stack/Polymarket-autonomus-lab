@@ -88,9 +88,21 @@ def test_chance_moves_with_counts_rate_and_time():
     assert 0.3 < p75 < 0.6                                   # pile sur le seuil : ni sûr ni perdu
     assert rt.chance(62, 83, 73, 52, 0.12) > 0.8 > p75        # 1,7 point de marge
     assert rt.chance(62, 83, 75, 52, 0.12, part=0.55) < p75   # critiques récentes plus froides
-    assert rt.chance(62, 83, 75, 52, 0.12, glissement=0.0) > p75   # sans glissement des critiques tardives : plus haut
+    assert rt.chance(62, 83, 75, 52, 0.12, glissement=0.05) < p75  # avec un glissement a priori des critiques tardives : plus bas
     assert rt.chance(62, 83, 75, 0, 0.12) == 1.0 and rt.chance(61, 83, 75, 0, 0.12) == 0.0
     assert rt.chance(5, 14, 30, 52, 0.12) is None             # moins de 20 critiques : pas de chance
+
+
+def test_hunger_games_part_recente_sans_double_glissement():
+    """17/11/2026 : « Hunger Games: Sunrise on the Reaping » à 49/68 (72 %), 138 h avant le règlement, part récente ≈ 0,65 et rythme
+    d'après la levée d'embargo ≈ 3 critiques/h : le NON « 60+ » a été acheté 0,07 pour une chance de 0,25 et le NON « 70+ » 0,54 pour
+    0,66 parce que 5 points de glissement s'ajoutaient à la part récente mesurée. Sans double compte, aucun des deux achats ne passe
+    (prix + avantage minimal 0,06 + incertitude 0,04)."""
+    for part in (0.65, 0.68):
+        assert 1 - rt.chance(49, 68, 60, 138.4, 3.0, part) < 0.07 + 0.10
+        assert 1 - rt.chance(49, 68, 70, 138.4, 3.0, part) < 0.54 + 0.10
+    # la part récente reste prise en compte : plus froide, chance plus basse
+    assert rt.chance(49, 68, 70, 138.4, 3.0, 0.55) < rt.chance(49, 68, 70, 138.4, 3.0, 0.70)
 
 
 def test_journal_rate_and_recent_share():

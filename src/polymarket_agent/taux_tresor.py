@@ -51,10 +51,9 @@ def parse_csv(text: str) -> dict[int, list[tuple[str, float]]]:
 
 
 def fetch_taux(http: HttpClient, now: datetime) -> list[dict]:
-    h = {"User-Agent": "Mozilla/5.0"}
-    closes = parse_csv(http.get_text(CSV.format(y=now.year), headers=h))
+    closes = parse_csv(http.get_text(CSV.format(y=now.year)))
     if not closes or min(len(v) for v in closes.values()) < 70:   # janvier : l'année d'avant complète la fenêtre de 60 jours
-        old = parse_csv(http.get_text(CSV.format(y=now.year - 1), headers=h))
+        old = parse_csv(http.get_text(CSV.format(y=now.year - 1)))
         closes = {k: sorted(set(old.get(k, [])) | set(closes.get(k, []))) for k in COLONNES if old.get(k) or closes.get(k)}
     if not closes:
         return []

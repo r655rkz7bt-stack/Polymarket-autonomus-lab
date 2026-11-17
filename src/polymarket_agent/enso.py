@@ -83,10 +83,10 @@ def parse_roni(text: str) -> list[tuple[str, int, float]]:
 
 
 def fetch_enso(http: HttpClient, now: datetime) -> list[dict]:
-    d = parse_discussion(http.get_text(PAGE, headers={"User-Agent": "Mozilla/5.0"}))
+    d = parse_discussion(http.get_text(PAGE))
     if d is None:
         return []
-    roni = parse_roni(http.get_text(RONI, headers={"User-Agent": "Mozilla/5.0"}))
+    roni = parse_roni(http.get_text(RONI))
     return [dict(d, roni_dernier=list(roni[-1]) if roni else None, lu=now.isoformat())]
 
 

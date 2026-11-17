@@ -61,11 +61,10 @@ def parse_communique(page: str) -> dict | None:
 
 
 def fetch_pib_canada(http: HttpClient, now: datetime) -> list[dict]:
-    h = {"User-Agent": "Mozilla/5.0"}
-    url = dernier_communique(http.get_text(INDEX, headers=h))
+    url = dernier_communique(http.get_text(INDEX))
     if url is None:
         return []
-    r = parse_communique(http.get_text(url, headers=h))
+    r = parse_communique(http.get_text(url))
     return [dict(r, url=url, lu=now.isoformat())] if r else []
 
 

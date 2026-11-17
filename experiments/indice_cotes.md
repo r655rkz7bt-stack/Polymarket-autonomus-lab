@@ -68,3 +68,24 @@ Prix horaires (milieux) : +10 à +60 % ; vrais échanges : +7 à +29 % (tous seu
 - Juger le fantôme sur les prochaines dates (20/11 et suivantes) ; relire chaque règlement contre l'indice brut lu à la source
   (journal de la source dans la base).
 - Les barrières (13 événements ouverts, ≈ 300 k$ échangés) : rejeu dès que « hit __ by December 31 » sera réglé.
+
+## Barrières (17/11/2026, passage de 21 h) : **écartée**
+Question : « <X> odds hit <b>% / dip to <b>% by <date>? » (4 valeurs horaires CONSÉCUTIVES de l'indice au-delà du seuil) : la chance
+calculée sur les trajectoires passées du sous-jacent bat-elle le prix ?
+
+- Données (`scripts/barrieres_releve.py`, `barrieres_jetons.py`, `barrieres_histo.py`, `barrieres_toutes.py`) : 21 événements (7
+  réglés, 15 ouverts, ≈ 900 k$), 86 marchés. Le **jeton Polymarket du sous-jacent** se lit dans les échantillons publiés par l'indice
+  (`details/<liste>__<option>.json` → `sample_evidence` → `evidence/….samples.json.gz`, champ `token_id`) ; `details` ne garde que
+  168 heures d'indice. Sous-jacents horaires sur 400 jours, barrières sur 90 jours (`prices-history`, identité du labo).
+- Méthode : à la création + 1 jour puis tous les 3 jours, départs tous les 24 h dans l'historique AVANT la décision, valeur de départ
+  = prix du sous-jacent (réglées) ou valeur publiée de l'indice (ouvertes) ; variations absolues ou en logit ; règle des 4 heures ;
+  barrière déjà franchie avant la décision : écartée.
+- **Réglées** (7 événements : Chambre et Sénat républicains d'ici le 31/10, Talarico, deux du 01/11, Newsom et Vance déjà touchées ;
+  19 marchés, 168 décisions très liées) : log-score modèle **−0,370** (logit) / −0,390 (absolu) contre **prix −0,296** ; touchées
+  30, attendues aux prix 31,7, au modèle 13,4-19,7. Le marché est juste ; l'historique SOUS-estime les mouvements à l'approche de
+  l'élection (Talarico « 75 % » : 0,006-0,017 au modèle, 0,125 au prix, touché).
+- **Ouvertes** (56 décisions) : modèle − prix −0,018 en moyenne, mais le modèle change du tout au tout selon l'échelle (Le Pen « dip
+  45 % » 0,055 en absolu, 0,415 en logit ; Ossoff « hit 30 % » 0,365 / 0,84) : aucun chiffre sur lequel miser.
+- 2 réglages (absolu, logit) × 1 délai ; aucun achat simulé (le modèle perd déjà au log-score). Verdict : **écartée** ; la note du
+  15/11 (« ↑ 70 % touché 24-26 % contre 0,455 au marché ») allait dans le même sens trompeur : sur les réglées, c'est le marché qui
+  avait raison.

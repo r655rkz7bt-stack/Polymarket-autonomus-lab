@@ -23,7 +23,6 @@ from polymarket_agent.marges_californie import chance
 
 BASE = "https://elections.maryland.gov/elections/2026/general_results/"
 PAGES = {"MD-GOV": "gen_results_2026_1.html", **{f"MD-{n:02d}": f"gen_results_2026_4_{n}.html" for n in range(1, 9)}}
-UA = {"User-Agent": "curl/8"}
 R_MED = 0.015       # restants ≈ 1,5 % des voix comptées (26 000 correspondances + provisoires de Montgomery pour 2,23 M au 14-16/11)
 R_SIGMA = 0.8       # 99 % sous ≈ 10 % (20 % quand les provisoires de la course ne sont pas publiés : médiane doublée)
 _Q = re.compile(r"Will the (Democratic|Republican) Party candidate win the 2026 (?:MD-(\d+) House|Maryland gubernatorial) election"
@@ -83,7 +82,7 @@ def fetch_maryland(http: HttpClient, now: datetime, pages: dict | None = None) -
     rows = []
     for course, page in (pages or PAGES).items():
         try:
-            x = lire(http.get_text(BASE + page, headers=UA))
+            x = lire(http.get_text(BASE + page))
         except SourceUnavailable:
             continue
         if x is not None:

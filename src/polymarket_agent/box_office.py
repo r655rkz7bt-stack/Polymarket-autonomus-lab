@@ -96,7 +96,7 @@ def p_depasse(tranches: list[dict], meneur: float, ratio: float, ratio_sigma: fl
 def fetch_box_office(http: HttpClient, courses: list[dict], now: datetime) -> list[dict]:
     rows = []
     for c in courses:
-        ev = http.get_json(GAMMA_EVENT.format(id=c["ow_event"]), headers={"User-Agent": "curl/8"})
+        ev = http.get_json(GAMMA_EVENT.format(id=c["ow_event"]))
         tr = tranches_of_event(ev or {})
         r = p_depasse(tr, float(c["meneur"]), float(c.get("ratio", 2.35)), float(c.get("ratio_sigma", 0.08)))
         if r is None:

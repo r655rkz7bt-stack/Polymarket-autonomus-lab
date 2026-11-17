@@ -36,7 +36,8 @@ _SCORE = re.compile(r'"criticsScore":(\{[^{}]*\})')
 _CREATED = re.compile(r'"dateCreated":"(\d{4}-\d{2}-\d{2})"')
 _THEATERS = re.compile(r"Release Date \(Theaters\)(?:<[^>]*>|\s)*[A-Z][a-z]{2} \d{1,2}, \d{4}, (Limited|Wide)")
 MIN_REVIEWS = 20
-GLISSEMENT = 0.05   # les critiques tardives sont plus froides (non étalonné : journal `rt:histo`)
+GLISSEMENT = 0.0    # 17/11/2026 : 0,05 démenti par le journal `rt:histo` (5 films, 44 critiques tardives : 33 positives pour 28,8
+                    # à la part de départ, 26,6 avec −5 points ; z +2,3), et appliqué EN PLUS de la part récente mesurée (double compte)
 
 
 def question(text: str) -> tuple[str, int] | None:
@@ -89,7 +90,7 @@ def fetch_film(http: HttpClient, title: str, now: datetime) -> dict | None:
     base = slugify(title)
     for slug in (f"{base}_{now.year}", f"{base}_{now.year - 1}", base):
         try:
-            row = parse_page(http.get_text(PAGE.format(slug=slug), headers={"User-Agent": "Mozilla/5.0"}))
+            row = parse_page(http.get_text(PAGE.format(slug=slug)))
         except SourceUnavailable:
             continue
         if _page_ok(row, now):
@@ -99,8 +100,7 @@ def fetch_film(http: HttpClient, title: str, now: datetime) -> dict | None:
 
 def open_titles(http: HttpClient) -> list[str]:
     """Titres des films des événements « "<film>" Rotten Tomatoes Score? » encore ouverts (une recherche Gamma)."""
-    data = http.get_json(GAMMA_SEARCH, params={"q": "Rotten Tomatoes Score", "events_status": "active", "limit_per_type": 50},
-                         headers={"User-Agent": "curl/8"})
+    data = http.get_json(GAMMA_SEARCH, params={"q": "Rotten Tomatoes Score", "events_status": "active", "limit_per_type": 50})
     out = []
     for e in (data or {}).get("events") or []:
         m = _EVENT.match((e.get("title") or "").strip())
@@ -182,13 +182,15 @@ def _poisson(rng: random.Random, lam: float) -> int:
 def chance(positives: int, total: int, seuil: int, heures: float, rythme: float, part: float | None = None,
            sd: float = 0.08, glissement: float = GLISSEMENT, n: int = 4000, seed: int = 11) -> float | None:
     """P(score affiché >= seuil au règlement). `part` : part positive des critiques récentes (sinon la part totale) ; les critiques
-    à venir sont supposées `glissement` plus froides (Victorian Psycho : 78 % sur les 50 premières, 70 % sur les 33 suivantes)."""
+    à venir sont supposées `glissement` plus froides quand aucune part récente n'est mesurée (Victorian Psycho : 78 % sur les 50
+    premières, 70 % sur les 33 suivantes ; démenti sur 5 films du 14 au 16/11, d'où 0 par défaut)."""
     if total < MIN_REVIEWS:
         return None
     if heures <= 0:
         return 1.0 if displayed_at_least(positives, total, seuil) else 0.0
     base = positives / total
-    mu = min(max((base if part is None else 0.5 * base + 0.5 * part) - glissement, 0.02), 0.98)
+    # la part récente mesurée contient déjà la froideur des critiques tardives : le glissement a priori ne vaut que sans elle
+    mu = min(max(base - glissement if part is None else 0.5 * base + 0.5 * part, 0.02), 0.98)
     c = max(mu * (1 - mu) / (sd * sd) - 1, 1.0)
     a, b = mu * c, (1 - mu) * c
     rng, hits = random.Random(seed), 0

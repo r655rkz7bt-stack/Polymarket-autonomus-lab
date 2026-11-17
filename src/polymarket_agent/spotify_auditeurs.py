@@ -51,7 +51,7 @@ def parse_kworb(text: str, top: int = 40) -> list[dict]:
 
 
 def fetch_auditeurs(http: HttpClient, now: datetime, top: int = 40) -> list[dict]:
-    return parse_kworb(http.get_text(KWORB, headers={"User-Agent": "Mozilla/5.0"}), top)
+    return parse_kworb(http.get_text(KWORB), top)
 
 
 def keep_history(old: list[dict], rows: list[dict], now: datetime, days: int = 400) -> list[dict]:
