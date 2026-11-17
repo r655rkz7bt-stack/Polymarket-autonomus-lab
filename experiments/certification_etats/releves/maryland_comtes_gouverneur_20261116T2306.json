@@ -1,0 +1,1058 @@
+{
+ "ALLEGANY": {
+  "Democratic": {
+   "anticipe": 1275,
+   "jour": 3477,
+   "corr": 1924,
+   "prov": 463,
+   "total": 7139
+  },
+  "Republican": {
+   "anticipe": 2160,
+   "jour": 10142,
+   "corr": 1312,
+   "prov": 245,
+   "total": 13859
+  },
+  "Green": {
+   "anticipe": 43,
+   "jour": 223,
+   "corr": 67,
+   "prov": 31,
+   "total": 364
+  },
+  "Working Class Party": {
+   "anticipe": 70,
+   "jour": 294,
+   "corr": 100,
+   "prov": 35,
+   "total": 499
+  },
+  "Write-Ins": {
+   "anticipe": 2,
+   "jour": 12,
+   "corr": 6,
+   "prov": 2,
+   "total": 22
+  },
+  "Totals": {
+   "anticipe": 3550,
+   "jour": 14148,
+   "corr": 3409,
+   "prov": 776,
+   "total": 21883
+  }
+ },
+ "ANNE ARUNDEL": {
+  "Democratic": {
+   "anticipe": 36619,
+   "jour": 51050,
+   "corr": 38671,
+   "prov": 5665,
+   "total": 132005
+  },
+  "Republican": {
+   "anticipe": 23960,
+   "jour": 52158,
+   "corr": 12109,
+   "prov": 2293,
+   "total": 90520
+  },
+  "Green": {
+   "anticipe": 991,
+   "jour": 2608,
+   "corr": 1258,
+   "prov": 249,
+   "total": 5106
+  },
+  "Working Class Party": {
+   "anticipe": 1024,
+   "jour": 2299,
+   "corr": 897,
+   "prov": 205,
+   "total": 4425
+  },
+  "Write-Ins": {
+   "anticipe": 219,
+   "jour": 424,
+   "corr": 266,
+   "prov": 23,
+   "total": 932
+  },
+  "Totals": {
+   "anticipe": 62813,
+   "jour": 108539,
+   "corr": 53201,
+   "prov": 8435,
+   "total": 232988
+  }
+ },
+ "BALTIMORE CITY": {
+  "Democratic": {
+   "anticipe": 29025,
+   "jour": 70485,
+   "corr": 32962,
+   "prov": 12195,
+   "total": 144667
+  },
+  "Republican": {
+   "anticipe": 2245,
+   "jour": 9424,
+   "corr": 2843,
+   "prov": 849,
+   "total": 15361
+  },
+  "Green": {
+   "anticipe": 727,
+   "jour": 3277,
+   "corr": 1172,
+   "prov": 522,
+   "total": 5698
+  },
+  "Working Class Party": {
+   "anticipe": 956,
+   "jour": 2872,
+   "corr": 895,
+   "prov": 482,
+   "total": 5205
+  },
+  "Write-Ins": {
+   "anticipe": 74,
+   "jour": 223,
+   "corr": 104,
+   "prov": 27,
+   "total": 428
+  },
+  "Totals": {
+   "anticipe": 33027,
+   "jour": 86281,
+   "corr": 37976,
+   "prov": 14075,
+   "total": 171359
+  }
+ },
+ "BALTIMORE COUNTY": {
+  "Democratic": {
+   "anticipe": 48745,
+   "jour": 79305,
+   "corr": 49862,
+   "prov": 9183,
+   "total": 187095
+  },
+  "Republican": {
+   "anticipe": 25657,
+   "jour": 58380,
+   "corr": 16002,
+   "prov": 2422,
+   "total": 102461
+  },
+  "Green": {
+   "anticipe": 1377,
+   "jour": 3703,
+   "corr": 1729,
+   "prov": 324,
+   "total": 7133
+  },
+  "Working Class Party": {
+   "anticipe": 1526,
+   "jour": 3670,
+   "corr": 1370,
+   "prov": 332,
+   "total": 6898
+  },
+  "Write-Ins": {
+   "anticipe": 178,
+   "jour": 484,
+   "corr": 302,
+   "prov": 29,
+   "total": 993
+  },
+  "Totals": {
+   "anticipe": 77483,
+   "jour": 145542,
+   "corr": 69265,
+   "prov": 12290,
+   "total": 304580
+  }
+ },
+ "CALVERT": {
+  "Democratic": {
+   "anticipe": 5625,
+   "jour": 6040,
+   "corr": 5299,
+   "prov": 444,
+   "total": 17408
+  },
+  "Republican": {
+   "anticipe": 7204,
+   "jour": 10825,
+   "corr": 2325,
+   "prov": 368,
+   "total": 20722
+  },
+  "Green": {
+   "anticipe": 231,
+   "jour": 378,
+   "corr": 209,
+   "prov": 31,
+   "total": 849
+  },
+  "Working Class Party": {
+   "anticipe": 205,
+   "jour": 386,
+   "corr": 163,
+   "prov": 24,
+   "total": 778
+  },
+  "Write-Ins": {
+   "anticipe": 30,
+   "jour": 45,
+   "corr": 18,
+   "prov": 3,
+   "total": 96
+  },
+  "Totals": {
+   "anticipe": 13295,
+   "jour": 17674,
+   "corr": 8014,
+   "prov": 870,
+   "total": 39853
+  }
+ },
+ "CAROLINE": {
+  "Democratic": {
+   "anticipe": 1023,
+   "jour": 1578,
+   "corr": 742,
+   "prov": 84,
+   "total": 3427
+  },
+  "Republican": {
+   "anticipe": 1945,
+   "jour": 5307,
+   "corr": 525,
+   "prov": 105,
+   "total": 7882
+  },
+  "Green": {
+   "anticipe": 40,
+   "jour": 136,
+   "corr": 25,
+   "prov": 6,
+   "total": 207
+  },
+  "Working Class Party": {
+   "anticipe": 61,
+   "jour": 154,
+   "corr": 33,
+   "prov": 7,
+   "total": 255
+  },
+  "Write-Ins": {
+   "anticipe": 8,
+   "jour": 13,
+   "corr": 4,
+   "prov": 0,
+   "total": 25
+  },
+  "Totals": {
+   "anticipe": 3077,
+   "jour": 7188,
+   "corr": 1329,
+   "prov": 202,
+   "total": 11796
+  }
+ },
+ "CARROLL": {
+  "Democratic": {
+   "anticipe": 6761,
+   "jour": 10862,
+   "corr": 7725,
+   "prov": 1038,
+   "total": 26386
+  },
+  "Republican": {
+   "anticipe": 10929,
+   "jour": 28604,
+   "corr": 4448,
+   "prov": 768,
+   "total": 44749
+  },
+  "Green": {
+   "anticipe": 334,
+   "jour": 907,
+   "corr": 328,
+   "prov": 79,
+   "total": 1648
+  },
+  "Working Class Party": {
+   "anticipe": 300,
+   "jour": 714,
+   "corr": 274,
+   "prov": 43,
+   "total": 1331
+  },
+  "Write-Ins": {
+   "anticipe": 43,
+   "jour": 134,
+   "corr": 58,
+   "prov": 6,
+   "total": 241
+  },
+  "Totals": {
+   "anticipe": 18367,
+   "jour": 41221,
+   "corr": 12833,
+   "prov": 1934,
+   "total": 74355
+  }
+ },
+ "CECIL": {
+  "Democratic": {
+   "anticipe": 3362,
+   "jour": 5563,
+   "corr": 3402,
+   "prov": 379,
+   "total": 12706
+  },
+  "Republican": {
+   "anticipe": 5834,
+   "jour": 13262,
+   "corr": 2037,
+   "prov": 308,
+   "total": 21441
+  },
+  "Green": {
+   "anticipe": 122,
+   "jour": 388,
+   "corr": 104,
+   "prov": 29,
+   "total": 643
+  },
+  "Working Class Party": {
+   "anticipe": 149,
+   "jour": 458,
+   "corr": 148,
+   "prov": 25,
+   "total": 780
+  },
+  "Write-Ins": {
+   "anticipe": 6,
+   "jour": 26,
+   "corr": 18,
+   "prov": 1,
+   "total": 51
+  },
+  "Totals": {
+   "anticipe": 9473,
+   "jour": 19697,
+   "corr": 5709,
+   "prov": 742,
+   "total": 35621
+  }
+ },
+ "CHARLES": {
+  "Democratic": {
+   "anticipe": 16998,
+   "jour": 22445,
+   "corr": 9455,
+   "prov": 1984,
+   "total": 50882
+  },
+  "Republican": {
+   "anticipe": 4294,
+   "jour": 9966,
+   "corr": 1741,
+   "prov": 323,
+   "total": 16324
+  },
+  "Green": {
+   "anticipe": 310,
+   "jour": 722,
+   "corr": 235,
+   "prov": 52,
+   "total": 1319
+  },
+  "Working Class Party": {
+   "anticipe": 457,
+   "jour": 838,
+   "corr": 194,
+   "prov": 70,
+   "total": 1559
+  },
+  "Write-Ins": {
+   "anticipe": 44,
+   "jour": 64,
+   "corr": 14,
+   "prov": 9,
+   "total": 131
+  },
+  "Totals": {
+   "anticipe": 22103,
+   "jour": 34035,
+   "corr": 11639,
+   "prov": 2438,
+   "total": 70215
+  }
+ },
+ "DORCHESTER": {
+  "Democratic": {
+   "anticipe": 1485,
+   "jour": 2291,
+   "corr": 1157,
+   "prov": 206,
+   "total": 5139
+  },
+  "Republican": {
+   "anticipe": 1677,
+   "jour": 4960,
+   "corr": 617,
+   "prov": 115,
+   "total": 7369
+  },
+  "Green": {
+   "anticipe": 36,
+   "jour": 105,
+   "corr": 32,
+   "prov": 10,
+   "total": 183
+  },
+  "Working Class Party": {
+   "anticipe": 93,
+   "jour": 219,
+   "corr": 34,
+   "prov": 7,
+   "total": 353
+  },
+  "Write-Ins": {
+   "anticipe": 3,
+   "jour": 4,
+   "corr": 6,
+   "prov": 2,
+   "total": 15
+  },
+  "Totals": {
+   "anticipe": 3294,
+   "jour": 7579,
+   "corr": 1846,
+   "prov": 340,
+   "total": 13059
+  }
+ },
+ "FREDERICK": {
+  "Democratic": {
+   "anticipe": 17118,
+   "jour": 29054,
+   "corr": 18784,
+   "prov": 2155,
+   "total": 67111
+  },
+  "Republican": {
+   "anticipe": 10446,
+   "jour": 28993,
+   "corr": 4738,
+   "prov": 639,
+   "total": 44816
+  },
+  "Green": {
+   "anticipe": 458,
+   "jour": 1391,
+   "corr": 571,
+   "prov": 93,
+   "total": 2513
+  },
+  "Working Class Party": {
+   "anticipe": 326,
+   "jour": 1101,
+   "corr": 362,
+   "prov": 78,
+   "total": 1867
+  },
+  "Write-Ins": {
+   "anticipe": 53,
+   "jour": 113,
+   "corr": 51,
+   "prov": 4,
+   "total": 221
+  },
+  "Totals": {
+   "anticipe": 28401,
+   "jour": 60652,
+   "corr": 24506,
+   "prov": 2969,
+   "total": 116528
+  }
+ },
+ "GARRETT": {
+  "Democratic": {
+   "anticipe": 738,
+   "jour": 937,
+   "corr": 773,
+   "prov": 91,
+   "total": 2539
+  },
+  "Republican": {
+   "anticipe": 1917,
+   "jour": 5368,
+   "corr": 630,
+   "prov": 129,
+   "total": 8044
+  },
+  "Green": {
+   "anticipe": 23,
+   "jour": 74,
+   "corr": 16,
+   "prov": 6,
+   "total": 119
+  },
+  "Working Class Party": {
+   "anticipe": 53,
+   "jour": 130,
+   "corr": 34,
+   "prov": 1,
+   "total": 218
+  },
+  "Write-Ins": {
+   "anticipe": 1,
+   "jour": 7,
+   "corr": 4,
+   "prov": 0,
+   "total": 12
+  },
+  "Totals": {
+   "anticipe": 2732,
+   "jour": 6516,
+   "corr": 1457,
+   "prov": 227,
+   "total": 10932
+  }
+ },
+ "HARFORD": {
+  "Democratic": {
+   "anticipe": 14898,
+   "jour": 20055,
+   "corr": 9761,
+   "prov": 2280,
+   "total": 46994
+  },
+  "Republican": {
+   "anticipe": 17079,
+   "jour": 35926,
+   "corr": 5206,
+   "prov": 1104,
+   "total": 59315
+  },
+  "Green": {
+   "anticipe": 487,
+   "jour": 1347,
+   "corr": 406,
+   "prov": 132,
+   "total": 2372
+  },
+  "Working Class Party": {
+   "anticipe": 455,
+   "jour": 1313,
+   "corr": 348,
+   "prov": 125,
+   "total": 2241
+  },
+  "Write-Ins": {
+   "anticipe": 71,
+   "jour": 151,
+   "corr": 55,
+   "prov": 13,
+   "total": 290
+  },
+  "Totals": {
+   "anticipe": 32990,
+   "jour": 58792,
+   "corr": 15776,
+   "prov": 3654,
+   "total": 111212
+  }
+ },
+ "HOWARD": {
+  "Democratic": {
+   "anticipe": 28758,
+   "jour": 42447,
+   "corr": 23871,
+   "prov": 4463,
+   "total": 99539
+  },
+  "Republican": {
+   "anticipe": 8264,
+   "jour": 20489,
+   "corr": 4262,
+   "prov": 894,
+   "total": 33909
+  },
+  "Green": {
+   "anticipe": 796,
+   "jour": 1984,
+   "corr": 824,
+   "prov": 200,
+   "total": 3804
+  },
+  "Working Class Party": {
+   "anticipe": 526,
+   "jour": 1269,
+   "corr": 390,
+   "prov": 101,
+   "total": 2286
+  },
+  "Write-Ins": {
+   "anticipe": 103,
+   "jour": 197,
+   "corr": 110,
+   "prov": 12,
+   "total": 422
+  },
+  "Totals": {
+   "anticipe": 38447,
+   "jour": 66386,
+   "corr": 29457,
+   "prov": 5670,
+   "total": 139960
+  }
+ },
+ "KENT": {
+  "Democratic": {
+   "anticipe": 1484,
+   "jour": 1387,
+   "corr": 1136,
+   "prov": 151,
+   "total": 4158
+  },
+  "Republican": {
+   "anticipe": 966,
+   "jour": 2974,
+   "corr": 377,
+   "prov": 86,
+   "total": 4403
+  },
+  "Green": {
+   "anticipe": 33,
+   "jour": 98,
+   "corr": 22,
+   "prov": 6,
+   "total": 159
+  },
+  "Working Class Party": {
+   "anticipe": 41,
+   "jour": 85,
+   "corr": 19,
+   "prov": 5,
+   "total": 150
+  },
+  "Write-Ins": {
+   "anticipe": 5,
+   "jour": 6,
+   "corr": 2,
+   "prov": 0,
+   "total": 13
+  },
+  "Totals": {
+   "anticipe": 2529,
+   "jour": 4550,
+   "corr": 1556,
+   "prov": 248,
+   "total": 8883
+  }
+ },
+ "MONTGOMERY": {
+  "Democratic": {
+   "anticipe": 76721,
+   "jour": 128150,
+   "corr": 92170,
+   "prov": null,
+   "total": 297041
+  },
+  "Republican": {
+   "anticipe": 13173,
+   "jour": 35877,
+   "corr": 10972,
+   "prov": null,
+   "total": 60022
+  },
+  "Green": {
+   "anticipe": 1387,
+   "jour": 3354,
+   "corr": 1930,
+   "prov": null,
+   "total": 6671
+  },
+  "Working Class Party": {
+   "anticipe": 1174,
+   "jour": 2729,
+   "corr": 1011,
+   "prov": null,
+   "total": 4914
+  },
+  "Write-Ins": {
+   "anticipe": 193,
+   "jour": 434,
+   "corr": 245,
+   "prov": null,
+   "total": 872
+  },
+  "Totals": {
+   "anticipe": 92648,
+   "jour": 170544,
+   "corr": 106328,
+   "prov": null,
+   "total": 369520
+  }
+ },
+ "PRINCE GEORGE'S": {
+  "Democratic": {
+   "anticipe": 88042,
+   "jour": 109286,
+   "corr": 60331,
+   "prov": 6122,
+   "total": 263781
+  },
+  "Republican": {
+   "anticipe": 4790,
+   "jour": 11512,
+   "corr": 3335,
+   "prov": 340,
+   "total": 19977
+  },
+  "Green": {
+   "anticipe": 1412,
+   "jour": 2941,
+   "corr": 1050,
+   "prov": 134,
+   "total": 5537
+  },
+  "Working Class Party": {
+   "anticipe": 1747,
+   "jour": 2776,
+   "corr": 641,
+   "prov": 106,
+   "total": 5270
+  },
+  "Write-Ins": {
+   "anticipe": 213,
+   "jour": 426,
+   "corr": 136,
+   "prov": 14,
+   "total": 789
+  },
+  "Totals": {
+   "anticipe": 96204,
+   "jour": 126941,
+   "corr": 65493,
+   "prov": 6716,
+   "total": 295354
+  }
+ },
+ "QUEEN ANNE'S": {
+  "Democratic": {
+   "anticipe": 2920,
+   "jour": 3126,
+   "corr": 2173,
+   "prov": 284,
+   "total": 8503
+  },
+  "Republican": {
+   "anticipe": 4837,
+   "jour": 8917,
+   "corr": 1247,
+   "prov": 290,
+   "total": 15291
+  },
+  "Green": {
+   "anticipe": 123,
+   "jour": 272,
+   "corr": 77,
+   "prov": 9,
+   "total": 481
+  },
+  "Working Class Party": {
+   "anticipe": 105,
+   "jour": 234,
+   "corr": 56,
+   "prov": 12,
+   "total": 407
+  },
+  "Write-Ins": {
+   "anticipe": 13,
+   "jour": 35,
+   "corr": 11,
+   "prov": 0,
+   "total": 59
+  },
+  "Totals": {
+   "anticipe": 7998,
+   "jour": 12584,
+   "corr": 3564,
+   "prov": 595,
+   "total": 24741
+  }
+ },
+ "SAINT MARY'S": {
+  "Democratic": {
+   "anticipe": 5920,
+   "jour": 6458,
+   "corr": 4386,
+   "prov": 648,
+   "total": 17412
+  },
+  "Republican": {
+   "anticipe": 7651,
+   "jour": 12811,
+   "corr": 2062,
+   "prov": 399,
+   "total": 22923
+  },
+  "Green": {
+   "anticipe": 241,
+   "jour": 439,
+   "corr": 174,
+   "prov": 56,
+   "total": 910
+  },
+  "Working Class Party": {
+   "anticipe": 345,
+   "jour": 518,
+   "corr": 164,
+   "prov": 48,
+   "total": 1075
+  },
+  "Write-Ins": {
+   "anticipe": 17,
+   "jour": 37,
+   "corr": 14,
+   "prov": 0,
+   "total": 68
+  },
+  "Totals": {
+   "anticipe": 14174,
+   "jour": 20263,
+   "corr": 6800,
+   "prov": 1151,
+   "total": 42388
+  }
+ },
+ "SOMERSET": {
+  "Democratic": {
+   "anticipe": 712,
+   "jour": 1400,
+   "corr": 519,
+   "prov": 348,
+   "total": 2979
+  },
+  "Republican": {
+   "anticipe": 1193,
+   "jour": 2688,
+   "corr": 382,
+   "prov": 88,
+   "total": 4351
+  },
+  "Green": {
+   "anticipe": 23,
+   "jour": 52,
+   "corr": 7,
+   "prov": 5,
+   "total": 87
+  },
+  "Working Class Party": {
+   "anticipe": 35,
+   "jour": 110,
+   "corr": 21,
+   "prov": 12,
+   "total": 178
+  },
+  "Write-Ins": {
+   "anticipe": 4,
+   "jour": 2,
+   "corr": 0,
+   "prov": 0,
+   "total": 6
+  },
+  "Totals": {
+   "anticipe": 1967,
+   "jour": 4252,
+   "corr": 929,
+   "prov": 453,
+   "total": 7601
+  }
+ },
+ "TALBOT": {
+  "Democratic": {
+   "anticipe": 3374,
+   "jour": 2758,
+   "corr": 2523,
+   "prov": 253,
+   "total": 8908
+  },
+  "Republican": {
+   "anticipe": 3307,
+   "jour": 4692,
+   "corr": 979,
+   "prov": 128,
+   "total": 9106
+  },
+  "Green": {
+   "anticipe": 72,
+   "jour": 138,
+   "corr": 51,
+   "prov": 5,
+   "total": 266
+  },
+  "Working Class Party": {
+   "anticipe": 77,
+   "jour": 122,
+   "corr": 34,
+   "prov": 5,
+   "total": 238
+  },
+  "Write-Ins": {
+   "anticipe": 23,
+   "jour": 14,
+   "corr": 11,
+   "prov": 1,
+   "total": 49
+  },
+  "Totals": {
+   "anticipe": 6853,
+   "jour": 7724,
+   "corr": 3598,
+   "prov": 392,
+   "total": 18567
+  }
+ },
+ "WASHINGTON": {
+  "Democratic": {
+   "anticipe": 5438,
+   "jour": 8690,
+   "corr": 5919,
+   "prov": 732,
+   "total": 20779
+  },
+  "Republican": {
+   "anticipe": 7148,
+   "jour": 17099,
+   "corr": 2728,
+   "prov": 408,
+   "total": 27383
+  },
+  "Green": {
+   "anticipe": 209,
+   "jour": 562,
+   "corr": 212,
+   "prov": 27,
+   "total": 1010
+  },
+  "Working Class Party": {
+   "anticipe": 197,
+   "jour": 561,
+   "corr": 210,
+   "prov": 51,
+   "total": 1019
+  },
+  "Write-Ins": {
+   "anticipe": 16,
+   "jour": 40,
+   "corr": 19,
+   "prov": 1,
+   "total": 76
+  },
+  "Totals": {
+   "anticipe": 13008,
+   "jour": 26952,
+   "corr": 9088,
+   "prov": 1219,
+   "total": 50267
+  }
+ },
+ "WICOMICO": {
+  "Democratic": {
+   "anticipe": 4902,
+   "jour": 6890,
+   "corr": 3434,
+   "prov": 1060,
+   "total": 16286
+  },
+  "Republican": {
+   "anticipe": 4244,
+   "jour": 10280,
+   "corr": 1515,
+   "prov": 361,
+   "total": 16400
+  },
+  "Green": {
+   "anticipe": 146,
+   "jour": 364,
+   "corr": 97,
+   "prov": 35,
+   "total": 642
+  },
+  "Working Class Party": {
+   "anticipe": 194,
+   "jour": 504,
+   "corr": 110,
+   "prov": 40,
+   "total": 848
+  },
+  "Write-Ins": {
+   "anticipe": 14,
+   "jour": 28,
+   "corr": 9,
+   "prov": 3,
+   "total": 54
+  },
+  "Totals": {
+   "anticipe": 9500,
+   "jour": 18066,
+   "corr": 5165,
+   "prov": 1499,
+   "total": 34230
+  }
+ },
+ "WORCESTER": {
+  "Democratic": {
+   "anticipe": 1952,
+   "jour": 4349,
+   "corr": 2417,
+   "prov": 472,
+   "total": 9190
+  },
+  "Republican": {
+   "anticipe": 2947,
+   "jour": 9738,
+   "corr": 1501,
+   "prov": 380,
+   "total": 14566
+  },
+  "Green": {
+   "anticipe": 53,
+   "jour": 261,
+   "corr": 61,
+   "prov": 17,
+   "total": 392
+  },
+  "Working Class Party": {
+   "anticipe": 96,
+   "jour": 291,
+   "corr": 60,
+   "prov": 20,
+   "total": 467
+  },
+  "Write-Ins": {
+   "anticipe": 8,
+   "jour": 14,
+   "corr": 8,
+   "prov": 0,
+   "total": 30
+  },
+  "Totals": {
+   "anticipe": 5056,
+   "jour": 14653,
+   "corr": 4047,
+   "prov": 889,
+   "total": 24645
+  }
+ }
+}

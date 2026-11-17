@@ -1,0 +1,343 @@
+{
+ "lu": "2026-11-17T11:06:32.308512+00:00",
+ "courses": {
+  "gouverneur": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Wes Moore and Aruna Miller",
+     "parti": "Democratic",
+     "anticipe": 403895,
+     "jour": 618083,
+     "correspondance": 379396,
+     "provisoire": 50700,
+     "total": 1452074,
+     "pct": 65.1
+    },
+    {
+     "nom": "Dan Cox and Rob Krop",
+     "parti": "Republican",
+     "anticipe": 173867,
+     "jour": 410392,
+     "correspondance": 83893,
+     "provisoire": 13042,
+     "total": 681194,
+     "pct": 30.54
+    },
+    {
+     "nom": "Andy Ellis and Owen Silverman Andrews",
+     "parti": "Green",
+     "anticipe": 9674,
+     "jour": 25724,
+     "correspondance": 10657,
+     "provisoire": 2058,
+     "total": 48113,
+     "pct": 2.16
+    },
+    {
+     "nom": "Cathy White and Cathy Permut",
+     "parti": "Working Class Party",
+     "anticipe": 10212,
+     "jour": 23647,
+     "correspondance": 7568,
+     "provisoire": 1834,
+     "total": 43261,
+     "pct": 1.94
+    }
+   ],
+   "totaux": [
+    598989,
+    1080779,
+    482985,
+    67784,
+    2230537
+   ]
+  },
+  "md01": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Dan Schwartz",
+     "parti": "Democratic",
+     "anticipe": 44579,
+     "jour": 66334,
+     "correspondance": 34187,
+     "provisoire": 6185,
+     "total": 151285,
+     "pct": 47.71
+    },
+    {
+     "nom": "Andy Harris",
+     "parti": "Republican",
+     "anticipe": 46267,
+     "jour": 100549,
+     "correspondance": 15516,
+     "provisoire": 2924,
+     "total": 165256,
+     "pct": 52.12
+    }
+   ],
+   "totaux": [
+    90974,
+    167222,
+    49767,
+    9120,
+    317083
+   ]
+  },
+  "md02": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Jr.",
+     "parti": "Democratic",
+     "anticipe": 45882,
+     "jour": 82409,
+     "correspondance": 53958,
+     "provisoire": 7602,
+     "total": 189851,
+     "pct": 65.04
+    },
+    {
+     "nom": "Dave Wallace",
+     "parti": "Republican",
+     "anticipe": 24998,
+     "jour": 60304,
+     "correspondance": 14082,
+     "provisoire": 2080,
+     "total": 101464,
+     "pct": 34.76
+    }
+   ],
+   "totaux": [
+    70987,
+    143008,
+    68219,
+    9702,
+    291916
+   ]
+  },
+  "md03": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Sarah Elfreth",
+     "parti": "Democratic",
+     "anticipe": 57545,
+     "jour": 89312,
+     "correspondance": 56344,
+     "provisoire": 8886,
+     "total": 212087,
+     "pct": 67.74
+    },
+    {
+     "nom": "Berney Flowers",
+     "parti": "Republican",
+     "anticipe": 25160,
+     "jour": 60039,
+     "correspondance": 12436,
+     "provisoire": 2453,
+     "total": 100088,
+     "pct": 31.97
+    }
+   ],
+   "totaux": [
+    82894,
+    149789,
+    68985,
+    11399,
+    313067
+   ]
+  },
+  "md04": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Glenn F. Ivey",
+     "parti": "Democratic",
+     "anticipe": 54990,
+     "jour": 78806,
+     "correspondance": 40314,
+     "provisoire": 3787,
+     "total": 177897,
+     "pct": 89.25
+    },
+    {
+     "nom": "George E. McDermott",
+     "parti": "Republican",
+     "anticipe": 2669,
+     "jour": 7169,
+     "correspondance": 1898,
+     "provisoire": 179,
+     "total": 11915,
+     "pct": 5.98
+    },
+    {
+     "nom": "Sam Husseini",
+     "parti": "Green",
+     "anticipe": 2079,
+     "jour": 5197,
+     "correspondance": 1707,
+     "provisoire": 209,
+     "total": 9192,
+     "pct": 4.61
+    }
+   ],
+   "totaux": [
+    59827,
+    91345,
+    43976,
+    4178,
+    199326
+   ]
+  },
+  "md05": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Adrian Boafo",
+     "parti": "Democratic",
+     "anticipe": 78272,
+     "jour": 88655,
+     "correspondance": 53385,
+     "provisoire": 6911,
+     "total": 227223,
+     "pct": 70.56
+    },
+    {
+     "nom": "Chris Chaffee",
+     "parti": "Republican",
+     "anticipe": 29083,
+     "jour": 50638,
+     "correspondance": 10978,
+     "provisoire": 1781,
+     "total": 92480,
+     "pct": 28.72
+    }
+   ],
+   "totaux": [
+    108173,
+    140107,
+    64990,
+    8745,
+    322015
+   ]
+  },
+  "md06": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage April McClain Delaney",
+     "parti": "Democratic",
+     "anticipe": 41162,
+     "jour": 72945,
+     "correspondance": 45059,
+     "provisoire": 3357,
+     "total": 162523,
+     "pct": 59.08
+    },
+    {
+     "nom": "Robin Ficker",
+     "parti": "Republican",
+     "anticipe": 24192,
+     "jour": 67713,
+     "correspondance": 11009,
+     "provisoire": 1312,
+     "total": 104226,
+     "pct": 37.89
+    },
+    {
+     "nom": "Moshe Y. Landman",
+     "parti": "Green",
+     "anticipe": 1426,
+     "jour": 4376,
+     "correspondance": 1659,
+     "provisoire": 203,
+     "total": 7664,
+     "pct": 2.79
+    }
+   ],
+   "totaux": [
+    66914,
+    145384,
+    57910,
+    4882,
+    275090
+   ]
+  },
+  "md07": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Kweisi Mfume",
+     "parti": "Democratic",
+     "anticipe": 41485,
+     "jour": 90926,
+     "correspondance": 41518,
+     "provisoire": 12988,
+     "total": 186917,
+     "pct": 85.12
+    },
+    {
+     "nom": "Scott M. Collier",
+     "parti": "Republican",
+     "anticipe": 6719,
+     "jour": 19823,
+     "correspondance": 4157,
+     "provisoire": 1117,
+     "total": 31816,
+     "pct": 14.49
+    }
+   ],
+   "totaux": [
+    48380,
+    111156,
+    45895,
+    14164,
+    219595
+   ]
+  },
+  "md08": {
+   "heure_officielle": "11/16/2026 11:06:18 PM",
+   "candidats": [
+    {
+     "nom": "Name Party Early Voting Election Day Mail-In Ballot Provisional Total Percentage Jamie Raskin",
+     "parti": "Democratic",
+     "anticipe": 59498,
+     "jour": 99468,
+     "correspondance": 76525,
+     "provisoire": 0,
+     "total": 235491,
+     "pct": 83.44
+    },
+    {
+     "nom": "Cheryl Riley",
+     "parti": "Republican",
+     "anticipe": 8856,
+     "jour": 24699,
+     "correspondance": 7871,
+     "provisoire": 0,
+     "total": 41426,
+     "pct": 14.68
+    },
+    {
+     "nom": "Nancy Wallace",
+     "parti": "Green",
+     "anticipe": 902,
+     "jour": 2661,
+     "correspondance": 1236,
+     "provisoire": 0,
+     "total": 4799,
+     "pct": 1.7
+    }
+   ],
+   "totaux": [
+    69367,
+    127098,
+    85774,
+    0,
+    282239
+   ]
+  }
+ }
+}
