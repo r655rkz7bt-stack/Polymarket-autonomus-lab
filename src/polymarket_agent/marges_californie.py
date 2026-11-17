@@ -65,7 +65,7 @@ def _n(v) -> int:
 
 
 def lire(d) -> dict | None:
-    """Réponse de l'API d'un district → {heure, d, r, total, meme_parti} (d, r : voix des premiers démocrate et républicain)."""
+    """Réponse de l'API d'un district → {heure, d, r, total, meme_parti, autre_en_tete} (d − r : marge signée des deux premiers)."""
     if isinstance(d, list):
         d = next((x for x in d if "Districtwide" in str(x.get("raceTitle", ""))), d[-1] if d else None)
     if not isinstance(d, dict) or not d.get("candidates"):
@@ -75,9 +75,17 @@ def lire(d) -> dict | None:
     if total <= 0 or len(cands) < 2:
         return None
     meme = cands[0][1] == cands[1][1]
-    dem = next((v for v, p in cands if p.startswith("Dem")), 0)
-    rep = next((v for v, p in cands if p.startswith("Rep")), 0)
-    return {"heure": str(d.get("ReportingTime") or ""), "d": dem, "r": rep, "total": total, "meme_parti": meme}
+    # La règle compte la marge entre les DEUX PREMIERS, quel que soit le parti du second (CA-06, 17/11 : démocrate contre un sans-parti
+    # « NPP » ; prendre le premier républicain donnait 0 voix en face et 58,9 points au lieu de 17,76). « d » = voix du premier si c'est un
+    # démocrate, sinon du second ; « r » = l'autre des deux premiers : d − r est la marge signée (positive si un démocrate mène).
+    (v1, p1), (v2, _) = cands[0], cands[1]
+    autre = not (p1.startswith("Dem") or p1.startswith("Rep"))
+    dem, rep = (v1, v2) if p1.startswith("Dem") else (v2, v1)
+    # Contrôle croisé avec les pourcentages publiés par l'API (arrondis au dixième) : écart des deux premiers.
+    pcts = sorted((float(str(c.get("Percent") or "nan").replace(",", ".")) for c in d["candidates"]), reverse=True)
+    ecart_api = pcts[0] - pcts[1] if len(pcts) >= 2 and not any(math.isnan(x) for x in pcts[:2]) else None
+    return {"heure": str(d.get("ReportingTime") or ""), "d": dem, "r": rep, "total": total, "meme_parti": meme,
+            "autre_en_tete": autre, "ecart_api": ecart_api}
 
 
 def fetch_californie(http: HttpClient, now: datetime, districts=DISTRICTS) -> list[dict]:
@@ -115,8 +123,9 @@ def marge_tardive(hist: list[dict], district: int) -> tuple[float, int] | None:
         return None
     a, b = hs[-2], hs[-1]
     ajout = b["total"] - a["total"]
-    if ajout < MIN_AJOUT:
-        return None
+    dd, dr = b["d"] - a["d"], b["r"] - a["r"]
+    if ajout < MIN_AJOUT or dd < 0 or dr < 0 or dd + dr > ajout:
+        return None   # voix qui baissent ou plus de voix aux deux premiers qu'au total : relevés incomparables (calcul d'avant le 17/11)
     return 100.0 * ((b["d"] - a["d"]) - (b["r"] - a["r"])) / ajout, ajout
 
 
@@ -155,9 +164,11 @@ def attach_marges(markets, db, now: datetime, max_age_hours: float = 3.0) -> int
             continue
         district, party, lo, hi = q
         r = par.get(district)
-        if r is None or r.get("meme_parti"):
+        if r is None or r.get("meme_parti") or r.get("autre_en_tete"):
             continue
         s0 = 100.0 * (r["d"] - r["r"]) / r["total"]
+        if r.get("ecart_api") is not None and abs(abs(s0) - r["ecart_api"]) > 0.5:
+            continue   # notre marge ne redonne pas l'écart des pourcentages officiels : lecture fausse, pas de chance donnée
         tard = marge_tardive(hist, district)
         mu = tard[0] if tard else s0
         # tranche du parti : D « a-b » = s dans [a ; b[ ; R « a-b » = s dans ]−b ; −a] (borne de mesure nulle)
