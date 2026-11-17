@@ -51,3 +51,9 @@ toute nouvelle stratégie à source externe relit ses premiers achats **un par u
 - Troisième relevé daté (`comptage_tardif/releves/californie_20261117T0555.jsonl.gz`) : voir `experiments/comptage_tardif.md`, étape 3.
 - `estimation_perimee` reste juste comme alerte : sur un marché de façade, un écart de 0,29 est soit une erreur, soit l'avantage ; ici
   c'était l'avantage (CA-13), alors que l'erreur (CA-06) passait sous l'alerte.
+
+## Deuxième contrôle à la main (famille 2) : `convictions_claude`, deuxième de l'arène (+45,1 €)
+Journal signé du fantôme (11 achats, 20 ventes, 1 règlement) : le gain réalisé vient d'**un seul pari** (Danube, 20,3 € → 64,5 € revendus,
++44 €) ; Rhin +6, Spotify +5, dette +6 environ ; Gemini Carbon −14,6 € (réglé OUI, conviction NON à 0,88 fausse). Sans le meilleur
+pari : ≈ +1 € sur 6 opérations. Aucun défaut de mesure, mais aucune preuve d'avantage non plus : 4 convictions encore ouvertes (3
+marges californiennes, Michigan), à juger à leur règlement.
