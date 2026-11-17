@@ -1722,7 +1722,7 @@ class MargesCalifornie(SeismesMarche):
     décomptes passés, donc pas de test sur le passé ; le 17/11 la tranche de la marge courante de CA-26, CA-1, CA-3, CA-20 était vendue
     0,89-0,91 alors que la faire sortir demandait plus de 8 % de bulletins à une marge 25 points plus défavorable (≈ 2-4 % restants).
     Une perte apprendrait qu'un gros lot tardif peut porter une marge très différente des précédents, ou que les restants sont plus nombreux
-    que la loi ne le dit."""
+    que la loi ne le dit. Depuis le 17/11/2026 (11 h) : aussi le Maryland (marges_maryland.py, rattaché sous la même clé)."""
 
     strategy_id = "marges_californie"
     ref_key = "marges_ca"

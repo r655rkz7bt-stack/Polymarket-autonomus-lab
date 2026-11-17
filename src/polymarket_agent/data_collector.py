@@ -438,6 +438,10 @@ def collect(settings: dict, http: HttpClient, db, markets: list[MarketInfo], now
             refs._save(db, "marges_ca:histo", ca_journal(refs._load(db, "marges_ca:histo")[1] or [], rows), now)
         return rows
     snapshot("marges_ca", marges_ca, "ref:marges_ca")
+    # Marges du Maryland (17/11/2026, piste n° 68) : décompte non officiel du State Board of Elections (pages publiques, robots.txt
+    # permis), gouverneur et 8 districts, colonnes par type de bulletin ; rattaché sous `marges_ca` (même expérience).
+    from polymarket_agent.marges_maryland import fetch_maryland
+    snapshot("marges_md", lambda cfg: factories.get("marges_md", lambda c: fetch_maryland(http, now))(cfg), "ref:marges_md")
     from polymarket_agent.box_office import fetch_box_office
     snapshot("box_office", lambda cfg: factories.get("box_office", lambda c: fetch_box_office(http, list(c.get("courses") or []), now))(cfg),
              "ref:box_office")

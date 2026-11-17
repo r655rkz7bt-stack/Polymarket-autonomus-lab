@@ -1,0 +1,194 @@
+{
+ "ALLEGANY": {
+  "recus": 3705,
+  "acceptes": 3675,
+  "restants": 30,
+  "dem_recus": 1773,
+  "rep_recus": 1381,
+  "oth_recus": 551
+ },
+ "ANNE ARUNDEL": {
+  "recus": 55730,
+  "acceptes": 55389,
+  "restants": 341,
+  "dem_recus": 32969,
+  "rep_recus": 10567,
+  "oth_recus": 12194
+ },
+ "BALTIMORE CITY": {
+  "recus": 39365,
+  "acceptes": 39176,
+  "restants": 189,
+  "dem_recus": 34223,
+  "rep_recus": 1466,
+  "oth_recus": 3676
+ },
+ "BALTIMORE COUNTY": {
+  "recus": 73130,
+  "acceptes": 72720,
+  "restants": 410,
+  "dem_recus": 50120,
+  "rep_recus": 11966,
+  "oth_recus": 11044
+ },
+ "CALVERT": {
+  "recus": 8334,
+  "acceptes": 8311,
+  "restants": 23,
+  "dem_recus": 4527,
+  "rep_recus": 2175,
+  "oth_recus": 1632
+ },
+ "CAROLINE": {
+  "recus": 1405,
+  "acceptes": 1398,
+  "restants": 7,
+  "dem_recus": 667,
+  "rep_recus": 495,
+  "oth_recus": 243
+ },
+ "CARROLL": {
+  "recus": 13887,
+  "acceptes": 13821,
+  "restants": 66,
+  "dem_recus": 6799,
+  "rep_recus": 4471,
+  "oth_recus": 2617
+ },
+ "CECIL": {
+  "recus": 5836,
+  "acceptes": 5820,
+  "restants": 16,
+  "dem_recus": 2633,
+  "rep_recus": 2103,
+  "oth_recus": 1100
+ },
+ "CHARLES": {
+  "recus": 11927,
+  "acceptes": 11882,
+  "restants": 45,
+  "dem_recus": 8790,
+  "rep_recus": 1450,
+  "oth_recus": 1687
+ },
+ "DORCHESTER": {
+  "recus": 2097,
+  "acceptes": 2091,
+  "restants": 6,
+  "dem_recus": 1241,
+  "rep_recus": 601,
+  "oth_recus": 255
+ },
+ "FREDERICK": {
+  "recus": 25044,
+  "acceptes": 24922,
+  "restants": 122,
+  "dem_recus": 15470,
+  "rep_recus": 4637,
+  "oth_recus": 4937
+ },
+ "GARRETT": {
+  "recus": 1602,
+  "acceptes": 1600,
+  "restants": 2,
+  "dem_recus": 654,
+  "rep_recus": 724,
+  "oth_recus": 224
+ },
+ "HARFORD": {
+  "recus": 18093,
+  "acceptes": 17991,
+  "restants": 102,
+  "dem_recus": 9516,
+  "rep_recus": 5101,
+  "oth_recus": 3476
+ },
+ "HOWARD": {
+  "recus": 32346,
+  "acceptes": 32198,
+  "restants": 148,
+  "dem_recus": 21809,
+  "rep_recus": 3966,
+  "oth_recus": 6571
+ },
+ "KENT": {
+  "recus": 1652,
+  "acceptes": 1644,
+  "restants": 8,
+  "dem_recus": 1022,
+  "rep_recus": 373,
+  "oth_recus": 257
+ },
+ "MONTGOMERY": {
+  "recus": 110676,
+  "acceptes": 100263,
+  "restants": 10413,
+  "dem_recus": 81735,
+  "rep_recus": 9138,
+  "oth_recus": 19803
+ },
+ "PRINCE GEORGE'S": {
+  "recus": 69688,
+  "acceptes": 55806,
+  "restants": 13882,
+  "dem_recus": 59535,
+  "rep_recus": 2719,
+  "oth_recus": 7434
+ },
+ "QUEEN ANNE'S": {
+  "recus": 3730,
+  "acceptes": 3708,
+  "restants": 22,
+  "dem_recus": 1864,
+  "rep_recus": 1157,
+  "oth_recus": 709
+ },
+ "SAINT MARY'S": {
+  "recus": 7149,
+  "acceptes": 7113,
+  "restants": 36,
+  "dem_recus": 3876,
+  "rep_recus": 1952,
+  "oth_recus": 1321
+ },
+ "SOMERSET": {
+  "recus": 1071,
+  "acceptes": 1069,
+  "restants": 2,
+  "dem_recus": 549,
+  "rep_recus": 363,
+  "oth_recus": 159
+ },
+ "TALBOT": {
+  "recus": 3836,
+  "acceptes": 3822,
+  "restants": 14,
+  "dem_recus": 2134,
+  "rep_recus": 974,
+  "oth_recus": 728
+ },
+ "WASHINGTON": {
+  "recus": 9557,
+  "acceptes": 9496,
+  "restants": 61,
+  "dem_recus": 5092,
+  "rep_recus": 2714,
+  "oth_recus": 1751
+ },
+ "WICOMICO": {
+  "recus": 5774,
+  "acceptes": 5758,
+  "restants": 16,
+  "dem_recus": 3318,
+  "rep_recus": 1535,
+  "oth_recus": 921
+ },
+ "WORCESTER": {
+  "recus": 4599,
+  "acceptes": 4567,
+  "restants": 32,
+  "dem_recus": 2309,
+  "rep_recus": 1517,
+  "oth_recus": 773
+ }
+}

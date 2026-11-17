@@ -154,3 +154,19 @@ au 17/11 1 h (CA-26, CA-1, CA-3, CA-20 : marges 26,91 / 17,42 / 17,56 / −22,52
 3. Juger le relevé du 16/11 quand les résultats seront certifiés (décembre).
 
 Verdict : **meneur après le vote écarté** (vrais échanges −24 %) ; **direction des derniers bulletins : en cours** (Nouvelle-Zélande : marché juste ; États-Unis : relevé du 16/11 à juger).
+
+## Maryland (17/11/2026, passage de 11 h, piste n° 68)
+
+- Source : pages publiques du State Board of Elections (`elections.maryland.gov/elections/2026/general_results/gen_results_2026_1.html`
+  pour le gouverneur, `gen_results_2026_4_<n>.html` pour les districts, `gen_results_2026_by_county_<1..24>.html` par comté ; robots.txt
+  permis), une colonne par type de bulletin (anticipé, jour J, correspondance, provisoire ; « NR » ou 0 = provisoires pas publiés), et
+  `press_room/2026_stats/GG26/Absentees_Ballots_Left_To_Count_by_County.xlsx` (reçus, acceptés, restants ; « as of » 14/11).
+- Au 16/11 23 h 06 : gouverneur Moore 1 452 074, Cox 681 194, total 2 230 537 (marge 34,560) ; correspondance comptée +61,2, provisoires
+  +55,6. Restants au 14/11 : 25 993 correspondances (Prince George's 13 882, Montgomery 10 413) ; depuis, Montgomery a compté ≈ 6 000
+  (106 328 voix de gouverneur pour 100 263 acceptées au 14/11) ; provisoires de Montgomery non publiés (≈ 9 000-13 000 d'après les autres
+  grands comtés, 2,3-4 % des voix). Pour passer 35 points il faut ≈ 28 000 bulletins à +70 ou ≈ 36 000 à +62 : sur le fil (« 30-35 % »
+  0,779, « 35-40 % » 0,81 au vendeur) : rien.
+- Districts : MD-05 41,84 (restants à ≈ +64), MD-06 21,19 (+57), MD-04 83,27 (+87), MD-08 68,76 (+80, provisoires non publiés), MD-07
+  70,63, MD-02 30,28, MD-03 35,78, MD-01 R +4,41 : aucun ne peut sortir de sa tranche avec ≈ 1-4 % de bulletins restants ; tranches
+  courantes vendues 0,94-0,98. → `marges_californie` lit aussi le Maryland (`src/polymarket_agent/marges_maryland.py`, référence
+  `marges_ca`) ; à 0,94 l'avantage net (0,033) reste sous son seuil (0,04) : elle attend un vendeur à ≈ 0,93 ou moins.
