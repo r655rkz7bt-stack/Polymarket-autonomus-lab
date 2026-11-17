@@ -90,6 +90,39 @@ Marchés regardés :
 
 État : **en cours** ; prochaine étape = second relevé de l'API après une nouvelle « ReportingTime », puis direction par district.
 
+## Californie (passage de 1 h, 17/11/2026) : étape 2, la direction des derniers bulletins
+
+- Nouveau « ReportingTime » de l'API officielle : **16/11 16 h 34** (le relevé précédent lisait le 14/11 17 h 16). Second relevé daté :
+  `comptage_tardif/releves/californie_20261117T0057.jsonl.gz` (43 districts, 515 tranches). Gouverneur : 13 035 917 → 13 101 842 voix
+  (+65 925 en deux jours, 0,5 %) : le comptage ralentit.
+- `direction_californie.py` (bulletins comptés entre les deux relevés, district par district) : 22 districts sans aucun bulletin
+  ajouté, les autres de +33 à +19 219 (CA-26, Ventura, 7,4 %). Les bulletins tardifs penchent presque partout vers les démocrates
+  (CA-13 D +42,7 contre 24,8 cumulés ; CA-26 D +41,7 contre 25,8 ; CA-1 +23,4 contre 17,2) ; exceptions : CA-5 (R +2,4 contre R +11,6),
+  CA-19 (+8,5 contre +44,2), CA-32 (+12,5 contre +34,6), CA-48 (+12,5 contre +19,0).
+- **Combien de bulletins restent ?** L'état ne le publie que derrière Incapsula (jamais lu) ; Ventura répond « Request Rejected » (pare-feu,
+  pas de contournement) ; **San Diego** (`livevoterturnout.com/ENR/sandiegocaenr/…`, robots.txt permis) : « PROJECTED OUTSTANDING
+  BALLOTS: 51,000 » pour 1 213 285 bulletins comptés, page du 12/11 17 h 49 (4,2 %). Ordre de grandeur retenu : quelques % au plus.
+- `sortie_tranche.py` : part de bulletins supplémentaires (en % des voix déjà comptées) qu'il faudrait pour faire sortir la marge de sa
+  tranche, à la marge tardive observée et à la marge cumulée ± 25 points. Tranches dont la sortie demande plus de 8 % même à ± 25 points
+  et que le carnet vend sous 0,92 : **CA-26 « D 25-30 % » (vendeur 0,89, sortie 8,3 % / 26 % observée), CA-1 « D 15-20 % » (0,90-0,91 ;
+  10,7 % / 77 %), CA-3 « D 15-20 % » (0,898 ; 10,8 % ; 282 bulletins en deux jours), CA-20 « R 20-25 % » (0,91 ; 10,6 %)** ; un peu plus
+  exposées : CA-48 « D 18-21 % » (0,844 ; 3,8 % / 16,7 %), CA-19 « D 40-45 % » (0,91 ; 4,7 % / 12,3 %), CA-5 « R 10-15 % » (0,93 ; 6,3 % / 19,5 %).
+  La foule tient des carnets de façade (acheteur 0,02-0,59 / vendeur 0,84-0,98 sur toutes les tranches) : la tranche presque sûre est
+  vendue au même prix que ses voisines.
+- Règle relue (CA-26) : différence des pourcentages des deux premiers sur les voix valides, « official vote count once the count has been
+  made official » (certification des comtés vers le 03/12, de l'État vers le 12/12), égalité à une borne → tranche du dessus, recomptage =
+  attente. Frais `politics_fees` 4 % × p × (1 − p) au preneur (≈ 0,004 par part à 0,89).
+
+**Convictions écrites** (trois au plus par passage, `config/convictions.yaml`) : `ca26-marge-dem-25-30` (0,97, borne 0,95),
+`ca01-marge-dem-15-20` (0,985, borne 0,965), `ca03-marge-dem-15-20` (0,985, borne 0,965), 4 % du fantôme au plus chacune.
+Ce n'est pas un test sur le passé (aucun relevé daté des décomptes de 2022 ou 2024) : c'est un essai en direct, jugé à la certification
+(mi-décembre). Une perte apprendrait qu'un gros lot tardif (bulletins provisoires, « cure » des signatures) peut porter une marge très
+différente des précédents, ou que la règle du marché ne lit pas le décompte comme nous.
+
+État : **en cours** ; à faire : relever à chaque nouveau « ReportingTime » (`californie_marges.py` puis `direction_californie.py` et
+`sortie_tranche.py`) ; juger les 43 districts à la certification (toutes les tranches « courantes » du 17/11, pas seulement les trois achetées :
+c'est le vrai test de la règle « sortie > 8 % = presque sûr »).
+
 ## À faire (prochain passage)
 1. Source des bulletins restant à compter par État (secrétaires d'État ; `api.ap.org` 403) : `robots_ok.py` d'abord (SEUL).
    16/11 : Californie = décompte courant lisible (`api.sos.ca.gov`), bulletins restants illisibles ; relancer `californie_marges.py`

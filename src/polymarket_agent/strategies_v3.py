@@ -1715,6 +1715,20 @@ class RtCompteCritiques(SeismesMarche):
     borne = 0.02
 
 
+class MargesCalifornie(SeismesMarche):
+    """« Will a Democratic/Republican Party candidate win the 2026 CA-<n> House election by <a>%-<b>%? » : marge officielle certifiée
+    (mi-décembre) contre le décompte officiel courant (api.sos.ca.gov) et la marge des bulletins comptés entre deux relevés
+    (marges_californie.py). Expérience audacieuse du 17/11/2026 (experiments/comptage_tardif.md, piste n° 66) : aucun relevé daté des
+    décomptes passés, donc pas de test sur le passé ; le 17/11 la tranche de la marge courante de CA-26, CA-1, CA-3, CA-20 était vendue
+    0,89-0,91 alors que la faire sortir demandait plus de 8 % de bulletins à une marge 25 points plus défavorable (≈ 2-4 % restants).
+    Une perte apprendrait qu'un gros lot tardif peut porter une marge très différente des précédents, ou que les restants sont plus nombreux
+    que la loi ne le dit."""
+
+    strategy_id = "marges_californie"
+    ref_key = "marges_ca"
+    borne = 0.01
+
+
 class BoxOfficeAnnee(SeismesMarche):
     """« Highest grossing movie in <année>? » (recette domestique de l'année CIVILE) : un film qui sort un vendredi de décembre n'a
     que ses 14 premiers jours dans l'année. Chance qu'il dépasse le meneur = loi de son premier week-end (lue sur le marché
@@ -2134,4 +2148,4 @@ CLASSES = {c.strategy_id: c for c in (ConvictionsClaude, ClassementAppStore, Lid
                                       ChocSansNouvelle, KalshiReference, PredictItReference, ManifoldReference,
                                       FutursBookmakers, FootballTroisIssues, CompteurTweets, MotsPrononces,
                                       MotsNouveaux, FatigueNhl, CpiTranches, JobsFavoriNon, VagueVolume,
-                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, MeteoSousCli, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, IndiceCotes, MississippiPlusBas, PluieHk, RtCompteCritiques, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}
+                                      DetroitsTranches, DetroitsMarcheLog, SeismesMarche, SeismesPays, TornadesMois, SecheresseD4, FleuvesPrevision, AuditeursSpotify, ElNinoCpc, SeismesAnnee, RougeoleCompteur, MeteoSousCli, BoxOfficeAnnee, MichiganPreliminaire, PibCanadaAnticipe, TauxTresorBarriere, TauxImmobilierBarriere, OpenrouterSemaine, IndiceCotes, MississippiPlusBas, PluieHk, RtCompteCritiques, MargesCalifornie, EncheresEstimation, SiegesCoherence, BoxOfficeFavori, SpaceXCumul, ToucherMetaux, TrancheCentraleNon)}

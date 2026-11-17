@@ -317,3 +317,28 @@ def test_repository_config_reads_the_conviction_markets():
     cfg = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["scanner"]
     assert cfg["conviction_markets"]["fichier"] == "config/convictions.yaml"
     assert (ROOT / cfg["conviction_markets"]["fichier"]).exists()
+
+
+def test_conviction_market_past_its_gamma_end_date_but_still_trading_is_seen(tmp_path):
+    """17/11/2026 (1 h) : conviction « CA-26, marge démocrate 25-30 % » (marché 4166861) : date de fin Gamma le 03/11 (jour du vote), mais
+    le marché s'échange jusqu'à la certification (active, pas clos, carnet ouvert, vendeur 0,89). Le scanner l'écartait « hors horizon »
+    (l'horizon commence à maintenant + 30 min) : la conviction ne pouvait jamais être jouée. Le réglage du dépôt l'accepte (60 jours)."""
+    import yaml
+    from conftest import ROOT
+    table = tmp_path / "convictions.yaml"
+    table.write_text("""convictions:
+  - {id: ca26, marche: "4166861", issue: "Yes", probabilite: 0.97, probabilite_basse: 0.95, expire: "2026-12-31"}
+""", encoding="utf-8")
+
+    class IdGamma(FakeGamma):
+        def markets_by_ids(self, ids, *, closed):
+            return [raw_market("4166861", end=NOW - timedelta(days=14), spread=0.49, liquidityNum=70, volume24hr=0)]
+
+    repo = yaml.safe_load((ROOT / "config" / "settings.yaml").read_text(encoding="utf-8"))["scanner"]["conviction_markets"]
+    spec = dict(repo, fichier=str(table))
+    by_id = {m.market_id: m for m in scan(IdGamma([]), NOW, dict(CFG, conviction_markets=spec)).markets}
+    assert by_id["4166861"].eligible and by_id["4166861"].extra_only and not by_id["4166861"].ended
+    old = dict(spec)
+    old.pop("min_horizon_minutes")
+    by_id = {m.market_id: m for m in scan(IdGamma([]), NOW, dict(CFG, conviction_markets=old)).markets}
+    assert by_id["4166861"].exclusion == "hors horizon"                 # le défaut : invisible

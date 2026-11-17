@@ -497,6 +497,8 @@ def attach_all(markets, db, now: datetime) -> dict[str, int]:
     counts["mississippi"] = attach_mississippi(markets, db, now)
     from polymarket_agent.pluie_hk import attach_pluie_hk   # 14/11/2026 : pluie du mois à Hong Kong (pluie_hk)
     counts["pluie_hk"] = attach_pluie_hk(markets, db, now)
+    from polymarket_agent.marges_californie import attach_marges   # 17/11/2026 : marges des districts californiens (marges_californie)
+    counts["marges_ca"] = attach_marges(markets, db, now)
     from polymarket_agent.rotten_tomatoes import attach_rt   # 14/11/2026 : scores Rotten Tomatoes au compte des critiques (rt_compte_critiques)
     counts["rt"] = attach_rt(markets, db, now)
     from polymarket_agent.box_office import attach_box_office   # 12/11/2026 : film le plus rentable de l'année (box_office_annee)

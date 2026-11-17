@@ -118,6 +118,13 @@ class ConvictionsClaude(_Base):
                     props.append(prop)
                 else:
                     out.abstain("mise maximale trop faible pour le minimum du marché")
+        # 17/11/2026 (1 h, experiments/enquetes/2026-11-17_nuit_conviction_marche_echu.md) : une conviction active dont le marché n'arrive
+        # pas (date de fin Gamma passée = « hors horizon », marché fermé) ne laissait AUCUNE trace : « 0 proposition » comme un prix trop
+        # cher. Elle le dit maintenant (abstention lisible dans le journal du cycle, data.json et l'enquête automatique).
+        vus = {m.market_id for m in watchlist}
+        for marche, c in wanted.items():
+            if marche not in vus and not c.get("abandon") and (c["expire"] is None or today <= c["expire"]):
+                out.abstain("marché de la conviction absent du scan (date de fin passée, fermé ou carnet indisponible)")
         return self._finish(out, props)
 
     def exits(self, positions: dict[str, Position], markets: dict[str, MarketInfo],

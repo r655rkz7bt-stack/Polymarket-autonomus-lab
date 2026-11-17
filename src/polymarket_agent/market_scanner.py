@@ -177,12 +177,37 @@ def _add_conviction_markets(gamma: GammaClient, now: datetime, cfg: dict, result
     ids = conviction_ids(path, now.date())
     if not ids:
         return
-    sub_cfg = dict(cfg, **spec)
-    try:
-        raw = gamma.markets_by_ids(ids, closed=False)
-    except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
-        log.warning("scanner : marchés des convictions indisponibles (%s)", exc)
-        return
+    _add_markets_by_ids(gamma, now, dict(cfg, **spec), ids, result, seen, "convictions")
+
+
+def _add_listed_markets(gamma: GammaClient, now: datetime, cfg: dict, result: ScanResult, seen: set[str]) -> None:
+    """Listes fixes de marchés lus par identifiant (17/11/2026, marges des districts californiens : 386 tranches d'un marché lent dont la
+    date de fin Gamma est passée, certification mi-décembre). `listes_marches: {nom: {fichier, filtres…}}` ; fichier YAML `marches: [ids]` ;
+    marchés `extra_only` : seule la stratégie qui les demande (candidates) les voit."""
+    import yaml
+    for name, spec in (cfg.get("listes_marches") or {}).items():
+        spec = dict(spec or {})
+        fichier = spec.pop("fichier", None)
+        if not fichier:
+            continue
+        path = Path(fichier) if Path(fichier).is_absolute() else ROOT / fichier
+        try:
+            ids = [str(x) for x in (yaml.safe_load(path.read_text(encoding="utf-8")) or {}).get("marches") or []]
+        except (OSError, yaml.YAMLError) as exc:
+            log.warning("scanner : liste %s illisible (%s)", name, exc)
+            continue
+        _add_markets_by_ids(gamma, now, dict(cfg, **spec), ids, result, seen, name)
+
+
+def _add_markets_by_ids(gamma: GammaClient, now: datetime, sub_cfg: dict, ids: list[str], result: ScanResult, seen: set[str],
+                        name: str) -> None:
+    raw = []
+    for i in range(0, len(ids), 100):   # adresse de requête raisonnable : 100 identifiants par appel
+        try:
+            raw += gamma.markets_by_ids(ids[i:i + 100], closed=False)
+        except Exception as exc:  # noqa: BLE001 - un complément ne doit jamais bloquer le scan normal
+            log.warning("scanner : marchés %s indisponibles (%s)", name, exc)
+            return
     by_id = {m.market_id: m for m in result.markets}
     for item in raw:
         if item.get("spread") is None and item.get("bestAsk") is not None and item.get("bestBid") is not None:
@@ -297,6 +322,7 @@ def scan(gamma: GammaClient, now: datetime, cfg: dict) -> ScanResult:
     _add_tag_markets(gamma, now, cfg, result, seen)
     _add_series_markets(gamma, now, cfg, result, seen)
     _add_conviction_markets(gamma, now, cfg, result, seen)
+    _add_listed_markets(gamma, now, cfg, result, seen)
     _add_ended_markets(gamma, now, cfg, result, seen)
     eligible = sorted((m for m in result.markets if m.eligible and not m.ended and not m.extra_only),
                       key=lambda m: m.volume_24h, reverse=True)
