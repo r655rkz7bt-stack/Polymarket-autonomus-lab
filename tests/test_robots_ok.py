@@ -57,3 +57,21 @@ def test_production_never_reads_a_known_forbidden_path():
             code = ligne.split("#", 1)[0]
             trouves += [f"{f.name}:{i} {x}" for x in INTERDITS_CONNUS if x in code]
     assert trouves == []
+
+
+# 17/11/2026 (passage de 21 h) : 12 modules se présentaient comme un navigateur (« Mozilla/5.0 ») ou comme curl alors que leurs
+# sites acceptent l'identité du labo (`HttpClient`, « polymarket-autonomous-lab ») ; Statistique Canada répond 403 à tous.
+# Seule exception en attente d'Etienne : la page de la rougeole du CDC refuse l'identité du labo (403) et accepte « curl/8 ».
+DEGUISEMENTS = ("Mozilla/", "curl/", "Chrome/", "Safari/", "python-requests")
+DEGUISEMENTS_EN_ATTENTE = {"rougeole.py"}
+
+
+def test_production_se_presente_sous_son_nom():
+    trouves = []
+    for f in (ROOT / "src" / "polymarket_agent").rglob("*.py"):
+        if f.name in DEGUISEMENTS_EN_ATTENTE:
+            continue
+        for i, ligne in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
+            code = ligne.split("#", 1)[0]
+            trouves += [f"{f.name}:{i} {x}" for x in DEGUISEMENTS if x in code]
+    assert trouves == []

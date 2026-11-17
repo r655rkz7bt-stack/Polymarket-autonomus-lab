@@ -35,7 +35,7 @@ def parse_csv(text: str) -> list[tuple[str, float]]:
 
 
 def fetch_pmms(http: HttpClient, now: datetime) -> list[dict]:
-    rows = [x for x in parse_csv(http.get_text(URL, headers={"User-Agent": "Mozilla/5.0"})) if x[0] >= DEPUIS[0].isoformat()]
+    rows = [x for x in parse_csv(http.get_text(URL)) if x[0] >= DEPUIS[0].isoformat()]
     return [{"pmms": [list(x) for x in rows], "lu": now.isoformat()}] if rows else []
 
 

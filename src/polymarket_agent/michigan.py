@@ -34,7 +34,7 @@ def parse_page(text: str) -> dict | None:
 
 
 def fetch_michigan(http: HttpClient, now: datetime) -> list[dict]:
-    row = parse_page(http.get_text(PAGE, headers={"User-Agent": "Mozilla/5.0"}))
+    row = parse_page(http.get_text(PAGE))
     return [dict(row, lu=now.isoformat())] if row else []
 
 

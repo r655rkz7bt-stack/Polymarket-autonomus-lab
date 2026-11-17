@@ -89,7 +89,7 @@ def fetch_film(http: HttpClient, title: str, now: datetime) -> dict | None:
     base = slugify(title)
     for slug in (f"{base}_{now.year}", f"{base}_{now.year - 1}", base):
         try:
-            row = parse_page(http.get_text(PAGE.format(slug=slug), headers={"User-Agent": "Mozilla/5.0"}))
+            row = parse_page(http.get_text(PAGE.format(slug=slug)))
         except SourceUnavailable:
             continue
         if _page_ok(row, now):
@@ -99,8 +99,7 @@ def fetch_film(http: HttpClient, title: str, now: datetime) -> dict | None:
 
 def open_titles(http: HttpClient) -> list[str]:
     """Titres des films des événements « "<film>" Rotten Tomatoes Score? » encore ouverts (une recherche Gamma)."""
-    data = http.get_json(GAMMA_SEARCH, params={"q": "Rotten Tomatoes Score", "events_status": "active", "limit_per_type": 50},
-                         headers={"User-Agent": "curl/8"})
+    data = http.get_json(GAMMA_SEARCH, params={"q": "Rotten Tomatoes Score", "events_status": "active", "limit_per_type": 50})
     out = []
     for e in (data or {}).get("events") or []:
         m = _EVENT.match((e.get("title") or "").strip())

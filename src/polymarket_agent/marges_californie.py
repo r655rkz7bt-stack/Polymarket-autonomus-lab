@@ -22,7 +22,6 @@ from datetime import datetime
 from polymarket_agent.http_client import HttpClient, SourceUnavailable
 
 API = "https://api.sos.ca.gov/returns/us-rep/district/{n}"
-UA = {"User-Agent": "curl/8"}
 DISTRICTS = range(1, 53)
 R_MED = 0.02        # bulletins restants (part des voix comptées), médiane
 R_SIGMA = 0.8       # dispersion log-normale : 90 % sous 5,6 %, 99 % sous 13 %
@@ -92,7 +91,7 @@ def fetch_californie(http: HttpClient, now: datetime, districts=DISTRICTS) -> li
     rows = []
     for n in districts:
         try:
-            x = lire(http.get_json(API.format(n=n), headers=UA))
+            x = lire(http.get_json(API.format(n=n)))
         except SourceUnavailable:
             continue
         if x is not None:

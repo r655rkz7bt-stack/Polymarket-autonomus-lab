@@ -25,7 +25,6 @@ BASE = "https://openrouter.ai/api/frontend/v1/rankings/"
 CHART = BASE + "model-rankings-chart"
 WEEK = BASE + "models?view=week"
 DAY = BASE + "models?view=day"
-UA = {"User-Agent": "Mozilla/5.0"}
 SD_JOUR = 0.0125          # écart-type relatif par jour restant (≈ 2,2 % à 3 jours ; cinq estimations du 13/11 : 200,8-210,3)
 QUEUE = (0.15, 3.0)       # 15 % des tirages à 3 fois l'écart-type (lancement d'un modèle gratuit, panne)
 _Q = re.compile(r"OpenRouter process (?:(less than) ([\d.]+)T|between ([\d.]+)T and ([\d.]+)T|([\d.]+)T or more) tokens the week of "
@@ -53,7 +52,7 @@ def lire(chart: dict, week: dict, day: dict, now: datetime) -> list[dict]:
 
 
 def fetch_openrouter(http: HttpClient, now: datetime) -> list[dict]:
-    return lire(http.get_json(CHART, headers=UA), http.get_json(WEEK, headers=UA), http.get_json(DAY, headers=UA), now)
+    return lire(http.get_json(CHART), http.get_json(WEEK), http.get_json(DAY), now)
 
 
 def question(q: str, fin: datetime | None = None) -> tuple[float, float, date] | None:
