@@ -219,3 +219,39 @@ convictions:
     sources: ["https://steamcharts.com/app/570", "https://steamcharts.com/app/570/chart-data.json", "https://gamma-api.polymarket.com/markets/5996367"]
     ecrit_le: "2026-11-15"
     abandon: false
+  - id: ca26-marge-dem-25-30
+    marche: "4166861"
+    question: "Will a Democratic Party candidate win the 2026 CA-26 House election by"
+    issue: "Yes"
+    probabilite: 0.97
+    probabilite_basse: 0.95
+    expire: "2026-12-01"
+    mise_max: 0.04
+    raison: "Piste n° 66 (comptage tardif). Réglé sur la marge officielle certifiée (différence des pourcentages des deux premiers, voix valides) ; décompte officiel api.sos.ca.gov au 16/11 16 h 34 : Irwin (D) 178 048, Gallucci (R) 102 533, marge 26,91 (tranche 25-30). Entre le 14/11 et le 16/11 : +19 219 bulletins (7,4 %, surtout Ventura) à D +41,7 : la marge MONTE, loin de 25. Pour atteindre 30 il faudrait encore 26 % de bulletins à ce rythme ; pour retomber sous 25, 8,3 % de bulletins à D +1,9 (marge −25 points), jamais vu. San Diego annonçait 51 000 bulletins restants pour 1,21 M (4,2 %) le 12/11. Cinq estimations 0,98 / 0,97 / 0,93 (avocat du NON : gros lot tardif inattendu à Ventura) / 0,99 / 0,97, médiane 0,97 sans rapprochement (la source du règlement tranche presque). Vendeur 0,89 (450 parts)."
+    sources: ["https://api.sos.ca.gov/returns/us-rep/district/26", "https://api.sos.ca.gov/returns/us-rep/district/26/county/ventura", "https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html", "https://gamma-api.polymarket.com/markets/4166861", "experiments/comptage_tardif.md"]
+    ecrit_le: "2026-11-17"
+    abandon: false
+  - id: ca01-marge-dem-15-20
+    marche: "4166406"
+    question: "Will a Democratic Party candidate win the 2026 CA-01 House election by"
+    issue: "Yes"
+    probabilite: 0.985
+    probabilite_basse: 0.965
+    expire: "2026-12-01"
+    mise_max: 0.04
+    raison: "Piste n° 66 (comptage tardif). Décompte officiel api.sos.ca.gov au 16/11 16 h 34 : McGuire (D) 167 791, Gallagher (R) 118 015, marge 17,42 (tranche 15-20). Du 14 au 16/11 : +9 968 bulletins (3,6 %) à D +23,4 : la marge monte doucement ; atteindre 20 demanderait 77 % de bulletins de plus, retomber sous 15 demanderait 10,7 % de bulletins à D −7,6 (marge −25 points). Cinq estimations 0,99 / 0,985 / 0,95 / 0,995 / 0,98, médiane 0,985 sans rapprochement. Vendeur 0,90-0,91 (350 parts)."
+    sources: ["https://api.sos.ca.gov/returns/us-rep/district/1", "https://gamma-api.polymarket.com/markets/4166406", "experiments/comptage_tardif.md"]
+    ecrit_le: "2026-11-17"
+    abandon: false
+  - id: ca03-marge-dem-15-20
+    marche: "4166457"
+    question: "Will a Democratic Party candidate win the 2026 CA-03 House election by"
+    issue: "Yes"
+    probabilite: 0.985
+    probabilite_basse: 0.965
+    expire: "2026-12-01"
+    mise_max: 0.04
+    raison: "Piste n° 66 (comptage tardif). Décompte officiel api.sos.ca.gov au 16/11 16 h 34 : Bera (D) 175 868, Tucker (R) 123 329, marge 17,56 (tranche 15-20). Du 14 au 16/11 : +282 bulletins seulement (comptage presque fini) ; sortir de la tranche demanderait 10,8 % de bulletins à une marge 25 points plus basse (ou plus haute) que la marge cumulée. Cinq estimations 0,99 / 0,985 / 0,96 / 0,995 / 0,98, médiane 0,985 sans rapprochement. Vendeur 0,898-0,899 (440 parts)."
+    sources: ["https://api.sos.ca.gov/returns/us-rep/district/3", "https://gamma-api.polymarket.com/markets/4166457", "experiments/comptage_tardif.md"]
+    ecrit_le: "2026-11-17"
+    abandon: false

@@ -76,3 +76,15 @@ def test_sells_when_claude_changes_his_mind_or_the_market_pays_more_than_his_est
     assert [p.side for p in s.exits(pos, {"7": m}, rich, "b", NOW)] == ["SELL"]  # 0,84 > 0,80 : vendre
     path.write_text(yaml.safe_dump({"convictions": [_conv(abandon=True)]}), encoding="utf-8")
     assert [p.token_id for p in s.exits(pos, {"7": m}, calm, "b", NOW)] == ["7N"]
+
+
+def test_an_active_conviction_whose_market_never_arrives_says_so(tmp_path):
+    """17/11/2026 (1 h) : trois convictions sur des marges de districts californiens (date de fin Gamma le 03/11, marché encore échangé)
+    étaient écartées par le scanner « hors horizon » ; la stratégie n'en disait rien (« 0 propositions, avantage net insuffisant ×5 »,
+    seulement pour les autres convictions). Une conviction active sans marché vu est maintenant une abstention nommée ; pas une
+    conviction abandonnée ou expirée."""
+    s, _ = _write(tmp_path, [_conv(), _conv(id="c2", marche="9"), _conv(id="c3", marche="10", abandon=True),
+                             _conv(id="c4", marche="11", expire=(NOW - timedelta(days=1)).date().isoformat())])
+    out = s.propose([_m("7")], _books(("7Y", 0.38, 0.40), ("7N", 0.58, 0.60)), _state(tmp_path), LIMITS, "b")
+    assert [p.token_id for p in out.proposals] == ["7N"]
+    assert out.abstentions.get("marché de la conviction absent du scan (date de fin passée, fermé ou carnet indisponible)") == 1
