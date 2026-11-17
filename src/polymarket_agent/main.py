@@ -575,6 +575,7 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
     # Références externes (Kalshi, PredictIt, Manifold, tweets, champions, NHL, mentions) rattachées
     # à TOUS les marchés scannés, AVANT que les stratégies demandent leurs marchés (21/10/2026 :
     # sur les seuls 150 surveillés, elles ne trouvaient presque rien et 8 stratégies restaient muettes).
+    base_refs = {id(m): dict(m.references or {}) for m in live}   # avant tout rattachement (relancé après la collecte, étape 6 bis)
     report.references = _attach_references(deps, live, now)
     try:  # historique des références (paires de prix pour le chercheur), au plus une fois par heure
         from polymarket_agent import references as refs_mod
@@ -647,6 +648,25 @@ def _trade(deps: CycleDeps, portfolios: list[Portfolio], report: CycleReport, bu
         except Exception as exc:  # noqa: BLE001 - la collecte ne doit jamais faire tomber le cycle
             report.sources = {"collecte": f"indisponible : {type(exc).__name__}: {exc}"[:200]}
             log.exception("collecte des sources en échec, cycle poursuivi sans elles")
+    # 6 ter. Références rattachées DE NOUVEAU après la collecte (17/11/2026, 16 h,
+    # experiments/enquetes/2026-11-17_soir_references_avant_collecte.md) : jusqu'ici une lecture neuve d'une source (USGS, décompte
+    # officiel, OpenRouter) ne servait qu'au cycle SUIVANT ; le 16/11 à 21 h 27, `seismes_pays` a acheté le NON « séisme 6,0+ en
+    # Indonésie ce mois » à 0,20 (chance 0,58) avec le catalogue d'avant, alors que la collecte de 21 h 25 min 53 s venait de lire le
+    # 6,6 de Tual (21 h 11). Chaque marché repart de ses références d'avant le premier rattachement (une référence qui disparaît, par
+    # exemple hors fenêtre, ne reste pas périmée).
+    _lap(report, "sources")
+    if deps.collector is not None and any(str(v).startswith("ok") for k, v in (report.sources or {}).items() if k != "references"):
+        seen_ids = set()
+        again = []
+        for m in live + [w for w in result.watchlist]:
+            if id(m) not in seen_ids:
+                seen_ids.add(id(m))
+                again.append(m)
+        for m in again:
+            if id(m) in base_refs:
+                m.references = dict(base_refs[id(m)])
+        report.references = _attach_references(deps, again, now)
+        _lap(report, "references_apres_collecte")
     if report.references:
         report.sources["references"] = "ok (" + ", ".join(f"{k} {v}" for k, v in report.references.items()) + ")"
     _lap(report, "sources")

@@ -21,6 +21,12 @@ UTC = timezone.utc
 NOW = datetime(2026, 11, 13, 6, 10, tzinfo=UTC)
 RAW = json.loads((Path(__file__).parent / "data" / "openrouter_2026-11-13.json").read_text())
 FIN = datetime(2026, 11, 16, 4, 59, tzinfo=UTC)
+# 13/11 à 06 h : le graphique (134,43) n'avait que le début du jeudi ; jours finis 9-12/11 = 126,89 T (semaine réglée 211,28 moins
+# 13, 14, 15/11 du journal de production) ; découpage lundi-mercredi fictif (seule leur somme, 94,26, est connue)
+HISTO_13_11 = [{"jour": "2026-11-09", "total_jour": 31.42}, {"jour": "2026-11-10", "total_jour": 31.42},
+               {"jour": "2026-11-11", "total_jour": 31.42}]
+RAW_17 = json.loads((Path(__file__).parent / "data" / "openrouter_2026-11-17.json").read_text())
+HISTO_17_11 = [{"jour": "2026-11-15", "total_jour": 25.4844}]   # journal de production (sauvegarde du 16/11 23 h 50)
 
 
 def _http():
@@ -44,7 +50,9 @@ def test_projection_of_13_11_uses_last_weekend_shape():
     fin de semaine précédente 75,24, début 134,28 → 209,75 T (le marché payait 210-220 à 0,59 et 200-210 à 0,33)."""
     row = orr.lire(RAW["chart"], RAW["week"], RAW["day"], NOW)[0]
     assert row["jour"][0] == "2026-11-12" and row["semaines"][-1][0] == "2026-11-09"
-    lundi, total, k = orr.projection(row)
+    # 17/11 : sans le total des jours finis (journal), plus de projection (le graphique contient aussi le jour en cours)
+    assert orr.projection(row) is None and "journal" in orr.detail(row)["refus"]
+    lundi, total, k = orr.projection(row, HISTO_13_11)
     assert lundi == "2026-11-09" and k == 4 and 209.5 < total < 210.0
     p_bas, p_haut = orr.chance(total, k, 200, 210), orr.chance(total, k, 210, 220)
     assert 0.4 < p_bas < 0.6 and 0.4 < p_haut < 0.6
@@ -53,11 +61,50 @@ def test_projection_of_13_11_uses_last_weekend_shape():
     # semaine finie : la tranche est connue
     assert orr.chance(209.75, 7, 200, 210) == 1.0 and orr.chance(210.0, 7, 200, 210) == 0.0
     # vues incohérentes (le jour lu n'est pas la fin des 7 jours) : pas de projection
-    assert orr.projection(dict(row, sept_jours=["2026-11-11", row["sept_jours"][1]])) is None
+    assert orr.projection(dict(row, sept_jours=["2026-11-11", row["sept_jours"][1]]), HISTO_13_11) is None
+
+
+def test_17_11_current_day_in_chart_and_launch_refused():
+    """Cas réel du 17/11 (enquête 2026-11-17_soir_openrouter_jour_en_cours.md) : graphique de la semaine du 16/11 = 69,71 T à 15 h 49
+    pour un lundi fini de 32,13 T (vue « jour ») : le mardi en cours y est (37,6 T en 15,9 h, dont 15,7 T du nouveau tencent/hy4-flash).
+    L'ancien calcul projetait 219 T (NON « 240 T ou plus » estimé 0,97, acheté 0,42 ; marché : OUI 0,84). Refus : rythme 1,8."""
+    lu = datetime(2026, 11, 17, 15, 52, tzinfo=UTC)
+    row = orr.lire(RAW_17["chart"], RAW_17["week"], RAW_17["day"], lu)[0]
+    assert row["jour"] == ["2026-11-16", 32.1298] and row["semaines"][-1] == ["2026-11-16", 69.7066]
+    d = orr.detail(row, HISTO_17_11)
+    assert "refus" in d and "lancement" in d["refus"] and 1.7 < d["rythme"] < 1.9
+    assert orr.projection(row, HISTO_17_11) is None
+    # même graphique avec un jour en cours ordinaire (lundi + 20 T en 15,9 h, rythme 0,94) : jours finis = 32,13 seulement,
+    # projection ≈ 32,13 × 211,28 / 29,61 ≈ 229 T, et jamais sous le graphique
+    calme = dict(row, semaines=row["semaines"][:-1] + [["2026-11-16", 52.13]])
+    d = orr.detail(calme, HISTO_17_11)
+    assert "refus" not in d and d["jours_finis"] == 32.1298 and 228 < d["total"] < 231
+    # tôt le matin (2 h) : trop tôt pour juger le rythme
+    tot = dict(row, lu="2026-11-17T02:00:00+00:00", semaines=row["semaines"][:-1] + [["2026-11-16", 36.0]])
+    assert "refus" not in orr.detail(tot, HISTO_17_11)
+
+
+def test_17_11_strategy_says_why(tmp_path):
+    db = Database(tmp_path / "db.sqlite")
+    lu = datetime(2026, 11, 17, 15, 52, tzinfo=UTC)
+    rows = orr.lire(RAW_17["chart"], RAW_17["week"], RAW_17["day"], lu)
+    refs._save(db, "ref:openrouter", rows, lu)
+    refs._save(db, "openrouter:histo", orr.journal(HISTO_17_11, rows), lu)
+    m = parse_market(raw_market("6942353", yes_token="hY", no_token="hN", end=datetime(2026, 11, 23, 4, 59, tzinfo=UTC),
+                                question="Will OpenRouter process 240T or more tokens the week of November 16?"))
+    assert refs.attach_all([m], db, lu)["openrouter"] == 1 and "refus" in m.references["openrouter"]
+    s = _s(OpenrouterSemaine, min_net_edge=0.06, uncertainty=0.04, min_price=0.08, max_price=0.92, max_stale_hours=3,
+           max_extra_ticks=1, max_proposals_per_cycle=2, max_per_event=2, mise_max_pari=0.04, kelly_fraction=1.0, max_candidates=20)
+    b = _books(("hY", "0.55", "0.58"), ("hN", "0.42", "0.45"))
+    for x in b.values():
+        x.fetched_at = lu
+    out = s.propose([m], b, _state(tmp_path), LIMITS, "b1")
+    assert out.proposals == [] and any("lancement" in k for k in out.abstentions)
 
 
 def test_collect_attach_and_buy_cheap_lower_bracket(tmp_path):
     db = Database(tmp_path / "db.sqlite")
+    refs._save(db, "openrouter:histo", HISTO_13_11, NOW)
     result = collect({"sources": {"openrouter": {"enabled": True, "every_minutes": 60}}}, _http(), db, [], NOW)
     assert result.status["openrouter"].startswith("ok (1")
     histo = refs._load(db, "openrouter:histo")[1]

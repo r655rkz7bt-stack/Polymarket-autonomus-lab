@@ -69,27 +69,64 @@ def question(q: str, fin: datetime | None = None) -> tuple[float, float, date] |
     return lo, hi, lundi
 
 
-def projection(row: dict) -> tuple[str, float, int] | None:
-    """(lundi de la semaine en cours, total projeté en T, jours finis) ; None si les trois vues ne sont pas cohérentes."""
+RUPTURE = 1.5            # jour en cours > 1,5 fois le rythme du dernier jour fini : lancement ou panne, la forme passée ne vaut plus
+RUPTURE_HEURES_MIN = 3.0  # avant 3 h UTC le jour en cours est trop petit (et creux) pour juger
+
+
+def detail(row: dict, histo: list[dict] | None = None) -> dict:
+    """Projection de la semaine en cours, avec la raison d'un refus.
+
+    17/11/2026 (16 h, experiments/enquetes/2026-11-17_soir_openrouter_jour_en_cours.md) : la semaine en cours du graphique contient
+    AUSSI le jour en cours, mis à jour en direct (0,15 T le lundi 16/11 à 00 h 40, 69,71 T le mardi 17/11 à 15 h 49 pour un lundi fini
+    de 32,13 T). L'ancien calcul prenait ce total pour « k jours finis » : le mardi 17/11 à 12 h 57 il projetait ≈ 219 T et achetait
+    le NON « 240 T ou plus » à 0,42 estimé 0,973, alors que le nouveau modèle gratuit tencent/hy4-flash (lancé le 16/11) traitait déjà
+    15,7 T dans la journée (le marché : OUI à 0,84). Désormais : jours finis = somme des totaux quotidiens du journal
+    `openrouter:histo` (ou la vue « jour » quand seul lundi est fini) ; total ≥ graphique ; refus quand le jour en cours tourne à plus
+    de `RUPTURE` fois le rythme du dernier jour fini."""
     sem = {date.fromisoformat(x): float(v) for x, v in row.get("semaines") or []}
     if len(sem) < 2 or not (row.get("jour") or [None])[0] or not (row.get("sept_jours") or [None])[0]:
-        return None
+        return {"refus": "OpenRouter : vues incomplètes"}
     lundi = max(sem)
     jour = date.fromisoformat(row["jour"][0])
     if date.fromisoformat(row["sept_jours"][0]) != jour:
-        return None
+        return {"refus": "OpenRouter : vue « jour » et vue « 7 jours » décalées"}
     k = (jour - lundi).days + 1
     prec = sem.get(lundi - timedelta(days=7))
     if not 1 <= k <= 7 or prec is None:
-        return None
-    p = sem[lundi]
+        return {"refus": "OpenRouter : aucun jour fini de la semaine"}
+    graphique = sem[lundi]
     if k == 7:
-        return lundi.isoformat(), p, 7
+        return {"lundi": lundi.isoformat(), "total": graphique, "k": 7}
+    par_jour = {str(o.get("jour")): float(o["total_jour"]) for o in histo or [] if o.get("total_jour") is not None}
+    par_jour[jour.isoformat()] = float(row["jour"][1])
+    jours = [(lundi + timedelta(days=i)).isoformat() for i in range(k)]
+    if not all(j in par_jour for j in jours):
+        return {"refus": "OpenRouter : total d'un jour fini de la semaine absent du journal (graphique = jours finis + jour en cours)"}
+    p = sum(par_jour[j] for j in jours)
+    en_cours = max(0.0, graphique - p)
+    lu = row.get("lu")
+    try:
+        heures = (datetime.fromisoformat(lu) - datetime.combine(jour + timedelta(days=1), datetime.min.time(),
+                                                                   tzinfo=datetime.fromisoformat(lu).tzinfo)).total_seconds() / 3600
+    except (TypeError, ValueError):
+        heures = 0.0
+    rythme = en_cours / heures * 24 / float(row["jour"][1]) if heures >= RUPTURE_HEURES_MIN and float(row["jour"][1]) > 0 else None
+    if rythme is not None and rythme > RUPTURE:
+        return {"refus": f"OpenRouter : jour en cours à {rythme:.1f} fois le rythme d'hier ({en_cours:.1f} T en {heures:.1f} h) : "
+                         f"lancement ou panne, la fin de semaine passée ne dit plus rien", "rythme": round(rythme, 2)}
     fin = float(row["sept_jours"][1]) - p
     debut = prec - fin
-    if fin <= 0 or debut <= 0 or not 0.1 <= fin / debut <= 3.0:
-        return None
-    return lundi.isoformat(), p * (1 + fin / debut), k
+    attendu = (7 - k) / k   # fin / début d'une semaine plate (l'ancienne borne fixe 0,1-3 refusait tout lundi seul : 6 jours / 1)
+    if fin <= 0 or debut <= 0 or not 0.3 * attendu <= fin / debut <= 3.0 * attendu:
+        return {"refus": "OpenRouter : forme de la semaine précédente incohérente"}
+    return {"lundi": lundi.isoformat(), "total": max(p * (1 + fin / debut), graphique), "k": k, "jours_finis": round(p, 4),
+            "en_cours": round(en_cours, 4), "rythme": None if rythme is None else round(rythme, 2)}
+
+
+def projection(row: dict, histo: list[dict] | None = None) -> tuple[str, float, int] | None:
+    """(lundi de la semaine en cours, total projeté en T, jours finis) ; None si refus (voir `detail`)."""
+    d = detail(row, histo)
+    return None if "refus" in d else (d["lundi"], d["total"], d["k"])
 
 
 def _cdf(x: float) -> float:
@@ -119,11 +156,18 @@ def attach_openrouter(markets, db, now: datetime, max_age_hours: float = 3.0) ->
     lu = parse_date(rows[0].get("lu") or "")
     if lu is None or (now - lu).total_seconds() > max_age_hours * 3600:
         return 0
-    proj = projection(rows[0])
-    if proj is None:
-        return 0
-    lundi, total, k = proj
+    d = detail(rows[0], _load(db, "openrouter:histo")[1] or [])
     n = 0
+    if "refus" in d:
+        # la stratégie DIT pourquoi elle s'abstient (marchés de la semaine en cours seulement : lundi = semaine du graphique)
+        lundi = max(x for x, _ in rows[0].get("semaines") or [["", 0]])
+        for m in markets:
+            q = question(m.question or "", getattr(m, "end_date", None))
+            if q is not None and q[2].isoformat() == lundi and [str(o).lower() for o in m.outcomes] == ["yes", "no"]:
+                m.references = dict(m.references or {}, openrouter={"refus": d["refus"], "vu_le": seen.isoformat()})
+                n += 1
+        return n
+    lundi, total, k = d["lundi"], d["total"], d["k"]
     for m in markets:
         q = question(m.question or "", getattr(m, "end_date", None))
         if q is None or q[2].isoformat() != lundi or [str(o).lower() for o in m.outcomes] != ["yes", "no"]:

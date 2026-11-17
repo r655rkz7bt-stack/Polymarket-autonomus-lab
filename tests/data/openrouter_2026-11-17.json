@@ -1,0 +1,98 @@
+{
+"chart": {
+"data": {
+"data": [
+{
+"x": "2026-10-26",
+"ys": {
+"total": 193583878704232
+}
+},
+{
+"x": "2026-11-02",
+"ys": {
+"total": 209479742661067
+}
+},
+{
+"x": "2026-11-09",
+"ys": {
+"total": 211280142506486
+}
+},
+{
+"x": "2026-11-16",
+"ys": {
+"tencent/hy4-flash-20261116": 17593176970697,
+"deepseek/deepseek-v4.1-flash-20261017": 15153550268321,
+"deepseek/deepseek-v4.1-flash-20260910": 4150944155337,
+"z-ai/glm-5.3-flash-20260826": 2617567501361,
+"anthropic/claude-opus-5.5-20260921": 2148588609300,
+"openai/gpt-6-luna-20260922": 2130662377532,
+"tencent/hy4-20261104": 2073732018657,
+"stepfun/step-5-preview-20261008": 1899658774682,
+"xiaomi/mimo-v2.6-flash-20260921": 996209106099,
+"Others": 20942469853069
+}
+}
+]
+}
+},
+"week": {
+"data": [
+{
+"date": "2026-11-10 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 269178403,
+"total_completion_tokens": 31308601
+},
+{
+"date": "2026-11-11 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 12554881343,
+"total_completion_tokens": 718754238
+},
+{
+"date": "2026-11-12 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 725,
+"total_completion_tokens": 36
+},
+{
+"date": "2026-11-13 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 15810088449,
+"total_completion_tokens": 1324465957
+},
+{
+"date": "2026-11-14 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 7324352879,
+"total_completion_tokens": 25810452
+},
+{
+"date": "2026-11-15 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 1986280789,
+"total_completion_tokens": 473259219
+},
+{
+"date": "2026-11-16 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 209076286091454,
+"total_completion_tokens": 4685248903600
+}
+]
+},
+"day": {
+"data": [
+{
+"date": "2026-11-16 00:00:00",
+"model_permaslug": "total",
+"total_prompt_tokens": 31418369280980,
+"total_completion_tokens": 711462679478
+}
+]
+},
+"lu": "2026-11-17T15:52:00+00:00"
+}
