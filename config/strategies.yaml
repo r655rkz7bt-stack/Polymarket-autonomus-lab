@@ -698,7 +698,7 @@ rt_compte_critiques:
     kelly_fraction: {value: 1.0, min: 0.0, max: 2.0}      # Kelly entier sur la borne basse (expérience audacieuse)
 
 marges_californie:
-  explication: "La Californie compte ses bulletins pendant des semaines après l'élection. Polymarket demande, pour chaque district, de combien le gagnant l'emportera (tranches de 5 points), réglé sur le résultat officiel de mi-décembre. Le décompte officiel est publié chaque jour par l'État : quand il ne reste que quelques pour cent de bulletins, la marge ne peut presque plus changer de tranche. On achète la tranche où tombe la marge actuelle quand le marché la vend comme si tout restait possible."
+  explication: "La Californie (et le Maryland) comptent leurs bulletins pendant des semaines après l'élection. Polymarket demande, pour chaque district, de combien le gagnant l'emportera (tranches de 5 points), réglé sur le résultat officiel de mi-décembre. Le décompte officiel est publié chaque jour par l'État : quand il ne reste que quelques pour cent de bulletins, la marge ne peut presque plus changer de tranche. On achète la tranche où tombe la marge actuelle quand le marché la vend comme si tout restait possible."
   class: marges_californie
   enabled: true
   version: "2.0.0"
@@ -713,6 +713,10 @@ marges_californie:
     Pas de test sur le passé possible (aucun relevé daté des décomptes de 2022 et 2024) : réglé à la certification, ≈ 40 districts d'un
     coup (un seul tirage corrélé). Une perte apprendrait qu'un gros lot tardif (bulletins provisoires, signatures corrigées) peut
     porter une marge très différente, que les restants sont bien plus nombreux, ou que la règle ne lit pas le décompte comme nous.
+    17/11/2026 (11 h, piste n° 68) : même expérience étendue au MARYLAND (gouverneur et 8 districts, marges_maryland.py, référence
+    `marges_ca`) : décompte non officiel du State Board of Elections avec une colonne par type de bulletin ; marge des restants
+    = marge des bulletins par correspondance et provisoires déjà comptés (gouverneur +60,5 pour 34,6 au total) ; ≈ 26 000
+    correspondances à compter au 14/11 et provisoires de Montgomery non publiés (restants doublés pour ces courses).
   params:
     min_net_edge:   {value: 0.04, min: 0.0, max: 0.30}    # chance − incertitude − prix demandé − frais (politics_fees : 4 % × p × (1 − p))
     uncertainty:    {value: 0.02, min: 0.0, max: 0.30}    # loi des restants non étalonnée sur le passé
