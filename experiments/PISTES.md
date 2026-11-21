@@ -168,6 +168,17 @@ ont été les plus battables le 20/10 ; les marchés suivis par des robots (cryp
 72. **Maximum de la banquise arctique (NSIDC) : fréquence de base contre tranches** (21/11/2026, passage de 1 h, `experiments/banquise_max.md`, idée neuve demandée par la feuille de mission : nouvelle source, cryosphère). Tableur de règlement sur `noaadata.apps.nsidc.org` : INTERDIT par robots.txt (`Disallow: /`) ; analyses du NSIDC permises (maxima dans le texte). 12 derniers hivers : aucun sous 14,2 ; deux plus bas de suite (2025 14,33, 2026 dans 14,2-14,4) ; ma chance « < 14,2 » ≈ 0,10-0,13 contre 0,18-0,19 au marché : rapprochée du prix, sous le seuil (4,5 mois d'immobilisation) : **notée, pas de conviction** ; à reprendre en février-mars 2027 quand l'étendue du jour borne le maximum.
 73. **Preuve Lean de l'hypothèse de Riemann (Alpöge, 20/11/2026) : vérification indépendante en 2026 ?** (21/11/2026, passage de 1 h, conviction étudiée, non écrite). Règle très technique : Comparator officiel, cinq théorèmes contre `src/Challenge.lean` d'un commit donné, trois axiomes permis, noyau Lean ≥ v4.36.0 ET un second vérificateur (nanoda ou leanchecker-paranoid). La formalisation est construite en v4.33.1 (17,4 millions de lignes, des heures et ≈ 100 Go de disque) et jugée en v4.36 ; un miroir indépendant (Deicyde) prépare la vérification, aucun résultat publié le 21/11 ; Kevin Buzzard : « we still await a successful comparator run ». Marché 0,90 / 0,91 : une course de 40 jours contre un calcul long mais mécanique ; risques = défaut de noyau corrigé entre 4.33 et 4.36, énoncé (« c'est GRH »), délai. Pas d'avantage chiffrable : **rien** ; à relire si un rapport de Comparator paraît (le OUI deviendrait ≈ sûr bien avant le 31/12).
 
+74. **Révisions de la source de règlement avant le marché** (21/11/2026, passage de 6 h, `enquetes/2026-11-21_matin_openrouter_historique_revise.md`).
+    Fait : OpenRouter a récrit TOUT son historique entre 22 h 55 et 23 h 55 UTC le 20/11 (−15 à −21 % par semaine depuis septembre ; semaine
+    du 9/11 211,28 → 171,21 T ; tencent/hy4-flash de ≈ 15 T/jour à 0,4 T/semaine). Notre cycle l'a lu à 23 h 55 ; le marché « semaine du
+    16/11 » est resté à « 240 T+ » 0,97-0,98 et « < 210 T » 0,01 jusque vers **03 h 50 UTC le 21/11** (4 h de retard), puis « < 210 » est
+    monté à 0,38-0,89 (milieu 0,64) dans un carnet très écarté. Hypothèse : une source qui RÉCRIT son passé (révision, correction, changement
+    de méthode) est vue par le cycle des heures avant la foule ; l'avantage n'existe que si la révision TIENT jusqu'au règlement (ici : chiffre
+    affiché à l'apparition de la semaine suivante, lundi 00 h UTC). Question à chiffrer : sur nos journaux de sources (`openrouter:histo`,
+    `rt:histo`, compteurs, tornades NCEI « préliminaire », Michigan), combien de révisions ≥ 3 %, combien annulées avant règlement, et
+    combien de temps le prix met à suivre. Première mesure : relire OpenRouter lundi 23/11 (la révision a-t-elle tenu ?). Rien de joué tant
+    que la tenue des révisions n'est pas mesurée (sans elle, « < 210 » vaut ≈ 0,88 pour un vendeur à 0,894).
+
 ## Testées
 | Piste | Verdict | Chiffre clé | Où |
 |---|---|---|---|

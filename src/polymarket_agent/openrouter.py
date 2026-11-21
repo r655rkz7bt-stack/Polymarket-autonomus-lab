@@ -70,6 +70,7 @@ def question(q: str, fin: datetime | None = None) -> tuple[float, float, date] |
 
 RUPTURE = 1.5            # jour en cours > 1,5 fois le rythme du dernier jour fini : lancement ou panne, la forme passée ne vaut plus
 RUPTURE_HEURES_MIN = 3.0  # avant 3 h UTC le jour en cours est trop petit (et creux) pour juger
+REVISION_MAX = 0.03      # semaine précédente relue à plus de 3 % de sa valeur au journal : la source a récrit son historique
 
 
 def detail(row: dict, histo: list[dict] | None = None) -> dict:
@@ -94,6 +95,15 @@ def detail(row: dict, histo: list[dict] | None = None) -> dict:
     if not 1 <= k <= 7 or prec is None:
         return {"refus": "OpenRouter : aucun jour fini de la semaine"}
     graphique = sem[lundi]
+    # 21/11/2026 (experiments/enquetes/2026-11-21_matin_openrouter_historique_revise.md) : entre 22 h 55 et 23 h 55 UTC le 20/11,
+    # OpenRouter a récrit TOUT son historique (−15 à −21 % chaque semaine depuis septembre : semaine du 9/11 211,28 → 171,21 T) ;
+    # les totaux quotidiens du journal lus avant la révision ne s'additionnent plus au graphique. Refus nommé tant que le journal
+    # de la semaine porte une « semaine précédente » différente de celle du graphique.
+    vues = [float(o["precedente"]) for o in histo or [] if o.get("semaine") == lundi.isoformat() and o.get("precedente")]
+    if any(abs(v - prec) > REVISION_MAX * prec for v in vues):
+        ancien = max(vues, key=lambda v: abs(v - prec))
+        return {"refus": f"OpenRouter : historique révisé par la source (semaine précédente {ancien:.1f} → {prec:.1f} T) : "
+                         f"jours du journal lus avant la révision", "revision": round(prec / ancien - 1, 4)}
     if k == 7:
         return {"lundi": lundi.isoformat(), "total": graphique, "k": 7}
     par_jour = {str(o.get("jour")): float(o["total_jour"]) for o in histo or [] if o.get("total_jour") is not None}
