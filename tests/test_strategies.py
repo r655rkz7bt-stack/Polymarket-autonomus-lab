@@ -28,8 +28,8 @@ def test_repository_config_loads():
     """Labo v2 (07/11/2026, experiments/BILAN_V1.md) : 7 stratégies à indice mesuré + les convictions de Claude."""
     loaded = load_strategies(ROOT / "config" / "strategies.yaml")
     assert [s.strategy_id for s in loaded] == [
-        "convictions_claude", "compteur_tweets", "compteur_tweets_72_168h", "compteur_truth", "favori_politique_quasi_certain",
-        "seismes_marche", "seismes_queues_audace", "seismes_pays", "fleuves_prevision", "auditeurs_spotify", "rougeole_compteur", "michigan_preliminaire", "encheres_estimation", "el_nino_cpc", "seismes_annee", "pib_canada_anticipe", "taux_tresor_barriere", "taux_tresor_empirique", "taux_immobilier_barriere", "openrouter_semaine", "indice_cotes", "mississippi_plus_bas", "pluie_hk", "rt_compte_critiques", "marges_californie", "box_office_annee", "non_aux_drames", "suivre_inities"]   # tornades_mois : éteinte (11/11) ; lid_agenda, secheresse_d4 : éteintes (14/11) ; meteo_sous_cli : éteinte (15/11)
+        "convictions_claude", "compteur_tweets", "favori_politique_quasi_certain",
+        "seismes_marche", "seismes_queues_audace", "seismes_pays", "fleuves_prevision", "auditeurs_spotify", "rougeole_compteur", "michigan_preliminaire", "encheres_estimation", "el_nino_cpc", "seismes_annee", "pib_canada_anticipe", "taux_tresor_barriere", "taux_tresor_empirique", "taux_immobilier_barriere", "openrouter_semaine", "indice_cotes", "mississippi_plus_bas", "pluie_hk", "rt_compte_critiques", "marges_californie", "box_office_annee", "non_aux_drames", "suivre_inities"]   # tornades_mois : éteinte (11/11) ; lid_agenda, secheresse_d4 : éteintes (14/11) ; meteo_sous_cli : éteinte (15/11) ; compteur_tweets_72_168h, compteur_truth : éteintes (21/11)
     relancees = {"el_nino_cpc": "2.1.0"}   # 15/11/2026 : v2.0.0 retirée par le ménage (calendrier mensuel), relancée et protégée
     assert all(s.version == relancees.get(s.strategy_id, "2.0.0") for s in loaded)
     assert len(load_strategies(ROOT / "config" / "strategies_v1.yaml", include_disabled=True)) > 150  # archive de la v1
