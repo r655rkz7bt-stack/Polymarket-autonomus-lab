@@ -1,0 +1,92 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "975.5413",
+  "capital_immobilise": "20.2208",
+  "gains_realises_nets": "-4.2379",
+  "gains_latents": "21.8799",
+  "frais_payes": "0.5616",
+  "capital_total_estime": "1017.6420",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0239,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will OpenRouter process 240T or more tokens the week of November 16?",
+   "issue": "No",
+   "parts": "44.17",
+   "cout": "19.19",
+   "prix_moyen": "0.4344",
+   "prix_de_marque": "0.951",
+   "latent": "22.82",
+   "strategie": "openrouter_semaine v2.0.0",
+   "groupe": "1358186",
+   "ouverte_le": "2026-11-17T12:57"
+  },
+  {
+   "marche": "Will OpenRouter process between 220T and 230T tokens the week of November 16?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.03",
+   "prix_moyen": "0.2064",
+   "prix_de_marque": "0.019",
+   "latent": "-0.94",
+   "strategie": "openrouter_semaine v2.0.0",
+   "groupe": "1358186",
+   "ouverte_le": "2026-11-17T12:57"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "6638954",
+   "issue": "No",
+   "strategie": "openrouter_semaine v2.0.0",
+   "resultat": "-2.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-16T05:20"
+  },
+  {
+   "marche": "6638953",
+   "issue": "Yes",
+   "strategie": "openrouter_semaine v2.0.0",
+   "resultat": "-1.94",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T05:20"
+  }
+ ],
+ "performances": {
+  "openrouter_semaine v2.0.0": {
+   "operations": 2,
+   "evenements": 1,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-4.24",
+   "frais": "0.10",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-2.12",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    -1.0
+   ],
+   "brier": 0.2696,
+   "log_loss": 0.7326,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

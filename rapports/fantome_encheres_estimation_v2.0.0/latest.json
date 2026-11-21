@@ -1,0 +1,83 @@
+{
+ "genere_le": "2026-11-21T10:32:32+00:00",
+ "capital": {
+  "solde_disponible": "975.6839",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-24.3161",
+  "gains_latents": "0.0000",
+  "frais_payes": "2.6286",
+  "capital_total_estime": "975.6839",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0845,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "6766294",
+   "issue": "Yes",
+   "strategie": "encheres_estimation v2.0.0",
+   "resultat": "-23.67",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-18T02:10"
+  },
+  {
+   "marche": "6766299",
+   "issue": "Yes",
+   "strategie": "encheres_estimation v2.0.0",
+   "resultat": "-10.38",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-18T02:35"
+  },
+  {
+   "marche": "6766304",
+   "issue": "Yes",
+   "strategie": "encheres_estimation v2.0.0",
+   "resultat": "-24.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-18T02:45"
+  },
+  {
+   "marche": "6766309",
+   "issue": "Yes",
+   "strategie": "encheres_estimation v2.0.0",
+   "resultat": "34.59",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T03:20"
+  }
+ ],
+ "performances": {
+  "encheres_estimation v2.0.0": {
+   "operations": 4,
+   "evenements": 4,
+   "gagnantes": 1,
+   "taux_reussite": 0.25,
+   "profit_net": "-24.32",
+   "frais": "2.63",
+   "rendement_sur_mises": -0.2921,
+   "esperance_par_operation": "-6.08",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.2104
+   ],
+   "brier": 0.2586,
+   "log_loss": 0.7101,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

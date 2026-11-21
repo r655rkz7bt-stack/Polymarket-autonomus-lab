@@ -1,0 +1,57 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "963.3429",
+  "capital_immobilise": "36.6571",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-2.5285",
+  "frais_payes": "0.7202",
+  "capital_total_estime": "997.4715",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0114,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the lowest St. Louis river level be -1.00 to 0.99 ft by November 30?",
+   "issue": "Yes",
+   "parts": "93.59",
+   "cout": "11.72",
+   "prix_moyen": "0.1253",
+   "prix_de_marque": "0.08",
+   "latent": "-4.24",
+   "strategie": "mississippi_plus_bas v2.0.0",
+   "groupe": "1065587",
+   "ouverte_le": "2026-11-13T16:42"
+  },
+  {
+   "marche": "Will the lowest Baton Rouge river level be 6.00 ft or more by November 30?",
+   "issue": "Yes",
+   "parts": "30.24",
+   "cout": "24.93",
+   "prix_moyen": "0.8245",
+   "prix_de_marque": "0.881",
+   "latent": "1.71",
+   "strategie": "mississippi_plus_bas v2.0.0",
+   "groupe": "1065589",
+   "ouverte_le": "2026-11-14T16:42"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

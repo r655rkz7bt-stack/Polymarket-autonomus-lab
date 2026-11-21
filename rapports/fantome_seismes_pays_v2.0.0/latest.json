@@ -1,0 +1,81 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "967.6956",
+  "capital_immobilise": "27.1044",
+  "gains_realises_nets": "-5.2000",
+  "gains_latents": "-1.8496",
+  "frais_payes": "0.5345",
+  "capital_total_estime": "992.9504",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0171,
+ "dernier_battement": "2026-11-21T10:18:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will a 6.0+ magnitude earthquake occur in Mexico this month?",
+   "issue": "No",
+   "parts": "35.57",
+   "cout": "27.01",
+   "prix_moyen": "0.7594",
+   "prix_de_marque": "0.71",
+   "latent": "-1.76",
+   "strategie": "seismes_pays v2.0.0",
+   "groupe": "1283623",
+   "ouverte_le": "2026-11-11T13:26"
+  },
+  {
+   "marche": "Will a 6.0+ magnitude earthquake occur in Peru this month?",
+   "issue": "No",
+   "parts": "0.12",
+   "cout": "0.09",
+   "prix_moyen": "0.7789",
+   "prix_de_marque": "0.001",
+   "latent": "-0.09",
+   "strategie": "seismes_pays v2.0.0",
+   "groupe": "1283623",
+   "ouverte_le": "2026-11-12T08:56"
+  }
+ ],
+ "operations_cloturees": 1,
+ "dernieres_operations": [
+  {
+   "marche": "6422859",
+   "issue": "No",
+   "strategie": "seismes_pays v2.0.0",
+   "resultat": "-5.20",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T07:15"
+  }
+ ],
+ "performances": {
+  "seismes_pays v2.0.0": {
+   "operations": 1,
+   "evenements": 1,
+   "gagnantes": 0,
+   "taux_reussite": 0.0,
+   "profit_net": "-5.20",
+   "frais": "0.20",
+   "rendement_sur_mises": -1.0,
+   "esperance_par_operation": "-5.20",
+   "ic90_rendement_par_euro": null,
+   "brier": 0.3378,
+   "log_loss": 0.8704,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

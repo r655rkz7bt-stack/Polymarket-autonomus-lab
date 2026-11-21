@@ -1,0 +1,201 @@
+{
+ "genere_le": "2026-11-21T10:32:34+00:00",
+ "capital": {
+  "solde_disponible": "923.9141",
+  "capital_immobilise": "76.0859",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-47.1251",
+  "frais_payes": "2.5823",
+  "capital_total_estime": "952.8749",
+  "positions_ouvertes": "14",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0555,
+ "dernier_battement": "2026-11-21T10:18:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will the 5-year Treasury yield hit 5.25% before 2027?",
+   "issue": "Yes",
+   "parts": "101.16",
+   "cout": "19.83",
+   "prix_moyen": "0.1960",
+   "prix_de_marque": "0.06",
+   "latent": "-13.76",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "956931",
+   "ouverte_le": "2026-11-17T00:09"
+  },
+  {
+   "marche": "Will the 30-year Treasury yield dip below 5.15% before 2027?",
+   "issue": "No",
+   "parts": "15.34",
+   "cout": "11.05",
+   "prix_moyen": "0.7203",
+   "prix_de_marque": "0.6",
+   "latent": "-1.85",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "956930",
+   "ouverte_le": "2026-11-17T00:09"
+  },
+  {
+   "marche": "Will the 30-year Treasury yield hit 5.70% before 2027?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.04",
+   "prix_moyen": "0.2080",
+   "prix_de_marque": "0.1",
+   "latent": "-0.54",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "956929",
+   "ouverte_le": "2026-11-17T03:12"
+  },
+  {
+   "marche": "Will the 10-year Treasury yield hit 5.25% in November?",
+   "issue": "Yes",
+   "parts": "26.75",
+   "cout": "5.98",
+   "prix_moyen": "0.2235",
+   "prix_de_marque": "0.01",
+   "latent": "-5.71",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310160",
+   "ouverte_le": "2026-11-17T03:16"
+  },
+  {
+   "marche": "Will the 5-year Treasury yield hit 5.12% in November?",
+   "issue": "Yes",
+   "parts": "19.50",
+   "cout": "2.44",
+   "prix_moyen": "0.1253",
+   "prix_de_marque": "0.002",
+   "latent": "-2.40",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310114",
+   "ouverte_le": "2026-11-17T03:26"
+  },
+  {
+   "marche": "Will the 10-year Treasury yield hit 5.21% in November?",
+   "issue": "Yes",
+   "parts": "14.16",
+   "cout": "5.01",
+   "prix_moyen": "0.3540",
+   "prix_de_marque": "0.021",
+   "latent": "-4.71",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310160",
+   "ouverte_le": "2026-11-17T03:37"
+  },
+  {
+   "marche": "Will the 10-year Treasury yield hit 5.5% before 2027?",
+   "issue": "Yes",
+   "parts": "6.02",
+   "cout": "0.57",
+   "prix_moyen": "0.0941",
+   "prix_de_marque": "0.08",
+   "latent": "-0.08",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "79104",
+   "ouverte_le": "2026-11-17T05:46"
+  },
+  {
+   "marche": "Will the 5-year Treasury yield hit 5.03% in November?",
+   "issue": "Yes",
+   "parts": "3.00",
+   "cout": "1.11",
+   "prix_moyen": "0.3715",
+   "prix_de_marque": "0.01",
+   "latent": "-1.08",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310114",
+   "ouverte_le": "2026-11-17T07:07"
+  },
+  {
+   "marche": "Will the 30-year Treasury yield hit 5.49% in November?",
+   "issue": "Yes",
+   "parts": "10.00",
+   "cout": "5.82",
+   "prix_moyen": "0.5823",
+   "prix_de_marque": "0.018",
+   "latent": "-5.64",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310158",
+   "ouverte_le": "2026-11-18T05:08"
+  },
+  {
+   "marche": "Will the 30-year Treasury yield hit 5.53% in November?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "1.91",
+   "prix_moyen": "0.3817",
+   "prix_de_marque": "0.024",
+   "latent": "-1.79",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310158",
+   "ouverte_le": "2026-11-18T10:17"
+  },
+  {
+   "marche": "Will the 2-year Treasury yield hit 4.97% in November?",
+   "issue": "Yes",
+   "parts": "5.00",
+   "cout": "0.63",
+   "prix_moyen": "0.1253",
+   "prix_de_marque": "0.008",
+   "latent": "-0.59",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1302869",
+   "ouverte_le": "2026-11-19T10:07"
+  },
+  {
+   "marche": "Will the 2-year Treasury yield hit 4.92% in November?",
+   "issue": "Yes",
+   "parts": "91.39",
+   "cout": "11.14",
+   "prix_moyen": "0.1219",
+   "prix_de_marque": "0.018",
+   "latent": "-9.49",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1302869",
+   "ouverte_le": "2026-11-20T06:47"
+  },
+  {
+   "marche": "Will the 5-year Treasury yield dip below 4.56% in November?",
+   "issue": "Yes",
+   "parts": "12.50",
+   "cout": "0.92",
+   "prix_moyen": "0.0733",
+   "prix_de_marque": "0.081",
+   "latent": "0.10",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310113",
+   "ouverte_le": "2026-11-21T00:02"
+  },
+  {
+   "marche": "Will the 10-year Treasury yield dip below 4.82% in November?",
+   "issue": "Yes",
+   "parts": "49.05",
+   "cout": "8.64",
+   "prix_moyen": "0.1762",
+   "prix_de_marque": "0.185",
+   "latent": "0.43",
+   "strategie": "taux_tresor_empirique v2.0.0",
+   "groupe": "1310159",
+   "ouverte_le": "2026-11-21T00:03"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

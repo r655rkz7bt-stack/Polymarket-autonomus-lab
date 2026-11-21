@@ -1,0 +1,57 @@
+{
+ "genere_le": "2026-11-21T10:32:32+00:00",
+ "capital": {
+  "solde_disponible": "923.5648",
+  "capital_immobilise": "76.4352",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-39.9945",
+  "frais_payes": "2.9347",
+  "capital_total_estime": "960.0055",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0824,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will The Weeknd have the second-greatest number of monthly Spotify listeners this month?",
+   "issue": "No",
+   "parts": "117.50",
+   "cout": "25.78",
+   "prix_moyen": "0.2194",
+   "prix_de_marque": "0.12",
+   "latent": "-11.68",
+   "strategie": "auditeurs_spotify v2.0.0",
+   "groupe": "1274351",
+   "ouverte_le": "2026-11-11T21:37"
+  },
+  {
+   "marche": "Will Rihanna have the second-greatest number of monthly Spotify listeners this month?",
+   "issue": "Yes",
+   "parts": "248.23",
+   "cout": "50.66",
+   "prix_moyen": "0.2041",
+   "prix_de_marque": "0.09",
+   "latent": "-28.32",
+   "strategie": "auditeurs_spotify v2.0.0",
+   "groupe": "1274351",
+   "ouverte_le": "2026-11-11T21:41"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

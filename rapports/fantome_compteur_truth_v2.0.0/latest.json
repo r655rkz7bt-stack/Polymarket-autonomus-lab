@@ -1,0 +1,171 @@
+{
+ "genere_le": "2026-11-21T10:32:32+00:00",
+ "capital": {
+  "solde_disponible": "862.4470",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-137.5530",
+  "gains_latents": "0.0000",
+  "frais_payes": "6.6075",
+  "capital_total_estime": "862.4470",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1749,
+ "dernier_battement": "2026-11-21T00:46:55+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 15,
+ "dernieres_operations": [
+  {
+   "marche": "6443452",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "2.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:01"
+  },
+  {
+   "marche": "6443484",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "1.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:05"
+  },
+  {
+   "marche": "6443459",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-25.02",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T19:11"
+  },
+  {
+   "marche": "6443467",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "9.46",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-10T19:11"
+  },
+  {
+   "marche": "6625318",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "18.23",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625358",
+   "issue": "Yes",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-60.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625276",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "10.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625266",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-46.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625330",
+   "issue": "Yes",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-1.52",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625288",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "10.06",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6921777",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "1.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T02:50"
+  },
+  {
+   "marche": "6921785",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "15.66",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-19T19:06"
+  },
+  {
+   "marche": "6921818",
+   "issue": "Yes",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-11.39",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T19:06"
+  },
+  {
+   "marche": "6921792",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "-65.23",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T19:12"
+  },
+  {
+   "marche": "6921800",
+   "issue": "No",
+   "strategie": "compteur_truth v2.0.0",
+   "resultat": "2.81",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T19:12"
+  }
+ ],
+ "performances": {
+  "compteur_truth v2.0.0": {
+   "operations": 15,
+   "evenements": 3,
+   "gagnantes": 9,
+   "taux_reussite": 0.6,
+   "profit_net": "-137.55",
+   "frais": "6.61",
+   "rendement_sur_mises": -0.2385,
+   "esperance_par_operation": "-9.17",
+   "ic90_rendement_par_euro": [
+    -0.3723,
+    -0.1781
+   ],
+   "brier": 0.2515,
+   "log_loss": 0.9143,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

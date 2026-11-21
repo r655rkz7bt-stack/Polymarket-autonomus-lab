@@ -1,0 +1,92 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "986.4062",
+  "capital_immobilise": "19.9903",
+  "gains_realises_nets": "6.3965",
+  "gains_latents": "1.7471",
+  "frais_payes": "0.5242",
+  "capital_total_estime": "1008.1436",
+  "positions_ouvertes": "2",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0276,
+ "dernier_battement": "2026-11-21T10:18:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Democratic 2028 presidential odds 66-68% on November 27?",
+   "issue": "Yes",
+   "parts": "1.25",
+   "cout": "0.49",
+   "prix_moyen": "0.3894",
+   "prix_de_marque": "0.5",
+   "latent": "0.14",
+   "strategie": "indice_cotes v2.0.0",
+   "groupe": "1430704",
+   "ouverte_le": "2026-11-20T17:15"
+  },
+  {
+   "marche": "Democratic 2028 presidential odds 68-70% on November 27?",
+   "issue": "No",
+   "parts": "22.46",
+   "cout": "19.50",
+   "prix_moyen": "0.8684",
+   "prix_de_marque": "0.94",
+   "latent": "1.61",
+   "strategie": "indice_cotes v2.0.0",
+   "groupe": "1430704",
+   "ouverte_le": "2026-11-20T18:33"
+  }
+ ],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "7000214",
+   "issue": "Yes",
+   "strategie": "indice_cotes v2.0.0",
+   "resultat": "10.19",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-21T01:01"
+  },
+  {
+   "marche": "7000213",
+   "issue": "Yes",
+   "strategie": "indice_cotes v2.0.0",
+   "resultat": "-3.79",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-21T01:01"
+  }
+ ],
+ "performances": {
+  "indice_cotes v2.0.0": {
+   "operations": 2,
+   "evenements": 1,
+   "gagnantes": 1,
+   "taux_reussite": 0.5,
+   "profit_net": "6.40",
+   "frais": "0.41",
+   "rendement_sur_mises": 0.2723,
+   "esperance_par_operation": "3.20",
+   "ic90_rendement_par_euro": [
+    -0.2414,
+    -0.2414
+   ],
+   "brier": 0.0472,
+   "log_loss": 0.2442,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

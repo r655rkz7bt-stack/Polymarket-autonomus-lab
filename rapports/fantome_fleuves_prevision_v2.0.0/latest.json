@@ -1,0 +1,67 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "1071.5482",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "71.5482",
+  "gains_latents": "0.0000",
+  "frais_payes": "1.1553",
+  "capital_total_estime": "1071.5482",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0628,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 2,
+ "dernieres_operations": [
+  {
+   "marche": "6581026",
+   "issue": "Yes",
+   "strategie": "fleuves_prevision v2.0.0",
+   "resultat": "45.35",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-14T22:12"
+  },
+  {
+   "marche": "6433563",
+   "issue": "No",
+   "strategie": "fleuves_prevision v2.0.0",
+   "resultat": "26.20",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-15T15:20"
+  }
+ ],
+ "performances": {
+  "fleuves_prevision v2.0.0": {
+   "operations": 2,
+   "evenements": 2,
+   "gagnantes": 2,
+   "taux_reussite": 1.0,
+   "profit_net": "71.55",
+   "frais": "1.16",
+   "rendement_sur_mises": 2.0268,
+   "esperance_par_operation": "35.77",
+   "ic90_rendement_par_euro": [
+    1.6741,
+    2.3076
+   ],
+   "brier": 0.1067,
+   "log_loss": 0.3879,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

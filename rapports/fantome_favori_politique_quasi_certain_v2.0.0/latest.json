@@ -1,0 +1,544 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "43.3334",
+  "capital_immobilise": "974.3703",
+  "gains_realises_nets": "17.7037",
+  "gains_latents": "1.4033",
+  "frais_payes": "0.4861",
+  "capital_total_estime": "1019.1069",
+  "positions_ouvertes": "31",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0187,
+ "dernier_battement": "2026-11-21T10:18:57+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Strait of Hormuz traffic returns to normal by November 30?",
+   "issue": "No",
+   "parts": "93.12",
+   "cout": "90.33",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.996",
+   "latent": "2.42",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "830254",
+   "ouverte_le": "2026-11-07T18:21"
+  },
+  {
+   "marche": "US-Iran Final Nuclear Deal by November 30, 2026?",
+   "issue": "No",
+   "parts": "29.48",
+   "cout": "28.65",
+   "prix_moyen": "0.9720",
+   "prix_de_marque": "0.992",
+   "latent": "0.59",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "620025",
+   "ouverte_le": "2026-11-07T21:41"
+  },
+  {
+   "marche": "2118145",
+   "issue": "Yes",
+   "parts": "63.01",
+   "cout": "61.86",
+   "prix_moyen": "0.9817",
+   "prix_de_marque": "0.983",
+   "latent": "0.08",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431847",
+   "ouverte_le": "2026-11-07T22:51"
+  },
+  {
+   "marche": "Iran leadership change by November 30?",
+   "issue": "No",
+   "parts": "66.49",
+   "cout": "64.63",
+   "prix_moyen": "0.9720",
+   "prix_de_marque": "0.981",
+   "latent": "0.60",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "255195",
+   "ouverte_le": "2026-11-07T23:36"
+  },
+  {
+   "marche": "2116493",
+   "issue": "Yes",
+   "parts": "17.50",
+   "cout": "17.16",
+   "prix_moyen": "0.9804",
+   "prix_de_marque": "0.991",
+   "latent": "0.19",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-08T00:41"
+  },
+  {
+   "marche": "2116494",
+   "issue": "No",
+   "parts": "7.50",
+   "cout": "7.36",
+   "prix_moyen": "0.9808",
+   "prix_de_marque": "0.993",
+   "latent": "0.09",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431450",
+   "ouverte_le": "2026-11-08T00:41"
+  },
+  {
+   "marche": "2117123",
+   "issue": "Yes",
+   "parts": "3.47",
+   "cout": "3.37",
+   "prix_moyen": "0.9721",
+   "prix_de_marque": "0.949",
+   "latent": "-0.08",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431707",
+   "ouverte_le": "2026-11-08T01:21"
+  },
+  {
+   "marche": "2117124",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.86",
+   "prix_moyen": "0.9721",
+   "prix_de_marque": "0.948",
+   "latent": "-0.12",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "431707",
+   "ouverte_le": "2026-11-08T01:52"
+  },
+  {
+   "marche": "6027286",
+   "issue": "No",
+   "parts": "10.00",
+   "cout": "9.71",
+   "prix_moyen": "0.9712",
+   "prix_de_marque": "0.711",
+   "latent": "-2.60",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1231988",
+   "ouverte_le": "2026-11-08T05:37"
+  },
+  {
+   "marche": "5652759",
+   "issue": "No",
+   "parts": "93.14",
+   "cout": "90.35",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.986",
+   "latent": "1.49",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "276527",
+   "ouverte_le": "2026-11-09T05:04"
+  },
+  {
+   "marche": "Russia x Ukraine ceasefire agreement by November 30, 2026?",
+   "issue": "No",
+   "parts": "59.75",
+   "cout": "57.96",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.982",
+   "latent": "0.72",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "478472",
+   "ouverte_le": "2026-11-09T22:46"
+  },
+  {
+   "marche": "US imports Russian diesel by November 30?",
+   "issue": "No",
+   "parts": "85.98",
+   "cout": "83.40",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.957",
+   "latent": "-1.12",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1161680",
+   "ouverte_le": "2026-11-10T16:42"
+  },
+  {
+   "marche": "Pete Hegseth out as Secretary of Defense by November 30?",
+   "issue": "No",
+   "parts": "16.70",
+   "cout": "16.20",
+   "prix_moyen": "0.9702",
+   "prix_de_marque": "0.982",
+   "latent": "0.20",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1120129",
+   "ouverte_le": "2026-11-10T23:22"
+  },
+  {
+   "marche": "Pete Hegseth out as Secretary of Defense by November 21?",
+   "issue": "No",
+   "parts": "16.51",
+   "cout": "16.24",
+   "prix_moyen": "0.9837",
+   "prix_de_marque": "0.998",
+   "latent": "0.24",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1120129",
+   "ouverte_le": "2026-11-10T23:22"
+  },
+  {
+   "marche": "2695687",
+   "issue": "No",
+   "parts": "17.14",
+   "cout": "16.82",
+   "prix_moyen": "0.9815",
+   "prix_de_marque": "0.987",
+   "latent": "0.09",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "637442",
+   "ouverte_le": "2026-11-13T10:14"
+  },
+  {
+   "marche": "6977083",
+   "issue": "No",
+   "parts": "17.21",
+   "cout": "16.81",
+   "prix_moyen": "0.9769",
+   "prix_de_marque": "0.995",
+   "latent": "0.31",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1367767",
+   "ouverte_le": "2026-11-13T10:14"
+  },
+  {
+   "marche": "FAA outage attributed to AI?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.92",
+   "prix_moyen": "0.9846",
+   "prix_de_marque": "0.972",
+   "latent": "-0.06",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1382628",
+   "ouverte_le": "2026-11-15T09:12"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 20?",
+   "issue": "Yes",
+   "parts": "24.91",
+   "cout": "24.16",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.996",
+   "latent": "0.65",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-15T12:37"
+  },
+  {
+   "marche": "FAA outage attributed to a foreign actor?",
+   "issue": "No",
+   "parts": "12.31",
+   "cout": "12.11",
+   "prix_moyen": "0.9836",
+   "prix_de_marque": "0.985",
+   "latent": "0.02",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1382331",
+   "ouverte_le": "2026-11-15T15:47"
+  },
+  {
+   "marche": "FAA outage attributed to hack?",
+   "issue": "No",
+   "parts": "6.18",
+   "cout": "6.07",
+   "prix_moyen": "0.9814",
+   "prix_de_marque": "0.973",
+   "latent": "-0.05",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1382398",
+   "ouverte_le": "2026-11-15T15:51"
+  },
+  {
+   "marche": "NATO x Russia military clash by November 30, 2026?",
+   "issue": "No",
+   "parts": "29.38",
+   "cout": "28.76",
+   "prix_moyen": "0.9790",
+   "prix_de_marque": "0.949",
+   "latent": "-0.88",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "48930",
+   "ouverte_le": "2026-11-16T07:02"
+  },
+  {
+   "marche": "US announces end of Iranian blockade by November 30, 2026?",
+   "issue": "No",
+   "parts": "82.20",
+   "cout": "79.73",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.963",
+   "latent": "-0.58",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "699735",
+   "ouverte_le": "2026-11-16T12:11"
+  },
+  {
+   "marche": "Will Chen Ting-fei win the next Tainan Mayor election?",
+   "issue": "Yes",
+   "parts": "30.78",
+   "cout": "29.98",
+   "prix_moyen": "0.9741",
+   "prix_de_marque": "0.931",
+   "latent": "-1.33",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "848408",
+   "ouverte_le": "2026-11-17T01:56"
+  },
+  {
+   "marche": "Will Trump meet with Kim Jong Un by November 30, 2026?",
+   "issue": "No",
+   "parts": "10.59",
+   "cout": "10.30",
+   "prix_moyen": "0.9724",
+   "prix_de_marque": "0.995",
+   "latent": "0.24",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1285994",
+   "ouverte_le": "2026-11-17T16:06"
+  },
+  {
+   "marche": "7023187",
+   "issue": "No",
+   "parts": "29.99",
+   "cout": "29.45",
+   "prix_moyen": "0.9821",
+   "prix_de_marque": "0.988",
+   "latent": "0.18",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1382231",
+   "ouverte_le": "2026-11-18T15:09"
+  },
+  {
+   "marche": "5238401",
+   "issue": "Yes",
+   "parts": "10.08",
+   "cout": "9.86",
+   "prix_moyen": "0.9780",
+   "prix_de_marque": "0.975",
+   "latent": "-0.03",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1124935",
+   "ouverte_le": "2026-11-19T02:13"
+  },
+  {
+   "marche": "6030076",
+   "issue": "Yes",
+   "parts": "41.14",
+   "cout": "40.43",
+   "prix_moyen": "0.9827",
+   "prix_de_marque": "0.981",
+   "latent": "-0.07",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1232411",
+   "ouverte_le": "2026-11-19T04:56"
+  },
+  {
+   "marche": "Russia x Ukraine energy ceasefire agreement by November 30, 2026?",
+   "issue": "No",
+   "parts": "18.67",
+   "cout": "18.11",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.993",
+   "latent": "0.43",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1360126",
+   "ouverte_le": "2026-11-19T13:37"
+  },
+  {
+   "marche": "US-Iran Hormuz Agreement by November 30?",
+   "issue": "No",
+   "parts": "35.46",
+   "cout": "34.57",
+   "prix_moyen": "0.9750",
+   "prix_de_marque": "0.975",
+   "latent": "0.00",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "794064",
+   "ouverte_le": "2026-11-19T22:52"
+  },
+  {
+   "marche": "Next US-Iran senior diplomatic meeting by November 30, 2026?",
+   "issue": "No",
+   "parts": "17.86",
+   "cout": "17.32",
+   "prix_moyen": "0.9700",
+   "prix_de_marque": "0.971",
+   "latent": "0.02",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "1066394",
+   "ouverte_le": "2026-11-20T06:27"
+  },
+  {
+   "marche": "Israel x Iran ceasefire continues through November 22?",
+   "issue": "Yes",
+   "parts": "44.39",
+   "cout": "42.88",
+   "prix_moyen": "0.9659",
+   "prix_de_marque": "0.961",
+   "latent": "-0.22",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "groupe": "711714",
+   "ouverte_le": "2026-11-21T07:12"
+  }
+ ],
+ "operations_cloturees": 17,
+ "dernieres_operations": [
+  {
+   "marche": "6908165",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.54",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T10:10"
+  },
+  {
+   "marche": "6880638",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-15T07:05"
+  },
+  {
+   "marche": "6723099",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.58",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T07:01"
+  },
+  {
+   "marche": "6282802",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "2.50",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T07:01"
+  },
+  {
+   "marche": "6044505",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.54",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T07:05"
+  },
+  {
+   "marche": "6301107",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.86",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T07:15"
+  },
+  {
+   "marche": "5339986",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.78",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-18T12:05"
+  },
+  {
+   "marche": "6440117",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.51",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-18T13:41"
+  },
+  {
+   "marche": "6919838",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.16",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-18T17:20"
+  },
+  {
+   "marche": "6908162",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.00",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-19T01:11"
+  },
+  {
+   "marche": "6948156",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.15",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-19T13:21"
+  },
+  {
+   "marche": "6947953",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-19T22:15"
+  },
+  {
+   "marche": "6947952",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-19T22:15"
+  },
+  {
+   "marche": "6919846",
+   "issue": "Yes",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "0.30",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T15:41"
+  },
+  {
+   "marche": "7018013",
+   "issue": "No",
+   "strategie": "favori_politique_quasi_certain v2.0.0",
+   "resultat": "1.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-21T07:05"
+  }
+ ],
+ "performances": {
+  "favori_politique_quasi_certain v2.0.0": {
+   "operations": 17,
+   "evenements": 12,
+   "gagnantes": 17,
+   "taux_reussite": 1.0,
+   "profit_net": "17.70",
+   "frais": "0.27",
+   "rendement_sur_mises": 0.0259,
+   "esperance_par_operation": "1.04",
+   "ic90_rendement_par_euro": [
+    0.0232,
+    0.029
+   ],
+   "brier": 0.0003,
+   "log_loss": 0.0165,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

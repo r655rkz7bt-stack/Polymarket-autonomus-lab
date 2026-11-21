@@ -1,0 +1,256 @@
+{
+ "genere_le": "2026-11-21T10:32:32+00:00",
+ "capital": {
+  "solde_disponible": "813.4402",
+  "capital_immobilise": "45.7984",
+  "gains_realises_nets": "-140.7614",
+  "gains_latents": "-10.8036",
+  "frais_payes": "11.3645",
+  "capital_total_estime": "848.4350",
+  "positions_ouvertes": "7",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1672,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "6104893",
+   "issue": "No",
+   "parts": "19.92",
+   "cout": "2.50",
+   "prix_moyen": "0.1253",
+   "prix_de_marque": "0.01",
+   "latent": "-2.30",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1244070",
+   "ouverte_le": "2026-11-08T21:16"
+  },
+  {
+   "marche": "6104887",
+   "issue": "No",
+   "parts": "1.25",
+   "cout": "1.11",
+   "prix_moyen": "0.8891",
+   "prix_de_marque": "0.981",
+   "latent": "0.11",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1244070",
+   "ouverte_le": "2026-11-11T14:16"
+  },
+  {
+   "marche": "7030485",
+   "issue": "No",
+   "parts": "79.99",
+   "cout": "9.38",
+   "prix_moyen": "0.1172",
+   "prix_de_marque": "0.022",
+   "latent": "-7.62",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1384355",
+   "ouverte_le": "2026-11-15T00:07"
+  },
+  {
+   "marche": "7030470",
+   "issue": "Yes",
+   "parts": "18.48",
+   "cout": "17.00",
+   "prix_moyen": "0.9200",
+   "prix_de_marque": "0.92",
+   "latent": "-0.00",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1384348",
+   "ouverte_le": "2026-11-15T02:11"
+  },
+  {
+   "marche": "7030557",
+   "issue": "No",
+   "parts": "5.19",
+   "cout": "2.35",
+   "prix_moyen": "0.4523",
+   "prix_de_marque": "0.1",
+   "latent": "-1.83",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1384352",
+   "ouverte_le": "2026-11-15T13:17"
+  },
+  {
+   "marche": "7030548",
+   "issue": "No",
+   "parts": "10.50",
+   "cout": "8.18",
+   "prix_moyen": "0.7789",
+   "prix_de_marque": "0.89",
+   "latent": "1.17",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1384352",
+   "ouverte_le": "2026-11-15T14:32"
+  },
+  {
+   "marche": "7030511",
+   "issue": "No",
+   "parts": "8.24",
+   "cout": "5.29",
+   "prix_moyen": "0.6417",
+   "prix_de_marque": "0.6",
+   "latent": "-0.34",
+   "strategie": "compteur_tweets v2.0.0",
+   "groupe": "1384354",
+   "ouverte_le": "2026-11-15T23:41"
+  }
+ ],
+ "operations_cloturees": 50,
+ "dernieres_operations": [
+  {
+   "marche": "6991119",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "0.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-15T10:06"
+  },
+  {
+   "marche": "6991120",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-1.59",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T01:41"
+  },
+  {
+   "marche": "6991121",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-2.09",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T07:01"
+  },
+  {
+   "marche": "6991122",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-5.64",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-16T19:06"
+  },
+  {
+   "marche": "6991123",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "0.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T19:06"
+  },
+  {
+   "marche": "6991124",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "0.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T19:06"
+  },
+  {
+   "marche": "6921777",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "1.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T02:50"
+  },
+  {
+   "marche": "7043349",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-6.98",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T18:51"
+  },
+  {
+   "marche": "6921765",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "16.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-18T01:20"
+  },
+  {
+   "marche": "6921785",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "7.80",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-19T19:06"
+  },
+  {
+   "marche": "6921851",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-25.84",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-19T23:31"
+  },
+  {
+   "marche": "6921763",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "0.78",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T19:06"
+  },
+  {
+   "marche": "6921818",
+   "issue": "Yes",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-5.61",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T19:06"
+  },
+  {
+   "marche": "6921792",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "-32.45",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T19:12"
+  },
+  {
+   "marche": "6921800",
+   "issue": "No",
+   "strategie": "compteur_tweets v2.0.0",
+   "resultat": "1.40",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T19:12"
+  }
+ ],
+ "performances": {
+  "compteur_tweets v2.0.0": {
+   "operations": 50,
+   "evenements": 17,
+   "gagnantes": 29,
+   "taux_reussite": 0.58,
+   "profit_net": "-140.76",
+   "frais": "10.53",
+   "rendement_sur_mises": -0.1659,
+   "esperance_par_operation": "-2.82",
+   "ic90_rendement_par_euro": [
+    -0.3578,
+    0.0735
+   ],
+   "brier": 0.1988,
+   "log_loss": 0.6547,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

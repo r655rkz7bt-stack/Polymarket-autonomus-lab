@@ -1,0 +1,171 @@
+{
+ "genere_le": "2026-11-21T10:32:32+00:00",
+ "capital": {
+  "solde_disponible": "882.6063",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "-117.3937",
+  "gains_latents": "0.0000",
+  "frais_payes": "7.1890",
+  "capital_total_estime": "882.6063",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.1715,
+ "dernier_battement": "2026-11-21T00:46:55+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 19,
+ "dernieres_operations": [
+  {
+   "marche": "6625381",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "1.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625276",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "10.29",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625266",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-46.01",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625330",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-1.55",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6625288",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "10.24",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-13T19:05"
+  },
+  {
+   "marche": "6909745",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "10.86",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-14T19:05"
+  },
+  {
+   "marche": "6991119",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "1.69",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-15T10:06"
+  },
+  {
+   "marche": "6991120",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "3.72",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T01:41"
+  },
+  {
+   "marche": "6921777",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "1.26",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T02:50"
+  },
+  {
+   "marche": "7043349",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-14.89",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T18:51"
+  },
+  {
+   "marche": "6921785",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "16.25",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-19T19:06"
+  },
+  {
+   "marche": "6921763",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "2.13",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T19:06"
+  },
+  {
+   "marche": "6921818",
+   "issue": "Yes",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-11.84",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T19:06"
+  },
+  {
+   "marche": "6921792",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "-67.69",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T19:12"
+  },
+  {
+   "marche": "6921800",
+   "issue": "No",
+   "strategie": "compteur_tweets_72_168h v2.0.0",
+   "resultat": "2.92",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T19:12"
+  }
+ ],
+ "performances": {
+  "compteur_tweets_72_168h v2.0.0": {
+   "operations": 19,
+   "evenements": 8,
+   "gagnantes": 13,
+   "taux_reussite": 0.684,
+   "profit_net": "-117.39",
+   "frais": "7.19",
+   "rendement_sur_mises": -0.2001,
+   "esperance_par_operation": "-6.18",
+   "ic90_rendement_par_euro": [
+    -0.2852,
+    0.8366
+   ],
+   "brier": 0.2016,
+   "log_loss": 0.6989,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

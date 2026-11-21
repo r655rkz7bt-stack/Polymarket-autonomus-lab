@@ -1,0 +1,81 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "958.2045",
+  "capital_immobilise": "41.7955",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-3.1641",
+  "frais_payes": "0.1211",
+  "capital_total_estime": "996.8359",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0046,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will California experience a 7.0 or above magnitude earthquake in 2026?",
+   "issue": "No",
+   "parts": "27.03",
+   "cout": "24.94",
+   "prix_moyen": "0.9227",
+   "prix_de_marque": "0.925",
+   "latent": "0.06",
+   "strategie": "seismes_annee v2.0.0",
+   "groupe": "744604",
+   "ouverte_le": "2026-11-12T11:51"
+  },
+  {
+   "marche": "1073793",
+   "issue": "No",
+   "parts": "15.75",
+   "cout": "12.60",
+   "prix_moyen": "0.8000",
+   "prix_de_marque": "0.71",
+   "latent": "-1.42",
+   "strategie": "seismes_annee v2.0.0",
+   "groupe": "134977",
+   "ouverte_le": "2026-11-13T18:56"
+  },
+  {
+   "marche": "1073791",
+   "issue": "Yes",
+   "parts": "22.05",
+   "cout": "1.96",
+   "prix_moyen": "0.0890",
+   "prix_de_marque": "0.023",
+   "latent": "-1.46",
+   "strategie": "seismes_annee v2.0.0",
+   "groupe": "134977",
+   "ouverte_le": "2026-11-15T11:17"
+  },
+  {
+   "marche": "Will the highest-magnitude earthquake in 2026 be 7.9 or below?",
+   "issue": "Yes",
+   "parts": "2.77",
+   "cout": "2.29",
+   "prix_moyen": "0.8274",
+   "prix_de_marque": "0.7",
+   "latent": "-0.35",
+   "strategie": "seismes_annee v2.0.0",
+   "groupe": "870991",
+   "ouverte_le": "2026-11-16T22:38"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

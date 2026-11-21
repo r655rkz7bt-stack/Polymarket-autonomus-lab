@@ -1,0 +1,75 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "1013.6498",
+  "capital_immobilise": "0.0000",
+  "gains_realises_nets": "13.6498",
+  "gains_latents": "0.0000",
+  "frais_payes": "0.6186",
+  "capital_total_estime": "1013.6498",
+  "positions_ouvertes": "0",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0079,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [],
+ "operations_cloturees": 3,
+ "dernieres_operations": [
+  {
+   "marche": "6096682",
+   "issue": "No",
+   "strategie": "michigan_preliminaire v2.0.0",
+   "resultat": "2.28",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T17:05"
+  },
+  {
+   "marche": "6096680",
+   "issue": "Yes",
+   "strategie": "michigan_preliminaire v2.0.0",
+   "resultat": "14.91",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-20T17:05"
+  },
+  {
+   "marche": "6096681",
+   "issue": "Yes",
+   "strategie": "michigan_preliminaire v2.0.0",
+   "resultat": "-3.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T17:05"
+  }
+ ],
+ "performances": {
+  "michigan_preliminaire v2.0.0": {
+   "operations": 3,
+   "evenements": 1,
+   "gagnantes": 2,
+   "taux_reussite": 0.667,
+   "profit_net": "13.65",
+   "frais": "0.62",
+   "rendement_sur_mises": 0.3457,
+   "esperance_par_operation": "4.55",
+   "ic90_rendement_par_euro": [
+    0.0322,
+    0.0322
+   ],
+   "brier": 0.0876,
+   "log_loss": 0.3016,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

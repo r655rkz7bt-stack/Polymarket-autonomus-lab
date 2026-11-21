@@ -1,0 +1,81 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "975.2374",
+  "capital_immobilise": "24.7626",
+  "gains_realises_nets": "0.0000",
+  "gains_latents": "-20.4656",
+  "frais_payes": "0.8233",
+  "capital_total_estime": "979.5344",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0314,
+ "dernier_battement": "2026-11-21T10:05:48+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will there be ≤6 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "68.94",
+   "cout": "19.29",
+   "prix_moyen": "0.2799",
+   "prix_de_marque": "0.005",
+   "latent": "-18.95",
+   "strategie": "seismes_queues_audace v2.0.0",
+   "groupe": "1382192",
+   "ouverte_le": "2026-11-16T22:07"
+  },
+  {
+   "marche": "Will there be more than 13 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "24.49",
+   "cout": "2.81",
+   "prix_moyen": "0.1149",
+   "prix_de_marque": "0.15",
+   "latent": "0.86",
+   "strategie": "seismes_queues_audace v2.0.0",
+   "groupe": "1382192",
+   "ouverte_le": "2026-11-18T04:07"
+  },
+  {
+   "marche": "Will there be 2 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "30.00",
+   "cout": "2.42",
+   "prix_moyen": "0.0807",
+   "prix_de_marque": "0.002",
+   "latent": "-2.36",
+   "strategie": "seismes_queues_audace v2.0.0",
+   "groupe": "1382175",
+   "ouverte_le": "2026-11-21T09:52"
+  },
+  {
+   "marche": "Will there be 4 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "1.28",
+   "cout": "0.23",
+   "prix_moyen": "0.1825",
+   "prix_de_marque": "0.171",
+   "latent": "-0.01",
+   "strategie": "seismes_queues_audace v2.0.0",
+   "groupe": "1382175",
+   "ouverte_le": "2026-11-21T10:05"
+  }
+ ],
+ "operations_cloturees": 0,
+ "dernieres_operations": [],
+ "performances": {},
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

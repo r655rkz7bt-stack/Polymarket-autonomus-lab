@@ -1,0 +1,168 @@
+{
+ "genere_le": "2026-11-21T10:32:32+00:00",
+ "capital": {
+  "solde_disponible": "970.5425",
+  "capital_immobilise": "76.6876",
+  "gains_realises_nets": "47.2301",
+  "gains_latents": "-15.9545",
+  "frais_payes": "4.2950",
+  "capital_total_estime": "1031.2756",
+  "positions_ouvertes": "5",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0402,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will Dota 2 average more Steam players in November than in October?",
+   "issue": "No",
+   "parts": "15.25",
+   "cout": "13.30",
+   "prix_moyen": "0.8723",
+   "prix_de_marque": "0.913",
+   "latent": "0.62",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "1226448",
+   "ouverte_le": "2026-11-15T11:17"
+  },
+  {
+   "marche": "Will a Democratic Party candidate win the 2026 CA-03 House election by 15%-20%?",
+   "issue": "Yes",
+   "parts": "23.25",
+   "cout": "20.98",
+   "prix_moyen": "0.9023",
+   "prix_de_marque": "0.821",
+   "latent": "-1.89",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "955288",
+   "ouverte_le": "2026-11-17T01:22"
+  },
+  {
+   "marche": "Will a Democratic Party candidate win the 2026 CA-26 House election by 25%-30%?",
+   "issue": "Yes",
+   "parts": "23.25",
+   "cout": "20.76",
+   "prix_moyen": "0.8929",
+   "prix_de_marque": "0.4",
+   "latent": "-11.46",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "955346",
+   "ouverte_le": "2026-11-17T01:22"
+  },
+  {
+   "marche": "Will a Democratic Party candidate win the 2026 CA-01 House election by 15%-20%?",
+   "issue": "Yes",
+   "parts": "22.75",
+   "cout": "20.56",
+   "prix_moyen": "0.9036",
+   "prix_de_marque": "0.79",
+   "latent": "-2.58",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "955286",
+   "ouverte_le": "2026-11-17T01:22"
+  },
+  {
+   "marche": "Will Rihanna have the second-greatest number of monthly Spotify listeners this month?",
+   "issue": "Yes",
+   "parts": "4.99",
+   "cout": "1.09",
+   "prix_moyen": "0.2183",
+   "prix_de_marque": "0.09",
+   "latent": "-0.64",
+   "strategie": "convictions_claude v2.0.0",
+   "groupe": "1274351",
+   "ouverte_le": "2026-11-17T23:17"
+  }
+ ],
+ "operations_cloturees": 7,
+ "dernieres_operations": [
+  {
+   "marche": "6753604",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "-14.63",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-10T18:05"
+  },
+  {
+   "marche": "6433563",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "4.15",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-12T12:07"
+  },
+  {
+   "marche": "6581026",
+   "issue": "Yes",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "44.08",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-13T08:32"
+  },
+  {
+   "marche": "Will Rihanna have the second-greatest number of monthly Spotify listeners this month?",
+   "issue": "Yes",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "4.43",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-14T03:52"
+  },
+  {
+   "marche": "6433563",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "1.36",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-14T13:04"
+  },
+  {
+   "marche": "Will the U.S. national debt hit $41 trillion before 2027?",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "5.70",
+   "resolution": "vendu",
+   "cloturee_le": "2026-11-17T04:02"
+  },
+  {
+   "marche": "6096682",
+   "issue": "No",
+   "strategie": "convictions_claude v2.0.0",
+   "resultat": "2.13",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-20T17:05"
+  }
+ ],
+ "performances": {
+  "convictions_claude v2.0.0": {
+   "operations": 7,
+   "evenements": 6,
+   "gagnantes": 6,
+   "taux_reussite": 0.857,
+   "profit_net": "47.23",
+   "frais": "3.91",
+   "rendement_sur_mises": 0.4313,
+   "esperance_par_operation": "6.75",
+   "ic90_rendement_par_euro": [
+    -0.1722,
+    0.9205
+   ],
+   "brier": 0.3874,
+   "log_loss": 1.0702,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

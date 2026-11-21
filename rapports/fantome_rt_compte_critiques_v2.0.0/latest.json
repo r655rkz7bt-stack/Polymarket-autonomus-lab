@@ -1,0 +1,132 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "958.3893",
+  "capital_immobilise": "63.7897",
+  "gains_realises_nets": "22.1790",
+  "gains_latents": "-5.1696",
+  "frais_payes": "1.8418",
+  "capital_total_estime": "1017.0093",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.0358,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will \"I Play Rocky\" score at least 85 on the Rotten Tomatoes Tomatometer?",
+   "issue": "Yes",
+   "parts": "25.00",
+   "cout": "20.20",
+   "prix_moyen": "0.8080",
+   "prix_de_marque": "0.987",
+   "latent": "4.48",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "groupe": "1262409",
+   "ouverte_le": "2026-11-16T21:42"
+  },
+  {
+   "marche": "Will \"I Play Rocky\" score at least 88 on the Rotten Tomatoes Tomatometer?",
+   "issue": "No",
+   "parts": "27.19",
+   "cout": "20.33",
+   "prix_moyen": "0.7478",
+   "prix_de_marque": "0.015",
+   "latent": "-19.93",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "groupe": "1262409",
+   "ouverte_le": "2026-11-17T12:57"
+  },
+  {
+   "marche": "Will \"The Hunger Games: Sunrise on the Reaping\" score at least 70 on the Rotten Tomatoes Tomatometer?",
+   "issue": "No",
+   "parts": "36.16",
+   "cout": "19.98",
+   "prix_moyen": "0.5524",
+   "prix_de_marque": "0.92",
+   "latent": "13.29",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "groupe": "1151103",
+   "ouverte_le": "2026-11-17T15:36"
+  },
+  {
+   "marche": "Will \"The Hunger Games: Sunrise on the Reaping\" score at least 60 on the Rotten Tomatoes Tomatometer?",
+   "issue": "No",
+   "parts": "45.00",
+   "cout": "3.28",
+   "prix_moyen": "0.0729",
+   "prix_de_marque": "0.006",
+   "latent": "-3.01",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "groupe": "1151103",
+   "ouverte_le": "2026-11-17T20:37"
+  }
+ ],
+ "operations_cloturees": 4,
+ "dernieres_operations": [
+  {
+   "marche": "6279938",
+   "issue": "Yes",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "resultat": "3.36",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-16T17:03"
+  },
+  {
+   "marche": "6991670",
+   "issue": "No",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "resultat": "1.15",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T17:08"
+  },
+  {
+   "marche": "6920131",
+   "issue": "No",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "resultat": "11.93",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-16T17:08"
+  },
+  {
+   "marche": "6991673",
+   "issue": "Yes",
+   "strategie": "rt_compte_critiques v2.0.0",
+   "resultat": "5.74",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-16T17:08"
+  }
+ ],
+ "performances": {
+  "rt_compte_critiques v2.0.0": {
+   "operations": 4,
+   "evenements": 2,
+   "gagnantes": 4,
+   "taux_reussite": 1.0,
+   "profit_net": "22.18",
+   "frais": "0.78",
+   "rendement_sur_mises": 0.3765,
+   "esperance_par_operation": "5.54",
+   "ic90_rendement_par_euro": [
+    0.2344,
+    0.4889
+   ],
+   "brier": 0.027,
+   "log_loss": 0.1564,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}

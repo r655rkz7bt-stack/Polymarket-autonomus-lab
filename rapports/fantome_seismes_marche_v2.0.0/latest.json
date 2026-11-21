@@ -1,0 +1,172 @@
+{
+ "genere_le": "2026-11-21T10:32:33+00:00",
+ "capital": {
+  "solde_disponible": "876.2094",
+  "capital_immobilise": "69.1464",
+  "gains_realises_nets": "-54.6443",
+  "gains_latents": "-30.6068",
+  "frais_payes": "4.8202",
+  "capital_total_estime": "914.7489",
+  "positions_ouvertes": "4",
+  "faillite": "non"
+ },
+ "faillite": {
+  "etat": false,
+  "raison": ""
+ },
+ "drawdown_max": 0.216,
+ "dernier_battement": "2026-11-21T10:22:27+00:00",
+ "positions_ouvertes": [
+  {
+   "marche": "Will there be ≤6 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "71.66",
+   "cout": "24.97",
+   "prix_moyen": "0.3484",
+   "prix_de_marque": "0.005",
+   "latent": "-24.61",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1382192",
+   "ouverte_le": "2026-11-16T14:41"
+  },
+  {
+   "marche": "Will there be 7 earthquakes of 5.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "33.50",
+   "cout": "29.01",
+   "prix_moyen": "0.8660",
+   "prix_de_marque": "0.991",
+   "latent": "4.19",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1382192",
+   "ouverte_le": "2026-11-16T14:41"
+  },
+  {
+   "marche": "Will there be 0 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "Yes",
+   "parts": "22.76",
+   "cout": "10.98",
+   "prix_moyen": "0.4826",
+   "prix_de_marque": "0.001",
+   "latent": "-10.96",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1382175",
+   "ouverte_le": "2026-11-16T14:41"
+  },
+  {
+   "marche": "Will there be 2 earthquakes of 6.5 or above magnitude worldwide?",
+   "issue": "No",
+   "parts": "5.00",
+   "cout": "4.19",
+   "prix_moyen": "0.8371",
+   "prix_de_marque": "0.992",
+   "latent": "0.77",
+   "strategie": "seismes_marche v2.0.0",
+   "groupe": "1382175",
+   "ouverte_le": "2026-11-16T14:41"
+  }
+ ],
+ "operations_cloturees": 9,
+ "dernieres_operations": [
+  {
+   "marche": "6705285",
+   "issue": "Yes",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "-27.42",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-08T21:05"
+  },
+  {
+   "marche": "6581737",
+   "issue": "Yes",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "-44.27",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-11T14:10"
+  },
+  {
+   "marche": "6581738",
+   "issue": "No",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "-72.82",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-11T15:45"
+  },
+  {
+   "marche": "6760890",
+   "issue": "Yes",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "60.14",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-17T07:05"
+  },
+  {
+   "marche": "6760891",
+   "issue": "No",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "3.56",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T07:05"
+  },
+  {
+   "marche": "6760884",
+   "issue": "No",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "7.73",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T07:05"
+  },
+  {
+   "marche": "6760892",
+   "issue": "No",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "6.08",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T07:05"
+  },
+  {
+   "marche": "6760885",
+   "issue": "No",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "0.53",
+   "resolution": "résolu : No",
+   "cloturee_le": "2026-11-17T07:05"
+  },
+  {
+   "marche": "6760883",
+   "issue": "Yes",
+   "strategie": "seismes_marche v2.0.0",
+   "resultat": "11.83",
+   "resolution": "résolu : Yes",
+   "cloturee_le": "2026-11-17T10:25"
+  }
+ ],
+ "performances": {
+  "seismes_marche v2.0.0": {
+   "operations": 9,
+   "evenements": 4,
+   "gagnantes": 6,
+   "taux_reussite": 0.667,
+   "profit_net": "-54.64",
+   "frais": "3.50",
+   "rendement_sur_mises": -0.1924,
+   "esperance_par_operation": "-6.07",
+   "ic90_rendement_par_euro": [
+    -1.0,
+    0.5527
+   ],
+   "brier": 0.3346,
+   "log_loss": 1.0712,
+   "assez_de_donnees": false
+  }
+ },
+ "cycles_24h": {
+  "OK": 292
+ },
+ "decisions_24h": {
+  "acceptees": 13,
+  "rejetees": 0,
+  "raisons_de_rejet": {}
+ },
+ "erreurs_recentes": []
+}
