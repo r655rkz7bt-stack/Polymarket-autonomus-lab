@@ -126,3 +126,27 @@ def test_collect_attach_and_buy_cheap_lower_bracket(tmp_path):
         x.fetched_at = NOW
     out = s.propose([bas], b, _state(tmp_path), LIMITS, "b2")
     assert [x.token_id for x in out.proposals] == ["6638953Y"]
+
+
+RAW_21 = json.loads((Path(__file__).parent / "data" / "openrouter_2026-11-21.json").read_text())
+# journal de production (sauvegarde du 21/11) : jours 15-19/11 lus AVANT la révision, sauf le 19 (relu à 23 h 55 le 20/11)
+HISTO_21_11 = [
+    {"jour": "2026-11-15", "total_jour": 25.4844, "semaine": "2026-11-16", "precedente": 211.2801},
+    {"jour": "2026-11-16", "total_jour": 32.1298, "semaine": "2026-11-16", "precedente": 211.2801},
+    {"jour": "2026-11-17", "total_jour": 53.5561, "semaine": "2026-11-16", "precedente": 211.2801},
+    {"jour": "2026-11-18", "total_jour": 56.2461, "semaine": "2026-11-16", "precedente": 211.2801},
+    {"jour": "2026-11-19", "total_jour": 29.9085, "semaine": "2026-11-16", "precedente": 171.2123}]
+
+
+def test_21_11_history_revised_by_source_is_named():
+    """Cas réel du 21/11 (enquête 2026-11-21_matin_openrouter_historique_revise.md) : OpenRouter a récrit tout son historique le
+    20/11 vers 23 h UTC (semaine du 9/11 : 211,28 → 171,21 T). Le journal (jours lus avant) ne s'additionne plus au graphique :
+    l'ancien code refusait par « forme incohérente » (raison fausse) ; il doit dire « historique révisé »."""
+    lu = datetime(2026, 11, 21, 5, 55, tzinfo=UTC)
+    row = orr.lire(RAW_21["chart"], RAW_21["week"], RAW_21["day"], lu)[0]
+    assert row["semaines"][-2] == ["2026-11-09", 171.2123] and row["jour"][0] == "2026-11-20"
+    d = orr.detail(row, HISTO_21_11)
+    assert "refus" in d and "révisé" in d["refus"] and "211.3 → 171.2" in d["refus"] and -0.20 < d["revision"] < -0.18
+    # journal cohérent avec le graphique (petite dérive < 3 %) : pas de refus « révisé »
+    propre = [dict(o, precedente=171.2123 * (1.01 if i % 2 else 1.0)) for i, o in enumerate(HISTO_21_11)]
+    assert "révisé" not in orr.detail(row, propre).get("refus", "")
